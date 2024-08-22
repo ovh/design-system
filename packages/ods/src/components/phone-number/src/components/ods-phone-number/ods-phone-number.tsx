@@ -91,7 +91,13 @@ export class OdsPhoneNumber {
   componentWillLoad(): void {
     this.onCountriesChange();
     this.isoCode = getCurrentIsoCode(this.isoCode, this.parsedCountryCodes[0]);
-    this.locale = getCurrentLocale(this.locale);
+    const currentLocale = getCurrentLocale(this.locale);
+
+    if (currentLocale === this.locale) { // in that case the watcher is not triggered so we explicitly call it
+      this.onLocaleChange(this.locale);
+    } else { // but if the value is different, it will trigger the watcher automatically
+      this.locale = currentLocale;
+    }
 
     if (this.value) {
       this.onInputChange(new CustomEvent('', {

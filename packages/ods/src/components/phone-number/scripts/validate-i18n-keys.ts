@@ -1,9 +1,6 @@
-#! /usr/bin/env node
+#!/usr/bin/env ts-node
 
-const fs = require('fs');
-const { glob } = require('glob');
-
-const expectedIsoCodes = [
+const EXPECTED_ISO_CODES = [
   'ad','ae','af','ag','ai','al','am','ao','aq','ar','as','at','au','aw','ax',
   'az','ba','bb','bd','be','bf','bg','bh','bi','bj','bl','bm','bn','bo','br',
   'bs','bt','bw','by','bz','ca','cc','cd','cf','cg','ch','ci','ck','cl','cm',
@@ -21,17 +18,15 @@ const expectedIsoCodes = [
   'tl','tm','tn','to','tr','tt','tv','tw','tz','ua','ug','us','uy','uz','va',
   'vc','ve','vg','vi','vn','vu','wf','ws','ye','yt','za','zm','zw',
 ];
-
-const dirPath = process.argv[2];
+const LOCALES = ['de', 'en', 'es', 'fr', 'it', 'nl', 'pl', 'pt'];
 
 (async function main() {
   const errors = [];
 
   try {
-    const filePaths = await glob(dirPath);
-
-    for (const filePath of filePaths) {
-      const fileRows = JSON.parse(fs.readFileSync(filePath, 'utf8'))
+    await Promise.all(LOCALES.map(async (locale) => {
+      const fileName = `countries-${locale}.ts`;
+      const fileRows = (await import(`../src/i18n/${fileName}`)).default;
       const fileIsoCodes = fileRows.map((row) => row.isoCode);
 
       const emptyValues = fileRows.filter((row) => {
@@ -39,17 +34,17 @@ const dirPath = process.argv[2];
       }).map((row) => row.isoCode);
 
       const extraCodes = fileIsoCodes.filter((isoCode) => {
-        return expectedIsoCodes.indexOf(isoCode) < 0;
+        return EXPECTED_ISO_CODES.indexOf(isoCode) < 0;
       });
 
-      const missingCodes = expectedIsoCodes.filter((isoCode) => {
+      const missingCodes = EXPECTED_ISO_CODES.filter((isoCode) => {
         return fileIsoCodes.indexOf(isoCode) < 0;
       });
 
       if (emptyValues.length || extraCodes.length || missingCodes.length) {
-        errors.push({ emptyValues, extraCodes, filePath, missingCodes });
+        errors.push({ emptyValues, extraCodes, fileName, missingCodes });
       }
-    }
+    }));
   } catch (error) {
     console.error('Something went wrong during the i18n keys validation', error);
   }
@@ -58,7 +53,7 @@ const dirPath = process.argv[2];
     console.log('Following errors have been found during i18n keys validation:')
 
     errors.forEach((error) => {
-      console.log(`--- File ${error.filePath} ---`);
+      console.log(`--- File ${error.fileName} ---`);
 
       (error.emptyValues || []).forEach((emptyValue) => {
         console.log(`Empty isoCode value to fill: ${emptyValue}`);

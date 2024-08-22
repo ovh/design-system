@@ -1,8 +1,8 @@
 import { PhoneNumberFormat, type PhoneNumberUtil } from 'google-libphonenumber';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, type OdsPhoneNumberCountryIsoCode } from '../../src';
 import { formatPhoneNumber, getCurrentIsoCode, getCurrentLocale, getNationalPhoneNumberExample, getTranslatedCountryMap, getValidityState, isValidPhoneNumber, parseCountries, parsePhoneNumber, setFormValue, sortCountriesByName } from '../../src/controller/ods-phone-number';
-import countriesTranslationEn from '../../src/i18n/countries-en.json';
-import countriesTranslationFr from '../../src/i18n/countries-fr.json';
+import countriesTranslationEn from '../../src/i18n/countries-en';
+import countriesTranslationFr from '../../src/i18n/countries-fr';
 
 describe('ods-phone-number controller', () => {
   const mockPhoneUtils = {

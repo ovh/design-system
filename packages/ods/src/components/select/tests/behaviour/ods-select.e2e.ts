@@ -211,5 +211,18 @@ describe('ods-select behaviour', () => {
         });
       });
     });
+
+    describe('readonly', () => {
+      it('should not open select if readonly', async() => {
+        const dummyValue = 'dummy value';
+        await setup(`<ods-select is-readonly><option value="${dummyValue}">Value 1</option></ods-select>`);
+        expect(await isSelectOpen()).toBe(false);
+
+        await el.callMethod('open');
+        await page.waitForChanges();
+
+        expect(await isSelectOpen()).toBe(false);
+      });
+    });
   });
 });

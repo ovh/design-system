@@ -57,6 +57,17 @@ describe('ods-select navigation', () => {
     expect(await isFocused()).toBe(true);
   });
 
+  it('should be focused on tabulation if readonly', async() => {
+    await setup('<ods-select is-readonly><option value="1">1</option></ods-select>');
+
+    expect(await isFocused()).toBe(false);
+
+    await page.keyboard.press('Tab');
+    await page.waitForChanges();
+
+    expect(await isFocused()).toBe(true);
+  });
+
   it('should open the option list on select click', async() => {
     await setup('<ods-select><option value="1">1</option></ods-select>');
 

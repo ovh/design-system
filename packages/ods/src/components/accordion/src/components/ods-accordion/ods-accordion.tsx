@@ -46,16 +46,20 @@ export class OdsAccordion {
   }
 
   handleKeyUp(event: KeyboardEvent): void {
-    if (event.key === ' ' || event.key === 'Enter') {
+    if (this.isEnterOrSpace(event)) {
       event.preventDefault();
       this.handleToggle(event);
     }
   }
 
   handleKeyDown(event: KeyboardEvent): void {
-    if (event.key === ' ') {
+    if (this.isEnterOrSpace(event)) {
       event.preventDefault();
     }
+  }
+
+  private isEnterOrSpace(event: KeyboardEvent): boolean {
+    return event.key === ' ' || event.key === 'Enter';
   }
 
   render(): FunctionalComponent {

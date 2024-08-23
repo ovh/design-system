@@ -1,5 +1,3 @@
-#!/usr/bin/env ts-node
-
 const EXPECTED_ISO_CODES = [
   'ad','ae','af','ag','ai','al','am','ao','aq','ar','as','at','au','aw','ax',
   'az','ba','bb','bd','be','bf','bg','bh','bi','bj','bl','bm','bn','bo','br',

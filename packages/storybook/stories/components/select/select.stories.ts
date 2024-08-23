@@ -349,3 +349,12 @@ export const DisabledGroupOfOptions: StoryObj = {
 </ods-select>
   `,
 };
+
+export const Readonly: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-select is-readonly placeholder="Readonly select">
+  <option value="cat">Cat</option>
+</ods-select>
+  `,
+};

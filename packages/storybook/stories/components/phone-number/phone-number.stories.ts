@@ -275,3 +275,15 @@ export const Pattern: StoryObj = {
     </script>
   `,
 };
+
+export const Readonly: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+    <ods-phone-number is-readonly>
+    </ods-phone-number>
+    <br /><br />
+    <ods-phone-number countries="all"
+                      is-readonly>
+    </ods-phone-number>
+  `,
+};

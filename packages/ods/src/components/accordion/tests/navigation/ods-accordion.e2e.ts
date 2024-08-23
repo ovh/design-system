@@ -80,6 +80,39 @@ describe('ods-accordion navigation', () => {
     expect(isDetailsOpen).toBe(true);
   });
 
+  it('details should toggle on "Enter" after click', async() => {
+    await setup(`
+      <ods-accordion>
+        <span slot="summary">Hello, world!</span>
+
+        <ods-text preset="span">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+        </ods-text>
+      </ods-accordion>
+    `);
+
+    const details = await page.find('ods-accordion >>> .ods-accordion__wrapper');
+    await details.click();
+    await page.waitForChanges();
+    const isDetailsOpen = await page.evaluate(() => {
+      const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper');
+      return details?.getAttribute('open') === '';
+    });
+
+    expect(isDetailsOpen).toBe(true);
+
+    await page.keyboard.press('Enter');
+    await page.waitForChanges();
+
+    const isDetailsOpenAfterEnter = await page.evaluate(() => {
+      const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper');
+      return details?.getAttribute('open') === '';
+    });
+
+    expect(isDetailsOpenAfterEnter).toBe(false);
+
+  });
+
   it('details should toggle on "Space" when focused', async() => {
     await setup(`
       <ods-accordion>

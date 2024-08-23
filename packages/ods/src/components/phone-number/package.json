@@ -15,6 +15,6 @@
     "test:e2e:ci": "tsc --noEmit && stencil test --e2e --ci --runInBand --config stencil.config.ts",
     "test:spec": "stencil test --spec --config stencil.config.ts --coverage",
     "test:spec:ci": "tsc --noEmit && stencil test --config stencil.config.ts  --spec --ci",
-    "validate": "ts-node scripts/validate-i18n-keys.ts"
+    "validate": "tsx scripts/validate-i18n-keys.ts"
   }
 }

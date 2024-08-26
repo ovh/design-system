@@ -6,49 +6,48 @@ import { Meta, Markdown } from '@storybook/blocks';
 ----
 
 ## Component tokens
-* <img src="https://img.shields.io/badge/removed-FF0000" /> All **component-specific spacing tokens** (ex: **`--ods-size-button-*`**, **`--ods-toggle-*`**) have been removed, their values are now directly applied on components.
+* <img src="https://img.shields.io/badge/removed-FF0000" /> All **component-specific tokens** (ex: **`--ods-size-button-*`**, **`--ods-toggle-*`**) have been removed, their values are now directly applied on components.
 
 ## Color tokens
 * <img src="https://img.shields.io/badge/removed-FF0000" /> All **primitive color tokens** (ex: **`--ods-color-blue-500`**) have been removed, now colors can only be accessible using alias tokens (see corresponding table below).
-* <img src="https://img.shields.io/badge/removed-FF0000" /> All **contrasted primitive color tokens** (ex: **`--ods-color-blue-500`**) have been removed, until new designs and specifications gets validated for having contrasted states on components.
-* <img src="https://img.shields.io/badge/removed-FF0000" /> All **`--ods-color-*-050`** and **`--ods-color-*-050-contrasted`** have been removed.
+* <img src="https://img.shields.io/badge/removed-FF0000" /> All **contrasted primitive color tokens** (ex: **`--ods-color-blue-500-contrasted`**) have been removed, until new designs and specifications gets validated for having contrasted states on components.
 * <img src="https://img.shields.io/badge/removed-FF0000" /> All **`--ods-color-*-list`** tokens have been removed, as no usage for them in integration.
 
 ### Palettes
 <Markdown>
   {`
 | Former token names               | Status                                                           | New token name                                                                   |
-|---------------------             | ---------------------------------------------------------------- | -----------------------------------------------------------------------          |
+|------------------------          | ---------------------------------------------------------------- | -----------------------------------------------------------------------          |
 | ${"\`--ods-color-blue-*\`"}      | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-color-primary-*\`"}** or **${"\`--ods-color-information-*\`"}** |
-| ${"\`--ods-color-primary-075\`"} | <img src="https://img.shields.io/badge/removed-FF0000" />        |                                                                                  |
+| ${"\`--ods-color-blue-075\`"}    | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-primary-050\`"}** as replacing color                      |
 | ${"\`--ods-color-gray-*\`"}      | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-color-neutral-*\`"}**                                           |
-| ${"\`--ods-color-gray-blue-*\`"} | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-color-text`"}** token for all hues                              |
+| ${"\`--ods-color-gray-blue-*\`"} | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-text`"}** token for all hues                              |
 | ${"\`--ods-color-red-*\`"}       | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-color-critical-*\`"}**                                          |
 | ${"\`--ods-color-orange-*\`"}    | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-color-warning-*\`"}**                                           |
 | ${"\`--ods-color-green-*\`"}     | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-color-success-*\`"}**                                           |
-| ${"\`--ods-color-pink-*\`"}      | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-color-promotion`"}** token for all hues                         |
+| ${"\`--ods-color-pink-*\`"}      | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-promotion`"}** token for all hues                         |
 `}
 </Markdown>
 
 ### Contrasted palettes
+All **contrasted primitive color tokens** have been removed, until new designs and specifications gets validated for having contrasted states on components.
 <Markdown>
   {`
-| Former token names                                                   | Status                                                           | New token name                                                                       |
-|---------------------                                                 | ---------------------------------------------------------------- | -----------------------------------------------------------------------              |
-| ${"\`--ods-color-gray-<000,050,100,200,300,400>-contrasted\`"}       | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`black\`"}**                                                               |
-| ${"\`--ods-color-gray-<500,600,700,800,900,1000>-contrasted\`"}      | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-neutral-000\`"}**                                             |
-| ${"\`--ods-color-blue-<000,050,075,100,200,300,400>-contrasted\`"}   | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-primary-500\`"}** or **${"\`--ods-color-information-500\`"}** |
-| ${"\`--ods-color-blue-<500,600,700,800,900,1000>-contrasted\`"}      | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-primary-000\`"}** or **${"\`--ods-color-information-000\`"}** |
-| ${"\`--ods-color-gray-blue-<000,050,100,200,300,400>-contrasted\`"}  | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-information-500\`"}**                                         |
-| ${"\`--ods-color-gray-blue-<500,600,700,800,900,1000>-contrasted\`"} | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-information-000\`"}**                                         |
-| ${"\`--ods-color-red-<000,050,100,200,300,400>-contrasted\`"}        | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-critical-500\`"}**                                            |
-| ${"\`--ods-color-red-<500,600,700,800,900,1000>-contrasted\`"}       | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-critical-000\`"}**                                            |
-| ${"\`--ods-color-orange-<000,050,100,200,300,400>-contrasted\`"}     | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-warning-500\`"}**                                             |
-| ${"\`--ods-color-orange-<500,600,700,800,900,1000>-contrasted\`"}    | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-warning-000\`"}**                                             |
-| ${"\`--ods-color-green-<000,050,100,200,300,400>-contrasted\`"}      | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-success-500\`"}**                                             |
-| ${"\`--ods-color-green-<500,600,700,800,900,1000>-contrasted\`"}     | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-success-000\`"}**                                             |
-| ${"\`--ods-color-pink-<000,050,100,200,300,400>-contrasted\`"}       | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-promotion\`"}**                                               |
-| ${"\`--ods-color-pink-<500,600,700,800,900,1000>-contrasted\`"}      | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-neutral-000\`"}**                                             |
+| Former token names                                                 | Status                                                           | New token name                                                                       |
+|------------------------                                            | ---------------------------------------------------------------- | -----------------------------------------------------------------------              |
+| ${"\`--ods-color-gray-<000,050,100,200,300,400>-contrasted\`"}     | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`black\`"}**                                                               |
+| ${"\`--ods-color-gray-<500,600,700,800,900,1000>-contrasted\`"}    | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-neutral-000\`"}**                                             |
+| ${"\`--ods-color-blue-<000,050,075,100,200,300,400>-contrasted\`"} | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-primary-500\`"}** or **${"\`--ods-color-information-500\`"}** |
+| ${"\`--ods-color-blue-<500,600,700,800,900,1000>-contrasted\`"}    | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-primary-000\`"}** or **${"\`--ods-color-information-000\`"}** |
+| ${"\`--ods-color-gray-blue-*-contrasted\`"}                        | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-neutral-000\`"}**                                             |
+| ${"\`--ods-color-red-<000,050,100,200,300,400>-contrasted\`"}      | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-critical-500\`"}**                                            |
+| ${"\`--ods-color-red-<500,600,700,800,900,1000>-contrasted\`"}     | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-critical-000\`"}**                                            |
+| ${"\`--ods-color-orange-<000,050,100,200,300,400>-contrasted\`"}   | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-warning-500\`"}**                                             |
+| ${"\`--ods-color-orange-<500,600,700,800,900,1000>-contrasted\`"}  | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-warning-000\`"}**                                             |
+| ${"\`--ods-color-green-<000,050,100,200,300,400>-contrasted\`"}    | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-success-500\`"}**                                             |
+| ${"\`--ods-color-green-<500,600,700,800,900,1000>-contrasted\`"}   | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-success-000\`"}**                                             |
+| ${"\`--ods-color-pink-<000,050,100,200,300,400>-contrasted\`"}     | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-promotion\`"}**                                               |
+| ${"\`--ods-color-pink-<500,600,700,800,900,1000>-contrasted\`"}    | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-neutral-000\`"}**                                             |
 `}
 </Markdown>
 
@@ -56,11 +55,12 @@ import { Meta, Markdown } from '@storybook/blocks';
 <Markdown>
   {`
 | Former token names                                                 | Status                                                           | New token name                                                          |
-|---------------------                                               | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
+|------------------------                                            | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | ${"\`--ods-color-default-*\`"}                                     | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-color-neutral-*\`"}**                                  |
-| ${"\`--ods-color-text-*\`"}                                        | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-color-text`"}** token for all hues                     |
+| ${"\`--ods-color-primary-075\`"}                                   | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-primary-050\`"}** as replacing color             |
+| ${"\`--ods-color-text-*\`"}                                        | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-text`"}** token for all hues                     |
 | ${"\`--ods-color-error-*\`"}                                       | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-color-critical-*\`"}**                                 |
-| ${"\`--ods-color-accent-*\`"}<br/>${"\`--ods-color-promotion-*\`"} | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-color-promotion`"}** token for all hues                |
+| ${"\`--ods-color-accent-*\`"}<br/>${"\`--ods-color-promotion-*\`"} | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-promotion`"}** token for all hues                |
 | ${"\`--ods-color-info-*\`"}                                        | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-color-information-*\`"}**                              |
 `}
 </Markdown>
@@ -68,38 +68,37 @@ import { Meta, Markdown } from '@storybook/blocks';
 ### Contrasted intents
 <Markdown>
   {`
-| Former token names                                                                                                                         | Status                                                           | New token name                                                                       |
-|---------------------                                                                                                                       | ---------------------------------------------------------------- | -----------------------------------------------------------------------              |
-| ${"\`--ods-color-default-<000,050,100,200,300,400>-contrasted\`"}                                                                          | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`black\`"}**                                                               |
-| ${"\`--ods-color-default-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-neutral-000\`"}**                                             |
-| ${"\`--ods-color-primary-<000,050,075,100,200,300,400>-contrasted\`"}                                                                      | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-primary-500\`"}**                                             |
-| ${"\`--ods-color-primary-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-primary-000\`"}**                                             |
-| ${"\`--ods-color-text-<000,050,100,200,300,400>-contrasted\`"}                                                                             | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-information-500\`"}**                                         |
-| ${"\`--ods-color-text-<500,600,700,800,900,1000>-contrasted\`"}                                                                            | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-information-000\`"}**                                         |
-| ${"\`--ods-color-error-<000,050,100,200,300,400>-contrasted\`"}                                                                            | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-critical-500\`"}**                                            |
-| ${"\`--ods-color-error-<500,600,700,800,900,1000>-contrasted\`"}                                                                           | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-critical-000\`"}**                                            |
-| ${"\`--ods-color-warning-<000,050,100,200,300,400>-contrasted\`"}                                                                          | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-warning-500\`"}**                                             |
-| ${"\`--ods-color-warning-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-warning-000\`"}**                                             |
-| ${"\`--ods-color-success-<000,050,100,200,300,400>-contrasted\`"}                                                                          | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-success-500\`"}**                                             |
-| ${"\`--ods-color-success-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-success-000\`"}**                                             |
-| ${"\`--ods-color-accent-<000,050,100,200,300,400>-contrasted\`"}<br/>${"\`--ods-color-promotion-<000,050,100,200,300,400>-contrasted\`"}   | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-promotion\`"}**                                               |
-| ${"\`--ods-color-accent-<500,600,700,800,900,1000>-contrasted\`"}<br/>${"\`--ods-color-promotion-<500,600,700,800,900,1000>-contrasted\`"} | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-neutral-000\`"}**                                             |
-| ${"\`--ods-color-info-<000,050,100,200,300,400>-contrasted\`"}                                                                             | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-primary-500\`"}** or **${"\`--ods-color-information-500\`"}** |
-| ${"\`--ods-color-info-<500,600,700,800,900,1000>-contrasted\`"}                                                                            | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-primary-000\`"}** or **${"\`--ods-color-information-000\`"}** |
+| Former token names                                                                                                                         | Status                                                           | New token name                                                          |
+|------------------------                                                                                                                    | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| ${"\`--ods-color-default-<000,050,100,200,300,400>-contrasted\`"}                                                                          | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`black\`"}**                                                  |
+| ${"\`--ods-color-default-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-neutral-000\`"}**                                |
+| ${"\`--ods-color-primary-<000,050,075,100,200,300,400>-contrasted\`"}                                                                      | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-primary-500\`"}**                                |
+| ${"\`--ods-color-primary-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-primary-000\`"}**                                |
+| ${"\`--ods-color-text-*-contrasted\`"}                                                                                                     | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-neutral-000\`"}**                                |
+| ${"\`--ods-color-error-<000,050,100,200,300,400>-contrasted\`"}                                                                            | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-critical-500\`"}**                               |
+| ${"\`--ods-color-error-<500,600,700,800,900,1000>-contrasted\`"}                                                                           | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-critical-000\`"}**                               |
+| ${"\`--ods-color-warning-<000,050,100,200,300,400>-contrasted\`"}                                                                          | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-warning-500\`"}**                                |
+| ${"\`--ods-color-warning-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-warning-000\`"}**                                |
+| ${"\`--ods-color-success-<000,050,100,200,300,400>-contrasted\`"}                                                                          | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-success-500\`"}**                                |
+| ${"\`--ods-color-success-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-success-000\`"}**                                |
+| ${"\`--ods-color-accent-<000,050,100,200,300,400>-contrasted\`"}<br/>${"\`--ods-color-promotion-<000,050,100,200,300,400>-contrasted\`"}   | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-promotion\`"}**                                  |
+| ${"\`--ods-color-accent-<500,600,700,800,900,1000>-contrasted\`"}<br/>${"\`--ods-color-promotion-<500,600,700,800,900,1000>-contrasted\`"} | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-neutral-000\`"}**                                |
+| ${"\`--ods-color-info-<000,050,100,200,300,400>-contrasted\`"}                                                                             | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-information-500\`"}**                            |
+| ${"\`--ods-color-info-<500,600,700,800,900,1000>-contrasted\`"}                                                                            | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`--ods-color-information-000\`"}**                            |
 `}
 </Markdown>
 
 ## Size tokens
 * <img src="https://img.shields.io/badge/removed-FF0000" /> All **global size tokens** (ex: **`--ods-size-*`**) have been removed due to no direct use, they are now up to your particular usage.
-* <img src="https://img.shields.io/badge/removed-FF0000" /> Global sizing ratio (**`--ods-size-ratio`**) which was applied to every spacing concept has been removed due to no use.
-* <img src="https://img.shields.io/badge/removed-FF0000" /> All **spacing concept tokens** (**`--ods-size-stack-*`**) has been removed due to no use.
+* <img src="https://img.shields.io/badge/removed-FF0000" /> Global **sizing ratio** (ex: **`--ods-size-ratio`**) which was applied to every spacing concept has been removed due to no use.
+* <img src="https://img.shields.io/badge/removed-FF0000" /> All **spacing concept tokens** (ex: **`--ods-size-stack-*`**) has been removed due to no use.
 
 ### Border radius
 
 <Markdown>
   {`
 | Former token names                   | Status                                                           | New token name                                                          |
-|---------------------                 | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
+|------------------------              | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | ${"\`--ods-size-border-radius-01\`"} | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-border-radius-sm\`"}**                                 |
 | ${"\`--ods-size-border-radius-02\`"} | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-border-radius-md\`"}**                                 |
 | ${"\`--ods-size-border-radius-03\`"} | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-border-radius-lg\`"}**                                 |
@@ -111,7 +110,7 @@ import { Meta, Markdown } from '@storybook/blocks';
 <Markdown>
   {`
 | Former token names           | Status                                                           | New token name                                                          |
-|---------------------         | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
+|------------------------      | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | ${"\`--ods-breakpoint-xs\`"} | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`$ods-breakpoint-mobile\`"}** Sass variable instead           |
 | ${"\`--ods-breakpoint-sm\`"} | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`$ods-breakpoint-tablet\`"}** Sass variable instead           |
 | ${"\`--ods-breakpoint-md\`"} | <img src="https://img.shields.io/badge/removed-FF0000" />        | Use **${"\`$ods-breakpoint-desktop\`"}** Sass variable instead          |
@@ -122,13 +121,13 @@ import { Meta, Markdown } from '@storybook/blocks';
 
 ## Typography tokens
 * <img src="https://img.shields.io/badge/removed-FF0000" /> All **typography tokens** (ex: **`--ods-typography-*`**) have been removed, including font sizes, line heights, font weights, letter spacings due to too much typography restriction.
-* <img src="https://img.shields.io/badge/removed-FF0000" /> Global font sizing ratio (**`--ods-typo-size-ratio`**) which was applied to every spacing concept has been removed due to no use.
+* <img src="https://img.shields.io/badge/removed-FF0000" /> Global **font sizing ratio** (**`--ods-typo-size-ratio`**) which was applied to every spacing concept has been removed due to no use.
 
 ### Font family
 <Markdown>
   {`
-| Former token names           | Status                                                           | New token name                                                          |
-|---------------------         | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| ${"\`--ods-font-family-*\`"} | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-font-family-default\`"}**                              |
+| Former token names         | Status                                                           | New token name                                                          |
+|------------------------    | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| ${"\`--ods-font-family\`"} | <img src="https://img.shields.io/badge/updated-00FFFF" />        | Use **${"\`--ods-font-family-default\`"}**                              |
 `}
 </Markdown>

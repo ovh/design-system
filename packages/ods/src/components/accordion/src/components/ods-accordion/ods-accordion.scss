@@ -1,6 +1,8 @@
 @use '../../../../../style/focus';
 @use '../../../../../style/state';
 
+$ods-accordion-padding: 24px;
+
 .ods-accordion {
   &__wrapper {
     transition: .3s border-color ease-out;
@@ -35,9 +37,10 @@
 
       display: flex;
       position: relative;
+      column-gap: $ods-accordion-padding;
       align-items: center;
       justify-content: space-between;
-      padding: 24px;
+      padding: $ods-accordion-padding;
       list-style: none;
 
       &::-webkit-details-marker {
@@ -45,7 +48,7 @@
       }
 
       &--is-open {
-        padding-bottom: 24px;
+        padding-bottom: $ods-accordion-padding;
       }
 
       &--is-disabled {
@@ -65,10 +68,14 @@
         color: var(--ods-color-primary-500);
         font-size: 0.875rem;
       }
+
+      &__slot {
+        width: 100%;
+      }
     }
 
     &__content {
-      padding: 0 24px 24px;
+      padding: 0 $ods-accordion-padding $ods-accordion-padding;
     }
   }
 }

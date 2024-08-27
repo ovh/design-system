@@ -13,7 +13,10 @@
 <body>
   <p>Default</p>
   <ods-accordion>
-    <ods-text preset="span" slot="summary">Hello, world!</ods-text>
+    <div slot="summary" style="display: grid; grid-template-columns: 1fr max-content; column-gap: 8px;">
+      <span>Hello, world!</span>
+      <button>Dummy button</button>
+    </div>
 
     <ods-text preset="span">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -21,7 +24,6 @@
   </ods-accordion>
 
   <ods-accordion>
-    <!-- <ods-text slot="summary" preset="heading-6">Hello, world!</ods-text> -->
     <ods-text preset="span">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </ods-text>
@@ -51,20 +53,11 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   </details>
 
-  <div style="width: 1px; height: 5000px;"></div>
-
+  <div style="height: 5000px;"></div>
 
   <style>
     ods-text {
       font-family: 'Source Sans Pro', sans-serif;
-    }
-
-    .label {
-      color: #0050d7;
-    }
-
-    .label::part(text) {
-      margin: 0;
     }
   </style>
 </body>

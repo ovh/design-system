@@ -6,26 +6,26 @@ import { Meta, Markdown } from '@storybook/blocks';
 ----
 
 ## Component tokens
-* <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge> All **component-specific tokens** (ex: **`--ods-size-button-*`**, **`--ods-toggle-*`**) have been removed, their values are now directly applied on components.
+* <ods-badge size="sm" color="critical" label="Removed"></ods-badge> All **component-specific tokens** (ex: **`--ods-size-button-*`**, **`--ods-toggle-*`**) have been removed, their values are now directly applied on components.
 
 ## Color tokens
-* <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge> All **primitive color tokens** (ex: **`--ods-color-blue-500`**) have been removed, now colors can only be accessible using alias tokens (see corresponding table below).
-* <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge> All **contrasted primitive color tokens** (ex: **`--ods-color-blue-500-contrasted`**) have been removed, until new designs and specifications gets validated for having contrasted states on components.
-* <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge> All **`--ods-color-*-list`** tokens have been removed, as no usage for them in integration.
+* <ods-badge size="sm" color="critical" label="Removed"></ods-badge> All **primitive color tokens** (ex: **`--ods-color-blue-500`**) have been removed, now colors can only be accessible using alias tokens (see corresponding table below).
+* <ods-badge size="sm" color="critical" label="Removed"></ods-badge> All **contrasted primitive color tokens** (ex: **`--ods-color-blue-500-contrasted`**) have been removed, until new designs and specifications gets validated for having contrasted states on components.
+* <ods-badge size="sm" color="critical" label="Removed"></ods-badge> All **`--ods-color-*-list`** tokens have been removed, as no usage for them in integration.
 
 ### Palettes
 <Markdown>
   {`
 | Former token names               | Status                                                           | New token name                                                                   |
 |------------------------          | ---------------------------------------------------------------- | -----------------------------------------------------------------------          |
-| ${"\`--ods-color-blue-*\`"}      | <ods-badge size="sm" icon="circle-info" label="Updated"></ods-badge>        | Use **${"\`--ods-color-primary-*\`"}** or **${"\`--ods-color-information-*\`"}** |
-| ${"\`--ods-color-blue-075\`"}    | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-primary-050\`"}** as replacing color                      |
-| ${"\`--ods-color-gray-*\`"}      | <ods-badge size="sm" icon="circle-info" label="Updated"></ods-badge>        | Use **${"\`--ods-color-neutral-*\`"}**                                           |
-| ${"\`--ods-color-gray-blue-*\`"} | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-text`"}** token for all hues                              |
-| ${"\`--ods-color-red-*\`"}       | <ods-badge size="sm" icon="circle-info" label="Updated"></ods-badge>        | Use **${"\`--ods-color-critical-*\`"}**                                          |
-| ${"\`--ods-color-orange-*\`"}    | <ods-badge size="sm" icon="circle-info" label="Updated"></ods-badge>        | Use **${"\`--ods-color-warning-*\`"}**                                           |
-| ${"\`--ods-color-green-*\`"}     | <ods-badge size="sm" icon="circle-info" label="Updated"></ods-badge>        | Use **${"\`--ods-color-success-*\`"}**                                           |
-| ${"\`--ods-color-pink-*\`"}      | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-promotion`"}** token for all hues                         |
+| ${"\`--ods-color-blue-*\`"}      | <ods-badge size="sm" label="Updated"></ods-badge>        | Use **${"\`--ods-color-primary-*\`"}** or **${"\`--ods-color-information-*\`"}** |
+| ${"\`--ods-color-blue-075\`"}    | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-primary-050\`"}** as replacing color                      |
+| ${"\`--ods-color-gray-*\`"}      | <ods-badge size="sm" label="Updated"></ods-badge>        | Use **${"\`--ods-color-neutral-*\`"}**                                           |
+| ${"\`--ods-color-gray-blue-*\`"} | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-text`"}** token for all hues                              |
+| ${"\`--ods-color-red-*\`"}       | <ods-badge size="sm" label="Updated"></ods-badge>        | Use **${"\`--ods-color-critical-*\`"}**                                          |
+| ${"\`--ods-color-orange-*\`"}    | <ods-badge size="sm" label="Updated"></ods-badge>        | Use **${"\`--ods-color-warning-*\`"}**                                           |
+| ${"\`--ods-color-green-*\`"}     | <ods-badge size="sm" label="Updated"></ods-badge>        | Use **${"\`--ods-color-success-*\`"}**                                           |
+| ${"\`--ods-color-pink-*\`"}      | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-promotion`"}** token for all hues                         |
 `}
 </Markdown>
 
@@ -35,19 +35,19 @@ All **contrasted primitive color tokens** have been removed, until new designs a
   {`
 | Former token names                                                 | Status                                                           | New token name                                                                       |
 |------------------------                                            | ---------------------------------------------------------------- | -----------------------------------------------------------------------              |
-| ${"\`--ods-color-gray-<000,050,100,200,300,400>-contrasted\`"}     | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`black\`"}**                                                               |
-| ${"\`--ods-color-gray-<500,600,700,800,900,1000>-contrasted\`"}    | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-neutral-000\`"}**                                             |
-| ${"\`--ods-color-blue-<000,050,075,100,200,300,400>-contrasted\`"} | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-primary-500\`"}** or **${"\`--ods-color-information-500\`"}** |
-| ${"\`--ods-color-blue-<500,600,700,800,900,1000>-contrasted\`"}    | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-primary-000\`"}** or **${"\`--ods-color-information-000\`"}** |
-| ${"\`--ods-color-gray-blue-*-contrasted\`"}                        | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-neutral-000\`"}**                                             |
-| ${"\`--ods-color-red-<000,050,100,200,300,400>-contrasted\`"}      | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-critical-500\`"}**                                            |
-| ${"\`--ods-color-red-<500,600,700,800,900,1000>-contrasted\`"}     | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-critical-000\`"}**                                            |
-| ${"\`--ods-color-orange-<000,050,100,200,300,400>-contrasted\`"}   | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-warning-500\`"}**                                             |
-| ${"\`--ods-color-orange-<500,600,700,800,900,1000>-contrasted\`"}  | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-warning-000\`"}**                                             |
-| ${"\`--ods-color-green-<000,050,100,200,300,400>-contrasted\`"}    | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-success-500\`"}**                                             |
-| ${"\`--ods-color-green-<500,600,700,800,900,1000>-contrasted\`"}   | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-success-000\`"}**                                             |
-| ${"\`--ods-color-pink-<000,050,100,200,300,400>-contrasted\`"}     | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-promotion\`"}**                                               |
-| ${"\`--ods-color-pink-<500,600,700,800,900,1000>-contrasted\`"}    | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-neutral-000\`"}**                                             |
+| ${"\`--ods-color-gray-<000,050,100,200,300,400>-contrasted\`"}     | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`black\`"}**                                                               |
+| ${"\`--ods-color-gray-<500,600,700,800,900,1000>-contrasted\`"}    | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-neutral-000\`"}**                                             |
+| ${"\`--ods-color-blue-<000,050,075,100,200,300,400>-contrasted\`"} | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-primary-500\`"}** or **${"\`--ods-color-information-500\`"}** |
+| ${"\`--ods-color-blue-<500,600,700,800,900,1000>-contrasted\`"}    | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-primary-000\`"}** or **${"\`--ods-color-information-000\`"}** |
+| ${"\`--ods-color-gray-blue-*-contrasted\`"}                        | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-neutral-000\`"}**                                             |
+| ${"\`--ods-color-red-<000,050,100,200,300,400>-contrasted\`"}      | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-critical-500\`"}**                                            |
+| ${"\`--ods-color-red-<500,600,700,800,900,1000>-contrasted\`"}     | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-critical-000\`"}**                                            |
+| ${"\`--ods-color-orange-<000,050,100,200,300,400>-contrasted\`"}   | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-warning-500\`"}**                                             |
+| ${"\`--ods-color-orange-<500,600,700,800,900,1000>-contrasted\`"}  | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-warning-000\`"}**                                             |
+| ${"\`--ods-color-green-<000,050,100,200,300,400>-contrasted\`"}    | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-success-500\`"}**                                             |
+| ${"\`--ods-color-green-<500,600,700,800,900,1000>-contrasted\`"}   | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-success-000\`"}**                                             |
+| ${"\`--ods-color-pink-<000,050,100,200,300,400>-contrasted\`"}     | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-promotion\`"}**                                               |
+| ${"\`--ods-color-pink-<500,600,700,800,900,1000>-contrasted\`"}    | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-neutral-000\`"}**                                             |
 `}
 </Markdown>
 
@@ -56,12 +56,12 @@ All **contrasted primitive color tokens** have been removed, until new designs a
   {`
 | Former token names                                                 | Status                                                           | New token name                                                          |
 |------------------------                                            | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| ${"\`--ods-color-default-*\`"}                                     | <ods-badge size="sm" icon="circle-info" label="Updated"></ods-badge>        | Use **${"\`--ods-color-neutral-*\`"}**                                  |
-| ${"\`--ods-color-primary-075\`"}                                   | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-primary-050\`"}** as replacing color             |
-| ${"\`--ods-color-text-*\`"}                                        | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-text`"}** token for all hues                     |
-| ${"\`--ods-color-error-*\`"}                                       | <ods-badge size="sm" icon="circle-info" label="Updated"></ods-badge>        | Use **${"\`--ods-color-critical-*\`"}**                                 |
-| ${"\`--ods-color-accent-*\`"}<br/>${"\`--ods-color-promotion-*\`"} | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-promotion`"}** token for all hues                |
-| ${"\`--ods-color-info-*\`"}                                        | <ods-badge size="sm" icon="circle-info" label="Updated"></ods-badge>        | Use **${"\`--ods-color-information-*\`"}**                              |
+| ${"\`--ods-color-default-*\`"}                                     | <ods-badge size="sm" label="Updated"></ods-badge>        | Use **${"\`--ods-color-neutral-*\`"}**                                  |
+| ${"\`--ods-color-primary-075\`"}                                   | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-primary-050\`"}** as replacing color             |
+| ${"\`--ods-color-text-*\`"}                                        | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-text`"}** token for all hues                     |
+| ${"\`--ods-color-error-*\`"}                                       | <ods-badge size="sm" label="Updated"></ods-badge>        | Use **${"\`--ods-color-critical-*\`"}**                                 |
+| ${"\`--ods-color-accent-*\`"}<br/>${"\`--ods-color-promotion-*\`"} | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-promotion`"}** token for all hues                |
+| ${"\`--ods-color-info-*\`"}                                        | <ods-badge size="sm" label="Updated"></ods-badge>        | Use **${"\`--ods-color-information-*\`"}**                              |
 `}
 </Markdown>
 
@@ -70,28 +70,28 @@ All **contrasted primitive color tokens** have been removed, until new designs a
   {`
 | Former token names                                                                                                                         | Status                                                           | New token name                                                          |
 |------------------------                                                                                                                    | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| ${"\`--ods-color-default-<000,050,100,200,300,400>-contrasted\`"}                                                                          | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`black\`"}**                                                  |
-| ${"\`--ods-color-default-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-neutral-000\`"}**                                |
-| ${"\`--ods-color-primary-<000,050,075,100,200,300,400>-contrasted\`"}                                                                      | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-primary-500\`"}**                                |
-| ${"\`--ods-color-primary-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-primary-000\`"}**                                |
-| ${"\`--ods-color-text-*-contrasted\`"}                                                                                                     | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-neutral-000\`"}**                                |
-| ${"\`--ods-color-error-<000,050,100,200,300,400>-contrasted\`"}                                                                            | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-critical-500\`"}**                               |
-| ${"\`--ods-color-error-<500,600,700,800,900,1000>-contrasted\`"}                                                                           | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-critical-000\`"}**                               |
-| ${"\`--ods-color-warning-<000,050,100,200,300,400>-contrasted\`"}                                                                          | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-warning-500\`"}**                                |
-| ${"\`--ods-color-warning-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-warning-000\`"}**                                |
-| ${"\`--ods-color-success-<000,050,100,200,300,400>-contrasted\`"}                                                                          | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-success-500\`"}**                                |
-| ${"\`--ods-color-success-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-success-000\`"}**                                |
-| ${"\`--ods-color-accent-<000,050,100,200,300,400>-contrasted\`"}<br/>${"\`--ods-color-promotion-<000,050,100,200,300,400>-contrasted\`"}   | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-promotion\`"}**                                  |
-| ${"\`--ods-color-accent-<500,600,700,800,900,1000>-contrasted\`"}<br/>${"\`--ods-color-promotion-<500,600,700,800,900,1000>-contrasted\`"} | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-neutral-000\`"}**                                |
-| ${"\`--ods-color-info-<000,050,100,200,300,400>-contrasted\`"}                                                                             | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-information-500\`"}**                            |
-| ${"\`--ods-color-info-<500,600,700,800,900,1000>-contrasted\`"}                                                                            | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`--ods-color-information-000\`"}**                            |
+| ${"\`--ods-color-default-<000,050,100,200,300,400>-contrasted\`"}                                                                          | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`black\`"}**                                                  |
+| ${"\`--ods-color-default-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-neutral-000\`"}**                                |
+| ${"\`--ods-color-primary-<000,050,075,100,200,300,400>-contrasted\`"}                                                                      | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-primary-500\`"}**                                |
+| ${"\`--ods-color-primary-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-primary-000\`"}**                                |
+| ${"\`--ods-color-text-*-contrasted\`"}                                                                                                     | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-neutral-000\`"}**                                |
+| ${"\`--ods-color-error-<000,050,100,200,300,400>-contrasted\`"}                                                                            | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-critical-500\`"}**                               |
+| ${"\`--ods-color-error-<500,600,700,800,900,1000>-contrasted\`"}                                                                           | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-critical-000\`"}**                               |
+| ${"\`--ods-color-warning-<000,050,100,200,300,400>-contrasted\`"}                                                                          | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-warning-500\`"}**                                |
+| ${"\`--ods-color-warning-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-warning-000\`"}**                                |
+| ${"\`--ods-color-success-<000,050,100,200,300,400>-contrasted\`"}                                                                          | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-success-500\`"}**                                |
+| ${"\`--ods-color-success-<500,600,700,800,900,1000>-contrasted\`"}                                                                         | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-success-000\`"}**                                |
+| ${"\`--ods-color-accent-<000,050,100,200,300,400>-contrasted\`"}<br/>${"\`--ods-color-promotion-<000,050,100,200,300,400>-contrasted\`"}   | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-promotion\`"}**                                  |
+| ${"\`--ods-color-accent-<500,600,700,800,900,1000>-contrasted\`"}<br/>${"\`--ods-color-promotion-<500,600,700,800,900,1000>-contrasted\`"} | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-neutral-000\`"}**                                |
+| ${"\`--ods-color-info-<000,050,100,200,300,400>-contrasted\`"}                                                                             | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-information-500\`"}**                            |
+| ${"\`--ods-color-info-<500,600,700,800,900,1000>-contrasted\`"}                                                                            | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`--ods-color-information-000\`"}**                            |
 `}
 </Markdown>
 
 ## Size tokens
-* <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge> All **global size tokens** (ex: **`--ods-size-*`**) have been removed due to no direct use, they are now up to your particular usage.
-* <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge> Global **sizing ratio** (ex: **`--ods-size-ratio`**) which was applied to every spacing concept has been removed due to no use.
-* <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge> All **spacing concept tokens** (ex: **`--ods-size-stack-*`**) has been removed due to no use.
+* <ods-badge size="sm" color="critical" label="Removed"></ods-badge> All **global size tokens** (ex: **`--ods-size-*`**) have been removed due to no direct use, they are now up to your particular usage.
+* <ods-badge size="sm" color="critical" label="Removed"></ods-badge> Global **sizing ratio** (ex: **`--ods-size-ratio`**) which was applied to every spacing concept has been removed due to no use.
+* <ods-badge size="sm" color="critical" label="Removed"></ods-badge> All **spacing concept tokens** (ex: **`--ods-size-stack-*`**) has been removed due to no use.
 
 ### Border radius
 
@@ -99,9 +99,9 @@ All **contrasted primitive color tokens** have been removed, until new designs a
   {`
 | Former token names                   | Status                                                           | New token name                                                          |
 |------------------------              | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| ${"\`--ods-size-border-radius-01\`"} | <ods-badge size="sm" icon="circle-info" label="Updated"></ods-badge>        | Use **${"\`--ods-border-radius-sm\`"}**                                 |
-| ${"\`--ods-size-border-radius-02\`"} | <ods-badge size="sm" icon="circle-info" label="Updated"></ods-badge>        | Use **${"\`--ods-border-radius-md\`"}**                                 |
-| ${"\`--ods-size-border-radius-03\`"} | <ods-badge size="sm" icon="circle-info" label="Updated"></ods-badge>        | Use **${"\`--ods-border-radius-lg\`"}**                                 |
+| ${"\`--ods-size-border-radius-01\`"} | <ods-badge size="sm" label="Updated"></ods-badge>        | Use **${"\`--ods-border-radius-sm\`"}**                                 |
+| ${"\`--ods-size-border-radius-02\`"} | <ods-badge size="sm" label="Updated"></ods-badge>        | Use **${"\`--ods-border-radius-md\`"}**                                 |
+| ${"\`--ods-size-border-radius-03\`"} | <ods-badge size="sm" label="Updated"></ods-badge>        | Use **${"\`--ods-border-radius-lg\`"}**                                 |
 `}
 </Markdown>
 
@@ -111,23 +111,23 @@ All **contrasted primitive color tokens** have been removed, until new designs a
   {`
 | Former token names           | Status                                                           | New token name                                                          |
 |------------------------      | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| ${"\`--ods-breakpoint-xs\`"} | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`$ods-breakpoint-mobile\`"}** Sass variable instead           |
-| ${"\`--ods-breakpoint-sm\`"} | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`$ods-breakpoint-tablet\`"}** Sass variable instead           |
-| ${"\`--ods-breakpoint-md\`"} | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`$ods-breakpoint-desktop\`"}** Sass variable instead          |
-| ${"\`--ods-breakpoint-lg\`"} | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`$ods-breakpoint-large-screen\`"}** Sass variable instead     |
-| ${"\`--ods-breakpoint-xl\`"} | <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge>        | Use **${"\`$ods-breakpoint-widescreen\`"}** Sass variable instead       |
+| ${"\`--ods-breakpoint-xs\`"} | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`$ods-breakpoint-mobile\`"}** Sass variable instead           |
+| ${"\`--ods-breakpoint-sm\`"} | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`$ods-breakpoint-tablet\`"}** Sass variable instead           |
+| ${"\`--ods-breakpoint-md\`"} | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`$ods-breakpoint-desktop\`"}** Sass variable instead          |
+| ${"\`--ods-breakpoint-lg\`"} | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`$ods-breakpoint-large-screen\`"}** Sass variable instead     |
+| ${"\`--ods-breakpoint-xl\`"} | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>        | Use **${"\`$ods-breakpoint-widescreen\`"}** Sass variable instead       |
 `}
 </Markdown>
 
 ## Typography tokens
-* <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge> All **typography tokens** (ex: **`--ods-typography-*`**) have been removed, including font sizes, line heights, font weights, letter spacings due to too much typography restriction.
-* <ods-badge size="sm" color="critical" icon="circle-xmark" label="Removed"></ods-badge> Global **font sizing ratio** (**`--ods-typo-size-ratio`**) which was applied to every spacing concept has been removed due to no use.
+* <ods-badge size="sm" color="critical" label="Removed"></ods-badge> All **typography tokens** (ex: **`--ods-typography-*`**) have been removed, including font sizes, line heights, font weights, letter spacings due to too much typography restriction.
+* <ods-badge size="sm" color="critical" label="Removed"></ods-badge> Global **font sizing ratio** (**`--ods-typo-size-ratio`**) which was applied to every spacing concept has been removed due to no use.
 
 ### Font family
 <Markdown>
   {`
 | Former token names         | Status                                                           | New token name                                                          |
 |------------------------    | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| ${"\`--ods-font-family\`"} | <ods-badge size="sm" icon="circle-info" label="Updated"></ods-badge>        | Use **${"\`--ods-font-family-default\`"}**                              |
+| ${"\`--ods-font-family\`"} | <ods-badge size="sm" label="Updated"></ods-badge>        | Use **${"\`--ods-font-family-default\`"}**                              |
 `}
 </Markdown>

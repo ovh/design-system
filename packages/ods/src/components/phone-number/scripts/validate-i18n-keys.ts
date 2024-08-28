@@ -1,3 +1,15 @@
+type ValidationError = {
+  emptyValues: string[],
+  extraCodes: string[],
+  fileName: string,
+  missingCodes: string[],
+}
+
+type FileRow = {
+  isoCode: string,
+  name: string,
+}
+
 const EXPECTED_ISO_CODES = [
   'ad','ae','af','ag','ai','al','am','ao','aq','ar','as','at','au','aw','ax',
   'az','ba','bb','bd','be','bf','bg','bh','bi','bj','bl','bm','bn','bo','br',
@@ -19,12 +31,12 @@ const EXPECTED_ISO_CODES = [
 const LOCALES = ['de', 'en', 'es', 'fr', 'it', 'nl', 'pl', 'pt'];
 
 (async function main() {
-  const errors = [];
+  const errors: ValidationError[] = [];
 
   try {
     await Promise.all(LOCALES.map(async (locale) => {
       const fileName = `countries-${locale}.ts`;
-      const fileRows = (await import(`../src/i18n/${fileName}`)).default;
+      const fileRows: FileRow[] = (await import(`../src/i18n/${fileName}`)).default;
       const fileIsoCodes = fileRows.map((row) => row.isoCode);
 
       const emptyValues = fileRows.filter((row) => {

@@ -108,15 +108,33 @@ const preview: Preview = {
     },
     options: {
       storySort: {
+        includeNames: true,
         order: [
-          'OVHcloud Design System',
-          ['Welcome', 'Get Started', 'What\'s new?',
-            ['What\'s new', 'Changelog', 'Migration guide'],
-            'Design and Style',
+          'OVHcloud Design System', [
+            'Welcome',
+            'Get Started',
+            'What\'s new?', [
+              'What\'s new',
+              'Changelog',
+              'Migration guide',
+            ],
+            'Design and Style', [
+              'Apply ODS Style',
+              'Style Customization',
+              '*',
+            ],
           ],
-          'ODS Components',
-          ['Gallery', 'Form elements'],
-          ['Actions', ['Documentation', 'Technical information', 'Migration From 17.x', 'Demo', '*']],
+          'ODS Components', [
+            'Gallery',
+            'Form elements',
+            '*', [
+              'Documentation',
+              'Technical information',
+              'Migration From 17.x',
+              'Demo',
+              '*',
+            ]
+          ],
         ],
       },
       showPanel: true,

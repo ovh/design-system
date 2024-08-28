@@ -1,7 +1,7 @@
 import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
 import { OdsLink } from '@ovhcloud/ods-components/react';
 import { navigate } from '@storybook/addon-links';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 enum ATOMIC_TYPE {
   atom = 'atom',
@@ -82,9 +82,8 @@ const IdentityCard = ({ aliases, atomicType, className, figmaLink, githubUrl, na
             {
               relatedComponents.length > 0 ?
               relatedComponents.map((relatedComponent, idx) => (
-                <>
-                  <OdsLink key={ idx }
-                           href="#"
+                <Fragment key={ idx }>
+                  <OdsLink href="#"
                            label={ relatedComponent.name }
                            onClick={ (e) => {
                              e.preventDefault();
@@ -92,7 +91,7 @@ const IdentityCard = ({ aliases, atomicType, className, figmaLink, githubUrl, na
                            }} />
 
                   { idx < (relatedComponents.length - 1) && <span>, </span> }
-                </>
+                </Fragment>
               )) : '-'
             }
           </td>

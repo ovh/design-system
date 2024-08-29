@@ -1,0 +1,7 @@
+import{j as e}from"./jsx-runtime-Dn0LW--f.js";import{u as s}from"./index-DeyDdHvX.js";import{M as i}from"./index-BM3JsZOq.js";import"./iframe-6_jBXMSq.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-B_J8iUie.js";import"./index-DX_4BEHg.js";import"./index-DrFu-skq.js";function n(t){const o={a:"a",code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",...s(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(i,{title:"OVHcloud Design System/What's new?/Migration guide/12.x to 13.x"}),`
+`,e.jsxs(o.h1,{id:"1213-to-1300-compare",children:[e.jsx(o.a,{href:"https://ovh.github.io/design-system/v12.1.3/?path=/story/ovhcloud-design-system-what-s-new-changelog--page",rel:"nofollow",children:"12.1.3"})," to ",e.jsx(o.a,{href:"https://ovh.github.io/design-system/v13.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page",rel:"nofollow",children:"13.0.0"})," (",e.jsx(o.a,{href:"https://github.com/ovh/design-system/compare/release/12.1...release/13.0",rel:"nofollow",children:"compare"}),")"]}),`
+`,e.jsx(o.h2,{id:"select-width",children:"Select width"}),`
+`,e.jsx(o.p,{children:"The Select component fixed width when non flex has been removed."}),`
+`,e.jsx(o.pre,{children:e.jsx(o.code,{className:"language-diff",children:`-  width: calc(var(--ods-size-stack-08) * 11)
+`})}),`
+`,e.jsx(o.p,{children:"Should you need any width, you will have to set it on your component."})]})}function x(t={}){const{wrapper:o}={...s(),...t.components};return o?e.jsx(o,{...t,children:e.jsx(n,{...t})}):n(t)}export{x as default};

@@ -1,0 +1,5 @@
+import{j as o}from"./jsx-runtime-3v6rTKkY.js";import{u as r}from"./index-B5y3xRNA.js";import{M as i}from"./index-sugWq352.js";import{F as m}from"./file-upload.stories-BtrCo1At.js";import"./iframe-D98u-D7f.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-B_J8iUie.js";import"./index-DX_4BEHg.js";import"./index-DrFu-skq.js";import"./lit-html-D-ZEPr28.js";import"./control-C1r2wu67.js";function n(e){const t={a:"a",h1:"h1",hr:"hr",p:"p",...r(),...e.components};return o.jsxs(o.Fragment,{children:[o.jsx(i,{of:m,name:"Migration From 17.x"}),`
+`,o.jsx(t.h1,{id:"fileupload---migrate-from-v17-to-v18",children:"FileUpload - migrate from v17 to v18"}),`
+`,o.jsx(t.hr,{}),`
+`,o.jsx(t.p,{children:"This component has been first released with the v18, there is no migration involved coming from v17.x."}),`
+`,o.jsxs(t.p,{children:["To learn how to use this component, please check the ",o.jsx(t.a,{href:"?path=/docs/ods-components-form-elements-file-upload--documentation",children:"documentation"}),"."]})]})}function M(e={}){const{wrapper:t}={...r(),...e.components};return t?o.jsx(t,{...e,children:o.jsx(n,{...e})}):n(e)}export{M as default};

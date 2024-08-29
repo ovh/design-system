@@ -1,0 +1,7 @@
+import{j as o}from"./jsx-runtime-Dn0LW--f.js";import{u as r}from"./index-DeyDdHvX.js";import{M as s,C as m}from"./index-BM3JsZOq.js";import{M as i}from"./popover.stories-BoIIbF9o.js";import"./iframe-6_jBXMSq.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-B_J8iUie.js";import"./index-DX_4BEHg.js";import"./index-DrFu-skq.js";import"./index-DryTTbHl.js";import"./lit-html-D-ZEPr28.js";import"./unsafe-html-HR6uCwaW.js";import"./control-C1r2wu67.js";function t(n){const e={a:"a",h1:"h1",hr:"hr",p:"p",strong:"strong",...r(),...n.components};return o.jsxs(o.Fragment,{children:[o.jsx(s,{title:"ODS Components/Menu"}),`
+`,o.jsx(e.h1,{id:"menu---migrate-from-v17-to-v18",children:"Menu - migrate from v17 to v18"}),`
+`,o.jsx(e.hr,{}),`
+`,o.jsxs(e.p,{children:["Menu has been removed from ODS components. ",o.jsx("ods-badge",{size:"sm",color:"critical",label:"Removed"})]}),`
+`,o.jsx(e.p,{children:"The same component can be achieved with ods-popover."}),`
+`,o.jsxs(e.p,{children:["Here is an example of the ",o.jsx(e.strong,{children:"Popover as Action Menu"}),": ",o.jsx(e.a,{href:"?path=/docs/ods-components-popover--documentation#popover-as-action-menu",children:"See Documentation"})]}),`
+`,o.jsx(m,{of:i,sourceState:"shown"})]})}function D(n={}){const{wrapper:e}={...r(),...n.components};return e?o.jsx(e,{...n,children:o.jsx(t,{...n})}):t(n)}export{D as default};

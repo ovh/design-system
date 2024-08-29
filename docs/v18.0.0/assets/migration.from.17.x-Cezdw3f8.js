@@ -1,0 +1,5 @@
+import{j as e}from"./jsx-runtime-Dn0LW--f.js";import{u as r}from"./index-DeyDdHvX.js";import{M as i}from"./index-BM3JsZOq.js";import{T as m}from"./timepicker.stories-Df14hw9A.js";import"./iframe-6_jBXMSq.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-B_J8iUie.js";import"./index-DX_4BEHg.js";import"./index-DrFu-skq.js";import"./lit-html-D-ZEPr28.js";import"./control-C1r2wu67.js";function n(t){const o={a:"a",h1:"h1",hr:"hr",p:"p",...r(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(i,{of:m,name:"Migration From 17.x"}),`
+`,e.jsx(o.h1,{id:"timepicker---migrate-from-v17-to-v18",children:"Timepicker - migrate from v17 to v18"}),`
+`,e.jsx(o.hr,{}),`
+`,e.jsx(o.p,{children:"This component has been first released with the v18, there is no migration involved coming from v17.x."}),`
+`,e.jsxs(o.p,{children:["To learn how to use this component, please check the ",e.jsx(o.a,{href:"?path=/docs/ods-components-form-elements-timepicker--documentation",children:"documentation"}),"."]})]})}function M(t={}){const{wrapper:o}={...r(),...t.components};return o?e.jsx(o,{...t,children:e.jsx(n,{...t})}):n(t)}export{M as default};

@@ -1,4 +1,4 @@
-import { copyToClipboard, getRandomHTMLId, isTargetInElement, submitFormOnEnter } from '../../src/utils/dom';
+import { copyToClipboard, getRandomHTMLId, isTargetInElement, setInternalsValidity, submitFormOnEnter } from '../../src/utils/dom';
 
 describe('utils dom', () => {
   beforeEach(jest.clearAllMocks);
@@ -84,6 +84,54 @@ describe('utils dom', () => {
       expect(isTargetInElement(mockEvent, mockElement)).toBe(true);
       expect(mockElement.contains).toHaveBeenCalledWith(mockEvent.target);
       expect(includeSpy).toHaveBeenCalledWith(mockElement);
+    });
+  });
+
+  describe('setInternalsValidity', () => {
+    const mockInternals = {
+      setValidity: jest.fn(),
+    } as unknown as ElementInternals;
+
+    it('should set the validity to empty if valid', () => {
+      const mockFormElement = {
+        validity: {
+          valid: true,
+        },
+      } as unknown as HTMLInputElement;
+
+      setInternalsValidity(mockFormElement, mockInternals);
+
+      expect(mockInternals.setValidity).toHaveBeenCalledTimes(1);
+      expect(mockInternals.setValidity).toHaveBeenCalledWith({});
+    });
+
+    it('should set the same validity flags as the form element if invalid', () => {
+      const mockValidityState = {
+        badInput: true,
+        customError: true,
+        patternMismatch: true,
+        rangeOverflow: true,
+        rangeUnderflow: true,
+        stepMismatch: true,
+        tooLong: true,
+        tooShort: true,
+        typeMismatch: true,
+        valueMissing: true,
+      };
+      const mockFormElement = {
+        validationMessage: 'dummy validation message',
+        validity: {
+          ...mockValidityState,
+          valid: false,
+        },
+      } as unknown as HTMLInputElement;
+
+      setInternalsValidity(mockFormElement, mockInternals);
+
+      expect(mockInternals.setValidity).toHaveBeenCalledTimes(Object.keys(mockValidityState).length);
+      Object.entries(mockValidityState).forEach(([key, value]) => {
+        expect(mockInternals.setValidity).toHaveBeenCalledWith({ [key]: value }, mockFormElement.validationMessage, mockFormElement);
+      });
     });
   });
 

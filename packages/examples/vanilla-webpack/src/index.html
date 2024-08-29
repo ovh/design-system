@@ -19,17 +19,14 @@
   </ods-modal>
 
   <form>
-    <ods-input name="text"></ods-input>
+    <ods-input is-required
+               name="text"
+               pattern="\d*">
+    </ods-input>
 
-    <ods-switch name="switch">
-      <ods-switch-item value="switch-item-1">
-        Item 1
-      </ods-switch-item>
-
-      <ods-switch-item value="switch-item-2">
-        Item 2
-      </ods-switch-item>
-    </ods-switch>
+    <ods-textarea is-required
+                  name="textarea">
+    </ods-textarea>
 
     <ods-button label="Submit"
                 type="submit">
@@ -37,17 +34,17 @@
   </form>
 
   <script>
-    const formElement = document.querySelector('form');
-
-    formElement.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(formElement)
-
-      for (const [key, value] of formData) {
-        console.log(`${key}: ${value}`)
-      }
-    });
+    // const formElement = document.querySelector('form');
+    //
+    // formElement.addEventListener('submit', (e) => {
+    //   e.preventDefault();
+    //
+    //   const formData = new FormData(formElement)
+    //
+    //   for (const [key, value] of formData) {
+    //     console.log(`${key}: ${value}`)
+    //   }
+    // });
   </script>
 </body>
 </html>

@@ -18,6 +18,7 @@ const VALUE_DEFAULT_VALUE = null;
   tag: 'ods-input',
 })
 export class OdsInput {
+  private observer?: MutationObserver;
   private inputEl?: HTMLInputElement;
   private observer?: MutationObserver;
   private shouldUpdateIsInvalidState: boolean = false;
@@ -123,7 +124,7 @@ export class OdsInput {
   }
 
   @Method()
-  public async toggleMask(): Promise<void> {
+  async toggleMask(): Promise<void> {
     this.isMasked = !this.isMasked;
     this.odsToggleMask.emit();
   }

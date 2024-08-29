@@ -66,7 +66,7 @@ describe('ods-input behaviour', () => {
         await setup('<ods-input name="ods-input"></ods-input>');
         const odsChangeSpy = await page.spyOnEvent('odsChange');
 
-        await part.type(typeValue);
+        await part.type(typeValue, { delay: 100 });
         await page.waitForChanges();
 
         expect(await el.getProperty('value')).toBe(typeValue);

@@ -14,6 +14,22 @@ function isTargetInElement(event: Event, element?: HTMLElement | null): boolean 
   return element.contains(event.target as Node) || event.composedPath().includes(element);
 }
 
+// TODO test other formElements
+function setInternalsValidity(formElement: HTMLInputElement | HTMLTextAreaElement, internals: ElementInternals): void {
+  const validState = formElement.validity;
+  // console.log('setInternalsValidity --> isValid: ', validState.valid)
+
+  if (!validState.valid) {
+    for (const state in validState) {
+      if (validState[state as keyof ValidityState]) {
+        internals.setValidity({ [state.toString()]: true }, formElement.validationMessage, formElement);
+      }
+    }
+  } else {
+    internals.setValidity({});
+  }
+}
+
 function submitFormOnEnter(event: KeyboardEvent, form: HTMLFormElement | null): void {
   if (event.key === 'Enter') {
     form?.requestSubmit();
@@ -24,5 +40,6 @@ export {
   copyToClipboard,
   getRandomHTMLId,
   isTargetInElement,
+  setInternalsValidity,
   submitFormOnEnter,
 };

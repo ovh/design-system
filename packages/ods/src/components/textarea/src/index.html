@@ -11,112 +11,136 @@
 </head>
 
 <body>
-  <p>Default</p>
-  <ods-textarea>
-  </ods-textarea>
+<!--  <p>Default</p>-->
+<!--  <ods-textarea>-->
+<!--  </ods-textarea>-->
 
-  <p>Cols</p>
-  <ods-textarea cols="4">
-  </ods-textarea>
+<!--  <p>Cols</p>-->
+<!--  <ods-textarea cols="4">-->
+<!--  </ods-textarea>-->
 
-  <p>Default value</p>
-  <ods-textarea default-value="Default value">
-  </ods-textarea>
+<!--  <p>Default value</p>-->
+<!--  <ods-textarea default-value="Default value">-->
+<!--  </ods-textarea>-->
 
-  <p>Has error</p>
-  <ods-textarea has-error>
-  </ods-textarea>
+<!--  <p>Has error</p>-->
+<!--  <ods-textarea has-error>-->
+<!--  </ods-textarea>-->
 
-  <p>Has Spellcheck</p>
-  <ods-textarea has-spellcheck="true" value="Saisissay un texte">
-  </ods-textarea>
+<!--  <p>Has Spellcheck</p>-->
+<!--  <ods-textarea has-spellcheck="true" value="Saisissay un texte">-->
+<!--  </ods-textarea>-->
 
-  <p>Is disabled</p>
-  <ods-textarea is-disabled>
-  </ods-textarea>
-  <ods-textarea is-disabled value="Disabled">
-  </ods-textarea>
+<!--  <p>Is disabled</p>-->
+<!--  <ods-textarea is-disabled>-->
+<!--  </ods-textarea>-->
+<!--  <ods-textarea is-disabled value="Disabled">-->
+<!--  </ods-textarea>-->
 
-  <p>Is readonly</p>
-  <ods-textarea is-readonly>
-  </ods-textarea>
-  <ods-textarea is-readonly value="Readonly">
-  </ods-textarea>
+<!--  <p>Is readonly</p>-->
+<!--  <ods-textarea is-readonly>-->
+<!--  </ods-textarea>-->
+<!--  <ods-textarea is-readonly value="Readonly">-->
+<!--  </ods-textarea>-->
 
-  <p>Is resizable</p>
-  <ods-textarea is-resizable>
-  </ods-textarea>
+<!--  <p>Is resizable</p>-->
+<!--  <ods-textarea is-resizable>-->
+<!--  </ods-textarea>-->
 
-  <p>Placeholder</p>
-  <ods-textarea placeholder="Placeholder">
-  </ods-textarea>
+<!--  <p>Placeholder</p>-->
+<!--  <ods-textarea placeholder="Placeholder">-->
+<!--  </ods-textarea>-->
 
-  <p>Rows</p>
-  <ods-textarea rows="4">
-  </ods-textarea>
+<!--  <p>Rows</p>-->
+<!--  <ods-textarea rows="4">-->
+<!--  </ods-textarea>-->
 
-  <p>Value</p>
-  <ods-textarea value="value">
-  </ods-textarea>
+<!--  <p>Value</p>-->
+<!--  <ods-textarea value="value">-->
+<!--  </ods-textarea>-->
 
-  <p>Custom CSS</p>
-  <ods-textarea class="my-textarea">
-  </ods-textarea>
-  <style>
-    .my-textarea::part(textarea) {
-      width: 500px;
-    }
-  </style>
+<!--  <p>Custom CSS</p>-->
+<!--  <ods-textarea class="my-textarea">-->
+<!--  </ods-textarea>-->
+<!--  <style>-->
+<!--    .my-textarea::part(textarea) {-->
+<!--      width: 500px;-->
+<!--    }-->
+<!--  </style>-->
 
   <p>Form</p>
   <form id="my-form">
-    <ods-textarea default-value="Default value" is-readonly
+    <ods-textarea default-value="Default value"
+                  id="textarea-form"
+                  is-required
                   name="my-textarea"
-                  value="Form textarea">
+                  value="">
     </ods-textarea>
 
-    <button id="form-reset-button" type="reset">Reset</button>
+    <button id="textarea-form-check-validity-button" type="button">Check validity</button>
+    <button id="textarea-form-clear-button" type="button">Clear</button>
+    <button id="textarea-form-reset-button" type="button">Reset</button>
+    <button type="reset">Global Form Reset</button>
     <button id="form-submit-button" type="submit">Submit</button>
   </form>
   <script>
     const form = document.querySelector('#my-form');
+    const textareaForm = document.querySelector('#textarea-form');
+    const textareaCheckValidityFormButton = document.querySelector('#textarea-form-check-validity-button');
+    const textareaClearFormButton = document.querySelector('#textarea-form-clear-button');
+    const textareaResetFormButton = document.querySelector('#textarea-form-reset-button');
     const submitFormButton = document.querySelector('#form-submit-button');
 
-    submitFormButton.addEventListener('click', () => {
+    // textareaForm.addEventListener('odsChange', (e) => { console.log('on change', e) });
+
+    textareaCheckValidityFormButton.addEventListener('click', async() => {
+      console.log('Check validity: ', await textareaForm.checkValidity());
+    });
+
+    textareaClearFormButton.addEventListener('click', async() => {
+      await textareaForm.clear();
+    });
+
+    textareaResetFormButton.addEventListener('click', async() => {
+      await textareaForm.reset();
+    });
+
+    submitFormButton.addEventListener('click', (e) => {
+      // e.preventDefault(); // comment to test native validation messages
       const formData = new FormData(form);
       console.log('formData', formData);
     });
   </script>
 
-  <p>Methods & Events</p>
-  <ods-textarea id="textarea-method" is-required>
-  </ods-textarea>
-  <button id="clear-button">clear</button>
-  <button id="reset-button">reset</button>
-  <button id="validity-button">get validity</button>
-  <script>
-    const textarea = document.querySelector('#textarea-method');
-    const clearButton = document.querySelector('#clear-button');
-    const resetButton = document.querySelector('#reset-button');
-    const getValidityButton = document.querySelector('#validity-button');
+<!--  <p>Methods & Events</p>-->
+<!--  <ods-textarea id="textarea-method" is-required>-->
+<!--  </ods-textarea>-->
+<!--  <button id="clear-button">clear</button>-->
+<!--  <button id="reset-button">reset</button>-->
+<!--  <button id="validity-button">get validity</button>-->
+<!--  <script>-->
+<!--    const textarea = document.querySelector('#textarea-method');-->
+<!--    const clearButton = document.querySelector('#clear-button');-->
+<!--    const resetButton = document.querySelector('#reset-button');-->
+<!--    const getValidityButton = document.querySelector('#validity-button');-->
 
-    clearButton.addEventListener('click', () => { textarea.clear() });
-    resetButton.addEventListener('click', () => { textarea.reset() });
-    getValidityButton.addEventListener('click', async() => {
-      const validity = await textarea.getValidity();
-      console.log(validity);
-    });
+<!--    clearButton.addEventListener('click', () => { textarea.clear() });-->
+<!--    resetButton.addEventListener('click', () => { textarea.reset() });-->
+<!--    getValidityButton.addEventListener('click', async() => {-->
+<!--      const validity = await textarea.getValidity();-->
+<!--      console.log(validity);-->
+<!--    });-->
 
-    // textarea.addEventListener('odsBlur', () => { console.log('on blur') });
-    // textarea.addEventListener('odsChange', (e) => { console.log('on change', e) });
-    // textarea.addEventListener('odsClear', () => { console.log('on clear') });
-    // textarea.addEventListener('odsFocus', () => { console.log('on focus') });
-    // textarea.addEventListener('odsReset', () => { console.log('on reset') });
-  </script>
+<!--    // textarea.addEventListener('odsBlur', () => { console.log('on blur') });-->
+<!--    // textarea.addEventListener('odsChange', (e) => { console.log('on change', e) });-->
+<!--    // textarea.addEventListener('odsClear', () => { console.log('on clear') });-->
+<!--    // textarea.addEventListener('odsFocus', () => { console.log('on focus') });-->
+<!--    // textarea.addEventListener('odsReset', () => { console.log('on reset') });-->
+<!--  </script>-->
 
-  <p>With label</p>
-  <label for="labelled-textarea">My textarea</label>
-  <ods-textarea id="labelled-textarea">
-  </ods-textarea>
+<!--  <p>With label</p>-->
+<!--  <label for="labelled-textarea">My textarea</label>-->
+<!--  <ods-textarea id="labelled-textarea">-->
+<!--  </ods-textarea>-->
 </body>
 </html>

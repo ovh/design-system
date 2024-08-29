@@ -1,7 +1,13 @@
 jest.mock('../../src/controller/ods-input');
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
+
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
 import { ODS_INPUT_TYPE, OdsInput } from '../../src';
+
+// @ts-ignore for test purposes
+global.MutationObserver = jest.fn(() => ({
+  disconnect: jest.fn(),
+  observe: jest.fn(),
+}));
 
 describe('ods-input rendering', () => {
   let page: SpecPage;
@@ -15,6 +21,15 @@ describe('ods-input rendering', () => {
 
     root = page.root;
   }
+
+  beforeAll(() => {
+    jest.spyOn(console, 'error').mockImplementation((msg) => {
+      // Hide the Stencil error about internals being not implemented on spec tests
+      if (!msg.startsWith('NOTE: Property validity was accessed on ElementInternals, but this property is not implemented.')) {
+        console.error(msg);
+      }
+    });
+  });
 
   describe('attributes', () => {
     describe('ariaLabel', () => {

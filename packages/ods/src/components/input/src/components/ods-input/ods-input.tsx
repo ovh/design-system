@@ -4,8 +4,10 @@ import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { ODS_INPUT_TYPE, type OdsInputType } from '../../constants/input-type';
-import { handleKeySpace, isPassword, setFormValue } from '../../controller/ods-input';
+import { handleKeySpace, isPassword, updateInternals } from '../../controller/ods-input';
 import { type OdsInputChangeEventDetail } from '../../interfaces/events';
+
+const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -16,6 +18,7 @@ import { type OdsInputChangeEventDetail } from '../../interfaces/events';
   tag: 'ods-input',
 })
 export class OdsInput {
+  private observer?: MutationObserver;
   private inputEl?: HTMLInputElement;
 
   @Element() el!: HTMLElement;
@@ -43,7 +46,7 @@ export class OdsInput {
   @Prop({ reflect: true }) public placeholder?: string;
   @Prop({ reflect: true }) public step?: number;
   @Prop({ reflect: true }) public type: OdsInputType = ODS_INPUT_TYPE.text;
-  @Prop({ mutable: true, reflect: true }) public value: string | number | null = null;
+  @Prop({ mutable: true, reflect: true }) public value: string | number | null = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsChange!: EventEmitter<OdsInputChangeEventDetail>;
@@ -53,27 +56,47 @@ export class OdsInput {
   @Event() odsToggleMask!: EventEmitter<void>;
 
   @Method()
-  public async clear(): Promise<void> {
+  async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
+  }
+
+  @Method()
+  async clear(): Promise<void> {
     this.odsClear.emit();
     this.value = null;
     this.inputEl?.focus();
   }
 
   @Method()
-  public async getValidity(): Promise<ValidityState | undefined> {
-    return this.inputEl?.validity;
+  async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
   }
 
   @Method()
-  public async reset(): Promise<void> {
+  async getValidity(): Promise<ValidityState> {
+    return this.internals.validity;
+  }
+
+  @Method()
+  async reportValidity(): Promise<boolean> {
+    return this.internals.reportValidity();
+  }
+
+  @Method()
+  async reset(): Promise<void> {
     this.odsReset.emit();
     this.value = this.defaultValue ?? null;
   }
 
   @Method()
-  public async toggleMask(): Promise<void> {
+  async toggleMask(): Promise<void> {
     this.isMasked = !this.isMasked;
     this.odsToggleMask.emit();
+  }
+
+  @Method()
+  async willValidate(): Promise<boolean> {
+    return this.internals.willValidate;
   }
 
   @Watch('isMasked')
@@ -81,24 +104,36 @@ export class OdsInput {
     this.isPassword = isPassword(this.isMasked);
   }
 
-  @Watch('value')
-  onValueChange(value: string | number | null, previousValue?: string | number | null): void {
-    setFormValue(this.internals, this.value);
+  componentWillLoad(): void {
+    this.onMaskedChange();
 
-    this.odsChange.emit({
-      name: this.name,
-      previousValue,
-      validity:  this.inputEl?.validity,
-      value: value ?? null,
+    this.observer = new MutationObserver((mutations: MutationRecord[]) => {
+      for (const mutation of mutations) {
+        if (mutation.attributeName === 'value') {
+          this.onValueChange(mutation.oldValue);
+        }
+      }
+    });
+
+    // We set the value before the observer starts to avoid calling the mutation callback twice
+    // as it will be called on componentDidLoad (when native element validity is up-to-date)
+    if (!this.value && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
+      this.value = this.defaultValue ?? null;
+    }
+  }
+
+  componentDidLoad(): void {
+    // Init the internals correctly as native element validity is now up-to-date
+    this.onValueChange();
+
+    this.observer?.observe(this.el, {
+      attributeFilter: ['value'],
+      attributeOldValue: true,
     });
   }
 
-  componentWillLoad(): void {
-    this.onMaskedChange();
-    if (!this.value && this.value !== 0) {
-      this.value = this.defaultValue ?? null;
-    }
-    setFormValue(this.internals, this.value);
+  disconnectedCallback(): void {
+    this.observer?.disconnect();
   }
 
   async formResetCallback(): Promise<void> {
@@ -112,12 +147,26 @@ export class OdsInput {
     this.value = this.inputEl?.value ?? null;
   }
 
+  private onValueChange(previousValue?: string | number | null): void {
+    updateInternals(this.internals, this.value, this.inputEl);
+
+    this.odsChange.emit({
+      name: this.name,
+      previousValue,
+      validity: this.internals.validity,
+      value: this.value,
+    });
+  }
+
   render(): FunctionalComponent {
     const hasClearableIcon = this.isClearable && !this.isLoading && !!this.value;
     const hasToggleMaskIcon = this.isPassword && !this.isLoading;
 
     return (
-      <Host class="ods-input">
+      <Host
+        class="ods-input"
+        disabled={ this.isDisabled }
+        readonly={ this.isReadonly }>
         <input
           aria-label={ this.ariaLabel }
           aria-labelledby={ this.ariaLabelledby }

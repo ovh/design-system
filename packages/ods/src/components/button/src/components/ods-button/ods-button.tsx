@@ -14,9 +14,9 @@ import { handleClick } from '../../controller/ods-button';
   tag: 'ods-button',
 })
 export class OdsButton {
-  @AttachInternals() internals!: ElementInternals;
-
   @Element() el!: HTMLStencilElement;
+
+  @AttachInternals() internals!: ElementInternals;
 
   /** @docType OdsButtonColor */
   @Prop({ reflect: true }) public color: OdsButtonColor = ODS_BUTTON_COLOR.primary;

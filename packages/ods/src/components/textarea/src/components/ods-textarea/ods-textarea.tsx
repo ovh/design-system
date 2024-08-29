@@ -1,6 +1,8 @@
-import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, Watch, h } from '@stencil/core';
-import { setFormValue } from '../../controller/ods-textarea';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, h } from '@stencil/core';
+import { updateInternals } from '../../controller/ods-textarea';
 import { type OdsTextareaChangeEventDetail } from '../../interfaces/events';
+
+const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -11,9 +13,15 @@ import { type OdsTextareaChangeEventDetail } from '../../interfaces/events';
   tag: 'ods-textarea',
 })
 export class OdsTextarea {
+  private observer?: MutationObserver;
   private textareaElement?: HTMLTextAreaElement;
 
+  @Element() el!: HTMLElement;
+
   @AttachInternals() private internals!: ElementInternals;
+
+  // TODO check how it behave regarding the hasError Prop
+  @State() isInvalid: boolean = false;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -28,13 +36,31 @@ export class OdsTextarea {
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public placeholder?: string;
   @Prop({ reflect: true }) public rows?: number;
-  @Prop({ mutable: true, reflect: true }) public value: string | null = null;
+  @Prop({ mutable: true, reflect: true }) public value: string | null = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsChange!: EventEmitter<OdsTextareaChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
+
+  // TODO do we offer the option to hide validation native message?
+  // @Listen('odsChange') // this works on element live changes
+  // onOdsChange(): void {
+  //   console.log('on ods change, internals valid: ', this.internals.validity.valid);
+  //   this.isInvalid = !this.internals.validity.valid;
+  // }
+  // @Listen('invalid') // this works but only on form submit request
+  // onInvalidEvent(): void {
+  //   // e.preventDefault() // does remove the validation message
+  //   // console.log('on invalid event, internals valid: ', this.internals.validity.valid);
+  //   this.isInvalid = true;
+  // }
+
+  @Method()
+  async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
+  }
 
   @Method()
   async clear(): Promise<void> {
@@ -44,8 +70,18 @@ export class OdsTextarea {
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
-    return this.textareaElement?.validity;
+  async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
+  }
+
+  @Method()
+  async getValidity(): Promise<ValidityState> {
+    return this.internals.validity;
+  }
+
+  @Method()
+  async reportValidity(): Promise<boolean> {
+    return this.internals.reportValidity();
   }
 
   @Method()
@@ -54,23 +90,39 @@ export class OdsTextarea {
     this.value = this.defaultValue ?? null;
   }
 
-  @Watch('value')
-  onValueChange(value: string | null, previousValue?: string): void {
-    setFormValue(this.internals, this.value);
-
-    this.odsChange.emit({
-      name: this.name,
-      previousValue,
-      validity:  this.textareaElement?.validity,
-      value: value,
-    });
+  @Method()
+  async willValidate(): Promise<boolean> {
+    return this.internals.willValidate;
   }
 
   componentWillLoad(): void {
-    if (!this.value) {
+    this.observer = new MutationObserver((mutations: MutationRecord[]) => {
+      for (const mutation of mutations) {
+        if (mutation.attributeName === 'value') {
+          this.onValueChange(mutation.oldValue);
+        }
+      }
+    });
+
+    // We set the value before the observer starts to avoid calling the mutation callback twice
+    // as it will be called on componentDidLoad (when native element validity is up-to-date)
+    if (!this.value && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
       this.value = this.defaultValue ?? null;
     }
-    setFormValue(this.internals, this.value);
+  }
+
+  componentDidLoad(): void {
+    // Init the internals correctly as native element validity is now up-to-date
+    this.onValueChange();
+
+    this.observer?.observe(this.el, {
+      attributeFilter: ['value'],
+      attributeOldValue: true,
+    });
+  }
+
+  disconnectedCallback(): void {
+    this.observer?.disconnect();
   }
 
   async formResetCallback(): Promise<void> {
@@ -92,16 +144,30 @@ export class OdsTextarea {
     this.value = this.textareaElement?.value ?? null;
   }
 
+  private onValueChange(previousValue?: string | null): void {
+    updateInternals(this.internals, this.value, this.textareaElement);
+
+    this.odsChange.emit({
+      name: this.name,
+      previousValue,
+      validity: this.internals.validity,
+      value: this.value,
+    });
+  }
+
   render(): FunctionalComponent {
     return (
-      <Host class="ods-textarea">
+      <Host
+        class="ods-textarea"
+        disabled={ this.isDisabled }
+        readonly={ this.isReadonly }>
         <textarea
           aria-label={ this.ariaLabel }
           aria-labelledby={ this.ariaLabelledby }
           aria-multiline={ true }
           class={{
             'ods-textarea__textarea': true,
-            'ods-textarea__textarea--error': this.hasError,
+            'ods-textarea__textarea--error': this.hasError || this.isInvalid,
             'ods-textarea__textarea--resizable': this.isResizable,
           }}
           cols={ this.cols }

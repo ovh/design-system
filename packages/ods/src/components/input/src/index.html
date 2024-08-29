@@ -11,122 +11,158 @@
 </head>
 
 <body>
-  <p>Default</p>
-  <ods-input value="Default" type="number" is-clearable>
-  </ods-input>
+<!--  <p>Default</p>-->
+<!--  <ods-input value="Default" type="number" is-clearable>-->
+<!--  </ods-input>-->
 
-  <p>Clearable</p>
-  <ods-input value="Clearable" is-clearable>
-  </ods-input>
+<!--  <p>Clearable</p>-->
+<!--  <ods-input value="Clearable" is-clearable>-->
+<!--  </ods-input>-->
 
-  <p>Disabled</p>
-  <ods-input value="Disabled" is-disabled is-clearable is-masked>
-  </ods-input>
-  <ods-input value="Disabled" is-disabled is-loading>
-  </ods-input>
+<!--  <p>Disabled</p>-->
+<!--  <ods-input value="Disabled" is-disabled is-clearable is-masked>-->
+<!--  </ods-input>-->
+<!--  <ods-input value="Disabled" is-disabled is-loading>-->
+<!--  </ods-input>-->
 
-  <p>Disabled & Error</p>
-  <ods-input has-error is-disabled>
-  </ods-input>
+<!--  <p>Disabled & Error</p>-->
+<!--  <ods-input has-error is-disabled>-->
+<!--  </ods-input>-->
 
-  <p>Error</p>
-  <ods-input has-error>
-  </ods-input>
+<!--  <p>Error</p>-->
+<!--  <ods-input has-error>-->
+<!--  </ods-input>-->
 
-  <p>Placeholder</p>
-  <ods-input placeholder="Placeholder">
-  </ods-input>
+<!--  <p>Placeholder</p>-->
+<!--  <ods-input placeholder="Placeholder">-->
+<!--  </ods-input>-->
 
-  <p>Loading</p>
-  <ods-input is-loading>
-  </ods-input>
+<!--  <p>Loading</p>-->
+<!--  <ods-input is-loading>-->
+<!--  </ods-input>-->
 
-  <p>Masked</p>
-  <ods-input is-masked>
-  </ods-input>
+<!--  <p>Masked</p>-->
+<!--  <ods-input is-masked>-->
+<!--  </ods-input>-->
 
-  <p>Masked & Clearable</p>
-  <ods-input is-masked is-clearable>
-  </ods-input>
+<!--  <p>Masked & Clearable</p>-->
+<!--  <ods-input is-masked is-clearable>-->
+<!--  </ods-input>-->
 
-  <p>Pattern</p>
-  <ods-input pattern="[^12]+">
-  </ods-input>
+<!--  <p>Pattern</p>-->
+<!--  <ods-input pattern="[^12]+">-->
+<!--  </ods-input>-->
 
-  <p>Readonly</p>
-  <ods-input value="Readonly" is-readonly>
-  </ods-input>
+<!--  <p>Readonly</p>-->
+<!--  <ods-input value="Readonly" is-readonly>-->
+<!--  </ods-input>-->
 
-  <p>Readonly Clearable Masked</p>
-  <ods-input value="Readonly" is-readonly is-clearable is-masked>
-  </ods-input>
+<!--  <p>Readonly Clearable Masked</p>-->
+<!--  <ods-input value="Readonly" is-readonly is-clearable is-masked>-->
+<!--  </ods-input>-->
 
-  <p>Pattern just numbers</p>
-  <ods-input id="my-input-pattern" pattern="\d*">
-  </ods-input>
+<!--  <p>Pattern just numbers</p>-->
+<!--  <ods-input id="my-input-pattern" pattern="\d*">-->
+<!--  </ods-input>-->
 
-  <p>Default value</p>
-  <ods-input default-value="Default">
-  </ods-input>
+<!--  <p>Default value</p>-->
+<!--  <ods-input default-value="Default">-->
+<!--  </ods-input>-->
 
-  <p>Custom CSS</p>
-  <ods-input class="my-input">
-  </ods-input>
-  <style>
-    .my-input::part(input) {
-      width: 100px;
-    }
-  </style>
+<!--  <p>Custom CSS</p>-->
+<!--  <ods-input class="my-input">-->
+<!--  </ods-input>-->
+<!--  <style>-->
+<!--    .my-input::part(input) {-->
+<!--      width: 100px;-->
+<!--    }-->
+<!--  </style>-->
 
   <p>Form</p>
-  <form id="input-form" target="_self">
-    <ods-input name="ods-input" value="On Vous Heberge ?" clearable></ods-input>
-    <input type="text" name="natif-input">
-    <button id="form-reset-button" type="reset">Reset</button>
-    <button id="form-submit-button" type="submit">Submit</button>
+  <form id="input-form">
+    <ods-input default-value="On Vous Heberge ?"
+               id="input-form-input"
+               is-required
+               name="ods-input"
+               value="">
+    </ods-input>
+
+<!--    <input type="text" name="natif-input" required>-->
+
+    <button id="input-form-check-validity-button" type="button">Check validity</button>
+    <button id="input-form-clear-button" type="button">Clear</button>
+    <button id="input-form-reset-button" type="button">Reset</button>
+    <button type="reset">Global Form Reset</button>
+    <button id="input-form-submit-button" type="submit">Submit</button>
   </form>
-
-  <p>Methods</p>
-  <ods-input id="input-methods">
-  </ods-input>
-  <button id="clear-button">clear</button>
-  <button id="reset-button">reset</button>
-  <button id="toggle-mask-button">toggleMask</button>
-  <button id="get-validity-button">getValidity</button>
-
   <script>
-    const inputPattern = document.getElementById('my-input-pattern');
+    const formElement = document.querySelector('#input-form');
+    const inputFormInput = document.querySelector('#input-form-input');
+    const inputCheckValidityFormButton = document.querySelector('#input-form-check-validity-button');
+    const inputClearFormButton = document.querySelector('#input-form-clear-button');
+    const inputResetFormButton = document.querySelector('#input-form-reset-button');
+    const inputSubmitFormButton = document.querySelector('#input-form-submit-button');
 
-    inputPattern.addEventListener('odsChange', (event) => {
-      inputPattern.hasError = !event.detail.validity.valid;
+    inputCheckValidityFormButton.addEventListener('click', async() => {
+      console.log('Check validity: ', await inputFormInput.checkValidity());
     });
-    const input = document.getElementById('input-methods');
-    const clearButton = document.getElementById('clear-button');
-    const resetButton = document.getElementById('reset-button');
-    const getValidityButton = document.getElementById('get-validity-button');
-    const toggleMaskButton = document.getElementById('toggle-mask-button');
 
-    clearButton.addEventListener('click', () => input.clear());
-    resetButton.addEventListener('click', () => input.reset());
-    getValidityButton.addEventListener('click', async () => {
-      const validity = await input.getValidity();
-      console.log('validity', validity);
+    inputClearFormButton.addEventListener('click', async() => {
+      await inputFormInput.clear();
     });
-    toggleMaskButton.addEventListener('click', () => input.toggleMask());
 
-    const form = document.getElementById('input-form');
-    const resetFormButton = document.getElementById('form-reset-button');
-    const submitFormButton = document.getElementById('form-submit-button');
+    inputResetFormButton.addEventListener('click', async() => {
+      await inputFormInput.reset();
+    });
 
-    submitFormButton.addEventListener('click', () => {
-      const formData = new FormData(form);
+    inputSubmitFormButton.addEventListener('click', (e) => {
+      e.preventDefault(); // comment to test native validation messages
+      const formData = new FormData(formElement);
       console.log('formData', formData);
     });
   </script>
 
-  <p>With label</p>
-  <label for="labelled-input">My input</label>
-  <ods-input id="labelled-input" type="text">
-  </ods-input>
+<!--  <p>Methods</p>-->
+<!--  <ods-input id="input-methods">-->
+<!--  </ods-input>-->
+<!--  <button id="clear-button">clear</button>-->
+<!--  <button id="reset-button">reset</button>-->
+<!--  <button id="toggle-mask-button">toggleMask</button>-->
+<!--  <button id="get-validity-button">getValidity</button>-->
+
+<!--  <script>-->
+<!--    const inputPattern = document.getElementById('my-input-pattern');-->
+
+<!--    inputPattern.addEventListener('odsChange', (event) => {-->
+<!--      inputPattern.hasError = !event.detail.validity.valid;-->
+<!--    });-->
+<!--    const input = document.getElementById('input-methods');-->
+<!--    const clearButton = document.getElementById('clear-button');-->
+<!--    const resetButton = document.getElementById('reset-button');-->
+<!--    const getValidityButton = document.getElementById('get-validity-button');-->
+<!--    const toggleMaskButton = document.getElementById('toggle-mask-button');-->
+
+<!--    clearButton.addEventListener('click', () => input.clear());-->
+<!--    resetButton.addEventListener('click', () => input.reset());-->
+<!--    getValidityButton.addEventListener('click', async () => {-->
+<!--      const validity = await input.getValidity();-->
+<!--      console.log('validity', validity);-->
+<!--    });-->
+<!--    toggleMaskButton.addEventListener('click', () => input.toggleMask());-->
+
+<!--    const form = document.getElementById('input-form');-->
+<!--    const resetFormButton = document.getElementById('form-reset-button');-->
+<!--    const submitFormButton = document.getElementById('form-submit-button');-->
+
+<!--    submitFormButton.addEventListener('click', () => {-->
+<!--      const formData = new FormData(form);-->
+<!--      console.log('formData', formData);-->
+<!--    });-->
+<!--  </script>-->
+
+<!--  <p>With label</p>-->
+<!--  <label for="labelled-input">My input</label>-->
+<!--  <ods-input id="labelled-input" type="text">-->
+<!--  </ods-input>-->
 </body>
 </html>

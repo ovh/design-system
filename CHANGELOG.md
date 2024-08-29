@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.0.0](https://ovh.github.io/design-system/v18.0.0/?path=/docs/design-system-changelog--page) (2024-08-29)
+[compare](https://github.com/ovh/design-system/compare/v18.0.0-alpha.1...v18.0.0)
+
+### Features
+
+* **build:** add gh-pages script ([c5e9d6f](https://github.com/ovh/design-system/commit/c5e9d6f88f60d21373c5ac37d263cd00654a9469))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

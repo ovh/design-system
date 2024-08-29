@@ -1,5 +1,4 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('ods-skeleton rendering', () => {
   let el: E2EElement;
@@ -23,6 +22,7 @@ describe('ods-skeleton rendering', () => {
   it('should render the web component', async() => {
     await setup('<ods-skeleton></ods-skeleton>');
     const partStyle = await part.getComputedStyle();
+
     expect(el.shadowRoot).not.toBeNull();
     expect(partStyle.getPropertyValue('height')).toBeDefined();
     expect(partStyle.getPropertyValue('width')).toBeDefined();
@@ -31,9 +31,9 @@ describe('ods-skeleton rendering', () => {
   describe('part', () => {
     it('should render with custom style applied', async() => {
       const customHeight = 200;
-
       await setup('<ods-skeleton>some text</ods-skeleton>', `ods-skeleton::part(skeleton) { height: ${customHeight}px }`);
       const partStyle = await part.getComputedStyle();
+
       expect(parseInt(partStyle.getPropertyValue('height'), 10)).toBe(customHeight);
     });
   });

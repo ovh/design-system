@@ -1,3 +1,5 @@
+import { setInternalsValidity } from '../../../../utils/dom';
+
 async function handleKeySpace(event: KeyboardEvent, isDisabled: boolean, callback: () => Promise<void>): Promise<void> {
   event.preventDefault();
   if(event.key === ' ' && !isDisabled) {
@@ -9,12 +11,16 @@ function isPassword(isMasked?: boolean): boolean {
   return isMasked !== undefined;
 }
 
-function setFormValue(internals: ElementInternals, value: number | string | null): void {
+function updateInternals(internals: ElementInternals, value: number | string | null, inputEl?: HTMLInputElement): void {
   internals.setFormValue(value?.toString() ?? '');
+
+  if (inputEl) {
+    setInternalsValidity(inputEl, internals);
+  }
 }
 
 export {
   handleKeySpace,
   isPassword,
-  setFormValue,
+  updateInternals,
 };

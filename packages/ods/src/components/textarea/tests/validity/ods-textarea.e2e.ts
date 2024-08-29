@@ -248,7 +248,6 @@ describe('ods-textarea validity', () => {
     describe('willValidate', () => {
       it('should return true if element is submittable', async() => {
         await setup('<ods-textarea></ods-textarea>');
-
         expect(await el.callMethod('willValidate')).toBe(true);
       });
 

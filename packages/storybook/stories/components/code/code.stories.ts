@@ -32,14 +32,14 @@ export const Demo: StoryObj = {
   }),
   args: {
     canCopy: false,
-    content: 'import { OsdsText } from \'@ovhcloud/ods-components/react\';'
+    content: 'import { OdsText } from \'@ovhcloud/ods-components/react\';'
   },
 };
 
 export const CanCopy: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-code can-copy>import { OsdsText } from '@ovhcloud/ods-components/react';
+<ods-code can-copy>import { OdsText } from '@ovhcloud/ods-components/react';
 </ods-code>
   `,
 };
@@ -47,7 +47,7 @@ export const CanCopy: StoryObj = {
 export const CustomCSS: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-code class="my-code">import { OsdsText } from '@ovhcloud/ods-components/react';
+<ods-code class="my-code">import { OdsText } from '@ovhcloud/ods-components/react';
 </ods-code>
 <style>
   .my-code {
@@ -64,7 +64,7 @@ export const Overview: StoryObj = {
     layout: 'centered',
   },
   render: () => html`
-    <ods-code can-copy>import { OsdsText } from '@ovhcloud/ods-components/react';
+    <ods-code can-copy>import { OdsText } from '@ovhcloud/ods-components/react';
     </ods-code>
   `,
 };
@@ -72,7 +72,7 @@ export const Overview: StoryObj = {
 export const Default: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-code>import { OsdsText } from '@ovhcloud/ods-components/react';
+<ods-code>import { OdsText } from '@ovhcloud/ods-components/react';
 </ods-code>
   `,
 };

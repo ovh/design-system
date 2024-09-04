@@ -2,6 +2,7 @@
 
 const fs = require('fs').promises;
 const fetch = require('node-fetch');
+const currentVersion = require('../package.json').version;
 
 const EXCLUDED_VERSIONS = ['16.0.0'];
 
@@ -17,7 +18,7 @@ async function getVersions() {
       .filter((version) => EXCLUDED_VERSIONS.indexOf(version) < 0)
       .sort()
       .reverse()
-      .filter((version, idx) => idx === 0 || !/-alpha\.\d+$/gi.test(version));
+      .filter((version) => version === currentVersion || !/-alpha\.\d+$/gi.test(version));
   } catch(error) {
     console.error('Something went wrong while fetching release version on npm', error);
   }

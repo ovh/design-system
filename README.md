@@ -7,16 +7,14 @@
 
 ### A collection of assets and guidelines for building consistent user experiences across OVHCloud products.
 
-[![NPM version][npm-image]][npm-url] [![NPM downloads][download-image]][download-url] [![Licence][licence-image]][licence-url] 
+[![NPM version][npm-image]][npm-url] [![License](https://img.shields.io/badge/Licence-Apache%202.0-blue.svg)](./LICENSE.md) [![Last commit][last-commit-image]][last-commit-url]\
+[![StencilJS][stenciljs-image]][stenciljs-url] [![TypeScript][typescript-image]][typescript-url] [![Sass][sass-image]][sass-url]\
+[![Storybook][storybook-image]][storybook-url] [![Jest][jest-image]][jest-url] [![Puppeteer][puppeteer-image]][puppeteer-url]
 
-[![StencilJS][stenciljs-image]][stenciljs-url] [![TypeScript][typescript-image]][typescript-url] [![Sass][sass-image]][sass-url] [![Storybook][storybook-image]][storybook-url] [![Jest][jest-image]][jest-url] [![Puppeteer][puppeteer-image]][puppeteer-url]
-
-[npm-image]: https://www.npmjs.com/package/@ovhcloud/ods-components
+[npm-image]: https://img.shields.io/badge/-NPM-A00709?logo=npm&logoColor=white
 [npm-url]: https://www.npmjs.com/package/@ovhcloud/ods-components
-[download-image]: https://img.shields.io/npm/dm/@ovhcloud/ods-core.svg?style=flat
-[download-url]: https://www.npmjs.com/package/@ovhcloud/ods-core
-[licence-image]: https://img.shields.io/github/license/ovh/design-system
-[licence-url]: LICENSE.md
+[last-commit-image]: https://img.shields.io/github/last-commit/ovh/design-system
+[last-commit-url]: https://github.com/ovh/design-system/commits
 [stenciljs-image]: https://img.shields.io/badge/-StencilJS-000?logo=webcomponents.org&logoColor=white
 [stenciljs-url]: https://stenciljs.com/
 [typescript-image]: https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white
@@ -35,60 +33,23 @@
 ## Quick links
 
 * [**Storybook**](https://ovh.github.io/design-system/latest/)
-* [**What's new**](https://ovh.github.io/design-system/latest/?path=/story/ovhcloud-design-system-what-s-new-what-s-new--page)
-* [**Changelog**](https://ovh.github.io/design-system/latest/?path=/story/ovhcloud-design-system-what-s-new-changelog--page)
+* [**What's new**](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-what-s-new--docs)
+* [**Changelog**](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-changelog--docs)
 
-### Requirements (only for contributing)
-
-* [**Node.js**](https://nodejs.org/en/) with version ">= 18.17"
-* [**Yarn**](https://yarnpkg.com/) with version ">= 2.4"
-
-## Installation
-
-All the OVHCloud Design System packages are available on [**NPM**](https://www.npmjs.com/).
-
-```sh
-yarn add @ovhcloud/ods-components @ovhcloud/ods-themes
-```
-or
-```sh
-npm install --save @ovhcloud/ods-components @ovhcloud/ods-themes
-```
-
-## Usage
-
-Components can be imported using one of:
-```typescript
-import { Ods<Component> } from '@ovhcloud/ods-components>'
-import { Ods<Component> } from '@ovhcloud/ods-components/react'
-import { Ods<Component> } from '@ovhcloud/ods-components/vue'
-```
-
-Then, in your view, you can start using ODS components. For instance:
-```html
-<ods-button label="My Button">
-</ods-button>
-```
-
-For more detail, see our global [Get Started](https://ovh.github.io/design-system/latest/?path=/story/ovhcloud-design-system-get-started--page) guide
-
-## Contribute
-You've developed a new cool feature? Fixed an annoying bug? We'd be happy to hear from you!
-
-Please read [Get Started](https://ovh.github.io/design-system/latest/?path=/story/contributing-get-started--page) guide for contributing and [CONTRIBUTING.md](https://github.com/ovh/design-system/blob/master/CONTRIBUTING.md) 😃
+## Installation & Usage
+Feel free to check out the [Get Started](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-get-started--docs) guide which describes everything you need to use ODS in your project.
 
 ## Migration
-Please read [Migration pages](https://ovh.github.io/design-system/latest/?path=/story/ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x--page) to help you to manage the migration guides between each version of ODS.
+Please read [Migration pages](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x--docs) to help you to manage the migration guides between each version of ODS.
 
 # Related links
-* Contribute: [https://github.com/ovh/design-system/blob/master/CONTRIBUTING.md](https://github.com/ovh/design-system/blob/master/CONTRIBUTING.md)
-* Migrate from one version to another: [https://github.com/ovh/design-system/blob/master/MIGRATION.md](https://github.com/ovh/design-system/blob/master/MIGRATION.md)
-* Troubleshoot dev issues: [https://github.com/ovh/design-system/blob/master/TROUBLESHOOTING.md](https://github.com/ovh/design-system/blob/master/TROUBLESHOOTING.md)
+* Migrate from one version to another: [https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x--docs](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x--docs)
+* Troubleshoot dev issues: [https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-f-a-q--docs](https://ovh.github.io/design-system/latest/?path=/docs/ovhcloud-design-system-f-a-q--docs)
 * Report bugs: [https://github.com/ovh/design-system/issues](https://github.com/ovh/design-system/issues)
-* Get latest version: [https://github.com/ovh/ods](https://github.com/ovh/ods)
+* Get latest version: [https://github.com/ovh/design-system](https://github.com/ovh/design-system)
 
 # License
-Copyright 2023 OVH SAS
+Copyright 2024 OVH SAS
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

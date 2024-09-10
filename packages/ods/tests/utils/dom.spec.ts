@@ -1,4 +1,4 @@
-import { copyToClipboard, getRandomHTMLId, isTargetInElement, setInternalsValidity, submitFormOnEnter } from '../../src/utils/dom';
+import { copyToClipboard, getRandomHTMLId, isTargetInElement, setInternalsValidityFromHtmlElement, setInternalsValidityFromOdsComponent, submitFormOnEnter } from '../../src/utils/dom';
 
 describe('utils dom', () => {
   beforeEach(jest.clearAllMocks);
@@ -87,7 +87,7 @@ describe('utils dom', () => {
     });
   });
 
-  describe('setInternalsValidity', () => {
+  describe('setInternalsValidityFromHtmlElement', () => {
     const mockInternals = {
       setValidity: jest.fn(),
     } as unknown as ElementInternals;
@@ -99,7 +99,7 @@ describe('utils dom', () => {
         },
       } as unknown as HTMLInputElement;
 
-      setInternalsValidity(mockFormElement, mockInternals);
+      setInternalsValidityFromHtmlElement(mockFormElement, mockInternals);
 
       expect(mockInternals.setValidity).toHaveBeenCalledTimes(1);
       expect(mockInternals.setValidity).toHaveBeenCalledWith({});
@@ -126,11 +126,65 @@ describe('utils dom', () => {
         },
       } as unknown as HTMLInputElement;
 
-      setInternalsValidity(mockFormElement, mockInternals);
+      setInternalsValidityFromHtmlElement(mockFormElement, mockInternals);
 
       expect(mockInternals.setValidity).toHaveBeenCalledTimes(Object.keys(mockValidityState).length);
       Object.entries(mockValidityState).forEach(([key, value]) => {
         expect(mockInternals.setValidity).toHaveBeenCalledWith({ [key]: value }, mockFormElement.validationMessage, mockFormElement);
+      });
+    });
+  });
+
+  describe('setInternalsValidityFromOdsComponent', () => {
+    const mockInternals = {
+      setValidity: jest.fn(),
+    } as unknown as ElementInternals;
+
+    it('should set the validity to empty if valid', async() => {
+      const mockOdsFormElement = {
+        getValidationMessage: jest.fn().mockImplementation(() => Promise.resolve('')),
+        getValidity: jest.fn().mockImplementation(() => Promise.resolve({ valid: true })),
+      } as unknown as HTMLElement & {
+        getValidationMessage: () => Promise<string>,
+        getValidity: () => Promise<ValidityState>,
+      };
+
+      await setInternalsValidityFromOdsComponent(mockOdsFormElement, mockInternals);
+
+      expect(mockInternals.setValidity).toHaveBeenCalledTimes(1);
+      expect(mockInternals.setValidity).toHaveBeenCalledWith({});
+    });
+
+    it('should set the same validity flags as the form element if invalid', async() => {
+      const dummyValidationMessage = 'dummy validation message';
+      const mockValidityState = {
+        badInput: true,
+        customError: true,
+        patternMismatch: true,
+        rangeOverflow: true,
+        rangeUnderflow: true,
+        stepMismatch: true,
+        tooLong: true,
+        tooShort: true,
+        typeMismatch: true,
+        valueMissing: true,
+      };
+      const mockOdsFormElement = {
+        getValidationMessage: jest.fn().mockImplementation(() => Promise.resolve(dummyValidationMessage)),
+        getValidity: jest.fn().mockImplementation(() => Promise.resolve({
+          ...mockValidityState,
+          valid: false,
+        })),
+      } as unknown as HTMLElement & {
+        getValidationMessage: () => Promise<string>,
+        getValidity: () => Promise<ValidityState>,
+      };
+
+      await setInternalsValidityFromOdsComponent(mockOdsFormElement, mockInternals);
+
+      expect(mockInternals.setValidity).toHaveBeenCalledTimes(Object.keys(mockValidityState).length);
+      Object.entries(mockValidityState).forEach(([key, value]) => {
+        expect(mockInternals.setValidity).toHaveBeenCalledWith({ [key]: value }, dummyValidationMessage, mockOdsFormElement);
       });
     });
   });

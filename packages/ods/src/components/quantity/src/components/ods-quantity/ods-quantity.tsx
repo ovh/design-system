@@ -3,8 +3,10 @@ import { submitFormOnEnter } from '../../../../../utils/dom';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_INPUT_TYPE, type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
-import { isMinusButtonDisabled, isPlusButtonDisabled, setFormValue } from '../../controller/ods-quantity';
+import { isMinusButtonDisabled, isPlusButtonDisabled, updateInternals } from '../../controller/ods-quantity';
 import { type OdsQuantityChangeEventDetail } from '../../interfaces/events';
+
+const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -15,7 +17,7 @@ import { type OdsQuantityChangeEventDetail } from '../../interfaces/events';
   tag: 'ods-quantity',
 })
 export class OdsQuantity {
-  private odsInput?: OdsInput;
+  private odsInput?: HTMLElement & OdsInput;
 
   @AttachInternals() internals!: ElementInternals;
 
@@ -31,7 +33,7 @@ export class OdsQuantity {
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public placeholder?: string;
   @Prop({ reflect: true }) public step?: number;
-  @Prop({ mutable: true, reflect: true }) public value: number | null = null;
+  @Prop({ mutable: true, reflect: true }) public value: number | null = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsChange!: EventEmitter<OdsQuantityChangeEventDetail>;
@@ -40,25 +42,39 @@ export class OdsQuantity {
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
-  public async clear(): Promise<void> {
+  async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
+  }
+
+  @Method()
+  async clear(): Promise<void> {
     return this.odsInput?.clear();
   }
 
   @Method()
-  public async getValidity(): Promise<ValidityState | undefined> {
+  async getValidity(): Promise<ValidityState | undefined> {
     return this.odsInput?.getValidity();
   }
 
   @Method()
-  public async reset(): Promise<void> {
+  async reset(): Promise<void> {
     return this.odsInput?.reset();
   }
 
   componentWillLoad(): void {
-    if (!this.value && this.value !== 0) {
+    // if (!this.value && this.value !== 0) {
+    //   this.value = this.defaultValue ?? null;
+    // }
+    // setFormValue(this.internals, this.value);
+
+    if (!this.value && this.value !== 0 && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
       this.value = this.defaultValue ?? null;
     }
-    setFormValue(this.internals, this.value);
+  }
+
+  async componentDidLoad(): Promise<void> {
+    // const validityState = await this.odsInput?.getValidity()
+    await updateInternals(this.internals, this.value, this.odsInput);
   }
 
   async formResetCallback(): Promise<void> {
@@ -81,13 +97,14 @@ export class OdsQuantity {
     this.value = this.value !== null ? Number(this.value) + step : 0;
   }
 
-  private onOdsChange(event: OdsInputChangeEvent): void {
+  private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
     if (event.detail.value === null) {
       this.value = null;
     } else {
       this.value = Number(event.detail.value) ?? null;
     }
-    setFormValue(this.internals, this.value);
+    // setFormValue(this.internals, this.value);
+    await updateInternals(this.internals, this.value, this.odsInput);
   }
 
   render(): FunctionalComponent {
@@ -121,7 +138,7 @@ export class OdsQuantity {
           min={ this.min }
           name={ this.name }
           placeholder={ this.placeholder }
-          ref={ (el?: unknown) => this.odsInput = el as OdsInput }
+          ref={ (el?: unknown) => this.odsInput = el as HTMLElement & OdsInput }
           step={ this.step }
           type={ ODS_INPUT_TYPE.number }
           value={ this.value }>

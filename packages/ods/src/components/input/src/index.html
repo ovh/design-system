@@ -80,43 +80,48 @@
 
   <p>Form</p>
   <form id="input-form">
-    <ods-input default-value="On Vous Heberge ?"
-               id="input-form-input"
+    <label for="input-form-first-name">First name:</label>
+    <ods-input id="input-form-first-name"
                is-required
-               name="ods-input"
-               value="">
+               name="firstName">
+    </ods-input>
+
+    <label for="input-form-last-name">Last name:</label>
+    <ods-input id="input-form-last-name"
+               is-required
+               name="lastName">
     </ods-input>
 
 <!--    <input type="text" name="natif-input" required>-->
 
-    <button id="input-form-check-validity-button" type="button">Check validity</button>
-    <button id="input-form-clear-button" type="button">Clear</button>
-    <button id="input-form-reset-button" type="button">Reset</button>
-    <button type="reset">Global Form Reset</button>
+<!--    <button id="input-form-check-validity-button" type="button">Check validity</button>-->
+<!--    <button id="input-form-clear-button" type="button">Clear</button>-->
+<!--    <button id="input-form-reset-button" type="button">Reset</button>-->
+<!--    <button type="reset">Global Form Reset</button>-->
     <button id="input-form-submit-button" type="submit">Submit</button>
   </form>
   <script>
     const formElement = document.querySelector('#input-form');
-    const inputFormInput = document.querySelector('#input-form-input');
-    const inputCheckValidityFormButton = document.querySelector('#input-form-check-validity-button');
-    const inputClearFormButton = document.querySelector('#input-form-clear-button');
-    const inputResetFormButton = document.querySelector('#input-form-reset-button');
+    // const inputFormInput = document.querySelector('#input-form-input');
+    // const inputCheckValidityFormButton = document.querySelector('#input-form-check-validity-button');
+    // const inputClearFormButton = document.querySelector('#input-form-clear-button');
+    // const inputResetFormButton = document.querySelector('#input-form-reset-button');
     const inputSubmitFormButton = document.querySelector('#input-form-submit-button');
 
-    inputCheckValidityFormButton.addEventListener('click', async() => {
-      console.log('Check validity: ', await inputFormInput.checkValidity());
-    });
-
-    inputClearFormButton.addEventListener('click', async() => {
-      await inputFormInput.clear();
-    });
-
-    inputResetFormButton.addEventListener('click', async() => {
-      await inputFormInput.reset();
-    });
+    // inputCheckValidityFormButton.addEventListener('click', async() => {
+    //   console.log('Check validity: ', await inputFormInput.checkValidity());
+    // });
+    //
+    // inputClearFormButton.addEventListener('click', async() => {
+    //   await inputFormInput.clear();
+    // });
+    //
+    // inputResetFormButton.addEventListener('click', async() => {
+    //   await inputFormInput.reset();
+    // });
 
     inputSubmitFormButton.addEventListener('click', (e) => {
-      e.preventDefault(); // comment to test native validation messages
+      // e.preventDefault(); // comment to test native validation messages
       const formData = new FormData(formElement);
       console.log('formData', formData);
     });

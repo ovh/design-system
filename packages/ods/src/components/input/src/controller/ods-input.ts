@@ -1,4 +1,4 @@
-import { setInternalsValidity } from '../../../../utils/dom';
+import { setInternalsValidityFromHtmlElement } from '../../../../utils/dom';
 
 async function handleKeySpace(event: KeyboardEvent, isDisabled: boolean, callback: () => Promise<void>): Promise<void> {
   event.preventDefault();
@@ -15,7 +15,7 @@ function updateInternals(internals: ElementInternals, value: number | string | n
   internals.setFormValue(value?.toString() ?? '');
 
   if (inputEl) {
-    setInternalsValidity(inputEl, internals);
+    setInternalsValidityFromHtmlElement(inputEl, internals);
   }
 }
 

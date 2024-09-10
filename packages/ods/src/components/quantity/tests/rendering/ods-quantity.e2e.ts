@@ -1,5 +1,4 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
 import { ODS_BUTTON_COLOR } from '../../../button/src';
 
 describe('ods-quantity rendering', () => {

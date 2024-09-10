@@ -36,4 +36,32 @@ describe('ods-textarea rendering', () => {
       expect(tagStyle.getPropertyValue('background-color')).toBe('rgb(255, 0, 0)');
     });
   });
+
+  describe('error state', () => {
+    it('should render in error on form submit, before any changes, if invalid', async() => {
+      await setup('<form><ods-textarea is-required></ods-textarea></form>');
+
+      await page.evaluate(() => {
+        document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+      });
+
+      // TODO add expect error style to be applied
+      expect(false).toBe(true);
+    });
+
+    it('should toggle the error state on value change', async() => {
+      // TODO add tests <ods-textarea is-required>
+      //  start empty -> type text -> expect no error style
+      //  -> erase text -> expect error style
+
+      expect(false).toBe(true);
+    });
+
+    it('should enforce the error state if has-error is set even on valid textarea', async() => {
+      // TODO add tests <ods-textarea is-required has-error value="dummy">
+
+      // TODO add expect error style to be applied
+      expect(false).toBe(true);
+    });
+  });
 });

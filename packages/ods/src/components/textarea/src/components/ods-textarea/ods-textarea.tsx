@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, h } from '@stencil/core';
 import { updateInternals } from '../../controller/ods-textarea';
 import { type OdsTextareaChangeEventDetail } from '../../interfaces/events';
 
@@ -15,12 +15,12 @@ const VALUE_DEFAULT_VALUE = null;
 export class OdsTextarea {
   private observer?: MutationObserver;
   private textareaElement?: HTMLTextAreaElement;
+  private isPristine: boolean = true;
 
   @Element() el!: HTMLElement;
 
   @AttachInternals() private internals!: ElementInternals;
 
-  // TODO check how it behave regarding the hasError Prop
   @State() isInvalid: boolean = false;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
@@ -44,18 +44,22 @@ export class OdsTextarea {
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
 
-  // TODO do we offer the option to hide validation native message?
-  // @Listen('odsChange') // this works on element live changes
-  // onOdsChange(): void {
-  //   console.log('on ods change, internals valid: ', this.internals.validity.valid);
-  //   this.isInvalid = !this.internals.validity.valid;
-  // }
-  // @Listen('invalid') // this works but only on form submit request
-  // onInvalidEvent(): void {
-  //   // e.preventDefault() // does remove the validation message
-  //   // console.log('on invalid event, internals valid: ', this.internals.validity.valid);
-  //   this.isInvalid = true;
-  // }
+  @Listen('invalid')
+  onInvalidEvent(event: Event): void {
+    // Remove the native validation message popup
+    event.preventDefault();
+
+    // Enforce the state here as we may still be in pristine state (if the form is submitted before any changes occurs)
+    this.isInvalid = true;
+  }
+
+  @Listen('odsChange')
+  onOdsChange(): void {
+    if (!this.isPristine) {
+      this.isInvalid = !this.internals.validity.valid;
+    }
+    this.isPristine = false;
+  }
 
   @Method()
   async checkValidity(): Promise<boolean> {

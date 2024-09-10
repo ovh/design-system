@@ -117,7 +117,7 @@ export class OdsInput {
 
     // We set the value before the observer starts to avoid calling the mutation callback twice
     // as it will be called on componentDidLoad (when native element validity is up-to-date)
-    if (!this.value && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
+    if (!this.value && this.value !== 0 && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
       this.value = this.defaultValue ?? null;
     }
   }
@@ -152,7 +152,7 @@ export class OdsInput {
 
     this.odsChange.emit({
       name: this.name,
-      previousValue,
+      previousValue, // TODO always string if coming from mutation oldValue => need to parse if type number
       validity: this.internals.validity,
       value: this.value,
     });

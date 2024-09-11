@@ -15,6 +15,7 @@ $ods-input-placeholder-color: var(--ods-color-form-element-text-placeholder-defa
   width: 100%;
   height: $ods-input-input-height;
   color: var(--ods-color-text);
+  font-family: inherit;
   font-size: 1rem;
 
   &::placeholder {

@@ -12,7 +12,6 @@
 
     height: auto;
     resize: none;
-    font-family: inherit;
 
     &:not(#{$textarea}--error, :disabled) {
       &:focus {

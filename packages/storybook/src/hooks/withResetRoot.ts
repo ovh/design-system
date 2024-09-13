@@ -9,7 +9,7 @@ const withResetRoot = (storyFn: any) => {
   resetRoot();
   return storyFn();
 };
+
 export {
-  resetRoot,
   withResetRoot,
 };

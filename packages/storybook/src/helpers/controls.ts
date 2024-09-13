@@ -1,9 +1,4 @@
-enum CONTROL_CATEGORY {
-  accessibility = 'Accessibility',
-  design = 'Design',
-  general = 'General',
-  slot = 'Slot',
-}
+import { CONTROL_CATEGORY } from '../constants/controls';
 
 const orderedControlCategories = [
   CONTROL_CATEGORY.design,
@@ -29,6 +24,5 @@ function orderControls(control: Record<string, any>) {
 }
 
 export {
-  CONTROL_CATEGORY,
   orderControls,
 };

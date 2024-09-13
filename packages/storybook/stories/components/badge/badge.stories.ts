@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { ODS_ICON_NAMES, ODS_BADGE_COLOR, ODS_BADGE_COLORS, ODS_BADGE_SHAPE, ODS_BADGE_SHAPES, ODS_BADGE_SIZE, ODS_BADGE_SIZES } from '@ovhcloud/ods-components';
+import { ODS_ICON_NAMES, ODS_BADGE_COLOR, ODS_BADGE_COLORS, ODS_BADGE_SIZE, ODS_BADGE_SIZES } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
-import { CONTROL_CATEGORY, orderControls } from '../../control';
+import { CONTROL_CATEGORY } from '../../../src/constants/controls';
+import { orderControls } from '../../../src/helpers/controls';
 
 const meta: Meta = {
   title: 'ODS Components/Badge',

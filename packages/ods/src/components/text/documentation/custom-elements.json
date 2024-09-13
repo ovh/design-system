@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/globals.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsText",
+          "declaration": {
+            "name": "OdsText",
+            "module": "./components/ods-text/ods-text"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsTextPreset",
+          "declaration": {
+            "name": "OdsTextPreset",
+            "module": "./constants/text-preset"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ODS_TEXT_PRESETS",
+          "declaration": {
+            "name": "ODS_TEXT_PRESETS",
+            "module": "./constants/text-preset"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ODS_TEXT_PRESET",
+          "declaration": {
+            "name": "ODS_TEXT_PRESET",
+            "module": "./constants/text-preset"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/constants/text-preset.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "ODS_TEXT_PRESETS"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ODS_TEXT_PRESET",
+          "declaration": {
+            "name": "ODS_TEXT_PRESET",
+            "module": "src/constants/text-preset.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ODS_TEXT_PRESETS",
+          "declaration": {
+            "name": "ODS_TEXT_PRESETS",
+            "module": "src/constants/text-preset.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsTextPreset",
+          "declaration": {
+            "name": "OdsTextPreset",
+            "module": "src/constants/text-preset.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ods-text/ods-text.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OdsText",
+          "members": [
+            {
+              "kind": "field",
+              "name": "preset",
+              "type": {
+                "text": "OdsTextPreset | undefined"
+              },
+              "privacy": "public",
+              "default": "paragraph"
+            },
+            {
+              "kind": "method",
+              "name": "getTag",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "FunctionalComponent"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "preset",
+              "fieldName": "preset",
+              "type": {
+                "text": "OdsTextPreset"
+              }
+            }
+          ],
+          "tagName": "ods-text",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsText",
+          "declaration": {
+            "name": "OdsText",
+            "module": "src/components/ods-text/ods-text.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ods-text",
+          "declaration": {
+            "name": "OdsText",
+            "module": "src/components/ods-text/ods-text.tsx"
+          }
+        }
+      ]
+    }
+  ],
+  "enumPlugin": {
+    "ODS_TEXT_PRESET": {
+      "caption": "caption",
+      "code": "code",
+      "heading1": "heading-1",
+      "heading2": "heading-2",
+      "heading3": "heading-3",
+      "heading4": "heading-4",
+      "heading5": "heading-5",
+      "heading6": "heading-6",
+      "paragraph": "paragraph",
+      "span": "span"
+    }
+  }
+}

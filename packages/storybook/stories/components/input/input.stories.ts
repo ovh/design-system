@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_INPUT_TYPE, ODS_INPUT_TYPES } from '@ovhcloud/ods-components';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { html } from 'lit-html';
-import { CONTROL_CATEGORY, orderControls } from '../../control';
+import { CONTROL_CATEGORY } from '../../../src/constants/controls';
+import { orderControls } from '../../../src/helpers/controls';
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/Input',

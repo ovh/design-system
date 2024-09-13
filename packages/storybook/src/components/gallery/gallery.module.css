@@ -1,7 +1,4 @@
 .gallery {
-  display: flex;
-  flex-flow: column;
-  gap: 3rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -11,28 +8,20 @@
   z-index: 1;
 }
 
-.gallery .gallery__items {
+.gallery__items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   gap: 2rem;
 }
 
-.gallery .gallery__items__item {
+.gallery__items__item {
   display: flex;
   flex-flow: column;
   gap: 1rem;
 }
 
-.gallery .gallery__items__item__title {
-  text-align: center;
-  font-size: 1.25rem;
-}
-
-.gallery .gallery__items__item__title > p {
-  margin: .5rem 0;
-}
-
-.gallery .sbdocs-preview {
+/* increase weight to override default storybook style */
+.gallery .gallery__items__item__preview {
   margin: 0;
   flex: 1 1 auto;
   box-shadow: none;
@@ -41,6 +30,8 @@
   max-height: 150px;
 }
 
-.gallery .sbdocs-preview > .docs-story > div {
-  padding-bottom: 0;
+.gallery__items__item__title {
+  margin: .5rem 0;
+  text-align: center;
+  font-size: 1.25rem;
 }

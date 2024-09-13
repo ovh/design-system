@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_DIVIDER_COLOR, ODS_DIVIDER_COLORS, ODS_DIVIDER_SPACING, ODS_DIVIDER_SPACINGS } from '@ovhcloud/ods-components';
-import { CONTROL_CATEGORY, orderControls } from '../../control';
 import { html } from 'lit-html';
-
+import { CONTROL_CATEGORY } from '../../../src/constants/controls';
+import { orderControls } from '../../../src/helpers/controls';
 
 const meta: Meta = {
   title: 'ODS Components/Divider',

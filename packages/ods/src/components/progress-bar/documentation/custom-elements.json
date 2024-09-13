@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/globals.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsProgressBar",
+          "declaration": {
+            "name": "OdsProgressBar",
+            "module": "./components/ods-progress-bar/ods-progress-bar"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ods-progress-bar/ods-progress-bar.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OdsProgressBar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "public",
+              "default": "100"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "public",
+              "default": "0"
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "FunctionalComponent"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "max",
+              "fieldName": "max",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "type": {
+                "text": "number"
+              }
+            }
+          ],
+          "tagName": "ods-progress-bar",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsProgressBar",
+          "declaration": {
+            "name": "OdsProgressBar",
+            "module": "src/components/ods-progress-bar/ods-progress-bar.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ods-progress-bar",
+          "declaration": {
+            "name": "OdsProgressBar",
+            "module": "src/components/ods-progress-bar/ods-progress-bar.tsx"
+          }
+        }
+      ]
+    }
+  ],
+  "enumPlugin": {}
+}

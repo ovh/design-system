@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_POPOVER_POSITION, ODS_POPOVER_POSITIONS } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
-import { CONTROL_CATEGORY, orderControls } from '../../control';
+import { CONTROL_CATEGORY } from '../../../src/constants/controls';
+import { orderControls } from '../../../src/helpers/controls';
 
 const meta: Meta = {
   title: 'ODS Components/Popover',

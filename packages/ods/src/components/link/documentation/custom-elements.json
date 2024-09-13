@@ -1,0 +1,291 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/globals.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsLink",
+          "declaration": {
+            "name": "OdsLink",
+            "module": "./components/ods-link/ods-link"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ODS_LINK_COLOR",
+          "declaration": {
+            "name": "ODS_LINK_COLOR",
+            "module": "./constant/link-color"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ODS_LINK_COLORS",
+          "declaration": {
+            "name": "ODS_LINK_COLORS",
+            "module": "./constant/link-color"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsLinkColor",
+          "declaration": {
+            "name": "OdsLinkColor",
+            "module": "./constant/link-color"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/constant/link-color.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "ODS_LINK_COLORS"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ODS_LINK_COLOR",
+          "declaration": {
+            "name": "ODS_LINK_COLOR",
+            "module": "src/constant/link-color.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ODS_LINK_COLORS",
+          "declaration": {
+            "name": "ODS_LINK_COLORS",
+            "module": "src/constant/link-color.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsLinkColor",
+          "declaration": {
+            "name": "OdsLinkColor",
+            "module": "src/constant/link-color.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ods-link/ods-link.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OdsLink",
+          "members": [
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "OdsLinkColor"
+              },
+              "privacy": "public",
+              "default": "primary"
+            },
+            {
+              "kind": "field",
+              "name": "download",
+              "type": {
+                "text": "HTMLAnchorElement['download'] | undefined"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "OdsIconName | undefined"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "isDisabled",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "referrerpolicy",
+              "type": {
+                "text": "ReferrerPolicy | undefined"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "rel",
+              "type": {
+                "text": "HTMLAnchorElement['rel'] | undefined"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "HTMLAnchorElement['target'] | undefined"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "onClick",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "FunctionalComponent"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "color",
+              "fieldName": "color",
+              "type": {
+                "text": "OdsLinkColor"
+              }
+            },
+            {
+              "name": "download",
+              "fieldName": "download",
+              "type": {
+                "text": "HTMLAnchorElement['download']"
+              }
+            },
+            {
+              "name": "href",
+              "fieldName": "href",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "icon",
+              "fieldName": "icon",
+              "type": {
+                "text": "OdsIconName"
+              }
+            },
+            {
+              "name": "is-disabled",
+              "fieldName": "isDisabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "referrerpolicy",
+              "fieldName": "referrerpolicy",
+              "type": {
+                "text": "ReferrerPolicy"
+              }
+            },
+            {
+              "name": "rel",
+              "fieldName": "rel",
+              "type": {
+                "text": "HTMLAnchorElement['rel']"
+              }
+            },
+            {
+              "name": "target",
+              "fieldName": "target",
+              "type": {
+                "text": "HTMLAnchorElement['target']"
+              }
+            }
+          ],
+          "tagName": "ods-link",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsLink",
+          "declaration": {
+            "name": "OdsLink",
+            "module": "src/components/ods-link/ods-link.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ods-link",
+          "declaration": {
+            "name": "OdsLink",
+            "module": "src/components/ods-link/ods-link.tsx"
+          }
+        }
+      ]
+    }
+  ],
+  "enumPlugin": {
+    "ODS_LINK_COLOR": {
+      "primary": "primary"
+    }
+  }
+}

@@ -1,0 +1,444 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/globals.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsBreadcrumb",
+          "declaration": {
+            "name": "OdsBreadcrumb",
+            "module": "./components/ods-breadcrumb/ods-breadcrumb"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsBreadcrumbItem",
+          "declaration": {
+            "name": "OdsBreadcrumbItem",
+            "module": "./components/ods-breadcrumb-item/ods-breadcrumb-item"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsBreadcrumbItemClickEvent",
+          "declaration": {
+            "name": "OdsBreadcrumbItemClickEvent",
+            "module": "./interfaces/events"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsBreadcrumbItemExpandEvent",
+          "declaration": {
+            "name": "OdsBreadcrumbItemExpandEvent",
+            "module": "./interfaces/events"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/controller/ods-breadcrumb.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "expandItems",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "items",
+              "type": {
+                "text": "Element[]"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "setupItems",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "items",
+              "type": {
+                "text": "Element[]"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "expandItems",
+          "declaration": {
+            "name": "expandItems",
+            "module": "src/controller/ods-breadcrumb.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "setupItems",
+          "declaration": {
+            "name": "setupItems",
+            "module": "src/controller/ods-breadcrumb.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/interfaces/events.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsBreadcrumbItemClickEvent",
+          "declaration": {
+            "name": "OdsBreadcrumbItemClickEvent",
+            "module": "src/interfaces/events.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsBreadcrumbItemExpandEvent",
+          "declaration": {
+            "name": "OdsBreadcrumbItemExpandEvent",
+            "module": "src/interfaces/events.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ods-breadcrumb/ods-breadcrumb.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OdsBreadcrumb",
+          "members": [
+            {
+              "kind": "field",
+              "name": "el",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onOdsExpand",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onSlotChange",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "FunctionalComponent"
+                }
+              }
+            }
+          ],
+          "tagName": "ods-breadcrumb",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsBreadcrumb",
+          "declaration": {
+            "name": "OdsBreadcrumb",
+            "module": "src/components/ods-breadcrumb/ods-breadcrumb.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ods-breadcrumb",
+          "declaration": {
+            "name": "OdsBreadcrumb",
+            "module": "src/components/ods-breadcrumb/ods-breadcrumb.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ods-breadcrumb-item/ods-breadcrumb-item.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OdsBreadcrumbItem",
+          "members": [
+            {
+              "kind": "field",
+              "name": "isCollapsed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "isExpandable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "isLast",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "OdsIconName | undefined"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "isDisabled",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string | undefined"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "referrerpolicy",
+              "type": {
+                "text": "ReferrerPolicy | undefined"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "rel",
+              "type": {
+                "text": "HTMLAnchorElement['rel'] | undefined"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "HTMLAnchorElement['target'] | undefined"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "onExpandClick",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onLinkClick",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "FunctionalComponent"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "is-collapsed",
+              "fieldName": "isCollapsed",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "is-expandable",
+              "fieldName": "isExpandable",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "is-last",
+              "fieldName": "isLast",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "href",
+              "fieldName": "href",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "icon",
+              "fieldName": "icon",
+              "type": {
+                "text": "OdsIconName"
+              }
+            },
+            {
+              "name": "is-disabled",
+              "fieldName": "isDisabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "label",
+              "fieldName": "label",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "referrerpolicy",
+              "fieldName": "referrerpolicy",
+              "type": {
+                "text": "ReferrerPolicy"
+              }
+            },
+            {
+              "name": "rel",
+              "fieldName": "rel",
+              "type": {
+                "text": "HTMLAnchorElement['rel']"
+              }
+            },
+            {
+              "name": "target",
+              "fieldName": "target",
+              "type": {
+                "text": "HTMLAnchorElement['target']"
+              }
+            }
+          ],
+          "tagName": "ods-breadcrumb-item",
+          "events": [
+            {
+              "name": "odsClick",
+              "type": {
+                "text": "EventEmitter<MouseEvent>"
+              }
+            },
+            {
+              "name": "odsExpand",
+              "type": {
+                "text": "EventEmitter<void>"
+              }
+            }
+          ],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsBreadcrumbItem",
+          "declaration": {
+            "name": "OdsBreadcrumbItem",
+            "module": "src/components/ods-breadcrumb-item/ods-breadcrumb-item.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ods-breadcrumb-item",
+          "declaration": {
+            "name": "OdsBreadcrumbItem",
+            "module": "src/components/ods-breadcrumb-item/ods-breadcrumb-item.tsx"
+          }
+        }
+      ]
+    }
+  ],
+  "enumPlugin": {}
+}

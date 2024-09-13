@@ -1,20 +1,21 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Source } from '@storybook/blocks';
+import { Heading } from '../../../../src/components/heading/Heading';
 
 <Meta title="OVHcloud Design System/What's new?/Migration guide/14.x to 15.x" />
 
 # [14.1.1](https://ovh.github.io/design-system/v14.1.1/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [15.0.0](https://ovh.github.io/design-system/v15.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/14.0...release/15.0))
 
-## Text
+<Heading label="Text" level={ 2 } />
 
-### Dependency
+<Heading label="Dependency" level={ 3 } />
 
 Add a dependency to `@ovhcloud/ods-component-text` or `@ovhcloud/ods-components`.
 
-### Import
+<Heading label="Import" level={ 3 } />
 
 Replace any imports like the followings:
 
-```js
+<Source code={`
 // Component
 import { OsdsText } from '@ovhcloud/ods-stencil/components/text'
 import { OsdsText } from '@ovhcloud/ods-stencil/components/text/react'
@@ -28,11 +29,13 @@ import { OdsTextSizeList } from '@ovhcloud/ods-core'
 
 // Interfaces
 import { OdsTextAttributes } from '@ovhcloud/ods-core'
-```
+`}
+        dark="true"
+        language="typescript" />
 
 to:
 
-```js
+<Source code={`
 // Component
 import { OsdsText } from '@ovhcloud/ods-component-text'
 import { OsdsText } from '@ovhcloud/ods-component-text/react'
@@ -46,7 +49,9 @@ import { ODS_TEXT_SIZES } from '@ovhcloud/ods-component-text'
 
 // Interfaces
 import type { OdsTextAttribute } from '@ovhcloud/ods-component-text'
-```
+`}
+        dark="true"
+        language="typescript" />
 
 Following interfaces has been removed:
 
@@ -56,18 +61,17 @@ Following interfaces has been removed:
 * `OdsTextLevelUnion`
 * `OdsTextSizeUnion`
 
-## Textarea
+<Heading label="Textarea" level={ 2 } />
 
-### Dependency
+<Heading label="Dependency" level={ 3 } />
 
 Add a dependency to `@ovhcloud/ods-component-textarea` or `@ovhcloud/ods-components`.
 
-### Import
+<Heading label="Import" level={ 3 } />
 
 Replace any imports like the followings:
 
-```js
-// Component
+<Source code={`
 import { OsdsTextarea } from '@ovhcloud/ods-stencil/components/textarea'
 import { OsdsTextarea } from '@ovhcloud/ods-stencil/components/textarea/react'
 import { OsdsTextarea } from '@ovhcloud/ods-stencil/components/textarea/vue'
@@ -80,11 +84,13 @@ import { OdsTextAreaSizeList } from '@ovhcloud/ods-core'
 import { OdsTextAreaAttributes } from '@ovhcloud/ods-core'
 import { OdsTextAreaEvents, OdsTextAreaChangeEventDetail } from '@ovhcloud/ods-core'
 import { OdsTextAreaMethods } from '@ovhcloud/ods-core'
-```
+`}
+        dark="true"
+        language="typescript" />
 
 to:
 
-```js
+<Source code={`
 // Component
 import { OsdsTextarea } from '@ovhcloud/ods-component-textarea'
 import { OsdsTextarea } from '@ovhcloud/ods-component-textarea/react'
@@ -100,7 +106,9 @@ import { ODS_TEXT_SIZES } from '@ovhcloud/ods-component-textarea'
 import type { OdsTextAreaAttribute } from '@ovhcloud/ods-component-textarea'
 import type { OdsTextAreaEvent, OdsTextAreaChangeEvent } from '@ovhcloud/ods-component-textarea'
 import type { OdsTextAreaMethod } from '@ovhcloud/ods-component-textarea'
-```
+`}
+        dark="true"
+        language="typescript" />
 
 Following interfaces has been removed:
 

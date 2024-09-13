@@ -1,0 +1,244 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/globals.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsDividerColor",
+          "declaration": {
+            "name": "OdsDividerColor",
+            "module": "./constants/divider-color"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsDividerSpacing",
+          "declaration": {
+            "name": "OdsDividerSpacing",
+            "module": "./constants/divider-spacing"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ODS_DIVIDER_COLOR",
+          "declaration": {
+            "name": "ODS_DIVIDER_COLOR",
+            "module": "./constants/divider-color"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ODS_DIVIDER_COLORS",
+          "declaration": {
+            "name": "ODS_DIVIDER_COLORS",
+            "module": "./constants/divider-color"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ODS_DIVIDER_SPACING",
+          "declaration": {
+            "name": "ODS_DIVIDER_SPACING",
+            "module": "./constants/divider-spacing"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ODS_DIVIDER_SPACINGS",
+          "declaration": {
+            "name": "ODS_DIVIDER_SPACINGS",
+            "module": "./constants/divider-spacing"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsDivider",
+          "declaration": {
+            "name": "OdsDivider",
+            "module": "./components/ods-divider/ods-divider"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/constants/divider-color.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "ODS_DIVIDER_COLORS"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ODS_DIVIDER_COLOR",
+          "declaration": {
+            "name": "ODS_DIVIDER_COLOR",
+            "module": "src/constants/divider-color.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ODS_DIVIDER_COLORS",
+          "declaration": {
+            "name": "ODS_DIVIDER_COLORS",
+            "module": "src/constants/divider-color.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsDividerColor",
+          "declaration": {
+            "name": "OdsDividerColor",
+            "module": "src/constants/divider-color.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/constants/divider-spacing.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "ODS_DIVIDER_SPACINGS"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ODS_DIVIDER_SPACING",
+          "declaration": {
+            "name": "ODS_DIVIDER_SPACING",
+            "module": "src/constants/divider-spacing.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ODS_DIVIDER_SPACINGS",
+          "declaration": {
+            "name": "ODS_DIVIDER_SPACINGS",
+            "module": "src/constants/divider-spacing.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsDividerSpacing",
+          "declaration": {
+            "name": "OdsDividerSpacing",
+            "module": "src/constants/divider-spacing.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ods-divider/ods-divider.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OdsDivider",
+          "members": [
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "OdsDividerColor"
+              },
+              "privacy": "public",
+              "default": "light"
+            },
+            {
+              "kind": "field",
+              "name": "spacing",
+              "type": {
+                "text": "OdsDividerSpacing"
+              },
+              "privacy": "public",
+              "default": "_2"
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "FunctionalComponent"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "color",
+              "fieldName": "color",
+              "type": {
+                "text": "OdsDividerColor"
+              }
+            },
+            {
+              "name": "spacing",
+              "fieldName": "spacing",
+              "type": {
+                "text": "OdsDividerSpacing"
+              }
+            }
+          ],
+          "tagName": "ods-divider",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsDivider",
+          "declaration": {
+            "name": "OdsDivider",
+            "module": "src/components/ods-divider/ods-divider.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ods-divider",
+          "declaration": {
+            "name": "OdsDivider",
+            "module": "src/components/ods-divider/ods-divider.tsx"
+          }
+        }
+      ]
+    }
+  ],
+  "enumPlugin": {
+    "ODS_DIVIDER_COLOR": {
+      "dark": "dark",
+      "light": "light"
+    },
+    "ODS_DIVIDER_SPACING": {
+      "_0": "0",
+      "_2": "2",
+      "_4": "4",
+      "_6": "6",
+      "_8": "8",
+      "_12": "12",
+      "_16": "16",
+      "_24": "24",
+      "_32": "32",
+      "_40": "40",
+      "_48": "48",
+      "_64": "64"
+    }
+  }
+}

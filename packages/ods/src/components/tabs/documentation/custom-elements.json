@@ -1,0 +1,296 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/globals.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsTab",
+          "declaration": {
+            "name": "OdsTab",
+            "module": "./components/ods-tab/ods-tab"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsTabs",
+          "declaration": {
+            "name": "OdsTabs",
+            "module": "./components/ods-tabs/ods-tabs"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsTabSelectedEventDetail",
+          "declaration": {
+            "name": "OdsTabSelectedEventDetail",
+            "module": "./interfaces/events"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsTabSelectedEvent",
+          "declaration": {
+            "name": "OdsTabSelectedEvent",
+            "module": "./interfaces/events"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsTabsSelectedEvent",
+          "declaration": {
+            "name": "OdsTabsSelectedEvent",
+            "module": "./interfaces/events"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/interfaces/events.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsTabSelectedEventDetail",
+          "declaration": {
+            "name": "OdsTabSelectedEventDetail",
+            "module": "src/interfaces/events.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsTabSelectedEvent",
+          "declaration": {
+            "name": "OdsTabSelectedEvent",
+            "module": "src/interfaces/events.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OdsTabsSelectedEvent",
+          "declaration": {
+            "name": "OdsTabsSelectedEvent",
+            "module": "src/interfaces/events.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ods-tabs/ods-tabs.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OdsTabs",
+          "members": [
+            {
+              "kind": "method",
+              "name": "onOdsTabSelected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "OdsTabSelectedEventDetail"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "FunctionalComponent"
+                }
+              }
+            }
+          ],
+          "tagName": "ods-tabs",
+          "events": [
+            {
+              "name": "odsTabsSelected",
+              "type": {
+                "text": "EventEmitter<OdsTabSelectedEventDetail>"
+              }
+            }
+          ],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsTabs",
+          "declaration": {
+            "name": "OdsTabs",
+            "module": "src/components/ods-tabs/ods-tabs.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ods-tabs",
+          "declaration": {
+            "name": "OdsTabs",
+            "module": "src/components/ods-tabs/ods-tabs.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ods-tab/ods-tab.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OdsTab",
+          "members": [
+            {
+              "kind": "field",
+              "name": "isDisabled",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "isSelected",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "onClick",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onKeyDown",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onKeyUp",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "FunctionalComponent"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "is-disabled",
+              "fieldName": "isDisabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "is-selected",
+              "fieldName": "isSelected",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "tagName": "ods-tab",
+          "events": [
+            {
+              "name": "odsTabSelected",
+              "type": {
+                "text": "EventEmitter<OdsTabSelectedEventDetail>"
+              }
+            }
+          ],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsTab",
+          "declaration": {
+            "name": "OdsTab",
+            "module": "src/components/ods-tab/ods-tab.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ods-tab",
+          "declaration": {
+            "name": "OdsTab",
+            "module": "src/components/ods-tab/ods-tab.tsx"
+          }
+        }
+      ]
+    }
+  ],
+  "enumPlugin": {}
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/globals.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsSkeleton",
+          "declaration": {
+            "name": "OdsSkeleton",
+            "module": "./components/ods-skeleton/ods-skeleton"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ods-skeleton/ods-skeleton.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OdsSkeleton",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "FunctionalComponent"
+                }
+              }
+            }
+          ],
+          "tagName": "ods-skeleton",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OdsSkeleton",
+          "declaration": {
+            "name": "OdsSkeleton",
+            "module": "src/components/ods-skeleton/ods-skeleton.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ods-skeleton",
+          "declaration": {
+            "name": "OdsSkeleton",
+            "module": "src/components/ods-skeleton/ods-skeleton.tsx"
+          }
+        }
+      ]
+    }
+  ],
+  "enumPlugin": {}
+}

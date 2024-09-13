@@ -1,4 +1,6 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Source } from '@storybook/blocks';
+import { Heading } from '../../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../../src/components/storybookLink/StorybookLink';
 
 <Meta title="OVHcloud Design System/What's new?/Migration guide/17.x to 18.x" />
 
@@ -6,7 +8,7 @@ import { Meta } from '@storybook/blocks';
 
 If you have any questions or issues regarding the new version, feel free to reach us directly.
 
-## Libraries
+<Heading label="Libraries" level={ 2 } />
 
 The following libs have been removed:
 - @ovhcloud/ods-cdk
@@ -19,17 +21,18 @@ The following libs have been removed:
 If you were using part of them, please reach out to us so that we can get more information about your usage.
 
 To use the new theme, replace `ods-theme-blue-jeans` with the following:
-```js
-import '@ovhcloud/ods-themes/default';
-```
 
-## Design tokens
+<Source code="import '@ovhcloud/ods-themes/default';"
+        dark="true"
+        language="typescript" />
+
+<Heading label="Design tokens" level={ 2 } />
 
 Design tokens are now accessible through the `@ovhcloud/ods-themes` lib.
 
 The list of available tokens has been updated with the latest design changes and match what you may find on the Figma screens.
 
-## Components
+<Heading label="Components" level={ 2 } />
 
 As each component was refactored, there are too many changes to list everything here.
 
@@ -37,46 +40,46 @@ The main common breaking change is the following: `osds-xxx` component is now `o
 
 A complete list of changes and a guide about how to migrate is available per component:
 
-* [accordion](?path=/docs/ods-components-accordion--migration-from-17-x)
-* [badge](?path=/docs/ods-components-badge--migration-from-17-x)
-* [breadcrumb](?path=/docs/ods-components-breadcrumb--migration-from-17-x)
-* [button](?path=/docs/ods-components-button--migration-from-17-x)
-* [card](?path=/docs/ods-components-card--migration-from-17-x)
-* [cart](?path=/docs/ods-components-cart--docs)
-* [checkbox](?path=/docs/ods-components-form-elements-checkbox--migration-from-17-x)
-* [clipboard](?path=/docs/ods-components-clipboard--migration-from-17-x)
-* [code](?path=/docs/ods-components-code--migration-from-17-x)
-* [content-addon](?path=/docs/ods-components-content-addon--docs)
-* [datepicker](?path=/docs/ods-components-form-elements-datepicker--migration-from-17-x)
-* [divider](?path=/docs/ods-components-divider--migration-from-17-x)
-* [file-upload](?path=/docs/ods-components-form-elements-file-upload--migration-from-17-x)
-* [flag](?path=/docs/ods-components-flag--docs)
-* [form-field](?path=/docs/ods-components-form-elements-form-field--migration-from-17-x)
-* [icon](?path=/docs/ods-components-icon--migration-from-17-x)
-* [input](?path=/docs/ods-components-form-elements-input--migration-from-17-x)
-* [link](?path=/docs/ods-components-link--migration-from-17-x)
-* [medium](?path=/docs/ods-components-medium--migration-from-17-x)
-* [menu](?path=/docs/ods-components-menu--docs)
-* [message](?path=/docs/ods-components-message--migration-from-17-x)
-* [modal](?path=/docs/ods-components-modal--migration-from-17-x)
-* [pagination](?path=/docs/ods-components-pagination--migration-from-17-x)
-* [password](?path=/docs/ods-components-form-elements-password--migration-from-17-x)
-* [phone-number](?path=/docs/ods-components-form-elements-phone-number--migration-from-17-x)
-* [popover](?path=/docs/ods-components-popover--migration-from-17-x)
-* [progress-bar](?path=/docs/ods-components-progress-bar--migration-from-17-x)
-* [search-bar](?path=/docs/ods-components-search-bar--docs)
-* [quantity](?path=/docs/ods-components-form-elements-quantity--migration-from-17-x)
-* [radio](?path=/docs/ods-components-form-elements-radio--migration-from-17-x)
-* [range](?path=/docs/ods-components-form-elements-range--migration-from-17-x)
-* [select](?path=/docs/ods-components-form-elements-select--migration-from-17-x)
-* [skeleton](?path=/docs/ods-components-skeleton--migration-from-17-x)
-* [spinner](?path=/docs/ods-components-spinner--migration-from-17-x)
-* [switch](?path=/docs/ods-components-form-elements-switch--migration-from-17-x)
-* [table](?path=/docs/ods-components-table--migration-from-17-x)
-* [tabs](?path=/docs/ods-components-tabs--migration-from-17-x)
-* [tag](?path=/docs/ods-components-tag--migration-from-17-x)
-* [text](?path=/docs/ods-components-text--migration-from-17-x)
-* [textarea](?path=/docs/ods-components-form-elements-textarea--migration-from-17-x)
-* [timepicker](?path=/docs/ods-components-form-elements-timepicker--migration-from-17-x)
-* [toggle](?path=/docs/ods-components-form-elements-toggle--migration-from-17-x)
-* [tooltip](?path=/docs/ods-components-tooltip--migration-from-17-x)
+* <StorybookLink kind="ODS Components/Accordion" label="accordion" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Badge" label="badge" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Breadcrumb" label="breadcrumb" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Button" label="button" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Card" label="card" story="Migration From 17.x" />
+* <StorybookLink label="cart" title="ODS Components/Cart" />
+* <StorybookLink kind="ODS Components/Form elements/Checkbox" label="checkbox" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Clipboard" label="clipboard" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Code" label="code" story="Migration From 17.x" />
+* <StorybookLink label="content-addon" title="ODS Components/Content Addon" />
+* <StorybookLink kind="ODS Components/Form elements/Datepicker" label="datepicker" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Divider" label="divider" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Form elements/File Upload" label="file-upload" story="Migration From 17.x" />
+* <StorybookLink label="flag" title="ODS Components/Flag" />
+* <StorybookLink kind="ODS Components/Form elements/Form Field" label="form-field" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Icon" label="icon" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Form elements/Input" label="input" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Link" label="link" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Medium" label="medium" story="Migration From 17.x" />
+* <StorybookLink label="menu" title="ODS Components/Menu" />
+* <StorybookLink kind="ODS Components/Message" label="message" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Modal" label="modal" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Pagination" label="pagination" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Form elements/Password" label="password" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Form elements/Phone Number" label="phone-number" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Popover" label="popover" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Progress Bar" label="progress-bar" story="Migration From 17.x" />
+* <StorybookLink label="search-bar" title="ODS Components/Search Bar" />
+* <StorybookLink kind="ODS Components/Form elements/Quantity" label="quantity" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Form elements/Radio" label="radio" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Form elements/Range" label="range" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Form elements/Select" label="select" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Skeleton" label="skeleton" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Spinner" label="spinner" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Form elements/Switch" label="switch" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Table" label="table" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Tabs" label="tabs" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Tag" label="tag" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Text" label="text" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Form elements/Textarea" label="textarea" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Form elements/Timepicker" label="timepicker" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Form elements/Toggle" label="toggle" story="Migration From 17.x" />
+* <StorybookLink kind="ODS Components/Tooltip" label="tooltip" story="Migration From 17.x" />

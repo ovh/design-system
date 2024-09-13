@@ -1,19 +1,22 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsBadge from '@ovhcloud/ods-components/src/components/badge/documentation/spec.md?raw';
-import { Banner } from '../../banner';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import * as BadgeStories from './badge.stories';
 
 <Meta of={ BadgeStories } name='Technical information' />
 
 <Banner of={ BadgeStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
 <Canvas of={ BadgeStories.Overview } sourceState='none' />
 
+[//]: # (TODO generate spec.json instead of spec.md and use a React component here instead)
+
 <Markdown>{ SpecificationsBadge }</Markdown>
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the badge element using the part `badge`.
 
@@ -21,16 +24,16 @@ Custom CSS:
 
 <Canvas of={ BadgeStories.CustomCSS } sourceState='shown'/>
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
 <Canvas of={ BadgeStories.Default } sourceState='shown' />
 
-### Color
+<Heading label="Color" level={ 3 } />
 
 <Canvas of={ BadgeStories.Color } sourceState='shown' />
 
-### Size
+<Heading label="Size" level={ 3 } />
 
 <Canvas of={ BadgeStories.Size } sourceState='shown' />

@@ -13,7 +13,7 @@ addons.setConfig({
   sidebar: {
     filters: {
       patterns: (item) => {
-        return !item.tags.includes('isHidden');
+        return !item.tags?.includes('isHidden');
       }
     }
   },

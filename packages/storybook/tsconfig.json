@@ -23,7 +23,8 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    ".storybook",
+    ".storybook/*",
+    "src",
     "stories"
   ]
 }

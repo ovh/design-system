@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { ODS_TEXT_PRESETS } from '@ovhcloud/ods-components';
+import { ODS_TEXT_PRESET, ODS_TEXT_PRESETS } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
-import { CONTROL_CATEGORY, orderControls } from '../../control';
+import { CONTROL_CATEGORY } from '../../../src/constants/controls';
+import { orderControls } from '../../../src/helpers/controls';
 
 const meta: Meta = {
   title: 'ODS Components/Text',
@@ -27,7 +28,7 @@ export const Demo: StoryObj = {
     preset: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
+        defaultValue: { summary: 'p' },
         type: { summary: 'string' }
       },
       control: { type: 'select' },
@@ -51,7 +52,8 @@ export const Demo: StoryObj = {
     }
   }),
   args: {
-    content: 'lorem ipsum'
+    content: 'lorem ipsum',
+    preset: ODS_TEXT_PRESET.paragraph,
   },
 };
 

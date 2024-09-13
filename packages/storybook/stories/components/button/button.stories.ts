@@ -10,7 +10,8 @@ import {
   ODS_ICON_NAMES,
 } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
-import { CONTROL_CATEGORY, orderControls } from '../../control';
+import { CONTROL_CATEGORY } from '../../../src/constants/controls';
+import { orderControls } from '../../../src/helpers/controls';
 
 const meta: Meta = {
   title: 'ODS Components/Button',

@@ -1,14 +1,17 @@
-import { Meta } from '@storybook/blocks';
+import { OdsLink } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 
 <Meta title="OVHcloud Design System/What's new?/What's new" />
 
-# What's new ?
+<Heading label="What's new ?" level={ 1 } />
 
-## v18.0.0
+<Heading label="v18.0.0" level={ 2 } />
 
-As it is a major version, you'll have to follow the [migration guide 17.x to 18.x](?path=/docs/ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x--docs)
+As it is a major version, you'll have to follow the <StorybookLink label="migration guide 17.x to 18.x" title="OVHcloud Design System/What's new?/Migration guide/17.x to 18.x" />
 
-### Project changes:
+<Heading label="Project changes:" level={ 3 } />
 
 From the beginning of the project to the latest v17 version, our vision of the project has greatly evolved.
 Thanks to real-user feedbacks, a better understanding of our use cases and how ODS fits in the OVHCloud ecosystem.
@@ -36,7 +39,7 @@ But this aims to be the last time.
 To help you moving from a previous version to the v18, we've added a dedicated page on each component presenting
 the changes and some migration examples.
 
-### ODS libraries
+<Heading label="ODS libraries" level={ 3 } />
 
 The following libs have been removed:
 - @ovhcloud/ods-cdk
@@ -58,7 +61,7 @@ out to us so that we can get more information about your usage.
 
 The `blue-jeans` theme has been replaced by the default theme of `@ovhcloud/ods-themes`.
 
-### ODS dependencies upgrade
+<Heading label="ODS dependencies upgrade" level={ 3 } />
 
 The new version comes with the following upgrade on major library:
 - Stencil bumps from `4.12.0` to `4.16.0`
@@ -66,13 +69,14 @@ The new version comes with the following upgrade on major library:
 - Typescript bumps from `4.7.4` to `5.3.3`
 - Storybook bumps from `6.4.19` to `8.0.4`
 
-### Style customization
+<Heading label="Style customization" level={ 3 } />
 
 Although the ODS component comes with the expected design, you can now apply your own style directly on some part
-of the web-component shadow DOM, thanks to the [part selector](https://developer.mozilla.org/en-US/docs/Web/CSS/::part).
+of the web-component shadow DOM, thanks to the <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" label="part selector" target="_blank" />.
 
 For example, you can add style on the native `input` element of an `ods-input` component through the following code:
-```html
+
+<Source code={`
 <style>
   .my-input::part(input) {
     width: 300px;
@@ -80,28 +84,33 @@ For example, you can add style on the native `input` element of an `ods-input` c
 </style>
 
 <ods-input class="my-input" ... />
-```
+`}
+        dark="true"
+        language="html" />
 
 Most of the component exposes one or more part like this, you can find more information on each component documentation page.
 
-### Sass helpers
+<Heading label="Sass helpers" level={ 3 } />
 
 In addition to the easier customization, we're also exposing the "basic" style of some core component as Sass mixins
 that you can use to apply on a native element to get the same ODS rendering.
 
 For example, if you need to make an anchor tag looks like an `ods-link`:
 
-```scss
+<Source code={`
 @import '@ovhcloud/ods-components/style';
 
 .my-link {
   @include ods-link();
   @include ods-link-color('primary');
 }
-```
-```html
-<a class="my-link" ...>...</a>
-```
+`}
+        dark="true"
+        language="css" />
+
+<Source code={ `<a class="my-link" ...>...</a>` }
+        dark="true"
+        language="html" />
 
 This can be useful when you can't manage some part of the DOM as you want, for example using a library that will always
 render an anchor and that provide no custom templating.
@@ -109,40 +118,41 @@ render an anchor and that provide no custom templating.
 Be careful though, this does only provide basic style, not all the feature of an ODS component, so we do recommend
 to use the web-component by default.
 
-### New components:
+<Heading label="New components:" level={ 3 } />
 
 **File Upload**
-[See Documentation](?path=/docs/ods-components-form-elements-file-upload--documentation)
+
+<StorybookLink kind="ODS Components/Form elements/File Upload" label="See Documentation" story="Documentation" />
 
 **Timepicker**
-[See Documentation](?path=/docs/ods-components-form-elements-timepicker--documentation)
 
-### Component changes:
+<StorybookLink kind="ODS Components/Form elements/Timepicker" label="See Documentation" story="Documentation" />
 
-Please check the [migration guide](?path=/docs/ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x--docs) regarding all the component changes.
+<Heading label="Component changes:" level={ 3 } />
 
-## v17.2.2
+Please check the <StorybookLink label="migration guide" title="OVHcloud Design System/What's new?/Migration guide/17.x to 18.x" /> regarding all the component changes.
+
+<Heading label="v17.2.2" level={ 2 } />
 
 This update brings a few bug fixes across components, ensuring a smoother and more accessible user experience.
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Button**
 
 - Fix the issue where the button was still clickable on the border while disabled.
 
-### Feature updates:
+<Heading label="Feature updates:" level={ 3 } />
 
 **Radio-button**
 
 - Add 'XS' size to radio button.
 
-
-## v17.2.1
+<Heading label="v17.2.1" level={ 2 } />
 
 This update brings a few bug fixes across components, ensuring a smoother and more accessible user experience.
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Clipboard**
 
@@ -152,24 +162,25 @@ This update brings a few bug fixes across components, ensuring a smoother and mo
 
 - A minimal height is now forced in the `Menu` component, giving proper styling on the bottom margin.
 
-## v17.2.0
+<Heading label="v17.2.0" level={ 2 } />
 
 This update introduces our new `Table` component, enhances various features and improves documentation.
 It also brings numerous bug fixes across components, ensuring a smoother and more accessible user experience.
 
-### New component:
+<Heading label="New component:" level={ 3 } />
 
 **Table**
-[See Documentation](?path=/story/table--default)
 
-### Documentation improvements:
+<StorybookLink kind="ODS Components/Table" label="See Documentation" story="Documentation" />
+
+<Heading label="Documentation improvements:" level={ 3 } />
 
 **Form Field**
 
 - Added an accessibility label.
 - Updated Storybook Usage Guidelines.
 
-### Feature updates:
+<Heading label="Feature updates:" level={ 3 } />
 
 **Clipboard**
 
@@ -187,7 +198,7 @@ It also brings numerous bug fixes across components, ensuring a smoother and mor
 - Old attribute `current` has been removed.
 - Navigation will be hidden if `totalItems` is lower than `itemPerPage`
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Breadcrumb**
 **Link**
@@ -224,30 +235,30 @@ It also brings numerous bug fixes across components, ensuring a smoother and mor
 
 - `odsSearchSubmit` event is now properly triggered on `KEY_DOWN` input.
 
-## v17.1.0
+<Heading label="v17.1.0" level={ 2 } />
 
-As we're working towards a massive uniformisation of all ODS form elements (events, nav behaviour, required state, validity state, ...),
-the amount of changes is too important to be released immediatly.
+As we're working towards a massive uniformization of all ODS form elements (events, nav behaviour, required state, validity state, ...),
+the amount of changes is too important to be released immediately.
 
 This release brings the expected form-association of form elements, so that they act as native one for
 formData submit and reset.
 
 It also fixes the missing types of event (`odsBlur`, `odsFocus`, `odsValueChange`).
 
-### Documentation improvements:
+<Heading label="Documentation improvements:" level={ 3 } />
 
 Documentation usage guidelines have been completed with almost all components properties and slots:
 - tons of new components examples
 - dark background when `contrasted` prop is set
 - shortcuts have been disabled due to issue with some input preview
 
-### Feature update:
+<Heading label="Feature update:" level={ 3 } />
 
 **Pagination**
 
 - A new `defaultItemsPerPage` has been added, which allows to define the initial value of `itemsPerPage` on first render
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Button**
 **Checkbox**
@@ -265,13 +276,13 @@ Documentation usage guidelines have been completed with almost all components pr
 
 - Ensure position stays consistent regarding end/start slot emptiness
 
-### Miscellaneous:
+<Heading label="Miscellaneous:" level={ 3 } />
 
 - Upgrade to StencilJS 4.12
 
-## v17.0.3
+<Heading label="v17.0.3" level={ 2 } />
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Input**
 
@@ -293,9 +304,9 @@ Documentation usage guidelines have been completed with almost all components pr
 
 * Tile borders are now correctly rounded on Safari
 
-## v17.0.2
+<Heading label="v17.0.2" level={ 2 } />
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Modal**
 
@@ -303,9 +314,9 @@ Documentation usage guidelines have been completed with almost all components pr
 * Fixed display problems within the modal that could lead to some elements getting shrunk
 * Scroll is now prevented when a modal is open
 
-## v17.0.1
+<Heading label="v17.0.1" level={ 2 } />
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Pagination**
 
@@ -319,11 +330,11 @@ Documentation usage guidelines have been completed with almost all components pr
 
 * Fonts have been fixed to display the correct font on Safari.
 
-## v17.0.0
+<Heading label="v17.0.0" level={ 2 } />
 
-As it is a major version, you'll have to follow the [migration guide 16.x to 17.x](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-16-x-to-17-x--docs)
+As it is a major version, you'll have to follow the <StorybookLink label="migration guide 16.x to 17.x" title="OVHcloud Design System/What's new?/Migration guide/16.x to 17.x" />
 
-### Project changes:
+<Heading label="Project changes:" level={ 3 } />
 
 Main focus on this version has been on simplifying ODS integration in existing projects (React, Vue, JS, ...).
 
@@ -334,18 +345,18 @@ What this means for your code:
 * `ods-component-xxx` are no longer published and should be removed
 * only one dependency to add to your `package.json`
 
-```
-"ods-components": "17.0.0"
-```
+<Source code={ `"ods-components": "17.0.0"` }
+        dark="true"
+        language="text" />
 
 ODS components can then be either imported using lazy-loading (the code of each component is loaded on demand) or as a module (the code of the component is tree-shaked by your own bundling system).
 
 For more details on how to import ODS components, see:
 
-* the updated [Get Started documentation](?path=/story/ovhcloud-design-system-get-started--docs#how-to-use-ods-components-in-my-project)
-* the 16.x to 17.x [Migration guide](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-16-x-to-17-x--docs)
+* the updated <StorybookLink label="Get Started documentation" title="OVHcloud Design System/Get Started" />
+* the 16.x to 17.x <StorybookLink label="Migration guide" title="OVHcloud Design System/What's new?/Migration guide/16.x to 17.x" />
 
-### Documentation improvments
+<Heading label="Documentation improvements:" level={ 3 } />
 
 We went through each component to update:
 
@@ -353,13 +364,13 @@ We went through each component to update:
 * the Usage Guidelines, with more examples and the missing properties
 * with React example when relevant (ex: `datagrid` reactFormatter with React 18 or `tabs` with React Router)
 
-### Component changes:
+<Heading label="Component changes:" level={ 3 } />
 
 **Pagination**
 
 * Add `odsItemPerPageChange` when the item per page select change
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Datagrid**
 
@@ -377,61 +388,60 @@ We went through each component to update:
 
 * Fix hover rendering
 
-## v16.6.0
+<Heading label="v16.6.0" level={ 2 } />
 
-### Feature update:
+<Heading label="Feature update:" level={ 3 } />
 
-\*\* Breadcrumb \*\*
+**Breadcrumb**
 
 * Add attributes on `breadcrumItem` : `disabled`, `rel`, `referrerpolicy`, `target`
 * Add event on `breadcrumItem` : `odsBreadcrumbItemClick`
 * Update `OdsHTMLAnchorElementRel` type
 
-\*\* Chip \*\*
+**Chip**
 
 * Added `odsChipRemoval` event
 * If `OsdsChip` is removable and is clicked, it will emit event `odsChipRemoval`
 * If `OsdsChip` is removable, focused on and key Enter is pressed, it will emit event `odsChipRemoval`
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
-\*\* Button \*\*
+**Button**
 
 * Fix position of end slot when start slot is empty in `OsdsButton`
 
-\*\* Datagrid \*\*
+**Datagrid**
 
 * If the `OsdsDatagrid` contains an overflowing on-interaction element (such as `OsdsMenu`, `OsdsTooltip`, `OsdsSelect` or `OsdsPopover`), the element is either being displayed at the top left corner of the `OsdsDatagrid` (native) or beneath the element, making it unvisible (React). This fix intends to correct this problem in both environments.
 
-\*\* Pagination \*\*
+**Pagination**
 
 * Add `itemPerPage` in payload event `odsChange`
 * Watch `totalPages` & update it
 
-\*\* PhoneNumber \*\*
+**PhoneNumber**
 
 * Fix shadow of flag icon in the select that was cut behind overflow
 
-\*\* Components \*\*
+**Components**
 
 * Some components were missing from package.json of components: `medium`, `range`, `toggle`
 
-## v16.5.0
+<Heading label="v16.5.0" level={ 2 } />
 
-### Feature update:
+<Heading label="Feature update:" level={ 3 } />
 
 **Documentation**
 
 * Multiple updates to clarify documentation. (Welcome page, Get started, Design tokens, Code, Contributing & libraries)
 * Removing Starter documentation, as it is deprecated for now.
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Datagrid**
 
 * `OsdsDatagrid` now emits the event `onBottomScroll`.
 * `OsdsDatagrid` now supports React Formatters.
-* [See React Documentation](/?path=/story/ods-components-layout-datagrid-organism-usage-react--docs)
 * Row change has been fixed.
 
 **Modal**
@@ -450,15 +460,15 @@ We went through each component to update:
 
 * Storybook errors with displaying `OsdsPhoneNumber` & `OsdsSearchBar` inputs has been fixed.
 
-## v16.4.0
+<Heading label="v16.4.0" level={ 2 } />
 
-### New component:
+<Heading label="New component:" level={ 3 } />
 
 **Datagrid**
 
-* [See Documentation](?path=/story/datagrid—default)
+* See Documentation using version selector
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Phone number**
 
@@ -468,20 +478,21 @@ We went through each component to update:
 
 * The release list now correctly displays the name of the latest version.
 
-### Feature update:
+<Heading label="Feature update:" level={ 3 } />
 
 **Component Generator**
 
 * Component Generator has been upgraded to align with the new architecture (introduced in version 16.0.0).
 
-## v16.3.2
+<Heading label="v16.3.2" level={ 2 } />
 
-### New component:
+<Heading label="New component:" level={ 3 } />
 
 **Medium**
-[See Documentation](?path=/story/medium--default)
 
-### Bug fixes:
+<StorybookLink kind="ODS Components/Medium" label="See Documentation" story="Documentation" />
+
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Phone number**
 
@@ -499,9 +510,9 @@ We went through each component to update:
 
 * Add event open & close (odsModalOpen, odsModalClose)
 
-## v16.3.1
+<Heading label="v16.3.1" level={ 2 } />
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Datepicker**
 
@@ -511,9 +522,9 @@ We went through each component to update:
 
 * Keyboard navigation correction
 
-## v16.3.0
+<Heading label="v16.3.0" level={ 2 } />
 
-### Component changes:
+<Heading label="Component changes:" level={ 3 } />
 
 **Button**
 
@@ -534,7 +545,7 @@ We went through each component to update:
 
 * Component has been refactored internally, but this should not have any impacts
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Menu**
 
@@ -552,15 +563,15 @@ We went through each component to update:
 
 * On Safari the component is displayed correctly when using flex
 
-### Project changes:
+<Heading label="Project changes:" level={ 3 } />
 
 * The whole project is now built using Stenciljs v4.7
 > ⚠️️ **Breaking change**
 * We don't generate the bundle `custom-elements-bundle` anymore
 
-## v16.2.1
+<Heading label="v16.2.1" level={ 2 } />
 
-### Component changes:
+<Heading label="Component changes:" level={ 3 } />
 
 **Datepicker**
 
@@ -579,7 +590,7 @@ We went through each component to update:
 
 * Component has been refactored internally, but this should not have any impacts
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Datepicker**
 
@@ -597,42 +608,46 @@ We went through each component to update:
 
 * Selected value is now correctly updated on cnange (ex: translation change)
 
-## v16.2.0
+<Heading label="v16.2.0" level={ 2 } />
 
-### New component:
+<Heading label="New component:" level={ 3 } />
 
-* **Datepicker**: [See Documentation](?path=/story/datepicker--default)
+**Datepicker**
 
-### Component changes:
+<StorybookLink kind="ODS Components/Form elements/Datepicker" label="See Documentation" story="Documentation" />
+
+<Heading label="Component changes:" level={ 3 } />
 
 **Clipboard**
 
 * Added tooltip confirmation message on paste
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Textarea**
 
 * Correctly emit `odsValueChange` event on value change.
 
-### Documentation changes:
+<Heading label="Documentation changes:" level={ 3 } />
 
 * Improve typedoc documentation
 
-## v16.1.1
+<Heading label="v16.1.1" level={ 2 } />
 
-### Documentation fixes:
+<Heading label="Documentation fixes:" level={ 3 } />
 
 * Component specification pages now displays correct information
 * Tile sandbox now uses correct list of commands
 
-## v16.1.0
+<Heading label="v16.1.0" level={ 2 } />
 
-### New component:
+<Heading label="New component:" level={ 3 } />
 
-* **Phone Number**: [See Documentation](?path=/story/phone-number--default)
+**Phone Number**
 
-### Component changes:
+<StorybookLink kind="ODS Components/Form elements/Phone Number" label="See Documentation" story="Documentation" />
+
+<Heading label="Component changes:" level={ 3 } />
 
 **Input**
 
@@ -644,23 +659,23 @@ We went through each component to update:
 
 * `max` and `value` attributes are now `number` and won`t accept `string\` anymore.
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Code**
 
 * Contrasted version have now the right color.
 
-### Project changes:
+<Heading label="Project changes:" level={ 3 } />
 
 * The whole project is now built using node 18.
 
-## v16.0.1
+<Heading label="v16.0.1" level={ 2 } />
 
 Fixes CI build issues when deploying Storybook.
 
-## v16.0.0
+<Heading label="v16.0.0" level={ 2 } />
 
-As it is a major version, you'll have to follow the [migration guide 15.x to 16.x](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-15-x-to-16-x--docs)
+As it is a major version, you'll have to follow the <StorybookLink label="migration guide 15.x to 16.x" title="OVHcloud Design System/What's new?/Migration guide/15.x to 16.x" />
 
 ⚠️We're aware that not all the documentation is up-to-date with the latest technical changes ⚠️
 
@@ -668,7 +683,7 @@ As it is a major version, you'll have to follow the [migration guide 15.x to 16.
 
 ⚠️If you have any issue migrating, reach us directly and we'll help you. ⚠️
 
-### Project changes:
+<Heading label="Project changes:" level={ 3 } />
 
 This version embed the whole new project architecture (initiated with the v15).
 
@@ -682,7 +697,7 @@ We now have seperations between:
 * `storybook` (@ovhcloud/ods-storybook) which tends to centralize all the ODS documentation content.
 * `themes` (@ovhcloud/ods-theme-blue-jeans) which provides all existing themes that can be applied to ODS.
 
-### Component changes:
+<Heading label="Component changes:" level={ 3 } />
 
 **All Components**
 
@@ -717,20 +732,31 @@ Ex:
 `OdsSpinnerEvents` have been removed, as the component does not handle any events.
 `OdsSpinnerMethods` have been removed, as the component does not expose any methods.
 
-### New component:
+<Heading label="New component:" level={ 3 } />
 
-* **Clipboard**: [See Documentation](?path=/story/ui-components-clipboard-atom-web-component--default)
-* **Menu**: [See Documentation](?path=/story/menu--default)
-* **Modal**: [See Documentation](?path=/story/modal--default)
-* **Search Bar**: [See Documentation](?path=/story/ui-components-search-bar-atom-web-component--default)
+**Clipboard**
 
-### Features changes:
+<StorybookLink kind="ODS Components/Clipboard" label="See Documentation" story="Documentation" />
+
+**Menu**
+
+See documentation using version selector
+
+**Modal**
+
+<StorybookLink kind="ODS Components/Modal" label="See Documentation" story="Documentation" />
+
+**Search Bar**
+
+See documentation using version selector
+
+<Heading label="Features changes:" level={ 3 } />
 
 **Button**
 
 * Add a new attribute `textAlign` which allows to choose the button text alignement between `center`, `end` and `start`.
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 **Button**
 
@@ -744,16 +770,16 @@ Ex:
 
 * Outline is now correctly updated on viewport change.
 
-## v15.0.1
+<Heading label="v15.0.1" level={ 2 } />
 
 * Fix new packages release process.
 * Update documentation.
 
-## v15.0.0
+<Heading label="v15.0.0" level={ 2 } />
 
-As it is a major version, you have to do the [migration guide 14.x to 15.x](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-14-x-to-15-x--docs)
+As it is a major version, you have to do the <StorybookLink label="migration guide 14.x to 15.x" title="OVHcloud Design System/What's new?/Migration guide/14.x to 15.x" />
 
-### Project changes:
+<Heading label="Project changes:" level={ 3 } />
 
 This version is the first step towards the new ODS internal architecture.
 The goal of this refactoring is to simplify and improve the whole project to:
@@ -770,7 +796,7 @@ All other components will follow on next version.
 
 Then common ODS lib and theming will be refactored on next version.
 
-### Features changes:
+<Heading label="Features changes:" level={ 3 } />
 
 * **Text**
 
@@ -824,20 +850,25 @@ Then common ODS lib and theming will be refactored on next version.
 
 * `OsdsTextarea` `inline` attribute has been added.
 
-## v14.1.0
+<Heading label="v14.1.0" level={ 2 } />
 
-### New features:
+<Heading label="New features:" level={ 3 } />
 
 * **CDK**
 * Manage surface position when located on the edge.
-* The surface can now be centered at the top or bottom of the trigger. [See CDK Documentation](?path=/story/libraries-cdk-overlay-strategies-symmetry--docs)
+* The surface can now be centered at the top or bottom of the trigger. See CDK Documentation using version selector.
 
 We added the following components:
 
-* **Form Field**: [See Form Field Documentation](?path=/story/form-field--default)
-* **Switch**: [See Form Field Documentation](?path=/story/switch--default)
+**Form Field**
 
-### Features changes:
+<StorybookLink kind="ODS Components/Form elements/Form Field" label="See Documentation" story="Documentation" />
+
+**Switch**
+
+<StorybookLink kind="ODS Components/Form elements/Switch" label="See Documentation" story="Documentation" />
+
+<Heading label="Features changes:" level={ 3 } />
 
 * **Pagination**
 
@@ -845,14 +876,14 @@ We added the following components:
 
 * Can now show pages according to a numbers of items shown by page.
 
-> For more information, check our documentation [See Pagination Documentation](?path=/story/ui-components-pagination-molecule-specifications--docs)
+> For more information, check our documentation <StorybookLink kind="ODS Components/Pagination" label="See Documentation" story="Documentation" />
 
 * **Location-tile**
 
 * Component is now deprecated and won't be supported anymore. It will be deleted in a future release.
-> For more information, check our replacement guide [See Location Tile Documentation](?path=/story/ui-components-location-tile-deprecated-remplacement--docs)
+> For more information, check our replacement guide using version selector.
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 * **Radio**:
 
@@ -862,35 +893,37 @@ We added the following components:
 
 * cursor is set to not-allowed when disabled
 
-## v14.0.0
+<Heading label="v14.0.0" level={ 2 } />
 
-As it is a major version, you have to do the [migration guide 13.x to 14.x](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-13-x-to-14-x--docs)
+As it is a major version, you have to do the <StorybookLink label="migration guide 13.x to 14.x" title="OVHcloud Design System/What's new?/Migration guide/13.x to 14.x" />
 
-### New features:
+<Heading label="New features:" level={ 3 } />
 
 We added the following components:
 
-* **Progress Bar**: [See Progress Bar Documentation](?path=/story/progress-bar--default)
-* **Popover**: [See Popover Documentation](?path=/story/popover--default)
-* **Tooltip**: [See Popover Documentation](?path=/story/tooltip--default)
+* **Progress Bar**: <StorybookLink kind="ODS Components/Progress Bar" label="See Documentation" story="Documentation" />
+* **Popover**: <StorybookLink kind="ODS Components/Popover" label="See Documentation" story="Documentation" />
+* **Tooltip**: <StorybookLink kind="ODS Components/Tooltip" label="See Documentation" story="Documentation" />
 
 Components version 2:
 
-* **Input V2**: [See Input Documentation](?path=/story/input--default)
+* **Input V2**: <StorybookLink kind="ODS Components/Form elements/Input" label="See Documentation" story="Documentation" />
 * new properties have been added
 * `loading`: it displays a Spinner
 * `clearable`: it clears the input value on click
 * `masked`: it indicates if the input value is hidden or not (to be used with password type)
 * new types have been added: `date`, `email`, `password`, `search`, `tel`, `text`, `time` and `url`
-* **Select V2**: it is now connected to our CDK and keyboard navigation has been added [See Select Documentation](?path=/story/select--default)
+* **Select V2**: it is now connected to our CDK and keyboard navigation has been added <StorybookLink kind="ODS Components/Form elements/Select" label="See Documentation" story="Documentation" />
 
 **Quantity** component accepts four digits in the input field:
-[See Quantity Documentation](?path=/story/quantity--default)
+
+<StorybookLink kind="ODS Components/Form elements/Quantity" label="See Documentation" story="Documentation" />
 
 **CDK** (Component Development Kit): new symmetry strategies have been added (left and right):
-[See CDK Documentation](?path=/story/libraries-cdk-overlay-introduction--docs)
 
-### Bug fixes:
+See CDK Documentation using version selector.
+
+<Heading label="Bug fixes:" level={ 3 } />
 
 * **Tile**:
 * `hoverable` attribute has been added to avoid double focus
@@ -905,22 +938,22 @@ Components version 2:
 * **Quantity**: icons alignment has been fixed
 * **Textarea**: when component is resized and `flex` attribute is set to `true` and then, set back to `false`, Textarea width is no more blocked to 100%
 
-## v13.0.0
+<Heading label="v13.0.0" level={ 2 } />
 
-As it is a major version, you have to do the [migration guide 12.x to 13.x](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x--docs)
+As it is a major version, you have to do the <StorybookLink label="migration guide 12.x to 13.x" title="OVHcloud Design System/What's new?/Migration guide/12.x to 13.x" />
 
-### New features:
+<Heading label="New features:" level={ 3 } />
 
 We added the following components:
 
-* Breadcrumb: [See Breadcrumb Documentation](?path=/story/breadcrumb--default)
-* Collapsible: [See Collapsible Documentation](?path=/story/collapsible--default)
-* Pagination: [See Pagination Documentation](?path=/story/pagination--default)
-* Spinner: [See Spinner Documentation](?path=/story/spinner--default)
+* Breadcrumb: <StorybookLink kind="ODS Components/Breadcrumb" label="See Documentation" story="Documentation" />
+* Collapsible: See Documentation using version selector
+* Pagination: <StorybookLink kind="ODS Components/Pagination" label="See Documentation" story="Documentation" />
+* Spinner: <StorybookLink kind="ODS Components/Spinner" label="See Documentation" story="Documentation" />
 
-[Circle-shaped button](?path=/story/button--default) has been added to Button Component (circle attribute)
+Circle-shaped button has been added to Button Component (circle attribute)
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 * Button: `button' and `link`roles have been added (switching to`link\` role when Button has a href property)
 
@@ -944,57 +977,56 @@ We added the following components:
 > ⚠️️ **Breaking change**<br />
   > For more information, check our migration guide
 
-## v12.1.0
+<Heading label="v12.1.0" level={ 2 } />
 
-### New features:
+<Heading label="New features:" level={ 3 } />
 
 We added the Tabs component.<br />
-[See Tabs Documentation](?path=/story/ui-components-tabs-atom-specifications--docs)
+
+<StorybookLink kind="ODS Components/Tabs" label="See Documentation" story="Documentation" />
 
 A component generator has been added. Now, you can use that tool to generate a new component easily.<br />
-[See Component Generator in Contributing Documentation](?path=/story/contributing-how-to-s-create-a-component--docs)
 
 A coding Style has also been added so you can check our guidelines and how to write code for OVHcloud Design System project.<br />
-[See Component Coding Style Rules](?path=/story/code-our-principles-coding-style--docs)
 
-The [Contributing Documentation](?path=/story/contributing-get-started--docs) has been updated:
+The Contributing Documentation has been updated:
 
 * How to use a component in an other one
 * Theming: how to customize a style
 * some warning about pushing any sensitive content
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 Range component color when in error has been fixed.
 
 Some width issue on Button component has been fixed.<br />
 When in flex, a Button can now display an ellipsis for text content when necessary.
 
-## v12.0.5
+<Heading label="v12.0.5" level={ 2 } />
 
-### Bug fixes:
+<Heading label="Bug fixes:" level={ 3 } />
 
 Button component of type submit in a form will now submit the form as expected (by click or Enter / Space keys).
 
 Quantity component issue has been fixed regarding minus control that should be disabled when the input `min` attribute is equal to 0 and its value has reached 0 too.
 
-## v12.0.0
+<Heading label="v12.0.0" level={ 2 } />
 
 First release on GitHub. There is no new feature in this version. It is now open source
 
-## v11.0.0
+<Heading label="v11.0.0" level={ 2 } />
 
 Flag component has been modified; you’ll need to update as explained in the migration guide.
-For more details about assets, see [Installation](?path=/story/ovhcloud-design-system-get-started--docs) page.
+For more details about assets, see <StorybookLink label="Installation" title="OVHcloud Design System/Get Started" /> page.
 New attributes are available on this component: `lazy`, `assetPath` and `src`.
 
-Before importing any component you now have to setup ods, for more details see [migration guide 10.x to 11.x](?path=/story/code-migration-guide-10-x-to-11-x--docs).
+Before importing any component you now have to setup ods, for more details see <StorybookLink label="migration guide 10.x to 11.x" title="OVHcloud Design System/What's new?/Migration guide/10.x to 11.x" />
 
-[Dual range](?path=/story/range--dual) is now available for Range component; It offers two handles to set a min and max value.
+Dual range is now available for Range component; It offers two handles to set a min and max value.
 
 To build resilient infrastructure and promote sustainable industrialization, we moved code that could be agnostic.
 Now, ODS components logic has been moved into controllers.
-If you want to contribute to ODS by developing new components, please refer to the how-to section for controllers in our [Storybook](?path=/story/contributing-how-to-s-create-a-controller--docs).
+If you want to contribute to ODS by developing new components, please refer to the how-to section for controllers in our Storybook.
 
 Now, Button component has `download` and `rel` new attributes available when it is used as a link (href).
 
@@ -1002,18 +1034,17 @@ We had blur events on Quantity component to set the correct value regarding the 
 It means when the user set manually a value that is out of bounds for Quantity, the value will be automatically reset to a correct value.
 When Quantity is out of bounds, the field value is now in error state.
 
-As it is a major version, you have to do the [migration guide 10.x to 11.x](?path=/story/code-migration-guide-10-x-to-11-x--docs)
+As it is a major version, you have to do the <StorybookLink label="migration guide 10.x to 11.x" title="OVHcloud Design System/What's new?/Migration guide/10.x to 11.x" />
 
-## v10.2.0
+<Heading label="v10.2.0" level={ 2 } />
 
 A new library called `CDK` for `Component Development Kit` is available.
 The main objective is to make the development to be easier thanks to helpers.
 The first integrated feature is an overlay system that allows manipulating and displaying content
 on foreground of the page.
-[CDK Documentation](?path=/story/cdk-introduction--docs)
 
 We added a new entire section for `contributions` in the storybook.
-Feel free to read the [Contributing Documentation](?path=/story/contributing-getting-started--docs) if you want to contribute.
+Feel free to read the Contributing Documentation if you want to contribute.
 
 We simplified our developer environment with a `global.dev.ts` file in order to
 make the developer tests isolated from the production build.
@@ -1022,20 +1053,17 @@ We optimized our CI/CD workflow for a more reactive and efficient build time and
 
 We fixed some issue about automated screenshot testing with some timeout.
 
-[Technical Changelog](?path=/story/code-changelog--docs)
-
-## v10.1.0
+<Heading label="v10.1.0" level={ 2 } />
 
 We added the select component (version 1).
-[See Select Documentation](?path=/story/ui-components-select-atom-specifications--docs)
 
-[Technical Changelog](?path=/story/code-changelog--docs)
+<StorybookLink kind="ODS Components/Form elements/Select" label="See Documentation" story="Documentation" />
 
-## v10.0.0
+<Heading label="v10.0.0" level={ 2 } />
 
 We updated a lot of third dependencies (stencilJs, typescript, jest, puppeteer, ...):
 
-```text
+<Source code={`
 @stencil/core ~2.6.0 to ~2.18.1
 @stencil/sass ~1.4.1 to ~2.0.0
 jest ~26.6.3 to ~27.4.5
@@ -1049,14 +1077,15 @@ puppeteer ~5.5.0 to ~10.0.0
 yarn-2.4.2 to yarn-3.2.4
 node-fetch ~2.6.6 to ~2.6.7
 ts-node ~9.1.1 to ~10.7.0
-```
+`}
+        dark="true"
+        language="text" />
 
 > If you are an `ODS` contributor, you may need to do some changes
 
 We now build all of our components for `React` and `Vue` frameworks.
 They allow to use all the potential and features of your high-end JS framework.
-You can read the updated [Getting Started](?path=/story/ovhcloud-design-system-get-started--docs)
-and more especially the [ODS Starters chapter](?path=/story/ovhcloud-design-system-get-started--docs#ods-starters)
+You can read the updated <StorybookLink label="Getting Started" title="OVHcloud Design System/Get Started" />
 to initialize an App with ODS and see how it works depending the framework.
 
 Also, `ods-cart` is no more impacted by a parent container with `text-align:center`.
@@ -1069,11 +1098,9 @@ You can now disable animation on `ods-toggle` by defining a CSS value `--ods-tog
 Css variables `--ods-size-squish-n-*` and `--ods-size-stretch-n-*` are no more incorrect.
 It was previously set with only one number instead of two, accordingly with CSS3.
 
-As it is a major version, you have to do the [migration guide 9.x to 10.x](?path=/story/code-migration-guide-9-x-to-10-x--docs)
+As it is a major version, you have to do the <StorybookLink label="migration guide 9.x to 10.x" title="OVHcloud Design System/What's new?/Migration guide/9.x to 10.x" />
 
-[Technical Changelog](?path=/story/code-changelog--docs)
-
-## v9.1.0
+<Heading label="v9.1.0" level={ 2 } />
 
 Adding 2 new components :
 
@@ -1083,7 +1110,7 @@ Adding 2 new components :
 If you already have customized themes, you have to declare the variables for this 2 new components.
 see more in the migration guide 9.x
 
-## February 2022
+<Heading label="February 2022" level={ 2 } />
 
 The V1 **Design System** graphical charter is finalized. This charter contains :
 
@@ -1096,5 +1123,3 @@ The V1 **Design System** graphical charter is finalized. This charter contains :
 * **Chips & Badges**
 * **Cards**
 * **Cart**
-
-[It is visible here](https://xd.adobe.com/view/031606c8-8f2f-4163-a2c2-f037d64bb294-5645)

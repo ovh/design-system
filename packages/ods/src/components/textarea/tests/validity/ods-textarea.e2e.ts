@@ -263,24 +263,30 @@ describe('ods-textarea validity', () => {
 
   describe('in a form', () => {
     it('should not submit the form on submit before any changes if textarea is invalid', async() => {
-      await setup('<form><ods-textarea is-required></ods-textarea></form>');
+      await setup('<form method="get" onsubmit="return false"><ods-textarea is-required></ods-textarea></form>');
 
-      await page.evaluate(() => {
-        document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+      const formValidity = await page.evaluate(() => {
+        const form = document.querySelector<HTMLFormElement>('form');
+        form?.requestSubmit();
+        return form?.reportValidity();
       });
 
-      // TODO add expect to check that form has not been submitted
       expect(await el.callMethod('checkValidity')).toBe(false);
+      expect(formValidity).toBe(false);
     });
 
     it('should submit the form if textarea is valid', async() => {
-      // TODO add test with
-      //  await setup('<form><ods-textarea is-required value="dummy"></ods-textarea></form>');
+      await setup('<form method="get" onsubmit="return false"><ods-textarea is-required value="dummy"></ods-textarea></form>');
 
-      // TODO add test with
-      //  await setup('<form><ods-textarea is-required default-value="dummy"></ods-textarea></form>');
+      await el.type('abcd');
+      const formValidity = await page.evaluate(() => {
+        const form = document.querySelector<HTMLFormElement>('form');
+        form?.requestSubmit();
+        return form?.reportValidity();
+      });
 
-      expect(false).toBe(true);
+      expect(await el.callMethod('checkValidity')).toBe(true);
+      expect(formValidity).toBe(true);
     });
   });
 });

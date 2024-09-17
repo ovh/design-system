@@ -15,7 +15,6 @@ const VALUE_DEFAULT_VALUE = null;
 export class OdsTextarea {
   private observer?: MutationObserver;
   private textareaElement?: HTMLTextAreaElement;
-  private isPristine: boolean = true;
 
   @Element() el!: HTMLElement;
 
@@ -51,14 +50,6 @@ export class OdsTextarea {
 
     // Enforce the state here as we may still be in pristine state (if the form is submitted before any changes occurs)
     this.isInvalid = true;
-  }
-
-  @Listen('odsChange')
-  onOdsChange(): void {
-    if (!this.isPristine) {
-      this.isInvalid = !this.internals.validity.valid;
-    }
-    this.isPristine = false;
   }
 
   @Method()
@@ -134,6 +125,7 @@ export class OdsTextarea {
   }
 
   private onBlur(): void {
+    this.isInvalid = !this.internals.validity.valid;
     this.odsBlur.emit();
   }
 

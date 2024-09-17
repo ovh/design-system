@@ -39,29 +39,59 @@ describe('ods-textarea rendering', () => {
 
   describe('error state', () => {
     it('should render in error on form submit, before any changes, if invalid', async() => {
-      await setup('<form><ods-textarea is-required></ods-textarea></form>');
+      await setup('<form method="get" onsubmit="return false"><ods-textarea is-required></ods-textarea></form>');
 
       await page.evaluate(() => {
         document.querySelector<HTMLFormElement>('form')?.requestSubmit();
       });
+      await page.waitForChanges();
 
-      // TODO add expect error style to be applied
-      expect(false).toBe(true);
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-textarea')?.shadowRoot?.querySelector('textarea')?.classList.contains('ods-textarea__textarea--error');
+      });
+      expect(hasErrorClass).toBe(true);
     });
 
     it('should toggle the error state on value change', async() => {
-      // TODO add tests <ods-textarea is-required>
-      //  start empty -> type text -> expect no error style
-      //  -> erase text -> expect error style
+      await setup('<form method="get" onsubmit="return false"><ods-textarea is-required></ods-textarea></form>');
 
-      expect(false).toBe(true);
+      await el.type('abcd');
+      await page.waitForChanges();
+
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-textarea')?.shadowRoot?.querySelector('textarea')?.classList.contains('ods-textarea__textarea--error');
+      });
+      expect(hasErrorClass).toBe(false);
+
+      await el.callMethod('clear');
+      await page.click('body', { offset: { x: 200, y: 200 } }); // Blur
+      await page.waitForChanges();
+
+      const hasErrorClass2 = await page.evaluate(() => {
+        return document.querySelector('ods-textarea')?.shadowRoot?.querySelector('textarea')?.classList.contains('ods-textarea__textarea--error');
+      });
+      await page.waitForChanges();
+      expect(hasErrorClass2).toBe(true);
     });
 
     it('should enforce the error state if has-error is set even on valid textarea', async() => {
-      // TODO add tests <ods-textarea is-required has-error value="dummy">
+      await setup('<form method="get" onsubmit="return false"><ods-textarea is-required has-error value="dummy"></ods-textarea></form>');
+      await page.waitForChanges();
 
-      // TODO add expect error style to be applied
-      expect(false).toBe(true);
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-textarea')?.shadowRoot?.querySelector('textarea')?.classList.contains('ods-textarea__textarea--error');
+      });
+      expect(hasErrorClass).toBe(true);
+
+      await page.evaluate(() => {
+        document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+      });
+      await page.waitForChanges();
+
+      const hasErrorClass2 = await page.evaluate(() => {
+        return document.querySelector('ods-textarea')?.shadowRoot?.querySelector('textarea')?.classList.contains('ods-textarea__textarea--error');
+      });
+      expect(hasErrorClass2).toBe(true);
     });
   });
 });

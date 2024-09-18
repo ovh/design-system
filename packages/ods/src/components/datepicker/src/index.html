@@ -17,7 +17,7 @@
 </head>
 
 <body style="margin-bottom: 200px;">
-  <p>Default</p>
+  <!-- <p>Default</p>
   <ods-datepicker>
   </ods-datepicker>
 
@@ -114,44 +114,45 @@
   <script>
     const defaultValueDatepicker = document.querySelector('#default-value');
     defaultValueDatepicker.defaultValue = new Date('04/21/2024');
-  </script>
+  </script> -->
 
   <p>Methods & Events</p>
-  <ods-datepicker id="datepicker-methods">
+  <ods-datepicker is-required id="datepicker-methods" >
   </ods-datepicker>
   <button id="datepicker-clear-button">Clear</button>
   <button id="datepicker-reset-button">Reset</button>
   <button id="datepicker-get-validity-button">GetValidity</button>
-  <button id="datepicker-open-button">Open</button>
+  <button id="datepicker-update-value-button">update Value</button>
   <button id="datepicker-close-button">Close</button>
   <script>
     const datepickerMethods = document.getElementById('datepicker-methods');
-    datepickerMethods.defaultValue = new Date();
+    // setTimeout(() => datepickerMethods.value = new Date(), 0);
     const datepickerClearButton = document.getElementById('datepicker-clear-button');
     const datepickerResetButton = document.getElementById('datepicker-reset-button');
     const datepickerGetValidityButton = document.getElementById('datepicker-get-validity-button');
-    const datepickerOpenButton = document.getElementById('datepicker-open-button');
+    const datepickerUpdateValueButton = document.getElementById('datepicker-update-value-button');
     const datepickerCloseButton = document.getElementById('datepicker-close-button');
 
     datepickerClearButton.addEventListener('click', () => datepickerMethods.clear());
     datepickerResetButton.addEventListener('click', () => datepickerMethods.reset());
-    datepickerOpenButton.addEventListener('click', () => datepickerMethods.open());
+    datepickerUpdateValueButton.addEventListener('click', () => datepickerMethods.value = new Date());
     datepickerCloseButton.addEventListener('click', () => datepickerMethods.close());
     datepickerGetValidityButton.addEventListener('click', async() => {
       console.log(await datepickerMethods.getValidity());
     });
 
-    // datepickerMethods.addEventListener('odsBlur', () => { console.log('on blur') });
+    datepickerMethods.addEventListener('odsBlur', () => { console.log('on blur') });
     datepickerMethods.addEventListener('odsChange', (e) => { console.log('on change', e) });
     datepickerMethods.addEventListener('odsClear', () => { console.log('on clear') });
-    // datepickerMethods.addEventListener('odsFocus', () => { console.log('on focus') });
+    datepickerMethods.addEventListener('odsFocus', () => { console.log('on focus') });
     datepickerMethods.addEventListener('odsReset', () => { console.log('on reset') });
   </script>
 
-  <p>Form</p>
-  <form id="datepicker-form">
-    <ods-datepicker id="datepicker-in-form"
-                    name="datepicker">
+  <!-- <p>Form</p>
+  <form id="datepicker-form" onsubmit="return false">
+    <ods-datepicker is-required id="datepicker-in-form"
+                    name="datepicker"
+                    default-value="14/10/2024">
     </ods-datepicker>
     <button id="datepicker-form-reset-button" type="reset">Reset</button>
     <button id="datepicker-form-submit-button" type="submit">Submit</button>
@@ -159,7 +160,7 @@
   <script>
     const datepickerFormElement = document.querySelector('#datepicker-in-form');
     // datepickerFormElement.value = new Date();
-    datepickerFormElement.defaultValue = new Date();
+    // datepickerFormElement.defaultValue = new Date();
     const datepickerForm = document.querySelector('#datepicker-form');
     const datepickerSubmitFormButton = document.querySelector('#datepicker-form-submit-button');
 
@@ -167,9 +168,9 @@
       const formData = new FormData(datepickerForm);
       console.log('formData', formData);
     });
-  </script>
+  </script> -->
 
-  <p>Dynamic Prop Change</p>
+  <!-- <p>Dynamic Prop Change</p>
   <ods-datepicker id="dynamic-datepicker"></ods-datepicker>
   <button id="dynamic-datepicker-change-prop-button" type="button">Change Prop</button>
   <script>
@@ -186,6 +187,6 @@
   <p>With label</p>
   <label for="labelled-datepicker">My datepicker</label>
   <ods-datepicker id="labelled-datepicker">
-  </ods-datepicker>
+  </ods-datepicker> -->
 </body>
 </html>

@@ -79,9 +79,8 @@ describe('ods-datepicker behaviour', () => {
 
     describe('reset', () => {
       it('should emit an odsReset event', async() => {
-        await setup('<ods-datepicker></ods-datepicker>');
+        await setup('<ods-datepicker default-value="14/10/2024"></ods-datepicker>');
         await page.evaluate(() => {
-          document.querySelector<OdsDatepicker & HTMLElement>('ods-datepicker')!.defaultValue = new Date(0);
           document.querySelector<OdsDatepicker & HTMLElement>('ods-datepicker')!.value = new Date();
         });
         await page.waitForChanges();
@@ -90,14 +89,13 @@ describe('ods-datepicker behaviour', () => {
         await el.callMethod('reset');
         await page.waitForChanges();
 
-        expect(await page.evaluate(() => document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.value)).toBe('01/01/1970');
+        expect(await page.evaluate(() => document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.value)).toBe('14/10/2024');
         expect(odsResetSpy).toHaveReceivedEventTimes(1);
       });
 
       it('should emit an odsReset event even if disabled', async() => {
-        await setup('<ods-datepicker is-disabled></ods-datepicker>');
+        await setup('<ods-datepicker is-disabled default-value="14/10/2024"></ods-datepicker>');
         await page.evaluate(() => {
-          document.querySelector<OdsDatepicker & HTMLElement>('ods-datepicker')!.defaultValue = new Date(0);
           document.querySelector<OdsDatepicker & HTMLElement>('ods-datepicker')!.value = new Date();
         });
         await page.waitForChanges();
@@ -106,7 +104,7 @@ describe('ods-datepicker behaviour', () => {
         await el.callMethod('reset');
         await page.waitForChanges();
 
-        expect(await page.evaluate(() => document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.value)).toBe('01/01/1970');
+        expect(await page.evaluate(() => document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.value)).toBe('14/10/2024');
         expect(odsResetSpy).toHaveReceivedEventTimes(1);
       });
     });

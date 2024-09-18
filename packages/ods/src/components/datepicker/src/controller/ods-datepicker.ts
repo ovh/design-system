@@ -1,4 +1,5 @@
 import { Datepicker } from 'vanillajs-datepicker';
+import { setInternalsValidityFromHtmlElement } from '../../../../utils/dom';
 
 function formatDate(date: Date | null, format: string): string {
   if (date && isDate(date)) {
@@ -12,11 +13,15 @@ function isDate(date: Date): boolean {
   return date instanceof Date && !isNaN(date.valueOf());
 }
 
-function setFormValue(internals: ElementInternals, value: string | null): void {
+function updateInternals(internals: ElementInternals, value: number | string | null, inputEl?: HTMLInputElement): void {
   internals.setFormValue(value?.toString() ?? '');
+
+  if (inputEl) {
+    setInternalsValidityFromHtmlElement(inputEl, internals);
+  }
 }
 
 export {
   formatDate,
-  setFormValue,
+  updateInternals,
 };

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { html } from 'lit-html';
+import { html,  } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
 
 const meta: Meta = {
@@ -10,25 +10,48 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg) => html`
-  <ods-textarea class="my-textarea"
-                ariaLabel="${arg.ariaLabel}"
-                ariaLabelledby="${arg.ariaLabelledby}"
-                cols="${arg.cols}"
-                has-error="${arg.hasError}"
-                has-spellcheck="${arg.hasSpellcheck}"
-                is-disabled="${arg.isDisabled}"
-                is-readonly="${arg.isReadonly}"
-                is-resizable="${arg.isResizable}"
-                placeholder="${arg.placeholder}"
-                rows="${arg.rows}">
-  </ods-textarea>
-<style>
-  .my-textarea::part(textarea) {
-    ${arg.customCss}
-  }
-</style>
-  `,
+  render: (arg) => {
+    const validityStateTemplate = html`<br>
+    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
+    <script>
+      (() => {
+          const divValidityState = document.querySelector('#validity-state');
+          const textarea = document.querySelector('.my-textarea');
+          renderValidityState();
+          textarea.addEventListener('odsChange', () => {
+            renderValidityState();
+          })
+          function renderValidityState() {
+            textarea.getValidity().then((validity) => {
+              divValidityState.innerHTML = '';
+              for (let key in validity) {
+                divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+              }
+            });
+          }
+      })();
+    </script>`;
+    return html`
+    <ods-textarea class="my-textarea"
+                  ariaLabel="${arg.ariaLabel}"
+                  ariaLabelledby="${arg.ariaLabelledby}"
+                  cols="${arg.cols}"
+                  has-error="${arg.hasError}"
+                  has-spellcheck="${arg.hasSpellcheck}"
+                  is-disabled="${arg.isDisabled}"
+                  is-readonly="${arg.isReadonly}"
+                  is-resizable="${arg.isResizable}"
+                  is-required="${arg.isRequired}"
+                  placeholder="${arg.placeholder}"
+                  rows="${arg.rows}">
+    </ods-textarea>
+    ${ arg.validityState ? validityStateTemplate : '' }
+    <style>
+      .my-textarea::part(textarea) {
+        ${arg.customCss}
+      }
+    </style>
+  `},
   argTypes: orderControls({
     ariaLabel: {
       table: {
@@ -103,6 +126,14 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
+    isRequired: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
     placeholder: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -119,6 +150,14 @@ export const Demo: StoryObj = {
       },
       control: 'number',
     },
+    validityState: {
+      table: {
+        category: CONTROL_CATEGORY.accessibility,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
   }),
   args: {
     hasError: false,
@@ -126,6 +165,8 @@ export const Demo: StoryObj = {
     isDisabled: false,
     isReadonly: false,
     isResizable: false,
+    isRequired: false,
+    validityState: false,
   },
 };
 
@@ -222,3 +263,30 @@ export const Spellcheck: StoryObj = {
 </ods-textarea>
   `,
 };
+
+export const ValidityState: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-textarea is-required id="textarea-validity-state-demo">
+</ods-textarea>
+<div id="validity-state-demo"></div>
+<script>
+  (() => {
+      const divValidityState = document.querySelector('#validity-state-demo');
+      const textarea = document.querySelector('#textarea-validity-state-demo');
+      textarea.addEventListener('odsChange', () => {
+        renderValidityState()
+      })
+      function renderValidityState() {
+        textarea.getValidity().then((validity) => {
+          divValidityState.innerHTML = '';
+          for (let key in validity) {
+            divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+          }
+        });
+      }
+  })();
+</script>
+`,
+};
+

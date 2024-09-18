@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES } from '@ovhcloud/ods-components';
-import { html } from 'lit-html';
+import { html, nothing } from 'lit-html';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -13,6 +13,47 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
+  render: (arg) => {
+    const validityStateTemplate = html`<br>
+    <div id="validity-state-datepicker" style="display: grid; row-gap: 5px;"></div>
+    <script>
+      (() => {
+          const divValidityState = document.querySelector('#validity-state-datepicker');
+          const datepicker = document.querySelector('.my-datepicker');
+          console.log('datepicker', datepicker)
+          setTimeout(async() => await renderValidityState(), 0);
+          datepicker.addEventListener('odsChange', () => {
+            setTimeout(async() => await renderValidityState(), 0);
+          })
+          async function renderValidityState() {
+            const validity = await datepicker?.getValidity()
+            divValidityState.innerHTML = '';
+            for (let key in validity) {
+              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+            }
+          }
+      })();
+    </script>`;
+    return html`
+    <ods-datepicker class="my-datepicker"
+      aria-label="${arg.ariaLabel}"
+      aria-labelledby="${arg.ariaLabelledby}"
+      dates-of-week-disabled="${arg.daysOfWeekDisabled || nothing}"
+      format="${arg.format || nothing}"
+      has-error="${arg.hasError}"
+      is-clearable="${arg.isClearable}"
+      is-disabled="${arg.isDisabled}"
+      is-loading="${arg.isLoading}"
+      is-readonly="${arg.isReadonly}"
+      is-required="${arg.isRequired}"
+      locale="${arg.locale || nothing}"
+      max="${arg.max || nothing}"
+      min="${arg.min || nothing}"
+      placeholder="${arg.placeholder}">
+    </ods-datepicker>
+    ${ arg.validityState ? validityStateTemplate : '' }
+    `;
+  },
   argTypes: orderControls({
     ariaLabel: {
       table: {
@@ -86,6 +127,14 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
+    isRequired: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
     locale: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -119,6 +168,14 @@ export const Demo: StoryObj = {
       },
       control: 'text',
     },
+    validityState: {
+      table: {
+        category: CONTROL_CATEGORY.accessibility,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
   }),
   args: {
     hasError: false,
@@ -126,6 +183,8 @@ export const Demo: StoryObj = {
     isDisabled: false,
     isLoading: false,
     isReadonly: false,
+    isRequired: false,
+    validityState: false,
   },
 };
 
@@ -254,4 +313,30 @@ export const Readonly: StoryObj = {
   })();
 </script>
   `,
+};
+
+export const ValidityState: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-datepicker is-required id="datepicker-validity-state-demo">
+</ods-datepicker>
+<div id="validity-state-demo"></div>
+<script>
+  (async() => {
+      const divValidityState = document.querySelector('#validity-state-demo');
+      const datepicker = document.querySelector('#datepicker-validity-state-demo');
+      setTimeout(async() => { await renderValidityState() }, 0)
+      datepicker.addEventListener('odsChange', () => {
+        setTimeout(async() => { await renderValidityState() }, 0)
+      })
+      async function renderValidityState() {
+        const validity = await datepicker.getValidity();
+        divValidityState.innerHTML = '';
+        for (let key in validity) {
+          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+        }
+      }
+  })();
+</script>
+`,
 };

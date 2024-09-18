@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { Datepicker } from 'vanillajs-datepicker';
 // @ts-ignore no existing declaration
 import de from 'vanillajs-datepicker/js/i18n/locales/de'; // eslint-disable-line import/no-unresolved
@@ -19,7 +19,7 @@ import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { type OdsDatepickerDay } from '../../constants/datepicker-day';
 import { ODS_DATEPICKER_LOCALE, type OdsDatepickerLocale } from '../../constants/datepicker-locale';
-import { formatDate, setFormValue } from '../../controller/ods-datepicker';
+import { formatDate, updateInternals } from '../../controller/ods-datepicker';
 import { type OdsDatepickerChangeEventDetail } from '../../interfaces/events';
 
 Object.assign(Datepicker.locales, de);
@@ -29,6 +29,8 @@ Object.assign(Datepicker.locales, it);
 Object.assign(Datepicker.locales, nl);
 Object.assign(Datepicker.locales, pl);
 Object.assign(Datepicker.locales, pt);
+
+const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -41,16 +43,19 @@ Object.assign(Datepicker.locales, pt);
 export class OdsDatepicker {
   private datepickerInstance?: Datepicker;
   private inputElement?: HTMLInputElement;
+  private shouldUpdateIsInvalidState: boolean = false;
 
   @Element() el!: HTMLElement;
 
   @AttachInternals() internals!: ElementInternals;
 
+  @State() private isInvalid: boolean = false;
+
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
   @Prop({ reflect: true }) public datesDisabled: Date[] = [];
   @Prop({ reflect: true }) public daysOfWeekDisabled: OdsDatepickerDay[] = [];
-  @Prop({ reflect: true }) public defaultValue?: Date;
+  @Prop({ reflect: true }) public defaultValue?: string;
   @Prop({ reflect: true }) public format: string = 'dd/mm/yyyy';
   @Prop({ reflect: true }) public hasError: boolean = false;
   @Prop({ reflect: true }) public isClearable: boolean = false;
@@ -63,7 +68,7 @@ export class OdsDatepicker {
   @Prop({ reflect: true }) public min?: Date;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public placeholder?: string;
-  @Prop({ mutable: true, reflect: true }) public value: Date | null = null;
+  @Prop({ mutable: true, reflect: true }) public value: Date | null = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsChange!: EventEmitter<OdsDatepickerChangeEventDetail>;
@@ -71,9 +76,29 @@ export class OdsDatepicker {
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
 
+  @Listen('invalid')
+  onInvalidEvent(event: Event): void {
+    // Remove the native validation message popup
+    event.preventDefault();
+
+    // Enforce the state here as we may still be in pristine state (if the form is submitted before any changes occurs)
+    this.isInvalid = true;
+  }
+
+  @Method()
+  async checkValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
+    return this.internals.checkValidity();
+  }
+
   @Method()
   public async clear(): Promise<void> {
     this.odsClear.emit();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
+    this.shouldUpdateIsInvalidState = true;
+
     // This will trigger the "changeDate" event that will take care of updating value, internals and emit change
     this.datepickerInstance?.setDate({ clear: true });
     this.inputElement?.focus();
@@ -85,8 +110,19 @@ export class OdsDatepicker {
   }
 
   @Method()
+  public async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
+  }
+
+  @Method()
   public async getValidity(): Promise<ValidityState | undefined> {
-    return this.inputElement?.validity;
+    return this.internals.validity;
+  }
+
+  @Method()
+  public async reportValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
+    return this.internals.reportValidity();
   }
 
   @Method()
@@ -98,12 +134,22 @@ export class OdsDatepicker {
   public async reset(): Promise<void> {
     this.odsReset.emit();
 
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
+    this.shouldUpdateIsInvalidState = true;
+
     // Those will trigger the "changeDate" event that will take care of updating value, internals and emit change
     if (this.defaultValue) {
-      this.datepickerInstance?.setDate(this.defaultValue);
+      const defaultValue = new Date(Datepicker.parseDate(this.defaultValue, this.format));
+      this.datepickerInstance?.setDate(defaultValue);
     } else {
       this.datepickerInstance?.setDate({ clear: true });
     }
+  }
+
+  @Method()
+  async willValidate(): Promise<boolean> {
+    return this.internals.willValidate;
   }
 
   @Watch('datesDisabled')
@@ -136,16 +182,22 @@ export class OdsDatepicker {
     this.datepickerInstance?.setOptions({ minDate: this.min });
   }
 
+  @Watch('value')
+  onValueChangeFromJs(): void {
+    this.value && this.datepickerInstance?.setDate(new Date(this.value.toDateString()));
+  }
+
   componentWillLoad(): void {
     // Those components are used in some string templates, not JSX,
     // thus Stencil does not detect them correctly and they're not embedded in the build,
     // so we have to manually declare their usage here
     h('ods-icon');
 
-    if (!this.value) {
-      this.value = this.defaultValue ? new Date(this.defaultValue) : null;
+    // We set the value before the observer starts to avoid calling the mutation callback twice
+    // as it will be called on componentDidLoad (when native element validity is up-to-date)
+    if (!this.value && this.value !== 0 && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
+      this.value = this.defaultValue ? new Date(Datepicker.parseDate(this.defaultValue, this.format)) : null;
     }
-    setFormValue(this.internals, formatDate(this.value, this.format));
   }
 
   componentDidLoad(): void {
@@ -184,21 +236,19 @@ export class OdsDatepicker {
       // Triggered either by user selection or `setDate` instance method call
       this.inputElement.addEventListener('changeDate', (event: Event) => {
         const newDate: Date = (event as CustomEvent).detail.date;
+        // console.log('changeDate', (event as CustomEvent).detail, newDate, this.value);
         const formattedNewDate = formatDate(newDate, this.format);
 
         const previousValue = this.value;
+        // console.log('changeDate newDate', newDate instanceof Date ? newDate.toISOString() : newDate);
+        // console.log('changeDate previousValue', previousValue instanceof Date ? previousValue.toISOString() : previousValue);
         this.value = newDate ?? null;
-        setFormValue(this.internals, formattedNewDate);
-
-        this.odsChange.emit({
-          formattedValue: formattedNewDate,
-          name: this.name,
-          previousValue,
-          validity: this.inputElement?.validity,
-          value: this.value,
-        });
+        this.onValueChange(formattedNewDate, previousValue);
       });
     }
+
+    // Init the internals correctly as native element validity is now up-to-date
+    this.onValueChange(formatDate(this.value, this.format));
   }
 
   async formResetCallback(): Promise<void> {
@@ -223,22 +273,50 @@ export class OdsDatepicker {
     }
   }
 
+  private onBlur(): void {
+    this.isInvalid = !this.internals.validity.valid;
+    this.odsBlur.emit();
+  }
+
+  private onValueChange(formattedValue: string, previousValue?: Date | null): void {
+    updateInternals(this.internals, formattedValue, this.inputElement);
+
+    // In case the value gets updated from an other source than a blur event
+    // we may have to perform an internal validity state update
+    if (this.shouldUpdateIsInvalidState) {
+      this.isInvalid = !this.internals.validity.valid;
+      this.shouldUpdateIsInvalidState = false;
+    }
+
+    this.odsChange.emit({
+      formattedValue,
+      name: this.name,
+      previousValue,
+      validity: this.internals.validity,
+      value: this.value,
+    });
+  }
+
   render(): FunctionalComponent {
     const hasClearableAction = this.isClearable && !this.isLoading && !!this.value;
 
     return (
-      <Host class="ods-datepicker">
+      <Host class="ods-datepicker"
+        disabled={ this.isDisabled }
+        readonly={ this.isReadonly }>
         <input
           aria-label={ this.ariaLabel }
           aria-labelledby={ this.ariaLabelledby }
           class={{
             'ods-datepicker__input': true,
             'ods-datepicker__input--clearable': hasClearableAction,
-            'ods-datepicker__input--error': this.hasError,
+            'ods-datepicker__input--error': this.hasError || this.isInvalid,
             'ods-datepicker__input--loading': this.isLoading,
           }}
           disabled={ this.isDisabled }
           name={ this.name }
+          onBlur={ () => this.onBlur() }
+          onFocus={ () => this.odsFocus.emit() }
           placeholder={ this.placeholder }
           readonly={ this.isReadonly }
           ref={ (el): HTMLInputElement => this.inputElement = el as HTMLInputElement }

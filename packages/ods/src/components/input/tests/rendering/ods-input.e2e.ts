@@ -126,4 +126,62 @@ describe('ods-input rendering', () => {
       });
     });
   });
+
+  describe('error state', () => {
+    it('should render in error on form submit, before any changes, if invalid', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-input is-required></ods-input></form>');
+
+      await page.evaluate(() => {
+        document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+      });
+      await page.waitForChanges();
+
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
+      });
+      expect(hasErrorClass).toBe(true);
+    });
+
+    it('should toggle the error state on value change', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-input is-required></ods-input></form>');
+
+      await el.type('abcd');
+      await page.waitForChanges();
+
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
+      });
+      expect(hasErrorClass).toBe(false);
+
+      await el.callMethod('clear');
+      await page.click('body', { offset: { x: 200, y: 200 } }); // Blur
+      await page.waitForChanges();
+
+      const hasErrorClass2 = await page.evaluate(() => {
+        return document.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
+      });
+      await page.waitForChanges();
+      expect(hasErrorClass2).toBe(true);
+    });
+
+    it('should enforce the error state if has-error is set even on valid input', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-input is-required has-error value="dummy"></ods-input></form>');
+      await page.waitForChanges();
+
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
+      });
+      expect(hasErrorClass).toBe(true);
+
+      await page.evaluate(() => {
+        document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+      });
+      await page.waitForChanges();
+
+      const hasErrorClass2 = await page.evaluate(() => {
+        return document.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
+      });
+      expect(hasErrorClass2).toBe(true);
+    });
+  });
 });

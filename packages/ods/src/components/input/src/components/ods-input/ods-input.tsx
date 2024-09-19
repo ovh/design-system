@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
@@ -26,6 +26,7 @@ export class OdsInput {
 
   @AttachInternals() private internals!: ElementInternals;
 
+  @State() private isInvalid: boolean = false;
   @State() private isPassword = false;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
@@ -56,6 +57,15 @@ export class OdsInput {
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
   @Event() odsToggleMask!: EventEmitter<void>;
+
+  @Listen('invalid')
+  onInvalidEvent(event: Event): void {
+    // Remove the native validation message popup
+    event.preventDefault();
+
+    // Enforce the state here as we may still be in pristine state (if the form is submitted before any changes occurs)
+    this.isInvalid = true;
+  }
 
   @Method()
   async checkValidity(): Promise<boolean> {
@@ -149,6 +159,11 @@ export class OdsInput {
     }
   }
 
+  private onBlur(): void {
+    this.isInvalid = !this.internals.validity.valid;
+    this.odsBlur.emit();
+  }
+
   private onInput(): void {
     if (this.isDisabled) {
       return;
@@ -210,7 +225,7 @@ export class OdsInput {
           class={{
             'ods-input__input': true,
             'ods-input__input--clearable': hasClearableIcon,
-            'ods-input__input--error': this.hasError,
+            'ods-input__input--error': this.hasError || this.isInvalid,
             'ods-input__input--loading': this.isLoading,
             'ods-input__input--toggle-mask': hasToggleMaskIcon,
           }}
@@ -221,7 +236,7 @@ export class OdsInput {
           min={ this.min }
           minlength={ this.minlength }
           name={ this.name }
-          onBlur={ (): CustomEvent<void> => this.odsBlur.emit() }
+          onBlur={ (): void => this.onBlur() }
           onFocus={ (): CustomEvent<void> => this.odsFocus.emit() }
           onInput={ (): void => this.onInput() }
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }

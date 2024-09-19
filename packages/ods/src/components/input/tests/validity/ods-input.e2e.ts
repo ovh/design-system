@@ -260,4 +260,33 @@ describe('ods-input validity', () => {
       });
     });
   });
+
+  describe('in a form', () => {
+    it('should not submit the form on submit before any changes if input is invalid', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-input is-required></ods-input></form>');
+
+      const formValidity = await page.evaluate(() => {
+        const form = document.querySelector<HTMLFormElement>('form');
+        form?.requestSubmit();
+        return form?.reportValidity();
+      });
+
+      expect(await el.callMethod('checkValidity')).toBe(false);
+      expect(formValidity).toBe(false);
+    });
+
+    it('should submit the form if input is valid', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-input is-required value="dummy"></ods-input></form>');
+
+      await el.type('abcd');
+      const formValidity = await page.evaluate(() => {
+        const form = document.querySelector<HTMLFormElement>('form');
+        form?.requestSubmit();
+        return form?.reportValidity();
+      });
+
+      expect(await el.callMethod('checkValidity')).toBe(true);
+      expect(formValidity).toBe(true);
+    });
+  });
 });

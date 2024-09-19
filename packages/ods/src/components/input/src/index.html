@@ -102,7 +102,7 @@
   </form>
   <script>
     const formElement = document.querySelector('#input-form');
-    // const inputFormInput = document.querySelector('#input-form-input');
+    const inputFormFirstName = document.querySelector('#input-form-first-name');
     // const inputCheckValidityFormButton = document.querySelector('#input-form-check-validity-button');
     // const inputClearFormButton = document.querySelector('#input-form-clear-button');
     // const inputResetFormButton = document.querySelector('#input-form-reset-button');
@@ -120,11 +120,13 @@
     //   await inputFormInput.reset();
     // });
 
-    inputSubmitFormButton.addEventListener('click', (e) => {
+    inputSubmitFormButton.addEventListener('click', async(e) => {
       // e.preventDefault(); // comment to test native validation messages
       const formData = new FormData(formElement);
       console.log('formData', formData);
+      console.log(await inputFormFirstName?.getValidity())
     });
+
   </script>
 
 <!--

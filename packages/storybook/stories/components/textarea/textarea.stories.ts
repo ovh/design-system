@@ -134,7 +134,7 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    isRequired: {
+    isResizable: {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: false },

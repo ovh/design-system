@@ -10,8 +10,29 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg) => html`
-  <ods-password class="my-password"
+  render: (arg) => {
+    const validityStateTemplate = html`<br>
+    <div id="validity-state-password" style="display: grid; row-gap: 5px;"></div>
+    <script>
+      (() => {
+          const divValidityState = document.querySelector('#validity-state-password');
+          const password = document.querySelector('.my-password');
+          renderValidityState();
+          password.addEventListener('odsChange', () => {
+            renderValidityState();
+          })
+          function renderValidityState() {
+            password.getValidity().then((validity) => {
+              divValidityState.innerHTML = '';
+              for (let key in validity) {
+                divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+              }
+            });
+          }
+      })();
+    </script>`;
+    return html`
+    <ods-password class="my-password"
       ariaLabel="${arg.ariaLabel}"
       ariaLabelledby="${arg.ariaLabelledby}"
       has-error="${arg.hasError}"
@@ -22,12 +43,14 @@ export const Demo: StoryObj = {
       pattern="${arg.pattern}"
       placeholder="${arg.placeholder}">
       </ods-password>
-  <style>
-  .my-password::part(input) {
-    ${arg.customCss}
-  }
-  </style>
-  `,
+    <style>
+    ${ arg.validityState ? validityStateTemplate : '' }
+    .my-password::part(input) {
+      ${arg.customCss}
+    }
+    </style>
+    `;
+  },
   argTypes: orderControls({
     ariaLabel: {
       table: {
@@ -94,6 +117,14 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
+    isRequired: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
     pattern: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -110,6 +141,14 @@ export const Demo: StoryObj = {
       },
       control: 'text',
     },
+    validityState: {
+      table: {
+        category: CONTROL_CATEGORY.accessibility,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
   }),
   args: {
     hasError: false,
@@ -117,6 +156,8 @@ export const Demo: StoryObj = {
     isDisabled: false,
     isLoading: false,
     isReadonly: false,
+    isRequired: false,
+    validityState: false,
   },
 };
 
@@ -212,4 +253,31 @@ export const CustomCSS: StoryObj = {
   }
 </style>
   `,
+};
+
+export const ValidityState: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-password is-required id="password-validity-state-demo">
+</ods-password>
+<div id="validity-state-demo"></div>
+<script>
+  (() => {
+      const divValidityState = document.querySelector('#validity-state-demo');
+      const password = document.querySelector('#password-validity-state-demo');
+      password.addEventListener('odsChange', async () => {
+        await renderValidityState()
+      })
+      function renderValidityState() {
+        return password.getValidity().then((validity) => {
+        console.log('validity', validity)
+          divValidityState.innerHTML = '';
+          for (let key in validity) {
+            divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+          }
+        });
+      }
+  })();
+</script>
+`,
 };

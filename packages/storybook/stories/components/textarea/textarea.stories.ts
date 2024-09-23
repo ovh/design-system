@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { html,  } from 'lit-html';
+import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
 
 const meta: Meta = {
@@ -118,7 +118,7 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    isResizable: {
+    isRequired: {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: false },
@@ -126,7 +126,7 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    isRequired: {
+    isResizable: {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: false },
@@ -164,8 +164,8 @@ export const Demo: StoryObj = {
     hasSpellcheck: false,
     isDisabled: false,
     isReadonly: false,
-    isResizable: false,
     isRequired: false,
+    isResizable: false,
     validityState: false,
   },
 };

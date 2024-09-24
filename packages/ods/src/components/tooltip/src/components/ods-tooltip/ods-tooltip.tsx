@@ -8,7 +8,7 @@ import { ODS_TOOLTIP_POSITION, type OdsTooltipPosition } from '../../constants/t
   tag: 'ods-tooltip',
 })
 export class OdsTooltip {
-  private arrowElement!: HTMLElement;
+  private arrowElement?: HTMLElement;
   private triggerElement?: HTMLElement | null;
   private cleanUpCallback: () => void = () => {};
   private boundHide = this.hide.bind(this);

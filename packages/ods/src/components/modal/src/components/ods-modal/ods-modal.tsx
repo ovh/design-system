@@ -8,7 +8,7 @@ import { ODS_MODAL_COLOR, type OdsModalColor } from '../../constants/modal-color
   tag: 'ods-modal',
 })
 export class OdsModal {
-  private modalDialog!: HTMLDialogElement;
+  private modalDialog?: HTMLDialogElement;
 
   @Element() el!: HTMLElement;
 
@@ -30,8 +30,8 @@ export class OdsModal {
       const onAnimationEnd = (): void => {
         this.isOpen = false;
         this.odsClose.emit();
-        this.modalDialog.classList.remove('ods-modal__dialog--close-animation');
-        this.modalDialog.removeEventListener('animationend', onAnimationEnd);
+        this.modalDialog?.classList.remove('ods-modal__dialog--close-animation');
+        this.modalDialog?.removeEventListener('animationend', onAnimationEnd);
       };
 
       this.modalDialog.addEventListener('animationend', onAnimationEnd);
@@ -45,7 +45,7 @@ export class OdsModal {
   async open(): Promise<void> {
     document.body.style.setProperty('overflow', 'hidden');
     this.isOpen = true;
-    this.modalDialog.focus();
+    this.modalDialog?.focus();
     this.odsOpen.emit();
   }
 
@@ -77,14 +77,14 @@ export class OdsModal {
   componentDidLoad(): void {
     if (this.isOpen) {
       document.body.style.setProperty('overflow', 'hidden');
-      this.modalDialog.showModal?.();
-      this.modalDialog.focus();
+      this.modalDialog?.showModal?.();
+      this.modalDialog?.focus();
     }
   }
 
   disconnectedCallback(): void {
     document.body.style.removeProperty('overflow');
-    this.modalDialog.close?.();
+    this.modalDialog?.close?.();
     this.isOpen = false;
     this.odsClose.emit();
   }

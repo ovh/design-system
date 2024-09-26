@@ -94,6 +94,7 @@
   <form id="my-form">
     <ods-quantity id="form-quantity"
                   is-required
+                  default-value="0"
                   name="form-quantity">
     </ods-quantity>
 
@@ -122,6 +123,12 @@
 
     resetFormButton.addEventListener('click', async() => {
       await formQuantity.reset();
+    });
+
+    ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{
+      formQuantity.addEventListener(eventName, (event) => {
+        console.log(eventName, event);
+      });
     });
 
     submitFormButton.addEventListener('click', (e) => {

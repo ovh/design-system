@@ -92,4 +92,62 @@ describe('ods-quantity rendering', () => {
       expect(buttonAdd.getAttribute('color')).toBe(ODS_BUTTON_COLOR.critical);
     });
   });
+
+  describe('error state', () => {
+    it('should render in error on form submit, before any changes, if invalid', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-quantity is-required></ods-quantity></form>');
+
+      await page.evaluate(() => {
+        document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+      });
+      await page.waitForChanges();
+
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-quantity')?.shadowRoot?.querySelector('.ods-quantity__input')?.shadowRoot?.querySelector('.ods-input__input')?.classList.contains('ods-input__input--error');
+      });
+      expect(hasErrorClass).toBe(true);
+    });
+
+    it('should toggle the error state on value change', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-quantity is-required></ods-quantity></form>');
+
+      await el.type('0');
+      await page.waitForChanges();
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-quantity')?.shadowRoot?.querySelector('.ods-quantity__input')?.shadowRoot?.querySelector('.ods-input__input')?.classList.contains('ods-input__input--error');
+      });
+      expect(hasErrorClass).toBe(false);
+
+      await el.callMethod('clear');
+      await page.click('body', { offset: { x: 400, y: 400 } }); // Blur
+      await page.waitForChanges();
+      await new Promise(resolve => setTimeout(resolve, 20000));
+
+      const hasErrorClass2 = await page.evaluate(() => {
+        return document.querySelector('ods-quantity')?.shadowRoot?.querySelector('.ods-quantity__input')?.shadowRoot?.querySelector('.ods-input__input')?.classList.contains('ods-input__input--error');
+      });
+      await page.waitForChanges();
+      expect(hasErrorClass2).toBe(true);
+    });
+
+    it('should enforce the error state if has-error is set even on valid quantity', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-quantity is-required has-error value="0"></ods-quantity></form>');
+      await page.waitForChanges();
+
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-quantity')?.shadowRoot?.querySelector('.ods-quantity__input')?.shadowRoot?.querySelector('.ods-input__input')?.classList.contains('ods-input__input--error');
+      });
+      expect(hasErrorClass).toBe(true);
+
+      await page.evaluate(() => {
+        document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+      });
+      await page.waitForChanges();
+
+      const hasErrorClass2 = await page.evaluate(() => {
+        return document.querySelector('ods-quantity')?.shadowRoot?.querySelector('.ods-quantity__input')?.shadowRoot?.querySelector('.ods-input__input')?.classList.contains('ods-input__input--error');
+      });
+      expect(hasErrorClass2).toBe(true);
+    });
+  });
 });

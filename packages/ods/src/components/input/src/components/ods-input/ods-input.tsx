@@ -121,6 +121,7 @@ export class OdsInput {
     this.onMaskedChange();
 
     this.observer = new MutationObserver((mutations: MutationRecord[]) => {
+
       for (const mutation of mutations) {
         if (mutation.attributeName === 'value') {
           this.onValueChange(mutation.oldValue);
@@ -140,6 +141,7 @@ export class OdsInput {
     this.onValueChange();
 
     this.observer?.observe(this.el, {
+      attributes: true,
       attributeFilter: ['value'],
       attributeOldValue: true,
     });
@@ -176,10 +178,14 @@ export class OdsInput {
 
     this.odsChange.emit({
       name: this.name,
-      previousValue, // TODO always string if coming from mutation oldValue => need to parse if type number
+      previousValue: this.isNumeric(previousValue) ? Number(previousValue) : previousValue,
       validity: this.internals.validity,
       value: this.value,
     });
+  }
+
+  private isNumeric(n?: string | number | null): boolean {
+    return !!n && !isNaN(parseFloat(n.toString())) && isFinite(n as number);
   }
 
   render(): FunctionalComponent {

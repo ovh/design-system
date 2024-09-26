@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
@@ -21,6 +21,8 @@ export class OdsQuantity {
 
   @AttachInternals() internals!: ElementInternals;
 
+  @State() isInvalid: boolean = false;
+
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
   @Prop({ reflect: true }) public defaultValue?: number;
@@ -41,6 +43,15 @@ export class OdsQuantity {
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
 
+  @Listen('invalid')
+  onInvalidEvent(event: Event): void {
+    // Remove the native validation message popup
+    event.preventDefault();
+
+    // Enforce the state here as we may still be in pristine state (if the form is submitted before any changes occurs)
+    this.isInvalid = true;
+  }
+
   @Method()
   async checkValidity(): Promise<boolean> {
     return this.internals.checkValidity();
@@ -48,32 +59,43 @@ export class OdsQuantity {
 
   @Method()
   async clear(): Promise<void> {
-    return this.odsInput?.clear();
+    await this.odsInput?.clear();
+    setTimeout(() => this.isInvalid = !this.internals.validity.valid, 0);
+  }
+
+  @Method()
+  async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
   }
 
   @Method()
   async getValidity(): Promise<ValidityState | undefined> {
-    return this.odsInput?.getValidity();
+    return this.internals.validity;
+  }
+
+  @Method()
+  async reportValidity(): Promise<boolean> {
+    return this.internals.reportValidity();
   }
 
   @Method()
   async reset(): Promise<void> {
-    return this.odsInput?.reset();
+    await this.odsInput?.reset();
+    setTimeout(() => this.isInvalid = !this.internals.validity.valid, 0);
+  }
+
+  @Method()
+  async willValidate(): Promise<boolean> {
+    return this.internals.willValidate;
   }
 
   componentWillLoad(): void {
-    // if (!this.value && this.value !== 0) {
-    //   this.value = this.defaultValue ?? null;
-    // }
-    // setFormValue(this.internals, this.value);
-
-    if (!this.value && this.value !== 0 && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
+    if (!this.value && this.value !== 0 && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue !== undefined)) {
       this.value = this.defaultValue ?? null;
     }
   }
 
   async componentDidLoad(): Promise<void> {
-    // const validityState = await this.odsInput?.getValidity()
     await updateInternals(this.internals, this.value, this.odsInput);
   }
 
@@ -103,16 +125,22 @@ export class OdsQuantity {
     } else {
       this.value = Number(event.detail.value) ?? null;
     }
-    // setFormValue(this.internals, this.value);
+
     await updateInternals(this.internals, this.value, this.odsInput);
+  }
+
+  private getHasError(): boolean {
+    return this.hasError || this.isInvalid;
   }
 
   render(): FunctionalComponent {
     return (
-      <Host class="ods-quantity">
+      <Host class="ods-quantity"
+        disabled={ this.isDisabled }
+        readonly={ this.isReadonly }>
         <ods-button
           class="ods-quantity__button"
-          color={ this.hasError ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
+          color={ this.getHasError() ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
           exportparts="button:button-minus"
           isDisabled={ isMinusButtonDisabled(this.isDisabled, this.isReadonly, this.value, this.min) }
           icon={ ODS_ICON_NAME.minus }
@@ -128,7 +156,7 @@ export class OdsQuantity {
           class="ods-quantity__input"
           defaultValue={ this.defaultValue }
           exportparts="input"
-          hasError={ this.hasError }
+          hasError={ this.getHasError() }
           isDisabled={ this.isDisabled }
           isReadonly={ this.isReadonly }
           isRequired={ this.isRequired }
@@ -146,7 +174,7 @@ export class OdsQuantity {
 
         <ods-button
           class="ods-quantity__button"
-          color={ this.hasError ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
+          color={ this.getHasError() ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
           exportparts="button:button-plus"
           isDisabled={ isPlusButtonDisabled(this.isDisabled, this.isReadonly, this.value, this.max) }
           icon={ ODS_ICON_NAME.plus }

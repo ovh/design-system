@@ -66,6 +66,12 @@ export class OdsInput {
     this.isInvalid = true;
   }
 
+  @Listen('updateIsInvalid')
+  onUpdateIsInvalid(event: CustomEvent): void {
+    event.stopPropagation();
+    this.isInvalid = !this.internals.validity?.valid;
+  }
+
   @Method()
   async checkValidity(): Promise<boolean> {
     return this.internals.checkValidity();
@@ -89,8 +95,12 @@ export class OdsInput {
     return this.internals.validity;
   }
 
+  /**
+   * Also update error state
+   */
   @Method()
   async reportValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
     return this.internals.reportValidity();
   }
 
@@ -121,7 +131,6 @@ export class OdsInput {
     this.onMaskedChange();
 
     this.observer = new MutationObserver((mutations: MutationRecord[]) => {
-
       for (const mutation of mutations) {
         if (mutation.attributeName === 'value') {
           this.onValueChange(mutation.oldValue);
@@ -141,7 +150,6 @@ export class OdsInput {
     this.onValueChange();
 
     this.observer?.observe(this.el, {
-      attributes: true,
       attributeFilter: ['value'],
       attributeOldValue: true,
     });

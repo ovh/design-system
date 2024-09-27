@@ -4,6 +4,8 @@ import { type OdsQuantity } from '../../src';
 describe('ods-quantity validity', () => {
   let el: E2EElement;
   let page: E2EPage;
+  let buttonMinus: E2EElement;
+  let buttonAdd: E2EElement;
 
   async function setup(content: string): Promise<void> {
     page = await newE2EPage();
@@ -12,6 +14,8 @@ describe('ods-quantity validity', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('ods-quantity');
+    buttonMinus = await page.find('ods-quantity >>> [exportparts="button:button-minus"]');
+    buttonAdd = await page.find('ods-quantity >>> [exportparts="button:button-plus"]');
   }
 
   beforeEach(jest.clearAllMocks);
@@ -121,6 +125,28 @@ describe('ods-quantity validity', () => {
 
         expect(await el.callMethod('checkValidity')).toBe(false);
       });
+
+      it('should update the validity state accordingly, with increment', async() => {
+        await setup('<ods-quantity is-required></ods-quantity>');
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+
+        await buttonAdd.click();
+        await page.waitForChanges();
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
+      });
+
+      it('should update the validity state accordingly, with decrement', async() => {
+        await setup('<ods-quantity is-required></ods-quantity>');
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+
+        await buttonMinus.click();
+        await page.waitForChanges();
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
+      });
     });
 
     describe('getValidationMessage', () => {
@@ -219,7 +245,7 @@ describe('ods-quantity validity', () => {
 
         await el.callMethod('clear');
         await page.waitForChanges();
-        await new Promise(resolve => setTimeout(resolve, 200));
+        await new Promise((resolve) => setTimeout(resolve, 200));
 
         expect(await el.callMethod('checkValidity')).toBe(false);
         await el.callMethod('reset');
@@ -235,7 +261,7 @@ describe('ods-quantity validity', () => {
 
         await el.callMethod('clear');
         await page.waitForChanges();
-        await new Promise(resolve => setTimeout(resolve, 200));
+        await new Promise((resolve) => setTimeout(resolve, 200));
 
         expect(await el.callMethod('checkValidity')).toBe(false);
 

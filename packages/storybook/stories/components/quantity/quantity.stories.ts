@@ -11,7 +11,28 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg) => html`
+  render: (arg) => {
+    const validityStateTemplate = html`<br>
+    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
+    <script>
+      (async () => {
+          const divValidityState = document.querySelector('#validity-state');
+          const quantity = document.querySelector('.my-quantity');
+          await renderValidityState();
+          quantity.addEventListener('odsChange', async () => {
+            await renderValidityState();
+          })
+          async function renderValidityState() {
+            console.log('validity', await quantity.getValidity())
+            const validity = await quantity.getValidity()
+            divValidityState.innerHTML = '';
+            for (let key in validity) {
+              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+            }
+          }
+      })();
+    </script>`;
+    return html`
   <ods-quantity class="my-quantity"
       ariaLabel="${arg.ariaLabel}"
       ariaLabelledby="${arg.ariaLabelledby}"
@@ -19,23 +40,26 @@ export const Demo: StoryObj = {
       is-clearable="${arg.isClearable}"
       is-disabled="${arg.isDisabled}"
       is-readonly="${arg.isReadonly}"
+      is-required="${arg.isRequired}"
       max="${arg.max}"
       min="${arg.min}"
       placeholder="${arg.placeholder}"
       step="${arg.step}">
       </ods-quantity>
-<style>
-  .my-quantity::part(input) {
-    ${arg.customCssInput}
-  }
-  .my-quantity::part(button-minus) {
-    ${arg.customCssButtonMinus}
-  }
-  .my-quantity::part(button-plus) {
-    ${arg.customCssButtonAdd}
-  }
-</style>
-  `,
+  ${ arg.validityState ? validityStateTemplate : '' }
+  <style>
+    .my-quantity::part(input) {
+      ${arg.customCssInput}
+    }
+    .my-quantity::part(button-minus) {
+      ${arg.customCssButtonMinus}
+    }
+    .my-quantity::part(button-plus) {
+      ${arg.customCssButtonAdd}
+    }
+  </style>
+  `;
+  },
   argTypes: orderControls({
     ariaLabel: {
       control: 'text',
@@ -104,6 +128,14 @@ export const Demo: StoryObj = {
         type: { summary: 'boolean' },
       },
     },
+    isRequired: {
+      control: 'boolean',
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' },
+      },
+    },
     max: {
       control: 'number',
       table: {
@@ -128,11 +160,21 @@ export const Demo: StoryObj = {
         type: { summary: 'number' },
       },
     },
+    validityState: {
+      table: {
+        category: CONTROL_CATEGORY.accessibility,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
   }),
   args: {
     hasError: false,
     isDisabled: false,
     isReadonly: false,
+    isRequired: false,
+    validityState: false,
   },
 };
 
@@ -215,4 +257,31 @@ export const CustomCSS: StoryObj = {
     }
   </style>
   `,
+};
+
+export const ValidityState: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-quantity is-required id="quantity-validity-state-demo">
+</ods-quantity>
+<div id="validity-state-demo"></div>
+<script>
+  (() => {
+      const divValidityState = document.querySelector('#validity-state-demo');
+      const quantity = document.querySelector('#quantity-validity-state-demo');
+      renderValidityState();
+      quantity.addEventListener('odsChange', async () => {
+        await renderValidityState();
+      })
+      async function renderValidityState() {
+        console.log('validity', await quantity.getValidity())
+        const validity = await quantity.getValidity()
+        divValidityState.innerHTML = '';
+        for (let key in validity) {
+          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+        }
+      }
+  })();
+</script>
+`,
 };

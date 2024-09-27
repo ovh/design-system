@@ -19,16 +19,16 @@ export const Demo: StoryObj = {
           const divValidityState = document.querySelector('#validity-state');
           const textarea = document.querySelector('.my-textarea');
           renderValidityState();
-          textarea.addEventListener('odsChange', () => {
-            renderValidityState();
+          textarea.addEventListener('odsChange', async () => {
+            await renderValidityState();
           })
-          function renderValidityState() {
-            textarea.getValidity().then((validity) => {
-              divValidityState.innerHTML = '';
-              for (let key in validity) {
-                divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-              }
-            });
+          async function renderValidityState() {
+            console.log('validity', await quantity.getValidity())
+            const validity = await textarea.getValidity()
+            divValidityState.innerHTML = '';
+            for (let key in validity) {
+              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+            }
           }
       })();
     </script>`;
@@ -275,16 +275,16 @@ export const ValidityState: StoryObj = {
   (() => {
       const divValidityState = document.querySelector('#validity-state-demo');
       const textarea = document.querySelector('#textarea-validity-state-demo');
-      textarea.addEventListener('odsChange', () => {
-        renderValidityState()
+      textarea.addEventListener('odsChange', async () => {
+        await renderValidityState();
       })
-      function renderValidityState() {
-        textarea.getValidity().then((validity) => {
-          divValidityState.innerHTML = '';
-          for (let key in validity) {
-            divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-          }
-        });
+      async function renderValidityState() {
+        console.log('validity', await quantity.getValidity())
+        const validity = await textarea.getValidity()
+        divValidityState.innerHTML = '';
+        for (let key in validity) {
+          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+        }
       }
   })();
 </script>

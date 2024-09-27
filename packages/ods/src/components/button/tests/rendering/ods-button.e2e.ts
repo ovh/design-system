@@ -27,13 +27,29 @@ describe('ods-button rendering', () => {
   });
 
   describe('icon', () => {
+    const dummyIcon = 'star';
     it('should render with an icon', async() => {
-      const dummyIcon = 'star';
       await setup(`<ods-button icon="${dummyIcon}"></ods-button>`);
 
       const customIcon = await button.find(`ods-icon[name="${dummyIcon}"]`);
 
       expect(customIcon).not.toBeNull();
+    });
+
+    it('should render icon on the left', async() => {
+      await setup(`<ods-button icon="${dummyIcon}"></ods-button>`);
+
+      const buttonStyle = await button.getComputedStyle();
+
+      expect(buttonStyle.getPropertyValue('flex-direction')).toBe('row');
+    });
+
+    it('should render icon on the right', async() => {
+      await setup(`<ods-button icon="${dummyIcon}" icon-alignment="right"></ods-button>`);
+
+      const buttonStyle = await button.getComputedStyle();
+
+      expect(buttonStyle.getPropertyValue('flex-direction')).toBe('row-reverse');
     });
   });
 

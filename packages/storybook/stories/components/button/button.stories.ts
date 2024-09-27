@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import {
   ODS_BUTTON_COLOR,
   ODS_BUTTON_COLORS,
+  ODS_BUTTON_ICON_ALIGNMENT,
+  ODS_BUTTON_ICON_ALIGNMENTS,
   ODS_BUTTON_SIZE,
   ODS_BUTTON_SIZES,
   ODS_BUTTON_VARIANT,
@@ -24,6 +26,7 @@ export const Demo: StoryObj = {
 <ods-button class="my-button-demo"
             color="${arg.color}"
             icon="${arg.icon}"
+            icon-alignment="${arg.iconAlignment}"
             is-disabled="${arg.isDisabled}"
             is-loading="${arg.isLoading}"
             label="${arg.label}"
@@ -63,6 +66,15 @@ export const Demo: StoryObj = {
       control: { type: 'select' },
       options: ODS_ICON_NAMES,
       description: 'See the whole list [here](/?path=/docs/ods-components-icon--documentation#name)'
+    },
+    iconAlignment: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: ODS_BUTTON_ICON_ALIGNMENT.left },
+        type: { summary: ODS_BUTTON_ICON_ALIGNMENTS }
+      },
+      control: { type: 'select' },
+      options: ODS_BUTTON_ICON_ALIGNMENTS
     },
     isDisabled: {
       table: {
@@ -186,10 +198,17 @@ export const Variant: StoryObj = {
   `,
 };
 
-export const WithIcon: StoryObj = {
+export const WithLeftIcon: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-    <ods-button label="Button" icon="${ODS_ICON_NAME.home}"></ods-button>
+    <ods-button label="Button" icon="${ODS_ICON_NAME.home}" icon-alignment="${ODS_BUTTON_ICON_ALIGNMENT.left}"></ods-button>
+  `,
+};
+
+export const WithRightIcon: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+    <ods-button label="Button" icon="${ODS_ICON_NAME.home}" icon-alignment="${ODS_BUTTON_ICON_ALIGNMENT.right}"></ods-button>
   `,
 };
 

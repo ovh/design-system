@@ -1,5 +1,5 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT, OdsButton } from '../../src';
+import { ODS_BUTTON_COLOR, ODS_BUTTON_ICON_ALIGNMENT, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT, OdsButton } from '../../src';
 
 describe('ods-button rendering', () => {
   let page: SpecPage;
@@ -43,6 +43,22 @@ describe('ods-button rendering', () => {
       await setup('<ods-button></ods-button>');
 
       expect(root?.getAttribute('icon')).toBeNull();
+    });
+  });
+
+  describe('iconAlignment', () => {
+    it('should be reflected', async() => {
+      const dummyValue = 'dummy value';
+
+      await setup(`<ods-button icon-alignment="${dummyValue}">Dummy Button</ods-button>`);
+
+      expect(root?.getAttribute('icon-alignment')).toBe(dummyValue);
+    });
+
+    it('should render with expected default value', async() => {
+      await setup('<ods-button>Dummy Button</ods-button>');
+
+      expect(root?.getAttribute('icon-alignment')).toBe(ODS_BUTTON_ICON_ALIGNMENT.left);
     });
   });
 

@@ -3,6 +3,7 @@ import { type HTMLStencilElement } from '@stencil/core/internal';
 import { type OdsIconName } from '../../../../icon/src';
 import { ODS_SPINNER_COLOR, ODS_SPINNER_SIZE } from '../../../../spinner/src';
 import { ODS_BUTTON_COLOR, type OdsButtonColor } from '../../constants/button-color';
+import { ODS_BUTTON_ICON_ALIGNMENT, type OdsButtonIconAlignment } from '../../constants/button-icon-alignment';
 import { ODS_BUTTON_SIZE, type OdsButtonSize } from '../../constants/button-size';
 import { ODS_BUTTON_VARIANT, type OdsButtonVariant } from '../../constants/button-variant';
 import { handleClick } from '../../controller/ods-button';
@@ -22,6 +23,7 @@ export class OdsButton {
   @Prop({ reflect: true }) public color: OdsButtonColor = ODS_BUTTON_COLOR.primary;
   /** @docType OdsIconName */
   @Prop({ reflect: true }) public icon?: OdsIconName;
+  @Prop({ reflect: true }) public iconAlignment?: OdsButtonIconAlignment = ODS_BUTTON_ICON_ALIGNMENT.left;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isLoading: boolean = false;
   @Prop({ reflect: true }) public label!: string;
@@ -47,6 +49,7 @@ export class OdsButton {
             ods-button__button--${this.color}
             ods-button__button--${this.size}
             ods-button__button--${this.variant}
+            ${this.iconAlignment === 'right' ? 'ods-button__button--icon-right' : ''}
           `}
           disabled={ this.isDisabled || this.isLoading }
           part="button"

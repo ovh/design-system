@@ -65,6 +65,12 @@ export class OdsInput {
     this.isInvalid = true;
   }
 
+  @Listen('updateIsInvalid')
+  onUpdateIsInvalid(event: CustomEvent): void {
+    event.stopPropagation();
+    this.isInvalid = !this.internals.validity?.valid;
+  }
+
   @Method()
   public async checkValidity(): Promise<boolean> {
     return this.internals.checkValidity();
@@ -91,6 +97,9 @@ export class OdsInput {
     return this.internals.validity;
   }
 
+  /**
+   * Also update error state
+   */
   @Method()
   public async reportValidity(): Promise<boolean> {
     this.isInvalid = !this.internals.validity.valid;

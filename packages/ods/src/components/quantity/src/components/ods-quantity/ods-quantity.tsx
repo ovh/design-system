@@ -18,6 +18,7 @@ const VALUE_DEFAULT_VALUE = null;
 })
 export class OdsQuantity {
   private odsInput?: HTMLElement & OdsInput;
+  private updateIsInvalid: boolean = false;
 
   @AttachInternals() internals!: ElementInternals;
 
@@ -60,7 +61,7 @@ export class OdsQuantity {
   @Method()
   async clear(): Promise<void> {
     await this.odsInput?.clear();
-    setTimeout(() => this.isInvalid = !this.internals.validity.valid, 0);
+    this.updateIsInvalid = true;
   }
 
   @Method()
@@ -81,7 +82,7 @@ export class OdsQuantity {
   @Method()
   async reset(): Promise<void> {
     await this.odsInput?.reset();
-    setTimeout(() => this.isInvalid = !this.internals.validity.valid, 0);
+    this.updateIsInvalid = true;
   }
 
   @Method()
@@ -103,20 +104,26 @@ export class OdsQuantity {
     await this.reset();
   }
 
-  private decrement(): void {
+  private async decrement(): Promise<void> {
     if (this.isDisabled || this.isReadonly) {
       return;
     }
     const step = this.step || 1;
     this.value = this.value !== null ? Number(this.value) - step : 0;
+    this.updateIsInvalid = true;
   }
 
-  private increment(): void {
+  private async increment(): Promise<void> {
     if (this.isDisabled || this.isReadonly) {
       return;
     }
     const step = this.step || 1;
     this.value = this.value !== null ? Number(this.value) + step : 0;
+    this.updateIsInvalid = true;
+  }
+
+  private onOdsBlur(): void {
+    this.isInvalid = !this.internals.validity.valid;
   }
 
   private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
@@ -127,6 +134,11 @@ export class OdsQuantity {
     }
 
     await updateInternals(this.internals, this.value, this.odsInput);
+    // update here after update internals
+    if (this.updateIsInvalid) {
+      await this.odsInput?.reportValidity();
+      this.isInvalid = !this.internals.validity.valid;
+    }
   }
 
   private getHasError(): boolean {
@@ -161,6 +173,7 @@ export class OdsQuantity {
           isReadonly={ this.isReadonly }
           isRequired={ this.isRequired }
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
+          onOdsBlur={ () => this.onOdsBlur() }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
           max={ this.max }
           min={ this.min }

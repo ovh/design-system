@@ -53,6 +53,10 @@
       }
     }
 
+    &--icon-right {
+      flex-direction: row-reverse;
+    }
+
     &__spinner {
       display: flex;
       position: absolute;

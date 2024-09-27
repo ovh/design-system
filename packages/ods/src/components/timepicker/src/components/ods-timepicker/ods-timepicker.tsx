@@ -1,13 +1,15 @@
 import type { OdsSelect } from '../../../../select/src';
 import type { OdsTimepickerChangeEventDetail } from '../../interfaces/event';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
-import { AttachInternals, Component, Element, Event, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { ODS_INPUT_TYPE, type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
 import { type OdsSelectChangeEvent } from '../../../../select/src';
 import { type OdsTimezonePreset } from '../../constant/timezone-preset';
 import { type OdsTimezone } from '../../constant/timezones';
-import { formatValue, getCurrentTimezone, parseTimezones, setFormValue } from '../../controller/ods-timepicker';
+import { formatValue, getCurrentTimezone, parseTimezones, updateInternals } from '../../controller/ods-timepicker';
+
+const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -29,6 +31,8 @@ export class OdsTimepicker {
 
   @AttachInternals() private internals!: ElementInternals;
 
+  @State() isInvalid: boolean = false;
+
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
   @Prop({ mutable: true, reflect: true }) public currentTimezone?: OdsTimezone;
@@ -39,7 +43,7 @@ export class OdsTimepicker {
   @Prop({ reflect: true }) public isRequired: boolean = false;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public timezones?: OdsTimezone[] | OdsTimezonePreset | string;
-  @Prop({ mutable: true, reflect: true }) public value: string | null = null;
+  @Prop({ mutable: true, reflect: true }) public value: string | null = VALUE_DEFAULT_VALUE;
   @Prop({ reflect: true }) public withSeconds: boolean = false;
 
   @Event() odsBlur!: EventEmitter<void>;
@@ -48,23 +52,54 @@ export class OdsTimepicker {
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
 
+  @Listen('invalid')
+  onInvalidEvent(event: Event): void {
+    // Remove the native validation message popup
+    event.preventDefault();
+
+    // Enforce the state here as we may still be in pristine state (if the form is submitted before any changes occurs)
+    this.isInvalid = true;
+  }
+
   @Method()
-  public async clear(): Promise<void> {
-    this.odsInput?.clear();
-    this.odsSelect?.clear();
+  async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
+  }
+
+  @Method()
+  async clear(): Promise<void> {
+    await this.odsInput?.clear();
+    await this.odsSelect?.clear();
     this.odsClear.emit();
+    setTimeout(() => this.isInvalid = !this.internals.validity.valid);
   }
 
   @Method()
-  public async getValidity(): Promise<ValidityState | undefined> {
-    return this.odsInput?.getValidity();
+  async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
   }
 
   @Method()
-  public async reset(): Promise<void> {
-    this.odsInput?.reset();
-    this.odsSelect?.reset();
+  async getValidity(): Promise<ValidityState | undefined> {
+    return this.internals.validity;
+  }
+
+  @Method()
+  async reportValidity(): Promise<boolean> {
+    return this.internals.reportValidity();
+  }
+
+  @Method()
+  async reset(): Promise<void> {
+    await this.odsInput?.reset();
+    await this.odsSelect?.reset();
     this.odsReset.emit();
+    setTimeout(() => this.isInvalid = !this.internals.validity.valid);
+  }
+
+  @Method()
+  async willValidate(): Promise<boolean> {
+    return this.internals.willValidate;
   }
 
   @Watch('timezones')
@@ -75,27 +110,34 @@ export class OdsTimepicker {
   }
 
   @Watch('withSeconds')
-  formatValue(): void {
+  async formatValue(): Promise<void> {
     const value = formatValue(this.odsInput?.value as string, this.withSeconds);
 
     if (value) {
       this.previousValue = this.value ?? null;
       this.value = value;
     }
-    setFormValue(this.internals, this.value);
+    await updateInternals(this.internals, this.value, this.odsInput);
   }
 
   componentWillLoad(): void {
-    if (!this.value) {
+    if (!this.value && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
       this.value = this.defaultValue ?? null;
     }
     this.onTimezonesChange();
-    this.formatValue();
     this.defaultCurrentTimezone = this.currentTimezone;
+  }
+
+  async componentDidLoad(): Promise<void> {
+    this.formatValue();
   }
 
   async formResetCallback(): Promise<void> {
     await this.reset();
+  }
+
+  private onBlur(): void {
+    this.isInvalid = !this.internals.validity.valid;
   }
 
   private async onOdsChange(event: OdsInputChangeEvent | OdsSelectChangeEvent, isFromSelect: boolean): Promise<void> {
@@ -107,31 +149,35 @@ export class OdsTimepicker {
     } else {
       this.previousValue = event.detail.previousValue as string;
       this.value = event.detail.value as string;
-      setFormValue(this.internals, this.value);
+      await updateInternals(this.internals, this.value, this.odsInput);
     }
 
     this.odsChange.emit({
       currentTimezone: this.currentTimezone,
       name: this.name,
       previousValue: this.previousValue,
-      validity: await this.odsInput?.getValidity(),
+      validity: this.internals.validity,
       value: this.value,
     });
   }
 
   render(): FunctionalComponent {
     return (
-      <Host class="ods-timepicker">
+      <Host class="ods-timepicker"
+        disabled={ this.isDisabled }
+        readonly={ this.isReadonly }>
         <ods-input
           ariaLabel={ this.ariaLabel }
           ariaLabelledby={ this.ariaLabelledby }
           defaultValue={ this.defaultValue }
           exportparts="input"
-          hasError={ this.hasError }
+          hasError={ this.hasError || this.isInvalid }
           isDisabled={ this.isDisabled }
           isReadonly={ this.isReadonly }
+          isRequired={ this.isRequired }
           name={ this.name }
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
+          onOdsBlur={ () => this.onBlur() }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event, false) }
           onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
           onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }
@@ -146,10 +192,12 @@ export class OdsTimepicker {
           <ods-select
             class="ods-timepicker__timezones"
             defaultValue={ this.defaultCurrentTimezone }
-            hasError={ this.hasError }
+            hasError={ this.hasError || this.isInvalid }
             isDisabled={ this.isDisabled }
             isReadonly={ this.isReadonly }
+            isRequired={ this.isRequired }
             name={ this.name }
+            onOdsBlur={ () => this.onBlur() }
             onOdsChange={ (event: OdsSelectChangeEvent) => this.onOdsChange(event, true) }
             onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
             onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }

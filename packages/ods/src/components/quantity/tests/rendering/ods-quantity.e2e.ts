@@ -121,7 +121,6 @@ describe('ods-quantity rendering', () => {
       await el.callMethod('clear');
       await page.click('body', { offset: { x: 400, y: 400 } }); // Blur
       await page.waitForChanges();
-      await new Promise(resolve => setTimeout(resolve, 20000));
 
       const hasErrorClass2 = await page.evaluate(() => {
         return document.querySelector('ods-quantity')?.shadowRoot?.querySelector('.ods-quantity__input')?.shadowRoot?.querySelector('.ods-input__input')?.classList.contains('ods-input__input--error');

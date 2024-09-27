@@ -77,6 +77,7 @@ export class OdsInput {
     this.odsClear.emit();
     this.value = null;
     this.inputEl?.focus();
+    setTimeout(() => this.isInvalid = !this.internals.validity.valid, 0);
   }
 
   @Method()
@@ -98,6 +99,7 @@ export class OdsInput {
   async reset(): Promise<void> {
     this.odsReset.emit();
     this.value = this.defaultValue ?? null;
+    setTimeout(() => this.isInvalid = !this.internals.validity.valid, 0);
   }
 
   @Method()

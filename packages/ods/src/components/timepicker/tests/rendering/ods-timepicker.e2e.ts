@@ -61,4 +61,62 @@ describe('ods-timepicker rendering', () => {
       expect(selectStyle.getPropertyValue('width')).toBe(width);
     });
   });
+
+  describe('error state', () => {
+    it('should render in error on form submit, before any changes, if invalid', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-timepicker is-required></ods-timepicker></form>');
+
+      await page.evaluate(() => {
+        document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+      });
+      await page.waitForChanges();
+
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-timepicker')?.shadowRoot?.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
+      });
+      expect(hasErrorClass).toBe(true);
+    });
+
+    it('should toggle the error state on value change', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-timepicker is-required></ods-timepicker></form>');
+
+      await el.type('11:11');
+      await page.waitForChanges();
+
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-timepicker')?.shadowRoot?.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
+      });
+      expect(hasErrorClass).toBe(false);
+
+      await el.callMethod('clear');
+      await page.click('body', { offset: { x: 200, y: 200 } }); // Blur
+      await page.waitForChanges();
+
+      const hasErrorClass2 = await page.evaluate(() => {
+        return document.querySelector('ods-timepicker')?.shadowRoot?.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
+      });
+      await page.waitForChanges();
+      expect(hasErrorClass2).toBe(true);
+    });
+
+    it('should enforce the error state if has-error is set even on valid timepicker', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-timepicker is-required has-error value="dummy"></ods-timepicker></form>');
+      await page.waitForChanges();
+
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-timepicker')?.shadowRoot?.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
+      });
+      expect(hasErrorClass).toBe(true);
+
+      await page.evaluate(() => {
+        document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+      });
+      await page.waitForChanges();
+
+      const hasErrorClass2 = await page.evaluate(() => {
+        return document.querySelector('ods-timepicker')?.shadowRoot?.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
+      });
+      expect(hasErrorClass2).toBe(true);
+    });
+  });
 });

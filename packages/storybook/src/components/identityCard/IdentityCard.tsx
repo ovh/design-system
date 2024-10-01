@@ -7,6 +7,7 @@ import { StorybookLink } from '../storybookLink/StorybookLink';
 import styles from './identityCard.module.css';
 
 // TODO replace IdentityCard by IdentityCard2 and rename
+// TODO fix validateDOMNesting(...): <p> cannot appear as a descendant of <p>.
 
 type Props = {
   aliases: string[],

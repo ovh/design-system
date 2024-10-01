@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsSpinner from '@ovhcloud/ods-components/src/components/spinner/documentation/spec.md?raw';
+import SpecificationsSpinner from '@ovhcloud/ods-components/src/components/spinner/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as SpinnerStories from './spinner.stories';
 
 <Meta of={ SpinnerStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as SpinnerStories from './spinner.stories';
 
 <Canvas of={ SpinnerStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsSpinner }</Markdown>
+<TechnicalSpecification data={ SpecificationsSpinner } />
 
 ## Style customization
 

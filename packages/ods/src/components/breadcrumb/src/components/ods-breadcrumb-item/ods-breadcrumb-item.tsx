@@ -12,7 +12,6 @@ export class OdsBreadcrumbItem {
   @Prop() isLast: boolean = false;
 
   @Prop({ reflect: true }) public href!: string;
-  /** @docType OdsIconName */
   @Prop({ reflect: true }) public icon?: OdsIconName;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public label?: string;

@@ -18,17 +18,13 @@ export class OdsButton {
 
   @Element() el!: HTMLStencilElement;
 
-  /** @docType OdsButtonColor */
   @Prop({ reflect: true }) public color: OdsButtonColor = ODS_BUTTON_COLOR.primary;
-  /** @docType OdsIconName */
   @Prop({ reflect: true }) public icon?: OdsIconName;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isLoading: boolean = false;
   @Prop({ reflect: true }) public label!: string;
-  /** @docType OdsButtonSize */
   @Prop({ reflect: true }) public size: OdsButtonSize = ODS_BUTTON_SIZE.md;
   @Prop({ reflect: true }) public type: HTMLButtonElement['type'] = 'button';
-  /** @docType OdsButtonVariant */
   @Prop({ reflect: true }) public variant: OdsButtonVariant = ODS_BUTTON_VARIANT.default;
 
   @Listen('click')

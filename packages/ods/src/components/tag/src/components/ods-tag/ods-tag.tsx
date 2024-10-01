@@ -13,13 +13,10 @@ import { type OdsTagRemoveEventDetail } from '../../interfaces/events';
 export class OdsTag {
   @Element() el!: HTMLElement;
 
-  /** @docType OdsTagColor */
   @Prop({ reflect: true }) public color: OdsTagColor = ODS_TAG_COLOR.information;
-  /** @docType OdsIconName */
   @Prop({ reflect: true }) public icon?: OdsIconName;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public label!: string;
-  /** @docType OdsTagSize */
   @Prop({ reflect: true }) public size: OdsTagSize = ODS_TAG_SIZE.md;
 
   @Event() odsRemove!: EventEmitter<OdsTagRemoveEventDetail>;

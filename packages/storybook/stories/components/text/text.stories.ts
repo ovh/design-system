@@ -28,7 +28,7 @@ export const Demo: StoryObj = {
     preset: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'p' },
+        defaultValue: { summary: ODS_TEXT_PRESET.paragraph },
         type: { summary: 'string' }
       },
       control: { type: 'select' },

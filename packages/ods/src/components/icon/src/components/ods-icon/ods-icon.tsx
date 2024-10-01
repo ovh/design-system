@@ -8,7 +8,6 @@ import { type OdsIconName } from '../../constants/icon-name';
 })
 export class OdsIcon {
   @Prop({ reflect: true }) public alt?: string = '';
-  /** @docType OdsIconName */
   @Prop({ reflect: true }) public name!: OdsIconName;
 
   render(): FunctionalComponent {

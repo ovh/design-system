@@ -48,7 +48,6 @@ export class OdsDatepicker {
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
   @Prop({ reflect: true }) public datesDisabled: Date[] = [];
-  /** @docType OdsDatepickerDay[] */
   @Prop({ reflect: true }) public daysOfWeekDisabled: OdsDatepickerDay[] = [];
   @Prop({ reflect: true }) public defaultValue?: Date;
   @Prop({ reflect: true }) public format: string = 'dd/mm/yyyy';
@@ -58,7 +57,6 @@ export class OdsDatepicker {
   @Prop({ reflect: true }) public isLoading: boolean = false;
   @Prop({ reflect: true }) public isReadonly: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
-  /** @docType OdsDatepickerLocale */
   @Prop({ reflect: true }) public locale: OdsDatepickerLocale = ODS_DATEPICKER_LOCALE.en;
   @Prop({ reflect: true }) public max?: Date;
   @Prop({ reflect: true }) public min?: Date;
@@ -73,7 +71,7 @@ export class OdsDatepicker {
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     this.odsClear.emit();
     // This will trigger the "changeDate" event that will take care of updating value, internals and emit change
     this.datepickerInstance?.setDate({ clear: true });
@@ -81,22 +79,22 @@ export class OdsDatepicker {
   }
 
   @Method()
-  async close(): Promise<void> {
+  public async close(): Promise<void> {
     this.datepickerInstance?.hide();
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
+  public async getValidity(): Promise<ValidityState | undefined> {
     return this.inputElement?.validity;
   }
 
   @Method()
-  async open(): Promise<void> {
+  public async open(): Promise<void> {
     this.datepickerInstance?.show();
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     this.odsReset.emit();
 
     // Those will trigger the "changeDate" event that will take care of updating value, internals and emit change

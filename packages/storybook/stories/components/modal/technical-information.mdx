@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsModal from '@ovhcloud/ods-components/src/components/modal/documentation/spec.md?raw';
+import SpecificationsModal from '@ovhcloud/ods-components/src/components/modal/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as ModalStories from './modal.stories';
 
 <Meta of={ ModalStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as ModalStories from './modal.stories';
 
 <Canvas of={ ModalStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsModal }</Markdown>
+<TechnicalSpecification data={ SpecificationsModal } />
 
 ## Style customization
 

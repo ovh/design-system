@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsDatepicker from '@ovhcloud/ods-components/src/components/datepicker/documentation/spec.md?raw';
+import SpecificationsDatepicker from '@ovhcloud/ods-components/src/components/datepicker/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as DatepickerStories from './datepicker.stories';
 import { Datepicker as FormFieldDatepicker } from '../form-field/form-field.stories';
 
@@ -12,7 +13,7 @@ import { Datepicker as FormFieldDatepicker } from '../form-field/form-field.stor
 
 <Canvas of={ DatepickerStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsDatepicker }</Markdown>
+<TechnicalSpecification data={ SpecificationsDatepicker } />
 
 ## Examples
 

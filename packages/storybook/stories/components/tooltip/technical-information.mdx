@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsTooltip from '@ovhcloud/ods-components/src/components/tooltip/documentation/spec.md?raw';
+import SpecificationsTooltip from '@ovhcloud/ods-components/src/components/tooltip/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TooltipStories from './tooltip.stories';
 
 <Meta of={ TooltipStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as TooltipStories from './tooltip.stories';
 
 <Canvas of={ TooltipStories.Overview } sourceState='none' />
 
-<Markdown> { SpecificationsTooltip } </Markdown>
+<TechnicalSpecification data={ SpecificationsTooltip } />
 
 ## Style customization
 

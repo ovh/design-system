@@ -8,7 +8,6 @@ import { ODS_CARD_COLOR, type OdsCardColor } from '../../constants/card-color';
   tag: 'ods-card',
 })
 export class OdsCard {
-  /** @docType OdsCardColor */
   @Prop({ reflect: true }) public color: OdsCardColor = ODS_CARD_COLOR.primary;
 
   render(): FunctionalComponent {

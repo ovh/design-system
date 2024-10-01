@@ -1,6 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import SpecificationsDivider from '@ovhcloud/ods-components/src/components/divider/documentation/spec.md?raw';
+import SpecificationsDivider from '@ovhcloud/ods-components/src/components/divider/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as DividerStories from './divider.stories';
 
 <Meta of={ DividerStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as DividerStories from './divider.stories';
 
 <Canvas of={ DividerStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsDivider }</Markdown>
+<TechnicalSpecification data={ SpecificationsDivider } />
 
 ## Style customization
 

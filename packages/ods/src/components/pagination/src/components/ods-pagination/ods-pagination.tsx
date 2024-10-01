@@ -27,7 +27,6 @@ export class OdsPagination {
   @State() current: number = 1;
 
   @Prop({ reflect: true }) public defaultCurrentPage: number = 1;
-  /** @docType OdsPaginationPerPage */
   @Prop({ reflect: true }) public defaultItemsPerPage: ODS_PAGINATION_PER_PAGE = ODS_PAGINATION_PER_PAGE.option_10;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public labelTooltipNext?: string;
@@ -75,12 +74,12 @@ export class OdsPagination {
   }
 
   @Method()
-  async setCurrentPage(current: number): Promise<void> {
+  public async setCurrentPage(current: number): Promise<void> {
     this.current = current;
   }
 
   @Method()
-  async getCurrentPage(): Promise<number> {
+  public async getCurrentPage(): Promise<number> {
     return this.current;
   }
 

@@ -1,6 +1,7 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsBreadcrumb from '@ovhcloud/ods-components/src/components/breadcrumb/documentation/spec.md?raw';
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsBreadcrumb from '@ovhcloud/ods-components/src/components/breadcrumb/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as BreadcrumbStories from './breadcrumb.stories';
 
 <Meta of={ BreadcrumbStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as BreadcrumbStories from './breadcrumb.stories';
 
 <Canvas of={ BreadcrumbStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsBreadcrumb }</Markdown>
+<TechnicalSpecification data={ SpecificationsBreadcrumb } />
 
 ## Style customization
 

@@ -31,19 +31,19 @@ export class OdsToggle {
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     this.value = null;
     this.inputEl?.focus();
     this.odsClear.emit();
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
+  public async getValidity(): Promise<ValidityState | undefined> {
     return this.inputEl?.validity;
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     this.value = this.defaultValue ?? null;
     this.odsReset.emit();
   }

@@ -1,6 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import SpecificationsCode from '@ovhcloud/ods-components/src/components/code/documentation/spec.md?raw';
+import SpecificationsCode from '@ovhcloud/ods-components/src/components/code/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as CodeStories from './code.stories';
 
 <Meta of={ CodeStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as CodeStories from './code.stories';
 
 <Canvas of={ CodeStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsCode }</Markdown>
+<TechnicalSpecification data={ SpecificationsCode } />
 
 ## Style customization
 

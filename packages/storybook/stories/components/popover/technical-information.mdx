@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsPopover from '@ovhcloud/ods-components/src/components/popover/documentation/spec.md?raw';
+import SpecificationsPopover from '@ovhcloud/ods-components/src/components/popover/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as PopoverStories from './popover.stories';
 
 <Meta of={ PopoverStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as PopoverStories from './popover.stories';
 
 <Canvas of={ PopoverStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsPopover }</Markdown>
+<TechnicalSpecification data={ SpecificationsPopover } />
 
 ## Style customization
 

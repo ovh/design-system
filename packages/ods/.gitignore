@@ -3,9 +3,7 @@ node_modules/
 dist/
 src/components/utils/
 tests/coverage/
-
-# Generated doc file
-spec.md
+documentation/
 
 # Log files
 npm-debug.log*

@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsSwitch from '@ovhcloud/ods-components/src/components/switch/documentation/spec.md?raw';
+import SpecificationsSwitch from '@ovhcloud/ods-components/src/components/switch/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as SwitchStories from './switch.stories';
 import { Switch as FormFieldSwitch } from '../form-field/form-field.stories';
 
@@ -12,7 +13,7 @@ import { Switch as FormFieldSwitch } from '../form-field/form-field.stories';
 
 <Canvas of={ SwitchStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsSwitch }</Markdown>
+<TechnicalSpecification data={ SpecificationsSwitch } />
 
 ## Examples
 

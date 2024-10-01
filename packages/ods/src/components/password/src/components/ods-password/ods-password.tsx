@@ -40,22 +40,22 @@ export class OdsPassword {
   @Event() odsChange!: EventEmitter<OdsPasswordChangeEventDetail>;
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     return this.odsInput?.clear();
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
+  public async getValidity(): Promise<ValidityState | undefined> {
     return this.odsInput?.getValidity();
   }
 
   @Method()
-  async toggleMask(): Promise<void> {
+  public async toggleMask(): Promise<void> {
     return this.odsInput?.toggleMask();
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     return this.odsInput?.reset();
   }
 

@@ -12,7 +12,6 @@ export class OdsModal {
 
   @Element() el!: HTMLElement;
 
-  /** @docType OdsModalColor */
   @Prop({ reflect: true }) public color: OdsModalColor = ODS_MODAL_COLOR.information;
   @Prop({ reflect: true }) public isDismissible: boolean = true;
   @Prop({ mutable: true, reflect: true }) public isOpen: boolean = false;
@@ -21,7 +20,7 @@ export class OdsModal {
   @Event() odsOpen!: EventEmitter<void>;
 
   @Method()
-  async close(): Promise<void> {
+  public async close(): Promise<void> {
     document.body.style.removeProperty('overflow');
 
     if (this.modalDialog) {
@@ -42,7 +41,7 @@ export class OdsModal {
   }
 
   @Method()
-  async open(): Promise<void> {
+  public async open(): Promise<void> {
     document.body.style.setProperty('overflow', 'hidden');
     this.isOpen = true;
     this.modalDialog?.focus();

@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsProgressBar from '@ovhcloud/ods-components/src/components/progress-bar/documentation/spec.md?raw';
+import SpecificationsProgressBar from '@ovhcloud/ods-components/src/components/progress-bar/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as ProgressBarStories from './progress-bar.stories';
 
 <Meta of={ ProgressBarStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as ProgressBarStories from './progress-bar.stories';
 
 <Canvas of={ ProgressBarStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsProgressBar }</Markdown>
+<TechnicalSpecification data={ SpecificationsProgressBar } />
 
 ## Style customization
 

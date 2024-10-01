@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsLink from '@ovhcloud/ods-components/src/components/link/documentation/spec.md?raw';
+import SpecificationsLink from '@ovhcloud/ods-components/src/components/link/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as LinkStories from './link.stories';
 
 <Meta of={ LinkStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as LinkStories from './link.stories';
 
 <Canvas of={ LinkStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsLink }</Markdown>
+<TechnicalSpecification data={ SpecificationsLink } />
 
 ## Style customization
 

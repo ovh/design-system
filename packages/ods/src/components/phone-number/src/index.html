@@ -11,7 +11,7 @@
 </head>
 
 <body style="margin-bottom: 200px;">
-  <h1>Input only</h1>
+  <!-- <h1>Input only</h1>
   <p>Default</p>
   <ods-phone-number>
   </ods-phone-number>
@@ -47,11 +47,12 @@
 
   <p>IsoCode + wrong value</p>
   <ods-phone-number iso-code="fr" value="1234">
-  </ods-phone-number>
+  </ods-phone-number> -->
 
-  <p>Methods & Events</p>
+  <!-- <p>Methods & Events</p>
   <ods-phone-number id="opn-input-methods"
-                    default-value="+18444629181">
+                    default-value="+18444629181"
+                    is-required>
   </ods-phone-number>
   <button id="opn-input-clear-button">Clear</button>
   <button id="opn-input-reset-button">Reset</button>
@@ -73,13 +74,13 @@
     // opnInputMethods.addEventListener('odsClear', () => { console.log('on clear') });
     // opnInputMethods.addEventListener('odsFocus', () => { console.log('on focus') });
     // opnInputMethods.addEventListener('odsReset', () => { console.log('on reset') });
-  </script>
+  </script> -->
 
   <p>Form</p>
   <form id="opn-input-form">
-    <ods-phone-number default-value="0123456789"
-                      name="input-form"
-                      value="0666666666">
+    <ods-phone-number name="input-form"
+                      value="+18444629181"
+                      is-required>
     </ods-phone-number>
     <button id="opn-input-form-reset-button" type="reset">Reset</button>
     <button id="opn-input-form-submit-button" type="submit">Submit</button>
@@ -94,7 +95,7 @@
     });
   </script>
 
-  <p>Countries update</p>
+  <!--<p>Countries update</p>
   <ods-phone-number id="phone-number-countries">
   </ods-phone-number>
   <button id="btn-update-countries">Update countries</button>
@@ -273,6 +274,6 @@
   <label for="labelled-phone-number-countries">My phone-number with countries</label>
   <ods-phone-number id="labelled-phone-number-countries"
                     countries="all">
-  </ods-phone-number>
+  </ods-phone-number> -->
 </body>
 </html>

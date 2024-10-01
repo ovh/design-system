@@ -12,7 +12,28 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg) => html`
+  render: (arg) => {
+    const validityStateTemplate = html`<br>
+    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
+    <script>
+      (async () => {
+          const divValidityState = document.querySelector('#validity-state');
+          const quantity = document.querySelector('.my-quantity');
+          await renderValidityState();
+          quantity.addEventListener('odsChange', async () => {
+            await renderValidityState();
+          })
+          async function renderValidityState() {
+            console.log('validity', await quantity.getValidity())
+            const validity = await quantity.getValidity()
+            divValidityState.innerHTML = '';
+            for (let key in validity) {
+              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+            }
+          }
+      })();
+    </script>`;
+    return html`
     <ods-phone-number class="my-phone-number"
                       aria-label="${arg.ariaLabel}"
                       aria-labelledby="${arg.ariaLabelledby}"
@@ -22,10 +43,12 @@ export const Demo: StoryObj = {
                       is-disabled="${arg.isDisabled}"
                       is-loading="${arg.isLoading}"
                       is-readonly="${arg.isReadonly}"
+                      is-required="${arg.isRequired}"
                       iso-code="${arg.isoCode}"
                       locale="${arg.locale}"
                       pattern="${arg.pattern}">
     </ods-phone-number>
+    ${ arg.validityState ? validityStateTemplate : '' }
     <style>
       .my-phone-number::part(input) {
         ${arg.customInputCss}
@@ -34,7 +57,8 @@ export const Demo: StoryObj = {
         ${arg.customSelectCss}
       }
     </style>
-  `,
+  `;
+  },
   argTypes: orderControls({
     ariaLabel: {
       table: {
@@ -117,6 +141,14 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
+    isRequired: {
+      control: 'boolean',
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' },
+      },
+    },
     isoCode: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -143,6 +175,14 @@ export const Demo: StoryObj = {
       },
       control: 'text',
     },
+    validityState: {
+      table: {
+        category: CONTROL_CATEGORY.accessibility,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
   }),
   args: {
     countries: false,
@@ -151,6 +191,8 @@ export const Demo: StoryObj = {
     isDisabled: false,
     isLoading: false,
     isReadonly: false,
+    isRequired: false,
+    validityState: false,
   },
 };
 
@@ -287,4 +329,31 @@ export const Readonly: StoryObj = {
                       is-readonly>
     </ods-phone-number>
   `,
+};
+
+export const ValidityState: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-phone-number is-required id="phone-number-validity-state-demo">
+</ods-phone-number>
+<div id="validity-state-demo"></div>
+<script>
+  (() => {
+      const divValidityState = document.querySelector('#validity-state-demo');
+      const phoneNumber = document.querySelector('#phone-number-validity-state-demo');
+      renderValidityState();
+      phoneNumber.addEventListener('odsChange', async () => {
+        await renderValidityState();
+      })
+      async function renderValidityState() {
+        console.log('validity', await phoneNumber.getValidity())
+        const validity = await phoneNumber.getValidity()
+        divValidityState.innerHTML = '';
+        for (let key in validity) {
+          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+        }
+      }
+  })();
+</script>
+`,
 };

@@ -40,17 +40,17 @@ export class OdsQuantity {
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     return this.odsInput?.clear();
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
+  public async getValidity(): Promise<ValidityState | undefined> {
     return this.odsInput?.getValidity();
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     return this.odsInput?.reset();
   }
 

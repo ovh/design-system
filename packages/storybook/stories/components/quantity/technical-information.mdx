@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsQuantity from '@ovhcloud/ods-components/src/components/quantity/documentation/spec.md?raw';
+import SpecificationsQuantity from '@ovhcloud/ods-components/src/components/quantity/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as QuantityStories from './quantity.stories';
 import { Quantity as FormFieldQuantity } from '../form-field/form-field.stories';
 
@@ -12,7 +13,7 @@ import { Quantity as FormFieldQuantity } from '../form-field/form-field.stories'
 
 <Canvas of={ QuantityStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsQuantity }</Markdown>
+<TechnicalSpecification data={ SpecificationsQuantity } />
 
 ## Style customization
 

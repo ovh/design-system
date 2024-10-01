@@ -1,0 +1,10 @@
+.technical-specification__enums__keys {
+  display: flex;
+  flex-flow: column;
+  row-gap: 1rem;
+  padding: 0 20px;
+}
+
+.technical-specification__enums__keys__name {
+  font-weight: bold;
+}

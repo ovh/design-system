@@ -29,7 +29,6 @@ export class OdsPhoneNumber {
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
-  /** @docType OdsPhoneNumberCountryIsoCode[] | OdsPhoneNumberCountryPreset | string */
   @Prop({ reflect: true }) public countries?: OdsPhoneNumberCountryIsoCode[] | OdsPhoneNumberCountryPreset | string;
   @Prop({ reflect: true }) public defaultValue?: string;
   @Prop({ mutable: true, reflect: true }) public hasError: boolean = false;
@@ -38,9 +37,7 @@ export class OdsPhoneNumber {
   @Prop({ reflect: true }) public isLoading: boolean = false;
   @Prop({ reflect: true }) public isReadonly: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
-  /** @docType OdsPhoneNumberCountryIsoCode */
   @Prop({ mutable: true, reflect: true }) public isoCode?: OdsPhoneNumberCountryIsoCode;
-  /** @docType OdsPhoneNumberLocale */
   @Prop({ mutable: true, reflect: true }) public locale?: OdsPhoneNumberLocale;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public pattern?: string;
@@ -53,18 +50,18 @@ export class OdsPhoneNumber {
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     return this.inputElement?.clear();
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
+  public async getValidity(): Promise<ValidityState | undefined> {
     const inputValidity = await this.inputElement?.getValidity();
     return getValidityState(this.hasError, inputValidity);
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     return this.inputElement?.reset();
   }
 

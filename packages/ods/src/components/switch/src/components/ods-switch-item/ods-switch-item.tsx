@@ -25,18 +25,18 @@ export class OdsSwitchItem {
   @Event() odsFocus!: EventEmitter<void>;
 
   @Method()
-  async reset(): Promise<void> {
-    return this.odsRadio?.reset();
-  }
-
-  @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     return this.odsRadio?.clear();
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
+  public async getValidity(): Promise<ValidityState | undefined> {
     return this.odsRadio?.getValidity();
+  }
+
+  @Method()
+  public async reset(): Promise<void> {
+    return this.odsRadio?.reset();
   }
 
   componentWillLoad(): void {

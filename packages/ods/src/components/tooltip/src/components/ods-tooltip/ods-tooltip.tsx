@@ -16,7 +16,6 @@ export class OdsTooltip {
 
   @Element() el!: HTMLElement;
 
-  /** @docType OdsTooltipPosition */
   @Prop({ reflect: true }) public position: OdsTooltipPosition = ODS_TOOLTIP_POSITION.top;
   @Prop({ reflect: true }) public shadowDomTriggerId?: string;
   @Prop({ reflect: true }) public triggerId!: string;
@@ -26,14 +25,14 @@ export class OdsTooltip {
   @Event() odsShow!: EventEmitter<void>;
 
   @Method()
-  async hide(): Promise<void> {
+  public async hide(): Promise<void> {
     hideOverlay(this.el, this.cleanUpCallback);
 
     this.odsHide.emit();
   }
 
   @Method()
-  async show(): Promise<void> {
+  public async show(): Promise<void> {
     this.cleanUpCallback = showOverlay(this.position, {
       arrow: this.arrowElement,
       popper: this.el,

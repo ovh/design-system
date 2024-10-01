@@ -1,7 +1,8 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsBadge from '@ovhcloud/ods-components/src/components/badge/documentation/spec.md?raw';
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsBadge from '@ovhcloud/ods-components/src/components/badge/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as BadgeStories from './badge.stories';
 
 <Meta of={ BadgeStories } name='Technical information' />
@@ -12,9 +13,7 @@ import * as BadgeStories from './badge.stories';
 
 <Canvas of={ BadgeStories.Overview } sourceState='none' />
 
-[//]: # (TODO generate spec.json instead of spec.md and use a React component here instead)
-
-<Markdown>{ SpecificationsBadge }</Markdown>
+<TechnicalSpecification data={ SpecificationsBadge } />
 
 <Heading label="Style customization" level={ 2 } />
 

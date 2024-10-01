@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsMessage from '@ovhcloud/ods-components/src/components/message/documentation/spec.md?raw';
+import SpecificationsMessage from '@ovhcloud/ods-components/src/components/message/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as MessageStories from './message.stories';
 
 <Meta of={ MessageStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as MessageStories from './message.stories';
 
 <Canvas of={ MessageStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsMessage }</Markdown>
+<TechnicalSpecification data={ SpecificationsMessage } />
 
 ## Style customization
 

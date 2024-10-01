@@ -34,6 +34,7 @@
     "vanillajs-datepicker": "1.3.4"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "0.10.3",
     "@jest/types": "29.6.3",
     "@stencil-community/postcss": "2.2.0",
     "@stencil/react-output-target": "0.5.3",
@@ -59,7 +60,6 @@
     "ts-jest": "29.1.2",
     "ts-node": "10.9.2",
     "tsx": "4.17.0",
-    "typedoc": "0.25.11",
     "typescript": "5.3.3",
     "wait-on": "7.2.0"
   }

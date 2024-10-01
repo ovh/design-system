@@ -16,7 +16,7 @@ export class OdsCode {
   @Event() odsCopy!: EventEmitter<string>;
 
   @Method()
-  async copy(): Promise<void> {
+  public async copy(): Promise<void> {
     const value = this.codeElement?.querySelector<HTMLSlotElement>('slot')?.assignedNodes()
       .map((node) => node.textContent).join('').trim();
 

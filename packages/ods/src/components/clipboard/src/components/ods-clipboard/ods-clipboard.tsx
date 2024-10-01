@@ -24,7 +24,7 @@ export class OdsClipboard {
   @Event() odsCopy!: EventEmitter<string>;
 
   @Method()
-  async copy(): Promise<void> {
+  public async copy(): Promise<void> {
     if (this.isDisabled) {
       return;
     }

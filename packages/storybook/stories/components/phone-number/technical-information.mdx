@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsPhoneNumber from '@ovhcloud/ods-components/src/components/phone-number/documentation/spec.md?raw';
+import SpecificationsPhoneNumber from '@ovhcloud/ods-components/src/components/phone-number/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as PhoneNumberStories from './phone-number.stories';
 import { PhoneNumber as FormFieldPhoneNumber } from '../form-field/form-field.stories';
 
@@ -12,7 +13,7 @@ import { PhoneNumber as FormFieldPhoneNumber } from '../form-field/form-field.st
 
 <Canvas of={ PhoneNumberStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsPhoneNumber }</Markdown>
+<TechnicalSpecification data={ SpecificationsPhoneNumber } />
 
 ## Style customization
 

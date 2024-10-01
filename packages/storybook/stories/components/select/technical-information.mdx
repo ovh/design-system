@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsSelect from '@ovhcloud/ods-components/src/components/select/documentation/spec.md?raw';
+import SpecificationsSelect from '@ovhcloud/ods-components/src/components/select/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as SelectStories from './select.stories';
 import { Select as FormFieldSelect } from '../form-field/form-field.stories';
 
@@ -12,7 +13,7 @@ import { Select as FormFieldSelect } from '../form-field/form-field.stories';
 
 <Canvas of={ SelectStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsSelect }</Markdown>
+<TechnicalSpecification data={ SpecificationsSelect } />
 
 ## Style customization
 

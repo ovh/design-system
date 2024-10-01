@@ -54,7 +54,7 @@ export class OdsSelect {
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     this.odsClear.emit();
     if (this.value !== null) {
       this.isValueSync = true;
@@ -64,22 +64,22 @@ export class OdsSelect {
   }
 
   @Method()
-  async close(): Promise<void> {
+  public async close(): Promise<void> {
     this.select?.close();
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
+  public async getValidity(): Promise<ValidityState | undefined> {
     return this.selectElement?.validity;
   }
 
   @Method()
-  async open(): Promise<void> {
+  public async open(): Promise<void> {
     this.select?.open();
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     this.odsReset.emit();
     if (this.value !== (this.defaultValue ?? null)) {
       this.isValueSync = true;

@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsRadio from '@ovhcloud/ods-components/src/components/radio/documentation/spec.md?raw';
+import SpecificationsRadio from '@ovhcloud/ods-components/src/components/radio/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as RadioStories from './radio.stories';
 import { Radio as FormFieldRadio } from '../form-field/form-field.stories';
 
@@ -20,7 +21,7 @@ There is no longer a `radio` component to make clickable Element.
 
 <Canvas of={ RadioStories.Checked } sourceState='none' />
 
-<Markdown>{ SpecificationsRadio }</Markdown>
+<TechnicalSpecification data={ SpecificationsRadio } />
 
 ## Style customization
 

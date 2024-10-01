@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsMedium from '@ovhcloud/ods-components/src/components/medium/documentation/spec.md?raw';
+import SpecificationsMedium from '@ovhcloud/ods-components/src/components/medium/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as MediumStories from './medium.stories';
 
 <Meta of={ MediumStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as MediumStories from './medium.stories';
 
 <Canvas of={ MediumStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsMedium }</Markdown>
+<TechnicalSpecification data={ SpecificationsMedium } />
 
 ## Examples
 

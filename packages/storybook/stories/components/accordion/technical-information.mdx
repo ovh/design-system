@@ -1,7 +1,8 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsAccordion from '@ovhcloud/ods-components/src/components/accordion/documentation/spec.md?raw';
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsAccordion from '@ovhcloud/ods-components/src/components/accordion/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as AccordionStories from './accordion.stories';
 
 <Meta of={ AccordionStories } name="Technical information" />
@@ -12,9 +13,7 @@ import * as AccordionStories from './accordion.stories';
 
 <Canvas of={ AccordionStories.Overview } sourceState="none" />
 
-[//]: # (TODO generate spec.json instead of spec.md and use a React component here instead)
-
-<Markdown>{ SpecificationsAccordion }</Markdown>
+<TechnicalSpecification data={ SpecificationsAccordion } />
 
 <Heading label="Style customization" level={ 2 } />
 

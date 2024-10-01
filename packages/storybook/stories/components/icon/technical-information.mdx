@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsIcon from '@ovhcloud/ods-components/src/components/icon/documentation/spec.md?raw';
+import SpecificationsIcon from '@ovhcloud/ods-components/src/components/icon/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as IconStories from './icon.stories';
 
 <Meta of={ IconStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as IconStories from './icon.stories';
 
 <Canvas of={ IconStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsIcon }</Markdown>
+<TechnicalSpecification data={ SpecificationsIcon } />
 
 ## Examples
 

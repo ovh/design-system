@@ -9,9 +9,7 @@ import { ODS_TABLE_VARIANT, type OdsTableVariant } from '../../constants/table-v
   tag: 'ods-table',
 })
 export class OdsTable {
-  /** @docType OdsTableSize */
   @Prop({ reflect: true }) public size: OdsTableSize = ODS_TABLE_SIZE.md;
-  /** @docType OdsTableVariant */
   @Prop({ reflect: true }) public variant: OdsTableVariant = ODS_TABLE_VARIANT.default;
 
   render(): FunctionalComponent {

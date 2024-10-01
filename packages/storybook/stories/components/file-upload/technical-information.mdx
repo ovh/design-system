@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsFileUpload from '@ovhcloud/ods-components/src/components/file-upload/documentation/spec.md?raw';
+import SpecificationsFileUpload from '@ovhcloud/ods-components/src/components/file-upload/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as FileUploadStories from './file-upload.stories';
 
 <Meta of={ FileUploadStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as FileUploadStories from './file-upload.stories';
 
 <Canvas of={ FileUploadStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsFileUpload }</Markdown>
+<TechnicalSpecification data={ SpecificationsFileUpload } />
 
 # How to use?
 

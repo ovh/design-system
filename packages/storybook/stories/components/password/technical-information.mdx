@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsPassword from '@ovhcloud/ods-components/src/components/password/documentation/spec.md?raw';
+import SpecificationsPassword from '@ovhcloud/ods-components/src/components/password/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as PasswordStories from './password.stories';
 import { Password as FormFieldPassword } from '../form-field/form-field.stories';
 
@@ -12,7 +13,7 @@ import { Password as FormFieldPassword } from '../form-field/form-field.stories'
 
 <Canvas of={ PasswordStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsPassword }</Markdown>
+<TechnicalSpecification data={ SpecificationsPassword } />
 
 ## Style customization
 

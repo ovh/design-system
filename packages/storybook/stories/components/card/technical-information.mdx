@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsCard from '@ovhcloud/ods-components/src/components/card/documentation/spec.md?raw';
+import SpecificationsCard from '@ovhcloud/ods-components/src/components/card/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as CardStories from './card.stories';
 
 <Meta of={ CardStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as CardStories from './card.stories';
 
 <Canvas of={ CardStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsCard }</Markdown>
+<TechnicalSpecification data={ SpecificationsCard } />
 
 ## Style customization
 

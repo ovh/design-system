@@ -1,8 +1,6 @@
 .homepage {
   position: absolute;
   inset: 0;
-  background: url('ods_bg.png') no-repeat center center fixed;
-  background-size: cover;
 }
 
 .homepage__content {

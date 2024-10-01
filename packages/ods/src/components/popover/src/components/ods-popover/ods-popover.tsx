@@ -18,7 +18,6 @@ export class OdsPopover {
 
   @Element() el!: HTMLElement;
 
-  /** @docType OdsPopoverPosition */
   @Prop({ reflect: true }) public position: OdsPopoverPosition = ODS_POPOVER_POSITION.top;
   @Prop({ reflect: true }) public shadowDomTriggerId?: string;
   @Prop({ reflect: true }) public triggerId!: string;
@@ -55,7 +54,7 @@ export class OdsPopover {
   }
 
   @Method()
-  async hide(): Promise<void> {
+  public async hide(): Promise<void> {
     hideOverlay(this.el, this.cleanUpCallback);
 
     this.isOpen = false;
@@ -63,7 +62,7 @@ export class OdsPopover {
   }
 
   @Method()
-  async show(): Promise<void> {
+  public async show(): Promise<void> {
     this.cleanUpCallback = showOverlay(this.position, {
       arrow: this.arrowElement,
       popper: this.el,

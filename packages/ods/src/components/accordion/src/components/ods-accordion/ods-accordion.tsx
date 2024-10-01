@@ -14,20 +14,6 @@ export class OdsAccordion {
 
   @Event() odsToggle!: EventEmitter<boolean>;
 
-  handleToggle(event: Event): void {
-    if (this.isDisabled) {
-      return event.preventDefault();
-    }
-
-    if (this.isOpen) {
-      this.isOpen = false;
-    } else {
-      this.isOpen = true;
-    }
-
-    this.odsToggle.emit();
-  }
-
   @Watch('isOpen')
   onOpenChange(): void {
     if (this.isOpen) {
@@ -41,21 +27,35 @@ export class OdsAccordion {
     this.onOpenChange();
   }
 
-  handleClick(event: MouseEvent): void {
+  private handleClick(event: MouseEvent): void {
     this.handleToggle(event);
   }
 
-  handleKeyUp(event: KeyboardEvent): void {
+  private handleKeyUp(event: KeyboardEvent): void {
     if (this.isEnterOrSpace(event)) {
       event.preventDefault();
       this.handleToggle(event);
     }
   }
 
-  handleKeyDown(event: KeyboardEvent): void {
+  private handleKeyDown(event: KeyboardEvent): void {
     if (this.isEnterOrSpace(event)) {
       event.preventDefault();
     }
+  }
+
+  private handleToggle(event: Event): void {
+    if (this.isDisabled) {
+      return event.preventDefault();
+    }
+
+    if (this.isOpen) {
+      this.isOpen = false;
+    } else {
+      this.isOpen = true;
+    }
+
+    this.odsToggle.emit();
   }
 
   private isEnterOrSpace(event: KeyboardEvent): boolean {

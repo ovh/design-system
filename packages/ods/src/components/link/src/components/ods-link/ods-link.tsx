@@ -9,11 +9,9 @@ import { ODS_LINK_ICON_ALIGNMENT, type OdsLinkIconAlignment } from '../../consta
   tag: 'ods-link',
 })
 export class OdsLink {
-  /** @docType OdsLinkColor */
   @Prop({ reflect: true }) public color: OdsLinkColor = ODS_LINK_COLOR.primary;
   @Prop({ reflect: true }) public download?: HTMLAnchorElement['download'];
   @Prop({ reflect: true }) public href!: string;
-  /** @docType OdsIconName */
   @Prop({ reflect: true }) public icon?: OdsIconName;
   /** @docType OdsLinkIconAlignment */
   @Prop({ reflect: true }) public iconAlignment?: OdsLinkIconAlignment = ODS_LINK_ICON_ALIGNMENT.right;

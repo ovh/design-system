@@ -3,10 +3,15 @@ import { OdsLink, OdsText } from '@ovhcloud/ods-components/react';
 import React from 'react';
 import { StorybookLink } from '../storybookLink/StorybookLink';
 import styles from './homepage.module.css';
+import imageFile from '../../../assets/ods_bg.png';
 
 const Homepage = () => {
   return (
-    <div className={ styles.homepage }>
+    <div className={ styles.homepage }
+         style={{
+           background: `url(${imageFile}) no-repeat center center fixed`,
+           backgroundSize: 'cover',
+         }}>
       <div className={ styles['homepage__content'] }>
         <img alt="OVHcloud logo"
              height="64"

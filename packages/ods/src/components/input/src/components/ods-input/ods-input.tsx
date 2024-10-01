@@ -41,7 +41,6 @@ export class OdsInput {
   @Prop({ reflect: true }) public pattern?: string;
   @Prop({ reflect: true }) public placeholder?: string;
   @Prop({ reflect: true }) public step?: number;
-  /** @docType OdsInputType */
   @Prop({ reflect: true }) public type: OdsInputType = ODS_INPUT_TYPE.text;
   @Prop({ mutable: true, reflect: true }) public value: string | number | null = null;
 
@@ -53,27 +52,27 @@ export class OdsInput {
   @Event() odsToggleMask!: EventEmitter<void>;
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     this.odsClear.emit();
     this.value = null;
     this.inputEl?.focus();
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
+  public async getValidity(): Promise<ValidityState | undefined> {
     return this.inputEl?.validity;
   }
 
   @Method()
-  async toggleMask(): Promise<void> {
-    this.isMasked = !this.isMasked;
-    this.odsToggleMask.emit();
+  public async reset(): Promise<void> {
+    this.odsReset.emit();
+    this.value = this.defaultValue ?? null;
   }
 
   @Method()
-  async reset(): Promise<void> {
-    this.odsReset.emit();
-    this.value = this.defaultValue ?? null;
+  public async toggleMask(): Promise<void> {
+    this.isMasked = !this.isMasked;
+    this.odsToggleMask.emit();
   }
 
   @Watch('isMasked')

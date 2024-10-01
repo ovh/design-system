@@ -9,12 +9,9 @@ import { ODS_BADGE_SIZE, type OdsBadgeSize } from '../../constants/badge-size';
   tag: 'ods-badge',
 })
 export class OdsBadge {
-  /** @docType OdsBadgeColor */
   @Prop({ reflect: true }) public color: OdsBadgeColor = ODS_BADGE_COLOR.information;
-  /** @docType OdsIconName */
   @Prop({ reflect: true }) public icon?: OdsIconName;
   @Prop({ reflect: true }) public label!: string;
-  /** @docType OdsBadgeSize */
   @Prop({ reflect: true }) public size: OdsBadgeSize = ODS_BADGE_SIZE.md;
 
   render(): FunctionalComponent {
@@ -23,8 +20,8 @@ export class OdsBadge {
         <div
           class={{
             'ods-badge__badge': true,
-            [ `ods-badge__badge--${this.color}` ]: true,
-            [ `ods-badge__badge--${this.size}` ]: true,
+            [`ods-badge__badge--${this.color}`]: true,
+            [`ods-badge__badge--${this.size}`]: true,
           }}
           part="badge">
           {

@@ -37,19 +37,19 @@ export class OdsTextarea {
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     this.odsClear.emit();
     this.value = null;
     this.textareaElement?.focus();
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
+  public async getValidity(): Promise<ValidityState | undefined> {
     return this.textareaElement?.validity;
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     this.odsReset.emit();
     this.value = this.defaultValue ?? null;
   }

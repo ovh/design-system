@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsSkeleton from '@ovhcloud/ods-components/src/components/skeleton/documentation/spec.md?raw';
+import SpecificationsSkeleton from '@ovhcloud/ods-components/src/components/skeleton/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as SkeletonStories from './skeleton.stories';
 
 <Meta of={ SkeletonStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as SkeletonStories from './skeleton.stories';
 
 <Canvas of={SkeletonStories.Default} sourceState='none' />
 
-<Markdown> { SpecificationsSkeleton } </Markdown>
+<TechnicalSpecification data={ SpecificationsSkeleton } />
 
 ## Style customization
 

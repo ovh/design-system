@@ -31,7 +31,7 @@ export class OdsRadio {
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     if (this.inputEl) {
       this.inputEl.checked = false;
     }
@@ -46,12 +46,12 @@ export class OdsRadio {
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
+  public async getValidity(): Promise<ValidityState | undefined> {
     return this.inputEl?.validity;
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     this.getOdsRadiosGroupByName().forEach((radio) => {
       const inputRadio = radio.querySelector<HTMLInputElement>('input[type="radio"]');
       if (!inputRadio) {
@@ -73,7 +73,7 @@ export class OdsRadio {
   }
 
   @Method()
-  async select(): Promise<void> {
+  public async select(): Promise<void> {
     this.inputEl?.click();
   }
 

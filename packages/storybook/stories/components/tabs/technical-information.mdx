@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsTabs from '@ovhcloud/ods-components/src/components/tabs/documentation/spec.md?raw';
+import SpecificationsTabs from '@ovhcloud/ods-components/src/components/tabs/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TabsStories from './tabs.stories';
 
 <Meta of={ TabsStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as TabsStories from './tabs.stories';
 
 <Canvas of={ TabsStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsTabs }</Markdown>
+<TechnicalSpecification data={ SpecificationsTabs } />
 
 ## Style customization
 

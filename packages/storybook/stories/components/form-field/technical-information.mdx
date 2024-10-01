@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsFormField from '@ovhcloud/ods-components/src/components/form-field/documentation/spec.md?raw';
+import SpecificationsFormField from '@ovhcloud/ods-components/src/components/form-field/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as FormFieldStories from './form-field.stories';
 
 <Meta of={ FormFieldStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as FormFieldStories from './form-field.stories';
 
 <Canvas of={ FormFieldStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsFormField }</Markdown>
+<TechnicalSpecification data={ SpecificationsFormField } />
 
 ## Style customization
 

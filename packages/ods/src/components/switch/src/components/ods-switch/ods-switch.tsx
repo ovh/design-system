@@ -14,7 +14,6 @@ export class OdsSwitch {
   @Prop({ reflect: true }) public isDisabled?: boolean = false;
   @Prop({ reflect: true }) public isRequired?: boolean = false;
   @Prop({ reflect: true }) public name!: string;
-  /** @docType OdsSwitchSize */
   @Prop({ reflect: true }) public size: OdsSwitchSize = ODS_SWITCH_SIZE.md;
 
   @Event() odsBlur!: EventEmitter<CustomEvent<void>>;
@@ -24,14 +23,14 @@ export class OdsSwitch {
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     this.odsClear.emit();
     await clearItems(Array.from(this.el.children));
     this.el.focus();
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     this.odsReset.emit();
     await resetItems(Array.from(this.el.children));
   }

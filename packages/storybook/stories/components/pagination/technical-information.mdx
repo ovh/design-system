@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsPagination from '@ovhcloud/ods-components/src/components/pagination/documentation/spec.md?raw';
+import SpecificationsPagination from '@ovhcloud/ods-components/src/components/pagination/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as PaginationStories from './pagination.stories';
 
 <Meta of={ PaginationStories } name='Technical information' />
@@ -11,7 +12,7 @@ import * as PaginationStories from './pagination.stories';
 
 <Canvas of={ PaginationStories.DefaultLargeAmountOfPages } sourceState='none' />
 
-<Markdown>{ SpecificationsPagination }</Markdown>
+<TechnicalSpecification data={ SpecificationsPagination } />
 
 # Examples
 

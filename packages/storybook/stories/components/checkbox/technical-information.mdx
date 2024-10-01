@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsCheckbox from '@ovhcloud/ods-components/src/components/checkbox/documentation/spec.md?raw';
+import SpecificationsCheckbox from '@ovhcloud/ods-components/src/components/checkbox/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as CheckboxStories from './checkbox.stories';
 import { Checkbox as FormFieldCheckbox } from '../form-field/form-field.stories';
 
@@ -12,7 +13,7 @@ import { Checkbox as FormFieldCheckbox } from '../form-field/form-field.stories'
 
 <Canvas of={ CheckboxStories.Overview } sourceState='none' />
 
-<Markdown>{ SpecificationsCheckbox }</Markdown>
+<TechnicalSpecification data={ SpecificationsCheckbox } />
 
 ## Style customization
 

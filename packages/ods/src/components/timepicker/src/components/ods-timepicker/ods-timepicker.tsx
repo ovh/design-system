@@ -31,7 +31,6 @@ export class OdsTimepicker {
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
-  /** @docType OdsTimezone */
   @Prop({ mutable: true, reflect: true }) public currentTimezone?: OdsTimezone;
   @Prop({ reflect: true }) public defaultValue?: string;
   @Prop({ reflect: true }) public hasError: boolean = false;
@@ -39,7 +38,6 @@ export class OdsTimepicker {
   @Prop({ reflect: true }) public isReadonly: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
   @Prop({ reflect: true }) public name!: string;
-  /** @docType  OdsTimezone[] | OdsTimezonePreset | string */
   @Prop({ reflect: true }) public timezones?: OdsTimezone[] | OdsTimezonePreset | string;
   @Prop({ mutable: true, reflect: true }) public value: string | null = null;
   @Prop({ reflect: true }) public withSeconds: boolean = false;
@@ -51,19 +49,19 @@ export class OdsTimepicker {
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     this.odsInput?.clear();
     this.odsSelect?.clear();
     this.odsClear.emit();
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
+  public async getValidity(): Promise<ValidityState | undefined> {
     return this.odsInput?.getValidity();
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     this.odsInput?.reset();
     this.odsSelect?.reset();
     this.odsReset.emit();

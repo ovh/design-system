@@ -1,6 +1,6 @@
 import { PhoneNumberFormat, type PhoneNumberUtil } from 'google-libphonenumber';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, type OdsPhoneNumberCountryIsoCode } from '../../src';
-import { formatPhoneNumber, getCurrentIsoCode, getCurrentLocale, getNationalPhoneNumberExample, getTranslatedCountryMap, getValidityState, isValidPhoneNumber, parseCountries, parsePhoneNumber, setFormValue, sortCountriesByName } from '../../src/controller/ods-phone-number';
+import { formatPhoneNumber, getCurrentIsoCode, getCurrentLocale, getNationalPhoneNumberExample, getTranslatedCountryMap, getValidityState, isValidPhoneNumber, parseCountries, parsePhoneNumber, sortCountriesByName, updateInternals } from '../../src/controller/ods-phone-number';
 import countriesTranslationEn from '../../src/i18n/countries-en';
 import countriesTranslationFr from '../../src/i18n/countries-fr';
 
@@ -21,18 +21,18 @@ describe('ods-phone-number controller', () => {
   });
 
   describe('formatPhoneNumber', () => {
-    it('should return null if hasError is true', () => {
-      expect(formatPhoneNumber('num', true, 'fr', mockPhoneUtils)).toBeNull();
-      expect(mockPhoneUtils.parseAndKeepRawInput).not.toHaveBeenCalled();
-      expect(mockPhoneUtils.format).not.toHaveBeenCalled();
-    });
+    // it('should return null if hasError is true', () => {
+    //   expect(formatPhoneNumber('num', true, 'fr', mockPhoneUtils)).toBeNull();
+    //   expect(mockPhoneUtils.parseAndKeepRawInput).not.toHaveBeenCalled();
+    //   expect(mockPhoneUtils.format).not.toHaveBeenCalled();
+    // });
 
     it('should return null if the number cannot be parsed', () => {
       const dummyIsoCode = 'fr';
       const dummyNumber = '0123456789';
       (mockPhoneUtils.parseAndKeepRawInput as jest.Mock).mockReturnValue('');
 
-      expect(formatPhoneNumber(dummyNumber, false, dummyIsoCode, mockPhoneUtils)).toBeNull();
+      expect(formatPhoneNumber(dummyNumber, dummyIsoCode, mockPhoneUtils)).toBeNull();
       expect(mockPhoneUtils.parseAndKeepRawInput).toHaveBeenCalledTimes(1);
       expect(mockPhoneUtils.parseAndKeepRawInput).toHaveBeenCalledWith(dummyNumber, dummyIsoCode);
       expect(mockPhoneUtils.format).not.toHaveBeenCalled();
@@ -46,7 +46,7 @@ describe('ods-phone-number controller', () => {
       (mockPhoneUtils.format as jest.Mock).mockReturnValue(dummyFormattedNumber);
       (mockPhoneUtils.parseAndKeepRawInput as jest.Mock).mockReturnValue(dummyParsedNumber);
 
-      expect(formatPhoneNumber(dummyNumber, false, dummyIsoCode, mockPhoneUtils)).toBe(dummyFormattedNumber);
+      expect(formatPhoneNumber(dummyNumber, dummyIsoCode, mockPhoneUtils)).toBe(dummyFormattedNumber);
       expect(mockPhoneUtils.parseAndKeepRawInput).toHaveBeenCalledTimes(1);
       expect(mockPhoneUtils.parseAndKeepRawInput).toHaveBeenCalledWith(dummyNumber, dummyIsoCode);
       expect(mockPhoneUtils.format).toHaveBeenCalledTimes(1);
@@ -170,7 +170,7 @@ describe('ods-phone-number controller', () => {
   describe('getValidityState', () => {
     it('should return default validity state object', () => {
       expect(getValidityState(true)).toEqual({
-        badInput: false,
+        badInput: true,
         customError: false,
         patternMismatch: false,
         rangeOverflow: false,
@@ -361,23 +361,23 @@ describe('ods-phone-number controller', () => {
       setFormValue: jest.fn(),
     } as unknown as ElementInternals;
 
-    it('should set internal value with empty string', () => {
+    it('should set internal value with empty string', async() => {
       // @ts-ignore for test purpose
-      setFormValue(dummyInternal);
+      await updateInternals(dummyInternal);
       expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
 
       // @ts-ignore for test purpose
-      setFormValue(dummyInternal, undefined);
+      await updateInternals(dummyInternal, undefined, {} as ValidityState);
       expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
 
-      setFormValue(dummyInternal, null);
+      await updateInternals(dummyInternal, null, {} as ValidityState);
       expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
     });
 
-    it('should set internal value with string value', () => {
+    it('should set internal value with string value', async() => {
       const dummyValue = 'dummy value';
 
-      setFormValue(dummyInternal, dummyValue);
+      await updateInternals(dummyInternal, dummyValue, {} as ValidityState);
 
       expect(dummyInternal.setFormValue).toHaveBeenCalledWith(dummyValue);
     });

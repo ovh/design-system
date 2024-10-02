@@ -21,6 +21,7 @@ export class OdsInput {
   private hasMovedNodes: boolean = false;
   private observer?: MutationObserver;
   private inputEl?: HTMLInputElement;
+  private updateIsInvalid: boolean = false;
 
   @Element() el!: HTMLElement;
 
@@ -77,7 +78,7 @@ export class OdsInput {
     this.odsClear.emit();
     this.value = null;
     this.inputEl?.focus();
-    setTimeout(() => this.isInvalid = !this.internals.validity.valid, 0);
+    this.updateIsInvalid = true;
   }
 
   @Method()
@@ -99,7 +100,7 @@ export class OdsInput {
   async reset(): Promise<void> {
     this.odsReset.emit();
     this.value = this.defaultValue ?? null;
-    setTimeout(() => this.isInvalid = !this.internals.validity.valid, 0);
+    this.updateIsInvalid = true;
   }
 
   @Method()
@@ -203,6 +204,12 @@ export class OdsInput {
 
   private onValueChange(previousValue?: string | number | null): void {
     updateInternals(this.internals, this.value, this.inputEl);
+
+    // update here after update internals
+    if (this.updateIsInvalid) {
+      this.isInvalid = !this.internals.validity.valid;
+      this.updateIsInvalid = false;
+    }
 
     this.odsChange.emit({
       name: this.name,

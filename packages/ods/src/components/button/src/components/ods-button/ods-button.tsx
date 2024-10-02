@@ -23,6 +23,7 @@ export class OdsButton {
   @Prop({ reflect: true }) public color: OdsButtonColor = ODS_BUTTON_COLOR.primary;
   /** @docType OdsIconName */
   @Prop({ reflect: true }) public icon?: OdsIconName;
+  /** @docType OdsButtonIconAlignment */
   @Prop({ reflect: true }) public iconAlignment?: OdsButtonIconAlignment = ODS_BUTTON_ICON_ALIGNMENT.left;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isLoading: boolean = false;
@@ -49,7 +50,7 @@ export class OdsButton {
             ods-button__button--${this.color}
             ods-button__button--${this.size}
             ods-button__button--${this.variant}
-            ${this.iconAlignment === 'right' ? 'ods-button__button--icon-right' : ''}
+            ods-button__button--icon-${this.iconAlignment}
           `}
           disabled={ this.isDisabled || this.isLoading }
           part="button"

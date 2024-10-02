@@ -122,6 +122,7 @@ export const Demo: StoryObj = {
   }),
   args: {
     color: ODS_BUTTON_COLOR.primary,
+    iconAlignment: ODS_BUTTON_ICON_ALIGNMENT.left,
     isDisabled: false,
     isLoading: false,
     label: 'My button',

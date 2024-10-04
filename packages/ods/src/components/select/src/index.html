@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <p>Default</p>
+  <!-- <p>Default</p>
   <ods-select>
     <option value="dog">Dog</option>
     <option value="cat">Cat</option>
@@ -183,11 +183,12 @@
       <option>Saltasaurus</option>
       <option>Apatosaurus</option>
     </optgroup>
-  </ods-select>
+  </ods-select> -->
 
   <p>Form</p>
   <form id="my-form">
-    <ods-select name="my-select" id="select-form" is-required allow-multiple>
+    <ods-select name="my-select" id="select-form" is-required>
+      <!-- <option value=""></option> -->
       <option value="dog">Dog</option>
       <option value="cat">Cat</option>
       <option value="hamster">Hamster</option>
@@ -218,7 +219,7 @@
   </script>
 
   <p>Methods & Events</p>
-  <ods-select id="select-method" is-required default-value="cat" is-disabled>
+  <ods-select id="select-method" placeholder="Select a animal..." is-required >
     <option value="dog">Dog</option>
     <option value="cat">Cat</option>
     <option value="hamster">Hamster</option>
@@ -248,14 +249,14 @@
       console.log(validity);
     });
 
-    select.addEventListener('odsBlur', () => { console.log('on blur') });
+    // select.addEventListener('odsBlur', () => { console.log('on blur') });
     select.addEventListener('odsChange', (e) => { console.log('on change', e) });
-    select.addEventListener('odsClear', () => { console.log('on clear') });
-    select.addEventListener('odsFocus', () => { console.log('on focus') });
-    select.addEventListener('odsReset', () => { console.log('on reset') });
+    // select.addEventListener('odsClear', () => { console.log('on clear') });
+    // select.addEventListener('odsFocus', () => { console.log('on focus') });
+    // select.addEventListener('odsReset', () => { console.log('on reset') });
   </script>
 
-  <p>Custom renderer</p>
+  <!-- <p>Custom renderer</p>
   <ods-select id="select-custom-renderer"
               placeholder="Select a Cloud provider">
     <option data-description="OVH, legally OVH Groupe SA, is a French cloud computing company which offers VPS, dedicated servers and other web services. As of 2016 OVH owned the world's largest data center in surface area. As of 2019, it was the largest hosting provider in Europe, and the third largest in the world based on physical servers."
@@ -334,7 +335,7 @@
       option: (data) => {
         return `
 <div style="display: grid; grid-template-columns: max-content max-content 1fr; column-gap: 8px; padding: 8px;">
-    <!-- checkbox will get injected here as first child -->
+    checkbox will get injected here as first child
     <img alt="logo"
        height="50"
        src="${data.logo}"
@@ -397,6 +398,6 @@
     <option value="goldfish">Goldfish</option>
   </ods-select>
 
-  <div style="margin-bottom: 2000px;"></div>
+  <div style="margin-bottom: 2000px;"></div> -->
 </body>
 </html>

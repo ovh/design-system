@@ -1,5 +1,5 @@
 import type TomSelect from 'tom-select';
-import { getSelectConfig, inlineValue, moveSlottedElements, setFormValue, setSelectValue } from '../../src/controller/ods-select';
+import { getSelectConfig, inlineValue, moveSlottedElements, setSelectValue, updateInternals } from '../../src/controller/ods-select';
 
 describe('ods-select controller', () => {
   beforeEach(jest.clearAllMocks);
@@ -83,23 +83,24 @@ describe('ods-select controller', () => {
       setFormValue(dummyInternal);
       expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
 
-      setFormValue(dummyInternal, undefined);
+      // @ts-ignore for test purpose
+      updateInternals(dummyInternal, undefined);
       expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
 
-      setFormValue(dummyInternal, null);
+      updateInternals(dummyInternal, null);
       expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
     });
 
     it('should set internal value with string value', () => {
       const dummyValue = 'dummy value';
 
-      setFormValue(dummyInternal, dummyValue);
+      updateInternals(dummyInternal, dummyValue);
 
       expect(dummyInternal.setFormValue).toHaveBeenCalledWith(dummyValue);
     });
 
     it('should set internal value with strings joined value', () => {
-      setFormValue(dummyInternal, [
+      updateInternals(dummyInternal, [
         'dummy value 1',
         'dummy value 2',
       ]);

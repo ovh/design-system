@@ -1,4 +1,5 @@
 import type TomSelect from 'tom-select';
+import { setInternalsValidityFromHtmlElement } from '../../../../utils/dom';
 import { type OdsSelectCustomRenderer } from '../interfaces/options';
 
 type SelectConfigItem = Record<string, object>;
@@ -39,8 +40,12 @@ function moveSlottedElements(targetElement: HTMLSelectElement, slottedElements: 
   });
 }
 
-function setFormValue(internals: ElementInternals, value: string | string [] | null | undefined): void {
-  internals.setFormValue(inlineValue(value));
+function updateInternals(internals: ElementInternals, value: string[] | string | null, selectEl?: HTMLSelectElement): void {
+  internals.setFormValue(value?.toString() ?? '');
+
+  if (selectEl) {
+    setInternalsValidityFromHtmlElement(selectEl, internals);
+  }
 }
 
 function setSelectValue(select?: TomSelect, value?: string | string[] | null, defaultValue?: string | string [], isSilent: boolean = false): void {
@@ -57,6 +62,6 @@ export {
   getSelectConfig,
   inlineValue,
   moveSlottedElements,
-  setFormValue,
   setSelectValue,
+  updateInternals,
 };

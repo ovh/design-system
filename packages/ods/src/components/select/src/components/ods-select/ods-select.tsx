@@ -1,13 +1,15 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import TomSelect from 'tom-select';
 import { getElementPosition } from '../../../../../utils/overlay';
 import { mergeSelectedItemPlugin, placeholderPlugin } from '../../../../../utils/select';
-import { getSelectConfig, inlineValue, moveSlottedElements, setFormValue, setSelectValue } from '../../controller/ods-select';
+import { getSelectConfig, inlineValue, moveSlottedElements, setSelectValue, updateInternals } from '../../controller/ods-select';
 import { type OdsSelectChangeEventDetail } from '../../interfaces/events';
 import { type OdsSelectCustomRenderer } from '../../interfaces/options';
 
 TomSelect.define('merge_selected_items', mergeSelectedItemPlugin);
 TomSelect.define('placeholder', placeholderPlugin);
+
+const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -24,10 +26,13 @@ export class OdsSelect {
   private observer!: MutationObserver;
   private select?: TomSelect;
   private selectElement?: HTMLSelectElement;
+  private updateIsInvalid: boolean = false;
 
   @Element() el!: HTMLElement;
 
   @AttachInternals() private internals!: ElementInternals;
+
+  @State() private isInvalid: boolean = false;
 
   @Prop({ reflect: true }) public allowMultiple: boolean = false;
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
@@ -45,13 +50,27 @@ export class OdsSelect {
   @Prop({ reflect: true }) public multipleSelectionLabel: string = 'Selected item';
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public placeholder?: string;
-  @Prop({ mutable: true, reflect: true }) public value: string | string [] | null = null;
+  @Prop({ mutable: true, reflect: true }) public value: string | string [] | null = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsChange!: EventEmitter<OdsSelectChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
+
+  @Listen('invalid')
+  onInvalidEvent(event: Event): void {
+    // Remove the native validation message popup
+    event.preventDefault();
+
+    // Enforce the state here as we may still be in pristine state (if the form is submitted before any changes occurs)
+    this.isInvalid = true;
+  }
+
+  @Method()
+  async checkValidity(): Promise<boolean> {
+    return this.internals.checkValidity();
+  }
 
   @Method()
   async clear(): Promise<void> {
@@ -60,6 +79,7 @@ export class OdsSelect {
       this.isValueSync = true;
     }
     this.value = null;
+    this.isInvalid = !this.internals.validity.valid;
     this.select?.focus();
   }
 
@@ -69,8 +89,13 @@ export class OdsSelect {
   }
 
   @Method()
+  async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
+  }
+
+  @Method()
   async getValidity(): Promise<ValidityState | undefined> {
-    return this.selectElement?.validity;
+    return this.internals.validity;
   }
 
   @Method()
@@ -82,14 +107,26 @@ export class OdsSelect {
   async reset(): Promise<void> {
     this.odsReset.emit();
     if (this.value !== (this.defaultValue ?? null)) {
+      console.log('isValueSync update by reset')
       this.isValueSync = true;
     }
     this.updateValue(this.defaultValue ?? null);
+    // setSelectValue(this.select, this.value, this.defaultValue,)
+    this.isInvalid = !this.internals.validity.valid;
+  }
+
+  @Method()
+  async reportValidity(): Promise<boolean> {
+    return this.internals.reportValidity();
   }
 
   @Watch('isDisabled')
   onIsDisabledChange(newValue: boolean): void {
-    newValue ? this.select?.disable() : this.select?.enable();
+    if (newValue) {
+      this.select?.disable();
+    } else {
+      this.select?.enable();
+    }
   }
 
   @Watch('isReadonly')
@@ -121,35 +158,45 @@ export class OdsSelect {
     // Value change can be triggered from either value attribute change or select change
     // For the latter, we don't want to trigger a new change (as it may causes loop)
     if (!this.isSelectSync) {
+      console.log('is select sync setSelectValue')
       setSelectValue(this.select, value);
     }
     this.isSelectSync = false;
 
-    setFormValue(this.internals, value);
+    updateInternals(this.internals, value, this.selectElement);
+    console.log('value', value);
+    console.log('this.internals.validity', this.internals.validity);
+    // update here after update internals
+    // if (this.updateIsInvalid) {
+    //   console.log('this.isInvalid', this.isInvalid);
+    //   this.isInvalid = !this.internals.validity.valid;
+    //   this.updateIsInvalid = false;
+    // }
 
     this.odsChange.emit({
       name: this.name,
       previousValue: inlineValue(previousValue) || null,
-      validity:  this.selectElement?.validity,
+      validity:  this.internals.validity,
       value: inlineValue(value) || null,
     });
   }
 
   componentWillLoad(): void {
-    if (!this.value) {
+    if (!this.value && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
       this.value = this.defaultValue ?? null;
     }
-    setFormValue(this.internals, this.value);
   }
 
   componentDidLoad(): void {
+    this.onValueChange(this.value);
+
     this.observer = new MutationObserver((mutations) => {
       // We only care about mutations on child element (attributes or content changes)
       // as mutations on root element is managed by the onSlotChange
-      const childrenMutations = mutations.filter((mutation) =>
-        mutation.target !== this.selectElement && mutation.type !== 'childList');
-
-      if (childrenMutations.length) {
+      const childrenMutation = mutations.find((mutation) =>
+        mutation.target !== this.selectElement && mutation.type !== 'childList',
+      );
+      if (childrenMutation) {
         const currentValue = this.select?.getValue() || '';
         this.select?.clear(); // reset the current selection
         this.select?.clearOptions(); // reset the tom-select options
@@ -159,6 +206,7 @@ export class OdsSelect {
     });
 
     this.observer.observe(this.selectElement!, {
+      attributeOldValue: true,
       attributes: true,
       characterData: true,
       childList: true,
@@ -171,9 +219,7 @@ export class OdsSelect {
   }
 
   disconnectedCallback(): void {
-    if (this.observer) {
-      this.observer.disconnect();
-    }
+    this.observer?.disconnect();
   }
 
   private bindSelectControl(): void {
@@ -231,13 +277,16 @@ export class OdsSelect {
         create: false,
         maxOptions: undefined,
         onBlur: (): void => {
+          this.isInvalid = !this.internals.validity.valid;
           this.odsBlur.emit();
         },
         onChange: (value: string | string[]): void => {
+          console.log('tom select change', value, !this.isValueSync);
           if (!this.isValueSync) {
             this.isSelectSync = true;
             this.updateValue(value);
           }
+          this.isInvalid = !this.internals.validity.valid;
           this.isValueSync = false;
         },
         onDropdownClose: (dropdown: HTMLDivElement): void => {
@@ -305,9 +354,11 @@ export class OdsSelect {
           'ods-select': true,
           'ods-select--disabled': this.isDisabled,
           'ods-select--dropdown-width-auto': this.dropdownWidth === 'auto',
-          'ods-select--error': this.hasError,
+          'ods-select--error': this.hasError || this.isInvalid,
           [`ods-select--border-rounded-${this.borderRounded}`]: true,
-        }}>
+        }}
+        disabled={ this.isDisabled }
+        readonly={ this.isReadonly }>
         <select
           aria-label={ this.ariaLabel }
           aria-labelledby={ this.ariaLabelledby }

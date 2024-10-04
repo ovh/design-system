@@ -1,51 +1,59 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsQuantity from '@ovhcloud/ods-components/src/components/quantity/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as QuantityStories from './quantity.stories';
 import { Quantity as FormFieldQuantity } from '../form-field/form-field.stories';
 
-<Meta of={ QuantityStories } name='Technical information' />
+<Meta of={ QuantityStories } name="Technical information" />
 
 <Banner of={ QuantityStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ QuantityStories.Overview } sourceState='none' />
+<Canvas of={ QuantityStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsQuantity } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the quantity element using the part `input`, `button-minus` or `button-plus`.
 
 Custom CSS:
 
-<Canvas of={ QuantityStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ QuantityStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ QuantityStories.Default } sourceState='shown' />
+<Canvas of={ QuantityStories.Default } sourceState="shown" />
 
-### Disabled
-<Canvas of={ QuantityStories.Disabled } sourceState='shown' />
+<Heading label="Disabled" level={ 3 } />
 
-### Error
-<Canvas of={ QuantityStories.Error } sourceState='shown' />
+<Canvas of={ QuantityStories.Disabled } sourceState="shown" />
 
-### Max
-<Canvas of={ QuantityStories.Max } sourceState='shown' />
+<Heading label="Error" level={ 3 } />
 
-### Min
-<Canvas of={ QuantityStories.Min } sourceState='shown' />
+<Canvas of={ QuantityStories.Error } sourceState="shown" />
 
-### Readonly
-<Canvas of={ QuantityStories.Readonly } sourceState='shown' />
+<Heading label="Max" level={ 3 } />
 
-### Step
-<Canvas of={ QuantityStories.Step } sourceState='shown' />
+<Canvas of={ QuantityStories.Max } sourceState="shown" />
 
-### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
-<Canvas of={ FormFieldQuantity } sourceState='shown' />
+<Heading label="Min" level={ 3 } />
+
+<Canvas of={ QuantityStories.Min } sourceState="shown" />
+
+<Heading label="Readonly" level={ 3 } />
+
+<Canvas of={ QuantityStories.Readonly } sourceState="shown" />
+
+<Heading label="Step" level={ 3 } />
+
+<Canvas of={ QuantityStories.Step } sourceState="shown" />
+
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldQuantity } sourceState="shown" />

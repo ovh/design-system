@@ -3,11 +3,11 @@ import * as AccordionStories from './accordion.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
-import { IdentityCard2 } from '../../../src/components/identityCard/IdentityCard';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 
-<Meta of={ AccordionStories } name='Documentation' />
+<Meta of={ AccordionStories } name="Documentation" />
 
 <Banner of={ AccordionStories } />
 
@@ -17,7 +17,7 @@ _An **Accordion** is a vertical header that reveals or hides an associated secti
 
 <Heading label="Overview" level={ 2 } />
 
-<IdentityCard2 aliases={ ['Collapsible', 'FAQ'] }
+<IdentityCard aliases={ ['Collapsible', 'FAQ'] }
               atomicType={ ATOMIC_TYPE.atom }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=1-6634"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/accordion"
@@ -32,7 +32,7 @@ _An **Accordion** is a vertical header that reveals or hides an associated secti
   from the users, and it’s important to account for a user not noticing or reading all the included content. If a user
   is likely to read all the content then then the usage of an **Accordion** would not be recommended as it adds an extra
   interaction to access the content; instead use a full scrolling page with normal headers.
-</IdentityCard2>
+</IdentityCard>
 
 <Heading label="Anatomy" level={ 2 } />
 

@@ -1,40 +1,38 @@
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas, Meta } from '@storybook/blocks';
 import * as TagStories from './tag.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 
-<Meta of={ TagStories } name='Documentation' />
+<Meta of={ TagStories } name="Documentation" />
 
 <Banner of={ TagStories } />
 
 _A **Tag** component is used to display keywords or categories, with a removal feature._
 
-<Canvas of={ TagStories.Default } sourceState='none' />
+<Canvas of={ TagStories.Default } sourceState="none" />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<div className="documentation-overview">
-  <div>
-    The **Tag** component is a small UI element used to represent metadata, keywords, categories, or other contextual
-    information.
+<IdentityCard aliases={ ['Chip (previous name)', 'Label', 'Pill'] }
+              atomicType={ ATOMIC_TYPE.atom }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11580"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/tag"
+              name="Tag"
+              relatedComponents={ [{ name: 'Badge' }, { name: 'Button' }, { name: 'Icon' }] }>
+  The **Tag** component is a small UI element used to represent metadata, keywords, categories, or other contextual
+  information.
 
-    **Tags** are removable and can include an [**Icon**](?path=/docs/ods-components-icon--documentation) as
-    additional prefix element.
+  **Tags** are removable and can include an <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" /> as
+  additional prefix element.
 
-    They are commonly used in interfaces for categorizing content, filtering, and adding contextual details.
-  </div>
+  They are commonly used in interfaces for categorizing content, filtering, and adding contextual details.
+</IdentityCard>
 
-  <IdentityCard aliases={ ['Chip (previous name)', 'Label', 'Pill'] }
-                atomicType={ ATOMIC_TYPE.atom }
-                className="documentation-overview__table"
-                figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11580"
-                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/tag"
-                name="Tag"
-                relatedComponents={ [{ name: 'Badge' }, { name: 'Button' }, { name: 'Icon' }] } />
-</div>
-
-## Anatomy
+<Heading label="Anatomy" level={ 2 } />
 
 ![Component anatomy](components/tag/anatomy.png "Component anatomy")
 
@@ -43,7 +41,7 @@ _A **Tag** component is used to display keywords or categories, with a removal f
 3. **Label**: main content
 4. **Removable icon**
 
-## Usage
+<Heading label="Usage" level={ 2 } />
 
 Use the **Tag** component to display labels, categories, or metadata that describe or classify content.
 
@@ -51,26 +49,19 @@ Use the **Tag** component to display labels, categories, or metadata that descri
 
 Ensure that **Tags** are clearly labelled and easily distinguishable from other UI elements.
 
-### Dos & Don'ts
+<Heading label="Dos & Don'ts" level={ 3 } />
 
-<Markdown className="documentation-do-table">
-  { `
-| ✅ Do                                                                                                                                                                           |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| - The label must be short and clear.                                                                                                                                           |
-| - **Tags** should always include a label. These can represent search terms, filters, or keywords.                                                                              |
-` }
-</Markdown>
+<BestPractices
+  donts={[
+    '- Use Tag if the user cannot interact with it',
+  ]}
+  dos={[
+    '- The label must be short and clear',
+    '- Tags should always include a label. These can represent search terms, filters, or keywords',
+  ]}
+/>
 
-<Markdown className="documentation-dont-table">
-  { `
-| ❌ Don't                                                                                                                                                                          |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - Use **Tag** if the user cannot interact with it.                                                                                                                         |
-` }
-</Markdown>
-
-## Placement
+<Heading label="Placement" level={ 2 } />
 
 Since it provides extra information to a sibling element, in can be used inside components in various places, referring to the nature of its environment.
 
@@ -80,17 +71,17 @@ Multiple **Tags** can be displayed:
 - on a single line
 - stacked vertically
 
-**Tags** main content is left-aligned, the closing [**Icon**](?path=/docs/ods-components-icon--documentation) is fixed at the right hand of it.
+**Tags** main content is left-aligned, the closing <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" /> is fixed at the right hand of it.
 
-## Behavior
+<Heading label="Behavior" level={ 2 } />
 
 **Tags** can be hovered, focused and disabled.
 
 A click/keypress on the whole component should trigger a removal event (if not disabled).
 
-## Variation
+<Heading label="Variation" level={ 2 } />
 
-### Color
+<Heading label="Color" level={ 3 } />
 
 - **Neutral**: displaying general labels or metadata without conveying any particular status or urgency.
 - **Information** _(default)_: displaying a general information for the user, without conveying any particular urgency.
@@ -98,11 +89,11 @@ A click/keypress on the whole component should trigger a removal event (if not d
 - **Warning**: alerting users to potential issues or cautionary information, signaling that attention is needed.
 - **Critical**: highlighting severe issues or urgent information that requires immediate attention, emphasizing high-priority concerns.
 
-### Size
+<Heading label="Size" level={ 3 } />
 
 - **Medium** _(default)_: main size for displaying **Tags**.
 - **Large**: highlighting important labels or metadata with greater visibility and emphasis, making them easily noticeable to users.
 
-## Accessibility
+<Heading label="Accessibility" level={ 2 } />
 
-**Tags** follow the same focusing/keyboard navigation as [**Button**](?path=/docs/ods-components-button--documentation)
+**Tags** follow the same focusing/keyboard navigation as <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />.

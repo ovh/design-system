@@ -1,84 +1,104 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsFormField from '@ovhcloud/ods-components/src/components/form-field/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as FormFieldStories from './form-field.stories';
 
-<Meta of={ FormFieldStories } name='Technical information' />
+<Meta of={ FormFieldStories } name="Technical information" />
 
 <Banner of={ FormFieldStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ FormFieldStories.Overview } sourceState='none' />
+<Canvas of={ FormFieldStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsFormField } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the form-field elements by directly updating the slot elements.
 
 Custom CSS:
 
-<Canvas of={ FormFieldStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ FormFieldStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
-<Canvas of={ FormFieldStories.Default } sourceState='shown' />
+<Heading label="Default" level={ 3 } />
 
-### Label only
-<Canvas of={ FormFieldStories.Label } sourceState='shown' />
+<Canvas of={ FormFieldStories.Default } sourceState="shown" />
 
-### Label & Visual Hint
-<Canvas of={ FormFieldStories.LabelVisualHint } sourceState='shown' />
+<Heading label="Label only" level={ 3 } />
 
-### Label, Visual Hint & Helper
-<Canvas of={ FormFieldStories.LabelVisualHintHelper } sourceState='shown' />
+<Canvas of={ FormFieldStories.Label } sourceState="shown" />
 
-### Error
-<Canvas of={ FormFieldStories.Error } sourceState='shown' />
+<Heading label="Label & Visual Hint" level={ 3 } />
 
-### Tooltip
-<Canvas of={ FormFieldStories.Tooltip } sourceState='shown' />
+<Canvas of={ FormFieldStories.LabelVisualHint } sourceState="shown" />
 
-## Examples - Form elements
+<Heading label="Label, Visual Hint & Helper" level={ 3 } />
 
-### Checkbox
-<Canvas of={ FormFieldStories.Checkbox } sourceState='shown' />
+<Canvas of={ FormFieldStories.LabelVisualHintHelper } sourceState="shown" />
 
-### Datepicker
-<Canvas of={ FormFieldStories.Datepicker } sourceState='shown' />
+<Heading label="Error" level={ 3 } />
 
-### Input
-<Canvas of={ FormFieldStories.Input } sourceState='shown' />
+<Canvas of={ FormFieldStories.Error } sourceState="shown" />
 
-### Password
-<Canvas of={ FormFieldStories.Password } sourceState='shown' />
+<Heading label="Tooltip" level={ 3 } />
 
-### Phone Number
-<Canvas of={ FormFieldStories.PhoneNumber } sourceState='shown' />
+<Canvas of={ FormFieldStories.Tooltip } sourceState="shown" />
 
-### Quantity
-<Canvas of={ FormFieldStories.Quantity } sourceState='shown' />
+<Heading label="Examples - Form elements" level={ 2 } />
 
-### Radio
-<Canvas of={ FormFieldStories.Radio } sourceState='shown' />
+<Heading label="Checkbox" level={ 3 } />
 
-### Range
-<Canvas of={ FormFieldStories.Range } sourceState='shown' />
+<Canvas of={ FormFieldStories.Checkbox } sourceState="shown" />
 
-### Select
-<Canvas of={ FormFieldStories.Select } sourceState='shown' />
+<Heading label="Datepicker" level={ 3 } />
 
-### Switch
-<Canvas of={ FormFieldStories.Switch } sourceState='shown' />
+<Canvas of={ FormFieldStories.Datepicker } sourceState="shown" />
 
-### Textarea
-<Canvas of={ FormFieldStories.Textarea } sourceState='shown' />
+<Heading label="Input" level={ 3 } />
 
-### Timepicker
-<Canvas of={ FormFieldStories.Timepicker } sourceState='shown' />
+<Canvas of={ FormFieldStories.Input } sourceState="shown" />
 
-### Toggle
-<Canvas of={ FormFieldStories.Toggle } sourceState='shown' />
+<Heading label="Password" level={ 3 } />
+
+<Canvas of={ FormFieldStories.Password } sourceState="shown" />
+
+<Heading label="Phone Number" level={ 3 } />
+
+<Canvas of={ FormFieldStories.PhoneNumber } sourceState="shown" />
+
+<Heading label="Quantity" level={ 3 } />
+
+<Canvas of={ FormFieldStories.Quantity } sourceState="shown" />
+
+<Heading label="Radio" level={ 3 } />
+
+<Canvas of={ FormFieldStories.Radio } sourceState="shown" />
+
+<Heading label="Range" level={ 3 } />
+
+<Canvas of={ FormFieldStories.Range } sourceState="shown" />
+
+<Heading label="Select" level={ 3 } />
+
+<Canvas of={ FormFieldStories.Select } sourceState="shown" />
+
+<Heading label="Switch" level={ 3 } />
+
+<Canvas of={ FormFieldStories.Switch } sourceState="shown" />
+
+<Heading label="Textarea" level={ 3 } />
+
+<Canvas of={ FormFieldStories.Textarea } sourceState="shown" />
+
+<Heading label="Timepicker" level={ 3 } />
+
+<Canvas of={ FormFieldStories.Timepicker } sourceState="shown" />
+
+<Heading label="Toggle" level={ 3 } />
+
+<Canvas of={ FormFieldStories.Toggle } sourceState="shown" />

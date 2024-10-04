@@ -1,42 +1,45 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as TextStories from './text.stories';
+import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta of={ TextStories } name='Migration From 17.x' />
+<Meta of={ TextStories } name="Migration From 17.x" />
 
-# Text - migrate from v17 to v18
-----
+<Heading label="Text - migrate from v17 to v18" level={ 1 } />
 
-## Attributes changes
+<Heading label="Attributes changes" level={ 2 } />
 
-`size` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`breakSpaces` <OdsBadge color="critical" label="Removed" size="sm" />
 
-`color` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`color` <OdsBadge color="critical" label="Removed" size="sm" />
 
-`level` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
 
-`contrasted` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`level` <OdsBadge color="critical" label="Removed" size="sm" />
 
-`breakSpaces` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`size` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Have been removed
 
 You can use the new `preset` attribute to obtain the same rendering.
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Size & Level text:
 
-```html
+<Source code={`
 <osds-text size="500" level="heading">My text</osds-text>
 
 <!-- is now -->
 
 <ods-text preset="heading-1">My text</ods-text>
-```
+`}
+        dark="true"
+        language="html" />
 
 Color text:
 
-```html
+<Source code={`
 <osds-text color="primary">My text</osds-text>
 
 <!-- is now -->
@@ -48,11 +51,13 @@ Color text:
     color: var(--ods-color-primary-500);
   }
 </style>
-```
+`}
+        dark="true"
+        language="html" />
 
 breakSpaces text:
 
-```html
+<Source code={`
 <osds-text break-spaces>My text</osds-text>
 
 <!-- is now -->
@@ -64,4 +69,6 @@ breakSpaces text:
     white-space: break-spaces;
   }
 </style>
-```
+`}
+        dark="true"
+        language="html" />

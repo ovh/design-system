@@ -1,40 +1,38 @@
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas, Meta } from '@storybook/blocks';
 import * as TooltipStories from './tooltip.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 
-<Meta of={ TooltipStories } name='Documentation' />
+<Meta of={ TooltipStories } name="Documentation" />
 
 <Banner of={ TooltipStories } />
 
 _**Tooltip** component is used to display contextual information when the user hovers or focuses a UI element in a page._
 
-<Canvas of={ TooltipStories.Overview } sourceState='none' />
+<Canvas of={ TooltipStories.Overview } sourceState="none" />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<div className="documentation-overview">
-  <div>
-    **Tooltip** component is used to display contextual information when the user hovers or focuses an element.
+<IdentityCard aliases={ ['Info Bubble'] }
+              atomicType={ ATOMIC_TYPE.atom }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=55-23473"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/tooltip"
+              name="Tooltip"
+              relatedComponents={ [{ name: 'Icon' }, { name: 'Text' }] }>
+  **Tooltip** component is used to display contextual information when the user hovers or focuses an element.
 
-    It enhances user experience by providing helpful hints, explanations, or descriptions without cluttering the UI.
+  It enhances user experience by providing helpful hints, explanations, or descriptions without cluttering the UI.
 
-    **Tooltips** are commonly used for [**Button**](?path=/docs/ods-components-button--documentation),
-    [**Icon**](?path=/docs/ods-components-icon--documentation), [**Form
-    Field**](?path=/docs/ods-components-form-elements-form-field--documentation), and other interactive elements.
-  </div>
+  **Tooltips** are commonly used for <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />,
+  <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" />,
+  <StorybookLink kind="ODS Components/Form elements/Form Field" label="Form Field" story="Documentation" />, and other interactive elements.
+</IdentityCard>
 
-  <IdentityCard aliases={ ['Info Bubble'] }
-                atomicType={ ATOMIC_TYPE.atom }
-                className="documentation-overview__table"
-                figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=55-23473"
-                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/tooltip"
-                name="Tooltip"
-                relatedComponents={ [{ name: 'Icon' }, { name: 'Text' }] } />
-</div>
-
-## Anatomy
+<Heading label="Anatomy" level={ 2 } />
 
 ![Component anatomy](components/tooltip/anatomy.png "Component anatomy")
 
@@ -42,47 +40,40 @@ _**Tooltip** component is used to display contextual information when the user h
 2. **Main content**
 3. **Arrow** _(optional)_
 
-## Usage
+<Heading label="Usage" level={ 2 } />
 
 Use the **Tooltip** component to provide additional information or context for UI elements.
 
 **Tooltips** should be brief and helpful, enhancing user understanding without overwhelming them.
 
-They are suitable for [**Button**](?path=/docs/ods-components-button--documentation), [**Icon**](?path=/docs/ods-components-icon--documentation), [**Form Field**](?path=/docs/ods-components-form-elements-form-field--documentation), [**Link**](?path=/docs/ods-components-link--documentation), and any other elements where additional context would be beneficial.
+They are suitable for <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" />, <StorybookLink kind="ODS Components/Form elements/Form Field" label="Form Field" story="Documentation" />, <StorybookLink kind="ODS Components/Link" label="Link" story="Documentation" />, and any other elements where additional context would be beneficial.
 
-### Dos & Don'ts
+<Heading label="Dos & Don'ts" level={ 3 } />
 
-<Markdown className="documentation-do-table">
-  { `
-| ✅ Do                                                                                                                                                                           |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| - Use a **Tooltip** to provide useful, brief additional information.                                                                                                           |
-| - Use **Tooltips** sparingly without invading the screen.                                                                                                                      |
-| - Write **Tooltip**'s [**Text**](?path=/docs/ods-components-text--documentation) as full sentences with punctuation except there is not enough space.                   |
-` }
-</Markdown>
+<BestPractices
+  donts={[
+    '- Use a Tooltip to communicate error messages',
+    '- Write very important information within a Tooltip since it is only displayed on hover and focus so the user might miss its crucial content',
+    '- Insert rich information such as image in a Tooltip',
+    <span>- Use interactive elements within a Tooltip such as <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> or <StorybookLink kind="ODS Components/Link" label="Link" story="Documentation" /></span>,
+    '- Repeat information within a Tooltip that is already visible in the UI',
+  ]}
+  dos={[
+    '- Use a Tooltip to provide useful, brief additional information',
+    '- Use Tooltips sparingly without invading the screen',
+    <span>- Write Tooltip's <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> as full sentences with punctuation except there is not enough space</span>,
+  ]}
+/>
 
-<Markdown className="documentation-dont-table">
-  { `
-| ❌ Don't                                                                                                                                                                                               |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                      |
-| - Use a **Tooltip** to communicate error messages.                                                                                                                                                    |
-| - Write very important information within a **Tooltip** since it is only displayed on hover and focus so the user might miss its crucial content.                                                     |
-| - Insert rich information such as image in a **Tooltip**.                                                                                                                                             |
-| - Use interactive elements within a **Tooltip** such as [**Button**](?path=/docs/ods-components-button--documentation) or [**Link**](?path=/docs/ods-components-link--documentation). |
-| - Repeat information within a **Tooltip** that is already visible in the UI.                                                                                                                          |
-` }
-</Markdown>
-
-## Placement
+<Heading label="Placement" level={ 2 } />
 
 **Tooltip** has automatic positioning feature. It can detect the edge of the browser so the container always stays visible on a page.
 
-## Behavior
+<Heading label="Behavior" level={ 2 } />
 
 By default, a **Tooltip** is hidden to the user.
 
-It triggers when the user hovers or focuses on the **Tooltip'**s trigger element such as an [**Icon**](?path=/docs/ods-components-icon--documentation).
+It triggers when the user hovers or focuses on the **Tooltip**'s trigger element such as an <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" />.
 
 As long as the user's mouse cursor or focus is active, the **Tooltip** will persist.
 
@@ -90,10 +81,10 @@ It will hide when the users stop hovering over or focusing on this element.
 
 On a mobile device, a **Tooltip** is displayed upon tapping, and it will hide when the user taps an area outside the **Tooltip** container.
 
-## Variation
+<Heading label="Variation" level={ 2 } />
 
 - **With extra arrow**: providing a more pronounced visual connection between the tooltip and the element it describes, ensuring users clearly understand which element the tooltip is associated with.
 
-## Accessibility
+<Heading label="Accessibility" level={ 2 } />
 
 **Tooltip** component is a visual equivalent of ARIA labels, it will be read the same way by screen readers.

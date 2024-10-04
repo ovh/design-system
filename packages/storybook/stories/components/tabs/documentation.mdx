@@ -1,71 +1,62 @@
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas, Meta } from '@storybook/blocks';
 import * as TabsStories from './tabs.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 
-<Meta of={ TabsStories } name='Documentation' />
+<Meta of={ TabsStories } name="Documentation" />
 
 <Banner of={ TabsStories } />
 
 _**Tabs** are a way of navigating between multiple panels, reducing clutter and fitting more into a smaller space_
 
-<Canvas of={ TabsStories.Overview } sourceState='none' />
+<Canvas of={ TabsStories.Overview } sourceState="none" />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<div className="documentation-overview">
-  <div>
-    **Tabs** are used to organize content by grouping similar information on the same page.
-  </div>
+<IdentityCard aliases={ ['Tab Navigation', 'Tabbed interface'] }
+              atomicType={ ATOMIC_TYPE.molecule }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11168"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/tabs"
+              name="Tabs"
+              relatedComponents={ [{ name: 'Link' }, { name: 'Text' }] }>
+  **Tabs** are used to organize content by grouping similar information on the same page.
+</IdentityCard>
 
-  <IdentityCard aliases={ ['Tab Navigation', 'Tabbed interface'] }
-                atomicType={ ATOMIC_TYPE.molecule }
-                className="documentation-overview__table"
-                figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11168"
-                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/tabs"
-                name="Tabs"
-                relatedComponents={ [{ name: 'Link' }, { name: 'Text' }] } />
-</div>
-
-## Anatomy
+<Heading label="Anatomy" level={ 2 } />
 
 ![Component anatomy](components/tabs/anatomy.png "Component anatomy")
 
 1. Active tab
 2. Unselected tab
 
-## Usage
+<Heading label="Usage" level={ 2 } />
 
 **Tabs** component is ideal for dashboards, settings pages, profile sections, and any interface where multiple views need to be accessible from the same page.
 
 They can also be used to filter content via some common denominator.
 
-### Dos & Don'ts
+<Heading label="Dos & Don'ts" level={ 3 } />
 
-<Markdown className="documentation-do-table">
-  { `
-| ✅ Do                                                                                                                                                                           |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| - Group data in sub-navigation with **Tabs**                                                                                                                                   |
-` }
-</Markdown>
+<BestPractices
+  donts={[
+    '- Use a large amount of Tabs, as it can be confusing for the user',
+    '- Use long labelled Tabs',
+    '- Use conjugated verbs in labels',
+    <span>- Use external <StorybookLink kind="ODS Components/Link" label="Link" story="Documentation" /> as Tabs</span>,
+    '- Avoid elements comparison in multiple Tabs (context switching)',
+    '- Avoid nesting Tabs in a web page',
+    '- Use Tabs as a process progression',
+  ]}
+  dos={[
+    '- Group data in sub-navigation with Tabs',
+  ]}
+/>
 
-<Markdown className="documentation-dont-table">
-  { `
-| ❌ Don't                                                                                                                                                                          |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - Use a large amount of **Tabs**, as it can be confusing for the user                                                                                                            |
-| - Use long labelled **Tabs**                                                                                                                                                     |
-| - Use conjugated verbs in labels                                                                                                                                                 |
-| - Use external [**Link**](?path=/docs/ods-components-link--documentation) as **Tabs**                                                                                    |
-| - Avoid elements comparison in multiple **Tabs** (context switching)                                                                                                             |
-| - Avoid nesting **Tabs** in a web page                                                                                                                                           |
-| - Use **Tabs** as a process progression                                                                                                                                          |
-` }
-</Markdown>
-
-## Placement
+<Heading label="Placement" level={ 2 } />
 
 **Tabs** are **often used in the top part of a web page**, as it can act as a navigation focus.
 
@@ -73,7 +64,7 @@ They are **left-centered by default**.
 
 Each **Tab** has an automatic width based on the content's length.
 
-## Behavior
+<Heading label="Behavior" level={ 2 } />
 
 **By default, one of the **Tabs** is always selected**.
 
@@ -87,10 +78,10 @@ Each **Tab** has a panel displaying free content. Selecting a **Tab** displays t
 
 The panel does not depend on the **Tab** component, it is in the developer’s hands.
 
-## Variation
+<Heading label="Variation" level={ 2 } />
 
 N/A
 
-## Accessibility
+<Heading label="Accessibility" level={ 2 } />
 
-All inner **Tabs** follow the same focusing/keyboard navigation as [**Button**](?path=/docs/ods-components-button--documentation)
+All inner **Tabs** follow the same focusing/keyboard navigation as <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />.

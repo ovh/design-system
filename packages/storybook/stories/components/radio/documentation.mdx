@@ -1,42 +1,40 @@
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas, Meta } from '@storybook/blocks';
 import * as RadioStories from './radio.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 
-<Meta of={ RadioStories } name='Documentation' />
+<Meta of={ RadioStories } name="Documentation" />
 
 <Banner of={ RadioStories } />
 
 _A **Radio** button allows users to select only one option from a number of choices._
 
-<Canvas of={ RadioStories.Overview } sourceState='none' />
+<Canvas of={ RadioStories.Overview } sourceState="none" />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<div className="documentation-overview">
-  <div>
-    **Radio** buttons are used to set a true/false option in a set of minimum two options.
+<IdentityCard aliases={ ['Radio button (previous name)'] }
+              atomicType={ ATOMIC_TYPE.atom }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-14625"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/radio"
+              name="Radio"
+              relatedComponents={ [{ name: 'Form Field', subtitle: 'Form elements' }, { name: 'Text' }] }>
+  **Radio** buttons are used to set a true/false option in a set of minimum two options.
 
-    They are generally displayed in a **Radio** group.
-  </div>
+  They are generally displayed in a **Radio** group.
+</IdentityCard>
 
-  <IdentityCard aliases={ ['Radio button (previous name)'] }
-                atomicType={ ATOMIC_TYPE.atom }
-                className="documentation-overview__table"
-                figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-14625"
-                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/radio"
-                name="Radio"
-                relatedComponents={ [{ name: 'Form Field', subtitle: 'Form elements' }, { name: 'Text' }] } />
-</div>
-
-## Anatomy
+<Heading label="Anatomy" level={ 2 } />
 
 ![Component anatomy](components/radio/anatomy.png "Component anatomy")
 
 1. **Radio** : The selection control
 
-## Usage
+<Heading label="Usage" level={ 2 } />
 
 In most situations where you want to present a list of mutually exclusive options, **you will want to group Radio buttons**.
 
@@ -47,29 +45,22 @@ Also, it can serve as :
 - Lists/sub-lists
 - Filters
 
-### Dos & Don'ts
+<Heading label="Dos & Don'ts" level={ 3 } />
 
-<Markdown className="documentation-do-table">
-  { `
-| ✅ Do                                                                                                                                                                                   |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------         |
-| - Always use clear and concise labels for **Radio** buttons.                                                                                                                           |
-| - Long labels may wrap to a second line, and this is preferable to truncation.                                                                                                         |
-| - If using two affirmative/negative-type **Radio** buttons, you might consider converting it to a sole [**Checkbox**](?path=/docs/ods-components-form-elements-checkbox--documentation) button. |
-` }
-</Markdown>
+<BestPractices
+  donts={[
+    <span>- Use Radio buttons when multiple items can be selected, use <StorybookLink kind="ODS Components/Form elements/Checkbox" label="Checkbox" story="Documentation" /> buttons instead</span>,
+    <span>- Use more than 5 Radio buttons, instead convert it to a <StorybookLink kind="ODS Components/Form elements/Select" label="Select" story="Documentation" /></span>,
+    '- Avoid situations where all options in a set should be deselected',
+  ]}
+  dos={[
+    '- Always use clear and concise labels for Radio buttons',
+    '- Long labels may wrap to a second line, and this is preferable to truncation',
+    <span>- If using two affirmative/negative-type Radio buttons, you might consider converting it to a sole <StorybookLink kind="ODS Components/Form elements/Checkbox" label="Checkbox" story="Documentation" /> button</span>,
+  ]}
+/>
 
-<Markdown className="documentation-dont-table">
-  { `
-| ❌ Don't                                                                                                                                                                          |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - Use **Radio** buttons when multiple items can be selected, use [**Checkbox**](?path=/docs/ods-components-form-elements-checkbox--documentation) buttons instead.                        |
-| - Use more than 5 **Radio** buttons, instead convert it to a [**Select**](?path=/docs/ods-components-form-elements-select--documentation).                                                |
-| - Avoid situations where all options in a set should be deselected.                                                                                                              |
-` }
-</Markdown>
-
-## Placement
+<Heading label="Placement" level={ 2 } />
 
 **Radio** groups can be either horizontal or vertical.
 
@@ -77,7 +68,7 @@ By default, **Radio** groups are vertical, meaning one under another.
 
 Usage of horizontal **Radio** groups should only occur if vertical space is limited.
 
-## Behavior
+<Heading label="Behavior" level={ 2 } />
 
 **Radio** button can be hovered, focused, clicked or disabled. When disabled, **Radio** button cannot be focused nor clicked.
 
@@ -86,10 +77,10 @@ When clicking on one of the **Radio** button or its linked label, the **Radio** 
 **Radio** button behavior does work only when used in a situation of a **Radio** group.
 The **Radio** group can be in an error state, but also in a disabled state. It also can be focused and hovered.
 
-## Variation
+<Heading label="Variation" level={ 2 } />
 
 **Radio** buttons follow the native behavior of the browser used, so the appearance of **Radio** buttons may vary depending on the browser.
 
-## Accessibility
+<Heading label="Accessibility" level={ 2 } />
 
 Using `Enter` or `Space` keys while focusing allows to check the **Radio** button.

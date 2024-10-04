@@ -1,20 +1,22 @@
-import { Meta, Markdown } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as IconStories from './icon.stories';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TokenMigrationTable } from '../../../src/components/tokenMigrationTable/TokenMigrationTable';
 
-<Meta of={ IconStories } name='Migration From 17.x' />
+<Meta of={ IconStories } name="Migration From 17.x" />
 
-# Icon - migrate from v17 to v18
-----
+<Heading label="Icon - migrate from v17 to v18" level={ 1 } />
 
-## Attributes changes
+<Heading label="Attributes changes" level={ 2 } />
 
-`ariaName` <ods-badge size="sm" label="Updated"></ods-badge>
+`ariaName` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `alt` attribute to obtain the same behavior.
 
-`color` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`color` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
@@ -22,19 +24,19 @@ Icons are now font, they will by default have the same color as the current text
 
 You can override this using a CSS class on the component directly.
 
-`contrasted` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Icons are now font, they will by default have the same color as the current text.
 
-`hoverable` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`hoverable` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Interactive icon will be handled specifically by components that implements those interactions.
 
-`size` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`size` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
@@ -46,10 +48,11 @@ You can override this using a CSS class on the component directly.
 > Icons have been resized to fit entirely their bounding box.
 > Check your current icons and update their size accordingly.
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Contrasted icon:
-```html
+
+<Source code={`
 <osds-icon contrasted
           name="warning">
 </osds-icon>
@@ -65,10 +68,13 @@ Contrasted icon:
     color: #fff;
   }
 </style>
-```
+`}
+        dark="true"
+        language="html" />
 
 Icon size:
-```html
+
+<Source code={`
 <osds-icon name="warning"
           size="xl">
 </osds-icon>
@@ -84,51 +90,50 @@ Icon size:
     font-size: 48px;
   }
 </style>
-```
-
-### Icons changes
-<Markdown>
-{`
-| Former icon names | Status                                                         | New                                                                   |
-|-------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| add               | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **plus**                                                          |
-| arrow-transfer    | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **arrow-left-right**                                              |
-| bin               | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **trash**                                                         |
-| cart              | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **shopping-cart**                                                 |
-| chevron-up-down   | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>      | Use an empty space as default                                         |
-| clock-wait        | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **clock-time-four**                                               |
-| close             | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **xmark**                                                         |
-| copy              | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **file-copy**                                                     |
-| ellipsis          | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **ellipsis-horizontal**                                           |
-| error             | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **triangle-exclamation**                                              |
-| eye-closed        | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **eye-off**                                                       |
-| eye-open          | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **eye**                                                           |
-| gear              | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **cog**                                                           |
-| guides            | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **book**                                                          |
-| hamburger         | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **hamburger-menu**                                                |
-| help              | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **question**                                                      |
-| help-circle       | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **circle-question**                                               |
-| indeterminate     | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **minus**                                                         |
-| info              | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **circle-info**                                                   |
-| ok                | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **check**                                                         |
-| ovh               | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>      | See [Logo](https://zeroheight.com/6fc8a63f7)                          |
-| remove            | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **minus**                                                         |
-| settings          | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **cog**                                                           |
-| shape-circle      | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **star**                                            |
-| shape-dot         | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>      | Use **star-full**                                       |
-| sort              | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>      | Use an empty space as default                                         |
-| sort-down         | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>      | Use **sort-alpha-down**, **sort-numeric-down** or **chevron-down**    |
-| sort-up           | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>      | Use **sort-alpha-down**, **sort-numeric-down** or **chevron-down**    |
-| success           | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **check**                                                         |
-| success-circle    | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **circle-check**                                                  |
-| time              | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **clock-time-four**                                               |
-| transfer          | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **arrow-left-right**                                              |
-| triangle-down     | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>      | Use **sort-alpha-down**, **sort-numeric-down** or **chevron-down**    |
-| triangle-left     | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>      | Use **chevron-left**                                                  |
-| triangle-right    | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>      | Use **chevron-right**                                                 |
-| triangle-up       | <ods-badge size="sm" color="critical" label="Removed"></ods-badge>      | Use **sort-alpha-up**, **sort-numeric-up** or **chevron-up**          |
-| user              | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **circle-user**                                                   |
-| warning           | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **triangle-exclamation**                                              |
-| warning-circle    | <ods-badge size="sm" label="Updated"></ods-badge>      | Use **triangle-exclamation**                                              |
 `}
-</Markdown>
+        dark="true"
+        language="html" />
+
+<Heading label="Icons changes" level={ 2 } />
+
+<TokenMigrationTable items={[
+  { formerName: 'add', replacement: 'Use **plus**', status: 'updated' },
+  { formerName: 'arrow-transfer', replacement: 'Use **arrow-left-right**', status: 'updated' },
+  { formerName: 'bin', replacement: 'Use **trash**', status: 'updated' },
+  { formerName: 'cart', replacement: 'Use **shopping-cart**', status: 'updated' },
+  { formerName: 'chevron-up-down', replacement: 'Use an empty space as default', status: 'removed' },
+  { formerName: 'clock-wait', replacement: 'Use **clock-time-four**', status: 'updated' },
+  { formerName: 'close', replacement: 'Use **xmark**', status: 'updated' },
+  { formerName: 'copy', replacement: 'Use **file-copy**', status: 'updated' },
+  { formerName: 'ellipsis', replacement: 'Use **ellipsis-horizontal**', status: 'updated' },
+  { formerName: 'error', replacement: 'Use **triangle-exclamation**', status: 'updated' },
+  { formerName: 'eye-closed', replacement: 'Use **eye-off**', status: 'updated' },
+  { formerName: 'eye-open', replacement: 'Use **eye**', status: 'updated' },
+  { formerName: 'gear', replacement: 'Use **cog**', status: 'updated' },
+  { formerName: 'guides', replacement: 'Use **book**', status: 'updated' },
+  { formerName: 'hamburger', replacement: 'Use **hamburger-menu**', status: 'updated' },
+  { formerName: 'help', replacement: 'Use **question**', status: 'updated' },
+  { formerName: 'help-circle', replacement: 'Use **circle-question**', status: 'updated' },
+  { formerName: 'indeterminate', replacement: 'Use **minus**', status: 'updated' },
+  { formerName: 'info', replacement: 'Use **circle-info**', status: 'updated' },
+  { formerName: 'ok', replacement: 'Use **check**', status: 'updated' },
+  { formerName: 'ovh', replacement: 'See [Logo](https://zeroheight.com/6fc8a63f7)', status: 'removed' },
+  { formerName: 'remove', replacement: 'Use **minus**', status: 'updated' },
+  { formerName: 'settings', replacement: 'Use **cog**', status: 'updated' },
+  { formerName: 'shape-circle', replacement: 'Use **star**', status: 'updated' },
+  { formerName: 'shape-dot', replacement: 'Use **star-full**', status: 'removed' },
+  { formerName: 'sort', replacement: 'Use an empty space as default', status: 'removed' },
+  { formerName: 'sort-down', replacement: 'Use **sort-alpha-down**, **sort-numeric-down** or **chevron-down**', status: 'removed' },
+  { formerName: 'sort-up', replacement: 'Use **sort-alpha-down**, **sort-numeric-down** or **chevron-down**', status: 'removed' },
+  { formerName: 'success', replacement: 'Use **check**', status: 'updated' },
+  { formerName: 'success-circle', replacement: 'Use **circle-check**', status: 'updated' },
+  { formerName: 'time', replacement: 'Use **clock-time-four**', status: 'updated' },
+  { formerName: 'transfer', replacement: 'Use **arrow-left-right**', status: 'updated' },
+  { formerName: 'triangle-down', replacement: 'Use **sort-alpha-down**, **sort-numeric-down** or **chevron-down**', status: 'removed' },
+  { formerName: 'triangle-left', replacement: 'Use **chevron-left**', status: 'removed' },
+  { formerName: 'triangle-right', replacement: 'Use **chevron-right**', status: 'removed' },
+  { formerName: 'triangle-up', replacement: 'Use **sort-alpha-up**, **sort-numeric-up** or **chevron-up**', status: 'removed' },
+  { formerName: 'user', replacement: 'Use **circle-user**', status: 'updated' },
+  { formerName: 'warning', replacement: 'Use **triangle-exclamation**', status: 'updated' },
+  { formerName: 'warning-circle', replacement: 'Use **triangle-exclamation**', status: 'updated' },
+]} />

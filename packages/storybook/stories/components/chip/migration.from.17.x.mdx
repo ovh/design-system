@@ -1,14 +1,16 @@
+import { OdsBadge } from '@ovhcloud/ods-components/react';
 import { Meta } from '@storybook/blocks';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 
 <Meta title="ODS Components/Chip" />
 
-# Chip - migrate from v17 to v18
-----
+<Heading label="Chip - migrate from v17 to v18" level={ 1 } />
 
-Chip has been removed from ODS components. <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+Chip has been removed from ODS components. <OdsBadge color="critical" label="Removed" size="sm" />
 
 It has been split into two different components.
 
-If you need a presentational component, with no behaviour, use [ods-badge](?path=/docs/ods-components-badge--documentation).
+If you need a presentational component, with no behaviour, use <StorybookLink kind="ODS Components/Badge" label="ods-badge" story="Documentation" />.
 
-If you need a clickable element, use [ods-tag](?path=/docs/ods-components-tag--documentation).
+If you need a clickable element, use <StorybookLink kind="ODS Components/Tag" label="ods-tag" story="Documentation" />.

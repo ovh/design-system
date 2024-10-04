@@ -1,99 +1,101 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as PasswordStories from './password.stories';
+import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta of={ PasswordStories } name='Migration From 17.x' />
+<Meta of={ PasswordStories } name="Migration From 17.x" />
 
-# Password - migrate from v17 to v18
-----
+<Heading label="Password - migrate from v17 to v18" level={ 1 } />
 
-## Attributes changes
+<Heading label="Attributes changes" level={ 2 } />
 
-`color ` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`color ` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Form components do not provide color variants anymore.
 You can use custom CSS if you need to customize the component.
 
-`contrasted` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Form components do not provide contrasted variants anymore.
 You can use custom CSS if you need to customize the component.
 
-`clearable` <ods-badge size="sm" label="Updated"></ods-badge>
+`clearable` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isClearable` attribute to obtain the same behavior.
 
-`disabled` <ods-badge size="sm" label="Updated"></ods-badge>
+`disabled` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isDisabled` attribute to obtain the same behavior.
 
-`forbidden-values` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`forbidden-values` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 You can replace it with a regex on the `pattern` attributes.
 
-`label` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`label` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 To add a label on a password component, wrap it within `form-field` component.
 
-`loading` <ods-badge size="sm" label="Updated"></ods-badge>
+`loading` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isLoading` attribute to obtain the same behavior.
 
-`masked` <ods-badge size="sm" label="Updated"></ods-badge>
+`masked` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isMasked` attribute to obtain the same behavior.
 
-`error` <ods-badge size="sm" label="Updated"></ods-badge>
+`error` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `hasError` attribute to obtain the same behavior.
 
-`readonly` <ods-badge size="sm" label="Updated"></ods-badge>
+`readonly` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isReadonly` attribute to obtain the same behavior.
 
-`required` <ods-badge size="sm" label="Updated"></ods-badge>
+`required` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isRequired` attribute to obtain the same behavior.
 
-`inline` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`inline` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Password is now `inline-block` by default.
 You can add some style directly on the component if you want to override that.
 
-`size ` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`size ` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Form components do not provide size variants anymore.
 You can use custom CSS if you need to customize the component.
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Clearable password:
-```html
+
+<Source code={`
 <osds-password clearable>
 </osds-password>
 
@@ -101,10 +103,13 @@ Clearable password:
 
 <ods-password is-clearable>
 </ods-password>
-```
+`}
+        dark="true"
+        language="html" />
 
 Disabled password:
-```html
+
+<Source code={`
 <osds-password disabled>
 </osds-password>
 
@@ -112,10 +117,13 @@ Disabled password:
 
 <ods-password is-disabled>
 </ods-password>
-```
+`}
+        dark="true"
+        language="html" />
 
 Error password:
-```html
+
+<Source code={`
 <osds-password error>
 </osds-password>
 
@@ -123,10 +131,13 @@ Error password:
 
 <ods-password has-error>
 </ods-password>
-```
+`}
+        dark="true"
+        language="html" />
 
 Forbidden values password:
-```html
+
+<Source code={`
 <osds-password forbidden-values="['1', '2']">
 </osds-password>
 
@@ -134,10 +145,13 @@ Forbidden values password:
 
 <ods-password pattern="[^12]+">
 </ods-password>
-```
+`}
+        dark="true"
+        language="html" />
 
 Loading password:
-```html
+
+<Source code={`
 <osds-password loading>
 </osds-password>
 
@@ -145,10 +159,13 @@ Loading password:
 
 <ods-password is-loading>
 </ods-password>
-```
+`}
+        dark="true"
+        language="html" />
 
 Masked password:
-```html
+
+<Source code={`
 <osds-password masked>
 </osds-password>
 
@@ -156,10 +173,13 @@ Masked password:
 
 <ods-password is-masked>
 </ods-password>
-```
+`}
+        dark="true"
+        language="html" />
 
 Readonly password:
-```html
+
+<Source code={`
 <osds-password readonly>
 </osds-password>
 
@@ -167,10 +187,13 @@ Readonly password:
 
 <ods-password is-readonly>
 </ods-password>
-```
+`}
+        dark="true"
+        language="html" />
 
 Required password:
-```html
+
+<Source code={`
 <osds-password required>
 </osds-password>
 
@@ -178,4 +201,6 @@ Required password:
 
 <ods-password is-required>
 </ods-password>
-```
+`}
+        dark="true"
+        language="html" />

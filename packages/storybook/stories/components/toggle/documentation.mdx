@@ -1,39 +1,37 @@
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas, Meta } from '@storybook/blocks';
 import * as ToggleStories from './toggle.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 
-<Meta of={ ToggleStories } name='Documentation' />
+<Meta of={ ToggleStories } name="Documentation" />
 
 <Banner of={ ToggleStories } />
 
 _A **Toggle** component is used to allow the user to switch between two states, on and off, in a visual representation._
 
-<Canvas of={ ToggleStories.Overview } sourceState='none' />
+<Canvas of={ ToggleStories.Overview } sourceState="none" />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<div className="documentation-overview">
-  <div>
-    The **Toggle** component is used to enable or disable a state, setting or feature.
+<IdentityCard aliases={ ['Toggle Switch', 'Switch'] }
+              atomicType={ ATOMIC_TYPE.atom }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=53-15319"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/toggle"
+              name="Toggle"
+              relatedComponents={ [{ name: 'Checkbox', subtitle: 'Form elements' }] }>
+  The **Toggle** component is used to enable or disable a state, setting or feature.
 
-    It provides a clear visual indication of the current state and allows users to change states with a single click or
-    tap.
+  It provides a clear visual indication of the current state and allows users to change states with a single click or
+  tap.
 
-    **Toggles** are commonly used in settings, preferences, and forms where a binary choice is required.
-  </div>
+  **Toggles** are commonly used in settings, preferences, and forms where a binary choice is required.
+</IdentityCard>
 
-  <IdentityCard aliases={ ['Toggle Switch', 'Switch'] }
-                atomicType={ ATOMIC_TYPE.atom }
-                className="documentation-overview__table"
-                figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=53-15319"
-                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/toggle"
-                name="Toggle"
-                relatedComponents={ [{ name: 'Checkbox', subtitle: 'Form elements' }] } />
-</div>
-
-## Anatomy
+<Heading label="Anatomy" level={ 2 } />
 
 ![Component anatomy](components/toggle/anatomy.png "Component anatomy")
 
@@ -41,7 +39,7 @@ _A **Toggle** component is used to allow the user to switch between two states, 
 2. **Track**: trail where the thumb can slide from left to right and vice versa
 3. **Textual indication**: add extra info about the **Toggle**'s state _(optional)_
 
-## Usage
+<Heading label="Usage" level={ 2 } />
 
 A **Toggle** is commonly used for binary choice.
 
@@ -51,30 +49,23 @@ It can be used in following use cases when you need to allow the user to:
 - turn an option or settings on or off
 - add or remove an item or an option
 
-A **Toggle** should never require users to press a [**Button**](?path=/docs/ods-components-button--documentation) to apply their settings (if a setting requires a [**Button**](?path=/docs/ods-components-button--documentation), use a [**Checkbox**](?path=/docs/ods-components-form-elements-checkbox--documentation) instead).
+A **Toggle** should never require users to press a <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> to apply their settings (if a setting requires a <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, use a <StorybookLink kind="ODS Components/Form elements/Checkbox" label="Checkbox" story="Documentation" /> instead).
 
-### Dos & Don'ts
+<Heading label="Dos & Don'ts" level={ 3 } />
 
-<Markdown className="documentation-do-table">
-  { `
-| ✅ Do                                                                                                                                                                           |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| - Use a **Toggle** when you need to allow users to adjust settings on mobile                                                                                                   |
-| - A **Toggle** can be used in a form when it has an immediate effect inside the form to avoid a failed selection when submitted                                                |
-| - When other elements are displayed by clicking on the **Toggle**, make sure that these elements are located next to the **Toggle** so it is clear to the user.                |
-| - Add a label to the **Toggle** that explains what will happen when the user set it to "on" or "off" position: keep it clear and concise.                                      |
-` }
-</Markdown>
+<BestPractices
+  donts={[
+    <span>- Use a Toggle when you are not expecting an immediate effect by clicking on it: use a <StorybookLink kind="ODS Components/Form elements/Checkbox" label="Checkbox" story="Documentation" /> component instead</span>,
+  ]}
+  dos={[
+    '- Use a Toggle when you need to allow users to adjust settings on mobile',
+    '- A Toggle can be used in a form when it has an immediate effect inside the form to avoid a failed selection when submitted',
+    '- When other elements are displayed by clicking on the Toggle, make sure that these elements are located next to the Toggle so it is clear to the user',
+    '- Add a label to the Toggle that explains what will happen when the user set it to "on" or "off" position: keep it clear and concise',
+  ]}
+/>
 
-<Markdown className="documentation-dont-table">
-  { `
-| ❌ Don't                                                                                                                                                                               |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------      |
-| - Use a **Toggle** when you are not expecting an immediate effect by clicking on it: use a [**Checkbox**](?path=/docs/ods-components-form-elements-checkbox--documentation) component instead. |
-` }
-</Markdown>
-
-## Placement
+<Heading label="Placement" level={ 2 } />
 
 Place the **Toggle** component near the setting or feature it controls.
 
@@ -82,16 +73,16 @@ It should be positioned within forms, settings panels, or any relevant context w
 
 Ensure it is easily accessible and visible.
 
-## Behavior
+<Heading label="Behavior" level={ 2 } />
 
 When the user clicks on a **Toggle**, it has an immediate effect:
 - set to "on" position, the thumb will slide to the right of the track
 - set to "off" position, the thumb will slide to the left of the track
 
-## Variation
+<Heading label="Variation" level={ 2 } />
 
 N/A
 
-## Accessibility
+<Heading label="Accessibility" level={ 2 } />
 
 When focused, **Toggle** can be triggered using `Space` or `Enter` keys.

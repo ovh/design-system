@@ -1,41 +1,42 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsModal from '@ovhcloud/ods-components/src/components/modal/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as ModalStories from './modal.stories';
 
-<Meta of={ ModalStories } name='Technical information' />
+<Meta of={ ModalStories } name="Technical information" />
 
 <Banner of={ ModalStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ ModalStories.Overview } sourceState='none' />
+<Canvas of={ ModalStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsModal } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can update the modal's content by directly updating the slot elements. You can also update it using the `::part(dialog)`.
 
 Custom CSS:
 
-<Canvas of={ ModalStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ ModalStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ ModalStories.Default } sourceState='shown' />
+<Canvas of={ ModalStories.Default } sourceState="shown" />
 
-### Not Dismissible
+<Heading label="Not Dismissible" level={ 3 } />
 
-<Canvas of={ ModalStories.NotDismissible } sourceState='shown' />
+<Canvas of={ ModalStories.NotDismissible } sourceState="shown" />
 
-### Color
+<Heading label="Color" level={ 3 } />
 
-<Canvas of={ ModalStories.Color } sourceState='shown' />
+<Canvas of={ ModalStories.Color } sourceState="shown" />
 
-### Actions slot
+<Heading label="Actions slot" level={ 3 } />
 
-<Canvas of={ ModalStories.Actions } sourceState='shown' />
+<Canvas of={ ModalStories.Actions } sourceState="shown" />

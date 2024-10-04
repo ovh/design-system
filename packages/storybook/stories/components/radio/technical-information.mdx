@@ -1,15 +1,16 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsRadio from '@ovhcloud/ods-components/src/components/radio/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as RadioStories from './radio.stories';
 import { Radio as FormFieldRadio } from '../form-field/form-field.stories';
 
-<Meta of={ RadioStories } name='Technical information' />
+<Meta of={ RadioStories } name="Technical information" />
 
 <Banner of={ RadioStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
 **Radio** are used when, facing a list of two or more options, the user must select only one.
 
@@ -19,48 +20,59 @@ The behavior of the old `radio-group` is now automatic, giving the radio the sam
 
 There is no longer a `radio` component to make clickable Element.
 
-<Canvas of={ RadioStories.Checked } sourceState='none' />
+<Canvas of={ RadioStories.Checked } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsRadio } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the radio element using the part `radio`.
 
 Custom CSS:
 
-<Canvas of={ RadioStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ RadioStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ RadioStories.Default } sourceState='shown' />
+<Canvas of={ RadioStories.Default } sourceState="shown" />
 
-### Alignment
+<Heading label="Alignment" level={ 3 } />
+
 The radio component may not be vertically aligned by default, depending on the content following it.
 You'll need to manage this with CSS on parent element.
-<Canvas of={ RadioStories.Alignment } sourceState='shown' />
 
-### Checked
-<Canvas of={ RadioStories.Checked } sourceState='shown' />
+<Canvas of={ RadioStories.Alignment } sourceState="shown" />
 
-### Disabled
-<Canvas of={ RadioStories.Disabled } sourceState='shown' />
+<Heading label="Checked" level={ 3 } />
 
-### Disabled Checked
-<Canvas of={ RadioStories.DisabledChecked } sourceState='shown' />
+<Canvas of={ RadioStories.Checked } sourceState="shown" />
 
-### Group
-<Canvas of={ RadioStories.Group } sourceState='shown' />
+<Heading label="Disabled" level={ 3 } />
 
-### Group checked
+<Canvas of={ RadioStories.Disabled } sourceState="shown" />
+
+<Heading label="Disabled Checked" level={ 3 } />
+
+<Canvas of={ RadioStories.DisabledChecked } sourceState="shown" />
+
+<Heading label="Group" level={ 3 } />
+
+<Canvas of={ RadioStories.Group } sourceState="shown" />
+
+<Heading label="Group checked" level={ 3 } />
+
 The attribute `is-checked` works like the native implementation, defining the default checked radio in a group.
-<Canvas of={ RadioStories.GroupIsChecked } sourceState='shown' />
 
-### InputId
+<Canvas of={ RadioStories.GroupIsChecked } sourceState="shown" />
+
+<Heading label="InputId" level={ 3 } />
+
 The `id` is encapsulated by the `input-id` attribute. This way you can link a label (attribute `for`) to the input.
-<Canvas of={ RadioStories.InputId } sourceState='shown' />
 
-### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
-<Canvas of={ FormFieldRadio } sourceState='shown' />
+<Canvas of={ RadioStories.InputId } sourceState="shown" />
+
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldRadio } sourceState="shown" />

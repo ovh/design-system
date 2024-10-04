@@ -1,85 +1,76 @@
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas, Meta } from '@storybook/blocks';
 import * as LinkStories from './link.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 
-<Meta of={ LinkStories } name='Documentation' />
+<Meta of={ LinkStories } name="Documentation" />
 
 <Banner of={ LinkStories } />
 
 _**Link** is a component that enables redirection to a new page, section, website or other resources:_
 
-<Canvas of={ LinkStories.Overview } sourceState='none' />
+<Canvas of={ LinkStories.Overview } sourceState="none" />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<div className="documentation-overview">
-  <div id='description'>
-    A **Link** allows users to move through a website by redirecting them to a different page or section.
+<IdentityCard aliases={ ['Hyperlink', 'Anchor'] }
+              atomicType={ ATOMIC_TYPE.quark }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=44-6837"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/link"
+              name="Link"
+              relatedComponents={ [{ name: 'Icon' }] }>
+  A **Link** allows users to move through a website by redirecting them to a different page or section.
 
-    It can also enables **Links** to other resources.
-  </div>
+  It can also enables **Links** to other resources.
+</IdentityCard>
 
-  <IdentityCard aliases={ ['Hyperlink', 'Anchor'] }
-                atomicType={ ATOMIC_TYPE.quark }
-                className="documentation-overview__table"
-                figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=44-6837"
-                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/link"
-                name="Link"
-                relatedComponents={ [{ name: 'Icon' }] } />
-</div>
-
-## Anatomy
+<Heading label="Anatomy" level={ 2 } />
 
 ![Component anatomy](components/link/anatomy.png "Component anatomy")
 
 1. **Link text**: Communicates what is being linked to.
-2. [**Icon**](?path=/docs/ods-components-icon--documentation) (optional): Indicates the destination or type of content being.
+2. <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" /> (optional): Indicates the destination or type of content being.
 
-## Usage
+<Heading label="Usage" level={ 2 } />
 
 **Links** are used as navigational elements.
 
 They are also used when linking to another document. In that case, **Link** description should contain type and size of document.
 
-### When to use a **Link** or a [**Button**](?path=/docs/ods-components-button--documentation):
+<Heading label="When to use a Link or a Button" level={ 3 } />
 
 They have different purposes so, make sure you are accurately using them.
 
-[**Button**](?path=/docs/ods-components-button--documentation) is used for actions while **Link** is used for navigation.
+<StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> is used for actions while **Link** is used for navigation.
 
-### Dos & Don'ts
+<Heading label="Dos & Don'ts" level={ 3 } />
 
-<Markdown className="documentation-do-table">
-  { `
-| ✅ Do                                                                                                                                                                           |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| - Use a **Link** to redirect user to a new page, section or website.                                                                                                           |
-| - Make a **Link** description self-explanatory to describe where user will be send after following this **Link**                                                               |
-| - Write short key words as **Link** description                                                                                                                                |
-| - Ensure users are aware of a **Link** containing a document by providing its type and size                                                                                    |
-` }
-</Markdown>
+<BestPractices
+  donts={[
+    <span>- Use a Link as a <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> for actions such as 'save', 'cancel' or 'submit'</span>,
+    '- Use "Click Here" or "Here" as description for a Link',
+    '- Write a full long sentence as Link description',
+    <span>- Use different color for Link and the optional <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" /> when you add one</span>,
+  ]}
+  dos={[
+    '- Use a Link to redirect user to a new page, section or website',
+    '- Make a Link description self-explanatory to describe where user will be send after following this Link',
+    '- Write short key words as Link description',
+    '- Ensure users are aware of a Link containing a document by providing its type and size',
+  ]}
+/>
 
-<Markdown className="documentation-dont-table">
-  { `
-| ❌ Don't                                                                                                                                                                          |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - Use a **Link** as a [**Button**](?path=/docs/ods-components-button--documentation) for actions such as 'save', 'cancel' or 'submit'                                    |
-| - Use "Click Here" or "Here" as description for a **Link**                                                                                                                       |
-| - Write a full long sentence as **Link** description                                                                                                                             |
-| - Use different color for **Link** and the optional [**Icon**](?path=/docs/ods-components-icon--documentation) when you add one                                          |
-` }
-</Markdown>
-
-## Placement
+<Heading label="Placement" level={ 2 } />
 
 A **Link** can stand alone on a page, or it can be placed within a sentence or a paragraph.
 
-An optional [**Icon**](?path=/docs/ods-components-icon--documentation) can be displayed on the left or right of the **Link** label content.
+An optional <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" /> can be displayed on the left or right of the **Link** label content.
 
-## Behavior
+<Heading label="Behavior" level={ 2 } />
 
 **Link** component can be hovered, focused, clicked and disabled.
 
@@ -87,12 +78,12 @@ When disabled, users cannot focus nor click on the **Link**.
 
 On hover, **Link** is underlined and its color changes.
 
-When users clicks anywhere on the **Link**, even its optional [**Icon**](?path=/docs/ods-components-icon--documentation), they are redirected to the expected page or section.
+When users clicks anywhere on the **Link**, even its optional <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" />, they are redirected to the expected page or section.
 
-## Variation
+<Heading label="Variation" level={ 2 } />
 
 N/A
 
-## Accessibility
+<Heading label="Accessibility" level={ 2 } />
 
 While **Link** has focus, users can press `Enter` key to open it.

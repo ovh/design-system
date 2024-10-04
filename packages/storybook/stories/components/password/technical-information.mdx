@@ -1,61 +1,65 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsPassword from '@ovhcloud/ods-components/src/components/password/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as PasswordStories from './password.stories';
 import { Password as FormFieldPassword } from '../form-field/form-field.stories';
 
-<Meta of={ PasswordStories } name='Technical information' />
+<Meta of={ PasswordStories } name="Technical information" />
 
 <Banner of={ PasswordStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ PasswordStories.Overview } sourceState='none' />
+<Canvas of={ PasswordStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsPassword } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the password element using the part `input`.
 
 Custom CSS:
 
-<Canvas of={ PasswordStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ PasswordStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ PasswordStories.Default } sourceState='shown' />
+<Canvas of={ PasswordStories.Default } sourceState="shown" />
 
-### Clearable
+<Heading label="Clearable" level={ 3 } />
 
-<Canvas of={ PasswordStories.Clearable } sourceState='shown' />
+<Canvas of={ PasswordStories.Clearable } sourceState="shown" />
 
-### Disabled
+<Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ PasswordStories.Disabled } sourceState='shown' />
+<Canvas of={ PasswordStories.Disabled } sourceState="shown" />
 
-### Error
+<Heading label="Error" level={ 3 } />
 
-<Canvas of={ PasswordStories.Error } sourceState='shown' />
+<Canvas of={ PasswordStories.Error } sourceState="shown" />
 
-### Loading
+<Heading label="Loading" level={ 3 } />
 
-<Canvas of={ PasswordStories.Loading } sourceState='shown' />
+<Canvas of={ PasswordStories.Loading } sourceState="shown" />
 
-### Pattern
+<Heading label="Pattern" level={ 3 } />
+
 With this pattern setting, the component will only allow for numeric characters:
-<Canvas of={ PasswordStories.Pattern } sourceState='shown' />
 
-### Placeholder
+<Canvas of={ PasswordStories.Pattern } sourceState="shown" />
 
-<Canvas of={ PasswordStories.Placeholder } sourceState='shown' />
+<Heading label="Placeholder" level={ 3 } />
 
-### Readonly
+<Canvas of={ PasswordStories.Placeholder } sourceState="shown" />
 
-<Canvas of={ PasswordStories.Readonly } sourceState='shown' />
+<Heading label="Readonly" level={ 3 } />
 
-### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
-<Canvas of={ FormFieldPassword } sourceState='shown' />
+<Canvas of={ PasswordStories.Readonly } sourceState="shown" />
+
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldPassword } sourceState="shown" />

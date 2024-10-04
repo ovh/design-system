@@ -1,37 +1,38 @@
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsDivider from '@ovhcloud/ods-components/src/components/divider/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as DividerStories from './divider.stories';
 
-<Meta of={ DividerStories } name='Technical information' />
+<Meta of={ DividerStories } name="Technical information" />
 
 <Banner of={ DividerStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ DividerStories.Overview } sourceState='none' />
+<Canvas of={ DividerStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsDivider } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the divider element using the part `divider`.
 
 Custom CSS:
 
-<Canvas of={ DividerStories.CustomCSS } sourceState='shown' />
+<Canvas of={ DividerStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ DividerStories.Default } sourceState='shown' />
+<Canvas of={ DividerStories.Default } sourceState="shown" />
 
-### Color
+<Heading label="Color" level={ 3 } />
 
-<Canvas of={ DividerStories.Color } sourceState='shown' />
+<Canvas of={ DividerStories.Color } sourceState="shown" />
 
-### Spacing
+<Heading label="Spacing" level={ 3 } />
 
-<Canvas of={ DividerStories.Spacing } sourceState='shown' />
+<Canvas of={ DividerStories.Spacing } sourceState="shown" />

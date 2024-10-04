@@ -1,96 +1,87 @@
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas, Meta } from '@storybook/blocks';
 import * as PhoneNumberStories from './phone-number.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 
-<Meta of={ PhoneNumberStories } name='Documentation' />
+<Meta of={ PhoneNumberStories } name="Documentation" />
 
 <Banner of={ PhoneNumberStories } />
 
-_**Phone Number** component is a combo of a selection of country phone indicator and an [**Input**](?path=/docs/ods-components-form-elements-input--documentation) field for entering a phone number_
+_**Phone Number** component is a combo of a selection of country phone indicator and an <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> field for entering a phone number_
 
-<Canvas of={ PhoneNumberStories.Overview } sourceState='none' />
+<Canvas of={ PhoneNumberStories.Overview } sourceState="none" />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<div className="documentation-overview">
-  <div>
-    **Phone Number** component is used to let users enter their phone number in the correct format for the selected
-    country.
-  </div>
+<IdentityCard aliases={ ['Phone Number Field'] }
+              atomicType={ ATOMIC_TYPE.molecule }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=48-6130"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/phone-number"
+              name="Phone Number"
+              relatedComponents={[
+                { name: 'Flag' },
+                { name: 'Form Field', subtitle: 'Form elements' },
+                { name: 'Input', subtitle: 'Form elements' },
+                { name: 'Select', subtitle: 'Form elements' },
+              ]}>
+  **Phone Number** component is used to let users enter their phone number in the correct format for the selected
+  country.
+</IdentityCard>
 
-  <IdentityCard aliases={ ['Phone Number Field'] }
-                atomicType={ ATOMIC_TYPE.molecule }
-                className="documentation-overview__table"
-                figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=48-6130"
-                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/phone-number"
-                name="Phone Number"
-                relatedComponents={[
-                  { name: 'Flag' },
-                  { name: 'Form Field', subtitle: 'Form elements' },
-                  { name: 'Input', subtitle: 'Form elements' },
-                  { name: 'Select', subtitle: 'Form elements' },
-                ]} />
-</div>
-
-## Anatomy
+<Heading label="Anatomy" level={ 2 } />
 
 ![Component anatomy](components/phone-number/anatomy.png "Component anatomy")
 
 1. **Country indicator Select**: displays the selected country flag and the list of countries by click. List is scroll-able, with 5 items visible at the same time. Each country name is written in users locale, in alphabetical order (for Latin script) _(optional)_
-2. **Input field**: displays the country indicator as prefix when users select a country, and they can enter their phone number in this field (from 7 to 12 characters maximum). The [**Input**](?path=/docs/ods-components-form-elements-input--documentation) field also has a placeholder to provide hints regarding format according to the selected country.
+2. **Input field**: displays the country indicator as prefix when users select a country, and they can enter their phone number in this field (from 7 to 12 characters maximum). The <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> field also has a placeholder to provide hints regarding format according to the selected country.
 
-## Usage
+<Heading label="Usage" level={ 2 } />
 
 **Phone Number** component should be used when there is a need to collect the user's phone number, in a form for instance:
-- As [**Form Field**](?path=/docs/ods-components-form-elements-form-field--documentation) in an user profile
+- As <StorybookLink kind="ODS Components/Form elements/Form Field" label="Form Field" story="Documentation" /> in an user profile
 - As in contact/appointment form
 - For telecom configuration
 
-### Dos & Don'ts
+<Heading label="Dos & Don'ts" level={ 3 } />
 
-<Markdown className="documentation-do-table">
-  { `
-| ✅ Do                                                                                                                                                                              |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    |
-| - Validate **Phone number** format when user leaves the field                                                                                                                     |
-| - Use **Phone Number** without the optional country indicator [**Select**](?path=/docs/ods-components-form-elements-select--documentation) when you only accept user's locale as selection |
-| - Use a helper when validation is in error state (expected number of characters, expected format...)                                                                              |
-` }
-</Markdown>
+<BestPractices
+  donts={[
+    '- Force a strict format to users',
+    <span>- Make a Phone Number <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> as required without explaining to users why this field is required</span>,
+    '- Assume exclusive use of mobile phone numbers',
+  ]}
+  dos={[
+    '- Validate Phone number format when user leaves the field',
+    <span>- Use Phone Number without the optional country indicator <StorybookLink kind="ODS Components/Form elements/Select" label="Select" story="Documentation" /> when you only accept user's locale as selection</span>,
+    '- Use a helper when validation is in error state (expected number of characters, expected format...)',
+  ]}
+/>
 
-<Markdown className="documentation-dont-table">
-  { `
-| ❌ Don't                                                                                                                                                                          |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - Force a strict format to users                                                                                                                                                 |
-| - Make a **Phone Number** [**Input**](?path=/docs/ods-components-form-elements-input--documentation) as required without explaining to users why this field is required                   |
-| - Assume exclusive use of mobile phone numbers                                                                                                                                   |
-` }
-</Markdown>
+<Heading label="Placement" level={ 2 } />
 
-## Placement
+**Phone Number** is a group of <StorybookLink kind="ODS Components/Form elements/Select" label="Select" story="Documentation" /> and <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" />, and should act as their specific placements.
 
-**Phone Number** is a group of [**Select**](?path=/docs/ods-components-form-elements-select--documentation) and [**Input**](?path=/docs/ods-components-form-elements-input--documentation), and should act as their specific placements.
-
-## Behavior
+<Heading label="Behavior" level={ 2 } />
 
 When the user selects a country, it determines the format used to validate their phone number. If selected country has been modified, expected format and placeholder will be updated.
 
 If the field content is in error state (i.e. missing or wrong characters), the whole **Phone Number** component becomes in error state.
 
-An event is triggered when the [**Input**](?path=/docs/ods-components-form-elements-input--documentation) value changes.
+An event is triggered when the <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> value changes.
 
-### Locale
+<Heading label="Locale" level={ 3 } />
 
-The locale (i.e. country list translation in [**Select**](?path=/docs/ods-components-form-elements-select--documentation)) is first set to the value provided as a property.
+The locale (i.e. country list translation in <StorybookLink kind="ODS Components/Form elements/Select" label="Select" story="Documentation" />) is first set to the value provided as a property.
 
 If the given property is not defined or recognized, the component attempts to use the browser's locale settings.
 
 If the browser's locale is also not recognized, the component defaults to French (FR).
 
-### ISO code
+<Heading label="ISO code" level={ 3 } />
 
 The ISO code is initially set to the value provided as a property.
 
@@ -98,10 +89,10 @@ If the given property is not defined or recognized, the component attempts to de
 
 If the browser's locale is not recognized, the component defaults to the first ISO code in the predefined country list.
 
-## Variation
+<Heading label="Variation" level={ 2 } />
 
 N/A
 
-## Accessibility
+<Heading label="Accessibility" level={ 2 } />
 
-Keyboard navigation is the same as [**Select**](?path=/docs/ods-components-form-elements-select--documentation) and [**Input**](?path=/docs/ods-components-form-elements-input--documentation) does, `Tab` key allows to focus to one another.
+Keyboard navigation is the same as <StorybookLink kind="ODS Components/Form elements/Select" label="Select" story="Documentation" /> and <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> does, `Tab` key allows to focus to one another.

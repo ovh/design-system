@@ -1,59 +1,60 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsSelect from '@ovhcloud/ods-components/src/components/select/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as SelectStories from './select.stories';
 import { Select as FormFieldSelect } from '../form-field/form-field.stories';
 
-<Meta of={ SelectStories } name='Technical information' />
+<Meta of={ SelectStories } name="Technical information" />
 
 <Banner of={ SelectStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ SelectStories.Overview } sourceState='none' />
+<Canvas of={ SelectStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsSelect } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the select element by adding class on the webcomponent directly.
 
 Custom CSS:
 
-<Canvas of={ SelectStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ SelectStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ SelectStories.Default } sourceState='shown' />
+<Canvas of={ SelectStories.Default } sourceState="shown" />
 
-### Group
+<Heading label="Group" level={ 3 } />
 
-<Canvas of={ SelectStories.Optgroup } sourceState='shown' />
+<Canvas of={ SelectStories.Optgroup } sourceState="shown" />
 
-### Multiple Selection
+<Heading label="Multiple Selection" level={ 3 } />
 
-<Canvas of={ SelectStories.Multiple } sourceState='shown' />
+<Canvas of={ SelectStories.Multiple } sourceState="shown" />
 
-### Disabled
+<Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ SelectStories.Disabled } sourceState='shown' />
+<Canvas of={ SelectStories.Disabled } sourceState="shown" />
 
-### Disabled option
+<Heading label="Disabled option" level={ 3 } />
 
-<Canvas of={ SelectStories.DisabledOption } sourceState='shown' />
+<Canvas of={ SelectStories.DisabledOption } sourceState="shown" />
 
-### Disabled group of options
+<Heading label="Disabled group of options" level={ 3 } />
 
-<Canvas of={ SelectStories.DisabledGroupOfOptions } sourceState='shown' />
+<Canvas of={ SelectStories.DisabledGroupOfOptions } sourceState="shown" />
 
-### Readonly
+<Heading label="Readonly" level={ 3 } />
 
-<Canvas of={ SelectStories.Readonly } sourceState='shown' />
+<Canvas of={ SelectStories.Readonly } sourceState="shown" />
 
-### Custom Renderer
+<Heading label="Custom Renderer" level={ 3 } />
 
 If you want to display something more complex that just a string, you can use your own render functions instead of native elements.
 
@@ -70,18 +71,19 @@ on the render function as well.
 
 Here is an example of the customization of each elements using specific data:
 
-<Canvas of={ SelectStories.CustomRenderer } sourceState='shown' />
+<Canvas of={ SelectStories.CustomRenderer } sourceState="shown" />
 
-### Custom Renderer For Multiple Selection
+<Heading label="Custom Renderer For Multiple Selection" level={ 3 } />
 
 If you set the property `allow-multiple`, custom option rendering is quite the same as, except that you'll
 have to take into account the selection checkbox that will be injected in the DOM.
 
 As for now, item template is not customizable and will always render as the count of selected items.
 
-Here is the same example as [previously](?path=/docs/ods-components-form-elements-select--documentation#custom-renderer) updated for multiple selection:
+Here is the same example as previously updated for multiple selection:
 
-<Canvas of={ SelectStories.CustomRendererMultiple } sourceState='shown' />
+<Canvas of={ SelectStories.CustomRendererMultiple } sourceState="shown" />
 
-### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
-<Canvas of={ FormFieldSelect } sourceState='shown' />
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldSelect } sourceState="shown" />

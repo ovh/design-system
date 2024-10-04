@@ -1,95 +1,86 @@
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas, Meta } from '@storybook/blocks';
 import * as PopoverStories from './popover.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 
-<Meta of={ PopoverStories } name='Documentation' />
+<Meta of={ PopoverStories } name="Documentation" />
 
 <Banner of={ PopoverStories } />
 
 _**Popover** component is triggered by click and is used to provide additional information to the user in a new temporary surface that overlays the page_
 
-<Canvas of={ PopoverStories.Overview } sourceState='none' />
+<Canvas of={ PopoverStories.Overview } sourceState="none" />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<div className="documentation-overview">
-  <div>
-    A **Popover** will provide additional information to the user in a clear and concise way.
+<IdentityCard aliases={ ['Complex Tooltip'] }
+              atomicType={ ATOMIC_TYPE.atom }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-8447"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/popover"
+              name="Popover"
+              relatedComponents={ [{ name: 'Button' }, { name: 'Text' }] }>
+  A **Popover** will provide additional information to the user in a clear and concise way.
 
-    It is commonly used to appear by click, thus crucial information should not be displayed in the **Popover**.
-  </div>
+  It is commonly used to appear by click, thus crucial information should not be displayed in the **Popover**.
+</IdentityCard>
 
-  <IdentityCard aliases={ ['Complex Tooltip'] }
-                atomicType={ ATOMIC_TYPE.atom }
-                className="documentation-overview__table"
-                figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-8447"
-                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/popover"
-                name="Popover"
-                relatedComponents={ [{ name: 'Button' }, { name: 'Text' }] } />
-</div>
-
-## Anatomy
+<Heading label="Anatomy" level={ 2 } />
 
 ![Component anatomy](components/popover/anatomy.png "Component anatomy")
 
-1. **Container**: main container that has all content (i.e [**Text**](?path=/docs/ods-components-text--documentation), [**Button**](?path=/docs/ods-components-button--documentation), etc.)
+1. **Container**: main container that has all content (i.e <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />, <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, etc.)
 2. **Arrow tip** (optional)
 
-## Usage
+<Heading label="Usage" level={ 2 } />
 
 A **Popover** is used to provide an explanation for a user interface element.
 
-It can include interactive elements such as [**Button**](?path=/docs/ods-components-button--documentation) or [**Link**](?path=/docs/ods-components-link--documentation).
+It can include interactive elements such as <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> or <StorybookLink kind="ODS Components/Link" label="Link" story="Documentation" />.
 
-### [**Tooltip**](?path=/docs/ods-components-tooltip--documentation) vs. **Popover**
+<Heading label="Tooltip vs Popover" level={ 3 } />
 
-- Both components look similar but a [**Tooltip**](?path=/docs/ods-components-tooltip--documentation) is displayed on hover and focus while a **Popover** is triggered by click.
-- [**Tooltip**](?path=/docs/ods-components-tooltip--documentation) are commonly used for shorter explanations, while longer [**Text**](?path=/docs/ods-components-text--documentation) / complex UIs would suit **Popovers** better.
-- Use a **Popover** when you need to insert interactive elements such as [**Button**](?path=/docs/ods-components-button--documentation).
-- A **Popover** can be dismissed if an action [**Button**](?path=/docs/ods-components-button--documentation) allows it.
+- Both components look similar but a <StorybookLink kind="ODS Components/Tooltip" label="Tooltip" story="Documentation" /> is displayed on hover and focus while a **Popover** is triggered by click.
+- <StorybookLink kind="ODS Components/Tooltip" label="Tooltip" story="Documentation" /> are commonly used for shorter explanations, while longer <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> / complex UIs would suit **Popovers** better.
+- Use a **Popover** when you need to insert interactive elements such as <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />.
+- A **Popover** can be dismissed if an action <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> allows it.
 
-### Dos & Don'ts
+<Heading label="Dos & Don'ts" level={ 3 } />
 
-<Markdown className="documentation-do-table">
-  { `
-| ✅ Do                                                                                                                                                                                                                    |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                          |
-| - Use a **Popover** instead of a [**Tooltip**](?path=/docs/ods-components-tooltip--documentation) when the [**Text**](?path=/docs/ods-components-text--documentation) is long; but keep it concise |
-| - Write **Popover**'s [**Text**](?path=/docs/ods-components-text--documentation) as full sentences with punctuation                                                                                              |
-` }
-</Markdown>
+<BestPractices
+  donts={[
+    '- Write very important information within a Popover since it is only displayed by click so the user might miss its crucial content',
+    '- Insert rich information such as image in a Popover',
+    '- Overlap the Popover\'s trigger element with the Popover itself when it has been triggered',
+  ]}
+  dos={[
+    <span>- Use a Popover instead of a <StorybookLink kind="ODS Components/Tooltip" label="Tooltip" story="Documentation" /> when the <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> is long; but keep it concise</span>,
+    <span>- Write Popover's <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> as full sentences with punctuation</span>,
+  ]}
+/>
 
-<Markdown className="documentation-dont-table">
-  { `
-| ❌ Don't                                                                                                                                                                          |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - Write very important information within a **Popover** since it is only displayed by click so the user might miss its crucial content                                           |
-| - Insert rich information such as image in a **Popover**                                                                                                                         |
-| - Overlap the **Popover**'s trigger element with the **Popover** itself when it has been triggered                                                                               |
-` }
-</Markdown>
-
-## Placement
+<Heading label="Placement" level={ 2 } />
 
 **Popover** can be set in a certain position by default around its trigger.
 
 **Popover** has automatic positioning feature. It can detect the edge of the browser so the container always stays visible on a page.
 
-## Behavior
+<Heading label="Behavior" level={ 2 } />
 
 By default, a **Popover** is hidden to the user.
 
-It triggers when the user clicks on the **Popover**'s trigger element such as a [**Button**](?path=/docs/ods-components-button--documentation).
+It triggers when the user clicks on the **Popover**'s trigger element such as a <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />.
 
 The **Popover** can be closed or dismissed by clicking anywhere on the page outside the **Popover**'s container.
 
-## Variation
+<Heading label="Variation" level={ 2 } />
 
 N/A
 
-## Accessibility
+<Heading label="Accessibility" level={ 2 } />
 
 When visible, **Popover** gains the user's focus.
 

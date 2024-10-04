@@ -1,17 +1,18 @@
+import { OdsBadge } from '@ovhcloud/ods-components/react';
 import { Meta } from '@storybook/blocks';
+import { Heading } from '../../../src/components/heading/Heading';
 
 <Meta title="ODS Components/Flag" />
 
-# Flag - migrate from v17 to v18
-----
+<Heading label="Flag - migrate from v17 to v18" level={ 1 } />
 
-Flag has been removed from ODS components. <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+Flag has been removed from ODS components. <OdsBadge color="critical" label="Removed" size="sm" />
 
 Using ODS Flag, pre V18, does require every project to setup a specific build configuration to be able to fetch the assets.
 
 This whole config should not be enforced by ODS and should be managed by each the way they prefer.
 
-## The assets issue
+<Heading label="The assets issue" level={ 2 } />
 
 Due to how Stencil works, there is no way to lazy load specific assets on demand.
 
@@ -20,7 +21,7 @@ Possible solutions are:
 - externalize the assets to a remote source
 - setup the assets path on each project using the web-component
 
-### Inlining assets
+<Heading label="Inlining assets" level={ 3 } />
 
 This solution will transform the assets into base64 strings and embed them in the final web-component bundle.
 
@@ -28,7 +29,7 @@ It is fine when dealing with small assets (like the spinner svg).
 
 However, flags are usually high-quality svg files that will add weight to the bundle, thus it is not a viable solution.
 
-### Externalize the assets
+<Heading label="Externalize the assets" level={ 3 } />
 
 Putting all the flags svg to a remote dedicated server/cdn and embed only the url would be, by far, the most
 performant solution.
@@ -37,7 +38,7 @@ Regrettably, this is not possible yet due to internal security rules.
 
 We do hope a solution will be found at some point, that will allow us to put back this component.
 
-### Setup the assets path manually
+<Heading label="Setup the assets path manually" level={ 3 } />
 
 This is the current solution that projects using ODS pre-v18 need to setup.
 
@@ -56,7 +57,7 @@ Which is not specially a good things, project can decide to use wherever flag li
 
 This same style can be applied on your own flag element using the `ods-flag` mixin available in v18 (see using ODS mixins).
 
-## How to use Flag in v18
+<Heading label="How to use Flag in v18" level={ 2 } />
 
 - add the flag assets you want to use on your project (either using a dependency to a lib like `flag-icon`, or adding custom assets directly).
 - keep your previous setup untouched.

@@ -1,33 +1,34 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsText from '@ovhcloud/ods-components/src/components/text/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TextStories from './text.stories';
 
-<Meta of={ TextStories } name='Technical information' />
+<Meta of={ TextStories } name="Technical information" />
 
 <Banner of={ TextStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ TextStories.Overview } sourceState='none' />
+<Canvas of={ TextStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsText } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the text element using the part `text`.
 
 Custom CSS :
 
-<Canvas of={ TextStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ TextStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ TextStories.Default } sourceState='shown' />
+<Canvas of={ TextStories.Default } sourceState="shown" />
 
-### Preset
+<Heading label="Preset" level={ 3 } />
 
-<Canvas of={ TextStories.Preset } sourceState='shown' />
+<Canvas of={ TextStories.Preset } sourceState="shown" />

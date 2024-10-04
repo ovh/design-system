@@ -1,47 +1,49 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as MessageStories from './message.stories';
+import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta of={ MessageStories } name='Migration From 17.x' />
+<Meta of={ MessageStories } name="Migration From 17.x" />
 
-# Message - migrate from v17 to v18
-----
+<Heading label="Message - migrate from v17 to v18" level={ 1 } />
 
-## Attributes changes
+<Heading label="Attributes changes" level={ 2 } />
 
-`contrasted` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 You can use the style customization to achieve the same result, until a new color get validated by the design team.
 
-`inline` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`inline` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Message is inline by default. If you need to change this, you can use the style customization.
 
-`removable` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`removable` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Message is always removable.
 
-`type` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`type` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Color attribute will condition which icon is displayed.
 
-`variant` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`variant` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute.
 
 Allow you to choose between default or light variant, a white version for lighter notification but different from contrasted color.
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Basic tag:
-```html
+
+<Source code={`
 <osds-message>
   My message
 </osds-message>
@@ -51,4 +53,6 @@ Basic tag:
 <ods-message>
   My message
 </ods-message>
-```
+`}
+        dark="true"
+        language="html" />

@@ -1,28 +1,29 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta, Source } from '@storybook/blocks';
 import SpecificationsPopover from '@ovhcloud/ods-components/src/components/popover/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as PopoverStories from './popover.stories';
 
-<Meta of={ PopoverStories } name='Technical information' />
+<Meta of={ PopoverStories } name="Technical information" />
 
 <Banner of={ PopoverStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ PopoverStories.Overview } sourceState='none' />
+<Canvas of={ PopoverStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsPopover } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can update the popover content by directly updating the slot element.
 
 Custom CSS :
 
-<Canvas of={ PopoverStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ PopoverStories.CustomCSS } sourceState="shown" />
 
-# Positioning
+<Heading label="Positioning" level={ 2 } />
 
 Unlike tooltip, popover can contain focusable elements.
 Thus it needs to be positioned in the right spot in the DOM to follow the native focus workflow.
@@ -31,7 +32,7 @@ To ensure that, always declare your popover right after its trigger.
 
 Here is an example of a wrong positioning:
 
-```html
+<Source code={`
 <ods-button icon="ellipsis-vertical"
             id="popover-trigger"
             label="Menu">
@@ -43,13 +44,15 @@ Here is an example of a wrong positioning:
 <ods-popover trigger-id="popover-trigger">
   ...focusable popover content
 </ods-popover>
-```
+`}
+        dark="true"
+        language="html" />
 
 The input will get focused after the popover trigger button, causing the popover to close, thus making the element inside of it unreachable.
 
 The correct way would be:
 
-```html
+<Source code={`
 <ods-button icon="ellipsis-vertical"
             id="popover-trigger"
             label="Menu">
@@ -61,18 +64,20 @@ The correct way would be:
 
 <ods-input name="some-input">
 </ods-input>
-```
+`}
+        dark="true"
+        language="html" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ PopoverStories.Default } sourceState='shown' />
+<Canvas of={ PopoverStories.Default } sourceState="shown" />
 
-### With an arrow tip
+<Heading label="With an arrow tip" level={ 3 } />
 
-<Canvas of={ PopoverStories.ArrowTip } sourceState='shown' />
+<Canvas of={ PopoverStories.ArrowTip } sourceState="shown" />
 
-### Popover as Action Menu
+<Heading label="Popover as Action Menu" level={ 3 } />
 
-<Canvas of={ PopoverStories.Menu } sourceState='shown' />
+<Canvas of={ PopoverStories.Menu } sourceState="shown" />

@@ -1,97 +1,98 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as InputStories from './input.stories';
+import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta of={InputStories} name='Migration From 17.x' />
+<Meta of={InputStories} name="Migration From 17.x" />
 
-# Input - migrate from v17 to v18
-----
+<Heading label="Input - migrate from v17 to v18" level={ 1 } />
 
-## Attributes changes
+<Heading label="Attributes changes" level={ 2 } />
 
-`clearable` <ods-badge size="sm" label="Updated"></ods-badge>
+`clearable` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isClearable` attribute to obtain the same behavior.
 
-`disabled` <ods-badge size="sm" label="Updated"></ods-badge>
+`disabled` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isDisabled` attribute to obtain the same behavior.
 
-`loading` <ods-badge size="sm" label="Updated"></ods-badge>
+`loading` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isLoading` attribute to obtain the same behavior.
 
-`masked` <ods-badge size="sm" label="Updated"></ods-badge>
+`masked` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isMasked` attribute to obtain the same behavior.
 
-`error` <ods-badge size="sm" label="Updated"></ods-badge>
+`error` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `hasError` attribute to obtain the same behavior.
 
-`readonly` <ods-badge size="sm" label="Updated"></ods-badge>
+`readonly` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isReadonly` attribute to obtain the same behavior.
 
-`required` <ods-badge size="sm" label="Updated"></ods-badge>
+`required` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isRequired` attribute to obtain the same behavior.
 
-`forbidden-values` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`forbidden-values` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 You can replace it with a regex on the `pattern` attributes.
 
-`inline` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`inline` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Input is now `inline-block` by default.
 You can add some style directly on the component if you want to override that.
 
-`label` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`label` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 To add a label on the input wrapped it with the component `form-field`.
 
-`prefix-value` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`prefix-value` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Have been removed.
 
 This feature is not supported anymore
 
-`maxlength` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`maxlength` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute (optional).
 
 Defines the maximum string length that the user can enter into the input.
 
-`minlength` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`minlength` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute (optional).
 
 Defines the minimum string length that the user can enter into the input.
 
-## Migration examples
-
+<Heading label="Migration examples" level={ 2 } />
 
 Clearable input:
-```html
+
+<Source code={`
 <osds-input clearable>
 </osds-input>
 
@@ -99,10 +100,13 @@ Clearable input:
 
 <ods-input is-clearable>
 </ods-input>
-```
+`}
+        dark="true"
+        language="html" />
 
 Disabled input:
-```html
+
+<Source code={`
 <osds-input disabled>
 </osds-input>
 
@@ -110,10 +114,13 @@ Disabled input:
 
 <ods-input is-disabled>
 </ods-input>
-```
+`}
+        dark="true"
+        language="html" />
 
 Error input:
-```html
+
+<Source code={`
 <osds-input error>
 </osds-input>
 
@@ -121,10 +128,13 @@ Error input:
 
 <ods-input has-error>
 </ods-input>
-```
+`}
+        dark="true"
+        language="html" />
 
 Loading input:
-```html
+
+<Source code={`
 <osds-input loading>
 </osds-input>
 
@@ -132,10 +142,13 @@ Loading input:
 
 <ods-input is-loading>
 </ods-input>
-```
+`}
+        dark="true"
+        language="html" />
 
 Masked input:
-```html
+
+<Source code={`
 <osds-input masked>
 </osds-input>
 
@@ -143,10 +156,13 @@ Masked input:
 
 <ods-input is-masked>
 </ods-input>
-```
+`}
+        dark="true"
+        language="html" />
 
 Readonly input:
-```html
+
+<Source code={`
 <osds-input readonly>
 </osds-input>
 
@@ -154,10 +170,13 @@ Readonly input:
 
 <ods-input is-readonly>
 </ods-input>
-```
+`}
+        dark="true"
+        language="html" />
 
 Required input:
-```html
+
+<Source code={`
 <osds-input required>
 </osds-input>
 
@@ -165,10 +184,13 @@ Required input:
 
 <ods-input is-required>
 </ods-input>
-```
+`}
+        dark="true"
+        language="html" />
 
 Forbidden values input:
-```html
+
+<Source code={`
 <osds-input forbidden-values="['1', '2']">
 </osds-input>
 
@@ -176,10 +198,13 @@ Forbidden values input:
 
 <ods-input pattern="[^12]+">
 </ods-input>
-```
+`}
+        dark="true"
+        language="html" />
 
 Inline input:
-```html
+
+<Source code={`
 <osds-input inline>
 </osds-input>
 
@@ -187,10 +212,13 @@ Inline input:
 
 <ods-input>
 </ods-input>
-```
+`}
+        dark="true"
+        language="html" />
 
 Label input:
-```html
+
+<Source code={`
 <osds-input label="My label">
 </osds-input>
 
@@ -199,4 +227,6 @@ Label input:
   <label slot='label'>My label</label>
   <ods-input type='text' value='Input'></ods-input>
 </ods-form-field>
-```
+`}
+        dark="true"
+        language="html" />

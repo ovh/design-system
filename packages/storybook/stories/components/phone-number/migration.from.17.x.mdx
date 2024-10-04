@@ -1,18 +1,20 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
+import { Table } from '@storybook/components';
 import * as PhoneNumberStories from './phone-number.stories';
+import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta of={ PhoneNumberStories } name='Migration From 17.x' />
+<Meta of={ PhoneNumberStories } name="Migration From 17.x" />
 
-# PhoneNumber - migrate from v17 to v18
-----
+<Heading label="PhoneNumber - migrate from v17 to v18" level={ 1 } />
 
-### List of country changes
+<Heading label="List of country changes" level={ 2 } />
 
 The list of available iso codes have been updated, the following are no longer available:
 
-<ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+<OdsBadge color="critical" label="Removed" size="sm" />
 
-<table>
+<Table>
   <thead>
     <tr>
       <td>Iso Code</td>
@@ -81,59 +83,59 @@ The list of available iso codes have been updated, the following are no longer a
       <td>United States Minor Outlying Islands</td>
     </tr>
   </tbody>
-</table>
+</Table>
 
-## Attributes changes
+<Heading label="Attributes changes" level={ 2 } />
 
-`ariaLabel` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`ariaLabel` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute (optional).
 
 You can use the new `ariaLabel` attribute to apply the aria label value on the input.
 
-`ariaLabelledby` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`ariaLabelledby` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute (optional).
 
 You can use the new `araiLabelledby` attribute to apply the aria labelled-by value on the input.
 
-`clearable` <ods-badge size="sm" label="Updated"></ods-badge>
+`clearable` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isClearable` attribute to obtain the same behavior.
 
-`disabled` <ods-badge size="sm" label="Updated"></ods-badge>
+`disabled` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isDisabled` attribute to obtain the same behavior.
 
-`error` <ods-badge size="sm" label="Updated"></ods-badge>
+`error` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `hasError` attribute to obtain the same behavior.
 
-`isLoading` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`isLoading` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute (optional).
 
 You can use the new `isLoading` attribute to apply the loading state on the input.
 
-`isReadonly` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`isReadonly` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute (optional).
 
 You can use the new `isReadonly` attribute to apply the readonly state on the input and the select (if you have any countries set).
 
-`isRequired` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`isRequired` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute (optional).
 
 You can use the new `isRequired` attribute to apply the required state on the input.
 
-`pattern` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`pattern` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute (optional).
 
@@ -147,10 +149,11 @@ We do advise to not enforce any pattern on this component to let the user type a
 
 The final value will be formatted the same way in any case (all examples above will return the formatted value `+33123456789`);
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Clearable phone number:
-```html
+
+<Source code={`
 <osds-phone-number clearable>
 </osds-phone-number>
 
@@ -158,10 +161,13 @@ Clearable phone number:
 
 <ods-phone-number is-clearable>
 </ods-phone-number>
-```
+`}
+        dark="true"
+        language="html" />
 
 Disabled phone number:
-```html
+
+<Source code={`
 <osds-phone-number disabled>
 </osds-phone-number>
 
@@ -169,10 +175,13 @@ Disabled phone number:
 
 <ods-phone-number is-disabled>
 </ods-phone-number>
-```
+`}
+        dark="true"
+        language="html" />
 
 Errored phone number:
-```html
+
+<Source code={`
 <osds-phone-number error>
 </osds-phone-number>
 
@@ -180,4 +189,6 @@ Errored phone number:
 
 <ods-phone-number has-error>
 </ods-phone-number>
-```
+`}
+        dark="true"
+        language="html" />

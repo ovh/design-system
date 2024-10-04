@@ -1,65 +1,67 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsDatepicker from '@ovhcloud/ods-components/src/components/datepicker/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as DatepickerStories from './datepicker.stories';
 import { Datepicker as FormFieldDatepicker } from '../form-field/form-field.stories';
 
-<Meta of={ DatepickerStories } name='Technical Information' />
+<Meta of={ DatepickerStories } name="Technical Information" />
 
 <Banner of={ DatepickerStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ DatepickerStories.Overview } sourceState='none' />
+<Canvas of={ DatepickerStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsDatepicker } />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ DatepickerStories.Default } sourceState='shown' />
+<Canvas of={ DatepickerStories.Default } sourceState="shown" />
 
-### Clearable
+<Heading label="Clearable" level={ 3 } />
 
-<Canvas of={ DatepickerStories.Clearable } sourceState='shown' />
+<Canvas of={ DatepickerStories.Clearable } sourceState="shown" />
 
-### Dates Disabled
+<Heading label="Dates Disabled" level={ 3 } />
 
-<Canvas of={ DatepickerStories.DatesDisabled } sourceState='shown' />
+<Canvas of={ DatepickerStories.DatesDisabled } sourceState="shown" />
 
-### Days Of Week Disabled
+<Heading label="Days Of Week Disabled" level={ 3 } />
 
-<Canvas of={ DatepickerStories.DaysOfWeekDisabled } sourceState='shown' />
+<Canvas of={ DatepickerStories.DaysOfWeekDisabled } sourceState="shown" />
 
-### Disabled
+<Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ DatepickerStories.Disabled } sourceState='shown' />
+<Canvas of={ DatepickerStories.Disabled } sourceState="shown" />
 
-### Error
+<Heading label="Error" level={ 3 } />
 
-<Canvas of={ DatepickerStories.Error } sourceState='shown' />
+<Canvas of={ DatepickerStories.Error } sourceState="shown" />
 
-### Format
+<Heading label="Format" level={ 3 } />
 
-<Canvas of={ DatepickerStories.Format } sourceState='shown' />
+<Canvas of={ DatepickerStories.Format } sourceState="shown" />
 
-### Loading
+<Heading label="Loading" level={ 3 } />
 
-<Canvas of={ DatepickerStories.Loading } sourceState='shown' />
+<Canvas of={ DatepickerStories.Loading } sourceState="shown" />
 
-### Locale
+<Heading label="Locale" level={ 3 } />
 
-<Canvas of={ DatepickerStories.Locale } sourceState='shown' />
+<Canvas of={ DatepickerStories.Locale } sourceState="shown" />
 
-### Placeholder
+<Heading label="Placeholder" level={ 3 } />
 
-<Canvas of={ DatepickerStories.Placeholder } sourceState='shown' />
+<Canvas of={ DatepickerStories.Placeholder } sourceState="shown" />
 
-### Readonly
+<Heading label="Readonly" level={ 3 } />
 
-<Canvas of={ DatepickerStories.Readonly } sourceState='shown' />
+<Canvas of={ DatepickerStories.Readonly } sourceState="shown" />
 
-### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
-<Canvas of={ FormFieldDatepicker } sourceState='shown' />
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldDatepicker } sourceState="shown" />

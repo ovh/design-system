@@ -1,34 +1,34 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsCard from '@ovhcloud/ods-components/src/components/card/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as CardStories from './card.stories';
 
-<Meta of={ CardStories } name='Technical information' />
+<Meta of={ CardStories } name="Technical information" />
 
 <Banner of={ CardStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ CardStories.Overview } sourceState='none' />
+<Canvas of={ CardStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsCard } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the card element directly by selecting it.
 
 Custom CSS:
 
-<Canvas of={ CardStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ CardStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Slot
+<Heading label="Slot" level={ 3 } />
 
-<Canvas of={ CardStories.Slot } sourceState='shown' />
+<Canvas of={ CardStories.Slot } sourceState="shown" />
 
-### Color
-<Canvas of={ CardStories.Color } sourceState='shown' />
+<Heading label="Color" level={ 3 } />
 
-...
+<Canvas of={ CardStories.Color } sourceState="shown" />

@@ -1,42 +1,47 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsToggle from '@ovhcloud/ods-components/src/components/toggle/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as ToggleStories from './toggle.stories';
 import { Toggle as FormFieldToggle } from '../form-field/form-field.stories';
 
-<Meta of={ ToggleStories } name='Technical information' />
+<Meta of={ ToggleStories } name="Technical information" />
 
 <Banner of={ ToggleStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ ToggleStories.Overview } sourceState='none' />
+<Canvas of={ ToggleStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsToggle } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the text element using the part `slider`, `label`, `slider check` or `label check`.
 
 Custom CSS :
 
-<Canvas of={ ToggleStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ ToggleStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ ToggleStories.Default } sourceState='shown' />
+<Canvas of={ ToggleStories.Default } sourceState="shown" />
 
-### Disabled On
-<Canvas of={ ToggleStories.DisabledOn } sourceState='shown' />
+<Heading label="Disabled On" level={ 3 } />
 
-### Disabled Off
-<Canvas of={ ToggleStories.DisabledOff } sourceState='shown' />
+<Canvas of={ ToggleStories.DisabledOn } sourceState="shown" />
 
-### With Label
-<Canvas of={ ToggleStories.WithLabel } sourceState='shown' />
+<Heading label="Disabled Off" level={ 3 } />
 
-### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
-<Canvas of={ FormFieldToggle } sourceState='shown' />
+<Canvas of={ ToggleStories.DisabledOff } sourceState="shown" />
+
+<Heading label="With Label" level={ 3 } />
+
+<Canvas of={ ToggleStories.WithLabel } sourceState="shown" />
+
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldToggle } sourceState="shown" />

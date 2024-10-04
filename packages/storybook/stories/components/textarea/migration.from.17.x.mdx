@@ -1,99 +1,101 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as TextareaStories from './textarea.stories';
+import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta of={ TextareaStories } name='Migration From 17.x' />
+<Meta of={ TextareaStories } name="Migration From 17.x" />
 
-# Textarea - migrate from v17 to v18
-----
+<Heading label="Textarea - migrate from v17 to v18" level={ 1 } />
 
-## Attributes changes
+<Heading label="Attributes changes" level={ 2 } />
 
-`color ` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
-
-Has been removed.
-
-Form components does not provide color variant anymore.
-You can use custom CSS if you need to customize the component.
-
-`contrasted` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`color ` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Form components does not provide color variant anymore.
 You can use custom CSS if you need to customize the component.
 
-`disabled` <ods-badge size="sm" label="Updated"></ods-badge>
+`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
+
+Has been removed.
+
+Form components does not provide color variant anymore.
+You can use custom CSS if you need to customize the component.
+
+`disabled` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isDisabled` attribute to obtain the same behavior.
 
-`error` <ods-badge size="sm" label="Updated"></ods-badge>
+`error` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `hasError` attribute to obtain the same behavior.
 
-`errorStateControl` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`errorStateControl` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Was not relevant for few versions already.
 
-`formControl` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`formControl` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Was not relevant for few versions already.
 
-`inline` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`inline` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Textarea is now `inline-block` by default.
 You can add some style directly on the component if you want to override that.
 
-`readonly` <ods-badge size="sm" label="Updated"></ods-badge>
+`readonly` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isReadonly` attribute to obtain the same behavior.
 
-`required` <ods-badge size="sm" label="Updated"></ods-badge>
+`required` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isRequired` attribute to obtain the same behavior.
 
-`resizable` <ods-badge size="sm" label="Updated"></ods-badge>
+`resizable` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isResizable` attribute to obtain the same behavior.
 
-`size ` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`size ` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Form components does not provide size variant anymore.
 You can use custom CSS if you need to customize the component.
 
-`spellcheck` <ods-badge size="sm" label="Updated"></ods-badge>
+`spellcheck` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `hasSpellcheck` attribute to obtain the same behavior.
 
-`textAreaId ` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`textAreaId ` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 This was used to manage a default aria value which is not set by default.
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Disabled textarea:
-```html
+
+<Source code={`
 <osds-textarea disabled>
 </osds-textarea>
 
@@ -101,10 +103,13 @@ Disabled textarea:
 
 <ods-textarea is-disabled>
 </ods-textarea>
-```
+`}
+        dark="true"
+        language="html" />
 
 Error textarea:
-```html
+
+<Source code={`
 <osds-textarea error>
 </osds-textarea>
 
@@ -112,10 +117,13 @@ Error textarea:
 
 <ods-textarea has-error>
 </ods-textarea>
-```
+`}
+        dark="true"
+        language="html" />
 
 Inline textarea:
-```html
+
+<Source code={`
 <osds-textarea inline>
 </osds-textarea>
 
@@ -123,10 +131,13 @@ Inline textarea:
 
 <ods-textarea>
 </ods-textarea>
-```
+`}
+        dark="true"
+        language="html" />
 
 Readonly textarea:
-```html
+
+<Source code={`
 <osds-textarea readonly>
 </osds-textarea>
 
@@ -134,10 +145,13 @@ Readonly textarea:
 
 <ods-textarea is-readonly>
 </ods-textarea>
-```
+`}
+        dark="true"
+        language="html" />
 
 Required textarea:
-```html
+
+<Source code={`
 <osds-textarea required>
 </osds-textarea>
 
@@ -145,10 +159,13 @@ Required textarea:
 
 <ods-textarea is-required>
 </ods-textarea>
-```
+`}
+        dark="true"
+        language="html" />
 
 Resizable textarea:
-```html
+
+<Source code={`
 <osds-textarea resizable>
 </osds-textarea>
 
@@ -156,10 +173,13 @@ Resizable textarea:
 
 <ods-textarea is-resizable>
 </ods-textarea>
-```
+`}
+        dark="true"
+        language="html" />
 
 Spellcheck textarea:
-```html
+
+<Source code={`
 <osds-textarea spellcheck>
 </osds-textarea>
 
@@ -167,4 +187,6 @@ Spellcheck textarea:
 
 <ods-textarea has-spellcheck>
 </ods-textarea>
-```
+`}
+        dark="true"
+        language="html" />

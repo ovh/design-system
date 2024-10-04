@@ -1,27 +1,30 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsMedium from '@ovhcloud/ods-components/src/components/medium/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as MediumStories from './medium.stories';
 
-<Meta of={ MediumStories } name='Technical information' />
+<Meta of={ MediumStories } name="Technical information" />
 
 <Banner of={ MediumStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ MediumStories.Overview } sourceState='none' />
+<Canvas of={ MediumStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsMedium } />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ MediumStories.Default } sourceState='shown' />
+<Canvas of={ MediumStories.Default } sourceState="shown" />
 
-### Height
-<Canvas of={ MediumStories.Height } sourceState='shown' />
+<Heading label="Height" level={ 3 } />
 
-### Width
-<Canvas of={ MediumStories.Width } sourceState='shown' />
+<Canvas of={ MediumStories.Height } sourceState="shown" />
+
+<Heading label="Width" level={ 3 } />
+
+<Canvas of={ MediumStories.Width } sourceState="shown" />

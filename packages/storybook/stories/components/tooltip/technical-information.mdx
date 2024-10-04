@@ -1,33 +1,34 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsTooltip from '@ovhcloud/ods-components/src/components/tooltip/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TooltipStories from './tooltip.stories';
 
-<Meta of={ TooltipStories } name='Technical information' />
+<Meta of={ TooltipStories } name="Technical information" />
 
 <Banner of={ TooltipStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ TooltipStories.Overview } sourceState='none' />
+<Canvas of={ TooltipStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsTooltip } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can update the tooltip content by directly updating the slot element.
 
 Custom CSS:
 
-<Canvas of={ TooltipStories.CustomCSS } sourceState='shown' />
+<Canvas of={ TooltipStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ TooltipStories.Default } sourceState='shown' />
+<Canvas of={ TooltipStories.Default } sourceState="shown" />
 
-### With an arrow tip
+<Heading label="With an arrow tip" level={ 3 } />
 
-<Canvas of={ TooltipStories.ArrowTip } sourceState='shown' />
+<Canvas of={ TooltipStories.ArrowTip } sourceState="shown" />

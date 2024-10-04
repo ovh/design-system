@@ -1,101 +1,103 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as CheckboxStories from './checkbox.stories';
+import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta of={ CheckboxStories } name='Migration From 17.x' />
+<Meta of={ CheckboxStories } name="Migration From 17.x" />
 
-# Checkbox - migrate from v17 to v18
-----
+<Heading label="Checkbox - migrate from v17 to v18" level={ 1 } />
 
-## Usages changes
+<Heading label="Usage changes" level={ 2 } />
 
 The previous components `checkbox` and `checkbox-button` have now been included in `checkbox`.
 
 There is no longer a `checkbox` component to make clickable Element.
 
-## Attributes changes
+<Heading label="Attributes changes" level={ 2 } />
 
-`checked` <ods-badge size="sm" label="Updated"></ods-badge>
+`checked` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isChecked` attribute to obtain the same behavior.
 
-`checking` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`checking` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 This design feature has been removed in order to match the new styling of the component.
 
-`color` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`color` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 This design feature has been removed in order to match the new styling of the component.
 
-`disabled` <ods-badge size="sm" label="Updated"></ods-badge>
+`disabled` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isDisabled` attribute to obtain the same behavior.
 
-`hasFocus` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`hasFocus` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 You can use the event `odsFocus` and `odsBlur` for have the same behavior.
 
-`indeterminate` <ods-badge size="sm" label="Updated"></ods-badge>
+`indeterminate` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isIndeterminate` attribute to obtain the same behavior.
 
-`interactive` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`interactive` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 This design feature has been removed in order to match the new styling of the component.
 
-`label` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`label` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Checkbox can now use HTML Label. Like in the example.
 
-`updating` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`updating` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 We don't think this kind of attribute was necessary anymore.
 
-`size` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`size` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 This design feature has been removed in order to match the new styling of the component.
 
-`afterSave` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`afterSave` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 We don't think this kind of callback was necessary anymore.
 
-`beforeSave` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`beforeSave` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 We don't think this kind of callback was necessary anymore.
 
-`save` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`save` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 We don't think this kind of callback was necessary anymore.
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Checked checkbox:
-```html
+
+<Source code={`
 <osds-checkbox checked>
   <osds-checkbox-button></osds-checkbox-button>
 </osds-checkbox>
@@ -103,10 +105,13 @@ Checked checkbox:
 <!-- is now -->
 
 <ods-checkbox is-checked></ods-checkbox>
-```
+`}
+        dark="true"
+        language="html" />
 
 Disabled checkbox:
-```html
+
+<Source code={`
 <osds-checkbox disabled>
   <osds-checkbox-button></osds-checkbox-button>
 </osds-checkbox>
@@ -114,10 +119,13 @@ Disabled checkbox:
 <!-- is now -->
 
 <ods-checkbox is-disabled></ods-checkbox>
-```
+`}
+        dark="true"
+        language="html" />
 
 Indeterminate checkbox:
-```html
+
+<Source code={`
 <osds-checkbox>
   <osds-checkbox-button indeterminate></osds-checkbox-button>
 </osds-checkbox>
@@ -125,10 +133,13 @@ Indeterminate checkbox:
 <!-- is now -->
 
 <ods-checkbox is-indeterminate></ods-checkbox>
-```
+`}
+        dark="true"
+        language="html" />
 
 Label checkbox:
-```html
+
+<Source code={`
 <osds-checkbox>
   <osds-checkbox-button>
      <span slot="end">
@@ -141,4 +152,6 @@ Label checkbox:
 
 <ods-checkbox input-id="migration-label"></ods-checkbox>
 <label for="migration-label">Checkbox label</label>
-```
+`}
+        dark="true"
+        language="html" />

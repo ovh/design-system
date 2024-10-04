@@ -1,12 +1,14 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as BreadcrumbStories from './breadcrumb.stories';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 
-<Meta of={ BreadcrumbStories } name='Migration From 17.x' />
+<Meta of={ BreadcrumbStories } name="Migration From 17.x" />
 
-# Breadcrumb - migrate from v17 to v18
-----
+<Heading label="Breadcrumb - migrate from v17 to v18" level={ 1 } />
 
-## Usage changes
+<Heading label="Usage changes" level={ 2 } />
 
 Previous to v18, breadcrumb items were passed as an array attribute, with a strict definition of expected attributes.
 
@@ -14,7 +16,7 @@ New component now works more like other ods components, child items are now decl
 
 This way you can easily manipulate the list item DOM and each item separately.
 
-```html
+<Source code={`
 <osds-breadcrumb id="default-breadcrumb"></osds-breadcrumb>
 <script>
 document.querySelector('#default-breadcrumb').items = JSON.stringify([
@@ -24,44 +26,50 @@ document.querySelector('#default-breadcrumb').items = JSON.stringify([
   { href: "#web", label: "Web" },
 ]);
 </script>
-```
+`}
+        dark="true"
+        language="html" />
 
 The same result would now be achieved using:
-```html
+
+<Source code={`
 <ods-breadcrumb>
   <ods-breadcrumb-item href="#home" label="Home"></ods-breadcrumb-item>
   <ods-breadcrumb-item href="#services" label="Services"></ods-breadcrumb-item>
   <ods-breadcrumb-item href="#products" label="Products"></ods-breadcrumb-item>
   <ods-breadcrumb-item href="#web" label="Web"></ods-breadcrumb-item>
 </ods-breadcrumb>
-```
+`}
+        dark="true"
+        language="html" />
 
-### Design changes
+<Heading label="Design changes" level={ 2 } />
 
 The last item of the breadcrumb is now automatically rendered as a text, it is no longer a disabled link.
 
-## Attributes changes
+<Heading label="Attributes changes" level={ 2 } />
 
-`contrasted` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 You can use the style customization to achieve the same result, until a new color get validated by the design team.
 
-`items` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`items` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 You should now use `<ods-breadcrumb-item>` directly in the DOM of the `<ods-breadcrumb>` component.
 
-The attribute list is the same as the [ods-link](?path=/docs/ods-components-link--documentation#properties) component.
+The attribute list is the same as the <StorybookLink kind="ODS Components/Link" label="ods-link" story="Technical information" /> component.
 
-Which means you have the same attributes, following the link [migration guide](?path=/docs/ods-components-link--migration-from-17-x).
+Which means you have the same attributes, following the link <StorybookLink kind="ODS Components/Link" label="migration guide" story="Migration From 17.x" />.
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Basic breadcrumb:
-```html
+
+<Source code={`
 <osds-breadcrumb id="default-breadcrumb"></osds-breadcrumb>
 <script>
 document.querySelector('#default-breadcrumb').items = JSON.stringify([
@@ -80,10 +88,13 @@ document.querySelector('#default-breadcrumb').items = JSON.stringify([
   <ods-breadcrumb-item href="#products" label="Products"></ods-breadcrumb-item>
   <ods-breadcrumb-item href="#web" label="Web"></ods-breadcrumb-item>
 </ods-breadcrumb>
-```
+`}
+        dark="true"
+        language="html" />
 
 Custom breadcrumb item:
-```html
+
+<Source code={`
 <osds-breadcrumb id="default-breadcrumb"></osds-breadcrumb>
 <script>
 document.querySelector('#default-breadcrumb').items = JSON.stringify([
@@ -102,4 +113,6 @@ document.querySelector('#default-breadcrumb').items = JSON.stringify([
   <ods-breadcrumb-item href="#products" is-disabled label="Products"></ods-breadcrumb-item>
   <ods-breadcrumb-item href="#web" label="Web"></ods-breadcrumb-item>
 </ods-breadcrumb>
-```
+`}
+        dark="true"
+        language="html" />

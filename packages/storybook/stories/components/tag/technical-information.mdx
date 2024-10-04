@@ -1,41 +1,42 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsTag from '@ovhcloud/ods-components/src/components/tag/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TagStories from './tag.stories';
 
-<Meta of={ TagStories } name='Technical information' />
+<Meta of={ TagStories } name="Technical information" />
 
 <Banner of={ TagStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ TagStories.Overview } sourceState='none' />
+<Canvas of={ TagStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsTag } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the tag element using the part `tag`.
 
 Custom CSS :
 
-<Canvas of={ TagStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ TagStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ TagStories.Default } sourceState='shown' />
+<Canvas of={ TagStories.Default } sourceState="shown" />
 
-### Color
+<Heading label="Color" level={ 3 } />
 
-<Canvas of={ TagStories.Color } sourceState='shown' />
+<Canvas of={ TagStories.Color } sourceState="shown" />
 
-### Is Disabled
+<Heading label="Is Disabled" level={ 3 } />
 
-<Canvas of={ TagStories.IsDisabled } sourceState='shown' />
+<Canvas of={ TagStories.IsDisabled } sourceState="shown" />
 
-### Size
+<Heading label="Size" level={ 3 } />
 
-<Canvas of={ TagStories.Size } sourceState='shown' />
+<Canvas of={ TagStories.Size } sourceState="shown" />

@@ -1,47 +1,49 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as CodeStories from './code.stories';
+import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta of={ CodeStories } name='Migration From 17.x' />
+<Meta of={ CodeStories } name="Migration From 17.x" />
 
-# Code - migrate from v17 to v18
-----
+<Heading label="Code - migrate from v17 to v18" level={ 1 } />
 
-## Usage changes
+<Heading label="Usage changes" level={ 2 } />
 
 To add a copy button on the previous component, you had to add your own button in the `copy` slot.
 
 This slot as been removed, you can now toggle the copy button using the new `can-copy` attribute.
 
-## Attributes changes
+<Heading label="Attributes changes" level={ 2 } />
 
-`canCopy` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`canCopy` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute (optional).
 
 Set this to add a copy button on the right side of the code container.
 
-`color ` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`color ` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 You can use the style customization to achieve the same result.
 
-`contrasted` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 You can use the style customization to achieve the same result, until a new color get validated by the design team.
 
-`size ` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`size ` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 You can use the style customization to achieve the same result.
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Default usage:
-```html
+
+<Source code={`
 <osds-code>
   import { OsdsText } from '@ovhcloud/ods-components/react';
 </osds-code>
@@ -51,10 +53,13 @@ Default usage:
 <ods-code>
   import { OdsText } from '@ovhcloud/ods-components/react';
 </ods-code>
-```
+`}
+        dark="true"
+        language="html" />
 
 With a copy button:
-```html
+
+<Source code={`
 <osds-code>
   <osds-button slot="copy" variant="stroked">Copy</osds-button>
   import { OsdsText } from '@ovhcloud/ods-components/react';
@@ -65,4 +70,6 @@ With a copy button:
 <ods-code can-copy>
   import { OdsText } from '@ovhcloud/ods-components/react';
 </ods-code>
-```
+`}
+        dark="true"
+        language="html" />

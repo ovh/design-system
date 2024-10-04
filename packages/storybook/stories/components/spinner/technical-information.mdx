@@ -1,37 +1,38 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsSpinner from '@ovhcloud/ods-components/src/components/spinner/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as SpinnerStories from './spinner.stories';
 
-<Meta of={ SpinnerStories } name='Technical information' />
+<Meta of={ SpinnerStories } name="Technical information" />
 
 <Banner of={ SpinnerStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ SpinnerStories.Overview } sourceState='none' />
+<Canvas of={ SpinnerStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsSpinner } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the spinner element using the part `spinner`.
 
 Custom CSS :
 
-<Canvas of={ SpinnerStories.CustomCSS } sourceState='shown' />
+<Canvas of={ SpinnerStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ SpinnerStories.Default } sourceState='shown' />
+<Canvas of={ SpinnerStories.Default } sourceState="shown" />
 
-### Color
+<Heading label="Color" level={ 3 } />
 
-<Canvas of={ SpinnerStories.Color } sourceState='shown' />
+<Canvas of={ SpinnerStories.Color } sourceState="shown" />
 
-### Size
+<Heading label="Size" level={ 3 } />
 
-<Canvas of={ SpinnerStories.Size } sourceState='shown' />
+<Canvas of={ SpinnerStories.Size } sourceState="shown" />

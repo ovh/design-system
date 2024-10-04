@@ -1,21 +1,23 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
+import { OdsLink } from '@ovhcloud/ods-components/react';
 import SpecificationsPhoneNumber from '@ovhcloud/ods-components/src/components/phone-number/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as PhoneNumberStories from './phone-number.stories';
 import { PhoneNumber as FormFieldPhoneNumber } from '../form-field/form-field.stories';
 
-<Meta of={ PhoneNumberStories } name='Technical information' />
+<Meta of={ PhoneNumberStories } name="Technical information" />
 
 <Banner of={ PhoneNumberStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ PhoneNumberStories.Overview } sourceState='none' />
+<Canvas of={ PhoneNumberStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsPhoneNumber } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the country selector element using the part `select` and on
 the input element using the part `input`.
@@ -25,51 +27,52 @@ a situation where it prevents you yo use the phone-number component, please reac
 
 Custom CSS:
 
-<Canvas of={ PhoneNumberStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ PhoneNumberStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ PhoneNumberStories.Default } sourceState='shown' />
+<Canvas of={ PhoneNumberStories.Default } sourceState="shown" />
 
-### Clearable
+<Heading label="Clearable" level={ 3 } />
 
-<Canvas of={ PhoneNumberStories.Clearable } sourceState='shown' />
+<Canvas of={ PhoneNumberStories.Clearable } sourceState="shown" />
 
-### Disabled
+<Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ PhoneNumberStories.Disabled } sourceState='shown' />
+<Canvas of={ PhoneNumberStories.Disabled } sourceState="shown" />
 
-### Error
+<Heading label="Error" level={ 3 } />
 
-<Canvas of={ PhoneNumberStories.Error } sourceState='shown' />
+<Canvas of={ PhoneNumberStories.Error } sourceState="shown" />
 
-### Loading
+<Heading label="Loading" level={ 3 } />
 
-<Canvas of={ PhoneNumberStories.Loading } sourceState='shown' />
+<Canvas of={ PhoneNumberStories.Loading } sourceState="shown" />
 
-### Locale
+<Heading label="Locale" level={ 3 } />
 
-For further explanation about locale strategy, see [the "Locale" behavior](?path=/docs/ods-components-form-elements-phone-number--documentation#locale)
+For further explanation about locale strategy, see [<OdsLink label="the Locale behavior" />](?path=/docs/ods-components-form-elements-phone-number--documentation#locale)
 
-<Canvas of={ PhoneNumberStories.Locale } sourceState='shown' />
+<Canvas of={ PhoneNumberStories.Locale } sourceState="shown" />
 
-### ISO code
+<Heading label="ISO code" level={ 3 } />
 
-For further explanation about ISO code strategy, see [the "Iso Code" behavior](?path=/docs/ods-components-form-elements-phone-number--documentation#iso-code)
+For further explanation about ISO code strategy, see [<OdsLink label="the Iso Code behavior" />](?path=/docs/ods-components-form-elements-phone-number--documentation#iso-code)
 
-<Canvas of={ PhoneNumberStories.ISOCode } sourceState='shown' />
+<Canvas of={ PhoneNumberStories.ISOCode } sourceState="shown" />
 
-### Pattern
+<Heading label="Pattern" level={ 3 } />
 
 With this pattern setting, the component will only allow for numeric characters:
 
-<Canvas of={ PhoneNumberStories.Pattern } sourceState='shown' />
+<Canvas of={ PhoneNumberStories.Pattern } sourceState="shown" />
 
-### Readonly
+<Heading label="Readonly" level={ 3 } />
 
-<Canvas of={ PhoneNumberStories.Readonly } sourceState='shown' />
+<Canvas of={ PhoneNumberStories.Readonly } sourceState="shown" />
 
-### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
-<Canvas of={ FormFieldPhoneNumber } sourceState='shown' />
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldPhoneNumber } sourceState="shown" />

@@ -1,32 +1,34 @@
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsCode from '@ovhcloud/ods-components/src/components/code/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as CodeStories from './code.stories';
 
-<Meta of={ CodeStories } name='Technical information' />
+<Meta of={ CodeStories } name="Technical information" />
 
 <Banner of={ CodeStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ CodeStories.Overview } sourceState='none' />
+<Canvas of={ CodeStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsCode } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can directly update the container by adding your own CSS classes to it.
 
 Custom CSS :
 
-<Canvas of={ CodeStories.CustomCSS } sourceState='shown' />
+<Canvas of={ CodeStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ CodeStories.Default } sourceState='shown' />
+<Canvas of={ CodeStories.Default } sourceState="shown" />
 
-### With copy button enabled
-<Canvas of={ CodeStories.CanCopy } sourceState='shown' />
+<Heading label="With copy button enabled" level={ 3 } />
+
+<Canvas of={ CodeStories.CanCopy } sourceState="shown" />

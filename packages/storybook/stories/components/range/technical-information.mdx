@@ -1,61 +1,71 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsRange from '@ovhcloud/ods-components/src/components/range/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as RangeStories from './range.stories';
 import { Range as FormFieldRange } from '../form-field/form-field.stories';
 
-<Meta of={ RangeStories } name='Technical information' />
+<Meta of={ RangeStories } name="Technical information" />
 
 <Banner of={ RangeStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ RangeStories.Overview } sourceState='none' />
+<Canvas of={ RangeStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsRange } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the range element using the part `range`.
 
 Custom range CSS:
 
-<Canvas of={ RangeStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ RangeStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ RangeStories.Default } sourceState='shown' />
+<Canvas of={ RangeStories.Default } sourceState="shown" />
 
-### Default Dual
+<Heading label="Default Dual" level={ 3 } />
 
-<Canvas of={ RangeStories.DefaultDual } sourceState='shown' />
+<Canvas of={ RangeStories.DefaultDual } sourceState="shown" />
 
-### Disabled
-<Canvas of={ RangeStories.Disabled } sourceState='shown' />
+<Heading label="Disabled" level={ 3 } />
 
-### Disabled Dual
-<Canvas of={ RangeStories.DisabledDual } sourceState='shown' />
+<Canvas of={ RangeStories.Disabled } sourceState="shown" />
 
-### Error
-<Canvas of={ RangeStories.Error } sourceState='shown' />
+<Heading label="Disabled Dual" level={ 3 } />
 
-### Error Dual
-<Canvas of={ RangeStories.ErrorDual } sourceState='shown' />
+<Canvas of={ RangeStories.DisabledDual } sourceState="shown" />
 
-### Max
-<Canvas of={ RangeStories.Max } sourceState='shown' />
+<Heading label="Error" level={ 3 } />
 
-### Min
-<Canvas of={ RangeStories.Min } sourceState='shown' />
+<Canvas of={ RangeStories.Error } sourceState="shown" />
 
-### Step
-<Canvas of={ RangeStories.Step } sourceState='shown' />
+<Heading label="Error Dual" level={ 3 } />
 
-### Step Dual
-<Canvas of={ RangeStories.StepDual } sourceState='shown' />
+<Canvas of={ RangeStories.ErrorDual } sourceState="shown" />
 
-### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
-<Canvas of={ FormFieldRange } sourceState='shown' />
+<Heading label="Max" level={ 3 } />
+
+<Canvas of={ RangeStories.Max } sourceState="shown" />
+
+<Heading label="Min" level={ 3 } />
+
+<Canvas of={ RangeStories.Min } sourceState="shown" />
+
+<Heading label="Step" level={ 3 } />
+
+<Canvas of={ RangeStories.Step } sourceState="shown" />
+
+<Heading label="Step Dual" level={ 3 } />
+
+<Canvas of={ RangeStories.StepDual } sourceState="shown" />
+
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldRange } sourceState="shown" />

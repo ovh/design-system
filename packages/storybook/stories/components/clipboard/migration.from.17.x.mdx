@@ -1,62 +1,68 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as ClipboardStories from './clipboard.stories';
+import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta of={ ClipboardStories } name='Migration From 17.x' />
+<Meta of={ ClipboardStories } name="Migration From 17.x" />
 
-# Clipboard - migrate from v17 to v18
-----
+<Heading label="Clipboard - migrate from v17 to v18" level={ 1 } />
 
-## Usage changes
+<Heading label="Usage changes" level={ 2 } />
 
 The clipboard does not use slots anymore, it will provide default labels that you can customize using new attributes.
 
-```html
+<Source code={`
 <osds-clipboard value="Content to copy"
   Copier le contenu
   <span slot='success-message'>Copié !</span>
 </osds-clipboard>
-```
+`}
+        dark="true"
+        language="html" />
 
 The same result would now be achieved using:
 
-```html
+<Source code={`
 <ods-clipboard label-copy="Copier le contenu"
                label-copy-success="Copié !"
                value="Content to copy">
 </ods-clipboard>
-```
+`}
+        dark="true"
+        language="html" />
 
-## Attributes changes
+<Heading label="Attributes changes" level={ 2 } />
 
-`disabled` <ods-badge size="sm" label="Updated"></ods-badge>
+`disabled` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isDisabled` attribute to obtain the same behavior.
 
-`inline ` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`inline ` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Clipboard is now `inline-block` by default.
 You can add some style directly on the component if you want to override that.
 
-`labelCopy` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`labelCopy` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute (optional).
 
 Use this to customize the label on the tooltip when hovering before any copy action is triggered.
 
-`labelCopySuccess` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`labelCopySuccess` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute (optional).
 
 Use this to customize the label on the tooltip when a successful copy did happen.
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Disabled clipboard:
-```html
+
+<Source code={`
 <osds-clipboard disabled>
 </osds-clipboard>
 
@@ -64,10 +70,13 @@ Disabled clipboard:
 
 <ods-clipboard is-disabled>
 </ods-clipboard>
-```
+`}
+        dark="true"
+        language="html" />
 
 Inline clipboard:
-```html
+
+<Source code={`
 <osds-clipboard inline>
 </osds-clipboard>
 
@@ -75,10 +84,13 @@ Inline clipboard:
 
 <ods-clipboard>
 </ods-clipboard>
-```
+`}
+        dark="true"
+        language="html" />
 
 Custom labels:
-```html
+
+<Source code={`
 <osds-clipboard>
   Copier le contenu
   <span slot='success-message'>Copié !</span>
@@ -89,4 +101,6 @@ Custom labels:
 <ods-clipboard label-copy="Copier le contenu"
                label-copy-success="Copié !">
 </ods-clipboard>
-```
+`}
+        dark="true"
+        language="html" />

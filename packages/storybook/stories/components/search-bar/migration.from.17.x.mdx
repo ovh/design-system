@@ -1,11 +1,12 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
+import { Heading } from '../../../src/components/heading/Heading';
 
 <Meta title="ODS Components/Search Bar" />
 
-# Search Bar - migrate from v17 to v18
-----
+<Heading label="Search Bar - migrate from v17 to v18" level={ 1 } />
 
-Search Bar has been removed from ODS components. <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+Search Bar has been removed from ODS components. <OdsBadge color="critical" label="Removed" size="sm" />
 
 The component wasn't bringing any meaningful value and was not flexible enough regarding the different use cases
 that may exist.
@@ -13,7 +14,7 @@ that may exist.
 If you need to replace the previous search-bar, you can achieve the same result with the existing components,
 here is a quick example:
 
-```html
+<Source code={`
 <style>
     .search-bar {
       display: grid;
@@ -46,4 +47,6 @@ here is a quick example:
               size="sm">
   </ods-button>
 </div>
-```
+`}
+        dark="true"
+        language="html" />

@@ -1,57 +1,59 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsTimepicker from '@ovhcloud/ods-components/src/components/timepicker/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TimepickerStories from './timepicker.stories';
 import { Timepicker as FormFieldTimepicker } from '../form-field/form-field.stories';
 
-<Meta of={ TimepickerStories } name='Technical information' />
+<Meta of={ TimepickerStories } name="Technical information" />
 
 <Banner of={ TimepickerStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ TimepickerStories.Overview } sourceState='none' />
+<Canvas of={ TimepickerStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsTimepicker } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the timepicker element using the part `input` or `select`.
 
 Custom timepicker CSS:
 
-<Canvas of={ TimepickerStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ TimepickerStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ TimepickerStories.Default } sourceState='shown' />
+<Canvas of={ TimepickerStories.Default } sourceState="shown" />
 
-### Disabled
+<Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ TimepickerStories.Disabled } sourceState='shown' />
+<Canvas of={ TimepickerStories.Disabled } sourceState="shown" />
 
-### Error
+<Heading label="Error" level={ 3 } />
 
-<Canvas of={ TimepickerStories.Error } sourceState='shown' />
+<Canvas of={ TimepickerStories.Error } sourceState="shown" />
 
-### Readonly
+<Heading label="Readonly" level={ 3 } />
 
-<Canvas of={ TimepickerStories.Readonly } sourceState='shown' />
+<Canvas of={ TimepickerStories.Readonly } sourceState="shown" />
 
-### Timezones
+<Heading label="Timezones" level={ 3 } />
 
-<Canvas of={ TimepickerStories.Timezones } sourceState='shown' />
+<Canvas of={ TimepickerStories.Timezones } sourceState="shown" />
 
-### Timezones Custom
+<Heading label="Timezones Custom" level={ 3 } />
 
-<Canvas of={ TimepickerStories.TimezonesCustom } sourceState='shown' />
+<Canvas of={ TimepickerStories.TimezonesCustom } sourceState="shown" />
 
-### WithSeconds
+<Heading label="WithSeconds" level={ 3 } />
 
-<Canvas of={ TimepickerStories.WithSeconds } sourceState='shown' />
+<Canvas of={ TimepickerStories.WithSeconds } sourceState="shown" />
 
-### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
-<Canvas of={ FormFieldTimepicker } sourceState='shown' />
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldTimepicker } sourceState="shown" />

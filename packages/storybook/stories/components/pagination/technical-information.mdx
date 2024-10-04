@@ -1,35 +1,42 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsPagination from '@ovhcloud/ods-components/src/components/pagination/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as PaginationStories from './pagination.stories';
 
-<Meta of={ PaginationStories } name='Technical information' />
+<Meta of={ PaginationStories } name="Technical information" />
 
 <Banner of={ PaginationStories } />
 
-# Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ PaginationStories.DefaultLargeAmountOfPages } sourceState='none' />
+<Canvas of={ PaginationStories.DefaultLargeAmountOfPages } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsPagination } />
 
-# Examples
+<Heading label="Examples" level={ 2 } />
 
-## Default
-<Canvas of={ PaginationStories.Default } sourceState='shown' />
+<Heading label="Default" level={ 3 } />
 
-## Default - Large amount of pages
-<Canvas of={ PaginationStories.DefaultLargeAmountOfPages } sourceState='shown' />
+<Canvas of={ PaginationStories.Default } sourceState="shown" />
 
-## Disabled
-<Canvas of={ PaginationStories.Disabled } sourceState='shown' />
+<Heading label="Default - Large amount of pages" level={ 3 } />
 
-## Tooltip - Configuration
-<Canvas of={ PaginationStories.WithTooltips } sourceState='shown' />
+<Canvas of={ PaginationStories.DefaultLargeAmountOfPages } sourceState="shown" />
 
-## Total Items
-<Canvas of={ PaginationStories.WithTotalItems } sourceState='shown' />
+<Heading label="Disabled" level={ 3 } />
 
-## Total Items with labels
-<Canvas of={ PaginationStories.WithTotalItemsWithLabels } sourceState='shown' />
+<Canvas of={ PaginationStories.Disabled } sourceState="shown" />
+
+<Heading label="Tooltip - Configuration" level={ 3 } />
+
+<Canvas of={ PaginationStories.WithTooltips } sourceState="shown" />
+
+<Heading label="Total Items" level={ 3 } />
+
+<Canvas of={ PaginationStories.WithTotalItems } sourceState="shown" />
+
+<Heading label="Total Items with labels" level={ 3 } />
+
+<Canvas of={ PaginationStories.WithTotalItemsWithLabels } sourceState="shown" />

@@ -1,65 +1,69 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsInput from '@ovhcloud/ods-components/src/components/input/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as InputStories from './input.stories';
 import { Input as FormFieldInput } from '../form-field/form-field.stories';
 
-<Meta of={ InputStories } name='Technical information' />
+<Meta of={ InputStories } name="Technical information" />
 
 <Banner of={ InputStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ InputStories.Overview } sourceState='none' />
+<Canvas of={ InputStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsInput } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the text element using the part `input`.
 
 Custom CSS :
 
-<Canvas of={ InputStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ InputStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ InputStories.Default } sourceState='shown' />
+<Canvas of={ InputStories.Default } sourceState="shown" />
 
-### Clearable
+<Heading label="Clearable" level={ 3 } />
 
-<Canvas of={ InputStories.Clearable } sourceState='shown' />
+<Canvas of={ InputStories.Clearable } sourceState="shown" />
 
-### Disabled
+<Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ InputStories.Disabled } sourceState='shown' />
+<Canvas of={ InputStories.Disabled } sourceState="shown" />
 
-### Error
+<Heading label="Error" level={ 3 } />
 
-<Canvas of={ InputStories.Error } sourceState='shown' />
+<Canvas of={ InputStories.Error } sourceState="shown" />
 
-### Loading
+<Heading label="Loading" level={ 3 } />
 
-<Canvas of={ InputStories.Loading } sourceState='shown' />
+<Canvas of={ InputStories.Loading } sourceState="shown" />
 
-### Masked
+<Heading label="Masked" level={ 3 } />
 
-<Canvas of={ InputStories.Masked } sourceState='shown' />
+<Canvas of={ InputStories.Masked } sourceState="shown" />
 
-### Pattern
+<Heading label="Pattern" level={ 3 } />
+
 Allow just numeric character
-<Canvas of={ InputStories.Pattern } sourceState='shown' />
 
-### Placeholder
+<Canvas of={ InputStories.Pattern } sourceState="shown" />
 
-<Canvas of={ InputStories.Placeholder } sourceState='shown' />
+<Heading label="Placeholder" level={ 3 } />
 
-### Readonly
+<Canvas of={ InputStories.Placeholder } sourceState="shown" />
 
-<Canvas of={ InputStories.Readonly } sourceState='shown' />
+<Heading label="Readonly" level={ 3 } />
 
-### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
-<Canvas of={ FormFieldInput } sourceState='shown' />
+<Canvas of={ InputStories.Readonly } sourceState="shown" />
+
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldInput } sourceState="shown" />

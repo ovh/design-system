@@ -1,12 +1,14 @@
+import { OdsBadge } from '@ovhcloud/ods-components/react';
 import { Meta } from '@storybook/blocks';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 
 <Meta title="ODS Components/Tile" />
 
-# Tile - migrate from v17 to v18
-----
+<Heading label="Tile - migrate from v17 to v18" level={ 1 } />
 
-Tile has been removed from ODS components. <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+Tile has been removed from ODS components. <OdsBadge color="critical" label="Removed" size="sm" />
 
-Basic usage of tile have been replaced by the [card](?path=/docs/ods-components-card--documentation) component for now.
+Basic usage of tile have been replaced by the <StorybookLink kind="ODS Components/Card" label="card" story="Documentation" /> component for now.
 
 Until new designs and specifications gets validated, previous tile specificities will have to be implemented manually.

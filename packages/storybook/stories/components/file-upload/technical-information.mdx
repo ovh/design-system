@@ -1,20 +1,22 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { OdsLink } from '@ovhcloud/ods-components/react';
+import { Canvas, Meta, Source } from '@storybook/blocks';
 import SpecificationsFileUpload from '@ovhcloud/ods-components/src/components/file-upload/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as FileUploadStories from './file-upload.stories';
 
-<Meta of={ FileUploadStories } name='Technical information' />
+<Meta of={ FileUploadStories } name="Technical information" />
 
 <Banner of={ FileUploadStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ FileUploadStories.Overview } sourceState='none' />
+<Canvas of={ FileUploadStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsFileUpload } />
 
-# How to use?
+<Heading label="How to use?" level={ 2 } />
 
 The component does not actually handle any upload, nor does it knows the status of each file (regarding progress or error),
 as the upload process is different for every integration.
@@ -27,7 +29,7 @@ This is an extension of the native `File` interface with optional attribute that
 - `odsId`: a generated unique id to help you identify the current file being manipulated, you can of course ignore it and use your own `id` attribute directly.
 - `progress`: update this during the upload to display a progress-bar with current file upload progress.
 
-### Adding files
+<Heading label="Adding files" level={ 3 } />
 
 When a file is selected/dropped and pass the validation (if either accept or max-file are set), you'll receive an
 `odsFileChange` event containing an Array of OdsFile.
@@ -43,22 +45,28 @@ This is the right place to:
 - set up your request progress/end/error listeners
 
 To update the component list, set the files attributes with the new full list of files, ex:
-```js
-myFileUpload.files = (myFileUpload.files || []).concat(event.detail.files);
-```
 
-### Removing file
+<Source code={`
+myFileUpload.files = (myFileUpload.files || []).concat(event.detail.files);
+`}
+        dark="true"
+        language="typescript" />
+
+<Heading label="Removing file" level={ 3 } />
 
 When a file is removed/cancelled, you'll receive an `odsFileCancel` event containing the relevant OdsFile.
 
 If the file is not yet uploaded, this is the right place to abort your upload request (using native `AbortSignal` or specific external library feature).
 
 You can then update the component list with the new full list of files, ex:
-```js
-myFileUpload.files = myFileUpload.files.filter((file) => file.odsId !== detail.odsId);
-```
 
-### Managing errors
+<Source code={`
+myFileUpload.files = myFileUpload.files.filter((file) => file.odsId !== detail.odsId);
+`}
+        dark="true"
+        language="typescript" />
+
+<Heading label="Managing errors" level={ 3 } />
 
 There are two different kind of errors that you may want to display, global error and per-file error.
 
@@ -77,7 +85,7 @@ The event will contain:
 
 You can then set the `error` attribute of your `ods-file-upload` accordingly.
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the file-upload element using the parts:
 - `dropzone` to customize the top dropzone part
@@ -85,35 +93,35 @@ You can add your own style on the file-upload element using the parts:
 
 Custom CSS:
 
-<Canvas of={ FileUploadStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ FileUploadStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ FileUploadStories.Default } sourceState='shown' />
+<Canvas of={ FileUploadStories.Default } sourceState="shown" />
 
-### Disabled
+<Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ FileUploadStories.Disabled } sourceState='shown' />
+<Canvas of={ FileUploadStories.Disabled } sourceState="shown" />
 
-### Custom labels
+<Heading label="Custom labels" level={ 3 } />
 
-<Canvas of={ FileUploadStories.CustomLabels } sourceState='shown' />
+<Canvas of={ FileUploadStories.CustomLabels } sourceState="shown" />
 
-### Accept only specific file type
+<Heading label="Accept only specific file type" level={ 3 } />
 
 To limit the file types that can be uploaded, you can use the `accept` attribute.
 
-It works exactly the same as the one from the native [input file](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept).
+It works exactly the same as the one from the native <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept" label="input file" target="_blank" />.
 
-<Canvas of={ FileUploadStories.Accept } sourceState='shown' />
+<Canvas of={ FileUploadStories.Accept } sourceState="shown" />
 
-### Limit the maximum number of file
+<Heading label="Limit the maximum number of file" level={ 3 } />
 
-<Canvas of={ FileUploadStories.MaxFile } sourceState='shown' />
+<Canvas of={ FileUploadStories.MaxFile } sourceState="shown" />
 
-### Limit the maximum size of each file
+<Heading label="Limit the maximum size of each file" level={ 3 } />
 
 `max-size` value expect a number of bytes, based on 1024b === 1kb.
 
@@ -121,12 +129,12 @@ For example:
 - to limit to 1Mb, you should set 1024 * 1024 = `1048576`
 - to limit to 500Mb, you should set (1024 * 1024) * 500 = `524288000`
 
-<Canvas of={ FileUploadStories.MaxSize } sourceState='shown' />
+<Canvas of={ FileUploadStories.MaxSize } sourceState="shown" />
 
-### Send to server and display progress
+<Heading label="Send to server and display progress" level={ 3 } />
 
-<Canvas of={ FileUploadStories.Progress } sourceState='shown' />
+<Canvas of={ FileUploadStories.Progress } sourceState="shown" />
 
-### Inverse file list order
+<Heading label="Inverse file list order" level={ 3 } />
 
-<Canvas of={ FileUploadStories.InverseFileList } sourceState='shown' />
+<Canvas of={ FileUploadStories.InverseFileList } sourceState="shown" />

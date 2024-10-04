@@ -5,13 +5,13 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as BadgeStories from './badge.stories';
 
-<Meta of={ BadgeStories } name='Technical information' />
+<Meta of={ BadgeStories } name="Technical information" />
 
 <Banner of={ BadgeStories } />
 
 <Heading label="Overview" level={ 2 } />
 
-<Canvas of={ BadgeStories.Overview } sourceState='none' />
+<Canvas of={ BadgeStories.Overview } sourceState="'none' "/>
 
 <TechnicalSpecification data={ SpecificationsBadge } />
 
@@ -21,18 +21,18 @@ You can add your own style on the badge element using the part `badge`.
 
 Custom CSS:
 
-<Canvas of={ BadgeStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ BadgeStories.CustomCSS } sourceState="shown" />
 
 <Heading label="Examples" level={ 2 } />
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ BadgeStories.Default } sourceState='shown' />
+<Canvas of={ BadgeStories.Default } sourceState="shown" />
 
 <Heading label="Color" level={ 3 } />
 
-<Canvas of={ BadgeStories.Color } sourceState='shown' />
+<Canvas of={ BadgeStories.Color } sourceState="shown" />
 
 <Heading label="Size" level={ 3 } />
 
-<Canvas of={ BadgeStories.Size } sourceState='shown' />
+<Canvas of={ BadgeStories.Size } sourceState="shown" />

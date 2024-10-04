@@ -1,40 +1,40 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as SpinnerStories from './spinner.stories';
+import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta of={ SpinnerStories } name='Migration From 17.x' />
+<Meta of={ SpinnerStories } name="Migration From 17.x" />
 
-# Spinner - migrate from v17 to v18
+<Heading label="Spinner - migrate from v17 to v18" level={ 1 } />
 
-***
+<Heading label="Attributes changes" level={ 2 } />
 
-## Attributes changes
-
-`color` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`color` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute.
 
 Provides a list of colors using the currently applied theme.
 
-`contrasted` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 You can use the new `white` color to obtain the same rendering.
 
-`inline` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`inline` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Spinner is now `inline-block` by default.
 You can add some style directly on the component if you want to override that.
 
-`mode` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`mode` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 There was only was mode value, it is now the default rendering.
 
-`size` <ods-badge size="sm" label="Updated"></ods-badge>
+`size` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
@@ -52,13 +52,16 @@ Changed from 40px to 48px.
 
 Changed from 140px to 80px.
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Contrasted spinner:
-```html
+
+<Source code={`
 <osds-spinner inline contrasted></osds-spinner>
 
 <!-- is now -->
 
 <ods-spinner color="white"></ods-spinner>
-```
+`}
+        dark="true"
+        language="html" />

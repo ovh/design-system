@@ -1,44 +1,42 @@
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas, Meta } from '@storybook/blocks';
 import * as PasswordStories from './password.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 
-<Meta of={ PasswordStories } name='Documentation' />
+<Meta of={ PasswordStories } name="Documentation" />
 
 <Banner of={ PasswordStories } />
 
-_**Password** component is an [**Input**](?path=/docs/ods-components-form-elements-input--documentation) field for entering a password that can be hidden or not._
+_**Password** component is an <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> field for entering a password that can be hidden or not._
 
-<Canvas of={ PasswordStories.Overview } sourceState='none' />
+<Canvas of={ PasswordStories.Overview } sourceState="none" />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<div className="documentation-overview">
-  <div>
-    The **Password** component is an **Input** field of which the content is replaced with middle dot symbol symbols "·" by default and
-    the masking can be toggled using a show/hide action.
-  </div>
+<IdentityCard aliases={ ['Password field', 'Password input'] }
+              atomicType={ ATOMIC_TYPE.molecule }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=48-4526"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/password"
+              name="Password"
+              relatedComponents={ [{ name: 'Form Field', subtitle: 'Form elements' }, { name: 'Input', subtitle: 'Form elements' }] }>
+  The **Password** component is an **Input** field of which the content is replaced with middle dot symbol symbols "·" by default and
+  the masking can be toggled using a show/hide action.
+</IdentityCard>
 
-  <IdentityCard aliases={ ['Password field', 'Password input'] }
-                atomicType={ ATOMIC_TYPE.molecule }
-                className="documentation-overview__table"
-                figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=48-4526"
-                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/password"
-                name="Password"
-                relatedComponents={ [{ name: 'Form Field', subtitle: 'Form elements' }, { name: 'Input', subtitle: 'Form elements' }] } />
-</div>
-
-## Anatomy
+<Heading label="Anatomy" level={ 2 } />
 
 ![Component anatomy](components/password/anatomy.png "Component anatomy")
 
 1. **Placeholder**: it provides hints or example of what user should type
 2. **Container**: it is a container where the user can type in
-3. **Clear action**: a `close` icon [**Button**](?path=/docs/ods-components-button--documentation) so that user can clear the [**Input**](?path=/docs/ods-components-form-elements-input--documentation) content (optional)
-4. **Show/hide action**: an `eye` icon [**Button**](?path=/docs/ods-components-button--documentation) to toggle between masked or visible [**Input**](?path=/docs/ods-components-form-elements-input--documentation) content
+3. **Clear action**: a `close` icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> so that user can clear the <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> content (optional)
+4. **Show/hide action**: an `eye` icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> to toggle between masked or visible <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> content
 
-## Usage
+<Heading label="Usage" level={ 2 } />
 
 A **Password** is mainly used to let users enter a password or secret information.
 
@@ -46,43 +44,36 @@ Entered password can be masked or visible as plain text when users need to check
 
 It can also be used for displaying tokens.
 
-### Dos & Don'ts
+<Heading label="Dos & Don'ts" level={ 3 } />
 
-<Markdown className="documentation-do-table">
-  { `
-| ✅ Do                                                                                                                                                                           |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| - Use a **Password** when user has to enter sensitive data in the field                                                                                                        |
-| - Use read-only **Password** for tokens with copyable action enabled                                                                                                           |
-` }
-</Markdown>
+<BestPractices
+  donts={[
+    <span>- Use a Password when you need the text users enter to be only visible. You should use an <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> instead</span>,
+  ]}
+  dos={[
+    '- Use a Password when user has to enter sensitive data in the field',
+    '- Use read-only Password for tokens with copyable action enabled',
+  ]}
+/>
 
-<Markdown className="documentation-dont-table">
-  { `
-| ❌ Don't                                                                                                                                                                          |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - Use a **Password** when you need the text users enter to be only visible. You should use an [**Input**](?path=/docs/ods-components-form-elements-input--documentation) instead          |
-` }
-</Markdown>
-
-## Placement
+<Heading label="Placement" level={ 2 } />
 
 By default, the **Password** content is left-aligned in its container.
 
-## Behavior
+<Heading label="Behavior" level={ 2 } />
 
 By default, the **Password** content is masked.
 
 **Password** can be used as read-only (especially for tokens).
 
-The password masking toggled using show/hide action is permanent. Users have to click again to show/hide the [**Input**](?path=/docs/ods-components-form-elements-input--documentation) content.
+The password masking toggled using show/hide action is permanent. Users have to click again to show/hide the <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> content.
 
-It inherits events from [**Input**](?path=/docs/ods-components-form-elements-input--documentation) component.
+It inherits events from <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> component.
 
-## Variation
+<Heading label="Variation" level={ 2 } />
 
 N/A
 
-## Accessibility
+<Heading label="Accessibility" level={ 2 } />
 
-Password shares the same keyboard features as [**Input**](?path=/docs/ods-components-form-elements-input--documentation) (focusing + icon [**Button**](?path=/docs/ods-components-button--documentation))
+Password shares the same keyboard features as <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> (focusing + icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />)

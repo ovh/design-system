@@ -33,9 +33,9 @@ const TokenMigrationTable = ({ items }: Props) => {
     <Table>
       <thead>
         <tr>
-          <th>Former token names</th>
+          <th>Former name</th>
           <th>Status</th>
-          <th>New token name</th>
+          <th>New name</th>
         </tr>
       </thead>
 

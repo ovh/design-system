@@ -1,66 +1,67 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as RadioStories from './radio.stories';
+import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta of={ RadioStories } name='Migration From 17.x' />
+<Meta of={ RadioStories } name="Migration From 17.x" />
 
-# Radio - migrate from v17 to v18
-----
+<Heading label="Radio - migrate from v17 to v18" level={ 1 } />
 
-## Attributes changes Radio
+<Heading label="Attributes changes Radio" level={ 2 } />
 
-`checked` <ods-badge size="sm" label="Updated"></ods-badge>
+`checked` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isChecked` attribute to obtain the same behavior.
 
-`checking` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`checking` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 This design feature has been removed in order to match the new styling of the component.
 
-`disabled` <ods-badge size="sm" label="Updated"></ods-badge>
+`disabled` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isDisabled` attribute to obtain the same behavior.
 
-`label` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`label` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Radio can now use HTML Label. Like in the example.
 
-`afterSave` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`afterSave` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 We don't think this kind of callback was necessary anymore.
 
-`beforeSave` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`beforeSave` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 We don't think this kind of callback was necessary anymore.
 
-`save` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`save` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 We don't think this kind of callback was necessary anymore.
 
-## Attributes changes Radio group
+<Heading label="Attributes changes Radio group" level={ 2 } />
 
-`required` <ods-badge size="sm" label="Updated"></ods-badge>
+`required` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isRequired` attribute to obtain the same behavior.
 
-## Attributes changes Radio button
+<Heading label="Attributes changes Radio button" level={ 2 } />
 
-`color` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`color` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
@@ -68,28 +69,29 @@ This design feature has been removed in order to match the new styling of the co
 
 You can use the CSS to obtain the same rendering.
 
-`hasFocus` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`hasFocus` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 You have now an event to know when the component is focused.
 
-`interactive` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`interactive` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 This design feature has been removed in order to match the new styling of the component.
 
-`size` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`size` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 You can use the CSS to obtain the same rendering.
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Disabled radio:
-```html
+
+<Source code={`
 <osds-radio disabled>
   <osds-radio-button color='primary' size='sm'></osds-radio-button>
 </osds-radio>
@@ -97,10 +99,13 @@ Disabled radio:
 <!-- is now -->
 
 <ods-radio is-disabled></ods-radio>
-```
+`}
+        dark="true"
+        language="html" />
 
 Label radio:
-```html
+
+<Source code={`
 <osds-radio-button>
   <span slot='end'>Radio label</span>
 </osds-radio-button>
@@ -109,10 +114,13 @@ Label radio:
 
 <ods-radio input-id="migration-label" name="name" value="migration"></ods-radio>
 <label for="migration-label">Radio label</label>
-```
+`}
+        dark="true"
+        language="html" />
 
 Group radio:
-```html
+
+<Source code={`
 <osds-radio-group>
     <osds-radio value="A">
         <osds-radio-button color='primary' size='sm'></osds-radio-button>
@@ -130,4 +138,6 @@ Group radio:
 <ods-radio value="A" name="group-radio"></ods-radio>
 <ods-radio value="B" name="group-radio"></ods-radio>
 <ods-radio value="C" name="group-radio"></ods-radio>
-```
+`}
+        dark="true"
+        language="html" />

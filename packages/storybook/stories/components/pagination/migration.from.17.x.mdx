@@ -1,26 +1,30 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as PaginationStories from './pagination.stories';
+import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta of={ PaginationStories } name='Migration From 17.x' />
+<Meta of={ PaginationStories } name="Migration From 17.x" />
 
-# Pagination - migrate from v17 to v18
-----
+<Heading label="Pagination - migrate from v17 to v18" level={ 1 } />
 
-## Attributes changes
+<Heading label="Attributes changes" level={ 2 } />
 
-`disabled` <ods-badge size="sm" label="Updated"></ods-badge>
+`disabled` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isDisabled` attribute to obtain the same behavior.
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Disabled:
-```html
+
+<Source code={`
 <osds-pagination disabled></osds-pagination>
 
 <!-- is now -->
 
 <ods-pagination is-disabled></ods-pagination>
-```
+`}
+        dark="true"
+        language="html" />

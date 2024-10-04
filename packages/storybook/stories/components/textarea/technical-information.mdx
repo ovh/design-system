@@ -1,65 +1,67 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsTextarea from '@ovhcloud/ods-components/src/components/textarea/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TextareaStories from './textarea.stories';
 import { Textarea as FormFieldTextarea } from '../form-field/form-field.stories';
 
-<Meta of={ TextareaStories } name='Technical information' />
+<Meta of={ TextareaStories } name="Technical information" />
 
 <Banner of={ TextareaStories } />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<Canvas of={ TextareaStories.Overview } sourceState='none' />
+<Canvas of={ TextareaStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsTextarea } />
 
-## Style customization
+<Heading label="Style customization" level={ 2 } />
 
 You can add your own style on the textarea element using the part `textarea`.
 
 Custom CSS:
 
-<Canvas of={ TextareaStories.CustomCSS } sourceState='shown'/>
+<Canvas of={ TextareaStories.CustomCSS } sourceState="shown" />
 
-## Examples
+<Heading label="Examples" level={ 2 } />
 
-### Default
+<Heading label="Default" level={ 3 } />
 
-<Canvas of={ TextareaStories.Default } sourceState='shown' />
+<Canvas of={ TextareaStories.Default } sourceState="shown" />
 
-### Cols
+<Heading label="Cols" level={ 3 } />
 
-<Canvas of={ TextareaStories.Cols } sourceState='shown' />
+<Canvas of={ TextareaStories.Cols } sourceState="shown" />
 
-### Disabled
+<Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ TextareaStories.Disabled } sourceState='shown' />
+<Canvas of={ TextareaStories.Disabled } sourceState="shown" />
 
-### Error
+<Heading label="Error" level={ 3 } />
 
-<Canvas of={ TextareaStories.Error } sourceState='shown' />
+<Canvas of={ TextareaStories.Error } sourceState="shown" />
 
-### Placeholder
+<Heading label="Placeholder" level={ 3 } />
 
-<Canvas of={ TextareaStories.Placeholder } sourceState='shown' />
+<Canvas of={ TextareaStories.Placeholder } sourceState="shown" />
 
-### Readonly
+<Heading label="Readonly" level={ 3 } />
 
-<Canvas of={ TextareaStories.Readonly } sourceState='shown' />
+<Canvas of={ TextareaStories.Readonly } sourceState="shown" />
 
-### Resizable
+<Heading label="Resizable" level={ 3 } />
 
-<Canvas of={ TextareaStories.Resizable } sourceState='shown' />
+<Canvas of={ TextareaStories.Resizable } sourceState="shown" />
 
-### Rows
+<Heading label="Rows" level={ 3 } />
 
-<Canvas of={ TextareaStories.Rows } sourceState='shown' />
+<Canvas of={ TextareaStories.Rows } sourceState="shown" />
 
-### Spellcheck
+<Heading label="Spellcheck" level={ 3 } />
 
-<Canvas of={ TextareaStories.Spellcheck } sourceState='shown' />
+<Canvas of={ TextareaStories.Spellcheck } sourceState="shown" />
 
-### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
-<Canvas of={ FormFieldTextarea } sourceState='shown' />
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldTextarea } sourceState="shown" />

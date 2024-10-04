@@ -1,71 +1,73 @@
-import { Meta } from '@storybook/blocks';
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
 import * as ToggleStories from './toggle.stories';
+import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta of={ ToggleStories } name='Migration From 17.x' />
+<Meta of={ ToggleStories } name="Migration From 17.x" />
 
-# Toggle - migrate from v17 to v18
-----
+<Heading label="Toggle - migrate from v17 to v18" level={ 1 } />
 
-## Attributes changes
+<Heading label="Attributes changes" level={ 2 } />
 
-`checked` <ods-badge size="sm" label="Updated"></ods-badge>
+`checked` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `value` attribute to obtain the same behavior.
 
-`checking` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`checking` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 This design feature has been removed in order to match the new styling of the component.
 
-`contrasted` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 This design feature has been removed in order to match the new styling of the component.
 
-`color` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`color` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 This design feature has been removed in order to match the new styling of the component.
 
-`disabled` <ods-badge size="sm" label="Updated"></ods-badge>
+`disabled` <OdsBadge color="information" label="Updated" size="sm" />
 
 Has been updated.
 
 You can use the new `isDisabled` attribute to obtain the same behavior.
 
-`interactive` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+`interactive` <OdsBadge color="critical" label="Removed" size="sm" />
 
 Has been removed.
 
 Toggle is now always interactive.
 
-`isRequired` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`isRequired` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute (optional).
 
 Defines if the toggle is required in a form.
 
-`name` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`name` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute.
 
 You can use the new 'name' attribute to identify your OdsToggle within a form.
 
-`withLabel` <ods-badge size="sm" color="success" label="New"></ods-badge>
+`withLabel` <OdsBadge color="success" label="New" size="sm" />
 
 New attribute (optional).
 
 Will add the visual labels `ON/OFF`.
 
-## Migration examples
+<Heading label="Migration examples" level={ 2 } />
 
 Checked toggle:
-```html
+
+<Source code={`
 <osds-toggle checked>
 </osds-toggle>
 
@@ -73,10 +75,13 @@ Checked toggle:
 
 <ods-toggle value="true">
 </ods-toggle>
-```
+`}
+        dark="true"
+        language="html" />
 
 Disabled toggle:
-```html
+
+<Source code={`
 <osds-toggle disabled>
 </osds-toggle>
 
@@ -84,4 +89,6 @@ Disabled toggle:
 
 <ods-toggle is-disabled>
 </ods-toggle>
-```
+`}
+        dark="true"
+        language="html" />

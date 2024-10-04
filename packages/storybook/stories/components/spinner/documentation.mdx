@@ -1,79 +1,70 @@
-import { Canvas, Markdown, Meta } from '@storybook/blocks';
-import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas, Meta } from '@storybook/blocks';
 import * as SpinnerStories from './spinner.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 
-<Meta of={ SpinnerStories } name='Documentation' />
+<Meta of={ SpinnerStories } name="Documentation" />
 
 <Banner of={ SpinnerStories } />
 
 _A visual indicator that a process is happening in the background but the interface is not yet ready for interaction._
 
-<Canvas of={ SpinnerStories.Overview } sourceState='none' />
+<Canvas of={ SpinnerStories.Overview } sourceState="none" />
 
-## Overview
+<Heading label="Overview" level={ 2 } />
 
-<div className="documentation-overview">
-  <div>
-    A visual indicator that **a process is happening in the background** but the interface is not yet ready for
-    interaction.
-  </div>
+<IdentityCard aliases={ ['Loading', 'Spin', 'Circular Progress'] }
+              atomicType={ ATOMIC_TYPE.quark }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-10340"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/spinner"
+              name="Spinner"
+              relatedComponents={ [] }>
+  A visual indicator that **a process is happening in the background** but the interface is not yet ready for
+  interaction.
+</IdentityCard>
 
-  <IdentityCard aliases={ ['Loading', 'Spin', 'Circular Progress'] }
-                atomicType={ ATOMIC_TYPE.quark }
-                className="documentation-overview__table"
-                figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-10340"
-                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/spinner"
-                name="Spinner"
-                relatedComponents={ [] } />
-</div>
-
-## Anatomy
+<Heading label="Anatomy" level={ 2 } />
 
 ![Component anatomy](components/spinner/anatomy.png "Component anatomy")
 
 1. **Main content**: the **Spinner** itself.
 
-## Usage
+<Heading label="Usage" level={ 2 } />
 
 **Spinner** component is used as a fallback when complex content is loading in the background.
 
 When using a **Spinner** directly over content, we recommend applying an opacity to the content container to de-emphasize the content and increase the visibility of the **Spinner**.
 
-### Dos & Don'ts
+<Heading label="Dos & Don'ts" level={ 3 } />
 
-<Markdown className="documentation-do-table">
-  { `
-| ✅ Do                                                                                                                                                                           |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| - Use **Spinner** when the loading wait time is expected to be longer than three seconds.                                                                                      |
-` }
-</Markdown>
+<BestPractices
+  donts={[
+    '- Use multiple Spinners on the same page, prefer using a single Spinner on an overlay',
+    <span>- Use Spinner for text-only loading. Use <StorybookLink kind="ODS Components/Skeleton" label="Skeleton" story="Documentation" /> component instead</span>,
+  ]}
+  dos={[
+    '- Use Spinner when the loading wait time is expected to be longer than three seconds',
+  ]}
+/>
 
-<Markdown className="documentation-dont-table">
-  { `
-| ❌ Don't                                                                                                                                                                          |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - Use multiple **Spinners** on the same page, prefer using a single **Spinner** on an overlay.                                                                                   |
-| - Use **Spinner** for text-only loading. Use [**Skeleton**](?path=/docs/ods-components-skeleton--documentation) component instead.                                       |
-` }
-</Markdown>
-
-## Placement
+<Heading label="Placement" level={ 2 } />
 
 **Spinner can be placed where needed**, whether it's centered on an overlay or specific container/content in the page.
 
 **Spinner** can widen to match its container.
 
-## Behavior
+<Heading label="Behavior" level={ 2 } />
 
 The **Spinner** component has a spinning animation to show to the user that the background process is moving on.
 
-## Variation
+<Heading label="Variation" level={ 2 } />
 
 N/A
 
-## Accessibility
+<Heading label="Accessibility" level={ 2 } />
 
 User is being notified of its loading based on the ARIA `live` property.

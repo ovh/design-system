@@ -18,7 +18,7 @@ const VALUE_DEFAULT_VALUE = null;
 })
 export class OdsQuantity {
   private odsInput?: HTMLElement & OdsInput;
-  private updateIsInvalid: boolean = false;
+  private shouldUpdateIsInvalidState: boolean = false;
 
   @AttachInternals() internals!: ElementInternals;
 
@@ -61,7 +61,7 @@ export class OdsQuantity {
   @Method()
   async clear(): Promise<void> {
     await this.odsInput?.clear();
-    this.updateIsInvalid = true;
+    this.shouldUpdateIsInvalidState = true;
   }
 
   @Method()
@@ -82,7 +82,7 @@ export class OdsQuantity {
   @Method()
   async reset(): Promise<void> {
     await this.odsInput?.reset();
-    this.updateIsInvalid = true;
+    this.shouldUpdateIsInvalidState = true;
   }
 
   @Method()
@@ -110,7 +110,7 @@ export class OdsQuantity {
     }
     const step = this.step || 1;
     this.value = this.value !== null ? Number(this.value) - step : 0;
-    this.updateIsInvalid = true;
+    this.shouldUpdateIsInvalidState = true;
   }
 
   private async increment(): Promise<void> {
@@ -119,7 +119,7 @@ export class OdsQuantity {
     }
     const step = this.step || 1;
     this.value = this.value !== null ? Number(this.value) + step : 0;
-    this.updateIsInvalid = true;
+    this.shouldUpdateIsInvalidState = true;
   }
 
   private onOdsBlur(): void {
@@ -135,7 +135,7 @@ export class OdsQuantity {
 
     await updateInternals(this.internals, this.value, this.odsInput);
     // update here after update internals
-    if (this.updateIsInvalid) {
+    if (this.shouldUpdateIsInvalidState) {
       await this.odsInput?.reportValidity();
       this.isInvalid = !this.internals.validity.valid;
     }

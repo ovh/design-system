@@ -16,7 +16,7 @@ const VALUE_DEFAULT_VALUE = null;
 })
 export class OdsPassword {
   private odsInput?: HTMLElement & OdsInput;
-  private updateIsInvalid: boolean = false;
+  private shouldUpdateIsInvalidState: boolean = false;
 
   @AttachInternals() private internals!: ElementInternals;
 
@@ -61,7 +61,7 @@ export class OdsPassword {
   @Method()
   async clear(): Promise<void> {
     await this.odsInput?.clear();
-    this.updateIsInvalid = true;
+    this.shouldUpdateIsInvalidState = true;
   }
 
   @Method()
@@ -87,7 +87,7 @@ export class OdsPassword {
   @Method()
   async reset(): Promise<void> {
     await this.odsInput?.reset();
-    this.updateIsInvalid = true;
+    this.shouldUpdateIsInvalidState = true;
 
   }
 
@@ -118,9 +118,9 @@ export class OdsPassword {
     this.value = event.detail.value?.toString() ?? null;
     await updateInternals(this.internals, this.value, this.odsInput);
      // update here after update internals
-     if (this.updateIsInvalid) {
+     if (this.shouldUpdateIsInvalidState) {
       this.isInvalid = !this.internals.validity.valid;
-      this.updateIsInvalid = false;
+      this.shouldUpdateIsInvalidState = false;
     }
   }
 

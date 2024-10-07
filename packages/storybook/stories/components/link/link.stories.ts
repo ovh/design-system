@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
-import { ODS_ICON_NAMES, ODS_LINK_COLOR, ODS_LINK_COLORS } from '@ovhcloud/ods-components';
+import { ODS_ICON_NAMES, ODS_LINK_COLOR, ODS_LINK_COLORS, ODS_LINK_ICON_ALIGNMENT, ODS_LINK_ICON_ALIGNMENTS } from '@ovhcloud/ods-components';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
 
 const meta: Meta = {
@@ -18,6 +18,7 @@ export const Demo: StoryObj = {
       download="${args.download}"
       href="${args.href}"
       icon="${args.icon}"
+      icon-alignment="${args.iconAlignment}"
       is-disabled="${args.isDisabled}"
       label="${args.label}"
       rel="${args.rel}"
@@ -86,6 +87,15 @@ export const Demo: StoryObj = {
       options: ODS_ICON_NAMES,
       description: 'See the whole list [here](/?path=/docs/ods-components-icon--documentation#name)'
     },
+    iconAlignment: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: ODS_LINK_ICON_ALIGNMENT.right },
+        type: { summary: ODS_LINK_ICON_ALIGNMENTS }
+      },
+      control: { type: 'select' },
+      options: ODS_LINK_ICON_ALIGNMENTS
+    },
     isDisabled: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -129,6 +139,7 @@ export const Demo: StoryObj = {
   }),
   args: {
     color: ODS_LINK_COLOR.primary,
+    iconAlignment: ODS_LINK_ICON_ALIGNMENT.right,
     isDisabled: false,
     label: 'my label',
   },
@@ -165,10 +176,24 @@ export const Disabled: StoryObj = {
 <ods-link href="https://www.ovhcloud.com/" is-disabled label="Disabled"></ods-link>  `,
 };
 
-export const Icon: StoryObj = {
+export const WithLeftIcon: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-link href="https://www.ovhcloud.com/" label="Icon Link" icon="arrow-left" icon-alignment="${ODS_LINK_ICON_ALIGNMENT.left}"></ods-link>
+  `,
+};
+
+export const WithRightIcon: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-link href="https://www.ovhcloud.com/" label="Icon Link" icon="arrow-right"></ods-link>
+  `,
+};
+
+export const IconOnly: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-link href="https://www.ovhcloud.com/" icon="arrow-right"></ods-link>
   `,
 };
 

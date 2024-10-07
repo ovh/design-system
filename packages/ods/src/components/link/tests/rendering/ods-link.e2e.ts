@@ -32,6 +32,33 @@ describe('ods-link rendering', () => {
     });
   });
 
+  describe('icon', () => {
+    const dummyIcon = 'arrow-right';
+    it('should render with an icon', async() => {
+      await setup(`<ods-link icon="${dummyIcon}"></ods-link>`);
+
+      const customIcon = await aElement.find(`ods-icon[name="${dummyIcon}"]`);
+
+      expect(customIcon).not.toBeNull();
+    });
+
+    it('should render icon on the right', async() => {
+      await setup(`<ods-link icon="${dummyIcon}"></ods-link>`);
+
+      const linkStyle = await aElement.getComputedStyle();
+
+      expect(linkStyle.getPropertyValue('flex-direction')).toBe('row');
+    });
+
+    it('should render icon on the left', async() => {
+      await setup(`<ods-link icon="${dummyIcon}" icon-alignment="left"></ods-link>`);
+
+      const linkStyle = await aElement.getComputedStyle();
+
+      expect(linkStyle.getPropertyValue('flex-direction')).toBe('row-reverse');
+    });
+  });
+
   it('should render the web component', async() => {
     await setup('<ods-link></ods-link>');
 
@@ -51,4 +78,5 @@ describe('ods-link rendering', () => {
     expect(el.getAttribute('color')).toBe('primary');
     expect(aElement.classList.contains('ods-link__link--primary')).toBe(true);
   });
+
 });

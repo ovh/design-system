@@ -1,6 +1,7 @@
 import { Component, type FunctionalComponent, Host, Listen, Prop, h } from '@stencil/core';
 import { type OdsIconName } from '../../../../icon/src';
 import { ODS_LINK_COLOR, type OdsLinkColor } from '../../constant/link-color';
+import { ODS_LINK_ICON_ALIGNMENT, type OdsLinkIconAlignment } from '../../constant/link-icon-alignment';
 
 @Component({
   shadow: true,
@@ -14,6 +15,8 @@ export class OdsLink {
   @Prop({ reflect: true }) public href!: string;
   /** @docType OdsIconName */
   @Prop({ reflect: true }) public icon?: OdsIconName;
+  /** @docType OdsLinkIconAlignment */
+  @Prop({ reflect: true }) public iconAlignment?: OdsLinkIconAlignment = ODS_LINK_ICON_ALIGNMENT.right;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public label?: string;
   @Prop({ reflect: true }) public referrerpolicy?: ReferrerPolicy;
@@ -35,6 +38,7 @@ export class OdsLink {
           'ods-link__link': true,
           'ods-link__link--disabled': this.isDisabled ?? false,
           [`ods-link__link--${this.color}`]: true,
+          [`ods-link__link--icon-${this.iconAlignment}`]: true,
         }}
         download={ this.download }
         href={ this.href }

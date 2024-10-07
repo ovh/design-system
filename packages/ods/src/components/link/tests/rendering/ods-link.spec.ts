@@ -1,6 +1,6 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { ODS_LINK_COLOR, OdsLink } from '../../src';
+import { ODS_LINK_COLOR, ODS_LINK_ICON_ALIGNMENT, OdsLink } from '../../src';
 
 describe('ods-link rendering', () => {
   let page: SpecPage;
@@ -95,6 +95,22 @@ describe('ods-link rendering', () => {
 
       expect(root?.getAttribute('icon')).toBe(null);
       expect(iconElement).not.toBeDefined();
+    });
+  });
+
+  describe('iconAlignment', () => {
+    it('should be reflected', async() => {
+      const dummyValue = 'dummy value';
+
+      await setup(`<ods-link icon-alignment="${dummyValue}">Dummy Link</ods-link>`);
+
+      expect(root?.getAttribute('icon-alignment')).toBe(dummyValue);
+    });
+
+    it('should render with expected default value', async() => {
+      await setup('<ods-link>Dummy Link</ods-link>');
+
+      expect(root?.getAttribute('icon-alignment')).toBe(ODS_LINK_ICON_ALIGNMENT.right);
     });
   });
 

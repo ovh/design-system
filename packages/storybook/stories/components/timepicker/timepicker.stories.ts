@@ -17,12 +17,11 @@ export const Demo: StoryObj = {
       (async () => {
           const divValidityState = document.querySelector('#validity-state');
           const timepicker = document.querySelector('.my-timepicker-demo');
-          await renderValidityState();
+          setTimeout(async() => { await renderValidityState() }, 0)
           timepicker.addEventListener('odsChange', async () => {
-            await renderValidityState();
+            setTimeout(async() => { await renderValidityState() }, 0)
           })
           async function renderValidityState() {
-            console.log('validity', await timepicker.getValidity())
             const validity = await timepicker.getValidity()
             divValidityState.innerHTML = '';
             for (let key in validity) {
@@ -233,12 +232,11 @@ export const ValidityState: StoryObj = {
   (() => {
       const divValidityState = document.querySelector('#validity-state-demo');
       const timepicker = document.querySelector('#timepicker-validity-state-demo');
-      renderValidityState();
+      setTimeout(async() => { await renderValidityState() }, 0)
       timepicker.addEventListener('odsChange', async () => {
-        await renderValidityState();
+        setTimeout(async() => { await renderValidityState() }, 0)
       })
       async function renderValidityState() {
-        console.log('validity', await timepicker.getValidity())
         const validity = await timepicker.getValidity()
         divValidityState.innerHTML = '';
         for (let key in validity) {

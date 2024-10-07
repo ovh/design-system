@@ -17,12 +17,11 @@ export const Demo: StoryObj = {
       (() => {
           const divValidityState = document.querySelector('#validity-state');
           const textarea = document.querySelector('.my-textarea');
-          renderValidityState();
+          setTimeout(async() => { await renderValidityState() }, 0)
           textarea.addEventListener('odsChange', async () => {
-            await renderValidityState();
+            setTimeout(async() => { await renderValidityState() }, 0)
           })
           async function renderValidityState() {
-            console.log('validity', await quantity.getValidity())
             const validity = await textarea.getValidity()
             divValidityState.innerHTML = '';
             for (let key in validity) {
@@ -274,11 +273,11 @@ export const ValidityState: StoryObj = {
   (() => {
       const divValidityState = document.querySelector('#validity-state-demo');
       const textarea = document.querySelector('#textarea-validity-state-demo');
+      setTimeout(async() => { await renderValidityState() }, 0)
       textarea.addEventListener('odsChange', async () => {
-        await renderValidityState();
+        setTimeout(async() => { await renderValidityState() }, 0)
       })
       async function renderValidityState() {
-        console.log('validity', await quantity.getValidity())
         const validity = await textarea.getValidity()
         divValidityState.innerHTML = '';
         for (let key in validity) {

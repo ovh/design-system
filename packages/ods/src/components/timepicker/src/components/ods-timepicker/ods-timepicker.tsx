@@ -26,7 +26,7 @@ export class OdsTimepicker {
   private odsSelect?: OdsSelect & HTMLElement;
   private previousValue?: string | null;
   private timezonesList: OdsTimezone[] = [];
-  private updateIsInvalid: boolean = false;
+  private shouldUpdateIsInvalidState: boolean = false;
 
   @Element() el!: HTMLElement;
 
@@ -72,7 +72,7 @@ export class OdsTimepicker {
     await this.odsInput?.clear();
     await this.odsSelect?.clear();
     this.odsClear.emit();
-    this.updateIsInvalid = true;
+    this.shouldUpdateIsInvalidState = true;
   }
 
   @Method()
@@ -95,7 +95,7 @@ export class OdsTimepicker {
     await this.odsInput?.reset();
     await this.odsSelect?.reset();
     this.odsReset.emit();
-    this.updateIsInvalid = true;
+    this.shouldUpdateIsInvalidState = true;
   }
 
   @Method()
@@ -153,9 +153,9 @@ export class OdsTimepicker {
 
       await updateInternals(this.internals, this.value, this.odsInput);
       // update here after update internals
-      if (this.updateIsInvalid) {
+      if (this.shouldUpdateIsInvalidState) {
         this.isInvalid = !this.internals.validity.valid;
-        this.updateIsInvalid = false;
+        this.shouldUpdateIsInvalidState = false;
       }
     }
 

@@ -19,7 +19,7 @@ const VALUE_DEFAULT_VALUE = null;
 export class OdsInput {
   private observer?: MutationObserver;
   private inputEl?: HTMLInputElement;
-  private updateIsInvalid: boolean = false;
+  private shouldUpdateIsInvalidState: boolean = false;
 
   @Element() el!: HTMLElement;
 
@@ -65,12 +65,6 @@ export class OdsInput {
     this.isInvalid = true;
   }
 
-  @Listen('updateIsInvalid')
-  onUpdateIsInvalid(event: CustomEvent): void {
-    event.stopPropagation();
-    this.isInvalid = !this.internals.validity?.valid;
-  }
-
   @Method()
   async checkValidity(): Promise<boolean> {
     return this.internals.checkValidity();
@@ -81,7 +75,7 @@ export class OdsInput {
     this.odsClear.emit();
     this.value = null;
     this.inputEl?.focus();
-    this.updateIsInvalid = true;
+    this.shouldUpdateIsInvalidState = true;
   }
 
   @Method()
@@ -107,7 +101,7 @@ export class OdsInput {
   async reset(): Promise<void> {
     this.odsReset.emit();
     this.value = this.defaultValue ?? null;
-    this.updateIsInvalid = true;
+    this.shouldUpdateIsInvalidState = true;
   }
 
   @Method()
@@ -178,9 +172,9 @@ export class OdsInput {
     updateInternals(this.internals, this.value, this.inputEl);
 
     // update here after update internals
-    if (this.updateIsInvalid) {
+    if (this.shouldUpdateIsInvalidState) {
       this.isInvalid = !this.internals.validity.valid;
-      this.updateIsInvalid = false;
+      this.shouldUpdateIsInvalidState = false;
     }
 
     this.odsChange.emit({

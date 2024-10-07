@@ -86,7 +86,20 @@ function FormNative(): ReactElement {
   //   console.log('onClear', event);
   // }
 
+  const textareaRef = useRef<HTMLFormElement>(null);
+
   return (
+
+
+    <OdsTextarea
+        defaultValue="textarea"
+        hasError={ error.textarea }
+        isRequired={ true }
+        name="textarea"
+        ref={ textareaRef }
+      />
+  )
+
     <form
       className={ styles['form-native'] }
       onSubmit={ onSubmit }
@@ -249,7 +262,7 @@ function FormNative(): ReactElement {
         hasError={ error.textarea }
         isRequired={ true }
         name="textarea"
-        // ref={ textareaRef }
+        ref={ textareaRef }
       />
 
       {/*/!* OK *!/*/}

@@ -4,6 +4,12 @@ import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { OdsTextarea } from '../../src';
 
+// @ts-ignore for test purposes
+global.MutationObserver = jest.fn(() => ({
+  disconnect: jest.fn(),
+  observe: jest.fn(),
+}));
+
 describe('ods-textarea behaviour', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
@@ -18,6 +24,15 @@ describe('ods-textarea behaviour', () => {
     root = page.root;
     rootInstance = page.rootInstance;
   }
+
+  beforeAll(() => {
+    jest.spyOn(console, 'error').mockImplementation((msg) => {
+      // Hide the Stencil error about internals being not implemented on spec tests
+      if (!msg.startsWith('NOTE: Property validity was accessed on ElementInternals, but this property is not implemented.')) {
+        console.error(msg);
+      }
+    });
+  });
 
   describe('methods', () => {
     describe('clear', () => {

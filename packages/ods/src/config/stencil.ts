@@ -78,7 +78,7 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestOption = 
         prettierPath: jestOption.prettierPath || undefined,
         resolver: jestOption.resolver || undefined,
         restoreMocks: undefined,
-        testRegex: jestOption.testRegex as string,
+        testRegex: testOption.testRegex as string,
 
         // Actual Stencil testing config
         browserHeadless: false,

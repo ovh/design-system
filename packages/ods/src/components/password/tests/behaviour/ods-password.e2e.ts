@@ -63,7 +63,7 @@ describe('ods-password behaviour', () => {
         const odsChangeSpy = await page.spyOnEvent('odsChange');
 
         await page.keyboard.press('Tab');
-        await page.keyboard.type(typeValue);
+        await page.keyboard.type(typeValue, { delay: 100 });
         await page.waitForChanges();
 
         expect(await el.getProperty('value')).toBe(typeValue);
@@ -81,7 +81,7 @@ describe('ods-password behaviour', () => {
         const odsChangeSpy = await page.spyOnEvent('odsChange');
 
         await page.keyboard.press('Tab');
-        await page.keyboard.type('some text');
+        await page.keyboard.type('some text', { delay: 100 });
         await page.waitForChanges();
 
         expect(await el.getProperty('value')).toBe(null);

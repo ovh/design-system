@@ -11,107 +11,129 @@
 </head>
 
 <body>
-  <p>Default</p>
-  <ods-quantity id="default-quantity" default-value="5">
-  </ods-quantity>
-  <button id="clear-button">Clear</button>
-  <button id="reset-button">Reset</button>
-  <button id="get-validity-button">Get Validity</button>
-  <script>
-    const defaultQuantity = document.querySelector('#default-quantity');
-    const clearButton = document.querySelector('#clear-button');
-    const resetButton = document.querySelector('#reset-button');
-    const getValidityButton = document.querySelector('#get-validity-button');
+<!--  <p>Default</p>-->
+<!--  <ods-quantity id="default-quantity" default-value="5">-->
+<!--  </ods-quantity>-->
+<!--  <button id="clear-button">Clear</button>-->
+<!--  <button id="reset-button">Reset</button>-->
+<!--  <button id="get-validity-button">Get Validity</button>-->
+<!--  <script>-->
+<!--    const defaultQuantity = document.querySelector('#default-quantity');-->
+<!--    const clearButton = document.querySelector('#clear-button');-->
+<!--    const resetButton = document.querySelector('#reset-button');-->
+<!--    const getValidityButton = document.querySelector('#get-validity-button');-->
 
-    clearButton?.addEventListener?.('click', () => defaultQuantity.clear());
-    resetButton?.addEventListener?.('click', () => defaultQuantity.reset());
-    getValidityButton?.addEventListener?.('click', async() => console.log('getValidity()', await defaultQuantity.getValidity()));
+<!--    clearButton?.addEventListener?.('click', () => defaultQuantity.clear());-->
+<!--    resetButton?.addEventListener?.('click', () => defaultQuantity.reset());-->
+<!--    getValidityButton?.addEventListener?.('click', async() => console.log('getValidity()', await defaultQuantity.getValidity()));-->
 
-    ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{
-      defaultQuantity.addEventListener(eventName, (event) => {
-        console.log(eventName, event);
-      });
-    });
-  </script>
+<!--    ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{-->
+<!--      defaultQuantity.addEventListener(eventName, (event) => {-->
+<!--        console.log(eventName, event);-->
+<!--      });-->
+<!--    });-->
+<!--  </script>-->
 
-  <p>Error</p>
-  <ods-quantity has-error>
-  </ods-quantity>
+<!--  <p>Error</p>-->
+<!--  <ods-quantity has-error>-->
+<!--  </ods-quantity>-->
 
-  <p>Error & Disabled</p>
-  <ods-quantity has-error is-disabled>
-  </ods-quantity>
+<!--  <p>Error & Disabled</p>-->
+<!--  <ods-quantity has-error is-disabled>-->
+<!--  </ods-quantity>-->
 
-  <p>Disabled</p>
-  <ods-quantity is-disabled>
-  </ods-quantity>
+<!--  <p>Disabled</p>-->
+<!--  <ods-quantity is-disabled>-->
+<!--  </ods-quantity>-->
 
-  <p>Min</p>
-  <ods-quantity min="0" value="0">
-  </ods-quantity>
+<!--  <p>Min</p>-->
+<!--  <ods-quantity min="0" value="0">-->
+<!--  </ods-quantity>-->
 
-  <p>Max</p>
-  <ods-quantity max="10" value="11">
-  </ods-quantity>
+<!--  <p>Max</p>-->
+<!--  <ods-quantity max="10" value="11">-->
+<!--  </ods-quantity>-->
 
-  <p>Readonly</p>
-  <ods-quantity is-readonly>
-  </ods-quantity>
+<!--  <p>Readonly</p>-->
+<!--  <ods-quantity is-readonly>-->
+<!--  </ods-quantity>-->
 
-  <p>Required</p>
-  <ods-quantity is-required>
-  </ods-quantity>
+<!--  <p>Required</p>-->
+<!--  <ods-quantity is-required>-->
+<!--  </ods-quantity>-->
 
-  <p>Placeholder</p>
-  <ods-quantity placeholder="type a number">
-  </ods-quantity>
+<!--  <p>Placeholder</p>-->
+<!--  <ods-quantity placeholder="type a number">-->
+<!--  </ods-quantity>-->
 
-  <p>Step 10</p>
-  <ods-quantity step="10">
-  </ods-quantity>
+<!--  <p>Step 10</p>-->
+<!--  <ods-quantity step="10">-->
+<!--  </ods-quantity>-->
 
-  <p>Custom Css</p>
-  <ods-quantity class="my-quantity">
-  </ods-quantity>
+<!--  <p>Custom Css</p>-->
+<!--  <ods-quantity class="my-quantity">-->
+<!--  </ods-quantity>-->
 
-  <style>
-    .my-quantity::part(input) {
-      width: 200px;
-    }
+<!--  <style>-->
+<!--    .my-quantity::part(input) {-->
+<!--      width: 200px;-->
+<!--    }-->
 
-    .my-quantity::part(button-minus) {
-      color: green;
-      border-color: green;
-    }
+<!--    .my-quantity::part(button-minus) {-->
+<!--      color: green;-->
+<!--      border-color: green;-->
+<!--    }-->
 
-    .my-quantity::part(button-plus) {
-      color: red;
-      border-color: red;
-    }
-  </style>
+<!--    .my-quantity::part(button-plus) {-->
+<!--      color: red;-->
+<!--      border-color: red;-->
+<!--    }-->
+<!--  </style>-->
 
   <p>Form</p>
   <form id="my-form">
-    <ods-quantity name="form-quantity">
+    <ods-quantity id="form-quantity"
+                  is-required
+                  name="form-quantity">
     </ods-quantity>
 
-    <button id="form-reset-button" type="reset">Reset</button>
+    <button id="form-check-validity-button" type="button">Check validity</button>
+    <button id="form-clear-button" type="button">Clear</button>
+    <button id="form-reset-button" type="button">Reset</button>
+    <button type="reset">Global Form Reset</button>
     <button id="form-submit-button" type="submit">Submit</button>
   </form>
 
   <script>
-    const form = document.querySelector('#my-form');
+    const formElement = document.querySelector('#my-form');
+    const formQuantity = document.querySelector('#form-quantity');
+    const checkValidityFormButton = document.querySelector('#form-check-validity-button');
+    const clearFormButton = document.querySelector('#form-clear-button');
+    const resetFormButton = document.querySelector('#form-reset-button');
     const submitFormButton = document.querySelector('#form-submit-button');
 
-    submitFormButton.addEventListener('click', () => {
-      const formData = new FormData(form);
+    checkValidityFormButton.addEventListener('click', async() => {
+      console.log('Check validity: ', await formQuantity.checkValidity());
+    });
+
+    clearFormButton.addEventListener('click', async() => {
+      await formQuantity.clear();
+    });
+
+    resetFormButton.addEventListener('click', async() => {
+      await formQuantity.reset();
+    });
+
+    submitFormButton.addEventListener('click', (e) => {
+      // e.preventDefault(); // comment to test native validation messages
+      const formData = new FormData(formElement);
       console.log('formData', formData);
     });
   </script>
 
-  <p>With label</p>
-  <label for="labelled-quantity">My quantity</label>
-  <ods-quantity id="labelled-quantity">
-  </ods-quantity>
+<!--  <p>With label</p>-->
+<!--  <label for="labelled-quantity">My quantity</label>-->
+<!--  <ods-quantity id="labelled-quantity">-->
+<!--  </ods-quantity>-->
 </body>
 </html>

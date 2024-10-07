@@ -137,7 +137,7 @@ describe('ods-phone-number behaviour', () => {
 
         const newValue = '0987654321';
         await page.keyboard.press('Tab');
-        await page.keyboard.type(newValue);
+        await page.keyboard.type(newValue, { delay: 100 });
         await page.waitForChanges();
 
         expect(await el.getProperty('value')).toBe(newValue);

@@ -10,7 +10,7 @@ function getJestOption({ args, option = {} }: { args: string[], option?: Config.
       '/node_modules/',
       'dist/',
     ],
-    testRegex: '(/__tests__/.*|\\.?(spec))\\.(tsx?|ts?|jsx?|js?)$',
+    testRegex: 'tests\\/.*\\.spec\\.ts$',
     transform: {
       '\\.(ts|tsx)$': 'ts-jest',
     },
@@ -22,14 +22,14 @@ function getJestOption({ args, option = {} }: { args: string[], option?: Config.
     if (screenshot) {
       return {
         ...baseOption,
-        testRegex: '(/__e2e-tests__/.*|\\.(e2e))\\.screenshot\\.(tsx?|jsx?)$',
+        testRegex: 'tests\\/.*\\.e2e\\.screenshot\\.ts$',
         testTimeout: 60000,
       };
     }
 
     return {
       ...baseOption,
-      testRegex: '(/__e2e-tests__/.*|\\.(e2e))\\.(tsx?|jsx?)$',
+      testRegex: 'tests\\/.*\\.e2e\\.ts$',
       testTimeout: 60000,
     };
   }

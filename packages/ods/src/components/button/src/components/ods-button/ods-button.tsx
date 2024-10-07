@@ -21,7 +21,6 @@ export class OdsButton {
 
   @Prop({ reflect: true }) public color: OdsButtonColor = ODS_BUTTON_COLOR.primary;
   @Prop({ reflect: true }) public icon?: OdsIconName;
-  /** @docType OdsButtonIconAlignment */
   @Prop({ reflect: true }) public iconAlignment?: OdsButtonIconAlignment = ODS_BUTTON_ICON_ALIGNMENT.left;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isLoading: boolean = false;

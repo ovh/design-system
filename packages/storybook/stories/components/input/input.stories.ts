@@ -24,7 +24,6 @@ export const Demo: StoryObj = {
             await renderValidityState();
           })
           async function renderValidityState() {
-            console.log('validity', await input.getValidity())
             const validity = await input.getValidity()
             divValidityState.innerHTML = '';
             for (let key in validity) {
@@ -338,15 +337,14 @@ export const ValidityState: StoryObj = {
 </ods-input>
 <div id="validity-state-demo"></div>
 <script>
-  (() => {
+  (async() => {
       const divValidityState = document.querySelector('#validity-state-demo');
       const input = document.querySelector('#input-validity-state-demo');
-      renderValidityState();
+      await renderValidityState();
       input.addEventListener('odsChange', async () => {
         await renderValidityState();
       })
       async function renderValidityState() {
-        console.log('validity', await input.getValidity())
         const validity = await input.getValidity()
         divValidityState.innerHTML = '';
         for (let key in validity) {

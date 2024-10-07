@@ -17,12 +17,11 @@ export const Demo: StoryObj = {
       (async () => {
           const divValidityState = document.querySelector('#validity-state');
           const quantity = document.querySelector('.my-quantity');
-          await renderValidityState();
+          setTimeout(async() => { await renderValidityState() }, 0)
           quantity.addEventListener('odsChange', async () => {
-            await renderValidityState();
+            setTimeout(async() => { await renderValidityState() }, 0)
           })
           async function renderValidityState() {
-            console.log('validity', await quantity.getValidity())
             const validity = await quantity.getValidity()
             divValidityState.innerHTML = '';
             for (let key in validity) {
@@ -268,12 +267,11 @@ export const ValidityState: StoryObj = {
   (() => {
       const divValidityState = document.querySelector('#validity-state-demo');
       const quantity = document.querySelector('#quantity-validity-state-demo');
-      renderValidityState();
+      setTimeout(async() => { await renderValidityState() }, 0)
       quantity.addEventListener('odsChange', async () => {
-        await renderValidityState();
+        setTimeout(async() => { await renderValidityState() }, 0)
       })
       async function renderValidityState() {
-        console.log('validity', await quantity.getValidity())
         const validity = await quantity.getValidity()
         divValidityState.innerHTML = '';
         for (let key in validity) {

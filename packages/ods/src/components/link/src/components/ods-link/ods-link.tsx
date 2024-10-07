@@ -13,7 +13,6 @@ export class OdsLink {
   @Prop({ reflect: true }) public download?: HTMLAnchorElement['download'];
   @Prop({ reflect: true }) public href!: string;
   @Prop({ reflect: true }) public icon?: OdsIconName;
-  /** @docType OdsLinkIconAlignment */
   @Prop({ reflect: true }) public iconAlignment?: OdsLinkIconAlignment = ODS_LINK_ICON_ALIGNMENT.right;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public label?: string;

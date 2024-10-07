@@ -29,7 +29,20 @@ function FormNative(): ReactElement {
     setWithDefaultValue(() => !withDefaultValue);
   }
 
+  const textareaRef = useRef<HTMLFormElement>(null);
+
   return (
+
+
+    <OdsTextarea
+        defaultValue="textarea"
+        hasError={ error.textarea }
+        isRequired={ true }
+        name="textarea"
+        ref={ textareaRef }
+      />
+  )
+
     <form
       className={ styles['form-native'] }
       onSubmit={ onSubmit }

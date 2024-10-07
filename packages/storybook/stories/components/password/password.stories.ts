@@ -267,20 +267,19 @@ export const ValidityState: StoryObj = {
 </ods-password>
 <div id="validity-state-demo"></div>
 <script>
-  (() => {
+  (async() => {
       const divValidityState = document.querySelector('#validity-state-demo');
       const password = document.querySelector('#password-validity-state-demo');
-      password.addEventListener('odsChange', async () => {
-        await renderValidityState()
+      setTimeout(async() => { await renderValidityState() }, 0)
+      password.addEventListener('odsChange', () => {
+        setTimeout(async() => { await renderValidityState() }, 0)
       })
-      function renderValidityState() {
-        return password.getValidity().then((validity) => {
-        console.log('validity', validity)
-          divValidityState.innerHTML = '';
-          for (let key in validity) {
-            divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-          }
-        });
+      async function renderValidityState() {
+        const validity = await password.getValidity();
+        divValidityState.innerHTML = '';
+        for (let key in validity) {
+          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+        }
       }
   })();
 </script>

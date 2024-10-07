@@ -28,5 +28,9 @@
     &__icon {
       display: flex;
     }
+
+    &--icon-left {
+      flex-direction: row-reverse;
+    }
   }
 }

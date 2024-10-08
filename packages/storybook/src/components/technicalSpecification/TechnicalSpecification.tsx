@@ -7,7 +7,10 @@ import styles from './technicalSpecification.module.css';
 
 type Props = {
   data: Package & {
-    enumPlugin: Record<string, Record<string, string>>,
+    enumPlugin: Record<string, Record<string, {
+      type: 'number' | 'string',
+      value: string,
+    }>>,
   },
 }
 
@@ -33,14 +36,14 @@ const TechnicalSpecification = ({ data }: Props) => {
 
                 <ul className={ styles['technical-specification__enums__keys'] }>
                   {
-                    Object.entries(enumEntry).map(([key, value], i) => (
+                    Object.entries(enumEntry).map(([key, valueObject], i) => (
                       <li key={ i }>
                         <span className={ styles['technical-specification__enums__keys__name'] }>
                           { key } =
                         </span>
 
                         <CodeOrSourceMdx>
-                          "{ value }"
+                          { valueObject.type === 'number' ? valueObject.value : `"${valueObject.value}"` }
                         </CodeOrSourceMdx>
                       </li>
                     ))

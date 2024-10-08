@@ -103,7 +103,7 @@ describe('ods-phone-number controller', () => {
       global.navigator = { language: 'zh-gan' };
 
       // @ts-ignore for test purpose
-      expect(getCurrentLocale('zw')).toBe('fr');
+      expect(getCurrentLocale('zw')).toBe('en');
     });
   });
 

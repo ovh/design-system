@@ -34,7 +34,7 @@ function cemEnumPlugin({ rename } = {}) {
 
         if (enumMap.has(parentName)) {
           const keyMap = enumMap.get(parentName);
-          keyMap.set(node.name.escapedText, '');
+          keyMap.set(node.name.escapedText, {});
         }
       }
 
@@ -44,7 +44,10 @@ function cemEnumPlugin({ rename } = {}) {
 
         enumMap.forEach((value, key) => {
           if (value.has(parentName)) {
-            value.set(parentName, node.text);
+            value.set(parentName, {
+              type: node.kind === ts.SyntaxKind.NumericLiteral ? 'number' : 'string',
+              value: node.text,
+            });
           }
         });
       }

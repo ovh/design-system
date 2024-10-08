@@ -173,6 +173,11 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
       cursor: pointer;
       padding: 0;
       white-space: nowrap;
+
+      &__count {
+        color: var(--ods-color-primary-500);
+        font-weight: 700;
+      }
     }
 
     .ts-merged-items-placeholder {

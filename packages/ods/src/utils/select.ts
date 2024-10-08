@@ -6,6 +6,7 @@
 function mergeSelectedItemPlugin({ label }: Record<string, unknown>): void {
   // @ts-ignore "this" is the TomSelect instance but is set as any by the lib
   const self = this; // eslint-disable-line @typescript-eslint/no-this-alias
+  const counterClassName = 'ts-merged-items__count';
   const mergeItemsClassName = 'ts-merged-items';
   const placeholderClassName = 'ts-merged-items-placeholder';
   let currentLabel = label;
@@ -15,7 +16,7 @@ function mergeSelectedItemPlugin({ label }: Record<string, unknown>): void {
   function updateElement(): void {
     if (self.items.length > 0) {
       divElement.classList.remove(placeholderClassName);
-      divElement.innerText = `${currentLabel} (${self.items.length})`;
+      divElement.innerHTML = `${currentLabel} <span class="${counterClassName}">(${self.items.length})</span>`;
     } else {
       divElement.classList.add(placeholderClassName);
       divElement.innerText = currentPlaceholder;

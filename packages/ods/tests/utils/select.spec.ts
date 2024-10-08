@@ -58,10 +58,12 @@ describe('utils select', () => {
       expect(dummyThis.control.append).toHaveBeenCalledTimes(1);
 
       const mergeElement = dummyThis.control.append.mock.calls[0][0];
+      const spanElement = mergeElement.querySelector('.ts-merged-items__count');
 
       expect(mergeElement.classList.contains('ts-merged-items')).toBe(true);
       expect(mergeElement.classList.contains('ts-merged-items-placeholder')).toBe(false);
-      expect(mergeElement.innerText).toBe(`${dummyLabel} (${dummyThis.items.length})`);
+      expect(spanElement).not.toBeNull();
+      expect(mergeElement.textContent).toBe(`${dummyLabel} (${dummyThis.items.length})`);
     });
 
     it('should set event listeners after setup for label and placeholder change', () => {

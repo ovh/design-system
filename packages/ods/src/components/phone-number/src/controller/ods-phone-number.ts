@@ -79,7 +79,7 @@ function getTranslatedCountries(locale: OdsPhoneNumberLocale): { isoCode: string
     case ODS_PHONE_NUMBER_LOCALE.pt:
       return countriesTranslationPt;
     default:
-      return countriesTranslationFr;
+      return countriesTranslationEn;
   }
 }
 

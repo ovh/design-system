@@ -161,7 +161,7 @@ describe('ods-phone-number controller', () => {
       const defaultMap = getTranslatedCountryMap('zw', mockPhoneUtils);
 
       expect(defaultMap.size).toBe(countriesTranslationFr.length);
-      expect(defaultMap.values().next().value.name).toBe('Andorre');
+      expect(defaultMap.values().next().value.name).toBe('Andorra');
       expect(mockPhoneUtils.getExampleNumber).toHaveBeenCalledTimes(countriesTranslationFr.length);
       expect(getCountryCodeSpy).toHaveBeenCalledTimes(countriesTranslationFr.length);
     });

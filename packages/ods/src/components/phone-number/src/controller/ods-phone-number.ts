@@ -48,7 +48,7 @@ function getCurrentLocale(locale?: OdsPhoneNumberLocale): OdsPhoneNumberLocale {
 
   return getBrowserIsoCodes<ODS_PHONE_NUMBER_LOCALE>().find((browserIsoCode) => {
     return ODS_PHONE_NUMBER_LOCALES.indexOf(browserIsoCode) >= 0;
-  }) || ODS_PHONE_NUMBER_LOCALE.fr;
+  }) || ODS_PHONE_NUMBER_LOCALE.en;
 }
 
 function getNationalPhoneNumberExample(isoCode: OdsPhoneNumberCountryIsoCode | undefined, phoneUtils: PhoneNumberUtil): string {

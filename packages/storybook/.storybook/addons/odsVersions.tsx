@@ -1,5 +1,5 @@
 import { addons, types } from '@storybook/manager-api';
-import { ODS_BUTTON_VARIANT, ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ODS_BUTTON_ICON_ALIGNMENT, ODS_BUTTON_VARIANT, ODS_ICON_NAME } from '@ovhcloud/ods-components';
 import { OdsButton, OdsLink, OdsPopover } from '@ovhcloud/ods-components/react';
 import React from 'react';
 import versions from '../../assets/ods-versions.json';
@@ -15,6 +15,7 @@ const odsVersionsAddon = () => {
       return (
         <div style={{ textAlign: 'center' }}>
           <OdsButton icon={ ODS_ICON_NAME.chevronDown }
+                     iconAlignment={ ODS_BUTTON_ICON_ALIGNMENT.right }
                      id="ods-version-current"
                      label={ versions[0] }
                      variant={ ODS_BUTTON_VARIANT.ghost } />
@@ -24,7 +25,7 @@ const odsVersionsAddon = () => {
             {
               (versions || []).map((version, idx) => (
                 <OdsLink key={ idx }
-                         style={{ display: 'block' }}
+                         style={{ display: 'block', padding: '0 2rem' }}
                          href={ `${BASE_URL}/v${version}` }
                          label={ version }
                          target="_blank" />

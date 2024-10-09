@@ -143,14 +143,22 @@ const preview: Preview = {
           ],
           'ODS Components', [
             'Gallery',
-            'Form elements',
+            'Form elements',  [
+              '*', [
+                'Documentation',
+                'Technical information',
+                'Migration From 17.x',
+                'Demo',
+                '*',
+              ]
+            ],
             '*', [
               'Documentation',
               'Technical information',
               'Migration From 17.x',
               'Demo',
               '*',
-            ]
+            ],
           ],
         ],
       },

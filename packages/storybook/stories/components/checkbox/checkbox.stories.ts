@@ -11,19 +11,42 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (args) => html`
+  render: (args) => {
+    const validityStateTemplate = html`<br>
+    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
+    <script>
+      (async () => {
+          const divValidityState = document.querySelector('#validity-state');
+          const checkbox = document.querySelector('.my-checkbox-demo');
+          await renderValidityState();
+          checkbox.addEventListener('odsChange', async () => {
+            await renderValidityState();
+          })
+          async function renderValidityState() {
+            const validity = await checkbox.getValidity()
+            divValidityState.innerHTML = '';
+            for (let key in validity) {
+              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+            }
+          }
+      })();
+    </script>`;
+    return html`
     <ods-checkbox
       ariaLabel="${args.ariaLabel}"
       ariaLabelledby="${args.ariaLabelledby}"
       class="my-checkbox-demo"
       is-disabled="${args.isDisabled}"
       is-indeterminate="${args.isIndeterminate}"
+      is-required="${args.isRequired}"
     ></ods-checkbox>
+    ${args.validityState ? validityStateTemplate : ''}
     <style>
       .my-checkbox-demo > input[type="checkbox"]:not(:disabled):checked {
         ${args.customCss}
       }
-    </style>`,
+    </style>`;
+  },
   argTypes: orderControls({
     ariaLabel: {
       table: {
@@ -66,10 +89,28 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
+    isRequired: {
+      control: 'boolean',
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' },
+      },
+    },
+    validityState: {
+      table: {
+        category: CONTROL_CATEGORY.accessibility,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
   }),
   args: {
     isDisabled: false,
     isIndeterminate: false,
+    isRequired: false,
+    validityState: false,
   },
 };
 export const Alignment: StoryObj = {
@@ -155,4 +196,30 @@ export const Indeterminate: StoryObj = {
   render: () => html`
 <ods-checkbox is-indeterminate></ods-checkbox>
   `,
+};
+
+export const ValidityState: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-checkbox is-required id="checkbox-validity-state-demo">
+</ods-checkbox>
+<div id="validity-state-demo"></div>
+<script>
+  (async() => {
+      const divValidityState = document.querySelector('#validity-state-demo');
+      const checkbox = document.querySelector('#checkbox-validity-state-demo');
+      await renderValidityState();
+      checkbox.addEventListener('odsChange', async () => {
+        await renderValidityState();
+      })
+      async function renderValidityState() {
+        const validity = await checkbox.getValidity()
+        divValidityState.innerHTML = '';
+        for (let key in validity) {
+          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+        }
+      }
+  })();
+</script>
+`,
 };

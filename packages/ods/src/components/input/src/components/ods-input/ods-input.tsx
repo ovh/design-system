@@ -78,6 +78,9 @@ export class OdsInput {
     this.odsClear.emit();
     this.value = null;
     this.inputEl?.focus();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
     this.shouldUpdateIsInvalidState = true;
   }
 
@@ -91,9 +94,6 @@ export class OdsInput {
     return this.internals.validity;
   }
 
-  /**
-   * Also update error state
-   */
   @Method()
   async reportValidity(): Promise<boolean> {
     this.isInvalid = !this.internals.validity.valid;
@@ -104,6 +104,9 @@ export class OdsInput {
   async reset(): Promise<void> {
     this.odsReset.emit();
     this.value = this.defaultValue ?? null;
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
     this.shouldUpdateIsInvalidState = true;
   }
 
@@ -209,7 +212,8 @@ export class OdsInput {
   private onValueChange(previousValue?: string | number | null): void {
     updateInternals(this.internals, this.value, this.inputEl);
 
-    // update here after update internals
+    // In case the value gets updated from an other source than a blur event
+    // we may have to perform an internal validity state update
     if (this.shouldUpdateIsInvalidState) {
       this.isInvalid = !this.internals.validity.valid;
       this.shouldUpdateIsInvalidState = false;

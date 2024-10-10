@@ -55,12 +55,16 @@ export class OdsQuantity {
 
   @Method()
   async checkValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
     return this.internals.checkValidity();
   }
 
   @Method()
   async clear(): Promise<void> {
     await this.odsInput?.clear();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
     this.shouldUpdateIsInvalidState = true;
   }
 
@@ -76,12 +80,16 @@ export class OdsQuantity {
 
   @Method()
   async reportValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
     return this.internals.reportValidity();
   }
 
   @Method()
   async reset(): Promise<void> {
     await this.odsInput?.reset();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
     this.shouldUpdateIsInvalidState = true;
   }
 
@@ -134,7 +142,9 @@ export class OdsQuantity {
     }
 
     await updateInternals(this.internals, this.value, this.odsInput);
-    // update here after update internals
+
+    // In case the value gets updated from an other source than a blur event
+    // we may have to perform an internal validity state update
     if (this.shouldUpdateIsInvalidState) {
       await this.odsInput?.reportValidity();
       this.isInvalid = !this.internals.validity.valid;

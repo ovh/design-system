@@ -14,6 +14,7 @@ const VALUE_DEFAULT_VALUE = null;
 })
 export class OdsTextarea {
   private observer?: MutationObserver;
+  private shouldUpdateIsInvalidState: boolean = false;
   private textareaElement?: HTMLTextAreaElement;
 
   @Element() el!: HTMLElement;
@@ -62,6 +63,10 @@ export class OdsTextarea {
     this.odsClear.emit();
     this.value = null;
     this.textareaElement?.focus();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
+    this.shouldUpdateIsInvalidState = true;
   }
 
   @Method()
@@ -83,6 +88,10 @@ export class OdsTextarea {
   async reset(): Promise<void> {
     this.odsReset.emit();
     this.value = this.defaultValue ?? null;
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
+    this.shouldUpdateIsInvalidState = true;
   }
 
   @Method()
@@ -142,6 +151,13 @@ export class OdsTextarea {
 
   private onValueChange(previousValue?: string | null): void {
     updateInternals(this.internals, this.value, this.textareaElement);
+
+    // In case the value gets updated from an other source than a blur event
+    // we may have to perform an internal validity state update
+    if (this.shouldUpdateIsInvalidState) {
+      this.isInvalid = !this.internals.validity.valid;
+      this.shouldUpdateIsInvalidState = false;
+    }
 
     this.odsChange.emit({
       name: this.name,

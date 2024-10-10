@@ -4,51 +4,13 @@ import React, { type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.scss';
 
 function FormNative(): ReactElement {
-  // const checkboxRef = useRef<HTMLOdsCheckboxElement>(null);
-  // const datepickerRef = useRef<HTMLOdsDatepickerElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
-  // const inputNumberRef = useRef<HTMLOdsInputElement>(null);
-  // const inputTextRef = useRef<HTMLOdsInputElement>(null);
-  // const passwordRef = useRef<HTMLOdsPasswordElement>(null);
-  // const phoneNumberRef = useRef<HTMLOdsPhoneNumberElement>(null);
-  // const quantityRef = useRef<HTMLOdsQuantityElement>(null);
-  // const radioRef = useRef<HTMLOdsRadioElement>(null);
-  // const selectRef = useRef<HTMLOdsSelectElement>(null);
-  // const switchRef = useRef<HTMLOdsSwitchElement>(null);
-  // const textareaRef = useRef<HTMLOdsTextareaElement>(null);
-  // const timepickerRef = useRef<HTMLOdsTimepickerElement>(null);
-
-  const [error, setError] = useState({
-    checkbox: false,
-    datepicker: false,
-    inputNumber: false,
-    inputText: false,
-    password: false,
-    phoneNumber: false,
-    quantity: false,
-    // radio: false, // no error state on this component
-    select: false,
-    // switch: false, // no error state on this component
-    textarea: false,
-    timepicker: false,
-  });
+  const [areAllRequired, setAreAllRequired] = useState(false);
+  const [withDefaultValue, setWithDefaultValue] = useState(false);
 
   async function onSubmit(e: any) {
     e.preventDefault();
     e.stopPropagation();
-
-    // await validateField(checkboxRef.current);
-    // await validateField(datepickerRef.current);
-    // await validateField(inputNumberRef.current);
-    // await validateField(inputTextRef.current);
-    // await validateField(passwordRef.current);
-    // await validateField(phoneNumberRef.current);
-    // await validateField(quantityRef.current);
-    // await validateField(radioRef.current);
-    // await validateField(selectRef.current);
-    // await validateField(switchRef.current);
-    // await validateField(textareaRef.current);
-    // await validateField(timepickerRef.current);
 
     const formData = new FormData(formRef.current!);
 
@@ -59,52 +21,40 @@ function FormNative(): ReactElement {
     return false;
   }
 
-  // async function validateField(element: any): Promise<void> {
-  //   if (!element) {
-  //     return;
-  //   }
-  //
-  //   const validity = await element.getValidity();
-  //   // console.log(validity)
-  //   if (validity !== undefined) {
-  //     setError({
-  //       ...error,
-  //       [element.name]: !validity.valid,
-  //     });
-  //   }
-  // }
+  function onAllRequiredToggle() {
+    setAreAllRequired(() => !areAllRequired);
+  }
 
-  // function onChange(event: CustomEvent) {
-  //   console.log('onChange', event);
-  // }
-  //
-  // function onReset(event: CustomEvent): void {
-  //   console.log('onReset', event);
-  // }
-  //
-  // function onClear(event: CustomEvent): void {
-  //   console.log('onClear', event);
-  // }
-
-  const textareaRef = useRef<HTMLFormElement>(null);
+  function onWithDefaultValueToggle() {
+    setWithDefaultValue(() => !withDefaultValue);
+  }
 
   return (
-
-
-    <OdsTextarea
-        defaultValue="textarea"
-        hasError={ error.textarea }
-        isRequired={ true }
-        name="textarea"
-        ref={ textareaRef }
-      />
-  )
-
     <form
       className={ styles['form-native'] }
       onSubmit={ onSubmit }
       ref={ formRef }
     >
+      <div>
+        <button onClick={ onAllRequiredToggle }
+                type="button">
+          Toggle All Required (broken)
+        </button>
+
+        <button onClick={ onWithDefaultValueToggle }
+                type="button">
+          Toggle Default value
+        </button>
+      </div>
+
+      <p>
+        Current configuration:
+        <br />
+        - All fields required: {areAllRequired.toString()}
+        <br />
+        - All fields have default value: {withDefaultValue.toString()}
+      </p>
+
       {/*<div>*/}
       {/*  /!* OKish no validity method but required is managed by browser directly *!/*/}
       {/*  <OdsCheckbox*/}
@@ -138,58 +88,47 @@ function FormNative(): ReactElement {
       {/*/>*/}
 
       {/*/!* KO? reset to "" instead of null *!/*/}
-      {/*<OdsInput*/}
-      {/*  defaultValue={ 23 }*/}
-      {/*  hasError={ error.inputNumber }*/}
-      {/*  isClearable={ true }*/}
-      {/*  // isRequired={ true }*/}
-      {/*  name="inputNumber"*/}
-      {/*  ref={ inputNumberRef }*/}
-      {/*  type={ ODS_INPUT_TYPE.number }*/}
-      {/*/>*/}
+      <OdsInput
+        defaultValue={ withDefaultValue ? 23 : undefined }
+        isClearable={ true }
+        isRequired={ areAllRequired }
+        name="inputNumber"
+        type={ ODS_INPUT_TYPE.number }
+      />
 
       {/*/!* OK *!/*/}
-      {/*<OdsInput*/}
-      {/*  // defaultValue="input text"*/}
-      {/*  hasError={ error.inputText }*/}
-      {/*  isClearable={ true }*/}
-      {/*  // isRequired={ true }*/}
-
-      {/*  name="inputText"*/}
-      {/*  ref={ inputTextRef }*/}
-      {/*  type={ ODS_INPUT_TYPE.text }*/}
-      {/*/>*/}
+      <OdsInput
+        defaultValue={ withDefaultValue ? 'input text' : undefined }
+        isClearable={ true }
+        isRequired={ areAllRequired }
+        name="inputText"
+        type={ ODS_INPUT_TYPE.text }
+      />
 
       {/*/!* KO style width different *!/*/}
-      {/*<OdsPassword*/}
-      {/*  defaultValue="pass"*/}
-      {/*  hasError={ error.password }*/}
-      {/*  isClearable={ true }*/}
-      {/*  isRequired={ true }*/}
-      {/*  name="password"*/}
-      {/*  ref={ passwordRef }*/}
-      {/*/>*/}
+      <OdsPassword
+        defaultValue={ withDefaultValue ? 'pass' : undefined }
+        isClearable={ true }
+        isRequired={ areAllRequired }
+        name="password"
+      />
 
       {/*/!* KO default value not in formData on immediate submit *!/*/}
       {/*/!* KO style width different *!/*/}
-      {/*<OdsPhoneNumber*/}
-      {/*  // defaultValue="+33123456789"*/}
-      {/*  hasError={ error.phoneNumber }*/}
-      {/*  isClearable={ true }*/}
-      {/*  isRequired={ true }*/}
-      {/*  isoCode="fr"*/}
-      {/*  name="phoneNumber"*/}
-      {/*  ref={ phoneNumberRef }*/}
-      {/*/>*/}
+      <OdsPhoneNumber
+        defaultValue={ withDefaultValue ? '+33123456789' : undefined }
+        isClearable={ true }
+        isRequired={ areAllRequired }
+        isoCode="fr"
+        name="phoneNumber"
+      />
 
       {/*/!* KO reset does not reset formData if no default value *!/*/}
-      {/*<OdsQuantity*/}
-      {/*  // defaultValue={ 22 }*/}
-      {/*  hasError={ error.quantity }*/}
-      {/*  isRequired={ true }*/}
-      {/*  name="quantity"*/}
-      {/*  ref={ quantityRef }*/}
-      {/*/>*/}
+      <OdsQuantity
+        defaultValue={ withDefaultValue ? 22 : undefined }
+        isRequired={ areAllRequired }
+        name="quantity"
+      />
 
       {/*/!* OKish no validity method but required is managed by browser directly *!/*/}
       {/*<div>*/}
@@ -258,21 +197,17 @@ function FormNative(): ReactElement {
 
       {/* OK */}
       <OdsTextarea
-        defaultValue="textarea"
-        hasError={ error.textarea }
-        isRequired={ true }
+        defaultValue={ withDefaultValue ? 'textarea' : undefined }
+        isRequired={ areAllRequired }
         name="textarea"
-        ref={ textareaRef }
       />
 
       {/*/!* OK *!/*/}
-      {/*<OdsTimepicker*/}
-      {/*  // defaultValue="12:34"*/}
-      {/*  hasError={ error.timepicker }*/}
-      {/*  isRequired={ true }*/}
-      {/*  name="timepicker"*/}
-      {/*  ref={ timepickerRef }*/}
-      {/*/>*/}
+      <OdsTimepicker
+        defaultValue={ withDefaultValue ? '12:34' : undefined }
+        isRequired={ areAllRequired }
+        name="timepicker"
+      />
 
       {/*/!* OK *!/*/}
       {/*<input*/}

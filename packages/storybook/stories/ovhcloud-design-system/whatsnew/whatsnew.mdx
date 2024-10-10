@@ -7,6 +7,60 @@ import { StorybookLink } from '../../../src/components/storybookLink/StorybookLi
 
 <Heading label="What's new ?" level={ 1 } />
 
+<Heading label="v18.1.0" level={ 2 } />
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+Storybook has been partially rewritten, so you may notice a few changes:
+- some style has been updated
+- broken links have been fixed
+- components documentation has been migrated from `typedoc` to `custom-element-manifest`
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Button**
+
+- New feature to allow icon to be aligned either on left or right side.
+- New attribute `iconAlignment` has been added.
+- New constant `ODS_BUTTON_ICON_ALIGNMENT` has been added.
+
+**Icon**
+
+- New icons `bill` and `box` have been added.
+- `globe` icon has been updated.
+
+**Link**
+
+- New feature to allow icon to be aligned either on left or right side.
+- New attribute `iconAlignment` has been added.
+- New constant `ODS_LINK_ICON_ALIGNMENT` has been added.
+
+**Select**
+
+- Apply new style to multi-select counter.
+
+**Table**
+
+- Update header color to neutral-050.
+
+**Text**
+
+- No more default margin on any presets.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**All**
+
+- Components now correctly inherits font-family.
+
+**Modal**
+
+- Prevent undefined element when using with react testing library.
+
+**Phone Number**
+
+- Locale fallback has been moved from french to english (fallback that is applied if no locale or a wrong locale is set and the locale of your browser is not managed).
+
 <Heading label="v18.0.0" level={ 2 } />
 
 As it is a major version, you'll have to follow the <StorybookLink label="migration guide 17.x to 18.x" title="OVHcloud Design System/What's new?/Migration guide/17.x to 18.x" />

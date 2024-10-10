@@ -7,5 +7,9 @@
 
   &__checkbox {
     @include checkbox.ods-checkbox();
+
+    &--error {
+      border-color: var(--ods-color-form-element-border-critical);
+    }
   }
 }

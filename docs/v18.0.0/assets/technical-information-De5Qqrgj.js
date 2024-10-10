@@ -1,4 +1,4 @@
-import{j as n}from"./jsx-runtime-Dn0LW--f.js";import{u as a}from"./index-DeyDdHvX.js";import{M as t,C as r,d as c}from"./index-BM3JsZOq.js";import{B as s}from"./banner-DPlTyHjv.js";import{I as l,O as m,D as d,N as h}from"./icon.stories-k-iVWmBU.js";import"./iframe-6_jBXMSq.js";import"../sb-preview/runtime.js";import"./commonjsHelpers-Cpj98o6Y.js";import"./index-B_J8iUie.js";import"./index-DX_4BEHg.js";import"./index-DrFu-skq.js";import"./index-DryTTbHl.js";import"./control-C1r2wu67.js";import"./lit-html-D-ZEPr28.js";const u=`## OdsIcon
+import{j as n}from"./jsx-runtime-Dn0LW--f.js";import{u as a}from"./index-DeyDdHvX.js";import{M as t,C as r,d as c}from"./index-BM3JsZOq.js";import{B as s}from"./banner-DPlTyHjv.js";import{I as l,O as m,D as d,N as h}from"./icon.stories-k-iVWmBU.js";import"./iframe-6_jBXMSq.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-B_J8iUie.js";import"./index-DX_4BEHg.js";import"./index-DrFu-skq.js";import"./index-DryTTbHl.js";import"./control-C1r2wu67.js";import"./lit-html-D-ZEPr28.js";const u=`## OdsIcon
 ### Properties
 | Property | Type | Required | Default value |
 | --- | --- | --- | --- |

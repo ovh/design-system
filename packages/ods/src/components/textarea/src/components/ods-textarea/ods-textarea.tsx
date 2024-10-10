@@ -55,6 +55,7 @@ export class OdsTextarea {
 
   @Method()
   async checkValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
     return this.internals.checkValidity();
   }
 
@@ -81,6 +82,7 @@ export class OdsTextarea {
 
   @Method()
   async reportValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
     return this.internals.reportValidity();
   }
 

@@ -55,12 +55,16 @@ export class OdsPassword {
 
   @Method()
   async checkValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
     return this.internals?.checkValidity();
   }
 
   @Method()
   async clear(): Promise<void> {
     await this.odsInput?.clear();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
     this.shouldUpdateIsInvalidState = true;
   }
 
@@ -76,6 +80,7 @@ export class OdsPassword {
 
   @Method()
   async reportValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
     return this.internals.reportValidity();
   }
 
@@ -87,6 +92,9 @@ export class OdsPassword {
   @Method()
   async reset(): Promise<void> {
     await this.odsInput?.reset();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
     this.shouldUpdateIsInvalidState = true;
 
   }
@@ -117,8 +125,10 @@ export class OdsPassword {
   private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
     this.value = event.detail.value?.toString() ?? null;
     await updateInternals(this.internals, this.value, this.odsInput);
-     // update here after update internals
-     if (this.shouldUpdateIsInvalidState) {
+
+    // In case the value gets updated from an other source than a blur event
+    // we may have to perform an internal validity state update
+    if (this.shouldUpdateIsInvalidState) {
       this.isInvalid = !this.internals.validity.valid;
       this.shouldUpdateIsInvalidState = false;
     }

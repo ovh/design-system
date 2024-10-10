@@ -66,6 +66,7 @@ export class OdsTimepicker {
 
   @Method()
   async checkValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
     return this.internals.checkValidity();
   }
 
@@ -74,6 +75,9 @@ export class OdsTimepicker {
     await this.odsInput?.clear();
     await this.odsSelect?.clear();
     this.odsClear.emit();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
     this.shouldUpdateIsInvalidState = true;
   }
 
@@ -89,6 +93,7 @@ export class OdsTimepicker {
 
   @Method()
   async reportValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
     return this.internals.reportValidity();
   }
 
@@ -97,6 +102,9 @@ export class OdsTimepicker {
     await this.odsInput?.reset();
     await this.odsSelect?.reset();
     this.odsReset.emit();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
     this.shouldUpdateIsInvalidState = true;
   }
 
@@ -154,7 +162,9 @@ export class OdsTimepicker {
       this.value = event.detail.value as string;
 
       await updateInternals(this.internals, this.value, this.odsInput);
-      // update here after update internals
+
+      // In case the value gets updated from an other source than a blur event
+      // we may have to perform an internal validity state update
       if (this.shouldUpdateIsInvalidState) {
         this.isInvalid = !this.internals.validity.valid;
         this.shouldUpdateIsInvalidState = false;

@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.1.0](https://ovh.github.io/design-system/v18.1.0/?path=/docs/design-system-changelog--page) (2024-10-10)
+[compare](https://github.com/ovh/design-system/compare/v18.0.0...v18.1.0)
+
+### Bug Fixes
+
+* **doc:** add enum type value ([caf91ac](https://github.com/ovh/design-system/commit/caf91ac80b13f67ad3b96ff4b2ce14a19ad89039))
+* **modal:** react testing librairy disconnect callback modal undefined ([6b1729a](https://github.com/ovh/design-system/commit/6b1729a702e1260053bd0f9453007a120af8bdf5))
+* **style:** enforce font-family inheritance ([106695b](https://github.com/ovh/design-system/commit/106695b333e1c6e6c394ab49e7591df02312e8bf))
+
+
+### Features
+
+* **button:** can display an icon on the left or right ([274dead](https://github.com/ovh/design-system/commit/274dead44dbfbefe96276f851b68037b930d2454))
+* **button:** review fixes ([b7208f4](https://github.com/ovh/design-system/commit/b7208f4932749487ecaf7a9d3065e060e77a6f3a))
+* **icon:** add bill + box icons & update globe icon ([d8bf97c](https://github.com/ovh/design-system/commit/d8bf97c4a2cbce1cf63b699ef26597ba60ba763c))
+* **link:** can display an icon on the left or right ([9f53ef6](https://github.com/ovh/design-system/commit/9f53ef6ca2e62972ec26d27ac6bd7766a847ec09))
+* **phone-number:** set locale fallback to english ([2a333fc](https://github.com/ovh/design-system/commit/2a333fcb3f03cd7126feae006e3a36e7423de429))
+* **select:** add specific style to multi-select counter ([bb40e61](https://github.com/ovh/design-system/commit/bb40e612dd867d0f0c0840339d0be78ffe1ed86d))
+* **select:** review fix ([8384db5](https://github.com/ovh/design-system/commit/8384db5f437253c2d9c8e047843774a3f0d95022))
+* **table:** update header color to neutral-050 ([cca45ce](https://github.com/ovh/design-system/commit/cca45ceff660709d94938035d20e28fa70b19b97))
+* **text:** remove native margins from tags p & h* ([51f4e7f](https://github.com/ovh/design-system/commit/51f4e7f84dc9b87088129bdc3773f8bc04f29604))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

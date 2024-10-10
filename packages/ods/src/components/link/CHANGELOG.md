@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.1.0](https://ovh.github.io/design-system/v18.1.0/?path=/docs/design-system-changelog--page) (2024-10-10)
+[compare](https://github.com/ovh/design-system/compare/v18.0.0...v18.1.0)
+
+### Features
+
+* **link:** can display an icon on the left or right ([9f53ef6](https://github.com/ovh/design-system/commit/9f53ef6ca2e62972ec26d27ac6bd7766a847ec09))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

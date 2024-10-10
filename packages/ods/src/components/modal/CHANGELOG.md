@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.1.0](https://ovh.github.io/design-system/v18.1.0/?path=/docs/design-system-changelog--page) (2024-10-10)
+[compare](https://github.com/ovh/design-system/compare/v18.0.0...v18.1.0)
+
+### Bug Fixes
+
+* **modal:** react testing librairy disconnect callback modal undefined ([6b1729a](https://github.com/ovh/design-system/commit/6b1729a702e1260053bd0f9453007a120af8bdf5))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.1.0](https://ovh.github.io/design-system/v18.1.0/?path=/docs/design-system-changelog--page) (2024-10-10)
+[compare](https://github.com/ovh/design-system/compare/v18.0.0...v18.1.0)
+
+### Features
+
+* **phone-number:** set locale fallback to english ([2a333fc](https://github.com/ovh/design-system/commit/2a333fcb3f03cd7126feae006e3a36e7423de429))
+* **select:** review fix ([8384db5](https://github.com/ovh/design-system/commit/8384db5f437253c2d9c8e047843774a3f0d95022))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <p>Default</p>
+  <!-- <p>Default</p>
   <ods-checkbox id="default-checkbox" name="default">
   </ods-checkbox>
 
@@ -36,9 +36,9 @@
       const validity = await checkbox.getValidity();
       console.log('validity', validity);
     });
-  </script>
+  </script> -->
 
-  <p>Group & Label</p>
+  <!-- <p>Group & Label</p>
   <div>
     <ods-checkbox id="default-checkbox-group" input-id="coding" name="interest" value="coding" is-checked></ods-checkbox>
     <label for="coding">Coding</label>
@@ -87,31 +87,52 @@
   <div>
     <ods-checkbox input-id="disabled-indeterminate" name="disabled" value="disabled-indeterminate" is-disabled is-indeterminate></ods-checkbox>
     <label for="disabled-indeterminate">Disabled Indeterminate</label>
-  </div>
+  </div> -->
 
   <p>Form</p>
   <form id="form" target="_self">
     <div>
-      <ods-checkbox input-id="form-coding" name="form-checkbox" value="form-coding" is-checked></ods-checkbox>
+      <ods-checkbox input-id="form-coding" name="form-checkbox" value="form-coding" is-checked is-required></ods-checkbox>
       <label for="form-coding">Coding</label>
     </div>
-
-    <div>
-      <ods-checkbox input-id="form-music" name="form-checkbox" value="form-music"></ods-checkbox>
+    <label for="natif-checkbox">Test natif</label>
+    <input id="natif-checkbox" type="checkbox" required name="form-checkbox"/>
+    <!-- <div>
+      <ods-checkbox input-id="form-music" name="form-checkbox" value="form-music" is-required></ods-checkbox>
       <label for="form-music">Music</label>
-    </div>
+    </div> -->
 
     <input type="text" name="natif-input">
     <button id="form-reset-button" type="reset">Reset</button>
     <button id="form-submit-button" type="submit">Submit</button>
+    <button id="button-check-validity">Check Validity</button>
+
   </form>
 
   <script>
     const form = document.getElementById('form');
     const resetFormButton = document.getElementById('form-reset-button');
     const submitFormButton = document.getElementById('form-submit-button');
+    const checkValidityButton = document.getElementById('button-check-validity');
+    const odsCheckbox = document.querySelector('[input-id="form-coding"]')
+    checkValidityButton.addEventListener('click', async() => {
+      console.log('odsCheckbox.getValidity()', await odsCheckbox.getValidity())
+      console.log('odsCheckbox.checkValidity()', await odsCheckbox.checkValidity())
 
-    submitFormButton.addEventListener('click', () => {
+    });
+
+    const natifCheckbox = document.getElementById('natif-checkbox');
+    natifCheckbox.addEventListener('invalid', (e) => {
+      e.preventDefault();
+      console.log('invalid natif checkbox')
+    });
+
+    // odsCheckbox?.addEventListener('invalid', (e) => {
+    //   e.preventDefault();
+    //   console.log('invalid ods checkbox')
+    // });
+
+    form.addEventListener('submit', () => {
       const formData = new FormData(form);
       console.log('formData', formData);
     });

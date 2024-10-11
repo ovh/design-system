@@ -186,7 +186,7 @@ export class OdsInput {
 
     this.odsChange.emit({
       name: this.name,
-      previousValue: this.isNumeric(previousValue) ? Number(previousValue) : previousValue,
+      previousValue: typeof this.value === 'number' && this.isNumeric(previousValue) ? Number(previousValue) : previousValue,
       validity: this.internals.validity,
       value: this.value,
     });

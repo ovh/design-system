@@ -248,14 +248,17 @@ describe('ods-textarea validity', () => {
     describe('willValidate', () => {
       it('should return true if element is submittable', async() => {
         await setup('<ods-textarea></ods-textarea>');
+
         expect(await el.callMethod('willValidate')).toBe(true);
       });
 
       it('should return false if element is not submittable', async() => {
         await setup('<ods-textarea is-disabled></ods-textarea>');
+
         expect(await el.callMethod('willValidate')).toBe(false);
 
         await setup('<ods-textarea is-readonly></ods-textarea>');
+
         expect(await el.callMethod('willValidate')).toBe(false);
       });
     });
@@ -287,6 +290,26 @@ describe('ods-textarea validity', () => {
 
       expect(await el.callMethod('checkValidity')).toBe(true);
       expect(formValidity).toBe(true);
+    });
+  });
+
+  describe('watchers', () => {
+    describe('is-required', () => {
+      it('should update validity when is-required change', async() => {
+        await setup('<ods-textarea is-required></ods-textarea>');
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+
+        await el.removeAttribute('is-required');
+        await page.waitForChanges();
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
+
+        await el.setAttribute('is-required', 'true');
+        await page.waitForChanges();
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+      });
     });
   });
 });

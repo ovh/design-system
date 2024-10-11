@@ -31,6 +31,7 @@ export class OdsCheckbox {
 
   @Method()
   public async checkValidity(): Promise<boolean | undefined> {
+    this.isInvalid = !this.inputEl?.validity.valid;
     return this.inputEl?.checkValidity();
   }
 
@@ -57,6 +58,7 @@ export class OdsCheckbox {
 
   @Method()
   public async reportValidity(): Promise<boolean | undefined> {
+    this.isInvalid = !this.inputEl?.validity.valid;
     return this.inputEl?.reportValidity();
   }
 
@@ -130,10 +132,10 @@ export class OdsCheckbox {
           id={ this.inputId }
           indeterminate={ this.isIndeterminate }
           name={ this.name }
-          onInvalid={ (e): void => this.onInvalidEvent(e) }
           onBlur={ (): void => this.onBlur() }
           onFocus={ (): CustomEvent<void> => this.odsFocus.emit() }
           onInput={ (): void => this.onInput() }
+          onInvalid={ (e): void => this.onInvalidEvent(e) }
           onKeyUp={ (event: KeyboardEvent): void => this.inputEl && submitFormOnEnter(event, this.inputEl.form) }
           ref={ (el): HTMLInputElement => this.inputEl = el as HTMLInputElement }
           required={ this.isRequired }

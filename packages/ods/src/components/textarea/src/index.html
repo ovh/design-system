@@ -68,9 +68,6 @@
 <!--    }-->
 <!--  </style>-->
 
-
-
-
 <!--  <p>Form</p>-->
 <!--  <form id="my-form">-->
 <!--    <h3>Validation on submit</h3>-->
@@ -124,9 +121,6 @@
 <!--    });-->
 <!--  </script>-->
 
-
-
-
   <form id="my-form-change">
     <h3>Validation on input changes</h3>
 
@@ -138,6 +132,7 @@
 
     <button id="textarea-form-check-validity-button" type="button">Check validity</button>
     <button id="textarea-form-enforce-has-error" type="button">Enforce has-error</button>
+    <button id="textarea-form-toggle-is-required" type="button">Toggle is-required</button>
 
     <label style="display: block">Champ obligatoire 2:</label>
     <ods-textarea id="textarea-form-change2"
@@ -155,6 +150,7 @@
     const textareaForm = document.querySelector('#textarea-form-change');
     const textareaCheckValidityFormButton = document.querySelector('#textarea-form-check-validity-button');
     const textareaEnforceHasErrorButton = document.querySelector('#textarea-form-enforce-has-error');
+    const textareaToggleIsRequiredButton = document.querySelector('#textarea-form-toggle-is-required');
     // const textareaClearFormButton = document.querySelector('#textarea-form-clear-button');
     // const textareaResetFormButton = document.querySelector('#textarea-form-reset-button');
     const submitFormButtonChange = document.querySelector('#form-submit-button-change');
@@ -167,6 +163,14 @@
 
     textareaEnforceHasErrorButton.addEventListener('click', async() => {
       textareaForm.setAttribute('has-error', 'true');
+    });
+
+    textareaToggleIsRequiredButton.addEventListener('click', async() => {
+      if (textareaForm.hasAttribute('is-required')) {
+        textareaForm.removeAttribute('is-required');
+      } else {
+        textareaForm.setAttribute('is-required', 'true');
+      }
     });
     //
     // textareaClearFormButton.addEventListener('click', async() => {

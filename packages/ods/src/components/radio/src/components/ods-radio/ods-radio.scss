@@ -7,5 +7,9 @@
 
   &__radio {
     @include radio.ods-radio();
+
+    &--error {
+      border-color: var(--ods-color-form-element-border-critical);
+    }
   }
 }

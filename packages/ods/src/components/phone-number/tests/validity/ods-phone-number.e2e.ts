@@ -218,8 +218,8 @@ describe('ods-phone-number validity', () => {
         expect(await el.callMethod('checkValidity')).toBe(true);
 
         await el.callMethod('clear');
-        await new Promise((resolve) => setTimeout(resolve, 200));
         await page.waitForChanges();
+        await new Promise((resolve) => setTimeout(resolve, 200));
 
         expect(await el.callMethod('checkValidity')).toBe(false);
 

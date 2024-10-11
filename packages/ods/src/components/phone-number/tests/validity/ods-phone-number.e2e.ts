@@ -213,7 +213,7 @@ describe('ods-phone-number validity', () => {
 
     describe('reset', () => {
       it('should update the validity state accordingly, given value', async() => {
-        await setup('<ods-phone-number default-value="+18444629181" value="+18444629182" is-required></ods-phone-number>');
+        await setup('<ods-phone-number default-value="0123456789" value="0987654321" is-required iso-code="fr"></ods-phone-number>');
 
         expect(await el.callMethod('checkValidity')).toBe(true);
 
@@ -230,7 +230,7 @@ describe('ods-phone-number validity', () => {
       });
 
       it('should update the validity state accordingly, given no value', async() => {
-        await setup('<ods-phone-number default-value="+18444629181" is-required></ods-phone-number>');
+        await setup('<ods-phone-number default-value="0123456789" is-required iso-code="fr"></ods-phone-number>');
 
         expect(await el.callMethod('checkValidity')).toBe(true);
 
@@ -242,7 +242,6 @@ describe('ods-phone-number validity', () => {
 
         await el.callMethod('reset');
         await page.waitForChanges();
-        // await new Promise(resolve => setTimeout(resolve, 20000));
 
         expect(await el.callMethod('checkValidity')).toBe(true);
       });
@@ -280,9 +279,9 @@ describe('ods-phone-number validity', () => {
     });
 
     it('should submit the form if phone-number is valid', async() => {
-      await setup('<form method="get" onsubmit="return false"><ods-phone-number is-required></ods-phone-number></form>');
+      await setup('<form method="get" onsubmit="return false"><ods-phone-number is-required iso-code="fr"></ods-phone-number></form>');
 
-      await el.type('+18444629182', { delay: 200 });
+      await el.type('0987654321', { delay: 200 });
       await page.waitForChanges();
       const formValidity = await page.evaluate(() => {
         const form = document.querySelector<HTMLFormElement>('form');

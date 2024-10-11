@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsRadioChangeEventDetail } from '../../interfaces/events';
 
@@ -13,7 +13,7 @@ export class OdsRadio {
 
   @Element() el!: HTMLElement;
 
-  @AttachInternals() private internals!: ElementInternals;
+  @State() private isInvalid: boolean = false;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -31,6 +31,12 @@ export class OdsRadio {
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
+  public async checkValidity(): Promise<boolean | undefined> {
+    this.isInvalid = !this.inputEl?.validity.valid;
+    return this.inputEl?.checkValidity();
+  }
+
+  @Method()
   public async clear(): Promise<void> {
     if (this.inputEl) {
       this.inputEl.checked = false;
@@ -43,6 +49,11 @@ export class OdsRadio {
       value: this.value ?? null,
     });
     this.inputEl?.focus();
+  }
+
+  @Method()
+  public async getValidationMessage(): Promise<string | undefined> {
+    return this.inputEl?.validationMessage;
   }
 
   @Method()
@@ -73,8 +84,19 @@ export class OdsRadio {
   }
 
   @Method()
+  public async reportValidity(): Promise<boolean | undefined> {
+    this.isInvalid = !this.inputEl?.validity.valid;
+    return this.inputEl?.reportValidity();
+  }
+
+  @Method()
   public async select(): Promise<void> {
     this.inputEl?.click();
+  }
+
+  @Method()
+  public async willValidate(): Promise<boolean | undefined> {
+    return this.inputEl?.willValidate;
   }
 
   async formResetCallback(): Promise<void> {
@@ -94,6 +116,11 @@ export class OdsRadio {
     return document.querySelectorAll(`ods-radio[name="${this.name}"]`);
   }
 
+  private onBlur(): void {
+    this.isInvalid = !this.inputEl?.validity.valid;
+    this.odsBlur.emit();
+  }
+
   private onInput(event: Event): void {
     this.emitChange({
       checked: (event.target as HTMLInputElement)?.checked,
@@ -103,21 +130,35 @@ export class OdsRadio {
     });
   }
 
+  private onInvalidEvent(event: Event): void {
+    // Remove the native validation message popup
+    event.preventDefault();
+    event.stopPropagation();
+
+    // Enforce the state here as we may still be in pristine state (if the form is submitted before any changes occurs)
+    this.isInvalid = true;
+  }
+
   render(): FunctionalComponent {
     return (
-      <Host class="ods-radio">
+      <Host class="ods-radio"
+        disabled={ this.isDisabled }>
         <input
           aria-label={ this.ariaLabel }
           aria-labelledby={ this.ariaLabelledby }
-          class="ods-radio__radio"
+          class={{
+            'ods-radio__radio': true,
+            'ods-radio__radio--error': this.isInvalid,
+          }}
           checked={ this.isChecked }
           disabled={ this.isDisabled }
           id={ this.inputId }
           name={ this.name }
-          onBlur={ (): CustomEvent<void> => this.odsBlur.emit() }
+          onBlur={ (): void => this.onBlur() }
           onFocus={ (): CustomEvent<void> => this.odsFocus.emit() }
           onInput={ (event: InputEvent): void => this.onInput(event) }
-          onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
+          onInvalid={ (e): void => this.onInvalidEvent(e) }
+          onKeyUp={ (event: KeyboardEvent): void => this.inputEl && submitFormOnEnter(event, this.inputEl.form) }
           ref={ (el): HTMLInputElement => this.inputEl = el as HTMLInputElement }
           required={ this.isRequired }
           type="radio"

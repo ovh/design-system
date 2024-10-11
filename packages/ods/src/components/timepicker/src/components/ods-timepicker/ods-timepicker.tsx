@@ -63,13 +63,13 @@ export class OdsTimepicker {
   }
 
   @Method()
-  async checkValidity(): Promise<boolean> {
+  public async checkValidity(): Promise<boolean> {
     this.isInvalid = !this.internals.validity.valid;
     return this.internals.checkValidity();
   }
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     await this.odsInput?.clear();
     await this.odsSelect?.clear();
     this.odsClear.emit();
@@ -80,23 +80,23 @@ export class OdsTimepicker {
   }
 
   @Method()
-  async getValidationMessage(): Promise<string> {
+  public async getValidationMessage(): Promise<string> {
     return this.internals.validationMessage;
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
+  public async getValidity(): Promise<ValidityState | undefined> {
     return this.internals.validity;
   }
 
   @Method()
-  async reportValidity(): Promise<boolean> {
+  public async reportValidity(): Promise<boolean> {
     this.isInvalid = !this.internals.validity.valid;
     return this.internals.reportValidity();
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     await this.odsInput?.reset();
     await this.odsSelect?.reset();
     this.odsReset.emit();
@@ -107,7 +107,7 @@ export class OdsTimepicker {
   }
 
   @Method()
-  async willValidate(): Promise<boolean> {
+  public async willValidate(): Promise<boolean> {
     return this.internals.willValidate;
   }
 

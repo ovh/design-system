@@ -78,12 +78,16 @@ export class OdsPhoneNumber {
 
   @Method()
   public async checkValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
     return this.internals.checkValidity();
   }
 
   @Method()
   public async clear(): Promise<void> {
     await this.inputElement?.clear();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
     this.shouldUpdateIsInvalidState = true;
   }
 
@@ -99,12 +103,16 @@ export class OdsPhoneNumber {
 
   @Method()
   public async reportValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
     return this.internals.reportValidity();
   }
 
   @Method()
   public async reset(): Promise<void> {
     await this.inputElement?.reset();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
     this.shouldUpdateIsInvalidState = true;
   }
 
@@ -208,7 +216,9 @@ export class OdsPhoneNumber {
     const validityState = getValidityState(isNotValidPhoneNumber, inputValidityState);
 
     await updateInternals(this.internals, formattedValue, validityState, this.inputElement, validityMessage);
-    // update here after update internals
+
+    // In case the value gets updated from an other source than a blur event
+    // we may have to perform an internal validity state update
     if (this.shouldUpdateIsInvalidState) {
       this.isInvalid = this.getIsInvalid();
       this.shouldUpdateIsInvalidState = false;
@@ -218,7 +228,8 @@ export class OdsPhoneNumber {
 
   render(): FunctionalComponent {
     return (
-      <Host class="ods-phone-number"
+      <Host
+        class="ods-phone-number"
         disabled={ this.isDisabled }
         readonly={ this.isReadonly }>
         {

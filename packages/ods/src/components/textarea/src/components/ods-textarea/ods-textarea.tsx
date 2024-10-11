@@ -107,6 +107,13 @@ export class OdsTextarea {
         if (mutation.attributeName === 'value') {
           this.onValueChange(mutation.oldValue);
         }
+
+        // When observing is-required, the inner element validity is not yet up-to-date
+        // so we observe the element required attribute instead
+        if (mutation.attributeName === 'required') {
+          updateInternals(this.internals, this.value, this.textareaElement);
+          this.isInvalid = !this.internals.validity.valid;
+        }
       }
     });
 
@@ -125,6 +132,13 @@ export class OdsTextarea {
       attributeFilter: ['value'],
       attributeOldValue: true,
     });
+
+    if (this.textareaElement) {
+      this.observer?.observe(this.textareaElement, {
+        attributeFilter: ['required'],
+        attributeOldValue: false,
+      });
+    }
   }
 
   disconnectedCallback(): void {

@@ -67,12 +67,12 @@ export class OdsInput {
   }
 
   @Method()
-  async checkValidity(): Promise<boolean> {
+  public async checkValidity(): Promise<boolean> {
     return this.internals.checkValidity();
   }
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     this.odsClear.emit();
     this.value = null;
     this.inputEl?.focus();
@@ -83,23 +83,23 @@ export class OdsInput {
   }
 
   @Method()
-  async getValidationMessage(): Promise<string> {
+  public async getValidationMessage(): Promise<string> {
     return this.internals.validationMessage;
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState> {
+  public async getValidity(): Promise<ValidityState> {
     return this.internals.validity;
   }
 
   @Method()
-  async reportValidity(): Promise<boolean> {
+  public async reportValidity(): Promise<boolean> {
     this.isInvalid = !this.internals.validity.valid;
     return this.internals.reportValidity();
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     this.odsReset.emit();
     this.value = this.defaultValue ?? null;
 
@@ -109,13 +109,13 @@ export class OdsInput {
   }
 
   @Method()
-  async toggleMask(): Promise<void> {
+  public async toggleMask(): Promise<void> {
     this.isMasked = !this.isMasked;
     this.odsToggleMask.emit();
   }
 
   @Method()
-  async willValidate(): Promise<boolean> {
+  public async willValidate(): Promise<boolean> {
     return this.internals.willValidate;
   }
 

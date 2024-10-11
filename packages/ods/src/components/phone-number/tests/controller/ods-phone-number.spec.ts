@@ -21,12 +21,6 @@ describe('ods-phone-number controller', () => {
   });
 
   describe('formatPhoneNumber', () => {
-    // it('should return null if hasError is true', () => {
-    //   expect(formatPhoneNumber('num', true, 'fr', mockPhoneUtils)).toBeNull();
-    //   expect(mockPhoneUtils.parseAndKeepRawInput).not.toHaveBeenCalled();
-    //   expect(mockPhoneUtils.format).not.toHaveBeenCalled();
-    // });
-
     it('should return null if the number cannot be parsed', () => {
       const dummyIsoCode = 'fr';
       const dummyNumber = '0123456789';

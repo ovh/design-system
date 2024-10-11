@@ -77,39 +77,39 @@ export class OdsPhoneNumber {
   }
 
   @Method()
-  async checkValidity(): Promise<boolean> {
+  public async checkValidity(): Promise<boolean> {
     return this.internals.checkValidity();
   }
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     await this.inputElement?.clear();
     this.shouldUpdateIsInvalidState = true;
   }
 
   @Method()
-  async getValidationMessage(): Promise<string> {
+  public async getValidationMessage(): Promise<string> {
     return this.internals.validationMessage;
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState | undefined> {
+  public async getValidity(): Promise<ValidityState | undefined> {
     return getValidityState(this.isInvalid, this.internals.validity);
   }
 
   @Method()
-  async reportValidity(): Promise<boolean> {
+  public async reportValidity(): Promise<boolean> {
     return this.internals.reportValidity();
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     await this.inputElement?.reset();
     this.shouldUpdateIsInvalidState = true;
   }
 
   @Method()
-  async willValidate(): Promise<boolean> {
+  public async willValidate(): Promise<boolean> {
     return this.internals.willValidate;
   }
 

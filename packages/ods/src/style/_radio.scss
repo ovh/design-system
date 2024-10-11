@@ -22,14 +22,16 @@
     content: "";
   }
 
-  &:focus {
-    @include focus.ods-focus();
+  &:not(&--error) {
+    &:focus {
+      @include focus.ods-focus();
 
-    border-color: var(--ods-color-form-element-border-focus-default);
-  }
+      border-color: var(--ods-color-form-element-border-focus-default);
+    }
 
-  &:hover {
-    border-color: var(--ods-color-form-element-border-hover-default);
+    &:hover {
+      border-color: var(--ods-color-form-element-border-hover-default);
+    }
   }
 
   &:checked::before {

@@ -1,4 +1,4 @@
-import { copyToClipboard, getRandomHTMLId, isTargetInElement, setInternalsValidityFromHtmlElement, setInternalsValidityFromOdsComponent, submitFormOnEnter } from '../../src/utils/dom';
+import { copyToClipboard, getRandomHTMLId, isTargetInElement, setInternalsValidityFromHtmlElement, setInternalsValidityFromOdsComponent, setInternalsValidityFromValidityState, submitFormOnEnter } from '../../src/utils/dom';
 
 describe('utils dom', () => {
   beforeEach(jest.clearAllMocks);
@@ -132,6 +132,99 @@ describe('utils dom', () => {
       Object.entries(mockValidityState).forEach(([key, value]) => {
         expect(mockInternals.setValidity).toHaveBeenCalledWith({ [key]: value }, mockFormElement.validationMessage, mockFormElement);
       });
+    });
+  });
+
+  describe('setInternalsValidityFromValidityState', () => {
+    const mockInternals = {
+      setValidity: jest.fn(),
+    } as unknown as ElementInternals;
+
+    it('should set the validity to empty if valid', async() => {
+      const mockOdsFormElement = {
+        getValidationMessage: jest.fn().mockImplementation(() => Promise.resolve('')),
+        getValidity: jest.fn().mockImplementation(() => Promise.resolve({ valid: true })),
+      } as unknown as HTMLElement & {
+        getValidationMessage: () => Promise<string>,
+        getValidity: () => Promise<ValidityState>,
+      };
+
+      const validityState: ValidityState = {
+        badInput: false,
+        customError: false,
+        patternMismatch: false,
+        rangeOverflow: false,
+        rangeUnderflow: false,
+        stepMismatch: false,
+        tooLong: false,
+        tooShort: false,
+        typeMismatch: false,
+        valid: true,
+        valueMissing: false,
+      };
+
+      await setInternalsValidityFromValidityState(mockOdsFormElement, mockInternals, validityState);
+
+      expect(mockInternals.setValidity).toHaveBeenCalledTimes(1);
+      expect(mockInternals.setValidity).toHaveBeenCalledWith({});
+    });
+
+    it('should set the same validity flags as the form element if invalid', async() => {
+      const validityState: ValidityState = {
+        badInput: false,
+        customError: false,
+        patternMismatch: false,
+        rangeOverflow: false,
+        rangeUnderflow: false,
+        stepMismatch: false,
+        tooLong: false,
+        tooShort: false,
+        typeMismatch: false,
+        valid: false,
+        valueMissing: true,
+      };
+      const dummyValidationMessage = 'dummy validation message';
+      const mockOdsFormElement = {
+        getValidationMessage: jest.fn().mockImplementation(() => Promise.resolve(dummyValidationMessage)),
+        getValidity: jest.fn().mockImplementation(() => Promise.resolve({ valid: true })),
+      } as unknown as HTMLElement & {
+        getValidationMessage: () => Promise<string>,
+        getValidity: () => Promise<ValidityState>,
+      };
+
+      await setInternalsValidityFromValidityState(mockOdsFormElement, mockInternals, validityState);
+
+      expect(mockInternals.setValidity).toHaveBeenCalledTimes(1);
+      expect(mockInternals.setValidity).toHaveBeenCalledWith({ 'valueMissing': true }, dummyValidationMessage, mockOdsFormElement);
+    });
+
+    it('should set the same validity flags as the form element if invalid with custom message error', async() => {
+      const validityState: ValidityState = {
+        badInput: false,
+        customError: false,
+        patternMismatch: false,
+        rangeOverflow: false,
+        rangeUnderflow: false,
+        stepMismatch: false,
+        tooLong: false,
+        tooShort: false,
+        typeMismatch: false,
+        valid: false,
+        valueMissing: true,
+      };
+      const dummyValidationMessage = 'dummy validation message';
+      const mockOdsFormElement = {
+        getValidationMessage: jest.fn().mockImplementation(() => Promise.resolve('')),
+        getValidity: jest.fn().mockImplementation(() => Promise.resolve({ valid: true })),
+      } as unknown as HTMLElement & {
+        getValidationMessage: () => Promise<string>,
+        getValidity: () => Promise<ValidityState>,
+      };
+
+      await setInternalsValidityFromValidityState(mockOdsFormElement, mockInternals, validityState, dummyValidationMessage);
+
+      expect(mockInternals.setValidity).toHaveBeenCalledTimes(1);
+      expect(mockInternals.setValidity).toHaveBeenCalledWith({ 'valueMissing': true }, dummyValidationMessage, mockOdsFormElement);
     });
   });
 

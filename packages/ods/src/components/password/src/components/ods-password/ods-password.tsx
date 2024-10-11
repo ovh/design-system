@@ -54,13 +54,13 @@ export class OdsPassword {
   }
 
   @Method()
-  async checkValidity(): Promise<boolean> {
+  public async checkValidity(): Promise<boolean> {
     this.isInvalid = !this.internals.validity.valid;
     return this.internals?.checkValidity();
   }
 
   @Method()
-  async clear(): Promise<void> {
+  public async clear(): Promise<void> {
     await this.odsInput?.clear();
 
     // Element internal validityState is not yet updated, so we set the flag
@@ -69,17 +69,17 @@ export class OdsPassword {
   }
 
   @Method()
-  async getValidationMessage(): Promise<string> {
+  public async getValidationMessage(): Promise<string> {
     return this.internals.validationMessage;
   }
 
   @Method()
-  async getValidity(): Promise<ValidityState> {
+  public async getValidity(): Promise<ValidityState> {
     return this.internals.validity;
   }
 
   @Method()
-  async reportValidity(): Promise<boolean> {
+  public async reportValidity(): Promise<boolean> {
     this.isInvalid = !this.internals.validity.valid;
     return this.internals.reportValidity();
   }
@@ -90,7 +90,7 @@ export class OdsPassword {
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     await this.odsInput?.reset();
 
     // Element internal validityState is not yet updated, so we set the flag
@@ -99,7 +99,7 @@ export class OdsPassword {
   }
 
   @Method()
-  async willValidate(): Promise<boolean> {
+  public async willValidate(): Promise<boolean> {
     return this.internals.willValidate;
   }
 

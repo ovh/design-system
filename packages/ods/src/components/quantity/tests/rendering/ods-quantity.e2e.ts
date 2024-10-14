@@ -16,6 +16,12 @@ describe('ods-quantity rendering', () => {
     }, part);
   }
 
+  async function isInErrorState(): Promise<boolean | undefined> {
+    return await page.evaluate(() => {
+      return document.querySelector('ods-quantity')?.shadowRoot?.querySelector('.ods-quantity__input')?.shadowRoot?.querySelector('.ods-input__input')?.classList.contains('ods-input__input--error');
+    });
+  }
+
   async function setup(content: string, customStyle?: string): Promise<void> {
     page = await newE2EPage();
 
@@ -102,10 +108,7 @@ describe('ods-quantity rendering', () => {
       });
       await page.waitForChanges();
 
-      const hasErrorClass = await page.evaluate(() => {
-        return document.querySelector('ods-quantity')?.shadowRoot?.querySelector('.ods-quantity__input')?.shadowRoot?.querySelector('.ods-input__input')?.classList.contains('ods-input__input--error');
-      });
-      expect(hasErrorClass).toBe(true);
+      expect(await isInErrorState()).toBe(true);
     });
 
     it('should toggle the error state on value change', async() => {
@@ -113,40 +116,44 @@ describe('ods-quantity rendering', () => {
 
       await el.type('0');
       await page.waitForChanges();
-      const hasErrorClass = await page.evaluate(() => {
-        return document.querySelector('ods-quantity')?.shadowRoot?.querySelector('.ods-quantity__input')?.shadowRoot?.querySelector('.ods-input__input')?.classList.contains('ods-input__input--error');
-      });
-      expect(hasErrorClass).toBe(false);
+
+      expect(await isInErrorState()).toBe(false);
 
       await el.callMethod('clear');
       await page.click('body', { offset: { x: 400, y: 400 } }); // Blur
       await page.waitForChanges();
 
-      const hasErrorClass2 = await page.evaluate(() => {
-        return document.querySelector('ods-quantity')?.shadowRoot?.querySelector('.ods-quantity__input')?.shadowRoot?.querySelector('.ods-input__input')?.classList.contains('ods-input__input--error');
-      });
-      await page.waitForChanges();
-      expect(hasErrorClass2).toBe(true);
+      expect(await isInErrorState()).toBe(true);
     });
 
     it('should enforce the error state if has-error is set even on valid quantity', async() => {
       await setup('<form method="get" onsubmit="return false"><ods-quantity is-required has-error value="0"></ods-quantity></form>');
       await page.waitForChanges();
 
-      const hasErrorClass = await page.evaluate(() => {
-        return document.querySelector('ods-quantity')?.shadowRoot?.querySelector('.ods-quantity__input')?.shadowRoot?.querySelector('.ods-input__input')?.classList.contains('ods-input__input--error');
-      });
-      expect(hasErrorClass).toBe(true);
+      expect(await isInErrorState()).toBe(true);
 
       await page.evaluate(() => {
         document.querySelector<HTMLFormElement>('form')?.requestSubmit();
       });
       await page.waitForChanges();
 
-      const hasErrorClass2 = await page.evaluate(() => {
-        return document.querySelector('ods-quantity')?.shadowRoot?.querySelector('.ods-quantity__input')?.shadowRoot?.querySelector('.ods-input__input')?.classList.contains('ods-input__input--error');
-      });
-      expect(hasErrorClass2).toBe(true);
+      expect(await isInErrorState()).toBe(true);
+    });
+
+    it('should update error state on odsInvalid event', async() => {
+      await setup('<ods-quantity></ods-quantity>');
+
+      expect(await isInErrorState()).toBe(false);
+
+      input.triggerEvent('odsInvalid', { detail: true });
+      await page.waitForChanges();
+
+      expect(await isInErrorState()).toBe(true);
+
+      input.triggerEvent('odsInvalid', { detail: false });
+      await page.waitForChanges();
+
+      expect(await isInErrorState()).toBe(false);
     });
   });
 });

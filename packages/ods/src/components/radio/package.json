@@ -13,7 +13,7 @@
     "start": "stencil build --dev --watch --serve",
     "test:e2e": "stencil test --e2e --config stencil.config.ts --max-workers=2",
     "test:e2e:ci": "tsc --noEmit && stencil test --e2e --ci --runInBand --config stencil.config.ts",
-    "test:spec": "stencil test --spec --config stencil.config.ts --coverage --passWithNoTests",
-    "test:spec:ci": "tsc --noEmit && stencil test --config stencil.config.ts  --spec --ci --passWithNoTests"
+    "test:spec": "stencil test --spec --config stencil.config.ts --coverage",
+    "test:spec:ci": "tsc --noEmit && stencil test --config stencil.config.ts  --spec --ci"
   }
 }

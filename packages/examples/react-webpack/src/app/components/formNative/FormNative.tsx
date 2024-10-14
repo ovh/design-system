@@ -123,6 +123,15 @@ function FormNative(): ReactElement {
         name="phoneNumber"
       />
 
+      <OdsPhoneNumber
+        countries="all"
+        defaultValue={ withDefaultValue ? '+33123456789' : undefined }
+        isClearable={ true }
+        isRequired={ areAllRequired }
+        isoCode="fr"
+        name="phoneNumber"
+      />
+
       {/*/!* KO reset does not reset formData if no default value *!/*/}
       <OdsQuantity
         defaultValue={ withDefaultValue ? 22 : undefined }

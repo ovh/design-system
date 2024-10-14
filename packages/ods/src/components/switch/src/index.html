@@ -82,8 +82,8 @@
 
   <p>Form</p>
   <form id="radio-form" target="_self">
-    <ods-switch size="md" name="switch-radio-form">
-      <ods-switch-item value="1">form 1</ods-switch-item>
+    <ods-switch id="switch-form" size="md" name="switch-radio-form" is-required>
+      <ods-switch-item value="1" id="switch-radio-form-item-1">form 1</ods-switch-item>
       <ods-switch-item value="2">form 2</ods-switch-item>
       <ods-switch-item value="3">form 3</ods-switch-item>
     </ods-switch>
@@ -91,16 +91,36 @@
     <input type="text" name="natif-input">
     <button id="form-reset-button" type="reset">Reset</button>
     <button id="form-submit-button" type="submit">Submit</button>
+    <button id="form-get-validity-button">getValidity</button>
+    <button id="form-toggle-required-button">toggle isRequired</button>
+
   </form>
 
   <script>
     const form = document.getElementById('radio-form');
     const resetFormButton = document.getElementById('form-reset-button');
     const submitFormButton = document.getElementById('form-submit-button');
+    const getValidityFormButton = document.getElementById('form-get-validity-button');
+    const toggleRequiredFormButton = document.getElementById('form-toggle-required-button');
+
+    const switchItem = document.getElementById('switch-radio-form-item-1');
+    const odsSwitch = document.getElementById('switch-form');
+
+    getValidityFormButton.addEventListener('click', async() => {
+      console.log(await switchItem.getValidity())
+    });
 
     submitFormButton.addEventListener('click', () => {
       const formData = new FormData(form);
       console.log('formData', formData);
+    });
+
+    toggleRequiredFormButton.addEventListener('click', () => {
+      if (odsSwitch.hasAttribute('is-required')) {
+        odsSwitch.removeAttribute('is-required')
+      } else {
+        odsSwitch.setAttribute('is-required', '')
+      }
     });
   </script>
 </body>

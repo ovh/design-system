@@ -188,6 +188,7 @@ export const Size: StoryObj = {
   render: () => html`
 <ods-button label="MD button" size="${ODS_BUTTON_SIZE.md}"></ods-button>
 <ods-button label="SM button" size="${ODS_BUTTON_SIZE.sm}"></ods-button>
+<ods-button label="XS button" size="${ODS_BUTTON_SIZE.xs}"></ods-button>
   `,
 };
 

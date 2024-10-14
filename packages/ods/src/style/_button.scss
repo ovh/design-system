@@ -2,6 +2,7 @@
 @use './state';
 
 $ods-button-border-radius: var(--ods-border-radius-md);
+$ods-button-size-xs: 24px;
 $ods-button-size-sm: 32px;
 $ods-button-size-md: 40px;
 
@@ -27,7 +28,14 @@ $ods-button-size-md: 40px;
 }
 
 @mixin ods-button-size($size) {
-  @if $size == 'sm' {
+  @if $size == 'xs' {
+    grid-column-gap: 6px;
+    border-radius: 2px;
+    padding: 6px;
+    min-width: $ods-button-size-xs;
+    min-height: $ods-button-size-xs;
+    font-size: 0.75rem;
+  } @else if $size == 'sm' {
     grid-column-gap: 6px;
     padding: 6px;
     min-width: $ods-button-size-sm;

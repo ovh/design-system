@@ -65,14 +65,19 @@ describe('ods-button rendering', () => {
   });
 
   describe('sizes', () => {
-    it('should respect increase order (sm < md)', async() => {
+    it('should respect increase order (xs < sm < md)', async() => {
       await setup(`
+        <ods-button size="${ODS_BUTTON_SIZE.xs}" label="Button"></ods-button>
         <ods-button size="${ODS_BUTTON_SIZE.sm}" label="Button"></ods-button>
         <ods-button size="${ODS_BUTTON_SIZE.md}" label="Button"></ods-button>
       `);
 
+      const xsButton = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.xs}] >>> .ods-button__button`);
       const smButton = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.sm}] >>> .ods-button__button`);
       const mdButton = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.md}] >>> .ods-button__button`);
+
+      const xsButtonStyle = await xsButton.getComputedStyle();
+      const xsButtonHeight = parseInt(xsButtonStyle.getPropertyValue('height'), 10);
 
       const smButtonStyle = await smButton.getComputedStyle();
       const smButtonHeight = parseInt(smButtonStyle.getPropertyValue('height'), 10);
@@ -80,7 +85,11 @@ describe('ods-button rendering', () => {
       const mdButtonStyle = await mdButton.getComputedStyle();
       const mdButtonHeight = parseInt(mdButtonStyle.getPropertyValue('height'), 10);
 
+      expect(xsButtonHeight).toBeLessThan(smButtonHeight);
+      expect(xsButtonHeight).toBeLessThan(mdButtonHeight);
       expect(smButtonHeight).toBeLessThan(mdButtonHeight);
+      expect(smButtonHeight).toBeGreaterThan(xsButtonHeight);
+      expect(mdButtonHeight).toBeGreaterThan(xsButtonHeight);
       expect(mdButtonHeight).toBeGreaterThan(smButtonHeight);
     });
   });

@@ -1,6 +1,7 @@
 enum ODS_BUTTON_SIZE {
   md = 'md',
   sm = 'sm',
+  xs = 'xs',
 }
 
 type OdsButtonSize =`${ODS_BUTTON_SIZE}`;

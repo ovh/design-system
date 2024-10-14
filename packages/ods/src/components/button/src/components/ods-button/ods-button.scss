@@ -15,6 +15,10 @@
 
     position: relative;
 
+    &--xs {
+      @include button.ods-button-size('xs');
+    }
+
     &--sm {
       @include button.ods-button-size('sm');
     }

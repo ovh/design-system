@@ -1,4 +1,5 @@
 enum ODS_SPINNER_SIZE {
+  xs = 'xs',
   sm = 'sm',
   md = 'md',
   lg = 'lg',

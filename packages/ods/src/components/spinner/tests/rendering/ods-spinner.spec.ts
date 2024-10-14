@@ -66,20 +66,30 @@ describe('ods-spinner rendering', () => {
       });
 
       it('should render with unique size class if set', async() => {
+        await setup(`<ods-spinner size="${ODS_SPINNER_SIZE.xs}"></ods-spinner>`);
+
+        expect(container?.classList.contains('ods-spinner__container--xs')).toBe(true);
+        expect(container?.classList.contains('ods-spinner__container--sm')).toBe(false);
+        expect(container?.classList.contains('ods-spinner__container--md')).toBe(false);
+        expect(container?.classList.contains('ods-spinner__container--lg')).toBe(false);
+
         await setup(`<ods-spinner size="${ODS_SPINNER_SIZE.sm}"></ods-spinner>`);
 
+        expect(container?.classList.contains('ods-spinner__container--xs')).toBe(false);
         expect(container?.classList.contains('ods-spinner__container--sm')).toBe(true);
         expect(container?.classList.contains('ods-spinner__container--md')).toBe(false);
         expect(container?.classList.contains('ods-spinner__container--lg')).toBe(false);
 
         await setup(`<ods-spinner size="${ODS_SPINNER_SIZE.md}"></ods-spinner>`);
 
+        expect(container?.classList.contains('ods-spinner__container--xs')).toBe(false);
         expect(container?.classList.contains('ods-spinner__container--sm')).toBe(false);
         expect(container?.classList.contains('ods-spinner__container--md')).toBe(true);
         expect(container?.classList.contains('ods-spinner__container--lg')).toBe(false);
 
         await setup(`<ods-spinner size="${ODS_SPINNER_SIZE.lg}"></ods-spinner>`);
 
+        expect(container?.classList.contains('ods-spinner__container--xs')).toBe(false);
         expect(container?.classList.contains('ods-spinner__container--sm')).toBe(false);
         expect(container?.classList.contains('ods-spinner__container--md')).toBe(false);
         expect(container?.classList.contains('ods-spinner__container--lg')).toBe(true);

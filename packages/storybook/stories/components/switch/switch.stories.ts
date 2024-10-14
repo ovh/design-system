@@ -13,14 +13,39 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (args) => html`
-    <ods-switch
+  render: (args) => {
+    const validityStateTemplate = html`<br>
+    <div id="validity-state-switch" style="display: grid; row-gap: 5px;"></div>
+    <script>
+      (async() => {
+          const divValidityState = document.querySelector('#validity-state-switch');
+          const switchDemo = document.querySelector('#my-switch');
+          const switchItem = document.querySelector('#switch-item-demo');
+          await customElements.whenDefined('ods-switch');
+          setTimeout(async() => await renderValidityState(), 0);
+          switchDemo.addEventListener('odsChange', async() => {
+            await renderValidityState();
+          });
+          async function renderValidityState() {
+            const validity = await switchItem.getValidity();
+            divValidityState.innerHTML = '';
+            for (let key in validity) {
+              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+            }
+          }
+      })();
+    </script>`;
+    return html`
+    <ods-switch id="my-switch"
                 name="demo"
                 is-disabled="${args.isDisabled}"
+                is-required="${args.isRequired}"
                 size="${args.size}">
-      ${unsafeHTML(args.content)}
+      ${ unsafeHTML(args.content) }
     </ods-switch>
-  `,
+    ${ args.validityState ? validityStateTemplate : '' }
+  `;
+  },
   argTypes: orderControls({
     content: {
       table: {
@@ -37,6 +62,14 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
+    isRequired: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
@@ -46,13 +79,24 @@ export const Demo: StoryObj = {
       control: { type: 'select' },
       options: ODS_SWITCH_SIZES,
     },
+    validityState: {
+      table: {
+        category: CONTROL_CATEGORY.accessibility,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+      description: 'Toggle this to see the component validityState',
+    },
   }),
   args: {
-    content: `<ods-switch-item value="1">label1</ods-switch-item>
+    content: `<ods-switch-item id="switch-item-demo" value="1">label1</ods-switch-item>
     <ods-switch-item value="2">label2</ods-switch-item>
     <ods-switch-item value="3">label3</ods-switch-item>`,
     isDisabled: false,
+    isRequired: false,
     size: 'md',
+    validityState: false,
   },
 };
 
@@ -118,4 +162,36 @@ export const Size: StoryObj = {
   <ods-switch-item value="3">label3</ods-switch-item>
 </ods-switch>
   `,
+};
+
+export const ValidityState: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-switch id="switch-validity-state-demo" name="switch-validity-state" is-required>
+  <ods-switch-item value="1" id="switch-item-validity-state-demo">label1</ods-switch-item>
+  <ods-switch-item value="2">label2</ods-switch-item>
+  <ods-switch-item value="3">label3</ods-switch-item>
+</ods-switch>
+<div id="validity-state-demo"></div>
+<script>
+  (async() => {
+      const divValidityState = document.querySelector('#validity-state-demo');
+      const switchValidityState = document.querySelector('#switch-validity-state-demo');
+      const switchItem = document.querySelector('#switch-item-validity-state-demo');
+      await customElements.whenDefined('ods-switch-item');
+      setTimeout(async() => await renderValidityState(), 100);
+      switchValidityState.addEventListener('odsChange', async() => {
+        await renderValidityState();
+      })
+      async function renderValidityState() {
+        const validity = await switchItem.getValidity();
+        console.log('validity', validity)
+        divValidityState.innerHTML = '';
+        for (let key in validity) {
+          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+        }
+      }
+  })();
+</script>
+`,
 };

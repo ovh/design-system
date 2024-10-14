@@ -133,6 +133,13 @@ export class OdsInput {
         if (mutation.attributeName === 'value') {
           this.onValueChange(mutation.oldValue);
         }
+
+        // When observing is-required, the inner element validity is not yet up-to-date
+        // so we observe the element required attribute instead
+        if (mutation.attributeName === 'required') {
+          updateInternals(this.internals, this.value, this.inputEl);
+          this.isInvalid = !this.internals.validity.valid;
+        }
       }
     });
 
@@ -151,6 +158,13 @@ export class OdsInput {
       attributeFilter: ['value'],
       attributeOldValue: true,
     });
+
+    if (this.inputEl) {
+      this.observer?.observe(this.inputEl, {
+        attributeFilter: ['required'],
+        attributeOldValue: false,
+      });
+    }
   }
 
   disconnectedCallback(): void {

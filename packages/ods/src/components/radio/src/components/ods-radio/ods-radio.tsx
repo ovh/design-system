@@ -27,6 +27,7 @@ export class OdsRadio {
   @Event() odsChange!: EventEmitter<OdsRadioChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsInvalid!: EventEmitter<boolean>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
@@ -164,6 +165,7 @@ export class OdsRadio {
 
     // Enforce the state here as we may still be in pristine state (if the form is submitted before any changes occurs)
     this.isInvalid = true;
+    this.odsInvalid.emit(this.isInvalid);
   }
 
   render(): FunctionalComponent {

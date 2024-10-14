@@ -55,7 +55,7 @@ export class OdsButton {
             <ods-spinner
               class="ods-button__button__spinner"
               color={ ODS_SPINNER_COLOR.neutral }
-              size={ ODS_SPINNER_SIZE.sm }>
+              size={ this.size === 'xs' ? ODS_SPINNER_SIZE.xs : ODS_SPINNER_SIZE.sm }>
             </ods-spinner>
           }
 

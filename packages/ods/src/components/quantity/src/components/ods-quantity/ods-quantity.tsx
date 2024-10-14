@@ -151,13 +151,19 @@ export class OdsQuantity {
     }
   }
 
+  private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+    await updateInternals(this.internals, this.value, this.odsInput);
+    this.isInvalid = event.detail;
+  }
+
   private getHasError(): boolean {
     return this.hasError || this.isInvalid;
   }
 
   render(): FunctionalComponent {
     return (
-      <Host class="ods-quantity"
+      <Host
+        class="ods-quantity"
         disabled={ this.isDisabled }
         readonly={ this.isReadonly }>
         <ods-button
@@ -185,6 +191,7 @@ export class OdsQuantity {
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           onOdsBlur={ () => this.onOdsBlur() }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
+          onOdsInvalid={ (event: CustomEvent<boolean>) => this.onOdsInvalid(event) }
           max={ this.max }
           min={ this.min }
           name={ this.name }

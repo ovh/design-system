@@ -153,7 +153,6 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-
         expect(await getValidityProp('valid')).toBe(true);
 
         await setup(`<ods-switch is-required name="validity-test">
@@ -161,7 +160,6 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-
         expect(await getValidityProp('valid')).toBe(true);
       });
 
@@ -171,7 +169,6 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-
         expect(await getValidityProp('valid')).toBe(false);
         expect(await getValidityProp('valueMissing')).toBe(true);
       });

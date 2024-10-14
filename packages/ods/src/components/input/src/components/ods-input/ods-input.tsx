@@ -56,6 +56,7 @@ export class OdsInput {
   @Event() odsChange!: EventEmitter<OdsInputChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsInvalid!: EventEmitter<boolean>;
   @Event() odsReset!: EventEmitter<void>;
   @Event() odsToggleMask!: EventEmitter<void>;
 
@@ -122,13 +123,18 @@ export class OdsInput {
     return this.internals.willValidate;
   }
 
+  @Watch('isInvalid')
+  onIsInvalidChange(): void {
+    this.odsInvalid.emit(this.isInvalid);
+  }
+
   @Watch('isMasked')
-  onMaskedChange(): void {
+  onIsMaskedChange(): void {
     this.isPassword = isPassword(this.isMasked);
   }
 
   componentWillLoad(): void {
-    this.onMaskedChange();
+    this.onIsMaskedChange();
 
     this.observer = new MutationObserver((mutations: MutationRecord[]) => {
       for (const mutation of mutations) {

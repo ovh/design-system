@@ -291,6 +291,26 @@ describe('ods-input validity', () => {
   });
 
   describe('watchers', () => {
+    describe('isInvalid', () => {
+      it('should triggers an odsInvalid event when value change', async() => {
+        await setup('<ods-input is-required value="e"></ods-input>');
+        const odsInvalidSpy = await page.spyOnEvent('odsInvalid');
+
+        await el.callMethod('clear');
+        await page.waitForChanges();
+
+        expect(odsInvalidSpy).toHaveReceivedEventTimes(1);
+        expect(odsInvalidSpy).toHaveReceivedEventDetail(true);
+
+        await el.type('a', { delay: 100 });
+        await page.click('body', { offset: { x: 200, y: 200 } }); // Blur
+        await page.waitForChanges();
+
+        expect(odsInvalidSpy).toHaveReceivedEventTimes(2);
+        expect(odsInvalidSpy).toHaveReceivedEventDetail(false);
+      });
+    });
+
     describe('is-required', () => {
       it('should update validity when is-required change', async() => {
         await setup('<ods-input is-required></ods-input>');

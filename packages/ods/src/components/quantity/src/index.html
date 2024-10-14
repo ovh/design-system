@@ -100,6 +100,7 @@
     <button id="form-check-validity-button" type="button">Check validity</button>
     <button id="form-clear-button" type="button">Clear</button>
     <button id="form-reset-button" type="button">Reset</button>
+    <button id="form-toggle-is-required-button" type="button">Toggle is required</button>
     <button type="reset">Global Form Reset</button>
     <button id="form-submit-button" type="submit">Submit</button>
   </form>
@@ -111,6 +112,7 @@
     const clearFormButton = document.querySelector('#form-clear-button');
     const resetFormButton = document.querySelector('#form-reset-button');
     const submitFormButton = document.querySelector('#form-submit-button');
+    const toggleIsRequiredButton = document.querySelector('#form-toggle-is-required-button');
 
     checkValidityFormButton.addEventListener('click', async() => {
       console.log('Check validity: ', await formQuantity.checkValidity());
@@ -122,6 +124,14 @@
 
     resetFormButton.addEventListener('click', async() => {
       await formQuantity.reset();
+    });
+
+    toggleIsRequiredButton.addEventListener('click', async() => {
+      if (formQuantity.hasAttribute('is-required')) {
+        formQuantity.removeAttribute('is-required');
+      } else {
+        formQuantity.setAttribute('is-required', 'true');
+      }
     });
 
     ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{

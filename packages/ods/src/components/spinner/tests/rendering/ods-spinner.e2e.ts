@@ -40,16 +40,21 @@ describe('ods-spinner rendering', () => {
   });
 
   describe('sizes', () => {
-    it('should respect increase order (sm < md < lg)', async() => {
+    it('should respect increase order (xs < sm < md < lg)', async() => {
       await setup(`
+        <ods-spinner size="${ODS_SPINNER_SIZE.xs}"></ods-spinner>
         <ods-spinner size="${ODS_SPINNER_SIZE.sm}"></ods-spinner>
         <ods-spinner size="${ODS_SPINNER_SIZE.md}"></ods-spinner>
         <ods-spinner size="${ODS_SPINNER_SIZE.lg}"></ods-spinner>
       `);
 
+      const xsSpinner = await page.find(`ods-spinner[size=${ODS_SPINNER_SIZE.xs}]`);
       const smSpinner = await page.find(`ods-spinner[size=${ODS_SPINNER_SIZE.sm}]`);
       const mdSpinner = await page.find(`ods-spinner[size=${ODS_SPINNER_SIZE.md}]`);
       const lgSpinner = await page.find(`ods-spinner[size=${ODS_SPINNER_SIZE.lg}]`);
+
+      const xsSpinnerStyle = await xsSpinner.getComputedStyle();
+      const xsSpinnerHeight = parseInt(xsSpinnerStyle.getPropertyValue('height'), 10);
 
       const smSpinnerStyle = await smSpinner.getComputedStyle();
       const smSpinnerHeight = parseInt(smSpinnerStyle.getPropertyValue('height'), 10);
@@ -60,10 +65,16 @@ describe('ods-spinner rendering', () => {
       const lgSpinnerStyle = await lgSpinner.getComputedStyle();
       const lgSpinnerHeight = parseInt(lgSpinnerStyle.getPropertyValue('height'), 10);
 
+      expect(xsSpinnerHeight).toBeLessThan(smSpinnerHeight);
+      expect(xsSpinnerHeight).toBeLessThan(mdSpinnerHeight);
+      expect(xsSpinnerHeight).toBeLessThan(lgSpinnerHeight);
       expect(smSpinnerHeight).toBeLessThan(mdSpinnerHeight);
       expect(smSpinnerHeight).toBeLessThan(lgSpinnerHeight);
+      expect(smSpinnerHeight).toBeGreaterThan(xsSpinnerHeight);
       expect(mdSpinnerHeight).toBeLessThan(lgSpinnerHeight);
+      expect(mdSpinnerHeight).toBeGreaterThan(xsSpinnerHeight);
       expect(mdSpinnerHeight).toBeGreaterThan(smSpinnerHeight);
+      expect(lgSpinnerHeight).toBeGreaterThan(xsSpinnerHeight);
       expect(lgSpinnerHeight).toBeGreaterThan(smSpinnerHeight);
       expect(lgSpinnerHeight).toBeGreaterThan(mdSpinnerHeight);
     });

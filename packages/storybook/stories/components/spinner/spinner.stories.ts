@@ -88,6 +88,7 @@ export const Color: StoryObj = {
 export const Size: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
+<ods-spinner size="xs"></ods-spinner>
 <ods-spinner size="sm"></ods-spinner>
 <ods-spinner size="md"></ods-spinner>
 <ods-spinner size="lg"></ods-spinner>

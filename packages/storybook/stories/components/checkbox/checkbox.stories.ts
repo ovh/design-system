@@ -18,6 +18,7 @@ export const Demo: StoryObj = {
       (async () => {
           const divValidityState = document.querySelector('#validity-state');
           const checkbox = document.querySelector('.my-checkbox-demo');
+          await customElements.whenDefined('ods-checkbox');
           await renderValidityState();
           checkbox.addEventListener('odsChange', async () => {
             await renderValidityState();

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { html } from 'lit-html';
+import { html, nothing } from 'lit-html';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -15,40 +15,42 @@ export const Demo: StoryObj = {
     const validityStateTemplate = html`<br>
     <div id="validity-state-password" style="display: grid; row-gap: 5px;"></div>
     <script>
-      (() => {
+      (async() => {
           const divValidityState = document.querySelector('#validity-state-password');
           const password = document.querySelector('.my-password');
-          renderValidityState();
-          password.addEventListener('odsChange', () => {
-            renderValidityState();
-          })
-          function renderValidityState() {
-            password.getValidity().then((validity) => {
-              divValidityState.innerHTML = '';
-              for (let key in validity) {
-                divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-              }
-            });
+          await customElements.whenDefined('ods-password');
+          await renderValidityState();
+          password.addEventListener('odsChange', async() => {
+            await renderValidityState();
+          });
+          async function renderValidityState() {
+            const validity = await password.getValidity();
+            divValidityState.innerHTML = '';
+            for (let key in validity) {
+              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+            }
           }
       })();
     </script>`;
     return html`
-    <ods-password class="my-password"
+    <ods-password
       ariaLabel="${arg.ariaLabel}"
       ariaLabelledby="${arg.ariaLabelledby}"
+      class="my-password"
       has-error="${arg.hasError}"
       is-clearable="${arg.isClearable}"
       is-disabled="${arg.isDisabled}"
       is-loading="${arg.isLoading}"
       is-readonly="${arg.isReadonly}"
-      pattern="${arg.pattern}"
+      is-required="${arg.isRequired}"
+      pattern="${arg.pattern || nothing}"
       placeholder="${arg.placeholder}">
-      </ods-password>
-    <style>
+    </ods-password>
     ${ arg.validityState ? validityStateTemplate : '' }
-    .my-password::part(input) {
-      ${arg.customCss}
-    }
+    <style>
+      .my-password::part(input) {
+        ${arg.customCss}
+      }
     </style>
     `;
   },

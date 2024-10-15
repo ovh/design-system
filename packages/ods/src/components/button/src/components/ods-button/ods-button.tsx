@@ -37,7 +37,10 @@ export class OdsButton {
   render(): FunctionalComponent {
     return (
       <Host
-        class="ods-button"
+        class={`
+          ods-button
+          ods-button--${this.size}
+        `}
         disabled={ this.isDisabled || this.isLoading }>
         <button
           class={`
@@ -55,7 +58,7 @@ export class OdsButton {
             <ods-spinner
               class="ods-button__button__spinner"
               color={ ODS_SPINNER_COLOR.neutral }
-              size={ this.size === 'xs' ? ODS_SPINNER_SIZE.xs : ODS_SPINNER_SIZE.sm }>
+              size={ this.size === ODS_BUTTON_SIZE.xs ? ODS_SPINNER_SIZE.xs : ODS_SPINNER_SIZE.sm }>
             </ods-spinner>
           }
 

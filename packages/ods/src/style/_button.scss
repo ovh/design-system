@@ -1,7 +1,8 @@
 @use './focus';
 @use './state';
 
-$ods-button-border-radius: var(--ods-border-radius-md);
+$ods-button-border-radius-xs: var(--ods-border-radius-xs);
+$ods-button-border-radius-md: var(--ods-border-radius-md);
 $ods-button-size-xs: 24px;
 $ods-button-size-sm: 32px;
 $ods-button-size-md: 40px;
@@ -10,7 +11,7 @@ $ods-button-size-md: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: $ods-button-border-radius;
+  border-radius: $ods-button-border-radius-md;
   cursor: pointer;
   overflow: hidden;
   font-family: inherit;
@@ -30,7 +31,7 @@ $ods-button-size-md: 40px;
 @mixin ods-button-size($size) {
   @if $size == 'xs' {
     grid-column-gap: 6px;
-    border-radius: 2px;
+    border-radius: $ods-button-border-radius-xs;
     padding: 6px;
     min-width: $ods-button-size-xs;
     min-height: $ods-button-size-xs;

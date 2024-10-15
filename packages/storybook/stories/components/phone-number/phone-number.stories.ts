@@ -18,14 +18,14 @@ export const Demo: StoryObj = {
     <script>
       (async () => {
           const divValidityState = document.querySelector('#validity-state');
-          const quantity = document.querySelector('.my-quantity');
+          const phoneNumber = document.querySelector('.my-phone-number');
+          await customElements.whenDefined('ods-phone-number');
           await renderValidityState();
-          quantity.addEventListener('odsChange', async () => {
+          phoneNumber.addEventListener('odsChange', async () => {
             await renderValidityState();
           })
           async function renderValidityState() {
-            console.log('validity', await quantity.getValidity())
-            const validity = await quantity.getValidity()
+            const validity = await phoneNumber.getValidity()
             divValidityState.innerHTML = '';
             for (let key in validity) {
               divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
@@ -341,12 +341,10 @@ export const ValidityState: StoryObj = {
   (() => {
       const divValidityState = document.querySelector('#validity-state-demo');
       const phoneNumber = document.querySelector('#phone-number-validity-state-demo');
-      renderValidityState();
       phoneNumber.addEventListener('odsChange', async () => {
         await renderValidityState();
       })
       async function renderValidityState() {
-        console.log('validity', await phoneNumber.getValidity())
         const validity = await phoneNumber.getValidity()
         divValidityState.innerHTML = '';
         for (let key in validity) {

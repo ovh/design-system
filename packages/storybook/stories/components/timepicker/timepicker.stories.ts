@@ -18,12 +18,13 @@ export const Demo: StoryObj = {
       (async () => {
           const divValidityState = document.querySelector('#validity-state');
           const timepicker = document.querySelector('.my-timepicker-demo');
-          setTimeout(async() => { await renderValidityState() }, 0)
+          await customElements.whenDefined('ods-textarea');
+          await renderValidityState();
           timepicker.addEventListener('odsChange', async () => {
-            setTimeout(async() => { await renderValidityState() }, 0)
+            await renderValidityState();
           })
           async function renderValidityState() {
-            const validity = await timepicker.getValidity()
+            const validity = await timepicker.getValidity();
             divValidityState.innerHTML = '';
             for (let key in validity) {
               divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
@@ -233,7 +234,6 @@ export const ValidityState: StoryObj = {
   (() => {
       const divValidityState = document.querySelector('#validity-state-demo');
       const timepicker = document.querySelector('#timepicker-validity-state-demo');
-      setTimeout(async() => { await renderValidityState() }, 0)
       timepicker.addEventListener('odsChange', async () => {
         setTimeout(async() => { await renderValidityState() }, 0)
       })

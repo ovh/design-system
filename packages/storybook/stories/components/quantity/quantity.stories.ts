@@ -18,9 +18,10 @@ export const Demo: StoryObj = {
       (async () => {
           const divValidityState = document.querySelector('#validity-state');
           const quantity = document.querySelector('.my-quantity');
-          setTimeout(async() => { await renderValidityState() }, 0)
+          await customElements.whenDefined('ods-quantity');
+          await renderValidityState();
           quantity.addEventListener('odsChange', async () => {
-            setTimeout(async() => { await renderValidityState() }, 0)
+            await renderValidityState();
           })
           async function renderValidityState() {
             const validity = await quantity.getValidity()

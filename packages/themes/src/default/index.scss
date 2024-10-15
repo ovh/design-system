@@ -7,6 +7,7 @@
 @import '../../assets/fonts/source-sans-pro';
 
 :root {
+  --ods-border-radius-xs: #{var.$ods-border-radius-xs};
   --ods-border-radius-sm: #{var.$ods-border-radius-sm};
   --ods-border-radius-md: #{var.$ods-border-radius-md};
   --ods-border-radius-lg: #{var.$ods-border-radius-lg};

@@ -20,6 +20,7 @@ export const Demo: StoryObj = {
       (async () => {
           const divValidityState = document.querySelector('#validity-state');
           const input = document.querySelector('.my-input');
+          await customElements.whenDefined('ods-input');
           await renderValidityState();
           input.addEventListener('odsChange', async () => {
             await renderValidityState();

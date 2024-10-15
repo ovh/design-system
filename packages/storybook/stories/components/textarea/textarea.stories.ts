@@ -18,9 +18,10 @@ export const Demo: StoryObj = {
       (() => {
           const divValidityState = document.querySelector('#validity-state');
           const textarea = document.querySelector('.my-textarea');
-          setTimeout(async() => { await renderValidityState() }, 0)
+          await customElements.whenDefined('ods-textarea');
+          await renderValidityState();
           textarea.addEventListener('odsChange', async () => {
-            setTimeout(async() => { await renderValidityState() }, 0)
+            await renderValidityState();
           })
           async function renderValidityState() {
             const validity = await textarea.getValidity()

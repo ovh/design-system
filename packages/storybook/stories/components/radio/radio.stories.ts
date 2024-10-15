@@ -15,11 +15,12 @@ export const Demo: StoryObj = {
     const validityStateTemplate = html`<br>
     <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
     <script>
-      (async () => {
+      (async() => {
           const divValidityState = document.querySelector('#validity-state');
           const radio = document.querySelector('.my-radio-demo');
+          await customElements.whenDefined('ods-radio');
           await renderValidityState();
-          radio.addEventListener('odsChange', async () => {
+          radio.addEventListener('odsChange', async() => {
             await renderValidityState();
           })
           async function renderValidityState() {

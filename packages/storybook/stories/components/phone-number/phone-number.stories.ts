@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, ODS_PHONE_NUMBER_LOCALES } from '@ovhcloud/ods-components';
-import { html } from 'lit-html';
+import { html, nothing } from 'lit-html';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -46,7 +46,7 @@ export const Demo: StoryObj = {
                       is-required="${arg.isRequired}"
                       iso-code="${arg.isoCode}"
                       locale="${arg.locale}"
-                      pattern="${arg.pattern}">
+                      pattern="${arg.pattern || nothing}">
     </ods-phone-number>
     ${ arg.validityState ? validityStateTemplate : '' }
     <style>

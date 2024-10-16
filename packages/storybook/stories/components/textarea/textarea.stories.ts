@@ -135,14 +135,6 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    isResizable: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
     placeholder: {
       table: {
         category: CONTROL_CATEGORY.general,

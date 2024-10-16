@@ -105,6 +105,7 @@ export const Demo: StoryObj = {
         type: { summary: 'boolean' },
       },
       control: 'boolean',
+      description: 'Toggle this to see the component validityState',
     },
   }),
   args: {

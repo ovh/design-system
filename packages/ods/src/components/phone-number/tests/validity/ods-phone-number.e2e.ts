@@ -47,13 +47,13 @@ describe('ods-phone-number validity', () => {
 
     describe('with no value but default-value defined', () => {
       it('should return validity true if not required', async() => {
-        await setup('<ods-phone-number default-value="+18444629181"></ods-phone-number>');
+        await setup('<ods-phone-number default-value="+33612345678" iso-code="fr"></ods-phone-number>');
 
         expect(await el.callMethod('checkValidity')).toBe(true);
       });
 
       it('should return validity true if required', async() => {
-        await setup('<ods-phone-number default-value="+18444629181" is-required></ods-phone-number>');
+        await setup('<ods-phone-number default-value="+33612345678" iso-code="fr" is-required></ods-phone-number>');
 
         expect(await el.callMethod('checkValidity')).toBe(true);
       });
@@ -61,13 +61,13 @@ describe('ods-phone-number validity', () => {
 
     describe('with defined value', () => {
       it('should return validity true if not required', async() => {
-        await setup('<ods-phone-number value="+18444629181"></ods-phone-number>');
+        await setup('<ods-phone-number value="+33612345678" iso-code="fr"></ods-phone-number>');
 
         expect(await el.callMethod('checkValidity')).toBe(true);
       });
 
       it('should return validity true if required', async() => {
-        await setup('<ods-phone-number value="+18444629181" is-required></ods-phone-number>');
+        await setup('<ods-phone-number value="+33612345678" iso-code="fr" is-required></ods-phone-number>');
 
         expect(await el.callMethod('checkValidity')).toBe(true);
       });
@@ -80,10 +80,10 @@ describe('ods-phone-number validity', () => {
         await setup('<ods-phone-number></ods-phone-number>');
         expect(await el.callMethod('checkValidity')).toBe(true);
 
-        await setup('<ods-phone-number value="+18444629181" is-required></ods-phone-number>');
+        await setup('<ods-phone-number value="+33612345678" iso-code="fr" is-required></ods-phone-number>');
         expect(await el.callMethod('checkValidity')).toBe(true);
 
-        await setup('<ods-phone-number default-value="+18444629181" is-required></ods-phone-number>');
+        await setup('<ods-phone-number default-value="+33612345678" iso-code="fr" is-required></ods-phone-number>');
         expect(await el.callMethod('checkValidity')).toBe(true);
       });
 
@@ -101,7 +101,7 @@ describe('ods-phone-number validity', () => {
 
     describe('clear', () => {
       it('should update the validity state accordingly, given value', async() => {
-        await setup('<ods-phone-number value="+18444629181" is-required></ods-phone-number>');
+        await setup('<ods-phone-number value="+33612345678" iso-code="fr" is-required></ods-phone-number>');
 
         expect(await el.callMethod('checkValidity')).toBe(true);
 
@@ -112,7 +112,7 @@ describe('ods-phone-number validity', () => {
       });
 
       it('should update the validity state accordingly, given default-value', async() => {
-        await setup('<ods-phone-number default-value="+18444629181" is-required></ods-phone-number>');
+        await setup('<ods-phone-number default-value="+33612345678" iso-code="fr" is-required></ods-phone-number>');
 
         expect(await el.callMethod('checkValidity')).toBe(true);
 
@@ -128,10 +128,10 @@ describe('ods-phone-number validity', () => {
         await setup('<ods-phone-number></ods-phone-number>');
         expect(await el.callMethod('getValidationMessage')).toBe('');
 
-        await setup('<ods-phone-number value="+18444629181" is-required></ods-phone-number>');
+        await setup('<ods-phone-number value="+33612345678" iso-code="fr" is-required></ods-phone-number>');
         expect(await el.callMethod('getValidationMessage')).toBe('');
 
-        await setup('<ods-phone-number default-value="+18444629181" is-required></ods-phone-number>');
+        await setup('<ods-phone-number default-value="+33612345678" iso-code="fr" is-required></ods-phone-number>');
         expect(await el.callMethod('getValidationMessage')).toBe('');
       });
 
@@ -165,10 +165,10 @@ describe('ods-phone-number validity', () => {
         await setup('<ods-phone-number></ods-phone-number>');
         expect(await getValidityProp('valid')).toBe(true);
 
-        await setup('<ods-phone-number value="+18444629181" is-required></ods-phone-number>');
+        await setup('<ods-phone-number value="+33612345678" iso-code="fr" is-required></ods-phone-number>');
         expect(await getValidityProp('valid')).toBe(true);
 
-        await setup('<ods-phone-number default-value="+18444629181" is-required></ods-phone-number>');
+        await setup('<ods-phone-number default-value="+33612345678" iso-code="fr" is-required></ods-phone-number>');
         expect(await getValidityProp('valid')).toBe(true);
       });
 
@@ -192,10 +192,10 @@ describe('ods-phone-number validity', () => {
         await setup('<ods-phone-number></ods-phone-number>');
         expect(await el.callMethod('reportValidity')).toBe(true);
 
-        await setup('<ods-phone-number value="+18444629181" is-required></ods-phone-number>');
+        await setup('<ods-phone-number value="+33612345678" iso-code="fr" is-required></ods-phone-number>');
         expect(await el.callMethod('reportValidity')).toBe(true);
 
-        await setup('<ods-phone-number default-value="+18444629181" is-required></ods-phone-number>');
+        await setup('<ods-phone-number default-value="+33612345678" iso-code="fr" is-required></ods-phone-number>');
         expect(await el.callMethod('reportValidity')).toBe(true);
       });
 
@@ -292,6 +292,26 @@ describe('ods-phone-number validity', () => {
 
       expect(await el.callMethod('checkValidity')).toBe(true);
       expect(formValidity).toBe(true);
+    });
+  });
+
+  describe('watchers', () => {
+    describe('is-required', () => {
+      it('should update validity when is-required change', async() => {
+        await setup('<ods-phone-number></ods-phone-number>');
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
+
+        await el.setAttribute('is-required', 'true');
+        await page.waitForChanges();
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+
+        await el.removeAttribute('is-required');
+        await page.waitForChanges();
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
+      });
     });
   });
 });

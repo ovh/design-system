@@ -1,6 +1,6 @@
 import type { OdsInput } from '../../../input/src';
 import { type PhoneNumber, PhoneNumberFormat, type PhoneNumberUtil } from 'google-libphonenumber';
-import { setInternalsValidityFromValidityState } from '../../../../utils/dom';
+import { setInternalsValidityFromOdsComponent } from '../../../../utils/dom';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODE, ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, type OdsPhoneNumberCountryIsoCode } from '../constants/phone-number-country-iso-code';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET, type OdsPhoneNumberCountryPreset } from '../constants/phone-number-country-preset';
 import { ODS_PHONE_NUMBER_LOCALE, ODS_PHONE_NUMBER_LOCALES, type OdsPhoneNumberLocale } from '../constants/phone-number-locale';
@@ -91,26 +91,6 @@ function getTranslatedCountryMap(locale: OdsPhoneNumberLocale, phoneUtils: Phone
   }, new Map());
 }
 
-function getValidityState(hasError: boolean, validityState?: ValidityState): ValidityState {
-  return {
-    badInput: validityState?.badInput || hasError,
-    customError: validityState?.customError || false,
-    patternMismatch: validityState?.patternMismatch || false,
-    rangeOverflow: validityState?.rangeOverflow || false,
-    rangeUnderflow: validityState?.rangeUnderflow || false,
-    stepMismatch: validityState?.stepMismatch || false,
-    tooLong: validityState?.tooLong || false,
-    tooShort: validityState?.tooShort || false,
-    typeMismatch: validityState?.typeMismatch || false,
-    valid: validityState?.valid === false ? validityState?.valid : !hasError,
-    valueMissing: validityState?.valueMissing || false,
-  };
-}
-
-function getValidityMessage(hasError: boolean): string {
-  return hasError && 'Wrong phone number format' || '';
-}
-
 function isValidPhoneNumber(phoneNumber: string | null, isoCode: OdsPhoneNumberCountryIsoCode | undefined, phoneUtils: PhoneNumberUtil): boolean {
   if (!phoneNumber || !isoCode) {
     return true;
@@ -156,12 +136,11 @@ function parsePhoneNumber(phoneNumber: string | null, isoCode: OdsPhoneNumberCou
   }
 }
 
-// eslint-disable-next-line max-params
-async function updateInternals(internals: ElementInternals, value: string | null, validityState: ValidityState, inputEl?: HTMLElement & OdsInput, validityMessage?: string): Promise<void> {
+async function updateInternals(internals: ElementInternals, value: string | null, inputEl?: HTMLElement & OdsInput): Promise<void> {
   internals.setFormValue(value?.toString() ?? '');
 
   if (inputEl) {
-    await setInternalsValidityFromValidityState(inputEl, internals, validityState, validityMessage);
+    await setInternalsValidityFromOdsComponent(inputEl, internals);
   }
 }
 
@@ -187,8 +166,6 @@ export {
   getCurrentLocale,
   getNationalPhoneNumberExample,
   getTranslatedCountryMap,
-  getValidityMessage,
-  getValidityState,
   isValidPhoneNumber,
   parseCountries,
   parsePhoneNumber,

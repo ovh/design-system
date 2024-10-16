@@ -18,8 +18,8 @@ const VALUE_DEFAULT_VALUE = null;
   tag: 'ods-input',
 })
 export class OdsInput {
-  private observer?: MutationObserver;
   private inputEl?: HTMLInputElement;
+  private observer?: MutationObserver;
   private shouldUpdateIsInvalidState: boolean = false;
 
   @Element() el!: HTMLElement;
@@ -108,6 +108,18 @@ export class OdsInput {
     // Element internal validityState is not yet updated, so we set the flag
     // to update our internal state when it will be up-to-date
     this.shouldUpdateIsInvalidState = true;
+  }
+
+  @Method()
+  public async setCustomValidity(message: string): Promise<void> {
+    if (message) {
+      this.internals.setValidity({ customError: true }, message);
+    } else {
+      if (this.internals.validity.valid) {
+        // This would override all flags, even if some are still set to true
+        this.internals.setValidity({ customError: false });
+      }
+    }
   }
 
   @Method()

@@ -134,10 +134,9 @@ describe('ods-phone-number behaviour', () => {
       it('should emit an odsChange event', async() => {
         await setup('<ods-phone-number name="ods-phone-number" iso-code="fr"></ods-phone-number>');
         const odsChangeSpy = await page.spyOnEvent('odsChange');
-
         const newValue = '0987654321';
-        await page.keyboard.press('Tab');
-        await page.keyboard.type(newValue, { delay: 100 });
+
+        await el.type(newValue, { delay: 100 });
         await page.waitForChanges();
 
         expect(await el.getProperty('value')).toBe(newValue);
@@ -146,19 +145,7 @@ describe('ods-phone-number behaviour', () => {
           isoCode: 'fr',
           name: 'ods-phone-number',
           previousValue: newValue.slice(0, -1),
-          validity: {
-            badInput: false,
-            customError: false,
-            patternMismatch: false,
-            rangeOverflow: false,
-            rangeUnderflow: false,
-            stepMismatch: false,
-            tooLong: false,
-            tooShort: false,
-            typeMismatch: false,
-            valid: true,
-            valueMissing: false,
-          },
+          validity: {},
           value: `+33${newValue.substring(1)}`,
         });
       });

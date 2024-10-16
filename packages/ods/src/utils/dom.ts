@@ -36,12 +36,6 @@ function setInternalsValidityFromHtmlElement(formElement: HTMLInputElement | HTM
   return setInternalsValidity(formElement, internals, formElement.validity, formElement.validationMessage);
 }
 
-async function setInternalsValidityFromValidityState(odsFormElement: OdsFormElement, internals: ElementInternals, validity: ValidityState, validityMessage: string = ''): Promise<void> {
-  const validationMessage = await odsFormElement.getValidationMessage();
-
-  return setInternalsValidity(odsFormElement, internals, validity, validationMessage || validityMessage);
-}
-
 async function setInternalsValidityFromOdsComponent(odsFormElement: OdsFormElement, internals: ElementInternals): Promise<void> {
   const validityState = await odsFormElement.getValidity();
   const validationMessage = await odsFormElement.getValidationMessage();
@@ -61,6 +55,5 @@ export {
   isTargetInElement,
   setInternalsValidityFromHtmlElement,
   setInternalsValidityFromOdsComponent,
-  setInternalsValidityFromValidityState,
   submitFormOnEnter,
 };

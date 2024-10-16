@@ -46,6 +46,7 @@ export class OdsPhoneNumber {
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
   @Prop({ reflect: true }) public countries?: OdsPhoneNumberCountryIsoCode[] | OdsPhoneNumberCountryPreset | string;
+  @Prop({ reflect: true }) public customValidityMessage: string = 'Phone number is incorrect';
   @Prop({ reflect: true }) public defaultValue?: string;
   @Prop({ mutable: true, reflect: true }) public hasError: boolean = false;
   @Prop({ reflect: true }) public isClearable: boolean = false;
@@ -180,8 +181,7 @@ export class OdsPhoneNumber {
     this.value = event.detail.value as string ?? null;
 
     if (!isValidPhoneNumber(this.value, this.isoCode, this.phoneUtils)) {
-      // TODO add Prop to customize message
-      await this.inputElement?.setCustomValidity('Phone number format KO');
+      await this.inputElement?.setCustomValidity(this.customValidityMessage);
     } else {
       await this.inputElement?.setCustomValidity('');
     }

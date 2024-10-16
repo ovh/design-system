@@ -78,21 +78,47 @@
 
   <p>Form</p>
   <form id="opn-input-form">
-    <ods-phone-number name="input-form"
-                      value="+18444629181"
-                      is-required>
+    <ods-phone-number id="opn-element"
+                      iso-code="fr"
+                      is-required
+                      name="input-form"
+                      >
     </ods-phone-number>
+    <button id="opn-toggle-is-required-button" type="button">Toggle is required</button>
+    <button id="opn-reset-phone-number-button" type="button">Reset phone-number</button>
     <button id="opn-input-form-reset-button" type="reset">Reset</button>
     <button id="opn-input-form-submit-button" type="submit">Submit</button>
   </form>
   <script>
+    const opnElement = document.querySelector('#opn-element');
     const opnInputForm = document.querySelector('#opn-input-form');
     const opnInputSubmitFormButton = document.querySelector('#opn-input-form-submit-button');
+    const opnResetPhoneNumberButton = document.querySelector('#opn-reset-phone-number-button');
+    const opnToggleIsRequiredButton = document.querySelector('#opn-toggle-is-required-button');
 
-    opnInputSubmitFormButton.addEventListener('click', () => {
+    opnInputSubmitFormButton.addEventListener('click', async() => {
+      // e.preventDefault(); // comment to test native validation messages
       const formData = new FormData(opnInputForm);
       console.log('formData', formData);
+      console.log(await opnElement?.getValidity())
     });
+
+    opnResetPhoneNumberButton.addEventListener('click', async() => {
+      await opnElement.reset();
+    })
+
+    opnToggleIsRequiredButton.addEventListener('click', async() => {
+      if (opnElement.hasAttribute('is-required')) {
+        opnElement.removeAttribute('is-required');
+      } else {
+        opnElement.setAttribute('is-required', 'true');
+      }
+    });
+
+    // opnElement.addEventListener('odsChange', async(e) => {
+    //   console.log('on change', e.detail.value);
+    //   console.log(await opnElement.getValidity());
+    // });
   </script>
 
   <!--<p>Countries update</p>

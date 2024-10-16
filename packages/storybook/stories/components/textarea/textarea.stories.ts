@@ -15,12 +15,12 @@ export const Demo: StoryObj = {
     const validityStateTemplate = html`<br>
     <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
     <script>
-      (() => {
+      (async() => {
           const divValidityState = document.querySelector('#validity-state');
           const textarea = document.querySelector('.my-textarea');
           await customElements.whenDefined('ods-textarea');
           await renderValidityState();
-          textarea.addEventListener('odsChange', async () => {
+          textarea.addEventListener('odsChange', async() => {
             await renderValidityState();
           })
           async function renderValidityState() {
@@ -166,6 +166,7 @@ export const Demo: StoryObj = {
         type: { summary: 'boolean' },
       },
       control: 'boolean',
+      description: 'Toggle this to see the component validityState',
     },
   }),
   args: {

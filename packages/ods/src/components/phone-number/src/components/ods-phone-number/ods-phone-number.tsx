@@ -13,8 +13,6 @@ import {
   getCurrentLocale,
   getNationalPhoneNumberExample,
   getTranslatedCountryMap,
-  getValidityMessage,
-  getValidityState,
   isValidPhoneNumber,
   parseCountries,
   sortCountriesByName,
@@ -97,8 +95,8 @@ export class OdsPhoneNumber {
   }
 
   @Method()
-  public async getValidity(): Promise<ValidityState | undefined> {
-    return getValidityState(this.isInvalid, this.internals.validity);
+  public async getValidity(): Promise<ValidityState> {
+    return this.internals.validity;
   }
 
   @Method()
@@ -153,23 +151,11 @@ export class OdsPhoneNumber {
     }
 
     if (!this.value && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
-      this.onInputChange(new CustomEvent('', {
-        detail: {
-          name: this.name,
-          value: this.value,
-        },
-      }));
+      this.value = this.defaultValue ?? null;
     }
 
     // Watcher get called on will load, so we need to prevent value reset
     this.isInitialLoadDone = true;
-  }
-
-  async componentDidLoad(): Promise<void> {
-    const formattedValue = formatPhoneNumber(this.value, this.isoCode, this.phoneUtils);
-    const inputValidity = await this.inputElement?.getValidity?.();
-    const validityState = getValidityState(this.isInvalid, inputValidity);
-    await updateInternals(this.internals, formattedValue, validityState, this.inputElement);
   }
 
   async formResetCallback(): Promise<void> {
@@ -188,34 +174,20 @@ export class OdsPhoneNumber {
     this.isInvalid = this.getIsInvalid();
   }
 
-  private async onInputChange(event: OdsInputChangeEvent): Promise<void> {
+  private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
     event.stopImmediatePropagation();
 
-    this.value = event.detail.value?.toString() ?? null;
+    this.value = event.detail.value as string ?? null;
+
+    if (!isValidPhoneNumber(this.value, this.isoCode, this.phoneUtils)) {
+      // TODO add Prop to customize message
+      await this.inputElement?.setCustomValidity('Phone number format KO');
+    } else {
+      await this.inputElement?.setCustomValidity('');
+    }
+
     const formattedValue = formatPhoneNumber(this.value, this.isoCode, this.phoneUtils);
-
-    const validityState = await this.updateValidity(formattedValue);
-
-    this.odsChange.emit({
-      isoCode: this.isoCode,
-      name: this.name,
-      previousValue: event.detail.previousValue?.toString() ?? null,
-      validity: validityState,
-      value: formattedValue,
-    });
-  }
-
-  private onSelectChange(event: OdsSelectChangeEvent): void {
-    this.isoCode = event.detail.value as OdsPhoneNumberCountryIsoCode;
-  }
-
-  private async updateValidity(formattedValue: string | null): Promise<ValidityState> {
-    const inputValidityState = await this.inputElement?.getValidity();
-    const isNotValidPhoneNumber = !isValidPhoneNumber(this.value, this.isoCode, this.phoneUtils);
-    const validityMessage = getValidityMessage(isNotValidPhoneNumber);
-    const validityState = getValidityState(isNotValidPhoneNumber, inputValidityState);
-
-    await updateInternals(this.internals, formattedValue, validityState, this.inputElement, validityMessage);
+    await updateInternals(this.internals, formattedValue, this.inputElement);
 
     // In case the value gets updated from an other source than a blur event
     // we may have to perform an internal validity state update
@@ -223,7 +195,24 @@ export class OdsPhoneNumber {
       this.isInvalid = this.getIsInvalid();
       this.shouldUpdateIsInvalidState = false;
     }
-    return validityState;
+
+    this.odsChange.emit({
+      isoCode: this.isoCode,
+      name: this.name,
+      previousValue: event.detail.previousValue as string ?? null,
+      validity: this.internals.validity,
+      value: formattedValue,
+    });
+  }
+
+  private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+    const formattedValue = formatPhoneNumber(this.value, this.isoCode, this.phoneUtils);
+    await updateInternals(this.internals, formattedValue, this.inputElement);
+    this.isInvalid = event.detail;
+  }
+
+  private onSelectChange(event: OdsSelectChangeEvent): void {
+    this.isoCode = event.detail.value as OdsPhoneNumberCountryIsoCode;
   }
 
   render(): FunctionalComponent {
@@ -289,7 +278,8 @@ export class OdsPhoneNumber {
           name={ this.name }
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           onOdsBlur={ () => this.onBlur() }
-          onOdsChange={ (e: OdsInputChangeEvent) => this.onInputChange(e) }
+          onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
+          onOdsInvalid={ (event: CustomEvent<boolean>) => this.onOdsInvalid(event) }
           exportparts="input"
           pattern={ this.pattern }
           placeholder={ this.getPlaceholder() }

@@ -17,6 +17,12 @@ describe('ods-phone-number rendering', () => {
     });
   }
 
+  async function isInErrorState(): Promise<boolean | undefined> {
+    return await page.evaluate(() => {
+      return document.querySelector('ods-phone-number')?.shadowRoot?.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
+    });
+  }
+
   async function setup(content: string, customStyle?: string): Promise<void> {
     page = await newE2EPage();
 
@@ -89,6 +95,12 @@ describe('ods-phone-number rendering', () => {
   });
 
   describe('error state', () => {
+    it('should not render in error state on first render even if required', async() => {
+      await setup('<ods-phone-number is-required></ods-phone-number>');
+
+      expect(await isInErrorState()).toBe(false);
+    });
+
     it('should render in error on form submit, before any changes, if invalid', async() => {
       await setup('<form method="get" onsubmit="return false"><ods-phone-number is-required></ods-phone-number></form>');
 
@@ -97,10 +109,7 @@ describe('ods-phone-number rendering', () => {
       });
       await page.waitForChanges();
 
-      const hasErrorClass = await page.evaluate(() => {
-        return document.querySelector('ods-phone-number')?.shadowRoot?.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
-      });
-      expect(hasErrorClass).toBe(true);
+      expect(await isInErrorState()).toBe(true);
     });
 
     it('should toggle the error state on value change', async() => {
@@ -109,40 +118,44 @@ describe('ods-phone-number rendering', () => {
       await el.type('abcd');
       await page.waitForChanges();
 
-      const hasErrorClass = await page.evaluate(() => {
-        return document.querySelector('ods-phone-number')?.shadowRoot?.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
-      });
-      expect(hasErrorClass).toBe(false);
+      expect(await isInErrorState()).toBe(false);
 
       await el.callMethod('clear');
       await page.click('body', { offset: { x: 200, y: 200 } }); // Blur
       await page.waitForChanges();
 
-      const hasErrorClass2 = await page.evaluate(() => {
-        return document.querySelector('ods-phone-number')?.shadowRoot?.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
-      });
-      await page.waitForChanges();
-      expect(hasErrorClass2).toBe(true);
+      expect(await isInErrorState()).toBe(true);
     });
 
     it('should enforce the error state if has-error is set even on valid phone-number', async() => {
       await setup('<form method="get" onsubmit="return false"><ods-phone-number is-required has-error value="+18444629181"></ods-phone-number></form>');
       await page.waitForChanges();
 
-      const hasErrorClass = await page.evaluate(() => {
-        return document.querySelector('ods-phone-number')?.shadowRoot?.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
-      });
-      expect(hasErrorClass).toBe(true);
+      expect(await isInErrorState()).toBe(true);
 
       await page.evaluate(() => {
         document.querySelector<HTMLFormElement>('form')?.requestSubmit();
       });
       await page.waitForChanges();
 
-      const hasErrorClass2 = await page.evaluate(() => {
-        return document.querySelector('ods-phone-number')?.shadowRoot?.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
-      });
-      expect(hasErrorClass2).toBe(true);
+      expect(await isInErrorState()).toBe(true);
+    });
+
+    it('should update error state on odsInvalid event', async() => {
+      await setup('<ods-phone-number></ods-phone-number>');
+      const input = await page.find('ods-phone-number >>> ods-input');
+
+      expect(await isInErrorState()).toBe(false);
+
+      input.triggerEvent('odsInvalid', { detail: true });
+      await page.waitForChanges();
+
+      expect(await isInErrorState()).toBe(true);
+
+      input.triggerEvent('odsInvalid', { detail: false });
+      await page.waitForChanges();
+
+      expect(await isInErrorState()).toBe(false);
     });
   });
 });

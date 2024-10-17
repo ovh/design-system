@@ -22,7 +22,7 @@ export const Demo: StoryObj = {
           const datepicker = document.querySelector('.my-datepicker');
           await customElements.whenDefined('ods-datepicker');
           await renderValidityState();
-          datepicker.addEventListener('odsChange', () => {
+          datepicker.addEventListener('odsChange', async() => {
             await renderValidityState();
           })
           async function renderValidityState() {

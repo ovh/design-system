@@ -235,12 +235,9 @@ export class OdsDatepicker {
       // Triggered either by user selection or `setDate` instance method call
       this.inputElement.addEventListener('changeDate', (event: Event) => {
         const newDate: Date = (event as CustomEvent).detail.date;
-        // console.log('changeDate', (event as CustomEvent).detail, newDate, this.value);
         const formattedNewDate = formatDate(newDate, this.format);
 
         const previousValue = this.value;
-        // console.log('changeDate newDate', newDate instanceof Date ? newDate.toISOString() : newDate);
-        // console.log('changeDate previousValue', previousValue instanceof Date ? previousValue.toISOString() : previousValue);
         this.value = newDate ?? null;
         this.onValueChange(formattedNewDate, previousValue);
       });

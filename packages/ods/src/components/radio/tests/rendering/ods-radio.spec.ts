@@ -2,6 +2,12 @@ import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { OdsRadio } from '../../src';
 
+// @ts-ignore for test purposes
+global.MutationObserver = jest.fn(() => ({
+  disconnect: jest.fn(),
+  observe: jest.fn(),
+}));
+
 describe('ods-radio rendering', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;

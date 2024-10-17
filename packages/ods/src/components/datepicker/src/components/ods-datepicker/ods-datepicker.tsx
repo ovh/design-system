@@ -272,6 +272,7 @@ export class OdsDatepicker {
 
   private onBlur(): void {
     this.isInvalid = !this.internals.validity.valid;
+    this.shouldUpdateIsInvalidState = true;
     this.odsBlur.emit();
   }
 

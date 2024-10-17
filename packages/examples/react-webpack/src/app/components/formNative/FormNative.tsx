@@ -138,27 +138,24 @@ function FormNative(): ReactElement {
         name="quantity"
       />
 
-      {/*/!* OKish no validity method but required is managed by browser directly *!/*/}
-      {/*<div>*/}
-      {/*  <OdsRadio*/}
-      {/*    // isRequired={ true }*/}
-      {/*    inputId="radio1"*/}
-      {/*    name="radio"*/}
-      {/*    isChecked*/}
-      {/*    value="radio-1"*/}
-      {/*    ref={ radioRef }*/}
+      {/* OKish no validity method but required is managed by browser directly */}
+      <div>
+        <OdsRadio
+          isRequired={ areAllRequired }
+          inputId="radio1"
+          name="radio"
+          value="radio-1"
+        />
+        <label htmlFor="radio1">Radio 1</label>
 
-      {/*  />*/}
-      {/*  <label htmlFor="radio1">Radio 1</label>*/}
-
-      {/*  <OdsRadio*/}
-      {/*    // isRequired={ true }*/}
-      {/*    inputId="radio2"*/}
-      {/*    name="radio"*/}
-      {/*    value="radio-2"*/}
-      {/*  />*/}
-      {/*  <label htmlFor="radio2">Radio 2</label>*/}
-      {/*</div>*/}
+        <OdsRadio
+          isRequired={ areAllRequired }
+          inputId="radio2"
+          name="radio"
+          value="radio-2"
+        />
+        <label htmlFor="radio2">Radio 2</label>
+      </div>
 
       {/*/!* KO required does not return valid: false on empty select *!/*/}
       {/*/!* KO reset return empty string instead of null *!/*/}

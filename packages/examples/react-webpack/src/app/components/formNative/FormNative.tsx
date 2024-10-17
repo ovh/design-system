@@ -55,25 +55,24 @@ function FormNative(): ReactElement {
         - All fields have default value: {withDefaultValue.toString()}
       </p>
 
-      {/*<div>*/}
-      {/*  /!* OKish no validity method but required is managed by browser directly *!/*/}
-      {/*  <OdsCheckbox*/}
-      {/*    // isRequired={ true }*/}
-      {/*    inputId="checkbox"*/}
-      {/*    name="checkbox"*/}
-      {/*    value="checkbox"*/}
-      {/*    ref={ checkboxRef }*/}
-      {/*  />*/}
-      {/*  <label htmlFor="checkbox">Checked</label>*/}
+      <div>
+        {/* OKish no validity method but required is managed by browser directly */}
+        <OdsCheckbox
+          isRequired={ areAllRequired }
+          inputId="checkbox"
+          name="checkbox"
+          value="checkbox"
+        />
+        <label htmlFor="checkbox">Checked</label>
 
-      {/*  <OdsCheckbox*/}
-      {/*    // isRequired={ true }*/}
-      {/*    inputId="checkbox2"*/}
-      {/*    name="checkbox"*/}
-      {/*    value="checkbox2"*/}
-      {/*  />*/}
-      {/*  <label htmlFor="checkbox2">Checked 2</label>*/}
-      {/*</div>*/}
+        <OdsCheckbox
+          isRequired={ areAllRequired }
+          inputId="checkbox2"
+          name="checkbox"
+          value="checkbox2"
+        />
+        <label htmlFor="checkbox2">Checked 2</label>
+      </div>
 
       {/*/!* KO? reset to "" instead of null *!/*/}
       {/*<OdsDatepicker*/}

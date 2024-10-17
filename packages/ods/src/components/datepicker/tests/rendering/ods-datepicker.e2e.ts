@@ -111,6 +111,30 @@ describe('ods-datepicker rendering', () => {
       expect(hasErrorClass2).toBe(true);
     });
 
+    it('should toggle the error state on manual value change', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-datepicker is-required></ods-datepicker></form>');
+
+      await page.evaluate(() => {
+        document.querySelector<OdsDatepicker & HTMLElement>('ods-datepicker')!.value = new Date('10 May 2024');
+      });
+      await page.waitForChanges();
+
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.classList.contains('ods-datepicker__input--error');
+      });
+      expect(hasErrorClass).toBe(false);
+
+      await el.press('Backspace');
+      await page.click('body', { offset: { x: 400, y: 400 } }); // Blur
+      await page.waitForChanges();
+
+      const hasErrorClass2 = await page.evaluate(() => {
+        return document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.classList.contains('ods-datepicker__input--error');
+      });
+      await page.waitForChanges();
+      expect(hasErrorClass2).toBe(true);
+    });
+
     it('should enforce the error state if has-error is set even on valid datepicker', async() => {
       await setup('<form method="get" onsubmit="return false"><ods-datepicker is-required has-error value="dummy"></ods-datepicker></form>');
       await page.waitForChanges();
@@ -130,5 +154,7 @@ describe('ods-datepicker rendering', () => {
       });
       expect(hasErrorClass2).toBe(true);
     });
+
+
   });
 });

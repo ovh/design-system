@@ -1,10 +1,12 @@
-import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_INPUT_TYPE, type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
-import { isMinusButtonDisabled, isPlusButtonDisabled, setFormValue } from '../../controller/ods-quantity';
+import { isMinusButtonDisabled, isPlusButtonDisabled, updateInternals } from '../../controller/ods-quantity';
 import { type OdsQuantityChangeEventDetail } from '../../interfaces/events';
+
+const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -15,9 +17,12 @@ import { type OdsQuantityChangeEventDetail } from '../../interfaces/events';
   tag: 'ods-quantity',
 })
 export class OdsQuantity {
-  private odsInput?: OdsInput;
+  private odsInput?: HTMLElement & OdsInput;
+  private shouldUpdateIsInvalidState: boolean = false;
 
   @AttachInternals() internals!: ElementInternals;
+
+  @State() isInvalid: boolean = false;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -31,7 +36,7 @@ export class OdsQuantity {
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public placeholder?: string;
   @Prop({ reflect: true }) public step?: number;
-  @Prop({ mutable: true, reflect: true }) public value: number | null = null;
+  @Prop({ mutable: true, reflect: true }) public value: number | null = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsChange!: EventEmitter<OdsQuantityChangeEventDetail>;
@@ -39,63 +44,131 @@ export class OdsQuantity {
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
 
+  @Listen('invalid')
+  onInvalidEvent(event: Event): void {
+    // Remove the native validation message popup
+    event.preventDefault();
+
+    // Enforce the state here as we may still be in pristine state (if the form is submitted before any changes occurs)
+    this.isInvalid = true;
+  }
+
+  @Method()
+  public async checkValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
+    return this.internals.checkValidity();
+  }
+
   @Method()
   public async clear(): Promise<void> {
-    return this.odsInput?.clear();
+    await this.odsInput?.clear();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
+    this.shouldUpdateIsInvalidState = true;
+  }
+
+  @Method()
+  public async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
   }
 
   @Method()
   public async getValidity(): Promise<ValidityState | undefined> {
-    return this.odsInput?.getValidity();
+    return this.internals.validity;
+  }
+
+  @Method()
+  public async reportValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
+    return this.internals.reportValidity();
   }
 
   @Method()
   public async reset(): Promise<void> {
-    return this.odsInput?.reset();
+    await this.odsInput?.reset();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
+    this.shouldUpdateIsInvalidState = true;
+  }
+
+  @Method()
+  public async willValidate(): Promise<boolean> {
+    return this.internals.willValidate;
   }
 
   componentWillLoad(): void {
-    if (!this.value && this.value !== 0) {
+    if (!this.value && this.value !== 0 && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue !== undefined)) {
       this.value = this.defaultValue ?? null;
     }
-    setFormValue(this.internals, this.value);
+  }
+
+  async componentDidLoad(): Promise<void> {
+    await updateInternals(this.internals, this.value, this.odsInput);
   }
 
   async formResetCallback(): Promise<void> {
     await this.reset();
   }
 
-  private decrement(): void {
+  private async decrement(): Promise<void> {
     if (this.isDisabled || this.isReadonly) {
       return;
     }
     const step = this.step || 1;
     this.value = this.value !== null ? Number(this.value) - step : 0;
+    this.shouldUpdateIsInvalidState = true;
   }
 
-  private increment(): void {
+  private async increment(): Promise<void> {
     if (this.isDisabled || this.isReadonly) {
       return;
     }
     const step = this.step || 1;
     this.value = this.value !== null ? Number(this.value) + step : 0;
+    this.shouldUpdateIsInvalidState = true;
   }
 
-  private onOdsChange(event: OdsInputChangeEvent): void {
+  private onOdsBlur(): void {
+    this.isInvalid = !this.internals.validity.valid;
+  }
+
+  private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
     if (event.detail.value === null) {
       this.value = null;
     } else {
       this.value = Number(event.detail.value) ?? null;
     }
-    setFormValue(this.internals, this.value);
+
+    await updateInternals(this.internals, this.value, this.odsInput);
+
+    // In case the value gets updated from an other source than a blur event
+    // we may have to perform an internal validity state update
+    if (this.shouldUpdateIsInvalidState) {
+      await this.odsInput?.reportValidity();
+      this.isInvalid = !this.internals.validity.valid;
+    }
+  }
+
+  private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+    await updateInternals(this.internals, this.value, this.odsInput);
+    this.isInvalid = event.detail;
+  }
+
+  private getHasError(): boolean {
+    return this.hasError || this.isInvalid;
   }
 
   render(): FunctionalComponent {
     return (
-      <Host class="ods-quantity">
+      <Host
+        class="ods-quantity"
+        disabled={ this.isDisabled }
+        readonly={ this.isReadonly }>
         <ods-button
           class="ods-quantity__button"
-          color={ this.hasError ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
+          color={ this.getHasError() ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
           exportparts="button:button-minus"
           isDisabled={ isMinusButtonDisabled(this.isDisabled, this.isReadonly, this.value, this.min) }
           icon={ ODS_ICON_NAME.minus }
@@ -111,17 +184,19 @@ export class OdsQuantity {
           class="ods-quantity__input"
           defaultValue={ this.defaultValue }
           exportparts="input"
-          hasError={ this.hasError }
+          hasError={ this.getHasError() }
           isDisabled={ this.isDisabled }
           isReadonly={ this.isReadonly }
           isRequired={ this.isRequired }
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
+          onOdsBlur={ () => this.onOdsBlur() }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
+          onOdsInvalid={ (event: CustomEvent<boolean>) => this.onOdsInvalid(event) }
           max={ this.max }
           min={ this.min }
           name={ this.name }
           placeholder={ this.placeholder }
-          ref={ (el?: unknown) => this.odsInput = el as OdsInput }
+          ref={ (el?: unknown) => this.odsInput = el as HTMLElement & OdsInput }
           step={ this.step }
           type={ ODS_INPUT_TYPE.number }
           value={ this.value }>
@@ -129,7 +204,7 @@ export class OdsQuantity {
 
         <ods-button
           class="ods-quantity__button"
-          color={ this.hasError ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
+          color={ this.getHasError() ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
           exportparts="button:button-plus"
           isDisabled={ isPlusButtonDisabled(this.isDisabled, this.isReadonly, this.value, this.max) }
           icon={ ODS_ICON_NAME.plus }

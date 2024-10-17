@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, ODS_PHONE_NUMBER_LOCALES } from '@ovhcloud/ods-components';
-import { html } from 'lit-html';
+import { html, nothing } from 'lit-html';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -12,7 +12,28 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg) => html`
+  render: (arg) => {
+    const validityStateTemplate = html`<br>
+    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
+    <script>
+      (async () => {
+          const divValidityState = document.querySelector('#validity-state');
+          const phoneNumber = document.querySelector('.my-phone-number');
+          await customElements.whenDefined('ods-phone-number');
+          await renderValidityState();
+          phoneNumber.addEventListener('odsChange', async () => {
+            await renderValidityState();
+          })
+          async function renderValidityState() {
+            const validity = await phoneNumber.getValidity()
+            divValidityState.innerHTML = '';
+            for (let key in validity) {
+              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+            }
+          }
+      })();
+    </script>`;
+    return html`
     <ods-phone-number class="my-phone-number"
                       aria-label="${arg.ariaLabel}"
                       aria-labelledby="${arg.ariaLabelledby}"
@@ -22,10 +43,12 @@ export const Demo: StoryObj = {
                       is-disabled="${arg.isDisabled}"
                       is-loading="${arg.isLoading}"
                       is-readonly="${arg.isReadonly}"
+                      is-required="${arg.isRequired}"
                       iso-code="${arg.isoCode}"
                       locale="${arg.locale}"
-                      pattern="${arg.pattern}">
+                      pattern="${arg.pattern || nothing}">
     </ods-phone-number>
+    ${ arg.validityState ? validityStateTemplate : '' }
     <style>
       .my-phone-number::part(input) {
         ${arg.customInputCss}
@@ -34,7 +57,8 @@ export const Demo: StoryObj = {
         ${arg.customSelectCss}
       }
     </style>
-  `,
+  `;
+  },
   argTypes: orderControls({
     ariaLabel: {
       table: {
@@ -117,6 +141,14 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
+    isRequired: {
+      control: 'boolean',
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' },
+      },
+    },
     isoCode: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -143,6 +175,15 @@ export const Demo: StoryObj = {
       },
       control: 'text',
     },
+    validityState: {
+      table: {
+        category: CONTROL_CATEGORY.accessibility,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+      description: 'Toggle this to see the component validityState',
+    },
   }),
   args: {
     countries: false,
@@ -151,6 +192,8 @@ export const Demo: StoryObj = {
     isDisabled: false,
     isLoading: false,
     isReadonly: false,
+    isRequired: false,
+    validityState: false,
   },
 };
 
@@ -287,4 +330,29 @@ export const Readonly: StoryObj = {
                       is-readonly>
     </ods-phone-number>
   `,
+};
+
+export const ValidityState: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-phone-number is-required id="phone-number-validity-state-demo">
+</ods-phone-number>
+<div id="validity-state-demo"></div>
+<script>
+  (() => {
+      const divValidityState = document.querySelector('#validity-state-demo');
+      const phoneNumber = document.querySelector('#phone-number-validity-state-demo');
+      phoneNumber.addEventListener('odsChange', async () => {
+        await renderValidityState();
+      })
+      async function renderValidityState() {
+        const validity = await phoneNumber.getValidity()
+        divValidityState.innerHTML = '';
+        for (let key in validity) {
+          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+        }
+      }
+  })();
+</script>
+`,
 };

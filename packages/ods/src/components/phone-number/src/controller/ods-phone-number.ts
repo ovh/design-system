@@ -1,4 +1,6 @@
+import type { OdsInput } from '../../../input/src';
 import { type PhoneNumber, PhoneNumberFormat, type PhoneNumberUtil } from 'google-libphonenumber';
+import { setInternalsValidityFromOdsComponent } from '../../../../utils/dom';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODE, ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, type OdsPhoneNumberCountryIsoCode } from '../constants/phone-number-country-iso-code';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET, type OdsPhoneNumberCountryPreset } from '../constants/phone-number-country-preset';
 import { ODS_PHONE_NUMBER_LOCALE, ODS_PHONE_NUMBER_LOCALES, type OdsPhoneNumberLocale } from '../constants/phone-number-locale';
@@ -13,11 +15,7 @@ import countriesTranslationPt from '../i18n/countries-pt';
 
 type TranslatedCountryMap = Map<OdsPhoneNumberCountryIsoCode, { isoCode: OdsPhoneNumberCountryIsoCode , name: string, phoneCode?: number }>;
 
-function formatPhoneNumber(value: string | null, hasError: boolean, isoCode: OdsPhoneNumberCountryIsoCode | undefined, phoneUtils: PhoneNumberUtil): string | null {
-  if (hasError) {
-    return null;
-  }
-
+function formatPhoneNumber(value: string | null, isoCode: OdsPhoneNumberCountryIsoCode | undefined, phoneUtils: PhoneNumberUtil): string | null {
   const phoneNumber = parsePhoneNumber(value, isoCode, phoneUtils);
 
   if (!phoneNumber) {
@@ -93,29 +91,12 @@ function getTranslatedCountryMap(locale: OdsPhoneNumberLocale, phoneUtils: Phone
   }, new Map());
 }
 
-function getValidityState(hasError: boolean, inputValidity?: ValidityState): ValidityState {
-  return {
-    badInput: inputValidity?.badInput || false,
-    customError: inputValidity?.customError || false,
-    patternMismatch: inputValidity?.patternMismatch || false,
-    rangeOverflow: inputValidity?.rangeOverflow || false,
-    rangeUnderflow: inputValidity?.rangeUnderflow || false,
-    stepMismatch: inputValidity?.stepMismatch || false,
-    tooLong: inputValidity?.tooLong || false,
-    tooShort: inputValidity?.tooShort || false,
-    typeMismatch: inputValidity?.typeMismatch || false,
-    valid: inputValidity?.valid === false ? inputValidity?.valid : !hasError,
-    valueMissing: inputValidity?.valueMissing || false,
-  };
-}
-
 function isValidPhoneNumber(phoneNumber: string | null, isoCode: OdsPhoneNumberCountryIsoCode | undefined, phoneUtils: PhoneNumberUtil): boolean {
   if (!phoneNumber || !isoCode) {
     return true;
   }
 
   const number = parsePhoneNumber(phoneNumber, isoCode, phoneUtils);
-
   if (!number) {
     return false;
   }
@@ -155,8 +136,12 @@ function parsePhoneNumber(phoneNumber: string | null, isoCode: OdsPhoneNumberCou
   }
 }
 
-function setFormValue(internals: ElementInternals, value: string | null): void {
+async function updateInternals(internals: ElementInternals, value: string | null, inputEl?: HTMLElement & OdsInput): Promise<void> {
   internals.setFormValue(value?.toString() ?? '');
+
+  if (inputEl) {
+    await setInternalsValidityFromOdsComponent(inputEl, internals);
+  }
 }
 
 function sortCountriesByName(countryCodes: OdsPhoneNumberCountryIsoCode[], countriesMap: TranslatedCountryMap): OdsPhoneNumberCountryIsoCode[] {
@@ -181,10 +166,9 @@ export {
   getCurrentLocale,
   getNationalPhoneNumberExample,
   getTranslatedCountryMap,
-  getValidityState,
   isValidPhoneNumber,
   parseCountries,
   parsePhoneNumber,
-  setFormValue,
+  updateInternals,
   sortCountriesByName,
 };

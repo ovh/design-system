@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <p>Default</p>
+  <!-- <p>Default</p>
   <ods-password id="my-password">
   </ods-password>
   <script>
@@ -67,27 +67,34 @@
       width: 100px;
       height: 50px;
     }
-  </style>
+  </style> -->
 
   <p>Form</p>
-  <form id="password-form" target="_self">
-    <ods-password name="ods-password" value="On Vous Heberge" clearable></ods-password>
+  <form id="password-form" target="_self" onsubmit="return false">
+    <ods-password name="ods-password" id="ods-password-form" is-required></ods-password>
     <button id="form-reset-button" type="reset">Reset</button>
     <button id="form-submit-button" type="submit">Submit</button>
   </form>
   <script>
-     const form = document.getElementById('password-form');
+    const form = document.getElementById('password-form');
     const resetFormButton = document.getElementById('form-reset-button');
     const submitFormButton = document.getElementById('form-submit-button');
+    const passwordForm = document.querySelector('#ods-password-form')
 
-    submitFormButton.addEventListener('click', () => {
+    submitFormButton.addEventListener('click', async() => {
       const formData = new FormData(form);
       console.log('formData', formData);
+      console.log(await passwordForm.getValidity())
     });
+    // ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange', 'odsToggleMask'].forEach((eventName) =>{
+    //   passwordForm.addEventListener(eventName, (event) => {
+    //     console.log(eventName, event);
+    //   });
+    // });
   </script>
 
   <p>Methods</p>
-  <ods-password id="password-methods">
+  <ods-password default-value="default" is-required id="password-methods">
   </ods-password>
   <button id="clear-button">clear</button>
   <button id="reset-button">reset</button>

@@ -80,7 +80,7 @@ describe('ods-textarea behaviour', () => {
         await setup('<ods-textarea name="ods-textarea"></ods-textarea>');
         const odsValueChangeSpy = await page.spyOnEvent('odsChange');
 
-        await textarea.type(dummyValue);
+        await textarea.type(dummyValue, { delay: 100 });
         await page.waitForChanges();
 
         expect(await el.getProperty('value')).toBe(dummyValue);

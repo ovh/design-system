@@ -98,17 +98,23 @@ describe('ods-timepicker navigation', () => {
       await setup('<ods-timepicker value="11:11:00" with-seconds></ods-timepicker>');
 
       await page.keyboard.press('Tab');
+      await page.waitForChanges();
       await page.keyboard.press('ArrowUp');
+      await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBe('12:11:00');
 
       await page.keyboard.press('Tab');
+      await page.waitForChanges();
       await page.keyboard.press('ArrowUp');
+      await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBe('12:12:00');
 
       await page.keyboard.press('Tab');
+      await page.waitForChanges();
       await page.keyboard.press('ArrowUp');
+      await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBe('12:12:01');
     });
@@ -117,17 +123,23 @@ describe('ods-timepicker navigation', () => {
       await setup('<ods-timepicker value="11:11:00" with-seconds></ods-timepicker>');
 
       await page.keyboard.press('Tab');
+      await page.waitForChanges();
       await page.keyboard.press('ArrowDown');
+      await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBe('10:11:00');
 
       await page.keyboard.press('Tab');
+      await page.waitForChanges();
       await page.keyboard.press('ArrowDown');
+      await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBe('10:10:00');
 
       await page.keyboard.press('Tab');
+      await page.waitForChanges();
       await page.keyboard.press('ArrowDown');
+      await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBe('10:10:59');
     });
@@ -136,27 +148,37 @@ describe('ods-timepicker navigation', () => {
       await setup('<ods-timepicker value="11:11:00" with-seconds></ods-timepicker>');
 
       await page.keyboard.press('Tab');
+      await page.waitForChanges();
       await page.keyboard.press('ArrowUp');
+      await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBe('12:11:00');
 
       await page.keyboard.press('ArrowRight');
+      await page.waitForChanges();
       await page.keyboard.press('ArrowUp');
+      await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBe('12:12:00');
 
       await page.keyboard.press('ArrowRight');
+      await page.waitForChanges();
       await page.keyboard.press('ArrowUp');
+      await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBe('12:12:01');
 
       await page.keyboard.press('ArrowLeft');
+      await page.waitForChanges();
       await page.keyboard.press('ArrowUp');
+      await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBe('12:13:01');
 
       await page.keyboard.press('ArrowLeft');
+      await page.waitForChanges();
       await page.keyboard.press('ArrowUp');
+      await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBe('13:13:01');
     });

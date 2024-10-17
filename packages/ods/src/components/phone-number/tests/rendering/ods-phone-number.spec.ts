@@ -65,6 +65,22 @@ describe('ods-phone-number rendering', () => {
     });
   });
 
+  describe('customValidityMessage', () => {
+    it('should be reflected', async() => {
+      const dummyValue = 'dummy value';
+
+      await setup(`<ods-phone-number custom-validity-message="${dummyValue}"></ods-phone-number>`);
+
+      expect(root?.getAttribute('custom-validity-message')).toBe(dummyValue);
+    });
+
+    it('should render with expected default value', async() => {
+      await setup('<ods-phone-number></ods-phone-number>');
+
+      expect(root?.getAttribute('custom-validity-message')).toBe('Phone number is incorrect');
+    });
+  });
+
   describe('defaultValue', () => {
     it('should be reflected', async() => {
       const dummyValue = 'dummy value';

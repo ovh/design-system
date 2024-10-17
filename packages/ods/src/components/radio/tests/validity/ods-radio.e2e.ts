@@ -220,4 +220,24 @@ describe('ods-radio validity', () => {
       expect(formValidity).toBe(true);
     });
   });
+
+  describe('watchers', () => {
+    describe('is-required', () => {
+      it('should update validity when is-required change', async() => {
+        await setup('<ods-radio name="validity-test" is-required></ods-radio>');
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+
+        await el.removeAttribute('is-required');
+        await page.waitForChanges();
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
+
+        await el.setAttribute('is-required', 'true');
+        await page.waitForChanges();
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+      });
+    });
+  });
 });

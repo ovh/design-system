@@ -10,6 +10,7 @@ import { type OdsCheckboxChangeEventDetail } from '../../interfaces/event';
 })
 export class OdsCheckbox {
   private inputEl?: HTMLInputElement;
+  private observer?: MutationObserver;
 
   @State() private isInvalid: boolean = false;
 
@@ -85,6 +86,29 @@ export class OdsCheckbox {
     return this.inputEl?.willValidate;
   }
 
+  componentWillLoad(): void {
+    this.observer = new MutationObserver((mutations: MutationRecord[]) => {
+      for (const mutation of mutations) {
+        if (mutation.attributeName === 'required') {
+          this.isInvalid = !this.inputEl?.validity.valid;
+        }
+      }
+    });
+  }
+
+  componentDidLoad(): void {
+    if (this.inputEl) {
+      this.observer?.observe(this.inputEl, {
+        attributeFilter: ['required'],
+        attributeOldValue: false,
+      });
+    }
+  }
+
+  disconnectedCallback(): void {
+    this.observer?.disconnect();
+  }
+
   async formResetCallback(): Promise<void> {
     await this.reset();
   }
@@ -118,7 +142,8 @@ export class OdsCheckbox {
 
   render(): FunctionalComponent {
     return (
-      <Host class="ods-checkbox"
+      <Host
+        class="ods-checkbox"
         disabled={ this.isDisabled }>
         <input
           aria-label={ this.ariaLabel }

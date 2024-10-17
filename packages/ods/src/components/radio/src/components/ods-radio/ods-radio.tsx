@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, h } from '@stencil/core';
+import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsRadioChangeEventDetail } from '../../interfaces/events';
 
@@ -10,8 +10,7 @@ import { type OdsRadioChangeEventDetail } from '../../interfaces/events';
 })
 export class OdsRadio {
   private inputEl?: HTMLInputElement;
-
-  @Element() el!: HTMLElement;
+  private observer?: MutationObserver;
 
   @State() private isInvalid: boolean = false;
 
@@ -62,6 +61,12 @@ export class OdsRadio {
   }
 
   @Method()
+  public async reportValidity(): Promise<boolean | undefined> {
+    this.isInvalid = !this.inputEl?.validity.valid;
+    return this.inputEl?.reportValidity();
+  }
+
+  @Method()
   public async reset(): Promise<void> {
     this.getOdsRadiosGroupByName().forEach((radio) => {
       const inputRadio = radio.querySelector<HTMLInputElement>('input[type="radio"]');
@@ -84,12 +89,6 @@ export class OdsRadio {
   }
 
   @Method()
-  public async reportValidity(): Promise<boolean | undefined> {
-    this.isInvalid = !this.inputEl?.validity.valid;
-    return this.inputEl?.reportValidity();
-  }
-
-  @Method()
   public async select(): Promise<void> {
     this.inputEl?.click();
   }
@@ -97,6 +96,29 @@ export class OdsRadio {
   @Method()
   public async willValidate(): Promise<boolean | undefined> {
     return this.inputEl?.willValidate;
+  }
+
+  componentWillLoad(): void {
+    this.observer = new MutationObserver((mutations: MutationRecord[]) => {
+      for (const mutation of mutations) {
+        if (mutation.attributeName === 'required') {
+          this.isInvalid = !this.inputEl?.validity.valid;
+        }
+      }
+    });
+  }
+
+  componentDidLoad(): void {
+    if (this.inputEl) {
+      this.observer?.observe(this.inputEl, {
+        attributeFilter: ['required'],
+        attributeOldValue: false,
+      });
+    }
+  }
+
+  disconnectedCallback(): void {
+    this.observer?.disconnect();
   }
 
   async formResetCallback(): Promise<void> {
@@ -112,13 +134,18 @@ export class OdsRadio {
     });
   }
 
-  private getOdsRadiosGroupByName(): NodeListOf<Element> {
+  private getOdsRadiosGroupByName(): NodeListOf<Element & OdsRadio> {
     return document.querySelectorAll(`ods-radio[name="${this.name}"]`);
   }
 
   private onBlur(): void {
     this.isInvalid = !this.inputEl?.validity.valid;
     this.odsBlur.emit();
+
+    this.getOdsRadiosGroupByName().forEach((radio: OdsRadio) => {
+      // This will enforce error state to be updated on all radio when blurring
+      radio.checkValidity();
+    });
   }
 
   private onInput(event: Event): void {
@@ -141,7 +168,8 @@ export class OdsRadio {
 
   render(): FunctionalComponent {
     return (
-      <Host class="ods-radio"
+      <Host
+        class="ods-radio"
         disabled={ this.isDisabled }>
         <input
           aria-label={ this.ariaLabel }

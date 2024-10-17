@@ -17,16 +17,16 @@ export const Demo: StoryObj = {
     const validityStateTemplate = html`<br>
     <div id="validity-state-datepicker" style="display: grid; row-gap: 5px;"></div>
     <script>
-      (() => {
+      (async() => {
           const divValidityState = document.querySelector('#validity-state-datepicker');
           const datepicker = document.querySelector('.my-datepicker');
-          console.log('datepicker', datepicker)
-          setTimeout(async() => await renderValidityState(), 0);
+          await customElements.whenDefined('ods-datepicker');
+          await renderValidityState();
           datepicker.addEventListener('odsChange', () => {
-            setTimeout(async() => await renderValidityState(), 0);
+            await renderValidityState();
           })
           async function renderValidityState() {
-            const validity = await datepicker?.getValidity()
+            const validity = await datepicker.getValidity()
             divValidityState.innerHTML = '';
             for (let key in validity) {
               divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
@@ -175,6 +175,7 @@ export const Demo: StoryObj = {
         type: { summary: 'boolean' },
       },
       control: 'boolean',
+      description: 'Toggle this to see the component validityState',
     },
   }),
   args: {
@@ -325,9 +326,9 @@ export const ValidityState: StoryObj = {
   (async() => {
       const divValidityState = document.querySelector('#validity-state-demo');
       const datepicker = document.querySelector('#datepicker-validity-state-demo');
-      setTimeout(async() => { await renderValidityState() }, 0)
-      datepicker.addEventListener('odsChange', () => {
-        setTimeout(async() => { await renderValidityState() }, 0)
+      await renderValidityState();
+      datepicker.addEventListener('odsChange', async() => {
+        await renderValidityState();
       })
       async function renderValidityState() {
         const validity = await datepicker.getValidity();

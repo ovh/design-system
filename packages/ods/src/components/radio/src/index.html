@@ -81,7 +81,7 @@
   <form id="radio-form" target="_self">
     <ods-input name="ods-input" value="On Vous Heberge ?" clearable></ods-input>
     <div>
-      <ods-radio input-id="huey-form" name="name" value="huey"></ods-radio>
+      <ods-radio input-id="huey-form" name="name" value="huey" id="form-radio1"></ods-radio>
       <label for="huey-form">Huey</label>
     </div>
 
@@ -98,16 +98,29 @@
     <input type="text" name="natif-input">
     <button id="form-reset-button" type="reset">Reset</button>
     <button id="form-submit-button" type="submit">Submit</button>
+    <button id="form-toggle-is-required" type="button">Toggle is-required</button>
   </form>
 
   <script>
     const form = document.getElementById('radio-form');
     const resetFormButton = document.getElementById('form-reset-button');
     const submitFormButton = document.getElementById('form-submit-button');
+    const toggleIsRequiredButton = document.getElementById('form-toggle-is-required');
+    const radio1 = document.querySelector('#form-radio1')
 
     submitFormButton.addEventListener('click', () => {
       const formData = new FormData(form);
       console.log('formData', formData);
+    });
+
+    toggleIsRequiredButton.addEventListener('click', async() => {
+      if (radio1.hasAttribute('is-required')) {
+        radio1.removeAttribute('is-required');
+      } else {
+        radio1.setAttribute('is-required', 'true');
+      }
+      console.log((await radio1.getValidity()).valid);
+      console.log(await radio1.checkValidity());
     });
   </script>
 

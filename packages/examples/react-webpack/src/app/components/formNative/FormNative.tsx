@@ -159,23 +159,18 @@ function FormNative(): ReactElement {
 
       {/*/!* KO required does not return valid: false on empty select *!/*/}
       {/*/!* KO reset return empty string instead of null *!/*/}
-      {/*<OdsSelect*/}
-      {/*  defaultValue="dog"*/}
-      {/*  hasError={ error.select }*/}
-      {/*  isRequired={ true }*/}
-      {/*  name="select"*/}
-      {/*  onOdsChange={ (event: any) => onChange(event) }*/}
-      {/*  onOdsReset={ (event: any) => onReset(event) }*/}
-      {/*  onOdsClear={ (event: any) => onClear(event) }*/}
-      {/*  ref={ selectRef }*/}
-      {/*>*/}
-      {/*  <option value="dog">Dog</option>*/}
-      {/*  <option value="cat">Cat</option>*/}
-      {/*  <option value="hamster">Hamster</option>*/}
-      {/*  <option value="parrot">Parrot</option>*/}
-      {/*  <option value="spider">Spider</option>*/}
-      {/*  <option value="goldfish">Goldfish</option>*/}
-      {/*</OdsSelect>*/}
+      <OdsSelect
+        // allowMultiple
+        isRequired={ areAllRequired }
+        name="select"
+      >
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+        <option value="hamster">Hamster</option>
+        <option value="parrot">Parrot</option>
+        <option value="spider">Spider</option>
+        <option value="goldfish">Goldfish</option>
+      </OdsSelect>
 
       {/*<button onClick={ () => checkboxRef.current?.clear() }>Clear</button>*/}
 

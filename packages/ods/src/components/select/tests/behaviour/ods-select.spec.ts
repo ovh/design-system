@@ -1,7 +1,6 @@
 jest.mock('../../src/controller/ods-select');
 
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
 import { OdsSelect } from '../../src';
 
 describe('ods-select behaviour', () => {
@@ -18,6 +17,15 @@ describe('ods-select behaviour', () => {
     root = page.root;
     rootInstance = page.rootInstance;
   }
+
+  beforeAll(() => {
+    jest.spyOn(console, 'error').mockImplementation((msg) => {
+      // Hide the Stencil error about internals being not implemented on spec tests
+      if (!msg.startsWith('NOTE: Property validity was accessed on ElementInternals, but this property is not implemented.')) {
+        console.error(msg);
+      }
+    });
+  });
 
   describe('methods', () => {
     describe('clear', () => {

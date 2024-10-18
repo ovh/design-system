@@ -1,5 +1,8 @@
+jest.mock('../../../../utils/dom');
+
 import type TomSelect from 'tom-select';
-import { getSelectConfig, inlineValue, moveSlottedElements, setFormValue, setSelectValue } from '../../src/controller/ods-select';
+import { setInternalsValidityFromHtmlElement } from '../../../../utils/dom';
+import { getSelectConfig, hasNoValueOption, inlineValue, moveSlottedElements, setSelectValue, updateInternals } from '../../src/controller/ods-select';
 
 describe('ods-select controller', () => {
   beforeEach(jest.clearAllMocks);
@@ -35,6 +38,21 @@ describe('ods-select controller', () => {
     });
   });
 
+  describe('hasNoValueOption', () => {
+    it('should return false if no elements have an empty value', () => {
+      const dummyElements = [{ value: 'value1' }, { value: 'value2' }] as HTMLOptionElement[];
+
+      expect(hasNoValueOption([])).toBe(false);
+      expect(hasNoValueOption(dummyElements)).toBe(false);
+    });
+
+    it('should return true if one element have an empty value', () => {
+      const dummyElements = [{ value: 'value1' }, { value: '' }] as HTMLOptionElement[];
+
+      expect(hasNoValueOption(dummyElements)).toBe(true);
+    });
+  });
+
   describe('inlineValue', () => {
     it('should return empty string if no value', () => {
       // @ts-ignore for test purpose
@@ -66,45 +84,24 @@ describe('ods-select controller', () => {
       };
 
       // @ts-ignore for test purpose
-      moveSlottedElements(dummyTarget, dummySlotted);
+      moveSlottedElements(dummyTarget, dummySlotted, true);
 
       expect(dummyTarget.replaceChildren).toHaveBeenCalled();
       expect(dummyTarget.appendChild).toHaveBeenCalledTimes(dummySlotted.length);
     });
-  });
 
-  describe('setFormValue', () => {
-    const dummyInternal = {
-      setFormValue: jest.fn(),
-    } as unknown as ElementInternals;
+    it('should clean, move nodes and prepend an empty one', () => {
+      const dummySlotted = ['node 1', 'node 2'];
+      const dummyTarget = {
+        appendChild: jest.fn(),
+        replaceChildren: jest.fn(),
+      };
 
-    it('should set internal value with empty string', () => {
       // @ts-ignore for test purpose
-      setFormValue(dummyInternal);
-      expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
+      moveSlottedElements(dummyTarget, dummySlotted);
 
-      setFormValue(dummyInternal, undefined);
-      expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
-
-      setFormValue(dummyInternal, null);
-      expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
-    });
-
-    it('should set internal value with string value', () => {
-      const dummyValue = 'dummy value';
-
-      setFormValue(dummyInternal, dummyValue);
-
-      expect(dummyInternal.setFormValue).toHaveBeenCalledWith(dummyValue);
-    });
-
-    it('should set internal value with strings joined value', () => {
-      setFormValue(dummyInternal, [
-        'dummy value 1',
-        'dummy value 2',
-      ]);
-
-      expect(dummyInternal.setFormValue).toHaveBeenCalledWith('dummy value 1,dummy value 2');
+      expect(dummyTarget.replaceChildren).toHaveBeenCalled();
+      expect(dummyTarget.appendChild).toHaveBeenCalledTimes(dummySlotted.length + 1); // empty option added
     });
   });
 
@@ -152,6 +149,46 @@ describe('ods-select controller', () => {
 
       expect(dummySelect.setValue).toHaveBeenCalledTimes(2);
       expect(dummySelect.setValue).toHaveBeenCalledWith(dummyDefaultValue, true);
+    });
+  });
+
+  describe('updateInternals', () => {
+    const dummySelect = { dummy: 'input' };
+    const dummyInternal = {
+      setFormValue: jest.fn(),
+    } as unknown as ElementInternals;
+
+    it('should set internal value with empty string', async() => {
+      // @ts-ignore for test purpose
+      await updateInternals(dummyInternal);
+      expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
+
+      // @ts-ignore for test purpose
+      await updateInternals(dummyInternal, undefined, {} as HTMLElement & OdsInput);
+      expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
+
+      await updateInternals(dummyInternal, null, {} as HTMLSelectElement);
+      expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
+    });
+
+    it('should set internal value with string value', async() => {
+      const dummyValue = 'dummy value';
+
+      await updateInternals(dummyInternal, dummyValue, {} as HTMLSelectElement);
+
+      expect(dummyInternal.setFormValue).toHaveBeenCalledWith(dummyValue);
+    });
+
+    it('should not set internal validity if no input element is defined', async() => {
+      await updateInternals(dummyInternal, 'dummyValue');
+
+      expect(setInternalsValidityFromHtmlElement).not.toHaveBeenCalled();
+    });
+
+    it('should set internal validity if input element is defined', async() => {
+      await updateInternals(dummyInternal, 'dummyValue', dummySelect as unknown as HTMLSelectElement);
+
+      expect(setInternalsValidityFromHtmlElement).toHaveBeenCalledWith(dummySelect, dummyInternal);
     });
   });
 });

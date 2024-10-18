@@ -1,4 +1,5 @@
 import type TomSelect from 'tom-select';
+import { setInternalsValidityFromHtmlElement } from '../../../../utils/dom';
 import { type OdsSelectCustomRenderer } from '../interfaces/options';
 
 type SelectConfigItem = Record<string, object>;
@@ -23,6 +24,10 @@ function getSelectConfig(allowMultiple: boolean, multipleSelectionLabel: string,
   return { plugin, template };
 }
 
+function hasNoValueOption(elements: HTMLOptionElement[]): boolean {
+  return elements.some((element) => element.value === '');
+}
+
 function inlineValue(value: string | string[] | null | undefined): string {
   if (Array.isArray(value)) {
     return value.join(',');
@@ -30,17 +35,19 @@ function inlineValue(value: string | string[] | null | undefined): string {
   return value ?? '';
 }
 
-function moveSlottedElements(targetElement: HTMLSelectElement, slottedElements: Element[]): void {
+function moveSlottedElements(targetElement: HTMLSelectElement, slottedElements: Element[], hasEmptyOption: boolean): void {
   // clean-up target
   targetElement.replaceChildren();
+
+  if (!hasEmptyOption) {
+    const emptyOption = document.createElement('option');
+    emptyOption.value = '';
+    targetElement.appendChild(emptyOption);
+  }
 
   slottedElements.forEach((element) => {
     targetElement.appendChild(element);
   });
-}
-
-function setFormValue(internals: ElementInternals, value: string | string [] | null | undefined): void {
-  internals.setFormValue(inlineValue(value));
 }
 
 function setSelectValue(select?: TomSelect, value?: string | string[] | null, defaultValue?: string | string [], isSilent: boolean = false): void {
@@ -53,10 +60,19 @@ function setSelectValue(select?: TomSelect, value?: string | string[] | null, de
   }
 }
 
+function updateInternals(internals: ElementInternals, value: string[] | string | null, selectEl?: HTMLSelectElement): void {
+  internals.setFormValue(inlineValue(value));
+
+  if (selectEl) {
+    setInternalsValidityFromHtmlElement(selectEl, internals);
+  }
+}
+
 export {
   getSelectConfig,
+  hasNoValueOption,
   inlineValue,
   moveSlottedElements,
-  setFormValue,
   setSelectValue,
+  updateInternals,
 };

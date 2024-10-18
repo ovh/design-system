@@ -1,5 +1,6 @@
 enum ODS_BUTTON_COLOR {
   critical = 'critical',
+  neutral = 'neutral',
   primary = 'primary',
 }
 

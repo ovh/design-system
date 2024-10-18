@@ -69,6 +69,21 @@ $ods-button-size-md: 40px;
         border-color: var(--ods-color-critical-800);
         background-color: var(--ods-color-critical-800);
       }
+    } @else if $color == 'neutral' {
+      border-color: var(--ods-color-neutral-500);
+      background-color: var(--ods-color-neutral-500);
+      color: var(--ods-color-neutral-000);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-neutral-700);
+        background-color: var(--ods-color-neutral-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-neutral-800);
+        background-color: var(--ods-color-neutral-800);
+      }
     } @else if $color == 'primary' {
       border-color: var(--ods-color-primary-500);
       background-color: var(--ods-color-primary-500);
@@ -110,6 +125,20 @@ $ods-button-size-md: 40px;
         background-color: var(--ods-color-critical-200);
         color: var(--ods-color-critical-800);
       }
+    } @else if $color == 'neutral' {
+      background-color: inherit;
+      color: var(--ods-color-neutral-500);
+
+      &:focus-visible,
+      &:hover {
+        background-color: var(--ods-color-neutral-100);
+        color: var(--ods-color-neutral-700);
+      }
+
+      &:active {
+        background-color: var(--ods-color-neutral-200);
+        color: var(--ods-color-neutral-800);
+      }
     } @else if $color == 'primary' {
       background-color: inherit;
       color: var(--ods-color-primary-500);
@@ -149,6 +178,23 @@ $ods-button-size-md: 40px;
         border-color: var(--ods-color-critical-800);
         background-color: var(--ods-color-critical-200);
         color: var(--ods-color-critical-800);
+      }
+    } @else if $color == 'neutral' {
+      border-color: var(--ods-color-neutral-500);
+      background-color: var(--ods-color-neutral-000);
+      color: var(--ods-color-neutral-500);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-neutral-700);
+        background-color: var(--ods-color-neutral-100);
+        color: var(--ods-color-neutral-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-neutral-800);
+        background-color: var(--ods-color-neutral-200);
+        color: var(--ods-color-neutral-800);
       }
     } @else if $color == 'primary' {
       border-color: var(--ods-color-primary-500);

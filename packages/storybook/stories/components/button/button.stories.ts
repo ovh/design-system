@@ -154,6 +154,7 @@ export const Color: StoryObj = {
   render: () => html`
 <ods-button color="${ODS_BUTTON_COLOR.primary}" label="Primary button"></ods-button>
 <ods-button color="${ODS_BUTTON_COLOR.critical}" label="Critical button"></ods-button>
+<ods-button color="${ODS_BUTTON_COLOR.neutral}" label="Neutral button"></ods-button>
   `,
 };
 

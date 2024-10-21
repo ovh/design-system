@@ -4,6 +4,12 @@ import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { OdsDatepicker } from '../../src';
 
+// @ts-ignore for test purposes
+global.MutationObserver = jest.fn(() => ({
+  disconnect: jest.fn(),
+  observe: jest.fn(),
+}));
+
 describe('ods-datepicker rendering', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;

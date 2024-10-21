@@ -122,7 +122,7 @@
   <button id="datepicker-clear-button">Clear</button>
   <button id="datepicker-reset-button">Reset</button>
   <button id="datepicker-get-validity-button">GetValidity</button>
-  <button id="datepicker-update-value-button">update Value</button>
+  <button id="datepicker-update-required-button">update required</button>
   <button id="datepicker-close-button">Close</button>
   <script>
     const datepickerMethods = document.getElementById('datepicker-methods');
@@ -130,12 +130,12 @@
     const datepickerClearButton = document.getElementById('datepicker-clear-button');
     const datepickerResetButton = document.getElementById('datepicker-reset-button');
     const datepickerGetValidityButton = document.getElementById('datepicker-get-validity-button');
-    const datepickerUpdateValueButton = document.getElementById('datepicker-update-value-button');
+    const datepickerUpdateRequiredButton = document.getElementById('datepicker-update-required-button');
     const datepickerCloseButton = document.getElementById('datepicker-close-button');
 
     datepickerClearButton.addEventListener('click', () => datepickerMethods.clear());
     datepickerResetButton.addEventListener('click', () => datepickerMethods.reset());
-    datepickerUpdateValueButton.addEventListener('click', () => datepickerMethods.value = new Date());
+    datepickerUpdateRequiredButton.addEventListener('click', () => datepickerMethods.isRequired = !datepickerMethods.isRequired);
     datepickerCloseButton.addEventListener('click', () => datepickerMethods.close());
     datepickerGetValidityButton.addEventListener('click', async() => {
       console.log(await datepickerMethods.getValidity());

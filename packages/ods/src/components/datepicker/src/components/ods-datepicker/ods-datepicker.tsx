@@ -43,6 +43,7 @@ const VALUE_DEFAULT_VALUE = null;
 export class OdsDatepicker {
   private datepickerInstance?: Datepicker;
   private inputElement?: HTMLInputElement;
+  private observer?: MutationObserver;
   private shouldUpdateIsInvalidState: boolean = false;
 
   @Element() el!: HTMLElement;
@@ -198,6 +199,17 @@ export class OdsDatepicker {
     if (!this.value && this.value !== 0 && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
       this.value = this.defaultValue ? new Date(Datepicker.parseDate(this.defaultValue, this.format)) : null;
     }
+
+    this.observer = new MutationObserver((mutations: MutationRecord[]) => {
+      for (const mutation of mutations) {
+        // When observing is-required, the inner element validity is not yet up-to-date
+        // so we observe the element required attribute instead
+        if (mutation.attributeName === 'required') {
+          updateInternals(this.internals, formatDate(this.value, this.format), this.inputElement);
+          this.isInvalid = !this.internals.validity.valid;
+        }
+      }
+    });
   }
 
   componentDidLoad(): void {
@@ -246,6 +258,17 @@ export class OdsDatepicker {
 
     // Init the internals correctly as native element validity is now up-to-date
     this.onValueChange(formatDate(this.value, this.format));
+
+    if (this.inputElement) {
+      this.observer?.observe(this.inputElement, {
+        attributeFilter: ['required'],
+        attributeOldValue: false,
+      });
+    }
+  }
+
+  disconnectedCallback(): void {
+    this.observer?.disconnect();
   }
 
   async formResetCallback(): Promise<void> {

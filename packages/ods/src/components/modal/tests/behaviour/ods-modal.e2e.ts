@@ -27,51 +27,87 @@ describe('ods-modal behaviour', () => {
     });
   }
 
-  it('should trigger open event when opening', async() => {
-    await setup('<ods-modal><ods-text>Hello, world!</ods-text></ods-modal>');
-    const openSpy = await page.spyOnEvent('odsOpen');
-    const modal = await page.find('ods-modal');
+  describe('events', () => {
+    describe('odsClose', () => {
+      it('should trigger when closing', async() => {
+        await setup('<ods-modal is-open><ods-text>Hello, world!</ods-text></ods-modal>');
+        const closeSpy = await page.spyOnEvent('odsClose');
+        const modal = await page.find('ods-modal');
 
-    await modal.callMethod('open');
+        await modal.callMethod('close');
+        await waitForAnimationEnd();
 
-    expect(openSpy).toHaveReceivedEventTimes(1);
-  });
+        expect(closeSpy).toHaveReceivedEventTimes(1);
+      });
 
-  it('should trigger close event when closing', async() => {
-    await setup('<ods-modal is-open><ods-text>Hello, world!</ods-text></ods-modal>');
-    const closeSpy = await page.spyOnEvent('odsClose');
-    const modal = await page.find('ods-modal');
+      it('should trigger when unmounting if opened', async() => {
+        await setup('<ods-modal is-open><ods-text>Hello, world!</ods-text></ods-modal>');
+        const modalHandle = await page.waitForSelector('ods-modal');
+        const modal = await page.find('ods-modal');
+        const closeSpy = await modal.spyOnEvent('odsClose');
 
-    await modal.callMethod('close');
-    await waitForAnimationEnd();
+        await modalHandle?.evaluate((element) => element.remove());
+        await page.waitForChanges();
 
-    expect(closeSpy).toHaveReceivedEventTimes(1);
-  });
+        expect(closeSpy).toHaveReceivedEventTimes(1);
+      });
 
-  it('should open on element open method call', async() => {
-    await setup('<ods-modal><ods-text>Hello, world!</ods-text></ods-modal>');
-    const modal = await page.find('ods-modal');
+      it('should not trigger when unmounting if closed', async() => {
+        await setup('<ods-modal><ods-text>Hello, world!</ods-text></ods-modal>');
+        const modalHandle = await page.waitForSelector('ods-modal');
+        const modal = await page.find('ods-modal');
+        const closeSpy = await modal.spyOnEvent('odsClose');
 
-    await modal.callMethod('open');
-    await page.waitForChanges();
+        await modalHandle?.evaluate((element) => element.remove());
+        await page.waitForChanges();
 
-    const isOpen = await page.evaluate(() => {
-      const dialog = document.querySelector('ods-modal')?.shadowRoot?.querySelector('.ods-modal__dialog') as HTMLDialogElement;
-      return dialog && dialog.hasAttribute('open');
+        expect(closeSpy).not.toHaveReceivedEvent();
+      });
     });
 
-    expect(isOpen).toBe(true);
+    describe('odsOpen', () => {
+      it('should trigger when opening', async() => {
+        await setup('<ods-modal><ods-text>Hello, world!</ods-text></ods-modal>');
+        const openSpy = await page.spyOnEvent('odsOpen');
+        const modal = await page.find('ods-modal');
+
+        await modal.callMethod('open');
+
+        expect(openSpy).toHaveReceivedEventTimes(1);
+      });
+    });
   });
 
-  it('should add a close animation on element close method call', async() => {
-    await setup('<ods-modal is-open><ods-text>Hello, world!</ods-text></ods-modal>');
-    const modal = await page.find('ods-modal');
+  describe('methods', () => {
+    describe('close', () => {
+      it('should add a close animation on element close method call', async() => {
+        await setup('<ods-modal is-open><ods-text>Hello, world!</ods-text></ods-modal>');
+        const modal = await page.find('ods-modal');
 
-    await modal.callMethod('close');
-    await page.waitForChanges();
+        await modal.callMethod('close');
+        await page.waitForChanges();
 
-    const closeAnimation = await page.find('ods-modal >>> .ods-modal__dialog--close-animation');
+        const closeAnimation = await page.find('ods-modal >>> .ods-modal__dialog--close-animation');
 
-    expect(closeAnimation).not.toBeNull();
+        expect(closeAnimation).not.toBeNull();
+      });
+    });
+
+    describe('open', () => {
+      it('should open on element open method call', async() => {
+        await setup('<ods-modal><ods-text>Hello, world!</ods-text></ods-modal>');
+        const modal = await page.find('ods-modal');
+
+        await modal.callMethod('open');
+        await page.waitForChanges();
+
+        const isOpen = await page.evaluate(() => {
+          const dialog = document.querySelector('ods-modal')?.shadowRoot?.querySelector('.ods-modal__dialog') as HTMLDialogElement;
+          return dialog && dialog.hasAttribute('open');
+        });
+
+        expect(isOpen).toBe(true);
+      });
+    });
   });
 });

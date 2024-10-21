@@ -154,7 +154,5 @@ describe('ods-datepicker rendering', () => {
       });
       expect(hasErrorClass2).toBe(true);
     });
-
-
   });
 });

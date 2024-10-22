@@ -6,6 +6,12 @@ describe('ods-datepicker rendering', () => {
   let inputElement: E2EElement;
   let page: E2EPage;
 
+  async function isInErrorState(): Promise<boolean | undefined> {
+    return await page.evaluate(() => {
+      return document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.classList.contains('ods-datepicker__input--error');
+    });
+  }
+
   async function setup(content: string, customStyle?: string): Promise<void> {
     page = await newE2EPage();
 
@@ -81,10 +87,7 @@ describe('ods-datepicker rendering', () => {
       });
       await page.waitForChanges();
 
-      const hasErrorClass = await page.evaluate(() => {
-        return document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.classList.contains('ods-datepicker__input--error');
-      });
-      expect(hasErrorClass).toBe(true);
+      expect(await isInErrorState()).toBe(true);
     });
 
     it('should toggle the error state on value change', async() => {
@@ -95,20 +98,14 @@ describe('ods-datepicker rendering', () => {
       });
       await page.waitForChanges();
 
-      const hasErrorClass = await page.evaluate(() => {
-        return document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.classList.contains('ods-datepicker__input--error');
-      });
-      expect(hasErrorClass).toBe(false);
+      expect(await isInErrorState()).toBe(false);
 
       await el.callMethod('clear');
       await page.click('body', { offset: { x: 400, y: 400 } }); // Blur
       await page.waitForChanges();
 
-      const hasErrorClass2 = await page.evaluate(() => {
-        return document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.classList.contains('ods-datepicker__input--error');
-      });
       await page.waitForChanges();
-      expect(hasErrorClass2).toBe(true);
+      expect(await isInErrorState()).toBe(true);
     });
 
     it('should toggle the error state on manual value change', async() => {
@@ -119,40 +116,27 @@ describe('ods-datepicker rendering', () => {
       });
       await page.waitForChanges();
 
-      const hasErrorClass = await page.evaluate(() => {
-        return document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.classList.contains('ods-datepicker__input--error');
-      });
-      expect(hasErrorClass).toBe(false);
+      expect(await isInErrorState()).toBe(false);
 
       await el.press('Backspace');
       await page.click('body', { offset: { x: 400, y: 400 } }); // Blur
       await page.waitForChanges();
 
-      const hasErrorClass2 = await page.evaluate(() => {
-        return document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.classList.contains('ods-datepicker__input--error');
-      });
-      await page.waitForChanges();
-      expect(hasErrorClass2).toBe(true);
+      expect(await isInErrorState()).toBe(true);
     });
 
     it('should enforce the error state if has-error is set even on valid datepicker', async() => {
       await setup('<form method="get" onsubmit="return false"><ods-datepicker is-required has-error value="dummy"></ods-datepicker></form>');
       await page.waitForChanges();
 
-      const hasErrorClass = await page.evaluate(() => {
-        return document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.classList.contains('ods-datepicker__input--error');
-      });
-      expect(hasErrorClass).toBe(true);
+      expect(await isInErrorState()).toBe(true);
 
       await page.evaluate(() => {
         document.querySelector<HTMLFormElement>('form')?.requestSubmit();
       });
       await page.waitForChanges();
 
-      const hasErrorClass2 = await page.evaluate(() => {
-        return document.querySelector('ods-datepicker')?.shadowRoot?.querySelector('input')?.classList.contains('ods-datepicker__input--error');
-      });
-      expect(hasErrorClass2).toBe(true);
+      expect(await isInErrorState()).toBe(true);
     });
   });
 });

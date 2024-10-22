@@ -8,6 +8,12 @@ describe('ods-toggle rendering', () => {
   let page: E2EPage;
   let slider: E2EElement;
 
+  async function isInErrorState(): Promise<boolean | undefined> {
+    return await page.evaluate(() => {
+      return document.querySelector('ods-toggle')?.shadowRoot?.querySelector('.ods-toggle__container__slider')?.classList.contains('ods-toggle__container__slider--error');
+    });
+  }
+
   async function setup(content: string, customStyle?: string): Promise<void> {
     page = await newE2EPage();
 
@@ -55,6 +61,34 @@ describe('ods-toggle rendering', () => {
         return label?.innerHTML;
       });
       expect(text).toEqualText('ON');
+    });
+  });
+
+  describe('error state', () => {
+    it('should render in error on form submit, before any changes, if invalid', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-toggle is-required></ods-toggle></form>');
+
+      await page.evaluate(() => {
+        document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+      });
+      await page.waitForChanges();
+
+      expect(await isInErrorState()).toBe(true);
+    });
+
+    it('should toggle the error state on value change', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-toggle is-required></ods-toggle></form>');
+
+      await el.click();
+      await page.waitForChanges();
+
+      expect(await isInErrorState()).toBe(false);
+
+      await el.callMethod('clear');
+      await page.click('body', { offset: { x: 200, y: 200 } }); // Blur
+      await page.waitForChanges();
+
+      expect(await isInErrorState()).toBe(true);
     });
   });
 });

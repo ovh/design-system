@@ -1,7 +1,12 @@
-function setFormValue(internals: ElementInternals, value: boolean | null): void {
-  internals.setFormValue(value?.toString() ?? 'false');
-}
+import { setInternalsValidityFromHtmlElement } from '../../../../utils/dom';
 
+function updateInternals(internals: ElementInternals, value: boolean | null, inputEl?: HTMLInputElement): void {
+  internals.setFormValue(value?.toString() ?? '');
+
+  if (inputEl) {
+    setInternalsValidityFromHtmlElement(inputEl, internals);
+  }
+}
 export {
-  setFormValue,
+  updateInternals,
 };

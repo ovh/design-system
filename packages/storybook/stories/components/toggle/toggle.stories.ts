@@ -11,37 +11,61 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg) => html`
-<ods-toggle class="my-toggle-demo"
-  is-disabled=${arg.isDisabled}
-  with-label=${arg.withLabel}>
-</ods-toggle>
-<style>
-  .my-toggle-demo::part(slider) {
-    ${arg.CustomCssSlider}
-  }
+  render: (arg) => {
+    const validityStateTemplate = html`<br>
+    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
+    <script>
+      (async () => {
+          const divValidityState = document.querySelector('#validity-state');
+          const toggle = document.querySelector('.my-toggle-demo');
+          await customElements.whenDefined('ods-toggle');
+          await renderValidityState();
+          toggle.addEventListener('odsChange', async () => {
+            await renderValidityState();
+          })
+          async function renderValidityState() {
+            const validity = await toggle.getValidity()
+            divValidityState.innerHTML = '';
+            for (let key in validity) {
+              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+            }
+          }
+      })();
+    </script>`;
+  return html`
+    <ods-toggle class="my-toggle-demo"
+      is-disabled=${arg.isDisabled}
+      is-required=${arg.isRequired}
+      with-label=${arg.withLabel}>
+    </ods-toggle>
+    ${arg.validityState ? validityStateTemplate : ''}
+    <style>
+      .my-toggle-demo::part(slider) {
+        ${arg.CustomCssSlider}
+      }
 
-  .my-toggle-demo::part(slider)::before {
-    ${arg.CustomCssSlider}
-  }
+      .my-toggle-demo::part(slider)::before {
+        ${arg.CustomCssSlider}
+      }
 
-  .my-toggle-demo::part(label) {
-    ${arg.CustomCssLabel}
-  }
+      .my-toggle-demo::part(label) {
+        ${arg.CustomCssLabel}
+      }
 
-  .my-toggle-demo::part(slider checked) {
-    ${arg.CustomCssSliderChecked}
-  }
+      .my-toggle-demo::part(slider checked) {
+        ${arg.CustomCssSliderChecked}
+      }
 
-  .my-toggle-demo::part(slider checked)::before {
-    ${arg.CustomCssSliderChecked}
-  }
+      .my-toggle-demo::part(slider checked)::before {
+        ${arg.CustomCssSliderChecked}
+      }
 
-  .my-toggle-demo::part(label checked) {
-    ${arg.CustomCssLabelChecked}
-  }
-</style>
-  `,
+      .my-toggle-demo::part(label checked) {
+        ${arg.CustomCssLabelChecked}
+      }
+    </style>
+  `;
+  },
   argTypes: orderControls({
     CustomCssLabel: {
       control: 'text',
@@ -105,6 +129,23 @@ export const Demo: StoryObj = {
         type: { summary: 'boolean' },
       },
     },
+    isRequired: {
+      control: 'boolean',
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' },
+      },
+    },
+    validityState: {
+      table: {
+        category: CONTROL_CATEGORY.accessibility,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+      description: 'Toggle this to see the component validityState',
+    },
     withLabel: {
       control: 'boolean',
       table: {
@@ -116,6 +157,8 @@ export const Demo: StoryObj = {
   }),
   args: {
     isDisabled: false,
+    isRequired: false,
+    validityState: false,
     withLabel: false,
   },
 };
@@ -190,3 +233,28 @@ export const WithLabel: StoryObj = {
   `,
 };
 
+export const ValidityState: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-toggle is-required id="toggle-validity-state-demo">
+</ods-toggle>
+<div id="validity-state-demo"></div>
+<script>
+  (async() => {
+      const divValidityState = document.querySelector('#validity-state-demo');
+      const toggle = document.querySelector('#toggle-validity-state-demo');
+      await renderValidityState();
+      toggle.addEventListener('odsChange', async () => {
+        await renderValidityState();
+      })
+      async function renderValidityState() {
+        const validity = await toggle.getValidity()
+        divValidityState.innerHTML = '';
+        for (let key in validity) {
+          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+        }
+      }
+  })();
+</script>
+`,
+};

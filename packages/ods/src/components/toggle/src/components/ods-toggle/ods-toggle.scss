@@ -51,6 +51,14 @@
         }
       }
 
+      &--error {
+        border: 1px solid var(--ods-color-form-element-border-critical);
+
+        &::before {
+          bottom: 1px;
+        }
+      }
+
       &__label {
         display: flex;
         position: absolute;

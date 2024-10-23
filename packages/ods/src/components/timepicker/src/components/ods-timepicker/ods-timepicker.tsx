@@ -125,6 +125,7 @@ export class OdsTimepicker {
         <ods-input
           ariaLabel={ this.ariaLabel }
           ariaLabelledby={ this.ariaLabelledby }
+          class="ods-timepicker__input"
           defaultValue={ this.defaultValue }
           exportparts="input"
           hasError={ this.hasError }

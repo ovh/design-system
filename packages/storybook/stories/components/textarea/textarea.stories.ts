@@ -161,8 +161,12 @@ export const CustomCSS: StoryObj = {
 <ods-textarea class="my-textarea">
 </ods-textarea>
 <style>
+  .my-textarea {
+    width: 100%;
+  }
+
   .my-textarea::part(textarea) {
-    width: 100px;
+    background-color: #ceffce;
   }
 </style>
   `,

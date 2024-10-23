@@ -4,6 +4,10 @@
 }
 
 .ods-timepicker {
+  &__input {
+    width: inherit;
+  }
+
   &__timezones {
     min-width: 89px;
   }

@@ -37,6 +37,8 @@
   }
 
   &__input {
+    width: inherit;
+
     &:focus {
       position: relative;
       z-index: 1;

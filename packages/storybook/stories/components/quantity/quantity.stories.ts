@@ -200,19 +200,23 @@ export const CustomCSS: StoryObj = {
   render: () => html`
 <ods-quantity class="my-quantity"></ods-quantity>
 <style>
-    .my-quantity::part(input) {
-      width: 200px;
-    }
+  .my-quantity {
+    width: 100%;
+  }
 
-    .my-quantity::part(button-minus) {
-      color: green;
-      border-color: green;
-    }
+  .my-quantity::part(input) {
+    width: 100%;
+  }
 
-    .my-quantity::part(button-plus) {
-      color: red;
-      border-color: red;
-    }
-  </style>
+  .my-quantity::part(button-minus) {
+    color: green;
+    border-color: green;
+  }
+
+  .my-quantity::part(button-plus) {
+    color: red;
+    border-color: red;
+  }
+</style>
   `,
 };

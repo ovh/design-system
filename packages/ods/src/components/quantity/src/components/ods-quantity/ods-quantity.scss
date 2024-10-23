@@ -27,6 +27,7 @@
 
   &__input {
     position: inherit;
+    width: inherit;
 
     &::part(input) {
       border-right: 0;

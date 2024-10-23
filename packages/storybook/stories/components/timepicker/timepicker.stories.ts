@@ -108,13 +108,17 @@ export const CustomCSS: StoryObj = {
   decorators: [(story) => html`<div style="height: 230px;">${story()}</div>`],
   tags: ['isHidden'],
   render: () => html`
-  <ods-timepicker timezones="all" class="my-timepicker-custom-css"></ods-timepicker>
+  <ods-timepicker timezones="all" class="my-timepicker"></ods-timepicker>
   <style>
-    .my-timepicker-custom-css::part(input) {
-      width: 300px;
+    .my-timepicker {
+      width: 100%;
     }
 
-    .my-timepicker-custom-css::part(select) {
+    .my-timepicker::part(input) {
+      background-color: #ceffce;
+    }
+
+    .my-timepicker::part(select) {
       width: 300px;
     }
   </style>

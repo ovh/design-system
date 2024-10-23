@@ -208,8 +208,12 @@ export const CustomCSS: StoryObj = {
 <ods-password class="my-password">
 </ods-password>
 <style>
+  .my-password {
+    width: 100%;
+  }
+
   .my-password::part(input) {
-    width: 100px;
+    background-color: #ceffce;
   }
 </style>
   `,

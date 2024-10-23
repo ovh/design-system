@@ -3,6 +3,7 @@ import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing
 describe('ods-select behaviour', () => {
   let el: E2EElement;
   let page: E2EPage;
+  let selectComponent: HTMLElement;
 
   async function isSelectOpen(): Promise<boolean> {
     return page.evaluate(() => {
@@ -21,6 +22,7 @@ describe('ods-select behaviour', () => {
     }
 
     el = await page.find('ods-select');
+    selectComponent = el.shadowRoot!.querySelector('.ts-wrapper')!;
   }
 
   beforeEach(jest.clearAllMocks);
@@ -222,6 +224,20 @@ describe('ods-select behaviour', () => {
         await page.waitForChanges();
 
         expect(await isSelectOpen()).toBe(false);
+      });
+    });
+
+    describe('on Slot change', () => {
+      it('should render with is-disabled', async() => {
+        await setup('<ods-select is-disabled><option value="1">Value 1</option></ods-select>');
+        expect(selectComponent.classList.contains('disabled')).toBe(true);
+        el.innerHTML = '<option value="1">Value 1</option><option value="2">Value 2</option>';
+        el.setProperty('isDisabled', false);
+        await page.waitForChanges();
+
+        expect(await page.evaluate(() => {
+          return document.querySelector('ods-select')?.shadowRoot?.querySelector('.ts-wrapper')?.classList.contains('disabled') || false;
+        })).toBe(false);
       });
     });
   });

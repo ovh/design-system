@@ -4401,7 +4401,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-themes@workspace:packages/themes":
+"@ovhcloud/ods-themes@18.2.0, @ovhcloud/ods-themes@workspace:packages/themes":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-themes@workspace:packages/themes"
   dependencies:
@@ -5412,6 +5412,24 @@ __metadata:
   peerDependencies:
     lit: ^2.0.0 || ^3.0.0
   checksum: 97b0d7a5854752aabb67c1f998454a1aa0a22e5db22b79b62eb6f1e397348f3a0a060652179885c7bdb96d1042bd0ae0eba8d3c43daca8ec26f4fa306e8d18e0
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-core@npm:5.59.16":
+  version: 5.59.16
+  resolution: "@tanstack/query-core@npm:5.59.16"
+  checksum: d01fb27718985a69fd45df178496fc1afab25324aa355ce1e1fa2068bc8ffadba68954914a5ae886c7e92d6d7b998ceae9c7a2741081c320a2482a31a62fcfda
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.59.16":
+  version: 5.59.16
+  resolution: "@tanstack/react-query@npm:5.59.16"
+  dependencies:
+    "@tanstack/query-core": 5.59.16
+  peerDependencies:
+    react: ^18 || ^19
+  checksum: ad5d3579496cfd26593f4b93b0e412ceab2effc97cf6fc4f029b1e381eb3bb544ec850bb3116e511f12e45271aaeeb4f74201a69c97ad3afe1dec179f9a12759
   languageName: node
   linkType: hard
 
@@ -18719,6 +18737,8 @@ __metadata:
     "@babel/preset-react": 7.23.3
     "@babel/preset-typescript": 7.23.3
     "@ovhcloud/ods-components": 18.2.0
+    "@ovhcloud/ods-themes": 18.2.0
+    "@tanstack/react-query": ^5.59.16
     "@types/react": 18.2.56
     "@types/react-dom": 18.2.19
     babel-loader: 9.1.3

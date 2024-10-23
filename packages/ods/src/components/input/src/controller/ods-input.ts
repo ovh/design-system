@@ -1,6 +1,7 @@
-async function handleKeySpace(event: KeyboardEvent, isDisabled: boolean, callback: () => Promise<void>): Promise<void> {
+async function handleKeySpaceEnter(event: KeyboardEvent, isDisabled: boolean, callback: () => Promise<void>): Promise<void> {
   event.preventDefault();
-  if(event.key === ' ' && !isDisabled) {
+  event.stopPropagation();
+  if ((event.key === ' ' || event.key === 'Enter') && !isDisabled) {
     await callback();
   }
 }
@@ -14,7 +15,7 @@ function setFormValue(internals: ElementInternals, value: number | string | null
 }
 
 export {
-  handleKeySpace,
+  handleKeySpaceEnter,
   isPassword,
   setFormValue,
 };

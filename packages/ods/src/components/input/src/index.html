@@ -80,7 +80,7 @@
 
   <p>Form</p>
   <form id="input-form" target="_self">
-    <ods-input name="ods-input" value="On Vous Heberge ?" clearable></ods-input>
+    <ods-input name="ods-input" value="On Vous Heberge ?" is-clearable></ods-input>
     <input type="text" name="natif-input">
     <button id="form-reset-button" type="reset">Reset</button>
     <button id="form-submit-button" type="submit">Submit</button>
@@ -95,11 +95,11 @@
   <button id="get-validity-button">getValidity</button>
 
   <script>
-    const inputPattern = document.getElementById('my-input-pattern');
+    // const inputPattern = document.getElementById('my-input-pattern');
 
-    inputPattern.addEventListener('odsChange', (event) => {
-      inputPattern.hasError = !event.detail.validity.valid;
-    });
+    // inputPattern.addEventListener('odsChange', (event) => {
+    //   inputPattern.hasError = !event.detail.validity.valid;
+    // });
     const input = document.getElementById('input-methods');
     const clearButton = document.getElementById('clear-button');
     const resetButton = document.getElementById('reset-button');
@@ -123,10 +123,10 @@
       console.log('formData', formData);
     });
   </script>
-
+<!--
   <p>With label</p>
   <label for="labelled-input">My input</label>
   <ods-input id="labelled-input" type="text">
-  </ods-input>
+  </ods-input> -->
 </body>
 </html>

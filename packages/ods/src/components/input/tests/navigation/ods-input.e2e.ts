@@ -182,6 +182,23 @@ describe('ods-input navigation', () => {
       expect(await el.getProperty('value')).toBe('value');
       expect(odsClearSpy).not.toHaveReceivedEvent();
     });
+
+    it('should not submit form when Enter on clearable button', async() => {
+      await setup('<form method="get"><ods-input name="ods-input" is-clearable value="value"></ods-input></form>');
+      const odsClearSpy = await page.spyOnEvent('odsClear');
+      expect(await el.getProperty('value')).toBe('value');
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+      await page.waitForNetworkIdle();
+
+      const url = new URL(page.url());
+      expect(url.searchParams.get('ods-input')).toBeNull();
+      expect(await el.getProperty('value')).toBeNull();
+      expect(odsClearSpy).toHaveReceivedEventTimes(1);
+    });
   });
 
   describe('isMasked', () => {

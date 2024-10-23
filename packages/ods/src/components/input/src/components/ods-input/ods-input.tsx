@@ -4,7 +4,7 @@ import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { ODS_INPUT_TYPE, type OdsInputType } from '../../constants/input-type';
-import { handleKeySpace, isPassword, setFormValue } from '../../controller/ods-input';
+import { handleKeySpaceEnter, isPassword, setFormValue } from '../../controller/ods-input';
 import { type OdsInputChangeEventDetail } from '../../interfaces/events';
 
 @Component({
@@ -105,6 +105,13 @@ export class OdsInput {
     await this.reset();
   }
 
+  private handleKeyDown(event: KeyboardEvent): void {
+    // This prevents Enter key to not submit form
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  }
+
   private onInput(): void {
     if (this.isDisabled) {
       return;
@@ -159,8 +166,9 @@ export class OdsInput {
               icon={ ODS_ICON_NAME.xmark }
               isDisabled={ this.isDisabled || this.isReadonly }
               label=""
-              onClick={ this.clear.bind(this) }
-              onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.clear.bind(this)) }
+              onClick={ () => this.clear() }
+              onKeyDown={ (event: KeyboardEvent) => this.handleKeyDown(event) }
+              onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpaceEnter(event, this.isDisabled, this.clear.bind(this)) }
               size={ ODS_BUTTON_SIZE.xs }
               variant={ ODS_BUTTON_VARIANT.ghost }>
             </ods-button>
@@ -171,8 +179,9 @@ export class OdsInput {
               icon={ this.isMasked ? ODS_ICON_NAME.eyeOff : ODS_ICON_NAME.eye }
               isDisabled={ this.isDisabled }
               label=""
-              onClick={ this.toggleMask.bind(this) }
-              onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.toggleMask.bind(this)) }
+              onClick={ () => this.toggleMask() }
+              onKeyDown={ (event: KeyboardEvent) => this.handleKeyDown(event) }
+              onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpaceEnter(event, this.isDisabled, this.toggleMask.bind(this)) }
               size={ ODS_BUTTON_SIZE.xs }
               variant={ ODS_BUTTON_VARIANT.ghost }>
             </ods-button>

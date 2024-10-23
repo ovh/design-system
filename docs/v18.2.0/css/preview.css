@@ -1,0 +1,31 @@
+/* Global typography */
+body {
+  font-family: var(--ods-font-family-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-overflow-scrolling: touch;
+  color: #2e3438;
+}
+
+/* Code preview typography */
+pre * {
+  font-family: var(--ods-font-family-code);
+  font-size: 13px;
+  line-height: 19px;
+  color: #fff;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Doc pages content */
+#storybook-docs > .sbdocs-wrapper {
+  padding: 1.5rem 3rem 3rem 3rem;
+}
+
+/* Force ODS link color while there are still some markdown links */
+#storybook-docs .sbdocs-a {
+  color: var(--ods-color-primary-500);
+}

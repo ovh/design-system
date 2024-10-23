@@ -7,6 +7,30 @@ import { StorybookLink } from '../../../src/components/storybookLink/StorybookLi
 
 <Heading label="What's new ?" level={ 1 } />
 
+<Heading label="v18.2.0" level={ 2 } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Button**
+- New color style `neutral` and new size `xs`are now available.
+- New color `neutral` added to `ODS_BUTTON_COLOR`.
+- New size `xs` added to `ODS_BUTTON_SIZE`.
+
+**Spinner**
+- New size `xs` is now available.
+- New size `xs` added to `ODS_SPINNER_SIZE`.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Modal**
+
+- No `odsClose` event emitted anymore on element DOM disconnection if modal was already closed.
+
+**Password / Phone Number / Quantity / Timepicker**
+
+- Setting a `width: 100%` to the ods element now correctly apply it to the underneath elements.
+
+
 <Heading label="v18.1.0" level={ 2 } />
 
 <Heading label="Documentation improvements:" level={ 3 } />
@@ -314,11 +338,7 @@ Documentation usage guidelines have been completed with almost all components pr
 
 <Heading label="Bug fixes:" level={ 3 } />
 
-**Button**
-**Checkbox**
-**Radio**
-**Range**
-**Tile**
+**Button / Checkbox / Radio / Range / Tile**
 
 - Prevent click event on click when disabled on Chromium & Safari.
 

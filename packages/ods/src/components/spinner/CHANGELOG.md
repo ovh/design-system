@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.2.0](https://ovh.github.io/design-system/v18.2.0/?path=/docs/design-system-changelog--page) (2024-10-23)
+[compare](https://github.com/ovh/design-system/compare/v18.1.0...v18.2.0)
+
+### Features
+
+* **spinner:** add xs size ([2c7e82e](https://github.com/ovh/design-system/commit/2c7e82e6819aa649ed55689f62d52d872feb5536))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

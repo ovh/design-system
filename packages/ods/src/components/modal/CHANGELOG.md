@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.2.0](https://ovh.github.io/design-system/v18.2.0/?path=/docs/design-system-changelog--page) (2024-10-23)
+[compare](https://github.com/ovh/design-system/compare/v18.1.0...v18.2.0)
+
+### Bug Fixes
+
+* **modal:** prevent odsClose event on unmount if closed ([17e4c4c](https://github.com/ovh/design-system/commit/17e4c4c948558a12151572701fa76c586852a858))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.1.0](https://ovh.github.io/design-system/v18.1.0/?path=/docs/design-system-changelog--page) (2024-10-10)
 [compare](https://github.com/ovh/design-system/compare/v18.0.0...v18.1.0)
 

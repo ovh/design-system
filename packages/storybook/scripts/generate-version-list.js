@@ -14,8 +14,13 @@ async function getVersions() {
       return [];
     }
 
-    return (Object.keys(data.versions) || [])
+    // In case of new release, new version is not yet in the registry list, so we add it manually
+    const versions = (Object.keys(data.versions) || []).concat([currentVersion]);
+
+    return versions
       .filter((version) => EXCLUDED_VERSIONS.indexOf(version) < 0)
+      // But when starting locally, this could end up with current version being added twice, so we ensure uniqueness
+      .filter((version, index, array) => array.indexOf(version) === index)
       .sort()
       .reverse()
       .filter((version) => version === currentVersion || !/-alpha\.\d+$/gi.test(version));

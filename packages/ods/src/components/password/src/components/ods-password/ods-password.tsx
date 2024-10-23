@@ -81,6 +81,7 @@ export class OdsPassword {
         <ods-input
           ariaLabel={ this.ariaLabel }
           ariaLabelledby={ this.ariaLabelledby }
+          class="ods-password__input"
           defaultValue={ this.defaultValue }
           exportparts="input"
           hasError={ this.hasError }

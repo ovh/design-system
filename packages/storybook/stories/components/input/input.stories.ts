@@ -283,8 +283,12 @@ export const CustomCSS: StoryObj = {
 <ods-input class="my-input">
 </ods-input>
 <style>
+  .my-input {
+    width: 100%;
+  }
+
   .my-input::part(input) {
-    width: 100px;
+    background-color: #ceffce;
   }
 </style>
   `,

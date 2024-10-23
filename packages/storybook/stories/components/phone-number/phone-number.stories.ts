@@ -170,11 +170,12 @@ export const CustomCSS: StoryObj = {
   render: () => html`
 <ods-phone-number class="my-phone-number"></ods-phone-number>
 <style>
-  .my-phone-number::part(input) {
-    width: 100px;
+  .my-phone-number {
+    width: 100%;
   }
-  .my-phone-number::part(select) {
-    width: 100px;
+
+  .my-phone-number::part(input) {
+    background-color: #ceffce;
   }
 </style>
   `,

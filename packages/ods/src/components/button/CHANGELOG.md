@@ -8,6 +8,22 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.2.0](https://ovh.github.io/design-system/v18.2.0/?path=/docs/design-system-changelog--page) (2024-10-23)
+[compare](https://github.com/ovh/design-system/compare/v18.1.0...v18.2.0)
+
+### Features
+
+* **button:** add neutral color ([65a0505](https://github.com/ovh/design-system/commit/65a050593aea11147afdb3c5dc99e6b2c6875f1d))
+* **button:** add xs size ([0cf46f8](https://github.com/ovh/design-system/commit/0cf46f869848f39bf5ef4d0bbcb0e5e3d14851b0))
+* **button:** review fix ([cd5bdea](https://github.com/ovh/design-system/commit/cd5bdea58dd82e92bb8258439af8af977c72e24a))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.1.0](https://ovh.github.io/design-system/v18.1.0/?path=/docs/design-system-changelog--page) (2024-10-10)
 [compare](https://github.com/ovh/design-system/compare/v18.0.0...v18.1.0)
 

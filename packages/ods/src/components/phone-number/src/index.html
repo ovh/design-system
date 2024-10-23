@@ -11,7 +11,7 @@
 </head>
 
 <body style="margin-bottom: 200px;">
-  <h1>Input only</h1>
+  <!-- <h1>Input only</h1>
   <p>Default</p>
   <ods-phone-number>
   </ods-phone-number>
@@ -47,11 +47,12 @@
 
   <p>IsoCode + wrong value</p>
   <ods-phone-number iso-code="fr" value="1234">
-  </ods-phone-number>
+  </ods-phone-number> -->
 
-  <p>Methods & Events</p>
+  <!-- <p>Methods & Events</p>
   <ods-phone-number id="opn-input-methods"
-                    default-value="+18444629181">
+                    default-value="+18444629181"
+                    is-required>
   </ods-phone-number>
   <button id="opn-input-clear-button">Clear</button>
   <button id="opn-input-reset-button">Reset</button>
@@ -73,28 +74,54 @@
     // opnInputMethods.addEventListener('odsClear', () => { console.log('on clear') });
     // opnInputMethods.addEventListener('odsFocus', () => { console.log('on focus') });
     // opnInputMethods.addEventListener('odsReset', () => { console.log('on reset') });
-  </script>
+  </script> -->
 
   <p>Form</p>
   <form id="opn-input-form">
-    <ods-phone-number default-value="0123456789"
+    <ods-phone-number id="opn-element"
+                      iso-code="fr"
+                      is-required
                       name="input-form"
-                      value="0666666666">
+                      >
     </ods-phone-number>
+    <button id="opn-toggle-is-required-button" type="button">Toggle is required</button>
+    <button id="opn-reset-phone-number-button" type="button">Reset phone-number</button>
     <button id="opn-input-form-reset-button" type="reset">Reset</button>
     <button id="opn-input-form-submit-button" type="submit">Submit</button>
   </form>
   <script>
+    const opnElement = document.querySelector('#opn-element');
     const opnInputForm = document.querySelector('#opn-input-form');
     const opnInputSubmitFormButton = document.querySelector('#opn-input-form-submit-button');
+    const opnResetPhoneNumberButton = document.querySelector('#opn-reset-phone-number-button');
+    const opnToggleIsRequiredButton = document.querySelector('#opn-toggle-is-required-button');
 
-    opnInputSubmitFormButton.addEventListener('click', () => {
+    opnInputSubmitFormButton.addEventListener('click', async() => {
+      // e.preventDefault(); // comment to test native validation messages
       const formData = new FormData(opnInputForm);
       console.log('formData', formData);
+      console.log(await opnElement?.getValidity())
     });
+
+    opnResetPhoneNumberButton.addEventListener('click', async() => {
+      await opnElement.reset();
+    })
+
+    opnToggleIsRequiredButton.addEventListener('click', async() => {
+      if (opnElement.hasAttribute('is-required')) {
+        opnElement.removeAttribute('is-required');
+      } else {
+        opnElement.setAttribute('is-required', 'true');
+      }
+    });
+
+    // opnElement.addEventListener('odsChange', async(e) => {
+    //   console.log('on change', e.detail.value);
+    //   console.log(await opnElement.getValidity());
+    // });
   </script>
 
-  <p>Countries update</p>
+  <!--<p>Countries update</p>
   <ods-phone-number id="phone-number-countries">
   </ods-phone-number>
   <button id="btn-update-countries">Update countries</button>
@@ -273,6 +300,6 @@
   <label for="labelled-phone-number-countries">My phone-number with countries</label>
   <ods-phone-number id="labelled-phone-number-countries"
                     countries="all">
-  </ods-phone-number>
+  </ods-phone-number> -->
 </body>
 </html>

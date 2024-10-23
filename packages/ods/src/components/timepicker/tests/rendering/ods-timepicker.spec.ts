@@ -2,7 +2,7 @@ jest.mock('../../src/controller/ods-timepicker', () => ({
   formatValue: jest.fn(),
   getCurrentTimezone: jest.fn(),
   parseTimezones: (): ODS_TIMEZONE[] => ODS_TIMEZONES as ODS_TIMEZONE[],
-  setFormValue: jest.fn(),
+  updateInternals: jest.fn(),
 }));
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';

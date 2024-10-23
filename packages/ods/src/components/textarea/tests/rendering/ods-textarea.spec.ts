@@ -1,8 +1,13 @@
 jest.mock('../../src/controller/ods-textarea');
 
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
 import { OdsTextarea } from '../../src';
+
+// @ts-ignore for test purposes
+global.MutationObserver = jest.fn(() => ({
+  disconnect: jest.fn(),
+  observe: jest.fn(),
+}));
 
 describe('ods-textarea rendering', () => {
   let page: SpecPage;
@@ -18,6 +23,15 @@ describe('ods-textarea rendering', () => {
     root = page.root;
     textarea = root?.shadowRoot?.querySelector('.ods-textarea__textarea');
   }
+
+  beforeAll(() => {
+    jest.spyOn(console, 'error').mockImplementation((msg) => {
+      // Hide the Stencil error about internals being not implemented on spec tests
+      if (!msg.startsWith('NOTE: Property validity was accessed on ElementInternals, but this property is not implemented.')) {
+        console.error(msg);
+      }
+    });
+  });
 
   describe('ariaLabel', () => {
     it('should be reflected', async() => {

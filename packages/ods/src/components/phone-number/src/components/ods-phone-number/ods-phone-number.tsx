@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { PhoneNumberUtil } from 'google-libphonenumber';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
@@ -6,8 +6,21 @@ import { type OdsSelectChangeEvent, type OdsSelectCustomRendererData } from '../
 import { type OdsPhoneNumberCountryIsoCode } from '../../constants/phone-number-country-iso-code';
 import { type OdsPhoneNumberCountryPreset } from '../../constants/phone-number-country-preset';
 import { type OdsPhoneNumberLocale } from '../../constants/phone-number-locale';
-import { type TranslatedCountryMap, formatPhoneNumber, getCurrentIsoCode, getCurrentLocale, getNationalPhoneNumberExample, getTranslatedCountryMap, getValidityState, isValidPhoneNumber, parseCountries, setFormValue, sortCountriesByName } from '../../controller/ods-phone-number';
+import {
+  type TranslatedCountryMap,
+  formatPhoneNumber,
+  getCurrentIsoCode,
+  getCurrentLocale,
+  getNationalPhoneNumberExample,
+  getTranslatedCountryMap,
+  isValidPhoneNumber,
+  parseCountries,
+  sortCountriesByName,
+  updateInternals,
+} from '../../controller/ods-phone-number';
 import { type OdsPhoneNumberChangeEventDetail } from '../../interfaces/events';
+
+const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -20,16 +33,20 @@ import { type OdsPhoneNumberChangeEventDetail } from '../../interfaces/events';
 export class OdsPhoneNumber {
   private hasCountries: boolean = false;
   private i18nCountriesMap?: TranslatedCountryMap;
-  private inputElement?: OdsInput;
+  private inputElement?: HTMLElement & OdsInput;
   private isInitialLoadDone: boolean = false;
   private parsedCountryCodes: OdsPhoneNumberCountryIsoCode[] = [];
   private phoneUtils = PhoneNumberUtil.getInstance();
+  private shouldUpdateIsInvalidState: boolean = false;
 
   @AttachInternals() private internals!: ElementInternals;
+
+  @State() isInvalid: boolean = false;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
   @Prop({ reflect: true }) public countries?: OdsPhoneNumberCountryIsoCode[] | OdsPhoneNumberCountryPreset | string;
+  @Prop({ reflect: true }) public customValidityMessage: string = 'Phone number is incorrect';
   @Prop({ reflect: true }) public defaultValue?: string;
   @Prop({ mutable: true, reflect: true }) public hasError: boolean = false;
   @Prop({ reflect: true }) public isClearable: boolean = false;
@@ -41,7 +58,7 @@ export class OdsPhoneNumber {
   @Prop({ mutable: true, reflect: true }) public locale?: OdsPhoneNumberLocale;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public pattern?: string;
-  @Prop({ mutable: true, reflect: true }) public value: string | null = null;
+  @Prop({ mutable: true, reflect: true }) public value: string | null = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsChange!: EventEmitter<OdsPhoneNumberChangeEventDetail>;
@@ -49,20 +66,58 @@ export class OdsPhoneNumber {
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
 
-  @Method()
-  public async clear(): Promise<void> {
-    return this.inputElement?.clear();
+  @Listen('invalid')
+  onInvalidEvent(event: Event): void {
+    // Remove the native validation message popup
+    event.preventDefault();
+
+    // Enforce the state here as we may still be in pristine state (if the form is submitted before any changes occurs)
+    this.isInvalid = true;
   }
 
   @Method()
-  public async getValidity(): Promise<ValidityState | undefined> {
-    const inputValidity = await this.inputElement?.getValidity();
-    return getValidityState(this.hasError, inputValidity);
+  public async checkValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
+    return this.internals.checkValidity();
+  }
+
+  @Method()
+  public async clear(): Promise<void> {
+    await this.inputElement?.clear();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
+    this.shouldUpdateIsInvalidState = true;
+  }
+
+  @Method()
+  public async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
+  }
+
+  @Method()
+  public async getValidity(): Promise<ValidityState> {
+    return this.internals.validity;
+  }
+
+  @Method()
+  public async reportValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
+    return this.internals.reportValidity();
   }
 
   @Method()
   public async reset(): Promise<void> {
-    return this.inputElement?.reset();
+    await this.inputElement?.reset();
+
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
+    this.shouldUpdateIsInvalidState = true;
+  }
+
+  @Method()
+  public async willValidate(): Promise<boolean> {
+    return this.internals.willValidate;
   }
 
   @Watch('countries')
@@ -75,7 +130,7 @@ export class OdsPhoneNumber {
   onIsoCodeChange(): void {
     if (this.isInitialLoadDone) {
       this.value = '';
-      this.hasError = false;
+      this.shouldUpdateIsInvalidState = true;
     }
   }
 
@@ -96,13 +151,8 @@ export class OdsPhoneNumber {
       this.locale = currentLocale;
     }
 
-    if (this.value) {
-      this.onInputChange(new CustomEvent('', {
-        detail: {
-          name: this.name,
-          value: this.value,
-        },
-      }));
+    if (!this.value && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
+      this.value = this.defaultValue ?? null;
     }
 
     // Watcher get called on will load, so we need to prevent value reset
@@ -113,26 +163,52 @@ export class OdsPhoneNumber {
     await this.reset();
   }
 
+  private getIsInvalid(): boolean {
+    return !isValidPhoneNumber(this.value, this.isoCode, this.phoneUtils) || !this.internals.validity.valid;
+  }
+
   private getPlaceholder(): string {
     return getNationalPhoneNumberExample(this.isoCode, this.phoneUtils);
   }
 
-  private onInputChange(event: OdsInputChangeEvent): void {
+  private onBlur(): void {
+    this.isInvalid = this.getIsInvalid();
+  }
+
+  private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
     event.stopImmediatePropagation();
 
-    this.value = event.detail.value?.toString() ?? null;
-    this.hasError = !isValidPhoneNumber(this.value, this.isoCode, this.phoneUtils);
+    this.value = event.detail.value as string ?? null;
 
-    const formattedValue = formatPhoneNumber(this.value, this.hasError, this.isoCode, this.phoneUtils);
-    setFormValue(this.internals, formattedValue);
+    if (!isValidPhoneNumber(this.value, this.isoCode, this.phoneUtils)) {
+      await this.inputElement?.setCustomValidity(this.customValidityMessage);
+    } else {
+      await this.inputElement?.setCustomValidity('');
+    }
+
+    const formattedValue = formatPhoneNumber(this.value, this.isoCode, this.phoneUtils);
+    await updateInternals(this.internals, formattedValue, this.inputElement);
+
+    // In case the value gets updated from an other source than a blur event
+    // we may have to perform an internal validity state update
+    if (this.shouldUpdateIsInvalidState) {
+      this.isInvalid = this.getIsInvalid();
+      this.shouldUpdateIsInvalidState = false;
+    }
 
     this.odsChange.emit({
       isoCode: this.isoCode,
       name: this.name,
-      previousValue: event.detail.previousValue?.toString() ?? null,
-      validity: getValidityState(this.hasError, event.detail.validity),
+      previousValue: event.detail.previousValue as string ?? null,
+      validity: this.internals.validity,
       value: formattedValue,
     });
+  }
+
+  private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+    const formattedValue = formatPhoneNumber(this.value, this.isoCode, this.phoneUtils);
+    await updateInternals(this.internals, formattedValue, this.inputElement);
+    this.isInvalid = event.detail;
   }
 
   private onSelectChange(event: OdsSelectChangeEvent): void {
@@ -141,7 +217,10 @@ export class OdsPhoneNumber {
 
   render(): FunctionalComponent {
     return (
-      <Host class="ods-phone-number">
+      <Host
+        class="ods-phone-number"
+        disabled={ this.isDisabled }
+        readonly={ this.isReadonly }>
         {
           this.hasCountries &&
           <ods-select
@@ -160,7 +239,7 @@ export class OdsPhoneNumber {
 `,
             }}
             dropdownWidth="auto"
-            hasError={ this.hasError }
+            hasError={ this.hasError || this.isInvalid }
             isDisabled={ this.isDisabled }
             isReadonly={ this.isReadonly }
             name="iso-code"
@@ -190,7 +269,7 @@ export class OdsPhoneNumber {
             'ods-phone-number__input--sibling': this.hasCountries,
           }}
           defaultValue={ this.defaultValue }
-          hasError={ this.hasError }
+          hasError={ this.hasError || this.isInvalid }
           isClearable={ this.isClearable }
           isDisabled={ this.isDisabled }
           isLoading={ this.isLoading }
@@ -198,11 +277,13 @@ export class OdsPhoneNumber {
           isRequired={ this.isRequired }
           name={ this.name }
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
-          onOdsChange={ (e: OdsInputChangeEvent) => this.onInputChange(e) }
+          onOdsBlur={ () => this.onBlur() }
+          onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
+          onOdsInvalid={ (event: CustomEvent<boolean>) => this.onOdsInvalid(event) }
           exportparts="input"
           pattern={ this.pattern }
           placeholder={ this.getPlaceholder() }
-          ref={ (el?: unknown): OdsInput => this.inputElement = el as OdsInput }
+          ref={ (el?: unknown): OdsInput => this.inputElement = el as HTMLElement & OdsInput }
           value={ this.value }>
         </ods-input>
       </Host>

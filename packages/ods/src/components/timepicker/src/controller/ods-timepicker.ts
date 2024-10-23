@@ -1,3 +1,5 @@
+import type { OdsInput } from '../../../input/src';
+import { setInternalsValidityFromOdsComponent } from '../../../../utils/dom';
 import { ODS_TIMEZONES_PRESET } from '../constant/timezone-preset';
 import { type ODS_TIMEZONE, ODS_TIMEZONES, type OdsTimezone } from '../constant/timezones';
 
@@ -55,13 +57,17 @@ function parseTimezones(timezones?: OdsTimezone[] | ODS_TIMEZONES_PRESET | strin
   return [];
 }
 
-function setFormValue(internals: ElementInternals, value: string | null): void {
+async function updateInternals(internals: ElementInternals, value: string | null, inputEl?: HTMLElement & OdsInput): Promise<void> {
   internals.setFormValue(value?.toString() ?? '');
+
+  if (inputEl) {
+    await setInternalsValidityFromOdsComponent(inputEl, internals);
+  }
 }
 
 export {
   formatValue,
   getCurrentTimezone,
   parseTimezones,
-  setFormValue,
+  updateInternals,
 };

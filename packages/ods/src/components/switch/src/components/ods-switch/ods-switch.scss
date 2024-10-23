@@ -22,3 +22,7 @@ $ods-switch-height-md: 32px;
 :host(.ods-switch--md) {
   height: $ods-switch-height-md;
 }
+
+:host(.ods-switch--error) {
+  border: 1px solid var(--ods-color-form-element-border-critical);
+}

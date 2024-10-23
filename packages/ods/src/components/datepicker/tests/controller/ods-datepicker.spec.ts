@@ -5,7 +5,7 @@ jest.mock('vanillajs-datepicker', () => ({
 }));
 
 import { Datepicker } from 'vanillajs-datepicker';
-import { formatDate, setFormValue } from '../../src/controller/ods-datepicker';
+import { formatDate, updateInternals } from '../../src/controller/ods-datepicker';
 
 describe('ods-datepicker controller', () => {
   beforeEach(jest.clearAllMocks);
@@ -39,28 +39,28 @@ describe('ods-datepicker controller', () => {
     });
   });
 
-  describe('setFormValue', () => {
+  describe('updateInternals', () => {
     const dummyInternal = {
       setFormValue: jest.fn(),
     } as unknown as ElementInternals;
 
     it('should set internal value with empty string', () => {
       // @ts-ignore for test purpose
-      setFormValue(dummyInternal);
+      updateInternals(dummyInternal);
       expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
 
       // @ts-ignore for test purpose
-      setFormValue(dummyInternal, undefined);
+      updateInternals(dummyInternal, undefined);
       expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
 
-      setFormValue(dummyInternal, null);
+      updateInternals(dummyInternal, null);
       expect(dummyInternal.setFormValue).toHaveBeenCalledWith('');
     });
 
     it('should set internal value with string value', () => {
       const dummyValue = 'dummy value';
 
-      setFormValue(dummyInternal, dummyValue);
+      updateInternals(dummyInternal, dummyValue);
 
       expect(dummyInternal.setFormValue).toHaveBeenCalledWith(dummyValue);
     });

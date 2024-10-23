@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { html } from 'lit-html';
+import { html, nothing } from 'lit-html';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -11,24 +11,49 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg) => html`
-  <ods-password class="my-password"
+  render: (arg) => {
+    const validityStateTemplate = html`<br>
+    <div id="validity-state-password" style="display: grid; row-gap: 5px;"></div>
+    <script>
+      (async() => {
+          const divValidityState = document.querySelector('#validity-state-password');
+          const password = document.querySelector('.my-password');
+          await customElements.whenDefined('ods-password');
+          await renderValidityState();
+          password.addEventListener('odsChange', async() => {
+            await renderValidityState();
+          });
+          async function renderValidityState() {
+            const validity = await password.getValidity();
+            divValidityState.innerHTML = '';
+            for (let key in validity) {
+              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+            }
+          }
+      })();
+    </script>`;
+    return html`
+    <ods-password
       ariaLabel="${arg.ariaLabel}"
       ariaLabelledby="${arg.ariaLabelledby}"
+      class="my-password"
       has-error="${arg.hasError}"
       is-clearable="${arg.isClearable}"
       is-disabled="${arg.isDisabled}"
       is-loading="${arg.isLoading}"
       is-readonly="${arg.isReadonly}"
-      pattern="${arg.pattern}"
+      is-required="${arg.isRequired}"
+      pattern="${arg.pattern || nothing}"
       placeholder="${arg.placeholder}">
-      </ods-password>
-  <style>
-  .my-password::part(input) {
-    ${arg.customCss}
-  }
-  </style>
-  `,
+    </ods-password>
+    ${ arg.validityState ? validityStateTemplate : '' }
+    <style>
+      .my-password::part(input) {
+        ${arg.customCss}
+      }
+    </style>
+    `;
+  },
   argTypes: orderControls({
     ariaLabel: {
       table: {
@@ -95,6 +120,14 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
+    isRequired: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
     pattern: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -111,6 +144,15 @@ export const Demo: StoryObj = {
       },
       control: 'text',
     },
+    validityState: {
+      table: {
+        category: CONTROL_CATEGORY.accessibility,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+      description: 'Toggle this to see the component validityState',
+    },
   }),
   args: {
     hasError: false,
@@ -118,6 +160,8 @@ export const Demo: StoryObj = {
     isDisabled: false,
     isLoading: false,
     isReadonly: false,
+    isRequired: false,
+    validityState: false,
   },
 };
 
@@ -217,4 +261,30 @@ export const CustomCSS: StoryObj = {
   }
 </style>
   `,
+};
+
+export const ValidityState: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-password is-required id="password-validity-state-demo">
+</ods-password>
+<div id="validity-state-demo"></div>
+<script>
+  (async() => {
+      const divValidityState = document.querySelector('#validity-state-demo');
+      const password = document.querySelector('#password-validity-state-demo');
+      setTimeout(async() => { await renderValidityState() }, 0)
+      password.addEventListener('odsChange', () => {
+        setTimeout(async() => { await renderValidityState() }, 0)
+      })
+      async function renderValidityState() {
+        const validity = await password.getValidity();
+        divValidityState.innerHTML = '';
+        for (let key in validity) {
+          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+        }
+      }
+  })();
+</script>
+`,
 };

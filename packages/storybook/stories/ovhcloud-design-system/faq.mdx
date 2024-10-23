@@ -70,3 +70,11 @@ If you are using a form component such as *OdsInput* on ODS version `>= 17.1.0`,
 This is primarily due to older versions of Safari not supporting `AttachInternals` which are essential for our components to connect form elements with forms.
 
 We would therefore recommend using versions of Safari superior to `16.4`.
+
+<Heading label="[React] Boolean Attributes" level={ 2 } />
+
+There is a known bug in the React component and the boolean properties. If you bind the property like this `isDisabled={isDisabled}` when the variable `isDisabled` was `false` the property wiil not be removed.
+
+To solve this problem you can bind the property `isDisabled={ isDisabled ? true : undefined }`.
+
+Issue Source: https://github.com/facebook/react/issues/9230?fbclid=IwAR1VhQVMpSy3VkGWCOjpwO60y6PxXJOcwdvE88AX1TjBxDaHfwsfHJYeOJU#issuecomment-1094149596

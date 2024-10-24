@@ -1,15 +1,5 @@
 import { type ComputePositionReturn, type OffsetOptions, type ShiftOptions, arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 
-type DomElement = {
-  arrow?: HTMLElement,
-  popper: HTMLElement,
-  trigger: HTMLElement | null | undefined,
-}
-type MiddlewareOption = {
-  offset?: OffsetOptions,
-  shift?: ShiftOptions,
-}
-
 enum ODS_OVERLAY_POSITION {
   bottom = 'bottom',
   bottomEnd = 'bottom-end',
@@ -25,9 +15,28 @@ enum ODS_OVERLAY_POSITION {
   topStart = 'top-start',
 }
 
+enum ODS_OVERLAY_STRATEGY {
+  absolute = 'absolute',
+  fixed = 'fixed',
+}
+
 type OdsOverlayPosition = `${ODS_OVERLAY_POSITION}`;
+type OdsOverlayStrategy = `${ODS_OVERLAY_STRATEGY}`;
+
+type DomElement = {
+  arrow?: HTMLElement,
+  popper: HTMLElement,
+  trigger: HTMLElement | null | undefined,
+}
+
+type MiddlewareOption = {
+  offset?: OffsetOptions,
+  shift?: ShiftOptions,
+  strategy?: OdsOverlayStrategy,
+}
 
 const ODS_OVERLAY_POSITIONS = Object.freeze(Object.values(ODS_OVERLAY_POSITION));
+const ODS_OVERLAY_STRATEGIES = Object.freeze(Object.values(ODS_OVERLAY_STRATEGY));
 
 function findTriggerElement(triggerId: string, shadowDomTriggerId?: string): HTMLElement | undefined {
   const hostElement = document.querySelector<HTMLElement>(`#${triggerId}`);
@@ -69,6 +78,7 @@ async function getElementPosition(position: OdsOverlayPosition, domElement: DomE
   return computePosition(domElement.trigger, domElement.popper, {
     middleware: middlewares,
     placement: position,
+    strategy: option?.strategy || ODS_OVERLAY_STRATEGY.absolute,
   });
 }
 
@@ -129,5 +139,8 @@ export {
   ODS_OVERLAY_POSITION,
   ODS_OVERLAY_POSITIONS,
   type OdsOverlayPosition,
+  ODS_OVERLAY_STRATEGIES,
+  ODS_OVERLAY_STRATEGY,
+  type OdsOverlayStrategy,
   showOverlay,
 };

@@ -5,3 +5,4 @@
  * ex:
  *   import '../../text/src';
  */
+import '../../modal/src';

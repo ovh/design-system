@@ -2,6 +2,7 @@ import { Component, Element, Event, type EventEmitter, type FunctionalComponent,
 import { isTargetInElement } from '../../../../../utils/dom';
 import { findTriggerElement, hideOverlay, showOverlay } from '../../../../../utils/overlay';
 import { ODS_POPOVER_POSITION, type OdsPopoverPosition } from '../../constants/popover-position';
+import { ODS_POPOVER_STRATEGY, type OdsPopoverStrategy } from '../../constants/popover-strategy';
 
 @Component({
   shadow: true,
@@ -20,6 +21,7 @@ export class OdsPopover {
 
   @Prop({ reflect: true }) public position: OdsPopoverPosition = ODS_POPOVER_POSITION.top;
   @Prop({ reflect: true }) public shadowDomTriggerId?: string;
+  @Prop({ reflect: true }) public strategy: OdsPopoverStrategy = ODS_POPOVER_STRATEGY.absolute;
   @Prop({ reflect: true }) public triggerId!: string;
   @Prop({ reflect: true }) public withArrow: boolean = false;
 
@@ -70,6 +72,7 @@ export class OdsPopover {
     }, {
       offset: 8,
       shift: { padding: 5 },
+      strategy: this.strategy,
     });
 
     this.isOpen = true;
@@ -104,7 +107,7 @@ export class OdsPopover {
 
   render(): FunctionalComponent {
     return (
-      <Host class="ods-popover">
+      <Host class={ `ods-popover ods-popover--${this.strategy}` }>
         <slot></slot>
 
         <div

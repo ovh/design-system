@@ -112,11 +112,16 @@ describe('ods-select rendering', () => {
     })).toBe('>>> 1 <<<');
   });
 
+  it('should render with is-disabled', async() => {
+    await setup('<ods-select is-disabled><option value="1">Value 1</option></ods-select>');
+
+    expect(selectComponent.classList.contains('disabled')).toBe(true);
+  });
+
   describe('watchers', () => {
     describe('isDisabled', () => {
       it('should disable the select component', async() => {
         await setup('<ods-select><option value="1">1</option></ods-select>');
-
         expect(selectComponent.classList.contains('disabled')).toBe(false);
 
         el.setAttribute('is-disabled', true);

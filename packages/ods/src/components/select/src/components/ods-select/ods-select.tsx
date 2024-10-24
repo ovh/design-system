@@ -285,6 +285,7 @@ export class OdsSelect {
       });
 
       this.bindSelectControl();
+      this.onIsDisabledChange(this.isDisabled);
       this.onIsReadonlyChange(this.isReadonly);
       setSelectValue(this.select, this.value, this.defaultValue, true);
     }

@@ -4,9 +4,16 @@
   @include overlay.ods-tooltip();
 
   display: none;
-  position: absolute;
   top: 0;
   left: 0;
+}
+
+:host(.ods-popover--absolute) {
+  position: absolute;
+}
+
+:host(.ods-popover--fixed) {
+  position: fixed;
 }
 
 .ods-popover {

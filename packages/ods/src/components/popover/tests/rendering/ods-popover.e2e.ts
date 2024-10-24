@@ -33,6 +33,32 @@ describe('ods-popover rendering', () => {
     await page.waitForChanges();
   }
 
+  async function setupModal(content: string): Promise<void> {
+    page = await newE2EPage();
+
+    await page.setContent(`
+      <ods-modal is-open>
+        <button id="${triggerId}">
+          Trigger<br/>
+          Popover<br/>
+          Multiline
+        </button>
+        ${content}
+      </ods-modal>
+    `);
+
+    await page.evaluate(() => {
+      const dialog = document.querySelector('ods-modal')?.shadowRoot?.querySelector('dialog');
+      dialog?.style.setProperty('animation', 'none');
+    });
+
+    el = await page.find('ods-popover');
+    trigger = await page.find(`#${triggerId}`);
+
+    await trigger.click();
+    await page.waitForChanges();
+  }
+
   it('should render the web component', async() => {
     await setup(`<ods-popover trigger-id="${triggerId}">Popover</ods-popover>`);
 
@@ -40,10 +66,10 @@ describe('ods-popover rendering', () => {
   });
 
   describe('position', () => {
-    async function getRect(selector: string): Promise<{ bottom: number, left: number, right: number, top: number }> {
+    async function getRect(selector: string): Promise<{ bottom: number, left: number, right: number, top: number, y: number }> {
       return await page.evaluate((selector: string) => {
-        const { bottom, left, right, top } = document.querySelector(selector)!.getBoundingClientRect();
-        return { bottom, left, right, top };
+        const { bottom, left, right, top, y } = document.querySelector(selector)!.getBoundingClientRect();
+        return { bottom, left, right, top, y };
       }, selector);
     }
 
@@ -230,6 +256,28 @@ describe('ods-popover rendering', () => {
       const popoverRect = await getRect('ods-popover');
 
       expect(popoverRect.left).toBeLessThan(buttonRect.left);
+    });
+
+    describe('in a fixed context (like ods-modal)', () => {
+      it('should position regarding dialog element (thus not at the right place) in absolute strategy', async() => {
+        await setupModal(`<ods-popover position="top" trigger-id="${triggerId}">Popover content</ods-popover>`);
+
+        const buttonRect = await getRect('button');
+        const popoverRect = await getRect('ods-popover');
+
+        // Popover is positioned from the dialog, so it should be rendered underneath the trigger
+        expect(popoverRect.y).toBeGreaterThan(buttonRect.y);
+      });
+
+      it('should position regarding viewport (thus at the right place) in fixed strategy', async() => {
+        await setupModal(`<ods-popover position="top" strategy="fixed" trigger-id="${triggerId}">Popover content</ods-popover>`);
+
+        const buttonRect = await getRect('button');
+        const popoverRect = await getRect('ods-popover');
+
+        // Popover is positioned from the viewport, so it should be rendered on top of the trigger as expected
+        expect(popoverRect.y).toBeLessThan(buttonRect.y);
+      });
     });
   });
 

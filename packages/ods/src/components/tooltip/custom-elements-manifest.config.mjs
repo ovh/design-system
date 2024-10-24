@@ -9,6 +9,7 @@ export default {
   plugins: [cemEnumPlugin({
     rename: {
       ODS_OVERLAY_POSITION: 'ODS_TOOLTIP_POSITION',
+      ODS_OVERLAY_STRATEGY: 'ODS_TOOLTIP_STRATEGY',
     },
   })],
   stencil: true,

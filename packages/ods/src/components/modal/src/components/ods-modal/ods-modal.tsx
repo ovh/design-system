@@ -111,8 +111,6 @@ export class OdsModal {
           ref={ (el) => this.modalDialog = el as HTMLDialogElement }
           onClick={ (event) => this.handleBackdropClick(event) }
           part='dialog'>
-          <div class='ods-modal__backdrop'></div>
-
           <div class={ `ods-modal__dialog__header ods-modal__dialog__header--${this.color}` }>
             {
               this.isDismissible &&

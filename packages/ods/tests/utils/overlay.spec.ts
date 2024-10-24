@@ -8,7 +8,7 @@ jest.mock('@floating-ui/dom', () => ({
 }));
 
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { findTriggerElement, getElementPosition, hideOverlay, showOverlay } from '../../src/utils/overlay';
+import { ODS_OVERLAY_STRATEGY, findTriggerElement, getElementPosition, hideOverlay, showOverlay } from '../../src/utils/overlay';
 
 describe('utils overlay', () => {
   beforeEach(jest.clearAllMocks);
@@ -71,7 +71,7 @@ describe('utils overlay', () => {
       }).rejects.toThrow();
     });
 
-    it('should call computePosition with expected arguments', async() => {
+    it('should call computePosition with default arguments', async() => {
       const dummyDomElement = {
         popper: document.createElement('div'),
         trigger: document.createElement('div'),
@@ -80,6 +80,12 @@ describe('utils overlay', () => {
 
       await getElementPosition(dummyPosition, dummyDomElement);
 
+      expect(flip).toHaveBeenCalledTimes(1);
+      expect(flip).toHaveBeenCalledWith();
+      expect(offset).toHaveBeenCalledTimes(1);
+      expect(offset).toHaveBeenCalledWith(0);
+      expect(shift).toHaveBeenCalledTimes(1);
+      expect(shift).toHaveBeenCalledWith(undefined);
       expect(computePosition).toHaveBeenCalledTimes(1);
       expect(computePosition).toHaveBeenCalledWith(dummyDomElement.trigger, dummyDomElement.popper, {
         middleware: [
@@ -88,6 +94,39 @@ describe('utils overlay', () => {
           'shift middleware',
         ],
         placement: dummyPosition,
+        strategy: ODS_OVERLAY_STRATEGY.absolute,
+      });
+    });
+
+    it('should call computePosition with given options', async() => {
+      const dummyDomElement = {
+        popper: document.createElement('div'),
+        trigger: document.createElement('div'),
+      };
+      const dummyOption = {
+        offset: 42,
+        shift: { mainAxis: false },
+        strategy: ODS_OVERLAY_STRATEGY.fixed,
+      };
+      const dummyPosition = 'top';
+
+      await getElementPosition(dummyPosition, dummyDomElement, dummyOption);
+
+      expect(flip).toHaveBeenCalledTimes(1);
+      expect(flip).toHaveBeenCalledWith();
+      expect(offset).toHaveBeenCalledTimes(1);
+      expect(offset).toHaveBeenCalledWith(dummyOption.offset);
+      expect(shift).toHaveBeenCalledTimes(1);
+      expect(shift).toHaveBeenCalledWith(dummyOption.shift);
+      expect(computePosition).toHaveBeenCalledTimes(1);
+      expect(computePosition).toHaveBeenCalledWith(dummyDomElement.trigger, dummyDomElement.popper, {
+        middleware: [
+          'flip middleware',
+          'offset middleware',
+          'shift middleware',
+        ],
+        placement: dummyPosition,
+        strategy: dummyOption.strategy,
       });
     });
   });
@@ -172,6 +211,7 @@ describe('utils overlay', () => {
             'shift middleware',
           ],
           placement: dummyPosition,
+          strategy: ODS_OVERLAY_STRATEGY.absolute,
         });
         expect(flip).toHaveBeenCalled();
         expect(offset).toHaveBeenCalledWith(dummyOption.offset);
@@ -219,6 +259,7 @@ describe('utils overlay', () => {
             'arrow middleware',
           ],
           placement: dummyPosition,
+          strategy: ODS_OVERLAY_STRATEGY.absolute,
         });
         expect(arrow).toHaveBeenCalledWith({ element: dummyArrow });
         expect(flip).toHaveBeenCalled();

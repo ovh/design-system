@@ -1,5 +1,5 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { ODS_POPOVER_POSITION, OdsPopover } from '../../src';
+import { ODS_POPOVER_POSITION, ODS_POPOVER_STRATEGY, OdsPopover } from '../../src';
 
 describe('ods-popover rendering', () => {
   let page: SpecPage;
@@ -31,6 +31,22 @@ describe('ods-popover rendering', () => {
       await setup('<ods-popover></ods-popover>');
 
       expect(root?.getAttribute('position')).toBe(ODS_POPOVER_POSITION.top);
+    });
+  });
+
+  describe('strategy', () => {
+    it('should be reflected', async() => {
+      const dummyValue = 'dummy value';
+
+      await setup(`<ods-popover strategy="${dummyValue}"></ods-popover>`);
+
+      expect(root?.getAttribute('strategy')).toBe(dummyValue);
+    });
+
+    it('should render with expected default value', async() => {
+      await setup('<ods-popover></ods-popover>');
+
+      expect(root?.getAttribute('strategy')).toBe(ODS_POPOVER_STRATEGY.absolute);
     });
   });
 

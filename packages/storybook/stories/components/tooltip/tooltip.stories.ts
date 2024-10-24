@@ -123,3 +123,32 @@ export const CustomCSS: StoryObj = {
 </style>
   `,
 };
+
+export const FixedContext: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button id="modal-button"
+            label="Open Modal">
+</ods-button>
+<ods-modal id="modal-tooltip">
+  <ods-icon id="modal-tooltip-trigger"
+            name="circle-question">
+  </ods-icon>
+  <ods-tooltip strategy="fixed"
+               trigger-id="modal-tooltip-trigger">
+    Some tooltip content
+  </ods-tooltip>
+</ods-modal>
+
+<script>
+  (() => {
+    const modalButton = document.querySelector('#modal-button');
+    const modalElement = document.querySelector('#modal-tooltip');
+
+    modalButton.addEventListener('click', () => {
+      modalElement.open();
+    });
+  })();
+</script>
+  `,
+};

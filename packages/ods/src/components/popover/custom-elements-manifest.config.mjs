@@ -9,6 +9,7 @@ export default {
   plugins: [cemEnumPlugin({
     rename: {
       ODS_OVERLAY_POSITION: 'ODS_POPOVER_POSITION',
+      ODS_OVERLAY_STRATEGY: 'ODS_POPOVER_STRATEGY',
     },
   })],
   stencil: true,

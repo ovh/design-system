@@ -7,3 +7,4 @@
  */
 import '../../button/src';
 import '../../input/src';
+import '../../modal/src';

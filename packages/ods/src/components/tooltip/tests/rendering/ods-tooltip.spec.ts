@@ -1,5 +1,5 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { ODS_TOOLTIP_POSITION, OdsTooltip } from '../../src';
+import { ODS_TOOLTIP_POSITION, ODS_TOOLTIP_STRATEGY, OdsTooltip } from '../../src';
 
 describe('ods-tooltip rendering', () => {
   let page: SpecPage;
@@ -31,6 +31,22 @@ describe('ods-tooltip rendering', () => {
       await setup('<ods-tooltip></ods-tooltip>');
 
       expect(root?.getAttribute('position')).toBe(ODS_TOOLTIP_POSITION.top);
+    });
+  });
+
+  describe('strategy', () => {
+    it('should be reflected', async() => {
+      const dummyValue = 'dummy value';
+
+      await setup(`<ods-tooltip strategy="${dummyValue}"></ods-tooltip>`);
+
+      expect(root?.getAttribute('strategy')).toBe(dummyValue);
+    });
+
+    it('should render with expected default value', async() => {
+      await setup('<ods-tooltip></ods-tooltip>');
+
+      expect(root?.getAttribute('strategy')).toBe(ODS_TOOLTIP_STRATEGY.absolute);
     });
   });
 

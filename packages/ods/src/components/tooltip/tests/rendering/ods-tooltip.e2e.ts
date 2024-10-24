@@ -1,5 +1,4 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
 import { ODS_TOOLTIP_POSITION, type OdsTooltipPosition } from '../../src';
 
 describe('ods-tooltip rendering', () => {
@@ -34,6 +33,32 @@ describe('ods-tooltip rendering', () => {
     await page.waitForChanges();
   }
 
+  async function setupModal(content: string): Promise<void> {
+    page = await newE2EPage();
+
+    await page.setContent(`
+      <ods-modal is-open>
+        <button id="${triggerId}">
+          Trigger<br/>
+          Tooltip<br/>
+          Multiline
+        </button>
+        ${content}
+      </ods-modal>
+    `);
+
+    await page.evaluate(() => {
+      const dialog = document.querySelector('ods-modal')?.shadowRoot?.querySelector('dialog');
+      dialog?.style.setProperty('animation', 'none');
+    });
+
+    el = await page.find('ods-tooltip');
+    trigger = await page.find(`#${triggerId}`);
+
+    await trigger.hover();
+    await page.waitForChanges();
+  }
+
   it('should render the web component', async() => {
     await setup(`<ods-tooltip trigger-id="${triggerId}">Tooltip</ods-tooltip>`);
 
@@ -41,10 +66,10 @@ describe('ods-tooltip rendering', () => {
   });
 
   describe('position', () => {
-    async function getRect(selector: string): Promise<{ bottom: number, left: number, right: number, top: number }> {
+    async function getRect(selector: string): Promise<{ bottom: number, left: number, right: number, top: number, y: number }> {
       return await page.evaluate((selector: string) => {
-        const { bottom, left, right, top } = document.querySelector(selector)!.getBoundingClientRect();
-        return { bottom, left, right, top };
+        const { bottom, left, right, top, y } = document.querySelector(selector)!.getBoundingClientRect();
+        return { bottom, left, right, top, y };
       }, selector);
     }
 
@@ -231,6 +256,28 @@ describe('ods-tooltip rendering', () => {
       const tooltipRect = await getRect('ods-tooltip');
 
       expect(tooltipRect.left).toBeLessThan(buttonRect.left);
+    });
+
+    describe('in a fixed context (like ods-modal)', () => {
+      it('should position regarding dialog element (thus not at the right place) in absolute strategy', async() => {
+        await setupModal(`<ods-tooltip position="top" trigger-id="${triggerId}">Tooltip content</ods-tooltip>`);
+
+        const buttonRect = await getRect('button');
+        const tooltipRect = await getRect('ods-tooltip');
+
+        // Tooltip is positioned from the dialog, so it should be rendered underneath the trigger
+        expect(tooltipRect.y).toBeGreaterThan(buttonRect.y);
+      });
+
+      it('should position regarding viewport (thus at the right place) in fixed strategy', async() => {
+        await setupModal(`<ods-tooltip position="top" strategy="fixed" trigger-id="${triggerId}">Tooltip content</ods-tooltip>`);
+
+        const buttonRect = await getRect('button');
+        const tooltipRect = await getRect('ods-tooltip');
+
+        // Tooltip is positioned from the viewport, so it should be rendered on top of the trigger as expected
+        expect(tooltipRect.y).toBeLessThan(buttonRect.y);
+      });
     });
   });
 

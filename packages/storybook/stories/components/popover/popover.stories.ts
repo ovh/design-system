@@ -108,6 +108,35 @@ export const Default: StoryObj = {
   `,
 };
 
+export const FixedContext: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button id="modal-button"
+            label="Open Modal">
+</ods-button>
+<ods-modal id="modal-popover">
+  <ods-button id="modal-popover-trigger"
+              label="Open Popover">
+  </ods-button>
+  <ods-popover strategy="fixed"
+               trigger-id="modal-popover-trigger">
+    Some popover content
+  </ods-popover>
+</ods-modal>
+
+<script>
+  (() => {
+    const modalButton = document.querySelector('#modal-button');
+    const modalElement = document.querySelector('#modal-popover');
+
+    modalButton.addEventListener('click', () => {
+      modalElement.open();
+    });
+  })();
+</script>
+  `,
+};
+
 export const Overview: StoryObj = {
   tags: ['isHidden'],
   parameters: {

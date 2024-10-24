@@ -10,7 +10,7 @@ describe('ods-toggle rendering', () => {
 
   async function isInErrorState(): Promise<boolean | undefined> {
     return await page.evaluate(() => {
-      return document.querySelector('ods-toggle')?.shadowRoot?.querySelector('.ods-toggle__container__slider')?.classList.contains('ods-toggle__container__slider--error');
+      return document.querySelector('ods-toggle')?.shadowRoot?.querySelector('.ods-toggle__container')?.classList.contains('ods-toggle__container--error');
     });
   }
 

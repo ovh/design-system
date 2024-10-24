@@ -5,8 +5,14 @@
   &__container {
     display: inline-block;
     position: relative;
+    border: 1px solid var(--ods-color-neutral-200);
+    border-radius: 1rem;
     width: 48px;
     height: 24px;
+
+    &--error {
+      border-color: var(--ods-color-form-element-border-critical);
+    }
 
     &__slider {
       $slider: &;
@@ -48,14 +54,6 @@
 
         & #{$slider}__label {
           color: state.$ods-state-is-disabled-text-color;
-        }
-      }
-
-      &--error {
-        border: 1px solid var(--ods-color-form-element-border-critical);
-
-        &::before {
-          bottom: 1px;
         }
       }
 

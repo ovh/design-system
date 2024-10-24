@@ -117,4 +117,20 @@ describe('ods-select rendering', () => {
 
     expect(selectComponent.classList.contains('disabled')).toBe(true);
   });
+
+  describe('watchers', () => {
+    describe('isDisabled', () => {
+      it('should disable the select component', async() => {
+        await setup('<ods-select><option value="1">1</option></ods-select>');
+        expect(selectComponent.classList.contains('disabled')).toBe(false);
+
+        el.setAttribute('is-disabled', true);
+        await page.waitForChanges();
+
+        expect(await page.evaluate(() => {
+          return document.querySelector('ods-select')?.shadowRoot?.querySelector('.ts-wrapper')?.classList.contains('disabled') || false;
+        })).toBe(true);
+      });
+    });
+  });
 });

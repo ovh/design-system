@@ -227,7 +227,7 @@ describe('ods-select behaviour', () => {
       });
     });
 
-    describe('on Slot change', () => {
+    describe('on slot change', () => {
       it('should render with is-disabled', async() => {
         await setup('<ods-select is-disabled><option value="1">Value 1</option></ods-select>');
         expect(selectComponent.classList.contains('disabled')).toBe(true);
@@ -236,7 +236,7 @@ describe('ods-select behaviour', () => {
         await page.waitForChanges();
 
         expect(await page.evaluate(() => {
-          return document.querySelector('ods-select')?.shadowRoot?.querySelector('.ts-wrapper')?.classList.contains('disabled') || false;
+          return document.querySelector('ods-select')?.shadowRoot?.querySelector('.ts-wrapper')?.classList.contains('disabled');
         })).toBe(false);
       });
     });

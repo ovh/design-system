@@ -169,7 +169,10 @@ export class OdsToggle {
     return (
       <Host class='ods-toggle'
         disabled={ this.isDisabled }>
-        <label class='ods-toggle__container'>
+        <label class={{
+          'ods-toggle__container': true,
+          'ods-toggle__container--error': this.isInvalid,
+        }}>
           <input
             checked={ this.value ?? false }
             class="ods-toggle__container__input"
@@ -189,7 +192,6 @@ export class OdsToggle {
             'ods-toggle__container__slider': true,
             'ods-toggle__container__slider--checked': this.value ?? false,
             'ods-toggle__container__slider--disabled': this.isDisabled,
-            'ods-toggle__container__slider--error': this.isInvalid,
           }}
           part={ `slider ${this.value ? 'checked' : ''}` }>
             {

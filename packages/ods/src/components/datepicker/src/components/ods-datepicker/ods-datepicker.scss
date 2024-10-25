@@ -5,7 +5,6 @@
 
 $ods-datepicker-item-size: 36px;
 $ods-datepicker-padding: 6px;
-$ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
 
 @mixin custom-view() {
   height: $ods-datepicker-item-size;

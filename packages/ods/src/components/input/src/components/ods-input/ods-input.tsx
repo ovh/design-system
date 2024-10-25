@@ -155,14 +155,14 @@ export class OdsInput {
           {
             hasClearableIcon &&
             <ods-button
-              color={ODS_BUTTON_COLOR.neutral}
-              icon={ODS_ICON_NAME.xmark}
+              color={ ODS_BUTTON_COLOR.neutral }
+              icon={ ODS_ICON_NAME.xmark }
               isDisabled={ this.isDisabled || this.isReadonly }
               label=""
               onClick={ this.clear.bind(this) }
               onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.clear.bind(this)) }
-              size={ODS_BUTTON_SIZE.xs}
-              variant={ODS_BUTTON_VARIANT.ghost}>
+              size={ ODS_BUTTON_SIZE.xs }
+              variant={ ODS_BUTTON_VARIANT.ghost }>
             </ods-button>
           }
           {
@@ -173,8 +173,8 @@ export class OdsInput {
               label=""
               onClick={ this.toggleMask.bind(this) }
               onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.toggleMask.bind(this)) }
-              size={ODS_BUTTON_SIZE.xs}
-              variant={ODS_BUTTON_VARIANT.ghost}>
+              size={ ODS_BUTTON_SIZE.xs }
+              variant={ ODS_BUTTON_VARIANT.ghost }>
             </ods-button>
           }
         </div>

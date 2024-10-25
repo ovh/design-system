@@ -259,14 +259,14 @@ export class OdsDatepicker {
           {
             hasClearableAction &&
             <ods-button
-              color={ODS_BUTTON_COLOR.neutral}
-              icon={ODS_ICON_NAME.xmark}
+              color={ ODS_BUTTON_COLOR.neutral }
+              icon={ ODS_ICON_NAME.xmark }
               isDisabled={ this.isDisabled || this.isReadonly }
               label=""
               onClick={ () => this.clear() }
               onKeyUp={ (e: KeyboardEvent): void => this.onClearButtonKeyUp(e) }
-              size={ODS_BUTTON_SIZE.xs}
-              variant={ODS_BUTTON_VARIANT.ghost}>
+              size={ ODS_BUTTON_SIZE.xs }
+              variant={ ODS_BUTTON_VARIANT.ghost }>
             </ods-button>
           }
 

@@ -1,8 +1,13 @@
 @use '../../../../../style/focus';
 @use '../../../../../style/state';
 
+:host(.ods-toggle) {
+  display: inline-block;
+}
+
 .ods-toggle {
   &__container {
+    box-sizing: border-box;
     display: inline-block;
     position: relative;
     border: 1px solid transparent;
@@ -25,8 +30,8 @@
 
       &::before {
         position: absolute;
-        bottom: 2px;
-        left: 2px;
+        bottom: 1px;
+        left: 1px;
         transition: all .4s ease;
         z-index: 1;
         border-radius: 1rem;
@@ -64,7 +69,7 @@
         right: 0;
         bottom: 0;
         align-items: center;
-        padding-right: 4px;
+        padding-right: 1px;
         color: var(--ods-color-neutral-700);
         font-size: 12px;
         font-weight: 700;

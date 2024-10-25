@@ -14,7 +14,8 @@
     "noUnusedParameters": true,
     "outDir": "dist",
     "paths": {
-      "app/*": ["src/app/*"]
+      "app/*": ["src/app/*"],
+      "router-app/*": ["src/router-app/*"]
     },
     "removeComments": true,
     "sourceMap": true,

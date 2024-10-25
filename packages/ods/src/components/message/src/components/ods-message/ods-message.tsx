@@ -1,5 +1,6 @@
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
-import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';import { ODS_ICON_NAME } from '../../../../icon/src';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
+import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_MESSAGE_COLOR, type OdsMessageColor } from '../../constants/message-color';
 import { ODS_MESSAGE_VARIANT, type OdsMessageVariant } from '../../constants/message-variant';
 import { getIconName } from '../../controller/ods-message';
@@ -32,23 +33,23 @@ export class OdsMessage {
     return (
       <Host class="ods-message">
         <div
-          class={`ods-message__message ods-message__message--${this.color} ods-message__message--${this.variant}`}
+          class={ `ods-message__message ods-message__message--${this.color} ods-message__message--${this.variant}` }
           part="message">
           <ods-icon
             class="ods-message__message__icon"
-            name={getIconName(this.color)}>
+            name={ getIconName(this.color) }>
           </ods-icon>
 
           <slot></slot>
 
           <ods-button
-            class={`ods-message__message__close ods-message__message__close--${this.color}`}
-            icon={ODS_ICON_NAME.xmark}
+            class={ `ods-message__message__close ods-message__message__close--${this.color}` }
+            icon={ ODS_ICON_NAME.xmark }
             label=""
-            onClick={() => this.handleClick()}
-            onKeyUp={(event: KeyboardEvent) => this.handleKeyUp(event)}
-            size={ODS_BUTTON_SIZE.xs}
-            variant={ODS_BUTTON_VARIANT.ghost}>
+            onClick={ () => this.handleClick() }
+            onKeyUp={ (event: KeyboardEvent) => this.handleKeyUp(event) }
+            size={ ODS_BUTTON_SIZE.xs }
+            variant={ ODS_BUTTON_VARIANT.ghost }>
           </ods-button>
         </div>
       </Host>

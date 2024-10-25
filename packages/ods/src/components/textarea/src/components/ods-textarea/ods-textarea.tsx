@@ -87,7 +87,7 @@ export class OdsTextarea {
   }
 
   @Method()
-  async reset(): Promise<void> {
+  public async reset(): Promise<void> {
     this.odsReset.emit();
     this.value = this.defaultValue ?? null;
 

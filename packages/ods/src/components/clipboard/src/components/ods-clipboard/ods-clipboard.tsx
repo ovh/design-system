@@ -63,7 +63,7 @@ export class OdsClipboard {
           isDisabled={ this.isDisabled }
           label=""
           onClick={ () => this.copy() }
-          size={ ODS_BUTTON_SIZE.sm }
+          size={ ODS_BUTTON_SIZE.xs }
           variant={ ODS_BUTTON_VARIANT.ghost }>
         </ods-button>
 

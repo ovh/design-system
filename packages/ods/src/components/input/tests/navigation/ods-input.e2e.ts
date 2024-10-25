@@ -21,6 +21,13 @@ describe('ods-input navigation', () => {
     });
   }
 
+  async function getFocusedButtonIconName(): Promise<string | undefined> {
+    return await page.evaluate(() => {
+      const input = document.querySelector('ods-input');
+      return input?.shadowRoot?.activeElement?.getAttribute('icon') || undefined;
+    });
+  }
+
   async function setup(content: string): Promise<void> {
     page = await newE2EPage();
 
@@ -29,8 +36,8 @@ describe('ods-input navigation', () => {
 
     el = await page.find('ods-input');
     input = await page.find('ods-input >>> input');
-    buttonClearable = await page.find('ods-input >>> .ods-input__actions__clearable');
-    buttonToggleMask = await page.find('ods-input >>> .ods-input__actions__toggle-mask');
+    buttonClearable = await page.find('ods-input >>> ods-button[icon="xmark"]');
+    buttonToggleMask = await page.find('ods-input >>> ods-button[icon="eye-off"]');
   }
 
   beforeEach(jest.clearAllMocks);
@@ -87,7 +94,7 @@ describe('ods-input navigation', () => {
       expect(await odsInputFocusedElementClassName()).toContain('ods-input__input');
 
       await page.keyboard.press('Tab');
-      expect(await odsInputFocusedElementClassName()).toContain('ods-input__actions__clearable');
+      expect(await getFocusedButtonIconName()).toBe('xmark');
 
       await page.keyboard.press('Tab');
       expect(await odsInputFocusedElementClassName()).toBe(undefined);
@@ -185,7 +192,7 @@ describe('ods-input navigation', () => {
       expect(await odsInputFocusedElementClassName()).toContain('ods-input__input');
 
       await page.keyboard.press('Tab');
-      expect(await odsInputFocusedElementClassName()).toContain('ods-input__actions__toggle-mask');
+      expect(await getFocusedButtonIconName()).toBe('eye-off');
 
       await page.keyboard.press('Tab');
       expect(await odsInputFocusedElementClassName()).toBe(undefined);
@@ -271,9 +278,9 @@ describe('ods-input navigation', () => {
     expect(await odsInputFocusedElementClassName()).toContain('ods-input__input');
 
     await page.keyboard.press('Tab');
-    expect(await odsInputFocusedElementClassName()).toContain('ods-input__actions__clearable');
+    expect(await getFocusedButtonIconName()).toBe('xmark');
 
     await page.keyboard.press('Tab');
-    expect(await odsInputFocusedElementClassName()).toContain('ods-input__actions__toggle-mask');
+    expect(await getFocusedButtonIconName()).toBe('eye-off');
   });
 });

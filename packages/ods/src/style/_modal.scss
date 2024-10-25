@@ -73,15 +73,6 @@ $ods-modal-border-radius: var(--ods-border-radius-sm);
 @mixin ods-modal-close-button() {
   display: inherit;
   align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 2px;
-  background: none;
-  cursor: pointer;
-  padding: 0;
-  width: 24px;
-  height: 24px;
-  font-size: 0.75rem;
 }
 
 @mixin ods-modal-close-button-color($color) {

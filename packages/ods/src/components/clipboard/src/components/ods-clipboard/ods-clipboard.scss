@@ -20,14 +20,6 @@
     align-items: center;
     justify-content: center;
     height: auto;
-
-    &::part(button) {
-      padding: input.$ods-input-actions-padding-right;
-      width: input.$ods-input-actions-button-width;
-      min-width: auto;
-      height: input.$ods-input-actions-button-width;
-      font-size: 0.833rem;
-    }
   }
 
   &__tooltip {

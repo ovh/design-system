@@ -224,7 +224,7 @@ export const Error: StoryObj = {
 export const Clearable: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-input is-clearable>
+<ods-input is-clearable value="value">
 </ods-input>
   `,
 };

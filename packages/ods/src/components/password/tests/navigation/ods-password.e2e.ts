@@ -2,8 +2,10 @@ import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('ods-password navigation', () => {
-  let el: E2EElement;
   let page: E2EPage;
+  let el: E2EElement;
+  let buttonClearable: E2EElement;
+  let buttonToggleMask: E2EElement;
 
   async function isFocused(): Promise<boolean> {
     return await page.evaluate(() => {
@@ -11,18 +13,17 @@ describe('ods-password navigation', () => {
     });
   }
 
-  async function clickOnInputButton(buttonSelector: string): Promise<void> {
-    return await page.evaluate((selector) => {
-      const input = document.querySelector('ods-password')?.shadowRoot?.querySelector('ods-input');
-      const buttonClearable = input?.shadowRoot?.querySelector<HTMLElement>(selector);
-      buttonClearable?.click();
-    }, buttonSelector);
-  }
-
   async function odsPasswordFocusedElementClassName(): Promise<string | undefined> {
     return await page.evaluate(() => {
       const input = document.querySelector('ods-password')?.shadowRoot?.querySelector('ods-input');
       return input?.shadowRoot?.activeElement?.className;
+    });
+  }
+
+  async function getFocusedButtonIconName(): Promise<string | undefined> {
+    return await page.evaluate(() => {
+      const input = document.querySelector('ods-password')?.shadowRoot?.querySelector('ods-input');
+      return input?.shadowRoot?.activeElement?.getAttribute('icon') || undefined;
     });
   }
 
@@ -33,6 +34,8 @@ describe('ods-password navigation', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('ods-password');
+    buttonClearable = await page.find('ods-password >>> ods-button[icon="xmark"]');
+    buttonToggleMask = await page.find('ods-password >>> ods-button[icon="eye-off"]');
   }
 
   beforeEach(jest.clearAllMocks);
@@ -80,7 +83,7 @@ describe('ods-password navigation', () => {
 
       // Masked button
       await page.keyboard.press('Tab');
-      expect(await odsPasswordFocusedElementClassName()).toContain('ods-input__actions__toggle-mask');
+      expect(await getFocusedButtonIconName()).toBe('eye-off');
 
       await page.keyboard.press('Tab');
       expect(await odsPasswordFocusedElementClassName()).toBe(undefined);
@@ -94,11 +97,11 @@ describe('ods-password navigation', () => {
 
       // Cleared button
       await page.keyboard.press('Tab');
-      expect(await odsPasswordFocusedElementClassName()).toContain('ods-input__actions__clearable');
+      expect(await getFocusedButtonIconName()).toBe('xmark');
 
       // Masked button
       await page.keyboard.press('Tab');
-      expect(await odsPasswordFocusedElementClassName()).toContain('ods-input__actions__toggle-mask');
+      expect(await getFocusedButtonIconName()).toBe('eye-off');
 
       await page.keyboard.press('Tab');
       expect(await odsPasswordFocusedElementClassName()).toBe(undefined);
@@ -139,7 +142,7 @@ describe('ods-password navigation', () => {
       const odsClearSpy = await page.spyOnEvent('odsClear');
       expect(await el.getProperty('value')).toBe('value');
 
-      await clickOnInputButton('.ods-input__actions__clearable');
+      await buttonClearable.click();
       await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBeNull();
@@ -161,7 +164,7 @@ describe('ods-password navigation', () => {
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBe('value');
 
-      await clickOnInputButton('.ods-input__actions__clearable');
+      await buttonClearable.click();
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBe('value');
       expect(odsClearSpy).not.toHaveReceivedEvent();
@@ -181,7 +184,7 @@ describe('ods-password navigation', () => {
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBe('value');
 
-      await clickOnInputButton('.ods-input__actions__clearable');
+      await buttonClearable.click();
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBe('value');
       expect(odsClearSpy).not.toHaveReceivedEvent();
@@ -197,7 +200,7 @@ describe('ods-password navigation', () => {
 
       // Masked Button
       await page.keyboard.press('Tab');
-      expect(await odsPasswordFocusedElementClassName()).toContain('ods-input__actions__toggle-mask');
+      expect(await getFocusedButtonIconName()).toBe('eye-off');
 
       await page.keyboard.press('Tab');
       expect(await odsPasswordFocusedElementClassName()).toBe(undefined);
@@ -207,7 +210,7 @@ describe('ods-password navigation', () => {
       await setup('<ods-password is-masked value="value"></ods-password>');
       const odsToggleMaskSpy = await page.spyOnEvent('odsToggleMask');
 
-      await clickOnInputButton('.ods-input__actions__toggle-mask');
+      await buttonToggleMask.click();
       await page.waitForChanges();
 
       expect(odsToggleMaskSpy).toHaveReceivedEventTimes(1);
@@ -225,7 +228,7 @@ describe('ods-password navigation', () => {
       await page.keyboard.press('Enter');
       await page.waitForChanges();
 
-      await clickOnInputButton('.ods-input__actions__toggle-mask');
+      await buttonToggleMask.click();
       await page.waitForChanges();
       expect(odsToggleMaskSpy).not.toHaveReceivedEvent();
     });
@@ -234,7 +237,7 @@ describe('ods-password navigation', () => {
       await setup('<ods-password value="value"></ods-password>');
       const odsToggleMaskSpy = await page.spyOnEvent('odsToggleMask');
 
-      await clickOnInputButton('.ods-input__actions__toggle-mask');
+      await buttonToggleMask.click();
       await page.waitForChanges();
 
       expect(odsToggleMaskSpy).toHaveReceivedEventTimes(1);

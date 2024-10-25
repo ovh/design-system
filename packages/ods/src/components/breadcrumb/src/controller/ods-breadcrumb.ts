@@ -11,7 +11,11 @@ function expandItems(items: Element[]): void {
 
 function setupItems(items: Element[]): void {
   const breadcrumbItems = items
-    .filter((child) => child.tagName.toLowerCase() === 'ods-breadcrumb-item');
+    .filter((child) => child.tagName.toLowerCase() === 'ods-breadcrumb-item')
+    .map((child) => {
+      child.removeAttribute('is-last');
+      return child;
+    });
 
   if (breadcrumbItems.length) {
     breadcrumbItems[breadcrumbItems.length - 1].setAttribute('is-last', 'true');

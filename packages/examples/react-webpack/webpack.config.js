@@ -88,6 +88,7 @@ module.exports = (env, options) => {
     resolve: {
       alias: {
         app: path.resolve(__dirname, 'src/app/'),
+        'router-app': path.resolve(__dirname, 'src/router-app/'),
       },
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },

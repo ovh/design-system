@@ -125,7 +125,7 @@ export class OdsInput {
   }
 
   @Method()
-  async toggleMask(): Promise<void> {
+  public async toggleMask(): Promise<void> {
     this.isMasked = !this.isMasked;
     this.odsToggleMask.emit();
   }

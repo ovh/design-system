@@ -14,6 +14,7 @@ import nl from 'vanillajs-datepicker/js/i18n/locales/nl'; // eslint-disable-line
 import pl from 'vanillajs-datepicker/js/i18n/locales/pl'; // eslint-disable-line import/no-unresolved
 // @ts-ignore no existing declaration
 import pt from 'vanillajs-datepicker/js/i18n/locales/pt'; // eslint-disable-line import/no-unresolved
+import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { type OdsDatepickerDay } from '../../constants/datepicker-day';
@@ -257,14 +258,16 @@ export class OdsDatepicker {
 
           {
             hasClearableAction &&
-            <button
-              class="ods-datepicker__actions__clearable"
-              disabled={ this.isDisabled || this.isReadonly }
+            <ods-button
+              color={ODS_BUTTON_COLOR.neutral}
+              icon={ODS_ICON_NAME.xmark}
+              isDisabled={ this.isDisabled || this.isReadonly }
+              label=""
               onClick={ () => this.clear() }
-              onKeyUp={ (e: KeyboardEvent): void => this.onClearButtonKeyUp(e) }>
-              <ods-icon name={ ODS_ICON_NAME.xmark }>
-              </ods-icon>
-            </button>
+              onKeyUp={ (e: KeyboardEvent): void => this.onClearButtonKeyUp(e) }
+              size={ODS_BUTTON_SIZE.xs}
+              variant={ODS_BUTTON_VARIANT.ghost}>
+            </ods-button>
           }
 
           <ods-icon

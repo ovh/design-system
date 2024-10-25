@@ -1,5 +1,6 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
+import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { ODS_INPUT_TYPE, type OdsInputType } from '../../constants/input-type';
@@ -153,31 +154,28 @@ export class OdsInput {
           }
           {
             hasClearableIcon &&
-            <button
-              class={{
-                'ods-input__actions__clearable': true,
-                'ods-input__actions__clearable--readonly': this.isReadonly,
-              }}
-              disabled={ this.isDisabled || this.isReadonly }
+            <ods-button
+              color={ODS_BUTTON_COLOR.neutral}
+              icon={ODS_ICON_NAME.xmark}
+              isDisabled={ this.isDisabled || this.isReadonly }
+              label=""
               onClick={ this.clear.bind(this) }
-              onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.clear.bind(this)) }>
-              <ods-icon name={ ODS_ICON_NAME.xmark }>
-              </ods-icon>
-            </button>
+              onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.clear.bind(this)) }
+              size={ODS_BUTTON_SIZE.xs}
+              variant={ODS_BUTTON_VARIANT.ghost}>
+            </ods-button>
           }
           {
             hasToggleMaskIcon &&
-            <button
-              class={{
-                'ods-input__actions__toggle-mask': true,
-                'ods-input__actions__toggle-mask--readonly': this.isReadonly,
-              }}
-              disabled={ this.isDisabled }
+            <ods-button
+              icon={ this.isMasked ? ODS_ICON_NAME.eyeOff : ODS_ICON_NAME.eye }
+              isDisabled={ this.isDisabled }
+              label=""
               onClick={ this.toggleMask.bind(this) }
-              onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.toggleMask.bind(this)) }>
-              <ods-icon name={ this.isMasked ? ODS_ICON_NAME.eyeOff : ODS_ICON_NAME.eye }>
-              </ods-icon>
-            </button>
+              onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.toggleMask.bind(this)) }
+              size={ODS_BUTTON_SIZE.xs}
+              variant={ODS_BUTTON_VARIANT.ghost}>
+            </ods-button>
           }
         </div>
       </Host>

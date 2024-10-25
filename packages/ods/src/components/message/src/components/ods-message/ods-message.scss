@@ -24,42 +24,23 @@
     }
 
     &__close {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: none;
-      border-radius: 0.125rem;
-      background: none;
-      cursor: pointer;
-      padding: 0;
-      width: 1.5rem;
-      min-width: 1.5rem;
-      height: 1.5rem;
-      font-size: 0.75rem;
-
-      &:focus-visible {
-        @include focus.ods-focus();
-
-        outline-offset: 0;
-      }
-
-      &--critical {
+      &--critical::part(button) {
         @include message.ods-message-close('critical');
       }
 
-      &--danger {
+      &--danger::part(button) {
         @include message.ods-message-close('danger');
       }
 
-      &--information {
+      &--information::part(button) {
         @include message.ods-message-close('information');
       }
 
-      &--success {
+      &--success::part(button) {
         @include message.ods-message-close('success');
       }
 
-      &--warning {
+      &--warning::part(button) {
         @include message.ods-message-close('warning');
       }
     }

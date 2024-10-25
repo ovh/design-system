@@ -67,7 +67,7 @@ describe('ods-modal navigation', () => {
     await page.waitForChanges();
 
     expect(await page.evaluate(() => {
-      return document.activeElement?.shadowRoot?.activeElement?.className === 'ods-modal__dialog__header__close ods-modal__dialog__header__close--information';
+      return document.activeElement?.shadowRoot?.activeElement?.getAttribute('icon') === 'xmark';
     })).toBe(true);
   });
 
@@ -90,6 +90,8 @@ describe('ods-modal navigation', () => {
     await setup('<ods-modal is-open is-dismissible="true"><ods-text>Hello, world!</ods-text></ods-modal>');
     const closeSpy = await page.spyOnEvent('odsClose');
 
+    await page.keyboard.press('Tab');
+
     const dismissButton = await page.find('ods-modal >>> .ods-modal__dialog__header__close');
     await dismissButton.press('Enter');
     await waitForAnimationEnd();
@@ -100,6 +102,8 @@ describe('ods-modal navigation', () => {
   it('should close the modal on dismissible button "Space" press', async() => {
     await setup('<ods-modal is-open is-dismissible="true"><ods-text>Hello, world!</ods-text></ods-modal>');
     const closeSpy = await page.spyOnEvent('odsClose');
+
+    await page.keyboard.press('Tab');
 
     const dismissButton = await page.find('ods-modal >>> .ods-modal__dialog__header__close');
     await dismissButton.press('Space');

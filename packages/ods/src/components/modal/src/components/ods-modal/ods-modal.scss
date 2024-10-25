@@ -59,29 +59,23 @@
       &__close {
         @include modal.ods-modal-close-button();
 
-        &:focus-visible {
-          @include focus.ods-focus();
-
-          outline-offset: 0;
-        }
-
-        &--critical {
+        &--critical::part(button) {
           @include modal.ods-modal-close-button-color('critical');
         }
 
-        &--information {
+        &--information::part(button) {
           @include modal.ods-modal-close-button-color('information');
         }
 
-        &--neutral {
+        &--neutral::part(button) {
           @include modal.ods-modal-close-button-color('neutral');
         }
 
-        &--success {
+        &--success::part(button) {
           @include modal.ods-modal-close-button-color('success');
         }
 
-        &--warning {
+        &--warning::part(button) {
           @include modal.ods-modal-close-button-color('warning');
         }
       }

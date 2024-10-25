@@ -97,39 +97,6 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
       }
     }
 
-    &__clearable {
-      border: none;
-      border-radius: 2px;
-      background: none;
-      cursor: pointer;
-      padding: 0;
-      width: $ods-datepicker-clearable-button-size;
-      height: $ods-datepicker-clearable-button-size;
-      color: var(--ods-color-neutral-600);
-      font-size: 0.75rem;
-
-      &:disabled {
-        cursor: not-allowed;
-      }
-
-      &:focus-visible {
-        @include focus.ods-focus();
-
-        outline-offset: 0;
-      }
-
-      &:not(:disabled, &--readonly) {
-        &:focus-visible,
-        &:hover {
-          background-color: var(--ods-color-neutral-100);
-        }
-
-        &:active {
-          background-color: var(--ods-color-neutral-200);
-        }
-      }
-    }
-
     &__icon {
       color: var(--ods-color-primary-500);
 

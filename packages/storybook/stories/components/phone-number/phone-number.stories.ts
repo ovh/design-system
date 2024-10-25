@@ -157,10 +157,11 @@ export const Demo: StoryObj = {
 export const Clearable: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-phone-number is-clearable></ods-phone-number>
+<ods-phone-number is-clearable value="0123456789"></ods-phone-number>
 <br /><br />
 <ods-phone-number countries="all"
-                  is-clearable>
+                  is-clearable
+                  value="0123456789">
 </ods-phone-number>
   `,
 };

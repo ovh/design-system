@@ -18,64 +18,6 @@
     justify-content: center;
     padding-right: input.$ods-input-actions-padding-right;
 
-    &__clearable,
-    &__toggle-mask {
-      display: inherit;
-      align-items: center;
-      justify-content: center;
-      border: none;
-      border-radius: 2px;
-      background: none;
-      cursor: pointer;
-      padding: 0;
-      width: input.$ods-input-actions-button-width;
-      height: 24px;
-
-      &:disabled {
-        cursor: not-allowed;
-      }
-
-      &:focus-visible {
-        @include focus.ods-focus();
-
-        outline-offset: 0;
-      }
-    }
-
-    &__clearable {
-      color: var(--ods-color-neutral-600);
-      font-size: 0.75rem;
-
-      &:not(:disabled, &--readonly) {
-        &:focus-visible,
-        &:hover {
-          background-color: var(--ods-color-neutral-100);
-        }
-
-        &:active {
-          background-color: var(--ods-color-neutral-200);
-        }
-      }
-    }
-
-    &__toggle-mask {
-      color: var(--ods-color-neutral-600);
-      font-size: 0.833rem;
-
-      &:not(:disabled) {
-        color: var(--ods-color-primary-500);
-
-        &:focus-visible,
-        &:hover {
-          background-color: var(--ods-color-primary-100);
-        }
-
-        &:active {
-          background-color: var(--ods-color-primary-200);
-        }
-      }
-    }
-
     &__spinner {
       padding-right: input.$ods-input-actions-padding-right;
       height: unset;

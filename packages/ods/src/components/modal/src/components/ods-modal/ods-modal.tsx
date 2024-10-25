@@ -1,4 +1,5 @@
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_MODAL_COLOR, type OdsModalColor } from '../../constants/modal-color';
 
@@ -114,12 +115,14 @@ export class OdsModal {
           <div class={ `ods-modal__dialog__header ods-modal__dialog__header--${this.color}` }>
             {
               this.isDismissible &&
-              <button
+              <ods-button
                 class={ `ods-modal__dialog__header__close ods-modal__dialog__header__close--${this.color}` }
-                onClick={ () => this.close() }>
-                <ods-icon name={ ODS_ICON_NAME.xmark }>
-                </ods-icon>
-              </button>
+                icon={ ODS_ICON_NAME.xmark }
+                label=""
+                onClick={ () => this.close() }
+                size={ ODS_BUTTON_SIZE.xs }
+                variant={ ODS_BUTTON_VARIANT.ghost }>
+              </ods-button>
             }
           </div>
 

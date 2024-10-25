@@ -29,7 +29,7 @@ $range-z-index-dual: 1;
     @include thumb();
   }
 
-  &:not(:disabled, &--error) {
+  &:not(:disabled) {
     &::-webkit-slider-thumb {
       @include thumb-hover-active();
     }

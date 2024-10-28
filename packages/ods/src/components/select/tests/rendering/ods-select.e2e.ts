@@ -118,6 +118,13 @@ describe('ods-select rendering', () => {
     expect(selectComponent.classList.contains('disabled')).toBe(true);
   });
 
+  it('should render the web component without options', async() => {
+    await setup('<ods-select></ods-select>');
+
+    expect(innerSelect).toHaveClass('tomselected');
+    expect(selectComponent).toBeDefined();
+  });
+
   describe('watchers', () => {
     describe('isDisabled', () => {
       it('should disable the select component', async() => {
@@ -130,6 +137,29 @@ describe('ods-select rendering', () => {
         expect(await page.evaluate(() => {
           return document.querySelector('ods-select')?.shadowRoot?.querySelector('.ts-wrapper')?.classList.contains('disabled') || false;
         })).toBe(true);
+      });
+    });
+
+    describe('onSlotChange', () => {
+      it('should render 2 options after slot change', async() => {
+        await setup('<ods-select><option value="1">Value 1</option></ods-select>');
+
+        el.innerHTML = '<option value="1">Value 1</option><option value="2">Value 2</option>';
+        await page.waitForChanges();
+
+        const optionsNumber = [...innerSelect.children].filter((child) => child.tagName === 'OPTION').length;
+        expect(optionsNumber).toBe(2);
+      });
+
+      it('should change options but not the selected one', async() => {
+        const value = '1';
+        await setup(`<ods-select value="${value}"><option value="${value}">Value 1</option></ods-select>`);
+
+        el.innerHTML = `<option value="${value}">Value 1</option><option value="2">Value 2</option>`;
+        await page.waitForChanges();
+
+        const selectedOption = selectComponent.querySelector('.ts-control')?.querySelector(`[data-value="${value}"]`);
+        expect(selectedOption).toBeDefined();
       });
     });
   });

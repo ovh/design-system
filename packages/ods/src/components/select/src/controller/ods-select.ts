@@ -54,6 +54,7 @@ function setSelectValue(select?: TomSelect, value?: string | string[] | null, de
 }
 
 export {
+  type SelectConfig,
   getSelectConfig,
   inlineValue,
   moveSlottedElements,

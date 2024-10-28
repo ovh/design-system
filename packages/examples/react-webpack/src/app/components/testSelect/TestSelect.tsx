@@ -1,19 +1,22 @@
 import { OdsSelect } from '@ovhcloud/ods-components/react';
 import { useQuery } from '@tanstack/react-query';
-import React, { type ReactElement } from 'react';
+import React, { type ReactElement, useState } from 'react';
 
 function TestSelect(): ReactElement {
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isPending, setIsPending] = useState(true)
+  const [data, setData] = useState<{ id: string, title: string }[]>([])
 
-  const { isPending, data } = useQuery({
+  const query = useQuery({
     queryFn: () => fetch('https://jsonplaceholder.typicode.com/posts').then((res) =>
       res.json(),
     ),
     queryKey: ['repoData'],
   });
 
-  console.log('isPending', isPending, data);
-  // setTimeout(() => setIsLoading(false), 5000);
+  setTimeout(() => {
+    setIsPending(query.isPending);
+    setData(query.data);
+  }, 100000);
 
   return (
     <div>

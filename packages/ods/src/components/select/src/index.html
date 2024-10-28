@@ -18,7 +18,7 @@
 
 <body>
   <p>Default</p>
-  <ods-select>
+  <ods-select value="dog">
     <option value="dog">Dog</option>
     <option value="cat">Cat</option>
     <option value="hamster">Hamster</option>
@@ -26,6 +26,29 @@
     <option value="spider">Spider</option>
     <option value="goldfish">Goldfish</option>
   </ods-select>
+
+  <br>
+  <br>
+
+  <ods-select id="select-default">
+  </ods-select>
+
+  <script>
+    const selectDefault = document.querySelector('#select-default');
+    setTimeout(() => {
+      selectDefault.innerHTML = `<option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>`
+    }, 1000)
+
+    setTimeout(() => {
+      selectDefault.innerHTML = `<option value="dog">Dog</option>
+    <option value="cat">Cat</option>`
+    }, 5000)
+  </script>
 
   <p>Disabled</p>
   <ods-select is-disabled value="parrot">

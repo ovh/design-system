@@ -1,7 +1,17 @@
-jest.mock('../../src/controller/ods-select');
+jest.mock('tom-select');
+jest.mock('../../src/controller/ods-select', () => ({
+  getSelectConfig: (): SelectConfig => {
+    return { plugin: {}, template: {} } ;
+  },
+  inlineValue: jest.fn(),
+  moveSlottedElements: jest.fn(),
+  setFormValue: jest.fn(),
+  setSelectValue: jest.fn(),
+}));
 
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
 import { OdsSelect } from '../../src';
+import { type SelectConfig } from '../../src/controller/ods-select';
 
 describe('ods-select rendering', () => {
   let page: SpecPage;

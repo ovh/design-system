@@ -116,6 +116,14 @@ export class OdsSelect {
     }));
   }
 
+  @Watch('customRenderer')
+  onCustomRendererChange(): void {
+    if (this.selectElement) {
+      this.select?.destroy();
+      this.createTomSelect(this.selectElement);
+    }
+  }
+
   @Watch('value')
   onValueChange(value: string | string[] | null, previousValue?: string | string[] | null): void {
     // Value change can be triggered from either value attribute change or select change
@@ -146,8 +154,7 @@ export class OdsSelect {
     this.observer = new MutationObserver((mutations) => {
       // We only care about mutations on child element (attributes or content changes)
       // as mutations on root element is managed by the onSlotChange
-      const childrenMutations = mutations.filter((mutation) =>
-        mutation.target !== this.selectElement && mutation.type !== 'childList');
+      const childrenMutations = mutations.filter((mutation) => mutation.target !== this.selectElement && mutation.type !== 'childList');
 
       if (childrenMutations.length) {
         const currentValue = this.select?.getValue() || '';
@@ -157,6 +164,10 @@ export class OdsSelect {
         this.select?.setValue(currentValue); // set the value back
       }
     });
+
+    if (this.selectElement) {
+      this.createTomSelect(this.selectElement);
+    }
 
     this.observer.observe(this.selectElement!, {
       attributes: true,
@@ -179,7 +190,7 @@ export class OdsSelect {
   private bindSelectControl(): void {
     // By setting the lib "openOnFocus" to false, the dropdown doesn't open anymore on click
     // So we need to manually add our own open handler
-    this.select?.control.addEventListener('click', () => {
+    this.select?.control?.addEventListener('click', () => {
       if (this.isDisabled) {
         return;
       }
@@ -195,21 +206,91 @@ export class OdsSelect {
       }
     });
 
-    this.select?.control.addEventListener('keydown', (event: KeyboardEvent) => {
+    this.select?.control?.addEventListener('keydown', (event: KeyboardEvent) => {
       // This prevents Space key to scroll the window down
       if (event.key === ' ') {
         event.preventDefault();
       }
     });
 
-    this.select?.control.addEventListener('keyup', (event: KeyboardEvent) => {
+    this.select?.control?.addEventListener('keyup', (event: KeyboardEvent) => {
       if (!this.isDisabled && event.key === ' ') {
         this.select?.open();
       }
     });
   }
 
-  private onSlotChange(event: Event): void {
+  private createTomSelect(selectElement: HTMLSelectElement): void {
+    const { plugin, template } = getSelectConfig(this.allowMultiple, this.multipleSelectionLabel, this.customRenderer);
+
+    this.select?.destroy();
+    this.select = new TomSelect(selectElement, {
+      allowEmptyOption: true,
+      closeAfterSelect: !this.allowMultiple,
+      controlInput: undefined,
+      create: false,
+      maxOptions: undefined,
+      onBlur: (): void => {
+        this.odsBlur.emit();
+      },
+      onChange: (value: string | string[]): void => {
+        if (!this.isValueSync) {
+          this.isSelectSync = true;
+          this.updateValue(value);
+        }
+        this.isValueSync = false;
+      },
+      onDropdownClose: (dropdown: HTMLDivElement): void => {
+        dropdown.classList.remove('ods-select__dropdown--bottom', 'ods-select__dropdown--top');
+
+        this.select!.control.style.removeProperty('border-top-right-radius');
+        this.select!.control.style.removeProperty('border-top-left-radius');
+        this.select!.control.style.removeProperty('border-bottom-right-radius');
+        this.select!.control.style.removeProperty('border-bottom-left-radius');
+      },
+      onDropdownOpen: async(dropdown: HTMLDivElement): Promise<void> => {
+        // Delay the position computing at the end of the stack to ensure floating element has its final height
+        setTimeout(async() => {
+          const { placement, y } = await getElementPosition('bottom', {
+            popper: dropdown,
+            trigger: this.select?.control,
+          }, {
+            offset: -1, // offset the border-width size as we want it merged with the trigger.
+          });
+
+          Object.assign(dropdown.style, {
+            left: '0',
+            top: `${y}px`,
+          });
+
+          dropdown.classList.add(`ods-select__dropdown--${placement}`);
+
+          if (placement === 'top') {
+            this.select!.control.style.borderTopRightRadius = '0';
+            this.select!.control.style.borderTopLeftRadius = '0';
+          } else {
+            this.select!.control.style.borderBottomRightRadius = '0';
+            this.select!.control.style.borderBottomLeftRadius = '0';
+          }
+        }, 0);
+      },
+      onFocus: (): void => {
+        this.odsFocus.emit();
+      },
+      openOnFocus: false,
+      placeholder: this.placeholder,
+      plugins: plugin,
+      render: template,
+      selectOnTab: true,
+    });
+
+    this.bindSelectControl();
+    this.onIsDisabledChange(this.isDisabled);
+    this.onIsReadonlyChange(this.isReadonly);
+    setSelectValue(this.select, this.value, this.defaultValue, true);
+  }
+
+  private async onSlotChange(event: Event): Promise<void> {
     // The initial slot nodes move will trigger this callback again
     // but we want to avoid a second select initialisation
     if (this.hasMovedNodes) {
@@ -218,76 +299,14 @@ export class OdsSelect {
     }
 
     if (this.selectElement) {
+      this.select?.clear(); // reset the current selection
+      this.select?.clearOptions(); // reset the tom-select options
+
       moveSlottedElements(this.selectElement, (event.currentTarget as HTMLSlotElement).assignedElements());
       this.hasMovedNodes = true;
 
-      const { plugin, template } = getSelectConfig(this.allowMultiple, this.multipleSelectionLabel, this.customRenderer);
-
-      this.select?.destroy();
-      this.select = new TomSelect(this.selectElement, {
-        allowEmptyOption: true,
-        closeAfterSelect: !this.allowMultiple,
-        controlInput: undefined,
-        create: false,
-        maxOptions: undefined,
-        onBlur: (): void => {
-          this.odsBlur.emit();
-        },
-        onChange: (value: string | string[]): void => {
-          if (!this.isValueSync) {
-            this.isSelectSync = true;
-            this.updateValue(value);
-          }
-          this.isValueSync = false;
-        },
-        onDropdownClose: (dropdown: HTMLDivElement): void => {
-          dropdown.classList.remove('ods-select__dropdown--bottom', 'ods-select__dropdown--top');
-
-          this.select!.control.style.removeProperty('border-top-right-radius');
-          this.select!.control.style.removeProperty('border-top-left-radius');
-          this.select!.control.style.removeProperty('border-bottom-right-radius');
-          this.select!.control.style.removeProperty('border-bottom-left-radius');
-        },
-        onDropdownOpen: async(dropdown: HTMLDivElement): Promise<void> => {
-          // Delay the position computing at the end of the stack to ensure floating element has its final height
-          setTimeout(async() => {
-            const { placement, y } = await getElementPosition('bottom', {
-              popper: dropdown,
-              trigger: this.select?.control,
-            }, {
-              offset: -1, // offset the border-width size as we want it merged with the trigger.
-            });
-
-            Object.assign(dropdown.style, {
-              left: '0',
-              top: `${y}px`,
-            });
-
-            dropdown.classList.add(`ods-select__dropdown--${placement}`);
-
-            if (placement === 'top') {
-              this.select!.control.style.borderTopRightRadius = '0';
-              this.select!.control.style.borderTopLeftRadius = '0';
-            } else {
-              this.select!.control.style.borderBottomRightRadius = '0';
-              this.select!.control.style.borderBottomLeftRadius = '0';
-            }
-          }, 0);
-        },
-        onFocus: (): void => {
-          this.odsFocus.emit();
-        },
-        openOnFocus: false,
-        placeholder: this.placeholder,
-        plugins: plugin,
-        render: template,
-        selectOnTab: true,
-      });
-
-      this.bindSelectControl();
-      this.onIsDisabledChange(this.isDisabled);
-      this.onIsReadonlyChange(this.isReadonly);
-      setSelectValue(this.select, this.value, this.defaultValue, true);
+      this.select?.sync(); // get updated options
+      this.select?.setValue(this.value || ''); // set the value back
     }
   }
 

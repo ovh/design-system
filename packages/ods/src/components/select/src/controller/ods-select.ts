@@ -30,7 +30,7 @@ function inlineValue(value: string | string[] | null | undefined): string {
   return value ?? '';
 }
 
-function moveSlottedElements(targetElement: HTMLSelectElement, slottedElements: Element[]): void {
+function moveSlottedElements(targetElement: Element, slottedElements: Element[]): void {
   // clean-up target
   targetElement.replaceChildren();
 

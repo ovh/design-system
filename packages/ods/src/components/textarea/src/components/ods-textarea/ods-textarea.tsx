@@ -1,8 +1,6 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, h } from '@stencil/core';
-import { updateInternals } from '../../controller/ods-textarea';
+import { VALUE_DEFAULT_VALUE, getInitialValue, updateInternals } from '../../controller/ods-textarea';
 import { type OdsTextareaChangeEventDetail } from '../../interfaces/events';
-
-const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -119,9 +117,7 @@ export class OdsTextarea {
 
     // We set the value before the observer starts to avoid calling the mutation callback twice
     // as it will be called on componentDidLoad (when native element validity is up-to-date)
-    if (!this.value && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
-      this.value = this.defaultValue ?? null;
-    }
+    this.value = getInitialValue(this.value, this.defaultValue);
   }
 
   componentDidLoad(): void {

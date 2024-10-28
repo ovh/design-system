@@ -93,13 +93,18 @@
                          label="Link custom">
     </ods-breadcrumb-item>
 
-    <ods-breadcrumb-item href="#"
+    <ods-breadcrumb-item class="my-last"
+                         href="#"
                          label="Text">
     </ods-breadcrumb-item>
   </ods-breadcrumb>
   <style>
     .my-link::part(link) {
       color: green;
+    }
+
+    .my-last::part(last) {
+      color: #ed733d;
     }
   </style>
 </body>

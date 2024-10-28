@@ -102,14 +102,18 @@ export const CustomCSS: StoryObj = {
   </ods-breadcrumb-item>
   <ods-breadcrumb-item href="#" label="Basic">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item class="my-link" href="#" label="Custom">
+  <ods-breadcrumb-item class="my-item" href="#" label="Custom">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="#" label="Last">
+  <ods-breadcrumb-item class="my-item" href="#" label="Last">
   </ods-breadcrumb-item>
 </ods-breadcrumb>
 <style>
-  .my-link::part(link) {
+  .my-item::part(link) {
     color: #008000;
+  }
+
+  .my-item::part(last) {
+    color: #ed733d;
   }
 </style>
   `,

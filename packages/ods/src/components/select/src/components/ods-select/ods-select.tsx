@@ -119,7 +119,9 @@ export class OdsSelect {
   @Watch('customRenderer')
   onCustomRendererChange(): void {
     if (this.selectElement) {
-      this.select?.destroy();
+      // The option needs to be moved to ODS-select as it was destroyed by Tom Select.
+      moveSlottedElements(this.el, [...this.selectElement.children]);
+
       this.createTomSelect(this.selectElement);
     }
   }

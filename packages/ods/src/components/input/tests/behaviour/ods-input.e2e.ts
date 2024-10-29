@@ -1,5 +1,5 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
+import { type OdsInputChangeEventDetail } from '../../src';
 
 describe('ods-input behaviour', () => {
   let el: E2EElement;
@@ -18,6 +18,135 @@ describe('ods-input behaviour', () => {
   }
 
   beforeEach(jest.clearAllMocks);
+
+  describe('initialization', () => {
+    let odsChangeEventCount = 0;
+    let odsChangeEventDetail = {};
+
+    async function setupWithSpy(content: string): Promise<void> {
+      odsChangeEventCount = 0;
+      odsChangeEventDetail = {};
+      page = await newE2EPage();
+
+      // page.spyOnEvent doesn't seems to work to observe event emitted on first render, before any action happens
+      // so we spy manually
+      await page.exposeFunction('onOdsChangeEvent', (detail: OdsInputChangeEventDetail) => {
+        odsChangeEventCount++;
+        odsChangeEventDetail = detail;
+      });
+
+      await page.evaluateOnNewDocument(() => {
+        window.addEventListener('odsChange', (event: Event) => {
+          // @ts-ignore function is exposed manually
+          window.onOdsChangeEvent((event as CustomEvent<OdsInputChangeEventDetail>).detail);
+        });
+      });
+
+      await page.setContent(content);
+    }
+
+    describe('with no value attribute defined', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-input></ods-input>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: null,
+        });
+      });
+    });
+
+    describe('with empty string value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-input value=""></ods-input>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: '',
+        });
+      });
+    });
+
+    describe('with no value but empty default-value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-input default-value=""></ods-input>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: '',
+        });
+      });
+    });
+
+    describe('with no value but default-value defined', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-input default-value="default"></ods-input>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: 'default',
+        });
+      });
+
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-input default-value="33"></ods-input>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: '33',
+        });
+      });
+    });
+
+    describe('with defined value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-input value="value"></ods-input>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: 'value',
+        });
+      });
+
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-input value="42"></ods-input>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: '42',
+        });
+      });
+    });
+
+    describe('with defined value and default value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-input default-value="default" value="value"></ods-input>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: 'value',
+        });
+      });
+
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-input default-value="33" value="42"></ods-input>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: '42',
+        });
+      });
+    });
+  });
 
   describe('methods', () => {
     describe('clear', () => {

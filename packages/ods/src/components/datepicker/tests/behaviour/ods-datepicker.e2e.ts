@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsDatepicker } from '../../src';
+import { type OdsDatepicker, type OdsDatepickerChangeEventDetail } from '../../src';
 
 describe('ods-datepicker behaviour', () => {
   let el: E2EElement;
@@ -14,6 +14,7 @@ describe('ods-datepicker behaviour', () => {
   async function setup(content: string): Promise<void> {
     page = await newE2EPage();
 
+    await page.emulateTimezone('Atlantic/Reykjavik'); // UTC+0
     await page.setContent(content);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
@@ -23,6 +24,88 @@ describe('ods-datepicker behaviour', () => {
   }
 
   beforeEach(jest.clearAllMocks);
+
+  describe('initialization', () => {
+    const dummyDefaultValue = '2000-01-02';
+    const dummyFormat = 'yyyy-mm-dd';
+    let odsChangeEventCount = 0;
+    let odsChangeEventDetail = {};
+
+    async function setupWithSpy(content: string): Promise<void> {
+      odsChangeEventCount = 0;
+      odsChangeEventDetail = {};
+      page = await newE2EPage();
+
+      // page.spyOnEvent doesn't seems to work to observe event emitted on first render, before any action happens
+      // so we spy manually
+      await page.exposeFunction('onOdsChangeEvent', (detail: OdsDatepickerChangeEventDetail) => {
+        odsChangeEventCount++;
+        odsChangeEventDetail = detail;
+      });
+
+      await page.evaluateOnNewDocument(() => {
+        window.addEventListener('odsChange', (event: Event) => {
+          // @ts-ignore function is exposed manually
+          window.onOdsChangeEvent((event as CustomEvent<OdsDatepickerChangeEventDetail>).detail);
+        });
+      });
+
+      await page.emulateTimezone('Atlantic/Reykjavik'); // UTC+0
+      await page.setContent(content);
+    }
+
+    describe('with no value attribute defined', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-datepicker></ods-datepicker>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          formattedValue: '',
+          validity: {},
+          value: null,
+        });
+      });
+    });
+
+    describe('with empty string value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-datepicker value=""></ods-datepicker>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          formattedValue: '',
+          validity: {},
+          value: null,
+        });
+      });
+    });
+
+    describe('with no value but empty default-value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-datepicker default-value=""></ods-datepicker>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          formattedValue: '',
+          validity: {},
+          value: null,
+        });
+      });
+    });
+
+    describe('with no value but default-value defined', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy(`<ods-datepicker default-value="${dummyDefaultValue}" format="${dummyFormat}"></ods-datepicker>`);
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          formattedValue: dummyDefaultValue,
+          validity: {},
+          value: new Date(dummyDefaultValue).toISOString(),
+        });
+      });
+    });
+  });
 
   describe('methods', () => {
     describe('clear', () => {
@@ -115,7 +198,6 @@ describe('ods-datepicker behaviour', () => {
       it('should emit an odsChange event', async() => {
         const value = new Date('10 May 2024');
         await setup('<ods-datepicker name="ods-datepicker"></ods-datepicker>');
-        await page.emulateTimezone('Europe/Madrid');
         await page.evaluate((value) => {
           document.querySelector<OdsDatepicker & HTMLElement>('ods-datepicker')!.value = value;
         }, value);
@@ -132,7 +214,7 @@ describe('ods-datepicker behaviour', () => {
           name: 'ods-datepicker',
           previousValue: value.toISOString(),
           validity: {},
-          value: '2024-05-10T22:00:00.000Z',
+          value: '2024-05-11T00:00:00.000Z',
         });
       });
     });

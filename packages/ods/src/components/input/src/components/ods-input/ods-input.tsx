@@ -4,10 +4,8 @@ import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { ODS_INPUT_TYPE, type OdsInputType } from '../../constants/input-type';
-import { handleKeySpace, isPassword, updateInternals } from '../../controller/ods-input';
+import { VALUE_DEFAULT_VALUE, getInitialValue, handleKeySpace, isPassword, updateInternals } from '../../controller/ods-input';
 import { type OdsInputChangeEventDetail } from '../../interfaces/events';
-
-const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -163,9 +161,7 @@ export class OdsInput {
 
     // We set the value before the observer starts to avoid calling the mutation callback twice
     // as it will be called on componentDidLoad (when native element validity is up-to-date)
-    if (!this.value && this.value !== 0 && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
-      this.value = this.defaultValue ?? null;
-    }
+    this.value = getInitialValue(this.value, this.defaultValue);
   }
 
   componentDidLoad(): void {

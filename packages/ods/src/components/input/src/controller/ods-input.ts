@@ -1,5 +1,15 @@
 import { setInternalsValidityFromHtmlElement } from '../../../../utils/dom';
 
+const VALUE_DEFAULT_VALUE = null;
+
+function getInitialValue(value: string | number | null, defaultValue?: string | number): string | number | null {
+  if (defaultValue !== undefined && value === VALUE_DEFAULT_VALUE) {
+    return defaultValue;
+  }
+
+  return value;
+}
+
 async function handleKeySpace(event: KeyboardEvent, isDisabled: boolean, callback: () => Promise<void>): Promise<void> {
   event.preventDefault();
   if(event.key === ' ' && !isDisabled) {
@@ -20,7 +30,9 @@ function updateInternals(internals: ElementInternals, value: number | string | n
 }
 
 export {
+  getInitialValue,
   handleKeySpace,
   isPassword,
   updateInternals,
+  VALUE_DEFAULT_VALUE,
 };

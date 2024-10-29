@@ -1,5 +1,5 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
+import { type OdsQuantityChangeEventDetail } from '../../src';
 
 describe('ods-quantity behaviour', () => {
   let el: E2EElement;
@@ -21,6 +21,105 @@ describe('ods-quantity behaviour', () => {
   }
 
   beforeEach(jest.clearAllMocks);
+
+  describe('initialization', () => {
+    let odsChangeEventCount = 0;
+    let odsChangeEventDetail = {};
+
+    async function setupWithSpy(content: string): Promise<void> {
+      odsChangeEventCount = 0;
+      odsChangeEventDetail = {};
+      page = await newE2EPage();
+
+      // page.spyOnEvent doesn't seems to work to observe event emitted on first render, before any action happens
+      // so we spy manually
+      await page.exposeFunction('onOdsChangeEvent', (detail: OdsQuantityChangeEventDetail) => {
+        odsChangeEventCount++;
+        odsChangeEventDetail = detail;
+      });
+
+      await page.evaluateOnNewDocument(() => {
+        window.addEventListener('odsChange', (event: Event) => {
+          // @ts-ignore function is exposed manually
+          window.onOdsChangeEvent((event as CustomEvent<OdsQuantityChangeEventDetail>).detail);
+        });
+      });
+
+      await page.setContent(content);
+    }
+
+    describe('with no value attribute defined', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-quantity></ods-quantity>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: null,
+        });
+      });
+    });
+
+    describe('with non number value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-quantity value=""></ods-quantity>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: null,
+        });
+      });
+    });
+
+    describe('with no value but non number default-value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-quantity default-value=""></ods-quantity>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: null,
+        });
+      });
+    });
+
+    describe('with no value but default-value defined', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-quantity default-value="33"></ods-quantity>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: 33,
+        });
+      });
+    });
+
+    describe('with defined value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-quantity value="42"></ods-quantity>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: 42,
+        });
+      });
+    });
+
+    describe('with defined value and default value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-quantity default-value="33" value="42"></ods-quantity>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: 42,
+        });
+      });
+    });
+  });
 
   describe('methods', () => {
     describe('clear', () => {

@@ -1,12 +1,11 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
+import { isNumeric } from '../../../../../utils/type';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_INPUT_TYPE, type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
-import { isMinusButtonDisabled, isPlusButtonDisabled, updateInternals } from '../../controller/ods-quantity';
+import { VALUE_DEFAULT_VALUE, getInitialValue, isMinusButtonDisabled, isPlusButtonDisabled, updateInternals } from '../../controller/ods-quantity';
 import { type OdsQuantityChangeEventDetail } from '../../interfaces/events';
-
-const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -99,9 +98,7 @@ export class OdsQuantity {
   }
 
   componentWillLoad(): void {
-    if (!this.value && this.value !== 0 && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue !== undefined)) {
-      this.value = this.defaultValue ?? null;
-    }
+    this.value = getInitialValue(this.value, this.defaultValue);
   }
 
   async componentDidLoad(): Promise<void> {
@@ -182,7 +179,7 @@ export class OdsQuantity {
           ariaLabel={ this.ariaLabel }
           ariaLabelledby= { this.ariaLabelledby }
           class="ods-quantity__input"
-          defaultValue={ this.defaultValue }
+          defaultValue={ isNumeric(this.defaultValue) ? this.defaultValue : undefined }
           exportparts="input"
           hasError={ this.getHasError() }
           isDisabled={ this.isDisabled }

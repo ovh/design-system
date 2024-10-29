@@ -10,20 +10,16 @@
     box-sizing: border-box;
     display: inline-block;
     position: relative;
-    border: 1px solid transparent;
     border-radius: 1rem;
     width: 48px;
     height: 24px;
-
-    &--error {
-      border-color: var(--ods-color-form-element-border-critical);
-    }
 
     &__slider {
       $slider: &;
 
       position: absolute;
       inset: 0;
+      border: 1px solid var(--ods-color-neutral-200);
       border-radius: 1rem;
       background-color: var(--ods-color-neutral-200);
       cursor: pointer;
@@ -42,7 +38,8 @@
         content: '';
       }
 
-      &:not(#{$slider}--disabled):hover {
+      &:not(#{$slider}--disabled, #{$slider}--error):hover {
+        border-color: var(--ods-color-neutral-300);
         background-color: var(--ods-color-neutral-300);
 
         & #{$slider}__label {
@@ -53,6 +50,8 @@
       &--disabled {
         @include state.ods-is-disabled();
 
+        border-color: state.$ods-state-is-disabled-background-color;
+
         &::before {
           box-shadow: none;
         }
@@ -60,6 +59,10 @@
         & #{$slider}__label {
           color: state.$ods-state-is-disabled-text-color;
         }
+      }
+
+      &--error {
+        border-color: var(--ods-color-form-element-border-critical);
       }
 
       &__label {
@@ -79,6 +82,9 @@
     }
 
     &__input {
+      $error: '.ods-toggle__container__slider--error';
+      $disabled: '.ods-toggle__container__slider--disabled';
+
       opacity: 0;
       width: 0;
       height: 0;
@@ -86,15 +92,23 @@
       &:focus + .ods-toggle__container__slider {
         @include focus.ods-focus();
 
-        background-color: var(--ods-color-neutral-300);
+        + :not(#{$error}) {
+          border-color: var(--ods-color-neutral-300);
+          background-color: var(--ods-color-neutral-300);
+        }
+
 
         .ods-toggle__container__slider__label {
           color: var(--ods-color-neutral-800);
         }
       }
 
-      &:focus:checked + :not(.ods-toggle__container__slider--disabled).ods-toggle__container__slider {
+      &:focus:checked + :not(#{$disabled}).ods-toggle__container__slider {
         background-color: var(--ods-color-primary-700);
+
+        &:not(#{$error}) {
+          border-color: var(--ods-color-primary-700);
+        }
 
         .ods-toggle__container__slider__label {
           color: var(--ods-color-neutral-000);
@@ -111,10 +125,12 @@
           padding-left: 4px;
         }
 
-        & + :not(.ods-toggle__container__slider--disabled).ods-toggle__container__slider {
+        & + :not(#{$disabled}, #{$error}).ods-toggle__container__slider {
+          border-color: var(--ods-color-primary-500);
           background-color: var(--ods-color-primary-500);
 
           &:hover {
+            border-color: var(--ods-color-primary-700);
             background-color: var(--ods-color-primary-700);
           }
 

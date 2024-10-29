@@ -1,5 +1,6 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
+import { isNumeric } from '../../../../../utils/type';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
@@ -213,14 +214,10 @@ export class OdsInput {
 
     this.odsChange.emit({
       name: this.name,
-      previousValue: typeof this.value === 'number' && this.isNumeric(previousValue) ? Number(previousValue) : previousValue,
+      previousValue: typeof this.value === 'number' && isNumeric(previousValue) ? Number(previousValue) : previousValue,
       validity: this.internals.validity,
       value: this.value,
     });
-  }
-
-  private isNumeric(n?: string | number | null): boolean {
-    return !!n && !isNaN(parseFloat(n.toString())) && isFinite(n as number);
   }
 
   render(): FunctionalComponent {

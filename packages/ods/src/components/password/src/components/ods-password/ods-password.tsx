@@ -1,10 +1,8 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
-import { updateInternals } from '../../controller/ods-password';
+import { VALUE_DEFAULT_VALUE, getInitialValue, updateInternals } from '../../controller/ods-password';
 import { type OdsPasswordChangeEventDetail } from '../../interfaces/events';
-
-const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -104,9 +102,7 @@ export class OdsPassword {
   }
 
   componentWillLoad(): void {
-    if (!this.value && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
-      this.value = this.defaultValue ?? null;
-    }
+    this.value = getInitialValue(this.value, this.defaultValue);
   }
 
   async componentDidLoad(): Promise<void> {
@@ -135,7 +131,8 @@ export class OdsPassword {
 
   render(): FunctionalComponent {
     return (
-      <Host class="ods-password"
+      <Host
+        class="ods-password"
         disabled={ this.isDisabled }
         readonly={ this.isReadonly }>
         <ods-input

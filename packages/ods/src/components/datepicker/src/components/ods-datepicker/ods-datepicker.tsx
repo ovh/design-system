@@ -14,12 +14,13 @@ import nl from 'vanillajs-datepicker/js/i18n/locales/nl'; // eslint-disable-line
 import pl from 'vanillajs-datepicker/js/i18n/locales/pl'; // eslint-disable-line import/no-unresolved
 // @ts-ignore no existing declaration
 import pt from 'vanillajs-datepicker/js/i18n/locales/pt'; // eslint-disable-line import/no-unresolved
+import { isDate } from '../../../../../utils/type';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { type OdsDatepickerDay } from '../../constants/datepicker-day';
 import { ODS_DATEPICKER_LOCALE, type OdsDatepickerLocale } from '../../constants/datepicker-locale';
-import { formatDate, updateInternals } from '../../controller/ods-datepicker';
+import { VALUE_DEFAULT_VALUE, formatDate, getInitialValue, updateInternals } from '../../controller/ods-datepicker';
 import { type OdsDatepickerChangeEventDetail } from '../../interfaces/events';
 
 Object.assign(Datepicker.locales, de);
@@ -29,8 +30,6 @@ Object.assign(Datepicker.locales, it);
 Object.assign(Datepicker.locales, nl);
 Object.assign(Datepicker.locales, pl);
 Object.assign(Datepicker.locales, pt);
-
-const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -185,7 +184,9 @@ export class OdsDatepicker {
 
   @Watch('value')
   onValueChangeFromJs(): void {
-    this.value && this.datepickerInstance?.setDate(new Date(this.value.toDateString()));
+    if (this.value && isDate(this.value)) {
+      this.datepickerInstance?.setDate(new Date(this.value.toDateString()));
+    }
   }
 
   componentWillLoad(): void {
@@ -196,9 +197,7 @@ export class OdsDatepicker {
 
     // We set the value before the observer starts to avoid calling the mutation callback twice
     // as it will be called on componentDidLoad (when native element validity is up-to-date)
-    if (!this.value && this.value !== 0 && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
-      this.value = this.defaultValue ? new Date(Datepicker.parseDate(this.defaultValue, this.format)) : null;
-    }
+    this.value = getInitialValue(this.value, this.format, this.defaultValue);
 
     this.observer = new MutationObserver((mutations: MutationRecord[]) => {
       for (const mutation of mutations) {

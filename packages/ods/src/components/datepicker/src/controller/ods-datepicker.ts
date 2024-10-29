@@ -1,5 +1,8 @@
 import { Datepicker } from 'vanillajs-datepicker';
 import { setInternalsValidityFromHtmlElement } from '../../../../utils/dom';
+import { isDate } from '../../../../utils/type';
+
+const VALUE_DEFAULT_VALUE = null;
 
 function formatDate(date: Date | null, format: string): string {
   if (date && isDate(date)) {
@@ -8,9 +11,12 @@ function formatDate(date: Date | null, format: string): string {
   return '';
 }
 
-function isDate(date: Date): boolean {
-  // Needed as values from runtime are not TS problem anymore
-  return date instanceof Date && !isNaN(date.valueOf());
+function getInitialValue(value: Date | null, format: string, defaultValue?: string): Date | null {
+  if (defaultValue !== undefined && value === VALUE_DEFAULT_VALUE) {
+    return new Date(Datepicker.parseDate(defaultValue, format));
+  }
+
+  return value;
 }
 
 function updateInternals(internals: ElementInternals, value: number | string | null, inputEl?: HTMLInputElement): void {
@@ -23,5 +29,7 @@ function updateInternals(internals: ElementInternals, value: number | string | n
 
 export {
   formatDate,
+  getInitialValue,
   updateInternals,
+  VALUE_DEFAULT_VALUE,
 };

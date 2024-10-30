@@ -1,5 +1,4 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('ods-switch behavior', () => {
   let page: E2EPage;
@@ -25,6 +24,7 @@ describe('ods-switch behavior', () => {
         <ods-switch-item value="2">label2</ods-switch-item>
         <ods-switch-item value="3">label3</ods-switch-item>
       </ods-switch>`);
+
       switchItems.forEach((item) => {
         expect(item.getAttribute('is-disabled')).toBe('');
       });
@@ -37,6 +37,7 @@ describe('ods-switch behavior', () => {
         <ods-switch-item value="2">label2</ods-switch-item>
         <ods-switch-item value="3">label3</ods-switch-item>
       </ods-switch>`);
+
       switchItems.forEach((item) => {
         expect(item.getAttribute('name')).toBe(name);
       });
@@ -49,6 +50,7 @@ describe('ods-switch behavior', () => {
         <ods-switch-item value="2">label2</ods-switch-item>
         <ods-switch-item value="3">label3</ods-switch-item>
       </ods-switch>`);
+
       switchItems.forEach((item, index) => {
         expect(item.getAttribute('input-id')).toBe(`${name}-${index}`);
       });

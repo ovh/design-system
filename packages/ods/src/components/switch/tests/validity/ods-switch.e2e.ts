@@ -11,6 +11,7 @@ describe('ods-switch validity', () => {
 
     await page.setContent(content);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+    await page.waitForChanges();
 
     el = await page.find('ods-switch');
     item = (await page.findAll('ods-switch-item'))[0];

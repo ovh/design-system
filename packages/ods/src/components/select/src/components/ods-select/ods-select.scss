@@ -244,7 +244,7 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
       }
     }
 
-    &.readonly {
+    &.locked {
       .ts-control {
         @include state.ods-is-readonly();
       }

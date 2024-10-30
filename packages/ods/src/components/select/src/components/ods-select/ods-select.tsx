@@ -94,7 +94,6 @@ export class OdsSelect {
 
   @Watch('isReadonly')
   onIsReadonlyChange(newValue: boolean): void {
-    // TODO use same still as input readonly (focused)
     if (newValue) {
       this.select?.lock();
     } else {

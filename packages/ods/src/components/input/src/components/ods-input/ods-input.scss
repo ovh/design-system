@@ -40,7 +40,7 @@
       margin: 0;
     }
 
-    &:not(#{$input}--error, :disabled) {
+    &:not(#{$input}--error, :disabled, :read-only) {
       &:focus {
         border-color: var(--ods-color-form-element-border-focus-default);
       }

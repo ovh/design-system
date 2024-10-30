@@ -13,7 +13,7 @@
     height: auto;
     resize: none;
 
-    &:not(#{$textarea}--error, :disabled) {
+    &:not(#{$textarea}--error, :disabled, :read-only) {
       &:focus {
         border-color: var(--ods-color-form-element-border-focus-default);
       }

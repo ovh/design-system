@@ -106,7 +106,7 @@ export class OdsInput {
   }
 
   private handleKeyDown(event: KeyboardEvent): void {
-    // This prevents Enter key to not submit form
+    // This prevents Enter key to submit form
     if (event.key === 'Enter') {
       event.preventDefault();
     }

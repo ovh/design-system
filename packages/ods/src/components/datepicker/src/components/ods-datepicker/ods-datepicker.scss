@@ -99,7 +99,8 @@ $ods-datepicker-padding: 6px;
     &__icon {
       color: var(--ods-color-primary-500);
 
-      &--disabled {
+      &--disabled,
+      &--readonly {
         color: var(--ods-color-neutral-500);
       }
     }

@@ -65,6 +65,7 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
 
       border-color: var(--ods-color-form-element-border-focus-default);
       box-shadow: none;
+      cursor: pointer;
     }
   }
 
@@ -208,6 +209,8 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
 
       &.dropdown-active {
         .ts-control {
+          cursor: pointer;
+
           &::after {
             content: '\e91a';
           }

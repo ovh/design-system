@@ -1,4 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
+import { type OdsSelectChangeEventDetail } from '../../src';
 
 describe('ods-select behaviour', () => {
   let el: E2EElement;
@@ -15,7 +16,7 @@ describe('ods-select behaviour', () => {
     page = await newE2EPage();
 
     await page.setContent(content);
-    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+    await page.evaluate(() => document.body.style.setProperty('margin', '0'));
 
     if (customStyle) {
       await page.addStyleTag({ content: customStyle });
@@ -26,6 +27,177 @@ describe('ods-select behaviour', () => {
   }
 
   beforeEach(jest.clearAllMocks);
+
+  describe('initialization', () => {
+    let odsChangeEventCount = 0;
+    let odsChangeEventDetail = {};
+
+    async function setupWithSpy(content: string): Promise<void> {
+      odsChangeEventCount = 0;
+      odsChangeEventDetail = {};
+      page = await newE2EPage();
+
+      // page.spyOnEvent doesn't seems to work to observe event emitted on first render, before any action happens
+      // so we spy manually
+      await page.exposeFunction('onOdsChangeEvent', (detail: OdsSelectChangeEventDetail) => {
+        odsChangeEventCount++;
+        odsChangeEventDetail = detail;
+      });
+
+      await page.evaluateOnNewDocument(() => {
+        window.addEventListener('odsChange', (event: Event) => {
+          // @ts-ignore function is exposed manually
+          window.onOdsChangeEvent((event as CustomEvent<OdsSelectChangeEventDetail>).detail);
+        });
+      });
+
+      await page.setContent(content);
+    }
+
+    describe('with no value attribute defined', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-select><option value="1">Value 1</option><option value="2">Value 2</option></ods-select>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: null,
+          validity: {},
+          value: null,
+        });
+      });
+
+      it('should trigger a uniq odsChange event when multiple is allowed', async() => {
+        await setupWithSpy('<ods-select allow-multiple><option value="1">Value 1</option><option value="2">Value 2</option></ods-select>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: null,
+          validity: {},
+          value: null,
+        });
+      });
+    });
+
+    describe('with empty string value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-select value=""><option value="1">Value 1</option><option value="2">Value 2</option></ods-select>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: null,
+          validity: {},
+          value: '',
+        });
+      });
+
+      it('should trigger a uniq odsChange event when multiple is allowed', async() => {
+        await setupWithSpy('<ods-select allow-multiple value=""><option value="1">Value 1</option><option value="2">Value 2</option></ods-select>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: null,
+          validity: {},
+          value: '',
+        });
+      });
+    });
+
+    describe('with no value but empty default-value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-select default-value=""><option value="1">Value 1</option><option value="2">Value 2</option></ods-select>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: null,
+          validity: {},
+          value: '',
+        });
+      });
+
+      it('should trigger a uniq odsChange event when multiple is allowed', async() => {
+        await setupWithSpy('<ods-select allow-multiple default-value=""><option value="1">Value 1</option><option value="2">Value 2</option></ods-select>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: null,
+          validity: {},
+          value: '',
+        });
+      });
+    });
+
+    describe('with no value but default-value defined', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-select default-value="2"><option value="1">Value 1</option><option value="2">Value 2</option></ods-select>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: null,
+          validity: {},
+          value: '2',
+        });
+      });
+
+      it('should trigger a uniq odsChange event when multiple is allowed', async() => {
+        await setupWithSpy('<ods-select allow-multiple default-value="2"><option value="1">Value 1</option><option value="2">Value 2</option></ods-select>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: null,
+          validity: {},
+          value: '2',
+        });
+      });
+    });
+
+    describe('with defined value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-select value="2"><option value="1">Value 1</option><option value="2">Value 2</option></ods-select>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: null,
+          validity: {},
+          value: '2',
+        });
+      });
+
+      it('should trigger a uniq odsChange event when multiple is allowed', async() => {
+        await setupWithSpy('<ods-select allow-multiple value="2"><option value="1">Value 1</option><option value="2">Value 2</option></ods-select>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: null,
+          validity: {},
+          value: '2',
+        });
+      });
+    });
+
+    describe('with defined value and default value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-select default-value="1" value="2"><option value="1">Value 1</option><option value="2">Value 2</option></ods-select>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: null,
+          validity: {},
+          value: '2',
+        });
+      });
+
+      it('should trigger a uniq odsChange event when multiple is allowed', async() => {
+        await setupWithSpy('<ods-select allow-multiple default-value="1" value="2"><option value="1">Value 1</option><option value="2">Value 2</option></ods-select>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: null,
+          validity: {},
+          value: '2',
+        });
+      });
+    });
+  });
 
   describe('form', () => {
     it('should get form data when submit button is triggered', async() => {

@@ -33,7 +33,7 @@ describe('ods-select rendering', () => {
   it('should move the slot content to the inner select', async() => {
     await setup('<ods-select><option value="1">1</option></ods-select>');
 
-    expect(innerSelect.innerHTML).toBe('<option value="1">1</option><option value=""></option>');
+    expect(innerSelect.innerHTML).toBe('<option value=""></option><option value="1">1</option>');
   });
 
   it('should render a placeholder', async() => {
@@ -104,6 +104,7 @@ describe('ods-select rendering', () => {
       };
       select!.innerHTML = '<option value="1">1</option>';
     });
+
     await el.callMethod('open');
     await page.waitForChanges();
 

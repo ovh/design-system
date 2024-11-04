@@ -14,6 +14,7 @@ export class OdsMessage {
   @Element() el!: HTMLElement;
 
   @Prop({ reflect: true }) public color: OdsMessageColor = ODS_MESSAGE_COLOR.information;
+  @Prop({ reflect: true }) public isDismissible: boolean = true;
   @Prop({ reflect: true }) public variant: OdsMessageVariant = ODS_MESSAGE_VARIANT.default;
 
   @Event() odsRemove!: EventEmitter<void>;
@@ -42,15 +43,18 @@ export class OdsMessage {
 
           <slot></slot>
 
-          <ods-button
-            class={ `ods-message__message__close ods-message__message__close--${this.color}` }
-            icon={ ODS_ICON_NAME.xmark }
-            label=""
-            onClick={ () => this.handleClick() }
-            onKeyUp={ (event: KeyboardEvent) => this.handleKeyUp(event) }
-            size={ ODS_BUTTON_SIZE.xs }
-            variant={ ODS_BUTTON_VARIANT.ghost }>
-          </ods-button>
+          {
+            this.isDismissible &&
+            <ods-button
+              class={ `ods-message__message__close ods-message__message__close--${this.color}` }
+              icon={ ODS_ICON_NAME.xmark }
+              label=""
+              onClick={ () => this.handleClick() }
+              onKeyUp={ (event: KeyboardEvent) => this.handleKeyUp(event) }
+              size={ ODS_BUTTON_SIZE.xs }
+              variant={ ODS_BUTTON_VARIANT.ghost }>
+            </ods-button>
+          }
         </div>
       </Host>
     );

@@ -36,7 +36,7 @@ _**Message** component helps to communicate with users providing feedback or inf
 
 2. <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />, which can be a plain text or contain a link
 
-3. A `cross` icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, which is a close button to dismiss the **Message**
+3. A `cross` icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, which is a close button to dismiss the **Message** (optional)
 
 <Heading label="Usage" level={ 2 } />
 
@@ -63,6 +63,7 @@ There are four different subtypes of standard **Messages**, in order of priority
     '- Messages must be displayed in the user language',
     '- Position a Message wherever it is visible for the user',
     '- Use a Message when an immediate action is required by the user',
+    '- Use non dismissible Message for mandatory warnings that need to be resolved',
   ]}
 />
 
@@ -76,7 +77,7 @@ They are positioned near their related items or right after the header and befor
 
 Based on its informational manner, the component default behavior is being read-only. You can only select its content if needed.
 
-A click on the `close` icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> will dismiss the **Message**.
+When a **Message** is dismissible, a click on the `close` icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> will dismiss the **Message**.
 
 <Heading label="Variation" level={ 2 } />
 

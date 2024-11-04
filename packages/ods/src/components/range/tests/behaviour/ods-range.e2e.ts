@@ -21,11 +21,20 @@ describe('ods-range behaviour', () => {
 
   describe('method:clear', () => {
     it('should receive odsClear event', async() => {
-      await setup('<ods-range value="value"></ods-range>');
+      await setup('<ods-range value="50"></ods-range>');
       const odsClearSpy = await page.spyOnEvent('odsClear');
       await el.callMethod('clear');
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBeNull();
+      expect(odsClearSpy).toHaveReceivedEventTimes(1);
+    });
+
+    it('should receive odsClear event on dual', async() => {
+      await setup('<ods-range></ods-range>', { value: [50, 70] });
+      const odsClearSpy = await page.spyOnEvent('odsClear');
+      await el.callMethod('clear');
+      await page.waitForChanges();
+      expect(await el.getProperty('value')).toEqual([null, null]);
       expect(odsClearSpy).toHaveReceivedEventTimes(1);
     });
   });
@@ -38,6 +47,24 @@ describe('ods-range behaviour', () => {
       await el.callMethod('reset');
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBe(defaultValue);
+      expect(odsResetSpy).toHaveReceivedEventTimes(1);
+    });
+
+    it('should receive odsReset event on dual', async() => {
+      await setup('<ods-range></ods-range>', { defaultValue: [50, 70] });
+      const odsResetSpy = await page.spyOnEvent('odsReset');
+      await el.callMethod('reset');
+      await page.waitForChanges();
+      expect(await el.getProperty('value')).toEqual([50, 70]);
+      expect(odsResetSpy).toHaveReceivedEventTimes(1);
+    });
+
+    it('should receive odsReset event on dual without default value', async() => {
+      await setup('<ods-range></ods-range>', { value: [50, 70] });
+      const odsResetSpy = await page.spyOnEvent('odsReset');
+      await el.callMethod('reset');
+      await page.waitForChanges();
+      expect(await el.getProperty('value')).toEqual([null, null]);
       expect(odsResetSpy).toHaveReceivedEventTimes(1);
     });
   });
@@ -200,6 +227,7 @@ describe('ods-range behaviour', () => {
       </form>`);
       const resetButton = await page.find('button[type="reset"]');
       await resetButton.click();
+      await page.waitForChanges();
 
       const submitButton = await page.find('button[type="submit"]');
       await submitButton.click();

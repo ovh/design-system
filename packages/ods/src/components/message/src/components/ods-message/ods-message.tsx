@@ -34,7 +34,7 @@ export class OdsMessage {
     return (
       <Host class="ods-message">
         <div
-          class={ `ods-message__message ods-message__message--${this.color} ods-message__message--${this.variant}` }
+          class={ `ods-message__message ods-message__message--${this.color} ods-message__message--${this.variant} ${this.isDismissible ? '' : 'ods-message__message__dismissible'}` }
           part="message">
           <ods-icon
             class="ods-message__message__icon"

@@ -40,7 +40,7 @@ describe('ods-modal behaviour', () => {
         expect(closeSpy).toHaveReceivedEventTimes(1);
       });
 
-      it('should trigger when unmounting if opened', async() => {
+      it('should trigger not when unmounting', async() => {
         await setup('<ods-modal is-open><ods-text>Hello, world!</ods-text></ods-modal>');
         const modalHandle = await page.waitForSelector('ods-modal');
         const modal = await page.find('ods-modal');
@@ -49,7 +49,7 @@ describe('ods-modal behaviour', () => {
         await modalHandle?.evaluate((element) => element.remove());
         await page.waitForChanges();
 
-        expect(closeSpy).toHaveReceivedEventTimes(1);
+        expect(closeSpy).not.toHaveReceivedEvent();
       });
 
       it('should not trigger when unmounting if closed', async() => {

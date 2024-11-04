@@ -85,13 +85,6 @@ export class OdsModal {
   disconnectedCallback(): void {
     document.body.style.removeProperty('overflow');
     this.modalDialog?.close?.();
-
-    // TODO we should not emit on disconnectedCallback as the emitter does not exists anymore
-    //  this should be refactored with some use-case example on FAQ, especially regarding react-testing-library
-    //  (do this only when we have working react-testing-library on our side to validate every use-case)
-    if (this.isOpen) {
-      this.odsClose.emit();
-    }
     this.isOpen = false;
   }
 

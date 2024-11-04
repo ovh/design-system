@@ -24,6 +24,7 @@
     }
 
     &__close {
+      grid-column: 3;
       height: auto;
 
       &--critical::part(button) {

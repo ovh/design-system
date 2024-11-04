@@ -72,6 +72,24 @@ describe('ods-message rendering', () => {
     });
   });
 
+  describe('isDismissible', () => {
+    it('should render with close button by default', async() => {
+      await setup('<ods-message></ods-message>');
+
+      const closeButton = await page.find('ods-message >>> .ods-message__message__close');
+
+      expect(closeButton).not.toBeNull();
+    });
+
+    it('should render without close button if set to false', async() => {
+      await setup('<ods-message is-dismissible="false"></ods-message>');
+
+      const closeButton = await page.find('ods-message >>> .ods-message__message__close');
+
+      expect(closeButton).toBeNull();
+    });
+  });
+
   describe('part', () => {
     it('should render with custom style applied', async() => {
       const customBackgroundColor = '#ff0000';

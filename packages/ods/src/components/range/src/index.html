@@ -13,18 +13,11 @@
 <body>
 
   <p>Default</p>
-  <ods-range id="default-range">
+  <ods-range id="default-range" is-required>
   </ods-range>
-
-  <style>
-    #default-range::part(range) {
-      width: 100px;
-    }
-  </style>
 
   <button id="clear-button">clear</button>
   <button id="reset-button">reset</button>
-  <button id="get-validity-button">getValidity</button>
 
   <script>
     const range = document.querySelector('#default-range');
@@ -111,20 +104,34 @@
   </script>
 
   <p>Form</p>
-  <form id="radio-form" target="_self">
-    <ods-range name="range-form" default-value="40"></ods-range>
+  <form id="radio-form" target="_self" onsubmit="return false">
+    <!-- <ods-range name="range-form" value="qsdq" is-required></ods-range> -->
+
+    <ods-range name="range-form-dual" id="range-dual-form">
+    </ods-range>
 
     <input type="text" name="natif-input">
     <button id="form-reset-button" type="reset">Reset</button>
     <button id="form-submit-button" type="submit">Submit</button>
+    <button id="get-validity-button">getValidity</button>
+
   </form>
 
   <script>
+    const rangeDualForm = document.getElementById('range-dual-form');
+    rangeDualForm.value = ['ABCD', 'abcd'];
+
     const form = document.getElementById('radio-form');
     const resetFormButton = document.getElementById('form-reset-button');
     const submitFormButton = document.getElementById('form-submit-button');
+    const getValidityButton2 = document.getElementById('get-validity-button');
 
-    submitFormButton.addEventListener('click', () => {
+    getValidityButton2.addEventListener('click', async () => {
+      const validity = await rangeDualForm.getValidity();
+      console.log('validity', validity);
+    });
+
+    form.addEventListener('submit', () => {
       const formData = new FormData(form);
       console.log('formData', formData);
     });

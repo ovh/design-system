@@ -1,8 +1,8 @@
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
-import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { getRandomHTMLId } from '../../../../../utils/dom';
 import { type OdsTooltip } from '../../../../tooltip/src';
-import { getDefaultValue, isDualRange, setFormValue, toPercentage } from '../../controller/ods-range';
+import { VALUE_DEFAULT_VALUE, getInitialValue, isDualRange, toPercentage, updateInternals } from '../../controller/ods-range';
 import { type OdsRangeChangeEventDetail } from '../../interfaces/event';
 
 @Component({
@@ -17,15 +17,17 @@ export class OdsRange {
   private hostId: string = '';
   private inputEl?: HTMLInputElement;
   private inputElDual?: HTMLInputElement;
-  private inputObservable?: MutationObserver;
   private inputRangeId = 'input-range';
   private inputRangeDualId = 'input-range-dual';
+  private observable?: MutationObserver;
+  private shouldUpdateIsInvalidState: boolean = false;
   private tooltip?: OdsTooltip;
   private tooltipDual?: OdsTooltip;
 
-  @State() dualValue?: number;
-  @State() currentValue?: number;
-  @State() isDualRange: boolean = false;
+  @State() private dualValue?: number;
+  @State() private currentValue?: number;
+  @State() private isDualRange: boolean = false;
+  @State() private isInvalid: boolean = false;
 
   @Element() el!: HTMLElement;
 
@@ -39,7 +41,7 @@ export class OdsRange {
   @Prop({ reflect: true }) public min: number = 0;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public step?: number;
-  @Prop({ mutable: true, reflect: true }) public value: number | [number, number] | null = 0;
+  @Prop({ mutable: true, reflect: true }) public value: number | [number, number] | null | [null, null] = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsChange!: EventEmitter<OdsRangeChangeEventDetail>;
@@ -47,21 +49,68 @@ export class OdsRange {
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
 
+  @Listen('invalid')
+  onInvalidEvent(event: Event): void {
+    // Remove the native validation message popup
+    event.preventDefault();
+
+    // Enforce the state here as we may still be in pristine state (if the form is submitted before any changes occurs)
+    this.isInvalid = true;
+  }
+
   @Method()
   public async clear(): Promise<void> {
-    this.value = null;
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
+    this.shouldUpdateIsInvalidState = true;
+
+    if (this.isDualRange) {
+      this.value = [null, null];
+    } else {
+      this.value = null;
+    }
     this.odsClear.emit();
   }
 
   @Method()
-  public async getValidity(): Promise<ValidityState | undefined> {
-    return this.inputEl?.validity;
+  public async checkValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
+    return this.internals.checkValidity();
+  }
+
+  @Method()
+  public async getValidationMessage(): Promise<string> {
+    return this.internals.validationMessage;
+  }
+
+  @Method()
+  public async getValidity(): Promise<ValidityState> {
+    return this.internals.validity;
   }
 
   @Method()
   public async reset(): Promise<void> {
-    this.value = this.defaultValue ?? null;
+    // Element internal validityState is not yet updated, so we set the flag
+    // to update our internal state when it will be up-to-date
+    this.shouldUpdateIsInvalidState = true;
+
+    if (this.isDualRange) {
+      this.value = this.defaultValue ?? [null, null];
+    } else {
+      this.value = this.defaultValue ?? null;
+    }
     this.odsReset.emit();
+  }
+
+  @Method()
+  public async reportValidity(): Promise<boolean> {
+    this.isInvalid = !this.internals.validity.valid;
+    return this.internals.reportValidity();
+  }
+
+  @Method()
+  public async willValidate(): Promise<boolean> {
+    return this.internals.willValidate;
   }
 
   @Watch('min')
@@ -75,19 +124,19 @@ export class OdsRange {
       this.value = Math.min(Math.max(this.value, this.min), this.max);
     } else {
       const [valueMin, valueMax] = this.value;
-      if (valueMax > this.max) {
+      if (valueMax && valueMax > this.max) {
         this.value = [this.value[0], this.max];
       }
 
-      if (valueMin > this.max) {
+      if (valueMin && valueMin > this.max) {
         this.value = [this.max, this.value[1]];
       }
 
-      if (this.min > valueMax) {
+      if (valueMax && this.min > valueMax) {
         this.value = [this.value[0], this.min];
       }
 
-      if (this.min > valueMin) {
+      if (valueMin && this.min > valueMin) {
         this.value = [this.min, this.value[1]];
       }
     }
@@ -100,49 +149,75 @@ export class OdsRange {
       this.changeValues(this.value[0], this.value[1]);
     } else {
       this.isDualRange = false;
-      this.changeValues(this.value ?? undefined);
+      this.changeValues(this.value ?? null);
     }
-    setFormValue(this.internals, this.value);
+
+    updateInternals(this.internals, this.value, this.isRequired);
+
+    // In case the value gets updated from an other source than a blur event
+    // we may have to perform an internal validity state update
+    if (this.shouldUpdateIsInvalidState) {
+      this.isInvalid = !this.internals.validity.valid;
+      this.shouldUpdateIsInvalidState = false;
+    }
   }
 
   componentWillLoad(): void {
     this.hostId = this.el.id || getRandomHTMLId();
+    this.value = getInitialValue(this.value, this.min, this.max, this.defaultValue);
 
-    if (!this.value) {
-      this.value = getDefaultValue(this.min, this.max, this.defaultValue);
-    }
     this.onMinOrMaxChange();
     this.onValueChange();
+
+    this.observable = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.attributeName === 'required') {
+          updateInternals(this.internals, this.value, this.isRequired);
+          this.isInvalid = !this.internals.validity.valid;
+        }
+
+        if(mutation.attributeName && ['step', 'min', 'max'].includes(mutation.attributeName)) {
+          this.onInput(false);
+        }
+      }
+    });
   }
 
   componentDidLoad(): void {
-    this.inputObservable = new MutationObserver(this.onInputElChange.bind(this));
-
     if (this.inputEl) {
-      this.inputObservable.observe(this.inputEl, { attributes: true });
+      this.observable?.observe(this.inputEl, {
+        attributeFilter: ['step', 'min', 'max', 'required'],
+        attributeOldValue: true,
+        attributes: true,
+      });
     }
   }
 
   disconnectedCallback(): void {
-    this.inputObservable?.disconnect();
+    this.observable?.disconnect();
   }
 
   async formResetCallback(): Promise<void> {
     await this.reset();
   }
 
-  private changeValues(currentValue?: number, dualValue?: number): number | [number, number] | undefined {
-    let value: number | [number, number] | undefined;
+  private changeValues(currentValue: number | null, dualValue?: number | null): number | [number, number]| [null, null] | undefined {
+    let value: number | [number, number] | [null, null] | undefined;
 
-    if (this.isDualRange && currentValue !== undefined && dualValue !== undefined) {
-      this.currentValue = currentValue;
-      this.dualValue = dualValue;
-      value = [currentValue, dualValue];
+    if (this.isDualRange) {
+      this.currentValue = currentValue ?? undefined;
+      this.dualValue = dualValue ?? undefined;
+      value = [currentValue!, dualValue!];
     } else {
-      this.currentValue = currentValue;
+      this.currentValue = currentValue ?? undefined;
       value = this.currentValue;
     }
     return value;
+  }
+
+  private onBlur(): void {
+    this.isInvalid = !this.internals.validity.valid;
+    this.odsBlur.emit();
   }
 
   private onInput(isDualInput: boolean): void {
@@ -168,14 +243,6 @@ export class OdsRange {
   private onInputEl(step : number): void {
     if (this.inputEl && this.inputElDual) {
       this.inputEl.value = `${(Number(this.inputElDual.value) ?? 0) - step}`;
-    }
-  }
-
-  private onInputElChange(mutationList: MutationRecord[]): void {
-    for (const mutation of mutationList) {
-      if(mutation.attributeName && ['step', 'min', 'max'].includes(mutation.attributeName)) {
-        this.onInput(false);
-      }
     }
   }
 
@@ -211,6 +278,7 @@ export class OdsRange {
           'ods-range': true,
           'ods-range-dual': this.isDualRange,
         }}
+        disabled={ this.isDisabled }
         id={ this.hostId }
         style={{
           '--ods-range-value-percentage': `${percentage}%`,
@@ -219,7 +287,7 @@ export class OdsRange {
         <input
           class={{
             'ods-range__range': true,
-            'ods-range__range--error': this.hasError,
+            'ods-range__range--error': this.hasError || this.isInvalid,
           }}
           aria-valuemax={ this.max }
           aria-valuemin={ this.min }
@@ -228,7 +296,7 @@ export class OdsRange {
           id={ this.inputRangeId }
           max={ this.max }
           min={ this.min }
-          onBlur={ () => this.odsBlur.emit() }
+          onBlur={ () => this.onBlur() }
           onFocus={ () => this.odsFocus.emit() }
           onFocusin={ () => this.showTooltip() }
           onFocusout={ () => this.hideTooltip() }
@@ -237,6 +305,7 @@ export class OdsRange {
           onMouseOver={ () => this.showTooltip() }
           part="range"
           ref={ (el?: HTMLInputElement) => this.inputEl = el }
+          required={ this.isRequired }
           step={ this.step }
           type="range"
           value={ this.currentValue?.toString() }
@@ -267,7 +336,7 @@ export class OdsRange {
           <input
             class={{
               'ods-range__range-dual': true,
-              'ods-range__range-dual--error': this.hasError,
+              'ods-range__range-dual--error': this.hasError || this.isInvalid,
             }}
             aria-valuemax={ this.max }
             aria-valuemin={ this.min }
@@ -283,6 +352,7 @@ export class OdsRange {
             onMouseOver={ () => this.showTooltipDual() }
             part="range-dual"
             ref={ (el?: HTMLInputElement) => this.inputElDual = el }
+            required={ this.isRequired }
             step={ this.step }
             type="range"
             value={ this.dualValue?.toString() }

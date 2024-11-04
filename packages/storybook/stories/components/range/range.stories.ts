@@ -6,27 +6,50 @@ import { orderControls } from '../../../src/helpers/controls';
 const meta: Meta = {
   component: 'ods-range',
   title: 'ODS Components/Form elements/Range',
-  decorators: [(story) => html`<div style="padding-top: 50px; display: inline-flex; align-items: center;">${story()}</div>`],
-
+  decorators: [(story) => html`<div style="padding-top: 50px; display: flex; flex-direction: column; align-items: start;">${story()}</div>`],
 };
 
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (args) => html`
+  render: (args) => {
+    const validityStateTemplate = html`<br>
+    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
+    <script>
+      (async () => {
+          const divValidityState = document.querySelector('#validity-state');
+          const range = document.querySelector('.my-range-demo');
+          await customElements.whenDefined('ods-range');
+          await renderValidityState();
+          range.addEventListener('odsChange', async () => {
+            await renderValidityState();
+          })
+          async function renderValidityState() {
+            const validity = await range.getValidity()
+            divValidityState.innerHTML = '';
+            for (let key in validity) {
+              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+            }
+          }
+      })();
+    </script>`;
+    return html`
     <ods-range
       class="my-range-demo"
       has-error="${args.hasError}"
       is-disabled="${args.isDisabled}"
+      is-required="${args.isRequired}"
       max="${args.max}"
       min="${args.min}"
       step="${args.step}"
     ></ods-range>
+    ${args.validityState ? validityStateTemplate : ''}
     <style>
       .my-range-demo::part(range) {
         ${args.customCss}
       }
-    </style>`,
+    </style>`;
+  },
   argTypes: orderControls({
     customCss: {
       table: {
@@ -53,6 +76,14 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
+    isRequired: {
+      control: 'boolean',
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' },
+      },
+    },
     max: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -77,26 +108,60 @@ export const Demo: StoryObj = {
       },
       control: 'number',
     },
+    validityState: {
+      table: {
+        category: CONTROL_CATEGORY.accessibility,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+      description: 'Toggle this to see the component validityState',
+    },
   }),
   args: {
     hasError: false,
     isDisabled: false,
+    isRequired: false,
     max: 100,
     min: 0,
     step: 1,
+    validityState: false,
   },
 };
 
 export const DemoDual: StoryObj = {
-  render: (args) => html`
+  render: (args) => {
+    const validityStateTemplate = html`<br>
+    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
+    <script>
+      (async () => {
+          const divValidityState = document.querySelector('#validity-state');
+          const rangeDual = document.querySelector('.my-range-dual-demo');
+          await customElements.whenDefined('ods-range');
+          await renderValidityState();
+          rangeDual.addEventListener('odsChange', async () => {
+            await renderValidityState();
+          })
+          async function renderValidityState() {
+            const validity = await rangeDual.getValidity()
+            divValidityState.innerHTML = '';
+            for (let key in validity) {
+              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+            }
+          }
+      })();
+    </script>`;
+    return html`
     <ods-range
       class="my-range-dual-demo"
       has-error="${args.hasError}"
       is-disabled="${args.isDisabled}"
+      is-required="${args.isRequired}"
       max="${args.max}"
       min="${args.min}"
       step="${args.step}"
     ></ods-range>
+    ${args.validityState ? validityStateTemplate : ''}
     <script>
     (() => {
       const rangeDual = document.querySelector('.my-range-dual-demo');
@@ -111,7 +176,8 @@ export const DemoDual: StoryObj = {
       .my-range-dual-demo::part(range-dual) {
         ${args.customCss}
       }
-    </style>`,
+    </style>`;
+  },
   argTypes: orderControls({
     customCss: {
       table: {
@@ -138,6 +204,14 @@ export const DemoDual: StoryObj = {
       },
       control: 'boolean',
     },
+    isRequired: {
+      control: 'boolean',
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' },
+      },
+    },
     max: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -162,13 +236,24 @@ export const DemoDual: StoryObj = {
       },
       control: 'number',
     },
+    validityState: {
+      table: {
+        category: CONTROL_CATEGORY.accessibility,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+      description: 'Toggle this to see the component validityState',
+    },
   }),
   args: {
     hasError: false,
     isDisabled: false,
+    isRequired: false,
     max: 100,
     min: 0,
     step: 1,
+    validityState: false,
   },
 };
 
@@ -283,4 +368,36 @@ export const StepDual: StoryObj = {
 })()
 </script>
   `,
+};
+
+export const ValidityState: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<div style="display: flex; flex-direction: column;">
+  <ods-range is-required id="range-validity-state-demo">
+  </ods-range>
+
+  <div id="validity-state-demo"></div>
+</div>
+<script>
+  (async() => {
+      const divValidityState = document.querySelector('#validity-state-demo');
+      const range = document.querySelector('#range-validity-state-demo');
+      console.log('range', range)
+      await customElements.whenDefined('ods-range');
+      await renderValidityState();
+      range.addEventListener('odsChange', async () => {
+        await renderValidityState();
+      })
+      async function renderValidityState() {
+        const validity = await range.getValidity();
+        console.log('validity', validity)
+        divValidityState.innerHTML = '';
+        for (let key in validity) {
+          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+        }
+      }
+  })();
+</script>
+`,
 };

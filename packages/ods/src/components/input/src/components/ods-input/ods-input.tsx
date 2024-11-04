@@ -16,6 +16,7 @@ import { type OdsInputChangeEventDetail } from '../../interfaces/events';
   tag: 'ods-input',
 })
 export class OdsInput {
+  private hasMovedNodes: boolean = false;
   private inputEl?: HTMLInputElement;
 
   @Element() el!: HTMLElement;
@@ -34,6 +35,7 @@ export class OdsInput {
   @Prop({ mutable: true, reflect: true }) public isMasked?: boolean;
   @Prop({ reflect: true }) public isReadonly: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
+  @Prop({ reflect: true }) public list?: string;
   @Prop({ reflect: true }) public max?: number;
   @Prop({ reflect: true }) public maxlength?: number;
   @Prop({ reflect: true }) public min?: number;
@@ -119,6 +121,31 @@ export class OdsInput {
     this.value = this.inputEl?.value ?? null;
   }
 
+  private onListSlotChange(event: Event): void {
+    // The initial slot nodes move will trigger this callback again
+    // but we want to avoid a second call
+    if (this.hasMovedNodes) {
+      this.hasMovedNodes = false;
+      return;
+    }
+
+    if (this.list) {
+      const assignedElements = (event.currentTarget as HTMLSlotElement).assignedElements();
+      const datalistElement = assignedElements.find((el) => el.tagName === 'DATALIST');
+
+      if (datalistElement) {
+        datalistElement.setAttribute('id', this.list);
+        this.el.shadowRoot?.appendChild(datalistElement);
+      } else {
+        console.warn('[OdsInput] only datalist tag should be slotted on the "list" slot.');
+      }
+    } else {
+      console.warn('[OdsInput] datalist detected but no "list" attribute on ods-input, did you forgot to set one?');
+    }
+
+    this.hasMovedNodes = true;
+  }
+
   render(): FunctionalComponent {
     const hasClearableIcon = this.isClearable && !this.isLoading && !!this.value;
     const hasToggleMaskIcon = this.isPassword && !this.isLoading;
@@ -136,6 +163,7 @@ export class OdsInput {
             'ods-input__input--toggle-mask': hasToggleMaskIcon,
           }}
           disabled={ this.isDisabled }
+          list={ this.list }
           max={ this.max }
           maxlength={ this.maxlength }
           min={ this.min }
@@ -154,6 +182,11 @@ export class OdsInput {
           step={ this.step }
           type={ this.isPassword && this.isMasked ? ODS_INPUT_TYPE.password : this.type }
           value={ this.value?.toString() || '' } />
+
+        <slot
+          name="list"
+          onSlotchange={ (e) => this.onListSlotChange(e) }>
+        </slot>
 
         <div class="ods-input__actions">
           {

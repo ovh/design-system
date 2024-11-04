@@ -293,3 +293,18 @@ export const CustomCSS: StoryObj = {
 </style>
   `,
 };
+
+export const Datalist: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-input list="my-list">
+  <datalist slot="list">
+    <option value="Chocolate"></option>
+    <option value="Coconut"></option>
+    <option value="Mint"></option>
+    <option value="Strawberry"></option>
+    <option value="Vanilla"></option>
+  </datalist>
+</ods-input>
+  `,
+};

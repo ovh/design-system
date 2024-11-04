@@ -162,6 +162,21 @@ describe('ods-input rendering', () => {
       });
     });
 
+    describe('list', () => {
+      it('should be reflected', async() => {
+        const list = 'list';
+        await setup(`<ods-input list="${list}"></ods-input>`);
+
+        expect(root?.getAttribute('list')).toBe(list);
+      });
+
+      it('should not be set by default', async() => {
+        await setup('<ods-input></ods-input>');
+
+        expect(root?.getAttribute('list')).toBeNull();
+      });
+    });
+
     describe('max', () => {
       it('should be reflected', async() => {
         const maxValue = 3;

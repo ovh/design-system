@@ -1,5 +1,4 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('ods-input rendering', () => {
   let el: E2EElement;
@@ -20,6 +19,8 @@ describe('ods-input rendering', () => {
     part = await page.find('ods-input >>> [part="input"]');
     await page.waitForChanges();
   }
+
+  beforeEach(jest.clearAllMocks);
 
   it('should render the web component', async() => {
     await setup('<ods-input></ods-input>');
@@ -77,11 +78,24 @@ describe('ods-input rendering', () => {
 
   describe('slots', () => {
     describe('list', () => {
-      it('should not render with datalist nodes if not list prop is set', async() => {
+      beforeEach(() => {
+        jest.spyOn(console, 'warn').mockImplementation(() => {});
+      });
+
+      it('should not render with datalist nodes if list prop is not set', async() => {
         await setup('<ods-input><datalist slot="list"><option value="1"></option><option value="2"></option></datalist></ods-input>');
 
         const innerDatalist = await page.find('ods-input >>> datalist');
         expect(innerDatalist).toBeNull();
+        expect(console.warn).toHaveBeenCalledTimes(1);
+      });
+
+      it('should warn if list prop is set but without a datalist in the slot', async() => {
+        await setup('<ods-input list="my-list"><p slot="list">Lorem ipsum</p></ods-input>');
+
+        const innerDatalist = await page.find('ods-input >>> datalist');
+        expect(innerDatalist).toBeNull();
+        expect(console.warn).toHaveBeenCalledTimes(1);
       });
 
       it('should render with datalist nodes if list prop is set', async() => {
@@ -92,6 +106,23 @@ describe('ods-input rendering', () => {
 
         const innerDatalistOptions = await innerDatalist.findAll('option');
         expect(innerDatalistOptions.length).toBe(2);
+        expect(console.warn).toHaveBeenCalledTimes(0);
+      });
+
+      describe('onSlotChange', () => {
+        it('should render updated datalist', async() => {
+          await setup('<ods-input list="my-list"><datalist slot="list"><option value="1"></option><option value="2"></option></datalist></ods-input>');
+
+          el.innerHTML = '<datalist slot="list"><option value="alone"></option></datalist>';
+          await page.waitForChanges();
+
+          const innerDatalist = await page.find('ods-input >>> datalist');
+          expect(innerDatalist).not.toBeNull();
+
+          const innerDatalistOptions = await innerDatalist.findAll('option');
+          expect(innerDatalistOptions.length).toBe(1);
+          expect(console.warn).toHaveBeenCalledTimes(0);
+        });
       });
     });
   });

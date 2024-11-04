@@ -31,6 +31,22 @@ describe('ods-message rendering', () => {
     });
   });
 
+  describe('isDismissible', () => {
+    it('should be reflected', async() => {
+      const isDismissibleValue = 'true';
+
+      await setup(`<ods-message is-dismissible="${isDismissibleValue}"></ods-message>`);
+
+      expect(root?.getAttribute('is-dismissible')).toBe(isDismissibleValue);
+    });
+
+    it('should be set by default', async() => {
+      await setup('<ods-message></ods-message>');
+
+      expect(root?.getAttribute('is-dismissible')).not.toBeNull();
+    });
+  });
+
   describe('variant', () => {
     it('should be reflected', async() => {
       const dummyValue = 'dummy value';

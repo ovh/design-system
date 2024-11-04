@@ -13,6 +13,10 @@
 
     @include message.ods-message();
 
+    &__dismissible {
+      grid-template-columns: max-content 1fr;
+    }
+
     &__icon {
       padding: 0.125rem 0;
       font-size: 1.25rem;
@@ -24,7 +28,6 @@
     }
 
     &__close {
-      grid-column: 3;
       height: auto;
 
       &--critical::part(button) {

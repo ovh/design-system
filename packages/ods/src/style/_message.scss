@@ -1,7 +1,7 @@
 @mixin ods-message() {
   display: grid;
   grid-template-rows: min-content;
-  grid-template-columns: max-content 1fr;
+  grid-template-columns: max-content 1fr max-content;
   column-gap: 0.5rem;
   padding: 0.5rem;
 }

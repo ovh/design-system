@@ -14,7 +14,7 @@
     @include message.ods-message();
 
     &__icon {
-      padding: 0.125rem;
+      padding: 0.125rem 0;
       font-size: 1.25rem;
     }
 
@@ -24,6 +24,8 @@
     }
 
     &__close {
+      height: auto;
+
       &--critical::part(button) {
         @include message.ods-message-close('critical');
       }

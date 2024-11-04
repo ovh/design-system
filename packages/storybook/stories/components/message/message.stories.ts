@@ -21,6 +21,7 @@ export const Demo: StoryObj = {
   render: (arg) => html`
 <ods-message class="my-message-demo"
          color="${arg.color}"
+         is-dismissible="${arg.isDismissible}"
          variant="${arg.variant}">
   ${unsafeHTML(arg.content)}
 </ods-message>
@@ -47,6 +48,14 @@ export const Demo: StoryObj = {
       control: { type: 'select' },
       options: ODS_MESSAGE_COLORS,
     },
+    isDismissible: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: true },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
     variant: {
       table: {
         category: CONTROL_CATEGORY.design,
@@ -69,6 +78,7 @@ export const Demo: StoryObj = {
   args: {
     content: 'Some Message content',
     color: ODS_MESSAGE_COLOR.information,
+    isDismissible: true,
     variant: ODS_MESSAGE_VARIANT.default,
   },
 };
@@ -99,6 +109,13 @@ export const Color: StoryObj = {
 <ods-message color="information">Information Message</ods-message>
 <ods-message color="success">Success Message</ods-message>
 <ods-message color="warning">Warning Message</ods-message>
+  `,
+};
+
+export const NotDismissible: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-message is-dismissible="false">Default Message</ods-message>
   `,
 };
 

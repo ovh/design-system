@@ -12,18 +12,43 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg) => html`
-  <ods-select has-error="${arg.hasError}"
-              is-disabled="${arg.isDisabled}"
-              placeholder="${arg.placeholder}">
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="hamster">Hamster</option>
-    <option value="parrot">Parrot</option>
-    <option value="spider">Spider</option>
-    <option value="goldfish">Goldfish</option>
-  </ods-select>
-  `,
+  render: (arg) => {
+    const validityStateTemplate = html`<br>
+    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
+    <script>
+      (async () => {
+        const divValidityState = document.querySelector('#validity-state');
+        const select = document.querySelector('.my-select-demo');
+        await customElements.whenDefined('ods-select');
+        await renderValidityState();
+        select.addEventListener('odsChange', async() => {
+          await renderValidityState();
+        })
+        async function renderValidityState() {
+          const validity = await select.getValidity()
+          divValidityState.innerHTML = '';
+          for (let key in validity) {
+            divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+          }
+        }
+      })();
+    </script>`;
+    return html`,
+    <ods-select class="my-select-demo"
+                has-error="${arg.hasError}"
+                is-disabled="${arg.isDisabled}"
+                is-required="${arg.isRequired}"
+                placeholder="${arg.placeholder}">
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+      <option value="hamster">Hamster</option>
+      <option value="parrot">Parrot</option>
+      <option value="spider">Spider</option>
+      <option value="goldfish">Goldfish</option>
+    </ods-select>
+    ${arg.validityState ? validityStateTemplate : ''}
+  `;
+  },
   argTypes: orderControls({
     hasError: {
       table: {
@@ -41,6 +66,14 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
+    isRequired: {
+      control: 'boolean',
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+    },
     placeholder: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -49,10 +82,21 @@ export const Demo: StoryObj = {
       },
       control: 'text',
     },
+    validityState: {
+      table: {
+        category: CONTROL_CATEGORY.accessibility,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+      description: 'Toggle this to see the component validityState',
+    },
   }),
   args: {
     hasError: false,
     isDisabled: false,
+    isRequired: false,
+    validityState: false,
   },
 };
 
@@ -358,4 +402,36 @@ export const Readonly: StoryObj = {
   <option value="cat">Cat</option>
 </ods-select>
   `,
+};
+
+export const ValidityState: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-select is-required id="select-validity-state-demo">
+  <option value="dog">Dog</option>
+  <option value="cat">Cat</option>
+  <option value="hamster">Hamster</option>
+  <option value="parrot">Parrot</option>
+  <option value="spider">Spider</option>
+  <option value="goldfish">Goldfish</option>
+</ods-select>
+<div id="validity-state-demo"></div>
+<script>
+  (async() => {
+    const divValidityState = document.querySelector('#validity-state-demo');
+    const select = document.querySelector('#select-validity-state-demo');
+    await renderValidityState();
+    select.addEventListener('odsChange', async() => {
+      await renderValidityState();
+    })
+    async function renderValidityState() {
+      const validity = await select.getValidity()
+      divValidityState.innerHTML = '';
+      for (let key in validity) {
+        divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
+      }
+    }
+  })();
+</script>
+`,
 };

@@ -1,8 +1,19 @@
 import type TomSelect from 'tom-select';
+import { setInternalsValidityFromHtmlElement } from '../../../../utils/dom';
 import { type OdsSelectCustomRenderer } from '../interfaces/options';
 
 type SelectConfigItem = Record<string, object>;
 type SelectConfig = { plugin: SelectConfigItem, template: SelectConfigItem };
+
+const VALUE_DEFAULT_VALUE = null;
+
+function getInitialValue(value: string | string [] | null, defaultValue?: string | string []): string | string [] | null {
+  if (defaultValue !== undefined && value === VALUE_DEFAULT_VALUE) {
+    return defaultValue;
+  }
+
+  return value;
+}
 
 function getSelectConfig(allowMultiple: boolean, multipleSelectionLabel: string, renderer?: OdsSelectCustomRenderer): SelectConfig {
   const plugin: SelectConfigItem = { placeholder: {} };
@@ -23,24 +34,35 @@ function getSelectConfig(allowMultiple: boolean, multipleSelectionLabel: string,
   return { plugin, template };
 }
 
-function inlineValue(value: string | string[] | null | undefined): string {
+function hasNoValueOption(elements: HTMLOptionElement[]): boolean {
+  return (elements || []).some((element) => element.value === '');
+}
+
+function inlineValue(value: string | string[] | null | undefined): string | null {
+  if (value === undefined) {
+    return VALUE_DEFAULT_VALUE;
+  }
+
   if (Array.isArray(value)) {
     return value.join(',');
   }
-  return value ?? '';
+
+  return value;
 }
 
-function moveSlottedElements(targetElement: Element, slottedElements: Element[]): void {
+function moveSlottedElements(targetElement: Element, slottedElements: Element[], hasEmptyOption: boolean): void {
   // clean-up target
   targetElement.replaceChildren();
+
+  if (!hasEmptyOption) {
+    const emptyOption = document.createElement('option');
+    emptyOption.value = '';
+    targetElement.appendChild(emptyOption);
+  }
 
   slottedElements.forEach((element) => {
     targetElement.appendChild(element);
   });
-}
-
-function setFormValue(internals: ElementInternals, value: string | string [] | null | undefined): void {
-  internals.setFormValue(inlineValue(value));
 }
 
 function setSelectValue(select?: TomSelect, value?: string | string[] | null, defaultValue?: string | string [], isSilent: boolean = false): void {
@@ -53,11 +75,22 @@ function setSelectValue(select?: TomSelect, value?: string | string[] | null, de
   }
 }
 
+function updateInternals(internals: ElementInternals, value: string[] | string | null, selectEl?: HTMLSelectElement): void {
+  internals.setFormValue(inlineValue(value) ?? '');
+
+  if (selectEl) {
+    setInternalsValidityFromHtmlElement(selectEl, internals);
+  }
+}
+
 export {
   type SelectConfig,
+  getInitialValue,
   getSelectConfig,
+  hasNoValueOption,
   inlineValue,
   moveSlottedElements,
-  setFormValue,
   setSelectValue,
+  updateInternals,
+  VALUE_DEFAULT_VALUE,
 };

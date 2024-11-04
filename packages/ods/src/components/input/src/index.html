@@ -130,7 +130,7 @@
   </ods-input> -->
 
   <p>With datalist</p>
-  <ods-input list="my-list">
+  <ods-input id="input-with-datalist" list="my-list">
     <datalist slot="list">
       <option value="Chocolate"></option>
       <option value="Coconut"></option>
@@ -139,5 +139,14 @@
       <option value="Vanilla"></option>
     </datalist>
   </ods-input>
+  <button id="update-datalist">Update Datalist</button>
+  <script>
+    const inputWithDatalistEl = document.querySelector('#input-with-datalist');
+    const updateDatalistBtn = document.querySelector('#update-datalist');
+
+    updateDatalistBtn.addEventListener('click', () => {
+      inputWithDatalistEl.innerHTML = '<datalist slot="list"><option value="Cat"></option><option value="Dog"></option><option value="Rabbit"></option></datalist>';
+    });
+  </script>
 </body>
 </html>

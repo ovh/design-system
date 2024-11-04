@@ -134,6 +134,9 @@ export class OdsInput {
       const datalistElement = assignedElements.find((el) => el.tagName === 'DATALIST');
 
       if (datalistElement) {
+        // Clear previously moved datalist if any
+        this.el.shadowRoot?.querySelector(`datalist#${this.list}`)?.remove();
+
         datalistElement.setAttribute('id', this.list);
         this.el.shadowRoot?.appendChild(datalistElement);
       } else {

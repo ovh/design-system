@@ -31,8 +31,7 @@ function setInternalsValidity(element: HTMLElement, internals: ElementInternals,
   }
 }
 
-// TODO add other formElement types
-function setInternalsValidityFromHtmlElement(formElement: HTMLInputElement | HTMLTextAreaElement, internals: ElementInternals): void {
+function setInternalsValidityFromHtmlElement(formElement: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement, internals: ElementInternals): void {
   return setInternalsValidity(formElement, internals, formElement.validity, formElement.validationMessage);
 }
 

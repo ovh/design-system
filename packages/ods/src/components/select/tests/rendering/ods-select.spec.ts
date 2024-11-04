@@ -1,5 +1,6 @@
 jest.mock('tom-select');
 jest.mock('../../src/controller/ods-select', () => ({
+  getInitialValue: jest.fn(),
   getSelectConfig: (): SelectConfig => {
     return { plugin: {}, template: {} } ;
   },

@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
+[compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
+
+### Bug Fixes
+
+* **breadcrumb:** reset is-last attribute on new items setup ([b86f8f2](https://github.com/ovh/design-system/commit/b86f8f2cd95ec24bc6be70229508c8b756528bc0))
+* **modal:** do not emit close event on unmount ([5ba3acb](https://github.com/ovh/design-system/commit/5ba3acb98829858581224291c079bbf80d7fe5ae))
+* **select:** disabled on load select ([34fa0a4](https://github.com/ovh/design-system/commit/34fa0a4a0532d405178acc6f746b507657b7a216))
+* **select:** slot change options ([f523900](https://github.com/ovh/design-system/commit/f523900da93e9e23231bad80fc1f21f8604c7d1f))
+* **select:** test ([53b7a84](https://github.com/ovh/design-system/commit/53b7a84c38d64329b077adbed4f1e5def7f8f741))
+
+
+### Features
+
+* **overlay:** add strategy prop to handle fixed context ([a07df4d](https://github.com/ovh/design-system/commit/a07df4d3a7f64e7c50f0c1e10c0898735e86feb4))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

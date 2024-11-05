@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
+[compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
+
+**Note:** Version bump only for package @ovhcloud/ods-component-spinner
+
+
+
+
+
 
 
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)

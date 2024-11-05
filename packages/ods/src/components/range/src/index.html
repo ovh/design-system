@@ -24,22 +24,22 @@
 
     ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{
       range.addEventListener(eventName, (event) => {
-        // console.log(eventName, event);
+        console.log(eventName, event);
       });
     });
     const clearButton = document.getElementById('clear-button');
     const resetButton = document.getElementById('reset-button');
-    const getValidityButton = document.getElementById('get-validity-button');
+    // const getValidityButton = document.getElementById('get-validity-button');
 
     clearButton.addEventListener('click', () => range.clear());
     resetButton.addEventListener('click', () => range.reset());
-    getValidityButton.addEventListener('click', async () => {
-      const validity = await range.getValidity();
-      console.log('validity', validity);
-    });
+    // getValidityButton.addEventListener('click', async () => {
+    //   const validity = await range.getValidity();
+    //   console.log('validity', validity);
+    // });
   </script>
 
-  <p>Disabled</p>
+  <!-- <p>Disabled</p>
   <ods-range value="40" is-disabled>
   </ods-range>
 
@@ -105,7 +105,7 @@
 
   <p>Form</p>
   <form id="radio-form" target="_self" onsubmit="return false">
-    <!-- <ods-range name="range-form" value="qsdq" is-required></ods-range> -->
+    <ods-range name="range-form" value="qsdq" is-required></ods-range>
 
     <ods-range name="range-form-dual" id="range-dual-form">
     </ods-range>
@@ -140,6 +140,6 @@
   <p>With label</p>
   <label for="labelled-range">My range</label>
   <ods-range id="labelled-range">
-  </ods-range>
+  </ods-range> -->
 </body>
 </html>

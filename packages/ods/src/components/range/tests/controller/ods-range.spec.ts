@@ -2,7 +2,7 @@ import { getInitialValue, isDualRange, toPercentage } from '../../src/controller
 
 describe('ods-range controller', () => {
 
-  describe('getDefaultValue', () => {
+  describe('getInitialValue', () => {
     it('returns the provided defaultValue if specified', () => {
       expect(getInitialValue(null, 0, 10, 5)).toBe(5);
       expect(getInitialValue(null, 0, 10, [3, 7])).toEqual([3, 7]);

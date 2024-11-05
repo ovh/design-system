@@ -20,6 +20,7 @@ export class OdsRange {
   private inputRangeId = 'input-range';
   private inputRangeDualId = 'input-range-dual';
   private observable?: MutationObserver;
+  private shouldEmitOdsChange = false;
   private shouldUpdateIsInvalidState: boolean = false;
   private tooltip?: OdsTooltip;
   private tooltipDual?: OdsTooltip;
@@ -160,11 +161,22 @@ export class OdsRange {
       this.isInvalid = !this.internals.validity.valid;
       this.shouldUpdateIsInvalidState = false;
     }
+
+    if (!this.shouldEmitOdsChange) {
+      return;
+    }
+
+    this.odsChange.emit({
+      name: this.name,
+      validity: this.internals.validity,
+      value: this.value,
+    });
   }
 
   componentWillLoad(): void {
     this.hostId = this.el.id || getRandomHTMLId();
     this.value = getInitialValue(this.value, this.min, this.max, this.defaultValue);
+    this.shouldEmitOdsChange = true;
 
     this.onMinOrMaxChange();
     this.onValueChange();
@@ -233,11 +245,6 @@ export class OdsRange {
 
     this.isDualRange = isDualRange(this.value);
     this.value = this.changeValues(Number(this.inputEl?.value), Number(this.inputElDual?.value)) ?? null;
-    this.odsChange.emit({
-      name: this.name,
-      validity: this.inputEl?.validity,
-      value: this.value,
-    });
   }
 
   private onInputEl(step : number): void {

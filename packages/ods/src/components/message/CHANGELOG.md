@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
+[compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
+
+### Features
+
+* **global:** apply ods-button to clipboard, input type components, message & modal ([04f9376](https://github.com/ovh/design-system/commit/04f93762515c9a3b435467244cc530f00869473b))
+* **global:** rm datepicker clearable sass var & keep spaces in attr. values ([af5a823](https://github.com/ovh/design-system/commit/af5a823b75f1f5c19c2788ab5a9c051e9a425a90))
+* **message:** add dismissible class to manage grid columns ([9a2be2e](https://github.com/ovh/design-system/commit/9a2be2eaa9362e2406bfec4c666dc7716174b20e))
+* **message:** add is-dismissible related tests & fix gap issue ([a5156f3](https://github.com/ovh/design-system/commit/a5156f3975939da263a2277c68308157198558e3))
+* **message:** add non-dismissible Message ([40c68ff](https://github.com/ovh/design-system/commit/40c68ffc07ef64ab422c65b224c087c0166d52e1))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

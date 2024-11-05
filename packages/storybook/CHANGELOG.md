@@ -8,6 +8,31 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
+[compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
+
+### Bug Fixes
+
+* **select:** disabled on load select ([34fa0a4](https://github.com/ovh/design-system/commit/34fa0a4a0532d405178acc6f746b507657b7a216))
+
+
+### Features
+
+* **breadcrumb:** add part on last item ([18d452f](https://github.com/ovh/design-system/commit/18d452f61403978e5ac2e1f02b54b4c954742b6e))
+* **global:** apply ods-button to clipboard, input type components, message & modal ([04f9376](https://github.com/ovh/design-system/commit/04f93762515c9a3b435467244cc530f00869473b))
+* **global:** apply readonly color to icons & add control to select ([ef54fc2](https://github.com/ovh/design-system/commit/ef54fc22e8655f065289b2c08328d04fd9643996))
+* **input:** add native datalist feature ([c24f710](https://github.com/ovh/design-system/commit/c24f7104c29fd112f26a96977c72ac6d836d6537))
+* **message:** add non-dismissible Message ([40c68ff](https://github.com/ovh/design-system/commit/40c68ffc07ef64ab422c65b224c087c0166d52e1))
+* **modal:** custom height ton part dialog ([bb4e518](https://github.com/ovh/design-system/commit/bb4e5189c8fd37dcb8e61a293797df88596d2d14))
+* **overlay:** add strategy prop to handle fixed context ([a07df4d](https://github.com/ovh/design-system/commit/a07df4d3a7f64e7c50f0c1e10c0898735e86feb4))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.2.0](https://ovh.github.io/design-system/v18.2.0/?path=/docs/design-system-changelog--page) (2024-10-23)
 [compare](https://github.com/ovh/design-system/compare/v18.1.0...v18.2.0)
 

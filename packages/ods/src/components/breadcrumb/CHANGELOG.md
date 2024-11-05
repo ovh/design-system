@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
+[compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
+
+### Bug Fixes
+
+* **breadcrumb:** reset is-last attribute on new items setup ([b86f8f2](https://github.com/ovh/design-system/commit/b86f8f2cd95ec24bc6be70229508c8b756528bc0))
+
+
+### Features
+
+* **breadcrumb:** add part on last item ([18d452f](https://github.com/ovh/design-system/commit/18d452f61403978e5ac2e1f02b54b4c954742b6e))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

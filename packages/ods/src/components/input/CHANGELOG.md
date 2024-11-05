@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
+[compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
+
+### Bug Fixes
+
+* **input:** clean-up datalist on slot change ([51dea32](https://github.com/ovh/design-system/commit/51dea32bed5cfab9ef2981499e77b7561e0f7415))
+* **input:** on enter submit form ([3e65773](https://github.com/ovh/design-system/commit/3e65773b2c712d432f67d5a5cbad19d0627a6779))
+
+
+### Features
+
+* **global:** add read-only tokens & apply style to components ([df51f02](https://github.com/ovh/design-system/commit/df51f025c0bac0c7ef718f42a76488150bbce82e))
+* **global:** apply ods-button to clipboard, input type components, message & modal ([04f9376](https://github.com/ovh/design-system/commit/04f93762515c9a3b435467244cc530f00869473b))
+* **global:** rm datepicker clearable sass var & keep spaces in attr. values ([af5a823](https://github.com/ovh/design-system/commit/af5a823b75f1f5c19c2788ab5a9c051e9a425a90))
+* **input:** add native datalist feature ([c24f710](https://github.com/ovh/design-system/commit/c24f7104c29fd112f26a96977c72ac6d836d6537))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

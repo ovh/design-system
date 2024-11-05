@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
+[compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
+
+### Bug Fixes
+
+* **select:** customeRenderer update remove options ([dc771bf](https://github.com/ovh/design-system/commit/dc771bf141f3ccd3d1a3fd4e4d7ba66ce23d1305))
+* **select:** disabled on load select ([34fa0a4](https://github.com/ovh/design-system/commit/34fa0a4a0532d405178acc6f746b507657b7a216))
+* **select:** slot change options ([f523900](https://github.com/ovh/design-system/commit/f523900da93e9e23231bad80fc1f21f8604c7d1f))
+* **select:** test ([53b7a84](https://github.com/ovh/design-system/commit/53b7a84c38d64329b077adbed4f1e5def7f8f741))
+
+
+### Features
+
+* **global:** add read-only tokens & apply style to components ([df51f02](https://github.com/ovh/design-system/commit/df51f025c0bac0c7ef718f42a76488150bbce82e))
+* **global:** apply readonly color to icons & add control to select ([ef54fc2](https://github.com/ovh/design-system/commit/ef54fc22e8655f065289b2c08328d04fd9643996))
+* **global:** re-add cursor pointer in select ([a9006ba](https://github.com/ovh/design-system/commit/a9006ba14942298f4d066e7ee1ea469a4debb6a6))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

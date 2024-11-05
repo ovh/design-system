@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
+[compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
+
+### Features
+
+* **global:** add read-only tokens & apply style to components ([df51f02](https://github.com/ovh/design-system/commit/df51f025c0bac0c7ef718f42a76488150bbce82e))
+* **global:** apply ods-button to clipboard, input type components, message & modal ([04f9376](https://github.com/ovh/design-system/commit/04f93762515c9a3b435467244cc530f00869473b))
+* **global:** apply readonly color to icons & add control to select ([ef54fc2](https://github.com/ovh/design-system/commit/ef54fc22e8655f065289b2c08328d04fd9643996))
+* **global:** rm datepicker clearable sass var & keep spaces in attr. values ([af5a823](https://github.com/ovh/design-system/commit/af5a823b75f1f5c19c2788ab5a9c051e9a425a90))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

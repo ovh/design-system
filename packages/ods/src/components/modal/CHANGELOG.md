@@ -8,6 +8,28 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
+[compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
+
+### Bug Fixes
+
+* **modal:** do not emit close event on unmount ([5ba3acb](https://github.com/ovh/design-system/commit/5ba3acb98829858581224291c079bbf80d7fe5ae))
+* **modal:** wrap content slot to prevent flex style application ([dff96da](https://github.com/ovh/design-system/commit/dff96da782062c82643ca2c8658f71e75871fe33))
+
+
+### Features
+
+* **global:** apply ods-button to clipboard, input type components, message & modal ([04f9376](https://github.com/ovh/design-system/commit/04f93762515c9a3b435467244cc530f00869473b))
+* **modal:** custom height ton part dialog ([bb4e518](https://github.com/ovh/design-system/commit/bb4e5189c8fd37dcb8e61a293797df88596d2d14))
+* **overlay:** add strategy prop to handle fixed context ([a07df4d](https://github.com/ovh/design-system/commit/a07df4d3a7f64e7c50f0c1e10c0898735e86feb4))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.2.0](https://ovh.github.io/design-system/v18.2.0/?path=/docs/design-system-changelog--page) (2024-10-23)
 [compare](https://github.com/ovh/design-system/compare/v18.1.0...v18.2.0)
 

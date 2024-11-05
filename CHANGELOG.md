@@ -8,6 +8,46 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
+[compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
+
+### Bug Fixes
+
+* **badge:** use expected border-radius token for badge ([bf68c9c](https://github.com/ovh/design-system/commit/bf68c9ce8902ad7f218ae89bde1ce14717ee1cfc))
+* **breadcrumb:** reset is-last attribute on new items setup ([b86f8f2](https://github.com/ovh/design-system/commit/b86f8f2cd95ec24bc6be70229508c8b756528bc0))
+* **input:** clean-up datalist on slot change ([51dea32](https://github.com/ovh/design-system/commit/51dea32bed5cfab9ef2981499e77b7561e0f7415))
+* **input:** on enter submit form ([3e65773](https://github.com/ovh/design-system/commit/3e65773b2c712d432f67d5a5cbad19d0627a6779))
+* **modal:** do not emit close event on unmount ([5ba3acb](https://github.com/ovh/design-system/commit/5ba3acb98829858581224291c079bbf80d7fe5ae))
+* **modal:** wrap content slot to prevent flex style application ([dff96da](https://github.com/ovh/design-system/commit/dff96da782062c82643ca2c8658f71e75871fe33))
+* **select:** customeRenderer update remove options ([dc771bf](https://github.com/ovh/design-system/commit/dc771bf141f3ccd3d1a3fd4e4d7ba66ce23d1305))
+* **select:** disabled on load select ([34fa0a4](https://github.com/ovh/design-system/commit/34fa0a4a0532d405178acc6f746b507657b7a216))
+* **select:** slot change options ([f523900](https://github.com/ovh/design-system/commit/f523900da93e9e23231bad80fc1f21f8604c7d1f))
+* **select:** test ([53b7a84](https://github.com/ovh/design-system/commit/53b7a84c38d64329b077adbed4f1e5def7f8f741))
+
+
+### Features
+
+* **breadcrumb:** add part on last item ([18d452f](https://github.com/ovh/design-system/commit/18d452f61403978e5ac2e1f02b54b4c954742b6e))
+* **global:** add read-only tokens & apply style to components ([df51f02](https://github.com/ovh/design-system/commit/df51f025c0bac0c7ef718f42a76488150bbce82e))
+* **global:** apply ods-button to clipboard, input type components, message & modal ([04f9376](https://github.com/ovh/design-system/commit/04f93762515c9a3b435467244cc530f00869473b))
+* **global:** apply readonly color to icons & add control to select ([ef54fc2](https://github.com/ovh/design-system/commit/ef54fc22e8655f065289b2c08328d04fd9643996))
+* **global:** re-add cursor pointer in select ([a9006ba](https://github.com/ovh/design-system/commit/a9006ba14942298f4d066e7ee1ea469a4debb6a6))
+* **global:** rm datepicker clearable sass var & keep spaces in attr. values ([af5a823](https://github.com/ovh/design-system/commit/af5a823b75f1f5c19c2788ab5a9c051e9a425a90))
+* **input:** add native datalist feature ([c24f710](https://github.com/ovh/design-system/commit/c24f7104c29fd112f26a96977c72ac6d836d6537))
+* **message:** add dismissible class to manage grid columns ([9a2be2e](https://github.com/ovh/design-system/commit/9a2be2eaa9362e2406bfec4c666dc7716174b20e))
+* **message:** add is-dismissible related tests & fix gap issue ([a5156f3](https://github.com/ovh/design-system/commit/a5156f3975939da263a2277c68308157198558e3))
+* **message:** add non-dismissible Message ([40c68ff](https://github.com/ovh/design-system/commit/40c68ffc07ef64ab422c65b224c087c0166d52e1))
+* **modal:** custom height ton part dialog ([bb4e518](https://github.com/ovh/design-system/commit/bb4e5189c8fd37dcb8e61a293797df88596d2d14))
+* **overlay:** add strategy prop to handle fixed context ([a07df4d](https://github.com/ovh/design-system/commit/a07df4d3a7f64e7c50f0c1e10c0898735e86feb4))
+* **range:** apply same style to hovered thumb for default & error ([0e21361](https://github.com/ovh/design-system/commit/0e213619222af6e2f9e75e4ba137e7d0dba1a14d))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.2.0](https://ovh.github.io/design-system/v18.2.0/?path=/docs/design-system-changelog--page) (2024-10-23)
 [compare](https://github.com/ovh/design-system/compare/v18.1.0...v18.2.0)
 

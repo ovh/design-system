@@ -28,6 +28,40 @@ describe('ods-range validity', () => {
 
         expect(await el.callMethod('checkValidity')).toBe(true);
       });
+
+      it('should return validity true if required as range has a value set natively', async() => {
+        await setup('<ods-range is-required></ods-range>');
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
+      });
+    });
+
+    describe('with empty string value', () => {
+      it('should return validity false if not required because of type error', async() => {
+        await setup('<ods-range value=""></ods-range>');
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+      });
+
+      it('should return validity false if required', async() => {
+        await setup('<ods-range value="" is-required></ods-range>');
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+      });
+    });
+
+    describe('with empty string default value', () => {
+      it('should return validity false if not required because of type error', async() => {
+        await setup('<ods-range default-value=""></ods-range>');
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+      });
+
+      it('should return validity false if required', async() => {
+        await setup('<ods-range default-value="" is-required></ods-range>');
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+      });
     });
 
     describe('with no value but default-value defined', () => {
@@ -41,6 +75,12 @@ describe('ods-range validity', () => {
         await setup('<ods-range default-value="40" is-required></ods-range>');
 
         expect(await el.callMethod('checkValidity')).toBe(true);
+      });
+
+      it('should return validity false if required with empty string default value', async() => {
+        await setup('<ods-range default-value="" is-required></ods-range>');
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
       });
     });
 
@@ -117,19 +157,21 @@ describe('ods-range validity', () => {
         expect(await el.callMethod('getValidationMessage')).toBe('');
       });
 
-      it('should return the element validation message if not valid', async() => {
-        await setup('<ods-range is-required></ods-range>');
-
-        await el.callMethod('clear');
-        await page.waitForChanges();
-
-        expect(await el.callMethod('getValidationMessage')).not.toBe('');
-
+      it('should return the element validation message if type not valid', async() => {
         await setup('<ods-range value="abcd" is-required></ods-range>');
         expect(await el.callMethod('getValidationMessage')).toBe('Type not supported');
 
         await setup('<ods-range is-required></ods-range>', { value: ['abcd', 'zxy'] });
         expect(await el.callMethod('getValidationMessage')).toBe('Type not supported');
+      });
+
+      it('should return the element validation message if missing value', async() => {
+        await setup('<ods-range is-required></ods-range>');
+
+        await el.callMethod('clear');
+        await page.waitForChanges();
+
+        expect(await el.callMethod('getValidationMessage')).toBe('Missing value');
       });
     });
 
@@ -162,6 +204,7 @@ describe('ods-range validity', () => {
         await setup('<ods-range is-required></ods-range>');
         await el.callMethod('clear');
         await page.waitForChanges();
+
         expect(await getValidityProp('valid')).toBe(false);
         expect(await getValidityProp('customError')).toBe(true);
 
@@ -187,6 +230,19 @@ describe('ods-range validity', () => {
 
         await setup('<ods-range default-value="40" is-required></ods-range>');
         expect(await el.callMethod('reportValidity')).toBe(true);
+      });
+
+      it('should return false if internals validity is false', async() => {
+        await setup('<ods-range is-required></ods-range>');
+        await el.callMethod('clear');
+        await page.waitForChanges();
+        expect(await el.callMethod('reportValidity')).toBe(false);
+
+        await setup('<ods-range value="abcd" is-required></ods-range>');
+        expect(await el.callMethod('reportValidity')).toBe(false);
+
+        await setup('<ods-range default-value="abcd" is-required></ods-range>');
+        expect(await el.callMethod('reportValidity')).toBe(false);
       });
     });
 

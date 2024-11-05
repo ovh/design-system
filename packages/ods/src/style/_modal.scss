@@ -1,4 +1,6 @@
 $ods-modal-border-radius: var(--ods-border-radius-sm);
+$ods-modal-header-height: 32px;
+
 
 @mixin animation-mixin($name) {
   @keyframes modal-open {
@@ -27,7 +29,9 @@ $ods-modal-border-radius: var(--ods-border-radius-sm);
 }
 
 @mixin ods-modal() {
+  display: flex;
   position: fixed;
+  flex-flow: column;
   z-index: 1;
   outline: none;
   border: none;
@@ -36,6 +40,7 @@ $ods-modal-border-radius: var(--ods-border-radius-sm);
   padding: 0;
   width: 100%;
   max-width: 512px;
+  max-height: 50vh;
   overflow: hidden;
 
   &::backdrop {
@@ -48,11 +53,12 @@ $ods-modal-border-radius: var(--ods-border-radius-sm);
 
 @mixin ods-modal-header() {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: flex-end;
   padding: 4px;
   width: 100%;
-  height: 32px;
+  height: $ods-modal-header-height;
   overflow: hidden;
 }
 
@@ -134,7 +140,7 @@ $ods-modal-border-radius: var(--ods-border-radius-sm);
   flex-direction: column;
   padding: 24px;
   width: 100%;
-  max-height: 50vh;
+  height: calc(100% - $ods-modal-header-height);
   overflow-y: auto;
 }
 

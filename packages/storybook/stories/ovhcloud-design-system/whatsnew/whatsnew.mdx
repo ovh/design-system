@@ -7,6 +7,62 @@ import { StorybookLink } from '../../../src/components/storybookLink/StorybookLi
 
 <Heading label="What's new ?" level={ 1 } />
 
+<Heading label="v18.3.0" level={ 2 } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**All form elements**
+- Apply new style on readonly state.
+
+**Breadcrumb**
+- A new part `last` is now available to customize the last item (which differ from other link items).
+
+**Input**
+- You can now link a native `datalist` to an `ods-input` using the `list` attribute and the `list` slot. A full example is available in the <StorybookLink kind="ODS Components/Form elements/Input" label="Technical information" story="Technical information" /> page.
+- New attribute `list` has been added.
+- New slot `list` is now available.
+
+**Message**
+- Message can now be rendered without the close button, as a static message.
+- New attribute `isDismissible` has been added.
+
+**Popover**
+- New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+- New constants `ODS_POPOVER_STRATEGY` and `ODS_POPOVER_STRATEGIES` are now available.
+
+**Tooltip**
+- New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+- New constants `ODS_TOOLTIP_STRATEGY` and `ODS_TOOLTIP_STRATEGIES` are now available.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**All form elements**
+- Pressing `Enter` on an action button (like the clear button) does not trigger a form submit anymore.
+
+**Badge**
+- Now use the expected border-radius style.
+
+**Breadcrumb**
+- Last attribute is now correctly reset on items changes.
+
+**Modal**
+- `odsClose` event is no more emitted on component unmount. If you were relying on that, please reach out to us so we can find a better approach.
+- Content is now wrapped by a div to prevent flex weird rendering.
+- Modal height can now be customized using the `dialog` part.
+
+**Range**
+- Apply correct style to hovered thumb on error state.
+
+**Select**
+- Options are now correctly updated on change.
+- Disable state is now correctly updated on change.
+
+<Heading label="Internal changes:" level={ 3 } />
+
+We now use an `ods-button` instead of a native one for all our internal actions.
+Ex: input clear, message close, modal close, ...
+This shouldn't have any impacts.
+
 <Heading label="v18.2.0" level={ 2 } />
 
 <Heading label="Feature updates:" level={ 3 } />

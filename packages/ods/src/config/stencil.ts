@@ -25,6 +25,9 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestOption = 
     devServer: {
       startupTimeout: 30000,
     },
+    extras: {
+      enableImportInjection: true,
+    },
     namespace,
     outputTargets: [
       {

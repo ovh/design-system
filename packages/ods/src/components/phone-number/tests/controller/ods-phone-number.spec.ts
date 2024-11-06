@@ -4,7 +4,7 @@ import { PhoneNumberFormat, type PhoneNumberUtil } from 'google-libphonenumber';
 import { setInternalsValidityFromOdsComponent } from '../../../../utils/dom';
 import { type OdsInput } from '../../../input/src';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, type OdsPhoneNumberCountryIsoCode } from '../../src';
-import { formatPhoneNumber, getCurrentIsoCode, getCurrentLocale, getNationalPhoneNumberExample, getTranslatedCountryMap, isValidPhoneNumber, parseCountries, parsePhoneNumber, sortCountriesByName, updateInternals } from '../../src/controller/ods-phone-number';
+import { formatPhoneNumber, getCurrentIsoCode, getCurrentLocale, getInitialValue, getNationalPhoneNumberExample, getTranslatedCountryMap, isValidPhoneNumber, parseCountries, parsePhoneNumber, sortCountriesByName, updateInternals } from '../../src/controller/ods-phone-number';
 import countriesTranslationEn from '../../src/i18n/countries-en';
 import countriesTranslationFr from '../../src/i18n/countries-fr';
 
@@ -102,6 +102,25 @@ describe('ods-phone-number controller', () => {
 
       // @ts-ignore for test purpose
       expect(getCurrentLocale('zw')).toBe('en');
+    });
+  });
+
+  describe('getInitialValue', () => {
+    it('should return null if value is null and no default value', () => {
+      expect(getInitialValue(null)).toBe(null);
+    });
+
+    it('should return string or number if value is set regarding of default value', () => {
+      expect(getInitialValue('')).toBe('');
+      expect(getInitialValue('value')).toBe('value');
+      expect(getInitialValue('value', 'default')).toBe('value');
+      // @ts-ignore for test purpose
+      expect(getInitialValue('value', null)).toBe('value');
+    });
+
+    it('should return default value if value is null', () => {
+      expect(getInitialValue(null, '')).toBe('');
+      expect(getInitialValue(null, 'default')).toBe('default');
     });
   });
 

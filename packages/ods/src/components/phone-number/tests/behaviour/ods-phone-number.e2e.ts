@@ -81,7 +81,7 @@ describe('ods-phone-number behaviour', () => {
           isoCode: 'fr',
           previousValue: null,
           validity: {},
-          value: null,
+          value: '',
         });
       });
     });
@@ -95,7 +95,7 @@ describe('ods-phone-number behaviour', () => {
           isoCode: 'fr',
           previousValue: null,
           validity: {},
-          value: null,
+          value: '',
         });
       });
     });

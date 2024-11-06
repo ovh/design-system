@@ -43,6 +43,18 @@ describe('ods-range rendering', () => {
 
       expect(await el.getProperty('value')).toBe(25);
     });
+
+    it('get defaultValue 0 with props', async() => {
+      await setup('<ods-range default-value="0"></ods-range>');
+
+      expect(await el.getProperty('value')).toBe(0);
+    });
+
+    it('get value 0 with props', async() => {
+      await setup('<ods-range default-value="0"></ods-range>');
+
+      expect(await el.getProperty('value')).toBe(0);
+    });
   });
 
   describe('error state', () => {

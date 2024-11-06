@@ -17,6 +17,10 @@ type TranslatedCountryMap = Map<OdsPhoneNumberCountryIsoCode, { isoCode: OdsPhon
 const VALUE_DEFAULT_VALUE = null;
 
 function formatPhoneNumber(value: string | null, isoCode: OdsPhoneNumberCountryIsoCode | undefined, phoneUtils: PhoneNumberUtil): string | null {
+  if (value === '') {
+    return '';
+  }
+
   const phoneNumber = parsePhoneNumber(value, isoCode, phoneUtils);
 
   if (!phoneNumber) {

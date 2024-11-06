@@ -1,6 +1,7 @@
 jest.mock('../../src/controller/ods-timepicker', () => ({
   formatValue: jest.fn(),
   getCurrentTimezone: jest.fn(),
+  getInitialValue: jest.fn(),
   parseTimezones: (): ODS_TIMEZONE[] => ODS_TIMEZONES as ODS_TIMEZONE[],
   updateInternals: jest.fn(),
 }));

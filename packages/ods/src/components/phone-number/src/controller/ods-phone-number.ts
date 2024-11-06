@@ -14,6 +14,7 @@ import countriesTranslationPl from '../i18n/countries-pl';
 import countriesTranslationPt from '../i18n/countries-pt';
 
 type TranslatedCountryMap = Map<OdsPhoneNumberCountryIsoCode, { isoCode: OdsPhoneNumberCountryIsoCode , name: string, phoneCode?: number }>;
+const VALUE_DEFAULT_VALUE = null;
 
 function formatPhoneNumber(value: string | null, isoCode: OdsPhoneNumberCountryIsoCode | undefined, phoneUtils: PhoneNumberUtil): string | null {
   const phoneNumber = parsePhoneNumber(value, isoCode, phoneUtils);
@@ -47,6 +48,14 @@ function getCurrentLocale(locale?: OdsPhoneNumberLocale): OdsPhoneNumberLocale {
   return getBrowserIsoCodes<ODS_PHONE_NUMBER_LOCALE>().find((browserIsoCode) => {
     return ODS_PHONE_NUMBER_LOCALES.indexOf(browserIsoCode) >= 0;
   }) || ODS_PHONE_NUMBER_LOCALE.en;
+}
+
+function getInitialValue(value: string | null, defaultValue?: string): string | null {
+  if (defaultValue !== undefined && value === VALUE_DEFAULT_VALUE) {
+    return defaultValue;
+  }
+
+  return value;
 }
 
 function getNationalPhoneNumberExample(isoCode: OdsPhoneNumberCountryIsoCode | undefined, phoneUtils: PhoneNumberUtil): string {
@@ -164,6 +173,7 @@ export {
   formatPhoneNumber,
   getCurrentIsoCode,
   getCurrentLocale,
+  getInitialValue,
   getNationalPhoneNumberExample,
   getTranslatedCountryMap,
   isValidPhoneNumber,
@@ -171,4 +181,5 @@ export {
   parsePhoneNumber,
   updateInternals,
   sortCountriesByName,
+  VALUE_DEFAULT_VALUE,
 };

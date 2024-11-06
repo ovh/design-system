@@ -8,9 +8,11 @@ import { type OdsPhoneNumberCountryPreset } from '../../constants/phone-number-c
 import { type OdsPhoneNumberLocale } from '../../constants/phone-number-locale';
 import {
   type TranslatedCountryMap,
+  VALUE_DEFAULT_VALUE,
   formatPhoneNumber,
   getCurrentIsoCode,
   getCurrentLocale,
+  getInitialValue,
   getNationalPhoneNumberExample,
   getTranslatedCountryMap,
   isValidPhoneNumber,
@@ -19,8 +21,6 @@ import {
   updateInternals,
 } from '../../controller/ods-phone-number';
 import { type OdsPhoneNumberChangeEventDetail } from '../../interfaces/events';
-
-const VALUE_DEFAULT_VALUE = null;
 
 @Component({
   formAssociated: true,
@@ -151,9 +151,7 @@ export class OdsPhoneNumber {
       this.locale = currentLocale;
     }
 
-    if (!this.value && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
-      this.value = this.defaultValue ?? null;
-    }
+    this.value = getInitialValue(this.value, this.defaultValue);
 
     // Watcher get called on will load, so we need to prevent value reset
     this.isInitialLoadDone = true;

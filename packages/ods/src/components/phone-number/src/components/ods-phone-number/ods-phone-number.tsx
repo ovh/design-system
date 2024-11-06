@@ -176,7 +176,7 @@ export class OdsPhoneNumber {
   private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
     event.stopImmediatePropagation();
 
-    this.value = event.detail.value as string ?? null;
+    this.value = event.detail.value as string | null;
 
     if (!isValidPhoneNumber(this.value, this.isoCode, this.phoneUtils)) {
       await this.inputElement?.setCustomValidity(this.customValidityMessage);

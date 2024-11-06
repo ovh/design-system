@@ -1,6 +1,7 @@
 
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
+import { type OdsTimepickerChangeEventDetail } from '../../src/interfaces/event';
 
 describe('ods-timepicker behavior', () => {
   let el: E2EElement;
@@ -20,6 +21,108 @@ describe('ods-timepicker behavior', () => {
     el = await page.find('ods-timepicker');
     await findSelect();
   }
+
+  describe('initialization', () => {
+    let odsChangeEventCount = 0;
+    let odsChangeEventDetail = {};
+
+    async function setupWithSpy(content: string): Promise<void> {
+      odsChangeEventCount = 0;
+      odsChangeEventDetail = {};
+      page = await newE2EPage();
+
+      // page.spyOnEvent doesn't seems to work to observe event emitted on first render, before any action happens
+      // so we spy manually
+      await page.exposeFunction('onOdsChangeEvent', (detail: OdsTimepickerChangeEventDetail) => {
+        odsChangeEventCount++;
+        odsChangeEventDetail = detail;
+      });
+
+      await page.evaluateOnNewDocument(() => {
+        window.addEventListener('odsChange', (event: Event) => {
+          // @ts-ignore function is exposed manually
+          window.onOdsChangeEvent((event as CustomEvent<OdsTimepickerChangeEventDetail>).detail);
+        });
+      });
+
+      await page.setContent(content);
+    }
+
+    describe('with no value attribute defined', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-timepicker></ods-timepicker>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: null,
+        });
+      });
+    });
+
+    describe('with empty string value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-timepicker value=""></ods-timepicker>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: '',
+        });
+      });
+    });
+
+    describe('with no value but empty default-value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-timepicker default-value=""></ods-timepicker>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          validity: {},
+          value: '',
+        });
+      });
+    });
+
+    describe('with no value but default-value defined', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-timepicker default-value="11:11"></ods-timepicker>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: '11:11',
+          validity: {},
+          value: '11:11',
+        });
+      });
+    });
+
+    describe('with defined value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-timepicker value="11:11"></ods-timepicker>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: '11:11',
+          validity: {},
+          value: '11:11',
+        });
+      });
+    });
+
+    describe('with defined value and default value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-timepicker default-value="24:24" value="11:11"></ods-timepicker>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          previousValue: '11:11',
+          validity: {},
+          value: '11:11',
+        });
+      });
+    });
+  });
 
   describe('methods', () => {
     describe('clear', () => {

@@ -1,4 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
+import { type OdsPhoneNumberChangeEventDetail } from '../../src';
 
 describe('ods-phone-number behaviour', () => {
   let el: E2EElement;
@@ -29,6 +30,117 @@ describe('ods-phone-number behaviour', () => {
     await page.waitForChanges();
 
     expect(await page.evaluate(() => document.querySelector('ods-phone-number')?.getAttribute('value'))).toBe('');
+  });
+
+  describe('initialization', () => {
+    let odsChangeEventCount = 0;
+    let odsChangeEventDetail = {};
+
+    async function setupWithSpy(content: string): Promise<void> {
+      odsChangeEventCount = 0;
+      odsChangeEventDetail = {};
+      page = await newE2EPage();
+
+      // page.spyOnEvent doesn't seems to work to observe event emitted on first render, before any action happens
+      // so we spy manually
+      await page.exposeFunction('onOdsChangeEvent', (detail: OdsPhoneNumberChangeEventDetail) => {
+        odsChangeEventCount++;
+        odsChangeEventDetail = detail;
+      });
+
+      await page.evaluateOnNewDocument(() => {
+        window.addEventListener('odsChange', (event: Event) => {
+          // @ts-ignore function is exposed manually
+          window.onOdsChangeEvent((event as CustomEvent<OdsPhoneNumberChangeEventDetail>).detail);
+        });
+      });
+
+      await page.setContent(content);
+    }
+
+    describe('with no value attribute defined', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-phone-number iso-code="fr"></ods-phone-number>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          isoCode: 'fr',
+          previousValue: null,
+          validity: {},
+          value: null,
+        });
+      });
+    });
+
+    describe('with empty string value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-phone-number iso-code="fr" value=""></ods-phone-number>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          isoCode: 'fr',
+          previousValue: null,
+          validity: {},
+          value: null,
+        });
+      });
+    });
+
+    describe('with no value but empty default-value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-phone-number iso-code="fr" default-value=""></ods-phone-number>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          isoCode: 'fr',
+          previousValue: null,
+          validity: {},
+          value: null,
+        });
+      });
+    });
+
+    describe('with no value but default-value defined', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-phone-number iso-code="fr" default-value="0123456789"></ods-phone-number>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          isoCode: 'fr',
+          previousValue: null,
+          validity: {},
+          value: '+33123456789',
+        });
+      });
+    });
+
+    describe('with defined value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-phone-number iso-code="fr" value="0123456789"></ods-phone-number>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          isoCode: 'fr',
+          previousValue: null,
+          validity: {},
+          value: '+33123456789',
+        });
+      });
+    });
+
+    describe('with defined value and default value', () => {
+      it('should trigger a uniq odsChange event', async() => {
+        await setupWithSpy('<ods-phone-number iso-code="fr" default-value="0123456789" value="0987654321"></ods-phone-number>');
+
+        expect(odsChangeEventCount).toBe(1);
+        expect(odsChangeEventDetail).toEqual({
+          isoCode: 'fr',
+          previousValue: null,
+          validity: {},
+          value: '+33987654321',
+        });
+      });
+    });
   });
 
   describe('form', () => {

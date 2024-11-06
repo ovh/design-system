@@ -1,5 +1,5 @@
 import { ODS_TIMEZONE, ODS_TIMEZONES, ODS_TIMEZONES_PRESET, type OdsTimezone } from '../../src';
-import { formatValue, getCurrentTimezone, parseTimezones } from '../../src/controller/ods-timepicker';
+import { formatValue, getCurrentTimezone, getInitialValue, parseTimezones } from '../../src/controller/ods-timepicker';
 
 describe('ods-timepicker controller', () => {
   describe('formatValue', () => {
@@ -47,6 +47,25 @@ describe('ods-timepicker controller', () => {
       const currentTimezoneMock = 'UTC+1';
 
       expect(getCurrentTimezone(currentTimezoneMock, ODS_TIMEZONES as OdsTimezone[])).toBe(currentTimezoneMock);
+    });
+  });
+
+  describe('getInitialValue', () => {
+    it('should return null if value is null and no default value', () => {
+      expect(getInitialValue(null)).toBe(null);
+    });
+
+    it('should return string or number if value is set regarding of default value', () => {
+      expect(getInitialValue('')).toBe('');
+      expect(getInitialValue('value')).toBe('value');
+      expect(getInitialValue('value', 'default')).toBe('value');
+      // @ts-ignore for test purpose
+      expect(getInitialValue('value', null)).toBe('value');
+    });
+
+    it('should return default value if value is null', () => {
+      expect(getInitialValue(null, '')).toBe('');
+      expect(getInitialValue(null, 'default')).toBe('default');
     });
   });
 

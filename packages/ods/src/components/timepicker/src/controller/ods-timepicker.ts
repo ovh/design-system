@@ -3,6 +3,8 @@ import { setInternalsValidityFromOdsComponent } from '../../../../utils/dom';
 import { ODS_TIMEZONES_PRESET } from '../constant/timezone-preset';
 import { type ODS_TIMEZONE, ODS_TIMEZONES, type OdsTimezone } from '../constant/timezones';
 
+const VALUE_DEFAULT_VALUE = null;
+
 function formatValue(value?: string, withSeconds?: boolean): string {
   const numberOfTwoPoint = value?.match(/:/g)?.length;
   if (!withSeconds && numberOfTwoPoint) {
@@ -37,6 +39,14 @@ function getCurrentTimezone(currentTimezone: OdsTimezone | undefined, timezones:
   return currentTimezone;
 }
 
+function getInitialValue(value: string | null, defaultValue?: string): string | null {
+  if (defaultValue !== undefined && value === VALUE_DEFAULT_VALUE) {
+    return defaultValue;
+  }
+
+  return value;
+}
+
 function parseTimezones(timezones?: OdsTimezone[] | ODS_TIMEZONES_PRESET | string): OdsTimezone[] {
   if (timezones === ODS_TIMEZONES_PRESET.all) {
     return ODS_TIMEZONES as OdsTimezone[];
@@ -68,6 +78,8 @@ async function updateInternals(internals: ElementInternals, value: string | null
 export {
   formatValue,
   getCurrentTimezone,
+  getInitialValue,
   parseTimezones,
   updateInternals,
+  VALUE_DEFAULT_VALUE,
 };

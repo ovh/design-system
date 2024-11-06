@@ -7,9 +7,7 @@ import { ODS_INPUT_TYPE, type OdsInput, type OdsInputChangeEvent } from '../../.
 import { type OdsSelectChangeEvent } from '../../../../select/src';
 import { type OdsTimezonePreset } from '../../constant/timezone-preset';
 import { type OdsTimezone } from '../../constant/timezones';
-import { formatValue, getCurrentTimezone, parseTimezones, updateInternals } from '../../controller/ods-timepicker';
-
-const VALUE_DEFAULT_VALUE = null;
+import { VALUE_DEFAULT_VALUE, formatValue, getCurrentTimezone, getInitialValue, parseTimezones, updateInternals } from '../../controller/ods-timepicker';
 
 @Component({
   formAssociated: true,
@@ -130,9 +128,7 @@ export class OdsTimepicker {
   }
 
   componentWillLoad(): void {
-    if (!this.value && (this.value !== VALUE_DEFAULT_VALUE || this.defaultValue)) {
-      this.value = this.defaultValue ?? null;
-    }
+    this.value = getInitialValue(this.value, this.defaultValue);
     this.onTimezonesChange();
     this.defaultCurrentTimezone = this.currentTimezone;
   }

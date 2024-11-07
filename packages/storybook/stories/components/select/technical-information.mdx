@@ -1,4 +1,5 @@
 import { Canvas, Meta } from '@storybook/blocks';
+import { OdsMessage } from '@ovhcloud/ods-components/react';
 import SpecificationsSelect from '@ovhcloud/ods-components/src/components/select/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -68,6 +69,8 @@ By default, each render function will receive as argument an object containing t
 
 If you need more data per option, you can attach a `data-attribute` to each option, the value will be available
 on the render function as well.
+
+<OdsMessage color="warning" isDismissible={ false }>Updating the "customRenderer" attribute after the initial render will not update the component. You need to explicitly call the "updateCustomRenderer" method to apply the change.</OdsMessage>
 
 Here is an example of the customization of each elements using specific data:
 

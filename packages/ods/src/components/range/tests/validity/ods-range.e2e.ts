@@ -82,6 +82,11 @@ describe('ods-range validity', () => {
 
         expect(await el.callMethod('checkValidity')).toBe(false);
       });
+
+      it('should return validity false if not valid type', async() => {
+        await setup('<ods-range default-value="abcd"></ods-range>');
+        expect(await el.callMethod('checkValidity')).toBe(false);
+      });
     });
 
     describe('with defined value', () => {

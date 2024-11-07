@@ -51,7 +51,7 @@ describe('ods-range rendering', () => {
     });
 
     it('get value 0 with props', async() => {
-      await setup('<ods-range default-value="0"></ods-range>');
+      await setup('<ods-range value="0"></ods-range>');
 
       expect(await el.getProperty('value')).toBe(0);
     });

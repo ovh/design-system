@@ -94,7 +94,7 @@ describe('ods-select rendering', () => {
   });
 
   it('should render with a custom renderer', async() => {
-    await setup('<ods-select></ods-select>');
+    await setup('<ods-select><option value="1">1</option></ods-select>');
     await page.evaluate(() => {
       const select = document.querySelector<OdsSelect & HTMLElement>('ods-select');
       select!.customRenderer = {
@@ -102,7 +102,7 @@ describe('ods-select rendering', () => {
           return `<div>>>> ${text} <<<</div>`;
         },
       };
-      select!.innerHTML = '<option value="1">1</option>';
+      select!.updateCustomRenderer();
     });
 
     await el.callMethod('open');

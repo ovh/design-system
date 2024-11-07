@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsSelectChangeEventDetail } from '../../src';
+import { type OdsSelect, type OdsSelectChangeEventDetail } from '../../src';
 
 describe('ods-select behaviour', () => {
   let el: E2EElement;
@@ -359,6 +359,36 @@ describe('ods-select behaviour', () => {
           validity: {},
           value: null,
         });
+      });
+    });
+
+    describe('updateCustomRenderer', () => {
+      it('should update custom renderer', async() => {
+        await setup('<ods-select><option value="1">1</option></ods-select>');
+        await page.evaluate(() => {
+          const select = document.querySelector<OdsSelect & HTMLElement>('ods-select');
+          select!.customRenderer = {
+            option: ({ text }: { text: string }): string => {
+              return `<div>>>> ${text} <<<</div>`;
+            },
+          };
+        });
+
+        await el.callMethod('open');
+        await page.waitForChanges();
+
+        expect(await page.evaluate(() => {
+          return document.querySelector('ods-select')?.shadowRoot?.querySelector<HTMLElement>('.ts-wrapper .option')?.innerText;
+        })).toBe('1');
+
+        await el.callMethod('updateCustomRenderer');
+        await page.waitForChanges();
+        await el.callMethod('open');
+        await page.waitForChanges();
+
+        expect(await page.evaluate(() => {
+          return document.querySelector('ods-select')?.shadowRoot?.querySelector<HTMLElement>('.ts-wrapper .option')?.innerText;
+        })).toBe('>>> 1 <<<');
       });
     });
   });

@@ -310,7 +310,6 @@ describe('ods-select validity', () => {
     it('should submit the form if input is valid', async() => {
       await setup('<form method="get" onsubmit="return false"><ods-select is-required value="1"><option value="1">1</option></ods-select></form>');
 
-      await el.type('abcd');
       const formValidity = await page.evaluate(() => {
         const form = document.querySelector<HTMLFormElement>('form');
         form?.requestSubmit();

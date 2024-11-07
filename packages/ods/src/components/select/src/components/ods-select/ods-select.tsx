@@ -117,6 +117,22 @@ export class OdsSelect {
   }
 
   @Method()
+  public async updateCustomRenderer(): Promise<void> {
+    // TomSelect lib does not provide an easy way to update template
+    // So we need to recreate a new instance with the updated template
+    if (this.selectElement) {
+      // First we save the current select option nodes as recreating the instance will clean them
+      const options = [...this.selectElement.children] as HTMLOptionElement[];
+
+      // Then we recreate the instance
+      this.createTomSelect(this.selectElement);
+
+      // And we put back the options
+      this.onSlotChange(options);
+    }
+  }
+
+  @Method()
   public async willValidate(): Promise<boolean> {
     return this.internals.willValidate;
   }
@@ -136,17 +152,6 @@ export class OdsSelect {
       this.select?.lock();
     } else {
       this.select?.unlock();
-    }
-  }
-
-  @Watch('customRenderer')
-  onCustomRendererChange(): void {
-    if (this.selectElement) {
-      // The option needs to be moved to ODS-select as it was destroyed by Tom Select.
-      const options = [...this.selectElement.children] as HTMLOptionElement[];
-      moveSlottedElements(this.el, options, hasNoValueOption(options));
-
-      this.createTomSelect(this.selectElement);
     }
   }
 
@@ -331,7 +336,7 @@ export class OdsSelect {
     this.onIsReadonlyChange(this.isReadonly);
   }
 
-  private onSlotChange(event: Event): void {
+  private onSlotChange(optionNodes: HTMLOptionElement[]): void {
     // The initial slot nodes move will trigger this callback again
     // but we want to avoid a second select initialisation
     if (this.hasMovedNodes) {
@@ -343,7 +348,6 @@ export class OdsSelect {
       this.select?.clear(); // reset the current selection
       this.select?.clearOptions(); // reset the tom-select options
 
-      const optionNodes = (event.currentTarget as HTMLSlotElement).assignedElements() as HTMLOptionElement[];
       moveSlottedElements(this.selectElement, optionNodes, hasNoValueOption(optionNodes));
       this.hasMovedNodes = true;
 
@@ -407,7 +411,7 @@ export class OdsSelect {
           required={ this.isRequired }>
         </select>
 
-        <slot onSlotchange={ (e) => this.onSlotChange(e) }></slot>
+        <slot onSlotchange={ (e) => this.onSlotChange((e.currentTarget as HTMLSlotElement).assignedElements() as HTMLOptionElement[]) }></slot>
       </Host>
     );
   }

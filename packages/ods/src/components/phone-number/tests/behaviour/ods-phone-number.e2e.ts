@@ -28,6 +28,7 @@ describe('ods-phone-number behaviour', () => {
         ?.shadowRoot?.querySelector<HTMLElement>('.option')?.click();
     });
     await page.waitForChanges();
+    await page.waitForChanges();
 
     expect(await page.evaluate(() => document.querySelector('ods-phone-number')?.getAttribute('value'))).toBe('');
   });

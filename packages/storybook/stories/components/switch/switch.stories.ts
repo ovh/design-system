@@ -185,7 +185,6 @@ export const ValidityState: StoryObj = {
       })
       async function renderValidityState() {
         const validity = await switchItem.getValidity();
-        console.log('validity', validity)
         divValidityState.innerHTML = '';
         for (let key in validity) {
           divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";

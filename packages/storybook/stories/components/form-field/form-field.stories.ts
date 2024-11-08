@@ -480,7 +480,7 @@ export const Textarea: StoryObj = {
     maxCharactersElement.textContent = MAX_CHARACTERS.toString();
 
     const updateCharacterCount = (event) => {
-      characterCount = event.target.value.length;
+      characterCount = event.target.value?.length || 0;
       characterCountElement.textContent = characterCount.toString();
 
       if (characterCount > MAX_CHARACTERS) {

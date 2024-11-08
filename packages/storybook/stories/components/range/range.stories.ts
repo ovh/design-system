@@ -383,7 +383,6 @@ export const ValidityState: StoryObj = {
   (async() => {
       const divValidityState = document.querySelector('#validity-state-demo');
       const range = document.querySelector('#range-validity-state-demo');
-      console.log('range', range)
       await customElements.whenDefined('ods-range');
       await renderValidityState();
       range.addEventListener('odsChange', async () => {
@@ -391,7 +390,6 @@ export const ValidityState: StoryObj = {
       })
       async function renderValidityState() {
         const validity = await range.getValidity();
-        console.log('validity', validity)
         divValidityState.innerHTML = '';
         for (let key in validity) {
           divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";

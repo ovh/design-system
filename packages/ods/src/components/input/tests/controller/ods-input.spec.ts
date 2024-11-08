@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-import { handleKeySpaceEnter, isPassword } from '../../src/controller/ods-input';
-=======
 jest.mock('../../../../utils/dom');
 
 import { setInternalsValidityFromHtmlElement } from '../../../../utils/dom';
-import { getInitialValue, handleKeySpace, isPassword, updateInternals } from '../../src/controller/ods-input';
->>>>>>> abdf93bc2 (feat(input): add tests about odsChange emit on first render)
+import { getInitialValue, handleKeySpaceEnter, isPassword, updateInternals } from '../../src/controller/ods-input';
 
 describe('ods-input controller', () => {
   beforeEach(jest.clearAllMocks);

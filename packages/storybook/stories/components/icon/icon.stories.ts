@@ -58,6 +58,7 @@ const ODS_ICON_TAG: { [NameKey in IconNameKey]: string[] } = {
   cloudUpload: [],
   cloudXmark: ['clear', 'times'],
   cog: [],
+  columns: ['filter', 'table'],
   comment: ['chat', 'message'],
   creditCard: [],
   dPad: [],

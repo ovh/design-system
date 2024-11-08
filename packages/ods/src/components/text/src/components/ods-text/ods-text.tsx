@@ -14,7 +14,7 @@ export class OdsText {
       case ODS_TEXT_PRESET.paragraph:
         return 'p';
       case ODS_TEXT_PRESET.caption:
-        return 'caption';
+        return 'span';
       case ODS_TEXT_PRESET.code:
         return 'code';
       case ODS_TEXT_PRESET.span:

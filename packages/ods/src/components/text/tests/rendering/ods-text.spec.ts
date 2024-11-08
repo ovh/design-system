@@ -38,7 +38,7 @@ describe('ods-text rendering', () => {
       await setup(`<ods-text preset="${presetValue}"></ods-text>`);
 
       expect(part?.classList.contains('ods-text--caption')).toBe(true);
-      expect(part?.tagName).toBe('CAPTION');
+      expect(part?.tagName).toBe('SPAN');
     });
   });
 });

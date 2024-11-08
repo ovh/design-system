@@ -43,7 +43,7 @@ describe('ods-text rendering', () => {
     it('should render with preset caption', async() => {
       await setup('<ods-text preset="caption">some text</ods-text>');
       expect(el.getAttribute('preset')).toBe('caption');
-      expect(part.tagName).toBe('CAPTION');
+      expect(part.tagName).toBe('SPAN');
     });
 
     it('should render with preset code', async() => {

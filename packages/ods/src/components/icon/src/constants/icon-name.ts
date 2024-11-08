@@ -40,6 +40,7 @@ enum ODS_ICON_NAME {
   cloudUpload = 'cloud-upload',
   cloudXmark = 'cloud-xmark',
   cog = 'cog',
+  columns = 'columns',
   comment = 'comment',
   creditCard = 'credit-card',
   dPad = 'd-pad',

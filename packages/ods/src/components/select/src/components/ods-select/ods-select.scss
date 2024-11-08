@@ -99,17 +99,21 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
         opacity: 1;
       }
 
-      &[data-selectable]:not(.selected):hover,
-      &.active:not(.selected) {
+      &[data-selectable]:hover,
+      &.active {
         background-color: var(--ods-color-primary-100);
       }
 
       &.selected {
-        background-color: var(--ods-color-primary-200);
+        background-color: var(--ods-color-primary-050);
 
         &:not([data-selectable]) {
           background: var(--ods-color-neutral-200);
           color: var(--ods-color-primary-000);
+        }
+
+        &.active {
+          background-color: var(--ods-color-primary-100);
         }
       }
     }

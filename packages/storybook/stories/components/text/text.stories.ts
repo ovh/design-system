@@ -32,6 +32,7 @@ export const Demo: StoryObj = {
         type: { summary: 'string' }
       },
       control: { type: 'select' },
+      description: 'Caption preset is only custom styling. For `<caption>` or `<figcaption>`, use the native tag with ods-text or Sass mixin',
       options: ODS_TEXT_PRESETS,
     },
     content: {
@@ -101,6 +102,55 @@ export const CustomCSS: StoryObj = {
 <style>
   .my-text::part(text) {
     color: #008000;
+  }
+</style>
+  `,
+};
+
+export const CaptionTable: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<table>
+  <caption>
+    <ods-text preset="caption">My table title</ods-text>
+  </caption>
+  <thead>
+  <tr>
+    <th scope="col">Person</th>
+    <th scope="col">Age</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Chris</th>
+    <td>22</td>
+  </tr>
+  </tbody>
+</table>
+<style>
+  caption {
+    caption-side: bottom;
+  }
+  table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+  }
+</style>
+  `,
+};
+
+export const FigCaption: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<figure>
+  <img src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" alt="OVHcloud logo" />
+  <figcaption>
+    <ods-text preset="caption">My picture title</ods-text>
+  </figcaption>
+</figure>
+<style>
+  img {
+    height: 100px;
   }
 </style>
   `,

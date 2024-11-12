@@ -45,6 +45,41 @@ const exampleTable = `<table>
   </tbody>
 </table>`
 
+const odsTextCaptionTable = `<table>
+  <caption>
+    <ods-text preset="caption">Front-end web developer course 2021</ods-text>
+  </caption>
+  <thead>
+  <tr>
+    <th scope="col">Person</th>
+    <th scope="col">Most interest in</th>
+    <th scope="col">Age</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Chris</th>
+    <td>HTML tables</td>
+    <td>22</td>
+  </tr>
+  <tr>
+    <th scope="row">Dennis</th>
+    <td>Web accessibility</td>
+    <td>45</td>
+  </tr>
+  <tr>
+    <th scope="row">Sarah</th>
+    <td>JavaScript frameworks</td>
+    <td>29</td>
+  </tr>
+  <tr>
+    <th scope="row">Karen</th>
+    <td>Web performance</td>
+    <td>36</td>
+  </tr>
+  </tbody>
+</table>`
+
 export default meta;
 
 export const Demo: StoryObj = {
@@ -134,6 +169,15 @@ ${unsafeHTML(exampleTable)}
 
 <ods-table variant="${ODS_TABLE_VARIANT.striped}">
 ${unsafeHTML(exampleTable)}
+</ods-table>
+  `,
+};
+
+export const Caption: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-table>
+${unsafeHTML(odsTextCaptionTable)}
 </ods-table>
   `,
 };

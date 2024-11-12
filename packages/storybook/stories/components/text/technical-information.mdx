@@ -31,4 +31,16 @@ Custom CSS :
 
 <Heading label="Preset" level={ 3 } />
 
+**Caption** preset can be used should you need ODS caption custom style.
+
+For actual `<caption>` (used in a table) or `<figcaption>` (image), use the native tag using either an ods-text inside of it or the Saas mixin.
+
 <Canvas of={ TextStories.Preset } sourceState="shown" />
+
+<Heading label="Caption preset in <table>" level={ 3 } />
+
+<Canvas of={ TextStories.CaptionTable } sourceState="shown" />
+
+<Heading label="Caption preset in <figcaption>" level={ 3 } />
+
+<Canvas of={ TextStories.FigCaption } sourceState="shown" />

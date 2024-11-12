@@ -134,6 +134,10 @@
       }
     });
 
+    formQuantity.addEventListener('odsChange', (event) => {
+      console.log(event);
+    });
+
     ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{
       formQuantity.addEventListener(eventName, (event) => {
         // console.log(eventName, event);

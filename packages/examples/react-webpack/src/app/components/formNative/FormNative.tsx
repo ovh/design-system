@@ -104,7 +104,6 @@ function FormNative(): ReactElement {
         name="phoneNumberWithCountries"
       />
 
-      {/* KO two odsChangeEvent on change */}
       <OdsQuantity
         isRequired={ areAllRequired }
         name="quantity"

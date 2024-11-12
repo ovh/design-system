@@ -32,7 +32,6 @@ export const Demo: StoryObj = {
         type: { summary: 'string' }
       },
       control: { type: 'select' },
-      description: 'Caption preset is only custom styling. For `<caption>` or `<figcaption>`, use the native tag with ods-text or Sass mixin',
       options: ODS_TEXT_PRESETS,
     },
     content: {
@@ -110,8 +109,8 @@ export const CustomCSS: StoryObj = {
 export const CaptionTable: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<table>
-  <caption>
+<table id="css-table">
+  <caption id="css-caption">
     <ods-text preset="caption">My table title</ods-text>
   </caption>
   <thead>
@@ -128,10 +127,10 @@ export const CaptionTable: StoryObj = {
   </tbody>
 </table>
 <style>
-  caption {
+  #css-caption {
     caption-side: bottom;
   }
-  table {
+  #css-table {
     border-collapse: collapse;
     border: 2px solid rgb(140 140 140);
   }
@@ -143,13 +142,13 @@ export const FigCaption: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <figure>
-  <img src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" alt="OVHcloud logo" />
+  <img id="css-img" src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" alt="OVHcloud logo" />
   <figcaption>
     <ods-text preset="caption">My picture title</ods-text>
   </figcaption>
 </figure>
 <style>
-  img {
+  #css-img {
     height: 100px;
   }
 </style>

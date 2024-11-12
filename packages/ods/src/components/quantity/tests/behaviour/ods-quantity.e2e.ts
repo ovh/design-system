@@ -282,8 +282,8 @@ describe('ods-quantity behaviour', () => {
     });
   });
 
-  describe('Form', () => {
-    it('should get form data with button type submit  after increment quantity', async() => {
+  describe('form', () => {
+    it('should get form data with button type submit after increment quantity', async() => {
       await setup(`<form method="get">
         <ods-quantity name="ods-quantity" value="0"></ods-quantity>
         <button type="reset">Reset</button>
@@ -338,6 +338,35 @@ describe('ods-quantity behaviour', () => {
 
       const url = new URL(page.url());
       expect(url.searchParams.get('odsQuantity')).toBe('11');
+    });
+  });
+
+  describe('events', () => {
+    describe('odsChange', () => {
+      it('should trigger one event when typing', async() => {
+        await setup('<ods-quantity></ods-quantity>');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
+
+        await el.type('0');
+        await page.waitForChanges();
+
+        expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventDetail({
+          previousValue: null,
+          validity: {},
+          value: 0,
+        });
+      });
+
+      it('should not trigger an event when typing if disabled', async() => {
+        await setup('<ods-quantity is-disabled></ods-quantity>');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
+
+        await el.type('0');
+        await page.waitForChanges();
+
+        expect(odsChangeSpy).toHaveReceivedEventTimes(0);
+      });
     });
   });
 });

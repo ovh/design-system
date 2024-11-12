@@ -208,7 +208,12 @@ export class OdsInput {
     if (this.isDisabled) {
       return;
     }
-    this.value = this.inputEl?.value ?? null;
+
+    if (this.type === ODS_INPUT_TYPE.number && isNumeric(this.inputEl?.value)) {
+      this.value = Number(this.inputEl?.value);
+    } else {
+      this.value = this.inputEl?.value ?? null;
+    }
   }
 
   private onListSlotChange(event: Event): void {

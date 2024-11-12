@@ -36,11 +36,11 @@ export class OdsPassword {
   @Prop({ mutable: true, reflect: true }) public value: string | null = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
+  @Event() odsChange!: EventEmitter<OdsPasswordChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
-  @Event() odsToggleMask!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsPasswordChangeEventDetail>;
+  @Event() odsToggleMask!: EventEmitter<void>;
 
   @Listen('invalid')
   onInvalidEvent(event: Event): void {
@@ -149,8 +149,8 @@ export class OdsPassword {
           isReadonly={ this.isReadonly }
           isRequired={ this.isRequired }
           name={ this.name }
-          onOdsBlur={() => this.onBlur() }
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
+          onOdsBlur={() => this.onBlur() }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
           onOdsToggleMask={ () => this.isMasked = !this.isMasked }
           pattern={ this.pattern }

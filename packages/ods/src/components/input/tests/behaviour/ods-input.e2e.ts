@@ -190,7 +190,7 @@ describe('ods-input behaviour', () => {
 
   describe('events', () => {
     describe('odsChange', () => {
-      it('should receive odsChange event', async() => {
+      it('should receive odsChange event with text value', async() => {
         const typeValue = 'some text';
         await setup('<ods-input name="ods-input"></ods-input>');
         const odsChangeSpy = await page.spyOnEvent('odsChange');
@@ -205,6 +205,24 @@ describe('ods-input behaviour', () => {
           previousValue: 'some tex',
           validity: {},
           value: 'some text',
+        });
+      });
+
+      it('should receive odsChange event with number value', async() => {
+        const typeValue = 123;
+        await setup('<ods-input name="ods-input" type="number"></ods-input>');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
+
+        await part.type(typeValue.toString(), { delay: 200 });
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(typeValue);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(typeValue.toString().length);
+        expect(odsChangeSpy).toHaveReceivedEventDetail({
+          name: 'ods-input',
+          previousValue: 12,
+          validity: {},
+          value: 123,
         });
       });
 

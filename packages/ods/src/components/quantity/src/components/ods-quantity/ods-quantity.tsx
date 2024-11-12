@@ -185,13 +185,13 @@ export class OdsQuantity {
           isDisabled={ this.isDisabled }
           isReadonly={ this.isReadonly }
           isRequired={ this.isRequired }
+          max={ this.max }
+          min={ this.min }
+          name={ this.name }
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           onOdsBlur={ () => this.onOdsBlur() }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
           onOdsInvalid={ (event: CustomEvent<boolean>) => this.onOdsInvalid(event) }
-          max={ this.max }
-          min={ this.min }
-          name={ this.name }
           placeholder={ this.placeholder }
           ref={ (el?: unknown) => this.odsInput = el as HTMLElement & OdsInput }
           step={ this.step }

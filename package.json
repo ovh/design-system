@@ -78,6 +78,7 @@
     "yarn": ">= 2.4.0"
   },
   "resolutions": {
-    "@types/react": "18.2.56"
+    "@types/react": "18.2.56",
+    "@types/scheduler": "< 0.23.0"
   }
 }

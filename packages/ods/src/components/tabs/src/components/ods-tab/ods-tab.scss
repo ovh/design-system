@@ -1,6 +1,6 @@
 @use '../../../../../style/focus';
 @use '../../../../../style/state';
-@use '../ods-tabs/ods-tabs.scss';
+@use '../ods-tabs/ods-tabs';
 
 :host(.ods-tab) {
   display: block;

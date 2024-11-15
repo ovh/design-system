@@ -1,6 +1,12 @@
-import { type OdsRadioChangeEvent, type OdsRadioChangeEventDetail } from '../../../radio/src';
+interface OdsSwitchChangeEventDetail {
+  name: string;
+  validity?: ValidityState;
+  value: string | null;
+}
+
+type OdsSwitchChangeEvent = CustomEvent<OdsSwitchChangeEventDetail>;
 
 export {
-  type OdsRadioChangeEvent as OdsSwitchChangeEvent,
-  type OdsRadioChangeEventDetail as OdsSwitchChangeEventDetail,
+  type OdsSwitchChangeEvent,
+  type OdsSwitchChangeEventDetail,
 };

@@ -4,10 +4,6 @@
 .ods-switch-item {
   height: 100%;
 
-  &:focus-visible {
-    @include focus.ods-focus();
-  }
-
   &__label {
     display: inline-flex;
     align-items: center;
@@ -22,7 +18,13 @@
     font-weight: 600;
 
     &:not(.ods-switch-item__label--disabled) {
-      &:hover, &:focus-visible  {
+      &:focus {
+        @include focus.ods-focus();
+
+        background-color:  var(--ods-color-primary-100);
+      }
+
+      &:hover {
         background-color:  var(--ods-color-primary-100);
       }
     }
@@ -33,17 +35,17 @@
   }
 
   &__radio {
-    display: none !important;
+    display: none;
 
-    &:has(input[type="radio"]:checked) {
-      &:not(:has(input[type="radio"]:disabled)) {
+    &:checked {
+      &:not(:disabled) {
         & + .ods-switch-item__label {
           background-color:  var(--ods-color-primary-600);
           color:  var(--ods-color-primary-000);
         }
       }
 
-      &:has(input[type="radio"]:disabled) {
+      &:disabled {
         & + .ods-switch-item__label {
           @include state.ods-is-disabled();
 

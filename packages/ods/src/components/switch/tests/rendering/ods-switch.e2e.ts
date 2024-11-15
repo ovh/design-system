@@ -9,7 +9,8 @@ describe('ods-switch rendering', () => {
     page = await newE2EPage();
 
     await page.setContent(content);
-    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+    await page.evaluate(() => document.body.style.setProperty('margin', '0'));
+    await page.waitForChanges();
 
     if (customStyle) {
       await page.addStyleTag({ content: customStyle });

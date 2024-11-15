@@ -1,5 +1,5 @@
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, h } from '@stencil/core';
-import { type OdsRadio } from '../../../../radio/src';
+import { type OdsSwitchChangeEventDetail } from '../../interfaces/events';
 
 @Component({
   shadow: false,
@@ -7,9 +7,9 @@ import { type OdsRadio } from '../../../../radio/src';
   tag: 'ods-switch-item',
 })
 export class OdsSwitchItem {
-  private isInvalid: boolean = false;
+  private inputEl?: HTMLInputElement;
+  private labelEl?: HTMLLabelElement;
   private observer?: MutationObserver;
-  private odsRadio?: OdsRadio & HTMLElement;
 
   @State() private inputId: string = '';
   @State() private isDisabled: boolean = false;
@@ -22,64 +22,87 @@ export class OdsSwitchItem {
   @Prop({ reflect: true }) public isChecked: boolean = false;
   @Prop({ reflect: true }) public value: string | null = null;
 
+  /** @internal */
   @Event() odsBlur!: EventEmitter<void>;
+  /** @internal */
+  @Event() odsChange!: EventEmitter<OdsSwitchChangeEventDetail>;
+  /** @internal */
   @Event() odsFocus!: EventEmitter<void>;
+  /** @internal */
   @Event() odsInvalid!: EventEmitter<boolean>;
 
   @Method()
-  public async checkValidity(): Promise<boolean | undefined> {
-    const validity = await this.odsRadio?.getValidity();
-    this.isInvalid = !validity?.valid;
-    return this.odsRadio?.checkValidity();
+  async clear(): Promise<void> {
+    if (this.inputEl) {
+      this.inputEl.checked = false;
+    }
   }
 
   @Method()
-  public async clear(): Promise<void> {
-    return this.odsRadio?.clear();
+  async focusItem(): Promise<void> {
+    this.labelEl?.focus();
   }
 
   @Method()
-  public async getValidationMessage(): Promise<string | undefined> {
-    return this.odsRadio?.getValidationMessage();
+  async getValidationMessage(): Promise<string | undefined> {
+    return this.inputEl?.validationMessage;
   }
 
   @Method()
-  public async getValidity(): Promise<ValidityState | undefined> {
-    return this.odsRadio?.getValidity();
+  async getValidity(): Promise<ValidityState | undefined> {
+    return this.inputEl?.validity;
   }
 
   @Method()
-  public async reset(): Promise<void> {
-    return this.odsRadio?.reset();
+  async reportValidity(): Promise<boolean | undefined> {
+    return this.inputEl?.reportValidity();
   }
 
   @Method()
-  public async reportValidity(): Promise<boolean | undefined> {
-    const validity = await this.odsRadio?.getValidity();
-    this.isInvalid = !validity?.valid;
-    return this.odsRadio?.reportValidity();
+  async reset(): Promise<string | null> {
+    if (this.inputEl) {
+      const isCheckedAttribute = this.el.getAttribute('is-checked');
+
+      if (isCheckedAttribute !== null && isCheckedAttribute !== 'false') {
+        this.inputEl.checked = true;
+        return this.value;
+      }
+      this.inputEl.checked = false;
+    }
+
+    return null;
   }
 
   @Method()
-  public async willValidate(): Promise<boolean | undefined> {
-    return this.odsRadio?.willValidate();
+  async willValidate(): Promise<boolean | undefined> {
+    return this.inputEl?.willValidate;
   }
 
   componentWillLoad(): void {
     this.observer = new MutationObserver((mutations: MutationRecord[]) => {
       for (const mutation of mutations) {
-        if (mutation.attributeName === 'input-id') {
-          this.inputId = this.el.getAttribute('input-id') ?? '';
-        }
-        if (mutation.attributeName === 'is-disabled') {
-          this.isDisabled = this.el.getAttribute('is-disabled') === '';
-        }
-        if (mutation.attributeName === 'is-required') {
-          this.isRequired = this.el.getAttribute('is-required') === '';
+        switch (mutation.attributeName) {
+          case 'input-id':
+            this.inputId = this.el.getAttribute('input-id') ?? '';
+            break;
+          case 'is-disabled':
+            this.isDisabled = this.el.getAttribute('is-disabled') === '';
+            break;
+          case 'is-required':
+            this.isRequired = this.el.getAttribute('is-required') === '';
+            break;
+          default:
+            break;
         }
       }
     });
-    this.observer.observe(this.el, { attributes: true });
+  }
+
+  componentDidLoad(): void {
+    this.observer?.observe(this.el, {
+      attributeFilter: ['input-id', 'is-disabled', 'is-required'],
+      attributes: true,
+    });
   }
 
   disconnectedCallback(): void {
@@ -98,39 +121,50 @@ export class OdsSwitchItem {
       return;
     }
     if (event.key === 'Enter' || event.key === ' ') {
-      this.odsRadio?.select();
+      this.inputEl?.click();
     }
   }
 
-  private async onBlur(): Promise<void> {
-    this.isInvalid = !(await this.odsRadio?.getValidity())?.valid;
-    this.odsInvalid.emit(this.isInvalid);
+  private onBlur(): void {
+    this.odsInvalid.emit(!this.inputEl!.validity.valid);
     this.odsBlur.emit();
   }
 
-  private onOdsInvalid(event: CustomEvent<boolean>): void {
-    this.isInvalid = event.detail;
+  private onInput(event: Event): void {
+    this.odsChange.emit({
+      name: this.el.getAttribute('name') || '',
+      validity:  this.inputEl?.validity,
+      value: (event.target as HTMLInputElement)?.checked ? this.value : null,
+    });
+  }
+
+  private onInvalidEvent(event: Event): void {
+    // Remove the native validation message popup
+    event.preventDefault();
+
+    this.odsInvalid.emit(true);
   }
 
   render(): FunctionalComponent {
     return (
-      <Host class="ods-switch-item"
+      <Host
+        class="ods-switch-item"
         disabled={ this.isDisabled }>
-        <ods-radio
-          ariaLabel={ this.ariaLabel }
-          ariaLabelledby={ this.ariaLabelledby }
+        <input
+          aria-label={ this.ariaLabel }
+          aria-labelledby={ this.ariaLabelledby }
           class="ods-switch-item__radio"
-          isChecked={ this.isChecked }
-          isDisabled={ this.isDisabled }
-          isRequired={ this.isRequired }
-          inputId={ this.inputId }
-          onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
-          onOdsInvalid={ (event: CustomEvent<boolean>) => this.onOdsInvalid(event) }
-          onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }
+          checked={ this.isChecked }
+          disabled={ this.isDisabled }
+          id={ this.inputId }
+          onInput={ (event: InputEvent): void => this.onInput(event) }
+          onInvalid={ (event: Event) => this.onInvalidEvent(event) }
           name={ this.el.getAttribute('name') ?? '' }
-          ref={ (el?: HTMLElement) => this.odsRadio = el as unknown as OdsRadio & HTMLElement }
-          value={ this.value }>
-        </ods-radio>
+          ref={ (el?: HTMLElement) => this.inputEl = el as HTMLInputElement }
+          required={ this.isRequired }
+          type="radio"
+          value={ this.value?.toString() || '' }>
+        </input>
 
         <label
           class={{
@@ -138,11 +172,12 @@ export class OdsSwitchItem {
             'ods-switch-item__label--disabled': this.isDisabled,
           }}
           htmlFor={ this.inputId }
-          tabindex={ !this.isDisabled ? 0 : -1 }
-          onBlur={ (): Promise<void> => this.onBlur() }
+          onBlur={ (): void => this.onBlur() }
           onFocus={ () => this.odsFocus.emit() }
           onKeyDown={ (e: KeyboardEvent) => this.handleKeyDown(e) }
-          onKeyUp={ (event: KeyboardEvent) => this.handleKeyUp(event) }>
+          onKeyUp={ (event: KeyboardEvent) => this.handleKeyUp(event) }
+          ref={ (el?: HTMLElement) => this.labelEl = el as HTMLLabelElement }
+          tabindex={ !this.isDisabled ? 0 : -1 }>
           <slot></slot>
         </label>
       </Host>

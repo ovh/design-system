@@ -1,26 +1,24 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsSwitchItem } from '../../src';
+import { type OdsSwitch } from '../../src';
 
 describe('ods-switch validity', () => {
   let el: E2EElement;
-  let item: E2EElement;
   let page: E2EPage;
 
   async function setup(content: string): Promise<void> {
     page = await newE2EPage();
 
     await page.setContent(content);
-    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+    await page.evaluate(() => document.body.style.setProperty('margin', '0'));
     await page.waitForChanges();
 
     el = await page.find('ods-switch');
-    item = (await page.findAll('ods-switch-item'))[0];
   }
 
   beforeEach(jest.clearAllMocks);
 
   describe('initialization', () => {
-    describe('with no value attribute defined', () => {
+    describe('with no checked item', () => {
       it('should return validity true if not required', async() => {
         await setup(`<ods-switch name="validity-test">
           <ods-switch-item value="1">label1</ods-switch-item>
@@ -28,7 +26,7 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
 
-        expect(await item.callMethod('checkValidity')).toBe(true);
+        expect(await el.callMethod('checkValidity')).toBe(true);
       });
 
       it('should return validity false if required', async() => {
@@ -38,51 +36,29 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
 
-        expect(await item.callMethod('checkValidity')).toBe(false);
+        expect(await el.callMethod('checkValidity')).toBe(false);
       });
     });
 
-    describe('with empty string value', () => {
+    describe('with checked item value', () => {
       it('should return validity true if not required', async() => {
-        await setup(`<ods-switch name="validity-test" value="">
-          <ods-switch-item value="1">label1</ods-switch-item>
+        await setup(`<ods-switch name="validity-test">
+          <ods-switch-item is-checked value="1">label1</ods-switch-item>
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
 
-        expect(await item.callMethod('checkValidity')).toBe(true);
+        expect(await el.callMethod('checkValidity')).toBe(true);
       });
 
-      it('should return validity false if required', async() => {
-        await setup(`<ods-switch is-required name="validity-test" value="">
-          <ods-switch-item value="1">label1</ods-switch-item>
-          <ods-switch-item value="2">label2</ods-switch-item>
-          <ods-switch-item value="3">label3</ods-switch-item>
-        </ods-switch>`);
-
-        expect(await item.callMethod('checkValidity')).toBe(false);
-      });
-    });
-
-    describe('with defined value', () => {
-      it('should return validity true if not required', async() => {
-        await setup(`<ods-switch name="validity-test" value="1">
-          <ods-switch-item value="1">label1</ods-switch-item>
-          <ods-switch-item value="2">label2</ods-switch-item>
-          <ods-switch-item value="3">label3</ods-switch-item>
-        </ods-switch>`);
-
-        expect(await item.callMethod('checkValidity')).toBe(true);
-      });
-
-      it('should return validity true if required and checked', async() => {
-        await setup(`<ods-switch is-required name="validity-test" value="1">
+      it('should return validity true if required', async() => {
+        await setup(`<ods-switch is-required name="validity-test">
           <ods-switch-item value="1" is-checked>label1</ods-switch-item>
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
 
-        expect(await item.callMethod('checkValidity')).toBe(true);
+        expect(await el.callMethod('checkValidity')).toBe(true);
       });
     });
   });
@@ -95,14 +71,16 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-        expect(await item.callMethod('checkValidity')).toBe(true);
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
 
         await setup(`<ods-switch is-required name="validity-test">
           <ods-switch-item value="1" is-checked>label1</ods-switch-item>
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-        expect(await item.callMethod('checkValidity')).toBe(true);
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
       });
 
       it('should return false if internals validity is false', async() => {
@@ -111,30 +89,25 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-        expect(await item.callMethod('checkValidity')).toBe(false);
 
-        await setup(`<ods-switch is-required name="validity-test" value="">
-          <ods-switch-item value="1">label1</ods-switch-item>
-          <ods-switch-item value="2">label2</ods-switch-item>
-          <ods-switch-item value="3">label3</ods-switch-item>
-        </ods-switch>`);
-        expect(await item.callMethod('checkValidity')).toBe(false);
+        expect(await el.callMethod('checkValidity')).toBe(false);
       });
     });
 
     describe('clear', () => {
-      it('should update the validity state accordingly, given value', async() => {
+      it('should update the validity state accordingly', async() => {
         await setup(`<ods-switch is-required name="validity-test" value="1">
           <ods-switch-item value="1" is-checked>label1</ods-switch-item>
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-        expect(await item.callMethod('checkValidity')).toBe(true);
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
 
         await el.callMethod('clear');
         await page.waitForChanges();
 
-        expect(await item.callMethod('checkValidity')).toBe(false);
+        expect(await el.callMethod('checkValidity')).toBe(false);
       });
     });
 
@@ -145,14 +118,8 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-        expect(await item.callMethod('getValidationMessage')).toBe('');
 
-        await setup(`<ods-switch is-required name="validity-test" value="">
-          <ods-switch-item value="1" is-checked>label1</ods-switch-item>
-          <ods-switch-item value="2">label2</ods-switch-item>
-          <ods-switch-item value="3">label3</ods-switch-item>
-        </ods-switch>`);
-        expect(await item.callMethod('getValidationMessage')).toBe('');
+        expect(await el.callMethod('getValidationMessage')).toBe('');
       });
 
       it('should return the element validation message if not valid', async() => {
@@ -161,14 +128,8 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-        expect(await item.callMethod('getValidationMessage')).not.toBe('');
 
-        await setup(`<ods-switch is-required name="validity-test" value="value">
-          <ods-switch-item value="1">label1</ods-switch-item>
-          <ods-switch-item value="2">label2</ods-switch-item>
-          <ods-switch-item value="3">label3</ods-switch-item>
-        </ods-switch>`);
-        expect(await item.callMethod('getValidationMessage')).not.toBe('');
+        expect(await el.callMethod('getValidationMessage')).not.toBe('');
       });
     });
 
@@ -177,7 +138,7 @@ describe('ods-switch validity', () => {
       // and return a single prop, otherwise it'll return an empty object
       async function getValidityProp(prop: keyof ValidityState): Promise<boolean | null> {
         return await page.evaluate(async(validityProp): Promise<boolean | null> => {
-          const validityState = await (document.querySelector('ods-switch-item') as unknown as OdsSwitchItem)?.getValidity();
+          const validityState = await (document.querySelector('ods-switch') as unknown as OdsSwitch)?.getValidity();
 
           if (validityState) {
             return validityState[validityProp];
@@ -192,6 +153,7 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
+
         expect(await getValidityProp('valid')).toBe(true);
 
         await setup(`<ods-switch is-required name="validity-test">
@@ -199,6 +161,7 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
+
         expect(await getValidityProp('valid')).toBe(true);
       });
 
@@ -208,14 +171,7 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-        expect(await getValidityProp('valid')).toBe(false);
-        expect(await getValidityProp('valueMissing')).toBe(true);
 
-        await setup(`<ods-switch is-required name="validity-test" value="">
-          <ods-switch-item value="1">label1</ods-switch-item>
-          <ods-switch-item value="2">label2</ods-switch-item>
-          <ods-switch-item value="3">label3</ods-switch-item>
-        </ods-switch>`);
         expect(await getValidityProp('valid')).toBe(false);
         expect(await getValidityProp('valueMissing')).toBe(true);
       });
@@ -228,14 +184,16 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-        expect(await item.callMethod('reportValidity')).toBe(true);
 
-        await setup(`<ods-switch is-required name="validity-test" value="1">
+        expect(await el.callMethod('reportValidity')).toBe(true);
+
+        await setup(`<ods-switch is-required name="validity-test">
           <ods-switch-item value="1" is-checked>label1</ods-switch-item>
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-        expect(await item.callMethod('reportValidity')).toBe(true);
+
+        expect(await el.callMethod('reportValidity')).toBe(true);
       });
 
       it('should return false if internals validity is false', async() => {
@@ -244,35 +202,30 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-        expect(await item.callMethod('reportValidity')).toBe(false);
 
-        await setup(`<ods-switch is-required name="validity-test" value="">
-          <ods-switch-item value="1">label1</ods-switch-item>
-          <ods-switch-item value="2">label2</ods-switch-item>
-          <ods-switch-item value="3">label3</ods-switch-item>
-        </ods-switch>`);
-        expect(await item.callMethod('reportValidity')).toBe(false);
+        expect(await el.callMethod('reportValidity')).toBe(false);
       });
     });
 
     describe('reset', () => {
-      it('should update the validity state accordingly, given value', async() => {
+      it('should update the validity state accordingly', async() => {
         await setup(`<ods-switch is-required name="validity-test" value="1">
           <ods-switch-item value="1" is-checked>label1</ods-switch-item>
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-        expect(await item.callMethod('checkValidity')).toBe(true);
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
 
         await el.callMethod('clear');
         await page.waitForChanges();
 
-        expect(await item.callMethod('checkValidity')).toBe(false);
+        expect(await el.callMethod('checkValidity')).toBe(false);
 
         await el.callMethod('reset');
         await page.waitForChanges();
 
-        expect(await item.callMethod('checkValidity')).toBe(true);
+        expect(await el.callMethod('checkValidity')).toBe(true);
       });
     });
 
@@ -283,16 +236,18 @@ describe('ods-switch validity', () => {
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-        expect(await item.callMethod('willValidate')).toBe(true);
+
+        expect(await el.callMethod('willValidate')).toBe(true);
       });
 
       it('should return false if element is not submittable', async() => {
-        await setup(`<ods-switch is-disabled name="validity-test" value="value">
+        await setup(`<ods-switch is-disabled name="validity-test">
           <ods-switch-item value="1">label1</ods-switch-item>
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>`);
-        expect(await item.callMethod('willValidate')).toBe(false);
+
+        expect(await el.callMethod('willValidate')).toBe(false);
       });
     });
   });
@@ -313,7 +268,7 @@ describe('ods-switch validity', () => {
         return form?.reportValidity();
       });
 
-      expect(await item.callMethod('checkValidity')).toBe(false);
+      expect(await el.callMethod('checkValidity')).toBe(false);
       expect(formValidity).toBe(false);
     });
 
@@ -326,14 +281,14 @@ describe('ods-switch validity', () => {
         </ods-switch>
         </form>`);
 
-      await item.click();
+      await (await el.find('ods-switch-item')).click();
       const formValidity = await page.evaluate(() => {
         const form = document.querySelector<HTMLFormElement>('form');
         form?.requestSubmit();
         return form?.reportValidity();
       });
 
-      expect(await item.callMethod('checkValidity')).toBe(true);
+      expect(await el.callMethod('checkValidity')).toBe(true);
       expect(formValidity).toBe(true);
     });
   });

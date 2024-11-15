@@ -1,16 +1,11 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { ODS_SWITCH_SIZE, OdsSwitchItem } from '../../src';
+import { OdsSwitchItem } from '../../src';
 
-const mutationObserverMock = jest.fn(function MutationObserver(callback) {
-  this.observe = jest.fn();
-  this.disconnect = jest.fn();
-  // Optionally add a trigger() method to manually trigger a change
-  this.trigger = (mockedMutationsList: MutationRecord[]): void => {
-    callback(mockedMutationsList, this);
-  };
-});
 // @ts-ignore test purpose
-global.MutationObserver = mutationObserverMock;
+global.MutationObserver = jest.fn(() => ({
+  disconnect: jest.fn(),
+  observe: jest.fn(),
+}));
 
 describe('ods-switch-item rendering', () => {
   let page: SpecPage;
@@ -128,22 +123,6 @@ describe('ods-switch-item rendering', () => {
       await setup('<ods-switch-item></ods-switch-item>');
 
       expect(root?.getAttribute('name')).toBeNull();
-    });
-  });
-
-  describe('size', () => {
-    it('should be reflected', async() => {
-      const sizeValue = ODS_SWITCH_SIZE.sm;
-
-      await setup(`<ods-switch-item size="${sizeValue}"></ods-switch-item>`);
-
-      expect(root?.getAttribute('size')).toBe(sizeValue);
-    });
-
-    it('should be set by default', async() => {
-      await setup('<ods-switch-item></ods-switch-item>');
-
-      expect(root?.getAttribute('size')).toBeNull();
     });
   });
 

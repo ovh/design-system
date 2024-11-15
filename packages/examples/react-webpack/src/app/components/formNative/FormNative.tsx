@@ -140,8 +140,6 @@ function FormNative(): ReactElement {
       </OdsSelect>
 
       {/* KO required not reactive */}
-      {/* KO no odsChange event on mount ??? => same radio */}
-      {/* KO Two event change on reset */}
       <OdsSwitch
         isRequired={ areAllRequired }
         name="switch"

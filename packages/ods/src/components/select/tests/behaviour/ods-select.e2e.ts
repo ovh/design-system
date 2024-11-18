@@ -414,6 +414,25 @@ describe('ods-select behaviour', () => {
           value: dummyValue,
         });
       });
+
+      it('should not do an infinite loop', async() => {
+        const dummyValue = 'dummy value';
+        await setup(`<ods-select><option value="${dummyValue}">Value 1</option></ods-select>`);
+        const odsValueChangeSpy = await page.spyOnEvent('odsChange');
+
+        await page.evaluate(() => {
+          const odsSelect = document.querySelector('ods-select');
+          odsSelect?.addEventListener('odsChange', ((event: CustomEvent): void => {
+            odsSelect.setAttribute('value', event.detail.value);
+          }) as unknown as EventListener);
+        });
+
+        await el.setAttribute('value', dummyValue);
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(dummyValue);
+        expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
+      });
     });
 
     describe('readonly', () => {

@@ -367,6 +367,25 @@ describe('ods-quantity behaviour', () => {
 
         expect(odsChangeSpy).toHaveReceivedEventTimes(0);
       });
+
+      it('should not do an infinite loop', async() => {
+        const dummyValue = 2;
+        await setup('<ods-quantity></ods-quantity>');
+        const odsValueChangeSpy = await page.spyOnEvent('odsChange');
+
+        await page.evaluate(() => {
+          const odsQuantity = document.querySelector('ods-quantity');
+          odsQuantity?.addEventListener('odsChange', ((event: CustomEvent): void => {
+            odsQuantity.setAttribute('value', event.detail.value?.toString() ?? '');
+          }) as unknown as EventListener);
+        });
+
+        await el.setAttribute('value', dummyValue);
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(dummyValue);
+        expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
+      });
     });
   });
 });

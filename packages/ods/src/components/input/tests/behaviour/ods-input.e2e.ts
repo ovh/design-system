@@ -236,6 +236,44 @@ describe('ods-input behaviour', () => {
         expect(await el.getProperty('value')).toBe(null);
         expect(odsChangeSpy).not.toHaveReceivedEvent();
       });
+
+      it('should not do an infinite loop with string', async() => {
+        const dummyValue = 'dummy value';
+        await setup('<ods-input></ods-input>');
+        const odsValueChangeSpy = await page.spyOnEvent('odsChange');
+
+        await page.evaluate(() => {
+          const odsInput = document.querySelector('ods-input');
+          odsInput?.addEventListener('odsChange', ((event: CustomEvent): void => {
+            odsInput.setAttribute('value', event.detail.value?.toString() ?? '');
+          }) as unknown as EventListener);
+        });
+
+        await el.setAttribute('value', dummyValue);
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(dummyValue);
+        expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
+      });
+
+      it('should not do an infinite loop with string', async() => {
+        const dummyValue = 2;
+        await setup('<ods-input></ods-input>');
+        const odsValueChangeSpy = await page.spyOnEvent('odsChange');
+
+        await page.evaluate(() => {
+          const odsInput = document.querySelector('ods-input');
+          odsInput?.addEventListener('odsChange', ((event: CustomEvent): void => {
+            odsInput.setAttribute('value', event.detail.value?.toString() ?? '');
+          }) as unknown as EventListener);
+        });
+
+        await el.setAttribute('value', dummyValue);
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(dummyValue.toString());
+        expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
+      });
     });
   });
 

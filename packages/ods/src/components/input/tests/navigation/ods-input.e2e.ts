@@ -6,6 +6,7 @@ describe('ods-input navigation', () => {
   let input: E2EElement;
   let page: E2EPage;
   let buttonClearable: E2EElement;
+  let buttonSearch: E2EElement;
   let buttonToggleMask: E2EElement;
 
   async function isFocused(): Promise<boolean> {
@@ -37,6 +38,7 @@ describe('ods-input navigation', () => {
     el = await page.find('ods-input');
     input = await page.find('ods-input >>> input');
     buttonClearable = await page.find('ods-input >>> ods-button[icon="xmark"]');
+    buttonSearch = await page.find('ods-input >>> ods-button[icon="magnifying-glass"]');
     buttonToggleMask = await page.find('ods-input >>> ods-button[icon="eye-off"]');
   }
 
@@ -289,6 +291,57 @@ describe('ods-input navigation', () => {
     });
   });
 
+  describe('Search', () => {
+    it('Button search should be focusable', async() => {
+      await setup('<ods-input type="search"></ods-input>');
+
+      await page.keyboard.press('Tab');
+      expect(await odsInputFocusedElementClassName()).toContain('ods-input__input');
+
+      await page.keyboard.press('Tab');
+      expect(await getFocusedButtonIconName()).toBe('magnifying-glass');
+
+      await page.keyboard.press('Tab');
+      expect(await odsInputFocusedElementClassName()).toBe(undefined);
+    });
+
+    it('should do nothing because of disabled', async() => {
+      await setup('<ods-input is-disabled type="search" value="value"></ods-input>');
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await page.waitForChanges();
+      expect(await odsInputFocusedElementClassName()).toBe(undefined);
+
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+      expect(await odsInputFocusedElementClassName()).toBe(undefined);
+
+      await buttonSearch.click();
+      await page.waitForChanges();
+      expect(await odsInputFocusedElementClassName()).toBe(undefined);
+    });
+
+    it('should do nothing because of readonly', async() => {
+      await setup('<ods-input is-readonly type="search" value="value"></ods-input>');
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await page.waitForChanges();
+      expect(await odsInputFocusedElementClassName()).toBe(undefined);
+
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+      expect(await odsInputFocusedElementClassName()).toBe(undefined);
+
+      await buttonSearch.click();
+      await page.waitForChanges();
+      expect(await odsInputFocusedElementClassName()).toContain('ods-input__input');
+    });
+  });
+
   it('should have 2 button focusable with masked & clearable', async() => {
     await setup('<ods-input is-masked is-clearable value="value"></ods-input>');
     await page.keyboard.press('Tab');
@@ -299,5 +352,17 @@ describe('ods-input navigation', () => {
 
     await page.keyboard.press('Tab');
     expect(await getFocusedButtonIconName()).toBe('eye-off');
+  });
+
+  it('should have 2 button focusable with search & clearable', async() => {
+    await setup('<ods-input type="search" is-clearable value="value"></ods-input>');
+    await page.keyboard.press('Tab');
+    expect(await odsInputFocusedElementClassName()).toContain('ods-input__input');
+
+    await page.keyboard.press('Tab');
+    expect(await getFocusedButtonIconName()).toBe('xmark');
+
+    await page.keyboard.press('Tab');
+    expect(await getFocusedButtonIconName()).toBe('magnifying-glass');
   });
 });

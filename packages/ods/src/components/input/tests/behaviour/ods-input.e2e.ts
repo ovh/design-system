@@ -4,6 +4,7 @@ import { type OdsInputChangeEventDetail } from '../../src';
 describe('ods-input behaviour', () => {
   let el: E2EElement;
   let page: E2EPage;
+  let buttonSearch: E2EElement;
   let part: E2EElement;
 
   async function setup(content: string): Promise<void> {
@@ -13,6 +14,7 @@ describe('ods-input behaviour', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('ods-input');
+    buttonSearch = await page.find('ods-input >>> ods-button[icon="magnifying-glass"]');
     part = await page.find('ods-input >>> [part="input"]');
     await page.waitForChanges();
   }
@@ -247,6 +249,46 @@ describe('ods-input behaviour', () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
+      await page.waitForNetworkIdle();
+
+      const url = new URL(page.url());
+      expect(url.searchParams.get('odsInput')).toBe('text');
+    });
+
+    it('should submit form on search button Enter', async() => {
+      await setup(`<form method="get">
+        <ods-input name="odsInput" type="search" value="text"></ods-input>
+      </form>`);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.waitForNetworkIdle();
+
+      const url = new URL(page.url());
+      expect(url.searchParams.get('odsInput')).toBe('text');
+    });
+
+    it('should submit form on search button space', async() => {
+      await setup(`<form method="get">
+        <ods-input name="odsInput" type="search" value="text"></ods-input>
+      </form>`);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await page.waitForNetworkIdle();
+
+      const url = new URL(page.url());
+      expect(url.searchParams.get('odsInput')).toBe('text');
+    });
+
+    it('should submit form on search button click', async() => {
+      await setup(`<form method="get">
+        <ods-input name="odsInput" type="search" value="text"></ods-input>
+      </form>`);
+
+      await buttonSearch.click();
       await page.waitForNetworkIdle();
 
       const url = new URL(page.url());

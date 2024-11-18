@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-import { submitFormOnEnter } from '../../../../../utils/dom';
+import { submitFormOnClick, submitFormOnEnter } from '../../../../../utils/dom';
 import { isNumeric } from '../../../../../utils/type';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
@@ -265,6 +265,7 @@ export class OdsInput {
   render(): FunctionalComponent {
     const hasClearableIcon = this.isClearable && !this.isLoading && !!this.value;
     const hasToggleMaskIcon = this.isPassword && !this.isLoading;
+    const hasSearchIcon = this.type === 'search' && !this.isLoading;
 
     return (
       <Host
@@ -335,6 +336,20 @@ export class OdsInput {
               onKeyDown={ (event: KeyboardEvent) => this.handleKeyDown(event) }
               onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpaceEnter(event, this.isDisabled, this.toggleMask.bind(this)) }
               size={ ODS_BUTTON_SIZE.xs }
+              variant={ ODS_BUTTON_VARIANT.ghost }>
+            </ods-button>
+          }
+          {
+            hasSearchIcon &&
+            <ods-button
+              icon={ ODS_ICON_NAME.magnifyingGlass }
+              isDisabled={ this.isDisabled || this.isReadonly }
+              label=""
+              onClick={ (event: MouseEvent): void => submitFormOnClick(event, this.internals.form) }
+              onKeyDown={ (event: KeyboardEvent) => this.handleKeyDown(event) }
+              onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
+              size={ ODS_BUTTON_SIZE.xs }
+              type={ 'submit' }
               variant={ ODS_BUTTON_VARIANT.ghost }>
             </ods-button>
           }

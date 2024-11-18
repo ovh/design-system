@@ -1,4 +1,4 @@
-import { copyToClipboard, getRandomHTMLId, isTargetInElement, setInternalsValidityFromHtmlElement, setInternalsValidityFromOdsComponent, submitFormOnEnter } from '../../src/utils/dom';
+import { copyToClipboard, getRandomHTMLId, isTargetInElement, setInternalsValidityFromHtmlElement, setInternalsValidityFromOdsComponent, submitFormOnClick, submitFormOnEnter } from '../../src/utils/dom';
 
 describe('utils dom', () => {
   beforeEach(jest.clearAllMocks);
@@ -208,6 +208,30 @@ describe('utils dom', () => {
 
     it('should request submit on Enter press', () => {
       submitFormOnEnter({ key: 'Enter' } as unknown as KeyboardEvent, mockForm);
+
+      expect(mockForm.requestSubmit).toHaveBeenCalled();
+    });
+  });
+
+  describe('submitFormOnClick', () => {
+    const mockForm = {
+      requestSubmit: jest.fn(),
+    } as unknown as HTMLFormElement;
+
+    it('should do nothing if event button is not 0', () => {
+      submitFormOnClick({ button: 1 } as unknown as MouseEvent, mockForm);
+
+      expect(mockForm.requestSubmit).not.toHaveBeenCalled();
+    });
+
+    it('should do nothing if no form is passed', () => {
+      submitFormOnClick({ button: 0 } as unknown as MouseEvent, null);
+
+      expect(mockForm.requestSubmit).not.toHaveBeenCalled();
+    });
+
+    it('should request submit on click', () => {
+      submitFormOnClick({ button: 0 } as unknown as MouseEvent, mockForm);
 
       expect(mockForm.requestSubmit).toHaveBeenCalled();
     });

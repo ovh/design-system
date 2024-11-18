@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_SWITCH_SIZE, ODS_SWITCH_SIZES } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -20,14 +19,13 @@ export const Demo: StoryObj = {
       (async() => {
           const divValidityState = document.querySelector('#validity-state-switch');
           const switchDemo = document.querySelector('#my-switch');
-          const switchItem = document.querySelector('#switch-item-demo');
           await customElements.whenDefined('ods-switch');
           setTimeout(async() => await renderValidityState(), 0);
           switchDemo.addEventListener('odsChange', async() => {
             await renderValidityState();
           });
           async function renderValidityState() {
-            const validity = await switchItem.getValidity();
+            const validity = await switchDemo.getValidity();
             divValidityState.innerHTML = '';
             for (let key in validity) {
               divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
@@ -41,19 +39,14 @@ export const Demo: StoryObj = {
                 is-disabled="${args.isDisabled}"
                 is-required="${args.isRequired}"
                 size="${args.size}">
-      ${ unsafeHTML(args.content) }
+      <ods-switch-item value="1">label1</ods-switch-item>
+      <ods-switch-item value="2">label2</ods-switch-item>
+      <ods-switch-item value="3">label3</ods-switch-item>
     </ods-switch>
     ${ args.validityState ? validityStateTemplate : '' }
   `;
   },
   argTypes: orderControls({
-    content: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
-      },
-      control: 'text',
-    },
     isDisabled: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -90,9 +83,6 @@ export const Demo: StoryObj = {
     },
   }),
   args: {
-    content: `<ods-switch-item id="switch-item-demo" value="1">label1</ods-switch-item>
-    <ods-switch-item value="2">label2</ods-switch-item>
-    <ods-switch-item value="3">label3</ods-switch-item>`,
     isDisabled: false,
     isRequired: false,
     size: 'md',
@@ -168,7 +158,7 @@ export const ValidityState: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-switch id="switch-validity-state-demo" name="switch-validity-state" is-required>
-  <ods-switch-item value="1" id="switch-item-validity-state-demo">label1</ods-switch-item>
+  <ods-switch-item value="1">label1</ods-switch-item>
   <ods-switch-item value="2">label2</ods-switch-item>
   <ods-switch-item value="3">label3</ods-switch-item>
 </ods-switch>
@@ -177,14 +167,13 @@ export const ValidityState: StoryObj = {
   (async() => {
       const divValidityState = document.querySelector('#validity-state-demo');
       const switchValidityState = document.querySelector('#switch-validity-state-demo');
-      const switchItem = document.querySelector('#switch-item-validity-state-demo');
       await customElements.whenDefined('ods-switch-item');
       setTimeout(async() => await renderValidityState(), 100);
       switchValidityState.addEventListener('odsChange', async() => {
         await renderValidityState();
       })
       async function renderValidityState() {
-        const validity = await switchItem.getValidity();
+        const validity = await switchValidityState.getValidity();
         divValidityState.innerHTML = '';
         for (let key in validity) {
           divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";

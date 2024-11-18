@@ -115,7 +115,6 @@ export class OdsQuantity {
     }
     const step = this.step || 1;
     this.value = this.value !== null ? Number(this.value) - step : 0;
-    this.shouldUpdateIsInvalidState = true;
   }
 
   private async increment(): Promise<void> {
@@ -124,10 +123,10 @@ export class OdsQuantity {
     }
     const step = this.step || 1;
     this.value = this.value !== null ? Number(this.value) + step : 0;
-    this.shouldUpdateIsInvalidState = true;
   }
 
-  private onOdsBlur(): void {
+  private async onOdsBlur(): Promise<void> {
+    await this.odsInput?.checkValidity();
     this.isInvalid = !this.internals.validity.valid;
   }
 
@@ -143,7 +142,7 @@ export class OdsQuantity {
     // In case the value gets updated from an other source than a blur event
     // we may have to perform an internal validity state update
     if (this.shouldUpdateIsInvalidState) {
-      await this.odsInput?.reportValidity();
+      await this.odsInput?.checkValidity();
       this.isInvalid = !this.internals.validity.valid;
     }
   }
@@ -170,6 +169,7 @@ export class OdsQuantity {
           isDisabled={ isMinusButtonDisabled(this.isDisabled, this.isReadonly, this.value, this.min) }
           icon={ ODS_ICON_NAME.minus }
           label=""
+          onBlur={ () => this.onOdsBlur() }
           onClick={ () => this.decrement() }
           size={ ODS_BUTTON_SIZE.sm }
           variant={ ODS_BUTTON_VARIANT.outline }>
@@ -206,6 +206,7 @@ export class OdsQuantity {
           isDisabled={ isPlusButtonDisabled(this.isDisabled, this.isReadonly, this.value, this.max) }
           icon={ ODS_ICON_NAME.plus }
           label=""
+          onBlur={ () => this.onOdsBlur() }
           onClick={ () => this.increment() }
           size={ ODS_BUTTON_SIZE.sm }
           variant={ ODS_BUTTON_VARIANT.outline }>

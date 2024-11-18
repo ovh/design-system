@@ -203,6 +203,25 @@ describe('ods-textarea behaviour', () => {
         expect(await el.getProperty('value')).toBe(null);
         expect(odsValueChangeSpy).not.toHaveReceivedEvent();
       });
+
+      it('should not do an infinite loop', async() => {
+        const dummyValue = 'dummy value';
+        await setup('<ods-textarea></ods-textarea>');
+        const odsValueChangeSpy = await page.spyOnEvent('odsChange');
+
+        await page.evaluate(() => {
+          const odsTextarea = document.querySelector('ods-textarea');
+          odsTextarea?.addEventListener('odsChange', ((event: CustomEvent): void => {
+            odsTextarea.setAttribute('value', event.detail.value ?? '');
+          }) as unknown as EventListener);
+        });
+
+        await el.setAttribute('value', dummyValue);
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(dummyValue);
+        expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
+      });
     });
   });
 });

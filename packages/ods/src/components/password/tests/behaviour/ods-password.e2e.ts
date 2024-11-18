@@ -187,6 +187,25 @@ describe('ods-password behaviour', () => {
         expect(await el.getProperty('value')).toBe(null);
         expect(odsChangeSpy).not.toHaveReceivedEvent();
       });
+
+      it('should not do an infinite loop', async() => {
+        const dummyValue = 'dummy value';
+        await setup('<ods-password></ods-password>');
+        const odsValueChangeSpy = await page.spyOnEvent('odsChange');
+
+        await page.evaluate(() => {
+          const odsPassword = document.querySelector('ods-password');
+          odsPassword?.addEventListener('odsChange', ((event: CustomEvent): void => {
+            odsPassword.setAttribute('value', event.detail.value?.toString() ?? '');
+          }) as unknown as EventListener);
+        });
+
+        await el.setAttribute('value', dummyValue);
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(dummyValue);
+        expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
+      });
     });
   });
 

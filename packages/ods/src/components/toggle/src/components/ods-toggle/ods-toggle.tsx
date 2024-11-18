@@ -96,7 +96,8 @@ export class OdsToggle {
   componentWillLoad(): void {
     this.observer = new MutationObserver((mutations: MutationRecord[]) => {
       for (const mutation of mutations) {
-        if (mutation.attributeName === 'value') {
+        const hasChange = this.value && mutation.oldValue === null || !this.value && mutation.oldValue !== null;
+        if (mutation.attributeName === 'value' && hasChange) {
           this.onValueChange();
         }
 

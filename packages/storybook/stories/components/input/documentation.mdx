@@ -32,9 +32,9 @@ _**Input** component is an **Input** field where users can type into_
 
 1. A **field**: a container where the user can type in
 2. A **placeholder**: provides hints or example of what to type
-3. **Inner content**: displays the content typed by the field type (e.g.: `date`, `email`, `number`, `password`, `search`, `tel`, `text`, `time`, `url`)
-4. Clickable icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, used for extra actions
-5. Clickable icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, used for extra actions
+3. **Inner content**: displays the content typed by the field type (e.g.: `email`, `number`, `password`, `search`, `text`, `time`, `url`)
+4. Clickable icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, used for secondary extra actions such as clear the field
+5. Clickable icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, used for extra actions such as toggle the field content visibility or trigger a search
 
 <Heading label="Usage" level={ 2 } />
 
@@ -42,7 +42,7 @@ An **Input** is used to type a free-form short text in a field. It is often used
 
 It is commonly used in a form, such as asking the user their name or email address, data entered can be text or numbers.
 
-The **Input** component can be used in addition with the **Autocomplete** component.
+The **Input** component can be used in addition with an **Autocomplete**.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
@@ -64,11 +64,17 @@ The **Input** component can be used in addition with the **Autocomplete** compon
 
 <Heading label="Behavior" level={ 2 } />
 
-**Inputs** can be hovered, focused and clicked/triggered. They can be disabled as well.
+**Inputs** can be hovered, focused and clicked/triggered. They can be disabled or readonly as well.
 
 The user can start typing in the **Input** after clicking or focusing on the field container.
 
-When the user types longer text than the **Input** width, the cursor will automatically scroll left.
+When the user types text longer than the **Input** width, the cursor will automatically scroll left.
+
+A clearable button can be displayed within the **Input** to clear its content. This button becomes visible as soon as the user types the first character and removes all content when clicked.
+
+A toggle mask button can be displayed within the **Input** to toggle the visibility of its content, such as revealing or hiding a password in a masked input.
+
+A search button can be displayed within the **Input** to trigger a specific action, such as performing a search.
 
 <Heading label="Variation" level={ 2 } />
 

@@ -42,6 +42,12 @@ async function setInternalsValidityFromOdsComponent(odsFormElement: OdsFormEleme
   return setInternalsValidity(odsFormElement, internals, validityState, validationMessage);
 }
 
+function submitFormOnClick(event: MouseEvent, form: HTMLFormElement | null): void {
+  if (event.button === 0) {
+    form?.requestSubmit();
+  }
+}
+
 function submitFormOnEnter(event: KeyboardEvent, form: HTMLFormElement | null): void {
   if (event.key === 'Enter') {
     form?.requestSubmit();
@@ -54,5 +60,6 @@ export {
   isTargetInElement,
   setInternalsValidityFromHtmlElement,
   setInternalsValidityFromOdsComponent,
+  submitFormOnClick,
   submitFormOnEnter,
 };

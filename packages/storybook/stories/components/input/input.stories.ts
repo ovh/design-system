@@ -296,6 +296,14 @@ export const Readonly: StoryObj = {
   `,
 };
 
+export const Search: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-input type="search" value="search type">
+</ods-input>
+  `,
+};
+
 export const Placeholder: StoryObj = {
   tags: ['isHidden'],
   render: () => html`

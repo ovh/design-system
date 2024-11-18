@@ -3,6 +3,10 @@ import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing
 describe('ods-input rendering', () => {
   let el: E2EElement;
   let page: E2EPage;
+  let buttonClearable: E2EElement;
+  let buttonSearch: E2EElement;
+  let buttonToggleMask: E2EElement;
+  let loadingSpinner: E2EElement;
   let part: E2EElement;
 
   async function setup(content: string, customStyle?: string): Promise<void> {
@@ -16,6 +20,10 @@ describe('ods-input rendering', () => {
     }
 
     el = await page.find('ods-input');
+    buttonClearable = await page.find('ods-input >>> ods-button[icon="xmark"]');
+    buttonSearch = await page.find('ods-input >>> ods-button[icon="magnifying-glass"]');
+    buttonToggleMask = await page.find('ods-input >>> ods-button[icon="eye-off"]');
+    loadingSpinner = await page.find('ods-input >>> ods-spinner');
     part = await page.find('ods-input >>> [part="input"]');
     await page.waitForChanges();
   }
@@ -182,6 +190,75 @@ describe('ods-input rendering', () => {
         return document.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
       });
       expect(hasErrorClass2).toBe(true);
+    });
+  });
+
+  describe('isMasked', () => {
+    it('should render a toggle mask button', async() => {
+      await setup('<ods-input is-masked></ods-input>');
+
+      expect(buttonToggleMask).not.toBeNull();
+    });
+
+    it('should render a disabled toggle mask button when input is disabled', async() => {
+      await setup('<ods-input is-disabled is-masked></ods-input>');
+
+      expect(buttonToggleMask.getAttribute('is-disabled')).toBe('');
+    });
+
+    it('should not render a disabled toggle mask button when input is readonly', async() => {
+      await setup('<ods-input is-readonly is-masked></ods-input>');
+
+      expect(buttonToggleMask.getAttribute('is-disabled')).toBeNull();
+    });
+
+    it('should render toggle mask and clearable button', async() => {
+      await setup('<ods-input is-clearable is-masked value="value"></ods-input>');
+
+      expect(buttonClearable).not.toBeNull();
+      expect(buttonToggleMask).not.toBeNull();
+    });
+
+    it('should render the loading spinner when is-masked and is-loading', async() => {
+      await setup('<ods-input is-loading type="search"></ods-input>');
+
+      expect(buttonToggleMask).toBeNull();
+      expect(loadingSpinner).not.toBeNull();
+    });
+  });
+
+  describe('type search', () => {
+    it('should render a search button', async() => {
+      await setup('<ods-input type="search"></ods-input>');
+
+      expect(await el.getProperty('type')).toBe('search');
+      expect(buttonSearch).not.toBeNull();
+    });
+
+    it('should render a disabled search button when input is disabled', async() => {
+      await setup('<ods-input is-disabled type="search"></ods-input>');
+
+      expect(buttonSearch.getAttribute('is-disabled')).toBe('');
+    });
+
+    it('should render a disabled search button when input is readonly', async() => {
+      await setup('<ods-input is-readonly type="search"></ods-input>');
+
+      expect(buttonSearch.getAttribute('is-disabled')).toBe('');
+    });
+
+    it('should render search button and clearable button', async() => {
+      await setup('<ods-input is-clearable type="search" value="dummy"></ods-input>');
+
+      expect(buttonClearable).not.toBeNull();
+      expect(buttonSearch).not.toBeNull();
+    });
+
+    it('should render the loading spinner when input of type search is-loading', async() => {
+      await setup('<ods-input is-loading type="search"></ods-input>');
+
+      expect(buttonSearch).toBeNull();
+      expect(loadingSpinner).not.toBeNull();
     });
   });
 });

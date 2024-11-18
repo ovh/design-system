@@ -2,6 +2,7 @@ enum ODS_INPUT_TYPE {
   email = 'email',
   number = 'number',
   password = 'password',
+  search = 'search',
   text = 'text',
   time = 'time',
   url = 'url',

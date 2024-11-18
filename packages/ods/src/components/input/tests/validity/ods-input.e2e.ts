@@ -275,6 +275,22 @@ describe('ods-input validity', () => {
       expect(formValidity).toBe(false);
     });
 
+    it('should not submit the form on search button click before any changes if input is invalid', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-input is-required type="search"></ods-input></form>');
+
+      const formValidity = await page.evaluate(() => {
+        const form = document.querySelector<HTMLFormElement>('form');
+        const input = document.querySelector('ods-input');
+        const buttonSearch = input?.shadowRoot?.querySelector('ods-button[icon="magnifying-glass"]');
+
+        (buttonSearch as HTMLElement).click();
+        return form?.reportValidity();
+      });
+
+      expect(await el.callMethod('checkValidity')).toBe(false);
+      expect(formValidity).toBe(false);
+    });
+
     it('should submit the form if input is valid', async() => {
       await setup('<form method="get" onsubmit="return false"><ods-input is-required value="dummy"></ods-input></form>');
 
@@ -282,6 +298,22 @@ describe('ods-input validity', () => {
       const formValidity = await page.evaluate(() => {
         const form = document.querySelector<HTMLFormElement>('form');
         form?.requestSubmit();
+        return form?.reportValidity();
+      });
+
+      expect(await el.callMethod('checkValidity')).toBe(true);
+      expect(formValidity).toBe(true);
+    });
+
+    it('should submit the form on search button click if input is valid', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-input is-required type="search" value="dummy"></ods-input></form>');
+
+      const formValidity = await page.evaluate(() => {
+        const form = document.querySelector<HTMLFormElement>('form');
+        const input = document.querySelector('ods-input');
+        const buttonSearch = input?.shadowRoot?.querySelector('ods-button[icon="magnifying-glass"]');
+
+        (buttonSearch as HTMLElement).click();
         return form?.reportValidity();
       });
 

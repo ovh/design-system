@@ -83,6 +83,13 @@ function FormNative(): ReactElement {
         type={ ODS_INPUT_TYPE.text }
       />
 
+      <OdsInput
+        isClearable={ true }
+        isRequired={ areAllRequired }
+        name="inputSearch"
+        type={ ODS_INPUT_TYPE.search }
+      />
+
       <OdsPassword
         isClearable={ true }
         isRequired={ areAllRequired }

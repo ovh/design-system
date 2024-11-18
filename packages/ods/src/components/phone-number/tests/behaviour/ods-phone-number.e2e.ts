@@ -274,6 +274,25 @@ describe('ods-phone-number behaviour', () => {
 
         expect(odsChangeSpy).toHaveReceivedEventTimes(0);
       });
+
+      it('should not do an infinite loop', async() => {
+        const dummyValue = '0123456789';
+        await setup('<ods-phone-number iso-code="fr"></ods-phone-number>');
+        const odsValueChangeSpy = await page.spyOnEvent('odsChange');
+
+        await page.evaluate(() => {
+          const odsPhoneNumber = document.querySelector('ods-phone-number');
+          odsPhoneNumber?.addEventListener('odsChange', ((event: CustomEvent): void => {
+            odsPhoneNumber.setAttribute('value', event.detail.value?.toString() ?? '');
+          }) as unknown as EventListener);
+        });
+
+        await el.setAttribute('value', dummyValue);
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe('+33' + dummyValue.substring(1));
+        expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
+      });
     });
   });
 });

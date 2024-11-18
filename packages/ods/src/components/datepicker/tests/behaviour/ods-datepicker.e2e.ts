@@ -217,6 +217,27 @@ describe('ods-datepicker behaviour', () => {
           value: '2024-05-11T00:00:00.000Z',
         });
       });
+
+      it('should not do an infinite loop', async() => {
+        const dummyValue = '11/05/2024';
+        await setup('<ods-datepicker></ods-datepicker>');
+        const odsValueChangeSpy = await page.spyOnEvent('odsChange');
+
+        await page.evaluate(() => {
+          const odsDatepicker = document.querySelector<OdsDatepicker & HTMLElement>('ods-datepicker');
+          odsDatepicker?.addEventListener('odsChange', ((event: CustomEvent): void => {
+            odsDatepicker!.value = (event.detail?.value && new Date(event.detail.value.toISOString())) ?? null;
+          }) as unknown as EventListener);
+        });
+
+        await page.evaluate((value) => {
+          document.querySelector<OdsDatepicker & HTMLElement>('ods-datepicker')!.value = new Date(value);
+        }, dummyValue);
+        await page.waitForChanges();
+
+        // expect(await el.getProperty('value')).toBe(new Date(dummyValue).toISOString());
+        expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
+      });
     });
   });
 });

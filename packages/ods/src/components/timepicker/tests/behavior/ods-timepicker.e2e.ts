@@ -214,6 +214,25 @@ describe('ods-timepicker behavior', () => {
         value: newValue,
       });
     });
+
+    it('should not do an infinite loop', async() => {
+      const dummyValue = '11:11';
+      await setup('<ods-timepicker></ods-timepicker>');
+      const odsValueChangeSpy = await page.spyOnEvent('odsChange');
+
+      await page.evaluate(() => {
+        const odsTimepicker = document.querySelector('ods-timepicker');
+        odsTimepicker?.addEventListener('odsChange', ((event: CustomEvent): void => {
+          odsTimepicker.setAttribute('value', event.detail.value ?? '');
+        }) as unknown as EventListener);
+      });
+
+      await el.setAttribute('value', dummyValue);
+      await page.waitForChanges();
+
+      expect(await el.getProperty('value')).toBe(dummyValue);
+      expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
+    });
   });
 
   describe('form', () => {

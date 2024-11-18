@@ -172,7 +172,7 @@ export class OdsSelect {
   componentWillLoad(): void {
     this.observer = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
-        if (mutation.attributeName === 'value') {
+        if (mutation.attributeName === 'value' && this.value !== mutation.oldValue) {
           this.onValueChange(this.value, mutation.oldValue);
         }
       }

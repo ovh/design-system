@@ -16,38 +16,64 @@ describe('ods-toggle behaviour', () => {
     slider = await page.find('ods-toggle >>> .ods-toggle__container__slider');
   }
 
-  it('should toggle value', async() => {
-    await setup('<ods-toggle></ods-toggle>');
-    const odsChangeSpy = await page.spyOnEvent('odsChange');
+  describe('watcher', () => {
+    describe('on value change', () => {
+      it('should toggle value', async() => {
+        await setup('<ods-toggle></ods-toggle>');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
 
-    expect(await el.getProperty('value')).toBeNull();
-    expect(slider).not.toHaveClass('ods-toggle__container__slider--checked');
+        expect(await el.getProperty('value')).toBeNull();
+        expect(slider).not.toHaveClass('ods-toggle__container__slider--checked');
 
-    await el.click();
-    await page.waitForChanges();
+        await el.click();
+        await page.waitForChanges();
 
-    const sliderHasClassCheck = await page.evaluate(() => {
-      const slider = document.querySelector('ods-toggle')?.shadowRoot?.querySelector('.ods-toggle__container__slider');
-      return slider?.classList.contains('ods-toggle__container__slider--checked');
+        const sliderHasClassCheck = await page.evaluate(() => {
+          const slider = document.querySelector('ods-toggle')?.shadowRoot?.querySelector('.ods-toggle__container__slider');
+          return slider?.classList.contains('ods-toggle__container__slider--checked');
+        });
+        expect(await el.getProperty('value')).toBe(true);
+        expect(sliderHasClassCheck).toBe(true);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+      });
+
+      it('should not toggle value if disabled', async() => {
+        await setup('<ods-toggle is-disabled></ods-toggle>');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
+
+        expect(await el.getProperty('value')).toBeNull();
+        expect(slider).not.toHaveClass('ods-toggle__container__slider--checked');
+
+        await el.click();
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBeNull();
+        expect(slider).not.toHaveClass('ods-toggle__container__slider--checked');
+        expect(odsChangeSpy).toHaveReceivedEventTimes(0);
+      });
+
+      it('should not do an infinite loop', async() => {
+        await setup('<ods-toggle></ods-toggle>');
+        const odsValueChangeSpy = await page.spyOnEvent('odsChange');
+
+        await page.evaluate(() => {
+          const odsToggle = document.querySelector('ods-toggle');
+          odsToggle?.addEventListener('odsChange', ((event: CustomEvent): void => {
+            if (event.detail.value) {
+              odsToggle.setAttribute('value', '');
+            } else {
+              odsToggle.removeAttribute('value');
+            }
+          }) as unknown as EventListener);
+        });
+
+        await el.setAttribute('value', true);
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(true);
+        expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
+      });
     });
-    expect(await el.getProperty('value')).toBe(true);
-    expect(sliderHasClassCheck).toBe(true);
-    expect(odsChangeSpy).toHaveReceivedEventTimes(1);
-  });
-
-  it('should not toggle value if disabled', async() => {
-    await setup('<ods-toggle is-disabled></ods-toggle>');
-    const odsChangeSpy = await page.spyOnEvent('odsChange');
-
-    expect(await el.getProperty('value')).toBeNull();
-    expect(slider).not.toHaveClass('ods-toggle__container__slider--checked');
-
-    await el.click();
-    await page.waitForChanges();
-
-    expect(await el.getProperty('value')).toBeNull();
-    expect(slider).not.toHaveClass('ods-toggle__container__slider--checked');
-    expect(odsChangeSpy).toHaveReceivedEventTimes(0);
   });
 
   describe('methods', () => {

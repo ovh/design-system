@@ -149,7 +149,7 @@ export class OdsInput {
 
     this.observer = new MutationObserver((mutations: MutationRecord[]) => {
       for (const mutation of mutations) {
-        if (mutation.attributeName === 'value') {
+        if (mutation.attributeName === 'value' && this.value !== mutation.oldValue) {
           this.onValueChange(mutation.oldValue);
         }
 

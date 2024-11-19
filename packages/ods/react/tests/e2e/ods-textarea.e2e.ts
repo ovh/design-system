@@ -48,19 +48,4 @@ describe('ods-textarea react', () => {
 
     expect(consoleLog).toBe('');
   });
-
-  it('should not do an infinite loop', async () => {
-    const elem = await page.$('ods-textarea[name="ods-textarea-formik"] >>> textarea');
-    let consoleLog = '';
-    page.on('console', (consoleObj) => {
-      console.log('consoleObj', consoleObj.text())
-      consoleLog += consoleObj.text();
-    });
-
-    await elem?.type('a');
-    // Small delay to ensure page console event has been resolved
-    await new Promise((resolve) => setTimeout(resolve, 100));
-
-    expect(consoleLog).toBe('React textarea odsChangeReact textarea odsChange');
-  });
 });

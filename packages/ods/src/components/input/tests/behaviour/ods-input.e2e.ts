@@ -256,7 +256,7 @@ describe('ods-input behaviour', () => {
         expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
       });
 
-      it('should not do an infinite loop with string', async() => {
+      it('should not do an infinite loop with number', async() => {
         const dummyValue = 2;
         await setup('<ods-input></ods-input>');
         const odsValueChangeSpy = await page.spyOnEvent('odsChange');

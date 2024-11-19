@@ -235,7 +235,6 @@ describe('ods-datepicker behaviour', () => {
         }, dummyValue);
         await page.waitForChanges();
 
-        // expect(await el.getProperty('value')).toBe(new Date(dummyValue).toISOString());
         expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
       });
     });

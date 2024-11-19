@@ -60,12 +60,19 @@
       }
     }
 
-    &--clearable, &--loading, &--toggle-mask {
+    &--clearable, &--loading, &--toggle-mask, &--search {
       padding-right: input.$ods-input-input-padding-right;
     }
 
-    &.ods-input__input--clearable.ods-input__input--toggle-mask {
-      padding-right: calc(input.$ods-input-input-padding-right * 2);
+    &--clearable {
+      &.ods-input__input--toggle-mask,
+      &.ods-input__input--search {
+        padding-right: calc(input.$ods-input-input-padding-right * 2);
+      }
+    }
+
+    &--clearable.ods-input__input--toggle-mask.ods-input__input--search {
+      padding-right: calc(input.$ods-input-input-padding-right * 3);
     }
 
     &[type="number"] {

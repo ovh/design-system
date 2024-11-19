@@ -265,7 +265,7 @@ export class OdsInput {
   render(): FunctionalComponent {
     const hasClearableIcon = this.isClearable && !this.isLoading && !!this.value;
     const hasToggleMaskIcon = this.isPassword && !this.isLoading;
-    const hasSearchIcon = this.type === 'search' && !this.isLoading;
+    const hasSearchIcon = this.type === ODS_INPUT_TYPE.search && !this.isLoading;
 
     return (
       <Host
@@ -280,6 +280,7 @@ export class OdsInput {
             'ods-input__input--clearable': hasClearableIcon,
             'ods-input__input--error': this.hasError || this.isInvalid,
             'ods-input__input--loading': this.isLoading,
+            'ods-input__input--search': hasSearchIcon,
             'ods-input__input--toggle-mask': hasToggleMaskIcon,
           }}
           disabled={ this.isDisabled }

@@ -131,7 +131,7 @@ export class OdsQuantity {
   }
 
   private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
-    if (event.detail.value === null) {
+    if (event.detail.value === null || event.detail.value === '') {
       this.value = null;
     } else {
       this.value = Number(event.detail.value) ?? null;

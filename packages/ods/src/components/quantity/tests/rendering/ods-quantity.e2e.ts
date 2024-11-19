@@ -165,6 +165,7 @@ describe('ods-quantity rendering', () => {
       await page.evaluate(() => {
         document.querySelector<HTMLFormElement>('form')?.requestSubmit();
       });
+      await page.waitForChanges();
       expect(await isInErrorState()).toBe(true);
 
       await buttonAdd.click();

@@ -1,6 +1,8 @@
-import { type E2EPage, newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('ods-quantity navigation', () => {
+  let el: E2EElement;
+  let input: E2EElement;
   let page: E2EPage;
 
   async function isFocused(): Promise<boolean> {
@@ -21,6 +23,9 @@ describe('ods-quantity navigation', () => {
 
     await page.setContent(content);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+
+    el = await page.find('ods-quantity');
+    input = await page.find('ods-quantity >>> .ods-quantity__input');
   }
 
   describe('focus', () => {
@@ -75,6 +80,20 @@ describe('ods-quantity navigation', () => {
       const lastFocusedElement = await odsQuantityFocusedElementTagName();
       expect(lastFocusedElement).not.toBe('ODS-BUTTON');
       expect(lastFocusedElement).not.toBe('ODS-INPUT');
+    });
+  });
+
+  describe('deletions', () => {
+    it('should emptying input in one delete', async() => {
+      await setup('<ods-quantity value="1"></ods-quantity>');
+
+      expect(await el.getProperty('value')).toBe(1);
+
+      await input.focus();
+      await page.keyboard.press('Backspace');
+      await page.waitForChanges();
+
+      expect(await el.getProperty('value')).toBeNull();
     });
   });
 });

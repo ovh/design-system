@@ -40,11 +40,9 @@ function FormNative(): ReactElement {
       <p>
         Current configuration:
         <br />
-        - All fields required: {areAllRequired.toString()}
+        - All fields required: { areAllRequired.toString() }
       </p>
 
-      {/* KO no odsChange event on mount */}
-      {/* KO no odsChangeEvent on reset */}
       <div>
         <OdsCheckbox
           isRequired={ areAllRequired }
@@ -146,7 +144,6 @@ function FormNative(): ReactElement {
         <option value="goldfish">Goldfish</option>
       </OdsSelect>
 
-      {/* KO required not reactive */}
       <OdsSwitch
         isRequired={ areAllRequired }
         name="switch"

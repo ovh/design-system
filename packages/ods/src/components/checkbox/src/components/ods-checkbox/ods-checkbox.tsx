@@ -38,12 +38,16 @@ export class OdsCheckbox {
 
   @Method()
   public async clear(): Promise<void> {
-    const hasChange = this.inputEl?.checked === true;
     if (this.inputEl) {
       this.inputEl.checked = false;
     }
     this.odsClear.emit();
-    hasChange && this.onInput();
+    this.odsChange.emit({
+      checked: false,
+      name: this.name,
+      validity: this.inputEl?.validity,
+      value: this.value ?? null,
+    });
     this.inputEl?.focus();
   }
 
@@ -65,7 +69,8 @@ export class OdsCheckbox {
 
   @Method()
   public async reset(): Promise<void> {
-    const hasChange = this.inputEl?.checked !== this.isChecked;
+    const defaultCheckedValues: string[] = [];
+
     this.getOdsCheckboxGroupByName().forEach((checkbox) => {
       const inputCheckbox = checkbox.querySelector<HTMLInputElement>('input[type="checkbox"]');
       if (!inputCheckbox) {
@@ -73,12 +78,18 @@ export class OdsCheckbox {
       }
       if (checkbox.getAttribute('is-checked') !== null && checkbox.getAttribute('is-checked') !== 'false') {
         inputCheckbox.checked = true;
+        defaultCheckedValues.push(inputCheckbox.value);
       } else {
         inputCheckbox.checked = false;
       }
     });
     this.odsReset.emit();
-    hasChange && this.onInput();
+    this.odsChange.emit({
+      checked: !!defaultCheckedValues.length,
+      name: this.name,
+      validity: this.inputEl?.validity,
+      value: defaultCheckedValues.length ? defaultCheckedValues.join(',') : (this.value ?? null),
+    });
   }
 
   @Method()
@@ -123,11 +134,28 @@ export class OdsCheckbox {
   }
 
   private onInput(): void {
+    const { checked, validity, values } = Array.from(this.getOdsCheckboxGroupByName())
+      .reduce<{ checked: boolean, validity: ValidityState | undefined, values: string[] }>((res, odsCheckboxElement) => {
+        const inputElement = odsCheckboxElement.querySelector<HTMLInputElement>('input[type="checkbox"]');
+
+        if (inputElement && inputElement.checked) {
+          res.checked = true;
+          res.validity = inputElement.validity;
+          res.values.push(inputElement.value);
+        }
+
+        return res;
+      }, {
+        checked: false,
+        validity: this.inputEl?.validity,
+        values: [],
+      });
+
     this.odsChange.emit({
-      checked: this.inputEl?.checked ?? false,
+      checked,
       name: this.name,
-      validity:  this.inputEl?.validity,
-      value: this.value ?? null,
+      validity,
+      value: values.length ? values.join(',') : (this.value ?? null),
     });
   }
 

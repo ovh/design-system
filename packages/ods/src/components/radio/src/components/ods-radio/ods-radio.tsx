@@ -42,10 +42,10 @@ export class OdsRadio {
       this.inputEl.checked = false;
     }
     this.odsClear.emit();
-    this.emitChange({
+    this.odsChange.emit({
       checked: false,
       name: this.name,
-      validity:  this.inputEl?.validity,
+      validity: this.inputEl?.validity,
       value: this.value ?? null,
     });
     this.inputEl?.focus();
@@ -69,6 +69,8 @@ export class OdsRadio {
 
   @Method()
   public async reset(): Promise<void> {
+    let defaultCheckedRadioValue = null;
+
     this.getOdsRadiosGroupByName().forEach((radio) => {
       const inputRadio = radio.querySelector<HTMLInputElement>('input[type="radio"]');
       if (!inputRadio) {
@@ -76,16 +78,17 @@ export class OdsRadio {
       }
       if (radio.getAttribute('is-checked') !== null && radio.getAttribute('is-checked') !== 'false') {
         inputRadio.checked = true;
+        defaultCheckedRadioValue = inputRadio.value;
       } else {
         inputRadio.checked = false;
       }
     });
     this.odsReset.emit();
-    this.emitChange({
-      checked: this.isChecked,
+    this.odsChange.emit({
+      checked: !!defaultCheckedRadioValue,
       name: this.name,
-      validity:  this.inputEl?.validity,
-      value: this.value ?? null,
+      validity: this.inputEl?.validity,
+      value: defaultCheckedRadioValue,
     });
   }
 
@@ -126,15 +129,6 @@ export class OdsRadio {
     await this.reset();
   }
 
-  private emitChange(detail: OdsRadioChangeEventDetail): void {
-    this.odsChange.emit({
-      checked: detail.checked,
-      name: detail.name,
-      validity:  detail.validity,
-      value: detail.value,
-    });
-  }
-
   private getOdsRadiosGroupByName(): NodeListOf<Element & OdsRadio> {
     return document.querySelectorAll(`ods-radio[name="${this.name}"]`);
   }
@@ -150,10 +144,10 @@ export class OdsRadio {
   }
 
   private onInput(event: Event): void {
-    this.emitChange({
+    this.odsChange.emit({
       checked: (event.target as HTMLInputElement)?.checked,
       name: this.name,
-      validity:  this.inputEl?.validity,
+      validity: this.inputEl?.validity,
       value: this.value ?? null,
     });
   }

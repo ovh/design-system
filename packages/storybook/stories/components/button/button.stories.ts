@@ -219,6 +219,6 @@ export const WithRightIcon: StoryObj = {
 export const IconOnly: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-button icon="${ODS_ICON_NAME.ellipsisHorizontal}"></ods-button>
+<ods-button icon="${ODS_ICON_NAME.filter}"></ods-button>
   `,
 };

@@ -155,5 +155,25 @@ describe('ods-quantity rendering', () => {
 
       expect(await isInErrorState()).toBe(false);
     });
+
+    it('should update error state on plus button', async() => {
+      await setup(`<form method="get">
+        <ods-quantity is-required name="odsQuantity"></ods-quantity>
+      </form>`);
+      expect(await isInErrorState()).toBe(false);
+
+      await page.evaluate(() => {
+        document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+      });
+      await page.waitForChanges();
+      expect(await isInErrorState()).toBe(true);
+
+      await buttonAdd.click();
+      expect(await isInErrorState()).toBe(true);
+
+      await input.focus(); // Blur
+
+      expect(await isInErrorState()).toBe(false);
+    });
   });
 });

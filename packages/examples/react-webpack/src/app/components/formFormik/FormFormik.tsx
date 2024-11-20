@@ -1,15 +1,30 @@
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
 import { OdsButton, OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
 import { useFormik } from 'formik';
-import React, { type ReactElement } from 'react';
+import React, { type ReactElement, useState } from 'react';
 import * as yup from 'yup';
 import styles from './formFormik.scss';
 
-// KO for now as setting the value causes infinite loop
-// More tests after this is fixed
+type FormData = {
+  checkboxAlone: string,
+  checkboxGroup: string,
+  datepicker: Date,
+  inputNumber: number,
+  inputText: string,
+  password: string,
+  phoneNumber: string,
+  phoneNumberWithCountries: string,
+  quantity: number,
+  radio: string,
+  select: string,
+  switch: string,
+  textarea: string,
+  timepicker: string,
+}
 
-const validationSchema = yup.object({
-  checkbox: yup.string().nullable(),//.required(),
+const validationSchema = yup.object<FormData>({
+  checkboxAlone: yup.string().nullable(),//.required(),
+  checkboxGroup: yup.string().nullable(),//.required(),
   datepicker: yup.date().nullable(),//.required(),
   inputNumber: yup.number().nullable(),//.required(),
   inputText: yup.string().nullable(),//.required(),
@@ -17,6 +32,7 @@ const validationSchema = yup.object({
   phoneNumber: yup.string().nullable(),//.required(),
   quantity: yup.number().nullable(),//.required(),
   radio: yup.string().nullable(),//.required(),
+  radioTest: yup.string().nullable(),//.required(),
   select: yup.string().nullable(),//.required(),
   switch: yup.string().nullable(),//.required(),
   textarea: yup.string().nullable(),//.required(),
@@ -24,32 +40,23 @@ const validationSchema = yup.object({
 });
 
 function FormFormik(): ReactElement {
-  const formik = useFormik({
+  const formik = useFormik<Omit<FormData, 'datepicker'> & { datepicker: string }>({
     initialValues: {
-      checkbox: null,
-      datepicker: null,
-      inputNumber: null,
-      inputText: null,
-      password: null,
-      phoneNumber: null,
-      quantity: null,
-      radio: null,
-      select: null,
-      switch: null,
-      textarea: null,
-      timepicker: null,
-      // checkbox: null,
-      // datepicker: new Date(),
-      // inputNumber: null,
-      // inputText: 'input text',
-      // password: 'password',
-      // phoneNumber: '0123456789',
-      // quantity: null,
-      // radio: 'radio-1',
-      // select: 'cat',
-      // switch: 'option1',
-      // textarea: 'textarea',
-      // timepicker: '12:34',
+      checkboxAlone: 'checkbox alone',
+      // checkboxGroup: 'checkbox group1,checkbox group2',
+      checkboxGroup: 'checkbox group1',
+      datepicker: '01-02-2000',
+      inputNumber: 33,
+      inputText: 'default input text',
+      password: 'default password',
+      phoneNumber: '0123456789',
+      phoneNumberWithCountries: '+33123456789',
+      quantity: 0,
+      radio: 'radio1',
+      select: 'cat',
+      switch: 'switch1',
+      textarea: 'default textarea',
+      timepicker: '01:23',
     },
     onSubmit: (values) => {
       console.log('Formik values', values);
@@ -57,203 +64,227 @@ function FormFormik(): ReactElement {
     validateOnMount: true,
     validationSchema,
   });
+  const [areAllRequired, setAreAllRequired] = useState(false);
 
-  function onCheckboxChange(e: any) {
-    formik.setFieldValue('checkbox', e.detail.checked ? e.detail.value : null);
+  function onAllRequiredToggle() {
+    setAreAllRequired(() => !areAllRequired);
   }
 
   return (
     <form
       className={ styles['form-formik'] }
       onSubmit={ formik.handleSubmit }>
-      {/*/!* OK but need custom onChange handler *!/*/}
-      {/*/!* KO reset *!/*/}
-      {/*<div>*/}
-      {/*  <OdsCheckbox*/}
-      {/*    isChecked={ false }*/}
-      {/*    inputId="checkbox"*/}
-      {/*    name="checkbox"*/}
-      {/*    onOdsBlur={ formik.handleBlur }*/}
-      {/*    onOdsChange={ onCheckboxChange }*/}
-      {/*    value="checked"*/}
-      {/*  />*/}
-      {/*  <label htmlFor="checkbox">Checked</label>*/}
-      {/*</div>*/}
+      <div>
+        <button onClick={ onAllRequiredToggle }
+                type="button">
+          Toggle All Required (broken)
+        </button>
+      </div>
 
-      {/*/!* OK *!/*/}
-      {/*<OdsDatepicker*/}
-      {/*  // @ts-ignore IDE try to match another react specific attribute*/}
-      {/*  defaultValue={ formik.initialValues.datepicker }*/}
-      {/*  hasError={ formik.touched.datepicker && !!formik.errors.datepicker }*/}
-      {/*  isClearable={ true }*/}
-      {/*  // isRequired={ true }*/}
-      {/*  name="datepicker"*/}
-      {/*  onOdsBlur={ formik.handleBlur }*/}
-      {/*  onOdsChange={ formik.handleChange }*/}
-      {/*  value={ formik.values.datepicker }*/}
-      {/*/>*/}
+      <p>
+        Current configuration:
+        <br />
+        - All fields required: { areAllRequired.toString() }
+      </p>
 
-      {/*/!* KO? reset to "" instead of null *!/*/}
-      {/*<OdsInput*/}
-      {/*  hasError={ formik.touched.inputNumber && !!formik.errors.inputNumber }*/}
-      {/*  isClearable={ true }*/}
-      {/*  // isRequired={ true }*/}
-      {/*  name="inputNumber"*/}
-      {/*  onOdsBlur={ formik.handleBlur }*/}
-      {/*  onOdsChange={ formik.handleChange }*/}
-      {/*  type={ ODS_INPUT_TYPE.number }*/}
-      {/*  value={ formik.values.inputNumber }*/}
-      {/*/>*/}
+      <div>
+        <OdsCheckbox
+          inputId="checkboxAlone"
+          isChecked={ formik.initialValues.checkboxAlone === 'checkbox alone' }
+          isRequired={ areAllRequired }
+          name="checkboxAlone"
+          onOdsBlur={ formik.handleBlur }
+          onOdsChange={ (e) => {
+            formik.setFieldValue('checkboxAlone', e.detail.checked ? 'checkbox alone' : null);
+          }}
+          value="checkbox alone"
+        />
+        <label htmlFor="checkboxAlone">Checkbox Alone</label>
+      </div>
 
-      {/*/!* OK *!/*/}
-      <OdsInput
-        hasError={ formik.touched.inputText && !!formik.errors.inputText }
+      <div>
+        <OdsCheckbox
+          inputId="checkboxGroup1"
+          isChecked={ formik.initialValues.checkboxGroup.split(',').indexOf('checkbox group1') >= 0 }
+          isRequired={ areAllRequired }
+          name="checkboxGroup"
+          onOdsBlur={ formik.handleBlur }
+          onOdsChange={ (e) => {
+            formik.setFieldValue('checkboxGroup', e.detail.checked ? e.detail.value : null);
+          }}
+          value="checkbox group1"
+        />
+        <label htmlFor="checkboxGroup1">Checkbox Group 1</label>
+
+        <OdsCheckbox
+          inputId="checkboxGroup2"
+          isChecked={ formik.initialValues.checkboxGroup.split(',').indexOf('checkbox group2') >= 0 }
+          isRequired={ areAllRequired }
+          name="checkboxGroup"
+          onOdsBlur={ formik.handleBlur }
+          onOdsChange={ (e) => {
+            formik.setFieldValue('checkboxGroup', e.detail.checked ? e.detail.value : null);
+          }}
+          value="checkbox group2"
+        />
+        <label htmlFor="checkboxGroup2">Checkbox Group 2</label>
+      </div>
+
+      <OdsDatepicker
+        defaultValue={ formik.initialValues.datepicker }
+        hasError={ formik.touched.datepicker && !!formik.errors.datepicker }
         isClearable={ true }
-        // isRequired={ true }
-        name="inputText"
+        isRequired={ areAllRequired }
+        name="datepicker"
         onOdsBlur={ formik.handleBlur }
-        // onOdsChange={ formik.handleChange }
-        onOdsChange={ (e: any) => {
-          console.log(e)
-          formik.handleChange(e)
-        }}
-        type={ ODS_INPUT_TYPE.text }
-        // value={ formik.values.inputText }
+        onOdsChange={ formik.handleChange }
       />
 
-      {/*/!* KO? clear trigger input Watch twice *!/*/}
-      {/*/!* KO style different *!/*/}
+      <OdsInput
+        defaultValue={ formik.initialValues.inputNumber }
+        hasError={ formik.touched.inputNumber && !!formik.errors.inputNumber }
+        isClearable={ true }
+        isRequired={ areAllRequired }
+        name="inputNumber"
+        onOdsBlur={ formik.handleBlur }
+        onOdsChange={ formik.handleChange }
+        type={ ODS_INPUT_TYPE.number }
+      />
+
+      <OdsInput
+        defaultValue={ formik.initialValues.inputText }
+        hasError={ formik.touched.inputText && !!formik.errors.inputText }
+        isClearable={ true }
+        isRequired={ areAllRequired }
+        name="inputText"
+        onOdsBlur={ formik.handleBlur }
+        onOdsChange={ formik.handleChange }
+        type={ ODS_INPUT_TYPE.text }
+      />
+
       <OdsPassword
-        // @ts-ignore IDE try to match another react specific attribute
         defaultValue={ formik.initialValues.password }
         hasError={ formik.touched.password && !!formik.errors.password }
         isClearable={ true }
-        // isRequired={ true }
+        isRequired={ areAllRequired }
         name="password"
         onOdsBlur={ formik.handleBlur }
-        // onOdsChange={ formik.handleChange }
-        onOdsChange={ (e: any) => {
-          console.log(e)
-          formik.handleChange(e)
-        }}
-        value={ formik.values.password }
+        onOdsChange={ formik.handleChange }
       />
 
-      {/*/!* OK *!/*/}
-      {/*/!* KO style different *!/*/}
-      {/*<OdsPhoneNumber*/}
-      {/*  // @ts-ignore IDE try to match another react specific attribute*/}
-      {/*  defaultValue={ formik.initialValues.phoneNumber }*/}
-      {/*  hasError={ formik.touched.phoneNumber && !!formik.errors.phoneNumber }*/}
-      {/*  isClearable={ true }*/}
-      {/*  // isRequired={ true }*/}
-      {/*  isoCode="fr"*/}
-      {/*  name="phoneNumber"*/}
-      {/*  onOdsBlur={ formik.handleBlur }*/}
-      {/*  onOdsChange={ formik.handleChange }*/}
-      {/*  value={ formik.values.phoneNumber }*/}
-      {/*/>*/}
+      <OdsPhoneNumber
+        defaultValue={ formik.initialValues.phoneNumber }
+        hasError={ formik.touched.phoneNumber && !!formik.errors.phoneNumber }
+        isClearable={ true }
+        isRequired={ areAllRequired }
+        isoCode="fr"
+        name="phoneNumber"
+        onOdsBlur={ formik.handleBlur }
+        onOdsChange={ formik.handleChange }
+      />
 
-      {/*/!* KO reset to null set 0 instead *!/*/}
-      {/*/!* KO value 0 is not displayed in the input *!/*/}
-      {/*<OdsQuantity*/}
-      {/*  // @ts-ignore IDE try to match another react specific attribute*/}
-      {/*  defaultValue={ formik.initialValues.quantity }*/}
-      {/*  hasError={ formik.touched.quantity && !!formik.errors.quantity }*/}
-      {/*  // isRequired={ true }*/}
-      {/*  name="quantity"*/}
-      {/*  onOdsBlur={ formik.handleBlur }*/}
-      {/*  onOdsChange={ formik.handleChange }*/}
-      {/*  value={ formik.values.quantity }*/}
-      {/*/>*/}
+      <OdsPhoneNumber
+        countries="all"
+        defaultValue={ formik.initialValues.phoneNumberWithCountries }
+        hasError={ formik.touched.phoneNumberWithCountries && !!formik.errors.phoneNumberWithCountries }
+        isClearable={ true }
+        isRequired={ areAllRequired }
+        isoCode="fr"
+        name="phoneNumberWithCountries"
+        onOdsBlur={ formik.handleBlur }
+        onOdsChange={ formik.handleChange }
+      />
 
-      {/*/!* OK *!/*/}
-      {/*<div>*/}
-      {/*  <OdsRadio*/}
-      {/*    isChecked={ formik.values.radio === 'radio-1' }*/}
-      {/*    // isRequired={ true }*/}
-      {/*    inputId="radio1"*/}
-      {/*    name="radio"*/}
-      {/*    onOdsBlur={ formik.handleBlur }*/}
-      {/*    onOdsChange={ formik.handleChange }*/}
-      {/*    value="radio-1"*/}
-      {/*  />*/}
-      {/*  <label htmlFor="radio1">Radio 1</label>*/}
+      <OdsQuantity
+        defaultValue={ formik.initialValues.quantity }
+        hasError={ formik.touched.quantity && !!formik.errors.quantity }
+        isRequired={ areAllRequired }
+        name="quantity"
+        onOdsBlur={ formik.handleBlur }
+        onOdsChange={ formik.handleChange }
+      />
 
-      {/*  <OdsRadio*/}
-      {/*    isChecked={ formik.values.radio === 'radio-2' }*/}
-      {/*    // isRequired={ true }*/}
-      {/*    inputId="radio2"*/}
-      {/*    name="radio"*/}
-      {/*    onOdsBlur={ formik.handleBlur }*/}
-      {/*    onOdsChange={ formik.handleChange }*/}
-      {/*    value="radio-2"*/}
-      {/*  />*/}
-      {/*  <label htmlFor="radio2">Radio 2</label>*/}
-      {/*</div>*/}
+      <div>
+        <OdsRadio
+          isChecked={ formik.initialValues.radio === 'radio1' }
+          isRequired={ areAllRequired }
+          inputId="radio1"
+          name="radio"
+          onOdsBlur={ formik.handleBlur }
+          onOdsChange={ (e) => {
+            formik.setFieldValue('radio', e.detail.checked ?  e.detail.value : null);
+          }}
+          value="radio1"
+        />
+        <label htmlFor="radio1">Radio 1</label>
 
-      {/*/!* OK *!/*/}
-      {/*<OdsSelect*/}
-      {/*  // @ts-ignore IDE try to match another react specific attribute*/}
-      {/*  defaultValue={ formik.initialValues.select }*/}
-      {/*  hasError={ formik.touched.select && !!formik.errors.select }*/}
-      {/*  // isRequired={ true }*/}
-      {/*  name="select"*/}
-      {/*  onOdsBlur={ formik.handleBlur }*/}
-      {/*  onOdsChange={ formik.handleChange }*/}
-      {/*  value={ formik.values.select }*/}
-      {/*>*/}
-      {/*  <option value="dog">Dog</option>*/}
-      {/*  <option value="cat">Cat</option>*/}
-      {/*  <option value="hamster">Hamster</option>*/}
-      {/*  <option value="parrot">Parrot</option>*/}
-      {/*  <option value="spider">Spider</option>*/}
-      {/*  <option value="goldfish">Goldfish</option>*/}
-      {/*</OdsSelect>*/}
+        <OdsRadio
+          isChecked={ formik.initialValues.radio === 'radio2' }
+          isRequired={ areAllRequired }
+          inputId="radio2"
+          name="radio"
+          onOdsBlur={ formik.handleBlur }
+          onOdsChange={ (e) => {
+            formik.setFieldValue('radio', e.detail.checked ?  e.detail.value : null);
+          }}
+          value="radio2"
+        />
+        <label htmlFor="radio2">Radio 2</label>
+      </div>
 
-      {/*/!* KO Reset *!/*/}
-      {/*<OdsSwitch*/}
-      {/*  // isRequired={ true }*/}
-      {/*  name="switch"*/}
-      {/*  onOdsChange={ formik.handleChange }>*/}
-      {/*  <OdsSwitchItem*/}
-      {/*    isChecked={ formik.values.switch === 'option1' }*/}
-      {/*    value="option1">*/}
-      {/*    Option 1*/}
-      {/*  </OdsSwitchItem>*/}
+      <OdsSelect
+        defaultValue={ formik.initialValues.select }
+        hasError={ formik.touched.select && !!formik.errors.select }
+        isRequired={ areAllRequired }
+        name="select"
+        onOdsBlur={ formik.handleBlur }
+        onOdsChange={ formik.handleChange }
+      >
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+        <option value="hamster">Hamster</option>
+        <option value="parrot">Parrot</option>
+        <option value="spider">Spider</option>
+        <option value="goldfish">Goldfish</option>
+      </OdsSelect>
 
-      {/*  <OdsSwitchItem*/}
-      {/*    isChecked={ formik.values.switch === 'option2' }*/}
-      {/*    value="option2">*/}
-      {/*    Option 2*/}
-      {/*  </OdsSwitchItem>*/}
-      {/*</OdsSwitch>*/}
+      <OdsSwitch
+        isRequired={ areAllRequired }
+        name="switch"
+        onOdsChange={ (e)=> {
+          formik.setFieldValue('switch', e.detail.value || '');
+        }}
+      >
+        <OdsSwitchItem
+          isChecked={ formik.initialValues.switch === 'switch1' }
+          value="switch1">
+          Switch 1
+        </OdsSwitchItem>
 
-     {/* KO type defaultValue should accept null */}
+        <OdsSwitchItem
+          isChecked={ formik.initialValues.switch === 'option2' }
+          value="switch2">
+          Switch 2
+        </OdsSwitchItem>
+      </OdsSwitch>
+
       <OdsTextarea
-        // defaultValue={ formik.initialValues.textarea }
+        defaultValue={ formik.initialValues.textarea }
         hasError={ formik.touched.textarea && !!formik.errors.textarea }
-        // isRequired={ true }
+        isRequired={ areAllRequired }
         name="textarea"
         onOdsBlur={ formik.handleBlur }
-        //onOdsChange={ formik.handleChange }
-        onOdsChange={ (e) => {
-          console.log(e)
-          formik.handleChange(e)
-        }}
-        value={ formik.values.textarea } // KO loop odsChange event
+        onOdsChange={ formik.handleChange }
       />
 
-      {/* KO type defaultValue should accept null */}
-      {/*<OdsTimepicker*/}
-      {/*  // defaultValue={ formik.initialValues.timepicker }*/}
-      {/*  hasError={ formik.touched.timepicker && !!formik.errors.timepicker }*/}
-      {/*  // isRequired={ true }*/}
-      {/*  name="timepicker"*/}
-      {/*  onOdsBlur={ formik.handleBlur }*/}
-      {/*  onOdsChange={ formik.handleChange }*/}
-      {/*  value={ formik.values.timepicker }*/}
-      {/*/>*/}
+      <OdsTimepicker
+        defaultValue={ formik.initialValues.timepicker }
+        hasError={ formik.touched.timepicker && !!formik.errors.timepicker }
+        isRequired={ areAllRequired }
+        name="timepicker"
+        onOdsBlur={ formik.handleBlur }
+        onOdsChange={ formik.handleChange }
+      />
 
       <p>
         Errors:

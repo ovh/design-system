@@ -1,23 +1,20 @@
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
 import { OdsButton, OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
-import React, { type ReactElement, useRef, useState } from 'react';
+import React, { type FormEvent, type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.scss';
 
 function FormNative(): ReactElement {
   const formRef = useRef<HTMLFormElement>(null);
   const [areAllRequired, setAreAllRequired] = useState(false);
 
-  async function onSubmit(e: any) {
+  function onSubmit(e: FormEvent) {
     e.preventDefault();
-    e.stopPropagation();
 
     const formData = new FormData(formRef.current!);
 
     for (const [key, value] of formData) {
       console.log(`${key}: ${value}`)
     }
-
-    return false;
   }
 
   function onAllRequiredToggle() {

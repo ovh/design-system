@@ -140,6 +140,9 @@ const preview: Preview = {
               'Style Customization',
               '*',
             ],
+            'Guides', [
+              '*',
+            ],
           ],
           'ODS Components', [
             'Gallery',

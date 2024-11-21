@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.3.1](https://ovh.github.io/design-system/v18.3.1/?path=/docs/design-system-changelog--page) (2024-11-21)
+[compare](https://github.com/ovh/design-system/compare/v18.3.0...v18.3.1)
+
+### Bug Fixes
+
+* **modal:** prevent wrong dialog height on safari ([150df6e](https://github.com/ovh/design-system/commit/150df6e2037daeb97b1e77740fffb6e03d7f2f8b))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
 [compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
 

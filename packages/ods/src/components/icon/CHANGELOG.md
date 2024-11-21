@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.3.1](https://ovh.github.io/design-system/v18.3.1/?path=/docs/design-system-changelog--page) (2024-11-21)
+[compare](https://github.com/ovh/design-system/compare/v18.3.0...v18.3.1)
+
+### Features
+
+* **icon:** add new icon 'columns' ([4da03d6](https://github.com/ovh/design-system/commit/4da03d6fc01d0517523b20b83fbd269c448d0a19))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

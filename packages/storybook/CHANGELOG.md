@@ -8,6 +8,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.3.1](https://ovh.github.io/design-system/v18.3.1/?path=/docs/design-system-changelog--page) (2024-11-21)
+[compare](https://github.com/ovh/design-system/compare/v18.3.0...v18.3.1)
+
+### Features
+
+* **button:** use filter icon in icon only example ([acb12a1](https://github.com/ovh/design-system/commit/acb12a168c192a6616c6253640cea54f66223098))
+* **icon:** add new icon 'columns' ([4da03d6](https://github.com/ovh/design-system/commit/4da03d6fc01d0517523b20b83fbd269c448d0a19))
+* **text:** add caption preset examples for table & figcaption ([11e1038](https://github.com/ovh/design-system/commit/11e10387e698a7fc3a18880ace1d3dce6638dba3))
+* **text:** add id to apply css style in stories ([b7465fa](https://github.com/ovh/design-system/commit/b7465fa4c6b857df2e7a90607f7834f990613e75))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
 [compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
 

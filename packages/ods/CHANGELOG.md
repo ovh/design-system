@@ -8,6 +8,30 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.3.1](https://ovh.github.io/design-system/v18.3.1/?path=/docs/design-system-changelog--page) (2024-11-21)
+[compare](https://github.com/ovh/design-system/compare/v18.3.0...v18.3.1)
+
+### Bug Fixes
+
+* **breadcrumb:** fix separator size as expected in figma ([72cf7f3](https://github.com/ovh/design-system/commit/72cf7f3682a4295502ed5ce4721304fbc160dbd5))
+* **modal:** prevent wrong dialog height on safari ([150df6e](https://github.com/ovh/design-system/commit/150df6e2037daeb97b1e77740fffb6e03d7f2f8b))
+* **select:** apply style to hovered selected option & expose missing tokens ([5bb0165](https://github.com/ovh/design-system/commit/5bb016541c6eb14e547c3c473c2ba7224c54f231))
+* **switch:** use separate command to run e2e tests on CI ([ebf3962](https://github.com/ovh/design-system/commit/ebf396281ad9f6e3a82ac8173a4f7d2a81802008))
+
+
+### Features
+
+* **icon:** add new icon 'columns' ([4da03d6](https://github.com/ovh/design-system/commit/4da03d6fc01d0517523b20b83fbd269c448d0a19))
+* **link:** update hover, focus & visited colors ([7674557](https://github.com/ovh/design-system/commit/7674557b8da31872c414bf1f89326f1a51f9ac0c))
+* **text:** change preset caption tag to span ([b993eb0](https://github.com/ovh/design-system/commit/b993eb04a8fc9431c70dab18f7cf27db032d16e2))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
 [compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
 

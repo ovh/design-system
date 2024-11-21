@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.3.1](https://ovh.github.io/design-system/v18.3.1/?path=/docs/design-system-changelog--page) (2024-11-21)
+[compare](https://github.com/ovh/design-system/compare/v18.3.0...v18.3.1)
+
+### Bug Fixes
+
+* **select:** apply style to hovered selected option & expose missing tokens ([5bb0165](https://github.com/ovh/design-system/commit/5bb016541c6eb14e547c3c473c2ba7224c54f231))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
 [compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
 

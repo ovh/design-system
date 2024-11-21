@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.3.1](https://ovh.github.io/design-system/v18.3.1/?path=/docs/design-system-changelog--page) (2024-11-21)
+[compare](https://github.com/ovh/design-system/compare/v18.3.0...v18.3.1)
+
+### Bug Fixes
+
+* **breadcrumb:** fix separator size as expected in figma ([72cf7f3](https://github.com/ovh/design-system/commit/72cf7f3682a4295502ed5ce4721304fbc160dbd5))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.3.0](https://ovh.github.io/design-system/v18.3.0/?path=/docs/design-system-changelog--page) (2024-11-05)
 [compare](https://github.com/ovh/design-system/compare/v18.2.0...v18.3.0)
 

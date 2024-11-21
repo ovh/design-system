@@ -1,7 +1,6 @@
 $ods-modal-border-radius: var(--ods-border-radius-sm);
 $ods-modal-header-height: 32px;
 
-
 @mixin animation-mixin($name) {
   @keyframes modal-open {
     0% {
@@ -140,7 +139,6 @@ $ods-modal-header-height: 32px;
   flex-direction: column;
   padding: 24px;
   width: 100%;
-  height: calc(100% - $ods-modal-header-height);
   overflow-y: auto;
 }
 

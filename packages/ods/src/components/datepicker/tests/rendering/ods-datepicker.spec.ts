@@ -94,8 +94,16 @@ describe('ods-datepicker rendering', () => {
   });
 
   describe('defaultValue', () => {
-    it('should be reflected', async() => {
+    it('should be reflected as Date', async() => {
       const defaultValue = new Date('01 Jan 2024').toString();
+
+      await setup(`<ods-datepicker default-value="${defaultValue}"></ods-datepicker>`);
+
+      expect(root?.getAttribute('default-value')).toBe(defaultValue.toString());
+    });
+
+    it('should be reflected as string', async() => {
+      const defaultValue = '01/02/2024';
 
       await setup(`<ods-datepicker default-value="${defaultValue}"></ods-datepicker>`);
 

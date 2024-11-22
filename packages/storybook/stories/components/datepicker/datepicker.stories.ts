@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES } from '@ovhcloud/ods-components';
+import { Datepicker } from 'vanillajs-datepicker';
 import { html, nothing } from 'lit-html';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
@@ -38,7 +39,6 @@ export const Demo: StoryObj = {
     <ods-datepicker class="my-datepicker"
       aria-label="${arg.ariaLabel}"
       aria-labelledby="${arg.ariaLabelledby}"
-      dates-of-week-disabled="${arg.daysOfWeekDisabled || nothing}"
       format="${arg.format || nothing}"
       has-error="${arg.hasError}"
       is-clearable="${arg.isClearable}"
@@ -47,8 +47,8 @@ export const Demo: StoryObj = {
       is-readonly="${arg.isReadonly}"
       is-required="${arg.isRequired}"
       locale="${arg.locale || nothing}"
-      max="${arg.max || nothing}"
-      min="${arg.min || nothing}"
+      max="${arg.max ? Datepicker.formatDate(arg.max, arg.format || 'dd/mm/yyyy') : nothing}"
+      min="${arg.min ? Datepicker.formatDate(arg.min, arg.format || 'dd/mm/yyyy') : nothing}"
       placeholder="${arg.placeholder}">
     </ods-datepicker>
     ${ arg.validityState ? validityStateTemplate : '' }
@@ -70,14 +70,6 @@ export const Demo: StoryObj = {
         type: { summary: 'string' },
       },
       control: 'text',
-    },
-    daysOfWeekDisabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: '[]' },
-        type: { summary: 'OdsDatepickerDay[]' },
-      },
-      control: 'array',
     },
     format: {
       table: {

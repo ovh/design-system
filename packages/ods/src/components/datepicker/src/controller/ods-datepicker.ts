@@ -11,7 +11,7 @@ function formatDate(date: Date | null, format: string): string {
   return '';
 }
 
-function getInitialValue(value: Date | null, format: string, defaultValue?: string): Date | null {
+function getInitialValue(value: Date | null, format: string, defaultValue?: Date | string): Date | null {
   if (defaultValue !== undefined && value === VALUE_DEFAULT_VALUE) {
     return new Date(Datepicker.parseDate(defaultValue, format));
   }

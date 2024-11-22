@@ -129,6 +129,11 @@ export class OdsPassword {
     }
   }
 
+  private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+    await updateInternals(this.internals, this.value, this.odsInput);
+    this.isInvalid = event.detail;
+  }
+
   render(): FunctionalComponent {
     return (
       <Host
@@ -152,6 +157,7 @@ export class OdsPassword {
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           onOdsBlur={() => this.onBlur() }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
+          onOdsInvalid={ (event: CustomEvent<boolean>) => this.onOdsInvalid(event) }
           onOdsToggleMask={ () => this.isMasked = !this.isMasked }
           pattern={ this.pattern }
           placeholder={ this.placeholder }

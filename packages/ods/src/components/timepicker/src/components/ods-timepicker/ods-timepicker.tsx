@@ -174,6 +174,11 @@ export class OdsTimepicker {
     });
   }
 
+  private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+    await updateInternals(this.internals, this.value, this.odsInput);
+    this.isInvalid = event.detail;
+  }
+
   render(): FunctionalComponent {
     return (
       <Host class="ods-timepicker"
@@ -194,6 +199,7 @@ export class OdsTimepicker {
           onOdsBlur={ () => this.onBlur() }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event, false) }
           onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
+          onOdsInvalid={ (event: CustomEvent<boolean>) => this.onOdsInvalid(event) }
           onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }
           ref={ (el?: HTMLElement): OdsInput => this.odsInput = el as OdsInput & HTMLElement }
           step={ this.withSeconds ? 1 : undefined }

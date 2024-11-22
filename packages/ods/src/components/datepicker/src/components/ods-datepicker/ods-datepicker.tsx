@@ -55,7 +55,7 @@ export class OdsDatepicker {
   @Prop({ reflect: true }) public ariaLabelledby?: string;
   @Prop({ reflect: true }) public datesDisabled: Date[] = [];
   @Prop({ reflect: true }) public daysOfWeekDisabled: OdsDatepickerDay[] = [];
-  @Prop({ reflect: true }) public defaultValue?: string;
+  @Prop({ reflect: true }) public defaultValue?: Date | string;
   @Prop({ reflect: true }) public format: string = 'dd/mm/yyyy';
   @Prop({ reflect: true }) public hasError: boolean = false;
   @Prop({ reflect: true }) public isClearable: boolean = false;
@@ -64,8 +64,8 @@ export class OdsDatepicker {
   @Prop({ reflect: true }) public isReadonly: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
   @Prop({ reflect: true }) public locale: OdsDatepickerLocale = ODS_DATEPICKER_LOCALE.en;
-  @Prop({ reflect: true }) public max?: Date;
-  @Prop({ reflect: true }) public min?: Date;
+  @Prop({ reflect: true }) public max?: Date | string;
+  @Prop({ reflect: true }) public min?: Date | string;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public placeholder?: string;
   @Prop({ mutable: true, reflect: true }) public value: Date | null = VALUE_DEFAULT_VALUE;

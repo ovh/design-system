@@ -291,4 +291,24 @@ describe('ods-timepicker validity', () => {
       expect(formValidity).toBe(true);
     });
   });
+
+  describe('watchers', () => {
+    describe('is-required', () => {
+      it('should update validity when is-required change', async() => {
+        await setup('<ods-timepicker></ods-timepicker>');
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
+
+        await el.setAttribute('is-required', 'true');
+        await page.waitForChanges();
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+
+        await el.removeAttribute('is-required');
+        await page.waitForChanges();
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
+      });
+    });
+  });
 });

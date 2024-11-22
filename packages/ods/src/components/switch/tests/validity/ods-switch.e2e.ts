@@ -289,4 +289,28 @@ describe('ods-switch validity', () => {
       expect(formValidity).toBe(true);
     });
   });
+
+  describe('watchers', () => {
+    describe('is-required', () => {
+      it('should update validity when is-required change', async() => {
+        await setup(`<ods-switch name="validity-test" is-required>
+          <ods-switch-item value="1">label1</ods-switch-item>
+          <ods-switch-item value="2">label2</ods-switch-item>
+          <ods-switch-item value="3">label3</ods-switch-item>
+        </ods-switch>`);
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+
+        await el.removeAttribute('is-required');
+        await page.waitForChanges();
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
+
+        await el.setAttribute('is-required', 'true');
+        await page.waitForChanges();
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+      });
+    });
+  });
 });

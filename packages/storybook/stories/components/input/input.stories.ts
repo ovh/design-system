@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_INPUT_TYPE, ODS_INPUT_TYPES } from '@ovhcloud/ods-components';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { html, nothing } from 'lit-html';
+import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -12,28 +13,9 @@ const meta: Meta = {
 
 export default meta;
 
+
 export const Demo: StoryObj = {
   render: (arg) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async () => {
-          const divValidityState = document.querySelector('#validity-state');
-          const input = document.querySelector('.my-input');
-          await customElements.whenDefined('ods-input');
-          await renderValidityState();
-          input.addEventListener('odsChange', async () => {
-            await renderValidityState();
-          })
-          async function renderValidityState() {
-            const validity = await input.getValidity()
-            divValidityState.innerHTML = '';
-            for (let key in validity) {
-              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-            }
-          }
-      })();
-    </script>`;
     return html`
     <ods-input class="my-input"
       ariaLabel="${arg.ariaLabel}"
@@ -54,7 +36,7 @@ export const Demo: StoryObj = {
       step="${arg.step || nothing }"
       type="${arg.type || nothing }">
     </ods-input>
-    ${arg.validityState ? validityStateTemplate : ''}
+    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'input', '.my-input') }
     <style>
       .my-input::part(input) {
         ${arg.customCss}
@@ -365,23 +347,7 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-input is-required id="input-validity-state-demo">
 </ods-input>
-<div id="validity-state-demo"></div>
-<script>
-  (async() => {
-      const divValidityState = document.querySelector('#validity-state-demo');
-      const input = document.querySelector('#input-validity-state-demo');
-      await renderValidityState();
-      input.addEventListener('odsChange', async () => {
-        await renderValidityState();
-      })
-      async function renderValidityState() {
-        const validity = await input.getValidity()
-        divValidityState.innerHTML = '';
-        for (let key in validity) {
-          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-        }
-      }
-  })();
-</script>
+${ ValidityStateTemplateExample('input', '#input-validity-state-demo') }
+
 `,
 };

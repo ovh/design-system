@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
+import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -12,26 +13,6 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async () => {
-          const divValidityState = document.querySelector('#validity-state');
-          const timepicker = document.querySelector('.my-timepicker-demo');
-          await customElements.whenDefined('ods-textarea');
-          await renderValidityState();
-          timepicker.addEventListener('odsChange', async () => {
-            await renderValidityState();
-          })
-          async function renderValidityState() {
-            const validity = await timepicker.getValidity();
-            divValidityState.innerHTML = '';
-            for (let key in validity) {
-              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-            }
-          }
-      })();
-    </script>`;
     return html`
   <ods-timepicker class="my-timepicker-demo"
                   aria-label="${arg.ariaLabel}"
@@ -43,7 +24,7 @@ export const Demo: StoryObj = {
                   timezones="${arg.timezones ? 'all' : null}"
                   with-seconds="${arg.withSeconds}">
   </ods-timepicker>
-  ${ arg.validityState ? validityStateTemplate : '' }
+  ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'timepicker', '.my-timepicker-demo') }
   <style>
     .my-timepicker-demo::part(input) {
       ${arg.customCss}
@@ -234,22 +215,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-timepicker is-required id="timepicker-validity-state-demo">
 </ods-timepicker>
-<div id="validity-state-demo"></div>
-<script>
-  (() => {
-      const divValidityState = document.querySelector('#validity-state-demo');
-      const timepicker = document.querySelector('#timepicker-validity-state-demo');
-      timepicker.addEventListener('odsChange', async () => {
-        setTimeout(async() => { await renderValidityState() }, 0)
-      })
-      async function renderValidityState() {
-        const validity = await timepicker.getValidity()
-        divValidityState.innerHTML = '';
-        for (let key in validity) {
-          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-        }
-      }
-  })();
-</script>
+${ ValidityStateTemplateExample('timepicker', '#timepicker-validity-state-demo') }
 `,
 };

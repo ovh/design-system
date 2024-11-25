@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
+import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -12,26 +13,6 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async () => {
-          const divValidityState = document.querySelector('#validity-state');
-          const quantity = document.querySelector('.my-quantity');
-          await customElements.whenDefined('ods-quantity');
-          await renderValidityState();
-          quantity.addEventListener('odsChange', async () => {
-            await renderValidityState();
-          })
-          async function renderValidityState() {
-            const validity = await quantity.getValidity()
-            divValidityState.innerHTML = '';
-            for (let key in validity) {
-              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-            }
-          }
-      })();
-    </script>`;
     return html`
   <ods-quantity class="my-quantity"
       ariaLabel="${arg.ariaLabel}"
@@ -46,7 +27,7 @@ export const Demo: StoryObj = {
       placeholder="${arg.placeholder}"
       step="${arg.step}">
       </ods-quantity>
-  ${ arg.validityState ? validityStateTemplate : '' }
+    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'quantity', '.my-quantity') }
   <style>
     .my-quantity::part(input) {
       ${arg.customCssInput}
@@ -269,23 +250,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-quantity is-required id="quantity-validity-state-demo">
 </ods-quantity>
-<div id="validity-state-demo"></div>
-<script>
-  (() => {
-      const divValidityState = document.querySelector('#validity-state-demo');
-      const quantity = document.querySelector('#quantity-validity-state-demo');
-      setTimeout(async() => { await renderValidityState() }, 0)
-      quantity.addEventListener('odsChange', async () => {
-        setTimeout(async() => { await renderValidityState() }, 0)
-      })
-      async function renderValidityState() {
-        const validity = await quantity.getValidity()
-        divValidityState.innerHTML = '';
-        for (let key in validity) {
-          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-        }
-      }
-  })();
-</script>
+${ ValidityStateTemplateExample('quantity', '#quantity-validity-state-demo') }
 `,
 };

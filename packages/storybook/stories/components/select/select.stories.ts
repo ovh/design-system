@@ -1,38 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
+import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { TemplateResult } from 'lit';
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/Select',
   component: 'ods-select',
-  decorators: [(story) => html`<div style="height: 200px;">${story()}</div>`],
+  decorators: [(story): TemplateResult => html`<div style="height: 200px;">${story()}</div>`],
 };
 
 export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async () => {
-        const divValidityState = document.querySelector('#validity-state');
-        const select = document.querySelector('.my-select-demo');
-        await customElements.whenDefined('ods-select');
-        await renderValidityState();
-        select.addEventListener('odsChange', async() => {
-          await renderValidityState();
-        })
-        async function renderValidityState() {
-          const validity = await select.getValidity()
-          divValidityState.innerHTML = '';
-          for (let key in validity) {
-            divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-          }
-        }
-      })();
-    </script>`;
     return html`
     <ods-select class="my-select-demo"
                 has-error="${arg.hasError}"
@@ -47,7 +29,7 @@ export const Demo: StoryObj = {
       <option value="spider">Spider</option>
       <option value="goldfish">Goldfish</option>
     </ods-select>
-    ${arg.validityState ? validityStateTemplate : ''}
+    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'select', '.my-select-demo') }
   `;
   },
   argTypes: orderControls({
@@ -112,26 +94,6 @@ export const Demo: StoryObj = {
 
 export const DemoMultiple: StoryObj = {
   render: (arg) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async () => {
-        const divValidityState = document.querySelector('#validity-state');
-        const select = document.querySelector('.my-select-demo-multiple');
-        await customElements.whenDefined('ods-select');
-        await renderValidityState();
-        select.addEventListener('odsChange', async() => {
-          await renderValidityState();
-        })
-        async function renderValidityState() {
-          const validity = await select.getValidity()
-          divValidityState.innerHTML = '';
-          for (let key in validity) {
-            divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-          }
-        }
-      })();
-    </script>`;
     return html`
     <ods-select allow-multiple
                 class="my-select-demo-multiple"
@@ -148,7 +110,7 @@ export const DemoMultiple: StoryObj = {
       <option value="spider">Spider</option>
       <option value="goldfish">Goldfish</option>
     </ods-select>
-    ${arg.validityState ? validityStateTemplate : ''}
+    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'select', '.my-select-demo-multiple') }
   `;
   },
   argTypes: orderControls({
@@ -171,7 +133,7 @@ export const DemoMultiple: StoryObj = {
     isReadonly: {
       table: {
         category: CONTROL_CATEGORY.general,
-          defaultValue: { summary: false },
+        defaultValue: { summary: false },
         type: { summary: 'boolean' },
       },
       control: 'boolean',
@@ -479,23 +441,6 @@ export const ValidityState: StoryObj = {
   <option value="spider">Spider</option>
   <option value="goldfish">Goldfish</option>
 </ods-select>
-<div id="validity-state-demo"></div>
-<script>
-  (async() => {
-    const divValidityState = document.querySelector('#validity-state-demo');
-    const select = document.querySelector('#select-validity-state-demo');
-    await renderValidityState();
-    select.addEventListener('odsChange', async() => {
-      await renderValidityState();
-    })
-    async function renderValidityState() {
-      const validity = await select.getValidity()
-      divValidityState.innerHTML = '';
-      for (let key in validity) {
-        divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-      }
-    }
-  })();
-</script>
+${ ValidityStateTemplateExample('select', '#select-validity-state-demo') }
 `,
 };

@@ -91,9 +91,6 @@ export class OdsSwitchItem {
           case 'is-required':
             this.isRequired = this.el.getAttribute('is-required') === '';
             break;
-          case 'required':
-            this.odsInvalid.emit(!this.inputEl?.validity.valid);
-            break;
           default:
             break;
         }
@@ -104,11 +101,6 @@ export class OdsSwitchItem {
   componentDidLoad(): void {
     this.observer?.observe(this.el, {
       attributeFilter: ['input-id', 'is-disabled', 'is-required'],
-      attributes: true,
-    });
-
-    this.inputEl && this.observer?.observe(this.inputEl, {
-      attributeFilter: ['required'],
       attributes: true,
     });
   }

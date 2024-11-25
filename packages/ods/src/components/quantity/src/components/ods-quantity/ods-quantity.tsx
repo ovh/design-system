@@ -131,6 +131,8 @@ export class OdsQuantity {
   }
 
   private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
+    event.stopPropagation();
+
     if (event.detail.value === null || event.detail.value === '') {
       this.value = null;
     } else {
@@ -145,6 +147,13 @@ export class OdsQuantity {
       await this.odsInput?.checkValidity();
       this.isInvalid = !this.internals.validity.valid;
     }
+
+    this.odsChange.emit({
+      name: this.name,
+      previousValue: Number(event.detail.previousValue),
+      validity: this.internals.validity,
+      value: this.value,
+    });
   }
 
   private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {

@@ -118,6 +118,7 @@ export class OdsPassword {
   }
 
   private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
+    event.stopPropagation();
     this.value = event.detail.value?.toString() ?? null;
     await updateInternals(this.internals, this.value, this.odsInput);
 
@@ -127,6 +128,13 @@ export class OdsPassword {
       this.isInvalid = !this.internals.validity.valid;
       this.shouldUpdateIsInvalidState = false;
     }
+
+    this.odsChange.emit({
+      name: this.name,
+      previousValue: event.detail.previousValue,
+      validity: this.internals.validity,
+      value: this.value,
+    });
   }
 
   private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {

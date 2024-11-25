@@ -146,7 +146,6 @@ export class OdsTimepicker {
   }
 
   private async onOdsChange(event: OdsInputChangeEvent | OdsSelectChangeEvent, isFromSelect: boolean): Promise<void> {
-    event.preventDefault();
     event.stopPropagation();
 
     if (isFromSelect) {

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_SWITCH_SIZE, ODS_SWITCH_SIZES } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
+import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -13,26 +14,6 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (args) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state-switch" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async() => {
-          const divValidityState = document.querySelector('#validity-state-switch');
-          const switchDemo = document.querySelector('#my-switch');
-          await customElements.whenDefined('ods-switch');
-          setTimeout(async() => await renderValidityState(), 0);
-          switchDemo.addEventListener('odsChange', async() => {
-            await renderValidityState();
-          });
-          async function renderValidityState() {
-            const validity = await switchDemo.getValidity();
-            divValidityState.innerHTML = '';
-            for (let key in validity) {
-              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-            }
-          }
-      })();
-    </script>`;
     return html`
     <ods-switch id="my-switch"
                 name="demo"
@@ -43,7 +24,7 @@ export const Demo: StoryObj = {
       <ods-switch-item value="2">label2</ods-switch-item>
       <ods-switch-item value="3">label3</ods-switch-item>
     </ods-switch>
-    ${ args.validityState ? validityStateTemplate : '' }
+    ${ ValidityStateTemplateDemo(args.validityState, args.isRequired, 'switch', '#my-switch') }
   `;
   },
   argTypes: orderControls({
@@ -162,24 +143,6 @@ export const ValidityState: StoryObj = {
   <ods-switch-item value="2">label2</ods-switch-item>
   <ods-switch-item value="3">label3</ods-switch-item>
 </ods-switch>
-<div id="validity-state-demo"></div>
-<script>
-  (async() => {
-      const divValidityState = document.querySelector('#validity-state-demo');
-      const switchValidityState = document.querySelector('#switch-validity-state-demo');
-      await customElements.whenDefined('ods-switch-item');
-      setTimeout(async() => await renderValidityState(), 100);
-      switchValidityState.addEventListener('odsChange', async() => {
-        await renderValidityState();
-      })
-      async function renderValidityState() {
-        const validity = await switchValidityState.getValidity();
-        divValidityState.innerHTML = '';
-        for (let key in validity) {
-          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-        }
-      }
-  })();
-</script>
+${ ValidityStateTemplateExample('switch', '#switch-validity-state-demo') }
 `,
 };

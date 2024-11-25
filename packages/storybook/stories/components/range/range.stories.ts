@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
+import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -13,26 +14,6 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (args) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async () => {
-          const divValidityState = document.querySelector('#validity-state');
-          const range = document.querySelector('.my-range-demo');
-          await customElements.whenDefined('ods-range');
-          await renderValidityState();
-          range.addEventListener('odsChange', async () => {
-            await renderValidityState();
-          })
-          async function renderValidityState() {
-            const validity = await range.getValidity()
-            divValidityState.innerHTML = '';
-            for (let key in validity) {
-              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-            }
-          }
-      })();
-    </script>`;
     return html`
     <ods-range
       class="my-range-demo"
@@ -43,7 +24,7 @@ export const Demo: StoryObj = {
       min="${args.min}"
       step="${args.step}"
     ></ods-range>
-    ${args.validityState ? validityStateTemplate : ''}
+    ${ ValidityStateTemplateDemo(args.validityState, args.isRequired, 'range', '.my-range-demo') }
     <style>
       .my-range-demo::part(range) {
         ${args.customCss}
@@ -374,28 +355,8 @@ export const ValidityState: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <div style="display: flex; flex-direction: column;">
-  <ods-range is-required id="range-validity-state-demo">
-  </ods-range>
-
-  <div id="validity-state-demo"></div>
-</div>
-<script>
-  (async() => {
-      const divValidityState = document.querySelector('#validity-state-demo');
-      const range = document.querySelector('#range-validity-state-demo');
-      await customElements.whenDefined('ods-range');
-      await renderValidityState();
-      range.addEventListener('odsChange', async () => {
-        await renderValidityState();
-      })
-      async function renderValidityState() {
-        const validity = await range.getValidity();
-        divValidityState.innerHTML = '';
-        for (let key in validity) {
-          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-        }
-      }
-  })();
-</script>
+<ods-range is-required id="range-validity-state-demo">
+</ods-range>
+${ ValidityStateTemplateExample('range', '#range-validity-state-demo') }
 `,
 };

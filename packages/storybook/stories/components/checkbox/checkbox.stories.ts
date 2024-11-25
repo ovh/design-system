@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
+import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -12,36 +13,16 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (args) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async () => {
-          const divValidityState = document.querySelector('#validity-state');
-          const checkbox = document.querySelector('.my-checkbox-demo');
-          await customElements.whenDefined('ods-checkbox');
-          await renderValidityState();
-          checkbox.addEventListener('odsChange', async () => {
-            await renderValidityState();
-          })
-          async function renderValidityState() {
-            const validity = await checkbox.getValidity()
-            divValidityState.innerHTML = '';
-            for (let key in validity) {
-              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-            }
-          }
-      })();
-    </script>`;
     return html`
     <ods-checkbox
-      ariaLabel="${args.ariaLabel}"
-      ariaLabelledby="${args.ariaLabelledby}"
+      aria-label="${args.ariaLabel}"
+      aria-labelledby="${args.ariaLabelledby}"
       class="my-checkbox-demo"
       is-disabled="${args.isDisabled}"
       is-indeterminate="${args.isIndeterminate}"
       is-required="${args.isRequired}"
     ></ods-checkbox>
-    ${args.validityState ? validityStateTemplate : ''}
+    ${ ValidityStateTemplateDemo(args.validityState, args.isRequired, 'checkbox', '.my-checkbox-demo') }
     <style>
       .my-checkbox-demo > input[type="checkbox"]:not(:disabled):checked {
         ${args.customCss}
@@ -205,23 +186,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-checkbox is-required id="checkbox-validity-state-demo">
 </ods-checkbox>
-<div id="validity-state-demo"></div>
-<script>
-  (async() => {
-      const divValidityState = document.querySelector('#validity-state-demo');
-      const checkbox = document.querySelector('#checkbox-validity-state-demo');
-      await renderValidityState();
-      checkbox.addEventListener('odsChange', async () => {
-        await renderValidityState();
-      })
-      async function renderValidityState() {
-        const validity = await checkbox.getValidity()
-        divValidityState.innerHTML = '';
-        for (let key in validity) {
-          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-        }
-      }
-  })();
-</script>
+${ ValidityStateTemplateExample('checkbox', '#checkbox-validity-state-demo') }
 `,
 };

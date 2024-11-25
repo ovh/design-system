@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html, nothing } from 'lit-html';
+import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -12,26 +13,6 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state-password" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async() => {
-          const divValidityState = document.querySelector('#validity-state-password');
-          const password = document.querySelector('.my-password');
-          await customElements.whenDefined('ods-password');
-          await renderValidityState();
-          password.addEventListener('odsChange', async() => {
-            await renderValidityState();
-          });
-          async function renderValidityState() {
-            const validity = await password.getValidity();
-            divValidityState.innerHTML = '';
-            for (let key in validity) {
-              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-            }
-          }
-      })();
-    </script>`;
     return html`
     <ods-password
       ariaLabel="${arg.ariaLabel}"
@@ -46,7 +27,7 @@ export const Demo: StoryObj = {
       pattern="${arg.pattern || nothing}"
       placeholder="${arg.placeholder}">
     </ods-password>
-    ${ arg.validityState ? validityStateTemplate : '' }
+    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'password', '.my-password') }
     <style>
       .my-password::part(input) {
         ${arg.customCss}
@@ -268,23 +249,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-password is-required id="password-validity-state-demo">
 </ods-password>
-<div id="validity-state-demo"></div>
-<script>
-  (async() => {
-      const divValidityState = document.querySelector('#validity-state-demo');
-      const password = document.querySelector('#password-validity-state-demo');
-      setTimeout(async() => { await renderValidityState() }, 0)
-      password.addEventListener('odsChange', () => {
-        setTimeout(async() => { await renderValidityState() }, 0)
-      })
-      async function renderValidityState() {
-        const validity = await password.getValidity();
-        divValidityState.innerHTML = '';
-        for (let key in validity) {
-          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-        }
-      }
-  })();
-</script>
+${ ValidityStateTemplateExample('password', '#password-validity-state-demo') }
 `,
 };

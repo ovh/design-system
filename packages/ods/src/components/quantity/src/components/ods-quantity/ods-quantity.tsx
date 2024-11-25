@@ -150,7 +150,7 @@ export class OdsQuantity {
 
     this.odsChange.emit({
       name: this.name,
-      previousValue: typeof this.value === 'number'&& isNumeric(event.detail.previousValue) ? Number(event.detail.previousValue) : event.detail.previousValue as null | undefined,
+      previousValue: typeof event.detail.previousValue === 'number'&& isNumeric(event.detail.previousValue) ? Number(event.detail.previousValue) : event.detail.previousValue as null | undefined,
       validity: this.internals.validity,
       value: this.value,
     });

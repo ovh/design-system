@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, ODS_PHONE_NUMBER_LOCALES } from '@ovhcloud/ods-components';
 import { html, nothing } from 'lit-html';
+import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -13,26 +14,6 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async () => {
-          const divValidityState = document.querySelector('#validity-state');
-          const phoneNumber = document.querySelector('.my-phone-number');
-          await customElements.whenDefined('ods-phone-number');
-          await renderValidityState();
-          phoneNumber.addEventListener('odsChange', async () => {
-            await renderValidityState();
-          })
-          async function renderValidityState() {
-            const validity = await phoneNumber.getValidity()
-            divValidityState.innerHTML = '';
-            for (let key in validity) {
-              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-            }
-          }
-      })();
-    </script>`;
     return html`
     <ods-phone-number class="my-phone-number"
                       aria-label="${arg.ariaLabel}"
@@ -48,7 +29,7 @@ export const Demo: StoryObj = {
                       locale="${arg.locale}"
                       pattern="${arg.pattern || nothing}">
     </ods-phone-number>
-    ${ arg.validityState ? validityStateTemplate : '' }
+    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'phone-number', '.my-phone-number') }
     <style>
       .my-phone-number::part(input) {
         ${arg.customInputCss}
@@ -339,22 +320,7 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-phone-number is-required id="phone-number-validity-state-demo">
 </ods-phone-number>
-<div id="validity-state-demo"></div>
-<script>
-  (() => {
-      const divValidityState = document.querySelector('#validity-state-demo');
-      const phoneNumber = document.querySelector('#phone-number-validity-state-demo');
-      phoneNumber.addEventListener('odsChange', async () => {
-        await renderValidityState();
-      })
-      async function renderValidityState() {
-        const validity = await phoneNumber.getValidity()
-        divValidityState.innerHTML = '';
-        for (let key in validity) {
-          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-        }
-      }
-  })();
-</script>
+${ ValidityStateTemplateExample('phone-number', '#phone-number-validity-state-demo') }
+
 `,
 };

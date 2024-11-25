@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
+import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -12,33 +13,13 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async () => {
-          const divValidityState = document.querySelector('#validity-state');
-          const toggle = document.querySelector('.my-toggle-demo');
-          await customElements.whenDefined('ods-toggle');
-          await renderValidityState();
-          toggle.addEventListener('odsChange', async () => {
-            await renderValidityState();
-          })
-          async function renderValidityState() {
-            const validity = await toggle.getValidity()
-            divValidityState.innerHTML = '';
-            for (let key in validity) {
-              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-            }
-          }
-      })();
-    </script>`;
-  return html`
+    return html`
     <ods-toggle class="my-toggle-demo"
       is-disabled=${arg.isDisabled}
       is-required=${arg.isRequired}
       with-label=${arg.withLabel}>
     </ods-toggle>
-    ${arg.validityState ? validityStateTemplate : ''}
+    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'toggle', '.my-toggle-demo') }
     <style>
       .my-toggle-demo::part(slider) {
         ${arg.CustomCssSlider}
@@ -238,23 +219,7 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-toggle is-required id="toggle-validity-state-demo">
 </ods-toggle>
-<div id="validity-state-demo"></div>
-<script>
-  (async() => {
-      const divValidityState = document.querySelector('#validity-state-demo');
-      const toggle = document.querySelector('#toggle-validity-state-demo');
-      await renderValidityState();
-      toggle.addEventListener('odsChange', async () => {
-        await renderValidityState();
-      })
-      async function renderValidityState() {
-        const validity = await toggle.getValidity()
-        divValidityState.innerHTML = '';
-        for (let key in validity) {
-          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-        }
-      }
-  })();
-</script>
+${ ValidityStateTemplateExample('toggle', '#toggle-validity-state-demo') }
+
 `,
 };

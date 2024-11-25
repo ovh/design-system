@@ -295,12 +295,7 @@ describe('ods-password validity', () => {
   describe('watchers', () => {
     describe('is-required', () => {
       it('should update validity when is-required change', async() => {
-        await setup('<ods-password is-required></ods-password>');
-
-        expect(await el.callMethod('checkValidity')).toBe(false);
-
-        await el.removeAttribute('is-required');
-        await page.waitForChanges();
+        await setup('<ods-password></ods-password>');
 
         expect(await el.callMethod('checkValidity')).toBe(true);
 
@@ -308,6 +303,11 @@ describe('ods-password validity', () => {
         await page.waitForChanges();
 
         expect(await el.callMethod('checkValidity')).toBe(false);
+
+        await el.removeAttribute('is-required');
+        await page.waitForChanges();
+
+        expect(await el.callMethod('checkValidity')).toBe(true);
       });
     });
   });
@@ -318,7 +318,7 @@ describe('ods-password validity', () => {
         let isValidityChecked: boolean | undefined = undefined;
         await setup('<ods-password is-required></ods-password>');
         await page.exposeFunction('onOdsChange', async() => {
-          isValidityChecked = await el.callMethod('getValidity');
+          isValidityChecked = await el.callMethod('checkValidity');
         });
         await page.evaluate(() => {
           const password = document.querySelector('ods-password');

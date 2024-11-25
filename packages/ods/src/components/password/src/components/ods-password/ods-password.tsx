@@ -54,7 +54,7 @@ export class OdsPassword {
   @Method()
   public async checkValidity(): Promise<boolean> {
     this.isInvalid = !this.internals.validity.valid;
-    return this.internals?.checkValidity();
+    return this.internals.checkValidity();
   }
 
   @Method()
@@ -119,6 +119,7 @@ export class OdsPassword {
 
   private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
     event.stopPropagation();
+
     this.value = event.detail.value?.toString() ?? null;
     await updateInternals(this.internals, this.value, this.odsInput);
 

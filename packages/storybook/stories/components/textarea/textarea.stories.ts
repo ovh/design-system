@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
+import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -12,26 +13,6 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async() => {
-          const divValidityState = document.querySelector('#validity-state');
-          const textarea = document.querySelector('.my-textarea');
-          await customElements.whenDefined('ods-textarea');
-          await renderValidityState();
-          textarea.addEventListener('odsChange', async() => {
-            await renderValidityState();
-          })
-          async function renderValidityState() {
-            const validity = await textarea.getValidity()
-            divValidityState.innerHTML = '';
-            for (let key in validity) {
-              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-            }
-          }
-      })();
-    </script>`;
     return html`
     <ods-textarea class="my-textarea"
                   ariaLabel="${arg.ariaLabel}"
@@ -46,7 +27,7 @@ export const Demo: StoryObj = {
                   placeholder="${arg.placeholder}"
                   rows="${arg.rows}">
     </ods-textarea>
-    ${ arg.validityState ? validityStateTemplate : '' }
+    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'textarea', '.my-textarea') }
     <style>
       .my-textarea::part(textarea) {
         ${arg.customCss}
@@ -275,24 +256,7 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-textarea is-required id="textarea-validity-state-demo">
 </ods-textarea>
-<div id="validity-state-demo"></div>
-<script>
-  (() => {
-      const divValidityState = document.querySelector('#validity-state-demo');
-      const textarea = document.querySelector('#textarea-validity-state-demo');
-      setTimeout(async() => { await renderValidityState() }, 0)
-      textarea.addEventListener('odsChange', async () => {
-        setTimeout(async() => { await renderValidityState() }, 0)
-      })
-      async function renderValidityState() {
-        const validity = await textarea.getValidity()
-        divValidityState.innerHTML = '';
-        for (let key in validity) {
-          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-        }
-      }
-  })();
-</script>
+${ ValidityStateTemplateExample('textarea', '#textarea-validity-state-demo') }
 `,
 };
 

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
+import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -12,26 +13,6 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (args) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async() => {
-          const divValidityState = document.querySelector('#validity-state');
-          const radio = document.querySelector('.my-radio-demo');
-          await customElements.whenDefined('ods-radio');
-          await renderValidityState();
-          radio.addEventListener('odsChange', async() => {
-            await renderValidityState();
-          })
-          async function renderValidityState() {
-            const validity = await radio.getValidity()
-            divValidityState.innerHTML = '';
-            for (let key in validity) {
-              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-            }
-          }
-      })();
-    </script>`;
     return html`
     <ods-radio
       ariaLabel="${args.ariaLabel}"
@@ -41,7 +22,7 @@ export const Demo: StoryObj = {
       is-disabled="${args.isDisabled}"
       is-required="${args.isRequired}"
     ></ods-radio>
-    ${args.validityState ? validityStateTemplate : ''}
+    ${ ValidityStateTemplateDemo(args.validityState, args.isRequired, 'radio', '.my-radio-demo') }
     <style>
       .my-radio-demo > input[type="radio"]:not(:disabled):checked {
         ${args.customCss}
@@ -291,23 +272,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-radio name="radio-validity-state-demo" is-required id="radio-validity-state-demo">
 </ods-radio>
-<div id="validity-state-demo"></div>
-<script>
-  (async() => {
-      const divValidityState = document.querySelector('#validity-state-demo');
-      const radio = document.querySelector('#radio-validity-state-demo');
-      setTimeout(async() => await renderValidityState(), 0);
-      radio.addEventListener('odsChange', async () => {
-        await renderValidityState();
-      })
-      async function renderValidityState() {
-        const validity = await radio.getValidity();
-        divValidityState.innerHTML = '';
-        for (let key in validity) {
-          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-        }
-      }
-  })();
-</script>
+${ ValidityStateTemplateExample('radio', '#radio-validity-state-demo') }
 `,
 };

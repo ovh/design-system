@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES } from '@ovhcloud/ods-components';
 import { Datepicker } from 'vanillajs-datepicker';
 import { html, nothing } from 'lit-html';
+import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -15,26 +16,6 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state-datepicker" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async() => {
-          const divValidityState = document.querySelector('#validity-state-datepicker');
-          const datepicker = document.querySelector('.my-datepicker');
-          await customElements.whenDefined('ods-datepicker');
-          await renderValidityState();
-          datepicker.addEventListener('odsChange', async() => {
-            await renderValidityState();
-          })
-          async function renderValidityState() {
-            const validity = await datepicker.getValidity()
-            divValidityState.innerHTML = '';
-            for (let key in validity) {
-              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-            }
-          }
-      })();
-    </script>`;
     return html`
     <ods-datepicker class="my-datepicker"
       aria-label="${arg.ariaLabel}"
@@ -51,7 +32,7 @@ export const Demo: StoryObj = {
       min="${arg.min ? Datepicker.formatDate(arg.min, arg.format || 'dd/mm/yyyy') : nothing}"
       placeholder="${arg.placeholder}">
     </ods-datepicker>
-    ${ arg.validityState ? validityStateTemplate : '' }
+    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'datepicker', '.my-datepicker') }
     `;
   },
   argTypes: orderControls({
@@ -313,23 +294,7 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-datepicker is-required id="datepicker-validity-state-demo">
 </ods-datepicker>
-<div id="validity-state-demo"></div>
-<script>
-  (async() => {
-      const divValidityState = document.querySelector('#validity-state-demo');
-      const datepicker = document.querySelector('#datepicker-validity-state-demo');
-      await renderValidityState();
-      datepicker.addEventListener('odsChange', async() => {
-        await renderValidityState();
-      })
-      async function renderValidityState() {
-        const validity = await datepicker.getValidity();
-        divValidityState.innerHTML = '';
-        for (let key in validity) {
-          divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-        }
-      }
-  })();
-</script>
+${ ValidityStateTemplateExample('datepicker', '#datepicker-validity-state-demo') }
+
 `,
 };

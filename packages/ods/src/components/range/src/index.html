@@ -11,33 +11,163 @@
 </head>
 
 <body>
+<!--  <p>Default</p>-->
+<!--  <ods-range id="default-range">-->
+<!--  </ods-range>-->
 
-  <p>Default</p>
-  <ods-range id="default-range" is-required>
-  </ods-range>
+  <style>
+    .ods-range-fake {
+      position: relative;
+      width: fit-content;
+      display: grid;
+    }
 
-  <button id="clear-button">clear</button>
-  <button id="reset-button">reset</button>
+    .input {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      appearance: none;
+      outline: none;
+      border-radius: var(--ods-border-radius-sm);
+      cursor: pointer;
+      height: 8px;
+      border-width: 0;
+      background: cyan;
+    }
+
+    .input::-webkit-slider-thumb {
+      appearance: none;
+      box-sizing: border-box;
+      border: 1px solid var(--ods-color-neutral-300);
+      border-radius: 50%;
+      box-shadow: none;
+      background-color: var(--ods-color-neutral-000);
+      cursor: pointer;
+      width: 4px;
+      height: 4px;
+      pointer-events: auto;
+    }
+
+    .input::-moz-range-thumb {
+      appearance: none;
+      box-sizing: border-box;
+      border: 1px solid var(--ods-color-neutral-300);
+      border-radius: 50%;
+      box-shadow: none;
+      background-color: var(--ods-color-neutral-000);
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      pointer-events: auto;
+    }
+
+    .ticks {
+      position: absolute;
+      inset: 0 2px; // thumb width / 2
+      z-index: 1;
+    }
+
+    .tick {
+      position: absolute;
+      background-color: red;
+      width: 1px;
+      height: 20px;
+    }
+
+    .tick.lower {
+      background-color: blue;
+    }
+  </style>
+
+  <div class="ods-range-fake">
+    <input class="input" type="range" id="temp" name="temp" list="values" />
+    <input type="range" id="temp2" name="temp2" list="values" style="position: inherit; z-index: 10;" />
+    <datalist id="values">
+<!--      <option value="0"></option>-->
+<!--      <option value="25"></option>-->
+<!--      <option value="50"></option>-->
+<!--      <option value="75"></option>-->
+<!--      <option value="100"></option>-->
+      <option value="0"></option>
+      <option value="10"></option>
+      <option value="25"></option>
+      <option value="50"></option>
+      <option value="100"></option>
+
+<!--      KO datalist labels are not displayed on safari -->
+<!--      <option value="0" label="|"></option>-->
+<!--      <option value="10" label="|"></option>-->
+<!--      <option value="25" label="|"></option>-->
+<!--      <option value="50" label="|"></option>-->
+<!--      <option value="100" label="|"></option>-->
+    </datalist>
+    <div class="ticks">
+    </div>
+  </div>
 
   <script>
-    const range = document.querySelector('#default-range');
+    const range = document.querySelector('#temp');
+    const ticksContainer = document.querySelector('.ticks');
+    const optionElements = document.querySelectorAll('datalist > option');
 
-    ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{
-      range.addEventListener(eventName, (event) => {
-        console.log(eventName, event);
-      });
+    const options = Array.from(optionElements).map((el) => parseInt(el.value, 10));
+    const ratio = 100 / options[options.length - 1];
+
+    options.forEach((option, idx) => {
+      const tick = document.createElement('div');
+      tick.tickValue = option;
+
+      tick.classList.add('tick');
+      if (tick.tickValue <= range.value) {
+        tick.classList.add('lower');
+      }
+
+      tick.style.left = `${option * ratio}%`;
+      ticksContainer.appendChild(tick);
     });
-    const clearButton = document.getElementById('clear-button');
-    const resetButton = document.getElementById('reset-button');
-    // const getValidityButton = document.getElementById('get-validity-button');
 
-    clearButton.addEventListener('click', () => range.clear());
-    resetButton.addEventListener('click', () => range.reset());
-    // getValidityButton.addEventListener('click', async () => {
-    //   const validity = await range.getValidity();
-    //   console.log('validity', validity);
+    const tickElements = document.querySelectorAll('.tick');
+
+    range.addEventListener('input', (e) => {
+      tickElements.forEach((tick) => {
+        if (tick.tickValue <= e.target.value) {
+          tick.classList.add('lower');
+        } else {
+          tick.classList.remove('lower');
+        }
+      })
+    })
+
+    // const optionElements = document.querySelectorAll('datalist > option');
+    // const options = Array.from(optionElements).map((el) => parseInt(el.value, 10));
+    // const ratio = 100 / options[options.length - 1];
+    // optionElements.forEach((option) => {
+    //   option.style.left = `${parseInt(option.value, 10) * ratio}%`;
     // });
   </script>
+
+<!--  <button id="clear-button">clear</button>-->
+<!--  <button id="reset-button">reset</button>-->
+
+<!--  <script>-->
+<!--    const range = document.querySelector('#default-range');-->
+
+<!--    ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{-->
+<!--      range.addEventListener(eventName, (event) => {-->
+<!--        console.log(eventName, event);-->
+<!--      });-->
+<!--    });-->
+<!--    const clearButton = document.getElementById('clear-button');-->
+<!--    const resetButton = document.getElementById('reset-button');-->
+<!--    // const getValidityButton = document.getElementById('get-validity-button');-->
+
+<!--    clearButton.addEventListener('click', () => range.clear());-->
+<!--    resetButton.addEventListener('click', () => range.reset());-->
+<!--    // getValidityButton.addEventListener('click', async () => {-->
+<!--    //   const validity = await range.getValidity();-->
+<!--    //   console.log('validity', validity);-->
+<!--    // });-->
+<!--  </script>-->
 
   <!-- <p>Disabled</p>
   <ods-range value="40" is-disabled>

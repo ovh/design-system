@@ -311,4 +311,28 @@ describe('ods-password validity', () => {
       });
     });
   });
+
+  describe('event', () => {
+    describe('odsChange', () => {
+      it('should have a valid validity change after odsChange', async() => {
+        let isValidityChecked: boolean | undefined = undefined;
+        await setup('<ods-password is-required></ods-password>');
+        await page.exposeFunction('onOdsChange', async() => {
+          isValidityChecked = await el.callMethod('getValidity');
+        });
+        await page.evaluate(() => {
+          const password = document.querySelector('ods-password');
+          // @ts-ignore function is exposed internally in the page
+          password?.addEventListener('odsChange', (e) => onOdsChange(e));
+        });
+
+        expect(await el.callMethod('checkValidity')).toBe(false);
+
+        await el.type('a');
+        await page.waitForChanges();
+
+        expect(isValidityChecked).toBe(true);
+      });
+    });
+  });
 });

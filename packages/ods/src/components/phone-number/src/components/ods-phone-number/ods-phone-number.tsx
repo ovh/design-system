@@ -174,7 +174,7 @@ export class OdsPhoneNumber {
   }
 
   private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
-    event.stopImmediatePropagation();
+    event.stopPropagation();
 
     this.value = event.detail.value as string | null;
 

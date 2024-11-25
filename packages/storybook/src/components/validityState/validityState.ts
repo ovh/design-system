@@ -25,18 +25,7 @@ function ValidityStateTemplateDemo(hasValidityState: boolean, isRequired: boolea
     const event = new Event('updateValidityState');
     document.dispatchEvent(event);
   }
-  const validityStateTemplate = html`
-  ${ odsTable }
-  <script>
-    (async () => {
-        await Promise.all([
-          await customElements.whenDefined('ods-table'),
-          await customElements.whenDefined('ods-${componentName}'),
-        ]);
-        await window.renderValidityState('${componentSelector}');
-    })();
-  </script>`;
-  return hasValidityState ? validityStateTemplate : '';
+  return hasValidityState ? ValidityStateTemplateExample(componentName, componentSelector) : '';
 }
 
 function ValidityStateTemplateExample(componentName: string, componentSelector: string): TemplateResult | string {
@@ -57,7 +46,6 @@ function ValidityStateTemplateExample(componentName: string, componentSelector: 
 async function renderValidityState(componentSelector: string): Promise<void> {
   const component = document.querySelector<OdsComponent>(componentSelector);
   component?.addEventListener('odsChange', async() => {
-    console.log('odsChange', )
     await buildTable(component);
   });
   document.addEventListener('updateValidityState', async() => {
@@ -70,7 +58,6 @@ async function renderValidityState(componentSelector: string): Promise<void> {
 
 async function buildTable(component: OdsComponent | null): Promise<void> {
   const validity = await component?.getValidity();
-  console.log('validity', validity);
   const validityStateElement = document.querySelector('#validity-state-table');
   const tr = [];
   for (const key in validity) {
@@ -87,7 +74,6 @@ async function buildTable(component: OdsComponent | null): Promise<void> {
 (window as any).renderValidityState = renderValidityState;
 
 export {
-  renderValidityState,
   ValidityStateTemplateDemo,
   ValidityStateTemplateExample,
 };

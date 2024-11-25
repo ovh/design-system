@@ -3,12 +3,11 @@ import { html } from 'lit-html';
 import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
-import { TemplateResult } from 'lit';
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/Select',
   component: 'ods-select',
-  decorators: [(story): TemplateResult => html`<div style="height: 200px;">${story()}</div>`],
+  decorators: [(story) => html`<div style="height: 200px;">${story()}</div>`],
 };
 
 export default meta;

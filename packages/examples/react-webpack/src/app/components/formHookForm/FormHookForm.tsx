@@ -1,5 +1,5 @@
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OdsButton, OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
+import { OdsButton, OdsCheckbox, OdsDatepicker, OdsRange, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
 import React, { type ReactElement, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import styles from './formHookForm.scss';
@@ -15,6 +15,7 @@ type FormData = {
   phoneNumberWithCountries: string,
   quantity: number,
   radio: string,
+  range: number,
   select: string,
   switch: string,
   textarea: string,
@@ -33,6 +34,7 @@ const defaultValue: FormData = {
   phoneNumberWithCountries: '+33123456789',
   quantity: 0,
   radio: 'radio1',
+  range: 0,
   select: 'cat',
   switch: 'switch1',
   textarea: 'default textarea',
@@ -295,6 +297,24 @@ function FormHookForm(): ReactElement {
           </div>
         }
       />
+
+      <div style={{ display: 'inline-flex' }}>
+        <Controller
+          control={ control }
+          name="range"
+          rules={{ required: areAllRequired }}
+          render={({ field }) =>
+            <OdsRange
+              defaultValue={ defaultValue.range }
+              isRequired={ areAllRequired }
+              name={ field.name }
+              onOdsBlur={ field.onBlur }
+              onOdsChange={ field.onChange }
+            >
+            </OdsRange>
+          }
+        />
+      </div>
 
       <Controller
         control={ control }

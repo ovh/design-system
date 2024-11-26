@@ -13,8 +13,12 @@
 <body>
 
   <p>Default</p>
-  <ods-range id="default-range" is-required>
-  </ods-range>
+  <div style="display: flex;">
+    <ods-range id="default-range" is-required>
+    </ods-range>
+    <ods-range id="range-dual">
+    </ods-range>
+  </div>
 
   <button id="clear-button">clear</button>
   <button id="reset-button">reset</button>
@@ -22,8 +26,15 @@
   <script>
     const range = document.querySelector('#default-range');
 
+    const rangeDual = document.getElementById('range-dual');
+    rangeDual.value = [3, 20];
+
     ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{
       range.addEventListener(eventName, (event) => {
+        console.log(eventName, event);
+      });
+
+      rangeDual.addEventListener(eventName, (event) => {
         console.log(eventName, event);
       });
     });
@@ -31,8 +42,14 @@
     const resetButton = document.getElementById('reset-button');
     // const getValidityButton = document.getElementById('get-validity-button');
 
-    clearButton.addEventListener('click', () => range.clear());
-    resetButton.addEventListener('click', () => range.reset());
+    clearButton.addEventListener('click', () => {
+      rangeDual.clear();
+      range.clear();
+    });
+    resetButton.addEventListener('click', () => {
+      rangeDual.reset();
+      range.reset();
+    });
     // getValidityButton.addEventListener('click', async () => {
     //   const validity = await range.getValidity();
     //   console.log('validity', validity);

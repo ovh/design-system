@@ -131,51 +131,92 @@ describe('ods-range behaviour', () => {
 
   describe('method:clear', () => {
     it('should receive odsClear event', async() => {
-      await setup('<ods-range value="50"></ods-range>');
+      await setup('<ods-range name="ods-range" value="50"></ods-range>');
       const odsClearSpy = await page.spyOnEvent('odsClear');
+      const odsChangeSpy = await page.spyOnEvent('odsChange');
+
       await el.callMethod('clear');
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBeNull();
       expect(odsClearSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventDetail({
+        name: 'ods-range',
+        validity: {},
+        value: null,
+      });
     });
 
     it('should receive odsClear event on dual', async() => {
-      await setup('<ods-range></ods-range>', { value: [50, 70] });
+      await setup('<ods-range name="ods-range"></ods-range>', { value: [50, 70] });
       const odsClearSpy = await page.spyOnEvent('odsClear');
+      const odsChangeSpy = await page.spyOnEvent('odsChange');
+
       await el.callMethod('clear');
       await page.waitForChanges();
       expect(await el.getProperty('value')).toEqual([null, null]);
       expect(odsClearSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventDetail({
+        name: 'ods-range',
+        validity: {},
+        value: [null, null],
+      });
     });
   });
 
   describe('method:reset', () => {
     it('should receive odsReset event', async() => {
       const defaultValue = 50;
-      await setup(`<ods-range value="30" default-value="${defaultValue}"></ods-range>`);
+      await setup(`<ods-range name="ods-range" value="30" default-value="${defaultValue}"></ods-range>`);
       const odsResetSpy = await page.spyOnEvent('odsReset');
+      const odsChangeSpy = await page.spyOnEvent('odsChange');
+
       await el.callMethod('reset');
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBe(defaultValue);
       expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventDetail({
+        name: 'ods-range',
+        validity: {},
+        value: defaultValue,
+      });
     });
 
     it('should receive odsReset event on dual', async() => {
-      await setup('<ods-range></ods-range>', { defaultValue: [50, 70] });
+      const defaultValue = [50, 70];
+      await setup('<ods-range name="ods-range"></ods-range>', { defaultValue });
       const odsResetSpy = await page.spyOnEvent('odsReset');
+      const odsChangeSpy = await page.spyOnEvent('odsChange');
+
       await el.callMethod('reset');
       await page.waitForChanges();
-      expect(await el.getProperty('value')).toEqual([50, 70]);
+      expect(await el.getProperty('value')).toEqual(defaultValue);
       expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventDetail({
+        name: 'ods-range',
+        validity: {},
+        value: defaultValue,
+      });
     });
 
     it('should receive odsReset event on dual without default value', async() => {
-      await setup('<ods-range></ods-range>', { value: [50, 70] });
+      await setup('<ods-range name="ods-range"></ods-range>', { value: [50, 70] });
       const odsResetSpy = await page.spyOnEvent('odsReset');
+      const odsChangeSpy = await page.spyOnEvent('odsChange');
+
       await el.callMethod('reset');
       await page.waitForChanges();
       expect(await el.getProperty('value')).toEqual([null, null]);
       expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventDetail({
+        name: 'ods-range',
+        validity: {},
+        value: [null, null],
+      });
     });
   });
 

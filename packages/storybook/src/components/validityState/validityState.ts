@@ -20,11 +20,6 @@ const odsTable = html`
 </ods-table>`;
 
 function ValidityStateTemplateDemo(hasValidityState: boolean, isRequired: boolean, componentName: string, componentSelector: string): TemplateResult | string {
-  if (oldIsRequired !== isRequired) {
-    oldIsRequired = isRequired;
-    const event = new Event('updateValidityState');
-    document.dispatchEvent(event);
-  }
   return hasValidityState ? ValidityStateTemplateExample(componentName, componentSelector) : '';
 }
 
@@ -45,11 +40,20 @@ function ValidityStateTemplateExample(componentName: string, componentSelector: 
 
 async function renderValidityState(componentSelector: string): Promise<void> {
   const component = document.querySelector<OdsComponent>(componentSelector);
-  component?.addEventListener('odsChange', async() => {
-    await buildTable(component);
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(async(mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'is-required') {
+        setTimeout(async() => await buildTable(component), 10);
+      }
+    });
   });
-  document.addEventListener('updateValidityState', async() => {
-    await new Promise((resolve) => setTimeout(resolve, 20));
+
+  component && observer.observe(component, {
+    attributeFilter: ['is-required'],
+    attributes: true,
+  });
+
+  component?.addEventListener('odsChange', async() => {
     await buildTable(component);
   });
 

@@ -20,7 +20,6 @@ export class OdsRange {
   private inputRangeId = 'input-range';
   private inputRangeDualId = 'input-range-dual';
   private observable?: MutationObserver;
-  private shouldEmitOdsChange = false;
   private shouldUpdateIsInvalidState: boolean = false;
   private tooltip?: OdsTooltip;
   private tooltipDual?: OdsTooltip;
@@ -71,6 +70,7 @@ export class OdsRange {
       this.value = null;
     }
     this.odsClear.emit();
+    this.emitOdsChange();
   }
 
   @Method()
@@ -101,6 +101,7 @@ export class OdsRange {
       this.value = this.defaultValue ?? null;
     }
     this.odsReset.emit();
+    this.emitOdsChange();
   }
 
   @Method()
@@ -144,16 +145,16 @@ export class OdsRange {
   }
 
   @Watch('value')
-  private onValueChange(): void {
-    if (isDualRange(this.value)) {
+  private onValueChange(value: number | [number, number] | [ null, null] | null = this.value): void {
+    if (isDualRange(value)) {
       this.isDualRange = true;
-      this.changeValues(this.value[0], this.value[1]);
+      this.fillInputs(value[0], value[1]);
     } else {
       this.isDualRange = false;
-      this.changeValues(this.value ?? null);
+      this.fillInputs(value);
     }
 
-    updateInternals(this.internals, this.value, this.isRequired);
+    updateInternals(this.internals, value, this.isRequired);
 
     // In case the value gets updated from an other source than a blur event
     // we may have to perform an internal validity state update
@@ -161,25 +162,15 @@ export class OdsRange {
       this.isInvalid = !this.internals.validity.valid;
       this.shouldUpdateIsInvalidState = false;
     }
-
-    if (!this.shouldEmitOdsChange) {
-      return;
-    }
-
-    this.odsChange.emit({
-      name: this.name,
-      validity: this.internals.validity,
-      value: this.value,
-    });
   }
 
   componentWillLoad(): void {
     this.hostId = this.el.id || getRandomHTMLId();
     this.value = getInitialValue(this.value, this.min, this.max, this.defaultValue);
-    this.shouldEmitOdsChange = true;
 
     this.onMinOrMaxChange();
     this.onValueChange();
+    this.emitOdsChange();
 
     this.observable = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
@@ -213,7 +204,7 @@ export class OdsRange {
     await this.reset();
   }
 
-  private changeValues(currentValue: number | null, dualValue?: number | null): number | [number, number]| [null, null] | undefined {
+  private fillInputs(currentValue: number | null, dualValue?: number | null): number | [number, number]| [null, null] | undefined {
     let value: number | [number, number] | [null, null] | undefined;
 
     if (this.isDualRange) {
@@ -227,35 +218,38 @@ export class OdsRange {
     return value;
   }
 
+  private emitOdsChange(): void {
+    this.odsChange.emit({
+      name: this.name,
+      validity: this.internals.validity,
+      value: this.value,
+    });
+  }
+
   private onBlur(): void {
     this.isInvalid = !this.internals.validity.valid;
     this.odsBlur.emit();
   }
 
   private onInput(isDualInput: boolean): void {
+    if (!this.inputEl || (isDualInput && !this.inputElDual)) {
+      return;
+    }
     const step = this.step ?? 1;
-    const isInputsValuesEqual = Number(this.inputElDual?.value) - Number(this.inputEl?.value) < step;
+    const isInputsValuesEqual = (this.inputElDual?.valueAsNumber ?? 0) - this.inputEl?.valueAsNumber < step;
     if (isInputsValuesEqual) {
       if (isDualInput) {
-        this.onInputElDual(step);
+        this.setInputElDualValue(step);
       } else {
-        this.onInputEl(step);
+        this.setInputElValue(step);
       }
     }
 
     this.isDualRange = isDualRange(this.value);
-    this.value = this.changeValues(Number(this.inputEl?.value), Number(this.inputElDual?.value)) ?? null;
-  }
-
-  private onInputEl(step : number): void {
-    if (this.inputEl && this.inputElDual) {
-      this.inputEl.value = `${(Number(this.inputElDual.value) ?? 0) - step}`;
-    }
-  }
-
-  private onInputElDual(step : number): void {
-    if (this.inputEl && this.inputElDual) {
-      this.inputElDual.value = `${(Number(this.inputEl.value) ?? 0) + step}`;
+    if (this.isDualRange) {
+      this.value = [this.inputEl.valueAsNumber, this.inputElDual?.valueAsNumber ?? 0];
+    } else {
+      this.value = this.inputEl.valueAsNumber;
     }
   }
 
@@ -269,6 +263,18 @@ export class OdsRange {
 
   private showTooltip(): void {
     this.tooltip?.show();
+  }
+
+  private setInputElValue(step : number): void {
+    if (this.inputEl && this.inputElDual) {
+      this.inputEl.valueAsNumber = (this.inputElDual?.valueAsNumber ?? 0) - step;
+    }
+  }
+
+  private setInputElDualValue(step : number): void {
+    if (this.inputEl && this.inputElDual) {
+      this.inputElDual.valueAsNumber = (this.inputEl?.valueAsNumber ?? 0) + step;
+    }
   }
 
   private showTooltipDual(): void {
@@ -304,6 +310,7 @@ export class OdsRange {
           max={ this.max }
           min={ this.min }
           onBlur={ () => this.onBlur() }
+          onChange={ () => this.emitOdsChange() }
           onFocus={ () => this.odsFocus.emit() }
           onFocusin={ () => this.showTooltip() }
           onFocusout={ () => this.hideTooltip() }
@@ -352,6 +359,7 @@ export class OdsRange {
             id={ this.inputRangeDualId }
             max={ this.max }
             min={ this.min }
+            onChange={ () => this.emitOdsChange() }
             onFocusin={ () => this.showTooltipDual() }
             onFocusout={ () => this.hideTooltipDual() }
             onInput={ () => this.onInput(true) }

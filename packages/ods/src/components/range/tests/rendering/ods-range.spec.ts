@@ -27,6 +27,15 @@ describe('ods-range rendering', () => {
     root = page.root;
   }
 
+  beforeAll(() => {
+    jest.spyOn(console, 'error').mockImplementation((msg) => {
+      // Hide the Stencil error about internals being not implemented on spec tests
+      if (!msg.startsWith('NOTE: Property validity was accessed on ElementInternals, but this property is not implemented.')) {
+        console.error(msg);
+      }
+    });
+  });
+
   describe('defaultValue', () => {
     it('should be reflected', async() => {
       const defaultValue = 'default value';

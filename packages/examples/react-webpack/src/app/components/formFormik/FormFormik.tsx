@@ -1,5 +1,5 @@
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OdsButton, OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
+import { OdsButton, OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsRange, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
 import { useFormik } from 'formik';
 import React, { type ReactElement, useState } from 'react';
 import * as yup from 'yup';
@@ -16,6 +16,7 @@ type FormData = {
   phoneNumberWithCountries: string,
   quantity: number,
   radio: string,
+  range: number,
   select: string,
   switch: string,
   textarea: string,
@@ -33,6 +34,7 @@ const validationSchema = yup.object<FormData>({
   quantity: yup.number().nullable(),//.required(),
   radio: yup.string().nullable(),//.required(),
   radioTest: yup.string().nullable(),//.required(),
+  range: yup.number().nullable(),//.required(),
   select: yup.string().nullable(),//.required(),
   switch: yup.string().nullable(),//.required(),
   textarea: yup.string().nullable(),//.required(),
@@ -53,6 +55,7 @@ function FormFormik(): ReactElement {
       phoneNumberWithCountries: '+33123456789',
       quantity: 0,
       radio: 'radio1',
+      range: 0,
       select: 'cat',
       switch: 'switch1',
       textarea: 'default textarea',
@@ -64,9 +67,9 @@ function FormFormik(): ReactElement {
     validateOnMount: true,
     validationSchema,
   });
-  const [areAllRequired, setAreAllRequired] = useState(false);
+  const [areAllRequired, setAreAllRequired] = useState(true);
 
-  function onAllRequiredToggle() {
+  function onAllRequiredToggle(): void {
     setAreAllRequired(() => !areAllRequired);
   }
 
@@ -75,8 +78,9 @@ function FormFormik(): ReactElement {
       className={ styles['form-formik'] }
       onSubmit={ formik.handleSubmit }>
       <div>
-        <button onClick={ onAllRequiredToggle }
-                type="button">
+        <button
+          onClick={ onAllRequiredToggle }
+          type="button">
           Toggle All Required (broken)
         </button>
       </div>
@@ -212,7 +216,7 @@ function FormFormik(): ReactElement {
           name="radio"
           onOdsBlur={ formik.handleBlur }
           onOdsChange={ (e) => {
-            formik.setFieldValue('radio', e.detail.checked ?  e.detail.value : null);
+            formik.setFieldValue('radio', e.detail.checked ? e.detail.value : null);
           }}
           value="radio1"
         />
@@ -225,11 +229,21 @@ function FormFormik(): ReactElement {
           name="radio"
           onOdsBlur={ formik.handleBlur }
           onOdsChange={ (e) => {
-            formik.setFieldValue('radio', e.detail.checked ?  e.detail.value : null);
+            formik.setFieldValue('radio', e.detail.checked ? e.detail.value : null);
           }}
           value="radio2"
         />
         <label htmlFor="radio2">Radio 2</label>
+      </div>
+
+      <div style={{ display: 'inline-flex' }}>
+        <OdsRange
+          hasError={ formik.touched.range && !!formik.errors.range }
+          isRequired={ areAllRequired }
+          name="range"
+          onOdsBlur={ formik.handleBlur }
+          onOdsChange={ formik.handleChange}
+        ></OdsRange>
       </div>
 
       <OdsSelect
@@ -251,7 +265,7 @@ function FormFormik(): ReactElement {
       <OdsSwitch
         isRequired={ areAllRequired }
         name="switch"
-        onOdsChange={ (e)=> {
+        onOdsChange={ (e) => {
           formik.setFieldValue('switch', e.detail.value || '');
         }}
       >
@@ -293,12 +307,14 @@ function FormFormik(): ReactElement {
       </p>
 
       <div>
-        <OdsButton label="Reset button"
-                   type="reset"
-                   variant="outline" />
+        <OdsButton
+          label="Reset button"
+          type="reset"
+          variant="outline" />
 
-        <OdsButton label="Submit button"
-                   type="submit" />
+        <OdsButton
+          label="Submit button"
+          type="submit" />
       </div>
     </form>
   );

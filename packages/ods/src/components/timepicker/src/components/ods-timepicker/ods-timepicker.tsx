@@ -146,7 +146,7 @@ export class OdsTimepicker {
   }
 
   private async onOdsChange(event: OdsInputChangeEvent | OdsSelectChangeEvent, isFromSelect: boolean): Promise<void> {
-    event.stopPropagation();
+    event.stopImmediatePropagation();
 
     if (isFromSelect) {
       this.currentTimezone = event.detail.value as OdsTimezone;

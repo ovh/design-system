@@ -118,7 +118,7 @@ export class OdsPassword {
   }
 
   private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
-    event.stopPropagation();
+    event.stopImmediatePropagation();
 
     this.value = event.detail.value?.toString() ?? null;
     await updateInternals(this.internals, this.value, this.odsInput);

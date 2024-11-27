@@ -131,7 +131,7 @@ export class OdsQuantity {
   }
 
   private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
-    event.stopPropagation();
+    event.stopImmediatePropagation();
 
     if (event.detail.value === null || event.detail.value === '') {
       this.value = null;

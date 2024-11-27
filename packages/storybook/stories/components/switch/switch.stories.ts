@@ -55,7 +55,7 @@ export const Demo: StoryObj = {
     },
     validityState: {
       table: {
-        category: CONTROL_CATEGORY.accessibility,
+        category: CONTROL_CATEGORY.validation,
         defaultValue: { summary: false },
         type: { summary: 'boolean' },
       },

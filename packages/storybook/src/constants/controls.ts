@@ -3,6 +3,7 @@ enum CONTROL_CATEGORY {
   design = 'Design',
   general = 'General',
   slot = 'Slot',
+  validation = 'Validation',
 }
 
 export {

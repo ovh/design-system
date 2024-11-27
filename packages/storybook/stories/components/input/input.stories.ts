@@ -13,7 +13,6 @@ const meta: Meta = {
 
 export default meta;
 
-
 export const Demo: StoryObj = {
   render: (arg) => {
     return html`
@@ -193,7 +192,7 @@ export const Demo: StoryObj = {
     },
     validityState: {
       table: {
-        category: CONTROL_CATEGORY.accessibility,
+        category: CONTROL_CATEGORY.validation,
         defaultValue: { summary: false },
         type: { summary: 'boolean' },
       },

@@ -135,6 +135,13 @@ function FormNative(): ReactElement {
           name="range"
           value={70}
         />
+
+        <OdsRange
+          defaultValue={ [30, 70] as [number, number] & string }
+          isRequired={ areAllRequired }
+          name="range"
+          value={ [30, 70] }
+        />
       </div>
 
       <OdsSelect

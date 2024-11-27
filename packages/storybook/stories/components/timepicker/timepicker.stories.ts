@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
-import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
+import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -14,23 +14,23 @@ export default meta;
 export const Demo: StoryObj = {
   render: (arg) => {
     return html`
-  <ods-timepicker class="my-timepicker-demo"
-                  aria-label="${arg.ariaLabel}"
-                  aria-labelledby="${arg.ariaLabelledby}"
-                  has-error="${arg.hasError}"
-                  is-disabled="${arg.isDisabled}"
-                  is-readonly="${arg.isReadonly}"
-                  is-required="${arg.isRequired}"
-                  timezones="${arg.timezones ? 'all' : null}"
-                  with-seconds="${arg.withSeconds}">
-  </ods-timepicker>
-  ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'timepicker', '.my-timepicker-demo') }
-  <style>
-    .my-timepicker-demo::part(input) {
-      ${arg.customCss}
-    }
-  </style>
-  `;
+    <ods-timepicker class="my-timepicker-demo"
+                    aria-label="${arg.ariaLabel}"
+                    aria-labelledby="${arg.ariaLabelledby}"
+                    has-error="${arg.hasError}"
+                    is-disabled="${arg.isDisabled}"
+                    is-readonly="${arg.isReadonly}"
+                    is-required="${arg.isRequired}"
+                    timezones="${arg.timezones ? 'all' : null}"
+                    with-seconds="${arg.withSeconds}">
+    </ods-timepicker>
+    ${arg.validityState ? ValidityStateTemplate('timepicker', '.my-timepicker-demo') : ''}
+    <style>
+      .my-timepicker-demo::part(input) {
+        ${arg.customCss}
+      }
+    </style>
+    `;
   },
   argTypes: orderControls({
     ariaLabel: {
@@ -215,6 +215,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-timepicker is-required id="timepicker-validity-state-demo">
 </ods-timepicker>
-${ ValidityStateTemplateExample('timepicker', '#timepicker-validity-state-demo') }
-`,
+${ValidityStateTemplate('timepicker', '#timepicker-validity-state-demo')}
+  `,
 };

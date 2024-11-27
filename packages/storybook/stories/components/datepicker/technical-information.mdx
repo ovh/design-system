@@ -4,6 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { DatepickerFormatsTable } from '../../../src/components/datepickerFormatsTable/DatepickerFormatsTable';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { hideValidityStateSource } from '../../../src/components/validityState/validityState';
 import * as DatepickerStories from './datepicker.stories';
 import { Datepicker as FormFieldDatepicker } from '../form-field/form-field.stories';
 
@@ -88,7 +89,7 @@ Different token from the format:
 
 <Heading label="Validity State" level={ 3 } />
 
-<Canvas of={ DatepickerStories.ValidityState } sourceState="shown" />
+<Canvas of={ DatepickerStories.ValidityState } source={{ transform: hideValidityStateSource }} sourceState="shown" />
 
 <Heading label="Included in a Form Field" level={ 3 } />
 

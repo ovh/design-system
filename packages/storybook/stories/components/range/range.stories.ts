@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
-import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
+import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -13,23 +13,24 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (args) => {
+  render: (arg) => {
     return html`
     <ods-range
       class="my-range-demo"
-      has-error="${args.hasError}"
-      is-disabled="${args.isDisabled}"
-      is-required="${args.isRequired}"
-      max="${args.max}"
-      min="${args.min}"
-      step="${args.step}"
-    ></ods-range>
-    ${ ValidityStateTemplateDemo(args.validityState, args.isRequired, 'range', '.my-range-demo') }
+      has-error="${arg.hasError}"
+      is-disabled="${arg.isDisabled}"
+      is-required="${arg.isRequired}"
+      max="${arg.max}"
+      min="${arg.min}"
+      step="${arg.step}">
+    </ods-range>
+    ${arg.validityState ? ValidityStateTemplate('range', '.my-range-demo') : ''}
     <style>
       .my-range-demo::part(range) {
-        ${args.customCss}
+        ${arg.customCss}
       }
-    </style>`;
+    </style>
+    `;
   },
   argTypes: orderControls({
     customCss: {
@@ -354,9 +355,8 @@ export const StepDual: StoryObj = {
 export const ValidityState: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<div style="display: flex; flex-direction: column;">
 <ods-range is-required id="range-validity-state-demo">
 </ods-range>
-${ ValidityStateTemplateExample('range', '#range-validity-state-demo') }
-`,
+${ValidityStateTemplate('range', '#range-validity-state-demo')}
+  `,
 };

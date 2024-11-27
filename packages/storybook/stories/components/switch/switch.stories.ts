@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_SWITCH_SIZE, ODS_SWITCH_SIZES } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
-import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
+import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -13,18 +13,18 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (args) => {
+  render: (arg) => {
     return html`
     <ods-switch id="my-switch"
                 name="demo"
-                is-disabled="${args.isDisabled}"
-                is-required="${args.isRequired}"
-                size="${args.size}">
+                is-disabled="${arg.isDisabled}"
+                is-required="${arg.isRequired}"
+                size="${arg.size}">
       <ods-switch-item value="1">label1</ods-switch-item>
       <ods-switch-item value="2">label2</ods-switch-item>
       <ods-switch-item value="3">label3</ods-switch-item>
     </ods-switch>
-    ${ ValidityStateTemplateDemo(args.validityState, args.isRequired, 'switch', '#my-switch') }
+    ${arg.validityState ? ValidityStateTemplate('switch', '#my-switch') : ''}
   `;
   },
   argTypes: orderControls({
@@ -143,6 +143,6 @@ export const ValidityState: StoryObj = {
   <ods-switch-item value="2">label2</ods-switch-item>
   <ods-switch-item value="3">label3</ods-switch-item>
 </ods-switch>
-${ ValidityStateTemplateExample('switch', '#switch-validity-state-demo') }
-`,
+${ValidityStateTemplate('switch', '#switch-validity-state-demo')}
+  `,
 };

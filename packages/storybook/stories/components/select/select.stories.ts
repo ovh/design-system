@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
-import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
+import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -28,7 +28,7 @@ export const Demo: StoryObj = {
       <option value="spider">Spider</option>
       <option value="goldfish">Goldfish</option>
     </ods-select>
-    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'select', '.my-select-demo') }
+    ${arg.validityState ? ValidityStateTemplate('select', '.my-select-demo') : ''}
   `;
   },
   argTypes: orderControls({
@@ -109,7 +109,7 @@ export const DemoMultiple: StoryObj = {
       <option value="spider">Spider</option>
       <option value="goldfish">Goldfish</option>
     </ods-select>
-    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'select', '.my-select-demo-multiple') }
+    ${arg.validityState ? ValidityStateTemplate('select', '.my-select-demo-multiple') : ''}
   `;
   },
   argTypes: orderControls({
@@ -440,6 +440,6 @@ export const ValidityState: StoryObj = {
   <option value="spider">Spider</option>
   <option value="goldfish">Goldfish</option>
 </ods-select>
-${ ValidityStateTemplateExample('select', '#select-validity-state-demo') }
-`,
+${ValidityStateTemplate('select', '#select-validity-state-demo')}
+  `,
 };

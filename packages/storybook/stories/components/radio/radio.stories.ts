@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
-import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
+import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -12,22 +12,23 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (args) => {
+  render: (arg) => {
     return html`
     <ods-radio
-      ariaLabel="${args.ariaLabel}"
-      ariaLabelledby="${args.ariaLabelledby}"
+      ariaLabel="${arg.ariaLabel}"
+      ariaLabelledby="${arg.ariaLabelledby}"
       class="my-radio-demo"
       name="my-radio-demo"
-      is-disabled="${args.isDisabled}"
-      is-required="${args.isRequired}"
-    ></ods-radio>
-    ${ ValidityStateTemplateDemo(args.validityState, args.isRequired, 'radio', '.my-radio-demo') }
+      is-disabled="${arg.isDisabled}"
+      is-required="${arg.isRequired}">
+    </ods-radio>
+    ${arg.validityState ? ValidityStateTemplate('radio', '.my-radio-demo') : ''}
     <style>
       .my-radio-demo > input[type="radio"]:not(:disabled):checked {
-        ${args.customCss}
+        ${arg.customCss}
       }
-    </style>`;
+    </style>
+    `;
   },
   argTypes: orderControls({
     ariaLabel: {
@@ -272,6 +273,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-radio name="radio-validity-state-demo" is-required id="radio-validity-state-demo">
 </ods-radio>
-${ ValidityStateTemplateExample('radio', '#radio-validity-state-demo') }
-`,
+${ValidityStateTemplate('radio', '#radio-validity-state-demo')}
+  `,
 };

@@ -26,7 +26,7 @@ export class OdsInput {
 
   @AttachInternals() private internals!: ElementInternals;
 
-  @State() private isInvalid: boolean = false;
+  @State() private isInvalid: boolean | undefined;
   @State() private isPassword = false;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
@@ -278,7 +278,7 @@ export class OdsInput {
           class={{
             'ods-input__input': true,
             'ods-input__input--clearable': hasClearableIcon,
-            'ods-input__input--error': this.hasError || this.isInvalid,
+            'ods-input__input--error': this.hasError || !!this.isInvalid,
             'ods-input__input--loading': this.isLoading,
             'ods-input__input--search': hasSearchIcon,
             'ods-input__input--toggle-mask': hasToggleMaskIcon,

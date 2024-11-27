@@ -279,6 +279,26 @@ describe('ods-toggle validity', () => {
   });
 
   describe('watchers', () => {
+    describe('isInvalid', () => {
+      it('should triggers an odsInvalid event when value change', async() => {
+        await setup('<ods-toggle is-required value="true"></ods-toggle>');
+        const odsInvalidSpy = await page.spyOnEvent('odsInvalid');
+
+        await el.callMethod('clear');
+        await page.waitForChanges();
+
+        expect(odsInvalidSpy).toHaveReceivedEventTimes(1);
+        expect(odsInvalidSpy).toHaveReceivedEventDetail(true);
+
+        await el.click();
+        await page.click('body', { offset: { x: 200, y: 200 } }); // Blur
+        await page.waitForChanges();
+
+        expect(odsInvalidSpy).toHaveReceivedEventTimes(2);
+        expect(odsInvalidSpy).toHaveReceivedEventDetail(false);
+      });
+    });
+
     describe('is-required', () => {
       it('should update validity when is-required change', async() => {
         await setup('<ods-toggle is-required></ods-toggle>');

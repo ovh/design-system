@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html, nothing } from 'lit-html';
-import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
+import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -27,7 +27,7 @@ export const Demo: StoryObj = {
       pattern="${arg.pattern || nothing}"
       placeholder="${arg.placeholder}">
     </ods-password>
-    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'password', '.my-password') }
+    ${arg.validityState ? ValidityStateTemplate('password', '.my-password') : ''}
     <style>
       .my-password::part(input) {
         ${arg.customCss}
@@ -249,6 +249,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-password is-required id="password-validity-state-demo">
 </ods-password>
-${ ValidityStateTemplateExample('password', '#password-validity-state-demo') }
-`,
+${ValidityStateTemplate('password', '#password-validity-state-demo')}
+  `,
 };

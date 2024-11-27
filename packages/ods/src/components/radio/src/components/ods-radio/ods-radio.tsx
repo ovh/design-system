@@ -1,4 +1,4 @@
-import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, h } from '@stencil/core';
+import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsRadioChangeEventDetail } from '../../interfaces/events';
 
@@ -12,7 +12,7 @@ export class OdsRadio {
   private inputEl?: HTMLInputElement;
   private observer?: MutationObserver;
 
-  @State() private isInvalid: boolean = false;
+  @State() private isInvalid: boolean | undefined;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -102,6 +102,11 @@ export class OdsRadio {
     return this.inputEl?.willValidate;
   }
 
+  @Watch('isInvalid')
+  onIsInvalidChange(): void {
+    this.odsInvalid.emit(this.isInvalid);
+  }
+
   componentWillLoad(): void {
     this.observer = new MutationObserver((mutations: MutationRecord[]) => {
       for (const mutation of mutations) {
@@ -159,7 +164,6 @@ export class OdsRadio {
 
     // Enforce the state here as we may still be in pristine state (if the form is submitted before any changes occurs)
     this.isInvalid = true;
-    this.odsInvalid.emit(this.isInvalid);
   }
 
   render(): FunctionalComponent {
@@ -172,7 +176,7 @@ export class OdsRadio {
           aria-labelledby={ this.ariaLabelledby }
           class={{
             'ods-radio__radio': true,
-            'ods-radio__radio--error': this.isInvalid,
+            'ods-radio__radio--error': !!this.isInvalid,
           }}
           checked={ this.isChecked }
           disabled={ this.isDisabled }

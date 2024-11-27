@@ -49,7 +49,7 @@ export class OdsDatepicker {
 
   @AttachInternals() internals!: ElementInternals;
 
-  @State() private isInvalid: boolean = false;
+  @State() private isInvalid: boolean | undefined;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -74,6 +74,7 @@ export class OdsDatepicker {
   @Event() odsChange!: EventEmitter<OdsDatepickerChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsInvalid!: EventEmitter<boolean>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Listen('invalid')
@@ -165,6 +166,11 @@ export class OdsDatepicker {
   @Watch('format')
   onFormatChange(): void {
     this.datepickerInstance?.setOptions({ format: this.format });
+  }
+
+  @Watch('isInvalid')
+  onIsInvalidChange(): void {
+    this.odsInvalid.emit(this.isInvalid);
   }
 
   @Watch('locale')
@@ -330,7 +336,7 @@ export class OdsDatepicker {
           class={{
             'ods-datepicker__input': true,
             'ods-datepicker__input--clearable': hasClearableAction,
-            'ods-datepicker__input--error': this.hasError || this.isInvalid,
+            'ods-datepicker__input--error': this.hasError || !!this.isInvalid,
             'ods-datepicker__input--loading': this.isLoading,
           }}
           disabled={ this.isDisabled }

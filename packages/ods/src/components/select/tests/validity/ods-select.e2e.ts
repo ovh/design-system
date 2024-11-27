@@ -338,6 +338,23 @@ describe('ods-select validity', () => {
 
         expect(await el.callMethod('checkValidity')).toBe(false);
       });
+
+      it('should triggers an odsInvalid event when is-required change', async() => {
+        await setup('<ods-select><option value="1">1</option></ods-select>');
+        const odsInvalidSpy = await page.spyOnEvent('odsInvalid');
+
+        await el.setAttribute('is-required', 'true');
+        await page.waitForChanges();
+
+        expect(odsInvalidSpy).toHaveReceivedEventTimes(1);
+        expect(odsInvalidSpy).toHaveReceivedEventDetail(true);
+
+        await el.removeAttribute('is-required');
+        await page.waitForChanges();
+
+        expect(odsInvalidSpy).toHaveReceivedEventTimes(2);
+        expect(odsInvalidSpy).toHaveReceivedEventDetail(false);
+      });
     });
   });
 });

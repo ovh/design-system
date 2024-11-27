@@ -1,4 +1,4 @@
-import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, h } from '@stencil/core';
+import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsCheckboxChangeEventDetail } from '../../interfaces/event';
 
@@ -12,7 +12,7 @@ export class OdsCheckbox {
   private inputEl?: HTMLInputElement;
   private observer?: MutationObserver;
 
-  @State() private isInvalid: boolean = false;
+  @State() private isInvalid: boolean | undefined;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -28,6 +28,7 @@ export class OdsCheckbox {
   @Event() odsChange!: EventEmitter<OdsCheckboxChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsInvalid!: EventEmitter<boolean>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
@@ -95,6 +96,11 @@ export class OdsCheckbox {
   @Method()
   public async willValidate(): Promise<boolean | undefined> {
     return this.inputEl?.willValidate;
+  }
+
+  @Watch('isInvalid')
+  onIsInvalidChange(): void {
+    this.odsInvalid.emit(this.isInvalid);
   }
 
   componentWillLoad(): void {
@@ -178,7 +184,7 @@ export class OdsCheckbox {
           aria-labelledby={ this.ariaLabelledby }
           class={{
             'ods-checkbox__checkbox': true,
-            'ods-checkbox__checkbox--error': this.isInvalid,
+            'ods-checkbox__checkbox--error': !!this.isInvalid,
           }}
           checked={ this.isChecked }
           disabled={ this.isDisabled }

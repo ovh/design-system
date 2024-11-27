@@ -3,6 +3,7 @@ import SpecificationsRadio from '@ovhcloud/ods-components/src/components/radio/d
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { hideValidityStateSource } from '../../../src/components/validityState/validityState';
 import * as RadioStories from './radio.stories';
 import { Radio as FormFieldRadio } from '../form-field/form-field.stories';
 
@@ -75,7 +76,7 @@ The `id` is encapsulated by the `input-id` attribute. This way you can link a la
 
 <Heading label="Validity State" level={ 3 } />
 
-<Canvas of={ RadioStories.ValidityState } sourceState="shown" />
+<Canvas of={ RadioStories.ValidityState } source={{ transform: hideValidityStateSource }} sourceState="shown" />
 
 <Heading label="Included in a Form Field" level={ 3 } />
 

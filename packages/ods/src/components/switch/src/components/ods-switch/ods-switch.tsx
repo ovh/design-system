@@ -12,7 +12,7 @@ import { type OdsSwitchChangeEventDetail } from '../../interfaces/events';
 export class OdsSwitch {
   @Element() el!: HTMLElement;
 
-  @State() private isInvalid: boolean = false;
+  @State() private isInvalid: boolean | undefined;
 
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
@@ -23,10 +23,30 @@ export class OdsSwitch {
   @Event() odsChange!: EventEmitter<OdsSwitchChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<CustomEvent<void>>;
+  @Event() odsInvalid!: EventEmitter<boolean>;
   @Event() odsReset!: EventEmitter<void>;
 
-  @Listen('odsInvalid')
+  @Listen('odsSwitchItemBlur')
+  onOdsSwitchItemBlur(event: CustomEvent<void>): void {
+    event.stopImmediatePropagation();
+    this.odsBlur.emit();
+  }
+
+  @Listen('odsSwitchItemChange')
+  onOdsSwitchItemChange(event: CustomEvent<OdsSwitchChangeEventDetail>): void {
+    event.stopImmediatePropagation();
+    this.odsChange.emit(event.detail);
+  }
+
+  @Listen('odsSwitchItemFocus')
+  onOdsSwitchItemFocus(event: CustomEvent<void>): void {
+    event.stopImmediatePropagation();
+    this.odsFocus.emit();
+  }
+
+  @Listen('odsSwitchItemInvalid')
   onOdsInvalid(event: CustomEvent<boolean>): void {
+    event.stopImmediatePropagation();
     this.isInvalid = event.detail;
   }
 
@@ -89,6 +109,11 @@ export class OdsSwitch {
     propagateIsDisabled(value, Array.from(this.el.children));
   }
 
+  @Watch('isInvalid')
+  onIsInvalidChange(): void {
+    this.odsInvalid.emit(this.isInvalid);
+  }
+
   @Watch('isRequired')
   onIsRequiredChange(value: boolean): void {
     propagateIsRequired(value, Array.from(this.el.children));
@@ -126,7 +151,7 @@ export class OdsSwitch {
       <Host
         class={{
           [`ods-switch ods-switch--${this.size}`]: true,
-          'ods-switch--error': this.isInvalid,
+          'ods-switch--error': !!this.isInvalid,
         }}
         disabled={ this.isDisabled }>
         <slot onSlotchange={ () => this.init() }></slot>

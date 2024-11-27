@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, ODS_PHONE_NUMBER_LOCALES } from '@ovhcloud/ods-components';
 import { html, nothing } from 'lit-html';
-import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
+import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -29,7 +29,7 @@ export const Demo: StoryObj = {
                       locale="${arg.locale}"
                       pattern="${arg.pattern || nothing}">
     </ods-phone-number>
-    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'phone-number', '.my-phone-number') }
+    ${arg.validityState ? ValidityStateTemplate('phone-number', '.my-phone-number') : ''}
     <style>
       .my-phone-number::part(input) {
         ${arg.customInputCss}
@@ -320,7 +320,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-phone-number is-required id="phone-number-validity-state-demo">
 </ods-phone-number>
-${ ValidityStateTemplateExample('phone-number', '#phone-number-validity-state-demo') }
-
-`,
+${ValidityStateTemplate('phone-number', '#phone-number-validity-state-demo')}
+  `,
 };

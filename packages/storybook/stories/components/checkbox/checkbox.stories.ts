@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
-import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
+import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -12,20 +12,20 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (args) => {
+  render: (arg) => {
     return html`
     <ods-checkbox
-      aria-label="${args.ariaLabel}"
-      aria-labelledby="${args.ariaLabelledby}"
+      aria-label="${arg.ariaLabel}"
+      aria-labelledby="${arg.ariaLabelledby}"
       class="my-checkbox-demo"
-      is-disabled="${args.isDisabled}"
-      is-indeterminate="${args.isIndeterminate}"
-      is-required="${args.isRequired}"
+      is-disabled="${arg.isDisabled}"
+      is-indeterminate="${arg.isIndeterminate}"
+      is-required="${arg.isRequired}"
     ></ods-checkbox>
-    ${ ValidityStateTemplateDemo(args.validityState, args.isRequired, 'checkbox', '.my-checkbox-demo') }
+    ${arg.validityState ? ValidityStateTemplate('checkbox', '.my-checkbox-demo') : ''}
     <style>
       .my-checkbox-demo > input[type="checkbox"]:not(:disabled):checked {
-        ${args.customCss}
+        ${arg.customCss}
       }
     </style>`;
   },
@@ -186,6 +186,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-checkbox is-required id="checkbox-validity-state-demo">
 </ods-checkbox>
-${ ValidityStateTemplateExample('checkbox', '#checkbox-validity-state-demo') }
-`,
+${ValidityStateTemplate('checkbox', '#checkbox-validity-state-demo')}
+  `,
 };

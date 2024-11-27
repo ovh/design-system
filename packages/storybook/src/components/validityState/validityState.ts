@@ -1,83 +1,67 @@
 import { type TemplateResult, html } from 'lit-html';
 
-type OdsComponent = {
-  getValidity: () => ValidityState,
-} & HTMLElement
-
-let oldIsRequired: boolean;
-const odsTable = html`
-<ods-table id="validity-state-table" size="sm">
-  <table style="width: 200px">
-    <thead>
-      <tr>
-        <th scope="col">Key</th>
-        <th scope="col">Value</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-</ods-table>`;
-
-function ValidityStateTemplateDemo(hasValidityState: boolean, isRequired: boolean, componentName: string, componentSelector: string): TemplateResult | string {
-  return hasValidityState ? ValidityStateTemplateExample(componentName, componentSelector) : '';
+function hideValidityStateSource(code: string): string {
+  return code
+    .replace(/<ods-table\b[^<]*(?:(?!<\/ods-table>)<[^<]*)*<\/ods-table>/gi, '')
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
 }
 
-function ValidityStateTemplateExample(componentName: string, componentSelector: string): TemplateResult | string {
-  const validityStateTemplate = html`
-  ${ odsTable }
-  <script>
-    (async () => {
+function ValidityStateTemplate(componentName: string, componentSelector: string): TemplateResult {
+  const tableId = `validity-state-table-${Date.now()}`;
+
+  return html`
+    <ods-table size="sm">
+      <table id="${tableId}"
+             style="margin-top: 10px; width: 200px">
+      </table>
+    </ods-table>
+    <script>
+      (async () => {
+        function buildTable(table, validity) {
+          const tr = [];
+          const header = '<thead><tr><th scope="col">Key</th><th scope="col">Value</th></tr></thead>';
+
+          for (const key in validity) {
+            tr.push({
+              key,
+              template: '<tr><th scope="row" style="text-align: initial">'+key+'</th><td>'+validity[key]+'</td></tr>',
+            });
+          }
+
+          table.innerHTML = header+'<tbody>'+tr.sort((a, b) => a.key.localeCompare(b.key)).map(({ template }) => template).join('')+'</tbody>';
+        }
+
         await Promise.all([
           await customElements.whenDefined('ods-table'),
           await customElements.whenDefined('ods-${componentName}'),
         ]);
-        await window.renderValidityState('${componentSelector}');
-    })();
-  </script>`;
-  return validityStateTemplate;
+
+        const component = document.querySelector('${componentSelector}');
+        const table = document.querySelector('#${tableId}');
+
+        if (component && table) {
+          component.addEventListener('odsChange', (e) => {
+            buildTable(table, e.detail.validity);
+          });
+
+          component.addEventListener('odsInvalid', async() => {
+            // Delay needed for composed components to wait for the validity to be updated up to the host
+            setTimeout(async() => {
+              buildTable(table, await component.getValidity());
+            }, 0);
+          });
+
+          // TODO investigate, delay needed for checkbox/radio component, otherwise their input ref is not yet defined
+          setTimeout(async() => {
+            buildTable(table, await component.getValidity());
+          }, 0);
+        }
+      })();
+    </script>
+  `;
 }
-
-async function renderValidityState(componentSelector: string): Promise<void> {
-  const component = document.querySelector<OdsComponent>(componentSelector);
-  const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(async(mutation) => {
-      if (mutation.type === 'attributes' && mutation.attributeName === 'is-required') {
-        setTimeout(async() => await buildTable(component), 10);
-      }
-    });
-  });
-
-  component && observer.observe(component, {
-    attributeFilter: ['is-required'],
-    attributes: true,
-  });
-
-  component?.addEventListener('odsChange', async() => {
-    await buildTable(component);
-  });
-
-  await buildTable(component);
-}
-
-async function buildTable(component: OdsComponent | null): Promise<void> {
-  const validity = await component?.getValidity();
-  const validityStateElement = document.querySelector('#validity-state-table');
-  const tr = [];
-  for (const key in validity) {
-    tr.push({ key, template: `<tr><th scope="row" style="text-align: initial">${key}</th><td>${validity[key as keyof ValidityState]}</td></tr>` } );
-  }
-  const tbody = validityStateElement?.querySelector('tbody');
-  if (tbody) {
-    tbody.innerHTML = '';
-    tbody.innerHTML = tr.sort((a, b) => a.key.localeCompare(b.key)).map(({ template }) => template).join('');
-  }
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-(window as any).renderValidityState = renderValidityState;
 
 export {
-  ValidityStateTemplateDemo,
-  ValidityStateTemplateExample,
+  hideValidityStateSource,
+  ValidityStateTemplate,
 };

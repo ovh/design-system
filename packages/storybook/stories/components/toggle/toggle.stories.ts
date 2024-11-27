@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
-import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
+import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -19,7 +19,7 @@ export const Demo: StoryObj = {
       is-required=${arg.isRequired}
       with-label=${arg.withLabel}>
     </ods-toggle>
-    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'toggle', '.my-toggle-demo') }
+    ${arg.validityState ? ValidityStateTemplate('toggle', '.my-toggle-demo') : ''}
     <style>
       .my-toggle-demo::part(slider) {
         ${arg.CustomCssSlider}
@@ -45,7 +45,7 @@ export const Demo: StoryObj = {
         ${arg.CustomCssLabelChecked}
       }
     </style>
-  `;
+    `;
   },
   argTypes: orderControls({
     CustomCssLabel: {
@@ -219,7 +219,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-toggle is-required id="toggle-validity-state-demo">
 </ods-toggle>
-${ ValidityStateTemplateExample('toggle', '#toggle-validity-state-demo') }
-
-`,
+${ValidityStateTemplate('toggle', '#toggle-validity-state-demo')}
+  `,
 };

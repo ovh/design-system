@@ -4,6 +4,7 @@ import SpecificationsPhoneNumber from '@ovhcloud/ods-components/src/components/p
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { hideValidityStateSource } from '../../../src/components/validityState/validityState';
 import * as PhoneNumberStories from './phone-number.stories';
 import { PhoneNumber as FormFieldPhoneNumber } from '../form-field/form-field.stories';
 
@@ -76,7 +77,7 @@ With this pattern setting, the component will only allow for numeric characters:
 
 <Heading label="Validity State" level={ 3 } />
 
-<Canvas of={ PhoneNumberStories.ValidityState } sourceState="shown" />
+<Canvas of={ PhoneNumberStories.ValidityState } source={{ transform: hideValidityStateSource }} sourceState="shown" />
 
 <Heading label="Included in a Form Field" level={ 3 } />
 

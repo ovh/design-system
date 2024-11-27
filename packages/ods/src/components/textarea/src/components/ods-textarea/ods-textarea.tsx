@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { VALUE_DEFAULT_VALUE, getInitialValue, updateInternals } from '../../controller/ods-textarea';
 import { type OdsTextareaChangeEventDetail } from '../../interfaces/events';
 
@@ -19,7 +19,7 @@ export class OdsTextarea {
 
   @AttachInternals() private internals!: ElementInternals;
 
-  @State() isInvalid: boolean = false;
+  @State() isInvalid: boolean | undefined;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -40,6 +40,7 @@ export class OdsTextarea {
   @Event() odsChange!: EventEmitter<OdsTextareaChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsInvalid!: EventEmitter<boolean>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Listen('invalid')
@@ -97,6 +98,11 @@ export class OdsTextarea {
   @Method()
   public async willValidate(): Promise<boolean> {
     return this.internals.willValidate;
+  }
+
+  @Watch('isInvalid')
+  onIsInvalidChange(): void {
+    this.odsInvalid.emit(this.isInvalid);
   }
 
   componentWillLoad(): void {
@@ -191,7 +197,7 @@ export class OdsTextarea {
           aria-multiline={ true }
           class={{
             'ods-textarea__textarea': true,
-            'ods-textarea__textarea--error': this.hasError || this.isInvalid,
+            'ods-textarea__textarea--error': this.hasError || !!this.isInvalid,
             'ods-textarea__textarea--resizable': this.isResizable,
           }}
           cols={ this.cols }

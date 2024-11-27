@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES } from '@ovhcloud/ods-components';
 import { Datepicker } from 'vanillajs-datepicker';
 import { html, nothing } from 'lit-html';
-import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
+import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -32,7 +32,7 @@ export const Demo: StoryObj = {
       min="${arg.min ? Datepicker.formatDate(arg.min, arg.format || 'dd/mm/yyyy') : nothing}"
       placeholder="${arg.placeholder}">
     </ods-datepicker>
-    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'datepicker', '.my-datepicker') }
+    ${arg.validityState ? ValidityStateTemplate('datepicker', '.my-datepicker') : ''}
     `;
   },
   argTypes: orderControls({
@@ -294,7 +294,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-datepicker is-required id="datepicker-validity-state-demo">
 </ods-datepicker>
-${ ValidityStateTemplateExample('datepicker', '#datepicker-validity-state-demo') }
-
-`,
+${ValidityStateTemplate('datepicker', '#datepicker-validity-state-demo')}
+  `,
 };

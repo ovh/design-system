@@ -3,6 +3,7 @@ import SpecificationsSwitch from '@ovhcloud/ods-components/src/components/switch
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { hideValidityStateSource } from '../../../src/components/validityState/validityState';
 import * as SwitchStories from './switch.stories';
 import { Switch as FormFieldSwitch } from '../form-field/form-field.stories';
 
@@ -36,7 +37,7 @@ import { Switch as FormFieldSwitch } from '../form-field/form-field.stories';
 
 <Heading label="Validity State" level={ 3 } />
 
-<Canvas of={ SwitchStories.ValidityState } sourceState="shown" />
+<Canvas of={ SwitchStories.ValidityState } source={{ transform: hideValidityStateSource }} sourceState="shown" />
 
 <Heading label="Included in a Form Field" level={ 3 } />
 

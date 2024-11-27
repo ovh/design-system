@@ -3,6 +3,7 @@ import SpecificationsCheckbox from '@ovhcloud/ods-components/src/components/chec
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { hideValidityStateSource } from '../../../src/components/validityState/validityState';
 import * as CheckboxStories from './checkbox.stories';
 import { Checkbox as FormFieldCheckbox } from '../form-field/form-field.stories';
 
@@ -65,7 +66,7 @@ The `id` is encapsulated by the `input-id` attribute. This way you can link a la
 
 <Heading label="Validity State" level={ 3 } />
 
-<Canvas of={ CheckboxStories.ValidityState } sourceState="shown" />
+<Canvas of={ CheckboxStories.ValidityState } source={{ transform: hideValidityStateSource }} sourceState="shown" />
 
 <Heading label="Included in a Form Field" level={ 3 } />
 

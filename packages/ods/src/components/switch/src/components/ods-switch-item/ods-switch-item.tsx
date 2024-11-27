@@ -23,13 +23,13 @@ export class OdsSwitchItem {
   @Prop({ reflect: true }) public value: string | null = null;
 
   /** @internal */
-  @Event() odsBlur!: EventEmitter<void>;
+  @Event() odsSwitchItemBlur!: EventEmitter<void>;
   /** @internal */
-  @Event() odsChange!: EventEmitter<OdsSwitchChangeEventDetail>;
+  @Event() odsSwitchItemChange!: EventEmitter<OdsSwitchChangeEventDetail>;
   /** @internal */
-  @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsSwitchItemFocus!: EventEmitter<void>;
   /** @internal */
-  @Event() odsInvalid!: EventEmitter<boolean>;
+  @Event() odsSwitchItemInvalid!: EventEmitter<boolean>;
 
   @Method()
   async clear(): Promise<void> {
@@ -91,6 +91,9 @@ export class OdsSwitchItem {
           case 'is-required':
             this.isRequired = this.el.getAttribute('is-required') === '';
             break;
+          case 'required':
+            this.odsSwitchItemInvalid.emit(!this.inputEl?.validity.valid);
+            break;
           default:
             break;
         }
@@ -101,8 +104,14 @@ export class OdsSwitchItem {
   componentDidLoad(): void {
     this.observer?.observe(this.el, {
       attributeFilter: ['input-id', 'is-disabled', 'is-required'],
-      attributes: true,
     });
+
+    if (this.inputEl) {
+      this.observer?.observe(this.inputEl, {
+        attributeFilter: ['required'],
+        attributeOldValue: false,
+      });
+    }
   }
 
   disconnectedCallback(): void {
@@ -126,12 +135,12 @@ export class OdsSwitchItem {
   }
 
   private onBlur(): void {
-    this.odsInvalid.emit(!this.inputEl!.validity.valid);
-    this.odsBlur.emit();
+    this.odsSwitchItemInvalid.emit(!this.inputEl!.validity.valid);
+    this.odsSwitchItemBlur.emit();
   }
 
   private onInput(event: Event): void {
-    this.odsChange.emit({
+    this.odsSwitchItemChange.emit({
       name: this.el.getAttribute('name') || '',
       validity:  this.inputEl?.validity,
       value: (event.target as HTMLInputElement)?.checked ? this.value : null,
@@ -142,7 +151,7 @@ export class OdsSwitchItem {
     // Remove the native validation message popup
     event.preventDefault();
 
-    this.odsInvalid.emit(true);
+    this.odsSwitchItemInvalid.emit(true);
   }
 
   render(): FunctionalComponent {
@@ -173,7 +182,7 @@ export class OdsSwitchItem {
           }}
           htmlFor={ this.inputId }
           onBlur={ (): void => this.onBlur() }
-          onFocus={ () => this.odsFocus.emit() }
+          onFocus={ () => this.odsSwitchItemFocus.emit() }
           onKeyDown={ (e: KeyboardEvent) => this.handleKeyDown(e) }
           onKeyUp={ (event: KeyboardEvent) => this.handleKeyUp(event) }
           ref={ (el?: HTMLElement) => this.labelEl = el as HTMLLabelElement }

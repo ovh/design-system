@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_INPUT_TYPE, ODS_INPUT_TYPES } from '@ovhcloud/ods-components';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { html, nothing } from 'lit-html';
-import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
+import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -36,7 +36,7 @@ export const Demo: StoryObj = {
       step="${arg.step || nothing }"
       type="${arg.type || nothing }">
     </ods-input>
-    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'input', '.my-input') }
+    ${arg.validityState ? ValidityStateTemplate('input', '.my-input') : ''}
     <style>
       .my-input::part(input) {
         ${arg.customCss}
@@ -347,7 +347,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-input is-required id="input-validity-state-demo">
 </ods-input>
-${ ValidityStateTemplateExample('input', '#input-validity-state-demo') }
-
-`,
+${ValidityStateTemplate('input', '#input-validity-state-demo')}
+  `,
 };

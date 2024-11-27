@@ -17,6 +17,7 @@ type FormData = {
   quantity: number,
   radio: string,
   range: number,
+  rangeDual: [number, number],
   select: string,
   switch: string,
   textarea: string,
@@ -35,6 +36,7 @@ const validationSchema = yup.object<FormData>({
   radio: yup.string().nullable(),//.required(),
   radioTest: yup.string().nullable(),//.required(),
   range: yup.number().nullable(),//.required(),
+  rangeDual: yup.array().of(yup.number()).length(2).nullable(),//.required(),
   select: yup.string().nullable(),//.required(),
   switch: yup.string().nullable(),//.required(),
   textarea: yup.string().nullable(),//.required(),
@@ -56,6 +58,7 @@ function FormFormik(): ReactElement {
       quantity: 0,
       radio: 'radio1',
       range: 0,
+      rangeDual: [0, 1],
       select: 'cat',
       switch: 'switch1',
       textarea: 'default textarea',
@@ -238,9 +241,19 @@ function FormFormik(): ReactElement {
 
       <div style={{ display: 'inline-flex' }}>
         <OdsRange
+          defaultValue={ formik.initialValues.range }
           hasError={ formik.touched.range && !!formik.errors.range }
           isRequired={ areAllRequired }
           name="range"
+          onOdsBlur={ formik.handleBlur }
+          onOdsChange={ formik.handleChange}
+        ></OdsRange>
+
+        <OdsRange
+          defaultValue={ formik.initialValues.rangeDual as [number, number] & string }
+          hasError={ formik.touched.rangeDual && !!formik.errors.rangeDual }
+          isRequired={ areAllRequired }
+          name="rangeDual"
           onOdsBlur={ formik.handleBlur }
           onOdsChange={ formik.handleChange}
         ></OdsRange>

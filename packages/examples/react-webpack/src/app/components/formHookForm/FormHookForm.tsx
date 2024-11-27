@@ -16,6 +16,7 @@ type FormData = {
   quantity: number,
   radio: string,
   range: number,
+  rangeDual: [number, number],
   select: string,
   switch: string,
   textarea: string,
@@ -35,6 +36,7 @@ const defaultValue: FormData = {
   quantity: 0,
   radio: 'radio1',
   range: 0,
+  rangeDual: [0, 30],
   select: 'cat',
   switch: 'switch1',
   textarea: 'default textarea',
@@ -314,6 +316,22 @@ function FormHookForm(): ReactElement {
             </OdsRange>
           }
         />
+
+        <Controller
+          control={ control }
+          name="rangeDual"
+          rules={{ required: areAllRequired }}
+          render={({ field }) =>
+            <OdsRange
+              defaultValue={ defaultValue.rangeDual as [number, number] & string }
+              isRequired={ areAllRequired }
+              name={ field.name }
+              onOdsBlur={ field.onBlur }
+              onOdsChange={ field.onChange }
+            >
+            </OdsRange>
+          }
+        />
       </div>
 
       <Controller
@@ -328,12 +346,12 @@ function FormHookForm(): ReactElement {
             onOdsBlur={ field.onBlur }
             onOdsChange={ field.onChange }
           >
-              <option value="dog">Dog</option>
-              <option value="cat">Cat</option>
-              <option value="hamster">Hamster</option>
-              <option value="parrot">Parrot</option>
-              <option value="spider">Spider</option>
-              <option value="goldfish">Goldfish</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="hamster">Hamster</option>
+            <option value="parrot">Parrot</option>
+            <option value="spider">Spider</option>
+            <option value="goldfish">Goldfish</option>
           </OdsSelect>
         }
       />

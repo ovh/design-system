@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
-import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
+import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -27,13 +27,14 @@ export const Demo: StoryObj = {
                   placeholder="${arg.placeholder}"
                   rows="${arg.rows}">
     </ods-textarea>
-    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'textarea', '.my-textarea') }
+    ${arg.validityState ? ValidityStateTemplate('textarea', '.my-textarea') : ''}
     <style>
       .my-textarea::part(textarea) {
         ${arg.customCss}
       }
     </style>
-  `},
+    `;
+  },
   argTypes: orderControls({
     ariaLabel: {
       table: {
@@ -256,7 +257,7 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-textarea is-required id="textarea-validity-state-demo">
 </ods-textarea>
-${ ValidityStateTemplateExample('textarea', '#textarea-validity-state-demo') }
-`,
+${ValidityStateTemplate('textarea', '#textarea-validity-state-demo')}
+  `,
 };
 

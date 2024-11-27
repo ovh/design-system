@@ -35,6 +35,11 @@ describe('ods-toggle behaviour', () => {
         expect(await el.getProperty('value')).toBe(true);
         expect(sliderHasClassCheck).toBe(true);
         expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventDetail({
+          previousValue: false,
+          validity: {},
+          value: true,
+        });
       });
 
       it('should not toggle value if disabled', async() => {

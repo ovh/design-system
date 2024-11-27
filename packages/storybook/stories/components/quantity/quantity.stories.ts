@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
-import { ValidityStateTemplateDemo, ValidityStateTemplateExample } from '../../../src/components/validityState/validityState';
+import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -14,7 +14,7 @@ export default meta;
 export const Demo: StoryObj = {
   render: (arg) => {
     return html`
-  <ods-quantity class="my-quantity"
+    <ods-quantity class="my-quantity"
       ariaLabel="${arg.ariaLabel}"
       ariaLabelledby="${arg.ariaLabelledby}"
       has-error="${arg.hasError}"
@@ -26,20 +26,20 @@ export const Demo: StoryObj = {
       min="${arg.min}"
       placeholder="${arg.placeholder}"
       step="${arg.step}">
-      </ods-quantity>
-    ${ ValidityStateTemplateDemo(arg.validityState, arg.isRequired, 'quantity', '.my-quantity') }
-  <style>
-    .my-quantity::part(input) {
-      ${arg.customCssInput}
-    }
-    .my-quantity::part(button-minus) {
-      ${arg.customCssButtonMinus}
-    }
-    .my-quantity::part(button-plus) {
-      ${arg.customCssButtonAdd}
-    }
-  </style>
-  `;
+    </ods-quantity>
+    ${arg.validityState ? ValidityStateTemplate('quantity', '.my-quantity') : ''}
+    <style>
+      .my-quantity::part(input) {
+        ${arg.customCssInput}
+      }
+      .my-quantity::part(button-minus) {
+        ${arg.customCssButtonMinus}
+      }
+      .my-quantity::part(button-plus) {
+        ${arg.customCssButtonAdd}
+      }
+    </style>
+    `;
   },
   argTypes: orderControls({
     ariaLabel: {
@@ -250,6 +250,6 @@ export const ValidityState: StoryObj = {
   render: () => html`
 <ods-quantity is-required id="quantity-validity-state-demo">
 </ods-quantity>
-${ ValidityStateTemplateExample('quantity', '#quantity-validity-state-demo') }
-`,
+${ValidityStateTemplate('quantity', '#quantity-validity-state-demo')}
+  `,
 };

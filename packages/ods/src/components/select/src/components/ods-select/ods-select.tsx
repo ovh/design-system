@@ -30,7 +30,7 @@ export class OdsSelect {
 
   @AttachInternals() private internals!: ElementInternals;
 
-  @State() isInvalid: boolean = false;
+  @State() isInvalid: boolean | undefined;
 
   @Prop({ reflect: true }) public allowMultiple: boolean = false;
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
@@ -54,6 +54,7 @@ export class OdsSelect {
   @Event() odsChange!: EventEmitter<OdsSelectChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsInvalid!: EventEmitter<boolean>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Listen('invalid')
@@ -144,6 +145,11 @@ export class OdsSelect {
     } else {
       this.select?.enable();
     }
+  }
+
+  @Watch('isInvalid')
+  onIsInvalidChange(): void {
+    this.odsInvalid.emit(this.isInvalid);
   }
 
   @Watch('isReadonly')
@@ -396,7 +402,7 @@ export class OdsSelect {
           'ods-select': true,
           'ods-select--disabled': this.isDisabled,
           'ods-select--dropdown-width-auto': this.dropdownWidth === 'auto',
-          'ods-select--error': this.hasError || this.isInvalid,
+          'ods-select--error': this.hasError || !!this.isInvalid,
           [`ods-select--border-rounded-${this.borderRounded}`]: true,
         }}
         disabled={ this.isDisabled }

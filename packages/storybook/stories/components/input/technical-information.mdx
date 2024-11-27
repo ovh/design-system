@@ -3,6 +3,7 @@ import SpecificationsInput from '@ovhcloud/ods-components/src/components/input/d
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { hideValidityStateSource } from '../../../src/components/validityState/validityState';
 import * as InputStories from './input.stories';
 import { Input as FormFieldInput } from '../form-field/form-field.stories';
 
@@ -70,7 +71,7 @@ Allow just numeric character
 
 <Heading label="Validity State" level={ 3 } />
 
-<Canvas of={ InputStories.ValidityState } sourceState="shown" />
+<Canvas of={ InputStories.ValidityState } source={{ transform: hideValidityStateSource }} sourceState="shown" />
 
 <Heading label="Included in a Form Field" level={ 3 } />
 

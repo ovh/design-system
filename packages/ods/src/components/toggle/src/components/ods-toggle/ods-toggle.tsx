@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { updateInternals } from '../../controller/ods-toggle';
 import { type OdsToggleChangeEventDetail } from '../../interfaces/event';
@@ -20,10 +20,9 @@ export class OdsToggle {
 
   @AttachInternals() private internals!: ElementInternals;
 
-  @State() private isInvalid: boolean = false;
+  @State() private isInvalid: boolean | undefined;
 
   @Prop({ reflect: true }) public defaultValue?: boolean;
-  // @Prop({ reflect: true }) public hasError: boolean = false; // Necessary ?
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
   @Prop({ reflect: true }) public name!: string;
@@ -34,6 +33,7 @@ export class OdsToggle {
   @Event() odsChange!: EventEmitter<OdsToggleChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsInvalid!: EventEmitter<boolean>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Listen('invalid')
@@ -91,6 +91,11 @@ export class OdsToggle {
   @Method()
   public async willValidate(): Promise<boolean> {
     return this.internals.willValidate;
+  }
+
+  @Watch('isInvalid')
+  onIsInvalidChange(): void {
+    this.odsInvalid.emit(this.isInvalid);
   }
 
   componentWillLoad(): void {
@@ -162,6 +167,7 @@ export class OdsToggle {
     this.odsChange.emit({
       name: this.name,
       previousValue: !this.value,
+      validity: this.internals.validity,
       value: this.value ?? false,
     });
   }
@@ -190,7 +196,7 @@ export class OdsToggle {
             'ods-toggle__container__slider': true,
             'ods-toggle__container__slider--checked': this.value ?? false,
             'ods-toggle__container__slider--disabled': this.isDisabled,
-            'ods-toggle__container__slider--error': this.isInvalid,
+            'ods-toggle__container__slider--error': !!this.isInvalid,
           }}
           part={ `slider ${this.value ? 'checked' : ''}` }>
             {

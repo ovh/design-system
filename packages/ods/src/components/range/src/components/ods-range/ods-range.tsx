@@ -27,7 +27,7 @@ export class OdsRange {
   @State() private dualValue?: number;
   @State() private currentValue?: number;
   @State() private isDualRange: boolean = false;
-  @State() private isInvalid: boolean = false;
+  @State() private isInvalid: boolean | undefined;
 
   @Element() el!: HTMLElement;
 
@@ -47,6 +47,7 @@ export class OdsRange {
   @Event() odsChange!: EventEmitter<OdsRangeChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsInvalid!: EventEmitter<boolean>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Listen('invalid')
@@ -113,6 +114,11 @@ export class OdsRange {
   @Method()
   public async willValidate(): Promise<boolean> {
     return this.internals.willValidate;
+  }
+
+  @Watch('isInvalid')
+  onIsInvalidChange(): void {
+    this.odsInvalid.emit(this.isInvalid);
   }
 
   @Watch('min')
@@ -204,6 +210,14 @@ export class OdsRange {
     await this.reset();
   }
 
+  private emitOdsChange(): void {
+    this.odsChange.emit({
+      name: this.name,
+      validity: this.internals.validity,
+      value: this.value,
+    });
+  }
+
   private fillInputs(currentValue: number | null, dualValue?: number | null): number | [number, number]| [null, null] | undefined {
     let value: number | [number, number] | [null, null] | undefined;
 
@@ -218,12 +232,12 @@ export class OdsRange {
     return value;
   }
 
-  private emitOdsChange(): void {
-    this.odsChange.emit({
-      name: this.name,
-      validity: this.internals.validity,
-      value: this.value,
-    });
+  private hideTooltip(): void {
+    this.tooltip?.hide();
+  }
+
+  private hideTooltipDual(): void {
+    this.tooltipDual?.hide();
   }
 
   private onBlur(): void {
@@ -253,16 +267,10 @@ export class OdsRange {
     }
   }
 
-  private hideTooltip(): void {
-    this.tooltip?.hide();
-  }
-
-  private hideTooltipDual(): void {
-    this.tooltipDual?.hide();
-  }
-
-  private showTooltip(): void {
-    this.tooltip?.show();
+  private setInputElDualValue(step : number): void {
+    if (this.inputEl && this.inputElDual) {
+      this.inputElDual.valueAsNumber = (this.inputEl?.valueAsNumber ?? 0) + step;
+    }
   }
 
   private setInputElValue(step : number): void {
@@ -271,10 +279,8 @@ export class OdsRange {
     }
   }
 
-  private setInputElDualValue(step : number): void {
-    if (this.inputEl && this.inputElDual) {
-      this.inputElDual.valueAsNumber = (this.inputEl?.valueAsNumber ?? 0) + step;
-    }
+  private showTooltip(): void {
+    this.tooltip?.show();
   }
 
   private showTooltipDual(): void {
@@ -300,7 +306,7 @@ export class OdsRange {
         <input
           class={{
             'ods-range__range': true,
-            'ods-range__range--error': this.hasError || this.isInvalid,
+            'ods-range__range--error': this.hasError || !!this.isInvalid,
           }}
           aria-valuemax={ this.max }
           aria-valuemin={ this.min }
@@ -350,7 +356,7 @@ export class OdsRange {
           <input
             class={{
               'ods-range__range-dual': true,
-              'ods-range__range-dual--error': this.hasError || this.isInvalid,
+              'ods-range__range-dual--error': this.hasError || !!this.isInvalid,
             }}
             aria-valuemax={ this.max }
             aria-valuemin={ this.min }

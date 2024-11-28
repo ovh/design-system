@@ -3,6 +3,10 @@
   text-align: center;
 }
 
+.class-module__properties__body code {
+  white-space: break-spaces;
+}
+
 .class-module__events,
 .class-module__methods {
   display: flex;

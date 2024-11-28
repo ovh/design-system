@@ -28,7 +28,11 @@ function ValidityStateTemplate(componentName: string, componentSelector: string)
             });
           }
 
-          table.innerHTML = header+'<tbody>'+tr.sort((a, b) => a.key.localeCompare(b.key)).map(({ template }) => template).join('')+'</tbody>';
+          if (!tr.length) {
+            table.innerHTML = header+'<tbody><tr><td colspan="2">Focus/blur the component to update.</td></tr></tbody>';
+          } else {
+            table.innerHTML = header+'<tbody>'+tr.sort((a, b) => a.key.localeCompare(b.key)).map(({ template }) => template).join('')+'</tbody>';
+          }
         }
 
         await Promise.all([

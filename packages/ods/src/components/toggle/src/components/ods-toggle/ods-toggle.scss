@@ -47,6 +47,12 @@
         }
       }
 
+
+      &:not(#{$slider}--disabled)#{$slider}--error {
+        border-color: var(--ods-color-form-element-border-critical);
+      }
+
+
       &--disabled {
         @include state.ods-is-disabled();
 
@@ -59,10 +65,6 @@
         & #{$slider}__label {
           color: state.$ods-state-is-disabled-text-color;
         }
-      }
-
-      &--error {
-        border-color: var(--ods-color-form-element-border-critical);
       }
 
       &__label {

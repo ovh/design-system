@@ -2,6 +2,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsDatepicker from '@ovhcloud/ods-components/src/components/datepicker/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
+import { DatepickerFormatsTable } from '../../../src/components/datepickerFormatsTable/DatepickerFormatsTable';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as DatepickerStories from './datepicker.stories';
 import { Datepicker as FormFieldDatepicker } from '../form-field/form-field.stories';
@@ -15,6 +16,29 @@ import { Datepicker as FormFieldDatepicker } from '../form-field/form-field.stor
 <Canvas of={ DatepickerStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsDatepicker } />
+
+<Heading label="Date Formats" level={ 2 } />
+
+<Heading label="Format" level={ 3 } />
+
+<DatepickerFormatsTable />
+
+<Heading label="Examples" level={ 3 } />
+
+Different separators from the format:
+<ul>
+  <li>if format is `dd/mm/yyyy`, 01/02/2024</li>
+  <li>if format is `yyyy-mm-dd`, 2024-02-01</li>
+  <li>if format is `dd mm yyyy`, 01 02 2024</li>
+</ul>
+
+Different token from the format:
+<ul>
+  <li>if format is `d/m/yyyy`, 1/2/2024</li>
+  <li>if format is `D/M/yyyy`, Thu/Feb/2024</li>
+  <li>if format is `DD/MM/yyyy`, Thursday/February/2024</li>
+  <li>if format is `DD dd MM yyyy`, Thursday 1 February 2024</li>
+</ul>
 
 <Heading label="Examples" level={ 2 } />
 

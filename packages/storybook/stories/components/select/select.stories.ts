@@ -7,7 +7,7 @@ import { orderControls } from '../../../src/helpers/controls';
 const meta: Meta = {
   title: 'ODS Components/Form elements/Select',
   component: 'ods-select',
-  decorators: [(story) => html`<div style="height: 200px;">${story()}</div>`],
+  decorators: [(story) => html`<div style="min-height: 200px;">${story()}</div>`],
 };
 
 export default meta;

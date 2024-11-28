@@ -134,7 +134,7 @@ export class OdsTimepicker {
   }
 
   async componentDidLoad(): Promise<void> {
-    this.formatValue();
+    await this.formatValue();
   }
 
   async formResetCallback(): Promise<void> {

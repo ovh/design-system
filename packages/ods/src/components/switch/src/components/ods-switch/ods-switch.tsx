@@ -14,6 +14,7 @@ export class OdsSwitch {
 
   @State() private isInvalid: boolean | undefined;
 
+  @Prop({ reflect: true }) public hasError: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
   @Prop({ reflect: true }) public name!: string;
@@ -151,7 +152,8 @@ export class OdsSwitch {
       <Host
         class={{
           [`ods-switch ods-switch--${this.size}`]: true,
-          'ods-switch--error': !!this.isInvalid,
+          'ods-switch--disabled': !!this.isDisabled,
+          'ods-switch--error': this.hasError || !!this.isInvalid,
         }}
         disabled={ this.isDisabled }>
         <slot onSlotchange={ () => this.init() }></slot>

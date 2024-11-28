@@ -14,6 +14,20 @@ describe('ods-switch rendering', () => {
     root = page.root;
   }
 
+  describe('hasError', () => {
+    it('should be reflected', async() => {
+      await setup('<ods-switch has-error></ods-switch>');
+
+      expect(root?.getAttribute('has-error')).toBe('');
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-switch></ods-switch>');
+
+      expect(root?.getAttribute('has-error')).toBeNull();
+    });
+  });
+
   describe('isDisabled', () => {
     it('should be reflected', async() => {
       await setup('<ods-switch is-disabled></ods-switch>');

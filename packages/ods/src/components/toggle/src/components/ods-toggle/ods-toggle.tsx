@@ -23,6 +23,7 @@ export class OdsToggle {
   @State() private isInvalid: boolean | undefined;
 
   @Prop({ reflect: true }) public defaultValue?: boolean;
+  @Prop({ reflect: true }) public hasError: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
   @Prop({ reflect: true }) public name!: string;
@@ -196,7 +197,7 @@ export class OdsToggle {
             'ods-toggle__container__slider': true,
             'ods-toggle__container__slider--checked': this.value ?? false,
             'ods-toggle__container__slider--disabled': this.isDisabled,
-            'ods-toggle__container__slider--error': !!this.isInvalid,
+            'ods-toggle__container__slider--error': this.hasError || !!this.isInvalid,
           }}
           part={ `slider ${this.value ? 'checked' : ''}` }>
             {

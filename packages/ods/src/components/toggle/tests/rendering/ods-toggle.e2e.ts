@@ -90,5 +90,20 @@ describe('ods-toggle rendering', () => {
 
       expect(await isInErrorState()).toBe(true);
     });
+
+    it('should enforce the error state if has-error is set even on valid input', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-toggle is-required has-error value="true"></ods-toggle></form>');
+      await page.waitForChanges();
+
+      expect(await isInErrorState()).toBe(true);
+
+      await page.evaluate(() => {
+        document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+      });
+      await page.waitForChanges();
+
+      expect(await isInErrorState()).toBe(true);
+
+    });
   });
 });

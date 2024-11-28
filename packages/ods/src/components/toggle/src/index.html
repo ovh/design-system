@@ -54,6 +54,14 @@
   <ods-toggle is-disabled value with-label>
   </ods-toggle>
 
+  <p>Error</p>
+  <ods-toggle has-error>
+  </ods-toggle>
+
+  <p>Error disabled</p>
+  <ods-toggle has-error is-disabled>
+  </ods-toggle>
+
   <p>Custom CSS</p>
   <ods-toggle class="my-toggle" with-label>
   </ods-toggle>
@@ -80,7 +88,7 @@
 
   <p>Form</p>
   <form id="toggle-form" target="_self">
-    <ods-toggle name="ods-toggle"></ods-toggle>
+    <ods-toggle name="ods-toggle" is-required is-disabled></ods-toggle>
     <button id="form-reset-button" type="reset">Reset</button>
     <button id="form-submit-button" type="submit">Submit</button>
   </form>

@@ -55,7 +55,7 @@ const ClassModule = ({ module }: Props) => {
               </tr>
             </thead>
 
-            <tbody>
+            <tbody className={ styles['class-module__properties__body'] }>
               {
                 properties.map((property, idx) => (
                   <tr key={ idx }>

@@ -5,6 +5,12 @@ describe('ods-switch rendering', () => {
   let page: E2EPage;
   let switchItemLabel: E2EElement;
 
+  async function isInErrorState(): Promise<boolean | undefined> {
+    return await page.evaluate(() => {
+      return document.querySelector('ods-switch')?.classList.contains('ods-switch--error');
+    });
+  }
+
   async function setup(content: string, customStyle?: string): Promise<void> {
     page = await newE2EPage();
 
@@ -67,6 +73,28 @@ describe('ods-switch rendering', () => {
       </ods-switch>`);
 
       expect(el?.classList.contains('ods-switch--sm')).toBe(true);
+    });
+  });
+
+  describe('', () => {
+    it('should enforce the error state if has-error is set even on valid textarea', async() => {
+      await setup(`<form method="get" onsubmit="return false">
+        <ods-switch name="switch" has-error>
+          <ods-switch-item value="1" is-checked>label1</ods-switch-item>
+          <ods-switch-item value="2">label2</ods-switch-item>
+          <ods-switch-item value="3">label3</ods-switch-item>
+        </ods-switch>
+      </form>`);
+      await page.waitForChanges();
+
+      expect(await isInErrorState()).toBe(true);
+
+      await page.evaluate(() => {
+        document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+      });
+      await page.waitForChanges();
+
+      expect(await isInErrorState()).toBe(true);
     });
   });
 });

@@ -17,6 +17,7 @@ export const Demo: StoryObj = {
     return html`
     <ods-switch id="my-switch"
                 name="demo"
+                has-error="${arg.hasError}"
                 is-disabled="${arg.isDisabled}"
                 is-required="${arg.isRequired}"
                 size="${arg.size}">
@@ -28,6 +29,14 @@ export const Demo: StoryObj = {
   `;
   },
   argTypes: orderControls({
+    hasError: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
     isDisabled: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -64,6 +73,7 @@ export const Demo: StoryObj = {
     },
   }),
   args: {
+    hasError: false,
     isDisabled: false,
     isRequired: false,
     size: 'md',
@@ -97,6 +107,17 @@ export const Disabled: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-switch is-disabled name="disabled">
+  <ods-switch-item value="1">label1</ods-switch-item>
+  <ods-switch-item value="2">label2</ods-switch-item>
+  <ods-switch-item value="3">label3</ods-switch-item>
+</ods-switch>
+  `,
+};
+
+export const Error: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-switch has-error name="error">
   <ods-switch-item value="1">label1</ods-switch-item>
   <ods-switch-item value="2">label2</ods-switch-item>
   <ods-switch-item value="3">label3</ods-switch-item>

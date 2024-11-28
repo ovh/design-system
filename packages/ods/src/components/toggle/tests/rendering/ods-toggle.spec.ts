@@ -47,6 +47,20 @@ describe('ods-toggle rendering', () => {
     });
   });
 
+  describe('hasError', () => {
+    it('should be reflected', async() => {
+      await setup('<ods-toggle has-error></ods-toggle>');
+
+      expect(root?.getAttribute('has-error')).toBe('');
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-toggle></ods-toggle>');
+
+      expect(root?.getAttribute('has-error')).toBeNull();
+    });
+  });
+
   describe('isDisabled', () => {
     it('should be reflected', async() => {
       await setup('<ods-toggle is-disabled></ods-toggle>');

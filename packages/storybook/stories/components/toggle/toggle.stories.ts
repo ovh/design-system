@@ -15,6 +15,7 @@ export const Demo: StoryObj = {
   render: (arg) => {
     return html`
     <ods-toggle class="my-toggle-demo"
+      has-error=${arg.hasError}
       is-disabled=${arg.isDisabled}
       is-required=${arg.isRequired}
       with-label=${arg.withLabel}>
@@ -102,6 +103,14 @@ export const Demo: StoryObj = {
         type: { summary: 'string' },
       },
     },
+    hasError: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
     isDisabled: {
       control: 'boolean',
       table: {
@@ -137,6 +146,7 @@ export const Demo: StoryObj = {
     },
   }),
   args: {
+    hasError: false,
     isDisabled: false,
     isRequired: false,
     validityState: false,
@@ -207,6 +217,14 @@ export const DisabledOff: StoryObj = {
 <ods-toggle is-disabled></ods-toggle>
   `,
 };
+
+export const Error: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-toggle has-error></ods-toggle>
+  `,
+};
+
 export const WithLabel: StoryObj = {
   tags: ['isHidden'],
   render: () => html`

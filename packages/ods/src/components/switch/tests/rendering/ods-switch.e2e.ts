@@ -76,8 +76,8 @@ describe('ods-switch rendering', () => {
     });
   });
 
-  describe('', () => {
-    it('should enforce the error state if has-error is set even on valid textarea', async() => {
+  describe('error state', () => {
+    it('should enforce the error state if has-error is set even on valid switch', async() => {
       await setup(`<form method="get" onsubmit="return false">
         <ods-switch name="switch" has-error>
           <ods-switch-item value="1" is-checked>label1</ods-switch-item>

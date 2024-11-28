@@ -31,8 +31,6 @@
 
     &--disabled {
       @include state.ods-is-disabled();
-
-      opacity: .5;
     }
   }
 
@@ -51,7 +49,6 @@
         & + .ods-switch-item__label {
           @include state.ods-is-disabled();
 
-          opacity: 1;
           background-color: var(--ods-color-neutral-500);
           color: var(--ods-color-neutral-000);
         }

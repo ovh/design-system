@@ -109,7 +109,7 @@ export class OdsQuantity {
     await this.reset();
   }
 
-  private async decrement(): Promise<void> {
+  private decrement(): void {
     if (this.isDisabled || this.isReadonly) {
       return;
     }
@@ -117,7 +117,7 @@ export class OdsQuantity {
     this.value = this.value !== null ? Number(this.value) - step : 0;
   }
 
-  private async increment(): Promise<void> {
+  private increment(): void {
     if (this.isDisabled || this.isReadonly) {
       return;
     }

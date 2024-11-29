@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.4.0-alpha.0](https://ovh.github.io/design-system/v18.4.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-11-29)
+[compare](https://github.com/ovh/design-system/compare/v18.3.1...v18.4.0-alpha.0)
+
+### Bug Fixes
+
+* **form:** form element infinite loop on setAttributes & mutation observable ([73158a5](https://github.com/ovh/design-system/commit/73158a58edfda46dd1ea029ef9ab83344bdcd515))
+* **form:** form element should emit her own odsChange event ([3092b76](https://github.com/ovh/design-system/commit/3092b768a559478804492869e2ada8a918fdb023))
+* **formElements:** use same stop method on child event ([13ed463](https://github.com/ovh/design-system/commit/13ed4635034922ad3633cf2cf6328277a88a113e))
+* review ([9c9e833](https://github.com/ovh/design-system/commit/9c9e8335bec18ad353f903671c84ef7e5d002cd6))
+* **formElements:** normalize comments & methods ([f3824aa](https://github.com/ovh/design-system/commit/f3824aa2260a9e07c798047ae333e8968e6124c4))
+* **input:** previous value to number ([1531f75](https://github.com/ovh/design-system/commit/1531f7523718c0b2d803e0e27dcd02b9a0eaf263))
+* **phone-number:** empty string on odsChange event ([da4a77d](https://github.com/ovh/design-system/commit/da4a77d36ba99dc531a1b98d0d9a79280a44aca7))
+* **phoneNumber:** fix e2e validity tests ([278f56b](https://github.com/ovh/design-system/commit/278f56bc826448e804bbb770f4f605e85775d360))
+* review ([236c1ab](https://github.com/ovh/design-system/commit/236c1ab06f37ae4dce76fd7a82e342f0d59823be))
+
+
+### Features
+
+* **phone-number:** add form validity ([551d5dc](https://github.com/ovh/design-system/commit/551d5dc5b6801796eabfd297438fbc886678cd3d))
+* **phoneNumber:** add prop customValidityMessage ([7644779](https://github.com/ovh/design-system/commit/7644779e2476f732f6f1398a4669c81f64d056e5))
+* **select:** add updateCustomRenderer method in place of watch ([9a18d8a](https://github.com/ovh/design-system/commit/9a18d8a285a0403501ed72adcbc75b9419b5c915))
+* **textarea:** add validityState management ([42cbc3c](https://github.com/ovh/design-system/commit/42cbc3c7d173be11987eb0d5660af935145e16be))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

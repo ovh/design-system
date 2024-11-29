@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.4.0-alpha.0](https://ovh.github.io/design-system/v18.4.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-11-29)
+[compare](https://github.com/ovh/design-system/compare/v18.3.1...v18.4.0-alpha.0)
+
+### Bug Fixes
+
+* **form:** form element infinite loop on setAttributes & mutation observable ([73158a5](https://github.com/ovh/design-system/commit/73158a58edfda46dd1ea029ef9ab83344bdcd515))
+* **formElements:** set all Method public ([5b1406e](https://github.com/ovh/design-system/commit/5b1406ef0db8a25ce5652c2ebc57f9638c1c5c5a))
+* **formElements:** update internal validity state on checkValidity & reportValidity ([4dc2c35](https://github.com/ovh/design-system/commit/4dc2c35ae4512b36b1c891e951399f54b3e17385))
+* **textarea:** update isInvalid state on clear/reset call ([dd35877](https://github.com/ovh/design-system/commit/dd35877f6e177f7423c873ff0677b6ac373a5f5f))
+* **toggle:** box-sizing & display ([df512ca](https://github.com/ovh/design-system/commit/df512ca9e7e757d957ff80568e664f7039ca9105))
+* **validityState:** emit odsInvalid in internal isInvalid state change & update doc examples ([e6d1801](https://github.com/ovh/design-system/commit/e6d180176c14bfc3fbc3a2168a32380e878f19fc))
+
+
+### Features
+
+* **textarea:** add error state management ([1214318](https://github.com/ovh/design-system/commit/1214318a6f4b6aeffdcd16291cc96dd8f407b73d))
+* **textarea:** add tests about odsChange emit on first render ([d566284](https://github.com/ovh/design-system/commit/d56628435cd659b686ae9eee59e1d73128813762))
+* **textarea:** add validityState management ([c7aee7d](https://github.com/ovh/design-system/commit/c7aee7df76dc093a6482a9891171c80828fc1569))
+* **textarea:** add validityState management ([42cbc3c](https://github.com/ovh/design-system/commit/42cbc3c7d173be11987eb0d5660af935145e16be))
+* **textarea:** update validity state on isRequired change ([7171875](https://github.com/ovh/design-system/commit/7171875f050f02a8fff1fcc23017f34b5155daca))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

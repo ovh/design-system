@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.4.0-alpha.0](https://ovh.github.io/design-system/v18.4.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-11-29)
+[compare](https://github.com/ovh/design-system/compare/v18.3.1...v18.4.0-alpha.0)
+
+### Bug Fixes
+
+* **form:** form element infinite loop on setAttributes & mutation observable ([73158a5](https://github.com/ovh/design-system/commit/73158a58edfda46dd1ea029ef9ab83344bdcd515))
+* **form:** form element should emit her own odsChange event ([3092b76](https://github.com/ovh/design-system/commit/3092b768a559478804492869e2ada8a918fdb023))
+* **toggle:** box-sizing & display ([df512ca](https://github.com/ovh/design-system/commit/df512ca9e7e757d957ff80568e664f7039ca9105))
+* **toggle:** disabled border color ([9a464d2](https://github.com/ovh/design-system/commit/9a464d2f174f698be90655aec8f9d4edec8efe7e))
+* **toggle:** error style ([748aa08](https://github.com/ovh/design-system/commit/748aa08caecd4fc0543e57412bf391ac2e4e75ad))
+* **toggle:** style error ([761607a](https://github.com/ovh/design-system/commit/761607a6cfeda3d8b8d03014015ecbf46d25d529))
+* **validityState:** emit odsInvalid in internal isInvalid state change & update doc examples ([e6d1801](https://github.com/ovh/design-system/commit/e6d180176c14bfc3fbc3a2168a32380e878f19fc))
+
+
+### Features
+
+* **toggle:** add has-error props & remove error state on disabled ([b6423ff](https://github.com/ovh/design-system/commit/b6423ff0ec7d1fab78f137ae39d36d22fd8c102e))
+* **toggle:** add validity state ([4c5adbf](https://github.com/ovh/design-system/commit/4c5adbf11e8e4313312b795b9a7e1a024329693d))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

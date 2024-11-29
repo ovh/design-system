@@ -150,6 +150,18 @@ describe('ods-input behaviour', () => {
     });
   });
 
+  describe('props', () => {
+    describe('step', () => {
+      it('should allow decimal with step any', async() => {
+        await setup('<ods-input type="number" step="any" value="9.99"></ods-input>');
+
+        await el.press('ArrowUp');
+
+        expect(await el.getProperty('value')).toBe(10.99);
+      });
+    });
+  });
+
   describe('methods', () => {
     describe('clear', () => {
       it('should receive odsClear event', async() => {

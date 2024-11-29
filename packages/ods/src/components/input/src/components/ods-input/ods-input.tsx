@@ -47,7 +47,7 @@ export class OdsInput {
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public pattern?: string;
   @Prop({ reflect: true }) public placeholder?: string;
-  @Prop({ reflect: true }) public step?: number;
+  @Prop({ reflect: true }) public step?: number | 'any';
   @Prop({ reflect: true }) public type: OdsInputType = ODS_INPUT_TYPE.text;
   @Prop({ mutable: true, reflect: true }) public value: string | number | null = VALUE_DEFAULT_VALUE;
 

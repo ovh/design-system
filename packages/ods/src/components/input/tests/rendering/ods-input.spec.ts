@@ -305,6 +305,13 @@ describe('ods-input rendering', () => {
         expect(root?.getAttribute('step')).toBe(stepValue.toString());
       });
 
+      it('should be reflected with any', async() => {
+        const stepValue = 'any';
+        await setup(`<ods-input step="${stepValue}"></ods-input>`);
+
+        expect(root?.getAttribute('step')).toBe(stepValue);
+      });
+
       it('should not be set by default', async() => {
         await setup('<ods-input></ods-input>');
 

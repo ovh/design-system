@@ -176,10 +176,10 @@ export const Demo: StoryObj = {
     step: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'number' },
+        defaultValue: { summary: 'You can set the step to "any" for allowing floating value' },
+        type: { summary: 'number | "any"' },
       },
-      control: 'number',
+      control: 'text',
     },
     type: {
       table: {

@@ -7,6 +7,66 @@ import { StorybookLink } from '../../../src/components/storybookLink/StorybookLi
 
 <Heading label="What's new ?" level={ 1 } />
 
+<Heading label="v18.4.0" level={ 2 } />
+
+<Heading label="Changes on form elements:" level={ 3 } />
+
+This version is focused on implementing <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState" label="ValidityState" target="_blank" /> to our form elements.
+
+This allows you to setup a fully working form without the need of any external library or custom validation code, as everything behave as a native form.
+
+Though you can of course use a lib on top of that if you want to. We've validated forms using native code (vanilla and React), <OdsLink href="https://formik.org" label="Formik" target="_blank" /> and <OdsLink href="https://react-hook-form.com" label="React Hook Form" target="_blank" /> on our tests and playgrounds.
+
+The changes on each component are massive, but we did focus on ensuring bumping to this version would be transparent for current ODS users.
+
+We won't go through an exhaustive list of changes, here are the most important ones for each form element:
+- Consistent behaviour regarding blur and error state.
+- Consistent event triggering (check the guide about event lifecycle).
+- New event `odsInvalid` triggered when component internal validity change.
+- New methods available: `checkValidity`, `getValidationMessage`, `getValidity`, `reportValidity`, `willValidate`.
+- Tons of unit & e2e tests have been added.
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Checkbox**
+- New style when on error.
+
+**Datepicker**
+- `defaultValue` now accepts Date or string.
+- `max` now accepts Date or string.
+- `min` now accepts Date or string.
+
+**Input**
+- New input type `search` has been added.
+
+**Phone Number**
+- New `customValidityMessage` prop has been added.
+
+**Radio**
+- New style when on error.
+
+**Range**
+- Now triggers an odsChange on thumb release, not on every move.
+
+**Select**
+- Add a new method `updateCustomRenderer` if you need to update the custom template used.
+
+**Switch**
+- Events are now send from `ods-switch` and not from `ods-switch-item` anymore. You may need to move your handlers if you were defining some on items.
+- New `hasError` prop to enforce error state.
+- Focus style has been updated.
+- New style when on error.
+
+**Toggle**
+- New `hasError` prop to enforce error state.
+- New style when on error.
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+- New Guide section, with a first one about form management.
+- Add new control to visualize ValidityState on each form elements Demo page.
+- Storybook update popup has been disabled.
+
 <Heading label="v18.3.1" level={ 2 } />
 
 <Heading label="Feature updates:" level={ 3 } />

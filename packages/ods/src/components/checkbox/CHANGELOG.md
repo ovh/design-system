@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.4.0-alpha.0](https://ovh.github.io/design-system/v18.4.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-11-29)
+[compare](https://github.com/ovh/design-system/compare/v18.3.1...v18.4.0-alpha.0)
+
+### Bug Fixes
+
+* **checkbox:** emit odsChange with matching checkbox values ([8525df8](https://github.com/ovh/design-system/commit/8525df8642ca34d7ed353478973032f42239523b))
+* **checkbox:** update isInvalid on report & check validity ([0c3ff26](https://github.com/ovh/design-system/commit/0c3ff264bec2cf6ae1c12f5201bce879568185a0))
+* **validityState:** emit odsInvalid in internal isInvalid state change & update doc examples ([e6d1801](https://github.com/ovh/design-system/commit/e6d180176c14bfc3fbc3a2168a32380e878f19fc))
+
+
+### Features
+
+* **checkbox:** update validity state on isRequired change ([f787a42](https://github.com/ovh/design-system/commit/f787a428f01ed320f774298f9264d971bff28a40))
+* **checkebox:** add validity state ([b35aefa](https://github.com/ovh/design-system/commit/b35aefae5c666ab7645d81568e5057882fdf6314))
+* **radio:** update validity state on isRequired change ([8a74238](https://github.com/ovh/design-system/commit/8a742389ba5628df076ab0319d83b0861ce0bd8b))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

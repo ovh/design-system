@@ -8,6 +8,52 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.4.0-alpha.0](https://ovh.github.io/design-system/v18.4.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-11-29)
+[compare](https://github.com/ovh/design-system/compare/v18.3.1...v18.4.0-alpha.0)
+
+### Bug Fixes
+
+* **datepicker:** allow string for Date props & fix min/max control on doc ([fe58535](https://github.com/ovh/design-system/commit/fe58535a6254212e01389ed989b0c4badcb6f3c2))
+* **datepicker:** docs & console ([d068035](https://github.com/ovh/design-system/commit/d068035072ce0e1cf1b3f591aaf735d18a6b45e5))
+* **datepicker:** docs error ([cd623c6](https://github.com/ovh/design-system/commit/cd623c680c0e326c15c2721d2acf11efcc9671d0))
+* **demo:** docs form validity error on console ([5d96dc0](https://github.com/ovh/design-system/commit/5d96dc0116cc98899c1ffa249aa8ca070334c26c))
+* **doc:** add validityState on select multiple demo ([f5cf59d](https://github.com/ovh/design-system/commit/f5cf59d5a0fba32d102b2454b4370ed3c09112eb))
+* **doc:** prevent technical properties table to extend too much ([09743c9](https://github.com/ovh/design-system/commit/09743c9ddeebb09024352d2a8e5ce90f9283318a))
+* **doc:** remove duplicate key on textarea story ([55d1d0c](https://github.com/ovh/design-system/commit/55d1d0c88880570ed45739d834d067e733e8f524))
+* **radio:** typo & test command ([81c617a](https://github.com/ovh/design-system/commit/81c617af40e47150d3d8e073ad6d6029f22f0836))
+* **storybook:** use correct parent to check validity & remove content control ([2bb3de9](https://github.com/ovh/design-system/commit/2bb3de95ddbfedfc60975e0e28b3b25276fc16eb))
+* **switch:** opacity disabled ([6c2aaf9](https://github.com/ovh/design-system/commit/6c2aaf9c5d1b496ca9a476d6b38b634100cfabd7))
+* **validityState:** emit odsInvalid in internal isInvalid state change & update doc examples ([e6d1801](https://github.com/ovh/design-system/commit/e6d180176c14bfc3fbc3a2168a32380e878f19fc))
+* form element variable name ([0035c51](https://github.com/ovh/design-system/commit/0035c510f6a01ddcbbe58b19f82b4181bb98050e))
+
+
+### Features
+
+* **checkebox:** add validity state ([b35aefa](https://github.com/ovh/design-system/commit/b35aefae5c666ab7645d81568e5057882fdf6314))
+* **datepicker:** add validity state ([7bbfdd1](https://github.com/ovh/design-system/commit/7bbfdd151c57994902d2296727ef6135a9add377))
+* **doc:** add guide about form ([03d24b8](https://github.com/ovh/design-system/commit/03d24b8ac4a97445d7bdaabaa12d180e21afad2d))
+* **doc:** separate validityState in custom control group ([8e4a898](https://github.com/ovh/design-system/commit/8e4a898bbe876483d37deb291997c1ccacaba272))
+* **input:** add search type ([8b46c6b](https://github.com/ovh/design-system/commit/8b46c6b63831067a19a3e919938e4d933965ad0c))
+* **password:** add form validity ([df9e868](https://github.com/ovh/design-system/commit/df9e868bb2849ccff4bd044a4484ec788adf666b))
+* **password:** add form validity ([aa6a2cf](https://github.com/ovh/design-system/commit/aa6a2cfb4adcb2582ca878aed2146e090ab89d73))
+* **phone-number:** add form validity ([551d5dc](https://github.com/ovh/design-system/commit/551d5dc5b6801796eabfd297438fbc886678cd3d))
+* **quantity:** add validity state docs ([a4bc6da](https://github.com/ovh/design-system/commit/a4bc6daef3c8fded9e08a126479253671a01f05b))
+* **radio:** add validityState ([f11ed4e](https://github.com/ovh/design-system/commit/f11ed4e356dcee260c6c465382f2c8a2b4f27385))
+* **range:** add validity state ([9556943](https://github.com/ovh/design-system/commit/95569434f404861432abf1d804754c8b23139c81))
+* **select:** add updateCustomRenderer method in place of watch ([9a18d8a](https://github.com/ovh/design-system/commit/9a18d8a285a0403501ed72adcbc75b9419b5c915))
+* **select:** add validity state ([ed9d0d3](https://github.com/ovh/design-system/commit/ed9d0d3df47b350fd40fcc0e0cba3633ce7dcdf0))
+* **switch:** add has-error props & remove error state on disabled ([bb52d21](https://github.com/ovh/design-system/commit/bb52d2160d577883c3f975ba580950744a7b2836))
+* **switch:** add validity state ([22b8652](https://github.com/ovh/design-system/commit/22b8652c3932c047c4fbd3e5fd7125212e2a3ca4))
+* **toggle:** add has-error props & remove error state on disabled ([b6423ff](https://github.com/ovh/design-system/commit/b6423ff0ec7d1fab78f137ae39d36d22fd8c102e))
+* **toggle:** add validity state ([4c5adbf](https://github.com/ovh/design-system/commit/4c5adbf11e8e4313312b795b9a7e1a024329693d))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.3.1](https://ovh.github.io/design-system/v18.3.1/?path=/docs/design-system-changelog--page) (2024-11-21)
 [compare](https://github.com/ovh/design-system/compare/v18.3.0...v18.3.1)
 

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.4.0-alpha.0](https://ovh.github.io/design-system/v18.4.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-11-29)
+[compare](https://github.com/ovh/design-system/compare/v18.3.1...v18.4.0-alpha.0)
+
+### Bug Fixes
+
+* review ([9c9e833](https://github.com/ovh/design-system/commit/9c9e8335bec18ad353f903671c84ef7e5d002cd6))
+* **form:** form element infinite loop on setAttributes & mutation observable ([73158a5](https://github.com/ovh/design-system/commit/73158a58edfda46dd1ea029ef9ab83344bdcd515))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.4.0-alpha.0](https://ovh.github.io/design-system/v18.4.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-11-29)
+[compare](https://github.com/ovh/design-system/compare/v18.3.1...v18.4.0-alpha.0)
+
+### Bug Fixes
+
+* **form:** form element infinite loop on setAttributes & mutation observable ([73158a5](https://github.com/ovh/design-system/commit/73158a58edfda46dd1ea029ef9ab83344bdcd515))
+* **form:** form element should emit her own odsChange event ([3092b76](https://github.com/ovh/design-system/commit/3092b768a559478804492869e2ada8a918fdb023))
+* **form:** update validity state on is-required change ([94785aa](https://github.com/ovh/design-system/commit/94785aab08cdee61811ff3af823fd00ec46d53c1))
+* **formElements:** set all Method public ([5b1406e](https://github.com/ovh/design-system/commit/5b1406ef0db8a25ce5652c2ebc57f9638c1c5c5a))
+* **formElements:** update internal validity state on checkValidity & reportValidity ([4dc2c35](https://github.com/ovh/design-system/commit/4dc2c35ae4512b36b1c891e951399f54b3e17385))
+* **formElements:** use same stop method on child event ([13ed463](https://github.com/ovh/design-system/commit/13ed4635034922ad3633cf2cf6328277a88a113e))
+* **input:** set numeric value on input change if type is number ([95830b1](https://github.com/ovh/design-system/commit/95830b1dd7c6970bdf3062517d62469a652ec264))
+* form element variable name ([0035c51](https://github.com/ovh/design-system/commit/0035c510f6a01ddcbbe58b19f82b4181bb98050e))
+
+
+### Features
+
+* **password:** add form validity ([aa6a2cf](https://github.com/ovh/design-system/commit/aa6a2cfb4adcb2582ca878aed2146e090ab89d73))
+* **password:** add tests about odsChange emit on first render ([93085eb](https://github.com/ovh/design-system/commit/93085eb9ee0eea8218b988901d363b12ade38a91))
+* **textarea:** add validityState management ([42cbc3c](https://github.com/ovh/design-system/commit/42cbc3c7d173be11987eb0d5660af935145e16be))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

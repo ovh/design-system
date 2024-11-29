@@ -8,6 +8,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.4.0-alpha.0](https://ovh.github.io/design-system/v18.4.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-11-29)
+[compare](https://github.com/ovh/design-system/compare/v18.3.1...v18.4.0-alpha.0)
+
+### Bug Fixes
+
+* **form:** form element infinite loop on setAttributes & mutation observable ([73158a5](https://github.com/ovh/design-system/commit/73158a58edfda46dd1ea029ef9ab83344bdcd515))
+* **validityState:** emit odsInvalid in internal isInvalid state change & update doc examples ([e6d1801](https://github.com/ovh/design-system/commit/e6d180176c14bfc3fbc3a2168a32380e878f19fc))
+
+
+### Features
+
+* **select:** add updateCustomRenderer method in place of watch ([9a18d8a](https://github.com/ovh/design-system/commit/9a18d8a285a0403501ed72adcbc75b9419b5c915))
+* **select:** add validity state ([ed9d0d3](https://github.com/ovh/design-system/commit/ed9d0d3df47b350fd40fcc0e0cba3633ce7dcdf0))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.3.1](https://ovh.github.io/design-system/v18.3.1/?path=/docs/design-system-changelog--page) (2024-11-21)
 [compare](https://github.com/ovh/design-system/compare/v18.3.0...v18.3.1)
 

@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.4.0-alpha.0](https://ovh.github.io/design-system/v18.4.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-11-29)
+[compare](https://github.com/ovh/design-system/compare/v18.3.1...v18.4.0-alpha.0)
+
+### Bug Fixes
+
+* async function ([d83fdfd](https://github.com/ovh/design-system/commit/d83fdfd0dd1ab04c6f21f7fd180ba7a07befa7f3))
+* **form:** form element infinite loop on setAttributes & mutation observable ([73158a5](https://github.com/ovh/design-system/commit/73158a58edfda46dd1ea029ef9ab83344bdcd515))
+* **form:** form element should emit her own odsChange event ([3092b76](https://github.com/ovh/design-system/commit/3092b768a559478804492869e2ada8a918fdb023))
+* **form:** update validity state on is-required change ([94785aa](https://github.com/ovh/design-system/commit/94785aab08cdee61811ff3af823fd00ec46d53c1))
+* **formElements:** set all Method public ([5b1406e](https://github.com/ovh/design-system/commit/5b1406ef0db8a25ce5652c2ebc57f9638c1c5c5a))
+* **formElements:** update internal validity state on checkValidity & reportValidity ([4dc2c35](https://github.com/ovh/design-system/commit/4dc2c35ae4512b36b1c891e951399f54b3e17385))
+* **formElements:** use same stop method on child event ([13ed463](https://github.com/ovh/design-system/commit/13ed4635034922ad3633cf2cf6328277a88a113e))
+* **timepicker:** fix e2e navigation tests ([1e3f6e2](https://github.com/ovh/design-system/commit/1e3f6e22ea05ed35dac93bc73c0c1cc72b3afd4d))
+* form element variable name ([0035c51](https://github.com/ovh/design-system/commit/0035c510f6a01ddcbbe58b19f82b4181bb98050e))
+
+
+### Features
+
+* **timepicker:** add validity state ([a7e73ea](https://github.com/ovh/design-system/commit/a7e73ea832eb5003ae6cd8f4dd29c4f013676c4e))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.4.0-alpha.0](https://ovh.github.io/design-system/v18.4.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-11-29)
+[compare](https://github.com/ovh/design-system/compare/v18.3.1...v18.4.0-alpha.0)
+
+### Bug Fixes
+
+* **datepicker:** allow string for Date props & fix min/max control on doc ([fe58535](https://github.com/ovh/design-system/commit/fe58535a6254212e01389ed989b0c4badcb6f3c2))
+* **datepicker:** docs & console ([d068035](https://github.com/ovh/design-system/commit/d068035072ce0e1cf1b3f591aaf735d18a6b45e5))
+* **datepicker:** docs error ([cd623c6](https://github.com/ovh/design-system/commit/cd623c680c0e326c15c2721d2acf11efcc9671d0))
+* **datepicker:** fixlint ([ed820c0](https://github.com/ovh/design-system/commit/ed820c04328097907682cdffe562dd08d3dcc764))
+* **form:** form element infinite loop on setAttributes & mutation observable ([73158a5](https://github.com/ovh/design-system/commit/73158a58edfda46dd1ea029ef9ab83344bdcd515))
+* **validityState:** emit odsInvalid in internal isInvalid state change & update doc examples ([e6d1801](https://github.com/ovh/design-system/commit/e6d180176c14bfc3fbc3a2168a32380e878f19fc))
+* review ([9c9e833](https://github.com/ovh/design-system/commit/9c9e8335bec18ad353f903671c84ef7e5d002cd6))
+
+
+### Features
+
+* **datepicker:** add is-required watcher ([c28d8ce](https://github.com/ovh/design-system/commit/c28d8cedd2a3e9083964288433c135c8bc1bef9b))
+* **datepicker:** add tests about odsChange emit on first render ([bcff8c8](https://github.com/ovh/design-system/commit/bcff8c862c0da60a05cbe7e687cbf9c54be1f748))
+* **datepicker:** add validity state ([7bbfdd1](https://github.com/ovh/design-system/commit/7bbfdd151c57994902d2296727ef6135a9add377))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

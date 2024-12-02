@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, h } from '@stencil/core';
+import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { isNumeric } from '../../../../../utils/type';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
@@ -41,6 +41,7 @@ export class OdsQuantity {
   @Event() odsChange!: EventEmitter<OdsQuantityChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsInvalid!: EventEmitter<boolean>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Listen('invalid')
@@ -95,6 +96,11 @@ export class OdsQuantity {
   @Method()
   public async willValidate(): Promise<boolean> {
     return this.internals.willValidate;
+  }
+
+  @Watch('isInvalid')
+  onIsInvalidChange(): void {
+    this.odsInvalid.emit(this.isInvalid);
   }
 
   componentWillLoad(): void {
@@ -157,6 +163,7 @@ export class OdsQuantity {
   }
 
   private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+    event.stopImmediatePropagation();
     await updateInternals(this.internals, this.value, this.odsInput);
     this.isInvalid = event.detail;
   }

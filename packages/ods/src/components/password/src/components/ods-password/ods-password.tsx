@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, h } from '@stencil/core';
+import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
 import { VALUE_DEFAULT_VALUE, getInitialValue, updateInternals } from '../../controller/ods-password';
@@ -39,6 +39,7 @@ export class OdsPassword {
   @Event() odsChange!: EventEmitter<OdsPasswordChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsInvalid!: EventEmitter<boolean>;
   @Event() odsReset!: EventEmitter<void>;
   @Event() odsToggleMask!: EventEmitter<void>;
 
@@ -101,6 +102,11 @@ export class OdsPassword {
     return this.internals.willValidate;
   }
 
+  @Watch('isInvalid')
+  onIsInvalidChange(): void {
+    this.odsInvalid.emit(this.isInvalid);
+  }
+
   componentWillLoad(): void {
     this.value = getInitialValue(this.value, this.defaultValue);
   }
@@ -139,6 +145,7 @@ export class OdsPassword {
   }
 
   private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+    event.stopImmediatePropagation();
     await updateInternals(this.internals, this.value, this.odsInput);
     this.isInvalid = event.detail;
   }

@@ -266,6 +266,7 @@ describe('ods-phone-number validity', () => {
   describe('in a form', () => {
     it('should not submit the form on submit before any changes if phone-number is invalid', async() => {
       await setup('<form method="get" onsubmit="return false"><ods-phone-number is-required></ods-phone-number></form>');
+      const odsInvalidSpy = await page.spyOnEvent('odsInvalid');
 
       const formValidity = await page.evaluate(() => {
         const form = document.querySelector<HTMLFormElement>('form');
@@ -276,6 +277,7 @@ describe('ods-phone-number validity', () => {
 
       expect(await el.callMethod('checkValidity')).toBe(false);
       expect(formValidity).toBe(false);
+      expect(odsInvalidSpy).toHaveReceivedEventTimes(1);
     });
 
     it('should submit the form if phone-number is valid', async() => {

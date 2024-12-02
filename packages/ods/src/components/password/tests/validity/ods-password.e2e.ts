@@ -266,6 +266,7 @@ describe('ods-password validity', () => {
   describe('in a form', () => {
     it('should not submit the form on submit before any changes if password is invalid', async() => {
       await setup('<form method="get" onsubmit="return false"><ods-password is-required></ods-password></form>');
+      const odsInvalidSpy = await page.spyOnEvent('odsInvalid');
 
       const formValidity = await page.evaluate(() => {
         const form = document.querySelector<HTMLFormElement>('form');
@@ -275,6 +276,7 @@ describe('ods-password validity', () => {
 
       expect(await el.callMethod('checkValidity')).toBe(false);
       expect(formValidity).toBe(false);
+      expect(odsInvalidSpy).toHaveReceivedEventTimes(1);
     });
 
     it('should submit the form if password is valid', async() => {

@@ -16,6 +16,7 @@ export class OdsCheckbox {
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
+  @Prop({ reflect: true }) public hasError: boolean = false;
   @Prop({ reflect: true }) public inputId?: string;
   @Prop({ reflect: true }) public isChecked: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
@@ -184,7 +185,7 @@ export class OdsCheckbox {
           aria-labelledby={ this.ariaLabelledby }
           class={{
             'ods-checkbox__checkbox': true,
-            'ods-checkbox__checkbox--error': !!this.isInvalid,
+            'ods-checkbox__checkbox--error': this.hasError || !!this.isInvalid,
           }}
           checked={ this.isChecked }
           disabled={ this.isDisabled }

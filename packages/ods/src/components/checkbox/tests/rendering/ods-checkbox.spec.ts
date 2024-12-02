@@ -1,5 +1,4 @@
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
 import { OdsCheckbox } from '../../src';
 
 // @ts-ignore for test purposes
@@ -9,6 +8,7 @@ global.MutationObserver = jest.fn(() => ({
 }));
 
 describe('ods-checkbox rendering', () => {
+  let checkbox: Element | null | undefined;
   let page: SpecPage;
   let root: HTMLElement | undefined;
 
@@ -19,6 +19,7 @@ describe('ods-checkbox rendering', () => {
     });
 
     root = page.root;
+    checkbox = root?.querySelector('input[type="checkbox"]');
   }
 
   describe('ariaLabel', () => {
@@ -50,6 +51,44 @@ describe('ods-checkbox rendering', () => {
       await setup('<ods-checkbox></ods-checkbox>');
 
       expect(root?.getAttribute('aria-labelledby')).toBeNull();
+    });
+  });
+
+  describe('hasError', () => {
+    it('should be reflected', async() => {
+      const dummyValue = 'dummy value';
+
+      await setup(`<ods-checkbox has-error="${dummyValue}"></ods-checkbox>`);
+
+      expect(root?.getAttribute('has-error')).toBe(dummyValue);
+    });
+
+    it('should render with expected default value', async() => {
+      await setup('<ods-checkbox></ods-checkbox>');
+
+      expect(root?.getAttribute('has-error')).toBeNull();
+    });
+
+    it('should add correct class if set', async() => {
+      await setup('<ods-checkbox has-error></ods-checkbox>');
+
+      expect(checkbox?.classList.contains('ods-checkbox__checkbox--error')).toBe(true);
+    });
+  });
+
+  describe('inputId', () => {
+    it('should be reflected', async() => {
+      const inputIdValue = 'inputId value';
+
+      await setup(`<ods-checkbox input-id="${inputIdValue}"></ods-checkbox>`);
+
+      expect(root?.getAttribute('input-id')).toBe(inputIdValue);
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-checkbox></ods-checkbox>');
+
+      expect(root?.getAttribute('input-id')).toBeNull();
     });
   });
 
@@ -106,22 +145,6 @@ describe('ods-checkbox rendering', () => {
       await setup('<ods-checkbox></ods-checkbox>');
 
       expect(root?.getAttribute('is-required')).toBeNull();
-    });
-  });
-
-  describe('inputId', () => {
-    it('should be reflected', async() => {
-      const inputIdValue = 'inputId value';
-
-      await setup(`<ods-checkbox input-id="${inputIdValue}"></ods-checkbox>`);
-
-      expect(root?.getAttribute('input-id')).toBe(inputIdValue);
-    });
-
-    it('should not be set by default', async() => {
-      await setup('<ods-checkbox></ods-checkbox>');
-
-      expect(root?.getAttribute('input-id')).toBeNull();
     });
   });
 

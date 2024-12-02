@@ -291,6 +291,7 @@ describe('ods-quantity validity', () => {
   describe('in a form', () => {
     it('should not submit the form on submit before any changes if quantity is invalid', async() => {
       await setup('<form method="get" onsubmit="return false"><ods-quantity is-required></ods-quantity></form>');
+      const odsInvalidSpy = await page.spyOnEvent('odsInvalid');
 
       const formValidity = await page.evaluate(() => {
         const form = document.querySelector<HTMLFormElement>('form');
@@ -300,6 +301,7 @@ describe('ods-quantity validity', () => {
 
       expect(await el.callMethod('checkValidity')).toBe(false);
       expect(formValidity).toBe(false);
+      expect(odsInvalidSpy).toHaveReceivedEventTimes(1);
     });
 
     it('should submit the form if quantity is valid', async() => {

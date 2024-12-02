@@ -64,6 +64,7 @@ export class OdsPhoneNumber {
   @Event() odsChange!: EventEmitter<OdsPhoneNumberChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsInvalid!: EventEmitter<boolean>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Listen('invalid')
@@ -124,6 +125,11 @@ export class OdsPhoneNumber {
   onCountriesChange(): void {
     this.parsedCountryCodes = parseCountries(this.countries, this.phoneUtils) || [];
     this.hasCountries = !!this.parsedCountryCodes?.length;
+  }
+
+  @Watch('isInvalid')
+  onIsInvalidChange(): void {
+    this.odsInvalid.emit(this.isInvalid);
   }
 
   @Watch('isoCode')
@@ -204,6 +210,7 @@ export class OdsPhoneNumber {
   }
 
   private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+    event.stopImmediatePropagation();
     const formattedValue = formatPhoneNumber(this.value, this.isoCode, this.phoneUtils);
     await updateInternals(this.internals, formattedValue, this.inputElement);
     this.isInvalid = event.detail;

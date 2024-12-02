@@ -49,6 +49,7 @@ export class OdsTimepicker {
   @Event() odsChange!: EventEmitter<OdsTimepickerChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsInvalid!: EventEmitter<boolean>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Listen('invalid')
@@ -107,6 +108,11 @@ export class OdsTimepicker {
   @Method()
   public async willValidate(): Promise<boolean> {
     return this.internals.willValidate;
+  }
+
+  @Watch('isInvalid')
+  onIsInvalidChange(): void {
+    this.odsInvalid.emit(this.isInvalid);
   }
 
   @Watch('timezones')
@@ -174,6 +180,7 @@ export class OdsTimepicker {
   }
 
   private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+    event.stopImmediatePropagation();
     await updateInternals(this.internals, this.value, this.odsInput);
     this.isInvalid = event.detail;
   }
@@ -219,6 +226,7 @@ export class OdsTimepicker {
             onOdsBlur={ () => this.onBlur() }
             onOdsChange={ (event: OdsSelectChangeEvent) => this.onOdsChange(event, true) }
             onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
+            onOdsInvalid={ (event: CustomEvent<boolean>) => event.stopPropagation() }
             onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }
             part="select"
             ref={ (el?: HTMLElement): OdsSelect => this.odsSelect = el as OdsSelect & HTMLElement }

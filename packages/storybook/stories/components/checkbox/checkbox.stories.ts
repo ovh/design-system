@@ -18,6 +18,7 @@ export const Demo: StoryObj = {
       aria-label="${arg.ariaLabel}"
       aria-labelledby="${arg.ariaLabelledby}"
       class="my-checkbox-demo"
+      has-error="${arg.hasError}"
       is-disabled="${arg.isDisabled}"
       is-indeterminate="${arg.isIndeterminate}"
       is-required="${arg.isRequired}"
@@ -55,6 +56,14 @@ export const Demo: StoryObj = {
       control: 'text',
       description: 'Set a custom style properties. Example: "background-color: red; border-color: red;"',
     },
+    hasError: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
     isDisabled: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -90,12 +99,14 @@ export const Demo: StoryObj = {
     },
   }),
   args: {
+    hasError: false,
     isDisabled: false,
     isIndeterminate: false,
     isRequired: false,
     validityState: false,
   },
 };
+
 export const Alignment: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
@@ -125,6 +136,13 @@ export const Checked: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-checkbox is-checked></ods-checkbox>
+  `,
+};
+
+export const Error: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-checkbox has-error></ods-checkbox>
   `,
 };
 

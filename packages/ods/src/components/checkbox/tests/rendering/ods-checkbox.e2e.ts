@@ -65,5 +65,23 @@ describe('ods-checkbox rendering', () => {
 
       expect(hasErrorClass2).toBe(true);
     });
+
+    it('should enforce the error state if has-error is set even on valid checkbox', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-checkbox is-required has-error></ods-checkbox></form>');
+      await page.waitForChanges();
+
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-checkbox')?.querySelector('input')?.classList.contains('ods-checkbox__checkbox--error');
+      });
+      expect(hasErrorClass).toBe(true);
+
+      await el.click();
+      await page.waitForChanges();
+
+      const hasErrorClass2 = await page.evaluate(() => {
+        return document.querySelector('ods-checkbox')?.querySelector('input')?.classList.contains('ods-checkbox__checkbox--error');
+      });
+      expect(hasErrorClass2).toBe(true);
+    });
   });
 });

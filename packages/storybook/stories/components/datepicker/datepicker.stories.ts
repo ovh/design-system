@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES } from '@ovhcloud/ods-components';
-import { Datepicker } from 'vanillajs-datepicker';
+import { ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES, formatDate } from '@ovhcloud/ods-components';
 import { html, nothing } from 'lit-html';
 import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
@@ -28,8 +27,8 @@ export const Demo: StoryObj = {
       is-readonly="${arg.isReadonly}"
       is-required="${arg.isRequired}"
       locale="${arg.locale || nothing}"
-      max="${arg.max ? Datepicker.formatDate(arg.max, arg.format || 'dd/mm/yyyy') : nothing}"
-      min="${arg.min ? Datepicker.formatDate(arg.min, arg.format || 'dd/mm/yyyy') : nothing}"
+      max="${arg.max ? formatDate(arg.max, arg.format || 'dd/mm/yyyy') : nothing}"
+      min="${arg.min ? formatDate(arg.min, arg.format || 'dd/mm/yyyy') : nothing}"
       placeholder="${arg.placeholder}">
     </ods-datepicker>
     ${arg.validityState ? ValidityStateTemplate('datepicker', '.my-datepicker') : ''}

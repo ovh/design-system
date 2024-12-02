@@ -1,11 +1,10 @@
 import { Datepicker } from 'vanillajs-datepicker';
 import { setInternalsValidityFromHtmlElement } from '../../../../utils/dom';
-import { isDate } from '../../../../utils/type';
 
 const VALUE_DEFAULT_VALUE = null;
 
-function formatDate(date: Date | null, format: string): string {
-  if (date && isDate(date)) {
+function formatDate(date: Date | number | null, format: string): string {
+  if (date) {
     return Datepicker.formatDate(date, format);
   }
   return '';
@@ -19,6 +18,13 @@ function getInitialValue(value: Date | null, format: string, defaultValue?: Date
   return value;
 }
 
+function parseDate(dateStr: string | number, format: string): Date | null {
+  if (dateStr) {
+    return new Date(Datepicker.parseDate(dateStr, format));
+  }
+  return null;
+}
+
 function updateInternals(internals: ElementInternals, value: number | string | null, inputEl?: HTMLInputElement): void {
   internals.setFormValue(value?.toString() ?? '');
 
@@ -30,6 +36,7 @@ function updateInternals(internals: ElementInternals, value: number | string | n
 export {
   formatDate,
   getInitialValue,
+  parseDate,
   updateInternals,
   VALUE_DEFAULT_VALUE,
 };

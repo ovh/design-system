@@ -1,7 +1,6 @@
 import { Table } from '@storybook/components';
 import React from 'react';
 
-// eslint-disable-next-line func-style
 const DatepickerFormatsTable = (): React.JSX.Element => {
   const formats = [
     { description: 'Day of the month without leading zero', example: '1, 2, ..., 31', token: 'd' },

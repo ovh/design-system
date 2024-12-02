@@ -24,6 +24,10 @@ import { Datepicker as FormFieldDatepicker } from '../form-field/form-field.stor
 
 <DatepickerFormatsTable />
 
+To help you manipulate the right date, the component does expose two helper methods:
+- `formatDate(date: Date | number | null, format: string): string`: stringify a Date to the given format (see the list above).
+- `parseDate(dateStr: string | number, format: string): Date | null`: parse a string/number to return a Date object matching the format (see the list above).
+
 <Heading label="Examples" level={ 3 } />
 
 Different separators from the format:

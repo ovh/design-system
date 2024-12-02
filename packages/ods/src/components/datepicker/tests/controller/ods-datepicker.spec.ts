@@ -8,10 +8,28 @@ jest.mock('../../../../utils/dom');
 
 import { Datepicker } from 'vanillajs-datepicker';
 import { setInternalsValidityFromHtmlElement } from '../../../../utils/dom';
-import { formatDate, getInitialValue, updateInternals } from '../../src/controller/ods-datepicker';
+import { formatDate, getInitialValue, parseDate, updateInternals } from '../../src/controller/ods-datepicker';
 
 describe('ods-datepicker controller', () => {
   beforeEach(jest.clearAllMocks);
+
+  describe('formatDate', () => {
+    const dummyFormat = 'dd/mm/yyyy';
+
+    it('should return an empty string if no date is passed', () => {
+      // @ts-ignore for test purpose
+      expect(formatDate(undefined, dummyFormat)).toBe('');
+      expect(formatDate(null, dummyFormat)).toBe('');
+    });
+
+    it('should return a formatted date', () => {
+      const dummyDate = new Date();
+
+      expect(formatDate(dummyDate, dummyFormat)).toBe('formatted date');
+      expect(Datepicker.formatDate).toHaveBeenCalledTimes(1);
+      expect(Datepicker.formatDate).toHaveBeenCalledWith(dummyDate, dummyFormat);
+    });
+  });
 
   describe('getInitialValue', () => {
     const dummyFormat = 'dummy format';
@@ -31,32 +49,22 @@ describe('ods-datepicker controller', () => {
     });
   });
 
-  describe('formatDate', () => {
+  describe('parseDate', () => {
     const dummyFormat = 'dd/mm/yyyy';
 
-    it('should return an empty string if no date is passed', () => {
+    it('should return null if no value is passed', () => {
       // @ts-ignore for test purpose
-      expect(formatDate(undefined, dummyFormat)).toBe('');
-      expect(formatDate(null, dummyFormat)).toBe('');
+      expect(parseDate(undefined, dummyFormat)).toBeNull();
+      // @ts-ignore for test purpose
+      expect(parseDate(null, dummyFormat)).toBeNull();
     });
 
-    it('should return an empty string if the date is not a correct Date', () => {
-      // @ts-ignore for test purpose
-      expect(formatDate('I am not a date', dummyFormat)).toBe('');
-      // @ts-ignore for test purpose
-      expect(formatDate(true, dummyFormat)).toBe('');
-      // @ts-ignore for test purpose
-      expect(formatDate({ dummy: 'date' }, dummyFormat)).toBe('');
-      // @ts-ignore for test purpose
-      expect(formatDate([new Date()], dummyFormat)).toBe('');
-    });
+    it('should return a date object', () => {
+      const dummyStr = '01/02/2004';
 
-    it('should return a formatted date', () => {
-      const dummyDate = new Date();
-
-      expect(formatDate(dummyDate, dummyFormat)).toBe('formatted date');
-      expect(Datepicker.formatDate).toHaveBeenCalledTimes(1);
-      expect(Datepicker.formatDate).toHaveBeenCalledWith(dummyDate, dummyFormat);
+      expect(parseDate(dummyStr, dummyFormat)?.toISOString()).toBe('2000-01-02T00:00:00.000Z');
+      expect(Datepicker.parseDate).toHaveBeenCalledTimes(1);
+      expect(Datepicker.parseDate).toHaveBeenCalledWith(dummyStr, dummyFormat);
     });
   });
 

@@ -84,9 +84,10 @@
 <!--  </ods-input>-->
 
       <p>Step any</p>
-      <ods-input type="number" step="any">
+      <ods-input type="number" step="any" value="9.99">
       </ods-input>
 
+      <input type="number" step="any" value="9.99" />
 <!--  <p>Custom CSS</p>-->
 <!--  <ods-input class="my-input">-->
 <!--  </ods-input>-->
@@ -96,13 +97,13 @@
 <!--    }-->
 <!--  </style>-->
 
-  <p>Form</p>
+  <!-- <p>Form</p>
   <form id="input-form">
     <label for="input-form-first-name">First name:</label>
     <ods-input id="input-form-first-name"
                is-required
                name="firstName">
-    </ods-input>
+    </ods-input> -->
 
 <!--    <label for="input-form-last-name">Last name:</label>-->
 <!--    <ods-input id="input-form-last-name"-->
@@ -112,29 +113,29 @@
 
 <!--    <input type="text" name="natif-input" required>-->
 
-    <button id="input-form-toggle-custom-error-button" type="button">Toggle custom error</button>
-    <button id="input-form-check-validity-button" type="button">Check validity</button>
+    <!-- <button id="input-form-toggle-custom-error-button" type="button">Toggle custom error</button>
+    <button id="input-form-check-validity-button" type="button">Check validity</button> -->
 <!--    <button id="input-form-clear-button" type="button">Clear</button>-->
 <!--    <button id="input-form-reset-button" type="button">Reset</button>-->
 <!--    <button type="reset">Global Form Reset</button>-->
-    <button id="input-form-submit-button" type="submit">Submit</button>
+    <!-- <button id="input-form-submit-button" type="submit">Submit</button> -->
   </form>
   <script>
-    const formElement = document.querySelector('#input-form');
-    const inputFormFirstName = document.querySelector('#input-form-first-name');
-    const inputToggleCustomErrorButton = document.querySelector('#input-form-toggle-custom-error-button');
-    const inputCheckValidityFormButton = document.querySelector('#input-form-check-validity-button');
+    // const formElement = document.querySelector('#input-form');
+    // const inputFormFirstName = document.querySelector('#input-form-first-name');
+    // const inputToggleCustomErrorButton = document.querySelector('#input-form-toggle-custom-error-button');
+    // const inputCheckValidityFormButton = document.querySelector('#input-form-check-validity-button');
     // const inputClearFormButton = document.querySelector('#input-form-clear-button');
     // const inputResetFormButton = document.querySelector('#input-form-reset-button');
-    const inputSubmitFormButton = document.querySelector('#input-form-submit-button');
+    //const inputSubmitFormButton = document.querySelector('#input-form-submit-button');
 
-    inputToggleCustomErrorButton.addEventListener('click', async() => {
-      await inputFormFirstName.setCustomValidity('NOP')
-    });
+    //inputToggleCustomErrorButton.addEventListener('click', async() => {
+    //  await inputFormFirstName.setCustomValidity('NOP')
+    //});
 
-    inputCheckValidityFormButton.addEventListener('click', async() => {
-      console.log('Check validity: ', await inputFormFirstName.getValidity());
-    });
+    //inputCheckValidityFormButton.addEventListener('click', async() => {
+    //  console.log('Check validity: ', await inputFormFirstName.getValidity());
+    //});
     //
     // inputClearFormButton.addEventListener('click', async() => {
     //   await inputFormInput.clear();
@@ -144,12 +145,12 @@
     //   await inputFormInput.reset();
     // });
 
-    inputSubmitFormButton.addEventListener('click', async(e) => {
-      // e.preventDefault(); // comment to test native validation messages
-      const formData = new FormData(formElement);
-      console.log('formData', formData);
-      console.log(await inputFormFirstName?.getValidity())
-    });
+    // inputSubmitFormButton.addEventListener('click', async(e) => {
+    //   e.preventDefault(); // comment to test native validation messages
+    //   const formData = new FormData(formElement);
+    //   console.log('formData', formData);
+    //   console.log(await inputFormFirstName?.getValidity())
+    // });
 
   </script>
 
@@ -159,7 +160,7 @@
   <ods-input id="labelled-input" type="text">
   </ods-input> -->
 
-  <p>With datalist</p>
+  <!-- <p>With datalist</p>
   <ods-input id="input-with-datalist" list="my-list">
     <datalist slot="list">
       <option value="Chocolate"></option>
@@ -177,7 +178,7 @@
     updateDatalistBtn.addEventListener('click', () => {
       inputWithDatalistEl.innerHTML = '<datalist slot="list"><option value="Cat"></option><option value="Dog"></option><option value="Rabbit"></option></datalist>';
     });
-  </script>
+  </script> -->
 
 <!--  <p>Methods</p>-->
 <!--  <ods-input id="input-methods">-->
@@ -187,7 +188,7 @@
 <!--  <button id="toggle-mask-button">toggleMask</button>-->
 <!--  <button id="get-validity-button">getValidity</button>-->
 
-  <p>Methods</p>
+  <!-- <p>Methods</p>
   <ods-input id="input-methods"
              is-required
              default-value="rest">
@@ -217,7 +218,7 @@
     });
 
     toggleMaskButton.addEventListener('click', () => input.toggleMask());
-  </script>
+  </script> -->
 
 <!--  <p>With label</p>-->
 <!--  <label for="labelled-input">My input</label>-->

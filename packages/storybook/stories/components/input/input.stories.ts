@@ -176,10 +176,10 @@ export const Demo: StoryObj = {
     step: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'You can set the step to "any" for allowing floating value' },
-        type: { summary: 'number | "any"' },
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'number' },
       },
-      control: 'text',
+      control: 'number',
     },
     type: {
       table: {
@@ -281,6 +281,14 @@ export const Search: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-input type="search" value="search type">
+</ods-input>
+  `,
+};
+
+export const StepAny: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-input type="number" step="any" value="9.99">
 </ods-input>
   `,
 };

@@ -16,10 +16,11 @@ export class OdsRadio {
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
+  @Prop({ reflect: true }) public hasError: boolean = false;
+  @Prop({ reflect: true }) public inputId?: string;
   @Prop({ reflect: true }) public isChecked: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
-  @Prop({ reflect: true }) public inputId?: string;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ mutable: true, reflect: true }) public value: string | null = null;
 
@@ -176,7 +177,7 @@ export class OdsRadio {
           aria-labelledby={ this.ariaLabelledby }
           class={{
             'ods-radio__radio': true,
-            'ods-radio__radio--error': !!this.isInvalid,
+            'ods-radio__radio--error': this.hasError || !!this.isInvalid,
           }}
           checked={ this.isChecked }
           disabled={ this.isDisabled }

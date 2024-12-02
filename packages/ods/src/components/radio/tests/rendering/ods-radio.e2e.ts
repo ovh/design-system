@@ -65,5 +65,23 @@ describe('ods-radio rendering', () => {
 
       expect(hasErrorClass2).toBe(true);
     });
+
+    it('should enforce the error state if has-error is set even on valid radio', async() => {
+      await setup('<form method="get" onsubmit="return false"><ods-radio name="error-state" is-required has-error></ods-radio></form>');
+      await page.waitForChanges();
+
+      const hasErrorClass = await page.evaluate(() => {
+        return document.querySelector('ods-radio')?.querySelector('input')?.classList.contains('ods-radio__radio--error');
+      });
+      expect(hasErrorClass).toBe(true);
+
+      await el.click();
+      await page.waitForChanges();
+
+      const hasErrorClass2 = await page.evaluate(() => {
+        return document.querySelector('ods-radio')?.querySelector('input')?.classList.contains('ods-radio__radio--error');
+      });
+      expect(hasErrorClass2).toBe(true);
+    });
   });
 });

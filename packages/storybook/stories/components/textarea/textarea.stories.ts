@@ -15,8 +15,8 @@ export const Demo: StoryObj = {
   render: (arg) => {
     return html`
     <ods-textarea class="my-textarea"
-                  ariaLabel="${arg.ariaLabel}"
-                  ariaLabelledby="${arg.ariaLabelledby}"
+                  aria-label="${arg.ariaLabel}"
+                  aria-labelledby="${arg.ariaLabelledby}"
                   cols="${arg.cols}"
                   has-error="${arg.hasError}"
                   has-spellcheck="${arg.hasSpellcheck}"

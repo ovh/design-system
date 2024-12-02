@@ -15,12 +15,13 @@ export const Demo: StoryObj = {
   render: (arg) => {
     return html`
     <ods-radio
-      ariaLabel="${arg.ariaLabel}"
-      ariaLabelledby="${arg.ariaLabelledby}"
+      aria-label="${arg.ariaLabel}"
+      aria-labelledby="${arg.ariaLabelledby}"
       class="my-radio-demo"
-      name="my-radio-demo"
+      has-error="${arg.hasError}"
       is-disabled="${arg.isDisabled}"
-      is-required="${arg.isRequired}">
+      is-required="${arg.isRequired}"
+      name="my-radio-demo">
     </ods-radio>
     ${arg.validityState ? ValidityStateTemplate('radio', '.my-radio-demo') : ''}
     <style>
@@ -56,6 +57,14 @@ export const Demo: StoryObj = {
       control: 'text',
       description: 'Set a custom style properties. Example: "background-color: red;"',
     },
+    hasError: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
     isDisabled: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -83,6 +92,7 @@ export const Demo: StoryObj = {
     },
   }),
   args: {
+    hasError: false,
     isDisabled: false,
     isRequired: false,
     validityState: false,
@@ -185,6 +195,13 @@ export const Checked: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-radio is-checked></ods-radio>
+  `,
+};
+
+export const Error: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-radio has-error></ods-radio>
   `,
 };
 

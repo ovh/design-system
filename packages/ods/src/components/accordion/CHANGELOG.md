@@ -6,6 +6,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.4.0-alpha.1](https://ovh.github.io/design-system/v18.4.0-alpha.1/?path=/docs/design-system-changelog--page) (2024-12-03)
+[compare](https://github.com/ovh/design-system/compare/v18.4.0-alpha.0...v18.4.0-alpha.1)
+
+**Note:** Version bump only for package @ovhcloud/ods-component-accordion
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.4.0-alpha.0](https://ovh.github.io/design-system/v18.4.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-11-29)
 [compare](https://github.com/ovh/design-system/compare/v18.3.1...v18.4.0-alpha.0)
 

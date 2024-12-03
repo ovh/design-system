@@ -1,4 +1,5 @@
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { type OdsFormElement } from '../../../../../types/form';
 import { ODS_SWITCH_SIZE, type OdsSwitchSize } from '../../constant/switch-size';
 import { clearItems, focusFirstSwitchItem, getInitialValueState, getValidationMessageFromChildren, getValidityStateFromChildren, getWillValidateFromChildren, propagateInputId, propagateIsDisabled, propagateIsRequired, propagateName, reportValidityFromOneChild, resetItems } from '../../controller/ods-switch';
 import { type OdsSwitchChangeEventDetail } from '../../interfaces/events';
@@ -9,7 +10,7 @@ import { type OdsSwitchChangeEventDetail } from '../../interfaces/events';
   styleUrl: 'ods-switch.scss',
   tag: 'ods-switch',
 })
-export class OdsSwitch {
+export class OdsSwitch implements OdsFormElement {
   @Element() el!: HTMLElement;
 
   @State() private isInvalid: boolean | undefined;

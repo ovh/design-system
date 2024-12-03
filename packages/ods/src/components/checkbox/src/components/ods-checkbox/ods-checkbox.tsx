@@ -1,4 +1,5 @@
 import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, Watch, h } from '@stencil/core';
+import { type OdsFormElement } from '../../../../../types/form';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsCheckboxChangeEventDetail } from '../../interfaces/event';
 
@@ -8,7 +9,7 @@ import { type OdsCheckboxChangeEventDetail } from '../../interfaces/event';
   styleUrl: 'ods-checkbox.scss',
   tag: 'ods-checkbox',
 })
-export class OdsCheckbox {
+export class OdsCheckbox implements OdsFormElement {
   private inputEl?: HTMLInputElement;
   private observer?: MutationObserver;
 

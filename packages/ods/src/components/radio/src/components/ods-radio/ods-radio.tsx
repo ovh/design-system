@@ -1,4 +1,5 @@
 import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, Watch, h } from '@stencil/core';
+import { type OdsFormElement } from '../../../../../types/form';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsRadioChangeEventDetail } from '../../interfaces/events';
 
@@ -8,7 +9,7 @@ import { type OdsRadioChangeEventDetail } from '../../interfaces/events';
   styleUrl: 'ods-radio.scss',
   tag: 'ods-radio',
 })
-export class OdsRadio {
+export class OdsRadio implements OdsFormElement {
   private inputEl?: HTMLInputElement;
   private observer?: MutationObserver;
 

@@ -14,6 +14,7 @@ import nl from 'vanillajs-datepicker/js/i18n/locales/nl'; // eslint-disable-line
 import pl from 'vanillajs-datepicker/js/i18n/locales/pl'; // eslint-disable-line import/no-unresolved
 // @ts-ignore no existing declaration
 import pt from 'vanillajs-datepicker/js/i18n/locales/pt'; // eslint-disable-line import/no-unresolved
+import { type OdsFormElement } from '../../../../../types/form';
 import { isDate } from '../../../../../utils/type';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
@@ -39,7 +40,7 @@ Object.assign(Datepicker.locales, pt);
   styleUrl: 'ods-datepicker.scss',
   tag: 'ods-datepicker',
 })
-export class OdsDatepicker {
+export class OdsDatepicker implements OdsFormElement {
   private datepickerInstance?: Datepicker;
   private inputElement?: HTMLInputElement;
   private observer?: MutationObserver;

@@ -1,4 +1,5 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { type OdsFormElement } from '../../../../../types/form';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { isNumeric } from '../../../../../utils/type';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
@@ -15,7 +16,7 @@ import { type OdsQuantityChangeEventDetail } from '../../interfaces/events';
   styleUrl: 'ods-quantity.scss',
   tag: 'ods-quantity',
 })
-export class OdsQuantity {
+export class OdsQuantity implements OdsFormElement {
   private odsInput?: HTMLElement & OdsInput;
   private shouldUpdateIsInvalidState: boolean = false;
 

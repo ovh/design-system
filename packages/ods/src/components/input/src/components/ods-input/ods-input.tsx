@@ -1,4 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { type OdsFormElement } from '../../../../../types/form';
 import { submitFormOnClick, submitFormOnEnter } from '../../../../../utils/dom';
 import { isNumeric } from '../../../../../utils/type';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
@@ -7,7 +8,6 @@ import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { ODS_INPUT_TYPE, type OdsInputType } from '../../constants/input-type';
 import { VALUE_DEFAULT_VALUE, getInitialValue, handleKeySpaceEnter, isPassword, updateInternals } from '../../controller/ods-input';
 import { type OdsInputChangeEventDetail } from '../../interfaces/events';
-
 @Component({
   formAssociated: true,
   shadow: {
@@ -16,7 +16,7 @@ import { type OdsInputChangeEventDetail } from '../../interfaces/events';
   styleUrl: 'ods-input.scss',
   tag: 'ods-input',
 })
-export class OdsInput {
+export class OdsInput implements OdsFormElement {
   private hasMovedNodes: boolean = false;
   private inputEl?: HTMLInputElement;
   private observer?: MutationObserver;

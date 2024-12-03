@@ -1,4 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { type OdsFormElement } from '../../../../../types/form';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { updateInternals } from '../../controller/ods-toggle';
 import { type OdsToggleChangeEventDetail } from '../../interfaces/event';
@@ -11,7 +12,7 @@ import { type OdsToggleChangeEventDetail } from '../../interfaces/event';
   styleUrl: 'ods-toggle.scss',
   tag: 'ods-toggle',
 })
-export class OdsToggle {
+export class OdsToggle implements OdsFormElement {
   private inputEl?: HTMLInputElement;
   private observer?: MutationObserver;
   private shouldUpdateIsInvalidState: boolean = false;

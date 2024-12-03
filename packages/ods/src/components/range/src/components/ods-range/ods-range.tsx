@@ -1,5 +1,6 @@
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { type OdsFormElement } from '../../../../../types/form';
 import { getRandomHTMLId } from '../../../../../utils/dom';
 import { type OdsTooltip } from '../../../../tooltip/src';
 import { VALUE_DEFAULT_VALUE, getInitialValue, isDualRange, toPercentage, updateInternals } from '../../controller/ods-range';
@@ -13,7 +14,7 @@ import { type OdsRangeChangeEventDetail } from '../../interfaces/event';
   styleUrl: 'ods-range.scss',
   tag: 'ods-range',
 })
-export class OdsRange {
+export class OdsRange implements OdsFormElement {
   private hostId: string = '';
   private inputEl?: HTMLInputElement;
   private inputElDual?: HTMLInputElement;

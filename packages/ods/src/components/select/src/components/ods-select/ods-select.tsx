@@ -1,5 +1,6 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import TomSelect from 'tom-select';
+import { type OdsFormElement } from '../../../../../types/form';
 import { getElementPosition } from '../../../../../utils/overlay';
 import { mergeSelectedItemPlugin, placeholderPlugin } from '../../../../../utils/select';
 import { VALUE_DEFAULT_VALUE, getInitialValue, getSelectConfig, hasNoValueOption, inlineValue, moveSlottedElements, setSelectValue, updateInternals } from '../../controller/ods-select';
@@ -17,7 +18,7 @@ TomSelect.define('placeholder', placeholderPlugin);
   styleUrl: 'ods-select.scss',
   tag: 'ods-select',
 })
-export class OdsSelect {
+export class OdsSelect implements OdsFormElement {
   private hasMovedNodes: boolean = false;
   private isSelectSync: boolean = false;
   private isValueSync: boolean = false;

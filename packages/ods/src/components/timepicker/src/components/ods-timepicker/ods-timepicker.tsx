@@ -2,6 +2,7 @@ import type { OdsSelect } from '../../../../select/src';
 import type { OdsTimepickerChangeEventDetail } from '../../interfaces/event';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { type OdsFormElement } from '../../../../../types/form';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { ODS_INPUT_TYPE, type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
 import { type OdsSelectChangeEvent } from '../../../../select/src';
@@ -17,7 +18,7 @@ import { VALUE_DEFAULT_VALUE, formatValue, getCurrentTimezone, getInitialValue, 
   styleUrl: 'ods-timepicker.scss',
   tag: 'ods-timepicker',
 })
-export class OdsTimepicker {
+export class OdsTimepicker implements OdsFormElement {
   private defaultCurrentTimezone?: OdsTimezone;
   private hasTimezones: boolean = false;
   private odsInput?: OdsInput & HTMLElement;

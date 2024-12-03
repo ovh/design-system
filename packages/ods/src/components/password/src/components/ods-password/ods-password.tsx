@@ -1,4 +1,5 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { type OdsFormElement } from '../../../../../types/form';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
 import { VALUE_DEFAULT_VALUE, getInitialValue, updateInternals } from '../../controller/ods-password';
@@ -12,7 +13,7 @@ import { type OdsPasswordChangeEventDetail } from '../../interfaces/events';
   styleUrl: 'ods-password.scss',
   tag: 'ods-password',
 })
-export class OdsPassword {
+export class OdsPassword implements OdsFormElement {
   private odsInput?: HTMLElement & OdsInput;
   private shouldUpdateIsInvalidState: boolean = false;
 

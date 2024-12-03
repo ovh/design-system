@@ -1,4 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { type OdsFormElement } from '../../../../../types/form';
 import { VALUE_DEFAULT_VALUE, getInitialValue, updateInternals } from '../../controller/ods-textarea';
 import { type OdsTextareaChangeEventDetail } from '../../interfaces/events';
 
@@ -10,7 +11,7 @@ import { type OdsTextareaChangeEventDetail } from '../../interfaces/events';
   styleUrl: 'ods-textarea.scss',
   tag: 'ods-textarea',
 })
-export class OdsTextarea {
+export class OdsTextarea implements OdsFormElement {
   private observer?: MutationObserver;
   private shouldUpdateIsInvalidState: boolean = false;
   private textareaElement?: HTMLTextAreaElement;

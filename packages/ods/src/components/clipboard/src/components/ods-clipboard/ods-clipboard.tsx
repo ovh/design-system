@@ -50,6 +50,7 @@ export class OdsClipboard {
         id={ this.hostId }>
         <ods-input
           class="ods-clipboard__input"
+          exportparts="input"
           isDisabled={ this.isDisabled }
           isReadonly={ true }
           name=""

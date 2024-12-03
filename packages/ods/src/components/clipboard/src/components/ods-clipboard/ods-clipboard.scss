@@ -7,8 +7,12 @@
 }
 
 .ods-clipboard {
-  &__input::part(input) {
-    padding-right: calc(input.$ods-input-actions-button-width + input.$ods-input-actions-padding-right);
+  &__input {
+    width: inherit;
+
+    &::part(input) {
+      padding-right: calc(input.$ods-input-actions-button-width + input.$ods-input-actions-padding-right);
+    }
   }
 
   &__copy {

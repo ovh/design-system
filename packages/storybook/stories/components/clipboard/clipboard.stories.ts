@@ -93,6 +93,10 @@ export const CustomTooltipCSS = {
                value="Copy me">
 </ods-clipboard>
 <style>
+  .my-custom-clipboard {
+    width: 100%;
+  }
+
   .my-custom-clipboard::part(tooltip) {
     width: 200px;
   }

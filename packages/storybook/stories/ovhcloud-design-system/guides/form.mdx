@@ -142,14 +142,13 @@ As ODS components are behaving as native form elements, using them in a native f
 
 <Source code={`
 function FormNative(): ReactElement {
-  const formRef = useRef<HTMLFormElement>(null);
-
   // The form will be submitted only if all fields are valid.
   // In this case some form elements are marked as required, so it won't be submitted until they're all filled.
   function onSubmit(e: FormEvent) {
     e.preventDefault();
 
-    const formData = new FormData(formRef.current!);
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
 
     // formData will contain all named field and their values
     // {
@@ -159,8 +158,7 @@ function FormNative(): ReactElement {
   }
 
   return (
-    <form onSubmit={ onSubmit }
-          ref={ formRef }>
+    <form onSubmit={ onSubmit }>
       <OdsInput isRequired={ true }
                 name="text"
                 type={ ODS_INPUT_TYPE.text } />

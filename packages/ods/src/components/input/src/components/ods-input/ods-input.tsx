@@ -55,7 +55,7 @@ export class OdsInput implements OdsFormElement {
   @Event() odsChange!: EventEmitter<OdsInputChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
-  @Event() odsInvalid!: EventEmitter<boolean>;
+  @Event() odsInvalid!: EventEmitter<{ isInvalid: boolean }>;
   @Event() odsReset!: EventEmitter<void>;
   @Event() odsToggleMask!: EventEmitter<void>;
 
@@ -136,7 +136,7 @@ export class OdsInput implements OdsFormElement {
 
   @Watch('isInvalid')
   onIsInvalidChange(): void {
-    this.odsInvalid.emit(this.isInvalid);
+    this.odsInvalid.emit({ isInvalid: !!this.isInvalid });
   }
 
   @Watch('isMasked')

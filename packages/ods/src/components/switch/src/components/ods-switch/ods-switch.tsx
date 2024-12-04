@@ -25,7 +25,7 @@ export class OdsSwitch implements OdsFormElement {
   @Event() odsChange!: EventEmitter<OdsSwitchChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<CustomEvent<void>>;
-  @Event() odsInvalid!: EventEmitter<boolean>;
+  @Event() odsInvalid!: EventEmitter<{ isInvalid: boolean }>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Listen('odsSwitchItemBlur')
@@ -47,9 +47,9 @@ export class OdsSwitch implements OdsFormElement {
   }
 
   @Listen('odsSwitchItemInvalid')
-  onOdsInvalid(event: CustomEvent<boolean>): void {
+  onOdsInvalid(event: CustomEvent<{ isInvalid: boolean }>): void {
     event.stopImmediatePropagation();
-    this.isInvalid = event.detail;
+    this.isInvalid = event.detail.isInvalid;
   }
 
   @Method()
@@ -113,7 +113,7 @@ export class OdsSwitch implements OdsFormElement {
 
   @Watch('isInvalid')
   onIsInvalidChange(): void {
-    this.odsInvalid.emit(this.isInvalid);
+    this.odsInvalid.emit({ isInvalid: !!this.isInvalid });
   }
 
   @Watch('isRequired')

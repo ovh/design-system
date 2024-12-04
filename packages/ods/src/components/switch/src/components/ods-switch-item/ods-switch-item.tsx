@@ -29,7 +29,7 @@ export class OdsSwitchItem {
   /** @internal */
   @Event() odsSwitchItemFocus!: EventEmitter<void>;
   /** @internal */
-  @Event() odsSwitchItemInvalid!: EventEmitter<boolean>;
+  @Event() odsSwitchItemInvalid!: EventEmitter<{ isInvalid: boolean }>;
 
   @Method()
   async clear(): Promise<void> {
@@ -92,7 +92,7 @@ export class OdsSwitchItem {
             this.isRequired = this.el.getAttribute('is-required') === '';
             break;
           case 'required':
-            this.odsSwitchItemInvalid.emit(!this.inputEl?.validity.valid);
+            this.odsSwitchItemInvalid.emit({ isInvalid: !this.inputEl?.validity.valid });
             break;
           default:
             break;
@@ -135,7 +135,7 @@ export class OdsSwitchItem {
   }
 
   private onBlur(): void {
-    this.odsSwitchItemInvalid.emit(!this.inputEl!.validity.valid);
+    this.odsSwitchItemInvalid.emit({ isInvalid: !this.inputEl!.validity.valid });
     this.odsSwitchItemBlur.emit();
   }
 
@@ -151,7 +151,7 @@ export class OdsSwitchItem {
     // Remove the native validation message popup
     event.preventDefault();
 
-    this.odsSwitchItemInvalid.emit(true);
+    this.odsSwitchItemInvalid.emit({ isInvalid: true });
   }
 
   render(): FunctionalComponent {

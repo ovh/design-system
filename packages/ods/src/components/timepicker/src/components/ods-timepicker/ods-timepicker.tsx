@@ -50,7 +50,7 @@ export class OdsTimepicker implements OdsFormElement {
   @Event() odsChange!: EventEmitter<OdsTimepickerChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
-  @Event() odsInvalid!: EventEmitter<boolean>;
+  @Event() odsInvalid!: EventEmitter<{ isInvalid: boolean }>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Listen('invalid')
@@ -113,7 +113,7 @@ export class OdsTimepicker implements OdsFormElement {
 
   @Watch('isInvalid')
   onIsInvalidChange(): void {
-    this.odsInvalid.emit(this.isInvalid);
+    this.odsInvalid.emit({ isInvalid: !!this.isInvalid });
   }
 
   @Watch('timezones')
@@ -180,10 +180,10 @@ export class OdsTimepicker implements OdsFormElement {
     });
   }
 
-  private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+  private async onOdsInvalid(event: CustomEvent<{ isInvalid: boolean }>): Promise<void> {
     event.stopImmediatePropagation();
     await updateInternals(this.internals, this.value, this.odsInput);
-    this.isInvalid = event.detail;
+    this.isInvalid = event.detail.isInvalid;
   }
 
   render(): FunctionalComponent {
@@ -206,7 +206,7 @@ export class OdsTimepicker implements OdsFormElement {
           onOdsBlur={ () => this.onBlur() }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event, false) }
           onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
-          onOdsInvalid={ (event: CustomEvent<boolean>) => this.onOdsInvalid(event) }
+          onOdsInvalid={ (event: CustomEvent<{ isInvalid: boolean }>) => this.onOdsInvalid(event) }
           onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }
           ref={ (el?: HTMLElement): OdsInput => this.odsInput = el as OdsInput & HTMLElement }
           step={ this.withSeconds ? 1 : undefined }
@@ -227,7 +227,7 @@ export class OdsTimepicker implements OdsFormElement {
             onOdsBlur={ () => this.onBlur() }
             onOdsChange={ (event: OdsSelectChangeEvent) => this.onOdsChange(event, true) }
             onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
-            onOdsInvalid={ (event: CustomEvent<boolean>) => event.stopPropagation() }
+            onOdsInvalid={ (event: CustomEvent<{ isInvalid: boolean }>) => event.stopPropagation() }
             onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }
             part="select"
             ref={ (el?: HTMLElement): OdsSelect => this.odsSelect = el as OdsSelect & HTMLElement }

@@ -40,7 +40,7 @@ export class OdsPassword implements OdsFormElement {
   @Event() odsChange!: EventEmitter<OdsPasswordChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
-  @Event() odsInvalid!: EventEmitter<boolean>;
+  @Event() odsInvalid!: EventEmitter<{ isInvalid: boolean }>;
   @Event() odsReset!: EventEmitter<void>;
   @Event() odsToggleMask!: EventEmitter<void>;
 
@@ -105,7 +105,7 @@ export class OdsPassword implements OdsFormElement {
 
   @Watch('isInvalid')
   onIsInvalidChange(): void {
-    this.odsInvalid.emit(this.isInvalid);
+    this.odsInvalid.emit({ isInvalid: !!this.isInvalid });
   }
 
   componentWillLoad(): void {
@@ -145,10 +145,10 @@ export class OdsPassword implements OdsFormElement {
     });
   }
 
-  private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+  private async onOdsInvalid(event: CustomEvent<{ isInvalid: boolean }>): Promise<void> {
     event.stopImmediatePropagation();
     await updateInternals(this.internals, this.value, this.odsInput);
-    this.isInvalid = event.detail;
+    this.isInvalid = event.detail.isInvalid;
   }
 
   render(): FunctionalComponent {
@@ -174,7 +174,7 @@ export class OdsPassword implements OdsFormElement {
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           onOdsBlur={() => this.onBlur() }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
-          onOdsInvalid={ (event: CustomEvent<boolean>) => this.onOdsInvalid(event) }
+          onOdsInvalid={ (event: CustomEvent<{ isInvalid: boolean }>) => this.onOdsInvalid(event) }
           onOdsToggleMask={ () => this.isMasked = !this.isMasked }
           pattern={ this.pattern }
           placeholder={ this.placeholder }

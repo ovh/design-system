@@ -42,7 +42,7 @@ export class OdsQuantity implements OdsFormElement {
   @Event() odsChange!: EventEmitter<OdsQuantityChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
-  @Event() odsInvalid!: EventEmitter<boolean>;
+  @Event() odsInvalid!: EventEmitter<{ isInvalid: boolean }>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Listen('invalid')
@@ -101,7 +101,7 @@ export class OdsQuantity implements OdsFormElement {
 
   @Watch('isInvalid')
   onIsInvalidChange(): void {
-    this.odsInvalid.emit(this.isInvalid);
+    this.odsInvalid.emit({ isInvalid: !!this.isInvalid });
   }
 
   componentWillLoad(): void {
@@ -163,10 +163,10 @@ export class OdsQuantity implements OdsFormElement {
     });
   }
 
-  private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+  private async onOdsInvalid(event: CustomEvent<{ isInvalid: boolean }>): Promise<void> {
     event.stopImmediatePropagation();
     await updateInternals(this.internals, this.value, this.odsInput);
-    this.isInvalid = event.detail;
+    this.isInvalid = event.detail.isInvalid;
   }
 
   private getHasError(): boolean {
@@ -208,7 +208,7 @@ export class OdsQuantity implements OdsFormElement {
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           onOdsBlur={ () => this.onOdsBlur() }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
-          onOdsInvalid={ (event: CustomEvent<boolean>) => this.onOdsInvalid(event) }
+          onOdsInvalid={ (event: CustomEvent<{ isInvalid: boolean }>) => this.onOdsInvalid(event) }
           placeholder={ this.placeholder }
           ref={ (el?: unknown) => this.odsInput = el as HTMLElement & OdsInput }
           step={ this.step }

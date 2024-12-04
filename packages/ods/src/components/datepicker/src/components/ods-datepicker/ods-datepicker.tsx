@@ -75,7 +75,7 @@ export class OdsDatepicker implements OdsFormElement {
   @Event() odsChange!: EventEmitter<OdsDatepickerChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
-  @Event() odsInvalid!: EventEmitter<boolean>;
+  @Event() odsInvalid!: EventEmitter<{ isInvalid: boolean }>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Listen('invalid')
@@ -171,7 +171,7 @@ export class OdsDatepicker implements OdsFormElement {
 
   @Watch('isInvalid')
   onIsInvalidChange(): void {
-    this.odsInvalid.emit(this.isInvalid);
+    this.odsInvalid.emit({ isInvalid: !!this.isInvalid });
   }
 
   @Watch('locale')

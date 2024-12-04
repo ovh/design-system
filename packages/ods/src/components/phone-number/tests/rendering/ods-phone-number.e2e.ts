@@ -147,12 +147,12 @@ describe('ods-phone-number rendering', () => {
 
       expect(await isInErrorState()).toBe(false);
 
-      input.triggerEvent('odsInvalid', { detail: true });
+      input.triggerEvent('odsInvalid', { detail: { isInvalid: true } });
       await page.waitForChanges();
 
       expect(await isInErrorState()).toBe(true);
 
-      input.triggerEvent('odsInvalid', { detail: false });
+      input.triggerEvent('odsInvalid', { detail: { isInvalid: false } });
       await page.waitForChanges();
 
       expect(await isInErrorState()).toBe(false);

@@ -354,13 +354,13 @@ describe('ods-datepicker validity', () => {
         await page.waitForChanges();
 
         expect(odsInvalidSpy).toHaveReceivedEventTimes(1);
-        expect(odsInvalidSpy).toHaveReceivedEventDetail(true);
+        expect(odsInvalidSpy).toHaveReceivedEventDetail({ isInvalid: true });
 
         await el.removeAttribute('is-required');
         await page.waitForChanges();
 
         expect(odsInvalidSpy).toHaveReceivedEventTimes(2);
-        expect(odsInvalidSpy).toHaveReceivedEventDetail(false);
+        expect(odsInvalidSpy).toHaveReceivedEventDetail({ isInvalid: false });
       });
     });
   });

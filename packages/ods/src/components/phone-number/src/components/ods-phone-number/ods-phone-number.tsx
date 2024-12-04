@@ -65,7 +65,7 @@ export class OdsPhoneNumber implements OdsFormElement {
   @Event() odsChange!: EventEmitter<OdsPhoneNumberChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
-  @Event() odsInvalid!: EventEmitter<boolean>;
+  @Event() odsInvalid!: EventEmitter<{ isInvalid: boolean }>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Listen('invalid')
@@ -130,7 +130,7 @@ export class OdsPhoneNumber implements OdsFormElement {
 
   @Watch('isInvalid')
   onIsInvalidChange(): void {
-    this.odsInvalid.emit(this.isInvalid);
+    this.odsInvalid.emit({ isInvalid: !!this.isInvalid });
   }
 
   @Watch('isoCode')
@@ -210,11 +210,11 @@ export class OdsPhoneNumber implements OdsFormElement {
     });
   }
 
-  private async onOdsInvalid(event: CustomEvent<boolean>): Promise<void> {
+  private async onOdsInvalid(event: CustomEvent<{ isInvalid: boolean }>): Promise<void> {
     event.stopImmediatePropagation();
     const formattedValue = formatPhoneNumber(this.value, this.isoCode, this.phoneUtils);
     await updateInternals(this.internals, formattedValue, this.inputElement);
-    this.isInvalid = event.detail;
+    this.isInvalid = event.detail.isInvalid;
   }
 
   private onSelectChange(event: OdsSelectChangeEvent): void {
@@ -285,7 +285,7 @@ export class OdsPhoneNumber implements OdsFormElement {
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           onOdsBlur={ () => this.onBlur() }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
-          onOdsInvalid={ (event: CustomEvent<boolean>) => this.onOdsInvalid(event) }
+          onOdsInvalid={ (event: CustomEvent<{ isInvalid: boolean }>) => this.onOdsInvalid(event) }
           exportparts="input"
           pattern={ this.pattern }
           placeholder={ this.getPlaceholder() }

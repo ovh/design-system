@@ -25,5 +25,15 @@
   "peerDependencies": {
     "react": ">=16.8.6",
     "react-dom": ">=16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "7.26.0",
+    "@babel/plugin-transform-modules-commonjs": "7.25.9",
+    "@babel/preset-env": "7.26.0",
+    "@babel/preset-typescript": "7.26.0",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/react": "16.0.1",
+    "@testing-library/user-event": "14.5.2",
+    "babel-jest": "29.7.0"
   }
 }

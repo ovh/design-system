@@ -1,5 +1,5 @@
 import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, Watch, h } from '@stencil/core';
-import { type OdsFormElement } from '../../../../../types/form';
+import { type OdsFormElement } from '../../../../../types';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsCheckboxChangeEventDetail } from '../../interfaces/event';
 

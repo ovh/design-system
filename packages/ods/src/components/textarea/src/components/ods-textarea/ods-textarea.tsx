@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-import { type OdsFormElement } from '../../../../../types/form';
+import { type OdsFormElement } from '../../../../../types';
 import { VALUE_DEFAULT_VALUE, getInitialValue, updateInternals } from '../../controller/ods-textarea';
 import { type OdsTextareaChangeEventDetail } from '../../interfaces/events';
 

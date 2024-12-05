@@ -1,6 +1,6 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { PhoneNumberUtil } from 'google-libphonenumber';
-import { type OdsFormElement } from '../../../../../types/form';
+import { type OdsFormElement } from '../../../../../types';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
 import { type OdsSelectChangeEvent, type OdsSelectCustomRendererData } from '../../../../select/src';

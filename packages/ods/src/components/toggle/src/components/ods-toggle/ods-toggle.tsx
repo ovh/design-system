@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-import { type OdsFormElement } from '../../../../../types/form';
+import { type OdsFormElement } from '../../../../../types';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { updateInternals } from '../../controller/ods-toggle';
 import { type OdsToggleChangeEventDetail } from '../../interfaces/event';

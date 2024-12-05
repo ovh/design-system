@@ -1,0 +1,6 @@
+import{j as o}from"./jsx-runtime-sbaUvk5M.js";import{u as r}from"./index-CGWm3lku.js";import{O as i}from"./index-D7X5WOeG.js";import{M as m}from"./index-D-G4MXwZ.js";import{H as a}from"./Heading-1Y93vQ6R.js";import{S as t}from"./StorybookLink-BMUyLisX.js";import"./iframe-BBvDorMF.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-B_J8iUie.js";import"./index-DX_4BEHg.js";import"./index-DrFu-skq.js";import"./index-CveiHl7W.js";function s(n){const e={p:"p",...r(),...n.components};return o.jsxs(o.Fragment,{children:[o.jsx(m,{title:"ODS Components/Chip"}),`
+`,o.jsx(a,{label:"Chip - migrate from v17 to v18",level:1}),`
+`,o.jsxs(e.p,{children:["Chip has been removed from ODS components. ",o.jsx(i,{color:"critical",label:"Removed",size:"sm"})]}),`
+`,o.jsx(e.p,{children:"It has been split into two different components."}),`
+`,o.jsxs(e.p,{children:["If you need a presentational component, with no behaviour, use ",o.jsx(t,{kind:"ODS Components/Badge",label:"ods-badge",story:"Documentation"}),"."]}),`
+`,o.jsxs(e.p,{children:["If you need a clickable element, use ",o.jsx(t,{kind:"ODS Components/Tag",label:"ods-tag",story:"Documentation"}),"."]})]})}function v(n={}){const{wrapper:e}={...r(),...n.components};return e?o.jsx(e,{...n,children:o.jsx(s,{...n})}):s(n)}export{v as default};

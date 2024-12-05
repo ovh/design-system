@@ -1,6 +1,7 @@
 .DS_Store
 node_modules/
 dist/
+src/components/types/
 src/components/utils/
 tests/coverage/
 documentation/

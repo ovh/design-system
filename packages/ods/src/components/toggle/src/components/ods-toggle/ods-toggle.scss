@@ -47,11 +47,9 @@
         }
       }
 
-
       &:not(#{$slider}--disabled)#{$slider}--error {
         border-color: var(--ods-color-form-element-border-critical);
       }
-
 
       &--disabled {
         @include state.ods-is-disabled();
@@ -127,7 +125,7 @@
           padding-left: 4px;
         }
 
-        & + :not(#{$disabled}, #{$error}).ods-toggle__container__slider {
+        & + :not(#{$disabled}).ods-toggle__container__slider {
           border-color: var(--ods-color-primary-500);
           background-color: var(--ods-color-primary-500);
 

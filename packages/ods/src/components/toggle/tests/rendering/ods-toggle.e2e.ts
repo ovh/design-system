@@ -8,6 +8,13 @@ describe('ods-toggle rendering', () => {
   let page: E2EPage;
   let slider: E2EElement;
 
+  async function getBorderColor(): Promise<string> {
+    return await page.evaluate(() => {
+      const slider = document.querySelector('ods-toggle')?.shadowRoot?.querySelector('.ods-toggle__container__slider');
+      return slider ? window.getComputedStyle(slider).borderColor : '';
+    });
+  }
+
   async function isInErrorState(): Promise<boolean | undefined> {
     return await page.evaluate(() => {
       return document.querySelector('ods-toggle')?.shadowRoot?.querySelector('.ods-toggle__container__slider')?.classList.contains('ods-toggle__container__slider--error');
@@ -103,7 +110,16 @@ describe('ods-toggle rendering', () => {
       await page.waitForChanges();
 
       expect(await isInErrorState()).toBe(true);
+    });
 
+    it('should hide error style if checked', async() => {
+      await setup('<ods-toggle has-error></ods-toggle>');
+      const errorBorderColor = await getBorderColor();
+
+      await el.click();
+      await page.waitForChanges();
+
+      expect(await getBorderColor()).not.toBe(errorBorderColor);
     });
   });
 });

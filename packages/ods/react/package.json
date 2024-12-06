@@ -12,9 +12,10 @@
     "compile": "npm run compile:esm && npm run compile:cjs",
     "compile:esm": "tsc -p tsconfig.json",
     "compile:cjs": "tsc -p tsconfig.cjs.json",
-    "test:e2e": "concurrently -s first -k \"npm run start --prefix tests/_app\" \"wait-on http://localhost:3000 && jest -i -c tests/jest.config.js\"",
-    "test:e2e:ci": "concurrently -s first -k \"npm run start --prefix tests/_app\" \"node ../scripts/wait-for-http.js http://localhost:3000 && jest -i -c tests/jest.config.js\"",
-    "test:testing-library": "jest -c ./testing-library/jest.config.ts"
+    "test:react:e2e": "concurrently -s first -k \"npm run start --prefix tests/_app\" \"wait-on http://localhost:3000 && jest -i -c tests/jest.config.js\"",
+    "test:react:e2e:ci": "concurrently -s first -k \"npm run start --prefix tests/_app\" \"node ../scripts/wait-for-http.js http://localhost:3000 && jest -i -c tests/jest.config.js\"",
+    "test:react:testing-library": "jest -c ./testing-library/jest.config.ts",
+    "test:wrapper:react": "npm run test:react:e2e:ci && npm run test:react:testing-library"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

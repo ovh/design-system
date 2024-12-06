@@ -1,6 +1,10 @@
-import { getInitialValue, isDualRange, toPercentage } from '../../src/controller/ods-range';
+import { getInitialValue, getTicks, isDualRange, toPercentage } from '../../src/controller/ods-range';
 
 describe('ods-range controller', () => {
+
+  beforeEach(() => {
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+  });
 
   describe('getInitialValue', () => {
     it('returns the provided defaultValue if specified', () => {
@@ -16,6 +20,30 @@ describe('ods-range controller', () => {
     it('handles cases where max < min by returning min', () => {
       expect(getInitialValue(null, 10, 5)).toBe(10);
       expect(getInitialValue(null, -5, -10)).toBe(-5);
+    });
+  });
+
+  describe('getTicks', () => {
+    it('returns ticks parsed', () => {
+      expect(getTicks([25, 50, 75], 0 , 100)).toEqual([25, 50, 75]);
+      expect(getTicks([0, 100], 0 , 100)).toEqual([0, 100]);
+      expect(getTicks(JSON.stringify([25, 50, 75]), 0 , 100)).toEqual([25, 50, 75]);
+      expect(getTicks('[25, 50, 75]', 0 , 100)).toEqual([25, 50, 75]);
+    });
+
+    it('should return an empty array and warn if the string cannot be parsed', () => {
+      expect(getTicks(undefined, 0 , 100)).toEqual([]);
+      expect(getTicks('', 0 , 100)).toEqual([]);
+      expect(getTicks('dummy', 0 , 100)).toEqual([]);
+      expect(console.warn).toHaveBeenCalledTimes(1);
+    });
+
+    it('returns remove ticks out of the range', () => {
+      expect(getTicks([-10, 25, 50, 75, 110], 0 , 100)).toEqual([25, 50, 75]);
+    });
+
+    it('returns sort ticks', () => {
+      expect(getTicks([100, 25, 50, 15, 75], 0 , 100)).toEqual([15, 25, 50, 75, 100]);
     });
   });
 

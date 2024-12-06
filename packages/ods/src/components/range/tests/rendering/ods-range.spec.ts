@@ -1,4 +1,10 @@
-jest.mock('../../src/controller/ods-range');
+jest.mock('../../src/controller/ods-range', () => ({
+  getInitialValue: jest.fn(),
+  getTicks: jest.fn().mockReturnValue([]),
+  isDualRange: jest.fn(),
+  toPercentage: jest.fn(),
+  updateInternals: jest.fn(),
+}));
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { OdsRange } from '../../src';
@@ -91,6 +97,20 @@ describe('ods-range rendering', () => {
       await setup('<ods-range></ods-range>');
 
       expect(root?.getAttribute('is-required')).toBeNull();
+    });
+  });
+
+  describe('tracks', () => {
+    it('should be reflected', async() => {
+      await setup('<ods-range tracks="[10,25,50,75]"></ods-range>');
+
+      expect(root?.getAttribute('tracks')).toBe('[10,25,50,75]');
+    });
+
+    it('should be set by default', async() => {
+      await setup('<ods-range></ods-range>');
+
+      expect(root?.getAttribute('tracks')).toBeNull();
     });
   });
 

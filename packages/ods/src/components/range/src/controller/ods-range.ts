@@ -10,6 +10,20 @@ function getInitialValue(value: RangeValue, min: number, max: number, defaultVal
   return value ?? (max < min ? min : min + (max - min) / 2);
 }
 
+function getTicks(ticks: string | number[] | undefined, min: number, max: number): number[] {
+  if (!ticks) {
+    return [];
+  }
+  let parsedTicks: number[] = [];
+  try {
+    parsedTicks = Array.isArray(ticks) ? ticks : JSON.parse(ticks);
+  } catch (error) {
+    console.warn('[OdsRange] ticks string could not be parsed.');
+    parsedTicks = [];
+  }
+  return parsedTicks.filter((tick) => tick >= min && tick <= max).sort((a, b) => a - b);
+}
+
 function isDualRange(value: RangeValue): value is [number, number] | [null, null] {
   return Array.isArray(value) && value.length === 2 && value.every((v) => typeof v === 'number' || v === null);
 }
@@ -35,6 +49,7 @@ function toPercentage(max: number, min: number, value?: number): number {
 
 export {
   getInitialValue,
+  getTicks,
   isDualRange,
   toPercentage,
   updateInternals,

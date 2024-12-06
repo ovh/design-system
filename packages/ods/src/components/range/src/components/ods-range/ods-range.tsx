@@ -3,7 +3,7 @@ import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop,
 import { type OdsFormElement } from '../../../../../types';
 import { getRandomHTMLId } from '../../../../../utils/dom';
 import { type OdsTooltip } from '../../../../tooltip/src';
-import { VALUE_DEFAULT_VALUE, getInitialValue, isDualRange, toPercentage, updateInternals } from '../../controller/ods-range';
+import { VALUE_DEFAULT_VALUE, getInitialValue, getTicks, isDualRange, toPercentage, updateInternals } from '../../controller/ods-range';
 import { type OdsRangeChangeEventDetail } from '../../interfaces/event';
 
 @Component({
@@ -24,11 +24,14 @@ export class OdsRange implements OdsFormElement {
   private shouldUpdateIsInvalidState: boolean = false;
   private tooltip?: OdsTooltip;
   private tooltipDual?: OdsTooltip;
+  private listId = getRandomHTMLId();
 
   @State() private dualValue?: number;
   @State() private currentValue?: number;
   @State() private isDualRange: boolean = false;
   @State() private isInvalid: boolean | undefined;
+  @State() private parsedTicks: number[] = [];
+  @State() private activatedTicks: number[] = [];
 
   @Element() el!: HTMLElement;
 
@@ -42,6 +45,7 @@ export class OdsRange implements OdsFormElement {
   @Prop({ reflect: true }) public min: number = 0;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public step?: number;
+  @Prop({ reflect: true }) public ticks?: string | number[];
   @Prop({ mutable: true, reflect: true }) public value: number | [number, number] | null | [null, null] = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
@@ -151,6 +155,12 @@ export class OdsRange implements OdsFormElement {
     }
   }
 
+  @Watch('ticks')
+  onTicksChange(): void {
+    this.parsedTicks = getTicks(this.ticks, this.min, this.max);
+    this.setActivatedTicks();
+  }
+
   @Watch('value')
   private onValueChange(value: number | [number, number] | [ null, null] | null = this.value): void {
     if (isDualRange(value)) {
@@ -160,6 +170,8 @@ export class OdsRange implements OdsFormElement {
       this.isDualRange = false;
       this.fillInputs(value);
     }
+
+    this.setActivatedTicks();
 
     updateInternals(this.internals, value, this.isRequired);
 
@@ -175,6 +187,7 @@ export class OdsRange implements OdsFormElement {
     this.hostId = this.el.id || getRandomHTMLId();
     this.value = getInitialValue(this.value, this.min, this.max, this.defaultValue);
 
+    this.onTicksChange();
     this.onMinOrMaxChange();
     this.onValueChange();
     this.emitOdsChange();
@@ -280,12 +293,84 @@ export class OdsRange implements OdsFormElement {
     }
   }
 
+  private setActivatedTicks(): void {
+    this.activatedTicks = this.parsedTicks.filter((tick) => {
+      if (isDualRange(this.value)) {
+        const [first, second] = this.value as [number, number];
+        return this.value && tick >= first && tick <= second;
+      } else {
+        return this.value && tick <= (this.value as number);
+      }
+    });
+  }
+
   private showTooltip(): void {
     this.tooltip?.show();
   }
 
   private showTooltipDual(): void {
     this.tooltipDual?.show();
+  }
+
+  private renderTicks(): FunctionalComponent | undefined {
+    if (!this.parsedTicks || this.parsedTicks.length === 0) {
+      return;
+    }
+    const ratio = 100 / this.parsedTicks[this.parsedTicks.length - 1];
+
+    return (<div>
+      <datalist id={ this.listId }>
+        {
+          this.parsedTicks.map((tick) => (<option value={ tick }></option>))
+        }
+      </datalist>
+
+      <div class="ods-range__ticks">
+        {
+          this.parsedTicks.map((tick) => (
+            <div
+              class={{
+                'ods-range__ticks__tick': true,
+                'ods-range__ticks__tick--activated': this.activatedTicks.indexOf(tick) > -1,
+              }}
+              style={{ left: `calc(${tick * ratio}% - 2px)` }}>
+            </div>
+          ))
+        }
+      </div>
+    </div>);
+  }
+
+  private renderTooltip(percentage: number, value?: number, isDualRange: boolean = false): FunctionalComponent {
+    const shadowThumbId = isDualRange ? 'ods-range-shadow-thumb-dual': 'ods-range-shadow-thumb';
+    return (
+      <div>
+        <div
+          class="ods-range__shadow-thumb"
+          id={ shadowThumbId }
+          style={{
+            left: `calc(${percentage}% - (${percentage * 0.15}px))`,
+          }}>
+        </div>
+
+        {
+          !this.isDisabled && value !== undefined &&
+          <ods-tooltip
+            position="top"
+            ref={ (el: unknown) => {
+              if (isDualRange) {
+                return this.tooltipDual = el as unknown as OdsTooltip;
+              }
+              return this.tooltip = el as unknown as OdsTooltip;
+            } }
+            shadowDomTriggerId={ shadowThumbId }
+            triggerId={ this.hostId }
+            withArrow>
+            { value }
+          </ods-tooltip>
+        }
+      </div>
+    );
   }
 
   render(): FunctionalComponent {
@@ -314,6 +399,7 @@ export class OdsRange implements OdsFormElement {
           aria-valuenow={ this.value }
           disabled={ this.isDisabled }
           id={ this.inputRangeId }
+          list={ this.listId }
           max={ this.max }
           min={ this.min }
           onBlur={ () => this.onBlur() }
@@ -332,25 +418,9 @@ export class OdsRange implements OdsFormElement {
           value={ this.currentValue?.toString() }
         />
 
-        <div
-          class="ods-range__shadow-thumb"
-          id="ods-range-shadow-thumb"
-          style={{
-            left: `calc(${percentage}% - (${percentage * 0.15}px))`,
-          }}>
-        </div>
+        { this.renderTicks() }
 
-        {
-          !this.isDisabled && this.currentValue !== undefined &&
-          <ods-tooltip
-            position="top"
-            ref={ (el: unknown) => this.tooltip = el as unknown as OdsTooltip }
-            shadowDomTriggerId="ods-range-shadow-thumb"
-            triggerId={ this.hostId }
-            withArrow>
-            { this.currentValue }
-          </ods-tooltip>
-        }
+        { this.renderTooltip(percentage, this.currentValue) }
 
         {
           this.isDualRange &&
@@ -364,6 +434,7 @@ export class OdsRange implements OdsFormElement {
             aria-valuenow={ this.value }
             disabled={ this.isDisabled }
             id={ this.inputRangeDualId }
+            list={ this.listId }
             max={ this.max }
             min={ this.min }
             onChange={ () => this.emitOdsChange() }
@@ -381,26 +452,7 @@ export class OdsRange implements OdsFormElement {
           />
         }
 
-        {
-          !this.isDisabled && this.isDualRange &&
-          <div
-            class="ods-range__shadow-thumb"
-            id="ods-range-shadow-thumb-dual"
-            style={{
-              left: `calc(${percentageDual}% - (${percentageDual * 0.15}px))`,
-            }}>
-          </div>
-        }
-        { !this.isDisabled && this.isDualRange && this.dualValue &&
-          <ods-tooltip
-            position="top"
-            ref={ (el: unknown) => this.tooltipDual = el as OdsTooltip }
-            shadowDomTriggerId="ods-range-shadow-thumb-dual"
-            triggerId={ this.hostId }
-            withArrow>
-            { this.dualValue }
-          </ods-tooltip>
-        }
+        { this.isDualRange && this.renderTooltip(percentageDual, this.dualValue, true) }
 
         <span class="ods-range__min">{ this.min }</span>
         <span class="ods-range__max">{ this.max }</span>

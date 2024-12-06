@@ -4,6 +4,7 @@
 :host {
   display: inline-flex;
   position: relative;
+  padding-top: 5px;
   width: inherit;
   height: range.$ods-range-height;
 }
@@ -43,5 +44,23 @@
     z-index: -1;
     width: 16px;
     height: 16px;
+  }
+
+  &__ticks {
+    position: absolute;
+    inset: 0 calc(range.$ods-input-range-size-thumb / 2);
+    z-index: range.$range-z-index-dual - 2;
+
+    &__tick {
+      position: absolute;
+      border-radius: 6px;
+      background-color: range.$range-background-color;
+      width: 3px;
+      height: 18px;
+
+      &--activated {
+        background-color: range.$range-background-color-active;
+      }
+   }
   }
 }

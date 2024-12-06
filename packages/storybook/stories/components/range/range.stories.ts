@@ -22,7 +22,8 @@ export const Demo: StoryObj = {
       is-required="${arg.isRequired}"
       max="${arg.max}"
       min="${arg.min}"
-      step="${arg.step}">
+      step="${arg.step}"
+      ticks="${arg.ticks ? '[0,25,50,75,100]' : ''}">
     </ods-range>
     ${arg.validityState ? ValidityStateTemplate('range', '.my-range-demo') : ''}
     <style>
@@ -90,6 +91,14 @@ export const Demo: StoryObj = {
       },
       control: 'number',
     },
+    ticks: {
+      control: 'boolean',
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'number[]' },
+      },
+    },
     validityState: {
       table: {
         category: CONTROL_CATEGORY.validation,
@@ -107,12 +116,13 @@ export const Demo: StoryObj = {
     max: 100,
     min: 0,
     step: 1,
+    ticks: false,
     validityState: false,
   },
 };
 
 export const DemoDual: StoryObj = {
-  render: (args) => {
+  render: (arg) => {
     const validityStateTemplate = html`<br>
     <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
     <script>
@@ -136,14 +146,15 @@ export const DemoDual: StoryObj = {
     return html`
     <ods-range
       class="my-range-dual-demo"
-      has-error="${args.hasError}"
-      is-disabled="${args.isDisabled}"
-      is-required="${args.isRequired}"
-      max="${args.max}"
-      min="${args.min}"
-      step="${args.step}"
+      has-error="${arg.hasError}"
+      is-disabled="${arg.isDisabled}"
+      is-required="${arg.isRequired}"
+      max="${arg.max}"
+      min="${arg.min}"
+      step="${arg.step}"
+      ticks="${arg.ticks ? '[0,25,50,75,100]' : ''}"
     ></ods-range>
-    ${args.validityState ? validityStateTemplate : ''}
+    ${arg.validityState ? validityStateTemplate : ''}
     <script>
     (() => {
       const rangeDual = document.querySelector('.my-range-dual-demo');
@@ -152,11 +163,11 @@ export const DemoDual: StoryObj = {
     </script>
     <style>
       .my-range-dual-demo::part(range) {
-        ${args.customCss}
+        ${arg.customCss}
       }
 
       .my-range-dual-demo::part(range-dual) {
-        ${args.customCss}
+        ${arg.customCss}
       }
     </style>`;
   },
@@ -218,6 +229,14 @@ export const DemoDual: StoryObj = {
       },
       control: 'number',
     },
+    ticks: {
+      control: 'boolean',
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'number[]' },
+      },
+    },
     validityState: {
       table: {
         category: CONTROL_CATEGORY.validation,
@@ -235,6 +254,7 @@ export const DemoDual: StoryObj = {
     max: 100,
     min: 0,
     step: 1,
+    ticks: false,
     validityState: false,
   },
 };
@@ -347,6 +367,26 @@ export const StepDual: StoryObj = {
 (() => {
   const rangeDualStep = document.querySelector('#range-dual-step');
   rangeDualStep.value = [30, 70];
+})()
+</script>
+  `,
+};
+
+export const Ticks: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-range ticks="[0,25,50,75,100]" value="55"></ods-range>
+  `,
+};
+
+export const TicksDual: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-range ticks="[0,25,50,75,100]" id="range-dual-ticks"></ods-range>
+<script>
+(() => {
+  const rangeDualTicks = document.querySelector('#range-dual-ticks');
+  rangeDualTicks.value = [30, 70];
 })()
 </script>
   `,

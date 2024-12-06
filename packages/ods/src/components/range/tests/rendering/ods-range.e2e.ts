@@ -11,7 +11,7 @@ describe('ods-range rendering', () => {
     });
   }
 
-  async function setup(content: string, customStyle?: string): Promise<void> {
+  async function setup(content: string, customStyle?: string, additionalProperties?: Record<string, unknown>): Promise<void> {
     page = await newE2EPage();
 
     await page.setContent(content);
@@ -22,6 +22,11 @@ describe('ods-range rendering', () => {
     }
 
     el = await page.find('ods-range');
+
+    additionalProperties && Object.entries(additionalProperties).forEach(([key, value]) => {
+      el.setProperty(key, value);
+    });
+    await page.waitForChanges();
   }
 
   it('should render the web component', async() => {
@@ -97,6 +102,107 @@ describe('ods-range rendering', () => {
       await page.waitForChanges();
 
       expect(await isInErrorState()).toBe(true);
+    });
+  });
+
+  describe('tooltip', () => {
+    describe('simple range', () => {
+      it('should have a tooltip', async() => {
+        await setup('<ods-range value="50"></ods-range>');
+
+        const tooltip = await el.find('ods-tooltip');
+        const shadowThumb = await el.find('.ods-range__shadow-thumb');
+
+        expect(tooltip).toBeDefined();
+        expect(shadowThumb).toBeDefined();
+      });
+
+      it('should not have a tooltip if disabled', async() => {
+        await setup('<ods-range is-disabled value="50"></ods-range>');
+
+        const tooltip = await el.find('ods-tooltip');
+
+        expect(tooltip).toBeNull();
+      });
+    });
+
+    describe('dual range', () => {
+      it('should have a tooltip', async() => {
+        await setup('<ods-range></ods-range>', '', { value: [25, 50] });
+
+        const tooltips = await el.findAll('ods-range >>> ods-tooltip');
+        const shadowThumb = await el.find('ods-range >>> .ods-range__shadow-thumb');
+
+        expect(tooltips).toHaveLength(2);
+        expect(shadowThumb).toBeDefined();
+      });
+
+      it('should not have a tooltip if disabled', async() => {
+        await setup('<ods-range is-disabled></ods-range>', '', { value: [25, 50] });
+
+        const tooltips = await el.findAll('ods-range >>> ods-tooltip');
+
+        expect(tooltips).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('ticks', () => {
+    it('should have ticks rendered', async() => {
+      await setup('<ods-range ticks="[25,50,75]"></ods-range>');
+
+      const ticks = await page.findAll('ods-range >>> .ods-range__ticks__tick');
+      const options = await page.findAll('ods-range >>> option');
+
+      expect(ticks).toHaveLength(3);
+      expect(options).toHaveLength(3);
+    });
+
+    it('should have ticks rendered with value', async() => {
+      await setup('<ods-range ticks="[25,50,75]" value="55"></ods-range>');
+
+      const ticks = await el.findAll('ods-range >>> .ods-range__ticks__tick');
+      const options = await el.findAll('ods-range >>> option');
+
+      expect(ticks).toHaveLength(3);
+      expect(options).toHaveLength(3);
+      expect(ticks[0]).toHaveClass('ods-range__ticks__tick--activated');
+      expect(ticks[1]).toHaveClass('ods-range__ticks__tick--activated');
+      expect(ticks[2]).not.toHaveClass('ods-range__ticks__tick--activated');
+    });
+
+    it('should have ticks rendered on dual with value', async() => {
+      await setup('<ods-range ticks="[25,50,75]"></ods-range>', '', { value: [30, 60] });
+
+      const ticks = await el.findAll('ods-range >>> .ods-range__ticks__tick');
+      const options = await el.findAll('ods-range >>> option');
+
+      expect(ticks).toHaveLength(3);
+      expect(options).toHaveLength(3);
+      expect(ticks[0]).not.toHaveClass('ods-range__ticks__tick--activated');
+      expect(ticks[1]).toHaveClass('ods-range__ticks__tick--activated');
+      expect(ticks[2]).not.toHaveClass('ods-range__ticks__tick--activated');
+    });
+
+    it('should update ticks color', async() => {
+      await setup('<ods-range ticks="[25,50,75]" value="55"></ods-range>');
+
+      const ticks = await el.findAll('ods-range >>> .ods-range__ticks__tick');
+      const options = await el.findAll('ods-range >>> option');
+
+      expect(ticks).toHaveLength(3);
+      expect(options).toHaveLength(3);
+      expect(ticks[0]).toHaveClass('ods-range__ticks__tick--activated');
+      expect(ticks[1]).toHaveClass('ods-range__ticks__tick--activated');
+      expect(ticks[2]).not.toHaveClass('ods-range__ticks__tick--activated');
+
+      await el.setProperty('value', 90);
+      await page.waitForChanges();
+
+      const ticksUpdated = await el.findAll('ods-range >>> .ods-range__ticks__tick');
+      expect(ticksUpdated[0]).toHaveClass('ods-range__ticks__tick--activated');
+      expect(ticksUpdated[1]).toHaveClass('ods-range__ticks__tick--activated');
+      expect(ticksUpdated[2]).toHaveClass('ods-range__ticks__tick--activated');
     });
   });
 });

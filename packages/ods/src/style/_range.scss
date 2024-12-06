@@ -11,6 +11,7 @@ $range-z-index-dual: 1;
   $range: &;
 
   appearance: none;
+  margin: 0;
   outline: none;
   border-radius: var(--ods-border-radius-sm);
   cursor: pointer;
@@ -159,7 +160,7 @@ $range-z-index-dual: 1;
   .ods-range__range {
     position: absolute;
     z-index: $range-z-index-dual + 1;
-    margin-top: 6px;
+    margin-top: 4px;
     height: 0;
   }
 }

@@ -56,6 +56,27 @@
     // });
   </script>
 
+  <p>Ticks</p>
+  <div>
+    <ods-range id="ticks-range" ticks="[0,-10,10,25,50,75,100,120]">
+    </ods-range>
+    <ods-range id="ticks-range-dual" ticks="[0,25,50,75,100]">
+    </ods-range>
+
+    <button id="button-change-ticks">change ticks</button>
+
+    <script>
+      const ticksRange = document.getElementById('ticks-range');
+      const ticksRangeDual = document.getElementById('ticks-range-dual');
+      const buttonChangeTicks = document.getElementById('button-change-ticks');
+
+      ticksRangeDual.value = [15, 60];
+      buttonChangeTicks.addEventListener('click', () => {
+        ticksRange.ticks = '[5,6,7]'
+      })
+    </script>
+  </div>
+
   <!-- <p>Disabled</p>
   <ods-range value="40" is-disabled>
   </ods-range>

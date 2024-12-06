@@ -5,12 +5,14 @@
 :host(.ods-tab) {
   display: block;
   margin-bottom: -#{ods-tabs.$ods-tabs-border-bottom-size};
-  border-bottom: solid ods-tabs.$ods-tabs-border-bottom-size var(--ods-color-neutral-100);
+  border-bottom: solid ods-tabs.$ods-tabs-border-bottom-size transparent;
+  border-top-left-radius: var(--ods-border-radius-md);
+  border-top-right-radius: var(--ods-border-radius-md);
   cursor: pointer;
   padding: 2px 16px;
   text-align: center;
   white-space: nowrap;
-  color: var(--ods-color-primary-500);
+  color: var(--ods-color-text);
   font-weight: 600;
 }
 
@@ -19,11 +21,11 @@
 
   z-index: 1;
   outline-offset: 0;
-  border-color: var(--ods-color-neutral-300);
 }
 
+:host(.ods-tab:focus-visible:not(.ods-tab--disabled, .ods-tab--selected)),
 :host(.ods-tab:hover:not(.ods-tab--disabled, .ods-tab--selected)) {
-  border-color: var(--ods-color-neutral-300);
+  background-color: var(--ods-color-neutral-050);
 }
 
 :host(.ods-tab--disabled) {
@@ -39,4 +41,5 @@
 
 :host(.ods-tab--selected:not(.ods-tab--disabled)) {
   border-color: var(--ods-color-primary-500);
+  color: var(--ods-color-primary-500);
 }

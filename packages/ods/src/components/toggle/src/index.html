@@ -27,85 +27,86 @@
     buttonClear.addEventListener('click', () => toggle.clear());
     buttonReset.addEventListener('click', () => toggle.reset());
     buttonGetValidity.addEventListener('click', async() => console.log(await toggle.getValidity()));
-    ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{
-      toggle.addEventListener(eventName, (event) => {
-        console.log(eventName, event);
-      });
-    });
+
+    //['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{
+    //   toggle.addEventListener(eventName, (event) => {
+    //     console.log(eventName, event);
+    //   });
+    // });
   </script>
 
-  <p>Disabled false</p>
-  <ods-toggle is-disabled>
-  </ods-toggle>
+<!--  <p>Disabled false</p>-->
+<!--  <ods-toggle is-disabled>-->
+<!--  </ods-toggle>-->
 
-  <p>Disabled true</p>
-  <ods-toggle is-disabled value>
-  </ods-toggle>
+<!--  <p>Disabled true</p>-->
+<!--  <ods-toggle is-disabled value>-->
+<!--  </ods-toggle>-->
 
-  <p>With label</p>
-  <ods-toggle with-label>
-  </ods-toggle>
+<!--  <p>With label</p>-->
+<!--  <ods-toggle with-label>-->
+<!--  </ods-toggle>-->
 
-  <p>Disabled false with label</p>
-  <ods-toggle is-disabled with-label>
-  </ods-toggle>
+<!--  <p>Disabled false with label</p>-->
+<!--  <ods-toggle is-disabled with-label>-->
+<!--  </ods-toggle>-->
 
-  <p>Disabled true with label</p>
-  <ods-toggle is-disabled value with-label>
-  </ods-toggle>
+<!--  <p>Disabled true with label</p>-->
+<!--  <ods-toggle is-disabled value with-label>-->
+<!--  </ods-toggle>-->
 
-  <p>Error</p>
-  <ods-toggle has-error>
-  </ods-toggle>
+<!--  <p>Error</p>-->
+<!--  <ods-toggle has-error>-->
+<!--  </ods-toggle>-->
 
-  <p>Error disabled</p>
-  <ods-toggle has-error is-disabled>
-  </ods-toggle>
+<!--  <p>Error disabled</p>-->
+<!--  <ods-toggle has-error is-disabled>-->
+<!--  </ods-toggle>-->
 
-  <p>Custom CSS</p>
-  <ods-toggle class="my-toggle" with-label>
-  </ods-toggle>
-  <style>
-    .my-toggle::part(slider) {
-      background-color: red;
-    }
+<!--  <p>Custom CSS</p>-->
+<!--  <ods-toggle class="my-toggle" with-label>-->
+<!--  </ods-toggle>-->
+<!--  <style>-->
+<!--    .my-toggle::part(slider) {-->
+<!--      background-color: red;-->
+<!--    }-->
 
-    .my-toggle::part(slider)::before {
-      background-color: blue;
-    }
-    .my-toggle::part(slider checked) {
-      background-color: blueviolet;
-    }
+<!--    .my-toggle::part(slider)::before {-->
+<!--      background-color: blue;-->
+<!--    }-->
+<!--    .my-toggle::part(slider checked) {-->
+<!--      background-color: blueviolet;-->
+<!--    }-->
 
-    .my-toggle::part(label) {
-      color: green;
-    }
+<!--    .my-toggle::part(label) {-->
+<!--      color: green;-->
+<!--    }-->
 
-    .my-toggle::part(label checked) {
-      color: black;
-    }
-  </style>
+<!--    .my-toggle::part(label checked) {-->
+<!--      color: black;-->
+<!--    }-->
+<!--  </style>-->
 
-  <p>Form</p>
-  <form id="toggle-form" target="_self">
-    <ods-toggle name="ods-toggle" is-required is-disabled></ods-toggle>
-    <button id="form-reset-button" type="reset">Reset</button>
-    <button id="form-submit-button" type="submit">Submit</button>
-  </form>
-  <script>
-    const form = document.getElementById('toggle-form');
-    const resetFormButton = document.getElementById('form-reset-button');
-    const submitFormButton = document.getElementById('form-submit-button');
+<!--  <p>Form</p>-->
+<!--  <form id="toggle-form" target="_self">-->
+<!--    <ods-toggle name="ods-toggle" is-required is-disabled></ods-toggle>-->
+<!--    <button id="form-reset-button" type="reset">Reset</button>-->
+<!--    <button id="form-submit-button" type="submit">Submit</button>-->
+<!--  </form>-->
+<!--  <script>-->
+<!--    const form = document.getElementById('toggle-form');-->
+<!--    const resetFormButton = document.getElementById('form-reset-button');-->
+<!--    const submitFormButton = document.getElementById('form-submit-button');-->
 
-    submitFormButton.addEventListener('click', () => {
-      const formData = new FormData(form);
-      console.log('formData', formData);
-    });
-  </script>
+<!--    submitFormButton.addEventListener('click', () => {-->
+<!--      const formData = new FormData(form);-->
+<!--      console.log('formData', formData);-->
+<!--    });-->
+<!--  </script>-->
 
-  <p>With label</p>
-  <label for="labelled-toggle">My toggle</label>
-  <ods-toggle id="labelled-toggle">
-  </ods-toggle>
+<!--  <p>With label</p>-->
+<!--  <label for="labelled-toggle">My toggle</label>-->
+<!--  <ods-toggle id="labelled-toggle">-->
+<!--  </ods-toggle>-->
 </body>
 </html>

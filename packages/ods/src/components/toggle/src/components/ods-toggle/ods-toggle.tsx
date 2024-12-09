@@ -1,7 +1,7 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { type OdsFormElement } from '../../../../../types';
 import { submitFormOnEnter } from '../../../../../utils/dom';
-import { updateInternals } from '../../controller/ods-toggle';
+import { hasValueChanged, updateInternals } from '../../controller/ods-toggle';
 import { type OdsToggleChangeEventDetail } from '../../interfaces/event';
 
 @Component({
@@ -91,6 +91,11 @@ export class OdsToggle implements OdsFormElement {
   }
 
   @Method()
+  public async toggle(): Promise<void> {
+    this.value = !this.value;
+  }
+
+  @Method()
   public async willValidate(): Promise<boolean> {
     return this.internals.willValidate;
   }
@@ -103,7 +108,8 @@ export class OdsToggle implements OdsFormElement {
   componentWillLoad(): void {
     this.observer = new MutationObserver((mutations: MutationRecord[]) => {
       for (const mutation of mutations) {
-        const hasChange = this.value && mutation.oldValue === null || !this.value && mutation.oldValue !== null;
+        const hasChange = hasValueChanged(this.value, mutation.oldValue);
+
         if (mutation.attributeName === 'value' && hasChange) {
           this.onValueChange();
         }
@@ -176,7 +182,8 @@ export class OdsToggle implements OdsFormElement {
 
   render(): FunctionalComponent {
     return (
-      <Host class='ods-toggle'
+      <Host
+        class='ods-toggle'
         disabled={ this.isDisabled }>
         <label class='ods-toggle__container'>
           <input
@@ -194,13 +201,14 @@ export class OdsToggle implements OdsFormElement {
             type="checkbox"
           />
 
-          <span class={{
-            'ods-toggle__container__slider': true,
-            'ods-toggle__container__slider--checked': this.value ?? false,
-            'ods-toggle__container__slider--disabled': this.isDisabled,
-            'ods-toggle__container__slider--error': this.hasError || !!this.isInvalid,
-          }}
-          part={ `slider ${this.value ? 'checked' : ''}` }>
+          <span
+            class={{
+              'ods-toggle__container__slider': true,
+              'ods-toggle__container__slider--checked': this.value ?? false,
+              'ods-toggle__container__slider--disabled': this.isDisabled,
+              'ods-toggle__container__slider--error': this.hasError || !!this.isInvalid,
+            }}
+            part={ `slider ${this.value ? 'checked' : ''}` }>
             {
               this.withLabel && <span class="ods-toggle__container__slider__label" part={ `label ${this.value ? 'checked' : ''}` }>{ this.value ? 'ON' : 'OFF' }</span>
             }

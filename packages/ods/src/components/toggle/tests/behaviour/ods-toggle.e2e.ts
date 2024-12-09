@@ -83,7 +83,7 @@ describe('ods-toggle behaviour', () => {
 
   describe('methods', () => {
     describe('clear', () => {
-      it('should call clear', async() => {
+      it('should set value to null', async() => {
         await setup('<ods-toggle value></ods-toggle>');
         const odsClearSpy = await page.spyOnEvent('odsClear');
 
@@ -96,7 +96,7 @@ describe('ods-toggle behaviour', () => {
         expect(odsClearSpy).toHaveReceivedEventTimes(1);
       });
 
-      it('should call clear with disabled', async() => {
+      it('should set value to null even when disabled', async() => {
         await setup('<ods-toggle value is-disabled></ods-toggle>');
         const odsClearSpy = await page.spyOnEvent('odsClear');
 
@@ -111,7 +111,7 @@ describe('ods-toggle behaviour', () => {
     });
 
     describe('reset', () => {
-      it('should call reset', async() => {
+      it('should set value to default', async() => {
         await setup('<ods-toggle default-value="true"></ods-toggle>');
         const odsResetSpy = await page.spyOnEvent('odsReset');
 
@@ -125,7 +125,7 @@ describe('ods-toggle behaviour', () => {
         expect(odsResetSpy).toHaveReceivedEventTimes(1);
       });
 
-      it('should call reset with disabled', async() => {
+      it('should set value to default even if disabled', async() => {
         await setup('<ods-toggle default-value="true" is-disabled></ods-toggle>');
         const odsResetSpy = await page.spyOnEvent('odsReset');
 
@@ -137,6 +137,66 @@ describe('ods-toggle behaviour', () => {
 
         expect(await el.getProperty('value')).toBe(true);
         expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      });
+    });
+
+    describe('toggle', () => {
+      it('should toggle value', async() => {
+        await setup('<ods-toggle default-value="true"></ods-toggle>');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
+
+        expect(await el.getProperty('value')).toBe(true);
+
+        await el.callMethod('toggle');
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(false);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventDetail({
+          previousValue: true,
+          validity: {},
+          value: false,
+        });
+
+        await el.callMethod('toggle');
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(true);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(2);
+        expect(odsChangeSpy).toHaveReceivedEventDetail({
+          previousValue: false,
+          validity: {},
+          value: true,
+        });
+      });
+
+      it('should toggle value even when disabled', async() => {
+        await setup('<ods-toggle default-value="true" is-disabled></ods-toggle>');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
+
+        expect(await el.getProperty('value')).toBe(true);
+
+        await el.callMethod('toggle');
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(false);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventDetail({
+          previousValue: true,
+          validity: {},
+          value: false,
+        });
+
+        await el.callMethod('toggle');
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(true);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(2);
+        expect(odsChangeSpy).toHaveReceivedEventDetail({
+          previousValue: false,
+          validity: {},
+          value: true,
+        });
       });
     });
   });

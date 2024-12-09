@@ -26,12 +26,12 @@ export class OdsRange implements OdsFormElement {
   private tooltipDual?: OdsTooltip;
   private listId = getRandomHTMLId();
 
+  @State() private activatedTicks: number[] = [];
   @State() private dualValue?: number;
   @State() private currentValue?: number;
   @State() private isDualRange: boolean = false;
   @State() private isInvalid: boolean | undefined;
   @State() private parsedTicks: number[] = [];
-  @State() private activatedTicks: number[] = [];
 
   @Element() el!: HTMLElement;
 
@@ -333,7 +333,7 @@ export class OdsRange implements OdsFormElement {
                 'ods-range__ticks__tick': true,
                 'ods-range__ticks__tick--activated': this.activatedTicks.indexOf(tick) > -1,
               }}
-              style={{ left: `calc(${tick * ratio}% - 2px)` }}>
+              style={{ left: `calc(${tick * ratio}% - calc(var(--ods-range-tick-width) / 2))` }}>
             </div>
           ))
         }
@@ -454,8 +454,10 @@ export class OdsRange implements OdsFormElement {
 
         { this.isDualRange && this.renderTooltip(percentageDual, this.dualValue, true) }
 
-        <span class="ods-range__min">{ this.min }</span>
-        <span class="ods-range__max">{ this.max }</span>
+        <div class="ods-range__info">
+          <span class="ods-range__info__min">{ this.min }</span>
+          <span class="ods-range__info__max">{ this.max }</span>
+        </div>
       </Host>
     );
   }

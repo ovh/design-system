@@ -1,12 +1,15 @@
 @use '../../../../../style/range';
 @use '../../../../../style/text';
 
+$ods-range-tick-width: 2px;
+$ods-range-text-top: 16px;
+
 :host {
   display: inline-flex;
   position: relative;
-  padding-top: 5px;
+  flex-direction: column;
   width: inherit;
-  height: range.$ods-range-height;
+  height: inherit;
 }
 
 :host(.ods-range-dual) {
@@ -22,19 +25,18 @@
     @include range.ods-range();
   }
 
-  &__min {
-    @include text.ods-text-label();
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 4px;
 
-    position: absolute;
-    top: 12px;
-  }
+    &__min {
+      @include text.ods-text-label();
+    }
 
-  &__max {
-    @include text.ods-text-label();
-
-    position: absolute;
-    top: 12px;
-    right: 0;
+    &__max {
+      @include text.ods-text-label();
+    }
   }
 
   &__shadow-thumb {
@@ -42,11 +44,13 @@
     top: -2px;
     opacity: 0;
     z-index: -1;
-    width: 16px;
-    height: 16px;
+    width: range.$ods-input-range-size-thumb;
+    height: range.$ods-input-range-size-thumb;
   }
 
   &__ticks {
+    --ods-range-tick-width: #{$ods-range-tick-width};
+
     position: absolute;
     inset: 0 calc(range.$ods-input-range-size-thumb / 2);
     z-index: range.$range-z-index-dual - 2;
@@ -55,8 +59,8 @@
       position: absolute;
       border-radius: 6px;
       background-color: range.$range-background-color;
-      width: 3px;
-      height: 18px;
+      width: $ods-range-tick-width;
+      height: range.$ods-input-range-size-thumb;
 
       &--activated {
         background-color: range.$range-background-color-active;

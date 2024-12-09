@@ -1,5 +1,5 @@
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OdsButton, OdsCheckbox, OdsDatepicker, OdsRange, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
+import { OdsButton, OdsCheckbox, OdsDatepicker, OdsRange, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker, OdsToggle } from '@ovhcloud/ods-components/react';
 import React, { type ReactElement, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import styles from './formHookForm.scss';
@@ -21,6 +21,7 @@ type FormData = {
   switch: string,
   textarea: string,
   timepicker: string,
+  toggle: boolean,
 }
 
 const defaultValue: FormData = {
@@ -41,6 +42,7 @@ const defaultValue: FormData = {
   switch: 'switch1',
   textarea: 'default textarea',
   timepicker: '01:23',
+  toggle: true,
 };
 
 // We have to use control instead of register
@@ -411,6 +413,22 @@ function FormHookForm(): ReactElement {
         render={({ field }) =>
           <OdsTimepicker
             defaultValue={ defaultValue.timepicker }
+            isRequired={ areAllRequired }
+            name={ field.name }
+            onOdsBlur={ field.onBlur }
+            onOdsChange={ field.onChange }
+          />
+        }
+      />
+
+      <Controller
+        control={ control }
+        name="toggle"
+        rules={{ required: areAllRequired }}
+        render={({ field }) =>
+          <OdsToggle
+            // @ts-ignore IDE is confused with React attribute
+            defaultValue={ defaultValue.toggle }
             isRequired={ areAllRequired }
             name={ field.name }
             onOdsBlur={ field.onBlur }

@@ -1,5 +1,5 @@
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OdsButton, OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsRange, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
+import { OdsButton, OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsRange, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker, OdsToggle } from '@ovhcloud/ods-components/react';
 import { useFormik } from 'formik';
 import React, { type ReactElement, useState } from 'react';
 import * as yup from 'yup';
@@ -22,6 +22,7 @@ type FormData = {
   switch: string,
   textarea: string,
   timepicker: string,
+  toggle: boolean,
 }
 
 const validationSchema = yup.object<FormData>({
@@ -41,6 +42,7 @@ const validationSchema = yup.object<FormData>({
   switch: yup.string().nullable(),//.required(),
   textarea: yup.string().nullable(),//.required(),
   timepicker: yup.string().nullable(),//.required(),
+  toggle: yup.boolean().nullable(),//.required(),
 });
 
 function FormFormik(): ReactElement {
@@ -63,6 +65,7 @@ function FormFormik(): ReactElement {
       switch: 'switch1',
       textarea: 'default textarea',
       timepicker: '01:23',
+      toggle: true,
     },
     onSubmit: (values) => {
       console.log('Formik values', values);
@@ -309,6 +312,16 @@ function FormFormik(): ReactElement {
         hasError={ formik.touched.timepicker && !!formik.errors.timepicker }
         isRequired={ areAllRequired }
         name="timepicker"
+        onOdsBlur={ formik.handleBlur }
+        onOdsChange={ formik.handleChange }
+      />
+
+      <OdsToggle
+        // @ts-ignore IDE is confused with React attribute
+        defaultValue={ formik.initialValues.toggle }
+        hasError={ formik.touched.toggle && !!formik.errors.toggle }
+        isRequired={ areAllRequired }
+        name="toggle"
         onOdsBlur={ formik.handleBlur }
         onOdsChange={ formik.handleChange }
       />

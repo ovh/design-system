@@ -123,26 +123,7 @@ export const Demo: StoryObj = {
 
 export const DemoDual: StoryObj = {
   render: (arg) => {
-    const validityStateTemplate = html`<br>
-    <div id="validity-state" style="display: grid; row-gap: 5px;"></div>
-    <script>
-      (async () => {
-          const divValidityState = document.querySelector('#validity-state');
-          const rangeDual = document.querySelector('.my-range-dual-demo');
-          await customElements.whenDefined('ods-range');
-          await renderValidityState();
-          rangeDual.addEventListener('odsChange', async () => {
-            await renderValidityState();
-          })
-          async function renderValidityState() {
-            const validity = await rangeDual.getValidity()
-            divValidityState.innerHTML = '';
-            for (let key in validity) {
-              divValidityState.innerHTML += "<div>" + key + ": " + validity[key] + "</div>";
-            }
-          }
-      })();
-    </script>`;
+
     return html`
     <ods-range
       class="my-range-dual-demo"
@@ -154,9 +135,10 @@ export const DemoDual: StoryObj = {
       step="${arg.step}"
       ticks="${arg.ticks ? '[0,25,50,75,100]' : ''}"
     ></ods-range>
-    ${arg.validityState ? validityStateTemplate : ''}
+    ${arg.validityState ? ValidityStateTemplate('range', '.my-range-dual-demo') : ''}
     <script>
-    (() => {
+    (async() => {
+      await customElements.whenDefined('ods-range')
       const rangeDual = document.querySelector('.my-range-dual-demo');
       rangeDual.value = [30, 70];
     })()

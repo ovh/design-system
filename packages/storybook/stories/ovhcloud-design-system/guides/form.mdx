@@ -1,4 +1,4 @@
-import { OdsLink, OdsMessage, OdsText } from '@ovhcloud/ods-components/react';
+import { OdsIcon, OdsLink, OdsMessage, OdsText } from '@ovhcloud/ods-components/react';
 import { Meta, Source } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -89,6 +89,73 @@ But those two "checkables" components have a fixed `value`, the update will be a
 
 This is why no `odsChange` event are emitted on first render, as their value and initial checked state are already set.
 Whereas "valued" components will see their value updated for example from the `defaultValue` prop.
+
+<Heading label="A note about React" level={ 2 } />
+
+ODS form elements are <OdsLink href="https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components" label="uncontrolled component" target="_blank" />
+components, they're managing and updating their value internally and reflect it through the DOM and `odsChange` events.
+
+Though setting the `value` of component may works in some case, it best to not bind it.
+You can use the `defautValue` to initialize the component value, and then react to the `odsChange` to know the right value
+(check underneath examples to see how it looks like in a form).
+
+If you actually need to update the component value remotely (like from a button, or an external event, ...), it's best to use the given component methods
+than updating using a local state.
+
+For example, figure out a toggle, outside of a form, that can be updated by clicking on it of from a button.
+
+<OdsIcon name="xmark" style={{ color: 'var(--ods-color-critical-500)' }} /> The following will cause unexpected behaviour as the `value` will get updated twice, back to its original state,
+thus not triggering the internal mutation expected by the component:
+
+<Source code={`
+const [isToggled, setIsToggled] = useState(true);
+
+function onUpdateToggleRemotely() {
+  setIsToggled((t) => !t);
+}
+
+return(
+  <>
+    <OdsToggle
+      name="toggle"
+      onOdsChange={ (e: OdsToggleChangeEvent) => {
+        setIsToggled(e.detail.value)
+      }}
+      value={ isToggled } />
+
+    <OdsButton label="Update toggle remotely"
+               onClick={ onUpdateToggleRemotely }
+  </>
+`}
+        dark="true"
+        language="tsx" />
+
+<OdsIcon name="check" style={{ color: 'var(--ods-color-success-500)' }} /> To manage this double usage, it's best to separate your local state from the component and update it only on `odsChange` event, like:
+
+<Source code={`
+const [isToggled, setIsToggled] = useState(true);
+const toggleRef = useRef<HTMLOdsToggleElement>(null)
+
+function onUpdateToggleRemotely() {
+  toggleRef.current?.toggle();
+}
+
+return(
+  <>
+    <OdsToggle
+      defaultValue={ isToggled }
+      name="toggle"
+      onOdsChange={ (e: OdsToggleChangeEvent) => {
+        setIsToggled(e.detail.value)
+      }}
+      ref={ toggleRef } />
+
+    <OdsButton label="Update toggle remotely"
+               onClick={ onUpdateToggleRemotely }
+  </>
+`}
+        dark="true"
+        language="tsx" />
 
 <Heading label="Examples" level={ 2 } />
 

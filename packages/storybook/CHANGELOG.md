@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.4.1](https://ovh.github.io/design-system/v18.4.1/?path=/docs/design-system-changelog--page) (2024-12-10)
+[compare](https://github.com/ovh/design-system/compare/v18.4.0...v18.4.1)
+
+### Bug Fixes
+
+* **doc:** add missing feat on 18.4.0 whats new ([6546d17](https://github.com/ovh/design-system/commit/6546d1776f5b6ab67d8f9a04959e90bf5eb75d5f))
+
+
+### Features
+
+* **toggle:** add toggle method + more form example & doc ([4436bda](https://github.com/ovh/design-system/commit/4436bda9e5f1ab8ef98a56bfd7927a1893ed73cd))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

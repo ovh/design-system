@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.4.1](https://ovh.github.io/design-system/v18.4.1/?path=/docs/design-system-changelog--page) (2024-12-10)
+[compare](https://github.com/ovh/design-system/compare/v18.4.0...v18.4.1)
+
+### Features
+
+* **ci:** separate wrapper test suites from e2e command ([2fb0f3f](https://github.com/ovh/design-system/commit/2fb0f3f2353b9dff6651635964a74422fcc86d64))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

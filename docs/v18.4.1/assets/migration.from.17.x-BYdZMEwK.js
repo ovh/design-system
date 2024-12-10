@@ -1,0 +1,6 @@
+import{j as o,M as r,C as a}from"./index-Rx6QkXSv.js";import{u as s}from"./index-DPrOAYpY.js";import{O as m,a as i}from"./index-BJiUJsri.js";import{M as p}from"./popover.stories-B61K7zKV.js";import{H as c}from"./Heading-2XnXa8MH.js";import"./iframe-HwRW2g_s.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-D-8MO0q_.js";import"./index-DX_4BEHg.js";import"./index-DrFu-skq.js";import"./index-Dqa08QUn.js";import"./controls-DX883vx3.js";import"./unsafe-html-VJzuFJfF.js";function t(n){const e={a:"a",p:"p",strong:"strong",...s(),...n.components};return o.jsxs(o.Fragment,{children:[o.jsx(r,{title:"ODS Components/Menu"}),`
+`,o.jsx(c,{label:"Menu - migrate from v17 to v18",level:1}),`
+`,o.jsxs(e.p,{children:["Menu has been removed from ODS components. ",o.jsx(m,{color:"critical",label:"Removed",size:"sm"})]}),`
+`,o.jsx(e.p,{children:"The same component can be achieved with ods-popover."}),`
+`,o.jsxs(e.p,{children:["Here is an example of the ",o.jsx(e.strong,{children:"Popover as Action Menu"}),": ",o.jsx(e.a,{href:"?path=/docs/ods-components-popover--documentation#popover-as-action-menu",children:o.jsx(i,{label:"See Documentation"})})]}),`
+`,o.jsx(a,{of:p,sourceState:"shown"})]})}function S(n={}){const{wrapper:e}={...s(),...n.components};return e?o.jsx(e,{...n,children:o.jsx(t,{...n})}):t(n)}export{S as default};

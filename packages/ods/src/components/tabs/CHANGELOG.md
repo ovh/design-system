@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.4.1](https://ovh.github.io/design-system/v18.4.1/?path=/docs/design-system-changelog--page) (2024-12-10)
+[compare](https://github.com/ovh/design-system/compare/v18.4.0...v18.4.1)
+
+### Features
+
+* **tabs:** apply new style ([f356a6d](https://github.com/ovh/design-system/commit/f356a6df06ada1489c793c34a32ca5a2498fe3c9))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

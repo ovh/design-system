@@ -357,7 +357,7 @@ export const StepDual: StoryObj = {
 export const Ticks: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-range ticks="[0,25,50,75,100]" value="55"></ods-range>
+<ods-range ticks="[25,50,75]" value="55"></ods-range>
   `,
 };
 

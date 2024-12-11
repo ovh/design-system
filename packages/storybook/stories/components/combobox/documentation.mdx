@@ -1,0 +1,50 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as ComboboxStories from './combobox.stories';
+
+<Meta of={ ComboboxStories } name='Documentation' />
+
+<Banner of={ ComboboxStories } />
+
+[//]: # (# Overview)
+
+[//]: # ()
+[//]: # (TODO Some text about the component)
+
+[//]: # ()
+[//]: # (<Canvas of={ ComboboxStories.Default } sourceState='none' />)
+
+[//]: # ()
+[//]: # (<DocNavigator of={ ComboboxStories } linkId={ LINK_ID.COMBOBOX } />)
+
+[//]: # ()
+[//]: # (<Markdown>{ SpecificationsCombobox }</Markdown>)
+
+[//]: # ()
+[//]: # (# Style customization [IF RELEVANT])
+
+[//]: # ()
+[//]: # (You can add your own style on the combobox element using the part `combobox`.)
+
+[//]: # ()
+[//]: # (Custom combobox css:)
+
+[//]: # ()
+[//]: # (<Canvas of={ ComboboxStories.CustomCSS } sourceState='shown'/>)
+
+[//]: # ()
+[//]: # (# Examples)
+
+[//]: # ()
+[//]: # (## Default)
+
+[//]: # ()
+[//]: # (<Canvas of={ ComboboxStories.Default } sourceState='shown' />)
+
+[//]: # ()
+[//]: # (## [Other attribute])
+
+[//]: # (<Canvas of={ ComboboxStories.Default } sourceState='shown' />)
+
+[//]: # ()
+[//]: # (...)

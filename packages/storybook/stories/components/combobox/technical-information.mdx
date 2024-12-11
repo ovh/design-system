@@ -1,0 +1,42 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsSelect from '@ovhcloud/ods-components/src/components/select/documentation/custom-elements.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { hideValidityStateSource } from '../../../src/components/validityState/validityState';
+import * as ComboboxStories from './combobox.stories';
+import { Select as FormFieldSelect } from '../form-field/form-field.stories';
+
+<Meta of={ ComboboxStories } name="Technical information" />
+
+<Banner of={ ComboboxStories } />
+
+[//]: # (<Heading label="Overview" level={ 2 } />)
+
+[//]: # ()
+[//]: # (<Canvas of={ SelectStories.Overview } sourceState="none" />)
+
+[//]: # ()
+[//]: # (<TechnicalSpecification data={ SpecificationsSelect } />)
+
+[//]: # ()
+[//]: # (<Heading label="Style customization" level={ 2 } />)
+
+[//]: # ()
+[//]: # (You can add your own style on the select element by adding class on the webcomponent directly.)
+
+[//]: # ()
+[//]: # (Custom CSS:)
+
+[//]: # ()
+[//]: # (<Canvas of={ SelectStories.CustomCSS } sourceState="shown" />)
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ ComboboxStories.Default } sourceState="shown" />
+
+<Heading label="Multiple Selection" level={ 3 } />
+
+<Canvas of={ ComboboxStories.Multiple } sourceState="shown" />

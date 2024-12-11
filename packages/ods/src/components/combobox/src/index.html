@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-combobox</title>
+
+  <script type='module' src='/build/ods-combobox.esm.js'></script>
+  <script nomodule src='/build/ods-combobox.js'></script>
+  <link rel="stylesheet" href="/build/ods-combobox.css">
+
+  <style>
+    * {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Single</p>
+  <ods-combobox id="single" is-clearable placeholder="toto">
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+  </ods-combobox>
+
+  <script>
+    const singleCombobox = document.querySelector('#single');
+
+    setTimeout(() => {
+      singleCombobox.placeholder = Date.now().toString();
+    }, 2000);
+  </script>
+
+  <p>Single disabled</p>
+  <ods-combobox is-disabled>
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+  </ods-combobox>
+
+  <p>Single readonly</p>
+  <ods-combobox is-readonly>
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+  </ods-combobox>
+
+  <p>Multi</p>
+  <ods-combobox allow-multiple is-clearable>
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+  </ods-combobox>
+
+  <p>Multi disabled</p>
+  <ods-combobox allow-multiple is-disabled>
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+  </ods-combobox>
+
+  <p>Custom empty label</p>
+  <ods-combobox no-result-label="Aucun résultat trouvé">
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+  </ods-combobox>
+
+  <p>Placeholder</p>
+  <ods-combobox placeholder="Start typing">
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+  </ods-combobox>
+
+  <p>Has error</p>
+  <ods-combobox has-error>
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+  </ods-combobox>
+
+  <p>Option group</p>
+  <ods-combobox allow-multiple>
+    <option value="">Select gear...</option>
+    <optgroup label="Climbing">
+      <option value="pitons">Pitons</option>
+      <option value="cams">Cams</option>
+      <option value="nuts">Nuts</option>
+      <option value="bolts">Bolts</option>
+      <option value="stoppers">Stoppers</option>
+      <option value="sling">Sling</option>
+    </optgroup>
+    <optgroup label="Skiing">
+      <option value="skis">Skis</option>
+      <option value="skins">Skins</option>
+      <option value="poles">Poles</option>
+    </optgroup>
+  </ods-combobox>
+
+  <div style="margin-bottom: 2000px;"></div>
+</body>
+</html>

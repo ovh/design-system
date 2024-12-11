@@ -332,6 +332,7 @@ export class OdsRange implements OdsFormElement {
               class={{
                 'ods-range__ticks__tick': true,
                 'ods-range__ticks__tick--activated': this.activatedTicks.indexOf(tick) > -1,
+                'ods-range__ticks__tick--disabled': this.isDisabled,
               }}
               style={{ left: `calc(${tick * ratio}% - calc(var(--ods-range-tick-width) / 2))` }}>
             </div>

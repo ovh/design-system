@@ -62,8 +62,12 @@ $ods-range-text-top: 16px;
       width: $ods-range-tick-width;
       height: range.$ods-input-range-size-thumb;
 
-      &--activated {
+      &:not(.ods-range__ticks__tick--disabled).ods-range__ticks__tick--activated {
         background-color: range.$range-background-color-active;
+      }
+
+      &--disabled.ods-range__ticks__tick--activated {
+        background-color: var(--ods-color-neutral-500);
       }
    }
   }

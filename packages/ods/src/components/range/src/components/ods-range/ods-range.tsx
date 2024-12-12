@@ -316,7 +316,6 @@ export class OdsRange implements OdsFormElement {
     if (!this.parsedTicks || this.parsedTicks.length === 0) {
       return;
     }
-    const ratio = 100 / this.parsedTicks[this.parsedTicks.length - 1];
 
     return (<div>
       <datalist id={ this.listId }>
@@ -334,7 +333,7 @@ export class OdsRange implements OdsFormElement {
                 'ods-range__ticks__tick--activated': this.activatedTicks.indexOf(tick) > -1,
                 'ods-range__ticks__tick--disabled': this.isDisabled,
               }}
-              style={{ left: `calc(${tick * ratio}% - calc(var(--ods-range-tick-width) / 2))` }}>
+              style={{ left: `calc(${toPercentage(this.max, this.min, tick)}% - calc(var(--ods-range-tick-width) / 2))` }}>
             </div>
           ))
         }

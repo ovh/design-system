@@ -1,6 +1,8 @@
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import { Table } from '@storybook/components';
-import { type Module } from 'custom-elements-manifest/schema';
+import { type ClassMember, type Module } from 'custom-elements-manifest/schema';
 import React from 'react';
 import { Heading } from '../heading/Heading';
 import { StorybookLink } from '../storybookLink/StorybookLink';
@@ -9,6 +11,14 @@ import styles from './classModule.module.css';
 type Props = {
   enumList?: Record<string, Record<string, string>>,
   module: Module,
+}
+
+function isRequired(property: ClassMember): boolean {
+  if ('type' in property && property.type?.text.includes('undefined')) {
+    return false;
+  }
+
+  return !('default' in property && property.default);
 }
 
 const ClassModule = ({ module }: Props) => {
@@ -70,10 +80,13 @@ const ClassModule = ({ module }: Props) => {
                       </CodeOrSourceMdx>
                     </td>
 
-                    <td>
-                      <CodeOrSourceMdx>
-                        { 'type' in property && property.type?.text.includes('undefined') ? 'false' : 'true' }
-                      </CodeOrSourceMdx>
+                    <td className={ styles['class-module__properties__body__is-required'] }>
+                      {
+                        isRequired(property)
+                          ? <OdsIcon className={ styles['class-module__properties__body__is-required--required'] }
+                                     name={ ODS_ICON_NAME.check } />
+                          : '-'
+                      }
                     </td>
 
                     <td>

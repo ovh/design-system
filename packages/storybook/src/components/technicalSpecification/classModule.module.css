@@ -7,6 +7,14 @@
   white-space: break-spaces;
 }
 
+.class-module__properties__body__is-required {
+  text-align: center;
+}
+
+.class-module__properties__body__is-required--required {
+  color: var(--ods-color-success-500);
+}
+
 .class-module__event-title-link,
 .class-module__method-title-link {
   font-size: 12px;

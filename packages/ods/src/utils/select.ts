@@ -1,3 +1,7 @@
+// TODO move those used in ods-select too?
+type SelectTemplateData = { className?: string, input?: string, text?: string };
+type SelectTemplateEscape = (str: string) => string;
+
 /**
  * Tom-select plugin to handle multiple selection as one string instead of x elements
  * (see https://tom-select.js.org/docs/plugins)
@@ -86,7 +90,44 @@ function placeholderPlugin(): void {
   });
 }
 
+/**
+ * Tom-select plugin to handle ods-tag removal
+ * (see https://tom-select.js.org/docs/plugins)
+ */
+function removeItemOnOdsRemovePlugin(): void {
+  // @ts-ignore "this" is the TomSelect instance but is set as any by the lib
+  const self = this; // eslint-disable-line @typescript-eslint/no-this-alias
+
+  self.hook('after', 'setupTemplates', function() {
+    const itemTemplateFunction = self.settings.render.item;
+
+    self.settings.render.item = (data: SelectTemplateData, escape: SelectTemplateEscape): ChildNode | null => {
+      const item = itemTemplateFunction.call(self, data, escape);
+
+      const itemTemplate = document.createElement('template');
+      itemTemplate.innerHTML = item.trim();
+      const itemDom = itemTemplate.content.firstChild;
+
+      itemDom?.addEventListener('odsRemove', () => {
+        if (self.isLocked) {
+          return;
+        }
+
+        self.removeItem(itemDom);
+        self.refreshOptions(false);
+        self.inputState();
+        self.focus();
+      });
+
+      return itemDom;
+    };
+  });
+}
+
 export {
+  type SelectTemplateData,
+  type SelectTemplateEscape,
   mergeSelectedItemPlugin,
   placeholderPlugin,
+  removeItemOnOdsRemovePlugin,
 };

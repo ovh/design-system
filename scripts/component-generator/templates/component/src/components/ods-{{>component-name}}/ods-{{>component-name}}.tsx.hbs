@@ -1,5 +1,4 @@
-import type { FunctionalComponent } from '@stencil/core';
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
 
 @Component({
   shadow: true,

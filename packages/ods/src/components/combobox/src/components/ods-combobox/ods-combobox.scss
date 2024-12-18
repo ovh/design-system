@@ -75,8 +75,14 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
     padding: 0;
 
     .create {
+      color: var(--ods-color-text);
+
       &.active {
         background-color: var(--ods-color-primary-100);
+      }
+
+      .input {
+        font-weight: 600;
       }
     }
 
@@ -112,7 +118,8 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
       }
 
       .highlight {
-        background-color: var(--ods-color-primary-100);
+        background-color: transparent;
+        font-weight: 600;
       }
     }
 

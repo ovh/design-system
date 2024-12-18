@@ -1,5 +1,4 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('ods-combobox accessibility', () => {
   let el: E2EElement;
@@ -14,10 +13,22 @@ describe('ods-combobox accessibility', () => {
     el = await page.find('ods-combobox');
   }
 
-  it('should render the web component with the right role', async() => {
+  it('should render the web component with the right default attributes', async() => {
     await setup('<ods-combobox></ods-combobox>');
 
     expect(el.shadowRoot).not.toBeNull();
-    expect(el.getAttribute('role')).toBe('article');
+    expect(el.getAttribute('aria-label')).toBeNull();
+    expect(el.getAttribute('aria-labelledby')).toBeNull();
+  });
+
+  it('should render the web component with the right aria attributes', async() => {
+    const dummyAriaLabel = 'dummy aria label';
+    const dummyAriaLabelledby = 'dummy element';
+
+    await setup(`<ods-combobox aria-label="${dummyAriaLabel}" aria-labelledby="${dummyAriaLabelledby}"></ods-combobox>`);
+
+    expect(el.shadowRoot).not.toBeNull();
+    expect(el.getAttribute('aria-label')).toBe(dummyAriaLabel);
+    expect(el.getAttribute('aria-labelledby')).toBe(dummyAriaLabelledby);
   });
 });

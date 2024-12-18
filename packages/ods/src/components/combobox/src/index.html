@@ -18,7 +18,71 @@
 
 <body>
   <p>Single</p>
-  <ods-combobox id="single" is-clearable placeholder="toto">
+  <ods-combobox id="single" is-required name="single" default-value="cat" create-label="New value" is-clearable placeholder="Single">
+    <option value="dog" toto="1">Dog</option>
+    <option value="cat" toto="2">Cat</option>
+    <option value="hamster" toto="3">Hamster</option>
+    <option value="parrot" toto="4">Parrot</option>
+    <option value="spider" toto="5">Spider</option>
+    <option value="goldfish" toto="6">Goldfish</option>
+  </ods-combobox>
+
+  <br />
+  <button id="btn-update-value">Update value</button>
+  <button id="btn-check-validity">Check validity</button>
+  <button id="btn-clear">Clear</button>
+  <button id="btn-reset">Reset</button>
+
+  <script>
+    const singleCombobox = document.querySelector('#single');
+    const btnCheckValidity = document.querySelector('#btn-check-validity');
+    const btnClear = document.querySelector('#btn-clear');
+    const btnReset = document.querySelector('#btn-reset');
+    const btnUpdateValue = document.querySelector('#btn-update-value');
+
+    singleCombobox.addEventListener('odsChange', (e) => {
+      console.log(e.detail);
+    });
+
+    btnCheckValidity.addEventListener('click', async() => {
+      console.log(await singleCombobox.checkValidity());
+    });
+
+    btnClear.addEventListener('click', () => {
+      singleCombobox.clear();
+    });
+
+    btnReset.addEventListener('click', () => {
+      singleCombobox.reset();
+    });
+
+    btnUpdateValue.addEventListener('click', () => {
+      singleCombobox.value = 'spider';
+    });
+  </script>
+
+<!--  <p>Single disabled</p>-->
+<!--  <ods-combobox is-disabled>-->
+<!--    <option value="dog">Dog</option>-->
+<!--    <option value="cat">Cat</option>-->
+<!--    <option value="hamster">Hamster</option>-->
+<!--    <option value="parrot">Parrot</option>-->
+<!--    <option value="spider">Spider</option>-->
+<!--    <option value="goldfish">Goldfish</option>-->
+<!--  </ods-combobox>-->
+
+<!--  <p>Single readonly</p>-->
+<!--  <ods-combobox is-readonly>-->
+<!--    <option value="dog">Dog</option>-->
+<!--    <option value="cat">Cat</option>-->
+<!--    <option value="hamster">Hamster</option>-->
+<!--    <option value="parrot">Parrot</option>-->
+<!--    <option value="spider">Spider</option>-->
+<!--    <option value="goldfish">Goldfish</option>-->
+<!--  </ods-combobox>-->
+
+  <p>Multi</p>
+  <ods-combobox allow-multiple id="multi" is-required name="multi" placeholder="Multi tag">
     <option value="dog">Dog</option>
     <option value="cat">Cat</option>
     <option value="hamster">Hamster</option>
@@ -28,100 +92,67 @@
   </ods-combobox>
 
   <script>
-    const singleCombobox = document.querySelector('#single');
-
-    setTimeout(() => {
-      singleCombobox.placeholder = Date.now().toString();
-    }, 2000);
+    const multiCombobox = document.querySelector('#multi');
+    multiCombobox.value = ['dog', 'cat'];
   </script>
 
-  <p>Single disabled</p>
-  <ods-combobox is-disabled>
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="hamster">Hamster</option>
-    <option value="parrot">Parrot</option>
-    <option value="spider">Spider</option>
-    <option value="goldfish">Goldfish</option>
-  </ods-combobox>
+<!--  <p>Multi disabled</p>-->
+<!--  <ods-combobox allow-multiple is-disabled>-->
+<!--    <option value="dog">Dog</option>-->
+<!--    <option value="cat">Cat</option>-->
+<!--    <option value="hamster">Hamster</option>-->
+<!--    <option value="parrot">Parrot</option>-->
+<!--    <option value="spider">Spider</option>-->
+<!--    <option value="goldfish">Goldfish</option>-->
+<!--  </ods-combobox>-->
 
-  <p>Single readonly</p>
-  <ods-combobox is-readonly>
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="hamster">Hamster</option>
-    <option value="parrot">Parrot</option>
-    <option value="spider">Spider</option>
-    <option value="goldfish">Goldfish</option>
-  </ods-combobox>
+<!--  <p>Custom empty label</p>-->
+<!--  <ods-combobox no-result-label="Aucun résultat trouvé">-->
+<!--    <option value="dog">Dog</option>-->
+<!--    <option value="cat">Cat</option>-->
+<!--    <option value="hamster">Hamster</option>-->
+<!--    <option value="parrot">Parrot</option>-->
+<!--    <option value="spider">Spider</option>-->
+<!--    <option value="goldfish">Goldfish</option>-->
+<!--  </ods-combobox>-->
 
-  <p>Multi</p>
-  <ods-combobox allow-multiple is-clearable>
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="hamster">Hamster</option>
-    <option value="parrot">Parrot</option>
-    <option value="spider">Spider</option>
-    <option value="goldfish">Goldfish</option>
-  </ods-combobox>
+<!--  <p>Placeholder</p>-->
+<!--  <ods-combobox placeholder="Start typing">-->
+<!--    <option value="dog">Dog</option>-->
+<!--    <option value="cat">Cat</option>-->
+<!--    <option value="hamster">Hamster</option>-->
+<!--    <option value="parrot">Parrot</option>-->
+<!--    <option value="spider">Spider</option>-->
+<!--    <option value="goldfish">Goldfish</option>-->
+<!--  </ods-combobox>-->
 
-  <p>Multi disabled</p>
-  <ods-combobox allow-multiple is-disabled>
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="hamster">Hamster</option>
-    <option value="parrot">Parrot</option>
-    <option value="spider">Spider</option>
-    <option value="goldfish">Goldfish</option>
-  </ods-combobox>
+<!--  <p>Has error</p>-->
+<!--  <ods-combobox has-error>-->
+<!--    <option value="dog">Dog</option>-->
+<!--    <option value="cat">Cat</option>-->
+<!--    <option value="hamster">Hamster</option>-->
+<!--    <option value="parrot">Parrot</option>-->
+<!--    <option value="spider">Spider</option>-->
+<!--    <option value="goldfish">Goldfish</option>-->
+<!--  </ods-combobox>-->
 
-  <p>Custom empty label</p>
-  <ods-combobox no-result-label="Aucun résultat trouvé">
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="hamster">Hamster</option>
-    <option value="parrot">Parrot</option>
-    <option value="spider">Spider</option>
-    <option value="goldfish">Goldfish</option>
-  </ods-combobox>
-
-  <p>Placeholder</p>
-  <ods-combobox placeholder="Start typing">
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="hamster">Hamster</option>
-    <option value="parrot">Parrot</option>
-    <option value="spider">Spider</option>
-    <option value="goldfish">Goldfish</option>
-  </ods-combobox>
-
-  <p>Has error</p>
-  <ods-combobox has-error>
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="hamster">Hamster</option>
-    <option value="parrot">Parrot</option>
-    <option value="spider">Spider</option>
-    <option value="goldfish">Goldfish</option>
-  </ods-combobox>
-
-  <p>Option group</p>
-  <ods-combobox allow-multiple>
-    <option value="">Select gear...</option>
-    <optgroup label="Climbing">
-      <option value="pitons">Pitons</option>
-      <option value="cams">Cams</option>
-      <option value="nuts">Nuts</option>
-      <option value="bolts">Bolts</option>
-      <option value="stoppers">Stoppers</option>
-      <option value="sling">Sling</option>
-    </optgroup>
-    <optgroup label="Skiing">
-      <option value="skis">Skis</option>
-      <option value="skins">Skins</option>
-      <option value="poles">Poles</option>
-    </optgroup>
-  </ods-combobox>
+<!--  <p>Option group</p>-->
+<!--  <ods-combobox allow-multiple>-->
+<!--    <option value="">Select gear...</option>-->
+<!--    <optgroup label="Climbing">-->
+<!--      <option value="pitons">Pitons</option>-->
+<!--      <option value="cams">Cams</option>-->
+<!--      <option value="nuts">Nuts</option>-->
+<!--      <option value="bolts">Bolts</option>-->
+<!--      <option value="stoppers">Stoppers</option>-->
+<!--      <option value="sling">Sling</option>-->
+<!--    </optgroup>-->
+<!--    <optgroup label="Skiing">-->
+<!--      <option value="skis">Skis</option>-->
+<!--      <option value="skins">Skins</option>-->
+<!--      <option value="poles">Poles</option>-->
+<!--    </optgroup>-->
+<!--  </ods-combobox>-->
 
   <div style="margin-bottom: 2000px;"></div>
 </body>

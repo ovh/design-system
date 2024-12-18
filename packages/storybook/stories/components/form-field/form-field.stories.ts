@@ -64,9 +64,9 @@ export const Demo: StoryObj = {
   args: {
     error: '',
     label: '<label slot="label">Description</label>',
-    visualHint: '<ods-text slot="visual-hint" preset="span">0/100</ods-text>',
+    visualHint: '<ods-text slot="visual-hint" preset="caption">0/100</ods-text>',
     content: '<ods-input type="text" placeholder="Placeholder" clearable></ods-input>',
-    helper: '<ods-text slot="helper" preset="span">A little helper text</ods-text>',
+    helper: '<ods-text slot="helper" preset="caption">A little helper text</ods-text>',
   },
 };
 
@@ -83,11 +83,11 @@ export const Overview: StoryObj = {
 
   <ods-textarea id="form-field-overview" placeholder="Placeholder" is-resizable="true"></ods-textarea>
 
-  <ods-text slot="helper" preset="span">
+  <ods-text slot="helper" preset="caption">
     Helper text
   </ods-text>
 
-  <ods-text slot="visual-hint" preset="span">
+  <ods-text slot="visual-hint" preset="caption">
     0/200
   </ods-text>
 </ods-form-field>
@@ -112,11 +112,11 @@ export const Error: StoryObj = {
 
   <ods-input id="form-field-input-error" type="text" placeholder="Placeholder" clearable></ods-input>
 
-  <ods-text slot="helper" preset="span">
+  <ods-text slot="helper" preset="caption">
     A little helper text
   </ods-text>
 
-  <ods-text slot="visual-hint" preset="span">
+  <ods-text slot="visual-hint" preset="caption">
     0/100
   </ods-text>
 </ods-form-field>
@@ -165,7 +165,7 @@ export const LabelVisualHint: StoryObj = {
 
   <ods-input id="form-field-input-hint" type="text" placeholder="Placeholder" clearable></ods-input>
 
-  <ods-text slot="visual-hint" preset="span">
+  <ods-text slot="visual-hint" preset="caption">
     0/100
   </ods-text>
 </ods-form-field>
@@ -182,11 +182,11 @@ export const LabelVisualHintHelper: StoryObj = {
 
   <ods-input id="form-field-input-hint-helper" type="text" placeholder="Placeholder" clearable></ods-input>
 
-  <ods-text slot="helper" preset="span">
+  <ods-text slot="helper" preset="caption">
     A little helper text
   </ods-text>
 
-  <ods-text slot="visual-hint" preset="span">
+  <ods-text slot="visual-hint" preset="caption">
     0/100
   </ods-text>
 </ods-form-field>
@@ -371,7 +371,7 @@ export const Range: StoryObj = {
       Price range
     </label>
 
-    <ods-text class="form-field__range__sub-label" preset="span">
+    <ods-text class="form-field__range__sub-label" preset="caption">
       Selected values : <span id="range-min-bound">0</span> - <span id="range-max-bound">0</span>€
     </ods-text>
   </div>
@@ -400,11 +400,6 @@ export const Range: StoryObj = {
 <style>
   .form-field__range__sub-label {
     display: block;
-  }
-
-  .form-field__range__sub-label::part(text) {
-    color: var(--ods-color-text);
-    font-size: 12px;
   }
 </style>
   `,
@@ -460,7 +455,7 @@ export const Textarea: StoryObj = {
     Description
   </label>
 
-  <ods-text slot="visual-hint" preset="span">
+  <ods-text slot="visual-hint" preset="caption">
     <span id="textarea-character-count">0</span>/<span id="textarea-max-characters">0</span>
   </ods-text>
 

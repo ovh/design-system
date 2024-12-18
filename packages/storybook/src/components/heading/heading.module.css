@@ -4,6 +4,10 @@
 .heading-4,
 .heading-5,
 .heading-6 {
+  display: flex;
+  flex-flow: row;
+  column-gap: .5rem;
+  align-items: center;
   margin-bottom: 0;
   color: var(--ods-color-primary-800);
 }

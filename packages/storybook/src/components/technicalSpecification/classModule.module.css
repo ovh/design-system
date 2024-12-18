@@ -7,6 +7,11 @@
   white-space: break-spaces;
 }
 
+.class-module__event-title-link,
+.class-module__method-title-link {
+  font-size: 12px;
+}
+
 .class-module__events,
 .class-module__methods {
   display: flex;

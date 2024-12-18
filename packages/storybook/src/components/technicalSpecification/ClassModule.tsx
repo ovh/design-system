@@ -3,6 +3,7 @@ import { Table } from '@storybook/components';
 import { type Module } from 'custom-elements-manifest/schema';
 import React from 'react';
 import { Heading } from '../heading/Heading';
+import { StorybookLink } from '../storybookLink/StorybookLink';
 import styles from './classModule.module.css';
 
 type Props = {
@@ -91,7 +92,11 @@ const ClassModule = ({ module }: Props) => {
       {
         methods.length > 0 &&
         <>
-          <Heading label="Methods" level={ 3 } />
+          <Heading label="Methods" level={ 3 }>
+            <StorybookLink className={ styles['class-module__method-title-link'] }
+                           label="(How to use?)"
+                           title="OVHcloud Design System/Guides/Using Methods" />
+          </Heading>
 
           <ul className={ styles['class-module__methods'] }>
             {
@@ -114,7 +119,11 @@ const ClassModule = ({ module }: Props) => {
       {
         events.length > 0 &&
         <>
-          <Heading label="Events" level={ 3 } />
+          <Heading label="Events" level={ 3 }>
+            <StorybookLink className={ styles['class-module__event-title-link'] }
+                           label="(How to use?)"
+                           title="OVHcloud Design System/Guides/Using Events" />
+          </Heading>
 
           <ul className={ styles['class-module__events'] }>
             {

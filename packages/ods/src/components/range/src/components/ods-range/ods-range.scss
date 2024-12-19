@@ -8,6 +8,7 @@ $ods-range-text-top: 16px;
   display: inline-flex;
   position: relative;
   flex-direction: column;
+  padding-top: $ods-range-tick-width;
   width: inherit;
   height: inherit;
 }

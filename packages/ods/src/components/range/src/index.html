@@ -14,66 +14,66 @@
 
   <p>Default</p>
   <div style="display: flex;">
-    <!-- <ods-range id="default-range" is-required>
+    <ods-range id="default-range" is-required>
     </ods-range>
     <ods-range id="range-dual">
-    </ods-range> -->
+    </ods-range>
   </div>
 
   <button id="clear-button">clear</button>
   <button id="reset-button">reset</button>
 
   <script>
-    // const range = document.querySelector('#default-range');
+    const range = document.querySelector('#default-range');
 
-    // const rangeDual = document.getElementById('range-dual');
-    // rangeDual.value = [3, 20];
+    const rangeDual = document.getElementById('range-dual');
+    rangeDual.value = [3, 20];
 
-    // ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{
-    //   range.addEventListener(eventName, (event) => {
-    //     console.log(eventName, event);
-    //   });
+    ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{
+      range.addEventListener(eventName, (event) => {
+        console.log(eventName, event);
+      });
 
-    //   rangeDual.addEventListener(eventName, (event) => {
-    //     console.log(eventName, event);
-    //   });
-    // });
-    // const clearButton = document.getElementById('clear-button');
-    // const resetButton = document.getElementById('reset-button');
-    // // const getValidityButton = document.getElementById('get-validity-button');
+      rangeDual.addEventListener(eventName, (event) => {
+        console.log(eventName, event);
+      });
+    });
+    const clearButton = document.getElementById('clear-button');
+    const resetButton = document.getElementById('reset-button');
+    // const getValidityButton = document.getElementById('get-validity-button');
 
-    // clearButton.addEventListener('click', () => {
-    //   rangeDual.clear();
-    //   range.clear();
-    // });
-    // resetButton.addEventListener('click', () => {
-    //   rangeDual.reset();
-    //   range.reset();
-    // });
-    // getValidityButton.addEventListener('click', async () => {
-    //   const validity = await range.getValidity();
-    //   console.log('validity', validity);
-    // });
+    clearButton.addEventListener('click', () => {
+      rangeDual.clear();
+      range.clear();
+    });
+    resetButton.addEventListener('click', () => {
+      rangeDual.reset();
+      range.reset();
+    });
+    getValidityButton.addEventListener('click', async () => {
+      const validity = await range.getValidity();
+      console.log('validity', validity);
+    });
   </script>
 
   <p>Ticks</p>
   <div>
     <ods-range id="ticks-range"  ticks="[0,25,30,50,75,66,100]" value="55">
     </ods-range>
-    <!-- <ods-range id="ticks-range-dual" ticks="[0,25,50,75,100]">
-    </ods-range> -->
+    <ods-range id="ticks-range-dual" ticks="[0,25,50,75,100]">
+    </ods-range>
 
     <button id="button-change-ticks">change ticks</button>
 
     <script>
       const ticksRange = document.getElementById('ticks-range');
-      // const ticksRangeDual = document.getElementById('ticks-range-dual');
+      const ticksRangeDual = document.getElementById('ticks-range-dual');
       const buttonChangeTicks = document.getElementById('button-change-ticks');
 
-      // ticksRangeDual.value = [15, 60];
-      // buttonChangeTicks.addEventListener('click', () => {
-      //   ticksRange.ticks = '[5,6,7]'
-      // })
+      ticksRangeDual.value = [15, 60];
+      buttonChangeTicks.addEventListener('click', () => {
+        ticksRange.ticks = '[5,6,7]'
+      })
     </script>
   </div>
 

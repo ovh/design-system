@@ -11,7 +11,7 @@ $range-z-index-dual: 1;
   $range: &;
 
   appearance: none;
-  margin: calc($ods-input-range-size-thumb / 4) 0 0;
+  margin: calc($ods-input-range-height / 2) 0;
   outline: none;
   border-radius: var(--ods-border-radius-sm);
   cursor: pointer;

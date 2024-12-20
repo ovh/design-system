@@ -1,63 +1,57 @@
 @use '../../../../../style/focus';
 @use '../../../../../style/state';
 
+$ods-accordion-border-size: 1px;
 $ods-accordion-padding: 24px;
 
 .ods-accordion {
-  &__wrapper {
-    transition: .3s border-color ease-out;
-    border: 1px solid transparent;
-    cursor: pointer;
+  &__details {
+    $details: &;
 
-    &:focus-visible {
-      @include focus.ods-focus();
+    &:not([open]) {
+      #{$details}__summary {
+        &:not(&#{$details}__summary--disabled) {
+          &:focus-visible,
+          &:hover {
+            transition: .3s border-color ease-out;
+            border-color: var(--ods-color-primary-200);
+          }
+        }
+      }
     }
 
-    &:focus-visible,
-    &:hover {
-      border-color: var(--ods-color-primary-200);
-    }
-
-    &--is-open,
-    &--is-open:hover,
-    &--is-open:focus-visible {
-      border-color: var(--ods-color-primary-500);
-    }
-
-    &--is-disabled {
-      @include state.ods-is-disabled();
-
-      &:hover {
-        border-color: state.$ods-state-is-disabled-border-color;
+    &[open] {
+      #{$details}__summary {
+        transition: none;
+        border-color: var(--ods-color-primary-500);
+        border-bottom-color: transparent;
       }
     }
 
     &__summary {
       $summary: &;
 
-      display: flex;
-      position: relative;
+      display: grid;
+      grid-template-columns: 1fr max-content;
       column-gap: $ods-accordion-padding;
       align-items: center;
-      justify-content: space-between;
+      margin-bottom: -$ods-accordion-border-size;
+      border: $ods-accordion-border-size solid transparent;
+      cursor: pointer;
       padding: $ods-accordion-padding;
-      list-style: none;
 
       &::-webkit-details-marker {
         display: none;
       }
 
-      &--is-open {
-        padding-bottom: $ods-accordion-padding;
+      &:focus-visible {
+        @include focus.ods-focus();
       }
 
-      &--is-disabled {
-        opacity: .5;
-        cursor: not-allowed;
+      &--disabled {
+        @include state.ods-is-disabled();
 
-        &:hover {
-          border-color: transparent;
-        }
+        opacity: .5;
 
         & #{$summary}__icon {
           color: state.$ods-state-is-disabled-text-color;
@@ -68,13 +62,12 @@ $ods-accordion-padding: 24px;
         color: var(--ods-color-primary-500);
         font-size: 0.875rem;
       }
-
-      &__slot {
-        width: 100%;
-      }
     }
 
     &__content {
+      border-right: solid 1px var(--ods-color-primary-500);
+      border-bottom: solid 1px var(--ods-color-primary-500);
+      border-left: solid 1px var(--ods-color-primary-500);
       padding: 0 $ods-accordion-padding $ods-accordion-padding;
     }
   }

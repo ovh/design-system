@@ -1,70 +1,75 @@
-import type { E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('ods-accordion navigation', () => {
+  let details: E2EElement;
   let page: E2EPage;
+
+  async function isDetailsOpen(): Promise<boolean> {
+    return await page.evaluate(() => {
+      const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__details');
+      return details?.getAttribute('open') === '';
+    });
+  }
+
+  async function isSummaryFocused(): Promise<boolean> {
+    return await page.evaluate(() => {
+      const summary = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__details__summary');
+      const activeElement = document.activeElement?.shadowRoot?.activeElement;
+      return summary === activeElement;
+    });
+  }
 
   async function setup(content: string): Promise<void> {
     page = await newE2EPage();
 
     await page.setContent(content);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+
+    details = await page.find('ods-accordion >>> .ods-accordion__details');
   }
 
-  it('details should be focusable on tab', async() => {
+  it('should focus summary on tab', async() => {
     await setup(`
       <ods-accordion>
         <span slot="summary">Hello, world!</span>
 
-        <ods-text preset="span">
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
-        </ods-text>
+        </p>
       </ods-accordion>
     `);
 
     await page.keyboard.press('Tab');
     await page.waitForChanges();
 
-    const isDetailsFocused = await page.evaluate(() => {
-      const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper');
-      const activeElement = document.activeElement?.shadowRoot?.activeElement;
-      return details === activeElement;
-    });
-
-    expect(isDetailsFocused).toBe(true);
+    expect((await isSummaryFocused())).toBe(true);
   });
 
-  it('details should not be focusable on tab if disabled', async() => {
+  it('should not be focusable on tab if disabled', async() => {
     await setup(`
       <ods-accordion is-disabled>
         <span slot="summary">Hello, world!</span>
 
-        <ods-text preset="span">
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
-        </ods-text>
+        </p>
       </ods-accordion>
     `);
 
     await page.keyboard.press('Tab');
     await page.waitForChanges();
 
-    const isDetailsFocused = await page.evaluate(() => {
-      const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper');
-      const activeElement = document.activeElement?.shadowRoot?.activeElement;
-      return details === activeElement;
-    });
-
-    expect(isDetailsFocused).toBe(false);
+    expect((await isSummaryFocused())).toBe(false);
   });
 
-  it('details should toggle on "Enter" when focused', async() => {
+  it('should toggle on "Enter" when focused', async() => {
     await setup(`
       <ods-accordion>
         <span slot="summary">Hello, world!</span>
 
-        <ods-text preset="span">
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
-        </ods-text>
+        </p>
       </ods-accordion>
     `);
 
@@ -72,55 +77,39 @@ describe('ods-accordion navigation', () => {
     await page.keyboard.press('Enter');
     await page.waitForChanges();
 
-    const isDetailsOpen = await page.evaluate(() => {
-      const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper');
-      return details?.getAttribute('open') === '';
-    });
-
-    expect(isDetailsOpen).toBe(true);
+    expect((await isDetailsOpen())).toBe(true);
   });
 
-  it('details should toggle on "Enter" after click', async() => {
+  it('should toggle on "Enter" after click', async() => {
     await setup(`
       <ods-accordion>
         <span slot="summary">Hello, world!</span>
 
-        <ods-text preset="span">
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
-        </ods-text>
+        </p>
       </ods-accordion>
     `);
 
-    const details = await page.find('ods-accordion >>> .ods-accordion__wrapper');
     await details.click();
     await page.waitForChanges();
-    const isDetailsOpen = await page.evaluate(() => {
-      const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper');
-      return details?.getAttribute('open') === '';
-    });
 
-    expect(isDetailsOpen).toBe(true);
+    expect((await isDetailsOpen())).toBe(true);
 
     await page.keyboard.press('Enter');
     await page.waitForChanges();
 
-    const isDetailsOpenAfterEnter = await page.evaluate(() => {
-      const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper');
-      return details?.getAttribute('open') === '';
-    });
-
-    expect(isDetailsOpenAfterEnter).toBe(false);
-
+    expect((await isDetailsOpen())).toBe(false);
   });
 
-  it('details should toggle on "Space" when focused', async() => {
+  it('should toggle on "Space" when focused', async() => {
     await setup(`
       <ods-accordion>
         <span slot="summary">Hello, world!</span>
 
-        <ods-text preset="span">
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
-        </ods-text>
+        </p>
       </ods-accordion>
     `);
 
@@ -128,57 +117,40 @@ describe('ods-accordion navigation', () => {
     await page.keyboard.press('Space');
     await page.waitForChanges();
 
-    const isDetailsOpen = await page.evaluate(() => {
-      const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper');
-      return details?.getAttribute('open') === '';
-    });
-
-    expect(isDetailsOpen).toBe(true);
+    expect((await isDetailsOpen())).toBe(true);
   });
 
-  it('details should toggle on click', async() => {
+  it('should toggle on click', async() => {
     await setup(`
       <ods-accordion>
         <span slot="summary">Hello, world!</span>
 
-        <ods-text preset="span">
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
-        </ods-text>
+        </p>
       </ods-accordion>
     `);
-    const details = await page.find('ods-accordion >>> .ods-accordion__wrapper');
 
     await details.click();
     await page.waitForChanges();
 
-    const isDetailsOpen = await page.evaluate(() => {
-      const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper');
-      return details?.getAttribute('open') === '';
-    });
-
-    expect(isDetailsOpen).toBe(true);
+    expect((await isDetailsOpen())).toBe(true);
   });
 
-  it('details should not toggle on click if disabled', async() => {
+  it('should not toggle on click if disabled', async() => {
     await setup(`
       <ods-accordion is-disabled>
         <span slot="summary">Hello, world!</span>
 
-        <ods-text preset="span">
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
-        </ods-text>
+        </p>
       </ods-accordion>
     `);
-    const details = await page.find('ods-accordion >>> .ods-accordion__wrapper');
 
     await details.click();
     await page.waitForChanges();
 
-    const isDetailsOpen = await page.evaluate(() => {
-      const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper');
-      return details?.getAttribute('open') === '';
-    });
-
-    expect(isDetailsOpen).toBe(false);
+    expect((await isDetailsOpen())).toBe(false);
   });
 });

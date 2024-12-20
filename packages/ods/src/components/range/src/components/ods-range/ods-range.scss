@@ -41,7 +41,7 @@ $ods-range-text-top: 16px;
 
   &__shadow-thumb {
     position: absolute;
-    top: -2px;
+    top: 0;
     opacity: 0;
     z-index: -1;
     width: range.$ods-input-range-size-thumb;

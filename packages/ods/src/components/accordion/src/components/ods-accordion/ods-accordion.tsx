@@ -1,5 +1,6 @@
-import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Prop, Watch, h } from '@stencil/core';
+import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
 import { ODS_ICON_NAME } from '../../../../icon/src';
+import { type OdsAccordionToggleEventDetail } from '../../interfaces/events';
 
 @Component({
   shadow: true,
@@ -8,96 +9,99 @@ import { ODS_ICON_NAME } from '../../../../icon/src';
 })
 export class OdsAccordion {
   private detailsElement?: HTMLDetailsElement;
+  private observer?: MutationObserver;
 
   @Prop({ reflect: true }) public isDisabled: boolean = false;
-  @Prop({ mutable: true, reflect: true }) public isOpen: boolean = false;
+  @Prop({ reflect: true }) public isOpen: boolean = false;
 
-  @Event() odsToggle!: EventEmitter<boolean>;
+  @Event() odsToggle!: EventEmitter<OdsAccordionToggleEventDetail>;
 
-  @Watch('isOpen')
-  onOpenChange(): void {
-    if (this.isOpen) {
-      this.detailsElement?.setAttribute('open', '');
-    } else {
-      this.detailsElement?.removeAttribute('open');
+  @Method()
+  public async close(): Promise<void> {
+    this.detailsElement?.removeAttribute('open');
+  }
+
+  @Method()
+  public async open(): Promise<void> {
+    if (this.isDisabled) {
+      return;
     }
+
+    this.detailsElement?.setAttribute('open', '');
+  }
+
+  @Method()
+  public async toggle(): Promise<void> {
+    if (this.isDisabled) {
+      return;
+    }
+
+    if (this.detailsElement?.hasAttribute('open')) {
+      this.close();
+    } else {
+      this.open();
+    }
+  }
+
+  componentWillLoad(): void {
+    this.observer = new MutationObserver((mutations: MutationRecord[]) => {
+      for (const mutation of mutations) {
+        if (mutation.attributeName === 'open') {
+          this.odsToggle.emit({ isOpen: this.detailsElement?.hasAttribute('open') ?? false });
+        }
+      }
+    });
   }
 
   componentDidLoad(): void {
-    this.onOpenChange();
-  }
-
-  private handleClick(event: MouseEvent): void {
-    this.handleToggle(event);
-  }
-
-  private handleKeyUp(event: KeyboardEvent): void {
-    if (this.isEnterOrSpace(event)) {
-      event.preventDefault();
-      this.handleToggle(event);
+    if (this.detailsElement) {
+      this.observer?.observe(this.detailsElement, {
+        attributeFilter: ['open'],
+      });
     }
   }
 
-  private handleKeyDown(event: KeyboardEvent): void {
-    if (this.isEnterOrSpace(event)) {
-      event.preventDefault();
-    }
+  disconnectedCallback(): void {
+    this.observer?.disconnect();
   }
 
-  private handleToggle(event: Event): void {
-    if (this.isDisabled) {
-      return event.preventDefault();
+  private preventToggle(event: Event): void {
+    // This allows interactive elements to be put in the component without triggering the toggle on click
+    if (!this.isDisabled) {
+      event.stopImmediatePropagation();
     }
-
-    if (this.isOpen) {
-      this.isOpen = false;
-    } else {
-      this.isOpen = true;
-    }
-
-    this.odsToggle.emit();
-  }
-
-  private isEnterOrSpace(event: KeyboardEvent): boolean {
-    return event.key === ' ' || event.key === 'Enter';
   }
 
   render(): FunctionalComponent {
     return (
       <Host class="ods-accordion">
         <details
-          class={{
-            'ods-accordion__wrapper': true,
-            'ods-accordion__wrapper--is-disabled': this.isDisabled,
-            'ods-accordion__wrapper--is-open': this.isOpen,
-          }}
-          tabIndex={ this.isDisabled ? -1 : 0 }
-          onClick={ (event) => this.handleClick(event) }
-          onKeyUp={ (event) => this.handleKeyUp(event) }
-          onKeyDown={ (event) => this.handleKeyDown(event)}
+          class="ods-accordion__details"
+          onClick={ (e: Event) => e.preventDefault() }
+          open={ this.isDisabled ? false : this.isOpen }
           part="accordion"
           ref={ (el) => this.detailsElement = el as HTMLDetailsElement }>
           <summary
             class={{
-              'ods-accordion__wrapper__summary': true,
-              'ods-accordion__wrapper__summary--is-disabled': this.isDisabled,
-              'ods-accordion__wrapper__summary--is-open': this.isOpen,
+              'ods-accordion__details__summary': true,
+              'ods-accordion__details__summary--disabled': this.isDisabled,
             }}
-            onClick={ (event) => event.preventDefault() }
+            onClick={ (e: Event) => this.preventToggle(e) }
             part="summary"
-            tabindex="-1">
-            <div class="ods-accordion__wrapper__summary__slot">
+            tabindex={ this.isDisabled ? -1 : 0 }>
+            <div class="ods-accordion__details__summary__slot">
               <slot name="summary"></slot>
             </div>
 
             <ods-icon
-              class="ods-accordion__wrapper__summary__icon"
-              name={ this.isOpen ? ODS_ICON_NAME.chevronUp : ODS_ICON_NAME.chevronDown }>
+              class="ods-accordion__details__summary__icon"
+              name={ (this.isOpen && !this.isDisabled) ? ODS_ICON_NAME.chevronUp : ODS_ICON_NAME.chevronDown }>
             </ods-icon>
           </summary>
 
           <div
-            class="ods-accordion__wrapper__content"
+            class="ods-accordion__details__content"
+            onClick={ (e: Event) => this.preventToggle(e) }
             part="content">
             <slot></slot>
           </div>

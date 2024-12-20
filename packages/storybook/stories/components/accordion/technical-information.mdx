@@ -23,11 +23,11 @@ import * as AccordionStories from './accordion.stories';
     ODS component is using internally the native <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details" label="<details>" target="_blank" /> HTML element.
 
     This component does handle its open state on its own. It is therefore quite difficult to keep an internal state sync
-    without having some useless re-rendering.
+    as it will change on browser side on every user direct interaction (click, ...).
 
     That's why the `is-open` attribute should be used as an initialization value and not as an active state.
 
-    If you need to keep the component state, update it using `odsToggle` events.
+    If you need to keep track of the component state of other purpose, update it using `odsToggle` events.
 
     Here is an example using React:
 

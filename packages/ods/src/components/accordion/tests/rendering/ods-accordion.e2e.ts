@@ -44,8 +44,8 @@ describe('ods-accordion rendering', () => {
       await page.waitForChanges();
 
       const isDisabled = await page.evaluate(() => {
-        const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__details__summary');
-        return details?.classList.contains('ods-accordion__details__summary--disabled');
+        const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__details');
+        return details?.classList.contains('ods-accordion__details--disabled');
       });
 
       expect(isDisabled).toBe(true);

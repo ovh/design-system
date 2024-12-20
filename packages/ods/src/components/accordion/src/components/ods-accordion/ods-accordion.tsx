@@ -12,12 +12,16 @@ export class OdsAccordion {
   private observer?: MutationObserver;
 
   @Prop({ reflect: true }) public isDisabled: boolean = false;
-  @Prop({ reflect: true }) public isOpen: boolean = false;
+  @Prop({ mutable: true, reflect: true }) public isOpen: boolean = false;
 
   @Event() odsToggle!: EventEmitter<OdsAccordionToggleEventDetail>;
 
   @Method()
   public async close(): Promise<void> {
+    if (this.isDisabled) {
+      return;
+    }
+
     this.detailsElement?.removeAttribute('open');
   }
 
@@ -36,7 +40,7 @@ export class OdsAccordion {
       return;
     }
 
-    if (this.detailsElement?.hasAttribute('open')) {
+    if (this.isDetailsOpen()) {
       this.close();
     } else {
       this.open();
@@ -47,7 +51,8 @@ export class OdsAccordion {
     this.observer = new MutationObserver((mutations: MutationRecord[]) => {
       for (const mutation of mutations) {
         if (mutation.attributeName === 'open') {
-          this.odsToggle.emit({ isOpen: this.detailsElement?.hasAttribute('open') ?? false });
+          this.isOpen = this.isDetailsOpen();
+          this.odsToggle.emit({ isOpen: this.isOpen });
         }
       }
     });
@@ -65,6 +70,10 @@ export class OdsAccordion {
     this.observer?.disconnect();
   }
 
+  private isDetailsOpen(): boolean {
+    return this.detailsElement?.hasAttribute('open') ?? false;
+  }
+
   private preventToggle(event: Event): void {
     // This allows interactive elements to be put in the component without triggering the toggle on click
     if (!this.isDisabled) {
@@ -76,16 +85,16 @@ export class OdsAccordion {
     return (
       <Host class="ods-accordion">
         <details
-          class="ods-accordion__details"
+          class={{
+            'ods-accordion__details': true,
+            'ods-accordion__details--disabled': this.isDisabled,
+          }}
           onClick={ (e: Event) => e.preventDefault() }
-          open={ this.isDisabled ? false : this.isOpen }
+          open={ this.isOpen }
           part="accordion"
           ref={ (el) => this.detailsElement = el as HTMLDetailsElement }>
           <summary
-            class={{
-              'ods-accordion__details__summary': true,
-              'ods-accordion__details__summary--disabled': this.isDisabled,
-            }}
+            class="ods-accordion__details__summary"
             onClick={ (e: Event) => this.preventToggle(e) }
             part="summary"
             tabindex={ this.isDisabled ? -1 : 0 }>
@@ -95,7 +104,7 @@ export class OdsAccordion {
 
             <ods-icon
               class="ods-accordion__details__summary__icon"
-              name={ (this.isOpen && !this.isDisabled) ? ODS_ICON_NAME.chevronUp : ODS_ICON_NAME.chevronDown }>
+              name={ this.isOpen ? ODS_ICON_NAME.chevronUp : ODS_ICON_NAME.chevronDown }>
             </ods-icon>
           </summary>
 

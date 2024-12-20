@@ -1,5 +1,7 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { ODS_MESSAGE_COLOR } from '@ovhcloud/ods-components';
+import { OdsLink, OdsMessage } from '@ovhcloud/ods-components/react';
 import SpecificationsAccordion from '@ovhcloud/ods-components/src/components/accordion/documentation/custom-elements.json';
+import { Canvas, Meta, Source } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -14,6 +16,61 @@ import * as AccordionStories from './accordion.stories';
 <Canvas of={ AccordionStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsAccordion } />
+
+<OdsMessage color={ ODS_MESSAGE_COLOR.information }
+            isDismissible={ false }>
+  <div>
+    ODS component is using internally the native <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details" label="<details>" target="_blank" /> HTML element.
+
+    This component does handle its open state on its own. It is therefore quite difficult to keep an internal state sync
+    without having some useless re-rendering.
+
+    That's why the `is-open` attribute should be used as an initialization value and not as an active state.
+
+    If you need to keep the component state, update it using `odsToggle` events.
+
+    Here is an example using React:
+
+    <Source code={`
+import type { OdsAccordionToggleEvent } from '@ovhcloud/ods-components';
+import { OdsAccordion, OdsButton } from '@ovhcloud/ods-components/react';
+import React, { type ReactElement, useRef, useState } from 'react';
+
+function TestAccordion(): ReactElement {
+  const [isOpen, setIsOpen] = useState(false);
+  const accordionRef = useRef<HTMLOdsAccordionElement>(null);
+
+  function onToggleClick() {
+    accordionRef.current?.toggle();
+  }
+
+  return (
+    <div>
+      <p>
+        Accordion isOpen value: { isOpen.toString() }
+      </p>
+
+      <OdsAccordion onOdsToggle={ (e: OdsAccordionToggleEvent) => setIsOpen(e.detail.isOpen) }
+                    ref={ accordionRef }>
+        <span slot="summary">Hello, world!</span>
+
+        <span>
+          Lorem ipsum dolor sit amet ...
+        </span>
+      </OdsAccordion>
+
+      <br /><br />
+
+      <OdsButton onClick={ onToggleClick }
+                   label="Toggle accordion" />
+      </div>
+    );
+  }
+`}
+            dark="true"
+            language="tsx" />
+  </div>
+</OdsMessage>
 
 <Heading label="Style customization" level={ 2 } />
 

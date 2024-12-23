@@ -5,6 +5,7 @@ describe('ods-tooltip navigation', () => {
   const triggerId = 'trigger-id';
   const notTriggerId = 'not-trigger-id';
   let page: E2EPage;
+  let el: E2EElement;
   let trigger: E2EElement;
   let notTrigger: E2EElement;
 
@@ -20,6 +21,7 @@ describe('ods-tooltip navigation', () => {
     await page.setContent(content);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
+    el = await page.find('ods-tooltip');
     trigger = await page.find(`#${triggerId}`);
     notTrigger = await page.find(`#${notTriggerId}`);
   }
@@ -56,6 +58,26 @@ describe('ods-tooltip navigation', () => {
     expect(await isTooltipVisible()).toBe(false);
 
     await trigger.hover();
+    await page.waitForChanges();
+
+    expect(await isTooltipVisible()).toBe(true);
+
+    await notTrigger.hover();
+    await page.waitForChanges();
+    await new Promise((resolve) => setTimeout(resolve, 100)); // wait the mouse leave
+
+    expect(await isTooltipVisible()).toBe(false);
+  });
+
+  it('should be visible on tooltip mouse over', async() => {
+    expect(await isTooltipVisible()).toBe(false);
+
+    await trigger.hover();
+    await page.waitForChanges();
+
+    expect(await isTooltipVisible()).toBe(true);
+
+    await el.hover();
     await page.waitForChanges();
 
     expect(await isTooltipVisible()).toBe(true);

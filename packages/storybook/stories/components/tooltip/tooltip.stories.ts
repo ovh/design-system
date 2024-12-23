@@ -76,6 +76,26 @@ export const Overview: StoryObj = {
   `,
 };
 
+export const Accessibility: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-icon
+  aria-labelledby="tooltip-example-a11y-content"
+  id="tooltip-example-a11y-trigger"
+  name="circle-question"
+  tabindex="0">
+</ods-icon>
+<ods-tooltip
+  tooltip-id="tooltip-example-a11y-content"
+  trigger-id="tooltip-example-a11y-trigger">
+  Tooltip content
+</ods-tooltip>
+  `,
+};
+
 export const Default: StoryObj = {
   tags: ['isHidden'],
   render: () => html`

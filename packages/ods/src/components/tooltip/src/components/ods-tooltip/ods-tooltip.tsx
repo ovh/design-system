@@ -11,6 +11,7 @@ import { ODS_TOOLTIP_STRATEGY, type OdsTooltipStrategy } from '../../constants/t
 export class OdsTooltip {
   private arrowElement?: HTMLElement;
   private triggerElement?: HTMLElement | null;
+  private isTooltipHover: boolean = false;
   private cleanUpCallback: () => void = () => {};
   private boundHide = this.hide.bind(this);
   private boundShow = this.show.bind(this);
@@ -20,6 +21,7 @@ export class OdsTooltip {
   @Prop({ reflect: true }) public position: OdsTooltipPosition = ODS_TOOLTIP_POSITION.top;
   @Prop({ reflect: true }) public shadowDomTriggerId?: string;
   @Prop({ reflect: true }) public strategy: OdsTooltipStrategy = ODS_TOOLTIP_STRATEGY.absolute;
+  @Prop({ reflect: true }) public tooltipId?: string;
   @Prop({ reflect: true }) public triggerId!: string;
   @Prop({ reflect: true }) public withArrow: boolean = false;
 
@@ -28,6 +30,9 @@ export class OdsTooltip {
 
   @Method()
   public async hide(): Promise<void> {
+    if (this.isTooltipHover) {
+      return;
+    }
     hideOverlay(this.el, this.cleanUpCallback);
 
     this.odsHide.emit();
@@ -54,7 +59,16 @@ export class OdsTooltip {
     this.triggerElement?.addEventListener('blur', this.boundHide);
     this.triggerElement?.addEventListener('focus', this.boundShow);
     this.triggerElement?.addEventListener('mouseenter', this.boundShow);
-    this.triggerElement?.addEventListener('mouseleave', this.boundHide);
+    this.triggerElement?.addEventListener('mouseleave', () => setTimeout(this.boundHide, 50));
+    this.el.addEventListener('mouseenter', () => {
+      this.isTooltipHover = true;
+      return this.boundShow();
+    });
+    this.el.addEventListener('mouseleave', () => {
+      this.isTooltipHover = false ;
+      return this.boundHide();
+    });
+
   }
 
   disconnectedCallback() : void {
@@ -62,11 +76,22 @@ export class OdsTooltip {
     this.triggerElement?.removeEventListener('focus', this.boundShow);
     this.triggerElement?.removeEventListener('mouseenter', this.boundShow);
     this.triggerElement?.removeEventListener('mouseleave', this.boundHide);
+    this.el.removeEventListener('mouseenter', () => {
+      this.isTooltipHover = true;
+      return this.boundShow();
+    });
+    this.el.removeEventListener('mouseleave', () => {
+      this.isTooltipHover = false ;
+      return this.boundHide();
+    });
   }
 
   render(): FunctionalComponent {
     return (
-      <Host class={ `ods-tooltip ods-tooltip--${this.strategy}` }>
+      <Host
+        id={ this.tooltipId }
+        class={ `ods-tooltip ods-tooltip--${this.strategy}` }
+        role="tooltip">
         <slot></slot>
 
         <div

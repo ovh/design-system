@@ -46,7 +46,7 @@ export class OdsLink {
         target={ this.target }>
           {
             !!this.label &&
-            <span>
+            <span part="label" class="ods-link__link__label">
               { this.label }
             </span>
           }

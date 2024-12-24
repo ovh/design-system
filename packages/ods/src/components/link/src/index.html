@@ -44,10 +44,18 @@
   <ods-link class="my-link" href="test" label="link custom css">
   </ods-link>
 
+  <p>Ellipsis</p>
+  <ods-link class="my-link-ellipsis" href="test" label="link ellipsis" target="_blank">
+  </ods-link>
+
   <style>
     .my-link::part(link) {
       color: green;
       font-size: 32px;
+    }
+
+    .my-link-ellipsis::part(link) {
+      width: 50px;
     }
   </style>
 </body>

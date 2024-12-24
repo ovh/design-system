@@ -33,6 +33,9 @@ export const Demo: StoryObj = {
       .my-link-demo::part(icon) {
         ${args.customCssIcon}
       }
+        .my-link-demo::part(label) {
+        ${args.customCssLabel}
+      }
     </style>
   `,
   argTypes: orderControls({
@@ -62,6 +65,15 @@ export const Demo: StoryObj = {
       },
       control: 'text',
       description: 'Set a custom style properties on the icon. Example: "width: 2rem; height: 2rem;"',
+    },
+    customCssLabel: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'string' },
+      },
+      control: 'text',
+      description: 'Set a custom style properties on the label. Example: "overflow: auto; text-overflow: inherit; white-space: break-spaces;"',
     },
     download: {
       table: {
@@ -175,6 +187,30 @@ export const Disabled: StoryObj = {
   render: () => html`
 <ods-link href="https://www.ovhcloud.com/" is-disabled="false" label="Not Disabled"></ods-link>
 <ods-link href="https://www.ovhcloud.com/" is-disabled label="Disabled"></ods-link>  `,
+};
+
+export const Ellipsis: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-link class="my-link-ellipsis" href="test" label="link ellipsis" target="_blank">
+</ods-link>
+
+<ods-link class="my-link-not-ellipsis" href="test" label="link not ellipsis" target="_blank">
+</ods-link>
+
+<style>
+  .my-link-ellipsis::part(link), .my-link-not-ellipsis::part(link) {
+    width: 50px;
+    margin-right: 1rem;
+  }
+
+  .my-link-not-ellipsis::part(label) {
+    overflow: auto;
+    text-overflow: inherit;
+    white-space: break-spaces;
+  }
+</style>
+`,
 };
 
 export const WithLeftIcon: StoryObj = {

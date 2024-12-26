@@ -39,6 +39,7 @@ enum ODS_COMPONENTS_TITLE {
   contentAddon = `${SECTION.odsComponents}/Content Addon`,
   datepicker = `${SECTION.odsComponents}/${SECTION.formElements}/Datepicker`,
   divider = `${SECTION.odsComponents}/Divider`,
+  drawer = `${SECTION.odsComponents}/Drawer`,
   fileUpload = `${SECTION.odsComponents}/${SECTION.formElements}/File Upload`,
   flag = `${SECTION.odsComponents}/Flag`,
   formField = `${SECTION.odsComponents}/${SECTION.formElements}/Form Field`,

@@ -64,13 +64,10 @@ export class OdsModal {
 
   @Listen('keydown', { target: 'window' })
   onKeyDown(event: KeyboardEvent): void {
-    if(event.key === 'Escape') {
-      event.stopPropagation();
+    if(event.key === 'Escape' && this.isOpen && this.isDismissible) {
+      event.stopImmediatePropagation();
       event.preventDefault();
-
-      if (this.isOpen && this.isDismissible) {
-        this.close();
-      }
+      this.close();
     }
   }
 

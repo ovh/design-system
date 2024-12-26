@@ -192,8 +192,11 @@ export const Disabled: StoryObj = {
 export const Ellipsis: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-link class="my-link-ellipsis" href="test" label="link ellipsis" target="_blank">
+<ods-link id="link-ellipsis" class="my-link-ellipsis" href="test" label="link ellipsis" target="_blank">
 </ods-link>
+<ods-tooltip trigger-id="link-ellipsis" with-arrow="">
+  link ellipsis
+</ods-tooltip>
 
 <ods-link class="my-link-not-ellipsis" href="test" label="link not ellipsis" target="_blank">
 </ods-link>

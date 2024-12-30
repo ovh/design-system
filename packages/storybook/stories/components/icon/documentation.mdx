@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ IconStories } name="Documentation" />
 
@@ -36,7 +37,7 @@ _**Icon** is a visual context used to represent a command, navigation, status or
 
 **Icons** enhance the usability and bring clarity to users by reducing the cognitive load.
 
-**Icons** can be used in standalone <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> and can be usually associated with some sort of action.
+**Icons** can be used in standalone <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> and can be usually associated with some sort of action.
 
 **Icons** can be used as navigational elements as well.
 
@@ -47,14 +48,14 @@ _**Icon** is a visual context used to represent a command, navigation, status or
     '- Use for decorative purpose',
     '- Use the same Icon for different purposes to avoid user\'s confusion',
     '- Use similar shades of the same color for background and Icon colors',
-    <span>- Baseline-align Icons when they are next to <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /></span>,
-    <span>- When Icons are next to <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />, don't use different colors for both of them</span>,
+    <span>- Baseline-align Icons when they are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /></span>,
+    <span>- When Icons are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />, don't use different colors for both of them</span>,
   ]}
   dos={[
     '- Give an equivalent text as aria-name to the Icon',
     '- Assure a good contrast between the background and Icon colors',
-    <span>- Center-align when Icons are next to <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /></span>,
-    <span>- When Icons are next to <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />, use the same color for pairing them</span>,
+    <span>- Center-align when Icons are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /></span>,
+    <span>- When Icons are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />, use the same color for pairing them</span>,
   ]}
 />
 
@@ -68,7 +69,7 @@ They also can be used in other components where it is adapted for a specific pur
 
 <Heading label="Behavior" level={ 2 } />
 
-**Icons** can stand alone or be included in a <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> or other components depending on the usage.
+**Icons** can stand alone or be included in a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> or other components depending on the usage.
 
 <Heading label="Variation" level={ 2 } />
 

@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ SpinnerStories } name="Documentation" />
 
@@ -44,7 +45,7 @@ When using a **Spinner** directly over content, we recommend applying an opacity
 <BestPractices
   donts={[
     '- Use multiple Spinners on the same page, prefer using a single Spinner on an overlay',
-    <span>- Use Spinner for text-only loading. Use <StorybookLink kind="ODS Components/Skeleton" label="Skeleton" story="Documentation" /> component instead</span>,
+    <span>- Use Spinner for text-only loading. Use <StorybookLink kind={ ODS_COMPONENTS_TITLE.skeleton } label="Skeleton" story={ STORY.documentation } /> component instead</span>,
   ]}
   dos={[
     '- Use Spinner when the loading wait time is expected to be longer than three seconds',

@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ RadioStories } name="Documentation" />
 
@@ -49,14 +50,14 @@ Also, it can serve as :
 
 <BestPractices
   donts={[
-    <span>- Use Radio buttons when multiple items can be selected, use <StorybookLink kind="ODS Components/Form elements/Checkbox" label="Checkbox" story="Documentation" /> buttons instead</span>,
-    <span>- Use more than 5 Radio buttons, instead convert it to a <StorybookLink kind="ODS Components/Form elements/Select" label="Select" story="Documentation" /></span>,
+    <span>- Use Radio buttons when multiple items can be selected, use <StorybookLink kind={ ODS_COMPONENTS_TITLE.checkbox } label="Checkbox" story={ STORY.documentation } /> buttons instead</span>,
+    <span>- Use more than 5 Radio buttons, instead convert it to a <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="Select" story={ STORY.documentation } /></span>,
     '- Avoid situations where all options in a set should be deselected',
   ]}
   dos={[
     '- Always use clear and concise labels for Radio buttons',
     '- Long labels may wrap to a second line, and this is preferable to truncation',
-    <span>- If using two affirmative/negative-type Radio buttons, you might consider converting it to a sole <StorybookLink kind="ODS Components/Form elements/Checkbox" label="Checkbox" story="Documentation" /> button</span>,
+    <span>- If using two affirmative/negative-type Radio buttons, you might consider converting it to a sole <StorybookLink kind={ ODS_COMPONENTS_TITLE.checkbox } label="Checkbox" story={ STORY.documentation } /> button</span>,
   ]}
 />
 

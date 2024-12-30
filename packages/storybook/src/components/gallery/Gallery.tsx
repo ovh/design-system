@@ -3,6 +3,7 @@ import { OdsCard } from '@ovhcloud/ods-components/react';
 import { Canvas } from '@storybook/blocks';
 import { type ModuleExport } from '@storybook/types';
 import React from 'react';
+import { STORY } from '../../constants/meta';
 import { Heading } from '../heading/Heading';
 import { StorybookLink } from '../storybookLink/StorybookLink';
 import styles from './gallery.module.css';
@@ -34,7 +35,7 @@ const Gallery = ({ components }: Props) => {
               <StorybookLink className={ styles['gallery__items__item__title'] }
                              kind={ component.kind }
                              label={ component.name }
-                             story="Documentation" />
+                             story={ STORY.documentation } />
             </OdsCard>
           ))
         }

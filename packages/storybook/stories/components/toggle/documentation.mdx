@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ ToggleStories } name="Documentation" />
 
@@ -49,13 +50,13 @@ It can be used in following use cases when you need to allow the user to:
 - turn an option or settings on or off
 - add or remove an item or an option
 
-A **Toggle** should never require users to press a <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> to apply their settings (if a setting requires a <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, use a <StorybookLink kind="ODS Components/Form elements/Checkbox" label="Checkbox" story="Documentation" /> instead).
+A **Toggle** should never require users to press a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> to apply their settings (if a setting requires a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />, use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.checkbox } label="Checkbox" story={ STORY.documentation } /> instead).
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    <span>- Use a Toggle when you are not expecting an immediate effect by clicking on it: use a <StorybookLink kind="ODS Components/Form elements/Checkbox" label="Checkbox" story="Documentation" /> component instead</span>,
+    <span>- Use a Toggle when you are not expecting an immediate effect by clicking on it: use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.checkbox } label="Checkbox" story={ STORY.documentation } /> component instead</span>,
   ]}
   dos={[
     '- Use a Toggle when you need to allow users to adjust settings on mobile',

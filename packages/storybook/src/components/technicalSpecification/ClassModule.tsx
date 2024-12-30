@@ -4,6 +4,7 @@ import { CodeOrSourceMdx } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import { type ClassMember, type Module } from 'custom-elements-manifest/schema';
 import React from 'react';
+import { HOME_TITLE } from '../../constants/meta';
 import { Heading } from '../heading/Heading';
 import { StorybookLink } from '../storybookLink/StorybookLink';
 import styles from './classModule.module.css';
@@ -108,7 +109,7 @@ const ClassModule = ({ module }: Props) => {
           <Heading label="Methods" level={ 3 }>
             <StorybookLink className={ styles['class-module__method-title-link'] }
                            label="(How to use?)"
-                           title="OVHcloud Design System/Guides/Using Methods" />
+                           title={ HOME_TITLE.guideMethods } />
           </Heading>
 
           <ul className={ styles['class-module__methods'] }>
@@ -135,7 +136,7 @@ const ClassModule = ({ module }: Props) => {
           <Heading label="Events" level={ 3 }>
             <StorybookLink className={ styles['class-module__event-title-link'] }
                            label="(How to use?)"
-                           title="OVHcloud Design System/Guides/Using Events" />
+                           title={ HOME_TITLE.guideEvents } />
           </Heading>
 
           <ul className={ styles['class-module__events'] }>

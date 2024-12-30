@@ -6,12 +6,13 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ PhoneNumberStories } name="Documentation" />
 
 <Banner of={ PhoneNumberStories } />
 
-_**Phone Number** component is a combo of a selection of country phone indicator and an <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> field for entering a phone number_
+_**Phone Number** component is a combo of a selection of country phone indicator and an <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> field for entering a phone number_
 
 <Canvas of={ PhoneNumberStories.Overview } sourceState="none" />
 
@@ -37,12 +38,12 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 ![Component anatomy](components/phone-number/anatomy.png "Component anatomy")
 
 1. **Country indicator Select**: displays the selected country flag and the list of countries by click. List is scroll-able, with 5 items visible at the same time. Each country name is written in users locale, in alphabetical order (for Latin script) _(optional)_
-2. **Input field**: displays the country indicator as prefix when users select a country, and they can enter their phone number in this field (from 7 to 12 characters maximum). The <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> field also has a placeholder to provide hints regarding format according to the selected country.
+2. **Input field**: displays the country indicator as prefix when users select a country, and they can enter their phone number in this field (from 7 to 12 characters maximum). The <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> field also has a placeholder to provide hints regarding format according to the selected country.
 
 <Heading label="Usage" level={ 2 } />
 
 **Phone Number** component should be used when there is a need to collect the user's phone number, in a form for instance:
-- As <StorybookLink kind="ODS Components/Form elements/Form Field" label="Form Field" story="Documentation" /> in an user profile
+- As <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } label="Form Field" story={ STORY.documentation } /> in an user profile
 - As in contact/appointment form
 - For telecom configuration
 
@@ -51,19 +52,19 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 <BestPractices
   donts={[
     '- Force a strict format to users',
-    <span>- Make a Phone Number <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> as required without explaining to users why this field is required</span>,
+    <span>- Make a Phone Number <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> as required without explaining to users why this field is required</span>,
     '- Assume exclusive use of mobile phone numbers',
   ]}
   dos={[
     '- Validate Phone number format when user leaves the field',
-    <span>- Use Phone Number without the optional country indicator <StorybookLink kind="ODS Components/Form elements/Select" label="Select" story="Documentation" /> when you only accept user's locale as selection</span>,
+    <span>- Use Phone Number without the optional country indicator <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="Select" story={ STORY.documentation } /> when you only accept user's locale as selection</span>,
     '- Use a helper when validation is in error state (expected number of characters, expected format...)',
   ]}
 />
 
 <Heading label="Placement" level={ 2 } />
 
-**Phone Number** is a group of <StorybookLink kind="ODS Components/Form elements/Select" label="Select" story="Documentation" /> and <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" />, and should act as their specific placements.
+**Phone Number** is a group of <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="Select" story={ STORY.documentation } /> and <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } />, and should act as their specific placements.
 
 <Heading label="Behavior" level={ 2 } />
 
@@ -71,11 +72,11 @@ When the user selects a country, it determines the format used to validate their
 
 If the field content is in error state (i.e. missing or wrong characters), the whole **Phone Number** component becomes in error state.
 
-An event is triggered when the <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> value changes.
+An event is triggered when the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> value changes.
 
 <Heading label="Locale" level={ 3 } />
 
-The locale (i.e. country list translation in <StorybookLink kind="ODS Components/Form elements/Select" label="Select" story="Documentation" />) is first set to the value provided as a property.
+The locale (i.e. country list translation in <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="Select" story={ STORY.documentation } />) is first set to the value provided as a property.
 
 If the given property is not defined or recognized, the component attempts to use the browser's locale settings.
 
@@ -95,4 +96,4 @@ N/A
 
 <Heading label="Accessibility" level={ 2 } />
 
-Keyboard navigation is the same as <StorybookLink kind="ODS Components/Form elements/Select" label="Select" story="Documentation" /> and <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> does, `Tab` key allows to focus to one another.
+Keyboard navigation is the same as <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="Select" story={ STORY.documentation } /> and <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> does, `Tab` key allows to focus to one another.

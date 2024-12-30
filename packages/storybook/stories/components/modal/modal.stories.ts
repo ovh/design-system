@@ -1,4 +1,3 @@
-
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_MODAL_COLOR, ODS_MODAL_COLORS } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';

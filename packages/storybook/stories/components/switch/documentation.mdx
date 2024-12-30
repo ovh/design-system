@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ SwitchStories } name="Documentation" />
 
@@ -30,7 +31,7 @@ _A **Switch** allows users to quickly and easily switch between several states, 
 
 ![Component anatomy](components/switch/anatomy.png "Component anatomy")
 
-1. **Controls**: the user clicks on them to choose a state or an item. Controls' content can be <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />, <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" />, or both.
+1. **Controls**: the user clicks on them to choose a state or an item. Controls' content can be <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />, <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } />, or both.
 2. **Track**: it is a trail where the controls are displayed. The user can switch from one state or item to another
 
 <Heading label="Usage" level={ 2 } />
@@ -43,21 +44,21 @@ It can be used for many use cases such as selecting a state within a group of st
 
 <BestPractices
   donts={[
-    <span>- Use a Switch when there are more than four options to display to the user: use others component such as <StorybookLink kind="ODS Components/Form elements/Checkbox" label="Checkbox" story="Documentation" /> button, <StorybookLink kind="ODS Components/Form elements/Radio" label="Radio" story="Documentation" /> button or <StorybookLink kind="ODS Components/Form elements/Select" label="Select" story="Documentation" /></span>,
-    <span>- Use a Switch when you are not expecting an immediate effect by clicking on it: use a <StorybookLink kind="ODS Components/Form elements/Checkbox" label="Checkbox" story="Documentation" /> component instead</span>,
+    <span>- Use a Switch when there are more than four options to display to the user: use others component such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.checkbox } label="Checkbox" story={ STORY.documentation } /> button, <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } label="Radio" story={ STORY.documentation } /> button or <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="Select" story={ STORY.documentation } /></span>,
+    <span>- Use a Switch when you are not expecting an immediate effect by clicking on it: use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.checkbox } label="Checkbox" story={ STORY.documentation } /> component instead</span>,
     '- Use a Switch with states, actions or options that are not strongly related',
   ]}
   dos={[
     '- Use a Switch when the user has to select only one state or action active at a time',
     '- Make it clear in every Switch control content about what the user is selecting: give a strong indication',
-    <span>- Consider whether a <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />, an <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" />, or both would suit better to your Switch controls content</span>,
+    <span>- Consider whether a <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />, an <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } />, or both would suit better to your Switch controls content</span>,
   ]}
 />
 
 <Heading label="Placement" level={ 2 } />
 
 A **Switch** can be used in a page when the user needs to select a choice from multiple states or items.
-It may replace two <StorybookLink kind="ODS Components/Form elements/Radio" label="Radio" story="Documentation" /> buttons or a single <StorybookLink kind="ODS Components/Form elements/Checkbox" label="Checkbox" story="Documentation" /> to allow users to choose between several states.
+It may replace two <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } label="Radio" story={ STORY.documentation } /> buttons or a single <StorybookLink kind={ ODS_COMPONENTS_TITLE.checkbox } label="Checkbox" story={ STORY.documentation } /> to allow users to choose between several states.
 
 By default, the width of a **Switch** control is defined by the length of content.
 A custom width can be set so all controls on the track will have the same size regardless of content length.

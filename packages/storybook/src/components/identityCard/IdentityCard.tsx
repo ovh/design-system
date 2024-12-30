@@ -3,6 +3,7 @@ import { OdsLink } from '@ovhcloud/ods-components/react';
 import { Table } from '@storybook/components';
 import React, { Fragment, type ReactNode } from 'react';
 import { ATOMIC_TYPE } from '../../constants/atomicDesign';
+import { SECTION, STORY } from '../../constants/meta';
 import { StorybookLink } from '../storybookLink/StorybookLink';
 import styles from './identityCard.module.css';
 
@@ -84,9 +85,9 @@ const IdentityCard = ({ aliases, atomicType, children, figmaLink, githubUrl, nam
               relatedComponents.length > 0 ?
                 relatedComponents.map((relatedComponent, idx) => (
                   <Fragment key={ idx }>
-                    <StorybookLink kind={ `ODS Components/${!!relatedComponent.subtitle ? `${relatedComponent.subtitle}/` : ''}${relatedComponent.name}` }
+                    <StorybookLink kind={ `${SECTION.odsComponents}/${!!relatedComponent.subtitle ? `${relatedComponent.subtitle}/` : ''}${relatedComponent.name}` }
                                    label={ relatedComponent.name }
-                                   story="Documentation" />
+                                   story={ STORY.documentation } />
 
                     { idx < (relatedComponents.length - 1) && <span>, </span> }
                   </Fragment>

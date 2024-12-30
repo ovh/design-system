@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ CheckboxStories } name="Documentation" />
 
@@ -32,7 +33,7 @@ _**Checkbox** are used for a list of options where the user may make a choice by
 ![Component anatomy](components/checkbox/anatomy.png "Component anatomy")
 
 1. **Checkbox** - The selection control.
-2. **Text** - Use this <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> label to describe what the <StorybookLink kind="ODS Components/Form elements/Radio" label="Radio" story="Documentation" /> is for.
+2. **Text** - Use this <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> label to describe what the <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } label="Radio" story={ STORY.documentation } /> is for.
 
 <Heading label="Usage" level={ 2 } />
 
@@ -50,7 +51,7 @@ A **Checkbox** group is used for a list of options where the user may make a cho
 
 <BestPractices
   donts={[
-    <span>- Avoid using Checkbox if only one item in list can be selected, prefer using <StorybookLink kind="ODS Components/Form elements/Radio" label="Radio" story="Documentation" /> instead</span>,
+    <span>- Avoid using Checkbox if only one item in list can be selected, prefer using <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } label="Radio" story={ STORY.documentation } /> instead</span>,
     '- Truncate Checkbox label text with an ellipsis'
   ]}
   dos={[
@@ -61,7 +62,7 @@ A **Checkbox** group is used for a list of options where the user may make a cho
 
 <Heading label="Placement" level={ 2 } />
 
-The **Checkbox** can be autonomous, as it can be labelled in a starting/ending <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />.
+The **Checkbox** can be autonomous, as it can be labelled in a starting/ending <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />.
 
 It can be inserted in containers or next to an external item.
 

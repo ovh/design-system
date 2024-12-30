@@ -2,6 +2,7 @@ import { OdsBadge } from '@ovhcloud/ods-components/react';
 import { Meta, Source } from '@storybook/blocks';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta title="ODS Components/Search Bar" />
 
@@ -12,7 +13,7 @@ Search Bar has been removed from ODS components. <OdsBadge color="critical" labe
 The component wasn't bringing any meaningful value and was not flexible enough regarding the different use cases
 that may exist.
 
-As an alternative to the Search Bar component, a similar functionality can be achieved using the <StorybookLink kind="ODS Components/Form elements/Input" label="ods-input" story="Documentation"></StorybookLink> component with the `search` type.
+As an alternative to the Search Bar component, a similar functionality can be achieved using the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="ods-input" story={ STORY.documentation }></StorybookLink> component with the `search` type.
 
 If you need to replace the previous search-bar, you can achieve the same result with the existing components,
 here is a quick example:

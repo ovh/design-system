@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ MessageStories } name="Documentation" />
 
@@ -32,11 +33,11 @@ _**Message** component helps to communicate with users providing feedback or inf
 
 ![Component anatomy](components/message/anatomy.png "Component anatomy")
 
-1. <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" /> to inform users about what kind of message it is (optional)
+1. <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } /> to inform users about what kind of message it is (optional)
 
-2. <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />, which can be a plain text or contain a link
+2. <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />, which can be a plain text or contain a link
 
-3. A `cross` icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, which is a close button to dismiss the **Message** (optional)
+3. A `cross` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />, which is a close button to dismiss the **Message** (optional)
 
 <Heading label="Usage" level={ 2 } />
 
@@ -77,7 +78,7 @@ They are positioned near their related items or right after the header and befor
 
 Based on its informational manner, the component default behavior is being read-only. You can only select its content if needed.
 
-When a **Message** is dismissible, a click on the `close` icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> will dismiss the **Message**.
+When a **Message** is dismissible, a click on the `close` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> will dismiss the **Message**.
 
 <Heading label="Variation" level={ 2 } />
 
@@ -98,4 +99,4 @@ When a **Message** is dismissible, a click on the `close` icon <StorybookLink ki
 
 When a **Message** appears, user is alerted of its presence, regardless of the user's navigation.
 
-The `close` icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> is focusable and can be triggered with the `Enter`/`Space` key.
+The `close` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> is focusable and can be triggered with the `Enter`/`Space` key.

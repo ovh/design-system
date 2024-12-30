@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ QuantityStories } name="Documentation" />
 
@@ -30,8 +31,8 @@ _**Quantity** is a component used to enter and modify a numeric value in a respo
               ]}>
   The **Quantity** component provides a user-friendly interface for selecting or entering numerical values.
 
-  It includes an <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> field combined with increment and
-  decrement <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> to adjust the value easily.
+  It includes an <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> field combined with increment and
+  decrement <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> to adjust the value easily.
 </IdentityCard>
 
 <Heading label="Anatomy" level={ 2 } />
@@ -65,13 +66,13 @@ Limits can be set as minimum or maximum value. In that case, the numeric value c
 
 **Quantity** can be used to let users easily change an amount of items, for example, or similar situations.
 
-It should be used with numeric <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> that are in a fairly narrow range.
+It should be used with numeric <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> that are in a fairly narrow range.
 
 <Heading label="Behavior" level={ 2 } />
 
 **Quantity** numeric field can be edited directly by the user.
 
-The user can also decrease or increase the value by clicking on <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />.
+The user can also decrease or increase the value by clicking on <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />.
 
 In case that limits have been set to minimum and maximum value, corresponding control will be disabled when this value has been reached.
 
@@ -83,6 +84,6 @@ N/A
 
 <Heading label="Accessibility" level={ 2 } />
 
-<StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> and <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> accessibility features avail here, with former tabulation and triggers.
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> and <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> accessibility features avail here, with former tabulation and triggers.
 
 The numeric field value can be increased/decreased using `Up` and `Down` arrows when focused.

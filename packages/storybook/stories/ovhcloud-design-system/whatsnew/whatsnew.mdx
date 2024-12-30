@@ -2,6 +2,7 @@ import { OdsLink } from '@ovhcloud/ods-components/react';
 import { Meta, Source } from '@storybook/blocks';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE, ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta title="OVHcloud Design System/What's new?/What's new" />
 
@@ -133,7 +134,7 @@ We won't go through an exhaustive list of changes, here are the most important o
 - A new part `last` is now available to customize the last item (which differ from other link items).
 
 **Input**
-- You can now link a native `datalist` to an `ods-input` using the `list` attribute and the `list` slot. A full example is available in the <StorybookLink kind="ODS Components/Form elements/Input" label="Technical information" story="Technical information" /> page.
+- You can now link a native `datalist` to an `ods-input` using the `list` attribute and the `list` slot. A full example is available in the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Technical information" story={ STORY.technicalInformation } /> page.
 - New attribute `list` has been added.
 - New slot `list` is now available.
 
@@ -258,7 +259,7 @@ Storybook has been partially rewritten, so you may notice a few changes:
 
 <Heading label="v18.0.0" level={ 2 } />
 
-As it is a major version, you'll have to follow the <StorybookLink label="migration guide 17.x to 18.x" title="OVHcloud Design System/What's new?/Migration guide/17.x to 18.x" />
+As it is a major version, you'll have to follow the <StorybookLink label="migration guide 17.x to 18.x" title={ HOME_TITLE.migration17to18 } />
 
 <Heading label="Project changes:" level={ 3 } />
 
@@ -371,15 +372,15 @@ to use the web-component by default.
 
 **File Upload**
 
-<StorybookLink kind="ODS Components/Form elements/File Upload" label="See Documentation" story="Documentation" />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.fileUpload } label="See Documentation" story={ STORY.documentation } />
 
 **Timepicker**
 
-<StorybookLink kind="ODS Components/Form elements/Timepicker" label="See Documentation" story="Documentation" />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.timepicker } label="See Documentation" story={ STORY.documentation } />
 
 <Heading label="Component changes:" level={ 3 } />
 
-Please check the <StorybookLink label="migration guide" title="OVHcloud Design System/What's new?/Migration guide/17.x to 18.x" /> regarding all the component changes.
+Please check the <StorybookLink label="migration guide" title={ HOME_TITLE.migration17to18 } /> regarding all the component changes.
 
 <Heading label="v17.2.2" level={ 2 } />
 
@@ -420,7 +421,7 @@ It also brings numerous bug fixes across components, ensuring a smoother and mor
 
 **Table**
 
-<StorybookLink kind="ODS Components/Table" label="See Documentation" story="Documentation" />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.table } label="See Documentation" story={ STORY.documentation } />
 
 <Heading label="Documentation improvements:" level={ 3 } />
 
@@ -577,7 +578,7 @@ Documentation usage guidelines have been completed with almost all components pr
 
 <Heading label="v17.0.0" level={ 2 } />
 
-As it is a major version, you'll have to follow the <StorybookLink label="migration guide 16.x to 17.x" title="OVHcloud Design System/What's new?/Migration guide/16.x to 17.x" />
+As it is a major version, you'll have to follow the <StorybookLink label="migration guide 16.x to 17.x" title={ HOME_TITLE.migration16to17 } />
 
 <Heading label="Project changes:" level={ 3 } />
 
@@ -598,8 +599,8 @@ ODS components can then be either imported using lazy-loading (the code of each 
 
 For more details on how to import ODS components, see:
 
-* the updated <StorybookLink label="Get Started documentation" title="OVHcloud Design System/Get Started" />
-* the 16.x to 17.x <StorybookLink label="Migration guide" title="OVHcloud Design System/What's new?/Migration guide/16.x to 17.x" />
+* the updated <StorybookLink label="Get Started documentation" title={ HOME_TITLE.getStarted } />
+* the 16.x to 17.x <StorybookLink label="Migration guide" title={ HOME_TITLE.migration16to17 } />
 
 <Heading label="Documentation improvements:" level={ 3 } />
 
@@ -735,7 +736,7 @@ We went through each component to update:
 
 **Medium**
 
-<StorybookLink kind="ODS Components/Medium" label="See Documentation" story="Documentation" />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.medium } label="See Documentation" story={ STORY.documentation } />
 
 <Heading label="Bug fixes:" level={ 3 } />
 
@@ -859,7 +860,7 @@ We went through each component to update:
 
 **Datepicker**
 
-<StorybookLink kind="ODS Components/Form elements/Datepicker" label="See Documentation" story="Documentation" />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.datepicker } label="See Documentation" story={ STORY.documentation } />
 
 <Heading label="Component changes:" level={ 3 } />
 
@@ -890,7 +891,7 @@ We went through each component to update:
 
 **Phone Number**
 
-<StorybookLink kind="ODS Components/Form elements/Phone Number" label="See Documentation" story="Documentation" />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.phoneNumber } label="See Documentation" story={ STORY.documentation } />
 
 <Heading label="Component changes:" level={ 3 } />
 
@@ -920,7 +921,7 @@ Fixes CI build issues when deploying Storybook.
 
 <Heading label="v16.0.0" level={ 2 } />
 
-As it is a major version, you'll have to follow the <StorybookLink label="migration guide 15.x to 16.x" title="OVHcloud Design System/What's new?/Migration guide/15.x to 16.x" />
+As it is a major version, you'll have to follow the <StorybookLink label="migration guide 15.x to 16.x" title={ HOME_TITLE.migration15to16 } />
 
 ⚠️We're aware that not all the documentation is up-to-date with the latest technical changes ⚠️
 
@@ -981,7 +982,7 @@ Ex:
 
 **Clipboard**
 
-<StorybookLink kind="ODS Components/Clipboard" label="See Documentation" story="Documentation" />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.clipboard } label="See Documentation" story={ STORY.documentation } />
 
 **Menu**
 
@@ -989,7 +990,7 @@ See documentation using version selector
 
 **Modal**
 
-<StorybookLink kind="ODS Components/Modal" label="See Documentation" story="Documentation" />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.modal } label="See Documentation" story={ STORY.documentation } />
 
 **Search Bar**
 
@@ -1022,7 +1023,7 @@ See documentation using version selector
 
 <Heading label="v15.0.0" level={ 2 } />
 
-As it is a major version, you have to do the <StorybookLink label="migration guide 14.x to 15.x" title="OVHcloud Design System/What's new?/Migration guide/14.x to 15.x" />
+As it is a major version, you have to do the <StorybookLink label="migration guide 14.x to 15.x" title={ HOME_TITLE.migration14to15 } />
 
 <Heading label="Project changes:" level={ 3 } />
 
@@ -1107,11 +1108,11 @@ We added the following components:
 
 **Form Field**
 
-<StorybookLink kind="ODS Components/Form elements/Form Field" label="See Documentation" story="Documentation" />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } label="See Documentation" story={ STORY.documentation } />
 
 **Switch**
 
-<StorybookLink kind="ODS Components/Form elements/Switch" label="See Documentation" story="Documentation" />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.switch } label="See Documentation" story={ STORY.documentation } />
 
 <Heading label="Features changes:" level={ 3 } />
 
@@ -1121,7 +1122,7 @@ We added the following components:
 
 * Can now show pages according to a numbers of items shown by page.
 
-> For more information, check our documentation <StorybookLink kind="ODS Components/Pagination" label="See Documentation" story="Documentation" />
+> For more information, check our documentation <StorybookLink kind={ ODS_COMPONENTS_TITLE.pagination } label="See Documentation" story={ STORY.documentation } />
 
 * **Location-tile**
 
@@ -1140,29 +1141,29 @@ We added the following components:
 
 <Heading label="v14.0.0" level={ 2 } />
 
-As it is a major version, you have to do the <StorybookLink label="migration guide 13.x to 14.x" title="OVHcloud Design System/What's new?/Migration guide/13.x to 14.x" />
+As it is a major version, you have to do the <StorybookLink label="migration guide 13.x to 14.x" title={ HOME_TITLE.migration13to14 } />
 
 <Heading label="New features:" level={ 3 } />
 
 We added the following components:
 
-* **Progress Bar**: <StorybookLink kind="ODS Components/Progress Bar" label="See Documentation" story="Documentation" />
-* **Popover**: <StorybookLink kind="ODS Components/Popover" label="See Documentation" story="Documentation" />
-* **Tooltip**: <StorybookLink kind="ODS Components/Tooltip" label="See Documentation" story="Documentation" />
+* **Progress Bar**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.progressBar } label="See Documentation" story={ STORY.documentation } />
+* **Popover**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.popover } label="See Documentation" story={ STORY.documentation } />
+* **Tooltip**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="See Documentation" story={ STORY.documentation } />
 
 Components version 2:
 
-* **Input V2**: <StorybookLink kind="ODS Components/Form elements/Input" label="See Documentation" story="Documentation" />
+* **Input V2**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="See Documentation" story={ STORY.documentation } />
 * new properties have been added
 * `loading`: it displays a Spinner
 * `clearable`: it clears the input value on click
 * `masked`: it indicates if the input value is hidden or not (to be used with password type)
 * new types have been added: `date`, `email`, `password`, `search`, `tel`, `text`, `time` and `url`
-* **Select V2**: it is now connected to our CDK and keyboard navigation has been added <StorybookLink kind="ODS Components/Form elements/Select" label="See Documentation" story="Documentation" />
+* **Select V2**: it is now connected to our CDK and keyboard navigation has been added <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="See Documentation" story={ STORY.documentation } />
 
 **Quantity** component accepts four digits in the input field:
 
-<StorybookLink kind="ODS Components/Form elements/Quantity" label="See Documentation" story="Documentation" />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.quantity } label="See Documentation" story={ STORY.documentation } />
 
 **CDK** (Component Development Kit): new symmetry strategies have been added (left and right):
 
@@ -1185,16 +1186,16 @@ See CDK Documentation using version selector.
 
 <Heading label="v13.0.0" level={ 2 } />
 
-As it is a major version, you have to do the <StorybookLink label="migration guide 12.x to 13.x" title="OVHcloud Design System/What's new?/Migration guide/12.x to 13.x" />
+As it is a major version, you have to do the <StorybookLink label="migration guide 12.x to 13.x" title={ HOME_TITLE.migration12to13 } />
 
 <Heading label="New features:" level={ 3 } />
 
 We added the following components:
 
-* Breadcrumb: <StorybookLink kind="ODS Components/Breadcrumb" label="See Documentation" story="Documentation" />
+* Breadcrumb: <StorybookLink kind={ ODS_COMPONENTS_TITLE.breadcrumb } label="See Documentation" story={ STORY.documentation } />
 * Collapsible: See Documentation using version selector
-* Pagination: <StorybookLink kind="ODS Components/Pagination" label="See Documentation" story="Documentation" />
-* Spinner: <StorybookLink kind="ODS Components/Spinner" label="See Documentation" story="Documentation" />
+* Pagination: <StorybookLink kind={ ODS_COMPONENTS_TITLE.pagination } label="See Documentation" story={ STORY.documentation } />
+* Spinner: <StorybookLink kind={ ODS_COMPONENTS_TITLE.spinner } label="See Documentation" story={ STORY.documentation } />
 
 Circle-shaped button has been added to Button Component (circle attribute)
 
@@ -1228,7 +1229,7 @@ Circle-shaped button has been added to Button Component (circle attribute)
 
 We added the Tabs component.<br />
 
-<StorybookLink kind="ODS Components/Tabs" label="See Documentation" story="Documentation" />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.tabs } label="See Documentation" story={ STORY.documentation } />
 
 A component generator has been added. Now, you can use that tool to generate a new component easily.<br />
 
@@ -1262,10 +1263,10 @@ First release on GitHub. There is no new feature in this version. It is now open
 <Heading label="v11.0.0" level={ 2 } />
 
 Flag component has been modified; you’ll need to update as explained in the migration guide.
-For more details about assets, see <StorybookLink label="Installation" title="OVHcloud Design System/Get Started" /> page.
+For more details about assets, see <StorybookLink label="Installation" title={ HOME_TITLE.getStarted } /> page.
 New attributes are available on this component: `lazy`, `assetPath` and `src`.
 
-Before importing any component you now have to setup ods, for more details see <StorybookLink label="migration guide 10.x to 11.x" title="OVHcloud Design System/What's new?/Migration guide/10.x to 11.x" />
+Before importing any component you now have to setup ods.
 
 Dual range is now available for Range component; It offers two handles to set a min and max value.
 
@@ -1278,8 +1279,6 @@ Now, Button component has `download` and `rel` new attributes available when it 
 We had blur events on Quantity component to set the correct value regarding the Quantity bounds.
 It means when the user set manually a value that is out of bounds for Quantity, the value will be automatically reset to a correct value.
 When Quantity is out of bounds, the field value is now in error state.
-
-As it is a major version, you have to do the <StorybookLink label="migration guide 10.x to 11.x" title="OVHcloud Design System/What's new?/Migration guide/10.x to 11.x" />
 
 <Heading label="v10.2.0" level={ 2 } />
 
@@ -1302,7 +1301,7 @@ We fixed some issue about automated screenshot testing with some timeout.
 
 We added the select component (version 1).
 
-<StorybookLink kind="ODS Components/Form elements/Select" label="See Documentation" story="Documentation" />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="See Documentation" story={ STORY.documentation } />
 
 <Heading label="v10.0.0" level={ 2 } />
 
@@ -1330,7 +1329,7 @@ ts-node ~9.1.1 to ~10.7.0
 
 We now build all of our components for `React` and `Vue` frameworks.
 They allow to use all the potential and features of your high-end JS framework.
-You can read the updated <StorybookLink label="Getting Started" title="OVHcloud Design System/Get Started" />
+You can read the updated <StorybookLink label="Getting Started" title={ HOME_TITLE.getStarted } />
 to initialize an App with ODS and see how it works depending the framework.
 
 Also, `ods-cart` is no more impacted by a parent container with `text-align:center`.
@@ -1342,8 +1341,6 @@ You can now disable animation on `ods-toggle` by defining a CSS value `--ods-tog
 
 Css variables `--ods-size-squish-n-*` and `--ods-size-stretch-n-*` are no more incorrect.
 It was previously set with only one number instead of two, accordingly with CSS3.
-
-As it is a major version, you have to do the <StorybookLink label="migration guide 9.x to 10.x" title="OVHcloud Design System/What's new?/Migration guide/9.x to 10.x" />
 
 <Heading label="v9.1.0" level={ 2 } />
 

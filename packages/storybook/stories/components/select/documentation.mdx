@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ SelectStories } name="Documentation" />
 
@@ -37,7 +38,7 @@ _**Select** component is used to select one or more items from a list of values_
 
 1. **Placeholder**
 2. **Field** to represent the **Select** itself. It can be opened and closed on click/trigger.
-3. "Chevron" <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" /> to inform that the **Select** can display a list of choices.
+3. "Chevron" <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } /> to inform that the **Select** can display a list of choices.
 4. **Dropdown** that displays a list of items or options. It is displayed on click/trigger so users can make their choice.
 
 <Heading label="Usage" level={ 2 } />
@@ -53,13 +54,13 @@ The order of items or options in the list should be sorted as following, dependi
 
 <BestPractices
   donts={[
-    <span>- Use a Select to display a "yes" or "no" selection: use <StorybookLink kind="ODS Components/Form elements/Radio" label="Radio" story="Documentation" /> buttons</span>,
-    <span>- Use a Select when a comparison between all items or options is needed: use <StorybookLink kind="ODS Components/Form elements/Radio" label="Radio" story="Documentation" /> buttons</span>,
+    <span>- Use a Select to display a "yes" or "no" selection: use <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } label="Radio" story={ STORY.documentation } /> buttons</span>,
+    <span>- Use a Select when a comparison between all items or options is needed: use <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } label="Radio" story={ STORY.documentation } /> buttons</span>,
   ]}
   dos={[
     '- Use a Select when there are 3 or more items to choose from',
     '- Make the order of the Select list based on the frequency of use, alpha or numeric',
-    <span>- Use only one word or a very short <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> for each item of the list: try to keep it to one line</span>,
+    <span>- Use only one word or a very short <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> for each item of the list: try to keep it to one line</span>,
   ]}
 />
 
@@ -73,7 +74,7 @@ It has a width by default, but it can widen to match its container.
 
 **Select** can be focused and hovered. It also can be disabled. A single option and a group of options can be disabled to be more precise in inner **Select** items.
 
-When an item contains a <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> that cannot fit on a single line, the <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> will be truncated.
+When an item contains a <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> that cannot fit on a single line, the <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> will be truncated.
 
 An event is triggered when the selected option changes.
 

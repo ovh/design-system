@@ -84,6 +84,7 @@ describe('ods-tooltip navigation', () => {
 
     await notTrigger.hover();
     await page.waitForChanges();
+    await new Promise((resolve) => setTimeout(resolve, 100));
 
     expect(await isTooltipVisible()).toBe(false);
   });

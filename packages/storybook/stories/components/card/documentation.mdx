@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ CardStories } name="Documentation" />
 
@@ -27,8 +28,8 @@ _A **Card** is a versatile component designed to act as a container for various 
   to display information in a structured manner.
 
   It is designed to be reusable, customizable, and responsive, as it can hold various elements like
-  <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />,
-  <StorybookLink kind="ODS Components/Medium" label="Medium" story="Documentation" /> and other UI components.
+  <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />,
+  <StorybookLink kind={ ODS_COMPONENTS_TITLE.medium } label="Medium" story={ STORY.documentation } /> and other UI components.
 
   It also provides a consistent layout and styling for presenting information in a visually appealing way.
 </IdentityCard>
@@ -44,7 +45,7 @@ _A **Card** is a versatile component designed to act as a container for various 
 
 A **Card** can be used to:
 
-* display a wide variety of content such as a <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />, a <StorybookLink kind="ODS Components/Link" label="Link" story="Documentation" /> or other elements like a <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />
+* display a wide variety of content such as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />, a <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } label="Link" story={ STORY.documentation } /> or other elements like a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />
 * emphasize important content
 * visually group related content
 * guide the user toward actions
@@ -54,8 +55,8 @@ Several elements can be used in a **Card**:
 
 * A title
 * A description
-* A <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />
-* A <StorybookLink kind="ODS Components/Medium" label="Medium" story="Documentation" />
+* A <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />
+* A <StorybookLink kind={ ODS_COMPONENTS_TITLE.medium } label="Medium" story={ STORY.documentation } />
 * Extra information
 
 All these elements are not mandatory in every **Card**.
@@ -70,8 +71,8 @@ All these elements are not mandatory in every **Card**.
   ]}
   dos={[
     '- Use Cards sparingly to improve readability',
-    <span>- Use content in a Card, such as <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />, <StorybookLink kind="ODS Components/Medium" label="Medium" story="Documentation" /> and <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, that are contextually related</span>,
-    <span>- Keep the number of <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> per Card to a minimum</span>,
+    <span>- Use content in a Card, such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />, <StorybookLink kind={ ODS_COMPONENTS_TITLE.medium } label="Medium" story={ STORY.documentation } /> and <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />, that are contextually related</span>,
+    <span>- Keep the number of <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> per Card to a minimum</span>,
   ]}
 />
 

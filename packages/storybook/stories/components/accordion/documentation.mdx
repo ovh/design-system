@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ AccordionStories } name="Documentation" />
 
@@ -39,7 +40,7 @@ _An **Accordion** is a vertical header that reveals or hides an associated secti
 ![Component anatomy](components/accordion/anatomy.png "Component anatomy")
 
 1. **Header**: contains the section title and acts as a control for revealing the panel or not (always visible).
-2. **Icon**: A "down/up" chevron <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" /> is used to indicate the “expand/collapse” action, though the entire header area is clickable (always visible).
+2. **Icon**: A "down/up" chevron <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } /> is used to indicate the “expand/collapse” action, though the entire header area is clickable (always visible).
 3. **Panel**: the section of content associated with an **Accordion** header.
 
 <Heading label="Usage" level={ 2 } />
@@ -58,16 +59,16 @@ Use this component for :
   donts={[
     '- Expose a lot of content in the Header section (i.e. more than 2 lines)',
     '- Use Accordions with essential content for users',
-    <span>- Use <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" /> in header text</span>,
+    <span>- Use <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } /> in header text</span>,
     '- Expose a lot of content in the Panel section (i.e. more than the viewport height)',
     '- Empty the Panel section, as the Accordion become useless',
     '- Trigger expanding/collapsing on hover action',
     '- Avoid nested Accordions, like collapsible content within collapsible content'
     ]}
   dos={[
-    <span>- Header <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> describes the content contained in the panel. Use a clear and concise <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />, and be explicit about the action that will happen if the option is selected</span>,
-    <span>- Use sentence-style capitalization in header <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> (only the first word in a phrase and any proper nouns capitalized), no more than three words, and no punctuation</span>,
-    <span>- Use Accordion instead of <StorybookLink kind="ODS Components/Tabs" label="Tab" story="Documentation" /> if users need to see multiple sections at once</span>,
+    <span>- Header <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> describes the content contained in the panel. Use a clear and concise <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />, and be explicit about the action that will happen if the option is selected</span>,
+    <span>- Use sentence-style capitalization in header <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> (only the first word in a phrase and any proper nouns capitalized), no more than three words, and no punctuation</span>,
+    <span>- Use Accordion instead of <StorybookLink kind={ ODS_COMPONENTS_TITLE.tabs } label="Tab" story={ STORY.documentation } /> if users need to see multiple sections at once</span>,
   ]}
 />
 
@@ -104,7 +105,7 @@ N/A
 
 <Heading label="Accessibility" level={ 2 } />
 
-The header part can be navigated through tabulation, with the same behavior as a <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />.
+The header part can be navigated through tabulation, with the same behavior as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />.
 
 When focusing the header part, pressing `Enter` or `Space` keys will trigger its expansion or its collapse.
 

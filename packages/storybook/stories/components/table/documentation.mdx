@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ TableStories } name="Documentation" />
 
@@ -37,8 +38,8 @@ _A component to display data in a tabular format._
 
 ![Component anatomy](components/table/anatomy.png "Component anatomy")
 
-1. **Header** : Header cells of each column. Each header cell contains a <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />, and can contain an additional icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> helper with <StorybookLink kind="ODS Components/Tooltip" label="Tooltip" story="Documentation" />.
-2. **Body** : Main content for data visualization. Each cell can contain diverse components, such as <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" />, and other elements such as <StorybookLink kind="ODS Components/Badge" label="Badge" story="Documentation" />, <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" />, <StorybookLink kind="ODS Components/Link" label="Link" story="Documentation" />, <StorybookLink kind="ODS Components/Tooltip" label="Tooltip" story="Documentation" />, **Flag**, <StorybookLink kind="ODS Components/Medium" label="Medium" story="Documentation" />.
+1. **Header** : Header cells of each column. Each header cell contains a <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />, and can contain an additional icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> helper with <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="Tooltip" story={ STORY.documentation } />.
+2. **Body** : Main content for data visualization. Each cell can contain diverse components, such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />, and other elements such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.badge } label="Badge" story={ STORY.documentation } />, <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } />, <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } label="Link" story={ STORY.documentation } />, <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="Tooltip" story={ STORY.documentation } />, **Flag**, <StorybookLink kind={ ODS_COMPONENTS_TITLE.medium } label="Medium" story={ STORY.documentation } />.
 
 <Heading label="Usage" level={ 2 } />
 
@@ -53,8 +54,8 @@ _A component to display data in a tabular format._
     '- Use a Table to make content easier to read',
     '- Use Table component for small amounts of data that can be displayed in a simple format',
     '- Structure the data with useful columns (we recommend up to 9 columns)',
-    <span>- Use clear and concise headers. If a header is too complex, use a description (via a <StorybookLink kind="ODS Components/Tooltip" label="Tooltip" story="Documentation" />)</span>,
-    <span>- When data or content is loading in a cell, replace its content with a <StorybookLink kind="ODS Components/Skeleton" label="Skeleton" story="Documentation" /></span>,
+    <span>- Use clear and concise headers. If a header is too complex, use a description (via a <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="Tooltip" story={ STORY.documentation } />)</span>,
+    <span>- When data or content is loading in a cell, replace its content with a <StorybookLink kind={ ODS_COMPONENTS_TITLE.skeleton } label="Skeleton" story={ STORY.documentation } /></span>,
   ]}
 />
 

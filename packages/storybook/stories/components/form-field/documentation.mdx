@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ FormFieldStories } name="Documentation" />
 
@@ -38,8 +39,8 @@ _A **Form Field** component is used to wrap several form components with logic, 
                 { name: 'Toggle', subtitle: 'Form elements' },
               ]}>
   A **Form Field** is based on a single form element or group components as a whole that are decorated with additional
-  <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> to handle specific types of information, like a
-  <StorybookLink kind="ODS Components/Form elements/Password" label="Password" story="Documentation" /> field for example.
+  <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> to handle specific types of information, like a
+  <StorybookLink kind={ ODS_COMPONENTS_TITLE.password } label="Password" story={ STORY.documentation } /> field for example.
 </IdentityCard>
 
 <Heading label="Anatomy" level={ 2 } />
@@ -58,16 +59,16 @@ Users will also type or enter information in the expected format and avoid mista
 
 <BestPractices
   donts={[
-    <span>- Use a Form Field for content longer than a single line: Use a <StorybookLink kind="ODS Components/Form elements/Textarea" label="Textarea" story="Documentation" /> instead</span>,
-    <span>- Use an Input when you have a predefined list of answers: use a <StorybookLink kind="ODS Components/Form elements/Select" label="Select" story="Documentation" /> or <StorybookLink kind="ODS Components/Form elements/Radio" label="Radio" story="Documentation" /> Buttons instead</span>,
+    <span>- Use a Form Field for content longer than a single line: Use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.textarea } label="Textarea" story={ STORY.documentation } /> instead</span>,
+    <span>- Use an Input when you have a predefined list of answers: use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="Select" story={ STORY.documentation } /> or <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } label="Radio" story={ STORY.documentation } /> Buttons instead</span>,
     '- Use * to mark the mandatory fields',
     '- Overuse content related Form Fields with top aligned label in one group since it requires quite vertical space: split into smaller groups',
-    <span>- Use interactive content such as a <StorybookLink kind="ODS Components/Link" label="Link" story="Documentation" /> or a <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> inside the Form Field label</span>,
+    <span>- Use interactive content such as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } label="Link" story={ STORY.documentation } /> or a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> inside the Form Field label</span>,
   ]}
   dos={[
     '- Use several Form Fields for strongly related content and/or fields',
     '- Use a Form Fields to help users to fill in a form',
-    <span>- Remember to use a field with a length proportional to the expected user <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /></span>,
+    <span>- Remember to use a field with a length proportional to the expected user <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /></span>,
     '- Group when you need to combine related components into a whole new one',
   ]}
 />
@@ -80,7 +81,7 @@ A **Form Field** can be used everywhere in a page where there is a form and user
 
 A **Form Field** can react to a field validation, especially on its border and in addition to a helper (if necessary).
 
-If the field is in error state, an error message is displayed below the helper <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> when it exists. When no helper <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> exists, the error message is displayed below the form component.
+If the field is in error state, an error message is displayed below the helper <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> when it exists. When no helper <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> exists, the error message is displayed below the form component.
 
 <Heading label="Variation" level={ 2 } />
 

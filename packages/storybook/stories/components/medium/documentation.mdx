@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ MediumStories } name="Documentation" />
 
@@ -36,7 +37,7 @@ _**Medium** is a wrapper for displaying assets such as images_
 
 <Heading label="Usage" level={ 2 } />
 
-**Medium** is used to display assets with an alternative <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> description.
+**Medium** is used to display assets with an alternative <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> description.
 
 When the asset is an image, it should be mostly presentation to draw user's attention visually.
 
@@ -66,4 +67,4 @@ N/A
 
 <Heading label="Accessibility" level={ 2 } />
 
-An alternative <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> description is mandatory to describe the information the asset may bring to the user.
+An alternative <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> description is mandatory to describe the information the asset may bring to the user.

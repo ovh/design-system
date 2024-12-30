@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ SkeletonStories } name="Documentation" />
 
@@ -34,7 +35,7 @@ _**Skeleton** component indicates that data is loading. It improves the perceive
 
 <Heading label="Usage" level={ 2 } />
 
-A **Skeleton** can be used in a variety of contexts such as in <StorybookLink kind="ODS Components/Card" label="Card" story="Documentation" />, lists, and <StorybookLink kind="ODS Components/Table" label="Table" story="Documentation" /> content.
+A **Skeleton** can be used in a variety of contexts such as in <StorybookLink kind={ ODS_COMPONENTS_TITLE.card } label="Card" story={ STORY.documentation } />, lists, and <StorybookLink kind={ ODS_COMPONENTS_TITLE.table } label="Table" story={ STORY.documentation } /> content.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 

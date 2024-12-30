@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ TagStories } name="Documentation" />
 
@@ -26,7 +27,7 @@ _A **Tag** component is used to display keywords or categories, with a removal f
   The **Tag** component is a small UI element used to represent metadata, keywords, categories, or other contextual
   information.
 
-  **Tags** are removable and can include an <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" /> as
+  **Tags** are removable and can include an <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } /> as
   additional prefix element.
 
   They are commonly used in interfaces for categorizing content, filtering, and adding contextual details.
@@ -71,7 +72,7 @@ Multiple **Tags** can be displayed:
 - on a single line
 - stacked vertically
 
-**Tags** main content is left-aligned, the closing <StorybookLink kind="ODS Components/Icon" label="Icon" story="Documentation" /> is fixed at the right hand of it.
+**Tags** main content is left-aligned, the closing <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } /> is fixed at the right hand of it.
 
 <Heading label="Behavior" level={ 2 } />
 
@@ -96,4 +97,4 @@ A click/keypress on the whole component should trigger a removal event (if not d
 
 <Heading label="Accessibility" level={ 2 } />
 
-**Tags** follow the same focusing/keyboard navigation as <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />.
+**Tags** follow the same focusing/keyboard navigation as <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />.

@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ ModalStories } name="Documentation" />
 
@@ -26,7 +27,7 @@ _A **Modal** component is used to overlay with important content the main view o
   A **Modal** is used to provide some information to users that needs a response or immediate attention.
 
   While a **Modal** is triggered, there is no interaction possible on the page that is overlaid so users have to
-  dismiss or click on an action <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> to proceed
+  dismiss or click on an action <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> to proceed
   further.
 </IdentityCard>
 
@@ -36,7 +37,7 @@ _A **Modal** component is used to overlay with important content the main view o
 
 1. **Backdrop overlay** to obscure the on-page content
 2. **Container**
-3. **Content** container, filled with <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> or other read-only content, depending on the usage
+3. **Content** container, filled with <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> or other read-only content, depending on the usage
 4. **Action Buttons** container, to complete or cancel the **Modal** task
 5. **`close` icon Button** to close the **Modal** without submitting any data
 
@@ -62,13 +63,13 @@ They can be dismissable or not.
   donts={[
     '- Trigger a Modal as a result of a first Modal actions',
     '- Use a Modal if the informational content is very long within a Modal: consider alternatives if that is your case',
-    <span>- Use a Modal only to notify users about a successful completion of their actions: use <StorybookLink kind="ODS Components/Message" label="Message" story="Documentation" /> component</span>,
+    <span>- Use a Modal only to notify users about a successful completion of their actions: use <StorybookLink kind={ ODS_COMPONENTS_TITLE.message } label="Message" story={ STORY.documentation } /> component</span>,
   ]}
   dos={[
     '- Use a Modal to display information the user needs to respond to',
     '- Use a Modal to ask a confirmation from the user before proceeding',
     '- Use Modals sparingly since they are disruptive and stop users in their current task',
-    <span>- Handle closing the Modal when the cancel action <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> is clicked</span>,
+    <span>- Handle closing the Modal when the cancel action <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> is clicked</span>,
     '- Use scrolling only when it is absolutely needed',
   ]}
 />
@@ -103,7 +104,7 @@ The hidden overflow behaviour is removed whenever the **Modal** get closed.
 
 <Heading label="Scrolling" level={ 3 } />
 
-When necessary, depending on the viewport height and the **Modal** content, the user can scroll vertically with the header and the action <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> remaining in place.
+When necessary, depending on the viewport height and the **Modal** content, the user can scroll vertically with the header and the action <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> remaining in place.
 
 <Heading label="Variation" level={ 2 } />
 
@@ -120,7 +121,7 @@ When displayed, the user is directly focused on the **Modal** itself.
 
 When **Modal** is opened :
 - `Escape` key will dismiss it (if dismissible)
-- `Tabulation` allows to move forward, first to the closing icon, then through any focusable element in the **Modal** (e.g. action <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />)
+- `Tabulation` allows to move forward, first to the closing icon, then through any focusable element in the **Modal** (e.g. action <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />)
 - `Shift + Tab` allows the opposite way to move backward in focusing items
 
 Focus is trapped inside the **Modal** scope and inner elements when active.

@@ -50,7 +50,7 @@ const TokenMigrationTable = ({ items }: Props) => {
               </td>
 
               <td>
-                <OdsBadge {...getBadgeProp(item.status)}
+                <OdsBadge { ...getBadgeProp(item.status) }
                           size="sm" />
               </td>
 

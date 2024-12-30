@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ ClipboardStories } name="Documentation" />
 
@@ -34,16 +35,16 @@ _**Clipboard** component allows user to view and copy information to its **Clipb
 
 ![Component anatomy](components/clipboard/anatomy.png "Component anatomy")
 
-1. An <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> containing the whole content that will be copied to the **Clipboard**
+1. An <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> containing the whole content that will be copied to the **Clipboard**
 2. **Value** to copy
-3. A 'copy' icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> to complete the copy action when clicked
+3. A 'copy' icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> to complete the copy action when clicked
 4. A Tooltip displayed when user hovers or focuses the component, and briefly after a successful copy action to the user's **Clipboard**
 
 <Heading label="Usage" level={ 2 } />
 
 **Clipboard** is used to quickly and easily copy an amount of text to the user's **Clipboard**.
 
-It can be used when it is considered that it will take the hassle out of selecting and copying an amount of <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> for the user.
+It can be used when it is considered that it will take the hassle out of selecting and copying an amount of <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> for the user.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
@@ -60,22 +61,22 @@ It can be used when it is considered that it will take the hassle out of selecti
 
 By default, the **Clipboard** content is left-aligned in its container.
 
-**Clipboard**'s <StorybookLink kind="ODS Components/Tooltip" label="Tooltip" story="Documentation" /> are right-aligned after the component by default, and vertically centered.
+**Clipboard**'s <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="Tooltip" story={ STORY.documentation } /> are right-aligned after the component by default, and vertically centered.
 
 <Heading label="Behavior" level={ 2 } />
 
 **Clipboard** can be focused and hovered. They can be disabled.
 When disabled, the component can't be hovered, focused nor clicked.
 
-The **Clipboard** component is **used as read-only**, to allow users to copy a predefined <StorybookLink kind="ODS Components/Text" label="Text" story="Documentation" /> that cannot be edited directly.
+The **Clipboard** component is **used as read-only**, to allow users to copy a predefined <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> that cannot be edited directly.
 
 Even if no visual indicator prompts the user to do so, **the user can select the Text directly in the Input**.
 
-**The trigger for copying** the <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> content to the **Clipboard** **is the "copy" Button**.
+**The trigger for copying** the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> content to the **Clipboard** **is the "copy" Button**.
 When hovering or focusing, **a Tooltip is displayed as a helper**.
 
 **An event is triggered when a Clipboard's content is copied.**
-A confirmation <StorybookLink kind="ODS Components/Tooltip" label="Tooltip" story="Documentation" /> is displayed (if user is still hovering the "copy" <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />) when **Clipboard** content has been successfully copied.
+A confirmation <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="Tooltip" story={ STORY.documentation } /> is displayed (if user is still hovering the "copy" <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />) when **Clipboard** content has been successfully copied.
 
 <Heading label="Variation" level={ 2 } />
 
@@ -83,4 +84,4 @@ N/A
 
 <Heading label="Accessibility" level={ 2 } />
 
-When focused, the **Clipboard** "copy" <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> can be triggered using `Space` or `Enter` keys.
+When focused, the **Clipboard** "copy" <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> can be triggered using `Space` or `Enter` keys.

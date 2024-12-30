@@ -6,6 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ InputStories } name="Documentation" />
 
@@ -33,12 +34,12 @@ _**Input** component is an **Input** field where users can type into_
 1. A **field**: a container where the user can type in
 2. A **placeholder**: provides hints or example of what to type
 3. **Inner content**: displays the content typed by the field type (e.g.: `email`, `number`, `password`, `search`, `text`, `time`, `url`)
-4. Clickable icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, used for secondary extra actions such as clear the field
-5. Clickable icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />, used for extra actions such as toggle the field content visibility or trigger a search
+4. Clickable icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />, used for secondary extra actions such as clear the field
+5. Clickable icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />, used for extra actions such as toggle the field content visibility or trigger a search
 
 <Heading label="Usage" level={ 2 } />
 
-An **Input** is used to type a free-form short text in a field. It is often used within a <StorybookLink kind="ODS Components/Form elements/Form Field" label="Form Field" story="Documentation" /> component that adds its label.
+An **Input** is used to type a free-form short text in a field. It is often used within a <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } label="Form Field" story={ STORY.documentation } /> component that adds its label.
 
 It is commonly used in a form, such as asking the user their name or email address, data entered can be text or numbers.
 
@@ -48,11 +49,11 @@ The **Input** component can be used in addition with an **Autocomplete**.
 
 <BestPractices
   donts={[
-    <span>- Use an Input for content longer than a single line: Use a <StorybookLink kind="ODS Components/Form elements/Textarea" label="Textarea" story="Documentation" /> instead</span>,
-    <span>- Use an Input when you have a predefined list of answers: use a <StorybookLink kind="ODS Components/Form elements/Select" label="Select" story="Documentation" /> or <StorybookLink kind="ODS Components/Form elements/Radio" label="Radio" story="Documentation" /> instead</span>,
+    <span>- Use an Input for content longer than a single line: Use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.textarea } label="Textarea" story={ STORY.documentation } /> instead</span>,
+    <span>- Use an Input when you have a predefined list of answers: use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="Select" story={ STORY.documentation } /> or <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } label="Radio" story={ STORY.documentation } /> instead</span>,
   ]}
   dos={[
-    <span>- Add label and helper message to the Input with <StorybookLink kind="ODS Components/Form elements/Form Field" label="Form Field" story="Documentation" /> component</span>,
+    <span>- Add label and helper message to the Input with <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } label="Form Field" story={ STORY.documentation } /> component</span>,
   ]}
 />
 

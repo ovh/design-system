@@ -3,6 +3,7 @@ import { Meta, Source } from '@storybook/blocks';
 import * as BreadcrumbStories from './breadcrumb.stories';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ BreadcrumbStories } name="Migration From 17.x" />
 
@@ -61,9 +62,9 @@ Has been removed.
 
 You should now use `<ods-breadcrumb-item>` directly in the DOM of the `<ods-breadcrumb>` component.
 
-The attribute list is the same as the <StorybookLink kind="ODS Components/Link" label="ods-link" story="Technical information" /> component.
+The attribute list is the same as the <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } label="ods-link" story={ STORY.technicalInformation } /> component.
 
-Which means you have the same attributes, following the link <StorybookLink kind="ODS Components/Link" label="migration guide" story="Migration From 17.x" />.
+Which means you have the same attributes, following the link <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } label="migration guide" story={ STORY.migrationFrom17 } />.
 
 <Heading label="Migration examples" level={ 2 } />
 

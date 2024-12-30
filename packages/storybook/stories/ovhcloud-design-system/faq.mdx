@@ -2,6 +2,7 @@ import { OdsLink } from '@ovhcloud/ods-components/react';
 import { Meta, Source } from '@storybook/blocks';
 import { Heading } from '../../src/components/heading/Heading';
 import { StorybookLink } from '../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../src/constants/meta';
 
 <Meta title="OVHcloud Design System/F.A.Q." />
 
@@ -57,11 +58,11 @@ Ensure compatibility by testing the integration in your project.
 
 <Heading label="How can I import ESModule / CommonJS packages?" level={ 2 } />
 
-For detailed instructions on importing ESModule or CommonJS packages, please refer to our <StorybookLink label="Get Started" title="OVHcloud Design System/Get Started" /> documentation.
+For detailed instructions on importing ESModule or CommonJS packages, please refer to our <StorybookLink label="Get Started" title={ HOME_TITLE.getStarted } /> documentation.
 
 <Heading label="How can I import ODS CSS-only styling?" level={ 2 } />
 
-To import ODS CSS-only styling, please refer to our <StorybookLink label="Get Started" title="OVHcloud Design System/Get Started" /> documentation.
+To import ODS CSS-only styling, please refer to our <StorybookLink label="Get Started" title={ HOME_TITLE.getStarted } /> documentation.
 
 <Heading label="[ODS >= v17.1.0 | Safari < v16.2] My form elements are not displayed?" level={ 2 } />
 

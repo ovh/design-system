@@ -1,6 +1,7 @@
 import { ODS_ICON_NAME, ODS_TEXT_PRESET } from '@ovhcloud/ods-components';
 import { OdsLink, OdsText } from '@ovhcloud/ods-components/react';
 import React from 'react';
+import { HOME_TITLE } from '../../constants/meta';
 import { StorybookLink } from '../storybookLink/StorybookLink';
 import styles from './homepage.module.css';
 import imageFile from '../../../assets/ods_bg.png';
@@ -25,7 +26,7 @@ const Homepage = () => {
         <div className={ styles['homepage__content__links'] }>
           <StorybookLink icon={ ODS_ICON_NAME.arrowRight }
                          label="Get Started"
-                         title="OVHcloud Design System/Get Started" />
+                         title={ HOME_TITLE.getStarted } />
 
           <OdsLink href="https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system"
                    icon={ ODS_ICON_NAME.externalLink }

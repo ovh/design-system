@@ -6,12 +6,13 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ PasswordStories } name="Documentation" />
 
 <Banner of={ PasswordStories } />
 
-_**Password** component is an <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> field for entering a password that can be hidden or not._
+_**Password** component is an <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> field for entering a password that can be hidden or not._
 
 <Canvas of={ PasswordStories.Overview } sourceState="none" />
 
@@ -33,8 +34,8 @@ _**Password** component is an <StorybookLink kind="ODS Components/Form elements/
 
 1. **Placeholder**: it provides hints or example of what user should type
 2. **Container**: it is a container where the user can type in
-3. **Clear action**: a `close` icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> so that user can clear the <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> content (optional)
-4. **Show/hide action**: an `eye` icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" /> to toggle between masked or visible <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> content
+3. **Clear action**: a `close` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> so that user can clear the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> content (optional)
+4. **Show/hide action**: an `eye` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> to toggle between masked or visible <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> content
 
 <Heading label="Usage" level={ 2 } />
 
@@ -48,7 +49,7 @@ It can also be used for displaying tokens.
 
 <BestPractices
   donts={[
-    <span>- Use a Password when you need the text users enter to be only visible. You should use an <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> instead</span>,
+    <span>- Use a Password when you need the text users enter to be only visible. You should use an <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> instead</span>,
   ]}
   dos={[
     '- Use a Password when user has to enter sensitive data in the field',
@@ -66,9 +67,9 @@ By default, the **Password** content is masked.
 
 **Password** can be used as read-only (especially for tokens).
 
-The password masking toggled using show/hide action is permanent. Users have to click again to show/hide the <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> content.
+The password masking toggled using show/hide action is permanent. Users have to click again to show/hide the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> content.
 
-It inherits events from <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> component.
+It inherits events from <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> component.
 
 <Heading label="Variation" level={ 2 } />
 
@@ -76,4 +77,4 @@ N/A
 
 <Heading label="Accessibility" level={ 2 } />
 
-Password shares the same keyboard features as <StorybookLink kind="ODS Components/Form elements/Input" label="Input" story="Documentation" /> (focusing + icon <StorybookLink kind="ODS Components/Button" label="Button" story="Documentation" />)
+Password shares the same keyboard features as <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> (focusing + icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />)

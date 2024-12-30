@@ -208,8 +208,6 @@ export const Ellipsis: StoryObj = {
   }
 
   .my-link-not-ellipsis::part(label) {
-    overflow: auto;
-    text-overflow: inherit;
     white-space: break-spaces;
   }
 </style>
@@ -258,6 +256,10 @@ export const CustomCSSLink: StoryObj = {
   .my-link::part(link) {
     color: green;
     font-size: 32px;
+  }
+
+  .my-link::part(label) {
+    white-space: break-spaces;
   }
 </style>
   `,

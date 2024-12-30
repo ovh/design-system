@@ -1,5 +1,6 @@
 @use '../../../../../style/link';
 @use '../../../../../style/state';
+@use '../../../../../style/font';
 
 .ods-link {
   &__link {
@@ -26,10 +27,7 @@
     }
 
     &__label {
-      display: inline-block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      @include font.ellipsis();
     }
 
     &__icon {

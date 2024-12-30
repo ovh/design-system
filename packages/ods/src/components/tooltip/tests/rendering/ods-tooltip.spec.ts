@@ -66,22 +66,6 @@ describe('ods-tooltip rendering', () => {
     });
   });
 
-  describe('tooltipId', () => {
-    it('should be reflected', async() => {
-      const dummyValue = 'dummy value';
-
-      await setup(`<ods-tooltip tooltip-id="${dummyValue}"></ods-tooltip>`);
-
-      expect(root?.getAttribute('tooltip-id')).toBe(dummyValue);
-    });
-
-    it('should render with expected default value', async() => {
-      await setup('<ods-tooltip></ods-tooltip>');
-
-      expect(root?.getAttribute('tooltip-id')).toBeNull();
-    });
-  });
-
   describe('triggerId', () => {
     it('should be reflected', async() => {
       const dummyValue = 'dummy value';

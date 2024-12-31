@@ -3,6 +3,8 @@ import { findTriggerElement, hideOverlay, showOverlay } from '../../../../../uti
 import { ODS_TOOLTIP_POSITION, type OdsTooltipPosition } from '../../constants/tooltip-position';
 import { ODS_TOOLTIP_STRATEGY, type OdsTooltipStrategy } from '../../constants/tooltip-strategy';
 
+const TIME_OUT_HIDE_TOOLTIP = 50;
+
 @Component({
   shadow: true,
   styleUrl: 'ods-tooltip.scss',
@@ -10,15 +12,16 @@ import { ODS_TOOLTIP_STRATEGY, type OdsTooltipStrategy } from '../../constants/t
 })
 export class OdsTooltip {
   private arrowElement?: HTMLElement;
-  private triggerElement?: HTMLElement | null;
-  private isTooltipHover: boolean = false;
-  private timer?: NodeJS.Timeout;
   private cleanUpCallback: () => void = () => {};
+  private isTooltipHover: boolean = false;
+  private timer?: ReturnType<typeof setTimeout>;
+  private triggerElement?: HTMLElement | null;
+
   private boundHide = this.hide.bind(this);
+  private boundHideOnElLeave = this.hideOnElLeave.bind(this);
+  private boundHideByTooltipHover = this.hideByTooltipHover.bind(this);
   private boundShow = this.show.bind(this);
-  private boundShowOnTooltip = this.showOnElEnter.bind(this);
-  private boundHideOnTooltip = this.hideOnElLeave.bind(this);
-  private boundLeaveTrigger = this.leaveTrigger.bind(this);
+  private boundShowOnElEnter = this.showOnElEnter.bind(this);
 
   @Element() el!: HTMLElement;
 
@@ -60,22 +63,32 @@ export class OdsTooltip {
     this.triggerElement?.addEventListener('blur', this.boundHide);
     this.triggerElement?.addEventListener('focus', this.boundShow);
     this.triggerElement?.addEventListener('mouseenter', this.boundShow);
-    this.triggerElement?.addEventListener('mouseleave', this.boundLeaveTrigger);
-    this.el.addEventListener('mouseenter', this.boundShowOnTooltip);
-    this.el.addEventListener('mouseleave', this.boundHideOnTooltip);
+    this.triggerElement?.addEventListener('mouseleave', this.boundHideByTooltipHover);
+    this.el.addEventListener('mouseenter', this.boundShowOnElEnter);
+    this.el.addEventListener('mouseleave', this.boundHideOnElLeave);
   }
 
   disconnectedCallback() : void {
     this.triggerElement?.removeEventListener('blur', this.boundHide);
     this.triggerElement?.removeEventListener('focus', this.boundShow);
     this.triggerElement?.removeEventListener('mouseenter', this.boundShow);
-    this.triggerElement?.removeEventListener('mouseleave', this.boundLeaveTrigger);
-    this.el.removeEventListener('mouseenter', this.boundShowOnTooltip);
-    this.el.removeEventListener('mouseleave', this.boundHideOnTooltip);
+    this.triggerElement?.removeEventListener('mouseleave', this.boundHideByTooltipHover);
+    this.el.removeEventListener('mouseenter', this.boundShowOnElEnter);
+    this.el.removeEventListener('mouseleave', this.boundHideOnElLeave);
   }
 
-  private leaveTrigger(): void {
-    setTimeout(() => this.hideByTooltipHover(), 50);
+  private hideByTooltipHover(): ReturnType<typeof setTimeout> {
+    return setTimeout(() => {
+      if (this.isTooltipHover) {
+        return;
+      }
+      return this.hide();
+    }, TIME_OUT_HIDE_TOOLTIP);
+  }
+
+  private hideOnElLeave(): void {
+    this.isTooltipHover = false;
+    this.timer = this.hideByTooltipHover();
   }
 
   private showOnElEnter(): Promise<void> {
@@ -83,22 +96,9 @@ export class OdsTooltip {
     return this.boundShow();
   }
 
-  private hideOnElLeave(): void {
-    this.isTooltipHover = false;
-    this.timer = setTimeout(() => this.hideByTooltipHover(), 50);
-  }
-
-  private async hideByTooltipHover(): Promise<void> {
-    if (this.isTooltipHover) {
-      return;
-    }
-    return this.hide();
-  }
-
   render(): FunctionalComponent {
     return (
       <Host
-        id={ this.el.id }
         class={ `ods-tooltip ods-tooltip--${this.strategy}` }
         role="tooltip">
         <slot></slot>

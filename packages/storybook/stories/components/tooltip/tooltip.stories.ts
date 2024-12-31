@@ -20,10 +20,13 @@ export const Demo: StoryObj = {
   render: (args) => html`
 <ods-text preset="paragraph">Lorem ipsum &nbsp;</ods-text>
 <ods-icon id="trigger-1"
-          name="circle-question">
+          aria-labelledby="tooltip-demo"
+          name="circle-question"
+          tabindex="0">
 </ods-icon>
 <ods-tooltip position="${args.position}"
              trigger-id="trigger-1"
+             id="tooltip-demo"
              with-arrow="${args.withArrow}">
   ${unsafeHTML(args.content)}
 </ods-tooltip>
@@ -68,29 +71,11 @@ export const Overview: StoryObj = {
   render: () => html`
 <ods-text preset="paragraph">Lorem ipsum &nbsp;</ods-text>
 <ods-icon id="trigger-2"
-          name="circle-question">
+          aria-labelledby="tooltip-overview"
+          name="circle-question"
+          tabindex="0">
 </ods-icon>
-<ods-tooltip trigger-id="trigger-2">
-  Tooltip content
-</ods-tooltip>
-  `,
-};
-
-export const Accessibility: StoryObj = {
-  tags: ['isHidden'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: () => html`
-<ods-icon
-  aria-labelledby="tooltip-example-a11y-content"
-  id="tooltip-example-a11y-trigger"
-  name="circle-question"
-  tabindex="0">
-</ods-icon>
-<ods-tooltip
-  tooltip-id="tooltip-example-a11y-content"
-  trigger-id="tooltip-example-a11y-trigger">
+<ods-tooltip trigger-id="trigger-2" id="tooltip-overview">
   Tooltip content
 </ods-tooltip>
   `,
@@ -101,9 +86,11 @@ export const Default: StoryObj = {
   render: () => html`
 <ods-text preset="paragraph">Lorem ipsum &nbsp;</ods-text>
 <ods-icon id="trigger-4"
-          name="circle-question">
+          aria-labelledby="tooltip-default"
+          name="circle-question"
+          tabindex="0">
 </ods-icon>
-<ods-tooltip trigger-id="trigger-4">
+<ods-tooltip trigger-id="trigger-4" id="tooltip-default">
   Tooltip content
 </ods-tooltip>
   `,
@@ -114,9 +101,12 @@ export const ArrowTip: StoryObj = {
   render: () => html`
 <ods-text preset="paragraph">Lorem ipsum &nbsp;</ods-text>
 <ods-icon id="trigger-5"
-          name="circle-question">
+          aria-labelledby="tooltip-arrow-tip"
+          name="circle-question"
+          tabindex="0">
 </ods-icon>
 <ods-tooltip trigger-id="trigger-5"
+             id="tooltip-arrow-tip"
              with-arrow>
   Tooltip content
 </ods-tooltip>
@@ -128,9 +118,12 @@ export const CustomCSS: StoryObj = {
   render: () => html`
 <ods-text preset="paragraph">Lorem ipsum &nbsp;</ods-text>
 <ods-icon id="trigger-3"
-          name="circle-question">
+          aria-labelledby="tooltip-custom-css"
+          name="circle-question"
+          tabindex="0">
 </ods-icon>
 <ods-tooltip trigger-id="trigger-3"
+             id="tooltip-custom-css"
              with-arrow>
   <p class="custom-tooltip">
     Custom tooltip
@@ -152,9 +145,12 @@ export const FixedContext: StoryObj = {
 </ods-button>
 <ods-modal id="modal-tooltip">
   <ods-icon id="modal-tooltip-trigger"
-            name="circle-question">
+            aria-labelledby="tooltip-modal"
+            name="circle-question"
+            tabindex="0">
   </ods-icon>
   <ods-tooltip strategy="fixed"
+               id="tooltip-modal"
                trigger-id="modal-tooltip-trigger">
     Some tooltip content
   </ods-tooltip>

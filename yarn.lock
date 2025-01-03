@@ -4150,6 +4150,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-drawer@workspace:packages/ods/src/components/drawer":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-drawer@workspace:packages/ods/src/components/drawer"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-file-upload@workspace:packages/ods/src/components/file-upload":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-file-upload@workspace:packages/ods/src/components/file-upload"

@@ -1,4 +1,6 @@
 $ods-overlay-z-index: 99;
+$ods-overlay-z-index-drawer: 10;
+
 
 @mixin ods-tooltip() {
   transform: translateZ(0); // needed for Safari, otherwise filter has a weird rendering

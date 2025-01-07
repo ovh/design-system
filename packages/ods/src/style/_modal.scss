@@ -1,3 +1,5 @@
+@use './breakpoint';
+
 $ods-modal-border-radius: var(--ods-border-radius-sm);
 $ods-modal-header-height: 32px;
 
@@ -38,8 +40,10 @@ $ods-modal-header-height: 32px;
   background: var(--ods-color-neutral-000);
   padding: 0;
   width: 100%;
+  min-width: 320px;
   max-width: 512px;
-  max-height: 50vh;
+  min-height: 100px;
+  max-height: 512px;
   overflow: hidden;
 
   &::backdrop {
@@ -47,6 +51,14 @@ $ods-modal-header-height: 32px;
     background-color: #0050d7;
     // We're not using variables because of a Chromium issue with the backdrops
     // See https://stackoverflow.com/questions/58818299/css-variables-not-working-in-dialogbackdrop/63322762#63322762
+  }
+
+  @media screen and (width <= (breakpoint.$ods-breakpoint-mobile)) {
+    margin: 16px;
+    width: 100%;
+    min-width: fit-content;
+    max-width: fit-content;
+    max-height: revert;
   }
 }
 

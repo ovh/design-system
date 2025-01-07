@@ -1,5 +1,6 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsSelect, type OdsSelectChangeEventDetail } from '../../src';
+import { type OdsSelectChangeEventDetail } from '../../src';
+import { type OdsSelect } from '../../src/components/ods-select/ods-select';
 
 describe('ods-select behaviour', () => {
   let el: E2EElement;
@@ -200,35 +201,64 @@ describe('ods-select behaviour', () => {
   });
 
   describe('form', () => {
+    let formData: Record<string, FormDataEntryValue> = {};
+
+    async function setupWithinForm(content: string): Promise<void> {
+      formData = {};
+      page = await newE2EPage();
+
+      await page.exposeFunction('e2eFormSubmit', (data: Record<string, FormDataEntryValue>) => {
+        formData = data;
+      });
+
+      await page.setContent(`<form method="get" onsubmit="return false;">${content}</form>`);
+
+      await page.evaluate(() => {
+        const form = document.querySelector('form');
+
+        form?.addEventListener('submit', () => {
+          const formData = new FormData(form);
+          const data: Record<string, FormDataEntryValue> = {};
+
+          for (const [key, value] of formData) {
+            data[key] = value;
+          }
+
+          // @ts-ignore function is exposed manually
+          window.e2eFormSubmit(data);
+        });
+      });
+    }
+
     it('should get form data when submit button is triggered', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-select name="odsSelect" value="1"><option value="1">1</option></ods-select>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const submitButton = await page.find('button[type="submit"]');
 
       await submitButton.click();
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsSelect')).toBe('1');
+      expect(formData).toEqual({ odsSelect: '1' });
     });
 
     it('should reset form when reset button is triggered', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-select name="odsSelect" value="1"><option value="1">1</option></ods-select>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const resetButton = await page.find('button[type="reset"]');
       const submitButton = await page.find('button[type="submit"]');
 
       await resetButton.click();
-      await submitButton.click();
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsSelect')).toBe('');
+      await submitButton.click();
+      await page.waitForChanges();
+
+      expect(formData).toEqual({ odsSelect: '' });
     });
   });
 

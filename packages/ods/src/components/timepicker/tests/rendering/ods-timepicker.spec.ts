@@ -5,10 +5,10 @@ jest.mock('../../src/controller/ods-timepicker', () => ({
   parseTimezones: (): ODS_TIMEZONE[] => ODS_TIMEZONES as ODS_TIMEZONE[],
   updateInternals: jest.fn(),
 }));
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { OdsTimepicker } from '../../src';
-import { type ODS_TIMEZONE, ODS_TIMEZONES } from '../../src/constant/timezones';
+
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
+import { type ODS_TIMEZONE, ODS_TIMEZONES } from '../../src';
+import { OdsTimepicker } from '../../src/components/ods-timepicker/ods-timepicker';
 
 describe('ods-timepicker rendering', () => {
   let page: SpecPage;

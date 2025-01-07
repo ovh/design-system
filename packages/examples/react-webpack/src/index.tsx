@@ -11,7 +11,8 @@ const root = createRoot(appElement!);
 
 function renderApp() {
   root.render(
-    <App />,
+    <App />
+    // <div>Hello</div>
   );
 }
 

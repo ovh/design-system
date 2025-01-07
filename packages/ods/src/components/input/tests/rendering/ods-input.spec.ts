@@ -1,7 +1,8 @@
 jest.mock('../../src/controller/ods-input');
 
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { ODS_INPUT_TYPE, OdsInput } from '../../src';
+import { ODS_INPUT_TYPE } from '../../src';
+import { OdsInput } from '../../src/components/ods-input/ods-input';
 
 // @ts-ignore for test purposes
 global.MutationObserver = jest.fn(() => ({

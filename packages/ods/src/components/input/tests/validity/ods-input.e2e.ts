@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsInput } from '../../src';
+import { type OdsInput } from '../../src/components/ods-input/ods-input';
 
 describe('ods-input validity', () => {
   let el: E2EElement;

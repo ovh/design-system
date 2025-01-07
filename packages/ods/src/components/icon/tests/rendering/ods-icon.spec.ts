@@ -1,6 +1,6 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsIcon } from '../../src';
+import { OdsIcon } from '../../src/components/ods-icon/ods-icon';
 
 describe('ods-icon rendering', () => {
   let page: SpecPage;

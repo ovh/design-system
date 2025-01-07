@@ -4,14 +4,180 @@
   "description": "ODS Components",
   "author": "OVH SAS",
   "license": "Apache-2.0",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.js",
-  "es2015": "dist/esm/index.js",
-  "es2017": "dist/esm/index.js",
-  "jsnext:main": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
+    },
+    "./dist/components/": {
+      "types": "./dist/components/",
+      "import": "./dist/components/"
+    },
+    "./ods-accordion": {
+      "types": "./dist/components/ods-accordion.d.ts",
+      "import": "./dist/components/ods-accordion.js"
+    },
+    "./ods-badge": {
+      "types": "./dist/components/ods-badge.d.ts",
+      "import": "./dist/components/ods-badge.js"
+    },
+    "./ods-breadcrumb": {
+      "types": "./dist/components/ods-breadcrumb.d.ts",
+      "import": "./dist/components/ods-breadcrumb.js"
+    },
+    "./ods-breadcrumb-item": {
+      "types": "./dist/components/ods-breadcrumb-item.d.ts",
+      "import": "./dist/components/ods-breadcrumb-item.js"
+    },
+    "./ods-button": {
+      "types": "./dist/components/ods-button.d.ts",
+      "import": "./dist/components/ods-button.js"
+    },
+    "./ods-card": {
+      "types": "./dist/components/ods-card.d.ts",
+      "import": "./dist/components/ods-card.js"
+    },
+    "./ods-checkbox": {
+      "types": "./dist/components/ods-checkbox.d.ts",
+      "import": "./dist/components/ods-checkbox.js"
+    },
+    "./ods-clipboard": {
+      "types": "./dist/components/ods-clipboard.d.ts",
+      "import": "./dist/components/ods-clipboard.js"
+    },
+    "./ods-code": {
+      "types": "./dist/components/ods-code.d.ts",
+      "import": "./dist/components/ods-code.js"
+    },
+    "./ods-datepicker": {
+      "types": "./dist/components/ods-datepicker.d.ts",
+      "import": "./dist/components/ods-datepicker.js"
+    },
+    "./ods-divider": {
+      "types": "./dist/components/ods-divider.d.ts",
+      "import": "./dist/components/ods-divider.js"
+    },
+    "./ods-file-upload": {
+      "types": "./dist/components/ods-file-upload.d.ts",
+      "import": "./dist/components/ods-file-upload.js"
+    },
+    "./ods-form-field": {
+      "types": "./dist/components/ods-form-field.d.ts",
+      "import": "./dist/components/ods-form-field.js"
+    },
+    "./ods-icon": {
+      "types": "./dist/components/ods-icon.d.ts",
+      "import": "./dist/components/ods-icon.js"
+    },
+    "./ods-input": {
+      "types": "./dist/components/ods-input.d.ts",
+      "import": "./dist/components/ods-input.js"
+    },
+    "./ods-link": {
+      "types": "./dist/components/ods-link.d.ts",
+      "import": "./dist/components/ods-link.js"
+    },
+    "./ods-medium": {
+      "types": "./dist/components/ods-medium.d.ts",
+      "import": "./dist/components/ods-medium.js"
+    },
+    "./ods-message": {
+      "types": "./dist/components/ods-message.d.ts",
+      "import": "./dist/components/ods-message.js"
+    },
+    "./ods-modal": {
+      "types": "./dist/components/ods-modal.d.ts",
+      "import": "./dist/components/ods-modal.js"
+    },
+    "./ods-pagination": {
+      "types": "./dist/components/ods-pagination.d.ts",
+      "import": "./dist/components/ods-pagination.js"
+    },
+    "./ods-password": {
+      "types": "./dist/components/ods-password.d.ts",
+      "import": "./dist/components/ods-password.js"
+    },
+    "./ods-phone-number": {
+      "types": "./dist/components/ods-phone-number.d.ts",
+      "import": "./dist/components/ods-phone-number.js"
+    },
+    "./ods-popover": {
+      "types": "./dist/components/ods-popover.d.ts",
+      "import": "./dist/components/ods-popover.js"
+    },
+    "./ods-progress-bar": {
+      "types": "./dist/components/ods-progress-bar.d.ts",
+      "import": "./dist/components/ods-progress-bar.js"
+    },
+    "./ods-quantity": {
+      "types": "./dist/components/ods-quantity.d.ts",
+      "import": "./dist/components/ods-quantity.js"
+    },
+    "./ods-radio": {
+      "types": "./dist/components/ods-radio.d.ts",
+      "import": "./dist/components/ods-radio.js"
+    },
+    "./ods-range": {
+      "types": "./dist/components/ods-range.d.ts",
+      "import": "./dist/components/ods-range.js"
+    },
+    "./ods-select": {
+      "types": "./dist/components/ods-select.d.ts",
+      "import": "./dist/components/ods-select.js"
+    },
+    "./ods-skeleton": {
+      "types": "./dist/components/ods-skeleton.d.ts",
+      "import": "./dist/components/ods-skeleton.js"
+    },
+    "./ods-spinner": {
+      "types": "./dist/components/ods-spinner.d.ts",
+      "import": "./dist/components/ods-spinner.js"
+    },
+    "./ods-switch": {
+      "types": "./dist/components/ods-switch.d.ts",
+      "import": "./dist/components/ods-switch.js"
+    },
+    "./ods-switch-item": {
+      "types": "./dist/components/ods-switch-item.d.ts",
+      "import": "./dist/components/ods-switch-item.js"
+    },
+    "./ods-table": {
+      "types": "./dist/components/ods-table.d.ts",
+      "import": "./dist/components/ods-table.js"
+    },
+    "./ods-tab": {
+      "types": "./dist/components/ods-tab.d.ts",
+      "import": "./dist/components/ods-tab.js"
+    },
+    "./ods-tabs": {
+      "types": "./dist/components/ods-tabs.d.ts",
+      "import": "./dist/components/ods-tabs.js"
+    },
+    "./ods-tag": {
+      "types": "./dist/components/ods-tag.d.ts",
+      "import": "./dist/components/ods-tag.js"
+    },
+    "./ods-text": {
+      "types": "./dist/components/ods-text.d.ts",
+      "import": "./dist/components/ods-text.js"
+    },
+    "./ods-textarea": {
+      "types": "./dist/components/ods-textarea.d.ts",
+      "import": "./dist/components/ods-textarea.js"
+    },
+    "./ods-timepicker": {
+      "types": "./dist/components/ods-timepicker.d.ts",
+      "import": "./dist/components/ods-timepicker.js"
+    },
+    "./ods-toggle": {
+      "types": "./dist/components/ods-toggle.d.ts",
+      "import": "./dist/components/ods-toggle.js"
+    },
+    "./ods-tooltip": {
+      "types": "./dist/components/ods-tooltip.d.ts",
+      "import": "./dist/components/ods-tooltip.js"
+    }
+  },
   "scripts": {
     "build:ci": "npm run build:prod",
     "build:prod": "node ./scripts/build-stencil",
@@ -27,7 +193,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "1.6.11",
-    "@stencil/core": "4.16.0",
+    "@stencil/core": "4.23.0",
     "google-libphonenumber": "3.2.35",
     "tom-select": "2.3.1",
     "tslib": "2.6.3",
@@ -37,7 +203,7 @@
     "@custom-elements-manifest/analyzer": "0.10.3",
     "@jest/types": "29.6.3",
     "@stencil-community/postcss": "2.2.0",
-    "@stencil/react-output-target": "0.5.3",
+    "@stencil/react-output-target": "0.8.1",
     "@stencil/sass": "3.0.12",
     "@stencil/vue-output-target": "0.8.8",
     "@types/google-libphonenumber": "7.4.30",

@@ -1,0 +1,43 @@
+{
+  "name": "@ovhcloud/ods-components-react2",
+  "version": "18.4.1",
+  "private": true,
+  "description": "React custom",
+  "keywords": [],
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "build1": "vite build",
+    "clean": "rimraf dist",
+    "compile": "npm run compile:esm && npm run compile:cjs",
+    "compile:esm": "tsc -p tsconfig.json",
+    "compile:cjs": "tsc -p tsconfig.cjs.json",
+    "test:react:e2e": "concurrently -s first -k \"npm run start --prefix tests/_app\" \"wait-on http://localhost:3000 && jest -i -c tests/jest.config.js\"",
+    "test:react:e2e:ci": "concurrently -s first -k \"npm run start --prefix tests/_app\" \"node ../scripts/wait-for-http.js http://localhost:3000 && jest -i -c tests/jest.config.js\"",
+    "test:react:testing-library": "jest -c ./testing-library/jest.config.ts",
+    "test:wrapper:react": "npm run test:react:e2e:ci && npm run test:react:testing-library"
+  },
+  "main": "dist/index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "peerDependencies": {
+    "react": ">=16.8.6",
+    "react-dom": ">=16.8.6"
+  },
+  "dependencies": {
+    "classnames": "2.5.1",
+    "react-shadow": "20.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.2.1",
+    "sass": "1.71.0",
+    "vite": "5.0.10",
+    "vite-plugin-dts": "4.4.0",
+    "vite-plugin-lib-inject-css": "2.2.0",
+    "vite-tsconfig-paths": "4.2.3"
+  }
+}

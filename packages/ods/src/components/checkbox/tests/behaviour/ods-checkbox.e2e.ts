@@ -147,80 +147,115 @@ describe('ods-checkbox behaviour', () => {
   });
 
   describe('form', () => {
+    let formData: Record<string, FormDataEntryValue> = {};
+
+    async function setupWithinForm(content: string): Promise<void> {
+      formData = {};
+      page = await newE2EPage();
+
+      await page.exposeFunction('e2eFormSubmit', (data: Record<string, FormDataEntryValue>) => {
+        formData = data;
+      });
+
+      await page.setContent(`<form method="get" onsubmit="return false;">${content}</form>`);
+
+      await page.evaluate(() => {
+        const form = document.querySelector('form');
+
+        form?.addEventListener('submit', () => {
+          const formData = new FormData(form);
+          const data: Record<string, FormDataEntryValue> = {};
+
+          for (const [key, value] of formData) {
+            if (data[key]) {
+              data[key] += `,${value}`;
+            } else {
+              data[key] = value;
+            }
+          }
+
+          // @ts-ignore function is exposed manually
+          window.e2eFormSubmit(data);
+        });
+      });
+    }
+
     it('should get form data with button type submit', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-checkbox input-id="checkbox-form" name="name" value="coding" is-checked></ods-checkbox>
         <ods-checkbox input-id="checkbox-form" name="name" value="music"></ods-checkbox>
         <ods-checkbox input-id="checkbox-form" name="name" value="reading"></ods-checkbox>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const submitButton = await page.find('button[type="submit"]');
+
       await submitButton.click();
-      await page.waitForNetworkIdle();
-      const url = new URL(page.url());
-      expect(url.searchParams.getAll('name')).toEqual(['coding']);
+      await page.waitForChanges();
+
+      expect(formData).toEqual({ name: 'coding' });
     });
 
     it('should get form data with multiple checkbox', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-checkbox input-id="checkbox-form" name="name" value="coding" is-checked></ods-checkbox>
         <ods-checkbox input-id="checkbox-form" name="name" value="music" is-checked></ods-checkbox>
         <ods-checkbox input-id="checkbox-form" name="name" value="reading" is-checked></ods-checkbox>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const submitButton = await page.find('button[type="submit"]');
+
       await submitButton.click();
-      await page.waitForNetworkIdle();
-      const url = new URL(page.url());
-      expect(url.searchParams.getAll('name')).toEqual(['coding', 'music', 'reading']);
+      await page.waitForChanges();
+
+      expect(formData).toEqual({ name: 'coding,music,reading' });
     });
 
     it('should not add the checkbox to the formData if unchecked', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-checkbox input-id="checkbox-form" name="name" value="coding"></ods-checkbox>
         <ods-checkbox input-id="checkbox-form" name="name" value="music"></ods-checkbox>
         <ods-checkbox input-id="checkbox-form" name="name" value="reading"></ods-checkbox>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const submitButton = await page.find('button[type="submit"]');
+
       await submitButton.click();
-      await page.waitForNetworkIdle();
-      const url = new URL(page.url());
-      expect(url.searchParams.get('name')).toBeNull();
+      await page.waitForChanges();
+
+      expect(formData).toEqual({});
     });
 
     it('should reset form with button type reset', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-checkbox input-id="checkbox-form" name="name" value="coding"></ods-checkbox>
         <ods-checkbox input-id="checkbox-form" name="name" value="music"></ods-checkbox>
         <ods-checkbox input-id="checkbox-form" name="name" value="reading"></ods-checkbox>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const resetButton = await page.find('button[type="reset"]');
-      await resetButton.click();
-
       const submitButton = await page.find('button[type="submit"]');
+
+      await resetButton.click();
+      await page.waitForChanges();
+
       await submitButton.click();
-      await page.waitForNetworkIdle();
-      const url = new URL(page.url());
-      expect(url.searchParams.get('name')).toBeNull();
+      await page.waitForChanges();
+
+      expect(formData).toEqual({});
     });
 
     it('should submit form on Enter', async() => {
-      await setup(`<form method="get">
-        <ods-checkbox is-checked name="odsCheckbox" value="checkbox"></ods-checkbox>
-      </form>`);
+      await setupWithinForm('<ods-checkbox is-checked name="odsCheckbox" value="checkbox"></ods-checkbox>');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsCheckbox')).toBe('checkbox');
+      expect(formData).toEqual({ odsCheckbox: 'checkbox' });
     });
   });
 });

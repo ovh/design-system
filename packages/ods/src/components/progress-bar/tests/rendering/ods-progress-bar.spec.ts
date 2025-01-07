@@ -1,6 +1,6 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsProgressBar } from '../../src';
+import { OdsProgressBar } from '../../src/components/ods-progress-bar/ods-progress-bar';
 
 describe('ods-progress-bar rendering', () => {
   let page: SpecPage;

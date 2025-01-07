@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsPassword } from '../../src';
+import { type OdsPassword } from '../../src/components/ods-password/ods-password';
 
 describe('ods-password validity', () => {
   let el: E2EElement;

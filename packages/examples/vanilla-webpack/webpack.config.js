@@ -4,7 +4,8 @@ const path = require('path');
 
 module.exports = (env, options) => {
   return {
-    devtool: options.mode === 'development' ? 'eval-source-map' : false,
+    //devtool: options.mode === 'development' ? 'eval-source-map' : false,
+    devtool: options.mode === 'development' ? 'eval-cheap-source-map' : false,
     devServer: {
       historyApiFallback: true,
       port: 8080,

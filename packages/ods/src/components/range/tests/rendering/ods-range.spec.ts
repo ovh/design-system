@@ -5,9 +5,9 @@ jest.mock('../../src/controller/ods-range', () => ({
   toPercentage: jest.fn(),
   updateInternals: jest.fn(),
 }));
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { OdsRange } from '../../src';
+
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
+import { OdsRange } from '../../src/components/ods-range/ods-range';
 
 const mutationObserverMock = jest.fn(function MutationObserver(callback) {
   this.observe = jest.fn();

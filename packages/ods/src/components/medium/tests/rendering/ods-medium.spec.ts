@@ -1,6 +1,6 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsMedium } from '../../src';
+import { OdsMedium } from '../../src/components/ods-medium/ods-medium';
 
 describe('ods-medium rendering', () => {
   let page: SpecPage;

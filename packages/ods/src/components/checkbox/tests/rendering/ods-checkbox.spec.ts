@@ -1,5 +1,5 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { OdsCheckbox } from '../../src';
+import { OdsCheckbox } from '../../src/components/ods-checkbox/ods-checkbox';
 
 // @ts-ignore for test purposes
 global.MutationObserver = jest.fn(() => ({

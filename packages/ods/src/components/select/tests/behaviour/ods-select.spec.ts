@@ -10,9 +10,8 @@ jest.mock('../../src/controller/ods-select', () => ({
   setSelectValue: jest.fn(),
 }));
 
-import { type SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { OdsSelect } from '../../src';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
+import { OdsSelect } from '../../src/components/ods-select/ods-select';
 import { type SelectConfig } from '../../src/controller/ods-select';
 
 describe('ods-select behaviour', () => {

@@ -115,7 +115,7 @@
     const toggleIsRequiredButton = document.querySelector('#form-toggle-is-required-button');
 
     checkValidityFormButton.addEventListener('click', async() => {
-      console.log('Check validity: ', await formQuantity.checkValidity());
+      // console.log('Check validity: ', await formQuantity.checkValidity());
     });
 
     clearFormButton.addEventListener('click', async() => {
@@ -140,7 +140,7 @@
 
     ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{
       formQuantity.addEventListener(eventName, (event) => {
-        // console.log(eventName, event);
+        console.log(eventName, event);
       });
     });
 

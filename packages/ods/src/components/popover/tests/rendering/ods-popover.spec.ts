@@ -1,5 +1,6 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { ODS_POPOVER_POSITION, ODS_POPOVER_STRATEGY, OdsPopover } from '../../src';
+import { ODS_POPOVER_POSITION, ODS_POPOVER_STRATEGY } from '../../src';
+import { OdsPopover } from '../../src/components/ods-popover/ods-popover';
 
 describe('ods-popover rendering', () => {
   let page: SpecPage;

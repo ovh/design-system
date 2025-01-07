@@ -2,7 +2,8 @@ import { AttachInternals, Component, Event, type EventEmitter, type FunctionalCo
 import { PhoneNumberUtil } from 'google-libphonenumber';
 import { type OdsFormElement } from '../../../../../types';
 import { submitFormOnEnter } from '../../../../../utils/dom';
-import { type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
+import { type OdsInputChangeEvent } from '../../../../input/src';
+import { type OdsInput } from '../../../../input/src/components/ods-input/ods-input';
 import { type OdsSelectChangeEvent, type OdsSelectCustomRendererData } from '../../../../select/src';
 import { type OdsPhoneNumberCountryIsoCode } from '../../constants/phone-number-country-iso-code';
 import { type OdsPhoneNumberCountryPreset } from '../../constants/phone-number-country-preset';

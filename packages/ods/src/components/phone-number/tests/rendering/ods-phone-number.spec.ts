@@ -2,7 +2,7 @@ jest.mock('../../src/controller/ods-phone-number');
 
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsPhoneNumber } from '../../src';
+import { OdsPhoneNumber } from '../../src/components/ods-phone-number/ods-phone-number';
 
 describe('ods-phone-number rendering', () => {
   let page: SpecPage;

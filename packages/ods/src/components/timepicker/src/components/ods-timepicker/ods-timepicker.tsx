@@ -1,14 +1,14 @@
-import type { OdsSelect } from '../../../../select/src';
-import type { OdsTimepickerChangeEventDetail } from '../../interfaces/event';
-import type { EventEmitter, FunctionalComponent } from '@stencil/core';
-import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { type OdsFormElement } from '../../../../../types';
 import { submitFormOnEnter } from '../../../../../utils/dom';
-import { ODS_INPUT_TYPE, type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
+import { ODS_INPUT_TYPE, type OdsInputChangeEvent } from '../../../../input/src';
+import { type OdsInput } from '../../../../input/src/components/ods-input/ods-input';
 import { type OdsSelectChangeEvent } from '../../../../select/src';
+import { type OdsSelect } from '../../../../select/src/components/ods-select/ods-select';
 import { type OdsTimezonePreset } from '../../constant/timezone-preset';
 import { type OdsTimezone } from '../../constant/timezones';
 import { VALUE_DEFAULT_VALUE, formatValue, getCurrentTimezone, getInitialValue, parseTimezones, updateInternals } from '../../controller/ods-timepicker';
+import { type OdsTimepickerChangeEventDetail } from '../../interfaces/event';
 
 @Component({
   formAssociated: true,

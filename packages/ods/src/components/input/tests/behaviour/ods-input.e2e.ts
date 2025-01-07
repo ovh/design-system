@@ -4,7 +4,6 @@ import { type OdsInputChangeEventDetail } from '../../src';
 describe('ods-input behaviour', () => {
   let el: E2EElement;
   let page: E2EPage;
-  let buttonSearch: E2EElement;
   let part: E2EElement;
 
   async function setup(content: string): Promise<void> {
@@ -14,7 +13,6 @@ describe('ods-input behaviour', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('ods-input');
-    buttonSearch = await page.find('ods-input >>> ods-button[icon="magnifying-glass"]');
     part = await page.find('ods-input >>> [part="input"]');
     await page.waitForChanges();
   }
@@ -292,57 +290,128 @@ describe('ods-input behaviour', () => {
   });
 
   describe('form', () => {
+    let buttonSearch: E2EElement;
+    let formData: Record<string, FormDataEntryValue> = {};
+
+    async function setupWithinForm(content: string): Promise<void> {
+      formData = {};
+      page = await newE2EPage();
+
+      await page.exposeFunction('e2eFormSubmit', (data: Record<string, FormDataEntryValue>) => {
+        formData = data;
+      });
+
+      await page.setContent(`<form method="get" onsubmit="return false;">${content}</form>`);
+
+      await page.evaluate(() => {
+        const form = document.querySelector('form');
+
+        form?.addEventListener('submit', () => {
+          const formData = new FormData(form);
+          const data: Record<string, FormDataEntryValue> = {};
+
+          for (const [key, value] of formData) {
+            data[key] = value;
+          }
+
+          // @ts-ignore function is exposed manually
+          window.e2eFormSubmit(data);
+        });
+      });
+
+      el = await page.find('ods-input');
+      buttonSearch = await page.find('ods-input >>> ods-button[icon="magnifying-glass"]');
+    }
+
+    it('should get form data with button type submit', async() => {
+      await setupWithinForm(`
+        <ods-input name="odsInput" value="On Vous Heberge ?"></ods-input>
+        <input type="text" name="nativeInput">
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+      `);
+      const submitButton = await page.find('button[type="submit"]');
+
+      await submitButton.click();
+      await page.waitForChanges();
+
+      expect(formData).toEqual({ nativeInput: '', odsInput: 'On Vous Heberge ?' });
+    });
+
+    it('should reset form with button type reset', async() => {
+      await setupWithinForm(`
+        <ods-input name="odsInput" value="On Vous Heberge ?"></ods-input>
+        <input type="text" name="nativeInput">
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+      `);
+      const resetButton = await page.find('button[type="reset"]');
+      const submitButton = await page.find('button[type="submit"]');
+
+      await resetButton.click();
+      await page.waitForChanges();
+
+      await submitButton.click();
+      await page.waitForChanges();
+
+      expect(formData).toEqual({ nativeInput: '', odsInput: '' });
+    });
+
     it('should submit form on Enter', async() => {
-      await setup(`<form method="get">
-        <ods-input name="odsInput" value="text"></ods-input>
-      </form>`);
+      await setupWithinForm('<ods-input name="odsInput" value="text"></ods-input>');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsInput')).toBe('text');
+      expect(formData).toEqual({ odsInput: 'text' });
     });
 
     it('should submit form on search button Enter', async() => {
-      await setup(`<form method="get">
-        <ods-input name="odsInput" type="search" value="text"></ods-input>
-      </form>`);
+      await setupWithinForm('<ods-input name="odsInput" type="search" value="text"></ods-input>');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsInput')).toBe('text');
+      expect(formData).toEqual({ odsInput: 'text' });
     });
 
     it('should submit form on search button space', async() => {
-      await setup(`<form method="get">
-        <ods-input name="odsInput" type="search" value="text"></ods-input>
-      </form>`);
+      await setupWithinForm('<ods-input name="odsInput" type="search" value="text"></ods-input>');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsInput')).toBe('text');
+      expect(formData).toEqual({ odsInput: 'text' });
     });
 
     it('should submit form on search button click', async() => {
-      await setup(`<form method="get">
-        <ods-input name="odsInput" type="search" value="text"></ods-input>
-      </form>`);
+      await setupWithinForm('<ods-input name="odsInput" type="search" value="text"></ods-input>');
 
       await buttonSearch.click();
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsInput')).toBe('text');
+      expect(formData).toEqual({ odsInput: 'text' });
+    });
+
+    it('should not submit form when Enter on clearable button', async() => {
+      await setupWithinForm('<ods-input name="ods-input" is-clearable value="value"></ods-input>');
+      const odsClearSpy = await page.spyOnEvent('odsClear');
+
+      expect(await el.getProperty('value')).toBe('value');
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+
+      expect(formData).toEqual({});
+      expect(await el.getProperty('value')).toBeNull();
+      expect(odsClearSpy).toHaveReceivedEventTimes(1);
     });
   });
 });

@@ -1,5 +1,5 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { OdsBreadcrumbItem } from '../../src';
+import { OdsBreadcrumbItem } from '../../src/components/ods-breadcrumb-item/ods-breadcrumb-item';
 
 describe('ods-breadcrumb-item behaviour', () => {
   const listenerSpy = jest.fn();

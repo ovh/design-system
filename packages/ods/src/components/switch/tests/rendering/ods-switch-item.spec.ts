@@ -1,5 +1,5 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { OdsSwitchItem } from '../../src';
+import { OdsSwitchItem } from '../../src/components/ods-switch-item/ods-switch-item';
 
 // @ts-ignore test purpose
 global.MutationObserver = jest.fn(() => ({

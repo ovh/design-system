@@ -1,5 +1,5 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { OdsRadio } from '../../src';
+import { OdsRadio } from '../../src/components/ods-radio/ods-radio';
 
 // @ts-ignore for test purposes
 global.MutationObserver = jest.fn(() => ({

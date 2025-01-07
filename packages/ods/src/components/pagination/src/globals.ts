@@ -3,11 +3,10 @@
  * when running dev server (yarn start) or e2e tests
  *
  * ex:
- *   import '../../text/src';
+ *   import '../../text/src/components/ods-text/ods-text';
  */
-
-import '../../button/src';
-import '../../icon/src';
-import '../../select/src';
-import '../../text/src';
-import '../../tooltip/src';
+import '../../button/src/components/ods-button/ods-button';
+import '../../icon/src/components/ods-icon/ods-icon';
+import '../../select/src/components/ods-select/ods-select';
+import '../../text/src/components/ods-text/ods-text';
+import '../../tooltip/src/components/ods-tooltip/ods-tooltip';

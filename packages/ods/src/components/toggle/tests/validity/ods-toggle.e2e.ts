@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsToggle } from '../../src';
+import { type OdsToggle } from '../../src/components/ods-toggle/ods-toggle';
 
 describe('ods-toggle validity', () => {
   let el: E2EElement;

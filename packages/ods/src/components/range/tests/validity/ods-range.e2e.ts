@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsRange } from '../../src';
+import { type OdsRange } from '../../src/components/ods-range/ods-range';
 
 describe('ods-range validity', () => {
   let el: E2EElement;

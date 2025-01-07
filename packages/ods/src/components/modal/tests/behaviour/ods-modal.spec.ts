@@ -1,6 +1,6 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsModal } from '../../src';
+import { OdsModal } from '../../src/components/ods-modal/ods-modal';
 
 describe('ods-modal behaviour', () => {
   let page: SpecPage;

@@ -2,7 +2,7 @@ jest.mock('../../../../utils/dom');
 
 import { PhoneNumberFormat, type PhoneNumberUtil } from 'google-libphonenumber';
 import { setInternalsValidityFromOdsComponent } from '../../../../utils/dom';
-import { type OdsInput } from '../../../input/src';
+import { type OdsInput } from '../../../input/src/components/ods-input/ods-input';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, type OdsPhoneNumberCountryIsoCode } from '../../src';
 import { formatPhoneNumber, getCurrentIsoCode, getCurrentLocale, getInitialValue, getNationalPhoneNumberExample, getTranslatedCountryMap, isValidPhoneNumber, parseCountries, parsePhoneNumber, sortCountriesByName, updateInternals } from '../../src/controller/ods-phone-number';
 import countriesTranslationEn from '../../src/i18n/countries-en';

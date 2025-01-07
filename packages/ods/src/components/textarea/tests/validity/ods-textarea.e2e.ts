@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsTextarea } from '../../src';
+import { type OdsTextarea } from '../../src/components/ods-textarea/ods-textarea';
 
 describe('ods-textarea validity', () => {
   let el: E2EElement;

@@ -2,7 +2,7 @@ jest.mock('../../src/controller/ods-datepicker');
 
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsDatepicker } from '../../src';
+import { OdsDatepicker } from '../../src/components/ods-datepicker/ods-datepicker';
 
 // @ts-ignore for test purposes
 global.MutationObserver = jest.fn(() => ({

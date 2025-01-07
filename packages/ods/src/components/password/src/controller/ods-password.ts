@@ -1,5 +1,5 @@
-import type { OdsInput } from '../../../input/src';
 import { setInternalsValidityFromOdsComponent } from '../../../../utils/dom';
+import { type OdsInput } from '../../../input/src/components/ods-input/ods-input';
 
 const VALUE_DEFAULT_VALUE = null;
 

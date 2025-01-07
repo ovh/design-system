@@ -1,5 +1,5 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { OdsFormField } from '../../src';
+import { OdsFormField } from '../../src/components/ods-form-field/ods-form-field';
 
 describe('ods-form-field rendering', () => {
   let page: SpecPage;

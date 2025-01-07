@@ -157,70 +157,95 @@ describe('ods-radio behaviour', () => {
   });
 
   describe('form', () => {
+    let formData: Record<string, FormDataEntryValue> = {};
+
+    async function setupWithinForm(content: string): Promise<void> {
+      formData = {};
+      page = await newE2EPage();
+
+      await page.exposeFunction('e2eFormSubmit', (data: Record<string, FormDataEntryValue>) => {
+        formData = data;
+      });
+
+      await page.setContent(`<form method="get" onsubmit="return false;">${content}</form>`);
+
+      await page.evaluate(() => {
+        const form = document.querySelector('form');
+
+        form?.addEventListener('submit', () => {
+          const formData = new FormData(form);
+          const data: Record<string, FormDataEntryValue> = {};
+
+          for (const [key, value] of formData) {
+            data[key] = value;
+          }
+
+          // @ts-ignore function is exposed manually
+          window.e2eFormSubmit(data);
+        });
+      });
+    }
+
     it('should get form data with button type submit', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-radio input-id="huey-form" name="name" value="huey" is-checked></ods-radio>
         <ods-radio input-id="dewey-form" name="name" value="dewey"></ods-radio>
         <ods-radio input-id="louie-form" name="name" value="louie"></ods-radio>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const submitButton = await page.find('button[type="submit"]');
 
       await submitButton.click();
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('name')).toBe('huey');
+      expect(formData).toEqual({ name: 'huey' });
     });
 
     it('should not add the radio to the formData if unchecked', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-radio input-id="huey-form" name="name" value="huey"></ods-radio>
         <ods-radio input-id="dewey-form" name="name" value="dewey"></ods-radio>
         <ods-radio input-id="louie-form" name="name" value="louie"></ods-radio>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const submitButton = await page.find('button[type="submit"]');
 
       await submitButton.click();
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('name')).toBeNull();
+      expect(formData).toEqual({});
     });
 
     it('should reset form with button type reset', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-radio input-id="huey-form" name="name" value="huey" is-checked></ods-radio>
         <ods-radio input-id="dewey-form" name="name" value="dewey"></ods-radio>
         <ods-radio input-id="louie-form" name="name" value="louie"></ods-radio>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const resetButton = await page.find('button[type="reset"]');
       const submitButton = await page.find('button[type="submit"]');
 
       await resetButton.click();
-      await submitButton.click();
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('name')).toBe('huey');
+      await submitButton.click();
+      await page.waitForChanges();
+
+      expect(formData).toEqual({ name: 'huey' });
     });
 
     it('should submit form on Enter', async() => {
-      await setup(`<form method="get">
-        <ods-radio is-checked name="odsRadio" value="radio"></ods-radio>
-      </form>`);
+      await setupWithinForm('<ods-radio is-checked name="odsRadio" value="radio"></ods-radio>');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsRadio')).toBe('radio');
+      expect(formData).toEqual({ odsRadio: 'radio' });
     });
   });
 });

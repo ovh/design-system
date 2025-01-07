@@ -1,6 +1,6 @@
-import type { OdsInput } from '../../../input/src';
 import { type PhoneNumber, PhoneNumberFormat, type PhoneNumberUtil } from 'google-libphonenumber';
 import { setInternalsValidityFromOdsComponent } from '../../../../utils/dom';
+import { type OdsInput } from '../../../input/src/components/ods-input/ods-input';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODE, ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, type OdsPhoneNumberCountryIsoCode } from '../constants/phone-number-country-iso-code';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET, type OdsPhoneNumberCountryPreset } from '../constants/phone-number-country-preset';
 import { ODS_PHONE_NUMBER_LOCALE, ODS_PHONE_NUMBER_LOCALES, type OdsPhoneNumberLocale } from '../constants/phone-number-locale';

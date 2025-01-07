@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsSelect } from '../../src/';
+import { type OdsSelect } from '../../src/components/ods-select/ods-select';
 
 describe('ods-select rendering', () => {
   let el: E2EElement;

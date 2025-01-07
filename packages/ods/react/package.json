@@ -7,7 +7,8 @@
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run clean && npm run compile",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "build0": "npm run clean && npm run compile",
     "clean": "rimraf dist",
     "compile": "npm run compile:esm && npm run compile:cjs",
     "compile:esm": "tsc -p tsconfig.json",
@@ -17,15 +18,32 @@
     "test:react:testing-library": "jest -c ./testing-library/jest.config.ts",
     "test:wrapper:react": "npm run test:react:e2e:ci && npm run test:react:testing-library"
   },
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main0": "dist/cjs/index.js",
+  "module0": "dist/esm/index.js",
+  "types0": "dist/types/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./ods-accordion": {
+      "import": "./dist/components/stencil-generated/OdsAccordion.js",
+      "types": "./dist/types/components/stencil-generated/OdsAccordion.d.ts"
+    }
+  },
   "files": [
     "dist/"
   ],
   "peerDependencies": {
     "react": ">=16.8.6",
     "react-dom": ">=16.8.6"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-components": "*",
+    "@stencil/react-output-target": "0.8.1"
   },
   "devDependencies": {
     "@babel/core": "7.26.0",

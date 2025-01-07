@@ -1,5 +1,6 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { ODS_BUTTON_COLOR, ODS_BUTTON_ICON_ALIGNMENT, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT, OdsButton } from '../../src';
+import { ODS_BUTTON_COLOR, ODS_BUTTON_ICON_ALIGNMENT, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../src';
+import { OdsButton } from '../../src/components/ods-button/ods-button';
 
 describe('ods-button rendering', () => {
   let page: SpecPage;

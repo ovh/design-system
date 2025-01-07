@@ -1,6 +1,6 @@
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { ODS_DIVIDER_COLOR, ODS_DIVIDER_SPACING, OdsDivider } from '../../src';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
+import { ODS_DIVIDER_COLOR, ODS_DIVIDER_SPACING } from '../../src';
+import { OdsDivider } from '../../src/components/ods-divider/ods-divider';
 
 describe('ods-divider rendering', () => {
   let hr: Element | null | undefined;

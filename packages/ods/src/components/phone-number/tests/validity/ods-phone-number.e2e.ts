@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsPhoneNumber } from '../../src';
+import { type OdsPhoneNumber } from '../../src/components/ods-phone-number/ods-phone-number';
 
 describe('ods-phone-number validity', () => {
   let el: E2EElement;

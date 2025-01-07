@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsCheckbox } from '../../src';
+import { type OdsCheckbox } from '../../src/components/ods-checkbox/ods-checkbox';
 
 describe('ods-checkbox validity', () => {
   let el: E2EElement;

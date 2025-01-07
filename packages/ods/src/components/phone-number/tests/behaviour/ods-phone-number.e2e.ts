@@ -145,48 +145,74 @@ describe('ods-phone-number behaviour', () => {
   });
 
   describe('form', () => {
+    let formData: Record<string, FormDataEntryValue> = {};
+
+    async function setupWithinForm(content: string): Promise<void> {
+      formData = {};
+      page = await newE2EPage();
+
+      await page.exposeFunction('e2eFormSubmit', (data: Record<string, FormDataEntryValue>) => {
+        formData = data;
+      });
+
+      await page.setContent(`<form method="get" onsubmit="return false;">${content}</form>`);
+
+      await page.evaluate(() => {
+        const form = document.querySelector('form');
+
+        form?.addEventListener('submit', () => {
+          const formData = new FormData(form);
+          const data: Record<string, FormDataEntryValue> = {};
+
+          for (const [key, value] of formData) {
+            data[key] = value;
+          }
+
+          // @ts-ignore function is exposed manually
+          window.e2eFormSubmit(data);
+        });
+      });
+    }
+
     it('should get form data when submit button is triggered', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-phone-number iso-code="fr" name="odsPhoneNumber" value="0123456789"></ods-phone-number>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const submitButton = await page.find('button[type="submit"]');
 
       await submitButton.click();
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsPhoneNumber')).toBe('+33123456789');
+      expect(formData).toEqual({ odsPhoneNumber: '+33123456789' });
     });
 
     it('should reset form when reset button is triggered', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-phone-number name="odsPhoneNumber" value="0123456789"></ods-phone-number>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const resetButton = await page.find('button[type="reset"]');
       const submitButton = await page.find('button[type="submit"]');
 
       await resetButton.click();
-      await submitButton.click();
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsPhoneNumber')).toBe('');
+      await submitButton.click();
+      await page.waitForChanges();
+
+      expect(formData).toEqual({ odsPhoneNumber: '' });
     });
 
     it('should submit form on Enter', async() => {
-      await setup(`<form method="get">
-        <ods-phone-number iso-code="fr" name="odsPhoneNumber" value="0123456789"></ods-phone-number>
-      </form>`);
+      await setupWithinForm('<ods-phone-number iso-code="fr" name="odsPhoneNumber" value="0123456789"></ods-phone-number>');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsPhoneNumber')).toBe('+33123456789');
+      expect(formData).toEqual({ odsPhoneNumber: '+33123456789' });
     });
   });
 

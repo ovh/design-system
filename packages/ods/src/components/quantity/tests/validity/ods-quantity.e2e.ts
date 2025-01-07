@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsQuantity } from '../../src';
+import { type OdsQuantity } from '../../src/components/ods-quantity/ods-quantity';
 
 describe('ods-quantity validity', () => {
   let el: E2EElement;

@@ -5,10 +5,12 @@ import styles from './app.scss';
 // import { FormFormik } from './components/formFormik/FormFormik';
 // import { FormHookForm } from './components/formHookForm/FormHookForm';
 // import { FormNative } from './components/formNative/FormNative';
-import { TestAccordion } from './components/testAccordion/TestAccordion';
+// import { TestAccordion } from './components/testAccordion/TestAccordion';
 // import { TestModal } from './components/testModal/TestModal';
 // import { TestSelect } from './components/testSelect/TestSelect';
 // import { TestToggle } from './components/testToggle/TestToggle';
+import { OdsButton } from '@ovhcloud/ods-components-react';
+// import { OdsButton } from '@ovhcloud/ods-components/react2';
 
 // const queryClient = new QueryClient();
 
@@ -19,11 +21,12 @@ function App(): ReactElement {
       {/*<FormFormik />*/}
       {/*<FormHookForm />*/}
       {/*<FormNative />*/}
-      <TestAccordion />
+      {/*<TestAccordion />*/}
       {/*<QueryClientProvider client={queryClient}>*/}
       {/*  <TestSelect />*/}
       {/*</QueryClientProvider>*/}
       {/*<TestToggle />*/}
+      <OdsButton label="Test" />
     </div>
   );
 }

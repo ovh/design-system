@@ -27,11 +27,12 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestOption = 
     },
     namespace,
     outputTargets: [
-      {
-        type: 'dist',
-      },
+      // {
+      //   type: 'dist',
+      // },
       {
         customElementsExportBehavior: 'auto-define-custom-elements',
+        externalRuntime: false,
         generateTypeDeclarations: true,
         includeGlobalScripts: false,
         type: 'dist-custom-elements',
@@ -78,7 +79,7 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestOption = 
         prettierPath: jestOption.prettierPath || undefined,
         resolver: jestOption.resolver || undefined,
         restoreMocks: undefined,
-        testRegex: testOption.testRegex as string,
+        testRegex: [testOption.testRegex as string],
 
         // Actual Stencil testing config
         browserHeadless: false,
@@ -102,12 +103,14 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestOption = 
       enableCache: false,
       outputTargets: baseConfig.outputTargets?.concat([
         reactOutputTarget({
-          componentCorePackage,
-          customElementsDir: 'dist/components',
-          includeDefineCustomElements: false,
-          includeImportCustomElements: true,
-          includePolyfills: false,
-          proxiesFile: './react/src/components/stencil-generated/index.ts',
+          // componentCorePackage,
+          // customElementsDir: 'dist/components',
+          // includeDefineCustomElements: false,
+          // includeImportCustomElements: true,
+          // includePolyfills: false,
+          esModules: true,
+          outDir: './react/src/components/stencil-generated/index.ts',
+          // proxiesFile: './react/src/components/stencil-generated/index.ts',
         }),
         vueOutputTarget({
           componentCorePackage,

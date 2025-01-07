@@ -9,6 +9,7 @@
   "exclude": [
     "node_modules",
     "react",
+    "react2",
     "vue",
     "**/**/.stencil",
     "**/**/dist",

@@ -10,6 +10,7 @@
     "packages/ods",
     "packages/ods/react",
     "packages/ods/react/tests/*",
+    "packages/ods/react2",
     "packages/ods/src/components/!(dist|loader)*",
     "packages/ods/style",
     "packages/ods/vue",

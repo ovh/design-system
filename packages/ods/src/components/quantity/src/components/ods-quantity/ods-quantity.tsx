@@ -4,7 +4,8 @@ import { submitFormOnEnter } from '../../../../../utils/dom';
 import { isNumeric } from '../../../../../utils/type';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
-import { ODS_INPUT_TYPE, type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
+import { ODS_INPUT_TYPE, type OdsInputChangeEvent } from '../../../../input/src';
+import { type OdsInput } from '../../../../input/src/components/ods-input/ods-input';
 import { VALUE_DEFAULT_VALUE, getInitialValue, isMinusButtonDisabled, isPlusButtonDisabled, updateInternals } from '../../controller/ods-quantity';
 import { type OdsQuantityChangeEventDetail } from '../../interfaces/events';
 

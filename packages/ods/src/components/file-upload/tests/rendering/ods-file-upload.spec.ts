@@ -1,5 +1,5 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { OdsFileUpload } from '../../src';
+import { OdsFileUpload } from '../../src/components/ods-file-upload/ods-file-upload';
 
 describe('ods-file-upload rendering', () => {
   let page: SpecPage;

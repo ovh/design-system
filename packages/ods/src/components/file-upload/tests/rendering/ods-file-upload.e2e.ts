@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsFileUpload } from '../../src';
+import { type OdsFileUpload } from '../../src/components/ods-file-upload/ods-file-upload';
 
 describe('ods-file-upload rendering', () => {
   let el: E2EElement;

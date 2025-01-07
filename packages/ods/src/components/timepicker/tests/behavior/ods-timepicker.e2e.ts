@@ -236,31 +236,56 @@ describe('ods-timepicker behavior', () => {
   });
 
   describe('form', () => {
+    let formData: Record<string, FormDataEntryValue> = {};
+
+    async function setupWithinForm(content: string): Promise<void> {
+      formData = {};
+      page = await newE2EPage();
+
+      await page.exposeFunction('e2eFormSubmit', (data: Record<string, FormDataEntryValue>) => {
+        formData = data;
+      });
+
+      await page.setContent(`<form method="get" onsubmit="return false;">${content}</form>`);
+
+      await page.evaluate(() => {
+        const form = document.querySelector('form');
+
+        form?.addEventListener('submit', () => {
+          const formData = new FormData(form);
+          const data: Record<string, FormDataEntryValue> = {};
+
+          for (const [key, value] of formData) {
+            data[key] = value;
+          }
+
+          // @ts-ignore function is exposed manually
+          window.e2eFormSubmit(data);
+        });
+      });
+    }
+
     it('should get form data when submit button is triggered', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-timepicker name="odsTimepicker" value="12:42"></ods-timepicker>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const submitButton = await page.find('button[type="submit"]');
 
       await submitButton.click();
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsTimepicker')).toBe('12:42');
+      expect(formData).toEqual({ odsTimepicker: '12:42' });
     });
 
     it('should submit form on Enter', async() => {
-      await setup(`<form method="get">
-        <ods-timepicker name="odsTimepicker" value="12:42"></ods-timepicker>
-      </form>`);
+      await setupWithinForm('<ods-timepicker name="odsTimepicker" value="12:42"></ods-timepicker>');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsTimepicker')).toBe('12:42');
+      expect(formData).toEqual({ odsTimepicker: '12:42' });
     });
   });
 });

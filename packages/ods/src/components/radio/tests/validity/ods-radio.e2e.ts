@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsRadio } from '../../src';
+import { type OdsRadio } from '../../src/components/ods-radio/ods-radio';
 
 describe('ods-radio validity', () => {
   let el: E2EElement;

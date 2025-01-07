@@ -1,6 +1,6 @@
 import { setInternalsValidityFromOdsComponent } from '../../../../utils/dom';
 import { isNumeric } from '../../../../utils/type';
-import { type OdsInput } from '../../../input/src';
+import { type OdsInput } from '../../../input/src/components/ods-input/ods-input';
 
 const VALUE_DEFAULT_VALUE = null;
 

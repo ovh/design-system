@@ -7,44 +7,99 @@
 </head>
 
 <body>
-  <ods-modal is-open>
-    <ods-icon id="tooltip-trigger"
-              name="circle-question">
-    </ods-icon>
+<!--  <ods-input name="input" value="toto"></ods-input>-->
+<!--  <ods-skeleton name="input"></ods-skeleton>-->
+<!--  <ods-text>TOTO</ods-text>-->
+<!--  <ods-password name="password"></ods-password>-->
+<!--  <ods-phone-number name="phone" countries="all" is-required></ods-phone-number>-->
 
-    <ods-tooltip strategy="fixed"
-                 trigger-id="tooltip-trigger">
-      TestTooltip
-    </ods-tooltip>
-  </ods-modal>
+<!--  <ods-breadcrumb>-->
+<!--    <ods-breadcrumb-item href="#"-->
+<!--                         icon="home">-->
+<!--    </ods-breadcrumb-item>-->
 
-  <form>
-    <ods-input is-required
-               name="text"
-               pattern="\d*">
-    </ods-input>
+<!--    <ods-breadcrumb-item href="#"-->
+<!--                         label="Link">-->
+<!--    </ods-breadcrumb-item>-->
 
-    <ods-textarea is-required
-                  name="textarea">
-    </ods-textarea>
+<!--    <ods-breadcrumb-item href="#"-->
+<!--                         icon="arrow-right"-->
+<!--                         label="Link icon">-->
+<!--    </ods-breadcrumb-item>-->
 
-    <ods-button label="Submit"
-                type="submit">
-    </ods-button>
-  </form>
+<!--    <ods-breadcrumb-item href="#"-->
+<!--                         label="Text">-->
+<!--    </ods-breadcrumb-item>-->
+<!--  </ods-breadcrumb>-->
 
-  <script>
-    const formElement = document.querySelector('form');
+<!--  <ods-icon name="xmark"></ods-icon>-->
 
-    formElement.addEventListener('submit', (e) => {
-      // e.preventDefault();
+<!--  <ods-button label="Submit" icon="xmark"-->
+<!--              type="submit">-->
+<!--  </ods-button>-->
 
-      const formData = new FormData(formElement)
+<!--  <ods-clipboard>-->
+<!--  </ods-clipboard>-->
 
-      for (const [key, value] of formData) {
-        console.log(`${key}: ${value}`)
-      }
-    });
-  </script>
+  <ods-accordion>
+    <div slot="summary">
+      <span>Hello, world!</span>
+    </div>
+
+    <div>
+      <span>
+        Lorem ipsum dolor sit amet, ...
+      </span>
+    </div>
+  </ods-accordion>
+
+<!--  <ods-file-upload id="default">-->
+<!--  </ods-file-upload>-->
+<!--  <script>-->
+<!--    const defaultFileUpload = document.querySelector('#default');-->
+
+<!--    defaultFileUpload.addEventListener('odsChange', ({ detail }) => {-->
+<!--      defaultFileUpload.files = (defaultFileUpload.files || []).concat(detail.files);-->
+<!--    });-->
+<!--  </script>-->
+<!--  <ods-modal is-open>-->
+<!--    <ods-icon id="tooltip-trigger"-->
+<!--              name="circle-question">-->
+<!--    </ods-icon>-->
+
+<!--    <ods-tooltip strategy="fixed"-->
+<!--                 trigger-id="tooltip-trigger">-->
+<!--      TestTooltip-->
+<!--    </ods-tooltip>-->
+<!--  </ods-modal>-->
+
+<!--  <form>-->
+<!--    <ods-input is-required-->
+<!--               name="text"-->
+<!--               pattern="\d*">-->
+<!--    </ods-input>-->
+
+<!--    <ods-textarea is-required-->
+<!--                  name="textarea">-->
+<!--    </ods-textarea>-->
+
+<!--    <ods-button label="Submit" icon="xmark"-->
+<!--                type="submit">-->
+<!--    </ods-button>-->
+<!--  </form>-->
+
+<!--  <script>-->
+<!--    const formElement = document.querySelector('form');-->
+
+<!--    formElement.addEventListener('submit', (e) => {-->
+<!--      // e.preventDefault();-->
+
+<!--      const formData = new FormData(formElement)-->
+
+<!--      for (const [key, value] of formData) {-->
+<!--        console.log(`${key}: ${value}`)-->
+<!--      }-->
+<!--    });-->
+<!--  </script>-->
 </body>
 </html>

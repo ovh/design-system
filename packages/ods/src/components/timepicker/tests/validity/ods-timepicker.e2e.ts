@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsTimepicker } from '../../src';
+import { type OdsTimepicker } from '../../src/components/ods-timepicker/ods-timepicker';
 
 describe('ods-timepicker validity', () => {
   let el: E2EElement;

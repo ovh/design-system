@@ -1,6 +1,6 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsPagination } from '../../src';
+import { OdsPagination } from '../../src/components/ods-pagination/ods-pagination';
 
 describe('ods-pagination rendering', () => {
   let page: SpecPage;

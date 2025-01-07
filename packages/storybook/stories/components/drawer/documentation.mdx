@@ -1,4 +1,4 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as DrawerStories from './drawer.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
@@ -7,6 +7,8 @@ import { IdentityCard } from '../../../src/components/identityCard/IdentityCard'
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { CanvasWithoutContext } from '../../../src/components/canvasWithoutContext/CanvasWithoutContext';
+import { OdsLink } from '@ovhcloud/ods-components/react';
 
 <Meta of={ DrawerStories } name="Documentation" />
 
@@ -14,7 +16,7 @@ import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 The Drawer component provides a sliding panel that reveals additional content without navigating away from the current page.
 
-<Canvas of={ DrawerStories.Overview } sourceState="none" />
+<CanvasWithoutContext of={ DrawerStories.Overview } sourceState="none" />
 
 <Heading label="Overview" level={ 2 } />
 
@@ -64,6 +66,9 @@ The **Drawer** can be positioned on any edge of the screen:
 The **Drawer** is displayed above all page content but is positioned below the Modal in terms of layering, following the z-index hierarchy defined by OVHcloud Design System. This ensures consistent stacking behavior across components.
 
 By default, the OVHcloud Design System does not enforce whether the **Drawer** is fixed or scrollable. Integrators can configure this behavior based on their specific use case and requirements.
+
+Be careful the placement of the drawer can be broken if you create a new <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context" label="staking context" target="_blank" />.
+For example with a transform style or scale.
 
 <Heading label="Behavior" level={ 2 } />
 

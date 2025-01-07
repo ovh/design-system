@@ -1,9 +1,10 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import SpecificationsDrawer from '@ovhcloud/ods-components/src/components/drawer/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as DrawerStories from './drawer.stories';
+import { CanvasWithoutContext } from '../../../src/components/canvasWithoutContext/CanvasWithoutContext';
 
 <Meta of={ DrawerStories } name="Technical information" />
 
@@ -11,7 +12,7 @@ import * as DrawerStories from './drawer.stories';
 
 <Heading label="Overview" level={ 2 } />
 
-<Canvas of={ DrawerStories.Overview } sourceState="none" />
+<CanvasWithoutContext of={ DrawerStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsDrawer } />
 
@@ -21,15 +22,15 @@ You can add your own style on the drawer element using the part `dialog`.
 
 Custom CSS:
 
-<Canvas of={ DrawerStories.CustomCSS } sourceState="shown" />
+<CanvasWithoutContext of={ DrawerStories.CustomCSS } sourceState="shown" />
 
 <Heading label="Examples" level={ 2 } />
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ DrawerStories.Default } sourceState="shown" />
+<CanvasWithoutContext of={ DrawerStories.Default } sourceState="shown" />
 
 <Heading label="Position" level={ 3 } />
 
-<Canvas of={ DrawerStories.Position } sourceState="shown" />
+<CanvasWithoutContext of={ DrawerStories.Position } sourceState="shown" />
 

@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsCheckbox } from 'ods-components-react';
+import OdsCheckbox from '@ovhcloud/ods-components-react/ods-checkbox';
 
 const Checkbox = () => {
   function onOdsChange() {

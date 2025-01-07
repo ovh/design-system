@@ -1,9 +1,7 @@
-import { OdsTextarea } from 'ods-components-react';
-import { type ReactElement } from 'react';
 import React from 'react-dom/client';
+import OdsTextarea from '@ovhcloud/ods-components-react/ods-textarea';
 
-// eslint-disable-next-line func-style
-const Textarea = (): ReactElement => {
+const Textarea = () => {
   function onOdsChange(): void {
     console.log('React textarea odsChange');
   }
@@ -11,11 +9,11 @@ const Textarea = (): ReactElement => {
   return (
     <>
       <OdsTextarea name="ods-textarea"
-        onOdsChange={ onOdsChange } />
+                   onOdsChange={ onOdsChange } />
 
       <OdsTextarea isDisabled
-        name="ods-textarea-disabled"
-        onOdsChange={ onOdsChange } />
+                   name="ods-textarea-disabled"
+                   onOdsChange={ onOdsChange } />
     </>
   );
 };

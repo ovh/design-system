@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsDatepicker } from 'ods-components-react';
+import OdsDatepicker from '@ovhcloud/ods-components-react/ods-datepicker';
 
 const Datepicker = () => {
   return (

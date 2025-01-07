@@ -1,6 +1,6 @@
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { ODS_BADGE_COLOR, ODS_BADGE_SIZE, OdsBadge } from '../../src';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
+import { ODS_BADGE_COLOR, ODS_BADGE_SIZE } from '../../src';
+import { OdsBadge } from '../../src/components/ods-badge/ods-badge';
 
 describe('ods-badge rendering', () => {
   let page: SpecPage;

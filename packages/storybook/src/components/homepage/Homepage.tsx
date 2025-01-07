@@ -1,5 +1,6 @@
 import { ODS_ICON_NAME, ODS_TEXT_PRESET } from '@ovhcloud/ods-components';
-import { OdsLink, OdsText } from '@ovhcloud/ods-components/react';
+import OdsLink from '@ovhcloud/ods-components-react/ods-link';
+import OdsText from '@ovhcloud/ods-components-react/ods-text';
 import React from 'react';
 import { StorybookLink } from '../storybookLink/StorybookLink';
 import styles from './homepage.module.css';

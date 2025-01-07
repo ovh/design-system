@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsMessage } from 'ods-components-react';
+import OdsMessage from '@ovhcloud/ods-components-react/ods-message';
 
 const Message = () => {
   return (

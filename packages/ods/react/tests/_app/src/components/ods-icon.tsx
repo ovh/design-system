@@ -1,6 +1,6 @@
 import React from 'react-dom/client';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
-import { OdsIcon } from 'ods-components-react';
+import OdsIcon from '@ovhcloud/ods-components-react/ods-icon';
 
 const Icon = () => {
   return (

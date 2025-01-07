@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsTimepicker } from 'ods-components-react';
+import OdsTimepicker from '@ovhcloud/ods-components-react/ods-timepicker';
 
 const Timepicker = () => {
   function onOdsChange() {

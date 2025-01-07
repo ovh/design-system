@@ -1,15 +1,5 @@
 <template>
-  <OdsPagination defaultCurrentPage={3} totalPages={21} />
+  <ods-pagination default-current-page="3"
+                  total-pages="21">
+  </ods-pagination>
 </template>
-
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { OdsPagination } from '@ovhcloud/ods-components/vue';
-
-  export default defineComponent({
-    name: 'Pagination',
-    components: {
-      OdsPagination,
-    },
-  });
-</script>

@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsButton } from 'ods-components-react';
+import OdsButton from '@ovhcloud/ods-components-react/ods-button';
 
 const Button = () => {
   function onClick() {

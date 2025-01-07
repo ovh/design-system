@@ -1,20 +1,11 @@
 <template>
-  <OdsCheckbox @odsChange="onOdsChange"/>
+  <ods-checkbox @odsChange="onOdsChange"></ods-checkbox>
 
-  <OdsCheckbox @odsChange="onOdsChange" isDisabled/>
+  <ods-checkbox @odsChange="onOdsChange" is-disabled></ods-checkbox>
 </template>
 
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { OdsCheckbox } from '@ovhcloud/ods-components/vue';
-
-  export default defineComponent({
-    name: 'Checkbox',
-    components: {
-      OdsCheckbox,
-    },
-    methods: {
-      onOdsChange: () => console.log('Vue checkbox odsChange'),
-    }
-  });
+<script setup lang="ts">
+  function onOdsChange(): void {
+    console.log('Vue checkbox odsChange');
+  }
 </script>

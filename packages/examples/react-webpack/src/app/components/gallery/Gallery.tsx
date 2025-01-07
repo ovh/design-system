@@ -1,4 +1,14 @@
-import { OdsBadge, OdsButton, OdsCheckbox, OdsInput, OdsLink, OdsMessage, OdsProgressBar, OdsRadio, OdsSkeleton, OdsTag, OdsText } from '@ovhcloud/ods-components/react';
+import OdsBadge from '@ovhcloud/ods-components-react/ods-badge';
+import OdsButton from '@ovhcloud/ods-components-react/ods-button';
+import OdsCheckbox from '@ovhcloud/ods-components-react/ods-checkbox';
+import OdsInput from '@ovhcloud/ods-components-react/ods-input';
+import OdsLink from '@ovhcloud/ods-components-react/ods-link';
+import OdsMessage from '@ovhcloud/ods-components-react/ods-message';
+import OdsProgressBar from '@ovhcloud/ods-components-react/ods-progress-bar';
+import OdsRadio from '@ovhcloud/ods-components-react/ods-radio';
+import OdsSkeleton from '@ovhcloud/ods-components-react/ods-skeleton';
+import OdsTag from '@ovhcloud/ods-components-react/ods-tag';
+import OdsText from '@ovhcloud/ods-components-react/ods-text';
 import React, { type ReactElement } from 'react';
 import styles from './gallery.scss';
 

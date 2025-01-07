@@ -1,8 +1,7 @@
 jest.mock('../../src/controller/ods-textarea');
 
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { OdsTextarea } from '../../src';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
+import { OdsTextarea } from '../../src/components/ods-textarea/ods-textarea';
 
 // @ts-ignore for test purposes
 global.MutationObserver = jest.fn(() => ({

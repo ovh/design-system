@@ -1,30 +1,21 @@
 <template>
-  <div @odsCancel="onOdsCancel"
-       @odsChange="onOdsChange">
-    <OdsFileUpload :files="files" />
-  </div>
+  <ods-file-upload :files="files"
+                   @odsCancel="onOdsCancel"
+                   @odsChange="onOdsChange">
+  </ods-file-upload>
 </template>
 
-<script lang="ts">
-  import { defineComponent } from 'vue';
+<script setup lang="ts">
   import { type OdsFileCancelEvent, type OdsFileChangeEvent } from '@ovhcloud/ods-components';
-  import { OdsFileUpload } from '@ovhcloud/ods-components/vue';
+  import { ref } from 'vue';
 
-  export default defineComponent({
-    name: 'FileUpload',
-    components: {
-      OdsFileUpload,
-    },
-    data: () => ({
-      files: []
-    }),
-    methods: {
-      onOdsCancel: function(event: OdsFileCancelEvent) {
-        this.files = this.files.filter((file) => file.odsId !== event.detail.odsId);
-      },
-      onOdsChange: function(event: OdsFileChangeEvent) {
-        this.files = this.files.concat(event.detail);
-      },
-    },
-  });
+  let files = ref([]);
+
+  function onOdsCancel(event: OdsFileCancelEvent): void {
+    files.value = files.value.filter((file) => file.odsId !== event.detail.odsId);
+  }
+
+  function onOdsChange(event: OdsFileChangeEvent): void {
+    files.value = files.value.concat(event.detail);
+  }
 </script>

@@ -1,15 +1,3 @@
 <template>
-  <OdsText>lorem ipsum</OdsText>
+  <ods-text>lorem ipsum</ods-text>
 </template>
-
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { OdsText } from '@ovhcloud/ods-components/vue';
-
-  export default defineComponent({
-    name: 'Text',
-    components: {
-      OdsText,
-    },
-  });
-</script>

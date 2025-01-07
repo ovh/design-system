@@ -1,6 +1,6 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsClipboard } from '../../src';
+import { OdsClipboard } from '../../src/components/ods-clipboard/ods-clipboard';
 
 describe('ods-clipboard rendering', () => {
   let page: SpecPage;

@@ -10,7 +10,7 @@ describe('ods-phone-number vue', () => {
   });
 
   beforeEach(async () => {
-    await goToComponentPage(page, 'ods-phone-number');
+    await goToComponentPage(page, 'ods-phone-number', { extraWaitTime: 1000 });
   });
 
   it('render the component correctly', async () => {

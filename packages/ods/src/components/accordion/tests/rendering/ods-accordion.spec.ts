@@ -1,6 +1,6 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsAccordion } from '../../src';
+import { OdsAccordion } from '../../src/components/ods-accordion/ods-accordion';
 
 describe('ods-accordion rendering', () => {
   let page: SpecPage;

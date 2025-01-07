@@ -1,6 +1,6 @@
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { ODS_CARD_COLOR, OdsCard } from '../../src';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
+import { ODS_CARD_COLOR } from '../../src';
+import { OdsCard } from '../../src/components/ods-card/ods-card';
 
 describe('ods-card rendering', () => {
   let page: SpecPage;

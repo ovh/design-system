@@ -3,9 +3,9 @@
  * when running dev server (yarn start) or e2e tests
  *
  * ex:
- *   import '../../text/src';
+ *   import '../../text/src/components/ods-text/ods-text';
  */
-import '../../button/src';
-import '../../divider/src';
-import '../../icon/src';
-import '../../progress-bar/src';
+import '../../button/src/components/ods-button/ods-button';
+import '../../divider/src/components/ods-divider/ods-divider';
+import '../../icon/src/components/ods-icon/ods-icon';
+import '../../progress-bar/src/components/ods-progress-bar/ods-progress-bar';

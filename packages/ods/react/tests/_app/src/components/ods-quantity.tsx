@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsQuantity } from 'ods-components-react';
+import OdsQuantity from '@ovhcloud/ods-components-react/ods-quantity';
 
 const Quantity = () => {
   function onOdsChange() {
@@ -9,10 +9,11 @@ const Quantity = () => {
   return (
     <>
       <OdsQuantity name="ods-quantity"
-      onOdsChange={ onOdsChange }/>
+                   onOdsChange={ onOdsChange }/>
 
-      <OdsQuantity name="ods-quantity-disabled" isDisabled
-      onOdsChange={ onOdsChange }/>
+      <OdsQuantity isDisabled
+                   name="ods-quantity-disabled"
+                   onOdsChange={ onOdsChange }/>
     </>
   );
 };

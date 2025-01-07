@@ -1,5 +1,19 @@
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OdsButton, OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsRange, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker, OdsToggle } from '@ovhcloud/ods-components/react';
+import OdsButton from '@ovhcloud/ods-components-react/ods-button';
+import OdsCheckbox from '@ovhcloud/ods-components-react/ods-checkbox';
+import OdsDatepicker from '@ovhcloud/ods-components-react/ods-datepicker';
+import OdsInput from '@ovhcloud/ods-components-react/ods-input';
+import OdsPassword from '@ovhcloud/ods-components-react/ods-password';
+import OdsPhoneNumber from '@ovhcloud/ods-components-react/ods-phone-number';
+import OdsQuantity from '@ovhcloud/ods-components-react/ods-quantity';
+import OdsRadio from '@ovhcloud/ods-components-react/ods-radio';
+import OdsRange from '@ovhcloud/ods-components-react/ods-range';
+import OdsSelect from '@ovhcloud/ods-components-react/ods-select';
+import OdsSwitch from '@ovhcloud/ods-components-react/ods-switch';
+import OdsSwitchItem from '@ovhcloud/ods-components-react/ods-switch-item';
+import OdsTextarea from '@ovhcloud/ods-components-react/ods-textarea';
+import OdsTimepicker from '@ovhcloud/ods-components-react/ods-timepicker';
+import OdsToggle from '@ovhcloud/ods-components-react/ods-toggle';
 import React, { type FormEvent, type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.scss';
 

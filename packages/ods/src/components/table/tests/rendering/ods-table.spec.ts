@@ -1,5 +1,6 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { ODS_TABLE_SIZE, ODS_TABLE_VARIANT, OdsTable } from '../../src';
+import { ODS_TABLE_SIZE, ODS_TABLE_VARIANT } from '../../src';
+import { OdsTable } from '../../src/components/ods-table/ods-table';
 
 describe('ods-table rendering', () => {
   const dummyTable = '<table><tr><td>Table</td></tr></table>';

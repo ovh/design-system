@@ -1,5 +1,5 @@
 import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
+import OdsIcon from '@ovhcloud/ods-components-react/ods-icon';
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import { type ClassMember, type Module } from 'custom-elements-manifest/schema';

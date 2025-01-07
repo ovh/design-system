@@ -3,9 +3,7 @@
   "compilerOptions": {
     "lib": ["ES2020", "DOM"],
     "module": "ESNext",
-    "paths": {
-      "ods-components-react": ["../../src/components/stencil-generated"]
-    }
+    "moduleResolution": "bundler"
   },
   "include": ["src"]
 }

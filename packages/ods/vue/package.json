@@ -7,7 +7,8 @@
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run clean && npm run compile",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "build0": "npm run clean && npm run compile",
     "clean": "rimraf dist",
     "compile": "npm run compile:esm && npm run compile:cjs",
     "compile:esm": "tsc -p tsconfig.json",
@@ -24,5 +25,9 @@
   ],
   "peerDependencies": {
     "vue": ">=3"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-components": "*",
+    "@stencil/vue-output-target": "0.9.2"
   }
 }

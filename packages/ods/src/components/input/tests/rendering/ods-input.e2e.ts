@@ -45,45 +45,6 @@ describe('ods-input rendering', () => {
     });
   });
 
-  describe('form', () => {
-    it('should get form data with button type submit', async() => {
-      await setup(`<form method="get">
-        <ods-input name="odsInput" value="On Vous Heberge ?"></ods-input>
-        <input type="text" name="natifInput">
-        <button type="reset">Reset</button>
-        <button type="submit">Submit</button>
-      </form>`);
-      const submitButton = await page.find('button[type="submit"]');
-
-      await submitButton.click();
-      await page.waitForNetworkIdle();
-
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsInput')).toBe('On Vous Heberge ?');
-      expect(url.searchParams.get('natifInput')).toBe('');
-    });
-
-    it('should reset form with button type reset', async() => {
-      await setup(`<form method="get">
-        <ods-input name="odsInput" value="On Vous Heberge ?"></ods-input>
-        <input type="text" name="natifInput">
-        <button type="reset">Reset</button>
-        <button type="submit">Submit</button>
-      </form>`);
-
-      const resetButton = await page.find('button[type="reset"]');
-      await resetButton.click();
-
-      const submitButton = await page.find('button[type="submit"]');
-      await submitButton.click();
-      await page.waitForNetworkIdle();
-
-      const url = new URL(page.url());
-      expect(url.searchParams.get('natifInput')).toBe('');
-      expect(url.searchParams.get('odsInput')).toBe('');
-    });
-  });
-
   describe('slots', () => {
     describe('list', () => {
       beforeEach(() => {

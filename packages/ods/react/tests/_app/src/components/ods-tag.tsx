@@ -1,9 +1,9 @@
 import React from 'react-dom/client';
-import { type OdsTagEventRemove } from '@ovhcloud/ods-components';
-import { OdsTag } from 'ods-components-react';
+import { type OdsTagRemoveEvent } from '@ovhcloud/ods-components';
+import OdsTag from '@ovhcloud/ods-components-react/ods-tag';
 
 const Tag = () => {
-  function onRemove(event: OdsTagEventRemove) {
+  function onRemove(event: OdsTagRemoveEvent) {
     console.log(`React tag remove event: ${event.detail.id}`);
   }
 

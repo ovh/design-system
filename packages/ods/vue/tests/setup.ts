@@ -1,10 +1,18 @@
 import puppeteer, { Browser, Page } from 'puppeteer';
 
-async function goToComponentPage(page, componentName) {
+type Option = {
+  extraWaitTime?: number,
+}
+
+async function goToComponentPage(page: Page, componentName: string, option: Option = {}): Promise<void> {
   await page.goto(`http://localhost:3000/#/${componentName}`);
-  await page.waitForSelector(componentName);
-  // Small delay to prevent random test errors on slow render
-  await new Promise((resolve) => setTimeout(resolve, 100));
+  await page.evaluate((component) => {
+    return window.customElements.whenDefined(component);
+  }, componentName);
+
+  // customElements.whenDefined does not cover all the file loading time for large component
+  // (like phone-number) so we add extra waiting time to avoid errors
+  await new Promise((resolve) => setTimeout(resolve, option.extraWaitTime || 300));
 }
 
 function setupBrowser() {

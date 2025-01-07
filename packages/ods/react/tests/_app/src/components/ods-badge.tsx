@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsBadge } from 'ods-components-react';
+import OdsBadge from '@ovhcloud/ods-components-react/ods-badge';
 
 const Badge = () => {
   return (

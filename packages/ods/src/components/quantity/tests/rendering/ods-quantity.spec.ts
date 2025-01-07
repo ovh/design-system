@@ -1,7 +1,7 @@
 jest.mock('../../src/controller/ods-quantity');
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsQuantity } from '../../src';
+import { OdsQuantity } from '../../src/components/ods-quantity/ods-quantity';
 
 describe('ods-quantity rendering', () => {
   let page: SpecPage;

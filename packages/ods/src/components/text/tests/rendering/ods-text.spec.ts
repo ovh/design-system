@@ -1,6 +1,6 @@
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { ODS_TEXT_PRESET, OdsText } from '../../src';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
+import { ODS_TEXT_PRESET } from '../../src';
+import { OdsText } from '../../src/components/ods-text/ods-text';
 
 describe('ods-text rendering', () => {
   let page: SpecPage;

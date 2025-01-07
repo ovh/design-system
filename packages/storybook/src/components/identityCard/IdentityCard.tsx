@@ -1,5 +1,5 @@
 import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
-import { OdsLink } from '@ovhcloud/ods-components/react';
+import OdsLink from '@ovhcloud/ods-components-react/ods-link';
 import { Table } from '@storybook/components';
 import React, { Fragment, type ReactNode } from 'react';
 import { ATOMIC_TYPE } from '../../constants/atomicDesign';

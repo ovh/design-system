@@ -1,5 +1,6 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { ODS_TOOLTIP_POSITION, ODS_TOOLTIP_STRATEGY, OdsTooltip } from '../../src';
+import { ODS_TOOLTIP_POSITION, ODS_TOOLTIP_STRATEGY } from '../../src';
+import { OdsTooltip } from '../../src/components/ods-tooltip/ods-tooltip';
 
 describe('ods-tooltip rendering', () => {
   let page: SpecPage;

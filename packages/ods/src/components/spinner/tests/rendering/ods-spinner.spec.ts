@@ -1,6 +1,6 @@
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { ODS_SPINNER_COLOR, ODS_SPINNER_SIZE, OdsSpinner } from '../../src';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
+import { ODS_SPINNER_COLOR, ODS_SPINNER_SIZE } from '../../src';
+import { OdsSpinner } from '../../src/components/ods-spinner/ods-spinner';
 
 describe('ods-spinner rendering', () => {
   let container: Element | null | undefined;

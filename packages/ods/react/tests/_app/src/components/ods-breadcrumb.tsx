@@ -1,5 +1,6 @@
 import React from 'react-dom/client';
-import { OdsBreadcrumb, OdsBreadcrumbItem } from 'ods-components-react';
+import OdsBreadcrumb from '@ovhcloud/ods-components-react/ods-breadcrumb';
+import OdsBreadcrumbItem from '@ovhcloud/ods-components-react/ods-breadcrumb-item';
 
 const Breadcrumb = () => {
   return (

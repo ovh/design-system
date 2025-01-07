@@ -25,6 +25,9 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestOption = 
     devServer: {
       startupTimeout: 30000,
     },
+    extras: {
+      enableImportInjection: true,
+    },
     namespace,
     outputTargets: [
       {
@@ -32,6 +35,7 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestOption = 
       },
       {
         customElementsExportBehavior: 'auto-define-custom-elements',
+        externalRuntime: false,
         generateTypeDeclarations: true,
         includeGlobalScripts: false,
         type: 'dist-custom-elements',
@@ -78,7 +82,7 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestOption = 
         prettierPath: jestOption.prettierPath || undefined,
         resolver: jestOption.resolver || undefined,
         restoreMocks: undefined,
-        testRegex: testOption.testRegex as string,
+        testRegex: [testOption.testRegex as string],
 
         // Actual Stencil testing config
         browserHeadless: false,
@@ -102,18 +106,20 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestOption = 
       enableCache: false,
       outputTargets: baseConfig.outputTargets?.concat([
         reactOutputTarget({
-          componentCorePackage,
-          customElementsDir: 'dist/components',
-          includeDefineCustomElements: false,
-          includeImportCustomElements: true,
-          includePolyfills: false,
-          proxiesFile: './react/src/components/stencil-generated/index.ts',
+          // componentCorePackage,
+          // customElementsDir: 'dist/components',
+          // includeDefineCustomElements: false,
+          // includeImportCustomElements: true,
+          // includePolyfills: false,
+          esModules: true,
+          outDir: './react/src/components/stencil-generated',
+          // proxiesFile: './react/src/components/stencil-generated/index.ts',
         }),
         vueOutputTarget({
           componentCorePackage,
           customElementsDir: 'dist/components',
-          includeDefineCustomElements: false,
-          includeImportCustomElements: true,
+          // includeDefineCustomElements: false,
+          // includeImportCustomElements: true,
           includePolyfills: false,
           proxiesFile: './vue/src/components/stencil-generated/index.ts',
         }),

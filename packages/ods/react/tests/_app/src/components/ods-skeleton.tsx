@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsSkeleton } from 'ods-components-react';
+import OdsSkeleton from '@ovhcloud/ods-components-react/ods-skeleton';
 
 const Skeleton = () => {
   return (

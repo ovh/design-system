@@ -1,6 +1,7 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { ODS_MESSAGE_COLOR, ODS_MESSAGE_VARIANT, OdsMessage } from '../../src';
+import { ODS_MESSAGE_COLOR, ODS_MESSAGE_VARIANT } from '../../src';
+import { OdsMessage } from '../../src/components/ods-message/ods-message';
 
 describe('ods-message rendering', () => {
   let page: SpecPage;

@@ -209,47 +209,76 @@ describe('ods-password behaviour', () => {
     });
   });
 
-  describe('Form', () => {
+  describe('form', () => {
+    let formData: Record<string, FormDataEntryValue> = {};
+
+    async function setupWithinForm(content: string): Promise<void> {
+      formData = {};
+      page = await newE2EPage();
+
+      await page.exposeFunction('e2eFormSubmit', (data: Record<string, FormDataEntryValue>) => {
+        formData = data;
+      });
+
+      await page.setContent(`<form method="get" onsubmit="return false;">${content}</form>`);
+
+      await page.evaluate(() => {
+        const form = document.querySelector('form');
+
+        form?.addEventListener('submit', () => {
+          const formData = new FormData(form);
+          const data: Record<string, FormDataEntryValue> = {};
+
+          for (const [key, value] of formData) {
+            data[key] = value;
+          }
+
+          // @ts-ignore function is exposed manually
+          window.e2eFormSubmit(data);
+        });
+      });
+    }
+
     it('should get form data with button type submit', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-password name="odsPassword" value="On Vous Heberge ?"></ods-password>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const submitButton = await page.find('button[type="submit"]');
+
       await submitButton.click();
-      await page.waitForNetworkIdle();
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsPassword')).toBe('On Vous Heberge ?');
+      await page.waitForChanges();
+
+      expect(formData).toEqual({ odsPassword: 'On Vous Heberge ?' });
     });
 
     it('should reset form with button type reset', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-password name="odsPassword" value="On Vous Heberge ?"></ods-password>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const resetButton = await page.find('button[type="reset"]');
-      await resetButton.click();
-
       const submitButton = await page.find('button[type="submit"]');
+
+      await resetButton.click();
+      await page.waitForChanges();
+
       await submitButton.click();
-      await page.waitForNetworkIdle();
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsPassword')).toBe('');
+      await page.waitForChanges();
+
+      expect(formData).toEqual({ odsPassword: '' });
     });
 
     it('should submit form on Enter', async() => {
-      await setup(`<form method="get">
-        <ods-password name="odsPassword" value="password"></ods-password>
-      </form>`);
+      await setupWithinForm('<ods-password name="odsPassword" value="password"></ods-password>');
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsPassword')).toBe('password');
+      expect(formData).toEqual({ odsPassword: 'password' });
     });
   });
 });

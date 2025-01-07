@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsSelect } from 'ods-components-react';
+import OdsSelect from '@ovhcloud/ods-components-react/ods-select';
 
 const Select = () => {
   function onOdsChange() {

@@ -1,5 +1,5 @@
-import type { OdsInput } from '../../../input/src';
 import { setInternalsValidityFromOdsComponent } from '../../../../utils/dom';
+import { type OdsInput } from '../../../input/src/components/ods-input/ods-input';
 import { ODS_TIMEZONES_PRESET } from '../constant/timezone-preset';
 import { type ODS_TIMEZONE, ODS_TIMEZONES, type OdsTimezone } from '../constant/timezones';
 

@@ -1,5 +1,11 @@
 import { ODS_ICON_NAME, ODS_INPUT_TYPE, ODS_TEXT_PRESET } from '@ovhcloud/ods-components';
-import { OdsButton, OdsFormField, OdsIcon, OdsInput, OdsModal, OdsText, OdsTooltip } from '@ovhcloud/ods-components/react';
+import OdsButton from '@ovhcloud/ods-components-react/ods-button';
+import OdsFormField from '@ovhcloud/ods-components-react/ods-form-field';
+import OdsIcon from '@ovhcloud/ods-components-react/ods-icon';
+import OdsInput from '@ovhcloud/ods-components-react/ods-input';
+import OdsModal from '@ovhcloud/ods-components-react/ods-modal';
+import OdsText from '@ovhcloud/ods-components-react/ods-text';
+import OdsTooltip from '@ovhcloud/ods-components-react/ods-tooltip';
 import React, { type ReactElement, useState } from 'react';
 
 function TestModal(): ReactElement {

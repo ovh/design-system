@@ -1,5 +1,6 @@
 import React from 'react-dom/client';
-import { OdsSwitch, OdsSwitchItem } from 'ods-components-react';
+import OdsSwitch from '@ovhcloud/ods-components-react/ods-switch';
+import OdsSwitchItem from '@ovhcloud/ods-components-react/ods-switch-item';
 
 const Switch = () => {
   function onOdsChange() {

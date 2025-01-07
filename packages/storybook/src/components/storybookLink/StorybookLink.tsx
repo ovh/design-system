@@ -1,5 +1,5 @@
 import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
-import { OdsLink } from '@ovhcloud/ods-components/react';
+import OdsLink from '@ovhcloud/ods-components-react/ods-link';
 import { navigate } from '@storybook/addon-links';
 import React from 'react';
 

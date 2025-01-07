@@ -1,5 +1,6 @@
 import { type OdsToggleChangeEvent } from '@ovhcloud/ods-components';
-import { OdsButton, OdsToggle } from '@ovhcloud/ods-components/react';
+import OdsButton from '@ovhcloud/ods-components-react/ods-button';
+import OdsToggle from '@ovhcloud/ods-components-react/ods-toggle';
 import React, { type ReactElement, useRef, useState } from 'react';
 
 function TestToggle(): ReactElement {
@@ -18,7 +19,6 @@ function TestToggle(): ReactElement {
 
       <div>
         <OdsToggle
-          // @ts-ignore IDE is confused with React attribute
           defaultValue={ isToggled }
           name="toggle"
           onOdsChange={ (e: OdsToggleChangeEvent) => {

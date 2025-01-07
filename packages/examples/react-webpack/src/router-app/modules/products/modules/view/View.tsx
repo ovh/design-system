@@ -1,4 +1,4 @@
-import { OdsModal } from '@ovhcloud/ods-components/react';
+import OdsModal from '@ovhcloud/ods-components-react/ods-modal';
 import React, { type ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTE } from 'router-app/constants/navigation';

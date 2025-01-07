@@ -34,7 +34,7 @@ describe('ods-form-field react', () => {
   });
 
   it('properly renders the default slot', async() => {
-    const elem = await page.$('ods-form-field > ods-input');
+    const elem = await page.$('ods-form-field > input');
     const boundingBox = await elem?.boundingBox();
 
     expect(boundingBox?.height).toBeGreaterThan(0);

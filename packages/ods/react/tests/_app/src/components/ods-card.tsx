@@ -1,10 +1,10 @@
 import React from 'react-dom/client';
-import { OdsCard, OdsText } from 'ods-components-react';
+import OdsCard from '@ovhcloud/ods-components-react/ods-card';
 
 const Card = () => {
   return (
     <OdsCard>
-      <OdsText preset='heading-6'>Hello, world!</OdsText>
+      <h6>Hello, world!</h6>
     </OdsCard>
   );
 };

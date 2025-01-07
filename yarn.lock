@@ -3817,6 +3817,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lit/react@npm:^1.0.4":
+  version: 1.0.6
+  resolution: "@lit/react@npm:1.0.6"
+  peerDependencies:
+    "@types/react": 17 || 18
+  checksum: f904f2cce9cd6b5d7476b9b165a3779a402b6b963f54fbd6b0e01ee0b31379ad24016de975dd4aa71e1bce5d79210de2a2c79c21a9d1a677ade4ce0122d4b11e
+  languageName: node
+  linkType: hard
+
 "@lit/reactive-element@npm:^2.0.4":
   version: 2.0.4
   resolution: "@lit/reactive-element@npm:2.0.4"
@@ -4318,7 +4327,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-components-react@workspace:packages/ods/react":
+"@ovhcloud/ods-components-react@18.4.1, @ovhcloud/ods-components-react@workspace:packages/ods/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-components-react@workspace:packages/ods/react"
   dependencies:
@@ -4326,6 +4335,8 @@ __metadata:
     "@babel/plugin-transform-modules-commonjs": 7.25.9
     "@babel/preset-env": 7.26.0
     "@babel/preset-typescript": 7.26.0
+    "@ovhcloud/ods-components": "*"
+    "@stencil/react-output-target": 0.8.1
     "@testing-library/dom": 10.4.0
     "@testing-library/react": 16.0.1
     "@testing-library/user-event": 14.5.2
@@ -4344,15 +4355,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-components-vue@workspace:packages/ods/vue":
+"@ovhcloud/ods-components-vue@18.4.1, @ovhcloud/ods-components-vue@workspace:packages/ods/vue":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-components-vue@workspace:packages/ods/vue"
+  dependencies:
+    "@ovhcloud/ods-components": "*"
+    "@stencil/vue-output-target": 0.9.2
   peerDependencies:
     vue: ">=3"
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-components@18.4.1, @ovhcloud/ods-components@workspace:packages/ods":
+"@ovhcloud/ods-components@*, @ovhcloud/ods-components@18.4.1, @ovhcloud/ods-components@workspace:packages/ods":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-components@workspace:packages/ods"
   dependencies:
@@ -4360,10 +4374,10 @@ __metadata:
     "@floating-ui/dom": 1.6.11
     "@jest/types": 29.6.3
     "@stencil-community/postcss": 2.2.0
-    "@stencil/core": 4.16.0
-    "@stencil/react-output-target": 0.5.3
+    "@stencil/core": 4.23.0
+    "@stencil/react-output-target": 0.8.1
     "@stencil/sass": 3.0.12
-    "@stencil/vue-output-target": 0.8.8
+    "@stencil/vue-output-target": 0.9.2
     "@types/google-libphonenumber": 7.4.30
     "@types/jest": 29.5.12
     "@types/react": 18.2.56
@@ -4397,7 +4411,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-storybook@workspace:packages/storybook"
   dependencies:
-    "@ovhcloud/ods-components": 18.4.1
+    "@ovhcloud/ods-components-react": 18.4.1
+    "@ovhcloud/ods-themes": 18.4.1
     "@storybook/addon-a11y": 8.0.4
     "@storybook/addon-essentials": 8.0.4
     "@storybook/addon-links": 8.0.4
@@ -4689,21 +4704,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencil/core@npm:4.16.0":
-  version: 4.16.0
-  resolution: "@stencil/core@npm:4.16.0"
+"@stencil/core@npm:4.23.0":
+  version: 4.23.0
+  resolution: "@stencil/core@npm:4.23.0"
   bin:
     stencil: bin/stencil
-  checksum: 70a660596a496959e5dc9fa876ac8bc7a2c2d4043c64bf86305e0722378dd484ce1a80e58466b8370831f68a9667efd40e7e4853ec1c8752181740bbac4f87fd
+  checksum: 00b56f05f4cd5354ad5a653177350f6129be10560917f172fc157df2b26409286b02494c251ceff0c85f8d297efb05bc30f4dc514d3f4664d8e5e165bd2ca86e
   languageName: node
   linkType: hard
 
-"@stencil/react-output-target@npm:0.5.3":
-  version: 0.5.3
-  resolution: "@stencil/react-output-target@npm:0.5.3"
+"@stencil/react-output-target@npm:0.8.1":
+  version: 0.8.1
+  resolution: "@stencil/react-output-target@npm:0.8.1"
+  dependencies:
+    "@lit/react": ^1.0.4
+    html-react-parser: ^5.1.10
+    react-dom: ^18.3.1
+    style-object-to-css-string: ^1.0.0
+    ts-morph: ^22.0.0
   peerDependencies:
-    "@stencil/core": ">=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0"
-  checksum: ce762ecd37fe8b04b4193402f8999b44291d18af59e488ab4571528473aec9cac60c508df5db68298c78a493779e4781433dc2390ce7c34039b2a7a2455bd7db
+    "@stencil/core": ">=3 || >= 4.0.0-beta.0 || >= 4.0.0"
+  peerDependenciesMeta:
+    "@stencil/core":
+      optional: false
+  checksum: 3486fda929c9d5b512fd7adc32541d406c3c679acc46a29dc6cf2b01b846398cb937f58fd743d65978940e06ae9437ff4629186c3705d3e5b095721469cb7c44
   languageName: node
   linkType: hard
 
@@ -4716,12 +4740,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencil/vue-output-target@npm:0.8.8":
-  version: 0.8.8
-  resolution: "@stencil/vue-output-target@npm:0.8.8"
+"@stencil/vue-output-target@npm:0.9.2":
+  version: 0.9.2
+  resolution: "@stencil/vue-output-target@npm:0.9.2"
   peerDependencies:
     "@stencil/core": ">=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0"
-  checksum: bcee6b0603d13d305be458205b3774213064e01a691c7fd3616ccf810b6fefa4d22be1324410b359e298a4eec15859fce03b44a0c09ece4f545c4b56a0ef9115
+    vue: ^3.4.38
+  peerDependenciesMeta:
+    "@stencil/core":
+      optional: true
+    vue:
+      optional: false
+  checksum: d9a71bad43be53e4892c99e0751258629d4feef0eaa521f9b17defdf7218159cc13f1f5fc0ba7b7e911280f5eab2f37bc0c4162222536d2ac3b3a701f19bccc3
   languageName: node
   linkType: hard
 
@@ -5568,6 +5598,18 @@ __metadata:
   version: 0.23.0
   resolution: "@tootallnate/quickjs-emscripten@npm:0.23.0"
   checksum: c350a2947ffb80b22e14ff35099fd582d1340d65723384a0fd0515e905e2534459ad2f301a43279a37308a27c99273c932e64649abd57d0bb3ca8c557150eccc
+  languageName: node
+  linkType: hard
+
+"@ts-morph/common@npm:~0.23.0":
+  version: 0.23.0
+  resolution: "@ts-morph/common@npm:0.23.0"
+  dependencies:
+    fast-glob: ^3.3.2
+    minimatch: ^9.0.3
+    mkdirp: ^3.0.1
+    path-browserify: ^1.0.1
+  checksum: 96463742ec1114900901ded8aecc2c9664b20119454a56c896042e6a5e5b153af1d986467362d737ed0130506aeac9655731922dc8c4e851a16f9c1a8a8099b4
   languageName: node
   linkType: hard
 
@@ -8700,6 +8742,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"code-block-writer@npm:^13.0.1":
+  version: 13.0.3
+  resolution: "code-block-writer@npm:13.0.3"
+  checksum: 8e234f0ec2db9625d5efb9f05bdae79da6559bb4d9df94a6aa79a89a7b5ae25093b70d309fc5122840c9c07995cb14b4dd3f98a30f8878e3a3372e177df79454
+  languageName: node
+  linkType: hard
+
 "code-point-at@npm:^1.0.0":
   version: 1.1.0
   resolution: "code-point-at@npm:1.1.0"
@@ -10151,7 +10200,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"domelementtype@npm:^2.0.1, domelementtype@npm:^2.2.0":
+"dom-serializer@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "dom-serializer@npm:2.0.0"
+  dependencies:
+    domelementtype: ^2.3.0
+    domhandler: ^5.0.2
+    entities: ^4.2.0
+  checksum: cd1810544fd8cdfbd51fa2c0c1128ec3a13ba92f14e61b7650b5de421b88205fd2e3f0cc6ace82f13334114addb90ed1c2f23074a51770a8e9c1273acbc7f3e6
+  languageName: node
+  linkType: hard
+
+"domelementtype@npm:^2.0.1, domelementtype@npm:^2.2.0, domelementtype@npm:^2.3.0":
   version: 2.3.0
   resolution: "domelementtype@npm:2.3.0"
   checksum: ee837a318ff702622f383409d1f5b25dd1024b692ef64d3096ff702e26339f8e345820f29a68bcdcea8cfee3531776b3382651232fbeae95612d6f0a75efb4f6
@@ -10164,6 +10224,15 @@ __metadata:
   dependencies:
     webidl-conversions: ^7.0.0
   checksum: ddbc1268edf33a8ba02ccc596735ede80375ee0cf124b30d2f05df5b464ba78ef4f49889b6391df4a04954e63d42d5631c7fcf8b1c4f12bc531252977a5f13d5
+  languageName: node
+  linkType: hard
+
+"domhandler@npm:5.0.3, domhandler@npm:^5.0.2, domhandler@npm:^5.0.3":
+  version: 5.0.3
+  resolution: "domhandler@npm:5.0.3"
+  dependencies:
+    domelementtype: ^2.3.0
+  checksum: 0f58f4a6af63e6f3a4320aa446d28b5790a009018707bce2859dcb1d21144c7876482b5188395a188dfa974238c019e0a1e610d2fc269a12b2c192ea2b0b131c
   languageName: node
   linkType: hard
 
@@ -10184,6 +10253,17 @@ __metadata:
     domelementtype: ^2.2.0
     domhandler: ^4.2.0
   checksum: abf7434315283e9aadc2a24bac0e00eab07ae4313b40cc239f89d84d7315ebdfd2fb1b5bf750a96bc1b4403d7237c7b2ebf60459be394d625ead4ca89b934391
+  languageName: node
+  linkType: hard
+
+"domutils@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "domutils@npm:3.2.1"
+  dependencies:
+    dom-serializer: ^2.0.0
+    domelementtype: ^2.3.0
+    domhandler: ^5.0.3
+  checksum: 367589e209d587407289512d894b66e0dbb98773676d733b91f04de0953ceb0f79e678dd7becba77276fb593a92e53a8958d137252450d052c95012d453a1a3e
   languageName: node
   linkType: hard
 
@@ -10381,10 +10461,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"entities@npm:^4.5.0":
+"entities@npm:^4.2.0, entities@npm:^4.5.0":
   version: 4.5.0
   resolution: "entities@npm:4.5.0"
   checksum: 853f8ebd5b425d350bffa97dd6958143179a5938352ccae092c62d1267c4e392a039be1bae7d51b6e4ffad25f51f9617531fedf5237f15df302ccfb452cbf2d7
+  languageName: node
+  linkType: hard
+
+"entities@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "entities@npm:6.0.0"
+  checksum: 4e964b5549b0f1e7a88836527d38181aa7b2f87222ed2424e78309781b17212de684c84094435f53bea69a7e7e2505268fd96772af166adb686d086d64361435
   languageName: node
   linkType: hard
 
@@ -13045,6 +13132,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html-dom-parser@npm:5.0.13":
+  version: 5.0.13
+  resolution: "html-dom-parser@npm:5.0.13"
+  dependencies:
+    domhandler: 5.0.3
+    htmlparser2: 10.0.0
+  checksum: e9de0ff2f52c6b69af7c2b44ed578de61ff62efd107db5d7294a8eee7f7d82b8f4bd2df94833529d4ae641ab1be4e8d553e41faad5ce3c1e74277f9f1e6308da
+  languageName: node
+  linkType: hard
+
 "html-encoding-sniffer@npm:^3.0.0":
   version: 3.0.0
   resolution: "html-encoding-sniffer@npm:3.0.0"
@@ -13085,6 +13182,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html-react-parser@npm:^5.1.10":
+  version: 5.2.2
+  resolution: "html-react-parser@npm:5.2.2"
+  dependencies:
+    domhandler: 5.0.3
+    html-dom-parser: 5.0.13
+    react-property: 2.0.2
+    style-to-js: 1.1.16
+  peerDependencies:
+    "@types/react": 0.14 || 15 || 16 || 17 || 18 || 19
+    react: 0.14 || 15 || 16 || 17 || 18 || 19
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 03371a1210b638a7f7ba0f6c117323e2a7b47fc0eb74b84b733f9d08d064eb41de16dc0525bcf1f984845afc41c9aa1fd872dc8735d64385675077dc02bdaa65
+  languageName: node
+  linkType: hard
+
 "html-tags@npm:^3.3.1":
   version: 3.3.1
   resolution: "html-tags@npm:3.3.1"
@@ -13110,6 +13225,18 @@ __metadata:
     webpack:
       optional: true
   checksum: 32a6e41da538e798fd0be476637d7611a5e8a98a3508f031996e9eb27804dcdc282cb01f847cf5d066f21b49cfb8e21627fcf977ffd0c9bea81cf80e5a65070d
+  languageName: node
+  linkType: hard
+
+"htmlparser2@npm:10.0.0":
+  version: 10.0.0
+  resolution: "htmlparser2@npm:10.0.0"
+  dependencies:
+    domelementtype: ^2.3.0
+    domhandler: ^5.0.3
+    domutils: ^3.2.1
+    entities: ^6.0.0
+  checksum: ba81aca5d344437e791ffddf61d498972fc0e7dd2d41f59f920e93aedb64667a0f38fed88e0d81fe23ea5a10825991caa020212fdd72a0dc287ab2aaad95fbf5
   languageName: node
   linkType: hard
 
@@ -13533,6 +13660,13 @@ __metadata:
     validate-npm-package-license: ^3.0.1
     validate-npm-package-name: ^3.0.0
   checksum: 6c4149a5a4b55be42c589d66603b60ad5efae78aaf43962baa0e42b8146ab1b1f586b73a5019aa72177d518c709e5cb38c32f4bffaa678564522dbc2837bbe81
+  languageName: node
+  linkType: hard
+
+"inline-style-parser@npm:0.2.4":
+  version: 0.2.4
+  resolution: "inline-style-parser@npm:0.2.4"
+  checksum: 5df20a21dd8d67104faaae29774bb50dc9690c75bc5c45dac107559670a5530104ead72c4cf54f390026e617e7014c65b3d68fb0bb573a37c4d1f94e9c36e1ca
   languageName: node
   linkType: hard
 
@@ -16336,7 +16470,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^9.0.4":
+"minimatch@npm:^9.0.3, minimatch@npm:^9.0.4":
   version: 9.0.5
   resolution: "minimatch@npm:9.0.5"
   dependencies:
@@ -17254,6 +17388,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ods-components-react-test-app@workspace:packages/ods/react/tests/_app"
   dependencies:
+    "@ovhcloud/ods-components-react": 18.4.1
     "@vitejs/plugin-react": 4.2.1
     react: 18.2.0
     react-dom: 18.2.0
@@ -17267,6 +17402,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ods-components-vue-test-app@workspace:packages/ods/vue/tests/_app"
   dependencies:
+    "@ovhcloud/ods-components-vue": 18.4.1
     "@vitejs/plugin-vue": 5.0.4
     core-js: 3.36.0
     vite: 5.0.10
@@ -17844,6 +17980,13 @@ __metadata:
   version: 0.1.1
   resolution: "pascalcase@npm:0.1.1"
   checksum: f83681c3c8ff75fa473a2bb2b113289952f802ff895d435edd717e7cb898b0408cbdb247117a938edcbc5d141020909846cc2b92c47213d764e2a94d2ad2b925
+  languageName: node
+  linkType: hard
+
+"path-browserify@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "path-browserify@npm:1.0.1"
+  checksum: c6d7fa376423fe35b95b2d67990060c3ee304fc815ff0a2dc1c6c3cfaff2bd0d572ee67e18f19d0ea3bbe32e8add2a05021132ac40509416459fffee35200699
   languageName: node
   linkType: hard
 
@@ -18819,7 +18962,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0":
+"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0, react-dom@npm:^18.3.1":
   version: 18.3.1
   resolution: "react-dom@npm:18.3.1"
   dependencies:
@@ -18865,6 +19008,13 @@ __metadata:
   version: 18.3.1
   resolution: "react-is@npm:18.3.1"
   checksum: e20fe84c86ff172fc8d898251b7cc2c43645d108bf96d0b8edf39b98f9a2cae97b40520ee7ed8ee0085ccc94736c4886294456033304151c3f94978cec03df21
+  languageName: node
+  linkType: hard
+
+"react-property@npm:2.0.2":
+  version: 2.0.2
+  resolution: "react-property@npm:2.0.2"
+  checksum: c67fb2590dad9102239b2e574fbc078b472e227b66c3d64e1949426e33889d78c2ac5369cc4c740bb8fe61665505940e39a78d113261ac52410f7538089fe367
   languageName: node
   linkType: hard
 
@@ -18918,7 +19068,7 @@ __metadata:
     "@babel/preset-env": 7.23.9
     "@babel/preset-react": 7.23.3
     "@babel/preset-typescript": 7.23.3
-    "@ovhcloud/ods-components": 18.4.1
+    "@ovhcloud/ods-components-react": 18.4.1
     "@ovhcloud/ods-themes": 18.4.1
     "@tanstack/react-query": 5.59.16
     "@types/react": 18.2.56
@@ -21047,6 +21197,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"style-object-to-css-string@npm:^1.0.0":
+  version: 1.1.3
+  resolution: "style-object-to-css-string@npm:1.1.3"
+  checksum: 59f00b0f891e7d7205f66965d1e7460e074f5bd99a4248532a566a55624e742af2862ad7f887b0ddca364a607934db2918eb0d61a1a9f4a25e23fc523244f28e
+  languageName: node
+  linkType: hard
+
+"style-to-js@npm:1.1.16":
+  version: 1.1.16
+  resolution: "style-to-js@npm:1.1.16"
+  dependencies:
+    style-to-object: 1.0.8
+  checksum: 1f424ca17d923090821197f27e077e88bcf92b15274157f20330a18405f52a66395232546dc694c776d1a8f1868dabe15738532e18ce59a0683b046610bb4964
+  languageName: node
+  linkType: hard
+
+"style-to-object@npm:1.0.8":
+  version: 1.0.8
+  resolution: "style-to-object@npm:1.0.8"
+  dependencies:
+    inline-style-parser: 0.2.4
+  checksum: 80ca4773fc728d7919edc552eb46bab11aa8cdd0b426528ee8b817ba6872ea7b9d38fbb97b6443fd2d4895a4c4b02ec32765387466a302d0b4d1b91deab1e1a0
+  languageName: node
+  linkType: hard
+
 "stylelint-config-concentric-order@npm:5.2.0":
   version: 5.2.0
   resolution: "stylelint-config-concentric-order@npm:5.2.0"
@@ -21826,6 +22001,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ts-morph@npm:^22.0.0":
+  version: 22.0.0
+  resolution: "ts-morph@npm:22.0.0"
+  dependencies:
+    "@ts-morph/common": ~0.23.0
+    code-block-writer: ^13.0.1
+  checksum: 7bf0ec8cc9ab2a4ce528ec249634db315caa01b5783259484fd91ac0dae2f05b94d9c53ba236939fad2b8ab882e7fce1c82a689ab7c9a4a9dcec5c1160d77264
+  languageName: node
+  linkType: hard
+
 "ts-node@npm:10.9.2":
   version: 10.9.2
   resolution: "ts-node@npm:10.9.2"
@@ -22600,6 +22785,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vanilla-vite@workspace:packages/examples/vanilla-vite":
+  version: 0.0.0-use.local
+  resolution: "vanilla-vite@workspace:packages/examples/vanilla-vite"
+  dependencies:
+    "@ovhcloud/ods-components": 18.4.1
+    sass: 1.71.0
+    typescript: 5.3.3
+    vite: 5.0.10
+    vite-tsconfig-paths: 4.2.3
+  languageName: unknown
+  linkType: soft
+
 "vanilla-webpack@workspace:packages/examples/vanilla-webpack":
   version: 0.0.0-use.local
   resolution: "vanilla-webpack@workspace:packages/examples/vanilla-webpack"
@@ -22715,6 +22912,19 @@ __metadata:
   checksum: 0059261d39c8a6f61d3cdf4b74cfcd6a109062e0562f2db5a387cdf4d1b186dfdd2dddcacbf83ce2842d7c3ec9a63d8a6d427c4cec1db61372f4a06048496354
   languageName: node
   linkType: hard
+
+"vue-vite@workspace:packages/examples/vue-vite":
+  version: 0.0.0-use.local
+  resolution: "vue-vite@workspace:packages/examples/vue-vite"
+  dependencies:
+    "@ovhcloud/ods-components-vue": 18.4.1
+    "@ovhcloud/ods-themes": 18.4.1
+    "@vitejs/plugin-vue": 5.0.4
+    vite: 5.0.10
+    vite-tsconfig-paths: 4.2.3
+    vue: 3.4.21
+  languageName: unknown
+  linkType: soft
 
 "vue@npm:3.4.21":
   version: 3.4.21

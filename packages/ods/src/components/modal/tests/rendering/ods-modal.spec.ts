@@ -1,6 +1,7 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { ODS_MODAL_COLOR, OdsModal } from '../../src';
+import { ODS_MODAL_COLOR } from '../../src';
+import { OdsModal } from '../../src/components/ods-modal/ods-modal';
 
 describe('ods-modal rendering', () => {
   let page: SpecPage;

@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsPassword } from 'ods-components-react';
+import OdsPassword from '@ovhcloud/ods-components-react/ods-password';
 
 const Password = () => {
   function onOdsChange() {
@@ -9,10 +9,11 @@ const Password = () => {
   return (
     <>
       <OdsPassword name="ods-password"
-      onOdsChange={ onOdsChange }/>
+                   onOdsChange={ onOdsChange }/>
 
-      <OdsPassword name="ods-password-disabled" isDisabled
-      onOdsChange={ onOdsChange }/>
+      <OdsPassword isDisabled
+                   name="ods-password-disabled"
+                   onOdsChange={ onOdsChange }/>
     </>
   );
 };

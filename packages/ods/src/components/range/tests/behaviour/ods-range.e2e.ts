@@ -1,6 +1,5 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
-import { type OdsRangeChangeEventDetail } from '../../src/interfaces/event';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
+import { type OdsRangeChangeEventDetail } from '../../src';
 
 describe('ods-range behaviour', () => {
   let el: E2EElement;
@@ -10,7 +9,7 @@ describe('ods-range behaviour', () => {
     page = await newE2EPage();
 
     await page.setContent(content);
-    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+    await page.evaluate(() => document.body.style.setProperty('margin', '0'));
 
     el = await page.find('ods-range');
 
@@ -353,57 +352,87 @@ describe('ods-range behaviour', () => {
     });
   });
 
-  describe('Form', () => {
+  describe('form', () => {
+    let formData: Record<string, FormDataEntryValue> = {};
+
+    async function setupWithinForm(content: string): Promise<void> {
+      formData = {};
+      page = await newE2EPage();
+
+      await page.exposeFunction('e2eFormSubmit', (data: Record<string, FormDataEntryValue>) => {
+        formData = data;
+      });
+
+      await page.setContent(`<form method="get" onsubmit="return false;">${content}</form>`);
+
+      await page.evaluate(() => {
+        const form = document.querySelector('form');
+
+        form?.addEventListener('submit', () => {
+          const formData = new FormData(form);
+          const data: Record<string, FormDataEntryValue> = {};
+
+          for (const [key, value] of formData) {
+            data[key] = value;
+          }
+
+          // @ts-ignore function is exposed manually
+          window.e2eFormSubmit(data);
+        });
+      });
+    }
+
     it('should get form data with button type submit', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-range name="odsRange" value="50"></ods-range>
-        <input type="text" name="natifInput">
+        <input type="text" name="nativeInput">
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const submitButton = await page.find('button[type="submit"]');
+
       await submitButton.click();
-      await page.waitForNetworkIdle();
-      const url = new URL(page.url());
-      expect(url.searchParams.get('odsRange')).toBe('50');
-      expect(url.searchParams.get('natifInput')).toBe('');
+      await page.waitForChanges();
+
+      expect(formData).toEqual({ nativeInput: '', odsRange: '50' });
     });
 
     it('should reset form with button type reset', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-range name="odsRange" value="50"></ods-range>
-        <input type="text" name="natifInput">
+        <input type="text" name="nativeInput">
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const resetButton = await page.find('button[type="reset"]');
+      const submitButton = await page.find('button[type="submit"]');
+
       await resetButton.click();
       await page.waitForChanges();
 
-      const submitButton = await page.find('button[type="submit"]');
       await submitButton.click();
-      await page.waitForNetworkIdle();
-      const url = new URL(page.url());
-      expect(url.searchParams.get('natifInput')).toBe('');
-      expect(url.searchParams.get('odsRange')).toBe('');
+      await page.waitForChanges();
+
+      expect(formData).toEqual({ nativeInput: '', odsRange: '' });
     });
 
     it('should reset form with button type reset with default value', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-range name="odsRange" default-value="50"></ods-range>
-        <input type="text" name="natifInput">
+        <input type="text" name="nativeInput">
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const resetButton = await page.find('button[type="reset"]');
-      await resetButton.click();
-
       const submitButton = await page.find('button[type="submit"]');
+
+      await resetButton.click();
+      await page.waitForChanges();
+
       await submitButton.click();
-      await page.waitForNetworkIdle();
-      const url = new URL(page.url());
-      expect(url.searchParams.get('natifInput')).toBe('');
-      expect(url.searchParams.get('odsRange')).toBe('50');
+      await page.waitForChanges();
+
+      expect(formData).toEqual({ nativeInput: '', odsRange: '50' });
     });
   });
 });

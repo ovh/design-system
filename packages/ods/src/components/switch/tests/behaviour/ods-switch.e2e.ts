@@ -272,44 +272,71 @@ describe('ods-switch behaviour', () => {
   });
 
   describe('form', () => {
+    let formData: Record<string, FormDataEntryValue> = {};
+
+    async function setupWithinForm(content: string): Promise<void> {
+      formData = {};
+      page = await newE2EPage();
+
+      await page.exposeFunction('e2eFormSubmit', (data: Record<string, FormDataEntryValue>) => {
+        formData = data;
+      });
+
+      await page.setContent(`<form method="get" onsubmit="return false;">${content}</form>`);
+
+      await page.evaluate(() => {
+        const form = document.querySelector('form');
+
+        form?.addEventListener('submit', () => {
+          const formData = new FormData(form);
+          const data: Record<string, FormDataEntryValue> = {};
+
+          for (const [key, value] of formData) {
+            data[key] = value;
+          }
+
+          // @ts-ignore function is exposed manually
+          window.e2eFormSubmit(data);
+        });
+      });
+    }
+
     it('should get null if no item checked on form data when submit button is triggered', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-switch name="switch">
           <ods-switch-item value="1">label1</ods-switch-item>
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const submitButton = await page.find('button[type="submit"]');
 
       await submitButton.click();
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('switch')).toBe(null);
+      expect(formData).toEqual({});
     });
 
     it('should get checked item in form data when submit button is triggered', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-switch name="switch">
           <ods-switch-item value="1" is-checked>label1</ods-switch-item>
           <ods-switch-item value="2">label2</ods-switch-item>
           <ods-switch-item value="3">label3</ods-switch-item>
         </ods-switch>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const submitButton = await page.find('button[type="submit"]');
 
       await submitButton.click();
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('switch')).toBe('1');
+      expect(formData).toEqual({ switch: '1' });
     });
 
     it('should reset to null if no value is checked when form reset button is triggered', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-switch name="switch">
           <ods-switch-item value="1">label1</ods-switch-item>
           <ods-switch-item value="2">label2</ods-switch-item>
@@ -317,20 +344,21 @@ describe('ods-switch behaviour', () => {
         </ods-switch>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const resetButton = await page.find('button[type="reset"]');
       const submitButton = await page.find('button[type="submit"]');
 
       await resetButton.click();
-      await submitButton.click();
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('switch')).toBe(null);
+      await submitButton.click();
+      await page.waitForChanges();
+
+      expect(formData).toEqual({});
     });
 
     it('should reset to checked value when form reset button is triggered', async() => {
-      await setup(`<form method="get">
+      await setupWithinForm(`
         <ods-switch name="switch">
           <ods-switch-item value="1" is-checked>label1</ods-switch-item>
           <ods-switch-item value="2">label2</ods-switch-item>
@@ -338,16 +366,17 @@ describe('ods-switch behaviour', () => {
         </ods-switch>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-      </form>`);
+      `);
       const resetButton = await page.find('button[type="reset"]');
       const submitButton = await page.find('button[type="submit"]');
 
       await resetButton.click();
-      await submitButton.click();
-      await page.waitForNetworkIdle();
+      await page.waitForChanges();
 
-      const url = new URL(page.url());
-      expect(url.searchParams.get('switch')).toBe('1');
+      await submitButton.click();
+      await page.waitForChanges();
+
+      expect(formData).toEqual({ switch: '1' });
     });
   });
 });

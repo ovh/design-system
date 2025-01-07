@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsLink } from 'ods-components-react';
+import OdsLink from '@ovhcloud/ods-components-react/ods-link';
 
 const Link = () => {
   return (

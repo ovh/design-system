@@ -1,4 +1,5 @@
-import { OdsBreadcrumb, OdsBreadcrumbItem } from '@ovhcloud/ods-components/react';
+import OdsBreadcrumb from '@ovhcloud/ods-components-react/ods-breadcrumb';
+import OdsBreadcrumbItem from '@ovhcloud/ods-components-react/ods-breadcrumb-item';
 import React, { type ReactElement, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './breadcrumb.scss';

@@ -4,7 +4,6 @@
   &__my-badge {
     @include ods-badge();
     @include ods-badge-color('information');
-    @include ods-badge-shape('round');
     @include ods-badge-size('md');
   }
 
@@ -46,9 +45,8 @@
 
   &__my-tag {
     @include ods-tag();
-    @include ods-tag-shape('round');
+    @include ods-tag-color('information');
     @include ods-tag-size('md');
-    @include ods-tag-variant-default('information');
   }
 
   &__my-text-caption {

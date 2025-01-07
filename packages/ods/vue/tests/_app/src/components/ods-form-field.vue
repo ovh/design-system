@@ -1,22 +1,8 @@
 <template>
-  <OdsFormField>
+  <ods-form-field>
     <label slot="label">Description</label>
-    <OdsText slot="visual-hint" preset="caption">02/11/1999</OdsText>
-    <OdsInput name="input" />
-    <OdsText slot="helper" preset="span">A little helper text</OdsText>
-  </OdsFormField>
+    <span slot="visual-hint">02/11/1999</span>
+    <input name="input" />
+    <span slot="helper">A little helper text</span>
+  </ods-form-field>
 </template>
-
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { OdsFormField, OdsInput, OdsText } from '@ovhcloud/ods-components/vue';
-
-  export default defineComponent({
-    name: 'FormField',
-    components: {
-      OdsFormField,
-      OdsInput,
-      OdsText
-    },
-  });
-</script>

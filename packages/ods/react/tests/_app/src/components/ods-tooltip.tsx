@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsTooltip } from 'ods-components-react';
+import OdsTooltip from '@ovhcloud/ods-components-react/ods-tooltip';
 
 const Tooltip = () => {
   return (

@@ -2,7 +2,9 @@
   "extends": "../tsconfig.vue.json",
   "compilerOptions": {
     "outDir": "dist/esm",
-    "declarationDir": "dist/types"
+    "declarationDir": "dist/types",
+    "module": "esnext",
+    "moduleResolution": "bundler"
   },
   "include": [
     "src/**/*.ts",

@@ -1,6 +1,6 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsCode } from '../../src';
+import { OdsCode } from '../../src/components/ods-code/ods-code';
 
 describe('ods-code rendering', () => {
   let page: SpecPage;

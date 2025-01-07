@@ -1,9 +1,9 @@
-import { OdsRange } from 'ods-components-react';
 import React from 'react-dom/client';
+import OdsRange from '@ovhcloud/ods-components-react/ods-range';
 
 const Range = () => {
   return (
-    <OdsRange name="ods-range"/>
+    <OdsRange name="ods-range" />
   );
 };
 

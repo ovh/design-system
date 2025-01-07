@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsSpinner } from 'ods-components-react';
+import OdsSpinner from '@ovhcloud/ods-components-react/ods-spinner';
 
 const Spinner = () => {
   return (

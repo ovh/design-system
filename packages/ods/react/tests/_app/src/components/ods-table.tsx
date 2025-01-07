@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsTable } from 'ods-components-react';
+import OdsTable from '@ovhcloud/ods-components-react/ods-table';
 
 const Table = () => {
   return (

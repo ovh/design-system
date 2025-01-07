@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsMedium } from 'ods-components-react';
+import OdsMedium from '@ovhcloud/ods-components-react/ods-medium';
 
 const Medium = () => {
   return (

@@ -1,4 +1,4 @@
-import { OdsSelect } from '@ovhcloud/ods-components/react';
+import OdsSelect from '@ovhcloud/ods-components-react/ods-select';
 import { useQuery } from '@tanstack/react-query';
 import React, { type ReactElement, useState } from 'react';
 
@@ -16,7 +16,7 @@ function TestSelect(): ReactElement {
   setTimeout(() => {
     setIsPending(query.isPending);
     setData(query.data);
-  }, 100000);
+  }, 3000);
 
   return (
     <div>

@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsText } from 'ods-components-react';
+import OdsText from '@ovhcloud/ods-components-react/ods-text';
 
 const Text = () => {
   return (

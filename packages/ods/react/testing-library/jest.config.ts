@@ -3,7 +3,7 @@ import { Config } from 'jest';
 const jestConfig: Config = {
   clearMocks: true,
   testEnvironment: "jsdom",
-  testRegex: "./*test.tsx$",
+  testRegex: "./components/.*test.tsx$",
   transform: {
     '\\.(ts|tsx)$': 'ts-jest',
     '^.+\\.(js|jsx)$': 'babel-jest',

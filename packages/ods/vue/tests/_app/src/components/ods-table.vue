@@ -1,5 +1,5 @@
 <template>
-  <OdsTable>
+  <ods-table>
     <table>
       <caption>
         Front-end web developer course 2021
@@ -24,17 +24,5 @@
       </tr>
       </tbody>
     </table>
-  </OdsTable>
+  </ods-table>
 </template>
-
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { OdsTable } from '@ovhcloud/ods-components/vue';
-
-  export default defineComponent({
-    name: 'Table',
-    components: {
-      OdsTable,
-    },
-  });
-</script>

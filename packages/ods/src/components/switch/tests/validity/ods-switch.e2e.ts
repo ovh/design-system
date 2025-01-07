@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsSwitch } from '../../src';
+import { type OdsSwitch } from '../../src/components/ods-switch/ods-switch';
 
 describe('ods-switch validity', () => {
   let el: E2EElement;

@@ -1,7 +1,8 @@
 jest.mock('../../src/controller/ods-password');
+
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsPassword } from '../../src';
+import { OdsPassword } from '../../src/components/ods-password/ods-password';
 
 describe('ods-password rendering', () => {
   let page: SpecPage;

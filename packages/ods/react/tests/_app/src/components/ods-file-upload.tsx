@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { type OdsFile, type OdsFileCancelEvent, type OdsFileChangeEvent } from '@ovhcloud/ods-components';
-import { OdsFileUpload } from 'ods-components-react';
+import OdsFileUpload from '@ovhcloud/ods-components-react/ods-file-upload';
 
 const FileUpload = () => {
   const [files, setFiles] = useState<OdsFile[]>([]);

@@ -7,7 +7,8 @@
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run clean && npm run compile",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "buildTODO": "npm run clean && npm run compile",
     "clean": "rimraf dist",
     "compile": "npm run compile:esm && npm run compile:cjs",
     "compile:esm": "tsc -p tsconfig.json",
@@ -17,15 +18,182 @@
     "test:react:testing-library": "jest -c ./testing-library/jest.config.ts",
     "test:wrapper:react": "npm run test:react:e2e:ci && npm run test:react:testing-library"
   },
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
+  "exports": {
+    "./ods-accordion": {
+      "types": "./dist/types/OdsAccordion.d.ts",
+      "import": "./dist/esm/OdsAccordion.js"
+    },
+    "./ods-badge": {
+      "types": "./dist/types/OdsBadge.d.ts",
+      "import": "./dist/esm/OdsBadge.js"
+    },
+    "./ods-breadcrumb": {
+      "types": "./dist/types/OdsBreadcrumb.d.ts",
+      "import": "./dist/esm/OdsBreadcrumb.js"
+    },
+    "./ods-breadcrumb-item": {
+      "types": "./dist/types/OdsBreadcrumbItem.d.ts",
+      "import": "./dist/esm/OdsBreadcrumbItem.js"
+    },
+    "./ods-button": {
+      "types": "./dist/types/OdsButton.d.ts",
+      "import": "./dist/esm/OdsButton.js"
+    },
+    "./ods-card": {
+      "types": "./dist/types/OdsCard.d.ts",
+      "import": "./dist/esm/OdsCard.js"
+    },
+    "./ods-checkbox": {
+      "types": "./dist/types/OdsCheckbox.d.ts",
+      "import": "./dist/esm/OdsCheckbox.js"
+    },
+    "./ods-clipboard": {
+      "types": "./dist/types/OdsClipboard.d.ts",
+      "import": "./dist/esm/OdsClipboard.js"
+    },
+    "./ods-code": {
+      "types": "./dist/types/OdsCode.d.ts",
+      "import": "./dist/esm/OdsCode.js"
+    },
+    "./ods-datepicker": {
+      "types": "./dist/types/OdsDatepicker.d.ts",
+      "import": "./dist/esm/OdsDatepicker.js"
+    },
+    "./ods-divider": {
+      "types": "./dist/types/OdsDivider.d.ts",
+      "import": "./dist/esm/OdsDivider.js"
+    },
+    "./ods-file-upload": {
+      "types": "./dist/types/OdsFileUpload.d.ts",
+      "import": "./dist/esm/OdsFileUpload.js"
+    },
+    "./ods-form-field": {
+      "types": "./dist/types/OdsFormField.d.ts",
+      "import": "./dist/esm/OdsFormField.js"
+    },
+    "./ods-icon": {
+      "types": "./dist/types/OdsIcon.d.ts",
+      "import": "./dist/esm/OdsIcon.js"
+    },
+    "./ods-input": {
+      "types": "./dist/types/OdsInput.d.ts",
+      "import": "./dist/esm/OdsInput.js"
+    },
+    "./ods-link": {
+      "types": "./dist/types/OdsLink.d.ts",
+      "import": "./dist/esm/OdsLink.js"
+    },
+    "./ods-medium": {
+      "types": "./dist/types/OdsMedium.d.ts",
+      "import": "./dist/esm/OdsMedium.js"
+    },
+    "./ods-message": {
+      "types": "./dist/types/OdsMessage.d.ts",
+      "import": "./dist/esm/OdsMessage.js"
+    },
+    "./ods-modal": {
+      "types": "./dist/types/OdsModal.d.ts",
+      "import": "./dist/esm/OdsModal.js"
+    },
+    "./ods-pagination": {
+      "types": "./dist/types/OdsPagination.d.ts",
+      "import": "./dist/esm/OdsPagination.js"
+    },
+    "./ods-password": {
+      "types": "./dist/types/OdsPassword.d.ts",
+      "import": "./dist/esm/OdsPassword.js"
+    },
+    "./ods-phone-number": {
+      "types": "./dist/types/OdsPhoneNumber.d.ts",
+      "import": "./dist/esm/OdsPhoneNumber.js"
+    },
+    "./ods-popover": {
+      "types": "./dist/types/OdsPopover.d.ts",
+      "import": "./dist/esm/OdsPopover.js"
+    },
+    "./ods-progress-bar": {
+      "types": "./dist/types/OdsProgressBar.d.ts",
+      "import": "./dist/esm/OdsProgressBar.js"
+    },
+    "./ods-quantity": {
+      "types": "./dist/types/OdsQuantity.d.ts",
+      "import": "./dist/esm/OdsQuantity.js"
+    },
+    "./ods-radio": {
+      "types": "./dist/types/OdsRadio.d.ts",
+      "import": "./dist/esm/OdsRadio.js"
+    },
+    "./ods-range": {
+      "types": "./dist/types/OdsRange.d.ts",
+      "import": "./dist/esm/OdsRange.js"
+    },
+    "./ods-select": {
+      "types": "./dist/types/OdsSelect.d.ts",
+      "import": "./dist/esm/OdsSelect.js"
+    },
+    "./ods-skeleton": {
+      "types": "./dist/types/OdsSkeleton.d.ts",
+      "import": "./dist/esm/OdsSkeleton.js"
+    },
+    "./ods-spinner": {
+      "types": "./dist/types/OdsSpinner.d.ts",
+      "import": "./dist/esm/OdsSpinner.js"
+    },
+    "./ods-switch": {
+      "types": "./dist/types/OdsSwitch.d.ts",
+      "import": "./dist/esm/OdsSwitch.js"
+    },
+    "./ods-switch-item": {
+      "types": "./dist/types/OdsSwitchItem.d.ts",
+      "import": "./dist/esm/OdsSwitchItem.js"
+    },
+    "./ods-table": {
+      "types": "./dist/types/OdsTable.d.ts",
+      "import": "./dist/esm/OdsTable.js"
+    },
+    "./ods-tab": {
+      "types": "./dist/types/OdsTab.d.ts",
+      "import": "./dist/esm/OdsTab.js"
+    },
+    "./ods-tabs": {
+      "types": "./dist/types/OdsTabs.d.ts",
+      "import": "./dist/esm/OdsTabs.js"
+    },
+    "./ods-tag": {
+      "types": "./dist/types/OdsTag.d.ts",
+      "import": "./dist/esm/OdsTag.js"
+    },
+    "./ods-text": {
+      "types": "./dist/types/OdsText.d.ts",
+      "import": "./dist/esm/OdsText.js"
+    },
+    "./ods-textarea": {
+      "types": "./dist/types/OdsTextarea.d.ts",
+      "import": "./dist/esm/OdsTextarea.js"
+    },
+    "./ods-timepicker": {
+      "types": "./dist/types/OdsTimepicker.d.ts",
+      "import": "./dist/esm/OdsTimepicker.js"
+    },
+    "./ods-toggle": {
+      "types": "./dist/types/OdsToggle.d.ts",
+      "import": "./dist/esm/OdsToggle.js"
+    },
+    "./ods-tooltip": {
+      "types": "./dist/types/OdsTooltip.d.ts",
+      "import": "./dist/esm/OdsTooltip.js"
+    }
+  },
   "files": [
     "dist/"
   ],
   "peerDependencies": {
     "react": ">=16.8.6",
     "react-dom": ">=16.8.6"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-components": "*",
+    "@stencil/react-output-target": "0.8.1"
   },
   "devDependencies": {
     "@babel/core": "7.26.0",

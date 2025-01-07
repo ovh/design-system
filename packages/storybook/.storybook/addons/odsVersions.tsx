@@ -1,6 +1,8 @@
 import { addons, types } from '@storybook/manager-api';
 import { ODS_BUTTON_ICON_ALIGNMENT, ODS_BUTTON_VARIANT, ODS_ICON_NAME } from '@ovhcloud/ods-components';
-import { OdsButton, OdsLink, OdsPopover } from '@ovhcloud/ods-components/react';
+import OdsButton from '@ovhcloud/ods-components-react/ods-button';
+import OdsLink from '@ovhcloud/ods-components-react/ods-link';
+import OdsPopover from '@ovhcloud/ods-components-react/ods-popover';
 import React from 'react';
 import versions from '../../assets/ods-versions.json';
 import '@ovhcloud/ods-themes/default';

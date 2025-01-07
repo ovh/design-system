@@ -1,13 +1,13 @@
 import React from 'react-dom/client';
-import { OdsFormField, OdsInput, OdsText } from 'ods-components-react';
+import OdsFormField from '@ovhcloud/ods-components-react/ods-form-field';
 
 const FormField = () => {
   return (
     <OdsFormField error="Wrong format.">
       <label slot="label">Description</label>
-      <OdsText slot="visual-hint" preset='caption'>02/11/1999</OdsText>
-      <OdsInput name='input' />
-      <OdsText slot="helper" preset='span'>A little helper text</OdsText>
+      <span slot="visual-hint">02/11/1999</span>
+      <input name="input" />
+      <span slot="helper">A little helper text</span>
     </OdsFormField>
   );
 };

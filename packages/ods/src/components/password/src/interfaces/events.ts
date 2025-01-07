@@ -1,6 +1,9 @@
 import type { OdsInputChangeEvent, OdsInputChangeEventDetail } from '../../../input/src';
 
-export {
-  type OdsInputChangeEvent as OdsPasswordChangeEvent,
-  type OdsInputChangeEventDetail as OdsPasswordChangeEventDetail,
-};
+// Needed copy otherwise Stencil generate wrong types
+type OdsPasswordChangeEvent = OdsInputChangeEvent;
+
+// Needed copy otherwise Stencil generate wrong types
+type OdsPasswordChangeEventDetail = OdsInputChangeEventDetail;
+
+export { type OdsPasswordChangeEvent, type OdsPasswordChangeEventDetail };

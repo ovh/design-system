@@ -1,5 +1,5 @@
-import { OdsToggle } from 'ods-components-react';
 import React from 'react-dom/client';
+import OdsToggle from '@ovhcloud/ods-components-react/ods-toggle';
 
 const Toggle = () => {
   function onClick() {

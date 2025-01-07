@@ -1,5 +1,5 @@
 import { ODS_CARD_COLOR } from '@ovhcloud/ods-components';
-import { OdsCard } from '@ovhcloud/ods-components/react';
+import OdsCard from '@ovhcloud/ods-components-react/ods-card';
 import { Canvas } from '@storybook/blocks';
 import { type ModuleExport } from '@storybook/types';
 import React from 'react';

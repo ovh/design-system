@@ -1,5 +1,6 @@
 import type { OdsAccordionToggleEvent } from '@ovhcloud/ods-components';
-import { OdsAccordion, OdsButton } from '@ovhcloud/ods-components/react';
+import OdsAccordion from '@ovhcloud/ods-components-react/ods-accordion';
+import OdsButton from '@ovhcloud/ods-components-react/ods-button';
 import React, { type ReactElement, useRef, useState } from 'react';
 
 function TestAccordion(): ReactElement {

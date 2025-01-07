@@ -1,9 +1,10 @@
-import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
-import { OdsInput } from '../../src/components/stencil-generated';
-import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
+import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
-import { OdsInputChangeEvent, OdsInput as OdsInputStencil } from '../../../dist/types';
+import OdsInput from '../../../src/components/stencil-generated/OdsInput';
+import { OdsInputChangeEvent } from '../../../../dist/types';
+import { type Components } from '../../../../dist/types/components';
 
 describe('Input component', () => {
   HTMLElement.prototype.attachInternals = () => ({
@@ -44,7 +45,7 @@ describe('Input component', () => {
 
   it('should change value', async () => {
     const { container, getByLabelText } = setup(<OdsInput {...sharedProps} isClearable />);
-    const input = getByLabelText('ods-input') as OdsInputStencil & HTMLElement;
+    const input = getByLabelText('ods-input') as Components.OdsInput & HTMLElement;
 
     expect(container.querySelector('ods-button[icon="xmark"]')).toBeNull();
 
@@ -57,7 +58,7 @@ describe('Input component', () => {
 
   it('render correctly with masked', async () => {
     const { container, getByLabelText } = setup(<OdsInput {...sharedProps} isMasked />);
-    const input = getByLabelText('ods-input') as OdsInputStencil & HTMLElement;
+    const input = getByLabelText('ods-input') as Components.OdsInput & HTMLElement;
 
    const masked = container.querySelector('ods-button[icon="eye"]');
     expect(masked).toBeDefined();
@@ -71,7 +72,7 @@ describe('Input component', () => {
   it('should clear with button', async () => {
     const odsFocus = jest.fn();
     const { getByLabelText } = setup(<OdsInput {...sharedProps} onOdsFocus={odsFocus} />);
-    const input = getByLabelText('ods-input') as OdsInputStencil & HTMLElement;
+    const input = getByLabelText('ods-input') as Components.OdsInput & HTMLElement;
     fireEvent.focus(input);
 
     waitFor(() => {

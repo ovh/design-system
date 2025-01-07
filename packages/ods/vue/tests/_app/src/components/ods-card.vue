@@ -1,18 +1,5 @@
 <template>
-  <OdsCard>
-    <OdsText preset='heading-6'>Hello, world!</OdsText>
-  </OdsCard>
+  <ods-card>
+    <h6>Hello, world!</h6>
+  </ods-card>
 </template>
-
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { OdsCard, OdsText } from '@ovhcloud/ods-components/vue';
-
-  export default defineComponent({
-    name: 'Card',
-    components: {
-      OdsCard,
-      OdsText
-    },
-  });
-</script>

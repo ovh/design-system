@@ -20,7 +20,7 @@ describe('ods-modal vue', () => {
     expect(boundingBox?.height).toBe(undefined);
     expect(boundingBox?.width).toBe(undefined);
 
-    const button = await page.$('ods-button');
+    const button = await page.$('button');
 
     await button?.click();
 

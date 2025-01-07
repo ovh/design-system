@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { OdsTab, OdsTabs } from 'ods-components-react';
+import OdsTab from '@ovhcloud/ods-components-react/ods-tab';
+import OdsTabs from '@ovhcloud/ods-components-react/ods-tabs';
 
 const Tabs = () => {
   const [currentTab, setCurrentTab] = useState<string>()

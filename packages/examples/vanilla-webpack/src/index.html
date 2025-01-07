@@ -7,44 +7,16 @@
 </head>
 
 <body>
-  <ods-modal is-open>
-    <ods-icon id="tooltip-trigger"
-              name="circle-question">
-    </ods-icon>
+  <ods-accordion>
+    <div slot="summary">
+      <span>Hello, world!</span>
+    </div>
 
-    <ods-tooltip strategy="fixed"
-                 trigger-id="tooltip-trigger">
-      TestTooltip
-    </ods-tooltip>
-  </ods-modal>
-
-  <form>
-    <ods-input is-required
-               name="text"
-               pattern="\d*">
-    </ods-input>
-
-    <ods-textarea is-required
-                  name="textarea">
-    </ods-textarea>
-
-    <ods-button label="Submit"
-                type="submit">
-    </ods-button>
-  </form>
-
-  <script>
-    const formElement = document.querySelector('form');
-
-    formElement.addEventListener('submit', (e) => {
-      // e.preventDefault();
-
-      const formData = new FormData(formElement)
-
-      for (const [key, value] of formData) {
-        console.log(`${key}: ${value}`)
-      }
-    });
-  </script>
+    <div>
+      <span>
+        Lorem ipsum dolor sit amet, ...
+      </span>
+    </div>
+  </ods-accordion>
 </body>
 </html>

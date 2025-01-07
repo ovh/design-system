@@ -1,5 +1,6 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { ODS_SWITCH_SIZE, OdsSwitch } from '../../src';
+import { ODS_SWITCH_SIZE } from '../../src';
+import { OdsSwitch } from '../../src/components/ods-switch/ods-switch';
 
 describe('ods-switch rendering', () => {
   let page: SpecPage;

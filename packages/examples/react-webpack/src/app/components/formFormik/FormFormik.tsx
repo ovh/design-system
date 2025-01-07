@@ -1,5 +1,19 @@
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OdsButton, OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsRange, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker, OdsToggle } from '@ovhcloud/ods-components/react';
+import OdsButton from '@ovhcloud/ods-components-react/ods-button';
+import OdsCheckbox from '@ovhcloud/ods-components-react/ods-checkbox';
+import OdsDatepicker from '@ovhcloud/ods-components-react/ods-datepicker';
+import OdsInput from '@ovhcloud/ods-components-react/ods-input';
+import OdsPassword from '@ovhcloud/ods-components-react/ods-password';
+import OdsPhoneNumber from '@ovhcloud/ods-components-react/ods-phone-number';
+import OdsQuantity from '@ovhcloud/ods-components-react/ods-quantity';
+import OdsRadio from '@ovhcloud/ods-components-react/ods-radio';
+import OdsRange from '@ovhcloud/ods-components-react/ods-range';
+import OdsSelect from '@ovhcloud/ods-components-react/ods-select';
+import OdsSwitch from '@ovhcloud/ods-components-react/ods-switch';
+import OdsSwitchItem from '@ovhcloud/ods-components-react/ods-switch-item';
+import OdsTextarea from '@ovhcloud/ods-components-react/ods-textarea';
+import OdsTimepicker from '@ovhcloud/ods-components-react/ods-timepicker';
+import OdsToggle from '@ovhcloud/ods-components-react/ods-toggle';
 import { useFormik } from 'formik';
 import React, { type ReactElement, useState } from 'react';
 import * as yup from 'yup';
@@ -317,7 +331,6 @@ function FormFormik(): ReactElement {
       />
 
       <OdsToggle
-        // @ts-ignore IDE is confused with React attribute
         defaultValue={ formik.initialValues.toggle }
         hasError={ formik.touched.toggle && !!formik.errors.toggle }
         isRequired={ areAllRequired }

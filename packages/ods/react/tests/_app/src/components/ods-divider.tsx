@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsDivider } from 'ods-components-react';
+import OdsDivider from '@ovhcloud/ods-components-react/ods-divider';
 
 const Divider = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsCode } from 'ods-components-react';
+import OdsCode from '@ovhcloud/ods-components-react/ods-code';
 
 const Code = () => {
   return (

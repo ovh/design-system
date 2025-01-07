@@ -1,5 +1,5 @@
 import { ODS_DIVIDER_SPACING } from '@ovhcloud/ods-components';
-import { OdsDivider } from '@ovhcloud/ods-components/react';
+import OdsDivider from '@ovhcloud/ods-components-react/ods-divider';
 import { HeaderMdx } from '@storybook/blocks';
 import React, { type ReactNode } from 'react';
 import styles from './heading.module.css';

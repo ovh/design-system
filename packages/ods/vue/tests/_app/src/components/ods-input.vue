@@ -1,24 +1,16 @@
 <template>
-  <!-- FIXME custom event not working in vue -->
-  <ods-input name="ods-input" @ods-value-change="() => console.log('test')"></ods-input>
+  <ods-input name="ods-input"
+             @odsChange="onOdsChange">
+  </ods-input>
 
-  <OdsInput name="ods-input-disabled" is-disabled @ods-change="onOdsChange" />
-
+  <ods-input is-disabled
+             name="ods-input-disabled"
+             @odsChange="onOdsChange">
+  </ods-input>
 </template>
 
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { OdsInput } from '@ovhcloud/ods-components/vue';
-
-  export default defineComponent({
-    name: 'Input',
-    components: {
-      OdsInput,
-    },
-    methods: {
-      onOdsChange() {
-        console.log('Vue input odsChange');
-      }
-    }
-  });
+<script setup lang="ts">
+  function onOdsChange(): void {
+    console.log('Vue input odsChange');
+  }
 </script>

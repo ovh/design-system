@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsRadio } from 'ods-components-react';
+import OdsRadio from '@ovhcloud/ods-components-react/ods-radio';
 
 const Radio = () => {
   function onOdsChange() {

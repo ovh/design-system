@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsInput } from 'ods-components-react';
+import OdsInput from '@ovhcloud/ods-components-react/ods-input';
 
 const Input = () => {
   function onOdsChange() {

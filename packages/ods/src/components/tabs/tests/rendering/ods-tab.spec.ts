@@ -1,5 +1,5 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { OdsTab } from '../../src';
+import { OdsTab } from '../../src/components/ods-tab/ods-tab';
 
 describe('ods-tab rendering', () => {
   let page: SpecPage;

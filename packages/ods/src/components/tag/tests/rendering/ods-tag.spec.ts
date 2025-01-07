@@ -1,6 +1,6 @@
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { ODS_TAG_COLOR, ODS_TAG_SIZE, OdsTag } from '../../src';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
+import { ODS_TAG_COLOR, ODS_TAG_SIZE } from '../../src';
+import { OdsTag } from '../../src/components/ods-tag/ods-tag';
 
 describe('ods-tag rendering', () => {
   let page: SpecPage;

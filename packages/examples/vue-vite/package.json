@@ -1,0 +1,23 @@
+{
+  "name": "vue-vite",
+  "version": "18.4.1",
+  "private": true,
+  "description": "Example of how to use ODS with Vue",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-components-vue": "18.4.1",
+    "@ovhcloud/ods-themes": "18.4.1",
+    "vue": "3.4.21"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "5.0.4",
+    "vite": "5.0.10",
+    "vite-tsconfig-paths": "4.2.3"
+  }
+}

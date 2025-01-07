@@ -1,7 +1,7 @@
 jest.mock('../../src/controller/ods-toggle');
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { OdsToggle } from '../../src';
+
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
+import { OdsToggle } from '../../src/components/ods-toggle/ods-toggle';
 
 // @ts-ignore for test purposes
 global.MutationObserver = jest.fn(() => ({

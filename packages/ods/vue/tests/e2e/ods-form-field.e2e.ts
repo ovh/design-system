@@ -29,12 +29,12 @@ describe('ods-form-field vue', () => {
 
   it('properly renders the visual-hint slot', async() => {
     const elem = await page.$('ods-form-field');
-    const visualHint = await elem?.evaluate((el) => el.querySelector('ods-text[slot="visual-hint"]')?.textContent);
+    const visualHint = await elem?.evaluate((el) => el.querySelector('span[slot="visual-hint"]')?.textContent);
     expect(visualHint).toBe('02/11/1999');
   });
 
   it('properly renders the default slot', async() => {
-    const elem = await page.$('ods-form-field > ods-input');
+    const elem = await page.$('ods-form-field > input');
     const boundingBox = await elem?.boundingBox();
 
     expect(boundingBox?.height).toBeGreaterThan(0);
@@ -43,7 +43,7 @@ describe('ods-form-field vue', () => {
 
   it('properly renders the helper slot', async() => {
     const elem = await page.$('ods-form-field');
-    const helper = await elem?.evaluate((el) => el.querySelector('ods-text[slot="helper"]')?.textContent);
+    const helper = await elem?.evaluate((el) => el.querySelector('span[slot="helper"]')?.textContent);
     expect(helper).toBe('A little helper text');
   });
 });

@@ -1,9 +1,14 @@
 {
-  "extends": "./tsconfig.json",
+//  "extends": "./tsconfig.json",
+  "extends": "../tsconfig.vue.json",
   "compilerOptions": {
     "outDir": "dist/cjs",
     "module": "CommonJS",
     "declaration": false,
     "declarationDir": null
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ]
 }

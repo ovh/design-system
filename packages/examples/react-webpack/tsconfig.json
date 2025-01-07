@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "jsx": "react",
     "lib": ["dom", "ESNext"],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noUncheckedIndexedAccess": true,

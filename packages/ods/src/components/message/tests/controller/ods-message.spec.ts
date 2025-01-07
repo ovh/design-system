@@ -1,5 +1,5 @@
-import type { OdsMessageColor } from '../../src';
 import { ODS_ICON_NAME } from '../../../icon/src';
+import { type OdsMessageColor } from '../../src';
 import { getIconName } from '../../src/controller/ods-message';
 
 describe('ods-message controller', () => {

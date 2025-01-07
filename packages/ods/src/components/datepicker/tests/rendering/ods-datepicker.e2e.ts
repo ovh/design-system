@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsDatepicker } from '../../src';
+import { type OdsDatepicker } from '../../src/components/ods-datepicker/ods-datepicker';
 
 describe('ods-datepicker rendering', () => {
   let el: E2EElement;

@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsPhoneNumber } from 'ods-components-react';
+import OdsPhoneNumber from '@ovhcloud/ods-components-react/ods-phone-number';
 
 const PhoneNumber = () => {
   function onOdsChange() {

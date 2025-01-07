@@ -8,6 +8,7 @@ import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { ODS_INPUT_TYPE, type OdsInputType } from '../../constants/input-type';
 import { VALUE_DEFAULT_VALUE, getInitialValue, handleKeySpaceEnter, isPassword, updateInternals } from '../../controller/ods-input';
 import { type OdsInputChangeEventDetail } from '../../interfaces/events';
+
 @Component({
   formAssociated: true,
   shadow: {

@@ -1,7 +1,7 @@
 jest.mock('../../../../utils/dom');
 
 import { setInternalsValidityFromOdsComponent } from '../../../../utils/dom';
-import { type OdsInput } from '../../../input/src';
+import { type OdsInput } from '../../../input/src/components/ods-input/ods-input';
 import { getInitialValue, isMinusButtonDisabled, isPlusButtonDisabled, updateInternals } from '../../src/controller/ods-quantity';
 
 describe('ods-input controller', () => {

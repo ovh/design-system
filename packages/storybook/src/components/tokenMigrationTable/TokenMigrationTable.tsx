@@ -1,5 +1,5 @@
 import { ODS_BADGE_COLOR } from '@ovhcloud/ods-components';
-import { OdsBadge } from '@ovhcloud/ods-components/react';
+import OdsBadge from '@ovhcloud/ods-components-react/ods-badge';
 import { CodeOrSourceMdx, Markdown } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import React from 'react';

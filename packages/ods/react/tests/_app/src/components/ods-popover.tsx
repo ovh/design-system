@@ -1,5 +1,5 @@
 import React from 'react-dom/client';
-import { OdsPopover } from 'ods-components-react';
+import OdsPopover from '@ovhcloud/ods-components-react/ods-popover';
 
 const Popover = () => {
   return (

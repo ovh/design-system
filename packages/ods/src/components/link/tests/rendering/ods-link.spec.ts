@@ -1,6 +1,7 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { ODS_LINK_COLOR, ODS_LINK_ICON_ALIGNMENT, OdsLink } from '../../src';
+import { ODS_LINK_COLOR, ODS_LINK_ICON_ALIGNMENT } from '../../src';
+import { OdsLink } from '../../src/components/ods-link/ods-link';
 
 describe('ods-link rendering', () => {
   let page: SpecPage;

@@ -1,9 +1,9 @@
 import { ODS_CARD_COLOR } from '@ovhcloud/ods-components';
 import { OdsCard } from '@ovhcloud/ods-components/react';
-import { Canvas } from '@storybook/blocks';
 import { type ModuleExport } from '@storybook/types';
 import React from 'react';
 import { STORY } from '../../constants/meta';
+import { CanvasWithoutContext } from '../canvasWithoutContext/CanvasWithoutContext';
 import { Heading } from '../heading/Heading';
 import { StorybookLink } from '../storybookLink/StorybookLink';
 import styles from './gallery.module.css';
@@ -28,9 +28,8 @@ const Gallery = ({ components }: Props) => {
             <OdsCard className={ styles['gallery__items__item'] }
                      color={ ODS_CARD_COLOR.neutral }
                      key={ idx }>
-              <Canvas className={ styles['gallery__items__item__preview'] }
-                      of={ component.story }
-                      sourceState="none" />
+              <CanvasWithoutContext className={ styles['gallery__items__item__preview'] }
+                      of={ component.story } />
 
               <StorybookLink className={ styles['gallery__items__item__title'] }
                              kind={ component.kind }

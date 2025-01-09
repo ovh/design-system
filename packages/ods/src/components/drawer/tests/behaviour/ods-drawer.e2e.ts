@@ -117,7 +117,7 @@ describe('ods-drawer behaviour', () => {
       await setup('<button id="button-trigger-drawer">Trigger Drawer</button><ods-drawer position="right"><ods-text>Hello, world!</ods-text></ods-drawer>');
 
       await page.evaluate(() => {
-        const drawer = document.querySelector('ods-drawer');
+        const drawer = document.querySelector('ods-drawer') as HTMLElement & OdsDrawer | null;
         document.querySelector('#button-trigger-drawer')?.addEventListener('click', () => {
           if (drawer?.isOpen) {
             drawer.close();

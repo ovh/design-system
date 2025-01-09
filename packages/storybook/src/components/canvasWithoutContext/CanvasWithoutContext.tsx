@@ -7,7 +7,7 @@ type Props = {
   of: ModuleExports,
 }
 
-// Remove the transform form to the element because it create a new staking context
+// Remove the transform form to the element because it create a new stacking context
 // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context
 const CanvasWithoutContext = ({ of }: Props) => {
   return (

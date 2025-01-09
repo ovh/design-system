@@ -2,6 +2,8 @@
 
 $ods-modal-border-radius: var(--ods-border-radius-sm);
 $ods-modal-header-height: 32px;
+$ods-modal-margin: 16px;
+$ods-modal-size: 512px;
 
 @mixin animation-mixin($name) {
   @keyframes modal-open {
@@ -34,16 +36,15 @@ $ods-modal-header-height: 32px;
   position: fixed;
   flex-flow: column;
   z-index: 1;
+  margin: auto $ods-modal-margin;
   outline: none;
   border: none;
   border-radius: $ods-modal-border-radius;
   background: var(--ods-color-neutral-000);
   padding: 0;
   width: 100%;
-  min-width: 320px;
-  max-width: 512px;
   min-height: 100px;
-  max-height: 512px;
+  max-height: calc(100% - ($ods-modal-margin * 2));
   overflow: hidden;
 
   &::backdrop {
@@ -53,12 +54,10 @@ $ods-modal-header-height: 32px;
     // See https://stackoverflow.com/questions/58818299/css-variables-not-working-in-dialogbackdrop/63322762#63322762
   }
 
-  @media screen and (width <= (breakpoint.$ods-breakpoint-mobile)) {
-    margin: 16px;
-    width: 100%;
-    min-width: fit-content;
-    max-width: fit-content;
-    max-height: revert;
+  @media screen and (width >= (breakpoint.$ods-breakpoint-mobile)) {
+    margin: auto;
+    max-width: $ods-modal-size;
+    max-height: $ods-modal-size;
   }
 }
 

@@ -82,7 +82,7 @@ export class OdsDrawer {
         'ods-drawer': true,
         'ods-drawer--open': this.isOpen,
       }}
-      aria-expended={ this.isOpen }>
+      aria-expanded={ this.isOpen }>
         <dialog
           class={ `ods-drawer__dialog ods-drawer__dialog--${this.position}` }
           ref={ (el) => this.drawerDialog = el as HTMLDialogElement }

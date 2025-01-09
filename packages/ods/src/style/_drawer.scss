@@ -2,13 +2,14 @@
 
 $animation-duration: 0.3s;
 $drawer-size: 320px;
+$drawer-max-size: calc(100% - 48px);
 
 @mixin ods-drawer() {
   display: block;
   position: fixed;
   inset-block: auto;
   inset-inline: auto;
-  z-index: overlay.$ods-overlay-z-index-drawer;
+  z-index: overlay.$ods-overlay-drawer-z-index;
   margin: 0;
   outline: none;
   border: none;
@@ -24,9 +25,9 @@ $drawer-size: 320px;
     right: 0;
     bottom: 0;
     left: 0;
-    margin-top: 48px;
     width: 100%;
-    max-height: $drawer-size;
+    height: $drawer-size;
+    max-height: $drawer-max-size;
     animation: drawer-open-bottom $animation-duration ease-in-out;
 
     @keyframes drawer-open-bottom {
@@ -52,8 +53,8 @@ $drawer-size: 320px;
     top: 0;
     bottom: 0;
     left: 0;
-    margin-right: 48px;
-    max-width: $drawer-size;
+    width: $drawer-size;
+    max-width: $drawer-max-size;
     height: 100%;
     animation: drawer-open-left $animation-duration ease-in-out;
 
@@ -80,8 +81,8 @@ $drawer-size: 320px;
     top: 0;
     right: 0;
     bottom: 0;
-    margin-left: 48px;
-    max-width: $drawer-size;
+    width: $drawer-size;
+    max-width: $drawer-max-size;
     height: 100%;
     animation: drawer-open-right $animation-duration ease-in-out;
 
@@ -108,9 +109,9 @@ $drawer-size: 320px;
     top: 0;
     right: 0;
     left: 0;
-    margin-bottom: 48px;
     width: 100%;
-    max-height: $drawer-size;
+    height: $drawer-size;
+    max-height: $drawer-max-size;
     animation: drawer-open-top $animation-duration ease-in-out;
 
     @keyframes drawer-open-top {

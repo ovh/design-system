@@ -70,7 +70,7 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
   }
 
   .ts-dropdown {
-    z-index: overlay.$ods-overlay-z-index - 1;
+    z-index: overlay.$ods-overlay-select-z-index;
     margin: 0;
     box-shadow: none;
 

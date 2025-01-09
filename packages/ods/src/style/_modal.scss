@@ -1,4 +1,5 @@
 @use './breakpoint';
+@use './overlay';
 
 $ods-modal-border-radius: var(--ods-border-radius-sm);
 $ods-modal-header-height: 32px;
@@ -35,7 +36,7 @@ $ods-modal-size: 512px;
   display: flex;
   position: fixed;
   flex-flow: column;
-  z-index: 1;
+  z-index: overlay.$ods-overlay-modal-z-index;
   margin: auto $ods-modal-margin;
   outline: none;
   border: none;

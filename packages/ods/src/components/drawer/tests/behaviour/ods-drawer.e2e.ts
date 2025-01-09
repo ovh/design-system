@@ -19,6 +19,13 @@ describe('ods-drawer behaviour', () => {
     drawer = await page.find('ods-drawer');
   }
 
+  function isOpen(): Promise<boolean> {
+    return page.evaluate(() => {
+      const dialog = document.querySelector('ods-drawer')?.shadowRoot?.querySelector('.ods-drawer__dialog') as HTMLDialogElement;
+      return dialog && dialog.hasAttribute('open');
+    });
+  }
+
   async function waitForAnimationEnd(): Promise<void> {
     await page.evaluate(async() => {
       const dialogElement = document.querySelector('ods-drawer')?.shadowRoot?.querySelector('dialog');
@@ -100,13 +107,36 @@ describe('ods-drawer behaviour', () => {
         await drawer.callMethod('open');
         await page.waitForChanges();
 
-        const isOpen = await page.evaluate(() => {
-          const dialog = document.querySelector('ods-drawer')?.shadowRoot?.querySelector('.ods-drawer__dialog') as HTMLDialogElement;
-          return dialog && dialog.hasAttribute('open');
-        });
-
-        expect(isOpen).toBe(true);
+        expect(await isOpen()).toBe(true);
       });
+    });
+  });
+
+  describe('backdrop', () => {
+    it('should open & close trigger click', async() => {
+      await setup('<button id="button-trigger-drawer">Trigger Drawer</button><ods-drawer position="right"><ods-text>Hello, world!</ods-text></ods-drawer>');
+
+      await page.evaluate(() => {
+        const drawer = document.querySelector('ods-drawer');
+        document.querySelector('#button-trigger-drawer')?.addEventListener('click', () => {
+          if (drawer?.isOpen) {
+            drawer.close();
+          } else {
+            drawer?.open();
+          }
+        });
+      });
+      const button = await page.find('#button-trigger-drawer');
+
+      await button.click();
+      await page.waitForChanges();
+
+      expect(await isOpen()).toBe(true);
+
+      await button.click();
+      await waitForAnimationEnd();
+
+      expect(await isOpen()).toBe(false);
     });
   });
 });

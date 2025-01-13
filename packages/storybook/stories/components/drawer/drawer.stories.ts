@@ -191,14 +191,19 @@ export const Position: StoryObj = {
 
   const drawerPosition = document.querySelector('#drawer-position');
 
-  [buttonLeft, buttonRight, buttonBottom, buttonTop].forEach((button) => button.addEventListener('click', () => {
-    drawerPosition.position = button.id.replace('button-drawer-', '');
-    if (drawerPosition.isOpen) {
-      drawerPosition.close();
-    } else {
-      drawerPosition.open();
-    }
-}));
+  [buttonLeft, buttonRight, buttonBottom, buttonTop].forEach((button) =>
+    button.addEventListener('click', async() => {
+      const lastPosition = drawerPosition.position;
+      drawerPosition.position = button.id.replace('button-drawer-', '');
+      if (lastPosition !== drawerPosition.position && drawerPosition.isOpen) {
+        return;
+      }
+      if (drawerPosition.isOpen) {
+        await drawerPosition.close();
+      } else {
+        await drawerPosition.open();
+      }
+    }));
 })();
 </script>
   `,

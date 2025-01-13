@@ -5,13 +5,15 @@ import styles from './canvasWithoutContext.module.css';
 
 type Props = {
   of: ModuleExports,
+  className?: string,
+  sourceState?: string,
 }
 
 // Remove the transform form to the element because it create a new stacking context
 // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context
-const CanvasWithoutContext = ({ of }: Props) => {
+const CanvasWithoutContext = ({ of, className, sourceState = 'none' }: Props) => {
   return (
-    <Canvas of={ of } sourceState="none" className={ styles['canvas-without-context'] } />
+    <Canvas of={ of } sourceState={ sourceState } className={ `${className} ${styles['canvas-without-context']}` } />
   );
 };
 

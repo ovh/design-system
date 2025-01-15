@@ -241,6 +241,19 @@ export const Checkbox: StoryObj = {
   `,
 };
 
+export const Clipboard: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-form-field>
+  <label for="form-field-clipboard" slot="label">
+    Text to copy
+  </label>
+
+  <ods-clipboard id="form-field-clipboard" value="Copy me"></ods-clipboard>
+</ods-form-field>
+  `,
+};
+
 export const Datepicker: StoryObj = {
   tags: ['isHidden'],
   decorators: [(story) => html`<div style="height: 350px;">${story()}</div>`],

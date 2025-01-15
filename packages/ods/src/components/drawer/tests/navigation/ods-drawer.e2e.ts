@@ -26,12 +26,10 @@ describe('ods-drawer navigation', () => {
           <input name="input"></input>
         </ods-drawer>`);
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
       expect(await getFocusTagName()).toBe('BUTTON');
 
       await page.keyboard.press('Tab');
+      await page.waitForChanges();
       expect(await getFocusTagName()).toBe('INPUT');
     });
   });

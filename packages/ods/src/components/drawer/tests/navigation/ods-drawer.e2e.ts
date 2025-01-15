@@ -1,6 +1,6 @@
 import type { E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
-import { OdsDrawer } from '../../src';
+import { type OdsDrawer } from '../../src';
 
 describe('ods-drawer navigation', () => {
   let page: E2EPage;
@@ -13,9 +13,12 @@ describe('ods-drawer navigation', () => {
     await page.waitForChanges();
   }
 
-  async function getFocusTagName(): Promise<string | undefined> {
+  async function getFocusElement(): Promise<Pick<Element, 'tagName' | 'id'>> {
     return await page.evaluate(() => {
-      return document.activeElement?.tagName;
+      return {
+        id: document.activeElement?.id ?? '',
+        tagName: document.activeElement?.tagName ?? '',
+      };
     });
   }
 
@@ -27,18 +30,18 @@ describe('ods-drawer navigation', () => {
           <input name="input"></input>
         </ods-drawer>`);
 
-      expect(await getFocusTagName()).toBe('BUTTON');
+      expect((await getFocusElement())?.tagName).toBe('BUTTON');
 
       await page.keyboard.press('Tab');
       await page.waitForChanges();
-      expect(await getFocusTagName()).toBe('INPUT');
+      expect((await getFocusElement())?.tagName).toBe('INPUT');
     });
 
     it('should focus on focusable element in the drawer with a trigger button', async() => {
       await setup(`
         <button id="button-trigger-drawer">Trigger Drawer</button>
         <ods-drawer>
-          <button>Default button</button>
+          <button id="button-inner-drawer">Default button</button>
           <input name="input"></input>
         </ods-drawer>`);
 
@@ -60,11 +63,12 @@ describe('ods-drawer navigation', () => {
       await page.keyboard.press('Tab');
       await page.waitForChanges();
 
-      expect(await getFocusTagName()).toBe('BUTTON');
+      expect((await getFocusElement())?.tagName).toBe('BUTTON');
+      expect((await getFocusElement())?.id).toBe('button-inner-drawer');
 
       await page.keyboard.press('Tab');
       await page.waitForChanges();
-      expect(await getFocusTagName()).toBe('INPUT');
+      expect((await getFocusElement())?.tagName).toBe('INPUT');
     });
   });
 });

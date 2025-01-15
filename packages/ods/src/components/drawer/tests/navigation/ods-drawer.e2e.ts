@@ -1,5 +1,6 @@
 import type { E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
+import { OdsDrawer } from '../../src';
 
 describe('ods-drawer navigation', () => {
   let page: E2EPage;
@@ -25,6 +26,39 @@ describe('ods-drawer navigation', () => {
           <button>Default button</button>
           <input name="input"></input>
         </ods-drawer>`);
+
+      expect(await getFocusTagName()).toBe('BUTTON');
+
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
+      expect(await getFocusTagName()).toBe('INPUT');
+    });
+
+    it('should focus on focusable element in the drawer with a trigger button', async() => {
+      await setup(`
+        <button id="button-trigger-drawer">Trigger Drawer</button>
+        <ods-drawer>
+          <button>Default button</button>
+          <input name="input"></input>
+        </ods-drawer>`);
+
+      await page.evaluate(() => {
+        const drawer = document.querySelector('ods-drawer') as HTMLElement & OdsDrawer| null;
+        document.querySelector('#button-trigger-drawer')?.addEventListener('click', () => {
+          if (drawer?.isOpen) {
+            drawer.close();
+          } else {
+            drawer?.open();
+          }
+        });
+      });
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
 
       expect(await getFocusTagName()).toBe('BUTTON');
 

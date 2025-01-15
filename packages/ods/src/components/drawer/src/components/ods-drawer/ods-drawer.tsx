@@ -86,7 +86,8 @@ export class OdsDrawer {
         <dialog
           class={ `ods-drawer__dialog ods-drawer__dialog--${this.position}` }
           ref={ (el) => this.drawerDialog = el as HTMLDialogElement }
-          part="drawer">
+          part="drawer"
+          tabindex={ -1 }>
           <slot></slot>
         </dialog>
       </Host>

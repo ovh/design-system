@@ -43,6 +43,8 @@ $ods-modal-size: 512px;
   background: var(--ods-color-neutral-000);
   padding: 0;
   width: 100%;
+  min-width: 320px;
+  max-width: calc(100% - ($ods-modal-margin * 2));
   min-height: 100px;
   max-height: calc(100% - ($ods-modal-margin * 2));
   overflow: hidden;

@@ -4,6 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as ClipboardStories from './clipboard.stories';
+import { Clipboard as FormFieldClipboard } from '../form-field/form-field.stories';
 
 <Meta of={ ClipboardStories } name="Technical information" />
 
@@ -38,3 +39,7 @@ Custom CSS :
 <Heading label="Custom labels" level={ 3 } />
 
 <Canvas of={ ClipboardStories.CustomLabels } sourceState="shown" />
+
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldClipboard } sourceState="shown" />

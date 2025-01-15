@@ -9,3 +9,4 @@ import '../../button/src';
 import '../../icon/src';
 import '../../input/src';
 import '../../tooltip/src';
+import '../../form-field/src';

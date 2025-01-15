@@ -1,10 +1,13 @@
-import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, h } from '@stencil/core';
 import { copyToClipboard, getRandomHTMLId } from '../../../../../utils/dom';
 import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 
 @Component({
-  shadow: true,
+  formAssociated: true,
+  shadow: {
+    delegatesFocus: true,
+  },
   styleUrl: 'ods-clipboard.scss',
   tag: 'ods-clipboard',
 })
@@ -12,13 +15,18 @@ export class OdsClipboard {
   private copyButtonId = 'clipboard-copy';
   private hostId: string = '';
 
+  @AttachInternals() internals!: ElementInternals;
+
   @Element() el!: HTMLElement;
 
   @State() isCopyDone: boolean = false;
 
+  @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
+  @Prop({ reflect: true }) public ariaLabelledby?: string;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public labelCopy: string = 'Copy to clipboard';
   @Prop({ reflect: true }) public labelCopySuccess: string = 'Copied!';
+  @Prop({ reflect: true }) public name: string = '';
   @Prop({ reflect: true }) public value?: string;
 
   @Event() odsCopy!: EventEmitter<string>;
@@ -49,11 +57,13 @@ export class OdsClipboard {
         class="ods-clipboard"
         id={ this.hostId }>
         <ods-input
+          aria-label={ this.ariaLabel }
+          aria-labelledby={ this.ariaLabelledby }
           class="ods-clipboard__input"
           exportparts="input"
           isDisabled={ this.isDisabled }
           isReadonly={ true }
-          name=""
+          name={ this.name }
           value={ this.value }>
         </ods-input>
 

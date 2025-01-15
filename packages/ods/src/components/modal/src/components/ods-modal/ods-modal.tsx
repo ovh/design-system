@@ -98,10 +98,11 @@ export class OdsModal {
         'ods-modal--open': this.isOpen,
       }}>
         <dialog
-          class='ods-modal__dialog'
+          class="ods-modal__dialog"
           ref={ (el) => this.modalDialog = el as HTMLDialogElement }
           onClick={ (event) => this.handleBackdropClick(event) }
-          part='dialog'>
+          part="dialog"
+          tabindex={ -1 }>
           <div class={ `ods-modal__dialog__header ods-modal__dialog__header--${this.color}` }>
             {
               this.isDismissible &&
@@ -116,13 +117,13 @@ export class OdsModal {
             }
           </div>
 
-          <div class='ods-modal__dialog__content'>
+          <div class="ods-modal__dialog__content">
             <div>
               <slot></slot>
             </div>
 
-            <div class='ods-modal__dialog__content__actions'>
-              <slot name='actions'></slot>
+            <div class="ods-modal__dialog__content__actions">
+              <slot name="actions"></slot>
             </div>
           </div>
         </dialog>

@@ -77,7 +77,7 @@ export const Demo: StoryObj = {
     content: `
     <div>
       <ods-text preset="heading-4">Hello, world!</ods-text>
-      <ods-text preset="heading-3">Press 'Escape' for close the drawer</ods-text>
+      <ods-text preset="heading-3">Press 'Escape' to close the drawer</ods-text>
       <ods-text preset="span">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</ods-text>
     </div>`,
     isOpen: false,

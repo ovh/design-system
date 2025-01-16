@@ -185,6 +185,7 @@ function FormNative(): ReactElement {
       <OdsTimepicker
         isRequired={ areAllRequired }
         name="timepicker"
+        timezones="all"
       />
 
       <OdsToggle

@@ -6,7 +6,7 @@ import { type OdsFormElement } from '../../../../../types';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { ODS_INPUT_TYPE, type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
 import { type OdsSelectChangeEvent } from '../../../../select/src';
-import { type OdsTimezonePreset } from '../../constant/timezone-preset';
+import { type OdsTimezonesPreset } from '../../constant/timezone-preset';
 import { type OdsTimezone } from '../../constant/timezones';
 import { VALUE_DEFAULT_VALUE, formatValue, getCurrentTimezone, getInitialValue, parseTimezones, updateInternals } from '../../controller/ods-timepicker';
 
@@ -42,7 +42,7 @@ export class OdsTimepicker implements OdsFormElement {
   @Prop({ reflect: true }) public isReadonly: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
   @Prop({ reflect: true }) public name!: string;
-  @Prop({ reflect: true }) public timezones?: OdsTimezone[] | OdsTimezonePreset | string;
+  @Prop({ reflect: true }) public timezones?: OdsTimezone[] | OdsTimezonesPreset | string;
   @Prop({ mutable: true, reflect: true }) public value: string | null = VALUE_DEFAULT_VALUE;
   @Prop({ reflect: true }) public withSeconds: boolean = false;
 

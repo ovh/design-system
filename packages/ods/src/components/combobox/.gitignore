@@ -1,0 +1,5 @@
+# Local Stencil command generates external ods component build at the root of the project
+# Excluding them is a temporary solution to avoid pushing generated files
+# But the issue may cause main build (ods-component package) to fails, as it detects multiples occurences
+# of the same component and thus you have to delete all those generated dir manually
+*/src/

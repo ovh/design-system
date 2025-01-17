@@ -1,0 +1,20 @@
+$ods-combobox-item-min-height: 32px;
+$ods-combobox-item-horizontal-padding: 8px;
+
+.ods-combobox-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 $ods-combobox-item-horizontal-padding;
+  min-height: $ods-combobox-item-min-height;
+  color: var(--ods-color-text);
+
+  &:hover,
+  &--focused {
+    background-color: var(--ods-color-primary-100);
+  }
+
+  &--hidden {
+    display: none;
+  }
+}

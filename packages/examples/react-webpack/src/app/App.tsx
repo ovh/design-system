@@ -6,7 +6,8 @@ import styles from './app.scss';
 // import { FormHookForm } from './components/formHookForm/FormHookForm';
 // import { FormNative } from './components/formNative/FormNative';
 // import { TestTimepicker } from './components/testTimepicker/TestTimepicker';
-import { TestAccordion } from './components/testAccordion/TestAccordion';
+// import { TestAccordion } from './components/testAccordion/TestAccordion';
+import { TestCombobox } from './components/testCombobox/TestCombobox';
 // import { TestModal } from './components/testModal/TestModal';
 // import { TestSelect } from './components/testSelect/TestSelect';
 // import { TestToggle } from './components/testToggle/TestToggle';
@@ -20,7 +21,8 @@ function App(): ReactElement {
       {/*<FormFormik />*/}
       {/*<FormHookForm />*/}
       {/* <FormNative /> */}
-      <TestAccordion />
+      {/* <TestAccordion /> */}
+      <TestCombobox />
       {/*<QueryClientProvider client={queryClient}>*/}
       {/*  <TestSelect />*/}
       {/*</QueryClientProvider>*/}

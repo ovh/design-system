@@ -1,4 +1,4 @@
-import { copyToClipboard, getRandomHTMLId, isTargetInElement, setInternalsValidityFromHtmlElement, setInternalsValidityFromOdsComponent, submitFormOnClick, submitFormOnEnter } from '../../src/utils/dom';
+import { copyToClipboard, getRandomHTMLId, isElementInContainer, isTargetInElement, setInternalsValidityFromHtmlElement, setInternalsValidityFromOdsComponent, submitFormOnClick, submitFormOnEnter } from '../../src/utils/dom';
 
 describe('utils dom', () => {
   beforeEach(jest.clearAllMocks);
@@ -33,6 +33,75 @@ describe('utils dom', () => {
       expect(htmlId1).not.toBe(htmlId2);
       expect(/^[0-9]/.test(htmlId1)).toBe(false);
       expect(/^[0-9]/.test(htmlId2)).toBe(false);
+    });
+  });
+
+  describe('isElementInContainer', () => {
+    const dummyContainer = {
+      getBoundingClientRect: () => ({
+        bottom: 200,
+        left: 100,
+        right: 200,
+        top: 100,
+      }),
+    } as unknown as HTMLElement;
+    const dummyElement = {
+      getBoundingClientRect: jest.fn(),
+    } as unknown as HTMLElement;
+
+    it('should return false if element is partially higher than its container', () => {
+      (dummyElement.getBoundingClientRect as jest.Mock).mockReturnValueOnce({
+        bottom: 200,
+        left: 200,
+        right: 100,
+        top: 50,
+      });
+
+      expect(isElementInContainer(dummyElement, dummyContainer)).toBe(false);
+    });
+
+    it('should return false if element is partially under than its container', () => {
+      (dummyElement.getBoundingClientRect as jest.Mock).mockReturnValueOnce({
+        bottom: 250,
+        left: 200,
+        right: 100,
+        top: 100,
+      });
+
+      expect(isElementInContainer(dummyElement, dummyContainer)).toBe(false);
+    });
+
+    it('should return false if element is partially on the left of its container', () => {
+      (dummyElement.getBoundingClientRect as jest.Mock).mockReturnValueOnce({
+        bottom: 200,
+        left: 50,
+        right: 200,
+        top: 100,
+      });
+
+      expect(isElementInContainer(dummyElement, dummyContainer)).toBe(false);
+    });
+
+    it('should return false if element is partially on the right of its container', () => {
+      (dummyElement.getBoundingClientRect as jest.Mock).mockReturnValueOnce({
+        bottom: 200,
+        left: 100,
+        right: 250,
+        top: 100,
+      });
+
+      expect(isElementInContainer(dummyElement, dummyContainer)).toBe(false);
+    });
+
+    it('should return true if element is in its container', () => {
+      (dummyElement.getBoundingClientRect as jest.Mock).mockReturnValueOnce({
+        bottom: 175,
+        left: 125,
+        right: 175,
+        top: 125,
+      });
+
+      expect(isElementInContainer(dummyElement, dummyContainer)).toBe(true);
     });
   });
 

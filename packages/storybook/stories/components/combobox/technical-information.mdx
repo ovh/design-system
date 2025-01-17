@@ -1,0 +1,54 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsCombobox from '@ovhcloud/ods-components/src/components/combobox/documentation/custom-elements.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { hideValidityStateSource } from '../../../src/components/validityState/validityState';
+import * as ComboboxStories from './combobox.stories';
+import { Combobox as FormFieldCombobox } from '../form-field/form-field.stories';
+
+<Meta of={ ComboboxStories } name="Technical information" />
+
+<Banner of={ ComboboxStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ ComboboxStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsCombobox } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ ComboboxStories.Default } sourceState="shown" />
+
+<Heading label="Multiple Selection" level={ 3 } />
+
+<Canvas of={ ComboboxStories.Multiple } sourceState="shown" />
+
+<Heading label="Clearable" level={ 3 } />
+
+<Canvas of={ ComboboxStories.Clearable } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ ComboboxStories.Disabled } sourceState="shown" />
+
+<Heading label="Readonly" level={ 3 } />
+
+<Canvas of={ ComboboxStories.Readonly } sourceState="shown" />
+
+<Heading label="Custom Items" level={ 3 } />
+
+TODO explain here about search through all text content and how to use search label / select text
+
+<Canvas of={ ComboboxStories.CustomItems } sourceState="shown" />
+
+<Heading label="Validity State" level={ 3 } />
+
+<Canvas of={ ComboboxStories.ValidityState } source={{ transform: hideValidityStateSource }} sourceState="shown" />
+
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldCombobox } sourceState="shown" />

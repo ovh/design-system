@@ -11,6 +11,16 @@ function getRandomHTMLId(): string {
   return `id-${Date.now()}-${Math.random().toString(36).replace('0.', '')}`;
 }
 
+function isElementInContainer(element: HTMLElement, container: HTMLElement = document.body): boolean {
+  const elementRect = element.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
+
+  return elementRect.top >= containerRect.top &&
+    elementRect.right <= containerRect.right &&
+    elementRect.bottom <= containerRect.bottom &&
+    elementRect.left >= containerRect.left;
+}
+
 function isTargetInElement(event: Event, element?: HTMLElement | null): boolean {
   if (!element) {
     return false;
@@ -57,6 +67,7 @@ function submitFormOnEnter(event: KeyboardEvent, form: HTMLFormElement | null): 
 export {
   copyToClipboard,
   getRandomHTMLId,
+  isElementInContainer,
   isTargetInElement,
   setInternalsValidityFromHtmlElement,
   setInternalsValidityFromOdsComponent,

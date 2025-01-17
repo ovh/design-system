@@ -1,0 +1,109 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/input';
+@use '../../../../../style/overlay';
+@use '../../../../../style/state';
+@use '../ods-combobox-item/ods-combobox-item';
+
+:host(.ods-combobox) {
+  display: inline-block;
+  position: relative;
+}
+
+.ods-combobox {
+  &__search {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 4px;
+    align-items: center;
+    border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
+    border-radius: var(--ods-border-radius-sm);
+
+    &--disabled {
+      @include state.ods-is-disabled();
+    }
+
+    &--error {
+      @include input.ods-input-error();
+    }
+
+    &--focused {
+      @include focus.ods-focus();
+    }
+
+    &--read-only {
+      @include state.ods-is-readonly();
+    }
+
+    &--bottom {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &--top {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    &__tag {
+      &::part(tag) {
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+
+    &__input {
+      flex: 1 1 auto;
+
+      &::part(input) {
+        border: 0;
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+  }
+
+  &__results {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    z-index: overlay.$ods-overlay-select-z-index;
+    margin: 0;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: var(--ods-border-radius-sm);
+    background: var(--ods-color-primary-000);
+    padding: 0;
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    overflow: hidden auto;
+    list-style: none;
+    line-height: 1.5;
+    color: var(--ods-color-text);
+    scroll-behavior: smooth;
+
+    &--open {
+      visibility: visible;
+    }
+
+    &--bottom {
+      border-radius: 0 0 var(--ods-border-radius-sm) var(--ods-border-radius-sm);
+    }
+
+    &--top {
+      border-radius: var(--ods-border-radius-sm) var(--ods-border-radius-sm) 0 0;
+    }
+
+    &__empty {
+      display: flex;
+      align-items: center;
+      padding: 0 ods-combobox-item.$ods-combobox-item-horizontal-padding;
+      min-height: ods-combobox-item.$ods-combobox-item-min-height;
+      color: var(--ods-color-text);
+    }
+  }
+}

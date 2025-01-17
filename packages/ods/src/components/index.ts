@@ -45,3 +45,4 @@ export * from './timepicker/src';
 export * from './range/src';
 export * from './pagination/src';
 export * from './drawer/src';
+export * from './combobox/src';

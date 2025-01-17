@@ -257,6 +257,45 @@ export const Clipboard: StoryObj = {
   `,
 };
 
+export const Combobox: StoryObj = {
+  tags: ['isHidden'],
+  decorators: [(story) => html`<div style="height: 220px;">${story()}</div>`],
+  render: () => html`
+<ods-form-field>
+  <label for="form-field-combobox" slot="label">
+    Choose your flavor
+  </label>
+
+  <ods-combobox id="form-field-combobox">
+    <ods-combobox-item value="chocolate">
+      Chocolate
+    </ods-combobox-item>
+    <ods-combobox-item value="chocolate-with-nuts">
+      Chocolate with nuts
+    </ods-combobox-item>
+    <ods-combobox-item value="coconut">
+      Coconut
+    </ods-combobox-item>
+    <ods-combobox-item value="light-mint">
+      Light mint
+    </ods-combobox-item>
+    <ods-combobox-item value="mint">
+      Mint
+    </ods-combobox-item>
+    <ods-combobox-item value="strawberry">
+      Strawberry
+    </ods-combobox-item>
+    <ods-combobox-item value="vanilla">
+      Vanilla
+    </ods-combobox-item>
+    <ods-combobox-item value="white-chocolate">
+      White chocolate
+    </ods-combobox-item>
+  </ods-combobox>
+</ods-form-field>
+  `,
+};
+
 export const Datepicker: StoryObj = {
   tags: ['isHidden'],
   decorators: [(story) => html`<div style="height: 350px;">${story()}</div>`],

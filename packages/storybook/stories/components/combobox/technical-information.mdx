@@ -1,0 +1,116 @@
+import { Canvas, Meta, Source } from '@storybook/blocks';
+import { OdsLink } from '@ovhcloud/ods-components/react';
+import SpecificationsCombobox from '@ovhcloud/ods-components/src/components/combobox/documentation/custom-elements.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { hideValidityStateSource } from '../../../src/components/validityState/validityState';
+import * as ComboboxStories from './combobox.stories';
+import { Combobox as FormFieldCombobox } from '../form-field/form-field.stories';
+
+<Meta of={ ComboboxStories } name="Technical information" />
+
+<Banner of={ ComboboxStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ ComboboxStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsCombobox } />
+
+<Heading label="Search behaviour & customization" level={ 2 } />
+
+When typing into the combobox, the list of combobox items will be filtered to match the input value.
+
+By default the search is made through the <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent" label="textContent" target="_blank" />
+property of the ods-combobox-item.
+
+<Heading label="Custom search label" level={ 2 } />
+
+In some cases, you may want to have more control about the filter value of an item.
+In that case you can set the `search-label` property to provide the text that should be used when filtering.
+
+<Source code={`
+<!-- Default behaviour will propose two items on "nuts" filtering -->
+<ods-combobox>
+  <ods-combobox-item value="chocolate">
+    Chocolate (without nuts)
+  </ods-combobox-item>
+  <ods-combobox-item value="chocolate-with-nuts">
+    Chocolate with nuts
+  </ods-combobox-item>
+</ods-combobox>
+
+<!-- By setting a custom search label, only one item will come by on "nuts" filtering -->
+<ods-combobox>
+  <ods-combobox-item search-label="Chocolate" value="chocolate">
+    Chocolate (without nuts)
+  </ods-combobox-item>
+  <ods-combobox-item value="chocolate-with-nuts">
+    Chocolate with nuts
+  </ods-combobox-item>
+</ods-combobox>
+`}
+        dark="true"
+        language="html" />
+
+<Heading label="Custom selection label" level={ 2 } />
+
+Like the filtering, by default, the selected item will use its <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent" label="text content" target="_blank" />
+as the displayed selection value.
+
+In some cases, you may want to have more control about the selected item displayed, especially when using multiple selection.
+In that case, you can set the `selection-label` property to provide the text that should be displayed when the item is selected.
+
+<Source code={`
+<!-- The item in the dropdown will use the custom template, but the selected tag will only display "OVH" -->
+<ods-combobox allow-multiple>
+  <ods-combobox-item selection-label="OVH" value="ovh">
+    <div class="custom-item">
+      <img alt="logo"
+           src="https://static-00.iconduck.com/assets.00/ovh-icon-2048x2048-l4c3izvg.png"
+           width="50" />
+      <div class="custom-item__content">
+        <span class="custom-item__content__title">OVH Cloud</span>
+        <span>OVH, legally OVH Groupe SA, is a French cloud computing company which offers VPS, dedicated servers and other web services. As of 2016 OVH owned the world's largest data center in surface area. As of 2019, it was the largest hosting provider in Europe, and the third largest in the world based on physical servers.</span>
+      </div>
+    </div>
+  </ods-combobox-item>
+</ods-combobox>
+`}
+        dark="true"
+        language="html" />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ ComboboxStories.Default } sourceState="shown" />
+
+<Heading label="Multiple Selection" level={ 3 } />
+
+<Canvas of={ ComboboxStories.Multiple } sourceState="shown" />
+
+<Heading label="Clearable" level={ 3 } />
+
+<Canvas of={ ComboboxStories.Clearable } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ ComboboxStories.Disabled } sourceState="shown" />
+
+<Heading label="Readonly" level={ 3 } />
+
+<Canvas of={ ComboboxStories.Readonly } sourceState="shown" />
+
+<Heading label="Custom Items" level={ 3 } />
+
+<Canvas of={ ComboboxStories.CustomItems } sourceState="shown" />
+
+<Heading label="Validity State" level={ 3 } />
+
+<Canvas of={ ComboboxStories.ValidityState } source={{ transform: hideValidityStateSource }} sourceState="shown" />
+
+<Heading label="Included in a Form Field" level={ 3 } />
+
+<Canvas of={ FormFieldCombobox } sourceState="shown" />

@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/blocks';
+import * as MeterStories from './meter.stories';
+
+<Meta of={ MeterStories } name='Migration From 17.x' />
+
+# Meter - migrate from v17 to v18
+----
+
+## Attributes changes [IF RELEVANT]
+
+`dummy ` <ods-badge size="sm" color="critical" label="Removed"></ods-badge>
+
+Has been removed.
+
+TODO Explain why and how to replace
+
+## Migration examples
+
+Without dummy:
+```html
+<osds-dummy dummy></osds-dummy>
+
+<!-- is now -->
+
+<ods-dummy></ods-dummy>
+```

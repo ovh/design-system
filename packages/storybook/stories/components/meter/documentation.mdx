@@ -1,0 +1,74 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as MeterStories from './meter.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={MeterStories} name="Documentation" />
+
+<Banner of={MeterStories} />
+
+_An interactive horizontal gauge displaying a value in a given range. The meter changes color dynamically based on thresholds to indicate whether the value is low, high, or normal._
+
+<Canvas of={MeterStories.Overview} sourceState="none" />
+
+<Heading label="Overview" level={2} />
+
+<IdentityCard
+  aliases={['Meter', 'Gauge', 'Threshold Meter', 'Dynamic Gauge']}
+  atomicType={ATOMIC_TYPE.atom}
+  name="Meter"
+  relatedComponents={[{ name: 'Progress Bar' }]}
+>
+  The **Meter** component is used to visually represent a value within a predefined range. Unlike the **Progress Bar**, it dynamically changes colors to indicate whether the value is too low, too high, or within a normal range. This provides users with intuitive feedback about thresholds or limits.
+</IdentityCard>
+
+<Heading label="Anatomy" level={2} />
+![Component anatomy](components/meter/anatomy.png "Component anatomy")
+
+1. **Track**: Displays the visual range of the value, from minimum to maximum.
+2. **Filled track**: Visually represents the current value of the meter, with color changing based on thresholds.
+
+<Heading label="Usage" level={2} />
+
+The **Meter** component is used to represent a value's position within a range, particularly when indicating thresholds (e.g., low, high, or normal). Examples include:
+- Indicating system performance (e.g., CPU or memory usage).
+- Highlighting critical thresholds, like warnings or errors.
+
+<Heading label="Dos & Don'ts" level={3} />
+
+<BestPractices
+  donts={[
+    '- Use Meter for non-quantifiable feedback.',
+    '- Use Meter to represent ranges without thresholds.',
+  ]}
+  dos={[
+    <span>- Use Meter to visually indicate whether a value is low, normal, or high, especially when thresholds are important.</span>,
+    <span>- Consider alternative components like <StorybookLink kind={ODS_COMPONENTS_TITLE.progressBar} label="Progress Bar" story={STORY.documentation} /> or <StorybookLink kind={ODS_COMPONENTS_TITLE.spinner} label="Spinner" story={STORY.documentation} /> for other use cases.</span>,
+  ]}
+/>
+
+<Heading label="Placement" level={2} />
+
+The **Meter** is usually centered in its container and should fit within the container width while respecting its predefined height of 16px.
+
+<Heading label="Behavior" level={2} />
+
+The **Meter** changes its filled track color dynamically based on the following conditions:
+- **Low**: `value < low` → Warning color (`--ods-color-warning-500`).
+- **Normal**: `low <= value <= high` → Primary color (`--ods-color-primary-500`).
+- **High**: `value > high` → Success color (`--ods-color-success-500`).
+
+<Heading label="Variation" level={2} />
+
+The **Meter** supports customization for:
+- Minimum and maximum range values.
+- Low and high thresholds for color changes.
+
+<Heading label="Accessibility" level={2} />
+
+The **Meter** component notifies users about its value using the ARIA `role="meter"` and supports ARIA properties such as `aria-valuemin`, `aria-valuemax`, and `aria-valuenow` for assistive technologies.

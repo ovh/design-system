@@ -46,6 +46,7 @@ const componentNames = [
   'range',
   'pagination',
   'drawer',
+  'meter',
   //--generator-anchor--
 ];
 

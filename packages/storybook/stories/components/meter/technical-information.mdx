@@ -1,0 +1,38 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsMeter from '@ovhcloud/ods-components/src/components/meter/documentation/custom-elements.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as MeterStories from './meter.stories';
+
+<Meta of={ MeterStories } name="Technical information" />
+
+<Banner of={ MeterStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ MeterStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsMeter } />
+
+<Heading label="Style customization" level={ 2 } />
+
+You can add your own style on the meter element using the part `progress`.
+
+Custom CSS:
+
+<Canvas of={ MeterStories.CustomCSS } sourceState="shown" />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ MeterStories.Default } sourceState="shown" />
+
+<Heading label="Max" level={ 3 } />
+
+<Canvas of={ MeterStories.Max } sourceState="shown" />
+
+<Heading label="Value" level={ 3 } />
+
+<Canvas of={ MeterStories.Value } sourceState="shown" />

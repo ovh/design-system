@@ -1,0 +1,19 @@
+{
+  "name": "@ovhcloud/ods-component-meter",
+  "version": "18.4.1",
+  "private": true,
+  "description": "ODS Meter component",
+  "main": "dist/index.cjs.js",
+  "collection": "dist/collection/collection-manifest.json",
+  "scripts": {
+    "clean": "rimraf .stencil coverage dist documentation www",
+    "doc": "custom-elements-manifest analyze --config ./custom-elements-manifest.config.mjs",
+    "lint:scss": "stylelint 'src/components/**/*.scss'",
+    "lint:ts": "eslint '{src,tests}/**/*.{js,ts,tsx}'",
+    "start": "stencil build --dev --watch --serve",
+    "test:e2e": "stencil test --e2e --config stencil.config.ts",
+    "test:e2e:ci": "tsc --noEmit && stencil test --e2e --ci --runInBand --config stencil.config.ts",
+    "test:spec": "stencil test --spec --config stencil.config.ts --coverage",
+    "test:spec:ci": "tsc --noEmit && stencil test --config stencil.config.ts  --spec --ci"
+  }
+}

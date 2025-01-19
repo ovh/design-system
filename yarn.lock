@@ -4198,6 +4198,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-meter@workspace:packages/ods/src/components/meter":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-meter@workspace:packages/ods/src/components/meter"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-modal@workspace:packages/ods/src/components/modal":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-modal@workspace:packages/ods/src/components/modal"

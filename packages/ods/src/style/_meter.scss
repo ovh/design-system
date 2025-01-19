@@ -1,0 +1,23 @@
+$ods-meter-border-radius: 8px;
+$ods-meter-height: 16px;
+
+@mixin ods-meter() {
+  appearance: none;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: $ods-meter-height;
+  background-color: var(--ods-color-neutral-200);
+  border-radius: $ods-meter-border-radius;
+}
+
+@mixin ods-meter-fill() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--ods-color-primary-500);
+  border-radius: $ods-meter-border-radius;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}

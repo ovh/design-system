@@ -1,0 +1,17 @@
+@use '../../../../../style/meter';
+
+:host(.ods-meter) {
+  display: inline-flex;
+  width: 100%;
+  min-width: 100px;
+}
+
+.ods-meter {
+  &__track {
+    @include meter.ods-meter();
+  }
+
+  &__fill {
+    @include meter.ods-meter-fill();
+  }
+}

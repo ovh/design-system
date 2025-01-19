@@ -1,7 +1,49 @@
+$ods-ods-meter-border-radius: 0.5em;
+$ods-ods-meter-height: 1em;
+
+@mixin ods-ods-meter() {
+  appearance: none;
+  border: none;
+  border-radius: $ods-ods-meter-border-radius;
+}
+
 :host(.ods-ods-meter) {
-  // Style to apply directly to the Host element
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  padding: 0 3em;
+  border: 1px solid black;
+  box-sizing: border-box;
 }
 
 .ods-ods-meter {
-  // BEM elements and modifiers
+  &__label {
+    font-weight: 500;
+    margin-right: 1em;
+    font-size: 1rem;
+  }
+  &__meter {
+    position: relative;
+    display: inline-flex;
+    background-color: var(--ods-color-neutral-100);
+    border-radius: $ods-ods-meter-border-radius;
+    height: $ods-ods-meter-height;
+    width: 100%;
+  }
+  &__range {
+    display: block;
+    border-radius: $ods-ods-meter-border-radius;
+    height: 100%;
+    &--success {
+      background: var(--ods-color-success-500);
+    }
+    &--warning {
+      background: var(--ods-color-warning-500);
+    }
+    &--primary {
+      background: var(--ods-color-primary-500);
+    }
+  }
 }

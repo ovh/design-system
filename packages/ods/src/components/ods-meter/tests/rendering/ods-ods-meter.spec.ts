@@ -31,3 +31,31 @@ describe('ods-ods-meter rendering', () => {
     });
   });
 });
+
+describe('ods-ods-meter component', () => {
+  let component = new OdsOdsMeter();
+
+  beforeEach(() => {
+    component = new OdsOdsMeter();
+    component.min = 0;
+    component.max = 100;
+    component.low = 15;
+    component.high = 85;
+    component.value = 10;
+    component.optimum = 85;
+    component.label = 'Label';
+  });
+
+  it('should return "ods-ods-meter__range--warning" when value is less than low', () => {
+    component.value = 11;
+    expect(component.generateMeterBackgroundColor()).toBe('ods-ods-meter__range--warning');
+  });
+  it("should return 'ods-ods-meter__range--success' when value is greater than high", () => {
+    component.value = 90;
+    expect(component.generateMeterBackgroundColor()).toBe('ods-ods-meter__range--success');
+  });
+  it('should return "ods-ods-meter__range--primary" when value is between low and high', () => {
+    component.value = 50;
+    expect(component.generateMeterBackgroundColor()).toBe('ods-ods-meter__range--primary');
+  });
+});

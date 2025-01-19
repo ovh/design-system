@@ -44,3 +44,4 @@ export * from './datepicker/src';
 export * from './timepicker/src';
 export * from './range/src';
 export * from './pagination/src';
+export * from './ods-meter/src';

@@ -1,0 +1,39 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsOdsMeter from '@ovhcloud/ods-components/src/components/ods-meter/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as OdsMeterStories from './ods-meter.stories';
+import { LINK_ID } from '../../zeroheight';
+
+<Meta of={ OdsMeterStories } name='Documentation' />
+
+<Banner of={ OdsMeterStories } />
+
+# Overview
+
+TODO Some text about the component
+
+<Canvas of={ OdsMeterStories.Default } sourceState='none' />
+
+<DocNavigator of={ OdsMeterStories } linkId={ LINK_ID.ODS_METER } />
+
+<Markdown>{ SpecificationsOdsMeter }</Markdown>
+
+# Style customization [IF RELEVANT]
+
+You can add your own style on the ods-meter element using the part `ods-meter`.
+
+Custom ods-meter css:
+
+<Canvas of={ OdsMeterStories.CustomCSS } sourceState='shown'/>
+
+# Examples
+
+## Default
+
+<Canvas of={ OdsMeterStories.Default } sourceState='shown' />
+
+## [Other attribute]
+<Canvas of={ OdsMeterStories.Default } sourceState='shown' />
+
+...

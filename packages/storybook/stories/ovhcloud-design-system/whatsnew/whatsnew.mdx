@@ -8,6 +8,51 @@ import { HOME_TITLE, ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/
 
 <Heading label="What's new ?" level={ 1 } />
 
+<Heading label="v18.5.0" level={ 2 } />
+
+<Heading label="New components:" level={ 3 } />
+
+**Drawer**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.drawer } label="See Documentation" story={ STORY.documentation } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Accordion**
+- Update internal logic to use the native behaviour of `details` / `summary` tags.
+- Interactive elements can now be used inside the accordion without toggling it.
+- New methods `close`, `open` and `toggle` have been added.
+- Add some documentation about usage with React state.
+
+**Link**
+- Link will now display an ellipsis by default.
+- New part `label` has been added to allow label customization.
+
+**Modal**
+- Update default width and height.
+- Update dimensions on mobile-size screen.
+- `z-index` has been updated to use ODS overlay z indexes ordering.
+
+**Range**
+- Range can now display ticks.
+- New attribute `ticks` has been added.
+- Thumb hitbox has been improved.
+
+**Select**
+- `z-index` has been updated to use ODS overlay z indexes ordering.
+
+**Tooltip**
+- Tooltip now stays open for a short time on trigger leave, which allows user to
+move over it and keep it open (and for example select its content).
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+- Add new guide about using components events.
+- Add new guide about using components methods.
+- Update Properties array in the technical page to more clearly display which props are required.
+- Update form-field caption examples.
+- Fix FAQ broken link.
+
 <Heading label="v18.4.1" level={ 2 } />
 
 <Heading label="Feature updates:" level={ 3 } />

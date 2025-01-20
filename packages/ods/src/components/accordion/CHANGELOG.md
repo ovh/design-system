@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.5.0](https://ovh.github.io/design-system/v18.5.0/?path=/docs/design-system-changelog--page) (2025-01-20)
+[compare](https://github.com/ovh/design-system/compare/v18.4.1...v18.5.0)
+
+### Bug Fixes
+
+* **accordion:** udpate disable state to be allowed on open state ([5cfd2ec](https://github.com/ovh/design-system/commit/5cfd2ec62a434e55128fb4426ab614c14c6bb097))
+
+
+### Features
+
+* **doc:** add more info on accordion is-open state ([75c56f5](https://github.com/ovh/design-system/commit/75c56f593452ddc338204e0188a850cb3f954280))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

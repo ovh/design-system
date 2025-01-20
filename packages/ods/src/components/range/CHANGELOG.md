@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.5.0](https://ovh.github.io/design-system/v18.5.0/?path=/docs/design-system-changelog--page) (2025-01-20)
+[compare](https://github.com/ovh/design-system/compare/v18.4.1...v18.5.0)
+
+### Bug Fixes
+
+* **range:** css variable ([7174c41](https://github.com/ovh/design-system/commit/7174c416397fafcacbf97963bd74a74d6df52d8c))
+* **range:** disabled ticks ([9f4f070](https://github.com/ovh/design-system/commit/9f4f07049e264dac2957266be71c1fe39f39f19b))
+* **range:** ratio calculation ([5747029](https://github.com/ovh/design-system/commit/5747029e54c1761727c3ac966f5e0c389e943e06))
+* **range:** thumb clickable zone ([b460773](https://github.com/ovh/design-system/commit/b4607732ba61bade4ad5b6383cd5de185a015ebc))
+
+
+### Features
+
+* **range:** add ticks props ([816e7a4](https://github.com/ovh/design-system/commit/816e7a4c5d1fd31e2ec03ccfe3a395192a659790))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

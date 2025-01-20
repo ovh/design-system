@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.5.0](https://ovh.github.io/design-system/v18.5.0/?path=/docs/design-system-changelog--page) (2025-01-20)
+[compare](https://github.com/ovh/design-system/compare/v18.4.1...v18.5.0)
+
+### Bug Fixes
+
+* **link:** improv doc & style mixin ellipsis ([cd92599](https://github.com/ovh/design-system/commit/cd92599323be3c7a4f018bca9e3c01c3f7d017de))
+
+
+### Features
+
+* **link:** add ellipsis & part on label ([e71012a](https://github.com/ovh/design-system/commit/e71012ad5627d2832c02efd98dabf37fc327fb5f))
+* **link:** add tooltip to ellipsis link ([e95efd2](https://github.com/ovh/design-system/commit/e95efd2b8fc0e935602743dd7bef4c741cfdd225))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

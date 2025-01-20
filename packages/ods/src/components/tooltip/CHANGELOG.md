@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.5.0](https://ovh.github.io/design-system/v18.5.0/?path=/docs/design-system-changelog--page) (2025-01-20)
+[compare](https://github.com/ovh/design-system/compare/v18.4.1...v18.5.0)
+
+### Bug Fixes
+
+* **tooltip:** flickering & review ([e77bdfa](https://github.com/ovh/design-system/commit/e77bdfaa2fb0d5064de684f2632605919ec6769e))
+
+
+### Features
+
+* **tooltip:** add id & tooltip hover ([4587aaf](https://github.com/ovh/design-system/commit/4587aaf77524510b87d6965e9b144affae96eab1))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

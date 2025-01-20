@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.5.0](https://ovh.github.io/design-system/v18.5.0/?path=/docs/design-system-changelog--page) (2025-01-20)
+[compare](https://github.com/ovh/design-system/compare/v18.4.1...v18.5.0)
+
+### Features
+
+* **doc:** add more info on accordion is-open state ([75c56f5](https://github.com/ovh/design-system/commit/75c56f593452ddc338204e0188a850cb3f954280))
+* **drawer:** global z-index & drawer size ([8976672](https://github.com/ovh/design-system/commit/8976672c90f67a0ae6bcbccf8c7e33a181af332a))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

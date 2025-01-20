@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.5.0](https://ovh.github.io/design-system/v18.5.0/?path=/docs/design-system-changelog--page) (2025-01-20)
+[compare](https://github.com/ovh/design-system/compare/v18.4.1...v18.5.0)
+
+### Bug Fixes
+
+* **dialog:** tabindex -1 ([d25c33e](https://github.com/ovh/design-system/commit/d25c33ec42b15889cd6e98e7614755913c3c43a2))
+* **modal:** add min-width & test size ([dcf0d37](https://github.com/ovh/design-system/commit/dcf0d372ad9c812a40d72aabae1da0895067c716))
+* **modal:** mobile alignment & docs ([c61f67c](https://github.com/ovh/design-system/commit/c61f67c746bad6ff9dd60a6e01f4447c12270cbe))
+
+
+### Features
+
+* **drawer:** init component ([1bebf6c](https://github.com/ovh/design-system/commit/1bebf6cab38973884b3ca5541a87b8087a10b42d))
+* **modal:** width height boundaries ([127143c](https://github.com/ovh/design-system/commit/127143c8b0e16bbcb91c40a18c6d18b2e7d3624d))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

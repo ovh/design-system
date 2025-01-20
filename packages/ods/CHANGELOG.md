@@ -8,6 +8,45 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.5.0](https://ovh.github.io/design-system/v18.5.0/?path=/docs/design-system-changelog--page) (2025-01-20)
+[compare](https://github.com/ovh/design-system/compare/v18.4.1...v18.5.0)
+
+### Bug Fixes
+
+* **accordion:** udpate disable state to be allowed on open state ([5cfd2ec](https://github.com/ovh/design-system/commit/5cfd2ec62a434e55128fb4426ab614c14c6bb097))
+* **dialog:** tabindex -1 ([d25c33e](https://github.com/ovh/design-system/commit/d25c33ec42b15889cd6e98e7614755913c3c43a2))
+* **drawer:** context transform ([d121750](https://github.com/ovh/design-system/commit/d121750158563b9e54dc6c3cd24cf931d43f3ded))
+* **drawer:** docs canvas without drawer & position demo ([920a2b4](https://github.com/ovh/design-system/commit/920a2b47b439b7ba539d39250980f4633072aad9))
+* **drawer:** typo & canvas without context ([f1f6db6](https://github.com/ovh/design-system/commit/f1f6db6b29eb167c17233dfc819f463c37e217ce))
+* **link:** improv doc & style mixin ellipsis ([cd92599](https://github.com/ovh/design-system/commit/cd92599323be3c7a4f018bca9e3c01c3f7d017de))
+* **modal:** add min-width & test size ([dcf0d37](https://github.com/ovh/design-system/commit/dcf0d372ad9c812a40d72aabae1da0895067c716))
+* **modal:** mobile alignment & docs ([c61f67c](https://github.com/ovh/design-system/commit/c61f67c746bad6ff9dd60a6e01f4447c12270cbe))
+* **range:** css variable ([7174c41](https://github.com/ovh/design-system/commit/7174c416397fafcacbf97963bd74a74d6df52d8c))
+* **range:** disabled ticks ([9f4f070](https://github.com/ovh/design-system/commit/9f4f07049e264dac2957266be71c1fe39f39f19b))
+* **range:** ratio calculation ([5747029](https://github.com/ovh/design-system/commit/5747029e54c1761727c3ac966f5e0c389e943e06))
+* **range:** thumb clickable zone ([b460773](https://github.com/ovh/design-system/commit/b4607732ba61bade4ad5b6383cd5de185a015ebc))
+* **tooltip:** flickering & review ([e77bdfa](https://github.com/ovh/design-system/commit/e77bdfaa2fb0d5064de684f2632605919ec6769e))
+
+
+### Features
+
+* **doc:** add more info on accordion is-open state ([75c56f5](https://github.com/ovh/design-system/commit/75c56f593452ddc338204e0188a850cb3f954280))
+* **drawer:** global z-index & drawer size ([8976672](https://github.com/ovh/design-system/commit/8976672c90f67a0ae6bcbccf8c7e33a181af332a))
+* **drawer:** init component ([1bebf6c](https://github.com/ovh/design-system/commit/1bebf6cab38973884b3ca5541a87b8087a10b42d))
+* **drawer:** vue & react test ([fc29855](https://github.com/ovh/design-system/commit/fc298553348c7858ce7508ae33976c7940cee58a))
+* **link:** add ellipsis & part on label ([e71012a](https://github.com/ovh/design-system/commit/e71012ad5627d2832c02efd98dabf37fc327fb5f))
+* **link:** add tooltip to ellipsis link ([e95efd2](https://github.com/ovh/design-system/commit/e95efd2b8fc0e935602743dd7bef4c741cfdd225))
+* **modal:** width height boundaries ([127143c](https://github.com/ovh/design-system/commit/127143c8b0e16bbcb91c40a18c6d18b2e7d3624d))
+* **range:** add ticks props ([816e7a4](https://github.com/ovh/design-system/commit/816e7a4c5d1fd31e2ec03ccfe3a395192a659790))
+* **tooltip:** add id & tooltip hover ([4587aaf](https://github.com/ovh/design-system/commit/4587aaf77524510b87d6965e9b144affae96eab1))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.4.1](https://ovh.github.io/design-system/v18.4.1/?path=/docs/design-system-changelog--page) (2024-12-10)
 [compare](https://github.com/ovh/design-system/compare/v18.4.0...v18.4.1)
 

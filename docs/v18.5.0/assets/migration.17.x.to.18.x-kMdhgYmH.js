@@ -1,0 +1,154 @@
+import{j as n,M as d,d as c}from"./index-aSJOi-xY.js";import{u as a}from"./index-D_oymSD0.js";import{H as r}from"./Heading-fUBW5LMg.js";import{S as i,O as s,a as o}from"./StorybookLink-CdkDDCl2.js";import"./iframe-Cjn0x15a.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-D-8MO0q_.js";import"./index-DX_4BEHg.js";import"./index-DrFu-skq.js";import"./index-B1WyGMUD.js";import"./index-DduIf26o.js";function t(l){const e={a:"a",code:"code",h1:"h1",li:"li",p:"p",ul:"ul",...a(),...l.components};return n.jsxs(n.Fragment,{children:[n.jsx(d,{title:"OVHcloud Design System/What's new?/Migration guide/17.x to 18.x"}),`
+`,n.jsxs(e.h1,{id:"1722-to-1800-compare",children:[n.jsx(e.a,{href:"https://ovh.github.io/design-system/v17.2.2/?path=/story/ovhcloud-design-system-what-s-new-changelog--page",rel:"nofollow",children:"17.2.2"})," to ",n.jsx(e.a,{href:"https://ovh.github.io/design-system/v18.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page",rel:"nofollow",children:"18.0.0"})," (",n.jsx(e.a,{href:"https://github.com/ovh/design-system/compare/release/17.0...release/18.0",rel:"nofollow",children:"compare"}),")"]}),`
+`,n.jsx(e.p,{children:"If you have any questions or issues regarding the new version, feel free to reach us directly."}),`
+`,n.jsx(r,{label:"Libraries",level:2}),`
+`,n.jsx(e.p,{children:"The following libs have been removed:"}),`
+`,n.jsxs(e.ul,{children:[`
+`,n.jsx(e.li,{children:"@ovhcloud/ods-cdk"}),`
+`,n.jsx(e.li,{children:"@ovhcloud/ods-common-core"}),`
+`,n.jsx(e.li,{children:"@ovhcloud/ods-common-stencil"}),`
+`,n.jsx(e.li,{children:"@ovhcloud/ods-common-testing"}),`
+`,n.jsx(e.li,{children:"@ovhcloud/ods-common-theming"}),`
+`,n.jsx(e.li,{children:"@ovhcloud/ods-theme-blue-jeans"}),`
+`]}),`
+`,n.jsx(e.p,{children:"If you were using part of them, please reach out to us so that we can get more information about your usage."}),`
+`,n.jsxs(e.p,{children:["To use the new theme, replace ",n.jsx(e.code,{children:"ods-theme-blue-jeans"})," with the following:"]}),`
+`,n.jsx(c,{code:"import '@ovhcloud/ods-themes/default';",dark:"true",language:"typescript"}),`
+`,n.jsx(r,{label:"Design tokens",level:2}),`
+`,n.jsxs(e.p,{children:["Design tokens are now accessible through the ",n.jsx(e.code,{children:"@ovhcloud/ods-themes"})," lib."]}),`
+`,n.jsx(e.p,{children:"The list of available tokens has been updated with the latest design changes and match what you may find on the Figma screens."}),`
+`,n.jsx(r,{label:"Components",level:2}),`
+`,n.jsx(e.p,{children:"As each component was refactored, there are too many changes to list everything here."}),`
+`,n.jsxs(e.p,{children:["The main common breaking change is the following: ",n.jsx(e.code,{children:"osds-xxx"})," component is now ",n.jsx(e.code,{children:"ods-xxx"})]}),`
+`,n.jsx(e.p,{children:"A complete list of changes and a guide about how to migrate is available per component:"}),`
+`,n.jsxs(e.ul,{children:[`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.accordion,label:"accordion",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.badge,label:"badge",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.breadcrumb,label:"breadcrumb",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.button,label:"button",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.card,label:"card",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{label:"cart",title:s.cart}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.checkbox,label:"checkbox",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.clipboard,label:"clipboard",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.code,label:"code",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{label:"content-addon",title:s.contentAddon}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.datepicker,label:"datepicker",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.divider,label:"divider",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.fileUpload,label:"file-upload",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{label:"flag",title:s.flag}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.formField,label:"form-field",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.icon,label:"icon",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.input,label:"input",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.link,label:"link",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.medium,label:"medium",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{label:"menu",title:s.menu}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.message,label:"message",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.modal,label:"modal",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.pagination,label:"pagination",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.password,label:"password",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.phoneNumber,label:"phone-number",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.popover,label:"popover",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.progressBar,label:"progress-bar",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{label:"search-bar",title:s.searchBar}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.quantity,label:"quantity",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.radio,label:"radio",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.range,label:"range",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.select,label:"select",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.skeleton,label:"skeleton",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.spinner,label:"spinner",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.switch,label:"switch",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.table,label:"table",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.tabs,label:"tabs",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.tag,label:"tag",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.text,label:"text",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.textarea,label:"textarea",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.timepicker,label:"timepicker",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.toggle,label:"toggle",story:o.migrationFrom17}),`
+`]}),`
+`,n.jsxs(e.li,{children:[`
+`,n.jsx(i,{kind:s.tooltip,label:"tooltip",story:o.migrationFrom17}),`
+`]}),`
+`]})]})}function v(l={}){const{wrapper:e}={...a(),...l.components};return e?n.jsx(e,{...l,children:n.jsx(t,{...l})}):t(l)}export{v as default};

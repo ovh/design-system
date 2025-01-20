@@ -1,0 +1,6 @@
+import{j as e,M as m}from"./index-aSJOi-xY.js";import{u as a}from"./index-D_oymSD0.js";import{O as p}from"./index-DduIf26o.js";import{H as l}from"./Heading-fUBW5LMg.js";import{S as n,O as s,a as i}from"./StorybookLink-CdkDDCl2.js";import"./iframe-Cjn0x15a.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-D-8MO0q_.js";import"./index-DX_4BEHg.js";import"./index-DrFu-skq.js";import"./index-B1WyGMUD.js";function r(t){const o={p:"p",...a(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(m,{title:"ODS Components/Chip"}),`
+`,e.jsx(l,{label:"Chip - migrate from v17 to v18",level:1}),`
+`,e.jsxs(o.p,{children:["Chip has been removed from ODS components. ",e.jsx(p,{color:"critical",label:"Removed",size:"sm"})]}),`
+`,e.jsx(o.p,{children:"It has been split into two different components."}),`
+`,e.jsxs(o.p,{children:["If you need a presentational component, with no behaviour, use ",e.jsx(n,{kind:s.badge,label:"ods-badge",story:i.documentation}),"."]}),`
+`,e.jsxs(o.p,{children:["If you need a clickable element, use ",e.jsx(n,{kind:s.tag,label:"ods-tag",story:i.documentation}),"."]})]})}function S(t={}){const{wrapper:o}={...a(),...t.components};return o?e.jsx(o,{...t,children:e.jsx(r,{...t})}):r(t)}export{S as default};

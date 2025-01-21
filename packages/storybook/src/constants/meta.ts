@@ -34,7 +34,7 @@ enum ODS_COMPONENTS_TITLE {
   card = `${SECTION.odsComponents}/Card`,
   cart = `${SECTION.odsComponents}/Cart`,
   checkbox = `${SECTION.odsComponents}/${SECTION.formElements}/Checkbox`,
-  clipboard = `${SECTION.odsComponents}/Clipboard`,
+  clipboard = `${SECTION.odsComponents}/${SECTION.formElements}/Clipboard`,
   code = `${SECTION.odsComponents}/Code`,
   contentAddon = `${SECTION.odsComponents}/Content Addon`,
   datepicker = `${SECTION.odsComponents}/${SECTION.formElements}/Datepicker`,

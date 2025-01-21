@@ -4,7 +4,7 @@ import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
 const meta: Meta = {
-  title: 'ODS Components/Clipboard',
+  title: 'ODS Components/Form elements/Clipboard',
   component: 'ods-clipboard',
 };
 

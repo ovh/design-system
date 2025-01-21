@@ -77,5 +77,37 @@
       console.log(e);
     });
   </script>
+
+  <p>Form</p>
+
+  <form id="form">
+    <ods-form-field>
+      <label for="clipboard-form" slot="label">
+        Name
+      </label>
+
+      <ods-clipboard id="clipboard-form" value="test">
+      </ods-clipboard>
+    </ods-form-field>
+
+    <label for="input-form-last-name">Last name:</label>
+    <ods-input id="input-form-last-name"
+               is-required
+               name="lastName">
+    </ods-input>
+
+    <input type="text" name="natif-input" required>
+
+    <button id="clipboard-form-reset-button" type="reset">Reset</button>
+    <button id="clipboard-form-submit-button" type="submit">Submit</button>
+  </form>
+  <script>
+    const formElement = document.querySelector('#form');
+
+    formElement.addEventListener('submit', (e) => {
+      const formData = new FormData(formElement);
+      console.log('formData', formData);
+    });
+  </script>
 </body>
 </html>

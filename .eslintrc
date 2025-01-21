@@ -12,7 +12,6 @@
   "plugins": [
     "@typescript-eslint",
     "eslint-plugin-import",
-    "eslint-plugin-jsx-a11y",
     "eslint-plugin-tsdoc"
   ],
   "root": true,

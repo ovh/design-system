@@ -24,6 +24,7 @@
     "clean": "lerna run clean",
     "doc": "lerna run doc",
     "lint": "yarn lint:ts && yarn lint:scss",
+    "lint:a11y": "lerna run lint:a11y",
     "lint:ts": "lerna run lint:ts",
     "lint:scss": "lerna run lint:scss",
     "new:component": "plop --plopfile scripts/component-generator/plopfile.js component",

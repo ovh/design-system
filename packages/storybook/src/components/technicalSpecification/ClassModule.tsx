@@ -1,5 +1,5 @@
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME, ODS_MESSAGE_COLOR } from '@ovhcloud/ods-components';
+import { OdsIcon, OdsMessage } from '@ovhcloud/ods-components/react';
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import { type ClassMember, type Module } from 'custom-elements-manifest/schema';
@@ -7,11 +7,13 @@ import React from 'react';
 import { HOME_TITLE } from '../../constants/meta';
 import { Heading } from '../heading/Heading';
 import { StorybookLink } from '../storybookLink/StorybookLink';
+import { renderToString } from 'react-dom/server';
 import styles from './classModule.module.css';
 
 type Props = {
   enumList?: Record<string, Record<string, string>>,
   module: Module,
+  message?: { color: ODS_MESSAGE_COLOR, content: string }
 }
 
 function isRequired(property: ClassMember): boolean {
@@ -22,7 +24,7 @@ function isRequired(property: ClassMember): boolean {
   return !('default' in property && property.default);
 }
 
-const ClassModule = ({ module }: Props) => {
+const ClassModule = ({ module, message }: Props) => {
   const name = (module.exports || []).find((exp) => exp.kind === 'js')?.name || '';
   const classDeclaration = (module.declarations || []).find((declaration) => declaration.kind === 'class');
 
@@ -102,6 +104,8 @@ const ClassModule = ({ module }: Props) => {
           </Table>
         </>
       }
+
+      { message && <OdsMessage color={ message.color } innerHTML={ message.content } isDismissible={ false }></OdsMessage> }
 
       {
         methods.length > 0 &&

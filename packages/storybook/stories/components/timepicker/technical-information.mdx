@@ -15,7 +15,8 @@ import { Timepicker as FormFieldTimepicker } from '../form-field/form-field.stor
 
 <Canvas of={ TimepickerStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsTimepicker } />
+<TechnicalSpecification data={ SpecificationsTimepicker }
+                        message={{ color: 'warning', content: '<div><b>OdsTimezonePreset</b>  is now deprecated use <b>OdsTimezonesPreset</b>  instead</div>' }}/>
 
 <Heading label="Style customization" level={ 2 } />
 

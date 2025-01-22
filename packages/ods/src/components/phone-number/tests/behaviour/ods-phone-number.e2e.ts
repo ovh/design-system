@@ -228,6 +228,23 @@ describe('ods-phone-number behaviour', () => {
         expect(odsResetSpy).toHaveReceivedEventTimes(1);
       });
 
+      it('should emit an odsReset event with countries', async() => {
+        const dummyDefaultValue = '0123456789';
+        const dummyDefaultIsoCode = 'fr';
+        await setup(`<ods-phone-number iso-code="${dummyDefaultIsoCode}" countries="all" default-value="${dummyDefaultValue}"></ods-phone-number>`);
+        const odsResetSpy = await page.spyOnEvent('odsReset');
+
+        await el.setAttribute('iso-code', 'de');
+        await page.waitForChanges();
+
+        await el.callMethod('reset');
+        await page.waitForChanges();
+
+        expect(await el.getAttribute('value')).toBe(dummyDefaultValue);
+        expect(await el.getAttribute('iso-code')).toBe(dummyDefaultIsoCode);
+        expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      });
+
       it('should emit an odsReset event even if disabled', async() => {
         const dummyDefaultValue = '0123456789';
         await setup(`<ods-phone-number is-disabled value="value" default-value="${dummyDefaultValue}"></ods-phone-number>`);

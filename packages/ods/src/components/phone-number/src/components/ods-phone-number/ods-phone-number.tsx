@@ -3,7 +3,7 @@ import { PhoneNumberUtil } from 'google-libphonenumber';
 import { type OdsFormElement } from '../../../../../types';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
-import { type OdsSelectChangeEvent, type OdsSelectCustomRendererData } from '../../../../select/src';
+import { type OdsSelect, type OdsSelectChangeEvent, type OdsSelectCustomRendererData } from '../../../../select/src';
 import { type OdsPhoneNumberCountryIsoCode } from '../../constants/phone-number-country-iso-code';
 import { type OdsPhoneNumberCountryPreset } from '../../constants/phone-number-country-preset';
 import { type OdsPhoneNumberLocale } from '../../constants/phone-number-locale';
@@ -32,12 +32,14 @@ import { type OdsPhoneNumberChangeEventDetail } from '../../interfaces/events';
   tag: 'ods-phone-number',
 })
 export class OdsPhoneNumber implements OdsFormElement {
+  private defaultIsoCode?: OdsPhoneNumberCountryIsoCode;
   private hasCountries: boolean = false;
   private i18nCountriesMap?: TranslatedCountryMap;
   private inputElement?: HTMLElement & OdsInput;
   private isInitialLoadDone: boolean = false;
   private parsedCountryCodes: OdsPhoneNumberCountryIsoCode[] = [];
   private phoneUtils = PhoneNumberUtil.getInstance();
+  private selectElement?: HTMLElement & OdsSelect;
   private shouldUpdateIsInvalidState: boolean = false;
 
   @AttachInternals() private internals!: ElementInternals;
@@ -110,6 +112,7 @@ export class OdsPhoneNumber implements OdsFormElement {
 
   @Method()
   public async reset(): Promise<void> {
+    await this.selectElement?.reset();
     await this.inputElement?.reset();
 
     // Element internal validityState is not yet updated, so we set the flag
@@ -150,6 +153,7 @@ export class OdsPhoneNumber implements OdsFormElement {
   componentWillLoad(): void {
     this.onCountriesChange();
     this.isoCode = getCurrentIsoCode(this.isoCode, this.parsedCountryCodes[0]);
+    this.defaultIsoCode = this.isoCode;
     const currentLocale = getCurrentLocale(this.locale);
 
     if (currentLocale === this.locale) { // in that case the watcher is not triggered so we explicitly call it
@@ -244,13 +248,16 @@ export class OdsPhoneNumber implements OdsFormElement {
 </div>
 `,
             }}
+            defaultValue={ this.defaultIsoCode}
             dropdownWidth="auto"
             hasError={ this.hasError || this.isInvalid }
             isDisabled={ this.isDisabled }
             isReadonly={ this.isReadonly }
             name="iso-code"
             onOdsChange={ (e: OdsSelectChangeEvent) => this.onSelectChange(e) }
+            onOdsReset={ (e: CustomEvent<void>) => e.stopImmediatePropagation() }
             part="select"
+            ref={ (el?: unknown): OdsSelect => this.selectElement = el as HTMLElement & OdsSelect }
             value={ this.isoCode }>
             {
               this.parsedCountryCodes.map((isoCode) => {

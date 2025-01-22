@@ -3,6 +3,7 @@ import { type Package } from 'custom-elements-manifest/schema';
 import React, { Fragment } from 'react';
 import { ClassModule } from './ClassModule';
 import { Heading } from '../heading/Heading';
+import { ODS_MESSAGE_COLOR } from '@ovhcloud/ods-components';
 import styles from './technicalSpecification.module.css';
 
 type Props = {
@@ -12,15 +13,18 @@ type Props = {
       value: string,
     }>>,
   },
+  message?: { color: ODS_MESSAGE_COLOR, content: string }
 }
 
-const TechnicalSpecification = ({ data }: Props) => {
+// eslint-disable-next-line func-style
+const TechnicalSpecification = ({ data, message }: Props) => {
   return (
     <div className={ styles['technical-specification'] }>
       {
         (data.modules || []).map((module, idx) => (
           <ClassModule key={ idx }
-                       module={ module } />
+                       module={ module }
+                       message={ message } />
         ))
       }
 

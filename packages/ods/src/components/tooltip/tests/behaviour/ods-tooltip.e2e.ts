@@ -5,6 +5,7 @@ describe('ods-tooltip behaviour', () => {
   const triggerId = 'trigger-id';
   let page: E2EPage;
   let tooltipElement: E2EElement;
+  let buttonElement: E2EElement;
 
   async function setup(content: string): Promise<void> {
     page = await newE2EPage();
@@ -13,20 +14,21 @@ describe('ods-tooltip behaviour', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     tooltipElement = await page.find('ods-tooltip');
+    buttonElement = await page.find('button');
   }
 
-  beforeEach(async() => {
-    await setup(`
-      <button id="${triggerId}">
-        Trigger
-      </button>
-      <ods-tooltip trigger-id="${triggerId}">
-        Tooltip content
-      </ods-tooltip>
-    `);
-  });
-
   describe('methods', () => {
+    beforeEach(async() => {
+      await setup(`
+        <button id="${triggerId}">
+          Trigger
+        </button>
+        <ods-tooltip trigger-id="${triggerId}">
+          Tooltip content
+        </ods-tooltip>
+      `);
+    });
+
     describe('hide', () => {
       it('should emit an odsHide event', async() => {
         const odsHideSpy = await page.spyOnEvent('odsHide');
@@ -48,5 +50,27 @@ describe('ods-tooltip behaviour', () => {
         expect(odsShowSpy).toHaveReceivedEventTimes(1);
       });
     });
+  });
+
+  describe('trigger', () => {
+    it('should open the tooltip with complex triggerId', async() => {
+      const triggerId = 'trigger:id'
+      await setup(`
+        <button id="${triggerId}">
+          Trigger
+        </button>
+        <ods-tooltip trigger-id="${triggerId}">
+          Tooltip content
+        </ods-tooltip>
+      `);
+      const odsShowSpy = await page.spyOnEvent('odsShow');
+
+      await buttonElement.hover();
+      await page.waitForChanges();
+
+      const tooltipStyle = await tooltipElement.getComputedStyle();
+      expect(tooltipStyle.display).toBe('block')
+      expect(odsShowSpy).toHaveReceivedEventTimes(1);
+    })
   });
 });

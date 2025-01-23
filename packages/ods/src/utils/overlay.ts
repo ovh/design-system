@@ -39,7 +39,7 @@ const ODS_OVERLAY_POSITIONS = Object.freeze(Object.values(ODS_OVERLAY_POSITION))
 const ODS_OVERLAY_STRATEGIES = Object.freeze(Object.values(ODS_OVERLAY_STRATEGY));
 
 function findTriggerElement(triggerId: string, shadowDomTriggerId?: string): HTMLElement | undefined {
-  const hostElement = document.querySelector<HTMLElement>(`#${triggerId}`);
+  const hostElement = document.querySelector<HTMLElement>(`#${CSS.escape(triggerId)}`);
 
   if (!hostElement) {
     console.warn(`[ods] Unable to find trigger element in DOM with id: ${triggerId}`);
@@ -47,7 +47,7 @@ function findTriggerElement(triggerId: string, shadowDomTriggerId?: string): HTM
   }
 
   if (shadowDomTriggerId) {
-    const shadowDomElement = hostElement.shadowRoot?.querySelector<HTMLElement>(`#${shadowDomTriggerId}`);
+    const shadowDomElement = hostElement.shadowRoot?.querySelector<HTMLElement>(`#${CSS.escape(shadowDomTriggerId)}`);
 
     if (!shadowDomElement) {
       console.warn(`[ods] Unable to find trigger element in shadow DOM with id: ${shadowDomTriggerId}`);

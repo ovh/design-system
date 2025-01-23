@@ -7,6 +7,11 @@ jest.mock('@floating-ui/dom', () => ({
   shift: jest.fn().mockReturnValue('shift middleware'),
 }));
 
+// @ts-ignore for test purposes
+global.CSS = {
+  escape: (value: string) => value,
+};
+
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 import { ODS_OVERLAY_STRATEGY, findTriggerElement, getElementPosition, hideOverlay, showOverlay } from '../../src/utils/overlay';
 
@@ -31,6 +36,21 @@ describe('utils overlay', () => {
       expect(querySelectorSpy).toHaveBeenCalledTimes(1);
       expect(querySelectorSpy).toHaveBeenCalledWith('#dummy');
       expect(triggerElement).toBe(hostElement);
+    });
+
+    it('return the trigger element found with special character in the id', async() => {
+      const assertElementFound = (id: string) => {
+        const hostElement = { [id]: 'element' } as unknown as HTMLElement;
+        const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValue(hostElement);
+
+        const triggerElement = findTriggerElement(id);
+        expect(querySelectorSpy).toHaveBeenCalledWith(`#${id}`);
+        expect(triggerElement).toBe(hostElement);
+      }
+
+      assertElementFound('trigger:id');
+      assertElementFound('trigger:1234');
+      assertElementFound('trigger/id');
     });
 
     it('return empty if shadow trigger element is not found', async() => {
@@ -58,6 +78,26 @@ describe('utils overlay', () => {
       expect(shadowQuerySelectorSpy).toHaveBeenCalledTimes(1);
       expect(shadowQuerySelectorSpy).toHaveBeenCalledWith('#shadow');
       expect(triggerElement).toBe(shadowElement);
+    });
+
+    it('return the shadow trigger element if found with special char', async() => {
+      const assertShadowElementFound = (id: string, shadowId: string) => {
+        const shadowElement = { dummy: 'element' } as unknown as HTMLElement;
+        const shadowQuerySelectorSpy = jest.fn().mockReturnValue(shadowElement);
+        const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValue({
+          shadowRoot: { querySelector: shadowQuerySelectorSpy },
+        } as unknown as HTMLElement);
+
+        const triggerElement = findTriggerElement(id, shadowId);
+
+        expect(querySelectorSpy).toHaveBeenCalledWith(`#${id}`);
+        expect(shadowQuerySelectorSpy).toHaveBeenCalledWith(`#${shadowId}`);
+        expect(triggerElement).toBe(shadowElement);
+      }
+
+      assertShadowElementFound('dummy', 'shadow:id');
+      assertShadowElementFound('dummy', 'shadow/id');
+      assertShadowElementFound('dummy', 'shadow1234id');
     });
   });
 

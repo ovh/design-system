@@ -11,10 +11,17 @@
 </head>
 
 <body>
-<!--  <p>Default</p>-->
-<!--  <ods-input value="Default" type="number" is-clearable>-->
-<!--  </ods-input>-->
-
+  <p>Default</p>
+  <ods-input id="ods-input-default" type="number" is-clearable>
+  </ods-input>
+  <button id="button-insert-text">insert into ods input</button>
+  <script>
+    const buttonInsertText = document.querySelector('#button-insert-text');
+    const odsInputDefault = document.querySelector('#ods-input-default');
+    buttonInsertText.addEventListener('click', () => {
+      odsInputDefault.value = "12"
+    })
+  </script>
 <!--  <p>Clearable</p>-->
 <!--  <ods-input value="Clearable" is-clearable>-->
 <!--  </ods-input>-->
@@ -83,11 +90,11 @@
 <!--  <ods-input default-value="Default">-->
 <!--  </ods-input>-->
 
-      <p>Step any</p>
+      <!-- <p>Step any</p>
       <ods-input type="number" step="any" value="9.99">
       </ods-input>
 
-      <input type="number" step="any" value="9.99" />
+      <input type="number" step="any" value="9.99" /> -->
 <!--  <p>Custom CSS</p>-->
 <!--  <ods-input class="my-input">-->
 <!--  </ods-input>-->

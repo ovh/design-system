@@ -2,6 +2,7 @@ import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing
 import { type OdsDatepicker } from '../../src';
 
 describe('ods-datepicker rendering', () => {
+  let buttonClearable: E2EElement;
   let el: E2EElement;
   let inputElement: E2EElement;
   let page: E2EPage;
@@ -24,6 +25,7 @@ describe('ods-datepicker rendering', () => {
 
     el = await page.find('ods-datepicker');
     inputElement = await page.find('ods-datepicker >>> input');
+    buttonClearable = await page.find('ods-datepicker >>> ods-button[icon="xmark"]');
   }
 
   it('should render the web component', async() => {
@@ -181,6 +183,32 @@ describe('ods-datepicker rendering', () => {
       });
 
       expect(hasScroll).toBe(false);
+    });
+  });
+
+  describe('isClearable', () => {
+    it('should render a clearable button', async() => {
+      await setup('<ods-datepicker is-clearable value="clearable"></ods-datepicker>');
+
+      expect(buttonClearable).not.toBeNull();
+    });
+
+    it('should render a disabled clearable button when input is disabled', async() => {
+      await setup('<ods-datepicker is-disabled is-clearable value="clearable"></ods-datepicker>');
+
+      expect(buttonClearable.getAttribute('is-disabled')).toBe('');
+    });
+
+    it('should render a disabled clearable button when input is readonly', async() => {
+      await setup('<ods-datepicker is-readonly is-clearable value="clearable"></ods-datepicker>');
+
+      expect(buttonClearable.getAttribute('is-disabled')).toBe('');
+    });
+
+    it('should render a clearable button when input value wrong type', async() => {
+      await setup('<ods-datepicker is-clearable type="number" value="clearable"></ods-datepicker>');
+
+      expect(buttonClearable).not.toBeNull();
     });
   });
 });

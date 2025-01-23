@@ -227,6 +227,32 @@ describe('ods-input rendering', () => {
     });
   });
 
+  describe('isClearable', () => {
+    it('should render a clearable button', async() => {
+      await setup('<ods-input is-clearable value="clearable"></ods-input>');
+
+      expect(buttonClearable).not.toBeNull();
+    });
+
+    it('should render a disabled clearable button when input is disabled', async() => {
+      await setup('<ods-input is-disabled is-clearable value="clearable"></ods-input>');
+
+      expect(buttonClearable.getAttribute('is-disabled')).toBe('');
+    });
+
+    it('should render a disabled clearable button when input is readonly', async() => {
+      await setup('<ods-input is-readonly is-clearable value="clearable"></ods-input>');
+
+      expect(buttonClearable.getAttribute('is-disabled')).toBe('');
+    });
+
+    it('should render a clearable button when input value wrong type', async() => {
+      await setup('<ods-input is-clearable type="number" value="clearable"></ods-input>');
+
+      expect(buttonClearable).not.toBeNull();
+    });
+  });
+
   describe('type search', () => {
     it('should render a search button', async() => {
       await setup('<ods-input type="search"></ods-input>');

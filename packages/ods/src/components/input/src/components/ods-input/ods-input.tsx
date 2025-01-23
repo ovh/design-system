@@ -28,6 +28,7 @@ export class OdsInput implements OdsFormElement {
 
   @State() private isInvalid: boolean | undefined;
   @State() private isPassword = false;
+  @State() private showClearable: boolean = false;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -78,6 +79,9 @@ export class OdsInput implements OdsFormElement {
   public async clear(): Promise<void> {
     this.odsClear.emit();
     this.value = null;
+    if (this.inputEl) {
+      this.inputEl.value = '';
+    }
     this.inputEl?.focus();
 
     // Element internal validityState is not yet updated, so we set the flag
@@ -254,6 +258,12 @@ export class OdsInput implements OdsFormElement {
       this.shouldUpdateIsInvalidState = false;
     }
 
+    if (!this.internals.validity.valid && !this.internals.validity.valueMissing) {
+      this.showClearable = true;
+    } else {
+      this.showClearable = false;
+    }
+
     this.odsChange.emit({
       name: this.name,
       previousValue: typeof this.value === 'number' && isNumeric(previousValue) ? Number(previousValue) : previousValue,
@@ -263,7 +273,7 @@ export class OdsInput implements OdsFormElement {
   }
 
   render(): FunctionalComponent {
-    const hasClearableIcon = this.isClearable && !this.isLoading && !!this.value;
+    const hasClearableIcon = this.isClearable && !this.isLoading && (!!this.showClearable || !!this.value);
     const hasToggleMaskIcon = this.isPassword && !this.isLoading;
     const hasSearchIcon = this.type === ODS_INPUT_TYPE.search && !this.isLoading;
 

@@ -1,4 +1,4 @@
-import { ODS_ICON_NAME, ODS_MESSAGE_COLOR } from '@ovhcloud/ods-components';
+import { ODS_ICON_NAME, type ODS_MESSAGE_COLOR } from '@ovhcloud/ods-components';
 import { OdsIcon, OdsMessage } from '@ovhcloud/ods-components/react';
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import { Table } from '@storybook/components';
@@ -7,13 +7,12 @@ import React from 'react';
 import { HOME_TITLE } from '../../constants/meta';
 import { Heading } from '../heading/Heading';
 import { StorybookLink } from '../storybookLink/StorybookLink';
-import { renderToString } from 'react-dom/server';
 import styles from './classModule.module.css';
 
 type Props = {
   enumList?: Record<string, Record<string, string>>,
+  message?: { color: ODS_MESSAGE_COLOR, content: JSX.Element }
   module: Module,
-  message?: { color: ODS_MESSAGE_COLOR, content: string }
 }
 
 function isRequired(property: ClassMember): boolean {
@@ -105,7 +104,7 @@ const ClassModule = ({ module, message }: Props) => {
         </>
       }
 
-      { message && <OdsMessage color={ message.color } innerHTML={ message.content } isDismissible={ false }></OdsMessage> }
+      { message && <OdsMessage className={ styles['class-module__message'] } color={ message.color } isDismissible={ false }>{ message.content }</OdsMessage> }
 
       {
         methods.length > 0 &&

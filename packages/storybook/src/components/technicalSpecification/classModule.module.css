@@ -33,3 +33,7 @@
 .class-module__methods__item__name {
   font-weight: bold;
 }
+
+.class-module__message {
+  width: 100%;
+}

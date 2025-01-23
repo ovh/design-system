@@ -3,7 +3,7 @@ import { type Package } from 'custom-elements-manifest/schema';
 import React, { Fragment } from 'react';
 import { ClassModule } from './ClassModule';
 import { Heading } from '../heading/Heading';
-import { ODS_MESSAGE_COLOR } from '@ovhcloud/ods-components';
+import { type ODS_MESSAGE_COLOR } from '@ovhcloud/ods-components';
 import styles from './technicalSpecification.module.css';
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
       value: string,
     }>>,
   },
-  message?: { color: ODS_MESSAGE_COLOR, content: string }
+  message?: { color: ODS_MESSAGE_COLOR, content: JSX.Element }
 }
 
 // eslint-disable-next-line func-style

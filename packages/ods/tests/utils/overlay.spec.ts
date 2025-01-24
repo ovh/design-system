@@ -9,7 +9,7 @@ jest.mock('@floating-ui/dom', () => ({
 
 // @ts-ignore for test purposes
 global.CSS = {
-  escape: (value: string) => value,
+  escape: (value: string): string => value,
 };
 
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
@@ -39,7 +39,7 @@ describe('utils overlay', () => {
     });
 
     it('return the trigger element found with special character in the id', async() => {
-      const assertElementFound = (id: string) => {
+      function assertElementFound(id: string): void {
         const hostElement = { [id]: 'element' } as unknown as HTMLElement;
         const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValue(hostElement);
 
@@ -81,7 +81,7 @@ describe('utils overlay', () => {
     });
 
     it('return the shadow trigger element if found with special char', async() => {
-      const assertShadowElementFound = (id: string, shadowId: string) => {
+      function assertShadowElementFound(id: string, shadowId: string): void {
         const shadowElement = { dummy: 'element' } as unknown as HTMLElement;
         const shadowQuerySelectorSpy = jest.fn().mockReturnValue(shadowElement);
         const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValue({

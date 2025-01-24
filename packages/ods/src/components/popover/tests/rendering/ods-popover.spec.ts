@@ -1,6 +1,13 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
 import { ODS_POPOVER_POSITION, ODS_POPOVER_STRATEGY, OdsPopover } from '../../src';
 
+Object.defineProperty(global, 'CSS', {
+  value: {
+    escape: (value: string): string => value,
+  },
+  writable: true,
+});
+
 describe('ods-popover rendering', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;

@@ -54,7 +54,7 @@ describe('ods-tooltip behaviour', () => {
 
   describe('trigger', () => {
     it('should open the tooltip with complex triggerId', async() => {
-      const triggerId = 'trigger:id'
+      const triggerId = 'trigger:id';
       await setup(`
         <button id="${triggerId}">
           Trigger
@@ -69,8 +69,8 @@ describe('ods-tooltip behaviour', () => {
       await page.waitForChanges();
 
       const tooltipStyle = await tooltipElement.getComputedStyle();
-      expect(tooltipStyle.display).toBe('block')
+      expect(tooltipStyle.display).toBe('block');
       expect(odsShowSpy).toHaveReceivedEventTimes(1);
-    })
+    });
   });
 });

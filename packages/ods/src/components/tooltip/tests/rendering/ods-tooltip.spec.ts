@@ -1,6 +1,13 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
 import { ODS_TOOLTIP_POSITION, ODS_TOOLTIP_STRATEGY, OdsTooltip } from '../../src';
 
+Object.defineProperty(global, 'CSS', {
+  value: {
+    escape: (value: string): string => value,
+  },
+  writable: true,
+});
+
 describe('ods-tooltip rendering', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;

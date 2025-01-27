@@ -8,6 +8,7 @@ $ods-code-secondary-color: #000;
   display: inline-flex;
   flex-flow: row;
   column-gap: 8px;
+  justify-content: space-between;
   border-radius: var(--ods-border-radius-sm);
   background-color: $ods-code-secondary-color;
   padding: 12px;

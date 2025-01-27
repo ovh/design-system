@@ -52,6 +52,7 @@ export class OdsDatepicker implements OdsFormElement {
   @AttachInternals() internals!: ElementInternals;
 
   @State() private isInvalid: boolean | undefined;
+  @State() private showClearable: boolean = false;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -261,6 +262,11 @@ export class OdsDatepicker implements OdsFormElement {
         const previousValue = this.value;
         this.value = newDate ?? null;
         this.onValueChange(formattedNewDate, previousValue);
+        if (formattedNewDate) {
+          this.showClearable = true;
+        } else {
+          this.showClearable = false;
+        }
       });
     }
 
@@ -326,8 +332,17 @@ export class OdsDatepicker implements OdsFormElement {
     });
   }
 
+  private onInput(event: InputEvent): void {
+    const value = (event.target as HTMLInputElement).value;
+    if (!value || isDate(new Date(value))) {
+      this.showClearable = false;
+    } else {
+      this.showClearable = true;
+    }
+  }
+
   render(): FunctionalComponent {
-    const hasClearableAction = this.isClearable && !this.isLoading && !!this.value;
+    const hasClearableAction = this.isClearable && !this.isLoading && (!!this.showClearable || !!this.value);
 
     return (
       <Host class={ `ods-datepicker ods-datepicker--${this.strategy}` }
@@ -346,6 +361,7 @@ export class OdsDatepicker implements OdsFormElement {
           name={ this.name }
           onBlur={ () => this.onBlur() }
           onFocus={ () => this.odsFocus.emit() }
+          onInput={ (event) => this.onInput(event) }
           placeholder={ this.placeholder }
           readonly={ this.isReadonly }
           ref={ (el): HTMLInputElement => this.inputElement = el as HTMLInputElement }

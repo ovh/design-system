@@ -258,7 +258,7 @@ export class OdsInput implements OdsFormElement {
       this.shouldUpdateIsInvalidState = false;
     }
 
-    if (!this.internals.validity.valid && !this.internals.validity.valueMissing) {
+    if (!this.internals.validity?.valid && !this.internals.validity?.valueMissing) {
       this.showClearable = true;
     } else {
       this.showClearable = false;

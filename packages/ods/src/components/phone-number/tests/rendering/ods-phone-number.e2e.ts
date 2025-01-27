@@ -2,6 +2,7 @@ import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODES } from '../../src';
 
 describe('ods-phone-number rendering', () => {
+  let buttonClearable: E2EElement;
   let el: E2EElement;
   let inputElement: HTMLElement;
   let page: E2EPage;
@@ -34,6 +35,7 @@ describe('ods-phone-number rendering', () => {
     }
 
     el = await page.find('ods-phone-number');
+    buttonClearable = await page.find('ods-phone-number >>> ods-button[icon="xmark"]');
     inputElement = el.shadowRoot!.querySelector('ods-input')!;
     selectElement = el.shadowRoot!.querySelector('ods-select')!;
   }
@@ -91,6 +93,32 @@ describe('ods-phone-number rendering', () => {
 
       expect(inputStyle.getPropertyValue('width')).toBe('100px');
       expect(selectStyle.getPropertyValue('width')).toBe('100px');
+    });
+  });
+
+  describe('isClearable', () => {
+    it('should render a clearable button', async() => {
+      await setup('<ods-phone-number is-clearable value="clearable"></ods-phone-number>');
+
+      expect(buttonClearable).not.toBeNull();
+    });
+
+    it('should render a disabled clearable button when phone-number is disabled', async() => {
+      await setup('<ods-phone-number is-disabled is-clearable value="clearable"></ods-phone-number>');
+
+      expect(buttonClearable.getAttribute('is-disabled')).toBe('');
+    });
+
+    it('should render a disabled clearable button when phone-number is readonly', async() => {
+      await setup('<ods-phone-number is-readonly is-clearable value="clearable"></ods-phone-number>');
+
+      expect(buttonClearable.getAttribute('is-disabled')).toBe('');
+    });
+
+    it('should render a clearable button when phone-number value wrong type', async() => {
+      await setup('<ods-phone-number is-clearable value="clearable"></ods-phone-number>');
+
+      expect(buttonClearable).not.toBeNull();
     });
   });
 

@@ -334,7 +334,7 @@ export class OdsDatepicker implements OdsFormElement {
 
   private onInput(event: InputEvent): void {
     const value = (event.target as HTMLInputElement).value;
-    if (!value || isDate(new Date(value))) {
+    if (!value) {
       this.showClearable = false;
     } else {
       this.showClearable = true;
@@ -342,7 +342,7 @@ export class OdsDatepicker implements OdsFormElement {
   }
 
   render(): FunctionalComponent {
-    const hasClearableAction = this.isClearable && !this.isLoading && (!!this.showClearable || !!this.value);
+    const hasClearableAction = this.isClearable && !this.isLoading && (this.showClearable || !!this.value);
 
     return (
       <Host class={ `ods-datepicker ods-datepicker--${this.strategy}` }

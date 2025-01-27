@@ -2,6 +2,7 @@ import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('ods-password rendering', () => {
+  let buttonClearable: E2EElement;
   let el: E2EElement;
   let page: E2EPage;
   let part: E2EElement;
@@ -18,6 +19,7 @@ describe('ods-password rendering', () => {
 
     el = await page.find('ods-password');
     part = await page.find('ods-password >>> [exportparts="input"]');
+    buttonClearable = await page.find('ods-password >>> ods-button[icon="xmark"]');
   }
 
   describe('part', () => {
@@ -25,6 +27,26 @@ describe('ods-password rendering', () => {
       await setup('<ods-password></ods-password>', 'ods-password::part(input) { width: 100px }');
       const partStyle = await part.getComputedStyle();
       expect(partStyle.getPropertyValue('width')).toBe('100px');
+    });
+  });
+
+  describe('isClearable', () => {
+    it('should render a clearable button', async() => {
+      await setup('<ods-password is-clearable value="clearable"></ods-password>');
+
+      expect(buttonClearable).not.toBeNull();
+    });
+
+    it('should render a disabled clearable button when password is disabled', async() => {
+      await setup('<ods-password is-disabled is-clearable value="clearable"></ods-password>');
+
+      expect(buttonClearable.getAttribute('is-disabled')).toBe('');
+    });
+
+    it('should render a disabled clearable button when password is readonly', async() => {
+      await setup('<ods-password is-readonly is-clearable value="clearable"></ods-password>');
+
+      expect(buttonClearable.getAttribute('is-disabled')).toBe('');
     });
   });
 

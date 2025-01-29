@@ -3,7 +3,6 @@ import type { StorybookConfig } from '@storybook/web-components-vite';
 const config: StorybookConfig = {
   addons: [
     '@storybook/addon-controls',
-    '@storybook/addon-a11y',
     '@storybook/addon-links',
     {
       name: '@storybook/addon-essentials',

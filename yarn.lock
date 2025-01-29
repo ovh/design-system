@@ -4404,7 +4404,6 @@ __metadata:
   resolution: "@ovhcloud/ods-storybook@workspace:packages/storybook"
   dependencies:
     "@ovhcloud/ods-components": 18.5.0
-    "@storybook/addon-a11y": 8.0.4
     "@storybook/addon-essentials": 8.0.4
     "@storybook/addon-links": 8.0.4
     "@storybook/blocks": 8.0.4
@@ -4728,16 +4727,6 @@ __metadata:
   peerDependencies:
     "@stencil/core": ">=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0"
   checksum: bcee6b0603d13d305be458205b3774213064e01a691c7fd3616ccf810b6fefa4d22be1324410b359e298a4eec15859fce03b44a0c09ece4f545c4b56a0ef9115
-  languageName: node
-  linkType: hard
-
-"@storybook/addon-a11y@npm:8.0.4":
-  version: 8.0.4
-  resolution: "@storybook/addon-a11y@npm:8.0.4"
-  dependencies:
-    "@storybook/addon-highlight": 8.0.4
-    axe-core: ^4.2.0
-  checksum: c4f26264c9e11873487b1881de1f935c00d69e8c96a76fab0195bfcdec4bbf08d4a0313648038355d108776b72b8b94bb159636706e061cbe942390396ff8868
   languageName: node
   linkType: hard
 
@@ -7596,13 +7585,6 @@ __metadata:
   version: 4.7.0
   resolution: "axe-core@npm:4.7.0"
   checksum: f086bcab42be1761ba2b0b127dec350087f4c3a853bba8dd58f69d898cefaac31a1561da23146f6f3c07954c76171d1f2ce460e555e052d2b02cd79af628fa4a
-  languageName: node
-  linkType: hard
-
-"axe-core@npm:^4.2.0":
-  version: 4.10.2
-  resolution: "axe-core@npm:4.10.2"
-  checksum: 2b9b1c93ea73ea9f206604e4e17bd771d2d835f077bde54517d73028b8865c69b209460e73d5b109968cbdb39ab3d28943efa5695189bd79e16421ce1706719e
   languageName: node
   linkType: hard
 

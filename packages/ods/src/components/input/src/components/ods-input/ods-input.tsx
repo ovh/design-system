@@ -218,6 +218,8 @@ export class OdsInput implements OdsFormElement {
     } else {
       this.value = this.inputEl?.value ?? null;
     }
+
+    this.showClearable = !this.inputEl?.validity.valid && !this.inputEl?.validity.valueMissing;
   }
 
   private onListSlotChange(event: Event): void {
@@ -258,11 +260,12 @@ export class OdsInput implements OdsFormElement {
       this.shouldUpdateIsInvalidState = false;
     }
 
-    if (!this.internals.validity?.valid && !this.internals.validity?.valueMissing) {
-      this.showClearable = true;
-    } else {
-      this.showClearable = false;
-    }
+    // console.log('this.internals.validity', this.internals.validity)
+    // if (!this.internals.validity?.valid && !this.internals.validity?.valueMissing) {
+    //   this.showClearable = true;
+    // } else {
+    //   this.showClearable = false;
+    // }
 
     this.odsChange.emit({
       name: this.name,
@@ -273,7 +276,7 @@ export class OdsInput implements OdsFormElement {
   }
 
   render(): FunctionalComponent {
-    const hasClearableIcon = this.isClearable && !this.isLoading && (!!this.showClearable || !!this.value);
+    const hasClearableIcon = this.isClearable && !this.isLoading && (this.showClearable || !!this.value);
     const hasToggleMaskIcon = this.isPassword && !this.isLoading;
     const hasSearchIcon = this.type === ODS_INPUT_TYPE.search && !this.isLoading;
 

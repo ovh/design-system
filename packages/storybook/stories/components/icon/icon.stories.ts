@@ -1,8 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_ICON_NAME, ODS_ICON_NAMES } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-icon';
+import { type Meta, type StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+
+defineCustomElement();
 
 type IconNameKey = keyof typeof ODS_ICON_NAME;
 

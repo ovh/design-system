@@ -1,4 +1,3 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
 import {
   ODS_BUTTON_COLOR,
   ODS_BUTTON_COLORS,
@@ -11,9 +10,13 @@ import {
   ODS_ICON_NAME,
   ODS_ICON_NAMES,
 } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-button';
+import { type Meta, type StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+
+defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Button',

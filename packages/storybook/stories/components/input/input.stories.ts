@@ -1,10 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_INPUT_TYPE, ODS_INPUT_TYPES } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-input';
+import { type Meta, type StoryObj } from '@storybook/web-components';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { html, nothing } from 'lit-html';
 import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+
+defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/Input',

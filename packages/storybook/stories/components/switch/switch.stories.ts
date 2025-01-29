@@ -1,9 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_SWITCH_SIZE, ODS_SWITCH_SIZES } from '@ovhcloud/ods-components';
+import { defineCustomElement as defineSwitch } from '@ovhcloud/ods-components/dist/components/ods-switch';
+import { defineCustomElement as defineSwitchItem } from '@ovhcloud/ods-components/dist/components/ods-switch-item';
+import { type Meta, type StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
 import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+
+defineSwitch();
+defineSwitchItem();
 
 const meta: Meta = {
   component: 'ods-switch',

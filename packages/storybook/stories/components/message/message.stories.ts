@@ -1,14 +1,17 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
 import {
   ODS_MESSAGE_COLOR,
   ODS_MESSAGE_COLORS,
   ODS_MESSAGE_VARIANT,
   ODS_MESSAGE_VARIANTS,
 } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-message';
+import { type Meta, type StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+
+defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Message',

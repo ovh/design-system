@@ -1,9 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES, formatDate } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-datepicker';
+import { type Meta, type StoryObj } from '@storybook/web-components';
 import { html, nothing } from 'lit-html';
 import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+
+defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/Datepicker',

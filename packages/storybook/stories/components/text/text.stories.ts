@@ -1,9 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_TEXT_PRESET, ODS_TEXT_PRESETS } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-text';
+import { type Meta, type StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+
+defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Text',

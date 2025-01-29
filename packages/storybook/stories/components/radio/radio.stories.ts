@@ -1,8 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-radio';
+import { type Meta, type StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
 import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+
+defineCustomElement();
 
 const meta: Meta = {
   component: 'ods-radio',

@@ -1,39 +1,61 @@
-import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import Specifications{{> ComponentName }} from '@ovhcloud/ods-{{> component-dir}}/src/components/{{> component-name }}/documentation/spec.md?raw';
-import { Banner } from '../../banner';
-import { DocNavigator } from '../../doc-navigator';
+import { Canvas, Meta } from '@storybook/blocks';
 import * as {{> ComponentName }}Stories from './{{> component-name }}.stories';
-import { LINK_ID } from '../../zeroheight';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ {{> ComponentName }}Stories } name='Documentation' />
 
 <Banner of={ {{> ComponentName }}Stories } />
 
-# Overview
-
-TODO Some text about the component
+_**{{> ComponentName }}** TODO some text about the component_
 
 <Canvas of={ {{> ComponentName }}Stories.Default } sourceState='none' />
 
-<DocNavigator of={ {{> ComponentName }}Stories } linkId={ LINK_ID.{{> COMPONENT_NAME }} } />
+<Heading label="Overview" level={ 2 } />
 
-<Markdown>{ Specifications{{> ComponentName }} }</Markdown>
+<IdentityCard aliases={ [] }
+              atomicType={ ATOMIC_TYPE.TODO }
+              figmaLink="TODO"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/{{> component-name }}"
+              name="{{> ComponentName }}"
+              relatedComponents={ [] }>
+  TODO some text about the component.
+</IdentityCard>
 
-# Style customization [IF RELEVANT]
+<Heading label="Anatomy" level={ 2 } />
 
-You can add your own style on the {{> component-name }} element using the part `{{> component-name }}`.
+TODO picture
 
-Custom {{> component-name }} css:
+<Heading label="Usage" level={ 2 } />
 
-<Canvas of={ {{> ComponentName }}Stories.CustomCSS } sourceState='shown'/>
+TODO if relevant
 
-# Examples
+<Heading label="Dos & Don'ts" level={ 3 } />
 
-## Default
+<BestPractices
+  donts={[]}
+  dos={[]}
+/>
 
-<Canvas of={ {{> ComponentName }}Stories.Default } sourceState='shown' />
+<Heading label="Placement" level={ 2 } />
 
-## [Other attribute]
-<Canvas of={ {{> ComponentName }}Stories.Default } sourceState='shown' />
+TODO if relevant
 
-...
+<Heading label="Behavior" level={ 2 } />
+
+TODO if relevant
+
+<Heading label="Variation" level={ 2 } />
+
+<Heading label="Variant" level={ 3 } />
+
+TODO if relevant
+
+<Heading label="Accessibility" level={ 2 } />
+
+TODO if relevant

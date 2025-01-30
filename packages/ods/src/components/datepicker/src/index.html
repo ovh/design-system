@@ -17,11 +17,25 @@
 </head>
 
 <body style="margin-bottom: 200px;">
-  <!-- <p>Default</p>
-  <ods-datepicker>
-  </ods-datepicker>
+  <p>Default</p>
 
-  <p>Format</p>
+  <ods-button class="button-default" label="Trigger Modal"></ods-button>
+  <ods-modal class="modal-default">
+    <ods-datepicker is-clearable strategy="fixed">
+    </ods-datepicker>
+  </ods-modal>
+
+  <script>
+    (() => {
+      const buttonDefault = document.querySelector('.button-default');
+      const modalDefault = document.querySelector('.modal-default');
+
+      buttonDefault.addEventListener('click', () => {
+        modalDefault.open();
+      });
+    })();
+  </script>
+  <!-- <p>Format</p>
   <ods-datepicker format='yyyy/mm/dd'></ods-datepicker>
 
   <p>Error</p>

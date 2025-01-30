@@ -95,6 +95,15 @@ Different token from the format:
 
 <Canvas of={ DatepickerStories.ValidityState } source={{ transform: hideValidityStateSource }} sourceState="shown" />
 
+<Heading label="In an ods-modal" level={ 3 } />
+
+If the component container is defining a position context, the datepicker may not appear at the right place, or partially clipped.
+
+In that case, you can change the component `strategy` prop to `fixed`, this way it will position itself based on the
+nearest containing block (usually the viewport).
+
+<Canvas of={ DatepickerStories.FixedContext } sourceState="shown" />
+
 <Heading label="Included in a Form Field" level={ 3 } />
 
 <Canvas of={ FormFieldDatepicker } sourceState="shown" />

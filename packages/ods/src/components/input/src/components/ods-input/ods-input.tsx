@@ -260,13 +260,6 @@ export class OdsInput implements OdsFormElement {
       this.shouldUpdateIsInvalidState = false;
     }
 
-    // console.log('this.internals.validity', this.internals.validity)
-    // if (!this.internals.validity?.valid && !this.internals.validity?.valueMissing) {
-    //   this.showClearable = true;
-    // } else {
-    //   this.showClearable = false;
-    // }
-
     this.odsChange.emit({
       name: this.name,
       previousValue: typeof this.value === 'number' && isNumeric(previousValue) ? Number(previousValue) : previousValue,

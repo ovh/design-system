@@ -333,7 +333,7 @@ export class OdsDatepicker implements OdsFormElement {
   }
 
   private onInput(event: InputEvent): void {
-    this.showClearable = !(event.target as HTMLInputElement).value;
+    this.showClearable = !!(event.target as HTMLInputElement).value;
   }
 
   render(): FunctionalComponent {

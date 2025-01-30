@@ -21,14 +21,14 @@
   <ods-accordion id="default">
     <div slot="summary" style="display: grid; grid-template-columns: 1fr max-content; column-gap: 8px;">
       <span>Hello, world!</span>
-      <button>Details button</button>
+      <button id="summary-btn">Summary button</button>
     </div>
 
     <div>
       <ods-text preset="span">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </ods-text>
-      <button>Summary button</button>
+      <button id="detail-btn">Detail button</button>
     </div>
   </ods-accordion>
 
@@ -37,7 +37,9 @@
 
   <script>
     const accordion = document.querySelector('#default');
+    const summaryButton = document.querySelector('#summary-btn');
     const toggleButton = document.querySelector('#toggle-btn');
+    const detailButton = document.querySelector('#detail-btn');
 
     accordion.addEventListener('odsToggle', (e) => {
       console.log('toggled: ', e.detail)
@@ -45,11 +47,19 @@
 
     toggleButton.addEventListener('click', () => {
       accordion.toggle();
+    });
+    summaryButton.addEventListener('click', () => {
+      console.log('summary click')
+      // accordion.toggle();
       // if (accordion.hasAttribute('is-disabled')) {
       //   accordion.removeAttribute('is-disabled');
       // } else {
       //   accordion.setAttribute('is-disabled', '');
       // }
+    });
+
+    detailButton.addEventListener('click', () => {
+      console.log('click')
     });
   </script>
 

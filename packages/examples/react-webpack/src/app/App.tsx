@@ -5,8 +5,8 @@ import styles from './app.scss';
 // import { FormFormik } from './components/formFormik/FormFormik';
 // import { FormHookForm } from './components/formHookForm/FormHookForm';
 // import { FormNative } from './components/formNative/FormNative';
-import { TestTimepicker } from './components/testTimepicker/TestTimepicker';
-// import { TestAccordion } from './components/testAccordion/TestAccordion';
+// import { TestTimepicker } from './components/testTimepicker/TestTimepicker';
+import { TestAccordion } from './components/testAccordion/TestAccordion';
 // import { TestModal } from './components/testModal/TestModal';
 // import { TestSelect } from './components/testSelect/TestSelect';
 // import { TestToggle } from './components/testToggle/TestToggle';
@@ -20,12 +20,12 @@ function App(): ReactElement {
       {/*<FormFormik />*/}
       {/*<FormHookForm />*/}
       {/* <FormNative /> */}
-      {/* <TestAccordion /> */}
+      <TestAccordion />
       {/*<QueryClientProvider client={queryClient}>*/}
       {/*  <TestSelect />*/}
       {/*</QueryClientProvider>*/}
       {/*<TestToggle />*/}
-      <TestTimepicker timezones='all' className='' />
+      {/* <TestTimepicker timezones='all' className='' /> */}
     </div>
   );
 }

@@ -221,7 +221,7 @@ describe('ods-datepicker rendering', () => {
     });
 
     it('should render clearable button when type wrong format', async() => {
-      await setup('<ods-datepicker is-clearable ></ods-datepicker>');
+      await setup('<ods-datepicker is-clearable></ods-datepicker>');
 
       await el.type('clearable');
       await page.waitForChanges();

@@ -268,11 +268,11 @@ describe('ods-input rendering', () => {
       expect(buttonClearable).toBeNull();
 
       // Test E2E launched with chrome. Chrome don't allow to type on input type number
-      // await page.keyboard.press('q');
-      // await page.waitForChanges();
-      // await new Promise(resolve => setTimeout(resolve, 20000));
-      // buttonClearable = await page.find('ods-input >>> ods-button[icon="xmark"]');
-      // expect(buttonClearable).not.toBeNull();
+      await page.keyboard.press('e');
+      await page.waitForChanges();
+
+      buttonClearable = await page.find('ods-input >>> ods-button[icon="xmark"]');
+      expect(buttonClearable).not.toBeNull();
     });
   });
 

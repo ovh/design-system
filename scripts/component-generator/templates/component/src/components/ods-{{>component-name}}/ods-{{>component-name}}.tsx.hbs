@@ -1,5 +1,4 @@
-import type { FunctionalComponent } from '@stencil/core';
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
 
 @Component({
   shadow: true,
@@ -12,7 +11,7 @@ export class Ods{{> ComponentName }} {
   render(): FunctionalComponent {
     return (
       <Host
-        class='ods-{{> component-name }}'
+        class="ods-{{> component-name }}"
         role="article">
         <p>
           ODS Template Component: { this.dummy }

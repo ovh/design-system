@@ -139,4 +139,48 @@ describe('ods-datepicker rendering', () => {
       expect(await isInErrorState()).toBe(true);
     });
   });
+
+  describe('in a fixed context (like ods-modal)', () => {
+    async function setupModal(content: string): Promise<void> {
+      page = await newE2EPage();
+
+      await page.setContent(`
+        <ods-modal is-open>
+          ${content}
+        </ods-modal>
+      `);
+
+      await page.evaluate(() => {
+        const dialog = document.querySelector('ods-modal')?.shadowRoot?.querySelector('dialog');
+        dialog?.style.setProperty('animation', 'none');
+      });
+
+      el = await page.find('ods-datepicker');
+
+      await el.click();
+      await page.waitForChanges();
+    }
+
+    it('should position regarding dialog element (thus not at the right place) in absolute strategy', async() => {
+      await setupModal('<ods-datepicker></ods-datepicker>');
+
+      const hasScroll = await page.evaluate(() => {
+        const dialogContent = document.querySelector('ods-modal')?.shadowRoot?.querySelector('.ods-modal__dialog__content');
+        return dialogContent && dialogContent.scrollHeight > dialogContent.clientHeight;
+      });
+
+      expect(hasScroll).toBe(true);
+    });
+
+    it('should position regarding viewport (thus at the right place) in fixed strategy', async() => {
+      await setupModal('<ods-datepicker strategy="fixed"></ods-datepicker>');
+
+      const hasScroll = await page.evaluate(() => {
+        const dialogContent = document.querySelector('ods-modal')?.shadowRoot?.querySelector('.ods-modal__dialog__content');
+        return dialogContent && dialogContent.scrollHeight > dialogContent.clientHeight;
+      });
+
+      expect(hasScroll).toBe(false);
+    });
+  });
 });

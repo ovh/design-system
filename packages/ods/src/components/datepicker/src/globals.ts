@@ -7,3 +7,4 @@
  */
 import '../../icon/src';
 import '../../spinner/src';
+import '../../modal/src';

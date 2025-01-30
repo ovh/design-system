@@ -41,6 +41,11 @@ $ods-datepicker-padding: 6px;
   position: relative;
 }
 
+:host(.ods-datepicker--fixed) {
+  position: fixed;
+}
+
+
 .ods-datepicker {
   &__input {
     $input: &;

@@ -249,6 +249,30 @@ export const Format: StoryObj = {
   `,
 };
 
+export const FixedContext: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button id="modal-button"
+            label="Open Modal">
+</ods-button>
+<ods-modal id="modal-tooltip">
+  <ods-datepicker strategy="fixed">
+  </ods-datepicker>
+</ods-modal>
+
+<script>
+  (() => {
+    const modalButton = document.querySelector('#modal-button');
+    const modalElement = document.querySelector('#modal-tooltip');
+
+    modalButton.addEventListener('click', () => {
+      modalElement.open();
+    });
+  })();
+</script>
+  `,
+};
+
 export const Loading: StoryObj = {
   tags: ['isHidden'],
   render: () => html`

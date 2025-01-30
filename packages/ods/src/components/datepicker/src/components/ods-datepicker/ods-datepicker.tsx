@@ -21,6 +21,7 @@ import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { type OdsDatepickerDay } from '../../constants/datepicker-day';
 import { ODS_DATEPICKER_LOCALE, type OdsDatepickerLocale } from '../../constants/datepicker-locale';
+import { ODS_DATEPICKER_STRATEGY, type OdsDatepickerStrategy } from '../../constants/datepicker-strategy';
 import { VALUE_DEFAULT_VALUE, formatDate, getInitialValue, updateInternals } from '../../controller/ods-datepicker';
 import { type OdsDatepickerChangeEventDetail } from '../../interfaces/events';
 
@@ -69,6 +70,7 @@ export class OdsDatepicker implements OdsFormElement {
   @Prop({ reflect: true }) public min?: Date | string;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public placeholder?: string;
+  @Prop({ reflect: true }) public strategy: OdsDatepickerStrategy = ODS_DATEPICKER_STRATEGY.absolute;
   @Prop({ mutable: true, reflect: true }) public value: Date | null = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
@@ -328,7 +330,7 @@ export class OdsDatepicker implements OdsFormElement {
     const hasClearableAction = this.isClearable && !this.isLoading && !!this.value;
 
     return (
-      <Host class="ods-datepicker"
+      <Host class={ `ods-datepicker ods-datepicker--${this.strategy}` }
         disabled={ this.isDisabled }
         readonly={ this.isReadonly }>
         <input

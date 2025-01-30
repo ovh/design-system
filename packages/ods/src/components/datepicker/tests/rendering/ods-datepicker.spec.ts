@@ -2,7 +2,7 @@ jest.mock('../../src/controller/ods-datepicker');
 
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsDatepicker } from '../../src';
+import { ODS_DATEPICKER_STRATEGY, OdsDatepicker } from '../../src';
 
 // @ts-ignore for test purposes
 global.MutationObserver = jest.fn(() => ({
@@ -294,6 +294,22 @@ describe('ods-datepicker rendering', () => {
       await setup('<ods-datepicker></ods-datepicker>');
 
       expect(root?.getAttribute('placeholder')).toBeNull();
+    });
+  });
+
+  describe('strategy', () => {
+    it('should be reflected', async() => {
+      const strategyValue = ODS_DATEPICKER_STRATEGY.fixed;
+
+      await setup(`<ods-datepicker strategy="${strategyValue}"></ods-datepicker>`);
+
+      expect(root?.getAttribute('strategy')).toBe(strategyValue);
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-datepicker></ods-datepicker>');
+
+      expect(root?.getAttribute('strategy')).toBe(ODS_DATEPICKER_STRATEGY.absolute);
     });
   });
 

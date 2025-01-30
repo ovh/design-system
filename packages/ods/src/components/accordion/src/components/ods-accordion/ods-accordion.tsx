@@ -75,9 +75,9 @@ export class OdsAccordion {
   }
 
   private preventToggle(event: Event): void {
-    // This allows interactive elements to be put in the component without triggering the toggle on click
-    if (!this.isDisabled) {
-      event.stopImmediatePropagation();
+    // This block open detail when disabled
+    if (this.isDisabled) {
+      event.preventDefault();
     }
   }
 
@@ -89,13 +89,12 @@ export class OdsAccordion {
             'ods-accordion__details': true,
             'ods-accordion__details--disabled': this.isDisabled,
           }}
-          onClick={ (e: Event) => e.preventDefault() }
+          onClick={ (e: Event) => this.preventToggle(e) }
           open={ this.isOpen }
           part="accordion"
           ref={ (el) => this.detailsElement = el as HTMLDetailsElement }>
           <summary
             class="ods-accordion__details__summary"
-            onClick={ (e: Event) => this.preventToggle(e) }
             part="summary"
             tabindex={ this.isDisabled ? -1 : 0 }>
             <div class="ods-accordion__details__summary__slot">
@@ -110,7 +109,6 @@ export class OdsAccordion {
 
           <div
             class="ods-accordion__details__content"
-            onClick={ (e: Event) => this.preventToggle(e) }
             part="content">
             <slot></slot>
           </div>

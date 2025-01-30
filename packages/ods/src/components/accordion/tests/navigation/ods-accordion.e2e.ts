@@ -153,4 +153,35 @@ describe('ods-accordion navigation', () => {
 
     expect((await isDetailsOpen())).toBe(false);
   });
+
+  it('should not open / close summary when clickable element inside', async() => {
+    await setup(`
+      <ods-accordion>
+        <span slot="summary">
+          Hello, world!
+          <button id="summary-btn">Summary button</button>
+        </span>
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+        </p>
+        <button id="detail-btn">Detail button</button>
+      </ods-accordion>
+    `);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.waitForChanges();
+
+    expect((await isDetailsOpen())).toBe(false);
+
+    await details.click();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.waitForChanges();
+
+    expect((await isDetailsOpen())).toBe(true);
+  });
 });

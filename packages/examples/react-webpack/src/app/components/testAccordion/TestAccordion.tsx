@@ -6,9 +6,14 @@ function TestAccordion(): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
   const accordionRef = useRef<HTMLOdsAccordionElement>(null);
 
-  function onToggleClick() {
-    accordionRef.current?.toggle();
+  function onButtonClick() {
+    console.log('click');
   }
+
+  function onButtonSummaryClick() {
+    console.log('click on summary button')
+  }
+
 
   return (
     <div>
@@ -17,18 +22,20 @@ function TestAccordion(): ReactElement {
       </p>
 
       <OdsAccordion onOdsToggle={ (e: OdsAccordionToggleEvent) => setIsOpen(e.detail.isOpen) }
-                    ref={ accordionRef }>
-        <span slot="summary">Hello, world!</span>
+        ref={ accordionRef }>
+        <span slot="summary">
+          Hello, world!
+          <OdsButton label="Click me summary" onClick={ onButtonSummaryClick }>
+          </OdsButton>
+        </span>
 
         <span>
           Lorem ipsum dolor sit amet ...
+
+          <OdsButton onClick={ onButtonClick }
+            label="Click me" />
         </span>
       </OdsAccordion>
-
-      <br /><br />
-
-      <OdsButton onClick={ onToggleClick }
-                 label="Toggle accordion" />
     </div>
   );
 }

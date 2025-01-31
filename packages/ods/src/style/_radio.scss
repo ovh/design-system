@@ -22,10 +22,12 @@
     content: "";
   }
 
+  &:focus {
+    @include focus.ods-focus();
+  }
+
   &:not(&--error) {
     &:focus {
-      @include focus.ods-focus();
-
       border-color: var(--ods-color-form-element-border-focus-default);
     }
 

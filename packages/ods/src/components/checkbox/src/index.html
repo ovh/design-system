@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <!-- <p>Default</p>
+  <p>Default</p>
   <ods-checkbox id="default-checkbox" name="default">
   </ods-checkbox>
 
@@ -36,9 +36,13 @@
       const validity = await checkbox.getValidity();
       console.log('validity', validity);
     });
-  </script> -->
+  </script>
 
-  <!-- <p>Group & Label</p>
+  <p>Error</p>
+  <ods-checkbox has-error name="error">
+  </ods-checkbox>
+
+  <p>Group & Label</p>
   <div>
     <ods-checkbox id="default-checkbox-group" input-id="coding" name="interest" value="coding" is-checked></ods-checkbox>
     <label for="coding">Coding</label>
@@ -87,7 +91,7 @@
   <div>
     <ods-checkbox input-id="disabled-indeterminate" name="disabled" value="disabled-indeterminate" is-disabled is-indeterminate></ods-checkbox>
     <label for="disabled-indeterminate">Disabled Indeterminate</label>
-  </div> -->
+  </div>
 
   <p>Form</p>
   <form id="form" target="_self">

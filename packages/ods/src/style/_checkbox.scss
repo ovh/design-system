@@ -26,10 +26,12 @@ $ods-checkbox-size: 16px;
     font-size: 0.5rem;
   }
 
+  &:focus {
+    @include focus.ods-focus();
+  }
+
   &:not(&--error) {
     &:focus {
-      @include focus.ods-focus();
-
       border-color: var(--ods-color-form-element-border-focus-default);
     }
 

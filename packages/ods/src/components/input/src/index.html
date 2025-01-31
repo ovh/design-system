@@ -14,12 +14,12 @@
   <p>Default</p>
   <ods-input id="ods-input-default" type="number" is-clearable>
   </ods-input>
-  <button id="button-insert-text">insert into ods input</button>
+  <button id="button-insert-text">change input type to number</button>
   <script>
     const buttonInsertText = document.querySelector('#button-insert-text');
     const odsInputDefault = document.querySelector('#ods-input-default');
     buttonInsertText.addEventListener('click', () => {
-      odsInputDefault.value = "12"
+      odsInputDefault.type = "text"
     })
   </script>
 <!--  <p>Clearable</p>-->

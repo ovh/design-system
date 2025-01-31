@@ -148,6 +148,14 @@ export class OdsInput implements OdsFormElement {
     this.isPassword = isPassword(this.isMasked);
   }
 
+  @Watch('type')
+  onTypeChange(): void {
+    if (this.inputEl) {
+      this.inputEl.value = '';
+    }
+    this.onInput();
+  }
+
   componentWillLoad(): void {
     this.onIsMaskedChange();
 
@@ -269,7 +277,7 @@ export class OdsInput implements OdsFormElement {
   }
 
   render(): FunctionalComponent {
-    const hasClearableIcon = this.isClearable && !this.isLoading && (this.showClearable || !!this.value);
+    const hasClearableIcon = this.isClearable && !this.isLoading && (this.showClearable || (this.value !== null && this.value !== ''));
     const hasToggleMaskIcon = this.isPassword && !this.isLoading;
     const hasSearchIcon = this.type === ODS_INPUT_TYPE.search && !this.isLoading;
 

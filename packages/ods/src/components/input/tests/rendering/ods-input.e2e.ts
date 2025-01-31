@@ -1,4 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
+import { ODS_INPUT_TYPE } from '../../src';
 
 describe('ods-input rendering', () => {
   let el: E2EElement;
@@ -250,6 +251,25 @@ describe('ods-input rendering', () => {
       await setup('<ods-input is-clearable type="number" value="clearable"></ods-input>');
 
       expect(buttonClearable).not.toBeNull();
+    });
+
+    it('should render a clearable button when input value 0', async() => {
+      await setup('<ods-input is-clearable type="number" value="0"></ods-input>');
+
+      expect(buttonClearable).not.toBeNull();
+    });
+
+    it('should remove clearable button when input type change', async() => {
+      await setup('<ods-input is-clearable type="number" value="12"></ods-input>');
+
+      expect(buttonClearable).not.toBeNull();
+
+      await el.setProperty('type', ODS_INPUT_TYPE.text);
+      await page.waitForChanges();
+
+      buttonClearable = await page.find('ods-input >>> ods-button[icon="xmark"]');
+      expect(await el.getProperty('value')).toBe('');
+      expect(buttonClearable).toBeNull();
     });
 
     it('should render a clearable button when type', async() => {

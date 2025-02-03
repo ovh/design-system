@@ -45,4 +45,21 @@ $ods-code-secondary-color: #000;
       outline-color: $ods-code-primary-color;
     }
   }
+
+  &__tooltip {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    &__copied {
+      display: flex;
+      flex-flow: row;
+      column-gap: 4px;
+      align-items: center;
+
+      &__check {
+        font-size: 1.125rem;
+      }
+    }
+  }
 }

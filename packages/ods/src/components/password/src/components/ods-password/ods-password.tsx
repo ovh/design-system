@@ -31,6 +31,8 @@ export class OdsPassword implements OdsFormElement {
   @Prop({ mutable: true, reflect: true }) public isMasked: boolean = true;
   @Prop({ reflect: true }) public isReadonly: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
+  @Prop({ reflect: true }) public maxlength?: number;
+  @Prop({ reflect: true }) public minlength?: number;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public pattern?: string;
   @Prop({ reflect: true }) public placeholder?: string;
@@ -170,6 +172,8 @@ export class OdsPassword implements OdsFormElement {
           isMasked={ this.isMasked }
           isReadonly={ this.isReadonly }
           isRequired={ this.isRequired }
+          maxlength={ this.maxlength }
+          minlength={ this.minlength }
           name={ this.name }
           onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           onOdsBlur={() => this.onBlur() }

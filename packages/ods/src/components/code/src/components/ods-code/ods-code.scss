@@ -21,9 +21,9 @@ $ods-code-secondary-color: #000;
     display: flex;
     align-items: center;
     margin: 0;
+    white-space: pre-wrap;
 
     &__code {
-      white-space: pre-line;
       font-family: var(--ods-font-family-code);
     }
   }

@@ -62,21 +62,32 @@ export const CustomCSS: StoryObj = {
   `,
 };
 
+export const Default: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-code>import { OdsText } from '@ovhcloud/ods-components/react';</ods-code>
+  `,
+};
+
 export const Overview: StoryObj = {
   tags: ['isHidden'],
   parameters: {
     layout: 'centered',
   },
   render: () => html`
-    <ods-code can-copy>import { OdsText } from '@ovhcloud/ods-components/react';
-    </ods-code>
+    <ods-code can-copy>import { OdsText } from '@ovhcloud/ods-components/react';</ods-code>
   `,
 };
 
-export const Default: StoryObj = {
+export const Multiline: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-code>import { OdsText } from '@ovhcloud/ods-components/react';
-</ods-code>
+<ods-code>function isTargetInElement(event, element) {
+  if (!element) {
+    return false;
+  }
+
+    return element.contains(event.target) || event.composedPath().includes(element);
+  }</ods-code>
   `,
 };

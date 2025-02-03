@@ -1,6 +1,6 @@
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-clipboard';
 import { type Meta, type StoryObj } from '@storybook/web-components';
-import { html } from 'lit-html';
+import { html, nothing } from 'lit-html';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -17,8 +17,8 @@ export const Demo: StoryObj = {
   render: (arg) => html`
 <ods-clipboard class="my-clipboard"
   is-disabled="${arg.isDisabled}"
-  label-copy="${arg.labelCopy}"
-  label-copy-success="${arg.labelCopySuccess}"
+  label-copy="${arg.labelCopy || nothing}"
+  label-copy-success="${arg.labelCopySuccess || nothing}"
   value="${arg.value}">
 </ods-clipboard>
 <style>
@@ -72,8 +72,6 @@ export const Demo: StoryObj = {
   }),
   args: {
     isDisabled: false,
-    labelCopy: 'Copy to clipboard',
-    labelCopySuccess: 'Copied!',
   },
 };
 

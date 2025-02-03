@@ -19,6 +19,8 @@ import * as CodeStories from './code.stories';
 
 You can directly update the container by adding your own CSS classes to it.
 
+You can add your own style on the tooltip element using the part `tooltip`.
+
 Custom CSS :
 
 <Canvas of={ CodeStories.CustomCSS } sourceState="shown" />
@@ -29,10 +31,14 @@ Custom CSS :
 
 <Canvas of={ CodeStories.Default } sourceState="shown" />
 
+<Heading label="Multiline" level={ 3 } />
+
+<Canvas of={ CodeStories.Multiline } sourceState="shown" />
+
 <Heading label="With copy button enabled" level={ 3 } />
 
 <Canvas of={ CodeStories.CanCopy } sourceState="shown" />
 
-<Heading label="Multiline" level={ 3 } />
+<Heading label="Custom labels" level={ 3 } />
 
-<Canvas of={ CodeStories.Multiline } sourceState="shown" />
+<Canvas of={ CodeStories.CustomLabels } sourceState="shown" />

@@ -47,7 +47,7 @@ export class OdsClipboard {
     this.hostId = this.el.id || getRandomHTMLId();
   }
 
-  onTooltipHide(): void {
+  private onTooltipHide(): void {
     this.isCopyDone = false;
   }
 

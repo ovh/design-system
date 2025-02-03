@@ -205,6 +205,36 @@ describe('ods-textarea rendering', () => {
     });
   });
 
+  describe('maxlength', () => {
+    it('should be reflected', async() => {
+      const maxlengthValue = 3;
+      await setup(`<ods-textarea maxlength="${maxlengthValue}"></ods-textarea>`);
+
+      expect(root?.getAttribute('maxlength')).toBe(maxlengthValue.toString());
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-textarea></ods-textarea>');
+
+      expect(root?.getAttribute('maxlength')).toBeNull();
+    });
+  });
+
+  describe('minlength', () => {
+    it('should be reflected', async() => {
+      const minlengthValue = 3;
+      await setup(`<ods-textarea minlength="${minlengthValue}"></ods-textarea>`);
+
+      expect(root?.getAttribute('minlength')).toBe(minlengthValue.toString());
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-textarea></ods-textarea>');
+
+      expect(root?.getAttribute('minlength')).toBeNull();
+    });
+  });
+
   describe('name', () => {
     it('should be reflected', async() => {
       const dummyValue = 'dummy value';

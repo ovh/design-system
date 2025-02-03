@@ -162,6 +162,36 @@ describe('ods-password rendering', () => {
       });
     });
 
+    describe('maxlength', () => {
+      it('should be reflected', async() => {
+        const maxlengthValue = 3;
+        await setup(`<ods-password maxlength="${maxlengthValue}"></ods-password>`);
+
+        expect(root?.getAttribute('maxlength')).toBe(maxlengthValue.toString());
+      });
+
+      it('should not be set by default', async() => {
+        await setup('<ods-password></ods-password>');
+
+        expect(root?.getAttribute('maxlength')).toBeNull();
+      });
+    });
+
+    describe('minlength', () => {
+      it('should be reflected', async() => {
+        const minlengthValue = 3;
+        await setup(`<ods-password minlength="${minlengthValue}"></ods-password>`);
+
+        expect(root?.getAttribute('minlength')).toBe(minlengthValue.toString());
+      });
+
+      it('should not be set by default', async() => {
+        await setup('<ods-password></ods-password>');
+
+        expect(root?.getAttribute('minlength')).toBeNull();
+      });
+    });
+
     describe('name', () => {
       it('should be reflected', async() => {
         const nameValue = 'myName';

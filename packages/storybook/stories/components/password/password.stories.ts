@@ -27,6 +27,8 @@ export const Demo: StoryObj = {
       is-loading="${arg.isLoading}"
       is-readonly="${arg.isReadonly}"
       is-required="${arg.isRequired}"
+      maxlength="${arg.maxlength || nothing }"
+      minlength="${arg.minlength || nothing }"
       pattern="${arg.pattern || nothing}"
       placeholder="${arg.placeholder}">
     </ods-password>
@@ -111,6 +113,22 @@ export const Demo: StoryObj = {
         type: { summary: 'boolean' },
       },
       control: 'boolean',
+    },
+    maxlength: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'number' },
+      },
+      control: 'number',
+    },
+    minlength: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'number' },
+      },
+      control: 'number',
     },
     pattern: {
       table: {

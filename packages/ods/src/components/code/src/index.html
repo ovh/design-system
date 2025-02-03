@@ -13,7 +13,13 @@
 <body>
   <p>Default</p>
   <ods-code>
-    import { OsdsText } from '@ovhcloud/ods-components/react';
+    function isTargetInElement(event, element) {
+      if (!element) {
+        return false;
+      }
+
+      return element.contains(event.target) || event.composedPath().includes(element);
+    }
   </ods-code>
 
   <p>Large text</p>

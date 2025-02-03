@@ -1,6 +1,6 @@
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-textarea';
 import { type Meta, type StoryObj } from '@storybook/web-components';
-import { html } from 'lit-html';
+import { html, nothing } from 'lit-html';
 import { ValidityStateTemplate } from '../../../src/components/validityState/validityState';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
@@ -27,6 +27,8 @@ export const Demo: StoryObj = {
                   is-readonly="${arg.isReadonly}"
                   is-resizable="${arg.isResizable}"
                   is-required="${arg.isRequired}"
+                  maxlength="${arg.maxlength || nothing }"
+                  minlength="${arg.minlength || nothing }"
                   placeholder="${arg.placeholder}"
                   rows="${arg.rows}">
     </ods-textarea>
@@ -120,6 +122,22 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
+    maxlength: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'number' },
+      },
+      control: 'number',
+    },
+    minlength: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'number' },
+      },
+      control: 'number',
+    },
     placeholder: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -211,6 +229,14 @@ export const Error: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-textarea has-error>
+</ods-textarea>
+  `,
+};
+
+export const MaxMinLength: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-textarea minlength="5" maxlength="20">
 </ods-textarea>
   `,
 };

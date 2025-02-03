@@ -32,6 +32,8 @@ export class OdsTextarea implements OdsFormElement {
   @Prop({ reflect: true }) public isReadonly: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
   @Prop({ reflect: true }) public isResizable: boolean = false;
+  @Prop({ reflect: true }) public maxlength?: number;
+  @Prop({ reflect: true }) public minlength?: number;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public placeholder?: string;
   @Prop({ reflect: true }) public rows?: number;
@@ -203,6 +205,8 @@ export class OdsTextarea implements OdsFormElement {
           }}
           cols={ this.cols }
           disabled={ this.isDisabled }
+          maxlength={ this.maxlength }
+          minlength={ this.minlength }
           name={ this.name }
           onBlur={ (): void => this.onBlur() }
           onFocus={ (): void => this.onFocus() }

@@ -111,4 +111,33 @@ describe('ods-phone-number navigation', () => {
     expect(await isInputFocused()).toBe(false);
     expect(await isSelectFocused()).toBe(true);
   });
+
+  it('should go on option when type a letter', async() => {
+    await setup('<ods-phone-number countries="all"></ods-phone-number>');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+    await page.waitForChanges();
+
+    const scrollBeforeType = await page.evaluate(() => {
+      return document.querySelector('ods-phone-number')
+        ?.shadowRoot?.querySelector('ods-select')
+        ?.shadowRoot?.querySelector('.ts-dropdown-content')?.scrollTop;
+    });
+
+    expect(await isSelectFocused()).toBe(true);
+
+    await page.keyboard.type('k');
+    await page.waitForChanges();
+    // wait for scroll animation
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    const scrollAfterType = await page.evaluate(() => {
+      return document.querySelector('ods-phone-number')
+        ?.shadowRoot?.querySelector('ods-select')
+        ?.shadowRoot?.querySelector('.ts-dropdown-content')?.scrollTop;
+    });
+
+    expect(scrollBeforeType).toBeLessThan(scrollAfterType ?? 0);
+  });
 });

@@ -74,6 +74,14 @@ If the field content is in error state (i.e. missing or wrong characters), the w
 
 An event is triggered when the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> value changes.
 
+The country selector allows users to navigate to the desired country option by typing letters while focused on the country selector.
+
+The search is based on the start of the word and functions one letter at a time.
+
+For example:
+- Typing "f" focus the first country that starts with "f".
+- Typing "r" immediately after focus the first country that starts with "r".
+
 <Heading label="Locale" level={ 3 } />
 
 The locale (i.e. country list translation in <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="Select" story={ STORY.documentation } />) is first set to the value provided as a property.

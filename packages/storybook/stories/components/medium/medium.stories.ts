@@ -58,6 +58,21 @@ export const Demo: StoryObj = {
   },
 };
 
+export const CustomCSS: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-medium alt="${exampleAlt}"
+            class="my-medium"
+            src="${exampleSrc}">
+</ods-medium>
+<style>
+  .my-medium::part(image) {
+    max-width: 100px;
+  }
+</style>
+  `,
+};
+
 export const Overview: StoryObj = {
   tags: ['isHidden'],
   parameters: {

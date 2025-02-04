@@ -17,6 +17,7 @@ export class OdsMedium {
         <img
           alt={ this.alt }
           height={ this.height }
+          part="image"
           src={ this.src }
           width={ this.width } />
       </Host>

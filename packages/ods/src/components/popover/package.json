@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-popover",
-  "version": "18.5.0",
+  "version": "18.5.1",
   "private": true,
   "description": "ODS Popover component",
   "main": "dist/index.cjs.js",

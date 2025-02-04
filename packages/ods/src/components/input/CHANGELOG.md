@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.5.1](https://ovh.github.io/design-system/v18.5.1/?path=/docs/design-system-changelog--page) (2025-02-04)
+[compare](https://github.com/ovh/design-system/compare/v18.5.0...v18.5.1)
+
+### Bug Fixes
+
+* **input:** add type change & clearable button on nullable value ([4e00af2](https://github.com/ovh/design-system/commit/4e00af2f4ff2eb0be91122ba939f87e5d5dcab53))
+* **input:** clearable button display ([bc56399](https://github.com/ovh/design-system/commit/bc56399689da1f4f3c94a5bfc95e0dd0669aab34))
+* **input:** clearable on input number ([b7971de](https://github.com/ovh/design-system/commit/b7971de4922eb3a45a21db238f5d5a0237c31493))
+* **input:** test with input number type letter ([b231417](https://github.com/ovh/design-system/commit/b2314174c47fb75fc7fd9545111b745d05abc671))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

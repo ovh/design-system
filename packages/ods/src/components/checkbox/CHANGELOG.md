@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.5.1](https://ovh.github.io/design-system/v18.5.1/?path=/docs/design-system-changelog--page) (2025-02-04)
+[compare](https://github.com/ovh/design-system/compare/v18.5.0...v18.5.1)
+
+### Bug Fixes
+
+* **checkable:** radio & checkbox focus on error ([682dc4a](https://github.com/ovh/design-system/commit/682dc4a8ed183de993bd189dde43742f934f68e7))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

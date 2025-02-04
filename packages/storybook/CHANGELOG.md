@@ -8,6 +8,32 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.5.1](https://ovh.github.io/design-system/v18.5.1/?path=/docs/design-system-changelog--page) (2025-02-04)
+[compare](https://github.com/ovh/design-system/compare/v18.5.0...v18.5.1)
+
+### Bug Fixes
+
+* **datepicker:** modal overflow ([2a6b671](https://github.com/ovh/design-system/commit/2a6b6716f39d3dadf363b2114ed440cc4256036e))
+* **doc:** ensure components are rendered on canvas tab ([8a1fa7a](https://github.com/ovh/design-system/commit/8a1fa7a279ff36b872f9725ce3031ae877172b3e))
+* **doc:** remove randomness ID on headings ([4175221](https://github.com/ovh/design-system/commit/4175221ca37f8186147ca9078ca5e9cc954c90be))
+* **timepicker:** message depreciation ([74e8430](https://github.com/ovh/design-system/commit/74e8430633902726a9d7d441dd163af9178156d3))
+
+
+### Features
+
+* **clipboiard:** add a11y ([300eb1c](https://github.com/ovh/design-system/commit/300eb1cc47d12efc262f402717f34b2d8408054f))
+* **doc:** remove a11y plugin ([d89d726](https://github.com/ovh/design-system/commit/d89d7261ca1aff1a2b6f8ccf7f8fc84d51a25775))
+* **medium:** add image part ([fd2de1d](https://github.com/ovh/design-system/commit/fd2de1d541be7c4e4789edb07a9f3e7f6f60f513))
+* **password:** add maxlength & minlength attributes ([def9e90](https://github.com/ovh/design-system/commit/def9e905d707f5acafe28845989aa02f75292fe1))
+* **textarea:** add maxlength & minlength attributes ([c987918](https://github.com/ovh/design-system/commit/c9879189372efdb686e0b212f5030206a6468754))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.5.0](https://ovh.github.io/design-system/v18.5.0/?path=/docs/design-system-changelog--page) (2025-01-20)
 [compare](https://github.com/ovh/design-system/compare/v18.4.1...v18.5.0)
 

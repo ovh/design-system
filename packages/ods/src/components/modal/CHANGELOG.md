@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.5.1](https://ovh.github.io/design-system/v18.5.1/?path=/docs/design-system-changelog--page) (2025-02-04)
+[compare](https://github.com/ovh/design-system/compare/v18.5.0...v18.5.1)
+
+**Note:** Version bump only for package @ovhcloud/ods-component-modal
+
+
+
+
+
 
 
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)

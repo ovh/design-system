@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.5.1](https://ovh.github.io/design-system/v18.5.1/?path=/docs/design-system-changelog--page) (2025-02-04)
+[compare](https://github.com/ovh/design-system/compare/v18.5.0...v18.5.1)
+
+### Features
+
+* **clipboiard:** add a11y ([300eb1c](https://github.com/ovh/design-system/commit/300eb1cc47d12efc262f402717f34b2d8408054f))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

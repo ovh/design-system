@@ -8,6 +8,39 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.5.1](https://ovh.github.io/design-system/v18.5.1/?path=/docs/design-system-changelog--page) (2025-02-04)
+[compare](https://github.com/ovh/design-system/compare/v18.5.0...v18.5.1)
+
+### Bug Fixes
+
+* **accordion:** clickable element inside accordion ([0027cc4](https://github.com/ovh/design-system/commit/0027cc44d9ece67ca80ab0e800fae7bf78cc173f))
+* **checkable:** radio & checkbox focus on error ([682dc4a](https://github.com/ovh/design-system/commit/682dc4a8ed183de993bd189dde43742f934f68e7))
+* **code:** custom width icon copy always on right ([8adc01d](https://github.com/ovh/design-system/commit/8adc01d7459ff00402aa8f70eecb467643a8d8f8))
+* **datepicker:** clearable with wrong input value ([e155b11](https://github.com/ovh/design-system/commit/e155b11aabdd49f348e6cbb168afe00679884cbc))
+* **datepicker:** modal overflow ([2a6b671](https://github.com/ovh/design-system/commit/2a6b6716f39d3dadf363b2114ed440cc4256036e))
+* **input:** add type change & clearable button on nullable value ([4e00af2](https://github.com/ovh/design-system/commit/4e00af2f4ff2eb0be91122ba939f87e5d5dcab53))
+* **input:** clearable button display ([bc56399](https://github.com/ovh/design-system/commit/bc56399689da1f4f3c94a5bfc95e0dd0669aab34))
+* **input:** clearable on input number ([b7971de](https://github.com/ovh/design-system/commit/b7971de4922eb3a45a21db238f5d5a0237c31493))
+* **input:** test with input number type letter ([b231417](https://github.com/ovh/design-system/commit/b2314174c47fb75fc7fd9545111b745d05abc671))
+* **overlay:** escape id & shadow id ([b33fbd3](https://github.com/ovh/design-system/commit/b33fbd32abc7b35ce6d4214edeaaf496da8ded48))
+* **phone-number:** reset select ([8678639](https://github.com/ovh/design-system/commit/86786399009ea7373f89b2a04e8a3a9207f6938e))
+* **timepicker:** typo oOdsTimezonesPreset ([5e10b64](https://github.com/ovh/design-system/commit/5e10b64df69c281a79b2960c8469f63064cdf50e))
+
+
+### Features
+
+* **clipboiard:** add a11y ([300eb1c](https://github.com/ovh/design-system/commit/300eb1cc47d12efc262f402717f34b2d8408054f))
+* **medium:** add image part ([fd2de1d](https://github.com/ovh/design-system/commit/fd2de1d541be7c4e4789edb07a9f3e7f6f60f513))
+* **password:** add maxlength & minlength attributes ([def9e90](https://github.com/ovh/design-system/commit/def9e905d707f5acafe28845989aa02f75292fe1))
+* **textarea:** add maxlength & minlength attributes ([c987918](https://github.com/ovh/design-system/commit/c9879189372efdb686e0b212f5030206a6468754))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.5.0](https://ovh.github.io/design-system/v18.5.0/?path=/docs/design-system-changelog--page) (2025-01-20)
 [compare](https://github.com/ovh/design-system/compare/v18.4.1...v18.5.0)
 

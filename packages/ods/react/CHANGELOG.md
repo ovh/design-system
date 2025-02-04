@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.5.1](https://ovh.github.io/design-system/v18.5.1/?path=/docs/design-system-changelog--page) (2025-02-04)
+[compare](https://github.com/ovh/design-system/compare/v18.5.0...v18.5.1)
+
+### Bug Fixes
+
+* **accordion:** clickable element inside accordion ([0027cc4](https://github.com/ovh/design-system/commit/0027cc44d9ece67ca80ab0e800fae7bf78cc173f))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.5.0](https://ovh.github.io/design-system/v18.5.0/?path=/docs/design-system-changelog--page) (2025-01-20)
 [compare](https://github.com/ovh/design-system/compare/v18.4.1...v18.5.0)
 

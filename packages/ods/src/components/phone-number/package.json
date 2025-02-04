@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-phone-number",
-  "version": "18.5.0",
+  "version": "18.5.1",
   "private": true,
   "description": "ODS PhoneNumber component",
   "main": "dist/index.cjs.js",

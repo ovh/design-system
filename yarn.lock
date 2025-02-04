@@ -4358,7 +4358,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-components@18.5.0, @ovhcloud/ods-components@workspace:packages/ods":
+"@ovhcloud/ods-components@18.5.1, @ovhcloud/ods-components@workspace:packages/ods":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-components@workspace:packages/ods"
   dependencies:
@@ -4403,7 +4403,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-storybook@workspace:packages/storybook"
   dependencies:
-    "@ovhcloud/ods-components": 18.5.0
+    "@ovhcloud/ods-components": 18.5.1
     "@storybook/addon-essentials": 8.0.4
     "@storybook/addon-links": 8.0.4
     "@storybook/blocks": 8.0.4
@@ -4422,7 +4422,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-themes@18.5.0, @ovhcloud/ods-themes@workspace:packages/themes":
+"@ovhcloud/ods-themes@18.5.1, @ovhcloud/ods-themes@workspace:packages/themes":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-themes@workspace:packages/themes"
   dependencies:
@@ -18906,8 +18906,8 @@ __metadata:
     "@babel/preset-env": 7.23.9
     "@babel/preset-react": 7.23.3
     "@babel/preset-typescript": 7.23.3
-    "@ovhcloud/ods-components": 18.5.0
-    "@ovhcloud/ods-themes": 18.5.0
+    "@ovhcloud/ods-components": 18.5.1
+    "@ovhcloud/ods-themes": 18.5.1
     "@tanstack/react-query": 5.59.16
     "@types/react": 18.2.56
     "@types/react-dom": 18.2.19
@@ -22595,7 +22595,7 @@ __metadata:
     "@babel/plugin-transform-runtime": 7.23.9
     "@babel/preset-env": 7.23.9
     "@babel/preset-typescript": 7.23.3
-    "@ovhcloud/ods-components": 18.5.0
+    "@ovhcloud/ods-components": 18.5.1
     "@types/webpack": 5.28.5
     babel-loader: 9.1.3
     css-loader: 6.10.0

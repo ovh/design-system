@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-components-react",
-  "version": "18.5.0",
+  "version": "18.5.1",
   "private": true,
   "description": "React specific wrapper for ods",
   "keywords": [],

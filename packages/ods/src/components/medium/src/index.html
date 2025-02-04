@@ -27,5 +27,17 @@
               src="https://corporate.ovhcloud.com/sites/default/files/2022-03/ovhcloud-logo2.png"
               width="300">
   </ods-medium>
+
+  <p>Custom CSS</p>
+  <ods-medium alt="OVHcloud logo"
+              class="custom-image"
+              src="https://corporate.ovhcloud.com/sites/default/files/2022-03/ovhcloud-logo2.png"
+              height="100">
+  </ods-medium>
+  <style>
+    .custom-image::part(image) {
+      max-height: 30px;
+    }
+  </style>
 </body>
 </html>

@@ -1,5 +1,4 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('ods-medium rendering', () => {
   let el: E2EElement;
@@ -10,7 +9,7 @@ describe('ods-medium rendering', () => {
     page = await newE2EPage();
 
     await page.setContent(content);
-    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+    await page.evaluate(() => document.body.style.setProperty('margin', '0'));
 
     if (customStyle) {
       await page.addStyleTag({ content: customStyle });
@@ -25,5 +24,16 @@ describe('ods-medium rendering', () => {
 
     expect(el.shadowRoot).not.toBeNull();
     expect(medium).not.toBeNull();
+  });
+
+  describe('part', () => {
+    it('should render with custom style applied', async() => {
+      const customMaxHeight = '50px';
+      await setup('<ods-medium></ods-medium>', `ods-medium::part(image) { max-height: ${customMaxHeight}; }`);
+
+      const tagStyle = await medium.getComputedStyle();
+
+      expect(tagStyle.getPropertyValue('max-height')).toBe(customMaxHeight);
+    });
   });
 });

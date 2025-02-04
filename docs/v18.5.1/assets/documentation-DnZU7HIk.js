@@ -1,0 +1,35 @@
+import{j as o,M as d,C as c}from"./index-DQsySnuC.js";import{u as p}from"./index-Xj8pMhSr.js";import{C as l,O as m}from"./clipboard.stories-BYr4472Z.js";import{B as h}from"./Banner-dX9z1ZOn.js";import{I as x,A as j,B as u}from"./IdentityCard-g99iR_Ue.js";import{H as r}from"./Heading-DDc_MF2r.js";import{S as e,O as n,a as i}from"./StorybookLink-CYVmf1as.js";import"./iframe-DRtgxPEL.js";import"../sb-preview/runtime.js";import"./index-8AfNH5n5.js";import"./index-D-8MO0q_.js";import"./index-DrFu-skq.js";import"./ods-clipboard2-NuJn2ry3.js";import"./index-DAZhnxgO.js";import"./dom-CO1DdTQY.js";import"./ods-button2-Bhm26DQr.js";import"./ods-spinner2-DCN2yKlT.js";import"./ods-icon2-Bl6f3POv.js";import"./icon-name-C6aMXAXT.js";import"./ods-input2-B9cw61K_.js";import"./type-B5zI8QxY.js";import"./ods-tooltip2-BwzEvmuE.js";import"./overlay-KZpfSxWH.js";import"./controls-DX883vx3.js";import"./index-DCBH0_Tl.js";import"./index-CihiY_f6.js";import"./ods-accordion2-Bgg69lRV.js";import"./ods-badge-tHc24Eg4.js";import"./ods-breadcrumb-item2-CoLTn2CF.js";import"./ods-link2-DDMr4sUm.js";import"./ods-card-B_VebKXk.js";import"./ods-checkbox2-BOuFx8yF.js";import"./ods-code2-bZeM2NI-.js";import"./ods-datepicker2-DwwUrg1C.js";import"./locale-NOa-Gxlr.js";import"./ods-divider-3cgmT4wP.js";import"./ods-divider2-Dc25YIYb.js";import"./ods-drawer2-DsENZFv4.js";import"./ods-file-upload2-CPd6D9Z5.js";import"./ods-progress-bar2-BuFm8qT0.js";import"./ods-form-field2-Tc9B1-rj.js";import"./ods-icon-NURRZ9Mf.js";import"./ods-link-BE9dMQzg.js";import"./ods-medium2-BB_NU63C.js";import"./ods-message-B9bD81Bu.js";import"./ods-modal2-CP36WQeg.js";import"./ods-pagination2-CotgNPzL.js";import"./ods-select2-B4wr0dem.js";import"./ods-password2-BQKXsiEd.js";import"./ods-phone-number2-D1K1HcDS.js";import"./ods-popover2-hre_XUC2.js";import"./ods-quantity2-DOjRn13r.js";import"./ods-radio2-BtBodUES.js";import"./ods-range2-BhwU834C.js";import"./ods-skeleton2-dZcgHYAN.js";import"./ods-switch-item2-m1p75_3x.js";import"./ods-tabs2-wJlXfoZt.js";import"./ods-table2-vWlGUOoj.js";import"./ods-tag2-Dj0-zHXw.js";import"./ods-text-CTeC-41B.js";import"./ods-textarea2-BHQdu6bK.js";import"./ods-timepicker2-2oCWgeQp.js";import"./ods-toggle2-DbSuYqWU.js";function a(s){const t={code:"code",em:"em",img:"img",li:"li",ol:"ol",p:"p",strong:"strong",...p(),...s.components};return o.jsxs(o.Fragment,{children:[o.jsx(d,{of:l,name:"Documentation"}),`
+`,o.jsx(h,{of:l}),`
+`,o.jsx(t.p,{children:o.jsxs(t.em,{children:[o.jsx(t.strong,{children:"Clipboard"})," component allows user to view and copy information to its ",o.jsx(t.strong,{children:"Clipboard"}),"."]})}),`
+`,o.jsx(c,{of:m,sourceState:"none"}),`
+`,o.jsx(r,{label:"Overview",level:2}),`
+`,o.jsx(x,{aliases:["Copy Component","Copy to Clipboard"],atomicType:j.atom,figmaLink:"https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=26-7351",githubUrl:"https://github.com/ovh/design-system/tree/master/packages/ods/src/components/clipboard",name:"Clipboard",relatedComponents:[{name:"Button"},{name:"Input",subtitle:"Form elements"},{name:"Tooltip"}],children:o.jsxs(t.p,{children:[o.jsx(t.strong,{children:"Clipboard"})," component is used to copy quickly and easily a text, a link and more to the ",o.jsx(t.strong,{children:"Clipboard"}),"."]})}),`
+`,o.jsx(r,{label:"Anatomy",level:2}),`
+`,o.jsx(t.p,{children:o.jsx(t.img,{src:"components/clipboard/anatomy.png",alt:"Component anatomy",title:"Component anatomy"})}),`
+`,o.jsxs(t.ol,{children:[`
+`,o.jsxs(t.li,{children:["An ",o.jsx(e,{kind:n.input,label:"Input",story:i.documentation})," containing the whole content that will be copied to the ",o.jsx(t.strong,{children:"Clipboard"})]}),`
+`,o.jsxs(t.li,{children:[o.jsx(t.strong,{children:"Value"})," to copy"]}),`
+`,o.jsxs(t.li,{children:["A 'copy' icon ",o.jsx(e,{kind:n.button,label:"Button",story:i.documentation})," to complete the copy action when clicked"]}),`
+`,o.jsxs(t.li,{children:["A Tooltip displayed when user hovers or focuses the component, and briefly after a successful copy action to the user's ",o.jsx(t.strong,{children:"Clipboard"})]}),`
+`]}),`
+`,o.jsx(r,{label:"Usage",level:2}),`
+`,o.jsxs(t.p,{children:[o.jsx(t.strong,{children:"Clipboard"})," is used to quickly and easily copy an amount of text to the user's ",o.jsx(t.strong,{children:"Clipboard"}),"."]}),`
+`,o.jsxs(t.p,{children:["It can be used when it is considered that it will take the hassle out of selecting and copying an amount of ",o.jsx(e,{kind:n.text,label:"Text",story:i.documentation})," for the user."]}),`
+`,o.jsx(r,{label:"Dos & Don'ts",level:3}),`
+`,o.jsx(u,{donts:["- Use Clipboard just to display some simple text for decorative purpose"],dos:["- Use Clipboard sparingly to reduce user effort"]}),`
+`,o.jsx(r,{label:"Placement",level:2}),`
+`,o.jsxs(t.p,{children:["By default, the ",o.jsx(t.strong,{children:"Clipboard"})," content is left-aligned in its container."]}),`
+`,o.jsxs(t.p,{children:[o.jsx(t.strong,{children:"Clipboard"}),"'s ",o.jsx(e,{kind:n.tooltip,label:"Tooltip",story:i.documentation})," are right-aligned after the component by default, and vertically centered."]}),`
+`,o.jsx(r,{label:"Behavior",level:2}),`
+`,o.jsxs(t.p,{children:[o.jsx(t.strong,{children:"Clipboard"}),` can be focused and hovered. They can be disabled.
+When disabled, the component can't be hovered, focused nor clicked.`]}),`
+`,o.jsxs(t.p,{children:["The ",o.jsx(t.strong,{children:"Clipboard"})," component is ",o.jsx(t.strong,{children:"used as read-only"}),", to allow users to copy a predefined ",o.jsx(e,{kind:n.text,label:"Text",story:i.documentation})," that cannot be edited directly."]}),`
+`,o.jsxs(t.p,{children:["Even if no visual indicator prompts the user to do so, ",o.jsx(t.strong,{children:"the user can select the Text directly in the Input"}),"."]}),`
+`,o.jsxs(t.p,{children:[o.jsx(t.strong,{children:"The trigger for copying"})," the ",o.jsx(e,{kind:n.input,label:"Input",story:i.documentation})," content to the ",o.jsx(t.strong,{children:"Clipboard"})," ",o.jsx(t.strong,{children:'is the "copy" Button'}),`.
+When hovering or focusing, `,o.jsx(t.strong,{children:"a Tooltip is displayed as a helper"}),"."]}),`
+`,o.jsxs(t.p,{children:[o.jsx(t.strong,{children:"An event is triggered when a Clipboard's content is copied."}),`
+A confirmation `,o.jsx(e,{kind:n.tooltip,label:"Tooltip",story:i.documentation}),' is displayed (if user is still hovering the "copy" ',o.jsx(e,{kind:n.button,label:"Button",story:i.documentation}),") when ",o.jsx(t.strong,{children:"Clipboard"})," content has been successfully copied."]}),`
+`,o.jsx(r,{label:"Variation",level:2}),`
+`,o.jsx(t.p,{children:"N/A"}),`
+`,o.jsx(r,{label:"Accessibility",level:2}),`
+`,o.jsxs(t.p,{children:["When focused, the ",o.jsx(t.strong,{children:"Clipboard"}),' "copy" ',o.jsx(e,{kind:n.button,label:"Button",story:i.documentation})," can be triggered using ",o.jsx(t.code,{children:"Space"})," or ",o.jsx(t.code,{children:"Enter"})," keys."]})]})}function Bo(s={}){const{wrapper:t}={...p(),...s.components};return t?o.jsx(t,{...s,children:o.jsx(a,{...s})}):a(s)}export{Bo as default};

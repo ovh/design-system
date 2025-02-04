@@ -8,6 +8,69 @@ import { HOME_TITLE, ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/
 
 <Heading label="What's new ?" level={ 1 } />
 
+<Heading label="v18.5.1" level={ 2 } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Clipboard**
+- New `ariaLabel` prop has been added.
+- New `ariaLabelledby` prop has been added.
+- New `name` prop has been added.
+
+**Datepicker**
+- New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+- New constants `ODS_DATEPICKER_STRATEGY` and `ODS_DATEPICKER_STRATEGIES` are now available.
+
+**Medium**
+- Now expose an `image` part.
+
+**Password**
+- New `maxlength` prop has been added.
+- New `minlength` prop has been added.
+
+**Textarea**
+- New `maxlength` prop has been added.
+- New `minlength` prop has been added.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Accordion**
+- Clickable elements in the slots now behaves as expected when using the React component.
+
+**Checkbox**
+- Fix focus style on error state.
+
+**Code**
+- Copy button is now correctly positioned on the right side.
+
+**Datepicker**
+- Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Input**
+- Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Password**
+- Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Phone Number**
+- Reset now correctly reset the flag, when `countries` is set.
+- Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Popover**
+- `triggerId` & `shadowDomTriggerId` now accepts id with special character (ex: `?`, `:`, ...).
+
+**Radio**
+- Fix focus style on error state.
+
+**Tooltip**
+- `triggerId` & `shadowDomTriggerId` now accepts id with special character (ex: `?`, `:`, ...).
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+- Headings link url are now static, which means you can safely bookmark / share them.
+- Fix the `Open canvas in new tab` action in the toolbar on Demo pages.
+- Accessibility tabs has been removed from Demo pages, as it was giving wrong information (as demo are custom made and not valid use case).
+
 <Heading label="v18.5.0" level={ 2 } />
 
 <Heading label="New components:" level={ 3 } />

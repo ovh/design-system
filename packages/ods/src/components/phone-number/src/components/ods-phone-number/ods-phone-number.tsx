@@ -1,6 +1,7 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { PhoneNumberUtil } from 'google-libphonenumber';
 import { type OdsFormElement } from '../../../../../types';
+import { debounce } from '../../../../../utils/debounce';
 import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
 import { type OdsSelect, type OdsSelectChangeEvent, type OdsSelectCustomRendererData } from '../../../../select/src';
@@ -184,6 +185,20 @@ export class OdsPhoneNumber implements OdsFormElement {
     this.isInvalid = this.getIsInvalid();
   }
 
+  private onKeydown(event: KeyboardEvent): void {
+    function isLetter(letter: string): boolean {
+      return /[a-zA-Z]/.test(letter);
+    }
+    if (isLetter(event.key) && this.i18nCountriesMap) {
+      const firstCountryFound = Array.from(this.i18nCountriesMap?.values())
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .find(({ name }) => name.toLocaleLowerCase().startsWith(event.key));
+
+      const option = this.selectElement?.shadowRoot?.querySelector(`[data-value="${firstCountryFound?.isoCode}"]`);
+      option?.scrollIntoView();
+    }
+  }
+
   private async onOdsChange(event: OdsInputChangeEvent): Promise<void> {
     event.stopImmediatePropagation();
 
@@ -254,6 +269,7 @@ export class OdsPhoneNumber implements OdsFormElement {
             isDisabled={ this.isDisabled }
             isReadonly={ this.isReadonly }
             name="iso-code"
+            onKeyDown={ (e: KeyboardEvent) => debounce(this.onKeydown.bind(this), 300)(e) }
             onOdsChange={ (e: OdsSelectChangeEvent) => this.onSelectChange(e) }
             onOdsReset={ (e: CustomEvent<void>) => e.stopImmediatePropagation() }
             part="select"

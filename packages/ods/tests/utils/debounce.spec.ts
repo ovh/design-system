@@ -1,9 +1,11 @@
 import { debounce } from '../../src/utils/debounce';
 
 describe('utils debounce', () => {
-  jest.useFakeTimers();
-
   beforeEach(jest.clearAllMocks);
+
+  beforeAll(() => jest.useFakeTimers());
+
+  afterAll(() => jest.useRealTimers());
 
   it('should delay the callback', () => {
     const callback = jest.fn();

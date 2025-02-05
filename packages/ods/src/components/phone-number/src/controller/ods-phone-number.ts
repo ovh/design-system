@@ -104,6 +104,10 @@ function getTranslatedCountryMap(locale: OdsPhoneNumberLocale, phoneUtils: Phone
   }, new Map());
 }
 
+function isSingleLetter(value: string): boolean {
+  return /^[a-zA-Z]{1}$/.test(value);
+}
+
 function isValidPhoneNumber(phoneNumber: string | null, isoCode: OdsPhoneNumberCountryIsoCode | undefined, phoneUtils: PhoneNumberUtil): boolean {
   if (!phoneNumber || !isoCode) {
     return true;
@@ -180,6 +184,7 @@ export {
   getInitialValue,
   getNationalPhoneNumberExample,
   getTranslatedCountryMap,
+  isSingleLetter,
   isValidPhoneNumber,
   parseCountries,
   parsePhoneNumber,

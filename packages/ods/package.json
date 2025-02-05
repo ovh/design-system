@@ -22,8 +22,8 @@
     "clean": "rimraf dist",
     "lint:scss": "stylelint 'src/style/*.scss'",
     "lint:ts": "eslint '{src,tests}/!(components)/**/*.{ts,tsx}'",
-    "test:spec": "jest --config jest.config.ts --coverage",
-    "test:spec:ci": "jest --config jest.config.ts"
+    "test:spec": "jest --config jest.config.ts --runInBand --coverage",
+    "test:spec:ci": "jest --config jest.config.ts --runInBand "
   },
   "dependencies": {
     "@floating-ui/dom": "1.6.11",

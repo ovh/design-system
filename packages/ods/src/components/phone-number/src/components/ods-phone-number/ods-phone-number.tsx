@@ -17,6 +17,7 @@ import {
   getInitialValue,
   getNationalPhoneNumberExample,
   getTranslatedCountryMap,
+  isSingleLetter,
   isValidPhoneNumber,
   parseCountries,
   sortCountriesByName,
@@ -186,10 +187,7 @@ export class OdsPhoneNumber implements OdsFormElement {
   }
 
   private onKeydown(event: KeyboardEvent): void {
-    function isLetter(letter: string): boolean {
-      return /[a-zA-Z]/.test(letter);
-    }
-    if (isLetter(event.key) && this.i18nCountriesMap) {
+    if (isSingleLetter(event.key) && this.i18nCountriesMap) {
       const firstCountryFound = Array.from(this.i18nCountriesMap?.values())
         .sort((a, b) => a.name.localeCompare(b.name))
         .find(({ name }) => name.toLocaleLowerCase().startsWith(event.key));

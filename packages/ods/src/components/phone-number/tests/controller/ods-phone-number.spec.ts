@@ -4,7 +4,7 @@ import { PhoneNumberFormat, type PhoneNumberUtil } from 'google-libphonenumber';
 import { setInternalsValidityFromOdsComponent } from '../../../../utils/dom';
 import { type OdsInput } from '../../../input/src';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, type OdsPhoneNumberCountryIsoCode } from '../../src';
-import { formatPhoneNumber, getCurrentIsoCode, getCurrentLocale, getInitialValue, getNationalPhoneNumberExample, getTranslatedCountryMap, isValidPhoneNumber, parseCountries, parsePhoneNumber, sortCountriesByName, updateInternals } from '../../src/controller/ods-phone-number';
+import { formatPhoneNumber, getCurrentIsoCode, getCurrentLocale, getInitialValue, getNationalPhoneNumberExample, getTranslatedCountryMap, isSingleLetter, isValidPhoneNumber, parseCountries, parsePhoneNumber, sortCountriesByName, updateInternals } from '../../src/controller/ods-phone-number';
 import countriesTranslationEn from '../../src/i18n/countries-en';
 import countriesTranslationFr from '../../src/i18n/countries-fr';
 
@@ -181,6 +181,25 @@ describe('ods-phone-number controller', () => {
       expect(defaultMap.values().next().value.name).toBe('Andorra');
       expect(mockPhoneUtils.getExampleNumber).toHaveBeenCalledTimes(countriesTranslationFr.length);
       expect(getCountryCodeSpy).toHaveBeenCalledTimes(countriesTranslationFr.length);
+    });
+  });
+
+  describe('isSingleLetter', () => {
+    it('should return true', () => {
+      expect(isSingleLetter('f')).toBe(true);
+      expect(isSingleLetter('a')).toBe(true);
+      expect(isSingleLetter('A')).toBe(true);
+      expect(isSingleLetter('G')).toBe(true);
+    });
+
+    it('should return false', () => {
+      expect(isSingleLetter('0')).toBe(false);
+      expect(isSingleLetter('as')).toBe(false);
+      expect(isSingleLetter('Aqsqd')).toBe(false);
+      expect(isSingleLetter('GQSDQSD')).toBe(false);
+      expect(isSingleLetter('Tab')).toBe(false);
+      expect(isSingleLetter('ArrowDown')).toBe(false);
+      expect(isSingleLetter(' ')).toBe(false);
     });
   });
 

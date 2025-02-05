@@ -10,6 +10,14 @@ describe('ods-input rendering', () => {
   let loadingSpinner: E2EElement;
   let part: E2EElement;
 
+  function hexToRGB(hex: string): string {
+    const r = parseInt(hex.slice(1, 3), 16),
+      g = parseInt(hex.slice(3, 5), 16),
+      b = parseInt(hex.slice(5, 7), 16);
+
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
   async function setup(content: string, customStyle?: string): Promise<void> {
     page = await newE2EPage();
 
@@ -35,6 +43,62 @@ describe('ods-input rendering', () => {
     await setup('<ods-input></ods-input>');
 
     expect(el.shadowRoot).not.toBeNull();
+  });
+
+  describe('props', () => {
+    describe('isDisabled', () => {
+      it('should have the disabled style', async() => {
+        await setup('<ods-input is-disabled></ods-input>');
+
+        const partStyle = await part.getComputedStyle();
+        const { border, background, color } = await page.evaluate(() => {
+          const bodyStyles = getComputedStyle(document.body);
+          return {
+            background: bodyStyles.getPropertyValue('--ods-color-background-disabled-default'),
+            border: bodyStyles.getPropertyValue('--ods-color-border-disabled-default'),
+            color: bodyStyles.getPropertyValue('--ods-color-text-disabled-default'),
+          };
+        });
+
+        expect(partStyle.getPropertyValue('borderColor')).toBe(hexToRGB(border));
+        expect(partStyle.getPropertyValue('backgroundColor')).toBe(hexToRGB(background));
+        expect(partStyle.getPropertyValue('color')).toBe(hexToRGB(color));
+      });
+
+      it('should have the disabled style with readonly', async() => {
+        await setup('<ods-input is-disabled is-readonly></ods-input>');
+
+        const partStyle = await part.getComputedStyle();
+        const { border, background, color } = await page.evaluate(() => {
+          const bodyStyles = getComputedStyle(document.body);
+          return {
+            background: bodyStyles.getPropertyValue('--ods-color-background-disabled-default'),
+            border: bodyStyles.getPropertyValue('--ods-color-border-disabled-default'),
+            color: bodyStyles.getPropertyValue('--ods-color-text-disabled-default'),
+          };
+        });
+        expect(partStyle.getPropertyValue('borderColor')).toBe(hexToRGB(border));
+        expect(partStyle.getPropertyValue('backgroundColor')).toBe(hexToRGB(background));
+        expect(partStyle.getPropertyValue('color')).toBe(hexToRGB(color));
+      });
+    });
+
+    describe('isReadonly', () => {
+      it('should have the readonly style', async() => {
+        await setup('<ods-input is-readonly></ods-input>');
+
+        const partStyle = await part.getComputedStyle();
+        const { border, background } = await page.evaluate(() => {
+          const bodyStyles = getComputedStyle(document.body);
+          return {
+            background: bodyStyles.getPropertyValue('--ods-color-background-readonly-default'),
+            border: bodyStyles.getPropertyValue('--ods-color-border-readonly-default'),
+          };
+        });
+        expect(partStyle.getPropertyValue('borderColor')).toBe(hexToRGB(border));
+        expect(partStyle.getPropertyValue('backgroundColor')).toBe(hexToRGB(background));
+      });
+    });
   });
 
   describe('part', () => {

@@ -30,7 +30,7 @@ $ods-input-placeholder-color: var(--ods-color-form-element-text-placeholder-defa
     @include state.ods-is-disabled();
   }
 
-  &:read-only {
+  &:not(:disabled):read-only {
     @include state.ods-is-readonly();
   }
 }

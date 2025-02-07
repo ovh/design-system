@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "1.6.11",
+    "@guidepup/guidepup": "^0.24.0",
     "@stencil/core": "4.16.0",
     "google-libphonenumber": "3.2.35",
     "tom-select": "2.3.1",
@@ -35,6 +36,8 @@
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.3",
+    "@guidepup/virtual-screen-reader": "^0.29.0",
+    "@happy-dom/jest-environment": "^17.0.0",
     "@jest/types": "29.6.3",
     "@stencil-community/postcss": "2.2.0",
     "@stencil/react-output-target": "0.5.3",

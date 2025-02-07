@@ -15,6 +15,7 @@
     "test:e2e": "stencil test --e2e --config stencil.config.ts",
     "test:e2e:ci": "tsc --noEmit && stencil test --e2e --ci --runInBand --config stencil.config.ts",
     "test:spec": "stencil test --spec --config stencil.config.ts --coverage",
-    "test:spec:ci": "tsc --noEmit && stencil test --config stencil.config.ts  --spec --ci"
+    "test:spec:ci": "tsc --noEmit && stencil test --config stencil.config.ts  --spec --ci",
+    "test:a11y": "jest --config jest.config.ts"
   }
 }

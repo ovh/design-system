@@ -34,6 +34,7 @@ import { type OdsPhoneNumberChangeEventDetail } from '../../interfaces/events';
   tag: 'ods-phone-number',
 })
 export class OdsPhoneNumber implements OdsFormElement {
+  private debounceKeydown = debounce(this.onKeydown.bind(this), 300);
   private defaultIsoCode?: OdsPhoneNumberCountryIsoCode;
   private hasCountries: boolean = false;
   private i18nCountriesMap?: TranslatedCountryMap;
@@ -267,7 +268,7 @@ export class OdsPhoneNumber implements OdsFormElement {
             isDisabled={ this.isDisabled }
             isReadonly={ this.isReadonly }
             name="iso-code"
-            onKeyDown={ (e: KeyboardEvent) => debounce(this.onKeydown.bind(this), 300)(e) }
+            onKeyDown={ (e: KeyboardEvent) => this.debounceKeydown(e) }
             onOdsChange={ (e: OdsSelectChangeEvent) => this.onSelectChange(e) }
             onOdsReset={ (e: CustomEvent<void>) => e.stopImmediatePropagation() }
             part="select"

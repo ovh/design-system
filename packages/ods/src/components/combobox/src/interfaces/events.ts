@@ -7,6 +7,13 @@ interface OdsComboboxChangeEventDetail {
 
 type OdsComboboxChangeEvent = CustomEvent<OdsComboboxChangeEventDetail>;
 
+interface OdsComboboxFilterEventDetail {
+  filterValue: string;
+  hasNoResults: boolean;
+}
+
+type OdsComboboxFilterEvent = CustomEvent<OdsComboboxFilterEventDetail>;
+
 interface OdsComboboxItemSelectedEventDetail {
   id: string,
   text: string,
@@ -18,6 +25,8 @@ type OdsComboboxItemSelectedEvent = CustomEvent<OdsComboboxItemSelectedEventDeta
 export {
   type OdsComboboxChangeEvent,
   type OdsComboboxChangeEventDetail,
+  type OdsComboboxFilterEvent,
+  type OdsComboboxFilterEventDetail,
   type OdsComboboxItemSelectedEvent,
   type OdsComboboxItemSelectedEventDetail,
 };

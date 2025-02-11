@@ -434,6 +434,38 @@ describe('ods-combobox behaviour', () => {
       });
     });
 
+    describe('odsFilter', () => {
+      it('should send odsFilter event while filtering the list', async() => {
+        await setup('<ods-combobox><ods-combobox-item value="value">Value</ods-combobox-item></ods-combobox>');
+        const odsFilterSpy = await page.spyOnEvent('odsFilter');
+        await openList();
+
+        expect(odsFilterSpy).toHaveReceivedEventTimes(1);
+        expect(odsFilterSpy).toHaveReceivedEventDetail({
+          filterValue: '',
+          hasNoResults: false,
+        });
+
+        await input.type('V', { delay: 100 });
+        await page.waitForChanges();
+
+        expect(odsFilterSpy).toHaveReceivedEventTimes(2);
+        expect(odsFilterSpy).toHaveReceivedEventDetail({
+          filterValue: 'V',
+          hasNoResults: false,
+        });
+
+        await input.type('z', { delay: 100 });
+        await page.waitForChanges();
+
+        expect(odsFilterSpy).toHaveReceivedEventTimes(3);
+        expect(odsFilterSpy).toHaveReceivedEventDetail({
+          filterValue: 'Vz',
+          hasNoResults: true,
+        });
+      });
+    });
+
     describe('odsFocus', () => {
       it('should send odsFocus event on component focus', async() => {
         await setup('<ods-combobox><ods-combobox-item value="value">Value</ods-combobox-item></ods-combobox>');

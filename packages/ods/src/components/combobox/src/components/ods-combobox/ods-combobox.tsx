@@ -1,25 +1,31 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, forceUpdate, h } from '@stencil/core';
+import { type OdsFormElement } from '../../../../../types';
 import { debounce } from '../../../../../utils/debounce';
 import { isElementInContainer, isTargetInElement, submitFormOnEnter } from '../../../../../utils/dom';
 import { getElementPosition } from '../../../../../utils/overlay';
 import { type OdsInput } from '../../../../input/src';
 import { type OdsComboboxSelection, VALUE_DEFAULT_VALUE, getInitialValue, inlineSelection, inlineValue, isANewItem, splitValue, updateInternals, updateItemsFocus } from '../../controller/ods-combobox';
 import { type OdsComboboxChangeEventDetail, type OdsComboboxItemSelectedEventDetail } from '../../interfaces/events';
+import { type OdsComboboxGroup } from '../ods-combobox-group/ods-combobox-group';
 import { type OdsComboboxItem } from '../ods-combobox-item/ods-combobox-item';
+
+type ResultElement = HTMLElement & OdsComboboxItem & { groupId?: string };
+type ResultGroup = HTMLElement & OdsComboboxGroup;
 
 // TODO
 //  - custom search function (async API, ...)
 //  - test dynamic slot changes
 //  - highlight results => can't when using slots => add specific event on input type AND/OR filter to allow inte to react to search
-//  - ods-combobox-group
-//  - "Users cannot select the same item twice; already selected items are removed from the dropdown." double check on single
 //  - change anatomy picture to remove caret
+//  - add warn if item is missing value as it breaks lot of things
+//  - manage very ling item content
 
 // TBD
 //  - how do we handle large dataset? separate infinite version (with data passed through JS and limited customization)?
 
 // ISSUE
 //  - when not enough space bottom, popper is displayed top, but we still listen to arrow down to open the result list
+//  - calling open should filter the value like inputClick
 
 const CREATE_NEW_ID = 'ods-internal-create-new-id';
 const FOCUSED_CLASS = 'ods-combobox__search--focused';
@@ -32,14 +38,15 @@ const FOCUSED_CLASS = 'ods-combobox__search--focused';
   styleUrl: 'ods-combobox.scss',
   tag: 'ods-combobox',
 })
-export class OdsCombobox {
-  private createNewElement?: HTMLElement & OdsComboboxItem;
+export class OdsCombobox implements OdsFormElement {
+  private createNewElement?: ResultElement;
   private currentFocusedItemIndex: number = -1;
   private currentSelections: OdsComboboxSelection[] = [];
   private debouncedOnInput = debounce(() => this.onInput(), 100);
   private inputElement?: HTMLInputElement & OdsInput;
   private observer?: MutationObserver;
-  private resultElements: (HTMLElement & OdsComboboxItem)[] = [];
+  private resultElements: ResultElement[] = [];
+  private resultGroups: ResultGroup[] = [];
   private resultListElement?: HTMLElement;
   private searchElement?: HTMLElement;
   private shouldResetOnBlur: boolean = true;
@@ -78,12 +85,14 @@ export class OdsCombobox {
 
   @Listen('click', { target: 'document' })
   onDocumentClick(event: MouseEvent): void {
-    if (!isTargetInElement(event, this.el)) {
-      if (this.isOpen) {
-        this.closeDropdown();
-      }
-      this.searchElement?.classList.remove(FOCUSED_CLASS);
+    if (isTargetInElement(event, this.el)) {
+      return;
     }
+
+    if (this.isOpen) {
+      this.closeDropdown();
+    }
+    this.searchElement?.classList.remove(FOCUSED_CLASS);
   }
 
   @Listen('focusin', { target: 'document' })
@@ -179,12 +188,9 @@ export class OdsCombobox {
 
     // We need to delay it to prevent document click listener to close it right after
     // (when, for example, calling the method from a button click)
-    return new Promise((resolve) => {
-      setTimeout(async() => {
-        await this.openDropdown();
-        resolve();
-      }, 0);
-    });
+    setTimeout(async() => {
+      await this.openDropdown();
+    }, 0);
   }
 
   @Method()
@@ -293,8 +299,8 @@ export class OdsCombobox {
           return;
         }
 
-        const value = resultElement.searchLabel || resultElement.textContent || '';
-        const doesMatchValue = filterRegex.test(value);
+        const itemValue = (resultElement.searchLabel || resultElement.textContent || '').trim();
+        const doesMatchValue = filterRegex.test(itemValue);
 
         resultElement.isVisible = doesMatchValue;
 
@@ -312,6 +318,7 @@ export class OdsCombobox {
     }
 
     this.updateCreateNewElement();
+    this.updateGroupsVisibility();
     this.currentFocusedItemIndex = updateItemsFocus(this.resultElements, this.currentFocusedItemIndex, 'reset');
   }
 
@@ -452,7 +459,25 @@ export class OdsCombobox {
 
   private onSlotChange(event: Event): void {
     this.resultElements = (event.currentTarget as HTMLSlotElement).assignedElements()
-      .filter((el) => el.tagName === 'ODS-COMBOBOX-ITEM') as (HTMLElement & OdsComboboxItem)[];
+      .reduce((res, element) => {
+        if (element.tagName === 'ODS-COMBOBOX-ITEM') {
+          res.push(element as ResultElement);
+          return res;
+        }
+
+        if (element.tagName === 'ODS-COMBOBOX-GROUP') {
+          this.resultGroups.push(element as ResultGroup);
+
+          return res.concat((Array.from(element.children || []) as ResultElement[])
+            .filter((el) => el.tagName === 'ODS-COMBOBOX-ITEM')
+            .map((el: ResultElement) => {
+              el.groupId = element.id;
+              return el;
+            }));
+        }
+
+        return res;
+      }, [] as ResultElement[]) ;
   }
 
   private onTagKeyDown(event: KeyboardEvent): void {
@@ -621,6 +646,16 @@ export class OdsCombobox {
     }
   }
 
+  private updateGroupsVisibility(): void {
+    if (this.resultGroups.length) {
+      this.resultGroups.forEach((group) => {
+        group.isVisible = this.resultElements
+          .filter((el) => el.groupId === group.id)
+          .some((el) => el.isVisible && !el.isSelected);
+      });
+    }
+  }
+
   private updateInputValue(): void {
     if (this.inputElement) {
       if (this.allowMultiple) {
@@ -694,7 +729,7 @@ export class OdsCombobox {
           <ods-combobox-item
             id={ CREATE_NEW_ID }
             isVisible={ false }
-            ref={ (el: unknown) => this.createNewElement = el as HTMLElement & OdsComboboxItem }
+            ref={ (el: unknown) => this.createNewElement = el as ResultElement }
             value="">
           </ods-combobox-item>
 

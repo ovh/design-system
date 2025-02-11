@@ -410,6 +410,72 @@ export const Disabled: StoryObj = {
   `,
 };
 
+export const Group: StoryObj = {
+    tags: ['isHidden'],
+    render: () => html`
+<ods-combobox id="group">
+  <ods-combobox-group>
+    <span slot="title">Flavours</span>
+
+    <ods-combobox-item value="chocolate">
+      Chocolate
+    </ods-combobox-item>
+    <ods-combobox-item value="chocolate-with-nuts">
+      Chocolate with nuts
+    </ods-combobox-item>
+    <ods-combobox-item value="coconut">
+      Coconut
+    </ods-combobox-item>
+    <ods-combobox-item value="light-mint">
+      Light mint
+    </ods-combobox-item>
+    <ods-combobox-item value="mint">
+      Mint
+    </ods-combobox-item>
+    <ods-combobox-item value="strawberry">
+      Strawberry
+    </ods-combobox-item>
+    <ods-combobox-item value="vanilla">
+      Vanilla
+    </ods-combobox-item>
+    <ods-combobox-item value="white-chocolate">
+      White chocolate
+    </ods-combobox-item>
+  </ods-combobox-group>
+
+  <ods-combobox-group>
+    <span slot="title">Animals</span>
+
+    <ods-combobox-item value="dog">
+      Dog
+    </ods-combobox-item>
+    <ods-combobox-item value="cat">
+      Cat
+    </ods-combobox-item>
+    <ods-combobox-item value="hamster">
+      Hamster
+    </ods-combobox-item>
+    <ods-combobox-item value="parrot">
+      Parrot
+    </ods-combobox-item>
+    <ods-combobox-item value="spider">
+      Spider
+    </ods-combobox-item>
+    <ods-combobox-item value="goldfish">
+      Goldfish
+    </ods-combobox-item>
+  </ods-combobox-group>
+
+  <ods-combobox-item value="some-item">
+    Some non grouped item
+  </ods-combobox-item>
+  <ods-combobox-item value="other-item">
+    Other non grouped item
+  </ods-combobox-item>
+</ods-combobox>
+  `,
+};
+
 export const Multiple: StoryObj = {
   tags: ['isHidden'],
   render: () => html`

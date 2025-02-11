@@ -5,7 +5,7 @@ import { isElementInContainer, isTargetInElement, submitFormOnEnter } from '../.
 import { getElementPosition } from '../../../../../utils/overlay';
 import { type OdsInput } from '../../../../input/src';
 import { CREATE_NEW_ID, type OdsComboboxSelection, VALUE_DEFAULT_VALUE, getInitialValue, inlineSelection, inlineValue, isANewItem, splitValue, updateInternals, updateItemsFocus } from '../../controller/ods-combobox';
-import { type OdsComboboxChangeEventDetail, type OdsComboboxItemSelectedEventDetail } from '../../interfaces/events';
+import { type OdsComboboxChangeEventDetail, type OdsComboboxFilterEventDetail, type OdsComboboxItemSelectedEventDetail } from '../../interfaces/events';
 import { type OdsComboboxGroup } from '../ods-combobox-group/ods-combobox-group';
 import { type OdsComboboxItem } from '../ods-combobox-item/ods-combobox-item';
 
@@ -15,7 +15,7 @@ type ResultGroup = HTMLElement & OdsComboboxGroup;
 // TODO
 //  - custom search function (async API, ...)
 //  - test dynamic slot changes
-//  - highlight results => can't when using slots => add specific event on input type AND/OR filter to allow inte to react to search
+//  - highlight results => add an example?
 //  - change anatomy picture to remove caret
 //  - manage very long item content?
 
@@ -24,7 +24,6 @@ type ResultGroup = HTMLElement & OdsComboboxGroup;
 
 // ISSUE
 //  - when not enough space bottom, popper is displayed top, but we still listen to arrow down to open the result list
-//  - calling open should filter the value like inputClick
 
 const FOCUSED_CLASS = 'ods-combobox__search--focused';
 
@@ -77,6 +76,7 @@ export class OdsCombobox implements OdsFormElement {
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsChange!: EventEmitter<OdsComboboxChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
+  @Event() odsFilter!: EventEmitter<OdsComboboxFilterEventDetail>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsInvalid!: EventEmitter<{ isInvalid: boolean }>;
   @Event() odsReset!: EventEmitter<void>;
@@ -187,7 +187,7 @@ export class OdsCombobox implements OdsFormElement {
     // We need to delay it to prevent document click listener to close it right after
     // (when, for example, calling the method from a button click)
     setTimeout(async() => {
-      await this.openDropdown();
+      await this.openResultList();
     }, 0);
   }
 
@@ -318,6 +318,11 @@ export class OdsCombobox implements OdsFormElement {
     this.updateCreateNewElement();
     this.updateGroupsVisibility();
     this.currentFocusedItemIndex = updateItemsFocus(this.resultElements, this.currentFocusedItemIndex, 'reset');
+
+    this.odsFilter.emit({
+      filterValue: value,
+      hasNoResults: this.hasNoResults,
+    });
   }
 
   private focusCurrentTag(): void {

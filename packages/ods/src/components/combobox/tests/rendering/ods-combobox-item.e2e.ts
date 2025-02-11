@@ -26,9 +26,16 @@ describe('ods-combobox-item rendering', () => {
   }
 
   it('should render the web component', async() => {
-    await setup('<ods-combobox-item></ods-combobox-item>');
+    await setup('<ods-combobox-item value="value"></ods-combobox-item>');
 
     expect(el.shadowRoot).not.toBeNull();
+  });
+
+  it('should warn if the value is not set', async() => {
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+    await setup('<ods-combobox-item></ods-combobox-item>');
+
+    expect(console.warn).toHaveBeenCalledTimes(1);
   });
 
   it('should render visible, unfocused and unselected by default', async() => {

@@ -14,7 +14,7 @@ describe('ods-combobox-item accessibility', () => {
   }
 
   it('should render the web component with the right role', async() => {
-    await setup('<ods-combobox-item></ods-combobox-item>');
+    await setup('<ods-combobox-item value="value"></ods-combobox-item>');
 
     expect(el.shadowRoot).not.toBeNull();
     expect(el.getAttribute('role')).toBe('option');
@@ -23,19 +23,19 @@ describe('ods-combobox-item accessibility', () => {
   });
 
   it('should render with aria-selected if focused', async() => {
-    await setup('<ods-combobox-item is-focused></ods-combobox-item>');
+    await setup('<ods-combobox-item is-focused value="value"></ods-combobox-item>');
 
     expect(el.getAttribute('aria-selected')).toBe('');
   });
 
   it('should render with aria-hidden if not visible', async() => {
-    await setup('<ods-combobox-item is-visible="false"></ods-combobox-item>');
+    await setup('<ods-combobox-item is-visible="false" value="value"></ods-combobox-item>');
 
     expect(el.getAttribute('aria-hidden')).toBe('');
   });
 
   it('should render with aria-hidden if selected', async() => {
-    await setup('<ods-combobox-item is-selected="true"></ods-combobox-item>');
+    await setup('<ods-combobox-item is-selected="true" value="value"></ods-combobox-item>');
 
     expect(el.getAttribute('aria-hidden')).toBe('');
   });

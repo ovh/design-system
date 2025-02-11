@@ -4,7 +4,7 @@ import { debounce } from '../../../../../utils/debounce';
 import { isElementInContainer, isTargetInElement, submitFormOnEnter } from '../../../../../utils/dom';
 import { getElementPosition } from '../../../../../utils/overlay';
 import { type OdsInput } from '../../../../input/src';
-import { type OdsComboboxSelection, VALUE_DEFAULT_VALUE, getInitialValue, inlineSelection, inlineValue, isANewItem, splitValue, updateInternals, updateItemsFocus } from '../../controller/ods-combobox';
+import { CREATE_NEW_ID, type OdsComboboxSelection, VALUE_DEFAULT_VALUE, getInitialValue, inlineSelection, inlineValue, isANewItem, splitValue, updateInternals, updateItemsFocus } from '../../controller/ods-combobox';
 import { type OdsComboboxChangeEventDetail, type OdsComboboxItemSelectedEventDetail } from '../../interfaces/events';
 import { type OdsComboboxGroup } from '../ods-combobox-group/ods-combobox-group';
 import { type OdsComboboxItem } from '../ods-combobox-item/ods-combobox-item';
@@ -17,8 +17,7 @@ type ResultGroup = HTMLElement & OdsComboboxGroup;
 //  - test dynamic slot changes
 //  - highlight results => can't when using slots => add specific event on input type AND/OR filter to allow inte to react to search
 //  - change anatomy picture to remove caret
-//  - add warn if item is missing value as it breaks lot of things
-//  - manage very ling item content
+//  - manage very long item content?
 
 // TBD
 //  - how do we handle large dataset? separate infinite version (with data passed through JS and limited customization)?
@@ -27,7 +26,6 @@ type ResultGroup = HTMLElement & OdsComboboxGroup;
 //  - when not enough space bottom, popper is displayed top, but we still listen to arrow down to open the result list
 //  - calling open should filter the value like inputClick
 
-const CREATE_NEW_ID = 'ods-internal-create-new-id';
 const FOCUSED_CLASS = 'ods-combobox__search--focused';
 
 @Component({

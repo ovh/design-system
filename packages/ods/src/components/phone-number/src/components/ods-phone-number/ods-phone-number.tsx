@@ -20,7 +20,6 @@ import {
   isSingleLetter,
   isValidPhoneNumber,
   parseCountries,
-  sortCountriesByName,
   updateInternals,
 } from '../../controller/ods-phone-number';
 import { type OdsPhoneNumberChangeEventDetail } from '../../interfaces/events';
@@ -150,7 +149,6 @@ export class OdsPhoneNumber implements OdsFormElement {
   @Watch('locale')
   onLocaleChange(locale: OdsPhoneNumberLocale): void {
     this.i18nCountriesMap = getTranslatedCountryMap(locale, this.phoneUtils);
-    this.parsedCountryCodes = sortCountriesByName(this.parsedCountryCodes, this.i18nCountriesMap);
   }
 
   componentWillLoad(): void {
@@ -272,6 +270,7 @@ export class OdsPhoneNumber implements OdsFormElement {
             onOdsChange={ (e: OdsSelectChangeEvent) => this.onSelectChange(e) }
             onOdsReset={ (e: CustomEvent<void>) => e.stopImmediatePropagation() }
             part="select"
+            sortBy="name"
             ref={ (el?: unknown): OdsSelect => this.selectElement = el as HTMLElement & OdsSelect }
             value={ this.isoCode }>
             {

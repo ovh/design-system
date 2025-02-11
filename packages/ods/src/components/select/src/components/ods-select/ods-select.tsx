@@ -49,6 +49,8 @@ export class OdsSelect implements OdsFormElement {
   @Prop({ reflect: true }) public multipleSelectionLabel: string = 'Selected item';
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public placeholder?: string;
+  /** @internal */
+  @Prop({ reflect: false }) public sortBy?: string;
   @Prop({ mutable: true, reflect: true }) public value: string | string [] | null = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
@@ -197,7 +199,7 @@ export class OdsSelect implements OdsFormElement {
         this.select?.sync(); // get updated options
         this.select?.setValue(currentValue); // set the value back
       }
-
+      
       for (const mutation of mutations) {
         // When observing is-required, the inner element validity is not yet up-to-date
         // so we observe the element required attribute instead
@@ -336,6 +338,7 @@ export class OdsSelect implements OdsFormElement {
       plugins: plugin,
       render: template,
       selectOnTab: true,
+      sortField: this.sortBy && [{field: this.sortBy}],
     });
 
     this.bindSelectControl();

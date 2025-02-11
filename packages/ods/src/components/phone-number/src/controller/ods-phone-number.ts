@@ -161,20 +161,6 @@ async function updateInternals(internals: ElementInternals, value: string | null
   }
 }
 
-function sortCountriesByName(countryCodes: OdsPhoneNumberCountryIsoCode[], countriesMap: TranslatedCountryMap): OdsPhoneNumberCountryIsoCode[] {
-  return countryCodes.sort((isoCodeA, isoCodeB) => {
-    const nameA = countriesMap?.has(isoCodeA) && countriesMap.get(isoCodeA)!.name;
-    const nameB = countriesMap?.has(isoCodeB) && countriesMap.get(isoCodeB)!.name;
-
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  });
-}
 
 export {
   type TranslatedCountryMap,
@@ -189,6 +175,5 @@ export {
   parseCountries,
   parsePhoneNumber,
   updateInternals,
-  sortCountriesByName,
   VALUE_DEFAULT_VALUE,
 };

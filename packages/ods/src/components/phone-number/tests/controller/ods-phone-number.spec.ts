@@ -4,7 +4,7 @@ import { PhoneNumberFormat, type PhoneNumberUtil } from 'google-libphonenumber';
 import { setInternalsValidityFromOdsComponent } from '../../../../utils/dom';
 import { type OdsInput } from '../../../input/src';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, type OdsPhoneNumberCountryIsoCode } from '../../src';
-import { formatPhoneNumber, getCurrentIsoCode, getCurrentLocale, getInitialValue, getNationalPhoneNumberExample, getTranslatedCountryMap, isSingleLetter, isValidPhoneNumber, parseCountries, parsePhoneNumber, sortCountriesByName, updateInternals } from '../../src/controller/ods-phone-number';
+import { formatPhoneNumber, getCurrentIsoCode, getCurrentLocale, getInitialValue, getNationalPhoneNumberExample, getTranslatedCountryMap, isSingleLetter, isValidPhoneNumber, parseCountries, parsePhoneNumber, updateInternals } from '../../src/controller/ods-phone-number';
 import countriesTranslationEn from '../../src/i18n/countries-en';
 import countriesTranslationFr from '../../src/i18n/countries-fr';
 
@@ -311,21 +311,6 @@ describe('ods-phone-number controller', () => {
       expect(parsePhoneNumber(dummyPhoneNumber, dummyIsoCode, mockPhoneUtils)).toBe(dummyResult);
       expect(mockPhoneUtils.parseAndKeepRawInput).toHaveBeenCalledTimes(1);
       expect(mockPhoneUtils.parseAndKeepRawInput).toHaveBeenCalledWith(dummyPhoneNumber, dummyIsoCode);
-    });
-  });
-
-  describe('sortCountriesByName', () => {
-    it('should return the array alphabetically sorted using given Map', () => {
-      const dummyCountryCodes: OdsPhoneNumberCountryIsoCode[] = ['be', 'zw', 'fr', 'ad'];
-      const dummyMap = new Map();
-      dummyMap.set('be', { isoCode: 'be', name: 'Belgique', phoneCode: 1 });
-      dummyMap.set('zw', { isoCode: 'zw', name: 'Zimbabwe', phoneCode: 2 });
-      dummyMap.set('fr', { isoCode: 'fr', name: 'France', phoneCode: 3 });
-      dummyMap.set('ad', { isoCode: 'ad', name: 'Andorre', phoneCode: 4 });
-
-      expect(sortCountriesByName(dummyCountryCodes, dummyMap)).toEqual([
-        'ad', 'be', 'fr', 'zw',
-      ]);
     });
   });
 

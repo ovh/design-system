@@ -7,6 +7,10 @@
 :host(.ods-combobox) {
   display: inline-block;
   position: relative;
+
+  ::slotted(ods-combobox-group:not(:first-child)) {
+    border-top: solid 1px var(--ods-color-neutral-100);
+  }
 }
 
 .ods-combobox {

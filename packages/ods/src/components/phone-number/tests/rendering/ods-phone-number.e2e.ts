@@ -18,6 +18,16 @@ describe('ods-phone-number rendering', () => {
     });
   }
 
+  async function getCountriesNames(): Promise<string[]> {
+    return page.evaluate(() => {
+      const options = document.querySelector('ods-phone-number')
+        ?.shadowRoot?.querySelector('ods-select')
+        ?.shadowRoot?.querySelectorAll<HTMLElement>('option');
+
+      return Array.from(options || []).map((option) => option.getAttribute('data-name')!);
+    });
+  }
+
   async function isInErrorState(): Promise<boolean | undefined> {
     return await page.evaluate(() => {
       return document.querySelector('ods-phone-number')?.shadowRoot?.querySelector('ods-input')?.shadowRoot?.querySelector('input')?.classList.contains('ods-input__input--error');
@@ -66,6 +76,18 @@ describe('ods-phone-number rendering', () => {
     expect(selectElement).not.toBeNull();
     expect(countriesCodes.length).toBe(3); // +1 for the added empty option in the select
     expect(countriesCodes.sort()).toEqual(['', 'be', 'fr']);
+  });
+
+  it('should render the web component with countries in the right order', async() => {
+    await setup('<ods-phone-number locale="en" countries=\'["fr", "be"]\'></ods-phone-number>');
+    const countriesNames = await getCountriesNames();
+
+    expect(countriesNames.sort()).toEqual(['Belgium', 'France', null]);
+    await el.setAttribute('locale', 'fr');
+    await page.waitForChanges();
+    const countriesNamesLocaleChanged = await getCountriesNames();
+    expect(countriesNamesLocaleChanged.sort()).toEqual(['Belgique', 'France', null]);
+
   });
 
   it('should render disabled', async() => {

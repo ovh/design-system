@@ -2,19 +2,18 @@ import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing
 
 describe('ods-combobox-item rendering', () => {
   let el: E2EElement;
-  let innerEl: HTMLElement;
   let page: E2EPage;
 
   function isFocused(): boolean {
-    return innerEl.classList.contains('ods-combobox-item--focused');
+    return el.classList.contains('ods-combobox-item--focused');
   }
 
   function isSelected(): boolean {
-    return innerEl.classList.contains('ods-combobox-item--hidden');
+    return el.classList.contains('ods-combobox-item--hidden');
   }
 
   function isVisible(): boolean {
-    return !innerEl.classList.contains('ods-combobox-item--hidden');
+    return !el.classList.contains('ods-combobox-item--hidden');
   }
 
   async function setup(content: string): Promise<void> {
@@ -24,7 +23,6 @@ describe('ods-combobox-item rendering', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0'));
 
     el = await page.find('ods-combobox-item');
-    innerEl = el.shadowRoot!.querySelector<HTMLElement>('.ods-combobox-item')!;
   }
 
   it('should render the web component', async() => {

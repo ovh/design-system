@@ -44,18 +44,15 @@ export class OdsComboboxItem {
       <Host
         aria-hidden={ isHidden }
         aria-selected={ this.isFocused }
+        class={{
+          'ods-combobox-item': true,
+          'ods-combobox-item--focused': this.isFocused,
+          'ods-combobox-item--hidden': isHidden,
+        }}
         id={ this.el.id || this.internalId }
+        onClick={ () => this.select() }
         role="option">
-        <li
-          class={{
-            'ods-combobox-item': true,
-            'ods-combobox-item--focused': this.isFocused,
-            'ods-combobox-item--hidden': isHidden,
-          }}
-          onClick={ () => this.select() }
-          tabindex="-1">
-          <slot></slot>
-        </li>
+        <slot></slot>
       </Host>
     );
   }

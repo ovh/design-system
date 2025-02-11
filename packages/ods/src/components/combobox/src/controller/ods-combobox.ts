@@ -3,6 +3,7 @@ import { type OdsComboboxItemSelectedEventDetail } from '../interfaces/events';
 
 type OdsComboboxSelection = Omit<OdsComboboxItemSelectedEventDetail, 'id'>;
 
+const CREATE_NEW_ID = 'ods-internal-create-new-id';
 const VALUE_DEFAULT_VALUE = null;
 
 function getInitialValue(value: string | string [] | null, defaultValue?: string | string []): string | string [] | null {
@@ -106,5 +107,6 @@ export {
   splitValue,
   updateInternals,
   updateItemsFocus,
+  CREATE_NEW_ID,
   VALUE_DEFAULT_VALUE,
 };

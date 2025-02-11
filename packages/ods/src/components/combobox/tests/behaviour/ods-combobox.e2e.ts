@@ -216,7 +216,7 @@ describe('ods-combobox behaviour', () => {
 
     describe('close', () => {
       it('should close the dropdown', async() => {
-        await setup('<ods-combobox><ods-combobox-item>Value 1</ods-combobox-item></ods-combobox>');
+        await setup('<ods-combobox><ods-combobox-item value="value">Value 1</ods-combobox-item></ods-combobox>');
         await openList();
 
         expect(await isOpen()).toBe(true);
@@ -230,7 +230,7 @@ describe('ods-combobox behaviour', () => {
 
     describe('open', () => {
       it('should open the dropdown', async() => {
-        await setup('<ods-combobox><ods-combobox-item>Value 1</ods-combobox-item></ods-combobox>');
+        await setup('<ods-combobox><ods-combobox-item value="value">Value 1</ods-combobox-item></ods-combobox>');
 
         expect(await isOpen()).toBe(false);
 
@@ -241,7 +241,7 @@ describe('ods-combobox behaviour', () => {
       });
 
       it('should not open the dropdown if disabled', async() => {
-        await setup('<ods-combobox is-disabled><ods-combobox-item>Value 1</ods-combobox-item></ods-combobox>');
+        await setup('<ods-combobox is-disabled><ods-combobox-item value="value">Value 1</ods-combobox-item></ods-combobox>');
 
         expect(await isOpen()).toBe(false);
 
@@ -252,7 +252,7 @@ describe('ods-combobox behaviour', () => {
       });
 
       it('should not open the dropdown if readonly', async() => {
-        await setup('<ods-combobox is-readonly><ods-combobox-item>Value 1</ods-combobox-item></ods-combobox>');
+        await setup('<ods-combobox is-readonly><ods-combobox-item value="value">Value 1</ods-combobox-item></ods-combobox>');
 
         expect(await isOpen()).toBe(false);
 
@@ -336,7 +336,7 @@ describe('ods-combobox behaviour', () => {
   describe('events', () => {
     describe('odsBlur', () => {
       it('should send odsBlur event on component blur', async() => {
-        await setup('<ods-combobox><ods-combobox-item>Value</ods-combobox-item></ods-combobox><button>Focusable element</button>');
+        await setup('<ods-combobox><ods-combobox-item value="value">Value</ods-combobox-item></ods-combobox><button>Focusable element</button>');
         const odsBlurSpy = await page.spyOnEvent('odsBlur');
         await openList();
 
@@ -351,7 +351,7 @@ describe('ods-combobox behaviour', () => {
 
     describe('odsChange', () => {
       it('should not send odsChange event while typing in the input', async() => {
-        await setup('<ods-combobox><ods-combobox-item>Value</ods-combobox-item></ods-combobox>');
+        await setup('<ods-combobox><ods-combobox-item value="value">Value</ods-combobox-item></ods-combobox>');
         const odsChangeSpy = await page.spyOnEvent('odsChange');
 
         await input.type('Val', { delay: 20 });
@@ -436,7 +436,7 @@ describe('ods-combobox behaviour', () => {
 
     describe('odsFocus', () => {
       it('should send odsFocus event on component focus', async() => {
-        await setup('<ods-combobox><ods-combobox-item>Value</ods-combobox-item></ods-combobox>');
+        await setup('<ods-combobox><ods-combobox-item value="value">Value</ods-combobox-item></ods-combobox>');
         const odsFocusSpy = await page.spyOnEvent('odsFocus');
 
         expect(odsFocusSpy).toHaveReceivedEventTimes(0);
@@ -451,7 +451,7 @@ describe('ods-combobox behaviour', () => {
 
   describe('on blur', () => {
     it('should close the dropdown', async() => {
-      await setup('<ods-combobox><ods-combobox-item>Value</ods-combobox-item></ods-combobox>');
+      await setup('<ods-combobox><ods-combobox-item value="value">Value</ods-combobox-item></ods-combobox>');
       await openList();
 
       expect(await isOpen()).toBe(true);
@@ -464,7 +464,7 @@ describe('ods-combobox behaviour', () => {
 
     it('should reset to the latest selected value if not empty', async() => {
       const actualValue = 'actual value';
-      await setup(`<ods-combobox value="${actualValue}"><ods-combobox-item>Value</ods-combobox-item></ods-combobox>`);
+      await setup(`<ods-combobox value="${actualValue}"><ods-combobox-item value="value">Value</ods-combobox-item></ods-combobox>`);
       await openList();
 
       await input.type('Dummy', { delay: 20 });
@@ -476,7 +476,7 @@ describe('ods-combobox behaviour', () => {
     });
 
     it('should clear the value if empty', async() => {
-      await setup('<ods-combobox value="v"><ods-combobox-item>Value</ods-combobox-item></ods-combobox>');
+      await setup('<ods-combobox value="v"><ods-combobox-item value="value">Value</ods-combobox-item></ods-combobox>');
       await openList();
 
       expect(await el.getProperty('value')).toBe('v');

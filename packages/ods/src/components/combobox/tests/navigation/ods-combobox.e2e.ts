@@ -46,7 +46,7 @@ describe('ods-combobox navigation', () => {
   }
 
   it('should be focused on tabulation', async() => {
-    await setup('<ods-combobox><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+    await setup('<ods-combobox><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
 
     expect(await isFocused()).toBe(false);
 
@@ -57,7 +57,7 @@ describe('ods-combobox navigation', () => {
   });
 
   it('should not be focusable if disabled', async() => {
-    await setup('<ods-combobox is-disabled><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+    await setup('<ods-combobox is-disabled><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
 
     expect(await isFocused()).toBe(false);
 
@@ -68,7 +68,7 @@ describe('ods-combobox navigation', () => {
   });
 
   it('should be focused on associated label click', async() => {
-    await setup('<label for="ods-combobox">Dummy label</label><ods-combobox id="ods-combobox"><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+    await setup('<label for="ods-combobox">Dummy label</label><ods-combobox id="ods-combobox"><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
     const labelElement = await page.find('label');
 
     expect(await isFocused()).toBe(false);
@@ -80,7 +80,7 @@ describe('ods-combobox navigation', () => {
   });
 
   it('should be focused on tabulation if readonly', async() => {
-    await setup('<ods-combobox is-readonly><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+    await setup('<ods-combobox is-readonly><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
 
     expect(await isFocused()).toBe(false);
 
@@ -91,7 +91,7 @@ describe('ods-combobox navigation', () => {
   });
 
   it('should focus on Tab the clearable button if set', async() => {
-    await setup('<ods-combobox is-clearable value="Dummy"><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+    await setup('<ods-combobox is-clearable value="Dummy"><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
 
     await page.keyboard.press('Tab');
     await page.waitForChanges();
@@ -108,7 +108,7 @@ describe('ods-combobox navigation', () => {
   });
 
   it('should open the list on input click', async() => {
-    await setup('<ods-combobox><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+    await setup('<ods-combobox><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
 
     expect(await isOpen()).toBe(false);
 
@@ -118,7 +118,7 @@ describe('ods-combobox navigation', () => {
   });
 
   it('should open the list on input click if disabled', async() => {
-    await setup('<ods-combobox is-disabled><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+    await setup('<ods-combobox is-disabled><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
 
     expect(await isOpen()).toBe(false);
 
@@ -128,7 +128,7 @@ describe('ods-combobox navigation', () => {
   });
 
   it('should open the list on arrow down when input is focused', async() => {
-    await setup('<ods-combobox><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+    await setup('<ods-combobox><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
 
     expect(await isOpen()).toBe(false);
 
@@ -142,7 +142,7 @@ describe('ods-combobox navigation', () => {
   });
 
   it('should not open the list on arrow up when input is focused', async() => {
-    await setup('<ods-combobox><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+    await setup('<ods-combobox><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
 
     expect(await isOpen()).toBe(false);
 
@@ -156,7 +156,7 @@ describe('ods-combobox navigation', () => {
   });
 
   it('should close the list on escape press', async() => {
-    await setup('<ods-combobox><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+    await setup('<ods-combobox><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
     await openList();
 
     expect(await isOpen()).toBe(true);
@@ -168,7 +168,7 @@ describe('ods-combobox navigation', () => {
   });
 
   it('should close the list on focus out', async() => {
-    await setup('<ods-combobox><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox><button>Focusable element</button>');
+    await setup('<ods-combobox><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox><button>Focusable element</button>');
     await openList();
 
     expect(await isOpen()).toBe(true);
@@ -180,7 +180,7 @@ describe('ods-combobox navigation', () => {
   });
 
   it('should close the list on outside click', async() => {
-    await setup('<ods-combobox><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox><p>Non focusable element</p>');
+    await setup('<ods-combobox><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox><p>Non focusable element</p>');
     await openList();
 
     expect(await isOpen()).toBe(true);
@@ -199,9 +199,9 @@ describe('ods-combobox navigation', () => {
     beforeEach(async() => {
       await setup(`
         <ods-combobox>
-          <ods-combobox-item>Item 1</ods-combobox-item>
-          <ods-combobox-item>Item 2</ods-combobox-item>
-          <ods-combobox-item>Item 3</ods-combobox-item>
+          <ods-combobox-item value="value1">Item 1</ods-combobox-item>
+          <ods-combobox-item value="value2">Item 2</ods-combobox-item>
+          <ods-combobox-item value="value3">Item 3</ods-combobox-item>
         </ods-combobox>
       `);
     });
@@ -316,7 +316,7 @@ describe('ods-combobox navigation', () => {
     });
 
     it('should do nothing on arrow left press when focus on input', async() => {
-      await setup('<ods-combobox><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+      await setup('<ods-combobox><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
       await openList();
 
       expect(await isOpen()).toBe(true);
@@ -330,7 +330,7 @@ describe('ods-combobox navigation', () => {
     });
 
     it('should do nothing on arrow right press when focus on input', async() => {
-      await setup('<ods-combobox><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+      await setup('<ods-combobox><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
       await openList();
 
       expect(await isOpen()).toBe(true);
@@ -411,7 +411,7 @@ describe('ods-combobox navigation', () => {
     });
 
     it('should do nothing on arrow left press when focus on input and no selection', async() => {
-      await setup('<ods-combobox allow-multiple><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+      await setup('<ods-combobox allow-multiple><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
       await openList();
 
       expect(await isOpen()).toBe(true);
@@ -425,7 +425,7 @@ describe('ods-combobox navigation', () => {
     });
 
     it('should do nothing on arrow right press when focus on input and no selection', async() => {
-      await setup('<ods-combobox allow-multiple><ods-combobox-item>Item 1</ods-combobox-item></ods-combobox>');
+      await setup('<ods-combobox allow-multiple><ods-combobox-item value="value">Item 1</ods-combobox-item></ods-combobox>');
       await openList();
 
       expect(await isOpen()).toBe(true);

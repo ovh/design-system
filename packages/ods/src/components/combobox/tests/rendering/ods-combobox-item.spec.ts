@@ -16,6 +16,10 @@ describe('ods-combobox-item rendering', () => {
     root = page.root;
   }
 
+  beforeEach(() => {
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+  });
+
   describe('id', () => {
     it('should be reflected', async() => {
       const dummyId = 'dummy id';

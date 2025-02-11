@@ -1,5 +1,6 @@
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
 import { getRandomHTMLId } from '../../../../../utils/dom';
+import { CREATE_NEW_ID } from '../../controller/ods-combobox';
 import { type OdsComboboxItemSelectedEventDetail } from '../../interfaces/events';
 
 @Component({
@@ -35,6 +36,12 @@ export class OdsComboboxItem {
       text: this.selectionLabel?.trim() || this.el.textContent?.trim() || '',
       value: this.value,
     });
+  }
+
+  componentDidLoad(): void {
+    if (!this.value && this.el.id !== CREATE_NEW_ID) {
+      console.warn('[OdsComboboxItem] combobox item without any value set detected, this will cause unexpected behaviours. Please set a unique value to each item component.');
+    }
   }
 
   render(): FunctionalComponent {

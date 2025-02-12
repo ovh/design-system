@@ -199,7 +199,7 @@ export class OdsSelect implements OdsFormElement {
         this.select?.sync(); // get updated options
         this.select?.setValue(currentValue); // set the value back
       }
-      
+
       for (const mutation of mutations) {
         // When observing is-required, the inner element validity is not yet up-to-date
         // so we observe the element required attribute instead
@@ -338,7 +338,7 @@ export class OdsSelect implements OdsFormElement {
       plugins: plugin,
       render: template,
       selectOnTab: true,
-      sortField: this.sortBy && [{field: this.sortBy}],
+      sortField: this.sortBy && [{ field: this.sortBy }],
     });
 
     this.bindSelectControl();

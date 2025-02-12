@@ -161,7 +161,6 @@ async function updateInternals(internals: ElementInternals, value: string | null
   }
 }
 
-
 export {
   type TranslatedCountryMap,
   formatPhoneNumber,

@@ -450,6 +450,32 @@
 <!--    <option value="goldfish">Goldfish</option>-->
 <!--  </ods-select>-->
 
+  <p>Modal</p>
+
+  <button id="button-default">Trigger Modal</button>
+
+  <ods-modal id="modal-default">
+    <ods-select strategy="fixed">
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+      <option value="hamster">Hamster</option>
+      <option value="parrot">Parrot</option>
+      <option value="spider">Spider</option>
+      <option value="goldfish">Goldfish</option>
+    </ods-select>
+  </ods-modal>
+
+  <script>
+    (() => {
+      const buttonDefault = document.querySelector('#button-default');
+      const modalDefault = document.querySelector('#modal-default');
+
+      buttonDefault.addEventListener('click', () => {
+        modalDefault.open();
+      });
+    })();
+  </script>
+
   <div style="margin-bottom: 2000px;"></div>
 </body>
 </html>

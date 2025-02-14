@@ -423,6 +423,46 @@ export const DisabledGroupOfOptions: StoryObj = {
   `,
 };
 
+export const FixedContext: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button id="modal-button"
+            label="Open Modal">
+</ods-button>
+<ods-modal id="modal-select">
+  <div class="select-container">
+    <ods-select class="select" strategy="fixed">
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+      <option value="hamster">Hamster</option>
+      <option value="parrot">Parrot</option>
+      <option value="spider">Spider</option>
+      <option value="goldfish">Goldfish</option>
+    </ods-select>
+  </div>
+</ods-modal>
+
+<script>
+  (() => {
+    const modalButton = document.querySelector('#modal-button');
+    const modalElement = document.querySelector('#modal-select');
+
+    modalButton.addEventListener('click', () => {
+      modalElement.open();
+    });
+  })();
+</script>
+
+<style>
+  .select,
+  .select-container {
+    width: 200px;
+    height: var(--ods-form-element-input-height);
+  }
+</style>
+  `,
+};
+
 export const Readonly: StoryObj = {
   tags: ['isHidden'],
   render: () => html`

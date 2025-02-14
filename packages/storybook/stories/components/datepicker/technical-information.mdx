@@ -102,6 +102,8 @@ If the component container is defining a position context, the datepicker may no
 In that case, you can change the component `strategy` prop to `fixed`, this way it will position itself based on the
 nearest containing block (usually the viewport).
 
+Careful though, you'll have to manage the induced layout changes as your component will no longer be rendered as part of your block but in a separate layer.
+
 <Canvas of={ DatepickerStories.FixedContext } sourceState="shown" />
 
 <Heading label="Included in a Form Field" level={ 3 } />

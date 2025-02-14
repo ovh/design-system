@@ -258,21 +258,31 @@ export const FixedContext: StoryObj = {
 <ods-button id="modal-button"
             label="Open Modal">
 </ods-button>
-<ods-modal id="modal-tooltip">
-  <ods-datepicker strategy="fixed">
-  </ods-datepicker>
+<ods-modal id="modal-datepicker">
+  <div class="datepicker-container">
+    <ods-datepicker class="datepicker" strategy="fixed">
+    </ods-datepicker>
+  </div>
 </ods-modal>
 
 <script>
   (() => {
     const modalButton = document.querySelector('#modal-button');
-    const modalElement = document.querySelector('#modal-tooltip');
+    const modalElement = document.querySelector('#modal-datepicker');
 
     modalButton.addEventListener('click', () => {
       modalElement.open();
     });
   })();
 </script>
+
+<style>
+  .datepicker,
+  .datepicker-container {
+    width: 200px;
+    height: var(--ods-form-element-input-height);
+  }
+</style>
   `,
 };
 

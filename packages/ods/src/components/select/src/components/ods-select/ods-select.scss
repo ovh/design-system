@@ -338,6 +338,10 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
   }
 }
 
+:host(.ods-select--fixed) {
+  position: fixed;
+}
+
 // Double class to give more weight than base override
 :host(:not(.ods-select--disabled).ods-select.ods-select--error) {
   .ts-control {

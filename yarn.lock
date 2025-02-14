@@ -4387,7 +4387,6 @@ __metadata:
     puppeteer: 22.15.0
     replace-in-file: 7.1.0
     sass: 1.71.0
-    stencil-inline-svg: 1.1.0
     tom-select: 2.3.1
     ts-jest: 29.1.2
     ts-node: 10.9.2
@@ -20695,13 +20694,6 @@ __metadata:
   version: 0.2.2
   resolution: "stdin-discarder@npm:0.2.2"
   checksum: 642ffd05bd5b100819d6b24a613d83c6e3857c6de74eb02fc51506fa61dc1b0034665163831873868157c4538d71e31762bcf319be86cea04c3aba5336470478
-  languageName: node
-  linkType: hard
-
-"stencil-inline-svg@npm:1.1.0":
-  version: 1.1.0
-  resolution: "stencil-inline-svg@npm:1.1.0"
-  checksum: 2c6732fabc74a61454834b877745f623722d670ce8351ab06bffbd1ad79ab5668bc1c888b242f0aef29f1f4353383d58a07cf3ac7bc0b46d789605f46a0b6904
   languageName: node
   linkType: hard
 

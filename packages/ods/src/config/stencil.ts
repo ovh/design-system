@@ -5,7 +5,6 @@ import { sass } from '@stencil/sass';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 import { postcss } from '@stencil-community/postcss';
 import autoprefixer from 'autoprefixer';
-import { inlineSvg } from 'stencil-inline-svg';
 import { getJestOption } from './jest';
 
 function getStencilConfig({ args, componentCorePackage, devScript, jestOption = {}, namespace, tsconfig }: {
@@ -40,7 +39,6 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestOption = 
     plugins: [
       sass(),
       postcss({ plugins: [autoprefixer()] }),
-      inlineSvg(),
     ],
     sourceMap: isDev,
     tsconfig: tsconfig || 'tsconfig.json',

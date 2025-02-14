@@ -11,7 +11,7 @@ jest.mock('../../src/controller/ods-select', () => ({
 }));
 
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { OdsSelect } from '../../src';
+import { ODS_SELECT_STRATEGY, OdsSelect } from '../../src';
 import { type SelectConfig } from '../../src/controller/ods-select';
 
 describe('ods-select rendering', () => {
@@ -191,6 +191,22 @@ describe('ods-select rendering', () => {
       await setup('<ods-select></ods-select>');
 
       expect(root?.getAttribute('placeholder')).toBeNull();
+    });
+  });
+
+  describe('strategy', () => {
+    it('should be reflected', async() => {
+      const strategyValue = ODS_SELECT_STRATEGY.fixed;
+
+      await setup(`<ods-select strategy="${strategyValue}"></ods-select>`);
+
+      expect(root?.getAttribute('strategy')).toBe(strategyValue);
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-select></ods-select>');
+
+      expect(root?.getAttribute('strategy')).toBe(ODS_SELECT_STRATEGY.absolute);
     });
   });
 

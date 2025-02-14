@@ -3,6 +3,7 @@ import TomSelect from 'tom-select';
 import { type OdsFormElement } from '../../../../../types';
 import { getElementPosition } from '../../../../../utils/overlay';
 import { mergeSelectedItemPlugin, placeholderPlugin } from '../../../../../utils/select';
+import { ODS_SELECT_STRATEGY, type OdsSelectStrategy } from '../../constants/select-strategy';
 import { VALUE_DEFAULT_VALUE, getInitialValue, getSelectConfig, hasNoValueOption, inlineValue, moveSlottedElements, setSelectValue, updateInternals } from '../../controller/ods-select';
 import { type OdsSelectChangeEventDetail } from '../../interfaces/events';
 import { type OdsSelectCustomRenderer } from '../../interfaces/options';
@@ -51,6 +52,7 @@ export class OdsSelect implements OdsFormElement {
   @Prop({ reflect: true }) public placeholder?: string;
   /** @internal */
   @Prop({ reflect: false }) public sortBy?: string;
+  @Prop({ reflect: true }) public strategy: OdsSelectStrategy = ODS_SELECT_STRATEGY.absolute;
   @Prop({ mutable: true, reflect: true }) public value: string | string [] | null = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
@@ -407,6 +409,7 @@ export class OdsSelect implements OdsFormElement {
           'ods-select--disabled': this.isDisabled,
           'ods-select--dropdown-width-auto': this.dropdownWidth === 'auto',
           'ods-select--error': this.hasError || !!this.isInvalid,
+          [`ods-select--${this.strategy}`]: true,
           [`ods-select--border-rounded-${this.borderRounded}`]: true,
         }}
         disabled={ this.isDisabled }

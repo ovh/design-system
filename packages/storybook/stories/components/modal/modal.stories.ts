@@ -367,7 +367,7 @@ export const OverlayFixed: StoryObj = {
 
   .modal-overlay-content-picker {
     /* You need to define a "fake" space that match the size your fixed component would actually take */
-    height: 32px;
+    height: var(--ods-form-element-input-height);
   }
 </style>
   `,

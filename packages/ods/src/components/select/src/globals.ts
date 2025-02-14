@@ -6,3 +6,4 @@
  *   import '../../text/src';
  */
 import '../../icon/src';
+import '../../modal/src';

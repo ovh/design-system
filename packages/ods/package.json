@@ -56,7 +56,6 @@
     "puppeteer": "22.15.0",
     "replace-in-file": "7.1.0",
     "sass": "1.71.0",
-    "stencil-inline-svg": "1.1.0",
     "ts-jest": "29.1.2",
     "ts-node": "10.9.2",
     "tsx": "4.17.0",

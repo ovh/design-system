@@ -80,7 +80,7 @@ describe('ods-phone-number rendering', () => {
   });
 
   it('should render the web component with countries in the right order', async() => {
-    await setup('<ods-phone-number countries=\'[ "fr","gq", "gb"]\'></ods-phone-number>');
+    await setup('<ods-phone-number countries=\'[ "fr","gq", "gb"]\' locale="en"></ods-phone-number>');
     const selectElement = await page.find('ods-phone-number >>> ods-select');
     await selectElement.click();
     await page.waitForChanges();
@@ -90,6 +90,7 @@ describe('ods-phone-number rendering', () => {
 
     await el.setAttribute('locale', 'fr');
     await page.waitForChanges();
+    // Since we change programmatically the locale without closing the list, we have to double click to display the list
     await selectElement.click();
     await selectElement.click();
     await page.waitForChanges();

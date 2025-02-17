@@ -3,6 +3,7 @@ import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing
 describe('ods-combobox rendering', () => {
   let el: E2EElement;
   let innerOdsInput: HTMLInputElement;
+  let input: E2EElement;
   let page: E2EPage;
 
   async function isOpen(): Promise<boolean> {
@@ -22,6 +23,7 @@ describe('ods-combobox rendering', () => {
     }
 
     el = await page.find('ods-combobox');
+    input = await page.find('ods-combobox >>> ods-input');
     innerOdsInput = el.shadowRoot!.querySelector<HTMLInputElement>('ods-input')!;
   }
 
@@ -114,6 +116,33 @@ describe('ods-combobox rendering', () => {
           return document.querySelector('ods-combobox')?.shadowRoot?.querySelector('ods-input')?.hasAttribute('is-disabled');
         })).toBe(true);
         expect(await isOpen()).toBe(false);
+      });
+    });
+
+    describe('highlightResults', () => {
+      async function getHighlightedContent(): Promise<string | null | undefined> {
+        return page.evaluate(() => {
+          return document.querySelector('ods-combobox-item > .ods-combobox-item--highlighted')?.textContent;
+        });
+      }
+
+      it('should add/remove marker around the matching part of the item', async() => {
+        await setup('<ods-combobox highlight-results><ods-combobox-item value="dummy">Dummy</ods-combobox-item></ods-combobox>');
+        await (await page.find('ods-combobox >>> ods-input')).click();
+        await page.waitForChanges();
+
+        expect(await isOpen()).toBe(true);
+        expect(await getHighlightedContent()).toBe(undefined);
+
+        await input.type('D', { delay: 200 });
+        await page.waitForChanges();
+
+        expect(await getHighlightedContent()).toBe('D');
+
+        el.removeAttribute('highlight-results');
+        await page.waitForChanges();
+
+        expect(await getHighlightedContent()).toBe(undefined);
       });
     });
 

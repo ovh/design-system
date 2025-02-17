@@ -95,6 +95,22 @@ describe('ods-combobox rendering', () => {
     });
   });
 
+  describe('highlightResults', () => {
+    it('should be reflected', async() => {
+      const dummyValue = 'dummy value';
+
+      await setup(`<ods-combobox highlight-results="${dummyValue}"></ods-combobox>`);
+
+      expect(root?.getAttribute('highlight-results')).toBe(dummyValue);
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-combobox></ods-combobox>');
+
+      expect(root?.getAttribute('highlight-results')).toBeNull();
+    });
+  });
+
   describe('isClearable', () => {
     it('should be reflected', async() => {
       const dummyValue = 'dummy value';

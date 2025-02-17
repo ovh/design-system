@@ -8,6 +8,10 @@ $ods-combobox-item-horizontal-padding: 8px;
   padding: 0 $ods-combobox-item-horizontal-padding;
   min-height: $ods-combobox-item-min-height;
   color: var(--ods-color-text);
+
+  ::slotted(.ods-combobox-item--highlighted) {
+    font-weight: 600;
+  }
 }
 
 :host(.ods-combobox-item:hover),

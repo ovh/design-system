@@ -21,6 +21,7 @@ export const Demo: StoryObj = {
       <ods-combobox
         add-new-element-label="${arg.addNewElementLabel || nothing}"
         has-error="${arg.hasError}"
+        highlight-results="${arg.highlightResults}"
         is-clearable="${arg.isClearable}"
         is-disabled="${arg.isDisabled}"
         is-loading="${arg.isLoading}"
@@ -71,6 +72,14 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
+    highlightResults: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
     isClearable: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -122,6 +131,7 @@ export const Demo: StoryObj = {
   }),
   args: {
     hasError: false,
+    highlightResults: false,
     isClearable: false,
     isDisabled: false,
     isLoading: false,
@@ -136,6 +146,7 @@ export const DemoMultiple: StoryObj = {
         add-new-element-label="${arg.addNewElementLabel}"
         allow-multiple
         has-error="${arg.hasError}"
+        highlight-results="${arg.highlightResults}"
         is-clearable="${arg.isClearable}"
         is-disabled="${arg.isDisabled}"
         is-loading="${arg.isLoading}"
@@ -186,6 +197,14 @@ export const DemoMultiple: StoryObj = {
       },
       control: 'boolean',
     },
+    highlightResults: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
     isClearable: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -237,6 +256,7 @@ export const DemoMultiple: StoryObj = {
   }),
   args: {
     hasError: false,
+    highlightResults: false,
     isClearable: false,
     isDisabled: false,
     isLoading: false,

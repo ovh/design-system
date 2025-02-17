@@ -8,4 +8,5 @@
 
 import '../../button/src';
 import '../../icon/src';
+import '../../select/src';
 import '../../text/src';

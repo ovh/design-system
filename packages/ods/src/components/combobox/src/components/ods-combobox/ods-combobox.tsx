@@ -1,4 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, State, Watch, forceUpdate, h } from '@stencil/core';
+import Mark from 'mark.js';
 import { type OdsFormElement } from '../../../../../types';
 import { debounce } from '../../../../../utils/debounce';
 import { isElementInContainer, isTargetInElement, submitFormOnEnter } from '../../../../../utils/dom';
@@ -15,7 +16,6 @@ type ResultGroup = HTMLElement & OdsComboboxGroup;
 // TODO
 //  - custom search function (async API, ...)
 //  - test dynamic slot changes
-//  - highlight results => add an example?
 //  - change anatomy picture to remove caret
 //  - manage very long item content?
 
@@ -41,6 +41,7 @@ export class OdsCombobox implements OdsFormElement {
   private currentSelections: OdsComboboxSelection[] = [];
   private debouncedOnInput = debounce(() => this.onInput(), 100);
   private inputElement?: HTMLInputElement & OdsInput;
+  private markInstance?: Mark;
   private observer?: MutationObserver;
   private resultElements: ResultElement[] = [];
   private resultGroups: ResultGroup[] = [];
@@ -63,6 +64,7 @@ export class OdsCombobox implements OdsFormElement {
   @Prop({ reflect: true }) public allowMultiple: boolean = false;
   @Prop({ reflect: true }) public defaultValue?: string | string[];
   @Prop({ reflect: true }) public hasError: boolean = false;
+  @Prop({ reflect: true }) public highlightResults: boolean = false;
   @Prop({ reflect: true }) public isClearable: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isLoading: boolean = false;
@@ -219,6 +221,16 @@ export class OdsCombobox implements OdsFormElement {
     return this.internals.willValidate;
   }
 
+  @Watch('highlightResults')
+  onHighlightResultsChange(): void {
+    if (this.highlightResults) {
+      this.markInstance = new Mark(this.resultElements);
+    } else {
+      this.markInstance?.unmark();
+      this.markInstance = undefined;
+    }
+  }
+
   @Watch('isDisabled')
   onIsDisabledChange(): void {
     if (this.isDisabled) {
@@ -258,6 +270,7 @@ export class OdsCombobox implements OdsFormElement {
     await this.onValueChange();
 
     this.shouldUpdateIsInvalidState = true;
+    this.onHighlightResultsChange();
 
     this.observer?.observe(this.el, {
       attributeFilter: ['value'],
@@ -288,6 +301,8 @@ export class OdsCombobox implements OdsFormElement {
   }
 
   private filterResults(value: string): void {
+    this.markInstance?.unmark();
+
     if (value) {
       const filterRegex = new RegExp(`.*${value}.*`, 'i');
       let noMatch = true;
@@ -305,6 +320,11 @@ export class OdsCombobox implements OdsFormElement {
         if (doesMatchValue && noMatch) {
           noMatch = false;
         }
+      });
+
+      this.markInstance?.mark(value, {
+        className: 'ods-combobox-item--highlighted',
+        element: 'span',
       });
 
       this.hasNoResults = noMatch;

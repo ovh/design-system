@@ -59,7 +59,9 @@ export class OdsComboboxItem {
         id={ this.el.id || this.internalId }
         onClick={ () => this.select() }
         role="option">
-        <slot></slot>
+        <div>
+          <slot></slot>
+        </div>
       </Host>
     );
   }

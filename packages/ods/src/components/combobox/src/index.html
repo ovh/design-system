@@ -24,7 +24,7 @@
 <!--  <p style="margin-bottom: 200px;">Default</p>-->
   <p>Default</p>
   <label for="default">My combobox</label>
-  <ods-combobox id="default">
+  <ods-combobox id="default" highlight-results>
     <ods-combobox-item value="chocolate">
       Chocolate
     </ods-combobox-item>
@@ -65,8 +65,14 @@
 
     defaultButtonChangeValue.addEventListener('click', () => {
       // defaultCombobox.value = 'Dummy';
-      defaultCombobox.clear();
+      // defaultCombobox.clear();
       // defaultCombobox.reset();
+
+      if (defaultCombobox.hasAttribute('highlight-results')) {
+        defaultCombobox.removeAttribute('highlight-results');
+      } else {
+        defaultCombobox.setAttribute('highlight-results', 'true');
+      }
     });
 
     defaultButtonClose.addEventListener('click', () => {
@@ -135,7 +141,7 @@
 <!--  </ods-combobox>-->
 
   <p>Group</p>
-  <ods-combobox id="group" value="dog">
+  <ods-combobox id="group" value="dog" highlight-results>
     <ods-combobox-group>
       <span slot="title">Flavours</span>
 
@@ -196,39 +202,39 @@
     </ods-combobox-item>
   </ods-combobox>
 
-<!--  <p>Custom Items</p>-->
-<!--  <ods-combobox>-->
-<!--    <ods-combobox-item value="ovh">-->
-<!--      <div class="custom-item">-->
-<!--        <img alt="logo"-->
-<!--             height="50"-->
-<!--             src="https://static-00.iconduck.com/assets.00/ovh-icon-2048x2048-l4c3izvg.png"-->
-<!--             width="50" />-->
-<!--        <div class="custom-item__content">-->
-<!--          <span class="custom-item__content__title">OVH Cloud</span>-->
-<!--          <span>OVH, legally OVH Groupe SA, is a French cloud computing company which offers VPS, dedicated servers and other web services. As of 2016 OVH owned the world's largest data center in surface area. As of 2019, it was the largest hosting provider in Europe, and the third largest in the world based on physical servers.</span>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </ods-combobox-item>-->
-<!--  </ods-combobox>-->
-<!--  <style>-->
-<!--    .custom-item {-->
-<!--      display: grid;-->
-<!--      grid-template-columns: max-content 1fr;-->
-<!--      column-gap: 8px;-->
-<!--      padding: 8px;-->
-<!--    }-->
+  <p>Custom Items</p>
+  <ods-combobox>
+    <ods-combobox-item value="ovh">
+      <div class="custom-item">
+        <img alt="logo"
+             height="50"
+             src="https://static-00.iconduck.com/assets.00/ovh-icon-2048x2048-l4c3izvg.png"
+             width="50" />
+        <div class="custom-item__content">
+          <span class="custom-item__content__title">OVH Cloud</span>
+          <span>OVH, legally OVH Groupe SA, is a French cloud computing company which offers VPS, dedicated servers and other web services. As of 2016 OVH owned the world's largest data center in surface area. As of 2019, it was the largest hosting provider in Europe, and the third largest in the world based on physical servers.</span>
+        </div>
+      </div>
+    </ods-combobox-item>
+  </ods-combobox>
+  <style>
+    .custom-item {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      column-gap: 8px;
+      padding: 8px;
+    }
 
-<!--    .custom-item__content {-->
-<!--      display: flex;-->
-<!--      flex-flow: column;-->
-<!--      row-gap: 8px;-->
-<!--    }-->
+    .custom-item__content {
+      display: flex;
+      flex-flow: column;
+      row-gap: 8px;
+    }
 
-<!--    .custom-item__content__title {-->
-<!--      font-weight: bold;-->
-<!--    }-->
-<!--  </style>-->
+    .custom-item__content__title {
+      font-weight: bold;
+    }
+  </style>
 
 <!--  <p>Multiple</p>-->
 <!--  <ods-combobox id="default" default-value="coconut,mint" allow-multiple>-->

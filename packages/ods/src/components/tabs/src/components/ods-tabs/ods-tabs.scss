@@ -5,8 +5,7 @@ $ods-tabs-border-bottom-size: 2px;
 :host(.ods-tabs) {
   @include scroll.hide-scrollbar();
 
-  display: inline-flex;
-  flex-flow: row;
+  display: block;
   padding: var(--ods-outline-width);
   width: 100%;
   overflow-x: auto;
@@ -16,6 +15,6 @@ $ods-tabs-border-bottom-size: 2px;
   &__wrapper {
     display: inline-flex;
     border-bottom: solid $ods-tabs-border-bottom-size var(--ods-color-neutral-100);
-    width: 100%;
+    min-width: 100%;
   }
 }

@@ -328,3 +328,80 @@ export const Actions: StoryObj = {
 </style>
   `,
 };
+
+export const OverlayFixed: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button class="button-overlay" label="Trigger Modal">
+</ods-button>
+<ods-modal class="modal-overlay">
+  <div class="modal-overlay-content"
+    <label for="modal-overlay-datepicker">
+      Choose a date:
+    </label>
+
+    <div class="modal-overlay-content-picker">
+      <ods-datepicker id="modal-overlay-datepicker" strategy="fixed"></ods-datepicker>
+    </div>
+  </div>
+</ods-modal>
+
+<script>
+  (() => {
+    const buttonColor = document.querySelector('.button-overlay');
+    const modalColor = document.querySelector('.modal-overlay');
+
+    buttonColor.addEventListener('click', () => {
+      modalColor.open();
+    });
+  })();
+</script>
+
+<style>
+  .modal-overlay-content {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 8px;
+    align-items: center;
+  }
+
+  .modal-overlay-content-picker {
+    /* You need to define a "fake" space that match the size your fixed component would actually take */
+    height: 32px;
+  }
+</style>
+  `,
+};
+
+export const OverlayVisible: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button class="button-overflow" label="Trigger Modal">
+</ods-button>
+<ods-modal class="modal-overflow">
+  <label for="modal-overflow-datepicker">
+    Choose a date:
+  </label>
+
+  <ods-datepicker id="modal-overflow-datepicker"></ods-datepicker>
+</ods-modal>
+
+<script>
+  (() => {
+    const buttonColor = document.querySelector('.button-overflow');
+    const modalColor = document.querySelector('.modal-overflow');
+
+    buttonColor.addEventListener('click', () => {
+      modalColor.open();
+    });
+  })();
+</script>
+
+<style>
+  .modal-overflow::part(dialog),
+  .modal-overflow::part(dialog-content) {
+    overflow: visible;
+  }
+</style>
+  `,
+};

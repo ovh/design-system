@@ -117,7 +117,9 @@ export class OdsModal {
             }
           </div>
 
-          <div class="ods-modal__dialog__content">
+          <div
+            class="ods-modal__dialog__content"
+            part="dialog-content">
             <div>
               <slot></slot>
             </div>

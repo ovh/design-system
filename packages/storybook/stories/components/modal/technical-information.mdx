@@ -1,8 +1,11 @@
 import { Canvas, Meta } from '@storybook/blocks';
+import { OdsMessage } from '@ovhcloud/ods-components/react';
 import SpecificationsModal from '@ovhcloud/ods-components/src/components/modal/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 import * as ModalStories from './modal.stories';
 
 <Meta of={ ModalStories } name="Technical information" />
@@ -17,7 +20,9 @@ import * as ModalStories from './modal.stories';
 
 <Heading label="Style customization" level={ 2 } />
 
-You can update the modal's content by directly updating the slot elements. You can also update it using the `::part(dialog)`.
+You can update the modal's content by directly updating the slot elements.
+
+You can also update the dialog element using the `::part(dialog)` and the dialog content using the `::part(dialog-content)`.
 
 Custom CSS:
 
@@ -40,3 +45,27 @@ Custom CSS:
 <Heading label="Actions slot" level={ 3 } />
 
 <Canvas of={ ModalStories.Actions } sourceState="shown" />
+
+<Heading label="Overflowing overlay" level={ 3 } />
+
+If you want floating elements (like
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.popover } label="popover" story={ STORY.documentation } /> or <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="tooltip" story={ STORY.documentation } />
+) to overflow when used in the modal, you should set their positioning strategy to `fixed` (see their dedicated examples).
+
+But for elements that are using a dropdown (like for example
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.datepicker } label="datepicker" story={ STORY.documentation } /> or <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="select" story={ STORY.documentation } />
+), it can gets a bit more tricky.
+
+You can use the same `fixed` strategy methods, but you'll have to manage the induced layout changes as your component
+will no longer be rendered as part of your block but in a separate layer (see each component dedicated documentation for more details).
+
+Here is an example of a fixed ods-datepicker aligned with its label:
+
+<Canvas of={ ModalStories.OverlayFixed } sourceState="shown" />
+
+An easier workaround would be to enforce a visible overflow to the whole dialog content.
+This way, dropdowns will render correctly and you won't need to take care of the inside layout.
+
+<OdsMessage color="warning" isDismissible={ false }>This will prevent scrolling through the dialog and should only be used if your content is small enough to never overflow the available height.</OdsMessage>
+
+<Canvas of={ ModalStories.OverlayVisible } sourceState="shown" />

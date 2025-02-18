@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.5.3](https://ovh.github.io/design-system/v18.5.3/?path=/docs/design-system-changelog--page) (2025-02-18)
+[compare](https://github.com/ovh/design-system/compare/v18.5.2...v18.5.3)
+
+### Features
+
+* **select:** add positionning strategy attribute ([0f6b38d](https://github.com/ovh/design-system/commit/0f6b38dfb6d07216c61560b3e39c3223ed6ea885))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.5.2](https://ovh.github.io/design-system/v18.5.2/?path=/docs/design-system-changelog--page) (2025-02-18)
 [compare](https://github.com/ovh/design-system/compare/v18.5.1...v18.5.2)
 

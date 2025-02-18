@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-text",
-  "version": "18.5.2",
+  "version": "18.5.3",
   "private": true,
   "description": "ODS Text component",
   "main": "dist/index.cjs.js",

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-datepicker",
-  "version": "18.5.2",
+  "version": "18.5.3",
   "private": true,
   "description": "ODS Datepicker component",
   "main": "dist/index.cjs.js",

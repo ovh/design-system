@@ -1,7 +1,7 @@
 {
   "name": "ods-components-react-test-app",
   "private": true,
-  "version": "18.5.2",
+  "version": "18.5.3",
   "type": "module",
   "scripts": {
     "start": "vite"

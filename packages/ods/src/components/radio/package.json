@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-radio",
-  "version": "18.5.2",
+  "version": "18.5.3",
   "private": true,
   "description": "ODS Radio component",
   "main": "dist/index.cjs.js",

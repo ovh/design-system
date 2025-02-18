@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.5.2](https://ovh.github.io/design-system/v18.5.2/?path=/docs/design-system-changelog--page) (2025-02-18)
+[compare](https://github.com/ovh/design-system/compare/v18.5.1...v18.5.2)
+
+### Features
+
+* **modal:** add part on content + doc about overlays ([5a8ea8a](https://github.com/ovh/design-system/commit/5a8ea8aed0492023a38ed4ce48450816543aba13))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

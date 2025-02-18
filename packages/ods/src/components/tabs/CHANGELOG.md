@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.5.2](https://ovh.github.io/design-system/v18.5.2/?path=/docs/design-system-changelog--page) (2025-02-18)
+[compare](https://github.com/ovh/design-system/compare/v18.5.1...v18.5.2)
+
+### Bug Fixes
+
+* **tabs:** improve border-bottom to match content width ([1cc2034](https://github.com/ovh/design-system/commit/1cc2034591c49cc317b22cedbd668828585cadeb))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -8,6 +8,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.5.2](https://ovh.github.io/design-system/v18.5.2/?path=/docs/design-system-changelog--page) (2025-02-18)
+[compare](https://github.com/ovh/design-system/compare/v18.5.1...v18.5.2)
+
+### Bug Fixes
+
+* **code:** render indentation correctly ([34338d9](https://github.com/ovh/design-system/commit/34338d9b8744b37b1cd22c7100ed8108f0cdfe50))
+
+
+### Features
+
+* **code:** add tooltip on copy button ([882aea7](https://github.com/ovh/design-system/commit/882aea7caa9ee9c1336d2ab882fde862f0fdfd10))
+* **modal:** add part on content + doc about overlays ([5a8ea8a](https://github.com/ovh/design-system/commit/5a8ea8aed0492023a38ed4ce48450816543aba13))
+* **phone-number:** add scroll on type letter ([a75d749](https://github.com/ovh/design-system/commit/a75d749d38d851be7140b1f23d5a9f82dafcf86d))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.5.1](https://ovh.github.io/design-system/v18.5.1/?path=/docs/design-system-changelog--page) (2025-02-04)
 [compare](https://github.com/ovh/design-system/compare/v18.5.0...v18.5.1)
 

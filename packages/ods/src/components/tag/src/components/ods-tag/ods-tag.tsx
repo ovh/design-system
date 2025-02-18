@@ -11,6 +11,8 @@ import { type OdsTagRemoveEventDetail } from '../../interfaces/events';
   tag: 'ods-tag',
 })
 export class OdsTag {
+  private tagElement?: HTMLElement;
+
   @Element() el!: HTMLElement;
 
   @Prop({ reflect: true }) public color: OdsTagColor = ODS_TAG_COLOR.information;
@@ -38,7 +40,9 @@ export class OdsTag {
 
   render(): FunctionalComponent {
     return (
-      <Host class="ods-tag">
+      <Host
+        class="ods-tag"
+        onFocus={ () => this.tagElement?.focus() }>
         <div
           class={{
             'ods-tag__tag': true,
@@ -47,6 +51,7 @@ export class OdsTag {
             [`ods-tag__tag--${this.size}`]: true,
           }}
           part="tag"
+          ref={ (el?: HTMLElement) => el && (this.tagElement = el) }
           tabindex={ this.isDisabled ? -1 : 0 }>
           {
             !!this.icon &&

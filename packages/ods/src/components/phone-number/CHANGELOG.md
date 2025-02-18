@@ -8,6 +8,28 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.5.2](https://ovh.github.io/design-system/v18.5.2/?path=/docs/design-system-changelog--page) (2025-02-18)
+[compare](https://github.com/ovh/design-system/compare/v18.5.1...v18.5.2)
+
+### Bug Fixes
+
+* **phone-number:** debounce keydown ([07ff31a](https://github.com/ovh/design-system/commit/07ff31ae9f40e474b4eca82bdba211d6a82c595b))
+* **phone-number:** improve e2e tests ([d8cef64](https://github.com/ovh/design-system/commit/d8cef64b2b6b9962e7225f5c2cc6fd13c9c02ebb))
+* **phone-number:** improves tests for countries order ([0557735](https://github.com/ovh/design-system/commit/0557735ad640d648150ee4e65217f46d81ad95d1))
+* **phone-number:** sort phone number  when locale changes ([8583f62](https://github.com/ovh/design-system/commit/8583f62a0dad33b57c32e98259a73073119ec062))
+
+
+### Features
+
+* **phone-number:** add scroll on type letter ([a75d749](https://github.com/ovh/design-system/commit/a75d749d38d851be7140b1f23d5a9f82dafcf86d))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.5.1](https://ovh.github.io/design-system/v18.5.1/?path=/docs/design-system-changelog--page) (2025-02-04)
 [compare](https://github.com/ovh/design-system/compare/v18.5.0...v18.5.1)
 

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.5.2](https://ovh.github.io/design-system/v18.5.2/?path=/docs/design-system-changelog--page) (2025-02-18)
+[compare](https://github.com/ovh/design-system/compare/v18.5.1...v18.5.2)
+
+### Bug Fixes
+
+* **phone-number:** improves tests for countries order ([0557735](https://github.com/ovh/design-system/commit/0557735ad640d648150ee4e65217f46d81ad95d1))
+* **phone-number:** sort phone number  when locale changes ([8583f62](https://github.com/ovh/design-system/commit/8583f62a0dad33b57c32e98259a73073119ec062))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

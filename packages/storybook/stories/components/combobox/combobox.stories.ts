@@ -430,6 +430,64 @@ export const Disabled: StoryObj = {
   `,
 };
 
+export const FixedContext: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button id="modal-button"
+            label="Open Modal">
+</ods-button>
+<ods-modal id="modal-combobox">
+  <div class="combobox-container">
+    <ods-combobox class="combobox" strategy="fixed">
+      <ods-combobox-item value="chocolate">
+        Chocolate
+      </ods-combobox-item>
+      <ods-combobox-item value="chocolate-with-nuts">
+        Chocolate with nuts
+      </ods-combobox-item>
+      <ods-combobox-item value="coconut">
+        Coconut
+      </ods-combobox-item>
+      <ods-combobox-item value="light-mint">
+        Light mint
+      </ods-combobox-item>
+      <ods-combobox-item value="mint">
+        Mint
+      </ods-combobox-item>
+      <ods-combobox-item value="strawberry">
+        Strawberry
+      </ods-combobox-item>
+      <ods-combobox-item value="vanilla">
+        Vanilla
+      </ods-combobox-item>
+      <ods-combobox-item value="white-chocolate">
+        White chocolate
+      </ods-combobox-item>
+    </ods-combobox>
+  </div>
+</ods-modal>
+
+<script>
+  (() => {
+    const modalButton = document.querySelector('#modal-button');
+    const modalElement = document.querySelector('#modal-combobox');
+
+    modalButton.addEventListener('click', () => {
+      modalElement.open();
+    });
+  })();
+</script>
+
+<style>
+  .combobox,
+  .combobox-container {
+    width: 200px;
+    height: var(--ods-form-element-input-height);
+  }
+</style>
+  `,
+};
+
 export const Group: StoryObj = {
     tags: ['isHidden'],
     render: () => html`

@@ -5,6 +5,7 @@ import { debounce } from '../../../../../utils/debounce';
 import { isElementInContainer, isTargetInElement, submitFormOnEnter } from '../../../../../utils/dom';
 import { getElementPosition } from '../../../../../utils/overlay';
 import { type OdsInput } from '../../../../input/src';
+import { ODS_COMBOBOX_STRATEGY, type OdsComboboxStrategy } from '../../constants/combobox-strategy';
 import { CREATE_NEW_ID, type OdsComboboxSelection, VALUE_DEFAULT_VALUE, getInitialValue, inlineSelection, inlineValue, isANewItem, splitValue, updateInternals, updateItemsFocus } from '../../controller/ods-combobox';
 import { type OdsComboboxChangeEventDetail, type OdsComboboxFilterEventDetail, type OdsComboboxItemSelectedEventDetail } from '../../interfaces/events';
 import { type OdsComboboxGroup } from '../ods-combobox-group/ods-combobox-group';
@@ -12,18 +13,6 @@ import { type OdsComboboxItem } from '../ods-combobox-item/ods-combobox-item';
 
 type ResultElement = HTMLElement & OdsComboboxItem & { groupId?: string };
 type ResultGroup = HTMLElement & OdsComboboxGroup;
-
-// TODO
-//  - custom search function (async API, ...)
-//  - test dynamic slot changes
-//  - change anatomy picture to remove caret
-//  - manage very long item content?
-
-// TBD
-//  - how do we handle large dataset? separate infinite version (with data passed through JS and limited customization)?
-
-// ISSUE
-//  - when not enough space bottom, popper is displayed top, but we still listen to arrow down to open the result list
 
 const FOCUSED_CLASS = 'ods-combobox__search--focused';
 
@@ -73,6 +62,7 @@ export class OdsCombobox implements OdsFormElement {
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public noResultLabel: string = 'No results found';
   @Prop({ reflect: true }) public placeholder?: string;
+  @Prop({ reflect: true }) public strategy: OdsComboboxStrategy = ODS_COMBOBOX_STRATEGY.absolute;
   @Prop({ mutable: true, reflect: true }) public value: string | string [] | null = VALUE_DEFAULT_VALUE;
 
   @Event() odsBlur!: EventEmitter<void>;
@@ -156,12 +146,7 @@ export class OdsCombobox implements OdsFormElement {
   @Method()
   public async clear(): Promise<void> {
     this.odsClear.emit();
-    this.currentSelections = [];
-    this.resultElements?.forEach((resultElement) => {
-      resultElement.isSelected = false;
-    });
-    this.shouldUpdateSelection = false;
-    this.value = null;
+    this.clearCombobox();
     this.inputElement?.focus();
   }
 
@@ -207,12 +192,7 @@ export class OdsCombobox implements OdsFormElement {
       this.shouldUpdateSelection = true;
       this.value = this.defaultValue;
     } else {
-      this.currentSelections = [];
-      this.resultElements?.forEach((resultElement) => {
-        resultElement.isSelected = false;
-      });
-      this.shouldUpdateSelection = false;
-      this.value = VALUE_DEFAULT_VALUE;
+      this.clearCombobox();
     }
   }
 
@@ -291,6 +271,15 @@ export class OdsCombobox implements OdsFormElement {
 
   async formResetCallback(): Promise<void> {
     await this.reset();
+  }
+
+  private clearCombobox(): void {
+    this.currentSelections = [];
+    this.resultElements?.forEach((resultElement) => {
+      resultElement.isSelected = false;
+    });
+    this.shouldUpdateSelection = false;
+    this.value = VALUE_DEFAULT_VALUE;
   }
 
   private closeDropdown(): void {
@@ -693,7 +682,7 @@ export class OdsCombobox implements OdsFormElement {
     return (
       <Host
         aria-expanded={ this.isOpen ? 'true' : 'false' }
-        class="ods-combobox"
+        class={ `ods-combobox ods-combobox--${this.strategy}` }
         disabled={ this.isDisabled }
         onBlur={ (e: FocusEvent) => this.onBlur(e) }
         readonly={ this.isReadonly }

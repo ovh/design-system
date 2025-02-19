@@ -12,7 +12,7 @@ export class OdsComboboxGroup {
   @Element() el!: HTMLElement;
 
   /** @internal */
-  @Prop({ reflect: false }) public isVisible: boolean = true;
+  @Prop({ reflect: false }) public isVisible: boolean = false;
 
   render(): FunctionalComponent {
     return (

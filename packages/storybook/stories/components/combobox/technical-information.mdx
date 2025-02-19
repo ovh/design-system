@@ -115,6 +115,17 @@ In that case, you can set the `selection-label` property to provide the text tha
 
 <Canvas of={ ComboboxStories.ValidityState } source={{ transform: hideValidityStateSource }} sourceState="shown" />
 
+<Heading label="In an ods-modal" level={ 3 } />
+
+If the component container is defining a position context, the combobox may not appear at the right place, or partially clipped.
+
+In that case, you can change the component `strategy` prop to `fixed`, this way it will position itself based on the
+nearest containing block (usually the viewport).
+
+Careful though, you'll have to manage the induced layout changes (like setting a width) as your component will no longer be rendered as part of your block but in a separate layer.
+
+<Canvas of={ ComboboxStories.FixedContext } sourceState="shown" />
+
 <Heading label="Included in a Form Field" level={ 3 } />
 
 <Canvas of={ FormFieldCombobox } sourceState="shown" />

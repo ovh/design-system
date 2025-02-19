@@ -148,9 +148,84 @@ describe('ods-combobox rendering', () => {
 
     describe('onSlotChange', () => {
       it('should change items but not the selected one', async() => {
-        // TODO
-        expect(true).toBe(true);
+        const dummyValue1 = 'dummy value 1';
+        const dummyValue2 = 'dummy value 2';
+        await setup(`<ods-combobox allow-multiple><ods-combobox-item value="${dummyValue1}">Dummy 1</ods-combobox-item></ods-combobox>`);
+        await (await page.find('ods-combobox >>> ods-input')).click();
+        await page.waitForChanges();
+
+        expect(await isOpen()).toBe(true);
+        expect((await page.find('ods-combobox-item')).textContent).toBe('Dummy 1');
+
+        await (await page.find('ods-combobox-item')).click();
+        await page.waitForChanges();
+
+        expect(await isOpen()).toBe(false);
+        expect(await el.getProperty('value')).toBe(dummyValue1);
+
+        await page.evaluate((value) => {
+          document.querySelector('ods-combobox')!.innerHTML = `<ods-combobox-item value="${value}">Dummy 2</ods-combobox-item>`;
+        }, dummyValue2);
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(dummyValue1);
+
+        await (await page.find('ods-combobox >>> ods-input')).click();
+        await page.waitForChanges();
+
+        expect(await isOpen()).toBe(true);
+        expect((await page.find('ods-combobox-item')).textContent).toBe('Dummy 2');
+
+        await (await page.find('ods-combobox-item')).click();
+        await page.waitForChanges();
+
+        expect(await isOpen()).toBe(false);
+        expect(await el.getProperty('value')).toBe(`${dummyValue1},${dummyValue2}`);
       });
+    });
+  });
+
+  describe('in a fixed context (like ods-modal)', () => {
+    async function setupModal(content: string): Promise<void> {
+      page = await newE2EPage();
+
+      await page.setContent(`
+        <ods-modal is-open>
+          ${content}
+        </ods-modal>
+      `);
+
+      await page.evaluate(() => {
+        const dialog = document.querySelector('ods-modal')?.shadowRoot?.querySelector('dialog');
+        dialog?.style.setProperty('animation', 'none');
+      });
+
+      el = await page.find('ods-combobox');
+
+      await el.click();
+      await page.waitForChanges();
+    }
+
+    it('should position regarding dialog element (thus not at the right place) in absolute strategy', async() => {
+      await setupModal('<ods-combobox><ods-combobox-item value="dummy1">Dummy 1</ods-combobox-item><ods-combobox-item value="dummy2">Dummy 2</ods-combobox-item></ods-combobox>');
+
+      const hasScroll = await page.evaluate(() => {
+        const dialogContent = document.querySelector('ods-modal')?.shadowRoot?.querySelector('.ods-modal__dialog__content');
+        return dialogContent && dialogContent.scrollHeight > dialogContent.clientHeight;
+      });
+
+      expect(hasScroll).toBe(true);
+    });
+
+    it('should position regarding viewport (thus at the right place) in fixed strategy', async() => {
+      await setupModal('<ods-combobox strategy="fixed"><ods-combobox-item value="dummy1">Dummy 1</ods-combobox-item><ods-combobox-item value="dummy2">Dummy 2</ods-combobox-item></ods-combobox>');
+
+      const hasScroll = await page.evaluate(() => {
+        const dialogContent = document.querySelector('ods-modal')?.shadowRoot?.querySelector('.ods-modal__dialog__content');
+        return dialogContent && dialogContent.scrollHeight > dialogContent.clientHeight;
+      });
+
+      expect(hasScroll).toBe(false);
     });
   });
 });

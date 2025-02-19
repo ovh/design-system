@@ -20,7 +20,7 @@ export class OdsComboboxItem {
   /** @internal */
   @Prop({ reflect: false }) public isSelected: boolean = false;
   /** @internal */
-  @Prop({ reflect: false }) public isVisible: boolean = true;
+  @Prop({ reflect: false }) public isVisible: boolean = false;
   @Prop({ reflect: true }) public searchLabel?: string;
   @Prop({ reflect: true }) public selectionLabel?: string;
   @Prop({ reflect: true }) public value!: string;

@@ -4,13 +4,19 @@
 @use '../../../../../style/state';
 @use '../ods-combobox-item/ods-combobox-item';
 
+$ods-combobox-border-size: 1px;
+
 :host(.ods-combobox) {
   display: inline-block;
   position: relative;
 
   ::slotted(ods-combobox-group:not(:first-child)) {
-    border-top: solid 1px var(--ods-color-neutral-100);
+    border-top: solid $ods-combobox-border-size var(--ods-color-neutral-100);
   }
+}
+
+:host(.ods-combobox--fixed) {
+  position: fixed;
 }
 
 .ods-combobox {
@@ -61,6 +67,7 @@
 
       &::part(input) {
         border: 0;
+        height: calc(input.$ods-input-input-height - ($ods-combobox-border-size * 2));
 
         &:focus {
           outline: 0;

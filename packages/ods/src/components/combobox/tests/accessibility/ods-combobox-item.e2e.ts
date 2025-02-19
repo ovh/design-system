@@ -14,7 +14,7 @@ describe('ods-combobox-item accessibility', () => {
   }
 
   it('should render the web component with the right role', async() => {
-    await setup('<ods-combobox-item value="value"></ods-combobox-item>');
+    await setup('<ods-combobox-item is-visible value="value"></ods-combobox-item>');
 
     expect(el.shadowRoot).not.toBeNull();
     expect(el.getAttribute('role')).toBe('option');

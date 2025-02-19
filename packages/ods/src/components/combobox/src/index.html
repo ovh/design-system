@@ -141,7 +141,7 @@
 <!--  </ods-combobox>-->
 
   <p>Group</p>
-  <ods-combobox id="group" value="dog" highlight-results>
+  <ods-combobox id="group" value="dog" highlight-results allow-multiple>
     <ods-combobox-group>
       <span slot="title">Flavours</span>
 
@@ -395,6 +395,51 @@
 <!--      console.log('formData', formData);-->
 <!--    });-->
 <!--  </script>-->
+  <p>Modal</p>
+
+  <button id="modal-button">Trigger Modal</button>
+  <ods-modal id="modal">
+    <ods-combobox strategy="fixed">
+      <ods-combobox-group>
+        <span slot="title">Flavours</span>
+        <ods-combobox-item value="chocolate">
+          Chocolate
+        </ods-combobox-item>
+        <ods-combobox-item value="chocolate-with-nuts">
+          Chocolate with nuts
+        </ods-combobox-item>
+        <ods-combobox-item value="coconut">
+          Coconut
+        </ods-combobox-item>
+        <ods-combobox-item value="light-mint">
+          Light mint
+        </ods-combobox-item>
+        <ods-combobox-item value="mint">
+          Mint
+        </ods-combobox-item>
+        <ods-combobox-item value="strawberry">
+          Strawberry
+        </ods-combobox-item>
+        <ods-combobox-item value="vanilla">
+          Vanilla
+        </ods-combobox-item>
+        <ods-combobox-item value="white-chocolate">
+          White chocolate
+        </ods-combobox-item>
+      </ods-combobox-group>
+    </ods-combobox>
+  </ods-modal>
+
+  <script>
+    (() => {
+      const modal = document.querySelector('#modal');
+      const modalButton = document.querySelector('#modal-button');
+
+      modalButton.addEventListener('click', () => {
+        modal.open();
+      });
+    })();
+  </script>
 <!--  <p style="margin-bottom: 1000px;"></p>-->
 </body>
 </html>

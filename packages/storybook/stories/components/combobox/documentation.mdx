@@ -54,7 +54,7 @@ The **Combobox** is best suited when users need to:
 <BestPractices
   donts={[
     '- Avoid excessive grouping of items, as too many categories can overwhelm users',
-    '- Avoid using Combobox when the number of items is very small, you can use Select or Radio',
+    '- Avoid using combobox when the number of items is very small (except for if the user needs to be able to add their own entries), you can use Select or Radio',
   ]}
   dos={[
     '- Use Combobox for datasets where typing helps filter results',
@@ -86,7 +86,7 @@ Selecting an item triggers a custom event, allowing integrators to process the s
 
 Clicking on an item selects it, closes the dropdown, and updates the Input field value.
 
-If the user exists the field without selecting an item, the input reverts to the placeholder or the last selected value (if any).
+If the user exits the field without selecting an item, the input reverts to the placeholder or the last selected value (if any).
 
 Users cannot select the same item twice; already selected items are removed from the dropdown.
 

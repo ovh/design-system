@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-combobox",
-  "version": "18.5.1",
+  "version": "18.5.3",
   "private": true,
   "description": "ODS Combobox component",
   "main": "dist/index.cjs.js",
@@ -8,6 +8,7 @@
   "scripts": {
     "clean": "rimraf .stencil coverage dist documentation www",
     "doc": "custom-elements-manifest analyze --config ./custom-elements-manifest.config.mjs",
+    "lint:a11y": "eslint --config ../../../../../.eslintrc-a11y 'src/**/*.{js,ts,tsx}'",
     "lint:scss": "stylelint 'src/components/**/*.scss'",
     "lint:ts": "eslint '{src,tests}/**/*.{js,ts,tsx}'",
     "start": "stencil build --dev --watch --serve",

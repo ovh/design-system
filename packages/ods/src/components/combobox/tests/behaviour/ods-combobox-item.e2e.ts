@@ -23,7 +23,7 @@ describe('ods-combobox-item behaviour', () => {
 
       it('should send odsComboboxSelected event on component click with selection label if set', async() => {
         const dummyLabel = 'dummy label';
-        await setup(`<ods-combobox-item id="${dummyId}" selection-label="${dummyLabel}" value="${dummyValue}"></ods-combobox-item>`);
+        await setup(`<ods-combobox-item id="${dummyId}" is-visible selection-label="${dummyLabel}" value="${dummyValue}"></ods-combobox-item>`);
         const odsComboboxSelectedSpy = await page.spyOnEvent('odsComboboxSelected');
 
         expect(odsComboboxSelectedSpy).toHaveReceivedEventTimes(0);
@@ -41,7 +41,7 @@ describe('ods-combobox-item behaviour', () => {
 
       it('should send odsComboboxSelected event on component click with content text', async() => {
         const dummyText = 'dummy text';
-        await setup(`<ods-combobox-item id="${dummyId}" value="${dummyValue}">${dummyText}</ods-combobox-item>`);
+        await setup(`<ods-combobox-item id="${dummyId}" is-visible value="${dummyValue}">${dummyText}</ods-combobox-item>`);
         const odsComboboxSelectedSpy = await page.spyOnEvent('odsComboboxSelected');
 
         expect(odsComboboxSelectedSpy).toHaveReceivedEventTimes(0);

@@ -8,10 +8,6 @@ describe('ods-combobox-item rendering', () => {
     return el.classList.contains('ods-combobox-item--focused');
   }
 
-  function isSelected(): boolean {
-    return el.classList.contains('ods-combobox-item--hidden');
-  }
-
   function isVisible(): boolean {
     return !el.classList.contains('ods-combobox-item--hidden');
   }
@@ -38,26 +34,30 @@ describe('ods-combobox-item rendering', () => {
     expect(console.warn).toHaveBeenCalledTimes(1);
   });
 
-  it('should render visible, unfocused and unselected by default', async() => {
+  it('should render hidden and unfocused by default', async() => {
     await setup('<ods-combobox-item value="value"></ods-combobox-item>');
 
-    expect(isVisible()).toBe(true);
+    expect(isVisible()).toBe(false);
     expect(isFocused()).toBe(false);
-    expect(isSelected()).toBe(false);
   });
 
   it('should render focused and visible', async() => {
-    await setup('<ods-combobox-item is-focused value="value"></ods-combobox-item>');
+    await setup('<ods-combobox-item is-focused is-visible value="value"></ods-combobox-item>');
 
     expect(isVisible()).toBe(true);
     expect(isFocused()).toBe(true);
   });
 
   it('should render hidden if selected', async() => {
-    await setup('<ods-combobox-item is-selected value="value"></ods-combobox-item>');
+    await setup('<ods-combobox-item is-selected is-visible value="value"></ods-combobox-item>');
 
     expect(isVisible()).toBe(false);
-    expect(isSelected()).toBe(true);
+  });
+
+  it('should render visible if isVisible is set', async() => {
+    await setup('<ods-combobox-item is-visible value="value"></ods-combobox-item>');
+
+    expect(isVisible()).toBe(true);
   });
 
   it('should render hidden if isVisible is set to false', async() => {

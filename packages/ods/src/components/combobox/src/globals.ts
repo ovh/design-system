@@ -7,4 +7,5 @@
  */
 import '../../icon/src';
 import '../../input/src';
+import '../../modal/src';
 import '../../tag/src';

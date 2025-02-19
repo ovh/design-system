@@ -25,8 +25,14 @@ describe('ods-combobox-group rendering', () => {
     expect(el.shadowRoot).not.toBeNull();
   });
 
-  it('should render visible by default', async() => {
+  it('should render hidden by default', async() => {
     await setup('<ods-combobox-group></ods-combobox-group>');
+
+    expect(isVisible()).toBe(false);
+  });
+
+  it('should render hidden if isVisible is set', async() => {
+    await setup('<ods-combobox-group is-visible></ods-combobox-group>');
 
     expect(isVisible()).toBe(true);
   });

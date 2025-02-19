@@ -1,7 +1,7 @@
 jest.mock('../../src/controller/ods-combobox');
 
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { OdsCombobox } from '../../src';
+import { ODS_COMBOBOX_STRATEGY, OdsCombobox } from '../../src';
 
 // @ts-ignore for test purposes
 global.MutationObserver = jest.fn(() => ({
@@ -220,6 +220,22 @@ describe('ods-combobox rendering', () => {
       await setup('<ods-combobox></ods-combobox>');
 
       expect(root?.getAttribute('placeholder')).toBeNull();
+    });
+  });
+
+  describe('strategy', () => {
+    it('should be reflected', async() => {
+      const strategyValue = ODS_COMBOBOX_STRATEGY.fixed;
+
+      await setup(`<ods-combobox strategy="${strategyValue}"></ods-combobox>`);
+
+      expect(root?.getAttribute('strategy')).toBe(strategyValue);
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-combobox></ods-combobox>');
+
+      expect(root?.getAttribute('strategy')).toBe(ODS_COMBOBOX_STRATEGY.absolute);
     });
   });
 

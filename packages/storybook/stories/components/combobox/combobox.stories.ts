@@ -143,7 +143,7 @@ export const DemoMultiple: StoryObj = {
   render: (arg) => {
     return html`
       <ods-combobox
-        add-new-element-label="${arg.addNewElementLabel}"
+        add-new-element-label="${arg.addNewElementLabel || nothing}"
         allow-multiple
         has-error="${arg.hasError}"
         highlight-results="${arg.highlightResults}"
@@ -151,7 +151,7 @@ export const DemoMultiple: StoryObj = {
         is-disabled="${arg.isDisabled}"
         is-loading="${arg.isLoading}"
         is-readonly="${arg.isReadonly}"
-        no-result-label="${arg.noResultLabel}"
+        no-result-label="${arg.noResultLabel || nothing}"
         placeholder="${arg.placeholder || nothing }">
         <ods-combobox-item value="chocolate">
           Chocolate

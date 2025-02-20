@@ -420,8 +420,6 @@ export class OdsCombobox implements OdsFormElement {
         break;
       case 'ArrowLeft':
         if (this.allowMultiple && this.currentSelections.length) {
-          event.preventDefault();
-
           // FIXME This is not ideal, but selection API seems not yet ready to work with shadow DOM (see https://github.com/w3c/selection-api)
           const actualInput = this.inputElement?.shadowRoot?.querySelector('input');
 
@@ -593,27 +591,31 @@ export class OdsCombobox implements OdsFormElement {
   }
 
   private async openResultList(): Promise<void> {
-    if (this.inputElement) {
-      this.filterResults(this.inputElement.value);
-      await this.openDropdown();
+    if (!this.inputElement) {
+      return;
     }
+
+    this.filterResults(this.inputElement.value);
+    await this.openDropdown();
   }
 
   private updateCreateNewElement(): void {
-    if (this.createNewElement) {
-      if (isANewItem(this.inputElement?.value, this.resultElements, this.currentSelections)) {
-        this.createNewElement.value = this.inputElement?.value || '';
-        this.createNewElement.innerText = `${this.addNewElementLabel} ${this.inputElement?.value}`;
+    if (!this.createNewElement) {
+      return;
+    }
 
-        if (this.resultElements.length && this.resultElements[0].id !== CREATE_NEW_ID) {
-          this.createNewElement.isVisible = true;
-          this.resultElements.unshift(this.createNewElement);
-        }
-      } else {
-        if (this.resultElements.length && this.resultElements[0].id === CREATE_NEW_ID) {
-          this.createNewElement.isVisible = false;
-          this.resultElements.shift();
-        }
+    if (isANewItem(this.inputElement?.value, this.resultElements, this.currentSelections)) {
+      this.createNewElement.value = this.inputElement?.value || '';
+      this.createNewElement.innerText = `${this.addNewElementLabel} ${this.inputElement?.value}`;
+
+      if (this.resultElements.length && this.resultElements[0].id !== CREATE_NEW_ID) {
+        this.createNewElement.isVisible = true;
+        this.resultElements.unshift(this.createNewElement);
+      }
+    } else {
+      if (this.resultElements.length && this.resultElements[0].id === CREATE_NEW_ID) {
+        this.createNewElement.isVisible = false;
+        this.resultElements.shift();
       }
     }
   }
@@ -669,12 +671,14 @@ export class OdsCombobox implements OdsFormElement {
   }
 
   private updateInputValue(): void {
-    if (this.inputElement) {
-      if (this.allowMultiple) {
-        this.inputElement.value = '';
-      } else {
-        this.inputElement.value = this.currentSelections.length ? this.currentSelections[0].text : '';
-      }
+    if (!this.inputElement) {
+      return;
+    }
+
+    if (this.allowMultiple) {
+      this.inputElement.value = '';
+    } else {
+      this.inputElement.value = this.currentSelections.length ? this.currentSelections[0].text : '';
     }
   }
 

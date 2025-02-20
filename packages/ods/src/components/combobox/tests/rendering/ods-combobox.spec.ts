@@ -8,6 +8,11 @@ global.MutationObserver = jest.fn(() => ({
   disconnect: jest.fn(),
   observe: jest.fn(),
 }));
+// @ts-ignore for test purposes
+global.ResizeObserver = jest.fn(() => ({
+  disconnect: jest.fn(),
+  observe: jest.fn(),
+}));
 
 describe('ods-combobox rendering', () => {
   let page: SpecPage;

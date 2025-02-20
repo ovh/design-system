@@ -32,10 +32,12 @@ export class OdsCombobox implements OdsFormElement {
   private inputElement?: HTMLInputElement & OdsInput;
   private markInstance?: Mark;
   private observer?: MutationObserver;
+  private resizeObserver?: ResizeObserver;
   private resultElements: ResultElement[] = [];
   private resultGroups: ResultGroup[] = [];
   private resultListElement?: HTMLElement;
   private searchElement?: HTMLElement;
+  private searchHeight: number = 0;
   private shouldResetOnBlur: boolean = true;
   private shouldUpdateIsInvalidState: boolean = false;
   private shouldUpdateSelection: boolean = false;
@@ -239,6 +241,23 @@ export class OdsCombobox implements OdsFormElement {
       }
     });
 
+    this.resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (!this.searchHeight && entry.contentRect.height > 0) {
+          this.searchHeight = entry.contentRect.height;
+        }
+
+        if (this.searchHeight !== entry.contentRect.height) {
+          this.searchHeight = entry.contentRect.height;
+
+          if (this.isOpen) {
+            // If the search element height has changed, we need to reposition the floating dropdown
+            this.openDropdown();
+          }
+        }
+      }
+    });
+
     // We set the value before the observer starts to avoid calling the mutation callback twice
     // as it will be called on componentDidLoad (when native element validity is up-to-date)
     this.shouldUpdateSelection = true;
@@ -263,10 +282,15 @@ export class OdsCombobox implements OdsFormElement {
         attributeOldValue: false,
       });
     }
+
+    if (this.searchElement) {
+      this.resizeObserver?.observe(this.searchElement);
+    }
   }
 
   disconnectedCallback(): void {
     this.observer?.disconnect();
+    this.resizeObserver?.disconnect();
   }
 
   async formResetCallback(): Promise<void> {

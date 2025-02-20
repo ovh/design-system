@@ -1,4 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
+import { type OdsInput } from '../../../input/src';
 import { type OdsComboboxChangeEventDetail, type OdsComboboxItem } from '../../src';
 import { CREATE_NEW_ID } from '../../src/controller/ods-combobox';
 
@@ -467,7 +468,7 @@ describe('ods-combobox behaviour', () => {
     describe('odsClear', () => {
       async function getInputValue(): Promise<string | number | null | undefined> {
         return await page.evaluate(() => {
-          return document.querySelector('ods-combobox')?.shadowRoot?.querySelector('ods-input')?.value;
+          return document.querySelector('ods-combobox')?.shadowRoot?.querySelector<OdsInput & HTMLElement>('ods-input')?.value;
         });
       }
 

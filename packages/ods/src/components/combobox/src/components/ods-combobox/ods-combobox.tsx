@@ -372,7 +372,12 @@ export class OdsCombobox implements OdsFormElement {
 
   private onInputClear(e: Event): void {
     e.stopImmediatePropagation();
-    this.clear();
+
+    if (!this.allowMultiple) {
+      this.odsClear.emit();
+      this.shouldUpdateSelection = true;
+      this.value = VALUE_DEFAULT_VALUE;
+    }
   }
 
   private onInputClick(): void {

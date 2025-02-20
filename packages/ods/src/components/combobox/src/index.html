@@ -59,9 +59,9 @@
     const defaultButtonClose = document.querySelector('#default-close');
     const defaultButtonOpen = document.querySelector('#default-open');
 
-    // defaultCombobox.addEventListener('odsFilter', (e) => {
-    //   console.log(e);
-    // });
+    defaultCombobox.addEventListener('odsChange', (e) => {
+      // console.log(e.detail);
+    });
 
     defaultButtonChangeValue.addEventListener('click', () => {
       // defaultCombobox.value = 'Dummy';

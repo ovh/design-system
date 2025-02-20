@@ -1,5 +1,6 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { type OdsComboboxChangeEventDetail } from '../../src';
+import { type OdsComboboxChangeEventDetail, type OdsComboboxItem } from '../../src';
+import { CREATE_NEW_ID } from '../../src/controller/ods-combobox';
 
 describe('ods-combobox behaviour', () => {
   let el: E2EElement;
@@ -125,6 +126,55 @@ describe('ods-combobox behaviour', () => {
           validity: {},
           value: 'value',
         });
+      });
+    });
+  });
+
+  describe('new entry', () => {
+    async function isCreateNewVisible(): Promise<boolean | undefined> {
+      return await page.evaluate((newElementId) => {
+        return document.querySelector('ods-combobox')?.shadowRoot?.querySelector<OdsComboboxItem & HTMLElement>(`#${newElementId}`)?.isVisible;
+      }, CREATE_NEW_ID);
+    }
+
+    describe('single', () => {
+      it('should add the add entry option if typed value is not found', async() => {
+        await setup('<ods-combobox><ods-combobox-item value="dummy">Dummy value</ods-combobox-item></ods-combobox>');
+        await openList();
+
+        expect(await isCreateNewVisible()).toBe(false);
+
+        await input.type('Zz', { delay: 200 });
+        await page.waitForChanges();
+
+        expect(await isCreateNewVisible()).toBe(true);
+      });
+    });
+
+    describe('multiple', () => {
+      it('should keep the add entry option every time typed value is not found', async() => {
+        await setup('<ods-combobox><ods-combobox-item value="dummy">Dummy value</ods-combobox-item></ods-combobox>');
+        await openList();
+
+        expect(await isOpen()).toBe(true);
+        expect(await isCreateNewVisible()).toBe(false);
+
+        await input.type('Zz', { delay: 200 });
+        await page.waitForChanges();
+
+        expect(await isOpen()).toBe(true);
+        expect(await isCreateNewVisible()).toBe(true);
+
+        await (await page.find(`ods-combobox >>> #${CREATE_NEW_ID}`)).click();
+        await page.waitForChanges();
+
+        expect(await isOpen()).toBe(false);
+
+        await input.type('Ww', { delay: 200 });
+        await page.waitForChanges();
+
+        expect(await isOpen()).toBe(true);
+        expect(await isCreateNewVisible()).toBe(true);
       });
     });
   });

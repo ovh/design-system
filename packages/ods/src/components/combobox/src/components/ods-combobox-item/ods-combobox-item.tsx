@@ -45,7 +45,7 @@ export class OdsComboboxItem {
   }
 
   render(): FunctionalComponent {
-    const isHidden = !this.isVisible || this.isSelected;
+    const isHidden = this.el.id === CREATE_NEW_ID ? !this.isVisible : !this.isVisible || this.isSelected;
 
     return (
       <Host

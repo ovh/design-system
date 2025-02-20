@@ -465,7 +465,13 @@ describe('ods-combobox behaviour', () => {
     });
 
     describe('odsClear', () => {
-      it('should send odsClear event and clear the input when pressing the clearable button', async() => {
+      async function getInputValue(): Promise<string | number | null | undefined> {
+        return await page.evaluate(() => {
+          return document.querySelector('ods-combobox')?.shadowRoot?.querySelector('ods-input')?.value;
+        });
+      }
+
+      it('should send odsClear event and clear the input when pressing the clearable button on single mode', async() => {
         const dummyValue = 'dummy value';
         await setup(`<ods-combobox is-clearable value="${dummyValue}"></ods-combobox>`);
         const odsClearSpy = await page.spyOnEvent('odsClear');
@@ -481,6 +487,31 @@ describe('ods-combobox behaviour', () => {
 
         expect(await el.getProperty('value')).toBeNull();
         expect(odsClearSpy).toHaveReceivedEventTimes(1);
+      });
+
+      it('should not send odsClear event but only clear the input when pressing the clearable button on multiple mode', async() => {
+        const dummyValue = 'dummy,value';
+        await setup(`<ods-combobox allow-multiple is-clearable value="${dummyValue}"></ods-combobox>`);
+        const odsClearSpy = await page.spyOnEvent('odsClear');
+
+        expect(await el.getProperty('value')).toBe(dummyValue);
+        expect(await getInputValue()).toBe('');
+
+        await page.keyboard.press('Tab', { delay: 100 });
+        await page.waitForChanges();
+        await page.keyboard.press('E', { delay: 100 });
+        await page.waitForChanges();
+
+        expect(await getInputValue()).toBe('E');
+
+        await page.keyboard.press('Tab', { delay: 100 });
+        await page.waitForChanges();
+        await page.keyboard.press('Enter', { delay: 100 });
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(dummyValue);
+        expect(await getInputValue()).toBeNull();
+        expect(odsClearSpy).toHaveReceivedEventTimes(0);
       });
     });
 

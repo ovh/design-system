@@ -76,7 +76,7 @@ function updateItemsFocus(items: (HTMLElement & OdsComboboxItem)[], currentIndex
 
   if (direction === 'down') {
     const nextVisibleIndex = items.findIndex((item, idx) => {
-      return item.isVisible && !item.isSelected && idx > currentIndex;
+      return item.isVisible && (!item.isSelected || item.id === CREATE_NEW_ID) && idx > currentIndex;
     });
 
     if (nextVisibleIndex > currentIndex) {
@@ -84,7 +84,7 @@ function updateItemsFocus(items: (HTMLElement & OdsComboboxItem)[], currentIndex
     }
   } else {
     const previousVisibleIndex = items.findLastIndex((item, idx) => {
-      return item.isVisible && !item.isSelected && idx < currentIndex;
+      return item.isVisible && (!item.isSelected || item.id === CREATE_NEW_ID) && idx < currentIndex;
     });
 
     if (previousVisibleIndex >= 0 && previousVisibleIndex < currentIndex) {

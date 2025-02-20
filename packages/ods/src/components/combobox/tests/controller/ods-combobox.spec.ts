@@ -1,5 +1,5 @@
-import { type OdsComboboxItem } from '../../src/components/ods-combobox-item/ods-combobox-item';
-import { getInitialValue, inlineSelection, inlineValue, isANewItem, splitValue, updateInternals, updateItemsFocus } from '../../src/controller/ods-combobox';
+import { type OdsComboboxItem } from '../../src';
+import { CREATE_NEW_ID, getInitialValue, inlineSelection, inlineValue, isANewItem, splitValue, updateInternals, updateItemsFocus } from '../../src/controller/ods-combobox';
 
 describe('ods-combobox controller', () => {
   beforeEach(jest.clearAllMocks);
@@ -207,6 +207,15 @@ describe('ods-combobox controller', () => {
         expect(dummyElements[3].isFocused).toBe(false);
         expect(dummyElements[4].isFocused).toBe(true);
       });
+
+      it('should return create new item index even if already selected', () => {
+        const dummyElements = [
+          { id: CREATE_NEW_ID, isFocused: false, isSelected: true, isVisible: true },
+          { isFocused: false, isSelected: false, isVisible: true },
+          { isFocused: false, isSelected: false, isVisible: true },
+        ] as (HTMLElement & OdsComboboxItem)[];
+        expect(updateItemsFocus(dummyElements, -1, 'down')).toBe(0);
+      });
     });
 
     describe('reset', () => {
@@ -253,6 +262,15 @@ describe('ods-combobox controller', () => {
         expect(dummyElements[2].isFocused).toBe(false);
         expect(dummyElements[3].isFocused).toBe(false);
         expect(dummyElements[4].isFocused).toBe(false);
+      });
+
+      it('should return create new item index even if already selected', () => {
+        const dummyElements = [
+          { id: CREATE_NEW_ID, isFocused: false, isSelected: true, isVisible: true },
+          { isFocused: true, isSelected: false, isVisible: true },
+          { isFocused: false, isSelected: false, isVisible: true },
+        ] as (HTMLElement & OdsComboboxItem)[];
+        expect(updateItemsFocus(dummyElements, 1, 'up')).toBe(0);
       });
     });
   });

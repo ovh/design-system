@@ -696,6 +696,7 @@ export class OdsCombobox implements OdsFormElement {
             'ods-combobox__search': true,
             'ods-combobox__search--disabled': this.isDisabled,
             'ods-combobox__search--error': this.hasError || !!this.isInvalid,
+            'ods-combobox__search--multiple': this.allowMultiple,
             'ods-combobox__search--read-only': this.isReadonly,
           }}
           ref={ (el?: HTMLElement) => el && (this.searchElement = el) }>

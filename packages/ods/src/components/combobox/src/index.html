@@ -24,7 +24,7 @@
 <!--  <p style="margin-bottom: 200px;">Default</p>-->
   <p>Default</p>
   <label for="default">My combobox</label>
-  <ods-combobox id="default" highlight-results>
+  <ods-combobox id="default" is-clearable>
     <ods-combobox-item value="chocolate">
       Chocolate
     </ods-combobox-item>
@@ -141,7 +141,7 @@
 <!--  </ods-combobox>-->
 
   <p>Group</p>
-  <ods-combobox id="group" value="dog" highlight-results allow-multiple>
+  <ods-combobox id="group" value="dog,chocolate" highlight-results allow-multiple is-clearable>
     <ods-combobox-group>
       <span slot="title">Flavours</span>
 

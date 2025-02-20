@@ -5,6 +5,8 @@
 @use '../ods-combobox-item/ods-combobox-item';
 
 $ods-combobox-border-size: 1px;
+$ods-combobox-horizontal-padding: 8px;
+$ods-combobox-vertical-padding: 4px;
 
 :host(.ods-combobox) {
   display: inline-block;
@@ -21,9 +23,11 @@ $ods-combobox-border-size: 1px;
 
 .ods-combobox {
   &__search {
+    $search: &;
+
     display: flex;
     flex-wrap: wrap;
-    column-gap: 4px;
+    gap: 4px;
     align-items: center;
     border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
     border-radius: var(--ods-border-radius-sm);
@@ -42,6 +46,19 @@ $ods-combobox-border-size: 1px;
 
     &--read-only {
       @include state.ods-is-readonly();
+    }
+
+    &--multiple {
+      padding: $ods-combobox-vertical-padding $ods-combobox-horizontal-padding;
+
+      #{$search}__input {
+        margin-right: -$ods-combobox-horizontal-padding;
+
+        &::part(input) {
+          padding: 0;
+          height: calc(input.$ods-input-input-height - calc(($ods-combobox-border-size * 2) + ($ods-combobox-vertical-padding * 2)));
+        }
+      }
     }
 
     &--bottom {
@@ -67,7 +84,6 @@ $ods-combobox-border-size: 1px;
 
       &::part(input) {
         border: 0;
-        height: calc(input.$ods-input-input-height - ($ods-combobox-border-size * 2));
 
         &:focus {
           outline: 0;

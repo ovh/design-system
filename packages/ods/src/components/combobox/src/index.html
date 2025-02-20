@@ -22,67 +22,67 @@
 <button>Focus</button>
 
 <!--  <p style="margin-bottom: 200px;">Default</p>-->
-  <p>Default</p>
-  <label for="default">My combobox</label>
-  <ods-combobox id="default" is-clearable>
-    <ods-combobox-item value="chocolate">
-      Chocolate
-    </ods-combobox-item>
-    <ods-combobox-item value="chocolate-with-nuts">
-      Chocolate with nuts
-    </ods-combobox-item>
-    <ods-combobox-item value="coconut">
-      Coconut
-    </ods-combobox-item>
-    <ods-combobox-item value="light-mint">
-      Light mint
-    </ods-combobox-item>
-    <ods-combobox-item value="mint">
-      Mint
-    </ods-combobox-item>
-    <ods-combobox-item value="strawberry">
-      Strawberry
-    </ods-combobox-item>
-    <ods-combobox-item value="vanilla">
-      Vanilla
-    </ods-combobox-item>
-    <ods-combobox-item value="white-chocolate">
-      White chocolate
-    </ods-combobox-item>
-  </ods-combobox>
-  <button id="default-change-value">Change value</button>
-  <button id="default-open">Open</button>
-  <button id="default-close">Close</button>
-  <script>
-    const defaultCombobox = document.querySelector('#default');
-    const defaultButtonChangeValue = document.querySelector('#default-change-value');
-    const defaultButtonClose = document.querySelector('#default-close');
-    const defaultButtonOpen = document.querySelector('#default-open');
+<!--  <p>Default</p>-->
+<!--  <label for="default">My combobox</label>-->
+<!--  <ods-combobox id="default" is-clearable>-->
+<!--    <ods-combobox-item value="chocolate">-->
+<!--      Chocolate-->
+<!--    </ods-combobox-item>-->
+<!--    <ods-combobox-item value="chocolate-with-nuts">-->
+<!--      Chocolate with nuts-->
+<!--    </ods-combobox-item>-->
+<!--    <ods-combobox-item value="coconut">-->
+<!--      Coconut-->
+<!--    </ods-combobox-item>-->
+<!--    <ods-combobox-item value="light-mint">-->
+<!--      Light mint-->
+<!--    </ods-combobox-item>-->
+<!--    <ods-combobox-item value="mint">-->
+<!--      Mint-->
+<!--    </ods-combobox-item>-->
+<!--    <ods-combobox-item value="strawberry">-->
+<!--      Strawberry-->
+<!--    </ods-combobox-item>-->
+<!--    <ods-combobox-item value="vanilla">-->
+<!--      Vanilla-->
+<!--    </ods-combobox-item>-->
+<!--    <ods-combobox-item value="white-chocolate">-->
+<!--      White chocolate-->
+<!--    </ods-combobox-item>-->
+<!--  </ods-combobox>-->
+<!--  <button id="default-change-value">Change value</button>-->
+<!--  <button id="default-open">Open</button>-->
+<!--  <button id="default-close">Close</button>-->
+<!--  <script>-->
+<!--    const defaultCombobox = document.querySelector('#default');-->
+<!--    const defaultButtonChangeValue = document.querySelector('#default-change-value');-->
+<!--    const defaultButtonClose = document.querySelector('#default-close');-->
+<!--    const defaultButtonOpen = document.querySelector('#default-open');-->
 
-    defaultCombobox.addEventListener('odsChange', (e) => {
-      // console.log(e.detail);
-    });
+<!--    defaultCombobox.addEventListener('odsChange', (e) => {-->
+<!--      // console.log(e.detail);-->
+<!--    });-->
 
-    defaultButtonChangeValue.addEventListener('click', () => {
-      // defaultCombobox.value = 'Dummy';
-      // defaultCombobox.clear();
-      // defaultCombobox.reset();
+<!--    defaultButtonChangeValue.addEventListener('click', () => {-->
+<!--      // defaultCombobox.value = 'Dummy';-->
+<!--      // defaultCombobox.clear();-->
+<!--      // defaultCombobox.reset();-->
 
-      if (defaultCombobox.hasAttribute('highlight-results')) {
-        defaultCombobox.removeAttribute('highlight-results');
-      } else {
-        defaultCombobox.setAttribute('highlight-results', 'true');
-      }
-    });
+<!--      if (defaultCombobox.hasAttribute('highlight-results')) {-->
+<!--        defaultCombobox.removeAttribute('highlight-results');-->
+<!--      } else {-->
+<!--        defaultCombobox.setAttribute('highlight-results', 'true');-->
+<!--      }-->
+<!--    });-->
 
-    defaultButtonClose.addEventListener('click', () => {
-      defaultCombobox.close();
-    });
+<!--    defaultButtonClose.addEventListener('click', () => {-->
+<!--      defaultCombobox.close();-->
+<!--    });-->
 
-    defaultButtonOpen.addEventListener('click', () => {
-      defaultCombobox.open();
-    });
-  </script>
+<!--    defaultButtonOpen.addEventListener('click', () => {-->
+<!--      defaultCombobox.open();-->
+<!--    });-->
+<!--  </script>-->
 
 <!--  <p>Disabled</p>-->
 <!--  <ods-combobox id="default" default-value="coconut" is-disabled>-->
@@ -202,39 +202,39 @@
     </ods-combobox-item>
   </ods-combobox>
 
-  <p>Custom Items</p>
-  <ods-combobox>
-    <ods-combobox-item value="ovh">
-      <div class="custom-item">
-        <img alt="logo"
-             height="50"
-             src="https://static-00.iconduck.com/assets.00/ovh-icon-2048x2048-l4c3izvg.png"
-             width="50" />
-        <div class="custom-item__content">
-          <span class="custom-item__content__title">OVH Cloud</span>
-          <span>OVH, legally OVH Groupe SA, is a French cloud computing company which offers VPS, dedicated servers and other web services. As of 2016 OVH owned the world's largest data center in surface area. As of 2019, it was the largest hosting provider in Europe, and the third largest in the world based on physical servers.</span>
-        </div>
-      </div>
-    </ods-combobox-item>
-  </ods-combobox>
-  <style>
-    .custom-item {
-      display: grid;
-      grid-template-columns: max-content 1fr;
-      column-gap: 8px;
-      padding: 8px;
-    }
+<!--  <p>Custom Items</p>-->
+<!--  <ods-combobox>-->
+<!--    <ods-combobox-item value="ovh">-->
+<!--      <div class="custom-item">-->
+<!--        <img alt="logo"-->
+<!--             height="50"-->
+<!--             src="https://static-00.iconduck.com/assets.00/ovh-icon-2048x2048-l4c3izvg.png"-->
+<!--             width="50" />-->
+<!--        <div class="custom-item__content">-->
+<!--          <span class="custom-item__content__title">OVH Cloud</span>-->
+<!--          <span>OVH, legally OVH Groupe SA, is a French cloud computing company which offers VPS, dedicated servers and other web services. As of 2016 OVH owned the world's largest data center in surface area. As of 2019, it was the largest hosting provider in Europe, and the third largest in the world based on physical servers.</span>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </ods-combobox-item>-->
+<!--  </ods-combobox>-->
+<!--  <style>-->
+<!--    .custom-item {-->
+<!--      display: grid;-->
+<!--      grid-template-columns: max-content 1fr;-->
+<!--      column-gap: 8px;-->
+<!--      padding: 8px;-->
+<!--    }-->
 
-    .custom-item__content {
-      display: flex;
-      flex-flow: column;
-      row-gap: 8px;
-    }
+<!--    .custom-item__content {-->
+<!--      display: flex;-->
+<!--      flex-flow: column;-->
+<!--      row-gap: 8px;-->
+<!--    }-->
 
-    .custom-item__content__title {
-      font-weight: bold;
-    }
-  </style>
+<!--    .custom-item__content__title {-->
+<!--      font-weight: bold;-->
+<!--    }-->
+<!--  </style>-->
 
 <!--  <p>Multiple</p>-->
 <!--  <ods-combobox id="default" default-value="coconut,mint" allow-multiple>-->

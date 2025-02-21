@@ -7,14 +7,11 @@ import { type OdsIconName } from '../../constants/icon-name';
   tag: 'ods-icon',
 })
 export class OdsIcon {
-  @Prop({ reflect: true }) public alt?: string = '';
   @Prop({ reflect: true }) public name!: OdsIconName;
 
   render(): FunctionalComponent {
     return (
-      <Host
-        class={ `ods-icon ods-icon__${this.name}` }
-        alt={ this.alt }>
+      <Host class={ `ods-icon ods-icon__${this.name}` }>
       </Host>
     );
   }

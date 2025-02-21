@@ -104,7 +104,7 @@ than updating using a local state.
 
 For example, figure out a toggle, outside of a form, that can be updated by clicking on it of from a button.
 
-<OdsIcon name="xmark" style={{ color: 'var(--ods-color-critical-500)' }} /> The following will cause unexpected behaviour as the `value` will get updated twice, back to its original state,
+<OdsIcon aria-label="The wrong way" name="xmark" style={{ color: 'var(--ods-color-critical-500)' }} /> The following will cause unexpected behaviour as the `value` will get updated twice, back to its original state,
 thus not triggering the internal mutation expected by the component:
 
 <Source code={`
@@ -130,7 +130,7 @@ return(
         dark="true"
         language="tsx" />
 
-<OdsIcon name="check" style={{ color: 'var(--ods-color-success-500)' }} /> To manage this double usage, it's best to separate your local state from the component and update it only on `odsChange` event, like:
+<OdsIcon aria-label="The right way" name="check" style={{ color: 'var(--ods-color-success-500)' }} /> To manage this double usage, it's best to separate your local state from the component and update it only on `odsChange` event, like:
 
 <Source code={`
 const [isToggled, setIsToggled] = useState(true);

@@ -205,12 +205,12 @@ export const Tooltip: StoryObj = {
       Description
     </span>
 
-    <ods-icon id="tooltip-trigger" name="circle-question"></ods-icon>
+    <ods-icon aria-labelledby="tooltip-demo" id="tooltip-trigger" name="circle-question"></ods-icon>
   </label>
 
   <ods-input id="form-field-input-tooltip" type="text" placeholder="Placeholder" clearable></ods-input>
 
-  <ods-tooltip trigger-id="tooltip-trigger">
+  <ods-tooltip id="tooltip-demo" trigger-id="tooltip-trigger">
     0/100
   </ods-tooltip>
 </ods-form-field>

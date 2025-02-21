@@ -1,4 +1,4 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Canvas, Meta, Source } from '@storybook/blocks';
 import * as IconStories from './icon.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
@@ -77,4 +77,48 @@ N/A
 
 <Heading label="Accessibility" level={ 2 } />
 
-All **Icons** must have a readable ARIA `aria-label` to be linked to.
+The accessibility of the Icon component must be considered during its implementation.
+Proper attributes should be used to ensure that icons are either perceivable by assistive technologies or correctly hidden when decorative.
+
+<Heading label="Best practices" level={ 3 } />
+
+<Heading label="Hiding decorative Icon" level={ 4 } />
+
+When the Icon is purely decorative and does not provide meaningful information to the user, it should be hidden from screen readers using `aria-hidden="true"`.
+
+Example of a decorative Icon:
+
+<Source code={`
+<ods-icon aria-hidden="true"
+          name="cloud">
+</ods-icon>
+`}
+        dark="true"
+        language="html" />
+
+The Icon is ignored by screen readers and does not create unnecessary noise.
+
+<Heading label="Providing meaningful information" level={ 4 } />
+
+If the Icon conveys essential information, it must be accompanied by an accessible label using `aria-label`.
+
+Example of an icon with accessible label:
+
+<Source code={`
+<ods-icon aria-label="home"
+          name="home">
+</ods-icon>
+`}
+        dark="true"
+        language="html" />
+
+Screen readers will announce "home", ensuring users understand the Icon's meaning.
+
+If the Icon is inside a button, prefer using `aria-label` on the button itself rather than on the icon.
+See <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> examples.
+
+<Heading label="Final check (for your specific implementation)" level={ 3 } />
+
+<Heading label="Keyboard navigation tests" level={ 4 } />
+
+Ensure that if the icon is interactive (e.g., triggers a tooltip), it is focusable and usable with a keyboard.

@@ -175,15 +175,6 @@ export default meta;
 
 export const Demo: StoryObj = {
   argTypes: orderControls({
-    alt: {
-      table: {
-        category: CONTROL_CATEGORY.accessibility,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
-      },
-      control: { type: 'text' },
-      description: 'Optional alternate text for the icon'
-    },
     name: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -195,7 +186,6 @@ export const Demo: StoryObj = {
   }),
   args: {
     name: ODS_ICON_NAME.home,
-    alt: 'home icon'
   },
 };
 
@@ -233,13 +223,20 @@ export const Overview: StoryObj = {
     layout: 'centered',
   },
   render: () => html`
-<ods-icon id="icon-overview" name="home" size="lg"></ods-icon>
+<ods-icon aria-hidden="true" id="icon-overview" name="home" size="lg"></ods-icon>
 <style>
   #icon-overview {
     font-size: 2rem;
     color: var(--ods-color-primary-500);
   }
 </style>
+  `,
+};
+
+export const Decorative: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+    <ods-icon aria-hidden="true" name="home"></ods-icon>
   `,
 };
 
@@ -250,10 +247,9 @@ export const Default: StoryObj = {
   `,
 };
 
-export const Name: StoryObj = {
+export const Informative: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-icon name="home"></ods-icon>
-<ods-icon name="plus"></ods-icon>
+    <ods-icon aria-label="Help" name="circle-question"></ods-icon>
   `,
 };

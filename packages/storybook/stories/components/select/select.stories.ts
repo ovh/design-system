@@ -237,7 +237,7 @@ export const CustomRenderer: StoryObj = {
 
     selectCustomRenderer.customRenderer = {
       item: (data) => {
-        return \`<div><ods-icon name="check"></ods-icon>&nbsp;\${data.text}</div>\`;
+        return \`<div><ods-icon aria-hidden="true" name="check"></ods-icon>&nbsp;\${data.text}</div>\`;
       },
       option: (data) => {
         return \`

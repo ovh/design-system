@@ -1,4 +1,4 @@
-import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { OdsBadge, OdsLink } from '@ovhcloud/ods-components/react';
 import { Meta, Source } from '@storybook/blocks';
 import * as IconStories from './icon.stories';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -10,11 +10,11 @@ import { TokenMigrationTable } from '../../../src/components/tokenMigrationTable
 
 <Heading label="Attributes changes" level={ 2 } />
 
-`ariaName` <OdsBadge color="information" label="Updated" size="sm" />
+`ariaName` <OdsBadge color="information" label="Removed" size="sm" />
 
-Has been updated.
+Has been removed.
 
-You can use the new `alt` attribute to obtain the same behavior.
+Use native <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label" label="aria-label" target="_blank" /> instead.
 
 `color` <OdsBadge color="critical" label="Removed" size="sm" />
 
@@ -54,7 +54,7 @@ Contrasted icon:
 
 <Source code={`
 <osds-icon contrasted
-          name="warning">
+           name="warning">
 </osds-icon>
 
 <!-- is now -->
@@ -76,7 +76,7 @@ Icon size:
 
 <Source code={`
 <osds-icon name="warning"
-          size="xl">
+           size="xl">
 </osds-icon>
 
 <!-- is now -->

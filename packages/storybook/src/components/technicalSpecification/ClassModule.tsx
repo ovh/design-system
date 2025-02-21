@@ -85,7 +85,8 @@ const ClassModule = ({ module, message }: Props) => {
                     <td className={ styles['class-module__properties__body__is-required'] }>
                       {
                         isRequired(property)
-                          ? <OdsIcon className={ styles['class-module__properties__body__is-required--required'] }
+                          ? <OdsIcon aria-label="Required"
+                                     className={ styles['class-module__properties__body__is-required--required'] }
                                      name={ ODS_ICON_NAME.check } />
                           : '-'
                       }

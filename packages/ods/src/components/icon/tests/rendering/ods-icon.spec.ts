@@ -1,5 +1,4 @@
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
 import { OdsIcon } from '../../src';
 
 describe('ods-icon rendering', () => {
@@ -14,22 +13,6 @@ describe('ods-icon rendering', () => {
 
     root = page.root;
   }
-
-  describe('alt', () => {
-    it('should be reflected', async() => {
-      const dummyValue = 'dummy alt';
-
-      await setup(`<ods-icon alt="${dummyValue}"></ods-icon>`);
-
-      expect(root?.getAttribute('alt')).toBe(dummyValue);
-    });
-
-    it('should render with expected default value', async() => {
-      await setup('<ods-icon></ods-icon>');
-
-      expect(root?.getAttribute('alt')).toBe('');
-    });
-  });
 
   describe('name', () => {
     it('should be reflected', async() => {

@@ -267,7 +267,38 @@ export const DemoMultiple: StoryObj = {
 export const Clearable: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-combobox is-clearable>
+<label for="combobox-clearable-single">Single</label>
+<ods-combobox id="combobox-clearable-single" is-clearable>
+  <ods-combobox-item value="chocolate">
+    Chocolate
+  </ods-combobox-item>
+  <ods-combobox-item value="chocolate-with-nuts">
+    Chocolate with nuts
+  </ods-combobox-item>
+  <ods-combobox-item value="coconut">
+    Coconut
+  </ods-combobox-item>
+  <ods-combobox-item value="light-mint">
+    Light mint
+  </ods-combobox-item>
+  <ods-combobox-item value="mint">
+    Mint
+  </ods-combobox-item>
+  <ods-combobox-item value="strawberry">
+    Strawberry
+  </ods-combobox-item>
+  <ods-combobox-item value="vanilla">
+    Vanilla
+  </ods-combobox-item>
+  <ods-combobox-item value="white-chocolate">
+    White chocolate
+  </ods-combobox-item>
+</ods-combobox>
+
+<br /><br />
+
+<label for="combobox-clearable-multiple">Multiple</label>
+<ods-combobox allow-multiple id="combobox-clearable-multiple" is-clearable>
   <ods-combobox-item value="chocolate">
     Chocolate
   </ods-combobox-item>

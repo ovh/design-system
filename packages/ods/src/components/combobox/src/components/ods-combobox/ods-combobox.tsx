@@ -15,6 +15,7 @@ type ResultElement = HTMLElement & OdsComboboxItem & { groupId?: string };
 type ResultGroup = HTMLElement & OdsComboboxGroup;
 
 const FOCUSED_CLASS = 'ods-combobox__search--focused';
+const HIGHLIGHT_CLASS = 'ods-combobox-item--highlighted';
 
 @Component({
   formAssociated: true,
@@ -336,7 +337,7 @@ export class OdsCombobox implements OdsFormElement {
       });
 
       this.markInstance?.mark(value, {
-        className: 'ods-combobox-item--highlighted',
+        className: HIGHLIGHT_CLASS,
         element: 'span',
       });
 
@@ -635,7 +636,10 @@ export class OdsCombobox implements OdsFormElement {
 
     if (isANewItem(this.inputElement?.value, this.resultElements, this.currentSelections)) {
       this.createNewElement.value = this.inputElement?.value || '';
-      this.createNewElement.innerText = `${this.addNewElementLabel} ${this.inputElement?.value}`;
+
+      this.createNewElement.innerHTML = this.highlightResults
+        ? `${this.addNewElementLabel} <span class="${HIGHLIGHT_CLASS}">${this.inputElement?.value}</span>`
+        : `${this.addNewElementLabel} ${this.inputElement?.value}`;
 
       if (this.resultElements.length && this.resultElements[0].id !== CREATE_NEW_ID) {
         this.createNewElement.isVisible = true;
@@ -773,6 +777,7 @@ export class OdsCombobox implements OdsFormElement {
           role="listbox"
           tabindex="-1">
           <ods-combobox-item
+            class="ods-combobox__results__new"
             id={ CREATE_NEW_ID }
             isVisible={ false }
             ref={ (el: unknown) => this.createNewElement = el as ResultElement }

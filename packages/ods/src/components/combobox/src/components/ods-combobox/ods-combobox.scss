@@ -125,6 +125,11 @@ $ods-combobox-vertical-padding: 4px;
       border-radius: var(--ods-border-radius-sm) var(--ods-border-radius-sm) 0 0;
     }
 
+    &__new {
+      box-sizing: border-box;
+      border-bottom: solid $ods-combobox-border-size var(--ods-color-neutral-100);;
+    }
+
     &__empty {
       display: flex;
       align-items: center;

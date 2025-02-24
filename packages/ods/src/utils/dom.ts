@@ -7,6 +7,15 @@ async function copyToClipboard(value?: string): Promise<void> {
   return navigator.clipboard.writeText(value || '');
 }
 
+function escapeHtml(unsafe: string): string {
+  return (unsafe || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function getRandomHTMLId(): string {
   return `id-${Date.now()}-${Math.random().toString(36).replace('0.', '')}`;
 }
@@ -66,6 +75,7 @@ function submitFormOnEnter(event: KeyboardEvent, form: HTMLFormElement | null): 
 
 export {
   copyToClipboard,
+  escapeHtml,
   getRandomHTMLId,
   isElementInContainer,
   isTargetInElement,

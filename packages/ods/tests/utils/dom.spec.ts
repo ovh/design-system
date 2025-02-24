@@ -1,4 +1,4 @@
-import { copyToClipboard, getRandomHTMLId, isElementInContainer, isTargetInElement, setInternalsValidityFromHtmlElement, setInternalsValidityFromOdsComponent, submitFormOnClick, submitFormOnEnter } from '../../src/utils/dom';
+import { copyToClipboard, escapeHtml, getRandomHTMLId, isElementInContainer, isTargetInElement, setInternalsValidityFromHtmlElement, setInternalsValidityFromOdsComponent, submitFormOnClick, submitFormOnEnter } from '../../src/utils/dom';
 
 describe('utils dom', () => {
   beforeEach(jest.clearAllMocks);
@@ -22,6 +22,26 @@ describe('utils dom', () => {
       await copyToClipboard(dummyValue);
 
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith(dummyValue);
+    });
+  });
+
+  describe('escapeHtml', () => {
+    it('should return an empty string if no value passed', () => {
+      // @ts-ignore for test purpose
+      expect(escapeHtml()).toBe('');
+      // @ts-ignore for test purpose
+      expect(escapeHtml(undefined)).toBe('');
+      // @ts-ignore for test purpose
+      expect(escapeHtml(null)).toBe('');
+    });
+
+    it('should return same string if nothing to escape', () => {
+      expect(escapeHtml('')).toBe('');
+      expect(escapeHtml('Hello')).toBe('Hello');
+    });
+
+    it('should return an escaped value', () => {
+      expect(escapeHtml('<h1>Hello World</h1>')).toBe('&lt;h1&gt;Hello World&lt;/h1&gt;');
     });
   });
 

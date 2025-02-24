@@ -2,7 +2,7 @@ import { AttachInternals, Component, Element, Event, type EventEmitter, type Fun
 import Mark from 'mark.js';
 import { type OdsFormElement } from '../../../../../types';
 import { debounce } from '../../../../../utils/debounce';
-import { isElementInContainer, isTargetInElement, submitFormOnEnter } from '../../../../../utils/dom';
+import { escapeHtml, isElementInContainer, isTargetInElement, submitFormOnEnter } from '../../../../../utils/dom';
 import { getElementPosition } from '../../../../../utils/overlay';
 import { escapeRegExp } from '../../../../../utils/regExp';
 import { type OdsInput } from '../../../../input/src';
@@ -636,11 +636,12 @@ export class OdsCombobox implements OdsFormElement {
     }
 
     if (isANewItem(this.inputElement?.value, this.resultElements, this.currentSelections)) {
+      const templateValue = escapeHtml(this.inputElement?.value || '');
       this.createNewElement.value = this.inputElement?.value || '';
 
       this.createNewElement.innerHTML = this.highlightResults
-        ? `${this.addNewElementLabel} <span class="${HIGHLIGHT_CLASS}">${this.inputElement?.value}</span>`
-        : `${this.addNewElementLabel} ${this.inputElement?.value}`;
+        ? `${this.addNewElementLabel} <span class="${HIGHLIGHT_CLASS}">${templateValue}</span>`
+        : `${this.addNewElementLabel} ${templateValue}`;
 
       if (this.resultElements.length && this.resultElements[0].id !== CREATE_NEW_ID) {
         this.createNewElement.isVisible = true;

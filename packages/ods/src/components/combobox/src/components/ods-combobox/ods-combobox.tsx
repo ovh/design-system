@@ -4,6 +4,7 @@ import { type OdsFormElement } from '../../../../../types';
 import { debounce } from '../../../../../utils/debounce';
 import { isElementInContainer, isTargetInElement, submitFormOnEnter } from '../../../../../utils/dom';
 import { getElementPosition } from '../../../../../utils/overlay';
+import { escapeRegExp } from '../../../../../utils/regExp';
 import { type OdsInput } from '../../../../input/src';
 import { ODS_COMBOBOX_STRATEGY, type OdsComboboxStrategy } from '../../constants/combobox-strategy';
 import { CREATE_NEW_ID, type OdsComboboxSelection, VALUE_DEFAULT_VALUE, getInitialValue, inlineSelection, inlineValue, isANewItem, splitValue, updateInternals, updateItemsFocus } from '../../controller/ods-combobox';
@@ -318,7 +319,7 @@ export class OdsCombobox implements OdsFormElement {
     this.markInstance?.unmark();
 
     if (value) {
-      const filterRegex = new RegExp(`.*${value}.*`, 'i');
+      const filterRegex = new RegExp(`.*${escapeRegExp(value)}.*`, 'i');
       let noMatch = true;
 
       this.resultElements?.forEach((resultElement) => {

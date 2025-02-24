@@ -189,6 +189,24 @@ export const Demo: StoryObj = {
   },
 };
 
+export const AccessibilityDecorative: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-icon aria-hidden="true"
+          name="cloud">
+</ods-icon>
+  `,
+};
+
+export const AccessibilityInformative: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-icon aria-label="home"
+          name="home">
+</ods-icon>
+  `,
+};
+
 export const All: StoryObj = {
   render: (args) => {
     const regexp = new RegExp(args.search)

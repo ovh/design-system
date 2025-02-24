@@ -1,4 +1,4 @@
-import { Canvas, Meta, Source } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
 import { OdsIcon } from '@ovhcloud/ods-components/react';
 import * as IconStories from './icon.stories';
@@ -90,13 +90,7 @@ When the Icon is purely decorative and does not provide meaningful information t
 
 Example of a decorative Icon:
 
-<Source code={`
-<ods-icon aria-hidden="true"
-          name="cloud">
-</ods-icon>
-`}
-        dark="true"
-        language="html" />
+<Canvas of={ IconStories.AccessibilityDecorative } sourceState="shown" />
 
 <OdsIcon ariaHidden
          name={ ODS_ICON_NAME.circleCheck }
@@ -108,13 +102,7 @@ If the Icon conveys essential information, it must be accompanied by an accessib
 
 Example of an icon with accessible label:
 
-<Source code={`
-<ods-icon aria-label="home"
-          name="home">
-</ods-icon>
-`}
-        dark="true"
-        language="html" />
+<Canvas of={ IconStories.AccessibilityInformative } sourceState="shown" />
 
 <OdsIcon ariaHidden
          name={ ODS_ICON_NAME.circleCheck }

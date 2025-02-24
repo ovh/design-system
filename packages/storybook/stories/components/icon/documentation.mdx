@@ -1,4 +1,6 @@
 import { Canvas, Meta, Source } from '@storybook/blocks';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
 import * as IconStories from './icon.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
@@ -96,7 +98,9 @@ Example of a decorative Icon:
         dark="true"
         language="html" />
 
-The Icon is ignored by screen readers and does not create unnecessary noise.
+<OdsIcon ariaHidden
+         name={ ODS_ICON_NAME.circleCheck }
+         style={{ color: 'var(--ods-color-success-500)' }} /> The Icon is ignored by screen readers and does not create unnecessary noise.
 
 <Heading label="Providing meaningful information" level={ 4 } />
 
@@ -112,7 +116,9 @@ Example of an icon with accessible label:
         dark="true"
         language="html" />
 
-Screen readers will announce "home", ensuring users understand the Icon's meaning.
+<OdsIcon ariaHidden
+         name={ ODS_ICON_NAME.circleCheck }
+         style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "home", ensuring users understand the Icon's meaning.
 
 If the Icon is inside a button, prefer using `aria-label` on the button itself rather than on the icon.
 See <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> examples.

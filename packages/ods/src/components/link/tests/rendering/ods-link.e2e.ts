@@ -1,5 +1,4 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('ods-link rendering', () => {
   let aElement: E2EElement;
@@ -11,7 +10,7 @@ describe('ods-link rendering', () => {
     page = await newE2EPage();
 
     await page.setContent(content);
-    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+    await page.evaluate(() => document.body.style.setProperty('margin', '0'));
 
     if (customStyle) {
       await page.addStyleTag({ content: customStyle });
@@ -78,5 +77,4 @@ describe('ods-link rendering', () => {
     expect(el.getAttribute('color')).toBe('primary');
     expect(aElement.classList.contains('ods-link__link--primary')).toBe(true);
   });
-
 });

@@ -1,4 +1,6 @@
 import { Canvas, Meta } from '@storybook/blocks';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
 import * as LinkStories from './link.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
@@ -81,10 +83,58 @@ On hover, **Link** is underlined and its color changes.
 
 When users clicks anywhere on the **Link**, even its optional <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } />, they are redirected to the expected page or section.
 
+<Heading label="Navigation" level={ 2 } />
+
+While **Link** has focus, users can press `Enter` key to open it.
+
 <Heading label="Variation" level={ 2 } />
 
 N/A
 
 <Heading label="Accessibility" level={ 2 } />
 
-While **Link** has focus, users can press `Enter` key to open it.
+The accessibility of the **Link** component must be carefully considered during its implementation.
+
+<Heading label="Best practices" level={ 3 } />
+
+<Heading label="Icon-only Link" level={ 4 } />
+
+If a **Link** is represented only by an Icon, it must have an explicit accessible label to provide context about its destination or action.
+
+Example of an icon-only **Link** with `aria-label`:
+
+<Canvas of={ LinkStories.AvailabilityIconOnly } sourceState="shown" />
+
+<OdsIcon ariaHidden
+         name={ ODS_ICON_NAME.circleCheck }
+         style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "Link, Go to homepage".
+
+<Heading label="Link opening in a new tab" level={ 4 } />
+
+When a **Link** opens in a new tab (`target="_blank"`), users should be informed to avoid confusion. This can be done by adding a visual indicator (e.g., ODS Icon: "external") and using `aria-label` to provide context.
+
+Example of an external **Link**:
+
+<Canvas of={ LinkStories.AvailabilityExternalLink } sourceState="shown" />
+
+<OdsIcon ariaHidden
+         name={ ODS_ICON_NAME.circleCheck }
+         style={{ color: 'var(--ods-color-success-500)' }} /> The screen reader will announce "Link, Visit Example (opens in a new tab)".
+
+<Heading label="Downloadable files" level={ 4 } />
+
+If a **Link** points to a file download, it should include file type and size information to set user expectations.
+
+Example of download **Links** with context:
+
+<Canvas of={ LinkStories.AvailabilityDownloadLink1 } sourceState="shown" />
+
+<OdsIcon ariaHidden
+         name={ ODS_ICON_NAME.circleCheck }
+         style={{ color: 'var(--ods-color-success-500)' }} /> The screen reader will announce "Link, Download WCAG20 Guidelines (PDF, 481 KB)".
+
+<Canvas of={ LinkStories.AvailabilityDownloadLink2 } sourceState="shown" />
+
+<OdsIcon ariaHidden
+         name={ ODS_ICON_NAME.circleCheck }
+         style={{ color: 'var(--ods-color-success-500)' }} /> The screen reader will announce "Link, WCAG20 Guidelines, Download WCAG20 Guidelines (PDF, 481 KB)", ensuring users know they are downloading a file.

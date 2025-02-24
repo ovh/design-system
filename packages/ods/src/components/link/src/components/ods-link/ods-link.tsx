@@ -31,22 +31,25 @@ export class OdsLink {
   render(): FunctionalComponent {
     return (
       <Host class="ods-link">
-        <a class={{
-          'ods-link__link': true,
-          'ods-link__link--disabled': this.isDisabled ?? false,
-          [`ods-link__link--${this.color}`]: true,
-          [`ods-link__link--icon-${this.iconAlignment}`]: true,
-        }}
-        download={ this.download }
-        href={ this.href }
-        part="link"
-        referrerPolicy={ this.referrerpolicy }
-        rel={ this.rel }
-        tabindex={ this.isDisabled ? -1 : 0 }
-        target={ this.target }>
+        <a
+          class={{
+            'ods-link__link': true,
+            'ods-link__link--disabled': this.isDisabled ?? false,
+            [`ods-link__link--${this.color}`]: true,
+            [`ods-link__link--icon-${this.iconAlignment}`]: true,
+          }}
+          download={ this.download }
+          href={ this.href }
+          part="link"
+          referrerPolicy={ this.referrerpolicy }
+          rel={ this.rel }
+          tabindex={ this.isDisabled ? -1 : 0 }
+          target={ this.target }>
           {
             !!this.label &&
-            <span part="label" class="ods-link__link__label">
+            <span
+              class="ods-link__link__label"
+              part="label">
               { this.label }
             </span>
           }
@@ -60,7 +63,9 @@ export class OdsLink {
                 <span>&#8203;</span>
               }
 
-              <ods-icon name={ this.icon }>
+              <ods-icon
+                aria-hidden="true"
+                name={ this.icon }>
               </ods-icon>
             </div>
           }

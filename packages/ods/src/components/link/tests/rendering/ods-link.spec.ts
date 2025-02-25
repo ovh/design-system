@@ -1,5 +1,4 @@
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
 import { ODS_LINK_COLOR, ODS_LINK_ICON_ALIGNMENT, OdsLink } from '../../src';
 
 describe('ods-link rendering', () => {
@@ -29,11 +28,11 @@ describe('ods-link rendering', () => {
     it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
-      expect(root?.getAttribute('color')).toBe( ODS_LINK_COLOR.primary);
+      expect(root?.getAttribute('color')).toBe(ODS_LINK_COLOR.primary);
     });
   });
 
-  describe('disabled', () => {
+  describe('isDisabled', () => {
     it('should be reflected', async() => {
       await setup(`<ods-link is-disabled></ods-link>`);
 
@@ -43,7 +42,7 @@ describe('ods-link rendering', () => {
     it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
-      expect(root?.getAttribute('is-disabled')).toBe(null);
+      expect(root?.getAttribute('is-disabled')).toBeNull();
     });
   });
 
@@ -59,7 +58,7 @@ describe('ods-link rendering', () => {
     it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
-      expect(root?.getAttribute('download')).toBe(null);
+      expect(root?.getAttribute('download')).toBeNull();
     });
   });
 
@@ -75,7 +74,7 @@ describe('ods-link rendering', () => {
     it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
-      expect(root?.getAttribute('href')).toBe(null);
+      expect(root?.getAttribute('href')).toBeNull();
     });
   });
 
@@ -93,7 +92,7 @@ describe('ods-link rendering', () => {
     it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
-      expect(root?.getAttribute('icon')).toBe(null);
+      expect(root?.getAttribute('icon')).toBeNull();
       expect(iconElement).not.toBeDefined();
     });
   });
@@ -126,7 +125,7 @@ describe('ods-link rendering', () => {
     it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
-      expect(root?.getAttribute('label')).toBe(null);
+      expect(root?.getAttribute('label')).toBeNull();
     });
   });
 
@@ -142,7 +141,7 @@ describe('ods-link rendering', () => {
     it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
-      expect(root?.getAttribute('referrerpolicy')).toBe(null);
+      expect(root?.getAttribute('referrerpolicy')).toBeNull();
     });
   });
 
@@ -158,7 +157,7 @@ describe('ods-link rendering', () => {
     it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
-      expect(root?.getAttribute('rel')).toBe(null);
+      expect(root?.getAttribute('rel')).toBeNull();
     });
   });
 
@@ -174,7 +173,7 @@ describe('ods-link rendering', () => {
     it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
-      expect(root?.getAttribute('target')).toBe(null);
+      expect(root?.getAttribute('target')).toBeNull();
     });
   });
 });

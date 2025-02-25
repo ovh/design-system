@@ -111,4 +111,32 @@ describe('ods-modal navigation', () => {
 
     expect(closeSpy).toHaveReceivedEventTimes(1);
   });
+
+  it('shoud close the modal on Escape press', async() => {
+    await setup('<ods-modal is-open is-dismissible="true"><ods-text>Hello, world!</ods-text></ods-modal>');
+
+    await page.keyboard.press('Escape');
+    await waitForAnimationEnd();
+
+    const isModalOpen = await page.evaluate(() => {
+      const dialogElement = document.querySelector('ods-modal')?.shadowRoot?.querySelector('dialog');
+      return dialogElement?.hasAttribute('open');
+    });
+
+    expect(isModalOpen).toBe(false);
+  });
+
+  it('shoud not close the modal on Escape press', async() => {
+    await setup('<ods-modal is-open is-dismissible="false"><ods-text>Hello, world!</ods-text></ods-modal>');
+
+    await page.keyboard.press('Escape');
+    await waitForAnimationEnd();
+
+    const isModalOpen = await page.evaluate(() => {
+      const dialogElement = document.querySelector('ods-modal')?.shadowRoot?.querySelector('dialog');
+      return dialogElement?.hasAttribute('open');
+    });
+
+    expect(isModalOpen).toBe(true);
+  });
 });

@@ -1,4 +1,6 @@
 import { Canvas, Meta } from '@storybook/blocks';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
 import * as SpinnerStories from './spinner.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
@@ -68,4 +70,48 @@ N/A
 
 <Heading label="Accessibility" level={ 2 } />
 
-User is being notified of its loading based on the ARIA `live` property.
+The **Spinner** component does not automatically provide enough context for assistive technologies.
+To ensure accessibility, additional attributes must be applied to the container that holds the loading content.
+
+<Heading label="Best practices" level={ 3 } />
+
+<Heading label="Indicating loading state with aria-busy and aria-live" level={ 4 } />
+
+The **Spinner** itself does not convey the loading state. This responsibility falls on the container where content is being loaded.
+
+Example of wrapping the **Spinner** in a loading container:
+
+<Canvas of={ SpinnerStories.AvailabilityContainer } sourceState="shown" />
+
+What happens ?
+
+- `aria-busy="true"` informs assistive technologies that content is being updated.
+- `aria-live= "polite"` ensures that the loading message is announced when necessary without interrupting the user.
+
+<OdsIcon ariaHidden
+         name={ ODS_ICON_NAME.circleCheck }
+         style={{ color: 'var(--ods-color-success-500)' }} /> This approach ensures that users with assistive technologies understand when loading starts and ends.
+
+<OdsIcon ariaHidden
+         name={ ODS_ICON_NAME.circleInfo }
+         style={{ color: 'var(--ods-color-information-500)' }} /> Once the content is loaded, `aria-busy` should be set to false.
+
+<Heading label="Linking the Spinner to a loading description" level={ 4 } />
+
+If the **Spinner** is associated with a specific loading action, it should be explicitly labeled using `aria-label` or `aria-labelledby`.
+
+Example of using `aria-label` for context:
+
+<Canvas of={ SpinnerStories.AvailabilityAriaLabel } sourceState="shown" />
+
+<OdsIcon ariaHidden
+         name={ ODS_ICON_NAME.circleCheck }
+         style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "Loading user profile, <...>, progress indicator".
+
+Example of using `aria-labelledby` for context:
+
+<Canvas of={ SpinnerStories.AvailabilityAriaLabelledby } sourceState="shown" />
+
+<OdsIcon ariaHidden
+         name={ ODS_ICON_NAME.circleCheck }
+         style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "Loading user profile, <...>, progress indicator".

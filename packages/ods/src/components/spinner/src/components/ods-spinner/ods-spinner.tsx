@@ -1,9 +1,6 @@
-import type { OdsSpinnerColor } from '../../constants/spinner-color';
-import type { OdsSpinnerSize } from '../../constants/spinner-size';
-import type { FunctionalComponent } from '@stencil/core';
-import { Component, Host, Prop, h } from '@stencil/core';
-import { ODS_SPINNER_COLOR } from '../../constants/spinner-color';
-import { ODS_SPINNER_SIZE } from '../../constants/spinner-size';
+import { Component, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
+import { ODS_SPINNER_COLOR, type OdsSpinnerColor } from '../../constants/spinner-color';
+import { ODS_SPINNER_SIZE, type OdsSpinnerSize } from '../../constants/spinner-size';
 
 @Component({
   shadow: true,
@@ -20,6 +17,7 @@ export class OdsSpinner {
         class="ods-spinner"
         role="progressbar">
         <div
+          aria-hidden="true"
           class={{
             'ods-spinner__container': true,
             [`ods-spinner__container--${this.color}`]: !!this.color,

@@ -1,5 +1,4 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
 import { ODS_SPINNER_SIZE } from '../../src';
 
 describe('ods-spinner rendering', () => {
@@ -11,7 +10,7 @@ describe('ods-spinner rendering', () => {
     page = await newE2EPage();
 
     await page.setContent(content);
-    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+    await page.evaluate(() => document.body.style.setProperty('margin', '0'));
 
     if (customStyle) {
       await page.addStyleTag({ content: customStyle });

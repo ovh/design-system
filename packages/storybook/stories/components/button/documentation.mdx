@@ -1,4 +1,6 @@
 import { Canvas, Meta } from '@storybook/blocks';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
 import * as ButtonStories from './button.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
@@ -76,6 +78,10 @@ When in disabled state, it is impossible to focus or click on it. A "disabled" c
 
 An <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } /> can be displayed on the left or right of the **Button** label content.
 
+<Heading label="Navigation" level={ 2 } />
+
+When focusing the **Button**, pressing `Enter` or `Space` keys will trigger it.
+
 <Heading label="Variation" level={ 2 } />
 
 <Heading label="Color" level={ 3 } />
@@ -98,4 +104,42 @@ An <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.
 
 <Heading label="Accessibility" level={ 2 } />
 
-When focusing the **Button**, pressing `Enter` or `Space` keys will trigger it.
+The accessibility of the **Button** component must be carefully considered during its implementation.
+
+<Heading label="Best practices" level={ 3 } />
+
+<Heading label="Always provide an explicit label" level={ 4 } />
+
+**Button** should always has a clear and descriptive label to indicate their purpose.
+
+Example:
+
+<Canvas of={ ButtonStories.AccessibilityDefault } sourceState="shown" />
+
+<OdsIcon ariaHidden
+         name={ ODS_ICON_NAME.circleCheck }
+         style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "My button, button".
+
+<Heading label="Icon Button" level={ 4 } />
+
+If a **Button** contains only an <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } />, it must include an `aria-label` to provide context.
+
+Example of an icon **Button** with `aria-label`:
+
+<Canvas of={ ButtonStories.AccessibilityIconOnly } sourceState="shown" />
+
+<OdsIcon ariaHidden
+         name={ ODS_ICON_NAME.circleCheck }
+         style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "Clear, button".
+
+<Heading label="Using aria-labelledby for additional context" level={ 4 } />
+
+When a **Button** is associated with an existing label, content is read by screen readers when the **Button** receives focus.
+
+Example:
+
+<Canvas of={ ButtonStories.AccessibilityLabelledby } sourceState="shown" />
+
+<OdsIcon ariaHidden
+         name={ ODS_ICON_NAME.circleCheck }
+         style={{ color: 'var(--ods-color-success-500)' }} /> When the **Button** is focused, the screen reader should announce "Filter your search results, button".

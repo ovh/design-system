@@ -135,6 +135,41 @@ export const Demo: StoryObj = {
   },
 };
 
+export const AccessibilityDefault: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-button label="My button"></ods-button>
+  `,
+};
+
+export const AccessibilityIconOnly: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-button aria-label="Clear"
+            icon="xmark" >
+</ods-button>
+  `,
+};
+
+export const AccessibilityLabelledby: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-button aria-labelledby="filter-btn"
+            icon="filter">
+</ods-button>
+<span id="filter-btn">Filter your search results</span>
+  `,
+};
+
 export const Overview: StoryObj = {
   tags: ['isHidden'],
   parameters: {

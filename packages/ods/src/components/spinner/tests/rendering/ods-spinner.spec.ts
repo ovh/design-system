@@ -1,5 +1,4 @@
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
 import { ODS_SPINNER_COLOR, ODS_SPINNER_SIZE, OdsSpinner } from '../../src';
 
 describe('ods-spinner rendering', () => {

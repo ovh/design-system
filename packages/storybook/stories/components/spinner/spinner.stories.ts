@@ -62,6 +62,40 @@ export const Demo: StoryObj = {
   },
 };
 
+export const AvailabilityAriaLabel: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-spinner aria-label="Loading user profile"></ods-spinner>
+  `,
+};
+
+export const AvailabilityAriaLabelledby: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-spinner aria-labelledby="loading-text"></ods-spinner>
+<span id="loading-text">Loading user profile</span>
+  `,
+};
+
+export const AvailabilityContainer: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<div aria-busy="true" aria-live="polite">
+  <ods-spinner></ods-spinner>
+  <span>Loading data</span>
+</div>
+  `,
+};
+
 export const Overview: StoryObj = {
   tags: ['isHidden'],
   parameters: {

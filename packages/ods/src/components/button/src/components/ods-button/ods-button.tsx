@@ -37,6 +37,10 @@ export class OdsButton {
   render(): FunctionalComponent {
     return (
       <Host
+        {...(this.isLoading ? {
+          'aria-busy': 'true',
+          'aria-live': 'polite',
+        } : {})}
         class={`
           ods-button
           ods-button--${this.size}
@@ -65,6 +69,7 @@ export class OdsButton {
           {
             !!this.icon &&
             <ods-icon
+              aria-hidden="true"
               class="ods-button__button__icon"
               name={ this.icon }>
             </ods-icon>

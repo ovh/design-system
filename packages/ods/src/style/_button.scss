@@ -32,20 +32,23 @@ $ods-button-size-md: 40px;
   @if $size == 'xs' {
     grid-column-gap: 6px;
     border-radius: $ods-button-border-radius-xs;
-    padding: 6px;
+    padding: 5px;
     min-width: $ods-button-size-xs;
     min-height: $ods-button-size-xs;
+    line-height: 1;
     font-size: 0.75rem;
   } @else if $size == 'sm' {
     grid-column-gap: 6px;
-    padding: 6px;
+    padding: 5px;
     min-width: $ods-button-size-sm;
     min-height: $ods-button-size-sm;
+    line-height: 1.15;
   } @else if $size == 'md' {
     grid-column-gap: 8px;
-    padding: 8px;
+    padding: 7px;
     min-width: $ods-button-size-md;
     min-height: $ods-button-size-md;
+    line-height: 1.15;
   }
 }
 
@@ -104,7 +107,7 @@ $ods-button-size-md: 40px;
 }
 
 @mixin ods-button-variant-ghost($color) {
-  border: 0;
+  border: 1px solid transparent;
 
   &:disabled {
     background-color: inherit;

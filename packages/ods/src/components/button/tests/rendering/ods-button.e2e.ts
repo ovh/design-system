@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { ODS_BUTTON_SIZE } from '../../src';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../src';
 
 describe('ods-button rendering', () => {
   let button: E2EElement;
@@ -91,6 +91,89 @@ describe('ods-button rendering', () => {
       expect(smButtonHeight).toBeGreaterThan(xsButtonHeight);
       expect(mdButtonHeight).toBeGreaterThan(xsButtonHeight);
       expect(mdButtonHeight).toBeGreaterThan(smButtonHeight);
+    });
+  });
+
+  describe('variants', () => {
+    describe('size xs', () => {
+      it('should have the same height for all variants at size xs', async() => {
+        await setup(`
+        <div>
+          <ods-button size="${ODS_BUTTON_SIZE.xs}" variant="${ODS_BUTTON_VARIANT.default}" label="Button"></ods-button>
+          <ods-button size="${ODS_BUTTON_SIZE.xs}" variant="${ODS_BUTTON_VARIANT.ghost}" label="Button"></ods-button>
+          <ods-button size="${ODS_BUTTON_SIZE.xs}" variant="${ODS_BUTTON_VARIANT.outline}" label="Button"></ods-button>
+        </div>
+      `);
+
+        const defaultBtn = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.xs}][variant="${ODS_BUTTON_VARIANT.default}"]`);
+        const ghostBtn = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.xs}][variant="${ODS_BUTTON_VARIANT.ghost}"]`);
+        const outlineBtn = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.xs}][variant="${ODS_BUTTON_VARIANT.outline}"]`);
+
+        const defaultStyle = await defaultBtn.getComputedStyle();
+        const ghostStyle = await ghostBtn.getComputedStyle();
+        const outlineStyle = await outlineBtn.getComputedStyle();
+
+        const defaultHeight = parseInt(defaultStyle.getPropertyValue('height'), 10);
+        const ghostHeight = parseInt(ghostStyle.getPropertyValue('height'), 10);
+        const outlineHeight = parseInt(outlineStyle.getPropertyValue('height'), 10);
+
+        expect(defaultHeight).toBe(ghostHeight);
+        expect(defaultHeight).toBe(outlineHeight);
+      });
+    });
+
+    describe('size sm', () => {
+      it('should have the same height for all variants at size sm', async() => {
+        await setup(`
+        <div>
+          <ods-button size="${ODS_BUTTON_SIZE.sm}" variant="${ODS_BUTTON_VARIANT.default}" label="Button"></ods-button>
+          <ods-button size="${ODS_BUTTON_SIZE.sm}" variant="${ODS_BUTTON_VARIANT.ghost}" label="Button"></ods-button>
+          <ods-button size="${ODS_BUTTON_SIZE.sm}" variant="${ODS_BUTTON_VARIANT.outline}" label="Button"></ods-button>
+        </div>
+      `);
+
+        const defaultBtn = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.sm}][variant="${ODS_BUTTON_VARIANT.default}"]`);
+        const ghostBtn = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.sm}][variant="${ODS_BUTTON_VARIANT.ghost}"]`);
+        const outlineBtn = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.sm}][variant="${ODS_BUTTON_VARIANT.outline}"]`);
+
+        const defaultStyle = await defaultBtn.getComputedStyle();
+        const ghostStyle = await ghostBtn.getComputedStyle();
+        const outlineStyle = await outlineBtn.getComputedStyle();
+
+        const defaultHeight = parseInt(defaultStyle.getPropertyValue('height'), 10);
+        const ghostHeight = parseInt(ghostStyle.getPropertyValue('height'), 10);
+        const outlineHeight = parseInt(outlineStyle.getPropertyValue('height'), 10);
+
+        expect(defaultHeight).toBe(ghostHeight);
+        expect(defaultHeight).toBe(outlineHeight);
+      });
+    });
+
+    describe('size md', () => {
+      it('should have the same height for all variants at size md', async() => {
+        await setup(`
+        <div>
+          <ods-button size="${ODS_BUTTON_SIZE.md}" variant="${ODS_BUTTON_VARIANT.default}" label="Button"></ods-button>
+          <ods-button size="${ODS_BUTTON_SIZE.md}" variant="${ODS_BUTTON_VARIANT.ghost}" label="Button"></ods-button>
+          <ods-button size="${ODS_BUTTON_SIZE.md}" variant="${ODS_BUTTON_VARIANT.outline}" label="Button"></ods-button>
+        </div>
+      `);
+
+        const defaultBtn = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.md}][variant="${ODS_BUTTON_VARIANT.default}"]`);
+        const ghostBtn = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.md}][variant="${ODS_BUTTON_VARIANT.ghost}"]`);
+        const outlineBtn = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.md}][variant="${ODS_BUTTON_VARIANT.outline}"]`);
+
+        const defaultStyle = await defaultBtn.getComputedStyle();
+        const ghostStyle = await ghostBtn.getComputedStyle();
+        const outlineStyle = await outlineBtn.getComputedStyle();
+
+        const defaultHeight = parseInt(defaultStyle.getPropertyValue('height'), 10);
+        const ghostHeight = parseInt(ghostStyle.getPropertyValue('height'), 10);
+        const outlineHeight = parseInt(outlineStyle.getPropertyValue('height'), 10);
+
+        expect(defaultHeight).toBe(ghostHeight);
+        expect(defaultHeight).toBe(outlineHeight);
+      });
     });
   });
 });

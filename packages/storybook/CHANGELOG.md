@@ -8,6 +8,30 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.6.0-alpha.0](https://ovh.github.io/design-system/v18.6.0-alpha.0/?path=/docs/design-system-changelog--page) (2025-02-27)
+[compare](https://github.com/ovh/design-system/compare/v18.5.3...v18.6.0-alpha.0)
+
+### Bug Fixes
+
+* **doc:** add missing icons on icon accessibility section ([934feac](https://github.com/ovh/design-system/commit/934feac27fc01d4a674687a745541feb2576a4eb))
+
+
+### Features
+
+* **combobox:** add group ([d2175e2](https://github.com/ovh/design-system/commit/d2175e281de5ec87e78df4243aea1a01a0d51d85))
+* **combobox:** add highlight feature ([53a3e7d](https://github.com/ovh/design-system/commit/53a3e7d6fb8b46c213c097ad7bf077182d32b0bc))
+* **combobox:** add positionning strategy attribute ([15dff44](https://github.com/ovh/design-system/commit/15dff44f655f3d45ab5c8b7ec99ba527d668c888))
+* **combobox:** implement component ([cdeeca4](https://github.com/ovh/design-system/commit/cdeeca46bbc72d05fc850454d9feb75fa1b6c0f3))
+* **combobox:** update add new element design ([ba6f6ad](https://github.com/ovh/design-system/commit/ba6f6adc1b973137ff2a18b72937cd947881c567))
+* **icon:** apply a11y rules & update documentation accordingly ([0a5b33f](https://github.com/ovh/design-system/commit/0a5b33fd1e992a403eff52989f6b3ee97d75e8cf))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.5.3](https://ovh.github.io/design-system/v18.5.3/?path=/docs/design-system-changelog--page) (2025-02-18)
 [compare](https://github.com/ovh/design-system/compare/v18.5.2...v18.5.3)
 

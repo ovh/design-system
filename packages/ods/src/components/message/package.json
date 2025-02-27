@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-message",
-  "version": "18.5.3",
+  "version": "18.6.0-alpha.0",
   "private": true,
   "description": "ODS Message component",
   "main": "dist/index.cjs.js",

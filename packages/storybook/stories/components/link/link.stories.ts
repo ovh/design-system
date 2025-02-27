@@ -161,6 +161,60 @@ export const Demo: StoryObj = {
   },
 };
 
+export const AvailabilityDownloadLink1: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-link href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf"
+          label="Download WCAG20 Guidelines (PDF, 481 KB)">
+</ods-link>
+  `,
+};
+
+export const AvailabilityDownloadLink2: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-link aria-label="Download WCAG20 Guidelines (PDF, 481 KB)"
+          href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf"
+          label="WCAG20 Guidelines">
+</ods-link>
+<span>(PDF, 481 KB)</span>
+  `,
+};
+
+export const AvailabilityExternalLink: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-link aria-label="Visit Example (opens in a new tab)"
+          href="https://www.ovhcloud.com/"
+          icon="external"
+          label="Blank target"
+          target="_blank">
+</ods-link>
+  `,
+};
+
+export const AvailabilityIconOnly: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-link aria-label="Go to homepage"
+          href="https://www.ovhcloud.com/"
+          icon="home">
+</ods-link>
+  `,
+};
+
 export const Overview: StoryObj = {
   tags: ['isHidden'],
   parameters: {

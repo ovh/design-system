@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.6.0-alpha.0](https://ovh.github.io/design-system/v18.6.0-alpha.0/?path=/docs/design-system-changelog--page) (2025-02-27)
+[compare](https://github.com/ovh/design-system/compare/v18.5.3...v18.6.0-alpha.0)
+
+### Bug Fixes
+
+* **modal:** keep native dialog backdrop on Escape press when non dismissible ([9d4e7f9](https://github.com/ovh/design-system/commit/9d4e7f92045728fb1e04ba442ee64968354fead3))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

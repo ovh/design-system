@@ -1,7 +1,7 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('ods-spinner accessibility', () => {
+  let container: E2EElement;
   let el: E2EElement;
   let page: E2EPage;
 
@@ -9,9 +9,10 @@ describe('ods-spinner accessibility', () => {
     page = await newE2EPage();
 
     await page.setContent(content);
-    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+    await page.evaluate(() => document.body.style.setProperty('margin', '0'));
 
     el = await page.find('ods-spinner');
+    container = await page.find('ods-spinner >>> .ods-spinner__container');
   }
 
   it('should render the web component with the right role', async() => {
@@ -19,5 +20,6 @@ describe('ods-spinner accessibility', () => {
 
     expect(el.shadowRoot).not.toBeNull();
     expect(el.getAttribute('role')).toBe('progressbar');
+    expect(container.getAttribute('aria-hidden')).toBe('true');
   });
 });

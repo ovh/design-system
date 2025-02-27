@@ -8,6 +8,33 @@ import { HOME_TITLE, ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/
 
 <Heading label="What's new ?" level={ 1 } />
 
+<Heading label="v18.6.0" level={ 2 } />
+
+<Heading label="New components:" level={ 3 } />
+
+**Combobox**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.combobox } label="See Documentation" story={ STORY.documentation } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Icon**
+- `alt` attribute has been removed. This optional attribute was in fact doing nothing at all, it can safely be kept if you were using it, but you should remove it and follow the <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="accessibility best practices" story={ STORY.documentation } /> instead.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Button**
+- Ensure button height stays the same for all variants.
+- Fix `sm` height on all variants.
+
+**Modal**
+- Backdrop is no longer removed when pressing `Escape` on non-dismissible modal.
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+- Add new dedicated page about design tokens under the `Design and Style` section.
+- Update the accessibility section of the <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } /> component, with best practices and examples.
+
 <Heading label="v18.5.3" level={ 2 } />
 
 <Heading label="Feature updates:" level={ 3 } />

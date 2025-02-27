@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.6.0-alpha.0](https://ovh.github.io/design-system/v18.6.0-alpha.0/?path=/docs/design-system-changelog--page) (2025-02-27)
+[compare](https://github.com/ovh/design-system/compare/v18.5.3...v18.6.0-alpha.0)
+
+### Bug Fixes
+
+* **button:** adjusted height of all buttons to match Figma ([85bbe76](https://github.com/ovh/design-system/commit/85bbe76b38b380edeffe8fde50ab192adf556553))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

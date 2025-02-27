@@ -6,6 +6,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.6.0-alpha.0](https://ovh.github.io/design-system/v18.6.0-alpha.0/?path=/docs/design-system-changelog--page) (2025-02-27)
+[compare](https://github.com/ovh/design-system/compare/v18.5.3...v18.6.0-alpha.0)
+
+**Note:** Version bump only for package @ovhcloud/ods-component-switch
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.5.3](https://ovh.github.io/design-system/v18.5.3/?path=/docs/design-system-changelog--page) (2025-02-18)
 [compare](https://github.com/ovh/design-system/compare/v18.5.2...v18.5.3)
 

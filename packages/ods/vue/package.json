@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-components-vue",
-  "version": "18.5.3",
+  "version": "18.6.0-alpha.0",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],

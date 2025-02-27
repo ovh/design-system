@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-textarea",
-  "version": "18.5.3",
+  "version": "18.6.0-alpha.0",
   "private": true,
   "description": "ODS Textarea component",
   "main": "dist/index.cjs.js",

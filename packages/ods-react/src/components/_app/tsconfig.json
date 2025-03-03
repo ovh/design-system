@@ -1,0 +1,5 @@
+{
+  "extends": "../../../tsconfig.json",
+  "include": ["src", "dynamic-renderer.ts"],
+  "exclude": ["node_modules"]
+}

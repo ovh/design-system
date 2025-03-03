@@ -1,0 +1,16 @@
+{
+  "name": "ods-react-test-app",
+  "private": true,
+  "version": "18.5.3",
+  "type": "module",
+  "scripts": {
+    "plop": "plop --plopfile ./plopfile.js react-test-app -- --path \"$DEV_PATH\"",
+    "start": "plop --plopfile ./plopfile.js react-test-app -- --path \"$DEV_PATH\" && vite",
+    "test:e2e": "npm run plop && vite",
+    "toto": "vite"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}

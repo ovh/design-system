@@ -1,0 +1,17 @@
+{
+  "name": "ods-react-test-app0",
+  "private": true,
+  "version": "18.5.3",
+  "type": "module",
+  "scripts": {
+    "start": "vite"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.2.1",
+    "vite": "5.0.10"
+  }
+}

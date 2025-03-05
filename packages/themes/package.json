@@ -15,7 +15,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build:ci": "npm run build:prod",
-    "build:prod0": "tsc && sass src:dist --no-source-map --pkg-importer=node && postcss dist/**/*.css --replace --use autoprefixer --parser postcss-scss --no-map",
+    "build:prod": "tsc && sass src:dist --no-source-map --pkg-importer=node && postcss dist/**/*.css --replace --use autoprefixer --parser postcss-scss --no-map",
     "clean": "rimraf dist",
     "lint:scss": "stylelint '{assets,src}/**/*.scss'",
     "lint:ts": "eslint 'src/**/*.{js,ts,tsx}'"

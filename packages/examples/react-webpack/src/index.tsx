@@ -4,7 +4,8 @@ import { createRoot } from 'react-dom/client';
 // import { App } from 'app/App';
 // import { RouterApp } from 'router-app/RouterApp';
 // import '@ovhcloud/ods-themes/dark';
-import { OdsSpinner, OdsText } from '@ovhcloud/ods-react';
+import { OdsSpinner, OdsText } from '@ovhcloud/ods-components/react';
+// import { OdsSpinner, OdsText } from '@ovhcloud/ods-react';
 import '@ovhcloud/ods-themes/default';
 
 const appElement = document.getElementById('app');

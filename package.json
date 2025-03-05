@@ -14,6 +14,9 @@
     "packages/ods/style",
     "packages/ods/vue",
     "packages/ods/vue/tests/*",
+    "packages/ods-react4",
+    "packages/ods-react4/src/components/!(dist|loader)*",
+    "packages/ods-react4/tests/*",
     "packages/storybook",
     "packages/themes"
   ],

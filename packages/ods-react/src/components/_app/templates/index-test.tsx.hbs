@@ -1,0 +1,18 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+const root = ReactDOM.createRoot(document.getElementById('root')!);
+
+const style = document.createElement('style');
+// @ts-ignore custom prop for test run
+style.innerHTML = window.odsComponentStyle;
+document.head.append(style);
+
+// @ts-ignore custom prop for test run
+const html = window.odsComponent;
+
+root.render(
+<React.StrictMode>
+  <div dangerouslySetInnerHTML={{ __html: html }} />
+</React.StrictMode>
+);

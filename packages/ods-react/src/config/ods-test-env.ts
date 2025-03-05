@@ -40,7 +40,7 @@ class CustomEnvironment extends TestEnvironment {
   constructor(config: JestEnvironmentConfig, context: EnvironmentContext) {
     super(config, context);
 
-    const styleDirectory = join(process.cwd(), 'dist', 'test-styles');
+    const styleDirectory = join(process.cwd(), 'dist', 'test-style');
 
     if (existsSync(styleDirectory)) {
       const cssFiles = findFilesByExtension(styleDirectory, '.css');
@@ -54,6 +54,7 @@ class CustomEnvironment extends TestEnvironment {
   async setup(): Promise<void> {
     await super.setup();
 
+    // TODO + fix start
     //this.server = child_process.spawn('npm', ['run', 'start', '--prefix', '../_app'], {
     this.server = childProcess.spawn('npm', ['run', 'toto', '--prefix', '../_app'], {
       detached: true,
@@ -75,10 +76,10 @@ class CustomEnvironment extends TestEnvironment {
         const page = await (this.global.__BROWSER__ as Browser).newPage();
 
         await page.evaluateOnNewDocument(({ component, style }) => {
-          // @ts-ignore
-          window.odsTmp = component;
-          // @ts-ignore
-          window.odsTmpStyle = style;
+          // @ts-ignore custom prop for test run
+          window.odsComponent = component;
+          // @ts-ignore custom prop for test run
+          window.odsComponentStyle = style;
         }, {
           component: renderToString(renderer()),
           style: this.cssStyle,
@@ -95,7 +96,11 @@ class CustomEnvironment extends TestEnvironment {
     await super.teardown();
 
     if (this.server && this.server.pid) {
-      process.kill(-this.server.pid);
+      try {
+        process.kill(-this.server.pid);
+      } catch(e) {
+        console.log('process kill error', e);
+      }
     }
   }
 }

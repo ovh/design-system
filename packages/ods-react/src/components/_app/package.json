@@ -4,10 +4,8 @@
   "version": "18.5.3",
   "type": "module",
   "scripts": {
-    "plop": "plop --plopfile ./plopfile.js react-test-app -- --path \"$DEV_PATH\"",
-    "start": "plop --plopfile ./plopfile.js react-test-app -- --path \"$DEV_PATH\" && vite",
-    "test:e2e": "npm run plop && vite",
-    "toto": "vite"
+    "start": "plop --plopfile ./plopfile.js react-test-app -- --path \"$DEV_PATH\" --type=\"dev\" && vite",
+    "test:e2e": "plop --plopfile ./plopfile.js react-test-app -- --path \"$DEV_PATH\" --type=\"test\" && vite"
   },
   "dependencies": {
     "react": "18.2.0",

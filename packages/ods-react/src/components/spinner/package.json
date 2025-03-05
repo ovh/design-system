@@ -1,0 +1,13 @@
+{
+  "name": "@ovhcloud/ods-react-spinner",
+  "version": "18.5.3",
+  "private": true,
+  "description": "ODS React Spinner component",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build:style": "rimraf dist/test-style && sass --no-source-map src/components:dist/test-style",
+    "start": "concurrently \"DEV_PATH=spinner/src/dev.tsx npm run start --prefix ../_app\" \"wait-on http://localhost:3000 && open-cli 'http://localhost:3000?testName=OdsSpinner'\"",
+    "test:e2e": "npm run build:style && jest -i --detectOpenHandles"
+  }
+}

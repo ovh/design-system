@@ -4,13 +4,19 @@ export default function(plop) {
     prompts: [{
       type: 'input',
       name: 'path',
-      message: 'main file path to dynamically import',
+      message: 'Main file path to dynamically import.',
+    }, {
+      type: 'input',
+      name: 'type',
+      message: 'Either "dev" for dev server, or "test" for e2e run.',
     }],
-    actions: [{
-      type: 'add',
-      force: true,
-      path: 'src/index.tsx',
-      templateFile: 'templates/index.tsx.hbs',
-    }],
+    actions: function({ type }) {
+      return [{
+        type: 'add',
+        force: true,
+        path: 'src/index.tsx',
+        templateFile: `templates/index-${type}.tsx.hbs`,
+      }];
+    }
   });
 };

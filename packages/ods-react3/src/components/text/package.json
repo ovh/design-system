@@ -1,0 +1,11 @@
+{
+  "name": "@ovhcloud/ods-react3-text",
+  "version": "18.5.3",
+  "private": true,
+  "description": "ODS React Text component",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test:e2e": "vitest"
+  }
+}

@@ -1,3 +1,4 @@
+// TODO diff CI/local
 export default {
   launch: {
     headless: false,// process.env.HEADLESS !== "false",

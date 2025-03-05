@@ -6,13 +6,13 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "build:styles": "rimraf dist/test-styles && sass --no-source-map src/components:dist/test-styles",
+    "build:style": "rimraf dist/test-style && sass --no-source-map src:dist/test-style",
     "__build": "tsc -b && vite build",
     "__plop": "DEV_PATH=text/tests/rendering/ods-text.e2e.tsx npm run test:e2e --prefix ../_app",
     "__plop:test": "concurrently -s first -k \"npm run plop\" \"wait-on http://localhost:3000 && npm run test:e2e\"",
     "__start": "npm run build && npm run start --prefix app",
     "start": "concurrently \"DEV_PATH=text/src/dev.tsx npm run start --prefix ../_app\" \"wait-on http://localhost:3000 && open-cli 'http://localhost:3000?testName=OdsText'\"",
-    "test:e2e": "jest -i --detectOpenHandles",
+    "test:e2e": "npm run build:style && jest -i --detectOpenHandles",
     "__test:react:e2e": "concurrently -s first -k \"npm run start --prefix tests/_app\" \"wait-on http://localhost:3000 && jest --detectOpenHandles\"",
     "__test:react:e2e2": "concurrently -s first -k \"npm run start --prefix ../_app\" \"wait-on http://localhost:3000 && jest --detectOpenHandles\""
   }

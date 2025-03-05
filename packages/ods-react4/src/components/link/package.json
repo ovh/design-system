@@ -1,0 +1,14 @@
+{
+  "name": "@ovhcloud/ods-react4-link",
+  "version": "18.5.3",
+  "private": true,
+  "description": "ODS React Link component",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npm run start:storybook",
+    "start:storybook": "storybook dev -p 3000 --no-open",
+    "test:e2e": "start-server-and-test 'npm run start:storybook' 3000 'jest -i --detectOpenHandles'",
+    "test:tmp:ci": "npm run test:e2e"
+  }
+}

@@ -1,12 +1,14 @@
 import classNames from 'classnames';
-import { type FC, type JSX, type ReactNode } from 'react';
+import { type FC, type HTMLAttributes, type JSX, type ReactNode } from 'react';
 import { ODS_TEXT_PRESET, type OdsTextPreset } from '../../constants/text-preset';
 import styles from './odsText.module.scss';
+import { OdsSpinner } from '../../../../spinner/src';
 
 // TODO put back part?
 // TODO test controller unit test
+// TODO remove vite config on component root?
 
-type OdsTextProp = {
+type OdsTextProp = Partial<HTMLAttributes<HTMLElement>> & {
   children: ReactNode,
   preset?: OdsTextPreset,
 };
@@ -41,18 +43,18 @@ function getTag(preset: OdsTextPreset): string {
 const OdsText: FC<OdsTextProp> = ({
   children,
   preset = ODS_TEXT_PRESET.paragraph,
+  ...props
 }): JSX.Element => {
   const Tag = getTag(preset) as keyof JSX.IntrinsicElements;
 
-  // return (
-  //   <Tag style={{color: 'red'}} className={ classNames('ods-text') }>
-  //     { children }
-  //   </Tag>
-  // );
-
   return (
-    <Tag className={ classNames(styles['ods-text'], styles[`ods-text--${preset}`]) }>
-      { children }
+    // @ts-ignore
+    <Tag
+      className={ classNames(styles['ods-text'], styles[`ods-text--${preset}`]) }
+      { ...props }>
+      { children } - {JSON.stringify(props)}
+
+      <OdsSpinner />
     </Tag>
   );
 }

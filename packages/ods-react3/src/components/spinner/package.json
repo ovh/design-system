@@ -1,0 +1,11 @@
+{
+  "name": "@ovhcloud/ods-react3-spinner",
+  "version": "18.5.3",
+  "private": true,
+  "description": "ODS React Spinner component",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test:e2e": "vitest"
+  }
+}

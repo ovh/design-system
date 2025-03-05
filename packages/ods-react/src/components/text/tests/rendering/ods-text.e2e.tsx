@@ -1,6 +1,6 @@
 //import puppeteer, { type Browser, type ElementHandle, type Page } from 'puppeteer';
 //import { describe, it, beforeAll } from '../puppeteer-testing';
-import type { Page } from 'puppeteer';
+import { type Page } from 'puppeteer';
 //import { describe, it } from '../../../_app/dynamic-renderer';
 // import { ODS_TEXT_PRESET, OdsText } from '../../src';
 import { OdsText } from '../../src';
@@ -74,18 +74,18 @@ describe('OdsText rendering', () => {
   //   expect(text).toBe('Hello World!');
   // });
 
-  // @ts-ignore
   e2e('should render with text',
-    () => {
-      return <OdsText>Hello World!</OdsText>;
-    },
+    () => (
+      <OdsText>Hello World!</OdsText>
+    ),
     async(page: Page) => {
-      // await new Promise((resolve) => setTimeout(resolve, 100000));
-      await page.waitForSelector('.ods-text');
-      const text = await page.$eval('.ods-text', (el: Element) => el.innerHTML);
-      const style = await page.$eval('.ods-text', (el: Element) => window.getComputedStyle(el).getPropertyValue('color'));
+      // await new Promise((resolve) => setTimeout(resolve, 1000000));
+      const odsText = await page.waitForSelector('.ods-text');
+      const text = await odsText?.evaluate(el => el.textContent);
+      // const text = await page.$eval<string>('.ods-text', (el: HTMLElement) => el.innerText);
+      // const style = await page.$eval('.ods-text', (el: Element) => window.getComputedStyle(el).getPropertyValue('color'));
 
-      expect(style).toBe('rgb(255, 0, 0)');
+      // expect(style).toBe('rgb(255, 0, 0)');
       expect(text).toBe('Hello World!');
     }
   );

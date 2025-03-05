@@ -5,6 +5,6 @@ import { OdsText } from './index';
 
 componentFactories['OdsText'] = () => (
   <div>
-    <OdsText>Hello World DEV!</OdsText>
+    <OdsText data-testid="bouh" aria-label="test">Hello World DEV!</OdsText>
   </div>
 );

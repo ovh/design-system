@@ -519,6 +519,12 @@ export class OdsCombobox implements OdsFormElement {
 
         return res;
       }, [] as ResultElement[]) ;
+
+    // We re-render the list to make sure it's up to date
+    if (this.isOpen){
+      this.close();
+      this.open();
+    }
   }
 
   private onTagKeyDown(event: KeyboardEvent): void {
@@ -601,7 +607,11 @@ export class OdsCombobox implements OdsFormElement {
   }
 
   private async openDropdown(): Promise<void> {
-    if (this.resultListElement && this.searchElement) {
+    // setTimeout of 0s to be sure the element has time to render before calculating the position
+    setTimeout(async() => {
+      if (!this.resultListElement || !this.searchElement) {
+        return;
+      }
       const { placement, y } = await getElementPosition('bottom', {
         popper: this.resultListElement,
         trigger: this.el,
@@ -609,16 +619,16 @@ export class OdsCombobox implements OdsFormElement {
         offset: -1, // offset the border-width size as we want it merged with the trigger.
       });
 
-      Object.assign(this.resultListElement.style, {
+      Object.assign(this.resultListElement?.style, {
         left: '0',
         top: `${y}px`,
       });
 
       this.isOpen = true;
-      this.resultListElement?.scrollTo(0, 0);
+      this.resultListElement.scrollTo(0, 0);
       this.resultListElement.classList.add(`ods-combobox__results--${placement}`);
       this.searchElement.classList.add(`ods-combobox__search--${placement}`);
-    }
+    }, 0);
   }
 
   private async openResultList(): Promise<void> {

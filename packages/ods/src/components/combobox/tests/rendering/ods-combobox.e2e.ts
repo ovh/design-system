@@ -185,6 +185,74 @@ describe('ods-combobox rendering', () => {
     });
   });
 
+  describe('dropdown positioning', () => {
+    it('should position the dropdown correctly on first render', async() => {
+      await setup(`<div>
+        <div style="height: 100vh;">
+        </div>
+        <ods-combobox>
+          <ods-combobox-item value="item1">Item 1</ods-combobox-item>
+          <ods-combobox-item value="item2">Item 2</ods-combobox-item>
+          <ods-combobox-item value="item3">Item 3</ods-combobox-item>
+          <ods-combobox-item value="item4">Item 4</ods-combobox-item>
+          <ods-combobox-item value="item5">Item 5</ods-combobox-item>
+        </ods-combobox>
+        </div>
+    `);
+
+      const inputEl = await page.find('ods-combobox >>> ods-input');
+      await inputEl.click();
+      await page.waitForChanges();
+
+      expect(await isOpen()).toBe(true);
+      const isPositionedTop = await page.evaluate(() => {
+        const results = document.querySelector('ods-combobox')?.shadowRoot?.querySelector('.ods-combobox__results');
+        const searchEl = document.querySelector('ods-combobox')?.shadowRoot?.querySelector('.ods-combobox__search');
+        return results?.classList.contains('ods-combobox__results--top') &&
+             searchEl?.classList.contains('ods-combobox__search--top');
+      });
+
+      expect(isPositionedTop).toBe(true);
+    });
+
+    it('should maintain correct positioning when reopening the dropdown', async() => {
+      await setup(`<div>
+        <div style="height: 100vh;">
+        </div>
+        <ods-combobox>
+          <ods-combobox-item value="item1">Item 1</ods-combobox-item>
+          <ods-combobox-item value="item2">Item 2</ods-combobox-item>
+          <ods-combobox-item value="item3">Item 3</ods-combobox-item>
+          <ods-combobox-item value="item4">Item 4</ods-combobox-item>
+          <ods-combobox-item value="item5">Item 5</ods-combobox-item>
+        </ods-combobox>
+        </div>
+    `);
+
+      const inputEl = await page.find('ods-combobox >>> ods-input');
+      await inputEl.click();
+      await page.waitForChanges();
+
+      let isPositionedTop = await page.evaluate(() => {
+        const results = document.querySelector('ods-combobox')?.shadowRoot?.querySelector('.ods-combobox__results');
+        return results?.classList.contains('ods-combobox__results--top');
+      });
+      expect(isPositionedTop).toBe(true);
+
+      await page.keyboard.press('Escape');
+      await page.waitForChanges();
+
+      await inputEl.click();
+      await page.waitForChanges();
+
+      isPositionedTop = await page.evaluate(() => {
+        const results = document.querySelector('ods-combobox')?.shadowRoot?.querySelector('.ods-combobox__results');
+        return results?.classList.contains('ods-combobox__results--top');
+      });
+      expect(isPositionedTop).toBe(true);
+    });
+  });
+
   describe('in a fixed context (like ods-modal)', () => {
     async function setupModal(content: string): Promise<void> {
       page = await newE2EPage();

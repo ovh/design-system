@@ -1,150 +1,42 @@
 <!DOCTYPE html>
-<html dir='ltr' lang='en'>
-<head>
-  <meta charset='utf-8' />
-  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
-  <title>Dev ods-combobox</title>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Dev ods-combobox</title>
 
-  <script type='module' src='/build/ods-combobox.esm.js'></script>
-  <script nomodule src='/build/ods-combobox.js'></script>
-  <link rel="stylesheet" href="/build/ods-combobox.css">
+    <script type="module" src="/build/ods-combobox.esm.js"></script>
+    <script nomodule src="/build/ods-combobox.js"></script>
+    <link rel="stylesheet" href="/build/ods-combobox.css" />
 
-  <style>
-    * {
-      font-family: 'Source Sans Pro', sans-serif;
-    }
-  </style>
-</head>
-
-<body>
-<!--  <p>Empty</p>-->
-<!--  <ods-combobox></ods-combobox>-->
-<button>Focus</button>
-
-<!--  <p style="margin-bottom: 200px;">Default</p>-->
-  <p>Default</p>
-  <label for="default">My combobox</label>
-  <ods-combobox id="default" is-clearable highlight-results>
-    <ods-combobox-item value="chocolate">
-      Chocolate
-    </ods-combobox-item>
-    <ods-combobox-item value="chocolate-with-nuts">
-      Chocolate with nuts
-    </ods-combobox-item>
-    <ods-combobox-item value="coconut">
-      Coconut
-    </ods-combobox-item>
-    <ods-combobox-item value="light-mint">
-      Light mint
-    </ods-combobox-item>
-    <ods-combobox-item value="mint">
-      Mint
-    </ods-combobox-item>
-    <ods-combobox-item value="strawberry">
-      Strawberry
-    </ods-combobox-item>
-    <ods-combobox-item value="vanilla">
-      Vanilla
-    </ods-combobox-item>
-    <ods-combobox-item value="white-chocolate">
-      White chocolate
-    </ods-combobox-item>
-  </ods-combobox>
-  <button id="default-change-value">Change value</button>
-  <button id="default-open">Open</button>
-  <button id="default-close">Close</button>
-  <script>
-    const defaultCombobox = document.querySelector('#default');
-    const defaultButtonChangeValue = document.querySelector('#default-change-value');
-    const defaultButtonClose = document.querySelector('#default-close');
-    const defaultButtonOpen = document.querySelector('#default-open');
-
-    defaultCombobox.addEventListener('odsChange', (e) => {
-      // console.log(e.detail);
-    });
-
-    defaultButtonChangeValue.addEventListener('click', () => {
-      // defaultCombobox.value = 'Dummy';
-      // defaultCombobox.clear();
-      // defaultCombobox.reset();
-
-      if (defaultCombobox.hasAttribute('highlight-results')) {
-        defaultCombobox.removeAttribute('highlight-results');
-      } else {
-        defaultCombobox.setAttribute('highlight-results', 'true');
+    <style>
+      * {
+        font-family: "Source Sans Pro", sans-serif;
       }
-    });
-
-    defaultButtonClose.addEventListener('click', () => {
-      defaultCombobox.close();
-    });
-
-    defaultButtonOpen.addEventListener('click', () => {
-      defaultCombobox.open();
-    });
-  </script>
-
-<!--  <p>Disabled</p>-->
-<!--  <ods-combobox id="default" default-value="coconut" is-disabled>-->
-<!--    <ods-combobox-item value="chocolate">-->
-<!--      Chocolate-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="chocolate-with-nuts">-->
-<!--      Chocolate with nuts-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="coconut">-->
-<!--      Coconut-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="light-mint">-->
-<!--      Light mint-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="mint">-->
-<!--      Mint-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="strawberry">-->
-<!--      Strawberry-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="vanilla">-->
-<!--      Vanilla-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="white-chocolate">-->
-<!--      White chocolate-->
-<!--    </ods-combobox-item>-->
-<!--  </ods-combobox>-->
-
-<!--  <p>Readonly</p>-->
-<!--  <ods-combobox id="default" default-value="coconut" is-readonly>-->
-<!--    <ods-combobox-item value="chocolate">-->
-<!--      Chocolate-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="chocolate-with-nuts">-->
-<!--      Chocolate with nuts-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="coconut">-->
-<!--      Coconut-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="light-mint">-->
-<!--      Light mint-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="mint">-->
-<!--      Mint-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="strawberry">-->
-<!--      Strawberry-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="vanilla">-->
-<!--      Vanilla-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="white-chocolate">-->
-<!--      White chocolate-->
-<!--    </ods-combobox-item>-->
-<!--  </ods-combobox>-->
-
-  <p>Group</p>
-  <ods-combobox id="group" value="dog,chocolate" highlight-results allow-multiple is-clearable>
-    <ods-combobox-group>
-      <span slot="title">Flavours</span>
-
+    </style>
+  </head>
+<body>
+        <div style="height: 200px; overflow: hidden; position: relative;">
+        <div style="position: absolute; bottom: 10px; width: 100%;">
+          <ods-combobox>
+            <ods-combobox-item value="item1">Item 1</ods-combobox-item>
+            <ods-combobox-item value="item2">Item 2</ods-combobox-item>
+            <ods-combobox-item value="item3">Item 3</ods-combobox-item>
+            <ods-combobox-item value="item4">Item 4</ods-combobox-item>
+            <ods-combobox-item value="item5">Item 5</ods-combobox-item>
+          </ods-combobox>
+        </div>
+      </div>
+</body>
+ <!-- <body>
+    <button>Focus</button>
+    <div style="height: 100vh"></div>
+    <p>Default</p>
+    <label for="default">My combobox</label>
+    <ods-combobox id="default" is-clearable highlight-results>
       <ods-combobox-item value="chocolate">
         Chocolate
       </ods-combobox-item>
@@ -169,237 +61,63 @@
       <ods-combobox-item value="white-chocolate">
         White chocolate
       </ods-combobox-item>
-    </ods-combobox-group>
+    </ods-combobox>
+    <button id="default-change-value">Change Highlight</button>
+    <button id="default-open">Open</button>
+    <button id="default-close">Close</button>
+    <button id="default-add-option">Add Option (with delay)</button>
 
-    <ods-combobox-group>
-      <span slot="title">Animals</span>
+    <script>
+      const defaultCombobox = document.querySelector("#default");
+      const defaultButtonChangeValue = document.querySelector(
+        "#default-change-value"
+      );
+      const defaultButtonOpen = document.querySelector("#default-open");
+      const defaultButtonClose = document.querySelector("#default-close");
+      const defaultButtonAddOption = document.querySelector(
+        "#default-add-option"
+      );
 
-      <ods-combobox-item value="dog">
-        Dog
-      </ods-combobox-item>
-      <ods-combobox-item value="cat">
-        Cat
-      </ods-combobox-item>
-      <ods-combobox-item value="hamster">
-        Hamster
-      </ods-combobox-item>
-      <ods-combobox-item value="parrot">
-        Parrot
-      </ods-combobox-item>
-      <ods-combobox-item value="spider">
-        Spider
-      </ods-combobox-item>
-      <ods-combobox-item value="goldfish">
-        Goldfish
-      </ods-combobox-item>
-    </ods-combobox-group>
+      defaultCombobox.addEventListener("odsChange", (e) => {
+        // console.log(e.detail);
+      });
 
-    <ods-combobox-item value="some">
-      Some random item
-    </ods-combobox-item>
-    <ods-combobox-item value="Dummy">
-      Dummy item
-    </ods-combobox-item>
-  </ods-combobox>
+      defaultButtonChangeValue.addEventListener("click", () => {
+        if (defaultCombobox.hasAttribute("highlight-results")) {
+          defaultCombobox.removeAttribute("highlight-results");
+        } else {
+          defaultCombobox.setAttribute("highlight-results", "true");
+        }
+      });
 
-<!--  <p>Custom Items</p>-->
-<!--  <ods-combobox>-->
-<!--    <ods-combobox-item value="ovh">-->
-<!--      <div class="custom-item">-->
-<!--        <img alt="logo"-->
-<!--             height="50"-->
-<!--             src="https://static-00.iconduck.com/assets.00/ovh-icon-2048x2048-l4c3izvg.png"-->
-<!--             width="50" />-->
-<!--        <div class="custom-item__content">-->
-<!--          <span class="custom-item__content__title">OVH Cloud</span>-->
-<!--          <span>OVH, legally OVH Groupe SA, is a French cloud computing company which offers VPS, dedicated servers and other web services. As of 2016 OVH owned the world's largest data center in surface area. As of 2019, it was the largest hosting provider in Europe, and the third largest in the world based on physical servers.</span>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </ods-combobox-item>-->
-<!--  </ods-combobox>-->
-<!--  <style>-->
-<!--    .custom-item {-->
-<!--      display: grid;-->
-<!--      grid-template-columns: max-content 1fr;-->
-<!--      column-gap: 8px;-->
-<!--      padding: 8px;-->
-<!--    }-->
+      defaultButtonClose.addEventListener("click", () => {
+        defaultCombobox.close();
+      });
 
-<!--    .custom-item__content {-->
-<!--      display: flex;-->
-<!--      flex-flow: column;-->
-<!--      row-gap: 8px;-->
-<!--    }-->
+      defaultButtonOpen.addEventListener("click", () => {
+        defaultCombobox.open();
+        
+      });
 
-<!--    .custom-item__content__title {-->
-<!--      font-weight: bold;-->
-<!--    }-->
-<!--  </style>-->
+      defaultButtonAddOption.addEventListener("click", () => {
+        setTimeout(() => {
+        console.log('new element')
+          const newItem = document.createElement("ods-combobox-item");
+          newItem.setAttribute("value", "new-option-" + Date.now());
+          newItem.textContent =
+            "New Option " + new Date().toLocaleTimeString();
 
-<!--  <p>Multiple</p>-->
-<!--  <ods-combobox id="default" default-value="coconut,mint" allow-multiple>-->
-<!--    <ods-combobox-item value="chocolate">-->
-<!--      Chocolate-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="chocolate-with-nuts">-->
-<!--      Chocolate with nuts-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="coconut">-->
-<!--      Coconut-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="light-mint">-->
-<!--      Light mint-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="mint">-->
-<!--      Mint-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="strawberry">-->
-<!--      Strawberry-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="vanilla">-->
-<!--      Vanilla-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="white-chocolate">-->
-<!--      White chocolate-->
-<!--    </ods-combobox-item>-->
-<!--  </ods-combobox>-->
+          defaultCombobox.appendChild(newItem);
 
-<!--  <p>Disabled Multiple</p>-->
-<!--  <ods-combobox id="default" default-value="coconut,mint" allow-multiple is-disabled>-->
-<!--    <ods-combobox-item value="chocolate">-->
-<!--      Chocolate-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="chocolate-with-nuts">-->
-<!--      Chocolate with nuts-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="coconut">-->
-<!--      Coconut-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="light-mint">-->
-<!--      Light mint-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="mint">-->
-<!--      Mint-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="strawberry">-->
-<!--      Strawberry-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="vanilla">-->
-<!--      Vanilla-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="white-chocolate">-->
-<!--      White chocolate-->
-<!--    </ods-combobox-item>-->
-<!--  </ods-combobox>-->
+          if (defaultCombobox.hasAttribute("open")) {
+            defaultCombobox.open();
+          }
+        }, 2000);
+      });
+    </script>
 
-<!--  <p>Readonly Multiple</p>-->
-<!--  <ods-combobox id="default" default-value="coconut,mint" allow-multiple is-readonly>-->
-<!--    <ods-combobox-item value="chocolate">-->
-<!--      Chocolate-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="chocolate-with-nuts">-->
-<!--      Chocolate with nuts-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="coconut">-->
-<!--      Coconut-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="light-mint">-->
-<!--      Light mint-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="mint">-->
-<!--      Mint-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="strawberry">-->
-<!--      Strawberry-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="vanilla">-->
-<!--      Vanilla-->
-<!--    </ods-combobox-item>-->
-<!--    <ods-combobox-item value="white-chocolate">-->
-<!--      White chocolate-->
-<!--    </ods-combobox-item>-->
-<!--  </ods-combobox>-->
-
-<!--  <p>Form</p>-->
-
-<!--  <form id="combobox-form" onsubmit="console.log('FORM SUBMIT');return false;">-->
-<!--    <ods-combobox name="my-combobox" id="combobox-form-combobox" is-required is-clearable value="coconut">-->
-<!--      <ods-combobox-item value="chocolate">-->
-<!--        Chocolate-->
-<!--      </ods-combobox-item>-->
-<!--      <ods-combobox-item value="chocolate-with-nuts">-->
-<!--        Chocolate with nuts-->
-<!--      </ods-combobox-item>-->
-<!--      <ods-combobox-item value="coconut">-->
-<!--        Coconut-->
-<!--      </ods-combobox-item>-->
-<!--      <ods-combobox-item value="light-mint">-->
-<!--        Light mint-->
-<!--      </ods-combobox-item>-->
-<!--      <ods-combobox-item value="mint">-->
-<!--        Mint-->
-<!--      </ods-combobox-item>-->
-<!--      <ods-combobox-item value="strawberry">-->
-<!--        Strawberry-->
-<!--      </ods-combobox-item>-->
-<!--      <ods-combobox-item value="vanilla">-->
-<!--        Vanilla-->
-<!--      </ods-combobox-item>-->
-<!--      <ods-combobox-item value="white-chocolate">-->
-<!--        White chocolate-->
-<!--      </ods-combobox-item>-->
-<!--    </ods-combobox>-->
-
-<!--    <button id="combobox-form-check-validity-button" type="button">Check validity</button>-->
-<!--    <button id="combobox-form-enforce-has-error" type="button">Enforce has-error</button>-->
-<!--    <button id="combobox-form-toggle-is-required" type="button">Toggle is-required</button>-->
-<!--    <button id="combobox-form-submit" type="submit">Submit</button>-->
-<!--  </form>-->
-<!--  <script>-->
-<!--    const form = document.querySelector('#combobox-form');-->
-<!--    const formCombobox = document.querySelector('#combobox-form-combobox');-->
-<!--    const formCheckValidityFormButton = document.querySelector('#combobox-form-check-validity-button');-->
-<!--    const formEnforceHasErrorButton = document.querySelector('#combobox-form-enforce-has-error');-->
-<!--    const formToggleIsRequiredButton = document.querySelector('#combobox-form-toggle-is-required');-->
-<!--    const formSubmitButton = document.querySelector('#combobox-form-submit');-->
-
-<!--    formCombobox.addEventListener('odsChange', (e) => {-->
-<!--      console.log(e.detail);-->
-<!--    });-->
-<!--    // formCombobox.addEventListener('odsInvalid', (e) => {-->
-<!--    //   console.log(e.detail);-->
-<!--    // });-->
-
-<!--    formCheckValidityFormButton.addEventListener('click', async() => {-->
-<!--      // console.log('Check validity: ', await formCombobox.checkValidity());-->
-<!--      // console.log('Get validity: ', await formCombobox.getValidity());-->
-<!--      // formCombobox.value = 'Dummy';-->
-<!--      formCombobox.reset();-->
-<!--    });-->
-
-<!--    formEnforceHasErrorButton.addEventListener('click', async() => {-->
-<!--      formCombobox.setAttribute('has-error', 'true');-->
-<!--    });-->
-
-<!--    formToggleIsRequiredButton.addEventListener('click', async() => {-->
-<!--      if (formCombobox.hasAttribute('is-required')) {-->
-<!--        formCombobox.removeAttribute('is-required');-->
-<!--      } else {-->
-<!--        formCombobox.setAttribute('is-required', 'true');-->
-<!--      }-->
-<!--    });-->
-
-<!--    formSubmitButton.addEventListener('click', (e) => {-->
-<!--      e.preventDefault();-->
-<!--      const formData = new FormData(form);-->
-<!--      console.log('formData', formData);-->
-<!--    });-->
-<!--  </script>-->
-  <p>Modal</p>
-
-  <button id="modal-button">Trigger Modal</button>
-  <ods-modal id="modal">
-    <ods-combobox strategy="fixed">
+    <p>Group</p>
+    <ods-combobox id="group" value="dog,chocolate" highlight-results allow-multiple is-clearable>
       <ods-combobox-group>
         <span slot="title">Flavours</span>
         <ods-combobox-item value="chocolate">
@@ -427,19 +145,77 @@
           White chocolate
         </ods-combobox-item>
       </ods-combobox-group>
+      <ods-combobox-group>
+        <span slot="title">Animals</span>
+        <ods-combobox-item value="dog">
+          Dog
+        </ods-combobox-item>
+        <ods-combobox-item value="cat">
+          Cat
+        </ods-combobox-item>
+        <ods-combobox-item value="hamster">
+          Hamster
+        </ods-combobox-item>
+        <ods-combobox-item value="parrot">
+          Parrot
+        </ods-combobox-item>
+        <ods-combobox-item value="spider">
+          Spider
+        </ods-combobox-item>
+        <ods-combobox-item value="goldfish">
+          Goldfish
+        </ods-combobox-item>
+      </ods-combobox-group>
+      <ods-combobox-item value="some">
+        Some random item
+      </ods-combobox-item>
+      <ods-combobox-item value="Dummy">
+        Dummy item
+      </ods-combobox-item>
     </ods-combobox>
-  </ods-modal>
 
-  <script>
-    (() => {
-      const modal = document.querySelector('#modal');
-      const modalButton = document.querySelector('#modal-button');
+    <p>Modal</p>
+    <button id="modal-button">Trigger Modal</button>
+    <ods-modal id="modal">
+      <ods-combobox strategy="fixed">
+        <ods-combobox-group>
+          <span slot="title">Flavours</span>
+          <ods-combobox-item value="chocolate">
+            Chocolate
+          </ods-combobox-item>
+          <ods-combobox-item value="chocolate-with-nuts">
+            Chocolate with nuts
+          </ods-combobox-item>
+          <ods-combobox-item value="coconut">
+            Coconut
+          </ods-combobox-item>
+          <ods-combobox-item value="light-mint">
+            Light mint
+          </ods-combobox-item>
+          <ods-combobox-item value="mint">
+            Mint
+          </ods-combobox-item>
+          <ods-combobox-item value="strawberry">
+            Strawberry
+          </ods-combobox-item>
+          <ods-combobox-item value="vanilla">
+            Vanilla
+          </ods-combobox-item>
+          <ods-combobox-item value="white-chocolate">
+            White chocolate
+          </ods-combobox-item>
+        </ods-combobox-group>
+      </ods-combobox>
+    </ods-modal>
+    <script>
+      (() => {
+        const modal = document.querySelector("#modal");
+        const modalButton = document.querySelector("#modal-button");
 
-      modalButton.addEventListener('click', () => {
-        modal.open();
-      });
-    })();
-  </script>
-<!--  <p style="margin-bottom: 1000px;"></p>-->
-</body>
-</html>
+        modalButton.addEventListener("click", () => {
+          modal.open();
+        });
+      })();
+    </script>
+  </body>
+</html> -->

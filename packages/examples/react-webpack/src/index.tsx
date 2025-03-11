@@ -4,8 +4,12 @@ import { createRoot } from 'react-dom/client';
 // import { App } from 'app/App';
 // import { RouterApp } from 'router-app/RouterApp';
 // import '@ovhcloud/ods-themes/dark';
-import { OdsSpinner, OdsText } from '@ovhcloud/ods-components/react';
-// import { OdsSpinner, OdsText } from '@ovhcloud/ods-react';
+// import { OdsSpinner, OdsText } from '@ovhcloud/ods-components/react';
+import {
+  // OdsIcon,
+  OdsLink,
+  OdsText,
+} from '@ovhcloud/ods-react4';
 import '@ovhcloud/ods-themes/default';
 
 const appElement = document.getElementById('app');
@@ -19,9 +23,13 @@ const root = createRoot(appElement!);
 
 function renderApp() {
   root.render(
-    <OdsText preset="heading-1">
-      My app <OdsSpinner />
-    </OdsText>,
+    <>
+      <OdsText preset="heading-1">
+        My app
+      </OdsText>
+      <OdsLink label="Link" />
+      {/*<OdsIcon name="xmark" />*/}
+    </>,
   );
 }
 

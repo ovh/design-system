@@ -2974,10 +2974,53 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@floating-ui/dom@npm:^1.0.0":
+  version: 1.6.13
+  resolution: "@floating-ui/dom@npm:1.6.13"
+  dependencies:
+    "@floating-ui/core": ^1.6.0
+    "@floating-ui/utils": ^0.2.9
+  checksum: eabab9d860d3b5beab1c2d6936287efc4d9ab352de99062380589ef62870d59e8730397489c34a96657e128498001b5672330c4a9da0159fe8b2401ac59fe314
+  languageName: node
+  linkType: hard
+
+"@floating-ui/react-dom@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "@floating-ui/react-dom@npm:2.1.2"
+  dependencies:
+    "@floating-ui/dom": ^1.0.0
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: 25bb031686e23062ed4222a8946e76b3f9021d40a48437bd747233c4964a766204b8a55f34fa8b259839af96e60db7c6e3714d81f1de06914294f90e86ffbc48
+  languageName: node
+  linkType: hard
+
+"@floating-ui/react@npm:0.27.5":
+  version: 0.27.5
+  resolution: "@floating-ui/react@npm:0.27.5"
+  dependencies:
+    "@floating-ui/react-dom": ^2.1.2
+    "@floating-ui/utils": ^0.2.9
+    tabbable: ^6.0.0
+  peerDependencies:
+    react: ">=17.0.0"
+    react-dom: ">=17.0.0"
+  checksum: 453bea48e52728bc1c065689bf4b7d340c65006ceab805569fcb849de01ab28527a0550c1e05dc95d3e0187c4836cc56600ab252f1ee74f1f9dfb0d6bb9144c6
+  languageName: node
+  linkType: hard
+
 "@floating-ui/utils@npm:^0.2.8":
   version: 0.2.8
   resolution: "@floating-ui/utils@npm:0.2.8"
   checksum: deb98bba017c4e073c7ad5740d4dec33a4d3e0942d412e677ac0504f3dade15a68fc6fd164d43c93c0bb0bcc5dc5015c1f4080dfb1a6161140fe660624f7c875
+  languageName: node
+  linkType: hard
+
+"@floating-ui/utils@npm:^0.2.9":
+  version: 0.2.9
+  resolution: "@floating-ui/utils@npm:0.2.9"
+  checksum: d518b80cec5a323e54a069a1dd99a20f8221a4853ed98ac16c75275a0cc22f75de4f8ac5b121b4f8990bd45da7ad1fb015b9a1e4bac27bb1cd62444af84e9784
   languageName: node
   linkType: hard
 
@@ -4877,6 +4920,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react4-input@workspace:packages/ods-react4/src/components/input":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react4-input@workspace:packages/ods-react4/src/components/input"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react4-link@workspace:packages/ods-react4/src/components/link":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react4-link@workspace:packages/ods-react4/src/components/link"
@@ -4889,10 +4938,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-react4@workspace:packages/ods-react4":
+"@ovhcloud/ods-react4-textarea@workspace:packages/ods-react4/src/components/textarea":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react4-textarea@workspace:packages/ods-react4/src/components/textarea"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-react4-tooltip@workspace:packages/ods-react4/src/components/tooltip":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react4-tooltip@workspace:packages/ods-react4/src/components/tooltip"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-react4@18.5.3, @ovhcloud/ods-react4@workspace:packages/ods-react4":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react4@workspace:packages/ods-react4"
   dependencies:
+    "@floating-ui/react": 0.27.5
     "@jest/globals": 29.7.0
     "@storybook/blocks": 8.0.4
     "@storybook/components": 8.0.4
@@ -20420,6 +20482,7 @@ __metadata:
     "@babel/preset-react": 7.23.3
     "@babel/preset-typescript": 7.23.3
     "@ovhcloud/ods-components": 18.5.3
+    "@ovhcloud/ods-react4": 18.5.3
     "@ovhcloud/ods-themes": 18.5.3
     "@tanstack/react-query": 5.59.16
     "@types/react": 18.2.56
@@ -22940,6 +23003,13 @@ __metadata:
   version: 3.2.4
   resolution: "symbol-tree@npm:3.2.4"
   checksum: 6e8fc7e1486b8b54bea91199d9535bb72f10842e40c79e882fc94fb7b14b89866adf2fd79efa5ebb5b658bc07fb459ccce5ac0e99ef3d72f474e74aaf284029d
+  languageName: node
+  linkType: hard
+
+"tabbable@npm:^6.0.0":
+  version: 6.2.0
+  resolution: "tabbable@npm:6.2.0"
+  checksum: f8440277d223949272c74bb627a3371be21735ca9ad34c2570f7e1752bd646ccfc23a9d8b1ee65d6561243f4134f5fbbf1ad6b39ac3c4b586554accaff4a1300
   languageName: node
   linkType: hard
 

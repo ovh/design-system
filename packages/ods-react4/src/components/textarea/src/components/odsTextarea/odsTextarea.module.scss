@@ -1,0 +1,64 @@
+//@use '../../../../../style/input';
+
+$ods-input-actions-button-width: 24px;
+$ods-input-actions-padding-right: 4px;
+$ods-input-input-height: var(--ods-form-element-input-height);
+$ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-input-actions-padding-right);
+$ods-input-placeholder-color: var(--ods-color-form-element-text-placeholder-default);
+$ods-state-is-disabled-background-color: var(--ods-color-background-disabled-default);
+$ods-state-is-disabled-border-color: var(--ods-color-border-disabled-default);
+$ods-state-is-disabled-text-color: var(--ods-color-text-disabled-default);
+$ods-state-is-readonly-background-color: var(--ods-color-background-readonly-default);
+$ods-state-is-readonly-border-color: var(--ods-color-border-readonly-default);
+
+.ods-textarea {
+  $textarea: &;
+
+  box-sizing: border-box;
+  border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
+  border-radius: var(--ods-border-radius-sm);
+  padding: 4px 8px;
+  width: 100%;
+  //height: $ods-input-input-height;
+  color: var(--ods-color-text);
+  font-family: inherit;
+  font-size: 1rem;
+
+  height: auto;
+  resize: none;
+
+  &::placeholder {
+    color: $ods-input-placeholder-color;
+  }
+
+  &:focus {
+    outline: var(--ods-outline-style-default) var(--ods-outline-width) var(--ods-outline-color-default);
+    outline-offset: var(--ods-outline-offset);
+  }
+
+  &:disabled {
+    border-color: $ods-state-is-disabled-border-color;
+    background-color: $ods-state-is-disabled-background-color;
+    cursor: not-allowed;
+    color : $ods-state-is-disabled-text-color;
+  }
+
+  &:not(:disabled):read-only {
+    border-color: $ods-state-is-readonly-border-color;
+    background-color: $ods-state-is-readonly-background-color;
+  }
+
+  &:not(#{$textarea}--error, :disabled, :read-only) {
+    &:focus {
+      border-color: var(--ods-color-form-element-border-focus-default);
+    }
+
+    &:hover {
+      border-color: var(--ods-color-form-element-border-hover-default);
+    }
+  }
+
+  &--error {
+    border-color: var(--ods-color-form-element-border-critical);
+  }
+}

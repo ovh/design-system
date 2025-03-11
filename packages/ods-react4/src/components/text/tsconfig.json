@@ -1,5 +1,5 @@
 {
   "extends": "../../../tsconfig.json",
-  "include": ["modules.d.ts", "src", "tests", "vitest.config.ts"],
-  "exclude": ["dist"]
+  "include": ["modules.d.ts", "src", "tests"],
+  "exclude": [".storybook", "node_modules"]
 }

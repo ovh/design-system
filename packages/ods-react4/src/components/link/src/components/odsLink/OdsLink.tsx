@@ -62,7 +62,7 @@ const OdsLink: FC<OdsLinkProp> = ({
       }
     </a>
   );
-}
+};
 
 export {
   OdsLink,

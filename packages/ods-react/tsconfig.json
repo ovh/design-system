@@ -30,9 +30,10 @@
     "node_modules",
     "**/**/dist",
     "**/**/node_modules",
-    "**/**/app",
+    "**/**/_app",
     "**/**/playwright-test",
     "**/**/tests",
+    "**/**/dev.tsx",
     "**/**/*.config.ts"
   ]
 }

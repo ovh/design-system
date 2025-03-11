@@ -5,15 +5,16 @@
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "type": "module",
-  "main": "dist/ods-react.js",
+  "main": "dist/ods-react4.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc -b && vite build"
+    "build": "rimraf dist && tsc -b && vite build"
   },
   "dependencies": {
+    "@floating-ui/react": "0.27.5",
     "classnames": "2.5.1"
   },
   "peerDependencies": {

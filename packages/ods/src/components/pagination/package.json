@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-pagination",
-  "version": "18.6.0-alpha.0",
+  "version": "18.6.0-alpha.1",
   "private": true,
   "description": "ODS Pagination component",
   "main": "dist/index.cjs.js",

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.6.0-alpha.1](https://ovh.github.io/design-system/v18.6.0-alpha.1/?path=/docs/design-system-changelog--page) (2025-03-11)
+[compare](https://github.com/ovh/design-system/compare/v18.6.0-alpha.0...v18.6.0-alpha.1)
+
+**Note:** Version bump only for package @ovhcloud/ods-components-react
+
+
+
+
+
 
 
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)

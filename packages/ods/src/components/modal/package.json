@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-modal",
-  "version": "18.6.0-alpha.0",
+  "version": "18.6.0-alpha.1",
   "private": true,
   "description": "ODS Modal component",
   "main": "dist/index.cjs.js",

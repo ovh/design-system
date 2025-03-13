@@ -13,7 +13,7 @@ export class OdsBadge {
   @Prop({ reflect: true }) public color: OdsBadgeColor = ODS_BADGE_COLOR.information;
   @Prop({ reflect: true }) public icon?: OdsIconName;
   @Prop({ reflect: true }) public iconAlignment?: OdsBadgeIconAlignment = ODS_BADGE_ICON_ALIGNMENT.left;
-  @Prop({ reflect: true }) public label!: string;
+  @Prop({ reflect: true }) public label?: string;
   @Prop({ reflect: true }) public size: OdsBadgeSize = ODS_BADGE_SIZE.md;
 
   render(): FunctionalComponent {
@@ -35,9 +35,12 @@ export class OdsBadge {
             </ods-icon>
           }
 
-          <span class="ods-badge__badge__label">
-            { this.label }
-          </span>
+          {
+            this.label && this.label.length > 0 &&
+            <span class="ods-badge__badge__label">
+              { this.label }
+            </span>
+          }
         </div>
       </Host>
     );

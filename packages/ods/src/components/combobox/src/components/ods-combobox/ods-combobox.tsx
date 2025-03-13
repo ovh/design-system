@@ -785,6 +785,7 @@ export class OdsCombobox implements OdsFormElement {
             'ods-combobox__results': true,
             'ods-combobox__results--open': this.isOpen,
           }}
+          part="list"
           ref={ (el?: HTMLElement) => el && (this.resultListElement = el) }
           role="listbox"
           tabindex="-1">

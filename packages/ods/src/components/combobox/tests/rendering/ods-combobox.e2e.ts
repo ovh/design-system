@@ -296,4 +296,22 @@ describe('ods-combobox rendering', () => {
       expect(hasScroll).toBe(false);
     });
   });
+
+  describe('part', () => {
+    it('should render with custom style applied', async() => {
+      const customHeight = '2000px';
+      await setup(
+        '<ods-combobox><ods-combobox-item value="dummy1">Dummy 1</ods-combobox-item><ods-combobox-item value="dummy2">Dummy 2</ods-combobox-item></ods-combobox>',
+        `ods-combobox::part(list) { max-height: ${customHeight}; }`,
+      );
+
+      await (await page.find('ods-combobox >>> ods-input')).click();
+      await page.waitForChanges();
+
+      expect(await isOpen()).toBe(true);
+
+      const listStyle = await (await page.find('ods-combobox >>> ul')).getComputedStyle();
+      expect(listStyle.getPropertyValue('max-height')).toBe(customHeight);
+    });
+  });
 });

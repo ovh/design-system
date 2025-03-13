@@ -18,6 +18,14 @@ import { Combobox as FormFieldCombobox } from '../form-field/form-field.stories'
 
 <TechnicalSpecification data={ SpecificationsCombobox } />
 
+<Heading label="Style customization" level={ 2 } />
+
+You can update the component style using a class on the web-component directly or access the internal list element using the part `list`.
+
+Custom CSS:
+
+<Canvas of={ ComboboxStories.CustomCSS } sourceState="shown" />
+
 <Heading label="Search behaviour & customization" level={ 2 } />
 
 When typing into the combobox, the list of combobox items will be filtered to match the input value.

@@ -18,19 +18,21 @@
       }
     </style>
   </head>
-<body>
-        <div style="height: 200px; overflow: hidden; position: relative;">
-        <div style="position: absolute; bottom: 10px; width: 100%;">
-          <ods-combobox>
-            <ods-combobox-item value="item1">Item 1</ods-combobox-item>
-            <ods-combobox-item value="item2">Item 2</ods-combobox-item>
-            <ods-combobox-item value="item3">Item 3</ods-combobox-item>
-            <ods-combobox-item value="item4">Item 4</ods-combobox-item>
-            <ods-combobox-item value="item5">Item 5</ods-combobox-item>
-          </ods-combobox>
-        </div>
-      </div>
-</body>
+
+  <body>
+    <ods-combobox>
+      <ods-combobox-item value="item1">Item 1</ods-combobox-item>
+      <ods-combobox-item value="item2">Item 2</ods-combobox-item>
+      <ods-combobox-item value="item3">Item 3</ods-combobox-item>
+      <ods-combobox-item value="item4">Item 4</ods-combobox-item>
+      <ods-combobox-item value="item5">Item 5</ods-combobox-item>
+    </ods-combobox>
+    <style>
+      ods-combobox::part(toto) {
+        max-height: 100px;
+      }
+    </style>
+  </body>
  <!-- <body>
     <button>Focus</button>
     <div style="height: 100vh"></div>
@@ -96,7 +98,7 @@
 
       defaultButtonOpen.addEventListener("click", () => {
         defaultCombobox.open();
-        
+
       });
 
       defaultButtonAddOption.addEventListener("click", () => {

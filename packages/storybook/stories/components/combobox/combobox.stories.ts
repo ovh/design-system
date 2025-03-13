@@ -327,6 +327,47 @@ export const Clearable: StoryObj = {
   `,
 };
 
+export const CustomCSS: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-combobox class="my-combobox">
+  <ods-combobox-item value="chocolate">
+    Chocolate
+  </ods-combobox-item>
+  <ods-combobox-item value="chocolate-with-nuts">
+    Chocolate with nuts
+  </ods-combobox-item>
+  <ods-combobox-item value="coconut">
+    Coconut
+  </ods-combobox-item>
+  <ods-combobox-item value="light-mint">
+    Light mint
+  </ods-combobox-item>
+  <ods-combobox-item value="mint">
+    Mint
+  </ods-combobox-item>
+  <ods-combobox-item value="strawberry">
+    Strawberry
+  </ods-combobox-item>
+  <ods-combobox-item value="vanilla">
+    Vanilla
+  </ods-combobox-item>
+  <ods-combobox-item value="white-chocolate">
+    White chocolate
+  </ods-combobox-item>
+</ods-combobox>
+<style>
+  .my-combobox {
+    width: 100%;
+  }
+
+  .my-combobox::part(list) {
+    max-height: 100px;
+  }
+</style>
+  `,
+};
+
 export const CustomItems: StoryObj = {
   tags: ['isHidden'],
   render: () => html`

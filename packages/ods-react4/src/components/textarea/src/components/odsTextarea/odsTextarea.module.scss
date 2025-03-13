@@ -25,7 +25,12 @@ $ods-state-is-readonly-border-color: var(--ods-color-border-readonly-default);
   font-size: 1rem;
 
   height: auto;
+
+
+
   resize: none;
+
+
 
   &::placeholder {
     color: $ods-input-placeholder-color;

@@ -1,4 +1,5 @@
 import { FloatingArrow, arrow, autoUpdate, flip, offset, shift, useFloating, useFocus, useInteractions, useHover } from '@floating-ui/react';
+import classNames from 'classnames';
 import { type ComponentPropsWithoutRef, type FC, type JSX, type ReactNode, useRef, useState } from 'react';
 // import { ODS_TOOLTIP_POSITION, type OdsTooltipPosition } from '../../constants/tooltip-position';
 // import { ODS_TOOLTIP_STRATEGY, type OdsTooltipStrategy } from '../../constants/tooltip-strategy';
@@ -20,6 +21,7 @@ interface OdsTooltipProp extends ComponentPropsWithoutRef<'div'> {
 
 const OdsTooltip: FC<OdsTooltipProp> = ({
   children,
+  className,
   position = 'top',
   strategy = 'absolute',
   withArrow = false,
@@ -68,7 +70,7 @@ const OdsTooltip: FC<OdsTooltipProp> = ({
       {
         isOpen && (
           <div
-            className={ style['ods-tooltip'] }
+            className={ classNames(style['ods-tooltip'], className) }
             ref={ refs.setFloating }
             style={ floatingStyles }
             { ...getFloatingProps() }

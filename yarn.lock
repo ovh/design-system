@@ -4914,6 +4914,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react4-accordion@workspace:packages/ods-react4/src/components/accordion":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react4-accordion@workspace:packages/ods-react4/src/components/accordion"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react4-icon@workspace:packages/ods-react4/src/components/icon":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react4-icon@workspace:packages/ods-react4/src/components/icon"

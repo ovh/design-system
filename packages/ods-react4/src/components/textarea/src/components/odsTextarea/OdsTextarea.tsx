@@ -13,6 +13,7 @@ interface OdsTextareaProp extends ComponentPropsWithRef<'textarea'> {
 }
 
 const OdsTextarea: FC<OdsTextareaProp> = forwardRef(({
+  className,
   hasError = false,
   name,
   ...props
@@ -26,7 +27,7 @@ const OdsTextarea: FC<OdsTextareaProp> = forwardRef(({
         // @ts-ignore
         if (ref.current) {
           // @ts-ignore
-          ref.current.value = ''; // KO
+          ref.current.value = '';
         }
       }
     };
@@ -47,6 +48,7 @@ const OdsTextarea: FC<OdsTextareaProp> = forwardRef(({
         style['ods-textarea'],
         { [style['ods-textarea--error']]: hasError || isInvalid },
         // { [style['ods-textarea--resizable']]: props },
+        className,
       )}
       name={ name }
       onBlur={ onBlur }

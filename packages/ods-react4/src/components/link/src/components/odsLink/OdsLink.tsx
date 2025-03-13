@@ -16,6 +16,7 @@ interface OdsLinkProp extends ComponentPropsWithoutRef<'a'> {
 }
 
 const OdsLink: FC<OdsLinkProp> = ({
+  className,
   color = ODS_LINK_COLOR.primary,
   disabled,
   icon,
@@ -36,7 +37,8 @@ const OdsLink: FC<OdsLinkProp> = ({
         style['ods-link'],
         style[`ods-link--${color}`],
         style[`ods-link--icon-${iconAlignment}`],
-        { [style['ods-link--disabled']]: disabled }
+        { [style['ods-link--disabled']]: disabled },
+        className,
       )}
       onClick={ onClick }
       tabIndex={ disabled ? -1 : 0 }

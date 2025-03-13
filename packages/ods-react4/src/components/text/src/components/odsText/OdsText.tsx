@@ -47,6 +47,7 @@ function getTag(preset: OdsTextPreset): string {
 
 const OdsText: FC<OdsTextProp> = ({
   children,
+  className,
   preset = ODS_TEXT_PRESET.paragraph,
   ...props
 }): JSX.Element => {
@@ -55,7 +56,7 @@ const OdsText: FC<OdsTextProp> = ({
   return (
     // @ts-ignore
     <Tag
-      className={ classNames(style['ods-text'], style[`ods-text--${preset}`]) }
+      className={ classNames(style['ods-text'], style[`ods-text--${preset}`], className) }
       { ...props }>
       { children }
     </Tag>

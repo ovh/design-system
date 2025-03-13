@@ -1,3 +1,4 @@
+export * from './accordion/src';
 export * from './icon/src';
 export * from './input/src';
 export * from './link/src';

@@ -11,6 +11,9 @@
 - External lib (like datepicker)?
 - Do we keep commonJS version?
 
+- keep some part ot target specific section of our implementation
+- keep a data-attribute indicating that html element is an ODS element (like data-ods-link)
+
 ### Controlled vs Uncontrolled (or both?)?
 
 #### Controlled

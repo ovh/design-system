@@ -10,7 +10,9 @@ type Props = {
 const BestPractices = ({ donts, dos }: Props) => {
   return (
     <div>
-      <Table className={ styles['best-practices__do-table'] }>
+      {
+        dos && dos.length > 0 && 
+        <Table className={ styles['best-practices__do-table'] }>
         <thead>
           <tr>
             <th className={ styles['best-practices__do-table__cell'] }>
@@ -31,8 +33,11 @@ const BestPractices = ({ donts, dos }: Props) => {
           }
         </tbody>
       </Table>
+      }
 
-      <Table className={ styles['best-practices__dont-table'] }>
+      {
+        donts && donts.length > 0 &&
+        <Table className={ styles['best-practices__dont-table'] }>
         <thead>
           <tr>
             <th className={ styles['best-practices__dont-table__cell'] }>
@@ -53,6 +58,7 @@ const BestPractices = ({ donts, dos }: Props) => {
           }
         </tbody>
       </Table>
+      }
     </div>
   );
 };

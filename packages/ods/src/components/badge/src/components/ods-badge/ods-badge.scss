@@ -10,7 +10,7 @@
     $badge: &;
 
     @include badge.ods-badge();
-
+    
     &--alpha {
       @include badge.ods-badge-color('alpha');
     }
@@ -73,6 +73,10 @@
 
     &__label {
       @include font.ellipsis();
+    }
+    
+    &--icon-right {
+      flex-direction: row-reverse;
     }
   }
 }

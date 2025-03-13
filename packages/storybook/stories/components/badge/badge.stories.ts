@@ -1,4 +1,12 @@
-import { ODS_ICON_NAMES, ODS_BADGE_COLOR, ODS_BADGE_COLORS, ODS_BADGE_SIZE, ODS_BADGE_SIZES } from '@ovhcloud/ods-components';
+import { 
+  ODS_BADGE_COLOR, 
+  ODS_BADGE_COLORS,   
+  ODS_BADGE_ICON_ALIGNMENT,
+  ODS_BADGE_ICON_ALIGNMENTS,
+  ODS_ICON_NAME,
+  ODS_ICON_NAMES, 
+  ODS_BADGE_SIZE, 
+  ODS_BADGE_SIZES } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-badge';
 import { type Meta, type StoryObj } from '@storybook/web-components';
 import { html } from 'lit-html';
@@ -19,6 +27,7 @@ export const Demo: StoryObj = {
 <ods-badge class="my-badge-demo"
            color="${arg.color}"
            icon="${arg.icon}"
+           icon-alignment="${arg.iconAlignment}"
            label="${arg.label}"
            size="${arg.size}">
 </ods-badge>
@@ -55,6 +64,15 @@ export const Demo: StoryObj = {
       control: { type: 'select' },
       options: ODS_ICON_NAMES,
       description: 'See the whole list [here](/?path=/docs/ods-components-icon--documentation#name)',
+    },
+    iconAlignment: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: ODS_BADGE_ICON_ALIGNMENT.left },
+        type: { summary: ODS_BADGE_ICON_ALIGNMENTS }
+      },
+      control: { type: 'select' },
+      options: ODS_BADGE_ICON_ALIGNMENTS
     },
     label: {
       table: {
@@ -111,6 +129,20 @@ export const Color: StoryObj = {
 <ods-badge color="${ODS_BADGE_COLOR.promotion}" label="Promotion"></ods-badge>
 <ods-badge color="${ODS_BADGE_COLOR.success}" label="Success"></ods-badge>
 <ods-badge color="${ODS_BADGE_COLOR.warning}" label="Warning"></ods-badge>
+  `,
+};
+
+export const WithLeftIcon: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+    <ods-badge label="Home left" icon="${ODS_ICON_NAME.home}" icon-alignment="${ODS_BADGE_ICON_ALIGNMENT.left}">Badge left</ods-badge>
+  `,
+};
+
+export const WithRightIcon: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+    <ods-badge label="Home right" icon="${ODS_ICON_NAME.home}" icon-alignment="${ODS_BADGE_ICON_ALIGNMENT.right}">Badge right</ods-badge>
   `,
 };
 

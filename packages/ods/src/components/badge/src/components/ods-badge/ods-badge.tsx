@@ -1,6 +1,7 @@
 import { Component, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
 import { type OdsIconName } from '../../../../icon/src';
 import { ODS_BADGE_COLOR, type OdsBadgeColor } from '../../constants/badge-color';
+import { ODS_BADGE_ICON_ALIGNMENT, type OdsBadgeIconAlignment } from '../../constants/badge-icon-alignment';
 import { ODS_BADGE_SIZE, type OdsBadgeSize } from '../../constants/badge-size';
 
 @Component({
@@ -11,6 +12,7 @@ import { ODS_BADGE_SIZE, type OdsBadgeSize } from '../../constants/badge-size';
 export class OdsBadge {
   @Prop({ reflect: true }) public color: OdsBadgeColor = ODS_BADGE_COLOR.information;
   @Prop({ reflect: true }) public icon?: OdsIconName;
+  @Prop({ reflect: true }) public iconAlignment?: OdsBadgeIconAlignment = ODS_BADGE_ICON_ALIGNMENT.left;
   @Prop({ reflect: true }) public label!: string;
   @Prop({ reflect: true }) public size: OdsBadgeSize = ODS_BADGE_SIZE.md;
 
@@ -22,6 +24,7 @@ export class OdsBadge {
             'ods-badge__badge': true,
             [`ods-badge__badge--${this.color}`]: true,
             [`ods-badge__badge--${this.size}`]: true,
+            [`ods-badge__badge--icon-${this.iconAlignment}`]: true,
           }}
           part="badge">
           {

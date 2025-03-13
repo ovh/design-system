@@ -84,6 +84,7 @@ $ods-combobox-vertical-padding: 4px;
 
       &::part(input) {
         border: 0;
+        height: calc(input.$ods-input-input-height - ($ods-combobox-border-size * 2));
 
         &:focus {
           outline: 0;

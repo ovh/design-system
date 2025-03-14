@@ -10,7 +10,7 @@
     $badge: &;
 
     @include badge.ods-badge();
-    
+
     &--alpha {
       @include badge.ods-badge-color('alpha');
     }

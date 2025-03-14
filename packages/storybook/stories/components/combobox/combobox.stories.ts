@@ -20,6 +20,7 @@ export const Demo: StoryObj = {
     return html`
       <ods-combobox
         add-new-element-label="${arg.addNewElementLabel || nothing}"
+        allow-new-element="${arg.allowNewElement}"
         has-error="${arg.hasError}"
         highlight-results="${arg.highlightResults}"
         is-clearable="${arg.isClearable}"
@@ -63,6 +64,14 @@ export const Demo: StoryObj = {
         type: { summary: 'string' },
       },
       control: 'text',
+    },
+    allowNewElement: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: true },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
     },
     hasError: {
       table: {
@@ -130,6 +139,7 @@ export const Demo: StoryObj = {
     },
   }),
   args: {
+    allowNewElement: true,
     hasError: false,
     highlightResults: false,
     isClearable: false,
@@ -145,6 +155,7 @@ export const DemoMultiple: StoryObj = {
       <ods-combobox
         add-new-element-label="${arg.addNewElementLabel || nothing}"
         allow-multiple
+        allow-new-element="${arg.allowNewElement}"
         has-error="${arg.hasError}"
         highlight-results="${arg.highlightResults}"
         is-clearable="${arg.isClearable}"
@@ -188,6 +199,14 @@ export const DemoMultiple: StoryObj = {
         type: { summary: 'string' },
       },
       control: 'text',
+    },
+    allowNewElement: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: true },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
     },
     hasError: {
       table: {
@@ -255,6 +274,7 @@ export const DemoMultiple: StoryObj = {
     },
   }),
   args: {
+    allowNewElement: true,
     hasError: false,
     highlightResults: false,
     isClearable: false,

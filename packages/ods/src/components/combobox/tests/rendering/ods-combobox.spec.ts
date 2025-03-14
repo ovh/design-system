@@ -68,6 +68,22 @@ describe('ods-combobox rendering', () => {
     });
   });
 
+  describe('allowNewElement', () => {
+    it('should be reflected', async() => {
+      const dummyValue = 'dummy value';
+
+      await setup(`<ods-combobox allow-new-element="${dummyValue}"></ods-combobox>`);
+
+      expect(root?.getAttribute('allow-new-element')).toBe(dummyValue);
+    });
+
+    it('should render with expected default value', async() => {
+      await setup('<ods-combobox></ods-combobox>');
+
+      expect(root?.getAttribute('allow-new-element')).toBe('');
+    });
+  });
+
   describe('defaultValue', () => {
     it('should be reflected', async() => {
       const dummyValue = 'dummy value';

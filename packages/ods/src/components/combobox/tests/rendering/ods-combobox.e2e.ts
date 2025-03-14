@@ -1,4 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
+import { CREATE_NEW_ID } from '../../src/controller/ods-combobox';
 
 describe('ods-combobox rendering', () => {
   let el: E2EElement;
@@ -116,6 +117,32 @@ describe('ods-combobox rendering', () => {
           return document.querySelector('ods-combobox')?.shadowRoot?.querySelector('ods-input')?.hasAttribute('is-disabled');
         })).toBe(true);
         expect(await isOpen()).toBe(false);
+      });
+    });
+
+    describe('new element', () => {
+      async function hasAddElementItem(): Promise<boolean> {
+        return page.evaluate((addItemId: string) => {
+          return !!document.querySelector('ods-combobox')?.shadowRoot?.querySelector(`#${addItemId}`);
+        }, CREATE_NEW_ID);
+      }
+
+      it('should offer to add a new item', async() => {
+        await setup('<ods-combobox allow-new-element><ods-combobox-item value="dummy">Dummy</ods-combobox-item></ods-combobox>');
+
+        await input.type('C', { delay: 200 });
+        await page.waitForChanges();
+
+        expect(await hasAddElementItem()).toBe(true);
+      });
+
+      it('should not offer to add a new item', async() => {
+        await setup('<ods-combobox allow-new-element="false"><ods-combobox-item value="dummy">Dummy</ods-combobox-item></ods-combobox>');
+
+        await input.type('C', { delay: 200 });
+        await page.waitForChanges();
+
+        expect(await hasAddElementItem()).toBe(false);
       });
     });
 

@@ -55,6 +55,7 @@ export class OdsCombobox implements OdsFormElement {
 
   @Prop({ reflect: true }) public addNewElementLabel: string = 'Add';
   @Prop({ reflect: true }) public allowMultiple: boolean = false;
+  @Prop({ reflect: true }) public allowNewElement: boolean = true;
   @Prop({ reflect: true }) public defaultValue?: string | string[];
   @Prop({ reflect: true }) public hasError: boolean = false;
   @Prop({ reflect: true }) public highlightResults: boolean = false;
@@ -653,7 +654,7 @@ export class OdsCombobox implements OdsFormElement {
   }
 
   private updateCreateNewElement(): void {
-    if (!this.createNewElement) {
+    if (!this.createNewElement || !this.allowNewElement) {
       return;
     }
 
@@ -803,13 +804,16 @@ export class OdsCombobox implements OdsFormElement {
           ref={ (el?: HTMLElement) => el && (this.resultListElement = el) }
           role="listbox"
           tabindex="-1">
-          <ods-combobox-item
-            class="ods-combobox__results__new"
-            id={ CREATE_NEW_ID }
-            isVisible={ false }
-            ref={ (el: unknown) => this.createNewElement = el as ResultElement }
-            value="">
-          </ods-combobox-item>
+          {
+            this.allowNewElement &&
+            <ods-combobox-item
+              class="ods-combobox__results__new"
+              id={ CREATE_NEW_ID }
+              isVisible={ false }
+              ref={ (el: unknown) => this.createNewElement = el as ResultElement }
+              value="">
+            </ods-combobox-item>
+          }
 
           {
             this.hasNoResults &&

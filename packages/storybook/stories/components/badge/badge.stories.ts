@@ -132,17 +132,19 @@ export const Color: StoryObj = {
   `,
 };
 
-export const WithLeftIcon: StoryObj = {
+export const IconOnly: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-    <ods-badge label="Home left" icon="${ODS_ICON_NAME.home}" icon-alignment="${ODS_BADGE_ICON_ALIGNMENT.left}">Badge left</ods-badge>
+    <ods-badge icon="${ODS_ICON_NAME.home}"></ods-badge>
   `,
 };
 
-export const WithRightIcon: StoryObj = {
+export const IconAlignment: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-    <ods-badge label="Home right" icon="${ODS_ICON_NAME.home}" icon-alignment="${ODS_BADGE_ICON_ALIGNMENT.right}">Badge right</ods-badge>
+<ods-badge label="Home left" icon="${ODS_ICON_NAME.home}" icon-alignment="${ODS_BADGE_ICON_ALIGNMENT.left}"></ods-badge>
+<br />
+<ods-badge label="Home right" icon="${ODS_ICON_NAME.home}" icon-alignment="${ODS_BADGE_ICON_ALIGNMENT.right}"></ods-badge>
   `,
 };
 

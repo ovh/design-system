@@ -72,7 +72,6 @@ All product statuses are of type "New", "Limited edition", "Sold out"
 <BestPractices
   donts={[]}
   dos={[
-    '- You must use either an icon or a label, or both.',
     '- The label must be short and clear.',
   ]}
 />
@@ -90,6 +89,8 @@ Multiple **Badges** can be displayed:
 <Heading label="Behavior" level={ 2 } />
 
 As the **Badge** is an informational component, its default behavior is being read-only.
+
+An **Icon** can be displayed on the left or right of the **Badge** label content. **Icon-only Badge** also exists but it must meet accessibility requirements. See Accessibility section below.
 
 <Heading label="Variation" level={ 2 } />
 
@@ -109,4 +110,4 @@ As the **Badge** is an informational component, its default behavior is being re
 
 **Badges** are read by screen readers as regular <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />.
 
-**Icon-only Badge** is only used in very specific cases. In the case of its use, it should be accompagnied by a hoverable/tab-able tooltip to provide further context.
+**Icon-only Badge** is only used in very specific cases. In the case of its use, it should be accompagnied by a hoverable/tab-able <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="Tooltip" story={ STORY.documentation } /> to provide further context.

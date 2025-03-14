@@ -24,112 +24,163 @@
 <!--    <div style="height: 100vh"></div>-->
 <p>Default</p>
 <label for="default">My combobox</label>
-<ods-combobox id="default" is-clearable highlight-results allow-new-element="false">
-  <ods-combobox-item value="chocolate">
-    Chocolate
-  </ods-combobox-item>
-  <ods-combobox-item value="chocolate-with-nuts">
-    Chocolate with nuts
-  </ods-combobox-item>
-  <ods-combobox-item value="coconut">
-    Coconut
-  </ods-combobox-item>
-  <ods-combobox-item value="light-mint">
-    Light mint
-  </ods-combobox-item>
-  <ods-combobox-item value="mint">
-    Mint
-  </ods-combobox-item>
-  <ods-combobox-item value="strawberry">
-    Strawberry
-  </ods-combobox-item>
-  <ods-combobox-item value="vanilla">
-    Vanilla
-  </ods-combobox-item>
-  <ods-combobox-item value="white-chocolate">
-    White chocolate
-  </ods-combobox-item>
+<ods-combobox id="default" is-clearable highlight-results>
+  <ods-combobox-group>
+    <span slot="title">Flavours</span>
+    <ods-combobox-item value="chocolate">
+      Chocolate
+    </ods-combobox-item>
+    <ods-combobox-item value="chocolate-with-nuts">
+      Chocolate with nuts
+    </ods-combobox-item>
+    <ods-combobox-item value="coconut">
+      Coconut
+    </ods-combobox-item>
+    <ods-combobox-item value="light-mint">
+      Light mint
+    </ods-combobox-item>
+    <ods-combobox-item value="mint">
+      Mint
+    </ods-combobox-item>
+    <ods-combobox-item value="strawberry">
+      Strawberry
+    </ods-combobox-item>
+    <ods-combobox-item value="vanilla">
+      Vanilla
+    </ods-combobox-item>
+    <ods-combobox-item value="white-chocolate">
+      White chocolate
+    </ods-combobox-item>
+  </ods-combobox-group>
+  <ods-combobox-group>
+    <span slot="title">Animals</span>
+    <ods-combobox-item value="dog">
+      Dog
+    </ods-combobox-item>
+    <ods-combobox-item value="cat">
+      Cat
+    </ods-combobox-item>
+    <ods-combobox-item value="hamster">
+      Hamster
+    </ods-combobox-item>
+    <ods-combobox-item value="parrot">
+      Parrot
+    </ods-combobox-item>
+    <ods-combobox-item value="spider">
+      Spider
+    </ods-combobox-item>
+    <ods-combobox-item value="goldfish">
+      Goldfish
+    </ods-combobox-item>
+  </ods-combobox-group>
 </ods-combobox>
+<button id="default-change-value">Change Highlight</button>
+<button id="default-open">Open</button>
+<button id="default-close">Close</button>
+<button id="default-toggle-group">ToggleGroup</button>
+<button id="default-add-option">Add Option (with delay)</button>
 
-<ods-combobox id="default" is-clearable allow-multiple allow-new-element="false">
-  <ods-combobox-item value="chocolate">
-    Chocolate
-  </ods-combobox-item>
-  <ods-combobox-item value="chocolate-with-nuts">
-    Chocolate with nuts
-  </ods-combobox-item>
-  <ods-combobox-item value="coconut">
-    Coconut
-  </ods-combobox-item>
-  <ods-combobox-item value="light-mint">
-    Light mint
-  </ods-combobox-item>
-  <ods-combobox-item value="mint">
-    Mint
-  </ods-combobox-item>
-  <ods-combobox-item value="strawberry">
-    Strawberry
-  </ods-combobox-item>
-  <ods-combobox-item value="vanilla">
-    Vanilla
-  </ods-combobox-item>
-  <ods-combobox-item value="white-chocolate">
-    White chocolate
-  </ods-combobox-item>
-</ods-combobox>
-<!--    <button id="default-change-value">Change Highlight</button>-->
-<!--    <button id="default-open">Open</button>-->
-<!--    <button id="default-close">Close</button>-->
-<!--    <button id="default-add-option">Add Option (with delay)</button>-->
+<script>
+  const defaultCombobox = document.querySelector("#default");
+  const defaultButtonChangeValue = document.querySelector("#default-change-value");
+  const defaultButtonOpen = document.querySelector("#default-open");
+  const defaultButtonClose = document.querySelector("#default-close");
+  const defaultToggleGroup = document.querySelector("#default-toggle-group");
+  const defaultButtonAddOption = document.querySelector("#default-add-option");
+  let hasTwoGroups = true;
 
-<!--    <script>-->
-<!--      const defaultCombobox = document.querySelector("#default");-->
-<!--      const defaultButtonChangeValue = document.querySelector(-->
-<!--        "#default-change-value"-->
-<!--      );-->
-<!--      const defaultButtonOpen = document.querySelector("#default-open");-->
-<!--      const defaultButtonClose = document.querySelector("#default-close");-->
-<!--      const defaultButtonAddOption = document.querySelector(-->
-<!--        "#default-add-option"-->
-<!--      );-->
+  defaultCombobox.addEventListener("odsChange", (e) => {
+    // console.log(e.detail);
+  });
 
-<!--      defaultCombobox.addEventListener("odsChange", (e) => {-->
-<!--        // console.log(e.detail);-->
-<!--      });-->
+  defaultButtonChangeValue.addEventListener("click", () => {
+    if (defaultCombobox.hasAttribute("highlight-results")) {
+      defaultCombobox.removeAttribute("highlight-results");
+    } else {
+      defaultCombobox.setAttribute("highlight-results", "true");
+    }
+  });
 
-<!--      defaultButtonChangeValue.addEventListener("click", () => {-->
-<!--        if (defaultCombobox.hasAttribute("highlight-results")) {-->
-<!--          defaultCombobox.removeAttribute("highlight-results");-->
-<!--        } else {-->
-<!--          defaultCombobox.setAttribute("highlight-results", "true");-->
-<!--        }-->
-<!--      });-->
+  defaultButtonClose.addEventListener("click", () => {
+    defaultCombobox.close();
+  });
 
-<!--      defaultButtonClose.addEventListener("click", () => {-->
-<!--        defaultCombobox.close();-->
-<!--      });-->
+  defaultButtonOpen.addEventListener("click", () => {
+    defaultCombobox.open();
+  });
 
-<!--      defaultButtonOpen.addEventListener("click", () => {-->
-<!--        defaultCombobox.open();-->
-<!--        -->
-<!--      });-->
+  defaultToggleGroup.addEventListener("click", () => {
+    const group1 = `<ods-combobox-group>
+      <span slot="title">Flavours</span>
+      <ods-combobox-item value="chocolate">
+        Chocolate
+      </ods-combobox-item>
+      <ods-combobox-item value="chocolate-with-nuts">
+        Chocolate with nuts
+      </ods-combobox-item>
+      <ods-combobox-item value="coconut">
+        Coconut
+      </ods-combobox-item>
+      <ods-combobox-item value="light-mint">
+        Light mint
+      </ods-combobox-item>
+      <ods-combobox-item value="mint">
+        Mint
+      </ods-combobox-item>
+      <ods-combobox-item value="strawberry">
+        Strawberry
+      </ods-combobox-item>
+      <ods-combobox-item value="vanilla">
+        Vanilla
+      </ods-combobox-item>
+      <ods-combobox-item value="white-chocolate">
+        White chocolate
+      </ods-combobox-item>
+    </ods-combobox-group>`;
+    const group2 = `<ods-combobox-group>
+      <span slot="title">Animals</span>
+      <ods-combobox-item value="dog">
+        Dog
+      </ods-combobox-item>
+      <ods-combobox-item value="cat">
+        Cat
+      </ods-combobox-item>
+      <ods-combobox-item value="hamster">
+        Hamster
+      </ods-combobox-item>
+      <ods-combobox-item value="parrot">
+        Parrot
+      </ods-combobox-item>
+      <ods-combobox-item value="spider">
+        Spider
+      </ods-combobox-item>
+      <ods-combobox-item value="goldfish">
+        Goldfish
+      </ods-combobox-item>
+    </ods-combobox-group>`;
 
-<!--      defaultButtonAddOption.addEventListener("click", () => {-->
-<!--        setTimeout(() => {-->
-<!--        console.log('new element')-->
-<!--          const newItem = document.createElement("ods-combobox-item");-->
-<!--          newItem.setAttribute("value", "new-option-" + Date.now());-->
-<!--          newItem.textContent =-->
-<!--            "New Option " + new Date().toLocaleTimeString();-->
+    if (hasTwoGroups) {
+      defaultCombobox.innerHTML = group1;
+      hasTwoGroups = false;
+    } else {
+      defaultCombobox.innerHTML = group1 + group2;
+    }
+  });
 
-<!--          defaultCombobox.appendChild(newItem);-->
+  defaultButtonAddOption.addEventListener("click", () => {
+    setTimeout(() => {
+      const newItem = document.createElement("ods-combobox-item");
+      newItem.setAttribute("value", "new-option-" + Date.now());
+      newItem.textContent = "New Option " + new Date().toLocaleTimeString();
 
-<!--          if (defaultCombobox.hasAttribute("open")) {-->
-<!--            defaultCombobox.open();-->
-<!--          }-->
-<!--        }, 2000);-->
-<!--      });-->
-<!--    </script>-->
+      defaultCombobox.appendChild(newItem);
+
+      if (defaultCombobox.hasAttribute("open")) {
+        defaultCombobox.open();
+      }
+    }, 2000);
+  });
+</script>
 
 <!--    <p>Group</p>-->
 <!--    <ods-combobox id="group" value="dog,chocolate" highlight-results allow-multiple is-clearable>-->

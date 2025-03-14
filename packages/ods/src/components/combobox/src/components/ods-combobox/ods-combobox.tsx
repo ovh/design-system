@@ -2,7 +2,7 @@ import { AttachInternals, Component, Element, Event, type EventEmitter, type Fun
 import Mark from 'mark.js';
 import { type OdsFormElement } from '../../../../../types';
 import { debounce } from '../../../../../utils/debounce';
-import { escapeHtml, isElementInContainer, isTargetInElement, submitFormOnEnter } from '../../../../../utils/dom';
+import { escapeHtml, getRandomHTMLId, isElementInContainer, isTargetInElement, submitFormOnEnter } from '../../../../../utils/dom';
 import { getElementPosition } from '../../../../../utils/overlay';
 import { escapeRegExp } from '../../../../../utils/regExp';
 import { type OdsInput } from '../../../../input/src';
@@ -512,6 +512,8 @@ export class OdsCombobox implements OdsFormElement {
   }
 
   private onSlotChange(event: Event): void {
+    this.resultGroups = [];
+
     this.resultElements = (event.currentTarget as HTMLSlotElement).assignedElements()
       .reduce((res, element) => {
         if (element.tagName === 'ODS-COMBOBOX-ITEM') {
@@ -520,6 +522,9 @@ export class OdsCombobox implements OdsFormElement {
         }
 
         if (element.tagName === 'ODS-COMBOBOX-GROUP') {
+          // Enforce group element ID here as it may not be yet rendered by Stencil
+          element.id = element.id || getRandomHTMLId();
+
           this.resultGroups.push(element as ResultGroup);
 
           return res.concat((Array.from(element.children || []) as ResultElement[])

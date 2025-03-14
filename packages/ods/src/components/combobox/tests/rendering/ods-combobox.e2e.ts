@@ -209,6 +209,65 @@ describe('ods-combobox rendering', () => {
         expect(await isOpen()).toBe(false);
         expect(await el.getProperty('value')).toBe(`${dummyValue1},${dummyValue2}`);
       });
+
+      it('should keep correct group visibility when adding/removing groups', async() => {
+        async function isGroupVisible(id: string): Promise<boolean> {
+          return page.evaluate((elementId) => {
+            const groupTitle = document.querySelector(`#${elementId}`)?.shadowRoot?.querySelector('.ods-combobox-group__title');
+            return !!groupTitle && !groupTitle.classList.contains('ods-combobox-group__title--hidden');
+          }, id);
+        }
+
+        await setup(`
+          <ods-combobox>
+            <ods-combobox-group id="group1">
+              <span slot="title">Group 1</span>
+              <ods-combobox-item value="dummy1">Dummy 1</ods-combobox-item>
+            </ods-combobox-group>
+            <ods-combobox-group id="group2">
+              <span slot="title">Group 2</span>
+              <ods-combobox-item value="dummy2">Dummy 2</ods-combobox-item>
+            </ods-combobox-group>
+          </ods-combobox>
+        `);
+
+        await (await page.find('ods-combobox >>> ods-input')).click();
+        await page.waitForChanges();
+
+        expect(await isOpen()).toBe(true);
+        expect(await isGroupVisible('group1')).toBe(true);
+        expect(await isGroupVisible('group2')).toBe(true);
+
+        await page.evaluate(() => {
+          document.querySelector('ods-combobox')!.innerHTML = `
+            <ods-combobox-group id="group1">
+              <span slot="title">Group 1</span>
+              <ods-combobox-item value="dummy1">Dummy 1</ods-combobox-item>
+            </ods-combobox-group>
+          `;
+        });
+        await page.waitForChanges();
+
+        expect(await isGroupVisible('group1')).toBe(true);
+        expect(await isGroupVisible('group2')).toBe(false);
+
+        await page.evaluate(() => {
+          document.querySelector('ods-combobox')!.innerHTML = `
+            <ods-combobox-group id="group1">
+              <span slot="title">Group 1</span>
+              <ods-combobox-item value="dummy1">Dummy 1</ods-combobox-item>
+            </ods-combobox-group>
+            <ods-combobox-group id="group2">
+              <span slot="title">Group 2</span>
+              <ods-combobox-item value="dummy2">Dummy 2</ods-combobox-item>
+            </ods-combobox-group>
+          `;
+        });
+        await page.waitForChanges();
+
+        expect(await isGroupVisible('group1')).toBe(true);
+        expect(await isGroupVisible('group2')).toBe(true);
+      });
     });
   });
 

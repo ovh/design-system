@@ -1,5 +1,4 @@
-import { Component, Element, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
-import { getRandomHTMLId } from '../../../../../utils/dom';
+import { Component, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
 
 @Component({
   shadow: true,
@@ -7,18 +6,12 @@ import { getRandomHTMLId } from '../../../../../utils/dom';
   tag: 'ods-combobox-group',
 })
 export class OdsComboboxGroup {
-  private internalId = getRandomHTMLId();
-
-  @Element() el!: HTMLElement;
-
   /** @internal */
   @Prop({ reflect: false }) public isVisible: boolean = false;
 
   render(): FunctionalComponent {
     return (
-      <Host
-        class="ods-combobox-group"
-        id={ this.el.id || this.internalId }>
+      <Host class="ods-combobox-group">
         <div
           class={{
             'ods-combobox-group__title': true,

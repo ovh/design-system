@@ -1,6 +1,6 @@
 {
   "name": "react-webpack",
-  "version": "18.6.0-alpha.1",
+  "version": "18.6.0-alpha.2",
   "private": true,
   "description": "Example of how to use ODS with React",
   "main": "index.js",
@@ -9,8 +9,8 @@
     "start": "webpack serve --config webpack.config.js --mode=development"
   },
   "dependencies": {
-    "@ovhcloud/ods-components": "18.6.0-alpha.1",
-    "@ovhcloud/ods-themes": "18.6.0-alpha.1",
+    "@ovhcloud/ods-components": "18.6.0-alpha.2",
+    "@ovhcloud/ods-themes": "18.6.0-alpha.2",
     "@tanstack/react-query": "5.59.16",
     "formik": "2.4.6",
     "react": "18.2.0",

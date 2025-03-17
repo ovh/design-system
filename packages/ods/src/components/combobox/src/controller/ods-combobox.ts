@@ -44,6 +44,10 @@ function isANewItem(value?: string, items: (HTMLElement & OdsComboboxItem)[] = [
   });
 }
 
+function isAllWhitespace(value?: string): boolean {
+  return value?.trim().length === 0;
+}
+
 function splitValue(value: string[] | string | null): string[] {
   if (Array.isArray(value)) {
     return value;
@@ -104,6 +108,7 @@ export {
   inlineSelection,
   inlineValue,
   isANewItem,
+  isAllWhitespace,
   splitValue,
   updateInternals,
   updateItemsFocus,

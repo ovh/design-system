@@ -1,5 +1,5 @@
 import { type OdsComboboxItem } from '../../src';
-import { CREATE_NEW_ID, getInitialValue, inlineSelection, inlineValue, isANewItem, splitValue, updateInternals, updateItemsFocus } from '../../src/controller/ods-combobox';
+import { CREATE_NEW_ID, getInitialValue, inlineSelection, inlineValue, isANewItem, isAllWhitespace, splitValue, updateInternals, updateItemsFocus } from '../../src/controller/ods-combobox';
 
 describe('ods-combobox controller', () => {
   beforeEach(jest.clearAllMocks);
@@ -102,6 +102,22 @@ describe('ods-combobox controller', () => {
         { text: 'other value', value: 'other-value' },
         { text: 'random value', value: 'random-value' },
       ])).toBe(true);
+    });
+  });
+
+  describe('isAllWhitespace', () => {
+    it('should return false if string is not all whitespace', () => {
+      expect(isAllWhitespace()).toBe(false);
+      expect(isAllWhitespace('abc')).toBe(false);
+      expect(isAllWhitespace('a b c')).toBe(false);
+      expect(isAllWhitespace(' abc')).toBe(false);
+      expect(isAllWhitespace('abc ')).toBe(false);
+      expect(isAllWhitespace(' abc ')).toBe(false);
+    });
+
+    it('should return true if string is all whitespace', () => {
+      expect(isAllWhitespace(' ')).toBe(true);
+      expect(isAllWhitespace('     ')).toBe(true);
     });
   });
 

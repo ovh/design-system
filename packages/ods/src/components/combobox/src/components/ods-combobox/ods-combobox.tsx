@@ -7,7 +7,7 @@ import { getElementPosition } from '../../../../../utils/overlay';
 import { escapeRegExp } from '../../../../../utils/regExp';
 import { type OdsInput } from '../../../../input/src';
 import { ODS_COMBOBOX_STRATEGY, type OdsComboboxStrategy } from '../../constants/combobox-strategy';
-import { CREATE_NEW_ID, type OdsComboboxSelection, VALUE_DEFAULT_VALUE, getInitialValue, inlineSelection, inlineValue, isANewItem, splitValue, updateInternals, updateItemsFocus } from '../../controller/ods-combobox';
+import { CREATE_NEW_ID, type OdsComboboxSelection, VALUE_DEFAULT_VALUE, getInitialValue, inlineSelection, inlineValue, isANewItem, isAllWhitespace, splitValue, updateInternals, updateItemsFocus } from '../../controller/ods-combobox';
 import { type OdsComboboxChangeEventDetail, type OdsComboboxFilterEventDetail, type OdsComboboxItemSelectedEventDetail } from '../../interfaces/events';
 import { type OdsComboboxGroup } from '../ods-combobox-group/ods-combobox-group';
 import { type OdsComboboxItem } from '../ods-combobox-item/ods-combobox-item';
@@ -117,13 +117,22 @@ export class OdsCombobox implements OdsFormElement {
     event.stopImmediatePropagation();
     this.shouldUpdateSelection = false;
 
+    if (isAllWhitespace(event.detail.value)) {
+      return;
+    }
+
+    const value = event.detail.value.trim();
+
     if (this.allowMultiple) {
       this.currentSelections.push(event.detail.id === CREATE_NEW_ID ? {
-        text: event.detail.value,
-        value: event.detail.value,
-      } : event.detail);
+        text: value,
+        value: value,
+      } : {
+        ...event.detail,
+        value: value,
+      });
 
-      const selectedItem = this.resultElements.find((el) => el.value === event.detail.value);
+      const selectedItem = this.resultElements.find((el) => el.value === value);
 
       if (selectedItem) {
         selectedItem.isSelected = true;
@@ -131,10 +140,13 @@ export class OdsCombobox implements OdsFormElement {
       this.value = inlineSelection(this.currentSelections);
     } else {
       this.currentSelections = event.detail.id === CREATE_NEW_ID ? [{
-        text: event.detail.value,
-        value: event.detail.value,
-      }] : [event.detail];
-      this.value = event.detail.value;
+        text: value,
+        value: value,
+      }] : [{
+        ...event.detail,
+        value: value,
+      }];
+      this.value = value;
     }
     this.currentFocusedItemIndex = updateItemsFocus(this.resultElements, this.currentFocusedItemIndex, 'reset');
     this.closeDropdown();
@@ -318,8 +330,8 @@ export class OdsCombobox implements OdsFormElement {
   private filterResults(value: string): void {
     this.markInstance?.unmark();
 
-    if (value) {
-      const filterRegex = new RegExp(`.*${escapeRegExp(value)}.*`, 'i');
+    if (value && !isAllWhitespace(value)) {
+      const filterRegex = new RegExp(`.*${escapeRegExp(value.trim())}.*`, 'i');
       let noMatch = true;
 
       this.resultElements?.forEach((resultElement) => {
@@ -645,9 +657,11 @@ export class OdsCombobox implements OdsFormElement {
       return;
     }
 
-    if (isANewItem(this.inputElement?.value, this.resultElements, this.currentSelections)) {
-      const templateValue = escapeHtml(this.inputElement?.value || '');
-      this.createNewElement.value = this.inputElement?.value || '';
+    const value = this.inputElement?.value;
+
+    if (!isAllWhitespace(value) && isANewItem(value, this.resultElements, this.currentSelections)) {
+      const templateValue = escapeHtml(value || '');
+      this.createNewElement.value = value || '';
 
       this.createNewElement.innerHTML = this.highlightResults
         ? `${this.addNewElementLabel} <span class="${HIGHLIGHT_CLASS}">${templateValue}</span>`

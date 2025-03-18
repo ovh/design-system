@@ -1,4 +1,4 @@
-import type { StorybookConfig } from '@storybook/web-components-vite';
+import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   addons: [
@@ -20,7 +20,7 @@ const config: StorybookConfig = {
   docs: {
     autodocs: false,
   },
-  framework: '@storybook/web-components-vite',
+  framework: '@storybook/react-vite',
   managerHead: (head) => `
     ${head}
     <link rel="shortcut icon" href="./favicon.ico">

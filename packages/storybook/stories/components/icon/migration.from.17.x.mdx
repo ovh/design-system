@@ -1,4 +1,4 @@
-import { OdsBadge, OdsLink } from '@ovhcloud/ods-components/react';
+import { OdsBadge, OdsLink } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import * as IconStories from './icon.stories';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -10,13 +10,13 @@ import { TokenMigrationTable } from '../../../src/components/tokenMigrationTable
 
 <Heading label="Attributes changes" level={ 2 } />
 
-`ariaName` <OdsBadge color="information" label="Removed" size="sm" />
+`ariaName` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 
-Use native <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label" label="aria-label" target="_blank" /> instead.
+Use native <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label" target="_blank">aria-label</OdsLink> instead.
 
-`color` <OdsBadge color="critical" label="Removed" size="sm" />
+`color` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 
@@ -24,19 +24,19 @@ Icons are now font, they will by default have the same color as the current text
 
 You can override this using a CSS class on the component directly.
 
-`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
+`contrasted` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 
 Icons are now font, they will by default have the same color as the current text.
 
-`hoverable` <OdsBadge color="critical" label="Removed" size="sm" />
+`hoverable` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 
 Interactive icon will be handled specifically by components that implements those interactions.
 
-`size` <OdsBadge color="critical" label="Removed" size="sm" />
+`size` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 

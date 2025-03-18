@@ -1,6 +1,15 @@
 import { Meta } from '@storybook/blocks';
+
 import { Homepage } from '../../src/components/homepage/Homepage';
 
 <Meta title="OVHcloud Design System/Welcome" />
+
+<style>
+  {`
+    .sbdocs-wrapper > div:has(div > .toc-wrapper) {
+      display: none;
+    }
+  `}
+</style>
 
 <Homepage />

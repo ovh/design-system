@@ -14,7 +14,7 @@ import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 _**Popover** component is triggered by click and is used to provide additional information to the user in a new temporary surface that overlays the page_
 
-<Canvas of={ PopoverStories.Overview } sourceState="none" />
+[//]: # (<Canvas of={ PopoverStories.Overview } sourceState="none" />)
 
 <Heading label="Overview" level={ 2 } />
 
@@ -33,21 +33,21 @@ _**Popover** component is triggered by click and is used to provide additional i
 
 ![Component anatomy](components/popover/anatomy.png "Component anatomy")
 
-1. **Container**: main container that has all content (i.e <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />, <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />, etc.)
+1. **Container**: main container that has all content (i.e <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, etc.)
 2. **Arrow tip** (optional)
 
 <Heading label="Usage" level={ 2 } />
 
 A **Popover** is used to provide an explanation for a user interface element.
 
-It can include interactive elements such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> or <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } label="Link" story={ STORY.documentation } />.
+It can include interactive elements such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> or <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink>.
 
 <Heading label="Tooltip vs Popover" level={ 3 } />
 
-- Both components look similar but a <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="Tooltip" story={ STORY.documentation } /> is displayed on hover and focus while a **Popover** is triggered by click.
-- <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="Tooltip" story={ STORY.documentation } /> are commonly used for shorter explanations, while longer <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> / complex UIs would suit **Popovers** better.
-- Use a **Popover** when you need to insert interactive elements such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />.
-- A **Popover** can be dismissed if an action <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> allows it.
+- Both components look similar but a <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink> is displayed on hover and focus while a **Popover** is triggered by click.
+- <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink> are commonly used for shorter explanations, while longer <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> / complex UIs would suit **Popovers** better.
+- Use a **Popover** when you need to insert interactive elements such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>.
+- A **Popover** can be dismissed if an action <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> allows it.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
@@ -58,8 +58,8 @@ It can include interactive elements such as <StorybookLink kind={ ODS_COMPONENTS
     '- Overlap the Popover\'s trigger element with the Popover itself when it has been triggered',
   ]}
   dos={[
-    <span>- Use a Popover instead of a <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="Tooltip" story={ STORY.documentation } /> when the <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> is long; but keep it concise</span>,
-    <span>- Write Popover's <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> as full sentences with punctuation</span>,
+    <span>- Use a Popover instead of a <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink> when the <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> is long; but keep it concise</span>,
+    <span>- Write Popover's <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> as full sentences with punctuation</span>,
   ]}
 />
 
@@ -73,7 +73,7 @@ It can include interactive elements such as <StorybookLink kind={ ODS_COMPONENTS
 
 By default, a **Popover** is hidden to the user.
 
-It triggers when the user clicks on the **Popover**'s trigger element such as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />.
+It triggers when the user clicks on the **Popover**'s trigger element such as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>.
 
 The **Popover** can be closed or dismissed by clicking anywhere on the page outside the **Popover**'s container.
 

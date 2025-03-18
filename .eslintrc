@@ -1,7 +1,9 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -12,7 +14,8 @@
   "plugins": [
     "@typescript-eslint",
     "eslint-plugin-import",
-    "eslint-plugin-tsdoc"
+    "eslint-plugin-tsdoc",
+    "react"
   ],
   "root": true,
   "rules": {
@@ -33,7 +36,7 @@
     "curly": ["error", "all"],
     "default-case": "error",
     "func-call-spacing": ["error", "never"],
-    "func-style": ["error", "declaration"],
+    "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
     "function-call-argument-newline": ["error", "consistent"],
     "import/no-unresolved": "error",
     "import/order": [
@@ -49,6 +52,14 @@
           ], // <- Relative imports, the sibling and parent types they can be mingled together
           "index", // <- index imports
           "unknown" // <- unknown
+        ],
+        "pathGroups": [
+          {
+            "pattern": "{.,..}/*.scss", // same directory only
+            // pattern: '{.,..}/**/*\.scss' // same & outside directories (e.g. import '../foo/foo.scss')
+            "group": "object",
+            "position": "after"
+          }
         ],
         "newlines-between": "never",
         "alphabetize": {
@@ -94,6 +105,9 @@
       "typescript": {
         "project": "./tsconfig.json"
       }
+    },
+    "react": {
+      "version": "detect"
     }
   }
 }

@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "allowUnreachableCode": false,
+    "alwaysStrict": true,
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "lib": ["dom", "ESNext"],
+    "moduleResolution": "bundler",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "dist",
+    "paths": {
+      "app/*": ["src/app/*"],
+      "router-app/*": ["src/router-app/*"]
+    },
+    "removeComments": true,
+    "sourceMap": true,
+    "sourceRoot": "/",
+    "strictNullChecks": true,
+    "target": "ES6"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules/**/*"]
+}

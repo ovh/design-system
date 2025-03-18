@@ -4,10 +4,8 @@ const { version: libVersion } = require (path.resolve(process.cwd(), 'lerna.json
 
 module.exports = function (plop) {
   const componentsBaseDirName = 'components';
-  const componentsPath = `${process.cwd()}/packages/ods/src`;
-  const reactPath = `${process.cwd()}/packages/ods/react`;
+  const componentsPath = `${process.cwd()}/packages/ods-react/src`;
   const storybookPath = `${process.cwd()}/packages/storybook`;
-  const vuePath = `${process.cwd()}/packages/ods/vue`;
 
   plop.setActionType('yarn-install', function() {
     spawnSync('yarn', []);
@@ -21,7 +19,6 @@ module.exports = function (plop) {
     return suffix ? `${text}-${suffix}` : text;
   });
 
-  plop.setPartial('component-dir', `{{ suffix-join prefix "${componentsBaseDirName}" }}`);
   plop.setPartial('component-name', '{{ prefix-join prefix name }}');
   plop.setPartial('ComponentName', '{{ pascalCase (prefix-join prefix name) }}');
   plop.setPartial('COMPONENT_NAME', '{{ constantCase (prefix-join prefix name) }}');
@@ -69,38 +66,6 @@ module.exports = function (plop) {
         type: 'append',
         path: `${componentsPath}/{{ suffix-join prefix "${componentsBaseDirName}" }}/index.ts`,
         template: "export * from './{{name}}/src';",
-      },
-      // --- Add the component files to the react wrapper test app
-      {
-        type: 'addMany',
-        base: 'templates/react',
-        templateFiles: 'templates/react/**/*',
-        stripExtensions: ['hbs'],
-        globOptions: { dot: true },
-        destination: reactPath,
-      },
-      // --- Update the react component list
-      {
-        type: 'modify',
-        path: `${reactPath}/tests/_app/src/components.ts`,
-        pattern: /(\/\/--generator-anchor--)/g,
-        template: '\'{{name}}\',\n  $1',
-      },
-      // --- Add the component files to the vue wrapper test app
-      {
-        type: 'addMany',
-        base: 'templates/vue',
-        templateFiles: 'templates/vue/**/*',
-        stripExtensions: ['hbs'],
-        globOptions: { dot: true },
-        destination: vuePath,
-      },
-      // --- Update the vue component list
-      {
-        type: 'modify',
-        path: `${vuePath}/tests/_app/src/components.ts`,
-        pattern: /(\/\/--generator-anchor--)/g,
-        template: '\'{{name}}\',\n  $1',
       },
       // --- Add the component storybook files
       {

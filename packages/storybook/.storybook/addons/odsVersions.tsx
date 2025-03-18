@@ -1,6 +1,5 @@
+import { ODS_BUTTON_VARIANT, ODS_ICON_NAME, OdsButton, OdsIcon, OdsLink, OdsPopoverRadixUI as OdsPopover, OdsPopoverContentRadixUI as OdsPopoverContent, OdsPopoverTriggerRadixUI as OdsPopoverTrigger } from '@ovhcloud/ods-react';
 import { addons, types } from '@storybook/manager-api';
-import { ODS_BUTTON_ICON_ALIGNMENT, ODS_BUTTON_VARIANT, ODS_ICON_NAME } from '@ovhcloud/ods-components';
-import { OdsButton, OdsLink, OdsPopover } from '@ovhcloud/ods-components/react';
 import React from 'react';
 import versions from '../../assets/ods-versions.json';
 import '@ovhcloud/ods-themes/default';
@@ -14,23 +13,36 @@ const odsVersionsAddon = () => {
     render: () => {
       return (
         <div style={{ textAlign: 'center' }}>
-          <OdsButton icon={ ODS_ICON_NAME.chevronDown }
-                     iconAlignment={ ODS_BUTTON_ICON_ALIGNMENT.right }
-                     id="ods-version-current"
-                     label={ versions[0] }
-                     variant={ ODS_BUTTON_VARIANT.ghost } />
+          <OdsPopover>
+            {/* Example using OdsPopover based on BaseUI */}
+            {/*<OdsPopoverTrigger render={ (props) => (*/}
+            {/*  // @ts-ignore Generic issue*/}
+            {/*  <OdsButton*/}
+            {/*    variant={ ODS_BUTTON_VARIANT.ghost }*/}
+            {/*    { ...props }>*/}
+            {/*    { versions[0] } <OdsIcon name={ ODS_ICON_NAME.chevronDown } />*/}
+            {/*  </OdsButton>*/}
+            {/*)} />*/}
 
-          <OdsPopover style={{ maxHeight: '300px', overflowY: 'auto' }}
-                      triggerId="ods-version-current">
-            {
-              (versions || []).map((version, idx) => (
-                <OdsLink key={ idx }
-                         style={{ display: 'block', padding: '0 2rem' }}
-                         href={ `${BASE_URL}/v${version}` }
-                         label={ version }
-                         target="_blank" />
-              ))
-            }
+            {/* Example using OdsPopover based on ArkUI / RadixUI */}
+            <OdsPopoverTrigger asChild>
+              <OdsButton variant={ ODS_BUTTON_VARIANT.ghost }>
+                { versions[0] } <OdsIcon name={ ODS_ICON_NAME.chevronDown } />
+              </OdsButton>
+            </OdsPopoverTrigger>
+
+            <OdsPopoverContent style={{ maxHeight: '300px', overflowY: 'auto', zIndex: 1 }}>
+                {
+                  (versions || []).map((version, idx) => (
+                    <OdsLink key={ idx }
+                             style={{ display: 'block', margin: '0 2rem' }}
+                             href={ `${BASE_URL}/v${version}` }
+                             target="_blank">
+                      { version }
+                    </OdsLink>
+                  ))
+                }
+            </OdsPopoverContent>
           </OdsPopover>
         </div>
       )

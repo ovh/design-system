@@ -1,5 +1,5 @@
+import SpecificationsSpinner from '@ovhcloud/ods-react/documentation/ods-spinner/custom-elements.json';
 import { Canvas, Meta } from '@storybook/blocks';
-import SpecificationsSpinner from '@ovhcloud/ods-components/src/components/spinner/documentation/custom-elements.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -14,14 +14,6 @@ import * as SpinnerStories from './spinner.stories';
 <Canvas of={ SpinnerStories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ SpecificationsSpinner } />
-
-<Heading label="Style customization" level={ 2 } />
-
-You can add your own style on the spinner element using the part `spinner`.
-
-Custom CSS :
-
-<Canvas of={ SpinnerStories.CustomCSS } sourceState="shown" />
 
 <Heading label="Examples" level={ 2 } />
 

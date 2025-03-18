@@ -1,0 +1,35 @@
+{
+  "name": "@ovhcloud/ods-themes",
+  "version": "18.5.3",
+  "description": "All ODS Themes",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js"
+    },
+    "./default": {
+      "sass": "./src/default/index.scss",
+      "default": "./dist/default/index.css"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build:ci": "npm run build:prod",
+    "build:prod": "tsc && sass src:dist --no-source-map --pkg-importer=node && postcss dist/**/*.css --replace --use autoprefixer --parser postcss-scss --no-map",
+    "clean": "rimraf dist",
+    "lint:scss": "stylelint '{assets,src}/**/*.scss'",
+    "lint:ts": "eslint 'src/**/*.{js,ts,tsx}'"
+  },
+  "devDependencies": {
+    "autoprefixer": "10.4.17",
+    "postcss": "8.4.35",
+    "postcss-cli": "11.0.0",
+    "postcss-scss": "4.0.9",
+    "sass": "1.71.0",
+    "typescript": "5.3.3"
+  },
+  "browserslist": [
+    "last 4 version",
+    "maintained node versions"
+  ]
+}

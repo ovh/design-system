@@ -1,4 +1,4 @@
-import { OdsLink } from '@ovhcloud/ods-components/react';
+import { OdsLink } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
@@ -124,7 +124,7 @@ import { HOME_TITLE, ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/
 
 **Drawer**
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.drawer } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.drawer } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 <Heading label="Feature updates:" level={ 3 } />
 
@@ -181,18 +181,18 @@ move over it and keep it open (and for example select its content).
 
 <Heading label="Miscellaneous:" level={ 3 } />
 
-We did integrate <OdsLink href="https://testing-library.com/docs/react-testing-library/intro" label="react-testing-library" target="_blank" />
+We did integrate <OdsLink href="https://testing-library.com/docs/react-testing-library/intro" target="_blank">react-testing-library</OdsLink>
 to our React wrapper test suites, so that we can replicate more easily issues integrators may encounter.
 
 <Heading label="v18.4.0" level={ 2 } />
 
 <Heading label="Changes on form elements:" level={ 3 } />
 
-This version is focused on implementing <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState" label="ValidityState" target="_blank" /> to our form elements.
+This version is focused on implementing <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState" target="_blank">ValidityState</OdsLink> to our form elements.
 
 This allows you to setup a fully working form without the need of any external library or custom validation code, as everything behave as a native form.
 
-Though you can of course use a lib on top of that if you want to. We've validated forms using native code (vanilla and React), <OdsLink href="https://formik.org" label="Formik" target="_blank" /> and <OdsLink href="https://react-hook-form.com" label="React Hook Form" target="_blank" /> on our tests and playgrounds.
+Though you can of course use a lib on top of that if you want to. We've validated forms using native code (vanilla and React), <OdsLink href="https://formik.org" target="_blank">Formik</OdsLink> and <OdsLink href="https://react-hook-form.com" target="_blank">React Hook Form</OdsLink> on our tests and playgrounds.
 
 The changes on each component are massive, but we did focus on ensuring bumping to this version would be transparent for current ODS users.
 
@@ -289,7 +289,7 @@ We won't go through an exhaustive list of changes, here are the most important o
 - A new part `last` is now available to customize the last item (which differ from other link items).
 
 **Input**
-- You can now link a native `datalist` to an `ods-input` using the `list` attribute and the `list` slot. A full example is available in the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Technical information" story={ STORY.technicalInformation } /> page.
+- You can now link a native `datalist` to an `ods-input` using the `list` attribute and the `list` slot. A full example is available in the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.technicalInformation }>Technical information</StorybookLink> page.
 - New attribute `list` has been added.
 - New slot `list` is now available.
 
@@ -414,7 +414,7 @@ Storybook has been partially rewritten, so you may notice a few changes:
 
 <Heading label="v18.0.0" level={ 2 } />
 
-As it is a major version, you'll have to follow the <StorybookLink label="migration guide 17.x to 18.x" title={ HOME_TITLE.migration17to18 } />
+As it is a major version, you'll have to follow the <StorybookLink title={ HOME_TITLE.migration17to18 }>migration guide 17.x to 18.x</StorybookLink>
 
 <Heading label="Project changes:" level={ 3 } />
 
@@ -477,7 +477,7 @@ The new version comes with the following upgrade on major library:
 <Heading label="Style customization" level={ 3 } />
 
 Although the ODS component comes with the expected design, you can now apply your own style directly on some part
-of the web-component shadow DOM, thanks to the <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" label="part selector" target="_blank" />.
+of the web-component shadow DOM, thanks to the <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank">part selector</OdsLink>.
 
 For example, you can add style on the native `input` element of an `ods-input` component through the following code:
 
@@ -527,15 +527,15 @@ to use the web-component by default.
 
 **File Upload**
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.fileUpload } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.fileUpload } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 **Timepicker**
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.timepicker } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.timepicker } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 <Heading label="Component changes:" level={ 3 } />
 
-Please check the <StorybookLink label="migration guide" title={ HOME_TITLE.migration17to18 } /> regarding all the component changes.
+Please check the <StorybookLink title={ HOME_TITLE.migration17to18 }>migration guide</StorybookLink> regarding all the component changes.
 
 <Heading label="v17.2.2" level={ 2 } />
 
@@ -576,7 +576,7 @@ It also brings numerous bug fixes across components, ensuring a smoother and mor
 
 **Table**
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.table } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.table } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 <Heading label="Documentation improvements:" level={ 3 } />
 
@@ -733,7 +733,7 @@ Documentation usage guidelines have been completed with almost all components pr
 
 <Heading label="v17.0.0" level={ 2 } />
 
-As it is a major version, you'll have to follow the <StorybookLink label="migration guide 16.x to 17.x" title={ HOME_TITLE.migration16to17 } />
+As it is a major version, you'll have to follow the <StorybookLink title={ HOME_TITLE.migration16to17 }>migration guide 16.x to 17.x</StorybookLink>
 
 <Heading label="Project changes:" level={ 3 } />
 
@@ -754,8 +754,8 @@ ODS components can then be either imported using lazy-loading (the code of each 
 
 For more details on how to import ODS components, see:
 
-* the updated <StorybookLink label="Get Started documentation" title={ HOME_TITLE.getStarted } />
-* the 16.x to 17.x <StorybookLink label="Migration guide" title={ HOME_TITLE.migration16to17 } />
+* the updated <StorybookLink title={ HOME_TITLE.getStarted }>Get Started documentation</StorybookLink>
+* the 16.x to 17.x <StorybookLink title={ HOME_TITLE.migration16to17 }>Migration guide</StorybookLink>
 
 <Heading label="Documentation improvements:" level={ 3 } />
 
@@ -891,7 +891,7 @@ We went through each component to update:
 
 **Medium**
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.medium } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.medium } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 <Heading label="Bug fixes:" level={ 3 } />
 
@@ -1015,7 +1015,7 @@ We went through each component to update:
 
 **Datepicker**
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.datepicker } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.datepicker } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 <Heading label="Component changes:" level={ 3 } />
 
@@ -1046,7 +1046,7 @@ We went through each component to update:
 
 **Phone Number**
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.phoneNumber } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.phoneNumber } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 <Heading label="Component changes:" level={ 3 } />
 
@@ -1076,7 +1076,7 @@ Fixes CI build issues when deploying Storybook.
 
 <Heading label="v16.0.0" level={ 2 } />
 
-As it is a major version, you'll have to follow the <StorybookLink label="migration guide 15.x to 16.x" title={ HOME_TITLE.migration15to16 } />
+As it is a major version, you'll have to follow the <StorybookLink title={ HOME_TITLE.migration15to16 }>migration guide 15.x to 16.x</StorybookLink>
 
 ⚠️We're aware that not all the documentation is up-to-date with the latest technical changes ⚠️
 
@@ -1137,7 +1137,7 @@ Ex:
 
 **Clipboard**
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.clipboard } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.clipboard } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 **Menu**
 
@@ -1145,7 +1145,7 @@ See documentation using version selector
 
 **Modal**
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.modal } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.modal } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 **Search Bar**
 
@@ -1178,7 +1178,7 @@ See documentation using version selector
 
 <Heading label="v15.0.0" level={ 2 } />
 
-As it is a major version, you have to do the <StorybookLink label="migration guide 14.x to 15.x" title={ HOME_TITLE.migration14to15 } />
+As it is a major version, you have to do the <StorybookLink title={ HOME_TITLE.migration14to15 }>migration guide 14.x to 15.x</StorybookLink>
 
 <Heading label="Project changes:" level={ 3 } />
 
@@ -1263,11 +1263,11 @@ We added the following components:
 
 **Form Field**
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 **Switch**
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.switch } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.switch } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 <Heading label="Features changes:" level={ 3 } />
 
@@ -1277,11 +1277,12 @@ We added the following components:
 
 * Can now show pages according to a numbers of items shown by page.
 
-> For more information, check our documentation <StorybookLink kind={ ODS_COMPONENTS_TITLE.pagination } label="See Documentation" story={ STORY.documentation } />
+> For more information, check our documentation <StorybookLink kind={ ODS_COMPONENTS_TITLE.pagination } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 * **Location-tile**
 
 * Component is now deprecated and won't be supported anymore. It will be deleted in a future release.
+
 > For more information, check our replacement guide using version selector.
 
 <Heading label="Bug fixes:" level={ 3 } />
@@ -1296,29 +1297,29 @@ We added the following components:
 
 <Heading label="v14.0.0" level={ 2 } />
 
-As it is a major version, you have to do the <StorybookLink label="migration guide 13.x to 14.x" title={ HOME_TITLE.migration13to14 } />
+As it is a major version, you have to do the <StorybookLink title={ HOME_TITLE.migration13to14 }>migration guide 13.x to 14.x</StorybookLink>
 
 <Heading label="New features:" level={ 3 } />
 
 We added the following components:
 
-* **Progress Bar**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.progressBar } label="See Documentation" story={ STORY.documentation } />
-* **Popover**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.popover } label="See Documentation" story={ STORY.documentation } />
-* **Tooltip**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="See Documentation" story={ STORY.documentation } />
+* **Progress Bar**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.progressBar } story={ STORY.documentation }>See Documentation</StorybookLink>
+* **Popover**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.popover } story={ STORY.documentation }>See Documentation</StorybookLink>
+* **Tooltip**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 Components version 2:
 
-* **Input V2**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="See Documentation" story={ STORY.documentation } />
+* **Input V2**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>See Documentation</StorybookLink>
 * new properties have been added
 * `loading`: it displays a Spinner
 * `clearable`: it clears the input value on click
 * `masked`: it indicates if the input value is hidden or not (to be used with password type)
 * new types have been added: `date`, `email`, `password`, `search`, `tel`, `text`, `time` and `url`
-* **Select V2**: it is now connected to our CDK and keyboard navigation has been added <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="See Documentation" story={ STORY.documentation } />
+* **Select V2**: it is now connected to our CDK and keyboard navigation has been added <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 **Quantity** component accepts four digits in the input field:
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.quantity } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.quantity } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 **CDK** (Component Development Kit): new symmetry strategies have been added (left and right):
 
@@ -1341,16 +1342,16 @@ See CDK Documentation using version selector.
 
 <Heading label="v13.0.0" level={ 2 } />
 
-As it is a major version, you have to do the <StorybookLink label="migration guide 12.x to 13.x" title={ HOME_TITLE.migration12to13 } />
+As it is a major version, you have to do the <StorybookLink title={ HOME_TITLE.migration12to13 }>migration guide 12.x to 13.x</StorybookLink>
 
 <Heading label="New features:" level={ 3 } />
 
 We added the following components:
 
-* Breadcrumb: <StorybookLink kind={ ODS_COMPONENTS_TITLE.breadcrumb } label="See Documentation" story={ STORY.documentation } />
+* Breadcrumb: <StorybookLink kind={ ODS_COMPONENTS_TITLE.breadcrumb } story={ STORY.documentation }>See Documentation</StorybookLink>
 * Collapsible: See Documentation using version selector
-* Pagination: <StorybookLink kind={ ODS_COMPONENTS_TITLE.pagination } label="See Documentation" story={ STORY.documentation } />
-* Spinner: <StorybookLink kind={ ODS_COMPONENTS_TITLE.spinner } label="See Documentation" story={ STORY.documentation } />
+* Pagination: <StorybookLink kind={ ODS_COMPONENTS_TITLE.pagination } story={ STORY.documentation }>See Documentation</StorybookLink>
+* Spinner: <StorybookLink kind={ ODS_COMPONENTS_TITLE.spinner } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 Circle-shaped button has been added to Button Component (circle attribute)
 
@@ -1384,7 +1385,7 @@ Circle-shaped button has been added to Button Component (circle attribute)
 
 We added the Tabs component.<br />
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.tabs } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.tabs } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 A component generator has been added. Now, you can use that tool to generate a new component easily.<br />
 
@@ -1418,7 +1419,7 @@ First release on GitHub. There is no new feature in this version. It is now open
 <Heading label="v11.0.0" level={ 2 } />
 
 Flag component has been modified; you’ll need to update as explained in the migration guide.
-For more details about assets, see <StorybookLink label="Installation" title={ HOME_TITLE.getStarted } /> page.
+For more details about assets, see <StorybookLink title={ HOME_TITLE.getStarted }>Installation</StorybookLink> page.
 New attributes are available on this component: `lazy`, `assetPath` and `src`.
 
 Before importing any component you now have to setup ods.
@@ -1456,7 +1457,7 @@ We fixed some issue about automated screenshot testing with some timeout.
 
 We added the select component (version 1).
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="See Documentation" story={ STORY.documentation } />
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.select } story={ STORY.documentation }>See Documentation</StorybookLink>
 
 <Heading label="v10.0.0" level={ 2 } />
 
@@ -1484,7 +1485,7 @@ ts-node ~9.1.1 to ~10.7.0
 
 We now build all of our components for `React` and `Vue` frameworks.
 They allow to use all the potential and features of your high-end JS framework.
-You can read the updated <StorybookLink label="Getting Started" title={ HOME_TITLE.getStarted } />
+You can read the updated <StorybookLink title={ HOME_TITLE.getStarted }>Getting Started</StorybookLink>
 to initialize an App with ODS and see how it works depending the framework.
 
 Also, `ods-cart` is no more impacted by a parent container with `text-align:center`.

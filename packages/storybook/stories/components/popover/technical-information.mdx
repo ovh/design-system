@@ -1,92 +1,63 @@
-import { Canvas, Meta, Source } from '@storybook/blocks';
-import SpecificationsPopover from '@ovhcloud/ods-components/src/components/popover/documentation/custom-elements.json';
+[//]: # (import SpecificationsPopover from '@ovhcloud/ods-react/documentation/ods-popover/custom-elements.json';)
+
+import { Canvas, Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
-import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+
+[//]: # (import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';)
+
 import * as PopoverStories from './popover.stories';
 
 <Meta of={ PopoverStories } name="Technical information" />
 
 <Banner of={ PopoverStories } />
 
-<Heading label="Overview" level={ 2 } />
+[//]: # (<Heading label="Overview" level={ 2 } />)
 
-<Canvas of={ PopoverStories.Overview } sourceState="none" />
+[//]: # (<Canvas of={ PopoverStories.Overview } sourceState="'none' "/>)
 
-<TechnicalSpecification data={ SpecificationsPopover } />
-
-<Heading label="Style customization" level={ 2 } />
-
-You can update the popover content by directly updating the slot element.
-
-Custom CSS :
-
-<Canvas of={ PopoverStories.CustomCSS } sourceState="shown" />
-
-<Heading label="Positioning" level={ 2 } />
-
-Unlike tooltip, popover can contain focusable elements.
-Thus it needs to be positioned in the right spot in the DOM to follow the native focus workflow.
-
-To ensure that, always declare your popover right after its trigger.
-
-Here is an example of a wrong positioning:
-
-<Source code={`
-<ods-button icon="ellipsis-vertical"
-            id="popover-trigger"
-            label="Menu">
-</ods-button>
-
-<ods-input name="some-input">
-</ods-input>
-
-<ods-popover trigger-id="popover-trigger">
-  ...focusable popover content
-</ods-popover>
-`}
-        dark="true"
-        language="html" />
-
-The input will get focused after the popover trigger button, causing the popover to close, thus making the element inside of it unreachable.
-
-The correct way would be:
-
-<Source code={`
-<ods-button icon="ellipsis-vertical"
-            id="popover-trigger"
-            label="Menu">
-</ods-button>
-
-<ods-popover trigger-id="popover-trigger">
-  ...focusable popover content
-</ods-popover>
-
-<ods-input name="some-input">
-</ods-input>
-`}
-        dark="true"
-        language="html" />
+[//]: # (<TechnicalSpecification data={ SpecificationsPopover } />)
 
 <Heading label="Examples" level={ 2 } />
 
-<Heading label="Default" level={ 3 } />
+<Heading label="ArkUI" level={ 3 } />
 
-<Canvas of={ PopoverStories.Default } sourceState="shown" />
+<Heading label="Default" level={ 4 } />
 
-<Heading label="With an arrow tip" level={ 3 } />
+<Canvas of={ PopoverStories.DefaultArkUI } sourceState="shown" />
 
-<Canvas of={ PopoverStories.ArrowTip } sourceState="shown" />
+<Heading label="Custom Trigger" level={ 4 } />
 
-<Heading label="Popover as Action Menu" level={ 3 } />
+<Canvas of={ PopoverStories.CustomTriggerArkUI } sourceState="shown" />
 
-<Canvas of={ PopoverStories.Menu } sourceState="shown" />
+<Heading label="Grid" level={ 4 } />
 
-<Heading label="In an ods-modal" level={ 3 } />
+<Canvas of={ PopoverStories.GridArkUI } sourceState="shown" />
 
-If the component container is defining a position context, the popover may not appear at the right place, or partially clipped.
+<Heading label="BaseUI" level={ 3 } />
 
-In that case, you can change the component `strategy` prop to `fixed`, this way it will position itself based on the
-nearest containing block (usually the viewport).
+<Heading label="Default" level={ 4 } />
 
-<Canvas of={ PopoverStories.FixedContext } sourceState="shown" />
+<Canvas of={ PopoverStories.DefaultBaseUI } sourceState="shown" />
+
+<Heading label="Custom Trigger" level={ 4 } />
+
+<Canvas of={ PopoverStories.CustomTriggerBaseUI } sourceState="shown" />
+
+<Heading label="Grid" level={ 4 } />
+
+<Canvas of={ PopoverStories.GridBaseUI } sourceState="shown" />
+
+<Heading label="RadixUI" level={ 3 } />
+
+<Heading label="Default" level={ 4 } />
+
+<Canvas of={ PopoverStories.DefaultRadixUI } sourceState="shown" />
+
+<Heading label="Custom Trigger" level={ 4 } />
+
+<Canvas of={ PopoverStories.CustomTriggerRadixUI } sourceState="shown" />
+
+<Heading label="Grid" level={ 4 } />
+
+<Canvas of={ PopoverStories.GridRadixUI } sourceState="shown" />

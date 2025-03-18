@@ -1,5 +1,5 @@
-import { ODS_ICON_NAME, type ODS_MESSAGE_COLOR } from '@ovhcloud/ods-components';
-import { OdsIcon, OdsMessage } from '@ovhcloud/ods-components/react';
+// import { ODS_ICON_NAME, type ODS_MESSAGE_COLOR, OdsMessage } from '@ovhcloud/ods-components';
+import { ODS_ICON_NAME, OdsIcon } from '@ovhcloud/ods-react';
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import { type ClassMember, type Module } from 'custom-elements-manifest/schema';
@@ -11,7 +11,8 @@ import styles from './classModule.module.css';
 
 type Props = {
   enumList?: Record<string, Record<string, string>>,
-  message?: { color: ODS_MESSAGE_COLOR, content: JSX.Element }
+  //message?: { color: ODS_MESSAGE_COLOR, content: JSX.Element }
+  message?: { color: any },
   module: Module,
 }
 
@@ -23,7 +24,7 @@ function isRequired(property: ClassMember): boolean {
   return !('default' in property && property.default);
 }
 
-const ClassModule = ({ module, message }: Props) => {
+const ClassModule = ({ module }: Props) => {
   const name = (module.exports || []).find((exp) => exp.kind === 'js')?.name || '';
   const classDeclaration = (module.declarations || []).find((declaration) => declaration.kind === 'class');
 
@@ -105,15 +106,17 @@ const ClassModule = ({ module, message }: Props) => {
         </>
       }
 
-      { message && <OdsMessage className={ styles['class-module__message'] } color={ message.color } isDismissible={ false }>{ message.content }</OdsMessage> }
+      {/* TODO put back when Message is available */}
+      {/*{ message && <OdsMessage className={ styles['class-module__message'] } color={ message.color } isDismissible={ false }>{ message.content }</OdsMessage> }*/}
 
       {
         methods.length > 0 &&
         <>
           <Heading label="Methods" level={ 3 }>
             <StorybookLink className={ styles['class-module__method-title-link'] }
-                           label="(How to use?)"
-                           title={ HOME_TITLE.guideMethods } />
+                           title={ HOME_TITLE.guideMethods }>
+              (How to use?)
+            </StorybookLink>
           </Heading>
 
           <ul className={ styles['class-module__methods'] }>
@@ -139,8 +142,9 @@ const ClassModule = ({ module, message }: Props) => {
         <>
           <Heading label="Events" level={ 3 }>
             <StorybookLink className={ styles['class-module__event-title-link'] }
-                           label="(How to use?)"
-                           title={ HOME_TITLE.guideEvents } />
+                           title={ HOME_TITLE.guideEvents }>
+              (How to use?)
+            </StorybookLink>
           </Heading>
 
           <ul className={ styles['class-module__events'] }>

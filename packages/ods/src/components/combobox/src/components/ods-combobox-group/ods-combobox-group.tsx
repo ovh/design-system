@@ -1,4 +1,4 @@
-import { Component, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
+import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
 
 @Component({
   shadow: true,
@@ -8,6 +8,13 @@ import { Component, type FunctionalComponent, Host, Prop, h } from '@stencil/cor
 export class OdsComboboxGroup {
   /** @internal */
   @Prop({ reflect: false }) public isVisible: boolean = false;
+
+  /** @internal */
+  @Event() groupSlotChange!: EventEmitter<Event>;
+
+  private onSlotChange(event: Event): void {
+    this.groupSlotChange.emit(event);
+  }
 
   render(): FunctionalComponent {
     return (
@@ -20,7 +27,7 @@ export class OdsComboboxGroup {
           <slot name="title"></slot>
         </div>
 
-        <slot></slot>
+        <slot onSlotchange={ (e) => this.onSlotChange(e) }></slot>
       </Host>
     );
   }

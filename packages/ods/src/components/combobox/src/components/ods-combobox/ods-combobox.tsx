@@ -43,6 +43,7 @@ export class OdsCombobox implements OdsFormElement {
   private shouldResetOnBlur: boolean = true;
   private shouldUpdateIsInvalidState: boolean = false;
   private shouldUpdateSelection: boolean = false;
+  private slotEl?: HTMLSlotElement;
 
   @Element() el!: HTMLElement;
 
@@ -111,6 +112,13 @@ export class OdsCombobox implements OdsFormElement {
     if (this.isOpen && event.key === 'Escape') {
       this.closeDropdown();
     }
+  }
+
+  @Listen('groupSlotChange')
+  groupSlotChange(event: Event): void {
+    event.stopImmediatePropagation();
+    const elements = (this.slotEl as HTMLSlotElement).assignedElements();
+    this.processSlotElements(elements);
   }
 
   @Listen('odsComboboxSelected')
@@ -512,37 +520,8 @@ export class OdsCombobox implements OdsFormElement {
   }
 
   private onSlotChange(event: Event): void {
-    this.resultGroups = [];
-
-    this.resultElements = (event.currentTarget as HTMLSlotElement).assignedElements()
-      .reduce((res, element) => {
-        if (element.tagName === 'ODS-COMBOBOX-ITEM') {
-          res.push(element as ResultElement);
-          return res;
-        }
-
-        if (element.tagName === 'ODS-COMBOBOX-GROUP') {
-          // Enforce group element ID here as it may not be yet rendered by Stencil
-          element.id = element.id || getRandomHTMLId();
-
-          this.resultGroups.push(element as ResultGroup);
-
-          return res.concat((Array.from(element.children || []) as ResultElement[])
-            .filter((el) => el.tagName === 'ODS-COMBOBOX-ITEM')
-            .map((el: ResultElement) => {
-              el.groupId = element.id;
-              return el;
-            }));
-        }
-
-        return res;
-      }, [] as ResultElement[]) ;
-
-    // We re-render the list to make sure it's up to date
-    if (this.isOpen){
-      this.close();
-      this.open();
-    }
+    const elements = (event.currentTarget as HTMLSlotElement).assignedElements();
+    this.processSlotElements(elements);
   }
 
   private onTagKeyDown(event: KeyboardEvent): void {
@@ -656,6 +635,38 @@ export class OdsCombobox implements OdsFormElement {
 
     this.filterResults(this.inputElement.value);
     await this.openDropdown();
+  }
+
+  private processSlotElements(elements: Element[]): void {
+    this.resultGroups = [];
+    this.resultElements = elements.reduce((res, element) => {
+      if (element.tagName === 'ODS-COMBOBOX-ITEM') {
+        res.push(element as ResultElement);
+        return res;
+      }
+
+      if (element.tagName === 'ODS-COMBOBOX-GROUP') {
+        // Enforce group element ID here as it may not be yet rendered by Stencil
+        element.id = element.id || getRandomHTMLId();
+
+        this.resultGroups.push(element as ResultGroup);
+
+        return res.concat((Array.from(element.children || []) as ResultElement[])
+          .filter((el) => el.tagName === 'ODS-COMBOBOX-ITEM')
+          .map((el: ResultElement) => {
+            el.groupId = element.id;
+            return el;
+          }));
+      }
+
+      return res;
+    }, [] as ResultElement[]) ;
+
+    // We re-render the list to make sure it's up to date
+    if (this.isOpen){
+      this.close();
+      this.open();
+    }
   }
 
   private updateCreateNewElement(): void {
@@ -827,7 +838,7 @@ export class OdsCombobox implements OdsFormElement {
             </li>
           }
 
-          <slot onSlotchange={ (e) => this.onSlotChange(e) }></slot>
+          <slot onSlotchange={ (e) => this.onSlotChange(e) } ref={ (el): HTMLSlotElement => this.slotEl = el as HTMLSlotElement }></slot>
         </ul>
       </Host>
     );

@@ -292,8 +292,7 @@ describe('ods-combobox rendering', () => {
         expect(await isOpen()).toBe(true);
         expect(await isGroupVisible('group1')).toBe(true);
 
-        setTimeout(async() => {
-          await page.evaluate(() => {
+        await page.evaluate(() => {
           document.querySelector('ods-combobox')!.innerHTML = `
             <ods-combobox-group id="group1">
               <span slot="title">Group 1</span>
@@ -304,8 +303,7 @@ describe('ods-combobox rendering', () => {
               <ods-combobox-item value="dummy2">Dummy 2</ods-combobox-item>
             </ods-combobox-group>
           `;
-          });
-        }, 1000);
+        });
 
         // We need to wait until the component remounted the list
         await page.waitForFunction((group1Id, group2Id) => {
@@ -353,16 +351,14 @@ describe('ods-combobox rendering', () => {
       expect(await isGroupVisible('group1')).toBe(true);
       expect(await isGroupVisible('group2')).toBe(true);
 
-      setTimeout(async() => {
-        await page.evaluate(() => {
+      await page.evaluate(() => {
       document.querySelector('ods-combobox')!.innerHTML = `
         <ods-combobox-group id="group1">
           <span slot="title">Group 1</span>
           <ods-combobox-item value="dummy1">Dummy 1</ods-combobox-item>
         </ods-combobox-group>
       `;
-        });
-      }, 100);
+      });
 
       await page.waitForFunction((group1Id, group2Id) => {
         const group1Title = document.querySelector(`#${group1Id}`)?.shadowRoot?.querySelector('.ods-combobox-group__title');
@@ -399,8 +395,7 @@ describe('ods-combobox rendering', () => {
 
       expect(await isOpen()).toBe(true);
 
-      setTimeout(async() => {
-        await page.evaluate(() => {
+      await page.evaluate(() => {
       document.querySelector('ods-combobox')!.innerHTML = `
         <ods-combobox-group id="group1">
           <span slot="title">Group 1</span>
@@ -415,8 +410,7 @@ describe('ods-combobox rendering', () => {
           <ods-combobox-item value="dummy3">Dummy 3</ods-combobox-item>
         </ods-combobox-group>
       `;
-        });
-      }, 100);
+      });
 
       await page.waitForFunction((group1Id, group2Id, group3Id) => {
         const group1Title = document.querySelector(`#${group1Id}`)?.shadowRoot?.querySelector('.ods-combobox-group__title');

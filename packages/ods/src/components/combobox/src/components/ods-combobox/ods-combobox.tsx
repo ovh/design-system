@@ -838,7 +838,9 @@ export class OdsCombobox implements OdsFormElement {
             </li>
           }
 
-          <slot onSlotchange={ (e) => this.onSlotChange(e) } ref={ (el): HTMLSlotElement => this.slotEl = el as HTMLSlotElement }></slot>
+          <slot
+            onSlotchange={ (e) => this.onSlotChange(e) }
+            ref={ (el): HTMLSlotElement => this.slotEl = el as HTMLSlotElement }></slot>
         </ul>
       </Host>
     );

@@ -83,7 +83,7 @@ export class OdsClipboard {
             isReadonly={ true }
             name={ this.name }
             onOdsFocus={ () => this.onInputFocus() }
-            onBlur={() => this.onInputBlur()}
+            onOdsBlur={() => this.onInputBlur()}
             value={ this.value }>
           </ods-input>
           <ods-button

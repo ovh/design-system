@@ -1,5 +1,6 @@
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-clipboard';
 import { type Meta, type StoryObj } from '@storybook/web-components';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { html, nothing } from 'lit-html';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
@@ -17,6 +18,7 @@ export const Demo: StoryObj = {
   render: (arg) => html`
 <ods-clipboard class="my-clipboard"
   is-disabled="${arg.isDisabled}"
+  is-masked="${ifDefined(arg.isMasked)}"
   label-copy="${arg.labelCopy || nothing}"
   label-copy-success="${arg.labelCopySuccess || nothing}"
   value="${arg.value}">
@@ -41,6 +43,14 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
+    isMasked: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: undefined },
         type: { summary: 'boolean' },
       },
       control: 'boolean',
@@ -72,6 +82,7 @@ export const Demo: StoryObj = {
   }),
   args: {
     isDisabled: false,
+    isMasked: undefined,
   },
 };
 
@@ -126,5 +137,12 @@ export const Disabled: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-clipboard is-disabled value="Copy me"></ods-clipboard>
+  `,
+};
+
+export const Masked: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-clipboard is-masked value="Copy me"></ods-clipboard>
   `,
 };

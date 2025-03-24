@@ -10,10 +10,13 @@
 
 .ods-clipboard {
   &__container {
+    @include state.ods-is-readonly();
+
     box-sizing: border-box;
     display: inline-flex;
+    border-width: 1px;
+    border-style: solid;
     border-radius: var(--ods-border-radius-sm);
-    background-color: state.$ods-state-is-readonly-background-color;
     padding-right: input.$ods-input-actions-padding-right;
 
     &--disabled {

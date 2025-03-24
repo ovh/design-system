@@ -22,7 +22,7 @@ describe('ods-clipboard navigation', () => {
     await page.setContent(content);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
-    copyButton = await page.find('ods-clipboard >>> ods-button');
+    copyButton = await page.find('ods-clipboard >>> #clipboard-copy');
   }
 
   it('should be focus the input then the button on tabulation', async() => {
@@ -62,6 +62,19 @@ describe('ods-clipboard navigation', () => {
     await setup(`<ods-clipboard value="${dummyValue}"></ods-clipboard>`);
     const copySpy = await page.spyOnEvent( 'odsCopy' );
 
+    await copyButton.click();
+    await page.waitForChanges();
+
+    expect(copySpy).toHaveReceivedEventTimes(1);
+    expect(copySpy).toHaveReceivedEventDetail(dummyValue);
+  });
+
+  it('should copy the value when masked on action button click', async() => {
+    const dummyValue = 'dummy value';
+    await setup(`<ods-clipboard value="${dummyValue}" is-masked></ods-clipboard>`);
+    const copySpy = await page.spyOnEvent( 'odsCopy' );
+
+    await page.waitForChanges();
     await copyButton.click();
     await page.waitForChanges();
 

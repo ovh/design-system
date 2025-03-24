@@ -1,4 +1,6 @@
+@use '../../../../../style/focus';
 @use '../../../../../style/input';
+@use '../../../../../style/state';
 
 :host(.ods-clipboard) {
   display: inline-block;
@@ -7,22 +9,42 @@
 }
 
 .ods-clipboard {
+  &__container {
+    box-sizing: border-box;
+    display: inline-flex;
+    border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
+    border-radius: var(--ods-border-radius-sm);
+    background-color: #f4f4f4;
+    padding-right: 4px;
+
+    &--disabled {
+      @include state.ods-is-disabled();
+    }
+
+    &--focused {
+      @include focus.ods-focus();
+    }
+
+  }
+
   &__input {
     width: inherit;
 
     &::part(input) {
+      border: none;
       padding-right: calc(input.$ods-input-actions-button-width + input.$ods-input-actions-padding-right);
+
+      &:focus {
+        outline: 0;
+      }
     }
   }
-
+  
   &__copy {
     display: flex;
-    position: absolute;
-    top: input.$ods-input-actions-padding-right;
-    right: input.$ods-input-actions-padding-right;
-    bottom: input.$ods-input-actions-padding-right;
     align-items: center;
     justify-content: center;
+    margin-left: 2px;
     height: auto;
   }
 

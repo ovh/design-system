@@ -12,10 +12,9 @@
   &__container {
     box-sizing: border-box;
     display: inline-flex;
-    border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
     border-radius: var(--ods-border-radius-sm);
-    background-color: #f4f4f4;
-    padding-right: 4px;
+    background-color: state.$ods-state-is-readonly-background-color;
+    padding-right: input.$ods-input-actions-padding-right;
 
     &--disabled {
       @include state.ods-is-disabled();
@@ -44,7 +43,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 2px;
+    margin-left: calc(input.$ods-input-actions-padding-right / 2);
     height: auto;
   }
 

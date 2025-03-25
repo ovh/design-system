@@ -34,10 +34,16 @@
 
     &::part(input) {
       border: none;
-      padding-right: calc(input.$ods-input-actions-button-width + input.$ods-input-actions-padding-right);
+      padding-right: 0;
 
       &:focus {
         outline: 0;
+      }
+    }
+
+    &--masked {
+      &::part(input) {
+        padding-right: calc(input.$ods-input-actions-button-width + (input.$ods-input-actions-padding-right * 2));
       }
     }
   }

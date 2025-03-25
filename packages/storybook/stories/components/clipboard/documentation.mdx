@@ -38,7 +38,8 @@ _**Clipboard** component allows user to view and copy information to its **Clipb
 1. An <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> containing the whole content that will be copied to the **Clipboard**
 2. **Value** to copy
 3. A 'copy' icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> to complete the copy action when clicked
-4. A Tooltip displayed when user hovers or focuses the component, and briefly after a successful copy action to the user's **Clipboard**
+4. **Show/hide action**: an `eye` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> to toggle between masked or visible <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> content
+5. A Tooltip displayed when user hovers or focuses the component, and briefly after a successful copy action to the user's **Clipboard**
 
 <Heading label="Usage" level={ 2 } />
 
@@ -74,6 +75,8 @@ Even if no visual indicator prompts the user to do so, **the user can select the
 
 **The trigger for copying** the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> content to the **Clipboard** **is the "copy" Button**.
 When hovering or focusing, **a Tooltip is displayed as a helper**.
+
+The clipboard masking toggled using show/hide action is permanent. Users have to click again to show/hide the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /> content.
 
 **An event is triggered when a Clipboard's content is copied.**
 A confirmation <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="Tooltip" story={ STORY.documentation } /> is displayed (if user is still hovering the "copy" <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } />) when **Clipboard** content has been successfully copied.

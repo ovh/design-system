@@ -76,10 +76,7 @@ export class OdsClipboard {
           <ods-input
             aria-label={ this.ariaLabel }
             aria-labelledby={ this.ariaLabelledby }
-            class={{
-              'ods-clipboard__input': true,
-              'ods-clipboard__input--masked': this.isMasked || false,
-            }}
+            class="ods-clipboard__input"
             exportparts="input"
             isDisabled={ this.isDisabled }
             isMasked={ this.isMasked }

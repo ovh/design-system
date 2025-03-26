@@ -47,7 +47,7 @@ export const Demo: Story = {
 };
 
 export const Default: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsLink href="https://www.ovhcloud.com">
       Default Link
@@ -56,7 +56,7 @@ export const Default: Story = {
 };
 
 export const Disabled: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsLink disabled
              href="https://www.ovhcloud.com">
@@ -66,7 +66,7 @@ export const Disabled: Story = {
 };
 
 export const Overview: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
@@ -80,7 +80,7 @@ export const Overview: Story = {
 
 export const WithIcon: Story = {
   decorators: [(story) => <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>{ story() }</div>],
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <>
       <OdsLink href="https://www.ovhcloud.com">

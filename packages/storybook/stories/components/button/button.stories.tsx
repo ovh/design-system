@@ -65,7 +65,7 @@ export const Demo: Story = {
 
 export const Color: StoryObj = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <>
       <OdsButton color={ ODS_BUTTON_COLOR.primary }>Primary button</OdsButton>
@@ -76,7 +76,7 @@ export const Color: StoryObj = {
 };
 
 export const Default: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsButton>
       My button
@@ -85,7 +85,7 @@ export const Default: Story = {
 };
 
 export const IsLoading: StoryObj = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsButton isLoading={ true }>
       Loading button
@@ -94,7 +94,7 @@ export const IsLoading: StoryObj = {
 };
 
 export const Overview: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
@@ -107,7 +107,7 @@ export const Overview: Story = {
 
 export const Size: StoryObj = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <>
       <OdsButton size={ ODS_BUTTON_SIZE.md }>MB button</OdsButton>
@@ -119,7 +119,7 @@ export const Size: StoryObj = {
 
 export const Variant: StoryObj = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <>
       <OdsButton variant={ ODS_BUTTON_VARIANT.default }>Default button</OdsButton>

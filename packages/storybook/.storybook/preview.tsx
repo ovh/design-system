@@ -26,6 +26,7 @@ const preview: Preview = {
       },
     },
     controls: {
+      disableSaveFromUI: true,
       expanded: true,
       hideNoControlsWarning: true,
     },

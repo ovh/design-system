@@ -13,7 +13,7 @@ const meta: Meta = {
 export default meta;
 
 export const CustomTriggerArkUI: StoryObj = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsPopoverArkUI>
       <OdsPopoverTriggerArkUI asChild>
@@ -30,7 +30,7 @@ export const CustomTriggerArkUI: StoryObj = {
 };
 
 export const CustomTriggerBaseUI: StoryObj = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsPopoverBaseUI>
       <OdsPopoverTriggerBaseUI render={ <OdsButton /> }>
@@ -45,7 +45,7 @@ export const CustomTriggerBaseUI: StoryObj = {
 };
 
 export const CustomTriggerRadixUI: StoryObj = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsPopoverRadixUI>
       <OdsPopoverTriggerRadixUI asChild>
@@ -62,7 +62,7 @@ export const CustomTriggerRadixUI: StoryObj = {
 };
 
 export const DefaultArkUI: StoryObj = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsPopoverArkUI>
       <OdsPopoverTriggerArkUI>
@@ -77,7 +77,7 @@ export const DefaultArkUI: StoryObj = {
 };
 
 export const DefaultBaseUI: StoryObj = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsPopoverBaseUI>
       <OdsPopoverTriggerBaseUI>
@@ -92,7 +92,7 @@ export const DefaultBaseUI: StoryObj = {
 };
 
 export const DefaultRadixUI: StoryObj = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsPopoverRadixUI>
       <OdsPopoverTriggerRadixUI>
@@ -118,7 +118,7 @@ export const GridArkUI: StoryObj = {
       { story() }
     </div>
   )],
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <>
       <OdsPopoverArkUI position="top-start">
@@ -210,7 +210,7 @@ export const GridBaseUI: StoryObj = {
       { story() }
     </div>
   )],
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <>
       <OdsPopoverBaseUI>
@@ -302,7 +302,7 @@ export const GridRadixUI: StoryObj = {
       { story() }
     </div>
   )],
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <>
       <OdsPopoverRadixUI>

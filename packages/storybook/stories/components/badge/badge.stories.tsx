@@ -48,7 +48,7 @@ export const Demo: Story = {
 
 export const Color: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <>
       <OdsBadge color={ ODS_BADGE_COLOR.alpha }>Alpha</OdsBadge>
@@ -65,7 +65,7 @@ export const Color: Story = {
 };
 
 export const Default: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsBadge>
       My badge
@@ -74,7 +74,7 @@ export const Default: Story = {
 };
 
 export const Overview: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
@@ -87,7 +87,7 @@ export const Overview: Story = {
 
 export const Size: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <>
       <OdsBadge size={ ODS_BADGE_SIZE.sm }>SM badge</OdsBadge>

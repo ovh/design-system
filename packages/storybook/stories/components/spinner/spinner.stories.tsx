@@ -37,7 +37,7 @@ export const Demo: Story = {
 };
 
 export const Color: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <>
       <OdsSpinner color={ ODS_SPINNER_COLOR.neutral } />
@@ -48,14 +48,14 @@ export const Color: Story = {
 };
 
 export const Default: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsSpinner />
   ),
 };
 
 export const Overview: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
@@ -65,7 +65,7 @@ export const Overview: Story = {
 };
 
 export const Size: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <>
       <OdsSpinner size={ ODS_SPINNER_SIZE.xs } />

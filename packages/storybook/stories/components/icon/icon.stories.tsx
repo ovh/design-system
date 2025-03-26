@@ -188,7 +188,7 @@ export const Demo: Story = {
 };
 
 export const AccessibilityDecorative: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsIcon aria-hidden="true"
              name="cloud" />
@@ -196,7 +196,7 @@ export const AccessibilityDecorative: Story = {
 };
 
 export const AccessibilityInformative: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsIcon aria-label="home"
              name="home" />
@@ -243,7 +243,7 @@ export const All: Story = {
 };
 
 export const Overview: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
@@ -255,7 +255,7 @@ export const Overview: Story = {
 };
 
 export const Decorative: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsIcon aria-hidden="true"
              name="home" />
@@ -263,14 +263,14 @@ export const Decorative: Story = {
 };
 
 export const Default: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsIcon name="home" />
   ),
 };
 
 export const Informative: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsIcon aria-label="Help"
              name="circle-question" />

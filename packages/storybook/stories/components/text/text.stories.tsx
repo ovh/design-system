@@ -38,14 +38,14 @@ export const Demo: Story = {
 };
 
 export const Default: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <OdsText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</OdsText>
   ),
 };
 
 export const FigCaption: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <figure>
       <img alt="OVHcloud logo"
@@ -59,7 +59,7 @@ export const FigCaption: Story = {
 };
 
 export const Overview: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
@@ -69,7 +69,7 @@ export const Overview: Story = {
 };
 
 export const Preset: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <>
       <OdsText preset="caption">Caption</OdsText><br />
@@ -87,7 +87,7 @@ export const Preset: Story = {
 };
 
 export const TableCaption: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   render: ({}) => (
     <table style={{
       border: '2px solid rgb(140 140 140)',

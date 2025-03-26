@@ -18,9 +18,6 @@ const config: StorybookConfig = {
     disableTelemetry: true,
     disableWhatsNewNotifications: true,
   },
-  docs: {
-    autodocs: false,
-  },
   framework: '@storybook/react-vite',
   managerHead: (head) => `
     ${head}

@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { ODS_LINK_COLOR, ODS_LINK_COLORS, OdsIcon, OdsLink, OdsLinkProp } from '@ovhcloud/ods-react';
 import React from 'react';
+import { OdsIcon } from '../../../../ods-react/src/components/icon/src';
+import { ODS_LINK_COLOR, ODS_LINK_COLORS, OdsLink, OdsLinkProp } from '../../../../ods-react/src/components/link/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -47,7 +48,7 @@ export const Demo: Story = {
 
 export const Default: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsLink href="https://www.ovhcloud.com">
       Default Link
     </OdsLink>
@@ -56,7 +57,7 @@ export const Default: Story = {
 
 export const Disabled: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsLink disabled
              href="https://www.ovhcloud.com">
       Disabled
@@ -69,7 +70,7 @@ export const Overview: Story = {
   parameters: {
     layout: 'centered',
   },
-  render: () => (
+  render: ({}) => (
     <OdsLink href="https://www.ovhcloud.com"
              target="_blank">
       Link
@@ -78,9 +79,10 @@ export const Overview: Story = {
 };
 
 export const WithIcon: Story = {
+  decorators: [(story) => <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>{ story() }</div>],
   tags: ['isHidden'],
-  render: () => (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+  render: ({}) => (
+    <>
       <OdsLink href="https://www.ovhcloud.com">
         <OdsIcon name="arrow-left" /> Icon Link
       </OdsLink>
@@ -89,6 +91,6 @@ export const WithIcon: Story = {
                href="https://www.ovhcloud.com">
         Icon Link <OdsIcon name="arrow-right" />
       </OdsLink>
-    </div>
+    </>
   ),
 };

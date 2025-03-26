@@ -1,5 +1,5 @@
-import SpecificationsButton from '@ovhcloud/ods-react/documentation/ods-button/custom-elements.json';
 import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsButton from '../../../../ods-react/src/components/button/documentation/ods-button.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -13,7 +13,7 @@ import * as ButtonStories from './button.stories';
 
 <Canvas of={ ButtonStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsButton } />
+<TechnicalSpecification data={ SpecificationsButton } of={ ButtonStories } />
 
 <Heading label="Examples" level={ 2 } />
 

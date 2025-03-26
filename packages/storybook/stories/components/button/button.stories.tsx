@@ -1,6 +1,6 @@
-import { ODS_BUTTON_COLOR, ODS_BUTTON_COLORS, ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS, OdsButton, type OdsButtonProp } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
+import { ODS_BUTTON_COLOR, ODS_BUTTON_COLORS, ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS, OdsButton, type OdsButtonProp } from '../../../../ods-react/src/components/button/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -64,8 +64,9 @@ export const Demo: Story = {
 };
 
 export const Color: StoryObj = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <>
       <OdsButton color={ ODS_BUTTON_COLOR.primary }>Primary button</OdsButton>
       <OdsButton color={ ODS_BUTTON_COLOR.critical }>Critical button</OdsButton>
@@ -76,7 +77,7 @@ export const Color: StoryObj = {
 
 export const Default: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsButton>
       My button
     </OdsButton>
@@ -85,7 +86,7 @@ export const Default: Story = {
 
 export const IsLoading: StoryObj = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsButton isLoading={ true }>
       Loading button
     </OdsButton>
@@ -97,7 +98,7 @@ export const Overview: Story = {
   parameters: {
     layout: 'centered',
   },
-  render: () => (
+  render: ({}) => (
     <OdsButton>
       Button
     </OdsButton>
@@ -105,8 +106,9 @@ export const Overview: Story = {
 };
 
 export const Size: StoryObj = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <>
       <OdsButton size={ ODS_BUTTON_SIZE.md }>MB button</OdsButton>
       <OdsButton size={ ODS_BUTTON_SIZE.sm }>SM button</OdsButton>
@@ -116,8 +118,9 @@ export const Size: StoryObj = {
 };
 
 export const Variant: StoryObj = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <>
       <OdsButton variant={ ODS_BUTTON_VARIANT.default }>Default button</OdsButton>
       <OdsButton variant={ ODS_BUTTON_VARIANT.outline }>Outline button</OdsButton>

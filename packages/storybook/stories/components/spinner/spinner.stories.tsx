@@ -1,6 +1,6 @@
-import { ODS_SPINNER_COLOR, ODS_SPINNER_COLORS, ODS_SPINNER_SIZE, ODS_SPINNER_SIZES, OdsSpinner, type OdsSpinnerProp } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
+import { ODS_SPINNER_COLOR, ODS_SPINNER_COLORS, ODS_SPINNER_SIZE, ODS_SPINNER_SIZES, OdsSpinner, type OdsSpinnerProp } from '../../../../ods-react/src/components/spinner/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -38,7 +38,7 @@ export const Demo: Story = {
 
 export const Color: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <>
       <OdsSpinner color={ ODS_SPINNER_COLOR.neutral } />
       <OdsSpinner color={ ODS_SPINNER_COLOR.primary } />
@@ -49,7 +49,7 @@ export const Color: Story = {
 
 export const Default: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsSpinner />
   ),
 };
@@ -59,14 +59,14 @@ export const Overview: Story = {
   parameters: {
     layout: 'centered',
   },
-  render: () => (
+  render: ({}) => (
     <OdsSpinner />
   ),
 };
 
 export const Size: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <>
       <OdsSpinner size={ ODS_SPINNER_SIZE.xs } />
       <OdsSpinner size={ ODS_SPINNER_SIZE.sm } />

@@ -1,5 +1,5 @@
-import SpecificationsText from '@ovhcloud/ods-react/documentation/ods-text/custom-elements.json';
 import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsText from '../../../../ods-react/src/components/text/documentation/ods-text.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -13,7 +13,7 @@ import * as TextStories from './text.stories';
 
 <Canvas of={ TextStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsText } />
+<TechnicalSpecification data={ SpecificationsText } of={ TextStories } />
 
 <Heading label="Examples" level={ 2 } />
 

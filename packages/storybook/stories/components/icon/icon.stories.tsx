@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { ODS_ICON_NAME, ODS_ICON_NAMES, OdsIcon, type OdsIconProp } from '@ovhcloud/ods-react';
 import React from 'react';
+import { ODS_ICON_NAME, ODS_ICON_NAMES, OdsIcon, type OdsIconProp } from '../../../../ods-react/src/components/icon/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -189,7 +189,7 @@ export const Demo: Story = {
 
 export const AccessibilityDecorative: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsIcon aria-hidden="true"
              name="cloud" />
   ),
@@ -197,7 +197,7 @@ export const AccessibilityDecorative: Story = {
 
 export const AccessibilityInformative: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsIcon aria-label="home"
              name="home" />
   ),
@@ -247,7 +247,7 @@ export const Overview: Story = {
   parameters: {
     layout: 'centered',
   },
-  render: () => (
+  render: ({}) => (
     <OdsIcon aria-hidden="true"
              name="home"
              style={{ fontSize: '2rem', color: 'var(--ods-color-primary-500)' }} />
@@ -256,7 +256,7 @@ export const Overview: Story = {
 
 export const Decorative: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsIcon aria-hidden="true"
              name="home" />
   ),
@@ -264,14 +264,14 @@ export const Decorative: Story = {
 
 export const Default: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsIcon name="home" />
   ),
 };
 
 export const Informative: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsIcon aria-label="Help"
              name="circle-question" />
   ),

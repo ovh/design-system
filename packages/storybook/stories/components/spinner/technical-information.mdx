@@ -1,5 +1,5 @@
-import SpecificationsSpinner from '@ovhcloud/ods-react/documentation/ods-spinner/custom-elements.json';
 import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsSpinner from '../../../../ods-react/src/components/spinner/documentation/ods-spinner.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -13,7 +13,7 @@ import * as SpinnerStories from './spinner.stories';
 
 <Canvas of={ SpinnerStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsSpinner } />
+<TechnicalSpecification data={ SpecificationsSpinner } of={ SpinnerStories } />
 
 <Heading label="Examples" level={ 2 } />
 

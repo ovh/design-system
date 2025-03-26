@@ -1,11 +1,9 @@
-import {
-  OdsButton,
-  OdsPopoverArkUI, OdsPopoverContentArkUI, OdsPopoverTriggerArkUI,
-  OdsPopoverBaseUI, OdsPopoverContentBaseUI, OdsPopoverTriggerBaseUI,
-  OdsPopoverRadixUI, OdsPopoverContentRadixUI, OdsPopoverTriggerRadixUI,
-} from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
+import { OdsButton } from '../../../../ods-react/src/components/button/src';
+import { OdsPopoverArkUI, OdsPopoverContentArkUI, OdsPopoverTriggerArkUI } from '../../../../ods-react/src/components/popover-arkui/src';
+import { OdsPopoverBaseUI, OdsPopoverContentBaseUI, OdsPopoverTriggerBaseUI } from '../../../../ods-react/src/components/popover-baseui/src';
+import { OdsPopoverRadixUI, OdsPopoverContentRadixUI, OdsPopoverTriggerRadixUI } from '../../../../ods-react/src/components/popover-radixui/src';
 
 const meta: Meta = {
   component: OdsPopoverArkUI,
@@ -16,7 +14,7 @@ export default meta;
 
 export const CustomTriggerArkUI: StoryObj = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsPopoverArkUI>
       <OdsPopoverTriggerArkUI asChild>
         <OdsButton>
@@ -33,7 +31,7 @@ export const CustomTriggerArkUI: StoryObj = {
 
 export const CustomTriggerBaseUI: StoryObj = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsPopoverBaseUI>
       <OdsPopoverTriggerBaseUI render={ <OdsButton /> }>
         Custom Trigger
@@ -48,7 +46,7 @@ export const CustomTriggerBaseUI: StoryObj = {
 
 export const CustomTriggerRadixUI: StoryObj = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsPopoverRadixUI>
       <OdsPopoverTriggerRadixUI asChild>
         <OdsButton>
@@ -65,7 +63,7 @@ export const CustomTriggerRadixUI: StoryObj = {
 
 export const DefaultArkUI: StoryObj = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsPopoverArkUI>
       <OdsPopoverTriggerArkUI>
         Show popover
@@ -80,7 +78,7 @@ export const DefaultArkUI: StoryObj = {
 
 export const DefaultBaseUI: StoryObj = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsPopoverBaseUI>
       <OdsPopoverTriggerBaseUI>
         Show popover
@@ -95,7 +93,7 @@ export const DefaultBaseUI: StoryObj = {
 
 export const DefaultRadixUI: StoryObj = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsPopoverRadixUI>
       <OdsPopoverTriggerRadixUI>
         Show popover
@@ -109,8 +107,7 @@ export const DefaultRadixUI: StoryObj = {
 };
 
 export const GridArkUI: StoryObj = {
-  tags: ['isHidden'],
-  render: () => (
+  decorators: [(story) => (
     <div style={{
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
@@ -118,6 +115,12 @@ export const GridArkUI: StoryObj = {
       gap: '20px',
       padding: '50px 150px',
     }}>
+      { story() }
+    </div>
+  )],
+  tags: ['isHidden'],
+  render: ({}) => (
+    <>
       <OdsPopoverArkUI position="top-start">
         <OdsPopoverTriggerArkUI>
           Top Left
@@ -191,13 +194,12 @@ export const GridArkUI: StoryObj = {
           Bottom Right popover
         </OdsPopoverContentArkUI>
       </OdsPopoverArkUI>
-    </div>
+    </>
   ),
 };
 
 export const GridBaseUI: StoryObj = {
-  tags: ['isHidden'],
-  render: () => (
+  decorators: [(story) => (
     <div style={{
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
@@ -205,6 +207,12 @@ export const GridBaseUI: StoryObj = {
       gap: '20px',
       padding: '50px 150px',
     }}>
+      { story() }
+    </div>
+  )],
+  tags: ['isHidden'],
+  render: ({}) => (
+    <>
       <OdsPopoverBaseUI>
         <OdsPopoverTriggerBaseUI>
           Top Left
@@ -278,13 +286,12 @@ export const GridBaseUI: StoryObj = {
           Bottom Right popover
         </OdsPopoverContentBaseUI>
       </OdsPopoverBaseUI>
-    </div>
+    </>
   ),
 };
 
 export const GridRadixUI: StoryObj = {
-  tags: ['isHidden'],
-  render: () => (
+  decorators: [(story) => (
     <div style={{
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
@@ -292,6 +299,12 @@ export const GridRadixUI: StoryObj = {
       gap: '20px',
       padding: '50px 150px',
     }}>
+      { story() }
+    </div>
+  )],
+  tags: ['isHidden'],
+  render: ({}) => (
+    <>
       <OdsPopoverRadixUI>
         <OdsPopoverTriggerRadixUI>
           Top Left
@@ -365,6 +378,6 @@ export const GridRadixUI: StoryObj = {
           Bottom Right popover
         </OdsPopoverContentRadixUI>
       </OdsPopoverRadixUI>
-    </div>
+    </>
   ),
 };

@@ -14,10 +14,10 @@
   ],
   "scripts": {
     "build:ci": "lerna run --stream build:ci",
-    "build:prod": "lerna run --stream build:prod && yarn run doc",
+    "build:prod": "lerna run --stream build:prod",
     "build:storybook": "lerna run --stream build:storybook",
     "clean": "lerna run clean",
-    "doc": "lerna run doc && lerna run copy:doc",
+    "doc": "lerna run doc",
     "lint": "yarn lint:ts && yarn lint:scss",
     "lint:a11y": "lerna run lint:a11y",
     "lint:ts": "lerna run lint:ts",

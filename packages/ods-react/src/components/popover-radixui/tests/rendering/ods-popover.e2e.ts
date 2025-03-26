@@ -5,17 +5,6 @@ describe('OdsPopover rendering', () => {
   it('should render the web component', async() => {
     await gotoStory(page, 'rendering/render');
 
-    expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
-  });
-
-  describe('custom style', () => {
-    it('should render with custom style applied', async() => {
-      await gotoStory(page, 'rendering/custom-style');
-
-      const odsPopover = await page.waitForSelector('[data-testid="custom-style"]');
-      const height = await odsPopover?.evaluate((el: Element) => el.getBoundingClientRect().height);
-
-      expect(height).toBe(42);
-    });
+    expect(await page.waitForSelector('[data-testid="render-trigger"]')).not.toBeNull();
   });
 });

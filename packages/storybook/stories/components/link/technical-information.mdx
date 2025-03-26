@@ -1,5 +1,5 @@
-import SpecificationsLink from '@ovhcloud/ods-react/documentation/ods-link/custom-elements.json';
 import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsLink from '../../../../ods-react/src/components/link/documentation/ods-link.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -13,7 +13,7 @@ import * as LinkStories from './link.stories';
 
 <Canvas of={ LinkStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsLink } />
+<TechnicalSpecification data={ SpecificationsLink } of={ LinkStories } />
 
 <Heading label="Examples" level={ 2 } />
 

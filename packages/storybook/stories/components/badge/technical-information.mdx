@@ -1,5 +1,5 @@
-import SpecificationsBadge from '@ovhcloud/ods-react/documentation/ods-badge/custom-elements.json';
 import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsBadge from '../../../../ods-react/src/components/badge/documentation/ods-badge.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -13,7 +13,7 @@ import * as BadgeStories from './badge.stories';
 
 <Canvas of={ BadgeStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsBadge } />
+<TechnicalSpecification data={ SpecificationsBadge } of={ BadgeStories } />
 
 <Heading label="Examples" level={ 2 } />
 

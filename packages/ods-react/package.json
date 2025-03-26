@@ -10,7 +10,6 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/ods-react.js"
     },
-    "./documentation/*": "./dist/documentation/*",
     "./style": {
       "default": "./src/style/index.scss"
     }
@@ -22,7 +21,6 @@
   "scripts": {
     "build:prod": "rimraf dist && tsc -b && vite build",
     "clean": "rimraf dist",
-    "copy:doc": "rimraf dist/documentation && shx mkdir -p dist/documentation && shx cp -r ./src/components/*/documentation ./dist",
     "lint:scss": "stylelint 'src/style/*.scss'",
     "lint:ts": "eslint '{src,tests}/!(components)/**/*.{ts,tsx}'"
   },
@@ -38,7 +36,6 @@
     "react-dom": ">=18.2.0"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "0.10.3",
     "@storybook/blocks": "8.0.4",
     "@storybook/components": "8.0.4",
     "@storybook/react": "8.0.4",
@@ -54,11 +51,11 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "1.71.0",
-    "shx": "0.4.0",
     "start-server-and-test": "2.0.10",
     "storybook": "8.0.4",
     "ts-jest": "29.1.2",
     "ts-node": "10.9.2",
+    "typedoc": "0.28.1",
     "typescript": "5.3.3",
     "vite": "6.2.0",
     "vite-plugin-dts": "4.5.0",

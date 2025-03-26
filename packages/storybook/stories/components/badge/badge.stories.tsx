@@ -1,6 +1,6 @@
-import { ODS_BADGE_COLOR, ODS_BADGE_COLORS, ODS_BADGE_SIZE, ODS_BADGE_SIZES, OdsBadge, type OdsBadgeProp } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
+import { ODS_BADGE_COLOR, ODS_BADGE_COLORS, ODS_BADGE_SIZE, ODS_BADGE_SIZES, OdsBadge, type OdsBadgeProp } from '../../../../ods-react/src/components/badge/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -47,8 +47,9 @@ export const Demo: Story = {
 };
 
 export const Color: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <>
       <OdsBadge color={ ODS_BADGE_COLOR.alpha }>Alpha</OdsBadge>
       <OdsBadge color={ ODS_BADGE_COLOR.beta }>Beta</OdsBadge>
@@ -65,7 +66,7 @@ export const Color: Story = {
 
 export const Default: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsBadge>
       My badge
     </OdsBadge>
@@ -77,7 +78,7 @@ export const Overview: Story = {
   parameters: {
     layout: 'centered',
   },
-  render: () => (
+  render: ({}) => (
     <OdsBadge>
       Badge
     </OdsBadge>
@@ -85,8 +86,9 @@ export const Overview: Story = {
 };
 
 export const Size: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <>
       <OdsBadge size={ ODS_BADGE_SIZE.sm }>SM badge</OdsBadge>
       <OdsBadge size={ ODS_BADGE_SIZE.md }>MD badge</OdsBadge>

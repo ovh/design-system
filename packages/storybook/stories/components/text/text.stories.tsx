@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { ODS_TEXT_PRESET, ODS_TEXT_PRESETS, OdsText, type OdsTextProp } from '@ovhcloud/ods-react';
 import React from 'react';
+import { ODS_TEXT_PRESET, ODS_TEXT_PRESETS, OdsText, type OdsTextProp }  from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -39,14 +39,14 @@ export const Demo: Story = {
 
 export const Default: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <OdsText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</OdsText>
   ),
 };
 
 export const FigCaption: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <figure>
       <img alt="OVHcloud logo"
            src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4"
@@ -63,14 +63,14 @@ export const Overview: Story = {
   parameters: {
     layout: 'centered',
   },
-  render: () => (
+  render: ({}) => (
     <OdsText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</OdsText>
   ),
 };
 
 export const Preset: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <>
       <OdsText preset="caption">Caption</OdsText><br />
       <OdsText preset="code">Code</OdsText>
@@ -88,7 +88,7 @@ export const Preset: Story = {
 
 export const TableCaption: Story = {
   tags: ['isHidden'],
-  render: () => (
+  render: ({}) => (
     <table style={{
       border: '2px solid rgb(140 140 140)',
       borderCollapse: 'collapse',

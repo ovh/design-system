@@ -7,7 +7,7 @@
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf documentation node_modules",
-    "doc": "typedoc",
+    "doc": "typedoc --logLevel Verbose",
     "lint:a11y": "eslint --config ../../../../../.eslintrc-a11y 'src/**/*.{js,ts,tsx}' --ignore-pattern '*.stories.tsx'",
     "lint:scss": "stylelint 'src/components/**/*.scss'",
     "lint:ts": "eslint '{src,tests}/**/*.{js,ts,tsx}' --ignore-pattern '*.stories.tsx'",

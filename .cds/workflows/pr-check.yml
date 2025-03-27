@@ -1,0 +1,58 @@
+name: pr-check
+
+on: [push]
+
+integrations:
+  - artifactory-digital-tools-tech-components-ods
+
+jobs:
+  deploy-storybook:
+    runs-on: library/node-22
+    steps:
+      - name: Setup repository
+        uses: .cds/actions/setup.yml
+
+      - name: Build ODS
+        run: yarn build:prod
+
+      - name: Generate documentation
+        run: yarn doc
+
+      - name: Build storybook
+        run: yarn build:storybook
+
+      - uses: library/serveStaticFiles
+        with:
+          name: ods-storybook
+          destination: ${{ git.ref_name }}
+          source: packages/storybook/dist
+
+  e2e-tests:
+    runs-on: library/node-22
+    steps:
+      - name: Setup repository
+        uses: .cds/actions/setup.yml
+
+      - name: Run e2e tests
+        run: yarn test:e2e:ci
+
+  linters:
+    runs-on: library/node-22
+    steps:
+      - name: Setup repository
+        uses: .cds/actions/setup.yml
+
+      - name: Run linter TS
+        run: yarn lint:ts
+
+      - name: Run linter SCSS
+        run: yarn lint:scss
+
+  unit-tests:
+    runs-on: library/node-22
+    steps:
+      - name: Setup repository
+        uses: .cds/actions/setup.yml
+
+      - name: Run unit tests
+        run: yarn test:spec:ci

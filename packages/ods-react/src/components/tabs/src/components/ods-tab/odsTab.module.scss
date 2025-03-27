@@ -1,0 +1,39 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/state';
+@use '../ods-tab-list/odsTabList.module' as tab-list;
+
+// TODO full style, this is just for quick test
+.ods-tab {
+  margin-bottom: -#{tab-list.$ods-tab-list-border-bottom-size};
+  border-bottom: solid tab-list.$ods-tab-list-border-bottom-size;
+  border-top-left-radius: var(--ods-border-radius-md);
+  border-top-right-radius: var(--ods-border-radius-md);
+  cursor: pointer;
+  padding: 2px 16px;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--ods-color-text);
+  font-weight: 600;
+
+  background-color: inherit;
+  border-color: transparent;
+
+  &:focus-visible {
+    @include focus.ods-focus();
+
+    //z-index: 1;
+    outline-offset: 0;
+  }
+
+  &[disabled] {
+    @include state.ods-is-disabled();
+
+    border-color: var(--ods-color-neutral-100);
+    background-color: inherit;
+  }
+
+  &[aria-selected="true"] {
+    border-color: var(--ods-color-primary-500);
+    color: var(--ods-color-primary-500);
+  }
+}

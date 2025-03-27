@@ -7,3 +7,5 @@ export * from './spinner/src';
 export * from './popover-arkui/src';
 export * from './popover-baseui/src';
 export * from './popover-radixui/src';
+
+export * from './tabs/src';

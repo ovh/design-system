@@ -1,0 +1,5 @@
+$ods-tab-list-border-bottom-size: 2px;
+
+.ods-tab-list {
+  border-bottom: solid $ods-tab-list-border-bottom-size var(--ods-color-neutral-100);
+}

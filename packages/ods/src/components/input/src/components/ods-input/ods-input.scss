@@ -61,7 +61,7 @@
     }
 
     &--clearable, &--loading, &--toggle-mask, &--search {
-      padding-right: input.$ods-input-input-padding-right;
+      padding-right: input.$ods-input-input-padding-right + input.$ods-input-actions-padding-right;
     }
 
     &--clearable {

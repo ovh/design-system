@@ -39,6 +39,8 @@ const OdsLink: FC<OdsLinkProp> = forwardRef(({
   );
 });
 
+OdsLink.displayName = 'OdsLink';
+
 export {
   OdsLink,
   type OdsLinkProp,

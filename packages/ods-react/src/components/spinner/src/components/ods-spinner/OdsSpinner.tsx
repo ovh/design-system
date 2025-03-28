@@ -56,6 +56,8 @@ const OdsSpinner: FC<OdsSpinnerProp> = forwardRef(({
   );
 });
 
+OdsSpinner.displayName = 'OdsSpinner';
+
 export {
   OdsSpinner,
   type OdsSpinnerProp,

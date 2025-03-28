@@ -13,6 +13,8 @@ const OdsPopover: FC<OdsPopoverProp> = ({ children }) => {
   );
 };
 
+OdsPopover.displayName = 'OdsPopover';
+
 export {
   OdsPopover,
   type OdsPopoverProp,

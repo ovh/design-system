@@ -19,7 +19,6 @@
   ],
   "root": true,
   "rules": {
-    "react/prop-types": 0,
     "@typescript-eslint/ban-types": "error",
     "@typescript-eslint/consistent-indexed-object-style": "error",
     "@typescript-eslint/consistent-type-exports": "error",
@@ -30,7 +29,7 @@
     "@typescript-eslint/ban-ts-comment": ["error", { "ts-ignore": "allow-with-description" }],
     "array-bracket-spacing": ["error", "never"],
     "arrow-parens": ["error", "always"],
-    "arrow-spacing": ["error", { "before": true, "after": true }],
+    "arrow-spacing": ["error", { "after": true, "before": true }],
     "brace-style": ["error", "1tbs"],
     "comma-dangle": ["error", "always-multiline"],
     "complexity": ["error"],
@@ -43,6 +42,10 @@
     "import/order": [
       "error",
       {
+        "alphabetize": {
+          "caseInsensitive": true,
+          "order": "asc"
+        },
         "groups": [
           "type",
           "builtin", // Built-in imports (come from NodeJS native) go first
@@ -54,19 +57,14 @@
           "index", // <- index imports
           "unknown" // <- unknown
         ],
+        "newlines-between": "never",
         "pathGroups": [
           {
-            "pattern": "{.,..}/*.scss", // same directory only
-            // pattern: '{.,..}/**/*\.scss' // same & outside directories (e.g. import '../foo/foo.scss')
             "group": "object",
+            "pattern": "{.,..}/*.scss", // same directory only
             "position": "after"
           }
-        ],
-        "newlines-between": "never",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
+        ]
       }
     ],
     "indent": ["error", 2, { "SwitchCase": 1 }],
@@ -77,7 +75,7 @@
     "newline-per-chained-call": "off",
     "no-array-constructor": "error",
     "no-await-in-loop": "error",
-    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-console": ["error", { "allow": ["error", "warn"] }],
     "no-extra-bind": "error",
     "no-magic-numbers": "off",
     "no-multi-spaces": "error",
@@ -87,6 +85,7 @@
     "object-curly-spacing": ["error", "always"],
     "operator-linebreak": ["error", "before", { "overrides": { "&&": "after" }}],
     "quotes": ["error", "single"],
+    "react/prop-types": 0,
     "semi": ["error", "always"],
     "sort-imports": [
       "error",

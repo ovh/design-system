@@ -31,6 +31,8 @@ const OdsBadge: FC<OdsBadgeProp> = forwardRef(({
   );
 });
 
+OdsBadge.displayName = 'OdsBadge';
+
 export {
   OdsBadge,
   type OdsBadgeProp,

@@ -13,6 +13,8 @@ const OdsPopoverTrigger: FC<OdsPopoverTriggerProp> = ({ children, ...props }) =>
   );
 };
 
+OdsPopoverTrigger.displayName = 'OdsPopoverTrigger';
+
 export {
   OdsPopoverTrigger,
   type OdsPopoverTriggerProp,

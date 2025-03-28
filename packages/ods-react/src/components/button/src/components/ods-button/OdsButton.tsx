@@ -48,6 +48,8 @@ const OdsButton: FC<OdsButtonProp> = forwardRef(({
   );
 });
 
+OdsButton.displayName = 'OdsButton';
+
 export {
   OdsButton,
   type OdsButtonProp,

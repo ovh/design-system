@@ -20,6 +20,8 @@ const OdsIcon: FC<OdsIconProp> = forwardRef(({
   );
 });
 
+OdsIcon.displayName = 'OdsIcon';
+
 export {
   OdsIcon,
   type OdsIconProp,

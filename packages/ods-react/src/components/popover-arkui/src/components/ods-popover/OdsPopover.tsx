@@ -21,6 +21,8 @@ const OdsPopover: FC<OdsPopoverProp> = ({
   );
 };
 
+OdsPopover.displayName = 'OdsPopover';
+
 export {
   OdsPopover,
   type OdsPopoverProp,

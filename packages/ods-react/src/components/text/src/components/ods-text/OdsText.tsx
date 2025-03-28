@@ -29,6 +29,8 @@ const OdsText: FC<OdsTextProp> = forwardRef(({
   );
 });
 
+OdsText.displayName = 'OdsText';
+
 export {
   OdsText,
   type OdsTextProp,

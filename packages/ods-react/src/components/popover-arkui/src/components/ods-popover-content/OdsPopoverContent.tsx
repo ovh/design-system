@@ -33,6 +33,8 @@ const OdsPopoverContent: FC<OdsPopoverContentProp> = forwardRef(({
   );
 });
 
+OdsPopoverContent.displayName = 'OdsPopoverContent';
+
 export {
   OdsPopoverContent,
   type OdsPopoverContentProp,

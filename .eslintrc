@@ -19,6 +19,7 @@
   ],
   "root": true,
   "rules": {
+    "react/prop-types": 0,
     "@typescript-eslint/ban-types": "error",
     "@typescript-eslint/consistent-indexed-object-style": "error",
     "@typescript-eslint/consistent-type-exports": "error",

@@ -21,8 +21,8 @@ const OdsPopoverContent: FC<OdsPopoverContentProp> = forwardRef(({
     const split = position.split('-');
     // TODO fix type
     return {
-      align: split[1] as any || 'center',
-      side: split[0] as any,
+      align: split[1] as any || 'center', // eslint-disable-line @typescript-eslint/no-explicit-any
+      side: split[0] as any, // eslint-disable-line @typescript-eslint/no-explicit-any
     };
   }, [position]);
 
@@ -50,6 +50,8 @@ const OdsPopoverContent: FC<OdsPopoverContentProp> = forwardRef(({
     </Popover.Portal>
   );
 });
+
+OdsPopoverContent.displayName = 'OdsPopoverContent';
 
 export {
   OdsPopoverContent,

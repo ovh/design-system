@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.6.1](https://ovh.github.io/design-system/v18.6.1/?path=/docs/design-system-changelog--page) (2025-03-28)
+[compare](https://github.com/ovh/design-system/compare/v18.6.0...v18.6.1)
+
+### Bug Fixes
+
+* **input:** adds missing padding & remove useless margin from clipboard ([6dd2f94](https://github.com/ovh/design-system/commit/6dd2f947301338803bb6785f26507ea4aa66a370))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

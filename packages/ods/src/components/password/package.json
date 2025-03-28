@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-password",
-  "version": "18.6.0",
+  "version": "18.6.1",
   "private": true,
   "description": "ODS Password component",
   "main": "dist/index.cjs.js",

@@ -7,18 +7,24 @@ export default {
 };
 
 export const Default = () => (
-  <OdsLink href="http://google.com" target="_blank">
+  <OdsLink href="#">
     My link
   </OdsLink>
 );
 
 export const Disabled = () => (
   <>
-    <OdsLink disabled={ true } href="http://google.com" target="_blank">
+    <OdsLink
+      disabled={ true }
+      href="http://google.com"
+      target="_blank">
       My link
     </OdsLink>
     <br />
-    <OdsLink disabled={ false } href="http://google.com" target="_blank">
+    <OdsLink
+      disabled={ false }
+      href="http://google.com"
+      target="_blank">
       My link
     </OdsLink>
   </>
@@ -26,11 +32,15 @@ export const Disabled = () => (
 
 export const Icons = () => (
   <>
-    <OdsLink href="http://google.com" target="_blank">
+    <OdsLink
+      href="http://google.com"
+      target="_blank">
       <OdsIcon name={ ODS_ICON_NAME.arrowLeft } /> My link
     </OdsLink>
     <br />
-    <OdsLink href="http://google.com" target="_blank">
+    <OdsLink
+      href="http://google.com"
+      target="_blank">
       My link <OdsIcon name={ ODS_ICON_NAME.arrowRight } />
     </OdsLink>
   </>

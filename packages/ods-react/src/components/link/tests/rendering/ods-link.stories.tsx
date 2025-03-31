@@ -8,6 +8,7 @@ export default {
 export const customStyle = () => (
   <OdsLink
     data-testid="custom-style"
+    href="#"
     style={{ height: '42px' }}>
     Custom Style
   </OdsLink>
@@ -15,7 +16,8 @@ export const customStyle = () => (
 
 export const render = () => (
   <OdsLink
-    data-testid="render">
+    data-testid="render"
+    href="#">
     Render
   </OdsLink>
 );

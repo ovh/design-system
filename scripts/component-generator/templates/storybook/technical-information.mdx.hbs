@@ -11,19 +11,9 @@ import * as {{> ComponentName }}Stories from './{{> component-name }}.stories';
 
 <Heading label="Overview" level={ 2 } />
 
-<Canvas of={ {{> ComponentName }}Stories.Overview } sourceState="'none' "/>
+<Canvas of={ {{> ComponentName }}Stories.Overview } sourceState="none" />
 
 <TechnicalSpecification data={ Specifications{{> ComponentName }} } of={ {{> ComponentName }}Stories } />
-
-<Heading label="Style customization" level={ 2 } />
-
-TODO if relevant
-
-You can add your own style on the {{> component-name }} element using the part `...`.
-
-Custom CSS:
-
-<Canvas of={ {{> ComponentName }}Stories.CustomCSS } sourceState="shown" />
 
 <Heading label="Examples" level={ 2 } />
 

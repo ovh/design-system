@@ -3753,6 +3753,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-tooltip@workspace:packages/ods-react/src/components/tooltip":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-tooltip@workspace:packages/ods-react/src/components/tooltip"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react@18.6.0, @ovhcloud/ods-react@workspace:packages/ods-react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react@workspace:packages/ods-react"

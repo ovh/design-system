@@ -1,63 +1,34 @@
-[//]: # (import SpecificationsPopover from '@ovhcloud/ods-react/documentation/ods-popover/custom-elements.json';)
-
 import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsPopover from '../../../../ods-react/src/components/popover/documentation/ods-popover.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
-
-[//]: # (import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';)
-
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as PopoverStories from './popover.stories';
 
 <Meta of={ PopoverStories } name="Technical information" />
 
 <Banner of={ PopoverStories } />
 
-[//]: # (<Heading label="Overview" level={ 2 } />)
+<Heading label="Overview" level={ 2 } />
 
-[//]: # (<Canvas of={ PopoverStories.Overview } sourceState="'none' "/>)
+<Canvas of={ PopoverStories.Overview } sourceState="none" />
 
-[//]: # (<TechnicalSpecification data={ SpecificationsPopover } />)
+<TechnicalSpecification data={ SpecificationsPopover } of={ PopoverStories } />
 
 <Heading label="Examples" level={ 2 } />
 
-<Heading label="ArkUI" level={ 3 } />
+<Heading label="Default" level={ 3 } />
 
-<Heading label="Default" level={ 4 } />
+<Canvas of={ PopoverStories.Default } sourceState="shown" />
 
-<Canvas of={ PopoverStories.DefaultArkUI } sourceState="shown" />
+<Heading label="Custom Trigger" level={ 3 } />
 
-<Heading label="Custom Trigger" level={ 4 } />
+<Canvas of={ PopoverStories.CustomTrigger } sourceState="shown" />
 
-<Canvas of={ PopoverStories.CustomTriggerArkUI } sourceState="shown" />
+<Heading label="Controlled" level={ 3 } />
 
-<Heading label="Grid" level={ 4 } />
+<Canvas of={ PopoverStories.Controlled } sourceState="shown" />
 
-<Canvas of={ PopoverStories.GridArkUI } sourceState="shown" />
+<Heading label="Grid" level={ 3 } />
 
-<Heading label="BaseUI" level={ 3 } />
-
-<Heading label="Default" level={ 4 } />
-
-<Canvas of={ PopoverStories.DefaultBaseUI } sourceState="shown" />
-
-<Heading label="Custom Trigger" level={ 4 } />
-
-<Canvas of={ PopoverStories.CustomTriggerBaseUI } sourceState="shown" />
-
-<Heading label="Grid" level={ 4 } />
-
-<Canvas of={ PopoverStories.GridBaseUI } sourceState="shown" />
-
-<Heading label="RadixUI" level={ 3 } />
-
-<Heading label="Default" level={ 4 } />
-
-<Canvas of={ PopoverStories.DefaultRadixUI } sourceState="shown" />
-
-<Heading label="Custom Trigger" level={ 4 } />
-
-<Canvas of={ PopoverStories.CustomTriggerRadixUI } sourceState="shown" />
-
-<Heading label="Grid" level={ 4 } />
-
-<Canvas of={ PopoverStories.GridRadixUI } sourceState="shown" />
+<Canvas of={ PopoverStories.Grid } sourceState="shown" />

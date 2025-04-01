@@ -15,13 +15,13 @@ enum ODS_OVERLAY_POSITION {
   topStart = 'top-start',
 }
 
-enum ODS_OVERLAY_STRATEGY {
-  absolute = 'absolute',
-  fixed = 'fixed',
-}
+// enum ODS_OVERLAY_STRATEGY {
+//   absolute = 'absolute',
+//   fixed = 'fixed',
+// }
 
 type OdsOverlayPosition = `${ODS_OVERLAY_POSITION}`;
-type OdsOverlayStrategy = `${ODS_OVERLAY_STRATEGY}`;
+// type OdsOverlayStrategy = `${ODS_OVERLAY_STRATEGY}`;
 
 // type DomElement = {
 //   arrow?: HTMLElement,
@@ -36,7 +36,7 @@ type OdsOverlayStrategy = `${ODS_OVERLAY_STRATEGY}`;
 // }
 
 const ODS_OVERLAY_POSITIONS = Object.freeze(Object.values(ODS_OVERLAY_POSITION));
-const ODS_OVERLAY_STRATEGIES = Object.freeze(Object.values(ODS_OVERLAY_STRATEGY));
+// const ODS_OVERLAY_STRATEGIES = Object.freeze(Object.values(ODS_OVERLAY_STRATEGY));
 
 // function findTriggerElement(triggerId: string, shadowDomTriggerId?: string): HTMLElement | undefined {
 //   const hostElement = document.querySelector<HTMLElement>(`#${CSS.escape(triggerId)}`);
@@ -139,8 +139,8 @@ export {
   ODS_OVERLAY_POSITION,
   ODS_OVERLAY_POSITIONS,
   type OdsOverlayPosition,
-  ODS_OVERLAY_STRATEGIES,
-  ODS_OVERLAY_STRATEGY,
-  type OdsOverlayStrategy,
+  // ODS_OVERLAY_STRATEGIES,
+  // ODS_OVERLAY_STRATEGY,
+  // type OdsOverlayStrategy,
   // showOverlay,
 };

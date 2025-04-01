@@ -4,15 +4,19 @@ import { ODS_POPOVER_POSITION, type OdsPopoverPosition } from '../../constants/p
 
 interface OdsPopoverProp {
   children: ReactNode,
+  isOpen?: boolean,
   position?: OdsPopoverPosition,
 }
 
 const OdsPopover: FC<OdsPopoverProp> = ({
   children,
+  isOpen,
   position = ODS_POPOVER_POSITION.top,
 }) => {
   return (
     <Popover.Root
+      autoFocus={ false }
+      open={ isOpen }
       positioning={{
         placement: position,
       }}>

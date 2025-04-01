@@ -1,112 +1,131 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { OdsButton } from '../../../../ods-react/src/components/button/src';
-import { OdsPopoverArkUI, OdsPopoverContentArkUI, OdsPopoverTriggerArkUI } from '../../../../ods-react/src/components/popover-arkui/src';
-import { OdsPopoverBaseUI, OdsPopoverContentBaseUI, OdsPopoverTriggerBaseUI } from '../../../../ods-react/src/components/popover-baseui/src';
-import { OdsPopoverRadixUI, OdsPopoverContentRadixUI, OdsPopoverTriggerRadixUI } from '../../../../ods-react/src/components/popover-radixui/src';
+import { ODS_ICON_NAME, OdsIcon } from '../../../../ods-react/src/components/icon/src';
+import { ODS_POPOVER_POSITION, ODS_POPOVER_POSITIONS, OdsPopover, type OdsPopoverProp, OdsPopoverContent, type OdsPopoverContentProp, OdsPopoverTrigger } from '../../../../ods-react/src/components/popover/src';
+import { CONTROL_CATEGORY } from '../../../src/constants/controls';
+import { orderControls } from '../../../src/helpers/controls';
 
-const meta: Meta = {
-  component: OdsPopoverArkUI,
+type Story = StoryObj<OdsPopoverProp>;
+type DemoArg = Partial<OdsPopoverProp> & Partial<OdsPopoverContentProp> & {
+  content?: string,
+};
+
+const meta: Meta<OdsPopoverProp> = {
+  component: OdsPopover,
   title: 'ODS Components/Popover',
 };
 
 export default meta;
 
-export const CustomTriggerArkUI: StoryObj = {
+export const Demo: StoryObj = {
+  parameters: {
+    layout: 'centered',
+  },
+  render: (arg: DemoArg) => (
+    <OdsPopover position={ arg.position }>
+      <OdsPopoverTrigger>
+        Show popover
+      </OdsPopoverTrigger>
+
+      <OdsPopoverContent withArrow={ arg.withArrow }>
+        { arg.content }
+      </OdsPopoverContent>
+    </OdsPopover>
+  ),
+  argTypes: orderControls({
+    content: {
+      table: {
+        category: CONTROL_CATEGORY.slot,
+        defaultValue: { summary: 'ø' },
+      },
+      control: 'text',
+    },
+    position: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: ODS_POPOVER_POSITION.top },
+        type: { summary: ODS_POPOVER_POSITIONS }
+      },
+      control: { type: 'select' },
+      options: ODS_POPOVER_POSITIONS,
+    },
+    withArrow: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: false },
+      },
+      control: { type: 'boolean' },
+    },
+  }),
+  args: {
+    content: 'My popover content',
+  },
+};
+
+export const Controlled: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  tags: ['!dev'],
+  render: ({}) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    function togglePopover() {
+      setIsOpen((isOpen) => !isOpen);
+    }
+
+    return (
+      <>
+        <OdsButton onClick={ togglePopover }>
+          Toggle popover
+        </OdsButton>
+
+        <OdsPopover isOpen={ isOpen }>
+          <OdsPopoverTrigger asChild>
+            <OdsIcon name={ ODS_ICON_NAME.cog } />
+          </OdsPopoverTrigger>
+
+          <OdsPopoverContent withArrow>
+            This is the popover content
+          </OdsPopoverContent>
+        </OdsPopover>
+      </>
+    );
+  },
+};
+
+export const CustomTrigger: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsPopoverArkUI>
-      <OdsPopoverTriggerArkUI asChild>
+    <OdsPopover>
+      <OdsPopoverTrigger asChild>
         <OdsButton>
           Custom Trigger
         </OdsButton>
-      </OdsPopoverTriggerArkUI>
+      </OdsPopoverTrigger>
 
-      <OdsPopoverContentArkUI>
+      <OdsPopoverContent>
         This is the popover content
-      </OdsPopoverContentArkUI>
-    </OdsPopoverArkUI>
+      </OdsPopoverContent>
+    </OdsPopover>
   ),
 };
 
-export const CustomTriggerBaseUI: StoryObj = {
+export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsPopoverBaseUI>
-      <OdsPopoverTriggerBaseUI render={ <OdsButton /> }>
-        Custom Trigger
-      </OdsPopoverTriggerBaseUI>
-
-      <OdsPopoverContentBaseUI>
-        This is the popover content
-      </OdsPopoverContentBaseUI>
-    </OdsPopoverBaseUI>
-  ),
-};
-
-export const CustomTriggerRadixUI: StoryObj = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <OdsPopoverRadixUI>
-      <OdsPopoverTriggerRadixUI asChild>
-        <OdsButton>
-          Custom Trigger
-        </OdsButton>
-      </OdsPopoverTriggerRadixUI>
-
-      <OdsPopoverContentRadixUI>
-        This is the popover content
-      </OdsPopoverContentRadixUI>
-    </OdsPopoverRadixUI>
-  ),
-};
-
-export const DefaultArkUI: StoryObj = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <OdsPopoverArkUI>
-      <OdsPopoverTriggerArkUI>
+    <OdsPopover>
+      <OdsPopoverTrigger>
         Show popover
-      </OdsPopoverTriggerArkUI>
+      </OdsPopoverTrigger>
 
-      <OdsPopoverContentArkUI>
+      <OdsPopoverContent>
         This is the popover content
-      </OdsPopoverContentArkUI>
-    </OdsPopoverArkUI>
+      </OdsPopoverContent>
+    </OdsPopover>
   ),
 };
 
-export const DefaultBaseUI: StoryObj = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <OdsPopoverBaseUI>
-      <OdsPopoverTriggerBaseUI>
-        Show popover
-      </OdsPopoverTriggerBaseUI>
-
-      <OdsPopoverContentBaseUI>
-        This is the popover content
-      </OdsPopoverContentBaseUI>
-    </OdsPopoverBaseUI>
-  ),
-};
-
-export const DefaultRadixUI: StoryObj = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <OdsPopoverRadixUI>
-      <OdsPopoverTriggerRadixUI>
-        Show popover
-      </OdsPopoverTriggerRadixUI>
-
-      <OdsPopoverContentRadixUI>
-        This is the popover content
-      </OdsPopoverContentRadixUI>
-    </OdsPopoverRadixUI>
-  ),
-};
-
-export const GridArkUI: StoryObj = {
+export const Grid: StoryObj = {
   decorators: [(story) => (
     <div style={{
       display: 'grid',
@@ -121,263 +140,97 @@ export const GridArkUI: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsPopoverArkUI position="top-start">
-        <OdsPopoverTriggerArkUI>
+      <OdsPopover position="top-start">
+        <OdsPopoverTrigger>
           Top Left
-        </OdsPopoverTriggerArkUI>
-        <OdsPopoverContentArkUI withArrow>
+        </OdsPopoverTrigger>
+        <OdsPopoverContent withArrow>
           Top Left popover
-        </OdsPopoverContentArkUI>
-      </OdsPopoverArkUI>
+        </OdsPopoverContent>
+      </OdsPopover>
 
-      <OdsPopoverArkUI position="top">
-        <OdsPopoverTriggerArkUI>
+      <OdsPopover position="top">
+        <OdsPopoverTrigger>
           Top
-        </OdsPopoverTriggerArkUI>
-        <OdsPopoverContentArkUI withArrow>
+        </OdsPopoverTrigger>
+        <OdsPopoverContent withArrow>
           Top popover
-        </OdsPopoverContentArkUI>
-      </OdsPopoverArkUI>
+        </OdsPopoverContent>
+      </OdsPopover>
 
-      <OdsPopoverArkUI position="top-end">
-        <OdsPopoverTriggerArkUI>
+      <OdsPopover position="top-end">
+        <OdsPopoverTrigger>
           Top Right
-        </OdsPopoverTriggerArkUI>
-        <OdsPopoverContentArkUI withArrow>
+        </OdsPopoverTrigger>
+        <OdsPopoverContent withArrow>
           Top Right popover
-        </OdsPopoverContentArkUI>
-      </OdsPopoverArkUI>
+        </OdsPopoverContent>
+      </OdsPopover>
 
-      <OdsPopoverArkUI position="left">
-        <OdsPopoverTriggerArkUI>
+      <OdsPopover position="left">
+        <OdsPopoverTrigger>
           Middle Left
-        </OdsPopoverTriggerArkUI>
-        <OdsPopoverContentArkUI withArrow>
+        </OdsPopoverTrigger>
+        <OdsPopoverContent withArrow>
           Middle Left popover
-        </OdsPopoverContentArkUI>
-      </OdsPopoverArkUI>
+        </OdsPopoverContent>
+      </OdsPopover>
 
       <div />
 
-      <OdsPopoverArkUI position="right">
-        <OdsPopoverTriggerArkUI>
+      <OdsPopover position="right">
+        <OdsPopoverTrigger>
           Middle Right
-        </OdsPopoverTriggerArkUI>
-        <OdsPopoverContentArkUI withArrow>
+        </OdsPopoverTrigger>
+        <OdsPopoverContent withArrow>
           Middle Right popover
-        </OdsPopoverContentArkUI>
-      </OdsPopoverArkUI>
+        </OdsPopoverContent>
+      </OdsPopover>
 
-      <OdsPopoverArkUI position="bottom-start">
-        <OdsPopoverTriggerArkUI>
+      <OdsPopover position="bottom-start">
+        <OdsPopoverTrigger>
           Bottom Left
-        </OdsPopoverTriggerArkUI>
-        <OdsPopoverContentArkUI withArrow>
+        </OdsPopoverTrigger>
+        <OdsPopoverContent withArrow>
           Bottom Left popover
-        </OdsPopoverContentArkUI>
-      </OdsPopoverArkUI>
+        </OdsPopoverContent>
+      </OdsPopover>
 
-      <OdsPopoverArkUI position="bottom">
-        <OdsPopoverTriggerArkUI>
+      <OdsPopover position="bottom">
+        <OdsPopoverTrigger>
           Bottom
-        </OdsPopoverTriggerArkUI>
-        <OdsPopoverContentArkUI withArrow>
+        </OdsPopoverTrigger>
+        <OdsPopoverContent withArrow>
           Bottom popover
-        </OdsPopoverContentArkUI>
-      </OdsPopoverArkUI>
+        </OdsPopoverContent>
+      </OdsPopover>
 
-      <OdsPopoverArkUI position="bottom-end">
-        <OdsPopoverTriggerArkUI>
+      <OdsPopover position="bottom-end">
+        <OdsPopoverTrigger>
           Bottom Right
-        </OdsPopoverTriggerArkUI>
-        <OdsPopoverContentArkUI withArrow>
+        </OdsPopoverTrigger>
+        <OdsPopoverContent withArrow>
           Bottom Right popover
-        </OdsPopoverContentArkUI>
-      </OdsPopoverArkUI>
+        </OdsPopoverContent>
+      </OdsPopover>
     </>
   ),
 };
 
-export const GridBaseUI: StoryObj = {
-  decorators: [(story) => (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
-      gridTemplateRows: 'repeat(3, 1fr)',
-      gap: '20px',
-      padding: '50px 150px',
-    }}>
-      { story() }
-    </div>
-  )],
+export const Overview: Story = {
   tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
   render: ({}) => (
-    <>
-      <OdsPopoverBaseUI>
-        <OdsPopoverTriggerBaseUI>
-          Top Left
-        </OdsPopoverTriggerBaseUI>
-        <OdsPopoverContentBaseUI position="top-start" withArrow>
-          Top Left popover
-        </OdsPopoverContentBaseUI>
-      </OdsPopoverBaseUI>
+    <OdsPopover>
+      <OdsPopoverTrigger>
+        Show popover
+      </OdsPopoverTrigger>
 
-      <OdsPopoverBaseUI>
-        <OdsPopoverTriggerBaseUI>
-          Top
-        </OdsPopoverTriggerBaseUI>
-        <OdsPopoverContentBaseUI position="top" withArrow>
-          Top popover
-        </OdsPopoverContentBaseUI>
-      </OdsPopoverBaseUI>
-
-      <OdsPopoverBaseUI>
-        <OdsPopoverTriggerBaseUI>
-          Top Right
-        </OdsPopoverTriggerBaseUI>
-        <OdsPopoverContentBaseUI position="top-end" withArrow>
-          Top Right popover
-        </OdsPopoverContentBaseUI>
-      </OdsPopoverBaseUI>
-
-      <OdsPopoverBaseUI>
-        <OdsPopoverTriggerBaseUI>
-          Middle Left
-        </OdsPopoverTriggerBaseUI>
-        <OdsPopoverContentBaseUI position="left" withArrow>
-          Middle Left popover
-        </OdsPopoverContentBaseUI>
-      </OdsPopoverBaseUI>
-
-      <div />
-
-      <OdsPopoverBaseUI>
-        <OdsPopoverTriggerBaseUI>
-          Middle Right
-        </OdsPopoverTriggerBaseUI>
-        <OdsPopoverContentBaseUI position="right" withArrow>
-          Middle Right popover
-        </OdsPopoverContentBaseUI>
-      </OdsPopoverBaseUI>
-
-      <OdsPopoverBaseUI>
-        <OdsPopoverTriggerBaseUI>
-          Bottom Left
-        </OdsPopoverTriggerBaseUI>
-        <OdsPopoverContentBaseUI position="bottom-start" withArrow>
-          Bottom Left popover
-        </OdsPopoverContentBaseUI>
-      </OdsPopoverBaseUI>
-
-      <OdsPopoverBaseUI>
-        <OdsPopoverTriggerBaseUI>
-          Bottom
-        </OdsPopoverTriggerBaseUI>
-        <OdsPopoverContentBaseUI position="bottom" withArrow>
-          Bottom popover
-        </OdsPopoverContentBaseUI>
-      </OdsPopoverBaseUI>
-
-      <OdsPopoverBaseUI>
-        <OdsPopoverTriggerBaseUI>
-          Bottom Right
-        </OdsPopoverTriggerBaseUI>
-        <OdsPopoverContentBaseUI position="bottom-end" withArrow>
-          Bottom Right popover
-        </OdsPopoverContentBaseUI>
-      </OdsPopoverBaseUI>
-    </>
-  ),
-};
-
-export const GridRadixUI: StoryObj = {
-  decorators: [(story) => (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
-      gridTemplateRows: 'repeat(3, 1fr)',
-      gap: '20px',
-      padding: '50px 150px',
-    }}>
-      { story() }
-    </div>
-  )],
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <OdsPopoverRadixUI>
-        <OdsPopoverTriggerRadixUI>
-          Top Left
-        </OdsPopoverTriggerRadixUI>
-        <OdsPopoverContentRadixUI position="top-start" withArrow>
-          Top Left popover
-        </OdsPopoverContentRadixUI>
-      </OdsPopoverRadixUI>
-
-      <OdsPopoverRadixUI>
-        <OdsPopoverTriggerRadixUI>
-          Top
-        </OdsPopoverTriggerRadixUI>
-        <OdsPopoverContentRadixUI position="top" withArrow>
-          Top popover
-        </OdsPopoverContentRadixUI>
-      </OdsPopoverRadixUI>
-
-      <OdsPopoverRadixUI>
-        <OdsPopoverTriggerRadixUI>
-          Top Right
-        </OdsPopoverTriggerRadixUI>
-        <OdsPopoverContentRadixUI position="top-end" withArrow>
-          Top Right popover
-        </OdsPopoverContentRadixUI>
-      </OdsPopoverRadixUI>
-
-      <OdsPopoverRadixUI>
-        <OdsPopoverTriggerRadixUI>
-          Middle Left
-        </OdsPopoverTriggerRadixUI>
-        <OdsPopoverContentRadixUI position="left" withArrow>
-          Middle Left popover
-        </OdsPopoverContentRadixUI>
-      </OdsPopoverRadixUI>
-
-      <div />
-
-      <OdsPopoverRadixUI>
-        <OdsPopoverTriggerRadixUI>
-          Middle Right
-        </OdsPopoverTriggerRadixUI>
-        <OdsPopoverContentRadixUI position="right" withArrow>
-          Middle Right popover
-        </OdsPopoverContentRadixUI>
-      </OdsPopoverRadixUI>
-
-      <OdsPopoverRadixUI>
-        <OdsPopoverTriggerRadixUI>
-          Bottom Left
-        </OdsPopoverTriggerRadixUI>
-        <OdsPopoverContentRadixUI position="bottom-start" withArrow>
-          Bottom Left popover
-        </OdsPopoverContentRadixUI>
-      </OdsPopoverRadixUI>
-
-      <OdsPopoverRadixUI>
-        <OdsPopoverTriggerRadixUI>
-          Bottom
-        </OdsPopoverTriggerRadixUI>
-        <OdsPopoverContentRadixUI position="bottom" withArrow>
-          Bottom popover
-        </OdsPopoverContentRadixUI>
-      </OdsPopoverRadixUI>
-
-      <OdsPopoverRadixUI>
-        <OdsPopoverTriggerRadixUI>
-          Bottom Right
-        </OdsPopoverTriggerRadixUI>
-        <OdsPopoverContentRadixUI position="bottom-end" withArrow>
-          Bottom Right popover
-        </OdsPopoverContentRadixUI>
-      </OdsPopoverRadixUI>
-    </>
+      <OdsPopoverContent>
+        This is the popover content
+      </OdsPopoverContent>
+    </OdsPopover>
   ),
 };

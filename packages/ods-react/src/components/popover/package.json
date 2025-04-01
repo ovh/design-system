@@ -1,5 +1,5 @@
 {
-  "name": "@ovhcloud/ods-react-popover-baseui",
+  "name": "@ovhcloud/ods-react-popover",
   "version": "18.6.0",
   "private": true,
   "description": "ODS React Popover component",

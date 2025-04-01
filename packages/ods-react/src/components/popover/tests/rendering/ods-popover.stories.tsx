@@ -1,4 +1,4 @@
-import { OdsPopoverBaseUI as OdsPopover, OdsPopoverContentBaseUI as OdsPopoverContent, OdsPopoverTriggerBaseUI as OdsPopoverTrigger } from '../../src';
+import { OdsPopover, OdsPopoverContent, OdsPopoverTrigger } from '../../src';
 
 export default {
   component: OdsPopover,

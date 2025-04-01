@@ -1,5 +1,0 @@
-{
-  "extends": "../../../tsconfig.json",
-  "include": ["modules.d.ts", "src", "tests"],
-  "exclude": [".storybook", "node_modules"]
-}

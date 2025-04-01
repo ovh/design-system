@@ -12,7 +12,15 @@ type DemoArg = Partial<OdsPopoverProp> & Partial<OdsPopoverContentProp> & {
 };
 
 const meta: Meta<OdsPopoverProp> = {
+  argTypes: {
+    isOpen: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   component: OdsPopover,
+  subcomponents: { OdsPopoverContent, OdsPopoverTrigger },
   title: 'ODS Components/Popover',
 };
 

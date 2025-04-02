@@ -13,7 +13,7 @@ type DemoArg = Partial<OdsTooltipProp> & Partial<OdsTooltipContentProp> & {
 
 const meta: Meta<OdsTooltipProp> = {
   argTypes: {
-    isOpen: {
+    open: {
       table: {
         disable: true,
       },
@@ -106,7 +106,7 @@ export const Controlled: Story = {
           Toggle tooltip
         </OdsButton>
 
-        <OdsTooltip isOpen={ isOpen }>
+        <OdsTooltip open={ isOpen }>
           <OdsTooltipTrigger asChild>
             <OdsIcon name={ ODS_ICON_NAME.circleQuestion } />
           </OdsTooltipTrigger>

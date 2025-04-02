@@ -13,7 +13,7 @@ type DemoArg = Partial<OdsPopoverProp> & Partial<OdsPopoverContentProp> & {
 
 const meta: Meta<OdsPopoverProp> = {
   argTypes: {
-    isOpen: {
+    open: {
       table: {
         disable: true,
       },
@@ -87,7 +87,7 @@ export const Controlled: Story = {
           Toggle popover
         </OdsButton>
 
-        <OdsPopover isOpen={ isOpen }>
+        <OdsPopover open={ isOpen }>
           <OdsPopoverTrigger asChild>
             <OdsIcon name={ ODS_ICON_NAME.cog } />
           </OdsPopoverTrigger>

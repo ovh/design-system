@@ -1,0 +1,34 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsTextarea from '../../../../ods-react/src/components/textarea/documentation/ods-textarea.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as TextareaStories from './textarea.stories';
+
+<Meta of={ TextareaStories } name="Technical information" />
+
+<Banner of={ TextareaStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ TextareaStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsTextarea } of={ TextareaStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ TextareaStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ TextareaStories.Disabled } sourceState="shown" />
+
+<Heading label="Error state" level={ 3 } />
+
+<Canvas of={ TextareaStories.hasError } sourceState="shown" />
+
+<Heading label="Resizable" level={ 3 } />
+
+<Canvas of={ TextareaStories.Resizable } sourceState="shown" />

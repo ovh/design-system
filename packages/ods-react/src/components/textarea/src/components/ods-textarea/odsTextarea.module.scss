@@ -1,0 +1,24 @@
+@use '../../../../../style/input';
+
+.ods-textarea {
+  $textarea: &;
+
+  @include input.ods-input();
+
+  height: auto;
+  resize: none;
+
+  &:not(#{$textarea}--error, :disabled, :read-only) {
+    &:focus {
+      border-color: var(--ods-color-form-element-border-focus-default);
+    }
+
+    &:hover {
+      border-color: var(--ods-color-form-element-border-hover-default);
+    }
+  }
+
+  &--error {
+    @include input.ods-input-error();
+  }
+}

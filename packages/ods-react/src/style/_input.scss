@@ -1,0 +1,40 @@
+@use './focus';
+@use './state';
+
+$ods-input-actions-button-width: 24px;
+$ods-input-actions-padding-right: 4px;
+$ods-input-input-height: var(--ods-form-element-input-height);
+$ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-input-actions-padding-right);
+$ods-input-placeholder-color: var(--ods-color-form-element-text-placeholder-default);
+
+@mixin ods-input() {
+  box-sizing: border-box;
+  border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
+  border-radius: var(--ods-border-radius-sm);
+  padding: 4px 8px;
+  width: 100%;
+  height: $ods-input-input-height;
+  color: var(--ods-color-text);
+  font-family: inherit;
+  font-size: 1rem;
+
+  &::placeholder {
+    color: $ods-input-placeholder-color;
+  }
+
+  &:focus {
+    @include focus.ods-focus();
+  }
+
+  &:disabled {
+    @include state.ods-is-disabled();
+  }
+
+  &:not(:disabled):read-only {
+    @include state.ods-is-readonly();
+  }
+}
+
+@mixin ods-input-error() {
+  border-color: var(--ods-color-form-element-border-critical);
+}

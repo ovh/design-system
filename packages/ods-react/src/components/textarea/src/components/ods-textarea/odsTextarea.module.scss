@@ -1,14 +1,12 @@
 @use '../../../../../style/input';
 
 .ods-textarea {
-  $textarea: &;
-
   @include input.ods-input();
 
   height: auto;
   resize: none;
 
-  &:not(#{$textarea}--error, :disabled, :read-only) {
+  &:not([data-invalid], :disabled, :read-only) {
     &:focus {
       border-color: var(--ods-color-form-element-border-focus-default);
     }
@@ -18,7 +16,7 @@
     }
   }
 
-  &--error {
+  &[data-invalid] {
     @include input.ods-input-error();
   }
 }

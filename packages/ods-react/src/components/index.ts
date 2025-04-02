@@ -5,5 +5,6 @@ export * from './badge/src';
 export * from './button/src';
 export * from './spinner/src';
 export * from './popover/src';
-export * from './textarea/src';
 export * from './tooltip/src';
+export * from './textarea/src';
+export * from './form-field/src';

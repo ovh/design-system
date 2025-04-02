@@ -1,0 +1,5 @@
+@use '../../../../../style/text';
+
+.ods-form-field-label {
+  @include text.ods-text-label();
+}

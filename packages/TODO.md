@@ -1,4 +1,4 @@
-- tests spec && e2e running on CI
+- update e2e tests for multiple components (ex: form-field)
 
 Later:
 - check that version is correct everywhere (18.6.x)

@@ -1,19 +1,15 @@
 import React, { type ReactElement } from 'react';
-import { OdsPopover, OdsPopoverContent, OdsPopoverTrigger, } from '@ovhcloud/ods-react';
+import { FormFormik } from './components/formFormik/FormFormik';
+// import { FormHookForm } from './components/formHookForm/FormHookForm';
+// import { FormNative } from './components/formNative/FormNative';
 import style from './app.scss';
 
 function App(): ReactElement {
   return (
     <div className={ style.app }>
-      <OdsPopover>
-        <OdsPopoverTrigger>
-          Trigger
-        </OdsPopoverTrigger>
-
-        <OdsPopoverContent>
-          Lorem ipsum dolor sit amet.
-        </OdsPopoverContent>
-      </OdsPopover>
+      <FormFormik />
+      {/*<FormHookForm />*/}
+      {/*<FormNative />*/}
     </div>
   );
 }

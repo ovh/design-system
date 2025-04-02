@@ -12,7 +12,3 @@ export const Default = () => (
 export const Disabled = () => (
   <OdsTextarea disabled />
 );
-
-export const HasError = () => (
-  <OdsTextarea hasError />
-);

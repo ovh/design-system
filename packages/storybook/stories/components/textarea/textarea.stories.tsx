@@ -15,10 +15,18 @@ export default meta;
 
 export const Demo: Story = {
   argTypes: orderControls({
-    hasError: {
+    disabled: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
+    readOnly: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
         type: { summary: 'boolean' },
       },
       control: 'boolean',
@@ -40,13 +48,6 @@ export const Disabled: Story = {
   ),
 };
 
-export const hasError: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <OdsTextarea hasError />
-  ),
-};
-
 export const Overview: Story = {
   tags: ['!dev'],
   parameters: {
@@ -54,6 +55,13 @@ export const Overview: Story = {
   },
   render: ({}) => (
     <OdsTextarea />
+  ),
+};
+
+export const ReadOnly: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <OdsTextarea readOnly />
   ),
 };
 

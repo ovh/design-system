@@ -24,6 +24,7 @@ export const Controlled = () => {
         <OdsPopoverTrigger>
           Show popover
         </OdsPopoverTrigger>
+
         <OdsPopoverContent>
           This is the popover content
         </OdsPopoverContent>
@@ -39,6 +40,7 @@ export const CustomTrigger = () => (
         Custom Trigger
       </OdsButton>
     </OdsPopoverTrigger>
+
     <OdsPopoverContent>
       This is the popover content
     </OdsPopoverContent>
@@ -50,6 +52,7 @@ export const Default = () => (
     <OdsPopoverTrigger>
       Show popover
     </OdsPopoverTrigger>
+
     <OdsPopoverContent>
       This is the popover content
     </OdsPopoverContent>
@@ -61,10 +64,11 @@ export const Focus = () => (
     <OdsPopoverTrigger>
       Show popover
     </OdsPopoverTrigger>
+
     <OdsPopoverContent>
-      <button onClick={ () => console.log('focus 1') }>Focus 1</button>
-      <button onClick={ () => console.log('focus 2') }>Focus 2</button>
-      <button onClick={ () => console.log('focus 3') }>Focus 3</button>
+      <OdsButton onClick={ () => console.log('focus 1') }>Focus 1</OdsButton>
+      <OdsButton onClick={ () => console.log('focus 2') }>Focus 2</OdsButton>
+      <OdsButton onClick={ () => console.log('focus 3') }>Focus 3</OdsButton>
     </OdsPopoverContent>
   </OdsPopover>
 );

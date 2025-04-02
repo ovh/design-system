@@ -20,7 +20,7 @@ export const Controlled = () => {
         Toggle tooltip
       </OdsButton>
 
-      <OdsTooltip isOpen={ isOpen }>
+      <OdsTooltip open={ isOpen }>
         <OdsTooltipTrigger>
           Show tooltip
         </OdsTooltipTrigger>

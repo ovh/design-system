@@ -5,7 +5,7 @@ import { ODS_TOOLTIP_POSITION, type OdsTooltipPosition } from '../../constants/t
 interface OdsTooltipProp {
   children: ReactNode,
   closeDelay?: number,
-  isOpen?: boolean,
+  open?: boolean,
   openDelay?: number,
   position?: OdsTooltipPosition,
 }
@@ -13,15 +13,15 @@ interface OdsTooltipProp {
 const OdsTooltip: FC<OdsTooltipProp> = ({
   children,
   closeDelay = 50,
-  isOpen,
-  position = ODS_TOOLTIP_POSITION.top,
+  open,
   openDelay = 0,
+  position = ODS_TOOLTIP_POSITION.top,
 }): JSX.Element => {
   return (
     <Tooltip.Root
       closeDelay={ closeDelay }
       interactive={ true }
-      open={ isOpen }
+      open={ open }
       openDelay={ openDelay }
       positioning={{
         placement: position,

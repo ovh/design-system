@@ -20,7 +20,7 @@ export const Controlled = () => {
         Toggle popover
       </OdsButton>
 
-      <OdsPopover isOpen={ isOpen }>
+      <OdsPopover open={ isOpen }>
         <OdsPopoverTrigger>
           Show popover
         </OdsPopoverTrigger>

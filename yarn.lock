@@ -3753,9 +3753,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 "@ovhcloud/ods-react-tooltip@workspace:packages/ods-react/src/components/tooltip":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-tooltip@workspace:packages/ods-react/src/components/tooltip"
+=======
+"@ovhcloud/ods-react-textarea@workspace:packages/ods-react/src/components/textarea":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-textarea@workspace:packages/ods-react/src/components/textarea"
+>>>>>>> 4846a5657 (feat(textarea): implement component)
   languageName: unknown
   linkType: soft
 

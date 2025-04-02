@@ -15,7 +15,6 @@ const OdsPopover: FC<OdsPopoverProp> = ({
 }): JSX.Element => {
   return (
     <Popover.Root
-      autoFocus={ false }
       open={ isOpen }
       positioning={{
         placement: position,

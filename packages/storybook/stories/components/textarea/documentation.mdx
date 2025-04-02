@@ -1,0 +1,61 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as TextareaStories from './textarea.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ TextareaStories } name='Documentation' />
+
+<Banner of={ TextareaStories } />
+
+_**Textarea** TODO some text about the component_
+
+<Canvas of={ TextareaStories.Default } sourceState='none' />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ [] }
+              atomicType={ ATOMIC_TYPE.TODO }
+              figmaLink="TODO"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/textarea"
+              name="Textarea"
+              relatedComponents={ [] }>
+  TODO some text about the component.
+</IdentityCard>
+
+<Heading label="Anatomy" level={ 2 } />
+
+TODO picture
+
+<Heading label="Usage" level={ 2 } />
+
+TODO if relevant
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[]}
+  dos={[]}
+/>
+
+<Heading label="Placement" level={ 2 } />
+
+TODO if relevant
+
+<Heading label="Behavior" level={ 2 } />
+
+TODO if relevant
+
+<Heading label="Variation" level={ 2 } />
+
+<Heading label="Variant" level={ 3 } />
+
+TODO if relevant
+
+<Heading label="Accessibility" level={ 2 } />
+
+TODO if relevant

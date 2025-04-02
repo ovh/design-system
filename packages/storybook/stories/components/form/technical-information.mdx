@@ -1,0 +1,34 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsForm from '../../../../ods-react/src/components/form/documentation/ods-form.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as FormStories from './form.stories';
+
+<Meta of={ FormStories } name="Technical information" />
+
+<Banner of={ FormStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ FormStories.Overview } sourceState="'none' "/>
+
+<TechnicalSpecification data={ SpecificationsForm } of={ FormStories } />
+
+<Heading label="Style customization" level={ 2 } />
+
+TODO if relevant
+
+You can add your own style on the form element using the part `...`.
+
+Custom CSS:
+
+<Canvas of={ FormStories.CustomCSS } sourceState="shown" />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ FormStories.Default } sourceState="shown" />
+
+...

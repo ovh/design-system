@@ -64,7 +64,7 @@ export const Demo: Story = {
 };
 
 export const Color: StoryObj = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -106,7 +106,7 @@ export const Overview: Story = {
 };
 
 export const Size: StoryObj = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -118,7 +118,7 @@ export const Size: StoryObj = {
 };
 
 export const Variant: StoryObj = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['!dev'],
   render: ({}) => (
     <>

@@ -1,5 +1,5 @@
 import { Canvas, Meta } from '@storybook/blocks';
-import SpecificationsText from '@ovhcloud/ods-components/src/components/text/documentation/custom-elements.json';
+import SpecificationsText from '../../../../ods-react/src/components/text/documentation/ods-text.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -13,15 +13,7 @@ import * as TextStories from './text.stories';
 
 <Canvas of={ TextStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsText } />
-
-<Heading label="Style customization" level={ 2 } />
-
-You can add your own style on the text element using the part `text`.
-
-Custom CSS :
-
-<Canvas of={ TextStories.CustomCSS } sourceState="shown" />
+<TechnicalSpecification data={ SpecificationsText } of={ TextStories } />
 
 <Heading label="Examples" level={ 2 } />
 
@@ -33,13 +25,13 @@ Custom CSS :
 
 **Caption** preset can be used should you need ODS caption custom style.
 
-For actual `<caption>` (used in a table) or `<figcaption>` (image), use the native tag using either an ods-text inside of it or the Saas mixin.
+For actual `<caption>` (used in a table) or `<figcaption>` (image), use the native tag using either an OdsText inside of it or the Saas mixin.
 
 <Canvas of={ TextStories.Preset } sourceState="shown" />
 
 <Heading label="Caption preset in <table>" level={ 3 } />
 
-<Canvas of={ TextStories.CaptionTable } sourceState="shown" />
+<Canvas of={ TextStories.TableCaption } sourceState="shown" />
 
 <Heading label="Caption preset in <figcaption>" level={ 3 } />
 

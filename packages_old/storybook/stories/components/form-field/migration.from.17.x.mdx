@@ -1,0 +1,30 @@
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
+import * as FormFieldStories from './form-field.stories';
+import { Heading } from '../../../src/components/heading/Heading';
+
+<Meta of={ FormFieldStories } name="Migration From 17.x" />
+
+<Heading label="FormField - migrate from v17 to v18" level={ 1 } />
+
+<Heading label="Attributes changes" level={ 2 } />
+
+`inline ` <OdsBadge color="critical" label="Removed" size="sm" />
+
+Has been removed.
+
+Form Field is now `inline-flex` by default. You can add some style directly on the component if you want to override that.
+
+<Heading label="Migration examples" level={ 2 } />
+
+Inline Form Field:
+
+<Source code={`
+<osds-form-field inline></osds-form-field>
+
+<!-- is now -->
+
+<ods-form-field></ods-form-field>
+`}
+        dark="true"
+        language="html" />

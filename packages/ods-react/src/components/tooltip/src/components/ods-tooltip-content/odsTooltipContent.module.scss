@@ -1,0 +1,8 @@
+@use '../../../../../style/overlay';
+
+.ods-tooltip-content {
+  --arrow-size: #{overlay.$ods-overlay-arrow-size};
+  --arrow-background: #{overlay.$ods-overlay-arrow-background-color};
+
+  @include overlay.ods-overlay();
+}

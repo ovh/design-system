@@ -1,4 +1,4 @@
-import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { OdsBadge } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import * as PopoverStories from './popover.stories';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -65,14 +65,14 @@ The same result would now be achieved using:
 
 <Heading label="Attributes changes" level={ 2 } />
 
-`position` <OdsBadge color="success" label="New" size="sm" />
+`position` <OdsBadge color="success" size="sm">New</OdsBadge>
 
 New attribute (optional).
 
 You can choose a specific position for the popover. In case there is not enough space, it will automatically fallback
 to another position where the whole content can be displayed.
 
-`shadowDomTriggerId` <OdsBadge color="success" label="New" size="sm" />
+`shadowDomTriggerId` <OdsBadge color="success" size="sm">New</OdsBadge>
 
 New attribute (optional).
 
@@ -83,13 +83,13 @@ You usually won't have to use this attribute.
 
 You can find an usage example in the clipboard element implementation.
 
-`triggerId` <OdsBadge color="success" label="New" size="sm" />
+`triggerId` <OdsBadge color="success" size="sm">New</OdsBadge>
 
 New attribute (required).
 
 Id of the HTML element that serves as the popover trigger.
 
-`with-arrow` <OdsBadge color="success" label="New" size="sm" />
+`with-arrow` <OdsBadge color="success" size="sm">New</OdsBadge>
 
 New attribute (optional).
 

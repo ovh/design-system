@@ -1,5 +1,4 @@
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
-import { OdsLink } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME, OdsIcon, OdsLink } from '@ovhcloud/ods-react';
 import { Table } from '@storybook/components';
 import React, { Fragment, type ReactNode } from 'react';
 import { ATOMIC_TYPE } from '../../constants/atomicDesign';
@@ -69,9 +68,9 @@ const IdentityCard = ({ aliases, atomicType, children, figmaLink, githubUrl, nam
           <td>
             <OdsLink className={ styles['identity-card__atomic-link'] }
                      href={ getAtomicTypeDocUrl(atomicType) }
-                     icon={ ODS_ICON_NAME.externalLink }
-                     label={ atomicType }
-                     target="_blank" />
+                     target="_blank">
+              { atomicType } <OdsIcon name={ ODS_ICON_NAME.externalLink } />
+            </OdsLink>
           </td>
         </tr>
 
@@ -86,8 +85,9 @@ const IdentityCard = ({ aliases, atomicType, children, figmaLink, githubUrl, nam
                 relatedComponents.map((relatedComponent, idx) => (
                   <Fragment key={ idx }>
                     <StorybookLink kind={ `${SECTION.odsComponents}/${!!relatedComponent.subtitle ? `${relatedComponent.subtitle}/` : ''}${relatedComponent.name}` }
-                                   label={ relatedComponent.name }
-                                   story={ STORY.documentation } />
+                                   story={ STORY.documentation }>
+                      { relatedComponent.name }
+                    </StorybookLink>
 
                     { idx < (relatedComponents.length - 1) && <span>, </span> }
                   </Fragment>
@@ -104,15 +104,15 @@ const IdentityCard = ({ aliases, atomicType, children, figmaLink, githubUrl, nam
           <td>
             <OdsLink className={ styles['identity-card__app-link'] }
                      href={ figmaLink }
-                     icon={ ODS_ICON_NAME.externalLink }
-                     label="Design"
-                     target="_blank" />
+                     target="_blank">
+              Design <OdsIcon name={ ODS_ICON_NAME.externalLink } />
+            </OdsLink>
 
             <OdsLink className={ styles['identity-card__app-link'] }
                      href={ githubUrl }
-                     icon={ ODS_ICON_NAME.externalLink }
-                     label="Github"
-                     target="_blank" />
+                     target="_blank">
+              Github <OdsIcon name={ ODS_ICON_NAME.externalLink } />
+            </OdsLink>
           </td>
         </tr>
         </tbody>

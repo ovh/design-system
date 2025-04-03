@@ -1,0 +1,16 @@
+import { Meta, Source } from '@storybook/blocks';
+import { Heading } from '../../../../src/components/heading/Heading';
+
+<Meta title="OVHcloud Design System/What's new?/Migration guide/12.x to 13.x" />
+
+# [12.1.3](https://ovh.github.io/design-system/v12.1.3/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [13.0.0](https://ovh.github.io/design-system/v13.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/12.1...release/13.0))
+
+<Heading label="Select width" level={ 2 } />
+
+The Select component fixed width when non flex has been removed.
+
+<Source code="width: calc(var(--ods-size-stack-08) * 11)"
+        dark="true"
+        language="css" />
+
+Should you need any width, you will have to set it on your component.

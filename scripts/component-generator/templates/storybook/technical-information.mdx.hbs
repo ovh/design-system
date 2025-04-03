@@ -1,0 +1,24 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import Specifications{{> ComponentName }} from '../../../../ods-react/src/components/{{> component-name }}/documentation/ods-{{> component-name }}.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as {{> ComponentName }}Stories from './{{> component-name }}.stories';
+
+<Meta of={ {{> ComponentName }}Stories } name="Technical information" />
+
+<Banner of={ {{> ComponentName }}Stories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ {{> ComponentName }}Stories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ Specifications{{> ComponentName }} } of={ {{> ComponentName }}Stories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ {{> ComponentName }}Stories.Default } sourceState="shown" />
+
+...

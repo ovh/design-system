@@ -3725,6 +3725,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-card@workspace:packages/ods-react/src/components/card":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-card@workspace:packages/ods-react/src/components/card"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-form-field@workspace:packages/ods-react/src/components/form-field":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-form-field@workspace:packages/ods-react/src/components/form-field"

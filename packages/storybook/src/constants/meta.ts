@@ -2,6 +2,8 @@
 // so we can't use those constants on meta declaration and still needs to duplicate those values.
 // Until a solution is found, those are still useful when defining <StorybookLink />
 
+// TODO clean up removed pages
+
 enum SECTION {
   design = 'Design and Style',
   formElements = 'Form elements',
@@ -13,6 +15,7 @@ enum SECTION {
 }
 
 enum HOME_TITLE {
+  designTokens = `${SECTION.home}/${SECTION.design}/Design Tokens`,
   getStarted = `${SECTION.home}/Get Started`,
   guideEvents = `${SECTION.home}/${SECTION.guides}/Using Events`,
   guideMethods = `${SECTION.home}/${SECTION.guides}/Using Methods`,

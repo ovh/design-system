@@ -5,6 +5,16 @@
   display: none;
 }
 
+/* Hide the "Filter by tag" option on search field */
+.search-field > div:last-child {
+  display: none;
+}
+
+/* Hide the "Create new story" option next to search field */
+.search-field ~ div {
+  display: none;
+}
+
 body {
   letter-spacing: 0.03rem;
 }

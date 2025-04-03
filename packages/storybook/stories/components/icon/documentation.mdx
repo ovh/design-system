@@ -1,6 +1,5 @@
+import { ODS_ICON_NAME, OdsIcon } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
 import * as IconStories from './icon.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
@@ -39,7 +38,7 @@ _**Icon** is a visual context used to represent a command, navigation, status or
 
 **Icons** enhance the usability and bring clarity to users by reducing the cognitive load.
 
-**Icons** can be used in standalone <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> and can be usually associated with some sort of action.
+**Icons** can be used in standalone <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> and can be usually associated with some sort of action.
 
 **Icons** can be used as navigational elements as well.
 
@@ -50,14 +49,14 @@ _**Icon** is a visual context used to represent a command, navigation, status or
     '- Use for decorative purpose',
     '- Use the same Icon for different purposes to avoid user\'s confusion',
     '- Use similar shades of the same color for background and Icon colors',
-    <span>- Baseline-align Icons when they are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /></span>,
-    <span>- When Icons are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />, don't use different colors for both of them</span>,
+    <span>- Baseline-align Icons when they are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink></span>,
+    <span>- When Icons are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, don't use different colors for both of them</span>,
   ]}
   dos={[
     '- Give an equivalent text as aria-name to the Icon',
     '- Assure a good contrast between the background and Icon colors',
-    <span>- Center-align when Icons are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /></span>,
-    <span>- When Icons are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } />, use the same color for pairing them</span>,
+    <span>- Center-align when Icons are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink></span>,
+    <span>- When Icons are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, use the same color for pairing them</span>,
   ]}
 />
 
@@ -71,7 +70,7 @@ They also can be used in other components where it is adapted for a specific pur
 
 <Heading label="Behavior" level={ 2 } />
 
-**Icons** can stand alone or be included in a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> or other components depending on the usage.
+**Icons** can stand alone or be included in a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> or other components depending on the usage.
 
 <Heading label="Variation" level={ 2 } />
 
@@ -92,7 +91,7 @@ Example of a decorative Icon:
 
 <Canvas of={ IconStories.AccessibilityDecorative } sourceState="shown" />
 
-<OdsIcon ariaHidden
+<OdsIcon aria-hidden="true"
          name={ ODS_ICON_NAME.circleCheck }
          style={{ color: 'var(--ods-color-success-500)' }} /> The Icon is ignored by screen readers and does not create unnecessary noise.
 
@@ -104,12 +103,12 @@ Example of an icon with accessible label:
 
 <Canvas of={ IconStories.AccessibilityInformative } sourceState="shown" />
 
-<OdsIcon ariaHidden
+<OdsIcon aria-hidden="true"
          name={ ODS_ICON_NAME.circleCheck }
          style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "home", ensuring users understand the Icon's meaning.
 
 If the Icon is inside a button, prefer using `aria-label` on the button itself rather than on the icon.
-See <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> examples.
+See <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> examples.
 
 <Heading label="Final check (for your specific implementation)" level={ 3 } />
 

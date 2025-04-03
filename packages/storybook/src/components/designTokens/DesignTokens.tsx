@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { type Token, TokenCategory, type TokenGroup, TokenType } from '../../constants/designTokens';
 import { Heading } from '../heading/Heading';
-import { TokenPreview } from '../tokenPreview/TokenPreview';
-import { TokensTable } from '../tokensTable/TokensTable';
+import { TokenPreview } from './tokenPreview/TokenPreview';
+import { TokensTable } from './tokensTable/TokensTable';
 
 interface TransformedToken {
   name: string;
@@ -78,7 +78,7 @@ const categorizeTokens = (variables: Record<string, string>): TokenGroup[] => {
     .filter((group) => group.tokens.length > 0);
 };
 
-export const DesignTokens: React.FC = () => {
+const DesignTokens: React.FC = () => {
   const [tokenCategories, setTokenCategories] = useState<TransformedTokenGroup[]>([]);
 
   useEffect(() => {
@@ -89,9 +89,9 @@ export const DesignTokens: React.FC = () => {
       name: group.name,
       tokens: group.tokens.map((token) => ({
         name: token.name,
-        preview: <TokenPreview 
-          name={ token.name } 
-          type={ token.type } 
+        preview: <TokenPreview
+          name={ token.name }
+          type={ token.type }
           value={ token.value } />,
         type: token.type,
         value: token.value,
@@ -105,14 +105,18 @@ export const DesignTokens: React.FC = () => {
     <div>
       {tokenCategories.map((group) => (
         <section key={ group.name }>
-          <Heading 
-          label={ group.name } 
+          <Heading
+          label={ group.name }
           level={2} />
-          <TokensTable 
-          category={ group.name } 
+          <TokensTable
+          category={ group.name }
           tokens={ group.tokens } />
         </section>
       ))}
     </div>
   );
+};
+
+export {
+  DesignTokens,
 };

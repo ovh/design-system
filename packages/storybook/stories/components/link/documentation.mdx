@@ -34,7 +34,7 @@ _**Link** is a component that enables redirection to a new page, section, websit
 ![Component anatomy](components/link/anatomy.png "Component anatomy")
 
 1. **Link text**: Communicates what is being linked to.
-2. <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } /> (optional): Indicates the destination or type of content being.
+2. <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> (optional): Indicates the destination or type of content being.
 
 <Heading label="Usage" level={ 2 } />
 
@@ -46,16 +46,16 @@ They are also used when linking to another document. In that case, **Link** desc
 
 They have different purposes so, make sure you are accurately using them.
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> is used for actions while **Link** is used for navigation.
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is used for actions while **Link** is used for navigation.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    <span>- Use a Link as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> for actions such as 'save', 'cancel' or 'submit'</span>,
+    <span>- Use a Link as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> for actions such as 'save', 'cancel' or 'submit'</span>,
     '- Use "Click Here" or "Here" as description for a Link',
     '- Write a full long sentence as Link description',
-    <span>- Use different color for Link and the optional <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } /> when you add one</span>,
+    <span>- Use different color for Link and the optional <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> when you add one</span>,
   ]}
   dos={[
     '- Use a Link to redirect user to a new page, section or website',
@@ -69,7 +69,7 @@ They have different purposes so, make sure you are accurately using them.
 
 A **Link** can stand alone on a page, or it can be placed within a sentence or a paragraph.
 
-An optional <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } /> can be displayed on the left or right of the **Link** label content.
+An optional <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> can be displayed on the left or right of the **Link** label content.
 
 <Heading label="Behavior" level={ 2 } />
 
@@ -79,7 +79,7 @@ When disabled, users cannot focus nor click on the **Link**.
 
 On hover, **Link** is underlined and its color changes.
 
-When users clicks anywhere on the **Link**, even its optional <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } />, they are redirected to the expected page or section.
+When users clicks anywhere on the **Link**, even its optional <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink>, they are redirected to the expected page or section.
 
 <Heading label="Variation" level={ 2 } />
 

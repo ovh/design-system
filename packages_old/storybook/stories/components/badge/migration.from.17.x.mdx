@@ -1,0 +1,140 @@
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
+import * as BadgeStories from './badge.stories';
+import { Heading } from '../../../src/components/heading/Heading';
+
+<Meta of={ BadgeStories } name="Migration From 17.x" />
+
+<Heading label="Badge - migrate from v17 to v18" level={ 1 } />
+
+<Heading label="Usage changes" level={ 2 } />
+
+Previous to v18, Badge component was actually a Chip component with specific properties set.
+
+Chip has been split into two new components (Tag and Badge):
+- use Tag when you need an interactive Chip that can be removed.
+- use Badge when you need a presentational Chip.
+
+On Chip component, slots were used to allow any content to be put inside the chip.
+
+The new badge design enforces the usage of only text as the main content, with an optional icon on the left side.
+
+Therefore, slots have been replaced by two attributes: `label` and `icon`.
+
+<Source code={`
+<osds-chip>
+  <osds-icon name="star"></osds-icon>
+  My badge
+</osds-chip>
+`}
+        dark="true"
+        language="html" />
+
+The same result would now be achieved using:
+
+<Source code={`
+<ods-badge icon="star"
+           label="My badge">
+</ods-badge>
+`}
+        dark="true"
+        language="html" />
+
+<Heading label="Attributes changes" level={ 2 } />
+
+`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
+
+Has been removed.
+
+You can use the style customization to achieve the same result, until a new color get validated by the design team.
+
+`color` <OdsBadge color="information" label="Updated" size="sm" />
+
+Has been updated.
+
+`default` is now `neutral`, `info` is now `information`, `error` is now `critical`.
+
+New variants `alpha`, `beta`, `new` and `promotion` were added.
+
+`disabled` <OdsBadge color="critical" label="Removed" size="sm" />
+
+Has been removed.
+
+Badges are not interactive element anymore.
+
+`icon` <OdsBadge color="success" label="New" size="sm" />
+
+New attribute (optional).
+
+Allow you to render an icon on the left side of the badge.
+
+`inline` <OdsBadge color="critical" label="Removed" size="sm" />
+
+Has been removed.
+
+Badges are inline by default. If you need to change this, you can use the style customization.
+
+`label` <OdsBadge color="success" label="New" size="sm" />
+
+New attribute (required).
+
+The label you want to render in the badge.
+
+`removable` <OdsBadge color="critical" label="Removed" size="sm" />
+
+Has been removed.
+
+Badges are not interactive element anymore.
+
+`selectable` <OdsBadge color="critical" label="Removed" size="sm" />
+
+Has been removed.
+
+Badges are not interactive element anymore.
+
+<Heading label="Migration examples" level={ 2 } />
+
+Basic badge:
+
+<Source code={`
+<osds-chip>
+  My badge
+</osds-chip>
+
+<!-- is now -->
+
+<ods-badge label="My badge">
+</ods-badge>
+`}
+        dark="true"
+        language="html" />
+
+
+Color badge:
+
+<Source code={`
+<osds-chip color="info">
+</osds-chip>
+
+<!-- is now -->
+
+<ods-badge color="information">
+</ods-badge>
+`}
+        dark="true"
+        language="html" />
+
+Inline badge:
+
+<Source code={`
+<osds-chip inline>
+  My badge
+</osds-chip>
+
+<!-- is now -->
+
+<ods-badge label="My badge">
+</ods-badge>
+`}
+        dark="true"
+        language="html" />

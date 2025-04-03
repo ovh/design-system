@@ -1,0 +1,1568 @@
+import { OdsLink } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE, ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta title="OVHcloud Design System/What's new?/What's new" />
+
+<Heading label="What's new ?" level={ 1 } />
+
+<Heading label="v18.6.1" level={ 2 } />
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Clipboard**
+- Remove spacing between actions and copy button.
+
+**Input**
+- Add spacing between value and actions.
+
+<Heading label="v18.6.0" level={ 2 } />
+
+<Heading label="New components:" level={ 3 } />
+
+**Combobox**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.combobox } label="See Documentation" story={ STORY.documentation } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Badge**
+
+- New feature to allow icon to be aligned either on left or right side.
+- New attribute `iconAlignment` has been added.
+- New constant `ODS_BADGE_ICON_ALIGNMENT` has been added.
+
+**Clipboard**
+- New attribute `isMasked` has been added.
+
+**Icon**
+- `alt` attribute has been removed. This optional attribute was in fact doing nothing at all, it can safely be kept if you were using it, but you should remove it and follow the <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="accessibility best practices" story={ STORY.documentation } /> instead.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Button**
+- Ensure button height stays the same for all variants.
+- Fix `sm` height on all variants.
+
+**Modal**
+- Backdrop is no longer removed when pressing `Escape` on non-dismissible modal.
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+- Add new dedicated page about design tokens under the `Design and Style` section.
+- Update the accessibility section of the <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } /> component, with best practices and examples.
+
+<Heading label="v18.5.3" level={ 2 } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Select**
+- New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+- New constants `ODS_SELECT_STRATEGY` and `ODS_SELECT_STRATEGIES` are now available.
+
+<Heading label="v18.5.2" level={ 2 } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Code**
+- Add tooltip message on copy button.
+- New attribute `labelCopy` added.
+- New attribute `labelCopySuccess` added.
+
+**Design Tokens**
+- Add new design token `--ods-form-element-input-height`. Useful when trying to use any input (ods-input, ods-datepicker, ods-select, ...) default height.
+
+**Modal**
+- New part `dialog-content` added that let you customize the content of the modal (ie, between header and actions).
+
+**Phone Number**
+- Pressing a letter while focusing the country selector will now move to the first matching country.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Code**
+- Spacing will now be correctly preserved.
+
+**Input**
+- Fix disabled style.
+
+**Phone Number**
+- Countries are now correctly sorted when locale get changed.
+
+**Spinner**
+- Spinner now use inline svg instead of svg file. This should remove some of the `eval` warnings on build.
+
+**Tabs**
+- Tabs bottom border now takes the whole width on horizontal overflow context.
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+- Add more documentation about managing overlays on a modal.
+
+<Heading label="v18.5.1" level={ 2 } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Clipboard**
+- New `ariaLabel` prop has been added.
+- New `ariaLabelledby` prop has been added.
+- New `name` prop has been added.
+
+**Datepicker**
+- New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+- New constants `ODS_DATEPICKER_STRATEGY` and `ODS_DATEPICKER_STRATEGIES` are now available.
+
+**Medium**
+- Now expose an `image` part.
+
+**Password**
+- New `maxlength` prop has been added.
+- New `minlength` prop has been added.
+
+**Textarea**
+- New `maxlength` prop has been added.
+- New `minlength` prop has been added.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Accordion**
+- Clickable elements in the slots now behaves as expected when using the React component.
+
+**Checkbox**
+- Fix focus style on error state.
+
+**Code**
+- Copy button is now correctly positioned on the right side.
+
+**Datepicker**
+- Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Input**
+- Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Password**
+- Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Phone Number**
+- Reset now correctly reset the flag, when `countries` is set.
+- Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Popover**
+- `triggerId` & `shadowDomTriggerId` now accepts id with special character (ex: `?`, `:`, ...).
+
+**Radio**
+- Fix focus style on error state.
+
+**Tooltip**
+- `triggerId` & `shadowDomTriggerId` now accepts id with special character (ex: `?`, `:`, ...).
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+- Headings link url are now static, which means you can safely bookmark / share them.
+- Fix the `Open canvas in new tab` action in the toolbar on Demo pages.
+- Accessibility tabs has been removed from Demo pages, as it was giving wrong information (as demo are custom made and not valid use case).
+
+<Heading label="v18.5.0" level={ 2 } />
+
+<Heading label="New components:" level={ 3 } />
+
+**Drawer**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.drawer } label="See Documentation" story={ STORY.documentation } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Accordion**
+- Update internal logic to use the native behaviour of `details` / `summary` tags.
+- Interactive elements can now be used inside the accordion without toggling it.
+- New methods `close`, `open` and `toggle` have been added.
+- Add some documentation about usage with React state.
+
+**Link**
+- Link will now display an ellipsis by default.
+- New part `label` has been added to allow label customization.
+
+**Modal**
+- Update default width and height.
+- Update dimensions on mobile-size screen.
+- `z-index` has been updated to use ODS overlay z indexes ordering.
+
+**Range**
+- Range can now display ticks.
+- New attribute `ticks` has been added.
+- Thumb hitbox has been improved.
+
+**Select**
+- `z-index` has been updated to use ODS overlay z indexes ordering.
+
+**Tooltip**
+- Tooltip now stays open for a short time on trigger leave, which allows user to
+move over it and keep it open (and for example select its content).
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+- Add new guide about using components events.
+- Add new guide about using components methods.
+- Update Properties array in the technical page to more clearly display which props are required.
+- Update form-field caption examples.
+- Fix FAQ broken link.
+
+<Heading label="v18.4.1" level={ 2 } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Tabs**
+- Apply new style on unselected tab text.
+- Apply new hovering style.
+
+**Toggle**
+- Expose new method `toggle`.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Toggle**
+- Fix toggle style when selected and in an error state.
+
+<Heading label="Miscellaneous:" level={ 3 } />
+
+We did integrate <OdsLink href="https://testing-library.com/docs/react-testing-library/intro" label="react-testing-library" target="_blank" />
+to our React wrapper test suites, so that we can replicate more easily issues integrators may encounter.
+
+<Heading label="v18.4.0" level={ 2 } />
+
+<Heading label="Changes on form elements:" level={ 3 } />
+
+This version is focused on implementing <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState" label="ValidityState" target="_blank" /> to our form elements.
+
+This allows you to setup a fully working form without the need of any external library or custom validation code, as everything behave as a native form.
+
+Though you can of course use a lib on top of that if you want to. We've validated forms using native code (vanilla and React), <OdsLink href="https://formik.org" label="Formik" target="_blank" /> and <OdsLink href="https://react-hook-form.com" label="React Hook Form" target="_blank" /> on our tests and playgrounds.
+
+The changes on each component are massive, but we did focus on ensuring bumping to this version would be transparent for current ODS users.
+
+We won't go through an exhaustive list of changes, here are the most important ones for each form element:
+- Consistent behaviour regarding blur and error state.
+- Consistent event triggering (check the guide about event lifecycle).
+- New event `odsInvalid` triggered when component internal validity change.
+- New methods available: `checkValidity`, `getValidationMessage`, `getValidity`, `reportValidity`, `willValidate`.
+- New interface `OdsFormElement` available with this methods.
+- Tons of unit & e2e tests have been added.
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Checkbox**
+- New `hasError` prop has been added.
+- New style when on error.
+
+**Clipboard**
+- Now expose an `input` part.
+- Input now inherit component length.
+
+**Datepicker**
+- `defaultValue` now accepts Date or string.
+- `max` now accepts Date or string.
+- `min` now accepts Date or string.
+- Added a new helper method `formatDate`.
+- Added a new helper method `parseDate`.
+
+**Input**
+- New input type `search` has been added.
+
+**Phone Number**
+- New `customValidityMessage` prop has been added.
+
+**Radio**
+- New `hasError` prop has been added.
+- New style when on error.
+
+**Range**
+- Now triggers an odsChange on thumb release, not on every move.
+
+**Select**
+- Add a new method `updateCustomRenderer` if you need to update the custom template used.
+
+**Switch**
+- Events are now send from `ods-switch` and not from `ods-switch-item` anymore. You may need to move your handlers if you were defining some on items.
+- New `hasError` prop to enforce error state.
+- Focus style has been updated.
+- New style when on error.
+
+**Toggle**
+- New `hasError` prop to enforce error state.
+- New style when on error.
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+- New Guide section, with a first one about form management.
+- Added new control to visualize ValidityState on each form elements Demo page.
+- Storybook update popup has been disabled.
+
+<Heading label="v18.3.1" level={ 2 } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Icon**
+- New icon "columns" has been added.
+
+**Link**
+- Update hover & visited color to a lighter one.
+
+**Select**
+- Update hover style to differentiate it from selected option.
+
+**Text**
+- `caption` preset does not use a `caption` tag anymore, as these is tight to table usage only.
+- New examples have been added regarding `caption` and `figcaption` usage.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Breadcrumb**
+- Separator is now always correctly aligned, regardless of the number of items.
+
+**Modal**
+- Dialog content height is now correct on Safari
+
+<Heading label="v18.3.0" level={ 2 } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**All form elements**
+- Apply new style on readonly state.
+
+**Breadcrumb**
+- A new part `last` is now available to customize the last item (which differ from other link items).
+
+**Input**
+- You can now link a native `datalist` to an `ods-input` using the `list` attribute and the `list` slot. A full example is available in the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Technical information" story={ STORY.technicalInformation } /> page.
+- New attribute `list` has been added.
+- New slot `list` is now available.
+
+**Message**
+- Message can now be rendered without the close button, as a static message.
+- New attribute `isDismissible` has been added.
+
+**Popover**
+- New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+- New constants `ODS_POPOVER_STRATEGY` and `ODS_POPOVER_STRATEGIES` are now available.
+
+**Tooltip**
+- New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+- New constants `ODS_TOOLTIP_STRATEGY` and `ODS_TOOLTIP_STRATEGIES` are now available.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**All form elements**
+- Pressing `Enter` on an action button (like the clear button) does not trigger a form submit anymore.
+
+**Badge**
+- Now use the expected border-radius style.
+
+**Breadcrumb**
+- Last attribute is now correctly reset on items changes.
+
+**Modal**
+- `odsClose` event is no more emitted on component unmount. If you were relying on that, please reach out to us so we can find a better approach.
+- Content is now wrapped by a div to prevent flex weird rendering.
+- Modal height can now be customized using the `dialog` part.
+
+**Range**
+- Apply correct style to hovered thumb on error state.
+
+**Select**
+- Options are now correctly updated on change.
+- Disable state is now correctly updated on change.
+
+<Heading label="Internal changes:" level={ 3 } />
+
+We now use an `ods-button` instead of a native one for all our internal actions.
+Ex: input clear, message close, modal close, ...
+This shouldn't have any impacts.
+
+<Heading label="v18.2.0" level={ 2 } />
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Button**
+- New color style `neutral` and new size `xs`are now available.
+- New color `neutral` added to `ODS_BUTTON_COLOR`.
+- New size `xs` added to `ODS_BUTTON_SIZE`.
+
+**Spinner**
+- New size `xs` is now available.
+- New size `xs` added to `ODS_SPINNER_SIZE`.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Modal**
+
+- No `odsClose` event emitted anymore on element DOM disconnection if modal was already closed.
+
+**Password / Phone Number / Quantity / Timepicker**
+
+- Setting a `width: 100%` to the ods element now correctly apply it to the underneath elements.
+
+
+<Heading label="v18.1.0" level={ 2 } />
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+Storybook has been partially rewritten, so you may notice a few changes:
+- some style has been updated
+- broken links have been fixed
+- components documentation has been migrated from `typedoc` to `custom-element-manifest`
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Button**
+
+- New feature to allow icon to be aligned either on left or right side.
+- New attribute `iconAlignment` has been added.
+- New constant `ODS_BUTTON_ICON_ALIGNMENT` has been added.
+
+**Icon**
+
+- New icons `bill` and `box` have been added.
+- `globe` icon has been updated.
+
+**Link**
+
+- New feature to allow icon to be aligned either on left or right side.
+- New attribute `iconAlignment` has been added.
+- New constant `ODS_LINK_ICON_ALIGNMENT` has been added.
+
+**Select**
+
+- Apply new style to multi-select counter.
+
+**Table**
+
+- Update header color to neutral-050.
+
+**Text**
+
+- No more default margin on any presets.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**All**
+
+- Components now correctly inherits font-family.
+
+**Modal**
+
+- Prevent undefined element when using with react testing library.
+
+**Phone Number**
+
+- Locale fallback has been moved from french to english (fallback that is applied if no locale or a wrong locale is set and the locale of your browser is not managed).
+
+<Heading label="v18.0.0" level={ 2 } />
+
+As it is a major version, you'll have to follow the <StorybookLink label="migration guide 17.x to 18.x" title={ HOME_TITLE.migration17to18 } />
+
+<Heading label="Project changes:" level={ 3 } />
+
+From the beginning of the project to the latest v17 version, our vision of the project has greatly evolved.
+Thanks to real-user feedbacks, a better understanding of our use cases and how ODS fits in the OVHCloud ecosystem.
+
+With this new version we've tried to tackle most of the known issues to offer a better end-user experience:
+- components are now behaving more like native html elements
+- components are now easier to use and to customize
+- no more invasive `console.log`, we only print meaningful warnings when needed
+- enum values can now be used directly instead of importing it
+- events are now normalized for all components
+- release process will be shorter
+
+On top of that, the v18 does bring new features:
+- new components: file-upload and timepicker
+- latest design applied on all components
+- now sync with figma changes
+- a new set of icons
+- a reworked documentation
+
+To achieve all this, we had to rewrite almost the whole library.
+
+This is a major version change with tons of breaking changes.
+But this aims to be the last time.
+
+To help you moving from a previous version to the v18, we've added a dedicated page on each component presenting
+the changes and some migration examples.
+
+<Heading label="ODS libraries" level={ 3 } />
+
+The following libs have been removed:
+- @ovhcloud/ods-cdk
+- @ovhcloud/ods-common-core
+- @ovhcloud/ods-common-stencil
+- @ovhcloud/ods-common-testing
+- @ovhcloud/ods-common-theming
+- @ovhcloud/ods-theme-blue-jeans
+
+There is now only two library published that you should include:
+- `@ovhcloud/ods-components` that contain all web-components, react and vue wrappers and the sass mixins
+- `@ovhcloud/ods-themes` that contain the design tokens and the assets (fonts and icons)
+
+The CDK has been removed and we do not plan on publishing it again. If you were using part of it, please reach
+out to us so that we can get more information about your usage.
+
+All common libs have been and we do not plan on publishing them again. If you were using part of them, please reach
+out to us so that we can get more information about your usage.
+
+The `blue-jeans` theme has been replaced by the default theme of `@ovhcloud/ods-themes`.
+
+<Heading label="ODS dependencies upgrade" level={ 3 } />
+
+The new version comes with the following upgrade on major library:
+- Stencil bumps from `4.12.0` to `4.16.0`
+- `node-sass` is not supported anymore and was replaced by `sass` (`1.71.0`)
+- Typescript bumps from `4.7.4` to `5.3.3`
+- Storybook bumps from `6.4.19` to `8.0.4`
+
+<Heading label="Style customization" level={ 3 } />
+
+Although the ODS component comes with the expected design, you can now apply your own style directly on some part
+of the web-component shadow DOM, thanks to the <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" label="part selector" target="_blank" />.
+
+For example, you can add style on the native `input` element of an `ods-input` component through the following code:
+
+<Source code={`
+<style>
+  .my-input::part(input) {
+    width: 300px;
+  }
+</style>
+
+<ods-input class="my-input" ... />
+`}
+        dark="true"
+        language="html" />
+
+Most of the component exposes one or more part like this, you can find more information on each component documentation page.
+
+<Heading label="Sass helpers" level={ 3 } />
+
+In addition to the easier customization, we're also exposing the "basic" style of some core component as Sass mixins
+that you can use to apply on a native element to get the same ODS rendering.
+
+For example, if you need to make an anchor tag looks like an `ods-link`:
+
+<Source code={`
+@import '@ovhcloud/ods-components/style';
+
+.my-link {
+  @include ods-link();
+  @include ods-link-color('primary');
+}
+`}
+        dark="true"
+        language="css" />
+
+<Source code={ `<a class="my-link" ...>...</a>` }
+        dark="true"
+        language="html" />
+
+This can be useful when you can't manage some part of the DOM as you want, for example using a library that will always
+render an anchor and that provide no custom templating.
+
+Be careful though, this does only provide basic style, not all the feature of an ODS component, so we do recommend
+to use the web-component by default.
+
+<Heading label="New components:" level={ 3 } />
+
+**File Upload**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.fileUpload } label="See Documentation" story={ STORY.documentation } />
+
+**Timepicker**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.timepicker } label="See Documentation" story={ STORY.documentation } />
+
+<Heading label="Component changes:" level={ 3 } />
+
+Please check the <StorybookLink label="migration guide" title={ HOME_TITLE.migration17to18 } /> regarding all the component changes.
+
+<Heading label="v17.2.2" level={ 2 } />
+
+This update brings a few bug fixes across components, ensuring a smoother and more accessible user experience.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Button**
+
+- Fix the issue where the button was still clickable on the border while disabled.
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Radio-button**
+
+- Add 'XS' size to radio button.
+
+<Heading label="v17.2.1" level={ 2 } />
+
+This update brings a few bug fixes across components, ensuring a smoother and more accessible user experience.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Clipboard**
+
+- A white background is now properly displayed on the `Popover`.
+
+**Menu**
+
+- A minimal height is now forced in the `Menu` component, giving proper styling on the bottom margin.
+
+<Heading label="v17.2.0" level={ 2 } />
+
+This update introduces our new `Table` component, enhances various features and improves documentation.
+It also brings numerous bug fixes across components, ensuring a smoother and more accessible user experience.
+
+<Heading label="New component:" level={ 3 } />
+
+**Table**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.table } label="See Documentation" story={ STORY.documentation } />
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+**Form Field**
+
+- Added an accessibility label.
+- Updated Storybook Usage Guidelines.
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Clipboard**
+
+- `Tooltip` now features a `3 seconds` closing delay.
+- `Tooltip` won't be displayed if `success-message` OR `error-message` is not defined.
+
+**Datepicker**
+
+- `Datepicker` days are now displayed with 2 letters.
+
+**Pagination**
+
+- New attribute `defaultCurrentPage` has been added.
+- New method `getCurrentPage()` has been added.
+- Old attribute `current` has been removed.
+- Navigation will be hidden if `totalItems` is lower than `itemPerPage`
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Breadcrumb**
+**Link**
+
+- Multiple active states issue on Safari browsers has been fixed.
+
+**Datepicker**
+
+- Error color on `Datepicker`'s border has been fixed.
+
+**Input**
+
+- Clearing the `Input` now properly focuses it afterwards.
+
+**Modal**
+
+- Overlaying elements can now overflow from the `Modal`.
+- Pressing the `ESCAPE` key when a `Select` is open inside a `Modal` no longer displays an unwanted backdrop.
+- Width value has been fixed on breakpoint.
+
+**Popover**
+
+- Overlaying elements can now overflow from the `Popover`.
+
+**Textarea**
+
+- `Textarea` style has been fixed to match the `Input`.
+
+**Tile**
+
+- Checked `Tile` styling has been fixed on Safari.
+
+**Search Bar**
+
+- `odsSearchSubmit` event is now properly triggered on `KEY_DOWN` input.
+
+<Heading label="v17.1.0" level={ 2 } />
+
+As we're working towards a massive uniformization of all ODS form elements (events, nav behaviour, required state, validity state, ...),
+the amount of changes is too important to be released immediately.
+
+This release brings the expected form-association of form elements, so that they act as native one for
+formData submit and reset.
+
+It also fixes the missing types of event (`odsBlur`, `odsFocus`, `odsValueChange`).
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+Documentation usage guidelines have been completed with almost all components properties and slots:
+- tons of new components examples
+- dark background when `contrasted` prop is set
+- shortcuts have been disabled due to issue with some input preview
+
+<Heading label="Feature update:" level={ 3 } />
+
+**Pagination**
+
+- A new `defaultItemsPerPage` has been added, which allows to define the initial value of `itemsPerPage` on first render
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Button / Checkbox / Radio / Range / Tile**
+
+- Prevent click event on click when disabled on Chromium & Safari.
+
+**Modal**
+
+- Modal is now correctly cleaned up on disconnect
+
+**Tile**
+
+- Ensure position stays consistent regarding end/start slot emptiness
+
+<Heading label="Miscellaneous:" level={ 3 } />
+
+- Upgrade to StencilJS 4.12
+
+<Heading label="v17.0.3" level={ 2 } />
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Input**
+
+* Icon size are now displayed at the expected size
+
+**Quantity**
+
+* Native arrow are now hidden on Safari
+
+**Radio / Radio group**
+
+* Remove logger issue on documentation example page
+
+**Toggle**
+
+* Toggle now shrink correctly when slot content are very large
+
+**Tile**
+
+* Tile borders are now correctly rounded on Safari
+
+<Heading label="v17.0.2" level={ 2 } />
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Modal**
+
+* Added `enter` and `space` keys binding on the close button + cancel button on Storybook
+* Fixed display problems within the modal that could lead to some elements getting shrunk
+* Scroll is now prevented when a modal is open
+
+<Heading label="v17.0.1" level={ 2 } />
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Pagination**
+
+* Next & previous buttons have been fixed on Chrome & Safari where they could allow the user to go out of bound.
+
+**Radio-Button**
+
+* Smaller text has been fixed and is now aligning vertically as well.
+
+**Fonts**
+
+* Fonts have been fixed to display the correct font on Safari.
+
+<Heading label="v17.0.0" level={ 2 } />
+
+As it is a major version, you'll have to follow the <StorybookLink label="migration guide 16.x to 17.x" title={ HOME_TITLE.migration16to17 } />
+
+<Heading label="Project changes:" level={ 3 } />
+
+Main focus on this version has been on simplifying ODS integration in existing projects (React, Vue, JS, ...).
+
+We now only publish one `ods-components` library that embed all the ODS components.
+
+What this means for your code:
+
+* `ods-component-xxx` are no longer published and should be removed
+* only one dependency to add to your `package.json`
+
+<Source code={ `"ods-components": "17.0.0"` }
+        dark="true"
+        language="text" />
+
+ODS components can then be either imported using lazy-loading (the code of each component is loaded on demand) or as a module (the code of the component is tree-shaked by your own bundling system).
+
+For more details on how to import ODS components, see:
+
+* the updated <StorybookLink label="Get Started documentation" title={ HOME_TITLE.getStarted } />
+* the 16.x to 17.x <StorybookLink label="Migration guide" title={ HOME_TITLE.migration16to17 } />
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+We went through each component to update:
+
+* the Demo controls to be more relevant
+* the Usage Guidelines, with more examples and the missing properties
+* with React example when relevant (ex: `datagrid` reactFormatter with React 18 or `tabs` with React Router)
+
+<Heading label="Component changes:" level={ 3 } />
+
+**Pagination**
+
+* Add `odsItemPerPageChange` when the item per page select change
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Datagrid**
+
+* Overflowing elements can now correctly be displayed (see updated documentation)
+
+**Menu**
+
+* Ellipsis is now correctly displayed on Safari
+
+**Modal**
+
+* Inner element with overlay are now correctly displayed
+
+**Tabs**
+
+* Fix hover rendering
+
+<Heading label="v16.6.0" level={ 2 } />
+
+<Heading label="Feature update:" level={ 3 } />
+
+**Breadcrumb**
+
+* Add attributes on `breadcrumItem` : `disabled`, `rel`, `referrerpolicy`, `target`
+* Add event on `breadcrumItem` : `odsBreadcrumbItemClick`
+* Update `OdsHTMLAnchorElementRel` type
+
+**Chip**
+
+* Added `odsChipRemoval` event
+* If `OsdsChip` is removable and is clicked, it will emit event `odsChipRemoval`
+* If `OsdsChip` is removable, focused on and key Enter is pressed, it will emit event `odsChipRemoval`
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Button**
+
+* Fix position of end slot when start slot is empty in `OsdsButton`
+
+**Datagrid**
+
+* If the `OsdsDatagrid` contains an overflowing on-interaction element (such as `OsdsMenu`, `OsdsTooltip`, `OsdsSelect` or `OsdsPopover`), the element is either being displayed at the top left corner of the `OsdsDatagrid` (native) or beneath the element, making it unvisible (React). This fix intends to correct this problem in both environments.
+
+**Pagination**
+
+* Add `itemPerPage` in payload event `odsChange`
+* Watch `totalPages` & update it
+
+**PhoneNumber**
+
+* Fix shadow of flag icon in the select that was cut behind overflow
+
+**Components**
+
+* Some components were missing from package.json of components: `medium`, `range`, `toggle`
+
+<Heading label="v16.5.0" level={ 2 } />
+
+<Heading label="Feature update:" level={ 3 } />
+
+**Documentation**
+
+* Multiple updates to clarify documentation. (Welcome page, Get started, Design tokens, Code, Contributing & libraries)
+* Removing Starter documentation, as it is deprecated for now.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Datagrid**
+
+* `OsdsDatagrid` now emits the event `onBottomScroll`.
+* `OsdsDatagrid` now supports React Formatters.
+* Row change has been fixed.
+
+**Modal**
+
+* `OsdsModal` is now using a `HTMLDialogElement`,
+
+**Phone number**
+
+* Flags have been fixed to be displayed with proper width & height.
+
+**Select**
+
+* Enhanced React support for `OsdsSelect`.
+
+**Storybook**
+
+* Storybook errors with displaying `OsdsPhoneNumber` & `OsdsSearchBar` inputs has been fixed.
+
+<Heading label="v16.4.0" level={ 2 } />
+
+<Heading label="New component:" level={ 3 } />
+
+**Datagrid**
+
+* See Documentation using version selector
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Phone number**
+
+* Now consistently triggers `odsValueChange` event on type.
+
+**Storybook**
+
+* The release list now correctly displays the name of the latest version.
+
+<Heading label="Feature update:" level={ 3 } />
+
+**Component Generator**
+
+* Component Generator has been upgraded to align with the new architecture (introduced in version 16.0.0).
+
+<Heading label="v16.3.2" level={ 2 } />
+
+<Heading label="New component:" level={ 3 } />
+
+**Medium**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.medium } label="See Documentation" story={ STORY.documentation } />
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Phone number**
+
+* Emit event when the value is valid
+
+**Accordion**
+
+* Can't open when the component is disabled
+
+**Quantity**
+
+* Change the value onblur to be valid with step
+
+**Modal**
+
+* Add event open & close (odsModalOpen, odsModalClose)
+
+<Heading label="v16.3.1" level={ 2 } />
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Datepicker**
+
+* The siblings months days are now updated after the datepicker was updated
+
+**Select**
+
+* Keyboard navigation correction
+
+<Heading label="v16.3.0" level={ 2 } />
+
+<Heading label="Component changes:" level={ 3 } />
+
+**Button**
+
+* Each variant now display correctly when using circle button
+> ⚠️️ **Breaking change**
+* Circle button may render differently regarding the variant you're using
+
+**Datepicker**
+
+* Component now close itself when value is selected
+* You can now hide adjacent month days with the attributes `showSiblingsMonthDays`
+
+**Flag**
+
+* Component has been refactored internally, but this should not have any impacts
+
+**Icon**
+
+* Component has been refactored internally, but this should not have any impacts
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Menu**
+
+* Now correctly work when used with React
+
+**Select**
+
+* On Safari the component is displayed correctly when using flex
+
+**Textarea**
+
+* On Safari the component is displayed correctly when using flex
+
+**Tile**
+
+* On Safari the component is displayed correctly when using flex
+
+<Heading label="Project changes:" level={ 3 } />
+
+* The whole project is now built using Stenciljs v4.7
+> ⚠️️ **Breaking change**
+* We don't generate the bundle `custom-elements-bundle` anymore
+
+<Heading label="v16.2.1" level={ 2 } />
+
+<Heading label="Component changes:" level={ 3 } />
+
+**Datepicker**
+
+* New attribute `locale` to manage internationalization, accepted locales are for now:
+
+- French
+- English
+- German
+- Spanish
+- Italian
+- Polish
+- Portuguese
+- Dutch
+
+**Text**
+
+* Component has been refactored internally, but this should not have any impacts
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Datepicker**
+
+* Add missing constants and types exports
+
+**Modal**
+
+* Is now correctly destroyed on page change
+
+**Popover**
+
+* Now correctly work when used with React
+
+**Select**
+
+* Selected value is now correctly updated on cnange (ex: translation change)
+
+<Heading label="v16.2.0" level={ 2 } />
+
+<Heading label="New component:" level={ 3 } />
+
+**Datepicker**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.datepicker } label="See Documentation" story={ STORY.documentation } />
+
+<Heading label="Component changes:" level={ 3 } />
+
+**Clipboard**
+
+* Added tooltip confirmation message on paste
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Textarea**
+
+* Correctly emit `odsValueChange` event on value change.
+
+<Heading label="Documentation changes:" level={ 3 } />
+
+* Improve typedoc documentation
+
+<Heading label="v16.1.1" level={ 2 } />
+
+<Heading label="Documentation fixes:" level={ 3 } />
+
+* Component specification pages now displays correct information
+* Tile sandbox now uses correct list of commands
+
+<Heading label="v16.1.0" level={ 2 } />
+
+<Heading label="New component:" level={ 3 } />
+
+**Phone Number**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.phoneNumber } label="See Documentation" story={ STORY.documentation } />
+
+<Heading label="Component changes:" level={ 3 } />
+
+**Input**
+
+* New attribute `prefixValue` that allow to display a fixed prefix in front of the input value.
+
+**Progress Bar**
+
+> ⚠️️ **Breaking change**
+
+* `max` and `value` attributes are now `number` and won`t accept `string\` anymore.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Code**
+
+* Contrasted version have now the right color.
+
+<Heading label="Project changes:" level={ 3 } />
+
+* The whole project is now built using node 18.
+
+<Heading label="v16.0.1" level={ 2 } />
+
+Fixes CI build issues when deploying Storybook.
+
+<Heading label="v16.0.0" level={ 2 } />
+
+As it is a major version, you'll have to follow the <StorybookLink label="migration guide 15.x to 16.x" title={ HOME_TITLE.migration15to16 } />
+
+⚠️We're aware that not all the documentation is up-to-date with the latest technical changes ⚠️
+
+⚠️We're currently working on improving the storybook but didn't want to delay the release much more ⚠️
+
+⚠️If you have any issue migrating, reach us directly and we'll help you. ⚠️
+
+<Heading label="Project changes:" level={ 3 } />
+
+This version embed the whole new project architecture (initiated with the v15).
+
+We now have seperations between:
+
+* `cdk` (@ovhcloud/ods-cdk) which provides public non component related utilities.
+* `common` libs (@ovhcloud/ods-common-\[core|stencil|testing|theming]) which provides internal helpers.
+* `components` (@ovhcloud/ods-components or @ovhcloud/ods-component-`<component-name>`) which provide the agnostic components and their React, Vue wrapped versions.
+* `examples` (@ovhcloud/ods-starter-\[react|react-vite|vue-vite]) which contains application examples that use some ODS components.
+* `shared-dependencies` to share common dependencies internally accross projects.
+* `storybook` (@ovhcloud/ods-storybook) which tends to centralize all the ODS documentation content.
+* `themes` (@ovhcloud/ods-theme-blue-jeans) which provides all existing themes that can be applied to ODS.
+
+<Heading label="Component changes:" level={ 3 } />
+
+**All Components**
+
+* `@ovhcloud/ods-stencil` package does not exists anymore.
+
+* Components are now accessible by adding either `@ovhcloud/ods-component-<component>` or `@ovhcloud/ods-components` dependency.
+
+* All `@ovhcloud/ods-stencil-<component>` libs have been replaced by `@ovhcloud/ods-component-<component>`.
+
+* All `@ovhcloud/ods-stencil-<component>-react` libs have been replaced by `@ovhcloud/ods-component-<component>-react`.
+
+* All `@ovhcloud/ods-stencil-<component>-vue` libs have been replaced by `@ovhcloud/ods-component-<component>- vue`.
+
+* Constants/Enums have been renamed to follow new naming convention:
+* All constants are now in UPPER\_SNAKE\_CASE.
+* All objects are now in singular form.
+* All lists are now in plural form.
+
+Ex:
+`OdsSpinnerSize` is now `ODS_SPINNER_SIZE`.
+`OdsSpinnerSizeList` is now `ODS_SPINNER_SIZES`.
+`OdsSpinnerSizeUnion` has been removed.
+
+* Exported types follow also the same naming convention, thus most of them are now in singular form.
+
+Ex:
+`OdsSpinnerAttributes` is now `OdsSpinnerAttribute`.
+
+* A lot of empty types who were exported previously have been removed.
+
+Ex:
+`OdsSpinnerEvents` have been removed, as the component does not handle any events.
+`OdsSpinnerMethods` have been removed, as the component does not expose any methods.
+
+<Heading label="New component:" level={ 3 } />
+
+**Clipboard**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.clipboard } label="See Documentation" story={ STORY.documentation } />
+
+**Menu**
+
+See documentation using version selector
+
+**Modal**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.modal } label="See Documentation" story={ STORY.documentation } />
+
+**Search Bar**
+
+See documentation using version selector
+
+<Heading label="Features changes:" level={ 3 } />
+
+**Button**
+
+* Add a new attribute `textAlign` which allows to choose the button text alignement between `center`, `end` and `start`.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Button**
+
+* Main slot is now correctly aligned vertically (visible when using icon).
+
+**Flag**
+
+* Flags are now correctly displayed in the documentation.
+
+**Link**
+
+* Outline is now correctly updated on viewport change.
+
+<Heading label="v15.0.1" level={ 2 } />
+
+* Fix new packages release process.
+* Update documentation.
+
+<Heading label="v15.0.0" level={ 2 } />
+
+As it is a major version, you have to do the <StorybookLink label="migration guide 14.x to 15.x" title={ HOME_TITLE.migration14to15 } />
+
+<Heading label="Project changes:" level={ 3 } />
+
+This version is the first step towards the new ODS internal architecture.
+The goal of this refactoring is to simplify and improve the whole project to:
+
+* provide a better developer experience and thus reduce development time
+* normalize all components behavior / design / attributes
+* have better control on dependencies and lib version upgrade
+* have better control on what ODS expose (through component or CDK)
+* ...
+
+This first step only impact two components `osds-text` and `osds-textarea`.
+
+All other components will follow on next version.
+
+Then common ODS lib and theming will be refactored on next version.
+
+<Heading label="Features changes:" level={ 3 } />
+
+* **Text**
+
+* `OsdsText` is no longer part of `@ovhcloud/ods-stencil` package.
+
+* `OsdsText` is now accessible by adding either `@ovhcloud/ods-component-text` or `@ovhcloud/ods-components` dependency.
+
+* `@ovhcloud/ods-stencil-text` lib has been replaced by `@ovhcloud/ods-component-text`.
+
+* `@ovhcloud/ods-stencil-text-react` lib has been replaced by `@ovhcloud/ods-component-text-react`.
+
+* `@ovhcloud/ods-stencil-text-vue` lib has been replaced by `@ovhcloud/ods-component-text- vue`.
+
+* `OdsTextSize` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_SIZE` from `@ovhcloud/ods-component-text`.
+
+* `OdsTextSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_SIZES` from `@ovhcloud/ods-component-text`.
+
+* `OdsTextSizeUnion` has been removed from `@ovhcloud/ods-core`.
+
+* `OdsTextLevel` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_LEVEL` from `@ovhcloud/ods-component-text`.
+
+* `OdsTextLevelList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_LEVELS` from `@ovhcloud/ods-component-text`.
+
+* `OdsTextLevelUnion` has been removed from `@ovhcloud/ods-core`.
+
+* `@ovhcloud/ods-component-text` exports only `OdsTextAttribute` as component interface.
+
+* **Textarea**
+
+* `OsdsTextarea` is no longer part of `@ovhcloud/ods-stencil` package.
+
+* `OsdsTextarea` is now accessible by adding either `@ovhcloud/ods-component-textarea` or `@ovhcloud/ods-components` dependency.
+
+* `@ovhcloud/ods-stencil-textarea` lib has been replaced by `@ovhcloud/ods-component-textarea`.
+
+* `@ovhcloud/ods-stencil-textarea-react` lib has been replaced by `@ovhcloud/ods-component-textarea-react`.
+
+* `@ovhcloud/ods-stencil-textarea-vue` lib has been replaced by `@ovhcloud/ods-component-textarea- vue`.
+
+* `OdsTextAreaSize` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZE` from `@ovhcloud/ods-component-textarea`.
+
+* `OdsTextAreaSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZES` from `@ovhcloud/ods-component-textarea`.
+
+* `OdsTextAreaSizeUnion` has been removed from `@ovhcloud/ods-core`.
+
+* `@ovhcloud/ods-component-textarea` exports only `OdsTextAttribute`, `OdsTextAreaEvent` and `OdsTextAreaValueChangeEvent` as component interfaces.
+
+* `OsdsTextarea` is now displayed as flex by default.
+
+* `OsdsTextarea` `flex` attribute has been removed.
+
+* `OsdsTextarea` `inline` attribute has been added.
+
+<Heading label="v14.1.0" level={ 2 } />
+
+<Heading label="New features:" level={ 3 } />
+
+* **CDK**
+* Manage surface position when located on the edge.
+* The surface can now be centered at the top or bottom of the trigger. See CDK Documentation using version selector.
+
+We added the following components:
+
+**Form Field**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } label="See Documentation" story={ STORY.documentation } />
+
+**Switch**
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.switch } label="See Documentation" story={ STORY.documentation } />
+
+<Heading label="Features changes:" level={ 3 } />
+
+* **Pagination**
+
+* Add tooltip to the arrows.
+
+* Can now show pages according to a numbers of items shown by page.
+
+> For more information, check our documentation <StorybookLink kind={ ODS_COMPONENTS_TITLE.pagination } label="See Documentation" story={ STORY.documentation } />
+
+* **Location-tile**
+
+* Component is now deprecated and won't be supported anymore. It will be deleted in a future release.
+> For more information, check our replacement guide using version selector.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+* **Radio**:
+
+* Radio button is now unfocusable when disabled
+
+* **Input**:
+
+* cursor is set to not-allowed when disabled
+
+<Heading label="v14.0.0" level={ 2 } />
+
+As it is a major version, you have to do the <StorybookLink label="migration guide 13.x to 14.x" title={ HOME_TITLE.migration13to14 } />
+
+<Heading label="New features:" level={ 3 } />
+
+We added the following components:
+
+* **Progress Bar**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.progressBar } label="See Documentation" story={ STORY.documentation } />
+* **Popover**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.popover } label="See Documentation" story={ STORY.documentation } />
+* **Tooltip**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } label="See Documentation" story={ STORY.documentation } />
+
+Components version 2:
+
+* **Input V2**: <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="See Documentation" story={ STORY.documentation } />
+* new properties have been added
+* `loading`: it displays a Spinner
+* `clearable`: it clears the input value on click
+* `masked`: it indicates if the input value is hidden or not (to be used with password type)
+* new types have been added: `date`, `email`, `password`, `search`, `tel`, `text`, `time` and `url`
+* **Select V2**: it is now connected to our CDK and keyboard navigation has been added <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="See Documentation" story={ STORY.documentation } />
+
+**Quantity** component accepts four digits in the input field:
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.quantity } label="See Documentation" story={ STORY.documentation } />
+
+**CDK** (Component Development Kit): new symmetry strategies have been added (left and right):
+
+See CDK Documentation using version selector.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+* **Tile**:
+* `hoverable` attribute has been added to avoid double focus
+* `interactive` attribute has been removed
+> ⚠️️ **Breaking change**<br />
+  > For more information, check our migration guide
+* **Link**:
+* add missing color for active state
+* fix Link host container size to match its content
+* **Icon**: add `hoverable` attribute so component color can change when in selectable parent
+* **Checkbox Button**: aspect ratio has been added
+* **Quantity**: icons alignment has been fixed
+* **Textarea**: when component is resized and `flex` attribute is set to `true` and then, set back to `false`, Textarea width is no more blocked to 100%
+
+<Heading label="v13.0.0" level={ 2 } />
+
+As it is a major version, you have to do the <StorybookLink label="migration guide 12.x to 13.x" title={ HOME_TITLE.migration12to13 } />
+
+<Heading label="New features:" level={ 3 } />
+
+We added the following components:
+
+* Breadcrumb: <StorybookLink kind={ ODS_COMPONENTS_TITLE.breadcrumb } label="See Documentation" story={ STORY.documentation } />
+* Collapsible: See Documentation using version selector
+* Pagination: <StorybookLink kind={ ODS_COMPONENTS_TITLE.pagination } label="See Documentation" story={ STORY.documentation } />
+* Spinner: <StorybookLink kind={ ODS_COMPONENTS_TITLE.spinner } label="See Documentation" story={ STORY.documentation } />
+
+Circle-shaped button has been added to Button Component (circle attribute)
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+* Button: `button' and `link`roles have been added (switching to`link\` role when Button has a href property)
+
+* Chip: expected style on Chip focus has been applied
+
+* Icon: missing download icon has been added
+
+* Input: odsValueChange event won't emit on component init
+
+* Link:
+
+* all content in Link is now aligned as expected
+
+* href and target attributes are optional
+
+* Select :
+
+* check for outside click target inside its DOM
+
+* fixed width on non flex Select has been removed
+> ⚠️️ **Breaking change**<br />
+  > For more information, check our migration guide
+
+<Heading label="v12.1.0" level={ 2 } />
+
+<Heading label="New features:" level={ 3 } />
+
+We added the Tabs component.<br />
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.tabs } label="See Documentation" story={ STORY.documentation } />
+
+A component generator has been added. Now, you can use that tool to generate a new component easily.<br />
+
+A coding Style has also been added so you can check our guidelines and how to write code for OVHcloud Design System project.<br />
+
+The Contributing Documentation has been updated:
+
+* How to use a component in an other one
+* Theming: how to customize a style
+* some warning about pushing any sensitive content
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+Range component color when in error has been fixed.
+
+Some width issue on Button component has been fixed.<br />
+When in flex, a Button can now display an ellipsis for text content when necessary.
+
+<Heading label="v12.0.5" level={ 2 } />
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+Button component of type submit in a form will now submit the form as expected (by click or Enter / Space keys).
+
+Quantity component issue has been fixed regarding minus control that should be disabled when the input `min` attribute is equal to 0 and its value has reached 0 too.
+
+<Heading label="v12.0.0" level={ 2 } />
+
+First release on GitHub. There is no new feature in this version. It is now open source
+
+<Heading label="v11.0.0" level={ 2 } />
+
+Flag component has been modified; you’ll need to update as explained in the migration guide.
+For more details about assets, see <StorybookLink label="Installation" title={ HOME_TITLE.getStarted } /> page.
+New attributes are available on this component: `lazy`, `assetPath` and `src`.
+
+Before importing any component you now have to setup ods.
+
+Dual range is now available for Range component; It offers two handles to set a min and max value.
+
+To build resilient infrastructure and promote sustainable industrialization, we moved code that could be agnostic.
+Now, ODS components logic has been moved into controllers.
+If you want to contribute to ODS by developing new components, please refer to the how-to section for controllers in our Storybook.
+
+Now, Button component has `download` and `rel` new attributes available when it is used as a link (href).
+
+We had blur events on Quantity component to set the correct value regarding the Quantity bounds.
+It means when the user set manually a value that is out of bounds for Quantity, the value will be automatically reset to a correct value.
+When Quantity is out of bounds, the field value is now in error state.
+
+<Heading label="v10.2.0" level={ 2 } />
+
+A new library called `CDK` for `Component Development Kit` is available.
+The main objective is to make the development to be easier thanks to helpers.
+The first integrated feature is an overlay system that allows manipulating and displaying content
+on foreground of the page.
+
+We added a new entire section for `contributions` in the storybook.
+Feel free to read the Contributing Documentation if you want to contribute.
+
+We simplified our developer environment with a `global.dev.ts` file in order to
+make the developer tests isolated from the production build.
+
+We optimized our CI/CD workflow for a more reactive and efficient build time and release time.
+
+We fixed some issue about automated screenshot testing with some timeout.
+
+<Heading label="v10.1.0" level={ 2 } />
+
+We added the select component (version 1).
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="See Documentation" story={ STORY.documentation } />
+
+<Heading label="v10.0.0" level={ 2 } />
+
+We updated a lot of third dependencies (stencilJs, typescript, jest, puppeteer, ...):
+
+<Source code={`
+@stencil/core ~2.6.0 to ~2.18.1
+@stencil/sass ~1.4.1 to ~2.0.0
+jest ~26.6.3 to ~27.4.5
+@types/jest ~26.0.24 to ~27.5.2
+jest-cli ~26.6.3 to ~27.4.5
+jest-puppeteer ^5.0.4 to ~6.1.1
+jest-puppeteer-preset ^5.0.4 to ~6.1.1
+ts-jest ~26.5.6 to ~27.1.5
+typescript 4.2.3 to 4.7.4
+puppeteer ~5.5.0 to ~10.0.0
+yarn-2.4.2 to yarn-3.2.4
+node-fetch ~2.6.6 to ~2.6.7
+ts-node ~9.1.1 to ~10.7.0
+`}
+        dark="true"
+        language="text" />
+
+> If you are an `ODS` contributor, you may need to do some changes
+
+We now build all of our components for `React` and `Vue` frameworks.
+They allow to use all the potential and features of your high-end JS framework.
+You can read the updated <StorybookLink label="Getting Started" title={ HOME_TITLE.getStarted } />
+to initialize an App with ODS and see how it works depending the framework.
+
+Also, `ods-cart` is no more impacted by a parent container with `text-align:center`.
+
+`ods-textarea` had an incorrect `spellcheck` property than could be equal to `spellcheck="false'` which is incorrect in HTML.
+Now it is in DOM only if it is `true`.
+
+You can now disable animation on `ods-toggle` by defining a CSS value `--ods-toggle-transition-slider: none`.
+
+Css variables `--ods-size-squish-n-*` and `--ods-size-stretch-n-*` are no more incorrect.
+It was previously set with only one number instead of two, accordingly with CSS3.
+
+<Heading label="v9.1.0" level={ 2 } />
+
+Adding 2 new components :
+
+* accordion: display a content that can be collapsed
+* code: display a snippet of code and copy it into the clipboard
+
+If you already have customized themes, you have to declare the variables for this 2 new components.
+see more in the migration guide 9.x
+
+<Heading label="February 2022" level={ 2 } />
+
+The V1 **Design System** graphical charter is finalized. This charter contains :
+
+* Multiple color palettes (blue, gray, red, orange, green, availability & promotion extra colors)
+* A Typography system
+* All spacing options
+* Components:
+* **Buttons**
+* **Form items** (inputs, dropdowns, checkboxes, radios, radio buttons, toggle buttons, range, textarea, etc.)
+* **Chips & Badges**
+* **Cards**
+* **Cart**

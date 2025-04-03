@@ -1,0 +1,62 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsButton from '@ovhcloud/ods-components/src/components/button/documentation/custom-elements.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as ButtonStories from './button.stories';
+
+<Meta of={ ButtonStories } name="Technical information" />
+
+<Banner of={ ButtonStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ ButtonStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsButton } />
+
+<Heading label="Style customization" level={ 2 } />
+
+You can add your own style on the button element using the part `button`.
+
+Custom CSS :
+
+<Canvas of={ ButtonStories.CustomCSS } sourceState="shown" />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ ButtonStories.Default } sourceState="shown" />
+
+<Heading label="Color" level={ 3 } />
+
+<Canvas of={ ButtonStories.Color } sourceState="shown" />
+
+<Heading label="Is Disabled" level={ 3 } />
+
+<Canvas of={ ButtonStories.IsDisabled } sourceState="shown" />
+
+<Heading label="Is Loading" level={ 3 } />
+
+<Canvas of={ ButtonStories.IsLoading } sourceState="shown" />
+
+<Heading label="Size" level={ 3 } />
+
+<Canvas of={ ButtonStories.Size } sourceState="shown" />
+
+<Heading label="Variant" level={ 3 } />
+
+<Canvas of={ ButtonStories.Variant } sourceState="shown" />
+
+<Heading label="With Left Icon" level={ 3 } />
+
+<Canvas of={ ButtonStories.WithLeftIcon } sourceState="shown" />
+
+<Heading label="With Right Icon" level={ 3 } />
+
+<Canvas of={ ButtonStories.WithRightIcon } sourceState="shown" />
+
+<Heading label="Icon only" level={ 3 } />
+
+<Canvas of={ ButtonStories.IconOnly } sourceState="shown" />

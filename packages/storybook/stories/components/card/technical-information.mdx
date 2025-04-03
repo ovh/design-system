@@ -1,0 +1,32 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsCard from '../../../../ods-react/src/components/card/documentation/ods-card.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as CardStories from './card.stories';
+
+<Meta of={ CardStories } name="Technical information" />
+
+<Banner of={ CardStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ CardStories.Default } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsCard } of={ CardStories } />
+
+<Heading label="Style customization" level={ 2 } />
+
+You can add your own style on the card element directly by selecting it.
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ CardStories.Default } sourceState="shown" />
+
+<Heading label="Color" level={ 3 } />
+
+<Canvas of={ CardStories.Demo } sourceState="shown" />
+
+...

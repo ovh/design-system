@@ -47,7 +47,7 @@ export const Demo: Story = {
 };
 
 export const Color: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['!dev'],
   render: ({}) => (
     <>

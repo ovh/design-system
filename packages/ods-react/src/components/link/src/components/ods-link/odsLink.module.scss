@@ -6,21 +6,19 @@
 
   @include link.ods-link();
 
-  &:not(&#{$current}--disabled) {
-    &#{$current}--primary {
-      @include link.ods-link-color('primary');
-    }
-  }
+  &--primary {
+    @include link.ods-link-color('primary');
 
-  &--disabled {
-    @include state.ods-is-disabled();
+    &#{$current}--disabled {
+      @include state.ods-is-disabled();
 
-    background-color: inherit;
+      background-color: inherit;
 
-    &:focus-visible,
-    &:hover {
-      transition: none;
-      background-size: 0;
+      &:focus-visible,
+      &:hover {
+        transition: none;
+        background-size: 0;
+      }
     }
   }
 }

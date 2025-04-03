@@ -1,4 +1,4 @@
-import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { OdsBadge } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import * as ButtonStories from './button.stories';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -46,7 +46,7 @@ The same result would now be achieved using:
 
 <Heading label="Attributes changes" level={ 2 } />
 
-`circle` <OdsBadge color="critical" label="Removed" size="sm" />
+`circle` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 
@@ -54,13 +54,13 @@ This design is no longer part of the design system specification.
 
 If you need to render such button, please contact the design team.
 
-`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
+`contrasted` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 
 You can use the style customization to achieve the same result, until a new color get validated by the design team.
 
-`disabled` <OdsBadge color="information" label="Updated" size="sm" />
+`disabled` <OdsBadge color="information" size="sm">Updated</OdsBadge>
 
 Has been updated.
 
@@ -73,43 +73,43 @@ prevent some behavior (like click events, focus, ...). As we add custom feature 
 like `isLoading`, we encounter conflicts between the web component attribute and the native one. Enforcing native
 behavior is our main priority, so it is safer to separate our own attribute into a different one.
 
-`download` <OdsBadge color="critical" label="Removed" size="sm" />
+`download` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
-`href` <OdsBadge color="critical" label="Removed" size="sm" />
+`href` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
-`rel` <OdsBadge color="critical" label="Removed" size="sm" />
+`rel` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
-`target` <OdsBadge color="critical" label="Removed" size="sm" />
+`target` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Have been removed.
 
 They're now irrelevant as the button cannot be rendered as a link anymore.
 
-`icon` <OdsBadge color="success" label="New" size="sm" />
+`icon` <OdsBadge color="success" size="sm">New</OdsBadge>
 
 New attribute (optional).
 
 Allow you to render an icon on the left side of the button.
 
-`isDisabled` <OdsBadge color="success" label="New" size="sm" />
+`isDisabled` <OdsBadge color="success" size="sm">New</OdsBadge>
 
 New attribute (optional).
 
 Allow to you to make the button disabled.
 
-`isLoading` <OdsBadge color="success" label="New" size="sm" />
+`isLoading` <OdsBadge color="success" size="sm">New</OdsBadge>
 
 New attribute (optional).
 
 Allow you to render a spinner and make the button disabled, useful on asynchronous action to prevent multiple clicks.
 
-`label` <OdsBadge color="success" label="New" size="sm" />
+`label` <OdsBadge color="success" size="sm">New</OdsBadge>
 
 New attribute (required).
 
 The label you want to render in the button.
 
-`textAlign` <OdsBadge color="critical" label="Removed" size="sm" />
+`textAlign` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 

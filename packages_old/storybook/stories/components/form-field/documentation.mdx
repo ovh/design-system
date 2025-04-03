@@ -1,0 +1,94 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as FormFieldStories from './form-field.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ FormFieldStories } name="Documentation" />
+
+<Banner of={ FormFieldStories } />
+
+_A **Form Field** component is used to wrap several form components with logic, visual hints and additional styling_
+
+<Canvas of={ FormFieldStories.Overview } sourceState="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ ['Form Control'] }
+              atomicType={ ATOMIC_TYPE.molecule }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=172-11996"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/form-field"
+              name="Form Field"
+              relatedComponents={[
+                { name: 'Checkbox', subtitle: 'Form elements' },
+                { name: 'File Upload', subtitle: 'Form elements' },
+                { name: 'Input', subtitle: 'Form elements' },
+                { name: 'Password', subtitle: 'Form elements' },
+                { name: 'Phone Number', subtitle: 'Form elements' },
+                { name: 'Quantity', subtitle: 'Form elements' },
+                { name: 'Radio', subtitle: 'Form elements' },
+                { name: 'Range', subtitle: 'Form elements' },
+                { name: 'Select', subtitle: 'Form elements' },
+                { name: 'Switch', subtitle: 'Form elements' },
+                { name: 'Textarea', subtitle: 'Form elements' },
+                { name: 'Timepicker', subtitle: 'Form elements' },
+                { name: 'Toggle', subtitle: 'Form elements' },
+              ]}>
+  A **Form Field** is based on a single form element or group components as a whole that are decorated with additional
+  <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> to handle specific types of information, like a
+  <StorybookLink kind={ ODS_COMPONENTS_TITLE.password } label="Password" story={ STORY.documentation } /> field for example.
+</IdentityCard>
+
+<Heading label="Anatomy" level={ 2 } />
+
+![Component anatomy](components/form-field/anatomy.png "Component anatomy")
+
+<Heading label="Usage" level={ 2 } />
+
+A **Form Field** is used to wrap a field that can be customized with some additional information about this field.
+
+Additional information (label, placeholder, helper message) provides hint and help to users, so that they can easily understand what is required from them in a form.
+
+Users will also type or enter information in the expected format and avoid mistakes.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    <span>- Use a Form Field for content longer than a single line: Use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.textarea } label="Textarea" story={ STORY.documentation } /> instead</span>,
+    <span>- Use an Input when you have a predefined list of answers: use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="Select" story={ STORY.documentation } /> or <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } label="Radio" story={ STORY.documentation } /> Buttons instead</span>,
+    '- Use * to mark the mandatory fields',
+    '- Overuse content related Form Fields with top aligned label in one group since it requires quite vertical space: split into smaller groups',
+    <span>- Use interactive content such as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } label="Link" story={ STORY.documentation } /> or a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> inside the Form Field label</span>,
+  ]}
+  dos={[
+    '- Use several Form Fields for strongly related content and/or fields',
+    '- Use a Form Fields to help users to fill in a form',
+    <span>- Remember to use a field with a length proportional to the expected user <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /></span>,
+    '- Group when you need to combine related components into a whole new one',
+  ]}
+/>
+
+<Heading label="Placement" level={ 2 } />
+
+A **Form Field** can be used everywhere in a page where there is a form and users may need help to fill in this form.
+
+<Heading label="Behavior" level={ 2 } />
+
+A **Form Field** can react to a field validation, especially on its border and in addition to a helper (if necessary).
+
+If the field is in error state, an error message is displayed below the helper <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> when it exists. When no helper <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> exists, the error message is displayed below the form component.
+
+<Heading label="Variation" level={ 2 } />
+
+N/A
+
+<Heading label="Accessibility" level={ 2 } />
+
+Label, helpers and extra field information have to be readable to the user when navigating in on a **Form Field**.
+
+For the center part, the reading order for screen readers is components from left to right.

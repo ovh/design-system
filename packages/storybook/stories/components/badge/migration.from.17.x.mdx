@@ -1,4 +1,4 @@
-import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { OdsBadge } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import * as BadgeStories from './badge.stories';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -42,13 +42,13 @@ The same result would now be achieved using:
 
 <Heading label="Attributes changes" level={ 2 } />
 
-`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
+`contrasted` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 
 You can use the style customization to achieve the same result, until a new color get validated by the design team.
 
-`color` <OdsBadge color="information" label="Updated" size="sm" />
+`color` <OdsBadge color="information" size="sm">Updated</OdsBadge>
 
 Has been updated.
 
@@ -56,37 +56,37 @@ Has been updated.
 
 New variants `alpha`, `beta`, `new` and `promotion` were added.
 
-`disabled` <OdsBadge color="critical" label="Removed" size="sm" />
+`disabled` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 
 Badges are not interactive element anymore.
 
-`icon` <OdsBadge color="success" label="New" size="sm" />
+`icon` <OdsBadge color="success" size="sm">New</OdsBadge>
 
 New attribute (optional).
 
 Allow you to render an icon on the left side of the badge.
 
-`inline` <OdsBadge color="critical" label="Removed" size="sm" />
+`inline` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 
 Badges are inline by default. If you need to change this, you can use the style customization.
 
-`label` <OdsBadge color="success" label="New" size="sm" />
+`label` <OdsBadge color="success" size="sm">New</OdsBadge>
 
 New attribute (required).
 
 The label you want to render in the badge.
 
-`removable` <OdsBadge color="critical" label="Removed" size="sm" />
+`removable` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 
 Badges are not interactive element anymore.
 
-`selectable` <OdsBadge color="critical" label="Removed" size="sm" />
+`selectable` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 

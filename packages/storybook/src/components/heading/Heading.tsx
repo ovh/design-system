@@ -1,5 +1,5 @@
-import { ODS_DIVIDER_SPACING } from '@ovhcloud/ods-components';
-import { OdsDivider } from '@ovhcloud/ods-components/react';
+// import { ODS_DIVIDER_SPACING } from '@ovhcloud/ods-components';
+// import { OdsDivider } from '@ovhcloud/ods-react';
 import { HeaderMdx } from '@storybook/blocks';
 import React, { type ReactNode } from 'react';
 import styles from './heading.module.css';
@@ -22,10 +22,11 @@ const Heading = ({ children, label, level }: Props) => {
         { label } { children }
       </HeaderMdx>
 
-      {
-        level < 3 &&
-        <OdsDivider spacing={ level === 1 ? ODS_DIVIDER_SPACING._32 : ODS_DIVIDER_SPACING._16 } />
-      }
+      {/* TODO */}
+      {/*{*/}
+      {/*  level < 3 &&*/}
+      {/*  <OdsDivider spacing={ level === 1 ? ODS_DIVIDER_SPACING._32 : ODS_DIVIDER_SPACING._16 } />*/}
+      {/*}*/}
     </>
   );
 };

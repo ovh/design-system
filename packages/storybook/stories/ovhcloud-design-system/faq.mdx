@@ -1,7 +1,5 @@
-import { OdsLink } from '@ovhcloud/ods-components/react';
 import { Meta, Source } from '@storybook/blocks';
 import { Heading } from '../../src/components/heading/Heading';
-import { StorybookLink } from '../../src/components/storybookLink/StorybookLink';
 import { HOME_TITLE } from '../../src/constants/meta';
 
 <Meta title="OVHcloud Design System/F.A.Q." />
@@ -18,64 +16,10 @@ ODS provides base components that you can build on top of and implement in vario
 
 If you need a new component, we recommend working with the design team to request and design the component to ensure it aligns with the ODS guidelines.
 
-<Heading label="How do I customize the style of my component?" level={ 2 } />
-
-To customize the style of your component, you can refer individually to the technical information of the component you wish to customize.
-
-*Example here with the [<OdsLink label="Accordion component" />](?path=/docs/ods-components-accordion--technical-information#style-customization).*
-
-It provides detailed instructions on how to apply custom styles effectively.
-
-<Heading label="[React] How can I test events with `react-testing-library`?" level={ 2 } />
-
-Custom events such as the ones from ODS can be tested in React with `fireEvent`.
-
-For example, to test the `odsChange` event on `ods-input`:
-
-<Source code={`
-import { render, fireEvent } from '@testing-library/react';
-import { OdsInput } from '@ovhcloud/ods-components/react';
-
-test('should handle odsChange event', () => {
-  const handleChange = jest.fn();
-  const { getByTestId } = render(<OdsInput onOdsChange={ handleChange } data-testid="ods-input" />);
-
-  fireEvent.change(getByTestId('ods-input'), { target: { value: 'new value' } });
-
-  expect(handleChange).toHaveBeenCalled();
-});
-`}
-        dark="true"
-        language="tsx" />
-
 <Heading label="Can I use another CSS framework on top of ODS?" level={ 2 } />
 
-ODS components are primarily native web components, allowing you to apply styling from different CSS frameworks.
+You can use any CSS framework on top of ODS.
 
 Note that some imperative CSS frameworks like Bootstrap may override ODS styling.
 
 Ensure compatibility by testing the integration in your project.
-
-<Heading label="How can I import ESModule / CommonJS packages?" level={ 2 } />
-
-For detailed instructions on importing ESModule or CommonJS packages, please refer to our <StorybookLink label="Get Started" title={ HOME_TITLE.getStarted } /> documentation.
-
-<Heading label="How can I import ODS CSS-only styling?" level={ 2 } />
-
-To import ODS CSS-only styling, please refer to our <StorybookLink label="Get Started" title={ HOME_TITLE.getStarted } /> documentation.
-
-<Heading label="[ODS >= v17.1.0 | Safari < v16.2] My form elements are not displayed?" level={ 2 } />
-
-If you are using a form component such as *OdsInput* on ODS version `>= 17.1.0`, you might encounter an issue with your component not being displayed on older versions of Safari (`< 16.2`).
-
-This is primarily due to older versions of Safari not supporting `AttachInternals` which are essential for our components to connect form elements with forms.
-
-We would therefore recommend using versions of Safari superior to `16.4`.
-
-<Heading label="[React] Boolean Attributes" level={ 2 } />
-
-There is a known bug in the React component and the boolean properties. If you bind the property like this `isDisabled={isDisabled}` when the variable `isDisabled` was `false` the property wiil not be removed.
-
-To solve this problem you can bind the property `isDisabled={ isDisabled ? true : undefined }`.
-
-<OdsLink href="https://github.com/facebook/react/issues/9230?fbclid=IwAR1VhQVMpSy3VkGWCOjpwO60y6PxXJOcwdvE88AX1TjBxDaHfwsfHJYeOJU#issuecomment-1094149596" label="Issue Source" target="_blank" />.

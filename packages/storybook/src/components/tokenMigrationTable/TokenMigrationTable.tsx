@@ -1,8 +1,7 @@
-import { ODS_BADGE_COLOR } from '@ovhcloud/ods-components';
-import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { ODS_BADGE_COLOR, OdsBadge } from '@ovhcloud/ods-react';
 import { CodeOrSourceMdx, Markdown } from '@storybook/blocks';
 import { Table } from '@storybook/components';
-import React from 'react';
+import React, { type ReactNode } from 'react';
 
 type ItemStatus = 'removed' | 'updated';
 
@@ -14,18 +13,16 @@ type Props = {
   }[],
 }
 
-function getBadgeProp(status: ItemStatus): { color: ODS_BADGE_COLOR, label: string } {
-  if (status === 'removed') {
-    return {
-      color: ODS_BADGE_COLOR.critical,
-      label: 'Removed',
-    }
-  }
+function renderBadge(status: ItemStatus): ReactNode {
+  const isRemoved = status === 'removed';
 
-  return {
-    color: ODS_BADGE_COLOR.information,
-    label: 'Updated',
-  }
+  return (
+    <OdsBadge
+      color={ isRemoved ? ODS_BADGE_COLOR.critical : ODS_BADGE_COLOR.information }
+      size="sm">
+      { isRemoved ? 'Removed' : 'Updated' }
+    </OdsBadge>
+  )
 }
 
 const TokenMigrationTable = ({ items }: Props) => {
@@ -50,8 +47,7 @@ const TokenMigrationTable = ({ items }: Props) => {
               </td>
 
               <td>
-                <OdsBadge { ...getBadgeProp(item.status) }
-                          size="sm" />
+                { renderBadge(item.status) }
               </td>
 
               <td>

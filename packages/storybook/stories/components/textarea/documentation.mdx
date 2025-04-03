@@ -8,7 +8,7 @@ import { StorybookLink } from '../../../src/components/storybookLink/StorybookLi
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
-<Meta of={ TextareaStories } name="Documentation" />
+<Meta of={ TextareaStories } name='Documentation' />
 
 <Banner of={ TextareaStories } />
 
@@ -49,11 +49,11 @@ Ensure that the **Textarea** is appropriately sized for the expected input and p
 <BestPractices
   donts={[
     '- Use Textarea for shorter text',
-    <span>- Use a placeholder as replacement for a <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } label="Form Field" story={ STORY.documentation } /> label</span>,
+    <span>- Use a placeholder as replacement for a <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> label</span>,
   ]}
   dos={[
     '- Use Textarea for a text longer than a single line',
-    <span>- Use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } label="Form Field" story={ STORY.documentation } /> label (and/or an helper) to clearly inform what information the user should type</span>,
+    <span>- Use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> label (and/or an helper) to clearly inform what information the user should type</span>,
   ]}
 />
 

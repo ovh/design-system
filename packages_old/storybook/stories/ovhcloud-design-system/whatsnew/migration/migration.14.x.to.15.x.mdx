@@ -1,0 +1,117 @@
+import { Meta, Source } from '@storybook/blocks';
+import { Heading } from '../../../../src/components/heading/Heading';
+
+<Meta title="OVHcloud Design System/What's new?/Migration guide/14.x to 15.x" />
+
+# [14.1.1](https://ovh.github.io/design-system/v14.1.1/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [15.0.0](https://ovh.github.io/design-system/v15.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/14.0...release/15.0))
+
+<Heading label="Text" level={ 2 } />
+
+<Heading label="Dependency" level={ 3 } />
+
+Add a dependency to `@ovhcloud/ods-component-text` or `@ovhcloud/ods-components`.
+
+<Heading label="Import" level={ 3 } />
+
+Replace any imports like the followings:
+
+<Source code={`
+// Component
+import { OsdsText } from '@ovhcloud/ods-stencil/components/text'
+import { OsdsText } from '@ovhcloud/ods-stencil/components/text/react'
+import { OsdsText } from '@ovhcloud/ods-stencil/components/text/vue'
+
+// Enums
+import { OdsTextLevel } from '@ovhcloud/ods-core'
+import { OdsTextLevelList } from '@ovhcloud/ods-core'
+import { OdsTextSize } from '@ovhcloud/ods-core'
+import { OdsTextSizeList } from '@ovhcloud/ods-core'
+
+// Interfaces
+import { OdsTextAttributes } from '@ovhcloud/ods-core'
+`}
+        dark="true"
+        language="typescript" />
+
+to:
+
+<Source code={`
+// Component
+import { OsdsText } from '@ovhcloud/ods-component-text'
+import { OsdsText } from '@ovhcloud/ods-component-text/react'
+import { OsdsText } from '@ovhcloud/ods-component-text/vue'
+
+// Enums
+import { ODS_TEXT_LEVEL } from '@ovhcloud/ods-component-text'
+import { ODS_TEXT_LEVELS } from '@ovhcloud/ods-component-text'
+import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text'
+import { ODS_TEXT_SIZES } from '@ovhcloud/ods-component-text'
+
+// Interfaces
+import type { OdsTextAttribute } from '@ovhcloud/ods-component-text'
+`}
+        dark="true"
+        language="typescript" />
+
+Following interfaces has been removed:
+
+* `OdsText`
+* `OdsTextEvents`
+* `OdsTextMethods`
+* `OdsTextLevelUnion`
+* `OdsTextSizeUnion`
+
+<Heading label="Textarea" level={ 2 } />
+
+<Heading label="Dependency" level={ 3 } />
+
+Add a dependency to `@ovhcloud/ods-component-textarea` or `@ovhcloud/ods-components`.
+
+<Heading label="Import" level={ 3 } />
+
+Replace any imports like the followings:
+
+<Source code={`
+import { OsdsTextarea } from '@ovhcloud/ods-stencil/components/textarea'
+import { OsdsTextarea } from '@ovhcloud/ods-stencil/components/textarea/react'
+import { OsdsTextarea } from '@ovhcloud/ods-stencil/components/textarea/vue'
+
+// Enums
+import { OdsTextAreaSize } from '@ovhcloud/ods-core'
+import { OdsTextAreaSizeList } from '@ovhcloud/ods-core'
+
+// Interfaces
+import { OdsTextAreaAttributes } from '@ovhcloud/ods-core'
+import { OdsTextAreaEvents, OdsTextAreaChangeEventDetail } from '@ovhcloud/ods-core'
+import { OdsTextAreaMethods } from '@ovhcloud/ods-core'
+`}
+        dark="true"
+        language="typescript" />
+
+to:
+
+<Source code={`
+// Component
+import { OsdsTextarea } from '@ovhcloud/ods-component-textarea'
+import { OsdsTextarea } from '@ovhcloud/ods-component-textarea/react'
+import { OsdsTextarea } from '@ovhcloud/ods-component-textarea/vue'
+
+// Enums
+import { ODS_TEXT_LEVEL } from '@ovhcloud/ods-component-textarea'
+import { ODS_TEXT_LEVELS } from '@ovhcloud/ods-component-textarea'
+import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-textarea'
+import { ODS_TEXT_SIZES } from '@ovhcloud/ods-component-textarea'
+
+// Interfaces
+import type { OdsTextAreaAttribute } from '@ovhcloud/ods-component-textarea'
+import type { OdsTextAreaEvent, OdsTextAreaChangeEvent } from '@ovhcloud/ods-component-textarea'
+import type { OdsTextAreaMethod } from '@ovhcloud/ods-component-textarea'
+`}
+        dark="true"
+        language="typescript" />
+
+Following interfaces has been removed:
+
+* `OdsTextArea`
+* `OdsTextAreaBehavior`
+* `OdsTextAreaSizeUnion`

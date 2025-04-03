@@ -39,8 +39,8 @@ _A **Form Field** component is used to wrap several form components with logic, 
                 { name: 'Toggle', subtitle: 'Form elements' },
               ]}>
   A **Form Field** is based on a single form element or group components as a whole that are decorated with additional
-  <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> to handle specific types of information, like a
-  <StorybookLink kind={ ODS_COMPONENTS_TITLE.password } label="Password" story={ STORY.documentation } /> field for example.
+  <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> to handle specific types of information, like a
+  <StorybookLink kind={ ODS_COMPONENTS_TITLE.password } story={ STORY.documentation }>Password</StorybookLink> field for example.
 </IdentityCard>
 
 <Heading label="Anatomy" level={ 2 } />
@@ -59,16 +59,16 @@ Users will also type or enter information in the expected format and avoid mista
 
 <BestPractices
   donts={[
-    <span>- Use a Form Field for content longer than a single line: Use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.textarea } label="Textarea" story={ STORY.documentation } /> instead</span>,
-    <span>- Use an Input when you have a predefined list of answers: use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } label="Select" story={ STORY.documentation } /> or <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } label="Radio" story={ STORY.documentation } /> Buttons instead</span>,
+    <span>- Use a Form Field for content longer than a single line: Use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.textarea } story={ STORY.documentation }>Textarea</StorybookLink> instead</span>,
+    <span>- Use an Input when you have a predefined list of answers: use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink> or <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } story={ STORY.documentation }>Radio</StorybookLink> Buttons instead</span>,
     '- Use * to mark the mandatory fields',
     '- Overuse content related Form Fields with top aligned label in one group since it requires quite vertical space: split into smaller groups',
-    <span>- Use interactive content such as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } label="Link" story={ STORY.documentation } /> or a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } label="Button" story={ STORY.documentation } /> inside the Form Field label</span>,
+    <span>- Use interactive content such as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> or a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> inside the Form Field label</span>,
   ]}
   dos={[
     '- Use several Form Fields for strongly related content and/or fields',
     '- Use a Form Fields to help users to fill in a form',
-    <span>- Remember to use a field with a length proportional to the expected user <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } label="Input" story={ STORY.documentation } /></span>,
+    <span>- Remember to use a field with a length proportional to the expected user <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink></span>,
     '- Group when you need to combine related components into a whole new one',
   ]}
 />
@@ -81,7 +81,7 @@ A **Form Field** can be used everywhere in a page where there is a form and user
 
 A **Form Field** can react to a field validation, especially on its border and in addition to a helper (if necessary).
 
-If the field is in error state, an error message is displayed below the helper <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> when it exists. When no helper <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> exists, the error message is displayed below the form component.
+If the field is in error state, an error message is displayed below the helper <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> when it exists. When no helper <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> exists, the error message is displayed below the form component.
 
 <Heading label="Variation" level={ 2 } />
 

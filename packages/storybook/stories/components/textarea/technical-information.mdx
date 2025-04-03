@@ -13,7 +13,13 @@ import * as TextareaStories from './textarea.stories';
 
 <Canvas of={ TextareaStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsTextarea } of={ TextareaStories } />
+<TechnicalSpecification
+  data={ SpecificationsTextarea }
+  extraAttributeInfo={{
+    name: 'textarea',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes',
+  }}
+  of={ TextareaStories } />
 
 <Heading label="Examples" level={ 2 } />
 
@@ -32,3 +38,7 @@ import * as TextareaStories from './textarea.stories';
 <Heading label="Resizable" level={ 3 } />
 
 <Canvas of={ TextareaStories.Resizable } sourceState="shown" />
+
+<Heading label="Form field" level={ 3 } />
+
+<Canvas of={ TextareaStories.FormField } sourceState="shown" />

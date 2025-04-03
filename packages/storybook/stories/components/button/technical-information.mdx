@@ -13,7 +13,13 @@ import * as ButtonStories from './button.stories';
 
 <Canvas of={ ButtonStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsButton } of={ ButtonStories } />
+<TechnicalSpecification
+  data={ SpecificationsButton }
+  extraAttributeInfo={{
+    name: 'button',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes',
+  }}
+  of={ ButtonStories } />
 
 <Heading label="Examples" level={ 2 } />
 

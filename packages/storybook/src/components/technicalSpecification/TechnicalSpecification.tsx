@@ -20,6 +20,10 @@ type ProcessedData = {
 
 type Props = {
   data: ProjectReflection,
+  extraAttributeInfo?: {
+    name: string,
+    url: string,
+  },
   of: ModuleExports,
 }
 
@@ -27,7 +31,7 @@ function filterByKind(children: DeclarationReflection[] | undefined, kind: Refle
   return (children || []).filter((child) => child.kind === kind);
 }
 
-const TechnicalSpecification = ({ data, of }: Props) => {
+const TechnicalSpecification = ({ data, extraAttributeInfo, of }: Props) => {
   const { components, enums } = useMemo<ProcessedData>(() => {
     const enumDeclarations = filterByKind(data.children, ReflectionKind.Enum);
 
@@ -63,7 +67,8 @@ const TechnicalSpecification = ({ data, of }: Props) => {
       {
         (components || []).map((component, idx) => (
           <ClassModule key={ idx }
-                       component={ component } />
+                       component={ component }
+                       extraAttributeInfo={ extraAttributeInfo } />
         ))
       }
 

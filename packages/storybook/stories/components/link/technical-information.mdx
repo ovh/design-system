@@ -13,7 +13,13 @@ import * as LinkStories from './link.stories';
 
 <Canvas of={ LinkStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsLink } of={ LinkStories } />
+<TechnicalSpecification
+  data={ SpecificationsLink }
+  extraAttributeInfo={{
+    name: 'link',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#attributes',
+  }}
+  of={ LinkStories } />
 
 <Heading label="Examples" level={ 2 } />
 

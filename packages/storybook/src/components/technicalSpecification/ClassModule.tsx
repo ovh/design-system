@@ -1,4 +1,4 @@
-import { ODS_ICON_NAME, OdsIcon } from '@ovhcloud/ods-react';
+import { ODS_ICON_NAME, OdsIcon, OdsLink } from '@ovhcloud/ods-react';
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import React from 'react';
@@ -17,17 +17,28 @@ type Component = {
 
 type Props = {
   component: Component,
+  extraAttributeInfo?: {
+    name: string,
+    url: string,
+  },
 }
 
-const ClassModule = ({ component }: Props) => {
+const ClassModule = ({ component, extraAttributeInfo }: Props) => {
   return (
     <>
       <Heading label={ component.name } level={ 2 } />
 
       {
+        extraAttributeInfo &&
+        <p>
+          This component extends all the native <OdsLink href={ extraAttributeInfo.url } target="_blank">{ extraAttributeInfo.name } attributes</OdsLink>.
+        </p>
+      }
+
+      {
         component.props.length <= 0 ?
           <p>
-            This component has no properties.
+            This component has no specific properties.
           </p> :
           <Table>
             <thead className={ styles['class-module__properties__header'] }>

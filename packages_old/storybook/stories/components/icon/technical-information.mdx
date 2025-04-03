@@ -1,0 +1,30 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsIcon from '@ovhcloud/ods-components/src/components/icon/documentation/custom-elements.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as IconStories from './icon.stories';
+
+<Meta of={ IconStories } name="Technical information" />
+
+<Banner of={ IconStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ IconStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsIcon } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ IconStories.Default } sourceState="shown" />
+
+<Heading label="Decorative" level={ 3 } />
+
+<Canvas of={ IconStories.Decorative } sourceState="shown" />
+
+<Heading label="Informative" level={ 3 } />
+
+<Canvas of={ IconStories.Informative } sourceState="shown" />

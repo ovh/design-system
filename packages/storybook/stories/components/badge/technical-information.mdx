@@ -1,5 +1,5 @@
 import { Canvas, Meta } from '@storybook/blocks';
-import SpecificationsBadge from '@ovhcloud/ods-components/src/components/badge/documentation/custom-elements.json';
+import SpecificationsBadge from '../../../../ods-react/src/components/badge/documentation/ods-badge.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -11,17 +11,9 @@ import * as BadgeStories from './badge.stories';
 
 <Heading label="Overview" level={ 2 } />
 
-<Canvas of={ BadgeStories.Overview } sourceState="'none' "/>
+<Canvas of={ BadgeStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsBadge } />
-
-<Heading label="Style customization" level={ 2 } />
-
-You can add your own style on the badge element using the part `badge`.
-
-Custom CSS:
-
-<Canvas of={ BadgeStories.CustomCSS } sourceState="shown" />
+<TechnicalSpecification data={ SpecificationsBadge } of={ BadgeStories } />
 
 <Heading label="Examples" level={ 2 } />
 
@@ -32,14 +24,6 @@ Custom CSS:
 <Heading label="Color" level={ 3 } />
 
 <Canvas of={ BadgeStories.Color } sourceState="shown" />
-
-<Heading label="Icon only" level= { 3 } />
-
-<Canvas of={ BadgeStories.IconOnly } sourceState="shown" />
-
-<Heading label="Icon alignment" level= { 3 } />
-
-<Canvas of={ BadgeStories.IconAlignment } sourceState="shown" />
 
 <Heading label="Size" level={ 3 } />
 

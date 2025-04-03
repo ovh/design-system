@@ -1,0 +1,53 @@
+@use '../../../../../style/badge';
+
+.ods-badge {
+  @include badge.ods-badge();
+
+  &--alpha {
+    @include badge.ods-badge-color('alpha');
+  }
+
+  &--beta {
+    @include badge.ods-badge-color('beta');
+  }
+
+  &--critical {
+    @include badge.ods-badge-color('critical');
+  }
+
+  &--information {
+    @include badge.ods-badge-color('information');
+  }
+
+  &--neutral {
+    @include badge.ods-badge-color('neutral');
+  }
+
+  &--new {
+    @include badge.ods-badge-color('new');
+  }
+
+  &--promotion {
+    @include badge.ods-badge-color('promotion');
+  }
+
+  &--success {
+    @include badge.ods-badge-color('success');
+  }
+
+  &--warning {
+    @include badge.ods-badge-color('warning');
+  }
+
+  &--sm {
+    @include badge.ods-badge-size('sm');
+  }
+
+  &--md {
+    @include badge.ods-badge-size('md');
+  }
+
+  &--lg {
+    @include badge.ods-badge-size('lg');
+  }
+}

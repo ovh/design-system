@@ -1,0 +1,189 @@
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
+import * as ButtonStories from './button.stories';
+import { Heading } from '../../../src/components/heading/Heading';
+
+<Meta of={ ButtonStories } name="Migration From 17.x" />
+
+<Heading label="Button - migrate from v17 to v18" level={ 1 } />
+
+<Heading label="Usage changes" level={ 2 } />
+
+The button can now only render an actual `button`, not a link.
+
+If you need to redirect on click on a button, you can either:
+- handle the redirection on the click handler
+- wrap the button with your custom Link element
+
+The button usage has changed a bit regarding content declaration.
+
+Previously, slots were used to allow any content to be put inside the button.
+
+The new design enforces the usage of only text as the main content, with an optional icon on the left side.
+
+Therefore, slots have been replaced by two attributes: `label` and `icon`.
+
+<Source code={`
+<osds-button>
+  <span slot="start">
+    <osds-icon name="close" contrasted></osds-icon>
+  </span>
+  My button
+</osds-button>
+`}
+        dark="true"
+        language="html" />
+
+The same result would now be achieved using:
+
+<Source code={`
+<ods-button icon="xmark"
+            label="My button">
+</ods-button>
+`}
+        dark="true"
+        language="html" />
+
+<Heading label="Attributes changes" level={ 2 } />
+
+`circle` <OdsBadge color="critical" label="Removed" size="sm" />
+
+Has been removed.
+
+This design is no longer part of the design system specification.
+
+If you need to render such button, please contact the design team.
+
+`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
+
+Has been removed.
+
+You can use the style customization to achieve the same result, until a new color get validated by the design team.
+
+`disabled` <OdsBadge color="information" label="Updated" size="sm" />
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+We did move from the usual `disabled` attribute for two reasons:
+- to ensure consistency of boolean attribute naming across all components
+- to ensure native behavior on disabled button, `disabled` is a native attribute that allows browsers to automatically
+prevent some behavior (like click events, focus, ...). As we add custom feature that may enforce disabling the element,
+like `isLoading`, we encounter conflicts between the web component attribute and the native one. Enforcing native
+behavior is our main priority, so it is safer to separate our own attribute into a different one.
+
+`download` <OdsBadge color="critical" label="Removed" size="sm" />
+
+`href` <OdsBadge color="critical" label="Removed" size="sm" />
+
+`rel` <OdsBadge color="critical" label="Removed" size="sm" />
+
+`target` <OdsBadge color="critical" label="Removed" size="sm" />
+
+Have been removed.
+
+They're now irrelevant as the button cannot be rendered as a link anymore.
+
+`icon` <OdsBadge color="success" label="New" size="sm" />
+
+New attribute (optional).
+
+Allow you to render an icon on the left side of the button.
+
+`isDisabled` <OdsBadge color="success" label="New" size="sm" />
+
+New attribute (optional).
+
+Allow to you to make the button disabled.
+
+`isLoading` <OdsBadge color="success" label="New" size="sm" />
+
+New attribute (optional).
+
+Allow you to render a spinner and make the button disabled, useful on asynchronous action to prevent multiple clicks.
+
+`label` <OdsBadge color="success" label="New" size="sm" />
+
+New attribute (required).
+
+The label you want to render in the button.
+
+`textAlign` <OdsBadge color="critical" label="Removed" size="sm" />
+
+Has been removed.
+
+You can use the style customization to achieve the same result.
+
+<Heading label="Migration examples" level={ 2 } />
+
+Basic button:
+
+<Source code={`
+<osds-button>
+  My button
+</osds-button>
+
+<!-- is now -->
+
+<ods-button label="My button">
+</ods-button>
+`}
+        dark="true"
+        language="html" />
+
+Disabled button:
+
+<Source code={`
+<osds-button disabled>
+  My button
+</osds-button>
+
+<!-- is now -->
+
+<ods-button label="My button" is-disabled>
+</ods-button>
+`}
+        dark="true"
+        language="html" />
+
+Icon button:
+
+<Source code={`
+<osds-button>
+  <span slot="start">
+    <osds-icon name="close" contrasted></osds-icon>
+  </span>
+  My button
+</osds-button>
+
+<!-- is now -->
+
+<ods-button icon="xmark"
+            label="My button">
+</ods-button>
+`}
+        dark="true"
+        language="html" />
+
+Text align:
+
+<Source code={`
+<osds-button text-align="center">
+  My button
+</osds-button>
+
+<!-- is now -->
+
+<ods-button label="My button" class="my-button">
+</ods-button>
+
+<style>
+  .my-button::part(button) {
+    display: inline-block;
+    text-align: center;
+  }
+</style>
+`}
+        dark="true"
+        language="html" />

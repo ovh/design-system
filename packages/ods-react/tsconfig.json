@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2020",
+    "useDefineForClassFields": true
+  },
+  "include": ["src"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/**/.storybook",
+    "**/**/node_modules",
+    "**/**/tests",
+    "**/**/*.config.ts",
+    "**/**/*.stories.tsx"
+  ]
+}

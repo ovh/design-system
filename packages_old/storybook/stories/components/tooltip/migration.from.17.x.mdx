@@ -1,0 +1,145 @@
+import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Meta, Source } from '@storybook/blocks';
+import * as TooltipStories from './tooltip.stories';
+import { Heading } from '../../../src/components/heading/Heading';
+
+<Meta of={ TooltipStories } name="Migration From 17.x" />
+
+<Heading label="Tooltip - migrate from v17 to v18" level={ 1 } />
+
+<Heading label="Usage changes" level={ 2 } />
+
+The tooltip usage has changed a bit regarding the trigger element declaration.
+
+Previously, the trigger element was declared inside the web-component as its main slot content.
+
+The tooltip content was declared using a `osds-tooltip-content` with the slot `tooltip-content` parameter.
+
+This was causing an issue of double focus when the trigger used was a focusable element.
+
+To fix that and give a bit more flexibility about how you organize your DOM, the trigger is now declared outside of the web-component.
+
+The only requirement is to give this element an `id` so that the tooltip can get attached to it using the new attribute `trigger-id`.
+
+Here is an example of the previous declaration:
+
+<Source code={`
+<osds-tooltip>
+  <div>
+    Hover me
+  </div>
+
+  <osds-tooltip-content slot="tooltip-content">
+    Tooltip content
+  </osds-tooltip-content>
+</osds-tooltip>
+`}
+        dark="true"
+        language="html" />
+
+The same result would now be achieved using:
+
+<Source code={`
+<div id="tooltip-trigger">
+  Hover me
+</div>
+
+<ods-tooltip trigger-id="tooltip-trigger">
+  Tooltip content
+</ods-tooltip>
+`}
+        dark="true"
+        language="html" />
+
+<Heading label="Attributes changes" level={ 2 } />
+
+`position` <OdsBadge color="success" label="New" size="sm" />
+
+New attribute (optional).
+
+You can choose a specific position for the tooltip. In case there is not enough space, it will automatically fallback
+to another position where the whole content can be displayed.
+
+`shadowDomTriggerId` <OdsBadge color="success" label="New" size="sm" />
+
+New attribute (optional).
+
+If your trigger element is hidden inside a shadow DOM, you can provide a specific id (in combination with `triggerId`)
+to point to the element inside the shadow DOM of the trigger element.
+
+You usually won't have to use this attribute.
+
+You can find an usage example in the clipboard element implementation.
+
+`triggerId` <OdsBadge color="success" label="New" size="sm" />
+
+New attribute (required).
+
+Id of the HTML element that serves as the tooltip trigger.
+
+`variant` <OdsBadge color="critical" label="Removed" size="sm" />
+
+Has been removed.
+
+You can use the new `with-arrow` attribute to render either the standard or tip previous variant.
+
+`with-arrow` <OdsBadge color="success" label="New" size="sm" />
+
+New attribute (optional).
+
+Set it to `true` if you want to add an arrow to the tooltip.
+
+<Heading label="Migration examples" level={ 2 } />
+
+Basic tooltip:
+
+<Source code={`
+<osds-tooltip>
+  <div>
+    Hover me
+  </div>
+
+  <osds-tooltip-content slot="tooltip-content">
+    Tooltip content
+  </osds-tooltip-content>
+</osds-tooltip>
+
+<!-- is now -->
+
+<div id="tooltip-trigger">
+  Hover me
+</div>
+
+<ods-tooltip trigger-id="tooltip-trigger">
+  Tooltip content
+</ods-tooltip>
+`}
+        dark="true"
+        language="html" />
+
+Arrow tooltip:
+
+<Source code={`
+<osds-tooltip variant="tip">
+  <div>
+    Hover me
+  </div>
+
+  <osds-tooltip-content slot="tooltip-content">
+    Tooltip content
+  </osds-tooltip-content>
+</osds-tooltip>
+
+<!-- is now -->
+
+<div id="tooltip-trigger">
+  Hover me
+</div>
+
+<ods-tooltip trigger-id="tooltip-trigger"
+             with-arrow>
+  Tooltip content
+</ods-tooltip>
+`}
+        dark="true"
+        language="html" />

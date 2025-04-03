@@ -1,4 +1,4 @@
-import { OdsLink } from '@ovhcloud/ods-components/react';
+import { OdsLink } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import { Heading } from '../../src/components/heading/Heading';
 
@@ -6,63 +6,31 @@ import { Heading } from '../../src/components/heading/Heading';
 
 <Heading label="Get Started" level={ 1 } />
 
-OVHcloud Design System is a set of reusable UI components to create a consistent user experience across OVHcloud pages and products, acting as a single source of truth.
+OVHcloud Design System is a set of reusable React UI components to create a consistent user experience across OVHcloud pages and products, acting as a single source of truth.
 
-We provide agnostic Web components and their React, Vue wrapped versions.
-
-All OVHcloud Design System packages are available on <OdsLink href="https://www.npmjs.com" label="NPM" target="_blank" />.
+All OVHcloud Design System packages are available on <OdsLink href="https://www.npmjs.com" target="_blank">NPM</OdsLink>.
 
 <Heading label="Installation" level={ 2 } />
 
 Include **ODS** in your projects like any other npm/yarn module:
 
-<Source code="npm install @ovhcloud/ods-components @ovhcloud/ods-themes"
+<Source code="npm i --save-exact @ovhcloud/ods-react @ovhcloud/ods-themes"
         dark="true"
         language="bash" />
 or
-<Source code="yarn add @ovhcloud/ods-components @ovhcloud/ods-themes"
+<Source code="yarn add --exact @ovhcloud/ods-react @ovhcloud/ods-themes"
         dark="true"
         language="bash" />
 
 <Heading label="Usage" level={ 2 } />
 
-<Heading label="Web components (JavaScript)" level={ 3 } />
-
-There are two different ways of using ODS web component, using lazy-loading or bundle.
-
-<Heading label="Lazy-loading" level={ 4 } />
-
-To use lazy-loading, just include in your project the loader script, it will take care of loading each component resources on-demand.
-
 <Source code={`
-import { defineCustomElements } from '@ovhcloud/ods-components/dist/loader';
-defineCustomElements();
-`}
-        dark="true"
-        language="typescript" />
-
-<Heading label="Bundle" level={ 4 } />
-
-If you prefer to use each component directly, you can import them separately.
-This is recommended when working on projects bundled (using webpack, rollup, ...) as it is more optimized for tree-shaking.
-
-<Source code={`
-import { defineCustomElement as defineButton } from '@ovhcloud/ods-components/dist/components/ods-button';
-defineButton();
-`}
-        dark="true"
-        language="typescript" />
-
-<Heading label="React components" level={ 3 } />
-
-To use a React version of an ODS component, you need to import it from the `react` sub directory.
-
-<Source code={`
-import { OdsButton } from '@ovhcloud/ods-components/react';
+import { OdsButton } from '@ovhcloud/ods-react';
 
 const App = () => {
   return (
-    <OdsButton label="Some button">
+    <OdsButton>
+      Some button
     </OdsButton>
   );
 };
@@ -70,43 +38,13 @@ const App = () => {
         dark="true"
         language="tsx" />
 
-Components are compatible with React v16.8+.
-
-<Heading label="Vue components" level={ 3 } />
-
-To use a Vue version of an ODS component, you need to import it from the `vue` sub directory.
-
-<Source code={`
-<template>
-  <OdsButton label="Some Button">
-  </OdsButton>
-</template>
-
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { OdsButton } from '@ovhcloud/ods-components/vue';
-
-  export default defineComponent({
-    name: 'App',
-    components: {
-      OdsButton,
-    },
-  });
-</script>
-`}
-        dark="true"
-        language="tsx" />
-
-Components are compatible with Vue 3.
+Components are compatible with React v18.2+.
 
 <Heading label="Import components constants" level={ 2 } />
 
-All enums, interfaces, events are available directly from the `ods-components` lib
+All enums, interfaces, events are available directly from the `ods-react` lib
 
-<Source code={`
-import type { OdsPaginationEvent } from '@ovhcloud/ods-components'
-import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES } from '@ovhcloud/ods-components';
-`}
+<Source code={ `import { ODS_BUTTON_SIZE, type OdsPaginationEvent } from '@ovhcloud/ods-react';` }
         dark="true"
         language="typescript" />
 

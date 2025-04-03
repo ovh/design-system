@@ -10,11 +10,4 @@ addons.setConfig({
   theme,
   enableShortcuts: false,
   showToolbar: true,
-  sidebar: {
-    filters: {
-      patterns: (item) => {
-        return !item.tags?.includes('isHidden');
-      }
-    }
-  },
 });

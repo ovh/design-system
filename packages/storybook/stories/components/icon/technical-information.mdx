@@ -1,5 +1,5 @@
 import { Canvas, Meta } from '@storybook/blocks';
-import SpecificationsIcon from '@ovhcloud/ods-components/src/components/icon/documentation/custom-elements.json';
+import SpecificationsIcon from '../../../../ods-react/src/components/icon/documentation/ods-icon.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -13,7 +13,7 @@ import * as IconStories from './icon.stories';
 
 <Canvas of={ IconStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsIcon } />
+<TechnicalSpecification data={ SpecificationsIcon } of={ IconStories } />
 
 <Heading label="Examples" level={ 2 } />
 

@@ -1,6 +1,8 @@
-import { OdsLink } from '@ovhcloud/ods-components/react';
+import { OdsLink } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../../src/constants/meta';
 
 <Meta title="OVHcloud Design System/Design and Style/Style Customization" />
 
@@ -11,20 +13,19 @@ to fit your context.
 
 Here we'll describe different ways to customize an ODS component.
 
-<Heading label="Apply style directly on the web-component" level={ 2 } />
+<Heading label="Apply style directly on the component" level={ 2 } />
 
-The web-component host behave like any other element in your DOM, so you can apply a class directly to it.
+The ODS component host behave like any other React element, so you can apply a class directly to it.
 
 For example, if you want to display a vertical list of `ods-link`, you can override the inline default display:
 
 <Source code={`
-<ods-link class="custom-link"
-          href="..."
-          label="my-link-1" />
-<ods-link class="custom-link"
-          href="..."
-          label="my-link-2" />
-
+<OdsLink className="custom-link">
+  My link 1
+</OdsLink>
+<OdsLink className="custom-link">
+  My link 2
+</OdsLink>
 <style>
   .custom-link {
     display: block;
@@ -34,37 +35,14 @@ For example, if you want to display a vertical list of `ods-link`, you can overr
         dark="true"
         language="html" />
 
-<Heading label="Apply style to its shadow DOM element" level={ 2 } />
-
-If updating the host element is not enough, you may customize directly some specific part of the component internal DOM.
-
-If a component exposes some part, you can apply your own style using the <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" label="part" target="_blank" /> selector.
-
-For example, if you want to create a badge with a specific color that is not provided:
-
-<Source code={`
-<ods-badge class="custom-badge"
-           label="My badge"></ods-badge>
-
-<style>
-  .custom-badge::part(badge) {
-    background-color: #ff00ff;
-  }
-</style>
-`}
-        dark="true"
-        language="html" />
-
-To know precisely which parts are available for a specific component, please refer to its `Technical information` page.
-
 <Heading label="Reuse existing ODS style" level={ 2 } />
 
 In some case where you cannot use an ODS component, you may want one of your own component to look like an ODS component
 (for example, when using an external library that doesn't allow custom templating).
 
-We did expose a bunch of <OdsLink href="https://sass-lang.com" label="Sass" target="_blank" /> mixins that allows you to easily apply the ODS style to your own elements.
+We did expose a bunch of <OdsLink href="https://sass-lang.com" target="_blank">Sass</OdsLink> mixins that allows you to easily apply the ODS style to your own elements.
 
-For example, if you need to make an anchor tag looks like an `ods-link`:
+For example, if you need to make an anchor tag looks like an `OdsLink`:
 
 <Source code={`
 @import '@ovhcloud/ods-components/style';
@@ -77,18 +55,18 @@ For example, if you need to make an anchor tag looks like an `ods-link`:
         dark="true"
         language="css" />
 
-<Source code={ `<a class="my-link" ...>...</a>` }
+<Source code={ `<a class="my-link"></a>` }
         dark="true"
         language="html" />
 
 <Heading label="CSS variables" level={ 2 } />
 
-All ODS components are using common design tokens, that are accessible through <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" label="CSS variables" target="_blank" />.
+All ODS components are using common design tokens, that are accessible through <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank">CSS variables</OdsLink>.
 
 We do advise to reuse those variables on your own style, this way your application will automatically be updated on current
 theme changes or when new themes will be released.
 
-You can find the whole list on the `:root` of your application page.
+You can find the whole list on the <StorybookLink title={ HOME_TITLE.designTokens }>Design Tokens</StorybookLink> documentation page.
 
 Example of CSS variables:
 

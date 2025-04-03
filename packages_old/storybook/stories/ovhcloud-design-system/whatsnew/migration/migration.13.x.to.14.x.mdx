@@ -1,0 +1,16 @@
+import { Meta, Source } from '@storybook/blocks';
+import { Heading } from '../../../../src/components/heading/Heading';
+
+<Meta title="OVHcloud Design System/What's new?/Migration guide/13.x to 14.x" />
+
+# [13.0.1](https://ovh.github.io/design-system/v13.0.1/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [14.0.0](https://ovh.github.io/design-system/v14.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/13.0...release/14.0))
+
+<Heading label="Tile interactive attribute" level={ 2 } />
+
+The Tile component `interactive` attribute has been removed.
+
+<Source code="interactive?: boolean;"
+        dark="true"
+        language="typescript" />
+
+If you are using `interactive` attribute on a Tile in your project, you should remove it.

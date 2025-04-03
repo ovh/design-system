@@ -12,7 +12,7 @@ import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Banner of={ ButtonStories } />
 
-_A **Button** component aims to initiate an action. Its <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } label="Text" story={ STORY.documentation } /> indicates the related intent, its aspect describes the importance and influence level._
+_A **Button** component aims to initiate an action. Its <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> indicates the related intent, its aspect describes the importance and influence level._
 
 <Canvas of={ ButtonStories.Overview } sourceState="none" />
 
@@ -46,13 +46,13 @@ They are used to allow users to interact with the page or its content.
 **They must respect the proximity law** in order to guide the user on the action to be performed and the expected result.
 A **Button** label indicates what happens when the user taps the **Button**, even if it's just to acknowledge something.
 
-**Buttons** don't usually redirect to an external page. For that, see <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } label="Link" story={ STORY.documentation } />.
+**Buttons** don't usually redirect to an external page. For that, see <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink>.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    <span>- Use Buttons as <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } label="Link" story={ STORY.documentation } /> (using the ghost variant), prefer using the <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } label="Link" story={ STORY.documentation } /> component</span>,
+    <span>- Use Buttons as <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> (using the ghost variant), prefer using the <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> component</span>,
     '- Put two identical Buttons side by side',
     '- Use success/error variants for other needs than validation/cancel',
   ]}
@@ -74,7 +74,7 @@ A **Button** can be hovered, focused, clicked and disabled.
 
 When in disabled state, it is impossible to focus or click on it. A "disabled" cursor is shown when hovering the disabled component.
 
-An <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } label="Icon" story={ STORY.documentation } /> can be displayed on the left or right of the **Button** label content.
+An <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> can be displayed on the left or right of the **Button** label content.
 
 <Heading label="Variation" level={ 2 } />
 

@@ -350,10 +350,9 @@ export class OdsCombobox implements OdsFormElement {
 
         const itemValue = (resultElement.searchLabel || resultElement.textContent || '').trim();
         const doesMatchValue = filterRegex.test(itemValue);
-
-        resultElement.isVisible = doesMatchValue;
-
-        if (doesMatchValue && noMatch) {
+        const isAlreadySelected = this.allowMultiple && this.currentSelections.some((selection) => selection.value === resultElement.value);
+        resultElement.isVisible = doesMatchValue && !isAlreadySelected;
+        if (doesMatchValue && !isAlreadySelected && noMatch) {
           noMatch = false;
         }
       });
@@ -366,7 +365,8 @@ export class OdsCombobox implements OdsFormElement {
       this.hasNoResults = noMatch;
     } else {
       this.resultElements?.forEach((resultElement) => {
-        resultElement.isVisible = true;
+        const isAlreadySelected = this.allowMultiple && this.currentSelections.some((selection) => selection.value === resultElement.value);
+        resultElement.isVisible = !isAlreadySelected;
       });
       this.hasNoResults = false;
     }
@@ -558,6 +558,10 @@ export class OdsCombobox implements OdsFormElement {
     this.currentSelections = this.currentSelections.filter((el) => el.value !== value);
     this.shouldUpdateSelection = false;
     this.value = inlineSelection(this.currentSelections);
+
+    if (this.isOpen) {
+      this.filterResults(this.inputElement?.value || '');
+    }
 
     if (this.currentSelections.length === 0
       || this.currentTagFocusedIndex === -1

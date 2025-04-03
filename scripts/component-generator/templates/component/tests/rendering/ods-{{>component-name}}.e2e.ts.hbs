@@ -1,25 +1,21 @@
-import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
+import 'jest-puppeteer';
+import { gotoStory } from '../../../../helpers/test';
 
-describe('ods-{{> component-name }} rendering', () => {
-  let el: E2EElement;
-  let page: E2EPage;
-
-  async function setup(content: string, customStyle?: string): Promise<void> {
-    page = await newE2EPage();
-
-    await page.setContent(content);
-    await page.evaluate(() => document.body.style.setProperty('margin', '0'));
-
-    if (customStyle) {
-      await page.addStyleTag({ content: customStyle });
-    }
-
-    el = await page.find('ods-{{> component-name }}');
-  }
-
+describe('Ods{{> ComponentName }} rendering', () => {
   it('should render the web component', async() => {
-    await setup('<ods-{{> component-name }}></ods-{{> component-name }}>');
+    await gotoStory(page, 'rendering/render');
 
-    expect(el.shadowRoot).not.toBeNull();
+    expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+  });
+
+  describe('custom style', () => {
+    it('should render with custom style applied', async() => {
+      await gotoStory(page, 'rendering/custom-style');
+
+      const ods{{> ComponentName }} = await page.waitForSelector('[data-testid="custom-style"]');
+      const height = await ods{{> ComponentName }}?.evaluate((el: Element) => el.getBoundingClientRect().height);
+
+      expect(height).toBe(42);
+    });
   });
 });

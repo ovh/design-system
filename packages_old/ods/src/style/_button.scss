@@ -1,0 +1,221 @@
+@use './focus';
+@use './state';
+
+$ods-button-border-radius-xs: var(--ods-border-radius-xs);
+$ods-button-border-radius-md: var(--ods-border-radius-md);
+$ods-button-size-xs: 24px;
+$ods-button-size-sm: 32px;
+$ods-button-size-md: 40px;
+
+@mixin ods-button() {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $ods-button-border-radius-md;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  font-style: normal;
+
+  &:disabled {
+    @include state.ods-is-disabled();
+  }
+
+  &:focus-visible {
+    @include focus.ods-focus();
+  }
+}
+
+@mixin ods-button-size($size) {
+  @if $size == 'xs' {
+    grid-column-gap: 6px;
+    border-radius: $ods-button-border-radius-xs;
+    padding: 5px;
+    min-width: $ods-button-size-xs;
+    min-height: $ods-button-size-xs;
+    line-height: 1;
+    font-size: 0.75rem;
+  } @else if $size == 'sm' {
+    grid-column-gap: 6px;
+    padding: 5px;
+    min-width: $ods-button-size-sm;
+    min-height: $ods-button-size-sm;
+    line-height: 1.15;
+  } @else if $size == 'md' {
+    grid-column-gap: 8px;
+    padding: 7px;
+    min-width: $ods-button-size-md;
+    min-height: $ods-button-size-md;
+    line-height: 1.15;
+  }
+}
+
+@mixin ods-button-variant-default($color) {
+  border-width: 1px;
+  border-style: solid;
+
+  &:not(:disabled) {
+    @if $color == 'critical' {
+      border-color: var(--ods-color-critical-500);
+      background-color: var(--ods-color-critical-500);
+      color: var(--ods-color-primary-000);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-critical-700);
+        background-color: var(--ods-color-critical-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-critical-800);
+        background-color: var(--ods-color-critical-800);
+      }
+    } @else if $color == 'neutral' {
+      border-color: var(--ods-color-neutral-500);
+      background-color: var(--ods-color-neutral-500);
+      color: var(--ods-color-neutral-000);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-neutral-700);
+        background-color: var(--ods-color-neutral-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-neutral-800);
+        background-color: var(--ods-color-neutral-800);
+      }
+    } @else if $color == 'primary' {
+      border-color: var(--ods-color-primary-500);
+      background-color: var(--ods-color-primary-500);
+      color: var(--ods-color-primary-000);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-primary-700);
+        background-color: var(--ods-color-primary-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-primary-800);
+        background-color: var(--ods-color-primary-800);
+      }
+    }
+  }
+}
+
+@mixin ods-button-variant-ghost($color) {
+  border: 1px solid transparent;
+
+  &:disabled {
+    background-color: inherit;
+  }
+
+  &:not(:disabled) {
+    @if $color == 'critical' {
+      background-color: inherit;
+      color: var(--ods-color-critical-500);
+
+      &:focus-visible,
+      &:hover {
+        background-color: var(--ods-color-critical-100);
+        color: var(--ods-color-critical-700);
+      }
+
+      &:active {
+        background-color: var(--ods-color-critical-200);
+        color: var(--ods-color-critical-800);
+      }
+    } @else if $color == 'neutral' {
+      background-color: inherit;
+      color: var(--ods-color-neutral-500);
+
+      &:focus-visible,
+      &:hover {
+        background-color: var(--ods-color-neutral-100);
+        color: var(--ods-color-neutral-700);
+      }
+
+      &:active {
+        background-color: var(--ods-color-neutral-200);
+        color: var(--ods-color-neutral-800);
+      }
+    } @else if $color == 'primary' {
+      background-color: inherit;
+      color: var(--ods-color-primary-500);
+
+      &:focus-visible,
+      &:hover {
+        background-color: var(--ods-color-primary-100);
+        color: var(--ods-color-primary-700);
+      }
+
+      &:active {
+        background-color: var(--ods-color-primary-200);
+        color: var(--ods-color-primary-800);
+      }
+    }
+  }
+}
+
+@mixin ods-button-variant-outline($color) {
+  border-width: 1px;
+  border-style: solid;
+
+  &:not(:disabled) {
+    @if $color == 'critical' {
+      border-color: var(--ods-color-critical-500);
+      background-color: var(--ods-color-primary-000);
+      color: var(--ods-color-critical-500);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-critical-700);
+        background-color: var(--ods-color-critical-100);
+        color: var(--ods-color-critical-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-critical-800);
+        background-color: var(--ods-color-critical-200);
+        color: var(--ods-color-critical-800);
+      }
+    } @else if $color == 'neutral' {
+      border-color: var(--ods-color-neutral-500);
+      background-color: var(--ods-color-neutral-000);
+      color: var(--ods-color-neutral-500);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-neutral-700);
+        background-color: var(--ods-color-neutral-100);
+        color: var(--ods-color-neutral-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-neutral-800);
+        background-color: var(--ods-color-neutral-200);
+        color: var(--ods-color-neutral-800);
+      }
+    } @else if $color == 'primary' {
+      border-color: var(--ods-color-primary-500);
+      background-color: var(--ods-color-primary-000);
+      color: var(--ods-color-primary-500);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-primary-700);
+        background-color: var(--ods-color-primary-100);
+        color: var(--ods-color-primary-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-primary-800);
+        background-color: var(--ods-color-primary-200);
+        color: var(--ods-color-primary-800);
+      }
+    }
+  }
+}

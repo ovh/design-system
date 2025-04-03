@@ -7,33 +7,11 @@
   white-space: break-spaces;
 }
 
+.class-module__properties__body__default-value,
 .class-module__properties__body__is-required {
   text-align: center;
 }
 
 .class-module__properties__body__is-required--required {
   color: var(--ods-color-success-500);
-}
-
-.class-module__event-title-link,
-.class-module__method-title-link {
-  margin-left: .5rem;
-  font-size: 12px;
-}
-
-.class-module__events,
-.class-module__methods {
-  display: flex;
-  flex-flow: column;
-  row-gap: 1rem;
-  padding: 0 20px;
-}
-
-.class-module__events__item__name,
-.class-module__methods__item__name {
-  font-weight: bold;
-}
-
-.class-module__message {
-  width: 100%;
 }

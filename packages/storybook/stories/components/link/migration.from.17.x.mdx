@@ -1,4 +1,4 @@
-import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { OdsBadge } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import * as LinkStories from './link.stories';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -9,19 +9,19 @@ import { Heading } from '../../../src/components/heading/Heading';
 
 <Heading label="Attributes changes" level={ 2 } />
 
-`contrasted` <OdsBadge color="critical" label="Removed" size="sm" />
+`contrasted` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 
 You can use the style customization to achieve the same result, until a new color get validated by the design team.
 
-`disabled` <OdsBadge color="information" label="Updated" size="sm" />
+`disabled` <OdsBadge color="information" size="sm">Updated</OdsBadge>
 
 Has been updated.
 
 You can use the new `isDisabled` attribute to obtain the same behavior.
 
-`slot ` <OdsBadge color="critical" label="Removed" size="sm" />
+`slot ` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
 
 Has been removed.
 

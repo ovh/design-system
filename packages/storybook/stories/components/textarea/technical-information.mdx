@@ -1,11 +1,9 @@
 import { Canvas, Meta } from '@storybook/blocks';
-import SpecificationsTextarea from '@ovhcloud/ods-components/src/components/textarea/documentation/custom-elements.json';
+import SpecificationsTextarea from '../../../../ods-react/src/components/textarea/documentation/ods-textarea.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
-import { hideValidityStateSource } from '../../../src/components/validityState/validityState';
 import * as TextareaStories from './textarea.stories';
-import { Textarea as FormFieldTextarea } from '../form-field/form-field.stories';
 
 <Meta of={ TextareaStories } name="Technical information" />
 
@@ -15,15 +13,13 @@ import { Textarea as FormFieldTextarea } from '../form-field/form-field.stories'
 
 <Canvas of={ TextareaStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsTextarea } />
-
-<Heading label="Style customization" level={ 2 } />
-
-You can update the component style using a class on the web-component directly or access the internal input using the part `textarea`.
-
-Custom CSS:
-
-<Canvas of={ TextareaStories.CustomCSS } sourceState="shown" />
+<TechnicalSpecification
+  data={ SpecificationsTextarea }
+  extraAttributeInfo={{
+    name: 'textarea',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes',
+  }}
+  of={ TextareaStories } />
 
 <Heading label="Examples" level={ 2 } />
 
@@ -31,49 +27,18 @@ Custom CSS:
 
 <Canvas of={ TextareaStories.Default } sourceState="shown" />
 
-<Heading label="Cols" level={ 3 } />
-
-<Canvas of={ TextareaStories.Cols } sourceState="shown" />
-
 <Heading label="Disabled" level={ 3 } />
 
 <Canvas of={ TextareaStories.Disabled } sourceState="shown" />
 
-<Heading label="Error" level={ 3 } />
-
-<Canvas of={ TextareaStories.Error } sourceState="shown" />
-
-<Heading label="Max/Min length" level={ 3 } />
-
-When setting length boundaries on a textarea element, it is advised to add an informative counter at the bottom
-of the component displaying the current length and thus the remaining available characters (see Form Field example beneath).
-
-<Canvas of={ TextareaStories.MaxMinLength } sourceState="shown" />
-
-<Heading label="Placeholder" level={ 3 } />
-
-<Canvas of={ TextareaStories.Placeholder } sourceState="shown" />
-
 <Heading label="Readonly" level={ 3 } />
 
-<Canvas of={ TextareaStories.Readonly } sourceState="shown" />
+<Canvas of={ TextareaStories.ReadOnly } sourceState="shown" />
 
 <Heading label="Resizable" level={ 3 } />
 
 <Canvas of={ TextareaStories.Resizable } sourceState="shown" />
 
-<Heading label="Rows" level={ 3 } />
+<Heading label="Form field" level={ 3 } />
 
-<Canvas of={ TextareaStories.Rows } sourceState="shown" />
-
-<Heading label="Spellcheck" level={ 3 } />
-
-<Canvas of={ TextareaStories.Spellcheck } sourceState="shown" />
-
-<Heading label="Validity State" level={ 3 } />
-
-<Canvas of={ TextareaStories.ValidityState } source={{ transform: hideValidityStateSource }} sourceState="shown" />
-
-<Heading label="Included in a Form Field" level={ 3 } />
-
-<Canvas of={ FormFieldTextarea } sourceState="shown" />
+<Canvas of={ TextareaStories.FormField } sourceState="shown" />

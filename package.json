@@ -7,13 +7,8 @@
   "license": "Apache-2.0",
   "workspaces": [
     "packages/examples/*",
-    "packages/ods",
-    "packages/ods/react",
-    "packages/ods/react/tests/*",
-    "packages/ods/src/components/!(dist|loader)*",
-    "packages/ods/style",
-    "packages/ods/vue",
-    "packages/ods/vue/tests/*",
+    "packages/ods-react",
+    "packages/ods-react/src/components/*",
     "packages/storybook",
     "packages/themes"
   ],
@@ -22,11 +17,11 @@
     "build:prod": "lerna run --stream build:prod",
     "build:storybook": "lerna run --stream build:storybook",
     "clean": "lerna run clean",
-    "doc": "lerna run doc",
+    "doc": "lerna run --concurrency 1 doc",
     "lint": "yarn lint:ts && yarn lint:scss",
     "lint:a11y": "lerna run lint:a11y",
-    "lint:ts": "lerna run lint:ts",
-    "lint:scss": "lerna run lint:scss",
+    "lint:ts": "lerna run --concurrency 1 lint:ts",
+    "lint:scss": "lerna run --concurrency 1 lint:scss",
     "new:component": "plop --plopfile scripts/component-generator/plopfile.js component",
     "ods:graduate": "yarn ods:release:prepare && yarn version:graduate",
     "ods:major": "yarn ods:release:prepare && yarn version:major",
@@ -65,6 +60,7 @@
     "eslint-import-resolver-typescript": "3.6.1",
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-jsx-a11y": "6.8.0",
+    "eslint-plugin-react": "7.37.4",
     "eslint-plugin-tsdoc": "0.2.17",
     "husky": "4.3.8",
     "lerna": "3.22.1",
@@ -76,11 +72,10 @@
     "stylelint-formatter-html": "1.0.1"
   },
   "engines": {
-    "node": ">= 18.17",
+    "node": ">= 22",
     "yarn": ">= 2.4.0"
   },
   "resolutions": {
-    "@types/react": "18.2.56",
     "@types/scheduler": "< 0.23.0"
   }
 }

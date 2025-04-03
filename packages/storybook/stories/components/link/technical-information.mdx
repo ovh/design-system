@@ -1,5 +1,5 @@
 import { Canvas, Meta } from '@storybook/blocks';
-import SpecificationsLink from '@ovhcloud/ods-components/src/components/link/documentation/custom-elements.json';
+import SpecificationsLink from '../../../../ods-react/src/components/link/documentation/ods-link.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -13,15 +13,13 @@ import * as LinkStories from './link.stories';
 
 <Canvas of={ LinkStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsLink } />
-
-<Heading label="Style customization" level={ 2 } />
-
-You can add your own style on the link element using the part `link` or `label`.
-
-Custom CSS:
-
-<Canvas of={ LinkStories.CustomCSSLink } sourceState="shown" />
+<TechnicalSpecification
+  data={ SpecificationsLink }
+  extraAttributeInfo={{
+    name: 'link',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#attributes',
+  }}
+  of={ LinkStories } />
 
 <Heading label="Examples" level={ 2 } />
 
@@ -29,30 +27,10 @@ Custom CSS:
 
 <Canvas of={ LinkStories.Default } sourceState="shown" />
 
-<Heading label="Color" level={ 3 } />
-
-<Canvas of={ LinkStories.Color } sourceState="shown" />
-
 <Heading label="Disabled" level={ 3 } />
 
 <Canvas of={ LinkStories.Disabled } sourceState="shown" />
 
-<Heading label="Ellipsis" level={ 3 } />
+<Heading label="With Icon" level={ 3 } />
 
-<Canvas of={ LinkStories.Ellipsis } sourceState="shown" />
-
-<Heading label="With Left Icon" level={ 3 } />
-
-<Canvas of={ LinkStories.WithLeftIcon } sourceState="shown" />
-
-<Heading label="With Right Icon" level={ 3 } />
-
-<Canvas of={ LinkStories.WithRightIcon } sourceState="shown" />
-
-<Heading label="Icon only" level={ 3 } />
-
-<Canvas of={ LinkStories.IconOnly } sourceState="shown" />
-
-<Heading label="Target" level={ 3 } />
-
-<Canvas of={ LinkStories.Target } sourceState="shown" />
+<Canvas of={ LinkStories.WithIcon } sourceState="shown" />

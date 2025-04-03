@@ -1,0 +1,39 @@
+import { type Meta, type StoryObj } from '@storybook/react';
+import React from 'react';
+import { Ods{{> ComponentName }}, type Ods{{> ComponentName }}Prop } from '../../../../ods-react/src/components/{{> component-name }}/src';
+import { CONTROL_CATEGORY } from '../../../src/constants/controls';
+import { orderControls } from '../../../src/helpers/controls';
+
+type Story = StoryObj<Ods{{> ComponentName }}Prop>;
+
+const meta: Meta<Ods{{> ComponentName }}Prop> = {
+  component: Ods{{> ComponentName }},
+  // @ts-ignore see https://github.com/storybookjs/storybook/issues/27535
+  // subcomponents: { Ods{{> ComponentName }}Xxx }, // Uncomment if sub components, otherwise remove
+  title: 'ODS Components/TODO/{{> ComponentName }}',
+};
+
+export default meta;
+
+export const Demo: Story = {
+  argTypes: orderControls({
+    dummy: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+    },
+  }),
+  args: {
+    dummy: 'dummy default',
+  },
+};
+
+export const Default: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Ods{{> ComponentName }} />
+  ),
+};

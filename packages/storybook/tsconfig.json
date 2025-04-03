@@ -26,5 +26,8 @@
     ".storybook/*",
     "src",
     "stories"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

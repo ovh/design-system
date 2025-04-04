@@ -618,4 +618,38 @@ describe('ods-combobox behaviour', () => {
       expect(url.searchParams.get('odsCombobox')).toBe('value');
     });
   });
+
+  describe('keyboard navigation', () => {
+    it('should allow to select a value, delete it with keyboard and reselect it in single mode', async() => {
+      await setup(`
+        <ods-combobox allow-new-element="false">
+          <ods-combobox-item value="test">Test value</ods-combobox-item>
+        </ods-combobox>
+      `);
+      const odsChangeSpy = await page.spyOnEvent('odsChange');
+
+      await openList();
+      await input.press('ArrowDown');
+      await input.press('Enter');
+      await page.waitForChanges();
+
+      expect(await el.getProperty('value')).toBe('test');
+      expect(await input.getProperty('value')).toBe('Test value');
+      expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+
+      await input.press('Backspace');
+      await page.waitForChanges();
+
+      expect(await el.getProperty('value')).toBe('test');
+      expect(await input.getProperty('value')).toBe('Test valu');
+
+      await openList();
+      await input.press('ArrowDown');
+      await input.press('Enter');
+      await page.waitForChanges();
+
+      expect(await el.getProperty('value')).toBe('test');
+      expect(await input.getProperty('value')).toBe('Test value');
+    });
+  });
 });

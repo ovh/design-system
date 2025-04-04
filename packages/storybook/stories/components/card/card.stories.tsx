@@ -8,8 +8,6 @@ type Story = StoryObj<OdsCardProp>;
 
 const meta: Meta<OdsCardProp> = {
   component: OdsCard,
-  // @ts-ignore see https://github.com/storybookjs/storybook/issues/27535
-  // subcomponents: { OdsCardXxx }, // Uncomment if sub components, otherwise remove
   title: 'ODS Components/Card',
 };
 
@@ -35,14 +33,13 @@ export const Demo: Story = {
     },
   }),
   args: {
-    color: 'primary',
     children: 'Hello, world!',
   },
 };
 
 export const Default: Story = {
   tags: ['!dev'],
-  render: () => (
+  render: ({}) => (
     <OdsCard>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
     </OdsCard>
@@ -50,24 +47,16 @@ export const Default: Story = {
 };
 
 export const Color: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', gap: '16px' }}>{ story() }</div>],
   tags: ['!dev'],
-  render: () => (
-    <div style={{ display: 'flex', gap: '16px' }}>
+  render: ({}) => (
+    <>
       <OdsCard color="primary">
         <p>Primary Card</p>
       </OdsCard>
       <OdsCard color="neutral">
         <p>Neutral Card</p>
       </OdsCard>
-    </div>
-  ),
-};
-
-export const CustomCSS: Story = {
-  tags: ['!dev'],
-  render: () => (
-    <OdsCard style={{ width: '500px', display: 'flex', justifyContent: 'center', border: '3px solid green' }}>
-      <p>Custom styled card</p>
-    </OdsCard>
+    </>
   ),
 };

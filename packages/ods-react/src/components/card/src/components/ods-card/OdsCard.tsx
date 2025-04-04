@@ -17,7 +17,7 @@ const OdsCard: FC<OdsCardProp> = forwardRef(({
       className={ classNames(
         style['ods-card'],
         style[`ods-card--${color}`],
-        className
+        className,
       ) }
       ref={ ref }
       { ...props }>

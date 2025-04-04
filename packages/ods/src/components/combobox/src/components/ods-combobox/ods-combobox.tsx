@@ -156,6 +156,9 @@ export class OdsCombobox implements OdsFormElement {
         value: value,
       }];
       this.value = value;
+      if (this.inputElement) {
+        this.inputElement.value = event.detail.text;
+      }
     }
     this.currentFocusedItemIndex = updateItemsFocus(this.resultElements, this.currentFocusedItemIndex, 'reset');
     this.closeDropdown();

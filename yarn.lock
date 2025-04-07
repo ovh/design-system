@@ -3447,8 +3447,8 @@ __metadata:
   linkType: hard
 
 "@microsoft/api-extractor@npm:^7.49.1":
-  version: 7.52.2
-  resolution: "@microsoft/api-extractor@npm:7.52.2"
+  version: 7.52.3
+  resolution: "@microsoft/api-extractor@npm:7.52.3"
   dependencies:
     "@microsoft/api-extractor-model": 7.30.5
     "@microsoft/tsdoc": ~0.15.1
@@ -3465,7 +3465,7 @@ __metadata:
     typescript: 5.8.2
   bin:
     api-extractor: bin/api-extractor
-  checksum: 5161522fb9bcb0df0869845677dd87131f9fc0ede0edf027364966e2d7a3a22d729b6407fce6c00a941c2a87c27be8688f9ea9e1c33bb2072c28b1b20c605a32
+  checksum: 43e818af7bc97bf0ffe168aaec611fe979d796ef5bc1262392c15644df2a39c861b5452e394903d8ec3509879b27ac43b43040c1f71fe8bb6d7649ada71278c1
   languageName: node
   linkType: hard
 
@@ -3740,6 +3740,12 @@ __metadata:
 "@ovhcloud/ods-react-icon@workspace:packages/ods-react/src/components/icon":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-icon@workspace:packages/ods-react/src/components/icon"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-react-input@workspace:packages/ods-react/src/components/input":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-input@workspace:packages/ods-react/src/components/input"
   languageName: unknown
   linkType: soft
 
@@ -4919,11 +4925,11 @@ __metadata:
   linkType: hard
 
 "@types/babel__generator@npm:*":
-  version: 7.6.8
-  resolution: "@types/babel__generator@npm:7.6.8"
+  version: 7.27.0
+  resolution: "@types/babel__generator@npm:7.27.0"
   dependencies:
     "@babel/types": ^7.0.0
-  checksum: 5b332ea336a2efffbdeedb92b6781949b73498606ddd4205462f7d96dafd45ff3618770b41de04c4881e333dd84388bfb8afbdf6f2764cbd98be550d85c6bb48
+  checksum: e6739cacfa276c1ad38e1d8a6b4b1f816c2c11564e27f558b68151728489aaf0f4366992107ee4ed7615dfa303f6976dedcdce93df2b247116d1bcd1607ee260
   languageName: node
   linkType: hard
 
@@ -7643,8 +7649,8 @@ __metadata:
   linkType: hard
 
 "bare-fs@npm:^4.0.1":
-  version: 4.0.2
-  resolution: "bare-fs@npm:4.0.2"
+  version: 4.1.2
+  resolution: "bare-fs@npm:4.1.2"
   dependencies:
     bare-events: ^2.5.4
     bare-path: ^3.0.0
@@ -7654,7 +7660,7 @@ __metadata:
   peerDependenciesMeta:
     bare-buffer:
       optional: true
-  checksum: 3e6346c374dfd62ee5514baf990154b176cf9db84e17bf89a51f1985274ad1a3bb2e4894f1a736e231ec635fe25c97449fb570f3e8d56b74c18cef190ea83ef3
+  checksum: f4b3e9b0a07cb5ab5904c8644cf8945b271707e69bac29e817dfd1f7624583f3c91c1502d2ea1650919fea20425fcf6823b413087cbd8fa158e480b3db60ab87
   languageName: node
   linkType: hard
 
@@ -8176,9 +8182,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001578, caniuse-lite@npm:^1.0.30001688":
-  version: 1.0.30001709
-  resolution: "caniuse-lite@npm:1.0.30001709"
-  checksum: d7f488801b59cf283498a1035ed1639ed15f757bcf0431c638f8f96cf5fa1fb75af07df84898e6dc578166e042eb2db1832fa901df1a522ffa02e4bdcfd35aa2
+  version: 1.0.30001712
+  resolution: "caniuse-lite@npm:1.0.30001712"
+  checksum: 83760e735d1d7ab9ff7270747d70b71da4341bdc1c90df9fe2008ada382653e13d7501bfd7068e1d835184b03b8ac598b127bfe3e7d53419b9d7827730b4ae1a
   languageName: node
   linkType: hard
 
@@ -9801,9 +9807,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.73":
-  version: 1.5.130
-  resolution: "electron-to-chromium@npm:1.5.130"
-  checksum: bdfdfb68ae2b88a9127b4858c9e97e25f486346ee7f2b8698bae4ff3e403f0f727141d1c9fd4c7482b3a035069d792c898045062df79e1e5d4d1cb21603fc1a5
+  version: 1.5.134
+  resolution: "electron-to-chromium@npm:1.5.134"
+  checksum: 07e29b36c4ffa8dcdbfd089af9610e8e99617ae04ca718f355d3d057114197de33a560efbc9573d56cb427ad05f79888827b3bb4da569cbab202d31af5159dab
   languageName: node
   linkType: hard
 
@@ -15048,9 +15054,9 @@ __metadata:
   linkType: hard
 
 "mdn-data@npm:^2.15.0":
-  version: 2.19.0
-  resolution: "mdn-data@npm:2.19.0"
-  checksum: 5c2c8274d3071c9e85af6aab4d3507ae4e1ec8c7bcad72d851e4a5ad58a22882b1bbca1d1114d4e2c58c4c2c4702b406c554b22deb8985b84a8b42e860fb4406
+  version: 2.20.0
+  resolution: "mdn-data@npm:2.20.0"
+  checksum: 66c7de9c422313f766f2ae40048c8cd301d3b694df436729dd4066c796df70f4308925468828f9a471ddc63818945b0f240bb3744f3f3480312e0b2bd38a7775
   languageName: node
   linkType: hard
 
@@ -20972,9 +20978,9 @@ __metadata:
   linkType: hard
 
 "ufo@npm:^1.5.4":
-  version: 1.5.4
-  resolution: "ufo@npm:1.5.4"
-  checksum: f244703b7d4f9f0df4f9af23921241ab73410b591f4e5b39c23e3147f3159b139a4b1fb5903189c306129f7a16b55995dac0008e0fbae88a37c3e58cbc34d833
+  version: 1.6.0
+  resolution: "ufo@npm:1.6.0"
+  checksum: 664df7ab614d74a58de0d56be581989c387c8acba44dcdcefc280969e939df1454d19e722d33b7fbaa83a10c36396e576d33d2fe72b154fb54b2959de25b59b9
   languageName: node
   linkType: hard
 

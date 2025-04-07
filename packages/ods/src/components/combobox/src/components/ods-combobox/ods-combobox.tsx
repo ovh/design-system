@@ -691,8 +691,8 @@ export class OdsCombobox implements OdsFormElement {
         ? `${this.addNewElementLabel} <span class="${HIGHLIGHT_CLASS}">${templateValue}</span>`
         : `${this.addNewElementLabel} ${templateValue}`;
 
+      this.createNewElement.isVisible = true;
       if (this.resultElements.length && this.resultElements[0].id !== CREATE_NEW_ID) {
-        this.createNewElement.isVisible = true;
         this.resultElements.unshift(this.createNewElement);
       }
     } else {

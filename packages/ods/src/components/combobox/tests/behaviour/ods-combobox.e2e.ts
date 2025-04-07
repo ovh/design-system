@@ -150,6 +150,18 @@ describe('ods-combobox behaviour', () => {
 
         expect(await isCreateNewVisible()).toBe(true);
       });
+
+      it('should add the add entry option if the combobox has no items', async() => {
+        await setup('<ods-combobox allow-new-element></ods-combobox>');
+        await openList();
+
+        expect(await isCreateNewVisible()).toBe(false);
+
+        await input.type('Zz', { delay: 200 });
+        await page.waitForChanges();
+
+        expect(await isCreateNewVisible()).toBe(true);
+      });
     });
 
     describe('multiple', () => {

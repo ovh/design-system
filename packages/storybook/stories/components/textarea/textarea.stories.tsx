@@ -118,7 +118,7 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <OdsTextarea />
+    <OdsTextarea placeholder="Textarea" />
   ),
 };
 

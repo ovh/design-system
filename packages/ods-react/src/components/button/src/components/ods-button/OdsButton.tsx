@@ -33,7 +33,8 @@ const OdsButton: FC<OdsButtonProp> = forwardRef(({
       )}
       disabled={ props.disabled || isLoading }
       ref={ ref }
-      { ...props }>
+      { ...props }
+      type={ props.type || 'button' }>
       {
         isLoading &&
         <div className={ style['ods-button__spinner'] }>

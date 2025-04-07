@@ -3755,6 +3755,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-skeleton@workspace:packages/ods-react/src/components/skeleton":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-skeleton@workspace:packages/ods-react/src/components/skeleton"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-spinner@workspace:packages/ods-react/src/components/spinner":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-spinner@workspace:packages/ods-react/src/components/spinner"

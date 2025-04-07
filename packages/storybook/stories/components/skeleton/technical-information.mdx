@@ -1,0 +1,26 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsSkeleton from '../../../../ods-react/src/components/skeleton/documentation/ods-skeleton.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as SkeletonStories from './skeleton.stories';
+
+<Meta of={ SkeletonStories } name="Technical information" />
+
+<Banner of={ SkeletonStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={SkeletonStories.Overview} sourceState="none" />
+
+<TechnicalSpecification
+  data={ SpecificationsSkeleton }
+  extraAttributeInfo={{
+    name: 'div',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes',
+  }}
+  of={ SkeletonStories } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ SkeletonStories.Default } sourceState="shown" />

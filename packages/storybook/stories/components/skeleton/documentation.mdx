@@ -1,0 +1,68 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as SkeletonStories from './skeleton.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ SkeletonStories } name='Documentation' />
+
+<Banner of={ SkeletonStories } />
+
+_**Skeleton** component indicates that data is loading. It improves the perceived loading time for the user._
+
+<Canvas of={ SkeletonStories.Default } sourceState='none' />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ ['Skeleton loader'] }
+              atomicType={ ATOMIC_TYPE.quark }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-10250"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/skeleton"
+              name="Skeleton"
+              relatedComponents={ [] }>
+  **Skeleton** indicates, through and animation, that content is loading and that the screen is not frozen.
+</IdentityCard>
+
+<Heading label="Anatomy" level={ 2 } />
+
+![Component anatomy](components/skeleton/anatomy.png "Component anatomy")
+
+1. **Main content**: the **Skeleton** itself.
+
+<Heading label="Usage" level={ 2 } />
+
+A **Skeleton** can be used in a variety of contexts such as in <StorybookLink kind={ ODS_COMPONENTS_TITLE.card } story={ STORY.documentation }>Card</StorybookLink>, lists, and <StorybookLink kind={ ODS_COMPONENTS_TITLE.table } story={ STORY.documentation }>Table</StorybookLink> content.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    '- Avoid using a Skeleton for static content',
+    '- Use for interactive elements',
+  ]}
+  dos={[
+    '- Prefer using a Skeleton for dynamic content except it is necessary for your use case',
+    '- Use a Skeleton if content loading is going to take a few seconds',
+    '- Use when the page or a part of the page is loading or updating',
+  ]}
+/>
+
+<Heading label="Placement" level={ 2 } />
+
+A **Skeleton** can be placed whenever needed to indicate a content is loading.
+
+<Heading label="Behavior" level={ 2 } />
+
+The **Skeleton** component has a linear animation to show to indicates a content is loading.
+
+<Heading label="Variation" level={ 2 } />
+
+N/A
+
+<Heading label="Accessibility" level={ 2 } />
+
+This component is only visual and does not provide any screen reader information.

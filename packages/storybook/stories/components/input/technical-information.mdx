@@ -1,0 +1,64 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsInput from '../../../../ods-react/src/components/input/documentation/ods-input.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as InputStories from './input.stories';
+
+<Meta of={ InputStories } name="Technical information" />
+
+<Banner of={ InputStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ InputStories.Overview } sourceState="none" />
+
+<TechnicalSpecification
+  data={ SpecificationsInput }
+  extraAttributeInfo={{
+    name: 'input',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes',
+  }}
+  of={ InputStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ InputStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ InputStories.Disabled } sourceState="shown" />
+
+<Heading label="Readonly" level={ 3 } />
+
+<Canvas of={ InputStories.ReadOnly } sourceState="shown" />
+
+<Heading label="Clearable" level={ 3 } />
+
+<Canvas of={ InputStories.Clearable } sourceState="shown" />
+
+<Heading label="Loading" level={ 3 } />
+
+<Canvas of={ InputStories.Loading } sourceState="shown" />
+
+<Heading label="Masked" level={ 3 } />
+
+<Canvas of={ InputStories.Masked } sourceState="shown" />
+
+<Heading label="Types" level={ 3 } />
+
+<Canvas of={ InputStories.Types } sourceState="shown" />
+
+<Heading label="Floating number" level={ 3 } />
+
+<Canvas of={ InputStories.FloatingNumber } sourceState="shown" />
+
+<Heading label="Datalist" level={ 3 } />
+
+<Canvas of={ InputStories.Datalist } sourceState="shown" />
+
+<Heading label="Form field" level={ 3 } />
+
+<Canvas of={ InputStories.FormField } sourceState="shown" />

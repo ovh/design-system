@@ -1,7 +1,6 @@
-import { ODS_DIVIDER_COLOR, ODS_DIVIDER_COLORS, ODS_DIVIDER_SPACING, ODS_DIVIDER_SPACINGS } from '../../../../ods-react/src/components/divider/src';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { OdsDivider, type OdsDividerProp } from '../../../../ods-react/src/components/divider/src';
+import { ODS_DIVIDER_COLOR, ODS_DIVIDER_COLORS, ODS_DIVIDER_SPACING, ODS_DIVIDER_SPACINGS, OdsDivider, type OdsDividerProp } from '../../../../ods-react/src/components/divider/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -20,9 +19,8 @@ export const Demo: Story = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: ODS_DIVIDER_COLOR.light },
-        type: { summary: `Type string: ${ODS_DIVIDER_COLORS}` }
+        type: { summary: ODS_DIVIDER_COLORS }
       },
-      // todo when options are defined, type select should be automatically inferred but not working?
       control: { type: 'select' },
       options: ODS_DIVIDER_COLORS,
     },
@@ -30,16 +28,12 @@ export const Demo: Story = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: ODS_DIVIDER_SPACING._2 },
-        type: { summary: `Type string from: ${ODS_DIVIDER_SPACINGS}` }
+        type: { summary: ODS_DIVIDER_SPACINGS }
       },
       control: { type: 'select' },
       options: ODS_DIVIDER_SPACINGS,
     },
   }),
-  args: {
-    color: ODS_DIVIDER_COLOR.light,
-    spacing: ODS_DIVIDER_SPACING._2,
-  },
 };
 
 export const Default: Story = {
@@ -50,7 +44,7 @@ export const Default: Story = {
 };
 
 export const Overview: Story = {
-  tags: ['isHidden'],
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
@@ -64,7 +58,6 @@ export const Overview: Story = {
 };
 
 export const Color: Story = {
-  decorators: [(story) => <div>{ story() }</div>],
   tags: ['!dev'],
   render: ({}) => ( 
     <>
@@ -75,7 +68,6 @@ export const Color: Story = {
 };
 
 export const Spacing: Story = {
-  decorators: [(story) => <div>{ story() }</div>],
   tags: ['!dev'],
   render: ({}) => (
     <>

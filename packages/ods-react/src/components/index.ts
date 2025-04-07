@@ -10,3 +10,4 @@ export * from './textarea/src';
 export * from './form-field/src';
 export * from './card/src';
 export * from './skeleton/src';
+export * from './input/src';

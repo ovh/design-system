@@ -1,0 +1,86 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as InputStories from './input.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ InputStories } name="Documentation" />
+
+<Banner of={ InputStories } />
+
+_**Input** component is an **Input** field where users can type into_
+
+<Canvas of={ InputStories.Overview } sourceState="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ ['Text Input', 'Text Field'] }
+              atomicType={ ATOMIC_TYPE.atom }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=93-22570"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/input"
+              name="Input"
+              relatedComponents={ [{ name: 'Button' }, { name: 'Form Field', subtitle: 'Form elements' }] }>
+  An **Input** is used to allow the user to enter a single line information in a field.
+</IdentityCard>
+
+<Heading label="Anatomy" level={ 2 } />
+
+![Component anatomy](components/input/anatomy.png "Component anatomy")
+
+1. A **field**: a container where the user can type in
+2. A **placeholder**: provides hints or example of what to type
+3. **Inner content**: displays the content typed by the field type (e.g.: `email`, `number`, `password`, `search`, `text`, `time`, `url`)
+4. Clickable icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, used for secondary extra actions such as clear the field
+5. Clickable icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, used for extra actions such as toggle the field content visibility or trigger a search
+
+<Heading label="Usage" level={ 2 } />
+
+An **Input** is used to type a free-form short text in a field. It is often used within a <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> component that adds its label.
+
+It is commonly used in a form, such as asking the user their name or email address, data entered can be text or numbers.
+
+The **Input** component can be used in addition with an **Autocomplete**.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    <span>- Use an Input for content longer than a single line: Use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.textarea } story={ STORY.documentation }>Textarea</StorybookLink> instead</span>,
+    <span>- Use an Input when you have a predefined list of answers: use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink> or <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } story={ STORY.documentation }>Radio</StorybookLink> instead</span>,
+  ]}
+  dos={[
+    <span>- Add label and helper message to the Input with <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> component</span>,
+  ]}
+/>
+
+<Heading label="Placement" level={ 2 } />
+
+**Input** should be vertically aligned with other form components on a same page.
+
+**Inputs** that are strongly related in a form can be grouped. This group can flow horizontally left to right and/or vertically top to bottom.
+
+<Heading label="Behavior" level={ 2 } />
+
+**Inputs** can be hovered, focused and clicked/triggered. They can be disabled or readonly as well.
+
+The user can start typing in the **Input** after clicking or focusing on the field container.
+
+When the user types text longer than the **Input** width, the cursor will automatically scroll left.
+
+A clearable button can be displayed within the **Input** to clear its content. This button becomes visible as soon as the user types the first character and removes all content when clicked.
+
+A toggle mask button can be displayed within the **Input** to toggle the visibility of its content, such as revealing or hiding a password in a masked input.
+
+A search button can be displayed within the **Input** to trigger a specific action, such as performing a search.
+
+<Heading label="Variation" level={ 2 } />
+
+N/A
+
+<Heading label="Accessibility" level={ 2 } />
+
+`Tab` allows to focus on **Input**.

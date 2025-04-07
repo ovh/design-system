@@ -8,5 +8,5 @@ export * from './popover/src';
 export * from './tooltip/src';
 export * from './textarea/src';
 export * from './form-field/src';
-
 export * from './card/src';
+export * from './skeleton/src';

@@ -1,10 +1,10 @@
-import { OdsButton, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsTextarea } from '@ovhcloud/ods-react';
+import { OdsButton, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsTextarea } from '@ovhcloud/ods-react';
 import React, { type FormEvent, type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.scss';
 
 function FormNative(): ReactElement {
   const formRef = useRef<HTMLFormElement>(null);
-  const [areAllRequired, setAreAllRequired] = useState(true);//false
+  const [areAllRequired, setAreAllRequired] = useState(true);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -26,9 +26,11 @@ function FormNative(): ReactElement {
       onSubmit={ onSubmit }
       ref={ formRef }>
       <div>
+        <h1>Form Native</h1>
+
         <button onClick={ onAllRequiredToggle }
                 type="button">
-          Toggle All Required (broken)
+          Toggle All Required
         </button>
       </div>
 
@@ -37,6 +39,26 @@ function FormNative(): ReactElement {
         <br />
         - All fields required: { areAllRequired.toString() }
       </p>
+
+      <OdsFormField>
+        <OdsFormFieldLabel>
+          Input:
+        </OdsFormFieldLabel>
+
+        <OdsInput
+          clearable
+          defaultValue="default"
+          name="input"
+          required={ areAllRequired } />
+
+        <OdsFormFieldHelper>
+          This is an input to fill
+        </OdsFormFieldHelper>
+
+        <OdsFormFieldError>
+          Error while filling input
+        </OdsFormFieldError>
+      </OdsFormField>
 
       <OdsFormField>
         <OdsFormFieldLabel>

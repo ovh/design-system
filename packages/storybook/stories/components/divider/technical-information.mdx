@@ -1,0 +1,30 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsDivider from '../../../../ods-react/src/components/divider/documentation/ods-divider.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as DividerStories from './divider.stories';
+
+<Meta of={ DividerStories } name="Technical information" />
+
+<Banner of={ DividerStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ DividerStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsDivider } of={ DividerStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ DividerStories.Default } sourceState="shown" />
+
+<Heading label="Color" level={ 3 } />
+
+<Canvas of={ DividerStories.Color } sourceState="shown" />
+
+<Heading label="Spacing" level={ 3 } />
+
+<Canvas of={ DividerStories.Spacing } sourceState="shown" />

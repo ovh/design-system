@@ -3,6 +3,7 @@ import React from 'react';
 import { OdsCard, type OdsCardProp } from '../../../../ods-react/src/components/card/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { ODS_CARD_COLORS } from '../../../../ods-react/src/components/card/src/constants/card-color';
 
 type Story = StoryObj<OdsCardProp>;
 
@@ -19,10 +20,10 @@ export const Demo: Story = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: 'primary' },
-        type: { summary: 'string' }
+        type: { summary: ODS_CARD_COLORS }
       },
       control: 'select',
-      options: ['primary', 'neutral'],
+      options: ODS_CARD_COLORS,
     },
     children: {
       table: {

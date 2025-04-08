@@ -1,0 +1,42 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsPassword from '../../../../ods-react/src/components/password/documentation/ods-password.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as PasswordStories from './password.stories';
+
+<Meta of={ PasswordStories } name="Technical information" />
+
+<Banner of={ PasswordStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ PasswordStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsPassword } of={ PasswordStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ PasswordStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ PasswordStories.Disabled } sourceState="shown" />
+
+<Heading label="Readonly" level={ 3 } />
+
+<Canvas of={ PasswordStories.ReadOnly } sourceState="shown" />
+
+<Heading label="Clearable" level={ 3 } />
+
+<Canvas of={ PasswordStories.Clearable } sourceState="shown" />
+
+<Heading label="Loading" level={ 3 } />
+
+<Canvas of={ PasswordStories.Loading } sourceState="shown" />
+
+<Heading label="Form field" level={ 3 } />
+
+<Canvas of={ PasswordStories.FormField } sourceState="shown" />

@@ -1,8 +1,8 @@
 {
-  "name": "@ovhcloud/ods-react-{{> component-name }}",
-  "version": "{{ component-version }}",
+  "name": "@ovhcloud/ods-react-password",
+  "version": "18.6.1",
   "private": true,
-  "description": "ODS React {{> ComponentName }} component",
+  "description": "ODS React Password component",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {

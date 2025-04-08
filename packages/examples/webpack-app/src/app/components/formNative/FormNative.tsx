@@ -1,4 +1,4 @@
-import { OdsButton, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsTextarea } from '@ovhcloud/ods-react';
+import { OdsButton, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsPassword, OdsTextarea } from '@ovhcloud/ods-react';
 import React, { type FormEvent, type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.scss';
 
@@ -57,6 +57,26 @@ function FormNative(): ReactElement {
 
         <OdsFormFieldError>
           Error while filling input
+        </OdsFormFieldError>
+      </OdsFormField>
+
+      <OdsFormField>
+        <OdsFormFieldLabel>
+          Password:
+        </OdsFormFieldLabel>
+
+        <OdsPassword
+          clearable
+          defaultValue="default"
+          name="password"
+          required={ areAllRequired } />
+
+        <OdsFormFieldHelper>
+          This is a password to fill
+        </OdsFormFieldHelper>
+
+        <OdsFormFieldError>
+          Error while filling password
         </OdsFormFieldError>
       </OdsFormField>
 

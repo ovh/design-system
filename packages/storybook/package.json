@@ -17,18 +17,18 @@
     "typedoc": "0.28.1"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "8.6.7",
-    "@storybook/addon-links": "8.6.7",
-    "@storybook/blocks": "8.6.7",
-    "@storybook/components": "8.6.7",
-    "@storybook/react": "8.6.7",
-    "@storybook/react-vite": "8.6.7",
+    "@storybook/addon-essentials": "8.6.12",
+    "@storybook/addon-links": "8.6.12",
+    "@storybook/blocks": "8.6.12",
+    "@storybook/components": "8.6.12",
+    "@storybook/react": "8.6.12",
+    "@storybook/react-vite": "8.6.12",
     "@storybook/types": "8.6.12",
     "custom-elements-manifest": "1.0.0",
     "node-fetch": "2.7.0",
     "prop-types": "15.8.1",
     "react-docgen-typescript": "2.2.2",
-    "storybook": "8.6.7",
+    "storybook": "8.6.12",
     "typescript": "5.3.3"
   }
 }

@@ -68,6 +68,7 @@ const OdsInput: FC<OdsInputProp> = forwardRef(({
       nativeInputValueSetter!.call(inputRef.current, '');
 
       inputRef.current.dispatchEvent(new Event('input', { bubbles: true }));
+      inputRef.current.focus();
     }
   }
 

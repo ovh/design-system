@@ -78,7 +78,7 @@ module.exports = (env, options) => {
         favicon: 'src/assets/images/favicon.png',
         filename: './index.html',
         template: './src/index.html',
-        title: 'Test App React',
+        title: 'ODS Webpack Example',
       }),
       new MiniCssExtractPlugin({
         filename: '[name].css',

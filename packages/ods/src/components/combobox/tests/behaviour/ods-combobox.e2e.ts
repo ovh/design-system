@@ -164,6 +164,19 @@ describe('ods-combobox behaviour', () => {
       });
     });
 
+    it('should remove the add entry option when erasing', async() => {
+      await setup('<ods-combobox allow-new-element></ods-combobox>');
+      await openList();
+
+      expect(await isCreateNewVisible()).toBe(false);
+
+      await input.type('z', { delay: 200 });
+      await page.keyboard.press('Backspace', { delay: 100 });
+      await page.waitForChanges();
+
+      expect(await isCreateNewVisible()).toBe(false);
+    });
+
     describe('multiple', () => {
       it('should keep the add entry option every time typed value is not found', async() => {
         await setup('<ods-combobox><ods-combobox-item value="dummy">Dummy value</ods-combobox-item></ods-combobox>');

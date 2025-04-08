@@ -683,6 +683,11 @@ export class OdsCombobox implements OdsFormElement {
 
     const value = this.inputElement?.value;
 
+    if (!value){
+      this.createNewElement.isVisible = false;
+      return;
+    }
+
     if (!isAllWhitespace(value) && isANewItem(value, this.resultElements, this.currentSelections)) {
       const templateValue = escapeHtml(value || '');
       this.createNewElement.value = value || '';

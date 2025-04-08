@@ -172,11 +172,14 @@ export const Overview: Story = {
 export const ReadOnly: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsInput readOnly />
+    <OdsInput
+      defaultValue="Readonly"
+      readOnly />
   ),
 };
 
 export const Types: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   tags: ['!dev'],
   render: ({}) => (
     <>

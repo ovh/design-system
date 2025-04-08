@@ -184,7 +184,7 @@ export const DisabledActions = () => (
     clearable
     defaultValue="value"
     disabled
-    maskOption={{ enable: true }}
+    maskOption={{ enable: true, initialState: 'open' }}
     type={ ODS_INPUT_TYPE.search } />
 );
 

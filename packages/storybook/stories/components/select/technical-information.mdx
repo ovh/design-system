@@ -1,0 +1,24 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsSelect from '../../../../ods-react/src/components/select/documentation/ods-select.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as SelectStories from './select.stories';
+
+<Meta of={ SelectStories } name="Technical information" />
+
+<Banner of={ SelectStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ SelectStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsSelect } of={ SelectStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ SelectStories.Default } sourceState="shown" />
+
+...

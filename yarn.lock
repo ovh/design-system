@@ -5298,7 +5298,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*":
+"@types/react-dom@npm:19.1.1":
+  version: 19.1.1
+  resolution: "@types/react-dom@npm:19.1.1"
+  peerDependencies:
+    "@types/react": ^19.0.0
+  checksum: 32385c414a43e33ef1b53228361be8a39025bd3abddcb0d716500006742693c8e5d62e21fc51101a2113a5d75dbcc1daa8598874b32a7770456a3b0ad342d0d1
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*, @types/react@npm:19.1.0":
   version: 19.1.0
   resolution: "@types/react@npm:19.1.0"
   dependencies:
@@ -17707,7 +17716,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
+"react-dom@npm:19.1.0, react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
   version: 19.1.0
   resolution: "react-dom@npm:19.1.0"
   dependencies:
@@ -17836,7 +17845,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
+"react@npm:19.1.0, react@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
   version: 19.1.0
   resolution: "react@npm:19.1.0"
   checksum: c0905f8cfb878b0543a5522727e5ed79c67c8111dc16ceee135b7fe19dce77b2c1c19293513061a8934e721292bfc1517e0487e262d1906f306bdf95fa54d02f
@@ -21411,6 +21420,25 @@ __metadata:
   checksum: c431df0bedf2088b227a4e051e0ff4ca54df2c114096b0c01e1cbaadb021c30a04d7dd5b41ab277bcd51246ca135bf931d4c4c796ecae7a4fef6d744ecef36ea
   languageName: node
   linkType: hard
+
+"vite-app@workspace:packages/examples/vite-app":
+  version: 0.0.0-use.local
+  resolution: "vite-app@workspace:packages/examples/vite-app"
+  dependencies:
+    "@ovhcloud/ods-react": 18.6.1
+    "@ovhcloud/ods-themes": 18.6.1
+    "@types/react": 19.1.0
+    "@types/react-dom": 19.1.1
+    "@vitejs/plugin-react": 4.3.4
+    formik: 2.4.6
+    react: 19.1.0
+    react-dom: 19.1.0
+    react-hook-form: 7.55.0
+    typescript: 5.3.3
+    vite: 6.2.0
+    yup: 1.6.1
+  languageName: unknown
+  linkType: soft
 
 "vite-plugin-dts@npm:4.5.0":
   version: 4.5.0

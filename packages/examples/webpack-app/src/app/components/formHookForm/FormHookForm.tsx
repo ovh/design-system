@@ -1,15 +1,17 @@
-import { OdsButton, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsTextarea } from '@ovhcloud/ods-react';
+import { OdsButton, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsPassword, OdsTextarea } from '@ovhcloud/ods-react';
 import React, { type ReactElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './formHookForm.scss';
 
 type FormData = {
   input: string,
+  password: string,
   textarea: string,
 }
 
 const defaultValue: FormData = {
   input: 'default input',
+  password: 'default password',
   textarea: 'default textarea',
 };
 
@@ -70,6 +72,26 @@ function FormHookForm(): ReactElement {
 
         <OdsFormFieldError>
           Error while filling input
+        </OdsFormFieldError>
+      </OdsFormField>
+
+      <OdsFormField invalid={ !!errors.password }>
+        <OdsFormFieldLabel>
+          Password:
+        </OdsFormFieldLabel>
+
+        <OdsPassword
+          clearable
+          { ...register('password', {
+            required: areAllRequired,
+          })} />
+
+        <OdsFormFieldHelper>
+          This is a password to fill
+        </OdsFormFieldHelper>
+
+        <OdsFormFieldError>
+          Error while filling password
         </OdsFormFieldError>
       </OdsFormField>
 

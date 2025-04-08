@@ -120,7 +120,7 @@ const OdsInput: FC<OdsInputProp> = forwardRef(({
         {
           hasToggleMaskIcon &&
           <OdsButton
-            color={ ODS_BUTTON_COLOR.neutral }
+            color={ ODS_BUTTON_COLOR.primary }
             disabled={ props.disabled }
             onClick={ onToggleMask }
             size={ ODS_BUTTON_SIZE.xs }
@@ -133,7 +133,7 @@ const OdsInput: FC<OdsInputProp> = forwardRef(({
         {
           hasSearchButton &&
           <OdsButton
-            color={ ODS_BUTTON_COLOR.neutral }
+            color={ ODS_BUTTON_COLOR.primary }
             disabled={ props.disabled || props.readOnly }
             size={ ODS_BUTTON_SIZE.xs }
             type="submit"

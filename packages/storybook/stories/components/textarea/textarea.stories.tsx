@@ -125,7 +125,9 @@ export const Overview: Story = {
 export const ReadOnly: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsTextarea readOnly />
+    <OdsTextarea
+      defaultValue="Readonly"
+      readOnly />
   ),
 };
 

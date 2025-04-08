@@ -12,3 +12,4 @@ export * from './card/src';
 export * from './skeleton/src';
 export * from './input/src';
 export * from './divider/src';
+export * from './password/src';

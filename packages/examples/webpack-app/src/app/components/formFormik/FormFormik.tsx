@@ -1,4 +1,4 @@
-import { OdsButton, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsTextarea } from '@ovhcloud/ods-react';
+import { OdsButton, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsPassword, OdsTextarea } from '@ovhcloud/ods-react';
 import { useFormik } from 'formik';
 import React, { type ReactElement } from 'react';
 import * as yup from 'yup';
@@ -6,11 +6,13 @@ import styles from './formFormik.scss';
 
 type FormData = {
   input: string,
+  password: string,
   textarea: string,
 }
 
 const validationSchema = yup.object<FormData>({
   input: yup.string().nullable().required(),
+  password: yup.string().nullable().required(),
   textarea: yup.string().nullable().required(),
 });
 
@@ -18,6 +20,7 @@ function FormFormik(): ReactElement {
   const formik = useFormik<FormData>({
     initialValues: {
       input: 'default input',
+      password: 'default password',
       textarea: 'default textarea',
     },
     onSubmit: (values) => {
@@ -52,6 +55,28 @@ function FormFormik(): ReactElement {
 
         <OdsFormFieldError>
           Error while filling input
+        </OdsFormFieldError>
+      </OdsFormField>
+
+      <OdsFormField  invalid={ formik.touched.password && !!formik.errors.password }>
+        <OdsFormFieldLabel>
+          Password:
+        </OdsFormFieldLabel>
+
+        <OdsPassword
+          clearable
+          defaultValue={ formik.initialValues.password }
+          name="password"
+          onBlur={ formik.handleBlur }
+          onChange={ formik.handleChange }
+          required={ true } />
+
+        <OdsFormFieldHelper>
+          This is a password to fill
+        </OdsFormFieldHelper>
+
+        <OdsFormFieldError>
+          Error while filling password
         </OdsFormFieldError>
       </OdsFormField>
 

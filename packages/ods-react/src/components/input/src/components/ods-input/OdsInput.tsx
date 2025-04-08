@@ -4,23 +4,17 @@ import { type ChangeEvent, type ComponentPropsWithRef, type FC, type JSX, forwar
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT, OdsButton } from '../../../../button/src';
 import { ODS_ICON_NAME, OdsIcon } from '../../../../icon/src';
 import { ODS_SPINNER_COLOR, OdsSpinner } from '../../../../spinner/src';
+import { ODS_INPUT_MASK_STATE, type OdsInputMaskState } from '../../constants/input-mask-state';
 import { ODS_INPUT_TYPE, type OdsInputType } from '../../constants/input-type';
 import { isValueDefined } from '../../controller/ods-input';
 import style from './odsInput.module.scss';
-
-enum MASK_STATE {
-  close = 'close',
-  open = 'open',
-}
-
-type MaskState =`${MASK_STATE}`;
 
 interface OdsInputProp extends ComponentPropsWithRef<'input'> {
   clearable?: boolean,
   loading?: boolean,
   maskOption?: {
     enable: boolean,
-    initialState?: MaskState,
+    initialState?: OdsInputMaskState,
   }
   onClear?: () => void,
   type?: OdsInputType,
@@ -30,14 +24,14 @@ const OdsInput: FC<OdsInputProp> = forwardRef(({
   className,
   clearable = false,
   loading = false,
-  maskOption = { enable: false, initialState: MASK_STATE.close },
+  maskOption = { enable: false, initialState: ODS_INPUT_MASK_STATE.close },
   onClear,
   type = ODS_INPUT_TYPE.text,
   ...props
 }, ref): JSX.Element => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [hasValue, setHasValue] = useState(isValueDefined(props.defaultValue) || isValueDefined(props.value));
-  const [isMaskOpen, setIsMaskOpen] = useState(maskOption?.initialState === MASK_STATE.open);
+  const [isMaskOpen, setIsMaskOpen] = useState(maskOption?.initialState === ODS_INPUT_MASK_STATE.open);
 
   useImperativeHandle(ref, () => inputRef.current!, [inputRef]);
 

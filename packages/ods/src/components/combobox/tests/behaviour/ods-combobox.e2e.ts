@@ -677,4 +677,93 @@ describe('ods-combobox behaviour', () => {
       expect(await input.getProperty('value')).toBe('Test value');
     });
   });
+
+  describe('empty list', () => {
+    async function hasEmptyResultsClass(): Promise<boolean> {
+      return await page.evaluate(() => {
+        return !!document.querySelector('ods-combobox')?.shadowRoot?.querySelector('.ods-combobox__results--empty');
+      });
+    }
+
+    async function hasEmptySearchClass(): Promise<boolean> {
+      return await page.evaluate(() => {
+        return !!document.querySelector('ods-combobox')?.shadowRoot?.querySelector('.ods-combobox__search--empty');
+      });
+    }
+
+    it('should have empty classes when opened with no items', async() => {
+      await setup('<ods-combobox></ods-combobox>');
+      await el.callMethod('open');
+      await page.waitForChanges();
+
+      expect(await isOpen()).toBe(true);
+      expect(await hasEmptyResultsClass()).toBe(true);
+      expect(await hasEmptySearchClass()).toBe(true);
+    });
+
+    it('should remove empty classes when typing creates an "add new" option', async() => {
+      await setup('<ods-combobox allow-new-element></ods-combobox>');
+      await el.callMethod('open');
+      await page.waitForChanges();
+
+      expect(await isOpen()).toBe(true);
+      expect(await hasEmptyResultsClass()).toBe(true);
+      expect(await hasEmptySearchClass()).toBe(true);
+
+      await input.type('newitem', { delay: 100 });
+      await page.waitForChanges();
+
+      expect(await hasEmptyResultsClass()).toBe(false);
+      expect(await hasEmptySearchClass()).toBe(false);
+    });
+
+    it('should maintain empty classes after deleting input text', async() => {
+      await setup('<ods-combobox allow-new-element></ods-combobox>');
+      await el.callMethod('open');
+      await page.waitForChanges();
+
+      await input.type('newitem', { delay: 100 });
+      await page.waitForChanges();
+
+      expect(await hasEmptyResultsClass()).toBe(false);
+      expect(await hasEmptySearchClass()).toBe(false);
+
+      await page.evaluate(() => {
+        const inputElement = document.querySelector('ods-combobox')?.shadowRoot?.querySelector<HTMLInputElement>('ods-input');
+        if (inputElement) {
+          inputElement.value = '';
+          inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+      });
+
+      await page.waitForChanges();
+
+      await page.waitForFunction(() => {
+        const hasEmptyResults = !!document.querySelector('ods-combobox')?.shadowRoot?.querySelector('.ods-combobox__results--empty');
+        const hasEmptySearch = !!document.querySelector('ods-combobox')?.shadowRoot?.querySelector('.ods-combobox__search--empty');
+        return hasEmptyResults && hasEmptySearch;
+      }, { timeout: 2000 });
+
+      expect(await hasEmptyResultsClass()).toBe(true);
+      expect(await hasEmptySearchClass()).toBe(true);
+    });
+
+    it('should add items dynamically and remove empty classes', async() => {
+      await setup('<ods-combobox></ods-combobox>');
+      await el.callMethod('open');
+      await page.waitForChanges();
+
+      expect(await hasEmptyResultsClass()).toBe(true);
+      expect(await hasEmptySearchClass()).toBe(true);
+
+      await page.evaluate(() => {
+        const item = document.createElement('ods-combobox-item');
+        document.querySelector('ods-combobox')?.appendChild(item);
+      });
+      await page.waitForChanges();
+
+      expect(await hasEmptyResultsClass()).toBe(false);
+      expect(await hasEmptySearchClass()).toBe(false);
+    });
+  });
 });

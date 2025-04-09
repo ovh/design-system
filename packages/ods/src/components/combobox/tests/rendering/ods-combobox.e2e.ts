@@ -564,4 +564,68 @@ describe('ods-combobox rendering', () => {
       expect(listStyle.getPropertyValue('max-height')).toBe(customHeight);
     });
   });
+
+  describe('empty state', () => {
+    async function hasEmptyResultsClass(): Promise<boolean> {
+      return await page.evaluate(() => {
+        return !!document.querySelector('ods-combobox')?.shadowRoot?.querySelector('.ods-combobox__results--empty');
+      });
+    }
+
+    async function hasEmptySearchClass(): Promise<boolean> {
+      return await page.evaluate(() => {
+        return !!document.querySelector('ods-combobox')?.shadowRoot?.querySelector('.ods-combobox__search--empty');
+      });
+    }
+
+    it('should add empty classes when the list is completely empty', async() => {
+      await setup('<ods-combobox></ods-combobox>');
+
+      await el.callMethod('open');
+      await page.waitForChanges();
+
+      expect(await isOpen()).toBe(true);
+      expect(await hasEmptyResultsClass()).toBe(true);
+      expect(await hasEmptySearchClass()).toBe(true);
+    });
+
+    it('should not add empty classes when items are available', async() => {
+      await setup('<ods-combobox><ods-combobox-item value="dummy">Dummy</ods-combobox-item></ods-combobox>');
+
+      await el.callMethod('open');
+      await page.waitForChanges();
+
+      expect(await isOpen()).toBe(true);
+      expect(await hasEmptyResultsClass()).toBe(false);
+      expect(await hasEmptySearchClass()).toBe(false);
+    });
+
+    it('should not add empty classes when "no results" message is displayed', async() => {
+      await setup('<ods-combobox><ods-combobox-item value="dummy">Dummy</ods-combobox-item></ods-combobox>');
+
+      await el.callMethod('open');
+      await page.waitForChanges();
+
+      await input.type('nonexistenttext', { delay: 100 });
+      await page.waitForChanges();
+
+      expect(await isOpen()).toBe(true);
+      expect(await hasEmptyResultsClass()).toBe(false);
+      expect(await hasEmptySearchClass()).toBe(false);
+    });
+
+    it('should not add empty classes when "add new" option is available', async() => {
+      await setup('<ods-combobox allow-new-element><ods-combobox-item value="dummy">Dummy</ods-combobox-item></ods-combobox>');
+
+      await el.callMethod('open');
+      await page.waitForChanges();
+
+      await input.type('newvalue', { delay: 100 });
+      await page.waitForChanges();
+
+      expect(await isOpen()).toBe(true);
+      expect(await hasEmptyResultsClass()).toBe(false);
+      expect(await hasEmptySearchClass()).toBe(false);
+    });
+  });
 });

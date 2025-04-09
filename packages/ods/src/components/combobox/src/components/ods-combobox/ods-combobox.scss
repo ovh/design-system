@@ -71,6 +71,10 @@ $ods-combobox-vertical-padding: 4px;
       border-top-right-radius: 0;
     }
 
+    &--empty {
+      border-radius: var(--ods-border-radius-sm);
+    }
+
     &__tag {
       &::part(tag) {
         &:focus-visible {
@@ -124,6 +128,10 @@ $ods-combobox-vertical-padding: 4px;
 
     &--top {
       border-radius: var(--ods-border-radius-sm) var(--ods-border-radius-sm) 0 0;
+    }
+
+    &--empty {
+      visibility: hidden;
     }
 
     &__new {

@@ -770,6 +770,13 @@ export class OdsCombobox implements OdsFormElement {
     }
   }
 
+  private isResultListEmpty(): boolean {
+    const hasVisibleItems = this.resultElements.some((item) => item.isVisible && item.id !== CREATE_NEW_ID);
+    const isCreateElementVisible = this.createNewElement?.isVisible || false;
+
+    return !hasVisibleItems && !isCreateElementVisible && !this.hasNoResults;
+  }
+
   render(): FunctionalComponent {
     return (
       <Host
@@ -783,6 +790,7 @@ export class OdsCombobox implements OdsFormElement {
           class={{
             'ods-combobox__search': true,
             'ods-combobox__search--disabled': this.isDisabled,
+            'ods-combobox__search--empty': this.isOpen && this.isResultListEmpty(),
             'ods-combobox__search--error': this.hasError || !!this.isInvalid,
             'ods-combobox__search--multiple': this.allowMultiple,
             'ods-combobox__search--read-only': this.isReadonly,
@@ -826,6 +834,7 @@ export class OdsCombobox implements OdsFormElement {
         <ul
           class={{
             'ods-combobox__results': true,
+            'ods-combobox__results--empty': this.isOpen && this.isResultListEmpty(),
             'ods-combobox__results--open': this.isOpen,
           }}
           part="list"

@@ -12,5 +12,6 @@
       "path": "./documentation/ods-textarea.json"
     }
   ],
+  "sort": ["source-order"],
   "tsconfig":"tsconfig.json"
 }

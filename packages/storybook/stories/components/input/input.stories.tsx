@@ -3,18 +3,12 @@ import React from 'react';
 import { OdsFormField, OdsFormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { ODS_INPUT_TYPE, ODS_INPUT_TYPES, OdsInput, type OdsInputProp } from '../../../../ods-react/src/components/input/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<OdsInputProp>;
 
 const meta: Meta<OdsInputProp> = {
-  argTypes: {
-    onClear: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+  argTypes: excludeFromDemoControls(['onClear']),
   component: OdsInput,
   title: 'ODS Components/Form elements/Input',
 };

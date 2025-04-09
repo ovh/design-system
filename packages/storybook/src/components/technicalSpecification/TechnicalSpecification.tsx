@@ -16,6 +16,17 @@ type ProcessedData = {
     }[],
     name: string,
   }[],
+  interfaces: {
+    name: string,
+    props: {
+      name: string,
+      type: string,
+    }[],
+  }[],
+  unions: {
+    name: string,
+    value: string,
+  }[],
 }
 
 type Props = {
@@ -32,8 +43,12 @@ function filterByKind(children: DeclarationReflection[] | undefined, kind: Refle
 }
 
 const TechnicalSpecification = ({ data, extraAttributeInfo, of }: Props) => {
-  const { components, enums } = useMemo<ProcessedData>(() => {
+  const { components, enums, interfaces, unions } = useMemo<ProcessedData>(() => {
     const enumDeclarations = filterByKind(data.children, ReflectionKind.Enum);
+    const interfaceDeclarations = filterByKind(data.children, ReflectionKind.Interface)
+      .filter((declaration) => !declaration.name.endsWith('Prop'));
+    const unionTypeDeclarations = filterByKind(data.children, ReflectionKind.TypeAlias)
+      .filter((declaration) => declaration.type!.type === 'union');
 
     const docgens = [of.default.component.__docgenInfo];
     Object.values(of.default.subcomponents || {}).forEach((subcomponent: any) => {
@@ -58,6 +73,21 @@ const TechnicalSpecification = ({ data, extraAttributeInfo, of }: Props) => {
             // @ts-ignore value does exist on type
             value: member.type.value,
           })),
+      })),
+      interfaces: interfaceDeclarations.map((interfaceDeclaration) => ({
+        name: interfaceDeclaration.name,
+        props: (interfaceDeclaration.children || []).map((child) => ({
+          name: `${child.name}${(child.flags.isOptional ? '?' : '')}`,
+          // @ts-ignore name does exist on type
+          type: child.type?.name,
+        })),
+      })),
+      unions: unionTypeDeclarations.map((typeDeclaration) => ({
+        name: typeDeclaration.name,
+        // @ts-ignore types does exist
+        value: typeDeclaration.type!.types
+          .map((item: any) => item.name || `"${item.value}"`)
+          .join(' | '),
       })),
     };
   }, [data, of]);
@@ -102,6 +132,55 @@ const TechnicalSpecification = ({ data, extraAttributeInfo, of }: Props) => {
               </Fragment>
             ))
           }
+        </>
+      }
+
+      {
+        interfaces.length > 0 &&
+        <>
+          <Heading label="Interfaces"
+                   level={ 2 } />
+
+          {
+            interfaces.map((interfaceObj, idx) => (
+              <Fragment key={ idx }>
+                <Heading label={ interfaceObj.name }
+                         level={ 3 } />
+
+                <ul className={ styles['technical-specification__unions__keys'] }>
+                  {
+                    interfaceObj.props.map((prop, i) => (
+                      <li key={ i }>
+                        <CodeOrSourceMdx>
+                          { prop.name }: { prop.type }
+                        </CodeOrSourceMdx>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </Fragment>
+            ))
+          }
+        </>
+      }
+
+      {
+        unions.length > 0 &&
+        <>
+          <Heading label="Unions"
+                   level={ 2 } />
+
+          <ul className={ styles['technical-specification__unions__keys'] }>
+            {
+              unions.map((union, idx) => (
+                <li key={ idx }>
+                  <CodeOrSourceMdx>
+                    { union.name } = { union.value }
+                  </CodeOrSourceMdx>
+                </li>
+              ))
+            }
+          </ul>
         </>
       }
     </div>

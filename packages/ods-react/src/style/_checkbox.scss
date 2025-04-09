@@ -1,0 +1,17 @@
+$ods-checkbox-size: 16px;
+
+@mixin ods-checkbox() {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: solid 1px var(--ods-color-neutral-300);
+  border-radius: var(--ods-border-radius-sm);
+  background: var(--ods-color-primary-000);
+  cursor: pointer;
+  width: $ods-checkbox-size;
+  height: $ods-checkbox-size;
+  color: var(--ods-color-primary-000);
+  font-size: 0.5rem;
+}

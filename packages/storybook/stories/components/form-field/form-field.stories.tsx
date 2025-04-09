@@ -4,7 +4,7 @@ import { OdsFormField, type OdsFormFieldProp, OdsFormFieldError, OdsFormFieldHel
 import { ODS_TEXT_PRESET, OdsText } from '../../../../ods-react/src/components/text/src';
 import { OdsTextarea } from '../../../../ods-react/src/components/textarea/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<OdsFormFieldProp>;
 type DemoArg = Partial<OdsFormFieldProp> & {
@@ -14,13 +14,7 @@ type DemoArg = Partial<OdsFormFieldProp> & {
 };
 
 const meta: Meta<OdsFormFieldProp> = {
-  argTypes: {
-    required: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+  argTypes: excludeFromDemoControls(['required']),
   component: OdsFormField,
   // @ts-ignore see https://github.com/storybookjs/storybook/issues/27535
   subcomponents: { OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel },

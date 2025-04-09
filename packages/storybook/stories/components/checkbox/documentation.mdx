@@ -1,0 +1,83 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as CheckboxStories from './checkbox.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ CheckboxStories } name="Documentation" />
+
+<Banner of={ CheckboxStories } />
+
+_**Checkbox** are used for a list of options where the user may make a choice by selecting multiple options, including all or none._
+
+<Canvas of={ CheckboxStories.Overview } sourceState="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ ['Checkbox Button (previous name)', 'Check Box', 'Tick Box'] }
+              atomicType={ ATOMIC_TYPE.atom }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-28514"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/checkbox"
+              name="Checkbox"
+              relatedComponents={ [{ name: 'Text' }] }>
+  **Checkbox** are used to make a choice that must be confirmed by submitting a form. For an instantaneous choice
+  (without submit), the use of a switch is preferred (see Switch).
+</IdentityCard>
+
+<Heading label="Anatomy" level={ 2 } />
+
+![Component anatomy](components/checkbox/anatomy.png "Component anatomy")
+
+1. **Checkbox** - The selection control.
+2. **Text** - Use this <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> label to describe what the <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } story={ STORY.documentation }>Radio</StorybookLink> is for.
+
+<Heading label="Usage" level={ 2 } />
+
+**Checkbox** can be used in forms and containers.
+
+Also, it can serve as :
+* Selecting/deselecting item(s)
+* Lists/sub-lists
+* Filters
+* Agreement to terms and conditions
+
+A **Checkbox** group is used for a list of options where the user may make a choice by selecting multiple options, including all or none.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    <span>- Avoid using Checkbox if only one item in list can be selected, prefer using <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } story={ STORY.documentation }>Radio</StorybookLink> instead</span>,
+    '- Truncate Checkbox label text with an ellipsis'
+  ]}
+  dos={[
+    '- Always use clear and concise labels for Checkbox',
+    '- Long labels may wrap to a second line, and this is preferable to truncation',
+  ]}
+/>
+
+<Heading label="Placement" level={ 2 } />
+
+The **Checkbox** can be autonomous, as it can be labelled in a starting/ending <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>.
+
+It can be inserted in containers or next to an external item.
+
+<Heading label="Behavior" level={ 2 } />
+
+The default behavior is that when clicking on the **Checkbox** or its linked label, the **Checkbox** is alternatively selected or deselected depending on the previous state.
+
+The indeterminate state is used only when the **Checkbox** contains a sub-list of selections that are partially selected.
+
+The **Checkbox** can be in an error state, but also in a disabled state.
+
+<Heading label="Variation" level={ 2 } />
+
+N/A
+
+<Heading label="Accessibility" level={ 2 } />
+
+**Checkbox** can be focus through tabulation, and toggled using `Space` and `Enter` keys.

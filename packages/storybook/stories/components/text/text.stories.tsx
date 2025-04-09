@@ -73,7 +73,8 @@ export const Preset: Story = {
   render: ({}) => (
     <>
       <OdsText preset="caption">Caption</OdsText><br />
-      <OdsText preset="code">Code</OdsText>
+      <OdsText preset="code">Code</OdsText><br />
+      <OdsText preset="label">Label</OdsText>
       <OdsText preset="paragraph">Paragraph</OdsText>
       <OdsText preset="span">Span</OdsText><br />
       <OdsText preset="heading-1">Heading-1</OdsText>

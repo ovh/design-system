@@ -1,9 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { OdsCard, type OdsCardProp } from '../../../../ods-react/src/components/card/src';
+import { ODS_CARD_COLORS, OdsCard, type OdsCardProp } from '../../../../ods-react/src/components/card/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
-import { ODS_CARD_COLORS } from '../../../../ods-react/src/components/card/src/constants/card-color';
 
 type Story = StoryObj<OdsCardProp>;
 
@@ -55,9 +54,23 @@ export const Color: Story = {
       <OdsCard color="primary">
         <p>Primary Card</p>
       </OdsCard>
+
       <OdsCard color="neutral">
         <p>Neutral Card</p>
       </OdsCard>
     </>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <OdsCard style={{ padding: '8px' }}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+      Interdum et malesuada fames ac ante ipsum primis in faucibus.
+    </OdsCard>
   ),
 };

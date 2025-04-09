@@ -4,7 +4,7 @@ import { OdsButton } from '../../../../ods-react/src/components/button/src';
 import { ODS_ICON_NAME, OdsIcon } from '../../../../ods-react/src/components/icon/src';
 import { ODS_TOOLTIP_POSITION, ODS_TOOLTIP_POSITIONS, OdsTooltip, type OdsTooltipProp, OdsTooltipContent, type OdsTooltipContentProp, OdsTooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<OdsTooltipProp>;
 type DemoArg = Partial<OdsTooltipProp> & Partial<OdsTooltipContentProp> & {
@@ -12,13 +12,7 @@ type DemoArg = Partial<OdsTooltipProp> & Partial<OdsTooltipContentProp> & {
 };
 
 const meta: Meta<OdsTooltipProp> = {
-  argTypes: {
-    open: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+  argTypes: excludeFromDemoControls(['open']),
   component: OdsTooltip,
   subcomponents: { OdsTooltipContent, OdsTooltipTrigger },
   title: 'ODS Components/Tooltip',

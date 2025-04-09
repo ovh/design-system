@@ -1,4 +1,6 @@
-.technical-specification__enums__keys {
+.technical-specification__enums__keys,
+.technical-specification__interfaces__keys,
+.technical-specification__unions__keys {
   display: flex;
   flex-flow: column;
   row-gap: 1rem;

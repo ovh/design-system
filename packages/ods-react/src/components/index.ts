@@ -14,3 +14,4 @@ export * from './input/src';
 export * from './divider/src';
 export * from './password/src';
 export * from './table/src';
+export * from './checkbox/src';

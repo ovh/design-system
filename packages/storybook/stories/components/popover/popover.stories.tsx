@@ -4,7 +4,7 @@ import { OdsButton } from '../../../../ods-react/src/components/button/src';
 import { ODS_ICON_NAME, OdsIcon } from '../../../../ods-react/src/components/icon/src';
 import { ODS_POPOVER_POSITION, ODS_POPOVER_POSITIONS, OdsPopover, type OdsPopoverProp, OdsPopoverContent, type OdsPopoverContentProp, OdsPopoverTrigger } from '../../../../ods-react/src/components/popover/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<OdsPopoverProp>;
 type DemoArg = Partial<OdsPopoverProp> & Partial<OdsPopoverContentProp> & {
@@ -12,13 +12,7 @@ type DemoArg = Partial<OdsPopoverProp> & Partial<OdsPopoverContentProp> & {
 };
 
 const meta: Meta<OdsPopoverProp> = {
-  argTypes: {
-    open: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+  argTypes: excludeFromDemoControls(['open']),
   component: OdsPopover,
   subcomponents: { OdsPopoverContent, OdsPopoverTrigger },
   title: 'ODS Components/Popover',

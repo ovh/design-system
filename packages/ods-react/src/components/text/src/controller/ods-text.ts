@@ -18,6 +18,8 @@ function getTag(preset: OdsTextPreset): string {
       return 'h5';
     case ODS_TEXT_PRESET.heading6:
       return 'h6';
+    case ODS_TEXT_PRESET.label:
+      return 'label';
     case ODS_TEXT_PRESET.paragraph:
       return 'p';
     case ODS_TEXT_PRESET.span:

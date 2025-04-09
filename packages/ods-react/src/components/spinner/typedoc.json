@@ -12,5 +12,6 @@
       "path": "./documentation/ods-spinner.json"
     }
   ],
+  "sort": ["source-order"],
   "tsconfig":"tsconfig.json"
 }

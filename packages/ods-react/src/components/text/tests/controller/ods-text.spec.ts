@@ -14,6 +14,7 @@ describe('OdsText controller', () => {
       expect(getTag(ODS_TEXT_PRESET.heading4)).toBe('h4');
       expect(getTag(ODS_TEXT_PRESET.heading5)).toBe('h5');
       expect(getTag(ODS_TEXT_PRESET.heading6)).toBe('h6');
+      expect(getTag(ODS_TEXT_PRESET.label)).toBe('label');
       expect(getTag(ODS_TEXT_PRESET.paragraph)).toBe('p');
       expect(getTag(ODS_TEXT_PRESET.span)).toBe('span');
     });

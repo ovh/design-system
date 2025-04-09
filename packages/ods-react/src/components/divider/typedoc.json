@@ -12,5 +12,6 @@
       "path": "./documentation/ods-divider.json"
     }
   ],
+  "sort": ["source-order"],
   "tsconfig":"tsconfig.json"
 }

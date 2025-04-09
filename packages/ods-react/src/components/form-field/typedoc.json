@@ -12,5 +12,6 @@
       "path": "./documentation/ods-form-field.json"
     }
   ],
+  "sort": ["source-order"],
   "tsconfig":"tsconfig.json"
 }

@@ -3731,6 +3731,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-checkbox@workspace:packages/ods-react/src/components/checkbox":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-checkbox@workspace:packages/ods-react/src/components/checkbox"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-divider@workspace:packages/ods-react/src/components/divider":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-divider@workspace:packages/ods-react/src/components/divider"
@@ -12035,9 +12041,9 @@ __metadata:
   linkType: hard
 
 "http-parser-js@npm:>=0.5.1":
-  version: 0.5.9
-  resolution: "http-parser-js@npm:0.5.9"
-  checksum: 5696ba51e87f423333454cdf316484b64a89d6fc4916821e8a773f9a80c050627dad240f7fde3a4da8b634b465c7d844de2b1602e808b68b392a3dd324886745
+  version: 0.5.10
+  resolution: "http-parser-js@npm:0.5.10"
+  checksum: 1038177c5f114860345ce7c19223d2cdd9a103265bd897bab13343c9eff4deef60f7956a674485f1234ffc9b19fb4b97f0c20a5848cfc9ccbf5d3c438d89ae89
   languageName: node
   linkType: hard
 
@@ -20606,9 +20612,9 @@ __metadata:
   linkType: hard
 
 "ufo@npm:^1.5.4":
-  version: 1.6.0
-  resolution: "ufo@npm:1.6.0"
-  checksum: 664df7ab614d74a58de0d56be581989c387c8acba44dcdcefc280969e939df1454d19e722d33b7fbaa83a10c36396e576d33d2fe72b154fb54b2959de25b59b9
+  version: 1.6.1
+  resolution: "ufo@npm:1.6.1"
+  checksum: 2c401dd45bd98ad00806e044aa8571aa2aa1762fffeae5e78c353192b257ef2c638159789f119e5d8d5e5200e34228cd1bbde871a8f7805de25daa8576fb1633
   languageName: node
   linkType: hard
 

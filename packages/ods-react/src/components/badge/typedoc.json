@@ -12,5 +12,6 @@
       "path": "./documentation/ods-badge.json"
     }
   ],
+  "sort": ["source-order"],
   "tsconfig":"tsconfig.json"
 }

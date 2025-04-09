@@ -8,6 +8,17 @@ const orderedControlCategories = [
   CONTROL_CATEGORY.validation,
 ];
 
+function excludeFromDemoControls(props: string[]) {
+  return props.reduce((res, prop) => {
+    res[prop] = {
+      table: {
+        disable: true,
+      },
+    };
+    return res;
+  }, {} as Record<string, any>);
+}
+
 function orderControls(control: Record<string, any>) {
   try {
     return Object.entries(control)
@@ -25,5 +36,6 @@ function orderControls(control: Record<string, any>) {
 }
 
 export {
+  excludeFromDemoControls,
   orderControls,
 };

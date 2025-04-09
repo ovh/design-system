@@ -1,0 +1,38 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsCheckbox from '../../../../ods-react/src/components/checkbox/documentation/ods-checkbox.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as CheckboxStories from './checkbox.stories';
+
+<Meta of={ CheckboxStories } name="Technical information" />
+
+<Banner of={ CheckboxStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ CheckboxStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsCheckbox } of={ CheckboxStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ CheckboxStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ CheckboxStories.Disabled } sourceState="shown" />
+
+<Heading label="Invalid" level={ 3 } />
+
+<Canvas of={ CheckboxStories.Invalid } sourceState="shown" />
+
+<Heading label="States" level={ 3 } />
+
+<Canvas of={ CheckboxStories.States } sourceState="shown" />
+
+<Heading label="Form field" level={ 3 } />
+
+<Canvas of={ CheckboxStories.FormField } sourceState="shown" />

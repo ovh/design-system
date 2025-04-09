@@ -1,6 +1,14 @@
 @use '../../../../../style/text';
 
 .ods-text {
+  &--caption {
+    @include text.ods-text-caption();
+  }
+
+  &--code {
+    @include text.ods-text-code();
+  }
+
   &--heading-1 {
     @include text.ods-text-heading-1();
   }
@@ -25,19 +33,15 @@
     @include text.ods-text-heading-6();
   }
 
+  &--label {
+    @include text.ods-text-label();
+  }
+
   &--paragraph {
     @include text.ods-text-paragraph();
   }
 
-  &--code {
-    @include text.ods-text-code();
-  }
-
   &--span {
     @include text.ods-text-span();
-  }
-
-  &--caption {
-    @include text.ods-text-caption();
   }
 }

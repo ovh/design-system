@@ -10,21 +10,28 @@ import { OdsText } from '@ovhcloud/ods-react';
 type Story = StoryObj<OdsTableProp>;
 
 const meta: Meta<OdsTableProp> = {
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   component: OdsTable,
   title: 'ODS Components/Table',
 };
 
-const exampleTable = <table>
-  <caption>
+const exampleTable = [
+<caption>
     Front-end web developer course 2021
-  </caption>
+  </caption>,
   <thead>
   <tr>
     <th scope="col">Person</th>
     <th scope="col">Most interest in</th>
     <th scope="col">Age</th>
   </tr>
-  </thead>
+  </thead>,
   <tbody>
   <tr>
     <th scope="row">Chris</th>
@@ -47,19 +54,19 @@ const exampleTable = <table>
     <td>36</td>
   </tr>
   </tbody>
-</table>
+]
 
-const odsTextCaptionTable = <table>
+const odsTextCaptionTable = [
   <caption>
     <OdsText preset="caption">Front-end web developer course 2021</OdsText>
-  </caption>
+  </caption>,
   <thead>
   <tr>
     <th scope="col">Person</th>
     <th scope="col">Most interest in</th>
     <th scope="col">Age</th>
   </tr>
-  </thead>
+  </thead>,
   <tbody>
   <tr>
     <th scope="row">Chris</th>
@@ -82,19 +89,12 @@ const odsTextCaptionTable = <table>
     <td>36</td>
   </tr>
   </tbody>
-</table>
+]
 
 export default meta;
 
 export const Demo: Story = {
   argTypes: orderControls({
-    content: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
-      },
-      control: 'text',
-    },
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
@@ -115,7 +115,7 @@ export const Demo: Story = {
     },
   }),
   args: {
-    content: exampleTable.toString(),
+    children: exampleTable,
     size: ODS_TABLE_SIZE.md,
     variant: ODS_TABLE_VARIANT.default,
   },
@@ -172,7 +172,6 @@ export const Variant: Story = {
     decorators: [(story) => (
     <div style={{
       width: '100%',
-      display: 'flex',
     }}>
       { story() }
     </div>
@@ -194,7 +193,7 @@ export const Caption: Story = {
   tags: ['!dev'],
   render: ({ size, variant }) => (  
     <OdsTable size={size} variant={variant}>
-      {odsTextCaptionTable}
+      { odsTextCaptionTable }
       </OdsTable>
   ),
 }

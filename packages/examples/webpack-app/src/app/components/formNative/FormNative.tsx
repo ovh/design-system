@@ -1,4 +1,4 @@
-import { OdsButton, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsPassword, OdsTextarea } from '@ovhcloud/ods-react';
+import { OdsButton, OdsCheckbox, OdsCheckboxControl, OdsCheckboxGroup, OdsCheckboxLabel, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsPassword, OdsTextarea } from '@ovhcloud/ods-react';
 import React, { type FormEvent, type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.scss';
 
@@ -17,7 +17,7 @@ function FormNative(): ReactElement {
   }
 
   function onAllRequiredToggle() {
-    setAreAllRequired(() => !areAllRequired);
+    setAreAllRequired((value) => !value);
   }
 
   return (
@@ -39,6 +39,45 @@ function FormNative(): ReactElement {
         <br />
         - All fields required: { areAllRequired.toString() }
       </p>
+
+      <OdsFormField>
+        <OdsCheckbox
+          name="checkbox"
+          required={ areAllRequired }
+          value="checkbox">
+          <OdsCheckboxControl />
+
+          <OdsCheckboxLabel>
+            Checkbox
+          </OdsCheckboxLabel>
+        </OdsCheckbox>
+      </OdsFormField>
+
+      <OdsCheckboxGroup name="checkboxGroup">
+        <OdsFormField>
+          <OdsCheckbox
+            required={ areAllRequired }
+            value="grouped checkbox 1">
+            <OdsCheckboxControl />
+
+            <OdsCheckboxLabel>
+              Grouped checkbox 1
+            </OdsCheckboxLabel>
+          </OdsCheckbox>
+        </OdsFormField>
+
+        <OdsFormField>
+          <OdsCheckbox
+            required={ areAllRequired }
+            value="grouped checkbox 2">
+            <OdsCheckboxControl />
+
+            <OdsCheckboxLabel>
+              Grouped checkbox 2
+            </OdsCheckboxLabel>
+          </OdsCheckbox>
+        </OdsFormField>
+      </OdsCheckboxGroup>
 
       <OdsFormField>
         <OdsFormFieldLabel>

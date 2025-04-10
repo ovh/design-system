@@ -1,4 +1,4 @@
-import { OdsCheckbox, OdsCheckboxControl, OdsCheckboxLabel } from '.';
+import { OdsCheckbox, OdsCheckboxControl, OdsCheckboxGroup, OdsCheckboxLabel } from '.';
 import { OdsFormField } from '../../form-field/src';
 import { ODS_TEXT_PRESET, OdsText } from '../../text/src';
 
@@ -77,4 +77,27 @@ export const Indeterminate = () => (
       Checkbox label
     </OdsCheckboxLabel>
   </OdsCheckbox>
+);
+
+export const Group = () => (
+  <OdsCheckboxGroup
+    defaultValue={ ['checkbox2'] }
+    name="group"
+    onValueChange={ console.log }>
+    <OdsCheckbox value="checkbox1">
+      <OdsCheckboxControl />
+
+      <OdsCheckboxLabel>
+        Checkbox 1
+      </OdsCheckboxLabel>
+    </OdsCheckbox>
+
+    <OdsCheckbox value="checkbox2">
+      <OdsCheckboxControl />
+
+      <OdsCheckboxLabel>
+        Checkbox 2
+      </OdsCheckboxLabel>
+    </OdsCheckbox>
+  </OdsCheckboxGroup>
 );

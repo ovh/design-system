@@ -1,0 +1,34 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsTable from '../../../../ods-react/src/components/table/documentation/ods-table.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as TableStories from './table.stories';
+
+<Meta of={ TableStories } name="Technical information" />
+
+<Banner of={ TableStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ TableStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsTable } of={ TableStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ TableStories.Default } sourceState="shown" />
+
+<Heading label="Size" level={ 3 } />
+
+<Canvas of={ TableStories.Size } sourceState="shown" />
+
+<Heading label="Variant" level={ 3 } />
+
+<Canvas of={ TableStories.Variant } sourceState="shown" />
+
+<Heading label="Text component caption preset" level={ 3 } />
+
+<Canvas of={ TableStories.Caption } sourceState="shown" />

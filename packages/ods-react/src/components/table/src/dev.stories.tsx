@@ -7,7 +7,6 @@ export default {
 
 export const Default = () => (
   <OdsTable>
-    <table>
     <caption>
     Front-end web developer course 2021
   </caption>
@@ -40,7 +39,6 @@ export const Default = () => (
     <td>36</td>
   </tr>
   </tbody>
-    </table>
   </OdsTable>
 );
 
@@ -48,7 +46,6 @@ export const Size = () => (
   <>
 
   <OdsTable size="sm">
-    <table>
     <caption>
     Front-end web developer course 2021
   </caption>
@@ -81,10 +78,8 @@ export const Size = () => (
     <td>36</td>
   </tr>
   </tbody>
-    </table>
   </OdsTable>
   <OdsTable size="md">
-    <table>
     <caption>
     Front-end web developer course 2021
   </caption>
@@ -117,10 +112,8 @@ export const Size = () => (
     <td>36</td>
   </tr>
   </tbody>
-    </table>
   </OdsTable>
   <OdsTable size="lg">
-    <table>
     <caption>
     Front-end web developer course 2021
   </caption>
@@ -153,7 +146,6 @@ export const Size = () => (
     <td>36</td>
   </tr>
   </tbody>
-    </table>
   </OdsTable>
   </>
 );
@@ -161,7 +153,6 @@ export const Size = () => (
 export const Variant = () => (
   <div style={{ display: 'flex', gap: '1rem' }}>
 <OdsTable variant="default">
-    <table>
     <caption>
     Front-end web developer course 2021
   </caption>
@@ -194,10 +185,8 @@ export const Variant = () => (
     <td>36</td>
   </tr>
   </tbody>
-    </table>
   </OdsTable>
 <OdsTable variant="striped">
-    <table>
     <caption>
     Front-end web developer course 2021
   </caption>
@@ -230,7 +219,6 @@ export const Variant = () => (
     <td>36</td>
   </tr>
   </tbody>
-    </table>
   </OdsTable>
   </div>
 );

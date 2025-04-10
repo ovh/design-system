@@ -9,7 +9,6 @@ export const customStyle = () => (
   <OdsTable
     data-testid="custom-style"
     style={{ backgroundColor: 'red' }}>
-      <table>
   <caption>
     Front-end web developer course 2021
   </caption>
@@ -42,13 +41,11 @@ export const customStyle = () => (
     <td>36</td>
   </tr>
   </tbody>
-</table>
 </OdsTable>
 );
 
 export const render = () => (
   <OdsTable data-testid="render">
-    <table>
   <caption>
     Front-end web developer course 2021
   </caption>
@@ -81,6 +78,5 @@ export const render = () => (
     <td>36</td>
   </tr>
   </tbody>
-</table>
   </OdsTable>
 );

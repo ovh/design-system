@@ -40,4 +40,8 @@
   &[data-focus] {
     @include focus.ods-focus();
   }
+
+  &__icon {
+    display: block;
+  }
 }

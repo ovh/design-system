@@ -1,0 +1,34 @@
+@use '../../../../../style/table';
+
+.ods-table {
+  &--sm {
+    table {
+      @include table.ods-table('sm');
+    }
+  }
+
+  &--md {
+    table {
+      @include table.ods-table('md');
+    }
+  }
+
+  &--lg {
+    table {
+      @include table.ods-table('lg');
+    }
+  }
+
+  &--striped {
+    table {
+      tbody {
+        tr:nth-child(2n) {
+          th,
+          td {
+            background-color: var(--ods-color-neutral-050);
+          }
+        }
+      }
+    }
+  }
+}

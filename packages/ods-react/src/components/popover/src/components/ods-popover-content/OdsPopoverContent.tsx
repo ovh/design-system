@@ -1,5 +1,6 @@
 import { Popover } from '@ark-ui/react/popover';
 import { Portal } from '@ark-ui/react/portal';
+import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import style from './odsPopoverContent.module.scss';
 
@@ -9,6 +10,7 @@ interface OdsPopoverContentProp extends ComponentPropsWithRef<'div'> {
 
 const OdsPopoverContent: FC<OdsPopoverContentProp> = forwardRef(({
   children,
+  className,
   withArrow = false,
   ...props
 }, ref): JSX.Element => {
@@ -16,7 +18,7 @@ const OdsPopoverContent: FC<OdsPopoverContentProp> = forwardRef(({
     <Portal>
       <Popover.Positioner>
         <Popover.Content
-          className={ style['ods-popover-content'] }
+          className={ classNames(style['ods-popover-content'], className) }
           ref={ ref }
           { ...props }>
           {

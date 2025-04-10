@@ -1,15 +1,19 @@
-import { OdsButton, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsPassword, OdsTextarea } from '@ovhcloud/ods-react';
+import { OdsButton, OdsCheckbox, OdsCheckboxControl, OdsCheckboxGroup, OdsCheckboxLabel, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsPassword, OdsTextarea } from '@ovhcloud/ods-react';
 import React, { type ReactElement, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import styles from './formHookForm.scss';
 
 type FormData = {
+  checkboxAlone: string,
+  checkboxGroup: string[],
   input: string,
   password: string,
   textarea: string,
 }
 
 const defaultValue: FormData = {
+  checkboxAlone: 'checkbox alone',
+  checkboxGroup: ['grouped checkbox 1'],
   input: 'default input',
   password: 'default password',
   textarea: 'default textarea',
@@ -17,10 +21,12 @@ const defaultValue: FormData = {
 
 function FormHookForm(): ReactElement {
   const {
+    control,
     formState: { errors },
     handleSubmit,
     register,
     reset,
+    setValue,
   } = useForm<FormData>({
     defaultValues: defaultValue,
     mode: 'onBlur',
@@ -54,6 +60,59 @@ function FormHookForm(): ReactElement {
         <br />
         - All fields required: { areAllRequired.toString() }
       </p>
+
+      <OdsFormField invalid={ !!errors.checkboxAlone }>
+        <OdsCheckbox
+          defaultChecked={ !!defaultValue.checkboxAlone }
+          value={ defaultValue.checkboxAlone }
+          { ...register('checkboxAlone', {
+            required: areAllRequired,
+          })}>
+          <OdsCheckboxControl />
+
+          <OdsCheckboxLabel>
+            Checkbox alone
+          </OdsCheckboxLabel>
+        </OdsCheckbox>
+
+        <OdsFormFieldHelper>
+          This is an checkbox to check
+        </OdsFormFieldHelper>
+
+        <OdsFormFieldError>
+          Error while checking checkbox
+        </OdsFormFieldError>
+      </OdsFormField>
+
+      <Controller
+        control={ control }
+        name="checkboxGroup"
+        render={ ({ field} ) => (
+          <OdsCheckboxGroup
+            defaultValue={ defaultValue.checkboxGroup }
+            invalid={ !!errors.checkboxGroup }
+            onValueChange={ (value) => setValue(field.name, value) }>
+            <OdsCheckbox
+              required={ areAllRequired }
+              value="grouped checkbox 1">
+              <OdsCheckboxControl />
+
+              <OdsCheckboxLabel>
+                Grouped checkbox 1
+              </OdsCheckboxLabel>
+            </OdsCheckbox>
+
+            <OdsCheckbox
+              required={ areAllRequired }
+              value="grouped checkbox 2">
+              <OdsCheckboxControl />
+
+              <OdsCheckboxLabel>
+                Grouped checkbox 2
+              </OdsCheckboxLabel>
+            </OdsCheckbox>
+          </OdsCheckboxGroup>
+        )} />
 
       <OdsFormField invalid={ !!errors.input }>
         <OdsFormFieldLabel>

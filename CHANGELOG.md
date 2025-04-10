@@ -8,6 +8,24 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.6.2](https://ovh.github.io/design-system/v18.6.2/?path=/docs/design-system-changelog--page) (2025-04-10)
+[compare](https://github.com/ovh/design-system/compare/v18.6.1...v18.6.2)
+
+### Bug Fixes
+
+* **combobox:** add empty state classes for improved visibility when no items are present ([455727c](https://github.com/ovh/design-system/commit/455727ce6c87bd1631845467d3f2a6b5a90c8c9d))
+* **combobox:** combobox reselecting cleared value not visible ([6f5d87e](https://github.com/ovh/design-system/commit/6f5d87ead0f60ff5108a55ed5f390ff414593a21))
+* **combobox:** ensure 'add new entry' option visibility when no items are present ([e345d6d](https://github.com/ovh/design-system/commit/e345d6d12980eefcc8111c350b9c59557f955753))
+* **combobox:** handling duplicates when using value or default value in allow multiple ([817f6ba](https://github.com/ovh/design-system/commit/817f6ba7e9d04d585480000fc856900a017766c1))
+* **combobox:** hide 'add new entry' option when input is cleared ([4c09f80](https://github.com/ovh/design-system/commit/4c09f80efc4ab06ac7e69de4508705aceb5d6f6f))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.6.1](https://ovh.github.io/design-system/v18.6.1/?path=/docs/design-system-changelog--page) (2025-03-28)
 [compare](https://github.com/ovh/design-system/compare/v18.6.0...v18.6.1)
 

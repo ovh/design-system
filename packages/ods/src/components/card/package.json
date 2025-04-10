@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-card",
-  "version": "18.6.1",
+  "version": "18.6.2",
   "private": true,
   "description": "ODS Card component",
   "main": "dist/index.cjs.js",

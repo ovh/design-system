@@ -4,8 +4,9 @@ import { ODS_TEXT_PRESET, type OdsTextPreset } from '../../constants/text-preset
 import { getTag } from '../../controller/ods-text';
 import style from './odsText.module.scss';
 
-// code, hx, p and span share the same global attribute, so we can use any of them here
-interface OdsTextProp extends ComponentPropsWithRef<'p'> {
+// code, hx, p and span share the same global attribute, only label has a specific one ("for")
+// so we extends this one for now, could be optimized in the future
+interface OdsTextProp extends ComponentPropsWithRef<'label'> {
   preset?: OdsTextPreset,
 }
 

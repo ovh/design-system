@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { OdsCheckbox, OdsCheckboxControl, OdsCheckboxLabel, type OdsCheckboxProp } from '../../../../ods-react/src/components/checkbox/src';
+import { OdsCheckbox, OdsCheckboxControl, OdsCheckboxGroup, OdsCheckboxLabel, type OdsCheckboxProp } from '../../../../ods-react/src/components/checkbox/src';
 import { OdsFormField } from '../../../../ods-react/src/components/form-field/src';
 import { ODS_TEXT_PRESET, OdsText } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
@@ -15,7 +15,7 @@ const meta: Meta<OdsCheckboxProp> = {
   argTypes: excludeFromDemoControls(['defaultChecked', 'name', 'onCheckedChange', 'required', 'value']),
   component: OdsCheckbox,
   // @ts-ignore see https://github.com/storybookjs/storybook/issues/27535
-  subcomponents: { OdsCheckboxControl, OdsCheckboxLabel },
+  subcomponents: { OdsCheckboxControl, OdsCheckboxGroup, OdsCheckboxLabel },
   title: 'ODS Components/Form elements/Checkbox',
 };
 
@@ -39,7 +39,6 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: 'ø' },
-        // type: { summary: 'TODO' },
       },
       control: { type: 'select' },
       options: [true, false, 'indeterminate'],
@@ -123,6 +122,31 @@ export const FormField: Story = {
         </OdsCheckbox>
       </OdsFormField>
     </>
+  ),
+};
+
+export const Group: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <OdsCheckboxGroup
+      defaultValue={ ['marketing'] }
+      name="acknowledgments">
+      <OdsCheckbox value="term">
+        <OdsCheckboxControl />
+
+        <OdsCheckboxLabel>
+          I agree to the terms and conditions.
+        </OdsCheckboxLabel>
+      </OdsCheckbox>
+
+      <OdsCheckbox value="marketing">
+        <OdsCheckboxControl />
+
+        <OdsCheckboxLabel>
+          I agree to receive marketing communications.
+        </OdsCheckboxLabel>
+      </OdsCheckbox>
+    </OdsCheckboxGroup>
   ),
 };
 

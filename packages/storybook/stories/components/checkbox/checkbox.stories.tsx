@@ -12,7 +12,7 @@ type DemoArg = Partial<OdsCheckboxProp> & {
 };
 
 const meta: Meta<OdsCheckboxProp> = {
-  argTypes: excludeFromDemoControls(['defaultChecked', 'name', 'onCheckedChange', 'required', 'value']),
+  argTypes: excludeFromDemoControls(['checked', 'defaultChecked', 'name', 'onCheckedChange', 'required', 'value']),
   component: OdsCheckbox,
   // @ts-ignore see https://github.com/storybookjs/storybook/issues/27535
   subcomponents: { OdsCheckboxControl, OdsCheckboxGroup, OdsCheckboxLabel },
@@ -24,7 +24,6 @@ export default meta;
 export const Demo: StoryObj = {
   render: (arg: DemoArg) => (
     <OdsCheckbox
-      checked={ arg.checked }
       disabled={ arg.disabled }
       invalid={ arg.invalid }>
       <OdsCheckboxControl />
@@ -35,14 +34,6 @@ export const Demo: StoryObj = {
     </OdsCheckbox>
   ),
   argTypes: orderControls({
-    checked: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-      },
-      control: { type: 'select' },
-      options: [true, false, 'indeterminate'],
-    },
     disabled: {
       table: {
         category: CONTROL_CATEGORY.general,

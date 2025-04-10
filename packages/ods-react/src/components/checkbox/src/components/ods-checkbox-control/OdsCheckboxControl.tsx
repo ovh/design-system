@@ -16,11 +16,15 @@ const OdsCheckboxControl: FC<OdsCheckboxControlProp> = forwardRef(({
       ref={ ref }
       { ...props }>
       <Checkbox.Indicator>
-        <OdsIcon name={ ODS_ICON_NAME.check } />
+        <OdsIcon
+          className={ style['ods-checkbox-control__icon'] }
+          name={ ODS_ICON_NAME.check } />
       </Checkbox.Indicator>
 
       <Checkbox.Indicator indeterminate>
-        <OdsIcon name={ ODS_ICON_NAME.minus } />
+        <OdsIcon
+          className={ style['ods-checkbox-control__icon'] }
+          name={ ODS_ICON_NAME.minus } />
       </Checkbox.Indicator>
 
       <Checkbox.HiddenInput />

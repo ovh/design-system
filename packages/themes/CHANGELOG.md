@@ -6,6 +6,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.0.0-alpha.0](https://ovh.github.io/design-system/v19.0.0-alpha.0/?path=/docs/design-system-changelog--page) (2025-04-11)
+[compare](https://github.com/ovh/design-system/compare/v18.6.2...v19.0.0-alpha.0)
+
+**Note:** Version bump only for package @ovhcloud/ods-themes
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.6.2](https://ovh.github.io/design-system/v18.6.2/?path=/docs/design-system-changelog--page) (2025-04-10)
 [compare](https://github.com/ovh/design-system/compare/v18.6.1...v18.6.2)
 

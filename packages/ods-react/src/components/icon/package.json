@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-icon",
-  "version": "18.6.2",
+  "version": "19.0.0-alpha.0",
   "private": true,
   "description": "ODS React Icon component",
   "type": "module",

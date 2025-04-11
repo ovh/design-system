@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.0.0-alpha.0](https://ovh.github.io/design-system/v19.0.0-alpha.0/?path=/docs/design-system-changelog--page) (2025-04-11)
+[compare](https://github.com/ovh/design-system/compare/v18.6.2...v19.0.0-alpha.0)
+
+### Bug Fixes
+
+* **lib:** update build to work with React v19 & add vite example app ([7714134](https://github.com/ovh/design-system/commit/771413405679e41e0944565ba1bd474c10a83d1e))
+
+
+### Features
+
+* **checkbox:** add checkbox group ([828d389](https://github.com/ovh/design-system/commit/828d389996c0d9430ff22bb859db228eff2468be))
+* **input:** implement component ([c6b51d6](https://github.com/ovh/design-system/commit/c6b51d60f2b432cec44f8c66e0e5f2bd3b5bf5ec))
+* **password:** implement component ([b49cda7](https://github.com/ovh/design-system/commit/b49cda71ee73151937aec5b1e79bfc006bb471df))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

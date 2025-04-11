@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-tooltip",
-  "version": "19.0.0-alpha.0",
+  "version": "19.0.0-alpha.1",
   "private": true,
   "description": "ODS React Tooltip component",
   "type": "module",

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-text",
-  "version": "19.0.0-alpha.0",
+  "version": "19.0.0-alpha.1",
   "private": true,
   "description": "ODS React Text component",
   "type": "module",

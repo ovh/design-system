@@ -1,4 +1,6 @@
-.ods-form-field-error {
-  color: var(--ods-color-critical-500);
-  font-weight: 600;
+@layer ods {
+  .ods-form-field-error {
+    color: var(--ods-color-critical-500);
+    font-weight: 600;
+  }
 }

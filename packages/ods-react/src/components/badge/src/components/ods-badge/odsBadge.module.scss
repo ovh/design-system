@@ -1,53 +1,55 @@
 @use '../../../../../style/badge';
 
-.ods-badge {
-  @include badge.ods-badge();
+@layer ods {
+  .ods-badge {
+    @include badge.ods-badge();
 
-  &--alpha {
-    @include badge.ods-badge-color('alpha');
-  }
+    &--alpha {
+      @include badge.ods-badge-color('alpha');
+    }
 
-  &--beta {
-    @include badge.ods-badge-color('beta');
-  }
+    &--beta {
+      @include badge.ods-badge-color('beta');
+    }
 
-  &--critical {
-    @include badge.ods-badge-color('critical');
-  }
+    &--critical {
+      @include badge.ods-badge-color('critical');
+    }
 
-  &--information {
-    @include badge.ods-badge-color('information');
-  }
+    &--information {
+      @include badge.ods-badge-color('information');
+    }
 
-  &--neutral {
-    @include badge.ods-badge-color('neutral');
-  }
+    &--neutral {
+      @include badge.ods-badge-color('neutral');
+    }
 
-  &--new {
-    @include badge.ods-badge-color('new');
-  }
+    &--new {
+      @include badge.ods-badge-color('new');
+    }
 
-  &--promotion {
-    @include badge.ods-badge-color('promotion');
-  }
+    &--promotion {
+      @include badge.ods-badge-color('promotion');
+    }
 
-  &--success {
-    @include badge.ods-badge-color('success');
-  }
+    &--success {
+      @include badge.ods-badge-color('success');
+    }
 
-  &--warning {
-    @include badge.ods-badge-color('warning');
-  }
+    &--warning {
+      @include badge.ods-badge-color('warning');
+    }
 
-  &--sm {
-    @include badge.ods-badge-size('sm');
-  }
+    &--sm {
+      @include badge.ods-badge-size('sm');
+    }
 
-  &--md {
-    @include badge.ods-badge-size('md');
-  }
+    &--md {
+      @include badge.ods-badge-size('md');
+    }
 
-  &--lg {
-    @include badge.ods-badge-size('lg');
+    &--lg {
+      @include badge.ods-badge-size('lg');
+    }
   }
 }

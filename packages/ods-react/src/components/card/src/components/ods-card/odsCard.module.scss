@@ -1,14 +1,16 @@
-.ods-card {
-  box-sizing: border-box;
-  display: inline-block;
-  border: 1px solid;
-  border-radius: 8px;
+@layer ods {
+  .ods-card {
+    box-sizing: border-box;
+    display: inline-block;
+    border: 1px solid;
+    border-radius: 8px;
 
-  &--neutral {
-    border-color: var(--ods-color-neutral-200);
-  }
+    &--neutral {
+      border-color: var(--ods-color-neutral-200);
+    }
 
-  &--primary {
-    border-color: var(--ods-color-primary-200);
+    &--primary {
+      border-color: var(--ods-color-primary-200);
+    }
   }
 }

@@ -1,6 +1,8 @@
-.ods-checkbox {
-  display: flex;
-  column-gap: 8px;
-  align-items: center;
-  width: max-content;
+@layer ods {
+  .ods-checkbox {
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+    width: max-content;
+  }
 }

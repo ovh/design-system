@@ -1,24 +1,26 @@
 @use '../../../../../style/table';
 
-.ods-table {
-  &--sm {
-    @include table.ods-table('sm');
-  }
+@layer ods {
+  .ods-table {
+    &--sm {
+      @include table.ods-table('sm');
+    }
 
-  &--md {
-    @include table.ods-table('md');
-  }
+    &--md {
+      @include table.ods-table('md');
+    }
 
-  &--lg {
-    @include table.ods-table('lg');
-  }
+    &--lg {
+      @include table.ods-table('lg');
+    }
 
-  &--striped {
-    tbody {
-      tr:nth-child(2n) {
-        th,
-        td {
-          background-color: var(--ods-color-neutral-050);
+    &--striped {
+      tbody {
+        tr:nth-child(2n) {
+          th,
+          td {
+            background-color: var(--ods-color-neutral-050);
+          }
         }
       }
     }

@@ -1,72 +1,74 @@
 @use '../../../../../style/button';
 
-.ods-button {
-  $button: &;
+@layer ods {
+  .ods-button {
+    $button: &;
 
-  @include button.ods-button();
+    @include button.ods-button();
 
-  position: relative;
+    position: relative;
 
-  &--xs {
-    @include button.ods-button-size('xs');
-  }
-
-  &--sm {
-    @include button.ods-button-size('sm');
-  }
-
-  &--md {
-    @include button.ods-button-size('md');
-  }
-
-  &--default {
-    &#{$button}--critical {
-      @include button.ods-button-variant-default('critical');
+    &--xs {
+      @include button.ods-button-size('xs');
     }
 
-    &#{$button}--neutral {
-      @include button.ods-button-variant-default('neutral');
+    &--sm {
+      @include button.ods-button-size('sm');
     }
 
-    &#{$button}--primary {
-      @include button.ods-button-variant-default('primary');
-    }
-  }
-
-  &--ghost {
-    &#{$button}--critical {
-      @include button.ods-button-variant-ghost('critical');
+    &--md {
+      @include button.ods-button-size('md');
     }
 
-    &#{$button}--neutral {
-      @include button.ods-button-variant-ghost('neutral');
+    &--default {
+      &#{$button}--critical {
+        @include button.ods-button-variant-default('critical');
+      }
+
+      &#{$button}--neutral {
+        @include button.ods-button-variant-default('neutral');
+      }
+
+      &#{$button}--primary {
+        @include button.ods-button-variant-default('primary');
+      }
     }
 
-    &#{$button}--primary {
-      @include button.ods-button-variant-ghost('primary');
-    }
-  }
+    &--ghost {
+      &#{$button}--critical {
+        @include button.ods-button-variant-ghost('critical');
+      }
 
-  &--outline {
-    &#{$button}--critical {
-      @include button.ods-button-variant-outline('critical');
+      &#{$button}--neutral {
+        @include button.ods-button-variant-ghost('neutral');
+      }
+
+      &#{$button}--primary {
+        @include button.ods-button-variant-ghost('primary');
+      }
     }
 
-    &#{$button}--neutral {
-      @include button.ods-button-variant-outline('neutral');
+    &--outline {
+      &#{$button}--critical {
+        @include button.ods-button-variant-outline('critical');
+      }
+
+      &#{$button}--neutral {
+        @include button.ods-button-variant-outline('neutral');
+      }
+
+      &#{$button}--primary {
+        @include button.ods-button-variant-outline('primary');
+      }
     }
 
-    &#{$button}--primary {
-      @include button.ods-button-variant-outline('primary');
+    &__spinner {
+      display: flex;
+      position: absolute;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--ods-color-neutral-100);
     }
-  }
-
-  &__spinner {
-    display: flex;
-    position: absolute;
-    inset: 0;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--ods-color-neutral-100);
   }
 }

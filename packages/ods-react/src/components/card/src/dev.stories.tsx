@@ -1,10 +1,10 @@
-import { OdsCard } from '.';
+import { Card } from '.';
 
 export default {
-  component: OdsCard,
-  title: 'OdsCard dev',
+  component: Card,
+  title: 'Card dev',
 };
 
 export const Default = () => (
-  <OdsCard />
+  <Card />
 );

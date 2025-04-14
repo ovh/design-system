@@ -1,22 +1,22 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { type ReactElement } from 'react';
-import { ODS_TABLE_SIZE, ODS_TABLE_SIZES, ODS_TABLE_VARIANT, ODS_TABLE_VARIANTS, OdsTable, type OdsTableProp } from '../../../../ods-react/src/components/table/src';
-import { OdsText } from '../../../../ods-react/src/components/text/src';
+import { TABLE_SIZE, TABLE_SIZES, TABLE_VARIANT, TABLE_VARIANTS, Table, type TableProp } from '../../../../ods-react/src/components/table/src';
+import { Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsTableProp>;
+type Story = StoryObj<TableProp>;
 
-const meta: Meta<OdsTableProp> = {
-  component: OdsTable,
+const meta: Meta<TableProp> = {
+  component: Table,
   title: 'ODS Components/Table',
 };
 
 export default meta;
 
-function renderExampleTable(props?: OdsTableProp, customCaption?: () => ReactElement): ReactElement {
+function renderExampleTable(props?: TableProp, customCaption?: () => ReactElement): ReactElement {
   return (
-    <OdsTable { ...props }>
+    <Table { ...props }>
       <caption>
         { customCaption ? customCaption() : 'Front-end web developer course 2021' }
       </caption>
@@ -49,7 +49,7 @@ function renderExampleTable(props?: OdsTableProp, customCaption?: () => ReactEle
         <td>36</td>
       </tr>
       </tbody>
-    </OdsTable>
+    </Table>
   );
 }
 
@@ -59,27 +59,27 @@ export const Demo: Story = {
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_TABLE_SIZE.md },
-        type: { summary: ODS_TABLE_SIZES }
+        defaultValue: { summary: TABLE_SIZE.md },
+        type: { summary: TABLE_SIZES }
       },
       control: { type: 'select' },
-      options: ODS_TABLE_SIZES,
+      options: TABLE_SIZES,
     },
     variant: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_TABLE_VARIANT.default },
-        type: { summary: ODS_TABLE_VARIANTS }
+        defaultValue: { summary: TABLE_VARIANT.default },
+        type: { summary: TABLE_VARIANTS }
       },
       control: { type: 'select' },
-      options: ODS_TABLE_VARIANTS,
+      options: TABLE_VARIANTS,
     },
   }),
 };
 
 export const CustomCaption: Story = {
   tags: ['!dev'],
-  render: ({}) => renderExampleTable({}, () => <OdsText preset="caption">Front-end web developer course 2021</OdsText>),
+  render: ({}) => renderExampleTable({}, () => <Text preset="caption">Front-end web developer course 2021</Text>),
 };
 
 export const Default: Story = {

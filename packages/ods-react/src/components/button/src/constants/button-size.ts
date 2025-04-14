@@ -1,15 +1,15 @@
-enum ODS_BUTTON_SIZE {
+enum BUTTON_SIZE {
   md = 'md',
   sm = 'sm',
   xs = 'xs',
 }
 
-type OdsButtonSize =`${ODS_BUTTON_SIZE}`;
+type ButtonSize =`${BUTTON_SIZE}`;
 
-const ODS_BUTTON_SIZES = Object.freeze(Object.values(ODS_BUTTON_SIZE));
+const BUTTON_SIZES = Object.freeze(Object.values(BUTTON_SIZE));
 
 export {
-  ODS_BUTTON_SIZE,
-  ODS_BUTTON_SIZES,
-  type OdsButtonSize,
+  BUTTON_SIZE,
+  BUTTON_SIZES,
+  type ButtonSize,
 };

@@ -1,0 +1,16 @@
+import { {{> ComponentName }} } from '../../src';
+
+export default {
+  component: {{> ComponentName }},
+  title: 'Tests rendering',
+};
+
+export const customStyle = () => (
+  <{{> ComponentName }}
+    data-testid="custom-style"
+    style=\{{ height: '42px' }} />
+);
+
+export const render = () => (
+  <{{> ComponentName }} data-testid="render" />
+);

@@ -1,23 +1,23 @@
 import { type ChangeEvent, useState } from 'react';
-import { ODS_INPUT_TYPE, OdsInput } from '.';
+import { INPUT_TYPE, Input } from '.';
 
 export default {
-  component: OdsInput,
-  title: 'OdsInput dev',
+  component: Input,
+  title: 'Input dev',
 };
 
 export const Actions = () => (
   <>
     <div>
       <label>Clearable alone: </label>
-      <OdsInput
+      <Input
         clearable
         defaultValue="value" />
     </div>
 
     <div>
       <label>Clearable and loading: </label>
-      <OdsInput
+      <Input
         clearable
         defaultValue="value"
         loading />
@@ -25,7 +25,7 @@ export const Actions = () => (
 
     <div>
       <label>Clearable and mask: </label>
-      <OdsInput
+      <Input
         clearable
         defaultValue="value"
         maskOption={{ enable: true }} />
@@ -33,15 +33,15 @@ export const Actions = () => (
 
     <div>
       <label>Clearable and search: </label>
-      <OdsInput
+      <Input
         clearable
         defaultValue="value"
-        type={ ODS_INPUT_TYPE.search } />
+        type={ INPUT_TYPE.search } />
     </div>
 
     <div>
       <label>Clearable, loading and mask: </label>
-      <OdsInput
+      <Input
         clearable
         defaultValue="value"
         loading
@@ -50,74 +50,74 @@ export const Actions = () => (
 
     <div>
       <label>Clearable, loading and search: </label>
-      <OdsInput
+      <Input
         clearable
         defaultValue="value"
         loading
-        type={ ODS_INPUT_TYPE.search } />
+        type={ INPUT_TYPE.search } />
     </div>
 
     <div>
       <label>Clearable, mask and search: </label>
-      <OdsInput
+      <Input
         clearable
         defaultValue="value"
         maskOption={{ enable: true }}
-        type={ ODS_INPUT_TYPE.search } />
+        type={ INPUT_TYPE.search } />
     </div>
 
     <div>
       <label>Clearable, loading, mask and search: </label>
-      <OdsInput
+      <Input
         clearable
         defaultValue="value"
         loading
         maskOption={{ enable: true }}
-        type={ ODS_INPUT_TYPE.search } />
+        type={ INPUT_TYPE.search } />
     </div>
 
     <div>
       <label>With mask alone: </label>
-      <OdsInput maskOption={{ enable: true }} />
+      <Input maskOption={{ enable: true }} />
     </div>
 
     <div>
       <label>With mask and loading: </label>
-      <OdsInput
+      <Input
         loading
         maskOption={{ enable: true }} />
     </div>
 
     <div>
       <label>With mask and search: </label>
-      <OdsInput
+      <Input
         maskOption={{ enable: true }}
-        type={ ODS_INPUT_TYPE.search } />
+        type={ INPUT_TYPE.search } />
     </div>
 
     <div>
       <label>With mask, loading and search: </label>
-      <OdsInput
+      <Input
         loading
         maskOption={{ enable: true }}
-        type={ ODS_INPUT_TYPE.search } />
+        type={ INPUT_TYPE.search } />
     </div>
 
     <div>
       <label>Loading alone: </label>
-      <OdsInput loading />
+      <Input loading />
     </div>
 
     <div>
       <label>Loading and search: </label>
-      <OdsInput
+      <Input
         loading
-        type={ ODS_INPUT_TYPE.search } />
+        type={ INPUT_TYPE.search } />
     </div>
 
     <div>
       <label>Search alone: </label>
-      <OdsInput type={ ODS_INPUT_TYPE.search } />
+      <Input type={ INPUT_TYPE.search } />
     </div>
   </>
 );
@@ -126,7 +126,7 @@ export const Clearable = () => {
   const [inputValue, setInputValue] = useState('');
 
   return (
-    <OdsInput
+    <Input
       clearable
       onChange={ (e: ChangeEvent<HTMLInputElement>) => { setInputValue(e.target.value)} }
       onClear={ () => { setInputValue('') } }
@@ -140,7 +140,7 @@ export const ControlledUncontrolled = () => {
   return (
     <>
       <label>Controlled</label>
-      <OdsInput
+      <Input
         clearable
         onChange={ (e: ChangeEvent<HTMLInputElement>) => setControlledValue(e.target.value) }
         onClear={ () => { setControlledValue('') } }
@@ -149,7 +149,7 @@ export const ControlledUncontrolled = () => {
       <br /><br />
 
       <label>Uncontrolled</label>
-      <OdsInput
+      <Input
         clearable
         onChange={ () => console.log('Uncontrolled change') }
         onClear={ () => console.log('cleared') } />
@@ -159,7 +159,7 @@ export const ControlledUncontrolled = () => {
 
 export const Datalist = () => (
   <>
-    <OdsInput list="ice-cream-flavors" />
+    <Input list="ice-cream-flavors" />
 
     <datalist id="ice-cream-flavors">
       <option value="Chocolate"></option>
@@ -172,34 +172,34 @@ export const Datalist = () => (
 );
 
 export const Default = () => (
-  <OdsInput />
+  <Input />
 );
 
 export const Disabled = () => (
-  <OdsInput disabled />
+  <Input disabled />
 );
 
 export const DisabledActions = () => (
-  <OdsInput
+  <Input
     clearable
     defaultValue="value"
     disabled
     maskOption={{ enable: true, initialState: 'open' }}
-    type={ ODS_INPUT_TYPE.search } />
+    type={ INPUT_TYPE.search } />
 );
 
 export const Readonly = () => (
-  <OdsInput readOnly />
+  <Input readOnly />
 );
 
 export const Types = () => (
   <>
-    <OdsInput type={ ODS_INPUT_TYPE.email } placeholder="email" /><br />
-    <OdsInput type={ ODS_INPUT_TYPE.number } placeholder="number" /><br />
-    <OdsInput type={ ODS_INPUT_TYPE.password } placeholder="password" /><br />
-    <OdsInput type={ ODS_INPUT_TYPE.search } placeholder="search" /><br />
-    <OdsInput type={ ODS_INPUT_TYPE.text } placeholder="text" /><br />
-    <OdsInput type={ ODS_INPUT_TYPE.time } placeholder="time" /><br />
-    <OdsInput type={ ODS_INPUT_TYPE.url } placeholder="url" /><br />
+    <Input type={ INPUT_TYPE.email } placeholder="email" /><br />
+    <Input type={ INPUT_TYPE.number } placeholder="number" /><br />
+    <Input type={ INPUT_TYPE.password } placeholder="password" /><br />
+    <Input type={ INPUT_TYPE.search } placeholder="search" /><br />
+    <Input type={ INPUT_TYPE.text } placeholder="text" /><br />
+    <Input type={ INPUT_TYPE.time } placeholder="time" /><br />
+    <Input type={ INPUT_TYPE.url } placeholder="url" /><br />
   </>
 );

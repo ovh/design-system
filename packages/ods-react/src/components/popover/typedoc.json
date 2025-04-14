@@ -9,7 +9,7 @@
   "outputs": [
     {
       "name": "json",
-      "path": "./documentation/ods-popover.json"
+      "path": "./documentation/popover.json"
     }
   ],
   "sort": ["source-order"],

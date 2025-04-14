@@ -9,7 +9,7 @@
   "outputs": [
     {
       "name": "json",
-      "path": "./documentation/ods-input.json"
+      "path": "./documentation/input.json"
     }
   ],
   "tsconfig":"tsconfig.json"

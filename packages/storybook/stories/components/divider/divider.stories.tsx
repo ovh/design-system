@@ -1,13 +1,13 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { ODS_DIVIDER_COLOR, ODS_DIVIDER_COLORS, ODS_DIVIDER_SPACING, ODS_DIVIDER_SPACINGS, OdsDivider, type OdsDividerProp } from '../../../../ods-react/src/components/divider/src';
+import { DIVIDER_COLOR, DIVIDER_COLORS, DIVIDER_SPACING, DIVIDER_SPACINGS, Divider, type DividerProp } from '../../../../ods-react/src/components/divider/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsDividerProp>;
+type Story = StoryObj<DividerProp>;
 
-const meta: Meta<OdsDividerProp> = {
-  component: OdsDivider,
+const meta: Meta<DividerProp> = {
+  component: Divider,
   title: 'ODS Components/Divider',
 };
 
@@ -18,20 +18,20 @@ export const Demo: Story = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_DIVIDER_COLOR.light },
-        type: { summary: ODS_DIVIDER_COLORS }
+        defaultValue: { summary: DIVIDER_COLOR.light },
+        type: { summary: DIVIDER_COLORS }
       },
       control: { type: 'select' },
-      options: ODS_DIVIDER_COLORS,
+      options: DIVIDER_COLORS,
     },
     spacing: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_DIVIDER_SPACING._2 },
-        type: { summary: ODS_DIVIDER_SPACINGS }
+        defaultValue: { summary: DIVIDER_SPACING._2 },
+        type: { summary: DIVIDER_SPACINGS }
       },
       control: { type: 'select' },
-      options: ODS_DIVIDER_SPACINGS,
+      options: DIVIDER_SPACINGS,
     },
   }),
 };
@@ -39,7 +39,7 @@ export const Demo: Story = {
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsDivider />
+    <Divider />
   ),
 };
 
@@ -51,7 +51,7 @@ export const Overview: Story = {
   render: ({}) => (
     <>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <OdsDivider color="light" />
+      <Divider color="light" />
       <p>Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
     </>
   ),
@@ -59,10 +59,10 @@ export const Overview: Story = {
 
 export const Color: Story = {
   tags: ['!dev'],
-  render: ({}) => ( 
+  render: ({}) => (
     <>
-      <OdsDivider color="light" />
-      <OdsDivider color="dark" />
+      <Divider color="light" />
+      <Divider color="dark" />
     </>
   ),
 };
@@ -71,10 +71,10 @@ export const Spacing: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsDivider spacing="0" />
-      <OdsDivider spacing="2" />
-      <OdsDivider spacing="4" />
-      <OdsDivider spacing="6" />
+      <Divider spacing="0" />
+      <Divider spacing="2" />
+      <Divider spacing="4" />
+      <Divider spacing="6" />
     </>
   ),
 };

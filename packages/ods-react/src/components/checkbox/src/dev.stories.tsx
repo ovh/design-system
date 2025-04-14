@@ -1,103 +1,103 @@
-import { OdsCheckbox, OdsCheckboxControl, OdsCheckboxGroup, OdsCheckboxLabel } from '.';
-import { OdsFormField } from '../../form-field/src';
-import { ODS_TEXT_PRESET, OdsText } from '../../text/src';
+import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel } from '.';
+import { FormField } from '../../form-field/src';
+import { TEXT_PRESET, Text } from '../../text/src';
 
 export default {
-  component: OdsCheckbox,
-  title: 'OdsCheckbox dev',
+  component: Checkbox,
+  title: 'Checkbox dev',
 };
 
 export const Default = () => (
-  <OdsCheckbox>
-    <OdsCheckboxControl />
+  <Checkbox>
+    <CheckboxControl />
 
-    <OdsCheckboxLabel>
+    <CheckboxLabel>
       Checkbox label
-    </OdsCheckboxLabel>
-  </OdsCheckbox>
+    </CheckboxLabel>
+  </Checkbox>
 );
 
 export const Disabled = () => (
   <>
-    <OdsCheckbox disabled>
-      <OdsCheckboxControl />
+    <Checkbox disabled>
+      <CheckboxControl />
 
-      <OdsCheckboxLabel>
+      <CheckboxLabel>
         Unchecked
-      </OdsCheckboxLabel>
-    </OdsCheckbox>
+      </CheckboxLabel>
+    </Checkbox>
 
-    <OdsCheckbox
+    <Checkbox
       checked
       disabled>
-      <OdsCheckboxControl />
+      <CheckboxControl />
 
-      <OdsCheckboxLabel>
+      <CheckboxLabel>
         Checked
-      </OdsCheckboxLabel>
-    </OdsCheckbox>
+      </CheckboxLabel>
+    </Checkbox>
   </>
 );
 
-export const FormField = () => (
+export const InFormField = () => (
   <div>
-    <OdsText preset={ ODS_TEXT_PRESET.label }>
+    <Text preset={ TEXT_PRESET.label }>
       Legal considerations:
-    </OdsText>
+    </Text>
 
-    <OdsFormField>
-      <OdsCheckbox>
-        <OdsCheckboxControl />
+    <FormField>
+      <Checkbox>
+        <CheckboxControl />
 
-        <OdsCheckboxLabel>
+        <CheckboxLabel>
           I agree to the terms and conditions
-        </OdsCheckboxLabel>
-      </OdsCheckbox>
-    </OdsFormField>
+        </CheckboxLabel>
+      </Checkbox>
+    </FormField>
 
-    <OdsFormField>
-      <OdsCheckbox>
-        <OdsCheckboxControl />
+    <FormField>
+      <Checkbox>
+        <CheckboxControl />
 
-        <OdsCheckboxLabel>
+        <CheckboxLabel>
           I agree to receive marketing communications
-        </OdsCheckboxLabel>
-      </OdsCheckbox>
-    </OdsFormField>
+        </CheckboxLabel>
+      </Checkbox>
+    </FormField>
   </div>
 );
 
 export const Indeterminate = () => (
-  <OdsCheckbox
+  <Checkbox
     checked="indeterminate"
     onCheckedChange={ (detail) => console.log('check change: ', detail) }>
-    <OdsCheckboxControl />
+    <CheckboxControl />
 
-    <OdsCheckboxLabel>
+    <CheckboxLabel>
       Checkbox label
-    </OdsCheckboxLabel>
-  </OdsCheckbox>
+    </CheckboxLabel>
+  </Checkbox>
 );
 
 export const Group = () => (
-  <OdsCheckboxGroup
+  <CheckboxGroup
     defaultValue={ ['checkbox2'] }
     name="group"
     onValueChange={ console.log }>
-    <OdsCheckbox value="checkbox1">
-      <OdsCheckboxControl />
+    <Checkbox value="checkbox1">
+      <CheckboxControl />
 
-      <OdsCheckboxLabel>
+      <CheckboxLabel>
         Checkbox 1
-      </OdsCheckboxLabel>
-    </OdsCheckbox>
+      </CheckboxLabel>
+    </Checkbox>
 
-    <OdsCheckbox value="checkbox2">
-      <OdsCheckboxControl />
+    <Checkbox value="checkbox2">
+      <CheckboxControl />
 
-      <OdsCheckboxLabel>
+      <CheckboxLabel>
         Checkbox 2
-      </OdsCheckboxLabel>
-    </OdsCheckbox>
-  </OdsCheckboxGroup>
+      </CheckboxLabel>
+    </Checkbox>
+  </CheckboxGroup>
 );

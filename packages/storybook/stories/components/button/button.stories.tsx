@@ -1,13 +1,13 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { ODS_BUTTON_COLOR, ODS_BUTTON_COLORS, ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS, OdsButton, type OdsButtonProp } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_COLOR, BUTTON_COLORS, BUTTON_SIZE, BUTTON_SIZES, BUTTON_VARIANT, BUTTON_VARIANTS, Button, type ButtonProp } from '../../../../ods-react/src/components/button/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsButtonProp>;
+type Story = StoryObj<ButtonProp>;
 
-const meta: Meta<OdsButtonProp> = {
-  component: OdsButton,
+const meta: Meta<ButtonProp> = {
+  component: Button,
   title: 'ODS Components/Button',
 };
 
@@ -25,11 +25,11 @@ export const Demo: Story = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_BUTTON_COLOR.primary },
-        type: { summary: ODS_BUTTON_COLORS },
+        defaultValue: { summary: BUTTON_COLOR.primary },
+        type: { summary: BUTTON_COLORS },
       },
       control: { type: 'select' },
-      options: ODS_BUTTON_COLORS,
+      options: BUTTON_COLORS,
     },
     isLoading: {
       table: {
@@ -42,20 +42,20 @@ export const Demo: Story = {
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_BUTTON_SIZE.md },
-        type: { summary: ODS_BUTTON_SIZES }
+        defaultValue: { summary: BUTTON_SIZE.md },
+        type: { summary: BUTTON_SIZES }
       },
       control: { type: 'select' },
-      options: ODS_BUTTON_SIZES,
+      options: BUTTON_SIZES,
     },
     variant: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_BUTTON_VARIANT.default },
-        type: { summary: ODS_BUTTON_VARIANTS }
+        defaultValue: { summary: BUTTON_VARIANT.default },
+        type: { summary: BUTTON_VARIANTS }
       },
       control: { type: 'select' },
-      options: ODS_BUTTON_VARIANTS,
+      options: BUTTON_VARIANTS,
     },
   }),
   args: {
@@ -68,9 +68,9 @@ export const Color: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsButton color={ ODS_BUTTON_COLOR.primary }>Primary button</OdsButton>
-      <OdsButton color={ ODS_BUTTON_COLOR.critical }>Critical button</OdsButton>
-      <OdsButton color={ ODS_BUTTON_COLOR.neutral }>Neutral button</OdsButton>
+      <Button color={ BUTTON_COLOR.primary }>Primary button</Button>
+      <Button color={ BUTTON_COLOR.critical }>Critical button</Button>
+      <Button color={ BUTTON_COLOR.neutral }>Neutral button</Button>
     </>
   ),
 };
@@ -78,18 +78,18 @@ export const Color: StoryObj = {
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsButton>
+    <Button>
       My button
-    </OdsButton>
+    </Button>
   ),
 };
 
 export const IsLoading: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsButton isLoading={ true }>
+    <Button isLoading={ true }>
       Loading button
-    </OdsButton>
+    </Button>
   ),
 };
 
@@ -99,9 +99,9 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <OdsButton>
+    <Button>
       Button
-    </OdsButton>
+    </Button>
   ),
 };
 
@@ -110,9 +110,9 @@ export const Size: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsButton size={ ODS_BUTTON_SIZE.md }>MB button</OdsButton>
-      <OdsButton size={ ODS_BUTTON_SIZE.sm }>SM button</OdsButton>
-      <OdsButton size={ ODS_BUTTON_SIZE.xs }>XS button</OdsButton>
+      <Button size={ BUTTON_SIZE.md }>MB button</Button>
+      <Button size={ BUTTON_SIZE.sm }>SM button</Button>
+      <Button size={ BUTTON_SIZE.xs }>XS button</Button>
     </>
   ),
 };
@@ -122,9 +122,9 @@ export const Variant: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsButton variant={ ODS_BUTTON_VARIANT.default }>Default button</OdsButton>
-      <OdsButton variant={ ODS_BUTTON_VARIANT.outline }>Outline button</OdsButton>
-      <OdsButton variant={ ODS_BUTTON_VARIANT.ghost }>Ghost button</OdsButton>
+      <Button variant={ BUTTON_VARIANT.default }>Default button</Button>
+      <Button variant={ BUTTON_VARIANT.outline }>Outline button</Button>
+      <Button variant={ BUTTON_VARIANT.ghost }>Ghost button</Button>
     </>
   ),
 };

@@ -1,0 +1,27 @@
+import classNames from 'classnames';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import style from './{{> componentName }}.module.scss';
+
+interface {{> ComponentName }}Prop extends ComponentPropsWithRef<'div'> {
+  // ...
+}
+
+const {{> ComponentName }}: FC<{{> ComponentName }}Prop> = forwardRef(({
+  className,
+  ...props
+}, ref): JSX.Element => {
+  return (
+    <div
+      className={ classNames(style['{{> component-name }}'], className) }
+      ref={ ref }
+      { ...props }>
+    </div>
+  );
+});
+
+{{> ComponentName }}.displayName = '{{> ComponentName }}';
+
+export {
+  {{> ComponentName }},
+  type {{> ComponentName }}Prop,
+};

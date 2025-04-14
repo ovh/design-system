@@ -1,14 +1,14 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { OdsIcon } from '../../../../ods-react/src/components/icon/src';
-import { ODS_LINK_COLOR, ODS_LINK_COLORS, OdsLink, OdsLinkProp } from '../../../../ods-react/src/components/link/src';
+import { Icon } from '../../../../ods-react/src/components/icon/src';
+import { LINK_COLOR, LINK_COLORS, Link, LinkProp } from '../../../../ods-react/src/components/link/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsLinkProp>;
+type Story = StoryObj<LinkProp>;
 
-const meta: Meta<OdsLinkProp> = {
-  component: OdsLink,
+const meta: Meta<LinkProp> = {
+  component: Link,
   title: 'ODS Components/Link',
 };
 
@@ -26,11 +26,11 @@ export const Demo: Story = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_LINK_COLOR.primary },
+        defaultValue: { summary: LINK_COLOR.primary },
         type: { summary: 'string' },
       },
       control: 'select',
-      options: ODS_LINK_COLORS,
+      options: LINK_COLORS,
     },
     disabled: {
       table: {
@@ -49,19 +49,20 @@ export const Demo: Story = {
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsLink href="https://www.ovhcloud.com">
+    <Link href="https://www.ovhcloud.com">
       Default Link
-    </OdsLink>
+    </Link>
   ),
 };
 
 export const Disabled: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsLink disabled
-             href="https://www.ovhcloud.com">
+    <Link
+      disabled
+      href="https://www.ovhcloud.com">
       Disabled
-    </OdsLink>
+    </Link>
   ),
 };
 
@@ -71,10 +72,11 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <OdsLink href="https://www.ovhcloud.com"
-             target="_blank">
+    <Link
+      href="https://www.ovhcloud.com"
+      target="_blank">
       Link
-    </OdsLink>
+    </Link>
   ),
 };
 
@@ -83,14 +85,14 @@ export const WithIcon: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsLink href="https://www.ovhcloud.com">
-        <OdsIcon name="arrow-left" /> Icon Link
-      </OdsLink>
+      <Link href="https://www.ovhcloud.com">
+        <Icon name="arrow-left" /> Icon Link
+      </Link>
 
-      <OdsLink style={{ justifySelf: 'right' }}
+      <Link style={{ justifySelf: 'right' }}
                href="https://www.ovhcloud.com">
-        Icon Link <OdsIcon name="arrow-right" />
-      </OdsLink>
+        Icon Link <Icon name="arrow-right" />
+      </Link>
     </>
   ),
 };

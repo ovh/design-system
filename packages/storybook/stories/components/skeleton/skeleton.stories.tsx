@@ -1,11 +1,11 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { OdsSkeleton, type OdsSkeletonProp } from '../../../../ods-react/src/components/skeleton/src';
+import { Skeleton, type SkeletonProp } from '../../../../ods-react/src/components/skeleton/src';
 
-type Story = StoryObj<OdsSkeletonProp>;
+type Story = StoryObj<SkeletonProp>;
 
-const meta: Meta<OdsSkeletonProp> = {
-  component: OdsSkeleton,
+const meta: Meta<SkeletonProp> = {
+  component: Skeleton,
   title: 'ODS Components/Skeleton',
 };
 
@@ -17,13 +17,13 @@ export const Demo: Story = {
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsSkeleton />
+    <Skeleton />
   ),
 };
 
 export const Overview: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsSkeleton />
+    <Skeleton />
   ),
 };

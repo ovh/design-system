@@ -1,0 +1,80 @@
+import { Badge } from '@ovhcloud/ods-react';
+import { Meta, Source } from '@storybook/blocks';
+import * as SkeletonStories from './skeleton.stories';
+import { Heading } from '../../../src/components/heading/Heading';
+
+<Meta of={ SkeletonStories } name="Migration From 17.x" />
+
+<Heading label="Skeleton - migrate from v17 to v18" level={ 1 } />
+
+<Heading label="Attributes changes" level={ 2 } />
+
+`inline` <Badge color="critical" size="sm">Removed</Badge>
+
+`randomized` <Badge color="critical" size="sm">Removed</Badge>
+
+`size` <Badge color="critical" size="sm">Removed</Badge>
+
+Have been removed.
+
+You can use the CSS and JS to obtain the same rendering.
+
+<Heading label="Migration examples" level={ 2 } />
+
+Size skeleton:
+
+<Source code={`
+<osds-skeleton size="md"></osds-skeleton>
+
+<!-- is now -->
+
+<ods-skeleton class="my-skeleton"></ods-skeleton>
+
+<style>
+  .my-skeleton::part(skeleton) {
+    width: 250px;
+  }
+</style>
+`}
+        dark="true"
+        language="html" />
+
+Inline skeleton:
+
+<Source code={`
+<osds-skeleton inline></osds-skeleton>
+
+<!-- is now -->
+
+<ods-skeleton class="my-skeleton--inline"></ods-skeleton>
+
+<style>
+  .my-skeleton--inline {
+    display: inline-block;
+    width: 100px;
+  }
+</style>
+`}
+        dark="true"
+        language="html" />
+
+Randomized skeleton:
+
+<Source code={`
+<osds-skeleton randomized></osds-skeleton>
+
+<!-- is now -->
+
+<ods-skeleton id="mySkeleton"></ods-skeleton>
+
+<script>
+  const mySkeleton = document.getElementById('mySkeleton');
+  const getRandomValue = () => {
+    // between 30 and 100
+    return Math.floor(Math.random() * (100 - 30)) + 30;
+  }
+  mySkeleton.style.width = getRandomValue() + '%';
+</script>
+`}
+        dark="true"
+        language="html" />

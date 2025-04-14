@@ -1,0 +1,26 @@
+@use '../../../../../style/link';
+@use '../../../../../style/state';
+
+@layer ods {
+  .link {
+    $current: &;
+
+    @include link.ods-link();
+
+    &--primary {
+      @include link.ods-link-color('primary');
+
+      &#{$current}--disabled {
+        @include state.ods-is-disabled();
+
+        background-color: inherit;
+
+        &:focus-visible,
+        &:hover {
+          transition: none;
+          background-size: 0;
+        }
+      }
+    }
+  }
+}

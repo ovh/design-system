@@ -1,12 +1,12 @@
-import { OdsBadge } from '.';
+import { Badge } from '.';
 
 export default {
-  component: OdsBadge,
-  title: 'OdsBadge dev',
+  component: Badge,
+  title: 'Badge dev',
 };
 
 export const Default = () => (
-  <OdsBadge>
+  <Badge>
     Default
-  </OdsBadge>
+  </Badge>
 );

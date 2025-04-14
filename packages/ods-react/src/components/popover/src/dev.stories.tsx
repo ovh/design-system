@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { OdsPopover, OdsPopoverContent, OdsPopoverTrigger } from '.';
-import { OdsButton } from '../../button/src';
+import { Popover, PopoverContent, PopoverTrigger } from '.';
+import { Button } from '../../button/src';
 
 export default {
-  component: OdsPopover,
-  title: 'OdsPopover dev',
+  component: Popover,
+  title: 'Popover dev',
 };
 
 export const Controlled = () => {
@@ -16,61 +16,61 @@ export const Controlled = () => {
 
   return (
     <>
-      <OdsButton onClick={ togglePopover }>
+      <Button onClick={ togglePopover }>
         Toggle popover
-      </OdsButton>
+      </Button>
 
-      <OdsPopover open={ isOpen }>
-        <OdsPopoverTrigger>
+      <Popover open={ isOpen }>
+        <PopoverTrigger>
           Show popover
-        </OdsPopoverTrigger>
+        </PopoverTrigger>
 
-        <OdsPopoverContent>
+        <PopoverContent>
           This is the popover content
-        </OdsPopoverContent>
-      </OdsPopover>
+        </PopoverContent>
+      </Popover>
     </>
   );
 };
 
 export const CustomTrigger = () => (
-  <OdsPopover>
-    <OdsPopoverTrigger asChild>
-      <OdsButton>
+  <Popover>
+    <PopoverTrigger asChild>
+      <Button>
         Custom Trigger
-      </OdsButton>
-    </OdsPopoverTrigger>
+      </Button>
+    </PopoverTrigger>
 
-    <OdsPopoverContent>
+    <PopoverContent>
       This is the popover content
-    </OdsPopoverContent>
-  </OdsPopover>
+    </PopoverContent>
+  </Popover>
 );
 
 export const Default = () => (
-  <OdsPopover>
-    <OdsPopoverTrigger>
+  <Popover>
+    <PopoverTrigger>
       Show popover
-    </OdsPopoverTrigger>
+    </PopoverTrigger>
 
-    <OdsPopoverContent>
+    <PopoverContent>
       This is the popover content
-    </OdsPopoverContent>
-  </OdsPopover>
+    </PopoverContent>
+  </Popover>
 );
 
 export const Focus = () => (
-  <OdsPopover>
-    <OdsPopoverTrigger>
+  <Popover>
+    <PopoverTrigger>
       Show popover
-    </OdsPopoverTrigger>
+    </PopoverTrigger>
 
-    <OdsPopoverContent>
-      <OdsButton onClick={ () => console.log('focus 1') }>Focus 1</OdsButton>
-      <OdsButton onClick={ () => console.log('focus 2') }>Focus 2</OdsButton>
-      <OdsButton onClick={ () => console.log('focus 3') }>Focus 3</OdsButton>
-    </OdsPopoverContent>
-  </OdsPopover>
+    <PopoverContent>
+      <Button onClick={ () => console.log('focus 1') }>Focus 1</Button>
+      <Button onClick={ () => console.log('focus 2') }>Focus 2</Button>
+      <Button onClick={ () => console.log('focus 3') }>Focus 3</Button>
+    </PopoverContent>
+  </Popover>
 );
 
 export const Grid = () => (
@@ -81,78 +81,78 @@ export const Grid = () => (
     gap: '20px',
     padding: '200px',
   }}>
-    <OdsPopover position="top-start">
-      <OdsPopoverTrigger>
+    <Popover position="top-start">
+      <PopoverTrigger>
         Top Left
-      </OdsPopoverTrigger>
-      <OdsPopoverContent withArrow>
+      </PopoverTrigger>
+      <PopoverContent withArrow>
         Top Left popover
-      </OdsPopoverContent>
-    </OdsPopover>
+      </PopoverContent>
+    </Popover>
 
-    <OdsPopover position="top">
-      <OdsPopoverTrigger>
+    <Popover position="top">
+      <PopoverTrigger>
         Top
-      </OdsPopoverTrigger>
-      <OdsPopoverContent withArrow>
+      </PopoverTrigger>
+      <PopoverContent withArrow>
         Top popover
-      </OdsPopoverContent>
-    </OdsPopover>
+      </PopoverContent>
+    </Popover>
 
-    <OdsPopover position="top-end">
-      <OdsPopoverTrigger>
+    <Popover position="top-end">
+      <PopoverTrigger>
         Top Right
-      </OdsPopoverTrigger>
-      <OdsPopoverContent withArrow>
+      </PopoverTrigger>
+      <PopoverContent withArrow>
         Top Right popover
-      </OdsPopoverContent>
-    </OdsPopover>
+      </PopoverContent>
+    </Popover>
 
-    <OdsPopover position="left">
-      <OdsPopoverTrigger>
+    <Popover position="left">
+      <PopoverTrigger>
         Middle Left
-      </OdsPopoverTrigger>
-      <OdsPopoverContent withArrow>
+      </PopoverTrigger>
+      <PopoverContent withArrow>
         Middle Left popover
-      </OdsPopoverContent>
-    </OdsPopover>
+      </PopoverContent>
+    </Popover>
 
     <div />
 
-    <OdsPopover position="right">
-      <OdsPopoverTrigger>
+    <Popover position="right">
+      <PopoverTrigger>
         Middle Right
-      </OdsPopoverTrigger>
-      <OdsPopoverContent withArrow>
+      </PopoverTrigger>
+      <PopoverContent withArrow>
         Middle Right popover
-      </OdsPopoverContent>
-    </OdsPopover>
+      </PopoverContent>
+    </Popover>
 
-    <OdsPopover position="bottom-start">
-      <OdsPopoverTrigger>
+    <Popover position="bottom-start">
+      <PopoverTrigger>
         Bottom Left
-      </OdsPopoverTrigger>
-      <OdsPopoverContent withArrow>
+      </PopoverTrigger>
+      <PopoverContent withArrow>
         Bottom Left popover
-      </OdsPopoverContent>
-    </OdsPopover>
+      </PopoverContent>
+    </Popover>
 
-    <OdsPopover position="bottom">
-      <OdsPopoverTrigger>
+    <Popover position="bottom">
+      <PopoverTrigger>
         Bottom
-      </OdsPopoverTrigger>
-      <OdsPopoverContent withArrow>
+      </PopoverTrigger>
+      <PopoverContent withArrow>
         Bottom popover
-      </OdsPopoverContent>
-    </OdsPopover>
+      </PopoverContent>
+    </Popover>
 
-    <OdsPopover position="bottom-end">
-      <OdsPopoverTrigger>
+    <Popover position="bottom-end">
+      <PopoverTrigger>
         Bottom Right
-      </OdsPopoverTrigger>
-      <OdsPopoverContent withArrow>
+      </PopoverTrigger>
+      <PopoverContent withArrow>
         Bottom Right popover
-      </OdsPopoverContent>
-    </OdsPopover>
+      </PopoverContent>
+    </Popover>
   </div>
 );

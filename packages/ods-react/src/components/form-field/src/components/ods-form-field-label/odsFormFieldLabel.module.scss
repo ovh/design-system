@@ -1,7 +1,0 @@
-@use '../../../../../style/text';
-
-@layer ods {
-  .ods-form-field-label {
-    @include text.ods-text-label();
-  }
-}

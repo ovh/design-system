@@ -1,7 +1,7 @@
-import { ODS_OVERLAY_POSITION, ODS_OVERLAY_POSITIONS, type OdsOverlayPosition } from '../../../../utils/overlay';
+import { OVERLAY_POSITION, OVERLAY_POSITIONS, type OverlayPosition } from '../../../../utils/overlay';
 
 export {
-  ODS_OVERLAY_POSITION as ODS_POPOVER_POSITION,
-  ODS_OVERLAY_POSITIONS as ODS_POPOVER_POSITIONS,
-  type OdsOverlayPosition as OdsPopoverPosition,
+  OVERLAY_POSITION as POPOVER_POSITION,
+  OVERLAY_POSITIONS as POPOVER_POSITIONS,
+  type OverlayPosition as PopoverPosition,
 };

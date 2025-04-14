@@ -9,7 +9,7 @@
   "outputs": [
     {
       "name": "json",
-      "path": "./documentation/ods-spinner.json"
+      "path": "./documentation/spinner.json"
     }
   ],
   "sort": ["source-order"],

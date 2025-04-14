@@ -1,4 +1,4 @@
-import { ODS_ICON_NAME, OdsIcon } from '@ovhcloud/ods-react';
+import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as IconStories from './icon.stories';
 import { Banner } from '../../../src/components/banner/Banner';
@@ -91,9 +91,9 @@ Example of a decorative Icon:
 
 <Canvas of={ IconStories.AccessibilityDecorative } sourceState="shown" />
 
-<OdsIcon aria-hidden="true"
-         name={ ODS_ICON_NAME.circleCheck }
-         style={{ color: 'var(--ods-color-success-500)' }} /> The Icon is ignored by screen readers and does not create unnecessary noise.
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> The Icon is ignored by screen readers and does not create unnecessary noise.
 
 <Heading label="Providing meaningful information" level={ 4 } />
 
@@ -103,9 +103,9 @@ Example of an icon with accessible label:
 
 <Canvas of={ IconStories.AccessibilityInformative } sourceState="shown" />
 
-<OdsIcon aria-hidden="true"
-         name={ ODS_ICON_NAME.circleCheck }
-         style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "home", ensuring users understand the Icon's meaning.
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "home", ensuring users understand the Icon's meaning.
 
 If the Icon is inside a button, prefer using `aria-label` on the button itself rather than on the icon.
 See <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> examples.

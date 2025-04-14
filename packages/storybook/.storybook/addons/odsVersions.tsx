@@ -1,4 +1,4 @@
-import { ODS_BUTTON_VARIANT, ODS_ICON_NAME, OdsButton, OdsIcon, OdsLink, OdsPopover, OdsPopoverContent, OdsPopoverTrigger } from '@ovhcloud/ods-react';
+import { BUTTON_VARIANT, ICON_NAME, Button, Icon, Link, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';
 import { addons, types } from '@storybook/manager-api';
 import React from 'react';
 import versions from '../../assets/ods-versions.json';
@@ -13,26 +13,26 @@ const odsVersionsAddon = () => {
     render: () => {
       return (
         <div style={{ textAlign: 'center' }}>
-          <OdsPopover>
-            <OdsPopoverTrigger asChild>
-              <OdsButton variant={ ODS_BUTTON_VARIANT.ghost }>
-                { versions[0] } <OdsIcon name={ ODS_ICON_NAME.chevronDown } />
-              </OdsButton>
-            </OdsPopoverTrigger>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant={ BUTTON_VARIANT.ghost }>
+                { versions[0] } <Icon name={ ICON_NAME.chevronDown } />
+              </Button>
+            </PopoverTrigger>
 
-            <OdsPopoverContent style={{ maxHeight: '300px', overflowY: 'auto', zIndex: 1 }}>
+            <PopoverContent style={{ maxHeight: '300px', overflowY: 'auto', zIndex: 1 }}>
                 {
                   (versions || []).map((version, idx) => (
-                    <OdsLink key={ idx }
-                             style={{ display: 'block', margin: '0 2rem' }}
-                             href={ `${BASE_URL}/v${version}` }
-                             target="_blank">
+                    <Link key={ idx }
+                          style={{ display: 'block', margin: '0 2rem' }}
+                          href={ `${BASE_URL}/v${version}` }
+                          target="_blank">
                       { version }
-                    </OdsLink>
+                    </Link>
                   ))
                 }
-            </OdsPopoverContent>
-          </OdsPopover>
+            </PopoverContent>
+          </Popover>
         </div>
       )
     }

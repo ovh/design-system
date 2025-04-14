@@ -1,15 +1,15 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { type FormEvent, useState } from 'react';
-import { OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { ODS_TEXT_PRESET, OdsText } from '../../../../ods-react/src/components/text/src';
-import { OdsTextarea, type OdsTextareaProp } from '../../../../ods-react/src/components/textarea/src';
+import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
+import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
+import { Textarea, type TextareaProp } from '../../../../ods-react/src/components/textarea/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsTextareaProp>;
+type Story = StoryObj<TextareaProp>;
 
-const meta: Meta<OdsTextareaProp> = {
-  component: OdsTextarea,
+const meta: Meta<TextareaProp> = {
+  component: Textarea,
   title: 'ODS Components/Form elements/Textarea',
 };
 
@@ -63,18 +63,18 @@ export const Demo: Story = {
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsTextarea />
+    <Textarea />
   ),
 };
 
 export const Disabled: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsTextarea disabled />
+    <Textarea disabled />
   ),
 };
 
-export const FormField: Story = {
+export const InFormField: Story = {
   tags: ['!dev'],
   render: ({}) => {
     const MAX_COUNT = 200;
@@ -85,29 +85,29 @@ export const FormField: Story = {
     }
 
     return (
-      <OdsFormField invalid={ count > MAX_COUNT }>
-        <OdsFormFieldLabel>
+      <FormField invalid={ count > MAX_COUNT }>
+        <FormFieldLabel>
           Description:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsTextarea
+        <Textarea
           name="description"
           onInput={ onInput } />
 
-        <OdsFormFieldHelper style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <OdsText preset={ ODS_TEXT_PRESET.caption }>
+        <FormFieldHelper style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Text preset={ TEXT_PRESET.caption }>
             Helper text
-          </OdsText>
+          </Text>
 
-          <OdsText preset={ ODS_TEXT_PRESET.caption }>
+          <Text preset={ TEXT_PRESET.caption }>
             { count }/{ MAX_COUNT }
-          </OdsText>
-        </OdsFormFieldHelper>
+          </Text>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error message
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
     );
   },
 };
@@ -118,14 +118,14 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <OdsTextarea placeholder="Textarea" />
+    <Textarea placeholder="Textarea" />
   ),
 };
 
 export const ReadOnly: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsTextarea
+    <Textarea
       defaultValue="Readonly"
       readOnly />
   ),
@@ -134,6 +134,6 @@ export const ReadOnly: Story = {
 export const Resizable: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsTextarea style={{ resize: 'both' }} />
+    <Textarea style={{ resize: 'both' }} />
   ),
 };

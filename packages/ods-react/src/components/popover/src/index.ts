@@ -1,4 +1,4 @@
-export { OdsPopover, type OdsPopoverProp } from './components/ods-popover/OdsPopover';
-export { OdsPopoverContent, type OdsPopoverContentProp } from './components/ods-popover-content/OdsPopoverContent';
-export { OdsPopoverTrigger, type OdsPopoverTriggerProp } from './components/ods-popover-trigger/OdsPopoverTrigger';
-export { ODS_POPOVER_POSITION, ODS_POPOVER_POSITIONS, type OdsPopoverPosition } from './constants/popover-position';
+export { Popover, type PopoverProp } from './components/popover/Popover';
+export { PopoverContent, type PopoverContentProp } from './components/popover-content/PopoverContent';
+export { PopoverTrigger, type PopoverTriggerProp } from './components/popover-trigger/PopoverTrigger';
+export { POPOVER_POSITION, POPOVER_POSITIONS, type PopoverPosition } from './constants/popover-position';

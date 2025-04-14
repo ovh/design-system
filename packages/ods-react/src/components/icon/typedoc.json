@@ -9,7 +9,7 @@
   "outputs": [
     {
       "name": "json",
-      "path": "./documentation/ods-icon.json"
+      "path": "./documentation/icon.json"
     }
   ],
   "sort": ["source-order"],

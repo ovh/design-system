@@ -1,11 +1,11 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { ODS_ICON_NAME, ODS_ICON_NAMES, OdsIcon, type OdsIconProp } from '../../../../ods-react/src/components/icon/src';
+import { ICON_NAME, ICON_NAMES, Icon, type IconProp } from '../../../../ods-react/src/components/icon/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsIconProp>;
-type IconNameKey = keyof typeof ODS_ICON_NAME;
+type Story = StoryObj<IconProp>;
+type IconNameKey = keyof typeof ICON_NAME;
 
 /**
  * Try to keep the tags meaningful, they should represent possible search value from a user or an alternative name
@@ -164,8 +164,8 @@ const ODS_ICON_TAG: { [NameKey in IconNameKey]: string[] } = {
   xmark: ['clear', 'times'],
 };
 
-const meta: Meta<OdsIconProp> = {
-  component: OdsIcon,
+const meta: Meta<IconProp> = {
+  component: Icon,
   title: 'ODS Components/Icon',
 };
 
@@ -179,27 +179,29 @@ export const Demo: Story = {
         defaultValue: { summary: 'ø' },
       },
       control: { type: 'select' },
-      options: ODS_ICON_NAMES,
+      options: ICON_NAMES,
     },
   }),
   args: {
-    name: ODS_ICON_NAME.home,
+    name: ICON_NAME.home,
   },
 };
 
 export const AccessibilityDecorative: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsIcon aria-hidden="true"
-             name="cloud" />
+    <Icon
+      aria-hidden="true"
+      name="cloud" />
   ),
 };
 
 export const AccessibilityInformative: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsIcon aria-label="home"
-             name="home" />
+    <Icon
+      aria-label="home"
+      name="home" />
   ),
 };
 
@@ -209,12 +211,12 @@ export const All: Story = {
     const regexp = new RegExp(args.search)
 
     const names = args.search ?
-      Object.entries<string>(ODS_ICON_NAME)
+      Object.entries<string>(ICON_NAME)
         .filter(([key, name]) => {
           return [name].concat(ODS_ICON_TAG[key as IconNameKey] || []).some((value) => regexp.test(value));
         })
         .map(([_, name]) => name)
-      : ODS_ICON_NAMES;
+      : ICON_NAMES;
 
     return (
       <div style={{
@@ -225,9 +227,10 @@ export const All: Story = {
       }}>
         {
           names.map((name) => (
-            <OdsIcon key={ name }
-                     name={ name as ODS_ICON_NAME }
-                     title={ name } />
+            <Icon
+              key={ name }
+              name={ name as ICON_NAME }
+              title={ name } />
           ))
         }
       </div>
@@ -248,31 +251,34 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <OdsIcon aria-hidden="true"
-             name="home"
-             style={{ fontSize: '2rem', color: 'var(--ods-color-primary-500)' }} />
+    <Icon
+      aria-hidden="true"
+      name="home"
+      style={{ fontSize: '2rem', color: 'var(--ods-color-primary-500)' }} />
   ),
 };
 
 export const Decorative: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsIcon aria-hidden="true"
-             name="home" />
+    <Icon
+      aria-hidden="true"
+      name="home" />
   ),
 };
 
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsIcon name="home" />
+    <Icon name="home" />
   ),
 };
 
 export const Informative: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsIcon aria-label="Help"
-             name="circle-question" />
+    <Icon
+      aria-label="Help"
+      name="circle-question" />
   ),
 };

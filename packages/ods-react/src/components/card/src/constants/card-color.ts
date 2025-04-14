@@ -1,14 +1,14 @@
-enum ODS_CARD_COLOR {
+enum CARD_COLOR {
   neutral = 'neutral',
   primary = 'primary',
 }
 
-type OdsCardColor = `${ODS_CARD_COLOR}`;
+type CardColor = `${CARD_COLOR}`;
 
-const ODS_CARD_COLORS = Object.freeze(Object.values(ODS_CARD_COLOR));
+const CARD_COLORS = Object.freeze(Object.values(CARD_COLOR));
 
 export {
-  ODS_CARD_COLOR,
-  ODS_CARD_COLORS,
-  type OdsCardColor,
+  CARD_COLOR,
+  CARD_COLORS,
+  type CardColor,
 };

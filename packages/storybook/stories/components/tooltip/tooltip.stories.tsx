@@ -1,20 +1,20 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { OdsButton } from '../../../../ods-react/src/components/button/src';
-import { ODS_ICON_NAME, OdsIcon } from '../../../../ods-react/src/components/icon/src';
-import { ODS_TOOLTIP_POSITION, ODS_TOOLTIP_POSITIONS, OdsTooltip, type OdsTooltipProp, OdsTooltipContent, type OdsTooltipContentProp, OdsTooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
+import { Button } from '../../../../ods-react/src/components/button/src';
+import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
+import { TOOLTIP_POSITION, TOOLTIP_POSITIONS, Tooltip, type TooltipProp, TooltipContent, type TooltipContentProp, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsTooltipProp>;
-type DemoArg = Partial<OdsTooltipProp> & Partial<OdsTooltipContentProp> & {
+type Story = StoryObj<TooltipProp>;
+type DemoArg = Partial<TooltipProp> & Partial<TooltipContentProp> & {
   content?: string,
 };
 
-const meta: Meta<OdsTooltipProp> = {
+const meta: Meta<TooltipProp> = {
   argTypes: excludeFromDemoControls(['open']),
-  component: OdsTooltip,
-  subcomponents: { OdsTooltipContent, OdsTooltipTrigger },
+  component: Tooltip,
+  subcomponents: { TooltipContent, TooltipTrigger },
   title: 'ODS Components/Tooltip',
 };
 
@@ -25,18 +25,18 @@ export const Demo: StoryObj = {
     layout: 'centered',
   },
   render: (arg: DemoArg) => (
-    <OdsTooltip
+    <Tooltip
       closeDelay={ arg.closeDelay }
       openDelay={ arg.openDelay }
       position={ arg.position }>
-      <OdsTooltipTrigger asChild>
-        <OdsIcon name={ ODS_ICON_NAME.circleQuestion } />
-      </OdsTooltipTrigger>
+      <TooltipTrigger asChild>
+        <Icon name={ ICON_NAME.circleQuestion } />
+      </TooltipTrigger>
 
-      <OdsTooltipContent withArrow={ arg.withArrow }>
+      <TooltipContent withArrow={ arg.withArrow }>
         { arg.content }
-      </OdsTooltipContent>
-    </OdsTooltip>
+      </TooltipContent>
+    </Tooltip>
   ),
   argTypes: orderControls({
     closeDelay: {
@@ -65,11 +65,11 @@ export const Demo: StoryObj = {
     position: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: ODS_TOOLTIP_POSITION.top },
-        type: { summary: ODS_TOOLTIP_POSITIONS }
+        defaultValue: { summary: TOOLTIP_POSITION.top },
+        type: { summary: TOOLTIP_POSITIONS }
       },
       control: { type: 'select' },
-      options: ODS_TOOLTIP_POSITIONS,
+      options: TOOLTIP_POSITIONS,
     },
     withArrow: {
       table: {
@@ -96,19 +96,19 @@ export const Controlled: Story = {
 
     return (
       <>
-        <OdsButton onClick={ toggleTooltip }>
+        <Button onClick={ toggleTooltip }>
           Toggle tooltip
-        </OdsButton>
+        </Button>
 
-        <OdsTooltip open={ isOpen }>
-          <OdsTooltipTrigger asChild>
-            <OdsIcon name={ ODS_ICON_NAME.circleQuestion } />
-          </OdsTooltipTrigger>
+        <Tooltip open={ isOpen }>
+          <TooltipTrigger asChild>
+            <Icon name={ ICON_NAME.circleQuestion } />
+          </TooltipTrigger>
 
-          <OdsTooltipContent withArrow>
+          <TooltipContent withArrow>
             This is the tooltip content
-          </OdsTooltipContent>
-        </OdsTooltip>
+          </TooltipContent>
+        </Tooltip>
       </>
     );
   },
@@ -117,30 +117,30 @@ export const Controlled: Story = {
 export const CustomTrigger: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsTooltip>
-      <OdsTooltipTrigger asChild>
-        <OdsIcon name={ ODS_ICON_NAME.circleQuestion } />
-      </OdsTooltipTrigger>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Icon name={ ICON_NAME.circleQuestion } />
+      </TooltipTrigger>
 
-      <OdsTooltipContent>
+      <TooltipContent>
         This is the tooltip content
-      </OdsTooltipContent>
-    </OdsTooltip>
+      </TooltipContent>
+    </Tooltip>
   ),
 };
 
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsTooltip>
-      <OdsTooltipTrigger>
+    <Tooltip>
+      <TooltipTrigger>
         Show tooltip
-      </OdsTooltipTrigger>
+      </TooltipTrigger>
 
-      <OdsTooltipContent>
+      <TooltipContent>
         This is the tooltip content
-      </OdsTooltipContent>
-    </OdsTooltip>
+      </TooltipContent>
+    </Tooltip>
   ),
 };
 
@@ -159,79 +159,79 @@ export const Grid: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsTooltip position="top-start">
-        <OdsTooltipTrigger>
+      <Tooltip position="top-start">
+        <TooltipTrigger>
           Top Left
-        </OdsTooltipTrigger>
-        <OdsTooltipContent withArrow>
+        </TooltipTrigger>
+        <TooltipContent withArrow>
           Top Left tooltip
-        </OdsTooltipContent>
-      </OdsTooltip>
+        </TooltipContent>
+      </Tooltip>
 
-      <OdsTooltip position="top">
-        <OdsTooltipTrigger>
+      <Tooltip position="top">
+        <TooltipTrigger>
           Top
-        </OdsTooltipTrigger>
-        <OdsTooltipContent withArrow>
+        </TooltipTrigger>
+        <TooltipContent withArrow>
           Top tooltip
-        </OdsTooltipContent>
-      </OdsTooltip>
+        </TooltipContent>
+      </Tooltip>
 
-      <OdsTooltip position="top-end">
-        <OdsTooltipTrigger>
+      <Tooltip position="top-end">
+        <TooltipTrigger>
           Top Right
-        </OdsTooltipTrigger>
-        <OdsTooltipContent withArrow>
+        </TooltipTrigger>
+        <TooltipContent withArrow>
           Top Right tooltip
-        </OdsTooltipContent>
-      </OdsTooltip>
+        </TooltipContent>
+      </Tooltip>
 
-      <OdsTooltip position="left">
-        <OdsTooltipTrigger>
+      <Tooltip position="left">
+        <TooltipTrigger>
           Middle Left
-        </OdsTooltipTrigger>
-        <OdsTooltipContent withArrow>
+        </TooltipTrigger>
+        <TooltipContent withArrow>
           Middle Left tooltip
-        </OdsTooltipContent>
-      </OdsTooltip>
+        </TooltipContent>
+      </Tooltip>
 
       <div />
 
-      <OdsTooltip position="right">
-        <OdsTooltipTrigger>
+      <Tooltip position="right">
+        <TooltipTrigger>
           Middle Right
-        </OdsTooltipTrigger>
-        <OdsTooltipContent withArrow>
+        </TooltipTrigger>
+        <TooltipContent withArrow>
           Middle Right tooltip
-        </OdsTooltipContent>
-      </OdsTooltip>
+        </TooltipContent>
+      </Tooltip>
 
-      <OdsTooltip position="bottom-start">
-        <OdsTooltipTrigger>
+      <Tooltip position="bottom-start">
+        <TooltipTrigger>
           Bottom Left
-        </OdsTooltipTrigger>
-        <OdsTooltipContent withArrow>
+        </TooltipTrigger>
+        <TooltipContent withArrow>
           Bottom Left tooltip
-        </OdsTooltipContent>
-      </OdsTooltip>
+        </TooltipContent>
+      </Tooltip>
 
-      <OdsTooltip position="bottom">
-        <OdsTooltipTrigger>
+      <Tooltip position="bottom">
+        <TooltipTrigger>
           Bottom
-        </OdsTooltipTrigger>
-        <OdsTooltipContent withArrow>
+        </TooltipTrigger>
+        <TooltipContent withArrow>
           Bottom tooltip
-        </OdsTooltipContent>
-      </OdsTooltip>
+        </TooltipContent>
+      </Tooltip>
 
-      <OdsTooltip position="bottom-end">
-        <OdsTooltipTrigger>
+      <Tooltip position="bottom-end">
+        <TooltipTrigger>
           Bottom Right
-        </OdsTooltipTrigger>
-        <OdsTooltipContent withArrow>
+        </TooltipTrigger>
+        <TooltipContent withArrow>
           Bottom Right tooltip
-        </OdsTooltipContent>
-      </OdsTooltip>
+        </TooltipContent>
+      </Tooltip>
     </>
   ),
 };
@@ -242,14 +242,14 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <OdsTooltip>
-      <OdsTooltipTrigger asChild>
-        <OdsIcon name={ ODS_ICON_NAME.circleQuestion } />
-      </OdsTooltipTrigger>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Icon name={ ICON_NAME.circleQuestion } />
+      </TooltipTrigger>
 
-      <OdsTooltipContent>
+      <TooltipContent>
         This is the tooltip content
-      </OdsTooltipContent>
-    </OdsTooltip>
+      </TooltipContent>
+    </Tooltip>
   ),
 };

@@ -9,7 +9,7 @@
   "outputs": [
     {
       "name": "json",
-      "path": "./documentation/ods-divider.json"
+      "path": "./documentation/divider.json"
     }
   ],
   "sort": ["source-order"],

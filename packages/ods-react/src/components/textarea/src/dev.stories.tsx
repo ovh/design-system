@@ -1,14 +1,14 @@
-import { OdsTextarea } from '.';
+import { Textarea } from '.';
 
 export default {
-  component: OdsTextarea,
-  title: 'OdsTextarea dev',
+  component: Textarea,
+  title: 'Textarea dev',
 };
 
 export const Default = () => (
-  <OdsTextarea />
+  <Textarea />
 );
 
 export const Disabled = () => (
-  <OdsTextarea disabled />
+  <Textarea disabled />
 );

@@ -1,4 +1,4 @@
-import { OdsBadge } from '@ovhcloud/ods-react';
+import { Badge } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import * as TooltipStories from './tooltip.stories';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -53,14 +53,14 @@ The same result would now be achieved using:
 
 <Heading label="Attributes changes" level={ 2 } />
 
-`position` <OdsBadge color="success" size="sm">New</OdsBadge>
+`position` <Badge color="success" size="sm">New</Badge>
 
 New attribute (optional).
 
 You can choose a specific position for the tooltip. In case there is not enough space, it will automatically fallback
 to another position where the whole content can be displayed.
 
-`shadowDomTriggerId` <OdsBadge color="success" size="sm">New</OdsBadge>
+`shadowDomTriggerId` <Badge color="success" size="sm">New</Badge>
 
 New attribute (optional).
 
@@ -71,19 +71,19 @@ You usually won't have to use this attribute.
 
 You can find an usage example in the clipboard element implementation.
 
-`triggerId` <OdsBadge color="success" size="sm">New</OdsBadge>
+`triggerId` <Badge color="success" size="sm">New</Badge>
 
 New attribute (required).
 
 Id of the HTML element that serves as the tooltip trigger.
 
-`variant` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
+`variant` <Badge color="critical" size="sm">Removed</Badge>
 
 Has been removed.
 
 You can use the new `with-arrow` attribute to render either the standard or tip previous variant.
 
-`with-arrow` <OdsBadge color="success" size="sm">New</OdsBadge>
+`with-arrow` <Badge color="success" size="sm">New</Badge>
 
 New attribute (optional).
 

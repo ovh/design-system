@@ -1,18 +1,18 @@
-import { OdsButton } from '.';
+import { Button } from '.';
 
 export default {
-  component: OdsButton,
-  title: 'OdsButton dev',
+  component: Button,
+  title: 'Button dev',
 };
 
 export const Default = () => (
-  <OdsButton>
+  <Button>
     Default
-  </OdsButton>
+  </Button>
 );
 
 export const IsLoading = () => (
-  <OdsButton isLoading={ true }>
+  <Button isLoading={ true }>
     IsLoading
-  </OdsButton>
+  </Button>
 );

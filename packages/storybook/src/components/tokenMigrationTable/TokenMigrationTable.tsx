@@ -1,4 +1,4 @@
-import { ODS_BADGE_COLOR, OdsBadge } from '@ovhcloud/ods-react';
+import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
 import { CodeOrSourceMdx, Markdown } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import React, { type ReactNode } from 'react';
@@ -17,11 +17,11 @@ function renderBadge(status: ItemStatus): ReactNode {
   const isRemoved = status === 'removed';
 
   return (
-    <OdsBadge
-      color={ isRemoved ? ODS_BADGE_COLOR.critical : ODS_BADGE_COLOR.information }
+    <Badge
+      color={ isRemoved ? BADGE_COLOR.critical : BADGE_COLOR.information }
       size="sm">
       { isRemoved ? 'Removed' : 'Updated' }
-    </OdsBadge>
+    </Badge>
   )
 }
 

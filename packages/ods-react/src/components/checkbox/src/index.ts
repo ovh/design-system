@@ -1,4 +1,4 @@
-export { OdsCheckbox, type OdsCheckboxCheckedChangeDetail, type OdsCheckboxCheckedState, type OdsCheckboxProp } from './components/ods-checkbox/OdsCheckbox';
-export { OdsCheckboxControl, type OdsCheckboxControlProp } from './components/ods-checkbox-control/OdsCheckboxControl';
-export { OdsCheckboxGroup, type OdsCheckboxGroupProp } from './components/ods-checkbox-group/OdsCheckboxGroup';
-export { OdsCheckboxLabel, type OdsCheckboxLabelProp } from './components/ods-checkbox-label/OdsCheckboxLabel';
+export { Checkbox, type CheckboxCheckedChangeDetail, type CheckboxCheckedState, type CheckboxProp } from './components/checkbox/Checkbox';
+export { CheckboxControl, type CheckboxControlProp } from './components/checkbox-control/CheckboxControl';
+export { CheckboxGroup, type CheckboxGroupProp } from './components/checkbox-group/CheckboxGroup';
+export { CheckboxLabel, type CheckboxLabelProp } from './components/checkbox-label/CheckboxLabel';

@@ -1,21 +1,20 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { OdsCheckbox, OdsCheckboxControl, OdsCheckboxGroup, OdsCheckboxLabel, type OdsCheckboxProp } from '../../../../ods-react/src/components/checkbox/src';
-import { OdsFormField } from '../../../../ods-react/src/components/form-field/src';
-import { ODS_TEXT_PRESET, OdsText } from '../../../../ods-react/src/components/text/src';
+import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel, type CheckboxProp } from '../../../../ods-react/src/components/checkbox/src';
+import { FormField } from '../../../../ods-react/src/components/form-field/src';
+import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsCheckboxProp>;
-type DemoArg = Partial<OdsCheckboxProp> & {
+type Story = StoryObj<CheckboxProp>;
+type DemoArg = Partial<CheckboxProp> & {
   label?: string,
 };
 
-const meta: Meta<OdsCheckboxProp> = {
+const meta: Meta<CheckboxProp> = {
   argTypes: excludeFromDemoControls(['checked', 'defaultChecked', 'name', 'onCheckedChange', 'required', 'value']),
-  component: OdsCheckbox,
-  // @ts-ignore see https://github.com/storybookjs/storybook/issues/27535
-  subcomponents: { OdsCheckboxControl, OdsCheckboxGroup, OdsCheckboxLabel },
+  component: Checkbox,
+  subcomponents: { CheckboxControl, CheckboxGroup, CheckboxLabel },
   title: 'ODS Components/Form elements/Checkbox',
 };
 
@@ -23,15 +22,15 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg: DemoArg) => (
-    <OdsCheckbox
+    <Checkbox
       disabled={ arg.disabled }
       invalid={ arg.invalid }>
-      <OdsCheckboxControl />
+      <CheckboxControl />
 
-      <OdsCheckboxLabel>
+      <CheckboxLabel>
         { arg.label }
-      </OdsCheckboxLabel>
-    </OdsCheckbox>
+      </CheckboxLabel>
+    </Checkbox>
   ),
   argTypes: orderControls({
     disabled: {
@@ -66,52 +65,52 @@ export const Demo: StoryObj = {
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsCheckbox>
-      <OdsCheckboxControl />
-    </OdsCheckbox>
+    <Checkbox>
+      <CheckboxControl />
+    </Checkbox>
   ),
 };
 
 export const Disabled: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsCheckbox disabled>
-      <OdsCheckboxControl />
+    <Checkbox disabled>
+      <CheckboxControl />
 
-      <OdsCheckboxLabel>
+      <CheckboxLabel>
         Checkbox
-      </OdsCheckboxLabel>
-    </OdsCheckbox>
+      </CheckboxLabel>
+    </Checkbox>
   ),
 };
 
-export const FormField: Story = {
+export const InFormField: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsText preset={ ODS_TEXT_PRESET.label }>
+      <Text preset={ TEXT_PRESET.label }>
         Legal considerations:
-      </OdsText>
+      </Text>
 
-      <OdsFormField>
-        <OdsCheckbox>
-          <OdsCheckboxControl />
+      <FormField>
+        <Checkbox>
+          <CheckboxControl />
 
-          <OdsCheckboxLabel>
+          <CheckboxLabel>
             I agree to the terms and conditions.
-          </OdsCheckboxLabel>
-        </OdsCheckbox>
-      </OdsFormField>
+          </CheckboxLabel>
+        </Checkbox>
+      </FormField>
 
-      <OdsFormField>
-        <OdsCheckbox>
-          <OdsCheckboxControl />
+      <FormField>
+        <Checkbox>
+          <CheckboxControl />
 
-          <OdsCheckboxLabel>
+          <CheckboxLabel>
             I agree to receive marketing communications.
-          </OdsCheckboxLabel>
-        </OdsCheckbox>
-      </OdsFormField>
+          </CheckboxLabel>
+        </Checkbox>
+      </FormField>
     </>
   ),
 };
@@ -119,38 +118,38 @@ export const FormField: Story = {
 export const Group: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsCheckboxGroup
+    <CheckboxGroup
       defaultValue={ ['marketing'] }
       name="acknowledgments">
-      <OdsCheckbox value="term">
-        <OdsCheckboxControl />
+      <Checkbox value="term">
+        <CheckboxControl />
 
-        <OdsCheckboxLabel>
+        <CheckboxLabel>
           I agree to the terms and conditions.
-        </OdsCheckboxLabel>
-      </OdsCheckbox>
+        </CheckboxLabel>
+      </Checkbox>
 
-      <OdsCheckbox value="marketing">
-        <OdsCheckboxControl />
+      <Checkbox value="marketing">
+        <CheckboxControl />
 
-        <OdsCheckboxLabel>
+        <CheckboxLabel>
           I agree to receive marketing communications.
-        </OdsCheckboxLabel>
-      </OdsCheckbox>
-    </OdsCheckboxGroup>
+        </CheckboxLabel>
+      </Checkbox>
+    </CheckboxGroup>
   ),
 };
 
 export const Invalid: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsCheckbox invalid>
-      <OdsCheckboxControl />
+    <Checkbox invalid>
+      <CheckboxControl />
 
-      <OdsCheckboxLabel>
+      <CheckboxLabel>
         Checkbox
-      </OdsCheckboxLabel>
-    </OdsCheckbox>
+      </CheckboxLabel>
+    </Checkbox>
   ),
 };
 
@@ -160,13 +159,13 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <OdsCheckbox>
-      <OdsCheckboxControl />
+    <Checkbox>
+      <CheckboxControl />
 
-      <OdsCheckboxLabel>
+      <CheckboxLabel>
         Checkbox
-      </OdsCheckboxLabel>
-    </OdsCheckbox>
+      </CheckboxLabel>
+    </Checkbox>
   ),
 };
 
@@ -174,29 +173,29 @@ export const States: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsCheckbox checked={ false }>
-        <OdsCheckboxControl />
+      <Checkbox checked={ false }>
+        <CheckboxControl />
 
-        <OdsCheckboxLabel>
+        <CheckboxLabel>
           Unchecked
-        </OdsCheckboxLabel>
-      </OdsCheckbox>
+        </CheckboxLabel>
+      </Checkbox>
 
-      <OdsCheckbox checked={ true }>
-        <OdsCheckboxControl />
+      <Checkbox checked={ true }>
+        <CheckboxControl />
 
-        <OdsCheckboxLabel>
+        <CheckboxLabel>
           Checked
-        </OdsCheckboxLabel>
-      </OdsCheckbox>
+        </CheckboxLabel>
+      </Checkbox>
 
-      <OdsCheckbox checked="indeterminate">
-        <OdsCheckboxControl />
+      <Checkbox checked="indeterminate">
+        <CheckboxControl />
 
-        <OdsCheckboxLabel>
+        <CheckboxLabel>
           Indeterminate
-        </OdsCheckboxLabel>
-      </OdsCheckbox>
+        </CheckboxLabel>
+      </Checkbox>
     </>
   ),
 };

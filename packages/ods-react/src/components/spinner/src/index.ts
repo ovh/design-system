@@ -1,3 +1,3 @@
-export { OdsSpinner, type OdsSpinnerProp } from './components/ods-spinner/OdsSpinner';
-export { ODS_SPINNER_COLOR, ODS_SPINNER_COLORS, type OdsSpinnerColor } from './constants/spinner-color';
-export { ODS_SPINNER_SIZE, ODS_SPINNER_SIZES, type OdsSpinnerSize } from './constants/spinner-size';
+export { Spinner, type SpinnerProp } from './components/spinner/Spinner';
+export { SPINNER_COLOR, SPINNER_COLORS, type SpinnerColor } from './constants/spinner-color';
+export { SPINNER_SIZE, SPINNER_SIZES, type SpinnerSize } from './constants/spinner-size';

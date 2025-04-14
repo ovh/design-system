@@ -9,7 +9,7 @@
   "outputs": [
     {
       "name": "json",
-      "path": "./documentation/ods-password.json"
+      "path": "./documentation/password.json"
     }
   ],
   "sort": ["source-order"],

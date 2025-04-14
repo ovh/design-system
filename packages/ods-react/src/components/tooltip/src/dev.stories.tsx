@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { OdsTooltip, OdsTooltipContent, OdsTooltipTrigger } from '.';
-import { OdsButton } from '../../button/src';
+import { Tooltip, TooltipContent, TooltipTrigger } from '.';
+import { Button } from '../../button/src';
 
 export default {
-  component: OdsTooltip,
-  title: 'OdsTooltip dev',
+  component: Tooltip,
+  title: 'Tooltip dev',
 };
 
 export const Controlled = () => {
@@ -16,47 +16,47 @@ export const Controlled = () => {
 
   return (
     <>
-      <OdsButton onClick={ toggleTooltip }>
+      <Button onClick={ toggleTooltip }>
         Toggle tooltip
-      </OdsButton>
+      </Button>
 
-      <OdsTooltip open={ isOpen }>
-        <OdsTooltipTrigger>
+      <Tooltip open={ isOpen }>
+        <TooltipTrigger>
           Show tooltip
-        </OdsTooltipTrigger>
+        </TooltipTrigger>
 
-        <OdsTooltipContent withArrow>
+        <TooltipContent withArrow>
           This is the tooltip content
-        </OdsTooltipContent>
-      </OdsTooltip>
+        </TooltipContent>
+      </Tooltip>
     </>
   );
 };
 
 export const CustomTrigger = () => (
-  <OdsTooltip>
-    <OdsTooltipTrigger asChild>
-      <OdsButton>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button>
         Custom Trigger
-      </OdsButton>
-    </OdsTooltipTrigger>
+      </Button>
+    </TooltipTrigger>
 
-    <OdsTooltipContent>
+    <TooltipContent>
       This is the tooltip content
-    </OdsTooltipContent>
-  </OdsTooltip>
+    </TooltipContent>
+  </Tooltip>
 );
 
 export const Default = () => (
-  <OdsTooltip>
-    <OdsTooltipTrigger>
+  <Tooltip>
+    <TooltipTrigger>
       Show tooltip
-    </OdsTooltipTrigger>
+    </TooltipTrigger>
 
-    <OdsTooltipContent>
+    <TooltipContent>
       This is the tooltip content
-    </OdsTooltipContent>
-  </OdsTooltip>
+    </TooltipContent>
+  </Tooltip>
 );
 
 export const Grid = () => (
@@ -67,78 +67,78 @@ export const Grid = () => (
     gap: '20px',
     padding: '200px',
   }}>
-    <OdsTooltip position="top-start">
-      <OdsTooltipTrigger>
+    <Tooltip position="top-start">
+      <TooltipTrigger>
         Top Left
-      </OdsTooltipTrigger>
-      <OdsTooltipContent withArrow>
+      </TooltipTrigger>
+      <TooltipContent withArrow>
         Top Left popover
-      </OdsTooltipContent>
-    </OdsTooltip>
+      </TooltipContent>
+    </Tooltip>
 
-    <OdsTooltip position="top">
-      <OdsTooltipTrigger>
+    <Tooltip position="top">
+      <TooltipTrigger>
         Top
-      </OdsTooltipTrigger>
-      <OdsTooltipContent withArrow>
+      </TooltipTrigger>
+      <TooltipContent withArrow>
         Top popover
-      </OdsTooltipContent>
-    </OdsTooltip>
+      </TooltipContent>
+    </Tooltip>
 
-    <OdsTooltip position="top-end">
-      <OdsTooltipTrigger>
+    <Tooltip position="top-end">
+      <TooltipTrigger>
         Top Right
-      </OdsTooltipTrigger>
-      <OdsTooltipContent withArrow>
+      </TooltipTrigger>
+      <TooltipContent withArrow>
         Top Right popover
-      </OdsTooltipContent>
-    </OdsTooltip>
+      </TooltipContent>
+    </Tooltip>
 
-    <OdsTooltip position="left">
-      <OdsTooltipTrigger>
+    <Tooltip position="left">
+      <TooltipTrigger>
         Middle Left
-      </OdsTooltipTrigger>
-      <OdsTooltipContent withArrow>
+      </TooltipTrigger>
+      <TooltipContent withArrow>
         Middle Left popover
-      </OdsTooltipContent>
-    </OdsTooltip>
+      </TooltipContent>
+    </Tooltip>
 
     <div />
 
-    <OdsTooltip position="right">
-      <OdsTooltipTrigger>
+    <Tooltip position="right">
+      <TooltipTrigger>
         Middle Right
-      </OdsTooltipTrigger>
-      <OdsTooltipContent withArrow>
+      </TooltipTrigger>
+      <TooltipContent withArrow>
         Middle Right popover
-      </OdsTooltipContent>
-    </OdsTooltip>
+      </TooltipContent>
+    </Tooltip>
 
-    <OdsTooltip position="bottom-start">
-      <OdsTooltipTrigger>
+    <Tooltip position="bottom-start">
+      <TooltipTrigger>
         Bottom Left
-      </OdsTooltipTrigger>
-      <OdsTooltipContent withArrow>
+      </TooltipTrigger>
+      <TooltipContent withArrow>
         Bottom Left popover
-      </OdsTooltipContent>
-    </OdsTooltip>
+      </TooltipContent>
+    </Tooltip>
 
-    <OdsTooltip position="bottom">
-      <OdsTooltipTrigger>
+    <Tooltip position="bottom">
+      <TooltipTrigger>
         Bottom
-      </OdsTooltipTrigger>
-      <OdsTooltipContent withArrow>
+      </TooltipTrigger>
+      <TooltipContent withArrow>
         Bottom popover
-      </OdsTooltipContent>
-    </OdsTooltip>
+      </TooltipContent>
+    </Tooltip>
 
-    <OdsTooltip position="bottom-end">
-      <OdsTooltipTrigger>
+    <Tooltip position="bottom-end">
+      <TooltipTrigger>
         Bottom Right
-      </OdsTooltipTrigger>
-      <OdsTooltipContent withArrow>
+      </TooltipTrigger>
+      <TooltipContent withArrow>
         Bottom Right popover
-      </OdsTooltipContent>
-    </OdsTooltip>
+      </TooltipContent>
+    </Tooltip>
   </div>
 );

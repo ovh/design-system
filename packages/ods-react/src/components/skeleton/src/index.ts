@@ -1,1 +1,1 @@
-export { OdsSkeleton, type OdsSkeletonProp } from './components/ods-skeleton/OdsSkeleton';
+export { Skeleton, type SkeletonProp } from './components/skeleton/Skeleton';

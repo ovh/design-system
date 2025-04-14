@@ -1,10 +1,10 @@
-import { ODS_ICON_NAME, OdsIcon } from '.';
+import { ICON_NAME, Icon } from '.';
 
 export default {
-  component: OdsIcon,
-  title: 'OdsIcon dev',
+  component: Icon,
+  title: 'Icon dev',
 };
 
 export const Default = () => (
-  <OdsIcon name={ ODS_ICON_NAME.circleCheck } />
+  <Icon name={ ICON_NAME.circleCheck } />
 );

@@ -5,6 +5,9 @@ import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<IconProp>;
+type AllArg = Partial<IconProp> & {
+  search: string
+};
 type IconNameKey = keyof typeof ICON_NAME;
 
 /**
@@ -205,12 +208,11 @@ export const AccessibilityInformative: Story = {
   ),
 };
 
-export const All: Story = {
-  // @ts-ignore see how to type this correctly
-  render: (args: any) => {
-    const regexp = new RegExp(args.search)
+export const All: StoryObj<AllArg> = {
+  render: (arg: AllArg) => {
+    const regexp = new RegExp(arg.search)
 
-    const names = args.search ?
+    const names = arg.search ?
       Object.entries<string>(ICON_NAME)
         .filter(([key, name]) => {
           return [name].concat(ODS_ICON_TAG[key as IconNameKey] || []).some((value) => regexp.test(value));
@@ -237,7 +239,11 @@ export const All: Story = {
     );
   },
   argTypes: {
-    // @ts-ignore see how to type this custom param correctly
+    name: {
+      table: {
+        disable: true,
+      },
+    },
     search: {
       control: { type: 'text' },
       description: 'Search for a specific icon name or tag',

@@ -1,10 +1,19 @@
 import { ODS_ICON_NAME, OdsIcon } from '../../icon/src';
 import { OdsLink } from '.';
+import style from './dev.module.css';
 
 export default {
   component: OdsLink,
   title: 'OdsLink dev',
 };
+
+export const CustomStyle = () => (
+  <OdsLink
+    className={ style['ods-link'] }
+    href="#">
+    My link
+  </OdsLink>
+);
 
 export const Default = () => (
   <OdsLink href="#">

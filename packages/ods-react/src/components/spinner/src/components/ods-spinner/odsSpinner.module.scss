@@ -3,50 +3,52 @@ $spinner-size-sm: 24px;
 $spinner-size-md: 48px;
 $spinner-size-lg: 80px;
 
-@keyframes rotate {
-  from {
-    transform: rotate(0);
+@layer ods {
+  @keyframes rotate {
+    from {
+      transform: rotate(0);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
   }
 
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.ods-spinner {
-  display: inline-block;
-  height: 100%;
-
-  &--xs {
-    height: $spinner-size-xs;
-  }
-
-  &--sm {
-    height: $spinner-size-sm;
-  }
-
-  &--md {
-    height: $spinner-size-md;
-  }
-
-  &--lg {
-    height: $spinner-size-lg;
-  }
-
-  &--neutral {
-    fill: var(--ods-color-neutral-500);
-  }
-
-  &--primary {
-    fill: var(--ods-color-primary-500);
-  }
-
-  &--white {
-    fill: var(--ods-color-primary-000);
-  }
-
-  > svg {
+  .ods-spinner {
+    display: inline-block;
     height: 100%;
-    animation: rotate 0.8s infinite linear;
+
+    &--xs {
+      height: $spinner-size-xs;
+    }
+
+    &--sm {
+      height: $spinner-size-sm;
+    }
+
+    &--md {
+      height: $spinner-size-md;
+    }
+
+    &--lg {
+      height: $spinner-size-lg;
+    }
+
+    &--neutral {
+      fill: var(--ods-color-neutral-500);
+    }
+
+    &--primary {
+      fill: var(--ods-color-primary-500);
+    }
+
+    &--white {
+      fill: var(--ods-color-primary-000);
+    }
+
+    > svg {
+      height: 100%;
+      animation: rotate 0.8s infinite linear;
+    }
   }
 }

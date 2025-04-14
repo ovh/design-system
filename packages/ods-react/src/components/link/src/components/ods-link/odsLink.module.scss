@@ -1,23 +1,25 @@
 @use '../../../../../style/link';
 @use '../../../../../style/state';
 
-.ods-link {
-  $current: &;
+@layer ods {
+  .ods-link {
+    $current: &;
 
-  @include link.ods-link();
+    @include link.ods-link();
 
-  &--primary {
-    @include link.ods-link-color('primary');
+    &--primary {
+      @include link.ods-link-color('primary');
 
-    &#{$current}--disabled {
-      @include state.ods-is-disabled();
+      &#{$current}--disabled {
+        @include state.ods-is-disabled();
 
-      background-color: inherit;
+        background-color: inherit;
 
-      &:focus-visible,
-      &:hover {
-        transition: none;
-        background-size: 0;
+        &:focus-visible,
+        &:hover {
+          transition: none;
+          background-size: 0;
+        }
       }
     }
   }

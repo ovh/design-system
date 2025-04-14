@@ -1,15 +1,15 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { OdsFormField, OdsFormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { ODS_INPUT_TYPE, ODS_INPUT_TYPES, OdsInput, type OdsInputProp } from '../../../../ods-react/src/components/input/src';
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
+import { INPUT_TYPE, INPUT_TYPES, Input, type InputProp } from '../../../../ods-react/src/components/input/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsInputProp>;
+type Story = StoryObj<InputProp>;
 
-const meta: Meta<OdsInputProp> = {
+const meta: Meta<InputProp> = {
   argTypes: excludeFromDemoControls(['onClear']),
-  component: OdsInput,
+  component: Input,
   title: 'ODS Components/Form elements/Input',
 };
 
@@ -67,11 +67,11 @@ export const Demo: Story = {
     type: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: ODS_INPUT_TYPE.text },
-        type: { summary: ODS_INPUT_TYPES }
+        defaultValue: { summary: INPUT_TYPE.text },
+        type: { summary: INPUT_TYPES }
       },
       control: { type: 'select' },
-      options: ODS_INPUT_TYPES,
+      options: INPUT_TYPES,
     },
   }),
 };
@@ -79,7 +79,7 @@ export const Demo: Story = {
 export const Clearable: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsInput
+    <Input
       clearable
       defaultValue="Clearable" />
   ),
@@ -89,7 +89,7 @@ export const Datalist: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsInput list="ice-cream-flavors" />
+      <Input list="ice-cream-flavors" />
 
       <datalist id="ice-cream-flavors">
         <option value="Chocolate"></option>
@@ -105,51 +105,51 @@ export const Datalist: Story = {
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsInput />
+    <Input />
   ),
 };
 
 export const Disabled: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsInput disabled />
+    <Input disabled />
   ),
 };
 
 export const FloatingNumber: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsInput
+    <Input
       defaultValue="9.99"
       step="any"
-      type={ ODS_INPUT_TYPE.number } />
+      type={ INPUT_TYPE.number } />
   ),
 };
 
-export const FormField: Story = {
+export const InFormField: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsFormField>
-      <OdsFormFieldLabel>
+    <FormField>
+      <FormFieldLabel>
         Name:
-      </OdsFormFieldLabel>
+      </FormFieldLabel>
 
-      <OdsInput />
-    </OdsFormField>
+      <Input />
+    </FormField>
   ),
 };
 
 export const Loading: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsInput loading />
+    <Input loading />
   ),
 };
 
 export const Masked: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsInput maskOption={{ enable: true }} />
+    <Input maskOption={{ enable: true }} />
   ),
 };
 
@@ -159,14 +159,14 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <OdsInput placeholder="Input" />
+    <Input placeholder="Input" />
   ),
 };
 
 export const ReadOnly: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsInput
+    <Input
       defaultValue="Readonly"
       readOnly />
   ),
@@ -177,13 +177,13 @@ export const Types: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsInput type={ ODS_INPUT_TYPE.email } placeholder="email" /><br />
-      <OdsInput type={ ODS_INPUT_TYPE.number } placeholder="number" /><br />
-      <OdsInput type={ ODS_INPUT_TYPE.password } placeholder="password" /><br />
-      <OdsInput type={ ODS_INPUT_TYPE.search } placeholder="search" /><br />
-      <OdsInput type={ ODS_INPUT_TYPE.text } placeholder="text" /><br />
-      <OdsInput type={ ODS_INPUT_TYPE.time } placeholder="time" /><br />
-      <OdsInput type={ ODS_INPUT_TYPE.url } placeholder="url" /><br />
+      <Input type={ INPUT_TYPE.email } placeholder="email" /><br />
+      <Input type={ INPUT_TYPE.number } placeholder="number" /><br />
+      <Input type={ INPUT_TYPE.password } placeholder="password" /><br />
+      <Input type={ INPUT_TYPE.search } placeholder="search" /><br />
+      <Input type={ INPUT_TYPE.text } placeholder="text" /><br />
+      <Input type={ INPUT_TYPE.time } placeholder="time" /><br />
+      <Input type={ INPUT_TYPE.url } placeholder="url" /><br />
     </>
   ),
 };

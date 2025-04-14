@@ -1,4 +1,4 @@
-import { OdsLink } from '@ovhcloud/ods-react';
+import { Link } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
@@ -29,9 +29,9 @@ html {
 
 <Heading label="Use the ODS design tokens" level={ 2 } />
 
-All ODS components are using common design tokens, that are accessible through <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank">CSS variables</OdsLink>.
+All ODS components are using common design tokens, that are accessible through <Link href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank">CSS variables</Link>.
 
-If you want to use any of those on your own components, you can refer to the exhaustive list on the <OdsLink href="https://www.figma.com/design/tIKzHa5KvHHyosgIgyBswB/Design-Tokens?m=auto&node-id=0-1&t=s57Qt3pa7WuFWKEh-1" target="_blank">Figma dedicated page</OdsLink>.
+If you want to use any of those on your own components, you can refer to the exhaustive list on the <Link href="https://www.figma.com/design/tIKzHa5KvHHyosgIgyBswB/Design-Tokens?m=auto&node-id=0-1&t=s57Qt3pa7WuFWKEh-1" target="_blank">Figma dedicated page</Link>.
 
 <Source code={`
 .my-custom-title {

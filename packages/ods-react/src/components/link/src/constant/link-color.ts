@@ -1,13 +1,13 @@
-enum ODS_LINK_COLOR {
+enum LINK_COLOR {
   primary = 'primary',
 }
 
-type OdsLinkColor =`${ODS_LINK_COLOR}`;
+type LinkColor =`${LINK_COLOR}`;
 
-const ODS_LINK_COLORS = Object.freeze(Object.values(ODS_LINK_COLOR));
+const LINK_COLORS = Object.freeze(Object.values(LINK_COLOR));
 
 export {
-  ODS_LINK_COLOR,
-  ODS_LINK_COLORS,
-  type OdsLinkColor,
+  LINK_COLOR,
+  LINK_COLORS,
+  type LinkColor,
 };

@@ -1,2 +1,2 @@
-export { OdsCard, type OdsCardProp } from './components/ods-card/OdsCard';
-export { ODS_CARD_COLOR, ODS_CARD_COLORS, type OdsCardColor } from './constants/card-color';
+export { Card, type CardProp } from './components/card/Card';
+export { CARD_COLOR, CARD_COLORS, type CardColor } from './constants/card-color';

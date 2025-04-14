@@ -9,7 +9,7 @@
   "outputs": [
     {
       "name": "json",
-      "path": "./documentation/ods-form-field.json"
+      "path": "./documentation/form-field.json"
     }
   ],
   "sort": ["source-order"],

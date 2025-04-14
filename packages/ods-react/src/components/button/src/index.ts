@@ -1,4 +1,4 @@
-export { OdsButton, type OdsButtonProp } from './components/ods-button/OdsButton';
-export { ODS_BUTTON_COLOR, ODS_BUTTON_COLORS, type OdsButtonColor } from './constants/button-color';
-export { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, type OdsButtonSize } from './constants/button-size';
-export { ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS, type OdsButtonVariant } from './constants/button-variant';
+export { Button, type ButtonProp } from './components/button/Button';
+export { BUTTON_COLOR, BUTTON_COLORS, type ButtonColor } from './constants/button-color';
+export { BUTTON_SIZE, BUTTON_SIZES, type ButtonSize } from './constants/button-size';
+export { BUTTON_VARIANT, BUTTON_VARIANTS, type ButtonVariant } from './constants/button-variant';

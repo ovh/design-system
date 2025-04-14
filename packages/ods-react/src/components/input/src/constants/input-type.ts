@@ -1,4 +1,4 @@
-enum ODS_INPUT_TYPE {
+enum INPUT_TYPE {
   email = 'email',
   number = 'number',
   password = 'password',
@@ -8,12 +8,12 @@ enum ODS_INPUT_TYPE {
   url = 'url',
 }
 
-type OdsInputType =`${ODS_INPUT_TYPE}`;
+type InputType =`${INPUT_TYPE}`;
 
-const ODS_INPUT_TYPES = Object.freeze(Object.values(ODS_INPUT_TYPE));
+const INPUT_TYPES = Object.freeze(Object.values(INPUT_TYPE));
 
 export {
-  ODS_INPUT_TYPE,
-  ODS_INPUT_TYPES,
-  type OdsInputType,
+  INPUT_TYPE,
+  INPUT_TYPES,
+  type InputType,
 };

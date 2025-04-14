@@ -1,10 +1,10 @@
-import { OdsSkeleton } from '.';
+import { Skeleton } from '.';
 
 export default {
-  component: OdsSkeleton,
-  title: 'OdsSkeleton',
+  component: Skeleton,
+  title: 'Skeleton',
 };
 
 export const Default = () => (
-  <OdsSkeleton />
+  <Skeleton />
 );

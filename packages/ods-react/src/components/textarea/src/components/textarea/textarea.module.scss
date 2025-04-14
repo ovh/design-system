@@ -1,0 +1,24 @@
+@use '../../../../../style/input';
+
+@layer ods {
+  .textarea {
+    @include input.ods-input();
+
+    height: auto;
+    resize: none;
+
+    &:not([data-invalid], :disabled, :read-only) {
+      &:focus {
+        border-color: var(--ods-color-form-element-border-focus-default);
+      }
+
+      &:hover {
+        border-color: var(--ods-color-form-element-border-hover-default);
+      }
+    }
+
+    &[data-invalid] {
+      @include input.ods-input-error();
+    }
+  }
+}

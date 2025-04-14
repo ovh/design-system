@@ -1,4 +1,4 @@
-export { OdsFormField, type OdsFormFieldProp } from './components/ods-form-field/OdsFormField';
-export { OdsFormFieldError, type OdsFormFieldErrorProp } from './components/ods-form-field-error/OdsFormFieldError';
-export { OdsFormFieldHelper, type OdsFormFieldHelperProp } from './components/ods-form-field-helper/OdsFormFieldHelper';
-export { OdsFormFieldLabel, type OdsFormFieldLabelProp } from './components/ods-form-field-label/OdsFormFieldLabel';
+export { FormField, type FormFieldProp } from './components/form-field/FormField';
+export { FormFieldError, type FormFieldErrorProp } from './components/form-field-error/FormFieldError';
+export { FormFieldHelper, type FormFieldHelperProp } from './components/form-field-helper/FormFieldHelper';
+export { FormFieldLabel, type FormFieldLabelProp } from './components/form-field-label/FormFieldLabel';

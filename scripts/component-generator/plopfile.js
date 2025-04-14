@@ -20,6 +20,7 @@ module.exports = function (plop) {
   });
 
   plop.setPartial('component-name', '{{ prefix-join prefix name }}');
+  plop.setPartial('componentName', '{{ camelCase (prefix-join prefix name) }}');
   plop.setPartial('ComponentName', '{{ pascalCase (prefix-join prefix name) }}');
   plop.setPartial('COMPONENT_NAME', '{{ constantCase (prefix-join prefix name) }}');
 
@@ -39,7 +40,7 @@ module.exports = function (plop) {
       {
         type: 'input',
         name: 'name',
-        message: 'Type the component name using kebab-case, without any "ods-" prefix (ex: text, search-bar, ...):',
+        message: 'Type the component name using kebab-case, without any prefix (ex: text, search-bar, ...):',
         validate: function (value) {
           if (/.+/.test(value)) {
             return true;

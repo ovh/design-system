@@ -1,17 +1,15 @@
-enum ODS_SPINNER_COLOR {
+enum SPINNER_COLOR {
   neutral = 'neutral',
   primary = 'primary',
   white = 'white',
 }
 
-type OdsSpinnerColor =`${ODS_SPINNER_COLOR}`;
+type SpinnerColor =`${SPINNER_COLOR}`;
 
-const ODS_SPINNER_COLORS = Object.freeze(Object.values(ODS_SPINNER_COLOR));
+const SPINNER_COLORS = Object.freeze(Object.values(SPINNER_COLOR));
 
-export type {
-  OdsSpinnerColor,
-};
 export {
-  ODS_SPINNER_COLOR,
-  ODS_SPINNER_COLORS,
+  SPINNER_COLOR,
+  SPINNER_COLORS,
+  type SpinnerColor,
 };

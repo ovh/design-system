@@ -1,13 +1,13 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { ODS_TEXT_PRESET, ODS_TEXT_PRESETS, OdsText, type OdsTextProp }  from '../../../../ods-react/src/components/text/src';
+import { TEXT_PRESET, TEXT_PRESETS, Text, type TextProp }  from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsTextProp>;
+type Story = StoryObj<TextProp>;
 
-const meta: Meta<OdsTextProp> = {
-  component: OdsText,
+const meta: Meta<TextProp> = {
+  component: Text,
   title: 'ODS Components/Text',
 };
 
@@ -25,11 +25,11 @@ export const Demo: Story = {
     preset: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: ODS_TEXT_PRESET.paragraph },
+        defaultValue: { summary: TEXT_PRESET.paragraph },
         type: { summary: 'string' }
       },
       control: { type: 'select' },
-      options: ODS_TEXT_PRESETS,
+      options: TEXT_PRESETS,
     }
   }),
   args: {
@@ -40,7 +40,7 @@ export const Demo: Story = {
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</OdsText>
+    <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
   ),
 };
 
@@ -52,7 +52,7 @@ export const FigCaption: Story = {
            src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4"
            style={{ height: '100px' }} />
       <figcaption>
-        <OdsText preset="caption">My picture title</OdsText>
+        <Text preset="caption">My picture title</Text>
       </figcaption>
     </figure>
   ),
@@ -64,7 +64,7 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <OdsText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</OdsText>
+    <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
   ),
 };
 
@@ -72,17 +72,17 @@ export const Preset: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsText preset="caption">Caption</OdsText><br />
-      <OdsText preset="code">Code</OdsText><br />
-      <OdsText preset="label">Label</OdsText>
-      <OdsText preset="paragraph">Paragraph</OdsText>
-      <OdsText preset="span">Span</OdsText><br />
-      <OdsText preset="heading-1">Heading-1</OdsText>
-      <OdsText preset="heading-2">Heading-2</OdsText>
-      <OdsText preset="heading-3">Heading-3</OdsText>
-      <OdsText preset="heading-4">Heading-4</OdsText>
-      <OdsText preset="heading-5">Heading-5</OdsText>
-      <OdsText preset="heading-6">Heading-6</OdsText>
+      <Text preset="caption">Caption</Text><br />
+      <Text preset="code">Code</Text><br />
+      <Text preset="label">Label</Text>
+      <Text preset="paragraph">Paragraph</Text>
+      <Text preset="span">Span</Text><br />
+      <Text preset="heading-1">Heading-1</Text>
+      <Text preset="heading-2">Heading-2</Text>
+      <Text preset="heading-3">Heading-3</Text>
+      <Text preset="heading-4">Heading-4</Text>
+      <Text preset="heading-5">Heading-5</Text>
+      <Text preset="heading-6">Heading-6</Text>
     </>
   ),
 };
@@ -95,7 +95,7 @@ export const TableCaption: Story = {
       borderCollapse: 'collapse',
     }}>
       <caption style={{ captionSide: 'bottom' }}>
-        <OdsText preset="caption">My table title</OdsText>
+        <Text preset="caption">My table title</Text>
       </caption>
       <thead>
       <tr>

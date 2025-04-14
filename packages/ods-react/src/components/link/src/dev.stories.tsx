@@ -1,56 +1,56 @@
-import { ODS_ICON_NAME, OdsIcon } from '../../icon/src';
-import { OdsLink } from '.';
+import { ICON_NAME, Icon } from '../../icon/src';
+import { Link } from '.';
 import style from './dev.module.css';
 
 export default {
-  component: OdsLink,
-  title: 'OdsLink dev',
+  component: Link,
+  title: 'Link dev',
 };
 
 export const CustomStyle = () => (
-  <OdsLink
+  <Link
     className={ style['ods-link'] }
     href="#">
     My link
-  </OdsLink>
+  </Link>
 );
 
 export const Default = () => (
-  <OdsLink href="#">
+  <Link href="#">
     My link
-  </OdsLink>
+  </Link>
 );
 
 export const Disabled = () => (
   <>
-    <OdsLink
+    <Link
       disabled={ true }
       href="http://google.com"
       target="_blank">
       My link
-    </OdsLink>
+    </Link>
     <br />
-    <OdsLink
+    <Link
       disabled={ false }
       href="http://google.com"
       target="_blank">
       My link
-    </OdsLink>
+    </Link>
   </>
 );
 
 export const Icons = () => (
   <>
-    <OdsLink
+    <Link
       href="http://google.com"
       target="_blank">
-      <OdsIcon name={ ODS_ICON_NAME.arrowLeft } /> My link
-    </OdsLink>
+      <Icon name={ ICON_NAME.arrowLeft } /> My link
+    </Link>
     <br />
-    <OdsLink
+    <Link
       href="http://google.com"
       target="_blank">
-      My link <OdsIcon name={ ODS_ICON_NAME.arrowRight } />
-    </OdsLink>
+      My link <Icon name={ ICON_NAME.arrowRight } />
+    </Link>
   </>
 );

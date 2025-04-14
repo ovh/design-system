@@ -1,13 +1,13 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { OdsFormField, OdsFormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { OdsPassword, type OdsPasswordProp } from '../../../../ods-react/src/components/password/src';
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
+import { Password, type PasswordProp } from '../../../../ods-react/src/components/password/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsPasswordProp>;
+type Story = StoryObj<PasswordProp>;
 
-const meta: Meta<OdsPasswordProp> = {
+const meta: Meta<PasswordProp> = {
   argTypes: {
     maskInitialState: {
       table: {
@@ -20,7 +20,7 @@ const meta: Meta<OdsPasswordProp> = {
       },
     },
   },
-  component: OdsPassword,
+  component: Password,
   title: 'ODS Components/Form elements/Password',
 };
 
@@ -74,7 +74,7 @@ export const Demo: Story = {
 export const Clearable: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsPassword
+    <Password
       clearable
       defaultValue="Clearable" />
   ),
@@ -83,34 +83,34 @@ export const Clearable: Story = {
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsPassword />
+    <Password />
   ),
 };
 
 export const Disabled: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsPassword disabled />
+    <Password disabled />
   ),
 };
 
-export const FormField: Story = {
+export const InFormField: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsFormField>
-      <OdsFormFieldLabel>
+    <FormField>
+      <FormFieldLabel>
         Password:
-      </OdsFormFieldLabel>
+      </FormFieldLabel>
 
-      <OdsPassword />
-    </OdsFormField>
+      <Password />
+    </FormField>
   ),
 };
 
 export const Loading: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsPassword loading />
+    <Password loading />
   ),
 };
 
@@ -120,14 +120,14 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <OdsPassword />
+    <Password />
   ),
 };
 
 export const ReadOnly: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsPassword
+    <Password
       defaultValue="Readonly"
       readOnly />
   ),

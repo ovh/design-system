@@ -1,4 +1,4 @@
-export { OdsTooltip, type OdsTooltipProp } from './components/ods-tooltip/OdsTooltip';
-export { OdsTooltipContent, type OdsTooltipContentProp } from './components/ods-tooltip-content/OdsTooltipContent';
-export { OdsTooltipTrigger, type OdsTooltipTriggerProp } from './components/ods-tooltip-trigger/OdsTooltipTrigger';
-export { ODS_TOOLTIP_POSITION, ODS_TOOLTIP_POSITIONS, type OdsTooltipPosition } from './constants/tooltip-position';
+export { Tooltip, type TooltipProp } from './components/tooltip/Tooltip';
+export { TooltipContent, type TooltipContentProp } from './components/tooltip-content/TooltipContent';
+export { TooltipTrigger, type TooltipTriggerProp } from './components/tooltip-trigger/TooltipTrigger';
+export { TOOLTIP_POSITION, TOOLTIP_POSITIONS, type TooltipPosition } from './constants/tooltip-position';

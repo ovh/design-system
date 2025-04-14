@@ -1,4 +1,4 @@
-import { OdsLink } from '@ovhcloud/ods-react';
+import { Link } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import { Heading } from '../../src/components/heading/Heading';
 
@@ -8,7 +8,7 @@ import { Heading } from '../../src/components/heading/Heading';
 
 OVHcloud Design System is a set of reusable React UI components to create a consistent user experience across OVHcloud pages and products, acting as a single source of truth.
 
-All OVHcloud Design System packages are available on <OdsLink href="https://www.npmjs.com" target="_blank">NPM</OdsLink>.
+All OVHcloud Design System packages are available on <Link href="https://www.npmjs.com" target="_blank">NPM</Link>.
 
 <Heading label="Installation" level={ 2 } />
 
@@ -25,13 +25,13 @@ or
 <Heading label="Usage" level={ 2 } />
 
 <Source code={`
-import { OdsButton } from '@ovhcloud/ods-react';
+import { Button } from '@ovhcloud/ods-react';
 
 const App = () => {
   return (
-    <OdsButton>
+    <Button>
       Some button
-    </OdsButton>
+    </Button>
   );
 };
 `}
@@ -44,7 +44,7 @@ Components are compatible with React v18.2+.
 
 All enums, interfaces, events are available directly from the `ods-react` lib
 
-<Source code={ `import { ODS_BUTTON_SIZE, type OdsPaginationEvent } from '@ovhcloud/ods-react';` }
+<Source code={ `import { BUTTON_SIZE, type CheckboxProp } from '@ovhcloud/ods-react';` }
         dark="true"
         language="typescript" />
 

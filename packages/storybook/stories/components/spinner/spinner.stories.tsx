@@ -1,13 +1,13 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { ODS_SPINNER_COLOR, ODS_SPINNER_COLORS, ODS_SPINNER_SIZE, ODS_SPINNER_SIZES, OdsSpinner, type OdsSpinnerProp } from '../../../../ods-react/src/components/spinner/src';
+import { SPINNER_COLOR, SPINNER_COLORS, SPINNER_SIZE, SPINNER_SIZES, Spinner, type SpinnerProp } from '../../../../ods-react/src/components/spinner/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsSpinnerProp>;
+type Story = StoryObj<SpinnerProp>;
 
-const meta: Meta<OdsSpinnerProp> = {
-  component: OdsSpinner,
+const meta: Meta<SpinnerProp> = {
+  component: Spinner,
   title: 'ODS Components/Spinner',
 };
 
@@ -18,20 +18,20 @@ export const Demo: Story = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_SPINNER_COLOR.primary },
-        type: { summary: ODS_SPINNER_COLORS }
+        defaultValue: { summary: SPINNER_COLOR.primary },
+        type: { summary: SPINNER_COLORS }
       },
       control: { type: 'select' },
-      options: ODS_SPINNER_COLORS,
+      options: SPINNER_COLORS,
     },
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_SPINNER_SIZE.md },
-        type: { summary: ODS_SPINNER_SIZES }
+        defaultValue: { summary: SPINNER_SIZE.md },
+        type: { summary: SPINNER_SIZES }
       },
       control: { type: 'select' },
-      options: ODS_SPINNER_SIZES,
+      options: SPINNER_SIZES,
     },
   }),
 };
@@ -40,9 +40,9 @@ export const Color: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsSpinner color={ ODS_SPINNER_COLOR.neutral } />
-      <OdsSpinner color={ ODS_SPINNER_COLOR.primary } />
-      <OdsSpinner style={{ backgroundColor: '#262626' }} color={ ODS_SPINNER_COLOR.white } />
+      <Spinner color={ SPINNER_COLOR.neutral } />
+      <Spinner color={ SPINNER_COLOR.primary } />
+      <Spinner style={{ backgroundColor: '#262626' }} color={ SPINNER_COLOR.white } />
     </>
   ),
 };
@@ -50,7 +50,7 @@ export const Color: Story = {
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsSpinner />
+    <Spinner />
   ),
 };
 
@@ -60,7 +60,7 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <OdsSpinner />
+    <Spinner />
   ),
 };
 
@@ -68,10 +68,10 @@ export const Size: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsSpinner size={ ODS_SPINNER_SIZE.xs } />
-      <OdsSpinner size={ ODS_SPINNER_SIZE.sm } />
-      <OdsSpinner size={ ODS_SPINNER_SIZE.md } />
-      <OdsSpinner size={ ODS_SPINNER_SIZE.lg } />
+      <Spinner size={ SPINNER_SIZE.xs } />
+      <Spinner size={ SPINNER_SIZE.sm } />
+      <Spinner size={ SPINNER_SIZE.md } />
+      <Spinner size={ SPINNER_SIZE.lg } />
     </>
   ),
 };

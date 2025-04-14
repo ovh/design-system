@@ -1,3 +1,3 @@
-export { OdsDivider, type OdsDividerProp } from './components/ods-divider/OdsDivider';
-export { ODS_DIVIDER_COLOR, ODS_DIVIDER_COLORS, type OdsDividerColor } from './constants/divider-color';
-export { ODS_DIVIDER_SPACING, ODS_DIVIDER_SPACINGS, type OdsDividerSpacing } from './constants/divider-spacing';
+export { Divider, type DividerProp } from './components/divider/Divider';
+export { DIVIDER_COLOR, DIVIDER_COLORS, type DividerColor } from './constants/divider-color';
+export { DIVIDER_SPACING, DIVIDER_SPACINGS, type DividerSpacing } from './constants/divider-spacing';

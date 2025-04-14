@@ -1,23 +1,22 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { type FormEvent, useState } from 'react';
-import { OdsFormField, type OdsFormFieldProp, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { ODS_TEXT_PRESET, OdsText } from '../../../../ods-react/src/components/text/src';
-import { OdsTextarea } from '../../../../ods-react/src/components/textarea/src';
+import { FormField, type FormFieldProp, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
+import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
+import { Textarea } from '../../../../ods-react/src/components/textarea/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsFormFieldProp>;
-type DemoArg = Partial<OdsFormFieldProp> & {
+type Story = StoryObj<FormFieldProp>;
+type DemoArg = Partial<FormFieldProp> & {
   errorText?: string,
   helperText?: string,
   label?: string,
 };
 
-const meta: Meta<OdsFormFieldProp> = {
+const meta: Meta<FormFieldProp> = {
   argTypes: excludeFromDemoControls(['required']),
-  component: OdsFormField,
-  // @ts-ignore see https://github.com/storybookjs/storybook/issues/27535
-  subcomponents: { OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel },
+  component: FormField,
+  subcomponents: { FormFieldError, FormFieldHelper, FormFieldLabel },
   title: 'ODS Components/Form elements/FormField',
 };
 
@@ -25,24 +24,24 @@ export default meta;
 
 export const Demo: Story = {
   render: (args: DemoArg) => (
-    <OdsFormField
+    <FormField
       disabled={ args.disabled }
       invalid={ args.invalid }
       readOnly={ args.readOnly }>
-      <OdsFormFieldLabel>
+      <FormFieldLabel>
         { args.label }
-      </OdsFormFieldLabel>
+      </FormFieldLabel>
 
-      <OdsTextarea name="demo" />
+      <Textarea name="demo" />
 
-      <OdsFormFieldHelper>
+      <FormFieldHelper>
         { args.helperText }
-      </OdsFormFieldHelper>
+      </FormFieldHelper>
 
-      <OdsFormFieldError>
+      <FormFieldError>
         { args.errorText }
-      </OdsFormFieldError>
-    </OdsFormField>
+      </FormFieldError>
+    </FormField>
   ),
   argTypes: orderControls({
     disabled: {
@@ -99,50 +98,50 @@ export const Demo: Story = {
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsFormField>
-      <OdsTextarea name="textarea" />
-    </OdsFormField>
+    <FormField>
+      <Textarea name="textarea" />
+    </FormField>
   ),
 };
 
 export const Error: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsFormField invalid>
-      <OdsTextarea name="textarea" />
+    <FormField invalid>
+      <Textarea name="textarea" />
 
-      <OdsFormFieldError>
+      <FormFieldError>
         Error message
-      </OdsFormFieldError>
-    </OdsFormField>
+      </FormFieldError>
+    </FormField>
   ),
 };
 
 export const Helper: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsFormField>
-      <OdsTextarea name="textarea" />
+    <FormField>
+      <Textarea name="textarea" />
 
-      <OdsFormFieldHelper>
-        <OdsText preset={ ODS_TEXT_PRESET.caption }>
+      <FormFieldHelper>
+        <Text preset={ TEXT_PRESET.caption }>
           Helper text
-        </OdsText>
-      </OdsFormFieldHelper>
-    </OdsFormField>
+        </Text>
+      </FormFieldHelper>
+    </FormField>
   ),
 };
 
 export const Label: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsFormField>
-      <OdsFormFieldLabel>
+    <FormField>
+      <FormFieldLabel>
         Description:
-      </OdsFormFieldLabel>
+      </FormFieldLabel>
 
-      <OdsTextarea name="textarea" />
-    </OdsFormField>
+      <Textarea name="textarea" />
+    </FormField>
   ),
 };
 
@@ -160,29 +159,29 @@ export const Overview: Story = {
     }
 
     return (
-      <OdsFormField invalid={ count > MAX_COUNT }>
-        <OdsFormFieldLabel>
+      <FormField invalid={ count > MAX_COUNT }>
+        <FormFieldLabel>
           Description:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsTextarea
+        <Textarea
           name="description"
           onInput={ onInput } />
 
-        <OdsFormFieldHelper style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <OdsText preset={ ODS_TEXT_PRESET.caption }>
+        <FormFieldHelper style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Text preset={ TEXT_PRESET.caption }>
             Helper text
-          </OdsText>
+          </Text>
 
-          <OdsText preset={ ODS_TEXT_PRESET.caption }>
+          <Text preset={ TEXT_PRESET.caption }>
             { count }/{ MAX_COUNT }
-          </OdsText>
-        </OdsFormFieldHelper>
+          </Text>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error message
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
     );
   },
 };

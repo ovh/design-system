@@ -1,0 +1,49 @@
+@use '../../../../../style/text';
+
+@layer ods {
+  .text {
+    &--caption {
+      @include text.ods-text-caption();
+    }
+
+    &--code {
+      @include text.ods-text-code();
+    }
+
+    &--heading-1 {
+      @include text.ods-text-heading-1();
+    }
+
+    &--heading-2 {
+      @include text.ods-text-heading-2();
+    }
+
+    &--heading-3 {
+      @include text.ods-text-heading-3();
+    }
+
+    &--heading-4 {
+      @include text.ods-text-heading-4();
+    }
+
+    &--heading-5 {
+      @include text.ods-text-heading-5();
+    }
+
+    &--heading-6 {
+      @include text.ods-text-heading-6();
+    }
+
+    &--label {
+      @include text.ods-text-label();
+    }
+
+    &--paragraph {
+      @include text.ods-text-paragraph();
+    }
+
+    &--span {
+      @include text.ods-text-span();
+    }
+  }
+}

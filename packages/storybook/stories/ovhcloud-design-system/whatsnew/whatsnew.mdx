@@ -1,4 +1,4 @@
-import { OdsLink } from '@ovhcloud/ods-react';
+import { Link } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
@@ -236,18 +236,18 @@ move over it and keep it open (and for example select its content).
 
 <Heading label="Miscellaneous:" level={ 3 } />
 
-We did integrate <OdsLink href="https://testing-library.com/docs/react-testing-library/intro" target="_blank">react-testing-library</OdsLink>
+We did integrate <Link href="https://testing-library.com/docs/react-testing-library/intro" target="_blank">react-testing-library</Link>
 to our React wrapper test suites, so that we can replicate more easily issues integrators may encounter.
 
 <Heading label="v18.4.0" level={ 2 } />
 
 <Heading label="Changes on form elements:" level={ 3 } />
 
-This version is focused on implementing <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState" target="_blank">ValidityState</OdsLink> to our form elements.
+This version is focused on implementing <Link href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState" target="_blank">ValidityState</Link> to our form elements.
 
 This allows you to setup a fully working form without the need of any external library or custom validation code, as everything behave as a native form.
 
-Though you can of course use a lib on top of that if you want to. We've validated forms using native code (vanilla and React), <OdsLink href="https://formik.org" target="_blank">Formik</OdsLink> and <OdsLink href="https://react-hook-form.com" target="_blank">React Hook Form</OdsLink> on our tests and playgrounds.
+Though you can of course use a lib on top of that if you want to. We've validated forms using native code (vanilla and React), <Link href="https://formik.org" target="_blank">Formik</Link> and <Link href="https://react-hook-form.com" target="_blank">React Hook Form</Link> on our tests and playgrounds.
 
 The changes on each component are massive, but we did focus on ensuring bumping to this version would be transparent for current ODS users.
 
@@ -532,7 +532,7 @@ The new version comes with the following upgrade on major library:
 <Heading label="Style customization" level={ 3 } />
 
 Although the ODS component comes with the expected design, you can now apply your own style directly on some part
-of the web-component shadow DOM, thanks to the <OdsLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank">part selector</OdsLink>.
+of the web-component shadow DOM, thanks to the <Link href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank">part selector</Link>.
 
 For example, you can add style on the native `input` element of an `ods-input` component through the following code:
 

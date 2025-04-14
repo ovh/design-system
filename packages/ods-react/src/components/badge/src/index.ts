@@ -1,3 +1,3 @@
-export { OdsBadge, type OdsBadgeProp } from './components/ods-badge/OdsBadge';
-export { ODS_BADGE_COLOR, ODS_BADGE_COLORS, type OdsBadgeColor } from './constants/badge-color';
-export { ODS_BADGE_SIZE, ODS_BADGE_SIZES, type OdsBadgeSize } from './constants/badge-size';
+export { Badge, type BadgeProp } from './components/badge/Badge';
+export { BADGE_COLOR, BADGE_COLORS, type BadgeColor } from './constants/badge-color';
+export { BADGE_SIZE, BADGE_SIZES, type BadgeSize } from './constants/badge-size';

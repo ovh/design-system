@@ -1,4 +1,4 @@
-import { ODS_ICON_NAME, OdsIcon, OdsLink } from '@ovhcloud/ods-react';
+import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';
 import { Table } from '@storybook/components';
 import React, { Fragment, type ReactNode } from 'react';
 import { ATOMIC_TYPE } from '../../constants/atomicDesign';
@@ -66,11 +66,11 @@ const IdentityCard = ({ aliases, atomicType, children, figmaLink, githubUrl, nam
           </th>
 
           <td>
-            <OdsLink className={ styles['identity-card__atomic-link'] }
-                     href={ getAtomicTypeDocUrl(atomicType) }
-                     target="_blank">
-              { atomicType } <OdsIcon name={ ODS_ICON_NAME.externalLink } />
-            </OdsLink>
+            <Link className={ styles['identity-card__atomic-link'] }
+                  href={ getAtomicTypeDocUrl(atomicType) }
+                  target="_blank">
+              { atomicType } <Icon name={ ICON_NAME.externalLink } />
+            </Link>
           </td>
         </tr>
 
@@ -102,17 +102,17 @@ const IdentityCard = ({ aliases, atomicType, children, figmaLink, githubUrl, nam
           </th>
 
           <td>
-            <OdsLink className={ styles['identity-card__app-link'] }
+            <Link className={ styles['identity-card__app-link'] }
                      href={ figmaLink }
                      target="_blank">
-              Design <OdsIcon name={ ODS_ICON_NAME.externalLink } />
-            </OdsLink>
+              Design <Icon name={ ICON_NAME.externalLink } />
+            </Link>
 
-            <OdsLink className={ styles['identity-card__app-link'] }
+            <Link className={ styles['identity-card__app-link'] }
                      href={ githubUrl }
                      target="_blank">
-              Github <OdsIcon name={ ODS_ICON_NAME.externalLink } />
-            </OdsLink>
+              Github <Icon name={ ICON_NAME.externalLink } />
+            </Link>
           </td>
         </tr>
         </tbody>

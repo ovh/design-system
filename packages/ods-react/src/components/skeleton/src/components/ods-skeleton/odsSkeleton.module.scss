@@ -1,7 +1,0 @@
-@use '../../../../../style/skeleton';
-
-@layer ods {
-  .ods-skeleton {
-    @include skeleton.ods-skeleton();
-  }
-}

@@ -1,15 +1,15 @@
-enum ODS_BUTTON_VARIANT {
+enum BUTTON_VARIANT {
   default = 'default',
   ghost = 'ghost',
   outline = 'outline',
 }
 
-type OdsButtonVariant =`${ODS_BUTTON_VARIANT}`;
+type ButtonVariant =`${BUTTON_VARIANT}`;
 
-const ODS_BUTTON_VARIANTS = Object.freeze(Object.values(ODS_BUTTON_VARIANT));
+const BUTTON_VARIANTS = Object.freeze(Object.values(BUTTON_VARIANT));
 
 export {
-  ODS_BUTTON_VARIANT,
-  ODS_BUTTON_VARIANTS,
-  type OdsButtonVariant,
+  BUTTON_VARIANT,
+  BUTTON_VARIANTS,
+  type ButtonVariant,
 };

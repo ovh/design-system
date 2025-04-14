@@ -1,13 +1,13 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { ODS_BADGE_COLOR, ODS_BADGE_COLORS, ODS_BADGE_SIZE, ODS_BADGE_SIZES, OdsBadge, type OdsBadgeProp } from '../../../../ods-react/src/components/badge/src';
+import { BADGE_COLOR, BADGE_COLORS, BADGE_SIZE, BADGE_SIZES, Badge, type BadgeProp } from '../../../../ods-react/src/components/badge/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsBadgeProp>;
+type Story = StoryObj<BadgeProp>;
 
-const meta: Meta<OdsBadgeProp> = {
-  component: OdsBadge,
+const meta: Meta<BadgeProp> = {
+  component: Badge,
   title: 'ODS Components/Badge',
 };
 
@@ -25,20 +25,20 @@ export const Demo: Story = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_BADGE_COLOR.information },
-        type: { summary: ODS_BADGE_COLORS }
+        defaultValue: { summary: BADGE_COLOR.information },
+        type: { summary: BADGE_COLORS }
       },
       control: { type: 'select' },
-      options: ODS_BADGE_COLORS,
+      options: BADGE_COLORS,
     },
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_BADGE_SIZE.md },
-        type: { summary: ODS_BADGE_SIZES }
+        defaultValue: { summary: BADGE_SIZE.md },
+        type: { summary: BADGE_SIZES }
       },
       control: { type: 'select' },
-      options: ODS_BADGE_SIZES,
+      options: BADGE_SIZES,
     },
   }),
   args: {
@@ -51,15 +51,15 @@ export const Color: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsBadge color={ ODS_BADGE_COLOR.alpha }>Alpha</OdsBadge>
-      <OdsBadge color={ ODS_BADGE_COLOR.beta }>Beta</OdsBadge>
-      <OdsBadge color={ ODS_BADGE_COLOR.critical }>Critical</OdsBadge>
-      <OdsBadge color={ ODS_BADGE_COLOR.information }>Information</OdsBadge>
-      <OdsBadge color={ ODS_BADGE_COLOR.neutral }>Neutral</OdsBadge>
-      <OdsBadge color={ ODS_BADGE_COLOR.new }>New</OdsBadge>
-      <OdsBadge color={ ODS_BADGE_COLOR.promotion }>Promotion</OdsBadge>
-      <OdsBadge color={ ODS_BADGE_COLOR.success }>Success</OdsBadge>
-      <OdsBadge color={ ODS_BADGE_COLOR.warning }>Warning</OdsBadge>
+      <Badge color={ BADGE_COLOR.alpha }>Alpha</Badge>
+      <Badge color={ BADGE_COLOR.beta }>Beta</Badge>
+      <Badge color={ BADGE_COLOR.critical }>Critical</Badge>
+      <Badge color={ BADGE_COLOR.information }>Information</Badge>
+      <Badge color={ BADGE_COLOR.neutral }>Neutral</Badge>
+      <Badge color={ BADGE_COLOR.new }>New</Badge>
+      <Badge color={ BADGE_COLOR.promotion }>Promotion</Badge>
+      <Badge color={ BADGE_COLOR.success }>Success</Badge>
+      <Badge color={ BADGE_COLOR.warning }>Warning</Badge>
     </>
   ),
 };
@@ -67,9 +67,9 @@ export const Color: Story = {
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsBadge>
+    <Badge>
       My badge
-    </OdsBadge>
+    </Badge>
   ),
 };
 
@@ -79,9 +79,9 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <OdsBadge>
+    <Badge>
       Badge
-    </OdsBadge>
+    </Badge>
   ),
 };
 
@@ -90,9 +90,9 @@ export const Size: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsBadge size={ ODS_BADGE_SIZE.sm }>SM badge</OdsBadge>
-      <OdsBadge size={ ODS_BADGE_SIZE.md }>MD badge</OdsBadge>
-      <OdsBadge size={ ODS_BADGE_SIZE.lg }>LG badge</OdsBadge>
+      <Badge size={ BADGE_SIZE.sm }>SM badge</Badge>
+      <Badge size={ BADGE_SIZE.md }>MD badge</Badge>
+      <Badge size={ BADGE_SIZE.lg }>LG badge</Badge>
     </>
   ),
 };

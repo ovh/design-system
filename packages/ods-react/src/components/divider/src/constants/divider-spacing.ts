@@ -1,4 +1,4 @@
-enum ODS_DIVIDER_SPACING {
+enum DIVIDER_SPACING {
   _0 = '0',
   _2 = '2',
   _4 = '4',
@@ -13,12 +13,12 @@ enum ODS_DIVIDER_SPACING {
   _64 = '64',
 }
 
-type OdsDividerSpacing = `${ODS_DIVIDER_SPACING}`;
+type DividerSpacing = `${DIVIDER_SPACING}`;
 
-const ODS_DIVIDER_SPACINGS = Object.freeze(Object.values(ODS_DIVIDER_SPACING));
+const DIVIDER_SPACINGS = Object.freeze(Object.values(DIVIDER_SPACING));
 
 export {
-  ODS_DIVIDER_SPACING,
-  ODS_DIVIDER_SPACINGS,
-  type OdsDividerSpacing,
+  DIVIDER_SPACING,
+  DIVIDER_SPACINGS,
+  type DividerSpacing,
 };

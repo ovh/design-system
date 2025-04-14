@@ -1,4 +1,4 @@
-import { ODS_ICON_NAME, OdsIcon, OdsLink } from '@ovhcloud/ods-react';
+import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import React from 'react';
@@ -31,7 +31,7 @@ const ClassModule = ({ component, extraAttributeInfo }: Props) => {
       {
         extraAttributeInfo &&
         <p>
-          This component extends all the native <OdsLink href={ extraAttributeInfo.url } target="_blank">{ extraAttributeInfo.name } attributes</OdsLink>.
+          This component extends all the native <Link href={ extraAttributeInfo.url } target="_blank">{ extraAttributeInfo.name } attributes</Link>.
         </p>
       }
 
@@ -67,9 +67,9 @@ const ClassModule = ({ component, extraAttributeInfo }: Props) => {
                   <td className={ styles['class-module__properties__body__is-required'] }>
                     {
                       prop.isOptional ? '-' :
-                        <OdsIcon aria-label="Required"
-                                 className={ styles['class-module__properties__body__is-required--required'] }
-                                 name={ ODS_ICON_NAME.check } />
+                        <Icon aria-label="Required"
+                              className={ styles['class-module__properties__body__is-required--required'] }
+                              name={ ICON_NAME.check } />
                     }
                   </td>
 

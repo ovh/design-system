@@ -1,4 +1,4 @@
-enum ODS_ICON_NAME {
+enum ICON_NAME {
   arrowCrossed = 'arrow-crossed',
   arrowDown = 'arrow-down',
   arrowDownLeft = 'arrow-down-left',
@@ -145,12 +145,12 @@ enum ODS_ICON_NAME {
   xmark = 'xmark',
 }
 
-type OdsIconName = `${ODS_ICON_NAME}`;
+type IconName = `${ICON_NAME}`;
 
-const ODS_ICON_NAMES = Object.freeze(Object.values(ODS_ICON_NAME));
+const ICON_NAMES = Object.freeze(Object.values(ICON_NAME));
 
 export {
-  ODS_ICON_NAME,
-  ODS_ICON_NAMES,
-  type OdsIconName,
+  ICON_NAME,
+  ICON_NAMES,
+  type IconName,
 };

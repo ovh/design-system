@@ -1,2 +1,2 @@
-export { OdsLink, type OdsLinkProp } from './components/ods-link/OdsLink';
-export { ODS_LINK_COLOR, ODS_LINK_COLORS, type OdsLinkColor } from './constant/link-color';
+export { Link, type LinkProp } from './components/link/Link';
+export { LINK_COLOR, LINK_COLORS, type LinkColor } from './constant/link-color';

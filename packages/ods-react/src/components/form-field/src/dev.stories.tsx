@@ -1,17 +1,17 @@
 import { type FormEvent, useRef } from 'react';
-import { OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel } from '.';
-import { ODS_TEXT_PRESET, OdsText } from '../../text/src';
-import { OdsTextarea } from '../../textarea/src';
+import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '.';
+import { TEXT_PRESET, Text } from '../../text/src';
+import { Textarea } from '../../textarea/src';
 
 export default {
-  component: OdsFormField,
-  title: 'OdsFormField dev',
+  component: FormField,
+  title: 'FormField dev',
 };
 
 export const Default = () => (
-  <OdsFormField>
-    <OdsTextarea />
-  </OdsFormField>
+  <FormField>
+    <Textarea />
+  </FormField>
 );
 
 export const FullForm = () => {
@@ -31,21 +31,21 @@ export const FullForm = () => {
     <form
       onSubmit={ onSubmit }
       ref={ formRef }>
-      <OdsFormField>
-        <OdsFormFieldLabel>
+      <FormField>
+        <FormFieldLabel>
           My textarea
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsTextarea name="textarea" minLength={ 2 } required />
+        <Textarea name="textarea" minLength={ 2 } required />
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           Some helper text
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Some error text
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
       <button type="submit">
         Submit
@@ -55,17 +55,17 @@ export const FullForm = () => {
 };
 
 export const Invalid = () => (
-  <OdsFormField invalid>
-    <OdsTextarea />
+  <FormField invalid>
+    <Textarea />
 
-    <OdsFormFieldHelper>
-      <OdsText preset={ ODS_TEXT_PRESET.caption }>
+    <FormFieldHelper>
+      <Text preset={ TEXT_PRESET.caption }>
         Some helper text
-      </OdsText>
-    </OdsFormFieldHelper>
+      </Text>
+    </FormFieldHelper>
 
-    <OdsFormFieldError>
+    <FormFieldError>
       Some error text
-    </OdsFormFieldError>
-  </OdsFormField>
+    </FormFieldError>
+  </FormField>
 );

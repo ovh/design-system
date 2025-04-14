@@ -9,7 +9,7 @@
   "outputs": [
     {
       "name": "json",
-      "path": "./documentation/ods-tooltip.json"
+      "path": "./documentation/tooltip.json"
     }
   ],
   "sort": ["source-order"],

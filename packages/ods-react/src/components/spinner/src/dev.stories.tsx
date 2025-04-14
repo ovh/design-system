@@ -1,10 +1,10 @@
-import { OdsSpinner } from '.';
+import { Spinner } from '.';
 
 export default {
-  component: OdsSpinner,
-  title: 'OdsSpinner dev',
+  component: Spinner,
+  title: 'Spinner dev',
 };
 
 export const Default = () => (
-  <OdsSpinner />
+  <Spinner />
 );

@@ -1,1 +1,1 @@
-export { OdsTextarea, type OdsTextareaProp } from './components/ods-textarea/OdsTextarea';
+export { Textarea, type TextareaProp } from './components/textarea/Textarea';

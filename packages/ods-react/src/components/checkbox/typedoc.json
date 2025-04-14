@@ -9,7 +9,7 @@
   "outputs": [
     {
       "name": "json",
-      "path": "./documentation/ods-checkbox.json"
+      "path": "./documentation/checkbox.json"
     }
   ],
   "sort": ["source-order"],

@@ -1,7 +1,7 @@
-import { ODS_INPUT_MASK_STATE, ODS_INPUT_MASK_STATES, type OdsInputMaskState } from '../../../input/src';
+import { INPUT_MASK_STATE, INPUT_MASK_STATES, type InputMaskState } from '../../../input/src';
 
 export {
-  ODS_INPUT_MASK_STATE as ODS_PASSWORD_MASK_STATE,
-  ODS_INPUT_MASK_STATES as ODS_PASSWORD_MASK_STATES,
-  type OdsInputMaskState as OdsPasswordMaskState,
+  INPUT_MASK_STATE as PASSWORD_MASK_STATE,
+  INPUT_MASK_STATES as PASSWORD_MASK_STATES,
+  type InputMaskState as PasswordMaskState,
 };

@@ -1,2 +1,2 @@
-export { OdsIcon, type OdsIconProp } from './components/ods-icon/OdsIcon';
-export { ODS_ICON_NAME, ODS_ICON_NAMES, type OdsIconName } from './constants/icon-name';
+export { Icon, type IconProp } from './components/icon/Icon';
+export { ICON_NAME, ICON_NAMES, type IconName } from './constants/icon-name';

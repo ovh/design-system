@@ -1,14 +1,14 @@
-enum ODS_TABLE_VARIANT {
+enum TABLE_VARIANT {
   default = 'default',
   striped = 'striped',
 }
 
-type OdsTableVariant =`${ODS_TABLE_VARIANT}`;
+type TableVariant =`${TABLE_VARIANT}`;
 
-const ODS_TABLE_VARIANTS = Object.freeze(Object.values(ODS_TABLE_VARIANT));
+const TABLE_VARIANTS = Object.freeze(Object.values(TABLE_VARIANT));
 
 export {
-  ODS_TABLE_VARIANT,
-  ODS_TABLE_VARIANTS,
-  type OdsTableVariant,
+  TABLE_VARIANT,
+  TABLE_VARIANTS,
+  type TableVariant,
 };

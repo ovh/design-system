@@ -1,20 +1,20 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { OdsButton } from '../../../../ods-react/src/components/button/src';
-import { ODS_ICON_NAME, OdsIcon } from '../../../../ods-react/src/components/icon/src';
-import { ODS_POPOVER_POSITION, ODS_POPOVER_POSITIONS, OdsPopover, type OdsPopoverProp, OdsPopoverContent, type OdsPopoverContentProp, OdsPopoverTrigger } from '../../../../ods-react/src/components/popover/src';
+import { Button } from '../../../../ods-react/src/components/button/src';
+import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
+import { POPOVER_POSITION, POPOVER_POSITIONS, Popover, type PopoverProp, PopoverContent, type PopoverContentProp, PopoverTrigger } from '../../../../ods-react/src/components/popover/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
-type Story = StoryObj<OdsPopoverProp>;
-type DemoArg = Partial<OdsPopoverProp> & Partial<OdsPopoverContentProp> & {
+type Story = StoryObj<PopoverProp>;
+type DemoArg = Partial<PopoverProp> & Partial<PopoverContentProp> & {
   content?: string,
 };
 
-const meta: Meta<OdsPopoverProp> = {
+const meta: Meta<PopoverProp> = {
   argTypes: excludeFromDemoControls(['open']),
-  component: OdsPopover,
-  subcomponents: { OdsPopoverContent, OdsPopoverTrigger },
+  component: Popover,
+  subcomponents: { PopoverContent, PopoverTrigger },
   title: 'ODS Components/Popover',
 };
 
@@ -25,15 +25,15 @@ export const Demo: StoryObj = {
     layout: 'centered',
   },
   render: (arg: DemoArg) => (
-    <OdsPopover position={ arg.position }>
-      <OdsPopoverTrigger>
+    <Popover position={ arg.position }>
+      <PopoverTrigger>
         Show popover
-      </OdsPopoverTrigger>
+      </PopoverTrigger>
 
-      <OdsPopoverContent withArrow={ arg.withArrow }>
+      <PopoverContent withArrow={ arg.withArrow }>
         { arg.content }
-      </OdsPopoverContent>
-    </OdsPopover>
+      </PopoverContent>
+    </Popover>
   ),
   argTypes: orderControls({
     content: {
@@ -46,11 +46,11 @@ export const Demo: StoryObj = {
     position: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: ODS_POPOVER_POSITION.top },
-        type: { summary: ODS_POPOVER_POSITIONS }
+        defaultValue: { summary: POPOVER_POSITION.top },
+        type: { summary: POPOVER_POSITIONS }
       },
       control: { type: 'select' },
-      options: ODS_POPOVER_POSITIONS,
+      options: POPOVER_POSITIONS,
     },
     withArrow: {
       table: {
@@ -77,19 +77,19 @@ export const Controlled: Story = {
 
     return (
       <>
-        <OdsButton onClick={ togglePopover }>
+        <Button onClick={ togglePopover }>
           Toggle popover
-        </OdsButton>
+        </Button>
 
-        <OdsPopover open={ isOpen }>
-          <OdsPopoverTrigger asChild>
-            <OdsIcon name={ ODS_ICON_NAME.cog } />
-          </OdsPopoverTrigger>
+        <Popover open={ isOpen }>
+          <PopoverTrigger asChild>
+            <Icon name={ ICON_NAME.cog } />
+          </PopoverTrigger>
 
-          <OdsPopoverContent withArrow>
+          <PopoverContent withArrow>
             This is the popover content
-          </OdsPopoverContent>
-        </OdsPopover>
+          </PopoverContent>
+        </Popover>
       </>
     );
   },
@@ -98,32 +98,32 @@ export const Controlled: Story = {
 export const CustomTrigger: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsPopover>
-      <OdsPopoverTrigger asChild>
-        <OdsButton>
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button>
           Custom Trigger
-        </OdsButton>
-      </OdsPopoverTrigger>
+        </Button>
+      </PopoverTrigger>
 
-      <OdsPopoverContent>
+      <PopoverContent>
         This is the popover content
-      </OdsPopoverContent>
-    </OdsPopover>
+      </PopoverContent>
+    </Popover>
   ),
 };
 
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <OdsPopover>
-      <OdsPopoverTrigger>
+    <Popover>
+      <PopoverTrigger>
         Show popover
-      </OdsPopoverTrigger>
+      </PopoverTrigger>
 
-      <OdsPopoverContent>
+      <PopoverContent>
         This is the popover content
-      </OdsPopoverContent>
-    </OdsPopover>
+      </PopoverContent>
+    </Popover>
   ),
 };
 
@@ -142,79 +142,79 @@ export const Grid: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <OdsPopover position="top-start">
-        <OdsPopoverTrigger>
+      <Popover position="top-start">
+        <PopoverTrigger>
           Top Left
-        </OdsPopoverTrigger>
-        <OdsPopoverContent withArrow>
+        </PopoverTrigger>
+        <PopoverContent withArrow>
           Top Left popover
-        </OdsPopoverContent>
-      </OdsPopover>
+        </PopoverContent>
+      </Popover>
 
-      <OdsPopover position="top">
-        <OdsPopoverTrigger>
+      <Popover position="top">
+        <PopoverTrigger>
           Top
-        </OdsPopoverTrigger>
-        <OdsPopoverContent withArrow>
+        </PopoverTrigger>
+        <PopoverContent withArrow>
           Top popover
-        </OdsPopoverContent>
-      </OdsPopover>
+        </PopoverContent>
+      </Popover>
 
-      <OdsPopover position="top-end">
-        <OdsPopoverTrigger>
+      <Popover position="top-end">
+        <PopoverTrigger>
           Top Right
-        </OdsPopoverTrigger>
-        <OdsPopoverContent withArrow>
+        </PopoverTrigger>
+        <PopoverContent withArrow>
           Top Right popover
-        </OdsPopoverContent>
-      </OdsPopover>
+        </PopoverContent>
+      </Popover>
 
-      <OdsPopover position="left">
-        <OdsPopoverTrigger>
+      <Popover position="left">
+        <PopoverTrigger>
           Middle Left
-        </OdsPopoverTrigger>
-        <OdsPopoverContent withArrow>
+        </PopoverTrigger>
+        <PopoverContent withArrow>
           Middle Left popover
-        </OdsPopoverContent>
-      </OdsPopover>
+        </PopoverContent>
+      </Popover>
 
       <div />
 
-      <OdsPopover position="right">
-        <OdsPopoverTrigger>
+      <Popover position="right">
+        <PopoverTrigger>
           Middle Right
-        </OdsPopoverTrigger>
-        <OdsPopoverContent withArrow>
+        </PopoverTrigger>
+        <PopoverContent withArrow>
           Middle Right popover
-        </OdsPopoverContent>
-      </OdsPopover>
+        </PopoverContent>
+      </Popover>
 
-      <OdsPopover position="bottom-start">
-        <OdsPopoverTrigger>
+      <Popover position="bottom-start">
+        <PopoverTrigger>
           Bottom Left
-        </OdsPopoverTrigger>
-        <OdsPopoverContent withArrow>
+        </PopoverTrigger>
+        <PopoverContent withArrow>
           Bottom Left popover
-        </OdsPopoverContent>
-      </OdsPopover>
+        </PopoverContent>
+      </Popover>
 
-      <OdsPopover position="bottom">
-        <OdsPopoverTrigger>
+      <Popover position="bottom">
+        <PopoverTrigger>
           Bottom
-        </OdsPopoverTrigger>
-        <OdsPopoverContent withArrow>
+        </PopoverTrigger>
+        <PopoverContent withArrow>
           Bottom popover
-        </OdsPopoverContent>
-      </OdsPopover>
+        </PopoverContent>
+      </Popover>
 
-      <OdsPopover position="bottom-end">
-        <OdsPopoverTrigger>
+      <Popover position="bottom-end">
+        <PopoverTrigger>
           Bottom Right
-        </OdsPopoverTrigger>
-        <OdsPopoverContent withArrow>
+        </PopoverTrigger>
+        <PopoverContent withArrow>
           Bottom Right popover
-        </OdsPopoverContent>
-      </OdsPopover>
+        </PopoverContent>
+      </Popover>
     </>
   ),
 };
@@ -225,14 +225,14 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <OdsPopover>
-      <OdsPopoverTrigger>
+    <Popover>
+      <PopoverTrigger>
         Show popover
-      </OdsPopoverTrigger>
+      </PopoverTrigger>
 
-      <OdsPopoverContent>
+      <PopoverContent>
         This is the popover content
-      </OdsPopoverContent>
-    </OdsPopover>
+      </PopoverContent>
+    </Popover>
   ),
 };

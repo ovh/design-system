@@ -1,10 +1,10 @@
-import { OdsDivider } from '.';
+import { Divider } from '.';
 
 export default {
-  component: OdsDivider,
-  title: 'OdsDivider dev',
+  component: Divider,
+  title: 'Divider dev',
 };
 
 export const Default = () => (
-  <OdsDivider />
+  <Divider />
 );

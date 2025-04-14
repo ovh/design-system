@@ -1,4 +1,4 @@
-enum ODS_TEXT_PRESET {
+enum TEXT_PRESET {
   caption = 'caption',
   code = 'code',
   heading1 = 'heading-1',
@@ -12,12 +12,12 @@ enum ODS_TEXT_PRESET {
   span = 'span',
 }
 
-type OdsTextPreset = `${ODS_TEXT_PRESET}`;
+type TextPreset = `${TEXT_PRESET}`;
 
-const ODS_TEXT_PRESETS = Object.freeze(Object.values(ODS_TEXT_PRESET));
+const TEXT_PRESETS = Object.freeze(Object.values(TEXT_PRESET));
 
 export {
-  ODS_TEXT_PRESET,
-  ODS_TEXT_PRESETS,
-  type OdsTextPreset,
+  TEXT_PRESET,
+  TEXT_PRESETS,
+  type TextPreset,
 };

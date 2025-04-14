@@ -1,4 +1,4 @@
-enum ODS_BADGE_COLOR {
+enum BADGE_COLOR {
   alpha = 'alpha',
   beta = 'beta',
   critical = 'critical',
@@ -10,12 +10,12 @@ enum ODS_BADGE_COLOR {
   warning = 'warning',
 }
 
-type OdsBadgeColor =`${ODS_BADGE_COLOR}`;
+type BadgeColor =`${BADGE_COLOR}`;
 
-const ODS_BADGE_COLORS = Object.freeze(Object.values(ODS_BADGE_COLOR));
+const BADGE_COLORS = Object.freeze(Object.values(BADGE_COLOR));
 
 export {
-  ODS_BADGE_COLOR,
-  ODS_BADGE_COLORS,
-  type OdsBadgeColor,
+  BADGE_COLOR,
+  BADGE_COLORS,
+  type BadgeColor,
 };

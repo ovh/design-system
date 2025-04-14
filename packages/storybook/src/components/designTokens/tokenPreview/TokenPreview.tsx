@@ -1,4 +1,4 @@
-// import { OdsInput } from '@ovhcloud/ods-react';
+import { Input } from '@ovhcloud/ods-react';
 import React from 'react';
 import { TokenType } from '../../../constants/designTokens';
 import styles from './tokenPreview.module.css';
@@ -48,21 +48,14 @@ const TokenPreview: React.FC<TokenPreviewProps> = ({ name, type, value }) => {
     ...(type === TokenType.OUTLINE && outlineStyles),
   };
 
-  // TODO when OdsInput is available
-  // return (
-  //   <div className={previewClasses[type] || styles.root} style={stylesMap}>
-  //     {type === TokenType.FONT_FAMILY ?
-  //     'Aa'
-  //     : type === TokenType.FORM_ELEMENT ?
-  //     <OdsInput
-  //       defaultValue={value}
-  //       isReadonly /> : null}
-  //   </div>
-  // );
-
   return (
     <div className={previewClasses[type] || styles.root} style={stylesMap}>
-      Aa
+      {type === TokenType.FONT_FAMILY ?
+      'Aa'
+      : type === TokenType.FORM_ELEMENT ?
+      <Input
+        defaultValue={ value }
+        readOnly /> : null}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { ODS_ICON_NAME, ODS_TEXT_PRESET, OdsIcon, OdsLink, OdsText } from '@ovhcloud/ods-react';
+import { ICON_NAME, TEXT_PRESET, Icon, Link, Text } from '@ovhcloud/ods-react';
 import React from 'react';
 import { HOME_TITLE } from '../../constants/meta';
 import { StorybookLink } from '../storybookLink/StorybookLink';
@@ -18,24 +18,24 @@ const Homepage = () => {
              src="ods_logo.svg"
              width="640" />
 
-        <OdsText preset={ ODS_TEXT_PRESET.heading3 }>
+        <Text preset={ TEXT_PRESET.heading3 }>
           A collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
-        </OdsText>
+        </Text>
 
         <div className={ styles['homepage__content__links'] }>
           <StorybookLink title={ HOME_TITLE.getStarted }>
-            Get Started <OdsIcon name={ ODS_ICON_NAME.arrowRight } />
+            Get Started <Icon name={ ICON_NAME.arrowRight } />
           </StorybookLink>
 
-          <OdsLink href="https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system"
+          <Link href="https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system"
                    target="_blank">
-            <OdsIcon name={ ODS_ICON_NAME.externalLink } /> Design Guidelines
-          </OdsLink>
+            <Icon name={ ICON_NAME.externalLink } /> Design Guidelines
+          </Link>
 
-          <OdsLink href="https://github.com/ovh/design-system"
+          <Link href="https://github.com/ovh/design-system"
                    target="_blank">
-            <OdsIcon name={ ODS_ICON_NAME.externalLink } /> GitHub repository
-          </OdsLink>
+            <Icon name={ ICON_NAME.externalLink } /> GitHub repository
+          </Link>
         </div>
       </div>
     </div>

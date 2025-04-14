@@ -1,23 +1,23 @@
 import { type ChangeEvent, useState } from 'react';
-import { OdsPassword } from '.';
+import { Password } from '.';
 
 export default {
-  component: OdsPassword,
-  title: 'OdsPassword dev',
+  component: Password,
+  title: 'Password dev',
 };
 
 export const Actions = () => (
   <>
     <div>
       <label>Clearable alone: </label>
-      <OdsPassword
+      <Password
         clearable
         defaultValue="value" />
     </div>
 
     <div>
       <label>Clearable and loading: </label>
-      <OdsPassword
+      <Password
         clearable
         defaultValue="value"
         loading />
@@ -25,7 +25,7 @@ export const Actions = () => (
 
     <div>
       <label>Loading alone: </label>
-      <OdsPassword loading />
+      <Password loading />
     </div>
   </>
 );
@@ -34,7 +34,7 @@ export const Clearable = () => {
   const [inputValue, setInputValue] = useState('');
 
   return (
-    <OdsPassword
+    <Password
       clearable
       onChange={ (e: ChangeEvent<HTMLInputElement>) => { setInputValue(e.target.value)} }
       onClear={ () => { setInputValue('') } }
@@ -48,7 +48,7 @@ export const ControlledUncontrolled = () => {
   return (
     <>
       <label>Controlled</label>
-      <OdsPassword
+      <Password
         clearable
         onChange={ (e: ChangeEvent<HTMLInputElement>) => setControlledValue(e.target.value) }
         onClear={ () => { setControlledValue('') } }
@@ -57,7 +57,7 @@ export const ControlledUncontrolled = () => {
       <br /><br />
 
       <label>Uncontrolled</label>
-      <OdsPassword
+      <Password
         clearable
         onChange={ () => console.log('Uncontrolled change') }
         onClear={ () => console.log('cleared') } />
@@ -66,15 +66,15 @@ export const ControlledUncontrolled = () => {
 };
 
 export const Default = () => (
-  <OdsPassword />
+  <Password />
 );
 
 export const Disabled = () => (
-  <OdsPassword disabled />
+  <Password disabled />
 );
 
 export const DisabledActions = () => (
-  <OdsPassword
+  <Password
     clearable
     defaultValue="value"
     disabled
@@ -82,5 +82,5 @@ export const DisabledActions = () => (
 );
 
 export const Readonly = () => (
-  <OdsPassword readOnly />
+  <Password readOnly />
 );

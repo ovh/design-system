@@ -1,0 +1,34 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsTag from '../../../../ods-react/src/components/tag/documentation/tag.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as TagStories from './tag.stories';
+
+<Meta of={ TagStories } name="Technical information" />
+
+<Banner of={ TagStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ TagStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsTag } of={ TagStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ TagStories.Default } sourceState="shown" />
+
+<Heading label="Color" level={ 3 } />
+
+<Canvas of={ TagStories.Color } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ TagStories.Disabled } sourceState="shown" />
+
+<Heading label="Size" level={ 3 } />
+
+<Canvas of={ TagStories.Size } sourceState="shown" />

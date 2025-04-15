@@ -1,0 +1,65 @@
+@use '../../../../../style/font';
+@use '../../../../../style/state';
+@use '../../../../../style/tag';
+
+@layer ods {
+  .ods-tag {
+    $tag: &;
+
+    @include tag.ods-tag();
+
+    &:not(&#{$tag}--disabled) {
+      &#{$tag}--critical {
+        @include tag.ods-tag-color('critical');
+      }
+
+      &#{$tag}--information {
+        @include tag.ods-tag-color('information');
+      }
+
+      &#{$tag}--neutral {
+        @include tag.ods-tag-color('neutral');
+      }
+
+      &#{$tag}--success {
+        @include tag.ods-tag-color('success');
+      }
+
+      &#{$tag}--warning {
+        @include tag.ods-tag-color('warning');
+      }
+    }
+
+    &--disabled {
+      @include state.ods-is-disabled();
+    }
+
+    &--md {
+      @include tag.ods-tag-size('md');
+
+      & #{$tag}__close {
+        font-size: 0.75rem;
+      }
+
+      & #{$tag}__icon {
+        font-size: 0.833rem;
+      }
+    }
+
+    &--lg {
+      @include tag.ods-tag-size('lg');
+
+      & #{$tag}__close {
+        font-size: 0.875rem;
+      }
+
+      & #{$tag}__icon {
+        font-size: 1.05rem;
+      }
+    }
+
+    &__label {
+      @include font.ellipsis();
+    }
+  }
+}

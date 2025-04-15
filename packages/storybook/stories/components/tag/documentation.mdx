@@ -1,0 +1,100 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as TagStories from './tag.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ TagStories } name='Documentation' />
+
+<Banner of={ TagStories } />
+
+_A **Tag** component is used to display keywords or categories, with a removal feature._
+
+<Canvas of={ TagStories.Default } sourceState='none' />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ ['Chip (previous name)', 'Label', 'Pill'] }
+              atomicType={ ATOMIC_TYPE.atom }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11580"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/tag"
+              name="Tag"
+              relatedComponents={ [{ name: 'Badge' }, { name: 'Button' }, { name: 'Icon' }] }>
+  The **Tag** component is a small UI element used to represent metadata, keywords, categories, or other contextual
+  information.
+
+  **Tags** are removable and can include an <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation } >Icon</StorybookLink> as
+  additional prefix element.
+
+  They are commonly used in interfaces for categorizing content, filtering, and adding contextual details.
+</IdentityCard>
+
+<Heading label="Anatomy" level={ 2 } />
+
+![Component anatomy](components/tag/anatomy.png "Component anatomy")
+
+1. **Container**
+2. **Children**: main content
+4. **Removable icon**
+
+<Heading label="Usage" level={ 2 } />
+
+Use the **Tag** component to display labels, categories, or metadata that describe or classify content.
+
+**Tags** often appear in contexts like filters and lists.
+
+Ensure that **Tags** are clearly labelled and easily distinguishable from other UI elements.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    '- Use Tag if the user cannot interact with it',
+  ]}
+  dos={[
+    '- The label must be short and clear',
+    '- Tags should always include a label. These can represent search terms, filters, or keywords',
+  ]}
+/>
+
+<Heading label="Placement" level={ 2 } />
+
+Since it provides extra information to a sibling element, in can be used inside components in various places, referring to the nature of its environment.
+
+**Tags** have an automatic width, but they can widen to match the container.
+
+Multiple **Tags** can be displayed:
+- on a single line
+- stacked vertically
+
+**Tags** main content is left-aligned, the closing <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation } >Icon</StorybookLink> is fixed at the right hand of it.
+
+<Heading label="Behavior" level={ 2 } />
+
+**Tags** can be hovered, focused and disabled.
+
+A click/keypress on the whole component should trigger a removal event (if not disabled).
+
+<Heading label="Variation" level={ 2 } />
+
+<Heading label="Color" level={ 3 } />
+
+- **Neutral**: displaying general labels or metadata without conveying any particular status or urgency.
+- **Information** _(default)_: displaying a general information for the user, without conveying any particular urgency.
+- **Success**: indicating positive statuses or successful outcomes, providing a visual cue for achievements or completed tasks.
+- **Warning**: alerting users to potential issues or cautionary information, signaling that attention is needed.
+- **Critical**: highlighting severe issues or urgent information that requires immediate attention, emphasizing high-priority concerns.
+
+<Heading label="Size" level={ 3 } />
+
+- **Medium** _(default)_: main size for displaying **Tags**.
+- **Large**: highlighting important labels or metadata with greater visibility and emphasis, making them easily noticeable to users.
+
+<Heading label="Accessibility" level={ 2 } />
+
+**Tags** follow the same focusing/keyboard navigation as <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation } >Button</StorybookLink>.
+

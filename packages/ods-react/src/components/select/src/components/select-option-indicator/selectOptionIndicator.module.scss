@@ -1,0 +1,24 @@
+@use '../../../../../style/checkbox';
+@use '../../../../../style/icon';
+@use '../../../../../style/state';
+
+@layer ods {
+  .select-option-indicator {
+    @include checkbox.ods-checkbox();
+
+    &:checked {
+      border-color: var(--ods-color-primary-500);
+      background: var(--ods-color-primary-500);
+
+      &::before {
+        @include icon.ods-icon();
+
+        content: "\e914";
+      }
+    }
+
+    &:disabled {
+      @include state.ods-is-disabled();
+    }
+  }
+}

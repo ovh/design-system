@@ -48,7 +48,7 @@ const TechnicalSpecification = ({ data, extraAttributeInfo, of }: Props) => {
     const interfaceDeclarations = filterByKind(data.children, ReflectionKind.Interface)
       .filter((declaration) => !declaration.name.endsWith('Prop'));
     const unionTypeDeclarations = filterByKind(data.children, ReflectionKind.TypeAlias)
-      .filter((declaration) => declaration.type!.type === 'union');
+      .filter((declaration) => declaration.type && declaration.type.type === 'union');
 
     const docgens = [of.default.component.__docgenInfo];
     Object.values(of.default.subcomponents || {}).forEach((subcomponent: any) => {

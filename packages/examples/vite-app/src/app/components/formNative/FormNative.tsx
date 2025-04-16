@@ -1,4 +1,4 @@
-import { OdsButton, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsTextarea } from '@ovhcloud/ods-react';
+import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';
 import { type FormEvent, type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.module.scss';
 
@@ -38,23 +38,23 @@ function FormNative(): ReactElement {
         - All fields required: { areAllRequired.toString() }
       </p>
 
-      <OdsFormField>
-        <OdsFormFieldLabel>
+      <FormField>
+        <FormFieldLabel>
           Textarea:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsTextarea
+        <Textarea
           name="textarea"
           required={ areAllRequired } />
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           This is a textarea to fill
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error while filling textarea
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
       <input
         name="hidden-input"
@@ -62,15 +62,15 @@ function FormNative(): ReactElement {
         value="should be present in form data" />
 
       <div>
-        <OdsButton
+        <Button
           type="reset"
           variant="outline">
           Reset button
-        </OdsButton>
+        </Button>
 
-        <OdsButton type="submit">
+        <Button type="submit">
           Submit button
-        </OdsButton>
+        </Button>
       </div>
     </form>
   );

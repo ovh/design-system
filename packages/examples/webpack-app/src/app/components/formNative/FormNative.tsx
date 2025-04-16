@@ -1,4 +1,4 @@
-import { OdsButton, OdsCheckbox, OdsCheckboxControl, OdsCheckboxGroup, OdsCheckboxLabel, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsPassword, OdsTextarea } from '@ovhcloud/ods-react';
+import { Button, Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Input, Password, Textarea } from '@ovhcloud/ods-react';
 import React, { type FormEvent, type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.scss';
 
@@ -40,102 +40,102 @@ function FormNative(): ReactElement {
         - All fields required: { areAllRequired.toString() }
       </p>
 
-      <OdsFormField>
-        <OdsCheckbox
+      <FormField>
+        <Checkbox
           name="checkbox"
           required={ areAllRequired }
           value="checkbox">
-          <OdsCheckboxControl />
+          <CheckboxControl />
 
-          <OdsCheckboxLabel>
+          <CheckboxLabel>
             Checkbox
-          </OdsCheckboxLabel>
-        </OdsCheckbox>
-      </OdsFormField>
+          </CheckboxLabel>
+        </Checkbox>
+      </FormField>
 
-      <OdsCheckboxGroup name="checkboxGroup">
-        <OdsFormField>
-          <OdsCheckbox
+      <CheckboxGroup name="checkboxGroup">
+        <FormField>
+          <Checkbox
             required={ areAllRequired }
             value="grouped checkbox 1">
-            <OdsCheckboxControl />
+            <CheckboxControl />
 
-            <OdsCheckboxLabel>
+            <CheckboxLabel>
               Grouped checkbox 1
-            </OdsCheckboxLabel>
-          </OdsCheckbox>
-        </OdsFormField>
+            </CheckboxLabel>
+          </Checkbox>
+        </FormField>
 
-        <OdsFormField>
-          <OdsCheckbox
+        <FormField>
+          <Checkbox
             required={ areAllRequired }
             value="grouped checkbox 2">
-            <OdsCheckboxControl />
+            <CheckboxControl />
 
-            <OdsCheckboxLabel>
+            <CheckboxLabel>
               Grouped checkbox 2
-            </OdsCheckboxLabel>
-          </OdsCheckbox>
-        </OdsFormField>
-      </OdsCheckboxGroup>
+            </CheckboxLabel>
+          </Checkbox>
+        </FormField>
+      </CheckboxGroup>
 
-      <OdsFormField>
-        <OdsFormFieldLabel>
+      <FormField>
+        <FormFieldLabel>
           Input:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsInput
+        <Input
           clearable
           defaultValue="default"
           name="input"
           required={ areAllRequired } />
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           This is an input to fill
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error while filling input
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
-      <OdsFormField>
-        <OdsFormFieldLabel>
+      <FormField>
+        <FormFieldLabel>
           Password:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsPassword
+        <Password
           clearable
           defaultValue="default"
           name="password"
           required={ areAllRequired } />
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           This is a password to fill
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error while filling password
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
-      <OdsFormField>
-        <OdsFormFieldLabel>
+      <FormField>
+        <FormFieldLabel>
           Textarea:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsTextarea
+        <Textarea
           name="textarea"
           required={ areAllRequired } />
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           This is a textarea to fill
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error while filling textarea
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
       <input
         name="hidden-input"
@@ -143,15 +143,15 @@ function FormNative(): ReactElement {
         value="should be present in form data" />
 
       <div>
-        <OdsButton
+        <Button
           type="reset"
           variant="outline">
           Reset button
-        </OdsButton>
+        </Button>
 
-        <OdsButton type="submit">
+        <Button type="submit">
           Submit button
-        </OdsButton>
+        </Button>
       </div>
     </form>
   );

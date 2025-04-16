@@ -1,4 +1,4 @@
-import { OdsButton, OdsCheckbox, OdsCheckboxControl, OdsCheckboxGroup, OdsCheckboxLabel, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsPassword, OdsTextarea } from '@ovhcloud/ods-react';
+import { Button, Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Input, Password, Textarea } from '@ovhcloud/ods-react';
 import { useFormik } from 'formik';
 import React, { type ReactElement } from 'react';
 import * as yup from 'yup';
@@ -42,8 +42,8 @@ function FormFormik(): ReactElement {
       onSubmit={ formik.handleSubmit }>
       <h1>Formik</h1>
 
-      <OdsFormField invalid={ formik.touched.checkboxAlone && !!formik.errors.checkboxAlone }>
-        <OdsCheckbox
+      <FormField invalid={ formik.touched.checkboxAlone && !!formik.errors.checkboxAlone }>
+        <Checkbox
           defaultChecked={ !!formik.initialValues.checkboxAlone }
           name="checkboxAlone"
           onBlur={ formik.handleBlur }
@@ -52,15 +52,15 @@ function FormFormik(): ReactElement {
           }}
           required={ true }
           value={ formik.initialValues.checkboxAlone }>
-          <OdsCheckboxControl />
+          <CheckboxControl />
 
-          <OdsCheckboxLabel>
+          <CheckboxLabel>
             Checkbox alone
-          </OdsCheckboxLabel>
-        </OdsCheckbox>
-      </OdsFormField>
+          </CheckboxLabel>
+        </Checkbox>
+      </FormField>
 
-      <OdsCheckboxGroup
+      <CheckboxGroup
         defaultValue={ formik.initialValues.checkboxGroup }
         invalid={ formik.touched.checkboxGroup && !!formik.errors.checkboxGroup }
         name="checkboxGroup"
@@ -68,37 +68,37 @@ function FormFormik(): ReactElement {
         onValueChange={ (value) => {
           formik.setFieldValue('checkboxGroup', value);
         }}>
-        <OdsFormField>
-          <OdsCheckbox
+        <FormField>
+          <Checkbox
             required={ true }
             value="grouped checkbox 1">
-            <OdsCheckboxControl />
+            <CheckboxControl />
 
-            <OdsCheckboxLabel>
+            <CheckboxLabel>
               Grouped checkbox 1
-            </OdsCheckboxLabel>
-          </OdsCheckbox>
-        </OdsFormField>
+            </CheckboxLabel>
+          </Checkbox>
+        </FormField>
 
-        <OdsFormField>
-          <OdsCheckbox
+        <FormField>
+          <Checkbox
             required={ true }
             value="grouped checkbox 2">
-            <OdsCheckboxControl />
+            <CheckboxControl />
 
-            <OdsCheckboxLabel>
+            <CheckboxLabel>
               Grouped checkbox 2
-            </OdsCheckboxLabel>
-          </OdsCheckbox>
-        </OdsFormField>
-      </OdsCheckboxGroup>
+            </CheckboxLabel>
+          </Checkbox>
+        </FormField>
+      </CheckboxGroup>
 
-      <OdsFormField invalid={ formik.touched.input && !!formik.errors.input }>
-        <OdsFormFieldLabel>
+      <FormField invalid={ formik.touched.input && !!formik.errors.input }>
+        <FormFieldLabel>
           Input:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsInput
+        <Input
           clearable
           defaultValue={ formik.initialValues.input }
           name="input"
@@ -106,21 +106,21 @@ function FormFormik(): ReactElement {
           onChange={ formik.handleChange }
           required={ true } />
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           This is an input to fill
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error while filling input
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
-      <OdsFormField invalid={ formik.touched.password && !!formik.errors.password }>
-        <OdsFormFieldLabel>
+      <FormField invalid={ formik.touched.password && !!formik.errors.password }>
+        <FormFieldLabel>
           Password:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsPassword
+        <Password
           clearable
           defaultValue={ formik.initialValues.password }
           name="password"
@@ -128,35 +128,35 @@ function FormFormik(): ReactElement {
           onChange={ formik.handleChange }
           required={ true } />
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           This is a password to fill
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error while filling password
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
-      <OdsFormField invalid={ formik.touched.textarea && !!formik.errors.textarea }>
-        <OdsFormFieldLabel>
+      <FormField invalid={ formik.touched.textarea && !!formik.errors.textarea }>
+        <FormFieldLabel>
           Textarea:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsTextarea
+        <Textarea
           defaultValue={ formik.initialValues.textarea }
           name="textarea"
           onBlur={ formik.handleBlur }
           onChange={ formik.handleChange }
           required={ true } />
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           This is a textarea to fill
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error while filling textarea
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
       <p>
         Errors:
@@ -165,16 +165,16 @@ function FormFormik(): ReactElement {
       </p>
 
       <div>
-        <OdsButton
+        <Button
           onClick={ () => formik.resetForm({ values: formik.initialValues }) }
           type="reset"
           variant="outline">
           Reset button
-        </OdsButton>
+        </Button>
 
-        <OdsButton type="submit">
+        <Button type="submit">
           Submit button
-        </OdsButton>
+        </Button>
       </div>
     </form>
   );

@@ -1,4 +1,4 @@
-import { OdsButton, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsTextarea } from '@ovhcloud/ods-react';
+import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';
 import { type ReactElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './formHookForm.module.scss';
@@ -48,24 +48,24 @@ function FormHookForm(): ReactElement {
         - All fields required: { areAllRequired.toString() }
       </p>
 
-      <OdsFormField invalid={ !!errors.textarea }>
-        <OdsFormFieldLabel>
+      <FormField invalid={ !!errors.textarea }>
+        <FormFieldLabel>
           Textarea:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsTextarea
+        <Textarea
           { ...register('textarea', {
             required: areAllRequired,
           })} />
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           This is a textarea to fill
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error while filling textarea
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
       <p>
         Errors:
@@ -81,15 +81,15 @@ function FormHookForm(): ReactElement {
       </p>
 
       <div>
-        <OdsButton
+        <Button
           type="reset"
           variant="outline">
           Reset button
-        </OdsButton>
+        </Button>
 
-        <OdsButton type="submit">
+        <Button type="submit">
           Submit button
-        </OdsButton>
+        </Button>
       </div>
     </form>
   );

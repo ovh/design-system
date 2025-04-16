@@ -56,9 +56,6 @@ export const Demo: Story = {
     },
   }),
   args: {
-    color: TAG_COLOR.information,
-    disabled: false,
-    size: TAG_SIZE.md,
     children: 'My tag',
   },
 };

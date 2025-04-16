@@ -1,4 +1,4 @@
-import { OdsButton, OdsCheckbox, OdsCheckboxControl, OdsCheckboxGroup, OdsCheckboxLabel, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsInput, OdsPassword, OdsTextarea } from '@ovhcloud/ods-react';
+import { Button, Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Input, Password, Textarea } from '@ovhcloud/ods-react';
 import React, { type ReactElement, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import styles from './formHookForm.scss';
@@ -61,117 +61,117 @@ function FormHookForm(): ReactElement {
         - All fields required: { areAllRequired.toString() }
       </p>
 
-      <OdsFormField invalid={ !!errors.checkboxAlone }>
-        <OdsCheckbox
+      <FormField invalid={ !!errors.checkboxAlone }>
+        <Checkbox
           defaultChecked={ !!defaultValue.checkboxAlone }
           value={ defaultValue.checkboxAlone }
           { ...register('checkboxAlone', {
             required: areAllRequired,
           })}>
-          <OdsCheckboxControl />
+          <CheckboxControl />
 
-          <OdsCheckboxLabel>
+          <CheckboxLabel>
             Checkbox alone
-          </OdsCheckboxLabel>
-        </OdsCheckbox>
+          </CheckboxLabel>
+        </Checkbox>
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           This is an checkbox to check
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error while checking checkbox
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
       <Controller
         control={ control }
         name="checkboxGroup"
         render={ ({ field} ) => (
-          <OdsCheckboxGroup
+          <CheckboxGroup
             defaultValue={ defaultValue.checkboxGroup }
             invalid={ !!errors.checkboxGroup }
             onValueChange={ (value) => setValue(field.name, value) }>
-            <OdsCheckbox
+            <Checkbox
               required={ areAllRequired }
               value="grouped checkbox 1">
-              <OdsCheckboxControl />
+              <CheckboxControl />
 
-              <OdsCheckboxLabel>
+              <CheckboxLabel>
                 Grouped checkbox 1
-              </OdsCheckboxLabel>
-            </OdsCheckbox>
+              </CheckboxLabel>
+            </Checkbox>
 
-            <OdsCheckbox
+            <Checkbox
               required={ areAllRequired }
               value="grouped checkbox 2">
-              <OdsCheckboxControl />
+              <CheckboxControl />
 
-              <OdsCheckboxLabel>
+              <CheckboxLabel>
                 Grouped checkbox 2
-              </OdsCheckboxLabel>
-            </OdsCheckbox>
-          </OdsCheckboxGroup>
+              </CheckboxLabel>
+            </Checkbox>
+          </CheckboxGroup>
         )} />
 
-      <OdsFormField invalid={ !!errors.input }>
-        <OdsFormFieldLabel>
+      <FormField invalid={ !!errors.input }>
+        <FormFieldLabel>
           Input:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsInput
+        <Input
           clearable
           { ...register('input', {
             required: areAllRequired,
           })} />
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           This is an input to fill
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error while filling input
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
-      <OdsFormField invalid={ !!errors.password }>
-        <OdsFormFieldLabel>
+      <FormField invalid={ !!errors.password }>
+        <FormFieldLabel>
           Password:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsPassword
+        <Password
           clearable
           { ...register('password', {
             required: areAllRequired,
           })} />
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           This is a password to fill
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error while filling password
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
-      <OdsFormField invalid={ !!errors.textarea }>
-        <OdsFormFieldLabel>
+      <FormField invalid={ !!errors.textarea }>
+        <FormFieldLabel>
           Textarea:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsTextarea
+        <Textarea
           { ...register('textarea', {
             required: areAllRequired,
           })} />
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           This is a textarea to fill
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error while filling textarea
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
       <p>
         Errors:
@@ -187,16 +187,16 @@ function FormHookForm(): ReactElement {
       </p>
 
       <div>
-        <OdsButton
+        <Button
           onClick={ () => reset(defaultValue) }
           type="reset"
           variant="outline">
           Reset button
-        </OdsButton>
+        </Button>
 
-        <OdsButton type="submit">
+        <Button type="submit">
           Submit button
-        </OdsButton>
+        </Button>
       </div>
     </form>
   );

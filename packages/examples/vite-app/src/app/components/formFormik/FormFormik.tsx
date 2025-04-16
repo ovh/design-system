@@ -1,4 +1,4 @@
-import { OdsButton, OdsFormField, OdsFormFieldError, OdsFormFieldHelper, OdsFormFieldLabel, OdsTextarea } from '@ovhcloud/ods-react';
+import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';
 import { useFormik } from 'formik';
 import { type ReactElement } from 'react';
 import * as yup from 'yup';
@@ -28,26 +28,26 @@ function FormFormik(): ReactElement {
     <form
       className={ styles['form-formik'] }
       onSubmit={ formik.handleSubmit }>
-      <OdsFormField invalid={ formik.touched.textarea && !!formik.errors.textarea }>
-        <OdsFormFieldLabel>
+      <FormField invalid={ formik.touched.textarea && !!formik.errors.textarea }>
+        <FormFieldLabel>
           Textarea:
-        </OdsFormFieldLabel>
+        </FormFieldLabel>
 
-        <OdsTextarea
+        <Textarea
           defaultValue={ formik.initialValues.textarea }
           name="textarea"
           onBlur={ formik.handleBlur }
           onChange={ formik.handleChange }
           required={ true } />
 
-        <OdsFormFieldHelper>
+        <FormFieldHelper>
           This is a textarea to fill
-        </OdsFormFieldHelper>
+        </FormFieldHelper>
 
-        <OdsFormFieldError>
+        <FormFieldError>
           Error while filling textarea
-        </OdsFormFieldError>
-      </OdsFormField>
+        </FormFieldError>
+      </FormField>
 
       <p>
         Errors:
@@ -56,15 +56,15 @@ function FormFormik(): ReactElement {
       </p>
 
       <div>
-        <OdsButton
+        <Button
           type="reset"
           variant="outline">
           Reset button
-        </OdsButton>
+        </Button>
 
-        <OdsButton type="submit">
+        <Button type="submit">
           Submit button
-        </OdsButton>
+        </Button>
       </div>
     </form>
   );

@@ -3,12 +3,14 @@
 @use '../../../../../style/tag';
 
 @layer ods {
-  .ods-tag {
+  .tag {
     $tag: &;
-
+    
     @include tag.ods-tag();
+    
+    font-family: inherit;
 
-    &:not(&#{$tag}--disabled) {
+    &:not(:disabled) {
       &#{$tag}--critical {
         @include tag.ods-tag-color('critical');
       }
@@ -30,7 +32,7 @@
       }
     }
 
-    &--disabled {
+    &:disabled {
       @include state.ods-is-disabled();
     }
 
@@ -40,10 +42,6 @@
       & #{$tag}__close {
         font-size: 0.75rem;
       }
-
-      & #{$tag}__icon {
-        font-size: 0.833rem;
-      }
     }
 
     &--lg {
@@ -51,10 +49,6 @@
 
       & #{$tag}__close {
         font-size: 0.875rem;
-      }
-
-      & #{$tag}__icon {
-        font-size: 1.05rem;
       }
     }
 

@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import { Tag } from '.';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Text } from '../../text/src';
 import { TAG_COLOR } from './constants/tag-color';
 import { TAG_SIZE } from './constants/tag-size';
-import { type TagRemoveEventDetail } from './components/tag/Tag';
-import { Button } from '../../button/src';
+import style from './dev.module.css';
+
 export default {
   component: Tag,
   title: 'Tag dev',
@@ -18,11 +17,9 @@ export const Default = () => (
 );
 
 export const WithIcon = () => (
-  <Tag>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+  <Tag className={ style['ods-tag'] }>
       <Icon name={ICON_NAME.email} />
       <span>Tag with icon</span>
-    </div>
   </Tag>
 );
 
@@ -80,48 +77,8 @@ export const Disabled = () => (
 );
 
 export const RichContent = () => (
-  <Tag>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+  <Tag className={style['ods-tag']}>
       <Icon name={ICON_NAME.email} />
       <Text preset="paragraph">Rich content with components</Text>
-    </div>
   </Tag>
 );
-
-export const RemoveExample = () => {
-  const [tags, setTags] = useState([
-    { id: 'tag1', color: TAG_COLOR.information, label: 'Information' },
-    { id: 'tag2', color: TAG_COLOR.success, label: 'Success' },
-    { id: 'tag3', color: TAG_COLOR.warning, label: 'Warning' }
-  ]);
-
-  const handleRemove = (id: string): TagRemoveEventDetail => {
-    setTags(tags.filter(tag => tag.id !== id));
-    return { id };
-  };
-
-  return (
-    <div>      
-      <div style={{ display: 'flex', gap: '8px', margin: '16px 0' }}>
-        {tags.map(tag => (
-          <Tag 
-            key={tag.id}
-            color={tag.color}
-            onRemove={() => handleRemove(tag.id)}
-          >
-            {tag.label}
-          </Tag>
-        ))}
-      </div>
-      <Button 
-        onClick={() => setTags([
-          { id: 'tag1', color: TAG_COLOR.information, label: 'Information' },
-          { id: 'tag2', color: TAG_COLOR.success, label: 'Success' },
-          { id: 'tag3', color: TAG_COLOR.warning, label: 'Warning' }
-        ])}
-      >
-        Reset
-      </Button>
-    </div>
-  );
-};

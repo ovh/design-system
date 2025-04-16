@@ -18,20 +18,3 @@ export const focus = () => (
     Focus
   </Tag>
 );
-
-export const onRemove = () => (
-  <Tag 
-    data-testid="onRemove"
-    onRemove={() => (window as any).onRemoveHandler()}>
-    Removable
-  </Tag>
-);
-
-export const disabledOnRemove = () => (
-  <Tag
-    data-testid="disabledOnRemove"
-    disabled={true}
-    onRemove={() => (window as any).onRemoveHandler()}>
-    Disabled Removable
-  </Tag>
-);

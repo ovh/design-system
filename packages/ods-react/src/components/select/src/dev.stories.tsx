@@ -129,10 +129,7 @@ export const CustomRenderer = () => {
 
         <SelectControl customItemRenderer={ renderItem } />
 
-        <SelectContent customGroupRenderer={ renderGroup }
-          // customGroupRenderer={}
-          //              customOptionRenderer={}
-        />
+        <SelectContent customGroupRenderer={ renderGroup } />
       </Select>
     </>
   );

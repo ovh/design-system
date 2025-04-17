@@ -39,6 +39,8 @@ const SelectControl: FC<SelectControlProp> = forwardRef(({
             name={ ICON_NAME.chevronDown } />
         </Select.Indicator>
       </Select.Trigger>
+
+      <Select.HiddenSelect />
     </Select.Control>
   );
 });

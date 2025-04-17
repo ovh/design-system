@@ -1,4 +1,4 @@
-import { Button, Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Input, Password, Textarea } from '@ovhcloud/ods-react';
+import { Button, Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Input, Password, Select, SelectContent, SelectControl, SelectLabel, Textarea } from '@ovhcloud/ods-react';
 import React, { type FormEvent, type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.scss';
 
@@ -116,6 +116,34 @@ function FormNative(): ReactElement {
 
         <FormFieldError>
           Error while filling password
+        </FormFieldError>
+      </FormField>
+
+      <FormField>
+        <Select
+          items={[
+            { label: 'Dog', value:'dog' },
+            { label: 'Cat', value:'cat' },
+            { label: 'Hamster', value:'hamster' },
+            { label: 'Parrot', value:'parrot' },
+            { label: 'Spider', value:'spider' },
+            { label: 'Goldfish', value:'goldfish' },
+          ]}
+          name="select"
+          required={ areAllRequired }>
+          <SelectLabel>Select:</SelectLabel>
+
+          <SelectControl />
+
+          <SelectContent />
+        </Select>
+
+        <FormFieldHelper>
+          This is a select to fill
+        </FormFieldHelper>
+
+        <FormFieldError>
+          Error while filling select
         </FormFieldError>
       </FormField>
 

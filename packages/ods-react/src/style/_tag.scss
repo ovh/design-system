@@ -13,6 +13,7 @@ $ods-tag-height-lg: 28px;
   border-style: solid;
   border-radius: var(--ods-border-radius-lg);
   cursor: pointer;
+  font-family: inherit;
 
   &:focus-visible {
     @include focus.ods-focus();

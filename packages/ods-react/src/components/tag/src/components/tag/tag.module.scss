@@ -7,8 +7,6 @@
     $tag: &;
     
     @include tag.ods-tag();
-    
-    font-family: inherit;
 
     &:not(:disabled) {
       &#{$tag}--critical {

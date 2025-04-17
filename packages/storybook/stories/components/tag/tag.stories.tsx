@@ -81,6 +81,7 @@ export const Default: Story = {
 };
 
 export const Color: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['!dev'],
   parameters: {
     layout: 'centered',
@@ -107,6 +108,7 @@ export const Disabled: Story = {
 };
 
 export const Size: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['!dev'],
   parameters: {
     layout: 'centered',

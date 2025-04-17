@@ -13,7 +13,10 @@ import * as TagStories from './tag.stories';
 
 <Canvas of={ TagStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsTag } of={ TagStories } />
+<TechnicalSpecification data={ SpecificationsTag } of={ TagStories } extraAttributeInfo={{
+    name: 'button',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes',
+  }} />
 
 <Heading label="Examples" level={ 2 } />
 

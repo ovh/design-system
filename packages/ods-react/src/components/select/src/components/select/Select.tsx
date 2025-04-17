@@ -9,6 +9,7 @@ interface SelectProp extends ComponentPropsWithRef<'div'> {
   items: SelectItem[],
   invalid?: boolean,
   multiple?: SelectMultipleMode,
+  name?: string,
   readOnly?: boolean,
   required?: boolean,
 }
@@ -21,6 +22,7 @@ const Select: FC<SelectProp> = forwardRef(({
   items = [],
   invalid,
   multiple = false,
+  name,
   readOnly = false,
   required,
   ...props
@@ -56,6 +58,7 @@ const Select: FC<SelectProp> = forwardRef(({
         invalid={ invalid }
         loopFocus={ true }
         multiple={ !!multiple }
+        name={ name }
         positioning={{
           gutter: -1,
           sameWidth: true,

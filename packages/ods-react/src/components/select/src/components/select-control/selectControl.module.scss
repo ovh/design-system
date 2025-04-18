@@ -1,0 +1,71 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/input';
+@use '../../../../../style/state';
+
+@layer ods {
+  .select-control {
+    box-sizing: border-box;
+    display: inline-flex;
+    column-gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
+    border-radius: var(--ods-border-radius-sm);
+    background-color: #fff;
+    cursor: pointer;
+    padding: 0 8px;
+    width: 100%;
+    min-height: input.$ods-input-input-height;
+    color: var(--ods-color-text);
+    font-family: inherit;
+    font-size: 1rem;
+
+    &:focus {
+      @include focus.ods-focus();
+
+      border-color: var(--ods-color-form-element-border-hover-default);
+    }
+
+    &:disabled {
+      @include state.ods-is-disabled();
+    }
+
+    &:not(:disabled,[data-readonly]):hover {
+      border-color: var(--ods-color-form-element-border-hover-default);
+    }
+
+    &:not(:disabled)[data-invalid] {
+      @include input.ods-input-error();
+    }
+
+    &[data-placeholder-shown] {
+      color: input.$ods-input-placeholder-color;
+    }
+
+    &[data-readonly] {
+      @include state.ods-is-readonly();
+    }
+
+    &[data-state="open"] {
+      border-color: var(--ods-color-form-element-border-hover-default);
+
+      &[data-empty="false"] {
+        &[data-placement="bottom-start"] {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        &[data-placement="top-start"] {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+    }
+
+    &__icon {
+      &[data-state="open"] {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

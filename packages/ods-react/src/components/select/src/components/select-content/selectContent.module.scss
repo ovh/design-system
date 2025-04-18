@@ -1,0 +1,32 @@
+@use '../../../../../style/focus';
+
+@layer ods {
+  .select-content {
+    border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-hover-default);
+    background-color: #fff;
+    padding: 0;
+    max-height: 200px;
+    overflow: hidden auto;
+    scroll-behavior: smooth;
+
+    &:focus-visible {
+      @include focus.ods-focus();
+    }
+
+    &[data-empty="true"] {
+      visibility: hidden;
+    }
+
+    &[data-state="open"] {
+      &[data-placement="bottom-start"] {
+        border-bottom-left-radius: var(--ods-border-radius-sm);
+        border-bottom-right-radius: var(--ods-border-radius-sm);
+      }
+
+      &[data-placement="top-start"] {
+        border-top-left-radius: var(--ods-border-radius-sm);
+        border-top-right-radius: var(--ods-border-radius-sm);
+      }
+    }
+  }
+}

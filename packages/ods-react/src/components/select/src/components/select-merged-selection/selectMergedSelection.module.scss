@@ -1,0 +1,12 @@
+@layer ods {
+  .select-merged-selection {
+    &__total {
+      color: var(--ods-color-primary-500);
+      font-weight: 700;
+
+      &--disabled {
+        color: var(--ods-color-neutral-600);
+      }
+    }
+  }
+}

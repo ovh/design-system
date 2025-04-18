@@ -1,4 +1,4 @@
-import { Button, Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Input, Password, Textarea } from '@ovhcloud/ods-react';
+import { Button, Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Input, Password, Select, SelectContent, SelectControl, SelectLabel, Textarea } from '@ovhcloud/ods-react';
 import { useFormik } from 'formik';
 import React, { type ReactElement } from 'react';
 import * as yup from 'yup';
@@ -9,6 +9,7 @@ type FormData = {
   checkboxGroup: string[],
   input: string,
   password: string,
+  select: string,
   textarea: string,
 }
 
@@ -17,6 +18,7 @@ const validationSchema = yup.object<FormData>({
   checkboxGroup: yup.array().of(yup.string()).nullable().required(),
   input: yup.string().nullable().required(),
   password: yup.string().nullable().required(),
+  select: yup.string().nullable().required(),
   textarea: yup.string().nullable().required(),
 });
 
@@ -27,6 +29,7 @@ function FormFormik(): ReactElement {
       checkboxGroup: ['grouped checkbox 1'],
       input: 'default input',
       password: 'default password',
+      select: 'cat',
       textarea: 'default textarea',
     },
     onSubmit: (values) => {
@@ -134,6 +137,41 @@ function FormFormik(): ReactElement {
 
         <FormFieldError>
           Error while filling password
+        </FormFieldError>
+      </FormField>
+
+      <FormField invalid={ formik.touched.select && !!formik.errors.select }>
+        <FormFieldLabel>
+          Select:
+        </FormFieldLabel>
+
+        <Select
+          defaultValue={ formik.initialValues.select }
+          items={[
+            { label: 'Dog', value:'dog' },
+            { label: 'Cat', value:'cat' },
+            { label: 'Hamster', value:'hamster' },
+            { label: 'Parrot', value:'parrot' },
+            { label: 'Spider', value:'spider' },
+            { label: 'Goldfish', value:'goldfish' },
+          ]}
+          name="select"
+          onBlur={ formik.handleBlur }
+          onChange={ formik.handleChange }
+          required={ true }>
+          <SelectLabel>Select:</SelectLabel>
+
+          <SelectControl />
+
+          <SelectContent />
+        </Select>
+
+        <FormFieldHelper>
+          This is a select to fill
+        </FormFieldHelper>
+
+        <FormFieldError>
+          Error while filling select
         </FormFieldError>
       </FormField>
 

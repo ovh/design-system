@@ -1,0 +1,7 @@
+@use '../../../../../style/text';
+
+@layer ods {
+  .select-label {
+    @include text.ods-text-label();
+  }
+}

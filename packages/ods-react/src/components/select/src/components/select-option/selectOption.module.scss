@@ -1,0 +1,39 @@
+@use '../../../../../style/input';
+@use '../../../../../style/state';
+
+@layer ods {
+  .select-option {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 8px;
+    min-height: var(--ods-form-element-input-height);
+    color: var(--ods-color-text);
+
+    &:hover,
+    &[data-highlighted],
+    &[data-highlighted]:hover {
+      background-color: var(--ods-color-primary-100);
+    }
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+    }
+
+    &[data-state="checked"] {
+      background-color: var(--ods-color-primary-050);
+
+      &:hover,
+      &[data-highlighted],
+      &[data-highlighted]:hover {
+        background-color: var(--ods-color-primary-100);
+      }
+    }
+
+    &--multiple {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+    }
+  }
+}

@@ -5,7 +5,7 @@ $ods-link-font-weight: 600;
 @mixin ods-link() {
   display: inline-flex;
   flex-flow: row;
-  grid-gap: 8px;
+  gap: 8px;
   align-items: center;
   transition: background-size .2s ease-out;
   background-image: linear-gradient(currentcolor, currentcolor);

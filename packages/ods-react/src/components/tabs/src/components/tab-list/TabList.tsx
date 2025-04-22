@@ -3,9 +3,7 @@ import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX } from 'react';
 import style from './tabList.module.scss';
 
-export interface TabListProp extends ComponentPropsWithRef<'div'> {
-  className?: string,
-}
+export interface TabListProp extends ComponentPropsWithRef<'div'> {}
 
 const TabList: FC<TabListProp> = ({
   children,

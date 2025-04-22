@@ -10,6 +10,7 @@ export interface TabsChangeEvent {
 export interface TabsProp extends Omit<ComponentPropsWithRef<'div'>, 'onChange'> {
   defaultValue?: string;
   onChange?: (event: TabsChangeEvent) => void;
+  value?: string;
 }
 
 const Tabs: FC<TabsProp> = forwardRef(({
@@ -17,6 +18,7 @@ const Tabs: FC<TabsProp> = forwardRef(({
   className,
   defaultValue,
   onChange,
+  value,
   ...props
 }, ref: Ref<HTMLDivElement>): JSX.Element => {
 
@@ -24,6 +26,7 @@ const Tabs: FC<TabsProp> = forwardRef(({
     <VendorTabs.Root
       defaultValue={defaultValue}
       onValueChange={onChange}
+      value={value}
       className={classNames(style['tabs'], className)}
       ref={ref}
       {...props}>

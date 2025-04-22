@@ -9,12 +9,14 @@ import { SelectOption, type SelectOptionProp } from '../select-option/SelectOpti
 import style from './selectContent.module.scss';
 
 interface SelectContentProp extends ComponentPropsWithRef<'div'> {
+  createPortal?: boolean,
   customGroupRenderer?: SelectGroupProp['customGroupRenderer'],
   customOptionRenderer?: SelectOptionProp['customOptionRenderer'],
 }
 
 const SelectContent: FC<SelectContentProp> = forwardRef(({
   className,
+  createPortal = true,
   customGroupRenderer,
   customOptionRenderer,
   ...props
@@ -22,7 +24,7 @@ const SelectContent: FC<SelectContentProp> = forwardRef(({
   const { items } = useSelect();
 
   return (
-    <Portal>
+    <Portal disabled={ !createPortal }>
       <Select.Positioner>
         <Select.Content
           className={ classNames(style['select-content'], className) }

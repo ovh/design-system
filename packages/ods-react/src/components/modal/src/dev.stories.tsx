@@ -196,7 +196,7 @@ export const OverlayElements = () => (
         ]}>
           <SelectControl />
 
-          <SelectContent />
+          <SelectContent createPortal={ false } />
         </Select>
 
         <Popover>
@@ -204,7 +204,7 @@ export const OverlayElements = () => (
             <Icon name={ ICON_NAME.circleQuestion } />
           </PopoverTrigger>
 
-          <PopoverContent>
+          <PopoverContent createPortal={ false }>
             This is the popover content
           </PopoverContent>
         </Popover>

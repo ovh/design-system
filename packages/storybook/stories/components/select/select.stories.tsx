@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { FormField } from '../../../../ods-react/src/components/form-field/src';
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { Select, SelectContent, SelectControl, type SelectControlProp, SelectLabel, type SelectProp } from '../../../../ods-react/src/components/select/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
@@ -18,7 +18,7 @@ const meta: Meta<SelectProp> = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg: DemoArg)=> (
+  render: (arg: DemoArg) => (
     <Select
       disabled={ arg.disabled }
       invalid={ arg.invalid }
@@ -322,16 +322,16 @@ export const InFormField: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
+      <FormFieldLabel>
+        Select a Web hosting
+      </FormFieldLabel>
+
       <Select
         items={[
           { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
           { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
           { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
         ]}>
-        <SelectLabel>
-          Select a Web hosting
-        </SelectLabel>
-
         <SelectControl />
 
         <SelectContent />

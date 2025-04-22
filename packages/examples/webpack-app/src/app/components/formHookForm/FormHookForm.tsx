@@ -1,4 +1,13 @@
-import { Button, Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Input, Password, Select, SelectContent, SelectControl, SelectLabel, Textarea } from '@ovhcloud/ods-react';
+import {
+  Button,
+  Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel,
+  FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
+  Input,
+  Password,
+  Quantity, QuantityControl, QuantityInput,
+  Select, SelectContent, SelectControl,
+  Textarea,
+} from '@ovhcloud/ods-react';
 import React, { type ReactElement, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import styles from './formHookForm.scss';
@@ -8,6 +17,7 @@ type FormData = {
   checkboxGroup: string[],
   input: string,
   password: string,
+  quantity: string,
   select: string,
   textarea: string,
 }
@@ -17,6 +27,7 @@ const defaultValue: FormData = {
   checkboxGroup: ['grouped checkbox 1'],
   input: 'default input',
   password: 'default password',
+  quantity: '42',
   select: 'cat',
   textarea: 'default textarea',
 };
@@ -156,7 +167,39 @@ function FormHookForm(): ReactElement {
         </FormFieldError>
       </FormField>
 
+      <Controller
+        control={ control }
+        name="quantity"
+        render={ ({ field }) => (
+          <FormField invalid={ !!errors.quantity }>
+            <FormFieldLabel>
+              Quantity:
+            </FormFieldLabel>
+
+            <Quantity
+              defaultValue={ defaultValue.quantity }
+              onValueChange={ ({ value }) => setValue(field.name, value) }
+              required={ areAllRequired }>
+              <QuantityControl>
+                <QuantityInput />
+              </QuantityControl>
+            </Quantity>
+
+            <FormFieldHelper>
+              This is a quantity to fill
+            </FormFieldHelper>
+
+            <FormFieldError>
+              Error while filling quantity
+            </FormFieldError>
+          </FormField>
+        )} />
+
       <FormField invalid={ !!errors.select }>
+        <FormFieldLabel>
+          Select:
+        </FormFieldLabel>
+
         <Select
           defaultValue={ defaultValue.select }
           items={[
@@ -170,8 +213,6 @@ function FormHookForm(): ReactElement {
           { ...register('select', {
             required: areAllRequired,
           })}>
-          <SelectLabel>Select:</SelectLabel>
-
           <SelectControl />
 
           <SelectContent />

@@ -1,14 +1,15 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Tabs, TabList, Tab, TabContent, type TabsProp } from '../../../../ods-react/src/components/tabs/src';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<TabsProp>;
-type DemoArg = Partial<TabsProp> & {
-  content?: string,
-};
+type DemoArg = Partial<TabsProp>;
 
 const meta: Meta<TabsProp> = {
   component: Tabs,
+  subcomponents: { TabList, Tab, TabContent },
+  argTypes: excludeFromDemoControls(['defaulValue', 'onChange']),
   title: 'ODS Components/Tabs',
 };
 
@@ -45,7 +46,7 @@ export const Overview: Story = {
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <Tabs defaultValue="tab1">
+    <Tabs>
       <TabList>
         <Tab value="tab1">Tab 1</Tab>
         <Tab value="tab2">Tab 2</Tab>

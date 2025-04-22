@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { MODAL_COLORS, Modal, ModalBody, ModalContent, type ModalContentProp, type ModalOpenChangeDetail, type ModalProp, ModalTrigger } from '../../../../ods-react/src/components/modal/src';
+import { MODAL_COLOR, MODAL_COLORS, Modal, ModalBody, ModalContent, type ModalContentProp, type ModalOpenChangeDetail, type ModalProp, ModalTrigger } from '../../../../ods-react/src/components/modal/src';
 import { Select, SelectContent, SelectControl } from '../../../../ods-react/src/components/select/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
@@ -59,7 +59,8 @@ export const Demo: StoryObj = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        type: { summary: MODAL_COLORS }
+        defaultValue: { summary: MODAL_COLOR.information },
+        type: { summary: MODAL_COLORS },
       },
       control: { type: 'select' },
       options: MODAL_COLORS,
@@ -73,6 +74,8 @@ export const Demo: StoryObj = {
     dismissible: {
       table: {
         category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: true },
+        type: { summary: 'boolean' },
       },
       control: { type: 'boolean' },
     },

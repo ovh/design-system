@@ -1,0 +1,7 @@
+$tab-list-border-bottom-size: 2px;
+
+.tab-list {
+  display: inline-flex;
+  border-bottom: solid $tab-list-border-bottom-size var(--ods-color-neutral-100);
+  min-width: 100%;
+}

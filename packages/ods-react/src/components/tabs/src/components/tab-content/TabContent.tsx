@@ -1,0 +1,28 @@
+import { Tabs } from '@ark-ui/react/tabs';
+import classNames from 'classnames';
+import { type ComponentPropsWithRef, type FC, type JSX } from 'react';
+import style from './tabContent.module.scss';
+
+export interface TabContentProp extends ComponentPropsWithRef<'div'> {
+  value: string,
+}
+
+const TabContent: FC<TabContentProp> = ({
+  children,
+  className,
+  value,
+  ...props
+}): JSX.Element => {
+  return (
+    <Tabs.Content
+      className={ classNames(style['ods-tab-content'], className) }
+      value={ value }
+      { ...props }>
+      { children }
+    </Tabs.Content>
+  );
+};
+
+export {
+  TabContent,
+};

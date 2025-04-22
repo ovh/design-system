@@ -18,3 +18,4 @@ export * from './checkbox/src';
 export * from './tag/src';
 export * from './select/src';
 export * from './modal/src';
+export * from './tabs/src';

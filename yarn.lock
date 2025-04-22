@@ -3785,6 +3785,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-quantity@workspace:packages/ods-react/src/components/quantity":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-quantity@workspace:packages/ods-react/src/components/quantity"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-select@workspace:packages/ods-react/src/components/select":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-select@workspace:packages/ods-react/src/components/select"

@@ -1,0 +1,46 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsQuantity from '../../../../ods-react/src/components/quantity/documentation/quantity.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as QuantityStories from './quantity.stories';
+
+<Meta of={ QuantityStories } name="Technical information" />
+
+<Banner of={ QuantityStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ QuantityStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsQuantity } of={ QuantityStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ QuantityStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ QuantityStories.Disabled } sourceState="shown" />
+
+<Heading label="Readonly" level={ 3 } />
+
+<Canvas of={ QuantityStories.Readonly } sourceState="shown" />
+
+<Heading label="Max" level={ 3 } />
+
+<Canvas of={ QuantityStories.Max } sourceState="shown" />
+
+<Heading label="Min" level={ 3 } />
+
+<Canvas of={ QuantityStories.Min } sourceState="shown" />
+
+<Heading label="Step" level={ 3 } />
+
+<Canvas of={ QuantityStories.Step } sourceState="shown" />
+
+<Heading label="Form Field" level={ 3 } />
+
+<Canvas of={ QuantityStories.InFormField } sourceState="shown" />

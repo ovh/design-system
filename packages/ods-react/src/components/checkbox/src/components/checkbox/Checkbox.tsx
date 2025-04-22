@@ -15,7 +15,7 @@ interface CheckboxProp extends ComponentPropsWithRef<'label'> {
   disabled?: boolean,
   invalid?: boolean,
   name?: string,
-  onCheckedChange?: ((details: CheckboxCheckedChangeDetail) => void),
+  onCheckedChange?: (detail: CheckboxCheckedChangeDetail) => void,
   required?: boolean,
   value?: string,
 }

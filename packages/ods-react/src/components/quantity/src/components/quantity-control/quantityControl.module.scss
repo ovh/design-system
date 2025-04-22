@@ -1,0 +1,22 @@
+@use '../../../../../style/button';
+
+$ods-quantity-input-width: 50px;
+
+@layer ods {
+  .quantity-control {
+    display: inline-grid;
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+    width: calc(button.$ods-button-size-sm * 2 + $ods-quantity-input-width);
+
+    &__decrement {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &__increment {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}

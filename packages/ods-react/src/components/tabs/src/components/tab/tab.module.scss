@@ -1,0 +1,54 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/state';
+@use '../tab-list/tabList.module' as tab-list;
+
+@layer ods {
+  .tab {
+    display: block;
+    margin-bottom: -#{tab-list.$tab-list-border-bottom-size};
+    border-top: none;
+    border-right: none;
+    border-bottom: solid tab-list.$tab-list-border-bottom-size transparent;
+    border-left: none;
+    border-top-left-radius: var(--ods-border-radius-md);
+    border-top-right-radius: var(--ods-border-radius-md);
+    border-color: transparent;
+    background: none;
+    cursor: pointer;
+    padding: 2px 16px;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--ods-color-text);
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 600;
+
+    &:focus-visible {
+      @include focus.ods-focus();
+
+      z-index: 1;
+      outline-offset: 0;
+    }
+
+    &:focus-visible:not([disabled], [aria-selected="true"]),
+    &:hover:not([disabled], [aria-selected="true"]) {
+      background-color: var(--ods-color-neutral-050);
+    }
+
+    &[disabled] {
+      @include state.ods-is-disabled();
+
+      border-color: var(--ods-color-neutral-100);
+      background-color: inherit;
+    }
+
+    &[disabled][aria-selected="true"] {
+      border-color: var(--ods-color-neutral-500);
+    }
+
+    &[aria-selected="true"]:not([disabled]) {
+      border-color: var(--ods-color-primary-500);
+      color: var(--ods-color-primary-500);
+    }
+  }
+}

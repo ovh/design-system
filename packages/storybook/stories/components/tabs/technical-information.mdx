@@ -1,0 +1,34 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsTabs from '../../../../ods-react/src/components/tabs/documentation/tabs.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as TabsStories from './tabs.stories';
+
+<Meta of={ TabsStories } name="Technical information" />
+
+<Banner of={ TabsStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ TabsStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsTabs } of={ TabsStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ TabsStories.Default } sourceState="shown" />
+
+<Heading label="Disabled tab" level={ 3 } />
+
+<Canvas of={ TabsStories.Disabled } sourceState="shown" />
+
+<Heading label="Horizontal overflow" level={ 3 } />
+
+<Canvas of={ TabsStories.Overflow } sourceState="shown" />
+
+<Heading label="With content" level={ 3 } />
+
+<Canvas of={ TabsStories.WithContent } sourceState="shown" />

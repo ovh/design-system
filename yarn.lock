@@ -3767,6 +3767,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-modal@workspace:packages/ods-react/src/components/modal":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-modal@workspace:packages/ods-react/src/components/modal"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-password@workspace:packages/ods-react/src/components/password":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-password@workspace:packages/ods-react/src/components/password"

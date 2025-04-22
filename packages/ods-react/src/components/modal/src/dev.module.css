@@ -1,0 +1,8 @@
+.custom-modal-body {
+  color: red;
+}
+
+.custom-modal-content {
+  height: 90vh;
+  max-height: none;
+}

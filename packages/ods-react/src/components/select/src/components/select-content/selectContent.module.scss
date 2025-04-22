@@ -1,7 +1,9 @@
 @use '../../../../../style/focus';
+@use '../../../../../style/overlay';
 
 @layer ods {
   .select-content {
+    z-index: overlay.$ods-overlay-select-z-index;
     border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-hover-default);
     background-color: #fff;
     padding: 0;

@@ -1,0 +1,87 @@
+import { Badge } from '@ovhcloud/ods-react';
+import { Meta, Source } from '@storybook/blocks';
+import * as ModalStories from './modal.stories';
+import { Heading } from '../../../src/components/heading/Heading';
+
+<Meta of={ ModalStories } name="Migration From 17.x" />
+
+<Heading label="Modal - migrate from v17 to v18" level={ 1 } />
+
+<Heading label="Attributes changes" level={ 2 } />
+
+`color` <Badge color="information" size="sm">Updated</Badge>
+
+Has been updated.
+
+Modal's color options have been restricted to the options in `ODS_MODAL_COLORS`.
+
+`dismissible` <Badge color="information" size="sm">Updated</Badge>
+
+Has been updated.
+
+You can use the new `isDismissible` attribute to obtain the same behavior.
+
+`headline` <Badge color="critical" size="sm">Removed</Badge>
+
+Has been removed.
+
+Modal does not provide a headline attribute anymore.
+You can use the content slot to recreate the desired headline.
+
+`masked` <Badge color="information" size="sm">Updated</Badge>
+
+Has been updated.
+
+You can use the new `isOpen` attribute to obtain the same behavior.
+
+<Heading label="Migration examples" level={ 2 } />
+
+Color modal:
+
+<Source code={`
+<osds-modal color={ODS_THEME_COLOR_INTENT.information}></osds-modal>
+
+<!-- is now -->
+
+<ods-modal color={ODS_MODAL_COLOR.information}></ods-modal>
+`}
+        dark="true"
+        language="html" />
+
+Dismissible modal:
+
+<Source code={`
+<osds-modal dismissible="true"></osds-modal>
+
+<!-- is now -->
+
+<ods-modal is-dismissible="true"></ods-modal>
+`}
+        dark="true"
+        language="html" />
+
+Headline modal:
+
+<Source code={`
+<osds-modal headline="Hello, world!"></osds-modal>
+
+<!-- is now -->
+
+<ods-modal>
+  <ods-text preset="heading-3">Hello, world!</ods-text>
+</ods-modal>
+`}
+        dark="true"
+        language="html" />
+
+Masked modal:
+
+<Source code={`
+<osds-modal masked="true"></osds-modal>
+
+<!-- is now -->
+
+<ods-modal is-open="false"></ods-modal>
+`}
+        dark="true"
+        language="html" />

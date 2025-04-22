@@ -1,0 +1,7 @@
+@use '../../../../../style/modal';
+
+@layer ods {
+  .modal-body {
+    @include modal.ods-modal-body();
+  }
+}

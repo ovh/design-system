@@ -1,0 +1,29 @@
+@use '../../../../../style/modal';
+@include modal.ods-modal-animation();
+
+@layer ods {
+  .modal-backdrop {
+    @include modal.ods-modal-backdrop();
+  }
+
+  .modal-positioner {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: modal.$ods-modal-z-index;
+  }
+
+  .modal-content {
+    &:not([hidden]) {
+      @include modal.ods-modal();
+
+      &[data-state="open"] {
+        animation: modal-open 0.2s ease-in-out;
+      }
+
+      &[data-state="closed"] {
+        animation: modal-close 0.2s ease-in-out;
+      }
+    }
+  }
+}

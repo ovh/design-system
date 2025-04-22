@@ -8,6 +8,7 @@ import style from './modalContent.module.scss';
 
 interface ModalContentProp extends ComponentPropsWithRef<'div'> {
   color?: ModalColor,
+  createPortal?: boolean,
   dismissible?: boolean,
 }
 
@@ -15,11 +16,12 @@ const ModalContent: FC<ModalContentProp> = forwardRef(({
   children,
   className,
   color = MODAL_COLOR.information,
+  createPortal = true,
   dismissible = true,
   ...props
 }, ref): JSX.Element => {
   return (
-    <Portal>
+    <Portal disabled={ !createPortal }>
       <Dialog.Backdrop className={ style['modal-backdrop'] } />
 
       <Dialog.Positioner className={ style['modal-positioner'] }>

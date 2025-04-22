@@ -1,4 +1,13 @@
-import { Button, Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Input, Password, Select, SelectContent, SelectControl, SelectLabel, Textarea } from '@ovhcloud/ods-react';
+import {
+  Button,
+  Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel,
+  FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
+  Input,
+  Password,
+  Quantity, QuantityControl, QuantityInput,
+  Select, SelectContent, SelectControl,
+  Textarea,
+} from '@ovhcloud/ods-react';
 import React, { type FormEvent, type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.scss';
 
@@ -120,6 +129,33 @@ function FormNative(): ReactElement {
       </FormField>
 
       <FormField>
+        <FormFieldLabel>
+          Quantity:
+        </FormFieldLabel>
+
+        <Quantity
+          defaultValue="42"
+          name="quantity"
+          required={ areAllRequired }>
+          <QuantityControl>
+            <QuantityInput />
+          </QuantityControl>
+        </Quantity>
+
+        <FormFieldHelper>
+          This is a quantity to fill
+        </FormFieldHelper>
+
+        <FormFieldError>
+          Error while filling quantity
+        </FormFieldError>
+      </FormField>
+
+      <FormField>
+        <FormFieldLabel>
+          Select:
+        </FormFieldLabel>
+
         <Select
           items={[
             { label: 'Dog', value:'dog' },
@@ -131,7 +167,6 @@ function FormNative(): ReactElement {
           ]}
           name="select"
           required={ areAllRequired }>
-          <SelectLabel>Select:</SelectLabel>
 
           <SelectControl />
 

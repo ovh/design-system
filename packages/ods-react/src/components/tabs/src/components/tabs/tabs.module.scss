@@ -1,0 +1,12 @@
+@use '../../../../../style/scroll';
+
+@layer ods {
+  .tabs {
+    @include scroll.hide-scrollbar();
+    
+    display: block;
+    padding: var(--ods-outline-width);
+    width: 100%;
+    overflow-x: auto;
+  }
+}

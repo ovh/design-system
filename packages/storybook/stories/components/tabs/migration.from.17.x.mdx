@@ -1,0 +1,63 @@
+import { Meta } from '@storybook/blocks';
+import * as TabsStories from './tabs.stories';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ TabsStories } name="Migration From 17.x" />
+
+<Heading label="Tabs - migrate from v17 to v18" level={ 1 } />
+
+<Heading label="Usage changes" level={ 2 } />
+
+In v18, the Tabs component has been completely reimplemented in React. The component now uses Ark UI for enhanced accessibility and better state management.
+
+The API has been simplified and now follows a composition pattern similar to other form components in the design system.
+
+<Heading label="Basic Usage" level={ 2 } />
+
+```tsx
+// New React Tabs in v18
+import { Tabs, TabList, Tab, TabContent } from '@ovhcloud/ods-react';
+
+const Component = () => (
+  <Tabs defaultValue="tab1">
+    <TabList>
+      <Tab value="tab1">Tab 1</Tab>
+      <Tab value="tab2">Tab 2</Tab>
+      <Tab value="tab3">Tab 3</Tab>
+    </TabList>
+    <TabContent value="tab1">
+      <p>Content for Tab 1</p>
+    </TabContent>
+    <TabContent value="tab2">
+      <p>Content for Tab 2</p>
+    </TabContent>
+    <TabContent value="tab3">
+      <p>Content for Tab 3</p>
+    </TabContent>
+  </Tabs>
+);
+```
+
+<Heading label="Event Handling" level={ 2 } />
+
+The component provides an `onChange` handler to respond to tab selection:
+
+```tsx
+<Tabs 
+  defaultValue="tab1"
+  onChange={(event) => console.log('Selected tab:', event.value)}>
+  {/* ... */}
+</Tabs>
+```
+
+<Heading label="Accessibility Improvements" level={ 2 } />
+
+The new Tabs component follows the WAI-ARIA Tabs Pattern and provides:
+
+- Proper keyboard navigation between tabs
+- ARIA attributes for tabs and tabpanels
+- Focus management
+
+To learn more about how to use this component, please check the <StorybookLink kind={ ODS_COMPONENTS_TITLE.tabs } story={ STORY.documentation }>documentation</StorybookLink>. 

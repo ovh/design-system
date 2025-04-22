@@ -5,17 +5,19 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import style from './popoverContent.module.scss';
 
 interface PopoverContentProp extends ComponentPropsWithRef<'div'> {
+  createPortal?: boolean,
   withArrow?: boolean,
 }
 
 const PopoverContent: FC<PopoverContentProp> = forwardRef(({
   children,
   className,
+  createPortal = true,
   withArrow = false,
   ...props
 }, ref): JSX.Element => {
   return (
-    <Portal>
+    <Portal disabled={ !createPortal }>
       <Popover.Positioner>
         <Popover.Content
           className={ classNames(style['popover-content'], className) }

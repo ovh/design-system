@@ -9,7 +9,7 @@ type Story = StoryObj<SelectProp>;
 type DemoArg = Partial<SelectProp> & Partial<SelectControlProp> & {};
 
 const meta: Meta<SelectProp> = {
-  argTypes: excludeFromDemoControls(['defaultValue', 'items', 'required']),
+  argTypes: excludeFromDemoControls(['defaultValue', 'items', 'name', 'required']),
   component: Select,
   subcomponents: { SelectContent, SelectControl, SelectLabel },
   title: 'ODS Components/Form elements/Select',

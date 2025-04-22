@@ -5,17 +5,19 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import style from './tooltipContent.module.scss';
 
 interface TooltipContentProp extends ComponentPropsWithRef<'div'> {
+  createPortal?: boolean,
   withArrow?: boolean,
 }
 
 const TooltipContent: FC<TooltipContentProp> = forwardRef(({
   children,
   className,
+  createPortal = true,
   withArrow = false,
   ...props
 }, ref): JSX.Element => {
   return (
-    <Portal>
+    <Portal disabled={ !createPortal }>
       <Tooltip.Positioner>
         <Tooltip.Content
           className={ classNames(style['tooltip-content'], className) }

@@ -1,0 +1,195 @@
+import { Badge } from '@ovhcloud/ods-react';
+import { Meta, Source } from '@storybook/blocks';
+import * as QuantityStories from './quantity.stories';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ QuantityStories } name="Migration From 17.x" />
+
+<Heading label="Quantity - migrate from v17 to v18" level={ 1 } />
+
+<Heading label="Usage changes" level={ 2 } />
+
+Quantity component was using slots, expecting specific components in it to work as expected.
+
+It has been fully reworked to be a all-in-one form element component.
+
+You can now use it directly as any input element.
+
+Here is an example of the previous declaration with ODS component:
+
+<Source code={`
+<osds-quantity>
+  <osds-button slot='minus' color='primary' size='sm'>
+    <osds-icon size='sm' contrasted name='minus'></osds-icon>
+  </osds-button>
+  <osds-input type='number' color='primary'></osds-input>
+  <osds-button slot='plus' color='primary' size='sm'>
+    <osds-icon size='sm' contrasted name='plus'></osds-icon>
+  </osds-button>
+</osds-quantity>
+`}
+        dark="true"
+        language="html" />
+
+The same result would now be achieved using:
+
+<Source code={`
+<ods-quantity>
+</ods-quantity>
+`}
+        dark="true"
+        language="html" />
+
+<Heading label="Attributes changes" level={ 2 } />
+
+`disabled` <Badge color="information" size="sm">Updated</Badge>
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+`defaultValue` <Badge color="success" size="sm">New</Badge>
+
+New attribute (optional).
+
+You can use the new `defaultValue` attribute to obtain the same behavior as with input.
+
+`ariaLabel` <Badge color="success" size="sm">New</Badge>
+
+New attribute (optional).
+
+You can use the new `ariaLabel` attribute to obtain the same behavior as with input.
+
+`ariaLabelledby` <Badge color="success" size="sm">New</Badge>
+
+New attribute (optional).
+
+You can use the new `araiLabelledby` attribute to obtain the same behavior as with input.
+
+`hasError` <Badge color="success" size="sm">New</Badge>
+
+New attribute (optional).
+
+You can use the new `hasError` attribute to obtain the same behavior as with input.
+
+`isReadonly` <Badge color="success" size="sm">New</Badge>
+
+New attribute (optional).
+
+You can use the new `isReadonly` attribute to obtain the same behavior as with input.
+
+`isRequired` <Badge color="success" size="sm">New</Badge>
+
+New attribute (optional).
+
+You can use the new `isRequired` attribute to obtain the same behavior as with input.
+
+`max` <Badge color="success" size="sm">New</Badge>
+
+New attribute (optional).
+
+You can use the new `max` attribute to obtain the same behavior as with input.
+
+`min` <Badge color="success" size="sm">New</Badge>
+
+New attribute (optional).
+
+You can use the new `min` attribute to obtain the same behavior as with input.
+
+`name` <Badge color="success" size="sm">New</Badge>
+
+New attribute.
+
+You can use the new `name` attribute to obtain the same behavior as with input.
+
+`placeholder` <Badge color="success" size="sm">New</Badge>
+
+New attribute (optional).
+
+You can use the new `placeholder` attribute to obtain the same behavior as with input.
+
+`step` <Badge color="success" size="sm">New</Badge>
+
+New attribute (optional).
+
+You can use the new `step` attribute to obtain the same behavior as with input.
+
+`value` <Badge color="success" size="sm">New</Badge>
+
+New attribute (optional).
+
+You can use the new `value` attribute to obtain the same behavior as with input.
+
+<Heading label="Slot changes" level={ 2 } />
+
+`slot:minus` <Badge color="critical" size="sm">Removed</Badge>
+
+Has been removed.
+
+The slot minus is now automatically in the component with an ods-button
+
+`slot:default` <Badge color="critical" size="sm">Removed</Badge>
+
+Has been removed.
+
+The slot is now automatically in the component with an ods-input
+
+`slot:plus` <Badge color="critical" size="sm">Removed</Badge>
+
+Has been removed.
+
+The slot plus is now automatically in the component with an ods-button
+
+<Heading label="Input attributes changes" level={ 2 } />
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.migrationFrom17 }>Doc input</StorybookLink>
+
+<Heading label="Button attributes changes" level={ 2 } />
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.migrationFrom17 }>Doc button</StorybookLink>
+
+<Heading label="Migration examples" level={ 2 } />
+
+Disabled quantity:
+
+<Source code={`
+<osds-quantity disabled>
+  <osds-button slot='minus' color='primary' size='sm'>
+    <osds-icon size='sm' contrasted name='minus'></osds-icon>
+  </osds-button>
+  <osds-input type='number' color='primary'></osds-input>
+  <osds-button slot='plus' color='primary' size='sm'>
+    <osds-icon size='sm' contrasted name='plus'></osds-icon>
+  </osds-button>
+</osds-quantity>
+
+<!-- is now -->
+
+<ods-quantity is-disabled>
+</ods-quantity>
+`}
+        dark="true"
+        language="html" />
+
+Slot quantity:
+
+<Source code={`
+<osds-quantity>
+  <osds-button slot='minus' color='primary' size='sm'>
+    <osds-icon size='sm' contrasted name='minus'></osds-icon>
+  </osds-button>
+  <osds-input type='number' color='primary'></osds-input>
+  <osds-button slot='plus' color='primary' size='sm'>
+    <osds-icon size='sm' contrasted name='plus'></osds-icon>
+  </osds-button>
+</osds-quantity>
+
+<!-- is now -->
+
+<ods-quantity>
+</ods-quantity>
+`}
+        dark="true"
+        language="html" />

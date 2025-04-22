@@ -1,0 +1,31 @@
+@use '../../../../../style/input';
+
+@layer ods {
+  .quantity-input {
+    @include input.ods-input();
+
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+    width: 100%;
+    text-align: center;
+
+    &:focus-visible {
+      z-index: 1;
+    }
+
+    &:not([data-invalid], :disabled, :read-only) {
+      &:focus {
+        border-color: var(--ods-color-form-element-border-focus-default);
+      }
+
+      &:hover {
+        border-color: var(--ods-color-form-element-border-hover-default);
+      }
+    }
+
+    &:not(:disabled)[data-invalid] {
+      @include input.ods-input-error();
+    }
+  }
+}

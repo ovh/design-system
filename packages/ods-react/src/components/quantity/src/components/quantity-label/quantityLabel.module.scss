@@ -1,0 +1,7 @@
+@use '../../../../../style/text';
+
+@layer ods {
+  .quantity-label {
+    @include text.ods-text-label();
+  }
+}

@@ -1,4 +1,4 @@
-import { Tabs as ArkTabs } from '@ark-ui/react/tabs';
+import { Tabs as VendorTabs } from '@ark-ui/react/tabs';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, type Ref, forwardRef } from 'react';
 import style from './tabs.module.scss';
@@ -21,14 +21,14 @@ const Tabs: FC<TabsProp> = forwardRef(({
 }, ref: Ref<HTMLDivElement>): JSX.Element => {
 
   return (
-    <ArkTabs.Root
+    <VendorTabs.Root
       defaultValue={defaultValue}
       onValueChange={onChange}
       className={classNames(style['tabs'], className)}
       ref={ref}
       {...props}>
       {children}
-    </ArkTabs.Root>
+    </VendorTabs.Root>
   );
 });
 

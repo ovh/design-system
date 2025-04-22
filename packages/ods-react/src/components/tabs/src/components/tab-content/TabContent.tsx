@@ -15,7 +15,7 @@ const TabContent: FC<TabContentProp> = ({
 }): JSX.Element => {
   return (
     <Tabs.Content
-      className={ classNames(style['ods-tab-content'], className) }
+      className={ classNames(style['tab-content'], className) }
       value={ value }
       { ...props }>
       { children }

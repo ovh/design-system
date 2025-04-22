@@ -3809,6 +3809,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-tabs@workspace:packages/ods-react/src/components/tabs":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-tabs@workspace:packages/ods-react/src/components/tabs"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-tag@workspace:packages/ods-react/src/components/tag":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-tag@workspace:packages/ods-react/src/components/tag"

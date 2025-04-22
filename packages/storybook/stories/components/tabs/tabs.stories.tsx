@@ -1,23 +1,22 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { Tabs, TabList, Tab, TabContent, type TabsProp } from '../../../../ods-react/src/components/tabs/src';
+import { Tabs, TabList, Tab, TabContent,type TabsChangeEvent, type TabsProp } from '../../../../ods-react/src/components/tabs/src';
 import { excludeFromDemoControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<TabsProp>;
-type DemoArg = Partial<TabsProp>;
 
 const meta: Meta<TabsProp> = {
   component: Tabs,
   subcomponents: { TabList, Tab, TabContent },
-  argTypes: excludeFromDemoControls(['defaulValue', 'onChange']),
+  argTypes: excludeFromDemoControls(['defaultValue', 'value', 'onChange']),
   title: 'ODS Components/Tabs',
 };
 
 export default meta;
 
 export const Demo: Story = {
-  render: (arg: DemoArg) => (
-    <Tabs defaultValue={ arg.defaultValue}>
+  render: () => (
+    <Tabs defaultValue='tab1'>
       <TabList>
         <Tab value="tab1">Tab 1</Tab>
         <Tab value="tab2">Tab 2</Tab>
@@ -41,6 +40,30 @@ export const Overview: Story = {
       </TabList>
     </Tabs>
   ),
+};
+
+export const Controlled: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => {
+    const [value, setValue] = React.useState('tab1');
+
+    const handleChange = (event: TabsChangeEvent) => {
+      setValue(event.value);
+    };
+
+    return (
+      <Tabs value={value} onChange={handleChange}>
+        <TabList>
+          <Tab value="tab1">Tab 1</Tab>
+          <Tab value="tab2">Tab 2</Tab>
+          <Tab value="tab3">Tab 3</Tab>
+        </TabList>
+      </Tabs>
+    );
+  },
 };
 
 export const Default: Story = {

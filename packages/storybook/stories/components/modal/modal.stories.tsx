@@ -310,7 +310,7 @@ export const OverlayElements: Story = {
           ]}>
             <SelectControl />
 
-            <SelectContent />
+            <SelectContent createPortal={ false } />
           </Select>
 
           <Tooltip>
@@ -318,7 +318,7 @@ export const OverlayElements: Story = {
               <Icon name={ ICON_NAME.circleQuestion } />
             </TooltipTrigger>
 
-            <TooltipContent>
+            <TooltipContent createPortal={ false }>
               This is the tooltip content
             </TooltipContent>
           </Tooltip>

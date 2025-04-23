@@ -30,27 +30,27 @@
       outline-offset: 0;
     }
 
-    &:not([disabled], [aria-selected="true"]) {  
-    &:focus-visible,  
-    &:hover { 
+    &:focus-visible:not([disabled], [aria-selected="true"]),
+    &:hover:not([disabled], [aria-selected="true"]) {
       background-color: var(--ods-color-neutral-050);
     }
-  }
 
     &[disabled] {
       @include state.ods-is-disabled();
 
       border-color: var(--ods-color-neutral-100);
       background-color: inherit;
-      
-      &[aria-selected="true"] {
-        border-color: var(--ods-color-neutral-500);
-      }
     }
 
-    &[aria-selected="true"]:not([disabled]) {
-      border-color: var(--ods-color-primary-500);
-      color: var(--ods-color-primary-500);
+    &[aria-selected="true"] {
+      &:not([disabled]) {
+        border-color: var(--ods-color-primary-500);
+        color: var(--ods-color-primary-500);
+      }
+
+      &[disabled] {
+        border-color: var(--ods-color-neutral-500);
+      }
     }
   }
 }

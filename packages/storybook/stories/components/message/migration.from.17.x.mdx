@@ -1,0 +1,58 @@
+import { Badge } from '@ovhcloud/ods-react';
+import { Meta, Source } from '@storybook/blocks';
+import * as MessageStories from './message.stories';
+import { Heading } from '../../../src/components/heading/Heading';
+
+<Meta of={ MessageStories } name="Migration From 17.x" />
+
+<Heading label="Message - migrate from v17 to v18" level={ 1 } />
+
+<Heading label="Attributes changes" level={ 2 } />
+
+`contrasted` <Badge color="critical" size="sm">Removed</Badge>
+
+Has been removed.
+
+You can use the style customization to achieve the same result, until a new color get validated by the design team.
+
+`inline` <Badge color="critical" size="sm">Removed</Badge>
+
+Has been removed.
+
+Message is inline by default. If you need to change this, you can use the style customization.
+
+`removable` <Badge color="information" size="sm">Updated</Badge>
+
+Has been updated.
+
+You can use the new `isDismissible` attribute to obtain the same behavior.
+
+`type` <Badge color="critical" size="sm">Removed</Badge>
+
+Has been removed.
+
+Color attribute will condition which icon is displayed.
+
+`variant` <Badge color="success" size="sm">New</Badge>
+
+New attribute.
+
+Allow you to choose between default or light variant, a white version for lighter notification but different from contrasted color.
+
+<Heading label="Migration examples" level={ 2 } />
+
+Basic tag:
+
+<Source code={`
+<osds-message>
+  My message
+</osds-message>
+
+<!-- is now -->
+
+<ods-message>
+  My message
+</ods-message>
+`}
+        dark="true"
+        language="html" />

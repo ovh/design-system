@@ -1,0 +1,55 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/radio';
+@use '../../../../../style/state';
+
+@layer ods {
+  .radio-control {
+    @include radio.ods-radio();
+
+    &:not([data-disabled]) {
+      &[data-focus] {
+        @include focus.ods-focus();
+      }
+
+      &[data-state="checked"] {
+        border-color: var(--ods-color-primary-500);
+        background-color: var(--ods-color-primary-500);
+
+        &::before {
+          transform: scale(1);
+        }
+
+        &[data-focus],
+        &[data-hover] {
+          border-color: var(--ods-color-primary-700);
+          background-color: var(--ods-color-primary-700);
+        }
+      }
+    }
+
+    &:not([data-invalid]) {
+      &[data-focus] {
+        border-color: var(--ods-color-form-element-border-focus-default);
+      }
+
+      &[data-hover] {
+        border-color: var(--ods-color-form-element-border-hover-default);
+      }
+    }
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+
+      &[data-state="checked"] {
+        &::before {
+          transform: scale(1);
+          background-color: state.$ods-state-is-disabled-text-color;
+        }
+      }
+    }
+
+    &[data-invalid] {
+      border-color: var(--ods-color-form-element-border-critical);
+    }
+  }
+}

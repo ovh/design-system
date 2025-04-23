@@ -5,6 +5,7 @@ import {
   Input,
   Password,
   Quantity, QuantityControl, QuantityInput,
+  Radio, RadioControl, RadioLabel, RadioGroup, RadioGroupLabel,
   Select, SelectContent, SelectControl,
   Textarea,
 } from '@ovhcloud/ods-react';
@@ -148,6 +149,42 @@ function FormNative(): ReactElement {
 
         <FormFieldError>
           Error while filling quantity
+        </FormFieldError>
+      </FormField>
+
+      <FormField>
+        <RadioGroup name="radioGroup">
+          <RadioGroupLabel>
+            Radio group:
+          </RadioGroupLabel>
+
+          <Radio
+            required={ areAllRequired }
+            value="radio 1">
+            <RadioControl />
+
+            <RadioLabel>
+              Radio 1
+            </RadioLabel>
+          </Radio>
+
+          <Radio
+            required={ areAllRequired }
+            value="radio 2">
+            <RadioControl />
+
+            <RadioLabel>
+              Radio 2
+            </RadioLabel>
+          </Radio>
+        </RadioGroup>
+
+        <FormFieldHelper>
+          This is a radio group to fill
+        </FormFieldHelper>
+
+        <FormFieldError>
+          Error while filling radio group
         </FormFieldError>
       </FormField>
 

@@ -5,6 +5,7 @@ import {
   Input,
   Password,
   Quantity, QuantityControl, QuantityInput,
+  Radio, RadioControl, RadioLabel, RadioGroup, RadioGroupLabel,
   Select, SelectContent, SelectControl,
   Textarea,
 } from '@ovhcloud/ods-react';
@@ -19,6 +20,7 @@ type FormData = {
   input: string,
   password: string,
   quantity: string,
+  radioGroup: string,
   select: string,
   textarea: string,
 }
@@ -29,6 +31,7 @@ const validationSchema = yup.object<FormData>({
   input: yup.string().nullable().required(),
   password: yup.string().nullable().required(),
   quantity: yup.string().nullable().required(),
+  radioGroup: yup.string().nullable().required(),
   select: yup.string().nullable().required(),
   textarea: yup.string().nullable().required(),
 });
@@ -41,6 +44,7 @@ function FormFormik(): ReactElement {
       input: 'default input',
       password: 'default password',
       quantity: '42',
+      radioGroup: '',
       select: 'cat',
       textarea: 'default textarea',
     },
@@ -177,6 +181,40 @@ function FormFormik(): ReactElement {
           Error while filling quantity
         </FormFieldError>
       </FormField>
+
+      <RadioGroup
+        defaultValue={ formik.initialValues.radioGroup }
+        name="radioGroup"
+        onBlur={ formik.handleBlur }
+        onValueChange={ ({ value }) => {
+          formik.setFieldValue('radioGroup', value);
+        }}>
+        <FormField>
+          <RadioGroupLabel>
+            Radio group:
+          </RadioGroupLabel>
+
+          <Radio
+            required={ true }
+            value="radio 1">
+            <RadioControl />
+
+            <RadioLabel>
+              Radio 1
+            </RadioLabel>
+          </Radio>
+
+          <Radio
+            required={ true }
+            value="radio 2">
+            <RadioControl />
+
+            <RadioLabel>
+              Radio 2
+            </RadioLabel>
+          </Radio>
+        </FormField>
+      </RadioGroup>
 
       <FormField invalid={ formik.touched.select && !!formik.errors.select }>
         <FormFieldLabel>

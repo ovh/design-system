@@ -3767,6 +3767,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-message@workspace:packages/ods-react/src/components/message":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-message@workspace:packages/ods-react/src/components/message"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-modal@workspace:packages/ods-react/src/components/modal":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-modal@workspace:packages/ods-react/src/components/modal"

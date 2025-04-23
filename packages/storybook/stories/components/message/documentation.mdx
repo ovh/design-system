@@ -1,0 +1,102 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as MessageStories from './message.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ MessageStories } name="Documentation" />
+
+<Banner of={ MessageStories } />
+
+_**Message** component helps to communicate with users providing feedback or information._
+
+<Canvas of={ MessageStories.Overview } sourceState="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ ['Notifier', 'Notification', 'Banner', 'Alert', 'Feedback'] }
+              atomicType={ ATOMIC_TYPE.molecule }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=44-8300"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/message"
+              name="Message"
+              relatedComponents={ [{ name: 'Button' }, { name: 'Icon' }, { name: 'Text' }] }>
+  **Message** component communicates information to the user.
+
+  It grabs the user's attention in a prominent way.
+</IdentityCard>
+
+<Heading label="Anatomy" level={ 2 } />
+
+![Component anatomy](components/message/anatomy.png "Component anatomy")
+
+1. <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> to inform users about what kind of message it is (optional)
+
+2. <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, which can be a plain text or contain a link
+
+3. A `cross` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, which is a close button to dismiss the **Message** (optional)
+
+<Heading label="Usage" level={ 2 } />
+
+**Messages** are used as notification status.
+
+There are four different subtypes of standard **Messages**, in order of priority:
+
+- **Information**: Provides info to users in context. Shouldn’t be overused to replace regular content.
+- **Success**: Reserved to provide to a success message. They are displayed as a snackbar.
+- **Warning**: Reserved for **Messages** that need the user attention and acknowledgment but might not cause errors.
+- **Critical**: Reserved for errors, malfunctions, as well as critical issues. Inform the user that a problem requires immediate intervention or correction before the process continues.
+- **Danger**: Reserved for alerts to an urgent and potentially hazardous situation that necessitates immediate action to prevent harm or serious consequences.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    '- Use too long Messages that may affect its readability',
+    '- Use a Message for highlighting content: use a Tile instead',
+  ]}
+  dos={[
+    '- Use the affirmative form',
+    '- Make Messages content informative, brief, clear, consistent and non-critical',
+    '- Messages must be displayed in the user language',
+    '- Position a Message wherever it is visible for the user',
+    '- Use a Message when an immediate action is required by the user',
+    '- Use non dismissible Message for mandatory warnings that need to be resolved',
+  ]}
+/>
+
+<Heading label="Placement" level={ 2 } />
+
+**Messages** show up during a task to notify users of the status of an action. In every page, it is possible to display one or more **Messages** to inform the user.
+
+They are positioned near their related items or right after the header and before the page title and page content.
+
+<Heading label="Behavior" level={ 2 } />
+
+Based on its informational manner, the component default behavior is being read-only. You can only select its content if needed.
+
+When a **Message** is dismissible, a click on the `close` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> will dismiss the **Message**.
+
+<Heading label="Variation" level={ 2 } />
+
+<Heading label="Color" level={ 3 } />
+
+- **Information** _(default)_: informing users of specific content, providing global feedback to the user.
+- **Success**: confirming that an action has been completed successfully, providing positive feedback to the user.
+- **Warning**: alerting users to potential issues or cautionary information, prompting them to take preventive actions.
+- **Danger**: indicating serious issues or errors that require immediate attention, signaling a high level of urgency.
+- **Critical**: highlighting severe and potentially catastrophic issues that demand urgent and decisive action to prevent significant negative consequences.
+
+<Heading label="Variant" level={ 3 } />
+
+- **Default**: conveying mild to important information, ensuring the message is seen by the user.
+- **Light**: conveying non-urgent, informational content in a subtle and less prominent manner, ensuring the message is seen without drawing too much attention.
+
+<Heading label="Accessibility" level={ 2 } />
+
+When a **Message** appears, user is alerted of its presence, regardless of the user's navigation.
+
+The `close` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is focusable and can be triggered with the `Enter`/`Space` key.

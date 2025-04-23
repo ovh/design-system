@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, type Ref, forwardRef } from 'react';
 import style from './tabs.module.scss';
 
-export interface TabsChangeEvent {
+interface TabsChangeEvent {
   value: string;
 }
 
-export interface TabsProp extends Omit<ComponentPropsWithRef<'div'>, 'onChange'> {
+interface TabsProp extends Omit<ComponentPropsWithRef<'div'>, 'onChange'> {
   defaultValue?: string;
   onChange?: (event: TabsChangeEvent) => void;
   value?: string;
@@ -39,4 +39,6 @@ Tabs.displayName = 'Tabs';
 
 export {
   Tabs,
+  type TabsChangeEvent,
+  type TabsProp,
 };

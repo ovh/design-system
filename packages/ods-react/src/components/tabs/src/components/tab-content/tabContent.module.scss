@@ -1,5 +1,14 @@
+@use '../../../../../style/focus';
+
 @layer ods {
   .tab-content {
     padding: 8px 0;
+    
+    &:focus-visible {
+      @include focus.ods-focus();
+
+      outline-offset: 0;
+    }
+
   }
 }

@@ -1,0 +1,36 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsRadioGroup from '../../../../ods-react/src/components/radio-group/documentation/radio-group.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as RadioGroupStories from './radio-group.stories';
+
+<Meta of={ RadioGroupStories } name="Technical information" />
+
+<Banner of={ RadioGroupStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ RadioGroupStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsRadioGroup } of={ RadioGroupStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ RadioGroupStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ RadioGroupStories.DisabledGroup } sourceState="shown" />
+
+<Canvas of={ RadioGroupStories.DisabledItem } sourceState="shown" />
+
+<Heading label="Orientation" level={ 3 } />
+
+<Canvas of={ RadioGroupStories.Orientation } sourceState="shown" />
+
+<Heading label="Form Field" level={ 3 } />
+
+<Canvas of={ RadioGroupStories.InFormField } sourceState="shown" />

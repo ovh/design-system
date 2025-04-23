@@ -5,6 +5,7 @@ import {
   Input,
   Password,
   Quantity, QuantityControl, QuantityInput,
+  Radio, RadioControl, RadioLabel, RadioGroup, RadioGroupLabel,
   Select, SelectContent, SelectControl,
   Textarea,
 } from '@ovhcloud/ods-react';
@@ -18,6 +19,7 @@ type FormData = {
   input: string,
   password: string,
   quantity: string,
+  radioGroup: string,
   select: string,
   textarea: string,
 }
@@ -28,6 +30,7 @@ const defaultValue: FormData = {
   input: 'default input',
   password: 'default password',
   quantity: '42',
+  radioGroup: '',//radio 1',
   select: 'cat',
   textarea: 'default textarea',
 };
@@ -194,6 +197,43 @@ function FormHookForm(): ReactElement {
             </FormFieldError>
           </FormField>
         )} />
+
+      <FormField>
+        <Controller
+        control={ control }
+        name="radioGroup"
+        render={ ({ field} ) => (
+          <RadioGroup
+            defaultValue={ defaultValue.radioGroup }
+            onValueChange={ ({ value }) => value && setValue(field.name, value) }>
+            <RadioGroupLabel>
+              Radio Group:
+            </RadioGroupLabel>
+
+            <Radio
+              invalid={ !!errors.radioGroup }
+              required={ areAllRequired }
+              value="radio 1">
+              <RadioControl />
+
+              <RadioLabel>
+                Radio 1
+              </RadioLabel>
+            </Radio>
+
+            <Radio
+              invalid={ !!errors.radioGroup }
+              required={ areAllRequired }
+              value="radio 2">
+              <RadioControl />
+
+              <RadioLabel>
+                Radio 2
+              </RadioLabel>
+            </Radio>
+          </RadioGroup>
+        )} />
+      </FormField>
 
       <FormField invalid={ !!errors.select }>
         <FormFieldLabel>

@@ -1,0 +1,16 @@
+@layer ods {
+  .radio-group {
+    display: flex;
+
+    &[data-orientation="horizontal"] {
+      flex-flow: row;
+      column-gap: 8px;
+      align-items: center;
+    }
+
+    &[data-orientation="vertical"] {
+      flex-flow: column;
+      row-gap: 8px;
+    }
+  }
+}

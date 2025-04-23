@@ -3797,6 +3797,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-radio-group@workspace:packages/ods-react/src/components/radio-group":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-radio-group@workspace:packages/ods-react/src/components/radio-group"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-select@workspace:packages/ods-react/src/components/select":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-select@workspace:packages/ods-react/src/components/select"

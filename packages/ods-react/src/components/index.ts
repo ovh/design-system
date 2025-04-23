@@ -21,3 +21,4 @@ export * from './modal/src';
 export * from './tabs/src';
 export * from './quantity/src';
 export * from './message/src';
+export * from './radio-group/src';

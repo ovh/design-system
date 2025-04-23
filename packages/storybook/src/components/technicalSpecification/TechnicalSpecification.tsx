@@ -42,6 +42,30 @@ function filterByKind(children: DeclarationReflection[] | undefined, kind: Refle
   return (children || []).filter((child) => child.kind === kind);
 }
 
+// TODO
+//  This is temporary, should be improved with a better way to generate types
+function getTypeValue(type: any): string {
+  if (type.name) {
+    return type.name;
+  }
+
+  if (type.type === 'union' && type.types && type.types.length) {
+    return type.types
+      .sort((a: any, b: any) => b.type < a.type)
+      .map((t: any) => {
+        if (t.name) {
+          return t.name;
+        }
+        if (t.value === null) {
+          return 'null';
+        }
+        return t.value;
+      })
+      .join(' | ');
+  }
+  return '';
+}
+
 const TechnicalSpecification = ({ data, extraAttributeInfo, of }: Props) => {
   const { components, enums, interfaces, unions } = useMemo<ProcessedData>(() => {
     const enumDeclarations = filterByKind(data.children, ReflectionKind.Enum);
@@ -78,8 +102,7 @@ const TechnicalSpecification = ({ data, extraAttributeInfo, of }: Props) => {
         name: interfaceDeclaration.name,
         props: (interfaceDeclaration.children || []).map((child) => ({
           name: `${child.name}${(child.flags.isOptional ? '?' : '')}`,
-          // @ts-ignore name does exist on type
-          type: child.type?.name,
+          type: getTypeValue(child.type),
         })),
       })),
       unions: unionTypeDeclarations.map((typeDeclaration) => ({

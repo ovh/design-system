@@ -1,0 +1,11 @@
+.custom-radio {
+  gap: 16px;
+}
+
+.custom-radio-group {
+  background-color: #4bb2f6;
+}
+
+.custom-radio-label {
+  font-weight: bold;
+}

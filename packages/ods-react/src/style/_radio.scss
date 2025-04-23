@@ -1,0 +1,21 @@
+@mixin ods-radio() {
+  appearance: none;
+  display: inline-flex;
+  margin: 0;
+  border: 1px solid var(--ods-color-neutral-300);
+  border-radius: 50%;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+
+  &::before {
+    transform: scale(0);
+    transition: 120ms all ease-in-out;
+    margin: auto;
+    border-radius: 50%;
+    background-color: var(--ods-color-primary-000);
+    width: 4px;
+    height: 4px;
+    content: "";
+  }
+}

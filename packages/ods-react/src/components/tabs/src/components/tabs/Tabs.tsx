@@ -24,11 +24,11 @@ const Tabs: FC<TabsProp> = forwardRef(({
 
   return (
     <VendorTabs.Root
+      className={classNames(style['tabs'], className)}
       defaultValue={defaultValue}
       onValueChange={onChange}
-      value={value}
-      className={classNames(style['tabs'], className)}
       ref={ref}
+      value={value}
       {...props}>
       {children}
     </VendorTabs.Root>

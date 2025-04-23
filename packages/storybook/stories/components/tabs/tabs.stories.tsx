@@ -44,9 +44,6 @@ export const Overview: Story = {
 
 export const Controlled: Story = {
   tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
   render: ({}) => {
     const [value, setValue] = React.useState('tab1');
 

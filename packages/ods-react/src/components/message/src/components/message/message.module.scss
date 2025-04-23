@@ -1,0 +1,90 @@
+@use '../../../../../style/message';
+
+@layer ods {
+  .message {
+    $message: &;
+
+    @include message.ods-message();
+
+    &--default {
+      &#{$message}--critical {
+        @include message.ods-message-variant-default('critical');
+      }
+
+      &#{$message}--danger {
+        @include message.ods-message-variant-default('danger');
+      }
+
+      &#{$message}--information {
+        @include message.ods-message-variant-default('information');
+      }
+
+      &#{$message}--success {
+        @include message.ods-message-variant-default('success');
+      }
+
+      &#{$message}--warning {
+        @include message.ods-message-variant-default('warning');
+      }
+    }
+
+    &--light {
+      &#{$message}--critical {
+        @include message.ods-message-variant-light('critical');
+      }
+
+      &#{$message}--danger {
+        @include message.ods-message-variant-light('danger');
+      }
+
+      &#{$message}--information {
+        @include message.ods-message-variant-light('information');
+      }
+
+      &#{$message}--success {
+        @include message.ods-message-variant-light('success');
+      }
+
+      &#{$message}--warning {
+        @include message.ods-message-variant-light('warning');
+      }
+    }
+
+    &__icon {
+      padding: 0.125rem 0;
+      font-size: 1.25rem;
+    }
+
+    &__body {
+      padding: 0.125rem 0;
+    }
+
+    &__close {
+      $close-button: &;
+
+      align-self: start;
+
+      &:not(:disabled) {
+        &#{$close-button}--critical {
+          @include message.ods-message-close('critical');
+        }
+
+        &#{$close-button}--danger {
+          @include message.ods-message-close('danger');
+        }
+
+        &#{$close-button}--information {
+          @include message.ods-message-close('information');
+        }
+
+        &#{$close-button}--success {
+          @include message.ods-message-close('success');
+        }
+
+        &#{$close-button}--warning {
+          @include message.ods-message-close('warning');
+        }
+      }
+    }
+  }
+}

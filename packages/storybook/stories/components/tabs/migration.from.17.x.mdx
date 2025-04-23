@@ -1,4 +1,4 @@
-import { OdsBadge } from '@ovhcloud/ods-components/react';
+import { Badge } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import * as TabsStories from './tabs.stories';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -15,11 +15,11 @@ This was causing some issue for some projects, as each may want to act different
 
 The component is now only a graphical component displaying tabs, triggering an event on tab selection.
 
-The following component has been removed: <OdsBadge color="critical" size="sm">Removed</OdsBadge>
+The following component has been removed: <Badge color="critical" size="sm">Removed</Badge>
 - `osds-tab-bar`
 - `osds-tab-panel`
 
-The following component has been updated: <OdsBadge color="information" size="sm">Updated</OdsBadge>
+The following component has been updated: <Badge color="information" size="sm">Updated</Badge>
 - `osds-tabs` is now `ods-tabs`
 - `osds-tab-bar-item` is now `ods-tab`
 
@@ -27,18 +27,18 @@ The following component has been updated: <OdsBadge color="information" size="sm
 
 <Heading label="Tabs" level={ 3 } />
 
-`contrasted` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
+`contrasted` <Badge color="critical" size="sm">Removed</Badge>
 
 Has been removed.
 
 You can use the style customization to achieve the same result, until a new color get validated by the design team.
 
-`panel`  <OdsBadge color="critical" size="sm">Removed</OdsBadge>
+`panel`  <Badge color="critical" size="sm">Removed</Badge>
 Has been removed.
 
 Not relevant anymore as the new component does not handle panels.
 
-`size` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
+`size` <Badge color="critical" size="sm">Removed</Badge>
 
 Has been removed.
 
@@ -46,25 +46,25 @@ You can use the style customization to achieve the same result.
 
 <Heading label="Tab" level={ 3 } />
 
-`active` <OdsBadge color="information" size="sm">Updated</OdsBadge>
+`active` <Badge color="information" size="sm">Updated</Badge>
 
 Has been updated.
 
 You can use the new `isSelected` attribute to obtain the same behavior.
 
-`contrasted` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
+`contrasted` <Badge color="critical" size="sm">Removed</Badge>
 
 Has been removed.
 
 You can use the style customization to achieve the same result, until a new color get validated by the design team.
 
-`disabled` <OdsBadge color="information" size="sm">Updated</OdsBadge>
+`disabled` <Badge color="information" size="sm">Updated</Badge>
 
 Has been updated.
 
 You can use the new `isDisabled` attribute to obtain the same behavior.
 
-`panel` <OdsBadge color="critical" size="sm">Removed</OdsBadge>
+`panel` <Badge color="critical" size="sm">Removed</Badge>
 
 Has been removed.
 

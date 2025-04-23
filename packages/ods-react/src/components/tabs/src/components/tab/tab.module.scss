@@ -30,20 +30,22 @@
       outline-offset: 0;
     }
 
-    &:focus-visible:not([disabled], [aria-selected="true"]),
-    &:hover:not([disabled], [aria-selected="true"]) {
+    &:not([disabled], [aria-selected="true"]) {  
+    &:focus-visible,  
+    &:hover { 
       background-color: var(--ods-color-neutral-050);
     }
+  }
 
     &[disabled] {
       @include state.ods-is-disabled();
 
       border-color: var(--ods-color-neutral-100);
       background-color: inherit;
-    }
-
-    &[disabled][aria-selected="true"] {
-      border-color: var(--ods-color-neutral-500);
+      
+      &[aria-selected="true"] {
+        border-color: var(--ods-color-neutral-500);
+      }
     }
 
     &[aria-selected="true"]:not([disabled]) {

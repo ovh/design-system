@@ -10,14 +10,12 @@ export interface TabProp extends ComponentPropsWithRef<'button'> {
 const Tab: FC<TabProp> = ({
   children,
   className,
-  disabled,
   value,
   ...props
 }): JSX.Element => {
   return (
     <Tabs.Trigger
       className={ classNames(style['tab'], className) }
-      disabled={ disabled }
       value={ value }
       { ...props }>
       { children }

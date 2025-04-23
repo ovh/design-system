@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX } from 'react';
 import style from './tabContent.module.scss';
 
-export interface TabContentProp extends ComponentPropsWithRef<'div'> {
+interface TabContentProp extends ComponentPropsWithRef<'div'> {
   value: string,
 }
 
@@ -25,4 +25,5 @@ const TabContent: FC<TabContentProp> = ({
 
 export {
   TabContent,
+  type TabContentProp,
 };

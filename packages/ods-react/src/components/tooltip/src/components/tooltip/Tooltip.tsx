@@ -20,11 +20,12 @@ const Tooltip: FC<TooltipProp> = ({
   return (
     <VendorTooltip.Root
       closeDelay={ closeDelay }
+      closeOnClick={ false }
+      closeOnPointerDown={ false }
+      closeOnScroll={ false }
       interactive={ true }
       open={ open }
       openDelay={ openDelay }
-      closeOnClick={ false }
-      closeOnPointerDown={ false }
       positioning={{
         placement: position,
       }}>

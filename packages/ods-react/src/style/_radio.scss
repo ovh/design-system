@@ -1,5 +1,6 @@
 @mixin ods-radio() {
   appearance: none;
+  box-sizing: border-box;
   display: inline-flex;
   margin: 0;
   border: 1px solid var(--ods-color-neutral-300);

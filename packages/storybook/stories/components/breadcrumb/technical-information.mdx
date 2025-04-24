@@ -1,0 +1,38 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsBreadcrumb from '../../../../ods-react/src/components/breadcrumb/documentation/breadcrumb.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as BreadcrumbStories from './breadcrumb.stories';
+
+<Meta of={ BreadcrumbStories } name="Technical information" />
+
+<Banner of={ BreadcrumbStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ BreadcrumbStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsBreadcrumb } of={ BreadcrumbStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ BreadcrumbStories.Default } sourceState="shown" />
+
+<Heading label="Collapsed" level={ 3 } />
+
+<Canvas of={ BreadcrumbStories.Collapsed } sourceState="shown" />
+
+You can customize the number of item displayed before and after the ellipsis.
+
+<Canvas of={ BreadcrumbStories.CustomAfterBeforeCollapse } sourceState="shown" />
+
+You can also customize the threshold from when the breadcrumb will collapse.
+
+<Canvas of={ BreadcrumbStories.CustomCollapseThreshold } sourceState="shown" />
+
+Or you can even deactivate the whole collapse logic.
+
+<Canvas of={ BreadcrumbStories.NoCollapse } sourceState="shown" />

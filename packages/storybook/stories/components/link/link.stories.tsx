@@ -19,7 +19,6 @@ export const Demo: Story = {
     children: {
       table: {
         category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
       },
       control: 'text',
     },
@@ -27,7 +26,7 @@ export const Demo: Story = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: LINK_COLOR.primary },
-        type: { summary: 'string' },
+        type: { summary: LINK_COLORS },
       },
       control: 'select',
       options: LINK_COLORS,
@@ -42,6 +41,7 @@ export const Demo: Story = {
     },
   }),
   args: {
+    // @ts-ignore check when time to do so
     children: 'My link',
   },
 };

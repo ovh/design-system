@@ -1,0 +1,14 @@
+$breadcrumb-spacing: 8px;
+
+@layer ods {
+  .breadcrumb {
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+  }
+}

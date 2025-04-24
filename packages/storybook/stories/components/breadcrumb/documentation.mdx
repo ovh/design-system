@@ -1,0 +1,85 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as BreadcrumbStories from './breadcrumb.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ BreadcrumbStories } name="Documentation" />
+
+<Banner of={ BreadcrumbStories } />
+
+_A list of <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Links</StorybookLink> showing the current page location in the navigational hierarchy._
+
+<Canvas of={ BreadcrumbStories.Overview } sourceState="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ ['Breadcrumb trail'] }
+              atomicType={ ATOMIC_TYPE.atom }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-22762"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/breadcrumb"
+              name="Breadcrumb"
+              relatedComponents={ [{ name: 'Icon' }, { name: 'Link' }, { name: 'Text' }] }>
+  **Breadcrumb** is used to define the user's position in a site hierarchy, it can also be useful for a finer navigation in
+  an inner application.
+</IdentityCard>
+
+<Heading label="Anatomy" level={ 2 } />
+
+![Component anatomy](components/breadcrumb/anatomy.png "Component anatomy")
+1. **Page link** (as Home <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink>)
+2. **Page link**: Directs users to the parent-level page.
+3. **Separator**: Element between each page.
+4. **Active page** (Non-clickable): Indicate the current page.
+
+<Heading label="Usage" level={ 2 } />
+
+It has several usage :
+* Displaying sub-pages of a site structure
+* Show a step progress of a process
+* Simplify site structure navigation in a quicker way
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    '- Use Breadcrumb for main page navigation',
+    '- Use nested Breadcrumbs',
+    <span>- Add external <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> in the component</span>,
+    '- Put more than 4 imbrications inside a Breadcrumb, as the structure will be too complex',
+  ]}
+  dos={[
+    <span>- The first Breadcrumb element has to be a <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> to its preferential home page (with an <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink>, or with "Home" <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink></span>,
+    '- Inherit page structure logic inside the Breadcrumb construction',
+  ]}
+/>
+
+<Heading label="Placement" level={ 2 } />
+
+A **Breadcrumb** is used at the top of a web page, preferably start-aligned.
+
+Its width is automatic, relative to its content and is not adjustable.
+
+<Heading label="Behavior" level={ 2 } />
+
+When the **Breadcrumb** has more than 4 <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> visible, an ellipsis is displayed as a replacement for the middle <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink>.
+
+A click on the ellipsis will expanded all previously hidden <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> inline, the collapsed state can't be redone afterwards.
+
+The **Breadcrumb** <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> are kept inline, even on mobile viewports.
+
+Clicking or pressing `Enter` or `Space` key on **Breadcrumb** item triggers an event.
+
+Same actions on **Breadcrumb** collapsed item will trigger an event.
+
+<Heading label="Variation" level={ 2 } />
+
+N/A
+
+<Heading label="Accessibility" level={ 2 } />
+
+All <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Links</StorybookLink> are accessible through tabulation.

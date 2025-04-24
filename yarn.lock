@@ -3719,6 +3719,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-breadcrumb@workspace:packages/ods-react/src/components/breadcrumb":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-breadcrumb@workspace:packages/ods-react/src/components/breadcrumb"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-button@workspace:packages/ods-react/src/components/button":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-button@workspace:packages/ods-react/src/components/button"
@@ -4280,6 +4286,13 @@ __metadata:
   bin:
     browsers: lib/cjs/main-cli.js
   checksum: dbfae1f0a3cb5ee07711eb0247d5f61039989094858989cede3f86bfef59224c72df17a1b898266e5ba7c6a7032ab647c59ad3df8f76771ef65d8974a3f93f19
+  languageName: node
+  linkType: hard
+
+"@remix-run/router@npm:1.20.0":
+  version: 1.20.0
+  resolution: "@remix-run/router@npm:1.20.0"
+  checksum: 6bff41117eabb867b17c89baa727580f0a431368b309cd9a1f69767aafa68ea9cac95ff0eeb86d37c2c8655f5cd7c6283d37ae5e6d93e94f648c6112ddb24ede
   languageName: node
   linkType: hard
 
@@ -17902,6 +17915,7 @@ __metadata:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 "react-router-dom@npm:6.22.1":
   version: 6.22.1
   resolution: "react-router-dom@npm:6.22.1"
@@ -17923,6 +17937,35 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
   checksum: b53fab4c507eca8af03581387e37d9a1616f5cda0639abd84ba223c502528324171c4fee0ad8b86a92ba00eb3de4bd77c25c107e1754eb62988c874a059f3060
+=======
+"react-router-app@workspace:packages/examples/react-router-app":
+  version: 0.0.0-use.local
+  resolution: "react-router-app@workspace:packages/examples/react-router-app"
+  dependencies:
+    "@ovhcloud/ods-react": 18.6.2
+    "@ovhcloud/ods-themes": 18.6.2
+    "@types/react": 18.2.56
+    "@types/react-dom": 18.2.25
+    "@vitejs/plugin-react": 4.3.4
+    react: 18.2.0
+    react-dom: 18.2.0
+    react-router-dom: 6.27.0
+    typescript: 5.3.3
+    vite: 6.2.0
+  languageName: unknown
+  linkType: soft
+
+"react-router-dom@npm:6.27.0":
+  version: 6.27.0
+  resolution: "react-router-dom@npm:6.27.0"
+  dependencies:
+    "@remix-run/router": 1.20.0
+    react-router: 6.27.0
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: de3dcc56297a2879a0e3997fa34ba0f3e1b9986a2ad3ef7991f913902ecf38da0282c98f7834f344ce2d881dbab0a382201a57e9f9ef5e9816febdb26dc038b7
+>>>>>>> 40d35f8b5 (feat(breadcrumb): implement component)
   languageName: node
   linkType: hard
 
@@ -17937,6 +17980,7 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "react-webpack@workspace:packages/examples/react-webpack":
   version: 0.0.0-use.local
   resolution: "react-webpack@workspace:packages/examples/react-webpack"
@@ -17975,6 +18019,8 @@ __metadata:
 >>>>>>> 4ee91f2dc (refactor(app): move to a full React library)
 =======
 >>>>>>> 0a17da8b6 (chore(lib): bump to 18.6.2)
+=======
+>>>>>>> 40d35f8b5 (feat(breadcrumb): implement component)
 "react@npm:18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"

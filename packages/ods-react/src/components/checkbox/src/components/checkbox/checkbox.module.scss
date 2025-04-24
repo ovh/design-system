@@ -3,6 +3,11 @@
     display: flex;
     column-gap: 8px;
     align-items: center;
+    cursor: pointer;
     width: max-content;
+
+    &[data-disabled] {
+      cursor: not-allowed;
+    }
   }
 }

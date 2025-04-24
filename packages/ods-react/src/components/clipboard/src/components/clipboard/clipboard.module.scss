@@ -1,0 +1,64 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/input';
+@use '../../../../../style/state';
+
+@layer ods {
+  .clipboard {
+    @include state.ods-is-readonly();
+
+    box-sizing: border-box;
+    display: inline-flex;
+    position: relative;
+    border-width: 0;
+    border-style: solid;
+    border-radius: var(--ods-border-radius-sm);
+    padding-right: input.$ods-input-actions-padding-right;
+    height: input.$ods-input-input-height;
+
+    &:focus-within:not(:has(.clipboard__copy:focus-within)):has(.clipboard__input input:focus-within) {
+      @include focus.ods-focus();
+    }
+
+    &--disabled {
+      @include state.ods-is-disabled();
+    }
+
+    &__input {
+      width: inherit;
+
+      input {
+        border: none;
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+
+    &__copy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: auto;
+    }
+
+    &__tooltip, &__tooltip--success {
+      margin: 0;
+      font-size: 0.75rem;
+      font-weight: 600;
+
+      &--success {
+        display: flex;
+        flex-flow: row;
+        column-gap: 4px;
+        align-items: center;
+
+        &__check {
+          font-size: 1.125rem;
+        }
+      }
+
+    }
+  }
+
+}

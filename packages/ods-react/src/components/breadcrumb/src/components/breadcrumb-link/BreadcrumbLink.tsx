@@ -1,0 +1,37 @@
+import { type ComponentPropsWithoutRef, type ElementType, type ForwardedRef, type JSX, forwardRef } from 'react';
+import { Link } from '../../../../link/src';
+
+interface BreadcrumbLinkProp<T extends ElementType = 'a'> {
+  as?: T,
+  isLast?: boolean,
+}
+
+const BreadcrumbLink = forwardRef(function BreadcrumbLink<T extends ElementType>({
+  as,
+  isLast,
+  ...props
+}: BreadcrumbLinkProp<T> & Omit<ComponentPropsWithoutRef<T>, keyof BreadcrumbLinkProp<T>>, ref: ForwardedRef<HTMLAnchorElement | HTMLSpanElement>): JSX.Element {
+  if (isLast) {
+    return (
+      <span
+        aria-current="page"
+        ref={ ref as ForwardedRef<HTMLSpanElement> }
+        { ...props } />
+    );
+  }
+
+  const Component = as || Link;
+
+  return (
+    <Component
+      ref={ ref as ForwardedRef<HTMLAnchorElement> }
+      { ...props } />
+  );
+});
+
+BreadcrumbLink.displayName = 'BreadcrumbLink';
+
+export {
+  BreadcrumbLink,
+  type BreadcrumbLinkProp,
+};

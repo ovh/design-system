@@ -1,20 +1,23 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, type MouseEvent, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type ElementType, type ForwardedRef, type JSX, type MouseEvent, forwardRef } from 'react';
 import { LINK_COLOR, type LinkColor } from '../../constant/link-color';
 import style from './link.module.scss';
 
-interface LinkProp extends ComponentPropsWithRef<'a'> {
+interface LinkProp<T extends ElementType = 'a'> {
+  as?: T,
   color?: LinkColor,
   disabled?: boolean,
 }
 
-const Link: FC<LinkProp> = forwardRef(({
-  children,
+const Link = forwardRef(function Link<T extends ElementType>({
+  as,
   className,
   color = LINK_COLOR.primary,
   disabled = false,
   ...props
-}, ref): JSX.Element => {
+}: LinkProp<T> & Omit<ComponentPropsWithRef<T>, keyof LinkProp<T>>, ref: ForwardedRef<HTMLAnchorElement>): JSX.Element {
+  const Component = as || 'a';
+
   function onClick(event: MouseEvent): void {
     if (disabled) {
       event.preventDefault();
@@ -23,19 +26,17 @@ const Link: FC<LinkProp> = forwardRef(({
   }
 
   return (
-    <a
+    <Component
       className={ classNames(
         style['link'],
         style[`link--${color}`],
         { [style['link--disabled']]: disabled },
         className,
       )}
-      onClick={ onClick }
       ref={ ref }
-      tabIndex={ disabled ? -1 : props.tabIndex }
-      { ...props }>
-      { children }
-    </a>
+      { ...props }
+      onClick={ onClick }
+      tabIndex={ disabled ? -1 : props.tabIndex } />
   );
 });
 

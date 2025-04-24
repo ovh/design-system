@@ -23,6 +23,8 @@ const Tooltip: FC<TooltipProp> = ({
       interactive={ true }
       open={ open }
       openDelay={ openDelay }
+      closeOnClick={ false }
+      closeOnPointerDown={ false }
       positioning={{
         placement: position,
       }}>

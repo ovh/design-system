@@ -54,7 +54,9 @@ export const Default = () => (
 );
 
 export const Disabled = () => (
-  <RadioGroup disabled defaultValue="html">
+  <RadioGroup
+    disabled
+    defaultValue="html">
     <Radio value="html">
       <RadioControl />
 

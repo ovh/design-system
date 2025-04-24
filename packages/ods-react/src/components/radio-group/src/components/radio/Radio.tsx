@@ -13,6 +13,7 @@ interface RadioProp extends ComponentPropsWithRef<'label'> {
 const Radio: FC<RadioProp> = forwardRef(({
   children,
   className,
+  disabled,
   onChange,
   required,
   ...props
@@ -20,6 +21,7 @@ const Radio: FC<RadioProp> = forwardRef(({
   return (
     <RadioGroup.Item
       className={ classNames(style['radio'], className) }
+      disabled={ disabled }
       ref={ ref }
       { ...props }>
       { children }

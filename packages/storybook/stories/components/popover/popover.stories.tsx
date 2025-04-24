@@ -226,8 +226,10 @@ export const Overview: Story = {
   },
   render: ({}) => (
     <Popover>
-      <PopoverTrigger>
-        Show popover
+      <PopoverTrigger asChild>
+        <Button>
+          Show popover
+        </Button>
       </PopoverTrigger>
 
       <PopoverContent>

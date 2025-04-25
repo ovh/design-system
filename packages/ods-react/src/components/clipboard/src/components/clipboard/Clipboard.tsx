@@ -1,13 +1,17 @@
+import type { ComponentPropsWithRef } from 'react';
 import { Clipboard as VendorClipboard } from '@ark-ui/react/clipboard';
 import classNames from 'classnames';
 import { type FC, type JSX, forwardRef } from 'react';
-import { Button } from '../../../../button/src';
+import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { INPUT_TYPE, Input, type InputProp } from '../../../../input/src';
-import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../tooltip/src';
+import { TOOLTIP_POSITION, Tooltip, TooltipContent, TooltipTrigger } from '../../../../tooltip/src';
 import style from './clipboard.module.scss';
 
-interface ClipboardProp extends Omit<InputProp, 'type' | 'clearable' | 'onClear' | 'placeholder'> {
+interface ClipboardProp extends ComponentPropsWithRef<'input'> {
+  maskOption?: InputProp['maskOption'],
+  loading?: InputProp['loading'],
+  type?: InputProp['type'],
   labelCopy?: string,
   labelCopySuccess?: string,
 }
@@ -23,39 +27,39 @@ const Clipboard: FC<ClipboardProp> = forwardRef(({
   return (
     <VendorClipboard.Root
       className={ classNames(
-        style[ 'clipboard' ],
-        { [ style[ 'clipboard--disabled' ] ]: props.disabled },
+        style['clipboard'],
+        { [style['clipboard--disabled']]: props.disabled },
         className,
       ) }
       ref={ ref }
       value={ value?.toString() }>
       <VendorClipboard.Control asChild>
         <Input
-          className={ style[ 'clipboard__input' ] }
+          className={ style['clipboard__input'] }
           readOnly
           type={ INPUT_TYPE.text }
           value={ value }
           { ...props } />
       </VendorClipboard.Control>
-      <Tooltip position="right">
+      <Tooltip position={ TOOLTIP_POSITION.right }>
         <VendorClipboard.Trigger asChild>
           <VendorClipboard.Indicator
-            className={ style[ 'clipboard__copy' ] }
+            className={ style['clipboard__copy'] }
             copied={
               <>
                 <TooltipTrigger asChild>
                   <Button
                     disabled={ props.disabled }
-                    size="xs"
-                    variant="ghost"
+                    size={ BUTTON_SIZE.xs }
+                    variant={ BUTTON_VARIANT.ghost }
                   >
                     <Icon name={ ICON_NAME.fileCopy } />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent className={ style[ 'clipboard__tooltip--success' ] }>
+                <TooltipContent className={ style['clipboard__tooltip-success'] }>
                   { labelCopySuccess }
                   <Icon
-                    className={ style[ 'clipboard__tooltip--success__check' ] }
+                    className={ style['clipboard__tooltip--success__check'] }
                     name={ ICON_NAME.check }
                   />
 
@@ -65,15 +69,14 @@ const Clipboard: FC<ClipboardProp> = forwardRef(({
             <TooltipTrigger asChild>
               <Button
                 disabled={ props.disabled }
-                size="xs"
-                variant="ghost"
+                size={ BUTTON_SIZE.xs }
+                variant={ BUTTON_VARIANT.ghost }
               >
                 <Icon
-                  className={ classNames(style[ 'clipboard__icon' ], className) }
                   name={ ICON_NAME.fileCopy } />
               </Button>
             </TooltipTrigger>
-            { !props.disabled && <TooltipContent className={ style[ 'clipboard__tooltip' ] }>
+            { !props.disabled && <TooltipContent className={ style['clipboard__tooltip'] }>
               { labelCopy }
             </TooltipContent> }
           </VendorClipboard.Indicator>

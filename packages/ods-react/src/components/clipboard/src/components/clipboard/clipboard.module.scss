@@ -42,22 +42,22 @@
       height: auto;
     }
 
-    &__tooltip, &__tooltip--success {
+    &__tooltip,
+    &__tooltip-success {
       margin: 0;
       font-size: 0.75rem;
       font-weight: 600;
+    }
 
-      &--success {
-        display: flex;
-        flex-flow: row;
-        column-gap: 4px;
-        align-items: center;
+    &__tooltip-success {
+      display: flex;
+      flex-flow: row;
+      column-gap: 4px;
+      align-items: center;
 
-        &__check {
-          font-size: 1.125rem;
-        }
+      &__check {
+        font-size: 1.125rem;
       }
-
     }
   }
 

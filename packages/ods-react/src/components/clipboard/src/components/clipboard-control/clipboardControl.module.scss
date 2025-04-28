@@ -1,0 +1,17 @@
+@use '../../../../../style/input';
+
+@layer ods {
+  .clipboard {
+    &__input {
+      width: inherit;
+
+      input {
+        border: none;
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,9 @@
-import { Clipboard as VendorClipboard, useClipboardContext } from '@ark-ui/react/clipboard';
+import { Clipboard, useClipboardContext } from '@ark-ui/react/clipboard';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { INPUT_TYPE, Input } from '../../../../input/src';
 import { type InputProp } from '../../../../input/src';
-import { useClipboard } from '../../contexts/useClipboard.tsx';
+import { useClipboard } from '../../contexts/useClipboard';
 import style from './clipboardControl.module.scss';
 
 interface ClipboardControlProps extends ComponentPropsWithRef<'input'> {
@@ -18,7 +18,7 @@ const ClipboardControl: FC<ClipboardControlProps> = forwardRef(({
   const { disabled } = useClipboard();
   const { value } = useClipboardContext();
 
-  return <VendorClipboard.Control asChild>
+  return <Clipboard.Control asChild>
     <Input
       className={ classNames(style[ 'clipboard__input' ], className) }
       { ...props }
@@ -28,7 +28,7 @@ const ClipboardControl: FC<ClipboardControlProps> = forwardRef(({
       type={ INPUT_TYPE.text }
       value={ value }
     />
-  </VendorClipboard.Control>;
+  </Clipboard.Control>;
 });
 
 ClipboardControl.displayName = 'ClipboardControl';

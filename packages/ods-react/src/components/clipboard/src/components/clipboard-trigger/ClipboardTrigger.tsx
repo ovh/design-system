@@ -4,7 +4,7 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { TOOLTIP_POSITION, Tooltip, TooltipContent, TooltipTrigger } from '../../../../tooltip/src';
-import { useClipboard } from '../../contexts/useClipboard.tsx';
+import { useClipboard } from '../../contexts/useClipboard';
 import style from './clipboardTrigger.module.scss';
 
 interface ClipboardTriggerProps extends ComponentPropsWithRef<'button'> {

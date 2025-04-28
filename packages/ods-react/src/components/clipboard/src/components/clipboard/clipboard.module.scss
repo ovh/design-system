@@ -15,50 +15,12 @@
     padding-right: input.$ods-input-actions-padding-right;
     height: input.$ods-input-input-height;
 
-    &:focus-within:not(:has(.clipboard__copy:focus-within)):has(.clipboard__input input:focus-within) {
+    &:focus-within:not(:has(button:focus-within)) {
       @include focus.ods-focus();
     }
 
     &--disabled {
       @include state.ods-is-disabled();
     }
-
-    &__input {
-      width: inherit;
-
-      input {
-        border: none;
-
-        &:focus {
-          outline: 0;
-        }
-      }
-    }
-
-    &__copy {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: auto;
-    }
-
-    &__tooltip,
-    &__tooltip-success {
-      margin: 0;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-
-    &__tooltip-success {
-      display: flex;
-      flex-flow: row;
-      column-gap: 4px;
-      align-items: center;
-
-      &__check {
-        font-size: 1.125rem;
-      }
-    }
   }
-
 }

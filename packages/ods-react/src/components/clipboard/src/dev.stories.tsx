@@ -1,4 +1,5 @@
-import { Clipboard } from '.';
+import { useEffect, useRef } from 'react';
+import { Clipboard, ClipboardControl, ClipboardTrigger } from '.';
 
 export default {
   component: Clipboard,
@@ -6,17 +7,55 @@ export default {
 };
 
 export const Default = () => (
-  <Clipboard value="My great value to copy" />
+  <Clipboard value="Default">
+    <ClipboardControl />
+    <ClipboardTrigger labelCopy="Copy to clipboard" labelCopySuccess="Copied!" />
+  </Clipboard>
+);
+
+export const OnCopy = () => (
+  <Clipboard value="OnCopy" onCopy={ () => console.log('Copied') }>
+    <ClipboardControl />
+    <ClipboardTrigger labelCopy="Copy to clipboard" labelCopySuccess="Copied!" />
+  </Clipboard>
 );
 
 export const Masked = () => (
-  <Clipboard value="My great value to copy" maskOption={{ enable: true }} />
+  <Clipboard value="Masked">
+    <ClipboardControl maskOption={ { enable: true } } />
+    <ClipboardTrigger labelCopy="Copy to clipboard" labelCopySuccess="Copied!" />
+  </Clipboard>
 );
 
 export const Disabled = () => (
-  <Clipboard value="My great value to copy" disabled />
+  <Clipboard value="Disabled" disabled>
+    <ClipboardControl />
+    <ClipboardTrigger labelCopy="Copy to clipboard" labelCopySuccess="Copied!" />
+  </Clipboard>
 );
 
 export const Loading = () => (
-  <Clipboard value="My great value to copy" loading />
+  <Clipboard value="Loading">
+    <ClipboardControl loading />
+    <ClipboardTrigger labelCopy="Copy to clipboard" labelCopySuccess="Copied!" />
+  </Clipboard>
 );
+
+export const Refs = () => {
+  const refControl = useRef(null);
+  const refTrigger = useRef(null);
+
+  useEffect(() => {
+    // const interval = setInterval(() => {
+    //   console.log(refControl.current, refTrigger.current);
+    // }, 1000);
+    // return () => {
+    //   clearInterval(interval);
+    // };
+  }, []);
+
+  return <Clipboard>
+    <ClipboardControl ref={ refControl } />
+    <ClipboardTrigger ref={ refTrigger } />
+  </Clipboard>;
+};

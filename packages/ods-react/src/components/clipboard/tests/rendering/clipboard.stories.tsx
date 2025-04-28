@@ -1,16 +1,13 @@
-import { Clipboard } from '../../src';
+import { ClipboardControl, ClipboardTrigger, Clipboard } from '../../src';
 
 export default {
   component: Clipboard,
   title: 'Tests rendering',
 };
 
-export const customStyle = () => (
-  <Clipboard
-    data-testid="custom-style"
-    style={{ height: '42px' }} />
-);
-
 export const render = () => (
-  <Clipboard data-testid="render" />
+  <Clipboard>
+    <ClipboardControl value="My great value to copy" />
+    <ClipboardTrigger data-testid="render-trigger" />
+  </Clipboard>
 );

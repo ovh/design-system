@@ -14,7 +14,7 @@ type DemoArg = Partial<ClipboardProp> & Partial<ClipboardControlProps>
   & Partial<ClipboardTriggerProps>;
 
 const meta: Meta<ClipboardProp> = {
-  argTypes: excludeFromDemoControls(['type', 'placeholder', 'onCopy']),
+  argTypes: excludeFromDemoControls(['onCopy']),
   component: Clipboard,
   subcomponents: { ClipboardControl, ClipboardTrigger},
   title: 'ODS Components/Clipboard',
@@ -42,24 +42,31 @@ export const Demo: StoryObj = {
     labelCopy: {
       table: {
         category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'Copy' },
+        type: { summary: 'string' },
       },
       control: 'text',
     },
     labelCopySuccess: {
       table: {
         category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'Copied' },
+        type: { summary: 'string' },
       },
       control: 'text',
     },
     loading: {
       table: {
         category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: "ø" },
+        type: { summary: 'boolean' },
       },
       control: 'boolean',
     },
     maskOption: {
       table: {
         category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: "ø" }
       },
       control: 'object',
     },

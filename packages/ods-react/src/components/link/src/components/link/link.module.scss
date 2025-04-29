@@ -7,6 +7,10 @@
 
     @include link.ods-link();
 
+    &--no-text {
+      gap: 0;
+    }
+
     &--primary {
       @include link.ods-link-color('primary');
 

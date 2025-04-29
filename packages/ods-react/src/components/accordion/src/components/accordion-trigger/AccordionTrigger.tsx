@@ -7,8 +7,8 @@ import style from './accordionTrigger.module.scss';
 type AccordionTriggerProp = ComponentPropsWithRef<'button'>;
 
 const AccordionTrigger: FC<AccordionTriggerProp> = forwardRef(({
-  className,
   children,
+  className,
   ...props
 }, ref): JSX.Element => {
   return (

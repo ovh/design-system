@@ -2,14 +2,20 @@
 
 @layer ods {
   .breadcrumb-ellipsis {
-    @include link.ods-link();
-    @include link.ods-link-color('primary');
-
-    border: 0;
-    background-color: transparent;
-    padding: 0;
-    color: var(--ods-color-text);
     font-size: 0.875rem;
     font-weight: 600;
+
+    &__button {
+      @include link.ods-link();
+      @include link.ods-link-color('primary');
+
+      border: 0;
+      background-color: transparent;
+      padding: 0;
+      line-height: 1;
+      color: var(--ods-color-text);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
   }
 }

@@ -1,0 +1,12 @@
+.custom-breadcrumb {
+  background-color: #dffe81;
+}
+
+.custom-breadcrumb-item {
+  background-color: #4bb2f6;
+}
+
+.custom-breadcrumb-link {
+  color: #2b8000;
+  font-weight: bold;
+}

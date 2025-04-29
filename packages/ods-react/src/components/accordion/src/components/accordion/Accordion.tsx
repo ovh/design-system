@@ -12,8 +12,8 @@ interface AccordionProp extends Omit<ComponentPropsWithRef<'div'>, 'onChange'> {
   defaultValue?: string[];
   disabled?: boolean;
   multiple?: boolean;
-  value?: string[];
   onChange?: (detail: AccordionChangeDetail) => void;
+  value?: string[];
 }
 
 const Accordion: FC<AccordionProp> = forwardRef(({

@@ -6,8 +6,8 @@ import style from './accordionContent.module.scss';
 type AccordionContentProp = ComponentPropsWithRef<'div'>;
 
 const AccordionContent: FC<AccordionContentProp> = forwardRef(({
-  className,
   children,
+  className,
   ...props
 }, ref): JSX.Element => {
   return (

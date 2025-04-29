@@ -3967,6 +3967,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ovhcloud/ods-react-accordion@workspace:packages/ods-react/src/components/accordion":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-accordion@workspace:packages/ods-react/src/components/accordion"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-badge@workspace:packages/ods-react/src/components/badge":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-badge@workspace:packages/ods-react/src/components/badge"

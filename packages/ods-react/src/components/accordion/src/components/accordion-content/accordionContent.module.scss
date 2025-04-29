@@ -1,0 +1,7 @@
+@use "../../constants/accordion";
+
+@layer ods {
+  .accordion-content {
+    padding: 0 accordion.$ods-accordion-padding accordion.$ods-accordion-padding accordion.$ods-accordion-padding;
+  }
+}

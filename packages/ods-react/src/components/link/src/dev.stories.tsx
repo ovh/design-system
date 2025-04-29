@@ -41,11 +41,19 @@ export const Disabled = () => (
 );
 
 export const IconOnly = () => (
-  <Link
-    href="http://google.com"
-    target="_blank">
-    <Icon name={ ICON_NAME.home } />
-  </Link>
+  <>
+    <Link
+      href="http://google.com"
+      target="_blank">
+      <Icon name={ ICON_NAME.home } />
+    </Link>
+    <br />
+    <Link
+      href="http://google.com"
+      target="_blank">
+      <Icon name={ ICON_NAME.arrowCrossed } />
+    </Link>
+  </>
 );
 
 export const Icons = () => (
@@ -54,6 +62,12 @@ export const Icons = () => (
       href="http://google.com"
       target="_blank">
       <Icon name={ ICON_NAME.arrowLeft } /> My link
+    </Link>
+    <br />
+    <Link
+      href="http://google.com"
+      target="_blank">
+      <Icon name={ ICON_NAME.home } /> My link
     </Link>
     <br />
     <Link

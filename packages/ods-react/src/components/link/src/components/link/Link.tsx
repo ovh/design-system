@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type ElementType, type ForwardedRef, type JSX, type MouseEvent, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type ElementType, type ForwardedRef, type JSX, type MouseEvent, forwardRef, useMemo } from 'react';
+import { getElementText } from '../../../../../utils/element';
 import { LINK_COLOR, type LinkColor } from '../../constant/link-color';
 import style from './link.module.scss';
 
@@ -17,6 +18,11 @@ const Link = forwardRef(function Link<T extends ElementType>({
   ...props
 }: LinkProp<T> & Omit<ComponentPropsWithRef<T>, keyof LinkProp<T>>, ref: ForwardedRef<HTMLAnchorElement>): JSX.Element {
   const Component = as || 'a';
+  const { children, ...linkProps } = props;
+
+  const hasNoText = useMemo(() => {
+    return getElementText(children) === '';
+  }, [children]);
 
   function onClick(event: MouseEvent): void {
     if (disabled) {
@@ -31,12 +37,17 @@ const Link = forwardRef(function Link<T extends ElementType>({
         style['link'],
         style[`link--${color}`],
         { [style['link--disabled']]: disabled },
+        { [style['link--no-text']]: hasNoText },
         className,
       )}
       ref={ ref }
-      { ...props }
+      { ...linkProps }
       onClick={ onClick }
-      tabIndex={ disabled ? -1 : props.tabIndex } />
+      tabIndex={ disabled ? -1 : linkProps.tabIndex }>
+      {/* If there is no text content, we add a zero-width space to simulate the correct baseline */}
+      { hasNoText && <span>&#8203;</span> }
+      { props.children }
+    </Component>
   );
 });
 

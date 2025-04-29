@@ -1,0 +1,24 @@
+{
+  "name": "nextjs-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Example of a NextJS app using ODS",
+  "scripts": {
+    "build": "next build",
+    "start": "next dev",
+    "start:prod": "next start"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-react": "18.6.2",
+    "@ovhcloud/ods-themes": "18.6.2",
+    "next": "15.3.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.15.3",
+    "@types/react": "18.2.56",
+    "@types/react-dom": "18.2.25",
+    "typescript": "5.3.3"
+  }
+}

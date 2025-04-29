@@ -4,13 +4,13 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import style from './accordionItem.module.scss';
 
 interface AccordionItemProp extends ComponentPropsWithRef<'div'> {
-  value: string;
   disabled?: boolean;
+  value: string;
 }
 
 const AccordionItem: FC<AccordionItemProp> = forwardRef(({
-  className,
   children,
+  className,
   disabled,
   ...props
 }, ref): JSX.Element => {

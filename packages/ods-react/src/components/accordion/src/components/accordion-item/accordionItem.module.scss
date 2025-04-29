@@ -1,0 +1,30 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/state';
+@use "../../constants/accordion";
+
+@layer ods {
+  .accordion-item {
+    display: grid;
+    border-width: accordion.$ods-accordion-border-size;
+    border-style: solid;
+    border-color: transparent;
+
+    &:not([data-disabled]) {
+      &[data-state='closed']:hover {
+        transition: .3s border-color ease-out;
+        border-color: var(--ods-color-primary-200);
+      }
+
+      &[data-state='open'] {
+        border-color: var(--ods-color-primary-500);
+      }
+    }
+
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+
+      opacity: 0.5;
+    }
+  }
+}

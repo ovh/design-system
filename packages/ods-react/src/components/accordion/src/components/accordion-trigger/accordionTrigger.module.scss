@@ -1,0 +1,39 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/state';
+@use "../../constants/accordion";
+
+@layer ods {
+  .accordion-trigger {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    column-gap: accordion.$ods-accordion-padding;
+    align-items: center;
+    margin-bottom: - accordion.$ods-accordion-border-size;
+    border: accordion.$ods-accordion-border-size solid transparent;
+    background: transparent;
+    cursor: pointer;
+    padding: accordion.$ods-accordion-padding;
+    text-align: left;
+    font-family: inherit;
+    font-size: inherit;
+
+    &:disabled {
+      cursor: inherit;
+    }
+
+    &:not(:disabled) {
+      &:focus-visible {
+        @include focus.ods-focus();
+      }
+    }
+
+    &:not(:disabled)[data-state='open'] .accordion-trigger__icon {
+      transform: rotate(180deg);
+    }
+
+    &:not(:disabled) .accordion-trigger__icon {
+      color: var(--ods-color-primary-500);
+      font-size: 0.875rem;
+    }
+  }
+}

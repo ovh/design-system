@@ -195,7 +195,7 @@ export const ItemDisabled: Story = {
           Lorem ipsum dolor sit amet.
         </AccordionContent>
       </AccordionItem>
-      <AccordionItem value="0">
+      <AccordionItem value="1">
         <AccordionTrigger>
           Hello World!
         </AccordionTrigger>

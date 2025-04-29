@@ -1,10 +1,39 @@
 import { useRef } from 'react';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '.';
+import style from './dev.module.css';
 
 export default {
   component: Breadcrumb,
   title: 'Breadcrumb dev',
 };
+
+export const CustomStyle = () => (
+  <Breadcrumb className={ style['custom-breadcrumb'] }>
+    <BreadcrumbItem className={ style['custom-breadcrumb-item'] }>
+      <BreadcrumbLink
+        className={ style['custom-breadcrumb-link'] }
+        href="#">
+        Link 1
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+
+    <BreadcrumbItem className={ style['custom-breadcrumb-item'] }>
+      <BreadcrumbLink
+        className={ style['custom-breadcrumb-link'] }
+        href="#">
+        Link 2
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+
+    <BreadcrumbItem className={ style['custom-breadcrumb-item'] }>
+      <BreadcrumbLink
+        className={ style['custom-breadcrumb-link'] }
+        href="#">
+        Link 3
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+  </Breadcrumb>
+);
 
 export const Default = () => (
   <Breadcrumb>

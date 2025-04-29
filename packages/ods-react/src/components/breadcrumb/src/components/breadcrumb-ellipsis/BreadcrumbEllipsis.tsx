@@ -8,9 +8,9 @@ interface BreadcrumbEllipsisProp extends ComponentPropsWithoutRef<'li'> {
 
 const BreadcrumbEllipsis: FC<BreadcrumbEllipsisProp> = ({ onExpand }): JSX.Element => {
   return (
-    <li>
+    <li className={ style['breadcrumb-ellipsis'] }>
       <button
-        className={ style['breadcrumb-ellipsis'] }
+        className={ style['breadcrumb-ellipsis__button'] }
         onClick={ onExpand }>
         ...
       </button>

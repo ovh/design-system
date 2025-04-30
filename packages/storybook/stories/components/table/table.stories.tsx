@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { type ReactElement } from 'react';
-import { TABLE_SIZE, TABLE_SIZES, TABLE_VARIANT, TABLE_VARIANTS, Table, type TableProp } from '../../../../ods-react/src/components/table/src';
+import { TABLE_SIZES, TABLE_VARIANTS, Table, type TableProp } from '../../../../ods-react/src/components/table/src';
 import { Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
@@ -59,8 +59,7 @@ export const Demo: Story = {
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: TABLE_SIZE.md },
-        type: { summary: TABLE_SIZES }
+        type: { summary: 'TABLE_SIZE' }
       },
       control: { type: 'select' },
       options: TABLE_SIZES,
@@ -68,8 +67,7 @@ export const Demo: Story = {
     variant: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: TABLE_VARIANT.default },
-        type: { summary: TABLE_VARIANTS }
+        type: { summary: 'TABLE_VARIANT' }
       },
       control: { type: 'select' },
       options: TABLE_VARIANTS,

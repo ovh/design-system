@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { TOOLTIP_POSITION, TOOLTIP_POSITIONS, Tooltip, type TooltipProp, TooltipContent, type TooltipContentProp, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
+import { TOOLTIP_POSITIONS, Tooltip, type TooltipProp, TooltipContent, type TooltipContentProp, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
@@ -42,31 +42,25 @@ export const Demo: StoryObj = {
     closeDelay: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 50 },
-        type: { summary: 'number' }
       },
       control: 'number',
     },
     content: {
       table: {
         category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
       },
       control: 'text',
     },
     openDelay: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 0 },
-        type: { summary: 'number' }
       },
       control: 'number',
     },
     position: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: TOOLTIP_POSITION.top },
-        type: { summary: TOOLTIP_POSITIONS }
+        type: { summary: 'TOOLTIP_POSITION' }
       },
       control: { type: 'select' },
       options: TOOLTIP_POSITIONS,
@@ -75,6 +69,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: false },
+        type: { summary: 'boolean' }
       },
       control: { type: 'boolean' },
     },

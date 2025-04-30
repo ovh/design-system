@@ -11,8 +11,7 @@ const meta: Meta<SkeletonProp> = {
 
 export default meta;
 
-export const Demo: Story = {
-};
+export const Demo: Story = {};
 
 export const Default: Story = {
   tags: ['!dev'],

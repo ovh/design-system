@@ -1,6 +1,6 @@
 @use '../../../../../style/focus';
 @use '../../../../../style/state';
-@use "../../constants/accordion";
+@use "../accordion/accordion.module";
 
 @layer ods {
   .accordion-item {

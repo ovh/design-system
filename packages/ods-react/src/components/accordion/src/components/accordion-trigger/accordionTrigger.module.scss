@@ -1,9 +1,11 @@
 @use '../../../../../style/focus';
 @use '../../../../../style/state';
-@use "../../constants/accordion";
+@use "../accordion/accordion.module";
 
 @layer ods {
   .accordion-trigger {
+    $trigger: &;
+
     display: grid;
     grid-template-columns: 1fr max-content;
     column-gap: accordion.$ods-accordion-padding;
@@ -25,15 +27,17 @@
       &:focus-visible {
         @include focus.ods-focus();
       }
-    }
 
-    &:not(:disabled)[data-state='open'] .accordion-trigger__icon {
-      transform: rotate(180deg);
-    }
+      &[data-state='open'] {
+        #{$trigger}__icon {
+          transform: rotate(180deg);
+        }
+      }
 
-    &:not(:disabled) .accordion-trigger__icon {
-      color: var(--ods-color-primary-500);
-      font-size: 0.875rem;
+      #{$trigger}__icon {
+        color: var(--ods-color-primary-500);
+        font-size: 0.875rem;
+      }
     }
   }
 }

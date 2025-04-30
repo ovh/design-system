@@ -1,4 +1,4 @@
-import { Text } from '@ovhcloud/ods-react';
+import { Text } from '../../../../ods-react/src/components/text/src';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import {
@@ -12,7 +12,6 @@ import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<AccordionProp>;
-type DemoArg = Partial<AccordionProp>
 
 const meta: Meta<AccordionProp> = {
   component: Accordion,
@@ -46,7 +45,7 @@ export const Overview: Story = {
 };
 
 export const Demo: Story = {
-  render: (arg: DemoArg) => (
+  render: (arg: AccordionProp) => (
     <Accordion disabled={ arg.disabled } multiple={ arg.multiple }>
       <AccordionItem value="0">
         <AccordionTrigger>
@@ -82,16 +81,12 @@ export const Demo: Story = {
     multiple: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'true' },
-        type: { summary: 'boolean' },
       },
       control: 'boolean',
     },
     disabled: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'boolean' },
       },
       control: 'boolean',
     },

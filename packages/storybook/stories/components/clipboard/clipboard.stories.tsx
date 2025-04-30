@@ -10,8 +10,9 @@ import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<ClipboardProp>;
-type DemoArg = Partial<ClipboardProp> & Partial<ClipboardControlProps>
-  & Partial<ClipboardTriggerProps>;
+type DemoArg = Partial<ClipboardProp> & Partial<ClipboardControlProps> & Partial<ClipboardTriggerProps> & {
+  masked?: boolean,
+};
 
 const meta: Meta<ClipboardProp> = {
   argTypes: excludeFromDemoControls(['onCopy']),
@@ -24,12 +25,16 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg: DemoArg) => (
-    <Clipboard disabled={ arg.disabled } value={ arg.value }>
-      <ClipboardControl loading={ arg.loading } maskOption={ arg.maskOption } />
+    <Clipboard
+      disabled={ arg.disabled }
+      value={ arg.value }>
+      <ClipboardControl
+        loading={ arg.loading }
+        maskOption={{ enable: !!arg.masked }} />
+
       <ClipboardTrigger
         labelCopy={ arg.labelCopy }
-        labelCopySuccess={ arg.labelCopySuccess }
-      />
+        labelCopySuccess={ arg.labelCopySuccess } />
     </Clipboard>
   ),
   argTypes: orderControls({
@@ -58,17 +63,16 @@ export const Demo: StoryObj = {
     loading: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: "ø" },
         type: { summary: 'boolean' },
       },
       control: 'boolean',
     },
-    maskOption: {
+    masked: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: "ø" }
+        type: { summary: 'boolean' },
       },
-      control: 'object',
+      control: 'boolean',
     },
     value: {
       table: {

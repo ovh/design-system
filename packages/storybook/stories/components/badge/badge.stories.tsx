@@ -24,7 +24,7 @@ export const Demo: Story = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        type: { summary: BADGE_COLORS }
+        type: { summary: 'BADGE_COLOR' }
       },
       control: { type: 'select' },
       options: BADGE_COLORS,
@@ -32,7 +32,7 @@ export const Demo: Story = {
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
-        type: { summary: BADGE_SIZES }
+        type: { summary: 'BADGE_SIZE' }
       },
       control: { type: 'select' },
       options: BADGE_SIZES,

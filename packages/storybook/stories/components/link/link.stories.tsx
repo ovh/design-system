@@ -1,13 +1,14 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Icon } from '../../../../ods-react/src/components/icon/src';
-import { LINK_COLOR, LINK_COLORS, Link, LinkProp } from '../../../../ods-react/src/components/link/src';
+import { LINK_COLORS, Link, LinkProp } from '../../../../ods-react/src/components/link/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<LinkProp>;
 
 const meta: Meta<LinkProp> = {
+  argTypes: excludeFromDemoControls(['as']),
   component: Link,
   title: 'ODS Components/Link',
 };
@@ -25,8 +26,7 @@ export const Demo: Story = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: LINK_COLOR.primary },
-        type: { summary: LINK_COLORS },
+        type: { summary: 'LINK_COLOR' },
       },
       control: 'select',
       options: LINK_COLORS,
@@ -34,8 +34,6 @@ export const Demo: Story = {
     disabled: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
       },
       control: 'boolean',
     },

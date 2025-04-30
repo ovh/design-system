@@ -24,10 +24,17 @@ export const Demo: Story = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        type: { summary: BUTTON_COLORS },
+        type: { summary: 'BUTTON_COLOR' },
       },
       control: { type: 'select' },
       options: BUTTON_COLORS,
+    },
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
     },
     loading: {
       table: {
@@ -38,7 +45,7 @@ export const Demo: Story = {
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
-        type: { summary: BUTTON_SIZES }
+        type: { summary: 'BUTTON_SIZE' }
       },
       control: { type: 'select' },
       options: BUTTON_SIZES,
@@ -46,7 +53,7 @@ export const Demo: Story = {
     variant: {
       table: {
         category: CONTROL_CATEGORY.design,
-        type: { summary: BUTTON_VARIANTS }
+        type: { summary: 'BUTTON_VARIANT' }
       },
       control: { type: 'select' },
       options: BUTTON_VARIANTS,

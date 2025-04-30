@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { POPOVER_POSITION, POPOVER_POSITIONS, Popover, type PopoverProp, PopoverContent, type PopoverContentProp, PopoverTrigger } from '../../../../ods-react/src/components/popover/src';
+import { POPOVER_POSITIONS, Popover, type PopoverProp, PopoverContent, type PopoverContentProp, PopoverTrigger } from '../../../../ods-react/src/components/popover/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
@@ -39,15 +39,13 @@ export const Demo: StoryObj = {
     content: {
       table: {
         category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
       },
       control: 'text',
     },
     position: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: POPOVER_POSITION.top },
-        type: { summary: POPOVER_POSITIONS }
+        type: { summary: 'POPOVER_POSITION' }
       },
       control: { type: 'select' },
       options: POPOVER_POSITIONS,
@@ -56,6 +54,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: false },
+        type: { summary: 'boolean' }
       },
       control: { type: 'boolean' },
     },

@@ -50,6 +50,7 @@ export const Demo: Story = {
     orientation: {
       table: {
         category: CONTROL_CATEGORY.general,
+        type: { summary: ['horizontal', 'vertical'] },
       },
       control: { type: 'select' },
       options: ['horizontal', 'vertical'],

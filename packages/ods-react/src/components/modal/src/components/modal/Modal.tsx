@@ -1,12 +1,11 @@
 import { Dialog } from '@ark-ui/react/dialog';
-import { type FC, type JSX, type ReactNode } from 'react';
+import { type FC, type JSX, type PropsWithChildren } from 'react';
 
 interface ModalOpenChangeDetail {
   open: boolean,
 }
 
 interface ModalProp {
-  children: ReactNode,
   closeOnEscape?: boolean,
   closeOnInteractOutside?: boolean,
   defaultOpen?: boolean,
@@ -14,7 +13,7 @@ interface ModalProp {
   open?: boolean,
 }
 
-const Modal: FC<ModalProp> = ({
+const Modal: FC<PropsWithChildren<ModalProp>> = ({
   children,
   closeOnEscape = true,
   closeOnInteractOutside = true,

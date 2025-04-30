@@ -3,8 +3,9 @@ import { type ModuleExports } from '@storybook/types';
 import React, { Fragment, useMemo } from 'react';
 import { type DeclarationReflection, type ProjectReflection } from 'typedoc';
 import { ReflectionKind } from 'typedoc/models';
-import { ClassModule, type Component } from './ClassModule';
+import { ClassModule } from './ClassModule';
 import { Heading } from '../heading/Heading';
+import { type Component, getComponentsInfo } from '../../helpers/docgen';
 import styles from './technicalSpecification.module.css';
 
 type ProcessedData = {
@@ -80,15 +81,7 @@ const TechnicalSpecification = ({ data, extraAttributeInfo, of }: Props) => {
     });
 
     return {
-      components: docgens.map((docgen) => ({
-        name: docgen.displayName,
-        props: Object.values(docgen.props).map((prop: any) => ({
-          defaultValue: prop.defaultValue?.value,
-          isOptional: !prop.required,
-          name: prop.name,
-          type: prop.type?.name,
-        })),
-      })),
+      components: getComponentsInfo(docgens),
       enums: enumDeclarations.map((enumDeclaration) => ({
         name: enumDeclaration.name,
         members: filterByKind(enumDeclaration.children, ReflectionKind.EnumMember)

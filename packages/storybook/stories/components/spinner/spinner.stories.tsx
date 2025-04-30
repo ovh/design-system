@@ -18,8 +18,7 @@ export const Demo: Story = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: SPINNER_COLOR.primary },
-        type: { summary: SPINNER_COLORS }
+        type: { summary: 'SPINNER_COLOR' }
       },
       control: { type: 'select' },
       options: SPINNER_COLORS,
@@ -27,8 +26,7 @@ export const Demo: Story = {
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: SPINNER_SIZE.md },
-        type: { summary: SPINNER_SIZES }
+        type: { summary: 'SPINNER_SIZE' }
       },
       control: { type: 'select' },
       options: SPINNER_SIZES,

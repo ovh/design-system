@@ -18,8 +18,7 @@ export const Demo: Story = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: 'primary' },
-        type: { summary: CARD_COLORS }
+        type: { summary: 'CARD_COLOR' },
       },
       control: 'select',
       options: CARD_COLORS,
@@ -27,7 +26,6 @@ export const Demo: Story = {
     children: {
       table: {
         category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
       },
       control: 'text',
     },

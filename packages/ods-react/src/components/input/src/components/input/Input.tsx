@@ -15,7 +15,7 @@ interface InputProp extends ComponentPropsWithRef<'input'> {
   maskOption?: {
     enable: boolean,
     initialState?: InputMaskState,
-  }
+  },
   onClear?: () => void,
   type?: InputType,
 }

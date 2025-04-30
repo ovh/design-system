@@ -6,6 +6,7 @@ interface TooltipProp {
   closeDelay?: number,
   open?: boolean,
   openDelay?: number,
+  /** @type=TOOLTIP_POSITION */
   position?: TooltipPosition,
 }
 

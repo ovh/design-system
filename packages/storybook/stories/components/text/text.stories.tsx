@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { TEXT_PRESET, TEXT_PRESETS, Text, type TextProp }  from '../../../../ods-react/src/components/text/src';
+import { TEXT_PRESETS, Text, type TextProp }  from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -18,15 +18,13 @@ export const Demo: Story = {
     children: {
       table: {
         category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
       },
       control: 'text',
     },
     preset: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: TEXT_PRESET.paragraph },
-        type: { summary: 'string' }
+        type: { summary: 'TEXT_PRESET' }
       },
       control: { type: 'select' },
       options: TEXT_PRESETS,

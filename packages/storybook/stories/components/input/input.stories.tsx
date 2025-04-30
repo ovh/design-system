@@ -6,6 +6,9 @@ import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<InputProp>;
+type DemoArg = Partial<InputProp> & {
+  masked?: boolean,
+};
 
 const meta: Meta<InputProp> = {
   argTypes: excludeFromDemoControls(['onClear']),
@@ -15,20 +18,26 @@ const meta: Meta<InputProp> = {
 
 export default meta;
 
-export const Demo: Story = {
+export const Demo: StoryObj = {
+  render: (arg: DemoArg) => {
+    const { masked, ...inputArg } = arg;
+
+    return (
+      <Input
+        maskOption={{ enable: !!masked }}
+        { ...inputArg } />
+    )
+  },
   argTypes: orderControls({
     clearable: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'boolean' },
       },
       control: 'boolean',
     },
     disabled: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
         type: { summary: 'boolean' },
       },
       control: 'boolean',
@@ -36,22 +45,19 @@ export const Demo: Story = {
     loading: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
+      },
+      control: 'boolean',
+    },
+    masked: {
+      table: {
+        category: CONTROL_CATEGORY.general,
         type: { summary: 'boolean' },
       },
       control: 'boolean',
     },
-    maskOption: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-      },
-      control: 'object',
-    },
     placeholder: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
         type: { summary: 'string' },
       },
       control: 'text',
@@ -59,7 +65,6 @@ export const Demo: Story = {
     readOnly: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
         type: { summary: 'boolean' },
       },
       control: 'boolean',
@@ -67,8 +72,7 @@ export const Demo: Story = {
     type: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: INPUT_TYPE.text },
-        type: { summary: INPUT_TYPES }
+        type: { summary: 'INPUT_TYPE' }
       },
       control: { type: 'select' },
       options: INPUT_TYPES,

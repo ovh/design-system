@@ -20,7 +20,6 @@ export const Demo: Story = {
     cols: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
         type: { summary: 'number' },
       },
       control: 'number',
@@ -28,7 +27,6 @@ export const Demo: Story = {
     disabled: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
         type: { summary: 'boolean' },
       },
       control: 'boolean',
@@ -36,7 +34,6 @@ export const Demo: Story = {
     placeholder: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
         type: { summary: 'string' },
       },
       control: 'text',
@@ -44,7 +41,6 @@ export const Demo: Story = {
     readOnly: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
         type: { summary: 'boolean' },
       },
       control: 'boolean',
@@ -52,7 +48,6 @@ export const Demo: Story = {
     rows: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
         type: { summary: 'number' },
       },
       control: 'number',

@@ -36,23 +36,18 @@ export const Demo: StoryObj = {
     disabled: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'boolean' }
       },
       control: 'boolean',
     },
     invalid: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'boolean' }
       },
       control: 'boolean',
     },
     label: {
       table: {
         category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
       },
       control: 'text',
     }

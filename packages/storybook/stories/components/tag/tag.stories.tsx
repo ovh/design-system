@@ -2,11 +2,12 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { TAG_COLOR, TAG_COLORS, TAG_SIZE, TAG_SIZES, Tag, type TagProp } from '../../../../ods-react/src/components/tag/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<TagProp>;
 
 const meta: Meta<TagProp> = {
+  argTypes: excludeFromDemoControls(['onRemove']),
   component: Tag,
   title: 'ODS Components/Tag',
 };
@@ -18,8 +19,7 @@ export const Demo: Story = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: TAG_COLOR.information },
-        type: { summary: TAG_COLORS },
+        type: { summary: 'TAG_COLOR' },
       },
       control: { type: 'select' },
       options: TAG_COLORS,
@@ -27,8 +27,6 @@ export const Demo: Story = {
     children: {
       table: {
         category: CONTROL_CATEGORY.general,
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Tag' },
       },
       control: 'text',
     },
@@ -36,23 +34,16 @@ export const Demo: Story = {
       table: {
         category: CONTROL_CATEGORY.general,
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
       },
       control: { type: 'boolean' },
     },
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: TAG_SIZE.md },
-        type: { summary: TAG_SIZES },
+        type: { summary: 'TAG_SIZE' },
       },
       control: { type: 'select' },
       options: TAG_SIZES,
-    },
-    onRemove: {
-      table: {
-        disable: true,
-      },
     },
   }),
   args: {

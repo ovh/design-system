@@ -22,7 +22,7 @@ const meta: Meta<FormFieldProp> = {
 
 export default meta;
 
-export const Demo: Story = {
+export const Demo: StoryObj = {
   render: (args: DemoArg) => (
     <FormField
       disabled={ args.disabled }
@@ -47,48 +47,39 @@ export const Demo: Story = {
     disabled: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'boolean' }
       },
       control: 'boolean',
     },
     errorText: {
       table: {
         category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
     },
     helperText: {
       table: {
         category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
     },
     invalid: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'boolean' }
       },
       control: 'boolean',
     },
     label: {
       table: {
         category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
     },
     readOnly: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'boolean' }
       },
       control: 'boolean',
     },

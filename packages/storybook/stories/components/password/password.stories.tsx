@@ -31,15 +31,12 @@ export const Demo: Story = {
     clearable: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'boolean' },
       },
       control: 'boolean',
     },
     disabled: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
         type: { summary: 'boolean' },
       },
       control: 'boolean',
@@ -47,15 +44,12 @@ export const Demo: Story = {
     loading: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'boolean' },
       },
       control: 'boolean',
     },
     placeholder: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
         type: { summary: 'string' },
       },
       control: 'text',
@@ -63,7 +57,6 @@ export const Demo: Story = {
     readOnly: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
         type: { summary: 'boolean' },
       },
       control: 'boolean',

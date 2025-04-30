@@ -179,7 +179,7 @@ export const Demo: Story = {
     name: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
+        type: { summary: 'ICON_NAME' },
       },
       control: { type: 'select' },
       options: ICON_NAMES,

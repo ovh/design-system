@@ -5,6 +5,11 @@ import { LINK_COLOR, type LinkColor } from '../../constant/link-color';
 import style from './link.module.scss';
 
 interface LinkProp<T extends ElementType = 'a'> {
+  /**
+   * @default-value='a'
+   * Pass a component you may want to use as custom Link component.
+   * Useful for example when using routing library like react-router.
+   * */
   as?: T,
   color?: LinkColor,
   disabled?: boolean,

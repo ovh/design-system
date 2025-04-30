@@ -2,7 +2,13 @@ import { type ComponentPropsWithoutRef, type ElementType, type ForwardedRef, typ
 import { Link } from '../../../../link/src';
 
 interface BreadcrumbLinkProp<T extends ElementType = 'a'> {
+  /**
+   * @default-value='a'
+   * Pass a component you may want to use as custom Link component.
+   * Useful for example when using routing library like react-router.
+   * */
   as?: T,
+  /** @internal */
   isLast?: boolean,
 }
 

@@ -1,13 +1,7 @@
 import { Select, useSelectContext } from '@ark-ui/react/select';
 import { type FC, type JSX } from 'react';
-import { type SelectOptionItem, useSelect } from '../../contexts/useSelect';
+import { type SelectCustomItemRendererArg, useSelect } from '../../contexts/useSelect';
 import { SelectMergedSelection } from '../select-merged-selection/SelectMergedSelection';
-
-type SelectCustomItemRendererArg = {
-  selectedItems: SelectOptionItem[],
-  text: string,
-  values: string[],
-}
 
 interface SelectValueTextProp {
   customItemRenderer?: (arg: SelectCustomItemRendererArg) => JSX.Element,
@@ -48,7 +42,6 @@ const SelectValueText: FC<SelectValueTextProp> = ({
 SelectValueText.displayName = 'SelectValueText';
 
 export {
-  type SelectCustomItemRendererArg,
   SelectValueText,
   type SelectValueTextProp,
 };

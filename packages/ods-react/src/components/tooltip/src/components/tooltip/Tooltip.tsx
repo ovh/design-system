@@ -1,16 +1,15 @@
 import { Tooltip as VendorTooltip } from '@ark-ui/react/tooltip';
-import { type FC, type JSX, type ReactNode } from 'react';
+import { type FC, type JSX, type PropsWithChildren } from 'react';
 import { TOOLTIP_POSITION, type TooltipPosition } from '../../constants/tooltip-position';
 
 interface TooltipProp {
-  children: ReactNode,
   closeDelay?: number,
   open?: boolean,
   openDelay?: number,
   position?: TooltipPosition,
 }
 
-const Tooltip: FC<TooltipProp> = ({
+const Tooltip: FC<PropsWithChildren<TooltipProp>> = ({
   children,
   closeDelay = 50,
   open,

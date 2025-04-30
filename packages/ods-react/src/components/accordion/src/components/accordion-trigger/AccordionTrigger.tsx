@@ -4,7 +4,7 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import style from './accordionTrigger.module.scss';
 
-type AccordionTriggerProp = ComponentPropsWithRef<'button'>;
+interface AccordionTriggerProp extends ComponentPropsWithRef<'button'> {}
 
 const AccordionTrigger: FC<AccordionTriggerProp> = forwardRef(({
   children,

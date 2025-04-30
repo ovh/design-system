@@ -3,6 +3,7 @@ import { type Documentation, type FunctionSignatureType, type LiteralType, type 
 enum TAG {
   defaultValue = '@default-value',
   internal = '@internal',
+  type = '@type',
 }
 
 type ComponentProp = {
@@ -48,7 +49,7 @@ function getComponentProp(name: string, prop: PropDescriptor): ComponentProp | u
     defaultValue: prop.defaultValue?.value?.toString() || tagsMap.get(TAG.defaultValue) || 'undefined',
     isOptional: !prop.required,
     name: name,
-    type: prop.tsType ? typeToString(prop.tsType) : '',
+    type: tagsMap.get(TAG.type) || (prop.tsType ? typeToString(prop.tsType) : ''),
   }
 }
 

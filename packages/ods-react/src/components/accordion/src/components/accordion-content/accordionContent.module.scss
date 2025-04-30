@@ -1,7 +1,7 @@
-@use "../../constants/accordion";
+@use "../accordion/accordion.module";
 
 @layer ods {
   .accordion-content {
-    padding: 0 accordion.$ods-accordion-padding accordion.$ods-accordion-padding accordion.$ods-accordion-padding;
+    padding: 0 accordion.$ods-accordion-padding accordion.$ods-accordion-padding;
   }
 }

@@ -18,31 +18,26 @@ export const Demo: Story = {
     children: {
       table: {
         category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
       },
       control: 'text',
     },
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: BUTTON_COLOR.primary },
         type: { summary: BUTTON_COLORS },
       },
       control: { type: 'select' },
       options: BUTTON_COLORS,
     },
-    isLoading: {
+    loading: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'false' },
-        type: { summary: 'boolean' }
       },
       control: 'boolean',
     },
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: BUTTON_SIZE.md },
         type: { summary: BUTTON_SIZES }
       },
       control: { type: 'select' },
@@ -51,7 +46,6 @@ export const Demo: Story = {
     variant: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: BUTTON_VARIANT.default },
         type: { summary: BUTTON_VARIANTS }
       },
       control: { type: 'select' },
@@ -84,10 +78,10 @@ export const Default: Story = {
   ),
 };
 
-export const IsLoading: StoryObj = {
+export const Loading: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
-    <Button isLoading={ true }>
+    <Button loading={ true }>
       Loading button
     </Button>
   ),

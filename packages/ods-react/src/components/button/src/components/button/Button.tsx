@@ -8,7 +8,7 @@ import style from './button.module.scss';
 
 interface ButtonProp extends ComponentPropsWithRef<'button'> {
   color?: ButtonColor,
-  isLoading?: boolean,
+  loading?: boolean,
   size?: ButtonSize,
   variant?: ButtonVariant,
 }
@@ -17,7 +17,7 @@ const Button: FC<ButtonProp> = forwardRef(({
   children,
   className,
   color = BUTTON_COLOR.primary,
-  isLoading = false,
+  loading = false,
   size = BUTTON_SIZE.md,
   variant = BUTTON_VARIANT.default,
   ...props
@@ -31,12 +31,12 @@ const Button: FC<ButtonProp> = forwardRef(({
         style[`button--${variant}`],
         className,
       )}
-      disabled={ props.disabled || isLoading }
+      disabled={ props.disabled || loading }
       ref={ ref }
       { ...props }
       type={ props.type || 'button' }>
       {
-        isLoading &&
+        loading &&
         <div className={ style['button__spinner'] }>
           <Spinner
             color={ SPINNER_COLOR.neutral }

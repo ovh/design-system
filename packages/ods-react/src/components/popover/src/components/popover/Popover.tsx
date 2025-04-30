@@ -1,14 +1,13 @@
 import { Popover as VendorPopover } from '@ark-ui/react/popover';
-import { type FC, type JSX, type ReactNode } from 'react';
+import { type FC, type JSX, type PropsWithChildren } from 'react';
 import { POPOVER_POSITION, type PopoverPosition } from '../../constants/popover-position';
 
 interface PopoverProp {
-  children: ReactNode,
   open?: boolean,
   position?: PopoverPosition,
 }
 
-const Popover: FC<PopoverProp> = ({
+const Popover: FC<PropsWithChildren<PopoverProp>> = ({
   children,
   open,
   position = POPOVER_POSITION.top,

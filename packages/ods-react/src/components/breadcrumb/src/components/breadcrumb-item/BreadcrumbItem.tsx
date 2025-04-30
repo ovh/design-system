@@ -6,6 +6,7 @@ import { BreadcrumbSeparator } from '../breadcrumb-separator/BreadcrumbSeparator
 import style from './breadcrumbItem.module.scss';
 
 interface BreadcrumbItemProp extends ComponentPropsWithRef<'li'> {
+  /** @internal */
   isLast?: boolean,
 }
 

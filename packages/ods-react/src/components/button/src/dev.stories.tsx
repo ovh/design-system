@@ -12,7 +12,7 @@ export const Default = () => (
 );
 
 export const IsLoading = () => (
-  <Button isLoading={ true }>
+  <Button loading={ true }>
     IsLoading
   </Button>
 );

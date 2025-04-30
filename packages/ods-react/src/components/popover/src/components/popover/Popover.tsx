@@ -4,6 +4,7 @@ import { POPOVER_POSITION, type PopoverPosition } from '../../constants/popover-
 
 interface PopoverProp {
   open?: boolean,
+  /** @type=POPOVER_POSITION */
   position?: PopoverPosition,
 }
 

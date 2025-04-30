@@ -60,7 +60,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: MODAL_COLOR.information },
-        type: { summary: MODAL_COLORS },
+        type: { summary: 'MODAL_COLOR' },
       },
       control: { type: 'select' },
       options: MODAL_COLORS,

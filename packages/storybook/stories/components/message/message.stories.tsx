@@ -25,6 +25,7 @@ export const Demo: Story = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
+        type: { summary: 'MESSAGE_COLOR' },
       },
       control: { type: 'select' },
       options: MESSAGE_COLORS,
@@ -38,6 +39,7 @@ export const Demo: Story = {
     variant: {
       table: {
         category: CONTROL_CATEGORY.design,
+        type: { summary: 'MESSAGE_VARIANT' },
       },
       control: { type: 'select' },
       options: MESSAGE_VARIANTS,

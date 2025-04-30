@@ -49,7 +49,6 @@ export const Demo: StoryObj = {
     invalid: {
       table: {
         category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' }
       },
       control: 'boolean',
     },
@@ -77,7 +76,6 @@ export const Demo: StoryObj = {
     readOnly: {
       table: {
         category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' }
       },
       control: 'boolean',
     },

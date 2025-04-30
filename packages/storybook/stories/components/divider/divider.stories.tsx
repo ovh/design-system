@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { DIVIDER_COLOR, DIVIDER_COLORS, DIVIDER_SPACING, DIVIDER_SPACINGS, Divider, type DividerProp } from '../../../../ods-react/src/components/divider/src';
+import { DIVIDER_COLORS, DIVIDER_SPACINGS, Divider, type DividerProp } from '../../../../ods-react/src/components/divider/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -18,8 +18,7 @@ export const Demo: Story = {
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: DIVIDER_COLOR.light },
-        type: { summary: DIVIDER_COLORS }
+        type: { summary: 'DIVIDER_COLOR' },
       },
       control: { type: 'select' },
       options: DIVIDER_COLORS,
@@ -27,8 +26,7 @@ export const Demo: Story = {
     spacing: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: DIVIDER_SPACING._2 },
-        type: { summary: DIVIDER_SPACINGS }
+        type: { summary: 'DIVIDER_SPACING' },
       },
       control: { type: 'select' },
       options: DIVIDER_SPACINGS,

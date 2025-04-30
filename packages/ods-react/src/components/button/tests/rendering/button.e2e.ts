@@ -19,7 +19,7 @@ describe('Button rendering', () => {
     });
   });
 
-  describe('isLoading', () => {
+  describe('loading', () => {
     it('should disable the button', async() => {
       await gotoStory(page, 'rendering/is-loading');
 

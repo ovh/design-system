@@ -16,7 +16,7 @@ export const customStyle = () => (
 export const isLoading = () => (
   <Button
     data-testid="is-loading"
-    isLoading={ true }>
+    loading={ true }>
     Is Loading
   </Button>
 );

@@ -18,14 +18,12 @@ export const Demo: Story = {
     children: {
       table: {
         category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
       },
       control: 'text',
     },
     color: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: BADGE_COLOR.information },
         type: { summary: BADGE_COLORS }
       },
       control: { type: 'select' },
@@ -34,7 +32,6 @@ export const Demo: Story = {
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: BADGE_SIZE.md },
         type: { summary: BADGE_SIZES }
       },
       control: { type: 'select' },

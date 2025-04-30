@@ -23,6 +23,22 @@ type SelectContextType = {
   multiple: SelectMultipleMode,
 }
 
+type SelectCustomGroupRendererArg = {
+  customData?: Record<string, any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+  label: string,
+}
+
+type SelectCustomItemRendererArg = {
+  selectedItems: SelectOptionItem[],
+  text: string,
+  values: string[],
+}
+
+type SelectCustomOptionRendererArg = {
+  customData?: Record<string, any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+  label: string,
+}
+
 interface SelectProviderProp {
   children: ReactNode,
   items: SelectItem[],
@@ -47,6 +63,9 @@ function useSelect(): SelectContextType {
 }
 
 export {
+  type SelectCustomGroupRendererArg,
+  type SelectCustomItemRendererArg,
+  type SelectCustomOptionRendererArg,
   type SelectGroupItem,
   type SelectItem,
   type SelectMultipleMode,

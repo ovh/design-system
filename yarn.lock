@@ -4181,7 +4181,7 @@ __metadata:
     node-fetch: 2.7.0
     prop-types: 15.8.1
     react: 18.2.0
-    react-docgen-typescript: 2.2.2
+    react-docgen: 7.1.1
     storybook: 8.6.12
     typedoc: 0.28.1
     typescript: 5.3.3
@@ -17924,7 +17924,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-docgen-typescript@npm:2.2.2, react-docgen-typescript@npm:^2.2.2":
+"react-docgen-typescript@npm:^2.2.2":
   version: 2.2.2
   resolution: "react-docgen-typescript@npm:2.2.2"
   peerDependencies:
@@ -17933,7 +17933,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-docgen@npm:^7.0.0":
+"react-docgen@npm:7.1.1, react-docgen@npm:^7.0.0":
   version: 7.1.1
   resolution: "react-docgen@npm:7.1.1"
   dependencies:

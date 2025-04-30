@@ -1,14 +1,9 @@
 import { Select } from '@ark-ui/react/select';
 import classNames from 'classnames';
 import { type FC, type JSX } from 'react';
-import { type SelectGroupItem } from '../../contexts/useSelect';
+import { type SelectCustomGroupRendererArg, type SelectGroupItem } from '../../contexts/useSelect';
 import { SelectOption, type SelectOptionProp } from '../select-option/SelectOption';
 import style from './selectGroup.module.scss';
-
-type SelectCustomGroupRendererArg = {
-  customData?: Record<string, any>, // eslint-disable-line @typescript-eslint/no-explicit-any
-  label: string,
-}
 
 interface SelectGroupProp {
   customGroupRenderer?: (arg: SelectCustomGroupRendererArg) => JSX.Element,
@@ -53,7 +48,6 @@ const SelectGroup: FC<SelectGroupProp> = ({
 SelectGroup.displayName = 'SelectGroup';
 
 export {
-  type SelectCustomGroupRendererArg,
   SelectGroup,
   type SelectGroupProp,
 };

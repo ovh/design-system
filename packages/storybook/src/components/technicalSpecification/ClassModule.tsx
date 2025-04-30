@@ -3,17 +3,8 @@ import { CodeOrSourceMdx } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import React from 'react';
 import { Heading } from '../heading/Heading';
+import { type Component } from '../../helpers/docgen';
 import styles from './classModule.module.css';
-
-type Component = {
-  name: string,
-  props: {
-    defaultValue: number | string,
-    isOptional: boolean,
-    name: string,
-    type: string,
-  }[],
-}
 
 type Props = {
   component: Component,
@@ -94,5 +85,4 @@ const ClassModule = ({ component, extraAttributeInfo }: Props) => {
 
 export {
   ClassModule,
-  type Component,
 };

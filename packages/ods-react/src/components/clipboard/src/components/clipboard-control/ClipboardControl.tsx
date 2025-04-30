@@ -1,17 +1,19 @@
 import { Clipboard, useClipboardContext } from '@ark-ui/react/clipboard';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { INPUT_TYPE, Input } from '../../../../input/src';
-import { type InputProp } from '../../../../input/src';
+import { INPUT_TYPE, Input, type InputMaskState } from '../../../../input/src';
 import { useClipboard } from '../../contexts/useClipboard';
 import style from './clipboardControl.module.scss';
 
-interface ClipboardControlProps extends ComponentPropsWithRef<'input'> {
-  loading?: InputProp['loading'],
-  maskOption?: InputProp['maskOption'],
+interface ClipboardControlProp extends ComponentPropsWithRef<'input'> {
+  loading?: boolean,
+  maskOption?: {
+    enable: boolean,
+    initialState?: InputMaskState,
+  },
 }
 
-const ClipboardControl: FC<ClipboardControlProps> = forwardRef(({
+const ClipboardControl: FC<ClipboardControlProp> = forwardRef(({
   className,
   ...props
 }, ref): JSX.Element => {
@@ -33,4 +35,4 @@ const ClipboardControl: FC<ClipboardControlProps> = forwardRef(({
 
 ClipboardControl.displayName = 'ClipboardControl';
 
-export { ClipboardControl, type ClipboardControlProps };
+export { ClipboardControl, type ClipboardControlProp };

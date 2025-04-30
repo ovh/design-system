@@ -7,12 +7,12 @@ import { TOOLTIP_POSITION, Tooltip, TooltipContent, TooltipTrigger } from '../..
 import { useClipboard } from '../../contexts/useClipboard';
 import style from './clipboardTrigger.module.scss';
 
-interface ClipboardTriggerProps extends ComponentPropsWithRef<'button'> {
+interface ClipboardTriggerProp extends ComponentPropsWithRef<'button'> {
   labelCopy?: string,
   labelCopySuccess?: string,
 }
 
-const ClipboardTrigger: FC<ClipboardTriggerProps> = forwardRef(({
+const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
   className,
   labelCopy = 'Copy to clipboard',
   labelCopySuccess = 'Copied!',
@@ -65,4 +65,4 @@ const ClipboardTrigger: FC<ClipboardTriggerProps> = forwardRef(({
 
 ClipboardTrigger.displayName = 'ClipboardTrigger';
 
-export { ClipboardTrigger, type ClipboardTriggerProps };
+export { ClipboardTrigger, type ClipboardTriggerProp };

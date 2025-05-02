@@ -15,9 +15,13 @@ import * as SkeletonStories from './skeleton.stories';
 
 <TechnicalSpecification
   data={ SpecificationsSkeleton }
-  extraAttributeInfo={{
-    name: 'div',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes',
+  extraInfo={{
+    'Skeleton': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes',
+      }
+    }
   }}
   of={ SkeletonStories } />
 

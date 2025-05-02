@@ -15,9 +15,13 @@ import * as LinkStories from './link.stories';
 
 <TechnicalSpecification
   data={ SpecificationsLink }
-  extraAttributeInfo={{
-    name: 'link',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#attributes',
+  extraInfo={{
+    'Link': {
+      extendAttribute: {
+        name: 'link',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#attributes',
+      }
+    }
   }}
   of={ LinkStories } />
 

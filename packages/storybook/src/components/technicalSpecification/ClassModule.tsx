@@ -1,20 +1,32 @@
 import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import { Table } from '@storybook/components';
-import React from 'react';
+import React, { type JSX, useMemo } from 'react';
 import { Heading } from '../heading/Heading';
 import { type Component } from '../../helpers/docgen';
 import styles from './classModule.module.css';
 
-type Props = {
+type ClassModuleProp = {
   component: Component,
-  extraAttributeInfo?: {
-    name: string,
-    url: string,
-  },
+  extraInfo?: Record<string, {
+    extendAttribute: {
+      name: string,
+      url: string,
+    }
+  }>,
 }
 
-const ClassModule = ({ component, extraAttributeInfo }: Props) => {
+const ClassModule = ({ component, extraInfo }: ClassModuleProp): JSX.Element => {
+  const extraAttributeInfo = useMemo(() => {
+    if (extraInfo) {
+      const componentInfo = Object.entries(extraInfo)
+        .filter(([key]) => key === component.name)
+        .map(([_, value]) => value);
+
+      return componentInfo?.length ? componentInfo[0].extendAttribute : undefined;
+    }
+  }, [component, extraInfo]);
+
   return (
     <>
       <Heading label={ component.name } level={ 2 } />
@@ -85,4 +97,5 @@ const ClassModule = ({ component, extraAttributeInfo }: Props) => {
 
 export {
   ClassModule,
+  type ClassModuleProp,
 };

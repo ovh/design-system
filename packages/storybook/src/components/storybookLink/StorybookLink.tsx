@@ -1,26 +1,35 @@
-import { Link } from '@ovhcloud/ods-react';
+import { Link, type LinkProp } from '@ovhcloud/ods-react';
 import { navigate } from '@storybook/addon-links';
-import React, { type ReactNode } from 'react';
+import React, { ComponentPropsWithRef, type JSX, type MouseEvent } from 'react';
 
-type Props = {
-  children: ReactNode,
-  className?: string,
+interface Prop extends ComponentPropsWithRef<'a'>, Pick<LinkProp, 'disabled'> {
   kind?: string,
   story?: string,
   title?: string,
 }
 
-const StorybookLink = ({ children, className, kind, story, title }: Props) => {
+const InternalLink = ({ children, kind, story, title, ...prop }: Prop): JSX.Element => {
   return (
-    <Link className={ className || '' }
-          href="#"
-          onClick={ (e) => {
-            e.preventDefault();
-            navigate(title ? { title } : { kind, story });
-          }}>
+    <a
+      { ...prop }
+      href="#"
+      onClick={ (e: MouseEvent) => {
+        e.preventDefault();
+        navigate(title ? { title } : { kind, story });
+      }}>
+      { children }
+    </a>
+  );
+}
+
+const StorybookLink = ({ children, ...prop }: Prop): JSX.Element => {
+  return (
+    <Link
+      as={ InternalLink }
+      { ...prop }>
       { children }
     </Link>
-  );
+  )
 };
 
 export {

@@ -15,9 +15,13 @@ import * as TextareaStories from './textarea.stories';
 
 <TechnicalSpecification
   data={ SpecificationsTextarea }
-  extraAttributeInfo={{
-    name: 'textarea',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes',
+  extraInfo={{
+    'Textarea': {
+      extendAttribute: {
+        name: 'textarea',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes',
+      }
+    }
   }}
   of={ TextareaStories } />
 

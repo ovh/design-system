@@ -1,8 +1,8 @@
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import { type ModuleExports } from '@storybook/types';
-import React, { Fragment, useMemo } from 'react';
+import React, { Fragment, type JSX, useMemo } from 'react';
 import { type ProjectReflection } from 'typedoc';
-import { ClassModule } from './ClassModule';
+import { ClassModule, type ClassModuleProp } from './ClassModule';
 import { Heading } from '../heading/Heading';
 import { type Component, getComponentsInfo } from '../../helpers/docgen';
 import { type ComponentTypedoc, getComponentTypedoc } from '../../helpers/typedoc';
@@ -14,14 +14,11 @@ type ProcessedData = ComponentTypedoc & {
 
 type Props = {
   data: ProjectReflection,
-  extraAttributeInfo?: {
-    name: string,
-    url: string,
-  },
+  extraInfo?: ClassModuleProp['extraInfo'],
   of: ModuleExports,
 }
 
-const TechnicalSpecification = ({ data, extraAttributeInfo, of }: Props) => {
+const TechnicalSpecification = ({ data, extraInfo, of }: Props): JSX.Element => {
   const { components, enums, interfaces, unions } = useMemo<ProcessedData>(() => {
     const typedoc = getComponentTypedoc(data);
 
@@ -44,7 +41,7 @@ const TechnicalSpecification = ({ data, extraAttributeInfo, of }: Props) => {
         (components || []).map((component, idx) => (
           <ClassModule key={ idx }
                        component={ component }
-                       extraAttributeInfo={ extraAttributeInfo } />
+                       extraInfo={ extraInfo } />
         ))
       }
 

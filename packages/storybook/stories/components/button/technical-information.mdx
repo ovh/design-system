@@ -15,9 +15,13 @@ import * as ButtonStories from './button.stories';
 
 <TechnicalSpecification
   data={ SpecificationsButton }
-  extraAttributeInfo={{
-    name: 'button',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes',
+  extraInfo={{
+    'Button': {
+      extendAttribute: {
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes',
+      }
+    }
   }}
   of={ ButtonStories } />
 

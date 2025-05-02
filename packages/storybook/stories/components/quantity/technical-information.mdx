@@ -13,7 +13,17 @@ import * as QuantityStories from './quantity.stories';
 
 <Canvas of={ QuantityStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsQuantity } of={ QuantityStories } />
+<TechnicalSpecification
+  data={ SpecificationsQuantity }
+  extraInfo={{
+    'QuantityInput': {
+      extendAttribute: {
+        name: 'input',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes',
+      }
+    }
+  }}
+  of={ QuantityStories } />
 
 <Heading label="Examples" level={ 2 } />
 

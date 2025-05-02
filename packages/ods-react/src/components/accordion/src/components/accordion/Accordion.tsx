@@ -32,6 +32,7 @@ const Accordion: FC<AccordionProp> = forwardRef(({
       ref={ ref }
       multiple={ multiple }
       onValueChange={ onChange }
+      value={ value }
       { ...props }
     />
   );

@@ -1,6 +1,7 @@
-import { ICON_NAME, TEXT_PRESET, Icon, Link, Text } from '@ovhcloud/ods-react';
+import { ICON_NAME, TEXT_PRESET, Icon, Text } from '@ovhcloud/ods-react';
 import React from 'react';
 import { HOME_TITLE } from '../../constants/meta';
+import { ExternalLink } from '../externalLink/ExternalLink';
 import { StorybookLink } from '../storybookLink/StorybookLink';
 import styles from './homepage.module.css';
 import imageFile from '../../../assets/ods_bg.png';
@@ -27,15 +28,13 @@ const Homepage = () => {
             Get Started <Icon name={ ICON_NAME.arrowRight } />
           </StorybookLink>
 
-          <Link href="https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system"
-                   target="_blank">
-            <Icon name={ ICON_NAME.externalLink } /> Design Guidelines
-          </Link>
+          <ExternalLink href="https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system">
+            Design Guidelines
+          </ExternalLink>
 
-          <Link href="https://github.com/ovh/design-system"
-                   target="_blank">
-            <Icon name={ ICON_NAME.externalLink } /> GitHub repository
-          </Link>
+          <ExternalLink href="https://github.com/ovh/design-system">
+            GitHub repository
+          </ExternalLink>
         </div>
       </div>
     </div>

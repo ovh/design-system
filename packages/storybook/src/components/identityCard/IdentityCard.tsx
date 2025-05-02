@@ -1,8 +1,8 @@
-import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';
 import { Table } from '@storybook/components';
 import React, { Fragment, type ReactNode } from 'react';
 import { ATOMIC_TYPE } from '../../constants/atomicDesign';
 import { SECTION, STORY } from '../../constants/meta';
+import { ExternalLink } from '../externalLink/ExternalLink';
 import { StorybookLink } from '../storybookLink/StorybookLink';
 import styles from './identityCard.module.css';
 
@@ -66,11 +66,11 @@ const IdentityCard = ({ aliases, atomicType, children, figmaLink, githubUrl, nam
           </th>
 
           <td>
-            <Link className={ styles['identity-card__atomic-link'] }
-                  href={ getAtomicTypeDocUrl(atomicType) }
-                  target="_blank">
-              { atomicType } <Icon name={ ICON_NAME.externalLink } />
-            </Link>
+            <ExternalLink
+              className={ styles['identity-card__atomic-link'] }
+              href={ getAtomicTypeDocUrl(atomicType) }>
+              { atomicType }
+            </ExternalLink>
           </td>
         </tr>
 
@@ -102,17 +102,15 @@ const IdentityCard = ({ aliases, atomicType, children, figmaLink, githubUrl, nam
           </th>
 
           <td>
-            <Link className={ styles['identity-card__app-link'] }
-                     href={ figmaLink }
-                     target="_blank">
-              Design <Icon name={ ICON_NAME.externalLink } />
-            </Link>
+            <ExternalLink className={ styles['identity-card__app-link'] }
+                     href={ figmaLink }>
+              Design
+            </ExternalLink>
 
-            <Link className={ styles['identity-card__app-link'] }
-                     href={ githubUrl }
-                     target="_blank">
-              Github <Icon name={ ICON_NAME.externalLink } />
-            </Link>
+            <ExternalLink className={ styles['identity-card__app-link'] }
+                     href={ githubUrl }>
+              Github
+            </ExternalLink>
           </td>
         </tr>
         </tbody>

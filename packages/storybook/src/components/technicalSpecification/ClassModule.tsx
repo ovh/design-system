@@ -1,7 +1,8 @@
-import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';
+import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import React, { type JSX, useMemo } from 'react';
+import { ExternalLink } from '../externalLink/ExternalLink';
 import { Heading } from '../heading/Heading';
 import { type Component } from '../../helpers/docgen';
 import styles from './classModule.module.css';
@@ -34,7 +35,7 @@ const ClassModule = ({ component, extraInfo }: ClassModuleProp): JSX.Element => 
       {
         extraAttributeInfo &&
         <p>
-          This component extends all the native <Link href={ extraAttributeInfo.url } target="_blank">{ extraAttributeInfo.name } attributes</Link>.
+          This component extends all the native <ExternalLink href={ extraAttributeInfo.url }>{ extraAttributeInfo.name } attributes</ExternalLink>.
         </p>
       }
 

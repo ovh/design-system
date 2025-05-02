@@ -1,5 +1,5 @@
-import { Link } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { HOME_TITLE } from '../../../src/constants/meta';
@@ -40,7 +40,7 @@ For example, if you want to display a vertical list of `Link`, you can override 
 In some case where you cannot use an ODS component, you may want one of your own component to look like an ODS component
 (for example, when using an external library that doesn't allow custom templating).
 
-We did expose a bunch of <Link href="https://sass-lang.com" target="_blank">Sass</Link> mixins that allows you to easily apply the ODS style to your own elements.
+We did expose a bunch of <ExternalLink href="https://sass-lang.com">Sass</ExternalLink> mixins that allows you to easily apply the ODS style to your own elements.
 
 For example, if you need to make an anchor tag looks like a `Link`:
 
@@ -61,7 +61,7 @@ For example, if you need to make an anchor tag looks like a `Link`:
 
 <Heading label="CSS variables" level={ 2 } />
 
-All ODS components are using common design tokens, that are accessible through <Link href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank">CSS variables</Link>.
+All ODS components are using common design tokens, that are accessible through <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">CSS variables</ExternalLink>.
 
 We do advise to reuse those variables on your own style, this way your application will automatically be updated on current
 theme changes or when new themes will be released.

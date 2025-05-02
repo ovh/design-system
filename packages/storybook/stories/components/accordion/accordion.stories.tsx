@@ -1,4 +1,3 @@
-import { Text } from '../../../../ods-react/src/components/text/src';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import {
@@ -8,6 +7,7 @@ import {
   type AccordionProp,
   AccordionTrigger,
 } from '../../../../ods-react/src/components/accordion/src';
+import { Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
@@ -227,34 +227,3 @@ export const Controlled: Story = {
     </Accordion>
   },
 };
-
-export const Nested: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <Accordion>
-      <AccordionItem value="1">
-        <AccordionTrigger>
-          <Text preset="heading-4">My content</Text>
-        </AccordionTrigger>
-        <AccordionContent>
-          <Text preset="paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </Text>
-          <Accordion>
-            <AccordionItem value="2">
-              <AccordionTrigger>
-                <Text preset="heading-6">My sub-content</Text>
-              </AccordionTrigger>
-              <AccordionContent>
-                <Text preset="paragraph">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </Text>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  )
-}
-

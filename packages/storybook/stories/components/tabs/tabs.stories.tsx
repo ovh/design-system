@@ -2,6 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Tabs, TabList, Tab, TabContent,type TabsChangeEvent, type TabsProp } from '../../../../ods-react/src/components/tabs/src';
 import { excludeFromDemoControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<TabsProp>;
 
@@ -44,6 +45,11 @@ export const Overview: Story = {
 
 export const Controlled: Story = {
   tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   render: ({}) => {
     const [value, setValue] = React.useState('tab1');
 

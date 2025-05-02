@@ -30,7 +30,7 @@ function getComponentTypedoc(data: ProjectReflection): ComponentTypedoc {
   const enumDeclarations = filterByKinds(data.children, [ReflectionKind.Enum]);
   const interfaceDeclarations = filterByKinds(data.children, [ReflectionKind.Interface, ReflectionKind.TypeAlias])
     .filter((declaration) => !declaration.name.endsWith('Prop'))
-    .filter((declaration) => declaration.type?.type !== 'union');
+    .filter((declaration) => declaration.type?.type !== 'templateLiteral' && declaration.type?.type !== 'union');
   const unionTypeDeclarations = filterByKinds(data.children, [ReflectionKind.TypeAlias])
     .filter((declaration) => declaration.type && declaration.type.type === 'union');
 

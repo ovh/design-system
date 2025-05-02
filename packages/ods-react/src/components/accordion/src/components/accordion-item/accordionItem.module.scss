@@ -9,8 +9,12 @@
     border-style: solid;
     border-color: transparent;
 
+    &:not(:first-child) {
+      margin-top: -1px;
+    }
+
     &:not([data-disabled]) {
-      &[data-state='closed']:hover {
+      &[data-state='closed']:hover, &:focus-within {
         transition: .3s border-color ease-out;
         border-color: var(--ods-color-primary-200);
       }
@@ -19,7 +23,6 @@
         border-color: var(--ods-color-primary-500);
       }
     }
-
 
     &[data-disabled] {
       @include state.ods-is-disabled();

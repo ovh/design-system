@@ -2,6 +2,7 @@ import { type FormEvent, useRef } from 'react';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '.';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { Textarea } from '../../textarea/src';
+import style from './dev.module.css';
 
 export default {
   component: FormField,
@@ -66,6 +67,24 @@ export const Invalid = () => (
 
     <FormFieldError>
       Some error text
+    </FormFieldError>
+  </FormField>
+);
+
+export const CustomStyle = () => (
+  <FormField className={ style['custom-form-field'] }>
+    <FormFieldLabel className={ style['custom-form-field-label'] }>
+      Custom Styled Field
+    </FormFieldLabel>
+
+    <Textarea placeholder="Type something here..." />
+
+    <FormFieldHelper className={ style['custom-form-field-helper'] }>
+      This form field has custom styling applied
+    </FormFieldHelper>
+
+    <FormFieldError className={ style['custom-form-field-error'] }>
+      This is how a custom styled error would look
     </FormFieldError>
   </FormField>
 );

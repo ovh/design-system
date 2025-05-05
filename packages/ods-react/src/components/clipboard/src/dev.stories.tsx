@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Clipboard, ClipboardControl, ClipboardTrigger } from '.';
+import style from './dev.module.css';
 
 export default {
   component: Clipboard,
@@ -59,3 +60,15 @@ export const Refs = () => {
     <ClipboardTrigger ref={ refTrigger } />
   </Clipboard>;
 };
+
+export const CustomStyle = () => (
+  <Clipboard
+    value="Custom styled clipboard"
+    className={ style['custom-clipboard'] }>
+    <ClipboardControl className={ style['custom-clipboard-control'] } />
+    <ClipboardTrigger
+      className={ style['custom-clipboard-trigger'] }
+      labelCopy="Copy text"
+      labelCopySuccess="Copied!" />
+  </Clipboard>
+);

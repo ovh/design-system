@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '.';
 import { Button } from '../../button/src';
+import style from './dev.module.css';
 
 export default {
   component: Tooltip,
@@ -142,3 +143,14 @@ export const Grid = () => (
     </Tooltip>
   </div>
 );
+
+export const CustomStyle = () => (
+  <Tooltip>
+    <TooltipTrigger className={ style['custom-tooltip-trigger'] }>
+      Show custom tooltip
+    </TooltipTrigger>
+    <TooltipContent className={ style['custom-tooltip-content'] }>
+      This is the tooltip custom content
+    </TooltipContent>
+  </Tooltip>
+)

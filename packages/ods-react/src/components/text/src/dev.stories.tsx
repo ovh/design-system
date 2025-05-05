@@ -1,4 +1,5 @@
 import { Text } from '.';
+import style from './dev.module.css';
 
 export default {
   component: Text,
@@ -25,4 +26,10 @@ export const Presets = () => (
     <Text preset="heading-5">Heading-5</Text>
     <Text preset="heading-6">Heading-6</Text>
   </>
+);
+
+export const CustomStyle = () => (
+  <Text className={ style['custom-text'] }>
+    Custom Style
+  </Text>
 );

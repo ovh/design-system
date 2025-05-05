@@ -10,11 +10,14 @@
 
 .custom-clipboard-control {
   margin-right: 8px;
-  border: 1px solid #ffd700;
+  border: 2px solid #ffd700;
   border-radius: 4px;
   background-color: #fffacd;
-  padding: 4px 8px;
   font-family: monospace;
+}
+
+.custom-clipboard-control input {
+  background-color: transparent;
 }
 
 .custom-clipboard-trigger {

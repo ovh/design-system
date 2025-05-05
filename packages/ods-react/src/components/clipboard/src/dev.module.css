@@ -1,0 +1,33 @@
+.custom-clipboard {
+  display: flex;
+  align-items: center;
+  border: 2px solid #daa520;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #f5f5dc;
+  padding: 8px;
+}
+
+.custom-clipboard-control {
+  margin-right: 8px;
+  border: 1px solid #ffd700;
+  border-radius: 4px;
+  background-color: #fffacd;
+  padding: 4px 8px;
+  font-family: monospace;
+}
+
+.custom-clipboard-trigger {
+  transition: background-color 0.3s ease;
+  border: none;
+  border-radius: 4px;
+  background-color: #daa520;
+  cursor: pointer;
+  padding: 4px 8px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.custom-clipboard-trigger:hover {
+  background-color: #b8860b;
+}

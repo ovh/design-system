@@ -1,0 +1,34 @@
+.custom-form-field {
+  transition: all 0.3s ease;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: #f8f9fa;
+  padding: 16px;
+}
+
+.custom-form-field-label {
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #495057;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.custom-form-field-helper {
+  margin-top: 6px;
+  color: #6c757d;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.custom-form-field-error {
+  margin-top: 6px;
+  border-left: 3px solid #e74c3c;
+  border-radius: 4px;
+  background-color: #fadbd8;
+  padding: 4px 8px;
+  color: #e74c3c;
+  font-weight: bold;
+}

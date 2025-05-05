@@ -1,6 +1,7 @@
 import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel } from '.';
 import { FormField } from '../../form-field/src';
 import { TEXT_PRESET, Text } from '../../text/src';
+import style from './dev.module.css';
 
 export default {
   component: Checkbox,
@@ -100,4 +101,38 @@ export const Group = () => (
       </CheckboxLabel>
     </Checkbox>
   </CheckboxGroup>
+);
+
+export const CustomStyle = () => (
+  <>
+    <h4>Single Checkbox with Custom Style</h4>
+    <Checkbox className={ style['custom-checkbox'] }>
+      <CheckboxControl className={ style['custom-checkbox-control'] } />
+
+      <CheckboxLabel className={ style['custom-checkbox-label'] }>
+        Custom styled checkbox
+      </CheckboxLabel>
+    </Checkbox>
+
+    <h4>Checkbox Group with Custom Style</h4>
+    <CheckboxGroup
+      className={ style['custom-checkbox-group'] }
+      name="custom-group">
+      <Checkbox className={ style['custom-checkbox'] } value="custom1">
+        <CheckboxControl className={ style['custom-checkbox-control'] } />
+
+        <CheckboxLabel className={ style['custom-checkbox-label'] }>
+          Custom checkbox 1
+        </CheckboxLabel>
+      </Checkbox>
+
+      <Checkbox className={ style['custom-checkbox'] } value="custom2">
+        <CheckboxControl className={ style['custom-checkbox-control'] } />
+
+        <CheckboxLabel className={ style['custom-checkbox-label'] }>
+          Custom checkbox 2
+        </CheckboxLabel>
+      </Checkbox>
+    </CheckboxGroup>
+  </>
 );

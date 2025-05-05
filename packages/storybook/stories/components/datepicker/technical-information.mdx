@@ -1,0 +1,50 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsDatepicker from '../../../../ods-react/src/components/datepicker/documentation/datepicker.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as DatepickerStories from './datepicker.stories';
+
+<Meta of={ DatepickerStories } name="Technical information" />
+
+<Banner of={ DatepickerStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ DatepickerStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsDatepicker } of={ DatepickerStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ DatepickerStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ DatepickerStories.Disabled } sourceState="shown" />
+
+<Heading label="Readonly" level={ 3 } />
+
+<Canvas of={ DatepickerStories.Readonly } sourceState="shown" />
+
+<Heading label="Date formatter" level={ 3 } />
+
+<Canvas of={ DatepickerStories.DateFormatter } sourceState="shown" />
+
+<Heading label="Max / Min" level={ 3 } />
+
+<Canvas of={ DatepickerStories.MinMax } sourceState="shown" />
+
+<Heading label="Max view" level={ 3 } />
+
+<Canvas of={ DatepickerStories.MaxView } sourceState="shown" />
+
+<Heading label="Min view" level={ 3 } />
+
+<Canvas of={ DatepickerStories.MinView } sourceState="shown" />
+
+<Heading label="Form field" level={ 3 } />
+
+<Canvas of={ DatepickerStories.InFormField } sourceState="shown" />

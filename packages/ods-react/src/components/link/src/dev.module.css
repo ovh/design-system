@@ -1,3 +1,30 @@
-.ods-link {
-  color: red;
+.custom-link {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  transition: all 0.3s ease;
+  border-bottom: 2px dashed #e74c3c;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  padding: 4px 8px;
+  text-decoration: none;
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.custom-link:hover {
+  transform: translateY(-2px);
+  border-bottom: 2px solid #e74c3c;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f2dede;
+}
+
+.custom-link:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.custom-link-icon {
+  color: #c0392b;
+  font-size: 1.2em;
 }

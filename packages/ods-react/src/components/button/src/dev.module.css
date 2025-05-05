@@ -1,0 +1,14 @@
+.custom-button {
+  transition: all 0.3s ease;
+  border: 2px solid #ff4500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(45deg, #ff6b6b, #ffa5a5);
+  text-transform: uppercase;
+  color: #000;
+  font-weight: bold;
+}
+
+.custom-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}

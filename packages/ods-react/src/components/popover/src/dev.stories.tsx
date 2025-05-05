@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '.';
 import { Button } from '../../button/src';
+import style from './dev.module.css';
 
 export default {
   component: Popover,
@@ -74,13 +75,13 @@ export const Focus = () => (
 );
 
 export const Grid = () => (
-  <div style={{
+  <div style={ {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
     gridTemplateRows: 'repeat(3, 1fr)',
     gap: '20px',
     padding: '200px',
-  }}>
+  } }>
     <Popover position="top-start">
       <PopoverTrigger>
         Top Left
@@ -155,4 +156,17 @@ export const Grid = () => (
       </PopoverContent>
     </Popover>
   </div>
+);
+
+export const CustomStyle = () => (
+  <Popover>
+    <PopoverTrigger className={ style[ 'custom-popover-trigger' ] }>
+      Show custom popover
+    </PopoverTrigger>
+    <PopoverContent className={ style[ 'custom-popover-content' ] }>
+      <div>
+        This is the popover custom styled content
+      </div>
+    </PopoverContent>
+  </Popover>
 );

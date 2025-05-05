@@ -1,8 +1,27 @@
-.custom-modal-body {
-  color: red;
+.custom-modal-content {
+  border: 2px solid #5d76a9;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to bottom, #f5f7fa, #c3cfe2);
+  max-width: 600px;
+  height: auto;
+  max-height: 80vh;
+  overflow: hidden;
 }
 
-.custom-modal-content {
-  height: 90vh;
-  max-height: none;
+.custom-modal-body {
+  position: relative;
+  background: linear-gradient(to bottom, #c3cfe2, #f5f7fa);
+  padding: 24px;
+  color: #2c3e50;
+  font-family: Georgia, serif;
+}
+
+.custom-modal-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  border-top: 1px solid #ddd;
+  background-color: #aaaaaf;
+  padding: 16px 24px;
 }

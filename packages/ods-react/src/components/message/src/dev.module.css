@@ -1,0 +1,9 @@
+.custom-message {
+  position: relative;
+  border: 2px solid #ff9a76;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  padding: 16px;
+  overflow: hidden;
+}

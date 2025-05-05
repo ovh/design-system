@@ -1,4 +1,5 @@
 import { Divider } from '.';
+import style from './dev.module.css';
 
 export default {
   component: Divider,
@@ -7,4 +8,8 @@ export default {
 
 export const Default = () => (
   <Divider />
+);
+
+export const CustomStyle = () => (
+  <Divider className={ style[ 'custom-divider' ] } />
 );

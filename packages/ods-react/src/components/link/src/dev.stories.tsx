@@ -8,14 +8,6 @@ export default {
   title: 'Link dev',
 };
 
-export const CustomStyle = () => (
-  <Link
-    className={ style['ods-link'] }
-    href="#">
-    My link
-  </Link>
-);
-
 export const Default = () => (
   <Link href="#">
     My link
@@ -91,3 +83,33 @@ export const Ref = () => {
     </>
   );
 };
+
+export const CustomStyle = () => (
+  <>
+    <div style={{ marginBottom: '16px' }}>
+      <Link
+        className={ style['custom-link'] }
+        href="#">
+        Custom Styled Link
+      </Link>
+    </div>
+
+    <div style={{ marginBottom: '16px' }}>
+      <Link
+        className={ style['custom-link'] }
+        href="#">
+        <Icon className={ style['custom-link-icon'] } name={ ICON_NAME.arrowLeft } />
+        Link with Left Icon
+      </Link>
+    </div>
+
+    <div>
+      <Link
+        className={ style['custom-link'] }
+        href="#">
+        Link with Right Icon
+        <Icon className={ style['custom-link-icon'] } name={ ICON_NAME.arrowRight } />
+      </Link>
+    </div>
+  </>
+)

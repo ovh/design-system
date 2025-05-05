@@ -1,0 +1,19 @@
+.custom-checkbox {
+  border-radius: 4px;
+  background-color: #f0f8ff;
+  padding: 8px;
+}
+
+.custom-checkbox-control {
+  background-color: #ffcccb;
+}
+
+.custom-checkbox-label {
+  color: #4b0082;
+  font-weight: bold;
+}
+
+.custom-checkbox-group {
+  border: 1px dashed #808080;
+  padding: 12px;
+}

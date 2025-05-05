@@ -1,15 +1,10 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  type AccordionProp,
-  AccordionTrigger,
-} from '../../../../ods-react/src/components/accordion/src';
+import { Accordion, AccordionContent, AccordionItem, type AccordionProp, AccordionTrigger } from '../../../../ods-react/src/components/accordion/src';
 import { Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<AccordionProp>;
 
@@ -204,26 +199,33 @@ export const ItemDisabled: Story = {
 
 export const Controlled: Story = {
   tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   render: ({}) => {
     const [value, setValue] = useState(['0']);
 
-    return <Accordion value={ value } onChange={ (detail) => setValue(detail.value) }>
-      <AccordionItem value="0">
-        <AccordionTrigger>
-          Hello World!
-        </AccordionTrigger>
-        <AccordionContent>
-          Lorem ipsum dolor sit amet.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="1">
-        <AccordionTrigger>
-          Hello World!
-        </AccordionTrigger>
-        <AccordionContent>
-          Lorem ipsum dolor sit amet.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+    return (
+      <Accordion value={ value } onChange={ (detail) => setValue(detail.value) }>
+        <AccordionItem value="0">
+          <AccordionTrigger>
+            Hello World!
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="1">
+          <AccordionTrigger>
+            Hello World!
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    );
   },
 };

@@ -5,6 +5,7 @@ import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { TOOLTIP_POSITIONS, Tooltip, type TooltipProp, TooltipContent, type TooltipContentProp, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<TooltipProp>;
 type DemoArg = Partial<TooltipProp> & Partial<TooltipContentProp> & {
@@ -82,6 +83,11 @@ export const Demo: StoryObj = {
 export const Controlled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   render: ({}) => {
     const [isOpen, setIsOpen] = useState(false);
 

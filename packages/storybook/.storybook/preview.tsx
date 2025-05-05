@@ -76,6 +76,7 @@ const preview: Preview = {
       showPanel: true,
     },
   },
+  tags: ['!test'],
 };
 
 export default preview;

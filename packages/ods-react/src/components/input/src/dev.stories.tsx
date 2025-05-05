@@ -1,5 +1,6 @@
 import { type ChangeEvent, useState } from 'react';
 import { INPUT_TYPE, Input } from '.';
+import style from './dev.module.css';
 
 export default {
   component: Input,
@@ -202,4 +203,43 @@ export const Types = () => (
     <Input type={ INPUT_TYPE.time } placeholder="time" /><br />
     <Input type={ INPUT_TYPE.url } placeholder="url" /><br />
   </>
+);
+
+export const CustomStyle = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <div>
+      <label>Custom Styled Input:</label>
+      <Input
+        className={ style['custom-input'] }
+        placeholder="Type something here..."
+      />
+    </div>
+
+    <div>
+      <label>Custom Styled Input with Clear Button:</label>
+      <Input
+        className={ style['custom-input'] }
+        clearable
+        defaultValue="Clear me!"
+      />
+    </div>
+
+    <div>
+      <label>Custom Styled Search Input:</label>
+      <Input
+        className={ style['custom-input'] }
+        type={ INPUT_TYPE.search }
+        placeholder="Search..."
+      />
+    </div>
+
+    <div>
+      <label>Custom Styled Input with Loading:</label>
+      <Input
+        className={ style['custom-input'] }
+        loading
+        placeholder="Loading..."
+      />
+    </div>
+  </div>
 );

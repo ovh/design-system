@@ -1,4 +1,5 @@
-import { Tabs, TabList, Tab, TabContent } from '.';
+import { Tab, TabContent, TabList, Tabs } from '.';
+import style from './dev.module.css';
 
 export default {
   component: Tabs,
@@ -44,7 +45,7 @@ export const Disabled = () => (
 );
 
 export const OverflowX = () => (
-  <div style={{ width: '300px' }}>
+  <div style={ { width: '300px' } }>
     <Tabs defaultValue="tab1">
       <TabList>
         <Tab value="tab1">Tab 1</Tab>
@@ -74,4 +75,23 @@ export const OverflowX = () => (
       </TabContent>
     </Tabs>
   </div>
+);
+
+export const CustomStyle = () => (
+  <Tabs defaultValue="tab1" className={ style[ 'custom-tabs' ] }>
+    <TabList className={ style[ 'custom-tabs-tablist' ] }>
+      <Tab value="tab1" className={ style[ 'custom-tabs-tablist-tab' ] }>Tab 1</Tab>
+      <Tab value="tab2" className={ style[ 'custom-tabs-tablist-tab' ] }>Tab 2</Tab>
+      <Tab value="tab3" className={ style[ 'custom-tabs-tablist-tab' ] }>Tab 3</Tab>
+    </TabList>
+    <TabContent className={ style[ 'custom-tabs-content' ] } value="tab1">
+      <p>Tab 1 Content</p>
+    </TabContent>
+    <TabContent value="tab2">
+      <p>Tab 2 Content</p>
+    </TabContent>
+    <TabContent value="tab3">
+      <p>Tab 3 Content</p>
+    </TabContent>
+  </Tabs>
 );

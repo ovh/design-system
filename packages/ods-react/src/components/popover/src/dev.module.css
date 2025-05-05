@@ -1,0 +1,19 @@
+.custom-popover-trigger {
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.custom-popover-content {
+  padding: 0;
+}
+
+.custom-popover-content div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  background-color: #dffe81;
+  padding: 20px;
+  width: 200px;
+  height: 100px;
+}

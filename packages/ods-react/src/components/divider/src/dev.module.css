@@ -1,0 +1,19 @@
+.custom-divider {
+  position: relative;
+  margin: 20px 0;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+  height: 4px;
+  overflow: hidden;
+}
+
+.custom-divider::before {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+  width: 100%;
+  height: 100%;
+  content: "";
+}

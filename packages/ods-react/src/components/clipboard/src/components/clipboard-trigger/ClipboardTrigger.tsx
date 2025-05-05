@@ -55,7 +55,7 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
               name={ ICON_NAME.fileCopy } />
           </Button>
         </TooltipTrigger>
-        { !disabled && <TooltipContent className={ style[ 'clipboard__tooltip' ] }>
+        { !disabled && <TooltipContent className={ classNames(style[ 'clipboard__tooltip-success' ], className) }>
           { labelCopy }
         </TooltipContent> }
       </VendorClipboard.Indicator>

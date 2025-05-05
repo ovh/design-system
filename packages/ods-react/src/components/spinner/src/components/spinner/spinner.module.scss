@@ -46,7 +46,7 @@ $spinner-size-lg: 80px;
       fill: var(--ods-color-primary-000);
     }
 
-    > svg {
+    &__svg {
       height: 100%;
       animation: rotate 0.8s infinite linear;
     }

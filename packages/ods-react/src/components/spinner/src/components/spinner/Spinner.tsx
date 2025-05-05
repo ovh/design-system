@@ -4,7 +4,7 @@ import { SPINNER_COLOR, type SpinnerColor } from '../../constants/spinner-color'
 import { SPINNER_SIZE, type SpinnerSize } from '../../constants/spinner-size';
 import style from './spinner.module.scss';
 
-interface SpinnerProp extends ComponentPropsWithRef<'div'> {
+interface SpinnerProp extends ComponentPropsWithRef<'span'> {
   color?: SpinnerColor,
   size?: SpinnerSize,
 }
@@ -16,7 +16,7 @@ const Spinner: FC<SpinnerProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   return (
-    <div
+    <span
       className={ classNames(
         style['spinner'],
         style[`spinner--${color}`],
@@ -27,6 +27,7 @@ const Spinner: FC<SpinnerProp> = forwardRef(({
       role="progressbar"
       { ...props }>
       <svg
+        className={ style['spinner__svg'] }
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg">
         <rect
@@ -52,7 +53,7 @@ const Spinner: FC<SpinnerProp> = forwardRef(({
             transform="translate(238.694 104.932)" />
         </g>
       </svg>
-    </div>
+    </span>
   );
 });
 

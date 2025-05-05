@@ -44,7 +44,7 @@ const SelectControl: FC<SelectControlProp> = forwardRef(({
         </Select.Indicator>
       </Select.Trigger>
 
-      <Select.HiddenSelect id={ fieldContext?.id || id } />
+      <Select.HiddenSelect id={ id || fieldContext?.id } />
     </Select.Control>
   );
 });

@@ -33,5 +33,5 @@ export * from './switch/src';
 export * from './drawer/src';
 export * from './pagination/src';
 export * from './timepicker/src';
-
 export * from './code/src';
+export * from './datepicker/src';

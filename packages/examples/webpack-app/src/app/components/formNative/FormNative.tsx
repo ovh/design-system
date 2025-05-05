@@ -1,6 +1,7 @@
 import {
   Button,
   Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel,
+  Datepicker, DatepickerControl, DatepickerContent,
   FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
   Input,
   Password,
@@ -90,6 +91,20 @@ function FormNative(): ReactElement {
           </Checkbox>
         </FormField>
       </CheckboxGroup>
+
+      <FormField >
+        <FormFieldLabel>
+          Datepicker:
+        </FormFieldLabel>
+
+        <Datepicker
+          name="datepicker"
+          required={ areAllRequired }>
+          <DatepickerControl />
+
+          <DatepickerContent />
+        </Datepicker>
+      </FormField>
 
       <FormField>
         <FormFieldLabel>

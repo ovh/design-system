@@ -1,0 +1,124 @@
+@use '../../../../../style/button';
+@use '../../../../../style/focus';
+@use '../../../../../style/state';
+@use '../datepicker/datepicker.module';
+
+@layer ods-molecules {
+  .datepicker-content {
+    border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-hover-default);
+    border-radius: var(--ods-border-radius-sm);
+    background-color: var(--ods-color-primary-000);
+    padding: 4px;
+
+    &--invalid {
+      border-color: var(--ods-color-form-element-border-critical);
+    }
+
+    &__table {
+      width: calc(datepicker.$ods-datepicker-item-size * 7);
+      table-layout: fixed;
+
+      &__week-day {
+        box-sizing: border-box;
+        width: datepicker.$ods-datepicker-item-size;
+        height: datepicker.$ods-datepicker-item-size;
+        color: var(--ods-color-text);
+        font-size: 1rem;
+        font-weight: 400;
+
+        &[data-disabled] {
+          color: state.$ods-state-is-disabled-text-color;
+        }
+      }
+
+      &__day {
+        &:not(:disabled) {
+          &[data-selected] {
+            &[data-today] {
+              &::after {
+                background-color: var(--ods-color-primary-000);
+              }
+            }
+          }
+
+          &[data-today] {
+            &::after {
+              background-color: var(--ods-color-primary-500);
+
+              &:hover {
+                &::after {
+                  background-color: var(--ods-color-primary-700);
+                }
+              }
+            }
+          }
+        }
+
+        &[data-today] {
+          position: relative;
+
+          &::after {
+            position: absolute;
+            bottom: 3px;
+            border-radius: 50%;
+            background-color: state.$ods-state-is-disabled-text-color;
+            width: 4px;
+            height: 4px;
+            content: "";
+          }
+        }
+
+        &[data-outside-range] {
+          opacity: 0.5;
+        }
+      }
+
+      &__day,
+      &__month,
+      &__year {
+        &:focus-visible {
+          z-index: 2;
+        }
+
+        &:not(:disabled) {
+          &[data-focus] {
+            background-color: var(--ods-color-primary-100);
+            color: var(--ods-color-primary-700);
+          }
+
+          &[data-selected] {
+            background-color: var(--ods-color-primary-800);
+            color: var(--ods-color-primary-000);
+
+            &:focus-visible,
+            &:hover {
+              background-color: var(--ods-color-primary-800);
+              color: var(--ods-color-primary-000);
+            }
+          }
+        }
+
+        &[data-focus] {
+          &:focus-visible {
+            @include focus.ods-focus;
+          }
+
+          &[data-unavailable] {
+            background-color: var(--ods-color-background-disabled-default);
+            color: var(--ods-color-text-disabled-default);
+          }
+        }
+
+        &[data-selected] {
+          background-color: var(--ods-color-background-disabled-default);
+          color: var(--ods-color-text-disabled-default);
+        }
+      }
+
+      &__month,
+      &__year {
+        width: calc(button.$ods-button-size-sm * 7 / 4);
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { type ChangeEvent, useState } from 'react';
 import { Password } from '.';
+import style from './dev.module.css';
 
 export default {
   component: Password,
@@ -36,8 +37,12 @@ export const Clearable = () => {
   return (
     <Password
       clearable
-      onChange={ (e: ChangeEvent<HTMLInputElement>) => { setInputValue(e.target.value)} }
-      onClear={ () => { setInputValue('') } }
+      onChange={ (e: ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.target.value);
+      } }
+      onClear={ () => {
+        setInputValue('');
+      } }
       value={ inputValue } />
   );
 };
@@ -51,7 +56,9 @@ export const ControlledUncontrolled = () => {
       <Password
         clearable
         onChange={ (e: ChangeEvent<HTMLInputElement>) => setControlledValue(e.target.value) }
-        onClear={ () => { setControlledValue('') } }
+        onClear={ () => {
+          setControlledValue('');
+        } }
         value={ controlledValue } />
 
       <br /><br />
@@ -83,4 +90,11 @@ export const DisabledActions = () => (
 
 export const Readonly = () => (
   <Password readOnly />
+);
+
+export const CustomStyle = () => (
+  <Password
+    className={ style[ 'custom-password' ] }
+    placeholder="Custom password"
+  />
 );

@@ -1,4 +1,5 @@
 import { MESSAGE_COLOR, MESSAGE_VARIANT, Message } from '.';
+import style from './dev.module.css';
 
 export default {
   component: Message,
@@ -85,4 +86,13 @@ export const NonDismissible = () => (
   <Message dismissible={ false }>
     Default message
   </Message>
+);
+
+export const CustomStyle = () => (
+  <div style={{ maxWidth: '500px' }}>
+    <Message
+      className={ style['custom-message'] }>
+      This is a message with custom styling applied through CSS modules
+    </Message>
+  </div>
 );

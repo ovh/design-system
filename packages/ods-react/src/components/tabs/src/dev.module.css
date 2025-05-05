@@ -1,0 +1,30 @@
+.custom-tabs {
+  border: 1px solid #6a5acd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #efefef;
+  padding: 10px;
+  width: 300px;
+}
+
+.custom-tabs-tablist {
+  backdrop-filter: brightness(105%);
+  border-radius: 10px 10px 0 0;
+}
+
+.custom-tabs-tablist-tab[aria-selected="true"] {
+  background-color: #cd5ac3;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.custom-tabs-tablist-tab {
+  background-color: #dfdbff;
+}
+
+
+.custom-tabs-content {
+  background-color: #fff;
+  padding: 0;
+}

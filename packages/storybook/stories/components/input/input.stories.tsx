@@ -11,7 +11,7 @@ type DemoArg = Partial<InputProp> & {
 };
 
 const meta: Meta<InputProp> = {
-  argTypes: excludeFromDemoControls(['onClear']),
+  argTypes: excludeFromDemoControls(['maskOption', 'onClear']),
   component: Input,
   title: 'ODS Components/Form elements/Input',
 };

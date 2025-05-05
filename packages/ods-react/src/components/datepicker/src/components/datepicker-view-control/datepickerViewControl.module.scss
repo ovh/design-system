@@ -1,0 +1,7 @@
+@layer ods-molecules {
+  .datepicker-view-control {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+  }
+}

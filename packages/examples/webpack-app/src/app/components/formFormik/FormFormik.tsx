@@ -1,6 +1,7 @@
 import {
   Button,
   Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel,
+  Datepicker, DatepickerControl, DatepickerContent,
   FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
   Input,
   Password,
@@ -19,6 +20,7 @@ import styles from './formFormik.scss';
 type FormData = {
   checkboxAlone: string,
   checkboxGroup: string[],
+  datepicker: Date,
   input: string,
   password: string,
   phoneNumber: string,
@@ -32,6 +34,7 @@ type FormData = {
 const validationSchema = yup.object<FormData>({
   checkboxAlone: yup.string().nullable().required(),
   checkboxGroup: yup.array().of(yup.string()).nullable().required(),
+  datepicker: yup.date().nullable().required(),
   input: yup.string().nullable().required(),
   password: yup.string().nullable().required(),
   phoneNumber: yup.string().nullable().required(),
@@ -47,6 +50,7 @@ function FormFormik(): ReactElement {
     initialValues: {
       checkboxAlone: 'checkbox alone',
       checkboxGroup: ['grouped checkbox 1'],
+      datepicker: new Date(),
       input: 'default input',
       password: 'default password',
       phoneNumber: '',
@@ -119,6 +123,25 @@ function FormFormik(): ReactElement {
           </Checkbox>
         </FormField>
       </CheckboxGroup>
+
+      <FormField invalid={ formik.touched.datepicker && !!formik.errors.datepicker }>
+        <FormFieldLabel>
+          Datepicker:
+        </FormFieldLabel>
+
+        <Datepicker
+          defaultValue={ formik.initialValues.datepicker }
+          name="datepicker"
+          onBlur={ formik.handleBlur }
+          onValueChange={ ({ value }) => {
+            formik.setFieldValue('datepicker', value);
+          }}
+          required={ true }>
+          <DatepickerControl />
+
+          <DatepickerContent />
+        </Datepicker>
+      </FormField>
 
       <FormField invalid={ formik.touched.input && !!formik.errors.input }>
         <FormFieldLabel>

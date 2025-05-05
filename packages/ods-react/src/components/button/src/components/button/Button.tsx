@@ -37,11 +37,11 @@ const Button: FC<ButtonProp> = forwardRef(({
       type={ props.type || 'button' }>
       {
         isLoading &&
-        <div className={ style['button__spinner'] }>
+        <span className={ style['button__spinner'] }>
           <Spinner
             color={ SPINNER_COLOR.neutral }
             size={ size === BUTTON_SIZE.xs ? SPINNER_SIZE.xs : SPINNER_SIZE.sm } />
-        </div>
+        </span>
       }
 
       { children }

@@ -4,6 +4,7 @@ import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/
 import { Select, SelectContent, SelectControl, type SelectControlProp, SelectLabel, type SelectProp } from '../../../../ods-react/src/components/select/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<SelectProp>;
 type DemoArg = Partial<SelectProp> & Partial<SelectControlProp> & {};
@@ -84,6 +85,11 @@ export const Demo: StoryObj = {
 
 export const CustomRenderer: Story = {
   tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   render: ({}) => (
     <Select
       items={[

@@ -84,12 +84,12 @@ export const WithIcon: Story = {
   render: ({}) => (
     <>
       <Link href="https://www.ovhcloud.com">
-        <Icon name="arrow-left" /> Icon Link
+        <Icon name="arrow-left" />Icon Link
       </Link>
 
       <Link style={{ justifySelf: 'right' }}
                href="https://www.ovhcloud.com">
-        Icon Link <Icon name="arrow-right" />
+        Icon Link<Icon name="arrow-right" />
       </Link>
     </>
   ),

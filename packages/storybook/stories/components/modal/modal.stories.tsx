@@ -8,6 +8,7 @@ import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<ModalProp>;
 type DemoArg = Partial<ModalProp> & Partial<ModalContentProp> & {
@@ -200,6 +201,11 @@ export const Colors: Story = {
 
 export const Controlled: Story = {
   tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   render: ({}) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -250,6 +256,11 @@ export const Default: Story = {
 
 export const NonDismissible: Story = {
   tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   render: ({}) => (
     <Modal>
       <ModalTrigger asChild>
@@ -269,6 +280,11 @@ export const NonDismissible: Story = {
 
 export const NonEscapable: Story = {
   tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   render: ({}) => (
     <Modal
       closeOnEscape={ false }

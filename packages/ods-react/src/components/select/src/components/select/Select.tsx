@@ -3,6 +3,11 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useMemo } fr
 import { type SelectGroupItem, type SelectItem, type SelectMultipleMode, type SelectOptionItem, SelectProvider } from '../../contexts/useSelect';
 import { isGroup } from '../../controller/select';
 
+interface SelectValueChangeDetail {
+  items: SelectItem[],
+  value: string[],
+}
+
 interface SelectProp extends ComponentPropsWithRef<'div'> {
   defaultValue?: string | string[],
   disabled?: boolean,
@@ -10,8 +15,10 @@ interface SelectProp extends ComponentPropsWithRef<'div'> {
   invalid?: boolean,
   multiple?: SelectMultipleMode,
   name?: string,
+  onValueChange?: (detail: SelectValueChangeDetail) => void,
   readOnly?: boolean,
   required?: boolean,
+  value?: string[],
 }
 
 const Select: FC<SelectProp> = forwardRef(({
@@ -23,8 +30,10 @@ const Select: FC<SelectProp> = forwardRef(({
   invalid,
   multiple = false,
   name,
+  onValueChange,
   readOnly = false,
   required,
+  value,
   ...props
 }, ref): JSX.Element => {
   const collection = useMemo(() => {
@@ -59,6 +68,7 @@ const Select: FC<SelectProp> = forwardRef(({
         loopFocus={ true }
         multiple={ !!multiple }
         name={ name }
+        onValueChange={ onValueChange }
         positioning={{
           gutter: -1,
           sameWidth: true,
@@ -66,6 +76,7 @@ const Select: FC<SelectProp> = forwardRef(({
         readOnly={ readOnly }
         ref={ ref }
         required={ required }
+        value={ value }
         { ...props }>
         { children }
       </VendorSelect.Root>
@@ -78,4 +89,5 @@ Select.displayName = 'Select';
 export {
   Select,
   type SelectProp,
+  type SelectValueChangeDetail,
 };

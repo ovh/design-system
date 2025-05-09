@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FormField } from '../../form-field/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Select, SelectContent, SelectControl, type SelectCustomGroupRendererArg, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg, SelectLabel } from '.';
@@ -7,6 +8,28 @@ export default {
   component: Select,
   title: 'Select dev',
 };
+
+export const Controlled = () => {
+  const [values, setValues] = useState(['dog']);
+
+  return (
+    <Select
+      items={[
+        { label: 'Dog', value:'dog' },
+        { label: 'Cat', value:'cat', customRendererData: () => 'p' },
+        { label: 'Hamster', value:'hamster' },
+        { label: 'Parrot', value:'parrot' },
+        { label: 'Spider', value:'spider' },
+        { label: 'Goldfish', value:'goldfish' },
+      ]}
+      onValueChange={ ({ value }) => setValues(value) }
+      value={ values }>
+      <SelectLabel>Label</SelectLabel>
+      <SelectControl />
+      <SelectContent />
+    </Select>
+  );
+}
 
 export const CustomCSS = () => (
   <Select

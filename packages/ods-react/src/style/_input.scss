@@ -1,26 +1,26 @@
 @use './focus';
 @use './state';
 
-$ods-input-actions-button-width: 24px;
 $ods-input-actions-padding-right: 4px;
-$ods-input-input-height: var(--ods-form-element-input-height);
-$ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-input-actions-padding-right);
+$ods-input-field-height: var(--ods-form-element-input-height);
 $ods-input-placeholder-color: var(--ods-color-form-element-text-placeholder-default);
 
 @mixin ods-input() {
   box-sizing: border-box;
   border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
   border-radius: var(--ods-border-radius-sm);
-  padding: 4px 8px;
-  height: $ods-input-input-height;
+  padding: 3px 8px;
+  height: $ods-input-field-height;
   color: var(--ods-color-text);
   font-family: inherit;
   font-size: 1rem;
+}
 
-  &::placeholder {
-    color: $ods-input-placeholder-color;
-  }
+@mixin ods-input-error() {
+  border-color: var(--ods-color-form-element-border-critical);
+}
 
+@mixin ods-input-state() {
   &:focus {
     @include focus.ods-focus();
   }
@@ -32,8 +32,4 @@ $ods-input-placeholder-color: var(--ods-color-form-element-text-placeholder-defa
   &:not(:disabled):read-only {
     @include state.ods-is-readonly();
   }
-}
-
-@mixin ods-input-error() {
-  border-color: var(--ods-color-form-element-border-critical);
 }

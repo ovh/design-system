@@ -177,7 +177,7 @@ export const ReadOnly: Story = {
 };
 
 export const Types: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px', alignItems: 'start' }}>{ story() }</div>],
   tags: ['!dev'],
   render: ({}) => (
     <>

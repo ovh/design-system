@@ -20,17 +20,18 @@ const ClipboardControl: FC<ClipboardControlProp> = forwardRef(({
   const { disabled } = useClipboard();
   const { value } = useClipboardContext();
 
-  return <Clipboard.Control asChild>
-    <Input
-      className={ classNames(style[ 'clipboard__input' ], className) }
-      { ...props }
-      disabled={ disabled }
-      readOnly
-      ref={ ref }
-      type={ INPUT_TYPE.text }
-      value={ value }
-    />
-  </Clipboard.Control>;
+  return (
+    <Clipboard.Control asChild>
+      <Input
+        className={ classNames(style[ 'clipboard__input' ], className) }
+        { ...props }
+        disabled={ disabled }
+        readOnly
+        ref={ ref }
+        type={ INPUT_TYPE.text }
+        value={ value } />
+    </Clipboard.Control>
+  );
 });
 
 ClipboardControl.displayName = 'ClipboardControl';

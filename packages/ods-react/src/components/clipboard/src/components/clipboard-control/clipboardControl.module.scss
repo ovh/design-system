@@ -3,14 +3,12 @@
 @layer ods {
   .clipboard {
     &__input {
+      border: none;
       width: inherit;
 
-      input {
-        border: none;
-
-        &:focus {
-          outline: 0;
-        }
+      // This is to enforce specificity, until we manage multiple atomic layers
+      &:not(#\9):focus-within { /* stylelint-disable-line selector-id-pattern */
+        outline: 0;
       }
     }
   }

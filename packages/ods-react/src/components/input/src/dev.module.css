@@ -1,14 +1,13 @@
 .custom-input {
   transition: all 0.3s ease;
-  color: #483d8b;
-  font-family: 'Courier New', monospace;
-}
-
-.custom-input input {  border: 2px solid #6a5acd;
+  border: 2px solid #6a5acd;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   background-color: #f0f8ff;
   padding: 10px 12px;
+  color: #483d8b;
+  font-family: 'Courier New', monospace;
+  font-size: .7rem;
 }
 
 .custom-input:focus {
@@ -21,7 +20,7 @@
   background-color: #e6e6fa;
 }
 
-.custom-input input::placeholder {
+.custom-input > input::placeholder {
   color: #9370db;
   font-style: italic;
 }

@@ -1,9 +1,9 @@
-import { Field } from '@ark-ui/react/field';
+import { Field, useFieldContext } from '@ark-ui/react/field';
 import classNames from 'classnames';
 import { type ChangeEvent, type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
-import { SPINNER_COLOR, Spinner } from '../../../../spinner/src';
+import { SPINNER_COLOR, SPINNER_SIZE, Spinner } from '../../../../spinner/src';
 import { INPUT_MASK_STATE, type InputMaskState } from '../../constants/input-mask-state';
 import { INPUT_TYPE, type InputType } from '../../constants/input-type';
 import { isValueDefined } from '../../controller/input';
@@ -29,6 +29,7 @@ const Input: FC<InputProp> = forwardRef(({
   type = INPUT_TYPE.text,
   ...props
 }, ref): JSX.Element => {
+  const formFieldContext = useFieldContext();
   const inputRef = useRef<HTMLInputElement>(null);
   const [hasValue, setHasValue] = useState(isValueDefined(props.defaultValue) || isValueDefined(props.value));
   const [isMaskOpen, setIsMaskOpen] = useState(maskOption?.initialState === INPUT_MASK_STATE.open);
@@ -55,6 +56,10 @@ const Input: FC<InputProp> = forwardRef(({
     return (maskOption.enable && !isMaskOpen) ? INPUT_TYPE.password : type;
   }, [isMaskOpen, maskOption.enable, type]);
 
+  const hasActions = useMemo(() => {
+    return hasClearButton || hasSearchButton || hasToggleMaskIcon || loading;
+  }, [hasClearButton, hasSearchButton, hasToggleMaskIcon, loading]);
+
   function onChange(e: ChangeEvent<HTMLInputElement>): void {
     props.onChange && props.onChange(e);
     setHasValue(isValueDefined(e.target.value));
@@ -77,66 +82,72 @@ const Input: FC<InputProp> = forwardRef(({
   }
 
   return (
-    <div className={ classNames(style['input'], className) }>
+    <div
+      className={ classNames(
+        style['input'],
+        { [style['input--with-actions']]: hasActions },
+        className,
+      )}
+      data-disabled={ props.disabled ? true : undefined }
+      data-invalid={ formFieldContext?.invalid ? true : undefined }
+      data-readonly={ props.readOnly ? true: undefined }>
       <Field.Input
-        className={ classNames(
-          style['input__field'],
-          { [style['input__field--clearable']]: hasClearButton },
-          { [style['input__field--loading']]: loading },
-          { [style['input__field--search']]: hasSearchButton },
-          { [style['input__field--toggle-mask']]: hasToggleMaskIcon },
-        )}
+        className={ style['input__field'] }
         ref={ inputRef }
         type={ inputType }
         { ...props }
         onChange={ onChange } />
 
-      <div className={ style['input__actions'] }>
-        {
-          loading &&
-          <Spinner
-            className={ style['input__actions__loading'] }
-            color={ props.disabled ? SPINNER_COLOR.neutral : SPINNER_COLOR.primary } />
-        }
+      {
+        hasActions &&
+        <div className={ style['input__actions'] }>
+          {
+            loading &&
+            <Spinner
+              className={ style['input__actions__loading'] }
+              color={ props.disabled ? SPINNER_COLOR.neutral : SPINNER_COLOR.primary }
+              size={ SPINNER_SIZE.xs } />
+          }
 
-        {
-          hasClearButton &&
-          <Button
-            color={ BUTTON_COLOR.neutral }
-            disabled={ props.disabled || props.readOnly }
-            onClick={ onClearClick }
-            size={ BUTTON_SIZE.xs }
-            type="button"
-            variant={ BUTTON_VARIANT.ghost }>
-            <Icon name={ ICON_NAME.xmark } />
-          </Button>
-        }
+          {
+            hasClearButton &&
+            <Button
+              color={ BUTTON_COLOR.neutral }
+              disabled={ props.disabled || props.readOnly }
+              onClick={ onClearClick }
+              size={ BUTTON_SIZE.xs }
+              type="button"
+              variant={ BUTTON_VARIANT.ghost }>
+              <Icon name={ ICON_NAME.xmark } />
+            </Button>
+          }
 
-        {
-          hasToggleMaskIcon &&
-          <Button
-            color={ BUTTON_COLOR.primary }
-            disabled={ props.disabled }
-            onClick={ onToggleMask }
-            size={ BUTTON_SIZE.xs }
-            type="button"
-            variant={ BUTTON_VARIANT.ghost }>
-            <Icon name={ isMaskOpen ? ICON_NAME.eye : ICON_NAME.eyeOff } />
-          </Button>
-        }
+          {
+            hasToggleMaskIcon &&
+            <Button
+              color={ BUTTON_COLOR.primary }
+              disabled={ props.disabled }
+              onClick={ onToggleMask }
+              size={ BUTTON_SIZE.xs }
+              type="button"
+              variant={ BUTTON_VARIANT.ghost }>
+              <Icon name={ isMaskOpen ? ICON_NAME.eye : ICON_NAME.eyeOff } />
+            </Button>
+          }
 
-        {
-          hasSearchButton &&
-          <Button
-            color={ BUTTON_COLOR.primary }
-            disabled={ props.disabled || props.readOnly }
-            size={ BUTTON_SIZE.xs }
-            type="submit"
-            variant={ BUTTON_VARIANT.ghost }>
-            <Icon name={ ICON_NAME.magnifyingGlass } />
-          </Button>
-        }
-      </div>
+          {
+            hasSearchButton &&
+            <Button
+              color={ BUTTON_COLOR.primary }
+              disabled={ props.disabled || props.readOnly }
+              size={ BUTTON_SIZE.xs }
+              type="submit"
+              variant={ BUTTON_VARIANT.ghost }>
+              <Icon name={ ICON_NAME.magnifyingGlass } />
+            </Button>
+          }
+        </div>
+      }
     </div>
   );
 });

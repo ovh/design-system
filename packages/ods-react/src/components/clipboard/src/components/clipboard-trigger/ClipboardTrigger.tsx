@@ -1,4 +1,4 @@
-import { Clipboard as VendorClipboard } from '@ark-ui/react/clipboard';
+import { Clipboard } from '@ark-ui/react/clipboard';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
@@ -20,47 +20,55 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
 }, ref): JSX.Element => {
   const { disabled } = useClipboard();
 
-  return <Tooltip position={ TOOLTIP_POSITION.right }>
-    <VendorClipboard.Trigger asChild>
-      <VendorClipboard.Indicator
-        className={ style[ 'clipboard__copy' ] }
-        copied={
-          <>
-            <TooltipTrigger asChild ref={ ref } {...props}>
-              <Button
-                disabled={ disabled }
-                size={ BUTTON_SIZE.xs }
-                variant={ BUTTON_VARIANT.ghost }
-              >
-                <Icon name={ ICON_NAME.fileCopy } />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent className={ classNames(style[ 'clipboard__tooltip-success' ], className) }>
-              { labelCopySuccess }
-              <Icon
-                className={ style[ 'clipboard__tooltip-success__check' ] }
-                name={ ICON_NAME.check }
-              />
+  return (
+    <Tooltip position={ TOOLTIP_POSITION.right }>
+      <Clipboard.Trigger asChild>
+        <Clipboard.Indicator
+          className={ style[ 'clipboard__copy' ] }
+          copied={
+            <>
+              <TooltipTrigger
+                asChild
+                ref={ ref }
+                { ...props }>
+                <Button
+                  disabled={ disabled }
+                  size={ BUTTON_SIZE.xs }
+                  variant={ BUTTON_VARIANT.ghost }>
+                  <Icon name={ ICON_NAME.fileCopy } />
+                </Button>
+              </TooltipTrigger>
 
+              <TooltipContent className={ classNames(style[ 'clipboard__tooltip-success' ], className) }>
+                { labelCopySuccess }
+                <Icon
+                  className={ style[ 'clipboard__tooltip-success__check' ] }
+                  name={ ICON_NAME.check } />
+              </TooltipContent>
+            </>
+          }>
+          <TooltipTrigger
+            asChild
+            ref={ ref }
+            { ...props }>
+            <Button
+              disabled={ disabled }
+              size={ BUTTON_SIZE.xs }
+              variant={ BUTTON_VARIANT.ghost }>
+              <Icon name={ ICON_NAME.fileCopy } />
+            </Button>
+          </TooltipTrigger>
+
+          {
+            !disabled &&
+            <TooltipContent className={ classNames(style[ 'clipboard__tooltip' ], className) }>
+              { labelCopy }
             </TooltipContent>
-          </>
-        }>
-        <TooltipTrigger asChild ref={ ref } {...props}>
-          <Button
-            disabled={ disabled }
-            size={ BUTTON_SIZE.xs }
-            variant={ BUTTON_VARIANT.ghost }
-          >
-            <Icon
-              name={ ICON_NAME.fileCopy } />
-          </Button>
-        </TooltipTrigger>
-        { !disabled && <TooltipContent className={ classNames(style[ 'clipboard__tooltip' ], className) }>
-          { labelCopy }
-        </TooltipContent> }
-      </VendorClipboard.Indicator>
-    </VendorClipboard.Trigger>
-  </Tooltip>;
+          }
+        </Clipboard.Indicator>
+      </Clipboard.Trigger>
+    </Tooltip>
+  );
 });
 
 ClipboardTrigger.displayName = 'ClipboardTrigger';

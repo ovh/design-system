@@ -3,12 +3,12 @@
   background-color: #4bb2f6;
 }
 
-.custom-password input {
+.custom-password > input {
   background-color: #e9e3ff;
   height: 42px;
   letter-spacing: 2px;
 }
 
-.custom-password input::placeholder {
+.custom-password > input::placeholder {
   color: #0a0065;
 }

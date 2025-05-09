@@ -25,12 +25,11 @@ const Clipboard: FC<ClipboardProp> = forwardRef(({
           style['clipboard'],
           { [style['clipboard--disabled']]: disabled },
           className,
-        ) }
+        )}
         onStatusChange={ onCopy }
         ref={ ref }
         value={ value }
-        { ...props}
-      >
+        { ...props }>
         { children }
       </VendorClipboard.Root>
     </ClipboardContext.Provider>

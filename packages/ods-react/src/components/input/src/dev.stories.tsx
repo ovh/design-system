@@ -1,4 +1,5 @@
 import { type ChangeEvent, useState } from 'react';
+import { FormField, FormFieldLabel } from '../../form-field/src';
 import { INPUT_TYPE, Input } from '.';
 import style from './dev.module.css';
 
@@ -158,53 +159,6 @@ export const ControlledUncontrolled = () => {
   );
 };
 
-export const Datalist = () => (
-  <>
-    <Input list="ice-cream-flavors" />
-
-    <datalist id="ice-cream-flavors">
-      <option value="Chocolate"></option>
-      <option value="Coconut"></option>
-      <option value="Mint"></option>
-      <option value="Strawberry"></option>
-      <option value="Vanilla"></option>
-    </datalist>
-  </>
-);
-
-export const Default = () => (
-  <Input />
-);
-
-export const Disabled = () => (
-  <Input disabled />
-);
-
-export const DisabledActions = () => (
-  <Input
-    clearable
-    defaultValue="value"
-    disabled
-    maskOption={{ enable: true, initialState: 'open' }}
-    type={ INPUT_TYPE.search } />
-);
-
-export const Readonly = () => (
-  <Input readOnly />
-);
-
-export const Types = () => (
-  <>
-    <Input type={ INPUT_TYPE.email } placeholder="email" /><br />
-    <Input type={ INPUT_TYPE.number } placeholder="number" /><br />
-    <Input type={ INPUT_TYPE.password } placeholder="password" /><br />
-    <Input type={ INPUT_TYPE.search } placeholder="search" /><br />
-    <Input type={ INPUT_TYPE.text } placeholder="text" /><br />
-    <Input type={ INPUT_TYPE.time } placeholder="time" /><br />
-    <Input type={ INPUT_TYPE.url } placeholder="url" /><br />
-  </>
-);
-
 export const CustomStyle = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
     <div>
@@ -242,4 +196,65 @@ export const CustomStyle = () => (
       />
     </div>
   </div>
+);
+
+export const Datalist = () => (
+  <>
+    <Input list="ice-cream-flavors" />
+
+    <datalist id="ice-cream-flavors">
+      <option value="Chocolate"></option>
+      <option value="Coconut"></option>
+      <option value="Mint"></option>
+      <option value="Strawberry"></option>
+      <option value="Vanilla"></option>
+    </datalist>
+  </>
+);
+
+export const Default = () => (
+  <Input />
+);
+
+export const Disabled = () => (
+  <Input
+    defaultValue="Disabled"
+    disabled />
+);
+
+export const DisabledActions = () => (
+  <Input
+    clearable
+    defaultValue="value"
+    disabled
+    maskOption={{ enable: true, initialState: 'open' }}
+    type={ INPUT_TYPE.search } />
+);
+
+export const InFormField = () => (
+  <FormField invalid>
+    <FormFieldLabel>
+      My input:
+    </FormFieldLabel>
+
+    <Input loading />
+  </FormField>
+);
+
+export const Readonly = () => (
+  <Input
+    defaultValue="Readonly"
+    readOnly />
+);
+
+export const Types = () => (
+  <>
+    <Input type={ INPUT_TYPE.email } placeholder="email" /><br />
+    <Input type={ INPUT_TYPE.number } placeholder="number" /><br />
+    <Input type={ INPUT_TYPE.password } placeholder="password" /><br />
+    <Input type={ INPUT_TYPE.search } placeholder="search" /><br />
+    <Input type={ INPUT_TYPE.text } placeholder="text" /><br />
+    <Input type={ INPUT_TYPE.time } placeholder="time" /><br />
+    <Input type={ INPUT_TYPE.url } placeholder="url" /><br />
+  </>
 );

@@ -2,8 +2,8 @@ import { NumberInput } from '@ark-ui/react/number-input';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 
 interface QuantityValueChangeDetail {
-    value: string;
-    valueAsNumber: number;
+  value: string;
+  valueAsNumber: number;
 }
 
 interface QuantityProp extends Omit<ComponentPropsWithRef<'div'>, 'inputMode'> {

@@ -2,7 +2,7 @@
 @use '../../../../../style/focus';
 @use '../../../../../style/state';
 
-@layer ods {
+@layer ods-atoms {
   .checkbox-control {
     @include checkbox.ods-checkbox();
 

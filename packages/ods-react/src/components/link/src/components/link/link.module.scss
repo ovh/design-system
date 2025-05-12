@@ -1,7 +1,7 @@
 @use '../../../../../style/link';
 @use '../../../../../style/state';
 
-@layer ods {
+@layer ods-atoms {
   .link {
     $current: &;
 

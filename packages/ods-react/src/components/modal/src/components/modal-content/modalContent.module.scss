@@ -1,7 +1,7 @@
 @use '../../../../../style/modal';
 @include modal.ods-modal-animation();
 
-@layer ods {
+@layer ods-molecules {
   .modal-backdrop {
     @include modal.ods-modal-backdrop();
   }

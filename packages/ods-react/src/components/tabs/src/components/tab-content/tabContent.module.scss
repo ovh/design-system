@@ -1,9 +1,9 @@
 @use '../../../../../style/focus';
 
-@layer ods {
+@layer ods-molecules {
   .tab-content {
     padding: 8px 0;
-    
+
     &:focus-visible {
       @include focus.ods-focus();
 

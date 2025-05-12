@@ -3,6 +3,7 @@
 @layer ods-atoms {
   .textarea {
     @include input.ods-input();
+    @include input.ods-input-state();
 
     height: auto;
     resize: none;

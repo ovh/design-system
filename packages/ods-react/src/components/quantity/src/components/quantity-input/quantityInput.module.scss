@@ -3,6 +3,7 @@
 @layer ods-molecules {
   .quantity-input {
     @include input.ods-input();
+    @include input.ods-input-state();
 
     border-right: 0;
     border-left: 0;

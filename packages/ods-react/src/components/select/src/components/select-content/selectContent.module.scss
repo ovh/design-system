@@ -1,7 +1,7 @@
 @use '../../../../../style/focus';
 @use '../../../../../style/overlay';
 
-@layer ods {
+@layer ods-molecules {
   .select-content {
     z-index: overlay.$ods-overlay-select-z-index;
     border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-hover-default);

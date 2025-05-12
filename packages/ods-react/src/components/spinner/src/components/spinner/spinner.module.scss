@@ -3,7 +3,7 @@ $spinner-size-sm: 24px;
 $spinner-size-md: 48px;
 $spinner-size-lg: 80px;
 
-@layer ods {
+@layer ods-quarks {
   @keyframes rotate {
     from {
       transform: rotate(0);

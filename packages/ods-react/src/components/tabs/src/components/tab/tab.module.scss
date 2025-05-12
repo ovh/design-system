@@ -2,7 +2,7 @@
 @use '../../../../../style/state';
 @use '../tab-list/tabList.module' as tab-list;
 
-@layer ods {
+@layer ods-molecules {
   .tab {
     display: block;
     margin-bottom: -#{tab-list.$tab-list-border-bottom-size};

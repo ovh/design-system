@@ -1,6 +1,6 @@
 @use '../../../../../style/overlay';
 
-@layer ods {
+@layer ods-atoms {
   .popover-content {
     --arrow-size: #{overlay.$ods-overlay-arrow-size};
     --arrow-background: #{overlay.$ods-overlay-arrow-background-color};

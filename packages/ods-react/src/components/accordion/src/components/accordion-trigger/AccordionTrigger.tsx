@@ -15,9 +15,7 @@ const AccordionTrigger: FC<AccordionTriggerProp> = forwardRef(({
     <Accordion.ItemTrigger
       className={ classNames(style[ 'accordion-trigger' ], className) }
       ref={ ref }
-      { ...props }
-    >
-
+      { ...props }>
       <div className={ style[ 'accordion-trigger__content' ] }>
         { children }
       </div>
@@ -25,10 +23,8 @@ const AccordionTrigger: FC<AccordionTriggerProp> = forwardRef(({
       <Accordion.ItemIndicator asChild>
         <Icon
           className={ style[ 'accordion-trigger__icon' ] }
-          name={ ICON_NAME.chevronDown }
-        />
+          name={ ICON_NAME.chevronDown } />
       </Accordion.ItemIndicator>
-
     </Accordion.ItemTrigger>
   );
 });

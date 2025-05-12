@@ -2,7 +2,7 @@
 @use '../../../../../style/state';
 @use "../accordion/accordion.module";
 
-@layer ods {
+@layer ods-atoms {
   .accordion-item {
     display: grid;
     border-width: accordion.$ods-accordion-border-size;

@@ -1,6 +1,6 @@
 @use '../../../../../style/input';
 
-@layer ods {
+@layer ods-atoms {
   .textarea {
     @include input.ods-input();
 

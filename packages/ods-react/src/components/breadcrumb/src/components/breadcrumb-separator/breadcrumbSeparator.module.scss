@@ -1,6 +1,6 @@
 @use '../breadcrumb/breadcrumb.module';
 
-@layer ods {
+@layer ods-molecules {
   .breadcrumb-separator {
     &::after {
       padding: 0 breadcrumb.$breadcrumb-spacing;

@@ -1,6 +1,6 @@
 @use '../../../../../style/text';
 
-@layer ods {
+@layer ods-atoms {
   .radio-group-label {
     @include text.ods-text-label();
   }

@@ -2,7 +2,7 @@
 @use '../../../../../style/radio';
 @use '../../../../../style/state';
 
-@layer ods {
+@layer ods-atoms {
   .radio-control {
     @include radio.ods-radio();
 

@@ -2,7 +2,7 @@
 @use '../../../../../style/input';
 @use '../../../../../style/state';
 
-@layer ods {
+@layer ods-molecules {
   .clipboard {
     @include state.ods-is-readonly();
 

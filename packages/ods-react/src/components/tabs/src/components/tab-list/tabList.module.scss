@@ -1,6 +1,6 @@
 $tab-list-border-bottom-size: 2px;
 
-@layer ods {
+@layer ods-molecules {
   .tab-list {
     display: inline-flex;
     border-bottom: solid $tab-list-border-bottom-size var(--ods-color-neutral-100);

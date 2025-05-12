@@ -1,13 +1,12 @@
 @use '../../../../../style/input';
 
-@layer ods {
+@layer ods-molecules {
   .clipboard {
     &__input {
       border: none;
       width: inherit;
 
-      // This is to enforce specificity, until we manage multiple atomic layers
-      &:not(#\9):focus-within { /* stylelint-disable-line selector-id-pattern */
+      &:focus-within {
         outline: 0;
       }
     }

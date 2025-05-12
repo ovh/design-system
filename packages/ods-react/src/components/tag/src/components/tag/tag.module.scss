@@ -2,10 +2,10 @@
 @use '../../../../../style/state';
 @use '../../../../../style/tag';
 
-@layer ods {
+@layer ods-atoms {
   .tag {
     $tag: &;
-    
+
     @include tag.ods-tag();
 
     &:not(:disabled) {

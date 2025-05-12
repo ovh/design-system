@@ -2,7 +2,7 @@
 @use '../../../../../style/icon';
 @use '../../../../../style/state';
 
-@layer ods {
+@layer ods-molecules {
   .select-option-indicator {
     @include checkbox.ods-checkbox();
 

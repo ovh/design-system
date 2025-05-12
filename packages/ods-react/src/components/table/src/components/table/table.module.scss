@@ -1,6 +1,6 @@
 @use '../../../../../style/table';
 
-@layer ods {
+@layer ods-organisms {
   .table {
     &--sm {
       @include table.ods-table('sm');

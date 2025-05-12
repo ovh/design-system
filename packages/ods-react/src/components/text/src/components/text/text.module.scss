@@ -1,6 +1,6 @@
 @use '../../../../../style/text';
 
-@layer ods {
+@layer ods-quarks {
   .text {
     &--caption {
       @include text.ods-text-caption();

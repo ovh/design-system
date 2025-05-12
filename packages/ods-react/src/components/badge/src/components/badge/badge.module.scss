@@ -1,6 +1,6 @@
 @use '../../../../../style/badge';
 
-@layer ods {
+@layer ods-atoms {
   .badge {
     @include badge.ods-badge();
 

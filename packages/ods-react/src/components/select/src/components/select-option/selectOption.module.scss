@@ -1,7 +1,7 @@
 @use '../../../../../style/input';
 @use '../../../../../style/state';
 
-@layer ods {
+@layer ods-molecules {
   .select-option {
     display: flex;
     gap: 8px;

@@ -2,7 +2,7 @@
 
 $ods-quantity-input-width: 50px;
 
-@layer ods {
+@layer ods-molecules {
   .quantity-control {
     display: inline-grid;
     grid-template-columns: max-content 1fr max-content;

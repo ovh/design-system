@@ -1,6 +1,6 @@
 @use '../../../../../style/input';
 
-@layer ods {
+@layer ods-molecules {
   .quantity-input {
     @include input.ods-input();
 

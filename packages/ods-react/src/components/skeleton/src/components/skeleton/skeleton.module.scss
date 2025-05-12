@@ -1,6 +1,6 @@
 @use '../../../../../style/skeleton';
 
-@layer ods {
+@layer ods-quarks {
   .skeleton {
     @include skeleton.ods-skeleton();
   }

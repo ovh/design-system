@@ -1,6 +1,6 @@
 @use '../../../../../style/modal';
 
-@layer ods {
+@layer ods-molecules {
   .modal-header {
     @include modal.ods-modal-header();
 

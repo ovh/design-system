@@ -1,0 +1,7 @@
+@use '../../../../../style/progress-bar';
+
+@layer ods-atoms {
+  .progress-bar {
+    @include progress-bar.ods-progress-bar();
+  }
+}

@@ -4067,6 +4067,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-progress-bar@workspace:packages/ods-react/src/components/progress-bar":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-progress-bar@workspace:packages/ods-react/src/components/progress-bar"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-quantity@workspace:packages/ods-react/src/components/quantity":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-quantity@workspace:packages/ods-react/src/components/quantity"

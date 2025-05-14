@@ -1,0 +1,53 @@
+@use '../../../../../style/state';
+@use '../file-upload/fileUpload.module';
+
+@layer ods-organisms {
+  .file-upload-dropzone {
+    $dropzone: &;
+
+    display: flex;
+    flex-flow: column;
+    row-gap: fileUpload.$ods-file-upload-spacing;
+    align-items: center;
+    padding: fileUpload.$ods-file-upload-padding fileUpload.$ods-file-upload-padding 0;
+
+    &--disabled {
+      #{$dropzone}__icon {
+        color: state.$ods-state-is-disabled-text-color;
+      }
+    }
+
+    &--dragging {
+      background-color: var(--ods-color-primary-100);
+    }
+
+    &--empty {
+      padding: fileUpload.$ods-file-upload-padding;
+    }
+
+    &__icon {
+      color: var(--ods-color-primary-500);
+      font-size: 2rem;
+    }
+
+    &__rules {
+      display: flex;
+      flex-flow: column;
+      align-self: flex-start;
+      font-size: 0.75rem;
+    }
+
+    &__error {
+      display: flex;
+      flex-flow: column;
+      row-gap: fileUpload.$ods-file-upload-spacing;
+      color: var(--ods-color-critical-500);
+      font-size: 0.75rem;
+      font-weight: 600;
+
+      &__divider {
+        width: 100%;
+      }
+    }
+  }
+}

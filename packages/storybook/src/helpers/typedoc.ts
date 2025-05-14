@@ -1,4 +1,4 @@
-import { type DeclarationReflection, type IntrinsicType, type LiteralType, type ProjectReflection, type ReferenceType, type SomeType, type UnknownType, type UnionType } from 'typedoc';
+import { type DeclarationReflection, type IntrinsicType, type LiteralType, type ProjectReflection, type ReferenceType, type ReflectionType, type SomeType, type UnknownType, type UnionType } from 'typedoc';
 import { ReflectionKind } from 'typedoc/models';
 
 type ComponentTypedoc = {
@@ -65,6 +65,14 @@ function getTypeValue(type?: SomeType): string {
   }
 
   if (type.type === 'array') {
+    if ((type.elementType as ReflectionType).type === 'reflection') {
+      const children = ((type.elementType as ReflectionType).declaration?.children || []).map((child) => {
+        return `${child.name}: ${getTypeValue(child.type)}`;
+      });
+
+      return `{ ${children.join(', ')} }`;
+    }
+
     return `${(type.elementType as ReferenceType).name}[]`;
   }
 

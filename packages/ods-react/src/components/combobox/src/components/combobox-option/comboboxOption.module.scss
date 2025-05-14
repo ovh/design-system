@@ -1,0 +1,45 @@
+@use '../../../../../style/input';
+@use '../../../../../style/state';
+
+@layer ods {
+  .combobox-option {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 8px;
+    min-height: 32px;
+    color: var(--ods-color-text);
+
+    &[data-highlighted] {
+      background-color: var(--ods-color-primary-100);
+    }
+
+    &[data-disabled] {
+      display: none;
+    }
+
+    &[data-state="checked"] {
+      &[data-highlighted] {
+        background-color: var(--ods-color-primary-100);
+      }
+    }
+
+    &--multiple {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+    }
+
+    &--in-group {
+      padding-left: 16px;
+    }
+
+    &--add {
+      border-bottom: 1px solid var(--ods-color-border, #e0e0e0);
+    }
+
+    &--highlighted {
+      font-weight: bold;
+    }
+  }
+}

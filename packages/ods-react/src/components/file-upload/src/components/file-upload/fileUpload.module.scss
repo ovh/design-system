@@ -1,0 +1,23 @@
+@use '../../../../../style/state';
+
+$ods-file-upload-padding: 24px;
+$ods-file-upload-spacing: 8px;
+
+@layer ods-organisms {
+  .file-upload {
+    display: inline-flex;
+    flex-flow: column;
+    border: dashed 1px var(--ods-color-form-element-border-default);
+    border-radius: 4px;
+    overflow: hidden;
+    color: var(--ods-color-text);
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+    }
+
+    &--invalid {
+      border-color: var(--ods-color-form-element-border-critical);
+    }
+  }
+}

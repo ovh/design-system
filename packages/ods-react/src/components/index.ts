@@ -25,5 +25,5 @@ export * from './message/src';
 export * from './radio-group/src';
 export * from './breadcrumb/src';
 export * from './accordion/src';
-
 export * from './progress-bar/src';
+export * from './file-upload/src';

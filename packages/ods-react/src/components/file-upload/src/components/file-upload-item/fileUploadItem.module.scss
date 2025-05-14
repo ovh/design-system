@@ -1,0 +1,42 @@
+@use '../../../../../style/font';
+@use '../../../../../style/state';
+@use '../file-upload/fileUpload.module';
+
+@layer ods-organisms {
+  .file-upload-item {
+    $item: &;
+
+    display: grid;
+    grid-template-columns: max-content 1fr max-content max-content;
+    column-gap: fileUpload.$ods-file-upload-spacing;
+    align-items: center;
+    padding: 0 fileUpload.$ods-file-upload-padding;
+    min-height: 36px;
+    color: var(--ods-color-text);
+
+    &[data-disabled] {
+      color: state.$ods-state-is-disabled-text-color;
+
+      #{$item}__icon {
+        color: state.$ods-state-is-disabled-text-color;
+      }
+    }
+
+    &__icon {
+      color: var(--ods-color-primary-500);
+      font-size: 1.5rem;
+    }
+
+    &__name {
+      @include font.ellipsis();
+    }
+
+    &__size {
+      font-size: 0.75rem;
+    }
+
+    &__status {
+      grid-area: 2 / 2 / 3 / 5;
+    }
+  }
+}

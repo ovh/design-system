@@ -1,0 +1,51 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsFileUpload from '../../../../ods-react/src/components/file-upload/documentation/file-upload.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as FileUploadStories from './file-upload.stories';
+
+<Meta of={ FileUploadStories } name="Technical information" />
+
+<Banner of={ FileUploadStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ FileUploadStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsFileUpload } of={ FileUploadStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ FileUploadStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ FileUploadStories.Disabled } sourceState="shown" />
+
+<Heading label="Custom labels" level={ 3 } />
+
+<Canvas of={ FileUploadStories.CustomLabels } sourceState="shown" />
+
+<Heading label="Accept only specific file type" level={ 3 } />
+
+To limit the file types that can be uploaded, you can use the `accept` attribute.
+
+It works exactly the same as the one from the native <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept" target="_blank">input file</ExternalLink>.
+
+<Canvas of={ FileUploadStories.Accept } sourceState="shown" />
+
+<Heading label="Limit the maximum number of file" level={ 3 } />
+
+<Canvas of={ FileUploadStories.MaxFile } sourceState="shown" />
+
+<Heading label="Limit the maximum size of each file" level={ 3 } />
+
+<Canvas of={ FileUploadStories.MaxSize } sourceState="shown" />
+
+<Heading label="Display upload progress" level={ 3 } />
+
+<Canvas of={ FileUploadStories.Upload } sourceState="shown" />

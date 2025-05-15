@@ -29,7 +29,8 @@
   },
   "dependencies": {
     "@ark-ui/react": "5.9.0",
-    "classnames": "2.5.1"
+    "classnames": "2.5.1",
+    "libphonenumber-js": "1.12.8"
   },
   "peerDependencies": {
     "react": ">=18.2.0",

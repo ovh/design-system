@@ -23,13 +23,12 @@ _A **Card** is a versatile component designed to act as a container for various 
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-28244"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/card"
               name="Card"
-              relatedComponents={ [{ name: 'Medium' }, { name: 'Text' }, { name: 'Tile' },] }>
+              relatedComponents={ [{ name: 'Medium' }, { name: 'Tile' },] }>
   The **Card** component will serve as a flexible container that can be used across different parts of an application
   to display information in a structured manner.
 
   It is designed to be reusable, customizable, and responsive, as it can hold various elements like
-  <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>,
-  <StorybookLink kind={ ODS_COMPONENTS_TITLE.medium } story={ STORY.documentation }>Medium</StorybookLink> and other UI components.
+  text, Medium, and other UI components.
 
   It also provides a consistent layout and styling for presenting information in a visually appealing way.
 </IdentityCard>
@@ -45,7 +44,7 @@ _A **Card** is a versatile component designed to act as a container for various 
 
 A **Card** can be used to:
 
-* display a wide variety of content such as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, a <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> or other elements like a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>
+* display a wide variety of content such as a text, or other elements.
 * emphasize important content
 * visually group related content
 * guide the user toward actions
@@ -65,26 +64,27 @@ All these elements are not mandatory in every **Card**.
 
 <BestPractices
   donts={[
-    '- Overuse Cards since it may confuse users',
-    '- Add too much content in a Card',
-    '- Group Cards that are unlike and use different elements',
+    '- Don’t overuse Card across the UI. They should enhance clarity, not create visual clutter',
+    '- Don’t fill Card with unrelated or excessive content that breaks focus or structure',
+    '- Don’t place too many buttons or CTAs within a single Card. Keep interactions minimal and purposeful',
+    '- Don’t use Card to group inconsistent or unrelated components (e.g., mixing stats, forms, and media arbitrarily)',
+    '- Don’t use Card to group inconsistent or unrelated components (e.g., mixing stats, forms, and media arbitrarily)',
+    '- Don’t make the entire Card clickable unless it’s meant to behave as a single interactive unit',
+    '- Don’t apply inconsistent padding, borders, or elevation. All Cards should follow the same structural rules',
   ]}
   dos={[
-    '- Use Cards sparingly to improve readability',
-    <span>- Use content in a Card, such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, <StorybookLink kind={ ODS_COMPONENTS_TITLE.medium } story={ STORY.documentation }>Medium</StorybookLink> and <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, that are contextually related</span>,
-    <span>- Keep the number of <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> per Card to a minimum</span>,
+    '- Use Card to group related content or actions into a visually distinct, contained block',
+    '- Combine contextually related elements inside a Card (e.g., image, title, text, CTA/Button)',
+    '- Use Card to highlight key content, such as featured items, previews, or summaries',
+    '- Keep the Card layout clean and scannable, using consistent spacing and visual hierarchy',
+    '- Limit the number of interactive elements (e.g., buttons or links)',
+    '- Apply Card when you need to modularize content for dashboards, lists, or repeated patterns',
   ]}
 />
 
 <Heading label="Placement" level={ 2 } />
 
-**Cards** have an automatic width, but they can widen to match the container.
-
 **Cards** that are strongly related can be grouped in a layout group. This group can flow horizontally left to right and/or vertically top to bottom.
-
-<Heading label="Behavior" level={ 2 } />
-
-N/A
 
 <Heading label="Variation" level={ 2 } />
 
@@ -92,7 +92,3 @@ N/A
 
 - **Neutral**: displaying standard content without conveying any particular status or urgency, maintaining a balanced and non-emphatic appearance.
 - **Primary**: displaying highlighted content with particular emphasis.
-
-<Heading label="Accessibility" level={ 2 } />
-
-N/A

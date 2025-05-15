@@ -27,8 +27,7 @@ _A **Tag** component is used to display keywords or categories, with a removal f
   The **Tag** component is a small UI element used to represent metadata, keywords, categories, or other contextual
   information.
 
-  **Tags** are removable and can include an <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation } >Icon</StorybookLink> as
-  additional prefix element.
+  **Tags** are removable and can include an Icon as additional prefix element.
 
   They are commonly used in interfaces for categorizing content, filtering, and adding contextual details.
 </IdentityCard>
@@ -53,11 +52,17 @@ Ensure that **Tags** are clearly labelled and easily distinguishable from other 
 
 <BestPractices
   donts={[
-    '- Use Tag if the user cannot interact with it',
+    '- Don’t use a Tag if there is no interaction expected, prefer the Badge component instead',
+    '- Don’t use full sentences or long text in a Tag label',
+    '- Don’t mix Tags with different behaviors (e.g., some removable, some static) unless necessary and clearly indicated',
+    '- Don’t use Tags as primary action triggers (e.g., "Submit", "Save"), use Buttons instead',
   ]}
   dos={[
-    '- The label must be short and clear',
-    '- Tags should always include a label. These can represent search terms, filters, or keywords',
+    '- Use Tags to represent interactive labels such as filters, categories, or user-defined keywords',
+    '- Ensure the label is short, descriptive, and scannable, aim for 1–2 words',
+    '- Use Tags in search contexts, facet filtering, or content classification',
+    '- Allow Tags to be removable or toggleable if the interaction requires it (e.g., deselecting a filter)',
+    '- Keep visual distinction between Tags (interactive) and Badges (static)',
   ]}
 />
 
@@ -65,19 +70,13 @@ Ensure that **Tags** are clearly labelled and easily distinguishable from other 
 
 Since it provides extra information to a sibling element, in can be used inside components in various places, referring to the nature of its environment.
 
-**Tags** have an automatic width, but they can widen to match the container.
-
 Multiple **Tags** can be displayed:
 - on a single line
 - stacked vertically
 
-**Tags** main content is left-aligned, the closing <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation } >Icon</StorybookLink> is fixed at the right hand of it.
-
 <Heading label="Behavior" level={ 2 } />
 
 **Tags** can be hovered, focused and disabled.
-
-A click/keypress on the whole component should trigger a removal event (if not disabled).
 
 <Heading label="Variation" level={ 2 } />
 
@@ -94,7 +93,16 @@ A click/keypress on the whole component should trigger a removal event (if not d
 - **Medium** _(default)_: main size for displaying **Tags**.
 - **Large**: highlighting important labels or metadata with greater visibility and emphasis, making them easily noticeable to users.
 
-<Heading label="Accessibility" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-**Tags** follow the same focusing/keyboard navigation as <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation } >Button</StorybookLink>.
+<Heading label="Focus Management" level={ 3 } />
 
+The **Tag** component is focusable and follows the same keyboard interactions as the Button component.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Tab` moves focus to the **Tag**.
+
+Pressing `Enter` or `Space` triggers the assigned action: removing the **Tag**.
+
+Pressing `Shift` + `Tab` moves focus to the previous interactive element.

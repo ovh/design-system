@@ -24,7 +24,7 @@ _**Password** component is an <StorybookLink kind={ ODS_COMPONENTS_TITLE.input }
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/password"
               name="Password"
               relatedComponents={ [{ name: 'Form Field', subtitle: 'Form elements' }, { name: 'Input', subtitle: 'Form elements' }] }>
-  The **Password** component is an **Input** field of which the content is replaced with middle dot symbol symbols "·" by default and
+  The **Password** component is an Input field of which the content is replaced with middle dot symbol symbols "·" by default and
   the masking can be toggled using a show/hide action.
 </IdentityCard>
 
@@ -34,8 +34,8 @@ _**Password** component is an <StorybookLink kind={ ODS_COMPONENTS_TITLE.input }
 
 1. **Placeholder**: it provides hints or example of what user should type
 2. **Container**: it is a container where the user can type in
-3. **Clear action**: a `close` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> so that user can clear the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> content (optional)
-4. **Show/hide action**: an `eye` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> to toggle between masked or visible <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> content
+3. **Clear action**: a `close` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> so that user can clear the Input field content (optional)
+4. **Show/hide action**: an `eye` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> to toggle between masked or visible Input field content
 
 <Heading label="Usage" level={ 2 } />
 
@@ -49,32 +49,55 @@ It can also be used for displaying tokens.
 
 <BestPractices
   donts={[
-    <span>- Use a Password when you need the text users enter to be only visible. You should use an <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> instead</span>,
+    '- Don’t use the Password component when users need to see what they’re typing by default, use a standard Input instead',
+    '- Don’t hide the label. Users should always know what the Password field is for',
+    '- Don’t use Passwords for non-sensitive or public information; this could cause unnecessary friction',
+    '- Don’t rely only on placeholders to communicate password requirements',
+    '- Don’t remove the toggle visibility option unless there is a strong security or UX reason to do so',
   ]}
   dos={[
-    '- Use a Password when user has to enter sensitive data in the field',
-    '- Use read-only Password for tokens with copyable action enabled',
+    '- Use the Password component for sensitive inputs, such as login credentials, tokens, or API keys',
+    '- Use the read-only mode for displaying generated tokens or credentials that users may need to copy, without editing',
+    '- Pair Password fields with clear labels and helper texts for expected format or complexity requirements',
   ]}
 />
 
 <Heading label="Placement" level={ 2 } />
 
-By default, the **Password** content is left-aligned in its container.
+**Password** should be vertically aligned with other form components on a same page.
 
 <Heading label="Behavior" level={ 2 } />
 
-By default, the **Password** content is masked.
+**Password** can be used in read-only mode, especially for displaying sensitive tokens.
 
-**Password** can be used as read-only (especially for tokens).
+Users can toggle the password masking (show/hide) by clicking an action button. The selected visibility state remains until the user clicks again.
 
-The password masking toggled using show/hide action is permanent. Users have to click again to show/hide the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> content.
+**Password** supports a clear action to quickly reset its content.
 
-It inherits events from <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> component.
+A loading state (spinner) can be displayed inside the field when needed, for example during validation or processing.
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+<Heading label="Focus Management" level={ 3 } />
 
-<Heading label="Accessibility" level={ 2 } />
+When tabbing through the page, the Password field receives focus as part of the natural tab order.
 
-Password shares the same keyboard features as <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> (focusing + icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>)
+If present, the clear button is focusable immediately after the Password field.
+
+If present, the toggle mask button (show/hide password) is focusable after the clear button.
+
+If the Password field is read-only, it can still receive focus but cannot be edited.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Tab` moves focus forward.
+
+Pressing `Shift` + `Tab` moves focus backward to the previous interactive element.
+
+Pressing any character key while the Password field is focused enters text into the field (unless it is read-only).
+
+Pressing `Backspace` deletes the last character before the cursor position.
+
+Pressing `Enter` while the clear button is focused clears the Password content.
+
+Pressing `Enter` while the toggle mask button is focused toggles between showing and hiding the field content.

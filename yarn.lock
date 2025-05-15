@@ -4065,6 +4065,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-phone-number@workspace:packages/ods-react/src/components/phone-number":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-phone-number@workspace:packages/ods-react/src/components/phone-number"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-popover@workspace:packages/ods-react/src/components/popover":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-popover@workspace:packages/ods-react/src/components/popover"
@@ -4467,6 +4473,7 @@ __metadata:
     jest: 29.7.0
     jest-puppeteer: 10.0.1
     jest-transform-stub: 2.0.0
+    libphonenumber-js: 1.12.8
     puppeteer: 22.15.0
     react: 18.2.0
     react-dom: 18.2.0
@@ -14923,6 +14930,13 @@ __metadata:
     prelude-ls: ^1.2.1
     type-check: ~0.4.0
   checksum: 12c5021c859bd0f5248561bf139121f0358285ec545ebf48bb3d346820d5c61a4309535c7f387ed7d84361cf821e124ce346c6b7cef8ee09a67c1473b46d0fc4
+  languageName: node
+  linkType: hard
+
+"libphonenumber-js@npm:1.12.8":
+  version: 1.12.8
+  resolution: "libphonenumber-js@npm:1.12.8"
+  checksum: b3a50a9b5f63e43ad368ea88712a1d6cf38f7b26c01fdafb0c114e4c2f977fb1a7c19303bf09ce89680b8acfbbfaf127e848550999b43628c9d1573c816d68d5
   languageName: node
   linkType: hard
 

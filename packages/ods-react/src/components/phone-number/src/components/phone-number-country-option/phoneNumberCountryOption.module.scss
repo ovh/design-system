@@ -1,0 +1,8 @@
+@layer ods-organisms {
+  .phone-number-country-option {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 8px;
+    white-space: nowrap;
+  }
+}

@@ -4,6 +4,7 @@ import {
   FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
   Input,
   Password,
+  PhoneNumber, PhoneNumberControl, PhoneNumberCountryList,
   Quantity, QuantityControl, QuantityInput,
   Radio, RadioControl, RadioLabel, RadioGroup, RadioGroupLabel,
   Select, SelectContent, SelectControl,
@@ -18,6 +19,7 @@ type FormData = {
   checkboxGroup: string[],
   input: string,
   password: string,
+  phoneNumber: string,
   quantity: string,
   radioGroup: string,
   select: string,
@@ -29,6 +31,7 @@ const defaultValue: FormData = {
   checkboxGroup: ['grouped checkbox 1'],
   input: 'default input',
   password: 'default password',
+  phoneNumber: '',
   quantity: '42',
   radioGroup: '',//radio 1',
   select: 'cat',
@@ -42,6 +45,7 @@ function FormHookForm(): ReactElement {
     handleSubmit,
     register,
     reset,
+    setError,
     setValue,
   } = useForm<FormData>({
     defaultValues: defaultValue,
@@ -169,6 +173,36 @@ function FormHookForm(): ReactElement {
           Error while filling password
         </FormFieldError>
       </FormField>
+
+      <Controller
+        control={ control }
+        name="phoneNumber"
+        render={ ({ field }) => (
+          <FormField invalid={ !!errors.phoneNumber }>
+            <FormFieldLabel>
+              Phone number:
+            </FormFieldLabel>
+
+            <PhoneNumber
+              defaultCountry="fr"
+              defaultValue={ defaultValue.phoneNumber }
+              onValueChange={ ({ isValid, parsingError, value }) =>
+                isValid ? setValue(field.name, value) : setError(field.name, { message: parsingError }) }
+              required={ areAllRequired }>
+              <PhoneNumberCountryList />
+
+              <PhoneNumberControl clearable />
+            </PhoneNumber>
+
+            <FormFieldHelper>
+              This is a phone number to fill
+            </FormFieldHelper>
+
+            <FormFieldError>
+              Error while filling phone number
+            </FormFieldError>
+          </FormField>
+        )} />
 
       <Controller
         control={ control }

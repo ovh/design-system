@@ -4,6 +4,7 @@ import {
   FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
   Input,
   Password,
+  PhoneNumber, PhoneNumberControl, PhoneNumberCountryList,
   Quantity, QuantityControl, QuantityInput,
   Radio, RadioControl, RadioLabel, RadioGroup, RadioGroupLabel,
   Select, SelectContent, SelectControl,
@@ -126,6 +127,30 @@ function FormNative(): ReactElement {
 
         <FormFieldError>
           Error while filling password
+        </FormFieldError>
+      </FormField>
+
+      <FormField>
+        <FormFieldLabel>
+          Phone number:
+        </FormFieldLabel>
+
+        <PhoneNumber
+          defaultCountry="fr"
+          defaultValue="+33612345678"
+          name="phone-number"
+          required={ areAllRequired }>
+          <PhoneNumberCountryList />
+
+          <PhoneNumberControl clearable />
+        </PhoneNumber>
+
+        <FormFieldHelper>
+          This is a phone number to fill
+        </FormFieldHelper>
+
+        <FormFieldError>
+          Error while filling phone number
         </FormFieldError>
       </FormField>
 

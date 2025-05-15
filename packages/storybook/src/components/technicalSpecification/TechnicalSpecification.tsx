@@ -90,10 +90,11 @@ const TechnicalSpecification = ({ data, extraInfo, of }: Props): JSX.Element => 
                 <Heading label={ interfaceObj.name }
                          level={ 3 } />
 
-                <ul className={ styles['technical-specification__unions__keys'] }>
+                <ul className={ styles['technical-specification__interfaces__keys'] }>
                   {
                     interfaceObj.props.map((prop, i) => (
-                      <li key={ i }>
+                      <li className={ styles['technical-specification__interfaces__keys__item'] }
+                          key={ i }>
                         <CodeOrSourceMdx>
                           { prop.name }: { prop.type }
                         </CodeOrSourceMdx>
@@ -116,7 +117,8 @@ const TechnicalSpecification = ({ data, extraInfo, of }: Props): JSX.Element => 
           <ul className={ styles['technical-specification__unions__keys'] }>
             {
               unions.map((union, idx) => (
-                <li key={ idx }>
+                <li className={ styles['technical-specification__unions__keys__item'] }
+                    key={ idx }>
                   <CodeOrSourceMdx>
                     { union.name } = { union.value }
                   </CodeOrSourceMdx>

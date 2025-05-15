@@ -1,0 +1,11 @@
+@layer ods-organisms {
+  .phone-number-control {
+    width: inherit;
+    font-weight: inherit;
+
+    &--adjoined {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}

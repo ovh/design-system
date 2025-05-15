@@ -1,0 +1,11 @@
+.custom-phone-number {
+  width: 600px;
+}
+
+.custom-phone-number-country-list [data-part="trigger"] {
+  background-color: #dffe81;
+}
+
+.custom-phone-number-control {
+  background-color: #73e3ff;
+}

@@ -4,6 +4,7 @@ import {
   FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
   Input,
   Password,
+  PhoneNumber, PhoneNumberControl, PhoneNumberCountryList,
   Quantity, QuantityControl, QuantityInput,
   Radio, RadioControl, RadioLabel, RadioGroup, RadioGroupLabel,
   Select, SelectContent, SelectControl,
@@ -19,6 +20,7 @@ type FormData = {
   checkboxGroup: string[],
   input: string,
   password: string,
+  phoneNumber: string,
   quantity: string,
   radioGroup: string,
   select: string,
@@ -30,6 +32,7 @@ const validationSchema = yup.object<FormData>({
   checkboxGroup: yup.array().of(yup.string()).nullable().required(),
   input: yup.string().nullable().required(),
   password: yup.string().nullable().required(),
+  phoneNumber: yup.string().nullable().required(),
   quantity: yup.string().nullable().required(),
   radioGroup: yup.string().nullable().required(),
   select: yup.string().nullable().required(),
@@ -43,6 +46,7 @@ function FormFormik(): ReactElement {
       checkboxGroup: ['grouped checkbox 1'],
       input: 'default input',
       password: 'default password',
+      phoneNumber: '',
       quantity: '42',
       radioGroup: '',
       select: 'cat',
@@ -153,6 +157,40 @@ function FormFormik(): ReactElement {
 
         <FormFieldError>
           Error while filling password
+        </FormFieldError>
+      </FormField>
+
+      <FormField invalid={ formik.touched.phoneNumber && !!formik.errors.phoneNumber }>
+        <FormFieldLabel>
+          Phone number:
+        </FormFieldLabel>
+
+        <PhoneNumber
+          defaultCountry="fr"
+          defaultValue={ formik.initialValues.phoneNumber }
+          name="phoneNumber"
+          onValueChange={ ({ isValid, parsingError, value }) => {
+            if (isValid) {
+              formik.setFieldValue('phoneNumber', value);
+            } else {
+              formik.setFieldValue('phoneNumber', '');
+              formik.setFieldError('phoneNumber', parsingError);
+            }
+          }}
+          required={ true }>
+          <PhoneNumberCountryList />
+
+          <PhoneNumberControl
+            clearable
+            onBlur={ formik.handleBlur } />
+        </PhoneNumber>
+
+        <FormFieldHelper>
+          This is a phone number to fill
+        </FormFieldHelper>
+
+        <FormFieldError>
+          Error while filling phone number
         </FormFieldError>
       </FormField>
 

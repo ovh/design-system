@@ -27,3 +27,4 @@ export * from './breadcrumb/src';
 export * from './accordion/src';
 export * from './progress-bar/src';
 export * from './file-upload/src';
+export * from './phone-number/src';

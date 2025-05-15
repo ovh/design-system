@@ -38,20 +38,29 @@ _The **Text** component is used to display and style text content within an appl
 
 <Heading label="Usage" level={ 2 } />
 
-**Text** component is used to standardize the text in a specific style without worrying about browser compatibility issues.
+The **Text** component provides predefined text styles (font size, color, weight, etc.) to ensure visual consistency across the application.
 
-It brings clarity in a page by displaying content as clearly and efficiently as possible.
+It is ideal when you want to apply a ready-made text style from the OVHcloud Design System without manually setting typography values.
 
-All texts in a **Text** component inherit from a common theme system.
+It is not meant for custom typography needs like overriding styles to match a specific heading or layout.
+
+If the available presets don't fit your use case, use the appropriate semantic HTML tag with your own styling instead.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    '- Skip heading levels',
+    '- Don’t skip heading levels (e.g., using heading-3 directly after heading-1), this harms accessibility and user comprehension',
+    '- Don’t override the semantic tag of a preset (e.g., using heading-2 styled as a div)',
+    '- Don’t use Text components just to apply a visual style, consider whether semantic meaning is appropriate',
+    '- Don’t use too many different font sizes and weights on a single view, it creates visual noise and weakens the hierarchy',
   ]}
   dos={[
-    '- Use a consistent heading hierarchy',
+    '- Use Text presets to ensure visual and semantic consistency across your UI',
+    '- Respect a logical heading hierarchy (e.g., h2 follows h1, etc.) for accessibility and SEO',
+    '- Use Text component to convey meaning and structure, not only appearance',
+    '- Choose the appropriate preset for readability and emphasis, depending on the context',
+    '- Ensure sufficient color contrast between text and background for readability and accessibility',
   ]}
 />
 
@@ -67,9 +76,9 @@ Based on its informational manner, the **Text** default behavior is being read-o
 
 The user can only select its content if needed.
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+The **Text** component is non-interactive and does not receive keyboard focus. It is purely visual and serves to display textual content without affecting keyboard navigation.
 
 <Heading label="Accessibility" level={ 2 } />
 

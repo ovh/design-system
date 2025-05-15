@@ -23,7 +23,7 @@ _**Popover** component is triggered by click and is used to provide additional i
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-8447"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/popover"
               name="Popover"
-              relatedComponents={ [{ name: 'Button' }, { name: 'Text' }] }>
+              relatedComponents={ [{ name: 'Button' }] }>
   A **Popover** will provide additional information to the user in a clear and concise way.
 
   It is commonly used to appear by click, thus crucial information should not be displayed in the **Popover**.
@@ -33,33 +33,38 @@ _**Popover** component is triggered by click and is used to provide additional i
 
 ![Component anatomy](components/popover/anatomy.png "Component anatomy")
 
-1. **Container**: main container that has all content (i.e <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, etc.)
+1. **Container**: main container that has all content (e.g., text, Button, etc.)
 2. **Arrow tip** (optional)
 
 <Heading label="Usage" level={ 2 } />
 
 A **Popover** is used to provide an explanation for a user interface element.
 
-It can include interactive elements such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> or <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink>.
+It can include interactive elements such as Button or Link.
 
 <Heading label="Tooltip vs Popover" level={ 3 } />
 
 - Both components look similar but a <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink> is displayed on hover and focus while a **Popover** is triggered by click.
-- <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink> are commonly used for shorter explanations, while longer <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> / complex UIs would suit **Popovers** better.
-- Use a **Popover** when you need to insert interactive elements such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>.
-- A **Popover** can be dismissed if an action <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> allows it.
+- Tooltips are commonly used for shorter explanations, while longer text / complex UIs would suit **Popovers** better.
+- Use a **Popover** when you need to insert interactive elements such as Button.
+- A **Popover** can be dismissed if an action button allows it.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    '- Write very important information within a Popover since it is only displayed by click so the user might miss its crucial content',
-    '- Insert rich information such as image in a Popover',
-    '- Overlap the Popover\'s trigger element with the Popover itself when it has been triggered',
+    '- Don’t place critical or mandatory information inside a Popover. Users may miss it since it’s only revealed on click',
+    '- Don’t overload a Popover with rich content like images, videos, or large interactive components. Use a Modal or Drawer instead',
+    '- Don’t trigger a Popover from non-obvious elements, the interactive element should clearly indicate it controls a Popover',
+    '- Don’t rely on Popovers for persistent content since they’re meant to be transient and dismissible',
+    '- Don’t use a Popover on elements that are already part of another complex interaction',
   ]}
   dos={[
-    <span>- Use a Popover instead of a <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink> when the <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> is long; but keep it concise</span>,
-    <span>- Write Popover's <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> as full sentences with punctuation</span>,
+    '- Use a Popover to display contextual information or options that are secondary to the main task',
+    '- Prefer Popover over Tooltip when the content is longer, interactive, or requires formatting (but keep it focused)',
+    '- Write Popover content using complete sentences',
+    '- Ensure the Popover is positioned clearly and does not overlap with its trigger element',
+    '- Use Popover for lightweight content such as field explanations, secondary actions',
   ]}
 />
 
@@ -73,17 +78,24 @@ It can include interactive elements such as <StorybookLink kind={ ODS_COMPONENTS
 
 By default, a **Popover** is hidden to the user.
 
-It triggers when the user clicks on the **Popover**'s trigger element such as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>.
+It triggers when the user clicks on the **Popover**'s trigger element such as a button.
 
 The **Popover** can be closed or dismissed by clicking anywhere on the page outside the **Popover**'s container.
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+<Heading label="Focus Management" level={ 3 } />
 
-<Heading label="Accessibility" level={ 2 } />
+Depending on the **Popover** trigger used (e.g., a Button or a Link), refer to that component’s documentation for its keyboard interaction.
 
-When visible, **Popover** gains the user's focus.
+When the **Popover** is opened, it gains focus automatically. Focus remains within the **Popover** until it is closed.
 
-- `Escape` closes the currently opened **Popover**
-- `Tab` allows to focus in inner **Popover** content
+Closing it returns focus to the trigger element.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Escape` closes the currently opened **Popover**.
+
+Pressing `Tab` moves focus forward through the focusable elements inside the **Popover**.
+
+Pressing `Shift` + `Tab` moves focus backward within the **Popover**.

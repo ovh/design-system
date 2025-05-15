@@ -46,32 +46,38 @@ It brings clarity to a layout by dividing content in proximity.
 
 <BestPractices
   donts={[
-    '- Use a Divider with a line separator above a header / a section title',
-    '- Use Divider sparingly on a page',
-    '- Overuse Divider on a page, so it won\'t create unnecessary noise',
+    '- Don’t place a Divider above section titles or headers, it breaks natural reading flow',
+    '- Don’t overuse Dividers on a single page, too many can create visual noise and clutter',
+    '- Don’t use Divider as a primary layout mechanism, prefer spacing, grouping, or cards for structure',
+    '- Don’t rely on Divider to fix unclear content grouping, improve the layout or hierarchy instead',
+    '- Don’t use Divider when spacing alone is sufficient to separate elements',
+    '- Don’t apply inconsistent styling (e.g., thickness, color) that breaks the visual consistency of the interface',
   ]}
   dos={[
-    '- Use Divider to separate two elements',
-    '- Use a Divider as a substitute for styled semantic sectioning HTML (for example borders)',
-    '- A Divider with a line separator might be used below a header / a section title',
+    '- Use a Divider to visually separate content into meaningful sections or groups',
+    '- Place a Divider below section titles or headers to emphasize hierarchy and structure',
+    '- Use Divider to indicate content boundaries without relying solely on spacing or background changes',
+    '- Keep Divider usage subtle and consistent across the layout to preserve clarity',
   ]}
 />
 
 <Heading label="Placement" level={ 2 } />
 
-The **Divider** has to be used to create a separation between two elements and to separate the contents of a page.
+Use **Divider** between closely related content blocks or UI elements to enhance readability without adding visual noise.
 
-The **Divider** can also be used inside components to create separation between a set of sections.
-
-<Heading label="Behavior" level={ 2 } />
-
-N/A
+It works well in layouts like sidebars, menus, or cards to separate sections clearly.
 
 <Heading label="Variation" level={ 2 } />
 
-The horizontal line separator has a fixed height of 1 pixel.
- `Spacing` around **Divider** can be defined in a referential from "0" to "10", depending on the spacing required between two elements.
+<Heading label="Spacing" level={ 3 } />
 
-<Heading label="Accessibility" level={ 2 } />
+It can be adjusted around the **Divider** to match the layout and visual rhythm of the content.
 
-N/A
+<Heading label="Color" level={ 3 } />
+
+* **Light** (default): used on dark or colored backgrounds to maintain contrast
+* **Dark**: used on light backgrounds for clear, subtle separation
+
+<Heading label="Navigation" level={ 2 } />
+
+The **Divider** component is purely visual and does not receive keyboard focus. It serves as a separator between content sections and does not impact keyboard navigation.

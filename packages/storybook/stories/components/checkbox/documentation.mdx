@@ -23,7 +23,7 @@ _**Checkbox** are used for a list of options where the user may make a choice by
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-28514"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/checkbox"
               name="Checkbox"
-              relatedComponents={ [{ name: 'Text' }] }>
+              relatedComponents={ [] }>
   **Checkbox** are used to make a choice that must be confirmed by submitting a form. For an instantaneous choice
   (without submit), the use of a switch is preferred (see Switch).
 </IdentityCard>
@@ -33,7 +33,7 @@ _**Checkbox** are used for a list of options where the user may make a choice by
 ![Component anatomy](components/checkbox/anatomy.png "Component anatomy")
 
 1. **Checkbox** - The selection control.
-2. **Text** - Use this <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> label to describe what the <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } story={ STORY.documentation }>Radio</StorybookLink> is for.
+2. **Label** to describe what the **Checkbox** is for.
 
 <Heading label="Usage" level={ 2 } />
 
@@ -51,18 +51,22 @@ A **Checkbox** group is used for a list of options where the user may make a cho
 
 <BestPractices
   donts={[
-    <span>- Avoid using Checkbox if only one item in list can be selected, prefer using <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } story={ STORY.documentation }>Radio</StorybookLink> instead</span>,
-    '- Truncate Checkbox label text with an ellipsis'
+   '- Don’t use a Checkbox if the user can only select one option, use a Radio Button instead',
+   '- Don’t truncate labels with ellipsis',
+   '- Don’t place Checkboxes too close together, maintain sufficient spacing to prevent selection errors',
+   '- Don’t use Checkboxes for binary actions like “save” or “submit”, use a Button instead',
   ]}
   dos={[
-    '- Always use clear and concise labels for Checkbox',
-    '- Long labels may wrap to a second line, and this is preferable to truncation',
+    '- Use clear, concise, and descriptive labels to explain what the Checkbox controls',
+    '- Allow labels to wrap to multiple lines when necessary, readability is more important than keeping to one line here',
+    '- Group related Checkboxes using a fieldset with a legend to provide context when applicable',
+    '- Use Checkboxes when multiple selections are allowed within a group of options',
   ]}
 />
 
 <Heading label="Placement" level={ 2 } />
 
-The **Checkbox** can be autonomous, as it can be labelled in a starting/ending <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>.
+The **Checkbox** can be autonomous, as it can be labelled in a starting/ending text.
 
 It can be inserted in containers or next to an external item.
 
@@ -74,10 +78,14 @@ The indeterminate state is used only when the **Checkbox** contains a sub-list o
 
 The **Checkbox** can be in an error state, but also in a disabled state.
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+<Heading label="Focus Management" level={ 3 } />
 
-<Heading label="Accessibility" level={ 2 } />
+The **Checkbox** component can receive keyboard focus and is part of the standard tab order.
 
-**Checkbox** can be focus through tabulation, and toggled using `Space` and `Enter` keys.
+If the **Checkbox** is disabled, it does not receive focus and cannot be activated via keyboard.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Space` toggles the **Checkbox** state (checked/unchecked).

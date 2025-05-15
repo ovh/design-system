@@ -23,7 +23,7 @@ _**Message** component helps to communicate with users providing feedback or inf
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=44-8300"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/message"
               name="Message"
-              relatedComponents={ [{ name: 'Button' }, { name: 'Icon' }, { name: 'Text' }] }>
+              relatedComponents={ [{ name: 'Button' }, { name: 'Icon' }] }>
   **Message** component communicates information to the user.
 
   It grabs the user's attention in a prominent way.
@@ -35,9 +35,9 @@ _**Message** component helps to communicate with users providing feedback or inf
 
 1. <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> to inform users about what kind of message it is (optional)
 
-2. <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, which can be a plain text or contain a link
+2. Text, which can be a plain text or contain a link
 
-3. A `cross` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, which is a close button to dismiss the **Message** (optional)
+3. A `xmark` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, which is a close button to dismiss the **Message** (optional)
 
 <Heading label="Usage" level={ 2 } />
 
@@ -55,16 +55,18 @@ There are four different subtypes of standard **Messages**, in order of priority
 
 <BestPractices
   donts={[
-    '- Use too long Messages that may affect its readability',
-    '- Use a Message for highlighting content: use a Tile instead',
+    '- Don’t use Message to highlight static or decorative content, prefer components like Card for that',
+    '- Don’t write overly long or complex Message that could overwhelm or confuse users',
+    '- Don’t rely solely on color to convey meaning, always keep the Icon for clarity',
+    '- Don’t use vague or generic text, always provide helpful context or guidance',
+    '- Don’t overload the interface with multiple simultaneous Messages unless absolutely necessary',
   ]}
   dos={[
-    '- Use the affirmative form',
-    '- Make Messages content informative, brief, clear, consistent and non-critical',
-    '- Messages must be displayed in the user language',
-    '- Position a Message wherever it is visible for the user',
-    '- Use a Message when an immediate action is required by the user',
-    '- Use non dismissible Message for mandatory warnings that need to be resolved',
+    '- Write Message in a clear, concise, and affirmative tone that aligns with the user’s task',
+    '- Place Message in a visible and relevant area of the page, ideally close to the triggering element if any or top of the section',
+    '- Use the correct variant (e.g., information, success, warning, error) to match the context and urgency',
+    '- Use non-dismissible Message for critical warnings or errors that require immediate resolution',
+    '- Allow content selection (e.g., to copy error messages)',
   ]}
 />
 
@@ -78,7 +80,7 @@ They are positioned near their related items or right after the header and befor
 
 Based on its informational manner, the component default behavior is being read-only. You can only select its content if needed.
 
-When a **Message** is dismissible, a click on the `close` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> will dismiss the **Message**.
+When a **Message** is dismissible, a click on the `xmark` icon Button will dismiss the **Message**.
 
 <Heading label="Variation" level={ 2 } />
 
@@ -95,8 +97,18 @@ When a **Message** is dismissible, a click on the `close` icon <StorybookLink ki
 - **Default**: conveying mild to important information, ensuring the message is seen by the user.
 - **Light**: conveying non-urgent, informational content in a subtle and less prominent manner, ensuring the message is seen without drawing too much attention.
 
-<Heading label="Accessibility" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-When a **Message** appears, user is alerted of its presence, regardless of the user's navigation.
+<Heading label="Focus Management" level={ 3 } />
 
-The `close` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is focusable and can be triggered with the `Enter`/`Space` key.
+The **Message** component itself is non-interactive and does not receive keyboard focus.
+
+If the **Message** is dismissible, the close icon button is focusable.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Tab` moves focus to the close icon button (if available).
+
+Pressing `Enter`or `Space` while the close icon button is focused should trigger the action to dismiss the **Message**.
+
+Pressing `Shift` + `Tab` moves focus to the previous interactive element.

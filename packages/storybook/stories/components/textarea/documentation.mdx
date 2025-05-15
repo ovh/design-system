@@ -23,7 +23,7 @@ _A **Textarea** component allows users to input and edit multiple lines of text.
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=53-11147"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/textarea"
               name="Textarea"
-              relatedComponents={ [{ name: 'Tag' }] }>
+              relatedComponents={ [] }>
   The **Textarea** component is used to capture and display multi-line text input from users.
 
   It is typically used in forms where users need to provide detailed information, comments, or descriptions.
@@ -48,35 +48,55 @@ Ensure that the **Textarea** is appropriately sized for the expected input and p
 
 <BestPractices
   donts={[
-    '- Use Textarea for shorter text',
-    <span>- Use a placeholder as replacement for a <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> label</span>,
+    '- Don’t use a Textarea for short, single-line inputs. Use an Input instead',
+    '- Don’t rely on a placeholder as a substitute for a proper label since it disappears once the user starts typing',
+    '- Don’t disable resizing if users are expected to write long-form content and might need a larger view',
   ]}
   dos={[
+    '- Use a Textarea for inputs that may span multiple lines, such as comments, descriptions, or messages',
+    '- Always pair the Textarea with a label to clearly explain what is expected',
+    '- Use helper text to provide guidance or clarify formatting when needed',
+    '- Allow scrolling or resizing if users are likely to enter long text (based on use case)',
     '- Use Textarea for a text longer than a single line',
-    <span>- Use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> label (and/or an helper) to clearly inform what information the user should type</span>,
   ]}
 />
 
 <Heading label="Placement" level={ 2 } />
 
-**Textarea** is used in forms where the expected user input text would be long.
+**Textarea** should be vertically aligned with other form components on a same page.
 
 <Heading label="Behavior" level={ 2 } />
 
-**Textarea** can be hovered, focused, disabled or read only.
+**Textarea** can be hovered, focused, disabled, or set to read-only.
 
-**When disabled**, the component cannot be focused nor clicked.
+When disabled, the component cannot be focused or interacted with.
 
-When the user types an amount of **text longer than Textarea** container itself, a scrollbar is displayed.
+If the user types more text than the **Textarea** can display, a scrollbar appears to allow scrolling.
 
-**Textarea** is optionally resizable: user can expand its container.
+The **Textarea** supports native browser resizing, but it is not enabled by default.
 
-An event is triggered when the **Textarea** value changes, and on user focusing in and out of the component.
+<Heading label="Navigation" level={ 2 } />
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Focus Management" level={ 3 } />
 
-N/A
+When the **Textarea** is enabled, it can receive focus via keyboard interaction.
 
-<Heading label="Accessibility" level={ 2 } />
+A disabled **Textarea** cannot receive focus.
 
-`Tab` allows to focus on **Textarea**.
+A read-only **Textarea** can receive focus, allowing users to scroll and select content, but its content cannot be modified.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Tab` moves focus to the **Textarea**.
+
+Pressing `Shift` + `Tab` moves focus to the previous focusable element.
+
+Pressing `Enter` creates a new line within the **Textarea**.
+
+Pressing `Arrow` keys moves the caret within the text content.
+
+Pressing `Ctrl` + `Arrow Left` / `Arrow Right` (or `Option` + `Arrow Left` / `Arrow Right` on macOS) moves the caret by word.
+
+Pressing `Home` / `End` (or `Cmd`+ `Arrow` keys on macOS) moves the caret to the beginning or end of the line.
+
+Pressing `Page Up` / `Page Down` scrolls through the content if it's longer than the visible area.

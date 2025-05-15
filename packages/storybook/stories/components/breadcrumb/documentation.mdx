@@ -23,7 +23,7 @@ _A list of <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.docum
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-22762"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/breadcrumb"
               name="Breadcrumb"
-              relatedComponents={ [{ name: 'Icon' }, { name: 'Link' }, { name: 'Text' }] }>
+              relatedComponents={ [{ name: 'Icon' }, { name: 'Link' }] }>
   **Breadcrumb** is used to define the user's position in a site hierarchy, it can also be useful for a finer navigation in
   an inner application.
 </IdentityCard>
@@ -47,14 +47,20 @@ It has several usage :
 
 <BestPractices
   donts={[
-    '- Use Breadcrumb for main page navigation',
-    '- Use nested Breadcrumbs',
-    <span>- Add external <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> in the component</span>,
-    '- Put more than 4 imbrications inside a Breadcrumb, as the structure will be too complex',
+    '- Don’t use Breadcrumbs as a primary navigation method, they are secondary and contextual only',
+    '- Don’t include external links in Breadcrumb items, all links should be internal',
+    '- Don’t nest Breadcrumbs or place more than one Breadcrumb component on the same page',
+    '- Don’t exceed 4 levels of depth. Overly complex paths reduce clarity and usability',
+    '- Don’t make the current page a link. The last item should be plain text to indicate the user’s location',
+    '- Don’t change the Breadcrumb order to reflect user history or actions, it should always match site structure',
+    '- Don’t use Breadcrumb if the page doesn’t belong to a clearly hierarchical structure',
   ]}
   dos={[
-    <span>- The first Breadcrumb element has to be a <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> to its preferential home page (with an <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink>, or with "Home" <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink></span>,
-    '- Inherit page structure logic inside the Breadcrumb construction',
+    '- Start the Breadcrumb trail with a link to the homepage, using a "home" Icon or the "Home" label',
+    '- Reflect the actual page hierarchy in the Breadcrumb structure (e.g., Section > Subsection > Current page)',
+    '- Use Breadcrumb to provide contextual orientation, especially in deep navigation paths',
+    '- Ensure that each Breadcrumb item (except the last one) is a clickable link to a parent page',
+    '- Add the ellipsis to collapse long paths (more than 4 Links visible)',
   ]}
 />
 
@@ -66,20 +72,22 @@ Its width is automatic, relative to its content and is not adjustable.
 
 <Heading label="Behavior" level={ 2 } />
 
-When the **Breadcrumb** has more than 4 <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> visible, an ellipsis is displayed as a replacement for the middle <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink>.
+When the **Breadcrumb** has more than 4 <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> visible, an ellipsis is displayed as a replacement for the middle Link.
 
-A click on the ellipsis will expanded all previously hidden <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> inline, the collapsed state can't be redone afterwards.
+A click on the ellipsis will expanded all previously hidden Link inline, the collapsed state can't be redone afterwards.
 
-The **Breadcrumb** <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> are kept inline, even on mobile viewports.
+The **Breadcrumb** Links are kept inline, even on mobile viewports.
 
-Clicking or pressing `Enter` or `Space` key on **Breadcrumb** item triggers an event.
+<Heading label="Navigation" level={ 2 } />
 
-Same actions on **Breadcrumb** collapsed item will trigger an event.
+<Heading label="Focus Management" level={ 3 } />
 
-<Heading label="Variation" level={ 2 } />
+All Links within the **Breadcrumb** component are focusable, following the reading order. The last item, which represents the current page, is static text and does not receive focus.
 
-N/A
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-<Heading label="Accessibility" level={ 2 } />
-
-All <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Links</StorybookLink> are accessible through tabulation.
+* Pressing `Tab` moves focus through each Link in the **Breadcrumb** trail
+* Pressing `Enter` while a Link is focused navigates to the corresponding page
+* When an ellipsis (...) appears due to a long **Breadcrumb** trail (more than 4 elements), it behaves as Link:
+  * Pressing `Enter` expands the full **Breadcrumb** list
+  * Once expanded, additional Links become accessible via `Tab` navigation

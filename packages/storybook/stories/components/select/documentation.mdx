@@ -27,7 +27,6 @@ _**Select** component is used to select one or more items from a list of values_
                 { name: 'Badge' },
                 { name: 'Flag' },
                 { name: 'Form Field', subtitle: 'Form elements' },
-                { name: 'Text' },
               ]}>
   A **Select** is used to allow users to select one or more items from a list that is displayed after clicking on it.
 </IdentityCard>
@@ -38,7 +37,7 @@ _**Select** component is used to select one or more items from a list of values_
 
 1. **Placeholder**
 2. **Field** to represent the **Select** itself. It can be opened and closed on click/trigger.
-3. "Chevron" <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> to inform that the **Select** can display a list of choices.
+3. **"Chevron" Icon** to inform that the **Select** can display a list of choices or that the list can be collapsed
 4. **Dropdown** that displays a list of items or options. It is displayed on click/trigger so users can make their choice.
 
 <Heading label="Usage" level={ 2 } />
@@ -54,13 +53,18 @@ The order of items or options in the list should be sorted as following, dependi
 
 <BestPractices
   donts={[
-    <span>- Use a Select to display a "yes" or "no" selection: use <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } story={ STORY.documentation }>Radio</StorybookLink> buttons</span>,
-    <span>- Use a Select when a comparison between all items or options is needed: use <StorybookLink kind={ ODS_COMPONENTS_TITLE.radio } story={ STORY.documentation }>Radio</StorybookLink> buttons</span>,
+   '- Don’t use a Select for binary choices like “Yes” or “No”. Use Radio buttons instead for faster interaction',
+   '- Don’t use Select when users need to compare all available options. Use Radio buttons for better visibility',
+   '- Don’t include very long option labels that wrap multiple lines since it makes scanning and selection harder',
+   '- Don’t rely only on placeholder text to communicate intent. Always pair Select with a label',
+   '- Don’t overload Select with too many items (e.g., hundreds). Consider Combobox or a searchable alternative',
   ]}
   dos={[
-    '- Use a Select when there are 3 or more items to choose from',
-    '- Make the order of the Select list based on the frequency of use, alpha or numeric',
-    <span>- Use only one word or a very short <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> for each item of the list: try to keep it to one line</span>,
+    '- Use a Select when users need to choose one option from a list of three or more items',
+    '- Order the options logically (e.g., by frequency of use, alphabetical order, or numeric sequence)',
+    '- Keep option labels short and scannable, ideally one word or a short phrase that fits on a single line',
+    '- Use placeholder text to prompt users when no option is selected',
+    '- Consider adding grouping if you have many related options and want to improve clarity',
   ]}
 />
 
@@ -74,25 +78,34 @@ It has a width by default, but it can widen to match its container.
 
 **Select** can be focused and hovered. It also can be disabled. A single option and a group of options can be disabled to be more precise in inner **Select** items.
 
-When an item contains a <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> that cannot fit on a single line, the <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> will be truncated.
-
-An event is triggered when the selected option changes.
-
-An event is triggered on focusing, and a blur event is triggered when the **Select** loses the focus.
-
 <Heading label="Variation" level={ 2 } />
-
-<Heading label="Variant" level={ 3 } />
 
 - **Single selection**: Allows the user to select a single item from a dropdown list of options.
 - **Multiple selection**: Allows the user to select multiple items from a dropdown list of options. The whole line is clickable.
 - **Grouped options**: Related options can be grouped together in both a single and multi **Select**.
 
-<Heading label="Accessibility" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-Like all form fields, **Select** component is focusable using `Tabulation` key.
+<Heading label="Focus Management" level={ 3 } />
 
-When focused, using `Space` opens the **Select**'s dropdown; while opened, user can :
-- Use `Up` or `Down` arrows to highlight an option
-- Use `Echap` key to close the dropdown without selecting anything new
-- Use `Enter` or `Tab` key to select the highlighted option
+When the **Select** is enabled, it can receive focus via keyboard interaction.
+
+When the **Select** is opened, focus moves into the dropdown content and highlights the selected option (if any), or the first available option.
+
+When closed, focus returns to the **Select** trigger.
+
+A read-only **Select** can receive focus, but the dropdown cannot be opened or interacted with.
+
+Disabled **Select** or disabled options cannot receive focus or be interacted with.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Space`, `Enter`, `Arrow Down` or `Arrow Up` when the **Select** is focused opens the dropdown and highlights the selected or first option.
+
+While the dropdown is open:
+* `Arrow Down` moves the highlight to the next option
+* `Arrow Up` moves the highlight to the previous option
+* `Enter` or `Tab` selects the currently highlighted option and closes the dropdown
+* `Escape` closes the dropdown without making a new selection
+
+Typing an alphanumeric character (A–Z, a–z) jumps focus to the next option starting with that character.

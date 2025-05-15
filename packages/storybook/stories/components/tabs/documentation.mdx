@@ -23,7 +23,7 @@ _**Tabs** are a way of navigating between multiple panels, reducing clutter and 
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11168"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/tabs"
               name="Tabs"
-              relatedComponents={ [{ name: 'Link' }, { name: 'Text' }] }>
+              relatedComponents={ [{ name: 'Link' }] }>
   **Tabs** are used to organize content by grouping similar information on the same page.
 </IdentityCard>
 
@@ -44,46 +44,51 @@ They can also be used to filter content via some common denominator.
 
 <BestPractices
   donts={[
-    '- Use a large amount of Tabs, as it can be confusing for the user',
-    '- Use long labelled Tabs',
-    '- Use conjugated verbs in labels',
-    <span>- Use external <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> as Tabs</span>,
-    '- Avoid elements comparison in multiple Tabs (context switching)',
-    '- Avoid nesting Tabs in a web page',
-    '- Use Tabs as a process progression',
+    '- Don’t use Tabs as a progress indicator or wizard steps',
+    '- Don’t nest Tabs inside other Tabs, this creates a confusing and hard-to-navigate experience',
+    '- Don’t overload the interface with too many tabs. Use dropdowns if you need more than 5 tabs',
+    '- Don’t use long or verbose labels',
+    '- Don’t use external links or actions as tab triggers, Tabs should only control the visibility of in-page content',
   ]}
   dos={[
-    '- Group data in sub-navigation with Tabs',
+    '- Use Tabs to group related content under the same page when it fits in a shared context',
+    '- Keep Tab labels short, clear, and scannable, use nouns or very short phrases (1–3 words max)',
+    '- Use Tabs for horizontal navigation, not hierarchical structure or progressive steps',
   ]}
 />
 
 <Heading label="Placement" level={ 2 } />
 
-**Tabs** are **often used in the top part of a web page**, as it can act as a navigation focus.
-
-They are **left-centered by default**.
-
-Each **Tab** has an automatic width based on the content's length.
+**Tabs** are often used in the top part of a web page, as it can act as a navigation focus.
 
 <Heading label="Behavior" level={ 2 } />
 
-**By default, one of the Tabs is always selected**.
+By default, one of the **Tab** is always selected.
 
-**Tabs** can be hovered, focused and selected. A **Tab** can also act as a disabled **Tab**.
+Each **Tab** can be hovered, focused and selected. A **Tab** can also act as a disabled **Tab**.
 
 **Tabs** always stay on the same line, and can be horizontally scrolled through if they happen to not fit their container.
-
-When the selected **Tab** changes, an event is triggered.
 
 Each **Tab** has a panel displaying content. Selecting a **Tab** displays the corresponding panel.
 
 The panel does not depend on the **Tab** component, it is in the developer’s hands.
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+<Heading label="Focus Management" level={ 3 } />
 
-<Heading label="Accessibility" level={ 2 } />
+When focus moves to the **Tabs** component, it is set on the active **Tab**.
 
-All inner **Tabs** follow the same focusing/keyboard navigation as 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>.
+Once a **Tab** is focused, its associated content is also activated.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Tab` moves focus into or out of the **Tabs** component while keeping the active **Tab** selected.
+
+Pressing `Arrow Right` moves focus to the next **Tab** and activates its content.
+
+Pressing `Arrow Left` moves focus to the previous **Tab** and activates its content.
+
+Pressing `Home` / `fn` + `Arrow Left` moves focus to the first **Tab** and activates its content.
+
+Pressing `End` / `fn` + `Arrow Right` moves focus to the last **Tab** and activates its content.

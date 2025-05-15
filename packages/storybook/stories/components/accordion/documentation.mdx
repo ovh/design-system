@@ -23,13 +23,13 @@ _An **Accordion** is a vertical header that reveals or hides an associated secti
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=1-6634"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/accordion"
               name="Accordion"
-              relatedComponents={ [{ name: 'Text' }] }>
-  The **Accordion** component **delivers large amounts of content in a small space through progressive disclosure**.
+              relatedComponents={ [] }>
+  The **Accordion** component delivers large amounts of content in a small space through progressive disclosure.
 
   The header part gives the user a high-level overview of the content allowing them to decide which sections to
   read.
 
-  **Accordions** can make **information processing and discovering more effective**. However, it does hide content
+  **Accordions** can make information processing and discovering more effective. However, it does hide content
   from the users, and it’s important to account for a user not noticing or reading all the included content. If a user
   is likely to read all the content then then the usage of an **Accordion** would not be recommended as it adds an extra
   interaction to access the content; instead use a full scrolling page with normal headers.
@@ -57,21 +57,17 @@ Use this component for :
 
 <BestPractices
   donts={ [
-    '- Expose a lot of content in the Header section (i.e. more than 2 lines)',
-    '- Use Accordions with essential content for users',
-    <span>- Use <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> in header text</span>,
-    '- Expose a lot of content in the Panel section (i.e. more than the viewport height)',
-    '- Empty the Panel section, as the Accordion become useless',
-    '- Trigger expanding/collapsing on hover action',
-    '- Avoid nested Accordions, like collapsible content within collapsible content'
+    '- Don’t nest Accordions inside each other, this is not supported and leads to poor usability',
+    '- Don’t use Accordion to hide critical information needed for completing a task',
+    '- Don’t use vague or generic titles like “Section 1”, they should be descriptive',
+    '- Don’t expose a lot of content in the title',
   ] }
   dos={ [
-    <span>- Header <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> describes the content contained in the panel. Use a clear and concise <StorybookLink
-      kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, and be explicit about the action that will happen if the option is selected</span>,
-    <span>- Use sentence-style capitalization in header <StorybookLink kind={ ODS_COMPONENTS_TITLE.text }
-                                                                       story={ STORY.documentation }>Text</StorybookLink> (only the first word in a phrase and any proper nouns capitalized), no more than three words, and no punctuation</span>,
-    <span>- Use Accordion instead of <StorybookLink kind={ ODS_COMPONENTS_TITLE.tabs }
-                                                    story={ STORY.documentation }>Tab</StorybookLink> if users need to see multiple sections at once</span>,
+    '- Use Accordion to progressively disclose content, especially in long or dense pages',
+    '- Ensure the summary/title of each Accordion clearly communicates what it contains',
+    '- Use Accordions to group related content (e.g., FAQ)',
+    '- Keep the content within each panel concise and scannable',
+    '- Use Accordion instead of Tab if users need to see multiple sections at once',
   ] }
 />
 
@@ -85,9 +81,9 @@ It can be placed within main page content or inside a side container (as panels,
 
 <Heading label="Behavior" level={ 2 } />
 
-**Accordion** has two states : **collapsed** and **expanded**.
+An **Accordion** can be hovered, focused, clicked and disabled.
 
-**Accordion is by default collapsed.**
+**Accordion** has two states : collapsed and expanded. It is collapsed by default.
 
 When triggering the header part, the panel part should react as expanding or collapsing, depending on what previous
 state it had.
@@ -98,18 +94,34 @@ The **Icon** helps the user to know if the **Accordion** is collapsed or expande
   * Collapsed : chevron points down
   * Expanded : chevron points up
 
-**The Header part of this component acts like a Button**, with hover, focus and active styles.
+The Header part of this component acts like a button, with hover, focus and active styles.
 
 Same behavior and styling applies to both Desktop and Mobile modes.
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+<Heading label="Focus Management" level={ 3 } />
+
+The **Accordion** header can receive keyboard focus and is part of the standard tab order.
+
+Focus remains on the header after toggling the section.
+
+If the **Accordion** is disabled, it does not receive focus and cannot be activated via keyboard.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Enter` or `Space` on a focused **Accordion** header toggles its expansion or collapse.
+
+Pressing `Escape` does not close an expanded **Accordion** section (unless additional custom behavior is implemented).
+
+<Heading label="Navigation between sections" level={ 3 } />
+
+If multiple **Accordions** exist, users can navigate between headers using the `Tab` key.
+
+There is no looping between headers: pressing `Tab` on the last header moves focus to the next interactive element outside the Accordion.
+
+Arrow keys (`Arrow Up` / `Arrow Down`) do not move between **Accordions** by default.
 
 <Heading label="Accessibility" level={ 2 } />
-
-The header part can be navigated through tabulation, with the same behavior as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>.
-
-When focusing the header part, pressing `Enter` or `Space` keys will trigger its expansion or its collapse.
 
 For screen readers, the user can know easily that the **Accordion** is opened or not, and therefore the inner content is readable or not.

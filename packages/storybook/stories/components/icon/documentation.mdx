@@ -38,7 +38,7 @@ _**Icon** is a visual context used to represent a command, navigation, status or
 
 **Icons** enhance the usability and bring clarity to users by reducing the cognitive load.
 
-**Icons** can be used in standalone <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> and can be usually associated with some sort of action.
+**Icons** can be used in standalone Button and can be usually associated with some sort of action.
 
 **Icons** can be used as navigational elements as well.
 
@@ -46,17 +46,18 @@ _**Icon** is a visual context used to represent a command, navigation, status or
 
 <BestPractices
   donts={[
-    '- Use for decorative purpose',
-    '- Use the same Icon for different purposes to avoid user\'s confusion',
-    '- Use similar shades of the same color for background and Icon colors',
-    <span>- Baseline-align Icons when they are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink></span>,
-    <span>- When Icons are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, don't use different colors for both of them</span>,
+    '- Don’t use the same Icon for different meanings. It can confuse users and reduce semantic clarity',
+    '- Don’t use similar shades for both the Icon and background, this can reduce visibility',
+    '- Don’t baseline-align Icon when next to text, it disrupts alignment and flow',
+    '- Don’t use different colors for the Icon and the adjacent text when they represent the same concept',
+    '- Don’t rely on Icon without supporting text for critical actions or information',
   ]}
   dos={[
-    '- Give an equivalent text as aria-name to the Icon',
-    '- Assure a good contrast between the background and Icon colors',
-    <span>- Center-align when Icons are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink></span>,
-    <span>- When Icons are next to <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, use the same color for pairing them</span>,
+    '- Ensure sufficient contrast between the Icon color and its background for accessibility compliance',
+    '- Center-align Icon vertically when placed next to text to maintain visual balance',
+    '- Use the same color for the Icon and the adjacent text when they are paired for a unified appearance',
+    '- Use Icon to support meaning, such as reinforcing an action or clarifying status',
+    '- Ensure consistent sizing and spacing across the interface for visual harmony',
   ]}
 />
 
@@ -70,11 +71,13 @@ They also can be used in other components where it is adapted for a specific pur
 
 <Heading label="Behavior" level={ 2 } />
 
-**Icons** can stand alone or be included in a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> or other components depending on the usage.
+**Icons** can stand alone or be included in a Button or other components depending on the usage.
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+The **Icon** component is non-interactive and does not receive keyboard focus when used alone. It is purely decorative unless included in an interactive component (e.g., a Button, a Link, or a Breadcrumb).
+
+When used within an interactive component, refer to that component’s documentation for keyboard navigation details.
 
 <Heading label="Accessibility" level={ 2 } />
 

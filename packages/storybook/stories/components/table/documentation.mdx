@@ -29,7 +29,6 @@ _A component to display data in a tabular format._
                 { name: 'Icon' },
                 { name: 'Link' },
                 { name: 'Medium' },
-                { name: 'Text' },
                 { name: 'Tooltip' },
               ]}>
 </IdentityCard>
@@ -38,8 +37,8 @@ _A component to display data in a tabular format._
 
 ![Component anatomy](components/table/anatomy.png "Component anatomy")
 
-1. **Header** : Header cells of each column. Each header cell contains a <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, and can contain an additional icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> helper with <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink>.
-2. **Body** : Main content for data visualization. Each cell can contain diverse components, such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, and other elements such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.badge } story={ STORY.documentation }>Badge</StorybookLink>, <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink>, <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink>, <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink>, **Flag**, <StorybookLink kind={ ODS_COMPONENTS_TITLE.medium } story={ STORY.documentation }>Medium</StorybookLink>.
+1. **Header** : Header cells of each column. Each header cell contains a text, and can contain an additional icon Button helper with a Tooltip.
+2. **Body** : Main content for data visualization. Each cell can contain text and diverse components, such as Badge, Icon, Link, Tooltip, Medium etc.
 
 <Heading label="Usage" level={ 2 } />
 
@@ -47,33 +46,26 @@ _A component to display data in a tabular format._
 
 <BestPractices
   donts={[
-    '- Use Table component for layout purposes',
-    '- Use Table when there is a need to display large sets of data (more than 30 rows)',
+    '- Don’t use the Table for layout or alignment purposes, they are meant for displaying tabular data only',
+    '- Don’t use the Table component to display large datasets (e.g. 30+ rows) without pagination or `Load more` Button',
+    '- Don’t overload rows with too much content per cell, keep data atomic and easy to scan',
+    '- Don’t leave column headers unclear or overly abbreviated',
+    '- Don’t make the Table scroll in multiple directions unless absolutely necessary, to avoid poor mobile experiences',
   ]}
   dos={[
-    '- Use a Table to make content easier to read',
-    '- Use Table component for small amounts of data that can be displayed in a simple format',
-    '- Structure the data with useful columns (we recommend up to 9 columns)',
-    <span>- Use clear and concise headers. If a header is too complex, use a description (via a <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink>)</span>,
-    <span>- When data or content is loading in a cell, replace its content with a <StorybookLink kind={ ODS_COMPONENTS_TITLE.skeleton } story={ STORY.documentation }>Skeleton</StorybookLink></span>,
+    '- Use a Table to present structured data in a clear and readable layout',
+    '- Limit the number of columns to 9 or fewer to maintain readability and avoid horizontal scrolling',
+    '- Use concise, meaningful headers, and add a Tooltip or description if more context is needed',
+    '- Display Skeletons in cells when data is loading asynchronously, rather than leaving them blank',
+    '- Ensure the Table is responsive by allowing columns to adapt to content and screen size',
   ]}
 />
-
-<Heading label="Placement" level={ 2 } />
-
-**Table** component should always fit in its container.
-
-On the contrary, if **Table** is wider than the container (especially in mobile devices), users should be able to scroll horizontally in this container.
-
-Header height is minimum 48px by default.
-
-Body cells height is set to minimum 48px by default but, it can adjust its size, height and width, based on its content.
 
 <Heading label="Behavior" level={ 2 } />
 
 **Table** component acts like native HTML table. It dynamically sizes column widths and row heights based on content and available space.
 
-By default, **Table** rows height is minimum 48px. When an element is too large in a cell, the row height will adjust based on this element. It is possible to add a new line in a cell.
+When an element is too large in a cell, the row height will adjust based on this element. It is possible to add a new line in a cell.
 
 <Heading label="Variation" level={ 2 } />
 
@@ -88,6 +80,6 @@ By default, **Table** rows height is minimum 48px. When an element is too large 
 - **Default**: provides default UI for the component, without distinctive background colors on rows/colors.
 - **Striped**: improving readability by using alternating row colors to distinguish between consecutive rows of data, making it easier for users to follow and interpret the information. We recommend to use this variant when there are more than 10 rows in the **Table**.
 
-<Heading label="Accessibility" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-**Table** component acts the same way as the native `<table>` component.
+The **Table** component behaves like the native `<table>` element. Keyboard navigation depends on the structure and interactive elements within the Table (e.g., links, or buttons). Integrators should ensure proper focus management based on their specific implementation.

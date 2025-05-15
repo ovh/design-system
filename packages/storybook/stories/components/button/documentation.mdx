@@ -12,7 +12,7 @@ import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Banner of={ ButtonStories } />
 
-_A **Button** component aims to initiate an action. Its <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> indicates the related intent, its aspect describes the importance and influence level._
+_A **Button** component aims to initiate an action. Its text indicates the related intent, its aspect describes the importance and influence level._
 
 <Canvas of={ ButtonStories.Overview } sourceState="none" />
 
@@ -42,31 +42,40 @@ _A **Button** component aims to initiate an action. Its <StorybookLink kind={ OD
 **Buttons** are mainly used for actions, like adding, removing, validating, etc.
 They are used to allow users to interact with the page or its content.
 
-**Buttons** work with other elements on a screen to **surface the most important actions the user wants to take in that context**.
-**They must respect the proximity law** in order to guide the user on the action to be performed and the expected result.
+**Buttons** work with other elements on a screen to surface the most important actions the user wants to take in that context.
+They must respect the proximity law in order to guide the user on the action to be performed and the expected result.
 A **Button** label indicates what happens when the user taps the **Button**, even if it's just to acknowledge something.
 
 **Buttons** don't usually redirect to an external page. For that, see <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink>.
+
+<Heading label="When to use a Link or a Button?" level={ 3 } />
+
+<StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Links</StorybookLink> and **Buttons** serve different purposes, and using them correctly improves both accessibility and user experience:
+
+* Use a Link when the action navigates the user to another page or resource, either within your application or to an external site
+* Use a **Button** when the action performs a function or triggers a behavior on the current page, like submitting a form, opening a modal, or toggling a menu
+
+A **Button** should not mimic a Link. It can lead to confusion for users and assistive technologies, as **Buttons** are not typically expected to handle navigation.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    <span>- Use Buttons as <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> (using the ghost variant), prefer using the <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> component</span>,
-    '- Put two identical Buttons side by side',
-    '- Use success/error variants for other needs than validation/cancel',
+    '- Don’t use a Button as a Link, use the Link component instead',
+    '- Don’t show more than one primary button per view',
+    '- Don’t place two identical Buttons side by side (same label and style)',
+    '- Don’t use standalone decorative icons in Buttons unless the action is universally understood',
+    '- Don’t use a ghost Button as the main call to action',
+    '- Don’t overload a Button with too much text or visual clutter',
   ]}
   dos={[
-    '- Group a main with a secondary Button for page actions',
-    '- At least one primary Button must be present per page in order to present the main action',
+    '- Use a primary Button to highlight the main action on a page or in a form',
+    '- Pair an outline Button for complementary actions (e.g., "Cancel", "Learn more")',
+    '- Maintain a clear visual hierarchy between Button types (primary, outline, ghost)',
+    '- Use icons when they add clarity to the action (e.g., arrow for "Next", trash for "Delete")',
+    '- Choose the appropriate size based on context',
   ]}
 />
-
-<Heading label="Placement" level={ 2 } />
-
-The **Button** component has an automatic width regarding its context.
-
-By default, the **Button** content is centered in its container.
 
 <Heading label="Behavior" level={ 2 } />
 
@@ -74,7 +83,9 @@ A **Button** can be hovered, focused, clicked and disabled.
 
 When in disabled state, it is impossible to focus or click on it. A "disabled" cursor is shown when hovering the disabled component.
 
-An <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> can be displayed on the left or right of the **Button** label content.
+The **Button** supports a loading state, during which a Spinner replaces its label.
+
+An Icon can be displayed on the left or right of the **Button** label. Icon-only **Button** also exists but it must meet accessibility requirements. See Accessibility section below.
 
 <Heading label="Variation" level={ 2 } />
 
@@ -96,6 +107,16 @@ An <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation
 - **Small**: actions in compact spaces or within densely packed interfaces, providing a more subtle and space-efficient option.
 - **Medium** _(default)_: main usage of **Buttons**, when they can be displayed in an important manner.
 
-<Heading label="Accessibility" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-When focusing the **Button**, pressing `Enter` or `Space` keys will trigger it.
+<Heading label="Focus Management" level={ 3 } />
+
+The **Button** component can receive keyboard focus and is part of the standard tab order.
+
+If the **Button** is disabled, it does not receive focus and cannot be activated via keyboard.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Enter` or `Space` while the **Button** is focused activates it, triggering its action.
+
+Pressing `Shift` + `Alt` moves focus to the previous interactive element.

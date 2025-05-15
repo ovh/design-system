@@ -31,8 +31,7 @@ _**Quantity** is a component used to enter and modify a numeric value in a respo
               ]}>
   The **Quantity** component provides a user-friendly interface for selecting or entering numerical values.
 
-  It includes an <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> field combined with increment and
-  decrement <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> to adjust the value easily.
+  It includes an Input field combined with increment and decrement Buttons to adjust the value easily.
 </IdentityCard>
 
 <Heading label="Anatomy" level={ 2 } />
@@ -53,12 +52,14 @@ Limits can be set as minimum or maximum value. In that case, the numeric value c
 
 <BestPractices
   donts={[
-    '- A Quantity by itself displays a number: don\'t use it in any other context than displaying a quantity',
-    '- Use Quantity for large value changes',
+    '- Don’t use the Quantity component for large numeric changes that would require excessive clicking. Prefer a freeform numeric input or slider in those cases',
+    '- Don’t use the component outside of quantitative contexts: it should only be used to adjust measurable numeric values (e.g., quantity, amount)',
   ]}
   dos={[
-    '- Use Quantity for small value changes that require only a few clicks',
-    '- Be sure sure that the user can choose to type directly a number in the field',
+    '- Use the Quantity component for small, incremental adjustments where users are likely to increase or decrease values with just a few clicks',
+    '- Always allow users to manually input a number directly into the field, not just through the increment/decrement buttons',
+    '- Set appropriate min/max limits to prevent invalid or unintended values',
+    '- Provide contextual labels or grouping when needed to clarify what the quantity refers to',
   ]}
 />
 
@@ -66,24 +67,41 @@ Limits can be set as minimum or maximum value. In that case, the numeric value c
 
 **Quantity** can be used to let users easily change an amount of items, for example, or similar situations.
 
-It should be used with numeric <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> that are in a fairly narrow range.
+It should be used with numeric Input that are in a fairly narrow range.
 
 <Heading label="Behavior" level={ 2 } />
 
 **Quantity** numeric field can be edited directly by the user.
 
-The user can also decrease or increase the value by clicking on <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>.
+The user can also decrease or increase the value by clicking on the Buttons.
 
 In case that limits have been set to minimum and maximum value, corresponding control will be disabled when this value has been reached.
 
 Each item of the **Quantity** component can be focused; the whole component can be disabled at once.
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+<Heading label="Focus Management" level={ 3 } />
 
-<Heading label="Accessibility" level={ 2 } />
+When the **Quantity** component is focused, focus is automatically set to the first focusable and not disabled element.
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> and <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> accessibility features avail here, with former tabulation and triggers.
+If the Input field is read-only, it can still receive focus but cannot be edited.
 
-The numeric field value can be increased/decreased using `Up` and `Down` arrows when focused.
+If the “Plus” or “Minus” Button is disabled, it cannot be focused.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Tab` moves focus forward:
+* First to the "Minus" button, when not disabled
+* Then to the input field
+* Finally to the "Plus" button, when not disabled
+
+Pressing `Shift` + `Tab` moves focus backward through the interactive elements.
+
+Pressing `Arrow Up` when focused in the Input field increases the value.
+
+Pressing `Arrow Down` when focused in the Input field decreases the value.
+
+Pressing `Enter` on the “Minus” Button decreases the value.
+
+Pressing `Enter` on the “Plus” Button increases the value.

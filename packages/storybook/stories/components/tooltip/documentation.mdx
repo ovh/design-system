@@ -23,14 +23,12 @@ _**Tooltip** component is used to display contextual information when the user h
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=55-23473"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/tooltip"
               name="Tooltip"
-              relatedComponents={ [{ name: 'Icon' }, { name: 'Text' }] }>
+              relatedComponents={ [{ name: 'Icon' }] }>
   **Tooltip** component is used to display contextual information when the user hovers or focuses an element.
 
   It enhances user experience by providing helpful hints, explanations, or descriptions without cluttering the UI.
 
-  **Tooltips** are commonly used for <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>,
-  <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink>,
-  <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink>, and other interactive elements.
+  **Tooltips** are commonly used with a button, an icon, or interactive elements.
 </IdentityCard>
 
 <Heading label="Anatomy" level={ 2 } />
@@ -47,22 +45,31 @@ Use the **Tooltip** component to provide additional information or context for U
 
 **Tooltips** should be brief and helpful, enhancing user understanding without overwhelming them.
 
-They are suitable for <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink>, <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink>, <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink>, and any other elements where additional context would be beneficial.
+They are suitable for Button, Icon, Link, and any other elements where additional context would be beneficial.
+
+<Heading label="Tooltip vs Popover" level={ 3 } />
+
+- Both components look similar but a **Tooltip** is displayed on hover and focus while a <StorybookLink kind={ ODS_COMPONENTS_TITLE.popover } story={ STORY.documentation }>Popover</StorybookLink> is triggered by click.
+- **Tooltips** are commonly used for shorter explanations, while longer text / complex UIs would suit Popovers better.
+- Use a Popover when you need to insert interactive elements such as Button.
+- A Popover can be dismissed if an action button allows it.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    '- Use a Tooltip to communicate error messages',
-    '- Write very important information within a Tooltip since it is only displayed on hover and focus so the user might miss its crucial content',
-    '- Insert rich information such as image in a Tooltip',
-    <span>- Use interactive elements within a Tooltip such as <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> or <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink></span>,
-    '- Repeat information within a Tooltip that is already visible in the UI',
+    '- Don’t place critical or essential information inside a Tooltip, users may miss it',
+    '- Don’t use Tooltip to show error messages',
+    '- Don’t include interactive elements (e.g., buttons, links) inside a Tooltip',
+    '- Don’t repeat content already visible in the UI. Tooltips should complement, not duplicate',
+    '- Don’t overload Tooltips with rich content (images, media, long paragraphs)',
   ]}
   dos={[
-    '- Use a Tooltip to provide useful, brief additional information',
-    '- Use Tooltips sparingly without invading the screen',
-    <span>- Write Tooltip's <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> as full sentences with punctuation except there is not enough space</span>,
+    '- Use a Tooltip to provide concise, contextual help or clarification',
+    '- Keep the content brief and easy to read, ideally under two lines',
+    '- Use complete sentences with punctuation when space allows for improved readability',
+    '- Use Tooltips only when the user might need additional context, not by default on every element',
+    '- Position the Tooltip so it does not obstruct important elements',
   ]}
 />
 
@@ -74,9 +81,9 @@ They are suitable for <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story=
 
 By default, a **Tooltip** is hidden to the user.
 
-It triggers when the user hovers or focuses on the **Tooltip**'s trigger element such as an <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink>.
+It triggers when the user hovers or focuses on the **Tooltip**'s trigger element such as an Icon.
 
-As long as the user's mouse cursor or focus is active, the **Tooltip** will persist.
+The **Tooltip** remains visible while the user's mouse or focus is active, with customizable open and close delays.
 
 It will hide when the users stop hovering over or focusing on this element.
 
@@ -84,8 +91,20 @@ On a mobile device, a **Tooltip** is displayed upon tapping, and it will hide wh
 
 <Heading label="Variation" level={ 2 } />
 
-- **With extra arrow**: providing a more pronounced visual connection between the tooltip and the element it describes, ensuring users clearly understand which element the tooltip is associated with.
+**With extra arrow**: providing a more pronounced visual connection between the tooltip and the element it describes, ensuring users clearly understand which element the tooltip is associated with.
 
-<Heading label="Accessibility" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-**Tooltip** component is a visual equivalent of ARIA labels, it will be read the same way by screen readers.
+<Heading label="Focus Management" level={ 3 } />
+
+The **Tooltip** is tied to its trigger element and becomes visible when the trigger receives focus.
+
+It remains open as long as the trigger element is focused.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Tab` moves focus to the trigger, opening the **Tooltip** without delay.
+
+Pressing `Tab` again moves focus away, closing the **Tooltip**.
+
+Pressing `Escape` closes the **Tooltip** immediately if it is open.

@@ -42,34 +42,38 @@ _**Link** is a component that enables redirection to a new page, section, websit
 
 They are also used when linking to another document. In that case, **Link** description should contain type and size of document.
 
-<Heading label="When to use a Link or a Button" level={ 3 } />
+<Heading label="When to use a Link or a Button?" level={ 3 } />
 
-They have different purposes so, make sure you are accurately using them.
+**Links** and <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink> serve different purposes, and using them correctly improves both accessibility and user experience.
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is used for actions while **Link** is used for navigation.
+* Use a **Link** when the action navigates the user to another page or resource, either within your application or to an external site
+* Use a Button when the action performs a function or triggers a behavior on the current page, like submitting a form, opening a modal, or toggling a menu.
+
+A Button should not mimic a **Link**. It can lead to confusion for users and assistive technologies, as buttons are not typically expected to handle navigation.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    <span>- Use a Link as a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> for actions such as 'save', 'cancel' or 'submit'</span>,
-    '- Use "Click Here" or "Here" as description for a Link',
-    '- Write a full long sentence as Link description',
-    <span>- Use different color for Link and the optional <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> when you add one</span>,
+    '- Don’t use Link to perform actions like “save”, “submit”, or “cancel”, use Button for that',
+    '- Don’t use vague text like “Click here” or “Read more”, it provides no context for screen readers or SEO',
+    '- Don’t write entire sentences as Link text',
+    '- Don’t apply different colors to a Link and its adjacent Icon. They should appear as one cohesive element',
+    '- Don’t open Link in a new tab or window unless it’s clearly indicated and necessary (e.g., for external sites)',
+    '- Don’t forget to set appropriate rel attributes (e.g., rel="noopener noreferrer") for external Links opened in new tabs',
   ]}
   dos={[
-    '- Use a Link to redirect user to a new page, section or website',
-    '- Make a Link description self-explanatory to describe where user will be send after following this Link',
-    '- Write short key words as Link description',
-    '- Ensure users are aware of a Link containing a document by providing its type and size',
+    '- Use a Link to navigate to another page, section, or external website, not to trigger actions',
+    '- Make Link text clear and descriptive, so users understand where the link will take them',
+    '- Keep Link labels short and meaningful, ideally 1–4 words',
+    '- Indicate when a Link leads to a document or file by including its type and size (e.g., “Annual Report (PDF, 1.2MB)”)',
+    '- Optionally include an Icon, but ensure it’s styled consistently with the Link text',
   ]}
 />
 
 <Heading label="Placement" level={ 2 } />
 
 A **Link** can stand alone on a page, or it can be placed within a sentence or a paragraph.
-
-An optional <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> can be displayed on the left or right of the **Link** label content.
 
 <Heading label="Behavior" level={ 2 } />
 
@@ -79,12 +83,20 @@ When disabled, users cannot focus nor click on the **Link**.
 
 On hover, **Link** is underlined and its color changes.
 
-When users clicks anywhere on the **Link**, even its optional <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink>, they are redirected to the expected page or section.
+An optional Icon can be displayed on the left or right of the **Link** label content. Icon-only **Link** also exists but it must meet accessibility requirements. See Accessibility section below.
 
-<Heading label="Variation" level={ 2 } />
+When users clicks anywhere on the **Link**, even its optional Icon, they are redirected to the expected page or section.
 
-N/A
+<Heading label="Navigation" level={ 2 } />
 
-<Heading label="Accessibility" level={ 2 } />
+<Heading label="Focus Management" level={ 3 } />
 
-While **Link** has focus, users can press `Enter` key to open it.
+The **Link** component can receive keyboard focus and is part of the standard tab order.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Enter` while a **Link** is focused activates it, navigating to the associated destination.
+
+Pressing `Shift` + `Tab` moves focus to the previous interactive element.
+
+If a **Link** opens in a new tab, focus remains on the original page unless otherwise specified.

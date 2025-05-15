@@ -23,12 +23,11 @@ _A **Modal** component is used to overlay with important content the main view o
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=47-2607"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/modal"
               name="Modal"
-              relatedComponents={ [{ name: 'Button' }, { name: 'Text' }] }>
+              relatedComponents={ [{ name: 'Button' }] }>
   A **Modal** is used to provide some information to users that needs a response or immediate attention.
 
   While a **Modal** is triggered, there is no interaction possible on the page that is overlaid so users have to
-  dismiss or click on an action <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> to proceed
-  further.
+  dismiss or click on an action Button to proceed further.
 </IdentityCard>
 
 <Heading label="Anatomy" level={ 2 } />
@@ -37,9 +36,9 @@ _A **Modal** component is used to overlay with important content the main view o
 
 1. **Backdrop overlay** to obscure the on-page content
 2. **Container**
-3. **Content** container, filled with <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> or other read-only content, depending on the usage
+3. **Content container**, filled with text or other read-only content, depending on the usage
 4. **Action Buttons** container, to complete or cancel the **Modal** task
-5. **`close` icon Button** to close the **Modal** without submitting any data
+5. **`xmark` icon Button** to close the **Modal** without submitting any data
 
 <Heading label="Usage" level={ 2 } />
 
@@ -61,16 +60,18 @@ They can be dismissable or not.
 
 <BestPractices
   donts={[
-    '- Trigger a Modal as a result of a first Modal actions',
-    '- Use a Modal if the informational content is very long within a Modal: consider alternatives if that is your case',
-    <span>- Use a Modal only to notify users about a successful completion of their actions: use <StorybookLink kind={ ODS_COMPONENTS_TITLE.message } story={ STORY.documentation }>Message</StorybookLink> component</span>,
+    '- Don’t use Modals for non-interruptive information, prefer inline content or a Message component for passive feedback',
+    '- Don’t trigger a second Modal from within another Modal since this leads to confusion and poor accessibility',
+    '- Don’t use Modals for long-form content like documentation, complex forms, or multiple paragraphs. Consider a dedicated page or Drawer instead',
+    '- Don’t make a Modal dismissible if the user must take an action to proceed and ensure the intent is clear',
+    '- Don’t overload the Modal with multiple CTAs (Call-to-Action) or overly complex UI elements',
   ]}
   dos={[
-    '- Use a Modal to display information the user needs to respond to',
-    '- Use a Modal to ask a confirmation from the user before proceeding',
-    '- Use Modals sparingly since they are disruptive and stop users in their current task',
-    <span>- Handle closing the Modal when the cancel action <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is clicked</span>,
-    '- Use scrolling only when it is absolutely needed',
+    '- Use a Modal to capture user attention for critical decisions, confirmations, or required input that blocks the current flow',
+    '- Ensure the Modal has a clear and focused purpose, with concise messaging and a single main action',
+    '- Use Modal color variants (Neutral, Info, Success, Warning, Critical) to match the intent and severity of the message',
+    '- Allow the Modal to be dismissed via a cancel button, close icon, or Escape key, unless a decision is mandatory',
+    '- Keep Modal content short and scannable. Support scroll only when necessary',
   ]}
 />
 
@@ -88,8 +89,6 @@ On small screen, the **Modal** takes all the available space with a margin of 16
 
 A background overlay with opacity is displayed on the page to avoid distraction and help users to focus on the **Modal** content.
 
-When the **Modal** opens, an event is triggered.
-
 An animation with the ease-in and out effect applies on opening.
 
 <Heading label="Closing" level={ 3 } />
@@ -100,13 +99,11 @@ Dismissing a **Modal** means that it will be closed without submitting any data 
 
 A **Modal** will be successfully closed only once the required action or response has been completed by the user, meaning that the task is completed so the user will proceed further.
 
-Closing the **Modal** triggers an event and an animation.
-
 The hidden overflow behaviour is removed whenever the **Modal** get closed.
 
 <Heading label="Scrolling" level={ 3 } />
 
-When necessary, depending on the viewport height and the **Modal** content, the user can scroll vertically with the header and the action <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> remaining in place.
+When necessary, depending on the viewport height and the **Modal** content, the user can scroll vertically with the header and the action Button remaining in place.
 
 <Heading label="Variation" level={ 2 } />
 
@@ -117,13 +114,24 @@ When necessary, depending on the viewport height and the **Modal** content, the 
 - **Warning**: alerting users to potential issues or risks, encouraging caution and preventive measures.
 - **Critical**: highlighting urgent and severe issues that require immediate attention and action to prevent significant negative outcomes.
 
-<Heading label="Accessibility" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-When displayed, the user is directly focused on the **Modal** itself.
+<Heading label="Focus Management" level={ 3 } />
 
-When **Modal** is opened :
-- `Escape` key will dismiss it (if dismissible)
-- `Tabulation` allows to move forward, first to the closing icon, then through any focusable element in the **Modal** (e.g. action <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>)
-- `Shift + Tab` allows the opposite way to move backward in focusing items
+When the **Modal** is opened, focus is automatically set to the **Modal** itself.
 
-Focus is trapped inside the **Modal** scope and inner elements when active.
+Focus is trapped within the **Modal** and its inner elements while it remains open.
+
+When the **Modal** is closed, focus returns to the trigger element unless otherwise specified.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Escape` closes the **Modal** (if dismissible)
+
+Pressing `Tab` moves focus forward:
+* First to the close icon button (if available)
+* Then through any other focusable elements inside the **Modal** (e.g., buttons, inputs)
+
+Pressing `Shift` + `Tab` moves focus backward through the focusable elements.
+
+Once the last focusable element is reached, focus loops back to the first focusable element, ensuring it remains within the **Modal**.

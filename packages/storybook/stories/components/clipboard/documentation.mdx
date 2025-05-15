@@ -45,16 +45,20 @@ _**Clipboard** component allows user to view and copy information to its **Clipb
 
 **Clipboard** is used to quickly and easily copy an amount of text to the user's **Clipboard**.
 
-It can be used when it is considered that it will take the hassle out of selecting and copying an amount of <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> for the user.
+It can be used when it is considered that it will cause trouble for the user to select and copy a text.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={ [
-    '- Use Clipboard just to display some simple text for decorative purpose',
+    '- Don’t use the Clipboard just to display static text, use a read-only Input or Text component instead',
+    '- Don’t display text that should be editable in a Clipboard, this component is read-only by nature',
+    '- Don’t place the Clipboard in contexts where copying is unnecessary or irrelevant',
   ] }
   dos={ [
-    '- Use Clipboard sparingly to reduce user effort',
+    '- Use the Clipboard component to allow users to easily copy non-editable text, such as tokens, or IDs',
+    '- Use Clipboard when copying text manually would be error-prone or tedious',
+    '- Use the mask/unmask toggle appropriately for sensitive content, like passwords or tokens',
   ] }
 />
 
@@ -62,29 +66,35 @@ It can be used when it is considered that it will take the hassle out of selecti
 
 By default, the **Clipboard** content is left-aligned in its container.
 
-**Clipboard**'s <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink> are right-aligned after the component by default, and vertically centered.
+**Clipboard**'s Tooltip is right-aligned after the component by default, and vertically centered.
 
 <Heading label="Behavior" level={ 2 } />
 
 **Clipboard** can be focused and hovered. They can be disabled.
 When disabled, the component can't be hovered, focused nor clicked.
 
-The **Clipboard** component is **used as read-only**, to allow users to copy a predefined <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> that cannot be edited directly.
+The **Clipboard** component is used as read-only, to allow users to copy a predefined text that cannot be edited directly.
 
-Even if no visual indicator prompts the user to do so, **the user can select the Text directly in the Input**.
+Even if no visual indicator prompts the user to do so, the user can select the text directly in the Input.
 
-**The trigger for copying** the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> content to the **Clipboard** **is the "copy" Button**.
-When hovering or focusing, **a Tooltip is displayed as a helper**.
+The trigger for copying the Input field content to the **Clipboard** is the "copy" Button.
 
-The clipboard masking toggled using show/hide action is permanent. Users have to click again to show/hide the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> content.
+When hovering or focusing, a Tooltip is displayed as a helper.
 
-**An event is triggered when a Clipboard's content is copied.**
-A confirmation <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink> is displayed (if user is still hovering the "copy" <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>) when **Clipboard** content has been successfully copied.
+The clipboard masking toggled using show/hide action is permanent. Users have to click again to show/hide the Input field content.
 
-<Heading label="Variation" level={ 2 } />
+A confirmation Tooltip is displayed (if user is still hovering the "copy" Button) when **Clipboard** content has been successfully copied.
 
-N/A
+<Heading label="Navigation" level={ 2 } />
 
-<Heading label="Accessibility" level={ 2 } />
+<Heading label="Focus Management" level={ 3 } />
 
-When focused, the **Clipboard** "copy" <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> can be triggered using `Space` or `Enter` keys.
+The **Clipboard** receives focus as part of the natural tab order. Copy button becomes focusable immediately after the **Clipboard**.
+
+If the **Clipboard** is disabled, it is  skipped in the tab order and cannot be focused.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Ctrl` + `C` (or `Cmd` + `C` on macOS) while the input field is focused copies the selected text.
+
+Pressing `Enter` or `Space` when the copy button is focused triggers the copy action (Button component behavior).

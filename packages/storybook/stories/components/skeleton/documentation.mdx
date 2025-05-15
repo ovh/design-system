@@ -35,19 +35,31 @@ _**Skeleton** component indicates that data is loading. It improves the perceive
 
 <Heading label="Usage" level={ 2 } />
 
-A **Skeleton** can be used in a variety of contexts such as in <StorybookLink kind={ ODS_COMPONENTS_TITLE.card } story={ STORY.documentation }>Card</StorybookLink>, lists, and <StorybookLink kind={ ODS_COMPONENTS_TITLE.table } story={ STORY.documentation }>Table</StorybookLink> content.
+A **Skeleton** can be used in a variety of contexts such as in Cards, lists, and table content.
+
+<Heading label="Spinner vs Skeleton" level={ 3 } />
+
+Both <StorybookLink kind={ ODS_COMPONENTS_TITLE.spinner } story={ STORY.documentation }>Spinner</StorybookLink> and **Skeleton** indicate that content is loading, but they serve different purposes:
+
+* Use a Spinner when the content or result is unknown and the user must wait. For example, after clicking a button or loading data from an API
+
+* Use a **Skeleton** when the structure of the content is known, but the actual data hasn’t loaded yet. It helps set expectations and makes the wait feel shorter
+
+**Tip:** Spinner is better for short or uncertain waits. **Skeleton** is better when the layout is predictable.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    '- Avoid using a Skeleton for static content',
-    '- Use for interactive elements',
+    '- Don’t use Skeleton for static content that doesn’t change, load it normally without placeholders',
+    '- Don’t apply Skeleton to interactive elements like buttons or inputs. Use Spinner or loading states instead',
+    '- Don’t show Skeleton for very short loading delays, it may feel like a glitch or visual noise',
+    '- Don’t animate excessively or use distracting visuals. Skeleton should feel smooth and unobtrusive',
   ]}
   dos={[
-    '- Prefer using a Skeleton for dynamic content except it is necessary for your use case',
-    '- Use a Skeleton if content loading is going to take a few seconds',
-    '- Use when the page or a part of the page is loading or updating',
+    '- Use a Skeleton to indicate loading states for dynamic content, such as user data or content blocks',
+    '- Prefer Skeleton when content will take more than a moment to load (usually > 500ms)',
+    '- Ensure Skeleton is replaced with real content as soon as it is available',
   ]}
 />
 
@@ -59,9 +71,9 @@ A **Skeleton** can be placed whenever needed to indicate a content is loading.
 
 The **Skeleton** component has a linear animation to show to indicates a content is loading.
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+The **Skeleton** component is non-interactive and does not receive keyboard focus. It is purely visual and serves as a placeholder for content loading, without affecting keyboard navigation.
 
 <Heading label="Accessibility" level={ 2 } />
 

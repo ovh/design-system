@@ -22,8 +22,7 @@ _**Password** component is an <StorybookLink kind={ ODS_COMPONENTS_TITLE.input }
               atomicType={ ATOMIC_TYPE.molecule }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=48-4526"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/password"
-              name="Password"
-              relatedComponents={ [{ name: 'Form Field', subtitle: 'Form elements' }, { name: 'Input', subtitle: 'Form elements' }] }>
+              name="Password">
   The **Password** component is an Input field of which the content is replaced with middle dot symbol symbols "·" by default and
   the masking can be toggled using a show/hide action.
 </IdentityCard>
@@ -49,11 +48,11 @@ It can also be used for displaying tokens.
 
 <BestPractices
   donts={[
-    '- Don’t use the Password component when users need to see what they’re typing by default, use a standard Input instead',
-    '- Don’t hide the label. Users should always know what the Password field is for',
-    '- Don’t use Passwords for non-sensitive or public information; this could cause unnecessary friction',
-    '- Don’t rely only on placeholders to communicate password requirements',
-    '- Don’t remove the toggle visibility option unless there is a strong security or UX reason to do so',
+    '- Don\'t use the Password component when users need to see what they\'re typing by default, use a standard Input instead',
+    '- Don\'t hide the label. Users should always know what the Password field is for',
+    '- Don\'t use Passwords for non-sensitive or public information; this could cause unnecessary friction',
+    '- Don\'t rely only on placeholders to communicate password requirements',
+    '- Don\'t remove the toggle visibility option unless there is a strong security or UX reason to do so',
   ]}
   dos={[
     '- Use the Password component for sensitive inputs, such as login credentials, tokens, or API keys',
@@ -74,7 +73,7 @@ Users can toggle the password masking (show/hide) by clicking an action button. 
 
 **Password** supports a clear action to quickly reset its content.
 
-A loading state (spinner) can be displayed inside the field when needed, for example during validation or processing.
+A loading state can be displayed inside the field when needed, for example during validation or processing.
 
 <Heading label="Navigation" level={ 2 } />
 

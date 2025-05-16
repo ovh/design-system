@@ -4,9 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
-import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ QuantityStories } name="Documentation" />
 
@@ -22,13 +20,7 @@ _**Quantity** is a component used to enter and modify a numeric value in a respo
               atomicType={ ATOMIC_TYPE.molecule }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-9160"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/quantity"
-              name="Quantity"
-              relatedComponents={[
-                { name: 'Button' },
-                { name: 'Form Field', subtitle: 'Form elements' },
-                { name: 'Icon' },
-                { name: 'Input', subtitle: 'Form elements' },
-              ]}>
+              name="Quantity">
   The **Quantity** component provides a user-friendly interface for selecting or entering numerical values.
 
   It includes an Input field combined with increment and decrement Buttons to adjust the value easily.
@@ -52,8 +44,8 @@ Limits can be set as minimum or maximum value. In that case, the numeric value c
 
 <BestPractices
   donts={[
-    '- Don’t use the Quantity component for large numeric changes that would require excessive clicking. Prefer a freeform numeric input or slider in those cases',
-    '- Don’t use the component outside of quantitative contexts: it should only be used to adjust measurable numeric values (e.g., quantity, amount)',
+    '- Don\'t use the Quantity component for large numeric changes that would require excessive clicking. Prefer a freeform numeric input or slider in those cases',
+    '- Don\'t use the component outside of quantitative contexts: it should only be used to adjust measurable numeric values (e.g., quantity, amount)',
   ]}
   dos={[
     '- Use the Quantity component for small, incremental adjustments where users are likely to increase or decrease values with just a few clicks',
@@ -87,7 +79,7 @@ When the **Quantity** component is focused, focus is automatically set to the fi
 
 If the Input field is read-only, it can still receive focus but cannot be edited.
 
-If the “Plus” or “Minus” Button is disabled, it cannot be focused.
+If the "Plus" or "Minus" Button is disabled, it cannot be focused.
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
@@ -102,6 +94,6 @@ Pressing `Arrow Up` when focused in the Input field increases the value.
 
 Pressing `Arrow Down` when focused in the Input field decreases the value.
 
-Pressing `Enter` on the “Minus” Button decreases the value.
+Pressing `Enter` on the "Minus" Button decreases the value.
 
-Pressing `Enter` on the “Plus” Button increases the value.
+Pressing `Enter` on the "Plus" Button increases the value.

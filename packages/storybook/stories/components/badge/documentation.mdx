@@ -22,8 +22,7 @@ _**Badge** show concise metadata or the current status for an item, in a compact
               atomicType={ ATOMIC_TYPE.atom }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-22285"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/badge"
-              name="Badge"
-              relatedComponents={ [{ name: 'Tag' }] }>
+              name="Badge">
   A **Badge** component labels an item, a keyword or a status. They are non-interactive and used inline, next to the
   title or text they complete.
 </IdentityCard>
@@ -52,7 +51,7 @@ The notification status can be used next to a menu entry, a label or an option ;
 There are four different sub-types of status, in order of severity:
 * **Error** : Reserved for errors, malfunctions, as well as critical issues. System is unusable, or an action must be taken immediately.
 * **Warning** : Reserved for critical messages that need the user attention and acknowledgment, but might not cause errors.
-* **Information** : Provides information to users in context. Shouldn’t replace regular content.
+* **Information** : Provides information to users in context. Shouldn't replace regular content.
 * **Success** : Reserved to provide to a static persistent success message.
 
 <Heading label="Marketing category" level={ 3 } />
@@ -71,10 +70,10 @@ All product statuses are of type "New", "Limited edition", "Sold out"
 
 <BestPractices
   donts={[
-    '- Don’t use Badge as interactive element (e.g., buttons or filters)',
-    '- Don’t write long sentences or complex phrases inside a Badge',
-    '- Don’t use too many Badges in the same line or component, as this creates visual clutter',
-    '- Don’t place Badge far from the content they describe, proximity reinforces meaning',
+    '- Don\'t use Badge as interactive element (e.g., buttons or filters)',
+    '- Don\'t write long sentences or complex phrases inside a Badge',
+    '- Don\'t use too many Badges in the same line or component, as this creates visual clutter',
+    '- Don\'t place Badge far from the content they describe, proximity reinforces meaning',
   ]}
   dos={[
     '- Keep the label short, specific, and readable (ideally one or two words)',
@@ -96,7 +95,7 @@ Multiple **Badges** can be displayed:
 
 As the **Badge** is an informational component, its default behavior is being read-only.
 
-An **Icon** can be displayed on the left or right of the **Badge** label content. **Icon-only Badge** also exists but it must meet accessibility requirements. See Accessibility section below.
+An icon can be displayed on the left or right of the **Badge** label content. Icon-only **Badge** also exists, but it must meet accessibility requirements. See Accessibility section below.
 
 <Heading label="Variation" level={ 2 } />
 
@@ -120,4 +119,4 @@ The **Badge** component is non-interactive and does not receive keyboard focus. 
 
 **Badges** are read by screen readers as regular text.
 
-**Icon-only Badge** is only used in very specific cases. In the case of its use, it should be accompanied by a hoverable/tab-able <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink> to provide further context.
+Icon-only **Badge** is only used in very specific cases. In the case of its use, it should be accompanied by a hoverable/tab-able tooltip> to provide further context.

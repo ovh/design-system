@@ -4,9 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
-import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ TabsStories } name='Documentation' />
 
@@ -22,8 +20,7 @@ _**Tabs** are a way of navigating between multiple panels, reducing clutter and 
               atomicType={ ATOMIC_TYPE.molecule }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11168"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/tabs"
-              name="Tabs"
-              relatedComponents={ [{ name: 'Link' }] }>
+              name="Tabs">
   **Tabs** are used to organize content by grouping similar information on the same page.
 </IdentityCard>
 
@@ -44,11 +41,11 @@ They can also be used to filter content via some common denominator.
 
 <BestPractices
   donts={[
-    '- Don’t use Tabs as a progress indicator or wizard steps',
-    '- Don’t nest Tabs inside other Tabs, this creates a confusing and hard-to-navigate experience',
-    '- Don’t overload the interface with too many tabs. Use dropdowns if you need more than 5 tabs',
-    '- Don’t use long or verbose labels',
-    '- Don’t use external links or actions as tab triggers, Tabs should only control the visibility of in-page content',
+    '- Don\'t use Tabs as a progress indicator or wizard steps',
+    '- Don\'t nest Tabs inside other Tabs, this creates a confusing and hard-to-navigate experience',
+    '- Don\'t overload the interface with too many tabs. Use dropdowns if you need more than 5 tabs',
+    '- Don\'t use long or verbose labels',
+    '- Don\'t use external links or actions as tab triggers, Tabs should only control the visibility of in-page content',
   ]}
   dos={[
     '- Use Tabs to group related content under the same page when it fits in a shared context',
@@ -71,7 +68,7 @@ Each **Tab** can be hovered, focused and selected. A **Tab** can also act as a d
 
 Each **Tab** has a panel displaying content. Selecting a **Tab** displays the corresponding panel.
 
-The panel does not depend on the **Tab** component, it is in the developer’s hands.
+The panel does not depend on the **Tab** component, it is in the developer's hands.
 
 <Heading label="Navigation" level={ 2 } />
 

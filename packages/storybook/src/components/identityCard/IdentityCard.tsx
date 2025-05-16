@@ -28,10 +28,9 @@ type Prop = {
   figmaLink: string,
   githubUrl: string,
   name: string,
-  relatedComponents: { name: string, subtitle?: string }[],
 }
 
-const IdentityCard = ({ aliases, atomicType, children, figmaLink, githubUrl, name, relatedComponents }: Prop) => {
+const IdentityCard = ({ aliases, atomicType, children, figmaLink, githubUrl, name }: Prop) => {
   return (
     <div className={ styles['identity-card'] }>
       <div>
@@ -71,28 +70,6 @@ const IdentityCard = ({ aliases, atomicType, children, figmaLink, githubUrl, nam
               href={ getAtomicTypeDocUrl(atomicType) }>
               { atomicType }
             </ExternalLink>
-          </td>
-        </tr>
-
-        <tr>
-          <th scope="row">
-            Related component(s)
-          </th>
-
-          <td>
-            {
-              relatedComponents.length > 0 ?
-                relatedComponents.map((relatedComponent, idx) => (
-                  <Fragment key={ idx }>
-                    <StorybookLink kind={ `${SECTION.odsComponents}/${!!relatedComponent.subtitle ? `${relatedComponent.subtitle}/` : ''}${relatedComponent.name}` }
-                                   story={ STORY.documentation }>
-                      { relatedComponent.name }
-                    </StorybookLink>
-
-                    { idx < (relatedComponents.length - 1) && <span>, </span> }
-                  </Fragment>
-                )) : '-'
-            }
           </td>
         </tr>
 

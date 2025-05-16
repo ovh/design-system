@@ -22,8 +22,7 @@ _A list of <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.docum
               atomicType={ ATOMIC_TYPE.atom }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-22762"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/breadcrumb"
-              name="Breadcrumb"
-              relatedComponents={ [{ name: 'Icon' }, { name: 'Link' }] }>
+              name="Breadcrumb">
   **Breadcrumb** is used to define the user's position in a site hierarchy, it can also be useful for a finer navigation in
   an inner application.
 </IdentityCard>
@@ -47,16 +46,16 @@ It has several usage :
 
 <BestPractices
   donts={[
-    '- Don’t use Breadcrumbs as a primary navigation method, they are secondary and contextual only',
-    '- Don’t include external links in Breadcrumb items, all links should be internal',
-    '- Don’t nest Breadcrumbs or place more than one Breadcrumb component on the same page',
-    '- Don’t exceed 4 levels of depth. Overly complex paths reduce clarity and usability',
-    '- Don’t make the current page a link. The last item should be plain text to indicate the user’s location',
-    '- Don’t change the Breadcrumb order to reflect user history or actions, it should always match site structure',
-    '- Don’t use Breadcrumb if the page doesn’t belong to a clearly hierarchical structure',
+    '- Don\'t use Breadcrumbs as a primary navigation method, they are secondary and contextual only',
+    '- Don\'t include external links in Breadcrumb items, all links should be internal',
+    '- Don\'t nest Breadcrumbs or place more than one Breadcrumb component on the same page',
+    '- Don\'t exceed 4 levels of depth. Overly complex paths reduce clarity and usability',
+    '- Don\'t make the current page a link. The last item should be plain text to indicate the user\'s location',
+    '- Don\'t change the Breadcrumb order to reflect user history or actions, it should always match site structure',
+    '- Don\'t use Breadcrumb if the page doesn\'t belong to a clearly hierarchical structure',
   ]}
   dos={[
-    '- Start the Breadcrumb trail with a link to the homepage, using a "home" Icon or the "Home" label',
+    '- Start the Breadcrumb trail with a link to the homepage, using a "home" Icon or the "Home" label for example',
     '- Reflect the actual page hierarchy in the Breadcrumb structure (e.g., Section > Subsection > Current page)',
     '- Use Breadcrumb to provide contextual orientation, especially in deep navigation paths',
     '- Ensure that each Breadcrumb item (except the last one) is a clickable link to a parent page',
@@ -72,22 +71,22 @@ Its width is automatic, relative to its content and is not adjustable.
 
 <Heading label="Behavior" level={ 2 } />
 
-When the **Breadcrumb** has more than 4 <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink> visible, an ellipsis is displayed as a replacement for the middle Link.
+When the **Breadcrumb** has more than 4 links visible, an ellipsis is displayed as a replacement for the middle link.
 
-A click on the ellipsis will expanded all previously hidden Link inline, the collapsed state can't be redone afterwards.
+A click on the ellipsis will expanded all previously hidden link inline, the collapsed state can't be redone afterwards.
 
-The **Breadcrumb** Links are kept inline, even on mobile viewports.
+The **Breadcrumb** links are kept inline, even on mobile viewports.
 
 <Heading label="Navigation" level={ 2 } />
 
 <Heading label="Focus Management" level={ 3 } />
 
-All Links within the **Breadcrumb** component are focusable, following the reading order. The last item, which represents the current page, is static text and does not receive focus.
+All links within the **Breadcrumb** component are focusable, following the reading order. The last item, which represents the current page, is static text and does not receive focus.
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-* Pressing `Tab` moves focus through each Link in the **Breadcrumb** trail
-* Pressing `Enter` while a Link is focused navigates to the corresponding page
-* When an ellipsis (...) appears due to a long **Breadcrumb** trail (more than 4 elements), it behaves as Link:
+* Pressing `Tab` moves focus through each link in the **Breadcrumb** trail
+* Pressing `Enter` while a link is focused navigates to the corresponding page
+* When an ellipsis (...) appears due to a long **Breadcrumb** trail (more than 4 elements), it behaves as a link:
   * Pressing `Enter` expands the full **Breadcrumb** list
-  * Once expanded, additional Links become accessible via `Tab` navigation
+  * Once expanded, additional link become accessible via `Tab` navigation

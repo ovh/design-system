@@ -4,9 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
-import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ FormFieldStories } name="Documentation" />
 
@@ -22,22 +20,7 @@ _A **Form Field** component is used to wrap several form components with logic, 
               atomicType={ ATOMIC_TYPE.molecule }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=172-11996"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/form-field"
-              name="Form Field"
-              relatedComponents={[
-                { name: 'Checkbox', subtitle: 'Form elements' },
-                { name: 'File Upload', subtitle: 'Form elements' },
-                { name: 'Input', subtitle: 'Form elements' },
-                { name: 'Password', subtitle: 'Form elements' },
-                { name: 'Phone Number', subtitle: 'Form elements' },
-                { name: 'Quantity', subtitle: 'Form elements' },
-                { name: 'Radio', subtitle: 'Form elements' },
-                { name: 'Range', subtitle: 'Form elements' },
-                { name: 'Select', subtitle: 'Form elements' },
-                { name: 'Switch', subtitle: 'Form elements' },
-                { name: 'Textarea', subtitle: 'Form elements' },
-                { name: 'Timepicker', subtitle: 'Form elements' },
-                { name: 'Toggle', subtitle: 'Form elements' },
-              ]}>
+              name="Form Field">
   A **Form Field** is based on a single form element or group components as a whole that are decorated with additional
   text to handle specific types of information, like a Password field for example.
 </IdentityCard>
@@ -58,10 +41,10 @@ Users will also type or enter information in the expected format and avoid mista
 
 <BestPractices
   donts={[
-    '- Don’t place interactive elements like links or buttons inside the label',
-    '- Don’t rely on an asterisk alone to indicate required fields. Prefer explicit helper text or label',
+    '- Don\'t place interactive elements like links or buttons inside the label',
+    '- Don\'t rely on an asterisk alone to indicate required fields. Prefer explicit helper text or label',
     '- Overuse content related Form Fields with top aligned label in one group since it requires quite vertical space: split into smaller groups',
-    '- Don’t use Form Field when there’s no input or interaction expected. It is meant for form inputs, not static content',
+    '- Don\'t use Form Field when there\'s no input or interaction expected. It is meant for form inputs, not static content',
   ]}
   dos={[
     '- Use Form Field to wrap form inputs with a clear structure, including a label, optional helper text, or extra information',

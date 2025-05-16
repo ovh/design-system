@@ -11,6 +11,7 @@ import style from './input.module.scss';
 
 interface InputProp extends ComponentPropsWithRef<'input'> {
   clearable?: boolean,
+  invalid?: boolean,
   loading?: boolean,
   maskOption?: {
     enable: boolean,
@@ -23,6 +24,7 @@ interface InputProp extends ComponentPropsWithRef<'input'> {
 const Input: FC<InputProp> = forwardRef(({
   className,
   clearable = false,
+  invalid,
   loading = false,
   maskOption = { enable: false, initialState: INPUT_MASK_STATE.close },
   onClear,
@@ -89,10 +91,11 @@ const Input: FC<InputProp> = forwardRef(({
         className,
       )}
       data-disabled={ props.disabled ? true : undefined }
-      data-invalid={ formFieldContext?.invalid ? true : undefined }
+      data-invalid={ (formFieldContext?.invalid || invalid) ? true : undefined }
       data-readonly={ props.readOnly ? true: undefined }>
       <Field.Input
         className={ style['input__field'] }
+        data-invalid={ invalid ? true : undefined }
         ref={ inputRef }
         type={ inputType }
         { ...props }

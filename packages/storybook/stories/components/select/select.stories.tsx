@@ -22,6 +22,7 @@ export const Demo: StoryObj = {
   render: (arg: DemoArg) => (
     <Select
       disabled={ arg.disabled }
+      fitControlWidth={ arg.fitControlWidth }
       invalid={ arg.invalid }
       items={[
         { label: 'Dog', value:'dog' },
@@ -42,6 +43,12 @@ export const Demo: StoryObj = {
   ),
   argTypes: orderControls({
     disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: { type: 'boolean' },
+    },
+    fitControlWidth: {
       table: {
         category: CONTROL_CATEGORY.general,
       },

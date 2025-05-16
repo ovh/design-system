@@ -241,6 +241,10 @@ export const InFormField = () => (
   </FormField>
 );
 
+export const Invalid = () => (
+  <Input invalid />
+);
+
 export const Readonly = () => (
   <Input
     defaultValue="Readonly"

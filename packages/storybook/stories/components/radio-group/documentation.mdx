@@ -4,9 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
-import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ RadioGroupStories } name="Documentation" />
 
@@ -22,8 +20,7 @@ _A **Radio** button allows users to select only one option from a number of choi
               atomicType={ ATOMIC_TYPE.atom }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-14625"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/radio"
-              name="Radio"
-              relatedComponents={ [{ name: 'Form Field', subtitle: 'Form elements' }] }>
+              name="Radio">
   **Radio Group** is a group of Radios to select a single state from multiples options.
 </IdentityCard>
 
@@ -48,16 +45,16 @@ Also, it can serve as :
 
 <BestPractices
   donts={[
-    '- Don’t use Radio Group when multiple selections are allowed. Use Checkbox instead',
-    '- Don’t use a Radio Group with more than 5 options. Switch to a Select component for better usability',
+    '- Don\'t use Radio Group when multiple selections are allowed. Use Checkbox instead',
+    '- Don\'t use a Radio Group with more than 5 options. Switch to a Select component for better usability',
     '- Avoid situations where all options in a set should be deselected',
-    '- Don’t truncate long labels, allow wrapping to maintain readability',
+    '- Don\'t truncate long labels, allow wrapping to maintain readability',
   ]}
   dos={[
     '- Use Radio Group when users must choose only one option from a set of two or more',
     '- Ensure each radio has a clear and concise label, wrapped text is preferable to truncated labels',
     '- Keep the number of radios concise (ideally 2 to 5) to avoid overwhelming the user',
-    '- Consider using a Toggle instead of a two-option Radio Group when the options are affirmative/negative (e.g., “Enable notifications” yes/no)',
+    '- Consider using a Toggle instead of a two-option Radio Group when the options are affirmative/negative (e.g., "Enable notifications" yes/no)',
     '- Group related radios together with a visible label or legend to provide context',
   ]}
 />

@@ -4,9 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
-import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ CheckboxStories } name="Documentation" />
 
@@ -22,8 +20,7 @@ _**Checkbox** are used for a list of options where the user may make a choice by
               atomicType={ ATOMIC_TYPE.atom }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-28514"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/checkbox"
-              name="Checkbox"
-              relatedComponents={ [] }>
+              name="Checkbox">
   **Checkbox** are used to make a choice that must be confirmed by submitting a form. For an instantaneous choice
   (without submit), the use of a switch is preferred (see Switch).
 </IdentityCard>
@@ -51,10 +48,10 @@ A **Checkbox** group is used for a list of options where the user may make a cho
 
 <BestPractices
   donts={[
-   '- Don’t use a Checkbox if the user can only select one option, use a Radio Button instead',
-   '- Don’t truncate labels with ellipsis',
-   '- Don’t place Checkboxes too close together, maintain sufficient spacing to prevent selection errors',
-   '- Don’t use Checkboxes for binary actions like “save” or “submit”, use a Button instead',
+   '- Don\'t use a Checkbox if the user can only select one option, use a Radio Group instead',
+   '- Don\'t truncate labels with ellipsis',
+   '- Don\'t place Checkboxes too close together, maintain sufficient spacing to prevent selection errors',
+   '- Don\'t use Checkboxes for binary actions like "save" or "submit", use a Button instead',
   ]}
   dos={[
     '- Use clear, concise, and descriptive labels to explain what the Checkbox controls',

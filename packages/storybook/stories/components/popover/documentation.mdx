@@ -22,8 +22,7 @@ _**Popover** component is triggered by click and is used to provide additional i
               atomicType={ ATOMIC_TYPE.atom }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-8447"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/popover"
-              name="Popover"
-              relatedComponents={ [{ name: 'Button' }] }>
+              name="Popover">
   A **Popover** will provide additional information to the user in a clear and concise way.
 
   It is commonly used to appear by click, thus crucial information should not be displayed in the **Popover**.
@@ -40,31 +39,31 @@ _**Popover** component is triggered by click and is used to provide additional i
 
 A **Popover** is used to provide an explanation for a user interface element.
 
-It can include interactive elements such as Button or Link.
+It can include interactive elements such as a button or a link.
 
 <Heading label="Tooltip vs Popover" level={ 3 } />
 
-- Both components look similar but a <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink> is displayed on hover and focus while a **Popover** is triggered by click.
-- Tooltips are commonly used for shorter explanations, while longer text / complex UIs would suit **Popovers** better.
-- Use a **Popover** when you need to insert interactive elements such as Button.
-- A **Popover** can be dismissed if an action button allows it.
+- Both components look similar but a <StorybookLink kind={ ODS_COMPONENTS_TITLE.tooltip } story={ STORY.documentation }>Tooltip</StorybookLink> is displayed on hover and focus while **Popover** is triggered by click.
+- Tooltips are commonly used for shorter explanations, while longer text / complex UIs would suit a popover better.
+- Use a popover when you need to insert interactive elements such as Button.
+- A popover can be dismissed if an action button allows it.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    '- Don’t place critical or mandatory information inside a Popover. Users may miss it since it’s only revealed on click',
-    '- Don’t overload a Popover with rich content like images, videos, or large interactive components. Use a Modal or Drawer instead',
-    '- Don’t trigger a Popover from non-obvious elements, the interactive element should clearly indicate it controls a Popover',
-    '- Don’t rely on Popovers for persistent content since they’re meant to be transient and dismissible',
-    '- Don’t use a Popover on elements that are already part of another complex interaction',
+    '- Don\'t place critical or mandatory information inside a popover. Users may miss it since it\'s only revealed on click',
+    '- Don\'t overload a popover with rich content like images, videos, or large interactive components. Use a Modal or Drawer instead',
+    '- Don\'t trigger a popover from non-obvious elements, the interactive element should clearly indicate it controls a popover',
+    '- Don\'t rely on popovers for persistent content since they\'re meant to be transient and dismissible',
+    '- Don\'t use a popover on elements that are already part of another complex interaction',
   ]}
   dos={[
-    '- Use a Popover to display contextual information or options that are secondary to the main task',
-    '- Prefer Popover over Tooltip when the content is longer, interactive, or requires formatting (but keep it focused)',
-    '- Write Popover content using complete sentences',
-    '- Ensure the Popover is positioned clearly and does not overlap with its trigger element',
-    '- Use Popover for lightweight content such as field explanations, secondary actions',
+    '- Use a popover to display contextual information or options that are secondary to the main task',
+    '- Prefer a popover over a tooltip when the content is longer, interactive, or requires formatting (but keep it focused)',
+    '- Write a popover content using complete sentences',
+    '- Ensure the popover is positioned clearly and does not overlap with its trigger element',
+    '- Use a popover for lightweight content such as field explanations, secondary actions',
   ]}
 />
 
@@ -86,7 +85,7 @@ The **Popover** can be closed or dismissed by clicking anywhere on the page outs
 
 <Heading label="Focus Management" level={ 3 } />
 
-Depending on the **Popover** trigger used (e.g., a Button or a Link), refer to that component’s documentation for its keyboard interaction.
+Depending on the **Popover** trigger used (e.g., a button or a link), refer to that component's documentation for its keyboard interaction.
 
 When the **Popover** is opened, it gains focus automatically. Focus remains within the **Popover** until it is closed.
 

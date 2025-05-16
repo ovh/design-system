@@ -5,8 +5,8 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 import * as AccordionStories from './accordion.stories';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ AccordionStories } name="Documentation" />
 
@@ -22,15 +22,14 @@ _An **Accordion** is a vertical header that reveals or hides an associated secti
               atomicType={ ATOMIC_TYPE.atom }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=1-6634"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/accordion"
-              name="Accordion"
-              relatedComponents={ [] }>
+              name="Accordion">
   The **Accordion** component delivers large amounts of content in a small space through progressive disclosure.
 
   The header part gives the user a high-level overview of the content allowing them to decide which sections to
   read.
 
   **Accordions** can make information processing and discovering more effective. However, it does hide content
-  from the users, and it’s important to account for a user not noticing or reading all the included content. If a user
+  from the users, and it\'s important to account for a user not noticing or reading all the included content. If a user
   is likely to read all the content then then the usage of an **Accordion** would not be recommended as it adds an extra
   interaction to access the content; instead use a full scrolling page with normal headers.
 </IdentityCard>
@@ -40,7 +39,7 @@ _An **Accordion** is a vertical header that reveals or hides an associated secti
 ![Component anatomy](components/accordion/anatomy.png "Component anatomy")
 
 1. **Header**: contains the section title and acts as a control for revealing the panel or not (always visible).
-2. **Icon**: A "down/up" chevron <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> is used to indicate the “expand/collapse” action, though the entire header area is clickable (always visible).
+2. **Icon**: A "down/up" chevron <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> is used to indicate the "expand/collapse" action, though the entire header area is clickable (always visible).
 3. **Panel**: the section of content associated with an **Accordion** header.
 
 <Heading label="Usage" level={ 2 } />
@@ -57,10 +56,10 @@ Use this component for :
 
 <BestPractices
   donts={ [
-    '- Don’t nest Accordions inside each other, this is not supported and leads to poor usability',
-    '- Don’t use Accordion to hide critical information needed for completing a task',
-    '- Don’t use vague or generic titles like “Section 1”, they should be descriptive',
-    '- Don’t expose a lot of content in the title',
+    '- Don\'t nest Accordions inside each other',
+    '- Don\'t use Accordion to hide critical information needed for completing a task',
+    '- Don\'t use vague or generic titles like "Section 1", they should be descriptive',
+    '- Don\'t expose a lot of content in the title',
   ] }
   dos={ [
     '- Use Accordion to progressively disclose content, especially in long or dense pages',

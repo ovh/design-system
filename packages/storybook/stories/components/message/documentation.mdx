@@ -22,8 +22,7 @@ _**Message** component helps to communicate with users providing feedback or inf
               atomicType={ ATOMIC_TYPE.molecule }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=44-8300"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/message"
-              name="Message"
-              relatedComponents={ [{ name: 'Button' }, { name: 'Icon' }] }>
+              name="Message">
   **Message** component communicates information to the user.
 
   It grabs the user's attention in a prominent way.
@@ -45,7 +44,7 @@ _**Message** component helps to communicate with users providing feedback or inf
 
 There are four different subtypes of standard **Messages**, in order of priority:
 
-- **Information**: Provides info to users in context. Shouldn’t be overused to replace regular content.
+- **Information**: Provides info to users in context. Shouldn't be overused to replace regular content.
 - **Success**: Reserved to provide to a success message. They are displayed as a snackbar.
 - **Warning**: Reserved for **Messages** that need the user attention and acknowledgment but might not cause errors.
 - **Critical**: Reserved for errors, malfunctions, as well as critical issues. Inform the user that a problem requires immediate intervention or correction before the process continues.
@@ -55,14 +54,14 @@ There are four different subtypes of standard **Messages**, in order of priority
 
 <BestPractices
   donts={[
-    '- Don’t use Message to highlight static or decorative content, prefer components like Card for that',
-    '- Don’t write overly long or complex Message that could overwhelm or confuse users',
-    '- Don’t rely solely on color to convey meaning, always keep the Icon for clarity',
-    '- Don’t use vague or generic text, always provide helpful context or guidance',
-    '- Don’t overload the interface with multiple simultaneous Messages unless absolutely necessary',
+    '- Don\'t use Message to highlight static or decorative content, prefer components like Card for that',
+    '- Don\'t write overly long or complex Message that could overwhelm or confuse users',
+    '- Don\'t rely solely on color to convey meaning, always keep the Icon for clarity',
+    '- Don\'t use vague or generic text, always provide helpful context or guidance',
+    '- Don\'t overload the interface with multiple simultaneous Messages unless absolutely necessary',
   ]}
   dos={[
-    '- Write Message in a clear, concise, and affirmative tone that aligns with the user’s task',
+    '- Write Message in a clear, concise, and affirmative tone that aligns with the user\'s task',
     '- Place Message in a visible and relevant area of the page, ideally close to the triggering element if any or top of the section',
     '- Use the correct variant (e.g., information, success, warning, error) to match the context and urgency',
     '- Use non-dismissible Message for critical warnings or errors that require immediate resolution',
@@ -80,7 +79,7 @@ They are positioned near their related items or right after the header and befor
 
 Based on its informational manner, the component default behavior is being read-only. You can only select its content if needed.
 
-When a **Message** is dismissible, a click on the `xmark` icon Button will dismiss the **Message**.
+When a **Message** is dismissible, a click on the `xmark` icon button will dismiss the **Message**.
 
 <Heading label="Variation" level={ 2 } />
 

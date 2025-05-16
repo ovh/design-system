@@ -4,9 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
-import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ TableStories } name='Documentation' />
 
@@ -22,22 +20,14 @@ _A component to display data in a tabular format._
               atomicType={ ATOMIC_TYPE.organism }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=93-12118"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/table"
-              name="Table"
-              relatedComponents={[
-                { name: 'Badge' },
-                { name: 'Button' },
-                { name: 'Icon' },
-                { name: 'Link' },
-                { name: 'Medium' },
-                { name: 'Tooltip' },
-              ]}>
+              name="Table">
 </IdentityCard>
 
 <Heading label="Anatomy" level={ 2 } />
 
 ![Component anatomy](components/table/anatomy.png "Component anatomy")
 
-1. **Header** : Header cells of each column. Each header cell contains a text, and can contain an additional icon Button helper with a Tooltip.
+1. **Header** : Header cells of each column. Each header cell contains a text, and can contain an additional icon helper with a tooltip.
 2. **Body** : Main content for data visualization. Each cell can contain text and diverse components, such as Badge, Icon, Link, Tooltip, Medium etc.
 
 <Heading label="Usage" level={ 2 } />
@@ -46,11 +36,11 @@ _A component to display data in a tabular format._
 
 <BestPractices
   donts={[
-    '- Don’t use the Table for layout or alignment purposes, they are meant for displaying tabular data only',
-    '- Don’t use the Table component to display large datasets (e.g. 30+ rows) without pagination or `Load more` Button',
-    '- Don’t overload rows with too much content per cell, keep data atomic and easy to scan',
-    '- Don’t leave column headers unclear or overly abbreviated',
-    '- Don’t make the Table scroll in multiple directions unless absolutely necessary, to avoid poor mobile experiences',
+    '- Don\'t use the Table for layout or alignment purposes, they are meant for displaying tabular data only',
+    '- Don\'t use the Table component to display large datasets (e.g. 30+ rows) without pagination or a `Load more` button',
+    '- Don\'t overload rows with too much content per cell, keep data atomic and easy to scan',
+    '- Don\'t leave column headers unclear or overly abbreviated',
+    '- Don\'t make the Table scroll in multiple directions unless absolutely necessary, to avoid poor mobile experiences',
   ]}
   dos={[
     '- Use a Table to present structured data in a clear and readable layout',

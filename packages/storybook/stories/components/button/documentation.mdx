@@ -22,8 +22,7 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
               atomicType={ ATOMIC_TYPE.atom }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-23353"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/button"
-              name="Button"
-              relatedComponents={ [{ name: 'Icon' }] }>
+              name="Button">
   **Buttons** are triggerable elements that are used to set actions. They communicate calls to action to the user and
   allow them to interact with pages.
 
@@ -48,25 +47,25 @@ A **Button** label indicates what happens when the user taps the **Button**, eve
 
 **Buttons** don't usually redirect to an external page. For that, see <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Link</StorybookLink>.
 
-<Heading label="When to use a Link or a Button?" level={ 3 } />
+<Heading label="When to use a link or a button?" level={ 3 } />
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.documentation }>Links</StorybookLink> and **Buttons** serve different purposes, and using them correctly improves both accessibility and user experience:
+Links and buttons serve different purposes, and using them correctly improves both accessibility and user experience:
 
-* Use a Link when the action navigates the user to another page or resource, either within your application or to an external site
-* Use a **Button** when the action performs a function or triggers a behavior on the current page, like submitting a form, opening a modal, or toggling a menu
+* Use a link when the action navigates the user to another page or resource, either within your application or to an external site
+* Use a button when the action performs a function or triggers a behavior on the current page, like submitting a form, opening a modal, or toggling a menu
 
-A **Button** should not mimic a Link. It can lead to confusion for users and assistive technologies, as **Buttons** are not typically expected to handle navigation.
+A button should not mimic a link. It can lead to confusion for users and assistive technologies, as button are not typically expected to handle navigation.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    '- Don’t use a Button as a Link, use the Link component instead',
-    '- Don’t show more than one primary button per view',
-    '- Don’t place two identical Buttons side by side (same label and style)',
-    '- Don’t use standalone decorative icons in Buttons unless the action is universally understood',
-    '- Don’t use a ghost Button as the main call to action',
-    '- Don’t overload a Button with too much text or visual clutter',
+    '- Don\'t use a Button as a link, use the Link component instead',
+    '- Don\'t show more than one primary button per view',
+    '- Don\'t place two identical Buttons side by side (same label and style)',
+    '- Don\'t use standalone decorative icons in Buttons unless the action is universally understood',
+    '- Don\'t use a ghost Button as the main call to action',
+    '- Don\'t overload a Button with too much text or visual clutter',
   ]}
   dos={[
     '- Use a primary Button to highlight the main action on a page or in a form',
@@ -83,9 +82,9 @@ A **Button** can be hovered, focused, clicked and disabled.
 
 When in disabled state, it is impossible to focus or click on it. A "disabled" cursor is shown when hovering the disabled component.
 
-The **Button** supports a loading state, during which a Spinner replaces its label.
+The **Button** supports a loading state.
 
-An Icon can be displayed on the left or right of the **Button** label. Icon-only **Button** also exists but it must meet accessibility requirements. See Accessibility section below.
+An icon can be displayed on the left or right of the **Button** label. Icon-only **Button** also exists but it must meet accessibility requirements. See Accessibility section below.
 
 <Heading label="Variation" level={ 2 } />
 

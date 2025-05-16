@@ -4,9 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
-import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ TextareaStories } name='Documentation' />
 
@@ -22,8 +20,7 @@ _A **Textarea** component allows users to input and edit multiple lines of text.
               atomicType={ ATOMIC_TYPE.atom }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=53-11147"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/textarea"
-              name="Textarea"
-              relatedComponents={ [] }>
+              name="Textarea">
   The **Textarea** component is used to capture and display multi-line text input from users.
 
   It is typically used in forms where users need to provide detailed information, comments, or descriptions.
@@ -48,9 +45,9 @@ Ensure that the **Textarea** is appropriately sized for the expected input and p
 
 <BestPractices
   donts={[
-    '- Don’t use a Textarea for short, single-line inputs. Use an Input instead',
-    '- Don’t rely on a placeholder as a substitute for a proper label since it disappears once the user starts typing',
-    '- Don’t disable resizing if users are expected to write long-form content and might need a larger view',
+    '- Don\'t use a Textarea for short, single-line inputs. Use an Input instead',
+    '- Don\'t rely on a placeholder as a substitute for a proper label since it disappears once the user starts typing',
+    '- Don\'t disable resizing if users are expected to write long-form content and might need a larger view',
   ]}
   dos={[
     '- Use a Textarea for inputs that may span multiple lines, such as comments, descriptions, or messages',

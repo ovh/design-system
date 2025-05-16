@@ -4,9 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
-import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ TagStories } name='Documentation' />
 
@@ -22,12 +20,11 @@ _A **Tag** component is used to display keywords or categories, with a removal f
               atomicType={ ATOMIC_TYPE.atom }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11580"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/tag"
-              name="Tag"
-              relatedComponents={ [{ name: 'Badge' }, { name: 'Button' }, { name: 'Icon' }] }>
+              name="Tag">
   The **Tag** component is a small UI element used to represent metadata, keywords, categories, or other contextual
   information.
 
-  **Tags** are removable and can include an Icon as additional prefix element.
+  **Tags** are removable and can include an icon as additional prefix element.
 
   They are commonly used in interfaces for categorizing content, filtering, and adding contextual details.
 </IdentityCard>
@@ -52,10 +49,10 @@ Ensure that **Tags** are clearly labelled and easily distinguishable from other 
 
 <BestPractices
   donts={[
-    '- Don’t use a Tag if there is no interaction expected, prefer the Badge component instead',
-    '- Don’t use full sentences or long text in a Tag label',
-    '- Don’t mix Tags with different behaviors (e.g., some removable, some static) unless necessary and clearly indicated',
-    '- Don’t use Tags as primary action triggers (e.g., "Submit", "Save"), use Buttons instead',
+    '- Don\'t use a Tag if there is no interaction expected, prefer the Badge component instead',
+    '- Don\'t use full sentences or long text in a Tag label',
+    '- Don\'t mix Tags with different behaviors (e.g., some removable, some static) unless necessary and clearly indicated',
+    '- Don\'t use Tags as primary action triggers (e.g., "Submit", "Save"), use Buttons instead',
   ]}
   dos={[
     '- Use Tags to represent interactive labels such as filters, categories, or user-defined keywords',

@@ -22,8 +22,7 @@ _**Skeleton** component indicates that data is loading. It improves the perceive
               atomicType={ ATOMIC_TYPE.quark }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-10250"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/skeleton"
-              name="Skeleton"
-              relatedComponents={ [] }>
+              name="Skeleton">
   **Skeleton** indicates, through and animation, that content is loading and that the screen is not frozen.
 </IdentityCard>
 
@@ -43,18 +42,16 @@ Both <StorybookLink kind={ ODS_COMPONENTS_TITLE.spinner } story={ STORY.document
 
 * Use a Spinner when the content or result is unknown and the user must wait. For example, after clicking a button or loading data from an API
 
-* Use a **Skeleton** when the structure of the content is known, but the actual data hasn’t loaded yet. It helps set expectations and makes the wait feel shorter
-
-**Tip:** Spinner is better for short or uncertain waits. **Skeleton** is better when the layout is predictable.
+* Use a **Skeleton** when the structure of the content is known, but the actual data hasn't loaded yet. It helps set expectations and makes the wait feel shorter
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    '- Don’t use Skeleton for static content that doesn’t change, load it normally without placeholders',
-    '- Don’t apply Skeleton to interactive elements like buttons or inputs. Use Spinner or loading states instead',
-    '- Don’t show Skeleton for very short loading delays, it may feel like a glitch or visual noise',
-    '- Don’t animate excessively or use distracting visuals. Skeleton should feel smooth and unobtrusive',
+    '- Don\'t use Skeleton for static content that doesn\'t change, load it normally without placeholders',
+    '- Don\'t apply Skeleton to interactive elements like buttons or inputs. Use Spinner or loading states instead',
+    '- Don\'t show Skeleton for very short loading delays, it may feel like a glitch or visual noise',
+    '- Don\'t animate excessively or use distracting visuals. Skeleton should feel smooth and unobtrusive',
   ]}
   dos={[
     '- Use a Skeleton to indicate loading states for dynamic content, such as user data or content blocks',

@@ -4,9 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
-import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ SelectStories } name="Documentation" />
 
@@ -22,12 +20,7 @@ _**Select** component is used to select one or more items from a list of values_
               atomicType={ ATOMIC_TYPE.molecule }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-24314"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/select"
-              name="Select"
-              relatedComponents={[
-                { name: 'Badge' },
-                { name: 'Flag' },
-                { name: 'Form Field', subtitle: 'Form elements' },
-              ]}>
+              name="Select">
   A **Select** is used to allow users to select one or more items from a list that is displayed after clicking on it.
 </IdentityCard>
 
@@ -53,11 +46,11 @@ The order of items or options in the list should be sorted as following, dependi
 
 <BestPractices
   donts={[
-   '- Don’t use a Select for binary choices like “Yes” or “No”. Use Radio buttons instead for faster interaction',
-   '- Don’t use Select when users need to compare all available options. Use Radio buttons for better visibility',
-   '- Don’t include very long option labels that wrap multiple lines since it makes scanning and selection harder',
-   '- Don’t rely only on placeholder text to communicate intent. Always pair Select with a label',
-   '- Don’t overload Select with too many items (e.g., hundreds). Consider Combobox or a searchable alternative',
+   '- Don\'t use a Select for binary choices like "Yes" or "No". Use Radio buttons instead for faster interaction',
+   '- Don\'t use Select when users need to compare all available options. Use Radio buttons for better visibility',
+   '- Don\'t include very long option labels that wrap multiple lines since it makes scanning and selection harder',
+   '- Don\'t rely only on placeholder text to communicate intent. Always pair Select with a label',
+   '- Don\'t overload Select with too many items (e.g., hundreds). Consider Combobox or a searchable alternative',
   ]}
   dos={[
     '- Use a Select when users need to choose one option from a list of three or more items',

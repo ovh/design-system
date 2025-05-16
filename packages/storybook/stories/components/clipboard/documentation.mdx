@@ -22,12 +22,7 @@ _**Clipboard** component allows user to view and copy information to its **Clipb
               atomicType={ ATOMIC_TYPE.molecule }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=26-7351"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/clipboard"
-              name="Clipboard"
-              relatedComponents={ [
-                { name: 'Button' },
-                { name: 'Input', subtitle: 'Form elements' },
-                { name: 'Tooltip' },
-              ] }>
+              name="Clipboard">
   **Clipboard** component is used to copy quickly and easily a text, a link and more to the **Clipboard**.
 </IdentityCard>
 
@@ -51,9 +46,9 @@ It can be used when it is considered that it will cause trouble for the user to 
 
 <BestPractices
   donts={ [
-    '- Don’t use the Clipboard just to display static text, use a read-only Input or Text component instead',
-    '- Don’t display text that should be editable in a Clipboard, this component is read-only by nature',
-    '- Don’t place the Clipboard in contexts where copying is unnecessary or irrelevant',
+    '- Don\'t use the Clipboard just to display static text, use a read-only Input or Text component instead',
+    '- Don\'t display text that should be editable in a Clipboard, this component is read-only by nature',
+    '- Don\'t place the Clipboard in contexts where copying is unnecessary or irrelevant',
   ] }
   dos={ [
     '- Use the Clipboard component to allow users to easily copy non-editable text, such as tokens, or IDs',
@@ -77,13 +72,13 @@ The **Clipboard** component is used as read-only, to allow users to copy a prede
 
 Even if no visual indicator prompts the user to do so, the user can select the text directly in the Input.
 
-The trigger for copying the Input field content to the **Clipboard** is the "copy" Button.
+The trigger for copying the Input field content to the **Clipboard** is the "copy" button.
 
 When hovering or focusing, a Tooltip is displayed as a helper.
 
 The clipboard masking toggled using show/hide action is permanent. Users have to click again to show/hide the Input field content.
 
-A confirmation Tooltip is displayed (if user is still hovering the "copy" Button) when **Clipboard** content has been successfully copied.
+A confirmation Tooltip is displayed (if user is still hovering the "copy" button) when **Clipboard** content has been successfully copied.
 
 <Heading label="Navigation" level={ 2 } />
 
@@ -97,4 +92,4 @@ If the **Clipboard** is disabled, it is  skipped in the tab order and cannot be 
 
 Pressing `Ctrl` + `C` (or `Cmd` + `C` on macOS) while the input field is focused copies the selected text.
 
-Pressing `Enter` or `Space` when the copy button is focused triggers the copy action (Button component behavior).
+Pressing `Enter` or `Space` when the copy button is focused triggers the copy action (button component behavior).

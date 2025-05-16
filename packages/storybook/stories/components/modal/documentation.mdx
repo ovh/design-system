@@ -4,9 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
-import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ ModalStories } name="Documentation" />
 
@@ -22,8 +20,7 @@ _A **Modal** component is used to overlay with important content the main view o
               atomicType={ ATOMIC_TYPE.molecule }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=47-2607"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/modal"
-              name="Modal"
-              relatedComponents={ [{ name: 'Button' }] }>
+              name="Modal">
   A **Modal** is used to provide some information to users that needs a response or immediate attention.
 
   While a **Modal** is triggered, there is no interaction possible on the page that is overlaid so users have to
@@ -60,11 +57,11 @@ They can be dismissable or not.
 
 <BestPractices
   donts={[
-    '- Don’t use Modals for non-interruptive information, prefer inline content or a Message component for passive feedback',
-    '- Don’t trigger a second Modal from within another Modal since this leads to confusion and poor accessibility',
-    '- Don’t use Modals for long-form content like documentation, complex forms, or multiple paragraphs. Consider a dedicated page or Drawer instead',
-    '- Don’t make a Modal dismissible if the user must take an action to proceed and ensure the intent is clear',
-    '- Don’t overload the Modal with multiple CTAs (Call-to-Action) or overly complex UI elements',
+    '- Don\'t use Modals for non-interruptive information, prefer inline content or a Message component for passive feedback',
+    '- Don\'t trigger a second Modal from within another Modal since this leads to confusion and poor accessibility',
+    '- Don\'t use Modals for long-form content like documentation, complex forms, or multiple paragraphs. Consider a dedicated page or Drawer instead',
+    '- Don\'t make a Modal dismissible if the user must take an action to proceed and ensure the intent is clear',
+    '- Don\'t overload the Modal with multiple CTAs (Call-to-Action) or overly complex UI elements',
   ]}
   dos={[
     '- Use a Modal to capture user attention for critical decisions, confirmations, or required input that blocks the current flow',
@@ -103,7 +100,7 @@ The hidden overflow behaviour is removed whenever the **Modal** get closed.
 
 <Heading label="Scrolling" level={ 3 } />
 
-When necessary, depending on the viewport height and the **Modal** content, the user can scroll vertically with the header and the action Button remaining in place.
+When necessary, depending on the viewport height and the **Modal** content, the user can scroll vertically with the header and the action button remaining in place.
 
 <Heading label="Variation" level={ 2 } />
 

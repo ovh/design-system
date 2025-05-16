@@ -11,6 +11,7 @@ interface SelectValueChangeDetail {
 interface SelectProp extends ComponentPropsWithRef<'div'> {
   defaultValue?: string | string[],
   disabled?: boolean,
+  fitControlWidth?: boolean,
   items: SelectItem[],
   invalid?: boolean,
   multiple?: SelectMultipleMode,
@@ -26,6 +27,7 @@ const Select: FC<SelectProp> = forwardRef(({
   className,
   defaultValue,
   disabled = false,
+  fitControlWidth = true,
   items = [],
   invalid,
   multiple = false,
@@ -71,7 +73,7 @@ const Select: FC<SelectProp> = forwardRef(({
         onValueChange={ onValueChange }
         positioning={{
           gutter: -1,
-          sameWidth: true,
+          sameWidth: fitControlWidth,
         }}
         readOnly={ readOnly }
         ref={ ref }

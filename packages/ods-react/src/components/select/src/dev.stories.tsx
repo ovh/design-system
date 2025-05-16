@@ -174,6 +174,23 @@ export const Default = () => (
   </Select>
 );
 
+export const DifferentWidth = () => (
+  <Select
+    fitControlWidth={ false }
+    items={[
+      { label: 'Dog', value:'dog' },
+      { label: 'Cat', value:'cat' },
+      { label: 'Hamster', value:'hamster' },
+      { label: 'Parrot', value:'parrot' },
+      { label: 'Spider', value:'spider' },
+      { label: 'Goldfish', value:'goldfish' },
+    ]}>
+    <SelectLabel>Label</SelectLabel>
+    <SelectControl />
+    <SelectContent />
+  </Select>
+);
+
 export const Disabled = () => (
   <Select
     disabled

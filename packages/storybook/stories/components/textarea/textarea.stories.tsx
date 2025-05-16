@@ -31,6 +31,12 @@ export const Demo: Story = {
       },
       control: 'boolean',
     },
+    invalid: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: 'boolean',
+    },
     placeholder: {
       table: {
         category: CONTROL_CATEGORY.general,

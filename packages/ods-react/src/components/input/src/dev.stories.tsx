@@ -128,11 +128,14 @@ export const Clearable = () => {
   const [inputValue, setInputValue] = useState('');
 
   return (
-    <Input
-      clearable
-      onChange={ (e: ChangeEvent<HTMLInputElement>) => { setInputValue(e.target.value)} }
-      onClear={ () => { setInputValue('') } }
-      value={ inputValue } />
+    <>
+      <p>Value is: { inputValue }</p>
+
+      <Input
+        clearable
+        onChange={ (e: ChangeEvent<HTMLInputElement>) => { setInputValue(e.target.value)} }
+        value={ inputValue } />
+    </>
   );
 };
 

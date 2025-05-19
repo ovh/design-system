@@ -31,6 +31,7 @@ const Input: FC<InputProp> = forwardRef(({
   type = INPUT_TYPE.text,
   ...props
 }, ref): JSX.Element => {
+  const isControlled = props.value !== undefined;
   const formFieldContext = useFieldContext();
   const inputRef = useRef<HTMLInputElement>(null);
   const [hasValue, setHasValue] = useState(isValueDefined(props.defaultValue) || isValueDefined(props.value));
@@ -64,7 +65,10 @@ const Input: FC<InputProp> = forwardRef(({
 
   function onChange(e: ChangeEvent<HTMLInputElement>): void {
     props.onChange && props.onChange(e);
-    setHasValue(isValueDefined(e.target.value));
+
+    if (!isControlled) {
+      setHasValue(isValueDefined(e.target.value));
+    }
   }
 
   function onClearClick(): void {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FormField, FormFieldLabel } from '../../form-field/src';
-import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList, type PhoneNumberValueChangeDetail } from '.';
+import { PhoneNumber, PhoneNumberControl, type PhoneNumberCountryChangeDetail, PhoneNumberCountryList, type PhoneNumberCountryIsoCode, type PhoneNumberValueChangeDetail } from '.';
 import style from './dev.module.css';
 
 export default {
@@ -22,7 +22,37 @@ export const Clearable = () => (
   </PhoneNumber>
 );
 
-export const Controlled = () => {
+export const ControlledCountry = () => {
+  const [country, setCountry] = useState<PhoneNumberCountryIsoCode>('fr');
+
+  function onCountryChange(detail: PhoneNumberCountryChangeDetail) {
+    setCountry(detail.value)
+  }
+
+  return (
+    <>
+      <p>
+        Current country: { country }
+      </p>
+
+      <PhoneNumber
+        country={ country }
+        onCountryChange={ onCountryChange }>
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+
+      <PhoneNumber
+        country={ country }
+        onCountryChange={ onCountryChange }>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+    </>
+  );
+};
+
+export const ControlledInput = () => {
   const [value, setValue] = useState('');
 
   function onValueChange(detail: PhoneNumberValueChangeDetail) {
@@ -32,14 +62,14 @@ export const Controlled = () => {
   return (
     <>
       <PhoneNumber
-        defaultCountry="fr"
+        country="fr"
         onValueChange={ onValueChange }
         value={ value }>
         <PhoneNumberControl clearable />
       </PhoneNumber>
 
       <PhoneNumber
-        defaultCountry="fr"
+        country="fr"
         onValueChange={ onValueChange }
         value={ value }>
         <PhoneNumberCountryList />
@@ -142,7 +172,7 @@ export const IsoCode = () => (
       Correct isoCode set, should use it:
     </p>
 
-    <PhoneNumber defaultCountry="de">
+    <PhoneNumber country="de">
       <PhoneNumberCountryList />
 
       <PhoneNumberControl />
@@ -153,7 +183,7 @@ export const IsoCode = () => (
     </p>
 
     {/* @ts-ignore */}
-    <PhoneNumber defaultCountry="ww">
+    <PhoneNumber country="ww">
       <PhoneNumberCountryList />
 
       <PhoneNumberControl />

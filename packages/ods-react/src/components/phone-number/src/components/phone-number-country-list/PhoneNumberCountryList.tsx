@@ -3,7 +3,7 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, u
 import { Select, SelectContent, SelectControl, type SelectOptionItem, type SelectValueChangeDetail } from '../../../../select/src';
 import { type PhoneNumberCountryIsoCode } from '../../constants/phone-number-country-iso-code';
 import { usePhoneNumber } from '../../contexts/usePhoneNumber';
-import { getIsoCodeList } from '../../controller/phone-number';
+import { FALLBACK_ISO_CODE, getIsoCodeList, isValid } from '../../controller/phone-number';
 import { PhoneNumberCountryFlag } from '../phone-number-country-flag/PhoneNumberCountryFlag';
 import { PhoneNumberCountryOption } from '../phone-number-country-option/PhoneNumberCountryOption';
 import style from './phoneNumberCountryList.module.scss';
@@ -19,6 +19,7 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
     countries,
     disabled,
     hasError,
+    inputValue,
     invalid,
     isoCode,
     locale,
@@ -26,6 +27,7 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
     readOnly,
     required,
     setHasCountries,
+    setHasError,
     setIsoCode,
   } = usePhoneNumber();
 
@@ -46,17 +48,23 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
   }, [setHasCountries]);
 
   function onValueChange({ value }: SelectValueChangeDetail): void {
-    setIsoCode && setIsoCode(value[0] as PhoneNumberCountryIsoCode);
+    const newIsoCode = value[0] as PhoneNumberCountryIsoCode;
+    const valueIsValid = isValid(inputValue, newIsoCode);
+
+    setIsoCode && setIsoCode(newIsoCode);
+    setHasError && setHasError(!valueIsValid);
 
     if (onCountryChange) {
-      onCountryChange({ value: value[0] as PhoneNumberCountryIsoCode });
+      onCountryChange({
+        isNumberValid: valueIsValid,
+        value: value[0] as PhoneNumberCountryIsoCode,
+      });
     }
   }
 
   return (
     <Select
       className={ classNames(style['phone-number-country-list'], className) }
-      defaultValue={ isoCode }
       disabled={ disabled }
       fitControlWidth={ false }
       invalid={ hasError || invalid }
@@ -65,6 +73,7 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
       required={ required }
       ref={ ref }
       onValueChange={ onValueChange }
+      value={ [isoCode || FALLBACK_ISO_CODE] }
       { ...props }>
       <SelectControl
         className={ style['phone-number-country-list__control'] }

@@ -9,6 +9,7 @@ import {
   Radio, RadioControl, RadioLabel, RadioGroup, RadioGroupLabel,
   Select, SelectContent, SelectControl,
   Textarea,
+  Timepicker, TimepickerControl,
 } from '@ovhcloud/ods-react';
 import { useFormik } from 'formik';
 import React, { type ReactElement } from 'react';
@@ -25,6 +26,7 @@ type FormData = {
   radioGroup: string,
   select: string,
   textarea: string,
+  timepicker: string,
 }
 
 const validationSchema = yup.object<FormData>({
@@ -37,6 +39,7 @@ const validationSchema = yup.object<FormData>({
   radioGroup: yup.string().nullable().required(),
   select: yup.string().nullable().required(),
   textarea: yup.string().nullable().required(),
+  timepicker: yup.string().nullable().required(),
 });
 
 function FormFormik(): ReactElement {
@@ -51,6 +54,7 @@ function FormFormik(): ReactElement {
       radioGroup: '',
       select: 'cat',
       textarea: 'default textarea',
+      timepicker: '',
     },
     onSubmit: (values) => {
       console.log('Formik values', values);
@@ -166,11 +170,11 @@ function FormFormik(): ReactElement {
         </FormFieldLabel>
 
         <PhoneNumber
-          defaultCountry="fr"
+          country="fr"
           defaultValue={ formik.initialValues.phoneNumber }
           name="phoneNumber"
-          onValueChange={ ({ isValid, parsingError, value }) => {
-            if (isValid) {
+          onValueChange={ ({ isNumberValid, parsingError, value }) => {
+            if (isNumberValid) {
               formik.setFieldValue('phoneNumber', value);
             } else {
               formik.setFieldValue('phoneNumber', '');
@@ -306,6 +310,28 @@ function FormFormik(): ReactElement {
 
         <FormFieldError>
           Error while filling textarea
+        </FormFieldError>
+      </FormField>
+
+      <FormField invalid={ formik.touched.timepicker && !!formik.errors.timepicker }>
+        <FormFieldLabel>
+          Timepicker:
+        </FormFieldLabel>
+
+        <Timepicker
+          defaultValue={ formik.initialValues.timepicker }
+          name="timepicker"
+          onValueChange={ ({ value }) => formik.setFieldValue('timepicker', value) }
+          required={ true }>
+          <TimepickerControl onBlur={ formik.handleBlur } />
+        </Timepicker>
+
+        <FormFieldHelper>
+          This is a timepicker to fill
+        </FormFieldHelper>
+
+        <FormFieldError>
+          Error while filling timepicker
         </FormFieldError>
       </FormField>
 

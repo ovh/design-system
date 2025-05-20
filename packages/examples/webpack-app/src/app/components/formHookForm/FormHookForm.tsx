@@ -9,6 +9,7 @@ import {
   Radio, RadioControl, RadioLabel, RadioGroup, RadioGroupLabel,
   Select, SelectContent, SelectControl,
   Textarea,
+  Timepicker, TimepickerControl,
 } from '@ovhcloud/ods-react';
 import React, { type ReactElement, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -24,6 +25,7 @@ type FormData = {
   radioGroup: string,
   select: string,
   textarea: string,
+  timepicker: string,
 }
 
 const defaultValue: FormData = {
@@ -36,6 +38,7 @@ const defaultValue: FormData = {
   radioGroup: '',//radio 1',
   select: 'cat',
   textarea: 'default textarea',
+  timepicker: '',
 };
 
 function FormHookForm(): ReactElement {
@@ -184,10 +187,10 @@ function FormHookForm(): ReactElement {
             </FormFieldLabel>
 
             <PhoneNumber
-              defaultCountry="fr"
+              country="fr"
               defaultValue={ defaultValue.phoneNumber }
-              onValueChange={ ({ isValid, parsingError, value }) =>
-                isValid ? setValue(field.name, value) : setError(field.name, { message: parsingError }) }
+              onValueChange={ ({ isNumberValid, parsingError, value }) =>
+                isNumberValid ? setValue(field.name, value) : setError(field.name, { message: parsingError }) }
               required={ areAllRequired }>
               <PhoneNumberCountryList />
 
@@ -319,6 +322,32 @@ function FormHookForm(): ReactElement {
           Error while filling textarea
         </FormFieldError>
       </FormField>
+
+      <Controller
+        control={ control }
+        name="timepicker"
+        render={ ({ field }) => (
+          <FormField invalid={ !!errors.timepicker }>
+            <FormFieldLabel>
+              Timepicker:
+            </FormFieldLabel>
+
+            <Timepicker
+              defaultValue={ defaultValue.timepicker }
+              onValueChange={ ({ value }) => setValue(field.name, value) }
+              required={ areAllRequired }>
+              <TimepickerControl />
+            </Timepicker>
+
+            <FormFieldHelper>
+              This is a timepicker to fill
+            </FormFieldHelper>
+
+            <FormFieldError>
+              Error while filling timepicker
+            </FormFieldError>
+          </FormField>
+        )} />
 
       <p>
         Errors:

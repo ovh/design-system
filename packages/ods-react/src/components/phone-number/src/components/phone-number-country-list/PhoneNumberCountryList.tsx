@@ -30,11 +30,12 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
   } = usePhoneNumber();
 
   const regionLocalized = new Intl.DisplayNames(locale, { type: 'region' });
+
   const countryItems = useMemo(() => {
     return getIsoCodeList(countries)
       .map<SelectOptionItem>((isoCode) => ({
         customRendererData: { isoCode },
-        label: regionLocalized.of(isoCode) || '',
+        label: regionLocalized.of(isoCode.toUpperCase()) || '',
         value: isoCode,
       }))
       .sort((a, b) => a.label.localeCompare(b.label));

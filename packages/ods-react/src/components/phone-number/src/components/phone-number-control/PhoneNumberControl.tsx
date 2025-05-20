@@ -30,6 +30,7 @@ const PhoneNumberControl: FC<PhoneNumberControlProp> = forwardRef(({
     readOnly,
     required,
     setHasError,
+    setInputValue,
     value,
   } = usePhoneNumber();
   const placeholder = useMemo(() => getExampleNumber(isoCode), [getExampleNumber, isoCode]);
@@ -38,19 +39,20 @@ const PhoneNumberControl: FC<PhoneNumberControlProp> = forwardRef(({
     const value = e.currentTarget.value;
     const valueIsValid = isValid(value, isoCode);
 
+    setInputValue && setInputValue(value);
+    setHasError && setHasError(!valueIsValid);
+
     if (onValueChange) {
       const { error, phoneNumber } = formatPhoneNumber(value, isoCode);
 
       onValueChange({
         country: isoCode,
         formattedValue: phoneNumber,
-        isValid: valueIsValid,
+        isNumberValid: valueIsValid,
         parsingError: error,
         value,
       });
     }
-
-    setHasError && setHasError(!valueIsValid);
   }
 
   return (

@@ -9,7 +9,7 @@ const PhoneNumber: FC<PhoneNumberProp> = forwardRef(({
   children,
   className,
   countries,
-  defaultCountry,
+  country,
   defaultValue,
   disabled,
   invalid,
@@ -26,7 +26,7 @@ const PhoneNumber: FC<PhoneNumberProp> = forwardRef(({
   return (
     <PhoneNumberProvider
       countries={ countries }
-      defaultCountry={ defaultCountry }
+      country={ country }
       defaultValue={ defaultValue }
       disabled={ disabled }
       invalid={ invalid }

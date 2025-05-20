@@ -1,0 +1,13 @@
+import { Meta } from '@storybook/blocks';
+import * as TimepickerStories from './timepicker.stories';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ TimepickerStories } name="Migration From 17.x" />
+
+<Heading label="Timepicker - migrate from v17 to v18" level={ 1 } />
+
+This component has been first released with the v18, there is no migration involved coming from v17.x.
+
+To learn how to use this component, please check the <StorybookLink kind={ ODS_COMPONENTS_TITLE.timepicker } story={ STORY.documentation }>documentation</StorybookLink>.

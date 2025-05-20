@@ -1,0 +1,12 @@
+.custom-timepicker {
+  border: solid 1px #4ecdc4;
+  padding: 8px;
+}
+
+.custom-timepicker-control {
+  background-color: #dffe81;
+}
+
+.custom-timepicker-timezone-list [data-part="trigger"] {
+  background-color: #2b8000;
+}

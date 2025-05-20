@@ -29,6 +29,6 @@ export * from './progress-bar/src';
 export * from './file-upload/src';
 export * from './toggle/src';
 export * from './phone-number/src';
-
 export * from './switch/src';
 export * from './drawer/src';
+export * from './timepicker/src';

@@ -9,6 +9,7 @@ import {
   Radio, RadioControl, RadioLabel, RadioGroup, RadioGroupLabel,
   Select, SelectContent, SelectControl,
   Textarea,
+  Timepicker, TimepickerControl,
 } from '@ovhcloud/ods-react';
 import React, { type FormEvent, type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.scss';
@@ -136,7 +137,7 @@ function FormNative(): ReactElement {
         </FormFieldLabel>
 
         <PhoneNumber
-          defaultCountry="fr"
+          country="fr"
           defaultValue="+33612345678"
           name="phone-number"
           required={ areAllRequired }>
@@ -259,6 +260,26 @@ function FormNative(): ReactElement {
 
         <FormFieldError>
           Error while filling textarea
+        </FormFieldError>
+      </FormField>
+
+      <FormField>
+        <FormFieldLabel>
+          Timepicker:
+        </FormFieldLabel>
+
+        <Timepicker
+          name="timepicker"
+          required={ areAllRequired }>
+          <TimepickerControl />
+        </Timepicker>
+
+        <FormFieldHelper>
+          This is a timepicker to fill
+        </FormFieldHelper>
+
+        <FormFieldError>
+          Error while filling timepicker
         </FormFieldError>
       </FormField>
 

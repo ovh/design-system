@@ -1,23 +1,24 @@
-import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useContext, useState } from 'react';
+import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import { type PhoneNumberCountryIsoCode } from '../constants/phone-number-country-iso-code';
-import { type PhoneNumberCountryPreset } from '../constants/phone-number-country-preset';
-import { getCurrentIsoCode } from '../controller/phone-number';
+import { type PhoneNumberCountriesPreset } from '../constants/phone-number-country-preset';
+import { getCurrentIsoCode, isValid } from '../controller/phone-number';
 
 interface PhoneNumberCountryChangeDetail {
+  isNumberValid: boolean,
   value: PhoneNumberCountryIsoCode,
 }
 
 interface PhoneNumberValueChangeDetail {
   country?: PhoneNumberCountryIsoCode,
   formattedValue?: string,
-  isValid: boolean,
+  isNumberValid: boolean,
   parsingError?: string,
   value: string,
 }
 
 type PhoneNumberRootProp = {
-  countries?: PhoneNumberCountryIsoCode[] | PhoneNumberCountryPreset,
-  defaultCountry?: PhoneNumberCountryIsoCode,
+  countries?: PhoneNumberCountryIsoCode[] | PhoneNumberCountriesPreset,
+  country?: PhoneNumberCountryIsoCode,
   defaultValue?: string,
   disabled?: boolean,
   invalid?: boolean,
@@ -36,9 +37,11 @@ type PhoneNumberInputProp = Omit<ComponentPropsWithRef<'input'>, 'type' | keyof 
 type PhoneNumberContextType = PhoneNumberRootProp & {
   hasCountries?: boolean,
   hasError?: boolean,
+  inputValue?: string,
   isoCode?: PhoneNumberCountryIsoCode,
   setHasCountries?: (value: boolean) => void,
   setHasError?: (value: boolean) => void,
+  setInputValue?: (value: string) => void,
   setIsoCode?: (value: PhoneNumberCountryIsoCode) => void,
 }
 
@@ -48,19 +51,34 @@ interface PhoneNumberProviderProp extends PhoneNumberContextType {
 
 const PhoneNumberContext = createContext<PhoneNumberContextType>({});
 
-function PhoneNumberProvider({ children, defaultCountry, ...prop }: PhoneNumberProviderProp): JSX.Element {
+function PhoneNumberProvider({ children, countries, country, ...prop }: PhoneNumberProviderProp): JSX.Element {
   const [hasCountries, setHasCountries] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [isoCode, setIsoCode] = useState(getCurrentIsoCode(defaultCountry, navigator?.languages, prop.countries));
+  const [inputValue, setInputValue] = useState(prop.value || prop.defaultValue);
+  const [isoCode, setIsoCode] = useState(getCurrentIsoCode(country, navigator?.languages, countries));
+
+  useEffect(() => {
+    if (country) {
+      const newIsoCode = getCurrentIsoCode(country, navigator?.languages, countries);
+
+      if (newIsoCode !== isoCode) {
+        setIsoCode(newIsoCode);
+        setHasError(!isValid(inputValue, newIsoCode));
+      }
+    }
+  }, [countries, country, isoCode]);
 
   return (
     <PhoneNumberContext.Provider value={{
       ...prop,
+      countries,
       hasCountries,
       hasError,
+      inputValue,
       isoCode,
       setHasCountries,
       setHasError,
+      setInputValue,
       setIsoCode,
     }}>
       { children }

@@ -11,7 +11,7 @@ type DemoArg = Partial<PhoneNumberProp> & Partial<PhoneNumberControlProp> & {
 };
 
 const meta: Meta<PhoneNumberProp> = {
-  argTypes: excludeFromDemoControls(['countries', 'defaultCountry', 'defaultValue', 'name', 'onCountryChange', 'onValueChange', 'pattern', 'required', 'value']),
+  argTypes: excludeFromDemoControls(['countries', 'defaultValue', 'name', 'onCountryChange', 'onValueChange', 'pattern', 'required', 'value']),
   component: PhoneNumber,
   subcomponents: { PhoneNumberControl, PhoneNumberCountryList },
   title: 'ODS Components/Form elements/PhoneNumber',
@@ -22,6 +22,7 @@ export default meta;
 export const Demo: StoryObj = {
   render: (arg: DemoArg) => (
     <PhoneNumber
+      country={ arg.country }
       disabled={ arg.disabled }
       invalid={ arg.invalid }
       locale={ arg.locale }
@@ -41,6 +42,14 @@ export const Demo: StoryObj = {
         type: { summary: 'boolean' },
       },
       control: 'boolean',
+    },
+    country: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: { summary: 'PHONE_NUMBER_COUNTRY_ISO_CODE' },
+      },
+      control: { type: 'select' },
+      options: PHONE_NUMBER_COUNTRY_ISO_CODES,
     },
     disabled: {
       table: {

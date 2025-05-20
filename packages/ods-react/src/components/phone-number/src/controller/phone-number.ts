@@ -1,7 +1,7 @@
 import { type CountryCode, ParseError, getCountryCallingCode, isSupportedCountry, isValidPhoneNumber, parsePhoneNumberWithError, getExampleNumber as vendorGetExample } from 'libphonenumber-js';
 import examples from 'libphonenumber-js/mobile/examples';
 import { PHONE_NUMBER_COUNTRY_ISO_CODE, PHONE_NUMBER_COUNTRY_ISO_CODES, type PhoneNumberCountryIsoCode } from '../constants/phone-number-country-iso-code';
-import { PHONE_NUMBER_COUNTRY_PRESET, type PhoneNumberCountryPreset } from '../constants/phone-number-country-preset';
+import { PHONE_NUMBER_COUNTRIES_PRESET, type PhoneNumberCountriesPreset } from '../constants/phone-number-country-preset';
 import { PHONE_NUMBER_PARSING_ERROR } from '../constants/phone-number-error';
 
 const FALLBACK_ISO_CODE = PHONE_NUMBER_COUNTRY_ISO_CODE.fr;
@@ -30,7 +30,7 @@ function getCallingCode(isoCode: PhoneNumberCountryIsoCode): string {
   return getCountryCallingCode(isoCode.toUpperCase() as CountryCode);
 }
 
-function getCurrentIsoCode(isoCode?: PhoneNumberCountryIsoCode, languages?: readonly string[], countries?: PhoneNumberCountryIsoCode[] | PhoneNumberCountryPreset): PhoneNumberCountryIsoCode {
+function getCurrentIsoCode(isoCode?: PhoneNumberCountryIsoCode, languages?: readonly string[], countries?: PhoneNumberCountryIsoCode[] | PhoneNumberCountriesPreset): PhoneNumberCountryIsoCode {
   if (isoCode && PHONE_NUMBER_COUNTRY_ISO_CODES.indexOf(isoCode as PHONE_NUMBER_COUNTRY_ISO_CODE) >= 0 && isSupportedCountry(isoCode.toUpperCase())) {
     return isoCode;
   }
@@ -40,7 +40,7 @@ function getCurrentIsoCode(isoCode?: PhoneNumberCountryIsoCode, languages?: read
   }
 
   const isoCodeList = getIsoCodeList(countries);
-  const defaultValue = countries === PHONE_NUMBER_COUNTRY_PRESET.all ? FALLBACK_ISO_CODE : (countries || [])[0];
+  const defaultValue = countries === PHONE_NUMBER_COUNTRIES_PRESET.all ? FALLBACK_ISO_CODE : (countries || [])[0];
 
   return getBrowserIsoCodes(languages).find((browserIsoCode): browserIsoCode is PhoneNumberCountryIsoCode => {
     return isoCodeList.indexOf(browserIsoCode as PHONE_NUMBER_COUNTRY_ISO_CODE) >= 0 &&
@@ -56,15 +56,15 @@ function getExampleNumber(isoCode?: PhoneNumberCountryIsoCode): string {
   return '';
 }
 
-function getIsoCodeList(countries?: PhoneNumberCountryIsoCode[] | PhoneNumberCountryPreset): readonly PhoneNumberCountryIsoCode[] {
-  if (!countries || countries === PHONE_NUMBER_COUNTRY_PRESET.all) {
+function getIsoCodeList(countries?: PhoneNumberCountryIsoCode[] | PhoneNumberCountriesPreset): readonly PhoneNumberCountryIsoCode[] {
+  if (!countries || countries === PHONE_NUMBER_COUNTRIES_PRESET.all) {
     return PHONE_NUMBER_COUNTRY_ISO_CODES;
   }
   return countries;
 }
 
-function isValid(value: string, isoCode?: PhoneNumberCountryIsoCode): boolean {
-  return isValidPhoneNumber(value, isoCode?.toUpperCase() as CountryCode);
+function isValid(value?: string, isoCode?: PhoneNumberCountryIsoCode): boolean {
+  return isValidPhoneNumber(value || '', isoCode?.toUpperCase() as CountryCode);
 }
 
 // Map internal libphonenumber error code with ODS parsing error

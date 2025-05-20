@@ -131,12 +131,14 @@ export const Disabled = () => (
 );
 
 export const InFormField = () => (
-  <FormField invalid>
+  <FormField>
     <FormFieldLabel>
       Label:
     </FormFieldLabel>
 
     <PhoneNumber>
+      <PhoneNumberCountryList />
+
       <PhoneNumberControl clearable />
     </PhoneNumber>
   </FormField>

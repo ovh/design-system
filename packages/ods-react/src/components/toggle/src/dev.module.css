@@ -1,0 +1,7 @@
+.custom-toggle {
+  background-color: #FF0000;
+
+  [data-part='thumb'] {
+    background-color: #000000;
+  }
+}

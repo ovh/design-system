@@ -4143,6 +4143,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-toggle@workspace:packages/ods-react/src/components/toggle":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-toggle@workspace:packages/ods-react/src/components/toggle"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-tooltip@workspace:packages/ods-react/src/components/tooltip":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-tooltip@workspace:packages/ods-react/src/components/tooltip"

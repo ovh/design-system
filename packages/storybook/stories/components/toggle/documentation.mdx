@@ -1,0 +1,89 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ToggleStories from './toggle.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ ToggleStories } name='Documentation' />
+
+<Banner of={ ToggleStories } />
+
+_**Toggle** TODO some text about the component_
+
+<Canvas of={ ToggleStories.Overview } sourceState='none' />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ ['Toggle Switch', 'Switch'] }
+              atomicType={ ATOMIC_TYPE.atom }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=53-15319"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/toggle"
+              name="Toggle"
+              relatedComponents={ [{ name: 'Checkbox', subtitle: 'Form elements' }] }>
+  The **Toggle** component is used to enable or disable a state, setting or feature.
+
+  It provides a clear visual indication of the current state and allows users to change states with a single click or
+  tap.
+
+  **Toggles** are commonly used in settings, preferences, and forms where a binary choice is required.
+</IdentityCard>
+
+<Heading label="Anatomy" level={ 2 } />
+
+![Component anatomy](components/toggle/anatomy.png "Component anatomy")
+
+1. **Thumb**: informs the user about the **Toggle**'s state according to its position
+2. **Track**: trail where the thumb can slide from left to right and vice versa
+3. **Textual indication**: add extra info about the **Toggle**'s state _(optional)_
+
+<Heading label="Usage" level={ 2 } />
+
+A **Toggle** is commonly used for binary choice.
+
+The user can decide to switch between two states with an immediate effect visible at a glance.
+
+It can be used in following use cases when you need to allow the user to:
+- turn an option or settings on or off
+- add or remove an item or an option
+
+A **Toggle** should never require users to press a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> to apply their settings (if a setting requires a <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.checkbox } story={ STORY.documentation }>Checkbox</StorybookLink> instead).
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    <span>- Use a Toggle when you are not expecting an immediate effect by clicking on it: use a <StorybookLink kind={ ODS_COMPONENTS_TITLE.checkbox } story={ STORY.documentation }>Checkbox</StorybookLink> component instead</span>,
+  ]}
+  dos={[
+    '- Use a Toggle when you need to allow users to adjust settings on mobile',
+    '- A Toggle can be used in a form when it has an immediate effect inside the form to avoid a failed selection when submitted',
+    '- When other elements are displayed by clicking on the Toggle, make sure that these elements are located next to the Toggle so it is clear to the user',
+    '- Add a label to the Toggle that explains what will happen when the user set it to "on" or "off" position: keep it clear and concise',
+  ]}
+/>
+
+<Heading label="Placement" level={ 2 } />
+
+Place the **Toggle** component near the setting or feature it controls.
+
+It should be positioned within forms, settings panels, or any relevant context where a binary choice is required.
+
+Ensure it is easily accessible and visible.
+
+<Heading label="Behavior" level={ 2 } />
+
+When the user clicks on a **Toggle**, it has an immediate effect:
+- set to "on" position, the thumb will slide to the right of the track
+- set to "off" position, the thumb will slide to the left of the track
+
+<Heading label="Variation" level={ 2 } />
+
+N/A
+
+<Heading label="Accessibility" level={ 2 } />
+
+When focused, **Toggle** can be triggered using `Space` or `Enter` keys.

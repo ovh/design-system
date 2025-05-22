@@ -1,0 +1,26 @@
+$ods-switch-height-sm: 24px;
+$ods-switch-height-md: 32px;
+
+@layer ods-atoms {
+  .switch {
+    box-sizing: border-box;
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ods-border-radius-lg);
+    background-color: var(--ods-color-neutral-100);
+
+    &--sm {
+      height: $ods-switch-height-sm;
+    }
+
+    &--md {
+      height: $ods-switch-height-md;
+    }
+
+    &--invalid {
+      border: 1px solid var(--ods-color-form-element-border-critical);
+    }
+  }
+}

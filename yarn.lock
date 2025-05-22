@@ -4113,6 +4113,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-switch@workspace:packages/ods-react/src/components/switch":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-switch@workspace:packages/ods-react/src/components/switch"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-table@workspace:packages/ods-react/src/components/table":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-table@workspace:packages/ods-react/src/components/table"

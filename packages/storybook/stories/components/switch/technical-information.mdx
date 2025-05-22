@@ -1,0 +1,38 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsSwitch from '../../../../ods-react/src/components/switch/documentation/switch.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as SwitchStories from './switch.stories';
+
+<Meta of={ SwitchStories } name="Technical information" />
+
+<Banner of={ SwitchStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ SwitchStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsSwitch } of={ SwitchStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ SwitchStories.Default } sourceState="shown" />
+
+<Heading label="Checked" level={ 3 } />
+
+<Canvas of={ SwitchStories.Checked } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ SwitchStories.Disabled } sourceState="shown" />
+
+<Heading label="Invalid" level={ 3 } />
+
+<Canvas of={ SwitchStories.Invalid } sourceState="shown" />
+
+<Heading label="Sizes" level={ 3 } />
+
+<Canvas of={ SwitchStories.Sizes } sourceState="shown" />

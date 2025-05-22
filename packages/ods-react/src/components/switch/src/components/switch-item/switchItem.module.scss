@@ -1,0 +1,41 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/state';
+
+@layer ods-atoms {
+  .switch-item {
+    transition: background-color .3s, color .3s;
+    border: none;
+    border-radius: var(--ods-border-radius-lg);
+    background-color: inherit;
+    cursor: pointer;
+    padding: 0 12px;
+    height: 100%;
+    color: var(--ods-color-primary-500);
+    font-size: 1rem;
+    font-weight: 600;
+
+    &:hover {
+      background-color:  var(--ods-color-primary-100);
+    }
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+    }
+
+    &[data-focus] {
+      @include focus.ods-focus();
+
+      background-color:  var(--ods-color-primary-100);
+    }
+
+    &[data-state="on"] {
+      background-color:  var(--ods-color-primary-600);
+      color:  var(--ods-color-primary-000);
+
+      &[data-disabled] {
+        background-color: var(--ods-color-neutral-500);
+        color: var(--ods-color-neutral-000);
+      }
+    }
+  }
+}

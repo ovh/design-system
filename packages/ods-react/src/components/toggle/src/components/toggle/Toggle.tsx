@@ -1,6 +1,7 @@
 import { Switch as VendorToggle } from '@ark-ui/react/switch';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { ToggleLabels } from '../toggleLabels/ToggleLabels';
 import style from './toggle.module.scss';
 
 interface ToggleCheckedChangeDetail {
@@ -19,9 +20,6 @@ interface ToggleProp extends ComponentPropsWithRef<'label'> {
   withLabels?: boolean;
 }
 
-const ON_LABEL = 'ON';
-const OFF_LABEL = 'OFF';
-
 const Toggle: FC<ToggleProp> = forwardRef(({
   className,
   checked,
@@ -34,7 +32,7 @@ const Toggle: FC<ToggleProp> = forwardRef(({
     <VendorToggle.Root
       checked={ checked }
       className={ classNames(
-        style['toggle'],
+        style[ 'toggle' ],
       ) }
       defaultChecked={ defaultChecked }
       onCheckedChange={ onCheckedChange }
@@ -42,16 +40,12 @@ const Toggle: FC<ToggleProp> = forwardRef(({
       ref={ ref }>
       <VendorToggle.Control className={
         classNames(
-          style['toggle__control'],
+          style[ 'toggle__control' ],
           className,
         ) }>
-        <VendorToggle.Thumb className={ style['toggle__control__thumb'] } />
+        <VendorToggle.Thumb className={ style[ 'toggle__control__thumb' ] } />
         {
-          withLabels &&
-          <div className={ style['toggle__control__labels'] }>
-            <span className={ style['toggle__control__labels__label-on'] }>{ ON_LABEL }</span>
-            <span className={ style['toggle__control__labels__label-off'] }>{ OFF_LABEL }</span>
-          </div>
+          withLabels && <ToggleLabels />
         }
       </VendorToggle.Control>
       <VendorToggle.HiddenInput />

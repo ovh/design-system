@@ -16,9 +16,6 @@ const meta: Meta<ToggleProp> = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (props) => (
-    <Toggle {... props } />
-  ),
   argTypes: orderControls({
     disabled: {
       table: {

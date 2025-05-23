@@ -21,10 +21,6 @@
       &:hover, &[data-focus] {
         border-color: var(--ods-color-neutral-300);
         background-color: var(--ods-color-neutral-300);
-
-        #{$control}__labels__label-off {
-          color: var(--ods-color-neutral-800);
-        }
       }
 
       &[data-focus] {
@@ -39,10 +35,6 @@
         @include state.ods-is-disabled();
 
         border-color: state.$ods-state-is-disabled-background-color;
-
-        #{$control}__labels__label-off {
-          @include state.ods-is-disabled();
-        }
       }
 
       &[data-state="checked"] {
@@ -58,16 +50,6 @@
         #{$control}__thumb {
           transform: translateX(24px);
         }
-
-        #{$control}__labels__label-on {
-          display: flex;
-        }
-      }
-
-      &[data-state="unchecked"] {
-        #{$control}__labels__label-off {
-            display: flex;
-          }
       }
 
       &__thumb {
@@ -85,38 +67,6 @@
 
         &:not([data-disabled]) {
           box-shadow: rgba(0, 0, 0, 0.25) 0 1px 1px 0;
-        }
-      }
-
-      &__labels {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        line-height: 1;
-        font-family: inherit;
-        font-size: 12px;
-        font-weight: 700;
-        pointer-events: none;
-
-        &__label-on,
-        &__label-off {
-          display: none;
-          transition: color 0.2s;
-        }
-
-        &__label {
-          &-on {
-            margin-right: auto;
-            margin-left: 2px;
-            color: var(--ods-color-neutral-000);
-          }
-
-          &-off {
-            margin-right: 2px;
-            margin-left: auto;
-            color: var(--ods-color-neutral-700);
-          }
         }
       }
     }

@@ -30,12 +30,6 @@ export const Demo: Story = {
       },
       control: 'boolean',
     },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
@@ -73,17 +67,6 @@ export const Disabled: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Switch disabled>
-      <SwitchItem value="item-1">Item 1</SwitchItem>
-      <SwitchItem value="item-2">Item 2</SwitchItem>
-      <SwitchItem value="item-3">Item 3</SwitchItem>
-    </Switch>
-  ),
-};
-
-export const Invalid: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <Switch invalid>
       <SwitchItem value="item-1">Item 1</SwitchItem>
       <SwitchItem value="item-2">Item 2</SwitchItem>
       <SwitchItem value="item-3">Item 3</SwitchItem>

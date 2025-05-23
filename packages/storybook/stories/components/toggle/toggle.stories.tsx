@@ -6,9 +6,6 @@ import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<ToggleProp>;
-type DemoArg = Partial<ToggleProp> & {
-  label?: string,
-};
 
 const meta: Meta<ToggleProp> = {
   argTypes: excludeFromDemoControls(['checked', 'defaultChecked', 'name', 'onCheckedChange', 'required', 'value']),
@@ -19,8 +16,8 @@ const meta: Meta<ToggleProp> = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Toggle disabled={ arg.disabled } invalid={ arg.invalid } withLabel={ arg.withLabel} />
+  render: (props) => (
+    <Toggle {... props } />
   ),
   argTypes: orderControls({
     disabled: {
@@ -35,7 +32,7 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    withLabel: {
+    withLabels: {
       table: {
         category: CONTROL_CATEGORY.general,
       },
@@ -88,6 +85,6 @@ export const Invalid: Story = {
 export const WithLabels: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <Toggle withLabel />
+    <Toggle withLabels />
   ),
 };

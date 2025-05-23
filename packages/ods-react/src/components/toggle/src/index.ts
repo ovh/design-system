@@ -1,1 +1,1 @@
-export { Toggle, type ToggleChangeDetail, type ToggleProp } from './components/toggle/Toggle';
+export { Toggle, type ToggleCheckedChangeDetail, type ToggleProp } from './components/toggle/Toggle';

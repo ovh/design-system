@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import style from './toggle.module.scss';
 
-interface ToggleChangeDetail {
+interface ToggleCheckedChangeDetail {
   checked: boolean,
 }
 
@@ -13,23 +13,23 @@ interface ToggleProp extends ComponentPropsWithRef<'label'> {
   disabled?: boolean;
   invalid?: boolean;
   name?: string;
-  onCheckedChange?: (detail: ToggleChangeDetail) => void,
+  onCheckedChange?: (detail: ToggleCheckedChangeDetail) => void,
   required?: boolean;
   value?: string;
-  withLabel?: boolean;
+  withLabels?: boolean;
 }
+
+const ON_LABEL = 'ON';
+const OFF_LABEL = 'OFF';
 
 const Toggle: FC<ToggleProp> = forwardRef(({
   className,
   checked,
   defaultChecked,
   onCheckedChange,
-  withLabel,
+  withLabels,
   ...props
 }, ref): JSX.Element => {
-  const OnLabel = 'ON';
-  const OffLabel = 'OFF';
-
   return (
     <VendorToggle.Root
       checked={ checked }
@@ -38,17 +38,18 @@ const Toggle: FC<ToggleProp> = forwardRef(({
       ) }
       defaultChecked={ defaultChecked }
       onCheckedChange={ onCheckedChange }
-      { ...props }>
+      { ...props }
+      ref={ ref }>
       <VendorToggle.Control className={
         classNames(
           style['toggle__control'],
           className,
-        ) } ref={ ref }>
-        <VendorToggle.Thumb />
+        ) }>
+        <VendorToggle.Thumb className={ style['toggle__control__thumb'] } />
         {
-          withLabel && <div className={ style['toggle__labels'] }>
-            <span className={ style['toggle__labels-on'] }>{ OnLabel }</span>
-            <span className={ style['toggle__labels-off'] }>{ OffLabel }</span>
+          withLabels && <div className={ style['toggle__control__labels'] }>
+            <span className={ style['toggle__control__labels-on'] }>{ ON_LABEL }</span>
+            <span className={ style['toggle__control__labels-off'] }>{ OFF_LABEL }</span>
           </div>
         }
       </VendorToggle.Control>
@@ -62,5 +63,5 @@ Toggle.displayName = 'Toggle';
 export {
   Toggle,
   type ToggleProp,
-  type ToggleChangeDetail,
+  type ToggleCheckedChangeDetail,
 };

@@ -18,9 +18,5 @@ $ods-switch-height-md: 32px;
     &--md {
       height: $ods-switch-height-md;
     }
-
-    &--invalid {
-      border: 1px solid var(--ods-color-form-element-border-critical);
-    }
   }
 }

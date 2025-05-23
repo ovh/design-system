@@ -11,7 +11,6 @@ interface SwitchValueChangeDetail {
 interface SwitchProp extends ComponentPropsWithRef<'div'> {
   defaultValue?: string,
   disabled?: boolean,
-  invalid?: boolean,
   onValueChange?: (detail: SwitchValueChangeDetail) => void,
   size?: SwitchSize,
   value?: string,
@@ -21,7 +20,6 @@ const Switch: FC<SwitchProp> = forwardRef(({
   className,
   defaultValue,
   disabled,
-  invalid,
   onValueChange,
   size = SWITCH_SIZE.md,
   value,
@@ -38,7 +36,6 @@ const Switch: FC<SwitchProp> = forwardRef(({
       className={ classNames(
         style['switch'],
         style[`switch--${size}`],
-        { [style['switch--invalid']]: invalid },
         className,
       )}
       { ...props }

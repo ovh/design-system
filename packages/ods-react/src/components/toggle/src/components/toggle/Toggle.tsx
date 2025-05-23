@@ -47,9 +47,10 @@ const Toggle: FC<ToggleProp> = forwardRef(({
         ) }>
         <VendorToggle.Thumb className={ style['toggle__control__thumb'] } />
         {
-          withLabels && <div className={ style['toggle__control__labels'] }>
-            <span className={ style['toggle__control__labels-on'] }>{ ON_LABEL }</span>
-            <span className={ style['toggle__control__labels-off'] }>{ OFF_LABEL }</span>
+          withLabels &&
+          <div className={ style['toggle__control__labels'] }>
+            <span className={ style['toggle__control__labels__label-on'] }>{ ON_LABEL }</span>
+            <span className={ style['toggle__control__labels__label-off'] }>{ OFF_LABEL }</span>
           </div>
         }
       </VendorToggle.Control>

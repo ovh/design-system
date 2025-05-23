@@ -26,7 +26,7 @@ export const Controlled = () => {
 };
 
 export const WithLabels = () => (
-  <Toggle withLabel />
+  <Toggle withLabels />
 );
 
 export const Disabled = () => (

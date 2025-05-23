@@ -22,7 +22,7 @@
         border-color: var(--ods-color-neutral-300);
         background-color: var(--ods-color-neutral-300);
 
-        #{$control}__labels-off {
+        #{$control}__labels__label-off {
           color: var(--ods-color-neutral-800);
         }
       }
@@ -40,7 +40,7 @@
 
         border-color: state.$ods-state-is-disabled-background-color;
 
-        #{$control}__labels-off {
+        #{$control}__labels__label-off {
           @include state.ods-is-disabled();
         }
       }
@@ -59,15 +59,15 @@
           transform: translateX(24px);
         }
 
-        #{$control}__labels-on {
+        #{$control}__labels__label-on {
           display: flex;
         }
       }
 
       &[data-state="unchecked"] {
-        #{$control}__labels-off {
-          display: flex;
-        }
+        #{$control}__labels__label-off {
+            display: flex;
+          }
       }
 
       &__thumb {
@@ -99,22 +99,24 @@
         font-weight: 700;
         pointer-events: none;
 
-        &-on,
-        &-off {
+        &__label-on,
+        &__label-off {
           display: none;
           transition: color 0.2s;
         }
 
-        &-on {
-          margin-right: auto;
-          margin-left: 2px;
-          color: var(--ods-color-neutral-000);
-        }
+        &__label {
+          &-on {
+            margin-right: auto;
+            margin-left: 2px;
+            color: var(--ods-color-neutral-000);
+          }
 
-        &-off {
-          margin-right: 2px;
-          margin-left: auto;
-          color: var(--ods-color-neutral-700);
+          &-off {
+            margin-right: 2px;
+            margin-left: auto;
+            color: var(--ods-color-neutral-700);
+          }
         }
       }
     }

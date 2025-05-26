@@ -44,6 +44,8 @@
 
     &[data-readonly] {
       @include state.ods-is-readonly();
+
+      cursor: default;
     }
 
     &[data-state="open"] {

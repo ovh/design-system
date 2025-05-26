@@ -1,7 +1,0 @@
-@use '../../../../../style/text';
-
-@layer ods-atoms {
-  .radio-group-label {
-    @include text.ods-text-label();
-  }
-}

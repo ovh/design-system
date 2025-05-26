@@ -1,6 +1,7 @@
 import { Checkbox as VendorCheckbox } from '@ark-ui/react/checkbox';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { withFormField } from '../../../../form-field/src';
 import style from './checkbox.module.scss';
 
 type CheckboxCheckedState = boolean | 'indeterminate';
@@ -20,7 +21,7 @@ interface CheckboxProp extends ComponentPropsWithRef<'label'> {
   value?: string,
 }
 
-const Checkbox: FC<CheckboxProp> = forwardRef(({
+const Checkbox: FC<CheckboxProp> = withFormField(forwardRef(({
   checked,
   children,
   className,
@@ -49,7 +50,7 @@ const Checkbox: FC<CheckboxProp> = forwardRef(({
       { children }
     </VendorCheckbox.Root>
   );
-});
+}));
 
 Checkbox.displayName = 'Checkbox';
 

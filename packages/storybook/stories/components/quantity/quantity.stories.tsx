@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { Quantity, QuantityControl, QuantityInput, type QuantityInputProp, QuantityLabel, type QuantityProp } from '../../../../ods-react/src/components/quantity/src';
+import { Quantity, QuantityControl, QuantityInput, type QuantityInputProp, type QuantityProp } from '../../../../ods-react/src/components/quantity/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
@@ -11,7 +11,7 @@ type DemoArg = Partial<QuantityProp> & Partial<QuantityInputProp> & {};
 const meta: Meta<QuantityProp> = {
   argTypes: excludeFromDemoControls(['defaultValue', 'name', 'onValueChange', 'required', 'value']),
   component: Quantity,
-  subcomponents: { QuantityControl, QuantityInput, QuantityLabel },
+  subcomponents: { QuantityControl, QuantityInput },
   title: 'ODS Components/Form elements/Quantity',
 };
 

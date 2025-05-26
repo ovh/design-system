@@ -1,6 +1,6 @@
-import { Field } from '@ark-ui/react/field';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { useFormField } from '../../contexts/useFormField';
 import style from './formFieldError.module.scss';
 
 interface FormFieldErrorProp extends ComponentPropsWithRef<'span'> {}
@@ -10,13 +10,19 @@ const FormFieldError: FC<FormFieldErrorProp> = forwardRef(({
   className,
   ...props
 }, ref): JSX.Element => {
+  const { invalid } = useFormField();
+
+  if (!invalid) {
+    return <></>;
+  }
+
   return (
-    <Field.ErrorText
+    <span
       className={ classNames(style['form-field-error'], className) }
       ref={ ref }
       { ...props }>
       { children }
-    </Field.ErrorText>
+    </span>
   );
 });
 

@@ -85,6 +85,7 @@
     "object-curly-spacing": ["error", "always"],
     "operator-linebreak": ["error", "before", { "overrides": { "&&": "after" }}],
     "quotes": ["error", "single"],
+    "react/display-name": 0,
     "react/prop-types": 0,
     "semi": ["error", "always"],
     "sort-imports": [

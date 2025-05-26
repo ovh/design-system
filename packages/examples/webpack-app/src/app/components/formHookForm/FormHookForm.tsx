@@ -6,7 +6,7 @@ import {
   Password,
   PhoneNumber, PhoneNumberControl, PhoneNumberCountryList,
   Quantity, QuantityControl, QuantityInput,
-  Radio, RadioControl, RadioLabel, RadioGroup, RadioGroupLabel,
+  Radio, RadioControl, RadioLabel, RadioGroup,
   Select, SelectContent, SelectControl,
   Textarea,
   Timepicker, TimepickerControl,
@@ -243,9 +243,9 @@ function FormHookForm(): ReactElement {
           <RadioGroup
             defaultValue={ defaultValue.radioGroup }
             onValueChange={ ({ value }) => value && setValue(field.name, value) }>
-            <RadioGroupLabel>
+            <FormFieldLabel>
               Radio Group:
-            </RadioGroupLabel>
+            </FormFieldLabel>
 
             <Radio
               invalid={ !!errors.radioGroup }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
+import { TEXT_PRESET, Text } from '../../text/src';
 import { Toggle } from '.';
-import { FormField } from '../../form-field/src';
 import style from './dev.module.css';
 
 export default {
@@ -8,8 +9,16 @@ export default {
   title: 'Toggle dev',
 };
 
-export const Default = () => (
-  <Toggle />
+export const CustomLabel = () => (
+  <>
+    <Text
+      htmlFor="toggle"
+      preset={ TEXT_PRESET.label }>
+      Label:
+    </Text>
+
+    <Toggle id="toggle" />
+  </>
 );
 
 export const CustomStyle = () => (
@@ -25,19 +34,41 @@ export const Controlled = () => {
   </>;
 };
 
-export const WithLabels = () => (
-  <Toggle withLabels />
+export const Default = () => (
+  <Toggle />
 );
 
 export const Disabled = () => (
   <Toggle disabled />
 );
 
-export const inFormField = () => (
-  <FormField invalid>
-    <Toggle />
-  </FormField>
-);
+export const InFormField = () => {
+  const [isInvalid, setIsInvalid] = useState(false);
+
+  return (
+    <>
+      <button onClick={ () => setIsInvalid((v) => !v) }>
+        Toggle validity
+      </button>
+
+      <FormField invalid={ isInvalid }>
+        <FormFieldLabel>
+          My toggle:
+        </FormFieldLabel>
+
+        <Toggle />
+
+        <FormFieldError>
+          Error
+        </FormFieldError>
+      </FormField>
+    </>
+  );
+};
+
 export const Invalid = () => (
   <Toggle invalid />
+);
+export const WithLabels = () => (
+  <Toggle withLabels />
 );

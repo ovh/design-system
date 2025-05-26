@@ -1,6 +1,7 @@
 import { Select } from '@ark-ui/react/select';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { useFormField } from '../../../../form-field/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { type SelectCustomItemRendererArg, useSelect } from '../../contexts/useSelect';
 import { SelectValueText } from '../select-value-text/SelectValueText';
@@ -15,10 +16,12 @@ interface SelectControlProp extends ComponentPropsWithRef<'button'> {
 const SelectControl: FC<SelectControlProp> = forwardRef(({
   className,
   customItemRenderer,
+  id,
   placeholder,
   multipleSelectionLabel,
   ...props
 }, ref): JSX.Element => {
+  const field = useFormField();
   const { items } = useSelect();
 
   return (
@@ -40,7 +43,7 @@ const SelectControl: FC<SelectControlProp> = forwardRef(({
         </Select.Indicator>
       </Select.Trigger>
 
-      <Select.HiddenSelect />
+      <Select.HiddenSelect id={ field?.id || id } />
     </Select.Control>
   );
 });

@@ -1,7 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { Select, SelectContent, SelectControl, type SelectControlProp, SelectLabel, type SelectProp } from '../../../../ods-react/src/components/select/src';
+import { Select, SelectContent, SelectControl, type SelectControlProp, type SelectProp } from '../../../../ods-react/src/components/select/src';
+import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -10,9 +11,9 @@ type Story = StoryObj<SelectProp>;
 type DemoArg = Partial<SelectProp> & Partial<SelectControlProp> & {};
 
 const meta: Meta<SelectProp> = {
-  argTypes: excludeFromDemoControls(['defaultValue', 'items', 'name', 'onValueChange', 'required', 'value']),
+  argTypes: excludeFromDemoControls(['defaultValue', 'id', 'items', 'name', 'onValueChange', 'required', 'value']),
   component: Select,
-  subcomponents: { SelectContent, SelectControl, SelectLabel },
+  subcomponents: { SelectContent, SelectControl },
   title: 'ODS Components/Form elements/Select',
 };
 
@@ -225,11 +226,15 @@ export const Disabled: Story = {
           { label: 'Spider', value:'spider' },
           { label: 'Goldfish', value:'goldfish' },
         ]}>
-        <SelectLabel>
+        <Text
+          htmlFor="disabled"
+          preset={ TEXT_PRESET.label }>
           Disabled
-        </SelectLabel>
+        </Text>
 
-        <SelectControl placeholder="Select one or more pets" />
+        <SelectControl
+          id="disabled"
+          placeholder="Select one or more pets" />
 
         <SelectContent />
       </Select>
@@ -243,11 +248,15 @@ export const Disabled: Story = {
           { label: 'Spider', value:'spider' },
           { label: 'Goldfish', value:'goldfish' },
         ]}>
-        <SelectLabel>
+        <Text
+          htmlFor="disabled-options"
+          preset={ TEXT_PRESET.label }>
           Disabled options
-        </SelectLabel>
+        </Text>
 
-        <SelectControl placeholder="Select one or more pets" />
+        <SelectControl
+          id="disabled-options"
+          placeholder="Select one or more pets" />
 
         <SelectContent />
       </Select>
@@ -280,11 +289,13 @@ export const Disabled: Story = {
             ]
           },
         ]}>
-        <SelectLabel>
+        <Text
+          htmlFor="disabled-group"
+          preset={ TEXT_PRESET.label }>
           Disabled group or group option
-        </SelectLabel>
+        </Text>
 
-        <SelectControl />
+        <SelectControl id="disabled-group" />
 
         <SelectContent />
       </Select>
@@ -366,11 +377,15 @@ export const Multiple: Story = {
           { label: 'Goldfish', value:'goldfish' },
         ]}
         multiple>
-        <SelectLabel>
+        <Text
+          htmlFor="multiple"
+          preset={ TEXT_PRESET.label }>
           Default multiple selection
-        </SelectLabel>
+        </Text>
 
-        <SelectControl placeholder="Select one or more pets" />
+        <SelectControl
+          id="multiple"
+          placeholder="Select one or more pets" />
 
         <SelectContent />
       </Select>
@@ -385,11 +400,15 @@ export const Multiple: Story = {
           { label: 'Goldfish', value:'goldfish' },
         ]}
         multiple="merge">
-        <SelectLabel>
+        <Text
+          htmlFor="multiple-merged"
+          preset={ TEXT_PRESET.label }>
           Merged multiple selection
-        </SelectLabel>
+        </Text>
 
-        <SelectControl placeholder="Select one or more pets" />
+        <SelectControl
+          id="multiple-merged"
+          placeholder="Select one or more pets" />
 
         <SelectContent />
       </Select>

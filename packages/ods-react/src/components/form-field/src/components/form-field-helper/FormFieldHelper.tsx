@@ -1,4 +1,3 @@
-import { Field } from '@ark-ui/react/field';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 
 interface FormFieldHelperProp extends ComponentPropsWithRef<'span'> {}
@@ -9,12 +8,12 @@ const FormFieldHelper: FC<FormFieldHelperProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   return (
-    <Field.HelperText
+    <span
       className={ className }
       ref={ ref }
       { ...props }>
       { children }
-    </Field.HelperText>
+    </span>
   );
 });
 

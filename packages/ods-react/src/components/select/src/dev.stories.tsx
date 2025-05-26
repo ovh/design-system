@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { FormField } from '../../form-field/src';
+import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
 import { ICON_NAME, Icon } from '../../icon/src';
-import { Select, SelectContent, SelectControl, type SelectCustomGroupRendererArg, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg, SelectLabel } from '.';
+import { Select, SelectContent, SelectControl, type SelectCustomGroupRendererArg, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg } from '.';
+import { TEXT_PRESET, Text } from '../../text/src';
 import style from './dev.module.css';
 
 export default {
@@ -24,12 +25,34 @@ export const Controlled = () => {
       ]}
       onValueChange={ ({ value }) => setValues(value) }
       value={ values }>
-      <SelectLabel>Label</SelectLabel>
       <SelectControl />
       <SelectContent />
     </Select>
   );
 }
+
+export const CustomLabel = () => (
+  <>
+    <Text
+      htmlFor="select"
+      preset={ TEXT_PRESET.label }>
+      Label:
+    </Text>
+
+    <Select
+      items={[
+        { label: 'Dog', value:'dog' },
+        { label: 'Cat', value:'cat' },
+        { label: 'Hamster', value:'hamster' },
+        { label: 'Parrot', value:'parrot' },
+        { label: 'Spider', value:'spider' },
+        { label: 'Goldfish', value:'goldfish' },
+      ]}>
+      <SelectControl id="select" />
+      <SelectContent />
+    </Select>
+  </>
+);
 
 export const CustomCSS = () => (
   <Select
@@ -42,7 +65,6 @@ export const CustomCSS = () => (
       { label: 'Spider', value:'spider' },
       { label: 'Goldfish', value:'goldfish' },
     ]}>
-    <SelectLabel className={ style['custom-select-label'] }>Label</SelectLabel>
     <SelectControl className={ style['custom-select-control'] } />
     <SelectContent className={ style['custom-select-content'] } />
   </Select>
@@ -75,6 +97,8 @@ export const CustomRenderer = () => {
 
   return (
     <>
+      <p>Select simple</p>
+
       <Select
         items={[
           { label: 'Dog', value: 'dog' , customRendererData: { specie: 'Canis familiaris' } },
@@ -84,12 +108,12 @@ export const CustomRenderer = () => {
           { label: 'Spider', value: 'spider' },
           { label: 'Goldfish', value: 'goldfish' },
         ]}>
-        <SelectLabel>Select simple</SelectLabel>
-
         <SelectControl customItemRenderer={ renderItem } />
 
         <SelectContent customOptionRenderer={ renderOption } />
       </Select>
+
+      <p>Select multiple</p>
 
       <Select
         items={[
@@ -101,12 +125,12 @@ export const CustomRenderer = () => {
           { label: 'Goldfish', value: 'goldfish' },
         ]}
         multiple>
-        <SelectLabel>Select multiple</SelectLabel>
-
         <SelectControl customItemRenderer={ renderItem } />
 
         <SelectContent />
       </Select>
+
+      <p>Select multiple merged</p>
 
       <Select
         items={[
@@ -118,12 +142,12 @@ export const CustomRenderer = () => {
           { label: 'Goldfish', value: 'goldfish' },
         ]}
         multiple="merge">
-        <SelectLabel>Select multiple merged</SelectLabel>
-
         <SelectControl customItemRenderer={ renderItem } />
 
         <SelectContent />
       </Select>
+
+      <p>Select group</p>
 
       <Select
         items={[
@@ -148,8 +172,6 @@ export const CustomRenderer = () => {
           },
           { label: 'World', value: 'world' },
         ]}>
-        <SelectLabel>Select group</SelectLabel>
-
         <SelectControl customItemRenderer={ renderItem } />
 
         <SelectContent customGroupRenderer={ renderGroup } />
@@ -168,7 +190,6 @@ export const Default = () => (
       { label: 'Spider', value:'spider' },
       { label: 'Goldfish', value:'goldfish' },
     ]}>
-    <SelectLabel>Label</SelectLabel>
     <SelectControl />
     <SelectContent />
   </Select>
@@ -185,7 +206,6 @@ export const DifferentWidth = () => (
       { label: 'Spider', value:'spider' },
       { label: 'Goldfish', value:'goldfish' },
     ]}>
-    <SelectLabel>Label</SelectLabel>
     <SelectControl />
     <SelectContent />
   </Select>
@@ -202,7 +222,6 @@ export const Disabled = () => (
       { label: 'Spider', value:'spider' },
       { label: 'Goldfish', value:'goldfish' },
     ]}>
-    <SelectLabel>Label</SelectLabel>
     <SelectControl />
     <SelectContent />
   </Select>
@@ -210,7 +229,6 @@ export const Disabled = () => (
 
 export const Empty = () => (
   <Select items={[]}>
-    <SelectLabel>Label</SelectLabel>
     <SelectControl />
     <SelectContent />
   </Select>
@@ -237,33 +255,52 @@ export const Groups = () => (
       },
       { label: 'World', value: 'world' },
     ]}>
-    <SelectLabel>Label</SelectLabel>
     <SelectControl />
     <SelectContent />
   </Select>
 );
 
-export const InFormField = () => (
-  <FormField>
-    <Select
-      items={[
-        { label: 'Dog', value:'dog' },
-        { label: 'Cat', value:'cat' },
-        { label: 'Hamster', value:'hamster' },
-        { label: 'Parrot', value:'parrot' },
-        { label: 'Spider', value:'spider' },
-        { label: 'Goldfish', value:'goldfish' },
-      ]}>
-      <SelectLabel>Label</SelectLabel>
-      <SelectControl />
-      <SelectContent />
-    </Select>
-  </FormField>
-);
+export const InFormField = () => {
+  const [isInvalid, setIsInvalid] = useState(false);
+
+  return (
+    <>
+      <button onClick={ () => setIsInvalid((v) => !v) }>
+        Toggle validity
+      </button>
+
+      <FormField invalid={ isInvalid }>
+        <FormFieldLabel>
+          Label:
+        </FormFieldLabel>
+
+        <Select
+          items={[
+            { label: 'Dog', value:'dog' },
+            { label: 'Cat', value:'cat' },
+            { label: 'Hamster', value:'hamster' },
+            { label: 'Parrot', value:'parrot' },
+            { label: 'Spider', value:'spider' },
+            { label: 'Goldfish', value:'goldfish' },
+          ]}>
+          <SelectControl />
+          <SelectContent />
+        </Select>
+
+        <FormFieldError>
+          Error
+        </FormFieldError>
+      </FormField>
+    </>
+  );
+};
 
 export const Multiple = () => (
   <>
+    <p>Multiple simple</p>
+
     <Select
+      id="multiple-simple"
       items={[
         { label: 'Dog', value:'dog' },
         { label: 'Cat', value:'cat' },
@@ -273,10 +310,11 @@ export const Multiple = () => (
         { label: 'Goldfish', value:'goldfish' },
       ]}
       multiple>
-      <SelectLabel>Multiple simple</SelectLabel>
       <SelectControl placeholder="Please select" />
       <SelectContent />
     </Select>
+
+    <p>Multiple merged</p>
 
     <Select
       items={[
@@ -288,7 +326,6 @@ export const Multiple = () => (
         { label: 'Goldfish', value:'goldfish' },
       ]}
       multiple="merge">
-      <SelectLabel>Multiple merged</SelectLabel>
       <SelectControl placeholder="Please select" />
       <SelectContent />
     </Select>
@@ -305,7 +342,6 @@ export const Placeholder = () => (
       { label: 'Spider', value:'spider' },
       { label: 'Goldfish', value:'goldfish' },
     ]}>
-    <SelectLabel>Label</SelectLabel>
     <SelectControl placeholder="Please select" />
     <SelectContent />
   </Select>
@@ -322,7 +358,6 @@ export const Readonly = () => (
       { label: 'Spider', value:'spider' },
       { label: 'Goldfish', value:'goldfish' },
     ]}>
-    <SelectLabel>Label</SelectLabel>
     <SelectControl />
     <SelectContent />
   </Select>

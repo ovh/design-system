@@ -66,8 +66,13 @@ export const InFormField: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
-        <FormFieldLabel>Dark mode</FormFieldLabel>
+      <FormFieldLabel>
+        Dark mode
+      </FormFieldLabel>
+
+      <div>
         <Toggle />
+      </div>
     </FormField>
   ),
 };

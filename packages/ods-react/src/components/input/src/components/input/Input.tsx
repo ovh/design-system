@@ -1,7 +1,7 @@
-import { Field, useFieldContext } from '@ark-ui/react/field';
 import classNames from 'classnames';
 import { type ChangeEvent, type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { useFormField, withFormField } from '../../../../form-field/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { SPINNER_COLOR, SPINNER_SIZE, Spinner } from '../../../../spinner/src';
 import { INPUT_MASK_STATE, type InputMaskState } from '../../constants/input-mask-state';
@@ -21,7 +21,7 @@ interface InputProp extends ComponentPropsWithRef<'input'> {
   type?: InputType,
 }
 
-const Input: FC<InputProp> = forwardRef(({
+const Input: FC<InputProp> = withFormField(forwardRef(({
   className,
   clearable = false,
   invalid,
@@ -32,7 +32,7 @@ const Input: FC<InputProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const isControlled = props.value !== undefined;
-  const formFieldContext = useFieldContext();
+  const formFieldContext = useFormField();
   const inputRef = useRef<HTMLInputElement>(null);
   const [hasValue, setHasValue] = useState(isValueDefined(props.defaultValue) || isValueDefined(props.value));
   const [isMaskOpen, setIsMaskOpen] = useState(maskOption?.initialState === INPUT_MASK_STATE.open);
@@ -97,7 +97,7 @@ const Input: FC<InputProp> = forwardRef(({
       data-disabled={ props.disabled ? true : undefined }
       data-invalid={ (formFieldContext?.invalid || invalid) ? true : undefined }
       data-readonly={ props.readOnly ? true: undefined }>
-      <Field.Input
+      <input
         className={ style['input__field'] }
         data-invalid={ invalid ? true : undefined }
         ref={ inputRef }
@@ -157,7 +157,7 @@ const Input: FC<InputProp> = forwardRef(({
       }
     </div>
   );
-});
+}));
 
 Input.displayName = 'Input';
 

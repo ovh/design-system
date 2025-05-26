@@ -1,35 +1,28 @@
-import { Field } from '@ark-ui/react/field';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { FormFieldProvider, type FormFieldRootProp } from '../../contexts/useFormField';
 import style from './formField.module.scss';
 
-interface FormFieldProp extends ComponentPropsWithRef<'div'> {
-  disabled?: boolean;
-  invalid?: boolean;
-  readOnly?: boolean;
-  required?: boolean;
-}
+interface FormFieldProp extends ComponentPropsWithRef<'div'>, FormFieldRootProp {}
 
 const FormField: FC<FormFieldProp> = forwardRef(({
   children,
   className,
-  disabled,
+  id,
   invalid,
-  readOnly,
-  required,
   ...props
 }, ref): JSX.Element => {
   return (
-    <Field.Root
-      className={ classNames(style['form-field'], className) }
-      disabled={ disabled }
-      invalid={ invalid }
-      readOnly={ readOnly }
-      required={ required }
-      ref={ ref }
-      { ...props }>
-      { children }
-    </Field.Root>
+    <FormFieldProvider
+      id={ id }
+      invalid={ invalid }>
+      <div
+        className={ classNames(style['form-field'], className) }
+        ref={ ref }
+        { ...props }>
+        { children }
+      </div>
+    </FormFieldProvider>
   );
 });
 

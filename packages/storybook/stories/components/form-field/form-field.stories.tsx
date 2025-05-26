@@ -14,7 +14,7 @@ type DemoArg = Partial<FormFieldProp> & {
 };
 
 const meta: Meta<FormFieldProp> = {
-  argTypes: excludeFromDemoControls(['required']),
+  argTypes: excludeFromDemoControls(['id', 'required']),
   component: FormField,
   subcomponents: { FormFieldError, FormFieldHelper, FormFieldLabel },
   title: 'ODS Components/Form elements/FormField',
@@ -24,10 +24,7 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (args: DemoArg) => (
-    <FormField
-      disabled={ args.disabled }
-      invalid={ args.invalid }
-      readOnly={ args.readOnly }>
+    <FormField invalid={ args.invalid }>
       <FormFieldLabel>
         { args.label }
       </FormFieldLabel>
@@ -44,12 +41,6 @@ export const Demo: StoryObj = {
     </FormField>
   ),
   argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
     errorText: {
       table: {
         category: CONTROL_CATEGORY.slot,
@@ -76,12 +67,6 @@ export const Demo: StoryObj = {
         type: { summary: 'string' },
       },
       control: 'text',
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
     },
   }),
 };

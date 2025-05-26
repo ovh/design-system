@@ -1,5 +1,6 @@
 import { NumberInput } from '@ark-ui/react/number-input';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { withFormField } from '../../../../form-field/src';
 
 interface QuantityValueChangeDetail {
   value: string;
@@ -20,7 +21,7 @@ interface QuantityProp extends Omit<ComponentPropsWithRef<'div'>, 'inputMode'> {
   value?: string,
 }
 
-const Quantity: FC<QuantityProp> = forwardRef(({
+const Quantity: FC<QuantityProp> = withFormField(forwardRef(({
   children,
   defaultValue,
   disabled,
@@ -55,7 +56,7 @@ const Quantity: FC<QuantityProp> = forwardRef(({
       { children }
     </NumberInput.Root>
   );
-});
+}));
 
 Quantity.displayName = 'Quantity';
 

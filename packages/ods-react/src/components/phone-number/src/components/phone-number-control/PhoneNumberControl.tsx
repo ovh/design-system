@@ -23,6 +23,7 @@ const PhoneNumberControl: FC<PhoneNumberControlProp> = forwardRef(({
     hasCountries,
     hasError,
     invalid,
+    id,
     isoCode,
     name,
     onValueChange,
@@ -67,6 +68,7 @@ const PhoneNumberControl: FC<PhoneNumberControlProp> = forwardRef(({
       clearable={ clearable }
       defaultValue={ defaultValue }
       disabled={ disabled }
+      id={ id }
       invalid={ hasError || invalid }
       loading={ loading }
       onChange={ onInputChange }

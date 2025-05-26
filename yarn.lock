@@ -4155,15 +4155,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
-"@ovhcloud/ods-react-toggle@workspace:packages/ods-react/src/components/toggle":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-react-toggle@workspace:packages/ods-react/src/components/toggle"
-=======
 "@ovhcloud/ods-react-timepicker@workspace:packages/ods-react/src/components/timepicker":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-timepicker@workspace:packages/ods-react/src/components/timepicker"
->>>>>>> 754275ef9 (feat(timepicker): implement component)
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-react-toggle@workspace:packages/ods-react/src/components/toggle":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-toggle@workspace:packages/ods-react/src/components/toggle"
   languageName: unknown
   linkType: soft
 

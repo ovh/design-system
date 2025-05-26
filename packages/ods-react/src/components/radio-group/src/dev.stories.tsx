@@ -1,5 +1,7 @@
-import { FormField } from '../../form-field/src';
-import { Radio, RadioControl, RadioGroup, RadioGroupLabel, RadioLabel } from '.';
+import { useState } from 'react';
+import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
+import { TEXT_PRESET, Text } from '../../text/src';
+import { Radio, RadioControl, RadioGroup, RadioLabel } from '.';
 import style from './dev.module.css';
 
 export default {
@@ -29,6 +31,36 @@ export const CustomCSS = () => (
       <RadioLabel>JavaScript</RadioLabel>
     </Radio>
   </RadioGroup>
+);
+
+export const CustomLabel = () => (
+  <>
+    <Text
+      htmlFor="radio-group"
+      preset={ TEXT_PRESET.label }>
+      Label:
+    </Text>
+
+    <RadioGroup id="radio-group">
+      <Radio value="html">
+        <RadioControl />
+
+        <RadioLabel>HTML</RadioLabel>
+      </Radio>
+
+      <Radio value="css">
+        <RadioControl />
+
+        <RadioLabel>CSS</RadioLabel>
+      </Radio>
+
+      <Radio value="js">
+        <RadioControl />
+
+        <RadioLabel>JavaScript</RadioLabel>
+      </Radio>
+    </RadioGroup>
+  </>
 );
 
 export const Default = () => (
@@ -77,33 +109,47 @@ export const Disabled = () => (
   </RadioGroup>
 );
 
-export const InFormField = () => (
-  <FormField>
-    <RadioGroup>
-      <RadioGroupLabel>
-        Pick a language:
-      </RadioGroupLabel>
+export const InFormField = () => {
+  const [isInvalid, setIsInvalid] = useState(false);
 
-      <Radio value="html">
-        <RadioControl />
+  return (
+    <>
+      <button onClick={ () => setIsInvalid((v) => !v) }>
+        Toggle validity
+      </button>
 
-        <RadioLabel>HTML</RadioLabel>
-      </Radio>
+      <FormField invalid={ isInvalid }>
+        <FormFieldLabel>
+          Pick a language:
+        </FormFieldLabel>
 
-      <Radio value="css">
-        <RadioControl />
+        <RadioGroup>
+          <Radio value="html">
+            <RadioControl />
 
-        <RadioLabel>CSS</RadioLabel>
-      </Radio>
+            <RadioLabel>HTML</RadioLabel>
+          </Radio>
 
-      <Radio value="js">
-        <RadioControl />
+          <Radio value="css">
+            <RadioControl />
 
-        <RadioLabel>JavaScript</RadioLabel>
-      </Radio>
-    </RadioGroup>
-  </FormField>
-);
+            <RadioLabel>CSS</RadioLabel>
+          </Radio>
+
+          <Radio value="js">
+            <RadioControl />
+
+            <RadioLabel>JavaScript</RadioLabel>
+          </Radio>
+        </RadioGroup>
+
+        <FormFieldError>
+          Error
+        </FormFieldError>
+      </FormField>
+    </>
+  );
+};
 
 export const Orientation = () => (
   <RadioGroup orientation="horizontal">

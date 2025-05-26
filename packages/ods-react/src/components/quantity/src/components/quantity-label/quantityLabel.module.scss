@@ -1,7 +1,0 @@
-@use '../../../../../style/text';
-
-@layer ods-molecules {
-  .quantity-label {
-    @include text.ods-text-label();
-  }
-}

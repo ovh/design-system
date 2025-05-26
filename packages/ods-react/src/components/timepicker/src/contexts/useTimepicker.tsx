@@ -15,6 +15,7 @@ interface TimepickerValueChangeDetail {
 type TimepickerRootProp = {
   defaultValue?: string,
   disabled?: boolean,
+  id?: string,
   invalid?: boolean,
   name?: string,
   onTimezoneChange?: (detail: TimepickerTimezoneChangeDetail) => void,

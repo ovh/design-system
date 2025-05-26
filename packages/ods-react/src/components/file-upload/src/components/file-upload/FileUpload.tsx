@@ -1,6 +1,7 @@
 import { type FileUploadFileRejectDetails, FileUpload as VendorFileUpload } from '@ark-ui/react/file-upload';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useCallback } from 'react';
+import { withFormField } from '../../../../form-field/src';
 import { type FILE_REJECTION_CAUSE } from '../../constants/file-error';
 import { mapErrorCodes } from '../../controller/file-upload';
 import { FileUploadDropzone } from '../file-upload-dropzone/FileUploadDropzone';
@@ -35,7 +36,7 @@ interface FileUploadProp extends ComponentPropsWithRef<'div'> {
   triggerLabel?: string,
 }
 
-const FileUpload: FC<FileUploadProp> = forwardRef(({
+const FileUpload: FC<FileUploadProp> = withFormField(forwardRef(({
   accept,
   acceptedFileLabel,
   children,
@@ -103,7 +104,7 @@ const FileUpload: FC<FileUploadProp> = forwardRef(({
       <VendorFileUpload.HiddenInput />
     </VendorFileUpload.Root>
   );
-});
+}));
 
 FileUpload.displayName = 'FileUpload';
 

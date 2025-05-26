@@ -1,7 +1,7 @@
 @use '../../../../../style/state';
 
 @layer ods-atoms {
-  .toggle__control__labels {
+  .toggle-labels {
     display: flex;
     align-items: center;
     width: 100%;
@@ -29,6 +29,8 @@
     }
 
     &__label-off {
+      $label-off: &;
+
       margin-right: 2px;
       margin-left: auto;
       color: var(--ods-color-neutral-700);
@@ -37,7 +39,7 @@
         display: flex;
       }
 
-      &--focused:not(&__label-off--disabled) {
+      &--focused:not(#{$label-off}--disabled) {
         color: var(--ods-color-neutral-800);
       }
 

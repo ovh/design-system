@@ -11,7 +11,7 @@ type DemoArg = Partial<PhoneNumberProp> & Partial<PhoneNumberControlProp> & {
 };
 
 const meta: Meta<PhoneNumberProp> = {
-  argTypes: excludeFromDemoControls(['countries', 'defaultValue', 'name', 'onCountryChange', 'onValueChange', 'pattern', 'required', 'value']),
+  argTypes: excludeFromDemoControls(['countries', 'defaultValue', 'id', 'name', 'onCountryChange', 'onValueChange', 'pattern', 'required', 'value']),
   component: PhoneNumber,
   subcomponents: { PhoneNumberControl, PhoneNumberCountryList },
   title: 'ODS Components/Form elements/PhoneNumber',

@@ -1,16 +1,11 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import {
-  Clipboard,
-  ClipboardControl, type ClipboardControlProps,
-  type ClipboardProp,
-  ClipboardTrigger, type ClipboardTriggerProps,
-} from '../../../../ods-react/src/components/clipboard/src';
+import { Clipboard, ClipboardControl, type ClipboardControlProp, type ClipboardProp, ClipboardTrigger, type ClipboardTriggerProp } from '../../../../ods-react/src/components/clipboard/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<ClipboardProp>;
-type DemoArg = Partial<ClipboardProp> & Partial<ClipboardControlProps> & Partial<ClipboardTriggerProps> & {
+type DemoArg = Partial<ClipboardProp> & Partial<ClipboardControlProp> & Partial<ClipboardTriggerProp> & {
   masked?: boolean,
 };
 

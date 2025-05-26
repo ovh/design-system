@@ -1,7 +1,0 @@
-@use '../../../../../style/text';
-
-@layer ods-molecules {
-  .select-label {
-    @include text.ods-text-label();
-  }
-}

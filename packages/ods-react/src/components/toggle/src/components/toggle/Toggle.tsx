@@ -1,7 +1,8 @@
 import { Switch as VendorToggle } from '@ark-ui/react/switch';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { ToggleLabels } from '../toggleLabels/ToggleLabels';
+import { withFormField } from '../../../../form-field/src';
+import { ToggleLabels } from '../toggle-labels/ToggleLabels';
 import style from './toggle.module.scss';
 
 interface ToggleCheckedChangeDetail {
@@ -20,7 +21,7 @@ interface ToggleProp extends ComponentPropsWithRef<'label'> {
   withLabels?: boolean;
 }
 
-const Toggle: FC<ToggleProp> = forwardRef(({
+const Toggle: FC<ToggleProp> = withFormField(forwardRef(({
   className,
   checked,
   defaultChecked,
@@ -32,26 +33,28 @@ const Toggle: FC<ToggleProp> = forwardRef(({
     <VendorToggle.Root
       checked={ checked }
       className={ classNames(
-        style[ 'toggle' ],
-      ) }
+        style['toggle'],
+      )}
       defaultChecked={ defaultChecked }
       onCheckedChange={ onCheckedChange }
       { ...props }
       ref={ ref }>
       <VendorToggle.Control className={
         classNames(
-          style[ 'toggle__control' ],
+          style['toggle__control'],
           className,
-        ) }>
-        <VendorToggle.Thumb className={ style[ 'toggle__control__thumb' ] } />
+        )}>
+        <VendorToggle.Thumb className={ style['toggle__control__thumb'] } />
+
         {
           withLabels && <ToggleLabels />
         }
       </VendorToggle.Control>
+
       <VendorToggle.HiddenInput />
     </VendorToggle.Root>
   );
-});
+}));
 
 Toggle.displayName = 'Toggle';
 

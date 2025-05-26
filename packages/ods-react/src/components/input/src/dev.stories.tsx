@@ -1,5 +1,6 @@
-import { type ChangeEvent, useState } from 'react';
-import { FormField, FormFieldLabel } from '../../form-field/src';
+import { type ChangeEvent, useEffect, useRef, useState } from 'react';
+import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
+import { TEXT_PRESET, Text } from '../../text/src';
 import { INPUT_TYPE, Input } from '.';
 import style from './dev.module.css';
 
@@ -162,6 +163,18 @@ export const ControlledUncontrolled = () => {
   );
 };
 
+export const CustomLabel = () => (
+  <>
+    <Text
+      htmlFor="input"
+      preset={ TEXT_PRESET.label }>
+      Label:
+    </Text>
+
+    <Input id="input" />
+  </>
+);
+
 export const CustomStyle = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
     <div>
@@ -234,15 +247,29 @@ export const DisabledActions = () => (
     type={ INPUT_TYPE.search } />
 );
 
-export const InFormField = () => (
-  <FormField invalid>
-    <FormFieldLabel>
-      My input:
-    </FormFieldLabel>
+export const InFormField = () => {
+  const [isInvalid, setIsInvalid] = useState(false);
 
-    <Input loading />
-  </FormField>
-);
+  return (
+    <>
+      <button onClick={ () => setIsInvalid((v) => !v) }>
+        Toggle validity
+      </button>
+
+      <FormField invalid={ isInvalid }>
+        <FormFieldLabel>
+          My input:
+        </FormFieldLabel>
+
+        <Input />
+
+        <FormFieldError>
+          Error
+        </FormFieldError>
+      </FormField>
+    </>
+  );
+};
 
 export const Invalid = () => (
   <Input invalid />
@@ -253,6 +280,18 @@ export const Readonly = () => (
     defaultValue="Readonly"
     readOnly />
 );
+
+export const Ref = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    console.log(inputRef.current);
+  }, [inputRef]);
+
+  return (
+    <Input ref={ inputRef } />
+  );
+}
 
 export const Types = () => (
   <>

@@ -6,7 +6,7 @@ import {
   Password,
   PhoneNumber, PhoneNumberControl, PhoneNumberCountryList,
   Quantity, QuantityControl, QuantityInput,
-  Radio, RadioControl, RadioLabel, RadioGroup, RadioGroupLabel,
+  Radio, RadioControl, RadioLabel, RadioGroup,
   Select, SelectContent, SelectControl,
   Textarea,
   Timepicker, TimepickerControl,
@@ -232,9 +232,9 @@ function FormFormik(): ReactElement {
           formik.setFieldValue('radioGroup', value);
         }}>
         <FormField>
-          <RadioGroupLabel>
+          <FormFieldLabel>
             Radio group:
-          </RadioGroupLabel>
+          </FormFieldLabel>
 
           <Radio
             required={ true }

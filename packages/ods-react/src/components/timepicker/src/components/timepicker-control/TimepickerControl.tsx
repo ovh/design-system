@@ -13,6 +13,7 @@ const TimepickerControl: FC<TimepickerControlProp> = forwardRef(({
     currentTimezone,
     defaultValue,
     disabled,
+    id,
     invalid,
     name,
     onValueChange,
@@ -40,6 +41,7 @@ const TimepickerControl: FC<TimepickerControlProp> = forwardRef(({
       { ...props }
       defaultValue={ defaultValue }
       disabled={ disabled }
+      id={ id }
       invalid={ invalid }
       onChange={ onInputChange }
       readOnly={ readOnly }

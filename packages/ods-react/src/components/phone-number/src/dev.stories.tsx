@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { FormField, FormFieldLabel } from '../../form-field/src';
+import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
+import { TEXT_PRESET, Text } from '../../text/src';
 import { PhoneNumber, PhoneNumberControl, type PhoneNumberCountryChangeDetail, PhoneNumberCountryList, type PhoneNumberCountryIsoCode, type PhoneNumberValueChangeDetail } from '.';
 import style from './dev.module.css';
 
@@ -96,6 +97,22 @@ export const CustomCSS = () => (
   </PhoneNumber>
 );
 
+export const CustomLabel = () => (
+  <>
+    <Text
+      htmlFor="phone-number"
+      preset={ TEXT_PRESET.label }>
+      Label:
+    </Text>
+
+    <PhoneNumber id="phone-number">
+      <PhoneNumberCountryList />
+
+      <PhoneNumberControl />
+    </PhoneNumber>
+  </>
+);
+
 export const Default = () => (
   <PhoneNumber>
     <PhoneNumberControl />
@@ -130,19 +147,33 @@ export const Disabled = () => (
   </>
 );
 
-export const InFormField = () => (
-  <FormField>
-    <FormFieldLabel>
-      Label:
-    </FormFieldLabel>
+export const InFormField = () => {
+  const [isInvalid, setIsInvalid] = useState(false);
 
-    <PhoneNumber>
-      <PhoneNumberCountryList />
+  return (
+    <>
+      <button onClick={ () => setIsInvalid((v) => !v) }>
+        Toggle validity
+      </button>
 
-      <PhoneNumberControl clearable />
-    </PhoneNumber>
-  </FormField>
-);
+      <FormField invalid={ isInvalid }>
+        <FormFieldLabel>
+          Label:
+        </FormFieldLabel>
+
+        <PhoneNumber>
+          <PhoneNumberCountryList />
+
+          <PhoneNumberControl />
+        </PhoneNumber>
+
+        <FormFieldError>
+          Error
+        </FormFieldError>
+      </FormField>
+    </>
+  );
+};
 
 export const Invalid = () => (
   <>

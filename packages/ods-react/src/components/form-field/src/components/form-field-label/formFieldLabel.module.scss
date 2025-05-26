@@ -1,7 +1,5 @@
-@use '../../../../../style/text';
-
 @layer ods-molecules {
   .form-field-label {
-    @include text.ods-text-label();
+    width: inherit;
   }
 }

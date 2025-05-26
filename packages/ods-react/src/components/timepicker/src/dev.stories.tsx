@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { FormField, FormFieldLabel } from '../../form-field/src';
+import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
+import { TEXT_PRESET, Text } from '../../text/src';
 import { Timepicker, TimepickerControl, type TimepickerTimezoneChangeDetail, TimepickerTimezoneList, type TimepickerValueChangeDetail, Timezone } from '.';
 import { getBrowserTimezone } from './controller/timepicker';
 import style from './dev.module.css';
@@ -73,6 +74,20 @@ export const CustomCSS = () => (
   </Timepicker>
 );
 
+export const CustomLabel = () => (
+  <>
+    <Text
+      htmlFor="timepicker"
+      preset={ TEXT_PRESET.label }>
+      Label:
+    </Text>
+
+    <Timepicker id="timepicker">
+      <TimepickerControl />
+    </Timepicker>
+  </>
+);
+
 export const Default = () => (
   <Timepicker>
     <TimepickerControl />
@@ -111,31 +126,47 @@ export const Disabled = () => (
   </>
 );
 
-export const InFormField = () => (
-  <>
-    <FormField>
-      <FormFieldLabel>
-        Label:
-      </FormFieldLabel>
+export const InFormField = () => {
+  const [isInvalid, setIsInvalid] = useState(false);
 
-      <Timepicker>
-        <TimepickerControl />
-      </Timepicker>
-    </FormField>
+  return (
+    <>
+      <button onClick={ () => setIsInvalid((v) => !v) }>
+        Toggle validity
+      </button>
 
-    <FormField>
-      <FormFieldLabel>
-        Label:
-      </FormFieldLabel>
+      <FormField invalid={ isInvalid }>
+        <FormFieldLabel>
+          Control only:
+        </FormFieldLabel>
 
-      <Timepicker>
-        <TimepickerControl />
+        <Timepicker>
+          <TimepickerControl />
+        </Timepicker>
 
-        <TimepickerTimezoneList />
-      </Timepicker>
-    </FormField>
-  </>
-);
+        <FormFieldError>
+          Error
+        </FormFieldError>
+      </FormField>
+
+      <FormField invalid={ isInvalid }>
+        <FormFieldLabel>
+          With timezones:
+        </FormFieldLabel>
+
+        <Timepicker>
+          <TimepickerControl />
+
+          <TimepickerTimezoneList />
+        </Timepicker>
+
+        <FormFieldError>
+          Error
+        </FormFieldError>
+      </FormField>
+    </>
+  );
+};
 
 export const Invalid = () => (
   <>
@@ -261,7 +292,7 @@ export const WithSeconds = () => (
 
     <br /><br />
 
-    <Timepicker withSeconds onValueChange={(detail)=>console.log(detail)}>
+    <Timepicker withSeconds>
       <TimepickerControl />
 
       <TimepickerTimezoneList />

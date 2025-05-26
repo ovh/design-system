@@ -6,7 +6,7 @@ import {
   Password,
   PhoneNumber, PhoneNumberControl, PhoneNumberCountryList,
   Quantity, QuantityControl, QuantityInput,
-  Radio, RadioControl, RadioLabel, RadioGroup, RadioGroupLabel,
+  Radio, RadioControl, RadioLabel, RadioGroup,
   Select, SelectContent, SelectControl,
   Textarea,
   Timepicker, TimepickerControl,
@@ -180,9 +180,9 @@ function FormNative(): ReactElement {
 
       <FormField>
         <RadioGroup name="radioGroup">
-          <RadioGroupLabel>
+          <FormFieldLabel>
             Radio group:
-          </RadioGroupLabel>
+          </FormFieldLabel>
 
           <Radio
             required={ areAllRequired }

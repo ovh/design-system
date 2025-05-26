@@ -21,6 +21,7 @@ type PhoneNumberRootProp = {
   country?: PhoneNumberCountryIsoCode,
   defaultValue?: string,
   disabled?: boolean,
+  id?: string,
   invalid?: boolean,
   locale?: string,
   name?: string,

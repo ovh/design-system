@@ -1,5 +1,5 @@
 import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel } from '.';
-import { FormField } from '../../form-field/src';
+import { FormField, FormFieldError } from '../../form-field/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import style from './dev.module.css';
 
@@ -7,6 +7,40 @@ export default {
   component: Checkbox,
   title: 'Checkbox dev',
 };
+
+export const CustomStyle = () => (
+  <>
+    <h4>Single Checkbox with Custom Style</h4>
+    <Checkbox className={ style['custom-checkbox'] }>
+      <CheckboxControl className={ style['custom-checkbox-control'] } />
+
+      <CheckboxLabel className={ style['custom-checkbox-label'] }>
+        Custom styled checkbox
+      </CheckboxLabel>
+    </Checkbox>
+
+    <h4>Checkbox Group with Custom Style</h4>
+    <CheckboxGroup
+      className={ style['custom-checkbox-group'] }
+      name="custom-group">
+      <Checkbox className={ style['custom-checkbox'] } value="custom1">
+        <CheckboxControl className={ style['custom-checkbox-control'] } />
+
+        <CheckboxLabel className={ style['custom-checkbox-label'] }>
+          Custom checkbox 1
+        </CheckboxLabel>
+      </Checkbox>
+
+      <Checkbox className={ style['custom-checkbox'] } value="custom2">
+        <CheckboxControl className={ style['custom-checkbox-control'] } />
+
+        <CheckboxLabel className={ style['custom-checkbox-label'] }>
+          Custom checkbox 2
+        </CheckboxLabel>
+      </Checkbox>
+    </CheckboxGroup>
+  </>
+);
 
 export const Default = () => (
   <Checkbox>
@@ -46,7 +80,7 @@ export const InFormField = () => (
       Legal considerations:
     </Text>
 
-    <FormField>
+    <FormField invalid>
       <Checkbox>
         <CheckboxControl />
 
@@ -54,6 +88,10 @@ export const InFormField = () => (
           I agree to the terms and conditions
         </CheckboxLabel>
       </Checkbox>
+
+      <FormFieldError>
+        Error
+      </FormFieldError>
     </FormField>
 
     <FormField>
@@ -64,6 +102,10 @@ export const InFormField = () => (
           I agree to receive marketing communications
         </CheckboxLabel>
       </Checkbox>
+
+      <FormFieldError>
+        Error
+      </FormFieldError>
     </FormField>
   </div>
 );
@@ -101,38 +143,4 @@ export const Group = () => (
       </CheckboxLabel>
     </Checkbox>
   </CheckboxGroup>
-);
-
-export const CustomStyle = () => (
-  <>
-    <h4>Single Checkbox with Custom Style</h4>
-    <Checkbox className={ style['custom-checkbox'] }>
-      <CheckboxControl className={ style['custom-checkbox-control'] } />
-
-      <CheckboxLabel className={ style['custom-checkbox-label'] }>
-        Custom styled checkbox
-      </CheckboxLabel>
-    </Checkbox>
-
-    <h4>Checkbox Group with Custom Style</h4>
-    <CheckboxGroup
-      className={ style['custom-checkbox-group'] }
-      name="custom-group">
-      <Checkbox className={ style['custom-checkbox'] } value="custom1">
-        <CheckboxControl className={ style['custom-checkbox-control'] } />
-
-        <CheckboxLabel className={ style['custom-checkbox-label'] }>
-          Custom checkbox 1
-        </CheckboxLabel>
-      </Checkbox>
-
-      <Checkbox className={ style['custom-checkbox'] } value="custom2">
-        <CheckboxControl className={ style['custom-checkbox-control'] } />
-
-        <CheckboxLabel className={ style['custom-checkbox-label'] }>
-          Custom checkbox 2
-        </CheckboxLabel>
-      </Checkbox>
-    </CheckboxGroup>
-  </>
 );

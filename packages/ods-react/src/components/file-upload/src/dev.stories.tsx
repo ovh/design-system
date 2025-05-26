@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FormField, FormFieldLabel } from '../../form-field/src';
+import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
 import { FileUpload, FileUploadItem, FileUploadList } from '.';
 import style from './dev.module.css';
 
@@ -143,23 +143,36 @@ export const FakeUpload = () => {
 
 export const InFormField = () => {
   const [files, setFiles] = useState<File[]>([]);
+  const [isInvalid, setIsInvalid] = useState(false);
 
   return (
-    <FormField>
-      <FormFieldLabel>Files:</FormFieldLabel>
+    <>
+      <button onClick={ () => setIsInvalid((v) => !v) }>
+        Toggle validity
+      </button>
 
-      <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
-        <FileUploadList>
-          {
-            files.map((file: File, idx) => (
-              <FileUploadItem
-                file={ file }
-                key={ idx } />
-            ))
-          }
-        </FileUploadList>
-      </FileUpload>
-    </FormField>
+      <FormField invalid={ isInvalid }>
+        <FormFieldLabel>
+          Files:
+        </FormFieldLabel>
+
+        <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+          <FileUploadList>
+            {
+              files.map((file: File, idx) => (
+                <FileUploadItem
+                  file={ file }
+                  key={ idx } />
+              ))
+            }
+          </FileUploadList>
+        </FileUpload>
+
+        <FormFieldError>
+          Error
+        </FormFieldError>
+      </FormField>
+    </>
   );
 };
 

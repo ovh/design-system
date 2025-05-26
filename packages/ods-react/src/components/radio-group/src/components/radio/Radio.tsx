@@ -1,6 +1,7 @@
 import { RadioGroup } from '@ark-ui/react/radio-group';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { withFormField } from '../../../../form-field/src';
 import style from './radio.module.scss';
 
 interface RadioProp extends ComponentPropsWithRef<'label'> {
@@ -10,7 +11,7 @@ interface RadioProp extends ComponentPropsWithRef<'label'> {
   value: string,
 }
 
-const Radio: FC<RadioProp> = forwardRef(({
+const Radio: FC<RadioProp> = withFormField(forwardRef(({
   children,
   className,
   disabled,
@@ -29,7 +30,7 @@ const Radio: FC<RadioProp> = forwardRef(({
       <RadioGroup.ItemHiddenInput required={ required } />
     </RadioGroup.Item>
   );
-});
+}));
 
 Radio.displayName = 'Radio';
 

@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { FormField } from '../../../../ods-react/src/components/form-field/src';
-import { Radio, RadioControl, RadioGroup, RadioGroupLabel, type RadioGroupProp, RadioLabel } from '../../../../ods-react/src/components/radio-group/src';
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
+import { Radio, RadioControl, RadioGroup, type RadioGroupProp, RadioLabel } from '../../../../ods-react/src/components/radio-group/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
@@ -10,7 +10,7 @@ type Story = StoryObj<RadioGroupProp>;
 const meta: Meta<RadioGroupProp> = {
   argTypes: excludeFromDemoControls(['defaultValue', 'name', 'onValueChange', 'value']),
   component: RadioGroup,
-  subcomponents: { Radio, RadioControl, RadioGroupLabel, RadioLabel },
+  subcomponents: { Radio, RadioControl, RadioLabel },
   title: 'ODS Components/Form elements/RadioGroup',
 };
 
@@ -87,10 +87,6 @@ export const DisabledGroup: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <RadioGroup disabled>
-      <RadioGroupLabel>
-        Disabled group:
-      </RadioGroupLabel>
-
       <Radio value="html">
         <RadioControl />
 
@@ -116,10 +112,6 @@ export const DisabledItem: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <RadioGroup>
-      <RadioGroupLabel>
-        Disabled item:
-      </RadioGroupLabel>
-
       <Radio value="html">
         <RadioControl />
 
@@ -147,11 +139,11 @@ export const InFormField: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
-      <RadioGroup>
-        <RadioGroupLabel>
-          Pick a language:
-        </RadioGroupLabel>
+      <FormFieldLabel>
+        Pick a language:
+      </FormFieldLabel>
 
+      <RadioGroup>
         <Radio value="html">
           <RadioControl />
 

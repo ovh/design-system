@@ -1,0 +1,65 @@
+@use '../../../../../style/drawer';
+
+@layer ods-molecules {
+  .drawer-positioner {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+
+    * {
+      box-sizing: border-box;
+    }
+  }
+
+  .drawer-content {
+    @include drawer.ods-drawer();
+
+    opacity: 0;
+    pointer-events: none;
+
+    &[data-state='open'] {
+      transition: opacity 0s;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    &[data-state='closed'] {
+      transition: opacity 0s linear drawer.$animation-duration;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &.drawer-bottom {
+      @include drawer.ods-drawer-position('bottom');
+    }
+
+    &.drawer-left {
+      @include drawer.ods-drawer-position('left');
+    }
+
+    &.drawer-right {
+      @include drawer.ods-drawer-position('right');
+    }
+
+    &.drawer-top {
+      @include drawer.ods-drawer-position('top');
+    }
+
+    &.drawer-bottom[data-state='closed'] {
+      animation: drawer-close-bottom drawer.$animation-duration ease-in-out;
+    }
+
+    &.drawer-left[data-state='closed'] {
+      animation: drawer-close-left drawer.$animation-duration ease-in-out;
+    }
+
+    &.drawer-right[data-state='closed'] {
+      animation: drawer-close-right drawer.$animation-duration ease-in-out;
+    }
+
+    &.drawer-top[data-state='closed'] {
+      animation: drawer-close-top drawer.$animation-duration ease-in-out;
+    }
+  }
+}

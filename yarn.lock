@@ -4017,6 +4017,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-drawer@workspace:packages/ods-react/src/components/drawer":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-drawer@workspace:packages/ods-react/src/components/drawer"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-file-upload@workspace:packages/ods-react/src/components/file-upload":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-file-upload@workspace:packages/ods-react/src/components/file-upload"

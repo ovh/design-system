@@ -31,3 +31,4 @@ export * from './toggle/src';
 export * from './phone-number/src';
 
 export * from './switch/src';
+export * from './drawer/src';

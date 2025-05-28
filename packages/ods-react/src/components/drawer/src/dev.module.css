@@ -1,3 +1,14 @@
-.custom-drawer {
+.custom-drawer__content {
+    background-color: #f64b4b;
+    width: 200px;
+}
 
+.custom-drawer__trigger {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.custom-drawer__trigger:hover {
+  background-color: #f64b4b;
+  cursor: pointer;
 }

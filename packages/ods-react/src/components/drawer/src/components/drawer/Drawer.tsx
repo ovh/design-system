@@ -26,8 +26,11 @@ const Drawer: FC<PropsWithChildren<DrawerProp>> = ({
       closeOnEscape={ closeOnEscape }
       closeOnInteractOutside={ closeOnInteractOutside }
       defaultOpen={ defaultOpen }
+      modal={ false }
       onOpenChange={ onOpenChange }
-      open={ open }>
+      open={ open }
+      preventScroll={ false }
+      trapFocus={ false }>
       { children }
     </Dialog.Root>
   );

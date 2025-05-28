@@ -33,6 +33,8 @@ const Link = forwardRef(function Link<T extends ElementType>({
     if (disabled) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      props.onClick && props.onClick(event);
     }
   }
 

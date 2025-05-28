@@ -1,9 +1,10 @@
 import { Pagination as VendorPagination } from '@ark-ui/react/pagination';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, type ReactNode, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { BUTTON_VARIANT, Button } from '../../../../button/src/index';
 import { ICON_NAME, Icon } from '../../../../icon/src/index';
-import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../tooltip/src/index';
+import { PaginationButtonWithTooltip } from '../PaginationButtonWithTooltip/PaginationButtonWithTooltip.tsx';
+import { PaginationItem } from '../PaginationItem/PaginationItem.tsx';
 import style from './pagination.module.scss';
 
 interface PaginationPageChangeDetail {
@@ -22,19 +23,6 @@ interface PaginationProp extends ComponentPropsWithRef<'nav'> {
   totalItems: number;
 }
 
-const PaginationButtonWithTooltip: FC<{
-  tooltip?: string;
-  children: ReactNode;
-}> = ({ tooltip, children }) =>
-  tooltip ? (
-    <Tooltip>
-      <TooltipTrigger asChild>{ children }</TooltipTrigger>
-      <TooltipContent>{ tooltip }</TooltipContent>
-    </Tooltip>
-  ) : (
-    <>{ children }</>
-  );
-
 const Pagination: FC<PaginationProp> = forwardRef(({
   className,
   disabled,
@@ -42,6 +30,7 @@ const Pagination: FC<PaginationProp> = forwardRef(({
   labelTooltipNext,
   labelTooltipPrev,
   totalItems,
+  siblingCount,
   pageSize = 10,
   ...props
 }, ref): JSX.Element => {
@@ -51,6 +40,7 @@ const Pagination: FC<PaginationProp> = forwardRef(({
       count={ totalItems }
       defaultPage={ defaultPage }
       pageSize={ pageSize }
+      siblingCount={ siblingCount }
       ref={ ref }
       { ...props }>
       <PaginationButtonWithTooltip tooltip={ labelTooltipPrev }>
@@ -65,23 +55,15 @@ const Pagination: FC<PaginationProp> = forwardRef(({
         { (pagination) =>
           pagination.pages.map((page, index) =>
             page.type === 'page' ? (
-              <VendorPagination.Item
-                asChild
-                className={ style[ 'pagination__item' ] }
-                key={ index } { ...page }>
-                <Button
-                  disabled={ disabled }
-                  variant={ BUTTON_VARIANT.ghost }>
-                  { page.value }
-                </Button>
-              </VendorPagination.Item>
+              <PaginationItem key={index} page={page} index={index} disabled={disabled} />
             ) : (
               <VendorPagination.Ellipsis
+                asChild
                 index={ index }
-                key={ index }>
+                key={ index } >
                 <Button
                   disabled
-                  variant={ BUTTON_VARIANT.ghost }>
+                  variant={BUTTON_VARIANT.ghost }>
                   &#8230;
                 </Button>
               </VendorPagination.Ellipsis>

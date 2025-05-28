@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Pagination,
   PaginationPageChangeDetail,
@@ -24,14 +24,10 @@ export const Demo: Story = {
     totalItems: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 5000 },
-        type: { summary: 'number' },
       },
       control: 'number',
     },
   }),
-  args: {
-  },
 };
 
 export const Controlled: Story = {
@@ -42,7 +38,7 @@ export const Controlled: Story = {
     },
   },
   render: ({}) => {
-    const [page, setPage] = React.useState(1);
+    const [page, setPage] = useState(1);
 
     function handlePageChange({ page }: PaginationPageChangeDetail){
       setPage(page);

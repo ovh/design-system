@@ -1,0 +1,14 @@
+$ods-pagination-button-width: 2.5rem;
+
+.pagination__item {
+  display: flex;
+  justify-content: center;
+  width: $ods-pagination-button-width;
+
+  &[data-selected] {
+    &:not(:disabled) {
+      border-color: var(--ods-color-primary-800);
+      background-color: var(--ods-color-primary-800);
+    }
+  }
+}

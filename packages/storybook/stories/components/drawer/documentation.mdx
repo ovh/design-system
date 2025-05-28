@@ -4,7 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
-import { Link } from '@ovhcloud/ods-react';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
@@ -23,8 +23,7 @@ The Drawer component provides a sliding panel that reveals additional content wi
               atomicType={ ATOMIC_TYPE.molecule }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/5BA2ZwZaX2bzfiWwTyMpQH/ODS---UI-Kit?node-id=5488-15121&p=f&t=gPfKLQM0iEuF2FXm-0"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/drawer"
-              name="Drawer"
-              relatedComponents={ [] }>
+              name="Drawer">
 </IdentityCard>
 
 <Heading label="Anatomy" level={ 2 } />
@@ -66,7 +65,7 @@ The **Drawer** is displayed above all page content but is positioned below the M
 
 By default, the OVHcloud Design System does not enforce whether the **Drawer** is fixed or scrollable. Integrators can configure this behavior based on their specific use case and requirements.
 
-Be careful the placement of the drawer can be broken if you create a new <Link href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context" target="_blank">stacking context</Link>.
+Be careful the placement of the drawer can be broken if you create a new <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context" target="_blank">stacking context</ExternalLink>.
 For example with a transform style or scale.
 
 <Heading label="Behavior" level={ 2 } />

@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 
 interface DrawerBodyProp extends ComponentPropsWithRef<'div'> {
@@ -11,7 +10,6 @@ const DrawerBody: FC<DrawerBodyProp> = forwardRef(({
 }, ref): JSX.Element => {
   return (
     <div
-      className={ classNames(className) }
       ref={ ref }
       { ...props }>
       { children }

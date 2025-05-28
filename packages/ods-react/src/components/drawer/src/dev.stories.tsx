@@ -1,8 +1,9 @@
 import { DRAWER_POSITION } from './constant/drawer-position';
 import { Drawer } from './components/drawer/Drawer';
-import { DrawerBody } from './components/drawer-body/DrawerBody.tsx';
-import { DrawerContent } from './components/drawer-content/DrawerContent.tsx';
-import { DrawerTrigger } from './components/drawer-trigger/DrawerTrigger.tsx';
+import { DrawerBody } from './components/drawer-body/DrawerBody';
+import { DrawerContent } from './components/drawer-content/DrawerContent';
+import { DrawerTrigger } from './components/drawer-trigger/DrawerTrigger';
+import style from './dev.module.css';
 
 export default {
   component: Drawer,
@@ -22,6 +23,20 @@ export const Default = () => (
     </DrawerContent>
   </Drawer>
 );
+
+export const CustomStyle = () => (
+  <Drawer>
+    <DrawerTrigger className={ style['custom-drawer__trigger'] }>
+      Trigger drawer
+    </DrawerTrigger>
+
+    <DrawerContent className={ style['custom-drawer__content'] }>
+      <DrawerBody>
+        Drawer Content
+      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+)
 
 export const Position = () => (
   <div>

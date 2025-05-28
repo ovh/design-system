@@ -1,5 +1,4 @@
 import { Button } from '@ovhcloud/ods-react-button/src';
-import { DrawerOpenChangeDetail } from '@ovhcloud/ods-react-drawer/src/components/drawer/Drawer.tsx';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import {
@@ -10,11 +9,12 @@ import {
   DrawerContent,
   DrawerContentProp,
   type DrawerProp,
+  type DrawerOpenChangeDetail,
   DrawerTrigger,
 } from '../../../../ods-react/src/components/drawer/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
-import { staticSourceRenderConfig } from '../../../src/helpers/source.ts';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<DrawerProp>;
 type DemoArg = Partial<DrawerProp> & Partial<DrawerContentProp> & {
@@ -24,7 +24,7 @@ type DemoArg = Partial<DrawerProp> & Partial<DrawerContentProp> & {
 const meta: Meta<DrawerProp> = {
   argTypes: excludeFromDemoControls(['defaultOpen', 'onOpenChange', 'open']),
   component: Drawer,
-  subcomponents: { DrawerContent, DrawerTrigger },
+  subcomponents: { DrawerBody, DrawerContent, DrawerTrigger },
   title: 'ODS Components/Drawer',
 };
 
@@ -67,8 +67,7 @@ export const Demo: StoryObj = {
     },
     position: {
       table: {
-        category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: 'DrawerPosition.left' },
+        category: CONTROL_CATEGORY.general,
         type: { summary: 'DrawerPosition' },
       },
       control: { type: 'select' },

@@ -1,26 +1,31 @@
+import type { FC } from 'react';
 import { Pagination as VendorPagination, usePaginationContext } from '@ark-ui/react/pagination';
 import { BUTTON_VARIANT, Button } from '../../../../button/src';
 import style from './paginationItem.module.scss';
 
 interface PaginationItemProp {
+  disabled?: boolean;
   index: number;
   page: {
     value: number;
   };
-  disabled?: boolean;
 }
 
-const PaginationItem = ({ index, page, disabled }: PaginationItemProp): JSX.Element => {
-  const { page: VendorPage } = usePaginationContext();
+const PaginationItem: FC<PaginationItemProp> = ({
+  disabled,
+  index,
+  page,
+}): JSX.Element => {
+  const { page: currentPage } = usePaginationContext();
 
   return <VendorPagination.Item
-    type={'page'}
+    type={ 'page' }
     asChild
     className={ style[ 'pagination__item' ] }
     key={ index } { ...page }>
     <Button
       disabled={ disabled }
-      variant={ VendorPage === page.value ? BUTTON_VARIANT.default : BUTTON_VARIANT.ghost }>
+      variant={ currentPage === page.value ? BUTTON_VARIANT.default : BUTTON_VARIANT.ghost }>
       { page.value }
     </Button>
   </VendorPagination.Item>;

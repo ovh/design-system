@@ -68,7 +68,7 @@ export const Demo: StoryObj = {
     position: {
       table: {
         category: CONTROL_CATEGORY.general,
-        type: { summary: 'DrawerPosition' },
+        type: { summary: 'DRAWER_POSITION' },
       },
       control: { type: 'select' },
       options: DRAWER_POSITIONS

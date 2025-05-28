@@ -10,6 +10,7 @@ const DrawerBody: FC<DrawerBodyProp> = forwardRef(({
 }, ref): JSX.Element => {
   return (
     <div
+      className={ className }
       ref={ ref }
       { ...props }>
       { children }

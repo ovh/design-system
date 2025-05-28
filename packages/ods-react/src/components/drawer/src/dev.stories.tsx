@@ -1,4 +1,4 @@
-import { DRAWER_POSITION } from './constant/drawer-position';
+import { DRAWER_POSITION } from './constants/drawer-position';
 import { Drawer } from './components/drawer/Drawer';
 import { DrawerBody } from './components/drawer-body/DrawerBody';
 import { DrawerContent } from './components/drawer-content/DrawerContent';

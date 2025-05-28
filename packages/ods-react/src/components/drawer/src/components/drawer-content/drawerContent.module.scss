@@ -20,7 +20,7 @@
         pointer-events: none;
       }
 
-      &-bottom {
+      &--bottom {
         @include drawer.ods-drawer-position('bottom');
 
         &[data-state='closed'] {
@@ -28,7 +28,7 @@
         }
       }
 
-      &-left {
+      &--left {
         @include drawer.ods-drawer-position('left');
 
         &[data-state='closed'] {
@@ -36,7 +36,7 @@
         }
       }
 
-      &-right {
+      &--right {
         @include drawer.ods-drawer-position('right');
 
         &[data-state='closed'] {
@@ -44,7 +44,7 @@
         }
       }
 
-      &-top {
+      &--top {
         @include drawer.ods-drawer-position('top');
 
         &[data-state='closed'] {

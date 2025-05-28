@@ -2,7 +2,7 @@ import { Dialog } from '@ark-ui/react/dialog';
 import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { DRAWER_POSITION } from '../../constant/drawer-position';
+import { DRAWER_POSITION } from '../../constants/drawer-position';
 import style from './drawerContent.module.scss';
 
 interface DrawerContentProp extends ComponentPropsWithRef<'div'> {

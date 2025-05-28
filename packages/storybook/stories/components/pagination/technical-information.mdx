@@ -1,0 +1,43 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsPagination from '../../../../ods-react/src/components/pagination/documentation/pagination.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as PaginationStories from './pagination.stories';
+
+<Meta of={ PaginationStories } name="Technical information" />
+
+<Banner of={ PaginationStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ PaginationStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsPagination } of={ PaginationStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ PaginationStories.Default } sourceState="shown" />
+
+<Heading label="Controlled" level={ 3 } />
+
+<Canvas of={ PaginationStories.Controlled } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ PaginationStories.Disabled } sourceState="shown" />
+
+<Heading label="Items per page" level={ 3 } />
+
+<Canvas of={ PaginationStories.ItemsPerPage } sourceState="shown" />
+
+<Heading label="Sibling count" level={ 3 } />
+
+<Canvas of={ PaginationStories.SiblingCount } sourceState="shown" />
+
+<Heading label="With labels" level={ 3 } />
+
+<Canvas of={ PaginationStories.WithLabels } sourceState="shown" />
+

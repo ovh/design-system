@@ -23,11 +23,11 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(
   ): JSX.Element => {
     return (
       <Portal disabled={ !createPortal }>
-        <Dialog.Positioner className={ classNames(style[ 'drawer-positioner' ]) }>
+        <Dialog.Positioner className={ style[ 'drawer-positioner' ] }>
           <Dialog.Content
             className={ classNames(
-              style[ 'drawer-content' ],
-              style[ `drawer-${ position }` ],
+              style[ 'drawer-positioner__content' ],
+              style[ `drawer-positioner__content-${ position }` ],
               className,
             ) }
             ref={ ref }

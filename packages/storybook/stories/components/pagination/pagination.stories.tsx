@@ -1,0 +1,109 @@
+import { type Meta, type StoryObj } from '@storybook/react';
+import React from 'react';
+import {
+  Pagination,
+  PaginationPageChangeDetail,
+  type PaginationProp,
+} from '../../../../ods-react/src/components/pagination/src';
+import { CONTROL_CATEGORY } from '../../../src/constants/controls';
+import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source.ts';
+
+type Story = StoryObj<PaginationProp>;
+
+const meta: Meta<PaginationProp> = {
+  argTypes: excludeFromDemoControls(['defaultPage', 'onPageChange']),
+  component: Pagination,
+  title: 'ODS Components/Pagination',
+};
+
+export default meta;
+
+export const Demo: Story = {
+  argTypes: orderControls({
+    totalItems: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 5000 },
+        type: { summary: 'number' },
+      },
+      control: 'number',
+    },
+  }),
+  args: {
+  },
+};
+
+export const Controlled: Story = {
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [page, setPage] = React.useState(1);
+
+    function handlePageChange({ page }: PaginationPageChangeDetail){
+      setPage(page);
+    }
+
+    return <Pagination page={ page } onPageChange={ handlePageChange } totalItems={ 500 } />;
+  },
+};
+
+export const Default: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Pagination totalItems={ 5000 } />
+  ),
+};
+
+export const Disabled: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Pagination
+      totalItems={ 500 }
+      disabled
+    />
+  ),
+};
+
+export const ItemsPerPage: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Pagination
+      pageSize={ 25 }
+      totalItems={ 500 } />
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Pagination totalItems={ 5000 } />
+  ),
+};
+
+export const SiblingCount: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Pagination
+      defaultPage={ 5 }
+      siblingCount={ 2 }
+      totalItems={ 500 } />
+  ),
+}
+
+export const WithLabels: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Pagination
+      labelTooltipPrev={ 'Go to previous page' }
+      labelTooltipNext={ 'Go to next page' }
+      totalItems={ 500 } />
+  ),
+};

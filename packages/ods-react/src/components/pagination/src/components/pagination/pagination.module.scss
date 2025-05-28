@@ -9,20 +9,5 @@ $ods-pagination-button-width: 2.5rem;
     align-items: center;
     margin: 0;
     font-family: inherit;
-
-    &__item {
-      display: flex;
-      justify-content: center;
-      width: $ods-pagination-button-width;
-
-      &[data-selected] {
-        @include button.ods-button-variant-default('primary');
-
-        &:not(:disabled) {
-          border-color: var(--ods-color-primary-800);
-          background-color: var(--ods-color-primary-800);
-        }
-      }
-    }
   }
 }

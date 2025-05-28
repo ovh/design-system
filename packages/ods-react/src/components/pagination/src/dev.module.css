@@ -1,3 +1,6 @@
 .custom-pagination {
-
+  display: flex;
+  place-content: center center;
+  background-color: #f64b4b;
+  padding: 1rem;
 }

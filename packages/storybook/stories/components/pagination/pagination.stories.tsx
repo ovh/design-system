@@ -21,11 +21,40 @@ export default meta;
 
 export const Demo: Story = {
   argTypes: orderControls({
+    disabled : {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+    },
+    labelTooltipNext : {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+    },
+    labelTooltipPrev : {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+    },
+    pageSize : {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+    },
+    page : {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+    },
+    siblingCount : {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+    },
     totalItems: {
       table: {
         category: CONTROL_CATEGORY.general,
       },
-      control: 'number',
     },
   }),
 };

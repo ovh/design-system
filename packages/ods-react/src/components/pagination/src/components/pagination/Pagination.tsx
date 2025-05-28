@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { BUTTON_VARIANT, Button } from '../../../../button/src/index';
 import { ICON_NAME, Icon } from '../../../../icon/src/index';
-import { PaginationButtonWithTooltip } from '../PaginationButtonWithTooltip/PaginationButtonWithTooltip.tsx';
-import { PaginationItem } from '../PaginationItem/PaginationItem.tsx';
+import { PaginationButtonWithTooltip } from '../pagination-button-with-tooltip/PaginationButtonWithTooltip';
+import { PaginationItem } from '../pagination-item/PaginationItem';
 import style from './pagination.module.scss';
 
 interface PaginationPageChangeDetail {

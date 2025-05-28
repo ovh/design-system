@@ -1,10 +1,12 @@
-import type { FC, ReactNode } from 'react';
+import { type FC, type ReactNode } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../tooltip/src';
 
-const PaginationButtonWithTooltip: FC<{
-  tooltip?: string;
+interface PaginationButtonWithTooltipProp {
   children: ReactNode;
-}> = ({ tooltip, children }) =>
+  tooltip?: string;
+}
+
+const PaginationButtonWithTooltip: FC<PaginationButtonWithTooltipProp> = ({ tooltip, children }) =>
   tooltip ? (
     <Tooltip>
       <TooltipTrigger asChild>{ children }</TooltipTrigger>
@@ -14,4 +16,4 @@ const PaginationButtonWithTooltip: FC<{
     <>{ children }</>
   );
 
-export { PaginationButtonWithTooltip };
+export { PaginationButtonWithTooltip, type PaginationButtonWithTooltipProp };

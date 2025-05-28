@@ -70,6 +70,20 @@ export const Icons = () => (
   </>
 );
 
+export const OnClick = () => (
+  <>
+    <Link onClick={ () => console.log('click logged') }>
+      My link
+    </Link>
+
+    <Link
+      disabled
+      onClick={ () => console.log('click not logged') }>
+      My link
+    </Link>
+  </>
+);
+
 export const Ref = () => {
   const linkRef = useRef(null);
 

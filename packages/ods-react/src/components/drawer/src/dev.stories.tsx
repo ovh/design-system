@@ -10,7 +10,17 @@ export default {
 };
 
 export const Default = () => (
-  <Drawer />
+  <Drawer>
+    <DrawerTrigger>
+      Trigger drawer
+    </DrawerTrigger>
+
+    <DrawerContent>
+      <DrawerBody>
+        Drawer Content
+      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
 );
 
 export const Position = () => (

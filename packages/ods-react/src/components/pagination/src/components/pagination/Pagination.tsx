@@ -1,17 +1,19 @@
 import { Pagination as VendorPagination } from '@ark-ui/react/pagination';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useState } from 'react';
 import { BUTTON_VARIANT, Button } from '../../../../button/src/index';
 import { ICON_NAME, Icon } from '../../../../icon/src/index';
 import { PaginationButtonWithTooltip } from '../pagination-button-with-tooltip/PaginationButtonWithTooltip';
 import { PaginationItem } from '../pagination-item/PaginationItem';
+import {
+  PaginationPageSizeSelector,
+  type RenderTotalItemsLabel,
+} from '../pagination-page-size-selector/PaginationPageSizeSelector.tsx';
 import style from './pagination.module.scss';
 
 interface PaginationPageChangeDetail {
   page: number;
 }
-
-// function that returns string
 
 interface PaginationProp extends ComponentPropsWithRef<'nav'> {
   disabled?: boolean;
@@ -23,6 +25,8 @@ interface PaginationProp extends ComponentPropsWithRef<'nav'> {
   page?: number;
   siblingCount?: number;
   totalItems: number;
+  withPageSizeSelector?: boolean;
+  renderTotalItemsLabel?: RenderTotalItemsLabel;
 }
 
 const Pagination: FC<PaginationProp> = forwardRef(({
@@ -34,17 +38,28 @@ const Pagination: FC<PaginationProp> = forwardRef(({
   totalItems,
   siblingCount,
   pageSize = 10,
+  withPageSizeSelector,
+  renderTotalItemsLabel,
   ...props
 }, ref): JSX.Element => {
+  const [itemsPerPage, setItemsPerPage] = useState<number>(pageSize);
+  const handlePageSizeChange = (value: string): void => {
+    setItemsPerPage(Number(value));
+  };
   return (
     <VendorPagination.Root
       className={ classNames(style[ 'pagination' ], className) }
       count={ totalItems }
       defaultPage={ defaultPage }
-      pageSize={ pageSize }
+      pageSize={ itemsPerPage }
       siblingCount={ siblingCount }
       ref={ ref }
       { ...props }>
+      { withPageSizeSelector &&
+        <PaginationPageSizeSelector
+          onSelectChange={ handlePageSizeChange }
+          renderTotalItemsLabel={ renderTotalItemsLabel } />
+      }
       <PaginationButtonWithTooltip tooltip={ labelTooltipPrev }>
         <VendorPagination.PrevTrigger asChild>
           <Button disabled={ disabled } variant={ BUTTON_VARIANT.ghost }>
@@ -57,15 +72,15 @@ const Pagination: FC<PaginationProp> = forwardRef(({
         { (pagination) =>
           pagination.pages.map((page, index) =>
             page.type === 'page' ? (
-              <PaginationItem key={index} page={page} index={index} disabled={disabled} />
+              <PaginationItem key={ index } page={ page } index={ index } disabled={ disabled } />
             ) : (
               <VendorPagination.Ellipsis
                 asChild
                 index={ index }
-                key={ index } >
+                key={ index }>
                 <Button
                   disabled
-                  variant={BUTTON_VARIANT.ghost }>
+                  variant={ BUTTON_VARIANT.ghost }>
                   &#8230;
                 </Button>
               </VendorPagination.Ellipsis>

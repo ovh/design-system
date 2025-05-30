@@ -1,0 +1,16 @@
+@layer molecules {
+  .pagination-page-size {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &__selecter {
+      min-width: fit-content;
+    }
+
+    &__label {
+      color: var(--ods-color-text);
+    font-weight: 600;
+    }
+  }
+}

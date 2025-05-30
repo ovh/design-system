@@ -1,0 +1,25 @@
+$ods-range-background-color: var(--ods-color-neutral-200);
+$ods-range-background-color-active: var(--ods-color-primary-500);
+$ods-range-track-height: 8px;
+$ods-range-thumb-size: 16px;
+
+@mixin ods-range-thumb() {
+  box-sizing: border-box;
+  border: 1px solid var(--ods-color-neutral-300);
+  border-radius: 50%;
+  background-color: var(--ods-color-neutral-000);
+  cursor: pointer;
+  width: $ods-range-thumb-size;
+  height: $ods-range-thumb-size;
+}
+
+@mixin ods-range-track($filled: false) {
+  border-radius: var(--ods-border-radius-sm);
+  height: $ods-range-track-height;
+
+  @if ($filled) {
+    background-color: $ods-range-background-color-active;
+  } @else {
+    background-color: $ods-range-background-color;
+  }
+}

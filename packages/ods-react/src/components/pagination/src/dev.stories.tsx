@@ -21,3 +21,21 @@ export const Disabled = () => (
 export const WithLabels = () => (
   <Pagination totalItems={500} labelTooltipPrev={'Go to prev page'} labelTooltipNext={'Go to next page'} />
 );
+
+export const WithPageSizeSelector = () => (
+  <Pagination totalItems={500} withPageSizeSelector />
+)
+
+export const WithPageSizeSelectorAndCustomTotalLabel = () => (
+  <Pagination
+    totalItems={500}
+    withPageSizeSelector
+    renderTotalItemsLabel={({ totalItems }) => `of ${totalItems} results`}
+  />
+);
+export const WithPageSizeSelectorAndTotalLabel = () => (
+  <Pagination
+    totalItems={500}
+    withPageSizeSelector
+  />
+);

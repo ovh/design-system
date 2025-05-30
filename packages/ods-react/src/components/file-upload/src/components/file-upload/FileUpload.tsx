@@ -1,7 +1,7 @@
 import { type FileUploadFileRejectDetails, FileUpload as VendorFileUpload } from '@ark-ui/react/file-upload';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useCallback } from 'react';
-import { withFormField } from '../../../../form-field/src';
+import { useFormField } from '../../../../form-field/src';
 import { type FILE_REJECTION_CAUSE } from '../../constants/file-error';
 import { mapErrorCodes } from '../../controller/file-upload';
 import { FileUploadDropzone } from '../file-upload-dropzone/FileUploadDropzone';
@@ -36,7 +36,7 @@ interface FileUploadProp extends ComponentPropsWithRef<'div'> {
   triggerLabel?: string,
 }
 
-const FileUpload: FC<FileUploadProp> = withFormField(forwardRef(({
+const FileUpload: FC<FileUploadProp> = forwardRef(({
   accept,
   acceptedFileLabel,
   children,
@@ -44,6 +44,7 @@ const FileUpload: FC<FileUploadProp> = withFormField(forwardRef(({
   disabled,
   dropzoneLabel = 'Drag & drop a file',
   error,
+  id,
   invalid,
   maxFile = Infinity,
   maxFileLabel,
@@ -56,6 +57,7 @@ const FileUpload: FC<FileUploadProp> = withFormField(forwardRef(({
   triggerLabel = 'Browse files',
   ...props
 }, ref): JSX.Element => {
+  const fieldContext = useFormField();
   const onFileRejection = useCallback(({ files }: FileUploadFileRejectDetails) => {
     if (onFileReject) {
       onFileReject({
@@ -63,6 +65,7 @@ const FileUpload: FC<FileUploadProp> = withFormField(forwardRef(({
       });
     }
   }, [onFileReject]);
+  const isInvalid = invalid || fieldContext?.invalid;
 
   return (
     <VendorFileUpload.Root
@@ -70,12 +73,13 @@ const FileUpload: FC<FileUploadProp> = withFormField(forwardRef(({
       allowDrop={ true }
       className={ classNames(
         style['file-upload'],
-        { [style['file-upload--invalid']]: invalid },
+        { [style['file-upload--invalid']]: isInvalid },
         className,
       )}
       directory={ false }
       disabled={ disabled }
-      invalid={ invalid }
+      id={ id || fieldContext?.id }
+      invalid={ isInvalid }
       maxFiles={ maxFile }
       maxFileSize={ maxSize }
       onFileAccept={ onFileAccept }
@@ -101,10 +105,12 @@ const FileUpload: FC<FileUploadProp> = withFormField(forwardRef(({
         { children }
       </VendorFileUpload.Dropzone>
 
-      <VendorFileUpload.HiddenInput />
+      <VendorFileUpload.HiddenInput
+        aria-invalid={ isInvalid }
+        aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy } />
     </VendorFileUpload.Root>
   );
-}));
+});
 
 FileUpload.displayName = 'FileUpload';
 

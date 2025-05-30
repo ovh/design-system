@@ -1,6 +1,6 @@
 import { Select as VendorSelect, createListCollection } from '@ark-ui/react/select';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useMemo } from 'react';
-import { withFormField } from '../../../../form-field/src';
+import { useFormField } from '../../../../form-field/src';
 import { type SelectGroupItem, type SelectItem, type SelectMultipleMode, type SelectOptionItem, SelectProvider } from '../../contexts/useSelect';
 import { isGroup } from '../../controller/select';
 
@@ -13,7 +13,6 @@ interface SelectProp extends ComponentPropsWithRef<'div'> {
   defaultValue?: string | string[],
   disabled?: boolean,
   fitControlWidth?: boolean,
-  id?: string,
   invalid?: boolean,
   items: SelectItem[],
   multiple?: SelectMultipleMode,
@@ -24,12 +23,13 @@ interface SelectProp extends ComponentPropsWithRef<'div'> {
   value?: string[],
 }
 
-const Select: FC<SelectProp> = withFormField(forwardRef(({
+const Select: FC<SelectProp> = forwardRef(({
   children,
   className,
   defaultValue,
   disabled = false,
   fitControlWidth = true,
+  id,
   invalid,
   items = [],
   multiple = false,
@@ -40,6 +40,8 @@ const Select: FC<SelectProp> = withFormField(forwardRef(({
   value,
   ...props
 }, ref): JSX.Element => {
+  const fieldContext = useFormField();
+
   const collection = useMemo(() => {
     const options = items.reduce((res, item) => {
       if (isGroup(item)) {
@@ -68,7 +70,8 @@ const Select: FC<SelectProp> = withFormField(forwardRef(({
         collection={ collection }
         defaultValue={ defaultValues }
         disabled={ disabled }
-        invalid={ invalid }
+        id={ id || fieldContext?.id }
+        invalid={ invalid || fieldContext?.invalid }
         loopFocus={ true }
         multiple={ !!multiple }
         name={ name }
@@ -86,7 +89,7 @@ const Select: FC<SelectProp> = withFormField(forwardRef(({
       </VendorSelect.Root>
     </SelectProvider>
   );
-}));
+});
 
 Select.displayName = 'Select';
 

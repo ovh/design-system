@@ -8,16 +8,18 @@ interface QuantityInputProp extends ComponentPropsWithRef<'input'> {}
 
 const QuantityInput: FC<QuantityInputProp> = forwardRef(({
   className,
+  id,
   ...props
 }, ref): JSX.Element => {
-  const field = useFormField();
+  const fieldContext = useFormField();
 
   return (
     <NumberInput.Input
+      aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
       className={ classNames(style['quantity-input'], className) }
+      id={ id || fieldContext?.id }
       ref={ ref }
-      { ...props }
-      id={ field?.id || props.id } />
+      { ...props } />
   );
 });
 

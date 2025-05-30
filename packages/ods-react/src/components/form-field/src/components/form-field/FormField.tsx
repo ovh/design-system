@@ -19,6 +19,7 @@ const FormField: FC<FormFieldProp> = forwardRef(({
       <div
         className={ classNames(style['form-field'], className) }
         ref={ ref }
+        role="group"
         { ...props }>
         { children }
       </div>

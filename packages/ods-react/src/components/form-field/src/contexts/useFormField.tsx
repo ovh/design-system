@@ -1,24 +1,42 @@
-import { type JSX, type ReactNode, createContext, useContext, useId } from 'react';
+import { type JSX, type ReactNode, createContext, useContext, useId, useMemo, useState } from 'react';
 
 type FormFieldRootProp = {
   id?: string,
   invalid?: boolean,
 }
 
-type FormFieldContextType = FormFieldRootProp
+type FormFieldContextType = FormFieldRootProp & {
+  ariaDescribedBy?: string,
+  errorId?: string,
+  helperId?: string,
+  setErrorId?: (value?: string) => void,
+  setHelperId?: (value?: string) => void,
+}
 
-interface TimepickerProviderProp extends FormFieldContextType {
+interface FormFieldProviderProp extends FormFieldContextType {
   children: ReactNode,
 }
 
 const FormFieldContext = createContext<FormFieldContextType>({});
 
-function FormFieldProvider({ children, id, ...prop }: TimepickerProviderProp): JSX.Element {
+function FormFieldProvider({ children, id, invalid, ...prop }: FormFieldProviderProp): JSX.Element {
   const fieldId = id ?? useId();
+  const [errorId, setErrorId] = useState<string | undefined>();
+  const [helperId, setHelperId] = useState<string | undefined>();
+
+  const ariaDescribedBy = useMemo(() => {
+    return `${helperId || ''} ${invalid && errorId ? errorId : ''}`.trim();
+  }, [errorId, helperId, invalid]);
 
   return (
     <FormFieldContext.Provider value={{
+      ariaDescribedBy,
+      errorId,
+      helperId,
       id: fieldId,
+      invalid,
+      setErrorId,
+      setHelperId,
       ...prop,
     }}>
       { children }

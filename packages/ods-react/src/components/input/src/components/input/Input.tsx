@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { type ChangeEvent, type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
-import { useFormField, withFormField } from '../../../../form-field/src';
+import { useFormField } from '../../../../form-field/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { SPINNER_COLOR, SPINNER_SIZE, Spinner } from '../../../../spinner/src';
 import { INPUT_MASK_STATE, type InputMaskState } from '../../constants/input-mask-state';
@@ -21,9 +21,10 @@ interface InputProp extends ComponentPropsWithRef<'input'> {
   type?: InputType,
 }
 
-const Input: FC<InputProp> = withFormField(forwardRef(({
+const Input: FC<InputProp> = forwardRef(({
   className,
   clearable = false,
+  id,
   invalid,
   loading = false,
   maskOption = { enable: false, initialState: INPUT_MASK_STATE.close },
@@ -31,11 +32,12 @@ const Input: FC<InputProp> = withFormField(forwardRef(({
   type = INPUT_TYPE.text,
   ...props
 }, ref): JSX.Element => {
-  const isControlled = props.value !== undefined;
-  const formFieldContext = useFormField();
+  const fieldContext = useFormField();
   const inputRef = useRef<HTMLInputElement>(null);
   const [hasValue, setHasValue] = useState(isValueDefined(props.defaultValue) || isValueDefined(props.value));
   const [isMaskOpen, setIsMaskOpen] = useState(maskOption?.initialState === INPUT_MASK_STATE.open);
+  const isControlled = props.value !== undefined;
+  const isInvalid = invalid || fieldContext?.invalid;
 
   useImperativeHandle(ref, () => inputRef.current!, [inputRef]);
 
@@ -95,11 +97,14 @@ const Input: FC<InputProp> = withFormField(forwardRef(({
         className,
       )}
       data-disabled={ props.disabled ? true : undefined }
-      data-invalid={ (formFieldContext?.invalid || invalid) ? true : undefined }
+      data-invalid={ isInvalid ? true : undefined }
       data-readonly={ props.readOnly ? true: undefined }>
       <input
+        aria-invalid={ isInvalid }
+        aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
         className={ style['input__field'] }
-        data-invalid={ invalid ? true : undefined }
+        data-invalid={ isInvalid ? true : undefined }
+        id={ id || fieldContext?.id }
         ref={ inputRef }
         type={ inputType }
         { ...props }
@@ -157,7 +162,7 @@ const Input: FC<InputProp> = withFormField(forwardRef(({
       }
     </div>
   );
-}));
+});
 
 Input.displayName = 'Input';
 

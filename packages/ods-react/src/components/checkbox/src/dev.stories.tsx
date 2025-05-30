@@ -1,5 +1,5 @@
 import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel } from '.';
-import { FormField, FormFieldError } from '../../form-field/src';
+import { FormField, FormFieldError, FormFieldHelper } from '../../form-field/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import style from './dev.module.css';
 
@@ -89,8 +89,12 @@ export const InFormField = () => (
         </CheckboxLabel>
       </Checkbox>
 
+      <FormFieldHelper>
+        Help text
+      </FormFieldHelper>
+
       <FormFieldError>
-        Error
+        Error message
       </FormFieldError>
     </FormField>
 
@@ -103,8 +107,12 @@ export const InFormField = () => (
         </CheckboxLabel>
       </Checkbox>
 
+      <FormFieldHelper>
+        Help text
+      </FormFieldHelper>
+
       <FormFieldError>
-        Error
+        Error message
       </FormFieldError>
     </FormField>
   </div>

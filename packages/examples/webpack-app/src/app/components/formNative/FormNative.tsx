@@ -8,6 +8,7 @@ import {
   PhoneNumber, PhoneNumberControl, PhoneNumberCountryList,
   Quantity, QuantityControl, QuantityInput,
   Radio, RadioControl, RadioLabel, RadioGroup,
+  Range,
   Select, SelectContent, SelectControl,
   Textarea,
   Timepicker, TimepickerControl,
@@ -19,7 +20,7 @@ function FormNative(): ReactElement {
   const formRef = useRef<HTMLFormElement>(null);
   const [areAllRequired, setAreAllRequired] = useState(true);
 
-  async function onSubmit(e: FormEvent) {
+  function onSubmit(e: FormEvent) {
     e.preventDefault();
 
     const formData = new FormData(formRef.current!);
@@ -226,6 +227,24 @@ function FormNative(): ReactElement {
 
         <FormFieldError>
           Error while filling radio group
+        </FormFieldError>
+      </FormField>
+
+      <FormField>
+        <FormFieldLabel>
+          Range:
+        </FormFieldLabel>
+
+        <Range
+          defaultValue={ [50] }
+          name="range" />
+
+        <FormFieldHelper>
+          This is a range to fill
+        </FormFieldHelper>
+
+        <FormFieldError>
+          Error while filling range
         </FormFieldError>
       </FormField>
 

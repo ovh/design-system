@@ -1,0 +1,13 @@
+@layer ods-atoms {
+  .range-bounds {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+
+    &__max,
+    &__min {
+      color: var(--ods-color-text);
+      font-weight: 600;
+    }
+  }
+}

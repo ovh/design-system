@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
+import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Select, SelectContent, SelectControl, type SelectCustomGroupRendererArg, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg } from '.';
 import { TEXT_PRESET, Text } from '../../text/src';
@@ -287,8 +287,12 @@ export const InFormField = () => {
           <SelectContent />
         </Select>
 
+        <FormFieldHelper>
+          Help text
+        </FormFieldHelper>
+
         <FormFieldError>
-          Error
+          Error message
         </FormFieldError>
       </FormField>
     </>

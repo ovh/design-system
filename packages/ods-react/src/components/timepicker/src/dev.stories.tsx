@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
+import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { Timepicker, TimepickerControl, type TimepickerTimezoneChangeDetail, TimepickerTimezoneList, type TimepickerValueChangeDetail, Timezone } from '.';
 import { getBrowserTimezone } from './controller/timepicker';
@@ -144,8 +144,12 @@ export const InFormField = () => {
           <TimepickerControl />
         </Timepicker>
 
+        <FormFieldHelper>
+          Help text
+        </FormFieldHelper>
+
         <FormFieldError>
-          Error
+          Error message
         </FormFieldError>
       </FormField>
 
@@ -160,8 +164,12 @@ export const InFormField = () => {
           <TimepickerTimezoneList />
         </Timepicker>
 
+        <FormFieldHelper>
+          Help text
+        </FormFieldHelper>
+
         <FormFieldError>
-          Error
+          Error message
         </FormFieldError>
       </FormField>
     </>

@@ -1,12 +1,12 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { withFormField } from '../../../../form-field/src';
+import { useFormField } from '../../../../form-field/src';
 import { PhoneNumberProvider, type PhoneNumberRootProp } from '../../contexts/usePhoneNumber';
 import style from './phoneNumber.module.scss';
 
 interface PhoneNumberProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue'>, PhoneNumberRootProp {}
 
-const PhoneNumber: FC<PhoneNumberProp> = withFormField(forwardRef(({
+const PhoneNumber: FC<PhoneNumberProp> = forwardRef(({
   children,
   className,
   countries,
@@ -25,14 +25,16 @@ const PhoneNumber: FC<PhoneNumberProp> = withFormField(forwardRef(({
   value,
   ...props
 }, ref): JSX.Element => {
+  const fieldContext = useFormField();
+
   return (
     <PhoneNumberProvider
       countries={ countries }
       country={ country }
       defaultValue={ defaultValue }
       disabled={ disabled }
-      id={ id }
-      invalid={ invalid }
+      id={ id || fieldContext?.id }
+      invalid={ invalid || fieldContext?.invalid }
       locale={ locale }
       name={ name }
       onCountryChange={ onCountryChange }
@@ -49,7 +51,7 @@ const PhoneNumber: FC<PhoneNumberProp> = withFormField(forwardRef(({
       </div>
     </PhoneNumberProvider>
   );
-}));
+});
 
 PhoneNumber.displayName = 'PhoneNumber';
 

@@ -21,12 +21,13 @@ const SelectControl: FC<SelectControlProp> = forwardRef(({
   multipleSelectionLabel,
   ...props
 }, ref): JSX.Element => {
-  const field = useFormField();
+  const fieldContext = useFormField();
   const { items } = useSelect();
 
   return (
     <Select.Control>
       <Select.Trigger
+        aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
         className={ classNames(style['select-control'], className) }
         data-empty={ items.length === 0 }
         ref={ ref }
@@ -43,7 +44,7 @@ const SelectControl: FC<SelectControlProp> = forwardRef(({
         </Select.Indicator>
       </Select.Trigger>
 
-      <Select.HiddenSelect id={ field?.id || id } />
+      <Select.HiddenSelect id={ fieldContext?.id || id } />
     </Select.Control>
   );
 });

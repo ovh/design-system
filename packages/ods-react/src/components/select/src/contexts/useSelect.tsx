@@ -52,7 +52,10 @@ const SelectContext = createContext<SelectContextType>({
 
 function SelectProvider({ children, items, multiple }: SelectProviderProp): JSX.Element {
   return (
-    <SelectContext.Provider value={{ items, multiple }}>
+    <SelectContext.Provider value={{
+      items,
+      multiple,
+    }}>
       { children }
     </SelectContext.Provider>
   );

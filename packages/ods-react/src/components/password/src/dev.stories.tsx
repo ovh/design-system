@@ -1,5 +1,5 @@
 import { type ChangeEvent, useState } from 'react';
-import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
+import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { Password } from '.';
 import style from './dev.module.css';
@@ -118,8 +118,12 @@ export const InFormField = () => {
 
         <Password />
 
+        <FormFieldHelper>
+          Help text
+        </FormFieldHelper>
+
         <FormFieldError>
-          Error
+          Error message
         </FormFieldError>
       </FormField>
     </>

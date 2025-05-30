@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
+import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { Quantity, QuantityControl, QuantityInput } from '.';
 import style from './dev.module.css';
@@ -69,8 +69,12 @@ export const InFormField = () => {
           </QuantityControl>
         </Quantity>
 
+        <FormFieldHelper>
+          Help text
+        </FormFieldHelper>
+
         <FormFieldError>
-          Error
+          Error message
         </FormFieldError>
       </FormField>
     </>

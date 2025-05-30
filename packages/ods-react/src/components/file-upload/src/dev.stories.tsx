@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
+import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { FileUpload, FileUploadItem, FileUploadList } from '.';
 import style from './dev.module.css';
 
@@ -168,8 +168,12 @@ export const InFormField = () => {
           </FileUploadList>
         </FileUpload>
 
+        <FormFieldHelper>
+          Help text
+        </FormFieldHelper>
+
         <FormFieldError>
-          Error
+          Error message
         </FormFieldError>
       </FormField>
     </>

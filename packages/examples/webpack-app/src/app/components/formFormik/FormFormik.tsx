@@ -8,6 +8,7 @@ import {
   PhoneNumber, PhoneNumberControl, PhoneNumberCountryList,
   Quantity, QuantityControl, QuantityInput,
   Radio, RadioControl, RadioLabel, RadioGroup,
+  Range,
   Select, SelectContent, SelectControl,
   Textarea,
   Timepicker, TimepickerControl,
@@ -26,6 +27,7 @@ type FormData = {
   phoneNumber: string,
   quantity: string,
   radioGroup: string,
+  range: number,
   select: string,
   textarea: string,
   timepicker: string,
@@ -40,6 +42,7 @@ const validationSchema = yup.object<FormData>({
   phoneNumber: yup.string().nullable().required(),
   quantity: yup.string().nullable().required(),
   radioGroup: yup.string().nullable().required(),
+  range: yup.number().nullable().required(),
   select: yup.string().nullable().required(),
   textarea: yup.string().nullable().required(),
   timepicker: yup.string().nullable().required(),
@@ -56,6 +59,7 @@ function FormFormik(): ReactElement {
       phoneNumber: '',
       quantity: '42',
       radioGroup: '',
+      range: 50,
       select: 'cat',
       textarea: 'default textarea',
       timepicker: '',
@@ -280,6 +284,28 @@ function FormFormik(): ReactElement {
           </Radio>
         </FormField>
       </RadioGroup>
+
+      <FormField invalid={ formik.touched.range && !!formik.errors.range }>
+        <FormFieldLabel>
+          Range:
+        </FormFieldLabel>
+
+        <Range
+          defaultValue={ [formik.initialValues.range] }
+          name="range"
+          onBlur={ formik.handleBlur }
+          onValueChange={ ({ value }) => {
+            formik.setFieldValue('range', value[0]);
+          }} />
+
+        <FormFieldHelper>
+          This is a range to fill
+        </FormFieldHelper>
+
+        <FormFieldError>
+          Error while filling range
+        </FormFieldError>
+      </FormField>
 
       <FormField invalid={ formik.touched.select && !!formik.errors.select }>
         <FormFieldLabel>

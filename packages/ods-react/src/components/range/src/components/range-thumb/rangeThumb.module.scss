@@ -1,0 +1,40 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/range';
+
+@layer ods-atoms {
+  .range-thumb {
+    $thumb: &;
+
+    @include range.ods-range-thumb();
+
+    &:not([data-disabled]) {
+      &:hover,
+      &[data-focus] {
+        border-color: var(--ods-color-primary-200);
+        background-color: var(--ods-color-primary-200);
+      }
+
+      &#{$thumb}--invalid {
+        border-color: var(--ods-color-form-element-border-critical);
+
+        &:hover,
+        &[data-focus] {
+          border-color: var(--ods-color-form-element-border-critical);
+        }
+      }
+    }
+
+    &[data-dragging],
+    &[data-focus] {
+      @include focus.ods-focus();
+    }
+
+    &[data-disabled] {
+      cursor: not-allowed;
+    }
+
+    &[data-dragging] {
+      background-color: var(--ods-color-primary-200);
+    }
+  }
+}

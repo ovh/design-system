@@ -35,3 +35,4 @@ export * from './pagination/src';
 export * from './timepicker/src';
 export * from './code/src';
 export * from './datepicker/src';
+export * from './range/src';

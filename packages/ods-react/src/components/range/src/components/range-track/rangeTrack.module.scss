@@ -1,0 +1,17 @@
+@use '../../../../../style/range';
+
+@layer ods-atoms {
+  .range-track {
+    @include range.ods-range-track(false);
+
+    width: 100%;
+
+    &__filled {
+      @include range.ods-range-track(true);
+
+      &[data-disabled] {
+        background-color: var(--ods-color-neutral-500);
+      }
+    }
+  }
+}

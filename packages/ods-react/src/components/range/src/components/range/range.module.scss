@@ -1,0 +1,34 @@
+@use 'sass:math';
+@use '../../../../../style/range';
+
+@layer ods-atoms {
+  .range {
+    &__control {
+      display: flex;
+      align-items: center;
+      z-index: 2;
+    }
+
+    &__ticks {
+      bottom: range.$ods-range-thumb-size - math.div(range.$ods-range-track-height, 2);
+
+      &__tick {
+        &::after {
+          display: block;
+          border-radius: 6px;
+          background-color: range.$ods-range-background-color;
+          width: 2px;
+          height: range.$ods-range-thumb-size;
+          content: '';
+        }
+
+        &[data-state="at-value"],
+        &--single-mode[data-state="under-value"] {
+          &::after {
+            background-color: range.$ods-range-background-color-active;
+          }
+        }
+      }
+    }
+  }
+}

@@ -148,7 +148,7 @@ export class OdsPagination {
     const isLeft = direction === 'left';
     const tooltipLabel = isLeft ? this.labelTooltipPrevious : this.labelTooltipNext;
     const arrowButtonId = isLeft ? this.leftArrowButtonId : this.rightArrowButtonId;
-    const isArrowDisabled = this.isDisabled || (isLeft && this.current === 1) || (!isLeft && this.current >= this.pageList.length);
+    const isArrowDisabled = this.isDisabled || (isLeft && this.current === 1) || (!isLeft && this.current >= this.actualTotalPages);
 
     return (
       <li class="ods-pagination__list__arrow">
@@ -279,7 +279,7 @@ export class OdsPagination {
 
           {
             this.pageList.slice(1, this.pageList.length - 1).map((page, index) => {
-              return this.renderPage(index + 2, page.active);
+              return this.renderPage(page.pageId, page.active);
             })
           }
 

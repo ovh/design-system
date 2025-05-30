@@ -12,7 +12,7 @@ import { staticSourceRenderConfig } from '../../../src/helpers/source.ts';
 type Story = StoryObj<PaginationProp>;
 
 const meta: Meta<PaginationProp> = {
-  argTypes: excludeFromDemoControls(['defaultPage', 'onPageChange']),
+  argTypes: excludeFromDemoControls(['defaultPage', 'onPageChange', 'renderTotalItemsLabel']),
   component: Pagination,
   title: 'ODS Components/Pagination',
 };
@@ -56,6 +56,11 @@ export const Demo: Story = {
         category: CONTROL_CATEGORY.general,
       },
     },
+    withPageSizeSelector: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    }
   }),
 };
 
@@ -130,5 +135,18 @@ export const WithLabels: Story = {
       labelTooltipPrev={ 'Go to previous page' }
       labelTooltipNext={ 'Go to next page' }
       totalItems={ 500 } />
+  ),
+};
+
+export const TotalItems: Story = {
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => (
+    <Pagination
+      totalItems={ 500 } renderTotalItemsLabel={({ totalItems }) => `of ${totalItems} results`} withPageSizeSelector />
   ),
 };

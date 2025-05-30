@@ -9,8 +9,10 @@ type FormFieldContextType = FormFieldRootProp & {
   ariaDescribedBy?: string,
   errorId?: string,
   helperId?: string,
+  labelId?: string,
   setErrorId?: (value?: string) => void,
   setHelperId?: (value?: string) => void,
+  setLabelId?: (value?: string) => void,
 }
 
 interface FormFieldProviderProp extends FormFieldContextType {
@@ -23,6 +25,7 @@ function FormFieldProvider({ children, id, invalid, ...prop }: FormFieldProvider
   const fieldId = id ?? useId();
   const [errorId, setErrorId] = useState<string | undefined>();
   const [helperId, setHelperId] = useState<string | undefined>();
+  const [labelId, setLabelId] = useState<string | undefined>();
 
   const ariaDescribedBy = useMemo(() => {
     return `${helperId || ''} ${invalid && errorId ? errorId : ''}`.trim();
@@ -35,8 +38,10 @@ function FormFieldProvider({ children, id, invalid, ...prop }: FormFieldProvider
       helperId,
       id: fieldId,
       invalid,
+      labelId,
       setErrorId,
       setHelperId,
+      setLabelId,
       ...prop,
     }}>
       { children }

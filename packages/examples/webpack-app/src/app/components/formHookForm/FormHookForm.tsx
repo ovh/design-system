@@ -8,6 +8,7 @@ import {
   PhoneNumber, PhoneNumberControl, PhoneNumberCountryList,
   Quantity, QuantityControl, QuantityInput,
   Radio, RadioControl, RadioLabel, RadioGroup,
+  Range,
   Select, SelectContent, SelectControl,
   Textarea,
   Timepicker, TimepickerControl,
@@ -25,6 +26,7 @@ type FormData = {
   phoneNumber: string,
   quantity: string,
   radioGroup: string,
+  range: number,
   select: string,
   textarea: string,
   timepicker: string,
@@ -39,6 +41,7 @@ const defaultValue: FormData = {
   phoneNumber: '',
   quantity: '42',
   radioGroup: '',
+  range: 50,
   select: 'cat',
   textarea: 'default textarea',
   timepicker: '',
@@ -260,9 +263,9 @@ function FormHookForm(): ReactElement {
 
       <FormField>
         <Controller
-        control={ control }
-        name="radioGroup"
-        render={ ({ field} ) => (
+          control={ control }
+          name="radioGroup"
+          render={ ({ field} ) => (
           <RadioGroup
             defaultValue={ defaultValue.radioGroup }
             onValueChange={ ({ value }) => value && setValue(field.name, value) }>
@@ -294,6 +297,29 @@ function FormHookForm(): ReactElement {
           </RadioGroup>
         )} />
       </FormField>
+
+      <Controller
+        control={ control }
+        name="range"
+        render={ ({ field} ) => (
+        <FormField invalid={ !!errors.range }>
+          <FormFieldLabel>
+            Range:
+          </FormFieldLabel>
+
+          <Range
+            defaultValue={ [defaultValue.range] }
+            onValueChange={ ({ value }) => setValue(field.name, value[0]!) } />
+
+          <FormFieldHelper>
+            This is a range to fill
+          </FormFieldHelper>
+
+          <FormFieldError>
+            Error while filling range
+          </FormFieldError>
+        </FormField>
+      )} />
 
       <FormField invalid={ !!errors.select }>
         <FormFieldLabel>

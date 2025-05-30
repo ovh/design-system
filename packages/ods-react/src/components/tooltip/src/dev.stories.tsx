@@ -54,7 +54,7 @@ export const Default = () => (
       Show tooltip
     </TooltipTrigger>
 
-    <TooltipContent>
+    <TooltipContent createPortal={false}>
       This is the tooltip content
     </TooltipContent>
   </Tooltip>

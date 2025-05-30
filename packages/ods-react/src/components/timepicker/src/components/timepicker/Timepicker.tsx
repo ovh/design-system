@@ -1,12 +1,12 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { withFormField } from '../../../../form-field/src';
+import { useFormField } from '../../../../form-field/src';
 import { TimepickerProvider, type TimepickerRootProp } from '../../contexts/useTimepicker';
 import style from './timepicker.module.scss';
 
 interface TimepickerProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue'>, TimepickerRootProp {}
 
-const Timepicker: FC<TimepickerProp> = withFormField(forwardRef(({
+const Timepicker: FC<TimepickerProp> = forwardRef(({
   children,
   className,
   defaultValue,
@@ -24,12 +24,14 @@ const Timepicker: FC<TimepickerProp> = withFormField(forwardRef(({
   withSeconds,
   ...props
 }, ref): JSX.Element => {
+  const fieldContext = useFormField();
+
   return (
     <TimepickerProvider
       defaultValue={ defaultValue }
       disabled={ disabled }
-      id={ id }
-      invalid={ invalid }
+      id={ id || fieldContext?.id }
+      invalid={ invalid || fieldContext?.invalid }
       name={ name }
       onTimezoneChange={ onTimezoneChange }
       onValueChange={ onValueChange }
@@ -47,7 +49,7 @@ const Timepicker: FC<TimepickerProp> = withFormField(forwardRef(({
       </div>
     </TimepickerProvider>
   );
-}));
+});
 
 Timepicker.displayName = 'Timepicker';
 

@@ -11,6 +11,8 @@ interface PaginationPageChangeDetail {
   page: number;
 }
 
+// function that returns string
+
 interface PaginationProp extends ComponentPropsWithRef<'nav'> {
   disabled?: boolean;
   defaultPage?: number;

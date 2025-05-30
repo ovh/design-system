@@ -1,0 +1,97 @@
+import { Badge } from '@ovhcloud/ods-react';
+import { Meta, Source } from '@storybook/blocks';
+import * as RangeStories from './range.stories';
+import { Heading } from '../../../src/components/heading/Heading';
+
+<Meta of={ RangeStories } name="Migration From 17.x" />
+
+<Heading label="Range - migrate from v17 to v18" level={ 1 } />
+
+<Heading label="Attributes changes" level={ 2 } />
+
+`color` <Badge color="critical" size="sm">Removed</Badge>
+
+Has been removed.
+
+This design feature has been removed in order to match the new styling of the component.
+
+`disabled` <Badge color="information" size="sm">Updated</Badge>
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+`error` <Badge color="information" size="sm">Updated</Badge>
+
+Has been updated.
+
+You can use the new `hasError` attribute to obtain the same behavior.
+
+`errorStateControl` <Badge color="critical" size="sm">Removed</Badge>
+
+Has been removed.
+
+Was not relevant for few versions already.
+
+`formControl` <Badge color="critical" size="sm">Removed</Badge>
+
+Has been removed.
+
+Was not relevant for few versions already.
+
+`forbidden-values` <Badge color="critical" size="sm">Removed</Badge>
+
+Has been removed.
+
+You can replace it with a regex on the `pattern` attributes.
+
+`inline` <Badge color="critical" size="sm">Removed</Badge>
+
+Has been removed.
+
+Range is now `inline-block` by default.
+You can add some style directly on the component if you want to override that.
+
+<Heading label="Migration examples" level={ 2 } />
+
+Disabled range:
+
+<Source code={`
+<osds-range disabled>
+</osds-range>
+
+<!-- is now -->
+
+<ods-range is-disabled>
+</ods-range>
+`}
+        dark="true"
+        language="html" />
+
+Error range:
+
+<Source code={`
+<osds-range error>
+</osds-range>
+
+<!-- is now -->
+
+<ods-range has-error>
+</ods-range>
+`}
+        dark="true"
+        language="html" />
+
+Inline range:
+
+<Source code={`
+<osds-range inline>
+</osds-range>
+
+<!-- is now -->
+
+<ods-range>
+</ods-range>
+`}
+        dark="true"
+        language="html" />

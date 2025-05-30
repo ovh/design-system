@@ -9,7 +9,7 @@ interface SelectValueChangeDetail {
   value: string[],
 }
 
-interface SelectProp extends ComponentPropsWithRef<'div'> {
+interface SelectProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> {
   defaultValue?: string | string[],
   disabled?: boolean,
   fitControlWidth?: boolean,

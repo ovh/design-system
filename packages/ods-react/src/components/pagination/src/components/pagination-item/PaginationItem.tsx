@@ -1,5 +1,5 @@
-import { type FC } from 'react';
 import { Pagination as VendorPagination, usePaginationContext } from '@ark-ui/react/pagination';
+import { type FC } from 'react';
 import { BUTTON_VARIANT, Button } from '../../../../button/src';
 import style from './paginationItem.module.scss';
 

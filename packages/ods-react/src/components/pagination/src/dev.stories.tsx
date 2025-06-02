@@ -7,7 +7,7 @@ export default {
 };
 
 export const Default = () => (
-  <Pagination totalItems={50000} />
+  <Pagination defaultPage={10} totalItems={50000} />
 );
 
 export const CustomStyle = () => (
@@ -15,7 +15,7 @@ export const CustomStyle = () => (
 );
 
 export const Disabled = () => (
-  <Pagination totalItems={500} />
+  <Pagination disabled totalItems={500} />
 );
 
 export const WithLabels = () => (
@@ -30,12 +30,6 @@ export const WithPageSizeSelectorAndCustomTotalLabel = () => (
   <Pagination
     totalItems={500}
     withPageSizeSelector
-    renderTotalItemsLabel={({ totalItems }) => `of ${totalItems} results`}
-  />
-);
-export const WithPageSizeSelectorAndTotalLabel = () => (
-  <Pagination
-    totalItems={500}
-    withPageSizeSelector
+    renderTotalItemsLabel={({ totalItems }) => `sur ${totalItems} résultats`}
   />
 );

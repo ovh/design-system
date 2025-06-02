@@ -1,2 +1,3 @@
 export { Pagination, type PaginationPageChangeDetail, type PaginationProp } from './components/pagination/Pagination';
-export { type RenderTotalItemsLabel } from './components/pagination-page-size-selector/PaginationPageSizeSelector';
+export { type PaginationTotalItemsLabelRenderer } from './components/pagination-page-size-selector/PaginationPageSizeSelector';
+export { PAGINATION_PER_PAGE } from './constants/pagination-per-page';

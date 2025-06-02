@@ -7,8 +7,8 @@ import { PaginationButtonWithTooltip } from '../pagination-button-with-tooltip/P
 import { PaginationItem } from '../pagination-item/PaginationItem';
 import {
   PaginationPageSizeSelector,
-  type RenderTotalItemsLabel,
-} from '../pagination-page-size-selector/PaginationPageSizeSelector.tsx';
+  type PaginationTotalItemsLabelRenderer,
+} from '../pagination-page-size-selector/PaginationPageSizeSelector';
 import style from './pagination.module.scss';
 
 interface PaginationPageChangeDetail {
@@ -25,9 +25,11 @@ interface PaginationProp extends ComponentPropsWithRef<'nav'> {
   page?: number;
   siblingCount?: number;
   totalItems: number;
+  renderTotalItemsLabel?: PaginationTotalItemsLabelRenderer;
   withPageSizeSelector?: boolean;
-  renderTotalItemsLabel?: RenderTotalItemsLabel;
 }
+
+const defaultRenderTotalItemsLabel: PaginationTotalItemsLabelRenderer = ({ totalItems }) => `of ${totalItems} results`;
 
 const Pagination: FC<PaginationProp> = forwardRef(({
   className,
@@ -38,8 +40,8 @@ const Pagination: FC<PaginationProp> = forwardRef(({
   totalItems,
   siblingCount,
   pageSize = 10,
+  renderTotalItemsLabel = defaultRenderTotalItemsLabel,
   withPageSizeSelector,
-  renderTotalItemsLabel,
   ...props
 }, ref): JSX.Element => {
   const [itemsPerPage, setItemsPerPage] = useState<number>(pageSize);

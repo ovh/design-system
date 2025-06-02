@@ -62,6 +62,9 @@ export const Demo: Story = {
       }
     }
   }),
+  args: {
+    totalItems: 5000
+  }
 };
 
 export const Controlled: Story = {
@@ -114,7 +117,7 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <Pagination totalItems={ 5000 } />
+    <Pagination totalItems={ 5000 } withPageSizeSelector />
   ),
 };
 

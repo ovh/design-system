@@ -12,7 +12,7 @@ import { staticSourceRenderConfig } from '../../../src/helpers/source.ts';
 type Story = StoryObj<PaginationProp>;
 
 const meta: Meta<PaginationProp> = {
-  argTypes: excludeFromDemoControls(['defaultPage', 'onPageChange', 'renderTotalItemsLabel']),
+  argTypes: excludeFromDemoControls(['defaultPage', 'onPageChange', 'page', 'pageSize', 'renderTotalItemsLabel']),
   component: Pagination,
   title: 'ODS Components/Pagination',
 };
@@ -117,7 +117,7 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <Pagination totalItems={ 5000 } withPageSizeSelector />
+    <Pagination totalItems={ 100 } withPageSizeSelector />
   ),
 };
 

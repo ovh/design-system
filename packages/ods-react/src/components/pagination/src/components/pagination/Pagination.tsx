@@ -1,6 +1,6 @@
 import { Pagination as VendorPagination } from '@ark-ui/react/pagination';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useState } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useState } from 'react';
 import { BUTTON_VARIANT, Button } from '../../../../button/src/index';
 import { ICON_NAME, Icon } from '../../../../icon/src/index';
 import { PaginationButtonWithTooltip } from '../pagination-button-with-tooltip/PaginationButtonWithTooltip';
@@ -21,8 +21,8 @@ interface PaginationProp extends ComponentPropsWithRef<'nav'> {
   labelTooltipNext?: string;
   labelTooltipPrev?: string;
   onPageChange?: (detail: PaginationPageChangeDetail) => void;
-  pageSize?: number;
   page?: number;
+  pageSize?: number;
   siblingCount?: number;
   totalItems: number;
   renderTotalItemsLabel?: PaginationTotalItemsLabelRenderer;
@@ -37,25 +37,47 @@ const Pagination: FC<PaginationProp> = forwardRef(({
   defaultPage,
   labelTooltipNext,
   labelTooltipPrev,
-  totalItems,
-  siblingCount,
+  onPageChange,
+  page,
   pageSize = 10,
+  siblingCount,
+  totalItems,
   renderTotalItemsLabel = defaultRenderTotalItemsLabel,
   withPageSizeSelector,
   ...props
 }, ref): JSX.Element => {
   const [itemsPerPage, setItemsPerPage] = useState<number>(pageSize);
+  const [internalPage, setInternalPage] = useState<number>(defaultPage ?? 1);
+  const isControlled = page !== undefined;
+  const currentPage = isControlled && page ? page : internalPage;
+
+  useEffect(() => {
+    if (!isControlled) {
+      setInternalPage(defaultPage ?? 1);
+    }
+  }, [totalItems, itemsPerPage, defaultPage, isControlled]);
+
+  const handlePageChange = (detail: PaginationPageChangeDetail): void => {
+    if (!isControlled) {
+      setInternalPage(detail.page);
+    }
+    onPageChange?.(detail);
+  };
+
   const handlePageSizeChange = (value: string): void => {
     setItemsPerPage(Number(value));
   };
+
   return (
     <VendorPagination.Root
       className={ classNames(style[ 'pagination' ], className) }
       count={ totalItems }
       defaultPage={ defaultPage }
+      onPageChange={ handlePageChange }
+      page={ currentPage }
       pageSize={ itemsPerPage }
-      siblingCount={ siblingCount }
       ref={ ref }
+      siblingCount={ siblingCount }
       { ...props }>
       { withPageSizeSelector &&
         <PaginationPageSizeSelector

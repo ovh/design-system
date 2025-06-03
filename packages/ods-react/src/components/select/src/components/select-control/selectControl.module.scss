@@ -65,6 +65,9 @@
     }
 
     &__icon {
+      color: var(--ods-color-primary-500);
+      font-size: 1.25rem;
+
       &[data-state="open"] {
         transform: rotate(180deg);
       }

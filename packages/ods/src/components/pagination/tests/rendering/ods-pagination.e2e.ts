@@ -60,9 +60,9 @@ describe('ods-pagination rendering', () => {
   });
 
   it('should show correct number of steps for total pages', async() => {
-    await setup('<ods-pagination default-current-page="1" total-pages="7"></ods-pagination>');
+    await setup('<ods-pagination default-current-page="1" total-pages="10"></ods-pagination>');
     const buttonList = await page.findAll('ods-pagination >>> li >>> ods-button');
 
-    expect(buttonList.length).toBe(10);
+    expect(buttonList.length).toBe(9);
   });
 });

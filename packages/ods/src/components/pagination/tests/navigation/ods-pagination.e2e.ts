@@ -70,4 +70,21 @@ describe('ods-pagination navigation', () => {
     expect(odsItemPerPageChange).toHaveReceivedEventDetail(expected);
     expect(odsItemPerPageChange).toHaveReceivedEventTimes(1);
   });
+
+  it('should change items per page and emit event even in large items scenario', async() => {
+    await setup('<ods-pagination default-current-page="2" total-items="6000000"></ods-pagination>');
+    const perPageSelectElement = await page.find('ods-pagination >>> ods-select');
+    const odsItemPerPageChange = await el.spyOnEvent('odsItemPerPageChange');
+    perPageSelectElement.setAttribute('value', '50');
+    await page.waitForChanges();
+
+    const expected: OdsPaginationItemPerPageChangedEventDetail = {
+      current: 50,
+      currentPage: 1,
+      totalPages: 120000,
+    };
+
+    expect(odsItemPerPageChange).toHaveReceivedEventDetail(expected);
+    expect(odsItemPerPageChange).toHaveReceivedEventTimes(1);
+  });
 });

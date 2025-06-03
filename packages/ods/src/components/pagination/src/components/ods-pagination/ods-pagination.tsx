@@ -278,7 +278,7 @@ export class OdsPagination {
           { renderEllipsisLeft && this.renderEllipsis('left') }
 
           {
-            this.pageList.slice(1, this.pageList.length - 1).map((page, index) => {
+            this.pageList.slice(1, this.pageList.length - 1).map((page) => {
               return this.renderPage(page.pageId, page.active);
             })
           }

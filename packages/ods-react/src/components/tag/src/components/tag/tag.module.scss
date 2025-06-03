@@ -44,10 +44,6 @@
 
     &--lg {
       @include tag.ods-tag-size('lg');
-
-      & #{$tag}__close {
-        font-size: 0.875rem;
-      }
     }
 
     &__label {

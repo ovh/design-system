@@ -4011,6 +4011,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-code@workspace:packages/ods-react/src/components/code":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-code@workspace:packages/ods-react/src/components/code"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-divider@workspace:packages/ods-react/src/components/divider":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-divider@workspace:packages/ods-react/src/components/divider"

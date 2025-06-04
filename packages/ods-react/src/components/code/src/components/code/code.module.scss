@@ -1,0 +1,54 @@
+@use '../../../../../style/input';
+
+$ods-code-primary-color: #fff;
+$ods-code-secondary-color: #000;
+
+@layer ods-organisms {
+  .code {
+    display: inline-flex;
+    flex-flow: row;
+    column-gap: 8px;
+    justify-content: space-between;
+    border-radius: var(--ods-border-radius-sm);
+    background-color: $ods-code-secondary-color;
+    padding: 12px;
+    height: auto;
+    min-height: input.$ods-input-field-height;
+    color: $ods-code-primary-color;
+
+    &__preformat {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      white-space: pre-wrap;
+
+      &__code {
+        font-family: var(--ods-font-family-code);
+      }
+    }
+
+    &__clipboard {
+      background-color: transparent;
+      padding: 0;
+
+      &__trigger {
+        &__button {
+          color: $ods-code-primary-color;
+
+          &:focus-visible,
+          &:hover {
+            background-color: var(--ods-color-neutral-600);
+          }
+
+          &:active {
+            background-color: var(--ods-color-neutral-700);
+          }
+
+          &:focus {
+            outline-color: $ods-code-primary-color;
+          }
+        }
+      }
+    }
+  }
+}

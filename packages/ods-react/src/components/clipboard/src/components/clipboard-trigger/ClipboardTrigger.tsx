@@ -14,11 +14,24 @@ interface ClipboardTriggerProp extends ComponentPropsWithRef<'button'> {
 
 const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
   className,
+  children,
   labelCopy = 'Copy to clipboard',
   labelCopySuccess = 'Copied!',
   ...props
 }, ref): JSX.Element => {
   const { disabled } = useClipboard();
+
+  const defaultButton = (
+    <Button
+      disabled={disabled}
+      size={BUTTON_SIZE.xs}
+      variant={BUTTON_VARIANT.ghost}
+    >
+      <Icon name={ICON_NAME.fileCopy} />
+    </Button>
+  );
+
+  const triggerContent = children || defaultButton;
 
   return (
     <Tooltip position={ TOOLTIP_POSITION.right }>
@@ -31,12 +44,7 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
                 asChild
                 ref={ ref }
                 { ...props }>
-                <Button
-                  disabled={ disabled }
-                  size={ BUTTON_SIZE.xs }
-                  variant={ BUTTON_VARIANT.ghost }>
-                  <Icon name={ ICON_NAME.fileCopy } />
-                </Button>
+                { triggerContent }
               </TooltipTrigger>
 
               <TooltipContent className={ classNames(style[ 'clipboard__tooltip-success' ], className) }>
@@ -51,12 +59,7 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
             asChild
             ref={ ref }
             { ...props }>
-            <Button
-              disabled={ disabled }
-              size={ BUTTON_SIZE.xs }
-              variant={ BUTTON_VARIANT.ghost }>
-              <Icon name={ ICON_NAME.fileCopy } />
-            </Button>
+            { triggerContent }
           </TooltipTrigger>
 
           {

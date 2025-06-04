@@ -1,0 +1,76 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as CodeStories from './code.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ CodeStories } name='Documentation' />
+
+<Banner of={ CodeStories } />
+
+_**Code** component highlights strings or small blocks of **Code** so it makes them easier to read and understand_
+
+<Canvas of={ CodeStories.Overview } sourceState='none' />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ ['Code snippet'] }
+              atomicType={ ATOMIC_TYPE.molecule }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=26-7720"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/code"
+              name="Code">
+  A **Code** component displays a string of **Code** or a small block of **Code** that can be copied to the clipboard.
+</IdentityCard>
+
+<Heading label="Anatomy" level={ 2 } />
+
+![Component anatomy](components/code/anatomy.png "Component anatomy")
+
+1. A container with the whole **Code** content that will be copied to the clipboard
+2. A 'copy' icon **Button** to complete the copy action when clicked
+
+<Heading label="Usage" level={ 2 } />
+
+**Code** is mainly used for sharing examples of **Code** that can be a string or a small block of **Code**.
+
+An optional icon **Button** may be added in order to copy its content.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    '- Align Code text to the grid and hang its container',
+    <span>- Use Code just to display some simple text</span>,
+    '- Use Code with very long portion of code',
+  ]}
+  dos={[
+    '- Align Code container to the grid',
+    '- Use Code for useful and reusable small portion of code',
+  ]}
+/>
+
+<Heading label="Placement" level={ 2 } />
+
+By default, the **Code** content is left-aligned in its container.
+
+It should be vertically aligned with other form components on a same page.
+
+<Heading label="Behavior" level={ 2 } />
+
+The "Copy" icon **Button** can be hovered, focused and clicked.
+
+If the optional icon **Button** exists, when clicking on it, the **Code** content is copied to the user's clipboard.
+
+An event is triggered when **Code** content is copied.
+
+<Heading label="Variation" level={ 2 } />
+
+N/A
+
+<Heading label="Accessibility" level={ 2 } />
+
+When focusing on the "Copy" icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, the component can be triggered with `Space` or `Enter` keys.

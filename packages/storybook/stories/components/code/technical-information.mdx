@@ -1,0 +1,35 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsCode from '../../../../ods-react/src/components/code/documentation/code.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as CodeStories from './code.stories';
+
+<Meta of={ CodeStories } name="Technical information" />
+
+<Banner of={ CodeStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ CodeStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsCode } of={ CodeStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ CodeStories.Default } sourceState="shown" />
+
+<Heading label="Multiline" level={ 3 } />
+
+<Canvas of={ CodeStories.Multiline } sourceState="shown" />
+
+<Heading label="With copy button enabled" level={ 3 } />
+
+<Canvas of={ CodeStories.CanCopy } sourceState="shown" />
+
+<Heading label="Custom labels" level={ 3 } />
+
+<Canvas of={ CodeStories.CustomLabels } sourceState="shown" />
+

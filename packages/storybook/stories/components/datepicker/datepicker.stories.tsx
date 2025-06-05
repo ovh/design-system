@@ -1,12 +1,13 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { Datepicker, DatepickerContent, DatepickerControl, type DatepickerProp } from '../../../../ods-react/src/components/datepicker/src';
+import { Datepicker, DatepickerContent, DatepickerControl, type DatepickerControlProp, type DatepickerProp } from '../../../../ods-react/src/components/datepicker/src';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<DatepickerProp>;
+type DemoArg = Partial<DatepickerProp> & Partial<DatepickerControlProp>;
 
 const meta: Meta<DatepickerProp> = {
   argTypes: excludeFromDemoControls(['dateFormatter', 'defaultOpen', 'defaultValue', 'defaultView', 'disabledDates', 'disabledWeekDays', 'max', 'maxView', 'min', 'minView', 'name', 'onValueChange', 'open', 'required', 'value', 'view']),
@@ -17,15 +18,29 @@ const meta: Meta<DatepickerProp> = {
 
 export default meta;
 
-export const Demo: Story = {
-  render: (arg) => (
-    <Datepicker { ...arg }>
-      <DatepickerControl />
+export const Demo: StoryObj = {
+  render: (arg: DemoArg) => (
+    <Datepicker
+      disabled={ arg.disabled }
+      invalid={ arg.invalid }
+      locale={ arg.locale }
+      placeholder={ arg.placeholder }
+      readOnly={ arg. readOnly }>
+      <DatepickerControl
+        clearable={ arg.clearable }
+        loading={ arg.loading } />
 
       <DatepickerContent />
     </Datepicker>
   ),
   argTypes: orderControls({
+    clearable: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: { summary: 'boolean' },
+      },
+      control: { type: 'boolean' },
+    },
     disabled: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -38,13 +53,20 @@ export const Demo: Story = {
       },
       control: { type: 'boolean' },
     },
+    loading: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: { summary: 'boolean' },
+      },
+      control: { type: 'boolean' },
+    },
     locale: {
       table: {
         category: CONTROL_CATEGORY.general,
         type: { summary: 'iso code' },
       },
       control: { type: 'select' },
-      options: ['de', 'es', 'fr', 'it', 'nl', 'pl', 'pt'],
+      options: ['de', 'en', 'es', 'fr', 'it', 'nl', 'pl', 'pt'],
     },
     placeholder: {
       table: {
@@ -69,7 +91,9 @@ export const DateFormatter: Story = {
     },
   },
   render: ({}) => (
-    <Datepicker dateFormatter={ ({ date }) => `${date.getFullYear()}` }>
+    <Datepicker
+      dateFormatter={ ({ date }) => `${date.getFullYear()}` }
+      placeholder="yyyy">
       <DatepickerControl />
 
       <DatepickerContent />

@@ -5,12 +5,8 @@ export default {
   title: 'Tests rendering',
 };
 
-export const customStyle = () => (
-  <Code
-    data-testid="custom-style"
-    style={{ height: '42px' }} />
-);
-
 export const render = () => (
-  <Code data-testid="render" />
+  <Code data-testid="render">
+    console.log('Hello world');
+  </Code>
 );

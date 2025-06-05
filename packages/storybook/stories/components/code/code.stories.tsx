@@ -52,7 +52,7 @@ export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Code>
-      { `import { Text } from '@ovhcloud/ods-react';` }
+      console.log('Hello world');
     </Code>
   ),
 };
@@ -82,7 +82,7 @@ export const CustomLabels: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Code canCopy labelCopy="Click to copy" labelCopySuccess="Successfully copied">
-      { `import { Text } from '@ovhcloud/ods-react';` }
+      console.log('Hello world');
     </Code>
   ),
 };

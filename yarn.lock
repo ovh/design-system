@@ -4066,6 +4066,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-medium@workspace:packages/ods-react/src/components/medium":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-medium@workspace:packages/ods-react/src/components/medium"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-message@workspace:packages/ods-react/src/components/message":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-message@workspace:packages/ods-react/src/components/message"

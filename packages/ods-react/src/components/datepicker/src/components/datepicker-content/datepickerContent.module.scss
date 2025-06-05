@@ -1,7 +1,6 @@
 @use '../../../../../style/button';
 @use '../../../../../style/focus';
 @use '../../../../../style/state';
-@use '../datepicker/datepicker.module';
 
 @layer ods-molecules {
   .datepicker-content {
@@ -15,13 +14,13 @@
     }
 
     &__table {
-      width: calc(datepicker.$ods-datepicker-item-size * 7);
+      width: calc(button.$ods-button-size-sm * 7);
       table-layout: fixed;
 
       &__week-day {
         box-sizing: border-box;
-        width: datepicker.$ods-datepicker-item-size;
-        height: datepicker.$ods-datepicker-item-size;
+        width: button.$ods-button-size-sm;
+        height: button.$ods-button-size-sm;
         color: var(--ods-color-text);
         font-size: 1rem;
         font-weight: 400;

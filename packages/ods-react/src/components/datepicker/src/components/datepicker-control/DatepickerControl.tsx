@@ -1,6 +1,7 @@
 import { DatePicker, useDatePickerContext } from '@ark-ui/react/date-picker';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, type KeyboardEvent, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { useFormField } from '../../../../form-field/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { Input } from '../../../../input/src';
@@ -20,26 +21,12 @@ const DatepickerControl: FC<DatepickerControlProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { invalid, required } = useDatepicker();
-  const { getInputProps, open, setOpen } = useDatePickerContext();
+  const { getInputProps, open } = useDatePickerContext();
   const fieldContext = useFormField();
   const { disabled, readOnly } = getInputProps();
 
-  function onControlClick(): void {
-    if (!disabled && !readOnly) {
-      setOpen(true);
-    }
-  }
-
-  function onInputKeyDown(event: KeyboardEvent): void {
-    if (event.key === 'ArrowDown') {
-      setOpen(true);
-    }
-  }
-
   return (
-    <DatePicker.Control
-      className={ classNames(style['datepicker-control'], className) }
-      onClick={ onControlClick }>
+    <DatePicker.Control className={ classNames(style['datepicker-control'], className) }>
       <DatePicker.Input
         asChild
         className={ classNames(
@@ -53,16 +40,19 @@ const DatepickerControl: FC<DatepickerControlProp> = forwardRef(({
           id={ id || fieldContext?.id }
           invalid={ invalid || fieldContext?.invalid }
           loading={ loading }
-          onKeyDown={ onInputKeyDown }
           required={ required } />
       </DatePicker.Input>
 
-      <Icon
-        className={ classNames(
-          style['datepicker-control__icon'],
-          { [style['datepicker-control__icon--disabled']]: disabled || readOnly },
-        )}
-        name={ ICON_NAME.calendar } />
+      <DatePicker.Trigger asChild>
+        <Button
+          className={ style['datepicker-control__trigger'] }
+          color={ invalid ? BUTTON_COLOR.critical : BUTTON_COLOR.primary }
+          disabled={ disabled || readOnly }
+          size={ BUTTON_SIZE.sm }
+          variant={ BUTTON_VARIANT.outline }>
+          <Icon name={ ICON_NAME.calendar } />
+        </Button>
+      </DatePicker.Trigger>
     </DatePicker.Control>
   );
 });

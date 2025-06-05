@@ -1,39 +1,27 @@
-@use '../../../../../style/focus';
-@use '../../../../../style/input';
-
 @layer ods-molecules {
   .datepicker-control {
     display: inline-grid;
-    position: relative;
     grid-template-columns: 1fr max-content;
     align-items: center;
 
-    &:focus-within {
-      @include focus.ods-focus();
-
-      border-radius: var(--ods-border-radius-sm);
-    }
-
     &__input {
-      padding-right: calc(input.$ods-input-field-horizontal-padding * 4);
+      border-right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
 
       &:focus-within {
-        outline: 0;
+        z-index: 2;
       }
 
-      &--open:not([data-invalid]) {
+      &--open:not([data-disabled], [data-invalid], [data-readonly]) {
         border-color: var(--ods-color-form-element-border-hover-default);
       }
     }
 
-    &__icon {
-      position: absolute;
-      right: input.$ods-input-field-horizontal-padding;
-      color: var(--ods-color-primary-500);
-
-      &--disabled {
-        color: var(--ods-color-neutral-500);
-      }
+    &__trigger {
+      border-radius: var(--ods-border-radius-sm);
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
   }
 }

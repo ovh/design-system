@@ -69,9 +69,7 @@ export const CustomCSS = () => (
 );
 
 export const Default = () => (
-  <>
-    <Range />
-  </>
+  <Range />
 );
 
 export const DefaultValue = () => (

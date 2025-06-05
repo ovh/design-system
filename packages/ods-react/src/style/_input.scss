@@ -3,14 +3,13 @@
 
 $ods-input-actions-padding-right: 4px;
 $ods-input-field-height: var(--ods-form-element-input-height);
-$ods-input-field-horizontal-padding: 8px;
 $ods-input-placeholder-color: var(--ods-color-form-element-text-placeholder-default);
 
 @mixin ods-input() {
   box-sizing: border-box;
   border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
   border-radius: var(--ods-border-radius-sm);
-  padding: 3px $ods-input-field-horizontal-padding;
+  padding: 3px 8px;
   height: $ods-input-field-height;
   color: var(--ods-color-text);
   font-family: inherit;

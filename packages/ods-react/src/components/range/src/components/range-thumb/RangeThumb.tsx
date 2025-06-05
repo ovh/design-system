@@ -1,6 +1,6 @@
 import { Slider, useSliderContext } from '@ark-ui/react/slider';
 import classNames from 'classnames';
-import { type FC, type JSX, type KeyboardEvent, useState } from 'react';
+import { type FC, type JSX, type KeyboardEvent, useRef, useState } from 'react';
 import { useFormField } from '../../../../form-field/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../tooltip/src';
 import style from './rangeThumb.module.scss';
@@ -16,6 +16,7 @@ const RangeThumb: FC<RangeThumbProp> = ({
   index,
   invalid,
 }): JSX.Element => {
+  const thumbRef = useRef<HTMLDivElement>(null);
   const fieldContext = useFormField();
   const { value } = useSliderContext();
   const [isFocused, setIsFocused] = useState(false);
@@ -50,10 +51,12 @@ const RangeThumb: FC<RangeThumbProp> = ({
           )}
           index={ index }
           onBlur={ onBlur }
+          onChange={ () => thumbRef.current?.focus() }
           onFocus={ onFocus }
           onKeyDown={ onKeyDown }
           onMouseLeave={ () => setIsTooltipOpen(false) }
-          onMouseOver={ () => setIsTooltipOpen(true) }>
+          onMouseOver={ () => setIsTooltipOpen(true) }
+          ref={ thumbRef }>
           <Slider.HiddenInput />
         </Slider.Thumb>
       </TooltipTrigger>

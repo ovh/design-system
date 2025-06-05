@@ -1,3 +1,18 @@
 .custom-code {
+  background-color: var(--ods-color-primary-000);
+  color: var(--ods-color-primary-800);
+}
 
+.custom-code [data-part='trigger'] {
+  color: var(--ods-color-primary-800);
+}
+
+.custom-code [data-part='trigger']:hover {
+  border-radius: var(--ods-border-radius-sm);
+  background-color: var(--ods-color-primary-800);
+  color: var(--ods-color-primary-000);
+}
+
+.custom-code:hover {
+  background-color: var(--ods-color-primary-050);
 }

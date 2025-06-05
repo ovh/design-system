@@ -1,7 +1,3 @@
-@use '../../../../../style/button';
-
-$ods-datepicker-item-size: button.$ods-button-size-sm;
-
 @layer ods-molecules {
   .datepicker {
     display: inline-block;

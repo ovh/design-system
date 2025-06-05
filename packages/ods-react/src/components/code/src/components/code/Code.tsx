@@ -32,13 +32,12 @@ const Code: FC<CodeProp> = forwardRef(({
         </code>
       </pre>
 
-      <Clipboard
-        className={ style[ 'code__clipboard' ] }
-        onCopy={ onCopy }
-        value={ children?.toString() }>
-
-        {
-          canCopy &&
+      {
+        canCopy &&
+        <Clipboard
+          className={ style[ 'code__clipboard' ] }
+          onCopy={ onCopy }
+          value={ children?.toString() }>
           <ClipboardTrigger
             className={ style[ 'code__clipboard__trigger' ] }
             labelCopy={ labelCopy }
@@ -50,9 +49,9 @@ const Code: FC<CodeProp> = forwardRef(({
               <Icon name={ ICON_NAME.fileCopy } />
             </Button>
           </ClipboardTrigger>
-        }
+        </Clipboard>
+      }
 
-      </Clipboard>
     </div>
   );
 });

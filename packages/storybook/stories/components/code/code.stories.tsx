@@ -31,8 +31,7 @@ export const Demo: Story = {
     labelCopy: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'Copy' },
-        type: { summary: 'string' },
+        defaultValue: { summary: 'Copy to clipboard' },
       },
       control: 'text',
     },
@@ -40,7 +39,6 @@ export const Demo: Story = {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: 'Copied' },
-        type: { summary: 'string' },
       },
       control: 'text',
     },

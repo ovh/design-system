@@ -43,7 +43,6 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: 'Copy' },
-        type: { summary: 'string' },
       },
       control: 'text',
     },
@@ -51,7 +50,6 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: 'Copied' },
-        type: { summary: 'string' },
       },
       control: 'text',
     },

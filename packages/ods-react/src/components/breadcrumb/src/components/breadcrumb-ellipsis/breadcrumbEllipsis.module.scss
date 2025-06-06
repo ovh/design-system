@@ -7,7 +7,6 @@
 
     &__button {
       @include link.ods-link();
-      @include link.ods-link-color('primary');
 
       border: 0;
       background-color: transparent;

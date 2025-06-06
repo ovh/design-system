@@ -21,6 +21,10 @@
         @include tag.ods-tag-color('neutral');
       }
 
+      &#{$tag}--primary {
+        @include tag.ods-tag-color('primary');
+      }
+
       &#{$tag}--success {
         @include tag.ods-tag-color('success');
       }

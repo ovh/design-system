@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { DIVIDER_COLORS, DIVIDER_SPACINGS, Divider, type DividerProp } from '../../../../ods-react/src/components/divider/src';
+import { DIVIDER_COLOR, DIVIDER_COLORS, DIVIDER_SPACINGS, Divider, type DividerProp } from '../../../../ods-react/src/components/divider/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -49,7 +49,7 @@ export const Overview: Story = {
   render: ({}) => (
     <>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <Divider color="light" />
+      <Divider color={ DIVIDER_COLOR.primary } />
       <p>Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
     </>
   ),
@@ -59,8 +59,8 @@ export const Color: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Divider color="light" />
-      <Divider color="dark" />
+      <Divider color={ DIVIDER_COLOR.neutral } />
+      <Divider color={ DIVIDER_COLOR.primary } />
     </>
   ),
 };

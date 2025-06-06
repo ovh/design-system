@@ -17,7 +17,7 @@ interface DividerProp extends ComponentPropsWithRef<'hr'> {
 
 const Divider: FC<DividerProp> = forwardRef(({
   className,
-  color = DIVIDER_COLOR.light,
+  color = DIVIDER_COLOR.primary,
   spacing = DIVIDER_SPACING._2,
   ...props
 }, ref): JSX.Element => {

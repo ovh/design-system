@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Modal, ModalBody, ModalContent, type ModalOpenChangeDetail, ModalTrigger } from '.';
+import { Button } from '../../button/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Popover, PopoverContent, PopoverTrigger } from '../../popover/src';
 import { Select, SelectContent, SelectControl } from '../../select/src';
+import { Modal, ModalBody, ModalContent, type ModalOpenChangeDetail, ModalTrigger } from '.';
 import style from './dev.module.css';
-import { Button } from '../../button/src/components/button/Button';
 
 export default {
   component: Modal,
@@ -45,6 +45,18 @@ export const Colors = () => (
       <ModalContent color="neutral">
         <ModalBody>
           Neutral
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+
+    <Modal>
+      <ModalTrigger>
+        Primary
+      </ModalTrigger>
+
+      <ModalContent color="primary">
+        <ModalBody>
+          Primary
         </ModalBody>
       </ModalContent>
     </Modal>
@@ -104,6 +116,31 @@ export const Controlled = () => {
     </>
   );
 };
+
+export const CustomStyle = () => (
+  <Modal>
+    <ModalTrigger>
+      Open Custom Styled Modal
+    </ModalTrigger>
+
+    <ModalContent
+      className={ style['custom-modal-content'] }>
+      <ModalBody className={ style['custom-modal-body'] }>
+        <h3>Custom Styled Modal</h3>
+        <p>This modal has custom styling applied through CSS modules.</p>
+        <p>The styling includes custom backgrounds, borders, shadows, and more.</p>
+      </ModalBody>
+      <div className={ style['custom-modal-footer'] }>
+        <Button>
+          Cancel
+        </Button>
+        <Button>
+          Confirm
+        </Button>
+      </div>
+    </ModalContent>
+  </Modal>
+);
 
 export const Default = () => (
   <Modal>
@@ -196,31 +233,6 @@ export const OverlayElements = () => (
           </PopoverContent>
         </Popover>
       </ModalBody>
-    </ModalContent>
-  </Modal>
-);
-
-export const CustomStyle = () => (
-  <Modal>
-    <ModalTrigger>
-      Open Custom Styled Modal
-    </ModalTrigger>
-
-    <ModalContent
-      className={ style['custom-modal-content'] }>
-      <ModalBody className={ style['custom-modal-body'] }>
-        <h3>Custom Styled Modal</h3>
-        <p>This modal has custom styling applied through CSS modules.</p>
-        <p>The styling includes custom backgrounds, borders, shadows, and more.</p>
-      </ModalBody>
-      <div className={ style['custom-modal-footer'] }>
-        <Button>
-          Cancel
-        </Button>
-        <Button>
-          Confirm
-        </Button>
-      </div>
     </ModalContent>
   </Modal>
 );

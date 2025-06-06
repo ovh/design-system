@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { MODAL_COLOR, MODAL_COLORS, Modal, ModalBody, ModalContent, type ModalContentProp, type ModalOpenChangeDetail, type ModalProp, ModalTrigger } from '../../../../ods-react/src/components/modal/src';
 import { Select, SelectContent, SelectControl } from '../../../../ods-react/src/components/select/src';
@@ -128,7 +128,7 @@ export const Colors: Story = {
     <>
       <Modal>
         <ModalTrigger asChild>
-          <Button>
+          <Button color={ BUTTON_COLOR.critical }>
             Critical
           </Button>
         </ModalTrigger>
@@ -142,7 +142,7 @@ export const Colors: Story = {
 
       <Modal>
         <ModalTrigger asChild>
-          <Button>
+          <Button color={ BUTTON_COLOR.information }>
             Information
           </Button>
         </ModalTrigger>
@@ -156,7 +156,7 @@ export const Colors: Story = {
 
       <Modal>
         <ModalTrigger asChild>
-          <Button>
+          <Button color={ BUTTON_COLOR.neutral }>
             Neutral
           </Button>
         </ModalTrigger>
@@ -170,7 +170,21 @@ export const Colors: Story = {
 
       <Modal>
         <ModalTrigger asChild>
-          <Button>
+          <Button color={ BUTTON_COLOR.primary }>
+            Primary
+          </Button>
+        </ModalTrigger>
+
+        <ModalContent color="primary">
+          <ModalBody>
+            Primary
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+
+      <Modal>
+        <ModalTrigger asChild>
+          <Button color={ BUTTON_COLOR.success }>
             Success
           </Button>
         </ModalTrigger>
@@ -184,7 +198,7 @@ export const Colors: Story = {
 
       <Modal>
         <ModalTrigger asChild>
-          <Button>
+          <Button color={ BUTTON_COLOR.warning }>
             Warning
           </Button>
         </ModalTrigger>

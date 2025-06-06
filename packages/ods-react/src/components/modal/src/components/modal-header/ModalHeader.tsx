@@ -24,10 +24,7 @@ const ModalHeader: FC<ModalHeaderProp> = ({
         dismissible &&
         <Dialog.CloseTrigger asChild>
           <Button
-            className={ classNames(
-              style['modal-header__close'],
-              style[`modal-header__close--${color}`],
-            )}
+            color={ color }
             size={ BUTTON_SIZE.xs }
             variant={ BUTTON_VARIANT.ghost }>
             <Icon name={ ICON_NAME.xmark } />

@@ -5,12 +5,28 @@
     border: 1px solid;
     border-radius: 8px;
 
+    &--critical {
+      border-color: var(--ods-color-critical-200);
+    }
+
+    &--information {
+      border-color: var(--ods-color-information-200);
+    }
+
     &--neutral {
       border-color: var(--ods-color-neutral-200);
     }
 
     &--primary {
       border-color: var(--ods-color-primary-200);
+    }
+
+    &--success {
+      border-color: var(--ods-color-success-200);
+    }
+
+    &--warning {
+      border-color: var(--ods-color-warning-200);
     }
   }
 }

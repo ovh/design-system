@@ -4,10 +4,20 @@ import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { MESSAGE_COLOR, type MessageColor } from '../../constants/message-color';
 import { MESSAGE_VARIANT, type MessageVariant } from '../../constants/message-variant';
-import { getIconName } from '../../controller/message';
+// import { getIconName } from '../../controller/message';
 import style from './message.module.scss';
 
+// TODO MessageIcon component? (see how to pass color, context?) => put back icon
+/**
+ * <Message>
+ *   <MessageIcon name={ ICON_NAME.circleInfo } />
+ *
+ *   Lorem ipsum
+ * </Message>
+ */
+
 interface MessageProp extends ComponentPropsWithRef<'div'> {
+  /** @type=MESSAGE_COLOR */
   color?: MessageColor,
   dismissible?: boolean,
   onRemove?: () => void,
@@ -33,11 +43,12 @@ const Message: FC<MessageProp> = forwardRef(({
       )}
       ref={ ref }
       { ...props }>
-      <Icon
-        className={ style['message__icon'] }
-        name={ getIconName(color) } />
+      {/*<Icon*/}
+      {/*  className={ style['message__icon'] }*/}
+      {/*  name={ getIconName(color) } />*/}
 
-      <div className={ style['message__body'] }>
+      {/*<div className={ style['message__body'] }>*/}
+      <div>
         { children }
       </div>
 
@@ -46,8 +57,9 @@ const Message: FC<MessageProp> = forwardRef(({
         <Button
           className={ classNames(
             style['message__close'],
-            style[`message__close--${color}`],
+            // style[`message__close--${color}`],
           )}
+          color={ color }
           onClick={ onRemove }
           size={ BUTTON_SIZE.xs }
           variant={ BUTTON_VARIANT.ghost }>

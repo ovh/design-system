@@ -1,4 +1,4 @@
-import { Card } from '.';
+import { CARD_COLORS, Card } from '.';
 import style from './dev.module.css';
 
 export default {
@@ -6,8 +6,19 @@ export default {
   title: 'Card dev',
 };
 
-export const Default = () => (
-  <Card />
+export const Colors = () => (
+  <div style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
+    {
+      CARD_COLORS.map((color) => (
+        <Card
+          color={ color }
+          style={{ padding: '8px' }}
+          key={ color }>
+          { color }
+        </Card>
+      ))
+    }
+  </div>
 );
 
 export const CustomStyle = () => (
@@ -17,4 +28,8 @@ export const CustomStyle = () => (
       <p>This card has custom styles applied via CSS modules</p>
     </div>
   </Card>
+);
+
+export const Default = () => (
+  <Card />
 );

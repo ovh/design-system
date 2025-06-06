@@ -1,4 +1,4 @@
-import { MESSAGE_COLOR, MESSAGE_VARIANT, Message } from '.';
+import { MESSAGE_COLORS, MESSAGE_VARIANTS, Message } from '.';
 import style from './dev.module.css';
 
 export default {
@@ -6,74 +6,42 @@ export default {
   title: 'Message dev',
 };
 
+export const Colors = () => (
+  <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
+    {
+      MESSAGE_VARIANTS.map((variant) => (
+        <div
+          key={ variant }
+          style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
+          {
+            MESSAGE_COLORS.map((color) => (
+              <Message
+                color={ color }
+                key={ color }
+                variant={ variant }>
+                { color }
+              </Message>
+            ))
+          }
+        </div>
+      ))
+    }
+  </div>
+);
+
+export const CustomStyle = () => (
+  <div style={{ maxWidth: '500px' }}>
+    <Message
+      className={ style['custom-message'] }>
+      This is a message with custom styling applied through CSS modules
+    </Message>
+  </div>
+);
+
 export const Default = () => (
   <Message>
     Default message
   </Message>
-);
-
-export const ColorsAndVariants = () => (
-  <div style={{ display: 'grid', gridTemplateColumns: 'max-content max-content', gap: '8px' }}>
-    <Message
-      color={ MESSAGE_COLOR.critical }
-      variant={ MESSAGE_VARIANT.default }>
-      Critical default
-    </Message>
-
-    <Message
-      color={ MESSAGE_COLOR.critical }
-      variant={ MESSAGE_VARIANT.light }>
-      Critical light
-    </Message>
-
-    <Message
-      color={ MESSAGE_COLOR.danger }
-      variant={ MESSAGE_VARIANT.default }>
-      Danger default
-    </Message>
-
-    <Message
-      color={ MESSAGE_COLOR.danger }
-      variant={ MESSAGE_VARIANT.light }>
-      Danger light
-    </Message>
-
-    <Message
-      color={ MESSAGE_COLOR.information }
-      variant={ MESSAGE_VARIANT.default }>
-      Information default
-    </Message>
-
-    <Message
-      color={ MESSAGE_COLOR.information }
-      variant={ MESSAGE_VARIANT.light }>
-      Information light
-    </Message>
-
-    <Message
-      color={ MESSAGE_COLOR.success }
-      variant={ MESSAGE_VARIANT.default }>
-      Success default
-    </Message>
-
-    <Message
-      color={ MESSAGE_COLOR.success }
-      variant={ MESSAGE_VARIANT.light }>
-      Success light
-    </Message>
-
-    <Message
-      color={ MESSAGE_COLOR.warning }
-      variant={ MESSAGE_VARIANT.default }>
-      Warning default
-    </Message>
-
-    <Message
-      color={ MESSAGE_COLOR.warning }
-      variant={ MESSAGE_VARIANT.light }>
-      Warning light
-    </Message>
-  </div>
 );
 
 export const Multiline = () => (
@@ -88,11 +56,3 @@ export const NonDismissible = () => (
   </Message>
 );
 
-export const CustomStyle = () => (
-  <div style={{ maxWidth: '500px' }}>
-    <Message
-      className={ style['custom-message'] }>
-      This is a message with custom styling applied through CSS modules
-    </Message>
-  </div>
-);

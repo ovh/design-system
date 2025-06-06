@@ -16,6 +16,10 @@
       @include modal.ods-modal-color('neutral');
     }
 
+    &--primary {
+      @include modal.ods-modal-color('primary');
+    }
+
     &--success {
       @include modal.ods-modal-color('success');
     }
@@ -24,6 +28,7 @@
       @include modal.ods-modal-color('warning');
     }
 
+    // TODO remove?
     &__close {
       $close-button: &;
 

@@ -7,6 +7,7 @@ import { ModalHeader } from '../modal-header/ModalHeader';
 import style from './modalContent.module.scss';
 
 interface ModalContentProp extends ComponentPropsWithRef<'div'> {
+  /** @type=MODAL_COLOR */
   color?: ModalColor,
   createPortal?: boolean,
   dismissible?: boolean,

@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { CARD_COLORS, Card, type CardProp } from '../../../../ods-react/src/components/card/src';
+import { CARD_COLOR, CARD_COLORS, Card, type CardProp } from '../../../../ods-react/src/components/card/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -35,28 +35,44 @@ export const Demo: Story = {
   },
 };
 
+export const Color: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', gap: '16px' }}>{ story() }</div>],
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Card color={ CARD_COLOR.critical }>
+        <p>Critical</p>
+      </Card>
+
+      <Card color={ CARD_COLOR.information }>
+        <p>Information</p>
+      </Card>
+
+      <Card color={ CARD_COLOR.neutral }>
+        <p>Neutral</p>
+      </Card>
+
+      <Card color={ CARD_COLOR.primary }>
+        <p>Primary</p>
+      </Card>
+
+      <Card color={ CARD_COLOR.success }>
+        <p>Success</p>
+      </Card>
+
+      <Card color={ CARD_COLOR.warning }>
+        <p>Warning</p>
+      </Card>
+    </>
+  ),
+};
+
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Card>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
     </Card>
-  ),
-};
-
-export const Color: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', gap: '16px' }}>{ story() }</div>],
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <Card color="primary">
-        <p>Primary Card</p>
-      </Card>
-
-      <Card color="neutral">
-        <p>Neutral Card</p>
-      </Card>
-    </>
   ),
 };
 

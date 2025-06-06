@@ -6,6 +6,7 @@ import { TAG_SIZE, type TagSize } from '../../constants/tag-size';
 import style from './tag.module.scss';
 
 interface TagProp extends ComponentPropsWithRef<'button'> {
+  /** @type=TAG_COLOR */
   color?: TagColor;
   size?: TagSize;
 }
@@ -17,7 +18,6 @@ const Tag: FC<TagProp> = forwardRef(({
   size = TAG_SIZE.md,
   ...props
 }, ref): JSX.Element => {
-
   return (
     <button
       className={ classNames(
@@ -27,13 +27,11 @@ const Tag: FC<TagProp> = forwardRef(({
         className,
       )}
       ref={ ref }
-      {...props}
-    >
+      { ...props }>
       { children }
       <Icon
-        className={style['tag__close']}
-        name={ICON_NAME.xmark}
-      />
+        className={ style['tag__close'] }
+        name={ ICON_NAME.xmark } />
     </button>
   );
 });

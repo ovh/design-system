@@ -69,9 +69,12 @@ export const Color: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Button color={ BUTTON_COLOR.primary }>Primary button</Button>
-      <Button color={ BUTTON_COLOR.critical }>Critical button</Button>
-      <Button color={ BUTTON_COLOR.neutral }>Neutral button</Button>
+      <Button color={ BUTTON_COLOR.critical }>Critical</Button>
+      <Button color={ BUTTON_COLOR.information }>Information</Button>
+      <Button color={ BUTTON_COLOR.neutral }>Neutral</Button>
+      <Button color={ BUTTON_COLOR.primary }>Primary</Button>
+      <Button color={ BUTTON_COLOR.success }>Success</Button>
+      <Button color={ BUTTON_COLOR.warning }>Warning</Button>
     </>
   ),
 };

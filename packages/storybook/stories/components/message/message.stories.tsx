@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
+// import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { MESSAGE_COLOR, MESSAGE_COLORS, MESSAGE_VARIANT, MESSAGE_VARIANTS, Message, type MessageProp } from '../../../../ods-react/src/components/message/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
@@ -56,8 +57,9 @@ export const Color: Story = {
   render: ({}) => (
     <>
       <Message color={ MESSAGE_COLOR.critical }>Critical message</Message>
-      <Message color={ MESSAGE_COLOR.danger }>Danger message</Message>
       <Message color={ MESSAGE_COLOR.information }>Information message</Message>
+      <Message color={ MESSAGE_COLOR.neutral }>Neutral message</Message>
+      <Message color={ MESSAGE_COLOR.primary }>Primary message</Message>
       <Message color={ MESSAGE_COLOR.success }>Success message</Message>
       <Message color={ MESSAGE_COLOR.warning }>Warning message</Message>
     </>
@@ -113,3 +115,14 @@ export const Variant: Story = {
     </>
   ),
 };
+
+// TODO
+// export const WithIcon: Story = {
+//   tags: ['!dev'],
+//   render: ({}) => (
+//     <Message color={ MESSAGE_COLOR.information }>
+//       <Icon name={ ICON_NAME.circleInfo } />
+//       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.
+//     </Message>
+//   ),
+// };

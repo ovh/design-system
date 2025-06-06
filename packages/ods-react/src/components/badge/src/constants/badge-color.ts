@@ -1,16 +1,17 @@
-enum BADGE_COLOR {
+import { COLOR } from '../../../../utils/colors';
+
+enum CUSTOM_BADGE_COLOR {
   alpha = 'alpha',
   beta = 'beta',
-  critical = 'critical',
-  information = 'information',
-  neutral = 'neutral',
   new = 'new',
   promotion = 'promotion',
-  success = 'success',
-  warning = 'warning',
 }
 
-type BadgeColor =`${BADGE_COLOR}`;
+// TS does not support enum extends (see https://github.com/microsoft/TypeScript/issues/17592#issuecomment-1294079155)
+const BADGE_COLOR = { ...COLOR, ...CUSTOM_BADGE_COLOR } as const;
+type BADGE_COLOR = (typeof BADGE_COLOR)[keyof typeof BADGE_COLOR];
+
+type BadgeColor = `${BADGE_COLOR}`;
 
 const BADGE_COLORS = Object.freeze(Object.values(BADGE_COLOR));
 

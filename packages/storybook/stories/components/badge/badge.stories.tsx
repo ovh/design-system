@@ -54,6 +54,7 @@ export const Color: Story = {
       <Badge color={ BADGE_COLOR.information }>Information</Badge>
       <Badge color={ BADGE_COLOR.neutral }>Neutral</Badge>
       <Badge color={ BADGE_COLOR.new }>New</Badge>
+      <Badge color={ BADGE_COLOR.primary }>Primary</Badge>
       <Badge color={ BADGE_COLOR.promotion }>Promotion</Badge>
       <Badge color={ BADGE_COLOR.success }>Success</Badge>
       <Badge color={ BADGE_COLOR.warning }>Warning</Badge>

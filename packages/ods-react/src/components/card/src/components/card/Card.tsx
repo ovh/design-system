@@ -4,6 +4,7 @@ import { CARD_COLOR, type CardColor } from '../../constants/card-color';
 import style from './card.module.scss';
 
 interface CardProp extends ComponentPropsWithRef<'div'> {
+  /** @type=CARD_COLOR */
   color?: CardColor,
 }
 
@@ -18,7 +19,7 @@ const Card: FC<CardProp> = forwardRef(({
         style['card'],
         style[`card--${color}`],
         className,
-      ) }
+      )}
       ref={ ref }
       { ...props }>
     </div>

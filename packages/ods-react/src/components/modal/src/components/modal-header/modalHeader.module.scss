@@ -16,38 +16,16 @@
       @include modal.ods-modal-color('neutral');
     }
 
+    &--primary {
+      @include modal.ods-modal-color('primary');
+    }
+
     &--success {
       @include modal.ods-modal-color('success');
     }
 
     &--warning {
       @include modal.ods-modal-color('warning');
-    }
-
-    &__close {
-      $close-button: &;
-
-      &:not(:disabled) {
-        &#{$close-button}--critical {
-          @include modal.ods-modal-close-button-color('critical');
-        }
-
-        &#{$close-button}--information {
-          @include modal.ods-modal-close-button-color('information');
-        }
-
-        &#{$close-button}--neutral {
-          @include modal.ods-modal-close-button-color('neutral');
-        }
-
-        &#{$close-button}--success {
-          @include modal.ods-modal-close-button-color('success');
-        }
-
-        &#{$close-button}--warning {
-          @include modal.ods-modal-close-button-color('warning');
-        }
-      }
     }
   }
 }

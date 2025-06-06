@@ -7,6 +7,7 @@ import { BUTTON_VARIANT, type ButtonVariant } from '../../constants/button-varia
 import style from './button.module.scss';
 
 interface ButtonProp extends ComponentPropsWithRef<'button'> {
+  /** @type=BUTTON_COLOR */
   color?: ButtonColor,
   loading?: boolean,
   size?: ButtonSize,

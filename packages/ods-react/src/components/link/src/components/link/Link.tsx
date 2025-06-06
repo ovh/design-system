@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type ElementType, type ForwardedRef, type JSX, type MouseEvent, forwardRef, useMemo } from 'react';
 import { getElementText } from '../../../../../utils/element';
-import { LINK_COLOR, type LinkColor } from '../../constant/link-color';
 import style from './link.module.scss';
 
 interface LinkProp<T extends ElementType = 'a'> {
@@ -11,14 +10,12 @@ interface LinkProp<T extends ElementType = 'a'> {
    * Useful for example when using routing library like react-router.
    * */
   as?: T,
-  color?: LinkColor,
   disabled?: boolean,
 }
 
 const Link = forwardRef(function Link<T extends ElementType>({
   as,
   className,
-  color = LINK_COLOR.primary,
   disabled = false,
   ...props
 }: LinkProp<T> & Omit<ComponentPropsWithRef<T>, keyof LinkProp<T>>, ref: ForwardedRef<HTMLAnchorElement>): JSX.Element {
@@ -42,7 +39,6 @@ const Link = forwardRef(function Link<T extends ElementType>({
     <Component
       className={ classNames(
         style['link'],
-        style[`link--${color}`],
         { [style['link--disabled']]: disabled },
         { [style['link--no-text']]: hasNoText },
         className,

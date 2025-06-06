@@ -28,6 +28,10 @@
       @include badge.ods-badge-color('new');
     }
 
+    &--primary {
+      @include badge.ods-badge-color('primary');
+    }
+
     &--promotion {
       @include badge.ods-badge-color('promotion');
     }

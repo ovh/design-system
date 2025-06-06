@@ -1,14 +1,7 @@
-enum CARD_COLOR {
-  neutral = 'neutral',
-  primary = 'primary',
-}
-
-type CardColor = `${CARD_COLOR}`;
-
-const CARD_COLORS = Object.freeze(Object.values(CARD_COLOR));
+import { COLOR, COLORS, type Color } from '../../../../utils/colors';
 
 export {
-  CARD_COLOR,
-  CARD_COLORS,
-  type CardColor,
+  COLOR as CARD_COLOR,
+  COLORS as CARD_COLORS,
+  type Color as CardColor,
 };

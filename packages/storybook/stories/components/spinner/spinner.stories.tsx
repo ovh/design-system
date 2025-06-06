@@ -40,7 +40,6 @@ export const Color: Story = {
     <>
       <Spinner color={ SPINNER_COLOR.neutral } />
       <Spinner color={ SPINNER_COLOR.primary } />
-      <Spinner style={{ backgroundColor: '#262626' }} color={ SPINNER_COLOR.white } />
     </>
   ),
 };

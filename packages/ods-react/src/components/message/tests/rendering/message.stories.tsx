@@ -1,4 +1,4 @@
-import { Message } from '../../src';
+import { Message, MessageBody } from '../../src';
 
 export default {
   component: Message,
@@ -9,12 +9,16 @@ export const customStyle = () => (
   <Message
     data-testid="custom-style"
     style={{ height: '42px' }}>
-    Custom Style
+    <MessageBody>
+      Custom Style
+    </MessageBody>
   </Message>
 );
 
 export const render = () => (
   <Message data-testid="render">
-    Render
+    <MessageBody>
+      Render
+    </MessageBody>
   </Message>
 );

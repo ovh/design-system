@@ -8,6 +8,22 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [18.6.3](https://ovh.github.io/design-system/v18.6.3/?path=/docs/design-system-changelog--page) (2025-06-06)
+[compare](https://github.com/ovh/design-system/compare/v18.6.2...v18.6.3)
+
+### Bug Fixes
+
+* **pagination:** create pageList with only visible pages to avoid creating infinite DOM <li> components when totalPage is a big number ([ed111e5](https://github.com/ovh/design-system/commit/ed111e59947513cb65ca1e38e6c502e5383633e6))
+* **pagination:** enhance large dataset handling ([ff67682](https://github.com/ovh/design-system/commit/ff676823238577714de938d44b29e574477b98ef))
+* **pagination:** update spec tests to match new handling ([b6aa99f](https://github.com/ovh/design-system/commit/b6aa99fb95f4d4e5302b6770b06c6bb18b880b90))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [18.6.2](https://ovh.github.io/design-system/v18.6.2/?path=/docs/design-system-changelog--page) (2025-04-10)
 [compare](https://github.com/ovh/design-system/compare/v18.6.1...v18.6.2)
 

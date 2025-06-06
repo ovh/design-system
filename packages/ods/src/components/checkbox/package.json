@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-checkbox",
-  "version": "18.6.2",
+  "version": "18.6.3",
   "private": true,
   "description": "ODS Checkbox component",
   "main": "dist/index.cjs.js",

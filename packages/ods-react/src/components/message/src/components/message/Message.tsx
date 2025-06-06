@@ -4,11 +4,11 @@ import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { MESSAGE_COLOR, type MessageColor } from '../../constants/message-color';
 import { MESSAGE_VARIANT, type MessageVariant } from '../../constants/message-variant';
-import { getIconName } from '../../controller/message';
 import style from './message.module.scss';
 
 interface MessageProp extends ComponentPropsWithRef<'div'> {
   /**
+   * @type=MESSAGE_COLOR
    * The color preset to use.
    */
   color?: MessageColor,
@@ -45,21 +45,13 @@ const Message: FC<MessageProp> = forwardRef(({
       )}
       ref={ ref }
       { ...props }>
-      <Icon
-        className={ style['message__icon'] }
-        name={ getIconName(color) } />
-
-      <div className={ style['message__body'] }>
-        { children }
-      </div>
+      { children }
 
       {
         dismissible &&
         <Button
-          className={ classNames(
-            style['message__close'],
-            style[`message__close--${color}`],
-          )}
+          className={ style['message__close'] }
+          color={ color }
           onClick={ onRemove }
           size={ BUTTON_SIZE.xs }
           variant={ BUTTON_VARIANT.ghost }>

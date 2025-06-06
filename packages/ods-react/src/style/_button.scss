@@ -72,6 +72,21 @@ $ods-button-size-md: 40px;
         border-color: var(--ods-color-critical-800);
         background-color: var(--ods-color-critical-800);
       }
+    } @else if $color == 'information' {
+      border-color: var(--ods-color-information-500);
+      background-color: var(--ods-color-information-500);
+      color: var(--ods-color-information-000);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-information-700);
+        background-color: var(--ods-color-information-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-information-800);
+        background-color: var(--ods-color-information-800);
+      }
     } @else if $color == 'neutral' {
       border-color: var(--ods-color-neutral-500);
       background-color: var(--ods-color-neutral-500);
@@ -102,6 +117,36 @@ $ods-button-size-md: 40px;
         border-color: var(--ods-color-primary-800);
         background-color: var(--ods-color-primary-800);
       }
+    } @else if $color == 'success' {
+      border-color: var(--ods-color-success-500);
+      background-color: var(--ods-color-success-500);
+      color: var(--ods-color-success-000);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-success-700);
+        background-color: var(--ods-color-success-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-success-800);
+        background-color: var(--ods-color-success-800);
+      }
+    } @else if $color == 'warning' {
+      border-color: var(--ods-color-warning-500);
+      background-color: var(--ods-color-warning-500);
+      color: var(--ods-color-warning-000);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-warning-700);
+        background-color: var(--ods-color-warning-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-warning-800);
+        background-color: var(--ods-color-warning-800);
+      }
     }
   }
 }
@@ -127,6 +172,20 @@ $ods-button-size-md: 40px;
       &:active {
         background-color: var(--ods-color-critical-200);
         color: var(--ods-color-critical-800);
+      }
+    } @else if $color == 'information' {
+      background-color: inherit;
+      color: var(--ods-color-information-500);
+
+      &:focus-visible,
+      &:hover {
+        background-color: var(--ods-color-information-100);
+        color: var(--ods-color-information-700);
+      }
+
+      &:active {
+        background-color: var(--ods-color-information-200);
+        color: var(--ods-color-information-800);
       }
     } @else if $color == 'neutral' {
       background-color: inherit;
@@ -156,6 +215,34 @@ $ods-button-size-md: 40px;
         background-color: var(--ods-color-primary-200);
         color: var(--ods-color-primary-800);
       }
+    } @else if $color == 'success' {
+      background-color: inherit;
+      color: var(--ods-color-success-500);
+
+      &:focus-visible,
+      &:hover {
+        background-color: var(--ods-color-success-100);
+        color: var(--ods-color-success-700);
+      }
+
+      &:active {
+        background-color: var(--ods-color-success-200);
+        color: var(--ods-color-success-800);
+      }
+    } @else if $color == 'warning' {
+      background-color: inherit;
+      color: var(--ods-color-warning-500);
+
+      &:focus-visible,
+      &:hover {
+        background-color: var(--ods-color-warning-100);
+        color: var(--ods-color-warning-700);
+      }
+
+      &:active {
+        background-color: var(--ods-color-warning-200);
+        color: var(--ods-color-warning-800);
+      }
     }
   }
 }
@@ -181,6 +268,23 @@ $ods-button-size-md: 40px;
         border-color: var(--ods-color-critical-800);
         background-color: var(--ods-color-critical-200);
         color: var(--ods-color-critical-800);
+      }
+    } @else if $color == 'information' {
+      border-color: var(--ods-color-information-500);
+      background-color: var(--ods-color-information-000);
+      color: var(--ods-color-information-500);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-information-700);
+        background-color: var(--ods-color-information-100);
+        color: var(--ods-color-information-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-information-800);
+        background-color: var(--ods-color-information-200);
+        color: var(--ods-color-information-800);
       }
     } @else if $color == 'neutral' {
       border-color: var(--ods-color-neutral-500);
@@ -215,6 +319,40 @@ $ods-button-size-md: 40px;
         border-color: var(--ods-color-primary-800);
         background-color: var(--ods-color-primary-200);
         color: var(--ods-color-primary-800);
+      }
+    } @else if $color == 'success' {
+      border-color: var(--ods-color-success-500);
+      background-color: var(--ods-color-success-000);
+      color: var(--ods-color-success-500);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-success-700);
+        background-color: var(--ods-color-success-100);
+        color: var(--ods-color-success-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-success-800);
+        background-color: var(--ods-color-success-200);
+        color: var(--ods-color-success-800);
+      }
+    } @else if $color == 'warning' {
+      border-color: var(--ods-color-warning-500);
+      background-color: var(--ods-color-warning-000);
+      color: var(--ods-color-warning-500);
+
+      &:focus-visible,
+      &:hover {
+        border-color: var(--ods-color-warning-700);
+        background-color: var(--ods-color-warning-100);
+        color: var(--ods-color-warning-700);
+      }
+
+      &:active {
+        border-color: var(--ods-color-warning-800);
+        background-color: var(--ods-color-warning-200);
+        color: var(--ods-color-warning-800);
       }
     }
   }

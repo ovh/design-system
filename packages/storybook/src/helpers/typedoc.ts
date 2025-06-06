@@ -31,20 +31,36 @@ function filterByKinds(children: DeclarationReflection[] | undefined, kinds: Ref
 
 function getComponentTypedoc(data: ProjectReflection): ComponentTypedoc {
   const enumDeclarations = filterByKinds(data.children, [ReflectionKind.Enum]);
+  const fakeEnumDeclarations = filterByKinds(data.children, [ReflectionKind.Variable])
+    .filter((declaration) => declaration.flags.isConst)
+    .filter((declaration) => declaration.type?.type === 'reflection');
   const interfaceDeclarations = filterByKinds(data.children, [ReflectionKind.Interface, ReflectionKind.TypeAlias])
     .filter((declaration) => !declaration.name.endsWith('Prop'))
     .filter((declaration) => declaration.type?.type !== 'templateLiteral' && declaration.type?.type !== 'union');
   const unionTypeDeclarations = filterByKinds(data.children, [ReflectionKind.TypeAlias])
     .filter((declaration) => declaration.type && declaration.type.type === 'union');
 
+  const enums = enumDeclarations.map((enumDeclaration) => ({
+    name: enumDeclaration.name,
+    members: filterByKinds(enumDeclaration.children, [ReflectionKind.EnumMember])
+      .map((member) => ({
+        name: member.name,
+        value: (member.type as LiteralType)?.value?.toString() || '',
+      })),
+  }));
+  const fakeEnums = fakeEnumDeclarations.map((fakeEnumDeclaration) => ({
+    name: fakeEnumDeclaration.name,
+    members: filterByKinds((fakeEnumDeclaration.type as ReflectionType)?.declaration.children, [ReflectionKind.EnumMember])
+      .map((member) => ({
+        name: member.name,
+        value: (member.type as LiteralType)?.value?.toString() || '',
+      })),
+  }));
+
   return {
-    enums: sortByName(enumDeclarations.map((enumDeclaration) => ({
-      name: enumDeclaration.name,
-      members: filterByKinds(enumDeclaration.children, [ReflectionKind.EnumMember])
-        .map((member) => ({
-          name: member.name,
-          value: (member.type as LiteralType)?.value?.toString() || '',
-        })),
+    enums: sortByName(enums.concat(fakeEnums).map((enumDoc) => ({
+      name: enumDoc.name,
+      members: sortByName(enumDoc.members),
     }))),
     interfaces: sortByName(interfaceDeclarations.map((interfaceDeclaration) => ({
       name: interfaceDeclaration.name,

@@ -72,69 +72,15 @@ $ods-modal-z-index: overlay.$ods-overlay-modal-z-index;
   @if $color == 'critical' {
     background-color: var(--ods-color-critical-100);
   } @else if $color == 'information' {
-    background-color: var(--ods-color-primary-100);
+    background-color: var(--ods-color-information-100);
   } @else if $color == 'neutral' {
     background-color: var(--ods-color-neutral-100);
+  } @else if $color == 'primary' {
+    background-color: var(--ods-color-primary-100);
   } @else if $color == 'success' {
     background-color: var(--ods-color-success-100);
   } @else if $color == 'warning' {
     background-color: var(--ods-color-warning-100);
-  }
-}
-
-@mixin ods-modal-close-button-color($color) {
-  &:not(:disabled) {
-    @if $color == 'critical' {
-      color: var(--ods-color-critical-500);
-
-      &:hover, &:focus-visible {
-        background-color: var(--ods-color-critical-200);
-      }
-
-      &:active {
-        background-color: var(--ods-color-critical-300);
-      }
-    } @else if $color == 'information' {
-      color: var(--ods-color-primary-600);
-
-      &:hover, &:focus-visible {
-        background-color: var(--ods-color-primary-200);
-      }
-
-      &:active {
-        background-color: var(--ods-color-primary-300);
-      }
-    } @else if $color == 'neutral' {
-      color: var(--ods-color-neutral-600);
-
-      &:hover, &:focus-visible {
-        background-color: var(--ods-color-neutral-200);
-      }
-
-      &:active {
-        background-color: var(--ods-color-neutral-300);
-      }
-    } @else if $color == 'success' {
-      color: var(--ods-color-success-900);
-
-      &:hover, &:focus-visible {
-        background-color: var(--ods-color-success-200);
-      }
-
-      &:active {
-        background-color: var(--ods-color-success-300);
-      }
-    } @else if $color == 'warning' {
-      color: var(--ods-color-warning-900);
-
-      &:hover, &:focus-visible {
-        background-color: var(--ods-color-warning-200);
-      }
-
-      &:active {
-        background-color: var(--ods-color-warning-300);
-      }
-    }
   }
 }
 

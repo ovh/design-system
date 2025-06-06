@@ -6,12 +6,12 @@ $spacings: 0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 64;
     border: none;
     height: 1px;
 
-    &--light {
-      background-color: var(--ods-color-neutral-100);
+    &--neutral {
+      background-color: var(--ods-color-neutral-700);
     }
 
-    &--dark {
-      background-color: var(--ods-color-neutral-700);
+    &--primary {
+      background-color: var(--ods-color-neutral-100);
     }
 
     @each $spacing in $spacings {

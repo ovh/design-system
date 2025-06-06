@@ -31,6 +31,9 @@ $ods-badge-height-lg: 28px;
   } @else if $color == 'new' {
     background-color: var(--ods-color-new);
     color: var(--ods-color-primary-900);
+  } @else if $color == 'primary' {
+    background-color: var(--ods-color-primary-500);
+    color: var(--ods-color-neutral-000);
   } @else if $color == 'promotion' {
     background-color: var(--ods-color-promotion);
     color: var(--ods-color-neutral-000);

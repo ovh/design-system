@@ -1,0 +1,7 @@
+import{r as _,e as u}from"./index-D_CmzhJ4.js";import{j as g}from"./jsx-runtime-VM66peLj.js";import{c as v}from"./index-CkQHsVsO.js";const O="_skeleton_iafkb_2",x={skeleton:O},s=_.forwardRef(({className:S,...f},k)=>g.jsx("div",{className:v(x.skeleton,S),ref:k,...f}));s.displayName="Skeleton";s.__docgenInfo={description:"",methods:[],displayName:"Skeleton",composes:["ComponentPropsWithRef"]};const D={component:s,title:"ODS Components/Skeleton"},e={},o={tags:["!dev"],render:({})=>u.createElement(s,null)},r={tags:["!dev"],render:({})=>u.createElement(s,null)};var t,a,n;e.parameters={...e.parameters,docs:{...(t=e.parameters)==null?void 0:t.docs,source:{originalSource:"{}",...(n=(a=e.parameters)==null?void 0:a.docs)==null?void 0:n.source}}};var c,m,l;o.parameters={...o.parameters,docs:{...(c=o.parameters)==null?void 0:c.docs,source:{originalSource:`{
+  tags: ['!dev'],
+  render: ({}) => <Skeleton />
+}`,...(l=(m=o.parameters)==null?void 0:m.docs)==null?void 0:l.source}}};var d,p,i;r.parameters={...r.parameters,docs:{...(d=r.parameters)==null?void 0:d.docs,source:{originalSource:`{
+  tags: ['!dev'],
+  render: ({}) => <Skeleton />
+}`,...(i=(p=r.parameters)==null?void 0:p.docs)==null?void 0:i.source}}};const j=["Demo","Default","Overview"],N=Object.freeze(Object.defineProperty({__proto__:null,Default:o,Demo:e,Overview:r,__namedExportsOrder:j,default:D},Symbol.toStringTag,{value:"Module"}));export{o as D,r as O,N as S};

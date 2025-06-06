@@ -1,0 +1,1 @@
+import{r as c}from"./index-D_CmzhJ4.js";function p(t,e={}){const{sync:n=!1}=e,r=f(t);return c.useCallback((...u)=>{var s;return n?queueMicrotask(()=>{var o;return(o=r.current)==null?void 0:o.call(r,...u)}):(s=r.current)==null?void 0:s.call(r,...u)},[n,r])}function f(t){const e=c.useRef(t);return e.current=t,e}export{p as u};

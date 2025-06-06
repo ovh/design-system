@@ -1,0 +1,7 @@
+import{r as f,e as _}from"./index-D_CmzhJ4.js";import{j as g}from"./jsx-runtime-VM66peLj.js";import{c as k}from"./index-CkQHsVsO.js";const v={"ods-skeleton":"_ods-skeleton_1s5ca_1"},e=f.forwardRef(({className:t,...S},O)=>g.jsx("div",{className:k(v["ods-skeleton"],t),ref:O,...S}));e.displayName="OdsSkeleton";try{e.displayName="OdsSkeleton",e.__docgenInfo={description:"",displayName:"OdsSkeleton",props:{}}}catch{}const y={component:e,title:"ODS Components/Skeleton"},r={},s={tags:["!dev"],render:({})=>_.createElement(e,null)},o={tags:["!dev"],render:({})=>_.createElement(e,null)};var a,n,c;r.parameters={...r.parameters,docs:{...(a=r.parameters)==null?void 0:a.docs,source:{originalSource:"{}",...(c=(n=r.parameters)==null?void 0:n.docs)==null?void 0:c.source}}};var d,l,m;s.parameters={...s.parameters,docs:{...(d=s.parameters)==null?void 0:d.docs,source:{originalSource:`{
+  tags: ['!dev'],
+  render: ({}) => <OdsSkeleton />
+}`,...(m=(l=s.parameters)==null?void 0:l.docs)==null?void 0:m.source}}};var p,i,u;o.parameters={...o.parameters,docs:{...(p=o.parameters)==null?void 0:p.docs,source:{originalSource:`{
+  tags: ['!dev'],
+  render: ({}) => <OdsSkeleton />
+}`,...(u=(i=o.parameters)==null?void 0:i.docs)==null?void 0:u.source}}};const x=["Demo","Default","Overview"],N=Object.freeze(Object.defineProperty({__proto__:null,Default:s,Demo:r,Overview:o,__namedExportsOrder:x,default:y},Symbol.toStringTag,{value:"Module"}));export{s as D,o as O,N as S};

@@ -1,0 +1,35 @@
+import{j as o,M as c,C as m}from"./index-CxvU8mbA.js";import{u as d}from"./index-BDGy2HR4.js";import{R as a,O as p}from"./radio.stories-BYOsu9VX.js";import{B as h}from"./Banner-RWAKuGpJ.js";import{I as u,A as x,B as j}from"./IdentityCard-DdxWVeBD.js";import{H as t}from"./Heading-D-wMvR3C.js";import{S as i,O as s,a as r}from"./StorybookLink-CpF08Utd.js";import"./iframe-QvnFyZ-4.js";import"../sb-preview/runtime.js";import"./index-8AfNH5n5.js";import"./index-D-8MO0q_.js";import"./index-DrFu-skq.js";import"./ods-radio2-C2vNRNiP.js";import"./index-DAZhnxgO.js";import"./dom-8hoR-urs.js";import"./controls-DX883vx3.js";import"./validityState-BuENXwQ9.js";import"./index-DZK8KyWG.js";import"./index-jsVj7r9R.js";import"./ods-accordion2-vvZNAi9U.js";import"./icon-name-C6aMXAXT.js";import"./ods-icon2-DRPHarK1.js";import"./ods-badge-CjbpLGl8.js";import"./ods-breadcrumb-item2-C_Ah5FZN.js";import"./ods-link2-CtVFUlMR.js";import"./ods-button2-dPaqs0uX.js";import"./ods-spinner2-CPyWCS2f.js";import"./ods-card-DRGl4_I-.js";import"./ods-checkbox2-B2XbvOPY.js";import"./ods-clipboard2-Baifk8Bb.js";import"./ods-input2-CtkWk4I-.js";import"./type-B5zI8QxY.js";import"./ods-tooltip2-CW12aP9b.js";import"./overlay-KZpfSxWH.js";import"./ods-code2-D4zmvcg_.js";import"./ods-combobox2-CcOfmmHm.js";import"./_commonjsHelpers-CLD5em3H.js";import"./debounce-DRefBDpX.js";import"./ods-tag2-Bb2BMy9d.js";import"./ods-datepicker2-FisogS88.js";import"./locale-NOa-Gxlr.js";import"./ods-divider-CjaMxjcH.js";import"./ods-divider2-R3gNNk4H.js";import"./ods-drawer2-BQqpNIWL.js";import"./ods-file-upload2-teF1qz6H.js";import"./ods-progress-bar2-zR9YGHZb.js";import"./ods-form-field2-BSNGPVxz.js";import"./ods-icon-DTp5PnPI.js";import"./ods-input-COMKDAZi.js";import"./ods-link-BCeMi6SV.js";import"./ods-medium2-BnayTic8.js";import"./ods-message-BxLNJd0H.js";import"./ods-modal2-BQO4yvXA.js";import"./ods-pagination2--R9v9RO1.js";import"./ods-select2-C8koqTnw.js";import"./ods-password2-aWfdhtsQ.js";import"./ods-phone-number2-Cl3w5q8v.js";import"./ods-popover2-D09FwiGN.js";import"./ods-quantity2-BgFzW1u9.js";import"./ods-range2-l-uevN51.js";import"./ods-skeleton2-B7sDasgF.js";import"./ods-switch-item2-ebcV2EUF.js";import"./ods-tabs2-BNbhFfmR.js";import"./ods-table2-oe37kiP3.js";import"./ods-text-BO_pN8NQ.js";import"./ods-textarea2-BDOVTqwb.js";import"./ods-timepicker2-DSjpZYdI.js";import"./ods-toggle2-Bg02aln1.js";function l(n){const e={code:"code",em:"em",img:"img",li:"li",ol:"ol",p:"p",span:"span",strong:"strong",ul:"ul",...d(),...n.components};return o.jsxs(o.Fragment,{children:[o.jsx(c,{of:a,name:"Documentation"}),`
+`,o.jsx(h,{of:a}),`
+`,o.jsx(e.p,{children:o.jsxs(e.em,{children:["A ",o.jsx(e.strong,{children:"Radio"})," button allows users to select only one option from a number of choices."]})}),`
+`,o.jsx(m,{of:p,sourceState:"none"}),`
+`,o.jsx(t,{label:"Overview",level:2}),`
+`,o.jsxs(u,{aliases:["Radio button (previous name)"],atomicType:x.atom,figmaLink:"https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-14625",githubUrl:"https://github.com/ovh/design-system/tree/master/packages/ods/src/components/radio",name:"Radio",relatedComponents:[{name:"Form Field",subtitle:"Form elements"},{name:"Text"}],children:[o.jsxs(e.p,{children:[o.jsx(e.strong,{children:"Radio"})," buttons are used to set a true/false option in a set of minimum two options."]}),o.jsxs(e.p,{children:["They are generally displayed in a ",o.jsx(e.strong,{children:"Radio"})," group."]})]}),`
+`,o.jsx(t,{label:"Anatomy",level:2}),`
+`,o.jsx(e.p,{children:o.jsx(e.img,{src:"components/radio/anatomy.png",alt:"Component anatomy",title:"Component anatomy"})}),`
+`,o.jsxs(e.ol,{children:[`
+`,o.jsxs(e.li,{children:[o.jsx(e.strong,{children:"Radio"})," : The selection control"]}),`
+`]}),`
+`,o.jsx(t,{label:"Usage",level:2}),`
+`,o.jsxs(e.p,{children:["In most situations where you want to present a list of mutually exclusive options, ",o.jsx(e.strong,{children:"you will want to group Radio buttons"}),"."]}),`
+`,o.jsxs(e.p,{children:[o.jsx(e.strong,{children:"Radio"})," groups can be used within a form."]}),`
+`,o.jsx(e.p,{children:"Also, it can serve as :"}),`
+`,o.jsxs(e.ul,{children:[`
+`,o.jsx(e.li,{children:"Selecting choice"}),`
+`,o.jsx(e.li,{children:"Lists/sub-lists"}),`
+`,o.jsx(e.li,{children:"Filters"}),`
+`]}),`
+`,o.jsx(t,{label:"Dos & Don'ts",level:3}),`
+`,o.jsx(j,{donts:[o.jsxs(e.span,{children:["- Use Radio buttons when multiple items can be selected, use ",o.jsx(i,{kind:s.checkbox,label:"Checkbox",story:r.documentation})," buttons instead"]}),o.jsxs(e.span,{children:["- Use more than 5 Radio buttons, instead convert it to a ",o.jsx(i,{kind:s.select,label:"Select",story:r.documentation})]}),"- Avoid situations where all options in a set should be deselected"],dos:["- Always use clear and concise labels for Radio buttons","- Long labels may wrap to a second line, and this is preferable to truncation",o.jsxs(e.span,{children:["- If using two affirmative/negative-type Radio buttons, you might consider converting it to a sole ",o.jsx(i,{kind:s.checkbox,label:"Checkbox",story:r.documentation})," button"]})]}),`
+`,o.jsx(t,{label:"Placement",level:2}),`
+`,o.jsxs(e.p,{children:[o.jsx(e.strong,{children:"Radio"})," groups can be either horizontal or vertical."]}),`
+`,o.jsxs(e.p,{children:["By default, ",o.jsx(e.strong,{children:"Radio"})," groups are vertical, meaning one under another."]}),`
+`,o.jsxs(e.p,{children:["Usage of horizontal ",o.jsx(e.strong,{children:"Radio"})," groups should only occur if vertical space is limited."]}),`
+`,o.jsx(t,{label:"Behavior",level:2}),`
+`,o.jsxs(e.p,{children:[o.jsx(e.strong,{children:"Radio"})," button can be hovered, focused, clicked or disabled. When disabled, ",o.jsx(e.strong,{children:"Radio"})," button cannot be focused nor clicked."]}),`
+`,o.jsxs(e.p,{children:["When clicking on one of the ",o.jsx(e.strong,{children:"Radio"})," button or its linked label, the ",o.jsx(e.strong,{children:"Radio"})," button is selected or deselected depending on the previous state."]}),`
+`,o.jsxs(e.p,{children:[o.jsx(e.strong,{children:"Radio"})," button behavior does work only when used in a situation of a ",o.jsx(e.strong,{children:"Radio"}),` group.
+The `,o.jsx(e.strong,{children:"Radio"})," group can be in an error state, but also in a disabled state. It also can be focused and hovered."]}),`
+`,o.jsx(t,{label:"Variation",level:2}),`
+`,o.jsxs(e.p,{children:[o.jsx(e.strong,{children:"Radio"})," buttons follow the native behavior of the browser used, so the appearance of ",o.jsx(e.strong,{children:"Radio"})," buttons may vary depending on the browser."]}),`
+`,o.jsx(t,{label:"Accessibility",level:2}),`
+`,o.jsxs(e.p,{children:["Using ",o.jsx(e.code,{children:"Enter"})," or ",o.jsx(e.code,{children:"Space"})," keys while focusing allows to check the ",o.jsx(e.strong,{children:"Radio"})," button."]})]})}function Mo(n={}){const{wrapper:e}={...d(),...n.components};return e?o.jsx(e,{...n,children:o.jsx(l,{...n})}):l(n)}export{Mo as default};

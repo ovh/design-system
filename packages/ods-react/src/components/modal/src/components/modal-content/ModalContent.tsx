@@ -8,6 +8,7 @@ import style from './modalContent.module.scss';
 
 interface ModalContentProp extends ComponentPropsWithRef<'div'> {
   /**
+   * @type=MODAL_COLOR
    * The color preset to use.
    */
   color?: ModalColor,

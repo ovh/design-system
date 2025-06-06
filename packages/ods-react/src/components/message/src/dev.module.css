@@ -7,3 +7,11 @@
   padding: 16px;
   overflow: hidden;
 }
+
+.custom-message-body {
+  font-style: italic;
+}
+
+.custom-message-icon {
+  font-weight: bold;
+}

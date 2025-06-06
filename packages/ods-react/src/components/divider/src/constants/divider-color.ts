@@ -1,6 +1,8 @@
+import { COLOR } from '../../../../utils/colors';
+
 enum DIVIDER_COLOR {
-  dark = 'dark',
-  light = 'light',
+  neutral = COLOR.neutral,
+  primary = COLOR.primary,
 }
 
 type DividerColor = `${DIVIDER_COLOR}`;

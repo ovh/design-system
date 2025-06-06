@@ -7,6 +7,7 @@ import style from './tag.module.scss';
 
 interface TagProp extends ComponentPropsWithRef<'button'> {
   /**
+   * @type=TAG_COLOR
    * The color preset to use.
    */
   color?: TagColor;
@@ -23,7 +24,6 @@ const Tag: FC<TagProp> = forwardRef(({
   size = TAG_SIZE.md,
   ...props
 }, ref): JSX.Element => {
-
   return (
     <button
       className={ classNames(

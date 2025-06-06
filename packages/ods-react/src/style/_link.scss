@@ -15,29 +15,20 @@ $ods-link-font-weight: 600;
   cursor: pointer;
   width: max-content;
   text-decoration: none;
+  color: var(--ods-color-primary-500);
   font-weight: $ods-link-font-weight;
 
   &:focus-visible,
   &:hover {
     background-size: 100% 1px;
+    color: var(--ods-color-primary-600);
   }
 
   &:focus-visible {
     @include focus.ods-focus();
   }
-}
 
-@mixin ods-link-color($color) {
-  @if $color == 'primary' {
-    color: var(--ods-color-primary-500);
-
-    &:focus-visible,
-    &:hover {
-      color: var(--ods-color-primary-600);
-    }
-
-    &:visited {
-      color: var(--ods-color-primary-700);
-    }
+  &:visited {
+    color: var(--ods-color-primary-700);
   }
 }

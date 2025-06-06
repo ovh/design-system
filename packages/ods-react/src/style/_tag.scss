@@ -78,6 +78,21 @@ $ods-tag-height-lg: 28px;
       border-color: var(--ods-color-neutral-300);
       background-color: var(--ods-color-neutral-200);
     }
+  } @else if $color == 'primary' {
+    border-color: var(--ods-color-primary-100);
+    background-color: var(--ods-color-primary-000);
+    color: var(--ods-color-primary-900);
+
+    &:focus-visible,
+    &:hover {
+      border-color: var(--ods-color-primary-200);
+      background-color: var(--ods-color-primary-100);
+    }
+
+    &:active {
+      border-color: var(--ods-color-primary-300);
+      background-color: var(--ods-color-primary-200);
+    }
   } @else if $color == 'success' {
     border-color: var(--ods-color-success-100);
     background-color: var(--ods-color-success-000);

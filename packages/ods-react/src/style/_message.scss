@@ -1,9 +1,8 @@
 @mixin ods-message() {
   box-sizing: border-box;
-  display: inline-grid;
-  grid-template-rows: min-content;
-  grid-template-columns: max-content 1fr max-content;
+  display: inline-flex;
   column-gap: 0.5rem;
+  align-items: center;
   padding: 0.5rem;
 }
 
@@ -11,12 +10,15 @@
   @if $color == 'critical' {
     background-color: var(--ods-color-critical-100);
     color: var(--ods-color-critical-700);
-  } @else if $color == 'danger' {
-    background-color: var(--ods-color-critical-100);
-    color: var(--ods-color-critical-700);
   } @else if $color == 'information' {
     background-color: var(--ods-color-information-100);
     color: var(--ods-color-information-700);
+  } @else if $color == 'neutral' {
+    background-color: var(--ods-color-neutral-100);
+    color: var(--ods-color-neutral-700);
+  } @else if $color == 'primary' {
+    background-color: var(--ods-color-primary-100);
+    color: var(--ods-color-primary-700);
   } @else if $color == 'success' {
     background-color: var(--ods-color-success-100);
     color: var(--ods-color-success-700);
@@ -31,89 +33,15 @@
 
   @if $color == 'critical' {
     color: var(--ods-color-critical-700);
-  } @else if $color == 'danger' {
-    color: var(--ods-color-critical-700);
   } @else if $color == 'information' {
     color: var(--ods-color-information-700);
+  } @else if $color == 'neutral' {
+    color: var(--ods-color-neutral-700);
+  } @else if $color == 'primary' {
+    color: var(--ods-color-primary-700);
   } @else if $color == 'success' {
     color: var(--ods-color-success-700);
   } @else if $color == 'warning' {
     color: var(--ods-color-warning-700);
-  }
-}
-
-@mixin ods-message-close($color) {
-  &:not(:disabled) {
-    @if $color == 'critical' {
-      color: var(--ods-critical-700);
-
-      &:hover {
-        background-color: var(--ods-color-critical-200);
-      }
-
-      &:active {
-        background-color: var(--ods-color-critical-300);
-      }
-
-      &:focus-visible {
-        background-color: var(--ods-color-critical-200);
-      }
-    } @else if $color == 'danger' {
-      color: var(--ods-color-critical-700);
-
-      &:hover {
-        background-color: var(--ods-color-critical-200);
-      }
-
-      &:active {
-        background-color: var(--ods-color-critical-300);
-      }
-
-      &:focus-visible {
-        background-color: var(--ods-color-critical-200);
-      }
-    } @else if $color == 'information' {
-      color: var(--ods-color-information-700);
-
-      &:hover {
-        background-color: var(--ods-color-information-200);
-      }
-
-      &:active {
-        background-color: var(--ods-color-information-300);
-      }
-
-      &:focus-visible {
-        background-color: var(--ods-color-information-200);
-      }
-    } @else if $color == 'success' {
-      color: var(--ods-color-success-700);
-
-      &:hover {
-        background-color: var(--ods-color-success-200);
-      }
-
-      &:active {
-        background-color: var(--ods-color-success-300);
-      }
-
-      &:focus-visible {
-        background-color: var(--ods-color-success-200);
-      }
-    } @else if $color == 'warning' {
-      color: var(--ods-color-warning-700);
-
-      &:hover {
-        background-color: var(--ods-color-warning-200);
-      }
-
-      &:active {
-        background-color: var(--ods-color-warning-300);
-      }
-
-      &:focus-visible {
-        background-color: var(--ods-color-warning-200);
-      }
-    }
   }
 }

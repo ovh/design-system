@@ -8,6 +8,7 @@ import style from './button.module.scss';
 
 interface ButtonProp extends ComponentPropsWithRef<'button'> {
   /**
+   * @type=BUTTON_COLOR
    * The color preset to use.
    */
   color?: ButtonColor,

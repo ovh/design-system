@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-toggle",
-  "version": "18.6.2",
+  "version": "18.6.3",
   "private": true,
   "description": "ODS React Toggle component",
   "type": "module",

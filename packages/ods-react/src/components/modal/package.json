@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-modal",
-  "version": "18.6.2",
+  "version": "18.6.3",
   "private": true,
   "description": "ODS React Modal component",
   "type": "module",

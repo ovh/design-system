@@ -37,3 +37,4 @@ export * from './code/src';
 export * from './datepicker/src';
 export * from './range/src';
 export * from './medium/src';
+export * from './combobox/src';

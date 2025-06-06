@@ -1,0 +1,46 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/input';
+@use '../../../../../style/state';
+
+@layer ods-organisms {
+  .combobox-control {
+    display: flex;
+    margin: 0;
+    border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
+    border-radius: var(--ods-border-radius-sm);
+    width: 100%;
+
+    &--open-bottom {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &--open-top {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    &__trigger {
+      border: none;
+      background-color: transparent;
+      padding: 0;
+      width: 100%;
+    }
+
+    &__input {
+      outline: none;
+      border: none;
+      background: transparent;
+      width: 100%;
+    }
+
+    &[data-focus] {
+      @include focus.ods-focus();
+    }
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+    }
+  }
+
+}

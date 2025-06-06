@@ -1,0 +1,23 @@
+.custom-select {
+  width: 200px;
+}
+
+.custom-select-label {
+  color: #4d2a00;
+}
+
+.custom-select-control {
+  background-color: #4bb2f6;
+}
+
+.custom-select-content {
+  max-height: 100px;
+}
+
+.highlight-custom {
+  border-radius: 2px;
+  background: #fff3a3;
+  padding: 0 2px;
+  color: #b97a00;
+  font-weight: bold;
+}

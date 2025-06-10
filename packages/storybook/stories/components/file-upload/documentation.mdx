@@ -36,21 +36,6 @@ _**File Upload** allows users to select one or more files to upload to a specifi
   messages to guide users through the process.
 </IdentityCard>
 
-<Heading label="Anatomy" level={ 2 } />
-
-![Component anatomy](components/file-upload/anatomy.png "Component anatomy")
-
-1. A decorative <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> (optional)
-2. A <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> as title
-3. A <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> explaining formats
-4. <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> to trigger upload dialog
-5. A drop zone: the File component itself
-6. A `file` <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> and a <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> displaying the uploading file name and its weight
-7. A `close` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> to interrupt the file uploading or remove the uploaded file
-8. A <StorybookLink kind={ ODS_COMPONENTS_TITLE.progressBar } story={ STORY.documentation }>Progress Bar</StorybookLink> to indicate how the **File upload** is progressing
-9. A success <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> with `check` <StorybookLink kind={ ODS_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink> to indicate that the file has been uploaded
-10. An `error` <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> to indicate something went wrong with the **File upload**
-
 <Heading label="Usage" level={ 2 } />
 
 Use the **File Upload** component when you need users to submit files, such as documents, images, or other data.
@@ -70,6 +55,17 @@ Common use cases include form submissions, profile picture updates, and document
     '- Explain clearly the error context when an error occurred',
   ]}
 />
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+![Component anatomy](components/file-upload/anatomy.png "Component anatomy")
+
+1. **File Upload**
+2. **Dropzone**
+3. **Description** - optional (file limitations)
+4. **Upload button**
+5. **Uploaded files zone**
+6. **Delete button**
 
 <Heading label="Placement" level={ 2 } />
 

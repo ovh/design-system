@@ -26,16 +26,6 @@ _**Clipboard** component allows user to view and copy information to its **Clipb
   **Clipboard** component is used to copy quickly and easily a text, a link and more to the **Clipboard**.
 </IdentityCard>
 
-<Heading label="Anatomy" level={ 2 } />
-
-![Component anatomy](components/clipboard/anatomy.png "Component anatomy")
-
-1. An <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> containing the whole content that will be copied to the **Clipboard**
-2. **Value** to copy
-3. A 'copy' icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> to complete the copy action when clicked
-4. **Show/hide action**: an `eye` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> to toggle between masked or visible <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> content
-5. A Tooltip displayed when user hovers or focuses the component, and briefly after a successful copy action to the user's **Clipboard**
-
 <Heading label="Usage" level={ 2 } />
 
 **Clipboard** is used to quickly and easily copy an amount of text to the user's **Clipboard**.
@@ -56,6 +46,16 @@ It can be used when it is considered that it will cause trouble for the user to 
     '- Use the mask/unmask toggle appropriately for sensitive content, like passwords or tokens',
   ] }
 />
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+![Component anatomy](components/clipboard/anatomy.png "Component anatomy")
+
+1. **Clipboard**
+2. **Input text**
+3. **Copy button**
+4. **Tooltip**
+5. **Show/Hide button** - optional
 
 <Heading label="Placement" level={ 2 } />
 

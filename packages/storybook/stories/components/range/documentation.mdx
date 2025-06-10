@@ -30,17 +30,6 @@ _**Range** component is used to allow users to visually select one or more value
   The component can support single-value sliders or dual-handle sliders for selecting ranges.
 </IdentityCard>
 
-<Heading label="Anatomy" level={ 2 } />
-
-![Component anatomy](components/range/anatomy.png "Component anatomy")
-
-1. **Track**: the range of values the user can select and adjust
-2. **Filled track**: the user's selected value within the **Range**. It is filled from the minimum value to the selected value
-3. **Thumb**: a positional indicator. It can be moved along the track to indicate a position on this track
-4. **Additional thumb**: a second positional indicator to get a dual **Range**. It allows users to select a portion within the range _(optional)_
-5. **Minimum value label**: beginning of a **Range** as its minimum value
-6. **Maximum value label**: end of a **Range** as its maximum value
-
 <Heading label="Usage" level={ 2 } />
 
 A **Range** is used to select a numeric value within a given range with defined minimum and maximum values.
@@ -64,6 +53,18 @@ A dual **Range** allows the user to select a numeric range value that is no less
     '- Add a default numeric value',
   ]}
 />
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+![Component anatomy](components/range/anatomy.png "Component anatomy")
+
+1. **Range**
+2. **Track**
+3. **Min/Max values**
+4. **Handle**
+5. **Active fill**
+6. **Second handle** - optional (Dual Range)
+7. **Tick marks** - optional
 
 <Heading label="Placement" level={ 2 } />
 

@@ -27,13 +27,6 @@ _**Phone Number** component is a combo of a selection of country phone indicator
   country.
 </IdentityCard>
 
-<Heading label="Anatomy" level={ 2 } />
-
-![Component anatomy](components/phone-number/anatomy.png "Component anatomy")
-
-1. **Country indicator Select**: displays the selected country flag and the list of countries by click. List is scroll-able, with 5 items visible at the same time. Each country name is written in users locale, in alphabetical order (for Latin script) _(optional)_
-2. **Input field**: displays the country indicator as prefix when users select a country, and they can enter their phone number in this field (from 7 to 12 characters maximum). The <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> field also has a placeholder to provide hints regarding format according to the selected country.
-
 <Heading label="Usage" level={ 2 } />
 
 **Phone Number** component should be used when there is a need to collect the user's phone number, in a form for instance:
@@ -55,6 +48,15 @@ _**Phone Number** component is a combo of a selection of country phone indicator
     '- Use a helper when validation is in error state (expected number of characters, expected format...)',
   ]}
 />
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+![Component anatomy](components/phone-number/anatomy.png "Component anatomy")
+
+1. **Phone Number**
+2. **Country selector** - optional
+3. **Input field**
+4. **Clearable button** - optional
 
 <Heading label="Placement" level={ 2 } />
 

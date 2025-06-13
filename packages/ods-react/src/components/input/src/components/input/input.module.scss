@@ -72,6 +72,10 @@
       display: inline-flex;
       flex-flow: row;
       align-items: center;
+
+      &__loading {
+        display: flex;
+      }
     }
   }
 }

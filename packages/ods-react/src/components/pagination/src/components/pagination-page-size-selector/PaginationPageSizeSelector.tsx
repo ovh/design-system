@@ -1,5 +1,5 @@
 import { usePaginationContext } from '@ark-ui/react/pagination';
-import { type FC } from 'react';
+import { type FC, type JSX } from 'react';
 import { Select, SelectContent, SelectControl, type SelectItem } from '../../../../select/src';
 import { PAGINATION_PER_PAGE_OPTIONS } from '../../constants/pagination-per-page';
 import style from './paginationPageSizeSelector.module.scss';

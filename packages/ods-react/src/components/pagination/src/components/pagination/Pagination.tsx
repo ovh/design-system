@@ -1,8 +1,8 @@
 import { Pagination as VendorPagination } from '@ark-ui/react/pagination';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useState } from 'react';
-import { BUTTON_VARIANT, Button } from '../../../../button/src/index';
-import { ICON_NAME, Icon } from '../../../../icon/src/index';
+import { BUTTON_VARIANT, Button } from '../../../../button/src';
+import { ICON_NAME, Icon } from '../../../../icon/src';
 import { PaginationButtonWithTooltip } from '../pagination-button-with-tooltip/PaginationButtonWithTooltip';
 import { PaginationItem } from '../pagination-item/PaginationItem';
 import {

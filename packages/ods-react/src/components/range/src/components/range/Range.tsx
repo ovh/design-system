@@ -111,6 +111,7 @@ const Range: FC<RangeProp> = forwardRef(({
       }
 
       <RangeBounds
+        disabled={ disabled }
         max={ max }
         min={ min } />
     </Slider.Root>

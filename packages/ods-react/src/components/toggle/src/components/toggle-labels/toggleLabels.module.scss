@@ -24,6 +24,10 @@
       &--checked {
         display: flex;
       }
+
+      &--disabled {
+        color: var(--ods-color-text-disabled-default);
+      }
     }
 
     &__label-off {

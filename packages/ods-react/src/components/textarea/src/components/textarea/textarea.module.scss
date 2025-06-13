@@ -2,6 +2,8 @@
 
 @layer ods-atoms {
   .textarea {
+    $textarea: &;
+
     @include input.ods-input();
     @include input.ods-input-state();
 
@@ -18,7 +20,7 @@
       }
     }
 
-    &[data-invalid] {
+    &#{$textarea}[data-invalid] {
       @include input.ods-input-error();
     }
   }

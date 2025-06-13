@@ -3,6 +3,7 @@ import { INPUT_TYPE, Input, type InputMaskState } from '../../../../input/src';
 
 interface PasswordProp extends Omit<ComponentPropsWithRef<'input'>, 'type'> {
   clearable?: boolean,
+  invalid?: boolean,
   loading?: boolean,
   maskInitialState?: InputMaskState,
   onClear?: () => void,
@@ -11,6 +12,7 @@ interface PasswordProp extends Omit<ComponentPropsWithRef<'input'>, 'type'> {
 const Password: FC<PasswordProp> = forwardRef(({
   className,
   clearable,
+  invalid,
   loading,
   maskInitialState,
   onClear,
@@ -20,6 +22,7 @@ const Password: FC<PasswordProp> = forwardRef(({
     <Input
       className={ className }
       clearable={ clearable }
+      invalid={ invalid }
       loading={ loading }
       maskOption={{
         enable: true,

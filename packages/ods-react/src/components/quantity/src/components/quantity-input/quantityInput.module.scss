@@ -2,6 +2,8 @@
 
 @layer ods-molecules {
   .quantity-input {
+    $quantity: &;
+
     @include input.ods-input();
     @include input.ods-input-state();
 
@@ -25,7 +27,7 @@
       }
     }
 
-    &:not(:disabled)[data-invalid] {
+    &#{$quantity}[data-invalid] {
       @include input.ods-input-error();
     }
   }

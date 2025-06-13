@@ -5,6 +5,8 @@ $ods-file-upload-spacing: 8px;
 
 @layer ods-organisms {
   .file-upload {
+    $file-upload: &;
+
     display: inline-flex;
     flex-flow: column;
     border: dashed 1px var(--ods-color-form-element-border-default);
@@ -16,7 +18,7 @@ $ods-file-upload-spacing: 8px;
       @include state.ods-is-disabled();
     }
 
-    &--invalid {
+    &#{$file-upload}--invalid {
       border-color: var(--ods-color-form-element-border-critical);
     }
   }

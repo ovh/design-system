@@ -86,6 +86,13 @@ export const CustomLabel = () => (
   </>
 );
 
+export const CustomStyle = () => (
+  <Password
+    className={ style[ 'custom-password' ] }
+    placeholder="Custom password"
+  />
+);
+
 export const Default = () => (
   <Password />
 );
@@ -134,9 +141,27 @@ export const Readonly = () => (
   <Password readOnly />
 );
 
-export const CustomStyle = () => (
-  <Password
-    className={ style[ 'custom-password' ] }
-    placeholder="Custom password"
-  />
+export const States = () => (
+  <>
+    <Password
+      disabled
+      placeholder="Disabled & Readonly"
+      readOnly />
+
+    <Password
+      disabled
+      invalid
+      placeholder="Disabled & Invalid" />
+
+    <Password
+      invalid
+      placeholder="Readonly & Invalid"
+      readOnly />
+
+    <Password
+      disabled
+      placeholder="Disabled & Readonly & Invalid"
+      invalid
+      readOnly />
+  </>
 );

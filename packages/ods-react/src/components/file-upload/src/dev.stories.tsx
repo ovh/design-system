@@ -268,3 +268,14 @@ export const Rules = () => (
     </FileUpload>
   </>
 );
+
+export const States = () => (
+  <>
+    <p>Disabled & Invalid</p>
+    <FileUpload
+      disabled
+      invalid>
+      <FileUploadList />
+    </FileUpload>
+  </>
+);

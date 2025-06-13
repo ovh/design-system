@@ -297,6 +297,31 @@ export const Ref = () => {
   );
 }
 
+export const States = () => (
+  <>
+    <Input
+      defaultValue="Disabled & Readonly"
+      disabled
+      readOnly />
+
+    <Input
+      defaultValue="Disabled & Invalid"
+      disabled
+      invalid />
+
+    <Input
+      defaultValue="Readonly & Invalid"
+      invalid
+      readOnly />
+
+    <Input
+      defaultValue="Disabled & Readonly & Invalid"
+      disabled
+      invalid
+      readOnly />
+  </>
+);
+
 export const Types = () => (
   <>
     <Input type={ INPUT_TYPE.email } placeholder="email" /><br />

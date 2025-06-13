@@ -23,7 +23,10 @@ const QuantityControl: FC<QuantityControlProp> = forwardRef(({
       { ...props }>
       <Button
         aria-controls={ decrementTriggerProps['aria-controls'] }
-        className={ style['quantity-control__decrement'] }
+        className={ classNames(
+          style['quantity-control__decrement'],
+          { [style['quantity-control__decrement--invalid']]: invalid },
+        )}
         color={ invalid ? BUTTON_COLOR.critical : BUTTON_COLOR.primary }
         disabled={ decrementTriggerProps.disabled }
         onClick={ decrement }
@@ -36,7 +39,10 @@ const QuantityControl: FC<QuantityControlProp> = forwardRef(({
 
       <Button
         aria-controls={ incrementTriggerProps['aria-controls'] }
-        className={ style['quantity-control__increment'] }
+        className={ classNames(
+          style['quantity-control__increment'],
+          { [style['quantity-control__increment--invalid']]: invalid },
+        )}
         color={ invalid ? BUTTON_COLOR.critical : BUTTON_COLOR.primary }
         disabled={ incrementTriggerProps.disabled }
         onClick={ increment }

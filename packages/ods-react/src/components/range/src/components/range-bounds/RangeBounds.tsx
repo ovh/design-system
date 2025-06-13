@@ -1,19 +1,28 @@
+import classNames from 'classnames';
 import { type FC, type JSX } from 'react';
 import style from './rangeBounds.module.scss';
 
 interface RangeBoundsProp {
+  disabled?: boolean,
   max: number,
   min: number
 }
 
-const RangeBounds: FC<RangeBoundsProp> = ({ max, min }): JSX.Element => {
+const RangeBounds: FC<RangeBoundsProp> = ({
+  disabled,
+  max,
+  min,
+}): JSX.Element => {
   return (
-    <div className={ style['range-bounds'] }>
-      <span className={ style['range-bounds__min'] }>
+    <div className={ classNames(
+      style['range-bounds'],
+      { [style['range-bounds--disabled']]: disabled },
+    )}>
+      <span>
         { min }
       </span>
 
-      <span className={ style['range-bounds__max'] }>
+      <span>
         { max }
       </span>
     </div>

@@ -35,7 +35,7 @@
           &[data-selected] {
             &[data-today] {
               &::after {
-                background-color: var(--ods-color-primary-000);
+                background-color: var(--ods-color-element-text-selected);
               }
             }
           }
@@ -86,13 +86,13 @@
           }
 
           &[data-selected] {
-            background-color: var(--ods-color-primary-800);
-            color: var(--ods-color-primary-000);
+            background-color: var(--ods-color-element-background-selected);
+            color: var(--ods-color-element-text-selected);
 
             &:focus-visible,
             &:hover {
-              background-color: var(--ods-color-primary-800);
-              color: var(--ods-color-primary-000);
+              background-color: var(--ods-color-element-background-selected);
+              color: var(--ods-color-element-text-selected);
             }
           }
         }

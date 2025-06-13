@@ -73,19 +73,19 @@ $ods-button-size-md: 40px;
         background-color: var(--ods-color-critical-800);
       }
     } @else if $color == 'information' {
-      border-color: var(--ods-color-information-500);
-      background-color: var(--ods-color-information-500);
-      color: var(--ods-color-information-000);
+      border-color: var(--ods-color-information-100);
+      background-color: var(--ods-color-information-100);
+      color: var(--ods-color-information-700);
 
       &:focus-visible,
       &:hover {
-        border-color: var(--ods-color-information-700);
-        background-color: var(--ods-color-information-700);
+        border-color: var(--ods-color-information-200);
+        background-color: var(--ods-color-information-200);
       }
 
       &:active {
-        border-color: var(--ods-color-information-800);
-        background-color: var(--ods-color-information-800);
+        border-color: var(--ods-color-information-300);
+        background-color: var(--ods-color-information-300);
       }
     } @else if $color == 'neutral' {
       border-color: var(--ods-color-neutral-500);
@@ -175,17 +175,17 @@ $ods-button-size-md: 40px;
       }
     } @else if $color == 'information' {
       background-color: inherit;
-      color: var(--ods-color-information-500);
+      color: var(--ods-color-information-700);
 
       &:focus-visible,
       &:hover {
-        background-color: var(--ods-color-information-100);
+        background-color: var(--ods-color-information-200);
         color: var(--ods-color-information-700);
       }
 
       &:active {
-        background-color: var(--ods-color-information-200);
-        color: var(--ods-color-information-800);
+        background-color: var(--ods-color-information-300);
+        color: var(--ods-color-information-700);
       }
     } @else if $color == 'neutral' {
       background-color: inherit;
@@ -236,12 +236,12 @@ $ods-button-size-md: 40px;
       &:focus-visible,
       &:hover {
         background-color: var(--ods-color-warning-100);
-        color: var(--ods-color-warning-700);
+        color: var(--ods-color-warning-600);
       }
 
       &:active {
         background-color: var(--ods-color-warning-200);
-        color: var(--ods-color-warning-800);
+        color: var(--ods-color-warning-700);
       }
     }
   }
@@ -270,21 +270,21 @@ $ods-button-size-md: 40px;
         color: var(--ods-color-critical-800);
       }
     } @else if $color == 'information' {
-      border-color: var(--ods-color-information-500);
+      border-color: var(--ods-color-information-300);
       background-color: var(--ods-color-information-000);
-      color: var(--ods-color-information-500);
+      color: var(--ods-color-information-300);
 
       &:focus-visible,
       &:hover {
-        border-color: var(--ods-color-information-700);
+        border-color: var(--ods-color-information-400);
         background-color: var(--ods-color-information-100);
-        color: var(--ods-color-information-700);
+        color: var(--ods-color-information-400);
       }
 
       &:active {
-        border-color: var(--ods-color-information-800);
+        border-color: var(--ods-color-information-500);
         background-color: var(--ods-color-information-200);
-        color: var(--ods-color-information-800);
+        color: var(--ods-color-information-500);
       }
     } @else if $color == 'neutral' {
       border-color: var(--ods-color-neutral-500);
@@ -344,15 +344,15 @@ $ods-button-size-md: 40px;
 
       &:focus-visible,
       &:hover {
-        border-color: var(--ods-color-warning-700);
+        border-color: var(--ods-color-warning-600);
         background-color: var(--ods-color-warning-100);
-        color: var(--ods-color-warning-700);
+        color: var(--ods-color-warning-600);
       }
 
       &:active {
-        border-color: var(--ods-color-warning-800);
+        border-color: var(--ods-color-warning-700);
         background-color: var(--ods-color-warning-200);
-        color: var(--ods-color-warning-800);
+        color: var(--ods-color-warning-700);
       }
     }
   }

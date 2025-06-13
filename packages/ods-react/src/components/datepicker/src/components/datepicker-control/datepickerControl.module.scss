@@ -1,3 +1,5 @@
+@use '../../../../../style/input';
+
 @layer ods-molecules {
   .datepicker-control {
     display: inline-grid;
@@ -22,6 +24,10 @@
       border-radius: var(--ods-border-radius-sm);
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+
+      &--invalid {
+        @include input.ods-input-error();
+      }
     }
   }
 }

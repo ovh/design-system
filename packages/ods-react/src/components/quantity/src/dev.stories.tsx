@@ -129,6 +129,47 @@ export const Readonly = () => (
   </Quantity>
 );
 
+export const States = () => (
+  <>
+    <p>Disabled & Readonly</p>
+    <Quantity
+      disabled
+      readOnly>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+
+    <p>Disabled & Invalid</p>
+    <Quantity
+      disabled
+      invalid>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+
+    <p>Readonly & Invalid</p>
+    <Quantity
+      invalid
+      readOnly>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+
+    <p>Disabled & Readonly & Invalid</p>
+    <Quantity
+      disabled
+      invalid
+      readOnly>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+  </>
+);
+
 export const Step = () => (
   <Quantity step={ 10 }>
     <QuantityControl>

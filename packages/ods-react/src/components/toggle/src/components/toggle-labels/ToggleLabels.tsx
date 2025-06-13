@@ -8,6 +8,7 @@ const OFF_LABEL = 'OFF';
 
 const ToggleLabels: FC = (): JSX.Element => {
   const { checked: isChecked, disabled, focused } = useSwitchContext();
+
   return (
     <div className={ style['toggle-labels'] }>
       <span

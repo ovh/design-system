@@ -299,3 +299,44 @@ export const Readonly = () => (
     </PhoneNumber>
   </>
 );
+
+export const States = () => (
+  <>
+    <p>Disabled & Readonly</p>
+    <PhoneNumber
+      disabled
+      readOnly>
+      <PhoneNumberCountryList />
+
+      <PhoneNumberControl />
+    </PhoneNumber>
+
+    <p>Disabled & Invalid</p>
+    <PhoneNumber
+      disabled
+      invalid>
+      <PhoneNumberCountryList />
+
+      <PhoneNumberControl />
+    </PhoneNumber>
+
+    <p>Readonly & Invalid</p>
+    <PhoneNumber
+      invalid
+      readOnly>
+      <PhoneNumberCountryList />
+
+      <PhoneNumberControl />
+    </PhoneNumber>
+
+    <p>Disabled & Readonly & Invalid</p>
+    <PhoneNumber
+      disabled
+      invalid
+      readOnly>
+      <PhoneNumberCountryList />
+
+      <PhoneNumberControl />
+    </PhoneNumber>
+  </>
+);

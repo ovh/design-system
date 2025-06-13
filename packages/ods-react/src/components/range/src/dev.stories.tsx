@@ -178,6 +178,20 @@ export const MaxMin = () => (
   </>
 );
 
+export const States = () => (
+  <>
+    <Range
+      defaultValue={ [20] }
+      disabled
+      invalid />
+
+    <Range
+      defaultValue={ [20, 60] }
+      disabled
+      invalid />
+  </>
+);
+
 export const Step = () => (
   <>
     <Range step={ 20 } />

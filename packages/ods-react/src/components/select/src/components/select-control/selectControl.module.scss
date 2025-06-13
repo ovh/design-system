@@ -4,6 +4,8 @@
 
 @layer ods-molecules {
   .select-control {
+    $control: &;
+
     box-sizing: border-box;
     display: inline-flex;
     column-gap: 8px;
@@ -26,26 +28,22 @@
       border-color: var(--ods-color-form-element-border-hover-default);
     }
 
-    &:disabled {
-      @include state.ods-is-disabled();
-    }
-
-    &:not(:disabled,[data-readonly]):hover {
+    &:not([data-disabled], [data-readonly]):hover {
       border-color: var(--ods-color-form-element-border-hover-default);
     }
 
-    &:not(:disabled)[data-invalid] {
-      @include input.ods-input-error();
+    &:not([data-disabled])[data-readonly] {
+      @include state.ods-is-readonly();
+
+      cursor: default;
+    }
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
     }
 
     &[data-placeholder-shown] {
       color: input.$ods-input-placeholder-color;
-    }
-
-    &[data-readonly] {
-      @include state.ods-is-readonly();
-
-      cursor: default;
     }
 
     &[data-state="open"] {
@@ -64,12 +62,20 @@
       }
     }
 
+    &#{$control}[data-invalid] {
+      @include input.ods-input-error();
+    }
+
     &__icon {
       color: var(--ods-color-primary-500);
       font-size: 1.25rem;
 
       &[data-state="open"] {
         transform: rotate(180deg);
+      }
+
+      &--disabled {
+        color: var(--ods-color-neutral-600);
       }
     }
   }

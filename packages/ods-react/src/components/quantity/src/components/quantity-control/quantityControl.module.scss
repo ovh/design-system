@@ -1,4 +1,5 @@
 @use '../../../../../style/button';
+@use '../../../../../style/input';
 
 $ods-quantity-input-width: 50px;
 
@@ -12,11 +13,19 @@ $ods-quantity-input-width: 50px;
     &__decrement {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
+
+      &--invalid {
+        @include input.ods-input-error();
+      }
     }
 
     &__increment {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+
+      &--invalid {
+        @include input.ods-input-error();
+      }
     }
   }
 }

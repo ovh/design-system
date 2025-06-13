@@ -13,15 +13,6 @@
         border-color: var(--ods-color-primary-200);
         background-color: var(--ods-color-primary-200);
       }
-
-      &#{$thumb}--invalid {
-        border-color: var(--ods-color-form-element-border-critical);
-
-        &:hover,
-        &[data-focus] {
-          border-color: var(--ods-color-form-element-border-critical);
-        }
-      }
     }
 
     &[data-dragging],
@@ -35,6 +26,15 @@
 
     &[data-dragging] {
       background-color: var(--ods-color-primary-200);
+    }
+
+    &#{$thumb}--invalid {
+      border-color: var(--ods-color-form-element-border-critical);
+
+      &:hover,
+      &[data-focus] {
+        border-color: var(--ods-color-form-element-border-critical);
+      }
     }
   }
 }

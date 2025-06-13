@@ -39,7 +39,12 @@ export const Default = () => (
 );
 
 export const Disabled = () => (
-  <Toggle disabled />
+  <>
+    <Toggle disabled />
+    <Toggle defaultChecked disabled />
+    <Toggle disabled withLabels />
+    <Toggle defaultChecked disabled withLabels />
+  </>
 );
 
 export const InFormField = () => {
@@ -73,6 +78,30 @@ export const InFormField = () => {
 export const Invalid = () => (
   <Toggle invalid />
 );
+
 export const WithLabels = () => (
   <Toggle withLabels />
+);
+
+export const States = () => (
+  <>
+    <p>Unchecked invalid</p>
+    <Toggle invalid />
+
+    <p>Unchecked invalid & disabled</p>
+    <Toggle
+      disabled
+      invalid />
+
+    <p>Checked invalid</p>
+    <Toggle
+      defaultChecked
+      invalid />
+
+    <p>Checked invalid & disabled</p>
+    <Toggle
+      defaultChecked
+      disabled
+      invalid />
+  </>
 );

@@ -152,3 +152,46 @@ export const Group = () => (
     </Checkbox>
   </CheckboxGroup>
 );
+
+export const States = () => (
+  <>
+    <Checkbox invalid>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        Unchecked invalid
+      </CheckboxLabel>
+    </Checkbox>
+
+    <Checkbox
+      disabled
+      invalid>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        Unchecked invalid & disabled
+      </CheckboxLabel>
+    </Checkbox>
+
+    <Checkbox
+      checked
+      invalid>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        Checked invalid
+      </CheckboxLabel>
+    </Checkbox>
+
+    <Checkbox
+      checked
+      disabled
+      invalid>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        Checked invalid & disabled
+      </CheckboxLabel>
+    </Checkbox>
+  </>
+);

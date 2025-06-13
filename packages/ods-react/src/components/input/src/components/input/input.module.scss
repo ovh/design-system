@@ -4,6 +4,8 @@
 
 @layer ods-atoms {
   .input {
+    $input: &;
+
     @include input.ods-input();
 
     display: inline-flex;
@@ -24,7 +26,7 @@
       @include state.ods-is-disabled();
     }
 
-    &[data-invalid] {
+    &#{$input}[data-invalid] {
       @include input.ods-input-error();
     }
 

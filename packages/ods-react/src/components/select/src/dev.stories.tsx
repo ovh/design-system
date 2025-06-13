@@ -299,6 +299,22 @@ export const InFormField = () => {
   );
 };
 
+export const Invalid = () => (
+  <Select
+    items={[
+      { label: 'Dog', value:'dog' },
+      { label: 'Cat', value:'cat' },
+      { label: 'Hamster', value:'hamster' },
+      { label: 'Parrot', value:'parrot' },
+      { label: 'Spider', value:'spider' },
+      { label: 'Goldfish', value:'goldfish' },
+    ]}
+    invalid>
+    <SelectControl />
+    <SelectContent />
+  </Select>
+);
+
 export const Multiple = () => (
   <>
     <p>Multiple simple</p>
@@ -365,4 +381,45 @@ export const Readonly = () => (
     <SelectControl />
     <SelectContent />
   </Select>
+);
+
+export const States = () => (
+  <>
+    <Select
+      defaultValue="value"
+      disabled
+      items={ [{ label: 'Disabled & Readonly', value:'value' }] }
+      readOnly>
+      <SelectControl />
+      <SelectContent />
+    </Select>
+
+    <Select
+      defaultValue="value"
+      disabled
+      items={ [{ label: 'Disabled & Invalid', value:'value' }] }
+      invalid>
+      <SelectControl />
+      <SelectContent />
+    </Select>
+
+    <Select
+      defaultValue="value"
+      items={ [{ label: 'Readonly & Invalid', value:'value' }] }
+      invalid
+      readOnly>
+      <SelectControl />
+      <SelectContent />
+    </Select>
+
+    <Select
+      defaultValue="value"
+      disabled
+      items={ [{ label: 'Disabled & Readonly & Invalid', value:'value' }] }
+      invalid
+      readOnly>
+      <SelectControl />
+      <SelectContent />
+    </Select>
+  </>
 );

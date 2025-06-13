@@ -7,8 +7,14 @@
     @include radio.ods-radio();
 
     &:not([data-disabled]) {
-      &[data-focus] {
-        @include focus.ods-focus();
+      &:not([data-invalid]) {
+        &:hover {
+          border-color: var(--ods-color-form-element-border-hover-default);
+        }
+
+        &[data-focus] {
+          border-color: var(--ods-color-form-element-border-focus-default);
+        }
       }
 
       &[data-state="checked"] {
@@ -20,20 +26,14 @@
         }
 
         &[data-focus],
-        &[data-hover] {
+        &:hover {
           border-color: var(--ods-color-primary-700);
-          background-color: var(--ods-color-primary-700);
+          background: var(--ods-color-primary-700);
         }
-      }
-    }
 
-    &:not([data-invalid]) {
-      &[data-focus] {
-        border-color: var(--ods-color-form-element-border-focus-default);
-      }
-
-      &[data-hover] {
-        border-color: var(--ods-color-form-element-border-hover-default);
+        &[data-invalid] {
+          border-color: var(--ods-color-form-element-border-critical);
+        }
       }
     }
 
@@ -46,6 +46,10 @@
           background-color: state.$ods-state-is-disabled-text-color;
         }
       }
+    }
+
+    &[data-focus] {
+      @include focus.ods-focus();
     }
 
     &[data-invalid] {

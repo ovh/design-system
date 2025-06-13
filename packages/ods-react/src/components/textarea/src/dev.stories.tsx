@@ -70,3 +70,28 @@ export const Invalid = () => (
 export const Readonly = () => (
   <Textarea readOnly />
 );
+
+export const States = () => (
+  <>
+    <Textarea
+      defaultValue="Disabled & Readonly"
+      disabled
+      readOnly />
+
+    <Textarea
+      defaultValue="Disabled & Invalid"
+      disabled
+      invalid />
+
+    <Textarea
+      defaultValue="Readonly & Invalid"
+      invalid
+      readOnly />
+
+    <Textarea
+      defaultValue="Disabled & Readonly & Invalid"
+      disabled
+      invalid
+      readOnly />
+  </>
+);

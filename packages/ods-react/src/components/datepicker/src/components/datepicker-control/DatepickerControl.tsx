@@ -45,7 +45,10 @@ const DatepickerControl: FC<DatepickerControlProp> = forwardRef(({
 
       <DatePicker.Trigger asChild>
         <Button
-          className={ style['datepicker-control__trigger'] }
+          className={ classNames(
+            style['datepicker-control__trigger'],
+            { [style['datepicker-control__trigger--invalid']]: invalid },
+          )}
           color={ invalid ? BUTTON_COLOR.critical : BUTTON_COLOR.primary }
           disabled={ disabled || readOnly }
           size={ BUTTON_SIZE.sm }

@@ -1,4 +1,4 @@
-import { type FC, type ReactNode } from 'react';
+import { type FC, type JSX, type ReactNode } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../tooltip/src';
 
 interface PaginationButtonWithTooltipProp {
@@ -6,7 +6,10 @@ interface PaginationButtonWithTooltipProp {
   tooltip?: string;
 }
 
-const PaginationButtonWithTooltip: FC<PaginationButtonWithTooltipProp> = ({ tooltip, children }) =>
+const PaginationButtonWithTooltip: FC<PaginationButtonWithTooltipProp> = ({
+  children,
+  tooltip,
+}): JSX.Element =>
   tooltip ? (
     <Tooltip>
       <TooltipTrigger asChild>{ children }</TooltipTrigger>

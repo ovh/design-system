@@ -283,6 +283,47 @@ export const Readonly = () => (
   </>
 );
 
+export const States = () => (
+  <>
+    <Datepicker
+      disabled
+      placeholder="Disabled & Readonly"
+      readOnly>
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+
+    <Datepicker
+      disabled
+      invalid
+      placeholder="Disabled & Invalid">
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+
+    <Datepicker
+      invalid
+      placeholder="Readonly & Invalid"
+      readOnly>
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+
+    <Datepicker
+      disabled
+      invalid
+      placeholder="Disabled & Readonly & Invalid"
+      readOnly>
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+  </>
+);
+
 export const Value = () => (
   <>
     <p>Value as Date</p>

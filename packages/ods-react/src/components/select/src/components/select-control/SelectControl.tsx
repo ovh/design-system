@@ -1,4 +1,4 @@
-import { Select } from '@ark-ui/react/select';
+import { Select, useSelectContext } from '@ark-ui/react/select';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { useFormField } from '../../../../form-field/src';
@@ -23,6 +23,7 @@ const SelectControl: FC<SelectControlProp> = forwardRef(({
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
   const { items } = useSelect();
+  const { disabled } = useSelectContext();
 
   return (
     <Select.Control>
@@ -39,7 +40,10 @@ const SelectControl: FC<SelectControlProp> = forwardRef(({
 
         <Select.Indicator asChild>
           <Icon
-            className={ style['select-control__icon'] }
+            className={ classNames(
+              style['select-control__icon'],
+              { [style['select-control__icon--disabled']]: disabled },
+            )}
             name={ ICON_NAME.chevronDown } />
         </Select.Indicator>
       </Select.Trigger>

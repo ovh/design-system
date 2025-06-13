@@ -249,7 +249,48 @@ export const Readonly = () => (
   </>
 );
 
-export const timezone = () => (
+export const States = () => (
+  <>
+    <p>Disabled & Readonly</p>
+    <Timepicker
+      disabled
+      readOnly>
+      <TimepickerControl />
+
+      <TimepickerTimezoneList />
+    </Timepicker>
+
+    <p>Disabled & Invalid</p>
+    <Timepicker
+      disabled
+      invalid>
+      <TimepickerControl />
+
+      <TimepickerTimezoneList />
+    </Timepicker>
+
+    <p>Readonly & Invalid</p>
+    <Timepicker
+      invalid
+      readOnly>
+      <TimepickerControl />
+
+      <TimepickerTimezoneList />
+    </Timepicker>
+
+    <p>Disabled & Readonly & Invalid</p>
+    <Timepicker
+      disabled
+      invalid
+      readOnly>
+      <TimepickerControl />
+
+      <TimepickerTimezoneList />
+    </Timepicker>
+  </>
+);
+
+export const Timezones = () => (
   <>
     <p>
       No timezone set, should use one from browser ({ getBrowserTimezone() }):

@@ -3,11 +3,11 @@
     display: flex;
     justify-content: space-between;
     padding-top: 8px;
+    color: var(--ods-color-text);
+    font-weight: 600;
 
-    &__max,
-    &__min {
-      color: var(--ods-color-text);
-      font-weight: 600;
+    &--disabled {
+      color: var(--ods-color-text-disabled-default);
     }
   }
 }

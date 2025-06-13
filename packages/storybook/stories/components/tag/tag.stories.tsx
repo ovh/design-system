@@ -51,13 +51,21 @@ export const Demo: Story = {
   },
 };
 
-export const Overview: Story = {
+export const Color: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
   render: ({}) => (
-    <Tag>My tag</Tag>
+    <>
+      <Tag color={ TAG_COLOR.critical }>Critical</Tag>
+      <Tag color={ TAG_COLOR.information }>Information</Tag>
+      <Tag color={ TAG_COLOR.neutral }>Neutral</Tag>
+      <Tag color={ TAG_COLOR.primary }>Primary</Tag>
+      <Tag color={ TAG_COLOR.success }>Success</Tag>
+      <Tag color={ TAG_COLOR.warning }>Warning</Tag>
+    </>
   ),
 };
 
@@ -71,23 +79,6 @@ export const Default: Story = {
   ),
 };
 
-export const Color: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
-  render: ({}) => (
-    <>
-      <Tag color={TAG_COLOR.critical}>My tag</Tag>
-      <Tag color={TAG_COLOR.information}>My tag</Tag>
-      <Tag color={TAG_COLOR.neutral}>My tag</Tag>
-      <Tag color={TAG_COLOR.success}>My tag</Tag>
-      <Tag color={TAG_COLOR.warning}>My tag</Tag>
-    </>
-  ),
-};
-
 export const Disabled: Story = {
   tags: ['!dev'],
   parameters: {
@@ -95,6 +86,16 @@ export const Disabled: Story = {
   },
   render: ({}) => (
     <Tag disabled>My tag</Tag>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Tag>My tag</Tag>
   ),
 };
 
@@ -106,8 +107,8 @@ export const Size: Story = {
   },
   render: ({}) => (
     <>
-      <Tag size={TAG_SIZE.md}>My tag</Tag>
-      <Tag size={TAG_SIZE.lg}>My tag</Tag>
+      <Tag size={ TAG_SIZE.md }>My tag</Tag>
+      <Tag size={ TAG_SIZE.lg }>My tag</Tag>
     </>
   ),
 };

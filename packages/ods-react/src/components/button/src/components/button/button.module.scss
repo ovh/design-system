@@ -25,6 +25,10 @@
         @include button.ods-button-variant-default('critical');
       }
 
+      &#{$button}--information {
+        @include button.ods-button-variant-default('information');
+      }
+
       &#{$button}--neutral {
         @include button.ods-button-variant-default('neutral');
       }
@@ -32,11 +36,23 @@
       &#{$button}--primary {
         @include button.ods-button-variant-default('primary');
       }
+
+      &#{$button}--success {
+        @include button.ods-button-variant-default('success');
+      }
+
+      &#{$button}--warning {
+        @include button.ods-button-variant-default('warning');
+      }
     }
 
     &--ghost {
       &#{$button}--critical {
         @include button.ods-button-variant-ghost('critical');
+      }
+
+      &#{$button}--information {
+        @include button.ods-button-variant-ghost('information');
       }
 
       &#{$button}--neutral {
@@ -46,11 +62,23 @@
       &#{$button}--primary {
         @include button.ods-button-variant-ghost('primary');
       }
+
+      &#{$button}--success {
+        @include button.ods-button-variant-ghost('success');
+      }
+
+      &#{$button}--warning {
+        @include button.ods-button-variant-ghost('warning');
+      }
     }
 
     &--outline {
       &#{$button}--critical {
         @include button.ods-button-variant-outline('critical');
+      }
+
+      &#{$button}--information {
+        @include button.ods-button-variant-outline('information');
       }
 
       &#{$button}--neutral {
@@ -59,6 +87,14 @@
 
       &#{$button}--primary {
         @include button.ods-button-variant-outline('primary');
+      }
+
+      &#{$button}--success {
+        @include button.ods-button-variant-outline('success');
+      }
+
+      &#{$button}--warning {
+        @include button.ods-button-variant-outline('warning');
       }
     }
 

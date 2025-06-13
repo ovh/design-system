@@ -11,19 +11,15 @@
       gap: 0;
     }
 
-    &--primary {
-      @include link.ods-link-color('primary');
+    &#{$current}--disabled {
+      @include state.ods-is-disabled();
 
-      &#{$current}--disabled {
-        @include state.ods-is-disabled();
+      background-color: inherit;
 
-        background-color: inherit;
-
-        &:focus-visible,
-        &:hover {
-          transition: none;
-          background-size: 0;
-        }
+      &:focus-visible,
+      &:hover {
+        transition: none;
+        background-size: 0;
       }
     }
   }

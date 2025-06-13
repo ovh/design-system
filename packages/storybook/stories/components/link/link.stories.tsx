@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Icon } from '../../../../ods-react/src/components/icon/src';
-import { LINK_COLORS, Link, LinkProp } from '../../../../ods-react/src/components/link/src';
+import { Link, LinkProp } from '../../../../ods-react/src/components/link/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
@@ -22,14 +22,6 @@ export const Demo: Story = {
         category: CONTROL_CATEGORY.slot,
       },
       control: 'text',
-    },
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'LINK_COLOR' },
-      },
-      control: 'select',
-      options: LINK_COLORS,
     },
     disabled: {
       table: {

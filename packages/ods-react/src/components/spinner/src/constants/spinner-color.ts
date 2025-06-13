@@ -1,7 +1,8 @@
+import { COLOR } from '../../../../utils/colors';
+
 enum SPINNER_COLOR {
-  neutral = 'neutral',
-  primary = 'primary',
-  white = 'white',
+  neutral = COLOR.neutral,
+  primary = COLOR.primary,
 }
 
 type SpinnerColor =`${SPINNER_COLOR}`;

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { MESSAGE_COLOR, type MessageColor } from '../../constants/message-color';
 import { MESSAGE_VARIANT, type MessageVariant } from '../../constants/message-variant';
@@ -51,7 +51,7 @@ const Message: FC<MessageProp> = forwardRef(({
         dismissible &&
         <Button
           className={ style['message__close'] }
-          color={ color }
+          color={ BUTTON_COLOR.neutral }
           onClick={ onRemove }
           size={ BUTTON_SIZE.xs }
           variant={ BUTTON_VARIANT.ghost }>

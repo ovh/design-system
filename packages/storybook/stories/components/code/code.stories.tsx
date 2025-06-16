@@ -9,7 +9,7 @@ type Story = StoryObj<CodeProp>;
 const meta: Meta<CodeProp> = {
   argTypes: excludeFromDemoControls(['onCopy']),
   component: Code,
-  title: 'ODS Components/Code',
+  title: 'React Components/Code',
 };
 
 export default meta;

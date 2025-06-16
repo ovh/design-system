@@ -6,7 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ TimepickerStories } name="Documentation" />
 
@@ -34,7 +34,7 @@ It is useful for scheduling such as planning a meeting.
 
 A **Timepicker** field includes the hour, minutes and optionally seconds. It can be followed by an AM/PM indicator.
 
-For some use case, an optional time zone <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink> can be added to allow users to select their desired time zone from a list of options.
+For some use case, an optional time zone <StorybookLink kind={ REACT_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink> can be added to allow users to select their desired time zone from a list of options.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
@@ -45,7 +45,7 @@ For some use case, an optional time zone <StorybookLink kind={ ODS_COMPONENTS_TI
   ]}
   dos={[
     '- Use a Timepicker in a form when you need to display scheduling options',
-    <span>- Add label and/or helper to the Timepicker with <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> component</span>,
+    <span>- Add label and/or helper to the Timepicker with <StorybookLink kind={ REACT_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> component</span>,
     '- A Timepicker can be combined with a Date picker to allow users to pick both date and time',
     '- Use AM/PM selector when you plan to use 12 hours format',
     '- Display a restricted list of timezones that makes sense, especially when the company or product exists only in few countries. Otherwise it adds to confusion',
@@ -72,7 +72,7 @@ The time field has a fixed width by default but, when used in a form, its width 
 
 A **Timepicker** can widen to match its container (width of the elements is 50% each).
 
-It has the same states and behaviors for each inner component (i.e. <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> and <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink>).
+It has the same states and behaviors for each inner component (i.e. <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> and <StorybookLink kind={ REACT_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink>).
 
 <Heading label="Variation" level={ 2 } />
 

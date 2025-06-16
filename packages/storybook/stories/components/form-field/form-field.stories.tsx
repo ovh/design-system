@@ -17,7 +17,7 @@ const meta: Meta<FormFieldProp> = {
   argTypes: excludeFromDemoControls(['id', 'required']),
   component: FormField,
   subcomponents: { FormFieldError, FormFieldHelper, FormFieldLabel },
-  title: 'ODS Components/Form elements/FormField',
+  title: 'React Components/Form Field',
 };
 
 export default meta;

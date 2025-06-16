@@ -14,7 +14,7 @@ const meta: Meta<TimepickerProp> = {
   argTypes: excludeFromDemoControls(['defaultValue', 'id', 'name', 'onTimezoneChange', 'onValueChange', 'required', 'timezone', 'timezones', 'value']),
   component: Timepicker,
   subcomponents: { TimepickerControl, TimepickerTimezoneList },
-  title: 'ODS Components/Form elements/Timepicker',
+  title: 'React Components/Timepicker',
 };
 
 export default meta;

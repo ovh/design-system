@@ -4,7 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 import * as TimepickerStories from './timepicker.stories';
 
 <Meta of={ TimepickerStories } name="Technical information" />
@@ -41,7 +41,7 @@ You can use update the list of timezone to select from.
 
 By default, the list use the `all` preset that displays all supported timezones. But you can pass a specific subset to limit the possible choices.
 
-For further explanation about timezone strategy, see <StorybookLink kind={ ODS_COMPONENTS_TITLE.timepicker } story={ STORY.documentation }>the timezone behavior documentation</StorybookLink>.
+For further explanation about timezone strategy, see <StorybookLink kind={ REACT_COMPONENTS_TITLE.timepicker } story={ STORY.documentation }>the timezone behavior documentation</StorybookLink>.
 
 <Canvas of={ TimepickerStories.TimezoneList } sourceState="shown" />
 

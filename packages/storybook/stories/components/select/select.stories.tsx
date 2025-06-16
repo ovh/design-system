@@ -14,7 +14,7 @@ const meta: Meta<SelectProp> = {
   argTypes: excludeFromDemoControls(['defaultValue', 'id', 'items', 'name', 'onValueChange', 'required', 'value']),
   component: Select,
   subcomponents: { SelectContent, SelectControl },
-  title: 'ODS Components/Form elements/Select',
+  title: 'React Components/Select',
 };
 
 export default meta;

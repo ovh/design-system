@@ -6,7 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ SpinnerStories } name="Documentation" />
 
@@ -33,7 +33,7 @@ _A visual indicator that a process is happening in the background but the interf
 
 <Heading label="Spinner vs Skeleton" level={ 3 } />
 
-Both **Spinner** and <StorybookLink kind={ ODS_COMPONENTS_TITLE.skeleton } story={ STORY.documentation }>Skeleton</StorybookLink> indicate that content is loading, but they serve different purposes:
+Both **Spinner** and <StorybookLink kind={ REACT_COMPONENTS_TITLE.skeleton } story={ STORY.documentation }>Skeleton</StorybookLink> indicate that content is loading, but they serve different purposes:
 
 * Use a **Spinner** when the content or result is unknown and the user must wait. For example, after clicking a button or loading data from an API
 

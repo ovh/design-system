@@ -9,7 +9,7 @@ type Story = StoryObj<MessageProp>;
 const meta: Meta<MessageProp> = {
   argTypes: excludeFromDemoControls(['onRemove']),
   component: Message,
-  title: 'ODS Components/Message',
+  title: 'React Components/Message',
 };
 
 export default meta;

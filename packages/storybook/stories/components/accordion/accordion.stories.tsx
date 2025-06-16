@@ -12,7 +12,7 @@ const meta: Meta<AccordionProp> = {
   component: Accordion,
   argTypes: excludeFromDemoControls(['onChange', 'defaultValue', 'value']),
   subcomponents: { AccordionContent, AccordionItem, AccordionTrigger },
-  title: 'ODS Components/Accordion',
+  title: 'React Components/Accordion',
 };
 
 export default meta;

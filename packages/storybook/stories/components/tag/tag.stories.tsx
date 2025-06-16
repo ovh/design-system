@@ -9,7 +9,7 @@ type Story = StoryObj<TagProp>;
 const meta: Meta<TagProp> = {
   argTypes: excludeFromDemoControls(['onRemove']),
   component: Tag,
-  title: 'ODS Components/Tag',
+  title: 'React Components/Tag',
 };
 
 export default meta;

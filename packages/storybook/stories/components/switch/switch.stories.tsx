@@ -10,7 +10,7 @@ const meta: Meta<SwitchProp> = {
   argTypes: excludeFromDemoControls(['defaultValue', 'onValueChange', 'value']),
   component: Switch,
   subcomponents: { SwitchItem },
-  title: 'ODS Components/Switch',
+  title: 'React Components/Switch',
 };
 
 export default meta;

@@ -3,9 +3,9 @@ import { Meta, Source } from '@storybook/blocks';
 import * as QuantityStories from './quantity.stories';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
-<Meta of={ QuantityStories } name="Migration From 17.x" />
+<Meta of={ QuantityStories } name="Migration v17 to v18" />
 
 <Heading label="Quantity - migrate from v17 to v18" level={ 1 } />
 
@@ -144,11 +144,11 @@ The slot plus is now automatically in the component with an ods-button
 
 <Heading label="Input attributes changes" level={ 2 } />
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.migrationFrom17 }>Doc input</StorybookLink>
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.migrationFrom17 }>Doc input</StorybookLink>
 
 <Heading label="Button attributes changes" level={ 2 } />
 
-<StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.migrationFrom17 }>Doc button</StorybookLink>
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.migrationFrom17 }>Doc button</StorybookLink>
 
 <Heading label="Migration examples" level={ 2 } />
 

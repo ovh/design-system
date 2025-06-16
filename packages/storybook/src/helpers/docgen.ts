@@ -95,6 +95,8 @@ function typeToString(type: TypeDescriptor): string {
 }
 
 export {
+  TAG,
   type Component,
+  extractTags,
   getComponentsInfo,
 };

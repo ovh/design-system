@@ -3,6 +3,7 @@ import { type ModuleExports } from '@storybook/types';
 import React, { Fragment, type JSX, useMemo } from 'react';
 import { type ProjectReflection } from 'typedoc';
 import { ClassModule, type ClassModuleProp } from './ClassModule';
+import { EnumList } from './EnumList';
 import { Heading } from '../heading/Heading';
 import { type Component, getComponentsInfo } from '../../helpers/docgen';
 import { type ComponentTypedoc, getComponentTypedoc } from '../../helpers/typedoc';
@@ -57,21 +58,9 @@ const TechnicalSpecification = ({ data, extraInfo, of }: Props): JSX.Element => 
                 <Heading label={ enumObj.name }
                          level={ 3 } />
 
-                <ul className={ styles['technical-specification__enums__keys'] }>
-                  {
-                    enumObj.members.map((member, i) => (
-                      <li key={ i }>
-                        <span className={ styles['technical-specification__enums__keys__name'] }>
-                          { member.name } =
-                        </span>
-
-                        <CodeOrSourceMdx>
-                          { typeof member.value === 'number' ? member.value : `"${member.value}"` }
-                        </CodeOrSourceMdx>
-                      </li>
-                    ))
-                  }
-                </ul>
+                <EnumList
+                  className={ styles['technical-specification__enums__keys'] }
+                  enums={ enumObj.members } />
               </Fragment>
             ))
           }
@@ -93,8 +82,7 @@ const TechnicalSpecification = ({ data, extraInfo, of }: Props): JSX.Element => 
                 <ul className={ styles['technical-specification__interfaces__keys'] }>
                   {
                     interfaceObj.props.map((prop, i) => (
-                      <li className={ styles['technical-specification__interfaces__keys__item'] }
-                          key={ i }>
+                      <li key={ i }>
                         <CodeOrSourceMdx>
                           { prop.name }: { prop.type }
                         </CodeOrSourceMdx>
@@ -117,8 +105,7 @@ const TechnicalSpecification = ({ data, extraInfo, of }: Props): JSX.Element => 
           <ul className={ styles['technical-specification__unions__keys'] }>
             {
               unions.map((union, idx) => (
-                <li className={ styles['technical-specification__unions__keys__item'] }
-                    key={ idx }>
+                <li key={ idx }>
                   <CodeOrSourceMdx>
                     { union.name } = { union.value }
                   </CodeOrSourceMdx>

@@ -5,10 +5,12 @@ import { getCurrentIsoCode, isValid } from '../controller/phone-number';
 
 interface PhoneNumberCountryChangeDetail {
   isNumberValid: boolean,
+  /** @type=PHONE_NUMBER_COUNTRY_ISO_CODE */
   value: PhoneNumberCountryIsoCode,
 }
 
 interface PhoneNumberValueChangeDetail {
+  /** @type=PHONE_NUMBER_COUNTRY_ISO_CODE */
   country?: PhoneNumberCountryIsoCode,
   formattedValue?: string,
   isNumberValid: boolean,

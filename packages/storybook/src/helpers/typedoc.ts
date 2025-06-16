@@ -1,12 +1,15 @@
-import { type DeclarationReflection, type IntrinsicType, type LiteralType, type ProjectReflection, type ReferenceType, type ReflectionType, type SomeType, type UnknownType, type UnionType } from 'typedoc';
+import { Comment, type DeclarationReflection, type IntrinsicType, type LiteralType, type ProjectReflection, type ReferenceType, type ReflectionType, type SomeType, type UnknownType, type UnionType } from 'typedoc';
 import { ReflectionKind } from 'typedoc/models';
+import { TAG, extractTags } from './docgen';
+
+type TypedocEnumMember = {
+  name: string,
+  value: number | string,
+}
 
 type ComponentTypedoc = {
   enums: {
-    members: {
-      name: string,
-      value: number | string,
-    }[],
+    members: TypedocEnumMember[],
     name: string,
   }[],
   interfaces: {
@@ -47,7 +50,7 @@ function getComponentTypedoc(data: ProjectReflection): ComponentTypedoc {
       name: interfaceDeclaration.name,
       props: (interfaceDeclaration.children || []).map((child) => ({
         name: `${child.name}${(child.flags.isOptional ? '?' : '')}`,
-        type: getTypeValue(child.type),
+        type: getTypeValue(child.type, child.comment),
       })),
     }))),
     unions: sortByName(unionTypeDeclarations.map((typeDeclaration) => ({
@@ -59,9 +62,26 @@ function getComponentTypedoc(data: ProjectReflection): ComponentTypedoc {
   };
 }
 
-function getTypeValue(type?: SomeType): string {
+function getTypeValue(type?: SomeType, comment?: Comment): string {
   if (!type) {
     return '';
+  }
+
+  if (comment?.summary && comment.summary.length) {
+    let customType = '';
+
+    comment.summary.some((str) => {
+      const tagMap = extractTags(str.text);
+      if (tagMap.has(TAG.type)) {
+        customType = tagMap.get(TAG.type)!;
+        return true;
+      }
+      return false;
+    });
+
+    if (customType) {
+      return customType;
+    }
   }
 
   if (type.type === 'array') {
@@ -101,7 +121,7 @@ function getTypeValue(type?: SomeType): string {
         }
         return 0;
       })
-      .map(getTypeValue)
+      .map((type) => getTypeValue(type))
       .join(' | ');
   }
 
@@ -132,5 +152,6 @@ function sortByName<T extends { name: string }>(array: T[]): T[] {
 
 export {
   type ComponentTypedoc,
+  type TypedocEnumMember,
   getComponentTypedoc,
 };

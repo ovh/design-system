@@ -19,7 +19,7 @@ const meta: Meta<ModalProp> = {
   argTypes: excludeFromDemoControls(['defaultOpen', 'onOpenChange', 'open']),
   component: Modal,
   subcomponents: { ModalContent, ModalTrigger },
-  title: 'ODS Components/Modal',
+  title: 'React Components/Modal',
 };
 
 export default meta;

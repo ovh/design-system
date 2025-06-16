@@ -6,13 +6,13 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ PhoneNumberStories } name="Documentation" />
 
 <Banner of={ PhoneNumberStories } />
 
-_**Phone Number** component is a combo of a selection of country phone indicator and an <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> field for entering a phone number_
+_**Phone Number** component is a combo of a selection of country phone indicator and an <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> field for entering a phone number_
 
 <Canvas of={ PhoneNumberStories.Overview } sourceState="none" />
 
@@ -30,7 +30,7 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 <Heading label="Usage" level={ 2 } />
 
 **Phone Number** component should be used when there is a need to collect the user's phone number, in a form for instance:
-- As <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> in an user profile
+- As <StorybookLink kind={ REACT_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> in an user profile
 - As in contact/appointment form
 - For telecom configuration
 
@@ -39,12 +39,12 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 <BestPractices
   donts={[
     '- Force a strict format to users',
-    <span>- Make a Phone Number <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> as required without explaining to users why this field is required</span>,
+    <span>- Make a Phone Number <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> as required without explaining to users why this field is required</span>,
     '- Assume exclusive use of mobile phone numbers',
   ]}
   dos={[
     '- Validate Phone number format when user leaves the field',
-    <span>- Use Phone Number without the optional country indicator <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink> when you only accept user's locale as selection</span>,
+    <span>- Use Phone Number without the optional country indicator <StorybookLink kind={ REACT_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink> when you only accept user's locale as selection</span>,
     '- Use a helper when validation is in error state (expected number of characters, expected format...)',
   ]}
 />
@@ -60,7 +60,7 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 
 <Heading label="Placement" level={ 2 } />
 
-**Phone Number** is a group of <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink> and <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink>, and should act as their specific placements.
+**Phone Number** is a group of <StorybookLink kind={ REACT_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink> and <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink>, and should act as their specific placements.
 
 <Heading label="Behavior" level={ 2 } />
 
@@ -68,7 +68,7 @@ When the user selects a country, it determines the format used to validate their
 
 If the field content is in error state (i.e. missing or wrong characters), the whole **Phone Number** component becomes in error state.
 
-An event is triggered when the <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> value changes.
+An event is triggered when the <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> value changes.
 
 The country selector allows users to navigate to the desired country option by typing letters while focused on the country selector.
 
@@ -80,7 +80,7 @@ For example:
 
 <Heading label="Locale" level={ 3 } />
 
-The locale (i.e. country list translation in <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink>) is first set to the value provided as a property.
+The locale (i.e. country list translation in <StorybookLink kind={ REACT_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink>) is first set to the value provided as a property.
 
 If the given property is not defined or recognized, the component attempts to use the browser's locale settings.
 
@@ -100,4 +100,4 @@ N/A
 
 <Heading label="Accessibility" level={ 2 } />
 
-Keyboard navigation is the same as <StorybookLink kind={ ODS_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink> and <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> does, `Tab` key allows to focus to one another.
+Keyboard navigation is the same as <StorybookLink kind={ REACT_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink> and <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> does, `Tab` key allows to focus to one another.

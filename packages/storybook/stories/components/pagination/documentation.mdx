@@ -6,7 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ PaginationStories } name='Documentation' />
 
@@ -33,7 +33,7 @@ _A **Pagination** component allows users to navigate through large sets of data 
 <Heading label="Usage" level={ 2 } />
 
 A **Pagination** component is used in two situations :
-* To navigate among a <StorybookLink kind={ ODS_COMPONENTS_TITLE.table } story={ STORY.documentation }>Table</StorybookLink> component
+* To navigate among a <StorybookLink kind={ REACT_COMPONENTS_TITLE.table } story={ STORY.documentation }>Table</StorybookLink> component
 * To browse in a set of items (products list, ...)
 
 <Heading label="Dos & Don'ts" level={ 3 } />
@@ -88,27 +88,27 @@ By default, 10 items per page are displayed, but it can be set to match your nee
 
 <Heading label="Amount of pages" level={ 3 } />
 
-A maximum of 6 numbered page <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink> can be visible at once, with a minimum of 1.
+A maximum of 6 numbered page <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink> can be visible at once, with a minimum of 1.
 
 Arrow Buttons are always visible, no matter what the amount of pages.
 
 Depending on the current page number and the amount of pages, here are the different displays of the whole component:
-- If amount of pages is less than 7, all numbered page <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink> can be visible at once
+- If amount of pages is less than 7, all numbered page <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink> can be visible at once
 - If amount of pages is 7 or more :
-- If current page is the 4th one or less, the first 5 numbered <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink> are present, then an ellipsis and the last numbered <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> corresponding of the amount of pages
-- If current page is the 4th to last or more, the first page <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is displayed followed by an ellipsis and the last 5 numbered <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink>
+- If current page is the 4th one or less, the first 5 numbered <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink> are present, then an ellipsis and the last numbered <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> corresponding of the amount of pages
+- If current page is the 4th to last or more, the first page <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is displayed followed by an ellipsis and the last 5 numbered <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink>
 - If current page is between the previous bounds are displayed, in order :
-- the first page <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>,
+- the first page <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>,
 - an ellipsis,
-- 3 numbered <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink>, corresponding to : previous-to-current / current / next-to-current page,
+- 3 numbered <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink>, corresponding to : previous-to-current / current / next-to-current page,
 - an ellipsis,
-- the last numbered <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>
+- the last numbered <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>
 
 <Heading label="Navigation" level={ 3 } />
 
-Current page <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> has a selected styling, yet it is a not clickable.
+Current page <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> has a selected styling, yet it is a not clickable.
 
-If the selected page number is the first page, the previous page arrow <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is disabled; same thing applies with the last page as selected and the next page arrow <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> disabled.
+If the selected page number is the first page, the previous page arrow <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is disabled; same thing applies with the last page as selected and the next page arrow <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> disabled.
 
 An event is triggered when the current page changes in the Pagination, as well as the items per page changes.
 
@@ -118,7 +118,7 @@ N/A
 
 <Heading label="Accessibility" level={ 2 } />
 
-All <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink> are accessible via tabulation controls.
+All <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink> are accessible via tabulation controls.
 
-Previous and next page arrow <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink> are labelled as their explicit usage.
+Previous and next page arrow <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink> are labelled as their explicit usage.
 

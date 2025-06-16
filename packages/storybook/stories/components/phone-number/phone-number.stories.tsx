@@ -14,7 +14,7 @@ const meta: Meta<PhoneNumberProp> = {
   argTypes: excludeFromDemoControls(['countries', 'defaultValue', 'id', 'name', 'onCountryChange', 'onValueChange', 'pattern', 'required', 'value']),
   component: PhoneNumber,
   subcomponents: { PhoneNumberControl, PhoneNumberCountryList },
-  title: 'ODS Components/Form elements/PhoneNumber',
+  title: 'React Components/Phone Number',
 };
 
 export default meta;

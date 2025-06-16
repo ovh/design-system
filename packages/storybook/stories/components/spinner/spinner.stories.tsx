@@ -8,7 +8,7 @@ type Story = StoryObj<SpinnerProp>;
 
 const meta: Meta<SpinnerProp> = {
   component: Spinner,
-  title: 'ODS Components/Spinner',
+  title: 'React Components/Spinner',
 };
 
 export default meta;

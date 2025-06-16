@@ -6,7 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ TooltipStories } name="Documentation" />
 
@@ -40,7 +40,7 @@ They are suitable for a button, an icon, a link, and any other elements where ad
 
 <Heading label="Tooltip vs Popover" level={ 3 } />
 
-- Both components look similar but a **Tooltip** is displayed on hover and focus while a <StorybookLink kind={ ODS_COMPONENTS_TITLE.popover } story={ STORY.documentation }>Popover</StorybookLink> is triggered by click.
+- Both components look similar but a **Tooltip** is displayed on hover and focus while a <StorybookLink kind={ REACT_COMPONENTS_TITLE.popover } story={ STORY.documentation }>Popover</StorybookLink> is triggered by click.
 - **Tooltips** are commonly used for shorter explanations, while longer text / complex UIs would suit Popovers better.
 - Use a Popover when you need to insert interactive elements such as a button.
 - A Popover can be dismissed if an action button allows it.

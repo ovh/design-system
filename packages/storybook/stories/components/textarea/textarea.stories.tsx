@@ -10,7 +10,7 @@ type Story = StoryObj<TextareaProp>;
 
 const meta: Meta<TextareaProp> = {
   component: Textarea,
-  title: 'ODS Components/Form elements/Textarea',
+  title: 'React Components/Textarea',
 };
 
 export default meta;

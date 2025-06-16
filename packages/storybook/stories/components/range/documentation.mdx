@@ -6,7 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ RangeStories } name="Documentation" />
 
@@ -49,7 +49,7 @@ A dual **Range** allows the user to select a numeric range value that is no less
   ]}
   dos={[
     '- Use a Range when the user needs a way to select a value within a range',
-    <span>- Include a label on a Range, such as the one provided by <StorybookLink kind={ ODS_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> component, to explain the purpose of the Range</span>,
+    <span>- Include a label on a Range, such as the one provided by <StorybookLink kind={ REACT_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> component, to explain the purpose of the Range</span>,
     '- Add a default numeric value',
   ]}
 />
@@ -74,7 +74,7 @@ It has a width by default, but it can widen to match its container.
 
 The **Range** can also be used inside components.
 
-It also can be combined with other elements such as an <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> for a better control of the value selection.
+It also can be combined with other elements such as an <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> for a better control of the value selection.
 
 <Heading label="Behavior" level={ 2 } />
 

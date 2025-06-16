@@ -16,7 +16,7 @@ const meta: Meta<PopoverProp> = {
   argTypes: excludeFromDemoControls(['open']),
   component: Popover,
   subcomponents: { PopoverContent, PopoverTrigger },
-  title: 'ODS Components/Popover',
+  title: 'React Components/Popover',
 };
 
 export default meta;

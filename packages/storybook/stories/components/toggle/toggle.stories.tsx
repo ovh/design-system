@@ -10,7 +10,7 @@ type Story = StoryObj<ToggleProp>;
 const meta: Meta<ToggleProp> = {
   argTypes: excludeFromDemoControls(['checked', 'defaultChecked', 'name', 'onCheckedChange', 'required', 'value']),
   component: Toggle,
-  title: 'ODS Components/Form elements/Toggle',
+  title: 'React Components/Toggle',
 };
 
 export default meta;

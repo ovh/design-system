@@ -8,7 +8,7 @@ type Story = StoryObj<TextProp>;
 
 const meta: Meta<TextProp> = {
   component: Text,
-  title: 'ODS Components/Text',
+  title: 'React Components/Text',
 };
 
 export default meta;

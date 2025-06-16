@@ -13,7 +13,7 @@ const meta: Meta<ClipboardProp> = {
   argTypes: excludeFromDemoControls(['onCopy']),
   component: Clipboard,
   subcomponents: { ClipboardControl, ClipboardTrigger},
-  title: 'ODS Components/Clipboard',
+  title: 'React Components/Clipboard',
 };
 
 export default meta;

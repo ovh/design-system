@@ -4,7 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 import * as PhoneNumberStories from './phone-number.stories';
 
 <Meta of={ PhoneNumberStories } name="Technical information" />
@@ -43,8 +43,8 @@ import * as PhoneNumberStories from './phone-number.stories';
 
 The locale manages the translation of the country list.
 
-For further explanation about locale strategy, see <StorybookLink kind={ ODS_COMPONENTS_TITLE.phoneNumber } story={ STORY.documentation }>the locale behavior documentation</StorybookLink>.
-                                                   <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink>
+For further explanation about locale strategy, see <StorybookLink kind={ REACT_COMPONENTS_TITLE.phoneNumber } story={ STORY.documentation }>the locale behavior documentation</StorybookLink>.
+                                                   <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink>
 <Canvas of={ PhoneNumberStories.Locale } sourceState="shown" />
 
 <Heading label="Country list" level={ 3 } />
@@ -53,7 +53,7 @@ You can use update the list of country to select from.
 
 By default, the list use the `all` preset that displays all supported iso codes. But you can pass a specific subset to limit the possible choices.
 
-For further explanation about country iso code strategy, see <StorybookLink kind={ ODS_COMPONENTS_TITLE.phoneNumber } story={ STORY.documentation }>the iso code behavior documentation</StorybookLink>.
+For further explanation about country iso code strategy, see <StorybookLink kind={ REACT_COMPONENTS_TITLE.phoneNumber } story={ STORY.documentation }>the iso code behavior documentation</StorybookLink>.
 
 <Canvas of={ PhoneNumberStories.CountryList } sourceState="shown" />
 

@@ -15,7 +15,7 @@ const meta: Meta<CheckboxProp> = {
   argTypes: excludeFromDemoControls(['checked', 'defaultChecked', 'name', 'onCheckedChange', 'required', 'value']),
   component: Checkbox,
   subcomponents: { CheckboxControl, CheckboxGroup, CheckboxLabel },
-  title: 'ODS Components/Form elements/Checkbox',
+  title: 'React Components/Checkbox',
 };
 
 export default meta;

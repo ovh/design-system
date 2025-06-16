@@ -12,7 +12,7 @@ const meta: Meta<RadioGroupProp> = {
   argTypes: excludeFromDemoControls(['defaultValue', 'name', 'onValueChange', 'value']),
   component: RadioGroup,
   subcomponents: { Radio, RadioControl, RadioLabel },
-  title: 'ODS Components/Form elements/RadioGroup',
+  title: 'React Components/Radio Group',
 };
 
 export default meta;

@@ -13,7 +13,17 @@ import * as DividerStories from './divider.stories';
 
 <Canvas of={ DividerStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsDivider } of={ DividerStories } />
+<TechnicalSpecification
+  data={ SpecificationsDivider }
+  extraInfo={{
+    'Divider': {
+      extendAttribute: {
+        name: 'hr',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/hr#attributes',
+      },
+    },
+  }}
+  of={ DividerStories } />
 
 <Heading label="Examples" level={ 2 } />
 

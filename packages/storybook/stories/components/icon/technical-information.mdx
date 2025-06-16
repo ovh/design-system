@@ -13,7 +13,17 @@ import * as IconStories from './icon.stories';
 
 <Canvas of={ IconStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsIcon } of={ IconStories } />
+<TechnicalSpecification
+  data={ SpecificationsIcon }
+  extraInfo={{
+    'Icon': {
+      extendAttribute: {
+        name: 'span',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes',
+      },
+    },
+  }}
+  of={ IconStories } />
 
 <Heading label="Examples" level={ 2 } />
 

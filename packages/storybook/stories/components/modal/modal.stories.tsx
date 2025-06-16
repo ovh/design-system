@@ -18,7 +18,7 @@ type DemoArg = Partial<ModalProp> & Partial<ModalContentProp> & {
 const meta: Meta<ModalProp> = {
   argTypes: excludeFromDemoControls(['defaultOpen', 'onOpenChange', 'open']),
   component: Modal,
-  subcomponents: { ModalContent, ModalTrigger },
+  subcomponents: { ModalBody, ModalContent, ModalTrigger },
   title: 'React Components/Modal',
 };
 

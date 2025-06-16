@@ -15,7 +15,29 @@ import * as TimepickerStories from './timepicker.stories';
 
 <Canvas of={ TimepickerStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsTimepicker } of={ TimepickerStories } />
+<TechnicalSpecification
+  data={ SpecificationsTimepicker }
+  extraInfo={{
+    'Timepicker': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'TimepickerControl': {
+      extendAttribute: {
+        name: 'input',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes',
+      },
+    },
+    'TimepickerTimezoneList': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+  }}
+  of={ TimepickerStories } />
 
 <Heading label="Examples" level={ 2 } />
 

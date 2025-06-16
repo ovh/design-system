@@ -13,7 +13,17 @@ import * as PasswordStories from './password.stories';
 
 <Canvas of={ PasswordStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsPassword } of={ PasswordStories } />
+<TechnicalSpecification
+  data={ SpecificationsPassword }
+  extraInfo={{
+    'Password': {
+      extendAttribute: {
+        name: 'input',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes',
+      },
+    },
+  }}
+  of={ PasswordStories } />
 
 <Heading label="Examples" level={ 2 } />
 

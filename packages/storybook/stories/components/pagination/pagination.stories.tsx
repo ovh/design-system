@@ -7,7 +7,7 @@ import {
 } from '../../../../ods-react/src/components/pagination/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
-import { staticSourceRenderConfig } from '../../../src/helpers/source.ts';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<PaginationProp>;
 

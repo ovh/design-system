@@ -13,7 +13,17 @@ import * as TextStories from './text.stories';
 
 <Canvas of={ TextStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsText } of={ TextStories } />
+<TechnicalSpecification
+  data={ SpecificationsText }
+  extraInfo={{
+    'Text': {
+      extendAttribute: {
+        name: 'text elements',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes',
+      },
+    },
+  }}
+  of={ TextStories } />
 
 <Heading label="Examples" level={ 2 } />
 

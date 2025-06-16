@@ -13,7 +13,17 @@ import * as ToggleStories from './toggle.stories';
 
 <Canvas of={ ToggleStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsToggle } of={ ToggleStories } />
+<TechnicalSpecification
+  data={ SpecificationsToggle }
+  extraInfo={{
+    'Toggle': {
+      extendAttribute: {
+        name: 'label',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes',
+      },
+    },
+  }}
+  of={ ToggleStories } />
 
 <Heading label="Examples" level={ 2 } />
 

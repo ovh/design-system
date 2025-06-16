@@ -13,7 +13,35 @@ import * as CheckboxStories from './checkbox.stories';
 
 <Canvas of={ CheckboxStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsCheckbox } of={ CheckboxStories } />
+<TechnicalSpecification
+  data={ SpecificationsCheckbox }
+  extraInfo={{
+    'Checkbox': {
+      extendAttribute: {
+        name: 'label',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes',
+      },
+    },
+    'CheckboxControl': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'CheckboxGroup': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'CheckboxLabel': {
+      extendAttribute: {
+        name: 'span',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes',
+      },
+    },
+  }}
+  of={ CheckboxStories } />
 
 <Heading label="Examples" level={ 2 } />
 

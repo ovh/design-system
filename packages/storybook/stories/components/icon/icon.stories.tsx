@@ -169,7 +169,7 @@ const ODS_ICON_TAG: { [NameKey in IconNameKey]: string[] } = {
 
 const meta: Meta<IconProp> = {
   component: Icon,
-  title: 'ODS Components/Icon',
+  title: 'React Components/Icon',
 };
 
 export default meta;

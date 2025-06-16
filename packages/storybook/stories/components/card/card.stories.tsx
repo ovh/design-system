@@ -8,7 +8,7 @@ type Story = StoryObj<CardProp>;
 
 const meta: Meta<CardProp> = {
   component: Card,
-  title: 'ODS Components/Card',
+  title: 'React Components/Card',
 };
 
 export default meta;

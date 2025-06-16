@@ -9,7 +9,7 @@ type Story = StoryObj<TableProp>;
 
 const meta: Meta<TableProp> = {
   component: Table,
-  title: 'ODS Components/Table',
+  title: 'React Components/Table',
 };
 
 export default meta;

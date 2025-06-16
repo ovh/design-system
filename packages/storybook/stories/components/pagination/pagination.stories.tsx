@@ -14,7 +14,7 @@ type Story = StoryObj<PaginationProp>;
 const meta: Meta<PaginationProp> = {
   argTypes: excludeFromDemoControls(['defaultPage', 'onPageChange', 'page', 'pageSize', 'renderTotalItemsLabel']),
   component: Pagination,
-  title: 'ODS Components/Pagination',
+  title: 'React Components/Pagination',
 };
 
 export default meta;

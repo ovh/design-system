@@ -11,7 +11,7 @@ const meta: Meta<BreadcrumbProp> = {
   argTypes: excludeFromDemoControls(['noCollapse', 'onExpand']),
   component: Breadcrumb,
   subcomponents: { BreadcrumbItem, BreadcrumbLink },
-  title: 'ODS Components/Breadcrumb',
+  title: 'React Components/Breadcrumb',
 };
 
 export default meta;

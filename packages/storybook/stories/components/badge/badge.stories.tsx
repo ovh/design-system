@@ -8,7 +8,7 @@ type Story = StoryObj<BadgeProp>;
 
 const meta: Meta<BadgeProp> = {
   component: Badge,
-  title: 'ODS Components/Badge',
+  title: 'React Components/Badge',
 };
 
 export default meta;

@@ -8,7 +8,7 @@ type Story = StoryObj<DividerProp>;
 
 const meta: Meta<DividerProp> = {
   component: Divider,
-  title: 'ODS Components/Divider',
+  title: 'React Components/Divider',
 };
 
 export default meta;

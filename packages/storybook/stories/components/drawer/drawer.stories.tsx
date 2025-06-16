@@ -25,7 +25,7 @@ const meta: Meta<DrawerProp> = {
   argTypes: excludeFromDemoControls(['defaultOpen', 'onOpenChange', 'open']),
   component: Drawer,
   subcomponents: { DrawerBody, DrawerContent, DrawerTrigger },
-  title: 'ODS Components/Drawer',
+  title: 'React Components/Drawer',
 };
 
 export default meta;

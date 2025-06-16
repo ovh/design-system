@@ -12,7 +12,7 @@ const meta: Meta<QuantityProp> = {
   argTypes: excludeFromDemoControls(['defaultValue', 'name', 'onValueChange', 'required', 'value']),
   component: Quantity,
   subcomponents: { QuantityControl, QuantityInput },
-  title: 'ODS Components/Form elements/Quantity',
+  title: 'React Components/Quantity',
 };
 
 export default meta;

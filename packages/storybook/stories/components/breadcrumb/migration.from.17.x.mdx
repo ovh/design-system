@@ -3,9 +3,9 @@ import { Meta, Source } from '@storybook/blocks';
 import * as BreadcrumbStories from './breadcrumb.stories';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
-<Meta of={ BreadcrumbStories } name="Migration From 17.x" />
+<Meta of={ BreadcrumbStories } name="Migration v17 to v18" />
 
 <Heading label="Breadcrumb - migrate from v17 to v18" level={ 1 } />
 
@@ -62,9 +62,9 @@ Has been removed.
 
 You should now use `<ods-breadcrumb-item>` directly in the DOM of the `<ods-breadcrumb>` component.
 
-The attribute list is the same as the <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.technicalInformation }>ods-link</StorybookLink> component.
+The attribute list is the same as the <StorybookLink kind={ REACT_COMPONENTS_TITLE.link } story={ STORY.technicalInformation }>ods-link</StorybookLink> component.
 
-Which means you have the same attributes, following the link <StorybookLink kind={ ODS_COMPONENTS_TITLE.link } story={ STORY.migrationFrom17 }>migration guide</StorybookLink>.
+Which means you have the same attributes, following the link <StorybookLink kind={ REACT_COMPONENTS_TITLE.link } story={ STORY.migrationFrom17 }>migration guide</StorybookLink>.
 
 <Heading label="Migration examples" level={ 2 } />
 

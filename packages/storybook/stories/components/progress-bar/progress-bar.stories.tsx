@@ -8,7 +8,7 @@ type Story = StoryObj<ProgressBarProp>;
 
 const meta: Meta<ProgressBarProp> = {
   component: ProgressBar,
-  title: 'ODS Components/ProgressBar',
+  title: 'React Components/Progress Bar',
 };
 
 export default meta;

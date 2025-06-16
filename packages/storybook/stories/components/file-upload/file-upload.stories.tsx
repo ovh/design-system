@@ -11,7 +11,7 @@ const meta: Meta<FileUploadProp> = {
   argTypes: excludeFromDemoControls(['accept', 'name', 'onFileAccept', 'onFileReject', 'required']),
   component: FileUpload,
   subcomponents: { FileUploadItem, FileUploadList },
-  title: 'ODS Components/Form elements/FileUpload',
+  title: 'React Components/File Upload',
 };
 
 export default meta;

@@ -16,7 +16,7 @@ const meta: Meta<TooltipProp> = {
   argTypes: excludeFromDemoControls(['open']),
   component: Tooltip,
   subcomponents: { TooltipContent, TooltipTrigger },
-  title: 'ODS Components/Tooltip',
+  title: 'React Components/Tooltip',
 };
 
 export default meta;

@@ -52,21 +52,12 @@ const preview: Preview = {
               '*',
             ],
           ],
-          'ODS Components', [
+          'React Components', [
             'Gallery',
-            'Form elements',  [
-              '*', [
-                'Documentation',
-                'Technical information',
-                'Migration From 17.x',
-                'Demo',
-                '*',
-              ]
-            ],
             '*', [
               'Documentation',
               'Technical information',
-              'Migration From 17.x',
+              'Migration v17 to v18',
               'Demo',
               '*',
             ],

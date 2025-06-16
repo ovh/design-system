@@ -10,7 +10,7 @@ const meta: Meta<TabsProp> = {
   component: Tabs,
   subcomponents: { TabList, Tab, TabContent },
   argTypes: excludeFromDemoControls(['defaultValue', 'value', 'onChange']),
-  title: 'ODS Components/Tabs',
+  title: 'React Components/Tabs',
 };
 
 export default meta;

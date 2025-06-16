@@ -6,7 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ FileUploadStories } name="Documentation" />
 
@@ -46,7 +46,7 @@ Common use cases include form submissions, profile picture updates, and document
 
 <BestPractices
   donts={[
-    <span>- Use File Upload component in a <StorybookLink kind={ ODS_COMPONENTS_TITLE.modal } story={ STORY.documentation }>Modal</StorybookLink></span>,
+    <span>- Use File Upload component in a <StorybookLink kind={ REACT_COMPONENTS_TITLE.modal } story={ STORY.documentation }>Modal</StorybookLink></span>,
   ]}
   dos={[
     '- Use one File Upload component for plural file upload inside a single page',
@@ -77,7 +77,7 @@ Common use cases include form submissions, profile picture updates, and document
 
 <Heading label="Selecting files" level={ 3 } />
 
-When selecting the "Browse" <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, the native file selection popup opens to retrieve the needed file to upload.
+When selecting the "Browse" <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, the native file selection popup opens to retrieve the needed file to upload.
 
 <Heading label="Drag & Drop" level={ 3 } />
 
@@ -89,9 +89,9 @@ Users can drag & drop a file, the drop zone being the whole **File Upload** comp
 
 When a file upload is in progress, the file name and its size are displayed.
 
-A <StorybookLink kind={ ODS_COMPONENTS_TITLE.progressBar } story={ STORY.documentation }>Progress Bar</StorybookLink> with its percentage is displayed to indicate how the upload is progressing. It remains visible as long as the file uploading is not finished yet.
+A <StorybookLink kind={ REACT_COMPONENTS_TITLE.progressBar } story={ STORY.documentation }>Progress Bar</StorybookLink> with its percentage is displayed to indicate how the upload is progressing. It remains visible as long as the file uploading is not finished yet.
 
-A close icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is displayed as soon as a file upload is in progress. It is displayed as long as the user does not interrupt the upload or removes an already uploaded file.
+A close icon <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is displayed as soon as a file upload is in progress. It is displayed as long as the user does not interrupt the upload or removes an already uploaded file.
 
 <Heading label="With unknown size" level={ 4 } />
 
@@ -101,17 +101,17 @@ In some situations, file size is hidden in the uploading process due to an unkno
 
 <Heading label="With success" level={ 4 } />
 
-A `success` <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> is displayed, replacing the previous <StorybookLink kind={ ODS_COMPONENTS_TITLE.progressBar } story={ STORY.documentation }>Progress Bar</StorybookLink>, as soon as a file has been uploaded, meaning the upload is successful and complete.
+A `success` <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> is displayed, replacing the previous <StorybookLink kind={ REACT_COMPONENTS_TITLE.progressBar } story={ STORY.documentation }>Progress Bar</StorybookLink>, as soon as a file has been uploaded, meaning the upload is successful and complete.
 
 <Heading label="With error" level={ 4 } />
 
-If the uploading of a file went wrong, a specific `error` <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> is displayed below the uploaded file.
+If the uploading of a file went wrong, a specific `error` <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> is displayed below the uploaded file.
 
-The user is still able to upload another file but the `error` <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> will persist until user removes the file in `error`.
+The user is still able to upload another file but the `error` <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> will persist until user removes the file in `error`.
 
 When several files are in `error`, there will be an accumulation of `error` messages, each below their related files.
 
-When a file is in `error` and the user uploads a file without any issue, success <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> is triggered as expected below this file but, the `error` <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> persists below the file in error.
+When a file is in `error` and the user uploads a file without any issue, success <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> is triggered as expected below this file but, the `error` <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> persists below the file in error.
 
 Depending on the error, the global component can be displayed in an error state.
 
@@ -121,7 +121,7 @@ Depending on the error, the global component can be displayed in an error state.
 
 Number of files, maximum sizes and expected formats can be set globally inside the component.
 
-A global `error` <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> and a <StorybookLink kind={ ODS_COMPONENTS_TITLE.divider } story={ STORY.documentation }>Divider</StorybookLink> are displayed when:
+A global `error` <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> and a <StorybookLink kind={ REACT_COMPONENTS_TITLE.divider } story={ STORY.documentation }>Divider</StorybookLink> are displayed when:
 * Wrong file format has been uploaded
 * Maximum file size exceeded
 * Maximum number of files exceeded
@@ -130,11 +130,11 @@ The global component is displayed in an error state in this situation.
 
 <Heading label="Disabled" level={ 4 } />
 
-When **File Upload** is disabled, user cannot interact with the <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> and drag & drop feature is not available.
+When **File Upload** is disabled, user cannot interact with the <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> and drag & drop feature is not available.
 
 <Heading label="Cancel a file upload in progress" level={ 4 } />
 
-A click or press on the `close` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> interrupts the upload (or cancel an uploaded file).
+A click or press on the `close` icon <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> interrupts the upload (or cancel an uploaded file).
 
 When the upload is canceled, the file upload is removed and the **File Upload** component returns to its default state, except for any other files in the queue.
 
@@ -142,7 +142,7 @@ In case some other files have already been uploaded, and the user cancels an upl
 
 <Heading label="Remove an already uploaded file" level={ 4 } />
 
-An already uploaded file can be removed by clicking or pressing the `close` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> anytime.
+An already uploaded file can be removed by clicking or pressing the `close` icon <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> anytime.
 
 Same as cancelling a file while it is uploading, if several files have already been uploaded and the user cancels an uploading file, the next one will take its place in the queue and so on.
 
@@ -152,8 +152,8 @@ N/A
 
 <Heading label="Accessibility" level={ 2 } />
 
-`Tab` key allows to focus on the inner <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> element in the File Upload.
+`Tab` key allows to focus on the inner <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> element in the File Upload.
 
-`Enter`/`Space` while this <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is focused trigger the native file upload dialog.
+`Enter`/`Space` while this <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is focused trigger the native file upload dialog.
 
-You can also tabulate throughout all `close` icon <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> of uploaded files.
+You can also tabulate throughout all `close` icon <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> of uploaded files.

@@ -8,7 +8,7 @@ type Story = StoryObj<ButtonProp>;
 
 const meta: Meta<ButtonProp> = {
   component: Button,
-  title: 'ODS Components/Button',
+  title: 'React Components/Button',
 };
 
 export default meta;

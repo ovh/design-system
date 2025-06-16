@@ -13,7 +13,35 @@ import * as FormFieldStories from './form-field.stories';
 
 <Canvas of={ FormFieldStories.Overview } sourceState="'none' "/>
 
-<TechnicalSpecification data={ SpecificationsFormField } of={ FormFieldStories } />
+<TechnicalSpecification
+  data={ SpecificationsFormField }
+  extraInfo={{
+    'FormField': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'FormFieldError': {
+      extendAttribute: {
+        name: 'span',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes',
+      },
+    },
+    'FormFieldHelper': {
+      extendAttribute: {
+        name: 'span',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes',
+      },
+    },
+    'FormFieldLabel': {
+      extendAttribute: {
+        name: 'label',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes',
+      },
+    },
+  }}
+  of={ FormFieldStories } />
 
 <Heading label="Examples" level={ 2 } />
 

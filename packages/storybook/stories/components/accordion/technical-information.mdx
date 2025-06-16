@@ -13,7 +13,35 @@ import * as AccordionStories from './accordion.stories';
 
 <Canvas of={ AccordionStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsAccordion } of={ AccordionStories } />
+<TechnicalSpecification
+  data={ SpecificationsAccordion }
+  extraInfo={{
+    'Accordion': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'AccordionContent': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'AccordionItem': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'AccordionTrigger': {
+      extendAttribute: {
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes',
+      },
+    },
+  }}
+  of={ AccordionStories } />
 
 <Heading label="Examples" level={ 2 } />
 

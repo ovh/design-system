@@ -13,7 +13,17 @@ import * as SpinnerStories from './spinner.stories';
 
 <Canvas of={ SpinnerStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsSpinner } of={ SpinnerStories } />
+<TechnicalSpecification
+  data={ SpecificationsSpinner }
+  extraInfo={{
+    'Spinner': {
+      extendAttribute: {
+        name: 'span',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes',
+      },
+    },
+  }}
+  of={ SpinnerStories } />
 
 <Heading label="Examples" level={ 2 } />
 

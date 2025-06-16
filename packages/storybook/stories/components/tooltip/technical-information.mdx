@@ -13,7 +13,23 @@ import * as TooltipStories from './tooltip.stories';
 
 <Canvas of={ TooltipStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsTooltip } of={ TooltipStories } />
+<TechnicalSpecification
+  data={ SpecificationsTooltip }
+  extraInfo={{
+    'TooltipContent': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'TooltipTrigger': {
+      extendAttribute: {
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes',
+      },
+    },
+  }}
+  of={ TooltipStories } />
 
 <Heading label="Examples" level={ 2 } />
 

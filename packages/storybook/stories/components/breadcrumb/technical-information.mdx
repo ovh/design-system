@@ -13,7 +13,29 @@ import * as BreadcrumbStories from './breadcrumb.stories';
 
 <Canvas of={ BreadcrumbStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsBreadcrumb } of={ BreadcrumbStories } />
+<TechnicalSpecification
+  data={ SpecificationsBreadcrumb }
+  extraInfo={{
+    'Breadcrumb': {
+      extendAttribute: {
+        name: 'nav',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/nav#attributes',
+      },
+    },
+    'BreadcrumbItem': {
+      extendAttribute: {
+        name: 'li',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/li#attributes',
+      },
+    },
+    'BreadcrumbLink': {
+      extendAttribute: {
+        name: 'a',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#attributes',
+      },
+    }
+  }}
+  of={ BreadcrumbStories } />
 
 <Heading label="Examples" level={ 2 } />
 

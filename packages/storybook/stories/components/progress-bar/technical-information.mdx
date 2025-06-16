@@ -13,7 +13,17 @@ import * as ProgressBarStories from './progress-bar.stories';
 
 <Canvas of={ ProgressBarStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsProgressBar } of={ ProgressBarStories } />
+<TechnicalSpecification
+  data={ SpecificationsProgressBar }
+  extraInfo={{
+    'ProgressBar': {
+      extendAttribute: {
+        name: 'progress',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/progress#attributes',
+      },
+    },
+  }}
+  of={ ProgressBarStories } />
 
 <Heading label="Examples" level={ 2 } />
 

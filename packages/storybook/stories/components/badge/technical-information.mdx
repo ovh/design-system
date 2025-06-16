@@ -13,7 +13,17 @@ import * as BadgeStories from './badge.stories';
 
 <Canvas of={ BadgeStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsBadge } of={ BadgeStories } />
+<TechnicalSpecification
+  data={ SpecificationsBadge }
+  extraInfo={{
+    'Badge': {
+      extendAttribute: {
+        name: 'span',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes',
+      },
+    },
+  }}
+  of={ BadgeStories } />
 
 <Heading label="Examples" level={ 2 } />
 

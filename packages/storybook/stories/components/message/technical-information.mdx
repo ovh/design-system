@@ -13,7 +13,17 @@ import * as MessageStories from './message.stories';
 
 <Canvas of={ MessageStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsMessage } of={ MessageStories } />
+<TechnicalSpecification
+  data={ SpecificationsMessage }
+  extraInfo={{
+    'Message': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+  }}
+  of={ MessageStories } />
 
 <Heading label="Examples" level={ 2 } />
 

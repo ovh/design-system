@@ -13,7 +13,35 @@ import * as RadioGroupStories from './radio-group.stories';
 
 <Canvas of={ RadioGroupStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsRadioGroup } of={ RadioGroupStories } />
+<TechnicalSpecification
+  data={ SpecificationsRadioGroup }
+  extraInfo={{
+    'Radio': {
+      extendAttribute: {
+        name: 'label',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes',
+      },
+    },
+    'RadioControl': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'RadioGroup': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'RadioLabel': {
+      extendAttribute: {
+        name: 'span',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes',
+      },
+    },
+  }}
+  of={ RadioGroupStories } />
 
 <Heading label="Examples" level={ 2 } />
 

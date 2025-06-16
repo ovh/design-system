@@ -15,7 +15,29 @@ import * as PhoneNumberStories from './phone-number.stories';
 
 <Canvas of={ PhoneNumberStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsPhoneNumber } of={ PhoneNumberStories } />
+<TechnicalSpecification
+  data={ SpecificationsPhoneNumber }
+  extraInfo={{
+    'PhoneNumber': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'PhoneNumberControl': {
+      extendAttribute: {
+        name: 'input',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes',
+      },
+    },
+    'PhoneNumberCountryList': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+  }}
+  of={ PhoneNumberStories } />
 
 <Heading label="Examples" level={ 2 } />
 

@@ -13,7 +13,29 @@ import * as ModalStories from './modal.stories';
 
 <Canvas of={ ModalStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsModal } of={ ModalStories } />
+<TechnicalSpecification
+  data={ SpecificationsModal }
+  extraInfo={{
+    'ModalBody': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'ModalContent': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'ModalTrigger': {
+      extendAttribute: {
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes',
+      },
+    },
+  }}
+  of={ ModalStories } />
 
 <Heading label="Examples" level={ 2 } />
 

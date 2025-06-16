@@ -6,16 +6,3 @@
   row-gap: 1rem;
   padding: 0 20px;
 }
-
-.technical-specification__enums__keys__name {
-  font-weight: bold;
-}
-
-.technical-specification__interfaces__keys__item > code,
-.technical-specification__unions__keys__item > code {
-  display: block;
-  width: inherit;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}

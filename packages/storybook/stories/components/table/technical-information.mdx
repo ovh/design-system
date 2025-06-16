@@ -13,7 +13,17 @@ import * as TableStories from './table.stories';
 
 <Canvas of={ TableStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsTable } of={ TableStories } />
+<TechnicalSpecification
+  data={ SpecificationsTable }
+  extraInfo={{
+    'Table': {
+      extendAttribute: {
+        name: 'table',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table#attributes',
+      },
+    },
+  }}
+  of={ TableStories } />
 
 <Heading label="Examples" level={ 2 } />
 

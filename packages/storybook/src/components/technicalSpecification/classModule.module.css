@@ -8,6 +8,7 @@
 }
 
 .class-module__properties__body__default-value,
+.class-module__properties__body__extend,
 .class-module__properties__body__is-required {
   text-align: center;
 }

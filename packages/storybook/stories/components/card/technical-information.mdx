@@ -13,7 +13,17 @@ import * as CardStories from './card.stories';
 
 <Canvas of={ CardStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsCard } of={ CardStories } />
+<TechnicalSpecification
+  data={ SpecificationsCard }
+  extraInfo={{
+    'Card': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+  }}
+  of={ CardStories } />
 
 <Heading label="Examples" level={ 2 } />
 

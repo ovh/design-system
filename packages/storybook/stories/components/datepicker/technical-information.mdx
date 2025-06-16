@@ -13,7 +13,29 @@ import * as DatepickerStories from './datepicker.stories';
 
 <Canvas of={ DatepickerStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsDatepicker } of={ DatepickerStories } />
+<TechnicalSpecification
+  data={ SpecificationsDatepicker }
+  extraInfo={{
+    'Datepicker': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'DatepickerContent': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'DatepickerControl': {
+      extendAttribute: {
+        name: 'input',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes',
+      },
+    },
+  }}
+  of={ DatepickerStories } />
 
 <Heading label="Examples" level={ 2 } />
 

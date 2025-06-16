@@ -13,7 +13,17 @@ import * as RangeStories from './range.stories';
 
 <Canvas of={ RangeStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsRange } of={ RangeStories } />
+<TechnicalSpecification
+  data={ SpecificationsRange }
+  extraInfo={{
+    'Range': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+  }}
+  of={ RangeStories } />
 
 <Heading label="Examples" level={ 2 } />
 

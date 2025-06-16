@@ -21,7 +21,7 @@ const meta: Meta<PasswordProp> = {
     },
   },
   component: Password,
-  title: 'ODS Components/Form elements/Password',
+  title: 'React Components/Password',
 };
 
 export default meta;

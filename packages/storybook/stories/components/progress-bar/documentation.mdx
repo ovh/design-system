@@ -6,7 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ ProgressBarStories } name='Documentation' />
 
@@ -26,7 +26,7 @@ _A horizontal bar indicating the current completion status of a long-running tas
               relatedComponents={ [{ name: 'Text' }] }>
   The **Progress Bar** component is used to indicate the progress of a task or process to users. It visually
   represents the completion percentage, providing users with feedback on the status of ongoing operations, such as
-  <StorybookLink kind={ ODS_COMPONENTS_TITLE.fileUpload } story={ STORY.documentation }>File upload</StorybookLink>, downloads, or form submissions.
+  <StorybookLink kind={ REACT_COMPONENTS_TITLE.fileUpload } story={ STORY.documentation }>File upload</StorybookLink>, downloads, or form submissions.
 </IdentityCard>
 
 <Heading label="Usage" level={ 2 } />
@@ -41,7 +41,7 @@ _A horizontal bar indicating the current completion status of a long-running tas
     '- Use all three starting value, ending value and progress value labels at the same time',
   ]}
   dos={[
-    <span>- Use Progress Bar for quantifiable loading; if not, please use <StorybookLink kind={ ODS_COMPONENTS_TITLE.spinner } story={ STORY.documentation }>Spinner</StorybookLink> for complex content or <StorybookLink kind={ ODS_COMPONENTS_TITLE.skeleton } story={ STORY.documentation }>Skeleton</StorybookLink> for <StorybookLink kind={ ODS_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>-only content</span>,
+    <span>- Use Progress Bar for quantifiable loading; if not, please use <StorybookLink kind={ REACT_COMPONENTS_TITLE.spinner } story={ STORY.documentation }>Spinner</StorybookLink> for complex content or <StorybookLink kind={ REACT_COMPONENTS_TITLE.skeleton } story={ STORY.documentation }>Skeleton</StorybookLink> for <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>-only content</span>,
   ]}
 />
 

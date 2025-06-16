@@ -13,7 +13,7 @@ const meta: Meta<DatepickerProp> = {
   argTypes: excludeFromDemoControls(['dateFormatter', 'defaultOpen', 'defaultValue', 'defaultView', 'disabledDates', 'disabledWeekDays', 'max', 'maxView', 'min', 'minView', 'name', 'onValueChange', 'open', 'required', 'value', 'view']),
   component: Datepicker,
   subcomponents: { DatepickerContent, DatepickerControl },
-  title: 'ODS Components/Form elements/Datepicker',
+  title: 'React Components/Datepicker',
 };
 
 export default meta;

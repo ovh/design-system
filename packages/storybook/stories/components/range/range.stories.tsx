@@ -14,7 +14,7 @@ type DemoArg = Partial<RangeProp> & {
 const meta: Meta<RangeProp> = {
   argTypes: excludeFromDemoControls(['aria-label', 'aria-labelledby', 'defaultValue', 'max', 'min', 'name', 'onDragging', 'onValueChange', 'ticks', 'value']),
   component: Range,
-  title: 'ODS Components/Form elements/Range',
+  title: 'React Components/Range',
 };
 
 export default meta;

@@ -6,7 +6,7 @@ type Story = StoryObj<SkeletonProp>;
 
 const meta: Meta<SkeletonProp> = {
   component: Skeleton,
-  title: 'ODS Components/Skeleton',
+  title: 'React Components/Skeleton',
 };
 
 export default meta;

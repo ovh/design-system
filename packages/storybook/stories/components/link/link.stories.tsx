@@ -10,7 +10,7 @@ type Story = StoryObj<LinkProp>;
 const meta: Meta<LinkProp> = {
   argTypes: excludeFromDemoControls(['as']),
   component: Link,
-  title: 'ODS Components/Link',
+  title: 'React Components/Link',
 };
 
 export default meta;

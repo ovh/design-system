@@ -8,7 +8,7 @@ type Story = StoryObj<MediumProp>;
 
 const meta: Meta<MediumProp> = {
   component: Medium,
-  title: 'ODS Components/Medium',
+  title: 'React Components/Medium',
 };
 
 const exampleAlt = 'OVHcloud logo';

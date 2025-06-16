@@ -14,7 +14,29 @@ import * as FileUploadStories from './file-upload.stories';
 
 <Canvas of={ FileUploadStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsFileUpload } of={ FileUploadStories } />
+<TechnicalSpecification
+  data={ SpecificationsFileUpload }
+  extraInfo={{
+    'FileUpload': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'FileUploadItem': {
+      extendAttribute: {
+        name: 'li',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/li#attributes',
+      },
+    },
+    'FileUploadList': {
+      extendAttribute: {
+        name: 'ul',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/ul#attributes',
+      },
+    },
+  }}
+  of={ FileUploadStories } />
 
 <Heading label="Examples" level={ 2 } />
 

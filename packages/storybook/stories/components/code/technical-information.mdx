@@ -13,7 +13,17 @@ import * as CodeStories from './code.stories';
 
 <Canvas of={ CodeStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsCode } of={ CodeStories } />
+<TechnicalSpecification
+  data={ SpecificationsCode }
+  extraInfo={{
+    'Code': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+  }}
+  of={ CodeStories } />
 
 <Heading label="Examples" level={ 2 } />
 

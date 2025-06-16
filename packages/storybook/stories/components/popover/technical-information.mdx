@@ -13,7 +13,23 @@ import * as PopoverStories from './popover.stories';
 
 <Canvas of={ PopoverStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsPopover } of={ PopoverStories } />
+<TechnicalSpecification
+  data={ SpecificationsPopover }
+  extraInfo={{
+    'PopoverContent': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'PopoverTrigger': {
+      extendAttribute: {
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes',
+      },
+    },
+  }}
+  of={ PopoverStories } />
 
 <Heading label="Examples" level={ 2 } />
 

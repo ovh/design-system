@@ -13,7 +13,23 @@ import * as SwitchStories from './switch.stories';
 
 <Canvas of={ SwitchStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsSwitch } of={ SwitchStories } />
+<TechnicalSpecification
+  data={ SpecificationsSwitch }
+  extraInfo={{
+    'Switch': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'SwitchItem': {
+      extendAttribute: {
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes',
+      },
+    },
+  }}
+  of={ SwitchStories } />
 
 <Heading label="Examples" level={ 2 } />
 

@@ -13,7 +13,17 @@ import * as PaginationStories from './pagination.stories';
 
 <Canvas of={ PaginationStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsPagination } of={ PaginationStories } />
+<TechnicalSpecification
+  data={ SpecificationsPagination }
+  extraInfo={{
+    'Pagination': {
+      extendAttribute: {
+        name: 'nav',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/nav#attributes',
+      },
+    },
+  }}
+  of={ PaginationStories } />
 
 <Heading label="Examples" level={ 2 } />
 

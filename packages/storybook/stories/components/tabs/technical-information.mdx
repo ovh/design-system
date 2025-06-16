@@ -13,7 +13,35 @@ import * as TabsStories from './tabs.stories';
 
 <Canvas of={ TabsStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsTabs } of={ TabsStories } />
+<TechnicalSpecification
+  data={ SpecificationsTabs }
+  extraInfo={{
+    'Tab': {
+      extendAttribute: {
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes',
+      },
+    },
+    'TabContent': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'TabList': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'Tabs': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+  }}
+  of={ TabsStories } />
 
 <Heading label="Examples" level={ 2 } />
 

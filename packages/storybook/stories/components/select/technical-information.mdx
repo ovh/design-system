@@ -13,7 +13,29 @@ import * as SelectStories from './select.stories';
 
 <Canvas of={ SelectStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsSelect } of={ SelectStories } />
+<TechnicalSpecification
+  data={ SpecificationsSelect }
+  extraInfo={{
+    'Select': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'SelectContent': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'SelectControl': {
+      extendAttribute: {
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes',
+      },
+    },
+  }}
+  of={ SelectStories } />
 
 <Heading label="Examples" level={ 2 } />
 

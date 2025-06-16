@@ -4,10 +4,12 @@ import { type Timezone } from '../constants/timezones';
 import { getCurrentTimezone } from '../controller/timepicker';
 
 interface TimepickerTimezoneChangeDetail {
+  /** @type=TIMEZONE */
   value: Timezone,
 }
 
 interface TimepickerValueChangeDetail {
+  /** @type=TIMEZONE */
   timezone?: Timezone,
   value: string,
 }

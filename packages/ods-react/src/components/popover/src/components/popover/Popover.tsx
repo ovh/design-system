@@ -18,6 +18,7 @@ const Popover: FC<PropsWithChildren<PopoverProp>> = ({
   onOpenChange,
   open,
   position = POPOVER_POSITION.top,
+  ...props
 }): JSX.Element => {
   return (
     <VendorPopover.Root
@@ -25,7 +26,8 @@ const Popover: FC<PropsWithChildren<PopoverProp>> = ({
       open={ open }
       positioning={{
         placement: position,
-      }}>
+      }}
+      { ...props }>
       { children }
     </VendorPopover.Root>
   );

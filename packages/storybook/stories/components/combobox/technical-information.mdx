@@ -13,7 +13,41 @@ import * as ComboboxStories from './combobox.stories';
 
 <Canvas of={ ComboboxStories.Overview } sourceState="none" />
 
-<TechnicalSpecification data={ SpecificationsCombobox } of={ ComboboxStories } />
+<TechnicalSpecification
+  data={ SpecificationsCombobox }
+  of={ ComboboxStories }
+  extraInfo={ {
+    Combobox: {
+      extendAttribute: {
+        name: "div",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+      }
+    },
+    ComboboxContent: {
+      extendAttribute: {
+        name: "div",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+      }
+    },
+    ComboboxControl: {
+      extendAttribute: {
+        name: "button",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"
+      }
+    },
+    ComboboxItem: {
+      extendAttribute: {
+        name: "div",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+      }
+    },
+    ComboboxItemGroup: {
+      extendAttribute: {
+        name: "div",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+      }
+    },
+  } } />
 
 <Heading label="Examples" level={ 2 } />
 

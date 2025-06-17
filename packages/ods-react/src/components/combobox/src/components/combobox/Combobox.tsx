@@ -2,7 +2,7 @@ import {
   Combobox as VendorCombobox,
   createListCollection,
 } from '@ark-ui/react/combobox';
-import { type FC, type JSX, forwardRef, useEffect, useState } from 'react';
+import { type FC, type JSX, forwardRef, useEffect, useMemo, useState } from 'react';
 import { type ComboboxInputValueChangeDetails, type ComboboxProp, ComboboxProvider, type ComboboxValueChangeDetails } from '../../contexts/useCombobox';
 import { findLabelForValue, flattenItems, getFilteredItems } from '../../controller/combobox';
 
@@ -37,17 +37,17 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
     }
   }, [currentValue, items, userIsTyping]);
 
-  const filteredItems = getFilteredItems({
+  const filteredItems = useMemo(() => getFilteredItems({
     allowCustomValue,
     customOptionRenderer,
     inputValue,
     items,
     newElementLabel,
     value: currentValue,
-  });
+  }), [allowCustomValue, customOptionRenderer, inputValue, items, newElementLabel, currentValue]);
 
-  const flatItems = flattenItems(filteredItems);
-  const collection = createListCollection({ items: flatItems });
+  const flatItems = useMemo(() => flattenItems(filteredItems), [filteredItems]);
+  const collection = useMemo(() => createListCollection({ items: flatItems }), [flatItems]);
 
   const handleInputValueChange = (details: ComboboxInputValueChangeDetails): void => {
     setUserIsTyping(true);
@@ -70,6 +70,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
       customOptionRenderer={customOptionRenderer}
       defaultValue={defaultValue}
       disabled={disabled}
+      filteredItems={filteredItems}
       highlightResults={highlightResults}
       items={items}
       newElementLabel={newElementLabel}

@@ -37,24 +37,25 @@ interface FilterItemsProps extends ComboboxProps {
   isValueAlreadySelected: boolean;
 }
 
-const getItemText = (
+function getItemText(
   item: ComboboxItemOrGroup,
   customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element,
-): string => {
+): string {
   if ('options' in item) {
     return item.label;
   }
   return customOptionRenderer ? getElementText(customOptionRenderer(item)) : item.label;
-};
+}
 
-const matchesSearch = (text: string, inputValue: string): boolean =>
-  text.toLowerCase().includes(inputValue.toLowerCase());
+function matchesSearch(text: string, inputValue: string): boolean {
+  return text.toLowerCase().includes(inputValue.toLowerCase());
+}
 
-const hasExactMatch = (
+function hasExactMatch(
   items: ComboboxItemOrGroup[],
   inputValue: string,
   customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element,
-): boolean => {
+): boolean {
   if (!inputValue) {
     return false;
   }
@@ -66,25 +67,25 @@ const hasExactMatch = (
     }
     return getItemText(item, customOptionRenderer).toLowerCase() === inputValue.toLowerCase();
   });
-};
+}
 
-const isValueAlreadySelected = (value: string[], inputValue: string): boolean => {
+function isValueAlreadySelected(value: string[], inputValue: string): boolean {
   if (!inputValue) {
     return false;
   }
   return value.some((selectedValue) =>
     selectedValue.toLowerCase() === inputValue.toLowerCase(),
   );
-};
+}
 
-const filterItems = ({
+function filterItems({
   items,
   inputValue,
   allowCustomValue,
   hasExactMatch,
   isValueAlreadySelected,
   customOptionRenderer,
-}: FilterItemsProps): ComboboxItemOrGroup[] => {
+}: FilterItemsProps): ComboboxItemOrGroup[] {
   if (!inputValue) {
     return items;
   }
@@ -109,9 +110,9 @@ const filterItems = ({
   }
 
   return filtered;
-};
+}
 
-const flattenItems = (filteredItems: ComboboxItemOrGroup[]): (ComboboxItemOrGroup & { group?: string })[] => {
+function flattenItems(filteredItems: ComboboxItemOrGroup[]): (ComboboxItemOrGroup & { group?: string })[] {
   return filteredItems.flatMap((item) => {
     if ('options' in item) {
       return item.options.map((option) => ({
@@ -121,9 +122,9 @@ const flattenItems = (filteredItems: ComboboxItemOrGroup[]): (ComboboxItemOrGrou
     }
     return item;
   });
-};
+}
 
-const findLabelForValue = (items: ComboboxItemOrGroup[], value: string): string => {
+function findLabelForValue(items: ComboboxItemOrGroup[], value: string): string {
   for (const item of items) {
     if ('options' in item) {
       for (const option of item.options) {
@@ -136,15 +137,15 @@ const findLabelForValue = (items: ComboboxItemOrGroup[], value: string): string 
     }
   }
   return value;
-};
+}
 
-const getFilteredItems = ({
+function getFilteredItems({
   allowCustomValue = false,
   customOptionRenderer,
   inputValue,
   items,
   value = [],
-}: ComboboxProps): ComboboxItemOrGroup[] => {
+}: ComboboxProps): ComboboxItemOrGroup[] {
   const exactMatch = hasExactMatch(items, inputValue, customOptionRenderer);
   const valueSelected = isValueAlreadySelected(value, inputValue);
   return filterItems({
@@ -156,7 +157,7 @@ const getFilteredItems = ({
     items,
     value,
   });
-};
+}
 
 export {
   getItemText,

@@ -1,7 +1,7 @@
 import { Combobox as VendorCombobox } from '@ark-ui/react/combobox';
 import classNames from 'classnames';
 import { type FC, forwardRef } from 'react';
-import { type ComboboxItemGroupProp } from '../../context/useCombobox';
+import { type ComboboxItemGroupProp } from '../../contexts/useCombobox';
 import style from './comboboxItemGroup.module.scss';
 
 const ComboboxItemGroup: FC<ComboboxItemGroupProp> = forwardRef(({

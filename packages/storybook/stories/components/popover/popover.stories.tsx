@@ -13,7 +13,7 @@ type DemoArg = Partial<PopoverProp> & Partial<PopoverContentProp> & {
 };
 
 const meta: Meta<PopoverProp> = {
-  argTypes: excludeFromDemoControls(['open']),
+  argTypes: excludeFromDemoControls(['onOpenChange', 'open']),
   component: Popover,
   subcomponents: { PopoverContent, PopoverTrigger },
   title: 'React Components/Popover',

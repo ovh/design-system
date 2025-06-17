@@ -37,7 +37,7 @@ const groupedItems = [
 
 export const Default = () => (
   <Combobox items={items}>
-    <ComboboxControl />
+    <ComboboxControl clearable />
     <ComboboxContent />
   </Combobox>
 );
@@ -151,6 +151,24 @@ export const Controlled = () => {
       <ComboboxContent />
     </Combobox>
     </>
+  );
+};
 
+export const ControlledWithGroups = () => {
+  const [value, setValue] = useState<string[]>([]);
+  return (
+    <>
+      <div>Selected value: {value}</div>
+      <Combobox
+        items={groupedItems}
+        value={value}
+        onValueChange={(val) => {
+          setValue(val.value);
+        }}
+      >
+        <ComboboxControl />
+        <ComboboxContent />
+      </Combobox>
+    </>
   );
 };

@@ -1,16 +1,9 @@
-import type { ComponentPropsWithRef, FC } from 'react';
 import { Combobox as VendorCombobox, useComboboxContext } from '@ark-ui/react/combobox';
 import classNames from 'classnames';
-import { forwardRef } from 'react';
+import { type FC, type JSX, forwardRef, useRef } from 'react';
 import { Input } from '../../../../input/src';
+import { type ComboboxControlProp } from '../../context/useCombobox';
 import style from './comboboxControl.module.scss';
-
-interface ComboboxControlProp extends ComponentPropsWithRef<'button'> {
-  className?: string;
-  clearable?: boolean;
-  loading?: boolean;
-  placeholder?: string;
-}
 
 const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
   className,
@@ -19,32 +12,53 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
   placeholder = '',
   ...props
 }, ref): JSX.Element => {
-  const { valueAsString, getContentProps } = useComboboxContext();
+  const { getContentProps, setInputValue } = useComboboxContext();
   const contentProps = getContentProps() as {
     'data-placement'?: 'bottom' | 'top';
     'data-state'?: 'open' | 'closed';
   };
-  const placement = contentProps[ 'data-placement' ] as 'top' | 'bottom' | undefined;
-  const isOpen = contentProps[ 'data-state' ] === 'open';
+  const placement = contentProps['data-placement'] as 'top' | 'bottom' | undefined;
+  const isOpen = contentProps['data-state'] === 'open';
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  function handleFocus(e: React.FocusEvent<HTMLInputElement>): void {
+    if (e.currentTarget.value) {
+      e.currentTarget.select();
+    }
+  }
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
+    setInputValue(e.target.value);
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>): void {
+    if (e.key === ' ' && isOpen) {
+      e.stopPropagation();
+    }
+  }
 
   return (
-    <VendorCombobox.Control className={ classNames(style[ 'combobox-control' ], className, {
-      [ style[ 'combobox-control--open-top' ] ]: isOpen && placement === 'top',
-      [ style[ 'combobox-control--open-bottom' ] ]: isOpen && placement === 'bottom',
-    }) }>
+    <VendorCombobox.Control className={classNames(style['combobox-control'], className, {
+      [style['combobox-control--open-top']]: isOpen && placement === 'top',
+      [style['combobox-control--open-bottom']]: isOpen && placement === 'bottom',
+    })}>
       <VendorCombobox.Trigger
-        className={ classNames(style[ 'combobox-control__trigger' ], className) }
-        ref={ ref }
-        { ...props }
+        className={classNames(style['combobox-control__trigger'], className)}
+        ref={ref}
+        {...props}
       >
-        <VendorCombobox.Input defaultValue={ valueAsString } asChild>
+        <VendorCombobox.Input asChild>
           <Input
-            className={ classNames(
-              style[ 'combobox-control__input' ],
-            ) }
-            clearable={ clearable }
-            loading={ loading }
-            placeholder={ placeholder }
+            className={classNames(
+              style['combobox-control__input'],
+            )}
+            clearable={clearable}
+            loading={loading}
+            onChange={handleChange}
+            onFocus={handleFocus}
+            onKeyDown={handleKeyDown}
+            placeholder={placeholder}
+            ref={inputRef}
           />
         </VendorCombobox.Input>
       </VendorCombobox.Trigger>
@@ -52,4 +66,9 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
   );
 });
 
-export { ComboboxControl, type ComboboxControlProp };
+ComboboxControl.displayName = 'ComboboxControl';
+
+export {
+  ComboboxControl,
+  type ComboboxControlProp,
+};

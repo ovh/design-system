@@ -20,6 +20,7 @@ const Modal: FC<PropsWithChildren<ModalProp>> = ({
   defaultOpen,
   onOpenChange,
   open,
+  ...props
 }): JSX.Element => {
   return (
     <Dialog.Root
@@ -27,7 +28,8 @@ const Modal: FC<PropsWithChildren<ModalProp>> = ({
       closeOnInteractOutside={ closeOnInteractOutside }
       defaultOpen={ defaultOpen }
       onOpenChange={ onOpenChange }
-      open={ open }>
+      open={ open }
+      { ...props }>
       { children }
     </Dialog.Root>
   );

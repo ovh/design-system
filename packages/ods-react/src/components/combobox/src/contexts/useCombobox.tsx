@@ -19,13 +19,13 @@ type ComboboxContextType = ComboboxProp;
 
 const ComboboxContext = createContext<ComboboxContextType | undefined>(undefined);
 
-const useCombobox = (): ComboboxContextType => {
+function useCombobox(): ComboboxContextType {
   const context = useContext(ComboboxContext);
   if (!context) {
     throw new Error('useCombobox must be used within a ComboboxProvider');
   }
   return context;
-};
+}
 
 interface ComboboxProviderProp extends ComboboxContextType {
   children: ReactNode;

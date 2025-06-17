@@ -1,7 +1,7 @@
 import { useComboboxContext } from '@ark-ui/react/combobox';
-import { type FC, type ReactNode } from 'react';
+import { type FC, type JSX, type ReactNode } from 'react';
 import React from 'react';
-import { useCombobox } from '../../context/useCombobox';
+import { useCombobox } from '../../contexts/useCombobox';
 import style from './comboboxHighlight.module.scss';
 
 const ComboboxHighlight: FC<{ children: ReactNode }> = ({ children }) => {
@@ -13,13 +13,12 @@ const ComboboxHighlight: FC<{ children: ReactNode }> = ({ children }) => {
   }
 
   const searchText = inputValue.toLowerCase();
-  
-  // Escape special regex characters
-  const escapeRegExp = (string: string) => {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  };
 
-  const highlightText = (text: string): (React.JSX.Element | string)[] => {
+  function escapeRegExp(string: string): string {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  const highlightText = (text: string): (JSX.Element | string)[] => {
     const escapedSearchText = escapeRegExp(searchText);
     const parts = text.split(new RegExp(`(${escapedSearchText})`, 'gi'));
     return parts.map((part, i) =>

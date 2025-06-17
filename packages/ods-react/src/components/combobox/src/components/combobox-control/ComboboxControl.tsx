@@ -2,7 +2,7 @@ import { Combobox as VendorCombobox, useComboboxContext } from '@ark-ui/react/co
 import classNames from 'classnames';
 import { type FC, type JSX, forwardRef, useRef } from 'react';
 import { Input } from '../../../../input/src';
-import { type ComboboxControlProp } from '../../context/useCombobox';
+import { type ComboboxControlProp } from '../../contexts/useCombobox';
 import style from './comboboxControl.module.scss';
 
 const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({

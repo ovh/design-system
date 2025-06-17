@@ -94,7 +94,7 @@ describe('Combobox behavior', () => {
       await page.waitForSelector('[data-testid="controlled-behavior"]');
     });
 
-    it.only('should maintain typed text when hovering over options after modifying selection', async() => {
+    it('should maintain typed text when hovering over options after modifying selection', async() => {
       await page.click('[data-testid="controlled-behavior"] input');
       await page.waitForSelector('[data-part="content"]', { visible: true });
       await page.click('[data-part="item"]:nth-child(2)');

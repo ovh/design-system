@@ -1,7 +1,7 @@
 import { useComboboxContext } from '@ark-ui/react/combobox';
-import { type FC, type JSX, type ReactNode } from 'react';
-import React from 'react';
+import { Children, type FC, type JSX, type ReactNode, cloneElement, isValidElement } from 'react';
 import { useCombobox } from '../../contexts/useCombobox';
+import { splitTextBySearchTerm } from '../../controller/combobox';
 import style from './comboboxHighlight.module.scss';
 
 const ComboboxHighlight: FC<{ children: ReactNode }> = ({ children }) => {
@@ -14,13 +14,8 @@ const ComboboxHighlight: FC<{ children: ReactNode }> = ({ children }) => {
 
   const searchText = inputValue.toLowerCase();
 
-  function escapeRegExp(string: string): string {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  }
-
   const highlightText = (text: string): (JSX.Element | string)[] => {
-    const escapedSearchText = escapeRegExp(searchText);
-    const parts = text.split(new RegExp(`(${escapedSearchText})`, 'gi'));
+    const parts = splitTextBySearchTerm(text, searchText);
     return parts.map((part, i) =>
       part.toLowerCase() === searchText ? (
         <span key={ i } className={ style[ 'combobox-highlight__highlight' ] }>{ part }</span>
@@ -33,15 +28,15 @@ const ComboboxHighlight: FC<{ children: ReactNode }> = ({ children }) => {
       return highlightText(node);
     }
 
-    if (React.isValidElement(node)) {
-      const children = React.Children.map(node.props.children, processNode);
-      return React.cloneElement(node, node.props, children);
+    if (isValidElement(node)) {
+      const children = Children.map(node.props.children, processNode);
+      return cloneElement(node, node.props, children);
     }
 
     return node;
   };
 
-  return <>{ processNode(children) }</>;
+  return processNode(children);
 };
 
 export { ComboboxHighlight };

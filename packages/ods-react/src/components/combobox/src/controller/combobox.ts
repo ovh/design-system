@@ -1,27 +1,5 @@
 import { getElementText } from '../../../../utils/element';
-
-export interface HighlightInfo {
-  highlightClass: string;
-  searchText: string;
-}
-
-export interface ComboboxItem {
-  disabled?: boolean;
-  group?: string;
-  highlightInfo?: HighlightInfo;
-  isNewElement?: boolean;
-  label: string;
-  value: string;
-}
-
-export interface ComboboxGroup {
-  disabled?: boolean;
-  highlightInfo?: HighlightInfo;
-  label: string;
-  options: ComboboxItem[];
-}
-
-export type ComboboxItemOrGroup = ComboboxItem | ComboboxGroup;
+import { type ComboboxItemOrGroup } from '../contexts/useCombobox';
 
 interface ComboboxProps {
   allowCustomValue?: boolean;
@@ -35,6 +13,18 @@ interface ComboboxProps {
 interface FilterItemsProps extends ComboboxProps {
   hasExactMatch: boolean;
   isValueAlreadySelected: boolean;
+}
+
+function escapeRegExp(string: string): string {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function splitTextBySearchTerm(text: string, searchText: string): string[] {
+  if (!searchText) {
+    return [text];
+  }
+  const escapedSearchText = escapeRegExp(searchText.toLowerCase());
+  return text.split(new RegExp(`(${escapedSearchText})`, 'gi'));
 }
 
 function getItemText(
@@ -160,6 +150,7 @@ function getFilteredItems({
 }
 
 export {
+  escapeRegExp,
   getItemText,
   matchesSearch,
   hasExactMatch,
@@ -168,5 +159,6 @@ export {
   flattenItems,
   findLabelForValue,
   getFilteredItems,
+  splitTextBySearchTerm,
   type ComboboxProps,
 };

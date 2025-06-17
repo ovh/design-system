@@ -4,6 +4,7 @@ jest.mock('../../../../utils/element', () => ({
 
 import { getElementText } from '../../../../utils/element';
 import {
+  escapeRegExp,
   filterItems,
   findLabelForValue,
   flattenItems,
@@ -12,6 +13,7 @@ import {
   hasExactMatch,
   isValueAlreadySelected,
   matchesSearch,
+  splitTextBySearchTerm,
 } from '../../src/controller/combobox';
 
 type MockReactElement = {
@@ -21,6 +23,49 @@ type MockReactElement = {
 
 describe('Combobox controller', () => {
   beforeEach(jest.clearAllMocks);
+
+  describe('escapeRegExp', () => {
+    it('should escape special regex characters', () => {
+      expect(escapeRegExp('hello.world')).toBe('hello\\.world');
+      expect(escapeRegExp('a+b*c?d^e$f|g(h)i[j]k{l}m\\n')).toBe('a\\+b\\*c\\?d\\^e\\$f\\|g\\(h\\)i\\[j\\]k\\{l\\}m\\\\n');
+    });
+
+    it('should not modify non-special characters', () => {
+      expect(escapeRegExp('hello world')).toBe('hello world');
+      expect(escapeRegExp('abc123')).toBe('abc123');
+    });
+
+    it('should handle empty strings', () => {
+      expect(escapeRegExp('')).toBe('');
+    });
+  });
+
+  describe('splitTextBySearchTerm', () => {
+    it('should split text by search term, case insensitive', () => {
+      const result = splitTextBySearchTerm('Hello World', 'world');
+      expect(result).toEqual(['Hello ', 'World', '']);
+    });
+
+    it('should handle multiple occurrences of search term', () => {
+      const result = splitTextBySearchTerm('test test test', 'test');
+      expect(result).toEqual(['', 'test', ' ', 'test', ' ', 'test', '']);
+    });
+
+    it('should handle search term not found', () => {
+      const result = splitTextBySearchTerm('Hello World', 'xyz');
+      expect(result).toEqual(['Hello World']);
+    });
+
+    it('should handle empty search term', () => {
+      const result = splitTextBySearchTerm('Hello World', '');
+      expect(result).toEqual(['Hello World']);
+    });
+
+    it('should handle special characters in search term', () => {
+      const result = splitTextBySearchTerm('Hello (World)', '(world)');
+      expect(result).toEqual(['Hello ', '(World)', '']);
+    });
+  });
 
   describe('getItemText', () => {
     it('should return label for simple item', () => {

@@ -4,11 +4,11 @@
 @layer ods-organisms {
   .combobox-item {
     display: flex;
-    gap: 8px;
     align-items: center;
     cursor: pointer;
     padding: 0 8px;
     min-height: 32px;
+    white-space: break-spaces;
     color: var(--ods-color-text);
 
     &[data-highlighted] {

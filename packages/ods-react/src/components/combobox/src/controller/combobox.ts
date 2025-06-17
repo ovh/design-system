@@ -1,109 +1,171 @@
-import type { ComboboxItemOrGroup } from '../components/combobox-item/ComboboxItem';
-import type { ReactNode } from 'react';
-import { useMemo } from 'react';
 import { getElementText } from '../../../../utils/element';
 
-interface UseComboboxControllerProps {
+export interface HighlightInfo {
+  highlightClass: string;
+  searchText: string;
+}
+
+export interface ComboboxItem {
+  disabled?: boolean;
+  group?: string;
+  highlightInfo?: HighlightInfo;
+  isNewElement?: boolean;
+  label: string;
+  value: string;
+}
+
+export interface ComboboxGroup {
+  disabled?: boolean;
+  highlightInfo?: HighlightInfo;
+  label: string;
+  options: ComboboxItem[];
+}
+
+export type ComboboxItemOrGroup = ComboboxItem | ComboboxGroup;
+
+interface ComboboxProps {
   allowCustomValue?: boolean;
-  customOptionRenderer?: (item: ComboboxItemOrGroup) => ReactNode;
+  customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element;
   inputValue: string;
   items: ComboboxItemOrGroup[];
   newElementLabel?: string;
   value?: string[];
 }
 
-const combobox = ({
+interface FilterItemsProps extends ComboboxProps {
+  hasExactMatch: boolean;
+  isValueAlreadySelected: boolean;
+}
+
+const getItemText = (
+  item: ComboboxItemOrGroup,
+  customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element,
+): string => {
+  if ('options' in item) {
+    return item.label;
+  }
+  return customOptionRenderer ? getElementText(customOptionRenderer(item)) : item.label;
+};
+
+const matchesSearch = (text: string, inputValue: string): boolean =>
+  text.toLowerCase().includes(inputValue.toLowerCase());
+
+const hasExactMatch = (
+  items: ComboboxItemOrGroup[],
+  inputValue: string,
+  customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element,
+): boolean => {
+  if (!inputValue) {
+    return false;
+  }
+  return items.some((item) => {
+    if ('options' in item) {
+      return item.options.some((option) =>
+        getItemText(option, customOptionRenderer).toLowerCase() === inputValue.toLowerCase(),
+      );
+    }
+    return getItemText(item, customOptionRenderer).toLowerCase() === inputValue.toLowerCase();
+  });
+};
+
+const isValueAlreadySelected = (value: string[], inputValue: string): boolean => {
+  if (!inputValue) {
+    return false;
+  }
+  return value.some((selectedValue) =>
+    selectedValue.toLowerCase() === inputValue.toLowerCase(),
+  );
+};
+
+const filterItems = ({
+  items,
+  inputValue,
+  allowCustomValue,
+  hasExactMatch,
+  isValueAlreadySelected,
+  customOptionRenderer,
+}: FilterItemsProps): ComboboxItemOrGroup[] => {
+  if (!inputValue) {
+    return items;
+  }
+
+  const filtered = items.flatMap((item): ComboboxItemOrGroup[] => {
+    if ('options' in item) {
+      const filteredOptions = item.options.filter((option) =>
+        matchesSearch(getItemText(option, customOptionRenderer), inputValue),
+      );
+      return filteredOptions.length ? [{ ...item, options: filteredOptions }] : [];
+    }
+    return matchesSearch(getItemText(item, customOptionRenderer), inputValue) ? [item] : [];
+  });
+
+  if (allowCustomValue && !hasExactMatch && !isValueAlreadySelected) {
+    return [{
+      disabled: false,
+      isNewElement: true,
+      label: inputValue,
+      value: inputValue,
+    }, ...filtered];
+  }
+
+  return filtered;
+};
+
+const flattenItems = (filteredItems: ComboboxItemOrGroup[]): (ComboboxItemOrGroup & { group?: string })[] => {
+  return filteredItems.flatMap((item) => {
+    if ('options' in item) {
+      return item.options.map((option) => ({
+        ...option,
+        group: item.label,
+      }));
+    }
+    return item;
+  });
+};
+
+const findLabelForValue = (items: ComboboxItemOrGroup[], value: string): string => {
+  for (const item of items) {
+    if ('options' in item) {
+      for (const option of item.options) {
+        if (!('options' in option) && option.value === value) {
+          return option.label;
+        }
+      }
+    } else if (item.value === value) {
+      return item.label;
+    }
+  }
+  return value;
+};
+
+const getFilteredItems = ({
   allowCustomValue = false,
   customOptionRenderer,
   inputValue,
   items,
   value = [],
-}: UseComboboxControllerProps): {
-  filteredItems: ComboboxItemOrGroup[];
-  flattenedItems: (ComboboxItemOrGroup & { group?: string })[];
-  getItemText: (item: ComboboxItemOrGroup) => string;
-  hasExactMatch: boolean;
-  matchesSearch: (text: string) => boolean;
-} => {
-  const getItemText = (item: ComboboxItemOrGroup): string => {
-    if ('options' in item) {
-      return item.label;
-    }
-    return customOptionRenderer ? getElementText(customOptionRenderer(item)) : item.label;
-  };
-
-  const matchesSearch = (text: string): boolean =>
-    text.toLowerCase().includes(inputValue.toLowerCase());
-
-  const hasExactMatch = useMemo(() => {
-    if (!inputValue) {
-      return false;
-    }
-    return items.some((item) => {
-      if ('options' in item) {
-        return item.options.some((option: ComboboxItemOrGroup) =>
-          getItemText(option).toLowerCase() === inputValue.toLowerCase(),
-        );
-      }
-      return getItemText(item).toLowerCase() === inputValue.toLowerCase();
-    });
-  }, [items, inputValue]);
-
-  const isValueAlreadySelected = useMemo(() => {
-    if (!inputValue) {
-      return false;
-    }
-    return value.some((selectedValue) =>
-      selectedValue.toLowerCase() === inputValue.toLowerCase(),
-    );
-  }, [value, inputValue]);
-
-  const filteredItems = useMemo(() => {
-    if (!inputValue) {
-      return items;
-    }
-
-    const filtered = items.flatMap((item): ComboboxItemOrGroup[] => {
-      if ('options' in item) {
-        const filteredOptions = item.options.filter((option: ComboboxItemOrGroup) =>
-          matchesSearch(getItemText(option)),
-        );
-        return filteredOptions.length ? [{ ...item, options: filteredOptions }] : [];
-      }
-      return matchesSearch(getItemText(item)) ? [item] : [];
-    });
-
-    if (allowCustomValue && !hasExactMatch && !isValueAlreadySelected) {
-      return [{
-        disabled: false,
-        isNewElement: true,
-        label: inputValue,
-        value: inputValue,
-      }, ...filtered];
-    }
-
-    return filtered;
-  }, [items, inputValue, allowCustomValue, hasExactMatch, isValueAlreadySelected]);
-
-  const flattenedItems = useMemo(() => {
-    return filteredItems.flatMap((item) => {
-      if ('options' in item) {
-        return item.options.map((option) => ({
-          ...option,
-          group: item.label,
-        }));
-      }
-      return item;
-    });
-  }, [filteredItems]);
-
-  return {
-    filteredItems,
-    flattenedItems,
-    getItemText,
-    hasExactMatch,
-    matchesSearch,
-  };
+}: ComboboxProps): ComboboxItemOrGroup[] => {
+  const exactMatch = hasExactMatch(items, inputValue, customOptionRenderer);
+  const valueSelected = isValueAlreadySelected(value, inputValue);
+  return filterItems({
+    allowCustomValue,
+    customOptionRenderer,
+    hasExactMatch: exactMatch,
+    inputValue,
+    isValueAlreadySelected: valueSelected,
+    items,
+    value,
+  });
 };
 
-export { combobox };
+export {
+  getItemText,
+  matchesSearch,
+  hasExactMatch,
+  isValueAlreadySelected,
+  filterItems,
+  flattenItems,
+  findLabelForValue,
+  getFilteredItems,
+  type ComboboxProps,
+};

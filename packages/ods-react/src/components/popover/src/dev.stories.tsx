@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '.';
 import { Button } from '../../button/src';
+import { Modal, ModalBody, ModalContent, ModalTrigger } from '../../modal/src';
 import style from './dev.module.css';
 
 export default {
@@ -30,6 +31,60 @@ export const Controlled = () => {
           This is the popover content
         </PopoverContent>
       </Popover>
+    </>
+  );
+};
+
+export const ControlledPlusModal = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
+  function onOpenModal() {
+    setIsModalOpen(true);
+    setIsPopoverOpen(false);
+  }
+
+  function togglePopover() {
+    setIsPopoverOpen((isOpen) => !isOpen);
+  }
+
+  return (
+    <>
+      <Button onClick={ togglePopover }>
+        Toggle popover
+      </Button>
+
+      <Popover
+        onOpenChange={ ({ open }) => setIsPopoverOpen(open) }
+        open={ isPopoverOpen }>
+        <span>
+          ...
+        </span>
+
+        <PopoverContent>
+          <p>
+            Some popover content
+          </p>
+
+          <Button onClick={ onOpenModal }>
+            Open modal
+          </Button>
+        </PopoverContent>
+      </Popover>
+
+      <Modal
+        onOpenChange={ ({ open }) => setIsModalOpen(open) }
+        open={ isModalOpen }>
+        <ModalTrigger>
+          Trigger
+        </ModalTrigger>
+
+        <ModalContent>
+          <ModalBody>
+            Content
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </>
   );
 };

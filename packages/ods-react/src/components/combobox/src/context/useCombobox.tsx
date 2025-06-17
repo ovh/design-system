@@ -1,14 +1,10 @@
-import type { ComboboxItemOrGroup } from '../components/combobox-item/ComboboxItem';
-import type { ComboboxValueChangeDetails } from '@ark-ui/react/combobox';
-import type { ComponentPropsWithRef } from 'react';
-import { type ReactNode, createContext, useContext } from 'react';
+import { type ComboboxInputValueChangeDetails, type ComboboxValueChangeDetails } from '@ark-ui/react/combobox';
+import { type ComponentPropsWithRef, type ReactNode, createContext, useContext } from 'react';
 
-export type ComboboxProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
+type ComboboxProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
   allowCustomValue?: boolean,
-  children?: ReactNode,
-  className?: string,
   customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element,
-  defaultValue?: string[] | undefined,
+  defaultValue?: string[],
   disabled?: boolean,
   highlightResults?: boolean,
   items: ComboboxItemOrGroup[],
@@ -19,23 +15,11 @@ export type ComboboxProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
   value?: string[]
 }
 
-interface ComboboxContextType {
-  allowCustomValue: boolean;
-  customOptionRenderer?: (item: ComboboxItemOrGroup) => ReactNode;
-  defaultValue: string[] | undefined;
-  disabled: boolean;
-  highlightResults: boolean;
-  items: ComboboxItemOrGroup[];
-  newElementLabel: string;
-  noResultLabel: string;
-  onValueChange: (value: ComboboxValueChangeDetails) => void;
-  readOnly: boolean;
-  value?: string[];
-}
+type ComboboxContextType = ComboboxProp;
 
 const ComboboxContext = createContext<ComboboxContextType | undefined>(undefined);
 
-export const useCombobox = (): ComboboxContextType => {
+const useCombobox = (): ComboboxContextType => {
   const context = useContext(ComboboxContext);
   if (!context) {
     throw new Error('useCombobox must be used within a ComboboxProvider');
@@ -47,37 +31,81 @@ interface ComboboxProviderProp extends ComboboxContextType {
   children: ReactNode;
 }
 
-export const ComboboxProvider = ({
-  allowCustomValue,
+const ComboboxProvider = ({
   children,
-  customOptionRenderer,
   defaultValue = [],
-  disabled,
-  highlightResults,
-  items,
-  newElementLabel,
-  noResultLabel,
-  onValueChange,
-  readOnly,
-  value,
+  value = [],
+  ...props
 }: ComboboxProviderProp): JSX.Element => {
   return (
     <ComboboxContext.Provider
       value={ {
-        allowCustomValue,
-        customOptionRenderer,
+        ...props,
         defaultValue,
-        disabled,
-        highlightResults,
-        items,
-        newElementLabel,
-        noResultLabel,
-        onValueChange,
-        readOnly,
         value,
       } }
     >
       { children }
     </ComboboxContext.Provider>
   );
+};
+
+type HighlightInfo = {
+  highlightClass: string;
+  searchText: string;
+};
+
+type ComboboxItem = {
+  disabled?: boolean;
+  group?: string;
+  highlightInfo?: HighlightInfo;
+  isNewElement?: boolean;
+  label: string;
+  value: string;
+};
+
+type ComboboxGroup = {
+  disabled?: boolean;
+  highlightInfo?: HighlightInfo;
+  label: string;
+  options: ComboboxItem[];
+};
+
+type ComboboxItemOrGroup = ComboboxItem | ComboboxGroup;
+
+interface ComboboxItemProp extends ComponentPropsWithRef<'div'> {
+  item: ComboboxItemOrGroup;
+}
+
+interface ComboboxItemGroupProp extends ComponentPropsWithRef<'div'> {
+  className?: string;
+  children: ReactNode;
+}
+
+interface ComboboxControlProp extends ComponentPropsWithRef<'button'> {
+  className?: string;
+  clearable?: boolean;
+  loading?: boolean;
+  placeholder?: string;
+}
+
+interface ComboboxContentProp extends ComponentPropsWithRef<'div'> {
+  className?: string;
+}
+
+export {
+  type ComboboxProp,
+  type ComboboxContextType,
+  useCombobox,
+  ComboboxProvider,
+  type HighlightInfo,
+  type ComboboxItem,
+  type ComboboxGroup,
+  type ComboboxItemOrGroup,
+  type ComboboxItemProp,
+  type ComboboxItemGroupProp,
+  type ComboboxControlProp,
+  type ComboboxContentProp,
+  type ComboboxInputValueChangeDetails,
+  type ComboboxValueChangeDetails,
 };

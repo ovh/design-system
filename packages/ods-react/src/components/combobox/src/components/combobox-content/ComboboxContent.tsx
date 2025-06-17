@@ -1,33 +1,27 @@
-import type { ComponentPropsWithRef, FC } from 'react';
 import { Portal } from '@ark-ui/react';
 import { Combobox as VendorCombobox, useComboboxContext } from '@ark-ui/react/combobox';
 import classNames from 'classnames';
-import { forwardRef, useMemo } from 'react';
-import { useCombobox } from '../../context/useCombobox';
-import { combobox } from '../../controller/combobox';
-import { ComboboxItem, type ComboboxItemOrGroup } from '../combobox-item/ComboboxItem';
+import { type FC, type JSX, forwardRef, useMemo } from 'react';
+import { type ComboboxContentProp, type ComboboxItemOrGroup, useCombobox } from '../../context/useCombobox';
+import { getFilteredItems } from '../../controller/combobox';
+import { ComboboxItem } from '../combobox-item/ComboboxItem';
+import { ComboboxItemGroup } from '../combobox-item-group/ComboboxItemGroup';
 import style from './comboboxContent.module.scss';
-
-interface ComboboxContentProp extends ComponentPropsWithRef<'div'> {
-  className?: string;
-}
 
 const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
   className,
   ...props
 }, ref): JSX.Element => {
-  const { items, noResultLabel, customOptionRenderer, allowCustomValue, newElementLabel, value } = useCombobox();
-  const { inputValue, value: contextValue = [] } = useComboboxContext();
+  const { allowCustomValue, customOptionRenderer, items, newElementLabel, noResultLabel, value } = useCombobox();
+  const { inputValue } = useComboboxContext();
 
-  const {
-    filteredItems,
-  } = combobox({
+  const filteredItems = getFilteredItems({
     allowCustomValue,
     customOptionRenderer,
     inputValue,
     items,
     newElementLabel,
-    value: (value ?? []).length > 0 ? value : contextValue,
+    value,
   });
 
   const content = useMemo(() => {
@@ -51,8 +45,8 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
         {itemsToDisplay.map((item) => {
           if ('options' in item) {
             return (
-              <div key={item.label} className={style['combobox-content__group']}>
-                <div className={style['combobox-content__group__label']}>{item.label}</div>
+              <ComboboxItemGroup key={item.label}>
+                <VendorCombobox.ItemGroupLabel>{item.label}</VendorCombobox.ItemGroupLabel>
                 {item.options.map((option: ComboboxItemOrGroup) => {
                   if ('options' in option) {
                     return null;
@@ -64,7 +58,7 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
                     />
                   );
                 })}
-              </div>
+              </ComboboxItemGroup>
             );
           }
           return (
@@ -98,7 +92,4 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
 
 ComboboxContent.displayName = 'ComboboxContent';
 
-export {
-  ComboboxContent,
-  type ComboboxContentProp,
-};
+export { ComboboxContent };

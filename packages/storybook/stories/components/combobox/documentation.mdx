@@ -6,7 +6,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ ComboboxStories } name='Documentation' />
 
@@ -31,11 +31,11 @@ _**Combobox** allows users to search, select, and add items from a dynamic or pr
 
 ![Component anatomy](components/combobox/anatomy.png "Component anatomy")
 
-1. <StorybookLink kind={ ODS_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> where the user types the search query. It displays the current input value or selected tags (multiple selection mode)
+1. <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> where the user types the search query. It displays the current input value or selected tags (multiple selection mode)
 2. **Dropdown list** displaying a scrollable list of suggested items. Items can be customized using a custom renderer.
-3. <StorybookLink kind={ ODS_COMPONENTS_TITLE.tag } story={ STORY.documentation }>Tag</StorybookLink> _(multiple selection mode)_ to display selected items as tags inside the Input field
-4. **Clearable** <StorybookLink kind={ ODS_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> _(optional)_ to allow users to clear the input content
-5. <StorybookLink kind={ ODS_COMPONENTS_TITLE.spinner } story={ STORY.documentation }>Spinner</StorybookLink> _(optional)_ to indicate that data is being fetched
+3. <StorybookLink kind={ REACT_COMPONENTS_TITLE.tag } story={ STORY.documentation }>Tag</StorybookLink> _(multiple selection mode)_ to display selected items as tags inside the Input field
+4. **Clearable** <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> _(optional)_ to allow users to clear the input content
+5. <StorybookLink kind={ REACT_COMPONENTS_TITLE.spinner } story={ STORY.documentation }>Spinner</StorybookLink> _(optional)_ to indicate that data is being fetched
 6. **Add entry option** _(optional)_ allows users to create new entries when no matching result is found. The label is customizable
 7. **Empty state message** is a customizable message displayed when no suggestion match the query
 

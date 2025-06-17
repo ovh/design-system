@@ -1,13 +1,10 @@
-import type { ComboboxProp } from '../../context/useCombobox';
 import {
-  type ComboboxInputValueChangeDetails,
-  type ComboboxValueChangeDetails,
   Combobox as VendorCombobox,
   createListCollection,
 } from '@ark-ui/react/combobox';
-import { type FC, type JSX, forwardRef, useState } from 'react';
-import { ComboboxProvider } from '../../context/useCombobox';
-import { combobox } from '../../controller/combobox';
+import { type FC, type JSX, forwardRef, useEffect, useState } from 'react';
+import { type ComboboxInputValueChangeDetails, type ComboboxProp, ComboboxProvider, type ComboboxValueChangeDetails } from '../../context/useCombobox';
+import { findLabelForValue, flattenItems, getFilteredItems } from '../../controller/combobox';
 
 const Combobox: FC<ComboboxProp> = forwardRef(({
   allowCustomValue = true,
@@ -15,74 +12,91 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   className,
   customOptionRenderer,
   defaultValue,
-  disabled = false,
+  disabled,
   highlightResults = false,
   items,
   newElementLabel = 'Add ',
   noResultLabel = 'No results found',
   onValueChange,
-  readOnly = false,
-  value = [],
+  readOnly,
+  value,
   ...props
 }, ref): JSX.Element => {
   const [inputValue, setInputValue] = useState('');
-  const [internalValue, setInternalValue] = useState<string[]>(defaultValue || []);
+  const [userIsTyping, setUserIsTyping] = useState(false);
+  const currentValue = value && value.length > 0 ? value : defaultValue;
 
-  const {
-    filteredItems,
-  } = combobox({
+  /**
+   * userIsTyping prevents input reset during search while allowing
+   * synchronization with selected values when not typing
+   */
+  useEffect(() => {
+    if (currentValue && currentValue.length > 0 && !userIsTyping) {
+      const label = findLabelForValue(items, currentValue[0]);
+      setInputValue(label);
+    }
+  }, [currentValue, items, userIsTyping]);
+
+  const filteredItems = getFilteredItems({
     allowCustomValue,
     customOptionRenderer,
     inputValue,
     items,
     newElementLabel,
-    value: (value ?? []).length > 0 ? value : internalValue,
+    value: currentValue,
   });
 
-  const collection = createListCollection({ items: filteredItems });
+  const flatItems = flattenItems(filteredItems);
+  const collection = createListCollection({ items: flatItems });
 
   const handleInputValueChange = (details: ComboboxInputValueChangeDetails): void => {
+    setUserIsTyping(true);
     setInputValue(details.inputValue);
   };
 
   const handleValueChange = (details: ComboboxValueChangeDetails): void => {
-    setInternalValue(details.value);
+    if (details.value.length > 0) {
+      setUserIsTyping(false);
+      const label = findLabelForValue(items, details.value[0]);
+      setInputValue(label);
+    }
+
     onValueChange && onValueChange(details);
   };
 
-  const currentValue = value.length > 0 ? value : internalValue;
-
   return (
     <ComboboxProvider
-      allowCustomValue={ allowCustomValue }
-      customOptionRenderer={ customOptionRenderer }
-      defaultValue={ defaultValue }
-      disabled={ disabled }
-      highlightResults={ highlightResults }
-      items={ items }
-      noResultLabel={ noResultLabel }
-      newElementLabel={ newElementLabel }
-      onValueChange={ handleValueChange }
-      readOnly={ readOnly }
-      value={ currentValue }
+      allowCustomValue={allowCustomValue}
+      customOptionRenderer={customOptionRenderer}
+      defaultValue={defaultValue}
+      disabled={disabled}
+      highlightResults={highlightResults}
+      items={items}
+      newElementLabel={newElementLabel}
+      noResultLabel={noResultLabel}
+      onValueChange={onValueChange}
+      readOnly={readOnly}
+      value={value}
     >
       <VendorCombobox.Root
-        collection={ collection }
-        className={ className }
-        disabled={ disabled }
-        ref={ ref }
-        value={ currentValue }
-        onValueChange={ handleValueChange }
-        selectionBehavior="replace"
-        onInputValueChange={ handleInputValueChange }
-        positioning={ {
+        className={className}
+        collection={collection}
+        defaultValue={defaultValue}
+        disabled={disabled}
+        inputValue={inputValue}
+        onInputValueChange={handleInputValueChange}
+        onValueChange={handleValueChange}
+        positioning={{
           gutter: -1,
           sameWidth: true,
-        } }
-        readOnly={ readOnly }
-        { ...props }
+        }}
+        readOnly={readOnly}
+        ref={ref}
+        selectionBehavior="replace"
+        value={value}
+        {...props}
       >
-        { children }
+        {children}
       </VendorCombobox.Root>
     </ComboboxProvider>
   );
@@ -90,7 +104,4 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
 
 Combobox.displayName = 'Combobox';
 
-export {
-  Combobox,
-  type ComboboxProp,
-};
+export { Combobox };

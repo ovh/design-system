@@ -11,7 +11,7 @@ const ComboboxItemGroup: FC<ComboboxItemGroupProp> = forwardRef(({
 }, ref): JSX.Element => {
   return (
     <VendorCombobox.ItemGroup
-      className={ classNames(style['combobox-item__group'], className) }
+      className={ classNames(style['combobox-item-group'], className) }
       ref={ ref }
       { ...props }
     >

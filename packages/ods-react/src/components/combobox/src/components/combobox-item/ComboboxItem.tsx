@@ -15,8 +15,6 @@ const ComboboxItem: FC<ComboboxItemProp> = forwardRef(({
     return null;
   }
 
-  const displayLabel = item.label;
-
   return (
     <VendorCombobox.Item
       className={ classNames(style[ 'combobox-item' ]) }
@@ -34,12 +32,12 @@ const ComboboxItem: FC<ComboboxItemProp> = forwardRef(({
             <>
               { newElementLabel }
               <ComboboxHighlight>
-                { displayLabel }
+                { item.label }
               </ComboboxHighlight>
             </>
           ) : (
             <ComboboxHighlight>
-              { displayLabel }
+              { item.label }
             </ComboboxHighlight>
           ) }
         </>

@@ -17,4 +17,4 @@ export {
   type ComboboxContentProp,
   type ComboboxInputValueChangeDetails,
   type ComboboxValueChangeDetails,
-} from './context/useCombobox';
+} from './contexts/useCombobox';

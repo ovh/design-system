@@ -13,7 +13,7 @@ type DemoArg = Partial<TooltipProp> & Partial<TooltipContentProp> & {
 };
 
 const meta: Meta<TooltipProp> = {
-  argTypes: excludeFromDemoControls(['open']),
+  argTypes: excludeFromDemoControls(['onOpenChange', 'open']),
   component: Tooltip,
   subcomponents: { TooltipContent, TooltipTrigger },
   title: 'React Components/Tooltip',

@@ -1,11 +1,12 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { Radio, RadioControl, RadioGroup, type RadioGroupProp, RadioLabel } from '../../../../ods-react/src/components/radio-group/src';
+import { Radio, RadioControl, RadioGroup, type RadioGroupProp, RadioLabel, type RadioProp } from '../../../../ods-react/src/components/radio-group/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<RadioGroupProp>;
+type DemoArg = Partial<RadioGroupProp> & Partial<RadioProp>;
 
 const meta: Meta<RadioGroupProp> = {
   argTypes: excludeFromDemoControls(['defaultValue', 'name', 'onValueChange', 'value']),
@@ -16,24 +17,30 @@ const meta: Meta<RadioGroupProp> = {
 
 export default meta;
 
-export const Demo: Story = {
-  render: (arg)=> (
+export const Demo: StoryObj = {
+  render: (arg: DemoArg)=> (
     <RadioGroup
       disabled={ arg.disabled }
       orientation={ arg.orientation }>
-      <Radio value="html">
+      <Radio
+        invalid={ arg.invalid }
+        value="html">
         <RadioControl />
 
         <RadioLabel>HTML</RadioLabel>
       </Radio>
 
-      <Radio value="css">
+      <Radio
+        invalid={ arg.invalid }
+        value="css">
         <RadioControl />
 
         <RadioLabel>CSS</RadioLabel>
       </Radio>
 
-      <Radio value="js">
+      <Radio
+        invalid={ arg.invalid }
+        value="js">
         <RadioControl />
 
         <RadioLabel>JavaScript</RadioLabel>
@@ -46,6 +53,13 @@ export const Demo: Story = {
         category: CONTROL_CATEGORY.general,
       },
       control: { type: 'boolean' },
+    },
+    invalid: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
     },
     orientation: {
       table: {

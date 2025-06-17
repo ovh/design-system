@@ -1,7 +1,7 @@
 import { Combobox as VendorCombobox } from '@ark-ui/react/combobox';
 import classNames from 'classnames';
 import { type FC, forwardRef } from 'react';
-import { type ComboboxItemProp, useCombobox } from '../../context/useCombobox';
+import { type ComboboxItemProp, useCombobox } from '../../contexts/useCombobox';
 import { ComboboxHighlight } from '../combobox-highlight/ComboboxHighlight';
 import style from './comboboxItem.module.scss';
 

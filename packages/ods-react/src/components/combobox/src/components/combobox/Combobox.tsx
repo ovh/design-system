@@ -3,7 +3,7 @@ import {
   createListCollection,
 } from '@ark-ui/react/combobox';
 import { type FC, type JSX, forwardRef, useEffect, useState } from 'react';
-import { type ComboboxInputValueChangeDetails, type ComboboxProp, ComboboxProvider, type ComboboxValueChangeDetails } from '../../context/useCombobox';
+import { type ComboboxInputValueChangeDetails, type ComboboxProp, ComboboxProvider, type ComboboxValueChangeDetails } from '../../contexts/useCombobox';
 import { findLabelForValue, flattenItems, getFilteredItems } from '../../controller/combobox';
 
 const Combobox: FC<ComboboxProp> = forwardRef(({

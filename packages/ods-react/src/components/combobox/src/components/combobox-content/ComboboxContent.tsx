@@ -2,7 +2,7 @@ import { Portal } from '@ark-ui/react';
 import { Combobox as VendorCombobox, useComboboxContext } from '@ark-ui/react/combobox';
 import classNames from 'classnames';
 import { type FC, type JSX, forwardRef, useMemo } from 'react';
-import { type ComboboxContentProp, type ComboboxItemOrGroup, useCombobox } from '../../context/useCombobox';
+import { type ComboboxContentProp, type ComboboxItemOrGroup, useCombobox } from '../../contexts/useCombobox';
 import { getFilteredItems } from '../../controller/combobox';
 import { ComboboxItem } from '../combobox-item/ComboboxItem';
 import { ComboboxItemGroup } from '../combobox-item-group/ComboboxItemGroup';

@@ -22,6 +22,7 @@ const Tooltip: FC<PropsWithChildren<TooltipProp>> = ({
   open,
   openDelay = 0,
   position = TOOLTIP_POSITION.top,
+  ...props
 }): JSX.Element => {
   return (
     <VendorTooltip.Root
@@ -35,7 +36,8 @@ const Tooltip: FC<PropsWithChildren<TooltipProp>> = ({
       openDelay={ openDelay }
       positioning={{
         placement: position,
-      }}>
+      }}
+      { ...props }>
       { children }
     </VendorTooltip.Root>
   );

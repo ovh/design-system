@@ -21,6 +21,7 @@
     }
 
     &[data-disabled] {
+      background-color: var(--ods-color-background-disabled-default);
       cursor: not-allowed;
     }
 

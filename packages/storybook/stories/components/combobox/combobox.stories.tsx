@@ -5,23 +5,22 @@ import {
   ComboboxContent,
   ComboboxControl,
   ComboboxControlProp,
-  type ComboboxItemOrGroup, ComboboxLabel,
+  type ComboboxItemOrGroup,
   type ComboboxProp,
 } from '../../../../ods-react/src/components/combobox/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
-import { FormField } from '../../../../ods-react/src/components/form-field/src';
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 
 type Story = StoryObj<ComboboxProp>;
 type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {
-  label?: string,
 };
 
 const meta: Meta<ComboboxProp> = {
   argTypes: excludeFromDemoControls(['customOptionRenderer', 'defaultValue', 'items', 'invalid', 'name', 'onInputValueChange', 'onValueChange', 'required', 'value']),
   component: Combobox,
   subcomponents: { ComboboxContent, ComboboxControl },
-  title: 'ODS Components/Form elements/Combobox',
+  title: 'React Components/Combobox',
 };
 
 export default meta;
@@ -50,13 +49,13 @@ export const Demo: StoryObj = {
     </Combobox>
   ),
   argTypes: orderControls({
-    addNewElementLabel: {
+    newElementLabel: {
       table: {
         category: CONTROL_CATEGORY.general,
       },
       control: 'text',
     },
-    allowNewElement: {
+    allowCustomValue: {
       table: {
         category: CONTROL_CATEGORY.general,
       },
@@ -93,12 +92,6 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    label: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
     loading: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -126,7 +119,6 @@ export const Demo: StoryObj = {
     },
   }),
   args: {
-    label: 'My combobox',
     placeholder: 'Start typing',
   },
 };
@@ -261,8 +253,8 @@ export const InFormField: Story = {
           { label: 'Dog', value: 'dog' },
           { label: 'Cat', value: 'cat' },
         ] }>
-        <ComboboxLabel>Combobox</ComboboxLabel>
-        <ComboboxControl placeholder={ 'Combobox' } />
+        <FormFieldLabel>Combobox</FormFieldLabel>
+        <ComboboxControl />
         <ComboboxContent />
       </Combobox>
     </FormField>
@@ -321,20 +313,24 @@ export const Highlight: Story = {
 export const CustomOptions: Story = {
   tags: ['!dev'],
   render: () => {
+    type CustomData = {
+      color: string;
+      info: string;
+    };
+    
     const items = [
-      { label: 'Apple', value: 'apple', customRendererData: { color: 'red', info: 'Fruit' } },
-      { label: 'Banana', value: 'banana', customRendererData: { color: 'yellow', info: 'Fruit' } },
-      { label: 'Carrot', value: 'carrot', customRendererData: { color: 'orange', info: 'Vegetable' } },
-      { label: 'Broccoli', value: 'broccoli', customRendererData: { color: 'green', info: 'Vegetable' } },
-      { label: 'Blueberry', value: 'blueberry', customRendererData: { color: 'blue', info: 'Fruit' } },
+      { label: 'Apple', value: 'apple', customRendererData: { color: 'red', info: 'Fruit' } as CustomData },
+      { label: 'Banana', value: 'banana', customRendererData: { color: 'yellow', info: 'Fruit' } as CustomData },
+      { label: 'Carrot', value: 'carrot', customRendererData: { color: 'orange', info: 'Vegetable' } as CustomData },
+      { label: 'Broccoli', value: 'broccoli', customRendererData: { color: 'green', info: 'Vegetable' } as CustomData },
+      { label: 'Blueberry', value: 'blueberry', customRendererData: { color: 'blue', info: 'Fruit' } as CustomData },
     ];
-    const customOptionRenderer = ({ label, highlightInfo }: ComboboxItemOrGroup) => {
-      const data = (highlightInfo || {}) as Record<string, unknown>;
-      const color = typeof data.color === 'string' ? data.color : undefined;
-      const info = typeof data.info === 'string' ? data.info : '';
+    const customOptionRenderer = (item: ComboboxItemOrGroup) => {
+      const customData = 'customRendererData' in item ? item.customRendererData as CustomData : undefined;
+      
       return (
-        <span style={{ color, fontWeight: 'bold' }}>
-          {label} <span style={{ fontWeight: 'normal', fontSize: 12, color: '#888' }}>({info})</span>
+        <span style={{ color: customData?.color, fontWeight: 'bold' }}>
+          {item.label} {customData?.info && <span style={{ fontWeight: 'normal', fontSize: 12, color: '#888' }}>({customData.info})</span>}
         </span>
       );
     };

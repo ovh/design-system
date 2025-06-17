@@ -1,10 +1,12 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Combobox,
   ComboboxContent,
   ComboboxControl,
   ComboboxControlProp,
+  ComboboxItem,
+  ComboboxItemGroup,
   type ComboboxItemOrGroup,
   type ComboboxProp,
 } from '../../../../ods-react/src/components/combobox/src';
@@ -19,7 +21,7 @@ type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {
 const meta: Meta<ComboboxProp> = {
   argTypes: excludeFromDemoControls(['customOptionRenderer', 'defaultValue', 'items', 'invalid', 'name', 'onInputValueChange', 'onValueChange', 'required', 'value']),
   component: Combobox,
-  subcomponents: { ComboboxContent, ComboboxControl },
+  subcomponents: { ComboboxContent, ComboboxControl, ComboboxItem, ComboboxItemGroup },
   title: 'React Components/Combobox',
 };
 
@@ -248,12 +250,12 @@ export const InFormField: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
+      <FormFieldLabel>Combobox</FormFieldLabel>
       <Combobox
         items={ [
           { label: 'Dog', value: 'dog' },
           { label: 'Cat', value: 'cat' },
         ] }>
-        <FormFieldLabel>Combobox</FormFieldLabel>
         <ComboboxControl />
         <ComboboxContent />
       </Combobox>
@@ -264,7 +266,7 @@ export const InFormField: Story = {
 export const Controlled: Story = {
   tags: ['!dev'],
   render: () => {
-    const [value, setValue] = React.useState<string[]>(['dog']);
+    const [value, setValue] = useState<string[]>(['dog']);
     return (
       <>
         <Combobox
@@ -277,7 +279,7 @@ export const Controlled: Story = {
             { label: 'Goldfish', value: 'goldfish' },
           ]}
           value={value}
-          onValueChange={details => setValue(details.value ?? [])}
+          onValueChange={details => setValue(details.value)}
         >
           <ComboboxControl placeholder="Select an animal" />
           <ComboboxContent />

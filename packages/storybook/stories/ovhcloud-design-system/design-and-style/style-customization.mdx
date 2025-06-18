@@ -1,3 +1,4 @@
+import { MESSAGE_COLOR, Message } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -34,6 +35,17 @@ For example, if you want to display a vertical list of `Link`, you can override 
 `}
         dark="true"
         language="html" />
+
+<Message
+  color={ MESSAGE_COLOR.warning }
+  dismissible={ false }>
+  { 'As there is no shadow DOM anymore, all the component DOM can be targeted through CSS selectors. '}
+  { 'It is advised to not rely on cascading selector, as the DOM structure may evolve from one version to another. '}
+  <br /><br />
+  { 'To ensure reliable CSS, use specific className on the component you want to customize. '}
+
+  { 'If you want to specifically target underneath elements, you can rely on some' } <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes#css_access">data attribute</ExternalLink>, { 'we\'ll update the documentation about those soon.'}
+</Message>
 
 <Heading label="Reuse existing ODS style" level={ 2 } />
 

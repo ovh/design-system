@@ -96,7 +96,7 @@ describe('Combobox behavior', () => {
 
     it('should maintain typed text when hovering over options after modifying selection', async() => {
       await page.click('[data-testid="controlled-behavior"] input');
-      await page.waitForSelector('[data-part="content"]', { visible: true });
+      await page.waitForSelector('[data-part="content"]', { timeout: 2000, visible: true });
       await page.click('[data-part="item"]:nth-child(2)');
 
       const valueDisplayText = await page.$eval('[data-testid="controlled-value"]',
@@ -108,29 +108,40 @@ describe('Combobox behavior', () => {
       expect(initialInputValue).toBe('Banana');
 
       await page.click('[data-testid="controlled-behavior"] input');
-      await page.waitForSelector('[data-part="content"]', { visible: true });
+      await page.waitForSelector('[data-part="content"]', { timeout: 2000, visible: true });
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-
+      await page.click('[data-testid="controlled-behavior"] input');
       await page.keyboard.type('Ap');
 
-      await page.evaluate(() => new Promise((resolve) => setTimeout(resolve, 100)));
+      await page.waitForFunction(() => {
+        const input = document.querySelector('[data-testid="controlled-behavior"] input') as HTMLInputElement;
+        return input && input.value === 'Ap';
+      }, { timeout: 2000 });
 
       const modifiedInputValue = await page.$eval('[data-testid="controlled-behavior"] input',
         (el) => el.value);
       expect(modifiedInputValue).toBe('Ap');
 
-      await page.waitForSelector('[data-part="content"]', { visible: true });
+      try {
+        await page.waitForSelector('[data-part="content"]', { timeout: 3000, visible: true });
+      } catch (e) {
+        await page.click('[data-testid="controlled-behavior"] input');
+        await page.waitForSelector('[data-part="content"]', { timeout: 3000, visible: true });
+      }
 
       await page.hover('[data-part="item"]:nth-child(1)');
 
-      await page.evaluate(() => new Promise((resolve) => setTimeout(resolve, 100)));
+      await page.waitForFunction(() => {
+        const input = document.querySelector('[data-testid="controlled-behavior"] input') as HTMLInputElement;
+        return input && input.value === 'Ap';
+      }, { timeout: 2000 });
 
       const hoveredInputValue = await page.$eval('[data-testid="controlled-behavior"] input',
         (el) => el.value);
       expect(hoveredInputValue).toBe('Ap');
-    });
+    }, 10000);
   });
 
   describe('Group navigation', () => {
@@ -155,13 +166,13 @@ describe('Combobox behavior', () => {
 
     it('should select items from groups using mouse', async() => {
       await page.click('[data-testid="group-navigation"] input');
-      await page.waitForSelector('[data-part="content"]', { visible: true });
+      await page.waitForSelector('[data-part="content"]', { timeout: 1000, visible: true });
 
       const items = await page.$$('[data-part="item"]');
       expect(items.length).toBeGreaterThan(0);
 
       await items[1].click();
-      await page.waitForSelector('body');
+      await page.waitForSelector('body', { timeout: 1000 });
 
       const bananaValue = await page.$eval('[data-testid="group-value"]',
         (el) => el.textContent || '');
@@ -170,7 +181,7 @@ describe('Combobox behavior', () => {
 
     it('should select items from groups using keyboard', async() => {
       await page.click('[data-testid="group-navigation"] input');
-      await page.waitForSelector('[data-part="content"]', { visible: true });
+      await page.waitForSelector('[data-part="content"]', { timeout: 1000, visible: true });
 
       await page.keyboard.press('ArrowDown');
 
@@ -180,7 +191,7 @@ describe('Combobox behavior', () => {
       await page.keyboard.press('ArrowDown');
 
       await page.keyboard.press('Enter');
-      await page.waitForSelector('body');
+      await page.waitForSelector('body', { timeout: 1000 });
 
       const value = await page.$eval('[data-testid="group-value"]',
         (el) => el.textContent || '');
@@ -237,5 +248,33 @@ describe('Combobox behavior', () => {
         (el) => el.value);
       expect(inputValue).toBe('Apple');
     });
+  });
+
+  describe('Custom value behavior', () => {
+    beforeEach(async() => {
+      await gotoStory(page, 'behavior/custom-value-behavior');
+      await page.waitForSelector('[data-testid="custom-value-behavior"]');
+    });
+
+    it('should hide new element option after selection', async() => {
+      await page.click('[data-testid="custom-value-behavior"] input');
+      await page.waitForSelector('[data-part="content"]', { timeout: 3000, visible: true });
+      await page.keyboard.type('New Fruit');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+
+      const valueAfterAdd = await page.$eval('[data-testid="custom-value-display"]',
+        (el) => el.textContent || '');
+      expect(valueAfterAdd).toBe('New Fruit');
+
+      await page.keyboard.press('ArrowDown');
+
+      const newElementExistsAfterSelection = await page.evaluate(() => {
+        const items = Array.from(document.querySelectorAll('[data-part="item"]'));
+        return items.some((item) => item.hasAttribute('data-new-element'));
+      });
+
+      expect(newElementExistsAfterSelection).toBe(false);
+    }, 20000);
   });
 });

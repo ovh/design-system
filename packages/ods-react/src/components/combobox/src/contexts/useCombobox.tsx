@@ -97,18 +97,17 @@ const ComboboxProvider = ({
 };
 
 export {
-  type ComboboxProp,
-  type ComboboxContextType,
-  useCombobox,
   ComboboxProvider,
-  type HighlightInfo,
-  type ComboboxItem,
+  type ComboboxContentProp,
+  type ComboboxControlProp,
   type ComboboxGroup,
+  type ComboboxInputValueChangeDetails,
+  type ComboboxItem,
+  type ComboboxItemGroupProp,
   type ComboboxItemOrGroup,
   type ComboboxItemProp,
-  type ComboboxItemGroupProp,
-  type ComboboxControlProp,
-  type ComboboxContentProp,
-  type ComboboxInputValueChangeDetails,
+  type ComboboxProp,
   type ComboboxValueChangeDetails,
+  type HighlightInfo,
+  useCombobox,
 };

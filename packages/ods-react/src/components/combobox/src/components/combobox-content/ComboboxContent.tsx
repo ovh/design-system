@@ -2,10 +2,12 @@ import { Combobox as VendorCombobox } from '@ark-ui/react/combobox';
 import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
 import { type FC, type JSX, forwardRef, useMemo } from 'react';
-import { type ComboboxContentProp, type ComboboxItemOrGroup, useCombobox } from '../../contexts/useCombobox';
+import { type ComboboxContentProp as ComboboxContentRootProp, type ComboboxItemOrGroup, useCombobox } from '../../contexts/useCombobox';
 import { ComboboxItem } from '../combobox-item/ComboboxItem';
 import { ComboboxItemGroup } from '../combobox-item-group/ComboboxItemGroup';
 import style from './comboboxContent.module.scss';
+
+interface ComboboxContentProp extends ComboboxContentRootProp {}
 
 const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
   className,
@@ -51,7 +53,6 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
           )}
           {derivedState.newElementItem && (
             <ComboboxItem
-              key={derivedState.newElementItem.value}
               item={derivedState.newElementItem}
             />
           )}
@@ -92,4 +93,4 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
 
 ComboboxContent.displayName = 'ComboboxContent';
 
-export { ComboboxContent };
+export { ComboboxContent, type ComboboxContentProp };

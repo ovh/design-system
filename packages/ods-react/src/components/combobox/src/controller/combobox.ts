@@ -19,55 +19,6 @@ function escapeRegExp(string: string): string {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function splitTextBySearchTerm(text: string, searchText: string): string[] {
-  if (!searchText) {
-    return [text];
-  }
-  const escapedSearchText = escapeRegExp(searchText.toLowerCase());
-  return text.split(new RegExp(`(${escapedSearchText})`, 'gi'));
-}
-
-function getItemText(
-  item: ComboboxItemOrGroup,
-  customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element,
-): string {
-  if ('options' in item) {
-    return item.label;
-  }
-  return customOptionRenderer ? getElementText(customOptionRenderer(item)) : item.label;
-}
-
-function matchesSearch(text: string, inputValue: string): boolean {
-  return text.toLowerCase().includes(inputValue.toLowerCase());
-}
-
-function hasExactMatch(
-  items: ComboboxItemOrGroup[],
-  inputValue: string,
-  customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element,
-): boolean {
-  if (!inputValue) {
-    return false;
-  }
-  return items.some((item) => {
-    if ('options' in item) {
-      return item.options.some((option) =>
-        getItemText(option, customOptionRenderer).toLowerCase() === inputValue.toLowerCase(),
-      );
-    }
-    return getItemText(item, customOptionRenderer).toLowerCase() === inputValue.toLowerCase();
-  });
-}
-
-function isValueAlreadySelected(value: string[], inputValue: string): boolean {
-  if (!inputValue) {
-    return false;
-  }
-  return value.some((selectedValue) =>
-    selectedValue.toLowerCase() === inputValue.toLowerCase(),
-  );
-}
-
 function filterItems({
   items,
   inputValue,
@@ -102,18 +53,6 @@ function filterItems({
   return filtered;
 }
 
-function flattenItems(filteredItems: ComboboxItemOrGroup[]): (ComboboxItemOrGroup & { group?: string })[] {
-  return filteredItems.flatMap((item) => {
-    if ('options' in item) {
-      return item.options.map((option) => ({
-        ...option,
-        group: item.label,
-      }));
-    }
-    return item;
-  });
-}
-
 function findLabelForValue(items: ComboboxItemOrGroup[], value: string): string {
   for (const item of items) {
     if ('options' in item) {
@@ -127,6 +66,18 @@ function findLabelForValue(items: ComboboxItemOrGroup[], value: string): string 
     }
   }
   return value;
+}
+
+function flattenItems(filteredItems: ComboboxItemOrGroup[]): (ComboboxItemOrGroup & { group?: string })[] {
+  return filteredItems.flatMap((item) => {
+    if ('options' in item) {
+      return item.options.map((option) => ({
+        ...option,
+        group: item.label,
+      }));
+    }
+    return item;
+  });
 }
 
 function getFilteredItems({
@@ -149,16 +100,65 @@ function getFilteredItems({
   });
 }
 
+function getItemText(
+  item: ComboboxItemOrGroup,
+  customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element,
+): string {
+  if ('options' in item) {
+    return item.label;
+  }
+  return customOptionRenderer ? getElementText(customOptionRenderer(item)) : item.label;
+}
+
+function hasExactMatch(
+  items: ComboboxItemOrGroup[],
+  inputValue: string,
+  customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element,
+): boolean {
+  if (!inputValue) {
+    return false;
+  }
+  return items.some((item) => {
+    if ('options' in item) {
+      return item.options.some((option) =>
+        getItemText(option, customOptionRenderer).toLowerCase() === inputValue.toLowerCase(),
+      );
+    }
+    return getItemText(item, customOptionRenderer).toLowerCase() === inputValue.toLowerCase();
+  });
+}
+
+function isValueAlreadySelected(value: string[], inputValue: string): boolean {
+  if (!inputValue) {
+    return false;
+  }
+  return value.some((selectedValue) =>
+    selectedValue.toLowerCase() === inputValue.toLowerCase(),
+  );
+}
+
+function matchesSearch(text: string, inputValue: string): boolean {
+  return text.toLowerCase().includes(inputValue.toLowerCase());
+}
+
+function splitTextBySearchTerm(text: string, searchText: string): string[] {
+  if (!searchText) {
+    return [text];
+  }
+  const escapedSearchText = escapeRegExp(searchText.toLowerCase());
+  return text.split(new RegExp(`(${escapedSearchText})`, 'gi'));
+}
+
 export {
   escapeRegExp,
+  filterItems,
+  findLabelForValue,
+  flattenItems,
+  getFilteredItems,
   getItemText,
-  matchesSearch,
   hasExactMatch,
   isValueAlreadySelected,
-  filterItems,
-  flattenItems,
-  findLabelForValue,
-  getFilteredItems,
+  matchesSearch,
   splitTextBySearchTerm,
   type ComboboxProps,
 };

@@ -160,5 +160,4 @@ export {
   isValueAlreadySelected,
   matchesSearch,
   splitTextBySearchTerm,
-  type ComboboxProps,
 };

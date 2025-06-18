@@ -1,9 +1,11 @@
 import { Combobox as VendorCombobox } from '@ark-ui/react/combobox';
 import classNames from 'classnames';
 import { type FC, forwardRef } from 'react';
-import { type ComboboxItemProp, useCombobox } from '../../contexts/useCombobox';
+import { type ComboboxItemProp as ComboboxItemRootProp, useCombobox } from '../../contexts/useCombobox';
 import { ComboboxHighlight } from '../combobox-highlight/ComboboxHighlight';
 import style from './comboboxItem.module.scss';
+
+interface ComboboxItemProp extends ComboboxItemRootProp {}
 
 const ComboboxItem: FC<ComboboxItemProp> = forwardRef(({
   item,
@@ -46,4 +48,6 @@ const ComboboxItem: FC<ComboboxItemProp> = forwardRef(({
   );
 });
 
-export { ComboboxItem };
+ComboboxItem.displayName = 'ComboboxItem';
+
+export { ComboboxItem, type ComboboxItemProp };

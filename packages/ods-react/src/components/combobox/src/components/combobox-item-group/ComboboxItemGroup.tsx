@@ -1,12 +1,14 @@
 import { Combobox as VendorCombobox } from '@ark-ui/react/combobox';
 import classNames from 'classnames';
 import { type FC, forwardRef } from 'react';
-import { type ComboboxItemGroupProp } from '../../contexts/useCombobox';
+import { type ComboboxItemGroupProp as ComboboxItemGroupRootProp } from '../../contexts/useCombobox';
 import style from './comboboxItemGroup.module.scss';
 
+interface ComboboxItemGroupProp extends ComboboxItemGroupRootProp {}
+
 const ComboboxItemGroup: FC<ComboboxItemGroupProp> = forwardRef(({
-  className,
   children,
+  className,
   ...props
 }, ref): JSX.Element => {
   return (
@@ -22,4 +24,4 @@ const ComboboxItemGroup: FC<ComboboxItemGroupProp> = forwardRef(({
 
 ComboboxItemGroup.displayName = 'ComboboxItemGroup';
 
-export { ComboboxItemGroup };
+export { ComboboxItemGroup, type ComboboxItemGroupProp };

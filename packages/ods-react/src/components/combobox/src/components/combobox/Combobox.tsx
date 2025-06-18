@@ -3,8 +3,10 @@ import {
   createListCollection,
 } from '@ark-ui/react/combobox';
 import { type FC, type JSX, forwardRef, useEffect, useMemo, useState } from 'react';
-import { type ComboboxInputValueChangeDetails, type ComboboxProp, ComboboxProvider, type ComboboxValueChangeDetails } from '../../contexts/useCombobox';
+import { type ComboboxInputValueChangeDetails, ComboboxProvider, type ComboboxProp as ComboboxRootProp, type ComboboxValueChangeDetails } from '../../contexts/useCombobox';
 import { findLabelForValue, flattenItems, getFilteredItems } from '../../controller/combobox';
+
+interface ComboboxProp extends ComboboxRootProp {}
 
 const Combobox: FC<ComboboxProp> = forwardRef(({
   allowCustomValue = true,
@@ -23,19 +25,14 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const [inputValue, setInputValue] = useState('');
-  const [userIsTyping, setUserIsTyping] = useState(false);
   const currentValue = value && value.length > 0 ? value : defaultValue;
 
-  /**
-   * userIsTyping prevents input reset during search while allowing
-   * synchronization with selected values when not typing
-   */
   useEffect(() => {
-    if (currentValue && currentValue.length > 0 && !userIsTyping) {
+    if (currentValue && currentValue.length > 0) {
       const label = findLabelForValue(items, currentValue[0]);
       setInputValue(label);
     }
-  }, [currentValue, items, userIsTyping]);
+  }, [currentValue, items]);
 
   const filteredItems = useMemo(() => getFilteredItems({
     allowCustomValue,
@@ -50,13 +47,11 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   const collection = useMemo(() => createListCollection({ items: flatItems }), [flatItems]);
 
   const handleInputValueChange = (details: ComboboxInputValueChangeDetails): void => {
-    setUserIsTyping(true);
     setInputValue(details.inputValue);
   };
 
   const handleValueChange = (details: ComboboxValueChangeDetails): void => {
     if (details.value.length > 0) {
-      setUserIsTyping(false);
       const label = findLabelForValue(items, details.value[0]);
       setInputValue(label);
     }
@@ -105,4 +100,4 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
 
 Combobox.displayName = 'Combobox';
 
-export { Combobox };
+export { Combobox, type ComboboxProp };

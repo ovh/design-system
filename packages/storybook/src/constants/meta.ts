@@ -74,7 +74,6 @@ enum REACT_COMPONENTS_TITLE {
 
 enum STORY {
   documentation = 'Documentation',
-  migrationFrom17 = 'Migration v17 to v18',
   technicalInformation = 'Technical information',
 }
 

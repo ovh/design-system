@@ -57,7 +57,6 @@ const preview: Preview = {
             '*', [
               'Documentation',
               'Technical information',
-              'Migration v17 to v18',
               'Demo',
               '*',
             ],

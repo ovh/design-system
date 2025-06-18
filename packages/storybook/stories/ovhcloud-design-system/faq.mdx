@@ -1,6 +1,5 @@
-import { Meta, Source } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import { Heading } from '../../src/components/heading/Heading';
-import { HOME_TITLE } from '../../src/constants/meta';
 
 <Meta title="OVHcloud Design System/F.A.Q." />
 
@@ -23,3 +22,12 @@ You can use any CSS framework on top of ODS.
 Note that some imperative CSS frameworks like Bootstrap may override ODS styling.
 
 Ensure compatibility by testing the integration in your project.
+
+<Heading label="What about Web Components and Vue?" level={ 2 } />
+
+Starting from v19, ODS have moved to full React written components.
+Web Components and the Vue wrapper are now only available in v18+, which has entered a maintenance mode.
+So there won't be any new features for this version.
+
+If you still need to access the documentation about Web Components or Vue, use the top-left version selector to move to
+the latest v18+ documentation where you'll find the latest up-to-date information.

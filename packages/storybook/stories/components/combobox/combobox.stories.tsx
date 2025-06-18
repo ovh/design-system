@@ -109,7 +109,7 @@ export const Demo: StoryObj = {
     },
     placeholder: {
       table: {
-        category: CONTROL_CATEGORY.slot,
+        category: CONTROL_CATEGORY.general,
       },
       control: 'text',
     },

@@ -1,15 +1,9 @@
 import { type ComboboxInputValueChangeDetails, type ComboboxValueChangeDetails } from '@ark-ui/react/combobox';
 import { type ComponentPropsWithRef, type ReactNode, createContext, useContext } from 'react';
 
-type HighlightInfo = {
-  highlightClass: string;
-  searchText: string;
-};
-
 type ComboboxItem = {
   disabled?: boolean;
   group?: string;
-  highlightInfo?: HighlightInfo;
   isNewElement?: boolean;
   label: string;
   value: string;
@@ -17,7 +11,6 @@ type ComboboxItem = {
 
 type ComboboxGroup = {
   disabled?: boolean;
-  highlightInfo?: HighlightInfo;
   label: string;
   options: ComboboxItem[];
 };
@@ -31,6 +24,7 @@ type ComboboxProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
   disabled?: boolean,
   highlightResults?: boolean,
   items: ComboboxItemOrGroup[],
+  multiple?: boolean,
   newElementLabel?: string,
   noResultLabel?: string,
   onValueChange?: (value: ComboboxValueChangeDetails) => void,
@@ -108,6 +102,5 @@ export {
   type ComboboxItemProp,
   type ComboboxProp,
   type ComboboxValueChangeDetails,
-  type HighlightInfo,
   useCombobox,
 };

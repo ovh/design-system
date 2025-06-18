@@ -39,17 +39,17 @@ For example, if you want to display a vertical list of `Link`, you can override 
 <Message
   color={ MESSAGE_COLOR.warning }
   dismissible={ false }>
-  { 'As there is no shadow DOM anymore, all the component DOM can be targeted through CSS selectors. '}
+  { 'As there is no shadow DOM anymore, all of the component DOM can be targeted through CSS selectors. '}
   { 'It is advised to not rely on cascading selector, as the DOM structure may evolve from one version to another. '}
   <br /><br />
-  { 'To ensure reliable CSS, use specific className on the component you want to customize. '}
+  { 'To ensure reliable CSS, use a specific className on the component you want to customize. '}
 
   { 'If you want to specifically target underneath elements, you can rely on some' } <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes#css_access">data attribute</ExternalLink>, { 'we\'ll update the documentation about those soon.'}
 </Message>
 
 <Heading label="Reuse existing ODS style" level={ 2 } />
 
-In some case where you cannot use an ODS component, you may want one of your own component to look like an ODS component
+In some cases where you cannot use an ODS component, you may want one of your own components to look like an ODS component
 (for example, when using an external library that doesn't allow custom templating).
 
 We did expose a bunch of <ExternalLink href="https://sass-lang.com">Sass</ExternalLink> mixins that allows you to easily apply the ODS style to your own elements.

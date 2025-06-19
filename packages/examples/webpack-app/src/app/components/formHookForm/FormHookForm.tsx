@@ -147,7 +147,7 @@ function FormHookForm(): ReactElement {
         control={ control }
         name="datepicker"
         render={ ({ field} ) => (
-          <FormField invalid={ !!errors.input }>
+          <FormField invalid={ !!errors.datepicker }>
             <FormFieldLabel>
               Datepicker:
             </FormFieldLabel>

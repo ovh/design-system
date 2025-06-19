@@ -1,0 +1,267 @@
+import { Meta, Source } from '@storybook/blocks';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta title="OVHcloud Design System/Guides/Handling Form" />
+
+<Heading label="Handling Form" level={ 1 } />
+
+ODS form elements can either be <ExternalLink href="https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components">controlled or uncontrolled</ExternalLink>.
+
+You can use each form element directly in your own form, or wrap them using the <StorybookLink kind={ REACT_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> component.
+
+<Heading label="Form Field" level={ 2 } />
+
+Using <StorybookLink kind={ REACT_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> component
+will enforce layout, design, behaviour and accessibility through a few dedicated components:
+- `FormFieldLabel`
+- `FormFieldHelperText`
+- `FormFieldError`
+
+You can also deport the `invalid` prop from the form element to the `FormField` component which will handle the error display automatically.
+
+<Source code={`
+<FormField invalid={ someCondition }>
+  <FormFieldLabel>
+    Input:
+  </FormFieldLabel>
+
+  <Input name="input" />
+
+  {/* Displayed only if invalid on FormField is true */}
+  <FormFieldError>
+    Error message
+  </FormFieldError>
+</FormField>
+`}
+        dark="true"
+        language="tsx" />
+
+
+<Heading label="Uncontrolled Form" level={ 2 } />
+
+Uncontrolled component will not have the `value` property set.
+
+You can use the `defaultValue` property to initialize the component with a value.
+
+Example of uncontrolled form:
+
+<Source code={`
+import { Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { type FormEvent, useRef } from 'react';
+
+const UncontrolledForm = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  function onSubmit(e: FormEvent) {
+    e.preventDefault();
+
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
+      console.log(formData);
+    }
+  }
+
+  return (
+    <form
+      onSubmit={ onSubmit }
+      ref={ formRef }>
+      <FormField>
+        <FormFieldLabel>
+          Input:
+        </FormFieldLabel>
+
+        <Input
+          defaultValue="default"
+          name="input" />
+      </FormField>
+
+      <Button type="submit">
+        Submit button
+      </Button>
+    </form>
+  );
+};
+`}
+        dark="true"
+        language="tsx" />
+
+<Heading label="Controlled Form" level={ 2 } />
+
+Controlled components will manage their `value` prop on their own and react to value change events.
+
+Example of controlled form:
+
+<Source code={`
+import { Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { type ChangeEvent, useState } from 'react';
+
+const ControlledForm = () => {
+  const [inputValue, setInputValue] = useState('default');
+
+  function onInputChange(e: ChangeEvent<HTMLInputElement>) {
+    setInputValue(e.target.value);
+  }
+
+  function onSubmit(e: FormEvent) {
+    e.preventDefault();
+    console.log('input: ', inputValue);
+  }
+
+  return (
+    <form onSubmit={ onSubmit }>
+      <FormField>
+        <FormFieldLabel>
+          Input:
+        </FormFieldLabel>
+
+        <Input
+          name="input"
+          onChange={ onInputChange }
+          value={ inputValue } />
+      </FormField>
+
+      <Button type="submit">
+        Submit button
+      </Button>
+    </form>
+  );
+};
+`}
+        dark="true"
+        language="tsx" />
+
+<Heading label="Using form library" level={ 2 } />
+
+We'll demonstrate here a few form librairy, but you can plug ODS form elements with any library you like.
+
+Regardless of the library used, you can also use a schema validator to manage your data (like <ExternalLink href="https://github.com/jquense/yup">yup</ExternalLink> or <ExternalLink href="https://zod.dev/">zod</ExternalLink>).
+
+<Heading label="react-hook-form" level={ 3 } />
+
+<ExternalLink href="https://react-hook-form.com">React Hook Form</ExternalLink> is thought around native uncontrolled form elements (using `register`).
+
+These will mork on most ODS components, but some specific one may still need to rely on the lib `Controller` component.
+
+<Source code={`
+import { Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { Controller, useForm } from 'react-hook-form';
+
+type FormData = {
+  datepicker: string,
+  input: string,
+}
+
+const FormHookForm = () => {
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+    register,
+    setValue,
+  } = useForm<FormData>({ mode: 'onBlur' });
+
+  function onSubmit(data: FormData): void {
+    console.log(data);
+  }
+
+  return (
+    <form onSubmit={ handleSubmit(onSubmit) }>
+      <FormField invalid={ !!errors.input }>
+        <FormFieldLabel>
+          Input:
+        </FormFieldLabel>
+
+        <Input { ...register('input') } />
+      </FormField>
+
+      <Controller
+        control={ control }
+        name="datepicker"
+        render={ ({ field} ) => (
+          <FormField invalid={ !!errors.datepicker }>
+            <FormFieldLabel>
+              Datepicker:
+            </FormFieldLabel>
+
+            <Datepicker onValueChange={ ({ value }) => setValue(field.name, value) }>
+              <DatepickerControl />
+
+              <DatepickerContent />
+            </Datepicker>
+          </FormField>
+        )} />
+
+      <Button type="submit">
+        Submit button
+      </Button>
+    </form>
+  );
+}
+`}
+        dark="true"
+        language="tsx" />
+
+<Heading label="formik" level={ 3 } />
+
+Here is another example using <ExternalLink href="https://formik.org">Formik</ExternalLink> library.
+
+<Source code={`
+import { Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { useFormik } from 'formik';
+
+type FormData = {
+  datepicker: string,
+  input: string,
+}
+
+const FormFormik = () => {
+  const formik = useFormik<FormData>({
+    onSubmit: (values) => {
+      console.log(values);
+    },
+    validateOnMount: true,
+    validationSchema,
+  });
+
+  return (
+    <form onSubmit={ formik.handleSubmit }>
+      <FormField invalid={ formik.touched.input && !!formik.errors.input }>
+        <FormFieldLabel>
+          Input:
+        </FormFieldLabel>
+
+        <Input
+          name="input"
+          onBlur={ formik.handleBlur }
+          onChange={ formik.handleChange } />
+      </FormField>
+
+      <FormField invalid={ formik.touched.datepicker && !!formik.errors.datepicker }>
+        <FormFieldLabel>
+          Datepicker:
+        </FormFieldLabel>
+
+        <Datepicker
+          name="datepicker"
+          onBlur={ formik.handleBlur }
+          onValueChange={ ({ value }) => {
+            formik.setFieldValue('datepicker', value);
+          }}>
+          <DatepickerControl />
+
+          <DatepickerContent />
+        </Datepicker>
+      </FormField>
+
+      <Button type="submit">
+        Submit button
+      </Button>
+    </form>
+  );
+}
+`}
+        dark="true"
+        language="tsx" />

@@ -3,7 +3,7 @@ import { type ModuleExports } from '@storybook/types';
 import React from 'react';
 import styles from './banner.module.css';
 
-const Banner = ({ of, label, section }: { of: ModuleExports, label?: string, section?: string }) => {
+const Banner = ({ of, label, section }: { of?: ModuleExports, label?: string, section?: string }) => {
   let title = label;
   let subtitle = section;
 

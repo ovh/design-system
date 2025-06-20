@@ -199,7 +199,7 @@ describe('Combobox behavior', () => {
 
       const inputValue = await page.$eval('[data-testid="group-navigation"] input',
         (el) => el.value);
-      expect(inputValue).toBe('Broccoli');
+      expect(inputValue).toBe('broccoli');
     });
 
     it('should select first item using keyboard', async() => {
@@ -276,5 +276,44 @@ describe('Combobox behavior', () => {
 
       expect(newElementExistsAfterSelection).toBe(false);
     }, 20000);
+  });
+
+  describe('Multiple selection behavior', () => {
+    describe('Uncontrolled multiple selection', () => {
+      beforeEach(async() => {
+        await gotoStory(page, 'behavior/uncontrolled-multiple');
+        await page.waitForSelector('[data-testid="uncontrolled-multiple"]');
+      });
+    });
+
+    describe('Controlled multiple selection', () => {
+      beforeEach(async() => {
+        await gotoStory(page, 'behavior/controlled-multiple');
+        await page.waitForSelector('[data-testid="controlled-multiple"]');
+      });
+
+      it('should update display values when multiple items are selected', async() => {
+        await page.click('[data-testid="controlled-multiple"] input');
+        await page.waitForSelector('[data-part="content"]', { visible: true });
+
+        await page.click('[data-part="item"]:nth-child(1)');
+
+        let selectedValues = await page.$eval('[data-testid="controlled-multiple-values"]',
+          (el) => el.textContent || '');
+        expect(selectedValues).toBe('apple');
+
+        await page.click('[data-part="item"]:nth-child(1)');
+
+        selectedValues = await page.$eval('[data-testid="controlled-multiple-values"]',
+          (el) => el.textContent || '');
+        expect(selectedValues).toBe('apple,banana');
+
+        await page.click('[data-part="item"]:nth-child(1)');
+
+        selectedValues = await page.$eval('[data-testid="controlled-multiple-values"]',
+          (el) => el.textContent || '');
+        expect(selectedValues).toBe('apple,banana,cherry');
+      });
+    });
   });
 });

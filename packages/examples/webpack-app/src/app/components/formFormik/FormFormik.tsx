@@ -1,6 +1,7 @@
 import {
   Button,
   Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel,
+  Combobox, ComboboxContent, ComboboxControl,
   Datepicker, DatepickerControl, DatepickerContent,
   FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
   Input,
@@ -21,6 +22,7 @@ import styles from './formFormik.scss';
 type FormData = {
   checkboxAlone: string,
   checkboxGroup: string[],
+  combobox: string[],
   datepicker: Date,
   input: string,
   password: string,
@@ -36,6 +38,7 @@ type FormData = {
 const validationSchema = yup.object<FormData>({
   checkboxAlone: yup.string().nullable().required(),
   checkboxGroup: yup.array().of(yup.string()).nullable().required(),
+  combobox: yup.array().of(yup.string()).nullable().required(),
   datepicker: yup.date().nullable().required(),
   input: yup.string().nullable().required(),
   password: yup.string().nullable().required(),
@@ -53,6 +56,7 @@ function FormFormik(): ReactElement {
     initialValues: {
       checkboxAlone: 'checkbox alone',
       checkboxGroup: ['grouped checkbox 1'],
+      combobox: ['apple'],
       datepicker: new Date(),
       input: 'default input',
       password: 'default password',
@@ -127,6 +131,39 @@ function FormFormik(): ReactElement {
           </Checkbox>
         </FormField>
       </CheckboxGroup>
+
+      <FormField invalid={ formik.touched.combobox && !!formik.errors.combobox }>
+        <FormFieldLabel>
+          Combobox multiple:
+        </FormFieldLabel>
+
+        <Combobox
+          defaultValue={ formik.initialValues.combobox }
+          items={[
+            { label: 'Apple', value: 'apple' },
+            { label: 'Banana', value: 'banana' },
+            { label: 'Orange', value: 'orange' },
+            { label: 'Pineapple', value: 'pineapple' },
+            { label: 'Mango', value: 'mango' },
+          ]}
+          multiple
+          onBlur={ formik.handleBlur }
+          onValueChange={ ({ value }) => {
+            console.log('Combobox value changed:', value);
+            formik.setFieldValue('combobox', value);
+          }}>
+          <ComboboxControl />
+          <ComboboxContent />
+        </Combobox>
+
+        <FormFieldHelper>
+          This is a combobox with multiple selection
+        </FormFieldHelper>
+
+        <FormFieldError>
+          Error while selecting items
+        </FormFieldError>
+      </FormField>
 
       <FormField invalid={ formik.touched.datepicker && !!formik.errors.datepicker }>
         <FormFieldLabel>

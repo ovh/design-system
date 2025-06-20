@@ -1,6 +1,7 @@
 import {
   Button,
   Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel,
+  Combobox, ComboboxContent, ComboboxControl,
   Datepicker, DatepickerControl, DatepickerContent,
   FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
   Input,
@@ -20,6 +21,7 @@ import styles from './formHookForm.scss';
 type FormData = {
   checkboxAlone: string,
   checkboxGroup: string[],
+  combobox: string[],
   datepicker: Date,
   input: string,
   password: string,
@@ -35,6 +37,7 @@ type FormData = {
 const defaultValue: FormData = {
   checkboxAlone: 'checkbox alone',
   checkboxGroup: ['grouped checkbox 1'],
+  combobox: ['apple'],
   datepicker: new Date(),
   input: 'default input',
   password: 'default password',
@@ -141,6 +144,44 @@ function FormHookForm(): ReactElement {
               </CheckboxLabel>
             </Checkbox>
           </CheckboxGroup>
+        )} />
+
+      <Controller
+        control={ control }
+        name="combobox"
+        render={ ({ field }) => (
+          <FormField invalid={ !!errors.combobox }>
+            <FormFieldLabel>
+              Combobox multiple:
+            </FormFieldLabel>
+
+            <Combobox
+              defaultValue={ defaultValue.combobox }
+              items={[
+                { label: 'Apple', value: 'apple' },
+                { label: 'Banana', value: 'banana' },
+                { label: 'Orange', value: 'orange' },
+                { label: 'Pineapple', value: 'pineapple' },
+                { label: 'Mango', value: 'mango' },
+              ]}
+              multiple
+              onValueChange={ ({ value }) => {
+                console.log('Combobox value changed:', value);
+                setValue(field.name, value);
+              }}
+              >
+              <ComboboxControl />
+              <ComboboxContent />
+            </Combobox>
+
+            <FormFieldHelper>
+              This is a combobox with multiple selection
+            </FormFieldHelper>
+
+            <FormFieldError>
+              Error while selecting items
+            </FormFieldError>
+          </FormField>
         )} />
 
       <Controller

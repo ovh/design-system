@@ -17,6 +17,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   disabled,
   highlightResults = false,
   items,
+  multiple,
   newElementLabel = 'Add ',
   noResultLabel = 'No results found',
   onValueChange,
@@ -25,14 +26,15 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const [inputValue, setInputValue] = useState('');
-  const currentValue = value && value.length > 0 ? value : defaultValue;
+  const [internalValue, setInternalValue] = useState<string[]>(defaultValue || []);
+  const currentValue = value && value.length > 0 ? value : internalValue;
 
   useEffect(() => {
-    if (currentValue && currentValue.length > 0) {
+    if (currentValue && currentValue.length > 0 && !multiple) {
       const label = findLabelForValue(items, currentValue[0]);
       setInputValue(label);
     }
-  }, [currentValue, items]);
+  }, [currentValue, items, multiple]);
 
   const filteredItems = useMemo(() => getFilteredItems({
     allowCustomValue,
@@ -51,9 +53,15 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   };
 
   const handleValueChange = (details: ComboboxValueChangeDetails): void => {
-    if (details.value.length > 0) {
+    if (!multiple && details.value.length > 0) {
       const label = findLabelForValue(items, details.value[0]);
       setInputValue(label);
+    } else if (multiple) {
+      setInputValue('');
+    }
+
+    if (!value) {
+      setInternalValue(details.value);
     }
 
     onValueChange && onValueChange(details);
@@ -68,6 +76,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
       filteredItems={filteredItems}
       highlightResults={highlightResults}
       items={items}
+      multiple={multiple}
       newElementLabel={newElementLabel}
       noResultLabel={noResultLabel}
       onValueChange={onValueChange}
@@ -77,9 +86,11 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
       <VendorCombobox.Root
         className={className}
         collection={collection}
+        closeOnSelect={!multiple}
         defaultValue={defaultValue}
         disabled={disabled}
         inputValue={inputValue}
+        multiple={multiple}
         onInputValueChange={handleInputValueChange}
         onValueChange={handleValueChange}
         positioning={{
@@ -88,7 +99,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
         }}
         readOnly={readOnly}
         ref={ref}
-        selectionBehavior="replace"
+        selectionBehavior={ multiple ? 'clear' : 'replace' }
         value={value}
         {...props}
       >

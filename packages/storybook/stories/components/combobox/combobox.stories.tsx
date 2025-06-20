@@ -296,7 +296,7 @@ export const Highlight: Story = {
   tags: ['!dev'],
   render: () => (
     <Combobox
-      highlightResults={true}
+      highlightResults
       items={[
         { label: 'Dog', value: 'dog' },
         { label: 'Cat', value: 'cat' },
@@ -319,7 +319,7 @@ export const CustomOptions: Story = {
       color: string;
       info: string;
     };
-    
+
     const items = [
       { label: 'Apple', value: 'apple', customRendererData: { color: 'red', info: 'Fruit' } as CustomData },
       { label: 'Banana', value: 'banana', customRendererData: { color: 'yellow', info: 'Fruit' } as CustomData },
@@ -329,7 +329,7 @@ export const CustomOptions: Story = {
     ];
     const customOptionRenderer = (item: ComboboxItemOrGroup) => {
       const customData = 'customRendererData' in item ? item.customRendererData as CustomData : undefined;
-      
+
       return (
         <span style={{ color: customData?.color, fontWeight: 'bold' }}>
           {item.label} {customData?.info && <span style={{ fontWeight: 'normal', fontSize: 12, color: '#888' }}>({customData.info})</span>}
@@ -338,7 +338,7 @@ export const CustomOptions: Story = {
     };
     return (
       <Combobox
-        highlightResults={true}
+        highlightResults
         items={items}
         customOptionRenderer={customOptionRenderer}
       >
@@ -353,6 +353,26 @@ export const Empty: Story = {
   tags: ['!dev'],
   render: () => (
     <Combobox items={[]}>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+  ),
+};
+
+export const Multiple: Story = {
+  tags: ['!dev'],
+  render: () => (
+    <Combobox
+      multiple
+      items={[
+        { label: 'Dog', value: 'dog' },
+        { label: 'Cat', value: 'cat' },
+        { label: 'Hamster', value: 'hamster' },
+        { label: 'Parrot', value: 'parrot' },
+        { label: 'Spider', value: 'spider' },
+        { label: 'Goldfish', value: 'goldfish' },
+      ]}
+    >
       <ComboboxControl />
       <ComboboxContent />
     </Combobox>

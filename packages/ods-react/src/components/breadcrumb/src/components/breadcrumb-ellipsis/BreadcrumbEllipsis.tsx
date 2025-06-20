@@ -11,7 +11,8 @@ const BreadcrumbEllipsis: FC<BreadcrumbEllipsisProp> = ({ onExpand }): JSX.Eleme
     <li className={ style['breadcrumb-ellipsis'] }>
       <button
         className={ style['breadcrumb-ellipsis__button'] }
-        onClick={ onExpand }>
+        onClick={ onExpand }
+        type="button">
         ...
       </button>
 

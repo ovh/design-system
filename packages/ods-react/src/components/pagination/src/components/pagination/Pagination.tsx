@@ -16,16 +16,49 @@ interface PaginationPageChangeDetail {
 }
 
 interface PaginationProp extends ComponentPropsWithRef<'nav'> {
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean;
+  /**
+   * The initial active page. Use when you don't need to control the active page of the pagination.
+   */
   defaultPage?: number;
+  /**
+   * The tooltip label on the "next page" button.
+   */
   labelTooltipNext?: string;
+  /**
+   * The tooltip label on the "previous page" button.
+   */
   labelTooltipPrev?: string;
+  /**
+   * Callback fired when the active page changes.
+   */
   onPageChange?: (detail: PaginationPageChangeDetail) => void;
+  /**
+   * The controlled active page
+   */
   page?: number;
+  /**
+   * The number of items per page.
+   */
   pageSize?: number;
-  siblingCount?: number;
-  totalItems: number;
+  /**
+   * Format the label displayed near the per-page selector.
+   */
   renderTotalItemsLabel?: PaginationTotalItemsLabelRenderer;
+  /**
+   * The number of pages to show beside active page.
+   */
+  siblingCount?: number;
+  /**
+   * The total number of items.
+   */
+  totalItems: number;
+  /**
+   * Whether the per-page selector is displayed.
+   */
   withPageSizeSelector?: boolean;
 }
 

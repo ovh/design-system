@@ -7,10 +7,25 @@ interface AccordionChangeDetail {
 }
 
 interface AccordionProp extends Omit<ComponentPropsWithRef<'div'>, 'onChange'> {
+  /**
+   * The initial value of the expanded accordion items. Use when you don't need to control the value of the accordion.
+   */
   defaultValue?: string[];
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean;
+  /**
+   * Whether multiple accordion items can be expanded at the same time.
+   */
   multiple?: boolean;
+  /**
+   * Callback fired when the state of expanded/collapsed accordion items changes.
+   */
   onChange?: (detail: AccordionChangeDetail) => void;
+  /**
+   * The controlled value of the expanded accordion items.
+   */
   value?: string[];
 }
 

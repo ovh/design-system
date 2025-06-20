@@ -5,7 +5,13 @@ import { DIVIDER_SPACING, type DividerSpacing } from '../../constants/divider-sp
 import style from './divider.module.scss';
 
 interface DividerProp extends ComponentPropsWithRef<'hr'> {
+  /**
+   * The color preset to use.
+   */
   color?: DividerColor,
+  /**
+   * The spacing preset to use.
+   */
   spacing?: DividerSpacing,
 }
 

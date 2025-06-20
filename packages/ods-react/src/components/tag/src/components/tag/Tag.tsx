@@ -6,7 +6,13 @@ import { TAG_SIZE, type TagSize } from '../../constants/tag-size';
 import style from './tag.module.scss';
 
 interface TagProp extends ComponentPropsWithRef<'button'> {
+  /**
+   * The color preset to use.
+   */
   color?: TagColor;
+  /**
+   * The size preset to use.
+   */
   size?: TagSize;
 }
 

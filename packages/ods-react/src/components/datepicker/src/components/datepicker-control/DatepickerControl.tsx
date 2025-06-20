@@ -9,7 +9,13 @@ import { useDatepicker } from '../../contexts/useDatepicker';
 import style from './datepickerControl.module.scss';
 
 interface DatepickerControlProp extends ComponentPropsWithRef<'input'> {
+  /**
+   * Whether the clear button is displayed.
+   */
   clearable?: boolean,
+  /**
+   * Whether the component is in loading state.
+   */
   loading?: boolean,
 }
 

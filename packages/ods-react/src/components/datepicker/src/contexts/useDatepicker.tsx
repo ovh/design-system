@@ -1,7 +1,13 @@
 import { type JSX, type ReactNode, createContext, useContext } from 'react';
 
 type DatepickerContextType = {
+  /**
+   * Whether the component is in error state.
+   */
   invalid?: boolean,
+  /**
+   * Whether the component is required.
+   */
   required?: boolean,
 }
 

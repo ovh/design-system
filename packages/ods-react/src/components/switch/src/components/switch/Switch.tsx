@@ -9,10 +9,25 @@ interface SwitchValueChangeDetail {
 }
 
 interface SwitchProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * The initial value of the selected item. Use when you don't need to control the value of the switch.
+   */
   defaultValue?: string,
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean,
+  /**
+   * Callback fired when the value changes.
+   */
   onValueChange?: (detail: SwitchValueChangeDetail) => void,
+  /**
+   * The size preset to use.
+   */
   size?: SwitchSize,
+  /**
+   * The controlled value of the selected item.
+   */
   value?: string,
 }
 

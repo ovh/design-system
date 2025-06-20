@@ -15,18 +15,57 @@ interface TimepickerValueChangeDetail {
 }
 
 type TimepickerRootProp = {
+  /**
+   * The initial time value. Use when you don't need to control the value of the timepicker.
+   */
   defaultValue?: string,
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean,
+  /**
+   * The field id.
+   */
   id?: string,
+  /**
+   * Whether the component is in error state.
+   */
   invalid?: boolean,
+  /**
+   * The name of the form element. Useful for form submission.
+   */
   name?: string,
+  /**
+   * Callback fired when the timezone changes.
+   */
   onTimezoneChange?: (detail: TimepickerTimezoneChangeDetail) => void,
+  /**
+   * Callback fired when the value changes.
+   */
   onValueChange?: (detail: TimepickerValueChangeDetail) => void,
+  /**
+   * Whether the component is readonly.
+   */
   readOnly?: boolean,
+  /**
+   * Whether the component is required.
+   */
   required?: boolean,
+  /**
+   * The controlled selected timezone.
+   */
   timezone?: Timezone,
+  /**
+   * A specific or preset list of timezone to display in the selector.
+   */
   timezones?: Timezone[] | TimezonesPreset,
+  /**
+   * The controlled timepicker value.
+   */
   value?: string,
+  /**
+   * Whether the time input allows seconds selection.
+   */
   withSeconds?: boolean,
 }
 

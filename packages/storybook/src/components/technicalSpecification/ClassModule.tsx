@@ -4,7 +4,7 @@ import { Table } from '@storybook/components';
 import React, { type JSX, useMemo } from 'react';
 import { ExternalLink } from '../externalLink/ExternalLink';
 import { Heading } from '../heading/Heading';
-import { type Component } from '../../helpers/docgen';
+import { type Component, removeTags } from '../../helpers/docgen';
 import styles from './classModule.module.css';
 
 type ClassModuleProp = {
@@ -17,6 +17,8 @@ type ClassModuleProp = {
   }>,
 }
 
+const COLUMNS = ['Property', 'Type', 'Required', 'Default value', 'Description'];
+
 const ClassModule = ({ component, extraInfo }: ClassModuleProp): JSX.Element => {
   const extraAttributeInfo = useMemo(() => {
     if (extraInfo) {
@@ -28,22 +30,31 @@ const ClassModule = ({ component, extraInfo }: ClassModuleProp): JSX.Element => 
     }
   }, [component, extraInfo]);
 
+  const props = useMemo(() => {
+    return (component.props || []).sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
+  }, [component]);
+
   return (
     <>
       <Heading label={ component.name } level={ 2 } />
 
       {
-        (component.props.length <= 0 && !extraAttributeInfo) ?
+        (props.length <= 0 && !extraAttributeInfo) ?
           <p>
             This component has no specific properties.
           </p> :
           <Table>
             <thead className={ styles['class-module__properties__header'] }>
               <tr>
-                <td>Property</td>
-                <td>Type</td>
-                <td>Required</td>
-                <td>Default value</td>
+                {
+                  COLUMNS.map((column) => (
+                    <td key={ column }>
+                      { column }
+                    </td>
+                  ))
+                }
               </tr>
             </thead>
 
@@ -53,14 +64,14 @@ const ClassModule = ({ component, extraInfo }: ClassModuleProp): JSX.Element => 
                 <tr>
                   <td
                     className={ styles['class-module__properties__body__extend'] }
-                    colSpan={ 4 }>
+                    colSpan={ COLUMNS.length }>
                     This component extends all the native <ExternalLink href={ extraAttributeInfo.url }>{ extraAttributeInfo.name } attributes</ExternalLink>.
                   </td>
                 </tr>
               }
 
               {
-                component.props.map((prop, idx) => (
+                props.map((prop, idx) => (
                   <tr key={ idx }>
                     <td>
                       { prop.name }
@@ -89,6 +100,10 @@ const ClassModule = ({ component, extraInfo }: ClassModuleProp): JSX.Element => 
                             prop.defaultValue
                         }
                       </CodeOrSourceMdx>
+                    </td>
+
+                    <td>
+                      { removeTags(prop.description) || '-' }
                     </td>
                   </tr>
                 ))

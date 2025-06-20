@@ -8,11 +8,29 @@ interface RadioValueChangeDetail {
 }
 
 interface RadioGroupProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * The initial value of the checked radio. Use when you don't need to control the value of the radio group.
+   */
   defaultValue?: string,
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean,
+  /**
+   * The name of the form element. Useful for form submission.
+   */
   name?: string,
+  /**
+   * Callback fired when the value changes.
+   */
   onValueChange?: (detail: RadioValueChangeDetail) => void,
+  /**
+   * The orientation of the radio group.
+   */
   orientation?: 'horizontal' | 'vertical',
+  /**
+   * The controlled value of the radio group.
+   */
   value?: string,
 }
 

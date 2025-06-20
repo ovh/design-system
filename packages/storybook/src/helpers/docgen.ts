@@ -19,8 +19,10 @@ type Component = {
   props: ComponentProp[],
 }
 
+const tagRegExp = /(@[\w-]+)=?([\w']+)?/gi;
+
 function extractTags(str: string): Map<string, string | undefined> {
-  const tagMatches = [...str.matchAll(/(@[\w-]+)=?([\w']+)?/gi)];
+  const tagMatches = [...str.matchAll(tagRegExp)];
 
   return tagMatches.reduce((tagMap, match) => {
     tagMap.set(match[1], match[2]);
@@ -55,6 +57,10 @@ function getComponentProp(name: string, prop: PropDescriptor): ComponentProp | u
 
 function getComponentsInfo(docgens: Documentation[]): Component[] {
   return docgens.map(getComponentInfo);
+}
+
+function removeTags(str: string): string {
+  return str.replace(tagRegExp, '').trim();
 }
 
 function typeToString(type: TypeDescriptor): string {
@@ -99,4 +105,5 @@ export {
   type Component,
   extractTags,
   getComponentsInfo,
+  removeTags,
 };

@@ -4,6 +4,9 @@ import { type IconName } from '../../constants/icon-name';
 import style from './icon.module.scss';
 
 interface IconProp extends ComponentPropsWithRef<'span'> {
+  /**
+   * The icon name.
+   */
   name: IconName,
 }
 

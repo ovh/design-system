@@ -4,6 +4,9 @@ import { useFormField } from '../../../../form-field/src';
 import style from './textarea.module.scss';
 
 interface TextareaProp extends ComponentPropsWithRef<'textarea'> {
+  /**
+   * Whether the component is in error state.
+   */
   invalid?: boolean,
 }
 

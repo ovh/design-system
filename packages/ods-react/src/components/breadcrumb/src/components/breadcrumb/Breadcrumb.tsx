@@ -6,10 +6,25 @@ import { BreadcrumbEllipsis } from '../breadcrumb-ellipsis/BreadcrumbEllipsis';
 import style from './breadcrumb.module.scss';
 
 interface BreadcrumbProp extends ComponentPropsWithRef<'nav'> {
+  /**
+   * The number of items when the component will collapse to an ellipsis.
+   */
   collapseThreshold?: number,
+  /**
+   * The number of items to display before the ellipsis.
+   */
   nbItemsAfterEllipsis?: number,
+  /**
+   * The number of items to display after the ellipsis.
+   */
   nbItemsBeforeEllipsis?: number,
+  /**
+   * Whether the component should not collapse in an ellipsis regarding the number of items.
+   */
   noCollapse?: boolean,
+  /**
+   * Callback fired when an ellipsis is expanded.
+   */
   onExpand?: () => void,
 }
 

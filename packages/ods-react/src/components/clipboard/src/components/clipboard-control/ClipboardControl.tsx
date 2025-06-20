@@ -6,7 +6,13 @@ import { useClipboard } from '../../contexts/useClipboard';
 import style from './clipboardControl.module.scss';
 
 interface ClipboardControlProp extends ComponentPropsWithRef<'input'> {
+  /**
+   * Whether the component is in loading state.
+   */
   loading?: boolean,
+  /**
+   * Whether the masked display is active and its initial state.
+   */
   maskOption?: {
     enable: boolean,
     initialState?: InputMaskState,

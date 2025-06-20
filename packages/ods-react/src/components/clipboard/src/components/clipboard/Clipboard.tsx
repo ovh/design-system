@@ -5,8 +5,17 @@ import { ClipboardContext } from '../../contexts/useClipboard';
 import style from './clipboard.module.scss';
 
 interface ClipboardProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue'> {
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean,
+  /**
+   * Callback fired when the input value is copied.
+   */
   onCopy?: () => void,
+  /**
+   * The input value.
+   */
   value?: string,
 }
 

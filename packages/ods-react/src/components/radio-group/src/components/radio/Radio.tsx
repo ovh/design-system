@@ -5,9 +5,21 @@ import { useFormField } from '../../../../form-field/src';
 import style from './radio.module.scss';
 
 interface RadioProp extends ComponentPropsWithRef<'label'> {
+  /**
+   * Whether the radio is disabled.
+   */
   disabled?: boolean,
+  /**
+   * Whether the radio is in error state.
+   */
   invalid?: boolean,
+  /**
+   * Whether the radio is required.
+   */
   required?: boolean,
+  /**
+   * The value of the radio.
+   */
   value: string,
 }
 

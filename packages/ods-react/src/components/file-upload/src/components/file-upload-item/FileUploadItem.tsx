@@ -7,9 +7,21 @@ import { FileUploadItemStatus } from '../file-upload-item-status/FileUploadItemS
 import style from './fileUploadItem.module.scss';
 
 interface FileUploadItemProp extends ComponentPropsWithRef<'li'> {
+  /**
+   * The file error message to display.
+   */
   error?: string,
+  /**
+   * The current File object.
+   */
   file: File,
+  /**
+   * The file upload progress.
+   */
   progress?: number,
+  /**
+   * The label displayed after a successful upload.
+   */
   uploadSuccessLabel?: string,
 }
 

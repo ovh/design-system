@@ -45,8 +45,8 @@ interface ComboboxItemProp extends ComponentPropsWithRef<'div'> {
 }
 
 interface ComboboxItemGroupProp extends ComponentPropsWithRef<'div'> {
-  className?: string;
   children: ReactNode;
+  className?: string;
 }
 
 interface ComboboxControlProp extends ComponentPropsWithRef<'button'> {
@@ -74,6 +74,7 @@ function useCombobox(): ComboboxContextType {
 const ComboboxProvider = ({
   children,
   defaultValue,
+  onValueChange,
   value,
   ...props
 }: ComboboxProviderProp): JSX.Element => {
@@ -82,6 +83,7 @@ const ComboboxProvider = ({
       value={ {
         ...props,
         defaultValue,
+        onValueChange,
         value,
       } }
     >

@@ -1,5 +1,5 @@
 import { getElementText } from '../../../../utils/element';
-import { type ComboboxItemOrGroup } from '../contexts/useCombobox';
+import { type ComboboxItem, type ComboboxItemOrGroup } from '../contexts/useCombobox';
 
 interface ComboboxProps {
   allowCustomValue?: boolean;
@@ -26,22 +26,40 @@ function filterItems({
   hasExactMatch,
   isValueAlreadySelected,
   customOptionRenderer,
+  value,
 }: FilterItemsProps): ComboboxItemOrGroup[] {
-  if (!inputValue) {
+  if (!inputValue && !value?.length) {
     return items;
   }
 
-  const filtered = items.flatMap((item): ComboboxItemOrGroup[] => {
+  const filtered = items.reduce<ComboboxItemOrGroup[]>((acc, item) => {
     if ('options' in item) {
-      const filteredOptions = item.options.filter((option) =>
-        matchesSearch(getItemText(option, customOptionRenderer), inputValue),
-      );
-      return filteredOptions.length ? [{ ...item, options: filteredOptions }] : [];
-    }
-    return matchesSearch(getItemText(item, customOptionRenderer), inputValue) ? [item] : [];
-  });
+      const filteredOptions = item.options.filter((option) => {
+        if ('options' in option) {
+          return true;
+        }
 
-  if (allowCustomValue && !hasExactMatch && !isValueAlreadySelected) {
+        if (value?.includes(option.value)) {
+          return false;
+        }
+
+        return !inputValue || matchesSearch(getItemText(option, customOptionRenderer), inputValue);
+      });
+
+      if (filteredOptions.length > 0) {
+        acc.push({
+          ...item,
+          options: filteredOptions,
+        });
+      }
+    } else if (!value?.includes(item.value) &&
+              (!inputValue || matchesSearch(getItemText(item, customOptionRenderer), inputValue))) {
+      acc.push(item);
+    }
+    return acc;
+  }, []);
+
+  if (allowCustomValue && inputValue && !hasExactMatch && !isValueAlreadySelected) {
     return [{
       disabled: false,
       isNewElement: true,
@@ -51,53 +69,6 @@ function filterItems({
   }
 
   return filtered;
-}
-
-function findLabelForValue(items: ComboboxItemOrGroup[], value: string): string {
-  for (const item of items) {
-    if ('options' in item) {
-      for (const option of item.options) {
-        if (!('options' in option) && option.value === value) {
-          return option.label;
-        }
-      }
-    } else if (item.value === value) {
-      return item.label;
-    }
-  }
-  return value;
-}
-
-function flattenItems(filteredItems: ComboboxItemOrGroup[]): (ComboboxItemOrGroup & { group?: string })[] {
-  return filteredItems.flatMap((item) => {
-    if ('options' in item) {
-      return item.options.map((option) => ({
-        ...option,
-        group: item.label,
-      }));
-    }
-    return item;
-  });
-}
-
-function getFilteredItems({
-  allowCustomValue = false,
-  customOptionRenderer,
-  inputValue,
-  items,
-  value = [],
-}: ComboboxProps): ComboboxItemOrGroup[] {
-  const exactMatch = hasExactMatch(items, inputValue, customOptionRenderer);
-  const valueSelected = isValueAlreadySelected(value, inputValue);
-  return filterItems({
-    allowCustomValue,
-    customOptionRenderer,
-    hasExactMatch: exactMatch,
-    inputValue,
-    isValueAlreadySelected: valueSelected,
-    items,
-    value,
-  });
 }
 
 function getItemText(
@@ -141,23 +112,67 @@ function matchesSearch(text: string, inputValue: string): boolean {
   return text.toLowerCase().includes(inputValue.toLowerCase());
 }
 
-function splitTextBySearchTerm(text: string, searchText: string): string[] {
-  if (!searchText) {
+export function splitTextBySearchTerm(text: string, searchTerm: string): string[] {
+  if (!text || !searchTerm) {
     return [text];
   }
-  const escapedSearchText = escapeRegExp(searchText.toLowerCase());
-  return text.split(new RegExp(`(${escapedSearchText})`, 'gi'));
+
+  const escapedValue = searchTerm.toLowerCase().replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+  const regex = new RegExp(`(${escapedValue})`, 'gi');
+  return text.split(regex).filter(Boolean);
+}
+
+export function findLabelForValue(items: ComboboxItemOrGroup[] = [], value: string): string {
+  for (const item of items) {
+    if ('options' in item) {
+      const foundInGroup = findLabelForValue(item.options, value);
+      if (foundInGroup) {
+        return foundInGroup;
+      }
+    } else if (item.value === value) {
+      return String(item.label);
+    }
+  }
+  return value;
+}
+
+export function flattenItems(items: ComboboxItemOrGroup[] = []): ComboboxItem[] {
+  const result: ComboboxItem[] = [];
+  for (const item of items) {
+    if ('options' in item) {
+      result.push(...flattenItems(item.options));
+    } else {
+      result.push(item);
+    }
+  }
+  return result;
+}
+
+export function getFilteredItems({
+  allowCustomValue = false,
+  customOptionRenderer,
+  inputValue,
+  items,
+  value = [],
+}: ComboboxProps): ComboboxItemOrGroup[] {
+  const exactMatch = hasExactMatch(items, inputValue, customOptionRenderer);
+  const valueSelected = isValueAlreadySelected(value, inputValue);
+  return filterItems({
+    allowCustomValue,
+    customOptionRenderer,
+    hasExactMatch: exactMatch,
+    inputValue,
+    isValueAlreadySelected: valueSelected,
+    items,
+    value,
+  });
 }
 
 export {
   escapeRegExp,
   filterItems,
-  findLabelForValue,
-  flattenItems,
-  getFilteredItems,
   getItemText,
   hasExactMatch,
   isValueAlreadySelected,
   matchesSearch,
-  splitTextBySearchTerm,
 };

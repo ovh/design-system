@@ -144,3 +144,30 @@ export const interactionModes = () => (
     </Combobox>
   </div>
 ); 
+
+export const uncontrolledMultiple = () => (
+  <Combobox items={simpleItems} multiple data-testid="uncontrolled-multiple">
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+);
+
+export const controlledMultiple = () => {
+  const [value, setValue] = useState<string[]>([]);
+  
+  return (
+    <div data-testid="controlled-multiple-wrapper">
+      <div data-testid="controlled-multiple-values">{value.join(',')}</div>
+      <Combobox 
+        items={simpleItems} 
+        multiple
+        value={value}
+        onValueChange={(details) => setValue(details.value)}
+        data-testid="controlled-multiple"
+      >
+        <ComboboxControl />
+        <ComboboxContent />
+      </Combobox>
+    </div>
+  );
+};

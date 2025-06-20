@@ -7,6 +7,9 @@ import style from './text.module.scss';
 // code, hx, p and span share the same global attribute, only label has a specific one ("for")
 // so we extends this one for now, could be optimized in the future
 interface TextProp extends ComponentPropsWithRef<'label'> {
+  /**
+   * The text preset to use.
+   */
   preset?: TextPreset,
 }
 

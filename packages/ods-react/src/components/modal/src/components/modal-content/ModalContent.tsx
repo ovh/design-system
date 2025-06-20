@@ -7,8 +7,17 @@ import { ModalHeader } from '../modal-header/ModalHeader';
 import style from './modalContent.module.scss';
 
 interface ModalContentProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * The color preset to use.
+   */
   color?: ModalColor,
+  /**
+   * Whether the component should be rendered in the DOM close to the body tag.
+   */
   createPortal?: boolean,
+  /**
+   * Whether the remove button is displayed.
+   */
   dismissible?: boolean,
 }
 

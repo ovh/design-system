@@ -4,6 +4,9 @@ import { CARD_COLOR, type CardColor } from '../../constants/card-color';
 import style from './card.module.scss';
 
 interface CardProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * The color preset to use.
+   */
   color?: CardColor,
 }
 

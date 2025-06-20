@@ -11,7 +11,13 @@ interface LinkProp<T extends ElementType = 'a'> {
    * Useful for example when using routing library like react-router.
    * */
   as?: T,
+  /**
+   * The color preset to use.
+   */
   color?: LinkColor,
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean,
 }
 

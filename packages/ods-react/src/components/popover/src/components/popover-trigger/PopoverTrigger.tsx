@@ -2,6 +2,9 @@ import { Popover } from '@ark-ui/react/popover';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 
 interface PopoverTriggerProp extends ComponentPropsWithRef<'button'> {
+  /**
+   * Use the provided child element as the default rendered element, combining their props and behavior.
+   */
   asChild?: boolean,
 }
 

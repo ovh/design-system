@@ -6,20 +6,23 @@ import { DRAWER_POSITION } from '../../constants/drawer-position';
 import style from './drawerContent.module.scss';
 
 interface DrawerContentProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * Whether the component should be rendered in the DOM close to the body tag.
+   */
   createPortal?: boolean;
+  /**
+   * The drawer position in the screen.
+   */
   position?: DRAWER_POSITION;
 }
 
-const DrawerContent: FC<DrawerContentProp> = forwardRef((
-  {
-    children,
-    className,
-    createPortal = true,
-    position = DRAWER_POSITION.left,
-    ...props
-  },
-  ref,
-): JSX.Element => {
+const DrawerContent: FC<DrawerContentProp> = forwardRef(({
+  children,
+  className,
+  createPortal = true,
+  position = DRAWER_POSITION.left,
+  ...props
+}, ref): JSX.Element => {
   return (
     <Portal disabled={ !createPortal }>
       <Dialog.Positioner className={ style[ 'drawer-positioner' ] }>
@@ -30,15 +33,13 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef((
             className,
           ) }
           ref={ ref }
-          { ...props }
-        >
+          { ...props }>
           { children }
         </Dialog.Content>
       </Dialog.Positioner>
     </Portal>
   );
-},
-);
+});
 
 DrawerContent.displayName = 'DrawerContent';
 

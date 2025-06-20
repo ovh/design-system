@@ -3,7 +3,13 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import style from './progressBar.module.scss';
 
 interface ProgressBarProp extends ComponentPropsWithRef<'progress'> {
+  /**
+   * The maximum value of the progress bar.
+   */
   max?: string | number,
+  /**
+   * The current value of the progress bar
+   */
   value?: string | number,
 }
 

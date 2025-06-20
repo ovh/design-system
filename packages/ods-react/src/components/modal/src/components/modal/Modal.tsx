@@ -6,10 +6,25 @@ interface ModalOpenChangeDetail {
 }
 
 interface ModalProp {
+  /**
+   * Whether to close the modal when the escape key is pressed.
+   */
   closeOnEscape?: boolean,
+  /**
+   * Whether to close the modal when the outside is clicked.
+   */
   closeOnInteractOutside?: boolean,
+  /**
+   * The initial open state of the modal. Use when you don't need to control the open state of the modal.
+   */
   defaultOpen?: boolean,
+  /**
+   * Callback fired when the modal open state changes.
+   */
   onOpenChange?: (detail: ModalOpenChangeDetail) => void
+  /**
+   * The controlled open state of the modal.
+   */
   open?: boolean,
 }
 

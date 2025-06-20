@@ -11,13 +11,37 @@ interface CheckboxCheckedChangeDetail {
 }
 
 interface CheckboxProp extends ComponentPropsWithRef<'label'> {
+  /**
+   * The controlled checked state of the checkbox.
+   */
   checked?: CheckboxCheckedState;
+  /**
+   * The initial checked state of the checkbox. Use when you don't need to control the checked state of the checkbox.
+   */
   defaultChecked?: boolean,
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean,
+  /**
+   * Whether the component is in error state.
+   */
   invalid?: boolean,
+  /**
+   * The name of the form element. Useful for form submission.
+   */
   name?: string,
+  /**
+   * Callback fired when the checked state changes.
+   */
   onCheckedChange?: (detail: CheckboxCheckedChangeDetail) => void,
+  /**
+   * Whether the component is required.
+   */
   required?: boolean,
+  /**
+   * The value of form element. Useful for form submission.
+   */
   value?: string,
 }
 

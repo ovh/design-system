@@ -9,8 +9,17 @@ import { SelectOption } from '../select-option/SelectOption';
 import style from './selectContent.module.scss';
 
 interface SelectContentProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * Whether the component should be rendered in the DOM close to the body tag.
+   */
   createPortal?: boolean,
+  /**
+   * Custom render for each group item.
+   */
   customGroupRenderer?: (arg: SelectCustomGroupRendererArg) => JSX.Element,
+  /**
+   * Custom render for each option item.
+   */
   customOptionRenderer?: (arg: SelectCustomOptionRendererArg) => JSX.Element,
 }
 

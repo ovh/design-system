@@ -12,18 +12,57 @@ interface RangeValueChangeDetail {
 }
 
 interface RangeProp extends Omit<ComponentPropsWithRef<'div'>, 'aria-label' | 'aria-labelledby' | 'defaultValue'> {
+  /**
+   * The aria-label of each slider thumb. Useful for providing an accessible name to the slider.
+   */
   'aria-label'?: string[],
+  /**
+   * The id of the elements that labels each slider thumb. Useful for providing an accessible name to the slider.
+   */
   'aria-labelledby'?: string[],
+  /**
+   * The initial selected value(s). Use when you don't need to control the value(s) of the range.
+   */
   defaultValue?: number[],
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean,
+  /**
+   * Whether the component is in error state.
+   */
   invalid?: boolean,
+  /**
+   * The maximum value that can be selected.
+   */
   max?: number,
+  /**
+   * The minimum value that can be selected.
+   */
   min?: number,
+  /**
+   * The name of the form element. Useful for form submission.
+   */
   name?: string,
+  /**
+   * Callback fired when the thumb moves.
+   */
   onDragging?: (detail: RangeValueChangeDetail) => void,
+  /**
+   * Callback fired when the thumb is released.
+   */
   onValueChange?: (detail: RangeValueChangeDetail) => void,
+  /**
+   * The amount to increment or decrement the value by.
+   */
   step?: number,
+  /**
+   * List of tick indicators to display alongside the range.
+   */
   ticks?: number[],
+  /**
+   * The controlled selected value(s).
+   */
   value?: number[],
 }
 

@@ -8,8 +8,17 @@ interface TabsChangeEvent {
 }
 
 interface TabsProp extends Omit<ComponentPropsWithRef<'div'>, 'onChange'> {
+  /**
+   * The initial value of the selected tab. Use when you don't need to control the value of the tabs.
+   */
   defaultValue?: string;
+  /**
+   * Callback fired when the state of selected tab changes.
+   */
   onChange?: (event: TabsChangeEvent) => void;
+  /**
+   * The controlled value of the selected tab.
+   */
   value?: string;
 }
 

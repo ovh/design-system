@@ -7,9 +7,18 @@ interface PopoverOpenChangeDetail {
 }
 
 interface PopoverProp {
+  /**
+   * Callback fired when the popover open state changes.
+   */
   onOpenChange?: (detail: PopoverOpenChangeDetail) => void
+  /**
+   * The controlled open state of the popover.
+   */
   open?: boolean,
-  /** @type=POPOVER_POSITION */
+  /**
+   * @type=POPOVER_POSITION
+   * The popover position around the trigger.
+   */
   position?: PopoverPosition,
 }
 

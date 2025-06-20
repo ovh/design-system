@@ -10,6 +10,9 @@ import { DatepickerViewControl } from '../datepicker-view-control/DatepickerView
 import style from './datepickerContent.module.scss';
 
 interface DatepickerContentProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * Whether the component should be rendered in the DOM close to the body tag.
+   */
   createPortal?: boolean,
 }
 

@@ -5,7 +5,13 @@ import { SPINNER_SIZE, type SpinnerSize } from '../../constants/spinner-size';
 import style from './spinner.module.scss';
 
 interface SpinnerProp extends ComponentPropsWithRef<'span'> {
+  /**
+   * The color preset to use.
+   */
   color?: SpinnerColor,
+  /**
+   * The size preset to use.
+   */
   size?: SpinnerSize,
 }
 

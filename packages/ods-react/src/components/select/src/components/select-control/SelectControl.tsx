@@ -8,8 +8,17 @@ import { SelectValueText } from '../select-value-text/SelectValueText';
 import style from './selectControl.module.scss';
 
 interface SelectControlProp extends ComponentPropsWithRef<'button'> {
+  /**
+   * Custom render for the selected item(s).
+   */
   customItemRenderer?: (arg: SelectCustomItemRendererArg) => JSX.Element,
+  /**
+   * Label displayed on multiple selection when in "merge" mode.
+   */
   multipleSelectionLabel?: string,
+  /**
+   * The placeholder text to display in the select.
+   */
   placeholder?: string,
 }
 

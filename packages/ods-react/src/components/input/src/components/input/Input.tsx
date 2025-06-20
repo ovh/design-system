@@ -10,14 +10,32 @@ import { isValueDefined } from '../../controller/input';
 import style from './input.module.scss';
 
 interface InputProp extends ComponentPropsWithRef<'input'> {
+  /**
+   * Whether the clear button is displayed.
+   */
   clearable?: boolean,
+  /**
+   * Whether the component is in error state.
+   */
   invalid?: boolean,
+  /**
+   * Whether the component is in loading state.
+   */
   loading?: boolean,
+  /**
+   * Whether the masked display is active and its initial state.
+   */
   maskOption?: {
     enable: boolean,
     initialState?: InputMaskState,
   },
+  /**
+   * Callback fired when the input value is cleared.
+   */
   onClear?: () => void,
+  /**
+   * The input type.
+   */
   type?: InputType,
 }
 

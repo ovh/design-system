@@ -4,6 +4,9 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import style from './switchItem.module.scss';
 
 interface SwitchItemProp extends ComponentPropsWithRef<'button'> {
+  /**
+   * The value of the switch item.
+   */
   value: string,
 }
 

@@ -18,25 +18,85 @@ interface DatepickerValueChangeDetail {
   valueAsString: string,
 }
 
+/**
+ * @inheritDoc DatepickerContextType
+ */
 interface DatepickerProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue'>, DatepickerContextType {
+  /**
+   * Format the date to display in the input.
+   */
   dateFormatter?: (arg: DatepickerFormatterArg) => string,
+  /**
+   * The initial open state of the datepicker. Use when you don't need to control the open state of the datepicker.
+   */
   defaultOpen?: boolean,
+  /**
+   * The initial selected date. Use when you don't need to control the selected date of the datepicker.
+   */
   defaultValue?: Date | string,
+  /**
+   * The default view of the calendar (day, month, year).
+   */
   defaultView?: DatepickerView,
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean,
+  /**
+   * List of dates that cannot be selected.
+   */
   disabledDates?: Date[],
+  /**
+   * List of week days that cannot be selected.
+   */
   disabledWeekDays?: DATEPICKER_DAY[],
+  /**
+   * The locale to use when formatting the date.
+   */
   locale?: string,
+  /**
+   * The maximum date that can be selected.
+   */
   max?: Date | string,
+  /**
+   * The maximum view of the calendar (day, month, year).
+   */
   maxView?: DatepickerView,
+  /**
+   * The minimum date that can be selected.
+   */
   min?: Date | string,
+  /**
+   * The minimum view of the calendar (day, month, year).
+   */
   minView?: DatepickerView,
+  /**
+   * The name of the form element. Useful for form submission.
+   */
   name?: string,
+  /**
+   * Callback fired when the value changes.
+   */
   onValueChange?: (detail: DatepickerValueChangeDetail) => void,
+  /**
+   * The controlled open state of the datepicker.
+   */
   open?: boolean,
+  /**
+   * The placeholder text to display in the input.
+   */
   placeholder?: string,
+  /**
+   * Whether the component is readonly.
+   */
   readOnly?: boolean,
+  /**
+   * The controlled selected date.
+   */
   value?: Date | string,
+  /**
+   * The controlled view of the calendar (day, month, year).
+   */
   view?: DatepickerView,
 }
 

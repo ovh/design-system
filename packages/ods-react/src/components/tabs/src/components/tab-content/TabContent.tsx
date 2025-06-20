@@ -4,6 +4,9 @@ import { type ComponentPropsWithRef, type FC, type JSX } from 'react';
 import style from './tabContent.module.scss';
 
 interface TabContentProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * The value of the tab content item.
+   */
   value: string,
 }
 

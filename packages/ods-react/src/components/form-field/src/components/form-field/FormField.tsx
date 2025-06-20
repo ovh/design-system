@@ -3,7 +3,10 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import { FormFieldProvider, type FormFieldRootProp } from '../../contexts/useFormField';
 import style from './formField.module.scss';
 
-interface FormFieldProp extends ComponentPropsWithRef<'div'>, FormFieldRootProp {}
+/**
+ * @inheritDoc FormFieldRootProp
+ */
+interface FormFieldProp extends Omit<ComponentPropsWithRef<'div'>, 'id'>, FormFieldRootProp {}
 
 const FormField: FC<FormFieldProp> = forwardRef(({
   children,

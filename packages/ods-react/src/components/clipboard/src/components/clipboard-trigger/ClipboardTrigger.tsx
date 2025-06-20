@@ -8,7 +8,13 @@ import { useClipboard } from '../../contexts/useClipboard';
 import style from './clipboardTrigger.module.scss';
 
 interface ClipboardTriggerProp extends ComponentPropsWithRef<'button'> {
+  /**
+   * The initial tooltip label on copy button.
+   */
   labelCopy?: string,
+  /**
+   * The tooltip label on copy button after a successful copy.
+   */
   labelCopySuccess?: string,
 }
 

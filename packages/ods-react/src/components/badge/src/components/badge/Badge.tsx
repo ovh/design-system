@@ -5,7 +5,13 @@ import { BADGE_SIZE, type BadgeSize } from '../../constants/badge-size';
 import style from './badge.module.scss';
 
 interface BadgeProp extends ComponentPropsWithRef<'span'> {
+  /**
+   * The color preset to use.
+   */
   color?: BadgeColor,
+  /**
+   * The size preset to use.
+   */
   size?: BadgeSize,
 }
 

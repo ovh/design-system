@@ -19,19 +19,61 @@ interface PhoneNumberValueChangeDetail {
 }
 
 type PhoneNumberRootProp = {
+  /**
+   * A specific or preset list of country to display in the selector.
+   */
   countries?: PhoneNumberCountryIsoCode[] | PhoneNumberCountriesPreset,
+  /**
+   * The controlled selected country.
+   */
   country?: PhoneNumberCountryIsoCode,
+  /**
+   * The initial phone number value. Use when you don't need to control the value of the phone number.
+   */
   defaultValue?: string,
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean,
+  /**
+   * The field id.
+   */
   id?: string,
+  /**
+   * Whether the component is in error state.
+   */
   invalid?: boolean,
+  /**
+   * The locale used for the translation of the country list.
+   */
   locale?: string,
+  /**
+   * The name of the form element. Useful for form submission.
+   */
   name?: string,
+  /**
+   * Callback fired when the country changes.
+   */
   onCountryChange?: (detail: PhoneNumberCountryChangeDetail) => void,
+  /**
+   * Callback fired when the value changes.
+   */
   onValueChange?: (detail: PhoneNumberValueChangeDetail) => void,
+  /**
+   * The phone number input expected pattern.
+   */
   pattern?: string;
+  /**
+   * Whether the component is readonly.
+   */
   readOnly?: boolean,
+  /**
+   * Whether the component is required.
+   */
   required?: boolean,
+  /**
+   * The controlled phone number value.
+   */
   value?: string,
 }
 

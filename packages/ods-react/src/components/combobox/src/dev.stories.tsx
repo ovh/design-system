@@ -172,3 +172,63 @@ export const ControlledWithGroups = () => {
     </>
   );
 };
+
+export const UncontrolledMultiple = () => (
+  <Combobox items={items} multiple defaultValue={['item1', 'item2']}>
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+);
+
+export const ControlledMultiple = () => {
+  const [value, setValue] = useState<string[]>(['item1', 'item3']);
+  
+  return (
+    <>
+      <div>Selected values: {value.join(', ')}</div>
+      <Combobox
+        items={items}
+        multiple
+        value={value}
+        onValueChange={(val) => setValue(val.value)}
+      >
+        <ComboboxControl />
+        <ComboboxContent />
+      </Combobox>
+    </>
+  );
+};
+
+export const MultipleWithTags = () => {
+  const [value, setValue] = useState<string[]>(['item1']);
+  
+  const fruitsAndVegetables = [
+    { label: 'Apple', value: 'apple' },
+    { label: 'Banana', value: 'banana' },
+    { label: 'Cherry', value: 'cherry' },
+    { label: 'Dates', value: 'dates' },
+    { label: 'Elderberry', value: 'elderberry' },
+    { label: 'Fig', value: 'fig' },
+    { label: 'Carrot', value: 'carrot' },
+    { label: 'Broccoli', value: 'broccoli' },
+    { label: 'Spinach', value: 'spinach' },
+  ];
+  
+  return (
+    <div style={{ marginTop: '20px', width: '300px' }}>
+      <div style={{ marginBottom: '10px' }}>
+        Selected values: {value.join(', ')}
+      </div>
+      <Combobox
+        items={fruitsAndVegetables}
+        multiple
+        value={value}
+        onValueChange={(val) => setValue(val.value)}
+        allowCustomValue
+      >
+        <ComboboxControl clearable placeholder="Select fruit or vegetable..." />
+        <ComboboxContent />
+      </Combobox>
+    </div>
+  );
+};

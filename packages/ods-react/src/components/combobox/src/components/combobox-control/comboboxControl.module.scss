@@ -6,10 +6,18 @@
   .combobox-control {
     display: flex;
     position: relative;
+    flex-wrap: wrap;
+    align-items: center;
     margin: 0;
     border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
     border-radius: var(--ods-border-radius-sm);
+    padding: 2px;
     width: 100%;
+
+    &--multiple {
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
     &--open-bottom {
       border-bottom-left-radius: 0;
@@ -22,16 +30,24 @@
     }
 
     &__trigger {
+      display: inline-flex;
+      flex: 1;
       border: none;
       background-color: transparent;
       padding: 0;
-      width: 100%;
+      min-width: 20px;
 
       &__input {
         outline: none;
         border: none;
         background: transparent;
         width: 100%;
+
+        &--multiple {
+          flex: 1;
+          padding: 6px 2px;
+          min-width: 60px;
+        }
       }
     }
 

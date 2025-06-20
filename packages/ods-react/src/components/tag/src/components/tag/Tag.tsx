@@ -27,13 +27,12 @@ const Tag: FC<TagProp> = forwardRef(({
         className,
       )}
       ref={ ref }
-      {...props}
-    >
+      type="button"
+      { ...props }>
       { children }
       <Icon
-        className={style['tag__close']}
-        name={ICON_NAME.xmark}
-      />
+        className={ style['tag__close'] }
+        name={ ICON_NAME.xmark } />
     </button>
   );
 });

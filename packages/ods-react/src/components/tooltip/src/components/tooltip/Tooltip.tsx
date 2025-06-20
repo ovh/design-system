@@ -7,11 +7,26 @@ interface TooltipOpenChangeDetail {
 }
 
 interface TooltipProp {
+  /**
+   * Number of milliseconds before closing the tooltip.
+   */
   closeDelay?: number,
+  /**
+   * Callback fired when the tooltip open state changes.
+   */
   onOpenChange?: (detail: TooltipOpenChangeDetail) => void
+  /**
+   * The controlled open state of the tooltip.
+   */
   open?: boolean,
+  /**
+   * Number of milliseconds before opening the tooltip.
+   */
   openDelay?: number,
-  /** @type=TOOLTIP_POSITION */
+  /**
+   * @type=TOOLTIP_POSITION
+   * The tooltip position around the trigger.
+   */
   position?: TooltipPosition,
 }
 

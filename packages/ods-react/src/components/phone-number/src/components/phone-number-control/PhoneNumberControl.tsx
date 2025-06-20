@@ -6,7 +6,13 @@ import { formatPhoneNumber, getExampleNumber, isValid } from '../../controller/p
 import style from './phoneNumberControl.module.scss';
 
 interface PhoneNumberControlProp extends PhoneNumberInputProp {
+  /**
+   * Whether the clear button is displayed.
+   */
   clearable?: boolean,
+  /**
+   * Whether the component is in loading state.
+   */
   loading?: boolean,
 }
 

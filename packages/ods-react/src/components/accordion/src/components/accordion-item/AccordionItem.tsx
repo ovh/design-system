@@ -4,7 +4,13 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import style from './accordionItem.module.scss';
 
 interface AccordionItemProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * Whether the accordion item is disabled.
+   */
   disabled?: boolean;
+  /**
+   * The value of the accordion item.
+   */
   value: string;
 }
 

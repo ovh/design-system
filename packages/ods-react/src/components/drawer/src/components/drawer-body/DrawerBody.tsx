@@ -1,7 +1,6 @@
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 
-interface DrawerBodyProp extends ComponentPropsWithRef<'div'> {
-}
+interface DrawerBodyProp extends ComponentPropsWithRef<'div'> {}
 
 const DrawerBody: FC<DrawerBodyProp> = forwardRef(({
   children,

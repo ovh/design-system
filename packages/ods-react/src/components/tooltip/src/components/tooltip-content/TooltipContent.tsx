@@ -5,7 +5,13 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import style from './tooltipContent.module.scss';
 
 interface TooltipContentProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * Whether the component should be rendered in the DOM close to the body tag.
+   */
   createPortal?: boolean,
+  /**
+   * Whether the component displays an arrow pointing to the trigger.
+   */
   withArrow?: boolean,
 }
 

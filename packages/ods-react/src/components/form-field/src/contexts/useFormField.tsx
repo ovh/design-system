@@ -1,7 +1,13 @@
 import { type JSX, type ReactNode, createContext, useContext, useId, useMemo, useState } from 'react';
 
 type FormFieldRootProp = {
+  /**
+   * The field id.
+   */
   id?: string,
+  /**
+   * Whether the component is in error state.
+   */
   invalid?: boolean,
 }
 

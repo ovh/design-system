@@ -6,9 +6,21 @@ import { ICON_NAME, Icon } from '../../../../icon/src';
 import style from './code.module.scss';
 
 interface CodeProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * Whether the copy button is displayed.
+   */
   canCopy?: boolean;
+  /**
+   * The initial tooltip label on copy button.
+   */
   labelCopy?: string;
+  /**
+   * The tooltip label on copy button after a successful copy.
+   */
   labelCopySuccess?: string;
+  /**
+   * Callback fired when the text is copied.
+   */
   onCopy?: () => void,
 }
 

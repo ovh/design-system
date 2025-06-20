@@ -8,9 +8,21 @@ import { getIconName } from '../../controller/message';
 import style from './message.module.scss';
 
 interface MessageProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * The color preset to use.
+   */
   color?: MessageColor,
+  /**
+   * Whether the remove button is displayed.
+   */
   dismissible?: boolean,
+  /**
+   * Callback fired when the close button is pressed.
+   */
   onRemove?: () => void,
+  /**
+   * The variant preset to use.
+   */
   variant?: MessageVariant,
 }
 

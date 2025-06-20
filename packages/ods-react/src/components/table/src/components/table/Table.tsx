@@ -5,7 +5,13 @@ import { TABLE_VARIANT, type TableVariant } from '../../constants/table-variant'
 import style from './table.module.scss';
 
 interface TableProp extends ComponentPropsWithRef<'table'> {
+  /**
+   * The size preset to use.
+   */
   size?: TableSize,
+  /**
+   * The variant preset to use.
+   */
   variant?: TableVariant,
 }
 

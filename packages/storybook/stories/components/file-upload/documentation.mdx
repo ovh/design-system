@@ -22,14 +22,7 @@ _**File Upload** allows users to select one or more files to upload to a specifi
               atomicType={ ATOMIC_TYPE.organism }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=55-24358"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/file-upload"
-              name="File Upload"
-              relatedComponents={[
-                { name: 'Button' },
-                { name: 'Divider' },
-                { name: 'Icon' },
-                { name: 'Progress Bar' },
-                { name: 'Text' },
-              ]}>
+              name="File Upload">
   The **File Upload** component is used to enable users to upload files to a server or application.
 
   It provides a way to browse, select, and upload files, and is accompanied by progress indicators and feedback
@@ -46,13 +39,15 @@ Common use cases include form submissions, profile picture updates, and document
 
 <BestPractices
   donts={[
-    <span>- Use File Upload component in a <StorybookLink kind={ REACT_COMPONENTS_TITLE.modal } story={ STORY.documentation }>Modal</StorybookLink></span>,
+    '- Don’t place the File Upload component inside a modal unless absolutely necessary',
+    '- Don’t allow file uploads without providing feedback or confirmation',
+    '- Don’t assume users know upload limitations. Make restrictions explicit',
   ]}
   dos={[
-    '- Use one File Upload component for plural file upload inside a single page',
-    '- Use a helper with Form Field to inform users when the number of files to upload is limited',
-    '- Use short and concise success message',
-    '- Explain clearly the error context when an error occurred',
+    '- Use a single File Upload component per context when allowing users to upload multiple files on the same page',
+    '- Clearly communicate constraints such as file type, size limits, or max number of files',
+    '- Use short and clear success message once the upload is complete',
+    '- Ensure error messages are specific and actionable (e.g., “File exceeds 5MB limit” instead of a generic “Upload failed”)',
   ]}
 />
 
@@ -77,7 +72,7 @@ Common use cases include form submissions, profile picture updates, and document
 
 <Heading label="Selecting files" level={ 3 } />
 
-When selecting the "Browse" <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, the native file selection popup opens to retrieve the needed file to upload.
+When selecting the "Browse" Button, the native file selection popup opens to retrieve the needed file to upload.
 
 <Heading label="Drag & Drop" level={ 3 } />
 
@@ -89,9 +84,9 @@ Users can drag & drop a file, the drop zone being the whole **File Upload** comp
 
 When a file upload is in progress, the file name and its size are displayed.
 
-A <StorybookLink kind={ REACT_COMPONENTS_TITLE.progressBar } story={ STORY.documentation }>Progress Bar</StorybookLink> with its percentage is displayed to indicate how the upload is progressing. It remains visible as long as the file uploading is not finished yet.
+A Progress Bar with its percentage is displayed to indicate how the upload is progressing. It remains visible as long as the file uploading is not finished yet.
 
-A close icon <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is displayed as soon as a file upload is in progress. It is displayed as long as the user does not interrupt the upload or removes an already uploaded file.
+A close icon Button is displayed as soon as a file upload is in progress. It is displayed as long as the user does not interrupt the upload or removes an already uploaded file.
 
 <Heading label="With unknown size" level={ 4 } />
 
@@ -101,17 +96,17 @@ In some situations, file size is hidden in the uploading process due to an unkno
 
 <Heading label="With success" level={ 4 } />
 
-A `success` <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> is displayed, replacing the previous <StorybookLink kind={ REACT_COMPONENTS_TITLE.progressBar } story={ STORY.documentation }>Progress Bar</StorybookLink>, as soon as a file has been uploaded, meaning the upload is successful and complete.
+A `success` message is displayed, replacing the previously displayed Progress Bar, as soon as a file has been uploaded, meaning the upload is successful and complete.
 
 <Heading label="With error" level={ 4 } />
 
-If the uploading of a file went wrong, a specific `error` <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> is displayed below the uploaded file.
+If the uploading of a file went wrong, a specific `error` message is displayed below the uploaded file.
 
-The user is still able to upload another file but the `error` <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> will persist until user removes the file in `error`.
+The user is still able to upload another file but the `error` message will persist until user removes the file in `error`.
 
 When several files are in `error`, there will be an accumulation of `error` messages, each below their related files.
 
-When a file is in `error` and the user uploads a file without any issue, success <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> is triggered as expected below this file but, the `error` <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> persists below the file in error.
+When a file is in `error` and the user uploads a file without any issue, success message is triggered as expected below this file but, the `error` message persists below the file in error.
 
 Depending on the error, the global component can be displayed in an error state.
 
@@ -121,7 +116,7 @@ Depending on the error, the global component can be displayed in an error state.
 
 Number of files, maximum sizes and expected formats can be set globally inside the component.
 
-A global `error` <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink> and a <StorybookLink kind={ REACT_COMPONENTS_TITLE.divider } story={ STORY.documentation }>Divider</StorybookLink> are displayed when:
+A global `error` message and a Divider are displayed when:
 * Wrong file format has been uploaded
 * Maximum file size exceeded
 * Maximum number of files exceeded
@@ -130,11 +125,11 @@ The global component is displayed in an error state in this situation.
 
 <Heading label="Disabled" level={ 4 } />
 
-When **File Upload** is disabled, user cannot interact with the <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> and drag & drop feature is not available.
+When **File Upload** is disabled, user cannot interact with the Button and drag & drop feature is not available.
 
 <Heading label="Cancel a file upload in progress" level={ 4 } />
 
-A click or press on the `close` icon <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> interrupts the upload (or cancel an uploaded file).
+A click or press on the `close` icon Button interrupts the upload (or cancel an uploaded file).
 
 When the upload is canceled, the file upload is removed and the **File Upload** component returns to its default state, except for any other files in the queue.
 
@@ -142,18 +137,28 @@ In case some other files have already been uploaded, and the user cancels an upl
 
 <Heading label="Remove an already uploaded file" level={ 4 } />
 
-An already uploaded file can be removed by clicking or pressing the `close` icon <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> anytime.
+An already uploaded file can be removed by clicking or pressing the `close` icon Button anytime.
 
 Same as cancelling a file while it is uploading, if several files have already been uploaded and the user cancels an uploading file, the next one will take its place in the queue and so on.
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+<Heading label="Focus Management" level={ 3 } />
 
-<Heading label="Accessibility" level={ 2 } />
+When tabbing through the page, the **File Upload** trigger button receives focus as part of the natural tab order.
 
-`Tab` key allows to focus on the inner <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> element in the File Upload.
+If one or more files are being uploaded or already uploaded, each close icon button becomes focusable in the tab order, in the order files were added.
 
-`Enter`/`Space` while this <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is focused trigger the native file upload dialog.
+If the component is disabled, it cannot receive focus and no interaction is possible.
 
-You can also tabulate throughout all `close` icon <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> of uploaded files.
+The drag-and-drop area does not receive focus but accepts dropped files while the component is enabled.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Tab` moves focus forward through the **File Upload** trigger button and all available close icon buttons.
+
+Pressing `Shift` + `Tab` moves focus backward through these same elements.
+
+Pressing `Enter` or `Space` while the trigger button is focused opens the native file selection dialog.
+
+Pressing `Enter` or `Space` on a close icon button cancels an upload in progress or removes the corresponding uploaded file from the list.

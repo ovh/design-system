@@ -36,13 +36,18 @@ An optional icon **Button** may be added in order to copy its content.
 
 <BestPractices
   donts={[
-    '- Align Code text to the grid and hang its container',
-    <span>- Use Code just to display some simple text</span>,
-    '- Use Code with very long portion of code',
+    '- Don’t use the Code component to display very long code blocks',
+    '- Don’t use the Code component for non-code content',
+    '- Don’t overload the UI with code examples in places where documentation would be clearer',
+    '- Don’t use the component if the code can’t be easily understood, reused, or copied',
+    '- Don’t style code with custom formatting that breaks consistency (e.g., non-monospace fonts, shadows, etc.)',
   ]}
   dos={[
-    '- Align Code container to the grid',
-    '- Use Code for useful and reusable small portion of code',
+    '- Use the Code component to display short and reusable code snippets (e.g., command lines, config)',
+    '- Make sure the code is readable and scannable, with appropriate syntax highlighting',
+    '- Use inline code within text blocks for single tokens',
+    '- Wrap multiline snippets in a block format only when necessary and still concise',
+    '- Use monospace font and appropriate contrast ratios for accessibility and clarity',
   ]}
 />
 
@@ -67,12 +72,20 @@ The "Copy" icon **Button** can be hovered, focused and clicked.
 
 If the optional icon **Button** exists, when clicking on it, the **Code** content is copied to the user's clipboard.
 
-An event is triggered when **Code** content is copied.
+Copy label and copy success label can be customized.
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+<Heading label="Focus Management" level={ 3 } />
 
-<Heading label="Accessibility" level={ 2 } />
+The **Code** component itself is non-interactive and does not receive keyboard focus.
 
-When focusing on the "Copy" icon <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, the component can be triggered with `Space` or `Enter` keys.
+However, if the component includes a "Copy" action, the associated Copy button can be focused.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Tab` moves focus to the "Copy" button if available.
+
+Pressing `Enter` or `Space` while the "Copy" button is focused copies the code to the clipboard.
+
+Pressing `Shift` + `Tab` moves focus to the previous interactive element.

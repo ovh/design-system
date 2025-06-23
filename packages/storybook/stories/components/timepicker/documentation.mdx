@@ -34,21 +34,22 @@ It is useful for scheduling such as planning a meeting.
 
 A **Timepicker** field includes the hour, minutes and optionally seconds. It can be followed by an AM/PM indicator.
 
-For some use case, an optional time zone <StorybookLink kind={ REACT_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink> can be added to allow users to select their desired time zone from a list of options.
+For some use case, an optional time zone Select can be added to allow users to select their desired time zone from a list of options.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    '- Use a placeholder in the time field as replacement for a "label"',
-    '- Use a placeholder to provide crucial information since it will disappear after typing into the time field',
+    '- Don’t use a placeholder as a label since it disappears on input and fails accessibility standards',
+    '- Don’t rely on a placeholder to convey critical information like format or time zone. This should be communicated through helper text or labels',
+    '- Don’t use a Timepicker for ambiguous or unclear time selection use cases. Ensure it is the right fit for your form flow and user intent',
+    '- Don’t expose all global time zones unless necessary',
   ]}
   dos={[
-    '- Use a Timepicker in a form when you need to display scheduling options',
-    <span>- Add label and/or helper to the Timepicker with <StorybookLink kind={ REACT_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> component</span>,
-    '- A Timepicker can be combined with a Date picker to allow users to pick both date and time',
-    '- Use AM/PM selector when you plan to use 12 hours format',
-    '- Display a restricted list of timezones that makes sense, especially when the company or product exists only in few countries. Otherwise it adds to confusion',
+    '- Use a Timepicker when users need to select a specific time, especially for scheduling or planning scenarios',
+    '- Always pair the Timepicker with a clear label and/or helper text',
+    '- Combine the Timepicker with a datepicker when both date and time selection are needed in the same context',
+    '- When offering time zone selection, provide a restricted and relevant list to avoid overwhelming users. Limit options based on business relevance or geography',
   ]}
 />
 
@@ -74,10 +75,44 @@ A **Timepicker** can widen to match its container (width of the elements is 50% 
 
 It has the same states and behaviors for each inner component (i.e. <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> and <StorybookLink kind={ REACT_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink>).
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+<Heading label="Focus Management" level={ 3 } />
 
-<Heading label="Accessibility" level={ 2 } />
+When the **Timepicker** is focused, the first focusable segment (typically the hour Input) receives focus automatically.
 
-Each **Timepicker** fields can be browsed through tabulations.
+Focus then moves sequentially through the minute and second inputs (if present), followed by the AM/PM toggle (depending on the browser) and the optional time zone select.
+
+Each individual segment can receive focus and be navigated independently using the keyboard. If a segment (e.g., seconds or time zone) is not visible or disabled, it is skipped in the tab order.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Tab` moves focus forward through all focusable segments of the Timepicker:
+* Hour field
+* Minute field
+* Second field (if enabled)
+* AM/PM toggle (if 12-hour format)
+* Time zone Select (if present)
+
+Pressing `Shift` + `Tab` moves focus backward through the segments.
+
+When focused on an input segment (hour, minute, second):
+* Typing numeric values replaces the current value
+* Pressing `Arrow Up` increments the value
+* Pressing `Arrow Down` decrements the value
+* Pressing `Backspace` clears the content
+* Pressing `Home` or `fn` + `Arrow Up` increases the value by:
+  * 3 units for the hour segment
+  * 10 units for minutes and seconds
+* Pressing `End` or `fn` + `Arrow Down` decreases the value by:
+  * 3 units for the hour segment
+  * 10 units for minutes and seconds
+
+When focused on the AM/PM toggle:
+* Pressing `Arrow Up` or `Arrow Down` switches between AM and PM
+
+When focused on the time zone Select, keyboard shortcuts are similar to the Select component:
+* Pressing `Space` or `Arrow Down` opens the dropdown
+* `Arrow` keys navigate options
+* `Enter` or `Tab` selects the option and closes the dropdown
+* Pressing `Escape`closes the dropdown

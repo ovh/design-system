@@ -34,22 +34,22 @@ It is useful for scheduling such as planning a meeting.
 
 A **Timepicker** field includes the hour, minutes and optionally seconds. It can be followed by an AM/PM indicator.
 
-For some use case, an optional time zone Select can be added to allow users to select their desired time zone from a list of options.
+For some use case, an optional timezone Select can be added to allow users to select their desired timezone from a list of options.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    '- Don’t use a placeholder as a label since it disappears on input and fails accessibility standards',
-    '- Don’t rely on a placeholder to convey critical information like format or time zone. This should be communicated through helper text or labels',
-    '- Don’t use a Timepicker for ambiguous or unclear time selection use cases. Ensure it is the right fit for your form flow and user intent',
-    '- Don’t expose all global time zones unless necessary',
+    '- Don\'t use a placeholder as a label since it disappears on input and fails accessibility standards',
+    '- Don\'t rely on a placeholder to convey critical information like format or timezone. This should be communicated through helper text or labels',
+    '- Don\'t use a Timepicker for ambiguous or unclear time selection use cases. Ensure it is the right fit for your form flow and user intent',
+    '- Don\'t expose all global timezones unless necessary',
   ]}
   dos={[
     '- Use a Timepicker when users need to select a specific time, especially for scheduling or planning scenarios',
     '- Always pair the Timepicker with a clear label and/or helper text',
     '- Combine the Timepicker with a datepicker when both date and time selection are needed in the same context',
-    '- When offering time zone selection, provide a restricted and relevant list to avoid overwhelming users. Limit options based on business relevance or geography',
+    '- When offering timezone selection, provide a restricted and relevant list to avoid overwhelming users. Limit options based on business relevance or geography',
   ]}
 />
 
@@ -81,9 +81,9 @@ It has the same states and behaviors for each inner component (i.e. <StorybookLi
 
 When the **Timepicker** is focused, the first focusable segment (typically the hour Input) receives focus automatically.
 
-Focus then moves sequentially through the minute and second inputs (if present), followed by the AM/PM toggle (depending on the browser) and the optional time zone select.
+Focus then moves sequentially through the minute and second inputs (if present), followed by the AM/PM toggle (depending on the browser) and the optional timezone select.
 
-Each individual segment can receive focus and be navigated independently using the keyboard. If a segment (e.g., seconds or time zone) is not visible or disabled, it is skipped in the tab order.
+Each individual segment can receive focus and be navigated independently using the keyboard. If a segment (e.g., seconds or timezone) is not visible or disabled, it is skipped in the tab order.
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
@@ -111,7 +111,7 @@ When focused on an input segment (hour, minute, second):
 When focused on the AM/PM toggle:
 * Pressing `Arrow Up` or `Arrow Down` switches between AM and PM
 
-When focused on the time zone Select, keyboard shortcuts are similar to the Select component:
+When focused on the timezone Select, keyboard shortcuts are similar to the Select component:
 * Pressing `Space` or `Arrow Down` opens the dropdown
 * `Arrow` keys navigate options
 * `Enter` or `Tab` selects the option and closes the dropdown

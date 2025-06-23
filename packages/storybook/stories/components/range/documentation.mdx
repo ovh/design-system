@@ -42,15 +42,17 @@ A dual **Range** allows the user to select a numeric range value that is no less
 
 <BestPractices
   donts={[
-    '- Overuse Ranges on one page',
-    '- Use a Range when the numeric value range is infinite',
-    '- Use a Range in too small spaces on a page: it is necessary to have enough space in the UI',
-    '- Use a continuous Range when the defined range of values is too large: use a discrete Range',
+    '- Don’t overload a page with too many Range components',
+    '- Don’t place a Range in tight or constrained spaces where the control becomes hard to use or interpret',
+    '- Don’t use a continuous Range for large intervals where precision is important. Use a discrete step Range or typed input instead',
+    '- Don’t omit labels or helper text',
   ]}
   dos={[
-    '- Use a Range when the user needs a way to select a value within a range',
-    <span>- Include a label on a Range, such as the one provided by <StorybookLink kind={ REACT_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> component, to explain the purpose of the Range</span>,
-    '- Add a default numeric value',
+    '- Use a Range component when users need to select a value (or values) within a defined numeric interval',
+    '- Label the Range clearly using a Form Field to indicate what the value represents',
+    '- Provide a default value or starting range to guide users and avoid ambiguity',
+    '- Use a dual Range when allowing users to set a minimum and maximum value',
+    '- Make sure the Range has enough horizontal space to be usable and legible',
   ]}
 />
 
@@ -74,7 +76,7 @@ It has a width by default, but it can widen to match its container.
 
 The **Range** can also be used inside components.
 
-It also can be combined with other elements such as an <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> for a better control of the value selection.
+It also can be combined with other elements such as an input for a better control of the value selection.
 
 <Heading label="Behavior" level={ 2 } />
 
@@ -82,12 +84,28 @@ A **Range** can be focused and hovered. It also can be disabled.
 
 The user can select a numeric value by clicking and dragging the thumb along the track.
 
-An event is triggered when the **Range** value(s) changes.
+<Heading label="Navigation" level={ 2 } />
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Focus Management" level={ 3 } />
 
-N/A
+The **Range** component can be focused. Focus will land on the first thumb if multiple are present.
 
-<Heading label="Accessibility" level={ 2 } />
+When multiple thumbs are used, each thumb can receive focus individually.
 
-Each **Range** thumb can be focused using `Tabulation`, using `Up` and `Right` arrows increases its value, `Down` and `Left` keys decreases it.
+Disabled **Range** and disabled thumbs cannot be focused or interacted with.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Arrow Right` or `Arrow Up` increases the value of the focused thumb by one step.
+
+Pressing `Arrow Left` or `Arrow Down` decreases the value of the focused thumb by one step.
+
+Pressing `Page Up` or `Shift` + `Arrow Right` increases the value by a larger step.
+
+Pressing `Page Down` or `Shift` + `Arrow Down` decreases the value by a larger step.
+
+Pressing `Home` or `fn` + `Arrow Left` sets the value to the minimum.
+
+Pressing `End` or `fn` + `Arrow Right` sets the value to the maximum.
+
+Pressing `Tab` and `Shift` + `Tab` allow navigation between multiple thumbs (if present).

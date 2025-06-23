@@ -30,22 +30,23 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 <Heading label="Usage" level={ 2 } />
 
 **Phone Number** component should be used when there is a need to collect the user's phone number, in a form for instance:
-- As <StorybookLink kind={ REACT_COMPONENTS_TITLE.formField } story={ STORY.documentation }>Form Field</StorybookLink> in an user profile
-- As in contact/appointment form
+- An user profile
+- A contact/appointment form
 - For telecom configuration
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    '- Force a strict format to users',
-    <span>- Make a Phone Number <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> as required without explaining to users why this field is required</span>,
-    '- Assume exclusive use of mobile phone numbers',
+    '- Don’t enforce a rigid format (e.g., requiring users to enter parentheses or dashes), prioritize forgiving input',
+    '- Don’t make the field required without context. Explain clearly why the phone number is needed (e.g., for account recovery or verification)',
+    '- Don’t assume all users have mobile numbers. Allow landline formats where applicable',
+    '- Don’t display country codes or formats that aren\'t relevant to your supported markets',
   ]}
   dos={[
-    '- Validate Phone number format when user leaves the field',
-    <span>- Use Phone Number without the optional country indicator <StorybookLink kind={ REACT_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink> when you only accept user's locale as selection</span>,
-    '- Use a helper when validation is in error state (expected number of characters, expected format...)',
+    '- Use the country indicator Select when your application supports international phone numbers',
+    '- Display helper text or error messaging to guide users if the input format is incorrect (e.g., expected digit count or formatting rules)',
+    '- If phone numbers are only accepted in the user\'s locale, use the component without the country code Select',
   ]}
 />
 
@@ -67,8 +68,6 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 When the user selects a country, it determines the format used to validate their phone number. If selected country has been modified, expected format and placeholder will be updated.
 
 If the field content is in error state (i.e. missing or wrong characters), the whole **Phone Number** component becomes in error state.
-
-An event is triggered when the <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> value changes.
 
 The country selector allows users to navigate to the desired country option by typing letters while focused on the country selector.
 
@@ -94,10 +93,33 @@ If the given property is not defined or recognized, the component attempts to de
 
 If the browser's locale is not recognized, the component defaults to the first ISO code in the predefined country list.
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+<Heading label="Focus Management" level={ 3 } />
 
-<Heading label="Accessibility" level={ 2 } />
+When the **Phone Number** component is focused, focus is first set to the country selector dropdown, if present, or directly to the Input field.
 
-Keyboard navigation is the same as <StorybookLink kind={ REACT_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink> and <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink> does, `Tab` key allows to focus to one another.
+Each subcomponent (Select and Input) can be focused independently using keyboard navigation.
+
+If the country selector is disabled or not rendered, focus starts directly on the Input field.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Tab` moves focus forward:
+* First to the country selector (if present and enabled)
+* Then to the Phone Number Input field
+
+Pressing `Shift` + `Tab` moves focus backward through these elements.
+
+While focused on the country selector, keyboard shortcuts are similar to the Select component:
+* Pressing `Space` or `Arrow Down` opens the dropdown
+* Pressing `Arrow` keys navigates through the list of countries
+* Pressing `Home`/`fn`+ `Arrow Up` or `End`/`fn` + `Arrow Down` jumps to the first or last option
+* Typing letters focuses the first country whose name starts with the typed character
+* Pressing `Enter` or `Tab` selects the focused country and closes the dropdown
+* Pressing `Escape` closes the dropdown without selection
+
+While focused on the Input field:
+* Typing numeric characters enters the phone number
+* Pressing `Backspace` deletes the last character
+* Pressing `Arrow Left` or `Arrow Right` moves the cursor within the input

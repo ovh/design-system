@@ -36,14 +36,15 @@ It can be used for many use cases such as selecting a state within a group of st
 
 <BestPractices
   donts={[
-    <span>- Use a Switch when there are more than four options to display to the user: use others component such as <StorybookLink kind={ REACT_COMPONENTS_TITLE.checkbox } story={ STORY.documentation }>Checkbox</StorybookLink> button, <StorybookLink kind={ REACT_COMPONENTS_TITLE.radioGroup } story={ STORY.documentation }>Radio</StorybookLink> button or <StorybookLink kind={ REACT_COMPONENTS_TITLE.select } story={ STORY.documentation }>Select</StorybookLink></span>,
-    <span>- Use a Switch when you are not expecting an immediate effect by clicking on it: use a <StorybookLink kind={ REACT_COMPONENTS_TITLE.checkbox } story={ STORY.documentation }>Checkbox</StorybookLink> component instead</span>,
-    '- Use a Switch with states, actions or options that are not strongly related',
+    '- Don’t use a Switch for more than 4 options. Prefer Radio Group, Checkbox, or Select instead depending on your use case',
+    '- Don’t use a Switch for unrelated options, they should belong to a common category or context',
+    '- Don’t use a Switch if selecting an option does not produce an immediate effect. Use a Checkbox or another control instead',
+    '- Don’t rely solely on icons, add text for clarity',
   ]}
   dos={[
-    '- Use a Switch when the user has to select only one state or action active at a time',
-    '- Make it clear in every Switch control content about what the user is selecting: give a strong indication',
-    <span>- Consider whether a <StorybookLink kind={ REACT_COMPONENTS_TITLE.text } story={ STORY.documentation }>Text</StorybookLink>, an <StorybookLink kind={ REACT_COMPONENTS_TITLE.icon } story={ STORY.documentation }>Icon</StorybookLink>, or both would suit better to your Switch controls content</span>,
+    '- Use a Switch when the user must choose one active option among 2 to 4 closely related states or actions',
+    '- Ensure each Switch item has a clear, descriptive label',
+    '- Use a Switch when immediate feedback or real-time filtering is expected upon selection',
   ]}
 />
 
@@ -59,23 +60,37 @@ It can be used for many use cases such as selecting a state within a group of st
 <Heading label="Placement" level={ 2 } />
 
 A **Switch** can be used in a page when the user needs to select a choice from multiple states or items.
-It may replace two <StorybookLink kind={ REACT_COMPONENTS_TITLE.radioGroup } story={ STORY.documentation }>Radio</StorybookLink> buttons or a single <StorybookLink kind={ REACT_COMPONENTS_TITLE.checkbox } story={ STORY.documentation }>Checkbox</StorybookLink> to allow users to choose between several states.
+It may replace two radio buttons or a single checkbox to allow users to choose between several states.
 
-By default, the width of a **Switch** control is defined by the length of content.
-A custom width can be set so all controls on the track will have the same size regardless of content length.
+By default, the width of a **Switch** item is defined by the length of content.
+A custom width can be set so all items on the track will have the same size regardless of content length.
 
 <Heading label="Behavior" level={ 2 } />
 
-**One of the controls is always selected by default.**
+The user can switch between states by clicking the **Switch** items, and it has an immediate effect.
 
-The user can switch between states by clicking the **Switch** controls, and it has an immediate effect.
+<Heading label="Navigation" level={ 2 } />
 
-An event is triggered when the **Switch** item changes.
+<Heading label="Focus Management" level={ 3 } />
 
-<Heading label="Variation" level={ 2 } />
+When the **Switch** receives focus, it is set on the currently selected item, or on the first item if none is selected.
 
-N/A
+Each individual **Switch** item is focusable unless disabled. A disabled item cannot receive focus or be activated.
 
-<Heading label="Accessibility" level={ 2 } />
+Focus remains within the group when navigating between items using arrow keys.
 
-All **Switch** items can be focused using `Tabulation`, selecting an item can be done using `Space`/`Enter` keys.
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Tab` moves focus to the selected item or the first item in the group.
+
+Pressing `Shift` + `Tab` moves focus to the previous focusable element outside the **Switch** group.
+
+Pressing `Arrow Right` or `Arrow Down` moves focus to the next item in the group.
+
+Pressing `Arrow Left` or `Arrow Up` moves focus to the previous item in the group.
+
+Pressing `Home` (or `fn` + `Arrow Left`) moves focus to the first item.
+
+Pressing `End` (or `fn` + `Arrow Right`) moves focus to the last item.
+
+Pressing `Space` or `Enter` activates or desactivates the focused item, updating the selection immediately.

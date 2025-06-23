@@ -39,19 +39,22 @@ It can be used in following use cases when you need to allow the user to:
 - turn an option or settings on or off
 - add or remove an item or an option
 
-A **Toggle** should never require users to press a <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> to apply their settings (if a setting requires a <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>, use a <StorybookLink kind={ REACT_COMPONENTS_TITLE.checkbox } story={ STORY.documentation }>Checkbox</StorybookLink> instead).
+A **Toggle** should never require users to press a button to apply their settings (if a setting requires a button, use a checkbox instead).
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    <span>- Use a Toggle when you are not expecting an immediate effect by clicking on it: use a <StorybookLink kind={ REACT_COMPONENTS_TITLE.checkbox } story={ STORY.documentation }>Checkbox</StorybookLink> component instead</span>,
+    '- Don’t use a Toggle for changes that only take effect after form submission. Use a Checkbox instead',
+    '- Don’t use ambiguous or overly long labels',
+    '- Don’t use Toggles for multi-state or complex options since they are meant for binary (on/off) interactions only',
   ]}
   dos={[
-    '- Use a Toggle when you need to allow users to adjust settings on mobile',
-    '- A Toggle can be used in a form when it has an immediate effect inside the form to avoid a failed selection when submitted',
-    '- When other elements are displayed by clicking on the Toggle, make sure that these elements are located next to the Toggle so it is clear to the user',
-    '- Add a label to the Toggle that explains what will happen when the user set it to "on" or "off" position: keep it clear and concise',
+    '- Use a Toggle to switch between two states when the change has an immediate effect (e.g., turning a setting on or off)',
+    '- Ensure the Toggle label clearly describes the "on" state, so users understand what enabling it will do',
+    '- Place any related elements (e.g., changes triggered by the Toggle) close to the Toggle to reinforce the connection visually',
+    '- Use Toggles in mobile-friendly settings where quick, touch-based interactions are expected',
+    '- Use Toggle in forms only when the change takes effect immediately and does not require submission to apply',
   ]}
 />
 
@@ -78,10 +81,18 @@ When the user clicks on a **Toggle**, it has an immediate effect:
 - set to "on" position, the thumb will slide to the right of the track
 - set to "off" position, the thumb will slide to the left of the track
 
-<Heading label="Variation" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
+<Heading label="Focus Management" level={ 3 } />
 
-<Heading label="Accessibility" level={ 2 } />
+When the **Toggle** component is focused, focus is automatically set to the **Toggle** itself.
 
-When focused, **Toggle** can be triggered using `Space` or `Enter` keys.
+A disabled **Toggle** cannot receive focus and cannot be toggled.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Tab` moves focus to the **Toggle** component.
+
+Pressing `Shift` + `Tab` moves focus backward to the previous focusable element.
+
+When focused, pressing `Space` or `Enter` immediately changes the **Toggle**'s state from on to off or off to on.

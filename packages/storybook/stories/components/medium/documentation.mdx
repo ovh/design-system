@@ -34,11 +34,15 @@ When the asset is an image, it should be mostly presentation to draw user's atte
 
 <BestPractices
   donts={[
-    '- Avoid assets with text in them since screen readers won\'t be able to read the words',
-    '- Avoid unnecessary decoration',
+    '- Don’t use Medium with embedded text that cannot be read by screen readers',
+    '- Don’t overload pages with high-resolution medium that may slow down load times',
+    '- Don’t stretch or distort Medium to fit containers, maintain proportions and visual quality',
+    '- Don’t rely on Medium alone to convey essential information. Always provide a textual equivalent when needed',
   ]}
   dos={[
-    '- Provide captions or descriptions for media content where applicable',
+    '- Use the Medium component to display images and media consistently across the application',
+    '- Provide alt text, captions, or descriptions where appropriate, to ensure accessibility and context',
+    '- Ensure responsive behavior so medium adapts well to different screen sizes',
   ]}
 />
 
@@ -46,14 +50,6 @@ When the asset is an image, it should be mostly presentation to draw user's atte
 
 The width and height dimensions of the image can be set to fixed sizes.
 
-<Heading label="Behavior" level={ 2 } />
+<Heading label="Navigation" level={ 2 } />
 
-N/A
-
-<Heading label="Variation" level={ 2 } />
-
-N/A
-
-<Heading label="Accessibility" level={ 2 } />
-
-An alternative text description is mandatory to describe the information the asset may bring to the user.
+The **Medium** component is non-interactive and does not receive keyboard focus. It is used solely for displaying media content and does not impact keyboard navigation.

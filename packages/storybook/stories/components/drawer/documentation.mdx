@@ -35,16 +35,19 @@ The **Drawer** component is ideal for use cases where content should be revealed
 - Detail views or contextual information
 
 <BestPractices
-  dos={[
-    '- Use the Drawer for complementary actions or information that need to stay connected to the current page context',
-    '- Ensure the Drawer does not interfere with page content when open',
-    '- Allow the Drawer to be dismissed via a clear and accessible trigger',
-    '- Customize the width, height, or style to fit your layout and use case'
-  ]}
   donts={[
-    '- Use the Drawer for displaying purely informational content — prefer a Modal or Message component instead',
-    '- Use more than two Drawers on the same page, as it can confuse users',
-    '- Use very wide Drawers that obscure the main page content',
+    '- Don’t add more than one open Drawer at a time',
+    '- Don’t use excessively large Drawers that cover most or all of the page',
+    '- Don’t rely on Drawers for critical actions that require user confirmation, Modals are better suited for that',
+    '- Don’t leave Drawers open without a visible way to close them, always provide a clear exit path',
+  ]}
+  dos={[
+    '- Use a Drawer to display contextual content or actions that stay relevant to the current page (e.g., filters, side forms, settings)',
+    '- Allow the Drawer to be dismissed via clear and accessible interactions (e.g., close button, escape key, clicking outside)',
+    '- Customize the Drawer’s width, height, and placement to match your layout and content needs',
+    '- Keep transitions smooth and responsive, respecting the expected animation duration (e.g., 300ms) in the OVHcloud Design System',
+    '- Maintain proper layering and z-index behavior',
+    '- Use Drawers to maintain continuity of the user’s workflow without breaking the page context',
   ]}
 />
 
@@ -83,14 +86,24 @@ Animation: The **Drawer** slides into view with a smooth animation (default dura
 
 The **Drawer** can slide in from the left, right, top, or bottom, depending on its configuration and the layout of the page.
 
+<Heading label="Navigation" level={ 2 } />
+
+<Heading label="Focus Management" level={ 3 } />
+
+When the **Drawer** is opened, focus automatically moves to the first focusable element inside.
+
+When the **Drawer** is closed, focus returns to the trigger element unless overridden by the integrator.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Escape` closes the **Drawer**.
+
+Pressing `Tab` moves focus forward through the focusable elements inside the **Drawer**.
+
+Pressing `Shift` + `Tab` moves focus backward within the **Drawer**.
+
+Once the last focusable element is reached, focus does not leave the **Drawer** unless it is closed.
+
 <Heading label="Accessibility" level={ 2 } />
 
 - **Aria attributes**: The **Drawer** reacts to the aria-expanded attribute to indicate its state
-- **Focus management**:
-- When expanded, focus moves inside the **Drawer** and is set to the first focusable element by default
-- When collapsed, focus returns to the trigger element unless specified otherwise by the integrator
-
-When **Drawer** is opened :
-- `Escape` key will dismiss it
-- `Tabulation` allows to move forward through any focusable element in the **Drawer** (e.g. action <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>)
-- `Shift + Tab` allows the opposite way to move backward in focusing items

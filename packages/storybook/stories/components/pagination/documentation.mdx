@@ -40,12 +40,16 @@ A **Pagination** component is used in two situations :
 
 <BestPractices
   donts={[
-    '- Use Pagination component for less than 2 pages to handle',
-    '- For an unpredicted number of pages, prefer the use of infinite scrolling rather than a Pagination',
+    '- Don’t use Pagination when the total content fits into a single page',
+    '- Avoid Pagination if the number of pages is unpredictable or constantly changing. In those cases, consider infinite scrolling or "Load more" patterns instead',
+    '- Don’t make Pagination the only method of navigation if users might need to filter or search within the dataset',
   ]}
   dos={[
-    '- Use when user needs to maintain a sense of position and order inside a set of elements',
-    '- When using Pagination, please display preferably ~25 items of the related set on each page',
+    '- Use Pagination when users need to navigate through large datasets in a structured and orderly way',
+    '- Ensure Pagination is used when the total number of pages is known or predictable',
+    '- Display a reasonable number of items per page (typically around 20–30) to balance readability and navigation',
+    '- Use Next/Previous buttons and page numbers to help users track their position within the dataset',
+    '- Use Next/Previous buttons and page numbers to help users track their position within the dataset',
   ]}
 />
 
@@ -104,21 +108,22 @@ Depending on the current page number and the amount of pages, here are the diffe
 - an ellipsis,
 - the last numbered <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink>
 
-<Heading label="Navigation" level={ 3 } />
+<Heading label="Navigation" level={ 2 } />
 
-Current page <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> has a selected styling, yet it is a not clickable.
+<Heading label="Focus Management" level={ 3 } />
 
-If the selected page number is the first page, the previous page arrow <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> is disabled; same thing applies with the last page as selected and the next page arrow <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> disabled.
+When tabbing through the page, focus moves sequentially through all interactive elements in the **Pagination** component.
 
-An event is triggered when the current page changes in the Pagination, as well as the items per page changes.
+The current page Button is not interactive.
 
-<Heading label="Variation" level={ 2 } />
+Disabled navigation Buttons (e.g., “Previous” on the first page) are skipped in the tab order.
 
-N/A
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-<Heading label="Accessibility" level={ 2 } />
+Pressing `Tab` moves focus forward through all interactive elements in the **Pagination** (Select, Buttons).
 
-All <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink> are accessible via tabulation controls.
+Pressing `Shift` + `Tab` moves focus backward.
 
-Previous and next page arrow <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Buttons</StorybookLink> are labelled as their explicit usage.
+Pressing `Enter` or `Space` on a page button, "Previous", or "Next" triggers the corresponding page change.
 
+The "items per page" Select uses the same keyboard shortcuts as the standard Select component.

@@ -8,7 +8,7 @@
   }
 
   .combobox-tag--focused {
-    outline: 2px solid var(--ods-color-primary-400);
-    background-color: var(--ods-color-primary-200);
+    border-color: var(--ods-color-information-200);
+    background-color: var(--ods-color-information-100);
   }
-} 
+}

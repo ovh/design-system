@@ -66,12 +66,13 @@ const ComboboxTags: FC<ComboboxTagsProps> = forwardRef(({
     >
       {value.map((val, index) => (
         <Tag
-          key={val}
-          value={val}
-          onClick={() => handleTagClick(val)}
           className={classNames({
             [style['combobox-tag--focused']]: focusedTagIndex === index,
           })}
+          key={val}
+          onClick={() => handleTagClick(val)}
+          tabIndex={-1}
+          value={val}
         >
           {findLabelForValue(items, val)}
         </Tag>

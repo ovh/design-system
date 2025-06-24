@@ -48,6 +48,10 @@
               border-color: var(--ods-color-form-element-border-critical);
             }
           }
+
+          &[data-invalid] {
+            background-color: var(--ods-color-form-element-background-selected-critical);
+          }
         }
 
         #{$control}__thumb {

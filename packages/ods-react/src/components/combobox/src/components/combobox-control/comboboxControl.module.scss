@@ -35,7 +35,6 @@
       border: none;
       background-color: transparent;
       padding: 0;
-      min-width: 20px;
 
       &__input {
         outline: none;
@@ -45,8 +44,6 @@
 
         &--multiple {
           flex: 1;
-          padding: 6px 2px;
-          min-width: 60px;
         }
       }
     }

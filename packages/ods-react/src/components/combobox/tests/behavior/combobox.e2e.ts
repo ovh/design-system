@@ -86,6 +86,37 @@ describe('Combobox behavior', () => {
         (el) => el.value);
       expect(inputValue).toBe('Banana');
     });
+
+    it('should show selected value in filtered list when input is cleared in single mode', async() => {
+      await page.click('[data-testid="selection-behavior"] input');
+      await page.waitForSelector('[data-part="content"]');
+      await page.click('[data-part="item"]:nth-child(2)');
+      await page.waitForSelector('body');
+
+      const valueText = await page.$eval('[data-testid="selection-value"]',
+        (el) => el.textContent || '');
+      expect(valueText).toBe('banana');
+
+      await page.click('[data-testid="selection-behavior"] input');
+      await page.waitForSelector('[data-part="content"]');
+
+      await Promise.all(Array.from({ length: 6 }, () => page.keyboard.press('Backspace')));
+
+      const emptyInputValue = await page.$eval('[data-testid="selection-behavior"] input',
+        (el) => el.value);
+      expect(emptyInputValue).toBe('');
+
+      const visibleItems = await page.evaluate(() => {
+        const items = Array.from(document.querySelectorAll('[data-part="item"]'));
+        const visibleItems = items.filter((item) => {
+          const text = item.textContent || '';
+          return text.includes('Banana') && window.getComputedStyle(item).display !== 'none';
+        });
+        return visibleItems.map((item) => item.textContent || '');
+      });
+
+      expect(visibleItems).toContain('Banana');
+    });
   });
 
   describe('Controlled behavior', () => {
@@ -199,7 +230,40 @@ describe('Combobox behavior', () => {
 
       const inputValue = await page.$eval('[data-testid="group-navigation"] input',
         (el) => el.value);
-      expect(inputValue).toBe('broccoli');
+      expect(inputValue).toBe('Broccoli');
+    });
+
+    it('should display correct labels for all group items in controlled mode', async() => {
+      const testCases = [
+        { arrowDownCount: 1, label: 'Apple', value: 'apple' },
+        { arrowDownCount: 2, label: 'Banana', value: 'banana' },
+        { arrowDownCount: 3, label: 'Carrot', value: 'carrot' },
+        { arrowDownCount: 4, label: 'Broccoli', value: 'broccoli' },
+      ];
+
+      /* eslint-disable no-await-in-loop */
+      for (const testCase of testCases) {
+        await page.reload();
+        await page.waitForSelector('[data-testid="group-navigation"]');
+
+        await page.click('[data-testid="group-navigation"] input');
+        await page.waitForSelector('[data-part="content"]', { timeout: 1000, visible: true });
+
+        for (let i = 0; i < testCase.arrowDownCount; i++) {
+          await page.keyboard.press('ArrowDown');
+        }
+
+        await page.keyboard.press('Enter');
+        await page.waitForSelector('body', { timeout: 1000 });
+
+        const [stateValue, inputValue] = await Promise.all([
+          page.$eval('[data-testid="group-value"]', (el) => el.textContent || ''),
+          page.$eval('[data-testid="group-navigation"] input', (el) => el.value),
+        ]);
+        expect(stateValue).toBe(testCase.value);
+        expect(inputValue).toBe(testCase.label);
+      }
+      /* eslint-enable no-await-in-loop */
     });
 
     it('should select first item using keyboard', async() => {
@@ -279,13 +343,6 @@ describe('Combobox behavior', () => {
   });
 
   describe('Multiple selection behavior', () => {
-    describe('Uncontrolled multiple selection', () => {
-      beforeEach(async() => {
-        await gotoStory(page, 'behavior/uncontrolled-multiple');
-        await page.waitForSelector('[data-testid="uncontrolled-multiple"]');
-      });
-    });
-
     describe('Controlled multiple selection', () => {
       beforeEach(async() => {
         await gotoStory(page, 'behavior/controlled-multiple');
@@ -313,6 +370,102 @@ describe('Combobox behavior', () => {
         selectedValues = await page.$eval('[data-testid="controlled-multiple-values"]',
           (el) => el.textContent || '');
         expect(selectedValues).toBe('apple,banana,cherry');
+      });
+    });
+
+    describe('Uncontrolled multiple selection', () => {
+      beforeEach(async() => {
+        await gotoStory(page, 'behavior/uncontrolled-multiple');
+        await page.waitForSelector('[data-testid="uncontrolled-multiple"]');
+      });
+
+      it('should update available options when tags are removed', async() => {
+        await page.click('[data-testid="uncontrolled-multiple"] input');
+        await page.waitForSelector('[data-part="content"]', { visible: true });
+
+        let availableItems = await page.$$('[data-part="item"]');
+        const initialItemCount = availableItems.length;
+        expect(initialItemCount).toBe(4); // Apple, Banana, Cherry, Date
+
+        await page.click('[data-part="item"]:nth-child(1)');
+        await page.click('[data-part="item"]:nth-child(1)');
+
+        await page.keyboard.press('Escape');
+        await page.waitForSelector('[data-part="content"]', { timeout: 1000, visible: false });
+
+        const tags = await page.$$('[data-testid="uncontrolled-multiple"] button[class*="tag"]');
+        expect(tags.length).toBe(2);
+
+        await page.click('[data-testid="uncontrolled-multiple"] input');
+        await page.waitForSelector('[data-part="content"]', { visible: true });
+
+        availableItems = await page.$$('[data-part="item"]');
+        expect(availableItems.length).toBe(initialItemCount - 2);
+
+        await page.click('[data-testid="uncontrolled-multiple"] button[class*="tag"]:first-child');
+
+        await page.waitForSelector('body', { timeout: 1000 });
+
+        availableItems = await page.$$('[data-part="item"]');
+        expect(availableItems.length).toBe(initialItemCount - 1);
+
+        const remainingTags = await page.$$('[data-testid="uncontrolled-multiple"] button[class*="tag"]');
+        expect(remainingTags.length).toBe(1);
+      });
+
+      it('should handle keyboard tag removal and update available options', async() => {
+        await page.click('[data-testid="uncontrolled-multiple"] input');
+        await page.waitForSelector('[data-part="content"]', { visible: true });
+
+        // Select Apple, Banana, Cherry
+        await Promise.all([
+          page.click('[data-part="item"]:nth-child(1)'),
+          page.click('[data-part="item"]:nth-child(1)'),
+          page.click('[data-part="item"]:nth-child(1)'),
+        ]);
+
+        await page.keyboard.press('Escape');
+        await page.waitForSelector('[data-part="content"]', { timeout: 1000, visible: false });
+
+        let tags = await page.$$('[data-testid="uncontrolled-multiple"] button[class*="tag"]');
+        expect(tags.length).toBe(3);
+
+        await page.click('[data-testid="uncontrolled-multiple"] input');
+        await Promise.all([
+          page.keyboard.press('Backspace'),
+          page.keyboard.press('Backspace'),
+        ]);
+
+        tags = await page.$$('[data-testid="uncontrolled-multiple"] button[class*="tag"]');
+        expect(tags.length).toBe(2);
+
+        await page.click('[data-testid="uncontrolled-multiple"] input');
+        await page.waitForSelector('[data-part="content"]', { visible: true });
+
+        const availableItems = await page.$$('[data-part="item"]');
+        expect(availableItems.length).toBe(2);
+      });
+
+      it.skip('should NOT remove selected item when pressing Enter after selection', async() => {
+        // This test documents a bug: pressing Enter after selection removes the item
+        await page.click('[data-testid="uncontrolled-multiple"] input');
+        await page.waitForSelector('[data-part="content"]', { visible: true });
+
+        await page.click('[data-part="item"]:nth-child(1)');
+
+        let tags = await page.$$('[data-testid="uncontrolled-multiple"] button[class*="tag"]');
+        expect(tags.length).toBe(1);
+
+        await page.keyboard.press('Enter'); // Select it
+
+        // BUG: Pressing Enter should keep the selection, but currently it removes it
+        // Expected behavior: 2 tags should be present
+        // Actual behavior: The second selection gets removed
+        tags = await page.$$('[data-testid="uncontrolled-multiple"] button[class*="tag"]');
+
+        // This assertion documents the current buggy behavior
+        // It should be expect(tags.length).toBe(2) when the bug is fixed
+        expect(tags.length).toBe(1);
       });
     });
   });

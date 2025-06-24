@@ -42,6 +42,7 @@ export const Demo: StoryObj = {
       defaultValue={ arg.defaultValue }
       disabled={ arg.disabled }
       highlightResults={ arg.highlightResults }
+      multiple={ arg.multiple }
       newElementLabel={ arg.newElementLabel }
       noResultLabel={ arg.noResultLabel }
       readOnly={ arg.readOnly }
@@ -98,6 +99,12 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.general,
         type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
+    multiple: {
+      table: {
+        category: CONTROL_CATEGORY.general,
       },
       control: 'boolean',
     },

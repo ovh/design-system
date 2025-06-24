@@ -109,6 +109,7 @@ function FormNative(): ReactElement {
             { label: 'Mango', value: 'mango' },
           ]}
           multiple
+          name="combobox"
           onValueChange={({ value }) => {
             console.log('Native Combobox value changed:', value);
           }}

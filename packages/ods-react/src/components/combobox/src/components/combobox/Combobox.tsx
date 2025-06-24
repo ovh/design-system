@@ -30,9 +30,11 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   const currentValue = value && value.length > 0 ? value : internalValue;
 
   useEffect(() => {
-    if (currentValue && currentValue.length > 0 && !multiple) {
+    if (!multiple && currentValue.length > 0) {
       const label = findLabelForValue(items, currentValue[0]);
       setInputValue(label);
+    } else if (multiple) {
+      setInputValue('');
     }
   }, [currentValue, items, multiple]);
 
@@ -41,9 +43,10 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
     customOptionRenderer,
     inputValue,
     items,
+    multiple,
     newElementLabel,
     value: currentValue,
-  }), [allowCustomValue, customOptionRenderer, inputValue, items, newElementLabel, currentValue]);
+  }), [allowCustomValue, customOptionRenderer, inputValue, items, multiple, newElementLabel, currentValue]);
 
   const flatItems = useMemo(() => flattenItems(filteredItems), [filteredItems]);
   const collection = useMemo(() => createListCollection({ items: flatItems }), [flatItems]);
@@ -79,9 +82,9 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
       multiple={multiple}
       newElementLabel={newElementLabel}
       noResultLabel={noResultLabel}
-      onValueChange={onValueChange}
+      onValueChange={handleValueChange}
       readOnly={readOnly}
-      value={value}
+      value={currentValue}
     >
       <VendorCombobox.Root
         className={className}
@@ -100,7 +103,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
         readOnly={readOnly}
         ref={ref}
         selectionBehavior={ multiple ? 'clear' : 'replace' }
-        value={value}
+        value={currentValue}
         {...props}
       >
         {children}

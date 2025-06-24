@@ -30,6 +30,7 @@
 
         &[data-invalid] {
           border-color: var(--ods-color-form-element-border-critical);
+          background-color: var(--ods-color-form-element-background-selected-critical);
         }
       }
     }

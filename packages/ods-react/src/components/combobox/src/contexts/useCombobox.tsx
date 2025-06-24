@@ -1,5 +1,11 @@
 import { type ComboboxInputValueChangeDetails, type ComboboxValueChangeDetails } from '@ark-ui/react/combobox';
-import { type ComponentPropsWithRef, type ReactNode, createContext, useContext } from 'react';
+import { type ComponentPropsWithRef, type ReactNode, createContext, useCallback, useContext, useEffect, useState } from 'react';
+import {
+  calculateNewFocusIndex,
+  isKeyboardEventAtInputStart,
+  removeValueFromArray,
+  shouldResetTagFocus,
+} from '../controller/combobox';
 
 type ComboboxItem = {
   disabled?: boolean;
@@ -25,19 +31,33 @@ type ComboboxProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
   highlightResults?: boolean,
   items: ComboboxItemOrGroup[],
   multiple?: boolean,
+  name?: string,
   newElementLabel?: string,
   noResultLabel?: string,
   onValueChange?: (value: ComboboxValueChangeDetails) => void,
   readOnly?: boolean,
   value?: string[]
-}
+};
+
+type TagFocusState = {
+  focusLastTag: (tagCount: number) => void;
+  focusedIndex: number | null;
+  resetTagFocus: () => void;
+  setTagIndex: (index: number | null) => void;
+};
 
 type ComboboxContextType = ComboboxProp & {
   filteredItems?: ComboboxItemOrGroup[];
+  handleTagRemove: (tagValue: string) => void,
+  handleTagsKeyDown: (e: React.KeyboardEvent<HTMLInputElement>, inputRef: React.RefObject<HTMLInputElement>) => void,
+  isOpen?: boolean,
+  setIsOpen?: (open: boolean) => void,
+  tagFocus: TagFocusState,
 };
 
-interface ComboboxProviderProp extends ComboboxContextType {
+interface ComboboxProviderProp extends ComboboxProp {
   children: ReactNode;
+  filteredItems?: ComboboxItemOrGroup[];
 }
 
 interface ComboboxItemProp extends ComponentPropsWithRef<'div'> {
@@ -73,17 +93,103 @@ function useCombobox(): ComboboxContextType {
 
 const ComboboxProvider = ({
   children,
-  defaultValue,
-  onValueChange,
+  multiple,
   value,
+  onValueChange,
+  filteredItems,
   ...props
 }: ComboboxProviderProp): JSX.Element => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [focusedTagIndex, setFocusedTagIndex] = useState<number | null>(null);
+  const currentValue = value || [];
+
+  useEffect(() => {
+    if (!isOpen) {
+      setFocusedTagIndex(null);
+    }
+  }, [isOpen]);
+
+  const tagFocus: TagFocusState = {
+    focusLastTag: useCallback((tagCount: number) => {
+      if (tagCount > 0) {
+        setFocusedTagIndex(tagCount - 1);
+      }
+    }, []),
+    focusedIndex: focusedTagIndex,
+    resetTagFocus: useCallback(() => {
+      setFocusedTagIndex(null);
+    }, []),
+    setTagIndex: useCallback((index: number | null) => {
+      setFocusedTagIndex(index);
+    }, []),
+  };
+
+  const handleTagRemove = useCallback((tagValue: string) => {
+    if (!multiple) {
+      return;
+    }
+
+    const newValue = removeValueFromArray(currentValue, tagValue);
+    onValueChange?.({ value: newValue } as ComboboxValueChangeDetails);
+  }, [currentValue, multiple, onValueChange]);
+
+  const handleTagsKeyDown = useCallback((
+    e: React.KeyboardEvent<HTMLInputElement>,
+    inputRef: React.RefObject<HTMLInputElement>,
+  ) => {
+    if (!multiple || !currentValue.length) {
+      return;
+    }
+
+    const isBackspaceAtStart = isKeyboardEventAtInputStart(e, inputRef, 'Backspace');
+    const isArrowLeftAtStart = isKeyboardEventAtInputStart(e, inputRef, 'ArrowLeft');
+
+    if (isBackspaceAtStart && currentValue.length > 0) {
+      if (focusedTagIndex === null) {
+        setFocusedTagIndex(currentValue.length - 1);
+        e.preventDefault();
+      } else {
+        const indexToRemove = focusedTagIndex;
+        const tagToRemove = currentValue[indexToRemove];
+
+        const newFocusIndex = calculateNewFocusIndex(indexToRemove, currentValue.length);
+        setFocusedTagIndex(newFocusIndex);
+        handleTagRemove(tagToRemove);
+        e.preventDefault();
+      }
+    } else if (isArrowLeftAtStart && currentValue.length > 0 && focusedTagIndex === null) {
+      setFocusedTagIndex(currentValue.length - 1);
+      e.preventDefault();
+    } else if (shouldResetTagFocus(e.key)) {
+      setFocusedTagIndex(null);
+    }
+
+    if (focusedTagIndex !== null && currentValue.length > 0) {
+      if (e.key === 'ArrowLeft' && focusedTagIndex > 0) {
+        setFocusedTagIndex(focusedTagIndex - 1);
+        e.preventDefault();
+      } else if (e.key === 'ArrowRight' && focusedTagIndex < currentValue.length - 1) {
+        setFocusedTagIndex(focusedTagIndex + 1);
+        e.preventDefault();
+      } else if (e.key === 'Escape') {
+        setFocusedTagIndex(null);
+        e.preventDefault();
+      }
+    }
+  }, [currentValue, multiple, focusedTagIndex, handleTagRemove]);
+
   return (
     <ComboboxContext.Provider
       value={ {
         ...props,
-        defaultValue,
+        filteredItems,
+        handleTagRemove,
+        handleTagsKeyDown,
+        isOpen,
+        multiple,
         onValueChange,
+        setIsOpen,
+        tagFocus,
         value,
       } }
     >
@@ -104,5 +210,6 @@ export {
   type ComboboxItemProp,
   type ComboboxProp,
   type ComboboxValueChangeDetails,
+  type TagFocusState,
   useCombobox,
 };

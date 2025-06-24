@@ -359,6 +359,30 @@ describe('Combobox controller', () => {
       ];
       expect(findLabelForValue(items, 'test3')).toBe('test3');
     });
+
+    it('should find labels for all items in the test story groups (reproducing the bug)', () => {
+      const groupedItems = [
+        {
+          label: 'Fruits',
+          options: [
+            { label: 'Apple', value: 'apple' },
+            { label: 'Banana', value: 'banana' },
+          ],
+        },
+        {
+          label: 'Vegetables',
+          options: [
+            { label: 'Carrot', value: 'carrot' },
+            { label: 'Broccoli', value: 'broccoli' },
+          ],
+        },
+      ];
+
+      expect(findLabelForValue(groupedItems, 'apple')).toBe('Apple');
+      expect(findLabelForValue(groupedItems, 'banana')).toBe('Banana');
+      expect(findLabelForValue(groupedItems, 'carrot')).toBe('Carrot');
+      expect(findLabelForValue(groupedItems, 'broccoli')).toBe('Broccoli');
+    });
   });
 
   describe('getFilteredItems', () => {

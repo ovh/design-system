@@ -6,6 +6,7 @@ interface ComboboxProps {
   customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element;
   inputValue: string;
   items: ComboboxItemOrGroup[];
+  multiple?: boolean;
   newElementLabel?: string;
   value?: string[];
 }
@@ -27,6 +28,7 @@ function filterItems({
   isValueAlreadySelected,
   customOptionRenderer,
   value,
+  multiple,
 }: FilterItemsProps): ComboboxItemOrGroup[] {
   if (!inputValue && !value?.length) {
     return items;
@@ -39,7 +41,7 @@ function filterItems({
           return true;
         }
 
-        if (value?.includes(option.value)) {
+        if (value?.includes(option.value) && (multiple || inputValue)) {
           return false;
         }
 
@@ -52,9 +54,10 @@ function filterItems({
           options: filteredOptions,
         });
       }
-    } else if (!value?.includes(item.value) &&
-              (!inputValue || matchesSearch(getItemText(item, customOptionRenderer), inputValue))) {
-      acc.push(item);
+    } else if (!value?.includes(item.value) || (!multiple && !inputValue)) {
+      if (!inputValue || matchesSearch(getItemText(item, customOptionRenderer), inputValue)) {
+        acc.push(item);
+      }
     }
     return acc;
   }, []);
@@ -119,14 +122,14 @@ export function splitTextBySearchTerm(text: string, searchTerm: string): string[
 
   const escapedValue = searchTerm.toLowerCase().replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
   const regex = new RegExp(`(${escapedValue})`, 'gi');
-  return text.split(regex).filter(Boolean);
+  return text.split(regex);
 }
 
 export function findLabelForValue(items: ComboboxItemOrGroup[] = [], value: string): string {
   for (const item of items) {
     if ('options' in item) {
       const foundInGroup = findLabelForValue(item.options, value);
-      if (foundInGroup) {
+      if (foundInGroup !== value) {
         return foundInGroup;
       }
     } else if (item.value === value) {
@@ -136,23 +139,24 @@ export function findLabelForValue(items: ComboboxItemOrGroup[] = [], value: stri
   return value;
 }
 
-export function flattenItems(items: ComboboxItemOrGroup[] = []): ComboboxItem[] {
+export function flattenItems(items: ComboboxItemOrGroup[] = [], groupLabel?: string): ComboboxItem[] {
   const result: ComboboxItem[] = [];
   for (const item of items) {
     if ('options' in item) {
-      result.push(...flattenItems(item.options));
+      result.push(...flattenItems(item.options, item.label));
     } else {
-      result.push(item);
+      result.push(groupLabel ? { ...item, group: groupLabel } : item);
     }
   }
   return result;
 }
 
 export function getFilteredItems({
-  allowCustomValue = false,
+  allowCustomValue,
   customOptionRenderer,
   inputValue,
   items,
+  multiple,
   value = [],
 }: ComboboxProps): ComboboxItemOrGroup[] {
   const exactMatch = hasExactMatch(items, inputValue, customOptionRenderer);
@@ -164,8 +168,43 @@ export function getFilteredItems({
     inputValue,
     isValueAlreadySelected: valueSelected,
     items,
+    multiple,
     value,
   });
+}
+
+export function isKeyboardEventAtInputStart(
+  e: React.KeyboardEvent<HTMLInputElement>,
+  inputRef: React.RefObject<HTMLInputElement>,
+  key: string,
+): boolean {
+  return e.key === key &&
+    inputRef.current !== null &&
+    inputRef.current.selectionStart === 0 &&
+    inputRef.current.selectionEnd === 0;
+}
+
+export function calculateNewFocusIndex(
+  indexToRemove: number,
+  totalLength: number,
+): number | null {
+  const newLength = totalLength - 1;
+
+  if (indexToRemove > 0 && newLength > 0) {
+    return indexToRemove - 1;
+  } else if (newLength > 0) {
+    return 0;
+  }
+
+  return null;
+}
+
+export function shouldResetTagFocus(key: string): boolean {
+  return key !== 'Backspace' && key !== 'ArrowLeft';
+}
+
+export function removeValueFromArray(values: string[], valueToRemove: string): string[] {
+  return values.filter((val) => val !== valueToRemove);
 }
 
 export {

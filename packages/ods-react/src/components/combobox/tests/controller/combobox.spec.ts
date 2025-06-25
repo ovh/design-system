@@ -4,6 +4,7 @@ jest.mock('../../../../utils/element', () => ({
 
 import { getElementText } from '../../../../utils/element';
 import {
+  calculateNewFocusIndex,
   escapeRegExp,
   filterItems,
   findLabelForValue,
@@ -11,8 +12,11 @@ import {
   getFilteredItems,
   getItemText,
   hasExactMatch,
+  isKeyboardEventAtInputStart,
   isValueAlreadySelected,
   matchesSearch,
+  removeValueFromArray,
+  shouldResetTagFocus,
   splitTextBySearchTerm,
 } from '../../src/controller/combobox';
 
@@ -443,6 +447,156 @@ describe('Combobox controller', () => {
         expect(result[0].isNewElement).toBe(true);
       }
       expect(result[0].label).toBe('New');
+    });
+  });
+
+  describe('isKeyboardEventAtInputStart', () => {
+    it('should return true when key matches and cursor is at start', () => {
+      const mockEvent = {
+        key: 'Backspace',
+      } as React.KeyboardEvent<HTMLInputElement>;
+
+      const mockInputRef = {
+        current: {
+          selectionEnd: 0,
+          selectionStart: 0,
+        },
+      } as React.RefObject<HTMLInputElement>;
+
+      expect(isKeyboardEventAtInputStart(mockEvent, mockInputRef, 'Backspace')).toBe(true);
+    });
+
+    it('should return false when key does not match', () => {
+      const mockEvent = {
+        key: 'Enter',
+      } as React.KeyboardEvent<HTMLInputElement>;
+
+      const mockInputRef = {
+        current: {
+          selectionEnd: 0,
+          selectionStart: 0,
+        },
+      } as React.RefObject<HTMLInputElement>;
+
+      expect(isKeyboardEventAtInputStart(mockEvent, mockInputRef, 'Backspace')).toBe(false);
+    });
+
+    it('should return false when cursor is not at start', () => {
+      const mockEvent = {
+        key: 'Backspace',
+      } as React.KeyboardEvent<HTMLInputElement>;
+
+      const mockInputRef = {
+        current: {
+          selectionEnd: 5,
+          selectionStart: 5,
+        },
+      } as React.RefObject<HTMLInputElement>;
+
+      expect(isKeyboardEventAtInputStart(mockEvent, mockInputRef, 'Backspace')).toBe(false);
+    });
+
+    it('should return false when input ref is null', () => {
+      const mockEvent = {
+        key: 'Backspace',
+      } as React.KeyboardEvent<HTMLInputElement>;
+
+      const mockInputRef = {
+        current: null,
+      } as React.RefObject<HTMLInputElement>;
+
+      expect(isKeyboardEventAtInputStart(mockEvent, mockInputRef, 'Backspace')).toBe(false);
+    });
+
+    it('should return false when selection start and end are different', () => {
+      const mockEvent = {
+        key: 'Backspace',
+      } as React.KeyboardEvent<HTMLInputElement>;
+
+      const mockInputRef = {
+        current: {
+          selectionEnd: 0,
+          selectionStart: 5,
+        },
+      } as React.RefObject<HTMLInputElement>;
+
+      expect(isKeyboardEventAtInputStart(mockEvent, mockInputRef, 'Backspace')).toBe(false);
+    });
+  });
+
+  describe('calculateNewFocusIndex', () => {
+    it('should return previous index when removing item not at beginning', () => {
+      expect(calculateNewFocusIndex(2, 5)).toBe(1);
+      expect(calculateNewFocusIndex(3, 6)).toBe(2);
+    });
+
+    it('should return 0 when removing first item and array has remaining items', () => {
+      expect(calculateNewFocusIndex(0, 3)).toBe(0);
+      expect(calculateNewFocusIndex(0, 5)).toBe(0);
+    });
+
+    it('should return null when removing last remaining item', () => {
+      expect(calculateNewFocusIndex(0, 1)).toBe(null);
+    });
+
+    it('should handle edge case when removing second to last item', () => {
+      expect(calculateNewFocusIndex(1, 2)).toBe(0);
+    });
+
+    it('should return null when array becomes empty', () => {
+      expect(calculateNewFocusIndex(0, 1)).toBe(null);
+    });
+  });
+
+  describe('shouldResetTagFocus', () => {
+    it('should return false for Backspace key', () => {
+      expect(shouldResetTagFocus('Backspace')).toBe(false);
+    });
+
+    it('should return false for ArrowLeft key', () => {
+      expect(shouldResetTagFocus('ArrowLeft')).toBe(false);
+    });
+
+    it('should return true for other keys', () => {
+      expect(shouldResetTagFocus('Enter')).toBe(true);
+      expect(shouldResetTagFocus('Escape')).toBe(true);
+      expect(shouldResetTagFocus('Tab')).toBe(true);
+      expect(shouldResetTagFocus('ArrowRight')).toBe(true);
+      expect(shouldResetTagFocus('ArrowUp')).toBe(true);
+      expect(shouldResetTagFocus('ArrowDown')).toBe(true);
+      expect(shouldResetTagFocus('a')).toBe(true);
+      expect(shouldResetTagFocus('1')).toBe(true);
+    });
+  });
+
+  describe('removeValueFromArray', () => {
+    it('should remove the specified value from array', () => {
+      const values = ['test1', 'test2', 'test3'];
+      expect(removeValueFromArray(values, 'test2')).toEqual(['test1', 'test3']);
+    });
+
+    it('should return empty array when removing last item', () => {
+      const values = ['test1'];
+      expect(removeValueFromArray(values, 'test1')).toEqual([]);
+    });
+
+    it('should return original array when value not found', () => {
+      const values = ['test1', 'test2', 'test3'];
+      expect(removeValueFromArray(values, 'test4')).toEqual(['test1', 'test2', 'test3']);
+    });
+
+    it('should handle empty array', () => {
+      expect(removeValueFromArray([], 'test1')).toEqual([]);
+    });
+
+    it('should remove all occurrences of the same value', () => {
+      const values = ['test1', 'test2', 'test1', 'test3'];
+      expect(removeValueFromArray(values, 'test1')).toEqual(['test2', 'test3']);
+    });
+
+    it('should handle array with duplicate values', () => {
+      const values = ['test1', 'test1', 'test1'];
+      expect(removeValueFromArray(values, 'test1')).toEqual([]);
     });
   });
 });

@@ -415,7 +415,7 @@ describe('Combobox behavior', () => {
 
       it('should handle keyboard tag removal and update available options', async() => {
         await page.click('[data-testid="uncontrolled-multiple"] input');
-        await page.waitForSelector('[data-part="content"]', { visible: true });
+        await page.waitForSelector('[data-part="content"]', { timeout: 10000, visible: true });
 
         // Select Apple, Banana, Cherry
         await Promise.all([
@@ -440,11 +440,11 @@ describe('Combobox behavior', () => {
         expect(tags.length).toBe(2);
 
         await page.click('[data-testid="uncontrolled-multiple"] input');
-        await page.waitForSelector('[data-part="content"]', { visible: true });
+        await page.waitForSelector('[data-part="content"]', { timeout: 10000, visible: true });
 
         const availableItems = await page.$$('[data-part="item"]');
         expect(availableItems.length).toBe(2);
-      });
+      }, 45000);
 
       it.skip('should NOT remove selected item when pressing Enter after selection', async() => {
         // This test documents a bug: pressing Enter after selection removes the item

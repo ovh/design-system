@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { type FC, forwardRef, useEffect, useRef } from 'react';
+import { type FC, useEffect, useRef } from 'react';
 import { Tag } from '../../../../tag/src';
 import { useCombobox } from '../../contexts/useCombobox';
 import { findLabelForValue } from '../../controller/combobox';
@@ -7,7 +7,7 @@ import style from './comboboxTags.module.scss';
 
 interface ComboboxTagsProps {}
 
-const ComboboxTags: FC<ComboboxTagsProps> = forwardRef((): JSX.Element | null => {
+const ComboboxTags: FC<ComboboxTagsProps> = (): JSX.Element | null => {
   const tagsRef = useRef<HTMLDivElement>(null);
   const {
     value,
@@ -62,7 +62,7 @@ const ComboboxTags: FC<ComboboxTagsProps> = forwardRef((): JSX.Element | null =>
       ))}
     </div>
   );
-});
+};
 
 ComboboxTags.displayName = 'ComboboxTags';
 

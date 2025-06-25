@@ -1,6 +1,6 @@
 import { Combobox as VendorCombobox, useComboboxContext } from '@ark-ui/react/combobox';
 import classNames from 'classnames';
-import { type FC, type FocusEvent, type JSX, type KeyboardEvent, type MouseEvent, forwardRef, useEffect, useRef } from 'react';
+import { type FC, type JSX, type KeyboardEvent, forwardRef, useEffect, useRef } from 'react';
 import { Input } from '../../../../input/src';
 import { type ComboboxControlProp as ComboboxControlRootProp, useCombobox } from '../../contexts/useCombobox';
 import { ComboboxTags } from '../combobox-tags/ComboboxTags';
@@ -21,7 +21,6 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
     multiple,
     tagFocus,
     handleTagsKeyDown,
-    setIsOpen,
   } = useCombobox();
 
   const contentProps = getContentProps() as {
@@ -30,10 +29,6 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
   const placement = contentProps['data-placement'] as 'top' | 'bottom' | undefined;
   const inputRef = useRef<HTMLInputElement>(null);
   const controlRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setIsOpen?.(open);
-  }, [open, setIsOpen]);
 
   useEffect(() => {
     function handleClickOutside(event: Event): void {
@@ -49,12 +44,6 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
     };
   }, [tagFocus]);
 
-  function handleControlBlur(e: FocusEvent<HTMLDivElement>): void {
-    if (!controlRef.current?.contains(e.relatedTarget as Node)) {
-      tagFocus.resetTagFocus();
-    }
-  }
-
   function handleKeyDown(e: KeyboardEvent<HTMLInputElement>): void {
     if (e.key === ' ' && open) {
       e.stopPropagation();
@@ -62,15 +51,6 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
 
     if (multiple) {
       handleTagsKeyDown(e, inputRef);
-    }
-  }
-
-  function handleControlClick(e: MouseEvent<HTMLDivElement>): void {
-    const target = e.target as HTMLElement;
-    const isClickOnTag = target.closest('[data-scope="tag"]') || target.closest('.combobox-tag');
-
-    if (!isClickOnTag && (e.target === e.currentTarget || target?.closest('input'))) {
-      tagFocus.resetTagFocus();
     }
   }
 
@@ -83,8 +63,6 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
         [style['combobox-control--multiple']]: multiple,
         className,
       })}
-      onClick={handleControlClick}
-      onBlur={handleControlBlur}
     >
       {multiple && <ComboboxTags />}
       <VendorCombobox.Trigger

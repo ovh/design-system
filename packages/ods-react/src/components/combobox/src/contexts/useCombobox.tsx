@@ -1,5 +1,5 @@
 import { type ComboboxInputValueChangeDetails, type ComboboxValueChangeDetails } from '@ark-ui/react/combobox';
-import { type ComponentPropsWithRef, type KeyboardEvent, type ReactNode, type RefObject, createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { type ComponentPropsWithRef, type KeyboardEvent, type ReactNode, type RefObject, createContext, useCallback, useContext, useMemo, useState } from 'react';
 import {
   calculateNewFocusIndex,
   isKeyboardEventAtInputStart,
@@ -50,8 +50,6 @@ type ComboboxContextType = ComboboxProp & {
   filteredItems?: ComboboxItemOrGroup[];
   handleTagRemove: (tagValue: string) => void,
   handleTagsKeyDown: (e: KeyboardEvent<HTMLInputElement>, inputRef: RefObject<HTMLInputElement>) => void,
-  isOpen?: boolean,
-  setIsOpen?: (open: boolean) => void,
   tagFocus: TagFocusState,
 };
 
@@ -99,15 +97,8 @@ const ComboboxProvider = ({
   filteredItems,
   ...props
 }: ComboboxProviderProp): JSX.Element => {
-  const [isOpen, setIsOpen] = useState(false);
   const [focusedTagIndex, setFocusedTagIndex] = useState<number | null>(null);
   const currentValue = value || [];
-
-  useEffect(() => {
-    if (!isOpen) {
-      setFocusedTagIndex(null);
-    }
-  }, [isOpen]);
 
   const tagFocus: TagFocusState = useMemo((): TagFocusState => ({
     focusLastTag: (tagCount: number): void => {
@@ -185,10 +176,8 @@ const ComboboxProvider = ({
         filteredItems,
         handleTagRemove,
         handleTagsKeyDown,
-        isOpen,
         multiple,
         onValueChange,
-        setIsOpen,
         tagFocus,
         value,
       } }

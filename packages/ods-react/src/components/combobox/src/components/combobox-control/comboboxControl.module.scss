@@ -8,12 +8,14 @@
     display: flex;
     position: relative;
     flex-wrap: wrap;
+    gap: 4px;
     align-items: center;
     margin: 0;
     border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
     border-radius: var(--ods-border-radius-sm);
-    padding: 0 4px;
+    padding: 4px 8px;
     width: 100%;
+    min-height: var(--ods-form-element-input-height);
 
     &--multiple {
       flex-wrap: wrap;
@@ -35,6 +37,10 @@
       background-color: var(--ods-color-background-readonly-default);
     }
 
+    &--invalid {
+      @include input.ods-input-error;
+    }
+
     &__trigger {
       display: inline-flex;
       flex: 1;
@@ -46,11 +52,11 @@
         outline: none;
         border: none;
         background: transparent;
+        padding: 0;
         width: 100%;
+        height: auto;
 
-        &--multiple {
-          flex: 1;
-        }
+
       }
     }
 

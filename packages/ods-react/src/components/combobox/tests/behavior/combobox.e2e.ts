@@ -418,11 +418,9 @@ describe('Combobox behavior', () => {
         await page.waitForSelector('[data-part="content"]', { timeout: 10000, visible: true });
 
         // Select Apple, Banana, Cherry
-        await Promise.all([
-          page.click('[data-part="item"]:nth-child(1)'),
-          page.click('[data-part="item"]:nth-child(1)'),
-          page.click('[data-part="item"]:nth-child(1)'),
-        ]);
+        await page.click('[data-part="item"]:nth-child(1)');
+        await page.click('[data-part="item"]:nth-child(1)');
+        await page.click('[data-part="item"]:nth-child(1)');
 
         await page.keyboard.press('Escape');
         await page.waitForSelector('[data-part="content"]', { timeout: 1000, visible: false });

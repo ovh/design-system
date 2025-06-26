@@ -10,14 +10,22 @@ interface ComboboxTagsProps {}
 const ComboboxTags: FC<ComboboxTagsProps> = (): JSX.Element | null => {
   const tagsRef = useRef<HTMLDivElement>(null);
   const {
-    value,
+    disabled,
+    handleTagRemove,
     items,
     multiple,
     tagFocus,
-    handleTagRemove,
+    readOnly,
+    value,
   } = useCombobox();
 
+  const isInteractive = !disabled && !readOnly;
+
   useEffect(() => {
+    if (!isInteractive) {
+      return;
+    }
+
     function handleClickOutside(event: Event): void {
       if (tagsRef.current && !tagsRef.current.contains(event.target as Node)) {
         tagFocus.resetTagFocus();
@@ -28,7 +36,7 @@ const ComboboxTags: FC<ComboboxTagsProps> = (): JSX.Element | null => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [tagFocus]);
+  }, [tagFocus, isInteractive]);
 
   if (!multiple || !value || value.length === 0) {
     return null;
@@ -38,22 +46,23 @@ const ComboboxTags: FC<ComboboxTagsProps> = (): JSX.Element | null => {
     <div
       ref={tagsRef}
       className={style['combobox-tags']}
-      onClick={(e) => {
+      onClick={isInteractive ? (e: React.MouseEvent<HTMLDivElement>): void => {
         if (e.target === e.currentTarget) {
           tagFocus.resetTagFocus();
         }
-      }}
+      } : undefined}
     >
       {value.map((val, index) => (
         <Tag
+          disabled={disabled || readOnly}
           className={classNames({
-            [style['combobox-tag--focused']]: tagFocus.focusedIndex === index,
+            [style['combobox-tag--focused']]: isInteractive && tagFocus.focusedIndex === index,
           })}
           key={val}
-          onClick={(e) => {
-            e.stopPropagation();
+          onClick={isInteractive ? (): void => {
+            tagFocus.resetTagFocus();
             handleTagRemove(val);
-          }}
+          } : undefined}
           tabIndex={-1}
           value={val}
         >

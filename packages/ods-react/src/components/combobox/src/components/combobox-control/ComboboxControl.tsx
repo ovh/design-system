@@ -21,6 +21,8 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
     multiple,
     tagFocus,
     handleTagsKeyDown,
+    disabled,
+    readOnly,
   } = useCombobox();
 
   const contentProps = getContentProps() as {
@@ -61,6 +63,7 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
         [style['combobox-control--open-top']]: open && placement === 'top',
         [style['combobox-control--open-bottom']]: open && placement === 'bottom',
         [style['combobox-control--multiple']]: multiple,
+        [style['combobox-control--read-only']]: readOnly,
         className,
       })}
     >
@@ -76,6 +79,8 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
               style['combobox-control__trigger__input'],
               { [style['combobox-control__trigger__input--multiple']]: multiple },
             )}
+            disabled={disabled}
+            readOnly={readOnly}
             clearable={clearable}
             loading={loading}
             onKeyDown={handleKeyDown}

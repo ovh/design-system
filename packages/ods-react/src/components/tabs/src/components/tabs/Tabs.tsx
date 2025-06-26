@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, type Ref, forwardRef } from 'react';
 import style from './tabs.module.scss';
 
-interface TabsChangeEvent {
+interface TabsValueChangeEvent {
   value: string;
 }
 
-interface TabsProp extends Omit<ComponentPropsWithRef<'div'>, 'onChange'> {
+interface TabsProp extends ComponentPropsWithRef<'div'> {
   /**
    * The initial value of the selected tab. Use when you don't need to control the value of the tabs.
    */
@@ -15,7 +15,7 @@ interface TabsProp extends Omit<ComponentPropsWithRef<'div'>, 'onChange'> {
   /**
    * Callback fired when the state of selected tab changes.
    */
-  onChange?: (event: TabsChangeEvent) => void;
+  onValueChange?: (event: TabsValueChangeEvent) => void;
   /**
    * The controlled value of the selected tab.
    */
@@ -26,20 +26,20 @@ const Tabs: FC<TabsProp> = forwardRef(({
   children,
   className,
   defaultValue,
-  onChange,
+  onValueChange,
   value,
   ...props
 }, ref: Ref<HTMLDivElement>): JSX.Element => {
 
   return (
     <VendorTabs.Root
-      className={classNames(style['tabs'], className)}
-      defaultValue={defaultValue}
-      onValueChange={onChange}
-      ref={ref}
-      value={value}
-      {...props}>
-      {children}
+      className={ classNames(style['tabs'], className) }
+      defaultValue={ defaultValue }
+      onValueChange={ onValueChange }
+      ref={ ref }
+      value={ value }
+      { ...props }>
+      { children }
     </VendorTabs.Root>
   );
 });
@@ -48,6 +48,6 @@ Tabs.displayName = 'Tabs';
 
 export {
   Tabs,
-  type TabsChangeEvent,
   type TabsProp,
+  type TabsValueChangeEvent,
 };

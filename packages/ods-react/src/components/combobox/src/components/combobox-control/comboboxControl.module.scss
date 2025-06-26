@@ -4,6 +4,7 @@
 
 @layer ods-organisms {
   .combobox-control {
+    box-sizing: border-box;
     display: flex;
     position: relative;
     flex-wrap: wrap;
@@ -11,7 +12,7 @@
     margin: 0;
     border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
     border-radius: var(--ods-border-radius-sm);
-    padding: 2px;
+    padding: 0 4px;
     width: 100%;
 
     &--multiple {
@@ -27,6 +28,11 @@
     &--open-top {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+    }
+
+    &--read-only {
+      border-color: var(--ods-color-border-readonly-default);
+      background-color: var(--ods-color-background-readonly-default);
     }
 
     &__trigger {

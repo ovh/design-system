@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Tabs, TabList, Tab, TabContent,type TabsChangeEvent, type TabsProp } from '../../../../ods-react/src/components/tabs/src';
+import { Tabs, TabList, Tab, TabContent, type TabsProp, type TabsValueChangeEvent } from '../../../../ods-react/src/components/tabs/src';
 import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
@@ -9,7 +9,7 @@ type Story = StoryObj<TabsProp>;
 const meta: Meta<TabsProp> = {
   component: Tabs,
   subcomponents: { TabList, Tab, TabContent },
-  argTypes: excludeFromDemoControls(['defaultValue', 'value', 'onChange']),
+  argTypes: excludeFromDemoControls(['defaultValue', 'value', 'onValueChange']),
   title: 'React Components/Tabs',
 };
 
@@ -53,13 +53,13 @@ export const Controlled: Story = {
   render: ({}) => {
     const [value, setValue] = useState('tab1');
 
-    const handleChange = (event: TabsChangeEvent) => {
+    const handleValueChange = (event: TabsValueChangeEvent) => {
       setValue(event.value);
     };
 
     return (
       <Tabs
-        onChange={ handleChange }
+        onValueChange={ handleValueChange }
         value={ value }>
         <TabList>
           <Tab value="tab1">Tab 1</Tab>

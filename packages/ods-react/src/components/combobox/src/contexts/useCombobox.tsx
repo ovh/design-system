@@ -30,6 +30,7 @@ type ComboboxProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
   disabled?: boolean,
   highlightResults?: boolean,
   items: ComboboxItemOrGroup[],
+  invalid?: boolean,
   multiple?: boolean,
   name?: string,
   newElementLabel?: string,

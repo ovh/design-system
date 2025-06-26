@@ -18,11 +18,12 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
   const comboboxContext = useComboboxContext();
   const { getContentProps, open } = comboboxContext;
   const {
-    multiple,
-    tagFocus,
-    handleTagsKeyDown,
     disabled,
+    handleTagsKeyDown,
+    invalid,
+    multiple,
     readOnly,
+    tagFocus,
   } = useCombobox();
 
   const contentProps = getContentProps() as {
@@ -59,36 +60,63 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
   return (
     <VendorCombobox.Control
       ref={controlRef}
+      onBlur={() => tagFocus.resetTagFocus()}
       className={classNames(style['combobox-control'], {
         [style['combobox-control--open-top']]: open && placement === 'top',
         [style['combobox-control--open-bottom']]: open && placement === 'bottom',
         [style['combobox-control--multiple']]: multiple,
         [style['combobox-control--read-only']]: readOnly,
+        [style['combobox-control--invalid']]: invalid,
         className,
       })}
     >
-      {multiple && <ComboboxTags />}
-      <VendorCombobox.Trigger
-        className={classNames(style['combobox-control__trigger'], className)}
-        ref={ref}
-        {...props}
-      >
-        <VendorCombobox.Input asChild>
-          <Input
-            className={classNames(
-              style['combobox-control__trigger__input'],
-              { [style['combobox-control__trigger__input--multiple']]: multiple },
-            )}
-            disabled={disabled}
-            readOnly={readOnly}
-            clearable={clearable}
-            loading={loading}
-            onKeyDown={handleKeyDown}
-            placeholder={placeholder}
-            ref={inputRef}
-          />
-        </VendorCombobox.Input>
-      </VendorCombobox.Trigger>
+      {multiple ? (
+        <ComboboxTags>
+          <VendorCombobox.Trigger
+            className={classNames(style['combobox-control__trigger'], className)}
+            ref={ref}
+            {...props}
+          >
+            <VendorCombobox.Input asChild>
+              <Input
+                className={classNames(
+                  style['combobox-control__trigger__input'],
+                  { [style['combobox-control__trigger__input--multiple']]: multiple },
+                )}
+                disabled={disabled}
+                readOnly={readOnly}
+                clearable={clearable}
+                loading={loading}
+                onKeyDown={handleKeyDown}
+                placeholder={placeholder}
+                ref={inputRef}
+              />
+            </VendorCombobox.Input>
+          </VendorCombobox.Trigger>
+        </ComboboxTags>
+      ) : (
+        <VendorCombobox.Trigger
+          className={classNames(style['combobox-control__trigger'], className)}
+          ref={ref}
+          {...props}
+        >
+          <VendorCombobox.Input asChild>
+            <Input
+              className={classNames(
+                style['combobox-control__trigger__input'],
+                { [style['combobox-control__trigger__input--multiple']]: multiple },
+              )}
+              disabled={disabled}
+              readOnly={readOnly}
+              clearable={clearable}
+              loading={loading}
+              onKeyDown={handleKeyDown}
+              placeholder={placeholder}
+              ref={inputRef}
+            />
+          </VendorCombobox.Input>
+        </VendorCombobox.Trigger>
+      )}
     </VendorCombobox.Control>
   );
 });

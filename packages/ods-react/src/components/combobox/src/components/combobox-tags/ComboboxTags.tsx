@@ -1,13 +1,15 @@
 import classNames from 'classnames';
-import { type FC, useEffect, useRef } from 'react';
+import { type FC, type ReactNode, useEffect, useRef } from 'react';
 import { Tag } from '../../../../tag/src';
 import { useCombobox } from '../../contexts/useCombobox';
 import { findLabelForValue } from '../../controller/combobox';
 import style from './comboboxTags.module.scss';
 
-interface ComboboxTagsProps {}
+interface ComboboxTagsProps {
+  children?: ReactNode;
+}
 
-const ComboboxTags: FC<ComboboxTagsProps> = (): JSX.Element | null => {
+const ComboboxTags: FC<ComboboxTagsProps> = ({ children }): JSX.Element | null => {
   const tagsRef = useRef<HTMLDivElement>(null);
   const {
     disabled,
@@ -38,7 +40,7 @@ const ComboboxTags: FC<ComboboxTagsProps> = (): JSX.Element | null => {
     };
   }, [tagFocus, isInteractive]);
 
-  if (!multiple || !value || value.length === 0) {
+  if (!multiple) {
     return null;
   }
 
@@ -52,7 +54,7 @@ const ComboboxTags: FC<ComboboxTagsProps> = (): JSX.Element | null => {
         }
       } : undefined}
     >
-      {value.map((val, index) => (
+      {value && value.length > 0 && value.map((val, index) => (
         <Tag
           disabled={disabled || readOnly}
           className={classNames({
@@ -69,6 +71,7 @@ const ComboboxTags: FC<ComboboxTagsProps> = (): JSX.Element | null => {
           {findLabelForValue(items, val)}
         </Tag>
       ))}
+      {children}
     </div>
   );
 };

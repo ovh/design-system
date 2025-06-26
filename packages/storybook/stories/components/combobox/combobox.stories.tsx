@@ -19,7 +19,7 @@ type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {
 };
 
 const meta: Meta<ComboboxProp> = {
-  argTypes: excludeFromDemoControls(['customOptionRenderer', 'defaultValue', 'items', 'invalid', 'name', 'onInputValueChange', 'onValueChange', 'required', 'value']),
+  argTypes: excludeFromDemoControls(['customOptionRenderer', 'defaultValue', 'items', 'name', 'onInputValueChange', 'onValueChange', 'required', 'value']),
   component: Combobox,
   subcomponents: { ComboboxContent, ComboboxControl, ComboboxItem, ComboboxItemGroup },
   title: 'React Components/Combobox',
@@ -42,6 +42,7 @@ export const Demo: StoryObj = {
       defaultValue={ arg.defaultValue }
       disabled={ arg.disabled }
       highlightResults={ arg.highlightResults }
+      invalid={ arg.invalid }
       multiple={ arg.multiple }
       newElementLabel={ arg.newElementLabel }
       noResultLabel={ arg.noResultLabel }
@@ -268,6 +269,21 @@ export const InFormField: Story = {
       </Combobox>
     </FormField>
   ),
+}
+
+export const Invalid: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Combobox
+      invalid
+      items={ [
+        { label: 'Dog', value: 'dog' },
+        { label: 'Cat', value: 'cat' },
+      ] }>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+  )
 }
 
 export const Controlled: Story = {

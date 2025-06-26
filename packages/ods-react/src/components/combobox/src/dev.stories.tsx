@@ -232,3 +232,17 @@ export const MultipleWithTags = () => {
     </div>
   );
 };
+
+export const DisabledMultiple = () => (
+  <Combobox items={items} disabled multiple defaultValue={['item1', 'item2']}>
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+);
+
+export const ReadOnlyMultiple = () => (
+  <Combobox items={items} readOnly multiple defaultValue={['item1', 'item2']}>
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+);

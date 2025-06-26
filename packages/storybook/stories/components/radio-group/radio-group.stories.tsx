@@ -180,6 +180,35 @@ export const InFormField: Story = {
   ),
 };
 
+export const Invalid: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <RadioGroup
+      defaultValue="html">
+      <Radio value="html"
+             invalid>
+        <RadioControl />
+
+        <RadioLabel>HTML</RadioLabel>
+      </Radio>
+
+      <Radio
+        invalid
+        value="css">
+        <RadioControl />
+
+        <RadioLabel>CSS</RadioLabel>
+      </Radio>
+
+      <Radio value="js">
+        <RadioControl />
+
+        <RadioLabel>JavaScript</RadioLabel>
+      </Radio>
+    </RadioGroup>
+  ),
+};
+
 export const Orientation: Story = {
   tags: ['!dev'],
   render: ({}) => (

@@ -1,5 +1,7 @@
-.combobox-highlight {
-  &__highlight {
-    font-weight: 600;
+@layer ods-organisms {
+  .combobox-highlight {
+    &__highlight {
+      font-weight: 600;
+    }
   }
-} 
+}

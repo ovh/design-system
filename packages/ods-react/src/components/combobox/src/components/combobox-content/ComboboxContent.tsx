@@ -1,13 +1,18 @@
 import { Combobox as VendorCombobox } from '@ark-ui/react/combobox';
 import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
-import { type FC, type JSX, forwardRef, useMemo } from 'react';
-import { type ComboboxContentProp as ComboboxContentRootProp, type ComboboxItemOrGroup, useCombobox } from '../../contexts/useCombobox';
-import { ComboboxItem } from '../combobox-item/ComboboxItem';
-import { ComboboxItemGroup } from '../combobox-item-group/ComboboxItemGroup';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useMemo } from 'react';
+import { type ComboboxItem, useCombobox } from '../../contexts/useCombobox';
+import { ComboboxGroup } from '../combobox-group/ComboboxGroup';
+import { ComboboxOption } from '../combobox-option/ComboboxOption';
 import style from './comboboxContent.module.scss';
 
-interface ComboboxContentProp extends ComboboxContentRootProp {}
+interface ComboboxContentProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * Whether the component should be rendered in the DOM close to the body tag.
+   */
+  createPortal?: boolean;
+}
 
 const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
   className,
@@ -44,47 +49,63 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
     <Portal disabled={ !createPortal }>
       <VendorCombobox.Positioner>
         <VendorCombobox.Content
-          className={classNames(style['combobox-content'], className)}
-          ref={ref}
-          {...props}
-        >
-          {derivedState.hasNoResults && (
-            <div className={style['combobox-content__empty']}>{noResultLabel}</div>
-          )}
-          {derivedState.newElementItem && (
-            <ComboboxItem
-              item={derivedState.newElementItem}
-            />
-          )}
-          {derivedState.itemsToDisplay.map((item) => {
-            if ('options' in item) {
-              return (
-                <ComboboxItemGroup key={item.label}>
-                  <VendorCombobox.ItemGroupLabel>{item.label}</VendorCombobox.ItemGroupLabel>
-                  {item.options.map((option: ComboboxItemOrGroup) => {
-                    if ('options' in option) {
-                      return null;
+          className={ classNames(style['combobox-content'], className) }
+          ref={ ref }
+          { ...props }>
+          {
+            derivedState.hasNoResults && (
+              <div className={ style['combobox-content__empty'] }>
+                { noResultLabel }
+              </div>
+            )
+          }
+
+          {
+            derivedState.newElementItem && (
+              <ComboboxOption item={ derivedState.newElementItem } />
+            )
+          }
+
+          {
+            derivedState.itemsToDisplay.map((item) => {
+              if ('options' in item) {
+                return (
+                  <ComboboxGroup key={ item.label }>
+                    <VendorCombobox.ItemGroupLabel>
+                      { item.label }
+                    </VendorCombobox.ItemGroupLabel>
+
+                    {
+                      item.options.map((option: ComboboxItem) => {
+                        if ('options' in option) {
+                          return null;
+                        }
+                        return (
+                          <ComboboxOption
+                            item={ option }
+                            key={ option.value } />
+                        );
+                      })
                     }
-                    return (
-                      <ComboboxItem
-                        key={option.value}
-                        item={option}
-                      />
-                    );
-                  })}
-                </ComboboxItemGroup>
+                  </ComboboxGroup>
+                );
+              }
+
+              return (
+                <ComboboxOption
+                  item={ item }
+                  key={ item.value } />
               );
-            }
-            return (
-              <ComboboxItem
-                key={item.value}
-                item={item}
-              />
-            );
-          })}
-          {derivedState.hasOnlyNewElement && (
-            <div className={style['combobox-content__empty']}>{noResultLabel}</div>
-          )}
+            })
+          }
+
+          {
+            derivedState.hasOnlyNewElement && (
+              <div className={ style['combobox-content__empty'] }>
+                { noResultLabel }
+              </div>
+            )
+          }
         </VendorCombobox.Content>
       </VendorCombobox.Positioner>
     </Portal>
@@ -93,4 +114,7 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
 
 ComboboxContent.displayName = 'ComboboxContent';
 
-export { ComboboxContent, type ComboboxContentProp };
+export {
+  ComboboxContent,
+  type ComboboxContentProp,
+};

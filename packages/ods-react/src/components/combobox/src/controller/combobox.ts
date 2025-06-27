@@ -57,7 +57,7 @@ function filterItems({
           return true;
         }
 
-        if (value?.includes(option.value) && (multiple || inputValue)) {
+        if (value?.includes(option.value) && multiple) {
           return false;
         }
 
@@ -70,7 +70,7 @@ function filterItems({
           options: filteredOptions,
         });
       }
-    } else if (!value?.includes(item.value) || (!multiple && !inputValue)) {
+    } else if (!value?.includes(item.value) || !multiple) {
       if (!inputValue || matchesSearch(getItemText(item, customOptionRenderer), inputValue)) {
         acc.push(item);
       }
@@ -126,6 +126,7 @@ function getFilteredItems({
 }: ComboboxProps): ComboboxItem[] {
   const exactMatch = hasExactMatch(items, inputValue, customOptionRenderer);
   const valueSelected = isValueAlreadySelected(value, inputValue);
+
   return filterItems({
     allowCustomValue,
     customOptionRenderer,

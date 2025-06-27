@@ -10,9 +10,12 @@ export default {
 };
 
 const items = [
-  { label: 'Item 1', value: 'item1' },
-  { label: 'Item 2', value: 'item2' },
-  { label: 'Item 3', value: 'item3' },
+  { label: 'Dog', value: 'dog' },
+  { label: 'Cat', value: 'cat' },
+  { label: 'Hamster', value: 'hamster' },
+  { label: 'Parrot', value: 'parrot' },
+  { label: 'Spider', value: 'spider' },
+  { label: 'Goldfish', value: 'goldfish' },
 ];
 
 const groupedItems = [

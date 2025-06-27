@@ -64,3 +64,11 @@ via Sass import:
 <Source code="@import '@ovhcloud/ods-themes/default';"
         dark="true"
         language="css" />
+
+<Heading label="Typescript" level={ 2 } />
+
+To ensure the types are correctly resolved, you'll have to use the `bundler` module resolution, released with <ExternalLink href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler">Typescript 5.0</ExternalLink>.
+
+<Source code={ `"moduleResolution": "bundler"` }
+        dark="true"
+        language="typescript" />

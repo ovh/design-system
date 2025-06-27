@@ -155,6 +155,7 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
           clearable={ clearable }
           disabled={ disabled }
           loading={ loading }
+          onClear={ () => setValue([]) }
           onClick={ handleInputClick }
           onKeyDown={ handleInputKeyDown }
           placeholder={ placeholder }

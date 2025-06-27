@@ -1,4 +1,5 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Source } from '@storybook/blocks';
+import { ExternalLink } from '../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../src/components/heading/Heading';
 
 <Meta title="OVHcloud Design System/F.A.Q." />
@@ -30,3 +31,11 @@ Web Components and the Vue wrapper are now only available in v18.x, which is now
 so there won't be any new features for this version.
 
 If you still need to access documentation about Web Components or Vue, use the version selector at the top left to switch to the latest 18.x documentation, where you'll find the most up-to-date information.
+
+<Heading label="TS2307: Cannot find module '@ovhcloud/ods-react' or its corresponding type declarations." level={ 2 } />
+
+Check that you're using the `bundler` <ExternalLink href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler">module resolution</ExternalLink> in your `tsconfig.json`.
+
+<Source code={ `"moduleResolution": "bundler"` }
+        dark="true"
+        language="typescript" />

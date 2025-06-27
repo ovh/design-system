@@ -1,8 +1,5 @@
-@use '../../../../../style/focus';
-@use '../../../../../style/state';
-
 @layer ods-organisms {
-  .combobox-item {
+  .combobox-option {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -25,4 +22,4 @@
       }
     }
   }
-} 
+}

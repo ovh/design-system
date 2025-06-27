@@ -31,18 +31,6 @@ import * as ComboboxStories from './combobox.stories';
     },
     ComboboxControl: {
       extendAttribute: {
-        name: "button",
-        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"
-      }
-    },
-    ComboboxItem: {
-      extendAttribute: {
-        name: "div",
-        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
-      }
-    },
-    ComboboxItemGroup: {
-      extendAttribute: {
         name: "div",
         url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
       }
@@ -71,10 +59,6 @@ import * as ComboboxStories from './combobox.stories';
 
 <Canvas of={ ComboboxStories.Group } sourceState="shown" />
 
-<Heading label="Form Field" level={ 3 } />
-
-<Canvas of={ ComboboxStories.InFormField } sourceState="shown" />
-
 <Heading label="Invalid" level={ 3 } />
 
 <Canvas of={ ComboboxStories.Invalid } sourceState="shown" />
@@ -98,3 +82,7 @@ import * as ComboboxStories from './combobox.stories';
 <Heading label="Multiple" level={ 3 } />
 
 <Canvas of={ ComboboxStories.Multiple } sourceState="shown" />
+
+<Heading label="Form Field" level={ 3 } />
+
+<Canvas of={ ComboboxStories.InFormField } sourceState="shown" />

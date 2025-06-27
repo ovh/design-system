@@ -83,6 +83,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
       noResultLabel={ noResultLabel }
       readOnly={ readOnly }>
       <VendorCombobox.Root
+        allowCustomValue={ allowCustomValue }
         className={ className }
         closeOnSelect={ !multiple }
         collection={ collection }

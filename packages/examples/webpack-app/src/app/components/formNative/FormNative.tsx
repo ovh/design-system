@@ -100,7 +100,7 @@ function FormNative(): ReactElement {
         </FormFieldLabel>
 
         <Combobox
-          defaultValue={['apple']}
+          defaultValue={ ['apple'] }
           items={[
             { label: 'Apple', value: 'apple' },
             { label: 'Banana', value: 'banana' },
@@ -110,11 +110,11 @@ function FormNative(): ReactElement {
           ]}
           multiple
           name="combobox"
-          onValueChange={({ value }) => {
+          onValueChange={ ({ value }) => {
             console.log('Native Combobox value changed:', value);
           }}
-          >
-          <ComboboxControl />
+          required={ areAllRequired }>
+          <ComboboxControl clearable />
           <ComboboxContent />
         </Combobox>
 

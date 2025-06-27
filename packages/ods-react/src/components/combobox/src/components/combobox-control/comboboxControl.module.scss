@@ -55,7 +55,7 @@
       border: none;
       background: transparent;
       padding: 0;
-      height: auto;
+      height: calc(input.$ods-input-field-height - 10px);
     }
 
     &[data-focus] {

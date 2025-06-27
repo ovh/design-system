@@ -41,23 +41,21 @@
       @include input.ods-input-error;
     }
 
-    &__trigger {
+    &__tag {
+      &--focused {
+        border-color: var(--ods-color-information-200);
+        background-color: var(--ods-color-information-100);
+      }
+    }
+
+    &__input {
       display: inline-flex;
       flex: 1;
+      outline: none;
       border: none;
-      background-color: transparent;
+      background: transparent;
       padding: 0;
-
-      &__input {
-        outline: none;
-        border: none;
-        background: transparent;
-        padding: 0;
-        width: 100%;
-        height: auto;
-
-
-      }
+      height: auto;
     }
 
     &[data-focus] {

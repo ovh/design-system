@@ -36,7 +36,7 @@ const groupedItems = [
 ];
 
 export const Default = () => (
-  <Combobox items={items}>
+  <Combobox items={ items }>
     <ComboboxControl clearable />
     <ComboboxContent />
   </Combobox>
@@ -182,7 +182,7 @@ export const UncontrolledMultiple = () => (
 
 export const ControlledMultiple = () => {
   const [value, setValue] = useState<string[]>(['item1', 'item3']);
-  
+
   return (
     <>
       <div>Selected values: {value.join(', ')}</div>
@@ -201,7 +201,7 @@ export const ControlledMultiple = () => {
 
 export const MultipleWithTags = () => {
   const [value, setValue] = useState<string[]>(['item1']);
-  
+
   const fruitsAndVegetables = [
     { label: 'Apple', value: 'apple' },
     { label: 'Banana', value: 'banana' },
@@ -213,7 +213,7 @@ export const MultipleWithTags = () => {
     { label: 'Broccoli', value: 'broccoli' },
     { label: 'Spinach', value: 'spinach' },
   ];
-  
+
   return (
     <div style={{ marginTop: '20px', width: '300px' }}>
       <div style={{ marginBottom: '10px' }}>

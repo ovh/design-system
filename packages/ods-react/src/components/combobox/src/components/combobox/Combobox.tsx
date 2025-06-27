@@ -1,11 +1,11 @@
-import {
-  Combobox as VendorCombobox,
-  createListCollection,
-} from '@ark-ui/react/combobox';
+import { type ComboboxInputValueChangeDetails, type ComboboxValueChangeDetails, Combobox as VendorCombobox, createListCollection } from '@ark-ui/react/combobox';
 import { type FC, type JSX, forwardRef, useEffect, useMemo, useState } from 'react';
-import { type ComboboxInputValueChangeDetails, ComboboxProvider, type ComboboxProp as ComboboxRootProp, type ComboboxValueChangeDetails } from '../../contexts/useCombobox';
+import { ComboboxProvider, type ComboboxRootProp } from '../../contexts/useCombobox';
 import { findLabelForValue, flattenItems, getFilteredItems } from '../../controller/combobox';
 
+/**
+ * @inheritDoc ComboboxRootProp
+ */
 interface ComboboxProp extends ComboboxRootProp {}
 
 const Combobox: FC<ComboboxProp> = forwardRef(({
@@ -23,6 +23,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   noResultLabel = 'No results found',
   onValueChange,
   readOnly,
+  required,
   value,
   ...props
 }, ref): JSX.Element => {
@@ -52,11 +53,11 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   const flatItems = useMemo(() => flattenItems(filteredItems), [filteredItems]);
   const collection = useMemo(() => createListCollection({ items: flatItems }), [flatItems]);
 
-  const handleInputValueChange = (details: ComboboxInputValueChangeDetails): void => {
+  function handleInputValueChange(details: ComboboxInputValueChangeDetails): void {
     setInputValue(details.inputValue);
-  };
+  }
 
-  const handleValueChange = (details: ComboboxValueChangeDetails): void => {
+  function handleValueChange(details: ComboboxValueChangeDetails): void {
     if (!multiple && details.value.length > 0) {
       const label = findLabelForValue(items, details.value[0]);
       setInputValue(label);
@@ -68,48 +69,41 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
       setInternalValue(details.value);
     }
 
-    onValueChange && onValueChange(details);
-  };
+    onValueChange && onValueChange({ value: details.value });
+  }
 
   return (
     <ComboboxProvider
-      allowCustomValue={allowCustomValue}
-      customOptionRenderer={customOptionRenderer}
-      defaultValue={defaultValue}
-      disabled={disabled}
-      filteredItems={filteredItems}
-      highlightResults={highlightResults}
-      items={items}
-      invalid={invalid}
-      multiple={multiple}
-      newElementLabel={newElementLabel}
-      noResultLabel={noResultLabel}
-      onValueChange={handleValueChange}
-      readOnly={readOnly}
-      value={currentValue}
-    >
+      customOptionRenderer={ customOptionRenderer }
+      filteredItems={ filteredItems }
+      highlightResults={ highlightResults }
+      invalid={ invalid }
+      items={ items }
+      newElementLabel={ newElementLabel }
+      noResultLabel={ noResultLabel }
+      readOnly={ readOnly }>
       <VendorCombobox.Root
-        className={className}
-        collection={collection}
-        closeOnSelect={!multiple}
-        defaultValue={defaultValue}
-        disabled={disabled}
-        inputValue={inputValue}
-        invalid={invalid}
-        multiple={multiple}
-        onInputValueChange={handleInputValueChange}
-        onValueChange={handleValueChange}
+        className={ className }
+        closeOnSelect={ !multiple }
+        collection={ collection }
+        defaultValue={ defaultValue }
+        disabled={ disabled }
+        inputValue={ inputValue }
+        invalid={ invalid }
+        multiple={ multiple }
+        onInputValueChange={ handleInputValueChange }
+        onValueChange={ handleValueChange }
         positioning={{
           gutter: -1,
           sameWidth: true,
         }}
-        readOnly={readOnly}
-        ref={ref}
+        readOnly={ readOnly }
+        ref={ ref }
+        required={ multiple ? false : required } // FIXME required on multiple mode should be manually handled
         selectionBehavior={ multiple ? 'clear' : 'replace' }
-        value={currentValue}
-        {...props}
-      >
-        {children}
+        value={ currentValue }
+        { ...props }>
+        { children }
       </VendorCombobox.Root>
     </ComboboxProvider>
   );
@@ -117,4 +111,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
 
 Combobox.displayName = 'Combobox';
 
-export { Combobox, type ComboboxProp };
+export {
+  Combobox,
+  type ComboboxProp,
+};

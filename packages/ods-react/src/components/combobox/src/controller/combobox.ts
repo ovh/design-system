@@ -1,11 +1,12 @@
+import { type JSX, type KeyboardEvent, type RefObject } from 'react';
 import { getElementText } from '../../../../utils/element';
-import { type ComboboxItem, type ComboboxItemOrGroup } from '../contexts/useCombobox';
+import { type ComboboxItem, type ComboboxOptionItem } from '../contexts/useCombobox';
 
 interface ComboboxProps {
   allowCustomValue?: boolean;
-  customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element;
+  customOptionRenderer?: (item: ComboboxItem) => JSX.Element;
   inputValue: string;
-  items: ComboboxItemOrGroup[];
+  items: ComboboxItem[];
   multiple?: boolean;
   newElementLabel?: string;
   value?: string[];
@@ -14,6 +15,21 @@ interface ComboboxProps {
 interface FilterItemsProps extends ComboboxProps {
   hasExactMatch: boolean;
   isValueAlreadySelected: boolean;
+}
+
+function calculateNewFocusIndex(
+  indexToRemove: number,
+  totalLength: number,
+): number | null {
+  const newLength = totalLength - 1;
+
+  if (indexToRemove > 0 && newLength > 0) {
+    return indexToRemove - 1;
+  } else if (newLength > 0) {
+    return 0;
+  }
+
+  return null;
 }
 
 function escapeRegExp(string: string): string {
@@ -29,12 +45,12 @@ function filterItems({
   customOptionRenderer,
   value,
   multiple,
-}: FilterItemsProps): ComboboxItemOrGroup[] {
+}: FilterItemsProps): ComboboxItem[] {
   if (!inputValue && !value?.length) {
     return items;
   }
 
-  const filtered = items.reduce<ComboboxItemOrGroup[]>((acc, item) => {
+  const filtered = items.reduce<ComboboxItem[]>((acc, item) => {
     if ('options' in item) {
       const filteredOptions = item.options.filter((option) => {
         if ('options' in option) {
@@ -74,9 +90,57 @@ function filterItems({
   return filtered;
 }
 
+function findLabelForValue(items: ComboboxItem[] = [], value: string): string {
+  for (const item of items) {
+    if ('options' in item) {
+      const foundInGroup = findLabelForValue(item.options, value);
+      if (foundInGroup !== value) {
+        return foundInGroup;
+      }
+    } else if (item.value === value) {
+      return String(item.label);
+    }
+  }
+  return value;
+}
+
+function flattenItems(items: ComboboxItem[] = [], groupLabel?: string): ComboboxOptionItem[] {
+  const result: ComboboxOptionItem[] = [];
+  for (const item of items) {
+    if ('options' in item) {
+      result.push(...flattenItems(item.options, item.label));
+    } else {
+      result.push(groupLabel ? { ...item, group: groupLabel } : item);
+    }
+  }
+  return result;
+}
+
+function getFilteredItems({
+  allowCustomValue,
+  customOptionRenderer,
+  inputValue,
+  items,
+  multiple,
+  value = [],
+}: ComboboxProps): ComboboxItem[] {
+  const exactMatch = hasExactMatch(items, inputValue, customOptionRenderer);
+  const valueSelected = isValueAlreadySelected(value, inputValue);
+  return filterItems({
+    allowCustomValue,
+    customOptionRenderer,
+    hasExactMatch: exactMatch,
+    inputValue,
+    isValueAlreadySelected: valueSelected,
+    items,
+    multiple,
+    value,
+  });
+}
+
 function getItemText(
-  item: ComboboxItemOrGroup,
-  customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element,
+  item: ComboboxItem,
+  customOptionRenderer?: (item: ComboboxItem) => JSX.Element,
 ): string {
   if ('options' in item) {
     return item.label;
@@ -85,9 +149,9 @@ function getItemText(
 }
 
 function hasExactMatch(
-  items: ComboboxItemOrGroup[],
+  items: ComboboxItem[],
   inputValue: string,
-  customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element,
+  customOptionRenderer?: (item: ComboboxItem) => JSX.Element,
 ): boolean {
   if (!inputValue) {
     return false;
@@ -100,6 +164,17 @@ function hasExactMatch(
     }
     return getItemText(item, customOptionRenderer).toLowerCase() === inputValue.toLowerCase();
   });
+}
+
+function isKeyboardEventAtInputStart(
+  e: KeyboardEvent<HTMLInputElement>,
+  inputRef: RefObject<HTMLInputElement>,
+  key: string,
+): boolean {
+  return e.key === key &&
+    inputRef.current !== null &&
+    inputRef.current.selectionStart === 0 &&
+    inputRef.current.selectionEnd === 0;
 }
 
 function isValueAlreadySelected(value: string[], inputValue: string): boolean {
@@ -115,7 +190,15 @@ function matchesSearch(text: string, inputValue: string): boolean {
   return text.toLowerCase().includes(inputValue.toLowerCase());
 }
 
-export function splitTextBySearchTerm(text: string, searchTerm: string): string[] {
+function removeValueFromArray(values: string[], valueToRemove: string): string[] {
+  return values.filter((val) => val !== valueToRemove);
+}
+
+function shouldResetTagFocus(key: string): boolean {
+  return key !== 'Backspace' && key !== 'ArrowLeft';
+}
+
+function splitTextBySearchTerm(text: string, searchTerm: string): string[] {
   if (!text || !searchTerm) {
     return [text];
   }
@@ -125,93 +208,19 @@ export function splitTextBySearchTerm(text: string, searchTerm: string): string[
   return text.split(regex);
 }
 
-export function findLabelForValue(items: ComboboxItemOrGroup[] = [], value: string): string {
-  for (const item of items) {
-    if ('options' in item) {
-      const foundInGroup = findLabelForValue(item.options, value);
-      if (foundInGroup !== value) {
-        return foundInGroup;
-      }
-    } else if (item.value === value) {
-      return String(item.label);
-    }
-  }
-  return value;
-}
-
-export function flattenItems(items: ComboboxItemOrGroup[] = [], groupLabel?: string): ComboboxItem[] {
-  const result: ComboboxItem[] = [];
-  for (const item of items) {
-    if ('options' in item) {
-      result.push(...flattenItems(item.options, item.label));
-    } else {
-      result.push(groupLabel ? { ...item, group: groupLabel } : item);
-    }
-  }
-  return result;
-}
-
-export function getFilteredItems({
-  allowCustomValue,
-  customOptionRenderer,
-  inputValue,
-  items,
-  multiple,
-  value = [],
-}: ComboboxProps): ComboboxItemOrGroup[] {
-  const exactMatch = hasExactMatch(items, inputValue, customOptionRenderer);
-  const valueSelected = isValueAlreadySelected(value, inputValue);
-  return filterItems({
-    allowCustomValue,
-    customOptionRenderer,
-    hasExactMatch: exactMatch,
-    inputValue,
-    isValueAlreadySelected: valueSelected,
-    items,
-    multiple,
-    value,
-  });
-}
-
-export function isKeyboardEventAtInputStart(
-  e: React.KeyboardEvent<HTMLInputElement>,
-  inputRef: React.RefObject<HTMLInputElement>,
-  key: string,
-): boolean {
-  return e.key === key &&
-    inputRef.current !== null &&
-    inputRef.current.selectionStart === 0 &&
-    inputRef.current.selectionEnd === 0;
-}
-
-export function calculateNewFocusIndex(
-  indexToRemove: number,
-  totalLength: number,
-): number | null {
-  const newLength = totalLength - 1;
-
-  if (indexToRemove > 0 && newLength > 0) {
-    return indexToRemove - 1;
-  } else if (newLength > 0) {
-    return 0;
-  }
-
-  return null;
-}
-
-export function shouldResetTagFocus(key: string): boolean {
-  return key !== 'Backspace' && key !== 'ArrowLeft';
-}
-
-export function removeValueFromArray(values: string[], valueToRemove: string): string[] {
-  return values.filter((val) => val !== valueToRemove);
-}
-
 export {
+  calculateNewFocusIndex,
   escapeRegExp,
   filterItems,
+  findLabelForValue,
+  flattenItems,
+  getFilteredItems,
   getItemText,
   hasExactMatch,
+  isKeyboardEventAtInputStart,
   isValueAlreadySelected,
   matchesSearch,
+  removeValueFromArray,
+  shouldResetTagFocus,
+  splitTextBySearchTerm,
 };

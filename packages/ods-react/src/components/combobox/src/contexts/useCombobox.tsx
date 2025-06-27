@@ -1,13 +1,14 @@
-import { type ComboboxInputValueChangeDetails, type ComboboxValueChangeDetails } from '@ark-ui/react/combobox';
-import { type ComponentPropsWithRef, type KeyboardEvent, type ReactNode, type RefObject, createContext, useCallback, useContext, useMemo, useState } from 'react';
-import {
-  calculateNewFocusIndex,
-  isKeyboardEventAtInputStart,
-  removeValueFromArray,
-  shouldResetTagFocus,
-} from '../controller/combobox';
+import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useContext } from 'react';
 
-type ComboboxItem = {
+interface ComboboxInputValueChangeDetails {
+  inputValue: string;
+}
+
+interface ComboboxValueChangeDetails {
+  value: string[];
+}
+
+type ComboboxOptionItem = {
   disabled?: boolean;
   group?: string;
   isNewElement?: boolean;
@@ -15,72 +16,102 @@ type ComboboxItem = {
   value: string;
 };
 
-type ComboboxGroup = {
+type ComboboxGroupItem = {
   disabled?: boolean;
   label: string;
-  options: ComboboxItem[];
+  options: ComboboxOptionItem[];
 };
 
-type ComboboxItemOrGroup = ComboboxItem | ComboboxGroup;
+type ComboboxItem = ComboboxGroupItem | ComboboxOptionItem;
 
-type ComboboxProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
+type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
+  /**
+   * Whether to allow adding a value which is not part of the items.
+   */
   allowCustomValue?: boolean,
-  customOptionRenderer?: (item: ComboboxItemOrGroup) => JSX.Element,
+  /**
+   * Custom render for each option item.
+   */
+  customOptionRenderer?: (item: ComboboxItem) => JSX.Element,
+  /**
+   * The initial selected value(s). Use when you don't need to control the selected value(s) of the combobox.
+   */
   defaultValue?: string[],
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean,
+  /**
+   * Whether to highlight the matching part of filtered items.
+   */
   highlightResults?: boolean,
-  items: ComboboxItemOrGroup[],
+  /**
+   * Whether the component is in error state.
+   */
   invalid?: boolean,
+  /**
+   * The list of items
+   */
+  items: ComboboxItem[],
+  /**
+   * Whether the multiple selection is allowed.
+   */
   multiple?: boolean,
+  /**
+   * The name of the form element. Useful for form submission.
+   */
   name?: string,
+  /**
+   * Label displayed in front of a custom new value to add.
+   */
   newElementLabel?: string,
+  /**
+   * Label displayed when no values match the current input value.
+   */
   noResultLabel?: string,
+  /**
+   * Callback fired when the value(s) changes.
+   */
   onValueChange?: (value: ComboboxValueChangeDetails) => void,
+  /**
+   * Whether the component is readonly.
+   */
   readOnly?: boolean,
+  /**
+   * Whether the component is required.
+   * /!\ Only work for single selection mode for now.
+   */
+  required?: boolean,
+  /**
+   * The controlled selected value(s).
+   */
   value?: string[]
 };
 
-type TagFocusState = {
-  focusLastTag: (tagCount: number) => void;
-  focusedIndex: number | null;
-  resetTagFocus: () => void;
-  setTagIndex: (index: number | null) => void;
+type ComboboxContextType = ComboboxRootProp & {
+  filteredItems?: ComboboxItem[];
 };
 
-type ComboboxContextType = ComboboxProp & {
-  filteredItems?: ComboboxItemOrGroup[];
-  handleTagRemove: (tagValue: string) => void,
-  handleTagsKeyDown: (e: KeyboardEvent<HTMLInputElement>, inputRef: RefObject<HTMLInputElement>) => void,
-  tagFocus: TagFocusState,
-};
-
-interface ComboboxProviderProp extends ComboboxProp {
+interface ComboboxProviderProp extends ComboboxContextType {
   children: ReactNode;
-  filteredItems?: ComboboxItemOrGroup[];
-}
-
-interface ComboboxItemProp extends ComponentPropsWithRef<'div'> {
-  item: ComboboxItemOrGroup;
-}
-
-interface ComboboxItemGroupProp extends ComponentPropsWithRef<'div'> {
-  children: ReactNode;
-  className?: string;
-}
-
-interface ComboboxControlProp extends ComponentPropsWithRef<'button'> {
-  className?: string;
-  clearable?: boolean;
-  loading?: boolean;
-  placeholder?: string;
-}
-
-interface ComboboxContentProp extends ComponentPropsWithRef<'div'> {
-  className?: string;
-  createPortal?: boolean;
 }
 
 const ComboboxContext = createContext<ComboboxContextType | undefined>(undefined);
+
+const ComboboxProvider = ({
+  children,
+  filteredItems,
+  ...props
+}: ComboboxProviderProp): JSX.Element => {
+  return (
+    <ComboboxContext.Provider value={{
+      ...props,
+      filteredItems,
+    }}>
+      { children }
+    </ComboboxContext.Provider>
+  );
+};
 
 function useCombobox(): ComboboxContextType {
   const context = useContext(ComboboxContext);
@@ -90,116 +121,13 @@ function useCombobox(): ComboboxContextType {
   return context;
 }
 
-const ComboboxProvider = ({
-  children,
-  multiple,
-  value,
-  onValueChange,
-  filteredItems,
-  ...props
-}: ComboboxProviderProp): JSX.Element => {
-  const [focusedTagIndex, setFocusedTagIndex] = useState<number | null>(null);
-  const currentValue = value || [];
-
-  const tagFocus: TagFocusState = useMemo((): TagFocusState => ({
-    focusLastTag: (tagCount: number): void => {
-      if (tagCount > 0) {
-        setFocusedTagIndex(tagCount - 1);
-      }
-    },
-    focusedIndex: focusedTagIndex,
-    resetTagFocus: (): void => {
-      setFocusedTagIndex(null);
-    },
-    setTagIndex: (index: number | null): void => {
-      setFocusedTagIndex(index);
-    },
-  }), [focusedTagIndex]);
-
-  const handleTagRemove = useCallback((tagValue: string) => {
-    if (!multiple) {
-      return;
-    }
-
-    const newValue = removeValueFromArray(currentValue, tagValue);
-    onValueChange?.({ value: newValue } as ComboboxValueChangeDetails);
-  }, [currentValue, multiple, onValueChange]);
-
-  const handleTagsKeyDown = useCallback((
-    e: React.KeyboardEvent<HTMLInputElement>,
-    inputRef: React.RefObject<HTMLInputElement>,
-  ) => {
-    if (!multiple || !currentValue.length) {
-      return;
-    }
-
-    const isBackspaceAtStart = isKeyboardEventAtInputStart(e, inputRef, 'Backspace');
-    const isArrowLeftAtStart = isKeyboardEventAtInputStart(e, inputRef, 'ArrowLeft');
-
-    if (isBackspaceAtStart && currentValue.length > 0) {
-      if (focusedTagIndex === null) {
-        setFocusedTagIndex(currentValue.length - 1);
-        e.preventDefault();
-      } else {
-        const indexToRemove = focusedTagIndex;
-        const tagToRemove = currentValue[indexToRemove];
-
-        const newFocusIndex = calculateNewFocusIndex(indexToRemove, currentValue.length);
-        setFocusedTagIndex(newFocusIndex);
-        handleTagRemove(tagToRemove);
-        e.preventDefault();
-      }
-    } else if (isArrowLeftAtStart && currentValue.length > 0 && focusedTagIndex === null) {
-      setFocusedTagIndex(currentValue.length - 1);
-      e.preventDefault();
-    } else if (shouldResetTagFocus(e.key)) {
-      setFocusedTagIndex(null);
-    }
-
-    if (focusedTagIndex !== null && currentValue.length > 0) {
-      if (e.key === 'ArrowLeft' && focusedTagIndex > 0) {
-        setFocusedTagIndex(focusedTagIndex - 1);
-        e.preventDefault();
-      } else if (e.key === 'ArrowRight' && focusedTagIndex < currentValue.length - 1) {
-        setFocusedTagIndex(focusedTagIndex + 1);
-        e.preventDefault();
-      } else if (e.key === 'Escape') {
-        setFocusedTagIndex(null);
-        e.preventDefault();
-      }
-    }
-  }, [currentValue, multiple, focusedTagIndex, handleTagRemove]);
-
-  return (
-    <ComboboxContext.Provider
-      value={ {
-        ...props,
-        filteredItems,
-        handleTagRemove,
-        handleTagsKeyDown,
-        multiple,
-        onValueChange,
-        tagFocus,
-        value,
-      } }
-    >
-      { children }
-    </ComboboxContext.Provider>
-  );
-};
-
 export {
-  ComboboxProvider,
-  type ComboboxContentProp,
-  type ComboboxControlProp,
-  type ComboboxGroup,
+  type ComboboxGroupItem,
   type ComboboxInputValueChangeDetails,
   type ComboboxItem,
-  type ComboboxItemGroupProp,
-  type ComboboxItemOrGroup,
-  type ComboboxItemProp,
-  type ComboboxProp,
+  type ComboboxOptionItem,
+  ComboboxProvider,
+  type ComboboxRootProp,
   type ComboboxValueChangeDetails,
-  type TagFocusState,
   useCombobox,
 };

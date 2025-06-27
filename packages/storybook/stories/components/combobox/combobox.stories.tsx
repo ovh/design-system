@@ -5,14 +5,12 @@ import {
   ComboboxContent,
   ComboboxControl,
   ComboboxControlProp,
-  ComboboxItem,
-  ComboboxItemGroup,
-  type ComboboxItemOrGroup,
+  type ComboboxItem,
   type ComboboxProp,
 } from '../../../../ods-react/src/components/combobox/src';
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
-import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 
 type Story = StoryObj<ComboboxProp>;
 type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {
@@ -21,7 +19,7 @@ type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {
 const meta: Meta<ComboboxProp> = {
   argTypes: excludeFromDemoControls(['customOptionRenderer', 'defaultValue', 'items', 'name', 'onInputValueChange', 'onValueChange', 'required', 'value']),
   component: Combobox,
-  subcomponents: { ComboboxContent, ComboboxControl, ComboboxItem, ComboboxItemGroup },
+  subcomponents: { ComboboxContent, ComboboxControl },
   title: 'React Components/Combobox',
 };
 
@@ -30,14 +28,14 @@ export default meta;
 export const Demo: StoryObj = {
   render: (arg: DemoArg) => (
     <Combobox
-      items={ [
+      items={[
         { label: 'Dog', value: 'dog' },
         { label: 'Cat', value: 'cat' },
         { label: 'Hamster', value: 'hamster' },
         { label: 'Parrot', value: 'parrot' },
         { label: 'Spider', value: 'spider' },
         { label: 'Goldfish', value: 'goldfish' },
-      ] }
+      ]}
       allowCustomValue={ arg.allowCustomValue }
       defaultValue={ arg.defaultValue }
       disabled={ arg.disabled }
@@ -46,19 +44,12 @@ export const Demo: StoryObj = {
       multiple={ arg.multiple }
       newElementLabel={ arg.newElementLabel }
       noResultLabel={ arg.noResultLabel }
-      readOnly={ arg.readOnly }
-    >
+      readOnly={ arg.readOnly }>
       <ComboboxControl clearable={ arg.clearable } placeholder={ arg.placeholder } loading={ arg.loading } />
       <ComboboxContent />
     </Combobox>
   ),
   argTypes: orderControls({
-    newElementLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
     allowCustomValue: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -109,6 +100,12 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
+    newElementLabel: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: 'text',
+    },
     noResultLabel: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -137,14 +134,14 @@ export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
-      items={ [
+      items={[
         { label: 'Dog', value: 'dog' },
         { label: 'Cat', value: 'cat' },
         { label: 'Hamster', value: 'hamster' },
         { label: 'Parrot', value: 'parrot' },
         { label: 'Spider', value: 'spider' },
         { label: 'Goldfish', value: 'goldfish' },
-      ] }>
+      ]}>
       <ComboboxControl />
       <ComboboxContent />
     </Combobox>
@@ -155,15 +152,15 @@ export const Overview: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
-      items={ [
+      items={[
         { label: 'Dog', value: 'dog' },
         { label: 'Cat', value: 'cat' },
         { label: 'Hamster', value: 'hamster' },
         { label: 'Parrot', value: 'parrot' },
         { label: 'Spider', value: 'spider' },
         { label: 'Goldfish', value: 'goldfish' },
-      ] }>
-      <ComboboxControl placeholder={ 'Combobox' } />
+      ]}>
+      <ComboboxControl placeholder="Combobox" />
       <ComboboxContent />
     </Combobox>
   ),
@@ -173,15 +170,15 @@ export const Clearable: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
-      items={ [
+      items={[
         { label: 'Dog', value: 'dog' },
         { label: 'Cat', value: 'cat' },
         { label: 'Hamster', value: 'hamster' },
         { label: 'Parrot', value: 'parrot' },
         { label: 'Spider', value: 'spider' },
         { label: 'Goldfish', value: 'goldfish' },
-      ] }>
-      <ComboboxControl placeholder={ 'Combobox' } clearable />
+      ]}>
+      <ComboboxControl clearable placeholder="Combobox" />
       <ComboboxContent />
     </Combobox>
   ),
@@ -192,15 +189,15 @@ export const Disabled: Story = {
   render: ({}) => (
     <Combobox
       disabled
-      items={ [
+      items={[
         { label: 'Dog', value: 'dog' },
         { label: 'Cat', value: 'cat' },
         { label: 'Hamster', value: 'hamster' },
         { label: 'Parrot', value: 'parrot' },
         { label: 'Spider', value: 'spider' },
         { label: 'Goldfish', value: 'goldfish' },
-      ] }>
-      <ComboboxControl placeholder={ 'Combobox' } />
+      ]}>
+      <ComboboxControl placeholder="Combobox" />
       <ComboboxContent />
     </Combobox>
   ),
@@ -210,16 +207,16 @@ export const Readonly: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
-      items={ [
+      items={[
         { label: 'Dog', value: 'dog' },
         { label: 'Cat', value: 'cat' },
         { label: 'Hamster', value: 'hamster' },
         { label: 'Parrot', value: 'parrot' },
         { label: 'Spider', value: 'spider' },
         { label: 'Goldfish', value: 'goldfish' },
-      ] }
+      ]}
       readOnly>
-      <ComboboxControl placeholder={ 'Combobox' } />
+      <ComboboxControl placeholder="Combobox" />
       <ComboboxContent />
     </Combobox>
   ),
@@ -229,7 +226,7 @@ export const Group: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
-      items={ [
+      items={[
         {
           label: 'Europe',
           options: [
@@ -247,8 +244,8 @@ export const Group: Story = {
           ],
         },
         { label: 'World', value: 'world' },
-      ] }>
-      <ComboboxControl placeholder={ 'Combobox' } />
+      ]}>
+      <ComboboxControl placeholder="Combobox" />
       <ComboboxContent />
     </Combobox>
   ),
@@ -260,10 +257,10 @@ export const InFormField: Story = {
     <FormField>
       <FormFieldLabel>Combobox</FormFieldLabel>
       <Combobox
-        items={ [
+        items={[
           { label: 'Dog', value: 'dog' },
           { label: 'Cat', value: 'cat' },
-        ] }>
+        ]}>
         <ComboboxControl />
         <ComboboxContent />
       </Combobox>
@@ -276,10 +273,10 @@ export const Invalid: Story = {
   render: ({}) => (
     <Combobox
       invalid
-      items={ [
+      items={[
         { label: 'Dog', value: 'dog' },
         { label: 'Cat', value: 'cat' },
-      ] }>
+      ]}>
       <ComboboxControl />
       <ComboboxContent />
     </Combobox>
@@ -301,14 +298,13 @@ export const Controlled: Story = {
             { label: 'Spider', value: 'spider' },
             { label: 'Goldfish', value: 'goldfish' },
           ]}
-          value={value}
-          onValueChange={details => setValue(details.value)}
-        >
+          onValueChange={ details => setValue(details.value) }
+          value={ value }>
           <ComboboxControl placeholder="Select an animal" />
           <ComboboxContent />
         </Combobox>
         <div style={{ marginTop: 8 }}>
-          <strong>Selected value:</strong> {value[0] ?? 'None'}
+          <strong>Selected value:</strong> { value[0] ?? 'None' }
         </div>
       </>
     );
@@ -327,8 +323,7 @@ export const Highlight: Story = {
         { label: 'Parrot', value: 'parrot' },
         { label: 'Spider', value: 'spider' },
         { label: 'Goldfish', value: 'goldfish' },
-      ]}
-    >
+      ]}>
       <ComboboxControl />
       <ComboboxContent />
     </Combobox>
@@ -350,21 +345,20 @@ export const CustomOptions: Story = {
       { label: 'Broccoli', value: 'broccoli', customRendererData: { color: 'green', info: 'Vegetable' } as CustomData },
       { label: 'Blueberry', value: 'blueberry', customRendererData: { color: 'blue', info: 'Fruit' } as CustomData },
     ];
-    const customOptionRenderer = (item: ComboboxItemOrGroup) => {
+    const customOptionRenderer = (item: ComboboxItem) => {
       const customData = 'customRendererData' in item ? item.customRendererData as CustomData : undefined;
 
       return (
         <span style={{ color: customData?.color, fontWeight: 'bold' }}>
-          {item.label} {customData?.info && <span style={{ fontWeight: 'normal', fontSize: 12, color: '#888' }}>({customData.info})</span>}
+          { item.label } { customData?.info && <span style={{ fontWeight: 'normal', fontSize: 12, color: '#888' }}>({ customData.info })</span> }
         </span>
       );
     };
     return (
       <Combobox
+        customOptionRenderer={ customOptionRenderer }
         highlightResults
-        items={items}
-        customOptionRenderer={customOptionRenderer}
-      >
+        items={ items }>
         <ComboboxControl />
         <ComboboxContent />
       </Combobox>
@@ -375,7 +369,7 @@ export const CustomOptions: Story = {
 export const Empty: Story = {
   tags: ['!dev'],
   render: () => (
-    <Combobox items={[]}>
+    <Combobox items={ [] }>
       <ComboboxControl />
       <ComboboxContent />
     </Combobox>
@@ -394,8 +388,7 @@ export const Multiple: Story = {
         { label: 'Parrot', value: 'parrot' },
         { label: 'Spider', value: 'spider' },
         { label: 'Goldfish', value: 'goldfish' },
-      ]}
-    >
+      ]}>
       <ComboboxControl />
       <ComboboxContent />
     </Combobox>
@@ -413,8 +406,7 @@ export const Placeholder: Story = {
         { label: 'Parrot', value: 'parrot' },
         { label: 'Spider', value: 'spider' },
         { label: 'Goldfish', value: 'goldfish' },
-      ]}
-    >
+      ]}>
       <ComboboxControl placeholder="Please select" />
       <ComboboxContent />
     </Combobox>

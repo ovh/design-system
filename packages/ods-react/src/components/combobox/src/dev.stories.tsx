@@ -38,9 +38,16 @@ const groupedItems = [
   { label: 'World', value: 'world' },
 ];
 
-export const Default = () => (
+export const Clearable = () => (
   <Combobox items={ items }>
     <ComboboxControl clearable />
+    <ComboboxContent />
+  </Combobox>
+);
+
+export const Default = () => (
+  <Combobox items={ items }>
+    <ComboboxControl />
     <ComboboxContent />
   </Combobox>
 );

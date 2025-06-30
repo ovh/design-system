@@ -4,6 +4,7 @@ import { Select, SelectContent, SelectControl, type SelectItem } from '../../../
 import { PAGINATION_PER_PAGE_OPTIONS } from '../../constants/pagination-per-page';
 import style from './paginationPageSizeSelector.module.scss';
 
+/** @internal */
 type PaginationTotalItemsLabelRenderer = (params: { totalItems: number }) => string | number;
 type HandleValueChange = (detail: { value: string[] }) => void;
 

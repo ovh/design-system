@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-storybook",
-  "version": "18.6.3",
+  "version": "19.0.0",
   "description": "ODS Storybook",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -11,8 +11,8 @@
     "start": "npm run generate:versions && storybook dev -p 6006"
   },
   "dependencies": {
-    "@ovhcloud/ods-react": "18.6.3",
-    "@ovhcloud/ods-themes": "18.6.3",
+    "@ovhcloud/ods-react": "19.0.0",
+    "@ovhcloud/ods-themes": "19.0.0",
     "react": "18.2.0",
     "typedoc": "0.28.1"
   },

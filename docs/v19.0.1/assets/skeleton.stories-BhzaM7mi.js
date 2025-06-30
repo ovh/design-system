@@ -1,0 +1,7 @@
+import{r as _,e as u}from"./index-D_CmzhJ4.js";import{j as g}from"./jsx-runtime-VM66peLj.js";import{c as v}from"./index-CkQHsVsO.js";const x="_skeleton_kauw8_2",O={skeleton:x},t=_.forwardRef(({className:S,...f},k)=>g.jsx("div",{className:v(O.skeleton,S),ref:k,...f}));t.displayName="Skeleton";t.__docgenInfo={description:"",methods:[],displayName:"Skeleton",composes:["ComponentPropsWithRef"]};const j={component:t,title:"React Components/Skeleton"},e={},o={tags:["!dev"],render:({})=>u.createElement(t,null)},r={tags:["!dev"],render:({})=>u.createElement(t,null)};var s,a,n;e.parameters={...e.parameters,docs:{...(s=e.parameters)==null?void 0:s.docs,source:{originalSource:"{}",...(n=(a=e.parameters)==null?void 0:a.docs)==null?void 0:n.source}}};var c,m,l;o.parameters={...o.parameters,docs:{...(c=o.parameters)==null?void 0:c.docs,source:{originalSource:`{
+  tags: ['!dev'],
+  render: ({}) => <Skeleton />
+}`,...(l=(m=o.parameters)==null?void 0:m.docs)==null?void 0:l.source}}};var d,p,i;r.parameters={...r.parameters,docs:{...(d=r.parameters)==null?void 0:d.docs,source:{originalSource:`{
+  tags: ['!dev'],
+  render: ({}) => <Skeleton />
+}`,...(i=(p=r.parameters)==null?void 0:p.docs)==null?void 0:i.source}}};const y=["Demo","Default","Overview"],N=Object.freeze(Object.defineProperty({__proto__:null,Default:o,Demo:e,Overview:r,__namedExportsOrder:y,default:j},Symbol.toStringTag,{value:"Module"}));export{o as D,r as O,N as S};

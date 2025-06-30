@@ -1,6 +1,6 @@
 {
   "name": "vite-app",
-  "version": "19.0.0",
+  "version": "19.0.1",
   "private": true,
   "description": "Example of an app using ODS, bundled with Vite",
   "type": "module",
@@ -9,8 +9,8 @@
     "start": "vite"
   },
   "dependencies": {
-    "@ovhcloud/ods-react": "19.0.0",
-    "@ovhcloud/ods-themes": "19.0.0",
+    "@ovhcloud/ods-react": "19.0.1",
+    "@ovhcloud/ods-themes": "19.0.1",
     "formik": "2.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",

@@ -1,9 +1,37 @@
-import { Pagination } from '.';
+import { useEffect, useState } from 'react';
+import { Pagination, type PaginationPageChangeDetail, type PaginationPageSizeChangeDetail } from '.';
 import style from './dev.module.css';
 
 export default {
   component: Pagination,
   title: 'Pagination dev',
+};
+
+export const Controlled = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+
+  useEffect(() => {
+    console.log(`Query new ${pageSize} results for page ${currentPage}`);
+  }, [currentPage, pageSize]);
+
+  function onPageChange({ page }: PaginationPageChangeDetail) {
+    setCurrentPage(page);
+  }
+
+  function onPageSizeChange({ pageSize }: PaginationPageSizeChangeDetail) {
+    setPageSize(pageSize);
+  }
+
+  return (
+    <Pagination
+      onPageChange={ onPageChange }
+      onPageSizeChange={ onPageSizeChange }
+      page={ currentPage }
+      pageSize={ pageSize }
+      totalItems={ 500 }
+      withPageSizeSelector />
+  );
 };
 
 export const Default = () => (

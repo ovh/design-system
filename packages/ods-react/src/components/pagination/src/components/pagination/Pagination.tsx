@@ -13,6 +13,11 @@ import style from './pagination.module.scss';
 
 interface PaginationPageChangeDetail {
   page: number;
+  pageSize: number;
+}
+
+interface PaginationPageSizeChangeDetail {
+  pageSize: number,
 }
 
 interface PaginationProp extends ComponentPropsWithRef<'nav'> {
@@ -36,6 +41,10 @@ interface PaginationProp extends ComponentPropsWithRef<'nav'> {
    * Callback fired when the active page changes.
    */
   onPageChange?: (detail: PaginationPageChangeDetail) => void;
+  /**
+   * Callback fired when the page size changes.
+   */
+  onPageSizeChange?: (detail: PaginationPageSizeChangeDetail) => void;
   /**
    * The controlled active page
    */
@@ -71,6 +80,7 @@ const Pagination: FC<PaginationProp> = forwardRef(({
   labelTooltipNext,
   labelTooltipPrev,
   onPageChange,
+  onPageSizeChange,
   page,
   pageSize = 10,
   siblingCount,
@@ -98,7 +108,11 @@ const Pagination: FC<PaginationProp> = forwardRef(({
   };
 
   const handlePageSizeChange = (value: string): void => {
-    setItemsPerPage(Number(value));
+    const numericValue = Number(value);
+
+    setItemsPerPage(numericValue);
+
+    onPageSizeChange?.({ pageSize: numericValue });
   };
 
   return (
@@ -162,5 +176,6 @@ Pagination.displayName = 'Pagination';
 export {
   Pagination,
   type PaginationPageChangeDetail,
+  type PaginationPageSizeChangeDetail,
   type PaginationProp,
 };

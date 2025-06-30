@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.0.0](https://ovh.github.io/design-system/v19.0.0/?path=/docs/design-system-changelog--page) (2025-06-30)
+[compare](https://github.com/ovh/design-system/compare/v18.6.3...v19.0.0)
+
+### Features
+
+* **icon:** add updated icons with correct ratio ([9b417d4](https://github.com/ovh/design-system/commit/9b417d47a42da53db079692d73a30883a9ab5568))
+* **styles:** add background color for invalid states across form elements ([dd973e5](https://github.com/ovh/design-system/commit/dd973e53cb7df2b73cdd34a8893baae815334c82))
+* **themes:** add new selected design tokens ([5636b14](https://github.com/ovh/design-system/commit/5636b14361f1a0802e6b06c436b00e64d116ed5a))
+* **themes:** enforce ods layers order ([0337d3e](https://github.com/ovh/design-system/commit/0337d3e519aebb014eaee220c22b59b66d9a886e))
+* **themes:** replace source-code-pro with variable fonts ([9e23e05](https://github.com/ovh/design-system/commit/9e23e0596e0f4630795c2352fc8a61169885f311))
+* **themes:** replace source-sans-pro with variable fonts ([c44fdfc](https://github.com/ovh/design-system/commit/c44fdfc04197ba6ee661c44e1d52d516c0a692cb))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-card",
-  "version": "18.6.3",
+  "version": "19.0.0",
   "private": true,
   "description": "ODS React Card component",
   "type": "module",

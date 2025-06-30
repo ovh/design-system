@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.0.0](https://ovh.github.io/design-system/v19.0.0/?path=/docs/design-system-changelog--page) (2025-06-30)
+[compare](https://github.com/ovh/design-system/compare/v18.6.3...v19.0.0)
+
+### Bug Fixes
+
+* **lib:** update build to work with React v19 & add vite example app ([0e29ef7](https://github.com/ovh/design-system/commit/0e29ef7c0e23ebabc9e4967f6509dc123330844e))
+* **select:** add missing name & hidden field && add to example app ([706065a](https://github.com/ovh/design-system/commit/706065a08ca93c51ee19493f2630b5e95382ec12))
+
+
+### Features
+
+* **checkbox:** add checkbox group ([54f8013](https://github.com/ovh/design-system/commit/54f80137378b76807ccf64cfac5dae6022a17814))
+* **combobox:** implement multiple ([bcb72b3](https://github.com/ovh/design-system/commit/bcb72b360532b7cefa7253aab4d80cac266e4240))
+* **datepicker:** implement component ([c6297d1](https://github.com/ovh/design-system/commit/c6297d12deb426d14582cc8224fad06b452fd1bc))
+* **doc:** add form guide ([1a380cc](https://github.com/ovh/design-system/commit/1a380cc8b88a32723332219362d3d458225a6210))
+* **input:** implement component ([5a8b47c](https://github.com/ovh/design-system/commit/5a8b47c25fcecae8fa8d692fa02f962924bc2c3f))
+* **password:** implement component ([ee13e1a](https://github.com/ovh/design-system/commit/ee13e1a4b67b544b8ede471825639da55053f9f0))
+* **phone-number:** implement component ([85fec75](https://github.com/ovh/design-system/commit/85fec759e58c8fc8f4898bc66c87f48a4a88dc9f))
+* **quantity:** implement component ([65922c3](https://github.com/ovh/design-system/commit/65922c30f017be880c5cb6eedf3695ec69bb2bf1))
+* **radio:** implement component ([2986ce3](https://github.com/ovh/design-system/commit/2986ce3f7094481b002f38bacb671bcc1e6ba155))
+* **range:** implement component ([d2e87e5](https://github.com/ovh/design-system/commit/d2e87e53db126dd7435f162492173c1b97162f20))
+* **timepicker:** implement component ([7687b4f](https://github.com/ovh/design-system/commit/7687b4feb8a7d3be3e28e7202974cf43606da5f4))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

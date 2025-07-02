@@ -73,6 +73,57 @@ export const Demo: StoryObj = {
   },
 };
 
+export const AccessibilityGrouping: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <ul style={{ display: 'flex', flexFlow: 'column', rowGap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
+      <li>
+        <Message>
+          <MessageIcon name={ ICON_NAME.circleCheck } />
+          <MessageBody>
+            Your changes have been saved.
+          </MessageBody>
+        </Message>
+      </li>
+      <li>
+        <Message color={ MESSAGE_COLOR.warning }>
+          <MessageIcon name={ ICON_NAME.triangleExclamation } />
+          <MessageBody>
+            Some fields need your attention.
+          </MessageBody>
+        </Message>
+      </li>
+    </ul>
+
+  ),
+};
+
+export const AccessibilityRoleAlert: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Message
+      color={ MESSAGE_COLOR.critical }
+      role="alert">
+      <MessageIcon name={ ICON_NAME.hexagonExclamation } />
+      <MessageBody>
+        An unexpected error occurred.
+      </MessageBody>
+    </Message>
+  ),
+};
+
+export const AccessibilityRoleStatus: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Message role="status">
+      <MessageIcon name={ ICON_NAME.circleCheck } />
+      <MessageBody>
+        Your profile has been updated.
+      </MessageBody>
+    </Message>
+  ),
+};
+
 export const Color: Story = {
   decorators: [(story) => <div style={{ display: 'inline-flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   tags: ['!dev'],

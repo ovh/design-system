@@ -1,0 +1,74 @@
+import { Meta, Source } from '@storybook/blocks';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
+import { Heading } from '../../../src/components/heading/Heading';
+import { OdsLocaleList } from '../../../src/components/odsLocaleList/OdsLocaleList';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta title="OVHcloud Design System/Guides/Internationalization" />
+
+<Heading label="Internationalization" level={ 1 } />
+
+ODS does not embed any i18n library, as most of the translatable contents are coming from the integration side.
+
+There are two exceptions, components with full embedded translation and components with default translation on some accessibility attribute.
+
+<Heading label="Embedded translation" level={ 2 } />
+
+So far, only the following components manage internally a complete translation system:
+- <StorybookLink kind={ REACT_COMPONENTS_TITLE.datepicker } story={ STORY.documentation }>Datepicker</StorybookLink>
+- <StorybookLink kind={ REACT_COMPONENTS_TITLE.phoneNumber } story={ STORY.documentation }>Phone number</StorybookLink>
+
+Both relying on the native <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl">Intl</ExternalLink> feature.
+
+They do de-facto support the same locales as <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl">Intl</ExternalLink>.
+
+<Heading label="ODS specific translation" level={ 2 } />
+
+Although you have complete control on label translation when using the ODS components, there are a few internal elements
+that need a textual description for accessibility purpose.
+
+For example take the <StorybookLink kind={ REACT_COMPONENTS_TITLE.message } story={ STORY.documentation }>Message</StorybookLink> component:
+
+![i18n anatomy](components/message/anatomy-i18n.png "i18n anatomy")
+
+Here, the close button needs to have the right `aria-label` value set for accessibility compliance.
+Though the element is not part of the composable components, it is internal.
+
+By default, ODS will provide a default `aria-label` message for all locales that we currently support.
+So if you use the component as-is, it will be accessible already.
+
+In case you want to change the locale to one supported by ODS, you can use the `locale` attribute of the component.
+
+<Source code={`
+// This will change the close button aria-label to the french version
+<Message locale="fr">
+  <MessageBody>
+    Mon message
+  </MessageBody>
+</Message>
+`}
+        dark="true"
+        language="tsx" />
+
+If the `locale` is not set, the component will try to use the navigator languages by default.
+
+In case you want to change to a locale not supported by ODS, or you want to override the default messages,
+you can set your own translation using the `i18n` attribute of the component.
+
+<Source code={`
+// This will change the close button aria-label to your own string
+<Message i18n={{ [MESSAGE_I18N.closeButton]: 'Remove the notification' }}>
+  <MessageBody>
+    Mon message
+  </MessageBody>
+</Message>
+`}
+        dark="true"
+        language="tsx" />
+
+<Heading label="ODS supported locale" level={ 2 } />
+
+Current locales supported by ODS:
+
+<OdsLocaleList />

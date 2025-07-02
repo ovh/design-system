@@ -1,5 +1,7 @@
-import { MESSAGE_COLORS, MESSAGE_VARIANTS, Message, MessageBody, MessageIcon } from '.';
+import { useState } from 'react';
+import { MESSAGE_COLORS, MESSAGE_I18N, MESSAGE_VARIANTS, Message, MessageBody, MessageIcon } from '.';
 import style from './dev.module.css';
+import { Locale } from '../../../utils/locales';
 
 export default {
   component: Message,
@@ -73,6 +75,40 @@ export const Default = () => (
     </MessageBody>
   </Message>
 );
+
+export const i18n = () => {
+  const [locale, setLocale] = useState<Locale>('en');
+  const [override, setOverride] = useState(Date.now().toString());
+
+  return (
+    <>
+      <button onClick={ () => setLocale('fr') } type="button">Set locale to "fr"</button>
+      <button onClick={ () => setLocale('en') } type="button">Set locale to "en"</button>
+      {/*@ts-ignore for test purpose*/}
+      <button onClick={ () => setLocale('zz') } type="button">Set locale to "zz"</button>
+      <br /><br />
+      <Message>
+        <MessageBody>
+          Default locale
+        </MessageBody>
+      </Message>
+      <br /><br />
+      <Message locale={ locale }>
+        <MessageBody>
+          Dynamic locale
+        </MessageBody>
+      </Message>
+      <br /><br />
+      <button onClick={ () => setOverride(Date.now().toString()) } type="button">Update override</button>
+      <br /><br />
+      <Message i18n={{ [MESSAGE_I18N.closeButton]: override }}>
+        <MessageBody>
+          Translation override
+        </MessageBody>
+      </Message>
+    </>
+  );
+};
 
 export const Icon = () => (
   <Message>

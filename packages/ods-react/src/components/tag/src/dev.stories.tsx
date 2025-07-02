@@ -67,3 +67,17 @@ export const WithIcon = () => (
     </span>
   </Tag>
 );
+
+export const inList = () => (
+  <ul>
+    <li>
+      <Tag aria-label="Remove my Tag">Design</Tag>
+    </li>
+    <li>
+      <Tag>Development</Tag>
+    </li>
+    <li>
+      <Tag>Accessibility</Tag>
+    </li>
+  </ul>
+);

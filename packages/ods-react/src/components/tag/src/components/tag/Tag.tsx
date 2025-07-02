@@ -37,6 +37,7 @@ const Tag: FC<TagProp> = forwardRef(({
       { ...props }>
       { children }
       <Icon
+        aria-hidden="true"
         className={ style['tag__close'] }
         name={ ICON_NAME.xmark } />
     </button>

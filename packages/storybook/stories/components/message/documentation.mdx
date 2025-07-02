@@ -1,3 +1,4 @@
+import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as MessageStories from './message.stories';
 import { Banner } from '../../../src/components/banner/Banner';
@@ -110,3 +111,34 @@ Pressing `Tab` moves focus to the close icon button (if available).
 Pressing `Enter`or `Space` while the close icon button is focused should trigger the action to dismiss the **Message**.
 
 Pressing `Shift` + `Tab` moves focus to the previous interactive element.
+
+<Heading label="Accessibility" level={ 2 } />
+
+To ensure proper accessibility, the Message component should be properly structured.
+
+<Heading label="Best practices" level={ 3 } />
+
+<Heading label="Structuring multiple Messages" level={ 4 } />
+
+When displaying multiple Messages, wrap them in a structured list to improve screen reader announcements.
+
+<Canvas of={ MessageStories.AccessibilityGrouping } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> This structure ensures that assistive technologies announce Messages as a list, rather than reading them as separate, unrelated announcements.
+Screen readers will announce "List, 2 items" and navigate efficiently.
+
+<Heading label="Setting the correct ARIA role" level={ 4 } />
+
+For non-critical Messages (e.g., info, success, warning), use `role="status"`.
+
+<Canvas of={ MessageStories.AccessibilityRoleStatus } sourceState="shown" />
+
+For critical Messages, use `role="alert"`.
+
+<Canvas of={ MessageStories.AccessibilityRoleAlert } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers announce the Message at the appropriate time without interrupting the user.

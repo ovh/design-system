@@ -8,6 +8,40 @@ export default {
   title: 'Message dev',
 };
 
+export const A11Y = () => {
+  const [displayAlert, setDisplayAlert] = useState(false);
+  const [displayStatus, setDisplayStatus] = useState(false);
+
+  return (
+    <>
+      <button onClick={ () => setDisplayAlert(true) } type="button">Display alert</button>
+      <button onClick={ () => setDisplayStatus(true) } type="button">Display status</button>
+      <br /><br />
+      {
+        displayAlert &&
+        <Message color="critical" role="alert">
+          <MessageIcon name="hexagon-exclamation" />
+
+          <MessageBody >
+            Some alert message
+          </MessageBody>
+        </Message>
+      }
+      <br /><br />
+      {
+        displayStatus &&
+        <Message role="status">
+          <MessageIcon name="circle-info" />
+
+          <MessageBody>
+            Some status message
+          </MessageBody>
+        </Message>
+      }
+    </>
+  );
+}
+
 export const Colors = () => (
   <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
     {

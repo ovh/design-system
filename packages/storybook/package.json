@@ -6,9 +6,9 @@
   "license": "Apache-2.0",
   "main": "index.js",
   "scripts": {
-    "build:storybook": "npm run generate:versions && storybook build -o dist",
+    "build:storybook": "yarn generate:versions && storybook build -o dist",
     "generate:versions": "node scripts/generate-version-list.js 'assets/ods-versions.json'",
-    "start": "npm run generate:versions && storybook dev -p 6006"
+    "start": "yarn generate:versions && storybook dev -p 6006"
   },
   "dependencies": {
     "@ovhcloud/ods-react": "19.0.1",

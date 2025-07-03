@@ -9,35 +9,42 @@ export default {
 };
 
 export const A11Y = () => {
-  const [displayAlert, setDisplayAlert] = useState(false);
-  const [displayStatus, setDisplayStatus] = useState(false);
+  const [alerts, setAlerts] = useState<string[]>([]);
+  const [statuses, setStatuses] = useState<string[]>([]);
 
   return (
     <>
-      <button onClick={ () => setDisplayAlert(true) } type="button">Display alert</button>
-      <button onClick={ () => setDisplayStatus(true) } type="button">Display status</button>
+      <button onClick={ () => setAlerts((a) => a.concat([new Date().toString()])) } type="button">Add alert</button>
+      <button onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) } type="button">Add status</button>
       <br /><br />
-      {
-        displayAlert &&
-        <Message color="critical" role="alert">
-          <MessageIcon name="hexagon-exclamation" />
 
-          <MessageBody >
-            Some alert message
-          </MessageBody>
-        </Message>
-      }
+      <div role="alert">
+        {
+          alerts.map((alert) => (
+            <Message color="critical" key={ alert }>
+              <MessageIcon name="hexagon-exclamation" />
+
+              <MessageBody >
+                Alert: { alert }
+              </MessageBody>
+            </Message>
+          ))
+        }
+      </div>
       <br /><br />
-      {
-        displayStatus &&
-        <Message role="status">
-          <MessageIcon name="circle-info" />
+      <div role="status">
+        {
+          statuses.map((status) => (
+            <Message key={ status }>
+              <MessageIcon name="circle-info" />
 
-          <MessageBody>
-            Some status message
-          </MessageBody>
-        </Message>
-      }
+              <MessageBody >
+                Status: { status }
+              </MessageBody>
+            </Message>
+          ))
+        }
+      </div>
     </>
   );
 }

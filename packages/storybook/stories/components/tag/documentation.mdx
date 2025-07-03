@@ -1,10 +1,13 @@
+import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as TagStories from './tag.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ TagStories } name='Documentation' />
 
@@ -104,3 +107,37 @@ Pressing `Tab` moves focus to the **Tag**.
 Pressing `Enter` or `Space` triggers the assigned action: removing the **Tag**.
 
 Pressing `Shift` + `Tab` moves focus to the previous interactive element.
+
+<Heading label="Accessibility" level={ 2 } />
+
+Unlike <StorybookLink kind={ REACT_COMPONENTS_TITLE.badge } story={ STORY.documentation }>Badge</StorybookLink>, **Tags** are interactive and can be removed by the user.
+To ensure accessibility, it is important to:
+
+- Group **Tags** properly when they are part of a list
+- Announce the removal action so screen reader users understand the functionality
+
+<Heading label="Structuring groups of Tags with lists" level={ 3 } />
+When multiple **Tags** are displayed together (e.g., a collection of selected filters or labels), they should be wrapped in a an unordered list of items (`<ul>` and `<li>`) to ensure proper announcement by screen readers.
+
+<Canvas of={ TagStories.inList } sourceState='shown' />
+
+  <Icon aria-hidden="true"
+        name={ ICON_NAME.circleCheck }
+        style={{ color: 'var(--ods-color-success-500)' }} /> This allows screen readers to announce "List, 3 items" making it clear that these **Tags** belong to a structured set.
+
+<Heading label="Alternative approach" level={ 3 } />
+When modifying the HTML structure is not possible, `role="list"` and `role="listitem"` can be used to provide equivalent semantics.
+
+<Canvas of={ TagStories.withAriaRoles } sourceState='shown' />
+
+  <Icon aria-hidden="true"
+        name={ ICON_NAME.circleCheck }
+        style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers still recognize the **Tags** as a structured list, even without native `<ul>` and `<li>` elements.
+
+<Heading label="Announcing the delete action with aria-label" level={ 3 } />
+Since the **Tag** is removable, it should provide clear feedback to assistive technologies.
+
+  <Canvas of={ TagStories.withAriaLabel } sourceState='shown' />
+  <Icon aria-hidden="true"
+        name={ ICON_NAME.circleCheck }
+        style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that users know the **Tag** can be removed. Screen readers will announce "Remove my tag, button".

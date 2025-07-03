@@ -86,3 +86,53 @@ export const WithIcon: Story = {
     </>
   ),
 };
+
+export const AccessibilityIconOnlyLink: Story = {
+  decorators: [(story) => <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>{ story() }</div>],
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Link aria-label="Go to homepage" href="https://www.ovhcloud.com">
+        <Icon name="home" />
+      </Link>
+    </>
+  ),
+};
+
+export const AccessibilityInANewTab: Story = {
+  decorators: [(story) => <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>{ story() }</div>],
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Link
+        aria-label="Visit Example (opens in a new tab)"
+        href="https://www.ovhcloud.com"
+        target="_blank">
+        <Icon name="external-link" />
+      </Link>
+    </>
+  ),
+};
+
+export const AccessibilityFileDownload: Story = {
+  decorators: [(story) => <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>{ story() }</div>],
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Link
+        aria-label="Download WCAG20 Guidelines (PDF, 481 KB)"
+        href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
+        <Icon name="external-link" />
+      </Link>
+      {/*  Or */}
+      <Link
+        aria-label="Download WCAG20 Guidelines (PDF, 481 KB)"
+        href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
+        <Icon name="external-link" />
+        <span>Download WCAG20 Guidelines</span>
+        <p>(PDF, 481 KB)</p>
+      </Link>
+
+    </>
+  ),
+};

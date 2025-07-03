@@ -112,3 +112,56 @@ export const Size: Story = {
     </>
   ),
 };
+
+export const inList: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <ul>
+      <li>
+        <Tag>Design</Tag>
+      </li>
+      <li>
+        <Tag>Development</Tag>
+      </li>
+      <li>
+        <Tag>Accessibility</Tag>
+      </li>
+    </ul>
+  ),
+};
+
+export const withAriaRoles: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <div role="list">
+      <div role="listitem">
+        <Tag>Design</Tag>
+      </div>
+      <div role="listitem">
+        <Tag>Development</Tag>
+      </div>
+      <div role="listitem">
+        <Tag>Accessibility</Tag>
+      </div>
+    </div>
+  ),
+};
+
+export const withAriaLabel: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Tag aria-label="Remove my tag">My tag</Tag>
+  ),
+};

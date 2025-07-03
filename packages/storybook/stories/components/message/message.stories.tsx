@@ -1,9 +1,11 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
+import { BUTTON_COLOR, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, ICON_NAMES } from '../../../../ods-react/src/components/icon/src';
 import { MESSAGE_COLOR, MESSAGE_COLORS, MESSAGE_VARIANT, MESSAGE_VARIANTS, Message, MessageBody, MessageIcon, type MessageIconProp, type MessageProp } from '../../../../ods-react/src/components/message/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<MessageProp>;
 type DemoArg = Partial<MessageProp> & Partial<MessageIconProp>;
@@ -98,30 +100,62 @@ export const AccessibilityGrouping: Story = {
   ),
 };
 
-export const AccessibilityRoleAlert: Story = {
+export const AccessibilityRoles: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   tags: ['!dev'],
-  render: ({}) => (
-    <Message
-      color={ MESSAGE_COLOR.critical }
-      role="alert">
-      <MessageIcon name={ ICON_NAME.hexagonExclamation } />
-      <MessageBody>
-        An unexpected error occurred.
-      </MessageBody>
-    </Message>
-  ),
-};
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [alerts, setAlerts] = useState<string[]>([]);
+    const [statuses, setStatuses] = useState<string[]>([]);
 
-export const AccessibilityRoleStatus: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <Message role="status">
-      <MessageIcon name={ ICON_NAME.circleCheck } />
-      <MessageBody>
-        Your profile has been updated.
-      </MessageBody>
-    </Message>
-  ),
+    return (
+      <>
+        <div>
+          <Button onClick={ () => setStatuses((s) => s.concat([new Date().toString()])) }>
+            Add status
+          </Button>
+
+          <Button
+            color={ BUTTON_COLOR.critical }
+            onClick={ () => setAlerts((a) => a.concat([new Date().toString()])) }>
+            Add alert
+          </Button>
+        </div>
+
+        <div role="alert">
+          {
+            alerts.map((alert) => (
+              <Message color="critical" key={ alert }>
+                <MessageIcon name="hexagon-exclamation" />
+
+                <MessageBody >
+                  Alert: { alert }
+                </MessageBody>
+              </Message>
+            ))
+          }
+        </div>
+
+        <div role="status">
+          {
+            statuses.map((status) => (
+              <Message key={ status }>
+                <MessageIcon name="circle-info" />
+
+                <MessageBody >
+                  Status: { status }
+                </MessageBody>
+              </Message>
+            ))
+          }
+        </div>
+      </>
+    );
+  },
 };
 
 export const Color: Story = {

@@ -86,6 +86,68 @@ export const Demo: StoryObj = {
   },
 };
 
+export const AccessibilityActions: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal
+        </Button>
+      </ModalTrigger>
+
+      <ModalContent color={ MODAL_COLOR.critical }>
+        <ModalBody>
+          <h2 id="modal-title">
+            Delete item
+          </h2>
+
+          <p id="modal-content">
+            Are you sure you want to delete this item?
+          </p>
+
+          <div style={{ display: 'flex', gap: '8px', justifyContent: 'end' }}>
+            <Button variant={ BUTTON_VARIANT.ghost }>
+              Cancel
+            </Button>
+
+            <Button color={ BUTTON_COLOR.critical }>
+              Delete
+            </Button>
+          </div>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  ),
+};
+
+export const AccessibilityAria: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal
+        </Button>
+      </ModalTrigger>
+
+      <ModalContent
+        aria-describedby="modal-content"
+        aria-labelledby="modal-title">
+        <ModalBody>
+          <h2 id="modal-title">
+            Delete item
+          </h2>
+
+          <p id="modal-content">
+            Are you sure you want to delete this item? This action cannot be undone.
+          </p>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  ),
+};
+
 export const Actions: Story = {
   tags: ['!dev'],
   render: ({}) => (

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from '../../button/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Popover, PopoverContent, PopoverTrigger } from '../../popover/src';
@@ -10,6 +10,26 @@ export default {
   component: Modal,
   title: 'Modal dev',
 };
+
+export const A11Y = () => (
+  <Modal>
+    <ModalTrigger>
+      Trigger
+    </ModalTrigger>
+
+    <ModalContent
+      aria-describedby="content"
+      aria-labelledby="title">
+      <ModalBody>
+        <h2 id="title">The modal title</h2>
+
+        <p id="content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        </p>
+      </ModalBody>
+    </ModalContent>
+  </Modal>
+);
 
 export const Colors = () => (
   <>
@@ -155,6 +175,28 @@ export const Default = () => (
     </ModalContent>
   </Modal>
 );
+
+export const Focus = () => {
+  const buttonRef = useRef(null);
+
+  return (
+    <Modal initialFocusedElement={ () => buttonRef.current }>
+      <ModalTrigger>
+        Trigger
+      </ModalTrigger>
+
+      <ModalContent>
+        <ModalBody>
+          <p>Non focusable</p>
+
+          <input placeholder="focusable" />
+
+          <button ref={ buttonRef } onClick={ () => console.log('click') }>focusable</button>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  );
+};
 
 export const LargeContent = () => (
   <Modal>

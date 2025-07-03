@@ -38,6 +38,7 @@ const ModalContent: FC<ModalContentProp> = forwardRef(({
         <Dialog.Content
           className={ classNames(style['modal-content'], className) }
           ref={ ref }
+          role={ color === MODAL_COLOR.critical ? 'alertdialog' : 'dialog' }
           { ...props }>
           <ModalHeader
             color={ color }

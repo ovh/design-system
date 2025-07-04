@@ -1,3 +1,4 @@
+import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as SpinnerStories from './spinner.stories';
 import { Banner } from '../../../src/components/banner/Banner';
@@ -77,3 +78,41 @@ The **Spinner** component has a spinning animation to show to the user that the 
 <Heading label="Navigation" level={ 2 } />
 
 The **Spinner** component is non-interactive and does not receive keyboard focus. It is purely visual and serves as a loading indicator, without affecting keyboard navigation.
+
+<Heading label="Accessibility" level={ 2 } />
+
+The **Spinner** component does not automatically provide enough context for assistive technologies. To ensure accessibility, additional attributes must be applied to the container that holds the loading content.
+
+Indicating loading state with `aria-busy` and `aria-live`
+
+The **Spinner** itself does not convey the loading state. This responsibility falls on the container where content is being loaded.
+
+<Canvas of={ SpinnerStories.AccessibilityAriaBusyAriaLive } sourceState="shown" />
+
+Explanations:
+- `aria-busy="true"` informs assistive technologies that content is being updated
+- `aria-live= "polite"` ensures that the loading message is announced when necessary without interrupting the user
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> This approach ensures that users with assistive technologies understand when loading starts and ends
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleInfo }
+      style={{ color: 'var(--ods-color-primary-500)' }} /> Once the content is loaded, aria-busy should be set to false
+
+Linking the **Spinner** to a loading description
+
+If the **Spinner** is associated with a specific loading action, it should be explicitly labeled using `aria-label`, `aria-labelledby`.
+
+<Canvas of={ SpinnerStories.AccessibilityAriaLabel } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "Loading user profile, indeterminate, progress indicator".
+
+<Canvas of={ SpinnerStories.AccessibilityAriaLabelledBy } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "Loading user profile, indeterminate, progress indicator".

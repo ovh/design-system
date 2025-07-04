@@ -72,3 +72,29 @@ export const Size: Story = {
     </>
   ),
 };
+
+export const AccessibilityAriaBusyAriaLive: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <div aria-busy="true" aria-live="polite">
+      <Spinner />
+    </div>
+  ),
+};
+
+export const AccessibilityAriaLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Spinner aria-label="Loading user profile" />
+  ),
+};
+
+export const AccessibilityAriaLabelledBy: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <div>
+      <span id="loading-text">Loading user profile</span>
+      <Spinner aria-labelledby="loading-text" />
+    </div>
+  ),
+};

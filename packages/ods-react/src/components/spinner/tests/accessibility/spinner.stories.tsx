@@ -8,3 +8,7 @@ export default {
 export const role = () => (
   <Spinner data-testid="role" />
 );
+
+export const ariaHidden = () => (
+  <Spinner data-testid="aria-hidden" />
+);

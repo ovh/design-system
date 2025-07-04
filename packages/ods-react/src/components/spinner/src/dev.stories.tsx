@@ -13,3 +13,16 @@ export const Default = () => (
 export const CustomStyle = () => (
   <Spinner className={ style[ 'custom-spinner' ] } />
 );
+
+export const Accessibility = () => (
+  <div aria-busy="true" aria-live="polite">
+    <Spinner />
+  </div>
+)
+
+export const AccessibilityAriaLabelledBy = () => (
+  <div aria-busy="true" aria-live="polite">
+    <Spinner aria-labelledby="loading-text" />
+    <p id="loading-text">Loading...</p>
+  </div>
+)

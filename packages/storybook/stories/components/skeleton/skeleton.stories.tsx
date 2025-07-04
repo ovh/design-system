@@ -26,3 +26,13 @@ export const Overview: Story = {
     <Skeleton />
   ),
 };
+export const AccessibilityLoading: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <div aria-busy="true">
+        <Skeleton />
+      </div>
+    </>
+  ),
+};

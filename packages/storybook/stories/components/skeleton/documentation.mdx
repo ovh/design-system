@@ -1,3 +1,4 @@
+import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as SkeletonStories from './skeleton.stories';
 import { Banner } from '../../../src/components/banner/Banner';
@@ -68,4 +69,17 @@ The **Skeleton** component is non-interactive and does not receive keyboard focu
 
 <Heading label="Accessibility" level={ 2 } />
 
-This component is only visual and does not provide any screen reader information.
+The **Skeleton** component is purely decorative.
+Its role is to visually indicate that content is loading, but it does not carry any meaningful information for assistive technologies.
+For this reason, it is hidden from screen readers.
+
+<Heading label="Indicating loading state" level={ 3 } />
+
+To ensure screen reader users are aware that content is being loaded, you should set `aria-busy="true"` on the container that will eventually receive the content.
+
+<Canvas of={ SkeletonStories.AccessibilityLoading } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Using this approach ensures that assistive technologies are aware that content is being updated, allowing them to wait before announcing changes.
+

@@ -14,7 +14,8 @@ const Skeleton: FC<SkeletonProp> = forwardRef(({
       className,
     )}
     ref={ref}
-    {...props}>
+    {...props}
+    aria-hidden="true">
     </div>
   );
 });

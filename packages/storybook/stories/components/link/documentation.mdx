@@ -1,3 +1,4 @@
+import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as LinkStories from './link.stories';
 import { Banner } from '../../../src/components/banner/Banner';
@@ -100,3 +101,31 @@ Pressing `Enter` while a **Link** is focused activates it, navigating to the ass
 Pressing `Shift` + `Tab` moves focus to the previous interactive element.
 
 If a **Link** opens in a new tab, focus remains on the original page unless otherwise specified.
+
+<Heading label="Accessibility" level={ 2 } />
+
+The accessibility of the **Link** component must be carefully considered during its implementation.
+
+<Heading label="Icon-only Link" level={ 3 } />
+If a **Link** is represented only by an **Icon**, it must have an explicit accessible label to provide context about its destination or action.
+
+<Canvas of={ LinkStories.AccessibilityIconOnlyLink } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "Link, Go to homepage".
+
+<Heading label="Link opening in a new tab" level={ 3 } />
+When a **Link** opens in a new tab (`target="_blank"`), users should be informed to avoid confusion. This can be done by adding a visual indicator (e.g., Icon: "external") and using `aria-label` to provide context.
+
+<Canvas of={ LinkStories.AccessibilityInANewTab } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> The screen reader will announce "Link, Blank target, Visit Example opens in a new tab".
+
+<Heading label="Downloadable files" level={ 3 } />
+If a **Link** points to a file download, it should include file type and size information to set user expectations.
+
+<Canvas of={ LinkStories.AccessibilityFileDownload } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "Link, (visited,) Download WCAG20 Guidelines, PDF, 481 KB" or "(visited,) WCAG20 Guidelines, Download WCAG20 Guidelines, PDF, 481 KB", ensuring users know they are downloading a file.

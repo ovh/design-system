@@ -40,6 +40,7 @@ const Link = forwardRef(function Link<T extends ElementType>({
 
   return (
     <Component
+      aria-disabled={ disabled ? true : (linkProps as ComponentPropsWithRef<'a'>)['aria-disabled'] }
       className={ classNames(
         style['link'],
         { [style['link--disabled']]: disabled },
@@ -49,7 +50,8 @@ const Link = forwardRef(function Link<T extends ElementType>({
       ref={ ref }
       { ...linkProps }
       onClick={ onClick }
-      tabIndex={ disabled ? -1 : linkProps.tabIndex }>
+      tabIndex={ disabled ? -1 : linkProps.tabIndex }
+    >
       {/* If there is no text content, we add a zero-width space to simulate the correct baseline */}
       { hasNoText && <span>&#8203;</span> }
       { props.children }

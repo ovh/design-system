@@ -127,3 +127,47 @@ export const CustomStyle = () => (
     </div>
   </>
 )
+
+export const Accessibility = () => (
+  <>
+    <h3>Icon only</h3>
+    <h4>With href</h4>
+  <Link aria-label="Go to homepage" href="https://www.ovhcloud.com/">
+    <Icon name={ ICON_NAME.home } />
+  </Link>
+    <h4>Without href</h4>
+    <Link aria-label="Go to homepage">
+      <Icon name={ ICON_NAME.home } />
+    </Link>
+    <h4>New tab</h4>
+    <Link target="_blank" aria-label="Go to homepage">
+      <Icon name={ ICON_NAME.home } />
+    </Link>
+    <h4>Disabled</h4>
+    <Link disabled>
+      <Icon name={ ICON_NAME.home } />
+    </Link>
+    <br />
+    <h3>With text</h3>
+    <h4>With href</h4>
+    <Link aria-label="Go to homepage (Opens in a new page)" target="_blank" href="https://www.ovhcloud.com/">
+      <Icon name={ ICON_NAME.home } />
+      <span>Go to homepage</span>
+    </Link>
+    <h4>Without href</h4>
+    <Link aria-label="Go to homepage">
+      <Icon name={ ICON_NAME.home } />
+      <span>Go to homepage</span>
+    </Link>
+    <h4>New tab</h4>
+    <Link target="_blank" aria-label="Go to homepage">
+      <Icon name={ ICON_NAME.home } />
+      <span>Go to homepage</span>
+    </Link>
+    <h4>Disabled</h4>
+    <Link disabled>
+      <Icon name={ ICON_NAME.home } />
+      <span>Go to homepage</span>
+    </Link>
+  </>
+);

@@ -33,6 +33,7 @@ const Spinner: FC<SpinnerProp> = forwardRef(({
       role="progressbar"
       { ...props }>
       <svg
+        aria-hidden="true"
         className={ style['spinner__svg'] }
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg">

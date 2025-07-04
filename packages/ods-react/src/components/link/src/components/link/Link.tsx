@@ -3,18 +3,18 @@ import { type ComponentPropsWithRef, type ElementType, type ForwardedRef, type J
 import { getElementText } from '../../../../../utils/element';
 import style from './link.module.scss';
 
-  interface LinkProp<T extends ElementType = 'a'> {
-    /**
-     * @default-value='a'
-     * Pass a component you may want to use as custom Link component.
-     * Useful for example when using routing library like react-router.
-     * */
-    as?: T,
-    /**
-     * Whether the component is disabled.
-     */
-    disabled?: boolean,
-  }
+interface LinkProp<T extends ElementType = 'a'> {
+  /**
+   * @default-value='a'
+   * Pass a component you may want to use as custom Link component.
+   * Useful for example when using routing library like react-router.
+   * */
+  as?: T,
+  /**
+   * Whether the component is disabled.
+   */
+  disabled?: boolean,
+}
 
 const Link = forwardRef(function Link<T extends ElementType>({
   as,

@@ -64,3 +64,10 @@ export const Value: StoryObj = {
     <ProgressBar value="50" />
   ),
 };
+
+export const AccessibilityLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <ProgressBar aria-label="Converting" />
+  ),
+};

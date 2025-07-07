@@ -1,3 +1,4 @@
+import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as ProgressBarStories from './progress-bar.stories';
 import { Banner } from '../../../src/components/banner/Banner';
@@ -68,3 +69,17 @@ _A horizontal bar indicating the current completion status of a long-running tas
 <Heading label="Navigation" level={ 2 } />
 
 The **Progress Bar** component is non-interactive and does not receive keyboard focus. It is purely visual and used to indicate progress status without affecting keyboard navigation.
+
+<Heading label="Accessibility" level={ 2 } />
+
+Progress Bar component should be properly identified and structured to ensure it is accessible to assistive technologies.
+
+<Heading label="Linking the Progress Bar to loading details" level={ 3 } />
+
+To ensure a Progress Bar is correctly recognized, an aria-label should be added to explicitly identify it.
+
+<Canvas of={ ProgressBarStories.AccessibilityLabel } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the value and the progress bar.

@@ -3,6 +3,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as ProgressBarStories from './progress-bar.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
@@ -72,11 +73,11 @@ The **Progress Bar** component is non-interactive and does not receive keyboard 
 
 <Heading label="Accessibility" level={ 2 } />
 
-Progress Bar component should be properly identified and structured to ensure it is accessible to assistive technologies.
+**Progress Bar** component should be properly identified and structured to ensure it is accessible to assistive technologies.
 
 <Heading label="Linking the Progress Bar to loading details" level={ 3 } />
 
-To ensure a Progress Bar is correctly recognized, an aria-label should be added to explicitly identify it.
+To ensure the **Progress Bar** is correctly recognized, an <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> should be added to explicitly identify it.
 
 <Canvas of={ ProgressBarStories.AccessibilityLabel } sourceState="shown" />
 

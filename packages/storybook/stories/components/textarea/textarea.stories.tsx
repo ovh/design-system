@@ -5,6 +5,7 @@ import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src
 import { Textarea, type TextareaProp } from '../../../../ods-react/src/components/textarea/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<TextareaProp>;
 
@@ -61,6 +62,36 @@ export const Demo: Story = {
   }),
 };
 
+export const AccessibilityDescribedBy: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Description:
+      </FormFieldLabel>
+
+      <Textarea />
+
+      <FormFieldHelper>
+        Enter a brief description
+      </FormFieldHelper>
+    </FormField>
+  ),
+};
+
+export const AccessibilityFormField: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Description:
+      </FormFieldLabel>
+
+      <Textarea />
+    </FormField>
+  ),
+};
+
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
@@ -77,6 +108,11 @@ export const Disabled: Story = {
 
 export const InFormField: Story = {
   tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   render: ({}) => {
     const MAX_COUNT = 200;
     const [count, setCount] = useState(0);

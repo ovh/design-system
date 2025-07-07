@@ -9,13 +9,14 @@ const Skeleton: FC<SkeletonProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   return (
-    <div className={ classNames(
-      style['skeleton'],
-      className,
-    )}
-    ref={ref}
-    {...props}
-    aria-hidden="true">
+    <div
+      aria-hidden="true"
+      className={ classNames(
+        style['skeleton'],
+        className,
+      )}
+      ref={ref}
+      {...props}>
     </div>
   );
 });

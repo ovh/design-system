@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type FormEvent, useState } from 'react';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { Textarea } from '.';
@@ -7,6 +7,31 @@ import style from './dev.module.css';
 export default {
   component: Textarea,
   title: 'Textarea dev',
+};
+
+export const AccessibilityCharacterLimit = () => {
+  const MAX_COUNT = 200;
+  const [count, setCount] = useState(0);
+
+  function onInput(e: FormEvent): void {
+    setCount((e.target as HTMLTextAreaElement).value.length);
+  }
+
+  return (
+    <FormField>
+      <FormFieldLabel>
+        Description:
+      </FormFieldLabel>
+
+      <Textarea
+        name="description"
+        onInput={ onInput } />
+
+      <FormFieldHelper role="status">
+        { count } out of { MAX_COUNT }
+      </FormFieldHelper>
+    </FormField>
+  );
 };
 
 export const CustomLabel = () => (

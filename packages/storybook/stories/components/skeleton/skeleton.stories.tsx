@@ -29,10 +29,8 @@ export const Overview: Story = {
 export const AccessibilityLoading: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <>
-      <div aria-busy="true">
-        <Skeleton />
-      </div>
-    </>
+    <div aria-busy="true">
+      <Skeleton />
+    </div>
   ),
 };

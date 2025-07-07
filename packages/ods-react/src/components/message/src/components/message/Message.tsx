@@ -22,7 +22,7 @@ interface MessageProp extends ComponentPropsWithRef<'div'> {
   /**
    * Internal translations override.
    */
-  i18n?: Record<MESSAGE_I18N, string>,
+  i18n?: Partial<Record<MESSAGE_I18N, string>>,
   /**
    * The locale used for the translation of the internal elements.
    */

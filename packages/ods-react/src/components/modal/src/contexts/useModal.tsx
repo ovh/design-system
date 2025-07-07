@@ -22,7 +22,7 @@ interface ModalRootProp {
   /**
    * Internal translations override.
    */
-  i18n?: Record<MODAL_I18N, string>,
+  i18n?: Partial<Record<MODAL_I18N, string>>,
   /**
    * Element that receive the focus when the dialog is opened.
    */

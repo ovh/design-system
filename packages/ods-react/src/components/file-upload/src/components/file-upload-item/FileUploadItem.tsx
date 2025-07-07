@@ -22,7 +22,7 @@ interface FileUploadItemProp extends ComponentPropsWithRef<'li'> {
   /**
    * Internal translations override.
    */
-  i18n?: Record<FILE_UPLOAD_I18N, string>,
+  i18n?: Partial<Record<FILE_UPLOAD_I18N, string>>,
   /**
    * The file upload progress.
    */

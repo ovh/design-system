@@ -1,3 +1,4 @@
+import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { BUTTON_COLOR, BUTTON_COLORS, BUTTON_SIZE, BUTTON_SIZES, BUTTON_VARIANT, BUTTON_VARIANTS, Button, type ButtonProp } from '../../../../ods-react/src/components/button/src';
@@ -132,3 +133,25 @@ export const Variant: StoryObj = {
     </>
   ),
 };
+
+export const AccessibilityExplicitLabel: StoryObj = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Button aria-label='Clear'>
+        <Icon name={ICON_NAME.xmark} />
+    </Button>
+  ),
+}
+
+export const AccessibilityLabelledBy: StoryObj = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Button aria-labelledby="filter-btn">
+        <Icon name={ICON_NAME.filter} />
+      </Button>
+      <span id="filter-btn">Filter your search results</span>
+    </>
+  ),
+}

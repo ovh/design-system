@@ -46,3 +46,9 @@ export const IsLoading = () => (
     IsLoading
   </Button>
 );
+
+export const Accessibility = () => (
+  <Button aria-label="Accessibility">
+    Accessibility
+  </Button>
+)

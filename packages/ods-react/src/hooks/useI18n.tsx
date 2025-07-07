@@ -1,6 +1,10 @@
 import { useCallback, useMemo } from 'react';
 import { LOCALE, LOCALES, type Locale } from '../utils/locales';
 
+interface UseI18n {
+  translate: (key: string) => string
+}
+
 function getBrowserLocales<T>(): T[] {
   return navigator.language?.split('-').map<T>((browserIsoCode) => browserIsoCode.toLowerCase() as T);
 }
@@ -15,7 +19,7 @@ function getCurrentLocale(locale?: Locale): Locale {
   }) || LOCALE.en;
 }
 
-function useI18n(keyMap: Record<string, Record<Locale, string>>, locale?: Locale, i18n?: Record<string, string>): { translate: (key: string) => string } {
+function useI18n(keyMap: Record<string, Record<Locale, string>>, locale?: Locale, i18n?: Record<string, string>): UseI18n {
   const currentLocale = useMemo(() => getCurrentLocale(locale), [locale]);
 
   const translate = useCallback((key: string) => {
@@ -29,5 +33,6 @@ function useI18n(keyMap: Record<string, Record<Locale, string>>, locale?: Locale
 }
 
 export {
+  type UseI18n,
   useI18n,
 };

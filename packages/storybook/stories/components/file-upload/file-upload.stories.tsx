@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
-import { FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadProp, type FileUploadRejectDetail } from '../../../../ods-react/src/components/file-upload/src';
+import { FILE_UPLOAD_I18N, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadProp, type FileUploadRejectDetail } from '../../../../ods-react/src/components/file-upload/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -144,6 +144,37 @@ export const Accept: Story = {
             files.map((file: File, idx) => (
               <FileUploadItem
                 file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
+export const AccessibilityFileButton: Story = {
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                i18n={{
+                  [FILE_UPLOAD_I18N.cancelButton]: `Cancel uploading ${file.name}`,
+                  [FILE_UPLOAD_I18N.deleteButton]: `Remove ${file.name}`,
+                  [FILE_UPLOAD_I18N.progressBar]: `Uploading ${file.name}`,
+                }}
                 key={ idx } />
             ))
           }

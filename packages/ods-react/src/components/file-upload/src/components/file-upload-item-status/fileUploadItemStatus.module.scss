@@ -16,6 +16,10 @@
       align-items: center;
       font-size: 0.875rem;
       font-weight: 600;
+
+      &__bar {
+        width: 100%;
+      }
     }
 
     &__success {

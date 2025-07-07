@@ -1,5 +1,9 @@
 import { FILE_REJECTION_CAUSE } from '../constants/file-error';
 
+function isUploading(progress?: number): boolean {
+  return !!(progress || progress === 0) && progress < 100;
+}
+
 // Map internal ark-ui error code with ODS rejection cause
 function mapErrorCodes(errors: string[]): FILE_REJECTION_CAUSE[] {
   return errors.map((error) => {
@@ -19,5 +23,6 @@ function mapErrorCodes(errors: string[]): FILE_REJECTION_CAUSE[] {
 }
 
 export {
+  isUploading,
   mapErrorCodes,
 };

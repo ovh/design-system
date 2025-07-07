@@ -1,3 +1,4 @@
+import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as FileUploadStories from './file-upload.stories';
 import { Banner } from '../../../src/components/banner/Banner';
@@ -162,3 +163,17 @@ Pressing `Shift` + `Tab` moves focus backward through these same elements.
 Pressing `Enter` or `Space` while the trigger button is focused opens the native file selection dialog.
 
 Pressing `Enter` or `Space` on a close icon button cancels an upload in progress or removes the corresponding uploaded file from the list.
+
+<Heading label="Accessibility" level={ 2 } />
+
+To ensure proper accessibility, the **File Upload** component must provide proper labeling and clear feedback for screen readers.
+
+<Heading label="Labeling cancel/delete Button" level={ 3 } />
+
+The "Cancel"/"Delete" file button has to be explicit by adding context about its action and the file name.
+
+<Canvas of={ FileUploadStories.AccessibilityFileButton } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the action and the file name.

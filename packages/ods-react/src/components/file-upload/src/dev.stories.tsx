@@ -28,6 +28,68 @@ export const Accept = () => {
   );
 };
 
+export const AccessibilityErrors = () => {
+  type MyFile = File & {
+    error?: string,
+    progress?: number,
+  }
+
+  const [globalError, setGlobalError] = useState('');
+  const [files, setFiles] = useState<MyFile[]>([]);
+
+  useEffect(() => {
+    files.forEach((file) => {
+      if (!file.progress) {
+        uploadFile(file);
+      }
+    });
+  }, [files]);
+
+  function toggleGlobalError() {
+    setGlobalError((err) => !!err ? '' : 'Global Error!');
+  }
+
+  function uploadFile(file: MyFile): void {
+    const intervalId = setInterval(() => {
+      setFiles((files) => files.map((f) => {
+        if (f.name === file.name) {
+          f.progress = (f.progress || 0) + Math.floor(Math.random() * 10 + 1);
+
+          if (f.progress >= 100) {
+            f.error = Math.round(Math.random()) ? 'File error' : undefined;
+            clearInterval(intervalId);
+          }
+        }
+        return f;
+      }));
+    }, 100);
+  }
+
+  return (
+    <>
+      <div>
+        <button onClick={ toggleGlobalError } type="button">Toggle global error</button>
+      </div>
+
+      <FileUpload
+        error={ globalError }
+        onFileAccept={ ({ files }) => setFiles(files) }>
+        <FileUploadList>
+          {
+            files.map((file, idx) => (
+              <FileUploadItem
+                error={ file.error }
+                file={ file }
+                key={ idx }
+                progress={ file.progress } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    </>
+  );
+};
+
 export const CustomCSS = () => {
   const [files, setFiles] = useState<File[]>([]);
 

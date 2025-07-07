@@ -1,6 +1,6 @@
 import { FileUpload, useFileUploadContext } from '@ark-ui/react/file-upload';
 import classNames from 'classnames';
-import { type FC, type JSX, useMemo } from 'react';
+import { type FC, type JSX, useId, useMemo } from 'react';
 import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { Divider } from '../../../../divider/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
@@ -27,6 +27,7 @@ const FileUploadDropzone: FC<FileUploadDropzoneProp> = ({
   maxSizeLabel,
   triggerLabel,
 }): JSX.Element => {
+  const ruleBlockId = useId();
   const { acceptedFiles, disabled, dragging, getFileSize } = useFileUploadContext();
   const hasRule = useMemo(() => !!acceptedFileLabel || !!maxFileLabel || !!maxSizeLabel, [acceptedFileLabel, maxFileLabel, maxSizeLabel]);
 
@@ -47,7 +48,9 @@ const FileUploadDropzone: FC<FileUploadDropzoneProp> = ({
 
       {
         hasRule &&
-        <div className={ style['file-upload-dropzone__rules'] }>
+        <div
+          className={ style['file-upload-dropzone__rules'] }
+          id={ ruleBlockId }>
           {
             maxFileLabel && typeof maxFile === 'number' && maxFile >= 0 &&
             <span>
@@ -73,6 +76,7 @@ const FileUploadDropzone: FC<FileUploadDropzoneProp> = ({
 
       <FileUpload.Trigger asChild>
         <Button
+          aria-describedby={ ruleBlockId }
           size={ BUTTON_SIZE.md }
           variant={ BUTTON_VARIANT.ghost }>
           { triggerLabel }
@@ -82,7 +86,7 @@ const FileUploadDropzone: FC<FileUploadDropzoneProp> = ({
       {
         !!error &&
         <div className={ style['file-upload-dropzone__error'] }>
-          <span>
+          <span role="alert">
             { error }
           </span>
 

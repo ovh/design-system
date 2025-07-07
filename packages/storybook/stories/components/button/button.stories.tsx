@@ -137,6 +137,15 @@ export const Variant: StoryObj = {
 export const AccessibilityExplicitLabel: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
+    <Button>
+      Clear
+    </Button>
+  ),
+}
+
+export const AccessibilityIconOnly: StoryObj = {
+  tags: ['!dev'],
+  render: ({}) => (
     <Button aria-label='Clear'>
         <Icon name={ICON_NAME.xmark} />
     </Button>

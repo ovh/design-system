@@ -129,8 +129,9 @@ Pressing `Shift` + `Alt` moves focus to the previous interactive element.
 The accessibility of the Button component must be carefully considered during its implementation.
 
 <Heading label="Always provide an explicit label" level={ 3 } />
-Button should always has a clear and descriptive label to indicate their purpose.
+Button should always have a clear and descriptive label to indicate their purpose.
 
+<Canvas of={ ButtonStories.AccessibilityExplicitLabel } sourceState="shown" />
 <Icon aria-hidden="true"
       name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "My button".
@@ -138,10 +139,10 @@ Button should always has a clear and descriptive label to indicate their purpose
 <Heading label="Icon Button" level={ 3 } />
 If a Button contains only an Icon, it must include an aria-label to provide context.
 
-<Canvas of={ ButtonStories.AccessibilityExplicitLabel } sourceState="shown" />
+<Canvas of={ ButtonStories.AccessibilityIconOnly } sourceState="shown" />
 <Icon aria-hidden="true"
       name={ ICON_NAME.circleCheck }
-      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "Clear".
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label.
 
 <Heading label="Using aria-labelledby for additional context" level={ 3 } />
 When a Button is associated with an existing label, content is read by screen readers when the Button receives focus.
@@ -149,4 +150,4 @@ When a Button is associated with an existing label, content is read by screen re
 <Canvas of={ ButtonStories.AccessibilityLabelledBy } sourceState="shown" />
 <Icon aria-hidden="true"
       name={ ICON_NAME.circleCheck }
-      style={{ color: 'var(--ods-color-success-500)' }} /> When the Button is focused, the screen reader should announce "Button, Filter your search".
+      style={{ color: 'var(--ods-color-success-500)' }} /> When the Button is focused, the screen reader should announce the linked label.

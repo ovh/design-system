@@ -8,6 +8,7 @@ import { IdentityCard } from '../../../src/components/identityCard/IdentityCard'
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 
 <Meta of={ SpinnerStories } name="Documentation" />
 
@@ -83,7 +84,7 @@ The **Spinner** component is non-interactive and does not receive keyboard focus
 
 The **Spinner** component does not automatically provide enough context for assistive technologies. To ensure accessibility, additional attributes must be applied to the container that holds the loading content.
 
-Indicating loading state with `aria-busy` and `aria-live`
+Indicating loading state with <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy">aria-busy</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live">aria-live</ExternalLink>.
 
 The **Spinner** itself does not convey the loading state. This responsibility falls on the container where content is being loaded.
 
@@ -91,7 +92,7 @@ The **Spinner** itself does not convey the loading state. This responsibility fa
 
 Explanations:
 - `aria-busy="true"` informs assistive technologies that content is being updated
-- `aria-live= "polite"` ensures that the loading message is announced when necessary without interrupting the user
+- `aria-live="polite"` ensures that the loading message is announced when necessary without interrupting the user
 
 <Icon aria-hidden="true"
       name={ ICON_NAME.circleCheck }

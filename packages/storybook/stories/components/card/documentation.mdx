@@ -1,7 +1,9 @@
+import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as CardStories from './card.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
@@ -95,3 +97,28 @@ All these elements are not mandatory in every **Card**.
 <Heading label="Navigation" level={ 2 } />
 
 The **Card** component is non-interactive and does not receive keyboard focus.
+
+<Heading label="Accessibility" level={ 2 } />
+
+When multiple **Cards** are grouped together, it is important to ensure their structure is correctly conveyed to assistive technologies.
+
+<Heading label="Structuring groups of Cards with lists" level={ 3 } />
+
+If multiple **Cards** are displayed together (e.g., a collection of products, articles, or dashboards), they should be wrapped in an unordered list of items (`<ul>` and `<li>`) to improve navigation for screen reader users.
+
+<Canvas of={ CardStories.AccessibilityGrouping } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> This structure ensures that assistive technologies announce **Cards** as a list, rather than reading them as separate, unrelated announcements.
+Screen readers will announce the list and the number of items.
+
+<Heading label="Alternative approach with ARIA roles" level={ 3 } />
+
+When modifying the HTML structure is not possible, <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role">role="list"</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role">role="listitem"</ExternalLink> can be added to mimic list semantics.
+
+<Canvas of={ CardStories.AccessibilityAlternativeGrouping } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers still recognize the **Cards** as a structured list, even without native `<ul>` and `<li>` elements.

@@ -88,3 +88,45 @@ export const Overview: Story = {
     </Card>
   ),
 };
+
+export const AccessibilityGrouping: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <ul style={{ display: 'flex', gap: '16px', padding: 0, margin: 0, listStyleType: 'none' }}>
+      <li>
+        <Card style={{ padding: '8px' }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+          Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        </Card>
+      </li>
+      <li>
+        <Card style={{ padding: '8px' }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+          Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        </Card>
+      </li>
+    </ul>
+  ),
+};
+
+export const AccessibilityAlternativeGrouping: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <div role="list" style={{ display: 'flex', gap: '16px' }}>
+        <Card role="listitem" style={{ padding: '8px' }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+          Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        </Card>
+        <Card role="listitem" style={{ padding: '8px' }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+          Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        </Card>
+    </div>
+  ),
+};

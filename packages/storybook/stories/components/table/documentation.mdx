@@ -2,6 +2,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as TableStories from './table.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
@@ -74,3 +75,19 @@ When an element is too large in a cell, the row height will adjust based on this
 <Heading label="Navigation" level={ 2 } />
 
 The **Table** component behaves like the native `<table>` element. Keyboard navigation depends on the structure and interactive elements within the Table (e.g., links, or buttons). Integrators should ensure proper focus management based on their specific implementation.
+
+<Heading label="Accessibility" level={ 2 } />
+
+To ensure the **Table** component is fully accessible, it is essential to follow best practices for structuring tables with the correct semantic elements (`<thead>`, `<tbody>`, `<th>`, `<td>`...).
+
+Since table implementation is handled by the integrator, we recommend referring to the <ExternalLink href="https://www.w3.org/WAI/tutorials/tables">WCAG guidelines</ExternalLink> for accessible tables.
+
+This guide provides best practices on:
+
+* Defining table headers with `<th>` and `scope` attributes
+* Using `<caption>` to provide context
+* Associating data with headers for screen readers
+* Implementing complex tables with aria-labelledby if needed
+* And so much more...
+
+By following these recommendations, the **Table** component will be usable for all users, including those relying on assistive technologies.

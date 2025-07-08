@@ -134,7 +134,7 @@ export const Variant: StoryObj = {
   ),
 };
 
-export const AccessibilityExplicitLabel: StoryObj = {
+export const AccessibilityExplicitTextContent: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
     <Button>

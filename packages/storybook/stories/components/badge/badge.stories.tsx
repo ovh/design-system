@@ -1,8 +1,11 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { BADGE_COLOR, BADGE_COLORS, BADGE_SIZE, BADGE_SIZES, Badge, type BadgeProp } from '../../../../ods-react/src/components/badge/src';
+import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+
 
 type Story = StoryObj<BadgeProp>;
 
@@ -92,5 +95,65 @@ export const Size: Story = {
       <Badge size={ BADGE_SIZE.md }>MD badge</Badge>
       <Badge size={ BADGE_SIZE.lg }>LG badge</Badge>
     </>
+  ),
+};
+
+export const AccessibilityAriaLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Badge>
+      <Icon name={ICON_NAME.tag} aria-label="Promotion"></Icon>
+    </Badge>
+  ),
+};
+
+export const AccessibilityWithTooltip: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Badge color={BADGE_COLOR.promotion}
+               aria-labelledby="tooltip-a11y">
+          <Icon name={ ICON_NAME.tag } />
+        </Badge>
+      </TooltipTrigger>
+
+      <TooltipContent id="tooltip-a11y">
+        Promotion valid from November 22 to 26
+      </TooltipContent>
+    </Tooltip>
+  ),
+};
+
+export const AccessibilityGrouping: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <ul style={{ display: 'flex', flexFlow: 'row', gap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
+      <li>
+        <Badge>
+          My badge
+        </Badge>
+      </li>
+      <li>
+        <Badge>
+          My badge
+        </Badge>
+      </li>
+    </ul>
+  ),
+};
+
+export const AccessibilityAlternativeGrouping: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <div role="list" style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center',
+    }}>
+      <Badge role="listitem">
+        My badge
+      </Badge>
+      <Badge role="listitem">
+        My badge
+      </Badge>
+    </div>
   ),
 };

@@ -29,7 +29,7 @@ const ClipboardControl: FC<ClipboardControlProp> = forwardRef(({
   return (
     <Clipboard.Control asChild>
       <Input
-        className={ classNames(style[ 'clipboard__input' ], className) }
+        className={ classNames(style['clipboard__input'], className) }
         { ...props }
         disabled={ disabled }
         readOnly

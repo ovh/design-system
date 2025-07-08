@@ -37,6 +37,7 @@ const Clipboard: FC<ClipboardProp> = forwardRef(({
         )}
         onStatusChange={ onCopy }
         ref={ ref }
+        role="group"
         value={ value }
         { ...props }>
         { children }

@@ -1,24 +1,20 @@
 @layer ods-molecules {
-  .clipboard {
+  .clipboard-trigger {
     &__copy {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: auto;
+      align-self: center;
     }
 
-    &__tooltip,
-    &__tooltip-success {
+    &__tooltip {
       margin: 0;
       font-size: 0.75rem;
       font-weight: 600;
-    }
 
-    &__tooltip-success {
-      display: flex;
-      flex-flow: row;
-      column-gap: 4px;
-      align-items: center;
+      &--success {
+        display: flex;
+        flex-flow: row;
+        column-gap: 4px;
+        align-items: center;
+      }
 
       &__check {
         font-size: 1.125rem;

@@ -68,17 +68,5 @@
         appearance: none;
       }
     }
-
-    &__actions {
-      display: inline-flex;
-      flex-flow: row;
-      align-items: center;
-
-      &__loading {
-        display: flex;
-        justify-content: center;
-        width: button.$ods-button-size-xs;
-      }
-    }
   }
 }

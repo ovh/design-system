@@ -128,13 +128,13 @@ Pressing `Shift` + `Alt` moves focus to the previous interactive element.
 <Heading label="Accessibility" level={ 2 } />
 The accessibility of the Button component must be carefully considered during its implementation.
 
-<Heading label="Always provide an explicit label" level={ 3 } />
-Button should always have a clear and descriptive label to indicate their purpose.
+<Heading label="Always provide an explicit text content" level={ 3 } />
+Button should always have a clear and descriptive text content to indicate their purpose.
 
-<Canvas of={ ButtonStories.AccessibilityExplicitLabel } sourceState="shown" />
+<Canvas of={ ButtonStories.AccessibilityExplicitTextContent } sourceState="shown" />
 <Icon aria-hidden="true"
       name={ ICON_NAME.circleCheck }
-      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "My button".
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the text content..
 
 <Heading label="Icon Button" level={ 3 } />
 If a Button contains only an Icon, it must include an aria-label to provide context.

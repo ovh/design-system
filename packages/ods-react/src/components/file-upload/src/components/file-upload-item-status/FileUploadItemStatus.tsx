@@ -26,7 +26,6 @@ function renderStatus(successLabel: string, error?: string, progress?: number, p
       <div className={ style['file-upload-item-status__progress'] }>
         <ProgressBar
           aria-label={ progressLabel }
-          className={ style['file-upload-item-status__progress__bar'] }
           value={ progress } />
 
         <span>

@@ -8,19 +8,19 @@ import { isValueDefined } from '../../controller/input';
 import { InputActions } from '../input-actions/InputActions';
 import style from './input.module.scss';
 
-interface InputProp extends ComponentPropsWithRef<'input'>, InputRootProp {}
+interface InputProp extends Omit<ComponentPropsWithRef<'input'>, 'type'>, InputRootProp {}
 
 const Input: FC<InputProp> = forwardRef(({
   className,
   clearable = false,
+  i18n,
   id,
   invalid,
   loading = false,
+  locale,
   maskOption = { enable: false, initialState: INPUT_MASK_STATE.close },
   onClear,
   type = INPUT_TYPE.text,
-  locale,
-  i18n,
   ...props
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
@@ -99,7 +99,6 @@ const Input: FC<InputProp> = forwardRef(({
           aria-busy={ loading }
           aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
           aria-invalid={ isInvalid }
-          aria-readonly={ props.readOnly }
           className={ style['input__field'] }
           data-invalid={ isInvalid ? true : undefined }
           id={ inputId }
@@ -111,15 +110,15 @@ const Input: FC<InputProp> = forwardRef(({
         {
           hasActions &&
           <InputActions
-            loading={loading}
+            disabled={props.disabled}
             hasClearButton={hasClearButton}
             hasSearchButton={hasSearchButton}
             hasToggleMaskIcon={hasToggleMaskIcon}
             inputId={inputId}
             isMaskOpen={isMaskOpen}
+            loading={loading}
             onClearClick={onClearClick}
             onToggleMask={onToggleMask}
-            disabled={props.disabled}
             readOnly={props.readOnly}
           />
         }

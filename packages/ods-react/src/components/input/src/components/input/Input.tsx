@@ -13,14 +13,11 @@ interface InputProp extends ComponentPropsWithRef<'input'>, InputRootProp {}
 const Input: FC<InputProp> = forwardRef(({
   className,
   clearable = false,
-  clearButtonAriaLabel,
   id,
   invalid,
   loading = false,
-  maskButtonAriaLabel,
   maskOption = { enable: false, initialState: INPUT_MASK_STATE.close },
   onClear,
-  searchButtonAriaLabel,
   type = INPUT_TYPE.text,
   locale,
   i18n,
@@ -59,9 +56,7 @@ const Input: FC<InputProp> = forwardRef(({
     return hasClearButton || hasSearchButton || hasToggleMaskIcon || loading;
   }, [hasClearButton, hasSearchButton, hasToggleMaskIcon, loading]);
 
-  const inputId = useMemo(() => {
-    return id || fieldContext?.id;
-  }, [id, fieldContext?.id]);
+  const inputId = id || fieldContext?.id;
 
   function onChange(e: ChangeEvent<HTMLInputElement>): void {
     props.onChange && props.onChange(e);
@@ -102,9 +97,9 @@ const Input: FC<InputProp> = forwardRef(({
       >
         <input
           aria-busy={ loading }
+          aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
           aria-invalid={ isInvalid }
           aria-readonly={ props.readOnly }
-          aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
           className={ style['input__field'] }
           data-invalid={ isInvalid ? true : undefined }
           id={ inputId }

@@ -4,8 +4,21 @@ import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../b
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { SPINNER_COLOR, SPINNER_SIZE, Spinner } from '../../../../spinner/src';
 import { INPUT_I18N, TRANSLATION } from '../../constants/input-i18n';
-import { type InputActionsProps, useInput } from '../../contexts/useInput';
+import { useInput } from '../../contexts/useInput';
 import style from './inputActions.module.scss';
+
+interface InputActionsProps {
+  disabled?: boolean;
+  hasClearButton: boolean;
+  hasSearchButton: boolean;
+  hasToggleMaskIcon: boolean;
+  inputId?: string;
+  isMaskOpen: boolean;
+  loading: boolean;
+  onClearClick: () => void;
+  onToggleMask: () => void;
+  readOnly?: boolean;
+}
 
 export const InputActions: FC<InputActionsProps> = ({
   loading,
@@ -22,10 +35,10 @@ export const InputActions: FC<InputActionsProps> = ({
   const { i18n, locale } = useInput();
   const { translate } = useI18n(TRANSLATION, locale, i18n);
   return (
-    <div className={style['input__actions']}>
+    <div className={style['input-actions']}>
       {loading && (
         <Spinner
-          className={style['input__actions__loading']}
+          className={style['input-actions__loading']}
           color={disabled ? SPINNER_COLOR.neutral : SPINNER_COLOR.primary}
           size={SPINNER_SIZE.xs}
         />
@@ -33,7 +46,7 @@ export const InputActions: FC<InputActionsProps> = ({
       {hasClearButton && (
         <Button
           aria-controls={inputId}
-          aria-label={translate(INPUT_I18N.clearButton) || 'Clear input'}
+          aria-label={translate(INPUT_I18N.clearButton)}
           color={BUTTON_COLOR.neutral}
           disabled={disabled || readOnly}
           onClick={onClearClick}
@@ -47,7 +60,7 @@ export const InputActions: FC<InputActionsProps> = ({
       {hasToggleMaskIcon && (
         <Button
           aria-controls={inputId}
-          aria-label={translate(isMaskOpen ? INPUT_I18N.maskButtonHide : INPUT_I18N.maskButtonShow) || (isMaskOpen ? 'Hide password' : 'Show password')}
+          aria-label={translate(isMaskOpen ? INPUT_I18N.maskButtonHide : INPUT_I18N.maskButtonShow)}
           color={BUTTON_COLOR.primary}
           disabled={disabled}
           onClick={onToggleMask}
@@ -60,7 +73,7 @@ export const InputActions: FC<InputActionsProps> = ({
       )}
       {hasSearchButton && (
         <Button
-          aria-label={translate(INPUT_I18N.searchButton) || 'Search'}
+          aria-label={translate(INPUT_I18N.searchButton)}
           color={BUTTON_COLOR.primary}
           disabled={disabled || readOnly}
           size={BUTTON_SIZE.xs}

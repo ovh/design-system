@@ -16,7 +16,7 @@ interface InputRootProp {
    */
   invalid?: boolean,
   /**
-   * Custom i18n labels.
+   * Internal translations override.
    */
   i18n?: Record<string, string>,
   /**
@@ -35,7 +35,7 @@ interface InputRootProp {
    */
   maskButtonAriaLabel?: string,
   /**
-   * Locale for i18n labels.
+   * The locale used for the translation of the internal elements.
    */
   locale?: Locale,
   /**
@@ -72,54 +72,10 @@ function useInput(): InputContextType {
   return useContext(InputContext);
 }
 
-interface InputActionsProps {
-  /**
-   * Whether the loading spinner is shown.
-   */
-  loading: boolean;
-  /**
-   * Whether the clear button is visible.
-   */
-  hasClearButton: boolean;
-  /**
-   * Whether the search button is visible.
-   */
-  hasSearchButton: boolean;
-  /**
-   * Whether the mask toggle icon is visible.
-   */
-  hasToggleMaskIcon: boolean;
-  /**
-   * The id of the input field controlled by the actions.
-   */
-  inputId?: string;
-  /**
-   * Whether the mask is currently open (for password fields).
-   */
-  isMaskOpen: boolean;
-  /**
-   * Callback fired when the clear button is clicked.
-   */
-  onClearClick: () => void;
-  /**
-   * Callback fired when the mask toggle is clicked.
-   */
-  onToggleMask: () => void;
-  /**
-   * Whether the input is disabled.
-   */
-  disabled?: boolean;
-  /**
-   * Whether the input is read-only.
-   */
-  readOnly?: boolean;
-}
-
 export {
   type InputContextType,
   type InputProviderProp,
   type InputRootProp,
-  type InputActionsProps,
   InputProvider,
   useInput,
 };

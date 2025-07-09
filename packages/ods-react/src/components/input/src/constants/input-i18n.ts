@@ -2,8 +2,8 @@ import { LOCALE } from '../../../../utils/locales';
 
 enum INPUT_I18N {
   clearButton = 'input.clear.button',
-  maskButtonShow = 'input.mask.show.button',
   maskButtonHide = 'input.mask.hide.button',
+  maskButtonShow = 'input.mask.show.button',
   searchButton = 'input.search.button',
 }
 

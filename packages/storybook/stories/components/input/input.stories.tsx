@@ -201,19 +201,12 @@ export const Types: Story = {
 export const AccessibilityFormField: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <FormField id="input-form-field">
-      <FormFieldLabel htmlFor="form-field-input">
+    <FormField>
+      <FormFieldLabel>
         Name:
       </FormFieldLabel>
 
-      <Input id="form-field-input" />
+      <Input />
     </FormField>
-  ),
-};
-
-export const AccessibilityInput: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <Input aria-label='Email' />
   ),
 };

@@ -34,12 +34,13 @@ const Code: FC<CodeProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   return (
-    <div className={ classNames(style[ 'code' ], className) }
+    <div className={ classNames(style['code'], className) }
       ref={ ref }
+      role={ canCopy ? 'group' : '' }
       { ...props }>
 
-      <pre className={ style[ 'code__preformat' ] }>
-        <code className={ style[ 'code__preformat__code' ] }>
+      <pre className={ style['code__preformat'] }>
+        <code className={ style['code__preformat__code'] }>
           { children }
         </code>
       </pre>
@@ -47,15 +48,15 @@ const Code: FC<CodeProp> = forwardRef(({
       {
         canCopy &&
         <Clipboard
-          className={ style[ 'code__clipboard' ] }
+          className={ style['code__clipboard'] }
           onCopy={ onCopy }
           value={ children?.toString() }>
           <ClipboardTrigger
-            className={ style[ 'code__clipboard__trigger' ] }
+            className={ style['code__clipboard__trigger'] }
             labelCopy={ labelCopy }
             labelCopySuccess={ labelCopySuccess }>
             <Button
-              className={ style[ 'code__clipboard__trigger__button' ] }
+              className={ style['code__clipboard__trigger__button'] }
               size={ BUTTON_SIZE.sm }
               variant={ BUTTON_VARIANT.ghost }>
               <Icon name={ ICON_NAME.fileCopy } />

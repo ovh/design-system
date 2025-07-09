@@ -32,6 +32,7 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
     <Tooltip position={ TOOLTIP_POSITION.right }>
       <Clipboard.Trigger asChild>
         <TooltipTrigger
+          aria-label={ copied ? labelCopySuccess : labelCopy }
           asChild
           className={ style['clipboard-trigger__copy'] }
           ref={ ref }
@@ -39,7 +40,6 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
           {
             children
             || <Button
-              aria-label={ copied ? labelCopySuccess : labelCopy }
               disabled={ disabled }
               size={ BUTTON_SIZE.xs }
               variant={ BUTTON_VARIANT.ghost }>

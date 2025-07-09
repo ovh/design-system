@@ -1,6 +1,7 @@
-import type { Locale } from '../../../../utils/locales';
-import type { InputMaskState } from '../constants/input-mask-state';
 import { type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type Locale } from '../../../../utils/locales';
+import { type InputMaskState } from '../constants/input-mask-state';
+import { type InputType } from '../constants/input-type';
 
 interface InputRootProp {
   /**
@@ -46,7 +47,10 @@ interface InputRootProp {
    * Custom aria-label for the search button.
    */
   searchButtonAriaLabel?: string,
-  // 'type' retiré pour éviter le conflit avec les props HTML
+  /**
+   * The input type.
+   */
+  type?: InputType,
 }
 
 type InputContextType = Pick<InputRootProp, 'i18n' | 'locale'>;

@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { ICON_NAME, Icon } from '../../icon/src';
-import { Select, SelectContent, SelectControl, type SelectCustomGroupRendererArg, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg } from '.';
+import { Select, SelectContent, SelectControl, type SelectCustomGroupRendererArg, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg, type SelectOptionItem } from '.';
 import { TEXT_PRESET, Text } from '../../text/src';
 import style from './dev.module.css';
 
@@ -9,6 +9,26 @@ export default {
   component: Select,
   title: 'Select dev',
 };
+
+export const Accessibility = () => {
+  const items = useMemo(() => {
+    return ['a', 'b', 'c', 'd', 'e'].reduce<SelectOptionItem[]>((res, letter) => {
+      let value = '';
+      for (let i = 0; i < 10; i++) {
+        value += letter;
+        res.push({ label: `${value[0].toUpperCase()}${value.slice(1)}`, value });
+      }
+      return res;
+    }, [])
+  }, []);
+
+  return (
+    <Select items={ items }>
+      <SelectControl />
+      <SelectContent />
+    </Select>
+  );
+}
 
 export const Controlled = () => {
   const [values, setValues] = useState(['dog']);
@@ -369,7 +389,6 @@ export const Placeholder = () => (
 
 export const Readonly = () => (
   <Select
-    readOnly
     items={[
       { label: 'Dog', value:'dog' },
       { label: 'Cat', value:'cat' },
@@ -377,7 +396,8 @@ export const Readonly = () => (
       { label: 'Parrot', value:'parrot' },
       { label: 'Spider', value:'spider' },
       { label: 'Goldfish', value:'goldfish' },
-    ]}>
+    ]}
+    readOnly>
     <SelectControl />
     <SelectContent />
   </Select>

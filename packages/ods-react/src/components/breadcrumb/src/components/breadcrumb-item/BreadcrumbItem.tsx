@@ -32,6 +32,7 @@ const BreadcrumbItem: FC<BreadcrumbItemProp> = forwardRef(({
     <li
       className={ classNames(style['breadcrumb-item'], className) }
       ref={ ref }
+      role="listitem"
       { ...props }>
       { clones }
 

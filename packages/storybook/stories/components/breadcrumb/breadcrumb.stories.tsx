@@ -77,7 +77,7 @@ export const Collapsed: Story = {
   render: ({}) => (
     <Breadcrumb>
       <BreadcrumbItem>
-        <BreadcrumbLink href="#">
+        <BreadcrumbLink aria-label="Homepage" href="#">
           Home
         </BreadcrumbLink>
       </BreadcrumbItem>
@@ -226,7 +226,7 @@ export const Default: Story = {
   render: ({}) => (
     <Breadcrumb>
       <BreadcrumbItem>
-        <BreadcrumbLink href="#">
+        <BreadcrumbLink aria-label="Home" href="#">
           <Icon name={ ICON_NAME.home } />
         </BreadcrumbLink>
       </BreadcrumbItem>
@@ -303,7 +303,7 @@ export const Overview: Story = {
   render: ({}) => (
     <Breadcrumb>
       <BreadcrumbItem>
-        <BreadcrumbLink href="#">
+        <BreadcrumbLink aria-label="Home" href="#">
           <Icon name={ ICON_NAME.home } />
         </BreadcrumbLink>
       </BreadcrumbItem>
@@ -322,3 +322,39 @@ export const Overview: Story = {
     </Breadcrumb>
   ),
 };
+
+
+export const AccessibilityWithAriaLabel: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <Breadcrumb aria-label="Breadcrumb">
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          <Icon aria-hidden='true' name={ ICON_NAME.home } />
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Category
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Subcategory
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Current page
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  ),
+}

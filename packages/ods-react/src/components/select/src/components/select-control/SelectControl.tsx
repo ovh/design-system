@@ -31,13 +31,14 @@ const SelectControl: FC<SelectControlProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
-  const { items } = useSelect();
+  const { items, readOnly } = useSelect();
   const { disabled } = useSelectContext();
 
   return (
     <Select.Control>
       <Select.Trigger
         aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
+        aria-disabled={ readOnly }
         className={ classNames(style['select-control'], className) }
         data-empty={ items.length === 0 }
         ref={ ref }

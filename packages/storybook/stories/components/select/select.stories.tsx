@@ -91,6 +91,28 @@ export const Demo: StoryObj = {
   }),
 };
 
+export const AccessibilityFormField: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Select a Web hosting
+      </FormFieldLabel>
+
+      <Select
+        items={[
+          { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
+          { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
+          { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
+        ]}>
+        <SelectControl />
+
+        <SelectContent />
+      </Select>
+    </FormField>
+  ),
+};
+
 export const CustomRenderer: Story = {
   tags: ['!dev'],
   parameters: {

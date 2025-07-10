@@ -21,6 +21,7 @@ type SelectItem = SelectGroupItem | SelectOptionItem;
 type SelectContextType = {
   items: SelectItem[],
   multiple: SelectMultipleMode,
+  readOnly?: boolean,
 }
 
 type SelectCustomGroupRendererArg = {
@@ -39,10 +40,8 @@ type SelectCustomOptionRendererArg = {
   label: string,
 }
 
-interface SelectProviderProp {
+interface SelectProviderProp extends SelectContextType {
   children: ReactNode,
-  items: SelectItem[],
-  multiple: SelectMultipleMode,
 }
 
 const SelectContext = createContext<SelectContextType>({
@@ -50,11 +49,12 @@ const SelectContext = createContext<SelectContextType>({
   multiple: false,
 });
 
-function SelectProvider({ children, items, multiple }: SelectProviderProp): JSX.Element {
+function SelectProvider({ children, items, multiple, readOnly }: SelectProviderProp): JSX.Element {
   return (
     <SelectContext.Provider value={{
       items,
       multiple,
+      readOnly,
     }}>
       { children }
     </SelectContext.Provider>

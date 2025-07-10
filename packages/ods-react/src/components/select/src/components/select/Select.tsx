@@ -97,7 +97,8 @@ const Select: FC<SelectProp> = forwardRef(({
   return (
     <SelectProvider
       items={ items }
-      multiple={ multiple }>
+      multiple={ multiple }
+      readOnly={ readOnly }>
       <VendorSelect.Root
         className={ className }
         collection={ collection }

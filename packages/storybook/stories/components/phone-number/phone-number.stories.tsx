@@ -86,6 +86,23 @@ export const Demo: StoryObj = {
   }),
 };
 
+export const AccessibilityLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Phone number:
+      </FormFieldLabel>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </FormField>
+  ),
+};
+
 export const Clearable: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   tags: ['!dev'],

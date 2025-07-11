@@ -67,6 +67,15 @@ export const Demo: Story = {
   }
 };
 
+export const AccessibilityLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Pagination
+      aria-label="Pagination"
+      totalItems={ 5000 } />
+  ),
+};
+
 export const Controlled: Story = {
   tags: ['!dev'],
   parameters: {

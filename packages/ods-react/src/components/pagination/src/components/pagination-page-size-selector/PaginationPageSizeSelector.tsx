@@ -26,18 +26,18 @@ const PaginationPageSizeSelector: FC<PaginationPageSizeSelectorProp> = ({
   };
 
   return (
-    <div className={ style[ 'pagination-page-size-selector' ] }>
+    <div className={ style['pagination-page-size-selector'] }>
       <Select
         defaultValue={ [pageSize.toString()] }
         items={ PAGINATION_PER_PAGE_OPTIONS as SelectItem[] }
-        onValueChange={ handleValueChange }
-      >
+        onValueChange={ handleValueChange }>
         <SelectControl />
         <SelectContent />
       </Select>
-      <div className={ style[ 'pagination-page-size-selector__label' ] }>
+
+      <p className={ style['pagination-page-size-selector__label'] }>
         { renderTotalItemsLabel({ totalItems }) }
-      </div>
+      </p>
     </div>
   );
 };

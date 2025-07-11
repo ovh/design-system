@@ -197,3 +197,16 @@ export const Types: Story = {
     </>
   ),
 };
+
+export const AccessibilityFormField: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Name:
+      </FormFieldLabel>
+
+      <Input />
+    </FormField>
+  ),
+};

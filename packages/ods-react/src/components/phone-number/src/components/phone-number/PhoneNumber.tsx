@@ -49,6 +49,7 @@ const PhoneNumber: FC<PhoneNumberProp> = forwardRef(({
       <div
         className={ classNames(style['phone-number'], className) }
         ref={ ref }
+        role="group"
         { ...props }>
         { children }
       </div>

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { type ChangeEvent, type FC, type JSX, forwardRef, useMemo } from 'react';
+import { useFormField } from '../../../../form-field/src';
 import { INPUT_TYPE, Input } from '../../../../input/src';
 import { type PhoneNumberInputProp, usePhoneNumber } from '../../contexts/usePhoneNumber';
 import { formatPhoneNumber, getExampleNumber, isValid } from '../../controller/phone-number';
@@ -40,6 +41,7 @@ const PhoneNumberControl: FC<PhoneNumberControlProp> = forwardRef(({
     setInputValue,
     value,
   } = usePhoneNumber();
+  const fieldContext = useFormField();
   const placeholder = useMemo(() => getExampleNumber(isoCode), [getExampleNumber, isoCode]);
 
   function onInputChange(e: ChangeEvent<HTMLInputElement>): void {
@@ -64,6 +66,7 @@ const PhoneNumberControl: FC<PhoneNumberControlProp> = forwardRef(({
 
   return (
     <Input
+      aria-labelledby={ fieldContext?.labelId }
       className={ classNames(
         style['phone-number-control'],
         { [style['phone-number-control--adjoined']]: !!hasCountries },

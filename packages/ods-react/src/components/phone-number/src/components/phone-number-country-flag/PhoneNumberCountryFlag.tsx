@@ -1,20 +1,26 @@
 import classNames from 'classnames';
-import { type FC, type JSX } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX } from 'react';
 import { type PhoneNumberCountryIsoCode } from '../../constants/phone-number-country-iso-code';
 import style from './phoneNumberCountryFlag.module.scss';
 
-interface PhoneNumberCountryFlagProp {
+interface PhoneNumberCountryFlagProp extends ComponentPropsWithRef<'span'> {
   disabled?: boolean,
   isoCode: PhoneNumberCountryIsoCode | string,
 }
 
-const PhoneNumberCountryFlag: FC<PhoneNumberCountryFlagProp> = ({ disabled, isoCode }): JSX.Element => {
+const PhoneNumberCountryFlag: FC<PhoneNumberCountryFlagProp> = ({
+  disabled,
+  isoCode,
+  ...props
+}): JSX.Element => {
   return (
-    <span className={ classNames(
-      style['phone-number-country-flag'],
-      style[`phone-number-country-flag--${isoCode}`],
-      { [style['phone-number-country-flag--disabled']]: disabled },
-    )} />
+    <span
+      className={ classNames(
+        style['phone-number-country-flag'],
+        style[`phone-number-country-flag--${isoCode}`],
+        { [style['phone-number-country-flag--disabled']]: disabled },
+      )}
+      { ...props } />
   );
 };
 

@@ -84,6 +84,7 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
         customItemRenderer={
           ({ values }) => (
             <PhoneNumberCountryFlag
+              aria-label={ values[0] }
               disabled={ disabled }
               isoCode={ values[0] } />
           )} />

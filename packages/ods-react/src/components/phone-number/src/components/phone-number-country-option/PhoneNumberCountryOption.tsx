@@ -17,7 +17,9 @@ const PhoneNumberCountryOption: FC<PhoneNumberCountryOptionProp> = ({
 
   return (
     <div className={ style['phone-number-country-option'] }>
-      <PhoneNumberCountryFlag isoCode={ isoCode } />
+      <PhoneNumberCountryFlag
+        aria-hidden="true"
+        isoCode={ isoCode } />
 
       <span>
         { label } (+{ phoneCode })

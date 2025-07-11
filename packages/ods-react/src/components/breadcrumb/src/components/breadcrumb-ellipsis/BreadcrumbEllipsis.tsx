@@ -6,8 +6,8 @@ import { BreadcrumbSeparator } from '../breadcrumb-separator/BreadcrumbSeparator
 import style from './breadcrumbEllipsis.module.scss';
 
 interface BreadcrumbEllipsisProp extends ComponentPropsWithoutRef<'li'> {
+  controlledId: string,
   onExpand: () => void,
-  controlledId?: string,
 }
 
 const BreadcrumbEllipsis: FC<BreadcrumbEllipsisProp> = ({ onExpand, controlledId }): JSX.Element => {

@@ -1,3 +1,4 @@
+import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as PaginationStories from './pagination.stories';
 import { Banner } from '../../../src/components/banner/Banner';
@@ -8,13 +9,13 @@ import { StorybookLink } from '../../../src/components/storybookLink/StorybookLi
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
 import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
-<Meta of={ PaginationStories } name='Documentation' />
+<Meta of={ PaginationStories } name="Documentation" />
 
 <Banner of={ PaginationStories } />
 
 _A **Pagination** component allows users to navigate through large sets of data by dividing the content into multiple pages._
 
-<Canvas of={ PaginationStories.Overview } sourceState='none' />
+<Canvas of={ PaginationStories.Overview } sourceState="none" />
 
 <Heading label="Overview" level={ 2 } />
 
@@ -126,3 +127,17 @@ Pressing `Shift` + `Tab` moves focus backward.
 Pressing `Enter` or `Space` on a page button, "Previous", or "Next" triggers the corresponding page change.
 
 The "items per page" Select uses the same keyboard shortcuts as the standard Select component.
+
+<Heading label="Accessibility" level={ 2 } />
+
+Pagination component should be properly identified and correct labels must be implemented to ensure it is accessible to assistive technologies.
+
+<Heading label="Identifying the Pagination with aria-label" level={ 3 } />
+
+Pagination is a form of navigation, but it serve a specific purpose distinct from primary navigation menus. To ensure it is correctly recognized, an aria-label should be added to explicitly identify it.
+
+<Canvas of={ PaginationStories.AccessibilityLabel } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the pagination element correctly.

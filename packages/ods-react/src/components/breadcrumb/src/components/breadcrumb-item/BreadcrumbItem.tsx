@@ -7,10 +7,13 @@ import style from './breadcrumbItem.module.scss';
 
 interface BreadcrumbItemProp extends ComponentPropsWithRef<'li'> {
   /** @internal */
+  autoFocus?: boolean,
+  /** @internal */
   isLast?: boolean,
 }
 
 const BreadcrumbItem: FC<BreadcrumbItemProp> = forwardRef(({
+  autoFocus,
   children,
   className,
   isLast,
@@ -21,6 +24,7 @@ const BreadcrumbItem: FC<BreadcrumbItemProp> = forwardRef(({
   const clones = validChildren.map((child) => {
     if (child.type === BreadcrumbLink) {
       return cloneElement(child, {
+        autoFocus,
         isLast,
       });
     }

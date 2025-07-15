@@ -1,3 +1,4 @@
+import { BUTTON_COLOR, BUTTON_VARIANT, Divider } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Button } from '../../../../ods-react/src/components/button/src';
@@ -239,6 +240,29 @@ export const Overview: Story = {
 
       <PopoverContent>
         This is the popover content
+      </PopoverContent>
+    </Popover>
+  ),
+};
+
+export const AccessibilityWithMenu: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button aria-haspopup='true'>
+          <Icon aria-hidden='true' name={ICON_NAME.ellipsisVertical} />
+          Show popover
+        </Button>
+      </PopoverTrigger>
+
+      <PopoverContent withArrow={true}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Button role='menuitem' variant={BUTTON_VARIANT.ghost}>Button</Button>
+          <Button role='menuitem' variant={BUTTON_VARIANT.ghost}>Button</Button>
+          <Divider style={{ width: '100%' }} />
+          <Button color={BUTTON_COLOR.critical} role='menuitem' variant={BUTTON_VARIANT.ghost}>Button</Button>
+        </div>
       </PopoverContent>
     </Popover>
   ),

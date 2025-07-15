@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, type ReactElement, cloneElement, forwardRef, useId, useState } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, type ReactElement, cloneElement, forwardRef, useId, useMemo, useState } from 'react';
 import { getValidChildren } from '../../../../../utils/element';
 import { BreadcrumbProvider, type BreadcrumbRootProp } from '../../contexts/useBreadcrumb';
-import { isItemCollapsed } from '../../controller/breadcrumb';
+import { getFirstCollapsedIdx, isItemCollapsed } from '../../controller/breadcrumb';
 import { BreadcrumbEllipsis } from '../breadcrumb-ellipsis/BreadcrumbEllipsis';
 import style from './breadcrumb.module.scss';
 
@@ -28,6 +28,17 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
   const needEllipsis = !isExpanded && count > collapseThreshold;
   let ellipsisAdded = false;
 
+  const [focusIdx, setFocusIdx] = useState<number | null>(null);
+  const firstCollapsedIdx: number | null = useMemo(() =>
+    getFirstCollapsedIdx(
+      count,
+      nbItemsBeforeEllipsis,
+      nbItemsAfterEllipsis,
+      needEllipsis,
+    ),
+  [count, nbItemsBeforeEllipsis, nbItemsAfterEllipsis, needEllipsis],
+  );
+
   const clones = validChildren.reduce((res, child, idx) => {
     const isCollapsed = needEllipsis && isItemCollapsed(idx, count, nbItemsBeforeEllipsis, nbItemsAfterEllipsis);
 
@@ -39,6 +50,7 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
             key={ idx }
             onExpand={ () => {
               setIsExpanded(true);
+              setFocusIdx(firstCollapsedIdx);
               onExpand && onExpand();
             } }
           />,
@@ -47,7 +59,9 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
       }
       return res;
     }
+
     res.push(cloneElement(child, {
+      autoFocus: isExpanded && focusIdx !== null && idx === focusIdx,
       isLast: count === idx + 1,
     }));
     return res;

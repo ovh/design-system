@@ -332,9 +332,8 @@ export const AccessibilityWithAriaLabel: Story = {
   render: ({}) => (
     <Breadcrumb aria-label="Breadcrumb">
       <BreadcrumbItem>
-        <BreadcrumbLink href="#">
+        <BreadcrumbLink aria-label="Home" href="#">
           <Icon aria-hidden='true' name={ ICON_NAME.home } />
-          Home
         </BreadcrumbLink>
       </BreadcrumbItem>
 

@@ -1,5 +1,6 @@
 import { type JSX, type ReactNode, createContext, useContext } from 'react';
 import { type Locale } from '../../../../utils/locales';
+import { type INPUT_I18N } from '../constants/input-i18n';
 import { type InputMaskState } from '../constants/input-mask-state';
 import { type InputType } from '../constants/input-type';
 
@@ -19,7 +20,7 @@ interface InputRootProp {
   /**
    * Internal translations override.
    */
-  i18n?: Record<string, string>,
+  i18n?: Partial<Record<INPUT_I18N, string>>,
   /**
    * Whether the component is in loading state.
    */

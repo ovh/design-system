@@ -1,3 +1,4 @@
+import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as QuantityStories from './quantity.stories';
 import { Banner } from '../../../src/components/banner/Banner';
@@ -23,7 +24,7 @@ _**Quantity** is a component used to enter and modify a numeric value in a respo
               name="Quantity">
   The **Quantity** component provides a user-friendly interface for selecting or entering numerical values.
 
-  It includes an Input field combined with increment and decrement Buttons to adjust the value easily.
+  It includes an **Input** field combined with increment and decrement **Buttons** to adjust the value easily.
 </IdentityCard>
 
 <Heading label="Usage" level={ 2 } />
@@ -60,13 +61,13 @@ Limits can be set as minimum or maximum value. In that case, the numeric value c
 
 **Quantity** can be used to let users easily change an amount of items, for example, or similar situations.
 
-It should be used with numeric Input that are in a fairly narrow range.
+It should be used with numeric **Input** that are in a fairly narrow range.
 
 <Heading label="Behavior" level={ 2 } />
 
 **Quantity** numeric field can be edited directly by the user.
 
-The user can also decrease or increase the value by clicking on the Buttons.
+The user can also decrease or increase the value by clicking on the **Buttons**.
 
 In case that limits have been set to minimum and maximum value, corresponding control will be disabled when this value has been reached.
 
@@ -76,18 +77,13 @@ Each item of the **Quantity** component can be focused; the whole component can 
 
 <Heading label="Focus Management" level={ 3 } />
 
-When the **Quantity** component is focused, focus is automatically set to the first focusable and not disabled element.
+When the **Quantity** component is focused, focus is automatically set to the input if not disabled.
 
-If the Input field is read-only, it can still receive focus but cannot be edited.
-
-If the "Plus" or "Minus" Button is disabled, it cannot be focused.
+If the **Input** field is read-only, it can still receive focus but cannot be edited.
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-Pressing `Tab` moves focus forward:
-* First to the "Minus" button, when not disabled
-* Then to the input field
-* Finally to the "Plus" button, when not disabled
+Pressing `Tab` moves focus forward the input field.
 
 Pressing `Shift` + `Tab` moves focus backward through the interactive elements.
 
@@ -95,6 +91,17 @@ Pressing `Arrow Up` when focused in the Input field increases the value.
 
 Pressing `Arrow Down` when focused in the Input field decreases the value.
 
-Pressing `Enter` on the "Minus" Button decreases the value.
+<Heading label="Accessibility" level={ 2 } />
 
-Pressing `Enter` on the "Plus" Button increases the value.
+To ensure proper accessibility, the **Quantity** component must be correctly labeled and linked to additional information.
+
+<Heading label="Always provide an explicit label" level={ 3 } />
+
+Every **Quantity** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
+using either **FormField** or native label tag.
+
+<Canvas of={ QuantityStories.AccessibilityLabel } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label and the quantity field.

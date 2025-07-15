@@ -2,6 +2,7 @@ import { NumberInput, useNumberInputContext } from '@ark-ui/react/number-input';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { useFormField } from '../../../../form-field/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import style from './quantityControl.module.scss';
 
@@ -12,6 +13,7 @@ const QuantityControl: FC<QuantityControlProp> = forwardRef(({
   className,
   ...props
 }, ref): JSX.Element => {
+  const fieldContext = useFormField();
   const { decrement, getDecrementTriggerProps, getIncrementTriggerProps, increment, invalid } = useNumberInputContext();
   const decrementTriggerProps = getDecrementTriggerProps();
   const incrementTriggerProps = getIncrementTriggerProps();
@@ -20,9 +22,10 @@ const QuantityControl: FC<QuantityControlProp> = forwardRef(({
     <NumberInput.Control
       className={ classNames(style['quantity-control'], className) }
       ref={ ref }
+      role="group"
       { ...props }>
       <Button
-        aria-controls={ decrementTriggerProps['aria-controls'] }
+        aria-controls={ fieldContext?.id || decrementTriggerProps['aria-controls'] }
         className={ classNames(
           style['quantity-control__decrement'],
           { [style['quantity-control__decrement--invalid']]: invalid },
@@ -31,6 +34,7 @@ const QuantityControl: FC<QuantityControlProp> = forwardRef(({
         disabled={ decrementTriggerProps.disabled }
         onClick={ decrement }
         size={ BUTTON_SIZE.sm }
+        tabIndex={ -1 }
         variant={ BUTTON_VARIANT.outline }>
         <Icon name={ ICON_NAME.minus } />
       </Button>
@@ -38,7 +42,7 @@ const QuantityControl: FC<QuantityControlProp> = forwardRef(({
       { children }
 
       <Button
-        aria-controls={ incrementTriggerProps['aria-controls'] }
+        aria-controls={ fieldContext?.id || incrementTriggerProps['aria-controls'] }
         className={ classNames(
           style['quantity-control__increment'],
           { [style['quantity-control__increment--invalid']]: invalid },
@@ -47,6 +51,7 @@ const QuantityControl: FC<QuantityControlProp> = forwardRef(({
         disabled={ incrementTriggerProps.disabled }
         onClick={ increment }
         size={ BUTTON_SIZE.sm }
+        tabIndex={ -1 }
         variant={ BUTTON_VARIANT.outline }>
         <Icon name={ ICON_NAME.plus } />
       </Button>

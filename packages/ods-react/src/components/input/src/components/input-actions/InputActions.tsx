@@ -35,52 +35,52 @@ export const InputActions: FC<InputActionsProps> = ({
   const { i18n, locale } = useInput();
   const { translate } = useI18n(TRANSLATION, locale, i18n);
   return (
-    <div className={style['input-actions']}>
-      {loading && (
+    <div className={ style['input-actions'] }>
+      { loading && (
         <Spinner
-          className={style['input-actions__loading']}
-          color={disabled ? SPINNER_COLOR.neutral : SPINNER_COLOR.primary}
-          size={SPINNER_SIZE.xs}
+          className={ style['input-actions__loading'] }
+          color={ disabled ? SPINNER_COLOR.neutral : SPINNER_COLOR.primary }
+          size={ SPINNER_SIZE.xs }
         />
       )}
-      {hasClearButton && (
+      { hasClearButton && (
         <Button
-          aria-controls={inputId}
-          aria-label={translate(INPUT_I18N.clearButton)}
-          color={BUTTON_COLOR.neutral}
-          disabled={disabled || readOnly}
-          onClick={onClearClick}
-          size={BUTTON_SIZE.xs}
+          aria-controls={ inputId }
+          aria-label={ translate(INPUT_I18N.clearButton) }
+          color={ BUTTON_COLOR.neutral }
+          disabled={ disabled || readOnly }
+          onClick={ onClearClick }
+          size={ BUTTON_SIZE.xs }
           type="button"
-          variant={BUTTON_VARIANT.ghost}
+          variant={ BUTTON_VARIANT.ghost }
         >
-          <Icon name={ICON_NAME.xmark} />
+          <Icon name={ ICON_NAME.xmark } />
         </Button>
       )}
-      {hasToggleMaskIcon && (
+      { hasToggleMaskIcon && (
         <Button
-          aria-controls={inputId}
-          aria-label={translate(isMaskOpen ? INPUT_I18N.maskButtonHide : INPUT_I18N.maskButtonShow)}
-          color={BUTTON_COLOR.primary}
-          disabled={disabled}
-          onClick={onToggleMask}
-          size={BUTTON_SIZE.xs}
+          aria-controls={ inputId }
+          aria-label={ translate(isMaskOpen ? INPUT_I18N.maskButtonHide : INPUT_I18N.maskButtonShow) }
+          color={ BUTTON_COLOR.primary }
+          disabled={ disabled }
+          onClick={ onToggleMask }
+          size={ BUTTON_SIZE.xs }
           type="button"
-          variant={BUTTON_VARIANT.ghost}
+          variant={ BUTTON_VARIANT.ghost }
         >
-          <Icon name={isMaskOpen ? ICON_NAME.eye : ICON_NAME.eyeOff} />
+          <Icon name={ isMaskOpen ? ICON_NAME.eye : ICON_NAME.eyeOff } />
         </Button>
       )}
-      {hasSearchButton && (
+      { hasSearchButton && (
         <Button
-          aria-label={translate(INPUT_I18N.searchButton)}
-          color={BUTTON_COLOR.primary}
-          disabled={disabled || readOnly}
-          size={BUTTON_SIZE.xs}
+          aria-label={ translate(INPUT_I18N.searchButton) }
+          color={ BUTTON_COLOR.primary }
+          disabled={ disabled || readOnly }
+          size={ BUTTON_SIZE.xs }
           type="submit"
-          variant={BUTTON_VARIANT.ghost}
+          variant={ BUTTON_VARIANT.ghost }
         >
-          <Icon name={ICON_NAME.magnifyingGlass} />
+          <Icon name={ ICON_NAME.magnifyingGlass } />
         </Button>
       )}
     </div>

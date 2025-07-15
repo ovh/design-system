@@ -110,16 +110,16 @@ const Input: FC<InputProp> = forwardRef(({
         {
           hasActions &&
           <InputActions
-            disabled={props.disabled}
-            hasClearButton={hasClearButton}
-            hasSearchButton={hasSearchButton}
-            hasToggleMaskIcon={hasToggleMaskIcon}
-            inputId={inputId}
-            isMaskOpen={isMaskOpen}
-            loading={loading}
-            onClearClick={onClearClick}
-            onToggleMask={onToggleMask}
-            readOnly={props.readOnly}
+            disabled={ props.disabled }
+            hasClearButton={ hasClearButton }
+            hasSearchButton={ hasSearchButton }
+            hasToggleMaskIcon={ hasToggleMaskIcon }
+            inputId={ inputId }
+            isMaskOpen={ isMaskOpen }
+            loading={ loading }
+            onClearClick={ onClearClick }
+            onToggleMask={ onToggleMask }
+            readOnly={ props.readOnly }
           />
         }
       </div>

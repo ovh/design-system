@@ -1,4 +1,5 @@
 import { type ChangeEvent, type FC, type JSX, forwardRef } from 'react';
+import { useFormField } from '../../../../form-field/src';
 import { INPUT_TYPE, Input } from '../../../../input/src';
 import { type TimepickerInputProp, useTimepicker } from '../../contexts/useTimepicker';
 
@@ -22,6 +23,7 @@ const TimepickerControl: FC<TimepickerControlProp> = forwardRef(({
     value,
     withSeconds,
   } = useTimepicker();
+  const fieldContext = useFormField();
 
   function onInputChange(e: ChangeEvent<HTMLInputElement>): void {
     const value = e.currentTarget.value;
@@ -36,6 +38,7 @@ const TimepickerControl: FC<TimepickerControlProp> = forwardRef(({
 
   return (
     <Input
+      aria-labelledby={ fieldContext?.labelId }
       className={ className }
       ref={ ref }
       { ...props }

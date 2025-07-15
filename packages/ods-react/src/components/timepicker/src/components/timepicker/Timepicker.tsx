@@ -47,6 +47,7 @@ const Timepicker: FC<TimepickerProp> = forwardRef(({
       <div
         className={ classNames(style['timepicker'], className) }
         ref={ ref }
+        role="group"
         { ...props }>
         { children }
       </div>

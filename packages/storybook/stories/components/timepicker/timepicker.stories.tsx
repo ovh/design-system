@@ -70,6 +70,23 @@ export const Demo: StoryObj = {
   }),
 };
 
+export const AccessibilityLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Starting time:
+      </FormFieldLabel>
+
+      <Timepicker withSeconds>
+        <TimepickerControl />
+
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </FormField>
+  ),
+};
+
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (

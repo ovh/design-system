@@ -1,4 +1,6 @@
+import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
+import { Table } from '@storybook/components';
 import * as PopoverStories from './popover.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
@@ -100,3 +102,70 @@ Pressing `Escape` closes the currently opened **Popover**.
 Pressing `Tab` moves focus forward through the focusable elements inside the **Popover**.
 
 Pressing `Shift` + `Tab` moves focus backward within the **Popover**.
+
+<Heading label="Accessibility" level={ 2 } />
+To ensure proper accessibility, **Popover** component must specify its content nature using appropriate ARIA attributes.
+
+<Heading label="Specify the Popover's content nature" level={ 3 } />
+
+<Table>
+  <thead>
+    <tr>
+      <th>Content Type</th>
+      <th>ARIA Attribute</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Menu</td>
+      <td>`aria-haspopup="menu"`</td>
+    </tr>
+    <tr>
+      <td>List</td>
+      <td>`aria-haspopup="listbox"`</td>
+    </tr>
+    <tr>
+      <td>Tree</td>
+      <td>`aria-haspopup="tree"`</td>
+    </tr>
+    <tr>
+      <td>Grid</td>
+      <td>`aria-haspopup="grid"`</td>
+    </tr>
+    <tr>
+      <td>Dialog</td>
+      <td>`aria-haspopup="dialog"`</td>
+    </tr>
+    <tr>
+      <td>Comment</td>
+      <td>`aria-details="comment"`</td>
+    </tr>
+    <tr>
+      <td>Definition</td>
+      <td>`aria-details="term"` + `role="definition"`</td>
+    </tr>
+    <tr>
+      <td>Caption</td>
+      <td>`aria-details="figure"`</td>
+    </tr>
+    <tr>
+      <td>Footnote</td>
+      <td>`aria-details="doc-footnote"`</td>
+    </tr>
+    <tr>
+      <td>Endnote</td>
+      <td>`aria-details="doc-endnote"`</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td>`aria-details="true"`</td>
+    </tr>
+  </tbody>
+</Table>
+
+<Heading label="Using aria-popup for a Popover containing a Menu" level={ 3 } />
+
+<Canvas of={PopoverStories.AccessibilityWithMenu} sourceState='shown' />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleInfo }
+      style={{ color: 'var(--ods-color-primary-500)' }} /> Screen readers will recognize that this **Popover** contains a menu and menu items. It indicates that the element can trigger a popup and the nature of this popup.

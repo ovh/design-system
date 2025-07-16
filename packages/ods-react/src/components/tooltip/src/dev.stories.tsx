@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '.';
 import { Button } from '../../button/src';
+import { Icon, ICON_NAME } from '../../icon/src';
 import style from './dev.module.css';
 
 export default {
@@ -151,6 +152,17 @@ export const CustomStyle = () => (
     </TooltipTrigger>
     <TooltipContent className={ style['custom-tooltip-content'] }>
       This is the tooltip custom content
+    </TooltipContent>
+  </Tooltip>
+)
+export const Accessibility = () => (
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Icon  name={ ICON_NAME.circleQuestion } />
+    </TooltipTrigger>
+
+    <TooltipContent>
+      This is the tooltip content
     </TooltipContent>
   </Tooltip>
 )

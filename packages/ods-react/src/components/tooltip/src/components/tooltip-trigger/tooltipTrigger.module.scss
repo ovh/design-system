@@ -1,0 +1,7 @@
+@use '../../../../../style/focus';
+
+@layer ods-atoms {
+  .tooltip-trigger:focus-visible {
+    @include focus.ods-focus();
+  }
+}

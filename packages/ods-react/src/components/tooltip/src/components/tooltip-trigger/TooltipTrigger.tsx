@@ -1,5 +1,7 @@
 import { Tooltip } from '@ark-ui/react/tooltip';
+import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import style from './tooltipTrigger.module.scss';
 
 interface TooltipTriggerProp extends ComponentPropsWithRef<'button'> {
   /**
@@ -10,11 +12,15 @@ interface TooltipTriggerProp extends ComponentPropsWithRef<'button'> {
 
 const TooltipTrigger: FC<TooltipTriggerProp> = forwardRef(({
   children,
+  className,
   ...props
 }, ref): JSX.Element => {
   return (
     <Tooltip.Trigger
+      className={ classNames(style['tooltip-trigger'], className) }
       ref={ ref }
+      role={'button'}
+      tabIndex={0}
       { ...props }>
       { children }
     </Tooltip.Trigger>

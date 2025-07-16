@@ -254,3 +254,18 @@ export const Overview: Story = {
     </Tooltip>
   ),
 };
+
+export const AccessibilityTooltip: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Icon aria-hidden name={ ICON_NAME.circleInfo } />
+      </TooltipTrigger>
+
+      <TooltipContent>
+        Some additional context.
+      </TooltipContent>
+    </Tooltip>
+  ),
+};

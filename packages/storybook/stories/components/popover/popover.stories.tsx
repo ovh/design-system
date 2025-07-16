@@ -250,18 +250,17 @@ export const AccessibilityWithMenu: Story = {
   render: ({}) => (
     <Popover>
       <PopoverTrigger asChild>
-        <Button aria-haspopup='true'>
-          <Icon aria-hidden='true' name={ICON_NAME.ellipsisVertical} />
-          Show popover
+        <Button>
+          <Icon aria-hidden="true" name={ICON_NAME.ellipsisVertical} />
         </Button>
       </PopoverTrigger>
 
       <PopoverContent withArrow={true}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <Button role='menuitem' variant={BUTTON_VARIANT.ghost}>Button</Button>
-          <Button role='menuitem' variant={BUTTON_VARIANT.ghost}>Button</Button>
+          <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
+          <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
           <Divider style={{ width: '100%' }} />
-          <Button color={BUTTON_COLOR.critical} role='menuitem' variant={BUTTON_VARIANT.ghost}>Button</Button>
+          <Button color={BUTTON_COLOR.critical} role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
         </div>
       </PopoverContent>
     </Popover>

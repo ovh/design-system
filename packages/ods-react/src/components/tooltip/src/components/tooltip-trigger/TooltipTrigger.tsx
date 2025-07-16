@@ -19,7 +19,7 @@ const TooltipTrigger: FC<TooltipTriggerProp> = forwardRef(({
     <Tooltip.Trigger
       className={ classNames(style['tooltip-trigger'], className) }
       ref={ ref }
-      role={'button'}
+      role="button"
       tabIndex={0}
       { ...props }>
       { children }

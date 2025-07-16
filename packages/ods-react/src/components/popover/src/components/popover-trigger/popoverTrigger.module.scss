@@ -1,7 +1,7 @@
 @use '../../../../../style/focus';
 
 @layer ods-atoms {
-  .tooltip-trigger {
+  .popover-trigger {
     &:focus-visible {
       @include focus.ods-focus();
     }

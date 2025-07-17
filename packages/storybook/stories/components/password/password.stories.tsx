@@ -70,6 +70,19 @@ export const Demo: Story = {
   }),
 };
 
+export const AccessibilityLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Password:
+      </FormFieldLabel>
+
+      <Password />
+    </FormField>
+  ),
+};
+
 export const Clearable: Story = {
   tags: ['!dev'],
   render: ({}) => (

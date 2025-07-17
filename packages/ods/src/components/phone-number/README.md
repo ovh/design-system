@@ -2,9 +2,17 @@
 
 For now, we use https://github.com/flarik/css-sprite-flags.
 
-You will need to add those last 7 that are missing in the repo css:
+You will need to add those that are missing in the repo css:
 
 ```scss
+'bq': -264px -240px,
+'gf': -192px -120px,
+'gp': -192px -120px,
+'io': -240px -120px,
+'pm': -192px -120px,
+'re': -192px -120px,
+'sj': -288px -240px,
+'sx': -264px -240px,
 'wf': -0px -360px,
 'ws': -24px -360px,
 'ye': -48px -360px,

@@ -1,0 +1,19 @@
+name: "deploy-storybook"
+description: "Deploy ODS Storybook"
+runs:
+  runs-on: library/node-22
+  steps:
+    - name: Build ODS
+      run: yarn build:prod
+
+    - name: Generate documentation
+      run: yarn doc
+
+    - name: Build storybook
+      run: yarn build:storybook
+
+    - uses: library/serveStaticFiles
+      with:
+        name: ods-storybook
+        destination: ${{ git.ref_name }}
+        source: packages/storybook/dist

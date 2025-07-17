@@ -18,6 +18,7 @@
     border-style: solid;
     border-radius: var(--ods-border-radius-sm);
     padding-right: input.$ods-input-actions-padding-right;
+    width: inherit;
 
     &--disabled {
       @include state.ods-is-disabled();
@@ -40,7 +41,7 @@
       }
     }
   }
-  
+
   &__copy {
     display: flex;
     align-items: center;

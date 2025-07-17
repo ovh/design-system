@@ -21,7 +21,8 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
   onExpand,
   ...props
 }, ref): JSX.Element => {
-  const computedId = id ?? useId();
+  const generatedId = useId();
+  const computedId = id ?? generatedId;
   const [isExpanded, setIsExpanded] = useState(noCollapse);
   const validChildren = getValidChildren(children);
   const count = validChildren.length;

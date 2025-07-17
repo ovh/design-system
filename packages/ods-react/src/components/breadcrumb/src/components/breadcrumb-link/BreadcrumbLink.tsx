@@ -33,7 +33,7 @@ const BreadcrumbLink = forwardRef(function BreadcrumbLink<T extends ElementType>
         anchorRef.current.focus();
       }
     }
-  }, [autoFocus, isLast]);
+  }, [autoFocus]);
 
   if (isLast) {
     return (

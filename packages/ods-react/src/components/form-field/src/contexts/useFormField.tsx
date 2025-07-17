@@ -28,7 +28,7 @@ interface FormFieldProviderProp extends FormFieldContextType {
 const FormFieldContext = createContext<FormFieldContextType>({});
 
 function FormFieldProvider({ children, id, invalid, ...prop }: FormFieldProviderProp): JSX.Element {
-  const fieldId = id ?? useId();
+  const fieldId = useId();
   const [errorId, setErrorId] = useState<string | undefined>();
   const [helperId, setHelperId] = useState<string | undefined>();
   const [labelId, setLabelId] = useState<string | undefined>();
@@ -42,7 +42,7 @@ function FormFieldProvider({ children, id, invalid, ...prop }: FormFieldProvider
       ariaDescribedBy,
       errorId,
       helperId,
-      id: fieldId,
+      id: id ?? fieldId,
       invalid,
       labelId,
       setErrorId,

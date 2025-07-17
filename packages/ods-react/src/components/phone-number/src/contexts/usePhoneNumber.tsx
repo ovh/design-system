@@ -108,10 +108,15 @@ function PhoneNumberProvider({ children, countries, country, ...prop }: PhoneNum
 
       if (newIsoCode !== isoCode) {
         setIsoCode(newIsoCode);
-        setHasError(!isValid(inputValue, newIsoCode));
       }
     }
   }, [countries, country, isoCode]);
+
+  useEffect(() => {
+    if (inputValue) {
+      setHasError(!isValid(inputValue, isoCode));
+    }
+  }, [inputValue, isoCode]);
 
   return (
     <PhoneNumberContext.Provider value={{

@@ -27,13 +27,12 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
     readOnly,
     required,
     setHasCountries,
-    setHasError,
     setIsoCode,
   } = usePhoneNumber();
 
-  const regionLocalized = new Intl.DisplayNames(locale, { type: 'region' });
-
   const countryItems = useMemo(() => {
+    const regionLocalized = new Intl.DisplayNames(locale, { type: 'region' });
+
     return getIsoCodeList(countries)
       .map<SelectOptionItem>((isoCode) => ({
         customRendererData: { isoCode },
@@ -41,7 +40,7 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
         value: isoCode,
       }))
       .sort((a, b) => a.label.localeCompare(b.label));
-  }, [countries, getIsoCodeList, regionLocalized]);
+  }, [countries, locale]);
 
   useEffect(() => {
     setHasCountries && setHasCountries(true);
@@ -56,7 +55,6 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
     const valueIsValid = isValid(inputValue, newIsoCode);
 
     setIsoCode && setIsoCode(newIsoCode);
-    setHasError && setHasError(!valueIsValid);
 
     if (onCountryChange) {
       onCountryChange({

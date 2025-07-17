@@ -29,7 +29,7 @@ const TimepickerTimezoneList: FC<TimepickerTimezoneListProp> = forwardRef(({
       label: timezone,
       value: timezone,
     }));
-  }, [getTimezoneList, timezones]);
+  }, [timezones]);
 
   function onValueChange({ value }: SelectValueChangeDetail): void {
     setCurrentTimezone && setCurrentTimezone(value[0] as Timezone);

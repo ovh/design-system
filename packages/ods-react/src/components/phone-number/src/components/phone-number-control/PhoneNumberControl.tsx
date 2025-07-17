@@ -37,19 +37,17 @@ const PhoneNumberControl: FC<PhoneNumberControlProp> = forwardRef(({
     pattern,
     readOnly,
     required,
-    setHasError,
     setInputValue,
     value,
   } = usePhoneNumber();
   const fieldContext = useFormField();
-  const placeholder = useMemo(() => getExampleNumber(isoCode), [getExampleNumber, isoCode]);
+  const placeholder = useMemo(() => getExampleNumber(isoCode), [isoCode]);
 
   function onInputChange(e: ChangeEvent<HTMLInputElement>): void {
     const value = e.currentTarget.value;
     const valueIsValid = isValid(value, isoCode);
 
     setInputValue && setInputValue(value);
-    setHasError && setHasError(!valueIsValid);
 
     if (onValueChange) {
       const { error, phoneNumber } = formatPhoneNumber(value, isoCode);

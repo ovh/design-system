@@ -11,7 +11,7 @@ type Story = StoryObj<MessageProp>;
 type DemoArg = Partial<MessageProp> & Partial<MessageIconProp>;
 
 const meta: Meta<MessageProp> = {
-  argTypes: excludeFromDemoControls(['onRemove']),
+  argTypes: excludeFromDemoControls(['i18n', 'locale', 'onRemove']),
   component: Message,
   subcomponents: { MessageBody, MessageIcon },
   title: 'React Components/Message',

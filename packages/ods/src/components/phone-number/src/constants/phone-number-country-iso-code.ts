@@ -27,6 +27,7 @@ enum ODS_PHONE_NUMBER_COUNTRY_ISO_CODE {
   bm = 'bm', // Bermuda
   bn = 'bn', // Brunei Darussalam
   bo = 'bo', // Bolivia (Plurinational State of)
+  bq = 'bq', // Bonaire, Sint Eustatius and Saba
   br = 'br', // Brazil
   bs = 'bs', // Bahamas
   bt = 'bt', // Bhutan
@@ -75,12 +76,14 @@ enum ODS_PHONE_NUMBER_COUNTRY_ISO_CODE {
   gb = 'gb', // United Kingdom of Great Britain and Northern Ireland
   gd = 'gd', // Grenada
   ge = 'ge', // Georgia
+  gf = 'gf', // French Guiana
   gg = 'gg', // Guernsey
   gh = 'gh', // Ghana
   gi = 'gi', // Gibraltar
   gl = 'gl', // Greenland
   gm = 'gm', // Gambia
   gn = 'gn', // Guinea
+  gp = 'gp', // Guadeloupe
   gq = 'gq', // Equatorial Guinea
   gr = 'gr', // Greece
   gt = 'gt', // Guatemala
@@ -97,6 +100,7 @@ enum ODS_PHONE_NUMBER_COUNTRY_ISO_CODE {
   il = 'il', // Israel
   im = 'im', // Isle of Man
   in = 'in', // India
+  io = 'io', // British Indian Ocean Territory
   iq = 'iq', // Iraq
   ir = 'ir', // Iran (Islamic Republic of)
   is = 'is', // Iceland
@@ -170,12 +174,14 @@ enum ODS_PHONE_NUMBER_COUNTRY_ISO_CODE {
   ph = 'ph', // Philippines
   pk = 'pk', // Pakistan
   pl = 'pl', // Poland
+  pm = 'pm', // Saint Pierre and Miquelon
   pr = 'pr', // Puerto Rico
   ps = 'ps', // Palestine, State of
   pt = 'pt', // Portugal
   pw = 'pw', // Palau
   py = 'py', // Paraguay
   qa = 'qa', // Qatar
+  re = 're', // Réunion
   ro = 'ro', // Romania
   rs = 'rs', // Serbia
   ru = 'ru', // Russian Federation
@@ -188,6 +194,7 @@ enum ODS_PHONE_NUMBER_COUNTRY_ISO_CODE {
   sg = 'sg', // Singapore
   sh = 'sh', // Saint Helena, Ascension and Tristan da Cunha
   si = 'si', // Slovenia
+  sj = 'sj', // Svalbard and Jan Mayen
   sk = 'sk', // Slovakia
   sl = 'sl', // Sierra Leone
   sm = 'sm', // San Marino
@@ -198,6 +205,7 @@ enum ODS_PHONE_NUMBER_COUNTRY_ISO_CODE {
   st = 'st', // Sao Tome and Principe
   sv = 'sv', // El Salvador
   sy = 'sy', // Syrian Arab Republic
+  sx = 'sx', // Sint Maarten (Dutch part)
   sz = 'sz', // Eswatini
   tc = 'tc', // Turks and Caicos Islands
   td = 'td', // Chad

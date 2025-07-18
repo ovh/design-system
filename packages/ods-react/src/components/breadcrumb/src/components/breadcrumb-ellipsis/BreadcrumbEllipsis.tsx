@@ -5,20 +5,19 @@ import { useBreadcrumb } from '../../contexts/useBreadcrumb';
 import { BreadcrumbSeparator } from '../breadcrumb-separator/BreadcrumbSeparator';
 import style from './breadcrumbEllipsis.module.scss';
 
-interface BreadcrumbEllipsisProp extends ComponentPropsWithoutRef<'li'> {
-  controlledId: string,
+interface BreadcrumbEllipsisProp extends Omit<ComponentPropsWithoutRef<'button'>, 'children' | 'onClick'> {
   onExpand: () => void,
 }
 
-const BreadcrumbEllipsis: FC<BreadcrumbEllipsisProp> = ({ onExpand, controlledId }): JSX.Element => {
+const BreadcrumbEllipsis: FC<BreadcrumbEllipsisProp> = ({ onExpand, ...props }): JSX.Element => {
   const { i18n, locale } = useBreadcrumb();
   const { translate } = useI18n(TRANSLATION, locale, i18n);
 
   return (
     <li className={ style['breadcrumb-ellipsis'] }>
       <button
+        { ...props }
         aria-label={ translate(BREADCRUMB_I18N.ellipsisButton) }
-        aria-controls={ controlledId }
         className={ style['breadcrumb-ellipsis__button'] }
         onClick={ onExpand }
         type="button">

@@ -20,28 +20,28 @@ interface InputActionsProps {
   readOnly?: boolean;
 }
 
-export const InputActions: FC<InputActionsProps> = ({
-  loading,
+const InputActions: FC<InputActionsProps> = ({
+  disabled,
   hasClearButton,
   hasSearchButton,
   hasToggleMaskIcon,
   inputId,
   isMaskOpen,
+  loading,
   onClearClick,
   onToggleMask,
-  disabled,
   readOnly,
 }) => {
   const { i18n, locale } = useInput();
   const { translate } = useI18n(TRANSLATION, locale, i18n);
+
   return (
     <div className={ style['input-actions'] }>
       { loading && (
         <Spinner
           className={ style['input-actions__loading'] }
           color={ disabled ? SPINNER_COLOR.neutral : SPINNER_COLOR.primary }
-          size={ SPINNER_SIZE.xs }
-        />
+          size={ SPINNER_SIZE.xs } />
       )}
       { hasClearButton && (
         <Button
@@ -52,8 +52,7 @@ export const InputActions: FC<InputActionsProps> = ({
           onClick={ onClearClick }
           size={ BUTTON_SIZE.xs }
           type="button"
-          variant={ BUTTON_VARIANT.ghost }
-        >
+          variant={ BUTTON_VARIANT.ghost }>
           <Icon name={ ICON_NAME.xmark } />
         </Button>
       )}
@@ -66,8 +65,7 @@ export const InputActions: FC<InputActionsProps> = ({
           onClick={ onToggleMask }
           size={ BUTTON_SIZE.xs }
           type="button"
-          variant={ BUTTON_VARIANT.ghost }
-        >
+          variant={ BUTTON_VARIANT.ghost }>
           <Icon name={ isMaskOpen ? ICON_NAME.eye : ICON_NAME.eyeOff } />
         </Button>
       )}
@@ -78,11 +76,14 @@ export const InputActions: FC<InputActionsProps> = ({
           disabled={ disabled || readOnly }
           size={ BUTTON_SIZE.xs }
           type="submit"
-          variant={ BUTTON_VARIANT.ghost }
-        >
+          variant={ BUTTON_VARIANT.ghost }>
           <Icon name={ ICON_NAME.magnifyingGlass } />
         </Button>
       )}
     </div>
   );
+};
+
+export {
+  InputActions,
 };

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { type ChangeEvent, type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import { type ChangeEvent, type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { useFormField } from '../../../../form-field/src';
 import { INPUT_MASK_STATE } from '../../constants/input-mask-state';
 import { INPUT_TYPE } from '../../constants/input-type';
@@ -23,6 +23,7 @@ const Input: FC<InputProp> = forwardRef(({
   type = INPUT_TYPE.text,
   ...props
 }, ref): JSX.Element => {
+  const defaultId = useId();
   const fieldContext = useFormField();
   const inputRef = useRef<HTMLInputElement>(null);
   const [hasValue, setHasValue] = useState(isValueDefined(props.defaultValue) || isValueDefined(props.value));
@@ -56,7 +57,7 @@ const Input: FC<InputProp> = forwardRef(({
     return hasClearButton || hasSearchButton || hasToggleMaskIcon || loading;
   }, [hasClearButton, hasSearchButton, hasToggleMaskIcon, loading]);
 
-  const inputId = id || fieldContext?.id;
+  const inputId = id || fieldContext?.id || defaultId;
 
   function onChange(e: ChangeEvent<HTMLInputElement>): void {
     props.onChange && props.onChange(e);
@@ -93,8 +94,7 @@ const Input: FC<InputProp> = forwardRef(({
         data-disabled={ props.disabled ? true : undefined }
         data-invalid={ isInvalid ? true : undefined }
         data-readonly={ props.readOnly ? true: undefined }
-        role={ hasActions ? 'group' : undefined }
-      >
+        role={ hasActions ? 'group' : undefined }>
         <input
           aria-busy={ loading }
           aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
@@ -119,8 +119,7 @@ const Input: FC<InputProp> = forwardRef(({
             loading={ loading }
             onClearClick={ onClearClick }
             onToggleMask={ onToggleMask }
-            readOnly={ props.readOnly }
-          />
+            readOnly={ props.readOnly } />
         }
       </div>
     </InputProvider>
@@ -129,4 +128,7 @@ const Input: FC<InputProp> = forwardRef(({
 
 Input.displayName = 'Input';
 
-export { Input, type InputProp };
+export {
+  Input,
+  type InputProp,
+};

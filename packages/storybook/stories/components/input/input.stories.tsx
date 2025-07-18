@@ -11,7 +11,7 @@ type DemoArg = Partial<InputProp> & {
 };
 
 const meta: Meta<InputProp> = {
-  argTypes: excludeFromDemoControls(['maskOption', 'onClear']),
+  argTypes: excludeFromDemoControls(['i18n', 'locale', 'maskOption', 'onClear']),
   component: Input,
   title: 'React Components/Input',
 };

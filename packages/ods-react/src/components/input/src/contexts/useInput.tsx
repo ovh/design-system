@@ -10,10 +10,6 @@ interface InputRootProp {
    */
   clearable?: boolean,
   /**
-   * Custom aria-label for the clear button.
-   */
-  clearButtonAriaLabel?: string,
-  /**
    * Whether the component is in error state.
    */
   invalid?: boolean,
@@ -33,10 +29,6 @@ interface InputRootProp {
     initialState?: InputMaskState,
   },
   /**
-   * Custom aria-label for the mask toggle button.
-   */
-  maskButtonAriaLabel?: string,
-  /**
    * The locale used for the translation of the internal elements.
    */
   locale?: Locale,
@@ -44,10 +36,6 @@ interface InputRootProp {
    * Callback fired when the input value is cleared.
    */
   onClear?: () => void,
-  /**
-   * Custom aria-label for the search button.
-   */
-  searchButtonAriaLabel?: string,
   /**
    * The input type.
    */

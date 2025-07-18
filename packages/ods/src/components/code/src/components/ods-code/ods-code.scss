@@ -8,6 +8,7 @@ $ods-code-secondary-color: #000;
   display: inline-flex;
   flex-flow: row;
   column-gap: 8px;
+  align-items: center;
   justify-content: space-between;
   border-radius: var(--ods-border-radius-sm);
   background-color: $ods-code-secondary-color;
@@ -20,7 +21,8 @@ $ods-code-secondary-color: #000;
   &__preformat {
     display: flex;
     align-items: center;
-    margin: 0;
+    margin: auto 0;
+    height: 100%;
     white-space: pre-wrap;
 
     &__code {

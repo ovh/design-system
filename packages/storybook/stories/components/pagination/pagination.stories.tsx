@@ -12,7 +12,7 @@ import { staticSourceRenderConfig } from '../../../src/helpers/source';
 type Story = StoryObj<PaginationProp>;
 
 const meta: Meta<PaginationProp> = {
-  argTypes: excludeFromDemoControls(['defaultPage', 'onPageChange', 'page', 'pageSize', 'renderTotalItemsLabel']),
+  argTypes: excludeFromDemoControls(['defaultPage', 'onPageChange', 'onPageSizeChange', 'page', 'pageSize', 'renderTotalItemsLabel']),
   component: Pagination,
   title: 'React Components/Pagination',
 };

@@ -41,6 +41,12 @@ export const Demo: Story = {
       },
       control: 'boolean',
     },
+    invalid: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: 'boolean',
+    },
     loading: {
       table: {
         category: CONTROL_CATEGORY.general,

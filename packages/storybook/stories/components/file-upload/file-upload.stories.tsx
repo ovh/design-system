@@ -8,7 +8,7 @@ import { staticSourceRenderConfig } from '../../../src/helpers/source';
 type Story = StoryObj<FileUploadProp>;
 
 const meta: Meta<FileUploadProp> = {
-  argTypes: excludeFromDemoControls(['accept', 'name', 'onFileAccept', 'onFileReject', 'required']),
+  argTypes: excludeFromDemoControls(['accept', 'locale', 'name', 'onFileAccept', 'onFileReject', 'required']),
   component: FileUpload,
   subcomponents: { FileUploadItem, FileUploadList },
   title: 'React Components/File Upload',

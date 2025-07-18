@@ -47,7 +47,7 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
       if (!ellipsisAdded) {
         res.push(
           <BreadcrumbEllipsis
-            controlledId={ computedId }
+            aria-controls={ computedId }
             key={ idx }
             onExpand={ () => {
               setIsExpanded(true);

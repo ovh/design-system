@@ -99,7 +99,28 @@ export class OdsFileUpload {
     this.isDragging = false;
   }
 
+  private removeFileFromInput(file: OdsFile): void {
+    if (!this.inputFile) {
+      return;
+    }
+    
+    const dataTransfer = new DataTransfer();
+    let indexToRemove = Array.from(this.inputFile.files)
+      .map(a => a.odsId)
+      .indexOf(file.odsId);
+
+    Array.from(this.inputFile.files)
+      .forEach((file, index) => {
+        if (index !== indexToRemove) {
+          dataTransfer.items.add(file);
+        }
+      });
+
+    this.inputFile.files = dataTransfer.files;
+  }
+
   private onFileCancel(file: OdsFile): void {
+    this.removeFileFromInput(file);
     this.odsCancel.emit(file);
   }
 

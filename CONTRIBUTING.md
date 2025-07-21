@@ -63,7 +63,7 @@ then you just add a line saying
 
     Signed-off-by: Random J Developer <random@example.org>
 
-using your real name (sorry, no pseudonyms or anonymous contributions.)
+using your real name (sorry, no pseudonyms or anonymous contributions.).
 
 Please find all the documentation about contributions in the directory `packages/contributing`.
 You can start with the Getting Started in `packages/contributing/contributing-getting-started.mdx`.

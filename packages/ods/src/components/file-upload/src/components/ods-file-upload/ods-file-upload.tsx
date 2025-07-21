@@ -106,6 +106,8 @@ export class OdsFileUpload {
   private onFileChange(event: Event): void {
     const files = (event.target as HTMLInputElement).files;
     this.handleFiles(Array.from(files || []));
+    // Reset input file value to allow the same file to be uploaded if needed
+    (event.target as HTMLInputElement).value = '';
   }
 
   render(): FunctionalComponent {

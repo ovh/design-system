@@ -1,0 +1,383 @@
+import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
+import { Table } from '@ovhcloud/ods-react';
+import { Canvas, Meta } from '@storybook/blocks';
+import { ExternalLink } from '../../src/components/externalLink/ExternalLink';
+import { Heading } from '../../src/components/heading/Heading';
+import * as ButtonStories from '../components/button/button.stories';
+import * as IconStories from '../components/icon/icon.stories';
+import * as ModalStories from '../components/modal/modal.stories';
+import * as SkeletonStories from '../components/skeleton/skeleton.stories';
+
+<Meta title="OVHcloud Design System/Accessibility" />
+
+<Heading label="Accessibility Guide" level={ 1 } />
+
+<Heading label="Introduction" level={ 2 } />
+
+This guide focuses on accessibility best practices specifically for developers integrating the **OVHcloud Design System**.
+
+While our components are built with accessibility in mind, using semantic HTML elements by default, and including the necessary ARIA attributes where needed, certain ARIA attributes, roles, and behaviors must be implemented at the integration level to ensure full accessibility in different use cases.
+
+This means that in most cases, you don’t need to add extra ARIA attributes.
+
+However, depending on the context, you might need to enhance a component's accessibility. This guide will help you understand:
+
+* When and how to use ARIA properly
+* Common mistakes and best practices
+* How screen readers interpret different ARIA attributes
+
+For broader accessibility information beyond the **OVHcloud Design System**, consult our <ExternalLink href="https://www.ovhcloud.com/fr/accessibility/">Accessibility Statement</ExternalLink> available on our official website.
+
+<Heading label="Before using ARIA" level={ 3 } />
+
+<Heading label="Consult the Accessibility section for each component" level={ 4 } />
+
+Each component in **OVHcloud Design System** comes with a dedicated "Accessibility" section that provides best practices and usage guidance.
+
+<Heading label="Avoid overriding auto-accessible elements with redundant ARIA attributes" level={ 4 } />
+
+**OVHcloud Design System** mainly uses semantic HTML elements by default that inherently support accessibility.
+Elements such as `<button>`, `<input>` have built-in roles, keyboard support, and screen reader behaviors, so they typically don't require additional ARIA attributes.
+
+<Heading label="Essential ARIA attributes" level={ 2 } />
+
+<Heading label="aria-label: Providing an accessible name" level={ 3 } />
+
+Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> when an element needs a descriptive name but has no visible text.
+
+<Canvas of={ ButtonStories.AccessibilityBadPracticeIconOnly } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleXmark }
+      style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers will announce a button.
+
+<Canvas of={ ButtonStories.AccessibilityIconOnly } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce a button and the aria-label.
+
+<Heading label="Related Sources" level={ 4 } />
+
+* <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">MDN Documentation - aria-label</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#6.1">RGAA - 6.1</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.2">RGAA - 7.2</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.1">RGAA - 11.1</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.2">RGAA - 11.2</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.9">RGAA - 11.9</ExternalLink>
+
+<Heading label="aria-labelledby: Referencing another element as a label" level={ 3 } />
+
+Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> to associate an element with an existing label (instead of duplicating text).
+
+<Canvas of={ ButtonStories.AccessibilityBadPracticeLabelledBy } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleXmark }
+      style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers will announce a button.
+
+<Canvas of={ ButtonStories.AccessibilityLabelledBy } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> When the **Button** is focused, the screen reader should announce the linked label.
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleInfo }
+      style={{ color: 'var(--ods-color-primary-500)' }} /> Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> when there is no visible label, and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> when there is one.
+
+<Heading label="Related Sources" level={ 4 } />
+
+* <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">MDN Documentation - aria-labelledby</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#6.1">RGAA - 6.1</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.2">RGAA - 7.2</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.1">RGAA - 11.1</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.2">RGAA - 11.2</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.5">RGAA - 11.5</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.9">RGAA - 11.9</ExternalLink>
+
+<Heading label="aria-describedby: Providing additional context" level={ 3 } />
+
+<ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby">aria-describedby</ExternalLink> associates an interactive element with extra information, ensuring screen reader users receive helpful guidance without disrupting the UI.
+
+<Heading label="Difference between aria-labelledby and aria-describedby" level={ 4 } />
+
+<Table>
+  <thead>
+  <tr>
+    <th scope="col">Attribute</th>
+    <th scope="col">Purpose</th>
+    <th scope="col">When to use it?</th>
+    <th scope="col">Reading order</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row" style={{ textAlign: 'left' }}>aria-labelledby</th>
+    <td>Defines the main context of the element</td>
+    <td>When an element has no visible text or needs an external label</td>
+    <td>Read first by the screen reader</td>
+  </tr>
+  <tr>
+    <th scope="row" style={{ textAlign: 'left' }}>aria-describedby</th>
+    <td>Provides additional description</td>
+    <td>When secondary information is needed to clarify context</td>
+    <td>Read after the main label</td>
+  </tr>
+  </tbody>
+</Table>
+
+<Heading label="When to use aria-labelledby vs aria-describedby?" level={ 4 } />
+
+<Table>
+  <thead>
+  <tr>
+    <th scope="col">Use case</th>
+    <th scope="col"><code>aria-labelledby</code></th>
+    <th scope="col"><code>aria-describedby</code></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row" style={{ textAlign: 'left' }}>Use an external / hidden label</th>
+    <td style={{ textAlign: 'center' }}>
+      <Icon
+        aria-hidden="true"
+        name={ICON_NAME.circleCheck}
+        style={{ color: 'var(--ods-color-success-500)' }}
+      />
+    </td>
+    <td style={{ textAlign: 'center' }}>
+      <Icon
+        aria-hidden="true"
+        name={ICON_NAME.circleXmark}
+        style={{ color: 'var(--ods-color-critical-500)' }}
+      />
+    </td>
+  </tr>
+  <tr>
+    <th scope="row" style={{ textAlign: 'left' }}>Add complementary information</th>
+    <td style={{ textAlign: 'center' }}>
+      <Icon
+        aria-hidden="true"
+        name={ICON_NAME.circleXmark}
+        style={{ color: 'var(--ods-color-critical-500)' }}
+      />
+    </td>
+    <td style={{ textAlign: 'center' }}>
+      <Icon
+        aria-hidden="true"
+        name={ICON_NAME.circleCheck}
+        style={{ color: 'var(--ods-color-success-500)' }}
+      />
+    </td>
+  </tr>
+  <tr>
+    <th scope="row" style={{ textAlign: 'left' }}>Associate multiple elements to form a label (field group)</th>
+    <td style={{ textAlign: 'center' }}>
+      <Icon
+        aria-hidden="true"
+        name={ICON_NAME.circleCheck}
+        style={{ color: 'var(--ods-color-success-500)' }}
+      />
+    </td>
+    <td style={{ textAlign: 'center' }}>
+      <Icon
+        aria-hidden="true"
+        name={ICON_NAME.circleXmark}
+        style={{ color: 'var(--ods-color-critical-500)' }}
+      />
+    </td>
+  </tr>
+  <tr>
+    <th scope="row" style={{ textAlign: 'left' }}>Provide contextual help / information (e.g., input rules, field error)</th>
+    <td style={{ textAlign: 'center' }}>
+      <Icon
+        aria-hidden="true"
+        name={ICON_NAME.circleXmark}
+        style={{ color: 'var(--ods-color-critical-500)' }}
+      />
+    </td>
+    <td style={{ textAlign: 'center' }}>
+      <Icon
+        aria-hidden="true"
+        name={ICON_NAME.circleCheck}
+        style={{ color: 'var(--ods-color-success-500)' }}
+      />
+    </td>
+  </tr>
+  </tbody>
+</Table>
+
+<Canvas of={ ModalStories.AccessibilityBadPracticesAria } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleXmark }
+      style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers won't announce the **Modal** content.
+
+<Canvas of={ ModalStories.AccessibilityAria } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the **Modal** content.
+
+<Heading label="Related Sources" level={ 4 } />
+
+* <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby">MDN Documentation - aria-describedby</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.5">RGAA - 11.5</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.10">RGAA - 11.10</ExternalLink>
+
+<Heading label="aria-hidden: Hiding elements from screen readers" level={ 3 } />
+
+Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden">aria-hidden</ExternalLink> set to `"true"` on elements that are purely decorative and should not be announced by screen readers.
+
+<Canvas of={ IconStories.AccessibilityBadPracticeDecorative } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleXmark }
+      style={{ color: 'var(--ods-color-critical-500)' }} /> Some screen readers will announce the icon and detect the presence of the image.
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleInfo }
+      style={{ color: 'var(--ods-color-primary-500)' }} /> Depending on the screen reader, some additional information might be read aloud, which is confusing and unhelpful.
+
+<Canvas of={ IconStories.Decorative } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce nothing, the icon is ignored.
+
+<Heading label="Related Sources" level={ 4 } />
+
+* <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden">MDN Documentation - aria-hidden</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.2">RGAA - 11.2</ExternalLink>
+
+<Heading label="aria-busy: Indicating loading state" level={ 3 } />
+
+When a section of the UI is loading, users should be informed that the content is not yet ready.
+
+<ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy">aria-busy</ExternalLink> set to `"true"` signals that an element is currently in a loading state. Once loading is complete, `aria-busy` should be set to `"false"`.
+
+<Canvas of={ SkeletonStories.AccessibilityBadPracticeLoading } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleXmark }
+      style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers will give no indication that the content is loading. The screen reader may start reading the page without knowing that this section is waiting to be updated.
+
+<Canvas of={ SkeletonStories.AccessibilityLoading } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleXmark }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers understand that the content is not yet ready, so they delay announcing or interacting with it.
+
+<Heading label="Related Sources" level={ 4 } />
+
+* <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy">MDN Documentation - aria-busy</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.4">RGAA - 7.4</ExternalLink>
+
+<Heading label="status role: Announcing dynamic status changes" level={ 3 } />
+
+Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role">status role</ExternalLink> to ensure that important updates are announced by screen readers without disrupting focus.
+
+<Canvas of={ ButtonStories.AccessibilityBadPracticesRoleStatus } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleXmark }
+      style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers will announce the button and its label.
+
+<Canvas of={ ButtonStories.AccessibilityRoleStatus } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the button and its label, and the message on click or press.
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleInfo }
+      style={{ color: 'var(--ods-color-primary-500)' }} /> It also matters since it keeps focus on the button, avoiding disruption for keyboard users.
+
+<Heading label="Related Sources" level={ 4 } />
+
+* <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role">MDN Documentation - status role</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.4">RGAA - 7.4</ExternalLink>
+
+<Heading label="alert role: Announcing important messages" level={ 3 } />
+
+Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/alert_role">alert role</ExternalLink> for critical, time-sensitive messages that require immediate attention. Unlike `status role`, `alert role` is announced by screen readers, even if the user is focused elsewhere.
+
+<Canvas of={ ButtonStories.AccessibilityBadPracticesRoleAlert } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleXmark }
+      style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers won’t immediately announce the error message when it appears, unless the user manually navigates to it.
+
+<Canvas of={ ButtonStories.AccessibilityRoleAlert } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the error message, even when the user is focused elsewhere.
+
+<Heading label="Related Sources" level={ 4 } />
+
+* <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/alert_role">MDN Documentation - alert role</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.4">RGAA - 7.4</ExternalLink>
+
+<Heading label="radiogroup and radio roles: Making custom radio controls accessible" level={ 3 } />
+
+<ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/radiogroup_role">radiogroup</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/radio_role">radio</ExternalLink> roles ensure that screen readers correctly interpret and announce the selection.
+
+<Canvas of={ IconStories.AccessibilityBadPracticeRating } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleXmark }
+      style={{ color: 'var(--ods-color-critical-500)' }} /> Screen readers will read each star individually with no context of selection group.
+
+<Canvas of={ IconStories.AccessibilityRating } sourceState="shown" />
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce a radio button, its label and aria-label, which item is focused on out of the total amount of items and that it is a radio group.
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleInfo }
+      style={{ color: 'var(--ods-color-primary-500)' }} /> Please note you should navigate in a radio group using `arrow` keys.
+
+In the example above, `tabindex="-1"` is applied to all elements except the currently selected one. This is because only one item in a radio group should be focusable at a time.
+Users can navigate between options using the `arrow` keys, rather than the `Tab` key, which moves focus to the next interactive element outside the group.
+
+For more details, see <ExternalLink href="https://www.w3.org/WAI/ARIA/apg/patterns/radio/examples/radio/">Managing focus within components using a roving tabindex</ExternalLink>
+
+<Heading label="Sources" level={ 4 } />
+
+* <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/radiogroup_role">MDN Documentation - radiogroup</ExternalLink>
+* <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/radio_role">MDN Documentation - radio</ExternalLink>
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.5">RGAA - 11.5</ExternalLink>
+
+<Heading label="Final Accessibility check for ARIA roles" level={ 2 } />
+
+<Heading label="Validate the screen reader behavior" level={ 3 } />
+
+Test with a screen reader to ensure that your changes are communicated correctly.
+
+Ensure that actions such as button clicks, form submissions, and changes in state are clearly communicated to the user.
+
+<Heading label="Testing Environment" level={ 3 } />
+
+For consistent testing across different platforms and screen readers, here is the testing setup used by **OVHcloud Design System**, based on the recommendations from RGAA (France):
+
+<Table>
+  <thead>
+  <tr>
+    <th scope="col">Assistive Technology</th>
+    <th scope="col">Browser</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr style={{ textAlign: 'center' }}>
+    <td>NVDA</td>
+    <td>Firefox</td>
+  </tr>
+  <tr style={{ textAlign: 'center' }}>
+    <td>JAWS</td>
+    <td>Firefox or Internet Explorer</td>
+  </tr>
+  <tr style={{ textAlign: 'center' }}>
+    <td>Safari</td>
+    <td>VoiceOver</td>
+  </tr>
+  </tbody>
+</Table>
+
+<Heading label="Resources to help you test accessibility" level={ 2 } />
+
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr">Accessibility France Guidelines (FR)</ExternalLink>: The French government's official accessibility resource for best practices and testing criteria
+* <ExternalLink href="https://www.w3.org/TR/WCAG21">Web Content Accessibility Guidelines (WCAG) 2.1</ExternalLink>: The internationally recognized standards for web accessibility, providing guidelines for creating more accessible web content
+* <ExternalLink href="https://webaim.org/intro">WebAIM: Introduction to Web Accessibility</ExternalLink>: A guide to the principles of web accessibility from WebAIM
+* <ExternalLink href="https://webaim.org/techniques/semanticstructure">WebAIM: Semantic Structure</ExternalLink>: Learn about the importance of semantic HTML and how it impacts accessibility
+* <ExternalLink href="https://webaim.org/resources/contrastchecker">WebAIM: Contrast Checker</ExternalLink>: Tool to ensure sufficient color contrast between text and background for readability
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests">French Accessibility Testing Methodology (FR)</ExternalLink>: An in-depth guide to testing web accessibility in France
+* <ExternalLink href="https://accessibilite.numerique.gouv.fr/methode/environnement-de-test">French Testing Environment (FR)</ExternalLink>: Official guidelines on the tools and technologies to use when testing accessibility on desktop computers
+* <ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">W3C Tutorial on Alternative Text for Images</ExternalLink>: A decision tree for writing appropriate alternative text for images

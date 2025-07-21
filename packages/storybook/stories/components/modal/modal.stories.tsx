@@ -148,6 +148,31 @@ export const AccessibilityAria: Story = {
   ),
 };
 
+export const AccessibilityBadPracticesAria: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal
+        </Button>
+      </ModalTrigger>
+
+      <ModalContent>
+        <ModalBody>
+          <h2 id="modal-title">
+            Delete item
+          </h2>
+
+          <p id="modal-content">
+            Are you sure you want to delete this item? This action cannot be undone.
+          </p>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  ),
+};
+
 export const Actions: Story = {
   tags: ['!dev'],
   render: ({}) => (

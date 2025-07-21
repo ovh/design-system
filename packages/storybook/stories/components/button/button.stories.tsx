@@ -1,9 +1,10 @@
 import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { BUTTON_COLOR, BUTTON_COLORS, BUTTON_SIZE, BUTTON_SIZES, BUTTON_VARIANT, BUTTON_VARIANTS, Button, type ButtonProp } from '../../../../ods-react/src/components/button/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<ButtonProp>;
 
@@ -152,6 +153,15 @@ export const AccessibilityIconOnly: StoryObj = {
   ),
 }
 
+export const AccessibilityBadPracticeIconOnly: StoryObj = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Button>
+      <Icon name={ICON_NAME.xmark} />
+    </Button>
+  ),
+}
+
 export const AccessibilityLabelledBy: StoryObj = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['!dev'],
@@ -164,3 +174,136 @@ export const AccessibilityLabelledBy: StoryObj = {
     </>
   ),
 }
+
+export const AccessibilityBadPracticeLabelledBy: StoryObj = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Button>
+        <Icon name={ICON_NAME.filter} />
+      </Button>
+      <span>Filter your search results</span>
+    </>
+  ),
+}
+
+export const AccessibilityBadPracticesRoleStatus: Story = {
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: () => {
+    const [message, setMessage] = useState('');
+
+    const handleClick = () => {
+      setMessage('Copied to clipboard.');
+    };
+
+    return (
+      <>
+        <Button onClick={ handleClick }>
+          Copy
+        </Button>
+
+        <span
+          style={{ marginLeft: '1rem' }}
+        >
+          { message }
+        </span>
+      </>
+    );
+  },
+};
+
+export const AccessibilityRoleStatus: Story = {
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: () => {
+    const [message, setMessage] = useState('');
+
+    const handleClick = () => {
+      setMessage('Copied to clipboard.');
+    };
+
+    return (
+      <>
+        <Button onClick={ handleClick }>
+          Copy
+        </Button>
+
+        <span
+          role="status"
+          aria-live="polite"
+          style={{ marginLeft: '1rem' }}
+        >
+          { message }
+        </span>
+      </>
+    );
+  },
+};
+
+export const AccessibilityBadPracticesRoleAlert: Story = {
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: () => {
+    const [error, setError] = useState('');
+
+    const handleClick = () => {
+      setError('A critical error occurred while saving.');
+    };
+
+    return (
+      <>
+        <Button onClick={ handleClick }>
+          Save
+        </Button>
+
+        <span
+          style={{ marginLeft: '1rem', color: 'red' }}
+        >
+          { error }
+        </span>
+      </>
+    );
+  },
+};
+
+
+export const AccessibilityRoleAlert: Story = {
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: () => {
+    const [error, setError] = useState('');
+
+    const handleClick = () => {
+      setError('A critical error occurred while saving!');
+    };
+
+    return (
+      <>
+        <Button onClick={ handleClick }>
+          Save
+        </Button>
+
+        <span
+          role="alert"
+          style={{ marginLeft: '1rem', color: 'red' }}
+        >
+          { error }
+        </span>
+      </>
+    );
+  },
+};

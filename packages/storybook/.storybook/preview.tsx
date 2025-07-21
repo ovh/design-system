@@ -47,6 +47,7 @@ const preview: Preview = {
               'Style Customization',
               '*',
             ],
+            'Accessibility',
             'Guides', [
               'Handling Form',
               '*',

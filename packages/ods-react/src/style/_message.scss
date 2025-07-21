@@ -8,22 +8,22 @@
 
 @mixin ods-message-variant-default($color) {
   @if $color == 'critical' {
-    background-color: var(--ods-color-critical-100);
+    background-color: var(--ods-color-critical-075);
     color: var(--ods-color-critical-700);
   } @else if $color == 'information' {
-    background-color: var(--ods-color-information-100);
+    background-color: var(--ods-color-information-075);
     color: var(--ods-color-information-700);
   } @else if $color == 'neutral' {
-    background-color: var(--ods-color-neutral-100);
+    background-color: var(--ods-color-neutral-075);
     color: var(--ods-color-neutral-700);
   } @else if $color == 'primary' {
     background-color: var(--ods-color-primary-500);
     color: var(--ods-color-primary-000);
   } @else if $color == 'success' {
-    background-color: var(--ods-color-success-100);
+    background-color: var(--ods-color-success-075);
     color: var(--ods-color-success-700);
   } @else if $color == 'warning' {
-    background-color: var(--ods-color-warning-100);
+    background-color: var(--ods-color-warning-075);
     color: var(--ods-color-warning-700);
   }
 }

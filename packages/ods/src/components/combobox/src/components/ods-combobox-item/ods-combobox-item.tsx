@@ -4,9 +4,7 @@ import { CREATE_NEW_ID } from '../../controller/ods-combobox';
 import { type OdsComboboxItemSelectedEventDetail } from '../../interfaces/events';
 
 @Component({
-  shadow: {
-    delegatesFocus: true,
-  },
+  shadow: true,
   styleUrl: 'ods-combobox-item.scss',
   tag: 'ods-combobox-item',
 })

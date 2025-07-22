@@ -1,6 +1,6 @@
-import { Checkbox } from '@ark-ui/react/checkbox';
+import { Checkbox, useCheckboxContext } from '@ark-ui/react/checkbox';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useRef } from 'react';
 import { useFormField } from '../../../../form-field/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import style from './checkboxControl.module.scss';
@@ -12,7 +12,14 @@ const CheckboxControl: FC<CheckboxControlProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const { indeterminate } = useCheckboxContext();
 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.indeterminate = indeterminate;
+    }
+  }), [indeterminate];
   return (
     <Checkbox.Control
       className={ classNames(style['checkbox-control'], className) }
@@ -30,7 +37,7 @@ const CheckboxControl: FC<CheckboxControlProp> = forwardRef(({
           name={ ICON_NAME.minus } />
       </Checkbox.Indicator>
 
-      <Checkbox.HiddenInput aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy } />
+      <Checkbox.HiddenInput aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy } ref={inputRef} />
     </Checkbox.Control>
   );
 });

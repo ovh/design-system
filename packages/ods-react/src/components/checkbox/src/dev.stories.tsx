@@ -2,6 +2,7 @@ import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel } from '.';
 import { FormField, FormFieldError, FormFieldHelper } from '../../form-field/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import style from './dev.module.css';
+import { useState } from 'react';
 
 export default {
   component: Checkbox,
@@ -195,3 +196,83 @@ export const States = () => (
     </Checkbox>
   </>
 );
+
+export const ControlledIndeterminate = () => {
+  const items = ['react', 'solid', 'vue'];
+  const [value, setValue] = useState<string[]>(['react']);
+
+  const isAllSelected = value.length === items.length;
+  const isIndeterminate = value.length > 0 && !isAllSelected;
+
+  const handleSelectAllChange = (details: { checked: boolean | 'indeterminate' }) => {
+    setValue(details.checked ? items : []);
+  };
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <Checkbox
+        checked={isAllSelected ? true : isIndeterminate ? 'indeterminate' : false}
+        onCheckedChange={handleSelectAllChange}
+      >
+        <CheckboxControl />
+        <CheckboxLabel>Select all</CheckboxLabel>
+      </Checkbox>
+
+      <CheckboxGroup
+        value={value}
+        onValueChange={(v) => setValue(v)}
+        style={{ display: 'flex', flexDirection: 'column', marginLeft: '20px', gap: '8px' }}
+      >
+        {items.map((item) => (
+          <Checkbox key={item} value={item}>
+            <CheckboxControl />
+            <CheckboxLabel>{item}</CheckboxLabel>
+          </Checkbox>
+        ))}
+      </CheckboxGroup>
+    </div>
+  );
+};
+
+export const UncontrolledIndeterminate = () => {
+  const items = ['apple', 'banana', 'orange'];
+  const [currentValue, setCurrentValue] = useState(['apple']);
+  const [defaultValue, setDefaultValue] = useState(['apple']);
+  const [groupKey, setGroupKey] = useState(0);
+
+  const allChecked = currentValue.length === items.length;
+  const isIndeterminate = currentValue.length > 0 && !allChecked;
+
+  const handleSelectAllChange = (details: { checked: boolean | 'indeterminate' }) => {
+    const newValues = details.checked ? items : [];
+    setCurrentValue(newValues);
+    setDefaultValue(newValues);
+    setGroupKey(k => k + 1);
+  };
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <Checkbox
+        checked={allChecked ? true : isIndeterminate ? 'indeterminate' : false}
+        onCheckedChange={handleSelectAllChange}
+      >
+        <CheckboxControl />
+        <CheckboxLabel>Select all</CheckboxLabel>
+      </Checkbox>
+
+      <CheckboxGroup
+        key={groupKey}
+        defaultValue={defaultValue}
+        onValueChange={(v) => setCurrentValue(v)}
+        style={{ display: 'flex', flexDirection: 'column', marginLeft: '20px', gap: '8px' }}
+      >
+        {items.map((item) => (
+          <Checkbox key={item} value={item}>
+            <CheckboxControl />
+            <CheckboxLabel>{item}</CheckboxLabel>
+          </Checkbox>
+        ))}
+      </CheckboxGroup>
+    </div>
+  );
+};

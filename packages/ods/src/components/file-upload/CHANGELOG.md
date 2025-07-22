@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.6.4](https://ovh.github.io/design-system/v18.6.4/?path=/docs/design-system-changelog--page) (2025-07-22)
+[compare](https://github.com/ovh/design-system/compare/v18.6.3...v18.6.4)
+
+### Bug Fixes
+
+* **fileUpload:** allow same file to be uploaded again after cancel ([282f2b9](https://github.com/ovh/design-system/commit/282f2b95513e5d08742d4cf4bbc2d63b847589f1))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-icon",
-  "version": "18.6.3",
+  "version": "18.6.4",
   "private": true,
   "description": "ODS Icon component",
   "main": "dist/index.cjs.js",

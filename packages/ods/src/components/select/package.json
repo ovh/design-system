@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-select",
-  "version": "18.6.3",
+  "version": "18.6.4",
   "private": true,
   "description": "ODS Select component",
   "main": "dist/index.cjs.js",

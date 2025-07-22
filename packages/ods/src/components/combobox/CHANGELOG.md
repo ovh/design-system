@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.6.4](https://ovh.github.io/design-system/v18.6.4/?path=/docs/design-system-changelog--page) (2025-07-22)
+[compare](https://github.com/ovh/design-system/compare/v18.6.3...v18.6.4)
+
+### Bug Fixes
+
+* **combobox:** trigger item click on safari ([070e4c9](https://github.com/ovh/design-system/commit/070e4c97039f2ed4c9162af27cb433f91ca9e364))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -28,6 +28,28 @@ to ensure you use components as real React elements and not wrapped Web Componen
 `,e.jsx(n.li,{children:"updated documentation."}),`
 `,e.jsx(n.li,{children:"..."}),`
 `]}),`
+`,e.jsx(s,{label:"v18.6.4",level:2}),`
+`,e.jsx(s,{label:"Bug fixes:",level:3}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Clipboard"})}),`
+`,e.jsxs(n.ul,{children:[`
+`,e.jsx(n.li,{children:"Container now inherent parent width."}),`
+`]}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Code"})}),`
+`,e.jsxs(n.ul,{children:[`
+`,e.jsx(n.li,{children:"Now correctly render large text with fixed height."}),`
+`]}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Combobox"})}),`
+`,e.jsxs(n.ul,{children:[`
+`,e.jsx(n.li,{children:"Clicking an item now correctly select it on Safari."}),`
+`]}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"File Upload"})}),`
+`,e.jsxs(n.ul,{children:[`
+`,e.jsx(n.li,{children:"Allow same file to be uploaded again after cancellation."}),`
+`]}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Phone Number"})}),`
+`,e.jsxs(n.ul,{children:[`
+`,e.jsxs(n.li,{children:["Add following country codes: ",e.jsx(n.code,{children:"bq"}),", ",e.jsx(n.code,{children:"gf"}),", ",e.jsx(n.code,{children:"gp"}),", ",e.jsx(n.code,{children:"io"}),", ",e.jsx(n.code,{children:"pm"}),", ",e.jsx(n.code,{children:"re"}),", ",e.jsx(n.code,{children:"sj"}),", ",e.jsx(n.code,{children:"sx"}),"."]}),`
+`]}),`
 `,e.jsx(s,{label:"v18.6.3",level:2}),`
 `,e.jsx(s,{label:"Bug fixes:",level:3}),`
 `,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Pagination"})}),`

@@ -1,7 +1,7 @@
-import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { BUTTON_COLOR, BUTTON_COLORS, BUTTON_SIZE, BUTTON_SIZES, BUTTON_VARIANT, BUTTON_VARIANTS, Button, type ButtonProp } from '../../../../ods-react/src/components/button/src';
+import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -189,6 +189,7 @@ export const AccessibilityBadPracticeLabelledBy: StoryObj = {
 }
 
 export const AccessibilityBadPracticesRoleStatus: Story = {
+  tags: ['!dev'],
   parameters: {
     docs: {
       source: { ...staticSourceRenderConfig() },
@@ -218,6 +219,7 @@ export const AccessibilityBadPracticesRoleStatus: Story = {
 };
 
 export const AccessibilityRoleStatus: Story = {
+  tags: ['!dev'],
   parameters: {
     docs: {
       source: { ...staticSourceRenderConfig() },
@@ -249,6 +251,7 @@ export const AccessibilityRoleStatus: Story = {
 };
 
 export const AccessibilityBadPracticesRoleAlert: Story = {
+  tags: ['!dev'],
   parameters: {
     docs: {
       source: { ...staticSourceRenderConfig() },
@@ -279,6 +282,7 @@ export const AccessibilityBadPracticesRoleAlert: Story = {
 
 
 export const AccessibilityRoleAlert: Story = {
+  tags: ['!dev'],
   parameters: {
     docs: {
       source: { ...staticSourceRenderConfig() },

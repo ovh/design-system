@@ -301,8 +301,8 @@ export const AccessibilityBadPracticeRating: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <label htmlFor={ 'rating' }>Rating</label>
-      <div id={ 'rating' }>
+      <label htmlFor="rating">Rating</label>
+      <div id="rating">
         <Icon name="star" tabIndex={ 0 } aria-label="one star" />
         <Icon name="star" tabIndex={ 0 } aria-label="two star" />
         <Icon name="star" tabIndex={ 0 } aria-label="three star" />
@@ -317,13 +317,13 @@ export const AccessibilityRating: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <label id="rating-label" htmlFor={ 'rating' }>Rating</label>
-      <div id={ 'rating' } role={ 'radiogroup' } aria-labelledby={ 'rating-label' }>
-        <Icon name="star" role={ 'radio' } tabIndex={ -1 } aria-label="one star" aria-checked="false" />
-        <Icon name="star" role={ 'radio' } tabIndex={ 0 } aria-label="two star" aria-checked="true" />
-        <Icon name="star" role={ 'radio' } tabIndex={ -1 } aria-label="three star" aria-checked="false" />
-        <Icon name="star" role={ 'radio' } tabIndex={ -1 } aria-label="four star" aria-checked="false" />
-        <Icon name="star" role={ 'radio' } tabIndex={ -1 } aria-label="five star" aria-checked="false" />
+      <label id="rating-label" htmlFor="rating">Rating</label>
+      <div id="rating" role="radiogroup" aria-labelledby="rating-label">
+        <Icon name="star" role="radio" tabIndex={ -1 } aria-label="one star" aria-checked="false" />
+        <Icon name="star" role="radio" tabIndex={ 0 } aria-label="two star" aria-checked="true" />
+        <Icon name="star" role="radio" tabIndex={ -1 } aria-label="three star" aria-checked="false" />
+        <Icon name="star" role="radio" tabIndex={ -1 } aria-label="four star" aria-checked="false" />
+        <Icon name="star" role="radio" tabIndex={ -1 } aria-label="five star" aria-checked="false" />
       </div>
     </>
   ),

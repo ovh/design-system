@@ -1,4 +1,4 @@
-import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
+import { Icon, ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
 import { Table } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import { ExternalLink } from '../../src/components/externalLink/ExternalLink';
@@ -8,7 +8,7 @@ import * as IconStories from '../components/icon/icon.stories';
 import * as ModalStories from '../components/modal/modal.stories';
 import * as SkeletonStories from '../components/skeleton/skeleton.stories';
 
-<Meta title="OVHcloud Design System/Accessibility" />
+<Meta title="OVHcloud Design System/Guides/Accessibility" />
 
 <Heading label="Accessibility Guide" level={ 1 } />
 
@@ -16,9 +16,8 @@ import * as SkeletonStories from '../components/skeleton/skeleton.stories';
 
 This guide focuses on accessibility best practices specifically for developers integrating the **OVHcloud Design System**.
 
-While our components are built with accessibility in mind, using semantic HTML elements by default, and including the necessary ARIA attributes where needed, certain ARIA attributes, roles, and behaviors must be implemented at the integration level to ensure full accessibility in different use cases.
-
-This means that in most cases, you don’t need to add extra ARIA attributes.
+While our components are built with accessibility in mind, using semantic HTML elements and including the necessary ARIA attributes by default.
+Nevertheless, ensuring full accessibility in your specific use case might require you to implement additional ARIA attributes, roles, and behaviors at the integration level.
 
 However, depending on the context, you might need to enhance a component's accessibility. This guide will help you understand:
 
@@ -32,12 +31,13 @@ For broader accessibility information beyond the **OVHcloud Design System**, con
 
 <Heading label="Consult the Accessibility section for each component" level={ 4 } />
 
-Each component in **OVHcloud Design System** comes with a dedicated "Accessibility" section that provides best practices and usage guidance.
+Each component in **OVHcloud Design System** comes with a dedicated **"Accessibility"** section that provides best practices and usage guidance.
 
-<Heading label="Avoid overriding auto-accessible elements with redundant ARIA attributes" level={ 4 } />
+<Heading label="Be careful when adding extra ARIA attributes as ODS components may already handle it" level={ 4 } />
 
-**OVHcloud Design System** mainly uses semantic HTML elements by default that inherently support accessibility.
-Elements such as `<button>`, `<input>` have built-in roles, keyboard support, and screen reader behaviors, so they typically don't require additional ARIA attributes.
+To be as close as possible to the accessible experiences provided by modern browsers, **OVHcloud Design System** aims to rely on semantic and native HTML elements whenever they are inherently well-suited for screen reader experiences.
+
+In addition to the predefined accessibility features of our components, you can find more guidance regarding accessible integration in the **"Accessibility"** section.
 
 <Heading label="Essential ARIA attributes" level={ 2 } />
 
@@ -78,9 +78,13 @@ Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibili
       name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> When the **Button** is focused, the screen reader should announce the linked label.
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleInfo }
-      style={{ color: 'var(--ods-color-primary-500)' }} /> Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> when there is no visible label, and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> when there is one.
+<Message dismissible={ false }>
+  <MessageIcon name="circle-info" />
+
+  <MessageBody>
+    Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> when there is no visible label, and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> when there is one.
+  </MessageBody>
+</Message>
 
 <Heading label="Related Sources" level={ 4 } />
 
@@ -230,9 +234,13 @@ Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibili
       name={ ICON_NAME.circleXmark }
       style={{ color: 'var(--ods-color-critical-500)' }} /> Some screen readers will announce the icon and detect the presence of the image.
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleInfo }
-      style={{ color: 'var(--ods-color-primary-500)' }} /> Depending on the screen reader, some additional information might be read aloud, which is confusing and unhelpful.
+<Message dismissible={ false }>
+  <MessageIcon name="circle-info" />
+
+  <MessageBody>
+    Depending on the screen reader, some additional information might be read aloud, which is confusing and unhelpful.
+  </MessageBody>
+</Message>
 
 <Canvas of={ IconStories.Decorative } sourceState="shown" />
 <Icon aria-hidden="true"
@@ -279,9 +287,13 @@ Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibili
       name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the button and its label, and the message on click or press.
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleInfo }
-      style={{ color: 'var(--ods-color-primary-500)' }} /> It also matters since it keeps focus on the button, avoiding disruption for keyboard users.
+<Message dismissible={ false }>
+  <MessageIcon name="circle-info" />
+
+  <MessageBody>
+    It also matters since it keeps focus on the button, avoiding disruption for keyboard users.
+  </MessageBody>
+</Message>
 
 <Heading label="Related Sources" level={ 4 } />
 
@@ -321,9 +333,13 @@ Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibili
       name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce a radio button, its label and aria-label, which item is focused on out of the total amount of items and that it is a radio group.
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleInfo }
-      style={{ color: 'var(--ods-color-primary-500)' }} /> Please note you should navigate in a radio group using `arrow` keys.
+<Message dismissible={ false }>
+  <MessageIcon name="circle-info" />
+
+  <MessageBody>
+    Please note that you should navigate within a radio group using `arrow` keys.
+  </MessageBody>
+</Message>
 
 In the example above, `tabindex="-1"` is applied to all elements except the currently selected one. This is because only one item in a radio group should be focusable at a time.
 Users can navigate between options using the `arrow` keys, rather than the `Tab` key, which moves focus to the next interactive element outside the group.

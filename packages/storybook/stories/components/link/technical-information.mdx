@@ -1,6 +1,7 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Canvas, Meta, Source } from '@storybook/blocks';
 import SpecificationsLink from '../../../../ods-react/src/components/link/documentation/link.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as LinkStories from './link.stories';
@@ -44,3 +45,26 @@ import * as LinkStories from './link.stories';
 <Heading label="With Icon" level={ 3 } />
 
 <Canvas of={ LinkStories.WithIcon } sourceState="shown" />
+
+<Heading label="React Router integration" level={ 3 } />
+
+Using the `as` attribute, you can use the **Link** component with external library like <ExternalLink href="https://reactrouter.com/">React Router</ExternalLink>.
+
+<Source code={`
+import { Link as OdsLink } from '@ovhcloud/ods-react';
+import { Link as RouterLink } from 'react-router-dom';
+
+const Link = ({ children, route }) => {
+  return (
+    <OdsLink
+      as={ RouterLink }
+      to={ route }>
+      { children }
+    </OdsLink>
+  );
+};
+
+export { Link };
+`}
+        dark="true"
+        language="typescript" />

@@ -2,6 +2,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as CheckboxStories from './checkbox.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
@@ -86,3 +87,7 @@ If the **Checkbox** is disabled, it does not receive focus and cannot be activat
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
 Pressing `Space` toggles the **Checkbox** state (checked/unchecked).
+
+<Heading label="Accessibility" level={ 2 } />
+
+This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox">Checkbox WAI-ARIA design pattern</ExternalLink>.

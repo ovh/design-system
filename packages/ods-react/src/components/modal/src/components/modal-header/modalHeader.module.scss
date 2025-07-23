@@ -19,7 +19,7 @@
     &--primary {
       @include modal.ods-modal-color('primary');
 
-      button {
+      .modal__close {
         &:not(:hover, :active, :focus-visible) {
           color: var(--ods-color-neutral-000);
         }

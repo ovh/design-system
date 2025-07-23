@@ -31,7 +31,7 @@ const ModalHeader: FC<ModalHeaderProp> = ({
         <Dialog.CloseTrigger asChild>
           <Button
             aria-label={ translate(MODAL_I18N.closeButton) }
-            className={ style['modal__close'] }
+            className={ style['modal-header__close'] }
             color={ BUTTON_COLOR.neutral }
             size={ BUTTON_SIZE.xs }
             variant={ BUTTON_VARIANT.ghost }>

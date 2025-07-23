@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
@@ -123,4 +124,4 @@ Arrow keys (`Arrow Up` / `Arrow Down`) do not move between **Accordions** by def
 
 <Heading label="Accessibility" level={ 2 } />
 
-For screen readers, the user can know easily that the **Accordion** is opened or not, and therefore the inner content is readable or not.
+This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion">Accordion WAI-ARIA design pattern</ExternalLink>.

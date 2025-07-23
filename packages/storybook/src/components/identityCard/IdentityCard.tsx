@@ -1,36 +1,17 @@
 import { Table } from '@storybook/components';
-import React, { Fragment, type ReactNode } from 'react';
-import { ATOMIC_TYPE } from '../../constants/atomicDesign';
-import { SECTION, STORY } from '../../constants/meta';
+import React, { type ReactNode } from 'react';
 import { ExternalLink } from '../externalLink/ExternalLink';
-import { StorybookLink } from '../storybookLink/StorybookLink';
 import styles from './identityCard.module.css';
-
-function getAtomicTypeDocUrl(type: ATOMIC_TYPE): string {
-  switch (type) {
-    case ATOMIC_TYPE.atom:
-      return 'https://atomicdesign.bradfrost.com/chapter-2/#atoms';
-    case ATOMIC_TYPE.molecule:
-      return 'https://atomicdesign.bradfrost.com/chapter-2/#molecules';
-    case ATOMIC_TYPE.organism:
-      return 'https://atomicdesign.bradfrost.com/chapter-2/#organisms';
-    case ATOMIC_TYPE.quark:
-      return 'https://bradfrost.com/blog/post/extending-atomic-design';
-    default:
-      return '';
-  }
-}
 
 type Prop = {
   aliases: string[],
-  atomicType: ATOMIC_TYPE,
   children?: ReactNode,
   figmaLink: string,
   githubUrl: string,
   name: string,
 }
 
-const IdentityCard = ({ aliases, atomicType, children, figmaLink, githubUrl, name }: Prop) => {
+const IdentityCard = ({ aliases, children, figmaLink, githubUrl, name }: Prop) => {
   return (
     <div className={ styles['identity-card'] }>
       <div>
@@ -56,20 +37,6 @@ const IdentityCard = ({ aliases, atomicType, children, figmaLink, githubUrl, nam
 
           <td>
             { aliases.length > 0 ? aliases.join(', ') : '-' }
-          </td>
-        </tr>
-
-        <tr>
-          <th scope="row">
-            Atomic type
-          </th>
-
-          <td>
-            <ExternalLink
-              className={ styles['identity-card__atomic-link'] }
-              href={ getAtomicTypeDocUrl(atomicType) }>
-              { atomicType }
-            </ExternalLink>
           </td>
         </tr>
 

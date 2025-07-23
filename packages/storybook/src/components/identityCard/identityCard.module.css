@@ -9,10 +9,6 @@
   text-align: left;
 }
 
-.identity-card__atomic-link {
-  text-transform: capitalize;
-}
-
 .identity-card__app-link {
   display: block;
 }

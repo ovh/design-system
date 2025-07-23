@@ -2,7 +2,9 @@ import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsFormField from '../../../../ods-react/src/components/form-field/documentation/form-field.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { HOME_TITLE } from '../../../src/constants/meta';
 import * as FormFieldStories from './form-field.stories';
 
 <Meta of={ FormFieldStories } name="Technical information" />
@@ -11,7 +13,9 @@ import * as FormFieldStories from './form-field.stories';
 
 <Heading label="Overview" level={ 2 } />
 
-<Canvas of={ FormFieldStories.Overview } sourceState="'none' "/>
+<Canvas of={ FormFieldStories.Overview } sourceState="none" />
+
+To learn more about **Form Field** usage, please refer to the <StorybookLink title={ HOME_TITLE.handlingFormGuide }>Form guide documentation</StorybookLink>.
 
 <Heading label="Anatomy" level={ 2 } />
 

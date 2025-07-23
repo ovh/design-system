@@ -2,7 +2,9 @@ import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsPassword from '../../../../ods-react/src/components/password/documentation/password.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { HOME_TITLE } from '../../../src/constants/meta';
 import * as PasswordStories from './password.stories';
 
 <Meta of={ PasswordStories } name="Technical information" />
@@ -53,6 +55,8 @@ import * as PasswordStories from './password.stories';
 
 <Canvas of={ PasswordStories.Loading } sourceState="shown" />
 
-<Heading label="Form field" level={ 3 } />
+<Heading label="Form field" level={ 3 }>
+  <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
+</Heading>
 
 <Canvas of={ PasswordStories.InFormField } sourceState="shown" />

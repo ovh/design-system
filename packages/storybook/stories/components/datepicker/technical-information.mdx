@@ -2,7 +2,9 @@ import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsDatepicker from '../../../../ods-react/src/components/datepicker/documentation/datepicker.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { HOME_TITLE } from '../../../src/constants/meta';
 import * as DatepickerStories from './datepicker.stories';
 
 <Meta of={ DatepickerStories } name="Technical information" />
@@ -75,6 +77,8 @@ import * as DatepickerStories from './datepicker.stories';
 
 <Canvas of={ DatepickerStories.MinView } sourceState="shown" />
 
-<Heading label="Form field" level={ 3 } />
+<Heading label="Form field" level={ 3 }>
+  <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
+</Heading>
 
 <Canvas of={ DatepickerStories.InFormField } sourceState="shown" />

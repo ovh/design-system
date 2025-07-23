@@ -4,7 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
-import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { HOME_TITLE, REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 import * as PhoneNumberStories from './phone-number.stories';
 
 <Meta of={ PhoneNumberStories } name="Technical information" />
@@ -74,7 +74,7 @@ import * as PhoneNumberStories from './phone-number.stories';
 The locale manages the translation of the country list.
 
 For further explanation about locale strategy, see <StorybookLink kind={ REACT_COMPONENTS_TITLE.phoneNumber } story={ STORY.documentation }>the locale behavior documentation</StorybookLink>.
-                                                   <StorybookLink kind={ REACT_COMPONENTS_TITLE.input } story={ STORY.documentation }>Input</StorybookLink>
+
 <Canvas of={ PhoneNumberStories.Locale } sourceState="shown" />
 
 <Heading label="Country list" level={ 3 } />
@@ -87,6 +87,8 @@ For further explanation about country iso code strategy, see <StorybookLink kind
 
 <Canvas of={ PhoneNumberStories.CountryList } sourceState="shown" />
 
-<Heading label="Form field" level={ 3 } />
+<Heading label="Form field" level={ 3 }>
+  <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
+</Heading>
 
 <Canvas of={ PhoneNumberStories.InFormField } sourceState="shown" />

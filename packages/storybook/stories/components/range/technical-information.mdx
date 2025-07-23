@@ -2,7 +2,9 @@ import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsRange from '../../../../ods-react/src/components/range/documentation/range.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { HOME_TITLE } from '../../../src/constants/meta';
 import * as RangeStories from './range.stories';
 
 <Meta of={ RangeStories } name="Technical information" />
@@ -57,6 +59,8 @@ import * as RangeStories from './range.stories';
 
 <Canvas of={ RangeStories.Controlled } sourceState="shown" />
 
-<Heading label="Form field" level={ 3 } />
+<Heading label="Form field" level={ 3 }>
+  <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
+</Heading>
 
 <Canvas of={ RangeStories.InFormField } sourceState="shown" />

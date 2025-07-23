@@ -4,7 +4,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
-import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { HOME_TITLE, REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 import * as TimepickerStories from './timepicker.stories';
 
 <Meta of={ TimepickerStories } name="Technical information" />
@@ -75,6 +75,8 @@ For further explanation about timezone strategy, see <StorybookLink kind={ REACT
 
 <Canvas of={ TimepickerStories.TimezoneList } sourceState="shown" />
 
-<Heading label="Form field" level={ 3 } />
+<Heading label="Form field" level={ 3 }>
+  <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
+</Heading>
 
 <Canvas of={ TimepickerStories.InFormField } sourceState="shown" />

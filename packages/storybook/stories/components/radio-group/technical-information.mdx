@@ -2,7 +2,9 @@ import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsRadioGroup from '../../../../ods-react/src/components/radio-group/documentation/radio-group.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { HOME_TITLE } from '../../../src/constants/meta';
 import * as RadioGroupStories from './radio-group.stories';
 
 <Meta of={ RadioGroupStories } name="Technical information" />
@@ -72,6 +74,8 @@ import * as RadioGroupStories from './radio-group.stories';
 
 <Canvas of={ RadioGroupStories.Orientation } sourceState="shown" />
 
-<Heading label="Form Field" level={ 3 } />
+<Heading label="Form field" level={ 3 }>
+  <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
+</Heading>
 
 <Canvas of={ RadioGroupStories.InFormField } sourceState="shown" />

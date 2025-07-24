@@ -34,7 +34,7 @@ const odsVersionsAddon = () => {
             </PopoverContent>
           </Popover>
         </div>
-      )
+      );
     }
   });
 };

@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { SWITCH_SIZES, Switch, SwitchItem, type SwitchProp } from '../../../../ods-react/src/components/switch/src';
+import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
@@ -39,6 +40,36 @@ export const Demo: Story = {
       options: SWITCH_SIZES,
     },
   }),
+};
+
+export const AccessibilityAriaLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Switch aria-label="Select an item">
+      <SwitchItem value="item-1">Item 1</SwitchItem>
+      <SwitchItem value="item-2">Item 2</SwitchItem>
+      <SwitchItem value="item-3">Item 3</SwitchItem>
+    </Switch>
+  ),
+};
+
+export const AccessibilityAriaLabelledby: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Text
+        id="switch-label"
+        preset={ TEXT_PRESET.label }>
+        Select an item:
+      </Text>
+
+      <Switch aria-labelledby="switch-label">
+        <SwitchItem value="item-1">Item 1</SwitchItem>
+        <SwitchItem value="item-2">Item 2</SwitchItem>
+        <SwitchItem value="item-3">Item 3</SwitchItem>
+      </Switch>
+    </>
+  ),
 };
 
 export const Checked: Story = {

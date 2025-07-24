@@ -2,6 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { Range, type RangeProp, type RangeValueChangeDetail } from '../../../../ods-react/src/components/range/src';
+import { Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -93,6 +94,9 @@ export const Controlled: Story = {
 
     return (
       <>
+        <p>
+          This is a controlled component. The final value is only updated when the user releases the mouse button.
+        </p>
         <p>
           <span>Final value: { value }</span>
           <br />
@@ -224,4 +228,76 @@ export const Ticks: Story = {
         ticks={ [10, 20, 30, 40, 50, 60, 70, 80, 90] } />
     </>
   ),
+};
+
+export const AccessibilityFormField: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>Volume</FormFieldLabel>
+      <Range defaultValue={[50]} />
+    </FormField>
+  ),
+};
+
+export const AccessibilityDualRangeFormField: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>Price range</FormFieldLabel>
+      <Range defaultValue={[30, 70]} />
+    </FormField>
+  ),
+};
+
+export const AccessibilityVisibleLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <label htmlFor="custom-range">Volume</label>
+      <Range id="custom-range" defaultValue={[50]} />
+    </>
+  ),
+};
+
+export const AccessibilityDualRangeVisibleLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <label htmlFor="range-dual-default">Price range</label>
+      <Range id="range-dual-default" defaultValue={[30, 70]} />
+    </>
+  ),
+};
+
+export const AccessibilityDescriptiveSubLabel: Story = {
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const [values, setValues] = useState([30, 70]);
+
+    return (
+      <FormField>
+        <FormFieldLabel id="range-label-sub-label">
+          Price range
+        </FormFieldLabel>
+        <Text
+          preset="caption"
+          id="range-sub-label"
+          aria-live="polite"
+        >
+          Selected values: {values[0]} - {values[1]}€
+        </Text>
+        <Range
+          aria-labelledby={['range-label-sub-label', 'range-sub-label']}
+          onDragging={({ value }) => setValues(value)}
+          value={values}
+        />
+      </FormField>
+    );
+  },
 };

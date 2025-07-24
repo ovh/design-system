@@ -111,6 +111,7 @@ const Range: FC<RangeProp> = forwardRef(({
       onValueChange={ onDragging }
       onValueChangeEnd={ onValueChange }
       ref={ ref }
+      role="group"
       step={ step }
       thumbSize={{
         height: 16,

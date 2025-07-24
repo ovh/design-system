@@ -56,7 +56,9 @@ const RangeThumb: FC<RangeThumbProp> = ({
           onKeyDown={ onKeyDown }
           onMouseLeave={ () => setIsTooltipOpen(false) }
           onMouseOver={ () => setIsTooltipOpen(true) }
-          ref={ thumbRef }>
+          ref={ thumbRef }
+          role="slider"
+        >
           <Slider.HiddenInput />
         </Slider.Thumb>
       </TooltipTrigger>

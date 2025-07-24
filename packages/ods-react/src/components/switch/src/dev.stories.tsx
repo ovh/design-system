@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { TEXT_PRESET, Text } from '../../text/src';
 import { Switch, SwitchItem, type SwitchValueChangeDetail } from '.';
 import style from './dev.module.css';
 
@@ -6,6 +7,30 @@ export default {
   component: Switch,
   title: 'Switch dev',
 };
+
+export const AccessibilityAriaLabel = () => (
+  <Switch aria-label="Select an item">
+    <SwitchItem value="item-1">Item 1</SwitchItem>
+    <SwitchItem value="item-2">Item 2</SwitchItem>
+    <SwitchItem value="item-3">Item 3</SwitchItem>
+  </Switch>
+);
+
+export const AccessibilityLabel = () => (
+  <>
+    <Text
+      id="switch-label"
+      preset={ TEXT_PRESET.label }>
+      Select an item
+    </Text>
+
+    <Switch aria-labelledby="switch-label">
+      <SwitchItem value="item-1">Item 1</SwitchItem>
+      <SwitchItem value="item-2">Item 2</SwitchItem>
+      <SwitchItem value="item-3">Item 3</SwitchItem>
+    </Switch>
+  </>
+);
 
 export const ControlledInput = () => {
   const [value, setValue] = useState('item-1');

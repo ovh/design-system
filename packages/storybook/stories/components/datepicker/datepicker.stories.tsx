@@ -1,7 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Datepicker, DatepickerContent, DatepickerControl, type DatepickerControlProp, type DatepickerProp } from '../../../../ods-react/src/components/datepicker/src';
-import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
+import { Text } from '../../../../ods-react/src/components/text/src'
+import { FormField, FormFieldLabel, FormFieldHelper } from '../../../../ods-react/src/components/form-field/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -220,3 +221,36 @@ export const Readonly: Story = {
     </Datepicker>
   ),
 };
+
+export const AccessibilityFormField: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Start date
+      </FormFieldLabel>
+      <Datepicker>
+        <DatepickerControl />
+        <DatepickerContent />
+      </Datepicker>
+    </FormField>
+  )
+}
+
+export const AccessibilityDateFormat: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Start date
+      </FormFieldLabel>
+      <Datepicker>
+        <DatepickerControl />
+        <DatepickerContent />
+      </Datepicker>
+      <FormFieldHelper>
+        <Text preset='caption'>Expected format: DD-MM-YYYY</Text>
+      </FormFieldHelper>
+    </FormField>
+  )
+}

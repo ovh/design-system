@@ -89,6 +89,52 @@ export const ControlledPlusModal = () => {
   );
 };
 
+export const CustomId = () => {
+  const [triggerId, setTriggerId] = useState<string>();
+
+  return (
+    <>
+      <p>Custom ID + no asChild</p>
+      <Popover>
+        <PopoverTrigger id="my-id1">
+          Trigger
+        </PopoverTrigger>
+
+        <PopoverContent>
+          Popover content
+        </PopoverContent>
+      </Popover>
+
+      <p>Custom ID + asChild</p>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button id="my-id2">
+            Trigger
+          </Button>
+        </PopoverTrigger>
+
+        <PopoverContent>
+          Popover content
+        </PopoverContent>
+      </Popover>
+
+      <p>Dynamic ID</p>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button id={ triggerId }>
+            Trigger
+          </Button>
+        </PopoverTrigger>
+
+        <PopoverContent>
+          Popover content
+        </PopoverContent>
+      </Popover>
+      <button type="button" onClick={ () => setTriggerId(Date.now().toString()) }>Set trigger ID</button>
+    </>
+  );
+};
+
 export const CustomTrigger = () => (
   <Popover>
     <PopoverTrigger asChild>

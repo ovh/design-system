@@ -90,3 +90,39 @@ export const WithLabels: Story = {
     <Toggle withLabels />
   ),
 };
+
+export const AccessibilityFormFieldLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <FormField>
+        <FormFieldLabel>
+          Dark mode
+        </FormFieldLabel>
+
+        <Toggle />
+
+      </FormField>
+    </>
+  ),
+};
+
+export const AccessibilityLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <label id="dark-mode-label">
+        Enable dark mode
+      </label>
+
+      <Toggle aria-labelledby="dark-mode-label" />
+    </>
+  ),
+};
+
+export const AccessibilityAriaLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Toggle aria-label="Enable dark mode" />
+  ),
+};

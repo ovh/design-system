@@ -89,7 +89,9 @@ const Toggle: FC<ToggleProp> = forwardRef(({
         }
       </VendorToggle.Control>
 
-      <VendorToggle.HiddenInput aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy } />
+      <VendorToggle.HiddenInput
+        aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
+        aria-labelledby={ props['aria-labelledby'] || fieldContext?.labelId } />
     </VendorToggle.Root>
   );
 });

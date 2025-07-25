@@ -1,3 +1,4 @@
+import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as ToggleStories from './toggle.stories';
 import { Banner } from '../../../src/components/banner/Banner';
@@ -94,3 +95,35 @@ Pressing `Tab` moves focus to the **Toggle** component.
 Pressing `Shift` + `Tab` moves focus backward to the previous focusable element.
 
 When focused, pressing `Space` or `Enter` immediately changes the **Toggle**'s state from on to off or off to on.
+
+<Heading label="Accessibility" level={ 2 } />
+
+**Toggle** component should be properly labeled and fully operable using screen readers.
+
+<Heading label="Always provide an explicit label" level={ 3 } />
+
+To ensure clarity, the **Toggle** must have an associated label that explains its function.
+
+Using the Form Field component:
+
+<Canvas of={ ToggleStories.AccessibilityFormFieldLabel } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce a checkbox, its state and the label.
+
+Using a visible label:
+
+<Canvas of={ ToggleStories.AccessibilityLabel } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce a checkbox, its state and the label.
+
+Using an aria-label for context:
+
+<Canvas of={ ToggleStories.AccessibilityAriaLabel } sourceState="shown" />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce a checkbox, its state and the label.

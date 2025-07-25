@@ -1,5 +1,6 @@
-import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
+import { Icon, ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import * as RangeStories from './range.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
@@ -113,7 +114,9 @@ Pressing `Tab` and `Shift` + `Tab` allow navigation between multiple thumbs (if 
 To ensure an optimal experience for assistive technologies, proper semantic elements and ARIA attributes must be used for both simple and dual **Range**.
 
 <Heading label="Always provide an explicit label" level={ 3 } />
-Every **Range** must have a clear and explicit label to ensure that users, especially screen reader users, understand its purpose.
+Every **Range** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
+using either an <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink>
+or an <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> attribute.
 
 <Canvas of={ RangeStories.AccessibilityFormField } sourceState="shown" />
 <Icon aria-hidden="true"
@@ -125,14 +128,6 @@ Every **Range** must have a clear and explicit label to ensure that users, espec
       name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the value, the fact it's a slider and its label.
 
-<Heading label="Using a visible label" level={ 3 } />
-
-<Canvas of={ RangeStories.AccessibilityVisibleLabel } sourceState="shown" />
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
-      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the value, the fact it's a slider and its label.
-
-<Canvas of={ RangeStories.AccessibilityDualRangeVisibleLabel } sourceState="shown" />
 <Icon aria-hidden="true"
       name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the value, the fact it's a slider and its label.
@@ -145,7 +140,11 @@ Sub-label provide additional context about the values that are selected or adjus
       name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the values, the fact it's a slider and its label.
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleInfo }
-      style={{ color: 'var(--ods-color-primary-500)' }} /> Using aria-labelledby to link the sub-label and aria-live="polite" ensure that the content is vocalized by screen readers.
+<Message dismissible={ false }>
+  <MessageIcon name="circle-info" />
+
+  <MessageBody>
+    Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> to link the sub-label and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions">aria-live="polite"</ExternalLink> to ensure that the content is vocalized by screen readers.
+  </MessageBody>
+</Message>
 

@@ -250,26 +250,6 @@ export const AccessibilityDualRangeFormField: Story = {
   ),
 };
 
-export const AccessibilityVisibleLabel: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <label htmlFor="custom-range">Volume</label>
-      <Range id="custom-range" defaultValue={[50]} />
-    </>
-  ),
-};
-
-export const AccessibilityDualRangeVisibleLabel: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <label htmlFor="range-dual-default">Price range</label>
-      <Range id="range-dual-default" defaultValue={[30, 70]} />
-    </>
-  ),
-};
-
 export const AccessibilityDescriptiveSubLabel: Story = {
   parameters: {
     docs: {
@@ -282,18 +262,18 @@ export const AccessibilityDescriptiveSubLabel: Story = {
 
     return (
       <FormField>
-        <FormFieldLabel id="range-label-sub-label">
+        <FormFieldLabel id="range-label">
           Price range
         </FormFieldLabel>
         <Text
           preset="caption"
-          id="range-sub-label"
+          id="range-sublabel"
           aria-live="polite"
         >
           Selected values: {values[0]} - {values[1]}€
         </Text>
         <Range
-          aria-labelledby={['range-label-sub-label', 'range-sub-label']}
+          aria-labelledby={['range-label', 'range-sublabel']}
           onDragging={({ value }) => setValues(value)}
           value={values}
         />

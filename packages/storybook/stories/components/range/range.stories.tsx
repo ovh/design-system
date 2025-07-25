@@ -95,9 +95,6 @@ export const Controlled: Story = {
     return (
       <>
         <p>
-          This is a controlled component. The final value is only updated when the user releases the mouse button.
-        </p>
-        <p>
           <span>Final value: { value }</span>
           <br />
           <span>Dragged value: { draggingValue }</span>

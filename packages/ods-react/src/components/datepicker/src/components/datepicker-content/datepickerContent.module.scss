@@ -25,13 +25,13 @@
         font-size: 1rem;
         font-weight: 400;
 
-        &[data-disabled] {
+        &[data-disabled='true'] {
           color: state.$ods-state-is-disabled-text-color;
         }
       }
 
       &__day {
-        &:not(:disabled) {
+        &:not([data-disabled='true']) {
           &[data-selected] {
             &[data-today] {
               &::after {
@@ -50,6 +50,16 @@
                 }
               }
             }
+          }
+        }
+
+        &[data-disabled='true'] {
+          outline: none;
+          cursor: not-allowed;
+          color : state.$ods-state-is-disabled-text-color;
+
+          &:hover {
+            background-color: state.$ods-state-is-disabled-background-color;
           }
         }
 
@@ -79,7 +89,7 @@
           z-index: 2;
         }
 
-        &:not(:disabled) {
+        &:not([data-disabled='true']) {
           &[data-focus] {
             background-color: var(--ods-color-primary-100);
             color: var(--ods-color-primary-700);
@@ -98,7 +108,7 @@
         }
 
         &[data-focus] {
-          &:focus-visible {
+          &:not([data-disabled='true']) &:focus-visible {
             @include focus.ods-focus;
           }
 

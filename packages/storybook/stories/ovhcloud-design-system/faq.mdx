@@ -39,3 +39,40 @@ Check that you're using the `bundler` <ExternalLink href="https://www.typescript
 <Source code={ `"moduleResolution": "bundler"` }
         dark="true"
         language="typescript" />
+
+<Heading label="My popover/tooltip is not displayed correctly" level={ 2 } />
+
+Check that you're not using a `Fragment` as your trigger.
+
+The following will **not** work properly:
+<Source code={`
+<Tooltip>
+  <TooltipTrigger asChild>
+    <>
+      <Component1 />
+      <Component2 />
+    </>
+  </TooltipTrigger>
+  <TooltipContent>
+    ...
+  </TooltipContent>
+</Tooltip>
+`}
+        dark="true"
+        language="tsx" />
+
+Replace the `Fragment` with an actual node:
+<Source code={`
+<Tooltip>
+  <TooltipTrigger asChild>
+    <MyTrigger>
+      ...
+    </MyTrigger>
+  </TooltipTrigger>
+  <TooltipContent>
+    ...
+  </TooltipContent>
+</Tooltip>
+`}
+        dark="true"
+        language="tsx" />

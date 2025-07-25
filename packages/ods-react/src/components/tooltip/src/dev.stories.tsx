@@ -35,6 +35,52 @@ export const Controlled = () => {
   );
 };
 
+export const CustomId = () => {
+  const [triggerId, setTriggerId] = useState<string>();
+
+  return (
+    <>
+      <p>Custom ID + no asChild</p>
+      <Tooltip>
+        <TooltipTrigger id="my-id1">
+          Trigger
+        </TooltipTrigger>
+
+        <TooltipContent>
+          Tooltip content
+        </TooltipContent>
+      </Tooltip>
+
+      <p>Custom ID + asChild</p>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button id="my-id2">
+            Trigger
+          </Button>
+        </TooltipTrigger>
+
+        <TooltipContent>
+          Tooltip content
+        </TooltipContent>
+      </Tooltip>
+
+      <p>Dynamic ID</p>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button id={ triggerId }>
+            Trigger
+          </Button>
+        </TooltipTrigger>
+
+        <TooltipContent>
+          Tooltip content
+        </TooltipContent>
+      </Tooltip>
+      <button type="button" onClick={ () => setTriggerId(Date.now().toString()) }>Set trigger ID</button>
+    </>
+  );
+};
+
 export const CustomTrigger = () => (
   <Tooltip>
     <TooltipTrigger asChild>

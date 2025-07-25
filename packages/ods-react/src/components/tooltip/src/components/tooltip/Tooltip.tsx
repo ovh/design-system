@@ -1,6 +1,7 @@
 import { Tooltip as VendorTooltip } from '@ark-ui/react/tooltip';
 import { type FC, type JSX, type PropsWithChildren } from 'react';
 import { TOOLTIP_POSITION, type TooltipPosition } from '../../constants/tooltip-position';
+import { TooltipProvider, useTooltip } from '../../contexts/useTooltip';
 
 interface TooltipOpenChangeDetail {
   open: boolean,
@@ -30,7 +31,7 @@ interface TooltipProp {
   position?: TooltipPosition,
 }
 
-const Tooltip: FC<PropsWithChildren<TooltipProp>> = ({
+const TooltipRoot: FC<PropsWithChildren<TooltipProp>> = ({
   children,
   closeDelay = 50,
   onOpenChange,
@@ -39,12 +40,17 @@ const Tooltip: FC<PropsWithChildren<TooltipProp>> = ({
   position = TOOLTIP_POSITION.top,
   ...props
 }): JSX.Element => {
+  const { triggerId } = useTooltip();
+
   return (
     <VendorTooltip.Root
       closeDelay={ closeDelay }
       closeOnClick={ false }
       closeOnPointerDown={ false }
       closeOnScroll={ false }
+      ids={{
+        trigger: triggerId,
+      }}
       interactive={ true }
       onOpenChange={ onOpenChange }
       open={ open }
@@ -55,6 +61,14 @@ const Tooltip: FC<PropsWithChildren<TooltipProp>> = ({
       { ...props }>
       { children }
     </VendorTooltip.Root>
+  );
+};
+
+const Tooltip: FC<PropsWithChildren<TooltipProp>> = (props): JSX.Element => {
+  return (
+    <TooltipProvider>
+      <TooltipRoot { ...props } />
+    </TooltipProvider>
   );
 };
 

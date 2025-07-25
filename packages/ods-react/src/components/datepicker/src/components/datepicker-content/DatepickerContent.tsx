@@ -73,7 +73,7 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
                                     <DatePicker.TableCellTrigger asChild>
                                       <Button
                                         className={ style['datepicker-content__table__day'] }
-                                        disabled={ disabled || readOnly || isUnavailable(day) }
+                                        data-disabled={ disabled || readOnly || isUnavailable(day) }
                                         size={ BUTTON_SIZE.sm }
                                         variant={ BUTTON_VARIANT.ghost }>
                                         { day.day }

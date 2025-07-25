@@ -51,6 +51,7 @@ const DatepickerControl: FC<DatepickerControlProp> = forwardRef(({
 
       <DatePicker.Trigger asChild>
         <Button
+          aria-busy={ loading }
           className={ classNames(
             style['datepicker-control__trigger'],
             { [style['datepicker-control__trigger--invalid']]: invalid },

@@ -1,5 +1,7 @@
 import { Checkbox } from '@ark-ui/react/checkbox';
+import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import styles from './checkboxGroup.module.scss';
 
 interface CheckboxGroupProp extends ComponentPropsWithRef<'div'> {
   /**
@@ -34,6 +36,7 @@ interface CheckboxGroupProp extends ComponentPropsWithRef<'div'> {
 
 const CheckboxGroup: FC<CheckboxGroupProp> = forwardRef(({
   children,
+  className,
   defaultValue,
   disabled,
   invalid,
@@ -45,6 +48,7 @@ const CheckboxGroup: FC<CheckboxGroupProp> = forwardRef(({
 }, ref): JSX.Element => {
   return (
     <Checkbox.Group
+      className={ classNames(styles['checkbox-group'], className) }
       defaultValue={ defaultValue }
       disabled={ disabled }
       invalid={ invalid }

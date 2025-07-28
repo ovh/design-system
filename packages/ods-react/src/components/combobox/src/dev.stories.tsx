@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Combobox, ComboboxContent, ComboboxControl } from '.';
+import { Combobox, ComboboxContent, ComboboxControl, type ComboboxItem } from '.';
 import { Icon } from '../../icon/src';
 import { ICON_NAME } from '../../icon/src/constants/icon-name';
 import style from './dev.module.css';
@@ -60,23 +60,35 @@ export const CustomStyle = () => (
 );
 
 export const CustomOptionRenderer = () => {
+  type CustomData = {
+    description: string,
+  }
+
   const [selectedValue, setSelectedValue] = useState<string[]>([]);
+
+  const items = [
+    { label: 'Dog', value: 'dog', customRendererData: { description: 'Some dog description' }},
+    { label: 'Cat', value: 'cat', customRendererData: { description: 'Some cat description' }},
+    { label: 'Hamster', value: 'hamster', customRendererData: { description: 'Some hamster description' }},
+    { label: 'Parrot', value: 'parrot', customRendererData: { description: 'Some parrot description' }},
+    { label: 'Spider', value: 'spider', customRendererData: { description: 'Some spider description' }},
+    { label: 'Goldfish', value: 'goldfish', customRendererData: { description: 'Some goldfish description' }},
+  ];
 
   return (
     <Combobox
-      items={items}
       highlightResults
-      value={selectedValue}
-      onValueChange={(val) => setSelectedValue(val.value)}
-      customOptionRenderer={(item) => (
-        <div className={style['custom-option']}>
-          <div className={style['custom-option__content']}>
-            <div className={style['custom-option__label']}>
-              <Icon name={ICON_NAME.circleInfo} /> {item.label}
-            </div>
-            <div className={style['custom-option__description']}>
-              <Icon name={ICON_NAME.arrowRight} /> Description for {item.label}
-            </div>
+      items={ items }
+      onValueChange={ (val) => setSelectedValue(val.value) }
+      value={ selectedValue }
+      customOptionRenderer={ (item: ComboboxItem<CustomData>) => (
+        <div className={ style['custom-option'] }>
+          <Icon name={ ICON_NAME.circleInfo } />
+          <div className={ style['custom-option__label'] }>
+            { item.label }
+          </div>
+          <div className={ style['custom-option__description'] }>
+            <Icon name={ ICON_NAME.arrowRight } /> { item.customRendererData?.description }
           </div>
         </div>
       )}

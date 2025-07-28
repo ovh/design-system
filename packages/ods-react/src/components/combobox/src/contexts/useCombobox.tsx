@@ -8,7 +8,10 @@ interface ComboboxValueChangeDetails {
   value: string[];
 }
 
-type ComboboxOptionItem = {
+type CustomData = any; // eslint-disable-line @typescript-eslint/no-explicit-any
+
+type ComboboxOptionItem<T extends CustomData = CustomData> = {
+  customRendererData?: T,
   disabled?: boolean;
   group?: string;
   isNewElement?: boolean;
@@ -16,13 +19,14 @@ type ComboboxOptionItem = {
   value: string;
 };
 
-type ComboboxGroupItem = {
+type ComboboxGroupItem<T extends CustomData = CustomData> = {
+  customRendererData?: T,
   disabled?: boolean;
   label: string;
   options: ComboboxOptionItem[];
 };
 
-type ComboboxItem = ComboboxGroupItem | ComboboxOptionItem;
+type ComboboxItem<T extends CustomData = CustomData> = ComboboxGroupItem<T> | ComboboxOptionItem<T>;
 
 type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
   /**

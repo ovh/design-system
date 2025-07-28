@@ -339,21 +339,21 @@ export const CustomOptions: Story = {
     };
 
     const items = [
-      { label: 'Apple', value: 'apple', customRendererData: { color: 'red', info: 'Fruit' } as CustomData },
-      { label: 'Banana', value: 'banana', customRendererData: { color: 'yellow', info: 'Fruit' } as CustomData },
-      { label: 'Carrot', value: 'carrot', customRendererData: { color: 'orange', info: 'Vegetable' } as CustomData },
-      { label: 'Broccoli', value: 'broccoli', customRendererData: { color: 'green', info: 'Vegetable' } as CustomData },
-      { label: 'Blueberry', value: 'blueberry', customRendererData: { color: 'blue', info: 'Fruit' } as CustomData },
+      { label: 'Apple', value: 'apple', customRendererData: { color: 'red', info: 'Fruit' }},
+      { label: 'Banana', value: 'banana', customRendererData: { color: 'yellow', info: 'Fruit' }},
+      { label: 'Carrot', value: 'carrot', customRendererData: { color: 'orange', info: 'Vegetable' }},
+      { label: 'Broccoli', value: 'broccoli', customRendererData: { color: 'green', info: 'Vegetable' }},
+      { label: 'Blueberry', value: 'blueberry', customRendererData: { color: 'blue', info: 'Fruit' }},
     ];
-    const customOptionRenderer = (item: ComboboxItem) => {
-      const customData = 'customRendererData' in item ? item.customRendererData as CustomData : undefined;
 
+    function customOptionRenderer(item: ComboboxItem<CustomData>) {
       return (
-        <span style={{ color: customData?.color, fontWeight: 'bold' }}>
-          { item.label } { customData?.info && <span style={{ fontWeight: 'normal', fontSize: 12, color: '#888' }}>({ customData.info })</span> }
+        <span style={{ color: item.customRendererData?.color, fontWeight: 'bold' }}>
+          { item.label } { item.customRendererData?.info && <span style={{ fontWeight: 'normal', fontSize: 12, color: '#888' }}>({ item.customRendererData.info })</span> }
         </span>
       );
-    };
+    }
+
     return (
       <Combobox
         customOptionRenderer={ customOptionRenderer }

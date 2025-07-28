@@ -37,14 +37,14 @@ function escapeRegExp(string: string): string {
 }
 
 function filterItems({
-  items,
-  inputValue,
   allowCustomValue,
-  hasExactMatch,
-  isValueAlreadySelected,
   customOptionRenderer,
-  value,
+  hasExactMatch,
+  inputValue,
+  isValueAlreadySelected,
+  items,
   multiple,
+  value,
 }: FilterItemsProps): ComboboxItem[] {
   if (!inputValue && !value?.length) {
     return items;

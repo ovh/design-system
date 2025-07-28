@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { Select, SelectContent, SelectControl, type SelectControlProp, type SelectProp } from '../../../../ods-react/src/components/select/src';
+import { Select, SelectContent, SelectControl, type SelectControlProp, type SelectItem, type SelectProp } from '../../../../ods-react/src/components/select/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
@@ -120,99 +120,110 @@ export const CustomRenderer: Story = {
       source: { ...staticSourceRenderConfig() },
     },
   },
-  render: ({}) => (
-    <Select
-      items={[
-        {
-          customRendererData: {
-            flag: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg',
-          },
-          label: 'EU providers',
-          options: [{
-            customRendererData: {
-              description: 'OVH, legally OVH Groupe SA, is a French cloud computing company which offers VPS, dedicated servers and other web services. As of 2016 OVH owned the world\'s largest data center in surface area. As of 2019, it was the largest hosting provider in Europe, and the third largest in the world based on physical servers.',
-              logo: 'https://static-00.iconduck.com/assets.00/ovh-icon-2048x2048-l4c3izvg.png',
-            },
-            label: 'OVH Cloud',
-            value:'ovh',
-          }],
+  render: ({}) => {
+    type CustomData = {
+      description?: string,
+      flag?: string,
+      logo?: string,
+    }
+
+    const items: SelectItem<CustomData>[] = [
+      {
+        customRendererData: {
+          flag: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg',
         },
-        {
+        label: 'EU providers',
+        options: [{
           customRendererData: {
-            flag: 'https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg',
+            description: 'OVH, legally OVH Groupe SA, is a French cloud computing company which offers VPS, dedicated servers and other web services. As of 2016 OVH owned the world\'s largest data center in surface area. As of 2019, it was the largest hosting provider in Europe, and the third largest in the world based on physical servers.',
+            logo: 'https://ovh.github.io/manager/ovhcloud-logo.webp',
           },
-          label: 'US providers',
-          options: [{
-            customRendererData: {
-              description: 'Amazon Web Services, Inc. is a subsidiary of Amazon that provides on-demand cloud computing platforms and APIs to individuals, companies, and governments, on a metered, pay-as-you-go basis. Clients will often use this in combination with autoscaling.',
-              flag: 'https://en.wikipedia.org/wiki/Flag_of_the_United_States#/media/File:Flag_of_the_United_States.svg',
-              logo: 'https://cdn.icon-icons.com/icons2/2407/PNG/512/aws_icon_146074.png',
-            },
-            label: 'Amazon Web Services',
-            value:'aws',
-          }, {
-            customRendererData: {
-              description: 'Microsoft Azure, often referred to as just Azure, is a cloud computing platform developed by Microsoft. It offers management, access and development of applications and services through its global infrastructure.',
-              flag: 'https://en.wikipedia.org/wiki/Flag_of_the_United_States#/media/File:Flag_of_the_United_States.svg',
-              logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/2048px-Microsoft_Azure.svg.png',
-            },
-            label: 'Microsoft Azure',
-            value:'azure',
-          }, {
-            customRendererData: {
-              description: 'Google Cloud Platform, offered by Google, is a suite of cloud computing services that provides a series of modular cloud services including computing, data storage, data analytics, and machine learning, alongside a set of management tools.',
-              flag: 'https://en.wikipedia.org/wiki/Flag_of_the_United_States#/media/File:Flag_of_the_United_States.svg',
-              logo: 'https://static-00.iconduck.com/assets.00/google-cloud-icon-2048x1646-7admxejz.png',
-            },
-            label: 'Google Cloud Platform',
-            value:'gcp',
-          }],
+          label: 'OVH Cloud',
+          value:'ovh',
+        }],
+      },
+      {
+        customRendererData: {
+          flag: 'https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg',
         },
-      ]}
-      multiple>
-      <SelectControl customItemRenderer={ ({ selectedItems }) => (
-        <span style={{ display: 'flex', flexFlow: 'row', gap: '8px', flexWrap: 'wrap' }}>
+        label: 'US providers',
+        options: [{
+          customRendererData: {
+            description: 'Amazon Web Services, Inc. is a subsidiary of Amazon that provides on-demand cloud computing platforms and APIs to individuals, companies, and governments, on a metered, pay-as-you-go basis. Clients will often use this in combination with autoscaling.',
+            logo: 'https://cdn.icon-icons.com/icons2/2407/PNG/512/aws_icon_146074.png',
+          },
+          label: 'Amazon Web Services',
+          value:'aws',
+        }, {
+          customRendererData: {
+            description: 'Microsoft Azure, often referred to as just Azure, is a cloud computing platform developed by Microsoft. It offers management, access and development of applications and services through its global infrastructure.',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/2048px-Microsoft_Azure.svg.png',
+          },
+          label: 'Microsoft Azure',
+          value:'azure',
+        }, {
+          customRendererData: {
+            description: 'Google Cloud Platform, offered by Google, is a suite of cloud computing services that provides a series of modular cloud services including computing, data storage, data analytics, and machine learning, alongside a set of management tools.',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Google-cloud-platform.svg',
+          },
+          label: 'Google Cloud Platform',
+          value:'gcp',
+        }],
+      },
+    ];
+
+    return (
+      <Select
+        items={ items }
+        multiple>
+        <SelectControl customItemRenderer={ ({ selectedItems }) => (
+          <span style={{ display: 'flex', flexFlow: 'row', gap: '8px', flexWrap: 'wrap' }}>
           {
             selectedItems.map((item, idx) => (
-              <span style={{ display: 'flex', flexFlow: 'row', gap: '4px', alignItems: 'center' }}
-                    key={ item.value }>
-                <img alt="logo"
-                     height={ 15 }
-                     src={ item.customRendererData?.logo }
-                     width={ 15 } />
+              <span
+                style={{ display: 'flex', flexFlow: 'row', gap: '4px', alignItems: 'center' }}
+                key={ item.value }>
+                <img
+                  alt={ item.label }
+                  height={ 15 }
+                  src={ item.customRendererData?.logo }
+                  width={ 15 } />
 
                 <span>{ item.label }{ idx < selectedItems.length - 1 && ', '}</span>
               </span>
             ))
           }
         </span>
-      )} />
-
-      <SelectContent
-        customGroupRenderer={ ({ customData, label }) => (
-          <div style={{ display: 'flex', flexFlow: 'row', columnGap: '8px', alignItems: 'center' }}>
-            <img alt="flag"
-                 height={ 20 }
-                 src={ customData?.flag }
-                 width={ 30 } />
-
-            <span>{ label }</span>
-          </div>
-        )}
-        customOptionRenderer={ ({ customData, label }) => (
-          <div style={{ display: 'flex', flexFlow: 'row', columnGap: '8px', alignItems: 'center', padding: '8px 0' }}>
-            <img alt="logo"
-                 height={ 50 }
-                 src={ customData?.logo }
-                 width={ 50 } />
-            <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
-              <span style={{ fontWeight: 'bold' }}>{ label }</span>
-              <span>{ customData?.description }</span>
-            </div>
-          </div>
         )} />
-    </Select>
-  ),
+
+        <SelectContent
+          customGroupRenderer={ ({ customData, label }) => (
+            <div style={{ display: 'flex', flexFlow: 'row', columnGap: '8px', alignItems: 'center' }}>
+              <img
+                alt="flag"
+                height={ 20 }
+                src={ customData?.flag }
+                width={ 30 } />
+
+              <span>{ label }</span>
+            </div>
+          )}
+          customOptionRenderer={ ({ customData, label }) => (
+            <div style={{ display: 'flex', flexFlow: 'row', columnGap: '8px', alignItems: 'center', padding: '8px 0' }}>
+              <img
+                alt={ label }
+                height={ 50 }
+                src={ customData?.logo }
+                width={ 50 } />
+              <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
+                <span style={{ fontWeight: 'bold' }}>{ label }</span>
+                <span>{ customData?.description }</span>
+              </div>
+            </div>
+          )} />
+      </Select>
+    );
+  },
 };
 
 export const Default: Story = {

@@ -1,22 +1,23 @@
 import { type JSX, type ReactNode, createContext, useContext } from 'react';
 
+type CustomData = any; // eslint-disable-line @typescript-eslint/no-explicit-any
 type SelectMultipleMode = boolean | 'merge'
 
-type SelectOptionItem = {
-  customRendererData?: Record<string, any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+type SelectOptionItem<T extends CustomData = CustomData> = {
+  customRendererData?: T,
   disabled?: boolean,
   label: string,
   value: string,
 }
 
-type SelectGroupItem = {
-  customRendererData?: Record<string, any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+type SelectGroupItem<T extends CustomData = CustomData> = {
+  customRendererData?: T,
   disabled?: boolean,
   label: string,
-  options: SelectOptionItem[],
+  options: SelectOptionItem<T>[],
 }
 
-type SelectItem = SelectGroupItem | SelectOptionItem;
+type SelectItem<T extends CustomData = CustomData> = SelectGroupItem<T> | SelectOptionItem<T>;
 
 type SelectContextType = {
   items: SelectItem[],
@@ -24,19 +25,19 @@ type SelectContextType = {
   readOnly?: boolean,
 }
 
-type SelectCustomGroupRendererArg = {
-  customData?: Record<string, any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+type SelectCustomGroupRendererArg<T extends CustomData = CustomData> = {
+  customData?: T,
   label: string,
 }
 
-type SelectCustomItemRendererArg = {
-  selectedItems: SelectOptionItem[],
+type SelectCustomItemRendererArg<T extends CustomData = CustomData> = {
+  selectedItems: SelectOptionItem<T>[],
   text: string,
   values: string[],
 }
 
-type SelectCustomOptionRendererArg = {
-  customData?: Record<string, any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+type SelectCustomOptionRendererArg<T extends CustomData = CustomData> = {
+  customData?: T,
   label: string,
 }
 

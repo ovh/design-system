@@ -21,11 +21,6 @@
   width: 100%;
 }
 
-.custom-option__content {
-  flex: 1;
-  min-width: 0;
-}
-
 .custom-option__label {
   color: var(--ods-color-text);
   font-weight: 500;

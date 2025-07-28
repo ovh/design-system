@@ -1,6 +1,6 @@
-import { FormField, FormFieldLabel } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { Toggle, type ToggleProp } from '../../../../ods-react/src/components/toggle/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
@@ -91,32 +91,16 @@ export const WithLabels: Story = {
   ),
 };
 
-export const AccessibilityFormFieldLabel: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <FormField>
-        <FormFieldLabel>
-          Dark mode
-        </FormFieldLabel>
-
-        <Toggle />
-
-      </FormField>
-    </>
-  ),
-};
-
 export const AccessibilityLabel: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <>
-      <label id="dark-mode-label">
-        Enable dark mode
-      </label>
+    <FormField>
+      <FormFieldLabel>
+        Dark mode
+      </FormFieldLabel>
 
-      <Toggle aria-labelledby="dark-mode-label" />
-    </>
+      <Toggle />
+    </FormField>
   ),
 };
 

@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { ICON_NAME, Icon } from '../../icon/src';
-import { Select, SelectContent, SelectControl, type SelectCustomGroupRendererArg, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg, type SelectOptionItem } from '.';
+import { Select, SelectContent, SelectControl, type SelectCustomGroupRendererArg, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg, type SelectItem, type SelectOptionItem } from '.';
 import { TEXT_PRESET, Text } from '../../text/src';
 import style from './dev.module.css';
 
@@ -37,7 +37,7 @@ export const Controlled = () => {
     <Select
       items={[
         { label: 'Dog', value:'dog' },
-        { label: 'Cat', value:'cat', customRendererData: () => 'p' },
+        { label: 'Cat', value:'cat' },
         { label: 'Hamster', value:'hamster' },
         { label: 'Parrot', value:'parrot' },
         { label: 'Spider', value:'spider' },
@@ -91,6 +91,10 @@ export const CustomCSS = () => (
 );
 
 export const CustomRenderer = () => {
+  type CustomAnimalData = {
+    specie: string,
+  };
+
   function renderGroup({ customData, label }: SelectCustomGroupRendererArg) {
     return (
       <span>
@@ -107,7 +111,7 @@ export const CustomRenderer = () => {
     );
   }
 
-  function renderOption({ customData, label }: SelectCustomOptionRendererArg) {
+  function renderOption({ customData, label }: SelectCustomOptionRendererArg<CustomAnimalData>) {
     return (
       <span>
         { label }{ !!customData && ` (${customData.specie})` }
@@ -127,7 +131,7 @@ export const CustomRenderer = () => {
           { label: 'Parrot', value: 'parrot' },
           { label: 'Spider', value: 'spider' },
           { label: 'Goldfish', value: 'goldfish' },
-        ]}>
+        ] as SelectItem<CustomAnimalData>[] }>
         <SelectControl customItemRenderer={ renderItem } />
 
         <SelectContent customOptionRenderer={ renderOption } />

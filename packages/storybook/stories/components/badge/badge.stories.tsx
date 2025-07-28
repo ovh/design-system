@@ -112,9 +112,9 @@ export const AccessibilityWithTooltip: Story = {
   render: ({}) => (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Badge color={BADGE_COLOR.promotion}
+        <Badge color={ BADGE_COLOR.promotion }
                aria-labelledby="tooltip-a11y"
-               tabIndex={0}>
+               tabIndex={ 0 }>
           <Icon name={ ICON_NAME.tag } />
         </Badge>
       </TooltipTrigger>

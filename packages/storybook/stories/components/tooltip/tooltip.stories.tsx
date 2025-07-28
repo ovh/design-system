@@ -31,7 +31,9 @@ export const Demo: StoryObj = {
       openDelay={ arg.openDelay }
       position={ arg.position }>
       <TooltipTrigger asChild>
-        <Icon name={ ICON_NAME.circleQuestion } />
+        <Icon
+          name={ ICON_NAME.circleQuestion }
+          style={{ fontSize: '24px' }} />
       </TooltipTrigger>
 
       <TooltipContent withArrow={ arg.withArrow }>
@@ -103,7 +105,9 @@ export const Controlled: Story = {
 
         <Tooltip open={ isOpen }>
           <TooltipTrigger asChild>
-            <Icon name={ ICON_NAME.circleQuestion } />
+            <Icon
+              name={ ICON_NAME.circleQuestion }
+              style={{ fontSize: '24px' }} />
           </TooltipTrigger>
 
           <TooltipContent withArrow>
@@ -120,7 +124,9 @@ export const CustomTrigger: Story = {
   render: ({}) => (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Icon name={ ICON_NAME.circleQuestion } />
+        <Icon
+          name={ ICON_NAME.circleQuestion }
+          style={{ fontSize: '24px' }} />
       </TooltipTrigger>
 
       <TooltipContent>
@@ -245,7 +251,9 @@ export const Overview: Story = {
   render: ({}) => (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Icon name={ ICON_NAME.circleQuestion } />
+        <Icon
+          name={ ICON_NAME.circleQuestion }
+          style={{ fontSize: '24px' }} />
       </TooltipTrigger>
 
       <TooltipContent>
@@ -260,7 +268,10 @@ export const AccessibilityTooltip: Story = {
   render: ({}) => (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Icon aria-hidden name={ ICON_NAME.circleInfo } />
+        <Icon
+          aria-hidden
+          name={ ICON_NAME.circleInfo }
+          style={{ fontSize: '24px' }} />
       </TooltipTrigger>
 
       <TooltipContent>

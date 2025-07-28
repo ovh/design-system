@@ -115,27 +115,31 @@ To ensure accessibility, it is important to:
 - Announce the removal action so screen reader users understand the functionality
 
 <Heading label="Structuring groups of Tags with lists" level={ 3 } />
+
 When multiple **Tags** are displayed together (e.g., a collection of selected filters or labels), they should be wrapped in a an unordered list of items (`<ul>` and `<li>`) to ensure proper announcement by screen readers.
 
 <Canvas of={ TagStories.inList } sourceState='shown' />
 
-  <Icon aria-hidden="true"
-        name={ ICON_NAME.circleCheck }
-        style={{ color: 'var(--ods-color-success-500)' }} /> This allows screen readers to announce "List, 3 items" making it clear that these **Tags** belong to a structured set.
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> This allows screen readers to announce "List, 3 items" making it clear that these **Tags** belong to a structured set.
 
 <Heading label="Alternative approach" level={ 3 } />
+
 When modifying the HTML structure is not possible, `role="list"` and `role="listitem"` can be used to provide equivalent semantics.
 
 <Canvas of={ TagStories.withAriaRoles } sourceState='shown' />
 
-  <Icon aria-hidden="true"
-        name={ ICON_NAME.circleCheck }
-        style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers still recognize the **Tags** as a structured list, even without native `<ul>` and `<li>` elements.
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers still recognize the **Tags** as a structured list, even without native `<ul>` and `<li>` elements.
 
 <Heading label="Announcing the delete action with aria-label" level={ 3 } />
+
 Since the **Tag** is removable, it should provide clear feedback to assistive technologies.
 
-  <Canvas of={ TagStories.withAriaLabel } sourceState='shown' />
-  <Icon aria-hidden="true"
-        name={ ICON_NAME.circleCheck }
-        style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that users know the **Tag** can be removed. Screen readers will announce "Remove my tag, button".
+<Canvas of={ TagStories.withAriaLabel } sourceState='shown' />
+
+<Icon aria-hidden="true"
+      name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that users know the **Tag** can be removed. Screen readers will announce "Remove my tag, button".

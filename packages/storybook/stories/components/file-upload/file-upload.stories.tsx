@@ -1,3 +1,4 @@
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
 import { FILE_UPLOAD_I18N, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadProp, type FileUploadRejectDetail } from '../../../../ods-react/src/components/file-upload/src';
@@ -413,6 +414,38 @@ export const Upload: Story = {
           }
         </FileUploadList>
       </FileUpload>
+    );
+  },
+};
+
+export const InFormField: Story = {
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+        <FormField>
+          <FormFieldLabel>
+            Files:
+          </FormFieldLabel>
+
+          <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+            <FileUploadList>
+              {
+                files.map((file: File, idx) => (
+                  <FileUploadItem
+                    file={ file }
+                    key={ idx } />
+                ))
+              }
+            </FileUploadList>
+          </FileUpload>
+        </FormField>
     );
   },
 };

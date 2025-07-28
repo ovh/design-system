@@ -341,3 +341,48 @@ export const States = () => (
     </FileUpload>
   </>
 );
+
+export const Ids = () => {
+  const [files1, setFiles1] = useState<File[]>([]);
+  const [files2, setFiles2] = useState<File[]>([]);
+  const [files3, setFiles3] = useState<File[]>([]);
+
+  return (
+    <>
+      <h3>Explicit FormField ID</h3>
+      <FormField id="formfield-with-id">
+        <FormFieldLabel>Files with explicit ID</FormFieldLabel>
+        <FileUpload onFileAccept={ ({ files }) => setFiles1(files) }>
+          <FileUploadList>
+            {files1.map((file: File, idx) => (
+              <FileUploadItem file={ file } key={ idx } />
+            ))}
+          </FileUploadList>
+        </FileUpload>
+      </FormField>
+
+      <h3>No formfield ID</h3>
+      <FormField>
+        <FormFieldLabel>Files with auto-generated ID</FormFieldLabel>
+        <FileUpload onFileAccept={ ({ files }) => setFiles2(files) }>
+          <FileUploadList>
+            {files2.map((file: File, idx) => (
+              <FileUploadItem file={ file } key={ idx } />
+            ))}
+          </FileUploadList>
+        </FileUpload>
+      </FormField>
+
+      <h3>Native label</h3>
+      <label htmlFor="native-file-upload">Files with native label</label>
+      <br />
+      <FileUpload id="native-file-upload" onFileAccept={ ({ files }) => setFiles3(files) }>
+        <FileUploadList>
+          {files3.map((file: File, idx) => (
+            <FileUploadItem file={ file } key={ idx } />
+          ))}
+        </FileUploadList>
+      </FileUpload>
+    </>
+  );
+};

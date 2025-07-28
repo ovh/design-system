@@ -432,7 +432,9 @@ export const OverlayElements: Story = {
 
           <Tooltip>
             <TooltipTrigger asChild>
-              <Icon name={ ICON_NAME.circleQuestion } />
+              <Icon
+                name={ ICON_NAME.circleQuestion }
+                style={{ fontSize: '24px' }} />
             </TooltipTrigger>
 
             <TooltipContent createPortal={ false }>

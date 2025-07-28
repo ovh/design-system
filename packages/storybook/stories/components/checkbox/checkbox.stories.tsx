@@ -80,6 +80,7 @@ export const Disabled: Story = {
 };
 
 export const InFormField: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -165,6 +166,7 @@ export const Overview: Story = {
 };
 
 export const States: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   tags: ['!dev'],
   render: ({}) => (
     <>

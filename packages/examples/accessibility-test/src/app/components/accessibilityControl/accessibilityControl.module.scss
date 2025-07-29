@@ -20,19 +20,19 @@
     }
 
     &__passes {
-      color: var(--ods-color-success-500);
+      color: var(--ods-color-success-700);
     }
 
     &__violations {
-      color: var(--ods-color-critical-500);
+      color: var(--ods-color-critical-700);
     }
 
     &__incompletes {
-      color: var(--ods-color-warning-500);
+      color: var(--ods-color-warning-700);
     }
 
     &__inapplicables {
-      color: var(--ods-color-information-500);
+      color: var(--ods-color-information-700);
     }
   }
 }

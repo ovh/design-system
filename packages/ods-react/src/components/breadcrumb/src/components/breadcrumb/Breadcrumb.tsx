@@ -75,7 +75,7 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
         className={ classNames(style['breadcrumb'], className) }
         id={ computedId }
         ref={ ref }
-        role="navigation, list"
+        role="navigation"
         { ...props }>
         <ol className={ style['breadcrumb__list'] }>
           { clones }

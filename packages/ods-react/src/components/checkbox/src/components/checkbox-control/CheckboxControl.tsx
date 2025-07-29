@@ -19,7 +19,8 @@ const CheckboxControl: FC<CheckboxControlProp> = forwardRef(({
     if (inputRef.current) {
       inputRef.current.indeterminate = indeterminate;
     }
-  }), [indeterminate];
+  }, [indeterminate]);
+
   return (
     <Checkbox.Control
       className={ classNames(style['checkbox-control'], className) }
@@ -37,7 +38,9 @@ const CheckboxControl: FC<CheckboxControlProp> = forwardRef(({
           name={ ICON_NAME.minus } />
       </Checkbox.Indicator>
 
-      <Checkbox.HiddenInput aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy } ref={inputRef} />
+      <Checkbox.HiddenInput
+        aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
+        ref={ inputRef } />
     </Checkbox.Control>
   );
 });

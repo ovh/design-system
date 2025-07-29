@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useMemo } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useId, useMemo } from 'react';
 import { Select, SelectContent, SelectControl, type SelectOptionItem, type SelectValueChangeDetail } from '../../../../select/src';
 import { type PhoneNumberCountryIsoCode } from '../../constants/phone-number-country-iso-code';
 import { usePhoneNumber } from '../../contexts/usePhoneNumber';
@@ -15,6 +15,7 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
   className,
   ...props
 }, ref): JSX.Element => {
+  const customId = useId();
   const {
     countries,
     disabled,
@@ -85,7 +86,8 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
               aria-label={ values[0] }
               disabled={ disabled }
               isoCode={ values[0] } />
-          )} />
+          )}
+        id={ customId } />
 
       <SelectContent customOptionRenderer={
         ({ customData, label }) => (

@@ -41,6 +41,7 @@ const InputActions: FC<InputActionsProps> = ({
         <Spinner
           className={ style['input-actions__loading'] }
           color={ disabled ? SPINNER_COLOR.neutral : SPINNER_COLOR.primary }
+          role="none"
           size={ SPINNER_SIZE.xs } />
       )}
       { hasClearButton && (

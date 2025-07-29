@@ -1,5 +1,5 @@
 import {
-  BUTTON_COLOR, BUTTON_VARIANT, DIVIDER_COLOR, DRAWER_POSITION, ICON_NAME, TEXT_PRESET,
+  BUTTON_COLOR, BUTTON_VARIANT, CARD_COLOR, DIVIDER_COLOR, DRAWER_POSITION, ICON_NAME, MESSAGE_COLOR, TAG_COLOR, TEXT_PRESET,
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
   Badge,
   Breadcrumb, BreadcrumbItem, BreadcrumbLink,
@@ -78,39 +78,41 @@ function App(): ReactElement {
           <Badge>
             <Icon
               aria-label="Promotion"
-              name={ ICON_NAME.tag } />
+              name={ ICON_NAME.tag }
+              role="img" />
           </Badge>
         </section>
 
-        <section>
-          <h1>Breadcrumb</h1>
+        {/*Link gradient issue*/}
+        {/*<section>*/}
+        {/*  <h1>Breadcrumb</h1>*/}
 
-          <Breadcrumb aria-label="Breadcrumb">
-            <BreadcrumbItem>
-              <BreadcrumbLink aria-label="Home" href="#">
-                <Icon aria-hidden='true' name={ ICON_NAME.home } />
-              </BreadcrumbLink>
-            </BreadcrumbItem>
+        {/*  <Breadcrumb aria-label="Breadcrumb">*/}
+        {/*    <BreadcrumbItem>*/}
+        {/*      <BreadcrumbLink aria-label="Home" href="#">*/}
+        {/*        <Icon aria-hidden='true' name={ ICON_NAME.home } />*/}
+        {/*      </BreadcrumbLink>*/}
+        {/*    </BreadcrumbItem>*/}
 
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">
-                Category
-              </BreadcrumbLink>
-            </BreadcrumbItem>
+        {/*    <BreadcrumbItem>*/}
+        {/*      <BreadcrumbLink href="#">*/}
+        {/*        Category*/}
+        {/*      </BreadcrumbLink>*/}
+        {/*    </BreadcrumbItem>*/}
 
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">
-                Subcategory
-              </BreadcrumbLink>
-            </BreadcrumbItem>
+        {/*    <BreadcrumbItem>*/}
+        {/*      <BreadcrumbLink href="#">*/}
+        {/*        Subcategory*/}
+        {/*      </BreadcrumbLink>*/}
+        {/*    </BreadcrumbItem>*/}
 
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">
-                Current page
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-        </section>
+        {/*    <BreadcrumbItem>*/}
+        {/*      <BreadcrumbLink href="#">*/}
+        {/*        Current page*/}
+        {/*      </BreadcrumbLink>*/}
+        {/*    </BreadcrumbItem>*/}
+        {/*  </Breadcrumb>*/}
+        {/*</section>*/}
 
         <section>
           <h1>Button</h1>
@@ -127,6 +129,27 @@ function App(): ReactElement {
             <Icon name={ICON_NAME.filter} />
           </Button>
           <span id="filter-btn">Filter your search results</span>
+          <br /><br />
+          <Button color={ BUTTON_COLOR.critical }>Critical</Button>
+          <Button color={ BUTTON_COLOR.information }>Information</Button>
+          <Button color={ BUTTON_COLOR.neutral }>Neutral</Button>
+          <Button color={ BUTTON_COLOR.primary }>Primary</Button>
+          <Button color={ BUTTON_COLOR.success }>Success</Button>
+          <Button color={ BUTTON_COLOR.warning }>Warning</Button>
+          <br /><br />
+          <Button color={ BUTTON_COLOR.critical } variant={ BUTTON_VARIANT.ghost }>Critical</Button>
+          <Button color={ BUTTON_COLOR.information } variant={ BUTTON_VARIANT.ghost }>Information</Button>
+          <Button color={ BUTTON_COLOR.neutral } variant={ BUTTON_VARIANT.ghost }>Neutral</Button>
+          <Button color={ BUTTON_COLOR.primary } variant={ BUTTON_VARIANT.ghost }>Primary</Button>
+          <Button color={ BUTTON_COLOR.success } variant={ BUTTON_VARIANT.ghost }>Success</Button>
+          <Button color={ BUTTON_COLOR.warning } variant={ BUTTON_VARIANT.ghost }>Warning</Button>
+          <br /><br />
+          <Button color={ BUTTON_COLOR.critical } variant={ BUTTON_VARIANT.outline }>Critical</Button>
+          <Button color={ BUTTON_COLOR.information } variant={ BUTTON_VARIANT.outline }>Information</Button>
+          <Button color={ BUTTON_COLOR.neutral } variant={ BUTTON_VARIANT.outline }>Neutral</Button>
+          <Button color={ BUTTON_COLOR.primary } variant={ BUTTON_VARIANT.outline }>Primary</Button>
+          <Button color={ BUTTON_COLOR.success } variant={ BUTTON_VARIANT.outline }>Success</Button>
+          <Button color={ BUTTON_COLOR.warning } variant={ BUTTON_VARIANT.outline }>Warning</Button>
         </section>
 
         <section>
@@ -142,19 +165,44 @@ function App(): ReactElement {
               Interdum et malesuada fames ac ante ipsum primis in faucibus.
             </Card>
           </div>
+
+          <Card color={ CARD_COLOR.critical }>
+            <p>Critical</p>
+          </Card>
+
+          <Card color={ CARD_COLOR.information }>
+            <p>Information</p>
+          </Card>
+
+          <Card color={ CARD_COLOR.neutral }>
+            <p>Neutral</p>
+          </Card>
+
+          <Card color={ CARD_COLOR.primary }>
+            <p>Primary</p>
+          </Card>
+
+          <Card color={ CARD_COLOR.success }>
+            <p>Success</p>
+          </Card>
+
+          <Card color={ CARD_COLOR.warning }>
+            <p>Warning</p>
+          </Card>
         </section>
 
-        <section>
-          <h1>Checkbox</h1>
+        {/* KO: aria-hidden added by Ark on CheckboxControl */}
+        {/*<section>*/}
+        {/*  <h1>Checkbox</h1>*/}
 
-          <Checkbox>
-            <CheckboxControl />
+        {/*  <Checkbox>*/}
+        {/*    <CheckboxControl />*/}
 
-            <CheckboxLabel>
-              Checkbox
-            </CheckboxLabel>
-          </Checkbox>
-        </section>
+        {/*    <CheckboxLabel>*/}
+        {/*      I agree to the terms*/}
+        {/*    </CheckboxLabel>*/}
+        {/*  </Checkbox>*/}
+        {/*</section>*/}
 
         <section>
           <h1>Clipboard</h1>
@@ -216,21 +264,22 @@ function App(): ReactElement {
           </FormField>
         </section>
 
-        <section>
-          <h1>Datepicker</h1>
+        {/* ID issue */}
+        {/*<section>*/}
+        {/*  <h1>Datepicker</h1>*/}
 
-          <FormField>
-            <FormFieldLabel>
-              Select a date:
-            </FormFieldLabel>
+        {/*  <FormField>*/}
+        {/*    <FormFieldLabel>*/}
+        {/*      Select a date:*/}
+        {/*    </FormFieldLabel>*/}
 
-            <Datepicker>
-              <DatepickerControl />
+        {/*    <Datepicker>*/}
+        {/*      <DatepickerControl />*/}
 
-              <DatepickerContent />
-            </Datepicker>
-          </FormField>
-        </section>
+        {/*      <DatepickerContent />*/}
+        {/*    </Datepicker>*/}
+        {/*  </FormField>*/}
+        {/*</section>*/}
 
         <section>
           <h1>Divider</h1>
@@ -238,46 +287,64 @@ function App(): ReactElement {
           <Divider color={ DIVIDER_COLOR.primary } />
         </section>
 
-        <section>
-          <h1>Drawer</h1>
+        {/* ID issue */}
+        {/*<section>*/}
+        {/*  <h1>Drawer</h1>*/}
 
-          <Drawer>
-            <DrawerTrigger>
-              Trigger Drawer
-            </DrawerTrigger>
+        {/*  <Drawer>*/}
+        {/*    <DrawerTrigger id="drawer-id">*/}
+        {/*      Trigger Drawer*/}
+        {/*    </DrawerTrigger>*/}
 
-            <DrawerContent position={ DRAWER_POSITION.left}>
-              <DrawerBody>
-                My drawer content
-              </DrawerBody>
-            </DrawerContent>
-          </Drawer>
-        </section>
+        {/*    <DrawerContent*/}
+        {/*      aria-labelledby="drawer-id"*/}
+        {/*      position={ DRAWER_POSITION.left}>*/}
+        {/*      <DrawerBody>*/}
+        {/*        My drawer content*/}
+        {/*      </DrawerBody>*/}
+        {/*    </DrawerContent>*/}
+        {/*  </Drawer>*/}
 
-        <section>
-          <h1>File Upload</h1>
+        {/*  <Drawer>*/}
+        {/*    <DrawerTrigger>*/}
+        {/*      Trigger Drawer*/}
+        {/*    </DrawerTrigger>*/}
 
-          <FormField>
-            <FormFieldLabel>Select file(s):</FormFieldLabel>
+        {/*    <DrawerContent*/}
+        {/*      aria-label="Some drawer label"*/}
+        {/*      position={ DRAWER_POSITION.right}>*/}
+        {/*      <DrawerBody>*/}
+        {/*        My drawer content*/}
+        {/*      </DrawerBody>*/}
+        {/*    </DrawerContent>*/}
+        {/*  </Drawer>*/}
+        {/*</section>*/}
 
-            <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
-              <FileUploadList>
-                {
-                  files.map((file: File, idx) => (
-                    <FileUploadItem
-                      file={ file }
-                      key={ idx } />
-                  ))
-                }
-              </FileUploadList>
-            </FileUpload>
-          </FormField>
-        </section>
+        {/* ID issue */}
+        {/*<section>*/}
+        {/*  <h1>File Upload</h1>*/}
+
+        {/*  <FormField>*/}
+        {/*    <FormFieldLabel>Select file(s):</FormFieldLabel>*/}
+
+        {/*    <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>*/}
+        {/*      <FileUploadList>*/}
+        {/*        {*/}
+        {/*          files.map((file: File, idx) => (*/}
+        {/*            <FileUploadItem*/}
+        {/*              file={ file }*/}
+        {/*              key={ idx } />*/}
+        {/*          ))*/}
+        {/*        }*/}
+        {/*      </FileUploadList>*/}
+        {/*    </FileUpload>*/}
+        {/*  </FormField>*/}
+        {/*</section>*/}
 
         <section>
           <h1>Form Field</h1>
 
-          <FormField>
+          <FormField invalid>
             <FormFieldLabel>
               Description:
             </FormFieldLabel>
@@ -303,13 +370,12 @@ function App(): ReactElement {
         <section>
           <h1>Icon</h1>
 
-          <Icon
-            aria-hidden="true"
-            name="cloud" />
+          <Icon name="cloud" />
 
           <Icon
             aria-label="home"
-            name="home" />
+            name="home"
+            role="img" />
         </section>
 
         <section>
@@ -322,8 +388,59 @@ function App(): ReactElement {
 
             <Input />
           </FormField>
+
+          <FormField>
+            <FormFieldLabel>
+              Name:
+            </FormFieldLabel>
+
+            <Input disabled />
+          </FormField>
+
+          <FormField>
+            <FormFieldLabel>
+              Name:
+            </FormFieldLabel>
+
+            <Input readOnly />
+          </FormField>
+
+          <FormField>
+            <FormFieldLabel>
+              Name:
+            </FormFieldLabel>
+
+            <Input loading />
+          </FormField>
+
+          <FormField>
+            <FormFieldLabel>
+              Name:
+            </FormFieldLabel>
+
+            <Input
+              clearable
+              value="Clear me" />
+          </FormField>
+
+          <FormField>
+            <FormFieldLabel>
+              Name:
+            </FormFieldLabel>
+
+            <Input maskOption={{ enable: true }} />
+          </FormField>
+
+          <FormField>
+            <FormFieldLabel>
+              Invalid:
+            </FormFieldLabel>
+
+            <Input invalid />
+          </FormField>
         </section>
 
+        {/*Contrast issue with gradient*/}
         <section>
           <h1>Link</h1>
 
@@ -356,6 +473,36 @@ function App(): ReactElement {
         <section>
           <h1>Message</h1>
 
+          <Message color={ MESSAGE_COLOR.critical }>
+            <MessageIcon name={ ICON_NAME.hexagonExclamation } />
+            <MessageBody>Critical message</MessageBody>
+          </Message>
+
+          <Message color={ MESSAGE_COLOR.information }>
+            <MessageIcon name={ ICON_NAME.circleInfo } />
+            <MessageBody>Information message</MessageBody>
+          </Message>
+
+          <Message color={ MESSAGE_COLOR.neutral }>
+            <MessageIcon name={ ICON_NAME.email } />
+            <MessageBody>Neutral message</MessageBody>
+          </Message>
+
+          <Message color={ MESSAGE_COLOR.primary }>
+            <MessageIcon name={ ICON_NAME.lightbulb } />
+            <MessageBody>Primary message</MessageBody>
+          </Message>
+
+          <Message color={ MESSAGE_COLOR.success }>
+            <MessageIcon name={ ICON_NAME.circleCheck } />
+            <MessageBody>Success message</MessageBody>
+          </Message>
+
+          <Message color={ MESSAGE_COLOR.warning }>
+            <MessageIcon name={ ICON_NAME.triangleExclamation } />
+            <MessageBody>Warning message</MessageBody>
+          </Message>
+
           <div role="alert">
             <Message color="critical">
               <MessageIcon name="hexagon-exclamation" />
@@ -377,29 +524,30 @@ function App(): ReactElement {
           </div>
         </section>
 
-        <section>
-          <h1>Modal</h1>
+        {/* ID issue */}
+        {/*<section>*/}
+        {/*  <h1>Modal</h1>*/}
 
-          <Modal>
-            <ModalTrigger>
-              Trigger Modal
-            </ModalTrigger>
+        {/*  <Modal>*/}
+        {/*    <ModalTrigger>*/}
+        {/*      Trigger Modal*/}
+        {/*    </ModalTrigger>*/}
 
-            <ModalContent
-              aria-describedby="modal-content"
-              aria-labelledby="modal-title">
-              <ModalBody>
-                <h2 id="modal-title">
-                  Delete item
-                </h2>
+        {/*    <ModalContent*/}
+        {/*      aria-describedby="modal-content"*/}
+        {/*      aria-labelledby="modal-title">*/}
+        {/*      <ModalBody>*/}
+        {/*        <h2 id="modal-title">*/}
+        {/*          Delete item*/}
+        {/*        </h2>*/}
 
-                <p id="modal-content">
-                  Are you sure you want to delete this item? This action cannot be undone.
-                </p>
-              </ModalBody>
-            </ModalContent>
-          </Modal>
-        </section>
+        {/*        <p id="modal-content">*/}
+        {/*          Are you sure you want to delete this item? This action cannot be undone.*/}
+        {/*        </p>*/}
+        {/*      </ModalBody>*/}
+        {/*    </ModalContent>*/}
+        {/*  </Modal>*/}
+        {/*</section>*/}
 
         <section>
           <h1>Pagination</h1>
@@ -421,42 +569,58 @@ function App(): ReactElement {
           </FormField>
         </section>
 
-        <section>
-          <h1>Phone Number</h1>
+        {/* ID issue */}
+        {/*<section>*/}
+        {/*  <h1>Phone Number</h1>*/}
 
-          <FormField>
-            <FormFieldLabel>
-              Phone number:
-            </FormFieldLabel>
+        {/*  <FormField>*/}
+        {/*    <FormFieldLabel>*/}
+        {/*      Phone number:*/}
+        {/*    </FormFieldLabel>*/}
 
-            <PhoneNumber>
-              <PhoneNumberCountryList />
+        {/*    <PhoneNumber>*/}
+        {/*      <PhoneNumberControl />*/}
+        {/*    </PhoneNumber>*/}
+        {/*  </FormField>*/}
 
-              <PhoneNumberControl />
-            </PhoneNumber>
-          </FormField>
-        </section>
+        {/*  <FormField>*/}
+        {/*    <FormFieldLabel>*/}
+        {/*      Phone number with countries:*/}
+        {/*    </FormFieldLabel>*/}
 
-        <section>
-          <h1>Popover</h1>
+        {/*    <PhoneNumber>*/}
+        {/*      <PhoneNumberCountryList />*/}
 
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button>
-                <Icon aria-hidden="true" name={ICON_NAME.ellipsisVertical} />
-              </Button>
-            </PopoverTrigger>
+        {/*      <PhoneNumberControl />*/}
+        {/*    </PhoneNumber>*/}
+        {/*  </FormField>*/}
+        {/*</section>*/}
 
-            <PopoverContent withArrow={true}>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
-                <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
-                <Divider style={{ width: '100%' }} />
-                <Button color={BUTTON_COLOR.critical} role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
-              </div>
-            </PopoverContent>
-          </Popover>
-        </section>
+        {/*ID issue */}
+        {/*<section>*/}
+        {/*  <h1>Popover</h1>*/}
+
+        {/*  <Popover open>*/}
+        {/*    <PopoverTrigger asChild>*/}
+        {/*      <Button aria-label="Open menu">*/}
+        {/*        <Icon name={ ICON_NAME.ellipsisVertical } />*/}
+        {/*      </Button>*/}
+        {/*    </PopoverTrigger>*/}
+
+        {/*    <PopoverContent*/}
+        {/*      aria-label="I am the menu"*/}
+        {/*      withArrow>*/}
+        {/*      <div*/}
+        {/*        role="menu"*/}
+        {/*        style={{ display: 'flex', flexDirection: 'column' }}>*/}
+        {/*        <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>*/}
+        {/*        <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>*/}
+        {/*        <Divider style={{ width: '100%' }} />*/}
+        {/*        <Button color={BUTTON_COLOR.critical} role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>*/}
+        {/*      </div>*/}
+        {/*    </PopoverContent>*/}
+        {/*  </Popover>*/}
+        {/*</section>*/}
 
         <section>
           <h1>Progress Bar</h1>
@@ -482,35 +646,36 @@ function App(): ReactElement {
           </FormField>
         </section>
 
-        <section>
-          <h1>Radio Group</h1>
+        {/* ID issue */}
+        {/*<section>*/}
+        {/*  <h1>Radio Group</h1>*/}
 
-          <FormField>
-            <FormFieldLabel>
-              Pick a language:
-            </FormFieldLabel>
+        {/*  <FormField>*/}
+        {/*    <FormFieldLabel>*/}
+        {/*      Pick a language:*/}
+        {/*    </FormFieldLabel>*/}
 
-            <RadioGroup>
-              <Radio value="html">
-                <RadioControl />
+        {/*    <RadioGroup>*/}
+        {/*      <Radio value="html">*/}
+        {/*        <RadioControl />*/}
 
-                <RadioLabel>HTML</RadioLabel>
-              </Radio>
+        {/*        <RadioLabel>HTML</RadioLabel>*/}
+        {/*      </Radio>*/}
 
-              <Radio value="css">
-                <RadioControl />
+        {/*      <Radio value="css">*/}
+        {/*        <RadioControl />*/}
 
-                <RadioLabel>CSS</RadioLabel>
-              </Radio>
+        {/*        <RadioLabel>CSS</RadioLabel>*/}
+        {/*      </Radio>*/}
 
-              <Radio value="js">
-                <RadioControl />
+        {/*      <Radio value="js">*/}
+        {/*        <RadioControl />*/}
 
-                <RadioLabel>JavaScript</RadioLabel>
-              </Radio>
-            </RadioGroup>
-          </FormField>
-        </section>
+        {/*        <RadioLabel>JavaScript</RadioLabel>*/}
+        {/*      </Radio>*/}
+        {/*    </RadioGroup>*/}
+        {/*  </FormField>*/}
+        {/*</section>*/}
 
         <section>
           <h1>Range</h1>
@@ -530,7 +695,7 @@ function App(): ReactElement {
               preset="caption"
               id="range-sublabel"
               aria-live="polite">
-              Selected values: 10 - 2°€
+              Selected values: 10 - 20€
             </Text>
 
             <Range
@@ -539,26 +704,27 @@ function App(): ReactElement {
           </FormField>
         </section>
 
-        <section>
-          <h1>Select</h1>
+        {/*ID issue*/}
+        {/*<section>*/}
+        {/*  <h1>Select</h1>*/}
 
-          <FormField>
-            <FormFieldLabel>
-              Select a Web hosting
-            </FormFieldLabel>
+        {/*  <FormField>*/}
+        {/*    <FormFieldLabel>*/}
+        {/*      Select a Web hosting*/}
+        {/*    </FormFieldLabel>*/}
 
-            <Select
-              items={[
-                { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
-                { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
-                { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
-              ]}>
-              <SelectControl />
+        {/*    <Select*/}
+        {/*      items={[*/}
+        {/*        { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },*/}
+        {/*        { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },*/}
+        {/*        { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },*/}
+        {/*      ]}>*/}
+        {/*      <SelectControl />*/}
 
-              <SelectContent />
-            </Select>
-          </FormField>
-        </section>
+        {/*      <SelectContent />*/}
+        {/*    </Select>*/}
+        {/*  </FormField>*/}
+        {/*</section>*/}
 
         <section>
           <h1>Skeleton</h1>
@@ -640,35 +806,44 @@ function App(): ReactElement {
           </Table>
         </section>
 
-        <section>
-          <h1>Tabs</h1>
+        {/*ID issue*/}
+        {/*<section>*/}
+        {/*  <h1>Tabs</h1>*/}
 
-          <Tabs defaultValue="tab1">
-            <TabList>
-              <Tab value="tab1">Tab 1</Tab>
-              <Tab value="tab2">Tab 2</Tab>
-              <Tab value="tab3">Tab 3</Tab>
-            </TabList>
-          </Tabs>
-        </section>
+        {/*  <Tabs defaultValue="tab1">*/}
+        {/*    <TabList>*/}
+        {/*      <Tab value="tab1">Tab 1</Tab>*/}
+        {/*      <Tab value="tab2">Tab 2</Tab>*/}
+        {/*      <Tab value="tab3">Tab 3</Tab>*/}
+        {/*    </TabList>*/}
+        {/*  </Tabs>*/}
+        {/*</section>*/}
 
-        <section>
-          <h1>Tag</h1>
+        {/*KO contrast*/}
+        {/*<section>*/}
+        {/*  <h1>Tag</h1>*/}
 
-          <Tag aria-label="Remove my tag">My tag</Tag>
+        {/*  <Tag color={ TAG_COLOR.critical }>Critical</Tag>*/}
+        {/*  <Tag color={ TAG_COLOR.information }>Information</Tag>*/}
+        {/*  <Tag color={ TAG_COLOR.neutral }>Neutral</Tag>*/}
+        {/*  <Tag color={ TAG_COLOR.primary }>Primary</Tag>*/}
+        {/*  <Tag color={ TAG_COLOR.success }>Success</Tag>*/}
+        {/*  <Tag color={ TAG_COLOR.warning }>Warning</Tag>*/}
 
-          <div role="list">
-            <div role="listitem">
-              <Tag>Design</Tag>
-            </div>
-            <div role="listitem">
-              <Tag>Development</Tag>
-            </div>
-            <div role="listitem">
-              <Tag>Accessibility</Tag>
-            </div>
-          </div>
-        </section>
+        {/*  <Tag aria-label="Remove my tag">My tag</Tag>*/}
+
+        {/*  <div role="list">*/}
+        {/*    <div role="listitem">*/}
+        {/*      <Tag>Design</Tag>*/}
+        {/*    </div>*/}
+        {/*    <div role="listitem">*/}
+        {/*      <Tag>Development</Tag>*/}
+        {/*    </div>*/}
+        {/*    <div role="listitem">*/}
+        {/*      <Tag>Accessibility</Tag>*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*</section>*/}
 
         <section>
           <h1>Text</h1>
@@ -710,42 +885,47 @@ function App(): ReactElement {
           </FormField>
         </section>
 
-        <section>
-          <h1>Timepicker</h1>
+        {/*ID issue*/}
+        {/*<section>*/}
+        {/*  <h1>Timepicker</h1>*/}
 
-          <FormField>
-            <FormFieldLabel>
-              Starting time:
-            </FormFieldLabel>
+        {/*  <FormField>*/}
+        {/*    <FormFieldLabel>*/}
+        {/*      Starting time:*/}
+        {/*    </FormFieldLabel>*/}
 
-            <Timepicker withSeconds>
-              <TimepickerControl />
+        {/*    <Timepicker withSeconds>*/}
+        {/*      <TimepickerControl />*/}
 
-              <TimepickerTimezoneList />
-            </Timepicker>
-          </FormField>
-        </section>
+        {/*      <TimepickerTimezoneList />*/}
+        {/*    </Timepicker>*/}
+        {/*  </FormField>*/}
+        {/*</section>*/}
 
-        <section>
-          <h1>Toggle</h1>
+        {/*ID issue*/}
+        {/*<section>*/}
+        {/*  <h1>Toggle</h1>*/}
 
-          <Toggle aria-label="Enable dark mode" />
+        {/*  <Toggle aria-label="Enable dark mode" />*/}
 
-          <FormField>
-            <FormFieldLabel>
-              Dark mode
-            </FormFieldLabel>
+        {/*  <FormField>*/}
+        {/*    <FormFieldLabel>*/}
+        {/*      Dark mode*/}
+        {/*    </FormFieldLabel>*/}
 
-            <Toggle />
-          </FormField>
-        </section>
+        {/*    <Toggle />*/}
+        {/*  </FormField>*/}
+        {/*</section>*/}
 
         <section>
           <h1>Tooltip</h1>
 
           <Tooltip>
             <TooltipTrigger asChild>
-              <Icon aria-hidden name={ ICON_NAME.circleInfo } />
+              <Icon
+                aria-label="Open the tooltip"
+                name={ ICON_NAME.circleInfo }
+                role="img" />
             </TooltipTrigger>
 
             <TooltipContent>

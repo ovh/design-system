@@ -1,5 +1,5 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Link } from '@ovhcloud/ods-react';
-import { type ReactElement } from 'react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Code, Link } from '@ovhcloud/ods-react';
+import { Fragment, type ReactElement} from 'react';
 
 type Prop = {
   list: any[],
@@ -25,6 +25,23 @@ function ResultDetails({ list, title }: Prop): ReactElement {
                         target="_blank">
                         { item.id }
                       </Link> ({ item.description })
+
+                      <div>
+                        {
+                          item.nodes.map((node: any, i: number) => (
+                            <Fragment key={ i }>
+                              <Code>
+                                { node.html }
+                              </Code>
+                              <br />
+                              <span>
+                                { node.failureSummary }
+                              </span>
+                              <br/>
+                            </Fragment>
+                          ))
+                        }
+                      </div>
                     </li>
                   ))
                 }

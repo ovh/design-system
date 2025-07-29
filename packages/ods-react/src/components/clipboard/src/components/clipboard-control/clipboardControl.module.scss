@@ -4,7 +4,7 @@
   .clipboard {
     &__input {
       border: none;
-      width: inherit;
+      width: 100%;
 
       &:focus-within {
         outline: 0;

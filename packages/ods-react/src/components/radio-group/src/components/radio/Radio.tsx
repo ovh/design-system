@@ -27,7 +27,6 @@ const Radio: FC<RadioProp> = forwardRef(({
   children,
   className,
   disabled,
-  id,
   invalid,
   onChange,
   required,
@@ -39,7 +38,6 @@ const Radio: FC<RadioProp> = forwardRef(({
     <RadioGroup.Item
       className={ classNames(style['radio'], className) }
       disabled={ disabled }
-      id={ id || fieldContext?.id }
       invalid={ invalid || fieldContext?.invalid }
       ref={ ref }
       { ...props }>

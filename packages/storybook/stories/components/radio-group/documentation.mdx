@@ -103,3 +103,23 @@ Pressing `Arrow Down` or `Arrow Right` moves focus and selects the next radio bu
 Pressing `Arrow Up` or `Arrow Left` moves focus and selects the previous radio button in the group.
 
 Pressing `Space` when focused on an unchecked radio button selects it.
+
+<Heading label="Accessibility" level={ 2 } />
+
+To ensure proper accessibility, a **radio group** must be correctly structured and labeled, so screen readers can understand how many options are available and which one is selected.
+
+<Heading label="Grouping Radios" level={ 3 } />
+
+The container wrapping the radios should have `role="radiogroup"` to ensure that assistive technologies understand the relationship between the radio buttons.
+
+<Canvas of={ RadioGroupStories.AccessibilityGroupingRadios } sourceState="shown" />
+
+When focusing the first radio button, screen readers will announce the label, the radio button, the index of the selected radio in the group, the group label and the radio group.
+
+<Heading label="Associating label with Radios" level={ 3 } />
+
+Each radio button must have an associated label to describe its purpose. This is done using the `<RadioLabel>` element.
+
+<Canvas of={ RadioGroupStories.AccessibilityWithLabel } sourceState="shown" />
+
+Screen readers will announce the label, the radio button and the index.

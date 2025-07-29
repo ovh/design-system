@@ -23,6 +23,7 @@ const Icon: FC<IconProp> = forwardRef(({
         className,
       )}
       ref={ ref }
+      role="presentation"
       { ...props } />
   );
 });

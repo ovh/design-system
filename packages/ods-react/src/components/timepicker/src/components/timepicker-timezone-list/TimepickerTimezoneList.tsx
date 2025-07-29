@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useMemo } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useId, useMemo } from 'react';
 import { Select, SelectContent, SelectControl, type SelectOptionItem, type SelectValueChangeDetail } from '../../../../select/src';
 import { type Timezone } from '../../constants/timezones';
 import { useTimepicker } from '../../contexts/useTimepicker';
@@ -13,6 +13,7 @@ const TimepickerTimezoneList: FC<TimepickerTimezoneListProp> = forwardRef(({
   className,
   ...props
 }, ref): JSX.Element => {
+  const customId = useId();
   const {
     currentTimezone,
     disabled,
@@ -51,7 +52,9 @@ const TimepickerTimezoneList: FC<TimepickerTimezoneListProp> = forwardRef(({
       onValueChange={ onValueChange }
       value={ [currentTimezone || FALLBACK_TIMEZONE] }
       { ...props }>
-      <SelectControl className={ style['timepicker-timezone__control'] } />
+      <SelectControl
+        className={ style['timepicker-timezone__control'] }
+        id={ customId } />
 
       <SelectContent />
     </Select>

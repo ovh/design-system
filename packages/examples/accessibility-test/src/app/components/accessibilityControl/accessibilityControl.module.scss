@@ -1,0 +1,38 @@
+.accessibility-control {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  padding: 0 10px;
+  height: 100%;
+
+  &__results {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+
+    &__inapplicables,
+    &__incompletes,
+    &__passes,
+    &__violations {
+      display: flex;
+      align-items: center;
+      column-gap: 5px;
+    }
+
+    &__passes {
+      color: var(--ods-color-success-500);
+    }
+
+    &__violations {
+      color: var(--ods-color-critical-500);
+    }
+
+    &__incompletes {
+      color: var(--ods-color-warning-500);
+    }
+
+    &__inapplicables {
+      color: var(--ods-color-information-500);
+    }
+  }
+}

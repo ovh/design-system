@@ -1,0 +1,26 @@
+{
+  "name": "accessibility-test",
+  "version": "19.0.1",
+  "private": true,
+  "description": "Running a11y checks on ODS components",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "start": "vite"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-react": "19.0.1",
+    "@ovhcloud/ods-themes": "19.0.1",
+    "classnames": "2.5.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.1",
+    "@vitejs/plugin-react": "4.3.4",
+    "axe-core": "4.10.3",
+    "typescript": "5.3.3",
+    "vite": "6.2.0"
+  }
+}

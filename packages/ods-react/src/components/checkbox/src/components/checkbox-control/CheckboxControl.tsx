@@ -22,26 +22,28 @@ const CheckboxControl: FC<CheckboxControlProp> = forwardRef(({
   }, [indeterminate]);
 
   return (
-    <Checkbox.Control
-      className={ classNames(style['checkbox-control'], className) }
-      ref={ ref }
-      { ...props }>
-      <Checkbox.Indicator>
-        <Icon
-          className={ style['checkbox-control__icon'] }
-          name={ ICON_NAME.check } />
-      </Checkbox.Indicator>
+    <>
+      <Checkbox.Control
+        className={ classNames(style['checkbox-control'], className) }
+        ref={ ref }
+        { ...props }>
+        <Checkbox.Indicator>
+          <Icon
+            className={ style['checkbox-control__icon'] }
+            name={ ICON_NAME.check } />
+        </Checkbox.Indicator>
 
-      <Checkbox.Indicator indeterminate>
-        <Icon
-          className={ style['checkbox-control__icon'] }
-          name={ ICON_NAME.minus } />
-      </Checkbox.Indicator>
+        <Checkbox.Indicator indeterminate>
+          <Icon
+            className={ style['checkbox-control__icon'] }
+            name={ ICON_NAME.minus } />
+        </Checkbox.Indicator>
+      </Checkbox.Control>
 
       <Checkbox.HiddenInput
         aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
         ref={ inputRef } />
-    </Checkbox.Control>
+    </>
   );
 });
 

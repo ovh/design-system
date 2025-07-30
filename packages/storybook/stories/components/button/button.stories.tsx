@@ -116,7 +116,7 @@ export const Size: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Button size={ BUTTON_SIZE.md }>MB button</Button>
+      <Button size={ BUTTON_SIZE.md }>MD button</Button>
       <Button size={ BUTTON_SIZE.sm }>SM button</Button>
       <Button size={ BUTTON_SIZE.xs }>XS button</Button>
     </>

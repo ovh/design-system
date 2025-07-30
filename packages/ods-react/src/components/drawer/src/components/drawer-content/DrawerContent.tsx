@@ -25,13 +25,15 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
 }, ref): JSX.Element => {
   return (
     <Portal disabled={ !createPortal }>
-      <Dialog.Positioner className={ style[ 'drawer-positioner' ] }>
+      <Dialog.Positioner className={ style['drawer-positioner'] }>
         <Dialog.Content
+          aria-describedby={ props['aria-describedby'] || '' }
+          aria-labelledby={ props['aria-labelledby'] || '' }
           className={ classNames(
-            style[ 'drawer-positioner__content' ],
-            style[ `drawer-positioner__content--${ position }` ],
+            style['drawer-positioner__content'],
+            style[`drawer-positioner__content--${ position }`],
             className,
-          ) }
+          )}
           ref={ ref }
           { ...props }>
           { children }
@@ -43,4 +45,7 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
 
 DrawerContent.displayName = 'DrawerContent';
 
-export { DrawerContent, type DrawerContentProp };
+export {
+  DrawerContent,
+  type DrawerContentProp,
+};

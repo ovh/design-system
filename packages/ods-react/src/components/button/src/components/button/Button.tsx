@@ -53,6 +53,7 @@ const Button: FC<ButtonProp> = forwardRef(({
         <span className={ style['button__spinner'] }>
           <Spinner
             color={ SPINNER_COLOR.neutral }
+            role="none"
             size={ size === BUTTON_SIZE.xs ? SPINNER_SIZE.xs : SPINNER_SIZE.sm } />
         </span>
       }

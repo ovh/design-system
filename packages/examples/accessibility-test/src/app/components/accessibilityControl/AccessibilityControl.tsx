@@ -18,6 +18,24 @@ const initialState = {
   violations: [],
 }
 
+/**
+ * All components using an aria-haspopup have an aria-controls set by default by Ark.
+ * This does cause a warning "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup".
+ * One fix would be to override those aria-controls so that they're set only if the popup is visible.
+ * Though setting them in advance is actually valid.
+ * Quoting MDN:
+ * "The aria-controls only needs to be set when the popup is visible, but it is valid and easier to program to reference an element that is not visible."
+ * (see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-controls)
+ * So, for now, we remove the warning from the results.
+ */
+function filterIncompletes(list: any) {
+  return list.filter((item: any) => {
+    return !item.nodes.some((node: any) => {
+      return !!node.failureSummary.match(/Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup/);
+    });
+  });
+}
+
 function reducer(state: any, action: any) {
   switch (action.type) {
     case 'error':
@@ -34,7 +52,7 @@ function reducer(state: any, action: any) {
       return {
         error: '',
         inapplicables: action.payload.inapplicable,
-        incompletes: action.payload.incomplete,
+        incompletes: filterIncompletes(action.payload.incomplete),
         isControlling: false,
         passes: action.payload.passes,
         violations: action.payload.violations,
@@ -50,13 +68,15 @@ function AccessibilityControl({ className }: Prop): ReactElement {
   async function onRunControlClick() {
     dispatch({ type: 'run-control' });
 
-    axe.run()
-      .then(results => {
-        dispatch({ type: 'set-results', payload: results });
-      })
-      .catch((error) => {
-        dispatch({ type: 'error', payload: error.message });
-      });
+    requestAnimationFrame(() => {
+      axe.run()
+        .then(results => {
+          dispatch({ type: 'set-results', payload: results });
+        })
+        .catch((error) => {
+          dispatch({ type: 'error', payload: error.message });
+        });
+    });
   }
 
   return (

@@ -76,7 +76,7 @@ const FileUploadDropzone: FC<FileUploadDropzoneProp> = ({
 
       <FileUpload.Trigger asChild>
         <Button
-          aria-describedby={ ruleBlockId }
+          aria-describedby={ hasRule ? ruleBlockId : '' }
           size={ BUTTON_SIZE.md }
           variant={ BUTTON_VARIANT.ghost }>
           { triggerLabel }

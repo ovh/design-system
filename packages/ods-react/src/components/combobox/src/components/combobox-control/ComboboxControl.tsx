@@ -1,7 +1,7 @@
 import { Combobox as VendorCombobox, useComboboxContext } from '@ark-ui/react/combobox';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, type KeyboardEvent, forwardRef, useRef, useState } from 'react';
-import { Input } from '../../../../input/src';
+import { type INPUT_I18N, Input } from '../../../../input/src';
 import { Tag } from '../../../../tag/src';
 import { useCombobox } from '../../contexts/useCombobox';
 import {
@@ -19,6 +19,10 @@ interface ComboboxControlProp extends ComponentPropsWithRef<'div'> {
    */
   clearable?: boolean;
   /**
+   * Internal translations override (see Input i18n keys).
+   */
+  i18n?: Partial<Record<INPUT_I18N.clearButton, string>>,
+  /**
    * Whether the component is in loading state.
    */
   loading?: boolean;
@@ -31,6 +35,7 @@ interface ComboboxControlProp extends ComponentPropsWithRef<'div'> {
 const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
   className,
   clearable,
+  i18n,
   loading,
   placeholder,
   ...props
@@ -154,6 +159,7 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
           className={ style['combobox-control__input'] }
           clearable={ clearable }
           disabled={ disabled }
+          i18n={ i18n }
           loading={ loading }
           onClear={ () => setValue([]) }
           onClick={ handleInputClick }

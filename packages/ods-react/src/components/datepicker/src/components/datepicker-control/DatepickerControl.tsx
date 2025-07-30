@@ -4,7 +4,7 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { useFormField } from '../../../../form-field/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
-import { Input } from '../../../../input/src';
+import { type INPUT_I18N, Input } from '../../../../input/src';
 import { useDatepicker } from '../../contexts/useDatepicker';
 import style from './datepickerControl.module.scss';
 
@@ -14,6 +14,10 @@ interface DatepickerControlProp extends ComponentPropsWithRef<'input'> {
    */
   clearable?: boolean,
   /**
+   * Internal translations override (see Input i18n keys).
+   */
+  i18n?: Partial<Record<INPUT_I18N.clearButton, string>>,
+  /**
    * Whether the component is in loading state.
    */
   loading?: boolean,
@@ -22,6 +26,7 @@ interface DatepickerControlProp extends ComponentPropsWithRef<'input'> {
 const DatepickerControl: FC<DatepickerControlProp> = forwardRef(({
   className,
   clearable,
+  i18n,
   id,
   loading,
   ...props
@@ -43,6 +48,7 @@ const DatepickerControl: FC<DatepickerControlProp> = forwardRef(({
         { ...props }>
         <Input
           clearable={ clearable }
+          i18n={ i18n }
           id={ id || fieldContext?.id }
           invalid={ invalid || fieldContext?.invalid }
           loading={ loading }

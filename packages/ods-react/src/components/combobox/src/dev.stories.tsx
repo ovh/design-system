@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { ICON_NAME, Icon } from '../../icon/src';
+import { INPUT_I18N } from '../../input/src';
 import { Combobox, ComboboxContent, ComboboxControl, type ComboboxItem } from '.';
-import { Icon } from '../../icon/src';
-import { ICON_NAME } from '../../icon/src/constants/icon-name';
 import style from './dev.module.css';
 
 export default {
@@ -125,6 +125,15 @@ export const Disabled = () => (
 export const HighlightResults = () => (
   <Combobox items={items} allowCustomValue={false} highlightResults>
     <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+);
+
+export const I18n = () => (
+  <Combobox items={ items }>
+    <ComboboxControl
+      clearable
+      i18n={{ [INPUT_I18N.clearButton]: 'Clear combobox' }} />
     <ComboboxContent />
   </Combobox>
 );

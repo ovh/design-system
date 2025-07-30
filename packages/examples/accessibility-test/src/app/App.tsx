@@ -33,7 +33,7 @@ import {
   Spinner,
   Switch, SwitchItem,
   Table,
-  Tabs, TabList, Tab,
+  Tabs, TabContent, TabList, Tab,
   Tag,
   Text,
   Textarea,
@@ -119,6 +119,10 @@ function App(): ReactElement {
 
           <Button>
             Clear
+          </Button>
+
+          <Button loading>
+            Loading
           </Button>
 
           <Button aria-label='Clear'>
@@ -264,22 +268,21 @@ function App(): ReactElement {
           </FormField>
         </section>
 
-        {/* ID issue */}
-        {/*<section>*/}
-        {/*  <h1>Datepicker</h1>*/}
+        <section>
+          <h1>Datepicker</h1>
 
-        {/*  <FormField>*/}
-        {/*    <FormFieldLabel>*/}
-        {/*      Select a date:*/}
-        {/*    </FormFieldLabel>*/}
+          <FormField>
+            <FormFieldLabel>
+              Select a date:
+            </FormFieldLabel>
 
-        {/*    <Datepicker>*/}
-        {/*      <DatepickerControl />*/}
+            <Datepicker>
+              <DatepickerControl />
 
-        {/*      <DatepickerContent />*/}
-        {/*    </Datepicker>*/}
-        {/*  </FormField>*/}
-        {/*</section>*/}
+              <DatepickerContent />
+            </Datepicker>
+          </FormField>
+        </section>
 
         <section>
           <h1>Divider</h1>
@@ -287,59 +290,76 @@ function App(): ReactElement {
           <Divider color={ DIVIDER_COLOR.primary } />
         </section>
 
-        {/* ID issue */}
-        {/*<section>*/}
-        {/*  <h1>Drawer</h1>*/}
+        <section>
+          <h1>Drawer</h1>
 
-        {/*  <Drawer>*/}
-        {/*    <DrawerTrigger id="drawer-id">*/}
-        {/*      Trigger Drawer*/}
-        {/*    </DrawerTrigger>*/}
+          <Drawer>
+            <DrawerTrigger id="drawer-id">
+              Trigger Drawer
+            </DrawerTrigger>
 
-        {/*    <DrawerContent*/}
-        {/*      aria-labelledby="drawer-id"*/}
-        {/*      position={ DRAWER_POSITION.left}>*/}
-        {/*      <DrawerBody>*/}
-        {/*        My drawer content*/}
-        {/*      </DrawerBody>*/}
-        {/*    </DrawerContent>*/}
-        {/*  </Drawer>*/}
+            <DrawerContent
+              aria-labelledby="drawer-id"
+              position={ DRAWER_POSITION.left}>
+              <DrawerBody>
+                My drawer content
+              </DrawerBody>
+            </DrawerContent>
+          </Drawer>
 
-        {/*  <Drawer>*/}
-        {/*    <DrawerTrigger>*/}
-        {/*      Trigger Drawer*/}
-        {/*    </DrawerTrigger>*/}
+          <Drawer>
+            <DrawerTrigger>
+              Trigger Drawer
+            </DrawerTrigger>
 
-        {/*    <DrawerContent*/}
-        {/*      aria-label="Some drawer label"*/}
-        {/*      position={ DRAWER_POSITION.right}>*/}
-        {/*      <DrawerBody>*/}
-        {/*        My drawer content*/}
-        {/*      </DrawerBody>*/}
-        {/*    </DrawerContent>*/}
-        {/*  </Drawer>*/}
-        {/*</section>*/}
+            <DrawerContent
+              aria-label="Some drawer label"
+              position={ DRAWER_POSITION.right}>
+              <DrawerBody>
+                My drawer content
+              </DrawerBody>
+            </DrawerContent>
+          </Drawer>
+        </section>
 
-        {/* ID issue */}
-        {/*<section>*/}
-        {/*  <h1>File Upload</h1>*/}
+        <section>
+          <h1>File Upload</h1>
 
-        {/*  <FormField>*/}
-        {/*    <FormFieldLabel>Select file(s):</FormFieldLabel>*/}
+          <FormField>
+            <FormFieldLabel>Select file(s):</FormFieldLabel>
 
-        {/*    <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>*/}
-        {/*      <FileUploadList>*/}
-        {/*        {*/}
-        {/*          files.map((file: File, idx) => (*/}
-        {/*            <FileUploadItem*/}
-        {/*              file={ file }*/}
-        {/*              key={ idx } />*/}
-        {/*          ))*/}
-        {/*        }*/}
-        {/*      </FileUploadList>*/}
-        {/*    </FileUpload>*/}
-        {/*  </FormField>*/}
-        {/*</section>*/}
+            <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+              <FileUploadList>
+                {
+                  files.map((file: File, idx) => (
+                    <FileUploadItem
+                      file={ file }
+                      key={ idx } />
+                  ))
+                }
+              </FileUploadList>
+            </FileUpload>
+          </FormField>
+
+          <FormField>
+            <FormFieldLabel>Select file(s):</FormFieldLabel>
+
+            <FileUpload
+              maxFile={ 3 }
+              maxFileLabel="3 files max"
+              onFileAccept={ ({ files }) => setFiles(files) }>
+              <FileUploadList>
+                {
+                  files.map((file: File, idx) => (
+                    <FileUploadItem
+                      file={ file }
+                      key={ idx } />
+                  ))
+                }
+              </FileUploadList>
+            </FileUpload>
+          </FormField>
+        </section>
 
         <section>
           <h1>Form Field</h1>
@@ -441,26 +461,26 @@ function App(): ReactElement {
         </section>
 
         {/*Contrast issue with gradient*/}
-        <section>
-          <h1>Link</h1>
+        {/*<section>*/}
+        {/*  <h1>Link</h1>*/}
 
-          <Link aria-label="Go to homepage" href="https://www.ovhcloud.com">
-            <Icon name="home" />
-          </Link>
+        {/*  <Link aria-label="Go to homepage" href="https://www.ovhcloud.com">*/}
+        {/*    <Icon name="home" />*/}
+        {/*  </Link>*/}
 
-          <Link
-            aria-label="Visit Example (opens in a new tab)"
-            href="https://www.ovhcloud.com"
-            target="_blank">
-            <Icon name="external-link" />
-          </Link>
+        {/*  <Link*/}
+        {/*    aria-label="Visit Example (opens in a new tab)"*/}
+        {/*    href="https://www.ovhcloud.com"*/}
+        {/*    target="_blank">*/}
+        {/*    <Icon name="external-link" />*/}
+        {/*  </Link>*/}
 
-          <Link
-            href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
-            <Icon name="download" />
-            <span>Download WCAG20 Guidelines (PDF, 481 KB)</span>
-          </Link>
-        </section>
+        {/*  <Link*/}
+        {/*    href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">*/}
+        {/*    <Icon name="download" />*/}
+        {/*    <span>Download WCAG20 Guidelines (PDF, 481 KB)</span>*/}
+        {/*  </Link>*/}
+        {/*</section>*/}
 
         <section>
           <h1>Medium</h1>
@@ -524,30 +544,29 @@ function App(): ReactElement {
           </div>
         </section>
 
-        {/* ID issue */}
-        {/*<section>*/}
-        {/*  <h1>Modal</h1>*/}
+        <section>
+          <h1>Modal</h1>
 
-        {/*  <Modal>*/}
-        {/*    <ModalTrigger>*/}
-        {/*      Trigger Modal*/}
-        {/*    </ModalTrigger>*/}
+          <Modal>
+            <ModalTrigger>
+              Trigger Modal
+            </ModalTrigger>
 
-        {/*    <ModalContent*/}
-        {/*      aria-describedby="modal-content"*/}
-        {/*      aria-labelledby="modal-title">*/}
-        {/*      <ModalBody>*/}
-        {/*        <h2 id="modal-title">*/}
-        {/*          Delete item*/}
-        {/*        </h2>*/}
+            <ModalContent
+              aria-describedby="modal-content"
+              aria-labelledby="modal-title">
+              <ModalBody>
+                <h2 id="modal-title">
+                  Delete item
+                </h2>
 
-        {/*        <p id="modal-content">*/}
-        {/*          Are you sure you want to delete this item? This action cannot be undone.*/}
-        {/*        </p>*/}
-        {/*      </ModalBody>*/}
-        {/*    </ModalContent>*/}
-        {/*  </Modal>*/}
-        {/*</section>*/}
+                <p id="modal-content">
+                  Are you sure you want to delete this item? This action cannot be undone.
+                </p>
+              </ModalBody>
+            </ModalContent>
+          </Modal>
+        </section>
 
         <section>
           <h1>Pagination</h1>
@@ -569,58 +588,56 @@ function App(): ReactElement {
           </FormField>
         </section>
 
-        {/* ID issue */}
-        {/*<section>*/}
-        {/*  <h1>Phone Number</h1>*/}
+        <section>
+          <h1>Phone Number</h1>
 
-        {/*  <FormField>*/}
-        {/*    <FormFieldLabel>*/}
-        {/*      Phone number:*/}
-        {/*    </FormFieldLabel>*/}
+          <FormField>
+            <FormFieldLabel>
+              Phone number:
+            </FormFieldLabel>
 
-        {/*    <PhoneNumber>*/}
-        {/*      <PhoneNumberControl />*/}
-        {/*    </PhoneNumber>*/}
-        {/*  </FormField>*/}
+            <PhoneNumber>
+              <PhoneNumberControl />
+            </PhoneNumber>
+          </FormField>
 
-        {/*  <FormField>*/}
-        {/*    <FormFieldLabel>*/}
-        {/*      Phone number with countries:*/}
-        {/*    </FormFieldLabel>*/}
+          <FormField>
+            <FormFieldLabel>
+              Phone number with countries:
+            </FormFieldLabel>
 
-        {/*    <PhoneNumber>*/}
-        {/*      <PhoneNumberCountryList />*/}
+            <PhoneNumber>
+              <PhoneNumberCountryList />
 
-        {/*      <PhoneNumberControl />*/}
-        {/*    </PhoneNumber>*/}
-        {/*  </FormField>*/}
-        {/*</section>*/}
+              <PhoneNumberControl />
+            </PhoneNumber>
+          </FormField>
+        </section>
 
-        {/*ID issue */}
-        {/*<section>*/}
-        {/*  <h1>Popover</h1>*/}
+        <section>
+          <h1>Popover</h1>
 
-        {/*  <Popover open>*/}
-        {/*    <PopoverTrigger asChild>*/}
-        {/*      <Button aria-label="Open menu">*/}
-        {/*        <Icon name={ ICON_NAME.ellipsisVertical } />*/}
-        {/*      </Button>*/}
-        {/*    </PopoverTrigger>*/}
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button aria-label="Open menu">
+                <Icon name={ ICON_NAME.ellipsisVertical } />
+              </Button>
+            </PopoverTrigger>
 
-        {/*    <PopoverContent*/}
-        {/*      aria-label="I am the menu"*/}
-        {/*      withArrow>*/}
-        {/*      <div*/}
-        {/*        role="menu"*/}
-        {/*        style={{ display: 'flex', flexDirection: 'column' }}>*/}
-        {/*        <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>*/}
-        {/*        <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>*/}
-        {/*        <Divider style={{ width: '100%' }} />*/}
-        {/*        <Button color={BUTTON_COLOR.critical} role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>*/}
-        {/*      </div>*/}
-        {/*    </PopoverContent>*/}
-        {/*  </Popover>*/}
-        {/*</section>*/}
+            <PopoverContent
+              aria-label="I am the menu"
+              withArrow>
+              <div
+                role="menu"
+                style={{ display: 'flex', flexDirection: 'column' }}>
+                <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
+                <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
+                <Divider style={{ width: '100%' }} />
+                <Button color={BUTTON_COLOR.critical} role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
+              </div>
+            </PopoverContent>
+          </Popover>
+        </section>
 
         <section>
           <h1>Progress Bar</h1>
@@ -646,36 +663,35 @@ function App(): ReactElement {
           </FormField>
         </section>
 
-        {/* ID issue */}
-        {/*<section>*/}
-        {/*  <h1>Radio Group</h1>*/}
+        <section>
+          <h1>Radio Group</h1>
 
-        {/*  <FormField>*/}
-        {/*    <FormFieldLabel>*/}
-        {/*      Pick a language:*/}
-        {/*    </FormFieldLabel>*/}
+          <FormField>
+            <FormFieldLabel>
+              Pick a language:
+            </FormFieldLabel>
 
-        {/*    <RadioGroup>*/}
-        {/*      <Radio value="html">*/}
-        {/*        <RadioControl />*/}
+            <RadioGroup>
+              <Radio value="html">
+                <RadioControl />
 
-        {/*        <RadioLabel>HTML</RadioLabel>*/}
-        {/*      </Radio>*/}
+                <RadioLabel>HTML</RadioLabel>
+              </Radio>
 
-        {/*      <Radio value="css">*/}
-        {/*        <RadioControl />*/}
+              <Radio value="css">
+                <RadioControl />
 
-        {/*        <RadioLabel>CSS</RadioLabel>*/}
-        {/*      </Radio>*/}
+                <RadioLabel>CSS</RadioLabel>
+              </Radio>
 
-        {/*      <Radio value="js">*/}
-        {/*        <RadioControl />*/}
+              <Radio value="js">
+                <RadioControl />
 
-        {/*        <RadioLabel>JavaScript</RadioLabel>*/}
-        {/*      </Radio>*/}
-        {/*    </RadioGroup>*/}
-        {/*  </FormField>*/}
-        {/*</section>*/}
+                <RadioLabel>JavaScript</RadioLabel>
+              </Radio>
+            </RadioGroup>
+          </FormField>
+        </section>
 
         <section>
           <h1>Range</h1>
@@ -704,27 +720,26 @@ function App(): ReactElement {
           </FormField>
         </section>
 
-        {/*ID issue*/}
-        {/*<section>*/}
-        {/*  <h1>Select</h1>*/}
+        <section>
+          <h1>Select</h1>
 
-        {/*  <FormField>*/}
-        {/*    <FormFieldLabel>*/}
-        {/*      Select a Web hosting*/}
-        {/*    </FormFieldLabel>*/}
+          <FormField>
+            <FormFieldLabel>
+              Select a Web hosting
+            </FormFieldLabel>
 
-        {/*    <Select*/}
-        {/*      items={[*/}
-        {/*        { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },*/}
-        {/*        { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },*/}
-        {/*        { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },*/}
-        {/*      ]}>*/}
-        {/*      <SelectControl />*/}
+            <Select
+              items={[
+                { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
+                { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
+                { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
+              ]}>
+              <SelectControl />
 
-        {/*      <SelectContent />*/}
-        {/*    </Select>*/}
-        {/*  </FormField>*/}
-        {/*</section>*/}
+              <SelectContent />
+            </Select>
+          </FormField>
+        </section>
 
         <section>
           <h1>Skeleton</h1>
@@ -806,18 +821,29 @@ function App(): ReactElement {
           </Table>
         </section>
 
-        {/*ID issue*/}
-        {/*<section>*/}
-        {/*  <h1>Tabs</h1>*/}
+        <section>
+          <h1>Tabs</h1>
 
-        {/*  <Tabs defaultValue="tab1">*/}
-        {/*    <TabList>*/}
-        {/*      <Tab value="tab1">Tab 1</Tab>*/}
-        {/*      <Tab value="tab2">Tab 2</Tab>*/}
-        {/*      <Tab value="tab3">Tab 3</Tab>*/}
-        {/*    </TabList>*/}
-        {/*  </Tabs>*/}
-        {/*</section>*/}
+          <Tabs defaultValue="tab1">
+            <TabList>
+              <Tab value="tab1">Tab 1</Tab>
+              <Tab value="tab2">Tab 2</Tab>
+              <Tab value="tab3">Tab 3</Tab>
+            </TabList>
+
+            <TabContent value="tab1">
+              Tab content 1
+            </TabContent>
+
+            <TabContent value="tab2">
+              Tab content 2
+            </TabContent>
+
+            <TabContent value="tab3">
+              Tab content 3
+            </TabContent>
+          </Tabs>
+        </section>
 
         {/*KO contrast*/}
         {/*<section>*/}
@@ -885,37 +911,35 @@ function App(): ReactElement {
           </FormField>
         </section>
 
-        {/*ID issue*/}
-        {/*<section>*/}
-        {/*  <h1>Timepicker</h1>*/}
+        <section>
+          <h1>Timepicker</h1>
 
-        {/*  <FormField>*/}
-        {/*    <FormFieldLabel>*/}
-        {/*      Starting time:*/}
-        {/*    </FormFieldLabel>*/}
+          <FormField>
+            <FormFieldLabel>
+              Starting time:
+            </FormFieldLabel>
 
-        {/*    <Timepicker withSeconds>*/}
-        {/*      <TimepickerControl />*/}
+            <Timepicker withSeconds>
+              <TimepickerControl />
 
-        {/*      <TimepickerTimezoneList />*/}
-        {/*    </Timepicker>*/}
-        {/*  </FormField>*/}
-        {/*</section>*/}
+              <TimepickerTimezoneList />
+            </Timepicker>
+          </FormField>
+        </section>
 
-        {/*ID issue*/}
-        {/*<section>*/}
-        {/*  <h1>Toggle</h1>*/}
+        <section>
+          <h1>Toggle</h1>
 
-        {/*  <Toggle aria-label="Enable dark mode" />*/}
+          <Toggle aria-label="Enable dark mode" />
 
-        {/*  <FormField>*/}
-        {/*    <FormFieldLabel>*/}
-        {/*      Dark mode*/}
-        {/*    </FormFieldLabel>*/}
+          <FormField>
+            <FormFieldLabel>
+              Dark mode
+            </FormFieldLabel>
 
-        {/*    <Toggle />*/}
-        {/*  </FormField>*/}
-        {/*</section>*/}
+            <Toggle />
+          </FormField>
+        </section>
 
         <section>
           <h1>Tooltip</h1>

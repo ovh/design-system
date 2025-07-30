@@ -195,18 +195,17 @@ function App(): ReactElement {
           </Card>
         </section>
 
-        {/* KO: aria-hidden added by Ark on CheckboxControl */}
-        {/*<section>*/}
-        {/*  <h1>Checkbox</h1>*/}
+        <section>
+          <h1>Checkbox</h1>
 
-        {/*  <Checkbox>*/}
-        {/*    <CheckboxControl />*/}
+          <Checkbox>
+            <CheckboxControl />
 
-        {/*    <CheckboxLabel>*/}
-        {/*      I agree to the terms*/}
-        {/*    </CheckboxLabel>*/}
-        {/*  </Checkbox>*/}
-        {/*</section>*/}
+            <CheckboxLabel>
+              I agree to the terms
+            </CheckboxLabel>
+          </Checkbox>
+        </section>
 
         <section>
           <h1>Clipboard</h1>

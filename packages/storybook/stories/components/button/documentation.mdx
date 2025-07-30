@@ -130,22 +130,19 @@ The accessibility of the Button component must be carefully considered during it
 Button should always have a clear and descriptive text content to indicate their purpose.
 
 <Canvas of={ ButtonStories.AccessibilityExplicitTextContent } sourceState="shown" />
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the text content..
 
 <Heading label="Icon Button" level={ 3 } />
 If a Button contains only an Icon, it must include an aria-label to provide context.
 
 <Canvas of={ ButtonStories.AccessibilityIconOnly } sourceState="shown" />
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label.
 
 <Heading label="Using aria-labelledby for additional context" level={ 3 } />
 When a Button is associated with an existing label, content is read by screen readers when the Button receives focus.
 
 <Canvas of={ ButtonStories.AccessibilityLabelledBy } sourceState="shown" />
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> When the Button is focused, the screen reader should announce the linked label.

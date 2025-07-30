@@ -251,7 +251,7 @@ export const AccessibilityWithMenu: Story = {
     <Popover>
       <PopoverTrigger asChild>
         <Button>
-          <Icon aria-hidden="true" name={ICON_NAME.ellipsisVertical} />
+          <Icon name={ICON_NAME.ellipsisVertical} />
         </Button>
       </PopoverTrigger>
 

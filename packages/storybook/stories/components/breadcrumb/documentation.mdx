@@ -99,6 +99,5 @@ All links within the **Breadcrumb** component are focusable, following the readi
 **Breadcrumbs** are a form of navigation, but they serve a specific purpose distinct from primary navigation menus. To ensure they are correctly recognized, an <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> should be added to explicitly identify them.
 
 <Canvas of={ BreadcrumbStories.AccessibilityWithAriaLabel } sourceState="shown" />
- <Icon aria-hidden="true"
-       name={ ICON_NAME.circleCheck }
+ <Icon name={ ICON_NAME.circleCheck }
        style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the link, the label of the first link, the list and the number of item.

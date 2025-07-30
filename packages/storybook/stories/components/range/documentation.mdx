@@ -118,8 +118,7 @@ Every **Range** must have a clear and explicit label to ensure that users (espec
 using either **FormField** or native label tag.
 
 <Canvas of={ RangeStories.AccessibilityFormField } sourceState="shown" />
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the value, the fact it's a slider and its label.
 
 <Heading label="Always provide a descriptive sub-label in Dual Range" level={ 3 } />
@@ -127,6 +126,5 @@ Sub-label provide additional context about the values that are selected or adjus
 Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> to link the sub-label and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions">aria-live="polite"</ExternalLink> to ensure that the content is vocalized by screen readers.
 
 <Canvas of={ RangeStories.AccessibilityDescriptiveSubLabel } sourceState="shown" />
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the values, the fact it's a slider and its label.

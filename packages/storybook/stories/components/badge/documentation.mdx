@@ -130,16 +130,14 @@ If a **Badge** contains only an Icon, it must include an <ExternalLink href="htt
 
 <Canvas of={ BadgeStories.AccessibilityAriaLabel } sourceState="shown" />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the aria-label instead of ignoring the **Badge**.
 
 Since an Icon-only **Badge** may lack detailed information, attach a tooltip and use an <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> when extra context is needed:
 
 <Canvas of={ BadgeStories.AccessibilityWithTooltip } sourceState="shown" />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the **Tooltip** content when focusing on the **Badge** as **Tooltip** trigger.
 
 <Heading label="Structuring groups of Badges with lists" level={ 3 } />
@@ -148,8 +146,7 @@ When displaying multiple **Badges** together, they should be wrapped in a an uno
 
 <Canvas of={ BadgeStories.AccessibilityGrouping } sourceState="shown" />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This structure ensures that assistive technologies announce **Badges** as a list, rather than reading them as separate, unrelated announcements.
 Screen readers will announce the list and the number of items.
 
@@ -159,6 +156,5 @@ When modifying the HTML structure is not possible, <ExternalLink href="https://d
 
 <Canvas of={ BadgeStories.AccessibilityAlternativeGrouping } sourceState="shown" />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers still recognize the **Badges** as a structured list, even without native `<ul>` and `<li>` elements.

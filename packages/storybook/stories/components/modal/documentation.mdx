@@ -143,8 +143,7 @@ Ensure that assistive technologies announce the Modal correctly using `aria-labe
 
 <Canvas of={ ModalStories.AccessibilityAria } sourceState="shown" />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the different section linked by the aria attributes.
 
 <Heading label="Prioritize the least critical action in modal buttons" level={ 3 } />
@@ -153,6 +152,5 @@ For Modals that require user decisions (e.g., confirmation dialogs), place the l
 
 <Canvas of={ ModalStories.AccessibilityActions } sourceState="shown" />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Users will first encounter the non-destructive action (e.g., "Cancel"), reducing accidental confirmations.

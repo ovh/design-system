@@ -102,7 +102,7 @@ export const AccessibilityAriaLabel: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Badge>
-      <Icon name={ICON_NAME.tag} aria-label="Promotion"></Icon>
+      <Icon name={ICON_NAME.tag} aria-label="Promotion" role="img"></Icon>
     </Badge>
   ),
 };

@@ -92,12 +92,10 @@ Explanations:
 - `aria-busy="true"` informs assistive technologies that content is being updated
 - `aria-live="polite"` ensures that the loading message is announced when necessary without interrupting the user
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This approach ensures that users with assistive technologies understand when loading starts and ends
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleInfo }
+<Icon name={ ICON_NAME.circleInfo }
       style={{ color: 'var(--ods-color-primary-500)' }} /> Once the content is loaded, aria-busy should be set to false
 
 Linking the **Spinner** to a loading description
@@ -106,12 +104,10 @@ If the **Spinner** is associated with a specific loading action, it should be ex
 
 <Canvas of={ SpinnerStories.AccessibilityAriaLabel } sourceState="shown" />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "Loading user profile, indeterminate, progress indicator".
 
 <Canvas of={ SpinnerStories.AccessibilityAriaLabelledBy } sourceState="shown" />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "Loading user profile, indeterminate, progress indicator".

@@ -204,7 +204,7 @@ export const CustomStyle = () => (
 export const Accessibility = () => (
   <Tooltip>
     <TooltipTrigger asChild>
-      <Icon  name={ ICON_NAME.circleQuestion } />
+      <Icon name={ ICON_NAME.circleQuestion } />
     </TooltipTrigger>
 
     <TooltipContent>

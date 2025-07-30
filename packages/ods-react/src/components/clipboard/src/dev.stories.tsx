@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { INPUT_I18N } from '../../input/src';
 import { Clipboard, ClipboardControl, ClipboardTrigger } from '.';
 import style from './dev.module.css';
 
@@ -32,6 +33,18 @@ export const Disabled = () => (
   <Clipboard value="Disabled" disabled>
     <ClipboardControl />
     <ClipboardTrigger labelCopy="Copy to clipboard" labelCopySuccess="Copied!" />
+  </Clipboard>
+);
+
+export const I18n = () => (
+  <Clipboard value="i18n">
+    <ClipboardControl
+      i18n={{
+        [INPUT_I18N.maskButtonHide]: 'Hide away the clipboard content',
+        [INPUT_I18N.maskButtonShow]: 'Show me the clipboard content',
+      }}
+      maskOption={{ enable: true }} />
+    <ClipboardTrigger />
   </Clipboard>
 );
 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
+import { INPUT_I18N } from '../../input/src';
 import { Modal, ModalBody, ModalContent } from '../../modal/src';
 import { Datepicker, DatepickerContent, DatepickerControl, type DatepickerView } from '.';
 import style from './dev.module.css';
@@ -98,6 +99,16 @@ export const DisabledWeekDays = () => (
     disabledWeekDays={ [0, 3] }
     open>
     <DatepickerControl />
+
+    <DatepickerContent />
+  </Datepicker>
+);
+
+export const I18n = () => (
+  <Datepicker>
+    <DatepickerControl
+      clearable
+      i18n={{ [INPUT_I18N.clearButton]: 'Clear datepicker' }} />
 
     <DatepickerContent />
   </Datepicker>

@@ -1,11 +1,11 @@
 import {
-  BUTTON_COLOR, BUTTON_VARIANT, CARD_COLOR, DIVIDER_COLOR, DRAWER_POSITION, ICON_NAME, MESSAGE_COLOR, TEXT_PRESET,
+  BUTTON_COLOR, BUTTON_VARIANT, CARD_COLOR, DIVIDER_COLOR, DRAWER_POSITION, ICON_NAME, MESSAGE_COLOR, TAG_COLOR, TEXT_PRESET,
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
   Badge,
-  // Breadcrumb, BreadcrumbItem, BreadcrumbLink,
+  Breadcrumb, BreadcrumbItem, BreadcrumbLink,
   Button,
   Card,
-  // Checkbox, CheckboxControl, CheckboxLabel,
+  Checkbox, CheckboxControl, CheckboxLabel,
   Clipboard, ClipboardControl, ClipboardTrigger,
   Code,
   Combobox, ComboboxContent, ComboboxControl,
@@ -16,7 +16,7 @@ import {
   FileUpload, FileUploadItem, FileUploadList,
   Icon,
   Input,
-  // Link,
+  Link,
   Medium,
   Message, MessageBody, MessageIcon,
   Modal, ModalBody, ModalContent, ModalTrigger,
@@ -34,7 +34,7 @@ import {
   Switch, SwitchItem,
   Table,
   Tabs, TabContent, TabList, Tab,
-  // Tag,
+  Tag,
   Text,
   Textarea,
   Timepicker, TimepickerControl, TimepickerTimezoneList,
@@ -75,6 +75,10 @@ function App(): ReactElement {
         <section>
           <h1>Badge</h1>
 
+          <Badge size="sm">
+            Small badge
+          </Badge>
+
           <Badge>
             <Icon
               aria-label="Promotion"
@@ -83,36 +87,73 @@ function App(): ReactElement {
           </Badge>
         </section>
 
-        {/*Link gradient issue*/}
-        {/*<section>*/}
-        {/*  <h1>Breadcrumb</h1>*/}
+        <section>
+          <h1>Breadcrumb</h1>
 
-        {/*  <Breadcrumb aria-label="Breadcrumb">*/}
-        {/*    <BreadcrumbItem>*/}
-        {/*      <BreadcrumbLink aria-label="Home" href="#">*/}
-        {/*        <Icon aria-hidden='true' name={ ICON_NAME.home } />*/}
-        {/*      </BreadcrumbLink>*/}
-        {/*    </BreadcrumbItem>*/}
+          <Breadcrumb>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">
+                Home
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">
+                Products
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">
+                Hosting
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">
+                Servers
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">
+                Dedicated
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">
+                Rise
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">
+                RISE-2
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
 
-        {/*    <BreadcrumbItem>*/}
-        {/*      <BreadcrumbLink href="#">*/}
-        {/*        Category*/}
-        {/*      </BreadcrumbLink>*/}
-        {/*    </BreadcrumbItem>*/}
+          <Breadcrumb aria-label="Breadcrumb">
+            <BreadcrumbItem>
+              <BreadcrumbLink aria-label="Home" href="#">
+                <Icon aria-hidden='true' name={ ICON_NAME.home } />
+              </BreadcrumbLink>
+            </BreadcrumbItem>
 
-        {/*    <BreadcrumbItem>*/}
-        {/*      <BreadcrumbLink href="#">*/}
-        {/*        Subcategory*/}
-        {/*      </BreadcrumbLink>*/}
-        {/*    </BreadcrumbItem>*/}
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">
+                Category
+              </BreadcrumbLink>
+            </BreadcrumbItem>
 
-        {/*    <BreadcrumbItem>*/}
-        {/*      <BreadcrumbLink href="#">*/}
-        {/*        Current page*/}
-        {/*      </BreadcrumbLink>*/}
-        {/*    </BreadcrumbItem>*/}
-        {/*  </Breadcrumb>*/}
-        {/*</section>*/}
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">
+                Subcategory
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">
+                Current page
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </section>
 
         <section>
           <h1>Button</h1>
@@ -154,6 +195,27 @@ function App(): ReactElement {
           <Button color={ BUTTON_COLOR.primary } variant={ BUTTON_VARIANT.outline }>Primary</Button>
           <Button color={ BUTTON_COLOR.success } variant={ BUTTON_VARIANT.outline }>Success</Button>
           <Button color={ BUTTON_COLOR.warning } variant={ BUTTON_VARIANT.outline }>Warning</Button>
+          <br /><br />
+          <Button color={ BUTTON_COLOR.critical } size="sm">Critical</Button>
+          <Button color={ BUTTON_COLOR.information } size="sm">Information</Button>
+          <Button color={ BUTTON_COLOR.neutral } size="sm">Neutral</Button>
+          <Button color={ BUTTON_COLOR.primary } size="sm">Primary</Button>
+          <Button color={ BUTTON_COLOR.success } size="sm">Success</Button>
+          <Button color={ BUTTON_COLOR.warning } size="sm">Warning</Button>
+          <br /><br />
+          <Button color={ BUTTON_COLOR.critical } size="sm" variant={ BUTTON_VARIANT.ghost }>Critical</Button>
+          <Button color={ BUTTON_COLOR.information } size="sm" variant={ BUTTON_VARIANT.ghost }>Information</Button>
+          <Button color={ BUTTON_COLOR.neutral } size="sm" variant={ BUTTON_VARIANT.ghost }>Neutral</Button>
+          <Button color={ BUTTON_COLOR.primary } size="sm" variant={ BUTTON_VARIANT.ghost }>Primary</Button>
+          <Button color={ BUTTON_COLOR.success } size="sm" variant={ BUTTON_VARIANT.ghost }>Success</Button>
+          <Button color={ BUTTON_COLOR.warning } size="sm" variant={ BUTTON_VARIANT.ghost }>Warning</Button>
+          <br /><br />
+          <Button color={ BUTTON_COLOR.critical } size="sm" variant={ BUTTON_VARIANT.outline }>Critical</Button>
+          <Button color={ BUTTON_COLOR.information } size="sm" variant={ BUTTON_VARIANT.outline }>Information</Button>
+          <Button color={ BUTTON_COLOR.neutral } size="sm" variant={ BUTTON_VARIANT.outline }>Neutral</Button>
+          <Button color={ BUTTON_COLOR.primary } size="sm" variant={ BUTTON_VARIANT.outline }>Primary</Button>
+          <Button color={ BUTTON_COLOR.success } size="sm" variant={ BUTTON_VARIANT.outline }>Success</Button>
+          <Button color={ BUTTON_COLOR.warning } size="sm" variant={ BUTTON_VARIANT.outline }>Warning</Button>
         </section>
 
         <section>
@@ -195,18 +257,17 @@ function App(): ReactElement {
           </Card>
         </section>
 
-        {/* KO: aria-hidden added by Ark on CheckboxControl */}
-        {/*<section>*/}
-        {/*  <h1>Checkbox</h1>*/}
+        <section>
+          <h1>Checkbox</h1>
 
-        {/*  <Checkbox>*/}
-        {/*    <CheckboxControl />*/}
+          <Checkbox>
+            <CheckboxControl />
 
-        {/*    <CheckboxLabel>*/}
-        {/*      I agree to the terms*/}
-        {/*    </CheckboxLabel>*/}
-        {/*  </Checkbox>*/}
-        {/*</section>*/}
+            <CheckboxLabel>
+              I agree to the terms
+            </CheckboxLabel>
+          </Checkbox>
+        </section>
 
         <section>
           <h1>Clipboard</h1>
@@ -460,27 +521,26 @@ function App(): ReactElement {
           </FormField>
         </section>
 
-        {/*Contrast issue with gradient*/}
-        {/*<section>*/}
-        {/*  <h1>Link</h1>*/}
+        <section>
+          <h1>Link</h1>
 
-        {/*  <Link aria-label="Go to homepage" href="https://www.ovhcloud.com">*/}
-        {/*    <Icon name="home" />*/}
-        {/*  </Link>*/}
+          <Link aria-label="Go to homepage" href="https://www.ovhcloud.com">
+            <Icon name="home" />
+          </Link>
 
-        {/*  <Link*/}
-        {/*    aria-label="Visit Example (opens in a new tab)"*/}
-        {/*    href="https://www.ovhcloud.com"*/}
-        {/*    target="_blank">*/}
-        {/*    <Icon name="external-link" />*/}
-        {/*  </Link>*/}
+          <Link
+            aria-label="Visit Example (opens in a new tab)"
+            href="https://www.ovhcloud.com"
+            target="_blank">
+            <Icon name="external-link" />
+          </Link>
 
-        {/*  <Link*/}
-        {/*    href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">*/}
-        {/*    <Icon name="download" />*/}
-        {/*    <span>Download WCAG20 Guidelines (PDF, 481 KB)</span>*/}
-        {/*  </Link>*/}
-        {/*</section>*/}
+          <Link
+            href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
+            <Icon name="download" />
+            <span>Download WCAG20 Guidelines (PDF, 481 KB)</span>
+          </Link>
+        </section>
 
         <section>
           <h1>Medium</h1>
@@ -780,6 +840,20 @@ function App(): ReactElement {
             <SwitchItem value="item-2">Item 2</SwitchItem>
             <SwitchItem value="item-3">Item 3</SwitchItem>
           </Switch>
+
+          <Switch
+            aria-label="Select an item"
+            size="sm">
+            <SwitchItem value="item-1">
+              Item 1
+            </SwitchItem>
+            <SwitchItem value="item-2">
+              Item 2
+            </SwitchItem>
+            <SwitchItem value="item-3">
+              Item 3
+            </SwitchItem>
+          </Switch>
         </section>
 
         <section>
@@ -845,31 +919,30 @@ function App(): ReactElement {
           </Tabs>
         </section>
 
-        {/*KO contrast*/}
-        {/*<section>*/}
-        {/*  <h1>Tag</h1>*/}
+        <section>
+          <h1>Tag</h1>
 
-        {/*  <Tag color={ TAG_COLOR.critical }>Critical</Tag>*/}
-        {/*  <Tag color={ TAG_COLOR.information }>Information</Tag>*/}
-        {/*  <Tag color={ TAG_COLOR.neutral }>Neutral</Tag>*/}
-        {/*  <Tag color={ TAG_COLOR.primary }>Primary</Tag>*/}
-        {/*  <Tag color={ TAG_COLOR.success }>Success</Tag>*/}
-        {/*  <Tag color={ TAG_COLOR.warning }>Warning</Tag>*/}
+          <Tag color={ TAG_COLOR.critical } size="lg">Critical</Tag>
+          <Tag color={ TAG_COLOR.information }>Information</Tag>
+          <Tag color={ TAG_COLOR.neutral }>Neutral</Tag>
+          <Tag color={ TAG_COLOR.primary }>Primary</Tag>
+          <Tag color={ TAG_COLOR.success }>Success</Tag>
+          <Tag color={ TAG_COLOR.warning }>Warning</Tag>
 
-        {/*  <Tag aria-label="Remove my tag">My tag</Tag>*/}
+          <Tag aria-label="Remove my tag">My tag</Tag>
 
-        {/*  <div role="list">*/}
-        {/*    <div role="listitem">*/}
-        {/*      <Tag>Design</Tag>*/}
-        {/*    </div>*/}
-        {/*    <div role="listitem">*/}
-        {/*      <Tag>Development</Tag>*/}
-        {/*    </div>*/}
-        {/*    <div role="listitem">*/}
-        {/*      <Tag>Accessibility</Tag>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        {/*</section>*/}
+          <div role="list">
+            <div role="listitem">
+              <Tag>Design</Tag>
+            </div>
+            <div role="listitem">
+              <Tag>Development</Tag>
+            </div>
+            <div role="listitem">
+              <Tag>Accessibility</Tag>
+            </div>
+          </div>
+        </section>
 
         <section>
           <h1>Text</h1>

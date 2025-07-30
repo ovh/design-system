@@ -64,7 +64,6 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
                 ? <>
                   { labelCopySuccess }
                   <Icon
-                    aria-hidden="true"
                     className={ style['clipboard-trigger__tooltip__check'] }
                     name={ ICON_NAME.check } />
                 </> : labelCopy

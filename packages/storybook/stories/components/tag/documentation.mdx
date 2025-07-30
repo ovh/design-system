@@ -120,8 +120,7 @@ When multiple **Tags** are displayed together (e.g., a collection of selected fi
 
 <Canvas of={ TagStories.inList } sourceState='shown' />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This allows screen readers to announce a list with the number of items, making it clear that these **Tags** belong to a structured set.
 
 <Heading label="Alternative approach" level={ 3 } />
@@ -130,8 +129,7 @@ When modifying the HTML structure is not possible, `role="list"` and `role="list
 
 <Canvas of={ TagStories.withAriaRoles } sourceState='shown' />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers still recognize the **Tags** as a structured list, even without native `<ul>` and `<li>` elements.
 
 <Heading label="Announcing the delete action with aria-label" level={ 3 } />
@@ -140,6 +138,5 @@ Since the **Tag** is removable, it should provide clear feedback to assistive te
 
 <Canvas of={ TagStories.withAriaLabel } sourceState='shown' />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that users know the **Tag** can be removed. Screen readers will announce the tag aria label and the button type.

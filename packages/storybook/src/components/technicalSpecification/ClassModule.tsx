@@ -88,7 +88,8 @@ const ClassModule = ({ component, extraInfo }: ClassModuleProp): JSX.Element => 
                         prop.isOptional ? '-' :
                           <Icon aria-label="Required"
                                 className={ styles['class-module__properties__body__is-required--required'] }
-                                name={ ICON_NAME.check } />
+                                name={ ICON_NAME.check }
+                                role="img" />
                       }
                     </td>
 

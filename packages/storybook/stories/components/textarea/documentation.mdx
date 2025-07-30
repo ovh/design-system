@@ -108,8 +108,7 @@ using either **FormField** or native label tag.
 
 <Canvas of={ TextareaStories.AccessibilityFormField } sourceState="shown" />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label as well as the textarea field.
 
 <Heading label="Linking helper text" level={ 3 } />
@@ -119,6 +118,5 @@ Every **Textarea** should ensure that helper text is properly announced by scree
 
 <Canvas of={ TextareaStories.AccessibilityDescribedBy } sourceState="shown" />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the textarea field and the helper text.

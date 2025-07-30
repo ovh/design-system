@@ -106,8 +106,7 @@ If multiple **Cards** are displayed together (e.g., a collection of products, ar
 
 <Canvas of={ CardStories.AccessibilityGrouping } sourceState="shown" />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This structure ensures that assistive technologies announce **Cards** as a list, rather than reading them as separate, unrelated announcements.
 Screen readers will announce the list and the number of items.
 
@@ -117,6 +116,5 @@ When modifying the HTML structure is not possible, <ExternalLink href="https://d
 
 <Canvas of={ CardStories.AccessibilityAlternativeGrouping } sourceState="shown" />
 
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers still recognize the **Cards** as a structured list, even without native `<ul>` and `<li>` elements.

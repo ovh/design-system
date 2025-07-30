@@ -106,22 +106,19 @@ The accessibility of the **Link** component must be carefully considered during 
 If a **Link** is represented only by an **Icon**, it must have an explicit accessible label to provide context about its destination or action.
 
 <Canvas of={ LinkStories.AccessibilityIconOnlyLink } sourceState="shown" />
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the link type and its label.
 
 <Heading label="Link opening in a new tab" level={ 3 } />
 When a **Link** opens in a new tab (`target="_blank"`), users should be informed to avoid confusion. This can be done by adding a visual indicator (e.g., Icon: "external") and using `aria-label` to provide context.
 
 <Canvas of={ LinkStories.AccessibilityInANewTab } sourceState="shown" />
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> The screen reader will announce the link type, the opening in a new tab behavior and the link label.
 
 <Heading label="Downloadable files" level={ 3 } />
 If a **Link** points to a file download, it should include file type and size information to set user expectations.
 
 <Canvas of={ LinkStories.AccessibilityFileDownload } sourceState="shown" />
-<Icon aria-hidden="true"
-      name={ ICON_NAME.circleCheck }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the link type, the link label with the file name, type and size, ensuring users know they are downloading a file.

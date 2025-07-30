@@ -193,9 +193,7 @@ export const Demo: Story = {
 export const AccessibilityDecorative: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <Icon
-      aria-hidden="true"
-      name="cloud" />
+    <Icon name="cloud" />
   ),
 };
 
@@ -204,7 +202,8 @@ export const AccessibilityInformative: Story = {
   render: ({}) => (
     <Icon
       aria-label="home"
-      name="home" />
+      name="home"
+      role="img" />
   ),
 };
 
@@ -258,7 +257,6 @@ export const Overview: Story = {
   },
   render: ({}) => (
     <Icon
-      aria-hidden="true"
       name="home"
       style={{ fontSize: '2rem', color: 'var(--ods-color-primary-500)' }} />
   ),
@@ -267,9 +265,7 @@ export const Overview: Story = {
 export const Decorative: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <Icon
-      aria-hidden="true"
-      name="home" />
+    <Icon name="home" />
   ),
 };
 
@@ -285,15 +281,16 @@ export const Informative: Story = {
   render: ({}) => (
     <Icon
       aria-label="Help"
-      name="circle-question" />
+      name="circle-question"
+      role="img"
+    />
   ),
 };
 
 export const AccessibilityBadPracticeDecorative: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <Icon
-      name="home" />
+    <Icon name="home" />
   ),
 };
 
@@ -303,11 +300,11 @@ export const AccessibilityBadPracticeRating: Story = {
     <>
       <label htmlFor="rating">Rating</label>
       <div id="rating">
-        <Icon name="star" tabIndex={ 0 } aria-label="one star" />
-        <Icon name="star" tabIndex={ 0 } aria-label="two star" />
-        <Icon name="star" tabIndex={ 0 } aria-label="three star" />
-        <Icon name="star" tabIndex={ 0 } aria-label="four star" />
-        <Icon name="star" tabIndex={ 0 } aria-label="five star" />
+        <Icon name="star" tabIndex={ 0 } aria-label="one star" role="img" />
+        <Icon name="star" tabIndex={ 0 } aria-label="two star" role="img" />
+        <Icon name="star" tabIndex={ 0 } aria-label="three star" role="img" />
+        <Icon name="star" tabIndex={ 0 } aria-label="four star" role="img" />
+        <Icon name="star" tabIndex={ 0 } aria-label="five star" role="img" />
       </div>
     </>
   ),

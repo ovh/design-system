@@ -4,24 +4,37 @@ $ods-link-font-weight: 600;
 
 @mixin ods-link() {
   display: inline-flex;
+  position: relative;
   flex-flow: row;
   gap: 8px;
   align-items: center;
-  transition: background-size .2s ease-out;
-  background-image: linear-gradient(currentcolor, currentcolor);
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  background-size: 0 1px;
   cursor: pointer;
   width: max-content;
   text-decoration: none;
   color: var(--ods-color-primary-500);
   font-weight: $ods-link-font-weight;
 
-  &:focus-visible,
-  &:hover {
-    background-size: 100% 1px;
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .2s ease-out;
+    background-color: currentcolor;
+    width: 100%;
+    height: 1px;
+    content: "";
+    will-change: transform;
+  }
+
+  &:hover,
+  &:focus-visible {
     color: var(--ods-color-primary-600);
+
+    &::after {
+      transform: scaleX(1);
+    }
   }
 
   &:focus-visible {

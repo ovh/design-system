@@ -118,7 +118,7 @@ To ensure accessibility, it is important to:
 
 When multiple **Tags** are displayed together (e.g., a collection of selected filters or labels), they should be wrapped in a an unordered list of items (`<ul>` and `<li>`) to ensure proper announcement by screen readers.
 
-<Canvas of={ TagStories.inList } sourceState='shown' />
+<Canvas of={ TagStories.InList } sourceState='shown' />
 
 <Icon aria-hidden="true"
       name={ ICON_NAME.circleCheck }
@@ -128,7 +128,7 @@ When multiple **Tags** are displayed together (e.g., a collection of selected fi
 
 When modifying the HTML structure is not possible, `role="list"` and `role="listitem"` can be used to provide equivalent semantics.
 
-<Canvas of={ TagStories.withAriaRoles } sourceState='shown' />
+<Canvas of={ TagStories.WithAriaRoles } sourceState='shown' />
 
 <Icon aria-hidden="true"
       name={ ICON_NAME.circleCheck }
@@ -138,7 +138,7 @@ When modifying the HTML structure is not possible, `role="list"` and `role="list
 
 Since the **Tag** is removable, it should provide clear feedback to assistive technologies.
 
-<Canvas of={ TagStories.withAriaLabel } sourceState='shown' />
+<Canvas of={ TagStories.WithAriaLabel } sourceState='shown' />
 
 <Icon aria-hidden="true"
       name={ ICON_NAME.circleCheck }

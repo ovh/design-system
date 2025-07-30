@@ -40,6 +40,7 @@ const FileUpload: FC<FileUploadProp> = forwardRef(({
     }
   }, [onFileReject]);
   const isInvalid = invalid || fieldContext?.invalid;
+  const hiddenInputId = id || fieldContext?.id;
 
   return (
     <FileUploadProvider locale={ locale }>
@@ -53,6 +54,9 @@ const FileUpload: FC<FileUploadProp> = forwardRef(({
         )}
         directory={ false }
         disabled={ disabled }
+        ids={{
+          hiddenInput: hiddenInputId,
+        }}
         invalid={ isInvalid }
         maxFiles={ maxFile }
         maxFileSize={ maxSize }
@@ -82,7 +86,7 @@ const FileUpload: FC<FileUploadProp> = forwardRef(({
         <VendorFileUpload.HiddenInput
           aria-invalid={ isInvalid }
           aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
-          id={ id || fieldContext?.id }/>
+          id={ hiddenInputId } />
       </VendorFileUpload.Root>
     </FileUploadProvider>
   );

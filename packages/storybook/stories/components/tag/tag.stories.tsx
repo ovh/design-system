@@ -107,13 +107,13 @@ export const Size: Story = {
   },
   render: ({}) => (
     <>
-      <Tag size={ TAG_SIZE.md }>My tag</Tag>
-      <Tag size={ TAG_SIZE.lg }>My tag</Tag>
+      <Tag size={ TAG_SIZE.md }>MD tag</Tag>
+      <Tag size={ TAG_SIZE.lg }>LG tag</Tag>
     </>
   ),
 };
 
-export const inList: Story = {
+export const InList: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['!dev'],
   parameters: {
@@ -134,7 +134,7 @@ export const inList: Story = {
   ),
 };
 
-export const withAriaRoles: Story = {
+export const WithAriaRoles: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['!dev'],
   parameters: {
@@ -155,7 +155,7 @@ export const withAriaRoles: Story = {
   ),
 };
 
-export const withAriaLabel: Story = {
+export const WithAriaLabel: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['!dev'],
   parameters: {

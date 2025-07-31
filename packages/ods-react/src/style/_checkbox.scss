@@ -2,6 +2,7 @@ $ods-checkbox-size: 16px;
 
 @mixin ods-checkbox() {
   appearance: none;
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;

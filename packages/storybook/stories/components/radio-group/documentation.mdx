@@ -1,4 +1,5 @@
 import { Canvas, Meta } from '@storybook/blocks';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import * as RadioGroupStories from './radio-group.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
@@ -105,5 +106,7 @@ Pressing `Arrow Up` or `Arrow Left` moves focus and selects the previous radio b
 Pressing `Space` when focused on an unchecked radio button selects it.
 
 <Heading label="Accessibility" level={ 2 } />
+
+This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA/apg/patterns/radio/">Radio Group WAI-ARIA design pattern</ExternalLink>
 
 Try to keep a vertical spacing of at least `8px` between each radio buttons, to provide sufficient tactile and visual separation.

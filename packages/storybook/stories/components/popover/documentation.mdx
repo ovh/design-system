@@ -106,6 +106,8 @@ To ensure proper accessibility, **Popover** component must specify its content n
 
 <Heading label="Specify the Popover's content nature" level={ 3 } />
 
+Update the content type on the **Popover Trigger**, which is set by default to `aria-haspopup="dialog"`.
+
 <Table>
   <thead>
     <tr>
@@ -165,4 +167,4 @@ To ensure proper accessibility, **Popover** component must specify its content n
 
 <Canvas of={PopoverStories.AccessibilityWithMenu} sourceState='shown' />
 <Icon name={ ICON_NAME.circleCheck }
-      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will recognize that this **Popover** contains a menu and menu items. It indicates that the element can trigger a popup and the nature of this popup.
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will recognize that **Popover** contains a menu and menu items. It indicates that the element can trigger a popup and the nature of this popup.

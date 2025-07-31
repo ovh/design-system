@@ -449,3 +449,35 @@ export const InFormField: Story = {
     );
   },
 };
+
+export const AccessibilityFormField: Story = {
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FormField>
+        <FormFieldLabel>
+          Files:
+        </FormFieldLabel>
+
+        <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+          <FileUploadList>
+            {
+              files.map((file: File, idx) => (
+                <FileUploadItem
+                  file={ file }
+                  key={ idx } />
+              ))
+            }
+          </FileUploadList>
+        </FileUpload>
+      </FormField>
+    );
+  },
+};

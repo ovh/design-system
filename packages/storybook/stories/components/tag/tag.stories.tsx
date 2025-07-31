@@ -113,12 +113,8 @@ export const Size: Story = {
   ),
 };
 
-export const InList: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+export const AccessibilityList: Story = {
   tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
   render: ({}) => (
     <ul>
       <li>
@@ -134,12 +130,8 @@ export const InList: Story = {
   ),
 };
 
-export const WithAriaRoles: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+export const AccessibilityAriaRoles: Story = {
   tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
   render: ({}) => (
     <div role="list">
       <div role="listitem">
@@ -155,12 +147,8 @@ export const WithAriaRoles: Story = {
   ),
 };
 
-export const WithAriaLabel: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+export const AccessibilityAriaLabel: Story = {
   tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
   render: ({}) => (
     <Tag aria-label="Remove my tag">My tag</Tag>
   ),

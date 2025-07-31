@@ -3,6 +3,7 @@ import React from 'react';
 import { Clipboard, ClipboardControl, type ClipboardControlProp, type ClipboardProp, ClipboardTrigger, type ClipboardTriggerProp } from '../../../../ods-react/src/components/clipboard/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 
 type Story = StoryObj<ClipboardProp>;
 type DemoArg = Partial<ClipboardProp> & Partial<ClipboardControlProp> & Partial<ClipboardTriggerProp> & {
@@ -139,5 +140,18 @@ export const Disabled: Story = {
       <ClipboardControl />
       <ClipboardTrigger />
     </Clipboard>
+  ),
+};
+
+export const AccessibilityFormField: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>API key:</FormFieldLabel>
+      <Clipboard value="loremipsum">
+        <ClipboardControl />
+        <ClipboardTrigger />
+      </Clipboard>
+    </FormField>
   ),
 };

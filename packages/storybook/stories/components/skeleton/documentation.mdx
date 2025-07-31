@@ -3,6 +3,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as SkeletonStories from './skeleton.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
@@ -73,7 +74,7 @@ For this reason, it is hidden from screen readers.
 
 <Heading label="Indicating loading state" level={ 3 } />
 
-To ensure screen reader users are aware that content is being loaded, you should set `aria-busy="true"` on the container that will eventually receive the content.
+To ensure screen reader users are aware that content is being loaded, you should set <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy">aria-busy</ExternalLink> on the container that will eventually receive the content.
 
 <Canvas of={ SkeletonStories.AccessibilityLoading } sourceState="shown" />
 

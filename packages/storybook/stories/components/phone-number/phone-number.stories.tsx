@@ -1,9 +1,11 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
+import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
 import { PHONE_NUMBER_COUNTRY_ISO_CODES, PhoneNumber, PhoneNumberControl, type PhoneNumberControlProp, PhoneNumberCountryList, type PhoneNumberProp } from '../../../../ods-react/src/components/phone-number/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<PhoneNumberProp>;
 type DemoArg = Partial<PhoneNumberProp> & Partial<PhoneNumberControlProp> & {
@@ -256,3 +258,46 @@ export const Readonly: Story = {
     </>
   ),
 };
+
+export const AccessibilityFormField: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Phone number:
+      </FormFieldLabel>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </FormField>
+  ),
+};
+
+export const AccessibilityI18n: Story = {
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Phone number:
+      </FormFieldLabel>
+      <PhoneNumber country="fr" defaultValue="06 01 02 03 04">
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl
+          clearable
+          i18n={{
+            [INPUT_I18N.clearButton]: 'Clear phone number',
+          }} />
+      </PhoneNumber>
+    </FormField>
+  ),
+};
+

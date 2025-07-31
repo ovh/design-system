@@ -111,16 +111,16 @@ Pressing `Escape` closes the **Tooltip** immediately if it is open.
 
 <Heading label="Accessibility" level={ 2 } />
 
-**Tooltips** are used to provide supplementary information about a UI element, often on hover or focus.
-**Tooltip** follows the <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tooltip_role">WAI-ARIA Tooltip Role</ExternalLink>, which ensures that their content is announced by screen readers when appropriate.
+**Tooltips** are used to provide supplementary information about a UI element.
+This component complies with the <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tooltip_role">Tooltip WAI-ARIA design pattern</ExternalLink>.
 
-To ensure accessibility, it is advised to set a minimal **Tooltip** trigger height to at least `24px`, to provide sufficient visual clarity and separation.
+You should set a minimal **Tooltip Trigger** height to at least `24px` to provide sufficient visual clarity.
 
 <Heading label="Use tooltips to provide additional context" level={ 3 } />
 
-If your UI includes an unlabeled or ambiguous element, consider attaching a **Tooltip** that explains its function or purpose.
+If your UI includes an unlabeled or ambiguous element, consider attaching a **Tooltip** that explains its purpose.
 
 <Canvas of={TooltipStories.AccessibilityTooltip} sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
-      style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen reader users receive the contextual information.
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screens will announce the tooltip information.

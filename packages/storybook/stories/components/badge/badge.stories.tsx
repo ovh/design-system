@@ -114,7 +114,7 @@ export const AccessibilityWithTooltip: Story = {
       <TooltipTrigger asChild>
         <Badge color={ BADGE_COLOR.promotion }
                aria-labelledby="tooltip-a11y"
-               tabIndex={ 0 }>
+        >
           <Icon name={ ICON_NAME.tag } />
         </Badge>
       </TooltipTrigger>
@@ -132,12 +132,12 @@ export const AccessibilityGrouping: Story = {
     <ul style={{ display: 'flex', flexFlow: 'row', gap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
       <li>
         <Badge>
-          My badge
+          Item 1
         </Badge>
       </li>
       <li>
         <Badge>
-          My badge
+          Item 2
         </Badge>
       </li>
     </ul>
@@ -150,10 +150,10 @@ export const AccessibilityAlternativeGrouping: Story = {
     <div role="list" style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center',
     }}>
       <Badge role="listitem">
-        My badge
+        Item 1
       </Badge>
       <Badge role="listitem">
-        My badge
+        Item 2
       </Badge>
     </div>
   ),

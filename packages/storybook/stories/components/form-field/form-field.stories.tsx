@@ -1,3 +1,4 @@
+import { Input } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { type FormEvent, useState } from 'react';
 import { FormField, type FormFieldProp, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
@@ -160,4 +161,21 @@ export const Overview: Story = {
       </FormField>
     );
   },
+};
+
+export const AccessibilityLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Login:
+      </FormFieldLabel>
+
+      <Input name="input" />
+
+      <FormFieldHelper>
+        Username or email address
+      </FormFieldHelper>
+    </FormField>
+  ),
 };

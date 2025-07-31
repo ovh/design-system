@@ -2,6 +2,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as TabsStories from './tabs.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 
@@ -88,3 +89,7 @@ Pressing `Arrow Left` moves focus to the previous **Tab** and activates its cont
 Pressing `Home` / `fn` + `Arrow Left` moves focus to the first **Tab** and activates its content.
 
 Pressing `End` / `fn` + `Arrow Right` moves focus to the last **Tab** and activates its content.
+
+<Heading label="Accessibility" level={ 2 } />
+
+This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/">Tabs WAI-ARIA design pattern</ExternalLink>.

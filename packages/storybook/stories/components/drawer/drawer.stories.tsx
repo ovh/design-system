@@ -222,3 +222,48 @@ export const Position: Story = {
     </>
   ),
 }
+
+
+export const AccessibilityAriaLabelledBy: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Drawer>
+      <DrawerTrigger asChild>
+        <Button>
+          Trigger Drawer
+        </Button>
+      </DrawerTrigger>
+
+      <DrawerContent aria-describedby="drawer-content" aria-labelledby="drawer-title">
+        <DrawerBody>
+          <h2 id="drawer-title">
+            My drawer
+          </h2>
+
+          <p id="drawer-content">
+            The drawer content
+          </p>
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+  ),
+};
+
+export const AccessibilityAriaLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Drawer>
+      <DrawerTrigger asChild>
+        <Button>
+          Trigger Drawer
+        </Button>
+      </DrawerTrigger>
+
+      <DrawerContent aria-describedby="drawer-content" aria-label="My drawer">
+        <DrawerBody id="drawer-content">
+          The drawer content
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+  ),
+};

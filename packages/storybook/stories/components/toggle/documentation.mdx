@@ -97,12 +97,12 @@ When focused, pressing `Space` or `Enter` immediately changes the **Toggle**'s s
 
 <Heading label="Accessibility" level={ 2 } />
 
-**Toggle** component should be properly labeled and fully operable using screen readers.
+This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox">Checkbox WAI-ARIA design pattern</ExternalLink>.
 
 <Heading label="Always provide an explicit label" level={ 3 } />
 
 Every **Toggle** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
-using either **FormField** or native label tag.
+using either **FormField** or a native label tag.
 
 <Canvas of={ ToggleStories.AccessibilityLabel } sourceState="shown" />
 

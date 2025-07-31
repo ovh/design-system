@@ -3,6 +3,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as QuantityStories from './quantity.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 
@@ -91,12 +92,12 @@ Pressing `Arrow Down` when focused in the Input field decreases the value.
 
 <Heading label="Accessibility" level={ 2 } />
 
-To ensure proper accessibility, the **Quantity** component must be correctly labeled and linked to additional information.
+This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/">Spinbutton WAI-ARIA design pattern</ExternalLink>
 
 <Heading label="Always provide an explicit label" level={ 3 } />
 
 Every **Quantity** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
-using either **FormField** or native label tag.
+using either **FormField** or a native label tag.
 
 <Canvas of={ QuantityStories.AccessibilityLabel } sourceState="shown" />
 

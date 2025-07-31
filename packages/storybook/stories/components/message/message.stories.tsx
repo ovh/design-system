@@ -100,6 +100,26 @@ export const AccessibilityGrouping: Story = {
   ),
 };
 
+export const AccessibilityAlternativeGrouping: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <div role="list" style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
+      <Message role="listitem">
+        <MessageIcon name={ ICON_NAME.circleCheck } />
+        <MessageBody>
+          Your changes have been saved.
+        </MessageBody>
+      </Message>
+      <Message color={ MESSAGE_COLOR.warning } role="listitem">
+        <MessageIcon name={ ICON_NAME.triangleExclamation } />
+        <MessageBody>
+          Some fields need your attention.
+        </MessageBody>
+      </Message>
+    </div>
+  ),
+};
+
 export const AccessibilityRoles: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   tags: ['!dev'],

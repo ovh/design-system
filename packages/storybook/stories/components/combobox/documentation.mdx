@@ -1,7 +1,9 @@
+import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as ComboboxStories from './combobox.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
@@ -146,3 +148,26 @@ Pressing `Arrow Up/Down` navigates through items in the dropdown.
 Pressing `Enter` selects the hovered item and closes the dropdown.
 
 Pressing `Backspace` deletes the last character in the Input field (it does not clear the entire field at once).
+
+<Heading label="Accessibility" level={ 2 } />
+
+This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/">Combobox WAI-ARIA design pattern</ExternalLink>.
+
+<Heading label="Always provide an explicit label" level={ 3 } />
+
+Every **Combobox** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
+
+<Canvas of={ ComboboxStories.AccessibilityFormField } sourceState="shown" />
+
+<Icon name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the field and its content.
+
+<Heading label="Override action context" level={ 3 } />
+
+To provide more context on the interactive elements, you can provide your own custom translations to the component.
+
+<Canvas of={ ComboboxStories.AccessibilityI18n } sourceState="shown" />
+
+<Icon name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the field, its content and custom label of focused action.
+

@@ -269,8 +269,11 @@ export const AccessibilityTooltip: Story = {
     <Tooltip>
       <TooltipTrigger asChild>
         <Icon
+          aria-label="Open tooltip"
           name={ ICON_NAME.circleInfo }
-          style={{ fontSize: '24px' }} />
+          role="img"
+          style={{ fontSize: '24px' }}
+        />
       </TooltipTrigger>
 
       <TooltipContent>

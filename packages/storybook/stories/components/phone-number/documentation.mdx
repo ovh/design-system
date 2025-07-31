@@ -125,14 +125,22 @@ While focused on the Input field:
 
 <Heading label="Accessibility" level={ 2 } />
 
-To ensure proper accessibility, the **Phone Number** component must be correctly labeled, linked to additional information, and provide meaningful context when interactive elements (such as icon buttons) are used.
+To ensure proper accessibility, the **Phone Number** component must be correctly labeled and provide meaningful context when interactive elements (such as icon buttons) are used.
 
 <Heading label="Always provide an explicit label" level={ 3 } />
 
-Every **Phone Number** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
-using either **FormField** or native label tag.
+Every **Phone Number** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
-<Canvas of={ PhoneNumberStories.AccessibilityLabel } sourceState="shown" />
+<Canvas of={ PhoneNumberStories.AccessibilityFormField } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
-      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the select field and the phone number field.
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the field and its content.
+
+<Heading label="Override action context" level={ 3 } />
+
+To provide more context on the interactive elements, you can provide your own custom translations to the component.
+
+<Canvas of={ PhoneNumberStories.AccessibilityI18n } sourceState="shown" />
+
+<Icon name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the field, its content and custom label of focused action.

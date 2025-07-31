@@ -1,9 +1,11 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
+import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
 import { Password, type PasswordProp } from '../../../../ods-react/src/components/password/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<PasswordProp>;
 
@@ -142,5 +144,40 @@ export const ReadOnly: Story = {
     <Password
       defaultValue="Readonly"
       readOnly />
+  ),
+};
+
+export const AccessibilityFormField: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Password:
+      </FormFieldLabel>
+
+      <Password />
+    </FormField>
+  ),
+};
+
+export const AccessibilityI18n: Story = {
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Password:
+      </FormFieldLabel>
+
+      <Password
+        i18n={{
+          [INPUT_I18N.maskButtonHide]: 'Hide the password',
+          [INPUT_I18N.maskButtonShow]: 'Show the password',
+        }} />
+    </FormField>
   ),
 };

@@ -12,6 +12,7 @@ import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
 
 type Story = StoryObj<ComboboxProp>;
 type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {
@@ -421,5 +422,57 @@ export const Placeholder: Story = {
       <ComboboxControl placeholder="Please select" />
       <ComboboxContent />
     </Combobox>
+  ),
+};
+
+export const AccessibilityFormField: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>Favorite pet:</FormFieldLabel>
+      <Combobox
+        items={[
+          { label: 'Dog', value: 'dog' },
+          { label: 'Cat', value: 'cat' },
+          { label: 'Hamster', value: 'hamster' },
+          { label: 'Parrot', value: 'parrot' },
+          { label: 'Spider', value: 'spider' },
+          { label: 'Goldfish', value: 'goldfish' },
+        ]}>
+        <ComboboxControl />
+        <ComboboxContent />
+      </Combobox>
+    </FormField>
+  ),
+};
+
+export const AccessibilityI18n: Story = {
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>Favorite pet:</FormFieldLabel>
+      <Combobox
+        items={[
+          { label: 'Dog', value: 'dog' },
+          { label: 'Cat', value: 'cat' },
+          { label: 'Hamster', value: 'hamster' },
+          { label: 'Parrot', value: 'parrot' },
+          { label: 'Spider', value: 'spider' },
+          { label: 'Goldfish', value: 'goldfish' },
+        ]}>
+        <ComboboxControl
+          clearable
+          i18n={{
+            [INPUT_I18N.clearButton]: 'Clear favorite pet selection'
+          }}
+        />
+        <ComboboxContent />
+      </Combobox>
+    </FormField>
   ),
 };

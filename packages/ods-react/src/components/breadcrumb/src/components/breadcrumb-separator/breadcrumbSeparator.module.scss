@@ -5,7 +5,6 @@
     &::after {
       padding: 0 breadcrumb.$breadcrumb-spacing;
       color: var(--ods-color-text);
-      font-size: 0.875rem;
       font-weight: 700;
       content: '|';
     }

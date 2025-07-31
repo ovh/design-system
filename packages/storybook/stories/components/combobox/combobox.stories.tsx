@@ -11,6 +11,7 @@ import {
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<ComboboxProp>;
 type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {
@@ -285,7 +286,12 @@ export const Invalid: Story = {
 
 export const Controlled: Story = {
   tags: ['!dev'],
-  render: () => {
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
     const [value, setValue] = useState<string[]>(['dog']);
     return (
       <>
@@ -313,7 +319,7 @@ export const Controlled: Story = {
 
 export const Highlight: Story = {
   tags: ['!dev'],
-  render: () => (
+  render: ({}) => (
     <Combobox
       highlightResults
       items={[
@@ -332,7 +338,12 @@ export const Highlight: Story = {
 
 export const CustomOptions: Story = {
   tags: ['!dev'],
-  render: () => {
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
     type CustomData = {
       color: string;
       info: string;
@@ -368,7 +379,7 @@ export const CustomOptions: Story = {
 
 export const Empty: Story = {
   tags: ['!dev'],
-  render: () => (
+  render: ({}) => (
     <Combobox items={ [] }>
       <ComboboxControl />
       <ComboboxContent />
@@ -378,7 +389,7 @@ export const Empty: Story = {
 
 export const Multiple: Story = {
   tags: ['!dev'],
-  render: () => (
+  render: ({}) => (
     <Combobox
       multiple
       items={[
@@ -397,7 +408,7 @@ export const Multiple: Story = {
 
 export const Placeholder: Story = {
   tags: ['!dev'],
-  render: () => (
+  render: ({}) => (
     <Combobox
       items={[
         { label: 'Dog', value: 'dog' },

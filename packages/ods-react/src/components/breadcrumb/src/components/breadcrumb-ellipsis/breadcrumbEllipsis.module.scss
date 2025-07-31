@@ -2,7 +2,6 @@
 
 @layer ods-molecules {
   .breadcrumb-ellipsis {
-    font-size: 0.875rem;
     font-weight: 600;
 
     &__button {
@@ -13,7 +12,6 @@
       padding: 0;
       line-height: 1;
       color: var(--ods-color-text);
-      font-size: 0.875rem;
       font-weight: 600;
     }
   }

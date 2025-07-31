@@ -63,6 +63,7 @@ function App(): ReactElement {
               <AccordionTrigger>
                 Hello World!
               </AccordionTrigger>
+
               <AccordionContent>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
@@ -127,6 +128,8 @@ function App(): ReactElement {
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
+
+          <br /><br />
 
           <Breadcrumb aria-label="Breadcrumb">
             <BreadcrumbItem>
@@ -922,7 +925,7 @@ function App(): ReactElement {
         <section>
           <h1>Tag</h1>
 
-          <Tag color={ TAG_COLOR.critical } size="lg">Critical</Tag>
+          <Tag color={ TAG_COLOR.critical }>Critical</Tag>
           <Tag color={ TAG_COLOR.information }>Information</Tag>
           <Tag color={ TAG_COLOR.neutral }>Neutral</Tag>
           <Tag color={ TAG_COLOR.primary }>Primary</Tag>

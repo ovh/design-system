@@ -134,7 +134,7 @@ function App(): ReactElement {
           <Breadcrumb aria-label="Breadcrumb">
             <BreadcrumbItem>
               <BreadcrumbLink aria-label="Home" href="#">
-                <Icon aria-hidden='true' name={ ICON_NAME.home } />
+                <Icon name={ ICON_NAME.home } />
               </BreadcrumbLink>
             </BreadcrumbItem>
 

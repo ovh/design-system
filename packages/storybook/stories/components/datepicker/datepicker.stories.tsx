@@ -6,6 +6,7 @@ import { FormField, FormFieldLabel, FormFieldHelper } from '../../../../ods-reac
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
 
 type Story = StoryObj<DatepickerProp>;
 type DemoArg = Partial<DatepickerProp> & Partial<DatepickerControlProp>;
@@ -227,7 +228,7 @@ export const AccessibilityFormField: Story = {
   render: ({}) => (
     <FormField>
       <FormFieldLabel>
-        Start date
+        Start date:
       </FormFieldLabel>
       <Datepicker>
         <DatepickerControl />
@@ -242,7 +243,7 @@ export const AccessibilityDateFormat: Story = {
   render: ({}) => (
     <FormField>
       <FormFieldLabel>
-        Start date
+        Start date:
       </FormFieldLabel>
       <Datepicker>
         <DatepickerControl />
@@ -251,6 +252,30 @@ export const AccessibilityDateFormat: Story = {
       <FormFieldHelper>
         <Text preset='caption'>Expected format: DD-MM-YYYY</Text>
       </FormFieldHelper>
+    </FormField>
+  )
+}
+
+export const AccessibilityI18n: Story = {
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Start date:
+      </FormFieldLabel>
+      <Datepicker>
+        <DatepickerControl
+          clearable
+          i18n={{
+            [INPUT_I18N.clearButton]: 'Clear date'
+        }} />
+        <DatepickerContent />
+      </Datepicker>
     </FormField>
   )
 }

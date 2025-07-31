@@ -1,9 +1,10 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { INPUT_TYPE, INPUT_TYPES, Input, type InputProp } from '../../../../ods-react/src/components/input/src';
+import { INPUT_I18N, INPUT_TYPE, INPUT_TYPES, Input, type InputProp } from '../../../../ods-react/src/components/input/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<InputProp>;
 type DemoArg = Partial<InputProp> & {
@@ -207,6 +208,31 @@ export const AccessibilityFormField: Story = {
       </FormFieldLabel>
 
       <Input />
+    </FormField>
+  ),
+};
+
+export const AccessibilityI18n: Story = {
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Search:
+      </FormFieldLabel>
+
+      <Input
+        clearable
+        defaultValue="my search"
+        i18n={{
+        [INPUT_I18N.clearButton]: 'Clear current search',
+        [INPUT_I18N.searchButton]: 'Search in database',
+      }}
+        type='search' />
     </FormField>
   ),
 };

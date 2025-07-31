@@ -55,6 +55,7 @@ export const AccessibilityAriaLabel: Story = {
 
 export const AccessibilityAriaLabelledby: Story = {
   tags: ['!dev'],
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', alignItems: 'start' }}>{ story() }</div>],
   render: ({}) => (
     <>
       <Text

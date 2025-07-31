@@ -249,18 +249,18 @@ export const AccessibilityWithMenu: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Popover>
-      <PopoverTrigger asChild>
+      <PopoverTrigger aria-haspopup="menu" asChild>
         <Button>
           <Icon name={ICON_NAME.ellipsisVertical} />
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent withArrow={true}>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
-          <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
+      <PopoverContent withArrow={true} aria-label="Profile menu">
+        <div role="menu" style={{ display: 'flex', flexDirection: 'column' }}>
+          <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Information</Button>
+          <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Notifications</Button>
           <Divider style={{ width: '100%' }} />
-          <Button color={BUTTON_COLOR.critical} role="menuitem" variant={BUTTON_VARIANT.ghost}>Button</Button>
+          <Button color={BUTTON_COLOR.critical} role="menuitem" variant={BUTTON_VARIANT.ghost}>Sign out</Button>
         </div>
       </PopoverContent>
     </Popover>

@@ -102,7 +102,7 @@ When multiple **Cards** are grouped together, it is important to ensure their st
 
 <Heading label="Structuring groups of Cards with lists" level={ 3 } />
 
-If multiple **Cards** are displayed together (e.g., a collection of products, articles, or dashboards), they should be wrapped in an unordered list of items (`<ul>` and `<li>`) to improve navigation for screen reader users.
+If multiple **Cards** are displayed together (e.g., a collection of products, articles or dashboards), they should be wrapped in an unordered list of items (`<ul>` and `<li>`) to improve navigation for screen reader users.
 
 <Canvas of={ CardStories.AccessibilityGrouping } sourceState="shown" />
 
@@ -112,9 +112,9 @@ Screen readers will announce the list and the number of items.
 
 <Heading label="Alternative approach with ARIA roles" level={ 3 } />
 
-When modifying the HTML structure is not possible, <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role">role="list"</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role">role="listitem"</ExternalLink> can be added to mimic list semantics.
+When modifying the HTML structure is not possible, use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role">role="list"</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role">role="listitem"</ExternalLink> to mimic list semantics.
 
 <Canvas of={ CardStories.AccessibilityAlternativeGrouping } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
-      style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers still recognize the **Cards** as a structured list, even without native `<ul>` and `<li>` elements.
+      style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers still recognize the **Cards** as a structured list even without native `<ul>` and `<li>` elements.

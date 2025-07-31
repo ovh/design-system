@@ -1,4 +1,4 @@
-import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
+import { Icon, ICON_NAME, Message, MessageBody } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as SpinnerStories from './spinner.stories';
 import { Banner } from '../../../src/components/banner/Banner';
@@ -82,32 +82,35 @@ The **Spinner** component is non-interactive and does not receive keyboard focus
 
 The **Spinner** component does not automatically provide enough context for assistive technologies. To ensure accessibility, additional attributes must be applied to the container that holds the loading content.
 
-Indicating loading state with <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy">aria-busy</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live">aria-live</ExternalLink>.
+<Heading label="Indicating loading state" level={ 3 } />
 
-The **Spinner** itself does not convey the loading state. This responsibility falls on the container where content is being loaded.
+The **Spinner** itself does not convey the loading state. This responsibility falls on the container where content is being loaded by using  <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy">aria-busy</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live">aria-live</ExternalLink>.
 
 <Canvas of={ SpinnerStories.AccessibilityAriaBusyAriaLive } sourceState="shown" />
 
 Explanations:
-- `aria-busy="true"` informs assistive technologies that content is being updated
-- `aria-live="polite"` ensures that the loading message is announced when necessary without interrupting the user
+- `aria-busy="true"` informs assistive technologies that content is being updated.
+- `aria-live="polite"` ensures that the loading message is announced when necessary without interrupting.
 
 <Icon name={ ICON_NAME.circleCheck }
-      style={{ color: 'var(--ods-color-success-500)' }} /> This approach ensures that users with assistive technologies understand when loading starts and ends
+      style={{ color: 'var(--ods-color-success-500)' }} /> This approach ensures that users with assistive technologies understand when loading starts and ends.
 
-<Icon name={ ICON_NAME.circleInfo }
-      style={{ color: 'var(--ods-color-primary-500)' }} /> Once the content is loaded, aria-busy should be set to false
+<Message color="information" dismissible={false}>
+  <MessageBody>
+    Once the content is loaded, aria-busy should be set to false.
+  </MessageBody>
+</Message>
 
-Linking the **Spinner** to a loading description
+<Heading label="Linking the Spinner to a loading description" level={ 3 } />
 
-If the **Spinner** is associated with a specific loading action, it should be explicitly labeled using `aria-label`, `aria-labelledby`.
+If the **Spinner** is associated with a specific loading action, it should be explicitly labeled using <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> or <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink>.
 
 <Canvas of={ SpinnerStories.AccessibilityAriaLabel } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
-      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "Loading user profile, indeterminate, progress indicator".
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the spinner and its current state.
 
 <Canvas of={ SpinnerStories.AccessibilityAriaLabelledBy } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
-      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "Loading user profile, indeterminate, progress indicator".
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the spinner and its current state.

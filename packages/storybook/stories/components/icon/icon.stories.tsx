@@ -190,13 +190,6 @@ export const Demo: Story = {
   },
 };
 
-export const AccessibilityDecorative: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <Icon name="cloud" />
-  ),
-};
-
 export const AccessibilityInformative: Story = {
   tags: ['!dev'],
   render: ({}) => (

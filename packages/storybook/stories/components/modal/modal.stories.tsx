@@ -121,7 +121,7 @@ export const AccessibilityActions: Story = {
   ),
 };
 
-export const AccessibilityAria: Story = {
+export const AccessibilityAriaLabelledBy: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Modal>
@@ -142,6 +142,28 @@ export const AccessibilityAria: Story = {
           <p id="modal-content">
             Are you sure you want to delete this item? This action cannot be undone.
           </p>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  ),
+};
+
+export const AccessibilityAriaLabel: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal
+        </Button>
+      </ModalTrigger>
+
+      <ModalContent
+        aria-describedby="modal-content"
+        aria-label="Modal Content"
+      >
+        <ModalBody id="modal-content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </ModalBody>
       </ModalContent>
     </Modal>

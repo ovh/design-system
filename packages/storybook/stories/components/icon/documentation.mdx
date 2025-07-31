@@ -1,8 +1,9 @@
-import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
+import { ICON_NAME, Icon, Message, MessageBody } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as IconStories from './icon.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
@@ -74,30 +75,25 @@ When used within an interactive component, refer to that component's documentati
 
 <Heading label="Accessibility" level={ 2 } />
 
-The accessibility of the Icon component must be considered during its implementation.
-Proper attributes should be used to ensure that icons are either perceivable by assistive technologies or correctly hidden when decorative.
+Proper attributes should be used to ensure that **Icons** are either perceivable by assistive technologies or correctly hidden when decorative.
 
-<Heading label="Best practices" level={ 3 } />
-
-<Heading label="Hiding decorative Icon" level={ 4 } />
-
-When the Icon is purely decorative and does not provide meaningful information to the user, it should be hidden from screen readers using `aria-hidden="true"`.
-
-Example of a decorative Icon:
-
-<Canvas of={ IconStories.AccessibilityDecorative } sourceState="shown" />
+<Heading label="Hiding decorative Icon" level={ 3 } />
 
 <Icon name={ ICON_NAME.circleCheck }
-      style={{ color: 'var(--ods-color-success-500)' }} /> The Icon is ignored by screen readers and does not create unnecessary noise.
+      style={{ color: 'var(--ods-color-success-500)' }} /> By default, every **Icon** has a `role="presentation"` that hides it from screen readers.
 
-<Heading label="Providing meaningful information" level={ 4 } />
+<Heading label="Providing meaningful information" level={ 3 } />
 
-If the Icon conveys essential information, it must be accompanied by an accessible label using `aria-label`.
+If the **Icon** conveys essential information, it must be accompanied by an accessible label using <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role">role="img"</ExternalLink>.
 
 <Canvas of={ IconStories.AccessibilityInformative } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
-      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce "home", ensuring users understand the Icon's meaning.
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, ensuring users understand the **Icon**'s meaning.
 
-If the Icon is inside a button, prefer using `aria-label` on the button itself rather than on the icon.
-See <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> examples.
+<Message dismissible={ false }>
+  <MessageBody>
+    If the **Icon** is inside an interactive element, prefer using <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> on the element itself rather than on the **Icon**.
+    See <StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button</StorybookLink> examples.
+  </MessageBody>
+</Message>

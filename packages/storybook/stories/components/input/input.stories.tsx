@@ -229,9 +229,9 @@ export const AccessibilityI18n: Story = {
         clearable
         defaultValue="my search"
         i18n={{
-        [INPUT_I18N.clearButton]: 'Clear current search',
-        [INPUT_I18N.searchButton]: 'Search in database',
-      }}
+          [INPUT_I18N.clearButton]: 'Clear current search',
+          [INPUT_I18N.searchButton]: 'Search in database',
+        }}
         type='search' />
     </FormField>
   ),

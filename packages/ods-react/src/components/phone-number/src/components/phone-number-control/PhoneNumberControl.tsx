@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { type ChangeEvent, type FC, type JSX, forwardRef, useMemo } from 'react';
 import { useFormField } from '../../../../form-field/src';
-import { type INPUT_I18N, INPUT_TYPE, Input } from '../../../../input/src';
+import { INPUT_TYPE, Input } from '../../../../input/src';
 import { type PhoneNumberInputProp, usePhoneNumber } from '../../contexts/usePhoneNumber';
 import { formatPhoneNumber, getExampleNumber, isValid } from '../../controller/phone-number';
 import style from './phoneNumberControl.module.scss';
@@ -12,10 +12,6 @@ interface PhoneNumberControlProp extends PhoneNumberInputProp {
    */
   clearable?: boolean,
   /**
-   * Internal translations override (see Input i18n keys).
-   */
-  i18n?: Partial<Record<INPUT_I18N.clearButton, string>>,
-  /**
    * Whether the component is in loading state.
    */
   loading?: boolean,
@@ -25,7 +21,6 @@ const PhoneNumberControl: FC<PhoneNumberControlProp> = forwardRef(({
   children,
   className,
   clearable,
-  i18n,
   loading,
   ...props
 }, ref): JSX.Element => {
@@ -34,6 +29,7 @@ const PhoneNumberControl: FC<PhoneNumberControlProp> = forwardRef(({
     disabled,
     hasCountries,
     hasError,
+    i18n,
     invalid,
     id,
     isoCode,

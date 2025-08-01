@@ -14,8 +14,10 @@ const Timepicker: FC<TimepickerProp> = forwardRef(({
   className,
   defaultValue,
   disabled,
+  i18n,
   id,
   invalid,
+  locale,
   name,
   onTimezoneChange,
   onValueChange,
@@ -33,8 +35,10 @@ const Timepicker: FC<TimepickerProp> = forwardRef(({
     <TimepickerProvider
       defaultValue={ defaultValue }
       disabled={ disabled }
+      i18n={ i18n }
       id={ id || fieldContext?.id }
       invalid={ invalid || fieldContext?.invalid }
+      locale={ locale }
       name={ name }
       onTimezoneChange={ onTimezoneChange }
       onValueChange={ onValueChange }

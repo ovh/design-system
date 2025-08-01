@@ -1,7 +1,9 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useId, useMemo } from 'react';
+import { useI18n } from '../../../../../hooks/useI18n';
 import { Select, SelectContent, SelectControl, type SelectOptionItem, type SelectValueChangeDetail } from '../../../../select/src';
-import { type Timezone } from '../../constants/timezones';
+import { TIMEPICKER_I18N, TRANSLATION } from '../../constants/timepicker-i18n';
+import { type Timezone } from '../../constants/timepicker-timezones';
 import { useTimepicker } from '../../contexts/useTimepicker';
 import { FALLBACK_TIMEZONE, getTimezoneList } from '../../controller/timepicker';
 import style from './timepickerTimezoneList.module.scss';
@@ -17,13 +19,16 @@ const TimepickerTimezoneList: FC<TimepickerTimezoneListProp> = forwardRef(({
   const {
     currentTimezone,
     disabled,
+    i18n,
     invalid,
+    locale,
     onTimezoneChange,
     readOnly,
     required,
     setCurrentTimezone,
     timezones,
   } = useTimepicker();
+  const { translate } = useI18n(TRANSLATION, locale, i18n);
 
   const timezoneItems = useMemo(() => {
     return getTimezoneList(timezones).map<SelectOptionItem>((timezone) => ({
@@ -53,6 +58,8 @@ const TimepickerTimezoneList: FC<TimepickerTimezoneListProp> = forwardRef(({
       value={ [currentTimezone || FALLBACK_TIMEZONE] }
       { ...props }>
       <SelectControl
+        aria-label={ translate(TIMEPICKER_I18N.timezoneSelect) }
+        aria-labelledby=""
         className={ style['timepicker-timezone__control'] }
         id={ customId } />
 

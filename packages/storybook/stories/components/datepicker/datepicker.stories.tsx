@@ -1,18 +1,18 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Datepicker, DatepickerContent, DatepickerControl, type DatepickerControlProp, type DatepickerProp } from '../../../../ods-react/src/components/datepicker/src';
-import { Text } from '../../../../ods-react/src/components/text/src'
 import { FormField, FormFieldLabel, FormFieldHelper } from '../../../../ods-react/src/components/form-field/src';
+import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
+import { Text } from '../../../../ods-react/src/components/text/src'
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
-import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
 
 type Story = StoryObj<DatepickerProp>;
 type DemoArg = Partial<DatepickerProp> & Partial<DatepickerControlProp>;
 
 const meta: Meta<DatepickerProp> = {
-  argTypes: excludeFromDemoControls(['dateFormatter', 'defaultOpen', 'defaultValue', 'defaultView', 'disabledDates', 'disabledWeekDays', 'max', 'maxView', 'min', 'minView', 'name', 'onValueChange', 'open', 'required', 'value', 'view']),
+  argTypes: excludeFromDemoControls(['dateFormatter', 'defaultOpen', 'defaultValue', 'defaultView', 'disabledDates', 'disabledWeekDays', 'i18n', 'max', 'maxView', 'min', 'minView', 'name', 'onValueChange', 'open', 'required', 'value', 'view']),
   component: Datepicker,
   subcomponents: { DatepickerContent, DatepickerControl },
   title: 'React Components/Datepicker',
@@ -268,12 +268,10 @@ export const AccessibilityI18n: Story = {
       <FormFieldLabel>
         Start date:
       </FormFieldLabel>
-      <Datepicker>
-        <DatepickerControl
-          clearable
-          i18n={{
-            [INPUT_I18N.clearButton]: 'Clear date'
-        }} />
+      <Datepicker i18n={{
+        [INPUT_I18N.clearButton]: 'Clear date'
+      }}>
+        <DatepickerControl clearable />
         <DatepickerContent />
       </Datepicker>
     </FormField>

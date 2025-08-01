@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { TEXT_PRESET, Text } from '../../text/src';
-import { Timepicker, TimepickerControl, type TimepickerTimezoneChangeDetail, TimepickerTimezoneList, type TimepickerValueChangeDetail, Timezone } from '.';
+import { TIMEPICKER_I18N, Timepicker, TimepickerControl, type TimepickerTimezoneChangeDetail, TimepickerTimezoneList, type TimepickerValueChangeDetail, Timezone } from '.';
 import { getBrowserTimezone } from './controller/timepicker';
 import style from './dev.module.css';
 
@@ -124,6 +124,16 @@ export const Disabled = () => (
       <TimepickerTimezoneList />
     </Timepicker>
   </>
+);
+
+export const I18n = () => (
+  <Timepicker i18n={{
+    [TIMEPICKER_I18N.timezoneSelect]: 'Pick some timezone',
+  }}>
+    <TimepickerControl />
+
+    <TimepickerTimezoneList />
+  </Timepicker>
 );
 
 export const InFormField = () => {

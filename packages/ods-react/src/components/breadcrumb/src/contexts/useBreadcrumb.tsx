@@ -1,5 +1,6 @@
-import { type ReactNode, createContext, useContext } from 'react';
+import { type JSX, type ReactNode, createContext, useContext } from 'react';
 import { type Locale } from '../../../../utils/locales';
+import { type BREADCRUMB_I18N } from '../constants/breadcrumb-i18n';
 
 interface BreadcrumbRootProp {
   /**
@@ -9,7 +10,7 @@ interface BreadcrumbRootProp {
   /**
    * Internal translations override.
    */
-  i18n?: Record<string, string>,
+  i18n?: Partial<Record<BREADCRUMB_I18N, string>>,
   /**
    * Id for the breadcrumb nav (overrides auto-generated id)
    */
@@ -37,9 +38,11 @@ interface BreadcrumbRootProp {
 }
 
 type BreadcrumbContextType = Pick<BreadcrumbRootProp, 'i18n' | 'locale'>;
+
 interface BreadcrumbProviderProp extends BreadcrumbContextType {
   children: ReactNode,
 }
+
 const BreadcrumbContext = createContext<BreadcrumbContextType>({});
 
 function BreadcrumbProvider({ children, i18n, locale }: BreadcrumbProviderProp): JSX.Element {
@@ -59,8 +62,8 @@ function useBreadcrumb(): BreadcrumbContextType {
 
 export {
   type BreadcrumbContextType,
+  BreadcrumbProvider,
   type BreadcrumbProviderProp,
   type BreadcrumbRootProp,
-  BreadcrumbProvider,
   useBreadcrumb,
 };

@@ -1,10 +1,11 @@
 import { DatePicker, useDatePickerContext } from '@ark-ui/react/date-picker';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type Locale } from '../../../../../utils/locales';
 import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { useFormField } from '../../../../form-field/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
-import { type INPUT_I18N, Input } from '../../../../input/src';
+import { Input } from '../../../../input/src';
 import { useDatepicker } from '../../contexts/useDatepicker';
 import style from './datepickerControl.module.scss';
 
@@ -14,10 +15,6 @@ interface DatepickerControlProp extends ComponentPropsWithRef<'input'> {
    */
   clearable?: boolean,
   /**
-   * Internal translations override (see Input i18n keys).
-   */
-  i18n?: Partial<Record<INPUT_I18N.clearButton, string>>,
-  /**
    * Whether the component is in loading state.
    */
   loading?: boolean,
@@ -26,12 +23,11 @@ interface DatepickerControlProp extends ComponentPropsWithRef<'input'> {
 const DatepickerControl: FC<DatepickerControlProp> = forwardRef(({
   className,
   clearable,
-  i18n,
   id,
   loading,
   ...props
 }, ref): JSX.Element => {
-  const { invalid, required } = useDatepicker();
+  const { i18n, invalid, locale, required } = useDatepicker();
   const { getInputProps, open } = useDatePickerContext();
   const fieldContext = useFormField();
   const { disabled, readOnly } = getInputProps();
@@ -52,6 +48,7 @@ const DatepickerControl: FC<DatepickerControlProp> = forwardRef(({
           id={ id || fieldContext?.id }
           invalid={ invalid || fieldContext?.invalid }
           loading={ loading }
+          locale={ locale as Locale }
           required={ required } />
       </DatePicker.Input>
 

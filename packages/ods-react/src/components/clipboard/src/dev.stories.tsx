@@ -37,13 +37,13 @@ export const Disabled = () => (
 );
 
 export const I18n = () => (
-  <Clipboard value="i18n">
-    <ClipboardControl
-      i18n={{
-        [INPUT_I18N.maskButtonHide]: 'Hide away the clipboard content',
-        [INPUT_I18N.maskButtonShow]: 'Show me the clipboard content',
-      }}
-      maskOption={{ enable: true }} />
+  <Clipboard
+    i18n={{
+      [INPUT_I18N.maskButtonHide]: 'Hide away the clipboard content',
+      [INPUT_I18N.maskButtonShow]: 'Show me the clipboard content',
+    }}
+    value="i18n">
+    <ClipboardControl maskOption={{ enable: true }} />
     <ClipboardTrigger />
   </Clipboard>
 );

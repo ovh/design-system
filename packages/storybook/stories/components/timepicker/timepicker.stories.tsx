@@ -11,7 +11,7 @@ type DemoArg = Partial<TimepickerProp> & {
 }
 
 const meta: Meta<TimepickerProp> = {
-  argTypes: excludeFromDemoControls(['defaultValue', 'id', 'name', 'onTimezoneChange', 'onValueChange', 'required', 'timezone', 'timezones', 'value']),
+  argTypes: excludeFromDemoControls(['defaultValue', 'i18n', 'id', 'locale', 'name', 'onTimezoneChange', 'onValueChange', 'required', 'timezone', 'timezones', 'value']),
   component: Timepicker,
   subcomponents: { TimepickerControl, TimepickerTimezoneList },
   title: 'React Components/Timepicker',

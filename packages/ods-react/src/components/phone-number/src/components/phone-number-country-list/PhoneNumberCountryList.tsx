@@ -1,7 +1,10 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useId, useMemo } from 'react';
+import { useI18n } from '../../../../../hooks/useI18n';
+import { type Locale } from '../../../../../utils/locales';
 import { Select, SelectContent, SelectControl, type SelectOptionItem, type SelectValueChangeDetail } from '../../../../select/src';
 import { type PhoneNumberCountryIsoCode } from '../../constants/phone-number-country-iso-code';
+import { PHONE_NUMBER_I18N, TRANSLATION } from '../../constants/phone-number-i18n';
 import { usePhoneNumber } from '../../contexts/usePhoneNumber';
 import { FALLBACK_ISO_CODE, getIsoCodeList, isValid } from '../../controller/phone-number';
 import { PhoneNumberCountryFlag } from '../phone-number-country-flag/PhoneNumberCountryFlag';
@@ -20,6 +23,7 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
     countries,
     disabled,
     hasError,
+    i18n,
     inputValue,
     invalid,
     isoCode,
@@ -30,6 +34,7 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
     setHasCountries,
     setIsoCode,
   } = usePhoneNumber();
+  const { translate } = useI18n(TRANSLATION, locale as Locale, i18n);
 
   const countryItems = useMemo(() => {
     const regionLocalized = new Intl.DisplayNames(locale, { type: 'region' });
@@ -79,11 +84,13 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
       value={ [isoCode || FALLBACK_ISO_CODE] }
       { ...props }>
       <SelectControl
+        aria-label={ translate(PHONE_NUMBER_I18N.countrySelect) }
+        aria-labelledby=""
         className={ style['phone-number-country-list__control'] }
         customItemRenderer={
           ({ values }) => (
             <PhoneNumberCountryFlag
-              aria-label={ values[0] }
+              aria-label={ values[0].split('').join(' ').toUpperCase() }
               disabled={ disabled }
               isoCode={ values[0] } />
           )}

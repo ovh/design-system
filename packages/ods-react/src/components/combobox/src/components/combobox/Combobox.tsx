@@ -16,8 +16,10 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   defaultValue,
   disabled,
   highlightResults = false,
+  i18n,
   items,
   invalid,
+  locale,
   multiple,
   newElementLabel = 'Add ',
   noResultLabel = 'No results found',
@@ -77,8 +79,10 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
       customOptionRenderer={ customOptionRenderer }
       filteredItems={ filteredItems }
       highlightResults={ highlightResults }
+      i18n={ i18n }
       invalid={ invalid }
       items={ items }
+      locale={ locale }
       newElementLabel={ newElementLabel }
       noResultLabel={ noResultLabel }
       readOnly={ readOnly }>

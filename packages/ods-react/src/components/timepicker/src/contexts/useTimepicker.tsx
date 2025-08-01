@@ -1,6 +1,8 @@
 import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useContext, useState } from 'react';
-import { type TimezonesPreset } from '../constants/timezone-preset';
-import { type Timezone } from '../constants/timezones';
+import { type Locale } from '../../../../utils/locales';
+import { type TIMEPICKER_I18N } from '../constants/timepicker-i18n';
+import { type TimezonesPreset } from '../constants/timepicker-timezone-preset';
+import { type Timezone } from '../constants/timepicker-timezones';
 import { getCurrentTimezone } from '../controller/timepicker';
 
 interface TimepickerTimezoneChangeDetail {
@@ -24,6 +26,10 @@ type TimepickerRootProp = {
    */
   disabled?: boolean,
   /**
+   * Internal translations override.
+   */
+  i18n?: Partial<Record<TIMEPICKER_I18N, string>>,
+  /**
    * The field id.
    */
   id?: string,
@@ -31,6 +37,10 @@ type TimepickerRootProp = {
    * Whether the component is in error state.
    */
   invalid?: boolean,
+  /**
+   * The locale used for the translation of the internal elements.
+   */
+  locale?: Locale,
   /**
    * The name of the form element. Useful for form submission.
    */

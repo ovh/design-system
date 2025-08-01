@@ -22,16 +22,16 @@ interface InputRootProp {
    */
   loading?: boolean,
   /**
+   * The locale used for the translation of the internal elements.
+   */
+  locale?: Locale,
+  /**
    * Whether the masked display is active and its initial state.
    */
   maskOption?: {
     enable: boolean,
     initialState?: InputMaskState,
   },
-  /**
-   * The locale used for the translation of the internal elements.
-   */
-  locale?: Locale,
   /**
    * Callback fired when the input value is cleared.
    */

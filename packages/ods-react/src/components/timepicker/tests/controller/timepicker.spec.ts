@@ -1,4 +1,4 @@
-import { TIMEZONES } from '../../src/constants/timezones';
+import { TIMEZONES } from '../../src/constants/timepicker-timezones';
 import { FALLBACK_TIMEZONE, getCurrentTimezone, getTimezoneList } from '../../src/controller/timepicker';
 
 describe('Timepicker controller', () => {

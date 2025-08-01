@@ -1,6 +1,8 @@
 import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useContext, useEffect, useState } from 'react';
+import { type INPUT_I18N } from '../../../input/src';
 import { type PhoneNumberCountryIsoCode } from '../constants/phone-number-country-iso-code';
 import { type PhoneNumberCountriesPreset } from '../constants/phone-number-country-preset';
+import { type PHONE_NUMBER_I18N } from '../constants/phone-number-i18n';
 import { getCurrentIsoCode, isValid } from '../controller/phone-number';
 
 interface PhoneNumberCountryChangeDetail {
@@ -36,6 +38,10 @@ type PhoneNumberRootProp = {
    */
   disabled?: boolean,
   /**
+   * Internal translations override.
+   */
+  i18n?: Partial<Record<PHONE_NUMBER_I18N | INPUT_I18N.clearButton, string>>,
+  /**
    * The field id.
    */
   id?: string,
@@ -44,7 +50,7 @@ type PhoneNumberRootProp = {
    */
   invalid?: boolean,
   /**
-   * The locale used for the translation of the country list.
+   * The locale used for the translation of the country list and the internal elements.
    */
   locale?: string,
   /**

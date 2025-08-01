@@ -105,10 +105,8 @@ export const DisabledWeekDays = () => (
 );
 
 export const I18n = () => (
-  <Datepicker>
-    <DatepickerControl
-      clearable
-      i18n={{ [INPUT_I18N.clearButton]: 'Clear datepicker' }} />
+  <Datepicker i18n={{ [INPUT_I18N.clearButton]: 'Clear datepicker' }}>
+    <DatepickerControl clearable />
 
     <DatepickerContent />
   </Datepicker>

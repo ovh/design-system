@@ -1,5 +1,5 @@
 import { DATEPICKER_VIEW } from '../../src/constants/datepicker-view';
-import { getDefaultView } from '../../src/controller/datepicker';
+import { getDefaultView, parseDateFormat } from '../../src/controller/datepicker';
 
 describe('Datepicker controller', () => {
   describe('getDefaultView', () => {
@@ -96,6 +96,55 @@ describe('Datepicker controller', () => {
         expect(getDefaultView(DATEPICKER_VIEW.year, DATEPICKER_VIEW.year, DATEPICKER_VIEW.month)).toBe(DATEPICKER_VIEW.year);
         expect(getDefaultView(DATEPICKER_VIEW.year, DATEPICKER_VIEW.year, DATEPICKER_VIEW.year)).toBe(DATEPICKER_VIEW.year);
       });
+    });
+  });
+
+  describe('parseDateFormat', () => {
+    const testDate = new Date(2023, 11, 25); // December 25, 2023
+
+    it('should format date with dd/MM/yyyy pattern', () => {
+      expect(parseDateFormat(testDate, 'dd/MM/yyyy')).toBe('25/12/2023');
+    });
+
+    it('should format date with dd-MM-yyyy pattern', () => {
+      expect(parseDateFormat(testDate, 'dd-MM-yyyy')).toBe('25-12-2023');
+    });
+
+    it('should format date with yyyy-MM-dd pattern', () => {
+      expect(parseDateFormat(testDate, 'yyyy-MM-dd')).toBe('2023-12-25');
+    });
+
+    it('should format date with MM/dd/yyyy pattern', () => {
+      expect(parseDateFormat(testDate, 'MM/dd/yyyy')).toBe('12/25/2023');
+    });
+
+    it('should format date with d/m/yyyy pattern (no padding)', () => {
+      expect(parseDateFormat(testDate, 'd/m/yyyy')).toBe('25/12/2023');
+    });
+
+    it('should format date with yy pattern (2-digit year)', () => {
+      expect(parseDateFormat(testDate, 'dd/MM/yy')).toBe('25/12/23');
+    });
+
+    it('should handle single digit day and month', () => {
+      const singleDigitDate = new Date(2023, 0, 5); // January 5, 2023
+      expect(parseDateFormat(singleDigitDate, 'dd/MM/yyyy')).toBe('05/01/2023');
+      expect(parseDateFormat(singleDigitDate, 'd/m/yyyy')).toBe('5/1/2023');
+    });
+
+    it('should handle custom separators', () => {
+      expect(parseDateFormat(testDate, 'dd.mm.yyyy')).toBe('25.12.2023');
+      expect(parseDateFormat(testDate, 'dd mm yyyy')).toBe('25 12 2023');
+    });
+
+    it('should handle mixed patterns', () => {
+      expect(parseDateFormat(testDate, 'dd-mm-yy')).toBe('25-12-23');
+      expect(parseDateFormat(testDate, 'd-mm-yyyy')).toBe('25-12-2023');
+    });
+
+    it('should handle invalid format gracefully', () => {
+      expect(parseDateFormat(testDate, '')).toBe('25/12/2023'); // fallback
+      expect(parseDateFormat(testDate, 'xyz')).toBe('25/12/2023'); // fallback
     });
   });
 });

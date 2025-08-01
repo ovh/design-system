@@ -5,7 +5,7 @@ import { useFormField } from '../../../../form-field/src';
 import { type DATEPICKER_DAY } from '../../constants/datepicker-day';
 import { type DatepickerView } from '../../constants/datepicker-view';
 import { type DatepickerContextType, DatepickerProvider } from '../../contexts/useDatepicker';
-import { getDefaultView, isSameAsDateValue, toDate, toDateValue } from '../../controller/datepicker';
+import { getDefaultView, isSameAsDateValue, parseDateFormat, toDate, toDateValue } from '../../controller/datepicker';
 import style from './datepicker.module.scss';
 
 interface DatepickerFormatterArg {
@@ -50,6 +50,13 @@ interface DatepickerProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultValu
    * List of week days that cannot be selected.
    */
   disabledWeekDays?: DATEPICKER_DAY[],
+  /**
+   * Format string for displaying the date in the input.
+   * Supports common patterns: dd, mm, yyyy, yy
+   * Predefined formats: 'dd/MM/yyyy', 'dd-MM-yyyy', 'yyyy-MM-dd', 'MM/dd/yyyy'
+   * Default: 'dd/MM/yyyy'
+   */
+  format?: string,
   /**
    * The locale to use when formatting the date.
    */
@@ -110,6 +117,7 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
   disabled,
   disabledDates,
   disabledWeekDays,
+  format = 'dd/MM/yyyy',
   id,
   invalid,
   locale,
@@ -142,10 +150,15 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
     return (disabledDates || []).some((d) => isSameAsDateValue(d, date));
   }, [disabledDates, disabledWeekDays]);
 
-  function formatDate(date: DateValue, { locale }: { locale: string }): string {
-    if (dateFormatter) {
-      return dateFormatter({ date: toDate(date), locale });
+  function formatDate(date: DateValue, { locale: formatLocale }: { locale: string }): string {
+    if (format) {
+      return parseDateFormat(toDate(date), format);
     }
+
+    if (dateFormatter) {
+      return dateFormatter({ date: toDate(date), locale: formatLocale });
+    }
+
     return '';
   }
 
@@ -169,7 +182,7 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
         defaultView = { computedDefaultView }
         disabled={ disabled }
         fixedWeeks={ true }
-        format={ dateFormatter ? formatDate : undefined }
+        format={ (format || dateFormatter) ? formatDate : undefined }
         id={ id || fieldContext?.id }
         isDateUnavailable={ isDateUnavailable }
         locale={ locale }

@@ -103,6 +103,24 @@ export const DateFormatter: Story = {
   ),
 };
 
+export const Format: Story = {
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => (
+    <Datepicker
+      format="dd-MM-yyyy"
+      placeholder="dd-MM-yyyy">
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+  ),
+};
+
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
@@ -245,7 +263,9 @@ export const AccessibilityDateFormat: Story = {
       <FormFieldLabel>
         Start date:
       </FormFieldLabel>
-      <Datepicker>
+      <Datepicker
+        format="dd-MM-yyyy"
+        placeholder="DD-MM-YYYY">
         <DatepickerControl />
         <DatepickerContent />
       </Datepicker>

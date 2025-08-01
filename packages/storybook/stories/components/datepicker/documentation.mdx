@@ -111,6 +111,33 @@ Picking a month: By clicking on a month, the dropdown goes back to date picking 
 
 Locale determines how the week days will be displayed according to the localization. The **Datepicker** supports the following locales: English (default), German, Spanish, French, Italian, Dutch, Polish and Portuguese.
 
+**Date Formatting**
+
+The **Datepicker** supports custom date formatting through the `format` prop.
+
+**Supported format patterns:**
+- `dd` - Day with leading zero (01-31)
+- `d` - Day without leading zero (1-31)
+- `mm` - Month with leading zero (01-12)
+- `m` - Month without leading zero (1-12)
+- `yyyy` - Full year (2023)
+- `yy` - Two-digit year (23)
+
+**Predefined formats:**
+- `dd/MM/yyyy` - 25/12/2023 (default)
+- `dd-MM-yyyy` - 25-12-2023
+- `yyyy-MM-dd` - 2023-12-25
+- `MM/dd/yyyy` - 12/25/2023
+
+**Examples:**
+- `dd/mm/yyyy` - 25/12/2023 (default)
+- `dd-mm-yyyy` - 25-12-2023
+- `yyyy-mm-dd` - 2023-12-25
+- `d/m/yyyy` - 25/12/2023
+- `dd.mm.yyyy` - 25.12.2023
+
+<Canvas of={ DatepickerStories.Format } sourceState="shown" />
+
 <Heading label="Navigation" level={ 2 } />
 
 <Heading label="Focus Management" level={ 3 } />

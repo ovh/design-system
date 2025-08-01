@@ -1,4 +1,4 @@
-import { Icon, ICON_NAME, Message, MessageBody } from '@ovhcloud/ods-react';
+import { Icon, ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import * as SpinnerStories from './spinner.stories';
 import { Banner } from '../../../src/components/banner/Banner';
@@ -96,6 +96,7 @@ Explanations:
       style={{ color: 'var(--ods-color-success-500)' }} /> This approach ensures that users with assistive technologies understand when loading starts and ends.
 
 <Message color="information" dismissible={false}>
+  <MessageIcon name="circle-info" />
   <MessageBody>
     Once the content is loaded, aria-busy should be set to false.
   </MessageBody>

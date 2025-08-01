@@ -15,11 +15,11 @@ There are two exceptions, components with full embedded translation and componen
 
 <Heading label="Embedded translation" level={ 2 } />
 
-So far, only the following components manage internally a complete translation system:
+So far, only the following components internally manage a complete translation system:
 - <StorybookLink kind={ REACT_COMPONENTS_TITLE.datepicker } story={ STORY.documentation }>Datepicker</StorybookLink>
 - <StorybookLink kind={ REACT_COMPONENTS_TITLE.phoneNumber } story={ STORY.documentation }>Phone number</StorybookLink>
 
-Both relying on the native <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl">Intl</ExternalLink> feature.
+Both are relying on the native <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl">Intl</ExternalLink> feature.
 
 They do de-facto support the same locales as <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl">Intl</ExternalLink>.
 
@@ -28,7 +28,7 @@ They do de-facto support the same locales as <ExternalLink href="https://develop
 Although you have complete control on label translation when using the ODS components, there are a few internal elements
 that need a textual description for accessibility purpose.
 
-For example take the <StorybookLink kind={ REACT_COMPONENTS_TITLE.message } story={ STORY.documentation }>Message</StorybookLink> component:
+For example, take the <StorybookLink kind={ REACT_COMPONENTS_TITLE.message } story={ STORY.documentation }>Message</StorybookLink> component:
 
 ![i18n anatomy](components/message/anatomy-i18n.png "i18n anatomy")
 

@@ -1,15 +1,11 @@
 import { Clipboard, useClipboardContext } from '@ark-ui/react/clipboard';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { type INPUT_I18N, INPUT_TYPE, Input, type InputMaskState } from '../../../../input/src';
+import { INPUT_TYPE, Input, type InputMaskState } from '../../../../input/src';
 import { useClipboard } from '../../contexts/useClipboard';
 import style from './clipboardControl.module.scss';
 
 interface ClipboardControlProp extends ComponentPropsWithRef<'input'> {
-  /**
-   * Internal translations override (see Input i18n keys).
-   */
-  i18n?: Partial<Record<INPUT_I18N.maskButtonHide | INPUT_I18N.maskButtonShow, string>>,
   /**
    * Whether the component is in loading state.
    */
@@ -25,12 +21,11 @@ interface ClipboardControlProp extends ComponentPropsWithRef<'input'> {
 
 const ClipboardControl: FC<ClipboardControlProp> = forwardRef(({
   className,
-  i18n,
   loading,
   maskOption,
   ...props
 }, ref): JSX.Element => {
-  const { disabled } = useClipboard();
+  const { disabled, i18n, locale } = useClipboard();
   const { value } = useClipboardContext();
 
   return (
@@ -39,6 +34,7 @@ const ClipboardControl: FC<ClipboardControlProp> = forwardRef(({
         className={ classNames(style['clipboard__input'], className) }
         i18n={ i18n }
         loading={ loading }
+        locale={ locale }
         maskOption={ maskOption }
         { ...props }
         disabled={ disabled }

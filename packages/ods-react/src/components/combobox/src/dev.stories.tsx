@@ -130,10 +130,10 @@ export const HighlightResults = () => (
 );
 
 export const I18n = () => (
-  <Combobox items={ items }>
-    <ComboboxControl
-      clearable
-      i18n={{ [INPUT_I18N.clearButton]: 'Clear combobox' }} />
+  <Combobox
+    i18n={{ [INPUT_I18N.clearButton]: 'Clear combobox' }}
+    items={ items }>
+    <ComboboxControl clearable />
     <ComboboxContent />
   </Combobox>
 );

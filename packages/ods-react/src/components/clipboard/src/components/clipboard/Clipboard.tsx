@@ -1,34 +1,26 @@
 import { Clipboard as VendorClipboard } from '@ark-ui/react/clipboard';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { ClipboardContext } from '../../contexts/useClipboard';
+import { ClipboardProvider, type ClipboardRootProp } from '../../contexts/useClipboard';
 import style from './clipboard.module.scss';
 
-interface ClipboardProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue'> {
-  /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean,
-  /**
-   * Callback fired when the input value is copied.
-   */
-  onCopy?: () => void,
-  /**
-   * The input value.
-   */
-  value?: string,
-}
+interface ClipboardProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue' | 'onCopy'>, ClipboardRootProp {}
 
 const Clipboard: FC<ClipboardProp> = forwardRef(({
   children,
   className,
   disabled,
+  i18n,
+  locale,
   onCopy,
   value,
   ...props
 }, ref): JSX.Element => {
   return (
-    <ClipboardContext.Provider value={{ disabled }}>
+    <ClipboardProvider
+      disabled={ disabled }
+      i18n={ i18n }
+      locale={ locale }>
       <VendorClipboard.Root
         className={ classNames(
           style['clipboard'],
@@ -42,7 +34,7 @@ const Clipboard: FC<ClipboardProp> = forwardRef(({
         { ...props }>
         { children }
       </VendorClipboard.Root>
-    </ClipboardContext.Provider>
+    </ClipboardProvider>
   );
 });
 

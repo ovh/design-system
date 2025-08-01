@@ -9,17 +9,17 @@ import {
   type ComboboxProp,
 } from '../../../../ods-react/src/components/combobox/src';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
+import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
-import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
 
 type Story = StoryObj<ComboboxProp>;
 type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {
 };
 
 const meta: Meta<ComboboxProp> = {
-  argTypes: excludeFromDemoControls(['customOptionRenderer', 'defaultValue', 'items', 'name', 'onInputValueChange', 'onValueChange', 'required', 'value']),
+  argTypes: excludeFromDemoControls(['customOptionRenderer', 'defaultValue', 'i18n', 'items', 'locale', 'name', 'onInputValueChange', 'onValueChange', 'required', 'value']),
   component: Combobox,
   subcomponents: { ComboboxContent, ComboboxControl },
   title: 'React Components/Combobox',
@@ -457,6 +457,9 @@ export const AccessibilityI18n: Story = {
     <FormField>
       <FormFieldLabel>Favorite pet:</FormFieldLabel>
       <Combobox
+        i18n={{
+          [INPUT_I18N.clearButton]: 'Clear favorite pet selection'
+        }}
         items={[
           { label: 'Dog', value: 'dog' },
           { label: 'Cat', value: 'cat' },
@@ -465,12 +468,7 @@ export const AccessibilityI18n: Story = {
           { label: 'Spider', value: 'spider' },
           { label: 'Goldfish', value: 'goldfish' },
         ]}>
-        <ComboboxControl
-          clearable
-          i18n={{
-            [INPUT_I18N.clearButton]: 'Clear favorite pet selection'
-          }}
-        />
+        <ComboboxControl clearable />
         <ComboboxContent />
       </Combobox>
     </FormField>

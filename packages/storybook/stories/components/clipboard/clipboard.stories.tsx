@@ -1,9 +1,9 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Clipboard, ClipboardControl, type ClipboardControlProp, type ClipboardProp, ClipboardTrigger, type ClipboardTriggerProp } from '../../../../ods-react/src/components/clipboard/src';
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
-import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 
 type Story = StoryObj<ClipboardProp>;
 type DemoArg = Partial<ClipboardProp> & Partial<ClipboardControlProp> & Partial<ClipboardTriggerProp> & {
@@ -11,7 +11,7 @@ type DemoArg = Partial<ClipboardProp> & Partial<ClipboardControlProp> & Partial<
 };
 
 const meta: Meta<ClipboardProp> = {
-  argTypes: excludeFromDemoControls(['onCopy']),
+  argTypes: excludeFromDemoControls(['i18n', 'locale', 'onCopy']),
   component: Clipboard,
   subcomponents: { ClipboardControl, ClipboardTrigger},
   title: 'React Components/Clipboard',

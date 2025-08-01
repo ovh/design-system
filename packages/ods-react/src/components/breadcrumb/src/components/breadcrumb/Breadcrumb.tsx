@@ -69,7 +69,9 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
   }, [] as ReactElement[]);
 
   return (
-    <BreadcrumbProvider i18n={i18n} locale={locale}>
+    <BreadcrumbProvider
+      i18n={ i18n }
+      locale={ locale }>
       <nav
         aria-expanded={!noCollapse && count > collapseThreshold ? isExpanded : undefined}
         className={ classNames(style['breadcrumb'], className) }

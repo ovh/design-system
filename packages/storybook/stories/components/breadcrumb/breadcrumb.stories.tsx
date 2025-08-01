@@ -8,7 +8,7 @@ import { excludeFromDemoControls, orderControls } from '../../../src/helpers/con
 type Story = StoryObj<BreadcrumbProp>;
 
 const meta: Meta<BreadcrumbProp> = {
-  argTypes: excludeFromDemoControls(['noCollapse', 'onExpand']),
+  argTypes: excludeFromDemoControls(['i18n', 'id', 'locale', 'noCollapse', 'onExpand']),
   component: Breadcrumb,
   subcomponents: { BreadcrumbItem, BreadcrumbLink },
   title: 'React Components/Breadcrumb',

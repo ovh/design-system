@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { INPUT_I18N } from '../../input/src';
 import { TEXT_PRESET, Text } from '../../text/src';
-import { PhoneNumber, PhoneNumberControl, type PhoneNumberCountryChangeDetail, PhoneNumberCountryList, type PhoneNumberCountryIsoCode, type PhoneNumberValueChangeDetail } from '.';
+import { PHONE_NUMBER_I18N, PhoneNumber, PhoneNumberControl, type PhoneNumberCountryChangeDetail, PhoneNumberCountryList, type PhoneNumberCountryIsoCode, type PhoneNumberValueChangeDetail } from '.';
 import style from './dev.module.css';
 
 export default {
@@ -149,10 +149,13 @@ export const Disabled = () => (
 );
 
 export const I18n = () => (
-  <PhoneNumber>
-    <PhoneNumberControl
-      clearable
-      i18n={{ [INPUT_I18N.clearButton]: 'Clear phone number' }} />
+  <PhoneNumber i18n={{
+    [INPUT_I18N.clearButton]: 'Clear phone number',
+    [PHONE_NUMBER_I18N.countrySelect]: 'Pick a country indicator',
+  }}>
+    <PhoneNumberCountryList />
+
+    <PhoneNumberControl clearable />
   </PhoneNumber>
 );
 

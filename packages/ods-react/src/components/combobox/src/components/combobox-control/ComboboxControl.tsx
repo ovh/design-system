@@ -1,7 +1,7 @@
 import { Combobox as VendorCombobox, useComboboxContext } from '@ark-ui/react/combobox';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, type KeyboardEvent, forwardRef, useRef, useState } from 'react';
-import { type INPUT_I18N, Input } from '../../../../input/src';
+import { Input } from '../../../../input/src';
 import { Tag } from '../../../../tag/src';
 import { useCombobox } from '../../contexts/useCombobox';
 import {
@@ -19,10 +19,6 @@ interface ComboboxControlProp extends ComponentPropsWithRef<'div'> {
    */
   clearable?: boolean;
   /**
-   * Internal translations override (see Input i18n keys).
-   */
-  i18n?: Partial<Record<INPUT_I18N.clearButton, string>>,
-  /**
    * Whether the component is in loading state.
    */
   loading?: boolean;
@@ -35,13 +31,12 @@ interface ComboboxControlProp extends ComponentPropsWithRef<'div'> {
 const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
   className,
   clearable,
-  i18n,
   loading,
   placeholder,
   ...props
 }, ref): JSX.Element => {
   const { disabled, getContentProps, multiple, open, setOpen, setValue, value } = useComboboxContext();
-  const { invalid, items, readOnly } = useCombobox();
+  const { i18n, invalid, items, locale, readOnly } = useCombobox();
   const [focusedTagIndex, setFocusedTagIndex] = useState<number | null>(null);
   const contentProps = getContentProps() as {
     'data-placement'?: 'bottom' | 'top';
@@ -161,6 +156,7 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
           disabled={ disabled }
           i18n={ i18n }
           loading={ loading }
+          locale={ locale }
           onClear={ () => setValue([]) }
           onClick={ handleInputClick }
           onKeyDown={ handleInputKeyDown }

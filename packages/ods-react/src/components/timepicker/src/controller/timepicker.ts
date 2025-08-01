@@ -1,5 +1,5 @@
-import { TIMEZONES_PRESET, type TimezonesPreset } from '../constants/timezone-preset';
-import { TIMEZONE, TIMEZONES, type Timezone } from '../constants/timezones';
+import { TIMEZONES_PRESET, type TimezonesPreset } from '../constants/timepicker-timezone-preset';
+import { TIMEZONE, TIMEZONES, type Timezone } from '../constants/timepicker-timezones';
 
 const FALLBACK_TIMEZONE = TIMEZONE.UTC;
 

@@ -4,24 +4,13 @@ import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/
 import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
 import { Password, type PasswordProp } from '../../../../ods-react/src/components/password/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<PasswordProp>;
 
 const meta: Meta<PasswordProp> = {
-  argTypes: {
-    maskInitialState: {
-      table: {
-        disable: true,
-      },
-    },
-    onClear: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+  argTypes: excludeFromDemoControls(['i18n', 'locale', 'maskInitialState', 'onClear']),
   component: Password,
   title: 'React Components/Password',
 };
@@ -173,11 +162,10 @@ export const AccessibilityI18n: Story = {
         Password:
       </FormFieldLabel>
 
-      <Password
-        i18n={{
-          [INPUT_I18N.maskButtonHide]: 'Hide the password',
-          [INPUT_I18N.maskButtonShow]: 'Show the password',
-        }} />
+      <Password i18n={{
+        [INPUT_I18N.maskButtonHide]: 'Hide the password',
+        [INPUT_I18N.maskButtonShow]: 'Show the password',
+      }} />
     </FormField>
   ),
 };

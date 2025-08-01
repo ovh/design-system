@@ -1,4 +1,6 @@
 import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type Locale } from '../../../../utils/locales';
+import { type INPUT_I18N } from '../../../input/src';
 
 interface ComboboxInputValueChangeDetails {
   inputValue: string;
@@ -50,6 +52,10 @@ type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
    */
   highlightResults?: boolean,
   /**
+   * Internal translations override (see Input i18n keys).
+   */
+  i18n?: Partial<Record<INPUT_I18N.clearButton, string>>,
+  /**
    * Whether the component is in error state.
    */
   invalid?: boolean,
@@ -57,6 +63,10 @@ type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
    * The list of items
    */
   items: ComboboxItem[],
+  /**
+   * The locale used for the translation of the internal elements.
+   */
+  locale?: Locale,
   /**
    * Whether the multiple selection is allowed.
    */

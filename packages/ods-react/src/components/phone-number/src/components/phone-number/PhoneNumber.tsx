@@ -16,6 +16,7 @@ const PhoneNumber: FC<PhoneNumberProp> = forwardRef(({
   country,
   defaultValue,
   disabled,
+  i18n,
   id,
   invalid,
   locale,
@@ -36,6 +37,7 @@ const PhoneNumber: FC<PhoneNumberProp> = forwardRef(({
       country={ country }
       defaultValue={ defaultValue }
       disabled={ disabled }
+      i18n={ i18n }
       id={ id || fieldContext?.id }
       invalid={ invalid || fieldContext?.invalid }
       locale={ locale }

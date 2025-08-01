@@ -13,7 +13,7 @@ type DemoArg = Partial<PhoneNumberProp> & Partial<PhoneNumberControlProp> & {
 };
 
 const meta: Meta<PhoneNumberProp> = {
-  argTypes: excludeFromDemoControls(['countries', 'defaultValue', 'id', 'name', 'onCountryChange', 'onValueChange', 'pattern', 'required', 'value']),
+  argTypes: excludeFromDemoControls(['countries', 'defaultValue', 'i18n', 'id', 'name', 'onCountryChange', 'onValueChange', 'pattern', 'required', 'value']),
   component: PhoneNumber,
   subcomponents: { PhoneNumberControl, PhoneNumberCountryList },
   title: 'React Components/Phone Number',
@@ -288,14 +288,15 @@ export const AccessibilityI18n: Story = {
       <FormFieldLabel>
         Phone number:
       </FormFieldLabel>
-      <PhoneNumber country="fr" defaultValue="06 01 02 03 04">
+      <PhoneNumber
+        country="fr"
+        defaultValue="06 01 02 03 04"
+        i18n={{
+          [INPUT_I18N.clearButton]: 'Clear phone number',
+        }}>
         <PhoneNumberCountryList />
 
-        <PhoneNumberControl
-          clearable
-          i18n={{
-            [INPUT_I18N.clearButton]: 'Clear phone number',
-          }} />
+        <PhoneNumberControl clearable />
       </PhoneNumber>
     </FormField>
   ),

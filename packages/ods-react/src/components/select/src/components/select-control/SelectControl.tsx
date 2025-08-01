@@ -39,7 +39,7 @@ const SelectControl: FC<SelectControlProp> = forwardRef(({
       <Select.Trigger
         aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
         aria-disabled={ readOnly }
-        aria-labelledby={ fieldContext?.labelId }
+        aria-labelledby={ props['aria-labelledby'] || (fieldContext?.labelId ?? '') }
         className={ classNames(style['select-control'], className) }
         data-empty={ items.length === 0 }
         ref={ ref }

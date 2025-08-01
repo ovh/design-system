@@ -84,7 +84,9 @@ const Input: FC<InputProp> = forwardRef(({
   }
 
   return (
-    <InputProvider i18n={i18n} locale={locale}>
+    <InputProvider
+      i18n={ i18n }
+      locale={ locale }>
       <div
         className={ classNames(
           style['input'],

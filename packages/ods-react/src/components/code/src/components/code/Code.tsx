@@ -34,7 +34,9 @@ const Code: FC<CodeProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   return (
-    <div className={ classNames(style['code'], className) }
+    <div
+      className={ classNames(style['code'], className) }
+      data-ods="code"
       ref={ ref }
       role={ canCopy ? 'group' : '' }
       { ...props }>

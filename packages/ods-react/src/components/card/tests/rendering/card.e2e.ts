@@ -6,6 +6,7 @@ describe('Card rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="card"]')).not.toBeNull();
   });
 
   describe('custom style', () => {

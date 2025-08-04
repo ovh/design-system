@@ -1,4 +1,4 @@
-import { Modal, ModalContent, ModalTrigger } from '../../src';
+import { Modal, ModalBody, ModalContent, ModalTrigger } from '../../src';
 
 export default {
   component: Modal,
@@ -11,7 +11,9 @@ export const render = () => (
       Trigger
     </ModalTrigger>
     <ModalContent>
-      Content
+      <ModalBody>
+        Content
+      </ModalBody>
     </ModalContent>
   </Modal>
 );

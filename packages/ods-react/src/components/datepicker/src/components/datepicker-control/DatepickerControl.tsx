@@ -40,6 +40,7 @@ const DatepickerControl: FC<DatepickerControlProp> = forwardRef(({
           style['datepicker-control__input'],
           { [style['datepicker-control__input--open']]: open },
         )}
+        data-ods="datepicker-control"
         ref={ ref }
         { ...props }>
         <Input

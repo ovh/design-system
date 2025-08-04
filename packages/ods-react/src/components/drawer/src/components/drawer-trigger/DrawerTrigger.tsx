@@ -15,6 +15,7 @@ const DrawerTrigger: FC<DrawerTriggerProp> = forwardRef(({
 }, ref): JSX.Element => {
   return (
     <Dialog.Trigger
+      data-ods="drawer-trigger"
       ref={ ref }
       { ...props }>
       { children }

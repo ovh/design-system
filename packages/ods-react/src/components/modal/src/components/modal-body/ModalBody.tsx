@@ -12,6 +12,7 @@ const ModalBody: FC<ModalBodyProp> = forwardRef(({
   return (
     <div
       className={ classNames(style['modal-body'], className) }
+      data-ods="modal-body"
       ref={ ref }
       { ...props }>
       { children }

@@ -49,6 +49,7 @@ const CheckboxGroup: FC<CheckboxGroupProp> = forwardRef(({
   return (
     <Checkbox.Group
       className={ classNames(styles['checkbox-group'], className) }
+      data-ods="checkbox-group"
       defaultValue={ defaultValue }
       disabled={ disabled }
       invalid={ invalid }

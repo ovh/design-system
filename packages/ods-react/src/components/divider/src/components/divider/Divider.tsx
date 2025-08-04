@@ -27,7 +27,9 @@ const Divider: FC<DividerProp> = forwardRef(({
         style['divider'],
         style[`divider--${color}`],
         style[`divider--${spacing}`],
-        className) }
+        className,
+      )}
+      data-ods="divider"
       ref={ ref }
       { ...props } />
   );

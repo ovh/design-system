@@ -71,6 +71,7 @@ const PhoneNumberControl: FC<PhoneNumberControlProp> = forwardRef(({
         { [style['phone-number-control--adjoined']]: !!hasCountries },
         className,
       )}
+      data-ods="phone-number-control"
       ref={ ref }
       { ...props }
       clearable={ clearable }

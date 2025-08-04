@@ -23,6 +23,7 @@ const FormFieldLabel: FC<FormFieldLabelProp> = forwardRef(({
   return (
     <Text
       className={ classNames(style['form-field-label'], className) }
+      data-ods="form-field-label"
       htmlFor={ forId }
       id={ computedId }
       preset={ TEXT_PRESET.label }

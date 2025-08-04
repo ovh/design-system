@@ -1,4 +1,4 @@
-import { FormField, FormFieldError } from '../../src';
+import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../src';
 
 export default {
   component: FormFieldError,
@@ -7,8 +7,16 @@ export default {
 
 export const render = () => (
   <FormField invalid>
-    <FormFieldError data-testid="render">
-      Render
+    <FormFieldLabel data-testid="render">
+      Label
+    </FormFieldLabel>
+
+    <FormFieldHelper>
+      Helper
+    </FormFieldHelper>
+
+    <FormFieldError>
+      Error
     </FormFieldError>
   </FormField>
 );

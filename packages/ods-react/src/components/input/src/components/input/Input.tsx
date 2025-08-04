@@ -102,6 +102,7 @@ const Input: FC<InputProp> = forwardRef(({
           aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
           aria-invalid={ isInvalid }
           className={ style['input__field'] }
+          data-ods="input"
           data-invalid={ isInvalid ? true : undefined }
           id={ inputId }
           ref={ inputRef }

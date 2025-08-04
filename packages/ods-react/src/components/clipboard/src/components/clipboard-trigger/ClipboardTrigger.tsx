@@ -35,6 +35,7 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
           aria-label={ copied ? labelCopySuccess : labelCopy }
           asChild
           className={ style['clipboard-trigger__copy'] }
+          data-ods="clipboard-trigger"
           ref={ ref }
           { ...props }>
           {

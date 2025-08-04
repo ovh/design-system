@@ -91,6 +91,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
         className={ className }
         closeOnSelect={ !multiple }
         collection={ collection }
+        data-ods="combobox"
         defaultValue={ defaultValue }
         disabled={ disabled }
         inputValue={ inputValue }

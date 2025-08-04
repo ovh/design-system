@@ -32,6 +32,7 @@ const ClipboardControl: FC<ClipboardControlProp> = forwardRef(({
     <Clipboard.Control asChild>
       <Input
         className={ classNames(style['clipboard__input'], className) }
+        data-ods="clipboard-control"
         i18n={ i18n }
         loading={ loading }
         locale={ locale }

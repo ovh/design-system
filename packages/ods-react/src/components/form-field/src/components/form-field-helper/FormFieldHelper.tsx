@@ -20,6 +20,7 @@ const FormFieldHelper: FC<FormFieldHelperProp> = forwardRef(({
   return (
     <span
       className={ className }
+      data-ods="form-field-helper"
       id={ computedId }
       ref={ ref }
       { ...props }>

@@ -1,4 +1,4 @@
-import { Select } from '../../src';
+import { Select, SelectContent, SelectControl } from '../../src';
 
 export default {
   component: Select,
@@ -9,11 +9,17 @@ export const customStyle = () => (
   <Select
     data-testid="custom-style"
     items={[]}
-    style={{ height: '42px' }} />
+    style={{ height: '42px' }}>
+    <SelectControl />
+    <SelectContent />
+  </Select>
 );
 
 export const render = () => (
   <Select
     data-testid="render"
-    items={[]} />
+    items={[]}>
+    <SelectControl />
+    <SelectContent />
+  </Select>
 );

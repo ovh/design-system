@@ -34,6 +34,7 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
             style[`drawer-positioner__content--${ position }`],
             className,
           )}
+          data-ods="drawer-content"
           ref={ ref }
           { ...props }>
           { children }

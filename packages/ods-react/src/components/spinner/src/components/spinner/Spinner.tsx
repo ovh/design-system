@@ -29,6 +29,7 @@ const Spinner: FC<SpinnerProp> = forwardRef(({
         style[`spinner--${size}`],
         className,
       )}
+      data-ods="spinner"
       ref={ ref }
       role="progressbar"
       { ...props }>

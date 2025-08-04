@@ -130,6 +130,7 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
         [style['combobox-control--invalid']]: invalid,
         className,
       })}
+      data-ods="combobox-control"
       onBlur={ () => resetTagFocus() }
       ref={ ref }
       { ...props }>

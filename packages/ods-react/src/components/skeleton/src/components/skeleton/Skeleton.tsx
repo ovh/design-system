@@ -15,8 +15,9 @@ const Skeleton: FC<SkeletonProp> = forwardRef(({
         style['skeleton'],
         className,
       )}
-      ref={ref}
-      {...props}>
+      data-ods="skeleton"
+      ref={ ref }
+      { ...props }>
     </div>
   );
 });

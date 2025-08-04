@@ -50,6 +50,7 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
       <VendorCombobox.Positioner>
         <VendorCombobox.Content
           className={ classNames(style['combobox-content'], className) }
+          data-ods="combobox-content"
           ref={ ref }
           { ...props }>
           {

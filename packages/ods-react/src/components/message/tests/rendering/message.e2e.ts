@@ -6,6 +6,9 @@ describe('Message rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="message"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="message-body"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="message-icon"]')).not.toBeNull();
   });
 
   describe('custom style', () => {

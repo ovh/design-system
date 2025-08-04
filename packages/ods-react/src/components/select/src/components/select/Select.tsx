@@ -102,6 +102,7 @@ const Select: FC<SelectProp> = forwardRef(({
       <VendorSelect.Root
         className={ className }
         collection={ collection }
+        data-ods="select"
         defaultValue={ defaultValues }
         disabled={ disabled }
         id={ id || fieldContext?.id }

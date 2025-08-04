@@ -19,6 +19,7 @@ const Tab: FC<TabProp> = ({
   return (
     <Tabs.Trigger
       className={ classNames(style['tab'], className) }
+      data-ods="tab"
       value={ value }
       { ...props }>
       { children }

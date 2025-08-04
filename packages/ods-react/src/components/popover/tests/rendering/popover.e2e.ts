@@ -6,5 +6,7 @@ describe('Popover rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render-trigger"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="popover-content"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="popover-trigger"]')).not.toBeNull();
   });
 });

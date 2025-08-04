@@ -15,6 +15,7 @@ const ModalTrigger: FC<ModalTriggerProp> = forwardRef(({
 }, ref): JSX.Element => {
   return (
     <Dialog.Trigger
+      data-ods="modal-trigger"
       ref={ ref }
       { ...props }>
       { children }

@@ -50,6 +50,7 @@ const PhoneNumber: FC<PhoneNumberProp> = forwardRef(({
       value={ value }>
       <div
         className={ classNames(style['phone-number'], className) }
+        data-ods="phone-number"
         ref={ ref }
         role="group"
         { ...props }>

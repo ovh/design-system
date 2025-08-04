@@ -52,6 +52,7 @@ const FileUpload: FC<FileUploadProp> = forwardRef(({
           { [style['file-upload--invalid']]: isInvalid },
           className,
         )}
+        data-ods="file-upload"
         directory={ false }
         disabled={ disabled }
         ids={{

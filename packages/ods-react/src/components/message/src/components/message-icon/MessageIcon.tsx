@@ -14,6 +14,7 @@ const MessageIcon: FC<MessageIconProp> = forwardRef(({
   return (
     <Icon
       className={ classNames(style['message-icon'], className) }
+      data-ods="message-icon"
       name={ name }
       ref={ ref }
       { ...props } />

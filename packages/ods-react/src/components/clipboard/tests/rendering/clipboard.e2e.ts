@@ -6,5 +6,8 @@ describe('Clipboard rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render-trigger"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="clipboard"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="clipboard-control"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="clipboard-trigger"]')).not.toBeNull();
   });
 });

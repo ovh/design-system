@@ -26,6 +26,7 @@ const Text: FC<TextProp> = forwardRef(({
     <Tag
       // @ts-ignore TODO
       className={ classNames(style['text'], style[`text--${preset}`], className) }
+      data-ods="text"
       ref={ ref }
       { ...props }>
       { children }

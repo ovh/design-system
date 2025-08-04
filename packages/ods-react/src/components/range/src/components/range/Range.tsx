@@ -99,6 +99,7 @@ const Range: FC<RangeProp> = forwardRef(({
       aria-label={ props['aria-label'] }
       aria-labelledby={ props['aria-labelledby'] }
       className={ classNames(style['range'], className) }
+      data-ods="range"
       defaultValue={ defaultValue }
       disabled={ disabled }
       id={ id || fieldContext?.id }

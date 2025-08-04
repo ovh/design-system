@@ -35,6 +35,7 @@ const PopoverTrigger: FC<PopoverTriggerProp> = forwardRef(({
     <Popover.Trigger
       asChild={ asChild }
       className={ classNames(style['popover-trigger'], className) }
+      data-ods="popover-trigger"
       ref={ ref }
       role="button"
       tabIndex={ 0 }

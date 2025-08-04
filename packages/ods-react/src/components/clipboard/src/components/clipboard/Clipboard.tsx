@@ -27,6 +27,7 @@ const Clipboard: FC<ClipboardProp> = forwardRef(({
           { [style['clipboard--disabled']]: disabled },
           className,
         )}
+        data-ods="clipboard"
         onStatusChange={ onCopy }
         ref={ ref }
         role="group"

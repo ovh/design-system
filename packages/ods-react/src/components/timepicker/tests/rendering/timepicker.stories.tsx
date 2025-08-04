@@ -1,4 +1,4 @@
-import { Timepicker, TimepickerControl } from '../../src';
+import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '../../src';
 
 export default {
   component: Timepicker,
@@ -8,5 +8,7 @@ export default {
 export const render = () => (
   <Timepicker data-testid="render">
     <TimepickerControl />
+
+    <TimepickerTimezoneList />
   </Timepicker>
 );

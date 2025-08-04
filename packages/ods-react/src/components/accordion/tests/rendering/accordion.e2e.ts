@@ -6,6 +6,10 @@ describe('Accordion rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="accordion"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="accordion-content"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="accordion-item"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="accordion-trigger"]')).not.toBeNull();
   });
 
   describe('custom style', () => {

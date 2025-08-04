@@ -68,6 +68,7 @@ const Toggle: FC<ToggleProp> = forwardRef(({
     <VendorToggle.Root
       checked={ checked }
       className={ classNames(style['toggle'] )}
+      data-ods="toggle"
       defaultChecked={ defaultChecked }
       disabled={ disabled }
       id={ id || fieldContext?.id }

@@ -24,6 +24,7 @@ const Textarea: FC<TextareaProp> = forwardRef(({
       aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
       className={ classNames(style['textarea'], className) }
       data-invalid={ (invalid || fieldContext?.invalid) ? true : undefined }
+      data-ods="textarea"
       id={ id || fieldContext?.id }
       ref={ ref }
       { ...props } />

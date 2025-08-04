@@ -19,6 +19,7 @@ const QuantityControl: FC<QuantityControlProp> = forwardRef(({
   return (
     <NumberInput.Control
       className={ classNames(style['quantity-control'], className) }
+      data-ods="quantity-control"
       ref={ ref }
       role="group"
       { ...props }>

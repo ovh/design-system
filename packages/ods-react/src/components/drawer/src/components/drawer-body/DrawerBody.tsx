@@ -10,6 +10,7 @@ const DrawerBody: FC<DrawerBodyProp> = forwardRef(({
   return (
     <div
       className={ className }
+      data-ods="drawer-body"
       ref={ ref }
       { ...props }>
       { children }

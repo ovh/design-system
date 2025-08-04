@@ -6,6 +6,10 @@ describe('Checkbox rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="checkbox"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="checkbox-control"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="checkbox-group"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="checkbox-label"]')).not.toBeNull();
   });
 
   describe('custom style', () => {

@@ -44,6 +44,7 @@ const Button: FC<ButtonProp> = forwardRef(({
         style[`button--${variant}`],
         className,
       )}
+      data-ods="button"
       disabled={ props.disabled || loading }
       ref={ ref }
       { ...props }

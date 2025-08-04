@@ -39,6 +39,7 @@ const ModalContent: FC<ModalContentProp> = forwardRef(({
           aria-describedby={ props['aria-describedby'] || '' }
           aria-labelledby={ props['aria-labelledby'] || '' }
           className={ classNames(style['modal-content'], className) }
+          data-ods="modal-content"
           ref={ ref }
           role={ color === MODAL_COLOR.critical ? 'alertdialog' : 'dialog' }
           { ...props }>

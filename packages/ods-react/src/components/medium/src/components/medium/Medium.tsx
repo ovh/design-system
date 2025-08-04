@@ -11,6 +11,7 @@ const Medium: FC<MediumProp> = forwardRef(({
   return (
     <img
       className={ classNames(style['medium'], className) }
+      data-ods="medium"
       ref={ ref }
       { ...props } />
   );

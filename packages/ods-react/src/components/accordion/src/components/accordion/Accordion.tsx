@@ -42,6 +42,7 @@ const Accordion: FC<AccordionProp> = forwardRef(({
     <VendorAccordion.Root
       className={ classNames(className) }
       collapsible={ true }
+      data-ods="accordion"
       defaultValue={ defaultValue }
       disabled={ disabled }
       ref={ ref }

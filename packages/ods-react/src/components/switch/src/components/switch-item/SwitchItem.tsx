@@ -19,6 +19,7 @@ const SwitchItem: FC<SwitchItemProp> = forwardRef(({
   return (
     <ToggleGroup.Item
       className={ classNames(style['switch-item'], className) }
+      data-ods="switch-item"
       ref={ ref }
       { ...props }>
       { children }

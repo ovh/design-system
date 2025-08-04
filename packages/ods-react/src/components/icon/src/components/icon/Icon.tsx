@@ -22,6 +22,7 @@ const Icon: FC<IconProp> = forwardRef(({
         style[`icon--${name}`],
         className,
       )}
+      data-ods="icon"
       ref={ ref }
       role="presentation"
       { ...props } />

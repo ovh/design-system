@@ -11,6 +11,7 @@ const RadioLabel: FC<RadioLabelProp> = forwardRef(({
   return (
     <RadioGroup.ItemText
       className={ className }
+      data-ods="radio-label"
       ref={ ref }
       { ...props }>
       { children }

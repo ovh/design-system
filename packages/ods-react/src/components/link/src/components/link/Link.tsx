@@ -47,6 +47,7 @@ const Link = forwardRef(function Link<T extends ElementType>({
         { [style['link--no-text']]: hasNoText },
         className,
       )}
+      data-ods="link"
       ref={ ref }
       { ...linkProps }
       onClick={ onClick }

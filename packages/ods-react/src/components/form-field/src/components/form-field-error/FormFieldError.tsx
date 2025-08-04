@@ -27,6 +27,7 @@ const FormFieldError: FC<FormFieldErrorProp> = forwardRef(({
     <span
       aria-live="polite"
       className={ classNames(style['form-field-error'], className) }
+      data-ods="form-field-error"
       id={ computedId }
       ref={ ref }
       { ...props }>

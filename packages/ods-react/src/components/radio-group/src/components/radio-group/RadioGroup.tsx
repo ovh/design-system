@@ -49,6 +49,7 @@ const RadioGroup: FC<RadioGroupProp> = forwardRef(({
     <VendorRadioGroup.Root
       aria-labelledby={ props['aria-labelledby'] || '' }
       className={ classNames(style['radio-group'], className) }
+      data-ods="radio-group"
       defaultValue={ defaultValue }
       disabled={ disabled }
       name={ name }

@@ -5,11 +5,11 @@ import { BestPractices } from '../../../src/components/bestPractices/BestPractic
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 
-<Meta of={ MediumStories } name='Documentation' />
+<Meta of={ MediumStories } name="Documentation" />
 
 <Banner of={ MediumStories } />
 
-<Canvas of={ MediumStories.Overview } sourceState='none' />
+<Canvas of={ MediumStories.Overview } sourceState="none" />
 
 <Heading label="Overview" level={ 2 } />
 
@@ -51,3 +51,13 @@ The width and height dimensions of the image can be set to fixed sizes.
 <Heading label="Navigation" level={ 2 } />
 
 The **Medium** component is non-interactive and does not receive keyboard focus. It is used solely for displaying media content and does not impact keyboard navigation.
+
+<Heading label="Accessibility" level={ 2 } />
+
+<Heading label="Use caption text to add information about an image" level={ 3 } />
+
+Caption is useful to add information about the image itself (ex: copyright),
+whereas the alternative text always describe what the image actually conveys.
+
+<Canvas of={ MediumStories.Caption } sourceState="shown" />
+

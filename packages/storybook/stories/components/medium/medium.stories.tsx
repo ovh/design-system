@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Medium, type MediumProp } from '../../../../ods-react/src/components/medium/src';
+import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -43,6 +44,21 @@ export const Demo: Story = {
   args: {
     src: exampleSrc,
   },
+};
+
+export const Caption: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <figure>
+      <Medium alt={ exampleAlt } src={ exampleSrc } />
+
+      <figcaption>
+        <Text preset={ TEXT_PRESET.caption }>
+          © Copyright 1999-2025 OVH SA
+        </Text>
+      </figcaption>
+    </figure>
+  ),
 };
 
 export const Default: Story = {

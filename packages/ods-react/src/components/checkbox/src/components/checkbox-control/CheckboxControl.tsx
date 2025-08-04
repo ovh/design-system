@@ -25,6 +25,7 @@ const CheckboxControl: FC<CheckboxControlProp> = forwardRef(({
     <>
       <Checkbox.Control
         className={ classNames(style['checkbox-control'], className) }
+        data-ods="checkbox-control"
         ref={ ref }
         { ...props }>
         <Checkbox.Indicator>

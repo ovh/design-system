@@ -19,6 +19,7 @@ const FileUploadList: FC<FileUploadListProp> = forwardRef(({
         { [style['file-upload-list--not-empty']]: acceptedFiles.length > 0 },
         className,
       )}
+      data-ods="file-upload-list"
       ref={ ref }
       { ...props }>
       { children }

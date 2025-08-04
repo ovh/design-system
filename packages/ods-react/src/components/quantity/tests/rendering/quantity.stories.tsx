@@ -1,4 +1,4 @@
-import { Quantity } from '../../src';
+import { Quantity, QuantityControl, QuantityInput } from '../../src';
 
 export default {
   component: Quantity,
@@ -8,9 +8,17 @@ export default {
 export const customStyle = () => (
   <Quantity
     data-testid="custom-style"
-    style={{ height: '42px' }} />
+    style={{ height: '42px' }}>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
 );
 
 export const render = () => (
-  <Quantity data-testid="render" />
+  <Quantity data-testid="render">
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
 );

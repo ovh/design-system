@@ -22,6 +22,7 @@ const ProgressBar: FC<ProgressBarProp> = forwardRef(({
   return (
     <progress
       className={ classNames(style['progress-bar'], className) }
+      data-ods="progress-bar"
       max={ max }
       ref={ ref }
       value={ value }

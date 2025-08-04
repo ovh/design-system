@@ -11,6 +11,7 @@ const RadioControl: FC<RadioControlProp> = forwardRef(({
   return (
     <RadioGroup.ItemControl
       className={ style['radio-control'] }
+      data-ods="radio-control"
       ref={ ref }
       { ...props }>
       { children }

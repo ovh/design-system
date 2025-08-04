@@ -6,5 +6,7 @@ describe('Tooltip rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render-trigger"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="tooltip-content"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="tooltip-trigger"]')).not.toBeNull();
   });
 });

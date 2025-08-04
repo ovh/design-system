@@ -1,4 +1,4 @@
-import { PhoneNumber, PhoneNumberControl } from '../../src';
+import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '../../src';
 
 export default {
   component: PhoneNumber,
@@ -7,6 +7,8 @@ export default {
 
 export const render = () => (
   <PhoneNumber data-testid="render">
+    <PhoneNumberCountryList />
+
     <PhoneNumberControl />
   </PhoneNumber>
 );

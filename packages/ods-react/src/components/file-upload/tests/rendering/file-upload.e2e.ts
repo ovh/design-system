@@ -6,5 +6,8 @@ describe('FileUpload rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="file-upload"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="file-upload-item"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="file-upload-list"]')).not.toBeNull();
   });
 });

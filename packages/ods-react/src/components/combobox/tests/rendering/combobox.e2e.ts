@@ -5,8 +5,11 @@ describe('Combobox rendering', () => {
   it('should render the basic combobox', async() => {
     await gotoStory(page, 'rendering/basic');
     await page.waitForSelector('[data-testid="basic"]');
-    const combobox = await page.$('[data-testid="basic"]');
-    expect(combobox).not.toBeNull();
+
+    expect(await page.waitForSelector('[data-testid="basic"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="combobox"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="combobox-content"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="combobox-control"]')).not.toBeNull();
   });
 
   it('should render combobox with items', async() => {

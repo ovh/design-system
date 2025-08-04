@@ -40,6 +40,7 @@ const TimepickerControl: FC<TimepickerControlProp> = forwardRef(({
     <Input
       aria-labelledby={ fieldContext?.labelId }
       className={ className }
+      data-ods="timepicker-control"
       ref={ ref }
       { ...props }
       defaultValue={ defaultValue }

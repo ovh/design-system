@@ -32,6 +32,7 @@ const Tag: FC<TagProp> = forwardRef(({
         style[`tag--${size}`],
         className,
       )}
+      data-ods="tag"
       ref={ ref }
       type="button"
       { ...props }>

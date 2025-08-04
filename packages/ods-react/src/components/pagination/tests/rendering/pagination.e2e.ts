@@ -6,6 +6,7 @@ describe('Pagination rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="pagination"]')).not.toBeNull();
   });
 
   describe('custom style', () => {

@@ -58,6 +58,7 @@ const Message: FC<MessageProp> = forwardRef(({
         style[`message--${variant}`],
         className,
       )}
+      data-ods="message"
       ref={ ref }
       { ...props }>
       { children }

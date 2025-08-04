@@ -35,6 +35,7 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
             { [style['datepicker-content--invalid']]: invalid || fieldContext?.invalid },
             className,
           )}
+          data-ods="datepicker-content"
           ref={ ref }
           { ...props }>
           <DatePicker.View view={ DATEPICKER_VIEW.day }>

@@ -119,6 +119,7 @@ const Pagination: FC<PaginationProp> = forwardRef(({
     <VendorPagination.Root
       className={ classNames(style[ 'pagination' ], className) }
       count={ totalItems }
+      data-ods="pagination"
       defaultPage={ defaultPage }
       onPageChange={ handlePageChange }
       page={ currentPage }

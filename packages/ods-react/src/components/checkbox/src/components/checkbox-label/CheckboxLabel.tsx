@@ -9,6 +9,7 @@ const CheckboxLabel: FC<CheckboxLabelProp> = forwardRef(({
 }, ref): JSX.Element => {
   return (
     <Checkbox.Label
+      data-ods="checkbox-label"
       ref={ ref }
       { ...props }>
       { children }

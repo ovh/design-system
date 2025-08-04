@@ -12,6 +12,7 @@ const MessageBody: FC<MessageBodyProp> = forwardRef(({
   return (
     <div
       className={ classNames(style['message-body'], className) }
+      data-ods="message-body"
       ref={ ref }
       { ...props }>
       { children }

@@ -6,6 +6,10 @@ describe('Tabs rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="tab"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="tab-content"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="tab-list"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="tabs"]')).not.toBeNull();
   });
 
   describe('custom style', () => {

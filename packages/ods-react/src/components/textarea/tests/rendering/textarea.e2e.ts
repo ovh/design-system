@@ -6,6 +6,7 @@ describe('Textarea rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="textarea"]')).not.toBeNull();
   });
 
   describe('custom style', () => {

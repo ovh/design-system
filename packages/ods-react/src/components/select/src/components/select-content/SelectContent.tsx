@@ -38,6 +38,7 @@ const SelectContent: FC<SelectContentProp> = forwardRef(({
         <Select.Content
           className={ classNames(style['select-content'], className) }
           data-empty={ items.length === 0 }
+          data-ods="select-content"
           ref={ ref }
           { ...props }>
           {

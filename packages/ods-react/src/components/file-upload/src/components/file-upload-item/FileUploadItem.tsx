@@ -48,6 +48,7 @@ const FileUploadItem: FC<FileUploadItemProp> = forwardRef(({
   return (
     <FileUpload.Item
       className={ classNames(style['file-upload-item'], className) }
+      data-ods="file-upload-item"
       file={ file }
       ref={ ref }
       { ...props }>

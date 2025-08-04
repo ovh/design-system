@@ -2,14 +2,14 @@ import { type ComponentPropsWithoutRef, type ElementType, type ForwardedRef, typ
 import { Link } from '../../../../link/src';
 
 interface BreadcrumbLinkProp<T extends ElementType = 'a'> {
-  /** @internal */
-  autoFocus?: boolean,
   /**
    * @default-value='a'
    * Pass a component you may want to use as custom Link component.
    * Useful for example when using routing library like react-router.
    * */
   as?: T,
+  /** @internal */
+  autoFocus?: boolean,
   /** @internal */
   isLast?: boolean,
 }
@@ -39,8 +39,9 @@ const BreadcrumbLink = forwardRef(function BreadcrumbLink<T extends ElementType>
     return (
       <span
         aria-current="page"
-        ref={spanRef}
-        {...props}
+        data-ods="breadcrumb-link"
+        ref={ spanRef }
+        { ...props }
       />
     );
   }
@@ -48,8 +49,9 @@ const BreadcrumbLink = forwardRef(function BreadcrumbLink<T extends ElementType>
   const Component = as || Link;
   return (
     <Component
-      ref={anchorRef}
-      {...props}
+      data-ods="breadcrumb-link"
+      ref={ anchorRef }
+      { ...props }
     />
   );
 });

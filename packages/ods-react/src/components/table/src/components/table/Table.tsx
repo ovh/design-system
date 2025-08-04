@@ -30,6 +30,7 @@ const Table: FC<TableProp> = forwardRef(({
         style[`table--${variant}`],
         className,
       )}
+      data-ods="table"
       ref={ ref }
       { ...props }>
       { children }

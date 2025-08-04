@@ -75,6 +75,7 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
       <nav
         aria-expanded={!noCollapse && count > collapseThreshold ? isExpanded : undefined}
         className={ classNames(style['breadcrumb'], className) }
+        data-ods="breadcrumb"
         id={ computedId }
         ref={ ref }
         role="navigation"

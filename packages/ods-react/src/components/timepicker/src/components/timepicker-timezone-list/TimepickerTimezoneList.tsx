@@ -48,6 +48,7 @@ const TimepickerTimezoneList: FC<TimepickerTimezoneListProp> = forwardRef(({
   return (
     <Select
       className={ classNames(style['timepicker-timezone-list'], className) }
+      data-ods="timepicker-timezone-list"
       disabled={ disabled }
       invalid={ invalid }
       items={ timezoneItems }

@@ -53,6 +53,7 @@ const Switch: FC<SwitchProp> = forwardRef(({
         style[`switch--${size}`],
         className,
       )}
+      data-ods="switch"
       { ...props }
       defaultValue={ defaultValue ? [defaultValue] : undefined }
       deselectable={ false }

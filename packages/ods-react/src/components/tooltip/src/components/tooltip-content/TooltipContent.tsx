@@ -27,6 +27,7 @@ const TooltipContent: FC<TooltipContentProp> = forwardRef(({
       <Tooltip.Positioner>
         <Tooltip.Content
           className={ classNames(style['tooltip-content'], className) }
+          data-ods="tooltip-content"
           ref={ ref }
           { ...props }>
           {

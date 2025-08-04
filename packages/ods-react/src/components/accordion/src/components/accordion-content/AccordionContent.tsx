@@ -13,6 +13,7 @@ const AccordionContent: FC<AccordionContentProp> = forwardRef(({
   return (
     <Accordion.ItemContent
       className={ classNames(style[ 'accordion-content' ], className) }
+      data-ods="accordion-content"
       ref={ ref }
       { ...props }
     >

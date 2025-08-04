@@ -1,4 +1,4 @@
-import { Radio, RadioGroup } from '../../src';
+import { Radio, RadioControl, RadioGroup, RadioLabel } from '../../src';
 
 export default {
   component: RadioGroup,
@@ -6,9 +6,23 @@ export default {
 };
 
 export const render = () => (
-  <RadioGroup>
-    <Radio
-      data-testid="render"
-      value="radio1" />
+  <RadioGroup data-testid="render">
+    <Radio value="html">
+      <RadioControl />
+
+      <RadioLabel>HTML</RadioLabel>
+    </Radio>
+
+    <Radio value="css">
+      <RadioControl />
+
+      <RadioLabel>CSS</RadioLabel>
+    </Radio>
+
+    <Radio value="js">
+      <RadioControl />
+
+      <RadioLabel>JavaScript</RadioLabel>
+    </Radio>
   </RadioGroup>
 );

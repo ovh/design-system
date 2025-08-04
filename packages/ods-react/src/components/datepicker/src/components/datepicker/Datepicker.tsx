@@ -72,6 +72,7 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
       required={ required }>
       <DatePicker.Root
         className={ classNames(style['datepicker'], className) }
+        data-ods="datepicker"
         defaultOpen={ defaultOpen }
         defaultValue={ convertedDefaultValue && [convertedDefaultValue] }
         defaultView = { computedDefaultView }

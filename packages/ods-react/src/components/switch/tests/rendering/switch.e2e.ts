@@ -6,6 +6,8 @@ describe('Switch rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="switch"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="switch-item"]')).not.toBeNull();
   });
 
   describe('custom style', () => {

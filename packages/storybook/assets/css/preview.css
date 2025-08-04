@@ -30,8 +30,7 @@ img {
   color: var(--ods-color-primary-500);
 }
 
-/* TODO update selector for data-attribute when available */
-/* Prevent auto-generated p tag to mess up the Message rendering */
-div[class^="_message-body"] p {
+/* Prevent storybook auto-added p tag to mess up the Message rendering */
+[data-ods="message-body"] p {
   margin: 0;
 }

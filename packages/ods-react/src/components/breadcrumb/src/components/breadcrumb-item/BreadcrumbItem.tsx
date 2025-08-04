@@ -35,6 +35,7 @@ const BreadcrumbItem: FC<BreadcrumbItemProp> = forwardRef(({
   return (
     <li
       className={ classNames(style['breadcrumb-item'], className) }
+      data-ods="breadcrumb-item"
       ref={ ref }
       role="listitem"
       { ...props }>

@@ -52,6 +52,7 @@ const Password: FC<PasswordProp> = forwardRef(({
     <Input
       className={ className }
       clearable={ clearable }
+      data-ods="password"
       i18n={{
         [INPUT_I18N.maskButtonHide]: translate(INPUT_I18N.maskButtonHide),
         [INPUT_I18N.maskButtonShow]: translate(INPUT_I18N.maskButtonShow),

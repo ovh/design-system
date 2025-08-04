@@ -6,5 +6,8 @@ describe('Breadcrumb rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="breadcrumb"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="breadcrumb-item"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="breadcrumb-link"]')).not.toBeNull();
   });
 });

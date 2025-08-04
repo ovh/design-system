@@ -13,6 +13,7 @@ const TabList: FC<TabListProp> = ({
   return (
     <Tabs.List
       className={ classNames(style['tab-list'], className) }
+      data-ods="tab-list"
       { ...props }>
       { children }
     </Tabs.List>

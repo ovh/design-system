@@ -30,6 +30,7 @@ const Badge: FC<BadgeProp> = forwardRef(({
         style[`badge--${size}`],
         className,
       )}
+      data-ods="badge"
       ref={ ref }
       { ...props }>
       { children }

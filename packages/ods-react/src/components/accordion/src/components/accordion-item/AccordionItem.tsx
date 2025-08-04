@@ -24,6 +24,7 @@ const AccordionItem: FC<AccordionItemProp> = forwardRef(({
   return (
     <Accordion.Item
       className={ classNames(style[ 'accordion-item' ], className) }
+      data-ods="accordion-item"
       disabled={ disabled }
       ref={ ref }
       value={ value }

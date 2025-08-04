@@ -42,6 +42,7 @@ const SelectControl: FC<SelectControlProp> = forwardRef(({
         aria-labelledby={ props['aria-labelledby'] || (fieldContext?.labelId ?? '') }
         className={ classNames(style['select-control'], className) }
         data-empty={ items.length === 0 }
+        data-ods="select-control"
         ref={ ref }
         { ...props }>
         <SelectValueText

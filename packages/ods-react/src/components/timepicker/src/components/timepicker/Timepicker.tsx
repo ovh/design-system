@@ -50,6 +50,7 @@ const Timepicker: FC<TimepickerProp> = forwardRef(({
       withSeconds={ withSeconds }>
       <div
         className={ classNames(style['timepicker'], className) }
+        data-ods="timepicker"
         ref={ ref }
         role="group"
         { ...props }>

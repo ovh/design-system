@@ -6,6 +6,7 @@ describe('Badge rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="badge"]')).not.toBeNull();
   });
 
   describe('custom style', () => {

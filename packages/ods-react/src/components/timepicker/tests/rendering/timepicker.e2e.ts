@@ -6,5 +6,8 @@ describe('Timepicker rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="timepicker"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="timepicker-control"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="timepicker-timezone-list"]')).not.toBeNull();
   });
 });

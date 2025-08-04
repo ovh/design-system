@@ -73,6 +73,7 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
   return (
     <Select
       className={ classNames(style['phone-number-country-list'], className) }
+      data-ods="phone-number-country-list"
       disabled={ disabled }
       fitControlWidth={ false }
       invalid={ hasError || invalid }

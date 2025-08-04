@@ -65,6 +65,7 @@ const Checkbox: FC<CheckboxProp> = forwardRef(({
     <VendorCheckbox.Root
       checked={ checked }
       className={ classNames(style['checkbox'], className) }
+      data-ods="checkbox"
       defaultChecked={ defaultChecked }
       disabled={ disabled }
       id={ id || fieldContext?.id }

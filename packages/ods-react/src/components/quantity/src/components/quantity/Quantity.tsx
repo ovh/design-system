@@ -56,6 +56,7 @@ interface QuantityProp extends Omit<ComponentPropsWithRef<'div'>, 'inputMode'> {
 
 const Quantity: FC<QuantityProp> = forwardRef(({
   children,
+  className,
   defaultValue,
   disabled,
   id,
@@ -75,6 +76,8 @@ const Quantity: FC<QuantityProp> = forwardRef(({
   return (
     <NumberInput.Root
       clampValueOnBlur={ false }
+      className={ className }
+      data-ods="quantity"
       defaultValue={ defaultValue }
       disabled={ disabled }
       id={ id || fieldContext?.id }

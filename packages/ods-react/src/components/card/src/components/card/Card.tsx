@@ -23,6 +23,7 @@ const Card: FC<CardProp> = forwardRef(({
         style[`card--${color}`],
         className,
       )}
+      data-ods="card"
       ref={ ref }
       { ...props }>
     </div>

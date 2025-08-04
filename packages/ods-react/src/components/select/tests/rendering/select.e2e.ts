@@ -6,6 +6,9 @@ describe('Select rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="select"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="select-content"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="select-control"]')).not.toBeNull();
   });
 
   describe('custom style', () => {

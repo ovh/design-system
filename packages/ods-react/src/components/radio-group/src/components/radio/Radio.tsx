@@ -37,6 +37,7 @@ const Radio: FC<RadioProp> = forwardRef(({
   return (
     <RadioGroup.Item
       className={ classNames(style['radio'], className) }
+      data-ods="radio"
       disabled={ disabled }
       invalid={ invalid || fieldContext?.invalid }
       ref={ ref }

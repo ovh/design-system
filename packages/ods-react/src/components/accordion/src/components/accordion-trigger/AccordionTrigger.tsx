@@ -14,6 +14,7 @@ const AccordionTrigger: FC<AccordionTriggerProp> = forwardRef(({
   return (
     <Accordion.ItemTrigger
       className={ classNames(style[ 'accordion-trigger' ], className) }
+      data-ods="accordion-trigger"
       ref={ ref }
       { ...props }>
       <div className={ style[ 'accordion-trigger__content' ] }>

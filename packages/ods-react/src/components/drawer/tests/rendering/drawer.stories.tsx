@@ -1,4 +1,4 @@
-import { Drawer, DrawerContent, DrawerTrigger } from '../../src';
+import { Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '../../src';
 
 export default {
   component: Drawer,
@@ -11,7 +11,9 @@ export const render = () => (
       Trigger
     </DrawerTrigger>
     <DrawerContent>
-      Content
+      <DrawerBody>
+        Content
+      </DrawerBody>
     </DrawerContent>
   </Drawer>
 );

@@ -17,6 +17,7 @@ const QuantityInput: FC<QuantityInputProp> = forwardRef(({
     <NumberInput.Input
       aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
       className={ classNames(style['quantity-input'], className) }
+      data-ods="quantity-input"
       id={ id || fieldContext?.id }
       ref={ ref }
       { ...props } />

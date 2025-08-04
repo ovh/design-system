@@ -6,6 +6,9 @@ describe('Quantity rendering', () => {
     await gotoStory(page, 'rendering/render');
 
     expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="quantity"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="quantity-control"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="quantity-input"]')).not.toBeNull();
   });
 
   describe('custom style', () => {

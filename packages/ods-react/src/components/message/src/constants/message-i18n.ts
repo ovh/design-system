@@ -10,9 +10,9 @@ const TRANSLATION = {
     [LOCALE.en]: 'Close',
     [LOCALE.es]: 'Cerrar',
     [LOCALE.fr]: 'Fermer',
-    [LOCALE.it]: 'Chiudere',
+    [LOCALE.it]: 'Chiudi',
     [LOCALE.nl]: 'Sluiten',
-    [LOCALE.pl]: 'Zamknąć',
+    [LOCALE.pl]: 'Zamknij',
     [LOCALE.pt]: 'Fechar',
   },
 };

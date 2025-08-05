@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FormField, FormFieldLabel } from '../../form-field/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { INPUT_I18N } from '../../input/src';
 import { Combobox, ComboboxContent, ComboboxControl, type ComboboxItem } from '.';
@@ -136,6 +137,41 @@ export const I18n = () => (
     <ComboboxControl clearable />
     <ComboboxContent />
   </Combobox>
+);
+
+export const InFormField = () => (
+  <FormField>
+    <FormFieldLabel>
+      Combobox:
+    </FormFieldLabel>
+
+    <Combobox items={ items }>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+  </FormField>
+);
+
+export const Invalid = () => (
+  <>
+    <Combobox
+      invalid
+      items={ items }>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+
+    <FormField invalid>
+      <FormFieldLabel>
+        Invalid combobox
+      </FormFieldLabel>
+
+      <Combobox items={ items }>
+        <ComboboxControl />
+        <ComboboxContent />
+      </Combobox>
+    </FormField>
+  </>
 );
 
 export const NoResultLabel = () => (

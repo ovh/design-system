@@ -33,19 +33,21 @@ const Radio: FC<RadioProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
+  const isInvalid = invalid || fieldContext?.invalid;
 
   return (
     <RadioGroup.Item
       className={ classNames(style['radio'], className) }
       data-ods="radio"
       disabled={ disabled }
-      invalid={ invalid || fieldContext?.invalid }
+      invalid={ isInvalid }
       ref={ ref }
       { ...props }>
       { children }
 
       <RadioGroup.ItemHiddenInput
         aria-describedby={ props['aria-describedby'] || fieldContext?.ariaDescribedBy }
+        aria-invalid={ isInvalid }
         required={ required } />
     </RadioGroup.Item>
   );

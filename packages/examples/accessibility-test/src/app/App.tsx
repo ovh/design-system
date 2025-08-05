@@ -270,6 +270,14 @@ function App(): ReactElement {
               I agree to the terms
             </CheckboxLabel>
           </Checkbox>
+
+          <Checkbox invalid>
+            <CheckboxControl />
+
+            <CheckboxLabel>
+              Invalid
+            </CheckboxLabel>
+          </Checkbox>
         </section>
 
         <section>
@@ -313,6 +321,23 @@ function App(): ReactElement {
             </Combobox>
           </FormField>
 
+          <FormField invalid>
+            <FormFieldLabel>Select a pet:</FormFieldLabel>
+
+            <Combobox
+              items={[
+                { label: 'Dog', value: 'dog' },
+                { label: 'Cat', value: 'cat' },
+                { label: 'Hamster', value: 'hamster' },
+                { label: 'Parrot', value: 'parrot' },
+                { label: 'Spider', value: 'spider' },
+                { label: 'Goldfish', value: 'goldfish' },
+              ]}>
+              <ComboboxControl placeholder="Combobox" />
+              <ComboboxContent />
+            </Combobox>
+          </FormField>
+
           <FormField>
             <FormFieldLabel>Select some pets:</FormFieldLabel>
 
@@ -336,6 +361,18 @@ function App(): ReactElement {
           <h1>Datepicker</h1>
 
           <FormField>
+            <FormFieldLabel>
+              Select a date:
+            </FormFieldLabel>
+
+            <Datepicker>
+              <DatepickerControl />
+
+              <DatepickerContent />
+            </Datepicker>
+          </FormField>
+
+          <FormField invalid>
             <FormFieldLabel>
               Select a date:
             </FormFieldLabel>
@@ -390,6 +427,22 @@ function App(): ReactElement {
           <h1>File Upload</h1>
 
           <FormField>
+            <FormFieldLabel>Select file(s):</FormFieldLabel>
+
+            <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+              <FileUploadList>
+                {
+                  files.map((file: File, idx) => (
+                    <FileUploadItem
+                      file={ file }
+                      key={ idx } />
+                  ))
+                }
+              </FileUploadList>
+            </FileUpload>
+          </FormField>
+
+          <FormField invalid>
             <FormFieldLabel>Select file(s):</FormFieldLabel>
 
             <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
@@ -515,12 +568,12 @@ function App(): ReactElement {
             <Input maskOption={{ enable: true }} />
           </FormField>
 
-          <FormField>
+          <FormField invalid>
             <FormFieldLabel>
               Invalid:
             </FormFieldLabel>
 
-            <Input invalid />
+            <Input />
           </FormField>
         </section>
 
@@ -649,6 +702,14 @@ function App(): ReactElement {
 
             <Password />
           </FormField>
+
+          <FormField invalid>
+            <FormFieldLabel>
+              Password:
+            </FormFieldLabel>
+
+            <Password />
+          </FormField>
         </section>
 
         <section>
@@ -665,6 +726,18 @@ function App(): ReactElement {
           </FormField>
 
           <FormField>
+            <FormFieldLabel>
+              Phone number with countries:
+            </FormFieldLabel>
+
+            <PhoneNumber>
+              <PhoneNumberCountryList />
+
+              <PhoneNumberControl />
+            </PhoneNumber>
+          </FormField>
+
+          <FormField invalid>
             <FormFieldLabel>
               Phone number with countries:
             </FormFieldLabel>
@@ -724,12 +797,52 @@ function App(): ReactElement {
               </QuantityControl>
             </Quantity>
           </FormField>
+
+          <FormField invalid>
+            <FormFieldLabel>
+              Number of CPUs:
+            </FormFieldLabel>
+
+            <Quantity
+              max={ 10 }
+              min={ 0 }>
+              <QuantityControl>
+                <QuantityInput />
+              </QuantityControl>
+            </Quantity>
+          </FormField>
         </section>
 
         <section>
           <h1>Radio Group</h1>
 
           <FormField>
+            <FormFieldLabel>
+              Pick a language:
+            </FormFieldLabel>
+
+            <RadioGroup>
+              <Radio value="html">
+                <RadioControl />
+
+                <RadioLabel>HTML</RadioLabel>
+              </Radio>
+
+              <Radio value="css">
+                <RadioControl />
+
+                <RadioLabel>CSS</RadioLabel>
+              </Radio>
+
+              <Radio value="js">
+                <RadioControl />
+
+                <RadioLabel>JavaScript</RadioLabel>
+              </Radio>
+            </RadioGroup>
+          </FormField>
+
+          <FormField invalid>
             <FormFieldLabel>
               Pick a language:
             </FormFieldLabel>
@@ -765,6 +878,12 @@ function App(): ReactElement {
             <Range defaultValue={[50]} />
           </FormField>
 
+          <FormField invalid>
+            <FormFieldLabel>Volume</FormFieldLabel>
+
+            <Range defaultValue={[50]} />
+          </FormField>
+
           <FormField>
             <FormFieldLabel id="range-label">
               Price range
@@ -787,6 +906,23 @@ function App(): ReactElement {
           <h1>Select</h1>
 
           <FormField>
+            <FormFieldLabel>
+              Select a Web hosting
+            </FormFieldLabel>
+
+            <Select
+              items={[
+                { label: '1 vCore 2,4 GHz, 2 Go RAM', value:'hosting-1' },
+                { label: '1 vCore 2,4 GHz, 4 Go RAM', value:'hosting-2' },
+                { label: '2 vCores 2,4 GHz, 8 Go RAM', value:'hosting-3' },
+              ]}>
+              <SelectControl />
+
+              <SelectContent />
+            </Select>
+          </FormField>
+
+          <FormField invalid>
             <FormFieldLabel>
               Select a Web hosting
             </FormFieldLabel>
@@ -974,6 +1110,14 @@ function App(): ReactElement {
             <Textarea />
           </FormField>
 
+          <FormField invalid>
+            <FormFieldLabel>
+              Description:
+            </FormFieldLabel>
+
+            <Textarea />
+          </FormField>
+
           <FormField>
             <FormFieldLabel>
               Description:
@@ -1001,6 +1145,18 @@ function App(): ReactElement {
               <TimepickerTimezoneList />
             </Timepicker>
           </FormField>
+
+          <FormField invalid>
+            <FormFieldLabel>
+              Starting time:
+            </FormFieldLabel>
+
+            <Timepicker withSeconds>
+              <TimepickerControl />
+
+              <TimepickerTimezoneList />
+            </Timepicker>
+          </FormField>
         </section>
 
         <section>
@@ -1009,6 +1165,14 @@ function App(): ReactElement {
           <Toggle aria-label="Enable dark mode" />
 
           <FormField>
+            <FormFieldLabel>
+              Dark mode
+            </FormFieldLabel>
+
+            <Toggle />
+          </FormField>
+
+          <FormField invalid>
             <FormFieldLabel>
               Dark mode
             </FormFieldLabel>

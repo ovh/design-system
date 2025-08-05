@@ -38,9 +38,7 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
   const { disabled, getContentProps, multiple, open, setOpen, setValue, value } = useComboboxContext();
   const { i18n, invalid, items, locale, readOnly } = useCombobox();
   const [focusedTagIndex, setFocusedTagIndex] = useState<number | null>(null);
-  const contentProps = getContentProps() as {
-    'data-placement'?: 'bottom' | 'top';
-  };
+  const contentProps = getContentProps() as { 'data-placement'?: 'bottom' | 'top' };
   const placement = contentProps['data-placement'] as 'top' | 'bottom' | undefined;
   const inputRef = useRef<HTMLInputElement>(null);
   const isInteractive = !disabled && !readOnly;

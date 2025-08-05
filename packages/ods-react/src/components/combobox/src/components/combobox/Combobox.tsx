@@ -1,5 +1,6 @@
 import { type ComboboxInputValueChangeDetails, type ComboboxValueChangeDetails, Combobox as VendorCombobox, createListCollection } from '@ark-ui/react/combobox';
 import { type FC, type JSX, forwardRef, useEffect, useMemo, useState } from 'react';
+import { useFormField } from '../../../../form-field/src';
 import { ComboboxProvider, type ComboboxRootProp } from '../../contexts/useCombobox';
 import { findLabelForValue, flattenItems, getFilteredItems } from '../../controller/combobox';
 
@@ -29,9 +30,11 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   value,
   ...props
 }, ref): JSX.Element => {
+  const fieldContext = useFormField();
   const [inputValue, setInputValue] = useState('');
   const [internalValue, setInternalValue] = useState<string[]>(defaultValue || []);
   const currentValue = value && value.length > 0 ? value : internalValue;
+  const isInvalid = invalid || fieldContext?.invalid;
 
   useEffect(() => {
     if (!multiple && currentValue.length > 0) {
@@ -80,7 +83,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
       filteredItems={ filteredItems }
       highlightResults={ highlightResults }
       i18n={ i18n }
-      invalid={ invalid }
+      invalid={ isInvalid }
       items={ items }
       locale={ locale }
       newElementLabel={ newElementLabel }
@@ -93,8 +96,11 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
         collection={ collection }
         defaultValue={ defaultValue }
         disabled={ disabled }
+        ids={{
+          input: fieldContext?.id,
+        }}
         inputValue={ inputValue }
-        invalid={ invalid }
+        invalid={ isInvalid }
         multiple={ multiple }
         onInputValueChange={ handleInputValueChange }
         onValueChange={ handleValueChange }

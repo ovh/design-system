@@ -1,0 +1,80 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/state';
+
+@layer ods-atoms {
+  .toggle-control {
+    $control: &;
+
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    border: 1px solid var(--ods-color-neutral-200);
+    border-radius: 1rem;
+    background-color: var(--ods-color-neutral-200);
+    width: 48px;
+    height: 24px;
+
+    &:hover,
+    &[data-focus] {
+      border-color: var(--ods-color-neutral-300);
+      background-color: var(--ods-color-neutral-300);
+    }
+
+    &[data-focus] {
+      @include focus.ods-focus();
+    }
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+
+      border-color: state.$ods-state-is-disabled-background-color;
+    }
+
+    &[data-state="checked"] {
+      &:not([data-disabled]) {
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+        border-color: var(--ods-color-primary-500);
+        background-color: var(--ods-color-primary-500);
+
+        &:hover, &[data-focus] {
+          border-color: var(--ods-color-primary-700);
+          background-color: var(--ods-color-primary-700);
+
+          &[data-invalid] {
+            border-color: var(--ods-color-form-element-border-critical);
+          }
+        }
+
+        &[data-invalid] {
+          background-color: var(--ods-color-form-element-background-selected-critical);
+        }
+      }
+
+      #{$control}__thumb {
+        transform: translateX(24px);
+      }
+    }
+
+    &#{$control}[data-invalid] {
+      border-color: var(--ods-color-form-element-border-critical);
+    }
+
+    &__thumb {
+      position: absolute;
+      bottom: 1px;
+      left: 1px;
+      transform: translateX(0);
+      transition: transform 0.4s ease;
+      z-index: 2;
+      margin: auto;
+      border-radius: 1rem;
+      background-color: var(--ods-color-neutral-000);
+      width: 20px;
+      height: 20px;
+
+      &:not([data-disabled]) {
+        box-shadow: rgba(0, 0, 0, 0.25) 0 1px 1px 0;
+      }
+    }
+  }
+}

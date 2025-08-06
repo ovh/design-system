@@ -1,4 +1,4 @@
-import { Toggle } from '../../src';
+import { Toggle, ToggleControl } from '../../src';
 
 export default {
   component: Toggle,
@@ -8,9 +8,13 @@ export default {
 export const customStyle = () => (
   <Toggle
     data-testid="custom-style"
-    style={{ height: '42px' }} />
+    style={{ height: '42px' }}>
+    <ToggleControl />
+  </Toggle>
 );
 
 export const render = () => (
-  <Toggle data-testid="render" />
+  <Toggle data-testid="render">
+    <ToggleControl />
+  </Toggle>
 );

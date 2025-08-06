@@ -1,7 +1,9 @@
-.custom-toggle {
+.custom-toggle,
+.custom-toggle-deprecated {
   background-color: #FF0000;
+}
 
-  [data-part='thumb'] {
-    background-color: #000000;
-  }
+.custom-toggle-control,
+.custom-toggle-deprecated [data-ods="toggle-control"] {
+  background-color: #000000;
 }

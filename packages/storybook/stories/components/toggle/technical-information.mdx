@@ -30,6 +30,18 @@ import * as ToggleStories from './toggle.stories';
         url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes',
       },
     },
+    'ToggleControl': {
+      extendAttribute: {
+        name: 'span',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes',
+      },
+    },
+    'ToggleLabel': {
+      extendAttribute: {
+        name: 'span',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes',
+      },
+    },
   }}
   of={ ToggleStories } />
 
@@ -47,7 +59,11 @@ import * as ToggleStories from './toggle.stories';
 
 <Canvas of={ ToggleStories.Invalid } sourceState="shown" />
 
-<Heading label="With labels" level={ 3 } />
+<Heading label="With label" level={ 3 } />
+
+<Canvas of={ ToggleStories.WithLabel } sourceState="shown" />
+
+<Heading label="With inside labels" level={ 3 } />
 
 <Canvas of={ ToggleStories.WithLabels } sourceState="shown" />
 

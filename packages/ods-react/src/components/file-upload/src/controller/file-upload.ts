@@ -1,4 +1,3 @@
-import { type FileUploadFileError } from '@ark-ui/react/file-upload';
 import { FILE_REJECTION_CAUSE } from '../constants/file-error';
 
 function isUploading(progress?: number): boolean {
@@ -6,7 +5,7 @@ function isUploading(progress?: number): boolean {
 }
 
 // Map internal ark-ui error code with ODS rejection cause
-function mapErrorCodes(errors: FileUploadFileError[]): FILE_REJECTION_CAUSE[] {
+function mapErrorCodes(errors: string[]): FILE_REJECTION_CAUSE[] {
   return errors.map((error) => {
     switch (error) {
       case 'FILE_INVALID':

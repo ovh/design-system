@@ -10,7 +10,7 @@ const ToggleLabels: FC = (): JSX.Element => {
   const { checked: isChecked, disabled, focused } = useSwitchContext();
 
   return (
-    <div className={ style['toggle-labels'] }>
+    <span className={ style['toggle-labels'] }>
       <span
         className={ classNames(
           style['toggle-labels__label-on'],
@@ -29,7 +29,7 @@ const ToggleLabels: FC = (): JSX.Element => {
         )}>
         { OFF_LABEL }
       </span>
-    </div>
+    </span>
   );
 };
 

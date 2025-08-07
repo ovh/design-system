@@ -2,7 +2,8 @@ import { DocsContainer } from '@storybook/addon-docs';
 import { Unstyled } from '@storybook/blocks';
 import { type Preview } from '@storybook/react';
 import React from 'react';
-import '@ovhcloud/ods-themes/default';
+//import '@ovhcloud/ods-themes/default';
+import '@ovhcloud/ods-themes/test';
 
 const preview: Preview = {
   parameters: {

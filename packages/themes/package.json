@@ -10,6 +10,10 @@
     "./default": {
       "sass": "./src/default/index.scss",
       "default": "./dist/default/index.css"
+    },
+    "./test": {
+      "sass": "./src/test/index.scss",
+      "default": "./dist/test/index.css"
     }
   },
   "types": "dist/index.d.ts",

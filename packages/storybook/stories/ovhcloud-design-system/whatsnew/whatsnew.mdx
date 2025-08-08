@@ -1,3 +1,4 @@
+import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -7,6 +8,158 @@ import { HOME_TITLE, REACT_COMPONENTS_TITLE, STORY } from '../../../src/constant
 <Meta title="OVHcloud Design System/What's new?/What's new" />
 
 <Heading label="What's new ?" level={ 1 } />
+
+<Heading label="v19.1.0" level={ 2 } />
+
+<Heading label="Accessibility improvements:" level={ 3 } />
+
+<Heading label="a11y" level={ 4 } />
+This version focuses on improving the accessibility for each component.
+
+We've implemented all the internal requirements on each component, validated using <ExternalLink href="https://github.com/dequelabs/axe-core">axe-core</ExternalLink> and <ExternalLink href="https://www.npmjs.com/package/lighthouse">lighthouse</ExternalLink>.
+
+Though, ensuring accessibility for your context does require you to use the right `aria`/`role`/... attribute at the right place.
+
+To help you with that, we've added:
+- a <StorybookLink title={ HOME_TITLE.accessibilityGuide }>guide about accessibility</StorybookLink> best practices.
+- a dedicated `Accessibility` section on each component `Documentation` page.
+
+<Heading label="i18n" level={ 4 } />
+
+Some components provide internal features that need an explicit context.
+For example the clear button on the `Input` which require an `aria-label` describing that the button will clear the value.
+
+We do provide default values for each supported locales to ensure that integrating ODS component as is will already convey the minimal information to impaired users.
+
+You can customize those value further with your own translations.
+
+See the related storybook <StorybookLink title={ HOME_TITLE.i18nGuide }>Internationalization guide</StorybookLink> for more information.
+
+<Heading label="Design updates:" level={ 3 } />
+
+<Message color={ MESSAGE_COLOR.warning } dismissible={ false } style={{ width: '100%' }}>
+  <MessageIcon name={ ICON_NAME.triangleExclamation } />
+  <MessageBody>
+    Some design changes may impact your layouts.
+  </MessageBody>
+</Message>
+
+**Breadcrumb**
+- `fontSize` is now inherited and no more fixed to `0.875rem`.
+
+**Checkbox**
+- Added minimal vertical spacing on group.
+- Checkbox size is now `16px`.
+
+**Design Tokens**
+- New color variants `-025` and `-075` have been added.
+
+**Progress Bar**
+- Now defaults to full width.
+
+**Tag**
+- `md` height is now `24px` by default.
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**All components**
+- A new attribute `data-ods` has been added to each exposed component, allowing them to be identified in the DOM.
+
+**Breadcrumb**
+- New attribute `i18n` has been added.
+- New attribute `locale` has been added.
+
+**Button**
+- Improve button contrast for accessibility.
+
+**Clipboard**
+- New attribute `i18n` has been added.
+- New attribute `locale` has been added.
+
+**Combobox**
+- Added `customRendererData` on combobox items.
+- New attribute `i18n` has been added.
+- New attribute `locale` has been added.
+
+**Datepicker**
+- New attribute `i18n` has been added.
+- New attribute `locale` has been added.
+
+**File Upload**
+- New attribute `i18n` has been added on `FileUploadItem`.
+- New attribute `locale` has been added.
+
+**Input**
+- New attribute `i18n` has been added.
+- New attribute `locale` has been added.
+
+**Message**
+- Improve color contrast for accessibility.
+- New attribute `i18n` has been added.
+- New attribute `locale` has been added.
+
+**Modal**
+- New attribute `i18n` has been added.
+- New attribute `initialFocusedElement` has been added.
+- New attribute `locale` has been added.
+
+**Password**
+- New attribute `i18n` has been added.
+- New attribute `locale` has been added.
+
+**Phone Number**
+- New attribute `i18n` has been added.
+- New attribute `locale` has been added.
+
+**Quantity**
+- Increment and decrement buttons are no longer focusable, allowing keyboard navigation to focus solely on the input field for consistent vocalization.
+
+**Select**
+- Items `customData` now accept an optional generic type.
+
+**Timepicker**
+- New attribute `i18n` has been added.
+- New attribute `locale` has been added.
+
+**Toggle**
+- New component `ToggleControl` has been added.
+- New component `ToggleLabel` has been added.
+- [DEPRECATED] Using `<Toggle />` alone will still works as expected, though we advise to move to composition using `ToggleControl` and `ToggleLabel`.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Combobox**
+- Click on `FormField` label now behave like native.
+
+**File Upload**
+- Click on `FormField` label now behave like native.
+
+**Phone Number**
+- Following country codes `bq`, `gf`, `gp`, `io`, `pm`, `re`, `sj`, `sx` have been added.
+- Click on `FormField` label now focus input instead of country select.
+
+**Popover**
+- Positioning is now correct if a custom ID is set on the trigger element.
+- The trigger is now focusable by default.
+
+**Tooltip**
+- Positioning is now correct if a custom ID is set on the trigger element.
+- The trigger is now focusable by default.
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+- New `Accessibility` page has been added in the `Guides` section.
+- New section `Accessibility` has been added on every component `Documentation` page with best practices and examples.
+- A `react-router` `Link` example has been added.
+- Github links on component `Documentation` pages have been fixed.
+- Atomic design link on component `Documentation` pages have been removed, as it was not relevant.
+- New link to previous major version doc has been added on component `Documentation` pages.
+- A link to form guide has been added on each `FormField` examples.
+- FAQ has been updated.
+
+<Heading label="Miscellaneous:" level={ 3 } />
+
+- Fix Windows issues when cloning the repository and running the Storybook scripts.
 
 <Heading label="v19.0.1" level={ 2 } />
 

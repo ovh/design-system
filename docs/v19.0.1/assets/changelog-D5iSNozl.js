@@ -23,7 +23,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 # [19.0.0](https://ovh.github.io/design-system/v19.0.0/?path=/docs/design-system-changelog--page) (2025-06-30)
-[compare](https://github.com/ovh/design-system/compare/v18.6.4...v19.0.0)
+[compare](https://github.com/ovh/design-system/compare/v18.6.3...v19.0.0)
 
 ### Bug Fixes
 
@@ -184,28 +184,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **toggle:** scss & docs optimization ([d3fe7a1](https://github.com/ovh/design-system/commit/d3fe7a1f0bfab3f02976fcfcc43c5c8b2e259802))
 * **tooltip:** add onOpenChange prop ([9935689](https://github.com/ovh/design-system/commit/9935689c8a0f279cabe59223d6cbebd480fd7008))
 * **tooltip:** improve tooltip behavior when clicking on trigger ([49bbd5c](https://github.com/ovh/design-system/commit/49bbd5c75f8ca7f3c04a0ed72e46fbcaf79bc50d))
-
-
-
-
-
-[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
-
-
-# [18.6.4](https://ovh.github.io/design-system/v18.6.4/?path=/docs/design-system-changelog--page) (2025-07-22)
-[compare](https://github.com/ovh/design-system/compare/v18.6.3...v18.6.4)
-
-### Bug Fixes
-
-* **clipboard:** inherit width to ensure consistent styling ([5f4f47f](https://github.com/ovh/design-system/commit/5f4f47f0d09d80d6b31488f5dba832c4fc208e45))
-* **code:** add example with restricted height and update styles ([eff9b17](https://github.com/ovh/design-system/commit/eff9b17ab0f44f6417abbd8dc347763bbd02890a))
-* **combobox:** trigger item click on safari ([070e4c9](https://github.com/ovh/design-system/commit/070e4c97039f2ed4c9162af27cb433f91ca9e364))
-* **fileUpload:** allow same file to be uploaded again after cancel ([282f2b9](https://github.com/ovh/design-system/commit/282f2b95513e5d08742d4cf4bbc2d63b847589f1))
-
-
-### Features
-
-* **phoneNumber:** add more country code ([3b46c28](https://github.com/ovh/design-system/commit/3b46c287d80d64461d94af560a8d1042f26fe9eb))
 
 
 

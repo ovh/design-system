@@ -1,0 +1,21 @@
+import{j as e}from"./jsx-runtime-VM66peLj.js";import{useMDXComponents as i}from"./index-DQB45XCM.js";import{M as l,C as n}from"./index-DQDMPrC3.js";import{B as c}from"./Banner-D5YsTkFA.js";import{H as t}from"./Heading-BTR1K1mm.js";import{S as m}from"./StorybookLink-BJoxMnxL.js";import{T as p}from"./TechnicalSpecification-CG4KCW1A.js";import{H as d}from"./meta-Dkilg8AS.js";import{T as r,O as x,D as f,b as u,R as h,c as g,I as j}from"./textarea.stories-DS0IJqS-.js";import"./index-D_CmzhJ4.js";import"./iframe-llaHorau.js";import"./index-ChzAxGiP.js";import"./index-CucsY3YN.js";import"./index-CXQShRbs.js";import"./index-DrFu-skq.js";import"./Divider-DwZugXnI-RR--JbES.js";import"./index-2w0W-O47-BJ19ihbZ.js";import"./ods-react222-B9lkGKUh.js";import"./Link-DTswNFmS-CEk9YBDP.js";import"./ods-react61-BFiU7C5S.js";import"./ExternalLink-F7ndcp9T.js";import"./FormFieldLabel-DQkMrZpp.js";import"./index-CkQHsVsO.js";import"./Text-B1XN51Xz.js";import"./Textarea-DJ9iXjLq.js";import"./controls-BtiQQn1l.js";import"./source-d0g_Nd0q.js";const v="2.0",y=0,k="@ovhcloud/ods-react-textarea",T="project",b=1,N={},C=[{id:2,name:"TextareaProp",variant:"declaration",kind:256,flags:{},children:[{id:3,name:"invalid",variant:"declaration",kind:1024,flags:{isOptional:!0},comment:{summary:[{kind:"text",text:"Whether the component is in error state."}]},type:{type:"intrinsic",name:"boolean"}}],groups:[{title:"Properties",children:[3]}],extendedTypes:[{type:"reference",target:{packageName:"@types/react",packagePath:"index.d.ts",qualifiedName:"React.ComponentPropsWithRef"},typeArguments:[{type:"literal",value:"textarea"}],name:"ComponentPropsWithRef",package:"@types/react",qualifiedName:"React.ComponentPropsWithRef"}]},{id:1,name:"Textarea",variant:"declaration",kind:32,flags:{isConst:!0},type:{type:"reference",target:{packageName:"@types/react",packagePath:"index.d.ts",qualifiedName:"React.FC"},typeArguments:[{type:"reference",target:2,name:"TextareaProp",package:"@ovhcloud/ods-react-textarea"}],name:"FC",package:"@types/react",qualifiedName:"React.FC"},defaultValue:"..."}],P=[{title:"Interfaces",children:[2]},{title:"Variables",children:[1]}],R="@ovhcloud/ods-react-textarea",S={0:{packageName:"@ovhcloud/ods-react-textarea",packagePath:"src/index.ts",qualifiedName:""},1:{packageName:"@ovhcloud/ods-react-textarea",packagePath:"src/components/textarea/Textarea.tsx",qualifiedName:"Textarea"},2:{packageName:"@ovhcloud/ods-react-textarea",packagePath:"src/components/textarea/Textarea.tsx",qualifiedName:"TextareaProp"},3:{packageName:"@ovhcloud/ods-react-textarea",packagePath:"src/components/textarea/Textarea.tsx",qualifiedName:"TextareaProp.invalid"}},M={entries:{1:"src/index.ts"},reflections:{1:0}},q={schemaVersion:v,id:y,name:k,variant:T,kind:b,flags:N,children:C,groups:P,packageName:R,symbolIdMap:S,files:M};function s(o){const a={img:"img",li:"li",ol:"ol",p:"p",strong:"strong",...i(),...o.components};return e.jsxs(e.Fragment,{children:[e.jsx(l,{of:r,name:"Technical information"}),`
+`,e.jsx(c,{of:r}),`
+`,e.jsx(t,{label:"Overview",level:2}),`
+`,e.jsx(n,{of:x,sourceState:"none"}),`
+`,e.jsx(t,{label:"Anatomy",level:2}),`
+`,e.jsx(a.p,{children:e.jsx(a.img,{src:"components/textarea/anatomy-tech.png",alt:"Component anatomy",title:"Component anatomy"})}),`
+`,e.jsxs(a.ol,{children:[`
+`,e.jsx(a.li,{children:e.jsx(a.strong,{children:"Textarea"})}),`
+`]}),`
+`,e.jsx(p,{data:q,extraInfo:{Textarea:{extendAttribute:{name:"textarea",url:"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes"}}},of:r}),`
+`,e.jsx(t,{label:"Examples",level:2}),`
+`,e.jsx(t,{label:"Default",level:3}),`
+`,e.jsx(n,{of:f,sourceState:"shown"}),`
+`,e.jsx(t,{label:"Disabled",level:3}),`
+`,e.jsx(n,{of:u,sourceState:"shown"}),`
+`,e.jsx(t,{label:"Readonly",level:3}),`
+`,e.jsx(n,{of:h,sourceState:"shown"}),`
+`,e.jsx(t,{label:"Resizable",level:3}),`
+`,e.jsx(n,{of:g,sourceState:"shown"}),`
+`,e.jsx(t,{label:"Form field",level:3,children:e.jsx(m,{title:d.handlingFormGuide,children:"(see handling form guide)"})}),`
+`,e.jsx(n,{of:j,sourceState:"shown"})]})}function ne(o={}){const{wrapper:a}={...i(),...o.components};return a?e.jsx(a,{...o,children:e.jsx(s,{...o})}):s(o)}export{ne as default};

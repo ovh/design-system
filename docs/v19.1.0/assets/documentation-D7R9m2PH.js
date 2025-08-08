@@ -1,0 +1,50 @@
+import{j as e}from"./jsx-runtime-VM66peLj.js";import{useMDXComponents as l}from"./index-DQB45XCM.js";import{a,o as c}from"./ods-react61-BFiU7C5S.js";import{M as d,C as r,B as p}from"./index-DQDMPrC3.js";import{P as s,O as h,A as x}from"./popover.stories-BqFo9ZqY.js";import{B as j}from"./Banner-D5YsTkFA.js";import{I as m,B as u}from"./IdentityCard-C39Eam7s.js";import{H as o}from"./Heading-BTR1K1mm.js";import{S as g}from"./StorybookLink-BJoxMnxL.js";import{S as v,R as f}from"./meta-Dkilg8AS.js";import"./index-D_CmzhJ4.js";import"./index-2w0W-O47-BJ19ihbZ.js";import"./iframe-llaHorau.js";import"./index-ChzAxGiP.js";import"./index-CucsY3YN.js";import"./index-CXQShRbs.js";import"./index-DrFu-skq.js";import"./ods-react222-B9lkGKUh.js";import"./ods-react66-BIRpP5yN.js";import"./Divider-DwZugXnI-RR--JbES.js";import"./Button-Cu9Xbu09.js";import"./index-CkQHsVsO.js";import"./Spinner-BdLZU4dE.js";import"./colors-DSObuHxd.js";import"./icon-name-CL_C5kfn.js";import"./overlay-CZHjGBMC.js";import"./portal-CjJhVgfZ.js";import"./use-locale-context-DLC4Hyvy.js";import"./use-presence-BH5ft0ba.js";import"./use-event-OCVb0O1l.js";import"./index-inT8qsA6.js";import"./index-DninfMAu.js";import"./index-EI2n6HsL.js";import"./index-2YjOWgCH.js";import"./controls-BtiQQn1l.js";import"./source-d0g_Nd0q.js";import"./ExternalLink-F7ndcp9T.js";import"./Link-DTswNFmS-CEk9YBDP.js";function i(t){const n={code:"code",em:"em",img:"img",li:"li",ol:"ol",p:"p",strong:"strong",ul:"ul",...l(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(d,{of:s,name:"Documentation"}),`
+`,e.jsx(j,{of:s}),`
+`,e.jsx(n.p,{children:e.jsxs(n.em,{children:[e.jsx(n.strong,{children:"Popover"})," component is triggered by click and is used to provide additional information to the user in a new temporary surface that overlays the page"]})}),`
+`,e.jsx(r,{of:h,sourceState:"none"}),`
+`,e.jsx(o,{label:"Overview",level:2}),`
+`,e.jsxs(m,{aliases:["Complex Tooltip"],figmaLink:"https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-8447",githubUrl:"https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/popover",name:"Popover",children:[e.jsxs(n.p,{children:["A ",e.jsx(n.strong,{children:"Popover"})," will provide additional information to the user in a clear and concise way."]}),e.jsxs(n.p,{children:["It is commonly used to appear by click, thus crucial information should not be displayed in the ",e.jsx(n.strong,{children:"Popover"}),"."]})]}),`
+`,e.jsx(o,{label:"Usage",level:2}),`
+`,e.jsxs(n.p,{children:["A ",e.jsx(n.strong,{children:"Popover"})," is used to provide an explanation for a user interface element."]}),`
+`,e.jsx(n.p,{children:"It can include interactive elements such as a button or a link."}),`
+`,e.jsx(o,{label:"Tooltip vs Popover",level:3}),`
+`,e.jsxs(n.ul,{children:[`
+`,e.jsxs(n.li,{children:["Both components look similar but a ",e.jsx(g,{kind:f.tooltip,story:v.documentation,children:"Tooltip"})," is displayed on hover and focus while ",e.jsx(n.strong,{children:"Popover"})," is triggered by click."]}),`
+`,e.jsx(n.li,{children:"Tooltips are commonly used for shorter explanations, while longer text / complex UIs would suit a popover better."}),`
+`,e.jsx(n.li,{children:"Use a popover when you need to insert interactive elements such as Button."}),`
+`,e.jsx(n.li,{children:"A popover can be dismissed if an action button allows it."}),`
+`]}),`
+`,e.jsx(o,{label:"Dos & Don'ts",level:3}),`
+`,e.jsx(u,{donts:["- Don't place critical or mandatory information inside a popover. Users may miss it since it's only revealed on click","- Don't overload a popover with rich content like images, videos, or large interactive components. Use a Modal or Drawer instead","- Don't trigger a popover from non-obvious elements, the interactive element should clearly indicate it controls a popover","- Don't rely on popovers for persistent content since they're meant to be transient and dismissible","- Don't use a popover on elements that are already part of another complex interaction"],dos:["- Use a popover to display contextual information or options that are secondary to the main task","- Prefer a popover over a tooltip when the content is longer, interactive, or requires formatting (but keep it focused)","- Write a popover content using complete sentences","- Ensure the popover is positioned clearly and does not overlap with its trigger element","- Use a popover for lightweight content such as field explanations, secondary actions"]}),`
+`,e.jsx(o,{label:"Best Practices in Context",level:3}),`
+`,e.jsx(n.p,{children:e.jsx(n.img,{src:"components/popover/anatomy.png",alt:"Component anatomy",title:"Component anatomy"})}),`
+`,e.jsxs(n.ol,{children:[`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Popover"})}),`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Content"})}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Carret tip"})," - optional"]}),`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Trigger"})}),`
+`]}),`
+`,e.jsx(o,{label:"Placement",level:2}),`
+`,e.jsxs(n.p,{children:[e.jsx(n.strong,{children:"Popover"})," can be set in a certain position by default around its trigger."]}),`
+`,e.jsxs(n.p,{children:[e.jsx(n.strong,{children:"Popover"})," has automatic positioning feature. It can detect the edge of the browser so the container always stays visible on a page."]}),`
+`,e.jsx(o,{label:"Behavior",level:2}),`
+`,e.jsxs(n.p,{children:["By default, a ",e.jsx(n.strong,{children:"Popover"})," is hidden to the user."]}),`
+`,e.jsxs(n.p,{children:["It triggers when the user clicks on the ",e.jsx(n.strong,{children:"Popover"}),"'s trigger element such as a button."]}),`
+`,e.jsxs(n.p,{children:["The ",e.jsx(n.strong,{children:"Popover"})," can be closed or dismissed by clicking anywhere on the page outside the ",e.jsx(n.strong,{children:"Popover"}),"'s container."]}),`
+`,e.jsx(o,{label:"Navigation",level:2}),`
+`,e.jsx(o,{label:"Focus Management",level:3}),`
+`,e.jsxs(n.p,{children:["Depending on the ",e.jsx(n.strong,{children:"Popover"})," trigger used (e.g., a button or a link), refer to that component's documentation for its keyboard interaction."]}),`
+`,e.jsxs(n.p,{children:["When the ",e.jsx(n.strong,{children:"Popover"})," is opened, it gains focus automatically. Focus remains within the ",e.jsx(n.strong,{children:"Popover"})," until it is closed."]}),`
+`,e.jsx(n.p,{children:"Closing it returns focus to the trigger element."}),`
+`,e.jsx(o,{label:"General Keyboard Shortcuts",level:3}),`
+`,e.jsxs(n.p,{children:["Pressing ",e.jsx(n.code,{children:"Escape"})," closes the currently opened ",e.jsx(n.strong,{children:"Popover"}),"."]}),`
+`,e.jsxs(n.p,{children:["Pressing ",e.jsx(n.code,{children:"Tab"})," moves focus forward through the focusable elements inside the ",e.jsx(n.strong,{children:"Popover"}),"."]}),`
+`,e.jsxs(n.p,{children:["Pressing ",e.jsx(n.code,{children:"Shift"})," + ",e.jsx(n.code,{children:"Tab"})," moves focus backward within the ",e.jsx(n.strong,{children:"Popover"}),"."]}),`
+`,e.jsx(o,{label:"Accessibility",level:2}),`
+`,e.jsxs(n.p,{children:["To ensure proper accessibility, ",e.jsx(n.strong,{children:"Popover"})," component must specify its content nature using appropriate ARIA attributes."]}),`
+`,e.jsx(o,{label:"Specify the Popover's content nature",level:3}),`
+`,e.jsxs(n.p,{children:["Update the content type on the ",e.jsx(n.strong,{children:"Popover Trigger"}),", which is set by default to ",e.jsx(n.code,{children:'aria-haspopup="dialog"'}),"."]}),`
+`,e.jsxs(p,{children:[e.jsx("thead",{children:e.jsxs("tr",{children:[e.jsx("th",{children:"Content Type"}),e.jsx("th",{children:"ARIA Attribute"})]})}),e.jsxs("tbody",{children:[e.jsxs("tr",{children:[e.jsx("td",{children:"Menu"}),e.jsx("td",{children:e.jsx(n.code,{children:'aria-haspopup="menu"'})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"List"}),e.jsx("td",{children:e.jsx(n.code,{children:'aria-haspopup="listbox"'})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Tree"}),e.jsx("td",{children:e.jsx(n.code,{children:'aria-haspopup="tree"'})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Grid"}),e.jsx("td",{children:e.jsx(n.code,{children:'aria-haspopup="grid"'})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Dialog"}),e.jsx("td",{children:e.jsx(n.code,{children:'aria-haspopup="dialog"'})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Comment"}),e.jsx("td",{children:e.jsx(n.code,{children:'aria-details="comment"'})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Definition"}),e.jsxs("td",{children:[e.jsx(n.code,{children:'aria-details="term"'})," + ",e.jsx(n.code,{children:'role="definition"'})]})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Caption"}),e.jsx("td",{children:e.jsx(n.code,{children:'aria-details="figure"'})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Footnote"}),e.jsx("td",{children:e.jsx(n.code,{children:'aria-details="doc-footnote"'})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Endnote"}),e.jsx("td",{children:e.jsx(n.code,{children:'aria-details="doc-endnote"'})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Description"}),e.jsx("td",{children:e.jsx(n.code,{children:'aria-details="true"'})})]})]})]}),`
+`,e.jsx(o,{label:"Using aria-popup for a Popover containing a Menu",level:3}),`
+`,e.jsx(r,{of:x,sourceState:"shown"}),`
+`,e.jsxs(n.p,{children:[e.jsx(a,{name:c.circleCheck,style:{color:"var(--ods-color-success-500)"}})," Screen readers will recognize that ",e.jsx(n.strong,{children:"Popover"})," contains a menu and menu items. It indicates that the element can trigger a popup and the nature of this popup."]})]})}function re(t={}){const{wrapper:n}={...l(),...t.components};return n?e.jsx(n,{...t,children:e.jsx(i,{...t})}):i(t)}export{re as default};

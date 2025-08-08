@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.1.0](https://ovh.github.io/design-system/v19.1.0/?path=/docs/design-system-changelog--page) (2025-08-08)
+[compare](https://github.com/ovh/design-system/compare/v19.0.1...v19.1.0)
+
+### Bug Fixes
+
+* **toggle:** prevent labels to change the component height ([c5e091c](https://github.com/ovh/design-system/commit/c5e091c84518ca08bf2ed84757c148cf7cca1394))
+
+
+### Features
+
+* **a11y:** prevent ark auto-generated aria elements to be set by default when not used ([3e1a896](https://github.com/ovh/design-system/commit/3e1a896be656194f51cc87b2433bab3b3e385ab4))
+* **ods-react:** add data-ods attribute on exposed components ([ecb5905](https://github.com/ovh/design-system/commit/ecb5905e9ffe0081c627c595f000bc5f813de86b))
+* **toggle:** add ToggleControl and ToggleLabel ([9e37120](https://github.com/ovh/design-system/commit/9e37120f73aa071b966e6ee657f1f3a2ca5247ae))
+* **toggle:** improve accessibility & add examples in documentation ([8a0c708](https://github.com/ovh/design-system/commit/8a0c7089ff796f5e035c2c73e1e856d17f99e251))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

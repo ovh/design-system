@@ -8,6 +8,87 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.1.0](https://ovh.github.io/design-system/v19.1.0/?path=/docs/design-system-changelog--page) (2025-08-08)
+[compare](https://github.com/ovh/design-system/compare/v19.0.1...v19.1.0)
+
+### Bug Fixes
+
+* **a11y:** apply axe-core violation fixes ([38bc9a6](https://github.com/ovh/design-system/commit/38bc9a6acc3f5eef08ab9be4d0a3c76b6a35fb28))
+* **breadcrumb:** adjust id generation and remove unnecessary dependency in effect ([299eb81](https://github.com/ovh/design-system/commit/299eb819a43cfcfe51d14506c34c542130773bbf))
+* **breadcrumb:** update aria-controls prop for improved a11y in BreadcrumbEllipsis component ([ce29163](https://github.com/ovh/design-system/commit/ce291634cbf14ca8e6848402de5170393a2cde76))
+* **checkbox:** ensure chekcbox size is actually 16px ([a8d040f](https://github.com/ovh/design-system/commit/a8d040f916a143fda7d1925780dab36517f9b42b))
+* **checkbox:** move hidden input under control to avoid parent aria-hidden ([2b4e955](https://github.com/ovh/design-system/commit/2b4e955448815ecee31a279ba58eb24738ef74a9))
+* **clipboard:** enforce default aria-label on trigger ([a5a2576](https://github.com/ovh/design-system/commit/a5a2576b6d90e008335b2ae48cb86deb52f65454))
+* **combobox:** focus input on form field click ([cd83dab](https://github.com/ovh/design-system/commit/cd83dab2905cfc2d72d2b09e942408ecaf70c08d))
+* **doc:** update message with container examples for roles ([37cb947](https://github.com/ovh/design-system/commit/37cb9476785ba618c70743bdba2215822381be0c))
+* **file-upload:** fix the fileupload id behavior ([4f6502e](https://github.com/ovh/design-system/commit/4f6502ec7a9fc68e8b995ec9efd4abe61d61d4e6))
+* **fileUpload:** prevent form field label to break trigger button ([392a55a](https://github.com/ovh/design-system/commit/392a55a7d74c3dcfb81111cd73c5a4ee5f3f7e2e))
+* **i18n:** move i18n to root components & normalize contexts ([5bf41ab](https://github.com/ovh/design-system/commit/5bf41abad9bb0ac9909a01f74561f17cada84950))
+* **input:** enforce default id & remove unused attr & filter demo doc ([5b62169](https://github.com/ovh/design-system/commit/5b62169865a5c0499022867236a7e73334cf5cf0))
+* **ods-react:** revert to ark 5.12.0 ([d67786a](https://github.com/ovh/design-system/commit/d67786a46a3e34191f52d90069721938013664fa))
+* **overlays:** prevent positionning issue if an id is set on popover/tooltip trigger ([6e51305](https://github.com/ovh/design-system/commit/6e51305476518571f5f0296dc1a0a53bc23e2cdf))
+* **phone-number:** add missing country codes ([4847ded](https://github.com/ovh/design-system/commit/4847ded0e610e1f7d33a14b3742ea5fce96a8221))
+* **progressBar:** enforce full width style ([ee46457](https://github.com/ovh/design-system/commit/ee46457b4a275306c593f6c6e0173be825e03e31))
+* **radioGroup:** add aria-invalid on invalid radio ([2bd841c](https://github.com/ovh/design-system/commit/2bd841c9a21bb04427c2efc50578a6127d59f3f2))
+* **select:** enforce aria-labelledby when in FormField context ([6fe2d1d](https://github.com/ovh/design-system/commit/6fe2d1d2fe4d8b570ef5aa653502748a1cd1c232))
+* **toggle:** prevent labels to change the component height ([c5e091c](https://github.com/ovh/design-system/commit/c5e091c84518ca08bf2ed84757c148cf7cca1394))
+
+
+### Features
+
+* **a11y:** prevent ark auto-generated aria elements to be set by default when not used ([3e1a896](https://github.com/ovh/design-system/commit/3e1a896be656194f51cc87b2433bab3b3e385ab4))
+* **breadcrumb:** add autoFocus prop for improved keyboard navigation ([bfb2c89](https://github.com/ovh/design-system/commit/bfb2c89276486798a45e6c9630c9b1c464b8996f))
+* **breadcrumb:** improve component's accessibility & adding ellipsis label translation ([5e018aa](https://github.com/ovh/design-system/commit/5e018aab214a8a89bc92ad9ca671346725f01acc))
+* **button:** improve button contrast for accessibility ([0dff7c0](https://github.com/ovh/design-system/commit/0dff7c00e096fd97b6060aaf9ad517a5d0afdabd))
+* **checkbox:** add indeterminate a11y & controlled and uncontrolled indeterminate examples ([8851a87](https://github.com/ovh/design-system/commit/8851a87316088c4251b9badc3e17e6a83a2e4d24))
+* **checkbox:** add vertical spacing on group ([e19ca34](https://github.com/ovh/design-system/commit/e19ca3448839901a31bc2b698ca43775581dbb9e))
+* **code:** add role group if copy button is set ([d6ebcb6](https://github.com/ovh/design-system/commit/d6ebcb62eac36a4d7301adfb1199b4518e1ab576))
+* **combobox:** add customRendererData generic prop to items ([6cac4b5](https://github.com/ovh/design-system/commit/6cac4b554d4c02eeaf63a88d01e6fa8ffa5501f2))
+* **datepicker:** improve accessibility with aria attributes and documentation ([541e611](https://github.com/ovh/design-system/commit/541e611e6f4fc15d6b0076d8bf32721d0d4c8cc9))
+* **doc:** add a11y switch documentation ([6808663](https://github.com/ovh/design-system/commit/6808663c2b141e6fc58ff1bc5b2d3673f4316659))
+* **doc:** add accessibility info for message component ([027324d](https://github.com/ovh/design-system/commit/027324dc147035299af01bf3e3d33d44a5d915a0))
+* **doc:** add caption example on medium doc page ([399d606](https://github.com/ovh/design-system/commit/399d606efe19bfd477fd25aca5c685bc3bf1329e))
+* **doc:** add textarea acessibility information ([2d2bd88](https://github.com/ovh/design-system/commit/2d2bd8827acb7de6bdcc0347fcacad560de6ab3f))
+* **fileUpload:** add i18n, locale props + a11y doc ([885b971](https://github.com/ovh/design-system/commit/885b971ab3166e5bda93f6acde7ecf5493a05bca))
+* **i18n:** add i18n hook & apply on message ([027c342](https://github.com/ovh/design-system/commit/027c342660c7c7edc2ed8bfac8160b61c50824a7))
+* **i18n:** allow partial object ([b11cebe](https://github.com/ovh/design-system/commit/b11cebef6bbbc6d45490e04bf63958510895d4b5))
+* **input:** add InputActions component with support for loading, clear, search, and mask actions ([c7380ec](https://github.com/ovh/design-system/commit/c7380eccb8d849443de33e13b36e7031e493e720))
+* **inputs:** add i18n prop to override Input accessibility translations ([9d71c4a](https://github.com/ovh/design-system/commit/9d71c4af451ef8dca805b6392f65517013b57228))
+* **link:** enhance hover and focus styles with underline animation ([abb71f7](https://github.com/ovh/design-system/commit/abb71f77f58bcc1e0da74ddbb662568e8c495136))
+* **link:** improve accessibility with new props and examples in documentation ([a7e9030](https://github.com/ovh/design-system/commit/a7e9030b786a56448d95ccfe2cf8335b1636321a))
+* **modal:** add i18n, locale and initialFocusedElement props + a11y doc ([4f2e60b](https://github.com/ovh/design-system/commit/4f2e60b2670dabc9b36d4282729be0493a6b7261))
+* **modal:** rework modal button class to follow BEM ([22398ed](https://github.com/ovh/design-system/commit/22398edd5c621251c238d313ff6f396684cbf675))
+* **ods-react:** add data-ods attribute on exposed components ([ecb5905](https://github.com/ovh/design-system/commit/ecb5905e9ffe0081c627c595f000bc5f813de86b))
+* **ods-react:** add react hook lint & fix issues ([d5b6676](https://github.com/ovh/design-system/commit/d5b667633198a98641959b206df60ef5bac38a7f))
+* **ods-react:** bump ark to 5.17.0 ([caa17a5](https://github.com/ovh/design-system/commit/caa17a561e31cfdddebe942092be1bbb1a2d4c45))
+* **ods-react:** bump ark to 5.18.1 ([ace9099](https://github.com/ovh/design-system/commit/ace909949178a735aa1a74d477fe93832d5113d0))
+* **ods-react:** bump ark to 5.18.2 ([2c8e759](https://github.com/ovh/design-system/commit/2c8e759551585b203bfbfbc15ad0796d341df8c6))
+* **pagination:** add a11y changes and documentation ([58bef9a](https://github.com/ovh/design-system/commit/58bef9a06bf8d3d8a2612eb1979e5fd3befaef1d))
+* **pagination:** add labelled by text on select control ([b780660](https://github.com/ovh/design-system/commit/b7806602f56428c6e4234f53688637a0668818e9))
+* **password:** add a11y changes and documentation ([c899eb8](https://github.com/ovh/design-system/commit/c899eb8aecfc44f289fed05c2f1bf650bfa686b0))
+* **phoneNumber:** add a11y changes and documentation ([d3fe1a5](https://github.com/ovh/design-system/commit/d3fe1a5cba06b50094b737d9b4d8d4eb1bf1114f))
+* **popover:** add className support and focus-visible styles to PopoverTrigger ([c705021](https://github.com/ovh/design-system/commit/c7050211d2784c8c1a7d86c636420b283d7361cc))
+* **quantity:** add a11y changes and documentation ([04e0511](https://github.com/ovh/design-system/commit/04e05112421cf4f9ab22db283790a7e4ef874d7a))
+* **range:** improve accessibility with roles, labels, and examples ([5b9b774](https://github.com/ovh/design-system/commit/5b9b77431644f4a7a266a26811853dddefd113b2))
+* **select:** add a11y changes and documentation ([72c126c](https://github.com/ovh/design-system/commit/72c126cce3645d2cd02ad5da8831f47e6cd52d40))
+* **select:** allow generic types for items custom data ([b47ece0](https://github.com/ovh/design-system/commit/b47ece01ac62a7a17b14e7f81ae6b2e3b55e5900))
+* **skeleton:** improve accessibility & add examples in documentation ([5ad2904](https://github.com/ovh/design-system/commit/5ad29044eeb363306dc6f17aadf77279562acc76))
+* **skeleton:** move aria-hidden before props spread for better override flexibility ([726f0a9](https://github.com/ovh/design-system/commit/726f0a97b83f3fafd4fe26f21a0f4cecfa90e8d8))
+* **timepicker:** add a11y changes and documentation ([88f0561](https://github.com/ovh/design-system/commit/88f0561ffb6e8a72329be67a55db5e563790dec7))
+* **toggle:** add ToggleControl and ToggleLabel ([9e37120](https://github.com/ovh/design-system/commit/9e37120f73aa071b966e6ee657f1f3a2ca5247ae))
+* **toggle:** improve accessibility & add examples in documentation ([8a0c708](https://github.com/ovh/design-system/commit/8a0c7089ff796f5e035c2c73e1e856d17f99e251))
+* **tokens:** add a class to the modal button ([c9d3336](https://github.com/ovh/design-system/commit/c9d33362e669fc7d74ea4b64d2369e0f8c1e22ab))
+* **tokens:** add new design tokens and update message bg-color for better contrast ([ae6360d](https://github.com/ovh/design-system/commit/ae6360d38c2c5b0dbc64cc9ba7586814370913e7))
+* **tokens:** update primary close button color & modal bg-color ([89fcf8d](https://github.com/ovh/design-system/commit/89fcf8d1306e3d6d7c25207802973e6c2baedccf))
+* **tooltip:** enhance accessibility documentation and add related examples ([83b1d65](https://github.com/ovh/design-system/commit/83b1d657c97cdb06c8820151e3eadc6dff6fe8bc))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.0.1](https://ovh.github.io/design-system/v19.0.1/?path=/docs/design-system-changelog--page) (2025-06-30)
 [compare](https://github.com/ovh/design-system/compare/v19.0.0...v19.0.1)
 

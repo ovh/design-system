@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-select",
-  "version": "19.0.1",
+  "version": "19.1.0",
   "private": true,
   "description": "ODS React Select component",
   "type": "module",

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.1.0](https://ovh.github.io/design-system/v19.1.0/?path=/docs/design-system-changelog--page) (2025-08-08)
+[compare](https://github.com/ovh/design-system/compare/v19.0.1...v19.1.0)
+
+### Bug Fixes
+
+* **i18n:** move i18n to root components & normalize contexts ([5bf41ab](https://github.com/ovh/design-system/commit/5bf41abad9bb0ac9909a01f74561f17cada84950))
+* **select:** enforce aria-labelledby when in FormField context ([6fe2d1d](https://github.com/ovh/design-system/commit/6fe2d1d2fe4d8b570ef5aa653502748a1cd1c232))
+
+
+### Features
+
+* **ods-react:** add data-ods attribute on exposed components ([ecb5905](https://github.com/ovh/design-system/commit/ecb5905e9ffe0081c627c595f000bc5f813de86b))
+* **select:** add a11y changes and documentation ([72c126c](https://github.com/ovh/design-system/commit/72c126cce3645d2cd02ad5da8831f47e6cd52d40))
+* **select:** allow generic types for items custom data ([b47ece0](https://github.com/ovh/design-system/commit/b47ece01ac62a7a17b14e7f81ae6b2e3b55e5900))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

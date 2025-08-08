@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.1.0](https://ovh.github.io/design-system/v19.1.0/?path=/docs/design-system-changelog--page) (2025-08-08)
+[compare](https://github.com/ovh/design-system/compare/v19.0.1...v19.1.0)
+
+### Bug Fixes
+
+* **doc:** update message with container examples for roles ([37cb947](https://github.com/ovh/design-system/commit/37cb9476785ba618c70743bdba2215822381be0c))
+
+
+### Features
+
+* **doc:** add accessibility info for message component ([027324d](https://github.com/ovh/design-system/commit/027324dc147035299af01bf3e3d33d44a5d915a0))
+* **i18n:** add i18n hook & apply on message ([027c342](https://github.com/ovh/design-system/commit/027c342660c7c7edc2ed8bfac8160b61c50824a7))
+* **i18n:** allow partial object ([b11cebe](https://github.com/ovh/design-system/commit/b11cebef6bbbc6d45490e04bf63958510895d4b5))
+* **ods-react:** add data-ods attribute on exposed components ([ecb5905](https://github.com/ovh/design-system/commit/ecb5905e9ffe0081c627c595f000bc5f813de86b))
+* **tokens:** update primary close button color & modal bg-color ([89fcf8d](https://github.com/ovh/design-system/commit/89fcf8d1306e3d6d7c25207802973e6c2baedccf))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

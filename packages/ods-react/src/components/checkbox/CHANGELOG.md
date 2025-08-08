@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.1.0](https://ovh.github.io/design-system/v19.1.0/?path=/docs/design-system-changelog--page) (2025-08-08)
+[compare](https://github.com/ovh/design-system/compare/v19.0.1...v19.1.0)
+
+### Bug Fixes
+
+* **a11y:** apply axe-core violation fixes ([38bc9a6](https://github.com/ovh/design-system/commit/38bc9a6acc3f5eef08ab9be4d0a3c76b6a35fb28))
+* **checkbox:** move hidden input under control to avoid parent aria-hidden ([2b4e955](https://github.com/ovh/design-system/commit/2b4e955448815ecee31a279ba58eb24738ef74a9))
+
+
+### Features
+
+* **checkbox:** add indeterminate a11y & controlled and uncontrolled indeterminate examples ([8851a87](https://github.com/ovh/design-system/commit/8851a87316088c4251b9badc3e17e6a83a2e4d24))
+* **checkbox:** add vertical spacing on group ([e19ca34](https://github.com/ovh/design-system/commit/e19ca3448839901a31bc2b698ca43775581dbb9e))
+* **ods-react:** add data-ods attribute on exposed components ([ecb5905](https://github.com/ovh/design-system/commit/ecb5905e9ffe0081c627c595f000bc5f813de86b))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

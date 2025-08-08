@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.1.0](https://ovh.github.io/design-system/v19.1.0/?path=/docs/design-system-changelog--page) (2025-08-08)
+[compare](https://github.com/ovh/design-system/compare/v19.0.1...v19.1.0)
+
+### Bug Fixes
+
+* **a11y:** apply axe-core violation fixes ([38bc9a6](https://github.com/ovh/design-system/commit/38bc9a6acc3f5eef08ab9be4d0a3c76b6a35fb28))
+* **breadcrumb:** adjust id generation and remove unnecessary dependency in effect ([299eb81](https://github.com/ovh/design-system/commit/299eb819a43cfcfe51d14506c34c542130773bbf))
+* **breadcrumb:** update aria-controls prop for improved a11y in BreadcrumbEllipsis component ([ce29163](https://github.com/ovh/design-system/commit/ce291634cbf14ca8e6848402de5170393a2cde76))
+* **i18n:** move i18n to root components & normalize contexts ([5bf41ab](https://github.com/ovh/design-system/commit/5bf41abad9bb0ac9909a01f74561f17cada84950))
+
+
+### Features
+
+* **breadcrumb:** add autoFocus prop for improved keyboard navigation ([bfb2c89](https://github.com/ovh/design-system/commit/bfb2c89276486798a45e6c9630c9b1c464b8996f))
+* **breadcrumb:** improve component's accessibility & adding ellipsis label translation ([5e018aa](https://github.com/ovh/design-system/commit/5e018aab214a8a89bc92ad9ca671346725f01acc))
+* **ods-react:** add data-ods attribute on exposed components ([ecb5905](https://github.com/ovh/design-system/commit/ecb5905e9ffe0081c627c595f000bc5f813de86b))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

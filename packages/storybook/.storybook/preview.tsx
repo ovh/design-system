@@ -53,6 +53,9 @@ const preview: Preview = {
               'Handling Form',
               '*',
             ],
+            'Tools', [
+              '*',
+            ],
           ],
           'React Components', [
             'Gallery',

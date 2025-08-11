@@ -11,9 +11,13 @@
     "start": "yarn generate:versions && storybook dev -p 6006"
   },
   "dependencies": {
+    "@ark-ui/react": "5.12.0",
     "@ovhcloud/ods-react": "19.1.0",
     "@ovhcloud/ods-themes": "19.1.0",
+    "classnames": "2.5.1",
+    "lz-string": "1.5.0",
     "react": "18.2.0",
+    "storybook-addon-code-editor": "4.1.2",
     "typedoc": "0.28.1"
   },
   "devDependencies": {

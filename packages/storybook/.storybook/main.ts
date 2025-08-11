@@ -1,4 +1,5 @@
 import { type StorybookConfig } from '@storybook/react-vite';
+import { getCodeEditorStaticDirs } from 'storybook-addon-code-editor/getStaticDirs';
 
 const config: StorybookConfig = {
   addons: [
@@ -12,6 +13,7 @@ const config: StorybookConfig = {
         outline: false,
       },
     },
+    'storybook-addon-code-editor',
   ],
   core: {
     disableTelemetry: true,
@@ -30,7 +32,7 @@ const config: StorybookConfig = {
     ${head}
     <link rel="stylesheet" type="text/css" href="css/preview.css" />
   `,
-  staticDirs: ['../assets'],
+  staticDirs: ['../assets', ...getCodeEditorStaticDirs(__filename)],
   stories: [
     '../stories/**/*.mdx',
     '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',

@@ -1,0 +1,26 @@
+import { Meta, Source } from '@storybook/blocks';
+import { Heading } from '../../../src/components/heading/Heading';
+import { NoToC } from '../../../src/components/noToC/NoToC';
+import { Sandbox } from '../../../src/components/sandbox/Sandbox';
+import packageJson from '../../../package.json';
+
+<Meta title="OVHcloud Design System/Tools/Code Sandbox" />
+
+<NoToC />
+
+<Heading label="Code Sandbox" level={ 1 } />
+
+This is a live coding sandbox where you can experiment with the ODS React library.
+
+It is useful to share code snippet or to reproduce issue you might encounter when integrating ODS components in your app.
+
+The following libraries are usable (using `import`) on the sandbox:
+
+<Source code={`
+"@ovhcloud/ods-react": "${packageJson.dependencies['@ovhcloud/ods-react']}"
+"react": "${packageJson.dependencies.react}"
+`}
+        dark="true"
+        language="json" />
+
+<Sandbox location={ window.parent.location } />

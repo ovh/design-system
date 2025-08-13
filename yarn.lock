@@ -4537,6 +4537,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-meter@workspace:packages/ods-react/src/components/meter":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-meter@workspace:packages/ods-react/src/components/meter"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-modal@workspace:packages/ods-react/src/components/modal":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-modal@workspace:packages/ods-react/src/components/modal"

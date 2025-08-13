@@ -1,0 +1,31 @@
+@layer ods-atoms {
+  .meter {
+    position: relative;
+    border-radius: var(--ods-border-radius-md);
+    background-color: var(--ods-color-neutral-100);
+    width: 100%;
+    height: 8px;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: inherit;
+      width: var(--ods-meter-fill-width);
+      height: 100%;
+      content: '';
+    }
+
+    &--critical::after {
+      background-color: var(--ods-color-critical-500);
+    }
+
+    &--normal::after {
+      background-color: var(--ods-color-primary-500);
+    }
+
+    &--warning::after {
+      background-color: var(--ods-color-warning-500);
+    }
+  }
+}

@@ -9,7 +9,7 @@ type Story = StoryObj<{{> ComponentName }}Prop>;
 const meta: Meta<{{> ComponentName }}Prop> = {
   component: {{> ComponentName }},
   // subcomponents: { {{> ComponentName }}Xxx }, // Uncomment if sub components, otherwise remove
-  title: 'ODS Components/TODO/{{> ComponentName }}',
+  title: 'React Components/{{> ComponentName }}',
 };
 
 export default meta;
@@ -31,7 +31,20 @@ export const Demo: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { {{> ComponentName }} } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
+  render: ({}) => (
+    <{{> ComponentName }} />
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
   render: ({}) => (
     <{{> ComponentName }} />
   ),

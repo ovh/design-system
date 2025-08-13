@@ -18,6 +18,7 @@ import {
   Input,
   Link,
   Medium,
+  Meter,
   Message, MessageBody, MessageIcon,
   Modal, ModalBody, ModalContent, ModalTrigger,
   Pagination,
@@ -604,6 +605,26 @@ function App(): ReactElement {
           <Medium
             alt="OVHcloud logo"
             src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
+        </section>
+
+        <section>
+          <h1>Meter</h1>
+
+          <Meter
+            aria-label="normal color"
+            value={ 50 } />
+
+          <Meter
+            aria-label="warning color"
+            low={ 30 }
+            value={ 10 } />
+
+          <Meter
+            aria-label="critical color"
+            high={ 70 }
+            low={ 30 }
+            optimum={ 20 }
+            value={ 90 } />
         </section>
 
         <section>

@@ -1,0 +1,21 @@
+{
+  "name": "@ovhcloud/ods-react-meter",
+  "version": "19.1.0",
+  "private": true,
+  "description": "ODS React Meter component",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf documentation node_modules",
+    "doc": "typedoc",
+    "lint:a11y": "eslint --config ../../../../../.eslintrc-a11y 'src/**/*.{js,ts,tsx}' --ignore-pattern '*.stories.tsx'",
+    "lint:scss": "stylelint --aei 'src/components/**/*.scss'",
+    "lint:ts": "eslint '{src,tests}/**/*.{js,ts,tsx}' --ignore-pattern '*.stories.tsx'",
+    "start": "npm run start:storybook",
+    "start:storybook": "storybook dev -p 3000 --no-open",
+    "test:e2e": "E2E=true start-server-and-test 'npm run start:storybook' 3000 'jest -i --detectOpenHandles'",
+    "test:e2e:ci": "CI=true npm run test:e2e",
+    "test:spec": "jest --passWithNoTests",
+    "test:spec:ci": "npm run test:spec"
+  }
+}

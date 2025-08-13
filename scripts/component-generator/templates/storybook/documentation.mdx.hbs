@@ -5,8 +5,7 @@ import { BestPractices } from '../../../src/components/bestPractices/BestPractic
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
-import { ATOMIC_TYPE } from '../../../src/constants/atomicDesign';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ {{> ComponentName }}Stories } name='Documentation' />
 
@@ -19,11 +18,9 @@ _**{{> ComponentName }}** TODO some text about the component_
 <Heading label="Overview" level={ 2 } />
 
 <IdentityCard aliases={ [] }
-              atomicType={ ATOMIC_TYPE.TODO }
               figmaLink="TODO"
-              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/{{> component-name }}"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/{{> component-name }}"
               name="{{> ComponentName }}"
-              relatedComponents={ [] }
               startingVersion={ 19 }>
   TODO some text about the component.
 </IdentityCard>

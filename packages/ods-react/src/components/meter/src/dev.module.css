@@ -1,0 +1,15 @@
+.custom-meter {
+  background-color: #595959;
+}
+
+.custom-meter[data-state="warning"]::after {
+  background-color: #ffc0c0;
+}
+
+.custom-meter[data-state="normal"]::after {
+  background-color: #008000;
+}
+
+.custom-meter[data-state="critical"]::after {
+  background-color: #3cffff;
+}

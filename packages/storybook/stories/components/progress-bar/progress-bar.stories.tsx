@@ -56,9 +56,6 @@ export const Max: StoryObj = {
 
 export const Overview: Story = {
   tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
-  },
   render: ({}) => (
     <ProgressBar value="50" />
   ),

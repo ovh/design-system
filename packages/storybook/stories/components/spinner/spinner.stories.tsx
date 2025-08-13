@@ -3,6 +3,8 @@ import React from 'react';
 import { SPINNER_COLOR, SPINNER_COLORS, SPINNER_SIZE, SPINNER_SIZES, Spinner, type SpinnerProp } from '../../../../ods-react/src/components/spinner/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<SpinnerProp>;
 
@@ -33,6 +35,8 @@ export const Demo: Story = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Color: Story = {
   tags: ['!dev'],

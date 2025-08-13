@@ -5,7 +5,9 @@ import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src
 import { Textarea, type TextareaProp } from '../../../../ods-react/src/components/textarea/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<TextareaProp>;
 
@@ -61,6 +63,8 @@ export const Demo: Story = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const AccessibilityDescribedBy: Story = {
   tags: ['!dev'],

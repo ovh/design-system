@@ -2,18 +2,17 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { MODAL_COLOR, MODAL_COLORS, Modal, ModalBody, ModalContent, type ModalContentProp, type ModalOpenChangeDetail, type ModalProp, ModalTrigger } from '../../../../ods-react/src/components/modal/src';
+import { MODAL_COLOR, MODAL_COLORS, Modal, ModalBody, ModalContent, type ModalOpenChangeDetail, type ModalProp, ModalTrigger } from '../../../../ods-react/src/components/modal/src';
 import { Select, SelectContent, SelectControl } from '../../../../ods-react/src/components/select/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<ModalProp>;
-type DemoArg = Partial<ModalProp> & Partial<ModalContentProp> & {
-  content?: string,
-};
 
 const meta: Meta<ModalProp> = {
   argTypes: excludeFromDemoControls(['defaultOpen', 'i18n', 'initialFocusedElement', 'locale', 'onOpenChange', 'open']),
@@ -25,25 +24,6 @@ const meta: Meta<ModalProp> = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Modal
-      closeOnEscape={ arg.closeOnEscape }
-      closeOnInteractOutside={ arg.closeOnInteractOutside }>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal
-        </Button>
-      </ModalTrigger>
-
-      <ModalContent
-        color={ arg.color }
-        dismissible={ arg.dismissible }>
-        <ModalBody>
-          { arg.content }
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-  ),
   argTypes: orderControls({
     closeOnEscape: {
       table: {
@@ -85,6 +65,8 @@ export const Demo: StoryObj = {
     content: 'My modal content',
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const AccessibilityActions: Story = {
   tags: ['!dev'],

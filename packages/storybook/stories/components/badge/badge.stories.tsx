@@ -5,7 +5,8 @@ import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
-
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<BadgeProp>;
 
@@ -45,6 +46,8 @@ export const Demo: Story = {
     children: 'My badge',
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Color: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],

@@ -1,9 +1,10 @@
 import { Splitter } from '@ark-ui/react/splitter'
-import * as ODSReact from '@ovhcloud/ods-react';
+import { BUTTON_COLOR, BUTTON_VARIANT, ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';
 import classNames from 'classnames';
 import lzString from 'lz-string';
 import React, { type JSX, useMemo, useRef, useState } from 'react';
 import { Playground } from 'storybook-addon-code-editor';
+import { getEditorConfig } from '../../helpers/liveCoding';
 import { ORIENTATION, OrientationSwitch } from './actions/OrientationSwitch';
 import { ResetSandbox } from './actions/ResetSandbox';
 import { ShareLink } from './actions/ShareLink';
@@ -49,6 +50,7 @@ const Sandbox = ({ location }: Prop): JSX.Element => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [orientation, setOrientation] = useState(ORIENTATION.horizontal);
   const editorRef = useRef<Editor>();
+  const editorConfig = getEditorConfig();
   const initialCode = useMemo(() => decodeUrl(location), [location]);
 
   function onReset() {
@@ -75,17 +77,15 @@ const Sandbox = ({ location }: Prop): JSX.Element => {
           onChange={ (value) => setOrientation(value) }
           orientation={ orientation } />
 
-        <ODSReact.Button
+        <Button
           onClick={ onToggleFullscreen }
-          variant={ ODSReact.BUTTON_VARIANT.ghost }>
-          <ODSReact.Icon name={ isFullscreen ? ODSReact.ICON_NAME.shrink : ODSReact.ICON_NAME.resize } />
-        </ODSReact.Button>
+          variant={ BUTTON_VARIANT.ghost }>
+          <Icon name={ isFullscreen ? ICON_NAME.shrink : ICON_NAME.resize } />
+        </Button>
       </div>
 
       <Playground
-        availableImports={{
-          '@ovhcloud/ods-react': ODSReact,
-        }}
+        { ...editorConfig }
         code={ initialCode }
         Container={ ({ editor, preview }) => (
           <Splitter.Root
@@ -100,13 +100,13 @@ const Sandbox = ({ location }: Prop): JSX.Element => {
               asChild
               aria-label="Resize"
               id="editor:preview">
-              <ODSReact.Button
+              <Button
                 className={ classNames(
                   styles['sandbox__container__resize'],
                   { [styles['sandbox__container__resize--horizontal']]: orientation === ORIENTATION.horizontal },
                   { [styles['sandbox__container__resize--vertical']]: orientation === ORIENTATION.vertical },
                 )}
-                color={ ODSReact.BUTTON_COLOR.neutral } />
+                color={ BUTTON_COLOR.neutral } />
             </Splitter.ResizeTrigger>
 
             <Splitter.Panel id="preview">
@@ -116,15 +116,8 @@ const Sandbox = ({ location }: Prop): JSX.Element => {
             </Splitter.Panel>
           </Splitter.Root>
         )}
-        defaultEditorOptions={{
-          fontFamily: 'Source Code Pro',
-          fontSize: 14,
-          minimap: { enabled: false },
-          padding: { bottom: 8, top: 8 },
-          scrollBeyondLastLine: false,
-        }}
         modifyEditor={ (monaco, editor) => {
-          monaco.editor.setTheme('vs-dark');
+          editorConfig.modifyEditor?.(monaco, editor);
           editorRef.current = editor;
         }} />
     </div>

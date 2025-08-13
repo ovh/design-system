@@ -3,15 +3,14 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { POPOVER_POSITIONS, Popover, type PopoverProp, PopoverContent, type PopoverContentProp, PopoverTrigger } from '../../../../ods-react/src/components/popover/src';
+import { POPOVER_POSITIONS, Popover, type PopoverProp, PopoverContent, PopoverTrigger } from '../../../../ods-react/src/components/popover/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<PopoverProp>;
-type DemoArg = Partial<PopoverProp> & Partial<PopoverContentProp> & {
-  content?: string,
-};
 
 const meta: Meta<PopoverProp> = {
   argTypes: excludeFromDemoControls(['onOpenChange', 'open']),
@@ -26,17 +25,6 @@ export const Demo: StoryObj = {
   parameters: {
     layout: 'centered',
   },
-  render: (arg: DemoArg) => (
-    <Popover position={ arg.position }>
-      <PopoverTrigger>
-        Show popover
-      </PopoverTrigger>
-
-      <PopoverContent withArrow={ arg.withArrow }>
-        { arg.content }
-      </PopoverContent>
-    </Popover>
-  ),
   argTypes: orderControls({
     content: {
       table: {
@@ -65,6 +53,8 @@ export const Demo: StoryObj = {
     content: 'My popover content',
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Controlled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],

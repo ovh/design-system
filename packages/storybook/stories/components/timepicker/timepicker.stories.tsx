@@ -4,11 +4,10 @@ import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/
 import { Timepicker, TimepickerControl, TimepickerTimezoneList, type TimepickerProp } from '../../../../ods-react/src/components/timepicker/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<TimepickerProp>;
-type DemoArg = Partial<TimepickerProp> & {
-  withTimezones?: boolean,
-}
 
 const meta: Meta<TimepickerProp> = {
   argTypes: excludeFromDemoControls(['defaultValue', 'i18n', 'id', 'locale', 'name', 'onTimezoneChange', 'onValueChange', 'required', 'timezone', 'timezones', 'value']),
@@ -19,21 +18,7 @@ const meta: Meta<TimepickerProp> = {
 
 export default meta;
 
-export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Timepicker
-      disabled={ arg.disabled }
-      invalid={ arg.invalid }
-      readOnly={ arg.readOnly }
-      withSeconds={ arg.withSeconds }>
-      <TimepickerControl />
-
-      {
-        arg.withTimezones &&
-        <TimepickerTimezoneList />
-      }
-    </Timepicker>
-  ),
+export const Demo: Story = {
   argTypes: orderControls({
     disabled: {
       table: {
@@ -69,6 +54,8 @@ export const Demo: StoryObj = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const AccessibilityLabel: Story = {
   tags: ['!dev'],

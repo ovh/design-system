@@ -3,6 +3,8 @@ import React from 'react';
 import { TEXT_PRESETS, Text, type TextProp }  from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<TextProp>;
 
@@ -34,6 +36,8 @@ export const Demo: Story = {
     children: 'Lorem ipsum dolor sit amet',
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Default: Story = {
   tags: ['!dev'],

@@ -1,13 +1,11 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import {
-  Pagination,
-  PaginationPageChangeDetail,
-  type PaginationProp,
-} from '../../../../ods-react/src/components/pagination/src';
+import { Pagination, PaginationPageChangeDetail, type PaginationProp } from '../../../../ods-react/src/components/pagination/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<PaginationProp>;
 
@@ -19,7 +17,7 @@ const meta: Meta<PaginationProp> = {
 
 export default meta;
 
-export const Demo: Story = {
+export const Demo: StoryObj = {
   argTypes: orderControls({
     disabled : {
       table: {
@@ -66,6 +64,8 @@ export const Demo: Story = {
     totalItems: 5000
   }
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const AccessibilityLabel: Story = {
   tags: ['!dev'],

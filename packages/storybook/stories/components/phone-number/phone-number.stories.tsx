@@ -2,15 +2,14 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
-import { PHONE_NUMBER_COUNTRY_ISO_CODES, PhoneNumber, PhoneNumberControl, type PhoneNumberControlProp, PhoneNumberCountryList, type PhoneNumberProp } from '../../../../ods-react/src/components/phone-number/src';
+import { PHONE_NUMBER_COUNTRY_ISO_CODES, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList, type PhoneNumberProp } from '../../../../ods-react/src/components/phone-number/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<PhoneNumberProp>;
-type DemoArg = Partial<PhoneNumberProp> & Partial<PhoneNumberControlProp> & {
-  withCountries?: boolean,
-};
 
 const meta: Meta<PhoneNumberProp> = {
   argTypes: excludeFromDemoControls(['countries', 'defaultValue', 'i18n', 'id', 'name', 'onCountryChange', 'onValueChange', 'pattern', 'required', 'value']),
@@ -21,22 +20,7 @@ const meta: Meta<PhoneNumberProp> = {
 
 export default meta;
 
-export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <PhoneNumber
-      country={ arg.country }
-      disabled={ arg.disabled }
-      invalid={ arg.invalid }
-      locale={ arg.locale }
-      readOnly={ arg.readOnly }>
-      {
-        arg.withCountries &&
-        <PhoneNumberCountryList />
-      }
-
-      <PhoneNumberControl clearable={ arg.clearable } />
-    </PhoneNumber>
-  ),
+export const Demo: Story = {
   argTypes: orderControls({
     clearable: {
       table: {
@@ -87,6 +71,8 @@ export const Demo: StoryObj = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const AccessibilityLabel: Story = {
   tags: ['!dev'],

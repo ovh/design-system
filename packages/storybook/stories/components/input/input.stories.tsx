@@ -4,12 +4,11 @@ import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/
 import { INPUT_I18N, INPUT_TYPE, INPUT_TYPES, Input, type InputProp } from '../../../../ods-react/src/components/input/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<InputProp>;
-type DemoArg = Partial<InputProp> & {
-  masked?: boolean,
-};
 
 const meta: Meta<InputProp> = {
   argTypes: excludeFromDemoControls(['i18n', 'locale', 'maskOption', 'onClear']),
@@ -20,15 +19,6 @@ const meta: Meta<InputProp> = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg: DemoArg) => {
-    const { masked, ...inputArg } = arg;
-
-    return (
-      <Input
-        maskOption={{ enable: !!masked }}
-        { ...inputArg } />
-    )
-  },
   argTypes: orderControls({
     clearable: {
       table: {
@@ -86,6 +76,8 @@ export const Demo: StoryObj = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Clearable: Story = {
   tags: ['!dev'],

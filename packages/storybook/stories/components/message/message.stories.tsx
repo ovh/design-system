@@ -2,13 +2,14 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { BUTTON_COLOR, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, ICON_NAMES } from '../../../../ods-react/src/components/icon/src';
-import { MESSAGE_COLOR, MESSAGE_COLORS, MESSAGE_VARIANT, MESSAGE_VARIANTS, Message, MessageBody, MessageIcon, type MessageIconProp, type MessageProp } from '../../../../ods-react/src/components/message/src';
+import { MESSAGE_COLOR, MESSAGE_COLORS, MESSAGE_VARIANT, MESSAGE_VARIANTS, Message, MessageBody, MessageIcon, type MessageProp } from '../../../../ods-react/src/components/message/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<MessageProp>;
-type DemoArg = Partial<MessageProp> & Partial<MessageIconProp>;
 
 const meta: Meta<MessageProp> = {
   argTypes: excludeFromDemoControls(['i18n', 'locale', 'onRemove']),
@@ -20,18 +21,6 @@ const meta: Meta<MessageProp> = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Message
-      color={ arg.color }
-      dismissible={ arg.dismissible }
-      variant={ arg.variant }>
-      <MessageIcon name={ arg.name || ICON_NAME.circleInfo } />
-
-      <MessageBody>
-        { arg.children }
-      </MessageBody>
-    </Message>
-  ),
   argTypes: orderControls({
     children: {
       table: {
@@ -74,6 +63,8 @@ export const Demo: StoryObj = {
     children: 'My message',
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const AccessibilityGrouping: Story = {
   tags: ['!dev'],

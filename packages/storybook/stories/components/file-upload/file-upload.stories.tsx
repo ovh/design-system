@@ -4,7 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { FILE_UPLOAD_I18N, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadProp, type FileUploadRejectDetail } from '../../../../ods-react/src/components/file-upload/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<FileUploadProp>;
 
@@ -18,37 +20,6 @@ const meta: Meta<FileUploadProp> = {
 export default meta;
 
 export const Demo: Story = {
-  render: (arg) => {
-    const [error, setError] = useState<string>('');
-    const [files, setFiles] = useState<File[]>([]);
-
-    function onAccept({ files }: FileUploadAcceptDetail): void {
-      setFiles(files);
-      setError('');
-    }
-
-    function onReject({ files }: FileUploadRejectDetail): void {
-      setError(files.length ? 'File(s) rejected' : '');
-    }
-
-    return (
-      <FileUpload
-        { ...arg }
-        error={ arg.error || error }
-        onFileAccept={ onAccept }
-        onFileReject={ onReject }>
-        <FileUploadList>
-          {
-            files.map((file: File, idx) => (
-              <FileUploadItem
-                file={ file }
-                key={ idx } />
-            ))
-          }
-        </FileUploadList>
-      </FileUpload>
-    );
-  },
   argTypes: orderControls({
     acceptedFileLabel: {
       table: {
@@ -112,6 +83,8 @@ export const Demo: Story = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Accept: Story = {
   tags: ['!dev'],

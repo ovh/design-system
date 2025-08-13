@@ -3,6 +3,8 @@ import React from 'react';
 import { Code, type CodeProp } from '../../../../ods-react/src/components/code/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<CodeProp>;
 
@@ -47,6 +49,8 @@ export const Demo: Story = {
     children: `import { Text } from '@ovhcloud/ods-react';`,
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Default: Story = {
   tags: ['!dev'],

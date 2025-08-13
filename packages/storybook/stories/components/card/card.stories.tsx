@@ -3,6 +3,8 @@ import React from 'react';
 import { CARD_COLOR, CARD_COLORS, Card, type CardProp } from '../../../../ods-react/src/components/card/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<CardProp>;
 
@@ -34,6 +36,8 @@ export const Demo: Story = {
     children: 'Hello, world!',
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Color: Story = {
   decorators: [(story) => <div style={{ display: 'flex', gap: '16px' }}>{ story() }</div>],

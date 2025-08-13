@@ -1,22 +1,15 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import {
-  Combobox,
-  ComboboxContent,
-  ComboboxControl,
-  ComboboxControlProp,
-  type ComboboxItem,
-  type ComboboxProp,
-} from '../../../../ods-react/src/components/combobox/src';
+import { Combobox, ComboboxContent, ComboboxControl, type ComboboxItem, type ComboboxProp } from '../../../../ods-react/src/components/combobox/src';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<ComboboxProp>;
-type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {
-};
 
 const meta: Meta<ComboboxProp> = {
   argTypes: excludeFromDemoControls(['customOptionRenderer', 'defaultValue', 'i18n', 'items', 'locale', 'name', 'onInputValueChange', 'onValueChange', 'required', 'value']),
@@ -28,29 +21,6 @@ const meta: Meta<ComboboxProp> = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Combobox
-      items={[
-        { label: 'Dog', value: 'dog' },
-        { label: 'Cat', value: 'cat' },
-        { label: 'Hamster', value: 'hamster' },
-        { label: 'Parrot', value: 'parrot' },
-        { label: 'Spider', value: 'spider' },
-        { label: 'Goldfish', value: 'goldfish' },
-      ]}
-      allowCustomValue={ arg.allowCustomValue }
-      defaultValue={ arg.defaultValue }
-      disabled={ arg.disabled }
-      highlightResults={ arg.highlightResults }
-      invalid={ arg.invalid }
-      multiple={ arg.multiple }
-      newElementLabel={ arg.newElementLabel }
-      noResultLabel={ arg.noResultLabel }
-      readOnly={ arg.readOnly }>
-      <ComboboxControl clearable={ arg.clearable } placeholder={ arg.placeholder } loading={ arg.loading } />
-      <ComboboxContent />
-    </Combobox>
-  ),
   argTypes: orderControls({
     allowCustomValue: {
       table: {
@@ -131,6 +101,8 @@ export const Demo: StoryObj = {
     placeholder: 'Start typing',
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Default: Story = {
   tags: ['!dev'],

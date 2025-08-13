@@ -3,6 +3,8 @@ import React from 'react';
 import { DIVIDER_COLOR, DIVIDER_COLORS, DIVIDER_SPACINGS, Divider, type DividerProp } from '../../../../ods-react/src/components/divider/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<DividerProp>;
 
@@ -33,6 +35,8 @@ export const Demo: Story = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Default: Story = {
   tags: ['!dev'],

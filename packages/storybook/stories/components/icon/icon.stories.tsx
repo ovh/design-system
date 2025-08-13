@@ -3,6 +3,8 @@ import React from 'react';
 import { ICON_NAME, ICON_NAMES, Icon, type IconProp } from '../../../../ods-react/src/components/icon/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<IconProp>;
 type AllArg = Partial<IconProp> & {
@@ -174,7 +176,7 @@ const meta: Meta<IconProp> = {
 
 export default meta;
 
-export const Demo: Story = {
+export const Demo: StoryObj = {
   argTypes: orderControls({
     name: {
       table: {
@@ -189,6 +191,8 @@ export const Demo: Story = {
     name: ICON_NAME.home,
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const AccessibilityInformative: Story = {
   tags: ['!dev'],

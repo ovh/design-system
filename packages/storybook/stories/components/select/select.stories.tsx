@@ -1,14 +1,15 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { Select, SelectContent, SelectControl, type SelectControlProp, type SelectItem, type SelectProp } from '../../../../ods-react/src/components/select/src';
+import { Select, SelectContent, SelectControl, type SelectItem, type SelectProp } from '../../../../ods-react/src/components/select/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<SelectProp>;
-type DemoArg = Partial<SelectProp> & Partial<SelectControlProp> & {};
 
 const meta: Meta<SelectProp> = {
   argTypes: excludeFromDemoControls(['defaultValue', 'id', 'items', 'name', 'onValueChange', 'required', 'value']),
@@ -20,28 +21,6 @@ const meta: Meta<SelectProp> = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Select
-      disabled={ arg.disabled }
-      fitControlWidth={ arg.fitControlWidth }
-      invalid={ arg.invalid }
-      items={[
-        { label: 'Dog', value:'dog' },
-        { label: 'Cat', value:'cat' },
-        { label: 'Hamster', value:'hamster' },
-        { label: 'Parrot', value:'parrot' },
-        { label: 'Spider', value:'spider' },
-        { label: 'Goldfish', value:'goldfish' },
-      ]}
-      multiple={ arg.multiple }
-      readOnly={ arg.readOnly }>
-      <SelectControl
-        multipleSelectionLabel={ arg.multipleSelectionLabel }
-        placeholder={ arg.placeholder } />
-
-      <SelectContent />
-    </Select>
-  ),
   argTypes: orderControls({
     disabled: {
       table: {
@@ -90,6 +69,8 @@ export const Demo: StoryObj = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const AccessibilityFormField: Story = {
   tags: ['!dev'],

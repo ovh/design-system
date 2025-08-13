@@ -4,6 +4,8 @@ import { Icon } from '../../../../ods-react/src/components/icon/src';
 import { Link, LinkProp } from '../../../../ods-react/src/components/link/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<LinkProp>;
 
@@ -15,7 +17,7 @@ const meta: Meta<LinkProp> = {
 
 export default meta;
 
-export const Demo: Story = {
+export const Demo: StoryObj = {
   argTypes: orderControls({
     children: {
       table: {
@@ -31,10 +33,11 @@ export const Demo: Story = {
     },
   }),
   args: {
-    // @ts-ignore check when time to do so
     children: 'My link',
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Default: Story = {
   tags: ['!dev'],

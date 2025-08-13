@@ -34,3 +34,8 @@ img {
 [data-ods="message-body"] p {
   margin: 0;
 }
+
+/* Hide live coding editor overflow container weird persistent line */
+#monacoOverflowContainer {
+  outline: none;
+}

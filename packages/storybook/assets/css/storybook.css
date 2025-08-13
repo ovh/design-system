@@ -48,3 +48,8 @@ button[title="Shortcuts"] {
 .sidebar-header > div:first-of-type {
   grid-column: span 2;
 }
+
+/* Hide the "Code" panel that appear briefly on Demo page loading (due to live editor addition) */
+#tabbutton-storybook-docs-panel {
+  display: none;
+}

@@ -4,7 +4,9 @@ import { BUTTON_COLOR, BUTTON_COLORS, BUTTON_SIZE, BUTTON_SIZES, BUTTON_VARIANT,
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<ButtonProp>;
 
@@ -65,6 +67,8 @@ export const Demo: Story = {
     children: 'My button',
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Color: StoryObj = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],

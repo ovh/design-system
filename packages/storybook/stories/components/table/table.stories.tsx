@@ -4,6 +4,8 @@ import { TABLE_SIZES, TABLE_VARIANTS, Table, type TableProp } from '../../../../
 import { Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<TableProp>;
 
@@ -54,7 +56,6 @@ function renderExampleTable(props?: TableProp, customCaption?: () => ReactElemen
 }
 
 export const Demo: Story = {
-  render: ({ size, variant }) => renderExampleTable({ size, variant }),
   argTypes: orderControls({
     size: {
       table: {
@@ -74,6 +75,8 @@ export const Demo: Story = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const CustomCaption: Story = {
   tags: ['!dev'],

@@ -4,6 +4,8 @@ import { SWITCH_SIZES, Switch, SwitchItem, type SwitchProp } from '../../../../o
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<SwitchProp>;
 
@@ -17,13 +19,6 @@ const meta: Meta<SwitchProp> = {
 export default meta;
 
 export const Demo: Story = {
-  render: (arg) => (
-    <Switch { ...arg }>
-      <SwitchItem value="item-1">Item 1</SwitchItem>
-      <SwitchItem value="item-2">Item 2</SwitchItem>
-      <SwitchItem value="item-3">Item 3</SwitchItem>
-    </Switch>
-  ),
   argTypes: orderControls({
     disabled: {
       table: {
@@ -41,6 +36,8 @@ export const Demo: Story = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const AccessibilityAriaLabel: Story = {
   tags: ['!dev'],

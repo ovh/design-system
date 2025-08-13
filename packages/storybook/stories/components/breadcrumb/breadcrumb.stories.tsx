@@ -4,6 +4,8 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, type BreadcrumbProp } from 
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<BreadcrumbProp>;
 
@@ -17,42 +19,6 @@ const meta: Meta<BreadcrumbProp> = {
 export default meta;
 
 export const Demo: Story = {
-  render: (arg) => (
-    <Breadcrumb
-      collapseThreshold={ arg.collapseThreshold }
-      nbItemsAfterEllipsis={ arg.nbItemsAfterEllipsis }
-      nbItemsBeforeEllipsis={ arg.nbItemsBeforeEllipsis }>
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">
-          Home
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">
-          Page 1
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">
-          Page 2
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">
-          Page 3
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">
-          Current page
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-    </Breadcrumb>
-  ),
   argTypes: orderControls({
     collapseThreshold: {
       table: {
@@ -71,6 +37,8 @@ export const Demo: Story = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Collapsed: Story = {
   tags: ['!dev'],

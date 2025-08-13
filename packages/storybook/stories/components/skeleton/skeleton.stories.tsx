@@ -1,6 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Skeleton, type SkeletonProp } from '../../../../ods-react/src/components/skeleton/src';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<SkeletonProp>;
 
@@ -12,6 +14,8 @@ const meta: Meta<SkeletonProp> = {
 export default meta;
 
 export const Demo: Story = {};
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Default: Story = {
   tags: ['!dev'],

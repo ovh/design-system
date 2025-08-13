@@ -3,6 +3,8 @@ import React from 'react';
 import { {{> ComponentName }}, type {{> ComponentName }}Prop } from '../../../../ods-react/src/components/{{> component-name }}/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<{{> ComponentName }}Prop>;
 
@@ -29,6 +31,8 @@ export const Demo: Story = {
     dummy: 'dummy default',
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Default: Story = {
   tags: ['!dev'],

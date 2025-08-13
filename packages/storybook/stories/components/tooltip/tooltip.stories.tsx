@@ -2,15 +2,14 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { TOOLTIP_POSITIONS, Tooltip, type TooltipProp, TooltipContent, type TooltipContentProp, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
+import { TOOLTIP_POSITIONS, Tooltip, type TooltipProp, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<TooltipProp>;
-type DemoArg = Partial<TooltipProp> & Partial<TooltipContentProp> & {
-  content?: string,
-};
 
 const meta: Meta<TooltipProp> = {
   argTypes: excludeFromDemoControls(['onOpenChange', 'open']),
@@ -25,22 +24,6 @@ export const Demo: StoryObj = {
   parameters: {
     layout: 'centered',
   },
-  render: (arg: DemoArg) => (
-    <Tooltip
-      closeDelay={ arg.closeDelay }
-      openDelay={ arg.openDelay }
-      position={ arg.position }>
-      <TooltipTrigger asChild>
-        <Icon
-          name={ ICON_NAME.circleQuestion }
-          style={{ fontSize: '24px' }} />
-      </TooltipTrigger>
-
-      <TooltipContent withArrow={ arg.withArrow }>
-        { arg.content }
-      </TooltipContent>
-    </Tooltip>
-  ),
   argTypes: orderControls({
     closeDelay: {
       table: {
@@ -81,6 +64,8 @@ export const Demo: StoryObj = {
     content: 'My tooltip content',
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Controlled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],

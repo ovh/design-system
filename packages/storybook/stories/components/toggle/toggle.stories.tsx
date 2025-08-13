@@ -5,6 +5,8 @@ import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src
 import { Toggle, ToggleControl, ToggleLabel, type ToggleProp } from '../../../../ods-react/src/components/toggle/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<ToggleProp>;
 
@@ -39,6 +41,8 @@ export const Demo: StoryObj = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Default: Story = {
   tags: ['!dev'],

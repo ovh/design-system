@@ -2,30 +2,24 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Tabs, TabList, Tab, TabContent, type TabsProp, type TabsValueChangeEvent } from '../../../../ods-react/src/components/tabs/src';
 import { excludeFromDemoControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<TabsProp>;
 
 const meta: Meta<TabsProp> = {
   component: Tabs,
   subcomponents: { TabList, Tab, TabContent },
-  argTypes: excludeFromDemoControls(['defaultValue', 'value', 'onValueChange']),
+  argTypes: excludeFromDemoControls(['defaultValue', 'onValueChange', 'value']),
   title: 'React Components/Tabs',
 };
 
 export default meta;
 
-export const Demo: Story = {
-  render: () => (
-    <Tabs defaultValue='tab1'>
-      <TabList>
-        <Tab value="tab1">Tab 1</Tab>
-        <Tab value="tab2">Tab 2</Tab>
-        <Tab value="tab3">Tab 3</Tab>
-      </TabList>
-    </Tabs>
-  ),
-}
+export const Demo: Story = {};
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Overview: Story = {
   tags: ['!dev'],

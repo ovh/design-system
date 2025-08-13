@@ -4,6 +4,8 @@ import { Medium, type MediumProp } from '../../../../ods-react/src/components/me
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<MediumProp>;
 
@@ -45,6 +47,8 @@ export const Demo: Story = {
     src: exampleSrc,
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Caption: Story = {
   tags: ['!dev'],

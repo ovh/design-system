@@ -1,14 +1,13 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { Clipboard, ClipboardControl, type ClipboardControlProp, type ClipboardProp, ClipboardTrigger, type ClipboardTriggerProp } from '../../../../ods-react/src/components/clipboard/src';
+import { Clipboard, ClipboardControl, type ClipboardProp, ClipboardTrigger } from '../../../../ods-react/src/components/clipboard/src';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<ClipboardProp>;
-type DemoArg = Partial<ClipboardProp> & Partial<ClipboardControlProp> & Partial<ClipboardTriggerProp> & {
-  masked?: boolean,
-};
 
 const meta: Meta<ClipboardProp> = {
   argTypes: excludeFromDemoControls(['i18n', 'locale', 'onCopy']),
@@ -20,19 +19,6 @@ const meta: Meta<ClipboardProp> = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Clipboard
-      disabled={ arg.disabled }
-      value={ arg.value }>
-      <ClipboardControl
-        loading={ arg.loading }
-        maskOption={{ enable: !!arg.masked }} />
-
-      <ClipboardTrigger
-        labelCopy={ arg.labelCopy }
-        labelCopySuccess={ arg.labelCopySuccess } />
-    </Clipboard>
-  ),
   argTypes: orderControls({
     disabled: {
       table: {
@@ -79,6 +65,8 @@ export const Demo: StoryObj = {
     value: 'Clipboard',
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Default: Story = {
   tags: ['!dev'],

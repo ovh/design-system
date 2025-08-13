@@ -5,7 +5,9 @@ import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
 import { Password, type PasswordProp } from '../../../../ods-react/src/components/password/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<PasswordProp>;
 
@@ -60,6 +62,8 @@ export const Demo: Story = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const AccessibilityLabel: Story = {
   tags: ['!dev'],

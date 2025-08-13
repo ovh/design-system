@@ -3,6 +3,8 @@ import React from 'react';
 import { ProgressBar, type ProgressBarProp } from '../../../../ods-react/src/components/progress-bar/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<ProgressBarProp>;
 
@@ -31,6 +33,8 @@ export const Demo: Story = {
     },
   }),
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Default: Story = {
   tags: ['!dev'],

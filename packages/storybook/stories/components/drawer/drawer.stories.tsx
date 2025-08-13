@@ -7,19 +7,17 @@ import {
   DRAWER_POSITIONS,
   DrawerBody,
   DrawerContent,
-  DrawerContentProp,
   type DrawerProp,
   type DrawerOpenChangeDetail,
   DrawerTrigger,
 } from '../../../../ods-react/src/components/drawer/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { addLiveEditorToStory } from '../../../src/helpers/liveCoding';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import demoCode from './Demo?raw';
 
 type Story = StoryObj<DrawerProp>;
-type DemoArg = Partial<DrawerProp> & Partial<DrawerContentProp> & {
-  content?: string;
-}
 
 const meta: Meta<DrawerProp> = {
   argTypes: excludeFromDemoControls(['defaultOpen', 'onOpenChange', 'open']),
@@ -31,21 +29,6 @@ const meta: Meta<DrawerProp> = {
 export default meta;
 
 export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Drawer closeOnEscape={arg.closeOnEscape} closeOnInteractOutside={arg.closeOnInteractOutside}>
-      <DrawerTrigger asChild>
-        <Button>
-          Trigger Drawer
-        </Button>
-      </DrawerTrigger>
-
-      <DrawerContent position={arg.position}>
-        <DrawerBody>
-          { arg.content }
-        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-  ),
   argTypes: orderControls({
     closeOnEscape: {
       table: {
@@ -78,6 +61,8 @@ export const Demo: StoryObj = {
     content: 'My drawer content',
   },
 };
+
+addLiveEditorToStory(Demo, demoCode);
 
 export const Controlled: Story = {
   tags: ['!dev'],

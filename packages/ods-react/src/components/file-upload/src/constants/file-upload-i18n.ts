@@ -8,13 +8,13 @@ enum FILE_UPLOAD_I18N {
 
 const TRANSLATION_FILE = {
   [FILE_UPLOAD_I18N.cancelButton]: {
-    [LOCALE.de]: 'Stornieren',
+    [LOCALE.de]: 'Abbrechen',
     [LOCALE.en]: 'Cancel',
     [LOCALE.es]: 'Cancelar',
     [LOCALE.fr]: 'Annuler',
-    [LOCALE.it]: 'Annullare',
+    [LOCALE.it]: 'Annulla',
     [LOCALE.nl]: 'Annuleren',
-    [LOCALE.pl]: 'Anulować',
+    [LOCALE.pl]: 'Anuluj',
     [LOCALE.pt]: 'Cancelar',
   },
   [FILE_UPLOAD_I18N.deleteButton]: {
@@ -22,20 +22,20 @@ const TRANSLATION_FILE = {
     [LOCALE.en]: 'Delete',
     [LOCALE.es]: 'Eliminar',
     [LOCALE.fr]: 'Supprimer',
-    [LOCALE.it]: 'Rimuovere',
+    [LOCALE.it]: 'Elimina',
     [LOCALE.nl]: 'Verwijderen',
-    [LOCALE.pl]: 'Usunąć',
-    [LOCALE.pt]: 'Remover',
+    [LOCALE.pl]: 'Usuń',
+    [LOCALE.pt]: 'Eliminar',
   },
   [FILE_UPLOAD_I18N.progressBar]: {
-    [LOCALE.de]: 'Hochzuladen',
+    [LOCALE.de]: 'Hochladen',
     [LOCALE.en]: 'Uploading',
-    [LOCALE.es]: 'Cargar',
+    [LOCALE.es]: 'Cargando',
     [LOCALE.fr]: 'Chargement',
-    [LOCALE.it]: 'Caricare',
+    [LOCALE.it]: 'Caricamento in Corso',
     [LOCALE.nl]: 'Uploaden',
-    [LOCALE.pl]: 'Przesyłanie',
-    [LOCALE.pt]: 'Carregar',
+    [LOCALE.pl]: 'Ładowanie',
+    [LOCALE.pt]: 'A carregar',
   },
 };
 

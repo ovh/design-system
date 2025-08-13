@@ -1,3 +1,4 @@
+import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -9,12 +10,17 @@ import { HOME_TITLE } from '../../../src/constants/meta';
 <Heading label="Tailwind CSS Integration" level={ 1 } />
 
 This guide covers how to integrate Tailwind CSS with the OVHcloud Design System (ODS) for both v3 and v4 versions.
+
 Tailwind CSS is a utility-first CSS framework that can be integrated with ODS components and design tokens, but it is not mandatory as ODS is not based on Tailwind.
-Technically, you don't need any configuration to make ODS work with Tailwind. These guides are here to add some auto-completion and best practices for Tailwind, but you can directly use the design tokens right out of the box without any additional configuration.
 
-<Heading label="Overview" level={ 2 } />
-
-Tailwind CSS provides utility classes that can be used alongside ODS components to create custom layouts and styling. The OVHcloud Design System provides CSS custom properties (variables) that can be mapped to Tailwind's configuration, ensuring consistency across your application.
+<Message dismissible={false}>
+  <MessageIcon name={ICON_NAME.circleInfo} />
+  <MessageBody>
+    Technically, you don't need any configuration to make ODS work with Tailwind.
+    These guides are here to add some auto-completion and best practices when using Tailwind,
+    but you can directly use the design tokens right out of the box without any additional configuration.
+  </MessageBody>
+</Message>
 
 <Heading label="Tailwind CSS v3 Configuration" level={ 2 } />
 
@@ -107,8 +113,6 @@ Base is optional.
 
 <Heading label="Usage Examples" level={ 2 } />
 
-<Heading label="Combining ODS Components with Tailwind" level={ 3 } />
-
 You can use Tailwind utilities alongside ODS components:
 
 <Source code={`
@@ -117,7 +121,7 @@ import { Button } from '@ovhcloud/ods-react';
 function MyComponent() {
   return (
   <div>
-      <p className="font-ods-default">Click on the button!</p>
+      <p className="text-critical">Click on the button!</p>
       <Button className="bg-color-primary">Click me!</Button>
   </div>
   );
@@ -157,4 +161,4 @@ function MyComponent() {
 - <ExternalLink href="https://tailwindcss.com/docs">Tailwind CSS Documentation</ExternalLink>
 - <ExternalLink href="https://tailwindcss.com/docs/upgrade-guide">Tailwind v4 Migration Guide</ExternalLink>
 - <StorybookLink title={ HOME_TITLE.getStarted }>ODS Get Started Guide</StorybookLink>
-- <ExternalLink href="https://www.figma.com/design/tIKzHa5KvHHyosgIgyBswB/Design-Tokens?m=auto&node-id=0-1&t=s57Qt3pa7WuFWKEh-1">ODS Design Tokens (Figma)</ExternalLink>
+- <StorybookLink title={ HOME_TITLE.designTokens }>ODS Design Tokens</StorybookLink>

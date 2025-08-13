@@ -13,6 +13,7 @@ const {{> ComponentName }}: FC<{{> ComponentName }}Prop> = forwardRef(({
   return (
     <div
       className={ classNames(style['{{> component-name }}'], className) }
+      data-ods="{{> component-name }}"
       ref={ ref }
       { ...props }>
     </div>

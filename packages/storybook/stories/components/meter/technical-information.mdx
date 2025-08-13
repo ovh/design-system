@@ -1,0 +1,24 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsMeter from '../../../../ods-react/src/components/meter/documentation/meter.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as MeterStories from './meter.stories';
+
+<Meta of={ MeterStories } name="Technical information" />
+
+<Banner of={ MeterStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ MeterStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsMeter } of={ MeterStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ MeterStories.Default } sourceState="shown" />
+
+...

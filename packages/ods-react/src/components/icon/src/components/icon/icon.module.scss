@@ -4,6 +4,7 @@
   .icon {
     @include icon.ods-icon();
 
+    &--analysis::before { content: '\e933'; }
     &--arrow-crossed::before { content: '\e901'; }
     &--arrow-down::before { content: '\e904'; }
     &--arrow-down-left::before { content: '\e902'; }
@@ -19,20 +20,30 @@
     &--bill::before { content: '\e913'; }
     &--book::before { content: '\e90f'; }
     &--box::before { content: '\e91c'; }
+    &--building::before { content: '\e953'; }
+    &--cable::before { content: '\e962'; }
+    &--calculator::before { content: '\e96e'; }
     &--calendar::before { content: '\e910'; }
+    &--castle::before { content: '\e987'; }
     &--check::before { content: '\e914'; }
     &--chevron-double-left::before { content: '\e915'; }
     &--chevron-double-right::before { content: '\e916'; }
     &--chevron-down::before { content: '\e917'; }
     &--chevron-left::before { content: '\e918'; }
+    &--chevron-left-slash::before { content: '\e9b2'; }
+    &--chevron-left-underscore::before { content: '\e9b3'; }
     &--chevron-right::before { content: '\e919'; }
     &--chevron-up::before { content: '\e91a'; }
     &--circle-check::before { content: '\e912'; }
+    &--circle-check-full::before { content: '\e9b4'; }
     &--circle-info::before { content: '\e956'; }
+    &--circle-info-full::before { content: '\e9b5'; }
     &--circle-question::before { content: '\e96c'; }
+    &--circle-question-full::before { content: '\e9b6'; }
     &--circle-three-nodes::before { content: '\e929'; }
     &--circle-user::before { content: '\e992'; }
     &--circle-xmark::before { content: '\e93f'; }
+    &--circle-xmark-full::before { content: '\e9b7'; }
     &--clock-time-four::before { content: '\e91d'; }
     &--clock-time-nine::before { content: '\e91e'; }
     &--clock-time-six::before { content: '\e91f'; }
@@ -47,11 +58,14 @@
     &--cog::before { content: '\e928'; }
     &--columns::before { content: '\e932'; }
     &--comment::before { content: '\e911'; }
+    &--cpu::before { content: '\e98e'; }
     &--credit-card::before { content: '\e92b'; }
+    &--crown::before { content: '\e996'; }
     &--d-pad::before { content: '\e92e'; }
     &--diamond-exclamation::before { content: '\e930'; }
     &--diamond-exclamation-full::before { content: '\e92f'; }
     &--diamonds-full::before { content: '\e92a'; }
+    &--disk::before { content: '\e998'; }
     &--download::before { content: '\e934'; }
     &--ellipsis-horizontal::before { content: '\e935'; }
     &--ellipsis-vertical::before { content: '\e936'; }
@@ -66,50 +80,68 @@
     &--external-link::before { content: '\e940'; }
     &--eye::before { content: '\e942'; }
     &--eye-off::before { content: '\e941'; }
+    &--fiber::before { content: '\e999'; }
     &--file::before { content: '\e946'; }
     &--file-copy::before { content: '\e943'; }
     &--file-minus::before { content: '\e944'; }
     &--file-plus::before { content: '\e945'; }
     &--filter::before { content: '\e947'; }
+    &--flame::before { content: '\e99a'; }
     &--flask-empty::before { content: '\e958'; }
     &--flask-full::before { content: '\e959'; }
     &--flask-half::before { content: '\e95a'; }
+    &--floppy::before { content: '\e99b'; }
     &--focus::before { content: '\e948'; }
     &--folder::before { content: '\e94b'; }
     &--folder-minus::before { content: '\e949'; }
     &--folder-plus::before { content: '\e94a'; }
+    &--funnel::before { content: '\e99c'; }
     &--game-console::before { content: '\e94c'; }
     &--game-controller::before { content: '\e94e'; }
     &--game-controller-alt::before { content: '\e94d'; }
     &--gathering::before { content: '\e94f'; }
+    &--gift::before { content: '\e99d'; }
     &--globe::before { content: '\e950'; }
     &--grid::before { content: '\e900'; }
     &--grid-alt::before { content: '\e951'; }
     &--hamburger-menu::before { content: '\e952'; }
+    &--heart::before { content: '\e99e'; }
+    &--heart-full::before { content: '\e99f'; }
+    &--heart-half::before { content: '\e9a0'; }
     &--hexagon-exclamation::before { content: '\e92d'; }
     &--hexagon-exclamation-full::before { content: '\e92c'; }
     &--hierarchy::before { content: '\e954'; }
+    &--history::before { content: '\e9a1'; }
     &--home::before { content: '\e955'; }
     &--key::before { content: '\e957'; }
     &--leaf::before { content: '\e95b'; }
     &--lifebuoy::before { content: '\e95c'; }
     &--lightbulb::before { content: '\e95d'; }
+    &--lightning::before { content: '\e9a2'; }
     &--list::before { content: '\e95e'; }
     &--location::before { content: '\e95f'; }
     &--lock-close::before { content: '\e960'; }
     &--lock-open::before { content: '\e961'; }
+    &--magic-wand::before { content: '\e9a3'; }
     &--magnifying-glass::before { content: '\e971'; }
+    &--meter::before { content: '\e997'; }
     &--minus::before { content: '\e963'; }
     &--money::before { content: '\e964'; }
+    &--money-bag-default::before { content: '\e9a6'; }
+    &--money-bag-dollar::before { content: '\e9a4'; }
+    &--money-bag-euro::before { content: '\e9a5'; }
     &--monitor::before { content: '\e931'; }
     &--network::before { content: '\e965'; }
     &--pen::before { content: '\e966'; }
+    &--percent::before { content: '\e9a7'; }
     &--phone::before { content: '\e967'; }
+    &--piggy-bank::before { content: '\e9a8'; }
     &--plus::before { content: '\e968'; }
     &--printer::before { content: '\e969'; }
     &--question::before { content: '\e96d'; }
     &--refresh::before { content: '\e96f'; }
     &--resize::before { content: '\e970'; }
+    &--robot::before { content: '\e9a9'; }
     &--server::before { content: '\e90d'; }
     &--server-rack::before { content: '\e90c'; }
     &--share-nodes::before { content: '\e972'; }
@@ -133,10 +165,17 @@
     &--sort-alpha-up::before { content: '\e984'; }
     &--sort-numeric-down::before { content: '\e985'; }
     &--sort-numeric-up::before { content: '\e986'; }
+    &--sparkle::before { content: '\e9aa'; }
+    &--split-horizontal::before { content: '\e9ab'; }
+    &--split-vertical::before { content: '\e9ac'; }
     &--star::before { content: '\e989'; }
     &--star-full::before { content: '\e988'; }
+    &--star-half::before { content: '\e9ad'; }
     &--store::before { content: '\e98a'; }
+    &--sync::before { content: '\e9ae'; }
     &--tag::before { content: '\e96b'; }
+    &--thumbs-down::before { content: '\e9af'; }
+    &--thumbs-up::before { content: '\e9b0'; }
     &--timer::before { content: '\e91b'; }
     &--traffic-cone::before { content: '\e98c'; }
     &--trash::before { content: '\e98d'; }
@@ -147,6 +186,7 @@
     &--undo::before { content: '\e990'; }
     &--upload::before { content: '\e991'; }
     &--user::before { content: '\e993'; }
+    &--vault::before { content: '\e9b1'; }
     &--xmark::before { content: '\e98b'; }
   }
 }

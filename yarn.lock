@@ -1540,6 +1540,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/standalone@npm:^7.27.0":
+  version: 7.28.2
+  resolution: "@babel/standalone@npm:7.28.2"
+  checksum: c2af9f6be051f78034e058c0e800a92e004dbb2b0061d0a94d4d62ff690ddea94652855a99ba89708d9049945d68d96cbf2061844cff5afaaecac6163304be8c
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.27.1, @babel/template@npm:^7.27.2, @babel/template@npm:^7.3.3":
   version: 7.27.2
   resolution: "@babel/template@npm:7.27.2"
@@ -4696,6 +4703,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-storybook@workspace:packages/storybook"
   dependencies:
+    "@ark-ui/react": 5.12.0
     "@ovhcloud/ods-react": 19.1.0
     "@ovhcloud/ods-themes": 19.1.0
     "@storybook/addon-essentials": 8.6.12
@@ -4705,12 +4713,15 @@ __metadata:
     "@storybook/react": 8.6.12
     "@storybook/react-vite": 8.6.12
     "@storybook/types": 8.6.12
+    classnames: 2.5.1
     custom-elements-manifest: 1.0.0
+    lz-string: 1.5.0
     node-fetch: 2.7.0
     prop-types: 15.8.1
     react: 18.2.0
     react-docgen: 7.1.1
     storybook: 8.6.12
+    storybook-addon-code-editor: 4.1.2
     typedoc: 0.28.1
     typescript: 5.3.3
   languageName: unknown
@@ -5388,6 +5399,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/components@npm:^8.6.11":
+  version: 8.6.14
+  resolution: "@storybook/components@npm:8.6.14"
+  peerDependencies:
+    storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+  checksum: d3647505510313aa3c32fd1f8f202eda723ad99bd353b20aa929c5ecab4edc3c86ad06d0eac02f3c6d948e88f13f65ca5fa35ef27c079ef1b92abe8692f23699
+  languageName: node
+  linkType: hard
+
 "@storybook/core@npm:8.6.12":
   version: 8.6.12
   resolution: "@storybook/core@npm:8.6.12"
@@ -5446,6 +5466,15 @@ __metadata:
   peerDependencies:
     storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
   checksum: d1c44c6649a024c4007461c12a15337f5d13532dbaccc4c02f71bd99599fb973e2574eb8f1bc2d93e05da24e4ae43fa47ec637a7c4cccf5ffc67045cafbf087c
+  languageName: node
+  linkType: hard
+
+"@storybook/manager-api@npm:^8.6.11":
+  version: 8.6.14
+  resolution: "@storybook/manager-api@npm:8.6.14"
+  peerDependencies:
+    storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+  checksum: 4544b317050b81574f1cd6f911dcb99ee2adbd7190555209171a7dd2233cd331165fa11c16a5977ebe58eeaf26c86bbfcb23f701cfd79a10f0d034dae65197bd
   languageName: node
   linkType: hard
 
@@ -5535,6 +5564,15 @@ __metadata:
   peerDependencies:
     storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
   checksum: 5d99fc62de9716b339bf84c6939ac806ebb45a42cb0fb4cb81ee875f4c4d1dbf3bc09115971c52759e7e3f88147cf9172295349a8c4bae7708d0de0250c7621c
+  languageName: node
+  linkType: hard
+
+"@storybook/types@npm:^8.6.11":
+  version: 8.6.14
+  resolution: "@storybook/types@npm:8.6.14"
+  peerDependencies:
+    storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+  checksum: e91c17e1af9d672d9dccfe45543c6a7fd8f5f58207279ca1b86b605cd700cffd5f8b2d423f6fe51e6a46d680bb628b16abf287f0c0bea134ee7427f0affcdcad
   languageName: node
   linkType: hard
 
@@ -16040,6 +16078,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lz-string@npm:1.5.0":
+  version: 1.5.0
+  resolution: "lz-string@npm:1.5.0"
+  bin:
+    lz-string: bin/bin.js
+  checksum: 1ee98b4580246fd90dd54da6e346fb1caefcf05f677c686d9af237a157fdea3fd7c83a4bc58f858cd5b10a34d27afe0fdcbd0505a47e0590726a873dc8b8f65d
+  languageName: node
+  linkType: hard
+
 "macos-release@npm:^2.2.0":
   version: 2.5.1
   resolution: "macos-release@npm:2.5.1"
@@ -16768,6 +16815,13 @@ __metadata:
   version: 1.0.4
   resolution: "module-details-from-path@npm:1.0.4"
   checksum: 2ebfada5358492f6ab496b70f70a1042f2ee7a4c79d29467f59ed6704f741fb4461d7cecb5082144ed39a05fec4d19e9ff38b731c76228151be97227240a05b2
+  languageName: node
+  linkType: hard
+
+"monaco-editor@npm:0.52.2":
+  version: 0.52.2
+  resolution: "monaco-editor@npm:0.52.2"
+  checksum: d5ff7b7a469afee25ac708d9ace0dcc5ef24ed328dfc526a52944a497f0d826cfb0685a778ff4b7becc0a8f7843f260c17ea6de3f6719481d53501d79ebb1260
   languageName: node
   linkType: hard
 
@@ -21124,6 +21178,25 @@ __metadata:
     es-errors: ^1.3.0
     internal-slot: ^1.1.0
   checksum: be944489d8829fb3bdec1a1cc4a2142c6b6eb317305eeace1ece978d286d6997778afa1ae8cb3bd70e2b274b9aa8c69f93febb1e15b94b1359b11058f9d3c3a1
+  languageName: node
+  linkType: hard
+
+"storybook-addon-code-editor@npm:4.1.2":
+  version: 4.1.2
+  resolution: "storybook-addon-code-editor@npm:4.1.2"
+  dependencies:
+    "@babel/standalone": ^7.27.0
+    "@storybook/components": ^8.6.11
+    "@storybook/manager-api": ^8.6.11
+    "@storybook/types": ^8.6.11
+    monaco-editor: 0.52.2
+  peerDependencies:
+    "@types/react": 17.x.x || 18.x.x || 19.x.x
+    react: 17.x.x || 18.x.x || 19.x.x
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 47f2a0d68cd21162aaaf241b01f1a497557ec701e9d8ccaa6dd116ff57b71ca1f6d94769e946ddd1c4e0caa72a5eff37fbbb5a158029c439256a0e1f47e49e55
   languageName: node
   linkType: hard
 

@@ -1,6 +1,6 @@
 import { Link, type LinkProp } from '@ovhcloud/ods-react';
 import { navigate } from '@storybook/addon-links';
-import React, { ComponentPropsWithRef, type JSX, type MouseEvent } from 'react';
+import React, { type ComponentPropsWithRef, type JSX, type MouseEvent } from 'react';
 
 interface Prop extends ComponentPropsWithRef<'a'>, Pick<LinkProp, 'disabled'> {
   kind?: string,

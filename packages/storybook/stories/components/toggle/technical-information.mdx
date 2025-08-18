@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsToggle from '../../../../ods-react/src/components/toggle/documentation/toggle.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -51,26 +52,26 @@ import * as ToggleStories from './toggle.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ ToggleStories.Default } sourceState="shown" />
+<OdsCanvas of={ ToggleStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ ToggleStories.Disabled } sourceState="shown" />
+<OdsCanvas of={ ToggleStories.Disabled } sourceState="shown" />
 
 <Heading label="Invalid" level={ 3 } />
 
-<Canvas of={ ToggleStories.Invalid } sourceState="shown" />
+<OdsCanvas of={ ToggleStories.Invalid } sourceState="shown" />
 
 <Heading label="With label" level={ 3 } />
 
-<Canvas of={ ToggleStories.WithLabel } sourceState="shown" />
+<OdsCanvas of={ ToggleStories.WithLabel } sourceState="shown" />
 
 <Heading label="With inside labels" level={ 3 } />
 
-<Canvas of={ ToggleStories.WithLabels } sourceState="shown" />
+<OdsCanvas of={ ToggleStories.WithLabels } sourceState="shown" />
 
 <Heading label="Form field" level={ 3 }>
   <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
 </Heading>
 
-<Canvas of={ ToggleStories.InFormField } sourceState="shown" />
+<OdsCanvas of={ ToggleStories.InFormField } sourceState="shown" />

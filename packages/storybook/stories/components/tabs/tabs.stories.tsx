@@ -44,6 +44,10 @@ export const Overview: Story = {
 };
 
 export const Controlled: Story = {
+  globals: {
+    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -72,6 +76,9 @@ export const Controlled: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Tabs>
@@ -85,6 +92,9 @@ export const Default: Story = {
 };
 
 export const Disabled: Story = {
+  globals: {
+    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Tabs defaultValue="tab1">
@@ -98,6 +108,9 @@ export const Disabled: Story = {
 };
 
 export const Overflow: Story = {
+  globals: {
+    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <div style={{ width: '300px' }}>
@@ -116,6 +129,9 @@ export const Overflow: Story = {
 };
 
 export const WithContent: Story = {
+  globals: {
+    imports: `import { Tabs, TabContent, TabList, Tab } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Tabs defaultValue="tab1">

@@ -3,7 +3,7 @@ import React from 'react';
 import { Datepicker, DatepickerContent, DatepickerControl, type DatepickerControlProp, type DatepickerProp } from '../../../../ods-react/src/components/datepicker/src';
 import { FormField, FormFieldLabel, FormFieldHelper } from '../../../../ods-react/src/components/form-field/src';
 import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
-import { Text } from '../../../../ods-react/src/components/text/src'
+import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src'
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -86,6 +86,9 @@ export const Demo: StoryObj = {
 };
 
 export const DateFormatter: Story = {
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -104,6 +107,9 @@ export const DateFormatter: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Datepicker>
@@ -116,6 +122,9 @@ export const Default: Story = {
 
 export const Disabled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -147,6 +156,9 @@ export const Disabled: Story = {
 };
 
 export const InFormField: Story = {
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -164,6 +176,9 @@ export const InFormField: Story = {
 };
 
 export const MaxView: Story = {
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Datepicker maxView="day">
@@ -175,6 +190,9 @@ export const MaxView: Story = {
 };
 
 export const MinMax: Story = {
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Datepicker
@@ -188,6 +206,9 @@ export const MinMax: Story = {
 };
 
 export const MinView: Story = {
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Datepicker minView="month">
@@ -213,6 +234,9 @@ export const Overview: Story = {
 };
 
 export const Readonly: Story = {
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Datepicker readOnly>
@@ -224,14 +248,19 @@ export const Readonly: Story = {
 };
 
 export const AccessibilityFormField: Story = {
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
       <FormFieldLabel>
         Start date:
       </FormFieldLabel>
+
       <Datepicker>
         <DatepickerControl />
+
         <DatepickerContent />
       </Datepicker>
     </FormField>
@@ -239,24 +268,35 @@ export const AccessibilityFormField: Story = {
 }
 
 export const AccessibilityDateFormat: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldHelper, FormFieldLabel, Text } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
       <FormFieldLabel>
         Start date:
       </FormFieldLabel>
+
       <Datepicker>
         <DatepickerControl />
+
         <DatepickerContent />
       </Datepicker>
+
       <FormFieldHelper>
-        <Text preset='caption'>Expected format: DD-MM-YYYY</Text>
+        <Text preset={ TEXT_PRESET.caption }>
+          Expected format: DD-MM-YYYY
+        </Text>
       </FormFieldHelper>
     </FormField>
   )
 }
 
 export const AccessibilityI18n: Story = {
+  globals: {
+    imports: `import { INPUT_I18N, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -268,10 +308,12 @@ export const AccessibilityI18n: Story = {
       <FormFieldLabel>
         Start date:
       </FormFieldLabel>
+
       <Datepicker i18n={{
         [INPUT_I18N.clearButton]: 'Clear date'
       }}>
         <DatepickerControl clearable />
+
         <DatepickerContent />
       </Datepicker>
     </FormField>

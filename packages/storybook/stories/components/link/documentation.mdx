@@ -3,6 +3,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as LinkStories from './link.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -104,22 +105,28 @@ If a **Link** opens in a new tab, focus remains on the original page unless othe
 This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA/apg/patterns/link/">Link WAI-ARIA design pattern</ExternalLink>.
 
 <Heading label="Icon-only Link" level={ 3 } />
+
 If a **Link** is represented only by an **Icon**, it must have an explicit accessible label to provide context about its destination or action.
 
-<Canvas of={ LinkStories.AccessibilityIconOnlyLink } sourceState="shown" />
+<OdsCanvas of={ LinkStories.AccessibilityIconOnlyLink } sourceState="shown" />
+
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the link and its label.
 
 <Heading label="Link opening in a new tab" level={ 3 } />
+
 When a **Link** opens in a new tab (`target="_blank"`), users should be informed to avoid confusion. This can be done by adding a visual indicator (e.g., Icon: "external") and using `aria-label` to provide context.
 
-<Canvas of={ LinkStories.AccessibilityInANewTab } sourceState="shown" />
+<OdsCanvas of={ LinkStories.AccessibilityInANewTab } sourceState="shown" />
+
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> The screen reader will announce the link, the opening in a new tab behavior and the link label.
 
 <Heading label="Downloadable files" level={ 3 } />
+
 If a **Link** points to a file download, it should include the file type and size information.
 
-<Canvas of={ LinkStories.AccessibilityFileDownload } sourceState="shown" />
+<OdsCanvas of={ LinkStories.AccessibilityFileDownload } sourceState="shown" />
+
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the link, the link label with the file name, type and size, ensuring users know they are downloading a file.

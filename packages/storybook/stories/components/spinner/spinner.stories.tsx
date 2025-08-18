@@ -35,6 +35,9 @@ export const Demo: Story = {
 };
 
 export const Color: Story = {
+  globals: {
+    imports: `import { SPINNER_COLOR, Spinner } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -45,6 +48,9 @@ export const Color: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Spinner } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Spinner />
@@ -62,6 +68,9 @@ export const Overview: Story = {
 };
 
 export const Size: Story = {
+  globals: {
+    imports: `import { SPINNER_SIZE, Spinner } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -74,15 +83,23 @@ export const Size: Story = {
 };
 
 export const AccessibilityAriaBusyAriaLive: Story = {
+  globals: {
+    imports: `import { Spinner } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
-    <div aria-busy="true" aria-live="polite">
+    <div
+      aria-busy="true"
+      aria-live="polite">
       <Spinner />
     </div>
   ),
 };
 
 export const AccessibilityAriaLabel: Story = {
+  globals: {
+    imports: `import { Spinner } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Spinner aria-label="Loading user profile" />
@@ -90,10 +107,16 @@ export const AccessibilityAriaLabel: Story = {
 };
 
 export const AccessibilityAriaLabelledBy: Story = {
+  globals: {
+    imports: `import { Spinner } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <div>
-      <span id="loading-text">Loading user profile</span>
+      <span id="loading-text">
+        Loading user profile
+      </span>
+
       <Spinner aria-labelledby="loading-text" />
     </div>
   ),

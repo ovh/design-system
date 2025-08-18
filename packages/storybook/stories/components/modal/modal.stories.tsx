@@ -87,6 +87,9 @@ export const Demo: StoryObj = {
 };
 
 export const AccessibilityActions: Story = {
+  globals: {
+    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, MODAL_COLOR, Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Modal>
@@ -122,6 +125,9 @@ export const AccessibilityActions: Story = {
 };
 
 export const AccessibilityAriaLabelledBy: Story = {
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Modal>
@@ -149,6 +155,9 @@ export const AccessibilityAriaLabelledBy: Story = {
 };
 
 export const AccessibilityAriaLabel: Story = {
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Modal>
@@ -160,8 +169,7 @@ export const AccessibilityAriaLabel: Story = {
 
       <ModalContent
         aria-describedby="modal-content"
-        aria-label="Modal Content"
-      >
+        aria-label="Modal Content">
         <ModalBody id="modal-content">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </ModalBody>
@@ -171,6 +179,9 @@ export const AccessibilityAriaLabel: Story = {
 };
 
 export const AccessibilityBadPracticesAria: Story = {
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Modal>
@@ -196,6 +207,9 @@ export const AccessibilityBadPracticesAria: Story = {
 };
 
 export const Actions: Story = {
+  globals: {
+    imports: `import { BUTTON_VARIANT, TEXT_PRESET, Button, Modal, ModalBody, ModalContent, ModalTrigger, Text } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Modal>
@@ -232,6 +246,9 @@ export const Actions: Story = {
 
 export const Colors: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { BUTTON_COLOR, MODAL_COLOR, Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -242,7 +259,7 @@ export const Colors: Story = {
           </Button>
         </ModalTrigger>
 
-        <ModalContent color="critical">
+        <ModalContent color={ MODAL_COLOR.critical }>
           <ModalBody>
             Critical
           </ModalBody>
@@ -256,7 +273,7 @@ export const Colors: Story = {
           </Button>
         </ModalTrigger>
 
-        <ModalContent color="information">
+        <ModalContent color={ MODAL_COLOR.information }>
           <ModalBody>
             Information
           </ModalBody>
@@ -270,7 +287,7 @@ export const Colors: Story = {
           </Button>
         </ModalTrigger>
 
-        <ModalContent color="neutral">
+        <ModalContent color={ MODAL_COLOR.neutral }>
           <ModalBody>
             Neutral
           </ModalBody>
@@ -284,7 +301,7 @@ export const Colors: Story = {
           </Button>
         </ModalTrigger>
 
-        <ModalContent color="primary">
+        <ModalContent color={ MODAL_COLOR.primary }>
           <ModalBody>
             Primary
           </ModalBody>
@@ -298,7 +315,7 @@ export const Colors: Story = {
           </Button>
         </ModalTrigger>
 
-        <ModalContent color="success">
+        <ModalContent color={ MODAL_COLOR.success }>
           <ModalBody>
             Success
           </ModalBody>
@@ -312,7 +329,7 @@ export const Colors: Story = {
           </Button>
         </ModalTrigger>
 
-        <ModalContent color="warning">
+        <ModalContent color={ MODAL_COLOR.warning }>
           <ModalBody>
             Warning
           </ModalBody>
@@ -323,6 +340,10 @@ export const Colors: Story = {
 };
 
 export const Controlled: Story = {
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -361,6 +382,9 @@ export const Controlled: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Modal>
@@ -378,6 +402,9 @@ export const Default: Story = {
 };
 
 export const NonDismissible: Story = {
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -402,6 +429,9 @@ export const NonDismissible: Story = {
 };
 
 export const NonEscapable: Story = {
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -428,6 +458,9 @@ export const NonEscapable: Story = {
 };
 
 export const OverlayElements: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon, Modal, ModalBody, ModalContent, ModalTrigger, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Modal>

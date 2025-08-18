@@ -81,10 +81,14 @@ export const Demo: StoryObj = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Clipboard value="Clipboard">
       <ClipboardControl />
+
       <ClipboardTrigger />
     </Clipboard>
   ),
@@ -98,58 +102,84 @@ export const Overview: Story = {
   render: ({}) => (
     <Clipboard value="Clipboard">
       <ClipboardControl />
+
       <ClipboardTrigger />
     </Clipboard>
   ),
 };
 
 export const Masked: Story = {
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Clipboard value="Masked" >
-      <ClipboardControl maskOption={ { enable: true } } />
+      <ClipboardControl maskOption={{ enable: true }} />
+
       <ClipboardTrigger />
     </Clipboard>
   ),
 };
 
 export const CustomLabels: Story = {
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Clipboard value="Custom labels">
       <ClipboardControl />
-      <ClipboardTrigger labelCopy="Click to copy" labelCopySuccess="Successfully copied" />
+
+      <ClipboardTrigger
+        labelCopy="Click to copy"
+        labelCopySuccess="Successfully copied" />
     </Clipboard>
   ),
 };
 
 export const Loading: Story = {
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Clipboard value="Loading" >
       <ClipboardControl loading />
+
       <ClipboardTrigger />
     </Clipboard>
   ),
 };
 
 export const Disabled: Story = {
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Clipboard value="Disabled" disabled>
       <ClipboardControl />
+
       <ClipboardTrigger />
     </Clipboard>
   ),
 };
 
 export const AccessibilityFormField: Story = {
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
-      <FormFieldLabel>API key:</FormFieldLabel>
+      <FormFieldLabel>
+        API key:
+      </FormFieldLabel>
+
       <Clipboard value="loremipsum">
         <ClipboardControl />
+
         <ClipboardTrigger />
       </Clipboard>
     </FormField>

@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsMedium from '../../../../ods-react/src/components/medium/documentation/medium.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as MediumStories from './medium.stories';
@@ -35,12 +36,12 @@ import * as MediumStories from './medium.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ MediumStories.Default } sourceState="shown" />
+<OdsCanvas of={ MediumStories.Default } sourceState="shown" />
 
 <Heading label="Height" level={ 3 } />
 
-<Canvas of={ MediumStories.Height } sourceState="shown" />
+<OdsCanvas of={ MediumStories.Height } sourceState="shown" />
 
 <Heading label="Width" level={ 3 } />
 
-<Canvas of={ MediumStories.Width } sourceState="shown" />
+<OdsCanvas of={ MediumStories.Width } sourceState="shown" />

@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsMessage from '../../../../ods-react/src/components/message/documentation/message.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as MessageStories from './message.stories';
@@ -47,20 +48,20 @@ import * as MessageStories from './message.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ MessageStories.Default } sourceState="shown" />
+<OdsCanvas of={ MessageStories.Default } sourceState="shown" />
 
 <Heading label="Color" level={ 3 } />
 
-<Canvas of={ MessageStories.Color } sourceState="shown" />
+<OdsCanvas of={ MessageStories.Color } sourceState="shown" />
 
 <Heading label="Variant" level={ 3 } />
 
-<Canvas of={ MessageStories.Variant } sourceState="shown" />
+<OdsCanvas of={ MessageStories.Variant } sourceState="shown" />
 
 <Heading label="Multiline" level={ 3 } />
 
-<Canvas of={ MessageStories.Multiline } sourceState="shown" />
+<OdsCanvas of={ MessageStories.Multiline } sourceState="shown" />
 
 <Heading label="Non Dismissible" level={ 3 } />
 
-<Canvas of={ MessageStories.NonDismissible } sourceState="shown" />
+<OdsCanvas of={ MessageStories.NonDismissible } sourceState="shown" />

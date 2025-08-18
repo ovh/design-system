@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsModal from '../../../../ods-react/src/components/modal/documentation/modal.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as ModalStories from './modal.stories';
@@ -50,28 +51,28 @@ import * as ModalStories from './modal.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ ModalStories.Default } sourceState="shown" />
+<OdsCanvas of={ ModalStories.Default } sourceState="shown" />
 
 <Heading label="Colors" level={ 3 } />
 
-<Canvas of={ ModalStories.Colors } sourceState="shown" />
+<OdsCanvas of={ ModalStories.Colors } sourceState="shown" />
 
 <Heading label="Controlled" level={ 3 } />
 
-<Canvas of={ ModalStories.Controlled } sourceState="shown" />
+<OdsCanvas of={ ModalStories.Controlled } sourceState="shown" />
 
 <Heading label="Non Dismissible" level={ 3 } />
 
-<Canvas of={ ModalStories.NonDismissible } sourceState="shown" />
+<OdsCanvas of={ ModalStories.NonDismissible } sourceState="shown" />
 
 <Heading label="Non Escapable" level={ 3 } />
 
-<Canvas of={ ModalStories.NonEscapable } sourceState="shown" />
+<OdsCanvas of={ ModalStories.NonEscapable } sourceState="shown" />
 
 <Heading label="Actions" level={ 3 } />
 
-<Canvas of={ ModalStories.Actions } sourceState="shown" />
+<OdsCanvas of={ ModalStories.Actions } sourceState="shown" />
 
 <Heading label="Overlay Elements" level={ 3 } />
 
-<Canvas of={ ModalStories.OverlayElements } sourceState="shown" />
+<OdsCanvas of={ ModalStories.OverlayElements } sourceState="shown" />

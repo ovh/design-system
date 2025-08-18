@@ -76,42 +76,57 @@ export const Demo: StoryObj = {
 };
 
 export const AccessibilityGrouping: Story = {
+  globals: {
+    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <ul style={{ display: 'flex', flexFlow: 'column', rowGap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
       <li>
         <Message>
           <MessageIcon name={ ICON_NAME.circleCheck } />
+
           <MessageBody>
             Your changes have been saved.
           </MessageBody>
         </Message>
       </li>
+
       <li>
         <Message color={ MESSAGE_COLOR.warning }>
           <MessageIcon name={ ICON_NAME.triangleExclamation } />
+
           <MessageBody>
             Some fields need your attention.
           </MessageBody>
         </Message>
       </li>
     </ul>
-
   ),
 };
 
 export const AccessibilityAlternativeGrouping: Story = {
+  globals: {
+    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
-    <div role="list" style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
+    <div
+      role="list"
+      style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
       <Message role="listitem">
         <MessageIcon name={ ICON_NAME.circleCheck } />
+
         <MessageBody>
           Your changes have been saved.
         </MessageBody>
       </Message>
-      <Message color={ MESSAGE_COLOR.warning } role="listitem">
+
+      <Message
+        color={ MESSAGE_COLOR.warning }
+        role="listitem">
         <MessageIcon name={ ICON_NAME.triangleExclamation } />
+
         <MessageBody>
           Some fields need your attention.
         </MessageBody>
@@ -122,6 +137,10 @@ export const AccessibilityAlternativeGrouping: Story = {
 
 export const AccessibilityRoles: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { BUTTON_COLOR, ICON_NAME, MESSAGE_COLOR, Button, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -149,8 +168,10 @@ export const AccessibilityRoles: Story = {
         <div role="alert">
           {
             alerts.map((alert) => (
-              <Message color="critical" key={ alert }>
-                <MessageIcon name="hexagon-exclamation" />
+              <Message
+                color={ MESSAGE_COLOR.critical }
+                key={ alert }>
+                <MessageIcon name={ ICON_NAME.hexagonExclamation } />
 
                 <MessageBody >
                   Alert: { alert }
@@ -164,7 +185,7 @@ export const AccessibilityRoles: Story = {
           {
             statuses.map((status) => (
               <Message key={ status }>
-                <MessageIcon name="circle-info" />
+                <MessageIcon name={ ICON_NAME.circleInfo } />
 
                 <MessageBody >
                   Status: { status }
@@ -180,36 +201,45 @@ export const AccessibilityRoles: Story = {
 
 export const Color: Story = {
   decorators: [(story) => <div style={{ display: 'inline-flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
       <Message color={ MESSAGE_COLOR.critical }>
         <MessageIcon name={ ICON_NAME.hexagonExclamation } />
+
         <MessageBody>Critical message</MessageBody>
       </Message>
 
       <Message color={ MESSAGE_COLOR.information }>
         <MessageIcon name={ ICON_NAME.circleInfo } />
+
         <MessageBody>Information message</MessageBody>
       </Message>
 
       <Message color={ MESSAGE_COLOR.neutral }>
         <MessageIcon name={ ICON_NAME.email } />
+
         <MessageBody>Neutral message</MessageBody>
       </Message>
 
       <Message color={ MESSAGE_COLOR.primary }>
         <MessageIcon name={ ICON_NAME.lightbulb } />
+
         <MessageBody>Primary message</MessageBody>
       </Message>
 
       <Message color={ MESSAGE_COLOR.success }>
         <MessageIcon name={ ICON_NAME.circleCheck } />
+
         <MessageBody>Success message</MessageBody>
       </Message>
 
       <Message color={ MESSAGE_COLOR.warning }>
         <MessageIcon name={ ICON_NAME.triangleExclamation } />
+
         <MessageBody>Warning message</MessageBody>
       </Message>
     </>
@@ -217,6 +247,9 @@ export const Color: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Message>
@@ -230,6 +263,9 @@ export const Default: Story = {
 };
 
 export const Multiline: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Message>
@@ -243,6 +279,9 @@ export const Multiline: Story = {
 };
 
 export const NonDismissible: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Message dismissible={ false }>
@@ -273,11 +312,15 @@ export const Overview: Story = {
 
 export const Variant: Story = {
   decorators: [(story) => <div style={{ display: 'inline-flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { ICON_NAME, MESSAGE_VARIANT, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
       <Message variant={ MESSAGE_VARIANT.default }>
         <MessageIcon name={ ICON_NAME.circleInfo } />
+
         <MessageBody>
           Default variant Message
         </MessageBody>
@@ -285,6 +328,7 @@ export const Variant: Story = {
 
       <Message variant={ MESSAGE_VARIANT.light }>
         <MessageIcon name={ ICON_NAME.circleInfo } />
+
         <MessageBody>
           Light variant Message
         </MessageBody>

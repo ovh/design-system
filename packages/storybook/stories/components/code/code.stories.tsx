@@ -49,6 +49,9 @@ export const Demo: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Code } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Code>
@@ -70,6 +73,9 @@ export const Overview: Story = {
 };
 
 export const CanCopy: Story = {
+  globals: {
+    imports: `import { Code } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Code canCopy>
@@ -79,15 +85,24 @@ export const CanCopy: Story = {
 };
 
 export const CustomLabels: Story = {
+  globals: {
+    imports: `import { Code } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
-    <Code canCopy labelCopy="Click to copy" labelCopySuccess="Successfully copied">
+    <Code
+      canCopy
+      labelCopy="Click to copy"
+      labelCopySuccess="Successfully copied">
       console.log('Hello world');
     </Code>
   ),
 };
 
 export const Multiline: Story = {
+  globals: {
+    imports: `import { Code } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Code>

@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsCheckbox from '../../../../ods-react/src/components/checkbox/documentation/checkbox.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -58,26 +59,26 @@ import * as CheckboxStories from './checkbox.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ CheckboxStories.Default } sourceState="shown" />
+<OdsCanvas of={ CheckboxStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ CheckboxStories.Disabled } sourceState="shown" />
+<OdsCanvas of={ CheckboxStories.Disabled } sourceState="shown" />
 
 <Heading label="Invalid" level={ 3 } />
 
-<Canvas of={ CheckboxStories.Invalid } sourceState="shown" />
+<OdsCanvas of={ CheckboxStories.Invalid } sourceState="shown" />
 
 <Heading label="States" level={ 3 } />
 
-<Canvas of={ CheckboxStories.States } sourceState="shown" />
+<OdsCanvas of={ CheckboxStories.States } sourceState="shown" />
 
 <Heading label="Group" level={ 3 } />
 
-<Canvas of={ CheckboxStories.Group } sourceState="shown" />
+<OdsCanvas of={ CheckboxStories.Group } sourceState="shown" />
 
 <Heading label="Form field" level={ 3 }>
   <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
 </Heading>
 
-<Canvas of={ CheckboxStories.InFormField } sourceState="shown" />
+<OdsCanvas of={ CheckboxStories.InFormField } sourceState="shown" />

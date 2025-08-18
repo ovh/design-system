@@ -14,6 +14,9 @@ export default meta;
 export const Demo: Story = {};
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Skeleton } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Skeleton />
@@ -28,6 +31,9 @@ export const Overview: Story = {
 };
 
 export const AccessibilityLoading: Story = {
+  globals: {
+    imports: `import { Skeleton } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <div aria-busy="true">
@@ -37,6 +43,9 @@ export const AccessibilityLoading: Story = {
 };
 
 export const AccessibilityBadPracticeLoading: Story = {
+  globals: {
+    imports: `import { Skeleton } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <div>

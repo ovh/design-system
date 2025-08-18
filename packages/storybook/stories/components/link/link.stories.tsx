@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { Icon } from '../../../../ods-react/src/components/icon/src';
+import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { Link, LinkProp } from '../../../../ods-react/src/components/link/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
@@ -37,6 +37,9 @@ export const Demo: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Link } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Link href="https://www.ovhcloud.com">
@@ -46,6 +49,9 @@ export const Default: Story = {
 };
 
 export const Disabled: Story = {
+  globals: {
+    imports: `import { Link } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Link
@@ -72,55 +78,71 @@ export const Overview: Story = {
 
 export const WithIcon: Story = {
   decorators: [(story) => <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>{ story() }</div>],
+  globals: {
+    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
       <Link href="https://www.ovhcloud.com">
-        <Icon name="arrow-left" />Icon Link
+        <Icon name={ ICON_NAME.arrowLeft } />Icon Link
       </Link>
 
-      <Link style={{ justifySelf: 'right' }}
-               href="https://www.ovhcloud.com">
-        Icon Link<Icon name="arrow-right" />
+      <Link
+        href="https://www.ovhcloud.com"
+        style={{ justifySelf: 'right' }}>
+        Icon Link<Icon name={ ICON_NAME.arrowRight } />
       </Link>
     </>
   ),
 };
 
 export const AccessibilityIconOnlyLink: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
-    <Link aria-label="Go to homepage" href="https://www.ovhcloud.com">
-      <Icon name="home" />
+    <Link
+      aria-label="Go to homepage"
+      href="https://www.ovhcloud.com">
+      <Icon name={ ICON_NAME.home } />
     </Link>
   ),
 };
 
 export const AccessibilityInANewTab: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Link
       aria-label="Visit Example (opens in a new tab)"
       href="https://www.ovhcloud.com"
       target="_blank">
-      <Icon name="external-link" />
+      <Icon name={ ICON_NAME.externalLink } />
     </Link>
   ),
 };
 
 export const AccessibilityFileDownload: Story = {
   decorators: [(story) => <div style={{ display: 'grid', gridTemplateColumns: '1fr' }}>{ story() }</div>],
+  globals: {
+    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
       <Link
         aria-label="Download WCAG20 Guidelines (PDF, 481 KB)"
         href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
-        <Icon name="download" />
+        <Icon name={ ICON_NAME.download } />
       </Link>
-      <Link
-        href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
-        <Icon name="download" />
+
+      <Link href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
+        <Icon name={ ICON_NAME.download } />
+
         <span>Download WCAG20 Guidelines (PDF, 481 KB)</span>
       </Link>
     </>

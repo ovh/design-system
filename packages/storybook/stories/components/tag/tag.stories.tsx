@@ -53,6 +53,9 @@ export const Demo: Story = {
 
 export const Color: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { TAG_COLOR, Tag } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     layout: 'centered',
@@ -70,22 +73,32 @@ export const Color: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
   render: ({}) => (
-    <Tag>My tag</Tag>
+    <Tag>
+      My tag
+    </Tag>
   ),
 };
 
 export const Disabled: Story = {
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
   render: ({}) => (
-    <Tag disabled>My tag</Tag>
+    <Tag disabled>
+      My tag
+    </Tag>
   ),
 };
 
@@ -95,12 +108,17 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <Tag>My tag</Tag>
+    <Tag>
+      My tag
+    </Tag>
   ),
 };
 
 export const Size: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { TAG_SIZE, Tag } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     layout: 'centered',
@@ -114,15 +132,20 @@ export const Size: Story = {
 };
 
 export const AccessibilityList: Story = {
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <ul>
       <li>
         <Tag>Design</Tag>
       </li>
+
       <li>
         <Tag>Development</Tag>
       </li>
+
       <li>
         <Tag>Accessibility</Tag>
       </li>
@@ -131,15 +154,20 @@ export const AccessibilityList: Story = {
 };
 
 export const AccessibilityAriaRoles: Story = {
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <div role="list">
       <div role="listitem">
         <Tag>Design</Tag>
       </div>
+
       <div role="listitem">
         <Tag>Development</Tag>
       </div>
+
       <div role="listitem">
         <Tag>Accessibility</Tag>
       </div>
@@ -148,8 +176,13 @@ export const AccessibilityAriaRoles: Story = {
 };
 
 export const AccessibilityAriaLabel: Story = {
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
-    <Tag aria-label="Remove my tag">My tag</Tag>
+    <Tag aria-label="Remove my tag">
+      My tag
+    </Tag>
   ),
 };

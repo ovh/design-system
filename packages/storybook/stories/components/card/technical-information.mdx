@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsCard from '../../../../ods-react/src/components/card/documentation/card.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as CardStories from './card.stories';
@@ -35,8 +36,8 @@ import * as CardStories from './card.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ CardStories.Default } sourceState="shown" />
+<OdsCanvas of={ CardStories.Default } sourceState="shown" />
 
 <Heading label="Color" level={ 3 } />
 
-<Canvas of={ CardStories.Color } sourceState="shown" />
+<OdsCanvas of={ CardStories.Color } sourceState="shown" />

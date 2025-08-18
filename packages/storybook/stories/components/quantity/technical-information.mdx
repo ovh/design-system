@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsQuantity from '../../../../ods-react/src/components/quantity/documentation/quantity.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -51,30 +52,30 @@ import * as QuantityStories from './quantity.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ QuantityStories.Default } sourceState="shown" />
+<OdsCanvas of={ QuantityStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ QuantityStories.Disabled } sourceState="shown" />
+<OdsCanvas of={ QuantityStories.Disabled } sourceState="shown" />
 
 <Heading label="Readonly" level={ 3 } />
 
-<Canvas of={ QuantityStories.Readonly } sourceState="shown" />
+<OdsCanvas of={ QuantityStories.Readonly } sourceState="shown" />
 
 <Heading label="Max" level={ 3 } />
 
-<Canvas of={ QuantityStories.Max } sourceState="shown" />
+<OdsCanvas of={ QuantityStories.Max } sourceState="shown" />
 
 <Heading label="Min" level={ 3 } />
 
-<Canvas of={ QuantityStories.Min } sourceState="shown" />
+<OdsCanvas of={ QuantityStories.Min } sourceState="shown" />
 
 <Heading label="Step" level={ 3 } />
 
-<Canvas of={ QuantityStories.Step } sourceState="shown" />
+<OdsCanvas of={ QuantityStories.Step } sourceState="shown" />
 
 <Heading label="Form field" level={ 3 }>
   <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
 </Heading>
 
-<Canvas of={ QuantityStories.InFormField } sourceState="shown" />
+<OdsCanvas of={ QuantityStories.InFormField } sourceState="shown" />

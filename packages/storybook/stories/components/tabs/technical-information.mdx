@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsTabs from '../../../../ods-react/src/components/tabs/documentation/tabs.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TabsStories from './tabs.stories';
@@ -56,20 +57,20 @@ import * as TabsStories from './tabs.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ TabsStories.Default } sourceState="shown" />
+<OdsCanvas of={ TabsStories.Default } sourceState="shown" />
 
 <Heading label="Disabled tab" level={ 3 } />
 
-<Canvas of={ TabsStories.Disabled } sourceState="shown" />
+<OdsCanvas of={ TabsStories.Disabled } sourceState="shown" />
 
 <Heading label="Horizontal overflow" level={ 3 } />
 
-<Canvas of={ TabsStories.Overflow } sourceState="shown" />
+<OdsCanvas of={ TabsStories.Overflow } sourceState="shown" />
 
 <Heading label="With content" level={ 3 } />
 
-<Canvas of={ TabsStories.WithContent } sourceState="shown" />
+<OdsCanvas of={ TabsStories.WithContent } sourceState="shown" />
 
 <Heading label="Controlled" level={ 3 } />
 
-<Canvas of={ TabsStories.Controlled } sourceState="shown" />
+<OdsCanvas of={ TabsStories.Controlled } sourceState="shown" />

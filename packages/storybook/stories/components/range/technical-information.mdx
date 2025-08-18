@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsRange from '../../../../ods-react/src/components/range/documentation/range.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -37,30 +38,32 @@ import * as RangeStories from './range.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ RangeStories.Default } sourceState="shown" />
+<OdsCanvas of={ RangeStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ RangeStories.Disabled } sourceState="shown" />
+<OdsCanvas of={ RangeStories.Disabled } sourceState="shown" />
 
 <Heading label="Min / Max" level={ 3 } />
 
-<Canvas of={ RangeStories.MaxMin } sourceState="shown" />
+<OdsCanvas of={ RangeStories.MaxMin } sourceState="shown" />
 
 <Heading label="Step" level={ 3 } />
 
-<Canvas of={ RangeStories.Step } sourceState="shown" />
+<OdsCanvas of={ RangeStories.Step } sourceState="shown" />
 
 <Heading label="Ticks" level={ 3 } />
 
-<Canvas of={ RangeStories.Ticks } sourceState="shown" />
+<OdsCanvas of={ RangeStories.Ticks } sourceState="shown" />
 
 <Heading label="Controlled" level={ 3 } />
+
 This is a controlled component. The final value is only updated when the user releases the mouse button.
-<Canvas of={ RangeStories.Controlled } sourceState="shown" />
+
+<OdsCanvas of={ RangeStories.Controlled } sourceState="shown" />
 
 <Heading label="Form field" level={ 3 }>
   <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
 </Heading>
 
-<Canvas of={ RangeStories.InFormField } sourceState="shown" />
+<OdsCanvas of={ RangeStories.InFormField } sourceState="shown" />

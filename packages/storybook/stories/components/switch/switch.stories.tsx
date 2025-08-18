@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { SWITCH_SIZES, Switch, SwitchItem, type SwitchProp } from '../../../../ods-react/src/components/switch/src';
+import { SWITCH_SIZE, SWITCH_SIZES, Switch, SwitchItem, type SwitchProp } from '../../../../ods-react/src/components/switch/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
@@ -43,6 +43,9 @@ export const Demo: Story = {
 };
 
 export const AccessibilityAriaLabel: Story = {
+  globals: {
+    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Switch aria-label="Select an item">
@@ -54,8 +57,11 @@ export const AccessibilityAriaLabel: Story = {
 };
 
 export const AccessibilityAriaLabelledby: Story = {
-  tags: ['!dev'],
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', alignItems: 'start' }}>{ story() }</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Switch, SwitchItem, Text } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
   render: ({}) => (
     <>
       <Text
@@ -74,6 +80,9 @@ export const AccessibilityAriaLabelledby: Story = {
 };
 
 export const Checked: Story = {
+  globals: {
+    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Switch defaultValue="item-1">
@@ -85,6 +94,9 @@ export const Checked: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Switch>
@@ -96,6 +108,9 @@ export const Default: Story = {
 };
 
 export const Disabled: Story = {
+  globals: {
+    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Switch disabled>
@@ -122,16 +137,19 @@ export const Overview: Story = {
 
 export const Sizes: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { SWITCH_SIZE, Switch, SwitchItem } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Switch size="md">
+      <Switch size={ SWITCH_SIZE.sm }>
         <SwitchItem value="item-1">Item 1</SwitchItem>
         <SwitchItem value="item-2">Item 2</SwitchItem>
         <SwitchItem value="item-3">Item 3</SwitchItem>
       </Switch>
 
-      <Switch size="sm">
+      <Switch size={ SWITCH_SIZE.md }>
         <SwitchItem value="item-1">Item 1</SwitchItem>
         <SwitchItem value="item-2">Item 2</SwitchItem>
         <SwitchItem value="item-3">Item 3</SwitchItem>

@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsSkeleton from '../../../../ods-react/src/components/skeleton/documentation/skeleton.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as SkeletonStories from './skeleton.stories';
@@ -33,4 +34,4 @@ import * as SkeletonStories from './skeleton.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ SkeletonStories.Default } sourceState="shown" />
+<OdsCanvas of={ SkeletonStories.Default } sourceState="shown" />

@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsPhoneNumber from '../../../../ods-react/src/components/phone-number/documentation/phone-number.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -51,23 +52,23 @@ import * as PhoneNumberStories from './phone-number.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ PhoneNumberStories.Default } sourceState="shown" />
+<OdsCanvas of={ PhoneNumberStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ PhoneNumberStories.Disabled } sourceState="shown" />
+<OdsCanvas of={ PhoneNumberStories.Disabled } sourceState="shown" />
 
 <Heading label="Readonly" level={ 3 } />
 
-<Canvas of={ PhoneNumberStories.Readonly } sourceState="shown" />
+<OdsCanvas of={ PhoneNumberStories.Readonly } sourceState="shown" />
 
 <Heading label="Clearable" level={ 3 } />
 
-<Canvas of={ PhoneNumberStories.Clearable } sourceState="shown" />
+<OdsCanvas of={ PhoneNumberStories.Clearable } sourceState="shown" />
 
 <Heading label="Loading" level={ 3 } />
 
-<Canvas of={ PhoneNumberStories.Loading } sourceState="shown" />
+<OdsCanvas of={ PhoneNumberStories.Loading } sourceState="shown" />
 
 <Heading label="Locale" level={ 3 } />
 
@@ -75,7 +76,7 @@ The locale manages the translation of the country list.
 
 For further explanation about locale strategy, see <StorybookLink kind={ REACT_COMPONENTS_TITLE.phoneNumber } story={ STORY.documentation }>the locale behavior documentation</StorybookLink>.
 
-<Canvas of={ PhoneNumberStories.Locale } sourceState="shown" />
+<OdsCanvas of={ PhoneNumberStories.Locale } sourceState="shown" />
 
 <Heading label="Country list" level={ 3 } />
 
@@ -85,10 +86,10 @@ By default, the list use the `all` preset that displays all supported iso codes.
 
 For further explanation about country iso code strategy, see <StorybookLink kind={ REACT_COMPONENTS_TITLE.phoneNumber } story={ STORY.documentation }>the iso code behavior documentation</StorybookLink>.
 
-<Canvas of={ PhoneNumberStories.CountryList } sourceState="shown" />
+<OdsCanvas of={ PhoneNumberStories.CountryList } sourceState="shown" />
 
 <Heading label="Form field" level={ 3 }>
   <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
 </Heading>
 
-<Canvas of={ PhoneNumberStories.InFormField } sourceState="shown" />
+<OdsCanvas of={ PhoneNumberStories.InFormField } sourceState="shown" />

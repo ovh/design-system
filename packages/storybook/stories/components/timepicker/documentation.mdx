@@ -3,6 +3,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as TimepickerStories from './timepicker.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
@@ -125,7 +126,7 @@ To ensure proper accessibility, the **Timepicker** component must be correctly l
 Every **Timepicker** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
 using either **FormField** or a native label tag.
 
-<Canvas of={ TimepickerStories.AccessibilityLabel } sourceState="shown" />
+<OdsCanvas of={ TimepickerStories.AccessibilityLabel } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the input time and the select field.

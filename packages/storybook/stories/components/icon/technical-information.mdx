@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsIcon from '../../../../ods-react/src/components/icon/documentation/icon.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as IconStories from './icon.stories';
@@ -35,12 +36,12 @@ import * as IconStories from './icon.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ IconStories.Default } sourceState="shown" />
+<OdsCanvas of={ IconStories.Default } sourceState="shown" />
 
 <Heading label="Decorative" level={ 3 } />
 
-<Canvas of={ IconStories.Decorative } sourceState="shown" />
+<OdsCanvas of={ IconStories.Decorative } sourceState="shown" />
 
 <Heading label="Informative" level={ 3 } />
 
-<Canvas of={ IconStories.Informative } sourceState="shown" />
+<OdsCanvas of={ IconStories.Informative } sourceState="shown" />

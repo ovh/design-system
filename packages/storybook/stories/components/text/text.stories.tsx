@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { TEXT_PRESETS, Text, type TextProp }  from '../../../../ods-react/src/components/text/src';
+import { TEXT_PRESET, TEXT_PRESETS, Text, type TextProp }  from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -36,21 +36,32 @@ export const Demo: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Text } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
-    <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+    <Text>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </Text>
   ),
 };
 
 export const FigCaption: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <figure>
       <img alt="OVHcloud logo"
            src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4"
            style={{ height: '100px' }} />
+
       <figcaption>
-        <Text preset="caption">My picture title</Text>
+        <Text preset={ TEXT_PRESET.caption }>
+          My picture title
+        </Text>
       </figcaption>
     </figure>
   ),
@@ -67,25 +78,31 @@ export const Overview: Story = {
 };
 
 export const Preset: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Text preset="caption">Caption</Text><br />
-      <Text preset="code">Code</Text><br />
-      <Text preset="label">Label</Text>
-      <Text preset="paragraph">Paragraph</Text>
-      <Text preset="span">Span</Text><br />
-      <Text preset="heading-1">Heading-1</Text>
-      <Text preset="heading-2">Heading-2</Text>
-      <Text preset="heading-3">Heading-3</Text>
-      <Text preset="heading-4">Heading-4</Text>
-      <Text preset="heading-5">Heading-5</Text>
-      <Text preset="heading-6">Heading-6</Text>
+      <Text preset={ TEXT_PRESET.caption }>Caption</Text><br />
+      <Text preset={ TEXT_PRESET.code }>Code</Text><br />
+      <Text preset={ TEXT_PRESET.label }>Label</Text>
+      <Text preset={ TEXT_PRESET.paragraph }>Paragraph</Text>
+      <Text preset={ TEXT_PRESET.span }>Span</Text><br />
+      <Text preset={ TEXT_PRESET.heading1 }>Heading-1</Text>
+      <Text preset={ TEXT_PRESET.heading2 }>Heading-2</Text>
+      <Text preset={ TEXT_PRESET.heading3 }>Heading-3</Text>
+      <Text preset={ TEXT_PRESET.heading4 }>Heading-4</Text>
+      <Text preset={ TEXT_PRESET.heading5 }>Heading-5</Text>
+      <Text preset={ TEXT_PRESET.heading6 }>Heading-6</Text>
     </>
   ),
 };
 
 export const TableCaption: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <table style={{
@@ -93,8 +110,11 @@ export const TableCaption: Story = {
       borderCollapse: 'collapse',
     }}>
       <caption style={{ captionSide: 'bottom' }}>
-        <Text preset="caption">My table title</Text>
+        <Text preset="caption">
+          My table title
+        </Text>
       </caption>
+
       <thead>
       <tr>
         <th scope="col">Person</th>

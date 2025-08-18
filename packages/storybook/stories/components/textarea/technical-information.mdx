@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsTextarea from '../../../../ods-react/src/components/textarea/documentation/textarea.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -37,22 +38,22 @@ import * as TextareaStories from './textarea.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ TextareaStories.Default } sourceState="shown" />
+<OdsCanvas of={ TextareaStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ TextareaStories.Disabled } sourceState="shown" />
+<OdsCanvas of={ TextareaStories.Disabled } sourceState="shown" />
 
 <Heading label="Readonly" level={ 3 } />
 
-<Canvas of={ TextareaStories.ReadOnly } sourceState="shown" />
+<OdsCanvas of={ TextareaStories.ReadOnly } sourceState="shown" />
 
 <Heading label="Resizable" level={ 3 } />
 
-<Canvas of={ TextareaStories.Resizable } sourceState="shown" />
+<OdsCanvas of={ TextareaStories.Resizable } sourceState="shown" />
 
 <Heading label="Form field" level={ 3 }>
   <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
 </Heading>
 
-<Canvas of={ TextareaStories.InFormField } sourceState="shown" />
+<OdsCanvas of={ TextareaStories.InFormField } sourceState="shown" />

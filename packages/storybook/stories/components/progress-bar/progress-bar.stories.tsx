@@ -33,6 +33,9 @@ export const Demo: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <ProgressBar />
@@ -40,6 +43,9 @@ export const Default: Story = {
 };
 
 export const Max: StoryObj = {
+  globals: {
+    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <ProgressBar
@@ -59,6 +65,9 @@ export const Overview: Story = {
 };
 
 export const Value: StoryObj = {
+  globals: {
+    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <ProgressBar value="50" />
@@ -66,6 +75,9 @@ export const Value: StoryObj = {
 };
 
 export const AccessibilityLabel: Story = {
+  globals: {
+    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <ProgressBar aria-label="Converting" />

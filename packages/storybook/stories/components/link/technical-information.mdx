@@ -1,6 +1,7 @@
 import { Canvas, Meta, Source } from '@storybook/blocks';
 import SpecificationsLink from '../../../../ods-react/src/components/link/documentation/link.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -36,15 +37,15 @@ import * as LinkStories from './link.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ LinkStories.Default } sourceState="shown" />
+<OdsCanvas of={ LinkStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ LinkStories.Disabled } sourceState="shown" />
+<OdsCanvas of={ LinkStories.Disabled } sourceState="shown" />
 
 <Heading label="With Icon" level={ 3 } />
 
-<Canvas of={ LinkStories.WithIcon } sourceState="shown" />
+<OdsCanvas of={ LinkStories.WithIcon } sourceState="shown" />
 
 <Heading label="React Router integration" level={ 3 } />
 

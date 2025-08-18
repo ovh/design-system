@@ -3,6 +3,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as ToggleStories from './toggle.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -104,12 +105,12 @@ This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA
 Every **Toggle** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
 using either a **ToggleLabel** or an <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> for context.
 
-<Canvas of={ ToggleStories.AccessibilityLabel } sourceState="shown" />
+<OdsCanvas of={ ToggleStories.AccessibilityLabel } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce a checkbox, its state and the label.
 
-<Canvas of={ ToggleStories.AccessibilityAriaLabel } sourceState="shown" />
+<OdsCanvas of={ ToggleStories.AccessibilityAriaLabel } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce a checkbox, its state and the label.

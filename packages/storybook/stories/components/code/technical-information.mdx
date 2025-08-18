@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsCode from '../../../../ods-react/src/components/code/documentation/code.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as CodeStories from './code.stories';
@@ -35,17 +36,17 @@ import * as CodeStories from './code.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ CodeStories.Default } sourceState="shown" />
+<OdsCanvas of={ CodeStories.Default } sourceState="shown" />
 
 <Heading label="Multiline" level={ 3 } />
 
-<Canvas of={ CodeStories.Multiline } sourceState="shown" />
+<OdsCanvas of={ CodeStories.Multiline } sourceState="shown" />
 
 <Heading label="With copy button enabled" level={ 3 } />
 
-<Canvas of={ CodeStories.CanCopy } sourceState="shown" />
+<OdsCanvas of={ CodeStories.CanCopy } sourceState="shown" />
 
 <Heading label="Custom labels" level={ 3 } />
 
-<Canvas of={ CodeStories.CustomLabels } sourceState="shown" />
+<OdsCanvas of={ CodeStories.CustomLabels } sourceState="shown" />
 

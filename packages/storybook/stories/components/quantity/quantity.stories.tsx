@@ -79,6 +79,9 @@ export const Demo: StoryObj = {
 };
 
 export const AccessibilityLabel: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -98,6 +101,9 @@ export const AccessibilityLabel: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Quantity>
@@ -109,6 +115,9 @@ export const Default: Story = {
 };
 
 export const Disabled: Story = {
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Quantity disabled>
@@ -120,6 +129,9 @@ export const Disabled: Story = {
 };
 
 export const InFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -137,6 +149,9 @@ export const InFormField: Story = {
 };
 
 export const Max: Story = {
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Quantity max={ 10 }>
@@ -148,6 +163,9 @@ export const Max: Story = {
 };
 
 export const Min: Story = {
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Quantity min={ 0 }>
@@ -175,6 +193,9 @@ export const Overview: Story = {
 };
 
 export const Readonly: Story = {
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Quantity readOnly>
@@ -186,6 +207,9 @@ export const Readonly: Story = {
 };
 
 export const Step: Story = {
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Quantity step={ 10 }>

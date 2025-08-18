@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsTag from '../../../../ods-react/src/components/tag/documentation/tag.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TagStories from './tag.stories';
@@ -35,16 +36,16 @@ import * as TagStories from './tag.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ TagStories.Default } sourceState="shown" />
+<OdsCanvas of={ TagStories.Default } sourceState="shown" />
 
 <Heading label="Color" level={ 3 } />
 
-<Canvas of={ TagStories.Color } sourceState="shown" />
+<OdsCanvas of={ TagStories.Color } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ TagStories.Disabled } sourceState="shown" />
+<OdsCanvas of={ TagStories.Disabled } sourceState="shown" />
 
 <Heading label="Size" level={ 3 } />
 
-<Canvas of={ TagStories.Size } sourceState="shown" />
+<OdsCanvas of={ TagStories.Size } sourceState="shown" />

@@ -1,13 +1,12 @@
-import { Icon, ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
+import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import * as RangeStories from './range.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
-import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
-import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ RangeStories } name="Documentation" />
 
@@ -111,20 +110,25 @@ Pressing `End` or `fn` + `Arrow Right` sets the value to the maximum.
 Pressing `Tab` and `Shift` + `Tab` allow navigation between multiple thumbs (if present).
 
 <Heading label="Accessibility" level={ 2 } />
+
 This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA/apg/patterns/slider/">Slider</ExternalLink> and <ExternalLink href="https://www.w3.org/WAI/ARIA/apg/patterns/slider-multithumb/">Slider (Multi-Thumb)</ExternalLink> WAI-ARIA design patterns.
 
 <Heading label="Always provide an explicit label" level={ 3 } />
+
 Every **Range** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
 using either **FormField** or a native label tag.
 
-<Canvas of={ RangeStories.AccessibilityFormField } sourceState="shown" />
+<OdsCanvas of={ RangeStories.AccessibilityFormField } sourceState="shown" />
+
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the value, the slider and its label.
 
 <Heading label="Always provide a descriptive sub-label in Dual Range" level={ 3 } />
+
 Sub-label provide additional context about the values that are selected or adjusted by the user. This sub-label should be vocalized by screen readers.
 Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> to link the sub-label and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions">aria-live="polite"</ExternalLink> to ensure that the content is vocalized by screen readers.
 
-<Canvas of={ RangeStories.AccessibilityDescriptiveSubLabel } sourceState="shown" />
+<OdsCanvas of={ RangeStories.AccessibilityDescriptiveSubLabel } sourceState="shown" />
+
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the values, the slider and its label.

@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsDrawer from '../../../../ods-react/src/components/drawer/documentation/drawer.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as DrawerStories from './drawer.stories';
@@ -50,8 +51,8 @@ import * as DrawerStories from './drawer.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ DrawerStories.Default } sourceState="shown" />
+<OdsCanvas of={ DrawerStories.Default } sourceState="shown" />
 
 <Heading label="Position" level={ 3 } />
 
-<Canvas of={ DrawerStories.Position } sourceState="shown" />
+<OdsCanvas of={ DrawerStories.Position } sourceState="shown" />

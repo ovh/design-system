@@ -10,7 +10,7 @@ type Story = StoryObj<AccordionProp>;
 
 const meta: Meta<AccordionProp> = {
   component: Accordion,
-  argTypes: excludeFromDemoControls(['onChange', 'defaultValue', 'value']),
+  argTypes: excludeFromDemoControls(['defaultValue', 'onChange', 'value']),
   subcomponents: { AccordionContent, AccordionItem, AccordionTrigger },
   title: 'React Components/Accordion',
 };
@@ -89,6 +89,9 @@ export const Demo: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Accordion>
@@ -105,6 +108,9 @@ export const Default: Story = {
 };
 
 export const Multiple: Story = {
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Text } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -158,6 +164,9 @@ export const Multiple: Story = {
 };
 
 export const Disabled: Story = {
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Accordion disabled>
@@ -174,6 +183,9 @@ export const Disabled: Story = {
 };
 
 export const ItemDisabled: Story = {
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Accordion>
@@ -198,6 +210,10 @@ export const ItemDisabled: Story = {
 };
 
 export const Controlled: Story = {
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {

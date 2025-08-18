@@ -1,10 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import {
-  Pagination,
-  PaginationPageChangeDetail,
-  type PaginationProp,
-} from '../../../../ods-react/src/components/pagination/src';
+import { Pagination, PaginationPageChangeDetail, type PaginationProp } from '../../../../ods-react/src/components/pagination/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -59,15 +55,18 @@ export const Demo: Story = {
     withPageSizeSelector: {
       table: {
         category: CONTROL_CATEGORY.general
-      }
-    }
+      },
+    },
   }),
   args: {
-    totalItems: 5000
-  }
+    totalItems: 5000,
+  },
 };
 
 export const AccessibilityLabel: Story = {
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Pagination
@@ -77,6 +76,10 @@ export const AccessibilityLabel: Story = {
 };
 
 export const Controlled: Story = {
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -90,11 +93,19 @@ export const Controlled: Story = {
       setPage(page);
     }
 
-    return <Pagination page={ page } onPageChange={ handlePageChange } totalItems={ 500 } />;
+    return (
+      <Pagination
+        onPageChange={ handlePageChange }
+        page={ page }
+        totalItems={ 500 } />
+    );
   },
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Pagination totalItems={ 5000 } />
@@ -102,16 +113,21 @@ export const Default: Story = {
 };
 
 export const Disabled: Story = {
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Pagination
-      totalItems={ 500 }
       disabled
-    />
+      totalItems={ 500 } />
   ),
 };
 
 export const ItemsPerPage: Story = {
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Pagination
@@ -131,6 +147,9 @@ export const Overview: Story = {
 };
 
 export const SiblingCount: Story = {
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Pagination
@@ -141,6 +160,9 @@ export const SiblingCount: Story = {
 }
 
 export const WithLabels: Story = {
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Pagination
@@ -151,6 +173,9 @@ export const WithLabels: Story = {
 };
 
 export const TotalItems: Story = {
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -159,6 +184,8 @@ export const TotalItems: Story = {
   },
   render: ({}) => (
     <Pagination
-      totalItems={ 500 } renderTotalItemsLabel={({ totalItems }) => `of ${totalItems} results`} withPageSizeSelector />
+      renderTotalItemsLabel={ ({ totalItems }) => `of ${totalItems} results` }
+      totalItems={ 500 }
+      withPageSizeSelector />
   ),
 };

@@ -3,6 +3,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as SkeletonStories from './skeleton.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -76,7 +77,7 @@ For this reason, it is hidden from screen readers.
 
 To ensure screen reader users are aware that content is being loaded, you should set <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy">aria-busy</ExternalLink> on the container that will eventually receive the content.
 
-<Canvas of={ SkeletonStories.AccessibilityLoading } sourceState="shown" />
+<OdsCanvas of={ SkeletonStories.AccessibilityLoading } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Using this approach ensures that assistive technologies are aware that content is being updated, allowing them to wait before announcing changes.

@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { Range, type RangeProp, type RangeValueChangeDetail } from '../../../../ods-react/src/components/range/src';
-import { Text } from '../../../../ods-react/src/components/text/src';
+import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -74,6 +74,10 @@ export const Demo: StoryObj = {
 };
 
 export const Controlled: Story = {
+  globals: {
+    imports: `import { Range } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -111,6 +115,9 @@ export const Controlled: Story = {
 
 export const Default: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { Range } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -123,6 +130,9 @@ export const Default: Story = {
 
 export const Disabled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { Range } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -139,6 +149,9 @@ export const Disabled: Story = {
 
 export const InFormField: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Range } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -152,6 +165,9 @@ export const InFormField: Story = {
 };
 
 export const MaxMin: Story = {
+  globals: {
+    imports: `import { Range } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -197,6 +213,9 @@ export const Overview: Story = {
 
 export const Step: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { Range } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -213,6 +232,9 @@ export const Step: Story = {
 
 export const Ticks: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { Range } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -228,26 +250,42 @@ export const Ticks: Story = {
 };
 
 export const AccessibilityFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Range } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
-      <FormFieldLabel>Volume</FormFieldLabel>
-      <Range defaultValue={[50]} />
+      <FormFieldLabel>
+        Volume
+      </FormFieldLabel>
+
+      <Range defaultValue={ [50] } />
     </FormField>
   ),
 };
 
 export const AccessibilityDualRangeFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Range } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
-      <FormFieldLabel>Price range</FormFieldLabel>
-      <Range defaultValue={[30, 70]} />
+      <FormFieldLabel>
+        Price range
+      </FormFieldLabel>
+
+      <Range defaultValue={ [30, 70] } />
     </FormField>
   ),
 };
 
 export const AccessibilityDescriptiveSubLabel: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, FormField, FormFieldLabel, Range, Text } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   parameters: {
     docs: {
       source: { ...staticSourceRenderConfig() },
@@ -262,18 +300,18 @@ export const AccessibilityDescriptiveSubLabel: Story = {
         <FormFieldLabel id="range-label">
           Price range
         </FormFieldLabel>
+
         <Text
-          preset="caption"
-          id="range-sublabel"
           aria-live="polite"
-        >
-          Selected values: {values[0]} - {values[1]}€
+          id="range-sublabel"
+          preset={ TEXT_PRESET.caption }>
+          Selected values: { values[0] } - { values[1] }€
         </Text>
+
         <Range
-          aria-labelledby={['range-label', 'range-sublabel']}
-          onDragging={({ value }) => setValues(value)}
-          value={values}
-        />
+          aria-labelledby={ ['range-label', 'range-sublabel'] }
+          onDragging={ ({ value }) => setValues(value) }
+          value={ values } />
       </FormField>
     );
   },

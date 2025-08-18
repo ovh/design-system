@@ -3,6 +3,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as CardStories from './card.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -104,7 +105,7 @@ When multiple **Cards** are grouped together, it is important to ensure their st
 
 If multiple **Cards** are displayed together (e.g., a collection of products, articles or dashboards), they should be wrapped in an unordered list of items (`<ul>` and `<li>`) to improve navigation for screen reader users.
 
-<Canvas of={ CardStories.AccessibilityGrouping } sourceState="shown" />
+<OdsCanvas of={ CardStories.AccessibilityGrouping } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This structure ensures that assistive technologies announce **Cards** as a list, rather than reading them as separate, unrelated announcements.
@@ -114,7 +115,7 @@ Screen readers will announce the list and the number of items.
 
 When modifying the HTML structure is not possible, use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role">role="list"</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role">role="listitem"</ExternalLink> to mimic list semantics.
 
-<Canvas of={ CardStories.AccessibilityAlternativeGrouping } sourceState="shown" />
+<OdsCanvas of={ CardStories.AccessibilityAlternativeGrouping } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers still recognize the **Cards** as a structured list even without native `<ul>` and `<li>` elements.

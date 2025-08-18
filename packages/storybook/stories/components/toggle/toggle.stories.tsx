@@ -41,6 +41,9 @@ export const Demo: StoryObj = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Toggle>
@@ -62,6 +65,9 @@ export const Overview: Story = {
 };
 
 export const Disabled: Story = {
+  globals: {
+    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Toggle disabled>
@@ -72,6 +78,9 @@ export const Disabled: Story = {
 
 export const InFormField: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, FormField, Text, Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -82,6 +91,7 @@ export const InFormField: Story = {
       <FormField>
         <Toggle>
           <ToggleControl />
+
           <ToggleLabel>
             General Information
           </ToggleLabel>
@@ -91,6 +101,7 @@ export const InFormField: Story = {
       <FormField>
         <Toggle>
           <ToggleControl />
+
           <ToggleLabel>
             Promotions
           </ToggleLabel>
@@ -101,6 +112,9 @@ export const InFormField: Story = {
 };
 
 export const Invalid: Story = {
+  globals: {
+    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Toggle invalid>
@@ -110,17 +124,25 @@ export const Invalid: Story = {
 };
 
 export const WithLabel: Story = {
+  globals: {
+    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Toggle>
       <ToggleControl />
 
-      <ToggleLabel>Enable dark mode</ToggleLabel>
+      <ToggleLabel>
+        Enable dark mode
+      </ToggleLabel>
     </Toggle>
   ),
 };
 
 export const WithLabels: Story = {
+  globals: {
+    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Toggle withLabels>
@@ -130,21 +152,33 @@ export const WithLabels: Story = {
 };
 
 export const AccessibilityLabel: Story = {
+  globals: {
+    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Toggle>
       <ToggleControl />
-      <ToggleLabel>Enable dark mode</ToggleLabel>
+
+      <ToggleLabel>
+        Enable dark mode
+      </ToggleLabel>
     </Toggle>
   ),
 };
 
 export const AccessibilityAriaLabel: Story = {
+  globals: {
+    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Toggle aria-label="Enable dark mode">
       <ToggleControl />
-      <ToggleLabel>Dark mode</ToggleLabel>
+
+      <ToggleLabel>
+        Dark mode
+      </ToggleLabel>
     </Toggle>
   ),
 };

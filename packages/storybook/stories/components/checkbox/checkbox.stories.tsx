@@ -58,6 +58,9 @@ export const Demo: StoryObj = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Checkbox, CheckboxControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Checkbox>
@@ -67,6 +70,9 @@ export const Default: Story = {
 };
 
 export const Disabled: Story = {
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Checkbox disabled>
@@ -81,6 +87,9 @@ export const Disabled: Story = {
 
 export const InFormField: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Checkbox, CheckboxControl, CheckboxLabel, FormField, Text } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -112,6 +121,9 @@ export const InFormField: Story = {
 };
 
 export const Group: Story = {
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <CheckboxGroup
@@ -137,6 +149,9 @@ export const Group: Story = {
 };
 
 export const Invalid: Story = {
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Checkbox invalid>
@@ -167,6 +182,9 @@ export const Overview: Story = {
 
 export const States: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>

@@ -8,6 +8,7 @@ enum SECTION {
   home = 'OVHcloud Design System',
   migrationGuide = 'Migration guide',
   reactComponents = 'React Components',
+  tools = 'Tools',
   whatsNew = 'What\'s new?',
 }
 
@@ -23,6 +24,7 @@ enum HOME_TITLE {
   migration15to16 = `${SECTION.home}/${SECTION.whatsNew}/${SECTION.migrationGuide}/15.x to 16.x`,
   migration16to17 = `${SECTION.home}/${SECTION.whatsNew}/${SECTION.migrationGuide}/16.x to 17.x`,
   migration17to18 = `${SECTION.home}/${SECTION.whatsNew}/${SECTION.migrationGuide}/17.x to 18.x`,
+  sandboxTool = `${SECTION.home}/${SECTION.tools}/Code Sandbox`,
   styleCustomization = `${SECTION.home}/${SECTION.design}/Style Customization`,
   welcome = `${SECTION.home}/Welcome`,
 }

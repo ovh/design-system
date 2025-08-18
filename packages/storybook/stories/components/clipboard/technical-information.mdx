@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsClipboard from '../../../../ods-react/src/components/clipboard/documentation/clipboard.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as ClipboardStories from './clipboard.stories';
@@ -49,20 +50,20 @@ import * as ClipboardStories from './clipboard.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ ClipboardStories.Default } sourceState="shown" />
+<OdsCanvas of={ ClipboardStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ ClipboardStories.Disabled } sourceState="shown" />
+<OdsCanvas of={ ClipboardStories.Disabled } sourceState="shown" />
 
 <Heading label="Loading" level={ 3 } />
 
-<Canvas of={ ClipboardStories.Loading } sourceState="shown" />
+<OdsCanvas of={ ClipboardStories.Loading } sourceState="shown" />
 
 <Heading label="Masked" level={ 3 } />
 
-<Canvas of={ ClipboardStories.Masked } sourceState="shown" />
+<OdsCanvas of={ ClipboardStories.Masked } sourceState="shown" />
 
 <Heading label="Custom labels" level={ 3 } />
 
-<Canvas of={ ClipboardStories.CustomLabels } sourceState="shown" />
+<OdsCanvas of={ ClipboardStories.CustomLabels } sourceState="shown" />

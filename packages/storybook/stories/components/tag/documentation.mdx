@@ -3,6 +3,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as TagStories from './tag.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -121,7 +122,7 @@ To ensure accessibility, it is important to:
 When multiple **Tags** are displayed together (e.g., a collection of selected filters or labels),
 they should be wrapped in an unordered list of items (`<ul>` and `<li>`) to ensure proper announcement by screen readers.
 
-<Canvas of={ TagStories.AccessibilityList } sourceState='shown' />
+<OdsCanvas of={ TagStories.AccessibilityList } sourceState='shown' />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This allows screen readers to announce a list with the number of items, making it clear that these **Tags** belong to a structured set.
@@ -131,7 +132,7 @@ they should be wrapped in an unordered list of items (`<ul>` and `<li>`) to ensu
 When modifying the HTML structure is not possible,
 use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role">role="list"</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role">role="listitem"</ExternalLink> to mimic list semantics.
 
-<Canvas of={ TagStories.AccessibilityAriaRoles } sourceState='shown' />
+<OdsCanvas of={ TagStories.AccessibilityAriaRoles } sourceState='shown' />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers still recognize the **Tags** as a structured list, even without native `<ul>` and `<li>` elements.
@@ -140,7 +141,7 @@ use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibili
 
 Since the **Tag** is removable, it should provide clear feedback to assistive technologies.
 
-<Canvas of={ TagStories.AccessibilityAriaLabel } sourceState='shown' />
+<OdsCanvas of={ TagStories.AccessibilityAriaLabel } sourceState='shown' />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that users know the **Tag** can be removed. Screen readers will announce the tag aria label and the button type.

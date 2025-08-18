@@ -37,6 +37,9 @@ export const Demo: Story = {
 
 export const Color: Story = {
   decorators: [(story) => <div style={{ display: 'flex', gap: '16px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { CARD_COLOR, Card } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -68,6 +71,9 @@ export const Color: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Card } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Card>
@@ -90,6 +96,9 @@ export const Overview: Story = {
 };
 
 export const AccessibilityGrouping: Story = {
+  globals: {
+    imports: `import { Card } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     layout: 'centered',
@@ -113,20 +122,23 @@ export const AccessibilityGrouping: Story = {
 };
 
 export const AccessibilityAlternativeGrouping: Story = {
+  globals: {
+    imports: `import { Card } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
   render: ({}) => (
     <div role="list" style={{ display: 'flex', gap: '16px' }}>
-        <Card role="listitem" style={{ padding: '8px' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
-          Interdum et malesuada fames ac ante ipsum primis in faucibus.
-        </Card>
-        <Card role="listitem" style={{ padding: '8px' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
-          Interdum et malesuada fames ac ante ipsum primis in faucibus.
-        </Card>
+      <Card role="listitem" style={{ padding: '8px' }}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+        Interdum et malesuada fames ac ante ipsum primis in faucibus.
+      </Card>
+      <Card role="listitem" style={{ padding: '8px' }}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+        Interdum et malesuada fames ac ante ipsum primis in faucibus.
+      </Card>
     </div>
   ),
 };

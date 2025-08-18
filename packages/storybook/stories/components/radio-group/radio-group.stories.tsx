@@ -73,6 +73,9 @@ export const Demo: StoryObj = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <RadioGroup>
@@ -98,6 +101,9 @@ export const Default: Story = {
 };
 
 export const DisabledGroup: Story = {
+  globals: {
+    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <RadioGroup disabled>
@@ -123,6 +129,9 @@ export const DisabledGroup: Story = {
 };
 
 export const DisabledItem: Story = {
+  globals: {
+    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <RadioGroup>
@@ -150,6 +159,9 @@ export const DisabledItem: Story = {
 };
 
 export const InFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -181,6 +193,9 @@ export const InFormField: Story = {
 };
 
 export const Invalid: Story = {
+  globals: {
+    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <RadioGroup
@@ -210,6 +225,9 @@ export const Invalid: Story = {
 };
 
 export const Orientation: Story = {
+  globals: {
+    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <RadioGroup orientation="horizontal">

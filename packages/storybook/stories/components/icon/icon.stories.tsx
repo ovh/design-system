@@ -231,11 +231,14 @@ export const Demo: Story = {
 };
 
 export const AccessibilityInformative: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Icon
       aria-label="home"
-      name="home"
+      name={ ICON_NAME.home }
       role="img" />
   ),
 };
@@ -296,64 +299,92 @@ export const Overview: Story = {
 };
 
 export const Decorative: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
-    <Icon name="home" />
+    <Icon name={ ICON_NAME.home } />
   ),
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
-    <Icon name="home" />
+    <Icon name={ ICON_NAME.home } />
   ),
 };
 
 export const Informative: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Icon
       aria-label="Help"
-      name="circle-question"
-      role="img"
-    />
+      name={ ICON_NAME.circleQuestion }
+      role="img" />
   ),
 };
 
 export const AccessibilityBadPracticeDecorative: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
-    <Icon name="home" />
+    <Icon name={ ICON_NAME.home } />
   ),
 };
 
 export const AccessibilityBadPracticeRating: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <label htmlFor="rating">Rating</label>
+      <label htmlFor="rating">
+        Rating
+      </label>
+
       <div id="rating">
-        <Icon name="star" tabIndex={ 0 } aria-label="one star" role="img" />
-        <Icon name="star" tabIndex={ 0 } aria-label="two star" role="img" />
-        <Icon name="star" tabIndex={ 0 } aria-label="three star" role="img" />
-        <Icon name="star" tabIndex={ 0 } aria-label="four star" role="img" />
-        <Icon name="star" tabIndex={ 0 } aria-label="five star" role="img" />
+        <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="one star" role="img" />
+        <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="two star" role="img" />
+        <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="three star" role="img" />
+        <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="four star" role="img" />
+        <Icon name={ ICON_NAME.star } tabIndex={ 0 } aria-label="five star" role="img" />
       </div>
     </>
   ),
 };
 
 export const AccessibilityRating: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <label id="rating-label" htmlFor="rating">Rating</label>
-      <div id="rating" role="radiogroup" aria-labelledby="rating-label">
-        <Icon name="star" role="radio" tabIndex={ -1 } aria-label="one star" aria-checked="false" />
-        <Icon name="star" role="radio" tabIndex={ 0 } aria-label="two star" aria-checked="true" />
-        <Icon name="star" role="radio" tabIndex={ -1 } aria-label="three star" aria-checked="false" />
-        <Icon name="star" role="radio" tabIndex={ -1 } aria-label="four star" aria-checked="false" />
-        <Icon name="star" role="radio" tabIndex={ -1 } aria-label="five star" aria-checked="false" />
+      <label
+        htmlFor="rating"
+        id="rating-label">
+        Rating
+      </label>
+
+      <div
+        aria-labelledby="rating-label"
+        id="rating"
+        role="radiogroup">
+        <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="one star" aria-checked="false" />
+        <Icon name={ ICON_NAME.star } role="radio" tabIndex={ 0 } aria-label="two star" aria-checked="true" />
+        <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="three star" aria-checked="false" />
+        <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="four star" aria-checked="false" />
+        <Icon name={ ICON_NAME.star } role="radio" tabIndex={ -1 } aria-label="five star" aria-checked="false" />
       </div>
     </>
   ),

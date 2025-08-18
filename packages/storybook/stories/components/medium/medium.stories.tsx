@@ -12,9 +12,6 @@ const meta: Meta<MediumProp> = {
   title: 'React Components/Medium',
 };
 
-const exampleAlt = 'OVHcloud logo';
-const exampleSrc = 'https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4';
-
 export default meta;
 
 export const Demo: Story = {
@@ -42,15 +39,20 @@ export const Demo: Story = {
     },
   }),
   args: {
-    src: exampleSrc,
+    src: 'https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4',
   },
 };
 
 export const Caption: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, Medium, Text } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <figure>
-      <Medium alt={ exampleAlt } src={ exampleSrc } />
+      <Medium
+        alt="OVHcloud logo"
+        src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
 
       <figcaption>
         <Text preset={ TEXT_PRESET.caption }>
@@ -62,9 +64,14 @@ export const Caption: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Medium } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
-    <Medium alt={ exampleAlt } src={ exampleSrc } />
+    <Medium
+      alt="OVHcloud logo"
+      src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
   ),
 };
 
@@ -74,20 +81,34 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <Medium alt={ exampleAlt } src={ exampleSrc } />
+    <Medium
+      alt="OVHcloud logo"
+      src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
   ),
 };
 
 export const Height: Story = {
+  globals: {
+    imports: `import { Medium } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
-    <Medium alt={ exampleAlt } height={ 20 } src={ exampleSrc } />
+    <Medium
+      alt="OVHcloud logo"
+      height={ 20 }
+      src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
   ),
 };
 
 export const Width: Story = {
+  globals: {
+    imports: `import { Medium } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
-    <Medium alt={ exampleAlt } src={ exampleSrc } width={300} />
+    <Medium
+      alt="OVHcloud logo"
+      src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4"
+      width={ 300 } />
   ),
 };

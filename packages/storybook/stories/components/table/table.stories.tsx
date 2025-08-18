@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React, { type ReactElement } from 'react';
-import { TABLE_SIZES, TABLE_VARIANTS, Table, type TableProp } from '../../../../ods-react/src/components/table/src';
-import { Text } from '../../../../ods-react/src/components/text/src';
+import React from 'react';
+import { TABLE_SIZE, TABLE_SIZES, TABLE_VARIANT, TABLE_VARIANTS, Table, type TableProp } from '../../../../ods-react/src/components/table/src';
+import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -14,11 +14,11 @@ const meta: Meta<TableProp> = {
 
 export default meta;
 
-function renderExampleTable(props?: TableProp, customCaption?: () => ReactElement): ReactElement {
-  return (
-    <Table { ...props }>
+export const Demo: Story = {
+  render: (prop) => (
+    <Table { ...prop }>
       <caption>
-        { customCaption ? customCaption() : 'Front-end web developer course 2021' }
+        Front-end web developer course 2021
       </caption>
       <thead>
       <tr>
@@ -50,11 +50,7 @@ function renderExampleTable(props?: TableProp, customCaption?: () => ReactElemen
       </tr>
       </tbody>
     </Table>
-  );
-}
-
-export const Demo: Story = {
-  render: ({ size, variant }) => renderExampleTable({ size, variant }),
+  ),
   argTypes: orderControls({
     size: {
       table: {
@@ -76,13 +72,91 @@ export const Demo: Story = {
 };
 
 export const CustomCaption: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, Table, Text } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
-  render: ({}) => renderExampleTable({}, () => <Text preset="caption">Front-end web developer course 2021</Text>),
+  render: ({}) => (
+    <Table>
+      <caption>
+        <Text preset={ TEXT_PRESET.caption }>
+          Front-end web developer course 2021
+        </Text>
+      </caption>
+      <thead>
+      <tr>
+        <th scope="col">Person</th>
+        <th scope="col">Most interest in</th>
+        <th scope="col">Age</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Chris</th>
+        <td>HTML tables</td>
+        <td>22</td>
+      </tr>
+      <tr>
+        <th scope="row">Dennis</th>
+        <td>Web accessibility</td>
+        <td>45</td>
+      </tr>
+      <tr>
+        <th scope="row">Sarah</th>
+        <td>JavaScript frameworks</td>
+        <td>29</td>
+      </tr>
+      <tr>
+        <th scope="row">Karen</th>
+        <td>Web performance</td>
+        <td>36</td>
+      </tr>
+      </tbody>
+    </Table>
+  ),
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Table } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
-  render: ({}) => renderExampleTable(),
+  render: ({}) => (
+    <Table>
+      <caption>
+        Front-end web developer course 2021
+      </caption>
+      <thead>
+      <tr>
+        <th scope="col">Person</th>
+        <th scope="col">Most interest in</th>
+        <th scope="col">Age</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Chris</th>
+        <td>HTML tables</td>
+        <td>22</td>
+      </tr>
+      <tr>
+        <th scope="row">Dennis</th>
+        <td>Web accessibility</td>
+        <td>45</td>
+      </tr>
+      <tr>
+        <th scope="row">Sarah</th>
+        <td>JavaScript frameworks</td>
+        <td>29</td>
+      </tr>
+      <tr>
+        <th scope="row">Karen</th>
+        <td>Web performance</td>
+        <td>36</td>
+      </tr>
+      </tbody>
+    </Table>
+  ),
 };
 
 export const Overview: Story = {
@@ -90,7 +164,42 @@ export const Overview: Story = {
     layout: 'centered',
   },
   tags: ['!dev'],
-  render: ({}) => renderExampleTable(),
+  render: ({}) => (
+    <Table>
+      <caption>
+        Front-end web developer course 2021
+      </caption>
+      <thead>
+      <tr>
+        <th scope="col">Person</th>
+        <th scope="col">Most interest in</th>
+        <th scope="col">Age</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Chris</th>
+        <td>HTML tables</td>
+        <td>22</td>
+      </tr>
+      <tr>
+        <th scope="row">Dennis</th>
+        <td>Web accessibility</td>
+        <td>45</td>
+      </tr>
+      <tr>
+        <th scope="row">Sarah</th>
+        <td>JavaScript frameworks</td>
+        <td>29</td>
+      </tr>
+      <tr>
+        <th scope="row">Karen</th>
+        <td>Web performance</td>
+        <td>36</td>
+      </tr>
+      </tbody>
+    </Table>
+  ),
 }
 
 export const Size: Story = {
@@ -103,12 +212,116 @@ export const Size: Story = {
       { story() }
     </div>
   )],
+  globals: {
+    imports: `import { TABLE_SIZE, Table } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      { renderExampleTable({ size: 'sm' }) }
-      { renderExampleTable({ size: 'md' }) }
-      { renderExampleTable({ size: 'lg' }) }
+      <Table size={ TABLE_SIZE.sm }>
+        <caption>
+          Front-end web developer course 2021
+        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </Table>
+
+      <Table size={ TABLE_SIZE.md }>
+        <caption>
+          Front-end web developer course 2021
+        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </Table>
+
+      <Table size={ TABLE_SIZE.lg }>
+        <caption>
+          Front-end web developer course 2021
+        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </Table>
     </>
   ),
 };
@@ -123,11 +336,81 @@ export const Variant: Story = {
       { story() }
     </div>
   )],
+  globals: {
+    imports: `import { TABLE_VARIANT, Table } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      { renderExampleTable({ variant: 'default' }) }
-      { renderExampleTable({ variant: 'striped' }) }
+      <Table variant={ TABLE_VARIANT.default }>
+        <caption>
+          Front-end web developer course 2021
+        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </Table>
+
+      <Table variant={ TABLE_VARIANT.striped }>
+        <caption>
+          Front-end web developer course 2021
+        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </Table>
     </>
   ),
 };

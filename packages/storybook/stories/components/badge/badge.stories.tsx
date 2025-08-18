@@ -48,6 +48,9 @@ export const Demo: Story = {
 
 export const Color: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -66,6 +69,9 @@ export const Color: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Badge>
@@ -87,6 +93,9 @@ export const Overview: Story = {
 };
 
 export const Size: Story = {
+  globals: {
+    imports: `import { BADGE_SIZE, Badge } from '@ovhcloud/ods-react';`,
+  },
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   tags: ['!dev'],
   render: ({}) => (
@@ -99,22 +108,31 @@ export const Size: Story = {
 };
 
 export const AccessibilityAriaLabel: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Badge, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Badge>
-      <Icon name={ICON_NAME.tag} aria-label="Promotion" role="img"></Icon>
+      <Icon
+        aria-label="Promotion"
+        name={ ICON_NAME.tag }
+        role="img" />
     </Badge>
   ),
 };
 
 export const AccessibilityWithTooltip: Story = {
+  globals: {
+    imports: `import { BADGE_COLOR, ICON_NAME, Badge, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Badge color={ BADGE_COLOR.promotion }
-               aria-labelledby="tooltip-a11y"
-        >
+        <Badge
+          aria-labelledby="tooltip-a11y"
+          color={ BADGE_COLOR.promotion }>
           <Icon name={ ICON_NAME.tag } />
         </Badge>
       </TooltipTrigger>
@@ -127,6 +145,9 @@ export const AccessibilityWithTooltip: Story = {
 };
 
 export const AccessibilityGrouping: Story = {
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <ul style={{ display: 'flex', flexFlow: 'row', gap: '8px', margin: 0, padding: 0, listStyle: 'none' }}>
@@ -145,10 +166,14 @@ export const AccessibilityGrouping: Story = {
 };
 
 export const AccessibilityAlternativeGrouping: Story = {
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
-    <div role="list" style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center',
-    }}>
+    <div
+      role="list"
+      style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
       <Badge role="listitem">
         Item 1
       </Badge>

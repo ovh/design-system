@@ -73,6 +73,9 @@ export const Demo: StoryObj = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { FormField, Textarea } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -82,6 +85,9 @@ export const Default: Story = {
 };
 
 export const Error: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldError, Textarea } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField invalid>
@@ -95,6 +101,9 @@ export const Error: Story = {
 };
 
 export const Helper: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, FormField, FormFieldHelper, Text, Textarea } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -110,6 +119,9 @@ export const Helper: Story = {
 };
 
 export const Label: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -164,6 +176,9 @@ export const Overview: Story = {
 };
 
 export const AccessibilityLabel: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldHelper, FormFieldLabel, Input } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>

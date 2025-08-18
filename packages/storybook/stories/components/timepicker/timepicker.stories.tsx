@@ -71,6 +71,9 @@ export const Demo: StoryObj = {
 };
 
 export const AccessibilityLabel: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -88,6 +91,9 @@ export const AccessibilityLabel: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Timepicker, TimepickerControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Timepicker>
@@ -98,6 +104,9 @@ export const Default: Story = {
 
 export const Disabled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -115,6 +124,9 @@ export const Disabled: Story = {
 };
 
 export const InFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -145,6 +157,9 @@ export const Overview: Story = {
 
 export const Readonly: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -163,10 +178,14 @@ export const Readonly: Story = {
 
 export const TimezoneList: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
       <span>All timezones</span>
+
       <Timepicker>
         <TimepickerControl />
 
@@ -174,6 +193,7 @@ export const TimezoneList: Story = {
       </Timepicker>
 
       <span>Subset of timezone</span>
+
       <Timepicker timezones={ ['UTC-10', 'UTC+0', 'UTC+10'] }>
         <TimepickerControl />
 
@@ -185,6 +205,9 @@ export const TimezoneList: Story = {
 
 export const WithSeconds: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>

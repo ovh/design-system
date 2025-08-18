@@ -68,6 +68,9 @@ export const Demo: Story = {
 
 export const Color: StoryObj = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { BUTTON_COLOR, Button } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -82,6 +85,9 @@ export const Color: StoryObj = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Button>
@@ -91,6 +97,9 @@ export const Default: Story = {
 };
 
 export const Loading: StoryObj = {
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Button loading={ true }>
@@ -113,6 +122,9 @@ export const Overview: Story = {
 
 export const Size: StoryObj = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { BUTTON_SIZE, Button } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -125,6 +137,9 @@ export const Size: StoryObj = {
 
 export const Variant: StoryObj = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { BUTTON_VARIANT, Button } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -136,6 +151,9 @@ export const Variant: StoryObj = {
 };
 
 export const AccessibilityExplicitTextContent: StoryObj = {
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Button>
@@ -145,30 +163,39 @@ export const AccessibilityExplicitTextContent: StoryObj = {
 }
 
 export const AccessibilityIconOnly: StoryObj = {
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Button aria-label='Clear'>
-        <Icon name={ICON_NAME.xmark} />
+        <Icon name={ ICON_NAME.xmark } />
     </Button>
   ),
 }
 
 export const AccessibilityBadPracticeIconOnly: StoryObj = {
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Button>
-      <Icon name={ICON_NAME.xmark} />
+      <Icon name={ ICON_NAME.xmark } />
     </Button>
   ),
 }
 
 export const AccessibilityLabelledBy: StoryObj = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
       <Button aria-labelledby="filter-btn">
-        <Icon name={ICON_NAME.filter} />
+        <Icon name={ ICON_NAME.filter } />
       </Button>
       <span id="filter-btn">Filter your search results</span>
     </>
@@ -177,11 +204,14 @@ export const AccessibilityLabelledBy: StoryObj = {
 
 export const AccessibilityBadPracticeLabelledBy: StoryObj = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
       <Button>
-        <Icon name={ICON_NAME.filter} />
+        <Icon name={ ICON_NAME.filter } />
       </Button>
       <span>Filter your search results</span>
     </>
@@ -189,6 +219,10 @@ export const AccessibilityBadPracticeLabelledBy: StoryObj = {
 }
 
 export const AccessibilityBadPracticesRoleStatus: Story = {
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -208,9 +242,7 @@ export const AccessibilityBadPracticesRoleStatus: Story = {
           Copy
         </Button>
 
-        <span
-          style={{ marginLeft: '1rem' }}
-        >
+        <span style={{ marginLeft: '1rem' }}>
           { message }
         </span>
       </>
@@ -219,6 +251,10 @@ export const AccessibilityBadPracticesRoleStatus: Story = {
 };
 
 export const AccessibilityRoleStatus: Story = {
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -239,10 +275,9 @@ export const AccessibilityRoleStatus: Story = {
         </Button>
 
         <span
-          role="status"
           aria-live="polite"
-          style={{ marginLeft: '1rem' }}
-        >
+          role="status"
+          style={{ marginLeft: '1rem' }}>
           { message }
         </span>
       </>
@@ -251,6 +286,10 @@ export const AccessibilityRoleStatus: Story = {
 };
 
 export const AccessibilityBadPracticesRoleAlert: Story = {
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -270,9 +309,7 @@ export const AccessibilityBadPracticesRoleAlert: Story = {
           Save
         </Button>
 
-        <span
-          style={{ marginLeft: '1rem', color: 'red' }}
-        >
+        <span style={{ marginLeft: '1rem', color: 'red' }}>
           { error }
         </span>
       </>
@@ -282,6 +319,10 @@ export const AccessibilityBadPracticesRoleAlert: Story = {
 
 
 export const AccessibilityRoleAlert: Story = {
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -303,8 +344,7 @@ export const AccessibilityRoleAlert: Story = {
 
         <span
           role="alert"
-          style={{ marginLeft: '1rem', color: 'red' }}
-        >
+          style={{ marginLeft: '1rem', color: 'red' }}>
           { error }
         </span>
       </>

@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsAccordion from '../../../../ods-react/src/components/accordion/documentation/accordion.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as AccordionStories from './accordion.stories';
@@ -56,20 +57,20 @@ import * as AccordionStories from './accordion.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ AccordionStories.Default } sourceState="shown" />
+<OdsCanvas of={ AccordionStories.Default } sourceState="shown" />
 
 <Heading label="Multiple" level={ 3 } />
 
-<Canvas of={ AccordionStories.Multiple } sourceState="shown" />
+<OdsCanvas of={ AccordionStories.Multiple } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ AccordionStories.Disabled } sourceState="shown" />
+<OdsCanvas of={ AccordionStories.Disabled } sourceState="shown" />
 
 <Heading label="ItemDisabled" level={ 3 } />
 
-<Canvas of={ AccordionStories.ItemDisabled } sourceState="shown" />
+<OdsCanvas of={ AccordionStories.ItemDisabled } sourceState="shown" />
 
 <Heading label="Controlled" level={ 3 } />
 
-<Canvas of={ AccordionStories.Controlled } sourceState="shown" />
+<OdsCanvas of={ AccordionStories.Controlled } sourceState="shown" />

@@ -3,6 +3,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as DatepickerStories from './datepicker.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
@@ -159,22 +160,25 @@ Pressing `Tab` or `Shift` + `Tab` moves focus through dropdown controls when ope
 To ensure proper accessibility, the **Datepicker** must be correctly labeled, provide clear guidance on date format and meaningful context when a clearable button is used.
 
 <Heading label="Always provide an explicit label" level={ 3 } />
+
 Every **Datepicker** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose
 using either **FormField** or a native label tag.
 
-<Canvas of={ DatepickerStories.AccessibilityFormField } sourceState="shown" />
+<OdsCanvas of={ DatepickerStories.AccessibilityFormField } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} />  Screen readers will announce the label, the field and its content.
 
 <Heading label="Provide guidance on date format" level={ 3 } />
+
 Since screen readers can only interact with the **Datepicker** input field, it’s important to provide guidance on the expected date format to ensure correct input.
 
-<Canvas of={ DatepickerStories.AccessibilityDateFormat } sourceState="shown" />
+<OdsCanvas of={ DatepickerStories.AccessibilityDateFormat } sourceState="shown" />
+
 <Icon name={ ICON_NAME.circleCheck }
        style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the field, its content and the helper.
 
-<Canvas of={ DatepickerStories.AccessibilityI18n } sourceState="shown" />
+<OdsCanvas of={ DatepickerStories.AccessibilityI18n } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the field, its content and custom label of focused action.

@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsText from '../../../../ods-react/src/components/text/documentation/text.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TextStories from './text.stories';
@@ -35,7 +36,7 @@ import * as TextStories from './text.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ TextStories.Default } sourceState="shown" />
+<OdsCanvas of={ TextStories.Default } sourceState="shown" />
 
 <Heading label="Preset" level={ 3 } />
 
@@ -43,12 +44,12 @@ import * as TextStories from './text.stories';
 
 For actual `<caption>` (used in a table) or `<figcaption>` (image), use the native tag using either an OdsText inside of it or the Saas mixin.
 
-<Canvas of={ TextStories.Preset } sourceState="shown" />
+<OdsCanvas of={ TextStories.Preset } sourceState="shown" />
 
 <Heading label="Caption preset in <table>" level={ 3 } />
 
-<Canvas of={ TextStories.TableCaption } sourceState="shown" />
+<OdsCanvas of={ TextStories.TableCaption } sourceState="shown" />
 
 <Heading label="Caption preset in <figcaption>" level={ 3 } />
 
-<Canvas of={ TextStories.FigCaption } sourceState="shown" />
+<OdsCanvas of={ TextStories.FigCaption } sourceState="shown" />

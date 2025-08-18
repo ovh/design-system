@@ -73,6 +73,9 @@ export const Demo: Story = {
 };
 
 export const Collapsed: Story = {
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Breadcrumb>
@@ -122,6 +125,9 @@ export const Collapsed: Story = {
 };
 
 export const CustomAfterBeforeCollapse: Story = {
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Breadcrumb
@@ -173,6 +179,9 @@ export const CustomAfterBeforeCollapse: Story = {
 };
 
 export const CustomCollapseThreshold: Story = {
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Breadcrumb collapseThreshold={ 7 }>
@@ -222,6 +231,9 @@ export const CustomCollapseThreshold: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Breadcrumb>
@@ -247,6 +259,9 @@ export const Default: Story = {
 };
 
 export const NoCollapse: Story = {
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Breadcrumb noCollapse>
@@ -325,6 +340,9 @@ export const Overview: Story = {
 
 
 export const AccessibilityWithAriaLabel: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Icon } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     layout: 'centered',

@@ -1,7 +1,7 @@
-import { BUTTON_COLOR, BUTTON_VARIANT, Divider } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Button } from '../../../../ods-react/src/components/button/src';
+import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
+import { Divider } from '../../../../ods-react/src/components/divider/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { POPOVER_POSITIONS, Popover, type PopoverProp, PopoverContent, type PopoverContentProp, PopoverTrigger } from '../../../../ods-react/src/components/popover/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
@@ -68,6 +68,10 @@ export const Demo: StoryObj = {
 
 export const Controlled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -102,6 +106,9 @@ export const Controlled: Story = {
 };
 
 export const CustomTrigger: Story = {
+  globals: {
+    imports: `import { Button, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Popover>
@@ -119,6 +126,9 @@ export const CustomTrigger: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Popover>
@@ -145,6 +155,9 @@ export const Grid: StoryObj = {
       { story() }
     </div>
   )],
+  globals: {
+    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -246,21 +259,46 @@ export const Overview: Story = {
 };
 
 export const AccessibilityWithMenu: Story = {
+  globals: {
+    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, ICON_NAME, Button, Divider, Icon, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Popover>
-      <PopoverTrigger aria-haspopup="menu" asChild>
+      <PopoverTrigger
+        aria-haspopup="menu"
+        asChild>
         <Button>
-          <Icon name={ICON_NAME.ellipsisVertical} />
+          <Icon name={ ICON_NAME.ellipsisVertical } />
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent withArrow={true} aria-label="Profile menu">
-        <div role="menu" style={{ display: 'flex', flexDirection: 'column' }}>
-          <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Information</Button>
-          <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>Notifications</Button>
+      <PopoverContent
+        aria-label="Profile menu"
+        withArrow>
+        <div
+          role="menu"
+          style={{ display: 'flex', flexDirection: 'column' }}>
+          <Button
+            role="menuitem"
+            variant={ BUTTON_VARIANT.ghost }>
+            Information
+          </Button>
+
+          <Button
+            role="menuitem"
+            variant={ BUTTON_VARIANT.ghost }>
+            Notifications
+          </Button>
+
           <Divider style={{ width: '100%' }} />
-          <Button color={BUTTON_COLOR.critical} role="menuitem" variant={BUTTON_VARIANT.ghost}>Sign out</Button>
+
+          <Button
+            color={ BUTTON_COLOR.critical }
+            role="menuitem"
+            variant={ BUTTON_VARIANT.ghost }>
+            Sign out
+          </Button>
         </div>
       </PopoverContent>
     </Popover>

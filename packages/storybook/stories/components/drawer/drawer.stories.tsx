@@ -80,6 +80,10 @@ export const Demo: StoryObj = {
 };
 
 export const Controlled: Story = {
+  globals: {
+    imports: `import { Button, Drawer, DrawerBody, DrawerContent } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -118,6 +122,9 @@ export const Controlled: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Drawer>
@@ -161,6 +168,9 @@ export const Overview: Story = {
 export const Position: Story = {
   decorators: [(story) =>
     <div style={{ display: 'flex', flexFlow: 'row', alignItems: 'center', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { DRAWER_POSITION, Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -171,7 +181,7 @@ export const Position: Story = {
         </Button>
       </DrawerTrigger>
 
-      <DrawerContent position={DRAWER_POSITION.top}>
+      <DrawerContent position={ DRAWER_POSITION.top }>
         <DrawerBody>
           Top drawer content
         </DrawerBody>
@@ -185,7 +195,7 @@ export const Position: Story = {
         </Button>
       </DrawerTrigger>
 
-      <DrawerContent position={DRAWER_POSITION.left}>
+      <DrawerContent position={ DRAWER_POSITION.left }>
         <DrawerBody>
           Left drawer content
         </DrawerBody>
@@ -199,7 +209,7 @@ export const Position: Story = {
         </Button>
       </DrawerTrigger>
 
-      <DrawerContent position={DRAWER_POSITION.right}>
+      <DrawerContent position={ DRAWER_POSITION.right }>
         <DrawerBody>
           Right drawer content
         </DrawerBody>
@@ -213,7 +223,7 @@ export const Position: Story = {
         </Button>
       </DrawerTrigger>
 
-      <DrawerContent position={DRAWER_POSITION.bottom}>
+      <DrawerContent position={ DRAWER_POSITION.bottom }>
         <DrawerBody>
           Bottom drawer content
         </DrawerBody>
@@ -225,6 +235,9 @@ export const Position: Story = {
 
 
 export const AccessibilityAriaLabelledBy: Story = {
+  globals: {
+    imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Drawer>
@@ -234,7 +247,9 @@ export const AccessibilityAriaLabelledBy: Story = {
         </Button>
       </DrawerTrigger>
 
-      <DrawerContent aria-describedby="drawer-content" aria-labelledby="drawer-title">
+      <DrawerContent
+        aria-describedby="drawer-content"
+        aria-labelledby="drawer-title">
         <DrawerBody>
           <h2 id="drawer-title">
             My drawer
@@ -250,6 +265,9 @@ export const AccessibilityAriaLabelledBy: Story = {
 };
 
 export const AccessibilityAriaLabel: Story = {
+  globals: {
+    imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Drawer>
@@ -259,7 +277,9 @@ export const AccessibilityAriaLabel: Story = {
         </Button>
       </DrawerTrigger>
 
-      <DrawerContent aria-describedby="drawer-content" aria-label="My drawer">
+      <DrawerContent
+        aria-describedby="drawer-content"
+        aria-label="My drawer">
         <DrawerBody id="drawer-content">
           The drawer content
         </DrawerBody>

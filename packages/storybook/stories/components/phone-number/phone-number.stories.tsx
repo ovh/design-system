@@ -89,6 +89,9 @@ export const Demo: StoryObj = {
 };
 
 export const AccessibilityLabel: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -107,6 +110,9 @@ export const AccessibilityLabel: Story = {
 
 export const Clearable: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -125,10 +131,14 @@ export const Clearable: Story = {
 
 export const CountryList: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
       <span>All countries</span>
+
       <PhoneNumber>
         <PhoneNumberCountryList />
 
@@ -136,6 +146,7 @@ export const CountryList: Story = {
       </PhoneNumber>
 
       <span>Subset of countries</span>
+
       <PhoneNumber countries={ ['de', 'fr', 'gb', 'it'] }>
         <PhoneNumberCountryList />
 
@@ -146,6 +157,9 @@ export const CountryList: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <PhoneNumber>
@@ -156,6 +170,9 @@ export const Default: Story = {
 
 export const Disabled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -173,6 +190,9 @@ export const Disabled: Story = {
 };
 
 export const InFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -189,6 +209,9 @@ export const InFormField: Story = {
 
 export const Loading: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -207,6 +230,9 @@ export const Loading: Story = {
 
 export const Locale: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -243,6 +269,9 @@ export const Overview: Story = {
 
 export const Readonly: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -260,6 +289,9 @@ export const Readonly: Story = {
 };
 
 export const AccessibilityFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -277,6 +309,9 @@ export const AccessibilityFormField: Story = {
 };
 
 export const AccessibilityI18n: Story = {
+  globals: {
+    imports: `import { INPUT_I18N, FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -288,6 +323,7 @@ export const AccessibilityI18n: Story = {
       <FormFieldLabel>
         Phone number:
       </FormFieldLabel>
+
       <PhoneNumber
         country="fr"
         defaultValue="06 01 02 03 04"

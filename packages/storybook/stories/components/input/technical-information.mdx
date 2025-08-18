@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsInput from '../../../../ods-react/src/components/input/documentation/input.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -37,42 +38,42 @@ import * as InputStories from './input.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ InputStories.Default } sourceState="shown" />
+<OdsCanvas of={ InputStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ InputStories.Disabled } sourceState="shown" />
+<OdsCanvas of={ InputStories.Disabled } sourceState="shown" />
 
 <Heading label="Readonly" level={ 3 } />
 
-<Canvas of={ InputStories.ReadOnly } sourceState="shown" />
+<OdsCanvas of={ InputStories.ReadOnly } sourceState="shown" />
 
 <Heading label="Clearable" level={ 3 } />
 
-<Canvas of={ InputStories.Clearable } sourceState="shown" />
+<OdsCanvas of={ InputStories.Clearable } sourceState="shown" />
 
 <Heading label="Loading" level={ 3 } />
 
-<Canvas of={ InputStories.Loading } sourceState="shown" />
+<OdsCanvas of={ InputStories.Loading } sourceState="shown" />
 
 <Heading label="Masked" level={ 3 } />
 
-<Canvas of={ InputStories.Masked } sourceState="shown" />
+<OdsCanvas of={ InputStories.Masked } sourceState="shown" />
 
 <Heading label="Types" level={ 3 } />
 
-<Canvas of={ InputStories.Types } sourceState="shown" />
+<OdsCanvas of={ InputStories.Types } sourceState="shown" />
 
 <Heading label="Floating number" level={ 3 } />
 
-<Canvas of={ InputStories.FloatingNumber } sourceState="shown" />
+<OdsCanvas of={ InputStories.FloatingNumber } sourceState="shown" />
 
 <Heading label="Datalist" level={ 3 } />
 
-<Canvas of={ InputStories.Datalist } sourceState="shown" />
+<OdsCanvas of={ InputStories.Datalist } sourceState="shown" />
 
 <Heading label="Form field" level={ 3 }>
   <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
 </Heading>
 
-<Canvas of={ InputStories.InFormField } sourceState="shown" />
+<OdsCanvas of={ InputStories.InFormField } sourceState="shown" />

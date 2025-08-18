@@ -3,11 +3,10 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as MessageStories from './message.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
-import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
-import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ MessageStories } name="Documentation" />
 
@@ -117,17 +116,18 @@ Pressing `Shift` + `Tab` moves focus to the previous interactive element.
 
 When displaying multiple **Messages** together, they should be wrapped within an unordered list of items (`<ul>` and `<li>`) to ensure a proper announcement by screen readers.
 
-<Canvas of={ MessageStories.AccessibilityGrouping } sourceState="shown" />
+<OdsCanvas of={ MessageStories.AccessibilityGrouping } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This structure ensures that assistive technologies announce **Messages** as a list, rather than reading them as separate, unrelated announcements.
+
 Screen readers will announce the list, the number of items and the **Messages** content.
 
 <Heading label="Alternative approach with ARIA roles" level={ 3 } />
 
 When modifying the HTML structure is not possible, use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role">role="list"</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role">role="listitem"</ExternalLink> to mimic list semantics.
 
-<Canvas of={ MessageStories.AccessibilityAlternativeGrouping } sourceState="shown" />
+<OdsCanvas of={ MessageStories.AccessibilityAlternativeGrouping } sourceState="shown" />
 
 <Heading label="Setting the container ARIA role" level={ 3 } />
 
@@ -137,7 +137,7 @@ technologies can announce the content correctly.
 If you're adding a critical **Message**, use `role="alert"`.
 For non-critical **Messages** (e.g., info, success, warning), use `role="status"`.
 
-<Canvas of={ MessageStories.AccessibilityRoles } sourceState="shown" />
+<OdsCanvas of={ MessageStories.AccessibilityRoles } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers announce the **Message** at the appropriate time without interrupting.

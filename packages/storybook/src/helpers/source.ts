@@ -4,6 +4,16 @@ type ParameterDocSourceConfig = {
   type: string,
 }
 
+function extractStoryRenderSourceCode(code: string): string {
+  const matches = [...code.matchAll(/render: \({[\w\s,]*}\) => {?([.\s\S]*)}?\n}$/gm)];
+
+  if (matches.length && matches[0].length >= 2) {
+    return matches[0][1];
+  }
+
+  return code;
+}
+
 /**
  * Storybook does not always render React code correctly (see https://github.com/storybookjs/storybook/issues/23366)
  * For example, when:
@@ -22,19 +32,12 @@ type ParameterDocSourceConfig = {
 function staticSourceRenderConfig(): ParameterDocSourceConfig {
   return {
     format: 'dedent',
-    transform: (code: string) => {
-      const matches = [...code.matchAll(/render: \({[\w\s,]*}\) => {?([.\s\S]*)}?\n}$/gm)];
-
-      if (matches.length && matches[0].length >= 2) {
-        return matches[0][1];
-      }
-
-      return code;
-    },
+    transform: extractStoryRenderSourceCode,
     type: 'code',
   };
 }
 
 export {
+  extractStoryRenderSourceCode,
   staticSourceRenderConfig,
 };

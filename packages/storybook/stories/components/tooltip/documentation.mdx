@@ -1,9 +1,10 @@
 import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
 import { Canvas, Meta } from '@storybook/blocks';
-import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import * as TooltipStories from './tooltip.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
@@ -120,7 +121,7 @@ You should set a minimal **Tooltip Trigger** height to at least `24px` to provid
 
 If your UI includes an unlabeled or ambiguous element, consider attaching a **Tooltip** that explains its purpose.
 
-<Canvas of={TooltipStories.AccessibilityTooltip} sourceState="shown" />
+<OdsCanvas of={ TooltipStories.AccessibilityTooltip } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screens will announce the tooltip information.

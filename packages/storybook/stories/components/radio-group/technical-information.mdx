@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsRadioGroup from '../../../../ods-react/src/components/radio-group/documentation/radio-group.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -58,24 +59,24 @@ import * as RadioGroupStories from './radio-group.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ RadioGroupStories.Default } sourceState="shown" />
+<OdsCanvas of={ RadioGroupStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ RadioGroupStories.DisabledGroup } sourceState="shown" />
+<OdsCanvas of={ RadioGroupStories.DisabledGroup } sourceState="shown" />
 
-<Canvas of={ RadioGroupStories.DisabledItem } sourceState="shown" />
+<OdsCanvas of={ RadioGroupStories.DisabledItem } sourceState="shown" />
 
 <Heading label="Invalid" level={ 3 } />
 
-<Canvas of={ RadioGroupStories.Invalid } sourceState="shown" />
+<OdsCanvas of={ RadioGroupStories.Invalid } sourceState="shown" />
 
 <Heading label="Orientation" level={ 3 } />
 
-<Canvas of={ RadioGroupStories.Orientation } sourceState="shown" />
+<OdsCanvas of={ RadioGroupStories.Orientation } sourceState="shown" />
 
 <Heading label="Form field" level={ 3 }>
   <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
 </Heading>
 
-<Canvas of={ RadioGroupStories.InFormField } sourceState="shown" />
+<OdsCanvas of={ RadioGroupStories.InFormField } sourceState="shown" />

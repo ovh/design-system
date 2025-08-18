@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { DIVIDER_COLOR, DIVIDER_COLORS, DIVIDER_SPACINGS, Divider, type DividerProp } from '../../../../ods-react/src/components/divider/src';
+import { DIVIDER_COLOR, DIVIDER_COLORS, DIVIDER_SPACING, DIVIDER_SPACINGS, Divider, type DividerProp } from '../../../../ods-react/src/components/divider/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -35,6 +35,9 @@ export const Demo: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Divider } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Divider />
@@ -56,6 +59,9 @@ export const Overview: Story = {
 };
 
 export const Color: Story = {
+  globals: {
+    imports: `import { DIVIDER_COLOR, Divider } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -66,13 +72,24 @@ export const Color: Story = {
 };
 
 export const Spacing: Story = {
+  globals: {
+    imports: `import { DIVIDER_SPACING, Divider } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Divider spacing="0" />
-      <Divider spacing="2" />
-      <Divider spacing="4" />
-      <Divider spacing="6" />
+      <Divider spacing={ DIVIDER_SPACING._0 } />
+      <Divider spacing={ DIVIDER_SPACING._2 } />
+      <Divider spacing={ DIVIDER_SPACING._4 } />
+      <Divider spacing={ DIVIDER_SPACING._6 } />
+      <Divider spacing={ DIVIDER_SPACING._8 } />
+      <Divider spacing={ DIVIDER_SPACING._12 } />
+      <Divider spacing={ DIVIDER_SPACING._16 } />
+      <Divider spacing={ DIVIDER_SPACING._24 } />
+      <Divider spacing={ DIVIDER_SPACING._32 } />
+      <Divider spacing={ DIVIDER_SPACING._40 } />
+      <Divider spacing={ DIVIDER_SPACING._48 } />
+      <Divider spacing={ DIVIDER_SPACING._64 } />
     </>
   ),
 };

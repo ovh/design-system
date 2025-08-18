@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsSpinner from '../../../../ods-react/src/components/spinner/documentation/spinner.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as SpinnerStories from './spinner.stories';
@@ -35,12 +36,12 @@ import * as SpinnerStories from './spinner.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ SpinnerStories.Default } sourceState="shown" />
+<OdsCanvas of={ SpinnerStories.Default } sourceState="shown" />
 
 <Heading label="Color" level={ 3 } />
 
-<Canvas of={ SpinnerStories.Color } sourceState="shown" />
+<OdsCanvas of={ SpinnerStories.Color } sourceState="shown" />
 
 <Heading label="Size" level={ 3 } />
 
-<Canvas of={ SpinnerStories.Size } sourceState="shown" />
+<OdsCanvas of={ SpinnerStories.Size } sourceState="shown" />

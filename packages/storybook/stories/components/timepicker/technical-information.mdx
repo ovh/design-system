@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsTimepicker from '../../../../ods-react/src/components/timepicker/documentation/timepicker.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -51,19 +52,19 @@ import * as TimepickerStories from './timepicker.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ TimepickerStories.Default } sourceState="shown" />
+<OdsCanvas of={ TimepickerStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<Canvas of={ TimepickerStories.Disabled } sourceState="shown" />
+<OdsCanvas of={ TimepickerStories.Disabled } sourceState="shown" />
 
 <Heading label="Readonly" level={ 3 } />
 
-<Canvas of={ TimepickerStories.Readonly } sourceState="shown" />
+<OdsCanvas of={ TimepickerStories.Readonly } sourceState="shown" />
 
 <Heading label="With seconds" level={ 3 } />
 
-<Canvas of={ TimepickerStories.WithSeconds } sourceState="shown" />
+<OdsCanvas of={ TimepickerStories.WithSeconds } sourceState="shown" />
 
 <Heading label="Timezone list" level={ 3 } />
 
@@ -73,10 +74,10 @@ By default, the list use the `all` preset that displays all supported timezones.
 
 For further explanation about timezone strategy, see <StorybookLink kind={ REACT_COMPONENTS_TITLE.timepicker } story={ STORY.documentation }>the timezone behavior documentation</StorybookLink>.
 
-<Canvas of={ TimepickerStories.TimezoneList } sourceState="shown" />
+<OdsCanvas of={ TimepickerStories.TimezoneList } sourceState="shown" />
 
 <Heading label="Form field" level={ 3 }>
   <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
 </Heading>
 
-<Canvas of={ TimepickerStories.InFormField } sourceState="shown" />
+<OdsCanvas of={ TimepickerStories.InFormField } sourceState="shown" />

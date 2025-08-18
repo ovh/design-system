@@ -3,6 +3,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as ModalStories from './modal.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -143,8 +144,9 @@ This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA
 Ensure that assistive technologies announce the **Modal** correctly using
 <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> or <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink>, and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby">aria-describedby</ExternalLink>.
 
-<Canvas of={ ModalStories.AccessibilityAriaLabel } sourceState="shown" />
-<Canvas of={ ModalStories.AccessibilityAriaLabelledBy } sourceState="shown" />
+<OdsCanvas of={ ModalStories.AccessibilityAriaLabel } sourceState="shown" />
+
+<OdsCanvas of={ ModalStories.AccessibilityAriaLabelledBy } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the sections referenced by the aria attributes.
@@ -153,7 +155,7 @@ Ensure that assistive technologies announce the **Modal** correctly using
 
 For **Modals** that require user decisions (e.g., confirmation dialogs), place the least critical **Button** first in the **Modal** actions section.
 
-<Canvas of={ ModalStories.AccessibilityActions } sourceState="shown" />
+<OdsCanvas of={ ModalStories.AccessibilityActions } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Users will first encounter the non-destructive action (e.g., "Cancel"), reducing accidental confirmations.

@@ -133,6 +133,9 @@ export const Demo: StoryObj = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
@@ -145,6 +148,7 @@ export const Default: Story = {
         { label: 'Goldfish', value: 'goldfish' },
       ]}>
       <ComboboxControl />
+
       <ComboboxContent />
     </Combobox>
   ),
@@ -163,12 +167,16 @@ export const Overview: Story = {
         { label: 'Goldfish', value: 'goldfish' },
       ]}>
       <ComboboxControl placeholder="Combobox" />
+
       <ComboboxContent />
     </Combobox>
   ),
 };
 
 export const Clearable: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
@@ -180,13 +188,19 @@ export const Clearable: Story = {
         { label: 'Spider', value: 'spider' },
         { label: 'Goldfish', value: 'goldfish' },
       ]}>
-      <ComboboxControl clearable placeholder="Combobox" />
+      <ComboboxControl
+        clearable
+        placeholder="Combobox" />
+
       <ComboboxContent />
     </Combobox>
   ),
 };
 
 export const Disabled: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
@@ -200,12 +214,16 @@ export const Disabled: Story = {
         { label: 'Goldfish', value: 'goldfish' },
       ]}>
       <ComboboxControl placeholder="Combobox" />
+
       <ComboboxContent />
     </Combobox>
   ),
 };
 
 export const Readonly: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
@@ -219,12 +237,16 @@ export const Readonly: Story = {
       ]}
       readOnly>
       <ComboboxControl placeholder="Combobox" />
+
       <ComboboxContent />
     </Combobox>
   ),
 };
 
 export const Group: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
@@ -248,22 +270,30 @@ export const Group: Story = {
         { label: 'World', value: 'world' },
       ]}>
       <ComboboxControl placeholder="Combobox" />
+
       <ComboboxContent />
     </Combobox>
   ),
 };
 
 export const InFormField: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
-      <FormFieldLabel>Combobox</FormFieldLabel>
+      <FormFieldLabel>
+        Combobox
+      </FormFieldLabel>
+
       <Combobox
         items={[
           { label: 'Dog', value: 'dog' },
           { label: 'Cat', value: 'cat' },
         ]}>
         <ComboboxControl />
+
         <ComboboxContent />
       </Combobox>
     </FormField>
@@ -271,6 +301,9 @@ export const InFormField: Story = {
 }
 
 export const Invalid: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
@@ -280,12 +313,17 @@ export const Invalid: Story = {
         { label: 'Cat', value: 'cat' },
       ]}>
       <ComboboxControl />
+
       <ComboboxContent />
     </Combobox>
   )
 }
 
 export const Controlled: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -308,8 +346,10 @@ export const Controlled: Story = {
           onValueChange={ details => setValue(details.value) }
           value={ value }>
           <ComboboxControl placeholder="Select an animal" />
+
           <ComboboxContent />
         </Combobox>
+
         <div style={{ marginTop: 8 }}>
           <strong>Selected value:</strong> { value[0] ?? 'None' }
         </div>
@@ -319,6 +359,9 @@ export const Controlled: Story = {
 };
 
 export const Highlight: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
@@ -332,12 +375,16 @@ export const Highlight: Story = {
         { label: 'Goldfish', value: 'goldfish' },
       ]}>
       <ComboboxControl />
+
       <ComboboxContent />
     </Combobox>
   ),
 };
 
 export const CustomOptions: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -372,6 +419,7 @@ export const CustomOptions: Story = {
         highlightResults
         items={ items }>
         <ComboboxControl />
+
         <ComboboxContent />
       </Combobox>
     );
@@ -379,16 +427,23 @@ export const CustomOptions: Story = {
 };
 
 export const Empty: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Combobox items={ [] }>
       <ComboboxControl />
+
       <ComboboxContent />
     </Combobox>
   ),
 };
 
 export const Multiple: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
@@ -402,12 +457,16 @@ export const Multiple: Story = {
         { label: 'Goldfish', value: 'goldfish' },
       ]}>
       <ComboboxControl />
+
       <ComboboxContent />
     </Combobox>
   ),
 };
 
 export const Placeholder: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
@@ -420,16 +479,23 @@ export const Placeholder: Story = {
         { label: 'Goldfish', value: 'goldfish' },
       ]}>
       <ComboboxControl placeholder="Please select" />
+
       <ComboboxContent />
     </Combobox>
   ),
 };
 
 export const AccessibilityFormField: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
-      <FormFieldLabel>Favorite pet:</FormFieldLabel>
+      <FormFieldLabel>
+        Favorite pet:
+      </FormFieldLabel>
+
       <Combobox
         items={[
           { label: 'Dog', value: 'dog' },
@@ -440,6 +506,7 @@ export const AccessibilityFormField: Story = {
           { label: 'Goldfish', value: 'goldfish' },
         ]}>
         <ComboboxControl />
+
         <ComboboxContent />
       </Combobox>
     </FormField>
@@ -447,6 +514,9 @@ export const AccessibilityFormField: Story = {
 };
 
 export const AccessibilityI18n: Story = {
+  globals: {
+    imports: `import { INPUT_I18N, Combobox, ComboboxContent, ComboboxControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -455,7 +525,10 @@ export const AccessibilityI18n: Story = {
   },
   render: ({}) => (
     <FormField>
-      <FormFieldLabel>Favorite pet:</FormFieldLabel>
+      <FormFieldLabel>
+        Favorite pet:
+      </FormFieldLabel>
+
       <Combobox
         i18n={{
           [INPUT_I18N.clearButton]: 'Clear favorite pet selection'
@@ -469,6 +542,7 @@ export const AccessibilityI18n: Story = {
           { label: 'Goldfish', value: 'goldfish' },
         ]}>
         <ComboboxControl clearable />
+
         <ComboboxContent />
       </Combobox>
     </FormField>

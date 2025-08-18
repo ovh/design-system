@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsPopover from '../../../../ods-react/src/components/popover/documentation/popover.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as PopoverStories from './popover.stories';
@@ -43,16 +44,16 @@ import * as PopoverStories from './popover.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ PopoverStories.Default } sourceState="shown" />
+<OdsCanvas of={ PopoverStories.Default } sourceState="shown" />
 
 <Heading label="Custom Trigger" level={ 3 } />
 
-<Canvas of={ PopoverStories.CustomTrigger } sourceState="shown" />
+<OdsCanvas of={ PopoverStories.CustomTrigger } sourceState="shown" />
 
 <Heading label="Controlled" level={ 3 } />
 
-<Canvas of={ PopoverStories.Controlled } sourceState="shown" />
+<OdsCanvas of={ PopoverStories.Controlled } sourceState="shown" />
 
 <Heading label="Grid" level={ 3 } />
 
-<Canvas of={ PopoverStories.Grid } sourceState="shown" />
+<OdsCanvas of={ PopoverStories.Grid } sourceState="shown" />

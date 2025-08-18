@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsProgressBar from '../../../../ods-react/src/components/progress-bar/documentation/progress-bar.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as ProgressBarStories from './progress-bar.stories';
@@ -35,12 +36,12 @@ import * as ProgressBarStories from './progress-bar.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ ProgressBarStories.Default } sourceState="shown" />
+<OdsCanvas of={ ProgressBarStories.Default } sourceState="shown" />
 
 <Heading label="Max" level={ 3 } />
 
-<Canvas of={ ProgressBarStories.Max } sourceState="shown" />
+<OdsCanvas of={ ProgressBarStories.Max } sourceState="shown" />
 
 <Heading label="Value" level={ 3 } />
 
-<Canvas of={ ProgressBarStories.Value } sourceState="shown" />
+<OdsCanvas of={ ProgressBarStories.Value } sourceState="shown" />

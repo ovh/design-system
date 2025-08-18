@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsBadge from '../../../../ods-react/src/components/badge/documentation/badge.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as BadgeStories from './badge.stories';
@@ -35,12 +36,12 @@ import * as BadgeStories from './badge.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ BadgeStories.Default } sourceState="shown" />
+<OdsCanvas of={ BadgeStories.Default } sourceState="shown" />
 
 <Heading label="Color" level={ 3 } />
 
-<Canvas of={ BadgeStories.Color } sourceState="shown" />
+<OdsCanvas of={ BadgeStories.Color } sourceState="shown" />
 
 <Heading label="Size" level={ 3 } />
 
-<Canvas of={ BadgeStories.Size } sourceState="shown" />
+<OdsCanvas of={ BadgeStories.Size } sourceState="shown" />

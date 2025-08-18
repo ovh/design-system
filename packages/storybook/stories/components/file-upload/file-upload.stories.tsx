@@ -114,6 +114,10 @@ export const Demo: Story = {
 };
 
 export const Accept: Story = {
+  globals: {
+    imports: `import { FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -155,6 +159,10 @@ export const Accept: Story = {
 };
 
 export const AccessibilityFileButton: Story = {
+  globals: {
+    imports: `import { FILE_UPLOAD_I18N, FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -186,6 +194,10 @@ export const AccessibilityFileButton: Story = {
 };
 
 export const CustomLabels: Story = {
+  globals: {
+    imports: `import { FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -222,6 +234,10 @@ export const CustomLabels: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -248,6 +264,9 @@ export const Default: Story = {
 };
 
 export const Disabled: Story = {
+  globals: {
+    imports: `import { FileUpload, FileUploadList } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FileUpload disabled>
@@ -257,6 +276,10 @@ export const Disabled: Story = {
 };
 
 export const MaxFile: Story = {
+  globals: {
+    imports: `import { FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -298,6 +321,10 @@ export const MaxFile: Story = {
 };
 
 export const MaxSize: Story = {
+  globals: {
+    imports: `import { FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -363,6 +390,10 @@ export const Overview: Story = {
 };
 
 export const Upload: Story = {
+  globals: {
+    imports: `import { FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useEffect, useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -419,6 +450,10 @@ export const Upload: Story = {
 };
 
 export const InFormField: Story = {
+  globals: {
+    imports: `import { FileUpload, FileUploadItem, FileUploadList, FormField, FormFieldLabel } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -451,6 +486,10 @@ export const InFormField: Story = {
 };
 
 export const AccessibilityFormField: Story = {
+  globals: {
+    imports: `import { FileUpload, FileUploadItem, FileUploadList, FormField, FormFieldLabel } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {

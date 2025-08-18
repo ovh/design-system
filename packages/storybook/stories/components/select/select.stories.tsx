@@ -92,6 +92,9 @@ export const Demo: StoryObj = {
 };
 
 export const AccessibilityFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -114,6 +117,9 @@ export const AccessibilityFormField: Story = {
 };
 
 export const CustomRenderer: Story = {
+  globals: {
+    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -227,6 +233,9 @@ export const CustomRenderer: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Select items={[
@@ -246,6 +255,9 @@ export const Default: Story = {
 
 export const Disabled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Select, SelectContent, SelectControl, Text } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -337,6 +349,9 @@ export const Disabled: Story = {
 };
 
 export const Group: Story = {
+  globals: {
+    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Select
@@ -374,6 +389,9 @@ export const Group: Story = {
 };
 
 export const InFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -397,6 +415,9 @@ export const InFormField: Story = {
 
 export const Multiple: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Select, SelectContent, SelectControl, Text } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -471,6 +492,9 @@ export const Overview: Story = {
 };
 
 export const Readonly: Story = {
+  globals: {
+    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Select

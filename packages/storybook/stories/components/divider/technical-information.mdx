@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsDivider from '../../../../ods-react/src/components/divider/documentation/divider.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as DividerStories from './divider.stories';
@@ -35,12 +36,12 @@ import * as DividerStories from './divider.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ DividerStories.Default } sourceState="shown" />
+<OdsCanvas of={ DividerStories.Default } sourceState="shown" />
 
 <Heading label="Color" level={ 3 } />
 
-<Canvas of={ DividerStories.Color } sourceState="shown" />
+<OdsCanvas of={ DividerStories.Color } sourceState="shown" />
 
 <Heading label="Spacing" level={ 3 } />
 
-<Canvas of={ DividerStories.Spacing } sourceState="shown" />
+<OdsCanvas of={ DividerStories.Spacing } sourceState="shown" />

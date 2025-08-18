@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsButton from '../../../../ods-react/src/components/button/documentation/button.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as ButtonStories from './button.stories';
@@ -35,20 +36,20 @@ import * as ButtonStories from './button.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ ButtonStories.Default } sourceState="shown" />
+<OdsCanvas of={ ButtonStories.Default } sourceState="shown" />
 
 <Heading label="Color" level={ 3 } />
 
-<Canvas of={ ButtonStories.Color } sourceState="shown" />
+<OdsCanvas of={ ButtonStories.Color } sourceState="shown" />
 
 <Heading label="Loading" level={ 3 } />
 
-<Canvas of={ ButtonStories.Loading } sourceState="shown" />
+<OdsCanvas of={ ButtonStories.Loading } sourceState="shown" />
 
 <Heading label="Size" level={ 3 } />
 
-<Canvas of={ ButtonStories.Size } sourceState="shown" />
+<OdsCanvas of={ ButtonStories.Size } sourceState="shown" />
 
 <Heading label="Variant" level={ 3 } />
 
-<Canvas of={ ButtonStories.Variant } sourceState="shown" />
+<OdsCanvas of={ ButtonStories.Variant } sourceState="shown" />

@@ -84,6 +84,10 @@ export const Demo: StoryObj = {
 
 export const Controlled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {
@@ -120,6 +124,9 @@ export const Controlled: Story = {
 };
 
 export const CustomTrigger: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Tooltip>
@@ -137,6 +144,9 @@ export const CustomTrigger: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Tooltip>
@@ -163,6 +173,9 @@ export const Grid: StoryObj = {
       { story() }
     </div>
   )],
+  globals: {
+    imports: `import { Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -264,6 +277,9 @@ export const Overview: Story = {
 };
 
 export const AccessibilityTooltip: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Tooltip>
@@ -272,8 +288,7 @@ export const AccessibilityTooltip: Story = {
           aria-label="Open tooltip"
           name={ ICON_NAME.circleInfo }
           role="img"
-          style={{ fontSize: '24px' }}
-        />
+          style={{ fontSize: '24px' }} />
       </TooltipTrigger>
 
       <TooltipContent>

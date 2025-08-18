@@ -3,6 +3,7 @@ import { Canvas, Meta } from '@storybook/blocks';
 import * as PaginationStories from './pagination.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -136,7 +137,7 @@ The "items per page" Select uses the same keyboard shortcuts as the standard Sel
 **Pagination** is a form of navigation, but it serves a specific purpose distinct from primary navigation menus.
 To ensure it is correctly recognized, an <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> should be added to explicitly identify it.
 
-<Canvas of={ PaginationStories.AccessibilityLabel } sourceState="shown" />
+<OdsCanvas of={ PaginationStories.AccessibilityLabel } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the pagination element correctly.

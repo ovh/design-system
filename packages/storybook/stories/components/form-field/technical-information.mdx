@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsFormField from '../../../../ods-react/src/components/form-field/documentation/form-field.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -60,16 +61,16 @@ To learn more about **Form Field** usage, please refer to the <StorybookLink tit
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ FormFieldStories.Default } sourceState="shown" />
+<OdsCanvas of={ FormFieldStories.Default } sourceState="shown" />
 
 <Heading label="Field label" level={ 3 } />
 
-<Canvas of={ FormFieldStories.Label } sourceState="shown" />
+<OdsCanvas of={ FormFieldStories.Label } sourceState="shown" />
 
 <Heading label="Helper message" level={ 3 } />
 
-<Canvas of={ FormFieldStories.Helper } sourceState="shown" />
+<OdsCanvas of={ FormFieldStories.Helper } sourceState="shown" />
 
 <Heading label="Error message" level={ 3 } />
 
-<Canvas of={ FormFieldStories.Error } sourceState="shown" />
+<OdsCanvas of={ FormFieldStories.Error } sourceState="shown" />

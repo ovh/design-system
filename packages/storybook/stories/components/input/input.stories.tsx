@@ -88,6 +88,9 @@ export const Demo: StoryObj = {
 };
 
 export const Clearable: Story = {
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Input
@@ -97,6 +100,9 @@ export const Clearable: Story = {
 };
 
 export const Datalist: Story = {
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -114,6 +120,9 @@ export const Datalist: Story = {
 };
 
 export const Default: Story = {
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Input />
@@ -121,6 +130,9 @@ export const Default: Story = {
 };
 
 export const Disabled: Story = {
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Input disabled />
@@ -128,6 +140,9 @@ export const Disabled: Story = {
 };
 
 export const FloatingNumber: Story = {
+  globals: {
+    imports: `import { INPUT_TYPE, Input } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Input
@@ -138,6 +153,9 @@ export const FloatingNumber: Story = {
 };
 
 export const InFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -151,6 +169,9 @@ export const InFormField: Story = {
 };
 
 export const Loading: Story = {
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Input loading />
@@ -158,6 +179,9 @@ export const Loading: Story = {
 };
 
 export const Masked: Story = {
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Input maskOption={{ enable: true }} />
@@ -175,6 +199,9 @@ export const Overview: Story = {
 };
 
 export const ReadOnly: Story = {
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Input
@@ -185,6 +212,9 @@ export const ReadOnly: Story = {
 
 export const Types: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px', alignItems: 'start' }}>{ story() }</div>],
+  globals: {
+    imports: `import { INPUT_TYPE, Input } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>
@@ -200,6 +230,9 @@ export const Types: Story = {
 };
 
 export const AccessibilityFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
@@ -213,6 +246,9 @@ export const AccessibilityFormField: Story = {
 };
 
 export const AccessibilityI18n: Story = {
+  globals: {
+    imports: `import { INPUT_I18N, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';`,
+  },
   tags: ['!dev'],
   parameters: {
     docs: {

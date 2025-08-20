@@ -1,0 +1,24 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import SpecificationsTreeView from '../../../../ods-react/src/components/tree-view/documentation/tree-view.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as TreeViewStories from './tree-view.stories';
+
+<Meta of={ TreeViewStories } name="Technical information" />
+
+<Banner of={ TreeViewStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ TreeViewStories.Overview } sourceState="none" />
+
+<TechnicalSpecification data={ SpecificationsTreeView } of={ TreeViewStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ TreeViewStories.Default } sourceState="shown" />
+
+...

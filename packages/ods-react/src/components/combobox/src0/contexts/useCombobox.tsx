@@ -1,51 +1,47 @@
-// import { type ListCollection, useListCollection } from '@ark-ui/react/combobox';
-// import { useFilter } from '@ark-ui/react/locale';
-import { type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type ListCollection, useListCollection } from '@ark-ui/react/combobox';
+import { useFilter } from '@ark-ui/react/locale';
+import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useContext, useMemo } from 'react';
 import { type Locale } from '../../../../utils/locales';
 import { type INPUT_I18N } from '../../../input/src';
-// import { transformToVendorList } from '../controller/combobox';
+import { transformToVendorList } from '../controller/combobox';
 
-// interface ComboboxInputValueChangeDetails {
-//   inputValue: string;
-// }
+interface ComboboxInputValueChangeDetails {
+  inputValue: string;
+}
 
-type ComboboxValueChangeDetails = { //BREAKING
-  isNew: boolean,
-  label: string,
-  value: string,
-}[]
+interface ComboboxValueChangeDetails {
+  value: string[];
+}
 
 type CustomData = any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 type ComboboxOptionItem<T extends CustomData = CustomData> = {
   customRendererData?: T,
   disabled?: boolean;
-  // group?: string;
-  // isNewElement?: boolean;
-  label: string,
-  value: string,
-  /** @internal */
-  __isNew__?: boolean,
+  group?: string;
+  isNewElement?: boolean;
+  label: string;
+  value: string;
 };
 
 type ComboboxGroupItem<T extends CustomData = CustomData> = {
   customRendererData?: T,
   disabled?: boolean;
-  label: string,
-  options: ComboboxOptionItem[],
+  label: string;
+  options: ComboboxOptionItem[];
 };
 
 type ComboboxItem<T extends CustomData = CustomData> = ComboboxGroupItem<T> | ComboboxOptionItem<T>;
 
-interface ComboboxRootProp {
+type ComboboxVendorItem = ComboboxOptionItem & {
+  groupBy?: string,
+}
+
+type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
   /**
    * Whether to allow adding a value which is not part of the items.
    */
   allowCustomValue?: boolean,
-  /**
-   * Whether the clear button is displayed.
-   */
-  clearable?: boolean,
   /**
    * Custom render for each option item.
    */
@@ -53,7 +49,7 @@ interface ComboboxRootProp {
   /**
    * The initial selected value(s). Use when you don't need to control the selected value(s) of the combobox.
    */
-  defaultValue?: ComboboxItem[],
+  defaultValue?: string[],
   /**
    * Whether the component is disabled.
    */
@@ -74,10 +70,6 @@ interface ComboboxRootProp {
    * The list of items
    */
   items: ComboboxItem[],
-  /**
-   * Whether the component is in loading state.
-   */
-  loading?: boolean,
   /**
    * The locale used for the translation of the internal elements.
    */
@@ -103,10 +95,6 @@ interface ComboboxRootProp {
    */
   onValueChange?: (value: ComboboxValueChangeDetails) => void,
   /**
-   * The placeholder text to display in the input.
-   */
-  placeholder?: string,
-  /**
    * Whether the component is readonly.
    */
   readOnly?: boolean,
@@ -118,34 +106,75 @@ interface ComboboxRootProp {
   /**
    * The controlled selected value(s).
    */
-  value?: ComboboxItem[],
+  value?: string[]
+};
+
+interface ComboboxProviderProp extends Pick<ComboboxRootProp, 'allowCustomValue' | 'customOptionRenderer' | 'highlightResults' | 'i18n' | 'invalid' | 'items' | 'locale' | 'newElementLabel' | 'noResultLabel' | 'readOnly'> {
+  children: ReactNode;
 }
 
-interface ComboboxProviderProp extends Pick<ComboboxRootProp, 'customOptionRenderer' | 'highlightResults' | 'i18n' | 'locale' | 'placeholder' | 'readOnly'> {
-  children: ReactNode,
+interface ComboboxContextType extends Omit<ComboboxProviderProp, 'children'> {
+  collection: ListCollection<ComboboxVendorItem>,
+  filterItems: (inputValue: string) => void,
+  removeItem: (item: string | ComboboxVendorItem) => void,
+  setItems: (items: ComboboxVendorItem[]) => void,
+  updateItem: (value: string, item: ComboboxVendorItem) => void,
+  upsertItem: (value: string, item: ComboboxVendorItem, mode?: 'append' | 'prepend') => void,
+  vendorItems: ComboboxVendorItem[],
 }
-
-interface ComboboxContextType extends Omit<ComboboxProviderProp, 'children'> {}
 
 const ComboboxContext = createContext<ComboboxContextType | undefined>(undefined);
 
 const ComboboxProvider = ({
+  allowCustomValue,
   children,
   customOptionRenderer,
   highlightResults,
   i18n,
+  invalid,
+  items,
   locale,
-  placeholder,
+  newElementLabel,
+  noResultLabel,
   readOnly,
 }: ComboboxProviderProp): JSX.Element => {
+  const vendorItems = useMemo(() => transformToVendorList(items), [items]);
+  const { contains } = useFilter({ sensitivity: 'base' });
+  const { collection, filter, remove, set, update, upsert } = useListCollection<ComboboxVendorItem>({
+    filter: (searchTerm, inputValue, { customRendererData }) => {
+      let searchTerms = [searchTerm];
+
+      if (customRendererData) {
+        searchTerms = searchTerms.concat(Object.values(customRendererData));
+      }
+
+      return contains(`${searchTerms.join(' ')}`, inputValue);
+    },
+    groupBy: (item) => {
+      return item.groupBy || '';
+    },
+    initialItems: vendorItems,
+  });
+
   return (
     <ComboboxContext.Provider value={{
+      allowCustomValue,
+      collection,
       customOptionRenderer,
+      filterItems: filter,
       highlightResults,
       i18n,
+      invalid,
+      items,
       locale,
-      placeholder,
+      newElementLabel,
+      noResultLabel,
       readOnly,
+      removeItem: remove,
+      setItems: set,
+      updateItem: update,
+      upsertItem: upsert,
+      vendorItems,
     }}>
       { children }
     </ComboboxContext.Provider>
@@ -159,16 +188,17 @@ function useCombobox(): ComboboxContextType {
     throw new Error('useCombobox must be used within a ComboboxProvider');
   }
 
-  return context;
+   return context;
 }
 
 export {
   type ComboboxGroupItem,
-  // type ComboboxInputValueChangeDetails,
+  type ComboboxInputValueChangeDetails,
   type ComboboxItem,
   type ComboboxOptionItem,
   ComboboxProvider,
   type ComboboxRootProp,
   type ComboboxValueChangeDetails,
+  type ComboboxVendorItem,
   useCombobox,
 };

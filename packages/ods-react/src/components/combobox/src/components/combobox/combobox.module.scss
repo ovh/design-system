@@ -1,0 +1,91 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/input';
+@use '../../../../../style/overlay';
+@use '../../../../../style/state';
+
+@layer ods-organisms {
+  .combobox {
+    box-sizing: border-box;
+    position: relative;
+    border-radius: var(--ods-border-radius-sm);
+
+    &--focused {
+      @include focus.ods-focus();
+    }
+
+    &__control {
+      @include input.ods-input();
+
+      display: flex;
+      height: auto;
+      min-height: var(--ods-form-element-input-height);
+
+      &--disabled {
+        @include state.ods-is-disabled();
+      }
+
+      &--invalid {
+        @include input.ods-input-error;
+      }
+
+      &--read-only {
+        border-color: var(--ods-color-border-readonly-default);
+        background-color: var(--ods-color-background-readonly-default);
+      }
+
+      &__placeholder {
+        display: none;
+      }
+
+      // Needed to space tags on multiple mode
+      > div {
+        gap: 4px;
+      }
+    }
+
+    &__content {
+      box-sizing: border-box;
+      margin: 0;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      background: var(--ods-color-primary-000);
+      padding: 0;
+      color: var(--ods-color-text);
+      pointer-events: auto;
+
+      &--disabled {
+        @include state.ods-is-disabled();
+
+        // Needed to prevent options to be clickable
+        > * {
+          pointer-events: none;
+        }
+      }
+
+      &__empty,
+      &__group {
+        display: flex;
+        align-items: center;
+        padding: 0 8px;
+        min-height: 32px;
+      }
+
+      &__group {
+        color: var(--ods-color-heading);
+        font-weight: 600;
+
+        &--disabled {
+          @include state.ods-is-disabled();
+        }
+
+        // Target all the child options of the group
+        & + div > [role="option"] {
+          padding-left: 16px;
+        }
+      }
+
+      &__portal {
+        z-index: overlay.$ods-overlay-select-z-index;
+      }
+    }
+  }
+}

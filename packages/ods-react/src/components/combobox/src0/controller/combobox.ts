@@ -1,6 +1,67 @@
 import { type JSX, type KeyboardEvent, type RefObject } from 'react';
 import { getElementText } from '../../../../utils/element';
-import { type ComboboxItem, type ComboboxOptionItem } from '../contexts/useCombobox';
+import { type ComboboxGroupItem, type ComboboxItem, type ComboboxOptionItem, type ComboboxVendorItem } from '../contexts/useCombobox';
+
+const NEW_OPTION_VALUE = '[[new]]';
+
+function createNewOption(value: string) {
+  return {
+    label: value,
+    value: NEW_OPTION_VALUE,
+  };
+}
+
+function getNewOptionData(inputValue: string) {
+  return {
+    label: inputValue,
+    value: inputValue,
+    __new__: true, // TODO see where this is used
+  };
+}
+
+function isGroup(item: ComboboxItem): item is ComboboxGroupItem {
+  return 'options' in item;
+}
+
+function isNewOptionValue(value: string): boolean {
+  return value === NEW_OPTION_VALUE;
+}
+
+function replaceNewOptionValue(values: string[], value: string = '') {
+  return values.map((v) => (v === NEW_OPTION_VALUE ? value : v));
+}
+
+function transformToVendorList(items: ComboboxItem[]): ComboboxVendorItem[] {
+  return items.reduce<ComboboxVendorItem[]>((res, item) => {
+    if (isGroup(item)) {
+      return res.concat(item.options.map((child) => ({
+        ...child,
+        groupBy: item.label,
+      })));
+    }
+    return res.concat(item);
+  }, []);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 interface ComboboxProps {
   allowCustomValue?: boolean;
@@ -92,8 +153,9 @@ function filterItems({
 
 function findLabelForValue(items: ComboboxItem[] = [], value: string): string {
   for (const item of items) {
-    if ('options' in item) {
+    if (isGroup(item)) {
       const foundInGroup = findLabelForValue(item.options, value);
+
       if (foundInGroup !== value) {
         return foundInGroup;
       }
@@ -101,6 +163,7 @@ function findLabelForValue(items: ComboboxItem[] = [], value: string): string {
       return String(item.label);
     }
   }
+
   return value;
 }
 
@@ -211,17 +274,25 @@ function splitTextBySearchTerm(text: string, searchTerm: string): string[] {
 
 export {
   calculateNewFocusIndex,
-  escapeRegExp,
-  filterItems,
+  // escapeRegExp,
+  // filterItems,
   findLabelForValue,
-  flattenItems,
-  getFilteredItems,
-  getItemText,
-  hasExactMatch,
+  // flattenItems,
+  // getFilteredItems,
+  // getItemText,
+  // hasExactMatch,
   isKeyboardEventAtInputStart,
-  isValueAlreadySelected,
-  matchesSearch,
+  // isValueAlreadySelected,
+  // matchesSearch,
   removeValueFromArray,
   shouldResetTagFocus,
   splitTextBySearchTerm,
+
+  NEW_OPTION_VALUE,
+  createNewOption,
+  // getNewOptionData,
+  isGroup,
+  isNewOptionValue,
+  replaceNewOptionValue,
+  transformToVendorList,
 };

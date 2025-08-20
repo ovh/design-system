@@ -1,125 +1,191 @@
-import { type ComboboxInputValueChangeDetails, type ComboboxValueChangeDetails, Combobox as VendorCombobox, createListCollection } from '@ark-ui/react/combobox';
-import { type FC, type JSX, forwardRef, useEffect, useMemo, useState } from 'react';
+import classNames from 'classnames';
+import { type FC, type JSX, useEffect, useState } from 'react';
+import { type InputActionMeta } from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import { useFormField } from '../../../../form-field/src';
-import { ComboboxProvider, type ComboboxRootProp } from '../../contexts/useCombobox';
-import { findLabelForValue, flattenItems, getFilteredItems } from '../../controller/combobox';
+import { type ComboboxItem, ComboboxProvider, type ComboboxRootProp } from '../../contexts/useCombobox';
+import { ComboboxControl } from '../combobox-control/ComboboxControl';
+import { ComboboxOption } from '../combobox-option/ComboboxOption';
+import { ComboboxTag } from '../combobox-tag/ComboboxTag';
+import styles from './combobox.module.scss';
 
 /**
  * @inheritDoc ComboboxRootProp
  */
 interface ComboboxProp extends ComboboxRootProp {}
 
-const Combobox: FC<ComboboxProp> = forwardRef(({
+// TODO
+//  - (multiple) hide clearable if no input value
+//  - disable specific group
+//  - use Select if not allowCustomValue
+//  - remove all default style to ensure all css is layered?
+//  - tag not removed on Enter press
+//  - test generic type on custom data
+//  - click on clearable toggle content
+//  - clearable does not appear on option selection (need a blur)
+//  - (controlled) => delete value then blur => does not trigger a change nor put back the previous value
+//  - clearable outline KO
+//  - custom style
+//  - in modal, click on an option closed the modal
+//  - add onInputChange
+//  - add custom filter function
+
+const ClearIndicator = (): JSX.Element => <></>;
+const DropdownIndicator = (): JSX.Element => <></>;
+const IndicatorSeparator = (): JSX.Element => <></>;
+const LoadingIndicator = (): JSX.Element => <></>;
+
+const Combobox: FC<ComboboxProp> = ({ // forwardRef(({
   allowCustomValue = true,
-  children,
-  className,
+  // children,
+  // className,
+  clearable,
   customOptionRenderer,
   defaultValue,
   disabled,
   highlightResults = false,
   i18n,
-  items,
   invalid,
+  items,
+  loading,
   locale,
   multiple,
   newElementLabel = 'Add ',
   noResultLabel = 'No results found',
   onValueChange,
+  placeholder = '',
   readOnly,
-  required,
+  // required,
   value,
-  ...props
-}, ref): JSX.Element => {
+  // ...props
+}): JSX.Element => {
+// }, ref): JSX.Element => {
   const fieldContext = useFormField();
-  const [inputValue, setInputValue] = useState('');
-  const [internalValue, setInternalValue] = useState<string[]>(defaultValue || []);
-  const currentValue = value && value.length > 0 ? value : internalValue;
-  const isInvalid = invalid || fieldContext?.invalid;
+  const [comboboxValue, setComboboxValue] = useState<ComboboxItem | readonly ComboboxItem[] | null>();
+  const [inputValue, setInputValue] = useState<string>();
 
   useEffect(() => {
-    if (!multiple && currentValue.length > 0) {
-      const label = findLabelForValue(items, currentValue[0]);
-      setInputValue(label);
-    } else if (multiple) {
-      setInputValue('');
+    if (multiple) {
+      if (value && value.length) {
+        setComboboxValue(value);
+      }
+      return;
     }
-  }, [currentValue, items, multiple]);
+    if (value && value.length) {
+      setInputValue(value[0].label);
+    } else if (defaultValue && defaultValue.length) {
+      setInputValue(defaultValue[0].label);
+    }
+    //setInputValue(Array.isArray(defaultValue) ? defaultValue[0].label : defaultValue?.label)
+  }, [defaultValue, multiple, value]);
 
-  const filteredItems = useMemo(() => getFilteredItems({
-    allowCustomValue,
-    customOptionRenderer,
-    inputValue,
-    items,
-    multiple,
-    newElementLabel,
-    value: currentValue,
-  }), [allowCustomValue, customOptionRenderer, inputValue, items, multiple, newElementLabel, currentValue]);
+  function onChange(option: ComboboxItem | readonly ComboboxItem[] | null): void {
+    // console.log(`onChange: `, option)
+    setComboboxValue(option);
+    setInputValue(option && !multiple ? (option as ComboboxItem).label : '');
 
-  const flatItems = useMemo(() => flattenItems(filteredItems), [filteredItems]);
-  const collection = useMemo(() => createListCollection({ items: flatItems }), [flatItems]);
-
-  function handleInputValueChange(details: ComboboxInputValueChangeDetails): void {
-    setInputValue(details.inputValue);
+    if (!option) {
+      //onValueChange?.({ value: [] });
+      onValueChange?.([]);
+    } else {
+      //onValueChange?.({ value: (Array.isArray(option) ? option : [option]).map((opt) => opt.value) });
+      onValueChange?.((Array.isArray(option) ? option : [option]).map((opt) => ({
+        isNew: opt.__isNew__ === true,
+        label: opt.label,
+        value: opt.value,
+      })));
+    }
   }
 
-  function handleValueChange(details: ComboboxValueChangeDetails): void {
-    if (!multiple && details.value.length > 0) {
-      const label = findLabelForValue(items, details.value[0]);
-      setInputValue(label);
-    } else if (multiple) {
-      setInputValue('');
+  function onInputChange(inputValue: string, { action }: InputActionMeta): void {
+    // console.log(`onInputChange: ${inputValue} | ${action}`)
+    if (action === 'input-change') {// || action === 'set-value') { ?
+      setInputValue(inputValue);
     }
-
-    if (!value) {
-      setInternalValue(details.value);
-    }
-
-    onValueChange && onValueChange({ value: details.value });
   }
 
   return (
     <ComboboxProvider
       customOptionRenderer={ customOptionRenderer }
-      filteredItems={ filteredItems }
       highlightResults={ highlightResults }
       i18n={ i18n }
-      invalid={ isInvalid }
-      items={ items }
       locale={ locale }
-      newElementLabel={ newElementLabel }
-      noResultLabel={ noResultLabel }
+      placeholder={ placeholder }
       readOnly={ readOnly }>
-      <VendorCombobox.Root
-        allowCustomValue={ allowCustomValue }
-        className={ className }
-        closeOnSelect={ !multiple }
-        collection={ collection }
-        data-ods="combobox"
+      <CreatableSelect
+        // menuIsOpen
+        allowCreateWhileLoading
+        classNames={{
+          container: ({ isFocused }) => classNames(
+            styles['combobox'],
+            { [styles['combobox--focused']]: isFocused },
+          ),
+          control: ({ selectProps }) => classNames(
+            styles['combobox__control'],
+            { [styles['combobox__control--disabled']]: selectProps.isDisabled },
+            { [styles['combobox__control--invalid']]: invalid },
+            { [styles['combobox__control--read-only']]: readOnly && !selectProps.isDisabled },
+          ),
+          groupHeading: () => styles['combobox__content__group'],
+          // group: (state) => classNames(
+          //   styles['combobox__content__group'],
+          //   { [styles['combobox__content__group--disabled']]: state.data.disabled },
+          // ),
+          loadingMessage: () => styles['combobox__content__empty'],
+          menu: ({ selectProps }) => classNames(
+            styles['combobox__content'],
+            { [styles['combobox__content--disabled']]: selectProps.isDisabled },
+          ),
+          menuPortal: () => styles['combobox__content__portal'],
+          noOptionsMessage: () => styles['combobox__content__empty'],
+          placeholder: () => styles['combobox__control__placeholder'],
+        }}
+        components={{
+          ClearIndicator,
+          DropdownIndicator,
+          IndicatorSeparator,
+          Input: ComboboxControl,
+          LoadingIndicator,
+          MultiValue: ComboboxTag,
+          Option: ComboboxOption,
+        }}
+        controlShouldRenderValue={ !!multiple }
+        createOptionPosition="first"
         defaultValue={ defaultValue }
-        disabled={ disabled }
-        ids={{
-          input: fieldContext?.id,
-        }}
+        formatCreateLabel={ (inputValue) => `${newElementLabel}${inputValue}` }
+        inputId={ fieldContext?.id }
         inputValue={ inputValue }
-        invalid={ isInvalid }
-        multiple={ multiple }
-        onInputValueChange={ handleInputValueChange }
-        onValueChange={ handleValueChange }
-        positioning={{
-          gutter: -1,
-          sameWidth: true,
+        isClearable={ clearable && !readOnly }
+        isDisabled={ disabled }
+        isOptionDisabled={ (option) => !!option.disabled }
+        isLoading={ loading }
+        isMulti={ multiple }
+        // // TODO this break filter if value exists, maybe switch Select|CreatableSelect instead?
+        isValidNewOption={ (inputValue) => allowCustomValue && !!inputValue }
+        loadingMessage={ () => noResultLabel }
+        menuPlacement="auto"
+        menuPortalTarget={ document.body }
+        noOptionsMessage={ () => noResultLabel }
+        onChange={ onChange }
+        onInputChange={ onInputChange }
+        openMenuOnClick={ !readOnly }
+        options={ items }
+        styles={{
+          container: () => ({}),
+          control: () => ({}),
+          groupHeading: () => ({}),
+          menuPortal: ({ zIndex, ...css }) => css,
+          option: () => ({}),
         }}
-        readOnly={ readOnly }
-        ref={ ref }
-        required={ multiple ? false : required } // FIXME required on multiple mode should be manually handled
-        selectionBehavior={ multiple ? 'clear' : 'replace' }
-        value={ currentValue }
-        { ...props }>
-        { children }
-      </VendorCombobox.Root>
+        tabSelectsValue={ false }
+        unstyled
+        value={ comboboxValue }
+        { ...(readOnly ? { menuIsOpen: false } : {}) }
+        // ref={ ref } + { ...props } ?
+      />
     </ComboboxProvider>
   );
-});
+};
 
 Combobox.displayName = 'Combobox';
 

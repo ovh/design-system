@@ -24,6 +24,6 @@
     "**/**/node_modules",
     "**/**/tests",
     "**/**/*.config.ts",
-    "**/**/*.stories.tsx"
+    "**/**/*.stories.tsx", "**/**/src0",
   ]
 }

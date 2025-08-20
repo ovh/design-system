@@ -1,0 +1,69 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/input';
+@use '../../../../../style/state';
+
+@layer ods-organisms {
+  .combobox-control {
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    margin: 0;
+    border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
+    border-radius: var(--ods-border-radius-sm);
+    padding: 2px 8px;
+    width: 100%;
+    min-height: var(--ods-form-element-input-height);
+
+    &--multiple {
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    &--open-bottom {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &--open-top {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    &--read-only {
+      border-color: var(--ods-color-border-readonly-default);
+      background-color: var(--ods-color-background-readonly-default);
+    }
+
+    &--invalid {
+      @include input.ods-input-error;
+    }
+
+    &__tag {
+      &--focused {
+        border-color: var(--ods-color-information-200);
+        background-color: var(--ods-color-information-100);
+      }
+    }
+
+    &__input {
+      display: inline-flex;
+      flex: 1;
+      outline: none;
+      border: none;
+      background: transparent;
+      padding: 0;
+      height: calc(input.$ods-input-field-height - 10px);
+    }
+
+    &[data-focus] {
+      @include focus.ods-focus();
+    }
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+    }
+  }
+}

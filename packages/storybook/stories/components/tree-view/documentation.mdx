@@ -1,5 +1,5 @@
 import { Canvas, Meta } from '@storybook/blocks';
-import * as {{> ComponentName }}Stories from './{{> component-name }}.stories';
+import * as TreeViewStories from './tree-view.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -7,20 +7,20 @@ import { IdentityCard } from '../../../src/components/identityCard/IdentityCard'
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
-<Meta of={ {{> ComponentName }}Stories } name='Documentation' />
+<Meta of={ TreeViewStories } name='Documentation' />
 
-<Banner of={ {{> ComponentName }}Stories } />
+<Banner of={ TreeViewStories } />
 
-_**{{> ComponentName }}** TODO some text about the component_
+_**TreeView** TODO some text about the component_
 
-<Canvas of={ {{> ComponentName }}Stories.Overview } sourceState='none' />
+<Canvas of={ TreeViewStories.Overview } sourceState='none' />
 
 <Heading label="Overview" level={ 2 } />
 
 <IdentityCard aliases={ [] }
               figmaLink="TODO"
-              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/{{> component-name }}"
-              name="{{> ComponentName }}"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/tree-view"
+              name="TreeView"
               relatedComponents={ [] }
               startingVersion={ 19 }>
   TODO some text about the component.

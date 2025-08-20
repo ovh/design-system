@@ -1,0 +1,94 @@
+@use '../../../../../style/focus';
+
+@layer ods-molecules {
+  .tree-view-node {
+    margin: 6px 0;
+
+    &__chevron {
+      display: flex;
+      flex: 0 0 1rem;
+      align-items: center;
+      justify-content: center;
+      transition: transform .2s ease;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    &__chevron[aria-expanded="true"] { transform: rotate(90deg); }
+
+    &__control,
+    &__item {
+      display: flex;
+      gap: .25rem;
+      align-items: center;
+      border-radius: var(--ods-border-radius-sm);
+      padding: .25rem .5rem;
+
+      &:hover {
+        background-color: var(--ods-color-primary-025);
+        cursor: pointer;
+      }
+    }
+
+    &__control {
+      &[aria-expanded="true"] .tree-view-node__chevron { transform: rotate(90deg); }
+      &[data-state="open"] .tree-view-node__chevron { transform: rotate(90deg); }
+    }
+
+    /* In multiple mode (checkbox present), ignore [data-selected] and rely on checkbox state rules below */
+    &__control[data-selected]:not(:has(.tree-view-node__checkbox)),
+    &__item[data-selected]:not(:has(.tree-view-node__checkbox)),
+    &__control[data-focus]:focus-visible,
+    &__item[data-focus]:focus-visible {
+      background-color: var(--ods-color-primary-050);
+    }
+
+    &__control:has(.tree-view-node__checkbox[data-state="checked"]),
+    &__item:has(.tree-view-node__checkbox[data-state="checked"]),
+    &__control:has(.tree-view-node__checkbox[data-state="indeterminate"]),
+    &__item:has(.tree-view-node__checkbox[data-state="indeterminate"]) {
+      background-color: var(--ods-color-primary-050);
+    }
+
+    &__control[data-focus]:focus-visible,
+    &__item[data-focus]:focus-visible {
+      @include focus.ods-focus();
+    }
+
+    &__children {
+      position: relative;
+      margin-left: 1rem;
+      padding-left: .5rem;
+
+      &::before {
+        position: absolute;
+        top: .25rem;
+        bottom: .25rem;
+        left: 0;
+        opacity: .15;
+        background-color: var(--ods-color-form-element-border-default);
+        width: 2px;
+        content: '';
+      }
+    }
+
+    &__item {
+      position: relative;
+    }
+
+    &__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1rem;
+      height: 1rem;
+    }
+
+    &__checkbox {
+      display: flex;
+      gap: .25rem;
+    }
+  }
+
+}
+

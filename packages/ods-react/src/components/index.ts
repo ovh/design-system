@@ -39,4 +39,5 @@ export * from './range/src';
 export * from './medium/src';
 export * from './combobox/src';
 
+export * from './tree-view/src';
 export * from './meter/src';

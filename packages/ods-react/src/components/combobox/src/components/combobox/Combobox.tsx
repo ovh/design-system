@@ -1,122 +1,199 @@
-import { type ComboboxInputValueChangeDetails, type ComboboxValueChangeDetails, Combobox as VendorCombobox, createListCollection } from '@ark-ui/react/combobox';
-import { type FC, type JSX, forwardRef, useEffect, useMemo, useState } from 'react';
+import classNames from 'classnames';
+import { type FC, type HTMLAttributes, type JSX, type Ref, forwardRef, useEffect, useId, useMemo, useState } from 'react';
+import Select, { type FilterOptionOption, type InputActionMeta, type SelectInstance } from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import { useFormField } from '../../../../form-field/src';
-import { ComboboxProvider, type ComboboxRootProp } from '../../contexts/useCombobox';
-import { findLabelForValue, flattenItems, getFilteredItems } from '../../controller/combobox';
+import { type ComboboxGroupItem, type ComboboxItem, ComboboxProvider, type ComboboxRootProp } from '../../contexts/useCombobox';
+import { ComboboxContent } from '../combobox-content/ComboboxContent';
+import { ComboboxControl } from '../combobox-control/ComboboxControl';
+import { ComboboxCreateOption } from '../combobox-create-option/ComboboxCreateOption';
+import { ComboboxInput } from '../combobox-input/ComboboxInput';
+import { ComboboxOption } from '../combobox-option/ComboboxOption';
+import { ComboboxTag } from '../combobox-tag/ComboboxTag';
+import styles from './combobox.module.scss';
 
 /**
  * @inheritDoc ComboboxRootProp
  */
-interface ComboboxProp extends ComboboxRootProp {}
+interface ComboboxProp extends Pick<HTMLAttributes<'div'>, 'className' | 'id'>, ComboboxRootProp {
+  /** @internal */
+  ref?: Ref<SelectInstance<ComboboxItem>>,
+}
 
-const Combobox: FC<ComboboxProp> = forwardRef(({
+const DEFAULT_EMPTY_LABEL = 'No results found';
+
+const ClearIndicator = (): JSX.Element => <></>;
+const DropdownIndicator = (): JSX.Element => <></>;
+const IndicatorSeparator = (): JSX.Element => <></>;
+const LoadingIndicator = (): JSX.Element => <></>;
+
+const Combobox: FC<ComboboxProp> = forwardRef<SelectInstance<ComboboxItem>, ComboboxProp>(({
   allowCustomValue = true,
-  children,
   className,
+  clearable,
+  createPortal = true,
+  customFilter,
   customOptionRenderer,
   defaultValue,
   disabled,
   highlightResults = false,
   i18n,
-  items,
+  id,
   invalid,
+  items,
+  loading,
+  loadingLabel = DEFAULT_EMPTY_LABEL,
   locale,
   multiple,
   newElementLabel = 'Add ',
-  noResultLabel = 'No results found',
+  noResultLabel = DEFAULT_EMPTY_LABEL,
+  onBlur,
+  onInputChange,
   onValueChange,
+  placeholder = '',
   readOnly,
   required,
   value,
   ...props
 }, ref): JSX.Element => {
+  const defaultId = useId();
   const fieldContext = useFormField();
-  const [inputValue, setInputValue] = useState('');
-  const [internalValue, setInternalValue] = useState<string[]>(defaultValue || []);
-  const currentValue = value && value.length > 0 ? value : internalValue;
-  const isInvalid = invalid || fieldContext?.invalid;
+  const [comboboxValue, setComboboxValue] = useState<ComboboxItem | readonly ComboboxItem[] | null>();
+  const [inputValue, setInputValue] = useState<string>();
+  const Component = useMemo(() => allowCustomValue ? CreatableSelect : Select, [allowCustomValue]);
+  const comboboxId = useMemo(() => id || defaultId, [defaultId, id]);
 
   useEffect(() => {
-    if (!multiple && currentValue.length > 0) {
-      const label = findLabelForValue(items, currentValue[0]);
-      setInputValue(label);
-    } else if (multiple) {
-      setInputValue('');
+    // Not ideal, but there doesn't seems to be a way to add data-attribute to the root otherwise
+    const rootElement = document.getElementById(comboboxId);
+
+    if (rootElement) {
+      rootElement.dataset.ods = 'combobox';
     }
-  }, [currentValue, items, multiple]);
+  }, [comboboxId]);
 
-  const filteredItems = useMemo(() => getFilteredItems({
-    allowCustomValue,
-    customOptionRenderer,
-    inputValue,
-    items,
-    multiple,
-    newElementLabel,
-    value: currentValue,
-  }), [allowCustomValue, customOptionRenderer, inputValue, items, multiple, newElementLabel, currentValue]);
+  useEffect(() => {
+    if (multiple) {
+      if (value && value.length) {
+        setComboboxValue(value);
+      }
+      return;
+    }
+    if (value && value.length) {
+      setInputValue(value[0].label);
+    } else if (defaultValue && defaultValue.length) {
+      setInputValue(defaultValue[0].label);
+    }
+  }, [defaultValue, multiple, value]);
 
-  const flatItems = useMemo(() => flattenItems(filteredItems), [filteredItems]);
-  const collection = useMemo(() => createListCollection({ items: flatItems }), [flatItems]);
+  function handleChange(option: ComboboxItem | readonly ComboboxItem[] | null): void {
+    setComboboxValue(option);
+    setInputValue(option && !multiple ? (option as ComboboxItem).label : '');
 
-  function handleInputValueChange(details: ComboboxInputValueChangeDetails): void {
-    setInputValue(details.inputValue);
+    if (!option) {
+      onValueChange?.([]);
+    } else {
+      onValueChange?.((Array.isArray(option) ? option : [option]).map((opt) => ({
+        isNew: opt.__isNew__ === true,
+        label: opt.label,
+        value: opt.value,
+      })));
+    }
   }
 
-  function handleValueChange(details: ComboboxValueChangeDetails): void {
-    if (!multiple && details.value.length > 0) {
-      const label = findLabelForValue(items, details.value[0]);
-      setInputValue(label);
-    } else if (multiple) {
-      setInputValue('');
-    }
+  function handleInputChange(inputCurrentValue: string, { action }: InputActionMeta): void {
+    if (action === 'input-change') {
+      setInputValue(inputCurrentValue);
 
-    if (!value) {
-      setInternalValue(details.value);
+      onInputChange?.({ inputValue: inputCurrentValue });
     }
-
-    onValueChange && onValueChange({ value: details.value });
   }
 
   return (
     <ComboboxProvider
       customOptionRenderer={ customOptionRenderer }
-      filteredItems={ filteredItems }
       highlightResults={ highlightResults }
       i18n={ i18n }
-      invalid={ isInvalid }
-      items={ items }
+      invalid={ invalid }
       locale={ locale }
-      newElementLabel={ newElementLabel }
-      noResultLabel={ noResultLabel }
+      placeholder={ placeholder }
       readOnly={ readOnly }>
-      <VendorCombobox.Root
-        allowCustomValue={ allowCustomValue }
+      <Component
+        allowCreateWhileLoading
         className={ className }
-        closeOnSelect={ !multiple }
-        collection={ collection }
-        data-ods="combobox"
+        classNames={{
+          container: ({ isFocused }) => classNames(
+            styles['combobox'],
+            { [styles['combobox--focused']]: isFocused },
+          ),
+          groupHeading: (state) => classNames(
+            styles['combobox__content__group'],
+            { [styles['combobox__content__group--disabled']]: (state.data as ComboboxGroupItem).disabled },
+          ),
+          loadingMessage: () => styles['combobox__content__loading'],
+          menuPortal: () => styles['combobox__content__portal'],
+          noOptionsMessage: () => styles['combobox__content__empty'],
+          placeholder: () => styles['combobox__control__placeholder'],
+        }}
+        closeMenuOnSelect={ !multiple }
+        components={{
+          ClearIndicator,
+          Control: ComboboxControl,
+          DropdownIndicator,
+          IndicatorSeparator,
+          Input: ComboboxInput,
+          LoadingIndicator,
+          Menu: ComboboxContent,
+          MultiValue: ComboboxTag,
+          Option: ComboboxOption,
+        }}
+        controlShouldRenderValue={ !!multiple }
+        createOptionPosition="first"
         defaultValue={ defaultValue }
-        disabled={ disabled }
-        ids={{
-          input: fieldContext?.id,
-        }}
+        formatCreateLabel={ (inputCurrentValue) => <ComboboxCreateOption inputValue={ inputCurrentValue } newElementLabel={ newElementLabel } /> }
+        id={ comboboxId }
+        inputId={ fieldContext?.id }
         inputValue={ inputValue }
-        invalid={ isInvalid }
-        multiple={ multiple }
-        onInputValueChange={ handleInputValueChange }
-        onValueChange={ handleValueChange }
-        positioning={{
-          gutter: -1,
-          sameWidth: true,
-        }}
-        readOnly={ readOnly }
+        isClearable={ clearable && !readOnly }
+        isDisabled={ disabled }
+        isOptionDisabled={ (option) => !!option.disabled }
+        isLoading={ loading }
+        isMulti={ multiple }
+        loadingMessage={ () => loadingLabel }
+        menuPlacement="auto"
+        noOptionsMessage={ () => noResultLabel }
+        onBlur={ onBlur }
+        onChange={ handleChange }
+        onInputChange={ handleInputChange }
+        openMenuOnClick={ !readOnly }
+        options={ items }
+        // @ts-ignore react-select doesn't seem to provide a SelectInstance that handle both single and multi
         ref={ ref }
-        required={ multiple ? false : required } // FIXME required on multiple mode should be manually handled
-        selectionBehavior={ multiple ? 'clear' : 'replace' }
-        value={ currentValue }
-        { ...props }>
-        { children }
-      </VendorCombobox.Root>
+        required={ required }
+        styles={{
+          container: () => ({}),
+          control: () => ({}),
+          groupHeading: () => ({}),
+          menuPortal: ({ zIndex, ...css }) => css,
+          option: () => ({}),
+        }}
+        tabSelectsValue={ false }
+        unstyled
+        value={ comboboxValue }
+        {
+          ...(customFilter ? {
+            filterOption: (option: FilterOptionOption<ComboboxItem>, inputValue) => customFilter(option.data, inputValue),
+          } : {})
+        }
+        { ...(readOnly ? { menuIsOpen: false } : {}) }
+        {
+          ...(createPortal ? {
+            menuPortalTarget: document.body,
+          } : {
+            menuPosition: 'fixed',
+          })
+        }
+        { ...props } />
     </ComboboxProvider>
   );
 });
@@ -126,4 +203,5 @@ Combobox.displayName = 'Combobox';
 export {
   Combobox,
   type ComboboxProp,
+  type SelectInstance as ComboboxInstance,
 };

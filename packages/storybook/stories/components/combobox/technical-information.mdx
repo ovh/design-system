@@ -16,29 +16,11 @@ import * as ComboboxStories from './combobox.stories';
 
 <Canvas of={ ComboboxStories.Overview } sourceState="none" />
 
+TODO ANATOMY
+
 <TechnicalSpecification
   data={ SpecificationsCombobox }
-  of={ ComboboxStories }
-  extraInfo={ {
-    Combobox: {
-      extendAttribute: {
-        name: "div",
-        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
-      }
-    },
-    ComboboxContent: {
-      extendAttribute: {
-        name: "div",
-        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
-      }
-    },
-    ComboboxControl: {
-      extendAttribute: {
-        name: "div",
-        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
-      }
-    },
-  } } />
+  of={ ComboboxStories } />
 
 <Heading label="Examples" level={ 2 } />
 
@@ -85,6 +67,10 @@ import * as ComboboxStories from './combobox.stories';
 <Heading label="Multiple" level={ 3 } />
 
 <OdsCanvas of={ ComboboxStories.Multiple } sourceState="shown" />
+
+<Heading label="Asynchronous loading" level={ 3 } />
+
+<OdsCanvas of={ ComboboxStories.Async } sourceState="shown" />
 
 <Heading label="Form field" level={ 3 }>
   <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>

@@ -1,25 +1,34 @@
+@use '../../../../../style/state';
+
 @layer ods-organisms {
   .combobox-option {
+    $option: &;
+
     display: flex;
     align-items: center;
     cursor: pointer;
     padding: 0 8px;
     min-height: 32px;
     white-space: break-spaces;
-    color: var(--ods-color-text);
 
-    &[data-highlighted] {
+    &--disabled {
+      @include state.ods-is-disabled();
+    }
+
+    &--focused {
       background-color: var(--ods-color-primary-100);
-    }
 
-    &[data-disabled] {
-      display: none;
-    }
-
-    &[data-state="checked"] {
-      &[data-highlighted] {
-        background-color: var(--ods-color-primary-100);
+      &#{$option}--disabled {
+        background-color: var(--ods-color-neutral-200);
       }
+    }
+
+    &--new {
+      padding: 0;
+    }
+
+    &--selected {
+      background-color: var(--ods-color-primary-050);
     }
   }
 }

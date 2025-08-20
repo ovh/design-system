@@ -1,0 +1,50 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/overlay';
+@use '../../../../../style/state';
+
+@layer ods-organisms {
+  .combobox {
+    box-sizing: border-box;
+    position: relative;
+    border-radius: var(--ods-border-radius-sm);
+
+    &--focused {
+      @include focus.ods-focus();
+    }
+
+    &__control {
+      &__placeholder {
+        display: none;
+      }
+    }
+
+    &__content {
+      &__empty,
+      &__group,
+      &__loading {
+        display: flex;
+        align-items: center;
+        padding: 0 8px;
+        min-height: 32px;
+      }
+
+      &__group {
+        color: var(--ods-color-heading);
+        font-weight: 600;
+
+        &--disabled {
+          @include state.ods-is-disabled();
+        }
+
+        // Target all the child options of the group
+        & + div > [role="option"] {
+          padding-left: 16px;
+        }
+      }
+
+      &__portal {
+        z-index: overlay.$ods-overlay-select-z-index;
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@ import {
   Checkbox, CheckboxControl, CheckboxLabel,
   Clipboard, ClipboardControl, ClipboardTrigger,
   Code,
-  Combobox, ComboboxContent, ComboboxControl,
+  Combobox,
   Datepicker, DatepickerContent, DatepickerControl,
   Divider,
   Drawer, DrawerBody, DrawerContent, DrawerTrigger,
@@ -315,10 +315,8 @@ function App(): ReactElement {
                 { label: 'Parrot', value: 'parrot' },
                 { label: 'Spider', value: 'spider' },
                 { label: 'Goldfish', value: 'goldfish' },
-              ]}>
-              <ComboboxControl placeholder="Combobox" />
-              <ComboboxContent />
-            </Combobox>
+              ]}
+              placeholder="Combobox" />
           </FormField>
 
           <FormField invalid>
@@ -332,10 +330,8 @@ function App(): ReactElement {
                 { label: 'Parrot', value: 'parrot' },
                 { label: 'Spider', value: 'spider' },
                 { label: 'Goldfish', value: 'goldfish' },
-              ]}>
-              <ComboboxControl placeholder="Combobox" />
-              <ComboboxContent />
-            </Combobox>
+              ]}
+              placeholder="Combobox" />
           </FormField>
 
           <FormField>
@@ -350,10 +346,8 @@ function App(): ReactElement {
                 { label: 'Spider', value: 'spider' },
                 { label: 'Goldfish', value: 'goldfish' },
               ]}
-              multiple>
-              <ComboboxControl placeholder="Combobox" />
-              <ComboboxContent />
-            </Combobox>
+              multiple
+              placeholder="Combobox" />
           </FormField>
         </section>
 

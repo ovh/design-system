@@ -1,7 +1,7 @@
 import {
   Button,
   Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel,
-  Combobox, ComboboxContent, ComboboxControl,
+  Combobox,
   Datepicker, DatepickerControl, DatepickerContent,
   FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
   Input,
@@ -100,7 +100,7 @@ function FormNative(): ReactElement {
         </FormFieldLabel>
 
         <Combobox
-          defaultValue={ ['apple'] }
+          defaultValue={ [{ label: 'Apple', value: 'apple' }] }
           items={[
             { label: 'Apple', value: 'apple' },
             { label: 'Banana', value: 'banana' },
@@ -110,13 +110,10 @@ function FormNative(): ReactElement {
           ]}
           multiple
           name="combobox"
-          onValueChange={ ({ value }) => {
-            console.log('Native Combobox value changed:', value);
+          onValueChange={ (details) => {
+            console.log('Native Combobox value changed:', details);
           }}
-          required={ areAllRequired }>
-          <ComboboxControl clearable />
-          <ComboboxContent />
-        </Combobox>
+          required={ areAllRequired } />
 
         <FormFieldHelper>
           This is a combobox with multiple selection

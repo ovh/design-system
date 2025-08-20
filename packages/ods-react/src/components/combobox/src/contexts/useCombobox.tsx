@@ -1,13 +1,17 @@
-import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type FocusEventHandler, type JSX, type ReactNode, createContext, useContext, useState } from 'react';
 import { type Locale } from '../../../../utils/locales';
 import { type INPUT_I18N } from '../../../input/src';
 
-interface ComboboxInputValueChangeDetails {
+type ComboboxPlacement = 'bottom' | 'top';
+
+type ComboboxInputValueChangeDetails = {
   inputValue: string;
 }
 
-interface ComboboxValueChangeDetails {
-  value: string[];
+type ComboboxValueChangeDetails = {
+  isNew: boolean,
+  label: string,
+  value: string,
 }
 
 type CustomData = any; // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -15,26 +19,38 @@ type CustomData = any; // eslint-disable-line @typescript-eslint/no-explicit-any
 type ComboboxOptionItem<T extends CustomData = CustomData> = {
   customRendererData?: T,
   disabled?: boolean;
-  group?: string;
-  isNewElement?: boolean;
-  label: string;
-  value: string;
+  label: string,
+  value: string,
+  /** @internal */
+  __isNew__?: boolean,
 };
 
 type ComboboxGroupItem<T extends CustomData = CustomData> = {
   customRendererData?: T,
   disabled?: boolean;
-  label: string;
-  options: ComboboxOptionItem[];
+  label: string,
+  options: ComboboxOptionItem[],
 };
 
 type ComboboxItem<T extends CustomData = CustomData> = ComboboxGroupItem<T> | ComboboxOptionItem<T>;
 
-type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
+interface ComboboxRootProp {
   /**
    * Whether to allow adding a value which is not part of the items.
    */
   allowCustomValue?: boolean,
+  /**
+   * Whether the clear button is displayed.
+   */
+  clearable?: boolean,
+  /**
+   * Whether the component should be rendered in the DOM close to the body tag.
+   */
+  createPortal?: boolean;
+  /**
+   * Custom filter logic to apply to each item.
+   */
+  customFilter?: (item: ComboboxItem, inputValue: string) => boolean,
   /**
    * Custom render for each option item.
    */
@@ -42,7 +58,7 @@ type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
   /**
    * The initial selected value(s). Use when you don't need to control the selected value(s) of the combobox.
    */
-  defaultValue?: string[],
+  defaultValue?: ComboboxItem[],
   /**
    * Whether the component is disabled.
    */
@@ -64,6 +80,14 @@ type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
    */
   items: ComboboxItem[],
   /**
+   * Whether the component is in loading state.
+   */
+  loading?: boolean,
+  /**
+   * Label displayed when the component is in loading state.
+   */
+  loadingLabel?: string
+  /**
    * The locale used for the translation of the internal elements.
    */
   locale?: Locale,
@@ -84,9 +108,21 @@ type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
    */
   noResultLabel?: string,
   /**
+   * Callback fired when on input blur.
+   */
+  onBlur?: FocusEventHandler<HTMLInputElement>,
+  /**
+   * Callback fired when the input value changes.
+   */
+  onInputChange?: (detail: ComboboxInputValueChangeDetails) => void,
+  /**
    * Callback fired when the value(s) changes.
    */
-  onValueChange?: (value: ComboboxValueChangeDetails) => void,
+  onValueChange?: (details: ComboboxValueChangeDetails[]) => void,
+  /**
+   * The placeholder text to display in the input.
+   */
+  placeholder?: string,
   /**
    * Whether the component is readonly.
    */
@@ -99,28 +135,43 @@ type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'onSelect'> & {
   /**
    * The controlled selected value(s).
    */
-  value?: string[]
-};
+  value?: ComboboxItem[],
+}
 
-type ComboboxContextType = ComboboxRootProp & {
-  filteredItems?: ComboboxItem[];
-};
+interface ComboboxProviderProp extends Pick<ComboboxRootProp, 'customOptionRenderer' | 'highlightResults' | 'i18n' | 'invalid' | 'locale' | 'placeholder' | 'readOnly'> {
+  children: ReactNode,
+}
 
-interface ComboboxProviderProp extends ComboboxContextType {
-  children: ReactNode;
+interface ComboboxContextType extends Omit<ComboboxProviderProp, 'children'> {
+  computedPlacement: ComboboxPlacement,
+  setComputedPlacement: (placement: ComboboxPlacement) => void,
 }
 
 const ComboboxContext = createContext<ComboboxContextType | undefined>(undefined);
 
 const ComboboxProvider = ({
   children,
-  filteredItems,
-  ...props
+  customOptionRenderer,
+  highlightResults,
+  i18n,
+  invalid,
+  locale,
+  placeholder,
+  readOnly,
 }: ComboboxProviderProp): JSX.Element => {
+  const [computedPlacement, setComputedPlacement] = useState<ComboboxPlacement>('bottom');
+
   return (
     <ComboboxContext.Provider value={{
-      ...props,
-      filteredItems,
+      computedPlacement,
+      customOptionRenderer,
+      highlightResults,
+      i18n,
+      invalid,
+      locale,
+      placeholder,
+      readOnly,
+      setComputedPlacement,
     }}>
       { children }
     </ComboboxContext.Provider>
@@ -129,9 +180,11 @@ const ComboboxProvider = ({
 
 function useCombobox(): ComboboxContextType {
   const context = useContext(ComboboxContext);
+
   if (!context) {
     throw new Error('useCombobox must be used within a ComboboxProvider');
   }
+
   return context;
 }
 

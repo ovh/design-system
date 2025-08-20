@@ -1,0 +1,10 @@
+@layer ods-organisms {
+  .combobox-tag {
+    &__item {
+      &--focused {
+        border-color: var(--ods-color-information-200);
+        background-color: var(--ods-color-information-100);
+      }
+    }
+  }
+}

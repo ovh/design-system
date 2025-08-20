@@ -1,0 +1,22 @@
+@layer ods-organisms {
+  .combobox-create-option {
+    display: grid;
+    grid-template-rows: 1fr max-content;
+    align-items: center;
+    width: 100%;
+    min-height: inherit;
+    color: var(--ods-color-primary-500);
+    font-weight: 600;
+
+    &__label {
+      display: flex;
+      flex-flow: row;
+      column-gap: 4px;
+      align-items: center;
+    }
+
+    &__divider {
+      width: 100%;
+    }
+  }
+}

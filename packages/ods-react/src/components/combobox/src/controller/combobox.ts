@@ -1,202 +1,25 @@
-import { type JSX, type KeyboardEvent, type RefObject } from 'react';
-import { getElementText } from '../../../../utils/element';
-import { type ComboboxItem, type ComboboxOptionItem } from '../contexts/useCombobox';
+import { Children, type JSX, type ReactNode, cloneElement, isValidElement } from 'react';
 
-interface ComboboxProps {
-  allowCustomValue?: boolean;
-  customOptionRenderer?: (item: ComboboxItem) => JSX.Element;
-  inputValue: string;
-  items: ComboboxItem[];
-  multiple?: boolean;
-  newElementLabel?: string;
-  value?: string[];
-}
+type MarkWrapper = ({ key, part }: { key: string | number, part: string }) => JSX.Element;
 
-interface FilterItemsProps extends ComboboxProps {
-  hasExactMatch: boolean;
-  isValueAlreadySelected: boolean;
-}
-
-function calculateNewFocusIndex(
-  indexToRemove: number,
-  totalLength: number,
-): number | null {
-  const newLength = totalLength - 1;
-
-  if (indexToRemove > 0 && newLength > 0) {
-    return indexToRemove - 1;
-  } else if (newLength > 0) {
-    return 0;
+function highlightNode(node: ReactNode | string, searchText: string, markWrapper: MarkWrapper): ReactNode {
+  if (typeof node === 'string') {
+    return highlightText(node, searchText, markWrapper);
   }
 
-  return null;
-}
-
-function escapeRegExp(string: string): string {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-function filterItems({
-  allowCustomValue,
-  customOptionRenderer,
-  hasExactMatch,
-  inputValue,
-  isValueAlreadySelected,
-  items,
-  multiple,
-  value,
-}: FilterItemsProps): ComboboxItem[] {
-  if (!inputValue && !value?.length) {
-    return items;
+  if (isValidElement(node)) {
+    const children = Children.map(node.props.children, (n) => highlightNode(n, searchText, markWrapper));
+    return cloneElement(node, node.props, children);
   }
 
-  const filtered = items.reduce<ComboboxItem[]>((acc, item) => {
-    if ('options' in item) {
-      const filteredOptions = item.options.filter((option) => {
-        if ('options' in option) {
-          return true;
-        }
-
-        if (value?.includes(option.value) && multiple) {
-          return false;
-        }
-
-        return !inputValue || matchesSearch(getItemText(option, customOptionRenderer), inputValue);
-      });
-
-      if (filteredOptions.length > 0) {
-        acc.push({
-          ...item,
-          options: filteredOptions,
-        });
-      }
-    } else if (!value?.includes(item.value) || !multiple) {
-      if (!inputValue || matchesSearch(getItemText(item, customOptionRenderer), inputValue)) {
-        acc.push(item);
-      }
-    }
-    return acc;
-  }, []);
-
-  if (allowCustomValue && inputValue && !hasExactMatch && !isValueAlreadySelected) {
-    return [{
-      disabled: false,
-      isNewElement: true,
-      label: inputValue,
-      value: inputValue,
-    }, ...filtered];
-  }
-
-  return filtered;
+  return node;
 }
 
-function findLabelForValue(items: ComboboxItem[] = [], value: string): string {
-  for (const item of items) {
-    if ('options' in item) {
-      const foundInGroup = findLabelForValue(item.options, value);
-      if (foundInGroup !== value) {
-        return foundInGroup;
-      }
-    } else if (item.value === value) {
-      return String(item.label);
-    }
-  }
-  return value;
-}
+function highlightText(text: string, searchText: string, markWrapper: MarkWrapper): (JSX.Element | string)[] {
+  const parts = splitTextBySearchTerm(text, searchText);
 
-function flattenItems(items: ComboboxItem[] = [], groupLabel?: string): ComboboxOptionItem[] {
-  const result: ComboboxOptionItem[] = [];
-  for (const item of items) {
-    if ('options' in item) {
-      result.push(...flattenItems(item.options, item.label));
-    } else {
-      result.push(groupLabel ? { ...item, group: groupLabel } : item);
-    }
-  }
-  return result;
-}
-
-function getFilteredItems({
-  allowCustomValue,
-  customOptionRenderer,
-  inputValue,
-  items,
-  multiple,
-  value = [],
-}: ComboboxProps): ComboboxItem[] {
-  const exactMatch = hasExactMatch(items, inputValue, customOptionRenderer);
-  const valueSelected = isValueAlreadySelected(value, inputValue);
-
-  return filterItems({
-    allowCustomValue,
-    customOptionRenderer,
-    hasExactMatch: exactMatch,
-    inputValue,
-    isValueAlreadySelected: valueSelected,
-    items,
-    multiple,
-    value,
-  });
-}
-
-function getItemText(
-  item: ComboboxItem,
-  customOptionRenderer?: (item: ComboboxItem) => JSX.Element,
-): string {
-  if ('options' in item) {
-    return item.label;
-  }
-  return customOptionRenderer ? getElementText(customOptionRenderer(item)) : item.label;
-}
-
-function hasExactMatch(
-  items: ComboboxItem[],
-  inputValue: string,
-  customOptionRenderer?: (item: ComboboxItem) => JSX.Element,
-): boolean {
-  if (!inputValue) {
-    return false;
-  }
-  return items.some((item) => {
-    if ('options' in item) {
-      return item.options.some((option) =>
-        getItemText(option, customOptionRenderer).toLowerCase() === inputValue.toLowerCase(),
-      );
-    }
-    return getItemText(item, customOptionRenderer).toLowerCase() === inputValue.toLowerCase();
-  });
-}
-
-function isKeyboardEventAtInputStart(
-  e: KeyboardEvent<HTMLInputElement>,
-  inputRef: RefObject<HTMLInputElement>,
-  key: string,
-): boolean {
-  return e.key === key &&
-    inputRef.current !== null &&
-    inputRef.current.selectionStart === 0 &&
-    inputRef.current.selectionEnd === 0;
-}
-
-function isValueAlreadySelected(value: string[], inputValue: string): boolean {
-  if (!inputValue) {
-    return false;
-  }
-  return value.some((selectedValue) =>
-    selectedValue.toLowerCase() === inputValue.toLowerCase(),
-  );
-}
-
-function matchesSearch(text: string, inputValue: string): boolean {
-  return text.toLowerCase().includes(inputValue.toLowerCase());
-}
-
-function removeValueFromArray(values: string[], valueToRemove: string): string[] {
-  return values.filter((val) => val !== valueToRemove);
-}
-
-function shouldResetTagFocus(key: string): boolean {
-  return key !== 'Backspace' && key !== 'ArrowLeft';
+  return parts.map((part, idx) =>
+    part.toLowerCase() === searchText ? markWrapper({ key: idx, part }) : part);
 }
 
 function splitTextBySearchTerm(text: string, searchTerm: string): string[] {
@@ -210,18 +33,5 @@ function splitTextBySearchTerm(text: string, searchTerm: string): string[] {
 }
 
 export {
-  calculateNewFocusIndex,
-  escapeRegExp,
-  filterItems,
-  findLabelForValue,
-  flattenItems,
-  getFilteredItems,
-  getItemText,
-  hasExactMatch,
-  isKeyboardEventAtInputStart,
-  isValueAlreadySelected,
-  matchesSearch,
-  removeValueFromArray,
-  shouldResetTagFocus,
-  splitTextBySearchTerm,
+  highlightNode,
 };

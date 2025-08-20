@@ -1,7 +1,7 @@
 import {
   Button,
   Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel,
-  Combobox, ComboboxContent, ComboboxControl,
+  Combobox, type ComboboxItem,
   Datepicker, DatepickerControl, DatepickerContent,
   FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
   Input,
@@ -21,7 +21,7 @@ import styles from './formHookForm.scss';
 type FormData = {
   checkboxAlone: string,
   checkboxGroup: string[],
-  combobox: string[],
+  combobox: ComboboxItem[],
   datepicker: Date,
   input: string,
   password: string,
@@ -37,7 +37,7 @@ type FormData = {
 const defaultValue: FormData = {
   checkboxAlone: 'checkbox alone',
   checkboxGroup: ['grouped checkbox 1'],
-  combobox: ['apple'],
+  combobox: [{ label: 'Apple', value: 'apple' }],
   datepicker: new Date(),
   input: 'default input',
   password: 'default password',
@@ -165,14 +165,11 @@ function FormHookForm(): ReactElement {
                 { label: 'Mango', value: 'mango' },
               ]}
               multiple
-              onValueChange={ ({ value }) => {
-                console.log('Combobox value changed:', value);
-                setValue(field.name, value);
+              onValueChange={ (details) => {
+                console.log('Combobox value changed:', details);
+                setValue(field.name, details);
               }}
-              >
-              <ComboboxControl />
-              <ComboboxContent />
-            </Combobox>
+              required={ areAllRequired } />
 
             <FormFieldHelper>
               This is a combobox with multiple selection

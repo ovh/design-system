@@ -1,7 +1,7 @@
 import {
   Button,
   Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel,
-  Combobox, ComboboxContent, ComboboxControl,
+  Combobox, type ComboboxItem,
   Datepicker, DatepickerControl, DatepickerContent,
   FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
   Input,
@@ -22,7 +22,7 @@ import styles from './formFormik.scss';
 type FormData = {
   checkboxAlone: string,
   checkboxGroup: string[],
-  combobox: string[],
+  combobox: ComboboxItem[],
   datepicker: Date,
   input: string,
   password: string,
@@ -38,7 +38,10 @@ type FormData = {
 const validationSchema = yup.object<FormData>({
   checkboxAlone: yup.string().nullable().required(),
   checkboxGroup: yup.array().of(yup.string()).nullable().required(),
-  combobox: yup.array().of(yup.string()).nullable().required(),
+  combobox: yup.array().of(yup.object({
+    label: yup.string().required(),
+    value: yup.string().required(),
+  })).min(1).required(),
   datepicker: yup.date().nullable().required(),
   input: yup.string().nullable().required(),
   password: yup.string().nullable().required(),
@@ -56,7 +59,7 @@ function FormFormik(): ReactElement {
     initialValues: {
       checkboxAlone: 'checkbox alone',
       checkboxGroup: ['grouped checkbox 1'],
-      combobox: ['apple'],
+      combobox: [{ label: 'Apple', value: 'apple' }],
       datepicker: new Date(),
       input: 'default input',
       password: 'default password',
@@ -148,13 +151,11 @@ function FormFormik(): ReactElement {
           ]}
           multiple
           onBlur={ formik.handleBlur }
-          onValueChange={ ({ value }) => {
-            console.log('Combobox value changed:', value);
-            formik.setFieldValue('combobox', value);
-          }}>
-          <ComboboxControl />
-          <ComboboxContent />
-        </Combobox>
+          onValueChange={ (details) => {
+            console.log('Combobox value changed:', details);
+            formik.setFieldValue('combobox', details);
+          }}
+          required={ true } />
 
         <FormFieldHelper>
           This is a combobox with multiple selection

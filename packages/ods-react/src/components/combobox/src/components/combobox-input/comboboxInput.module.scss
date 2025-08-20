@@ -1,0 +1,13 @@
+@use '../../../../../style/input';
+
+@layer ods-organisms {
+  .combobox-input {
+    display: inline-flex;
+    flex: 1;
+    outline: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    height: calc(input.$ods-input-field-height - 10px);
+  }
+}

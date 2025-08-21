@@ -19,7 +19,7 @@
     "test:spec:ci": "npm run test:spec"
   },
   "dependencies": {
-    "@ark-ui/react": "latest",
+    "@ark-ui/react": "5.19.0",
     "classnames": "2.5.1"
   },
   "peerDependencies": {

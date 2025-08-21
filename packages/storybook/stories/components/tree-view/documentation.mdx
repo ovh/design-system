@@ -5,23 +5,21 @@ import { BestPractices } from '../../../src/components/bestPractices/BestPractic
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
-import { ODS_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ TreeViewStories } name='Documentation' />
 
 <Banner of={ TreeViewStories } />
 
-_**TreeView** TODO some text about the component_
-
 <Canvas of={ TreeViewStories.Overview } sourceState='none' />
+The **Tree View** component displays hierarchical data in a parent-child structure. It allows users to expand, collapse, and interact with nested items.
 
 <Heading label="Overview" level={ 2 } />
 
 <IdentityCard aliases={ [] }
-              figmaLink="TODO"
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/8NZfqeptysMQInF02WaIJR"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/tree-view"
               name="TreeView"
-              relatedComponents={ [] }
               startingVersion={ 19 }>
   TODO some text about the component.
 </IdentityCard>
@@ -32,13 +30,27 @@ TODO picture
 
 <Heading label="Usage" level={ 2 } />
 
-TODO if relevant
+The **Tree View** component is used to navigate or manage hierarchical datasets. Common use cases include:
+
+for representing file systems, nested categories, any structured dataset that benefits from a collapsible interface.
+
+- Directory structures
+- Nested navigation menus
+- Category selectors
+- Configurations and settings with nested options?
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
-  donts={[]}
-  dos={[]}
+  donts={[
+    'Use Tree View for flat lists. Use Table instead',
+    'Overload Tree View with excessive nesting without search/filtering'
+  ]}
+  dos={[
+    '- Use a Tree View for hierarchical data where relationships between items are important',
+    '- Enable filtering when the dataset is large to help users quickly find nodes',
+    '- Use checkboxes when multi-selection or bulk actions are required'
+  ]}
 />
 
 <Heading label="Placement" level={ 2 } />

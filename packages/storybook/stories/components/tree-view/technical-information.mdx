@@ -1,6 +1,7 @@
 import { Canvas, Meta } from '@storybook/blocks';
 import SpecificationsTreeView from '../../../../ods-react/src/components/tree-view/documentation/tree-view.json';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TreeViewStories from './tree-view.stories';
@@ -19,6 +20,8 @@ import * as TreeViewStories from './tree-view.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<Canvas of={ TreeViewStories.Default } sourceState="shown" />
+<OdsCanvas of={ TreeViewStories.Default } sourceState="shown" />
+
+<OdsCanvas of={ TreeViewStories.Multiple } sourceState="shown" />
 
 ...

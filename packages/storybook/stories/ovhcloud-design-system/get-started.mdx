@@ -53,6 +53,28 @@ All enums, interfaces, events are available directly from the `ods-react` lib
 You need to import a theme to display all the components correctly.
 It defines all the colors, typographies, etc...
 
+<Heading label="with fonts loaded from woff2 font files (recommended v19.2.0+)" level={3} />
+
+via ES import:
+
+<Source
+  code={`
+import "@ovhcloud/ods-themes/css-fontless";
+import "@ovhcloud/ods-themes/fonts";
+`}
+  dark="true"
+  language="typescript"
+/>
+
+via Sass import:
+
+<Source code={`
+@import "@ovhcloud/ods-themes/css-fontless";
+@import "@ovhcloud/ods-themes/fonts";
+`} dark="true" language="css" />
+
+<Heading label="with fonts encoded in base64 (legacy)" level={3} />
+
 via ES import:
 
 <Source code="import '@ovhcloud/ods-themes/default';"

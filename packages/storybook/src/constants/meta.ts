@@ -18,6 +18,7 @@ enum HOME_TITLE {
   getStarted = `${SECTION.home}/Get Started`,
   handlingFormGuide = `${SECTION.home}/${SECTION.guides}/Handling Form`,
   i18nGuide = `${SECTION.home}/${SECTION.guides}/Internationalization`,
+  fontGuide = `${SECTION.home}/${SECTION.guides}/Fonts`,
   migration12to13 = `${SECTION.home}/${SECTION.whatsNew}/${SECTION.migrationGuide}/12.x to 13.x`,
   migration13to14 = `${SECTION.home}/${SECTION.whatsNew}/${SECTION.migrationGuide}/13.x to 14.x`,
   migration14to15 = `${SECTION.home}/${SECTION.whatsNew}/${SECTION.migrationGuide}/14.x to 15.x`,

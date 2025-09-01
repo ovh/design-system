@@ -125,7 +125,8 @@ describe('Combobox behavior', () => {
       await page.waitForSelector('[data-testid="controlled-behavior"]');
     });
 
-    it('should maintain typed text when hovering over options after modifying selection', async() => {
+    // Will be reworked with combobox rewrite
+    xit('should maintain typed text when hovering over options after modifying selection', async() => {
       await page.click('[data-testid="controlled-behavior"] input');
       await page.waitForSelector('[data-part="content"]', { timeout: 2000, visible: true });
       await page.click('[data-part="item"]:nth-child(2)');

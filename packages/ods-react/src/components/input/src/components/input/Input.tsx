@@ -13,6 +13,7 @@ interface InputProp extends Omit<ComponentPropsWithRef<'input'>, 'type'>, InputR
 const Input: FC<InputProp> = forwardRef(({
   className,
   clearable = false,
+  defaultValue,
   i18n,
   id,
   invalid,
@@ -21,21 +22,23 @@ const Input: FC<InputProp> = forwardRef(({
   maskOption = { enable: false, initialState: INPUT_MASK_STATE.close },
   onClear,
   type = INPUT_TYPE.text,
+  value,
   ...props
 }, ref): JSX.Element => {
   const defaultId = useId();
   const fieldContext = useFormField();
   const inputRef = useRef<HTMLInputElement>(null);
-  const [hasValue, setHasValue] = useState(isValueDefined(props.defaultValue) || isValueDefined(props.value));
+  const [hasValue, setHasValue] = useState(isValueDefined(defaultValue) || isValueDefined(value));
   const [isMaskOpen, setIsMaskOpen] = useState(maskOption?.initialState === INPUT_MASK_STATE.open);
-  const isControlled = props.value !== undefined;
+  const isControlled = value !== undefined;
   const isInvalid = invalid || fieldContext?.invalid;
+  const inputId = id || fieldContext?.id || defaultId;
 
   useImperativeHandle(ref, () => inputRef.current!, [inputRef]);
 
   useEffect(() => {
-    setHasValue(isValueDefined(inputRef.current?.value));
-  }, [inputRef.current?.value]);
+    setHasValue(isValueDefined(value));
+  }, [value]);
 
   const hasClearButton = useMemo(() => {
     return clearable && !loading && hasValue;
@@ -56,8 +59,6 @@ const Input: FC<InputProp> = forwardRef(({
   const hasActions = useMemo(() => {
     return hasClearButton || hasSearchButton || hasToggleMaskIcon || loading;
   }, [hasClearButton, hasSearchButton, hasToggleMaskIcon, loading]);
-
-  const inputId = id || fieldContext?.id || defaultId;
 
   function onChange(e: ChangeEvent<HTMLInputElement>): void {
     props.onChange && props.onChange(e);
@@ -104,9 +105,11 @@ const Input: FC<InputProp> = forwardRef(({
           className={ style['input__field'] }
           data-ods="input"
           data-invalid={ isInvalid ? true : undefined }
+          defaultValue={ defaultValue }
           id={ inputId }
           ref={ inputRef }
           type={ inputType }
+          value={ value }
           { ...props }
           onChange={ onChange } />
 

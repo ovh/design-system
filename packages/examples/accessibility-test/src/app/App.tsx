@@ -1,45 +1,101 @@
 import {
-  BUTTON_COLOR, BUTTON_VARIANT, CARD_COLOR, DIVIDER_COLOR, DRAWER_POSITION, ICON_NAME, MESSAGE_COLOR, TAG_COLOR, TEXT_PRESET,
-  Accordion, AccordionContent, AccordionItem, AccordionTrigger,
+  BUTTON_COLOR,
+  BUTTON_VARIANT,
+  CARD_COLOR,
+  DIVIDER_COLOR,
+  DRAWER_POSITION,
+  ICON_NAME,
+  MESSAGE_COLOR,
+  TAG_COLOR,
+  TEXT_PRESET,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
   Badge,
-  Breadcrumb, BreadcrumbItem, BreadcrumbLink,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
   Button,
   Card,
-  Checkbox, CheckboxControl, CheckboxLabel,
-  Clipboard, ClipboardControl, ClipboardTrigger,
+  Checkbox,
+  CheckboxControl,
+  CheckboxLabel,
+  Clipboard,
+  ClipboardControl,
+  ClipboardTrigger,
   Code,
-  Combobox, ComboboxContent, ComboboxControl,
-  Datepicker, DatepickerContent, DatepickerControl,
+  Combobox,
+  ComboboxContent,
+  ComboboxControl,
+  Datepicker,
+  DatepickerContent,
+  DatepickerControl,
   Divider,
-  Drawer, DrawerBody, DrawerContent, DrawerTrigger,
-  FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
-  FileUpload, FileUploadItem, FileUploadList,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerTrigger,
+  FormField,
+  FormFieldError,
+  FormFieldHelper,
+  FormFieldLabel,
+  FileUpload,
+  FileUploadItem,
+  FileUploadList,
   Icon,
   Input,
   Link,
   Medium,
-  Message, MessageBody, MessageIcon,
-  Modal, ModalBody, ModalContent, ModalTrigger,
+  Message,
+  MessageBody,
+  MessageIcon,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalTrigger,
   Pagination,
   Password,
-  PhoneNumber, PhoneNumberControl, PhoneNumberCountryList,
-  Popover, PopoverContent, PopoverTrigger,
+  PhoneNumber,
+  PhoneNumberControl,
+  PhoneNumberCountryList,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
   ProgressBar,
-  Quantity, QuantityControl, QuantityInput,
-  Radio, RadioControl, RadioGroup, RadioLabel,
+  Quantity,
+  QuantityControl,
+  QuantityInput,
+  Radio,
+  RadioControl,
+  RadioGroup,
+  RadioLabel,
   Range,
-  Select, SelectContent, SelectControl,
+  Select,
+  SelectContent,
+  SelectControl,
   Skeleton,
   Spinner,
-  Switch, SwitchItem,
+  Switch,
+  SwitchItem,
   Table,
-  Tabs, TabContent, TabList, Tab,
+  Tabs,
+  TabContent,
+  TabList,
+  Tab,
   Tag,
   Text,
   Textarea,
-  Timepicker, TimepickerControl, TimepickerTimezoneList,
+  Timepicker,
+  TimepickerControl,
+  TimepickerTimezoneList,
   Toggle,
-  Tooltip, TooltipContent, TooltipTrigger,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+  TreeView,
+  TreeViewNode,
+  TreeViewNodes,
 } from '@ovhcloud/ods-react';
 import { type ReactElement, useState } from 'react';
 import { AccessibilityControl } from './components/accessibilityControl/AccessibilityControl';
@@ -47,6 +103,27 @@ import style from './app.module.scss';
 
 function App(): ReactElement {
   const [files, setFiles] = useState<File[]>([]);
+  const collection = [
+    {
+      id: 'src',
+      name: 'src',
+      expanded: true,
+      children: [
+        { id: 'app.tsx', name: 'app.tsx' },
+        { id: 'index.ts', name: 'index.ts' },
+        {
+          id: 'components',
+          name: 'components',
+          children: [
+            { id: 'Button.tsx', name: 'Button.tsx' },
+            { id: 'Card.tsx', name: 'Card.tsx' },
+          ],
+        },
+      ],
+    },
+    { id: 'package.json', name: 'package.json' },
+    { id: 'readme.md', name: 'README.md' },
+  ];
 
   return (
     <div className={ style.app }>
@@ -1196,6 +1273,18 @@ function App(): ReactElement {
               Some additional context.
             </TooltipContent>
           </Tooltip>
+        </section>
+
+        <section>
+          <h1>TreeView</h1>
+
+          <TreeView items={ collection }>
+            <TreeViewNodes>
+              { collection.map((item) => (
+                <TreeViewNode key={ item.id } item={ item } />
+              )) }
+            </TreeViewNodes>
+          </TreeView>
         </section>
       </main>
     </div>

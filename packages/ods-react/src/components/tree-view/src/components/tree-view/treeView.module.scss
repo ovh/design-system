@@ -1,10 +1,7 @@
-@use '../../../../../style/focus';
+@use '../../../../../style/state';
 
-@layer ods-organisms {
+@layer ods-molecules {
   .tree-view {
     color: var(--ods-color-text);
-    font-family: var(--ods-font-family-default);
-
-   
   }
 }

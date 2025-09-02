@@ -7,10 +7,11 @@ export default {
 
 export const customStyle = () => (
   <TreeView
+    items={ [] }
     data-testid="custom-style"
     style={{ height: '42px' }} />
 );
 
 export const render = () => (
-  <TreeView data-testid="render" />
+  <TreeView items={ [] } data-testid="render" />
 );

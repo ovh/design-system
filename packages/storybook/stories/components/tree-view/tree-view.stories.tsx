@@ -5,6 +5,7 @@ import {
   type TreeViewProp,
   TreeViewNode,
   type TreeViewValueChangeDetail,
+  TreeViewNodes,
 } from '../../../../ods-react/src/components/tree-view/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
@@ -63,10 +64,13 @@ export const Default: Story = {
 
     return (
       <TreeView
+        items={ collection }
         onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
-        { collection.map((item) => (
-          <TreeViewNode key={ item.id } item={ item } />
-        )) }
+        <TreeViewNodes>
+          { collection.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
       </TreeView>
     );
   }
@@ -79,10 +83,13 @@ export const Overview: Story = {
 
     return (
       <TreeView
+        items={ collection }
         onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
-        { collection.map((item) => (
-          <TreeViewNode key={ item.id } item={ item } />
-        )) }
+        <TreeViewNodes>
+          { collection.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
       </TreeView>
     );
   }
@@ -97,11 +104,14 @@ export const Multiple: Story = {
     const collection = sampleCollection;
     return (
       <TreeView
+        items={ collection }
         multiple
         onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
-        { collection.map((item) => (
-          <TreeViewNode key={ item.id } item={ item } />
-        )) }
+        <TreeViewNodes>
+          { collection.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
       </TreeView>
     )
   }

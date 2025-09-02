@@ -19,6 +19,7 @@ export default !!process.env.E2E ?
     testTimeout: 60000,
   } : {
     ...baseOption,
+    testEnvironment: 'jsdom',
     transform: {
       ...baseOption.transform,
       '\\.scss$': 'jest-transform-stub',

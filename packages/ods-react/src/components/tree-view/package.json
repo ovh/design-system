@@ -17,13 +17,5 @@
     "test:e2e:ci": "CI=true npm run test:e2e",
     "test:spec": "jest 'tests/.*.spec.ts$' --passWithNoTests",
     "test:spec:ci": "npm run test:spec"
-  },
-  "dependencies": {
-    "@ark-ui/react": "5.19.0",
-    "classnames": "2.5.1"
-  },
-  "peerDependencies": {
-    "react": ">=18.2.0",
-    "react-dom": ">=18.2.0"
   }
 }

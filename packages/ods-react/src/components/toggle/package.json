@@ -15,7 +15,7 @@
     "start:storybook": "storybook dev -p 3000 --no-open",
     "test:e2e": "E2E=true start-server-and-test 'npm run start:storybook' 3000 'jest -i --detectOpenHandles'",
     "test:e2e:ci": "CI=true npm run test:e2e",
-    "test:spec": "jest 'tests/.*.spec.ts$' --passWithNoTests",
+    "test:spec": "jest --passWithNoTests",
     "test:spec:ci": "npm run test:spec"
   }
 }

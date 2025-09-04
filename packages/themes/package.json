@@ -10,6 +10,19 @@
     "./default": {
       "sass": "./src/default/index.scss",
       "default": "./dist/default/index.css"
+    },
+    "./css-fontless": {
+      "sass": "./src/default/index-fontless.scss",
+      "default": "./dist/default/index-fontless.css",
+      "types": "./src/default/index.d.ts"
+    },
+    "./fonts": {
+      "sass": "./src/default/fonts.scss",
+      "default": "./dist/default/fonts.css",
+      "types": "./src/default/index.d.ts"
+    },
+    "./fonts/*": {
+      "default": "./themes/assets/fonts/*"
     }
   },
   "types": "dist/index.d.ts",

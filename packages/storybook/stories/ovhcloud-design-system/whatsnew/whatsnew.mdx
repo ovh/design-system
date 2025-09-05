@@ -183,7 +183,7 @@ With this new version we got rid of those constraints, which gave us some benefi
 - easier style customization.
 - easier React integration (no more `ref` needed, nor literal templates).
 
-Although, we tried to stay as close as possible to previous version behaviour, the way you integrate ODS in your React app should be rethought,
+Although, we tried to stay as close as possible to previous version behavior, the way you integrate ODS in your React app should be rethought,
 to ensure you use components as real React elements and not wrapped Web Components anymore.
 
 To check how to start with this new version, please follow the <StorybookLink title={ HOME_TITLE.getStarted }>Get Started</StorybookLink> documentation.
@@ -404,7 +404,7 @@ Here is a non-exhaustive list of the major changes:
 <Heading label="Feature updates:" level={ 3 } />
 
 **Accordion**
-- Update internal logic to use the native behaviour of `details` / `summary` tags.
+- Update internal logic to use the native behavior of `details` / `summary` tags.
 - Interactive elements can now be used inside the accordion without toggling it.
 - New methods `close`, `open` and `toggle` have been added.
 - Add some documentation about usage with React state.
@@ -472,7 +472,7 @@ Though you can of course use a lib on top of that if you want to. We've validate
 The changes on each component are massive, but we did focus on ensuring bumping to this version would be transparent for current ODS users.
 
 We won't go through an exhaustive list of changes, here are the most important ones for each form element:
-- Consistent behaviour regarding blur and error state.
+- Consistent behavior regarding blur and error state.
 - Consistent event triggering (check the guide about event lifecycle).
 - New event `odsInvalid` triggered when component internal validity change.
 - New methods available: `checkValidity`, `getValidationMessage`, `getValidity`, `reportValidity`, `willValidate`.
@@ -917,7 +917,7 @@ It also brings numerous bug fixes across components, ensuring a smoother and mor
 
 <Heading label="v17.1.0" level={ 2 } />
 
-As we're working towards a massive uniformization of all ODS form elements (events, nav behaviour, required state, validity state, ...),
+As we're working towards a massive uniformization of all ODS form elements (events, nav behavior, required state, validity state, ...),
 the amount of changes is too important to be released immediately.
 
 This release brings the expected form-association of form elements, so that they act as native one for

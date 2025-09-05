@@ -10,10 +10,12 @@ type TreeViewI18n = {
 type TreeViewContextType = {
   i18n: TreeViewI18n;
   multiple: boolean;
+  disabled: boolean;
 };
 
 interface TreeViewProviderProps extends Partial<TreeViewContextType> {
   children: ReactNode;
+  disabled?: boolean;
 }
 
 const defaultI18n: TreeViewI18n = Object.freeze({
@@ -24,13 +26,14 @@ const defaultI18n: TreeViewI18n = Object.freeze({
 });
 
 const TreeViewContext = createContext<TreeViewContextType>({
+  disabled: false,
   i18n: defaultI18n,
   multiple: false,
 });
 
-function TreeViewProvider({ children, multiple = false, i18n = defaultI18n }: TreeViewProviderProps): JSX.Element {
+function TreeViewProvider({ children, multiple = false, i18n = defaultI18n, disabled = false }: TreeViewProviderProps): JSX.Element {
   return (
-    <TreeViewContext.Provider value={{ i18n, multiple }}>
+    <TreeViewContext.Provider value={{ disabled, i18n, multiple }}>
       { children }
     </TreeViewContext.Provider>
   );

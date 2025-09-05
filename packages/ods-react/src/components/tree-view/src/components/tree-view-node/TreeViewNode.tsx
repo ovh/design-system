@@ -1,46 +1,64 @@
 import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, type ReactNode, forwardRef, useRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, type KeyboardEvent, type ReactNode, forwardRef, useRef } from 'react';
 import { Checkbox, CheckboxControl } from '../../../../checkbox/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { useTreeView } from '../../contexts/useTreeView';
-import { getCheckboxKeydownHandler } from '../../controller/tree-view';
+import { useTreeViewNodes } from '../../contexts/useTreeViewNodes';
 import style from './treeViewNode.module.scss';
 
-export interface TreeViewItem<TCustom = Record<string, never>> {
+export interface TreeViewItem<CustomData = Record<string, never>> {
+  children?: Array<TreeViewItem<CustomData>>;
+  customRendererData?: CustomData;
+  disabled?: boolean;
+  expanded?: boolean;
+  icon?: ReactNode;
   id: string;
   name: string;
-  children?: Array<TreeViewItem<TCustom>>;
-  expanded?: boolean;
-  disabled?: boolean;
-  icon?: ReactNode;
-  customRendererData?: TCustom;
 }
 
-export type TreeViewCustomRendererArg<TCustom = Record<string, never>> = {
-  item: TreeViewItem<TCustom>;
-  name: string;
-  customData?: TCustom;
+export type TreeViewCustomRendererArg<CustomData = Record<string, never>> = {
+  customData?: CustomData;
   isBranch: boolean;
   isExpanded: boolean;
+  item: TreeViewItem<CustomData>;
+  name: string;
 };
 
-interface TreeViewNodeProp<TCustom = Record<string, never>> extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
-  children?: ReactNode | ((arg: TreeViewCustomRendererArg<TCustom>) => JSX.Element);
+interface TreeViewNodeProp<CustomData = Record<string, never>> extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
+  children?: ReactNode | ((arg: TreeViewCustomRendererArg<CustomData>) => JSX.Element);
   indexPath?: number[];
-  item: TreeViewItem<TCustom>;
+  item: TreeViewItem<CustomData>;
 }
 
 const TreeViewNode: FC<TreeViewNodeProp> = forwardRef(({
   children,
   className,
-  indexPath = [],
+  indexPath,
   item,
   ...props
 }, ref): JSX.Element => {
-  const { multiple } = useTreeView();
+  const { multiple, disabled: globalDisabled } = useTreeView();
+  const { indexPath: contextIndexPath } = useTreeViewNodes();
+  const effectiveIndexPath = indexPath ?? contextIndexPath;
+
+  const isBranch = !!item.children?.length;
+  const isDisabled = !!(globalDisabled || item.disabled);
+  const processedItem = {
+    ...item,
+    disabled: isDisabled,
+  };
   const checkboxRef = useRef<HTMLLabelElement | null>(null);
-  const handleKeyDown = getCheckboxKeydownHandler({ checkboxRef, multiple });
+  function handleKeyDown(e: KeyboardEvent<HTMLElement>): void {
+    if (!multiple || isDisabled) {
+      return;
+    }
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      e.stopPropagation();
+      checkboxRef.current?.click();
+    }
+  }
   function renderCheckboxIndicator(isDisabled: boolean): JSX.Element {
     return (
       <VendorTreeView.NodeCheckboxIndicator
@@ -61,137 +79,123 @@ const TreeViewNode: FC<TreeViewNodeProp> = forwardRef(({
     );
   }
   function renderLabel(): JSX.Element {
-    return (
-      <VendorTreeView.NodeContext>
-        { ({ isBranch, expanded }) => {
-          if (typeof children === 'function') {
-            const renderer = children as (arg: TreeViewCustomRendererArg) => JSX.Element;
-            const content = renderer({
-              customData: item.customRendererData,
-              isBranch,
-              isExpanded: expanded,
-              item,
-              name: item.name,
-            });
+    if (typeof children === 'function') {
+      const renderer = children as (arg: TreeViewCustomRendererArg<unknown>) => JSX.Element;
+      const content = renderer({
+        customData: item.customRendererData,
+        isBranch: !!item.children?.length,
+        isExpanded: false,
+        item,
+        name: item.name,
+      });
 
-            if (isBranch) {
-              return <VendorTreeView.BranchText>{ content }</VendorTreeView.BranchText>;
-            }
+      if (isBranch) {
+        return <VendorTreeView.BranchText>{ content }</VendorTreeView.BranchText>;
+      }
 
-            return multiple ? (
-              <VendorTreeView.ItemText>{ content }</VendorTreeView.ItemText>
-            ) : (
-              <VendorTreeView.ItemText asChild>
-                <span>{ content }</span>
-              </VendorTreeView.ItemText>
-            );
-          }
+      return multiple ? (
+        <VendorTreeView.ItemText>{ content }</VendorTreeView.ItemText>
+      ) : (
+        <VendorTreeView.ItemText asChild>
+          <span>{ content }</span>
+        </VendorTreeView.ItemText>
+      );
+    }
 
-          // Default rendering when no custom renderer
-          return isBranch ? (
-            <VendorTreeView.BranchText>{ item.name }</VendorTreeView.BranchText>
-          ) : (
-            <VendorTreeView.ItemText>{ item.name }</VendorTreeView.ItemText>
-          );
-        } }
-      </VendorTreeView.NodeContext>
+    return isBranch ? (
+      <VendorTreeView.BranchText>{ item.name }</VendorTreeView.BranchText>
+    ) : (
+      <VendorTreeView.ItemText>{ item.name }</VendorTreeView.ItemText>
     );
   }
 
+  const baseClassName = isBranch
+    ? classNames(style['tree-view-node'], className)
+    : classNames(style['tree-view-node'], style['tree-view-node__item'], className);
+
   return (
-    <VendorTreeView.NodeProvider node={ item } indexPath={ indexPath }>
-      <VendorTreeView.NodeContext>
-        { ({ isBranch, disabled: nodeDisabled }) => {
-          const isDisabled = nodeDisabled;
-          const onNodeKeyDown = multiple && !isDisabled ? handleKeyDown : undefined;
-          const baseClassName = isBranch
-            ? classNames(style['tree-view-node'], className)
-            : classNames(style['tree-view-node'], style['tree-view-node__item'], className);
-
-          if (isBranch) {
-            return (
-              <VendorTreeView.Branch
+    <VendorTreeView.NodeProvider node={ processedItem } indexPath={ effectiveIndexPath }>
+      { isBranch ? (
+        <VendorTreeView.Branch
+          aria-disabled={ isDisabled }
+          className={ baseClassName }
+          data-disabled={ isDisabled ? true : undefined }
+          data-ods="tree-view-node"
+          ref={ ref }
+          onKeyDown={ handleKeyDown }
+          { ...props }>
+          <VendorTreeView.BranchControl
+            aria-disabled={ isDisabled }
+            className={ style['tree-view-node__control'] }
+            data-disabled={ isDisabled ? true : undefined }
+            tabIndex={ isDisabled ? -1 : undefined }>
+            <VendorTreeView.BranchIndicator
+              className={ style['tree-view-node__chevron'] }>
+              <Icon name={ ICON_NAME.chevronRight } />
+            </VendorTreeView.BranchIndicator>
+            { multiple ? (
+              <VendorTreeView.NodeCheckbox
                 aria-disabled={ isDisabled }
-                className={ baseClassName }
-                data-disabled={ isDisabled }
-                data-ods="tree-view-node"
-                ref={ ref }
-                { ...props }>
-                <VendorTreeView.BranchControl
-                  aria-disabled={ isDisabled }
-                  className={ style['tree-view-node__control'] }
-                  data-disabled={ isDisabled }
-                  onKeyDown={ onNodeKeyDown }>
-                  <VendorTreeView.BranchIndicator
-                    className={ style['tree-view-node__chevron'] }>
-                    <Icon name={ ICON_NAME.chevronRight } />
-                  </VendorTreeView.BranchIndicator>
-                  { multiple ? (
-                    <VendorTreeView.NodeCheckbox
-                      aria-disabled={ isDisabled }
-                      className={ style['tree-view-node__checkbox'] }
-                      data-disabled={ isDisabled }
-                      ref={ checkboxRef }>
-                      { renderCheckboxIndicator(isDisabled) }
-                      { renderLabel() }
-                    </VendorTreeView.NodeCheckbox>
-                  ) : (
-                    <>
-                      { item.icon ? <span className={ style['tree-view-node__icon'] }>{ item.icon }</span> : null }
-                      { renderLabel() }
-                    </>
-                  ) }
-                </VendorTreeView.BranchControl>
-                <VendorTreeView.BranchContent
-                  className={ style['tree-view-node__children'] }>
-                  { item.children?.map((child, index) => {
-                    // Validate child item before rendering
-                    if (!child?.id || !child?.name) {
-                      console.warn(`TreeViewNode: Skipping invalid child item at index ${index}`);
-                      return null;
-                    }
+                className={ style['tree-view-node__checkbox'] }
+                data-disabled={ isDisabled ? true : undefined }
+                tabIndex={ -1 }
+                ref={ checkboxRef }>
+                { renderCheckboxIndicator(isDisabled) }
+                { renderLabel() }
+              </VendorTreeView.NodeCheckbox>
+            ) : (
+              <>
+                { item.icon ? <span className={ style['tree-view-node__icon'] }>{ item.icon }</span> : null }
+                { renderLabel() }
+              </>
+            ) }
+          </VendorTreeView.BranchControl>
+          <VendorTreeView.BranchContent
+            className={ style['tree-view-node__children'] }>
+            <VendorTreeView.BranchIndentGuide />
+            { item.children?.map((child, index) => {
+              if (!child?.id || !child?.name) {
+                return null;
+              }
 
-                    return (
-                      <TreeViewNode
-                        key={ child.id }
-                        item={ child }
-                        indexPath={ [...indexPath, index] }
-                      />
-                    );
-                  }) }
-                </VendorTreeView.BranchContent>
-              </VendorTreeView.Branch>
-            );
-          }
-
-          return (
-            <VendorTreeView.Item
+              return (
+                <TreeViewNode
+                  key={ child.id }
+                  item={ child }
+                  indexPath={ [...effectiveIndexPath, index] }
+                />
+              );
+            }) }
+          </VendorTreeView.BranchContent>
+        </VendorTreeView.Branch>
+      ) : (
+        <VendorTreeView.Item
+          aria-disabled={ isDisabled }
+          className={ baseClassName }
+          data-disabled={ isDisabled ? true : undefined }
+          data-ods="tree-view-item"
+          tabIndex={ isDisabled ? -1 : undefined }
+          ref={ ref }
+          onKeyDown={ handleKeyDown }
+          { ...props }>
+          { multiple ? (
+            <VendorTreeView.NodeCheckbox
               aria-disabled={ isDisabled }
-              className={ baseClassName }
-              data-disabled={ isDisabled }
-              data-ods="tree-view-item"
-              onKeyDown={ onNodeKeyDown }
-              ref={ ref }
-              { ...props }>
-              { multiple ? (
-                <VendorTreeView.NodeCheckbox
-                  aria-disabled={ isDisabled }
-                  className={ style['tree-view-node__checkbox'] }
-                  data-disabled={ isDisabled }
-                  ref={ checkboxRef }>
-                  { renderCheckboxIndicator(isDisabled) }
-                  { renderLabel() }
-                </VendorTreeView.NodeCheckbox>
-              ) : (
-                <>
-                  { item.icon ? <span className={ style['tree-view-node__icon'] }>{ item.icon }</span> : null }
-                  { renderLabel() }
-                </>
-              ) }
-            </VendorTreeView.Item>
-          );
-        } }
-      </VendorTreeView.NodeContext>
+              className={ style['tree-view-node__checkbox'] }
+              data-disabled={ isDisabled ? true : undefined }
+              tabIndex={ -1 }
+              ref={ checkboxRef }>
+              { renderCheckboxIndicator(isDisabled) }
+              { renderLabel() }
+            </VendorTreeView.NodeCheckbox>
+          ) : (
+            <>
+              { item.icon ? <span className={ style['tree-view-node__icon'] }>{ item.icon }</span> : null }
+              { renderLabel() }
+            </>
+          ) }
+        </VendorTreeView.Item>
+      ) }
     </VendorTreeView.NodeProvider>
   );
 });

@@ -36,16 +36,14 @@ export const Default = () => {
     <TreeView
       items={ collection }
       >
-      <TreeViewNodes>
-        { collection.map((item) => (
-          <TreeViewNode key={ item.id } item={ item } />
-        )) }
-      </TreeViewNodes>
+      { collection.map((item) => (
+        <TreeViewNode key={ item.id } item={ item } />
+      )) }
     </TreeView>
   );
 };
 
-export const DisabledItem = () => {
+export const Disabled = () => {
   const collection = [
     {
       id: 'src',
@@ -63,12 +61,13 @@ export const DisabledItem = () => {
         },
       ],
     },
-    { id: 'package.json', name: 'package.json', disabled: true },
+    { id: 'package.json', name: 'package.json' },
     { id: 'readme.md', name: 'README.md' },
   ];
 
   return (
     <TreeView
+      disabled
       items={ collection }
       >
       <TreeViewNodes>
@@ -551,8 +550,6 @@ export const DynamicChildren = () => {
           id: 'components',
           name: 'components',
           children: [
-            { id: 'Button.tsx', name: 'Button.tsx' },
-            { id: 'Card.tsx', name: 'Card.tsx' },
           ],
         },
       ],

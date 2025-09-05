@@ -1,8 +1,7 @@
-import type { TreeViewI18n } from '../../contexts/useTreeView';
 import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type JSX, type Ref, forwardRef, useMemo } from 'react';
-import { TreeViewProvider } from '../../contexts/useTreeView';
+import { type TreeViewI18n, TreeViewProvider } from '../../contexts/useTreeView';
 import { computeDefaultExpanded, createCollectionFromItems, normalizeSelectedOnChange, normalizeToArray } from '../../controller/tree-view';
 import { type TreeViewItem } from '../tree-view-node/TreeViewNode';
 import style from './treeView.module.scss';
@@ -12,15 +11,17 @@ interface TreeViewValueChangeDetail {
   selectedValue: string | string[];
 }
 
-interface TreeViewProp<TCustom = Record<string, never>> extends ComponentPropsWithRef<'div'> {
+interface TreeViewProp<CustomData = Record<string, never>> extends ComponentPropsWithRef<'div'> {
   /** Expand all nodes by default on mount (uncontrolled). */
   defaultExpandAll?: boolean;
   /** Uncontrolled initial selected value(s). */
   defaultValue?: string | string[];
+  /** Disable the tree view. */
+  disabled?: boolean;
   /** i18n labels for aria and UI. */
   i18n?: TreeViewI18n;
   /** Tree items to render. */
-  items: Array<TreeViewItem<TCustom>>;
+  items: Array<TreeViewItem<CustomData>>;
   /** Enable multiple selection mode. */
   multiple?: boolean;
   /** Callback fired when selection changes. */
@@ -29,8 +30,8 @@ interface TreeViewProp<TCustom = Record<string, never>> extends ComponentPropsWi
   value?: string | string[];
 }
 
-const TreeView = forwardRef(function TreeView<TCustom = Record<string, never>>(
-  { children, className, defaultExpandAll = false, defaultValue, i18n, items, multiple = false, onValueChange, value, ...props }: TreeViewProp<TCustom>,
+const TreeView = forwardRef(function TreeView<CustomData = Record<string, never>>(
+  { children, className, defaultExpandAll = false, defaultValue, disabled = false, i18n, items, multiple = false, onValueChange, value, ...props }: TreeViewProp<CustomData>,
   ref: Ref<HTMLDivElement>,
 ): JSX.Element {
   const collection = useMemo(() => createCollectionFromItems(items), [items]);
@@ -52,15 +53,14 @@ const TreeView = forwardRef(function TreeView<TCustom = Record<string, never>>(
   const defaultArray = normalizeToArray(defaultValue);
 
   return (
-    <TreeViewProvider i18n={ i18n } multiple={ multiple }>
+    <TreeViewProvider disabled={ disabled } i18n={ i18n } multiple={ multiple }>
       <VendorTreeView.Root
         className={ classNames(style['tree-view'], className) }
         collection={ collection }
         data-ods="tree-view"
         defaultExpandedValue={ defaultExpandedValue }
-        ref={ ref }
         selectionMode={ multiple ? 'multiple' : 'single' }
-        { ...props }
+        ref={ ref }
         { ...(multiple
           ? {
             checkedValue: controlledArray,
@@ -71,7 +71,8 @@ const TreeView = forwardRef(function TreeView<TCustom = Record<string, never>>(
             defaultSelectedValue: defaultArray,
             onSelectionChange: handleSelectionChange,
             selectedValue: controlledArray,
-          }) }>
+          }) }
+        { ...props }>
         <VendorTreeView.Tree>
           { children }
         </VendorTreeView.Tree>

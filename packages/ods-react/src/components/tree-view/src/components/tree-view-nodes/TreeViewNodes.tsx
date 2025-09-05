@@ -1,23 +1,21 @@
 import classNames from 'classnames';
-import { Children, type ComponentPropsWithRef, type JSX, type ReactElement, cloneElement, forwardRef, isValidElement } from 'react';
-import { TreeViewNode, type TreeViewNodeProp } from '../tree-view-node/TreeViewNode';
+import { Children, type ComponentPropsWithRef, type JSX, forwardRef, isValidElement } from 'react';
+import { TreeViewNodesProvider } from '../../contexts/useTreeViewNodes';
 import style from './treeViewNodes.module.scss';
 
 interface TreeViewNodesProp extends ComponentPropsWithRef<'div'> {}
 
 const TreeViewNodes = forwardRef<HTMLDivElement, TreeViewNodesProp>(({ children, className, ...props }, ref): JSX.Element => {
-  const normalizedChildren = Children.toArray(children).map((child, childIndex) => {
-    if (isValidElement(child)) {
-      const childType = child.type as typeof TreeViewNode;
-      const isTreeViewNode = childType === TreeViewNode || childType?.displayName === 'TreeViewNode' || childType?.name === 'TreeViewNode';
-      if (isTreeViewNode) {
-        const providedIndexPath = (child.props as TreeViewNodeProp).indexPath;
-        if (!Array.isArray(providedIndexPath)) {
-          return cloneElement(child as ReactElement<TreeViewNodeProp>, { indexPath: [childIndex] } as Partial<TreeViewNodeProp>);
-        }
-      }
+  const wrappedChildren = Children.map(children, (child, childIndex) => {
+    if (!isValidElement(child)) {
+      return child;
     }
-    return child;
+
+    return (
+      <TreeViewNodesProvider key={ child.key || childIndex } indexPath={ [childIndex] }>
+        { child }
+      </TreeViewNodesProvider>
+    );
   });
 
   return (
@@ -26,7 +24,7 @@ const TreeViewNodes = forwardRef<HTMLDivElement, TreeViewNodesProp>(({ children,
       data-ods="tree-view-nodes"
       ref={ ref }
       { ...props }>
-      { normalizedChildren }
+      { wrappedChildren }
     </div>
   );
 });

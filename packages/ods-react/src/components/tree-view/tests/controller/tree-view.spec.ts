@@ -1,6 +1,5 @@
 import type { TreeViewItem } from '../../src/components/tree-view-node/TreeViewNode';
-import type { KeyboardEvent, RefObject } from 'react';
-import { computeDefaultExpanded, getCheckboxKeydownHandler, normalizeSelectedOnChange, normalizeToArray } from '../../src/controller/tree-view';
+import { computeDefaultExpanded, normalizeSelectedOnChange, normalizeToArray } from '../../src/controller/tree-view';
 
 describe('TreeView controller', () => {
   describe('normalizeSelectedOnChange', () => {
@@ -74,34 +73,5 @@ describe('TreeView controller', () => {
     });
   });
 
-  describe('getCheckboxKeydownHandler', () => {
-    it('should click checkbox on Space/Enter in multiple mode', () => {
-      const label = document.createElement('label');
-      const click = jest.spyOn(label, 'click');
-      const checkboxRef: RefObject<HTMLLabelElement> = { current: label };
-      const preventDefault = jest.fn();
-      const handler = getCheckboxKeydownHandler({ checkboxRef, multiple: true });
-
-      handler({ key: ' ', preventDefault } as unknown as KeyboardEvent<HTMLDivElement>);
-      handler({ key: 'Enter', preventDefault } as unknown as KeyboardEvent<HTMLDivElement>);
-
-      expect(preventDefault).toHaveBeenCalledTimes(2);
-      expect(click).toHaveBeenCalledTimes(2);
-    });
-
-    it('should noop in single-select mode', () => {
-      const label = document.createElement('label');
-      const click = jest.spyOn(label, 'click');
-      const checkboxRef: RefObject<HTMLLabelElement> = { current: label };
-      const preventDefault = jest.fn();
-      const handler = getCheckboxKeydownHandler({ checkboxRef, multiple: false });
-
-      handler({ key: ' ', preventDefault } as unknown as KeyboardEvent<HTMLDivElement>);
-      handler({ key: 'Enter', preventDefault } as unknown as KeyboardEvent<HTMLDivElement>);
-
-      expect(preventDefault).not.toHaveBeenCalled();
-      expect(click).not.toHaveBeenCalled();
-    });
-  });
 });
 

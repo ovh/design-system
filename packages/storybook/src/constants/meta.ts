@@ -53,6 +53,7 @@ enum REACT_COMPONENTS_TITLE {
   medium = `${SECTION.reactComponents}/Medium`,
   menu = `${SECTION.reactComponents}/Menu`,
   message = `${SECTION.reactComponents}/Message`,
+  meter = `${SECTION.reactComponents}/Meter`,
   modal = `${SECTION.reactComponents}/Modal`,
   pagination = `${SECTION.reactComponents}/Pagination`,
   password = `${SECTION.reactComponents}/Password`,

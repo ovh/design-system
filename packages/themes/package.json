@@ -5,11 +5,20 @@
   "license": "Apache-2.0",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
     "./default": {
+      "sass": "./src/default/default.scss",
+      "default": "./dist/default/default.css"
+    },
+    "./default/css": {
       "sass": "./src/default/index.scss",
       "default": "./dist/default/index.css"
+    },
+    "./default/fonts": {
+      "sass": "./src/default/fonts.scss",
+      "default": "./dist/default/fonts.css"
     }
   },
   "types": "dist/index.d.ts",

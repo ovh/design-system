@@ -1,0 +1,49 @@
+@mixin ods-icon-font-face($src) {
+  @font-face {
+    font-family: 'ODS Icon';
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+    src: $src format('woff2');
+  }
+}
+
+@mixin source-code-pro-font-face($src) {
+  @font-face {
+    font-family: 'Source Code Pro';
+    font-stretch: normal;
+    font-style: normal;
+    font-display: fallback;
+    src: $src format('woff2');
+  }
+}
+
+@mixin source-code-pro-italic-font-face($src) {
+  @font-face {
+    font-family: 'Source Code Pro';
+    font-stretch: normal;
+    font-style: italic;
+    font-display: fallback;
+    src: $src format('woff2');
+  }
+}
+
+@mixin source-sans-pro-font-face($src) {
+  @font-face {
+    font-family: 'Source Sans Pro';
+    font-stretch: normal;
+    font-style: normal;
+    font-display: fallback;
+    src: $src format('woff2');
+  }
+}
+
+@mixin source-sans-pro-italic-font-face($src) {
+  @font-face {
+    font-family: 'Source Sans Pro';
+    font-stretch: normal;
+    font-style: italic;
+    font-display: fallback;
+    src: $src format('woff2');
+  }
+}

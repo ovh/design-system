@@ -2,7 +2,9 @@ import { BUTTON_VARIANT, ICON_NAME, Button, Icon, Link, Popover, PopoverContent,
 import { addons, types } from '@storybook/manager-api';
 import React from 'react';
 import versions from '../../assets/ods-versions.json';
-import '@ovhcloud/ods-themes/default';
+import '@ovhcloud/ods-react/normalize-css';
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
 
 const ADDON_NAME = 'odsVersions';
 const BASE_URL = 'https://ovh.github.io/design-system';

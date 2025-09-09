@@ -1,0 +1,9 @@
+@layer ods-quarks {
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
+  }
+}

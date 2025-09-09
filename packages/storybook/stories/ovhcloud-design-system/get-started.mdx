@@ -1,3 +1,4 @@
+import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import { ExternalLink } from '../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../src/components/heading/Heading';
@@ -48,44 +49,37 @@ All enums, interfaces, events are available directly from the `ods-react` lib
         dark="true"
         language="typescript" />
 
-<Heading label="Import theme" level={ 2 } />
+<Heading label="Import theme & fonts" level={ 2 } />
 
 You need to import a theme to display all the components correctly.
 It defines all the colors, typographies, etc...
 
-<Heading label="with fonts loaded from woff2 font files (recommended v19.2.0+)" level={3} />
-
 via ES import:
-
-<Source
-  code={`
-import "@ovhcloud/ods-themes/css-fontless";
-import "@ovhcloud/ods-themes/fonts";
-`}
-  dark="true"
-  language="typescript"
-/>
-
-via Sass import:
 
 <Source code={`
-@import "@ovhcloud/ods-themes/css-fontless";
-@import "@ovhcloud/ods-themes/fonts";
-`} dark="true" language="css" />
-
-<Heading label="with fonts encoded in base64 (legacy)" level={3} />
-
-via ES import:
-
-<Source code="import '@ovhcloud/ods-themes/default';"
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+        `}
         dark="true"
         language="typescript" />
 
 via Sass import:
 
-<Source code="@import '@ovhcloud/ods-themes/default';"
+<Source code={`
+@import '@ovhcloud/ods-themes/default/css';
+@import '@ovhcloud/ods-themes/default/fonts';
+        `}
         dark="true"
         language="css" />
+
+<Message dismissible={ false } style={{ width: '100%' }}>
+  <MessageIcon name="circle-info" />
+
+  <MessageBody>
+    In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default`.
+    Though this will increase the bundle size and prevent browser resources loading optimization.
+  </MessageBody>
+</Message>
 
 <Heading label="Typescript" level={ 2 } />
 

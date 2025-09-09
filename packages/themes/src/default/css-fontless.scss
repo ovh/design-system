@@ -1,6 +1,0 @@
-/*
- * The actual part of the theme that will be exposed as CSS
- */
-@use './root' as var;
-
-@layer ods-quarks, ods-atoms, ods-molecules, ods-organisms;

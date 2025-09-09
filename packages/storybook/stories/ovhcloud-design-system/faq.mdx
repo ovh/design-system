@@ -1,6 +1,8 @@
 import { Meta, Source } from '@storybook/blocks';
 import { ExternalLink } from '../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../src/components/heading/Heading';
+import { StorybookLink } from '../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../src/constants/meta';
 
 <Meta title="OVHcloud Design System/F.A.Q." />
 
@@ -85,3 +87,8 @@ Replace the `Fragment` with an actual node:
 `}
         dark="true"
         language="tsx" />
+
+<Heading label="Icons are not displayed" level={ 2 } />
+
+Ensure you did import the fonts in your application, check the <StorybookLink title={ HOME_TITLE.getStarted }>get started</StorybookLink>
+page to read more about how to achieve this.

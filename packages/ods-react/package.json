@@ -10,6 +10,9 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/ods-react.js"
     },
+    "./normalize-css": {
+      "default": "./src/style/normalize.css"
+    },
     "./style": {
       "default": "./src/style/index.scss"
     }

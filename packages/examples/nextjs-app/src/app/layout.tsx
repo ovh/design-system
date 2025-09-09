@@ -1,6 +1,7 @@
 import { type Metadata } from 'next';
 import { type JSX, type ReactNode } from 'react';
-import '@ovhcloud/ods-themes/default';
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
 import './globals.css';
 
 export const metadata: Metadata = {

@@ -27,18 +27,6 @@ html {
         dark="true"
         language="css" />
 
-Some HTML elements do not inherit the font-family style from the `<html>` element. To ensure consistency, you may want to explicitly set the font-family property for these elements to inherit it from the parent element:
-
-<Source
-  code={`
-input, select, textarea, button {
-  font-family: inherit;
-}
-`}
-  dark="true"
-  language="css"
-/>
-
 <Heading label="Use the ODS design tokens" level={ 2 } />
 
 All ODS components are using common design tokens, that are accessible through <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">CSS variables</ExternalLink>.
@@ -53,3 +41,11 @@ If you want to use any of those on your own components, you can refer to the exh
 `}
         dark="true"
         language="css" />
+
+<Heading label="Use ODS CSS reset" level={ 2 } />
+
+We recommend you to import the ODS CSS reset subset of rules to normalize the rendering of some elements, but it's not mandatory.
+
+<Source code="import '@ovhcloud/ods-react/normalize-css';"
+        dark="true"
+        language="typescript" />

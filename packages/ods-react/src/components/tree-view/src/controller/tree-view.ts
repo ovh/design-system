@@ -1,4 +1,4 @@
-import type { TreeViewItem } from '../components/tree-view-node/TreeViewNode';
+import type { TreeViewItem } from '../contexts/useTreeView';
 import { createTreeCollection } from '@ark-ui/react/tree-view';
 
 function createCollectionFromItems<CustomData = Record<string, never>>(items: Array<TreeViewItem<CustomData>>): ReturnType<typeof createTreeCollection<TreeViewItem<CustomData>>> {
@@ -17,19 +17,9 @@ function normalizeSelectedOnChange(selected: string | string[], multiple: boolea
   return multiple ? [selected] : selected;
 }
 
-function normalizeToArray(value?: string | string[]): string[] | undefined {
-  if (Array.isArray(value)) {
-    return value;
-  }
-  if (typeof value === 'string') {
-    return [value];
-  }
-  return undefined;
-}
-
 function computeDefaultExpanded<CustomData = Record<string, never>>(
   items: Array<TreeViewItem<CustomData>>,
-  options: { defaultExpandAll: boolean, value?: string | string[], defaultValue?: string | string[] },
+  options: { defaultExpandAll: boolean, value?: string[], defaultValue?: string[] },
 ): string[] {
   const expandedIds = new Set<string>();
 
@@ -67,20 +57,7 @@ function computeDefaultExpanded<CustomData = Record<string, never>>(
     }
   }
 
-  let controlled: string[] | undefined;
-  if (Array.isArray(options.value)) {
-    controlled = options.value;
-  } else if (typeof options.value === 'string') {
-    controlled = [options.value];
-  }
-
-  let uncontrolled: string[] | undefined;
-  if (Array.isArray(options.defaultValue)) {
-    uncontrolled = options.defaultValue;
-  } else if (typeof options.defaultValue === 'string') {
-    uncontrolled = [options.defaultValue];
-  }
-  const initialSelected = new Set<string>(controlled ?? uncontrolled ?? []);
+  const initialSelected = new Set<string>(options.value ?? options.defaultValue ?? []);
 
   collectExpanded(items);
   if (initialSelected.size > 0) {
@@ -94,6 +71,5 @@ export {
   computeDefaultExpanded,
   createCollectionFromItems,
   normalizeSelectedOnChange,
-  normalizeToArray,
 };
 

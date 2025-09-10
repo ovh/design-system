@@ -1,40 +1,55 @@
 import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type JSX, type Ref, forwardRef, useMemo } from 'react';
-import { type TreeViewI18n, TreeViewProvider } from '../../contexts/useTreeView';
-import { computeDefaultExpanded, createCollectionFromItems, normalizeSelectedOnChange, normalizeToArray } from '../../controller/tree-view';
-import { type TreeViewItem } from '../tree-view-node/TreeViewNode';
+import { type ComponentPropsWithRef, type ForwardedRef, type JSX, forwardRef, useMemo } from 'react';
+import { type TreeViewItem, TreeViewProvider } from '../../contexts/useTreeView';
+import { computeDefaultExpanded, createCollectionFromItems, normalizeSelectedOnChange } from '../../controller/tree-view';
 import style from './treeView.module.scss';
 
 interface TreeViewValueChangeDetail {
-  /** Selected value(s) normalized to a string or an array of strings */
-  selectedValue: string | string[];
+  selectedValue: string[];
 }
 
 interface TreeViewProp<CustomData = Record<string, never>> extends ComponentPropsWithRef<'div'> {
-  /** Expand all nodes by default on mount (uncontrolled). */
   defaultExpandAll?: boolean;
-  /** Uncontrolled initial selected value(s). */
-  defaultValue?: string | string[];
-  /** Disable the tree view. */
+  defaultValue?: string[];
   disabled?: boolean;
-  /** i18n labels for aria and UI. */
-  i18n?: TreeViewI18n;
-  /** Tree items to render. */
   items: Array<TreeViewItem<CustomData>>;
-  /** Enable multiple selection mode. */
   multiple?: boolean;
-  /** Callback fired when selection changes. */
   onValueChange?: (details: TreeViewValueChangeDetail) => void;
-  /** Controlled selected value(s). For multiple mode, provide an array. */
-  value?: string | string[];
+  value?: string[];
 }
 
-const TreeView = forwardRef(function TreeView<CustomData = Record<string, never>>(
-  { children, className, defaultExpandAll = false, defaultValue, disabled = false, i18n, items, multiple = false, onValueChange, value, ...props }: TreeViewProp<CustomData>,
-  ref: Ref<HTMLDivElement>,
-): JSX.Element {
+const TreeView = forwardRef(function TreeView<CustomData = Record<string, never>>({
+  children,
+  className,
+  defaultExpandAll = false,
+  defaultValue,
+  disabled = false,
+  items,
+  multiple = false,
+  onValueChange,
+  value,
+  ...props
+}: TreeViewProp<CustomData>, ref: ForwardedRef<HTMLDivElement>): JSX.Element {
   const collection = useMemo(() => createCollectionFromItems(items), [items]);
+
+  const idToIndexPath = useMemo(() => {
+    const map = new Map<string, number[]>();
+    function visit(nodes: Array<TreeViewItem<CustomData>> | undefined, base: number[] = []): void {
+      if (!nodes?.length) {
+        return;
+      }
+      nodes.forEach((node, i) => {
+        const path = [...base, i];
+        map.set(node.id, path);
+        if (node.children?.length) {
+          visit(node.children, path);
+        }
+      });
+    }
+    visit(items, []);
+    return map;
+  }, [items]);
 
   const defaultExpandedValue = useMemo(() => (
     computeDefaultExpanded(items, { defaultExpandAll, defaultValue, value })
@@ -42,18 +57,19 @@ const TreeView = forwardRef(function TreeView<CustomData = Record<string, never>
 
   function handleSelectionChange(details: { selectedValue: string | string[] }): void {
     const selectedValue = normalizeSelectedOnChange(details.selectedValue, multiple);
-    onValueChange?.({ selectedValue });
+    const normalizedValue = Array.isArray(selectedValue) ? selectedValue : [selectedValue];
+    onValueChange?.({ selectedValue: normalizedValue });
   }
 
   function handleCheckedChange(details: { checkedValue: string[] }): void {
     onValueChange?.({ selectedValue: details.checkedValue });
   }
 
-  const controlledArray = normalizeToArray(value);
-  const defaultArray = normalizeToArray(defaultValue);
-
   return (
-    <TreeViewProvider disabled={ disabled } i18n={ i18n } multiple={ multiple }>
+    <TreeViewProvider
+      disabled={ disabled }
+      multiple={ multiple }
+      getIndexPathForId={ (id: string) => idToIndexPath.get(id) as number[] | undefined }>
       <VendorTreeView.Root
         className={ classNames(style['tree-view'], className) }
         collection={ collection }
@@ -63,14 +79,14 @@ const TreeView = forwardRef(function TreeView<CustomData = Record<string, never>
         ref={ ref }
         { ...(multiple
           ? {
-            checkedValue: controlledArray,
-            defaultCheckedValue: defaultArray,
+            checkedValue: value,
+            defaultCheckedValue: defaultValue,
             onCheckedChange: handleCheckedChange,
           }
           : {
-            defaultSelectedValue: defaultArray,
+            defaultSelectedValue: defaultValue,
             onSelectionChange: handleSelectionChange,
-            selectedValue: controlledArray,
+            selectedValue: value,
           }) }
         { ...props }>
         <VendorTreeView.Tree>

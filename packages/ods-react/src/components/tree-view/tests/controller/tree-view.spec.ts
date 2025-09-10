@@ -1,5 +1,5 @@
-import type { TreeViewItem } from '../../src/components/tree-view-node/TreeViewNode';
-import { computeDefaultExpanded, normalizeSelectedOnChange, normalizeToArray } from '../../src/controller/tree-view';
+import type { TreeViewItem } from '../../src/contexts/useTreeView';
+import { computeDefaultExpanded, normalizeSelectedOnChange } from '../../src/controller/tree-view';
 
 describe('TreeView controller', () => {
   describe('normalizeSelectedOnChange', () => {
@@ -13,21 +13,6 @@ describe('TreeView controller', () => {
 
     it('should return array when multiple and selected is array', () => {
       expect(normalizeSelectedOnChange(['a', 'b'], true)).toEqual(['a', 'b']);
-    });
-  });
-
-  describe('normalizeToArray', () => {
-    it('should normalize undefined to undefined', () => {
-      expect(normalizeToArray()).toBeUndefined();
-      expect(normalizeToArray(undefined)).toBeUndefined();
-    });
-
-    it('should normalize string to single-item array', () => {
-      expect(normalizeToArray('x')).toEqual(['x']);
-    });
-
-    it('should keep array as-is', () => {
-      expect(normalizeToArray(['x', 'y'])).toEqual(['x', 'y']);
     });
   });
 
@@ -63,7 +48,7 @@ describe('TreeView controller', () => {
     });
 
     it('should expand ancestors of initially selected values (defaultValue)', () => {
-      const expanded = computeDefaultExpanded(items, { defaultExpandAll: false, defaultValue: 'b1' });
+      const expanded = computeDefaultExpanded(items, { defaultExpandAll: false, defaultValue: ['b1'] });
       expect(expanded.sort()).toEqual(['root', 'b'].sort());
     });
 

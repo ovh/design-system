@@ -22,200 +22,24 @@ export const Default = () => {
           id: 'components',
           name: 'components',
           children: [
-            { id: 'Button.tsx', name: 'Button.tsx' },
-            { id: 'Card.tsx', name: 'Card.tsx' },
+            {
+              id: 'Button.tsx',
+              name: 'Button.tsx',
+              children: [
+                { id: '2323.tsx', name: 'asdasd' },
+                { id: '1234', name: 'sdcc' },
+              ],
+            },
           ],
         },
       ],
     },
     { id: 'package.json', name: 'package.json' },
     { id: 'readme.md', name: 'README.md' },
-  ];
-
-  return (
-    <TreeView
-      items={ collection }
-      >
-      { collection.map((item) => (
-        <TreeViewNode key={ item.id } item={ item } />
-      )) }
-    </TreeView>
-  );
-};
-
-export const Disabled = () => {
-  const collection = [
-    {
-      id: 'src',
-      name: 'src',
-      children: [
-        { id: 'app.tsx', name: 'app.tsx' },
-        { id: 'index.ts', name: 'index.ts' },
-        {
-          id: 'components',
-          name: 'components',
-          children: [
-            { id: 'Button.tsx', name: 'Button.tsx' },
-            { id: 'Card.tsx', name: 'Card.tsx' },
-          ],
-        },
-      ],
-    },
-    { id: 'package.json', name: 'package.json' },
-    { id: 'readme.md', name: 'README.md' },
-  ];
-
-  return (
-    <TreeView
-      disabled
-      items={ collection }
-      >
-      <TreeViewNodes>
-        { collection.map((item) => (
-          <TreeViewNode key={ item.id } item={ item } />
-        )) }
-      </TreeViewNodes>
-    </TreeView>
-  );
-};
-
-export const MultipleSelection = () => {
-  const collection = [
-    {
-      id: 'src',
-      name: 'src',
-      children: [
-        { id: 'app.tsx', name: 'app.tsx' },
-        { id: 'index.ts', name: 'index.ts' },
-        {
-          id: 'components',
-          name: 'components',
-          children: [
-            { id: 'Button.tsx', name: 'Button.tsx' },
-            { id: 'Card.tsx', name: 'Card.tsx' },
-          ],
-        },
-      ],
-    },
-    { id: 'package.json', name: 'package.json' },
-    { id: 'readme.md', name: 'README.md' },
-  ];
-
-  return (
-    <TreeView
-      multiple
-      items={ collection }
-      >
-      <TreeViewNodes>
-        { collection.map((item) => (
-          <TreeViewNode key={ item.id } item={ item } />
-        )) }
-      </TreeViewNodes>
-    </TreeView>
-  );
-};
-
-export const DisabledItems = () => {
-  const collection = [
-    {
-      id: 'src',
-      name: 'src',
-      children: [
-        { id: 'app.tsx', name: 'app.tsx' },
-        { id: 'index.ts', name: 'index.ts', disabled: true },
-        {
-          id: 'components',
-          name: 'components',
-          disabled: true,
-          children: [
-            { id: 'Button.tsx', name: 'Button.tsx' },
-            { id: 'Card.tsx', name: 'Card.tsx', disabled: true },
-          ],
-        },
-      ],
-    },
-    { id: 'package.json', name: 'package.json', disabled: true },
-    { id: 'readme.md', name: 'README.md' },
-  ];
-
-  return (
-    <TreeView
-      items={ collection }
-      >
-      <TreeViewNodes>
-        { collection.map((item) => (
-          <TreeViewNode key={ item.id } item={ item } />
-        )) }
-      </TreeViewNodes>
-    </TreeView>
-  );
-};
-
-export const DefaultExpandAll = () => {
-  const collection = [
-    {
-      id: 'src',
-      name: 'src',
-      children: [
-        { id: 'app.tsx', name: 'app.tsx' },
-        { id: 'index.ts', name: 'index.ts' },
-        {
-          id: 'components',
-          name: 'components',
-          children: [
-            { id: 'Button.tsx', name: 'Button.tsx' },
-            { id: 'Card.tsx', name: 'Card.tsx' },
-          ],
-        },
-      ],
-    },
-    { id: 'package.json', name: 'package.json' },
-    { id: 'readme.md', name: 'README.md' },
-  ];
-
-  return (
-    <TreeView
-      items={ collection }
-      defaultExpandAll
-      >
-      <TreeViewNodes>
-        { collection.map((item) => (
-          <TreeViewNode key={ item.id } item={ item } />
-        )) }
-      </TreeViewNodes>
-    </TreeView>
-  );
-};
-
-export const WithIcons = () => {
-  const FileIcon = () => (
-      <Icon name={ ICON_NAME.file } />
-  );
-  const FolderIcon = () => (
-      <Icon name={ ICON_NAME.folder } />
-  );
-
-  const collection = [
-    {
-      id: 'src',
-      name: 'src',
-      icon: <FolderIcon />,
-      children: [
-        { id: 'app.tsx', name: 'app.tsx', icon: <FileIcon /> },
-        { id: 'index.ts', name: 'index.ts', icon: <FileIcon /> },
-        {
-          id: 'components',
-          name: 'components',
-          icon: <FolderIcon />,
-          children: [
-            { id: 'Button.tsx', name: 'Button.tsx', icon: <FileIcon /> },
-            { id: 'Card.tsx', name: 'Card.tsx', icon: <FileIcon /> },
-          ],
-        },
-      ],
-    },
-    { id: 'package.json', name: 'package.json', icon: <FileIcon /> },
-    { id: 'readme.md', name: 'README.md', icon: <FileIcon /> },
+    { id: 'Miscellaneous', name: 'Miscellaneous', children: [
+      { id: 'Stuff.tsx', name: 'Stuff.tsx' },
+      { id: 'Other.tsx', name: 'Other.tsx' },
+    ] },
   ];
 
   return (
@@ -268,6 +92,78 @@ export const Uncontrolled = () => {
   );
 };
 
+export const DefaultExpandAll = () => {
+  const collection = [
+    {
+      id: 'src',
+      name: 'src',
+      children: [
+        { id: 'app.tsx', name: 'app.tsx' },
+        { id: 'index.ts', name: 'index.ts' },
+        {
+          id: 'components',
+          name: 'components',
+          children: [
+            { id: 'Button.tsx', name: 'Button.tsx' },
+            { id: 'Card.tsx', name: 'Card.tsx' },
+          ],
+        },
+      ],
+    },
+    { id: 'package.json', name: 'package.json' },
+    { id: 'readme.md', name: 'README.md' },
+  ];
+
+  return (
+    <TreeView
+      items={ collection }
+      defaultExpandAll
+      >
+      <TreeViewNodes>
+        { collection.map((item) => (
+          <TreeViewNode key={ item.id } item={ item } />
+        )) }
+      </TreeViewNodes>
+    </TreeView>
+  );
+};
+
+export const MultipleSelection = () => {
+  const collection = [
+    {
+      id: 'src',
+      name: 'src',
+      children: [
+        { id: 'app.tsx', name: 'app.tsx' },
+        { id: 'index.ts', name: 'index.ts' },
+        {
+          id: 'components',
+          name: 'components',
+          children: [
+            { id: 'Button.tsx', name: 'Button.tsx' },
+            { id: 'Card.tsx', name: 'Card.tsx' },
+          ],
+        },
+      ],
+    },
+    { id: 'package.json', name: 'package.json' },
+    { id: 'readme.md', name: 'README.md' },
+  ];
+
+  return (
+    <TreeView
+      multiple
+      items={ collection }
+      >
+      <TreeViewNodes>
+        { collection.map((item) => (
+          <TreeViewNode key={ item.id } item={ item } />
+        )) }
+      </TreeViewNodes>
+    </TreeView>
+  );
+};
+
 export const Controlled = () => {
   const items = useMemo(() => ([
     {
@@ -295,11 +191,11 @@ export const Controlled = () => {
     <>
       <TreeView
         items={ items }
-        value={ selectedId }
+        value={ selectedId ? [selectedId] : undefined }
         onValueChange={ (d: TreeViewValueChangeDetail) => {
           console.log('onValueChange', d);
-          const next = Array.isArray(d.selectedValue) ? d.selectedValue[0] : d.selectedValue;
-          setSelectedId(next || undefined);
+          const next = d.selectedValue[0] || undefined;
+          setSelectedId(next);
         } }>
         <TreeViewNodes>
           { items.map((item) => (
@@ -395,8 +291,8 @@ export const UncontrolledMultiple = () => {
   );
 };
 
-export const InFormField = () => {
-  const items = useMemo(() => ([
+export const Disabled = () => {
+  const collection = [
     {
       id: 'src',
       name: 'src',
@@ -413,42 +309,98 @@ export const InFormField = () => {
         },
       ],
     },
-    { id: 'package.json', name: 'package.json' },
-    { id: 'readme.md', name: 'README.md' },
-  ]), []);
-  const [isInvalid, setIsInvalid] = useState(false);
+    { id: 'package.json', name: 'package.json', disabled: true },
+    { id: 'readme.md', name: 'README.md', disabled: false },
+  ];
 
   return (
-    <>
-      <FormField invalid={ isInvalid }>
-        <FormFieldLabel>
-          Choose a file
-        </FormFieldLabel>
+    <TreeView
+      disabled
+      items={ collection }
+      >
+      <TreeViewNodes>
+        { collection.map((item) => (
+          <TreeViewNode key={ item.id } item={ item } />
+        )) }
+      </TreeViewNodes>
+    </TreeView>
+  );
+};
 
-        <TreeView
-          items={ items }
-          >
-          <TreeViewNodes>
-            { items.map((item) => (
-              <TreeViewNode key={ item.id } item={ item } />
-            )) }
-          </TreeViewNodes>
-        </TreeView>
+export const DisabledItems = () => {
+  const collection = [
+    {
+      id: 'src',
+      name: 'src',
+      expanded: true,
+      children: [
+        { id: 'app.tsx', name: 'app.tsx' },
+        { id: 'index.ts', name: 'index.ts', disabled: true },
+        {
+          id: 'components',
+          name: 'components',
+          disabled: true,
+          expanded: true,
+          children: [
+            { id: 'Button.tsx', name: 'Button.tsx' },
+            { id: 'Card.tsx', name: 'Card.tsx', disabled: true },
+          ],
+        },
+      ],
+    },
+    { id: 'package.json', name: 'package.json', disabled: true },
+    { id: 'readme.md', name: 'README.md' },
+  ];
 
-        <FormFieldHelper>
-          My TreeView
-        </FormFieldHelper>
+  return (
+    <TreeView
+      items={ collection }
+      >
+      <TreeViewNodes>
+        { collection.map((item) => (
+          <TreeViewNode key={ item.id } item={ item } />
+        )) }
+      </TreeViewNodes>
+    </TreeView>
+  );
+};
 
-        { isInvalid && (
-          <FormFieldError>
-            Please select a file
-          </FormFieldError>
-        ) }
-      </FormField>
-      <Button onClick={ () => setIsInvalid((v) => !v) }>
-        Toggle validity
-      </Button>
-    </>
+export const DisabledItemsMultiple = () => {
+  const collection = [
+    {
+      id: 'src',
+      name: 'src',
+      expanded: true,
+      children: [
+        { id: 'app.tsx', name: 'app.tsx' },
+        { id: 'index.ts', name: 'index.ts', disabled: true },
+        {
+          id: 'components',
+          name: 'components',
+          disabled: true,
+          expanded: true,
+          children: [
+            { id: 'Button.tsx', name: 'Button.tsx' },
+            { id: 'Card.tsx', name: 'Card.tsx', disabled: true },
+          ],
+        },
+      ],
+    },
+    { id: 'package.json', name: 'package.json', disabled: true },
+    { id: 'readme.md', name: 'README.md' },
+  ];
+
+  return (
+    <TreeView
+      multiple
+      items={ collection }
+      >
+      <TreeViewNodes>
+        { collection.map((item) => (
+          <TreeViewNode key={ item.id } item={ item } />
+        )) }
+      </TreeViewNodes>
+    </TreeView>
   );
 };
 
@@ -534,6 +486,63 @@ export const CustomRenderMultiple = () => {
         )) }
       </TreeViewNodes>
     </TreeView>
+  );
+};
+
+export const InFormField = () => {
+  const items = useMemo(() => ([
+    {
+      id: 'src',
+      name: 'src',
+      children: [
+        { id: 'app.tsx', name: 'app.tsx' },
+        { id: 'index.ts', name: 'index.ts' },
+        {
+          id: 'components',
+          name: 'components',
+          children: [
+            { id: 'Button.tsx', name: 'Button.tsx' },
+            { id: 'Card.tsx', name: 'Card.tsx' },
+          ],
+        },
+      ],
+    },
+    { id: 'package.json', name: 'package.json' },
+    { id: 'readme.md', name: 'README.md' },
+  ]), []);
+  const [isInvalid, setIsInvalid] = useState(false);
+
+  return (
+    <>
+      <FormField invalid={ isInvalid }>
+        <FormFieldLabel>
+          Choose a file
+        </FormFieldLabel>
+
+        <TreeView
+          items={ items }
+          >
+          <TreeViewNodes>
+            { items.map((item) => (
+              <TreeViewNode key={ item.id } item={ item } />
+            )) }
+          </TreeViewNodes>
+        </TreeView>
+
+        <FormFieldHelper>
+          My TreeView
+        </FormFieldHelper>
+
+        { isInvalid && (
+          <FormFieldError>
+            Please select a file
+          </FormFieldError>
+        ) }
+      </FormField>
+      <Button onClick={ () => setIsInvalid((v) => !v) }>
+        Toggle validity
+      </Button>
+    </>
   );
 };
 

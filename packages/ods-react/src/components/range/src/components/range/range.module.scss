@@ -10,7 +10,7 @@
     }
 
     &__ticks {
-      bottom: range.$ods-range-thumb-size - math.div(range.$ods-range-track-height, 2);
+      bottom: math.div(range.$ods-range-thumb-size, 2) + math.div(range.$ods-range-track-height, 2);
 
       &__tick {
         &::after {

@@ -11,6 +11,7 @@ export interface TreeViewItem<CustomData = Record<string, never>> {
 
 type TreeViewContextType = {
   disabled: boolean;
+  /** @internal */
   getIndexPathForId: (id: string) => number[] | undefined;
   multiple: boolean;
 };

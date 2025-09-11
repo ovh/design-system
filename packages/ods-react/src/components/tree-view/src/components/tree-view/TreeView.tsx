@@ -69,14 +69,15 @@ const TreeView = forwardRef(function TreeView<CustomData = Record<string, never>
     <TreeViewProvider
       disabled={ disabled }
       multiple={ multiple }
+      // @internal
       getIndexPathForId={ (id: string) => idToIndexPath.get(id) as number[] | undefined }>
       <VendorTreeView.Root
         className={ classNames(style['tree-view'], className) }
         collection={ collection }
         data-ods="tree-view"
         defaultExpandedValue={ defaultExpandedValue }
-        selectionMode={ multiple ? 'multiple' : 'single' }
         ref={ ref }
+        selectionMode={ multiple ? 'multiple' : 'single' }
         { ...(multiple
           ? {
             checkedValue: value,

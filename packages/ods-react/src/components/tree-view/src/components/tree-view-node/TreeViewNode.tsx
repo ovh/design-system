@@ -11,7 +11,6 @@ export type TreeViewCustomRendererArg<CustomData = Record<string, never>> = {
   isBranch: boolean;
   isExpanded: boolean;
   item: TreeViewItem<CustomData>;
-  name: string;
 };
 
 interface TreeViewNodeProp<CustomData = Record<string, never>> extends Omit<ComponentPropsWithRef<'div'>, 'children'> {

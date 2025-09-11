@@ -3,7 +3,7 @@ import type { JSX, ReactNode } from 'react';
 import { TreeView as VendorTreeView, useTreeViewContext } from '@ark-ui/react/tree-view';
 
 interface TreeViewNodeLabelProps<CustomData = Record<string, never>> {
-  children?: ReactNode | ((arg: { customData?: CustomData, isBranch: boolean, isExpanded: boolean, item: TreeViewItem<CustomData>, name: string }) => JSX.Element);
+  children?: ReactNode | ((arg: { customData?: CustomData, isBranch: boolean, isExpanded: boolean, item: TreeViewItem<CustomData> }) => JSX.Element);
   item: TreeViewItem<CustomData>;
   multiple: boolean;
 }
@@ -12,13 +12,12 @@ function TreeViewNodeLabel<CustomData = Record<string, never>>({ children, item,
   const { expandedValue } = useTreeViewContext();
   const isExpanded = expandedValue?.includes(item.id) ?? false;
   if (typeof children === 'function') {
-    const renderer = children as (arg: { customData?: CustomData, isBranch: boolean, isExpanded: boolean, item: TreeViewItem<CustomData>, name: string }) => JSX.Element;
+    const renderer = children as (arg: { customData?: CustomData, isBranch: boolean, isExpanded: boolean, item: TreeViewItem<CustomData> }) => JSX.Element;
     const content = renderer({
       customData: item.customRendererData,
       isBranch: !!item.children?.length,
       isExpanded,
       item,
-      name: item.name,
     });
 
     if (item.children?.length) {

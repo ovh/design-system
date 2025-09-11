@@ -12,6 +12,7 @@ interface TreeViewNodeBranchProps {
   checkboxRef: RefObject<HTMLSpanElement | null>;
   nodeProps: DOMDivProps;
   effectiveIndexPath: number[];
+  /** @internal */
   getIndexPathForId: (id: string) => number[] | undefined;
   isDisabled: boolean;
   labelChildren?: unknown;
@@ -38,7 +39,7 @@ const TreeViewNodeBranch: FC<TreeViewNodeBranchProps> = ({
     if (!multiple || isDisabled) {
       return;
     }
-    if (e.key === ' ' || e.key === 'Enter') {
+    if (e.key === ' ') {
       e.preventDefault();
       e.stopPropagation();
       checkboxRef.current?.click();

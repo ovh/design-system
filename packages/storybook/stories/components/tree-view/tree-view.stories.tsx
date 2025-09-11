@@ -1,73 +1,60 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
+import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
+import { Icon, ICON_NAME } from '../../../../ods-react/src/components/icon/src';
 import {
   TreeView,
-  type TreeViewProp,
   TreeViewNode,
-  type TreeViewValueChangeDetail,
   TreeViewNodes,
+  type TreeViewProp,
+  type TreeViewValueChangeDetail,
 } from '../../../../ods-react/src/components/tree-view/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+ 
 
 type Story = StoryObj<TreeViewProp>;
 
 const meta: Meta<TreeViewProp> = {
   component: TreeView,
   subcomponents: { TreeViewNode },
-  title: 'React Components/TreeView',
+  title: 'React Components/Tree View',
 };
 
 export default meta;
 
-const sampleCollection = [
-  {
-    id: 'src',
-    name: 'src',
-    children: [
-      { id: 'app.tsx', name: 'app.tsx' },
-      { id: 'index.ts', name: 'index.ts' },
-      {
-        id: 'components',
-        name: 'components',
-        children: [
-          { id: 'Button.tsx', name: 'Button.tsx' },
-          { id: 'Card.tsx', name: 'Card.tsx' },
-        ],
-      },
-    ],
-  },
-  { id: 'package.json', name: 'package.json' },
-  { id: 'readme.md', name: 'README.md' },
-];
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    dummy: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
-      },
-      control: 'text',
-    },
-  }),
-  args: {
-    dummy: 'dummy default',
-  },
-};
+ 
 
 export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => {
-    const collection = sampleCollection;
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
 
     return (
       <TreeView
-        items={ collection }
+        items={ items }
         onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
         <TreeViewNodes>
-          { collection.map((item) => (
+          { items.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
           )) }
         </TreeViewNodes>
@@ -76,17 +63,95 @@ export const Default: Story = {
   }
 };
 
-export const Overview: Story = {
-  tags: ['!dev'],
-  render: ({}) => {
-    const collection = sampleCollection;
+export const Demo: Story = {
+  render: (arg: TreeViewProp) => {
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
 
     return (
       <TreeView
-        items={ collection }
+        defaultExpandAll={ arg.defaultExpandAll }
+        disabled={ arg.disabled }
+        items={ items }
+        multiple={ arg.multiple }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  },
+  argTypes: orderControls({
+    defaultExpandAll: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: 'boolean',
+    },
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: 'boolean',
+    },
+    multiple: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: 'boolean',
+    },
+  }),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+
+    return (
+      <TreeView
+        items={ items }
         onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
         <TreeViewNodes>
-          { collection.map((item) => (
+          { items.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
           )) }
         </TreeViewNodes>
@@ -101,18 +166,429 @@ export const Multiple: Story = {
   },
   tags: ['!dev'],
   render: ({}) => {
-    const collection = sampleCollection;
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
     return (
       <TreeView
-        items={ collection }
+        items={ items }
         multiple
         onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
         <TreeViewNodes>
-          { collection.map((item) => (
+          { items.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
           )) }
         </TreeViewNodes>
       </TreeView>
     )
+  }
+}
+
+export const DefaultExpandAll: Story = {
+  globals: {
+    imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <TreeView
+        defaultExpandAll
+        items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
+}
+
+export const Controlled: Story = {
+  globals: {
+    imports: `import { TreeView, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        expanded: true,
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    const [selectedId, setSelectedId] = React.useState<string | undefined>('package.json');
+    return (
+      <>
+        <TreeView
+          items={ items }
+          onValueChange={(d: TreeViewValueChangeDetail) => setSelectedId(d.selectedValue[0])}
+          value={ selectedId ? [selectedId] : undefined }>
+          <TreeViewNodes>
+            { items.map((item) => (
+              <TreeViewNode key={ item.id } item={ item } />
+            )) }
+          </TreeViewNodes>
+        </TreeView>
+        <div style={{ marginTop: 8 }}>Selected: { selectedId ?? 'None' }</div>
+      </>
+    );
+  }
+}
+
+export const ControlledMultiple: Story = {
+  globals: {
+    imports: `import { TreeView, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    const [selectedIds, setSelectedIds] = React.useState<string[]>(['package.json', 'index.ts']);
+    return (
+      <>
+        <TreeView
+          items={ items }
+          multiple
+          onValueChange={(d: TreeViewValueChangeDetail) => setSelectedIds(Array.isArray(d.selectedValue) ? d.selectedValue : [d.selectedValue].filter(Boolean) as string[])}
+          value={ selectedIds }>
+          <TreeViewNodes>
+            { items.map((item) => (
+              <TreeViewNode key={ item.id } item={ item } />
+            )) }
+          </TreeViewNodes>
+        </TreeView>
+        <div style={{ marginTop: 8 }}>Selected: { selectedIds.length ? selectedIds.join(', ') : 'None' }</div>
+      </>
+    );
+  }
+}
+
+export const Disabled: Story = {
+  globals: {
+    imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <TreeView
+        disabled
+        items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
+}
+
+export const DisabledItems: Story = {
+  globals: {
+    imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        expanded: true,
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts', disabled: true },
+          {
+            id: 'components',
+            name: 'components',
+            disabled: true,
+            expanded: true,
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx', disabled: true },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json', disabled: true },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <TreeView items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
+}
+
+export const CustomRender: Story = {
+  globals: {
+    imports: `import { Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <TreeView items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item }>
+              { ({ item, isBranch, isExpanded }) => (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                  { isBranch ? (isExpanded ? <Icon name={ ICON_NAME.folderMinus } /> : <Icon name={ ICON_NAME.folderPlus } />) : <Icon name={ ICON_NAME.file } /> }
+                  <span>{ item.name }</span>
+                </span>
+              ) }
+            </TreeViewNode>
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
+}
+
+export const InFormField: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+    return (
+      <FormField>
+        <FormFieldLabel>Choose a file</FormFieldLabel>
+        <TreeView items={ items }>
+          <TreeViewNodes>
+            { items.map((item) => (
+              <TreeViewNode key={ item.id } item={ item } />
+            )) }
+          </TreeViewNodes>
+        </TreeView>
+      </FormField>
+    );
+  }
+}
+
+export const DynamicChildren: Story = {
+  globals: {
+    imports: `import { Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    type Item = { id: string, name: string, children?: Item[] };
+    const [items, setItems] = React.useState<Item[]>([
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          { id: 'components', name: 'components', children: [] },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ]);
+    const counter = React.useRef(1);
+
+    function addChildTo(collection: Item[], parentId: string, newNode: Item): Item[] {
+      return collection.map((node) => {
+        if (node.id === parentId) {
+          const nextChildren = Array.isArray(node.children) ? [...node.children, newNode] : [newNode];
+          return { ...node, children: nextChildren };
+        }
+        if (node.children?.length) {
+          return { ...node, children: addChildTo(node.children, parentId, newNode) };
+        }
+        return node;
+      });
+    }
+
+    function removeNodeFrom(collection: Item[], nodeId: string): Item[] {
+      return collection
+        .filter((node) => node.id !== nodeId)
+        .map((node) => node.children?.length ? { ...node, children: removeNodeFrom(node.children, nodeId) } : node);
+    }
+
+    function handleAddChild(parentId: string): void {
+      const id = `new-file-${counter.current++}.txt`;
+      const newNode = { id, name: id };
+      setItems((prev) => addChildTo(prev, parentId, newNode));
+    }
+
+    function handleDelete(nodeId: string): void {
+      setItems((prev) => removeNodeFrom(prev, nodeId));
+    }
+
+    return (
+      <TreeView
+        defaultExpandAll
+        items={ items }
+        multiple>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item }>
+              { ({ item, isBranch }) => (
+                <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                    { isBranch ? <Icon name={ ICON_NAME.folder } /> : <Icon name={ ICON_NAME.file } /> }
+                    <span>{ item.name }</span>
+                  </span>
+                  <span style={{ display: 'inline-flex', marginLeft: 'auto', alignItems: 'center', gap: 8 }}>
+                    { isBranch ? (
+                      <button
+                        type="button"
+                        aria-label="Add child"
+                        onClick={(e) => { e.stopPropagation(); handleAddChild(item.id); }}
+                        style={{ background: 'transparent', border: 'none', padding: 2, cursor: 'pointer' }}>
+                        <Icon name={ ICON_NAME.plus } />
+                      </button>
+                    ) : null }
+                    <button
+                      type="button"
+                      aria-label="Delete"
+                      onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
+                      style={{ background: 'transparent', border: 'none', padding: 2, cursor: 'pointer' }}>
+                      <Icon name={ ICON_NAME.xmark } />
+                    </button>
+                  </span>
+                </div>
+              ) }
+            </TreeViewNode>
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
   }
 }

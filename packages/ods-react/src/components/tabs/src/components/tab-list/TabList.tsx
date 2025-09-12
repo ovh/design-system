@@ -34,6 +34,18 @@ const TabList: FC<TabListProp> = forwardRef(({
 
   useEffect(() => {
     updateScrollButtonState();
+
+    if (scrollRef.current) {
+      const observer = new ResizeObserver(() => {
+        updateScrollButtonState();
+      });
+
+      observer.observe(scrollRef.current);
+
+      return () => {
+        observer.disconnect();
+      };
+    }
   }, [updateScrollButtonState]);
 
   function scroll(left: number): void {

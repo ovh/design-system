@@ -28,7 +28,9 @@
     "build:prod": "rimraf dist && tsc -b && vite build",
     "clean": "rimraf dist",
     "lint:scss": "stylelint 'src/style/*.scss'",
-    "lint:ts": "eslint '{src,tests}/!(components)/**/*.{ts,tsx}'"
+    "lint:ts": "eslint '{src,tests}/!(components)/**/*.{ts,tsx}'",
+    "test:spec": "jest --passWithNoTests",
+    "test:spec:ci": "npm run test:spec"
   },
   "dependencies": {
     "@ark-ui/react": "5.12.0",

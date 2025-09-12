@@ -51,8 +51,9 @@ They can also be used to filter content via some common denominator.
 ![Component anatomy](components/tabs/anatomy.png "Component anatomy")
 
 1. **Tabs**
-2. **Active tab**
-3. **Unselected tab**
+2. **Scroll Buttons (previous/next) - optional**
+3. **Active tab**
+4. **Unselected tab**
 
 <Heading label="Placement" level={ 2 } />
 
@@ -70,6 +71,18 @@ Each **Tab** has a panel displaying content. Selecting a **Tab** displays the co
 
 The panel does not depend on the **Tab** component, it is in the developer's hands.
 
+<Heading label="Scroll Buttons" level={ 3 } />
+
+When the number of **Tabs** exceeds the visible container width, left and right scroll buttons can be displayed to allow horizontal navigation.
+
+Clicking a button scrolls to the next or previous group of **Tabs** that were not visible.
+
+When at the first tab, the left button is displayed but disabled.
+
+When at the last tab, the right button is displayed but disabled.
+
+Scroll buttons do not affect tab selection. They only change the visible portion of the **Tabs** list.
+
 <Heading label="Navigation" level={ 2 } />
 
 <Heading label="Focus Management" level={ 3 } />
@@ -77,6 +90,8 @@ The panel does not depend on the **Tab** component, it is in the developer's han
 When focus moves to the **Tabs** component, it is set on the active **Tab**.
 
 Once a **Tab** is focused, its associated content is also activated.
+
+If scroll buttons are displayed, they can also receive focus and be activated via keyboard.
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
@@ -89,6 +104,10 @@ Pressing `Arrow Left` moves focus to the previous **Tab** and activates its cont
 Pressing `Home` / `fn` + `Arrow Left` moves focus to the first **Tab** and activates its content.
 
 Pressing `End` / `fn` + `Arrow Right` moves focus to the last **Tab** and activates its content.
+
+Pressing `Home` / `End` jumps to the first or last **Tab**, even if these **Tabs** are not currently visible. In this case, the **Tabs** list automatically scrolls to bring the selected **Tab** into view.
+
+Arrow navigation moves focus to the next or previous **Tab**, even if it is not currently visible. In this case, the **Tabs** list automatically scrolls to bring the focused **Tab** into view.
 
 <Heading label="Accessibility" level={ 2 } />
 

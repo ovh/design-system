@@ -1,24 +1,112 @@
 import { Tabs } from '@ark-ui/react/tabs';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { debounce } from '../../../../../utils/debounce';
+import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { ICON_NAME, Icon } from '../../../../icon/src';
 import style from './tabList.module.scss';
 
-interface TabListProp extends ComponentPropsWithRef<'div'> {}
+interface TabListProp extends ComponentPropsWithRef<'div'> {
+  /**
+   * Whether the component displays navigation arrows around the tabs.
+   */
+  withArrows?: boolean,
+}
 
-const TabList: FC<TabListProp> = ({
+const TabList: FC<TabListProp> = forwardRef(({
   children,
   className,
+  withArrows,
   ...props
-}): JSX.Element => {
+}, ref): JSX.Element => {
+  const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(false);
+  const [isRightButtonDisabled, setIsRightButtonDisabled] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const updateScrollButtonState = useCallback(() => {
+    setIsLeftButtonDisabled(scrollRef.current ? scrollRef.current.scrollLeft === 0 : false);
+    setIsRightButtonDisabled(scrollRef.current ? scrollRef.current.scrollLeft === scrollRef.current.scrollWidth - scrollRef.current.offsetWidth : false);
+  }, []);
+
+  const debouncedUpdateScrollButtonState = useMemo(() => {
+    return debounce(updateScrollButtonState, 50);
+  }, [updateScrollButtonState]);
+
+  useEffect(() => {
+    updateScrollButtonState();
+  }, [updateScrollButtonState]);
+
+  function scroll(left: number): void {
+    scrollRef.current?.scrollBy({
+      behavior: 'smooth',
+      left,
+    });
+  }
+
+  function onLeftScrollClick(): void {
+    if (!scrollRef.current) {
+      return;
+    }
+    scroll(-scrollRef.current.offsetWidth);
+  }
+
+  function onRightScrollClick(): void {
+    if (!scrollRef.current) {
+      return;
+    }
+    scroll(scrollRef.current.offsetWidth);
+  }
+
   return (
     <Tabs.List
       className={ classNames(style['tab-list'], className) }
       data-ods="tab-list"
+      ref={ ref }
       { ...props }>
-      { children }
+      {
+        withArrows &&
+        <div className={ classNames(
+          style['tab-list__left-arrow'],
+          { [style['tab-list__left-arrow--active']]: !isLeftButtonDisabled },
+        )}>
+          <Button
+            disabled={ isLeftButtonDisabled }
+            onClick={ onLeftScrollClick }
+            size={ BUTTON_SIZE.xs }
+            variant={ BUTTON_VARIANT.ghost }>
+            <Icon name={ ICON_NAME.chevronLeft } />
+          </Button>
+        </div>
+      }
+
+      <div
+        className={ style['tab-list__container'] }
+        onScroll={ debouncedUpdateScrollButtonState }
+        ref={ scrollRef }
+        tabIndex={ -1 }>
+        <div className={ style['tab-list__container__tabs'] }>
+          { children }
+        </div>
+      </div>
+
+      {
+        withArrows &&
+        <div className={ classNames(
+          style['tab-list__right-arrow'],
+          { [style['tab-list__right-arrow--active']]: !isRightButtonDisabled },
+        )}>
+          <Button
+            disabled={ isRightButtonDisabled }
+            onClick={ onRightScrollClick }
+            size={ BUTTON_SIZE.xs }
+            variant={ BUTTON_VARIANT.ghost }>
+            <Icon name={ ICON_NAME.chevronRight } />
+          </Button>
+        </div>
+      }
     </Tabs.List>
   );
-};
+});
 
 export {
   TabList,

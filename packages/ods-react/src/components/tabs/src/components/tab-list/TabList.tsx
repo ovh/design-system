@@ -4,21 +4,17 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useCallback,
 import { debounce } from '../../../../../utils/debounce';
 import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
+import { useTabs } from '../../contexts/useTabs';
 import style from './tabList.module.scss';
 
-interface TabListProp extends ComponentPropsWithRef<'div'> {
-  /**
-   * Whether the component displays navigation arrows around the tabs.
-   */
-  withArrows?: boolean,
-}
+interface TabListProp extends ComponentPropsWithRef<'div'> {}
 
 const TabList: FC<TabListProp> = forwardRef(({
   children,
   className,
-  withArrows,
   ...props
 }, ref): JSX.Element => {
+  const { withArrows } = useTabs();
   const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(false);
   const [isRightButtonDisabled, setIsRightButtonDisabled] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -85,6 +81,7 @@ const TabList: FC<TabListProp> = forwardRef(({
             disabled={ isLeftButtonDisabled }
             onClick={ onLeftScrollClick }
             size={ BUTTON_SIZE.xs }
+            tabIndex={ -1 }
             variant={ BUTTON_VARIANT.ghost }>
             <Icon name={ ICON_NAME.chevronLeft } />
           </Button>
@@ -111,6 +108,7 @@ const TabList: FC<TabListProp> = forwardRef(({
             disabled={ isRightButtonDisabled }
             onClick={ onRightScrollClick }
             size={ BUTTON_SIZE.xs }
+            tabIndex={ -1 }
             variant={ BUTTON_VARIANT.ghost }>
             <Icon name={ ICON_NAME.chevronRight } />
           </Button>

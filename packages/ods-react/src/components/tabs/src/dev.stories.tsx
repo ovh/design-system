@@ -100,8 +100,10 @@ export const CustomStyle = () => (
 export const WithArrows = () => (
   <>
     <p>No container size</p>
-    <Tabs defaultValue="tab11">
-      <TabList withArrows>
+    <Tabs
+      defaultValue="tab11"
+      withArrows>
+      <TabList>
         <Tab value="tab1">Tab 1</Tab>
         <Tab value="tab2">Tab 2</Tab>
         <Tab value="tab3">Tab 3</Tab>
@@ -123,8 +125,9 @@ export const WithArrows = () => (
     <p>In limited container</p>
     <Tabs
       defaultValue="tab1"
-      style={{ width: '400px' }}>
-      <TabList withArrows>
+      style={{ width: '400px' }}
+      withArrows>
+      <TabList>
         <Tab value="tab1">Tab 1</Tab>
         <Tab value="tab2">Tab 2</Tab>
         <Tab value="tab3">Tab 3</Tab>
@@ -144,8 +147,10 @@ export const WithArrows = () => (
     </Tabs>
 
     <p>No overflow</p>
-    <Tabs defaultValue="tab1">
-      <TabList withArrows>
+    <Tabs
+      defaultValue="tab1"
+      withArrows>
+      <TabList>
         <Tab value="tab1">Tab 1</Tab>
         <Tab value="tab2">Tab 2</Tab>
         <Tab value="tab3">Tab 3</Tab>
@@ -153,8 +158,10 @@ export const WithArrows = () => (
     </Tabs>
 
     <p>Long tab text</p>
-    <Tabs defaultValue="tab1">
-      <TabList withArrows>
+    <Tabs
+      defaultValue="tab1"
+      withArrows>
+      <TabList>
         <Tab value="tab1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Tab>
         <Tab value="tab2">Tab 2</Tab>
         <Tab value="tab3">ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</Tab>
@@ -174,8 +181,9 @@ export const WithArrowsDynamicResize = () => {
     <>
       <Tabs
         defaultValue="tab1"
-        style={{ width: `${width}px` }}>
-        <TabList withArrows>
+        style={{ width: `${width}px` }}
+        withArrows>
+        <TabList>
           <Tab value="tab1">Tab 1</Tab>
           <Tab value="tab2">Tab 2</Tab>
           <Tab value="tab3">Tab 3</Tab>

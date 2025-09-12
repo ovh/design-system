@@ -1,12 +1,12 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Tabs, TabList, type TabListProp, Tab, TabContent, type TabsProp, type TabsValueChangeEvent } from '../../../../ods-react/src/components/tabs/src';
+import { Tabs, TabList, Tab, TabContent, type TabsProp, type TabsValueChangeEvent } from '../../../../ods-react/src/components/tabs/src';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 
 type Story = StoryObj<TabsProp>;
-type DemoArg = Partial<TabListProp>;
+// type DemoArg = Partial<TabListProp>;
 
 const meta: Meta<TabsProp> = {
   component: Tabs,
@@ -18,9 +18,11 @@ const meta: Meta<TabsProp> = {
 export default meta;
 
 export const Demo: Story = {
-  render: (arg: DemoArg) => (
-    <Tabs defaultValue='tab1'>
-      <TabList withArrows={ arg.withArrows }>
+  render: (arg) => (
+    <Tabs
+      defaultValue='tab1'
+      withArrows={ arg.withArrows }>
+      <TabList >
         <Tab value="tab1">Tab 1</Tab>
         <Tab value="tab2">Tab 2</Tab>
         <Tab value="tab3">Tab 3</Tab>
@@ -58,7 +60,6 @@ export const Demo: Story = {
     withArrows: {
       table: {
         category: CONTROL_CATEGORY.design,
-        type: { summary: 'boolean' }
       },
       control: { type: 'boolean' },
     },
@@ -172,8 +173,10 @@ export const WithArrows: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Tabs defaultValue="tab1">
-      <TabList withArrows>
+    <Tabs
+      defaultValue="tab1"
+      withArrows>
+      <TabList>
         <Tab value="tab1">Tab 1</Tab>
         <Tab value="tab2">Tab 2</Tab>
         <Tab value="tab3">Tab 3</Tab>

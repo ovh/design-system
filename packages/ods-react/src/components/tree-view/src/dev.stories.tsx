@@ -194,7 +194,7 @@ export const Controlled = () => {
         value={ selectedId ? [selectedId] : undefined }
         onValueChange={ (d: TreeViewValueChangeDetail) => {
           console.log('onValueChange', d);
-          const next = d.selectedValue[0] || undefined;
+          const next = d.value[0] || undefined;
           setSelectedId(next);
         } }>
         <TreeViewNodes>
@@ -238,7 +238,7 @@ export const ControlledMultiple = () => {
         value={ selectedIds }
         onValueChange={ (d: TreeViewValueChangeDetail) => {
           console.log('onValueChange', d);
-          setSelectedIds(Array.isArray(d.selectedValue) ? d.selectedValue : [d.selectedValue].filter(Boolean));
+          setSelectedIds(Array.isArray(d.value) ? d.value : [d.value].filter(Boolean));
         } }>
         <TreeViewNodes>
           { items.map((item) => (

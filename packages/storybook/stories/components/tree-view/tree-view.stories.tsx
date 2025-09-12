@@ -11,7 +11,9 @@ import {
 } from '../../../../ods-react/src/components/tree-view/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
- 
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import { Button, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT } from '@ovhcloud/ods-react';
+
 
 type Story = StoryObj<TreeViewProp>;
 
@@ -23,7 +25,7 @@ const meta: Meta<TreeViewProp> = {
 
 export default meta;
 
- 
+
 
 export const Default: Story = {
   tags: ['!dev'],
@@ -164,6 +166,11 @@ export const Multiple: Story = {
   globals: {
     imports: `import { TreeView, type TreeViewProp, TreeViewNode, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
   },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   tags: ['!dev'],
   render: ({}) => {
     const items = [
@@ -205,6 +212,11 @@ export const DefaultExpandAll: Story = {
   globals: {
     imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
   },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   tags: ['!dev'],
   render: ({}) => {
     const items = [
@@ -245,6 +257,11 @@ export const Controlled: Story = {
   globals: {
     imports: `import { TreeView, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
   },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   tags: ['!dev'],
   render: ({}) => {
     const items = [
@@ -273,7 +290,7 @@ export const Controlled: Story = {
       <>
         <TreeView
           items={ items }
-          onValueChange={(d: TreeViewValueChangeDetail) => setSelectedId(d.selectedValue[0])}
+          onValueChange={(d: TreeViewValueChangeDetail) => setSelectedId(d.value[0])}
           value={ selectedId ? [selectedId] : undefined }>
           <TreeViewNodes>
             { items.map((item) => (
@@ -290,6 +307,11 @@ export const Controlled: Story = {
 export const ControlledMultiple: Story = {
   globals: {
     imports: `import { TreeView, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
   },
   tags: ['!dev'],
   render: ({}) => {
@@ -319,7 +341,7 @@ export const ControlledMultiple: Story = {
         <TreeView
           items={ items }
           multiple
-          onValueChange={(d: TreeViewValueChangeDetail) => setSelectedIds(Array.isArray(d.selectedValue) ? d.selectedValue : [d.selectedValue].filter(Boolean) as string[])}
+          onValueChange={(d: TreeViewValueChangeDetail) => setSelectedIds(Array.isArray(d.value) ? d.value : [d.value].filter(Boolean) as string[])}
           value={ selectedIds }>
           <TreeViewNodes>
             { items.map((item) => (
@@ -336,6 +358,11 @@ export const ControlledMultiple: Story = {
 export const Disabled: Story = {
   globals: {
     imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
   },
   tags: ['!dev'],
   render: ({}) => {
@@ -377,6 +404,11 @@ export const DisabledItems: Story = {
   globals: {
     imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
   },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   tags: ['!dev'],
   render: ({}) => {
     const items = [
@@ -417,6 +449,11 @@ export const DisabledItems: Story = {
 export const CustomRender: Story = {
   globals: {
     imports: `import { Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
   },
   tags: ['!dev'],
   render: ({}) => {
@@ -463,6 +500,11 @@ export const InFormField: Story = {
   globals: {
     imports: `import { FormField, FormFieldLabel, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
   },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   tags: ['!dev'],
   render: ({}) => {
     const items = [
@@ -502,7 +544,12 @@ export const InFormField: Story = {
 
 export const DynamicChildren: Story = {
   globals: {
-    imports: `import { Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
   },
   tags: ['!dev'],
   render: ({}) => {
@@ -551,44 +598,67 @@ export const DynamicChildren: Story = {
       setItems((prev) => removeNodeFrom(prev, nodeId));
     }
 
+    function handleAddRootFile(): void {
+      const id = `new-file-${counter.current++}.txt`;
+      const newNode = { id, name: id };
+      setItems((prev) => [...prev, newNode]);
+    }
+
     return (
-      <TreeView
-        defaultExpandAll
-        items={ items }
-        multiple>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode key={ item.id } item={ item }>
-              { ({ item, isBranch }) => (
-                <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                    { isBranch ? <Icon name={ ICON_NAME.folder } /> : <Icon name={ ICON_NAME.file } /> }
-                    <span>{ item.name }</span>
-                  </span>
-                  <span style={{ display: 'inline-flex', marginLeft: 'auto', alignItems: 'center', gap: 8 }}>
-                    { isBranch ? (
-                      <button
-                        type="button"
+      <div>
+        <div style={{ marginBottom: 16 }}>
+          <Button
+            aria-label="Add file at root level"
+            onClick={ handleAddRootFile }
+            size={ BUTTON_SIZE.xs }
+            variant={ BUTTON_VARIANT.outline }>
+            <Icon name={ ICON_NAME.plus } />
+            Add file at root level
+          </Button>
+        </div>
+        <TreeView
+          defaultExpandAll
+          items={ items }
+          multiple>
+          <TreeViewNodes>
+            { items.map((item) => (
+              <TreeViewNode key={ item.id } item={ item }>
+                { ({ item, isBranch }) => (
+                  <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                      { isBranch ? <Icon name={ ICON_NAME.folder } /> : <Icon name={ ICON_NAME.file } /> }
+                      <span>{ item.name }</span>
+                    </span>
+                    <div style={{ display: 'inline-flex', marginLeft: 'auto', alignItems: 'center', gap: 8}}>
+                      { isBranch ? (
+                        <Button
                         aria-label="Add child"
                         onClick={(e) => { e.stopPropagation(); handleAddChild(item.id); }}
-                        style={{ background: 'transparent', border: 'none', padding: 2, cursor: 'pointer' }}>
-                        <Icon name={ ICON_NAME.plus } />
-                      </button>
-                    ) : null }
-                    <button
-                      type="button"
-                      aria-label="Delete"
-                      onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
-                      style={{ background: 'transparent', border: 'none', padding: 2, cursor: 'pointer' }}>
-                      <Icon name={ ICON_NAME.xmark } />
-                    </button>
-                  </span>
-                </div>
-              ) }
-            </TreeViewNode>
-          )) }
-        </TreeViewNodes>
-      </TreeView>
+                        size={ BUTTON_SIZE.xs }
+                        onKeyDown={(e) => { e.stopPropagation(); }}
+                        variant={ BUTTON_VARIANT.outline }
+                        >
+                          <Icon name={ ICON_NAME.plus } />
+                        </Button>
+                      ) : null }
+                      <Button
+                        aria-label="Delete"
+                        color={ BUTTON_COLOR.critical }
+                        onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
+                        onMouseDown={(e) => { e.stopPropagation(); }}
+                        onKeyDown={(e) => { e.stopPropagation(); }}
+                        size={ BUTTON_SIZE.xs }
+                        variant={ BUTTON_VARIANT.outline }>
+                        <Icon name={ ICON_NAME.trash } />
+                      </Button>
+                    </div>
+                  </div>
+                ) }
+              </TreeViewNode>
+            )) }
+          </TreeViewNodes>
+        </TreeView>
+      </div>
     );
   }
 }

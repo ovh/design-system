@@ -1,4 +1,4 @@
-import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
+import { TreeView as VendorTreeView, useTreeViewContext } from '@ark-ui/react/tree-view';
 import { type ComponentPropsWithRef, type FC, type JSX, type Ref, type RefObject } from 'react';
 import { type TreeViewItem } from '../../contexts/useTreeView';
 import style from '../tree-view-node/treeViewNode.module.scss';
@@ -30,8 +30,18 @@ const TreeViewNodeItem: FC<TreeViewNodeItemProps> = ({
   nodeRef,
   onKeyDown,
 }): JSX.Element => {
+  const { checkedValue } = useTreeViewContext();
+  const isChecked = checkedValue?.includes(item.id) ?? false;
+  let ariaChecked: 'true' | 'false' | undefined;
+  if (multiple) {
+    ariaChecked = isChecked ? 'true' : 'false';
+  } else {
+    ariaChecked = undefined;
+  }
+
   return (
     <VendorTreeView.Item
+      aria-checked={ ariaChecked }
       aria-disabled={ isDisabled }
       className={ className }
       data-disabled={ isDisabled ? true : undefined }

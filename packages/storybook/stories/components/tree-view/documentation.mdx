@@ -13,14 +13,14 @@ import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 <Banner of={ TreeViewStories } />
 
 <Canvas of={ TreeViewStories.Overview } sourceState='none' />
-The **Tree View** component displays hierarchical data in a parent-child structure. It allows users to expand, collapse, and interact with nested items.
 
 <Heading label="Overview" level={ 2 } />
 
+The **Tree View** component displays hierarchical data in a parent-child structure. It allows users to expand, collapse, and interact with nested items.
 <IdentityCard aliases={ [] }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/8NZfqeptysMQInF02WaIJR"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/tree-view"
-              name="TreeView"
+              name="Tree View"
               startingVersion={ 19 }>
 </IdentityCard>
 
@@ -91,13 +91,13 @@ Pressing `Arrow Up / Down` moves focus to the previous or next visible node.
 
 Pressing `Arrow Right`:
 
-If the focused node is collapsed, expands it
-If the focused node is expanded, moves focus to its first child
+- If the focused node is collapsed, expands it
+- If the focused node is expanded, moves focus to its first child
 
 Pressing `Arrow Left`:
 
-If the focused node is expanded, collapses it
-If the focused node is collapsed, moves focus to its parent
+- If the focused node is expanded, collapses it
+- If the focused node is collapsed, moves focus to its parent
 
 Pressing `Home`, or `fn` + `Arrow Left`, moves focus to the first visible node.
 

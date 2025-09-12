@@ -1,25 +1,25 @@
 import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type ForwardedRef, type JSX, forwardRef, useMemo } from 'react';
+import { type ComponentPropsWithRef, type FC, type ForwardedRef, type JSX, forwardRef, useMemo } from 'react';
 import { type TreeViewItem, TreeViewProvider } from '../../contexts/useTreeView';
 import { computeDefaultExpanded, createCollectionFromItems, normalizeSelectedOnChange } from '../../controller/tree-view';
 import style from './treeView.module.scss';
 
 interface TreeViewValueChangeDetail {
-  selectedValue: string[];
+  value: string[];
 }
 
-interface TreeViewProp<CustomData = Record<string, never>> extends ComponentPropsWithRef<'div'> {
+interface TreeViewProp extends ComponentPropsWithRef<'div'> {
   defaultExpandAll?: boolean;
   defaultValue?: string[];
   disabled?: boolean;
-  items: Array<TreeViewItem<CustomData>>;
+  items: Array<TreeViewItem>;
   multiple?: boolean;
   onValueChange?: (details: TreeViewValueChangeDetail) => void;
   value?: string[];
 }
 
-const TreeView = forwardRef(function TreeView<CustomData = Record<string, never>>({
+const TreeView: FC<TreeViewProp> = forwardRef<HTMLDivElement, TreeViewProp>(function TreeView({
   children,
   className,
   defaultExpandAll = false,
@@ -30,12 +30,12 @@ const TreeView = forwardRef(function TreeView<CustomData = Record<string, never>
   onValueChange,
   value,
   ...props
-}: TreeViewProp<CustomData>, ref: ForwardedRef<HTMLDivElement>): JSX.Element {
+}: TreeViewProp, ref: ForwardedRef<HTMLDivElement>): JSX.Element {
   const collection = useMemo(() => createCollectionFromItems(items), [items]);
 
   const idToIndexPath = useMemo(() => {
     const map = new Map<string, number[]>();
-    function visit(nodes: Array<TreeViewItem<CustomData>> | undefined, base: number[] = []): void {
+    function visit(nodes: Array<TreeViewItem> | undefined, base: number[] = []): void {
       if (!nodes?.length) {
         return;
       }
@@ -58,11 +58,11 @@ const TreeView = forwardRef(function TreeView<CustomData = Record<string, never>
   function handleSelectionChange(details: { selectedValue: string | string[] }): void {
     const selectedValue = normalizeSelectedOnChange(details.selectedValue, multiple);
     const normalizedValue = Array.isArray(selectedValue) ? selectedValue : [selectedValue];
-    onValueChange?.({ selectedValue: normalizedValue });
+    onValueChange?.({ value: normalizedValue });
   }
 
   function handleCheckedChange(details: { checkedValue: string[] }): void {
-    onValueChange?.({ selectedValue: details.checkedValue });
+    onValueChange?.({ value: details.checkedValue });
   }
 
   return (

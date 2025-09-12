@@ -76,6 +76,7 @@ enum REACT_COMPONENTS_TITLE {
   timepicker = `${SECTION.reactComponents}/Timepicker`,
   toggle = `${SECTION.reactComponents}/Toggle`,
   tooltip = `${SECTION.reactComponents}/Tooltip`,
+  treeView = `${SECTION.reactComponents}/Tree View`,
 }
 
 enum STORY {

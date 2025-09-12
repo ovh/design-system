@@ -8,7 +8,7 @@ interface TreeViewNodeLabelProps<CustomData = Record<string, never>> {
   multiple: boolean;
 }
 
-function TreeViewNodeLabel<CustomData = Record<string, never>>({ children, item, multiple }: TreeViewNodeLabelProps<CustomData>): JSX.Element {
+function TreeViewNodeLabel<CustomData = Record<string, never>>({ children, item }: TreeViewNodeLabelProps<CustomData>): JSX.Element {
   const { expandedValue } = useTreeViewContext();
   const isExpanded = expandedValue?.includes(item.id) ?? false;
   if (typeof children === 'function') {
@@ -21,16 +21,10 @@ function TreeViewNodeLabel<CustomData = Record<string, never>>({ children, item,
     });
 
     if (item.children?.length) {
-      return <VendorTreeView.BranchText>{ content }</VendorTreeView.BranchText>;
+      return <VendorTreeView.BranchText asChild>{ content }</VendorTreeView.BranchText>;
     }
 
-    return multiple ? (
-      <VendorTreeView.ItemText>{ content }</VendorTreeView.ItemText>
-    ) : (
-      <VendorTreeView.ItemText asChild>
-        <span>{ content }</span>
-      </VendorTreeView.ItemText>
-    );
+    return <VendorTreeView.ItemText asChild>{ content }</VendorTreeView.ItemText>
   }
 
   return item.children?.length ? (

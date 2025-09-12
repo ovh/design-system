@@ -1,4 +1,4 @@
-import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
+import { TreeView as VendorTreeView, useTreeViewContext } from '@ark-ui/react/tree-view';
 import { type ComponentPropsWithRef, type FC, type JSX, type Ref, type RefObject } from 'react';
 import { type TreeViewItem } from '../../contexts/useTreeView';
 import style from '../tree-view-node/treeViewNode.module.scss';
@@ -45,6 +45,22 @@ const TreeViewNodeBranch: FC<TreeViewNodeBranchProps> = ({
       checkboxRef.current?.click();
     }
   }
+
+  const { checkedValue } = useTreeViewContext();
+  const dataState = checkboxRef.current?.getAttribute('data-state');
+  let ariaChecked: 'true' | 'false' | 'mixed' | undefined;
+  if (multiple) {
+    if (dataState === 'indeterminate') {
+      ariaChecked = 'mixed';
+    } else if (dataState === 'checked') {
+      ariaChecked = 'true';
+    } else {
+      ariaChecked = checkedValue?.includes(item.id) ? 'true' : 'false';
+    }
+  } else {
+    ariaChecked = undefined;
+  }
+
   return (
     <VendorTreeView.Branch
       aria-disabled={ isDisabled }
@@ -55,9 +71,11 @@ const TreeViewNodeBranch: FC<TreeViewNodeBranchProps> = ({
       ref={ nodeRef }
       onKeyDown={ handleKeyDown }>
       <VendorTreeView.BranchControl
+        aria-checked={ ariaChecked }
         aria-disabled={ isDisabled }
         className={ style['tree-view-node__control'] }
         data-disabled={ isDisabled ? true : undefined }
+        role="checkbox"
         tabIndex={ isDisabled ? -1 : undefined }>
         <VendorTreeView.BranchIndicator
           className={ style['tree-view-node__chevron'] }>

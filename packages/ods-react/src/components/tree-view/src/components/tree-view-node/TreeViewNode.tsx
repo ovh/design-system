@@ -67,7 +67,9 @@ const TreeViewNode: FC<TreeViewNodeProp> = forwardRef(({
           nodeRef={ ref }
           labelChildren={ children }
           renderChildNode={ (child: TreeViewItem, childIndexPath: number[]) => (
-            <TreeViewNode indexPath={ childIndexPath } item={ child } key={ child.id } />
+            <TreeViewNode indexPath={ childIndexPath } item={ child } key={ child.id }>
+              { children }
+            </TreeViewNode>
           ) }
         />
       ) : (

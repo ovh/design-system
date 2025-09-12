@@ -3,6 +3,7 @@
 
 $ods-button-border-radius-xs: var(--ods-border-radius-xs);
 $ods-button-border-radius-md: var(--ods-border-radius-md);
+$ods-button-border-radius-width: var(--ods-border-width-sm);
 $ods-button-size-xs: 24px;
 $ods-button-size-sm: 32px;
 $ods-button-size-md: 40px;
@@ -53,7 +54,7 @@ $ods-button-size-md: 40px;
 }
 
 @mixin ods-button-variant-default($color) {
-  border-width: 1px;
+  border-width: $ods-button-border-radius-width;
   border-style: solid;
 
   &:not(:disabled) {
@@ -152,7 +153,7 @@ $ods-button-size-md: 40px;
 }
 
 @mixin ods-button-variant-ghost($color) {
-  border: 1px solid transparent;
+  border: $ods-button-border-radius-width solid transparent;
 
   &:disabled {
     background-color: inherit;
@@ -248,7 +249,7 @@ $ods-button-size-md: 40px;
 }
 
 @mixin ods-button-variant-outline($color) {
-  border-width: 1px;
+  border-width: $ods-button-border-radius-width;
   border-style: solid;
 
   &:not(:disabled) {

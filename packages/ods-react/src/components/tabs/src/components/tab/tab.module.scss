@@ -5,14 +5,12 @@
 @layer ods-molecules {
   .tab {
     display: block;
-    margin-bottom: -#{tab-list.$tab-list-border-bottom-size};
     border-top: none;
     border-right: none;
-    border-bottom: solid tab-list.$tab-list-border-bottom-size transparent;
+    border-bottom: solid tab-list.$tab-list-border-bottom-size var(--ods-color-neutral-100);
     border-left: none;
     border-top-left-radius: var(--ods-border-radius-md);
     border-top-right-radius: var(--ods-border-radius-md);
-    border-color: transparent;
     background: none;
     cursor: pointer;
     padding: 2px 16px;
@@ -27,11 +25,12 @@
       @include focus.ods-focus();
 
       z-index: 1;
-      outline-offset: 0;
+      outline-offset: calc(var(--ods-outline-offset) * -1);
     }
 
     &:focus-visible:not([disabled], [aria-selected="true"]),
     &:hover:not([disabled], [aria-selected="true"]) {
+      border-color: var(--ods-color-neutral-050);
       background-color: var(--ods-color-neutral-050);
     }
 

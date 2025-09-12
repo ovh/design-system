@@ -95,3 +95,70 @@ export const CustomStyle = () => (
     </TabContent>
   </Tabs>
 );
+
+export const WithArrows = () => (
+  <>
+    <p>No container size</p>
+    <Tabs defaultValue="tab11">
+      <TabList withArrows>
+        <Tab value="tab1">Tab 1</Tab>
+        <Tab value="tab2">Tab 2</Tab>
+        <Tab value="tab3">Tab 3</Tab>
+        <Tab value="tab4">Tab 4</Tab>
+        <Tab value="tab5">Tab 5</Tab>
+        <Tab value="tab6">Tab 6</Tab>
+        <Tab value="tab7">Tab 7</Tab>
+        <Tab value="tab8">Tab 8</Tab>
+        <Tab value="tab9">Tab 9</Tab>
+        <Tab value="tab10">Tab 10</Tab>
+        <Tab value="tab11">Tab 11</Tab>
+        <Tab value="tab12">Tab 12</Tab>
+        <Tab value="tab13">Tab 13</Tab>
+        <Tab value="tab14">Tab 14</Tab>
+        <Tab value="tab15">Tab 15</Tab>
+      </TabList>
+    </Tabs>
+
+    <p>In limited container</p>
+    <Tabs
+      defaultValue="tab1"
+      style={{ width: '400px' }}>
+      <TabList withArrows>
+        <Tab value="tab1">Tab 1</Tab>
+        <Tab value="tab2">Tab 2</Tab>
+        <Tab value="tab3">Tab 3</Tab>
+        <Tab value="tab4">Tab 4</Tab>
+        <Tab value="tab5">Tab 5</Tab>
+        <Tab value="tab6">Tab 6</Tab>
+        <Tab value="tab7">Tab 7</Tab>
+        <Tab value="tab8">Tab 8</Tab>
+        <Tab value="tab9">Tab 9</Tab>
+        <Tab value="tab10">Tab 10</Tab>
+        <Tab value="tab11">Tab 11</Tab>
+        <Tab value="tab12">Tab 12</Tab>
+        <Tab value="tab13">Tab 13</Tab>
+        <Tab value="tab14">Tab 14</Tab>
+        <Tab value="tab15">Tab 15</Tab>
+      </TabList>
+    </Tabs>
+
+    <p>No overflow</p>
+    <Tabs defaultValue="tab1">
+      <TabList withArrows>
+        <Tab value="tab1">Tab 1</Tab>
+        <Tab value="tab2">Tab 2</Tab>
+        <Tab value="tab3">Tab 3</Tab>
+      </TabList>
+    </Tabs>
+
+    <p>Long tab text</p>
+    <Tabs defaultValue="tab1">
+      <TabList withArrows>
+        <Tab value="tab1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Tab>
+        <Tab value="tab2">Tab 2</Tab>
+        <Tab value="tab3">ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</Tab>
+      </TabList>
+    </Tabs>
+  </>
+
+);

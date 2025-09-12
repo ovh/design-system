@@ -1,6 +1,6 @@
 import { Tabs } from '@ark-ui/react/tabs';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import style from './tabContent.module.scss';
 
 interface TabContentProp extends ComponentPropsWithRef<'div'> {
@@ -10,22 +10,23 @@ interface TabContentProp extends ComponentPropsWithRef<'div'> {
   value: string,
 }
 
-const TabContent: FC<TabContentProp> = ({
+const TabContent: FC<TabContentProp> = forwardRef(({
   children,
   className,
   value,
   ...props
-}): JSX.Element => {
+}, ref): JSX.Element => {
   return (
     <Tabs.Content
       className={ classNames(style['tab-content'], className) }
       data-ods="tab-content"
+      ref={ ref }
       value={ value }
       { ...props }>
       { children }
     </Tabs.Content>
   );
-};
+});
 
 export {
   TabContent,

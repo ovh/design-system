@@ -1,25 +1,23 @@
 import { Tabs as VendorTabs } from '@ark-ui/react/tabs';
-import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, type Ref, forwardRef } from 'react';
-import style from './tabs.module.scss';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 
 interface TabsValueChangeEvent {
-  value: string;
+  value: string,
 }
 
 interface TabsProp extends ComponentPropsWithRef<'div'> {
   /**
    * The initial value of the selected tab. Use when you don't need to control the value of the tabs.
    */
-  defaultValue?: string;
+  defaultValue?: string,
   /**
    * Callback fired when the state of selected tab changes.
    */
-  onValueChange?: (event: TabsValueChangeEvent) => void;
+  onValueChange?: (event: TabsValueChangeEvent) => void,
   /**
    * The controlled value of the selected tab.
    */
-  value?: string;
+  value?: string,
 }
 
 const Tabs: FC<TabsProp> = forwardRef(({
@@ -29,11 +27,10 @@ const Tabs: FC<TabsProp> = forwardRef(({
   onValueChange,
   value,
   ...props
-}, ref: Ref<HTMLDivElement>): JSX.Element => {
-
+}, ref): JSX.Element => {
   return (
     <VendorTabs.Root
-      className={ classNames(style['tabs'], className) }
+      className={ className }
       data-ods="tabs"
       defaultValue={ defaultValue }
       onValueChange={ onValueChange }

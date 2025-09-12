@@ -16,13 +16,13 @@
     "target": "ES2020",
     "useDefineForClassFields": true
   },
-  "include": ["src"],
+  "include": ["src", "tests"],
   "exclude": [
     "dist",
     "node_modules",
+    "src/**/tests",
     "**/**/.storybook",
     "**/**/node_modules",
-    "**/**/tests",
     "**/**/*.config.ts",
     "**/**/*.stories.tsx"
   ]

@@ -25,46 +25,6 @@ const meta: Meta<TreeViewProp> = {
 
 export default meta;
 
-
-
-export const Default: Story = {
-  tags: ['!dev'],
-  render: ({}) => {
-    const items = [
-      {
-        id: 'src',
-        name: 'src',
-        children: [
-          { id: 'app.tsx', name: 'app.tsx' },
-          { id: 'index.ts', name: 'index.ts' },
-          {
-            id: 'components',
-            name: 'components',
-            children: [
-              { id: 'Button.tsx', name: 'Button.tsx' },
-              { id: 'Card.tsx', name: 'Card.tsx' },
-            ],
-          },
-        ],
-      },
-      { id: 'package.json', name: 'package.json' },
-      { id: 'readme.md', name: 'README.md' },
-    ];
-
-    return (
-      <TreeView
-        items={ items }
-        onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode key={ item.id } item={ item } />
-          )) }
-        </TreeViewNodes>
-      </TreeView>
-    );
-  }
-};
-
 export const Demo: Story = {
   render: (arg: TreeViewProp) => {
     const items = [
@@ -122,6 +82,47 @@ export const Demo: Story = {
       control: 'boolean',
     },
   }),
+};
+
+export const Default: Story = {
+  globals: {
+    imports: `import { TreeView, type TreeViewProp, TreeViewNode, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+
+    return (
+      <TreeView
+        items={ items }
+        onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
 };
 
 export const Overview: Story = {

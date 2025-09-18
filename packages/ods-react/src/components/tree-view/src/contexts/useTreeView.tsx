@@ -11,18 +11,17 @@ export interface TreeViewItem<CustomData = Record<string, never>> {
 
 type TreeViewContextType = {
   disabled: boolean;
-  /** @internal */
   getIndexPathForId: (id: string) => number[] | undefined;
   multiple: boolean;
 };
 
-interface TreeViewProviderProps extends TreeViewContextType {
+interface TreeViewProviderProp extends TreeViewContextType {
   children: ReactNode;
 }
 
 const TreeViewContext = createContext<TreeViewContextType | undefined>(undefined);
 
-function TreeViewProvider({ children, disabled, getIndexPathForId, multiple }: TreeViewProviderProps): JSX.Element {
+function TreeViewProvider({ children, disabled, getIndexPathForId, multiple }: TreeViewProviderProp): JSX.Element {
   return (
     <TreeViewContext.Provider value={{ disabled, getIndexPathForId, multiple }}>
       { children }

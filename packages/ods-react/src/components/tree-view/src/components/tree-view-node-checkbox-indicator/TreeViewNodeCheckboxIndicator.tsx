@@ -2,11 +2,11 @@ import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
 import { type JSX } from 'react';
 import { Checkbox, CheckboxControl } from '../../../../checkbox/src';
 
-interface TreeViewNodeCheckboxIndicatorProps {
+interface TreeViewNodeCheckboxIndicatorProp {
   isDisabled: boolean;
 }
 
-function TreeViewNodeCheckboxIndicator({ isDisabled }: TreeViewNodeCheckboxIndicatorProps): JSX.Element {
+function TreeViewNodeCheckboxIndicator({ isDisabled }: TreeViewNodeCheckboxIndicatorProp): JSX.Element {
   return (
     <VendorTreeView.NodeCheckboxIndicator
       fallback={ (

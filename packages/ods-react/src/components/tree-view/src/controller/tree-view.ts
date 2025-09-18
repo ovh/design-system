@@ -1,5 +1,6 @@
-import type { TreeViewItem } from '../contexts/useTreeView';
 import { createTreeCollection } from '@ark-ui/react/tree-view';
+import { type KeyboardEvent, type RefObject } from 'react';
+import { type TreeViewItem } from '../contexts/useTreeView';
 
 function createCollectionFromItems<CustomData = Record<string, never>>(items: Array<TreeViewItem<CustomData>>): ReturnType<typeof createTreeCollection<TreeViewItem<CustomData>>> {
   return createTreeCollection<TreeViewItem<CustomData>>({
@@ -67,9 +68,26 @@ function computeDefaultExpanded<CustomData = Record<string, never>>(
   return Array.from(expandedIds);
 }
 
+function toggleNodeCheckboxOnSpace<T extends Element>(
+  e: KeyboardEvent<T>,
+  multiple: boolean,
+  isDisabled: boolean,
+  checkboxRef: RefObject<HTMLSpanElement | null>,
+): void {
+  if (!multiple || isDisabled) {
+    return;
+  }
+  if (e.key === ' ') {
+    e.preventDefault();
+    e.stopPropagation();
+    checkboxRef.current?.click();
+  }
+}
+
 export {
   computeDefaultExpanded,
   createCollectionFromItems,
   normalizeSelectedOnChange,
+  toggleNodeCheckboxOnSpace,
 };
 

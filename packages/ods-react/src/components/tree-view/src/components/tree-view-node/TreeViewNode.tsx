@@ -2,11 +2,12 @@ import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, type KeyboardEvent, type ReactNode, forwardRef, useRef } from 'react';
 import { type TreeViewItem, useTreeView } from '../../contexts/useTreeView';
+import { toggleNodeCheckboxOnSpace } from '../../controller/tree-view';
 import { TreeViewNodeBranch } from '../tree-view-node-branch/TreeViewNodeBranch';
 import { TreeViewNodeItem } from '../tree-view-node-item/TreeViewNodeItem';
 import style from './treeViewNode.module.scss';
 
-export type TreeViewCustomRendererArg<CustomData = Record<string, never>> = {
+type TreeViewCustomRendererArg<CustomData = Record<string, never>> = {
   customData?: CustomData;
   isBranch: boolean;
   isExpanded: boolean;
@@ -27,6 +28,7 @@ const TreeViewNode: FC<TreeViewNodeProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { multiple, disabled: globalDisabled, getIndexPathForId } = useTreeView();
+  const checkboxRef = useRef<HTMLSpanElement | null>(null);
   const byIdPath = getIndexPathForId(item.id);
   const effectiveIndexPath = byIdPath ?? indexPath ?? [];
 
@@ -36,16 +38,8 @@ const TreeViewNode: FC<TreeViewNodeProp> = forwardRef(({
     ...item,
     disabled: isDisabled,
   };
-  const checkboxRef = useRef<HTMLSpanElement | null>(null);
-  function handleKeyDown(e: KeyboardEvent<HTMLElement>): void {
-    if (!multiple || isDisabled) {
-      return;
-    }
-    if (e.key === ' ' || e.key === 'Enter') {
-      e.preventDefault();
-      e.stopPropagation();
-      checkboxRef.current?.click();
-    }
+  function handleKeyDown(e: KeyboardEvent<HTMLDivElement>): void {
+    toggleNodeCheckboxOnSpace(e, multiple, isDisabled, checkboxRef);
   }
 
   return (
@@ -58,19 +52,20 @@ const TreeViewNode: FC<TreeViewNodeProp> = forwardRef(({
             className,
           ) }
           checkboxRef={ checkboxRef }
-          nodeProps={ props }
+          data-ods="tree-view-node"
           effectiveIndexPath={ effectiveIndexPath }
           getIndexPathForId={ getIndexPathForId }
           isDisabled={ isDisabled }
           item={ item }
           multiple={ multiple }
-          nodeRef={ ref }
           labelChildren={ children }
           renderChildNode={ (child: TreeViewItem, childIndexPath: number[]) => (
             <TreeViewNode indexPath={ childIndexPath } item={ child } key={ child.id }>
               { children }
             </TreeViewNode>
           ) }
+          { ...props }
+          ref={ ref }
         />
       ) : (
         <TreeViewNodeItem
@@ -80,13 +75,14 @@ const TreeViewNode: FC<TreeViewNodeProp> = forwardRef(({
             className,
           ) }
           checkboxRef={ checkboxRef }
-          nodeProps={ props }
+          data-ods="tree-view-node"
           isDisabled={ isDisabled }
           item={ item }
           labelChildren={ children }
           multiple={ multiple }
-          nodeRef={ ref }
           onKeyDown={ handleKeyDown }
+          { ...props }
+          ref={ ref }
         />
       ) }
     </VendorTreeView.NodeProvider>
@@ -97,5 +93,6 @@ TreeViewNode.displayName = 'TreeViewNode';
 
 export {
   TreeViewNode,
+  type TreeViewCustomRendererArg,
   type TreeViewNodeProp,
 };

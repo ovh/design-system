@@ -1,35 +1,29 @@
 import { TreeView as VendorTreeView, useTreeViewContext } from '@ark-ui/react/tree-view';
-import { type ComponentPropsWithRef, type FC, type JSX, type Ref, type RefObject } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, type KeyboardEventHandler, type Ref, type RefObject, forwardRef } from 'react';
 import { type TreeViewItem } from '../../contexts/useTreeView';
 import style from '../tree-view-node/treeViewNode.module.scss';
 import { TreeViewNodeCheckboxIndicator } from '../tree-view-node-checkbox-indicator/TreeViewNodeCheckboxIndicator';
 import { TreeViewNodeLabel } from '../tree-view-node-label/TreeViewNodeLabel';
 
-type DOMDivProps = ComponentPropsWithRef<'div'>;
-
-interface TreeViewNodeItemProps {
-  className: string;
+interface TreeViewNodeItemProp extends ComponentPropsWithRef<'div'> {
   checkboxRef: RefObject<HTMLSpanElement | null>;
-  nodeProps: DOMDivProps;
   isDisabled: boolean;
   labelChildren?: unknown;
   item: TreeViewItem;
   multiple: boolean;
-  nodeRef: Ref<HTMLDivElement>;
-  onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => void;
+  onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
 }
 
-const TreeViewNodeItem: FC<TreeViewNodeItemProps> = ({
+const TreeViewNodeItem: FC<TreeViewNodeItemProp> = forwardRef(({
   className,
   checkboxRef,
-  nodeProps,
   isDisabled,
   labelChildren,
   item,
   multiple,
-  nodeRef,
   onKeyDown,
-}): JSX.Element => {
+  ...props
+}, ref): JSX.Element => {
   const { checkedValue } = useTreeViewContext();
   const isChecked = checkedValue?.includes(item.id) ?? false;
   let ariaChecked: 'true' | 'false' | undefined;
@@ -47,8 +41,8 @@ const TreeViewNodeItem: FC<TreeViewNodeItemProps> = ({
       data-disabled={ isDisabled ? true : undefined }
       data-ods="tree-view-item"
       tabIndex={ isDisabled ? -1 : undefined }
-      { ...nodeProps }
-      ref={ nodeRef }
+      { ...props }
+      ref={ ref }
       onKeyDown={ onKeyDown }>
       { multiple ? (
         <VendorTreeView.NodeCheckbox
@@ -71,7 +65,7 @@ const TreeViewNodeItem: FC<TreeViewNodeItemProps> = ({
       ) }
     </VendorTreeView.Item>
   );
-};
+});
 
 export { TreeViewNodeItem };
 

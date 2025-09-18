@@ -1,6 +1,6 @@
 import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type ForwardedRef, type JSX, forwardRef, useMemo } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useMemo } from 'react';
 import { type TreeViewItem, TreeViewProvider } from '../../contexts/useTreeView';
 import { computeDefaultExpanded, createCollectionFromItems, normalizeSelectedOnChange } from '../../controller/tree-view';
 import style from './treeView.module.scss';
@@ -19,7 +19,7 @@ interface TreeViewProp extends ComponentPropsWithRef<'div'> {
   value?: string[];
 }
 
-const TreeView: FC<TreeViewProp> = forwardRef<HTMLDivElement, TreeViewProp>(function TreeView({
+const TreeView: FC<TreeViewProp> = forwardRef(({
   children,
   className,
   defaultExpandAll = false,
@@ -30,7 +30,7 @@ const TreeView: FC<TreeViewProp> = forwardRef<HTMLDivElement, TreeViewProp>(func
   onValueChange,
   value,
   ...props
-}: TreeViewProp, ref: ForwardedRef<HTMLDivElement>): JSX.Element {
+}, ref): JSX.Element => {
   const collection = useMemo(() => createCollectionFromItems(items), [items]);
 
   const idToIndexPath = useMemo(() => {
@@ -52,24 +52,29 @@ const TreeView: FC<TreeViewProp> = forwardRef<HTMLDivElement, TreeViewProp>(func
   }, [items]);
 
   const defaultExpandedValue = useMemo(() => (
-    computeDefaultExpanded(items, { defaultExpandAll, defaultValue, value })
-  ), [items, defaultExpandAll, defaultValue, value]);
+    computeDefaultExpanded(items, { defaultExpandAll, defaultValue })
+  ), [items, defaultExpandAll, defaultValue]);
 
   function handleSelectionChange(details: { selectedValue: string | string[] }): void {
+    if (!onValueChange) {
+      return;
+    }
     const selectedValue = normalizeSelectedOnChange(details.selectedValue, multiple);
     const normalizedValue = Array.isArray(selectedValue) ? selectedValue : [selectedValue];
-    onValueChange?.({ value: normalizedValue });
+    onValueChange({ value: normalizedValue });
   }
 
   function handleCheckedChange(details: { checkedValue: string[] }): void {
-    onValueChange?.({ value: details.checkedValue });
+    if (!onValueChange) {
+      return;
+    }
+    onValueChange({ value: details.checkedValue });
   }
 
   return (
     <TreeViewProvider
       disabled={ disabled }
       multiple={ multiple }
-      // @internal
       getIndexPathForId={ (id: string) => idToIndexPath.get(id) as number[] | undefined }>
       <VendorTreeView.Root
         className={ classNames(style['tree-view'], className) }

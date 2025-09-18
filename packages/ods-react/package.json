@@ -31,7 +31,7 @@
     "lint:ts": "eslint '{src,tests}/!(components)/**/*.{ts,tsx}'"
   },
   "dependencies": {
-    "@ark-ui/react": "5.23.0",
+    "@ark-ui/react": "5.25.0",
     "classnames": "2.5.1",
     "libphonenumber-js": "1.12.8"
   },

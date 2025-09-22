@@ -1,10 +1,14 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import style from './treeViewNodes.module.scss';
 
 interface TreeViewNodesProp extends ComponentPropsWithRef<'div'> {}
 
-const TreeViewNodes = forwardRef<HTMLDivElement, TreeViewNodesProp>(({ children, className, ...props }, ref) => {
+const TreeViewNodes: FC<TreeViewNodesProp> = forwardRef(({
+  children,
+  className,
+  ...props
+}, ref): JSX.Element => {
   return (
     <div
       className={ classNames(style['tree-view-nodes'], className) }

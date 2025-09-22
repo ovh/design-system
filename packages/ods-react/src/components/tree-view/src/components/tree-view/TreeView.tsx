@@ -1,7 +1,7 @@
 import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useMemo } from 'react';
-import { type TreeViewItem, TreeViewProvider } from '../../contexts/useTreeView';
+import { type TreeViewItem, type TreeViewRootProp, TreeViewProvider } from '../../contexts/useTreeView';
 import { computeDefaultExpanded, createCollectionFromItems, normalizeSelectedOnChange } from '../../controller/tree-view';
 import style from './treeView.module.scss';
 
@@ -9,24 +9,19 @@ interface TreeViewValueChangeDetail {
   value: string[];
 }
 
-interface TreeViewProp extends ComponentPropsWithRef<'div'> {
-  defaultExpandAll?: boolean;
-  defaultValue?: string[];
-  disabled?: boolean;
-  items: Array<TreeViewItem>;
-  multiple?: boolean;
-  onValueChange?: (details: TreeViewValueChangeDetail) => void;
-  value?: string[];
-}
+/**
+ * @inheritDoc TreeViewRootProp
+ */
+interface TreeViewProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultCheckedValue' | 'defaultValue'>, TreeViewRootProp {}
 
 const TreeView: FC<TreeViewProp> = forwardRef(({
   children,
   className,
   defaultExpandAll = false,
   defaultValue,
-  disabled = false,
+  disabled,
   items,
-  multiple = false,
+  multiple,
   onValueChange,
   value,
   ...props

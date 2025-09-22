@@ -1,23 +1,15 @@
 import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
-import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, type KeyboardEvent, type ReactNode, forwardRef, useRef } from 'react';
-import { type TreeViewItem, useTreeView } from '../../contexts/useTreeView';
-import { toggleNodeCheckboxOnSpace } from '../../controller/tree-view';
+import { type ComponentPropsWithRef, type FC, type JSX, type ReactNode, forwardRef } from 'react';
+import { type TreeViewCustomRendererArg, type TreeViewItem, useTreeView } from '../../contexts/useTreeView';
 import { TreeViewNodeBranch } from '../tree-view-node-branch/TreeViewNodeBranch';
 import { TreeViewNodeItem } from '../tree-view-node-item/TreeViewNodeItem';
-import style from './treeViewNode.module.scss';
+// TODO fix style (selection / icon rotation / ...) then remove treeViewNode.module.scss file
+// import style from './treeViewNode.module.scss';
 
-type TreeViewCustomRendererArg<CustomData = Record<string, never>> = {
-  customData?: CustomData;
-  isBranch: boolean;
-  isExpanded: boolean;
-  item: TreeViewItem<CustomData>;
-};
-
-interface TreeViewNodeProp<CustomData = Record<string, never>> extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
-  children?: ReactNode | ((arg: TreeViewCustomRendererArg<CustomData>) => JSX.Element);
+interface TreeViewNodeProp extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
+  children?: ReactNode | ((arg: TreeViewCustomRendererArg) => ReactNode);
   indexPath?: number[];
-  item: TreeViewItem<CustomData>;
+  item: TreeViewItem;
 }
 
 const TreeViewNode: FC<TreeViewNodeProp> = forwardRef(({
@@ -28,7 +20,6 @@ const TreeViewNode: FC<TreeViewNodeProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { multiple, disabled: globalDisabled, getIndexPathForId } = useTreeView();
-  const checkboxRef = useRef<HTMLSpanElement | null>(null);
   const byIdPath = getIndexPathForId(item.id);
   const effectiveIndexPath = byIdPath ?? indexPath ?? [];
 
@@ -38,27 +29,20 @@ const TreeViewNode: FC<TreeViewNodeProp> = forwardRef(({
     ...item,
     disabled: isDisabled,
   };
-  function handleKeyDown(e: KeyboardEvent<HTMLDivElement>): void {
-    toggleNodeCheckboxOnSpace(e, multiple, isDisabled, checkboxRef);
-  }
 
   return (
-    <VendorTreeView.NodeProvider indexPath={ effectiveIndexPath } node={ processedItem }>
+    <VendorTreeView.NodeProvider
+      indexPath={ effectiveIndexPath }
+      node={ processedItem }>
       { isBranch ? (
         <TreeViewNodeBranch
-          className={ classNames(
-            style['tree-view-node'],
-            { [style['tree-view-node__item']]: !isBranch },
-            className,
-          ) }
-          checkboxRef={ checkboxRef }
-          data-ods="tree-view-node"
+          className={ className }
           effectiveIndexPath={ effectiveIndexPath }
           getIndexPathForId={ getIndexPathForId }
           isDisabled={ isDisabled }
           item={ item }
-          multiple={ multiple }
           labelChildren={ children }
+          multiple={ multiple }
           renderChildNode={ (child: TreeViewItem, childIndexPath: number[]) => (
             <TreeViewNode indexPath={ childIndexPath } item={ child } key={ child.id }>
               { children }
@@ -69,18 +53,11 @@ const TreeViewNode: FC<TreeViewNodeProp> = forwardRef(({
         />
       ) : (
         <TreeViewNodeItem
-          className={ classNames(
-            style['tree-view-node'],
-            { [style['tree-view-node__item']]: !isBranch },
-            className,
-          ) }
-          checkboxRef={ checkboxRef }
-          data-ods="tree-view-node"
+          className={ className }
           isDisabled={ isDisabled }
           item={ item }
           labelChildren={ children }
           multiple={ multiple }
-          onKeyDown={ handleKeyDown }
           { ...props }
           ref={ ref }
         />
@@ -93,6 +70,5 @@ TreeViewNode.displayName = 'TreeViewNode';
 
 export {
   TreeViewNode,
-  type TreeViewCustomRendererArg,
   type TreeViewNodeProp,
 };

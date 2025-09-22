@@ -1,5 +1,4 @@
-import { TreeView, TreeViewNodes, type TreeViewValueChangeDetail } from '.';
-import { TreeViewNode } from './components/tree-view-node/TreeViewNode';
+import { TreeView, type TreeViewItem, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '.';
 import { useMemo, useRef, useState } from 'react';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { Icon, ICON_NAME } from '../../icon/src';
@@ -405,38 +404,40 @@ export const DisabledItemsMultiple = () => {
 };
 
 export const CustomRender = () => {
-  const items = useMemo(() => ([
+  type MyData = {
+    type: 'typescript' | 'generic';
+  }
+
+  const items = useMemo<TreeViewItem<MyData>[]>(() => ([
     {
       id: 'src',
       name: 'src',
       children: [
-        { id: 'app.tsx', name: 'app.tsx' },
-        { id: 'index.ts', name: 'index.ts' },
+        { id: 'app.tsx', name: 'app.tsx', customRendererData: { type: 'typescript' } },
+        { id: 'index.ts', name: 'index.ts', customRendererData: { type: 'typescript' } },
         {
           id: 'components',
           name: 'components',
           children: [
-            { id: 'Button.tsx', name: 'Button.tsx' },
-            { id: 'Card.tsx', name: 'Card.tsx' },
+            { id: 'Button.tsx', name: 'Button.tsx', customRendererData: { type: 'typescript' } },
+            { id: 'Card.tsx', name: 'Card.tsx', customRendererData: { type: 'typescript' } },
           ],
         },
       ],
     },
     { id: 'package.json', name: 'package.json' },
-    { id: 'readme.md', name: 'README.md' },
+    { id: 'readme.md', name: 'README.md', customRendererData: { type: 'generic' } },
   ]), []);
 
   return (
-    <TreeView
-      items={ items }
-      >
+    <TreeView items={ items }>
       <TreeViewNodes>
         { items.map((item) => (
           <TreeViewNode key={ item.id } item={ item }>
             { ({ item, isBranch, isExpanded }) => (
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                 { isBranch ? isExpanded ? <Icon name={ ICON_NAME.folderMinus } /> : <Icon name={ ICON_NAME.folderPlus } /> : <Icon name={ ICON_NAME.file } /> }
-                <span>{ item.name }</span>
+                <span>{ item.name } { item.customRendererData?.type === 'typescript' ? '(ts)' : '(other)'}</span>
               </span>
             ) }
           </TreeViewNode>

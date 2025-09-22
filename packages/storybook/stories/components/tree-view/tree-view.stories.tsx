@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import { Button, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT } from '../../../../ods-react/src/components/button/src';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { Icon, ICON_NAME } from '../../../../ods-react/src/components/icon/src';
 import {
@@ -12,8 +13,6 @@ import {
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
-import { Button, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT } from '@ovhcloud/ods-react';
-
 
 type Story = StoryObj<TreeViewProp>;
 
@@ -26,7 +25,7 @@ const meta: Meta<TreeViewProp> = {
 export default meta;
 
 export const Demo: Story = {
-  render: (arg: TreeViewProp) => {
+  render: (arg) => {
     const items = [
       {
         id: 'src',
@@ -86,7 +85,7 @@ export const Demo: Story = {
 
 export const Default: Story = {
   globals: {
-    imports: `import { TreeView, type TreeViewProp, TreeViewNode, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
+    imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => {
@@ -112,9 +111,7 @@ export const Default: Story = {
     ];
 
     return (
-      <TreeView
-        items={ items }
-        onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
+      <TreeView items={ items }>
         <TreeViewNodes>
           { items.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
@@ -150,9 +147,7 @@ export const Overview: Story = {
     ];
 
     return (
-      <TreeView
-        items={ items }
-        onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
+      <TreeView items={ items }>
         <TreeViewNodes>
           { items.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
@@ -165,7 +160,7 @@ export const Overview: Story = {
 
 export const Multiple: Story = {
   globals: {
-    imports: `import { TreeView, type TreeViewProp, TreeViewNode, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
+    imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
   },
   parameters: {
     docs: {
@@ -197,8 +192,7 @@ export const Multiple: Story = {
     return (
       <TreeView
         items={ items }
-        multiple
-        onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
+        multiple>
         <TreeViewNodes>
           { items.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
@@ -256,7 +250,8 @@ export const DefaultExpandAll: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { TreeView, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
+    imports: `import { TreeView, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
   },
   parameters: {
     docs: {
@@ -286,7 +281,7 @@ export const Controlled: Story = {
       { id: 'package.json', name: 'package.json' },
       { id: 'readme.md', name: 'README.md' },
     ];
-    const [selectedId, setSelectedId] = React.useState<string | undefined>('package.json');
+    const [selectedId, setSelectedId] = useState<string | undefined>('package.json');
     return (
       <>
         <TreeView
@@ -307,7 +302,8 @@ export const Controlled: Story = {
 
 export const ControlledMultiple: Story = {
   globals: {
-    imports: `import { TreeView, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
+    imports: `import { TreeView, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
   },
   parameters: {
     docs: {
@@ -336,7 +332,7 @@ export const ControlledMultiple: Story = {
       { id: 'package.json', name: 'package.json' },
       { id: 'readme.md', name: 'README.md' },
     ];
-    const [selectedIds, setSelectedIds] = React.useState<string[]>(['package.json', 'index.ts']);
+    const [selectedIds, setSelectedIds] = useState<string[]>(['package.json', 'index.ts']);
     return (
       <>
         <TreeView
@@ -545,7 +541,8 @@ export const InFormField: Story = {
 
 export const DynamicChildren: Story = {
   globals: {
-    imports: `import { Button, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';
+import { useRef, useState } from 'react';`,
   },
   parameters: {
     docs: {
@@ -555,7 +552,7 @@ export const DynamicChildren: Story = {
   tags: ['!dev'],
   render: ({}) => {
     type Item = { id: string, name: string, children?: Item[] };
-    const [items, setItems] = React.useState<Item[]>([
+    const [items, setItems] = useState<Item[]>([
       {
         id: 'src',
         name: 'src',
@@ -568,7 +565,7 @@ export const DynamicChildren: Story = {
       { id: 'package.json', name: 'package.json' },
       { id: 'readme.md', name: 'README.md' },
     ]);
-    const counter = React.useRef(1);
+    const counter = useRef(1);
 
     function addChildTo(collection: Item[], parentId: string, newNode: Item): Item[] {
       return collection.map((node) => {

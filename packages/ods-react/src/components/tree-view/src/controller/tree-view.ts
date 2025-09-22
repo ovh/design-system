@@ -2,8 +2,8 @@ import { createTreeCollection } from '@ark-ui/react/tree-view';
 import { type KeyboardEvent, type RefObject } from 'react';
 import { type TreeViewItem } from '../contexts/useTreeView';
 
-function createCollectionFromItems<CustomData = Record<string, never>>(items: Array<TreeViewItem<CustomData>>): ReturnType<typeof createTreeCollection<TreeViewItem<CustomData>>> {
-  return createTreeCollection<TreeViewItem<CustomData>>({
+function createCollectionFromItems(items: Array<TreeViewItem>): ReturnType<typeof createTreeCollection<TreeViewItem>> {
+  return createTreeCollection<TreeViewItem>({
     isNodeDisabled: (node) => node.disabled ?? false,
     nodeToString: (node) => node.name,
     nodeToValue: (node) => node.id,
@@ -11,13 +11,14 @@ function createCollectionFromItems<CustomData = Record<string, never>>(items: Ar
   });
 }
 
-function normalizeSelectedOnChange(selected: string | string[], multiple: boolean): string | string[] {
+function normalizeSelectedOnChange(selected: string | string[], multiple?: boolean): string | string[] {
   if (Array.isArray(selected)) {
     return multiple ? selected : (selected[0] ?? '');
   }
   return multiple ? [selected] : selected;
 }
 
+// TODO remove
 function computeDefaultExpanded<CustomData = Record<string, never>>(
   items: Array<TreeViewItem<CustomData>>,
   options: { defaultExpandAll: boolean, value?: string[], defaultValue?: string[] },
@@ -70,7 +71,7 @@ function computeDefaultExpanded<CustomData = Record<string, never>>(
 
 function toggleNodeCheckboxOnSpace<T extends Element>(
   e: KeyboardEvent<T>,
-  multiple: boolean,
+  multiple: boolean = false,
   isDisabled: boolean,
   checkboxRef: RefObject<HTMLSpanElement | null>,
 ): void {
@@ -90,4 +91,3 @@ export {
   normalizeSelectedOnChange,
   toggleNodeCheckboxOnSpace,
 };
-

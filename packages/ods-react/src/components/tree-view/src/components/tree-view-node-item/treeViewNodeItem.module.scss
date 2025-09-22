@@ -1,0 +1,33 @@
+//@use '../../../../../style/focus';
+@use '../../../../../style/state';
+
+@layer ods-molecules {
+  .tree-view-node-item {
+    //TODO mutualize
+    $gap: 8px;
+    $padding-x: 8px;
+
+    display: flex;
+    gap: $gap;
+    align-items: center;
+    border-radius: var(--ods-border-radius-sm);
+    padding: 4px $padding-x;
+
+    &:hover {
+      background-color: var(--ods-color-primary-100);
+      cursor: pointer;
+    }
+
+    &[data-disabled="true"] {
+      @include state.ods-is-disabled();
+
+      background-color: transparent;
+    }
+
+    &__checkbox {
+      display: flex;
+      gap: $gap;
+      width: 100%;
+    }
+  }
+}

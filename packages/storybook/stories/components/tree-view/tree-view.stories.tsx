@@ -49,8 +49,9 @@ export const Demo: Story = {
 
     return (
       <TreeView
-        defaultExpandAll={ arg.defaultExpandAll }
+        defaultExpandedValue={ arg.defaultExpandedValue }
         disabled={ arg.disabled }
+        expandedValue={ arg.expandedValue }
         items={ items }
         multiple={ arg.multiple }>
         <TreeViewNodes>
@@ -62,17 +63,23 @@ export const Demo: Story = {
     );
   },
   argTypes: orderControls({
-    defaultExpandAll: {
+    defaultExpandedValue: {
       table: {
         category: CONTROL_CATEGORY.general,
       },
-      control: 'boolean',
+      control: 'object',
     },
     disabled: {
       table: {
         category: CONTROL_CATEGORY.general,
       },
       control: 'boolean',
+    },
+    expandedValue: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: 'object',
     },
     multiple: {
       table: {
@@ -203,7 +210,7 @@ export const Multiple: Story = {
   }
 }
 
-export const DefaultExpandAll: Story = {
+export const DefaultExpandedValue: Story = {
   globals: {
     imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
   },
@@ -236,7 +243,7 @@ export const DefaultExpandAll: Story = {
     ];
     return (
       <TreeView
-        defaultExpandAll
+        defaultExpandedValue={["src", "components"]}
         items={ items }>
         <TreeViewNodes>
           { items.map((item) => (
@@ -264,7 +271,6 @@ import { useState } from 'react';`,
       {
         id: 'src',
         name: 'src',
-        expanded: true,
         children: [
           { id: 'app.tsx', name: 'app.tsx' },
           { id: 'index.ts', name: 'index.ts' },
@@ -412,7 +418,6 @@ export const DisabledItems: Story = {
       {
         id: 'src',
         name: 'src',
-        expanded: true,
         children: [
           { id: 'app.tsx', name: 'app.tsx' },
           { id: 'index.ts', name: 'index.ts', disabled: true },
@@ -420,7 +425,6 @@ export const DisabledItems: Story = {
             id: 'components',
             name: 'components',
             disabled: true,
-            expanded: true,
             children: [
               { id: 'Button.tsx', name: 'Button.tsx' },
               { id: 'Card.tsx', name: 'Card.tsx', disabled: true },
@@ -615,7 +619,6 @@ import { useRef, useState } from 'react';`,
           </Button>
         </div>
         <TreeView
-          defaultExpandAll
           items={ items }
           multiple>
           <TreeViewNodes>

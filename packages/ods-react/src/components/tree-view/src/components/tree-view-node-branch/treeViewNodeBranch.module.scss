@@ -26,8 +26,8 @@
         }
       }
 
-      &:has(.tree-view-node-branch__checkbox[data-state="checked"]),
-      &:has(.tree-view-node-branch__checkbox[data-state="indeterminate"]) {
+      &:has(.tree-view-node-branch__control__checkbox[data-state="checked"]),
+      &:has(.tree-view-node-branch__control__checkbox[data-state="indeterminate"]) {
         background-color: var(--ods-color-primary-050);
 
         &:not([data-disabled]):hover {
@@ -41,7 +41,7 @@
         background-color: transparent;
       }
 
-      &[data-selected]:not(:has(.tree-view-node-branch__checkbox)) {
+      &[data-selected]:not(:has(.tree-view-node-branch__control__checkbox)) {
         background-color: var(--ods-color-primary-050);
 
         &:not([data-disabled]):hover {
@@ -65,6 +65,10 @@
         transition: transform .2s ease;
         width: $chevron-size;
         height: $chevron-size;
+
+        &:is([aria-expanded="true"], [data-state="open"]) {
+          transform: rotate(90deg);
+        }
       }
 
       &__children {

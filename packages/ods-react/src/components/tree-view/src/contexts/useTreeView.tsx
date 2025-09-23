@@ -1,7 +1,6 @@
 import { type JSX, type ReactNode, createContext, useContext } from 'react';
-import { TreeViewValueChangeDetail } from '../components/tree-view/TreeView';
+import { type TreeViewValueChangeDetail } from '../components/tree-view/TreeView';
 
-// TODO apply on Select too
 type CustomData = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 interface TreeViewItem<T = CustomData> {
@@ -20,20 +19,42 @@ type TreeViewCustomRendererArg<T = CustomData> = {
   item: TreeViewItem<T>;
 };
 
-// TODO add:
-//  defaultExpandedValue
-//  expandedValue
-// TODO remove defaultExpandAll
 type TreeViewRootProp = {
   /**
-   * TODO add doc on each attribute.
+   * The initial expanded value(s). Use when you don't need to control the expanded value(s) of the tree view.
    */
-  defaultExpandAll?: boolean;
+  defaultExpandedValue?: string[];
+  /**
+   * The initial selected value(s). Use when you don't need to control the selected value(s) of the tree view.
+   */
   defaultValue?: string[];
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean;
+  /**
+   * The controlled expanded value(s).
+   */
+  expandedValue?: string[];
+  /**
+   * The list of items
+   */
   items: Array<TreeViewItem>;
+  /**
+   * Whether the multiple selection is allowed.
+   */
   multiple?: boolean;
+  /**
+   * Callback fired when the expanded value(s) changes.
+   */
+  onExpandedChange?: (details: { expandedValue: string[] }) => void;
+  /**
+   * Callback fired when the value(s) changes.
+   */
   onValueChange?: (details: TreeViewValueChangeDetail) => void;
+  /**
+   * The controlled selected value(s).
+   */
   value?: string[];
 }
 

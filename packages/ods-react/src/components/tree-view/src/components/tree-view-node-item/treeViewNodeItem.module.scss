@@ -1,9 +1,8 @@
-//@use '../../../../../style/focus';
+@use '../../../../../style/focus';
 @use '../../../../../style/state';
 
 @layer ods-molecules {
   .tree-view-node-item {
-    //TODO mutualize
     $gap: 8px;
     $padding-x: 8px;
 
@@ -18,10 +17,35 @@
       cursor: pointer;
     }
 
+    &:has(.tree-view-node-item__checkbox[data-state="checked"]),
+    &:has(.tree-view-node-item__checkbox[data-state="indeterminate"]) {
+      background-color: var(--ods-color-primary-050);
+
+      &:not([data-disabled]):hover {
+        background-color: var(--ods-color-primary-100);
+      }
+    }
+
     &[data-disabled="true"] {
       @include state.ods-is-disabled();
 
       background-color: transparent;
+    }
+
+    &[data-selected]:not(:has(.tree-view-node-item__checkbox)) {
+      background-color: var(--ods-color-primary-050);
+
+      &:not([data-disabled]):hover {
+        background-color: var(--ods-color-primary-100);
+      }
+    }
+
+    &[data-focus]:focus-visible {
+      @include focus.ods-focus();
+
+      position: relative;
+      z-index: 2;
+      background-color: var(--ods-color-primary-100);
     }
 
     &__checkbox {

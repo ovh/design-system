@@ -1,6 +1,6 @@
 import { type JSX, type ReactNode, createContext, useContext } from 'react';
 
-type CustomData = any; // eslint-disable-line @typescript-eslint/no-explicit-any
+type CustomData = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 type SelectMultipleMode = boolean | 'merge'
 
 type SelectOptionItem<T extends CustomData = CustomData> = {

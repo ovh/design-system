@@ -3,8 +3,6 @@ import { type ComponentPropsWithRef, type FC, type JSX, type ReactNode, forwardR
 import { type TreeViewCustomRendererArg, type TreeViewItem, useTreeView } from '../../contexts/useTreeView';
 import { TreeViewNodeBranch } from '../tree-view-node-branch/TreeViewNodeBranch';
 import { TreeViewNodeItem } from '../tree-view-node-item/TreeViewNodeItem';
-// TODO fix style (selection / icon rotation / ...) then remove treeViewNode.module.scss file
-// import style from './treeViewNode.module.scss';
 
 interface TreeViewNodeProp extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
   children?: ReactNode | ((arg: TreeViewCustomRendererArg) => ReactNode);

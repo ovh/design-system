@@ -91,42 +91,6 @@ export const Uncontrolled = () => {
   );
 };
 
-export const DefaultExpandAll = () => {
-  const collection = [
-    {
-      id: 'src',
-      name: 'src',
-      children: [
-        { id: 'app.tsx', name: 'app.tsx' },
-        { id: 'index.ts', name: 'index.ts' },
-        {
-          id: 'components',
-          name: 'components',
-          children: [
-            { id: 'Button.tsx', name: 'Button.tsx' },
-            { id: 'Card.tsx', name: 'Card.tsx' },
-          ],
-        },
-      ],
-    },
-    { id: 'package.json', name: 'package.json' },
-    { id: 'readme.md', name: 'README.md' },
-  ];
-
-  return (
-    <TreeView
-      items={ collection }
-      defaultExpandAll
-      >
-      <TreeViewNodes>
-        { collection.map((item) => (
-          <TreeViewNode key={ item.id } item={ item } />
-        )) }
-      </TreeViewNodes>
-    </TreeView>
-  );
-};
-
 export const MultipleSelection = () => {
   const collection = [
     {
@@ -163,12 +127,47 @@ export const MultipleSelection = () => {
   );
 };
 
+export const DefaultExpanded = () => {
+  const items = useMemo(() => ([
+    {
+      id: 'src',
+      name: 'src',
+      children: [
+        { id: 'app.tsx', name: 'app.tsx' },
+        { id: 'index.ts', name: 'index.ts' },
+        {
+          id: 'components',
+          name: 'components',
+          children: [
+            { id: 'Button.tsx', name: 'Button.tsx' },
+            { id: 'Card.tsx', name: 'Card.tsx' },
+          ],
+        },
+      ],
+    },
+    { id: 'package.json', name: 'package.json' },
+    { id: 'readme.md', name: 'README.md' },
+  ]), []);
+
+  return (
+    <TreeView
+      items={ items }
+      defaultExpandedValue={["src", "components"]}
+      >
+      <TreeViewNodes>
+        { items.map((item) => (
+          <TreeViewNode key={ item.id } item={ item } />
+        )) }
+      </TreeViewNodes>
+    </TreeView>
+  );
+};
+
 export const Controlled = () => {
   const items = useMemo(() => ([
     {
       id: 'src',
       name: 'src',
-      expanded: true,
       children: [
         { id: 'app.tsx', name: 'app.tsx' },
         { id: 'index.ts', name: 'index.ts' },
@@ -331,7 +330,6 @@ export const DisabledItems = () => {
     {
       id: 'src',
       name: 'src',
-      expanded: true,
       children: [
         { id: 'app.tsx', name: 'app.tsx' },
         { id: 'index.ts', name: 'index.ts', disabled: true },
@@ -339,7 +337,6 @@ export const DisabledItems = () => {
           id: 'components',
           name: 'components',
           disabled: true,
-          expanded: true,
           children: [
             { id: 'Button.tsx', name: 'Button.tsx' },
             { id: 'Card.tsx', name: 'Card.tsx', disabled: true },
@@ -369,7 +366,6 @@ export const DisabledItemsMultiple = () => {
     {
       id: 'src',
       name: 'src',
-      expanded: true,
       children: [
         { id: 'app.tsx', name: 'app.tsx' },
         { id: 'index.ts', name: 'index.ts', disabled: true },
@@ -377,7 +373,6 @@ export const DisabledItemsMultiple = () => {
           id: 'components',
           name: 'components',
           disabled: true,
-          expanded: true,
           children: [
             { id: 'Button.tsx', name: 'Button.tsx' },
             { id: 'Card.tsx', name: 'Card.tsx', disabled: true },
@@ -437,7 +432,8 @@ export const CustomRender = () => {
             { ({ item, isBranch, isExpanded }) => (
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                 { isBranch ? isExpanded ? <Icon name={ ICON_NAME.folderMinus } /> : <Icon name={ ICON_NAME.folderPlus } /> : <Icon name={ ICON_NAME.file } /> }
-                <span>{ item.name } { item.customRendererData?.type === 'typescript' ? '(ts)' : '(other)'}</span>
+                <span>{ item.name } { item.customRendererData?.type === 'typescript' ? '(ts)' : '(other)'}
+                </span>
               </span>
             ) }
           </TreeViewNode>
@@ -602,7 +598,6 @@ export const DynamicChildren = () => {
     <TreeView
       multiple
       items={ items }
-      defaultExpandAll
       >
       <TreeViewNodes>
         { items.map((item) => (
@@ -637,5 +632,48 @@ export const DynamicChildren = () => {
         )) }
       </TreeViewNodes>
     </TreeView>
+  );
+};
+
+export const ControlledExpanded = () => {
+  const items = useMemo(() => ([
+    {
+      id: 'src',
+      name: 'src',
+      children: [
+        { id: 'app.tsx', name: 'app.tsx' },
+        { id: 'index.ts', name: 'index.ts' },
+        {
+          id: 'components',
+          name: 'components',
+          children: [
+            { id: 'Button.tsx', name: 'Button.tsx' },
+            { id: 'Card.tsx', name: 'Card.tsx' },
+          ],
+        },
+      ],
+    },
+    { id: 'package.json', name: 'package.json' },
+    { id: 'readme.md', name: 'README.md' },
+  ]), []);
+
+  const [expanded, setExpanded] = useState<string[]>(['src']);
+
+  return (
+    <>
+      <TreeView
+        items={ items }
+        expandedValue={ expanded }
+        onExpandedChange={ ({ expandedValue }) => setExpanded(expandedValue) }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+      <div style={{ marginTop: 8 }}>
+        Expanded: { expanded.length ? expanded.join(', ') : 'None' }
+      </div>
+    </>
   );
 };

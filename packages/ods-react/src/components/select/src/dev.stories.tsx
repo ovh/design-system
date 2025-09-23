@@ -111,7 +111,7 @@ export const CustomRenderer = () => {
     );
   }
 
-  function renderOption({ customData, label }: SelectCustomOptionRendererArg<CustomAnimalData>) {
+  function renderOption({ customData, label }: SelectCustomOptionRendererArg) {
     return (
       <span>
         { label }{ !!customData && ` (${customData.specie})` }

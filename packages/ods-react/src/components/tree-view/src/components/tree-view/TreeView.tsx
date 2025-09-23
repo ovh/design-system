@@ -1,8 +1,8 @@
 import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useMemo } from 'react';
-import { type TreeViewItem, type TreeViewRootProp, TreeViewProvider } from '../../contexts/useTreeView';
-import { computeDefaultExpanded, createCollectionFromItems, normalizeSelectedOnChange } from '../../controller/tree-view';
+import { type TreeViewItem, TreeViewProvider, type TreeViewRootProp } from '../../contexts/useTreeView';
+import { createCollectionFromItems, normalizeSelectedOnChange } from '../../controller/tree-view';
 import style from './treeView.module.scss';
 
 interface TreeViewValueChangeDetail {
@@ -17,11 +17,13 @@ interface TreeViewProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultChecke
 const TreeView: FC<TreeViewProp> = forwardRef(({
   children,
   className,
-  defaultExpandAll = false,
+  defaultExpandedValue,
   defaultValue,
   disabled,
+  expandedValue,
   items,
   multiple,
+  onExpandedChange,
   onValueChange,
   value,
   ...props
@@ -46,10 +48,6 @@ const TreeView: FC<TreeViewProp> = forwardRef(({
     return map;
   }, [items]);
 
-  const defaultExpandedValue = useMemo(() => (
-    computeDefaultExpanded(items, { defaultExpandAll, defaultValue })
-  ), [items, defaultExpandAll, defaultValue]);
-
   function handleSelectionChange(details: { selectedValue: string | string[] }): void {
     if (!onValueChange) {
       return;
@@ -66,6 +64,13 @@ const TreeView: FC<TreeViewProp> = forwardRef(({
     onValueChange({ value: details.checkedValue });
   }
 
+  function handleExpandedChange(details: { expandedValue: string[] }): void {
+    if (!onExpandedChange) {
+      return;
+    }
+    onExpandedChange(details);
+  }
+
   return (
     <TreeViewProvider
       disabled={ disabled }
@@ -76,6 +81,8 @@ const TreeView: FC<TreeViewProp> = forwardRef(({
         collection={ collection }
         data-ods="tree-view"
         defaultExpandedValue={ defaultExpandedValue }
+        expandedValue={ expandedValue }
+        onExpandedChange={ handleExpandedChange }
         ref={ ref }
         selectionMode={ multiple ? 'multiple' : 'single' }
         { ...(multiple

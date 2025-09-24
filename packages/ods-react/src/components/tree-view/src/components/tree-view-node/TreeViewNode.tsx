@@ -5,8 +5,15 @@ import { TreeViewNodeBranch } from '../tree-view-node-branch/TreeViewNodeBranch'
 import { TreeViewNodeItem } from '../tree-view-node-item/TreeViewNodeItem';
 
 interface TreeViewNodeProp extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
+  /**
+   * Label content or custom render function.
+   */
   children?: ReactNode | ((arg: TreeViewCustomRendererArg) => ReactNode);
+  /** @internal **/
   indexPath?: number[];
+  /**
+   * The tree node to render.
+   */
   item: TreeViewItem;
 }
 

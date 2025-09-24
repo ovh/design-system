@@ -11,12 +11,13 @@ import {
   type TreeViewValueChangeDetail,
 } from '../../../../ods-react/src/components/tree-view/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<TreeViewProp>;
 
 const meta: Meta<TreeViewProp> = {
+  argTypes: excludeFromDemoControls(['defaultExpandedValue', 'defaultValue', 'items', 'onExpandedChange', 'onValueChange', 'expandedValue', 'value']),
   component: TreeView,
   subcomponents: { TreeViewNode },
   title: 'React Components/Tree View',
@@ -63,23 +64,11 @@ export const Demo: Story = {
     );
   },
   argTypes: orderControls({
-    defaultExpandedValue: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'object',
-    },
     disabled: {
       table: {
         category: CONTROL_CATEGORY.general,
       },
       control: 'boolean',
-    },
-    expandedValue: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'object',
     },
     multiple: {
       table: {

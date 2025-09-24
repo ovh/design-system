@@ -1,5 +1,5 @@
 import { type JSX, type ReactNode, createContext, useContext } from 'react';
-import { type TreeViewValueChangeDetail } from '../components/tree-view/TreeView';
+import { type TreeViewExpandedChangeDetail, type TreeViewValueChangeDetail } from '../components/tree-view/TreeView';
 
 type CustomData = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
@@ -47,7 +47,7 @@ type TreeViewRootProp = {
   /**
    * Callback fired when the expanded value(s) changes.
    */
-  onExpandedChange?: (details: { expandedValue: string[] }) => void;
+  onExpandedChange?: (details: TreeViewExpandedChangeDetail) => void;
   /**
    * Callback fired when the value(s) changes.
    */

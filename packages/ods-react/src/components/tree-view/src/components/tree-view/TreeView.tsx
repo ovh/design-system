@@ -9,6 +9,10 @@ interface TreeViewValueChangeDetail {
   value: string[];
 }
 
+interface TreeViewExpandedChangeDetail {
+  expandedValue: string[];
+}
+
 /**
  * @inheritDoc TreeViewRootProp
  */
@@ -64,7 +68,7 @@ const TreeView: FC<TreeViewProp> = forwardRef(({
     onValueChange({ value: details.checkedValue });
   }
 
-  function handleExpandedChange(details: { expandedValue: string[] }): void {
+  function handleExpandedChange(details: TreeViewExpandedChangeDetail): void {
     if (!onExpandedChange) {
       return;
     }
@@ -110,5 +114,6 @@ TreeView.displayName = 'TreeView';
 export {
   TreeView,
   type TreeViewProp,
+  type TreeViewExpandedChangeDetail,
   type TreeViewValueChangeDetail,
 };

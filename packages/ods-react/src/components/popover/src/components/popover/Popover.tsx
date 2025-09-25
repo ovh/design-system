@@ -1,39 +1,12 @@
 import { Popover as VendorPopover } from '@ark-ui/react/popover';
 import { type FC, type JSX, type PropsWithChildren } from 'react';
-import { POPOVER_POSITION, type PopoverPosition } from '../../constants/popover-position';
-import { PopoverProvider, usePopover } from '../../contexts/usePopover';
+import { POPOVER_POSITION } from '../../constants/popover-position';
+import { PopoverProvider, type PopoverRootProp, usePopover } from '../../contexts/usePopover';
 
-interface PopoverOpenChangeDetail {
-  open: boolean,
-}
-
-interface PopoverProp {
-  /**
-   * Whether to automatically set focus on the first focusable content within the popover when opened.
-   */
-  autoFocus?: boolean,
-  /**
-   * Callback fired when the popover open state changes.
-   */
-  onOpenChange?: (detail: PopoverOpenChangeDetail) => void
-  /**
-   * The controlled open state of the popover.
-   */
-  open?: boolean,
-  /**
-   * @type=POPOVER_POSITION
-   * The popover position around the trigger.
-   */
-  position?: PopoverPosition,
-  /**
-   * Whether to make the floating element same width as the reference element.
-   */
-  sameWidth?: boolean,
-  /**
-   * ID of an external trigger element to use in place of the PopoverTrigger component.
-   */
-  triggerId?: string
-}
+/**
+ * @inheritDoc PopoverRootProp
+ */
+interface PopoverProp extends PopoverRootProp {}
 
 const PopoverRoot: FC<PropsWithChildren<PopoverProp>> = ({
   autoFocus = true,
@@ -66,9 +39,12 @@ const PopoverRoot: FC<PropsWithChildren<PopoverProp>> = ({
   );
 };
 
-const Popover: FC<PropsWithChildren<PopoverProp>> = (props): JSX.Element => {
+const Popover: FC<PropsWithChildren<PopoverProp>> = ({
+  onPositionChange,
+  ...props
+}): JSX.Element => {
   return (
-    <PopoverProvider>
+    <PopoverProvider onPositionChange={ onPositionChange }>
       <PopoverRoot { ...props } />
     </PopoverProvider>
   );
@@ -78,6 +54,5 @@ Popover.displayName = 'Popover';
 
 export {
   Popover,
-  type PopoverOpenChangeDetail,
   type PopoverProp,
 };

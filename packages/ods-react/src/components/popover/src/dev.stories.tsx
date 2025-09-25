@@ -138,6 +138,19 @@ export const CustomId = () => {
   );
 };
 
+export const CustomStyle = () => (
+  <Popover>
+    <PopoverTrigger className={ style[ 'custom-popover-trigger' ] }>
+      Show custom popover
+    </PopoverTrigger>
+    <PopoverContent className={ style[ 'custom-popover-content' ] }>
+      <div>
+        This is the popover custom styled content
+      </div>
+    </PopoverContent>
+  </Popover>
+);
+
 export const CustomTrigger = () => (
   <Popover>
     <PopoverTrigger asChild>
@@ -278,18 +291,29 @@ export const Grid = () => (
   </div>
 );
 
-export const CustomStyle = () => (
-  <Popover>
-    <PopoverTrigger className={ style[ 'custom-popover-trigger' ] }>
-      Show custom popover
-    </PopoverTrigger>
-    <PopoverContent className={ style[ 'custom-popover-content' ] }>
-      <div>
-        This is the popover custom styled content
-      </div>
-    </PopoverContent>
-  </Popover>
-);
+export const OnPositionChange = () => {
+  const [currentPosition, setCurrentPosition] = useState('');
+
+  return (
+    <>
+      <p>
+        Current position: { currentPosition }
+      </p>
+
+      <Popover
+        onPositionChange={ ({ position }) => setCurrentPosition(position) }
+        open
+        position='bottom'>
+        <PopoverTrigger>
+          Show popover
+        </PopoverTrigger>
+        <PopoverContent>
+          Popover content
+        </PopoverContent>
+      </Popover>
+    </>
+  );
+}
 
 export const SameWidth = () => (
   <Popover sameWidth>

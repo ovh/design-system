@@ -1,7 +1,8 @@
 import { Popover } from '@ark-ui/react/popover';
 import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useId, useMemo } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef } from 'react';
+import { type PopoverPosition } from '../../constants/popover-position';
 import { usePopover } from '../../contexts/usePopover';
 import style from './popoverContent.module.scss';
 
@@ -25,12 +26,35 @@ const PopoverContent: FC<PopoverContentProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const defaultId = useId();
-  const { setContentId } = usePopover();
+  const { onPositionChange, setContentId } = usePopover();
+  const contentRef = useRef<HTMLDivElement>(null);
   const computedId = useMemo(() => id ?? defaultId, [defaultId, id]);
+
+  useImperativeHandle(ref, () => contentRef.current!, [contentRef]);
 
   useEffect(() => {
     setContentId(computedId);
   }, [computedId, setContentId]);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      const observer = new MutationObserver((mutations) => {
+        if (mutations.length) {
+          const dataset = (mutations[0].target as HTMLDivElement).dataset;
+          onPositionChange?.({ position: dataset.placement as PopoverPosition });
+        }
+      });
+
+      observer.observe(contentRef.current, {
+        attributeFilter: ['data-placement'],
+        attributes: true,
+      });
+
+      return () => {
+        observer.disconnect();
+      };
+    }
+  }, [contentRef, onPositionChange]);
 
   return (
     <Portal disabled={ !createPortal }>
@@ -38,7 +62,7 @@ const PopoverContent: FC<PopoverContentProp> = forwardRef(({
         <Popover.Content
           className={ classNames(style['popover-content'], className) }
           data-ods="popover-content"
-          ref={ ref }
+          ref={ contentRef }
           { ...props }>
           {
             withArrow &&

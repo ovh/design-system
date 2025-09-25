@@ -50,13 +50,16 @@ export const ControlledPlusModal = () => {
 
   return (
     <>
-      <Button onClick={ togglePopover }>
+      <Button
+        id="trigger"
+        onClick={ togglePopover }>
         Toggle popover
       </Button>
 
       <Popover
         onOpenChange={ ({ open }) => setIsPopoverOpen(open) }
-        open={ isPopoverOpen }>
+        open={ isPopoverOpen }
+        triggerId="trigger">
         <span>
           ...
         </span>
@@ -162,17 +165,33 @@ export const Default = () => (
 );
 
 export const Focus = () => (
-  <Popover>
-    <PopoverTrigger>
-      Show popover
-    </PopoverTrigger>
+  <>
+    <p>With auto focus</p>
+    <Popover>
+      <PopoverTrigger>
+        Show popover
+      </PopoverTrigger>
 
-    <PopoverContent>
-      <Button onClick={ () => console.log('focus 1') }>Focus 1</Button>
-      <Button onClick={ () => console.log('focus 2') }>Focus 2</Button>
-      <Button onClick={ () => console.log('focus 3') }>Focus 3</Button>
-    </PopoverContent>
-  </Popover>
+      <PopoverContent>
+        <Button onClick={ () => console.log('focus 1') }>Focus 1</Button>
+        <Button onClick={ () => console.log('focus 2') }>Focus 2</Button>
+        <Button onClick={ () => console.log('focus 3') }>Focus 3</Button>
+      </PopoverContent>
+    </Popover>
+
+    <p>Without auto focus</p>
+    <Popover autoFocus={ false }>
+      <PopoverTrigger>
+        Show popover
+      </PopoverTrigger>
+
+      <PopoverContent>
+        <Button onClick={ () => console.log('focus 1') }>Focus 1</Button>
+        <Button onClick={ () => console.log('focus 2') }>Focus 2</Button>
+        <Button onClick={ () => console.log('focus 3') }>Focus 3</Button>
+      </PopoverContent>
+    </Popover>
+  </>
 );
 
 export const Grid = () => (
@@ -268,6 +287,17 @@ export const CustomStyle = () => (
       <div>
         This is the popover custom styled content
       </div>
+    </PopoverContent>
+  </Popover>
+);
+
+export const SameWidth = () => (
+  <Popover sameWidth>
+    <PopoverTrigger>
+      Show popover with this width
+    </PopoverTrigger>
+    <PopoverContent>
+      Popover
     </PopoverContent>
   </Popover>
 );

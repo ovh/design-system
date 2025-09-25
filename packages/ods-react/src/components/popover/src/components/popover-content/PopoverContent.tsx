@@ -1,7 +1,8 @@
 import { Popover } from '@ark-ui/react/popover';
 import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useId, useMemo } from 'react';
+import { usePopover } from '../../contexts/usePopover';
 import style from './popoverContent.module.scss';
 
 interface PopoverContentProp extends ComponentPropsWithRef<'div'> {
@@ -19,9 +20,18 @@ const PopoverContent: FC<PopoverContentProp> = forwardRef(({
   children,
   className,
   createPortal = true,
+  id,
   withArrow = false,
   ...props
 }, ref): JSX.Element => {
+  const defaultId = useId();
+  const { setContentId } = usePopover();
+  const computedId = useMemo(() => id ?? defaultId, [defaultId, id]);
+
+  useEffect(() => {
+    setContentId(computedId);
+  }, [computedId, setContentId]);
+
   return (
     <Portal disabled={ !createPortal }>
       <Popover.Positioner>

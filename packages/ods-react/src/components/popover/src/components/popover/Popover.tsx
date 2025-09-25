@@ -9,6 +9,10 @@ interface PopoverOpenChangeDetail {
 
 interface PopoverProp {
   /**
+   * Whether to automatically set focus on the first focusable content within the popover when opened.
+   */
+  autoFocus?: boolean,
+  /**
    * Callback fired when the popover open state changes.
    */
   onOpenChange?: (detail: PopoverOpenChangeDetail) => void
@@ -21,26 +25,40 @@ interface PopoverProp {
    * The popover position around the trigger.
    */
   position?: PopoverPosition,
+  /**
+   * Whether to make the floating element same width as the reference element.
+   */
+  sameWidth?: boolean,
+  /**
+   * ID of an external trigger element to use in place of the PopoverTrigger component.
+   */
+  triggerId?: string
 }
 
 const PopoverRoot: FC<PropsWithChildren<PopoverProp>> = ({
+  autoFocus = true,
   children,
   onOpenChange,
   open,
   position = POPOVER_POSITION.top,
+  sameWidth,
+  triggerId,
   ...props
 }): JSX.Element => {
-  const { triggerId } = usePopover();
+  const { contentId, triggerId: popoverTriggerId } = usePopover();
 
   return (
     <VendorPopover.Root
+      autoFocus={ autoFocus }
       ids={{
-        trigger: triggerId,
+        content: contentId,
+        trigger: triggerId ?? popoverTriggerId,
       }}
       onOpenChange={ onOpenChange }
       open={ open }
       positioning={{
         placement: position,
+        sameWidth: sameWidth,
       }}
       { ...props }>
       { children }

@@ -7,28 +7,36 @@ export default {
 };
 
 const simpleItems = [
-  { label: 'Apple', value: 'apple' },
-  { label: 'Banana', value: 'banana' },
-  { label: 'Cherry', value: 'cherry' }
+  { label: 'Apple', value: 'the-apple' },
+  { label: 'Banana', value: 'the-banana' },
+  { label: 'Cherry', value: 'the-cherry' },
+  { label: 'Date', value: 'the-date' }
 ];
 
 const groupedItems = [
   {
     label: 'Fruits',
     options: [
-      { label: 'Apple', value: 'apple' },
-      { label: 'Banana', value: 'banana' }
+      { label: 'Apple', value: 'the-apple' },
+      { label: 'Banana', value: 'the-banana' }
     ]
   },
   {
     label: 'Vegetables',
     options: [
-      { label: 'Carrot', value: 'carrot' },
-      { label: 'Broccoli', value: 'broccoli' },
-      { label: 'Spinach', value: 'spinach' }
+      { label: 'Carrot', value: 'the-carrot' },
+      { label: 'Broccoli', value: 'the-broccoli' },
+      { label: 'Spinach', value: 'the-spinach' },
     ]
   }
 ];
+
+export const Default = () => (
+  <Combobox items={ simpleItems }>
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+);
 
 export const basic = () => (
   <Combobox items={[]} data-testid="basic">
@@ -54,9 +62,9 @@ export const withGroupedItems = () => (
 export const withDefaultValue = () => (
   <div>
     <div data-testid="value-display">banana</div>
-    <Combobox 
-      items={simpleItems} 
-      defaultValue={['banana']} 
+    <Combobox
+      items={simpleItems}
+      defaultValue={['banana']}
       data-testid="with-default-value"
     >
       <ComboboxControl />
@@ -66,9 +74,9 @@ export const withDefaultValue = () => (
 );
 
 export const disabled = () => (
-  <Combobox 
-    items={simpleItems} 
-    disabled 
+  <Combobox
+    items={simpleItems}
+    disabled
     data-testid="disabled"
   >
     <ComboboxControl />
@@ -77,8 +85,8 @@ export const disabled = () => (
 );
 
 export const withHighlight = () => (
-  <Combobox 
-    items={simpleItems} 
+  <Combobox
+    items={simpleItems}
     highlightResults
     data-testid="with-highlight"
   >
@@ -88,10 +96,10 @@ export const withHighlight = () => (
 );
 
 export const readonly = () => (
-  <Combobox 
-    items={simpleItems} 
-    readOnly 
-    defaultValue={['apple']} 
+  <Combobox
+    items={simpleItems}
+    readOnly
+    defaultValue={['apple']}
     data-testid="readonly"
   >
     <ComboboxControl />
@@ -112,8 +120,8 @@ const CustomItem = ({ item }: CustomItemProps) => (
 );
 
 export const withCustomItems = () => (
-  <Combobox 
-    items={simpleItems} 
+  <Combobox
+    items={simpleItems}
     data-testid="with-custom-items"
     customOptionRenderer={(item) => <CustomItem item={item} />}
   >
@@ -124,12 +132,12 @@ export const withCustomItems = () => (
 
 export const controlled = () => {
   const [value, setValue] = useState<string[]>([]);
-  
+
   return (
     <div>
       <div data-testid="controlled-value">{value.join(',')}</div>
-      <Combobox 
-        items={simpleItems} 
+      <Combobox
+        items={simpleItems}
         value={value}
         onValueChange={(details) => setValue(details.value)}
         data-testid="controlled"

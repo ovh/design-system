@@ -1,8 +1,8 @@
-import { Combobox as VendorCombobox } from '@ark-ui/react/combobox';
-import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useMemo } from 'react';
-import { type ComboboxItem, useCombobox } from '../../contexts/useCombobox';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useId, useMemo } from 'react';
+import { POPOVER_POSITION, Popover, PopoverContent, type PopoverPositionChangeDetail } from '../../../../popover/src';
+import { useCombobox } from '../../contexts/useCombobox';
+import { isGroup } from '../../controller/combobox';
 import { ComboboxGroup } from '../combobox-group/ComboboxGroup';
 import { ComboboxOption } from '../combobox-option/ComboboxOption';
 import style from './comboboxContent.module.scss';
@@ -17,99 +17,79 @@ interface ComboboxContentProp extends ComponentPropsWithRef<'div'> {
 const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
   className,
   createPortal = true,
+  id,
   ...props
 }, ref): JSX.Element => {
-  const { filteredItems, noResultLabel } = useCombobox();
+  const {
+    contentPosition,
+    controlId,
+    filteredItems,
+    highlightedOptionValue,
+    isOpen,
+    noResultLabel,
+    setContentId,
+    setContentPosition,
+  } = useCombobox();
+  const defaultId = useId();
+  const computedId = useMemo(() => id ?? defaultId, [defaultId, id]);
 
-  const derivedState = useMemo(() => {
-    const hasNoResults = !filteredItems || !filteredItems.length;
+  useEffect(() => {
+    setContentId(computedId);
+  }, [computedId, setContentId]);
 
-    if (hasNoResults) {
-      return {
-        hasNoResults: true,
-        hasOnlyNewElement: false,
-        itemsToDisplay: [],
-        newElementItem: undefined,
-      };
-    }
-
-    const hasOnlyNewElement = filteredItems.length === 1 && !('options' in filteredItems[0]) && filteredItems[0].isNewElement;
-    const itemsToDisplay = hasOnlyNewElement ? [] : filteredItems;
-    const newElementItem = hasOnlyNewElement && !('options' in filteredItems[0]) ? filteredItems[0] : undefined;
-
-    return {
-      hasNoResults: false,
-      hasOnlyNewElement,
-      itemsToDisplay,
-      newElementItem,
-    };
-  }, [filteredItems]);
+  function handlePositionChange({ position }: PopoverPositionChangeDetail): void {
+    setContentPosition(position);
+  }
 
   return (
-    <Portal disabled={ !createPortal }>
-      <VendorCombobox.Positioner>
-        <VendorCombobox.Content
-          className={ classNames(style['combobox-content'], className) }
-          data-ods="combobox-content"
-          ref={ ref }
-          { ...props }>
-          {
-            derivedState.hasNoResults && (
-              <div className={ style['combobox-content__empty'] }>
-                { noResultLabel }
-              </div>
-            )
-          }
+    <Popover
+      autoFocus={ false }
+      gutter={ -1 }
+      onPositionChange={ handlePositionChange }
+      open={ isOpen }
+      position={ POPOVER_POSITION.bottom }
+      sameWidth={ true }
+      triggerId={ controlId }>
+      <PopoverContent
+        className={ classNames(
+          style['combobox-content'],
+          { [style['combobox-content--open-bottom']]: contentPosition === POPOVER_POSITION.bottom },
+          { [style['combobox-content--open-top']]: contentPosition === POPOVER_POSITION.top },
+          className,
+        )}
+        createPortal={ createPortal }
+        data-ods="combobox-content"
+        id={ computedId }
+        ref={ ref }
+        { ...props }
+        role="listbox">
+        {
+          filteredItems.length === 0 &&
+          <div className={ style['combobox-content__empty'] }>
+            { noResultLabel }
+          </div>
+        }
 
-          {
-            derivedState.newElementItem && (
-              <ComboboxOption item={ derivedState.newElementItem } />
-            )
-          }
-
-          {
-            derivedState.itemsToDisplay.map((item) => {
-              if ('options' in item) {
-                return (
-                  <ComboboxGroup key={ item.label }>
-                    <VendorCombobox.ItemGroupLabel>
-                      { item.label }
-                    </VendorCombobox.ItemGroupLabel>
-
-                    {
-                      item.options.map((option: ComboboxItem) => {
-                        if ('options' in option) {
-                          return null;
-                        }
-                        return (
-                          <ComboboxOption
-                            item={ option }
-                            key={ option.value } />
-                        );
-                      })
-                    }
-                  </ComboboxGroup>
-                );
-              }
-
+        {
+          filteredItems.map((item) => {
+            if (isGroup(item)) {
               return (
-                <ComboboxOption
+                <ComboboxGroup
                   item={ item }
-                  key={ item.value } />
+                  key={ item.label } />
               );
-            })
-          }
+            }
 
-          {
-            derivedState.hasOnlyNewElement && (
-              <div className={ style['combobox-content__empty'] }>
-                { noResultLabel }
-              </div>
-            )
-          }
-        </VendorCombobox.Content>
-      </VendorCombobox.Positioner>
-    </Portal>
+            return (
+              <ComboboxOption
+                isHighlighted={ highlightedOptionValue === item.value }
+                item={ item }
+                key={ item.value } />
+            );
+          })
+        }
+      </PopoverContent>
+    </Popover>
   );
 });
 

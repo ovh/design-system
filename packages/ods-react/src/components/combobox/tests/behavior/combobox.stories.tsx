@@ -7,39 +7,40 @@ export default {
 };
 
 const simpleItems = [
-  { label: 'Apple', value: 'apple' },
-  { label: 'Banana', value: 'banana' },
-  { label: 'Cherry', value: 'cherry' },
-  { label: 'Date', value: 'date' }
+  { label: 'Apple', value: 'the-apple' },
+  { label: 'Banana', value: 'the-banana' },
+  { label: 'Cherry', value: 'the-cherry' },
+  { label: 'Date', value: 'the-date' }
 ];
 
 const groupedItems = [
   {
     label: 'Fruits',
     options: [
-      { label: 'Apple', value: 'apple' },
-      { label: 'Banana', value: 'banana' }
+      { label: 'Apple', value: 'the-apple' },
+      { label: 'Banana', value: 'the-banana' }
     ]
   },
   {
     label: 'Vegetables',
     options: [
-      { label: 'Carrot', value: 'carrot' },
-      { label: 'Broccoli', value: 'broccoli' }
+      { label: 'Carrot', value: 'the-carrot' },
+      { label: 'Broccoli', value: 'the-broccoli' },
+      { label: 'Spinach', value: 'the-spinach' },
     ]
   }
 ];
 
 export const keyboardNavigation = () => (
-  <Combobox items={simpleItems} data-testid="keyboard-navigation">
+  <Combobox items={ simpleItems }>
     <ComboboxControl />
     <ComboboxContent />
   </Combobox>
 );
 
 export const filtering = () => (
-  <Combobox 
-    items={simpleItems} 
+  <Combobox
+    items={simpleItems}
     data-testid="filtering"
   >
     <ComboboxControl clearable />
@@ -49,12 +50,12 @@ export const filtering = () => (
 
 export const selectionBehavior = () => {
   const [value, setValue] = useState<string[]>([]);
-  
+
   return (
     <div data-testid="selection-wrapper">
       <div data-testid="selection-value">{value.join(',')}</div>
-      <Combobox 
-        items={simpleItems} 
+      <Combobox
+        items={simpleItems}
         value={value}
         onValueChange={(details) => setValue(details.value)}
         data-testid="selection-behavior"
@@ -68,12 +69,12 @@ export const selectionBehavior = () => {
 
 export const controlledBehavior = () => {
   const [value, setValue] = useState<string[]>([]);
-  
+
   return (
     <div data-testid="controlled-wrapper">
       <div data-testid="controlled-value">{value.join(',')}</div>
-      <Combobox 
-        items={simpleItems} 
+      <Combobox
+        items={simpleItems}
         value={value}
         onValueChange={(details) => setValue(details.value)}
         data-testid="controlled-behavior"
@@ -87,12 +88,12 @@ export const controlledBehavior = () => {
 
 export const groupNavigation = () => {
   const [value, setValue] = useState<string[]>([]);
-  
+
   return (
     <div data-testid="group-navigation-wrapper">
       <div data-testid="group-value">{value.join(',')}</div>
-      <Combobox 
-        items={groupedItems} 
+      <Combobox
+        items={groupedItems}
         value={value}
         onValueChange={(details) => setValue(details.value)}
         data-testid="group-navigation"
@@ -106,12 +107,12 @@ export const groupNavigation = () => {
 
 export const customValueBehavior = () => {
   const [value, setValue] = useState<string[]>([]);
-  
+
   return (
     <div data-testid="custom-value-wrapper">
       <div data-testid="custom-value-display">{value.join(',')}</div>
-      <Combobox 
-        items={simpleItems} 
+      <Combobox
+        items={simpleItems}
         value={value}
         allowCustomValue={true}
         onValueChange={(details) => setValue(details.value)}
@@ -131,19 +132,19 @@ export const interactionModes = () => (
       <ComboboxControl />
       <ComboboxContent />
     </Combobox>
-    
+
     <h3>Read Only</h3>
-    <Combobox 
-      items={simpleItems} 
-      readOnly 
-      defaultValue={['apple']} 
+    <Combobox
+      items={simpleItems}
+      readOnly
+      defaultValue={['apple']}
       data-testid="interaction-readonly"
     >
       <ComboboxControl />
       <ComboboxContent />
     </Combobox>
   </div>
-); 
+);
 
 export const uncontrolledMultiple = () => (
   <Combobox items={simpleItems} multiple data-testid="uncontrolled-multiple">
@@ -154,12 +155,12 @@ export const uncontrolledMultiple = () => (
 
 export const controlledMultiple = () => {
   const [value, setValue] = useState<string[]>([]);
-  
+
   return (
     <div data-testid="controlled-multiple-wrapper">
       <div data-testid="controlled-multiple-values">{value.join(',')}</div>
-      <Combobox 
-        items={simpleItems} 
+      <Combobox
+        items={simpleItems}
         multiple
         value={value}
         onValueChange={(details) => setValue(details.value)}

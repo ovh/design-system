@@ -4,6 +4,8 @@
 
 @layer ods-organisms {
   .combobox-control {
+    $control: &;
+
     box-sizing: border-box;
     display: flex;
     position: relative;
@@ -17,28 +19,39 @@
     width: 100%;
     min-height: var(--ods-form-element-input-height);
 
-    &--multiple {
-      flex-wrap: wrap;
-      align-items: center;
+    &:not(#{$control}--invalid, #{$control}--disabled, #{$control}--read-only) {
+      &:hover {
+        border-color: var(--ods-color-form-element-border-hover-default);
+      }
+
+      &#{$control}--focused {
+        border-color: var(--ods-color-form-element-border-focus-default);
+      }
+    }
+
+    &--disabled {
+      @include state.ods-is-disabled();
+    }
+
+    &--focused {
+      @include focus.ods-focus();
+    }
+
+    &--invalid.combobox-control--invalid {
+      @include input.ods-input-error();
     }
 
     &--open-bottom {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
+      border-radius: var(--ods-border-radius-sm) var(--ods-border-radius-sm) 0 0;
     }
 
     &--open-top {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+      border-radius: 0 0 var(--ods-border-radius-sm) var(--ods-border-radius-sm);
     }
 
     &--read-only {
       border-color: var(--ods-color-border-readonly-default);
       background-color: var(--ods-color-background-readonly-default);
-    }
-
-    &--invalid {
-      @include input.ods-input-error;
     }
 
     &__tag {
@@ -56,14 +69,6 @@
       background: transparent;
       padding: 0;
       height: calc(input.$ods-input-field-height - 10px);
-    }
-
-    &[data-focus] {
-      @include focus.ods-focus();
-    }
-
-    &[data-disabled] {
-      @include state.ods-is-disabled();
     }
   }
 }

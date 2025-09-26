@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { FormField, FormFieldLabel } from '../../form-field/src';
+import { type FormEvent, useRef, useState } from 'react';
+import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { INPUT_I18N } from '../../input/src';
-import { Combobox, ComboboxContent, ComboboxControl, type ComboboxItem } from '.';
+import { Modal, ModalBody, ModalContent, ModalTrigger } from '../../modal/src';
+import { Combobox, ComboboxContent, ComboboxControl, type ComboboxItem, type ComboboxValueChangeDetails } from '.';
 import style from './dev.module.css';
 
 export default {
@@ -11,12 +12,12 @@ export default {
 };
 
 const items = [
-  { label: 'Dog', value: 'dog' },
-  { label: 'Cat', value: 'cat' },
-  { label: 'Hamster', value: 'hamster' },
-  { label: 'Parrot', value: 'parrot' },
-  { label: 'Spider', value: 'spider' },
-  { label: 'Goldfish', value: 'goldfish' },
+  { label: 'Dog', value: 'the-dog' },
+  { label: 'Cat', value: 'the-cat' },
+  { label: 'Hamster', value: 'the-hamster' },
+  { label: 'Parrot', value: 'the-parrot' },
+  { label: 'Spider', value: 'the-spider' },
+  { label: 'Goldfish', value: 'the-goldfish' },
 ];
 
 const groupedItems = [
@@ -36,13 +37,168 @@ const groupedItems = [
       { label: 'Russia', value: 'ru' },
     ],
   },
-  { label: 'World', value: 'world' },
+  { label: 'World', value: 'the-world' },
 ];
 
+const longList: ComboboxItem[] = [];
+
+for (let i = 0; i < 500; i++) {
+  longList.push({
+    label: `Option ${i} - (${Math.random() * (1000 - 1) + 1})`,
+    value: `value-${i}`,
+  });
+}
+
+export const Async = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [asyncItems, setAsyncItems] = useState<ComboboxItem[]>([]);
+
+  function onLoad() {
+    setIsLoading(true);
+
+    setTimeout(() => {
+      requestAnimationFrame(() => {
+        setAsyncItems(longList);
+        setIsLoading(false);
+      });
+    }, 2000);
+  }
+
+  return (
+    <>
+      <button
+        onClick={ onLoad }
+        type="button">
+        Load data
+      </button>
+
+      <Combobox items={ asyncItems }>
+        <ComboboxControl loading={ isLoading } />
+        <ComboboxContent />
+      </Combobox>
+    </>
+  );
+};
+
+export const BottomPage = () => (
+  <div style={{ display: 'flex', alignItems: 'flex-end', height: '90vh' }}>
+    <Combobox items={ items }>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+  </div>
+);
+
 export const Clearable = () => (
-  <Combobox items={ items }>
-    <ComboboxControl clearable />
-    <ComboboxContent />
+  <>
+    <Combobox
+      items={ items }
+      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }>
+      <ComboboxControl clearable />
+      <ComboboxContent />
+    </Combobox>
+
+    <br />
+
+    <Combobox
+      defaultValue={ [items[0].value] }
+      items={ items }
+      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }>
+      <ComboboxControl clearable />
+      <ComboboxContent />
+    </Combobox>
+
+    <br />
+
+    <Combobox
+      defaultValue={ [items[0].value] }
+      disabled
+      items={ items }
+      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }>
+      <ComboboxControl clearable />
+      <ComboboxContent />
+    </Combobox>
+
+    <br />
+
+    <Combobox
+      defaultValue={ [items[0].value] }
+      items={ items }
+      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }
+      readOnly>
+      <ComboboxControl clearable />
+      <ComboboxContent />
+    </Combobox>
+  </>
+);
+
+export const Controlled = () => {
+  const [values, setValues] = useState([items[0].value]);
+
+  function onValueChange({ value }: ComboboxValueChangeDetails): void {
+    setValues(value);
+  }
+
+  return (
+    <>
+      <p>
+        Current value: { values.join(', ') }
+      </p>
+
+      <Combobox
+        items={ groupedItems }
+        onValueChange={ onValueChange }
+        value={ values }>
+        <ComboboxControl />
+        <ComboboxContent />
+      </Combobox>
+    </>
+  );
+}
+
+export const CustomOptionRenderer = () => {
+  type MyData = {
+    description?: string,
+  }
+
+  const items = [
+    { label: 'Dog', value: 'dog', customRendererData: { description: 'My dog is stupid' }},
+    { label: 'Cat', value: 'cat', customRendererData: { description: 'All cats are awesome' }},
+    { label: 'Hamster', value: 'hamster', customRendererData: { description: 'Where is my hamster?' }},
+    { label: 'Parrot', value: 'parrot', customRendererData: { description: 'Repeat repeat repeat' }},
+    { label: 'Spider', value: 'spider', customRendererData: { description: 'Spider? Where?' }},
+    { label: 'Goldfish', value: 'goldfish', customRendererData: { description: 'Cool a new aquarium' }},
+  ];
+
+  return (
+    <Combobox
+      customOptionRenderer={ (item: ComboboxItem<MyData>) => (
+        <div className={ style['custom-option'] }>
+          <Icon name={ ICON_NAME.circleInfo } />
+
+          <div className={ style['custom-option__label'] }>
+            { item.label }
+          </div>
+
+          <div className={ style['custom-option__description'] }>
+            <Icon name={ ICON_NAME.arrowRight } /> { item.customRendererData?.description }
+          </div>
+        </div>
+      )}
+      highlightResults
+      items={ items }>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+  );
+};
+
+export const CustomStyle = () => (
+  <Combobox
+    className={ style['custom-combobox'] }
+    items={ items }>
+    <ComboboxControl className={ style['custom-combobox__control'] } />
+    <ComboboxContent className={ style['custom-combobox__content'] } />
   </Combobox>
 );
 
@@ -53,78 +209,103 @@ export const Default = () => (
   </Combobox>
 );
 
-export const CustomStyle = () => (
-  <Combobox className={style['custom-combobox']} items={items}>
-    <ComboboxControl className={style['custom-combobox__control']} />
-    <ComboboxContent className={style['custom-combobox__content']} />
-  </Combobox>
-);
-
-export const CustomOptionRenderer = () => {
-  type CustomData = {
-    description: string,
-  }
-
-  const [selectedValue, setSelectedValue] = useState<string[]>([]);
-
-  const items = [
-    { label: 'Dog', value: 'dog', customRendererData: { description: 'Some dog description' }},
-    { label: 'Cat', value: 'cat', customRendererData: { description: 'Some cat description' }},
-    { label: 'Hamster', value: 'hamster', customRendererData: { description: 'Some hamster description' }},
-    { label: 'Parrot', value: 'parrot', customRendererData: { description: 'Some parrot description' }},
-    { label: 'Spider', value: 'spider', customRendererData: { description: 'Some spider description' }},
-    { label: 'Goldfish', value: 'goldfish', customRendererData: { description: 'Some goldfish description' }},
-  ];
-
-  return (
-    <Combobox
-      highlightResults
-      items={ items }
-      onValueChange={ (val) => setSelectedValue(val.value) }
-      value={ selectedValue }
-      customOptionRenderer={ (item: ComboboxItem<CustomData>) => (
-        <div className={ style['custom-option'] }>
-          <Icon name={ ICON_NAME.circleInfo } />
-          <div className={ style['custom-option__label'] }>
-            { item.label }
-          </div>
-          <div className={ style['custom-option__description'] }>
-            <Icon name={ ICON_NAME.arrowRight } /> { item.customRendererData?.description }
-          </div>
-        </div>
-      )}
-    >
-      <ComboboxControl />
-      <ComboboxContent />
-    </Combobox>
-  );
-};
-
-export const WithGroups = () => (
-  <Combobox
-    items={groupedItems}
-  >
-    <ComboboxControl />
-    <ComboboxContent />
-  </Combobox>
-);
-
 export const DefaultValue = () => (
-  <Combobox items={items} defaultValue={['item2']}>
+  <Combobox
+    defaultValue={ [items[0].value] }
+    items={ items }>
     <ComboboxControl />
     <ComboboxContent />
   </Combobox>
 );
 
 export const Disabled = () => (
-  <Combobox items={items} disabled>
+  <>
+    <Combobox
+      disabled
+      items={ items }>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+
+    <br />
+
+    <Combobox
+      defaultValue={ [items[0].value] }
+      disabled
+      items={ items }>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+  </>
+);
+
+export const Group = () => (
+  <Combobox items={ groupedItems }>
     <ComboboxControl />
     <ComboboxContent />
   </Combobox>
 );
 
+export const GroupsWithSameLabel = () => (
+  <Combobox items={[
+    {
+      label: 'Server Bare Metal',
+      options: [
+        { label: 'RAM100', value: 'bare-ram100' },
+        { label: 'RAM200', value: 'bare-ram200' },
+        { label: 'RAM300', value: 'bare-ram300' },
+      ],
+    },
+    {
+      label: 'Server Flashy Aluminium',
+      options: [
+        { label: 'RAM100', value: 'alu-ram100' },
+        { label: 'RAM200', value: 'alu-ram200' },
+        { label: 'RAM300', value: 'alu-ram300' },
+      ],
+    },
+    { label: 'RAM100', value: 'ram100' },
+    { label: 'RAM200', value: 'ram200' },
+    { label: 'RAM300', value: 'ram300' },
+  ]}>
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+);
+
+export const Handlers = () => {
+  const [inputValueChangeEvents, setInputValueChangeEvents] = useState<string[]>([]);
+  const [valueChangeEvents, setValueChangeEvents] = useState<string[]>([]);
+
+  return (
+    <>
+      <Combobox
+        items={ items }
+        onInputValueChange={ (event) => setInputValueChangeEvents((e) => e.concat([JSON.stringify(event)])) }
+        onValueChange={ (event) => setValueChangeEvents((e) => e.concat([JSON.stringify(event)])) }>
+        <ComboboxControl />
+        <ComboboxContent />
+      </Combobox>
+
+      <p>onInputValueChange events</p>
+      <textarea
+        readOnly
+        style={{ height: '200px', width: '100%' }}
+        value={ inputValueChangeEvents.join('\n----------\n') } />
+
+      <p>onValueChange events</p>
+      <textarea
+        readOnly
+        style={{ height: '200px', width: '100%' }}
+        value={ valueChangeEvents.join('\n----------\n') } />
+    </>
+  );
+}
+
 export const HighlightResults = () => (
-  <Combobox items={items} allowCustomValue={false} highlightResults>
+  <Combobox
+    highlightResults
+    items={ items }>
     <ComboboxControl />
     <ComboboxContent />
   </Combobox>
@@ -139,6 +320,15 @@ export const I18n = () => (
   </Combobox>
 );
 
+export const Invalid = () => (
+  <Combobox
+    invalid
+    items={ items }>
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+);
+
 export const InFormField = () => (
   <FormField>
     <FormFieldLabel>
@@ -149,166 +339,304 @@ export const InFormField = () => (
       <ComboboxControl />
       <ComboboxContent />
     </Combobox>
+
+    <FormFieldError>
+      Error
+    </FormFieldError>
   </FormField>
 );
 
-export const Invalid = () => (
+export const InFormRequired = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  function onSubmit(e: FormEvent) {
+    e.preventDefault();
+
+    const formData = new FormData(formRef.current!);
+
+    for (const [key, value] of formData) {
+      console.log(`${key}: ${value}`)
+    }
+  }
+
+  return (
+    <form
+      onSubmit={ onSubmit }
+      ref={ formRef }>
+      <FormField>
+        <FormFieldLabel>
+          Combobox:
+        </FormFieldLabel>
+
+        <Combobox
+          items={ items }
+          name="combobox"
+          required>
+          <ComboboxControl clearable />
+          <ComboboxContent />
+        </Combobox>
+
+        <FormFieldError>
+          Error
+        </FormFieldError>
+      </FormField>
+
+      <button type="submit">
+        Submit
+      </button>
+    </form>
+  );
+};
+
+export const InModal = () => (
   <>
-    <Combobox
-      invalid
-      items={ items }>
-      <ComboboxControl />
-      <ComboboxContent />
-    </Combobox>
+    <Modal>
+      <ModalTrigger>
+        Trigger Basic List Modal
+      </ModalTrigger>
 
-    <FormField invalid>
-      <FormFieldLabel>
-        Invalid combobox
-      </FormFieldLabel>
+      <ModalContent>
+        <ModalBody>
+          <Combobox items={ items }>
+            <ComboboxControl />
+            <ComboboxContent createPortal={ false } />
+          </Combobox>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
 
-      <Combobox items={ items }>
-        <ComboboxControl />
-        <ComboboxContent />
-      </Combobox>
-    </FormField>
+    <Modal>
+      <ModalTrigger>
+        Trigger Long List Modal
+      </ModalTrigger>
+
+      <ModalContent>
+        <ModalBody>
+          <Combobox items={ longList }>
+            <ComboboxControl />
+            <ComboboxContent createPortal={ false } />
+          </Combobox>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   </>
 );
 
-export const NoResultLabel = () => (
-  <Combobox items={[]} allowCustomValue={false} noResultLabel="Aucun résultat trouvé">
+export const Loading = () => (
+  <Combobox items={ items }>
+    <ComboboxControl loading />
+    <ComboboxContent />
+  </Combobox>
+);
+
+export const LongList = () => (
+  <Combobox items={ longList }>
     <ComboboxControl />
     <ComboboxContent />
   </Combobox>
 );
 
 export const NewElementLabel = () => (
-  <Combobox items={items} allowCustomValue newElementLabel="Ajouter : ">
+  <Combobox
+    items={ items }
+    newElementLabel="Ajouter : ">
     <ComboboxControl />
     <ComboboxContent />
   </Combobox>
 );
 
-export const ReadOnly = () => (
-  <Combobox items={items} readOnly>
+export const NoResultLabel = () => (
+  <Combobox
+    items={ [] }
+    noResultLabel="Aucun résultat trouvé">
     <ComboboxControl />
     <ComboboxContent />
   </Combobox>
 );
 
-export const FlexEnd = () => (
-  <div style={{ display: 'flex', alignItems: 'flex-end', height: '90vh' }}>
-    <Combobox items={items}>
-      <ComboboxControl />
-      <ComboboxContent />
-    </Combobox>
-  </div>
-)
+export const NoCustom = () => (
+  <Combobox
+    allowCustomValue={ false }
+    items={ items }>
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+);
 
-export const Controlled = () => {
-  const [value, setValue] = useState<string[]>(['item1']);
-  return (
-    <>
-    { value }
+export const Placeholder = () => (
+  <Combobox items={ items }>
+    <ComboboxControl placeholder="Select a value" />
+    <ComboboxContent />
+  </Combobox>
+);
+
+export const Readonly = () => (
+  <>
     <Combobox
-      items={items}
-      value={value}
-      onValueChange={(val) => setValue(val.value)}
-    >
+      items={ items }
+      readOnly>
       <ComboboxControl />
       <ComboboxContent />
     </Combobox>
-    </>
-  );
-};
 
-export const ControlledWithGroups = () => {
-  const [value, setValue] = useState<string[]>([]);
+    <br />
+
+    <Combobox
+      defaultValue={ [items[0].value] }
+      items={ items }
+      readOnly>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+  </>
+);
+
+export const Reference = () => {
+  const comboboxRef = useRef<HTMLDivElement>(null);
+
   return (
     <>
-      <div>Selected value: {value}</div>
       <Combobox
-        items={groupedItems}
-        value={value}
-        onValueChange={(val) => {
-          setValue(val.value);
-        }}
-      >
+        items={ items }
+        ref={ comboboxRef }>
         <ComboboxControl />
         <ComboboxContent />
       </Combobox>
+
+      <button
+        onClick={ () => console.log(comboboxRef.current) }
+        type="button">
+        Log ref
+      </button>
     </>
   );
 };
 
-export const UncontrolledMultiple = () => (
-  <Combobox items={items} multiple defaultValue={['item1', 'item2']}>
+export const States = () => (
+  <>
+    <span>Disabled & Readonly</span>
+    <Combobox
+      defaultValue={ [items[0].value] }
+      disabled
+      items={ items }
+      readOnly>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+
+    <span>Disabled & Invalid</span>
+    <Combobox
+      defaultValue={ [items[0].value] }
+      disabled
+      items={ items }
+      invalid>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+
+    <span>Readonly & Invalid</span>
+    <Combobox
+      defaultValue={ [items[0].value] }
+      items={ items }
+      invalid
+      readOnly>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+
+    <span>Disabled & Readonly & Invalid</span>
+    <Combobox
+      defaultValue={ [items[0].value] }
+      disabled
+      items={ items }
+      invalid
+      readOnly>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+  </>
+);
+
+export const MultipleClearable = () => (
+  <>
+    <Combobox
+      items={ items }
+      multiple
+      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }>
+      <ComboboxControl clearable />
+      <ComboboxContent />
+    </Combobox>
+
+    <br />
+
+    <Combobox
+      defaultValue={ [items[0].value] }
+      items={ items }
+      multiple
+      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }>
+      <ComboboxControl clearable />
+      <ComboboxContent />
+    </Combobox>
+
+    <br />
+
+    <Combobox
+      defaultValue={ [items[0].value] }
+      disabled
+      items={ items }
+      multiple
+      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }>
+      <ComboboxControl clearable />
+      <ComboboxContent />
+    </Combobox>
+
+    <br />
+
+    <Combobox
+      defaultValue={ [items[0].value] }
+      items={ items }
+      multiple
+      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }
+      readOnly>
+      <ComboboxControl clearable />
+      <ComboboxContent />
+    </Combobox>
+  </>
+);
+
+export const MultipleDefault = () => (
+  <Combobox
+    items={ items }
+    multiple>
     <ComboboxControl />
     <ComboboxContent />
   </Combobox>
 );
 
-export const ControlledMultiple = () => {
-  const [value, setValue] = useState<string[]>(['item1', 'item3']);
-
-  return (
-    <>
-      <div>Selected values: {value.join(', ')}</div>
-      <Combobox
-        items={items}
-        multiple
-        value={value}
-        onValueChange={(val) => setValue(val.value)}
-      >
-        <ComboboxControl />
-        <ComboboxContent />
-      </Combobox>
-    </>
-  );
-};
-
-export const MultipleWithTags = () => {
-  const [value, setValue] = useState<string[]>(['item1']);
-
-  const fruitsAndVegetables = [
-    { label: 'Apple', value: 'apple' },
-    { label: 'Banana', value: 'banana' },
-    { label: 'Cherry', value: 'cherry' },
-    { label: 'Dates', value: 'dates' },
-    { label: 'Elderberry', value: 'elderberry' },
-    { label: 'Fig', value: 'fig' },
-    { label: 'Carrot', value: 'carrot' },
-    { label: 'Broccoli', value: 'broccoli' },
-    { label: 'Spinach', value: 'spinach' },
-  ];
-
-  return (
-    <div style={{ marginTop: '20px', width: '300px' }}>
-      <div style={{ marginBottom: '10px' }}>
-        Selected values: {value.join(', ')}
-      </div>
-      <Combobox
-        items={fruitsAndVegetables}
-        multiple
-        value={value}
-        onValueChange={(val) => setValue(val.value)}
-        allowCustomValue
-      >
-        <ComboboxControl clearable placeholder="Select fruit or vegetable..." />
-        <ComboboxContent />
-      </Combobox>
-    </div>
-  );
-};
-
-export const DisabledMultiple = () => (
-  <Combobox items={items} disabled multiple defaultValue={['item1', 'item2']}>
+export const MultipleDefaultValue = () => (
+  <Combobox
+    defaultValue={ [items[0].value, items[1].value] }
+    items={ items }
+    multiple>
     <ComboboxControl />
     <ComboboxContent />
   </Combobox>
 );
 
-export const ReadOnlyMultiple = () => (
-  <Combobox items={items} readOnly multiple defaultValue={['item1', 'item2']}>
+export const MultipleGroup = () => (
+  <Combobox
+    items={ groupedItems }
+    multiple>
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+);
+
+export const MultipleNoCustom = () => (
+  <Combobox
+    allowCustomValue={ false }
+    items={ items }
+    multiple>
     <ComboboxControl />
     <ComboboxContent />
   </Combobox>

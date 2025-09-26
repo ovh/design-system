@@ -1,16 +1,12 @@
-import { Combobox as VendorCombobox, useComboboxContext } from '@ark-ui/react/combobox';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, type KeyboardEvent, forwardRef, useRef, useState } from 'react';
+import { type ComponentPropsWithRef, type FC, type FocusEvent, type JSX, type KeyboardEvent, forwardRef, useState } from 'react';
+import { elementParentHasAttribute } from '../../../../../utils/element';
+import { useFormField } from '../../../../form-field/src';
 import { Input } from '../../../../input/src';
+import { POPOVER_POSITION } from '../../../../popover/src';
 import { Tag } from '../../../../tag/src';
-import { useCombobox } from '../../contexts/useCombobox';
-import {
-  calculateNewFocusIndex,
-  findLabelForValue,
-  isKeyboardEventAtInputStart,
-  removeValueFromArray,
-  shouldResetTagFocus,
-} from '../../controller/combobox';
+import { type ComboboxOptionItem, useCombobox } from '../../contexts/useCombobox';
+import { isAtInputStart } from '../../controller/combobox';
 import style from './comboboxControl.module.scss';
 
 interface ComboboxControlProp extends ComponentPropsWithRef<'div'> {
@@ -31,139 +27,198 @@ interface ComboboxControlProp extends ComponentPropsWithRef<'div'> {
 const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
   className,
   clearable,
+  id,
   loading,
   placeholder,
   ...props
 }, ref): JSX.Element => {
-  const { disabled, getContentProps, multiple, open, setOpen, setValue, value } = useComboboxContext();
-  const { i18n, invalid, items, locale, readOnly } = useCombobox();
-  const [focusedTagIndex, setFocusedTagIndex] = useState<number | null>(null);
-  const contentProps = getContentProps() as { 'data-placement'?: 'bottom' | 'top' };
-  const placement = contentProps['data-placement'] as 'top' | 'bottom' | undefined;
-  const inputRef = useRef<HTMLInputElement>(null);
+  const {
+    contentId,
+    contentPosition,
+    controlId,
+    deselectItem,
+    disabled,
+    highlightedOptionValue,
+    highlightNextOption,
+    highlightPreviousOption,
+    i18n,
+    inputRef,
+    inputValue,
+    invalid,
+    isOpen,
+    locale,
+    multiple,
+    name,
+    readOnly,
+    required,
+    selection,
+    selectHighlightedItem,
+    setInputValue,
+    setIsOpen,
+    setSelection,
+  } = useCombobox();
+  const fieldContext = useFormField();
+  const [focusedTagIndex, setFocusedTagIndex] = useState(-1);
+  const [isFocused, setIsFocused] = useState(false);
   const isInteractive = !disabled && !readOnly;
 
-  function handleInputClick(): void {
-    if (isInteractive) {
-      setOpen(true);
+  function focusNextTag(): void {
+    if (!selection.length || focusedTagIndex < 0) {
+      return;
     }
+
+    if (focusedTagIndex >= selection.length - 1) {
+      resetTagFocus();
+    } else {
+      setFocusedTagIndex((i) => Math.min(i + 1, selection.length - 1));
+    }
+  }
+
+  function focusPreviousTag(): void {
+    if (!selection.length) {
+      return;
+    }
+
+    if (focusedTagIndex < 0) {
+      setFocusedTagIndex(selection.length - 1);
+    } else {
+      setFocusedTagIndex((i) => Math.max(0, i - 1));
+    }
+  }
+
+  function handleBlur(e: FocusEvent): void {
+    if (elementParentHasAttribute(e.relatedTarget as HTMLElement, 'data-ods', 'combobox-content')) {
+      return;
+    }
+
+    resetTagFocus();
+    setIsFocused(false);
+    setIsOpen(false);
   }
 
   function handleInputKeyDown(e: KeyboardEvent<HTMLInputElement>): void {
-    if (e.key === ' ' && open) {
-      e.stopPropagation();
-    }
-
-    if (!multiple || !value.length) {
-      return;
-    }
-
-    const isBackspaceAtStart = isKeyboardEventAtInputStart(e, inputRef, 'Backspace');
-    const isArrowLeftAtStart = isKeyboardEventAtInputStart(e, inputRef, 'ArrowLeft');
-
-    if (isBackspaceAtStart && value.length > 0) {
-      if (focusedTagIndex === null) {
-        setFocusedTagIndex(value.length - 1);
+    switch (e.key) {
+      case 'ArrowDown':
         e.preventDefault();
-      } else {
-        const indexToRemove = focusedTagIndex;
-        const tagToRemove = value[indexToRemove];
+        highlightNextOption();
+        break;
+      case 'ArrowLeft':
+        if (isAtInputStart(inputRef.current)) {
+          e.preventDefault();
+          focusPreviousTag();
+        }
+        break;
+      case 'ArrowRight':
+        if (focusedTagIndex >= 0 && isAtInputStart(inputRef.current)) {
+          e.preventDefault();
+          focusNextTag();
+        }
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        highlightPreviousOption();
+        break;
+      case 'Backspace':
+        if (selection.length && isAtInputStart(inputRef.current)) {
+          removeTag(selection[focusedTagIndex >= 0 ? focusedTagIndex : selection.length - 1]);
+        }
+        break;
+      case 'Enter':
+        if (selection.length && focusedTagIndex >= 0) {
+          e.preventDefault();
+          removeTag(selection[focusedTagIndex]);
+          break;
+        }
 
-        const newFocusIndex = calculateNewFocusIndex(indexToRemove, value.length);
-        setFocusedTagIndex(newFocusIndex);
-        removeTag(tagToRemove);
+        if (highlightedOptionValue) {
+          e.preventDefault();
+          selectHighlightedItem();
+        }
+        break;
+      case 'Escape':
         e.preventDefault();
-      }
-    } else if (isArrowLeftAtStart && value.length > 0 && focusedTagIndex === null) {
-      setFocusedTagIndex(value.length - 1);
-      e.preventDefault();
-    } else if (shouldResetTagFocus(e.key)) {
-      setFocusedTagIndex(null);
-    }
-
-    if (focusedTagIndex !== null && value.length > 0) {
-      if (e.key === 'ArrowLeft' && focusedTagIndex > 0) {
-        setFocusedTagIndex(focusedTagIndex - 1);
-        e.preventDefault();
-      } else if (e.key === 'ArrowRight' && focusedTagIndex < value.length - 1) {
-        setFocusedTagIndex(focusedTagIndex + 1);
-        e.preventDefault();
-      } else if (e.key === 'Escape') {
-        setFocusedTagIndex(null);
-        e.preventDefault();
-      } else if (e.key === 'Enter') {
-        removeTag(value[focusedTagIndex]);
-        e.preventDefault();
-      }
-    }
-  }
-
-  function handleTagClick(tagValue: string): void {
-    if (isInteractive) {
-      resetTagFocus();
-      removeTag(tagValue);
+        resetTagFocus();
+        setIsOpen(false);
+        break;
+      default:
+        break;
     }
   }
 
-  function removeTag(tagValue: string): void {
-    if (!multiple) {
-      return;
-    }
-
-    const newValue = removeValueFromArray(value, tagValue);
-    setValue(newValue);
+  function removeTag(item: ComboboxOptionItem): void {
+    resetTagFocus();
+    deselectItem(item);
   }
 
   function resetTagFocus(): void {
-    setFocusedTagIndex(null);
+    setFocusedTagIndex(-1);
   }
 
   return (
-    <VendorCombobox.Control
-      className={ classNames(style['combobox-control'], {
-        [style['combobox-control--open-top']]: open && placement === 'top',
-        [style['combobox-control--open-bottom']]: open && placement === 'bottom',
-        [style['combobox-control--multiple']]: multiple,
-        [style['combobox-control--read-only']]: readOnly,
-        [style['combobox-control--invalid']]: invalid,
+    <div
+      className={ classNames(
+        style['combobox-control'],
+        { [style['combobox-control--disabled']]: disabled },
+        { [style['combobox-control--invalid']]: invalid },
+        { [style['combobox-control--focused']]: isFocused },
+        { [style['combobox-control--open-bottom']]: isOpen && contentPosition === POPOVER_POSITION.bottom },
+        { [style['combobox-control--open-top']]: isOpen && contentPosition === POPOVER_POSITION.top },
+        { [style['combobox-control--read-only']]: readOnly },
         className,
-      })}
+      )}
       data-ods="combobox-control"
-      onBlur={ () => resetTagFocus() }
+      id={ controlId }
+      onBlur={ handleBlur }
       ref={ ref }
       { ...props }>
       {
-        multiple && value && value.length > 0 && value.map((val, index) => (
+        multiple && selection.map((item, index) => (
           <Tag
             className={ classNames(
               { [style['combobox-control__tag--focused']]: isInteractive && focusedTagIndex === index },
             )}
             disabled={ disabled || readOnly }
-            key={ val }
-            onClick={ () => handleTagClick(val) }
+            key={ item.value }
+            onClick={ () => removeTag(item) }
             tabIndex={ -1 }
-            value={ val }>
-            { findLabelForValue(items, val) }
+            value={ item.value }>
+            { item.label }
           </Tag>
         ))
       }
 
-      <VendorCombobox.Input asChild>
-        <Input
-          className={ style['combobox-control__input'] }
-          clearable={ clearable }
-          disabled={ disabled }
-          i18n={ i18n }
-          loading={ loading }
-          locale={ locale }
-          onClear={ () => setValue([]) }
-          onClick={ handleInputClick }
-          onKeyDown={ handleInputKeyDown }
-          placeholder={ placeholder }
-          readOnly={ readOnly }
-          ref={ inputRef } />
-      </VendorCombobox.Input>
-    </VendorCombobox.Control>
+      <Input
+        aria-autocomplete="list"
+        aria-controls={ contentId }
+        aria-expanded={ isOpen ? 'true' : 'false' }
+        autoCapitalize="none"
+        autoComplete="off"
+        autoCorrect="off"
+        className={ style['combobox-control__input'] }
+        clearable={ clearable }
+        disabled={ disabled }
+        i18n={ i18n }
+        id={ id || fieldContext?.id }
+        loading={ loading }
+        locale={ locale }
+        onChange={ (e) => {
+          resetTagFocus();
+          setInputValue(e.target.value);
+          setIsOpen(true);
+        }}
+        onClear={ () => !multiple && setSelection([]) }
+        onClick={ () => setIsOpen(true) }
+        onFocus={ () => setIsFocused(true) }
+        onKeyDown={ handleInputKeyDown }
+        name={ name }
+        placeholder={ placeholder }
+        readOnly={ readOnly }
+        ref={ inputRef }
+        required={ multiple ? false : required }
+        role="combobox"
+        spellCheck="false"
+        value={ inputValue } />
+    </div>
   );
 });
 

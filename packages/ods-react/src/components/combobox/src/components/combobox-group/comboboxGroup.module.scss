@@ -2,24 +2,27 @@
 
 @layer ods-organisms {
   .combobox-group {
-    margin: 0;
-    padding: 0;
+    box-sizing: border-box;
 
-    [data-part="item-group-label"] {
+    &:not(:last-child) {
+      border-bottom: solid var(--ods-border-width-sm) var(--ods-color-neutral-100);
+    }
+
+    &__label {
       display: flex;
       align-items: center;
       padding: 0 8px;
       min-height: 32px;
       color: var(--ods-color-heading);
       font-weight: 600;
+
+      &--disabled {
+        @include state.ods-is-disabled();
+      }
     }
 
-    [data-part="item"] {
+    &__option {
       padding: 0 16px;
-    }
-
-    &[data-disabled] {
-      @include state.ods-is-disabled();
     }
   }
 }

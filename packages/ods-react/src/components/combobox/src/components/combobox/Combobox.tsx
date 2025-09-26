@@ -1,13 +1,11 @@
-import { type ComboboxInputValueChangeDetails, type ComboboxValueChangeDetails, Combobox as VendorCombobox, createListCollection } from '@ark-ui/react/combobox';
-import { type FC, type JSX, forwardRef, useEffect, useMemo, useState } from 'react';
+import { type FC, type JSX, forwardRef } from 'react';
 import { useFormField } from '../../../../form-field/src';
-import { ComboboxProvider, type ComboboxRootProp } from '../../contexts/useCombobox';
-import { findLabelForValue, flattenItems, getFilteredItems } from '../../controller/combobox';
+import { ComboboxProvider, type ComboboxRootProp, type CustomData } from '../../contexts/useCombobox';
 
 /**
  * @inheritDoc ComboboxRootProp
  */
-interface ComboboxProp extends ComboboxRootProp {}
+interface ComboboxProp<T extends CustomData = CustomData> extends ComboboxRootProp<T> {}
 
 const Combobox: FC<ComboboxProp> = forwardRef(({
   allowCustomValue = true,
@@ -18,12 +16,14 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   disabled,
   highlightResults = false,
   i18n,
-  items,
   invalid,
+  items,
   locale,
   multiple,
+  name,
   newElementLabel = 'Add ',
   noResultLabel = 'No results found',
+  onInputValueChange,
   onValueChange,
   readOnly,
   required,
@@ -31,92 +31,35 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
-  const [inputValue, setInputValue] = useState('');
-  const [internalValue, setInternalValue] = useState<string[]>(defaultValue || []);
-  const currentValue = value && value.length > 0 ? value : internalValue;
   const isInvalid = invalid || fieldContext?.invalid;
-
-  useEffect(() => {
-    if (!multiple && currentValue.length > 0) {
-      const label = findLabelForValue(items, currentValue[0]);
-      setInputValue(label);
-    } else if (multiple) {
-      setInputValue('');
-    }
-  }, [currentValue, items, multiple]);
-
-  const filteredItems = useMemo(() => getFilteredItems({
-    allowCustomValue,
-    customOptionRenderer,
-    inputValue,
-    items,
-    multiple,
-    newElementLabel,
-    value: currentValue,
-  }), [allowCustomValue, customOptionRenderer, inputValue, items, multiple, newElementLabel, currentValue]);
-
-  const flatItems = useMemo(() => flattenItems(filteredItems), [filteredItems]);
-  const collection = useMemo(() => createListCollection({ items: flatItems }), [flatItems]);
-
-  function handleInputValueChange(details: ComboboxInputValueChangeDetails): void {
-    setInputValue(details.inputValue);
-  }
-
-  function handleValueChange(details: ComboboxValueChangeDetails): void {
-    if (!multiple && details.value.length > 0) {
-      const label = findLabelForValue(items, details.value[0]);
-      setInputValue(label);
-    } else if (multiple) {
-      setInputValue('');
-    }
-
-    if (!value) {
-      setInternalValue(details.value);
-    }
-
-    onValueChange && onValueChange({ value: details.value });
-  }
 
   return (
     <ComboboxProvider
+      allowCustomValue={ allowCustomValue }
       customOptionRenderer={ customOptionRenderer }
-      filteredItems={ filteredItems }
+      defaultValue={ defaultValue }
+      disabled={ disabled }
       highlightResults={ highlightResults }
       i18n={ i18n }
       invalid={ isInvalid }
       items={ items }
       locale={ locale }
+      multiple={ multiple }
+      name={ name }
       newElementLabel={ newElementLabel }
       noResultLabel={ noResultLabel }
-      readOnly={ readOnly }>
-      <VendorCombobox.Root
-        allowCustomValue={ allowCustomValue }
+      onInputValueChange={ onInputValueChange }
+      onValueChange={ onValueChange }
+      readOnly={ readOnly }
+      required={ required }
+      value={ value }>
+      <div
         className={ className }
-        closeOnSelect={ !multiple }
-        collection={ collection }
         data-ods="combobox"
-        defaultValue={ defaultValue }
-        disabled={ disabled }
-        ids={{
-          input: fieldContext?.id,
-        }}
-        inputValue={ inputValue }
-        invalid={ isInvalid }
-        multiple={ multiple }
-        onInputValueChange={ handleInputValueChange }
-        onValueChange={ handleValueChange }
-        positioning={{
-          gutter: -1,
-          sameWidth: true,
-        }}
-        readOnly={ readOnly }
         ref={ ref }
-        required={ multiple ? false : required } // FIXME required on multiple mode should be manually handled
-        selectionBehavior={ multiple ? 'clear' : 'replace' }
-        value={ currentValue }
         { ...props }>
         { children }
-      </VendorCombobox.Root>
+      </div>
     </ComboboxProvider>
   );
 });

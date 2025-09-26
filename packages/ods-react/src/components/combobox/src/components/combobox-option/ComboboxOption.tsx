@@ -1,54 +1,65 @@
-import { Combobox as VendorCombobox } from '@ark-ui/react/combobox';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX } from 'react';
-import { type ComboboxItem, useCombobox } from '../../contexts/useCombobox';
+import { ICON_NAME, Icon } from '../../../../icon/src';
+import { type ComboboxOptionItem, useCombobox } from '../../contexts/useCombobox';
 import { ComboboxHighlight } from '../combobox-highlight/ComboboxHighlight';
 import style from './comboboxOption.module.scss';
 
 interface ComboboxOptionProp extends ComponentPropsWithRef<'div'> {
-  item: ComboboxItem;
+  isHighlighted: boolean,
+  item: ComboboxOptionItem;
 }
 
 const ComboboxOption: FC<ComboboxOptionProp> = ({
+  className,
+  isHighlighted,
   item,
   ...props
 }): JSX.Element => {
-  const { customOptionRenderer, newElementLabel } = useCombobox();
+  const {
+    customOptionRenderer,
+    disabled,
+    highlightOption,
+    highlightResults,
+    inputValue,
+    selection,
+    selectItem,
+  } = useCombobox();
 
-  if ('options' in item) {
-    return <></>;
+  function onClick(): void {
+    if (!disabled) {
+      selectItem(item);
+    }
   }
 
   return (
-    <VendorCombobox.Item
-      className={ classNames(style[ 'combobox-option' ]) }
-      item={ item }
+    <div
+      aria-selected={ isHighlighted }
+      className={ classNames(
+        style['combobox-option'],
+        { [style['combobox-option--disabled']]: disabled },
+        { [style['combobox-option--highlighted']]: isHighlighted },
+        { [style['combobox-option--new']]: item.isNewElement },
+        { [style['combobox-option--selected']]: selection.some((s) => s.value === item.value) },
+        className,
+      )}
+      onClick={ onClick }
+      onPointerEnter={ () => highlightOption(item) }
+      role="option"
+      tabIndex={ -1 }
       { ...props }>
       {
-        customOptionRenderer ? (
-          <ComboboxHighlight>
-            { customOptionRenderer(item) }
+        item.isNewElement
+          ? <div className={ style['combobox-option__new-item'] }>
+            <Icon name={ ICON_NAME.plus } /> { item.label }
+          </div>
+          : <ComboboxHighlight
+            highlight={ highlightResults }
+            inputValue={ inputValue }>
+            { customOptionRenderer ? customOptionRenderer(item) : item.label }
           </ComboboxHighlight>
-        ) : (
-          <>
-            {
-              item.isNewElement ? (
-                <>
-                  { newElementLabel }
-                  <ComboboxHighlight>
-                    { item.label }
-                  </ComboboxHighlight>
-                </>
-              ) : (
-                <ComboboxHighlight>
-                  { item.label }
-                </ComboboxHighlight>
-              )
-            }
-          </>
-        )
       }
-    </VendorCombobox.Item>
+    </div>
   );
 };
 

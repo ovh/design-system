@@ -14,7 +14,7 @@ type DemoArg = Partial<PopoverProp> & Partial<PopoverContentProp> & {
 };
 
 const meta: Meta<PopoverProp> = {
-  argTypes: excludeFromDemoControls(['onOpenChange', 'open']),
+  argTypes: excludeFromDemoControls(['autoFocus', 'onOpenChange', 'onPositionChange', 'open', 'triggerId']),
   component: Popover,
   subcomponents: { PopoverContent, PopoverTrigger },
   title: 'React Components/Popover',
@@ -27,7 +27,9 @@ export const Demo: StoryObj = {
     layout: 'centered',
   },
   render: (arg: DemoArg) => (
-    <Popover position={ arg.position }>
+    <Popover
+      position={ arg.position }
+      sameWidth={ arg.sameWidth }>
       <PopoverTrigger>
         Show popover
       </PopoverTrigger>
@@ -51,6 +53,12 @@ export const Demo: StoryObj = {
       },
       control: { type: 'select' },
       options: POPOVER_POSITIONS,
+    },
+    sameWidth: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+      },
+      control: { type: 'boolean' },
     },
     withArrow: {
       table: {
@@ -300,6 +308,24 @@ export const AccessibilityWithMenu: Story = {
             Sign out
           </Button>
         </div>
+      </PopoverContent>
+    </Popover>
+  ),
+};
+
+export const SameWidth: Story = {
+  globals: {
+    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Popover sameWidth>
+      <PopoverTrigger>
+        Show popover that will take this width as reference
+      </PopoverTrigger>
+
+      <PopoverContent>
+        The popover content
       </PopoverContent>
     </Popover>
   ),

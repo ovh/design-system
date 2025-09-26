@@ -28,6 +28,7 @@ export const Demo: StoryObj = {
   },
   render: (arg: DemoArg) => (
     <Popover
+      gutter={ arg.gutter }
       position={ arg.position }
       sameWidth={ arg.sameWidth }>
       <PopoverTrigger>
@@ -45,6 +46,13 @@ export const Demo: StoryObj = {
         category: CONTROL_CATEGORY.slot,
       },
       control: 'text',
+    },
+    gutter: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: { summary: 'number' }
+      },
+      control: 'number',
     },
     position: {
       table: {

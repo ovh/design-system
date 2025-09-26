@@ -11,6 +11,7 @@ interface PopoverProp extends PopoverRootProp {}
 const PopoverRoot: FC<PropsWithChildren<PopoverProp>> = ({
   autoFocus = true,
   children,
+  gutter,
   onOpenChange,
   open,
   position = POPOVER_POSITION.top,
@@ -30,6 +31,7 @@ const PopoverRoot: FC<PropsWithChildren<PopoverProp>> = ({
       onOpenChange={ onOpenChange }
       open={ open }
       positioning={{
+        gutter: gutter,
         placement: position,
         sameWidth: sameWidth,
       }}

@@ -291,6 +291,18 @@ export const Grid = () => (
   </div>
 );
 
+export const Gutter = () => (
+  <Popover gutter={ 0 }>
+    <PopoverTrigger>
+      Show popover
+    </PopoverTrigger>
+
+    <PopoverContent>
+      This is the popover content
+    </PopoverContent>
+  </Popover>
+);
+
 export const OnPositionChange = () => {
   const [currentPosition, setCurrentPosition] = useState('');
 

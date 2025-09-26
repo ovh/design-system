@@ -16,6 +16,10 @@ interface PopoverRootProp {
    */
   autoFocus?: boolean,
   /**
+   * The main axis offset or gap between the reference and floating elements
+   */
+  gutter?: number;
+  /**
    * Callback fired when the popover open state changes.
    */
   onOpenChange?: (detail: PopoverOpenChangeDetail) => void,

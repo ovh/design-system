@@ -17,34 +17,42 @@ $tab-list-border-bottom-size: 2px;
       align-self: stretch;
       height: auto;
 
-      &--active {
-        &::after {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          z-index: 1;
-          width: 60px;
-          height: 100%;
-          content: '';
-          pointer-events: none;
-        }
+      &::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        transition: opacity ease .3s;
+        opacity: 0;
+        z-index: 1;
+        width: 60px;
+        height: 100%;
+        content: '';
+        pointer-events: none;
       }
     }
 
     &__left-arrow {
+      &::after {
+        background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
+      }
+
       &--active {
         &::after {
           left: button.$ods-button-size-xs;
-          background: linear-gradient(270deg, rgba(255,255,255,0) 0, rgba(255,255,255,1) 100%);
+          opacity: 1;
         }
       }
     }
 
     &__right-arrow {
+      &::after {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
+      }
+
       &--active {
         &::after {
           right: button.$ods-button-size-xs;
-          background: linear-gradient(90deg, rgba(255,255,255,0) 0, rgba(255,255,255,1) 100%);
+          opacity: 1;
         }
       }
     }

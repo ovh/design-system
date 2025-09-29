@@ -1,11 +1,11 @@
 import { type FC, type JSX, forwardRef } from 'react';
 import { useFormField } from '../../../../form-field/src';
-import { ComboboxProvider, type ComboboxRootProp, type CustomData } from '../../contexts/useCombobox';
+import { ComboboxProvider, type ComboboxRootProp } from '../../contexts/useCombobox';
 
 /**
  * @inheritDoc ComboboxRootProp
  */
-interface ComboboxProp<T extends CustomData = CustomData> extends ComboboxRootProp<T> {}
+interface ComboboxProp extends ComboboxRootProp {}
 
 const Combobox: FC<ComboboxProp> = forwardRef(({
   allowCustomValue = true,

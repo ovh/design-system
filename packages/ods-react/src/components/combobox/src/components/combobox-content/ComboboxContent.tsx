@@ -82,6 +82,7 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
 
             return (
               <ComboboxOption
+                id={ `${controlId}-${item.value}` }
                 isHighlighted={ highlightedOptionValue === item.value }
                 item={ item }
                 key={ item.value } />

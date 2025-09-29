@@ -188,6 +188,7 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
       }
 
       <Input
+        aria-activedescendant={ highlightedOptionValue ? `${controlId}-${highlightedOptionValue}` : '' }
         aria-autocomplete="list"
         aria-controls={ contentId }
         aria-expanded={ isOpen ? 'true' : 'false' }
@@ -199,6 +200,7 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
         disabled={ disabled }
         i18n={ i18n }
         id={ id || fieldContext?.id }
+        invalid={ invalid }
         loading={ loading }
         locale={ locale }
         onChange={ (e) => {

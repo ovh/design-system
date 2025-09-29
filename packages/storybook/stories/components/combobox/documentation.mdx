@@ -96,7 +96,7 @@ New entries can be added by clicking on the "Add entry" option.
 
 * search input is case-insensitive (e.g., searching for "a" will match "A")
 
-* newly created entries are case-sensitive (e.g., adding "cat" will not conflict with an existing "Cat" item)
+* newly created entries are not case-sensitive
 
 Users cannot create an entry that is already selected as a tag.
 
@@ -107,7 +107,6 @@ If a custom entry added via "Add Entry" option is removed, it does not reappear 
 If the clearable option is enabled, a dedicated Button appears inside the Input field when it contains text:
 
 * clicking the clearable Button resets the Input field, removing any entered text or selected value(s)
-* the dropdown opens after clearing the Input field
 * in multiple selection mode, only the current Input text is cleared; selected tags remain
 
 <Heading label="Loading state" level={ 3 } />
@@ -138,17 +137,21 @@ Pressing `Shift` + `Tab` moves focus to the previous interactive element without
 
 <Heading label="General keyboard shortcuts" level={ 3 } />
 
-Pressing `Escape` closes the dropdown without selection.
-
-If the user has typed in the Input field but not made a new selection, pressing `Escape` resets the Input to the previously selected value. Any unsaved input is discarded.
-
-<Heading label="Single selection mode" level={ 4 } />
-
 Pressing `Arrow Up/Down` navigates through items in the dropdown.
+
+Pressing `Backspace` deletes the last character in the Input field (it does not clear the entire field at once).
 
 Pressing `Enter` selects the hovered item and closes the dropdown.
 
-Pressing `Backspace` deletes the last character in the Input field (it does not clear the entire field at once).
+Pressing `Escape` closes the dropdown without selection.
+
+<Heading label="Multiple selection mode" level={ 4 } />
+
+Pressing `Arrow Left/Right` navigates between selected tags.
+
+Pressing `Backspace` while focusing a tag will remove it.
+
+Pressing `Enter` while focusing a tag will remove it.
 
 <Heading label="Accessibility" level={ 2 } />
 

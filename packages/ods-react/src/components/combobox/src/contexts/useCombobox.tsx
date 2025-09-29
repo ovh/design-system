@@ -34,7 +34,7 @@ type ComboboxGroupItem<T extends CustomData = CustomData> = {
 
 type ComboboxItem<T extends CustomData = CustomData> = ComboboxGroupItem<T> | ComboboxOptionItem<T>;
 
-type ComboboxRootProp<T extends CustomData = CustomData> = Omit<ComponentPropsWithRef<'div'>, 'defaultValue' | 'onSelect'> & {
+type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'defaultValue' | 'onSelect'> & {
   /**
    * Whether to allow adding a value which is not part of the items.
    */
@@ -42,7 +42,7 @@ type ComboboxRootProp<T extends CustomData = CustomData> = Omit<ComponentPropsWi
   /**
    * Custom render for each option item.
    */
-  customOptionRenderer?: (item: ComboboxItem<T>) => JSX.Element,
+  customOptionRenderer?: (item: ComboboxItem) => JSX.Element,
   /**
    * The initial selected value(s). Use when you don't need to control the selected value(s) of the combobox.
    */
@@ -378,6 +378,5 @@ export {
   ComboboxProvider,
   type ComboboxRootProp,
   type ComboboxValueChangeDetails,
-  type CustomData,
   useCombobox,
 };

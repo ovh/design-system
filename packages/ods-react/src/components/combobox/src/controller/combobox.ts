@@ -71,12 +71,7 @@ function getDefaultInputValue(items: ComboboxItem[], multiple: boolean, defaultV
     return '';
   }
 
-  const matchingItem = items.find((item) => {
-    if (isGroup(item)) {
-      return item.options.find((option) => option.value === defaultValue[0]);
-    }
-    return item.value === defaultValue[0];
-  });
+  const matchingItem = findItemByValue(items, defaultValue[0]);
 
   return matchingItem ? matchingItem.label : '';
 }
@@ -86,14 +81,21 @@ function getDefaultSelection(items: ComboboxItem[], defaultValue?: string[]): Co
     return [];
   }
 
-  const matchingItems = items.filter((item) => {
+  return items.reduce<ComboboxOptionItem[]>((res, item) => {
     if (isGroup(item)) {
-      return item.options.filter((option) => defaultValue.indexOf(option.value) >= 0);
-    }
-    return defaultValue.indexOf(item.value) >= 0;
-  });
+      const validOptions = item.options.filter((option) => defaultValue.indexOf(option.value) >= 0);
 
-  return matchingItems as ComboboxOptionItem[];
+      if (validOptions.length) {
+        res = res.concat(validOptions);
+      }
+      return res;
+    }
+
+    if (defaultValue.indexOf(item.value) >= 0) {
+      res.push(item);
+    }
+    return res;
+  }, []);
 }
 
 function highlightNode(node: ReactNode | string, searchText: string, markWrapper: MarkWrapper): ReactNode {

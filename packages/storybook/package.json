@@ -16,6 +16,7 @@
     "@ovhcloud/ods-themes": "19.1.0",
     "classnames": "2.5.1",
     "lz-string": "1.5.0",
+    "prettier": "3.6.2",
     "react": "18.2.0",
     "storybook-addon-code-editor": "4.1.2",
     "typedoc": "0.28.1"

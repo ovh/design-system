@@ -6,6 +6,13 @@
   background-color: #fff;
 }
 
+.sandbox-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
 .sandbox--fullscreen {
   position: fixed;
   inset: 0;

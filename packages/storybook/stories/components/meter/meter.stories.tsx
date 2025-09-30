@@ -172,3 +172,19 @@ export const Thresholds: Story = {
     </>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <Meter />
+      <Meter low={ 40 } value={ 35 } />
+      <Meter high={ 80 } low={ 40 } value={ 60 } />
+      <Meter high={ 80 } value={ 90 } />
+      <Meter optimum={ 30 } value={ 20 } />
+    </div>
+  ),
+};

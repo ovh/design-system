@@ -10,9 +10,9 @@ export const render = () => {
 
   return (
     <FileUpload data-testid="render">
-      <FileUploadList>
-        <FileUploadItem file={ dummyFile } />
-      </FileUploadList>
+      <FileUploadList />
+
+      <FileUploadItem file={ dummyFile } />
     </FileUpload>
   );
 };

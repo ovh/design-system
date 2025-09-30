@@ -1,30 +1,30 @@
 import { TreeView as VendorTreeView, useTreeViewContext } from '@ark-ui/react/tree-view';
-import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, type KeyboardEvent, type ReactNode, forwardRef, useRef } from 'react';
-import { type TreeViewCustomRendererArg, type TreeViewItem } from '../../contexts/useTreeView';
-import { toggleNodeCheckboxOnSpace } from '../../controller/tree-view';
+import { type ComponentPropsWithRef, type FC, type JSX, type KeyboardEventHandler, type Ref, type RefObject, forwardRef } from 'react';
+import { type TreeViewItem } from '../../contexts/useTreeView';
+import style from '../tree-view-node/treeViewNode.module.scss';
 import { TreeViewNodeCheckboxIndicator } from '../tree-view-node-checkbox-indicator/TreeViewNodeCheckboxIndicator';
 import { TreeViewNodeLabel } from '../tree-view-node-label/TreeViewNodeLabel';
-import style from './treeViewNodeItem.module.scss';
 
 interface TreeViewNodeItemProp extends ComponentPropsWithRef<'div'> {
+  checkboxRef: RefObject<HTMLSpanElement | null>;
   isDisabled: boolean;
+  labelChildren?: unknown;
   item: TreeViewItem;
-  labelChildren?: ReactNode | ((arg: TreeViewCustomRendererArg) => ReactNode);
-  multiple?: boolean;
+  multiple: boolean;
+  onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
 }
 
 const TreeViewNodeItem: FC<TreeViewNodeItemProp> = forwardRef(({
   className,
+  checkboxRef,
   isDisabled,
-  item,
   labelChildren,
+  item,
   multiple,
+  onKeyDown,
   ...props
 }, ref): JSX.Element => {
   const { checkedValue } = useTreeViewContext();
-  const checkboxRef = useRef<HTMLSpanElement | null>(null);
-
   const isChecked = checkedValue?.includes(item.id) ?? false;
   let ariaChecked: 'true' | 'false' | undefined;
   if (multiple) {
@@ -33,42 +33,36 @@ const TreeViewNodeItem: FC<TreeViewNodeItemProp> = forwardRef(({
     ariaChecked = undefined;
   }
 
-  function handleKeyDown(e: KeyboardEvent<HTMLElement>): void {
-    toggleNodeCheckboxOnSpace(e, multiple, isDisabled, checkboxRef);
-  }
-
   return (
     <VendorTreeView.Item
       aria-checked={ ariaChecked }
       aria-disabled={ isDisabled }
-      className={ classNames(
-        style['tree-view-node-item'],
-        className,
-      )}
+      className={ className }
       data-disabled={ isDisabled ? true : undefined }
-      data-ods="tree-view-node-item"
-      onKeyDown={ handleKeyDown }
-      ref={ ref }
+      data-ods="tree-view-item"
       tabIndex={ isDisabled ? -1 : undefined }
-      { ...props }>
+      { ...props }
+      ref={ ref }
+      onKeyDown={ onKeyDown }>
       { multiple ? (
         <VendorTreeView.NodeCheckbox
           aria-disabled={ isDisabled }
-          className={ style['tree-view-node-item__checkbox'] }
+          className={ style['tree-view-node__checkbox'] }
           data-disabled={ isDisabled ? true : undefined }
-          ref={ checkboxRef }
-          tabIndex={ -1 }>
+          tabIndex={ -1 }
+          ref={ checkboxRef as unknown as Ref<HTMLSpanElement> }>
           <TreeViewNodeCheckboxIndicator isDisabled={ isDisabled } />
-
-          <TreeViewNodeLabel item={ item }>
-            { labelChildren }
+          <TreeViewNodeLabel item={ item } multiple={ multiple }>
+            { labelChildren as never }
           </TreeViewNodeLabel>
         </VendorTreeView.NodeCheckbox>
       ) : (
-        <TreeViewNodeLabel item={ item }>
-          { labelChildren }
-        </TreeViewNodeLabel>
-      )}
+        <>
+          <TreeViewNodeLabel item={ item } multiple={ multiple }>
+            { labelChildren as never }
+          </TreeViewNodeLabel>
+        </>
+      ) }
     </VendorTreeView.Item>
   );
 });

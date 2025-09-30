@@ -196,3 +196,20 @@ export const AccessibilityI18n: Story = {
     </FormField>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <Password placeholder="Default" />
+      <Password clearable defaultValue="Clearable" />
+      <Password loading placeholder="Loading" />
+      <Password disabled placeholder="Disabled" />
+      <Password invalid placeholder="Invalid" />
+      <Password readOnly defaultValue="Read only" />
+    </div>
+  ),
+};

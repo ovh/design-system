@@ -80,3 +80,19 @@ export const AccessibilityLabel: Story = {
     <ProgressBar aria-label="Converting" />
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '300px' }}>
+      <ProgressBar />
+      <ProgressBar value="25" />
+      <ProgressBar value="50" />
+      <ProgressBar value="75" />
+      <ProgressBar max="500" value="50" />
+    </div>
+  ),
+};

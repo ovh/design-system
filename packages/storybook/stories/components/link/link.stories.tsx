@@ -148,3 +148,18 @@ export const AccessibilityFileDownload: Story = {
     </>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+      <Link href="https://www.ovhcloud.com">Default Link</Link>
+      <Link disabled href="https://www.ovhcloud.com">Disabled</Link>
+      <Link href="https://www.ovhcloud.com"><Icon name={ ICON_NAME.arrowLeft } />Icon Left</Link>
+      <Link href="https://www.ovhcloud.com" style={{ justifySelf: 'right' }}>Icon Right<Icon name={ ICON_NAME.arrowRight } /></Link>
+    </div>
+  ),
+};

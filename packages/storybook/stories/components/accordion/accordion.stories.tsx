@@ -39,6 +39,33 @@ export const Overview: Story = {
   ),
 };
 
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  render: ({}) => (
+    <Accordion>
+      <AccordionItem value="0">
+        <AccordionTrigger>
+          <Text preset="paragraph">Hello World!</Text>
+        </AccordionTrigger>
+        <AccordionContent>
+          <Text preset="paragraph">Lorem ipsum dolor sit amet.</Text>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="1" disabled>
+        <AccordionTrigger>
+          <Text preset="paragraph">Disabled item</Text>
+        </AccordionTrigger>
+        <AccordionContent>
+          <Text preset="paragraph">This item is disabled.</Text>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ),
+  tags: ['!dev'],
+};
+
 export const Demo: Story = {
   render: (arg: AccordionProp) => (
     <Accordion disabled={ arg.disabled } multiple={ arg.multiple }>

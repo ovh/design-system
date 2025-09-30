@@ -351,3 +351,41 @@ import { useState } from 'react';`,
     );
   },
 };
+
+export const ThemeGenerator: StoryObj = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      { BUTTON_SIZES.map((size) => (
+        <div key={ size } style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          { BUTTON_VARIANTS.map((variant) => (
+            <div key={`${String(size)}-${String(variant)}`} style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px', alignItems: 'center' }}>
+              { BUTTON_COLORS.map((color) => (
+                <Button key={`${String(size)}-${String(variant)}-${String(color)}`} size={ size } variant={ variant } color={ color }>
+                  { `${String(variant)} ${String(color)}` }
+                </Button>
+              )) }
+            </div>
+          )) }
+          <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px', alignItems: 'center' }}>
+            { BUTTON_VARIANTS.map((variant) => (
+              <Button key={`disabled-${String(size)}-${String(variant)}`} size={ size } variant={ variant } disabled>
+                Disabled
+              </Button>
+            )) }
+          </div>
+          <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px', alignItems: 'center' }}>
+            { BUTTON_VARIANTS.map((variant) => (
+              <Button key={`loading-${String(size)}-${String(variant)}`} size={ size } variant={ variant } loading>
+                Loading
+              </Button>
+            )) }
+          </div>
+        </div>
+      )) }
+    </div>
+  ),
+};

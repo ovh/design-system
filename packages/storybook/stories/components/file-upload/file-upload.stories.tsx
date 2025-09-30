@@ -520,3 +520,25 @@ import { useState } from 'react';`,
     );
   },
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <FileUpload>
+        <FileUploadList />
+      </FileUpload>
+
+      <FileUpload disabled>
+        <FileUploadList />
+      </FileUpload>
+
+      <FileUpload invalid>
+        <FileUploadList />
+      </FileUpload>
+    </div>
+  ),
+};

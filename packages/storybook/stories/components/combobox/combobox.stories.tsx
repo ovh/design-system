@@ -548,3 +548,38 @@ export const AccessibilityI18n: Story = {
     </FormField>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <Combobox items={[{ label: 'Dog', value: 'dog' }, { label: 'Cat', value: 'cat' }]}>
+        <ComboboxControl placeholder="Default" />
+        <ComboboxContent />
+      </Combobox>
+
+      <Combobox items={[{ label: 'Dog', value: 'dog' }, { label: 'Cat', value: 'cat' }]}>
+        <ComboboxControl clearable placeholder="Clearable" />
+        <ComboboxContent />
+      </Combobox>
+
+      <Combobox items={[{ label: 'Dog', value: 'dog' }, { label: 'Cat', value: 'cat' }]}>
+        <ComboboxControl loading placeholder="Loading" />
+        <ComboboxContent />
+      </Combobox>
+
+      <Combobox disabled items={[{ label: 'Dog', value: 'dog' }, { label: 'Cat', value: 'cat' }]}>
+        <ComboboxControl placeholder="Disabled" />
+        <ComboboxContent />
+      </Combobox>
+
+      <Combobox readOnly items={[{ label: 'Dog', value: 'dog' }, { label: 'Cat', value: 'cat' }]}>
+        <ComboboxControl placeholder="Read only" />
+        <ComboboxContent />
+      </Combobox>
+    </div>
+  ),
+};

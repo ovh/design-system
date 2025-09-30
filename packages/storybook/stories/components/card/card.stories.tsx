@@ -142,3 +142,22 @@ export const AccessibilityAlternativeGrouping: Story = {
     </div>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  name: 'ThemeGenerator',
+  parameters: {
+    docs: { disable: true },
+    layout: 'fullscreen',
+    options: { showPanel: false },
+  },
+  tags: ['!dev', 'hidden'],
+  render: ({}) => (
+    <div style={{ display: 'flex', gap: '16px' }}>
+      { CARD_COLORS.map((color) => (
+        <Card key={ String(color) } color={ color } style={{ padding: '8px' }}>
+          <p style={{ margin: 0 }}>{ String(color) }</p>
+        </Card>
+      )) }
+    </div>
+  ),
+};

@@ -157,3 +157,30 @@ export const Sizes: Story = {
     </>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', gap: '24px' }}>
+      <Switch>
+        <SwitchItem value="item-1">Item 1</SwitchItem>
+        <SwitchItem value="item-2">Item 2</SwitchItem>
+        <SwitchItem value="item-3">Item 3</SwitchItem>
+      </Switch>
+
+      <Switch disabled>
+        <SwitchItem value="item-1">Item 1</SwitchItem>
+        <SwitchItem value="item-2">Item 2</SwitchItem>
+        <SwitchItem value="item-3">Item 3</SwitchItem>
+      </Switch>
+
+      <Switch size={ SWITCH_SIZE.sm }>
+        <SwitchItem value="item-1">Sm 1</SwitchItem>
+        <SwitchItem value="item-2">Sm 2</SwitchItem>
+      </Switch>
+    </div>
+  ),
+};

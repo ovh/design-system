@@ -1,21 +1,18 @@
 import { TreeView as VendorTreeView, useTreeViewContext } from '@ark-ui/react/tree-view';
-import { type FC, type JSX, type ReactNode } from 'react';
-import { type TreeViewCustomRendererArg, type TreeViewItem } from '../../contexts/useTreeView';
+import { type JSX, type ReactNode } from 'react';
+import { type TreeViewItem } from '../../contexts/useTreeView';
 
-interface TreeViewNodeLabelProp {
-  children?: ReactNode | ((arg: TreeViewCustomRendererArg) => ReactNode);
-  item: TreeViewItem;
+interface TreeViewNodeLabelProp<CustomData = Record<string, never>> {
+  children?: ReactNode | ((arg: { customData?: CustomData, isBranch: boolean, isExpanded: boolean, item: TreeViewItem<CustomData> }) => JSX.Element);
+  item: TreeViewItem<CustomData>;
+  multiple: boolean;
 }
 
-const TreeViewNodeLabel: FC<TreeViewNodeLabelProp> = ({
-  children,
-  item,
-}): JSX.Element => {
+function TreeViewNodeLabel<CustomData = Record<string, never>>({ children, item }: TreeViewNodeLabelProp<CustomData>): JSX.Element {
   const { expandedValue } = useTreeViewContext();
   const isExpanded = expandedValue?.includes(item.id) ?? false;
-
   if (typeof children === 'function') {
-    const renderer = children as (arg: TreeViewCustomRendererArg) => JSX.Element;
+    const renderer = children as (arg: { customData?: CustomData, isBranch: boolean, isExpanded: boolean, item: TreeViewItem<CustomData> }) => JSX.Element;
     const content = renderer({
       customData: item.customRendererData,
       isBranch: !!item.children?.length,
@@ -35,6 +32,6 @@ const TreeViewNodeLabel: FC<TreeViewNodeLabelProp> = ({
   ) : (
     <VendorTreeView.ItemText>{ item.name }</VendorTreeView.ItemText>
   );
-};
+}
 
 export { TreeViewNodeLabel };

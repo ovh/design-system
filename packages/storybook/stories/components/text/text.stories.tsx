@@ -130,3 +130,18 @@ export const TableCaption: Story = {
     </table>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div>
+      <Text preset={ TEXT_PRESET.heading4 }>Heading</Text>
+      <Text preset={ TEXT_PRESET.paragraph }>Paragraph text</Text>
+      <Text preset={ TEXT_PRESET.caption }>Caption</Text>
+      <Text preset={ TEXT_PRESET.label }>Label</Text>
+    </div>
+  ),
+};

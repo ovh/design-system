@@ -1,0 +1,10 @@
+// Test theme - based on default theme with some modifications for testing
+@import '../default/index.scss';
+
+// Test theme overrides
+:root {
+  // Override some colors for testing purposes
+  --ods-color-primary-500: #ff6b35;
+  --ods-color-primary-600: #e55a2b;
+  --ods-color-primary-700: #cc4a21;
+}

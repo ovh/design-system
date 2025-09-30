@@ -1,25 +1,28 @@
 import { TreeView as VendorTreeView, useTreeViewContext } from '@ark-ui/react/tree-view';
-import { type ComponentPropsWithRef, type FC, type JSX, type KeyboardEvent, type ReactNode, forwardRef, useRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, type KeyboardEvent, type KeyboardEventHandler, type Ref, type RefObject, forwardRef } from 'react';
 import { Icon } from '../../../../icon/src';
 import { ICON_NAME } from '../../../../icon/src/constants/icon-name';
-import { type TreeViewCustomRendererArg, type TreeViewItem } from '../../contexts/useTreeView';
+import { type TreeViewItem } from '../../contexts/useTreeView';
 import { toggleNodeCheckboxOnSpace } from '../../controller/tree-view';
 import { TreeViewNodeCheckboxIndicator } from '../tree-view-node-checkbox-indicator/TreeViewNodeCheckboxIndicator';
 import { TreeViewNodeLabel } from '../tree-view-node-label/TreeViewNodeLabel';
 import style from './treeViewNodeBranch.module.scss';
 
 interface TreeViewNodeBranchProp extends ComponentPropsWithRef<'div'> {
+  checkboxRef: RefObject<HTMLSpanElement | null>;
   effectiveIndexPath: number[];
   getIndexPathForId: (id: string) => number[] | undefined;
   isDisabled: boolean;
+  labelChildren?: unknown;
   item: TreeViewItem;
-  labelChildren?: ReactNode | ((arg: TreeViewCustomRendererArg) => ReactNode);
-  multiple?: boolean;
+  multiple: boolean;
+  onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
   renderChildNode: (child: TreeViewItem, childIndexPath: number[]) => JSX.Element;
 }
 
 const TreeViewNodeBranch: FC<TreeViewNodeBranchProp> = forwardRef(({
   className,
+  checkboxRef,
   effectiveIndexPath,
   getIndexPathForId,
   isDisabled,
@@ -30,7 +33,10 @@ const TreeViewNodeBranch: FC<TreeViewNodeBranchProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { checkedValue } = useTreeViewContext();
-  const checkboxRef = useRef<HTMLSpanElement | null>(null);
+
+  function handleKeyDown(e: KeyboardEvent<HTMLElement>): void {
+    toggleNodeCheckboxOnSpace(e, multiple, isDisabled, checkboxRef);
+  }
 
   const dataState = checkboxRef.current?.getAttribute('data-state');
   let ariaChecked: 'true' | 'false' | 'mixed' | undefined;
@@ -46,54 +52,47 @@ const TreeViewNodeBranch: FC<TreeViewNodeBranchProp> = forwardRef(({
     ariaChecked = undefined;
   }
 
-  function handleKeyDown(e: KeyboardEvent<HTMLElement>): void {
-    toggleNodeCheckboxOnSpace(e, multiple, isDisabled, checkboxRef);
-  }
-
   return (
     <VendorTreeView.Branch
       aria-disabled={ isDisabled }
       className={ className }
       data-disabled={ isDisabled ? true : undefined }
-      data-ods="tree-view-node-branch"
-      onKeyDown={ handleKeyDown }
+      { ...props }
       ref={ ref }
-      { ...props }>
+      onKeyDown={ handleKeyDown }>
       <VendorTreeView.BranchControl
         aria-checked={ ariaChecked }
         aria-disabled={ isDisabled }
         className={ style['tree-view-node-branch__control'] }
         data-disabled={ isDisabled ? true : undefined }
-        role={ multiple ? 'checkbox' : 'group' }
+        role="checkbox"
         tabIndex={ isDisabled ? -1 : undefined }>
-        <VendorTreeView.BranchIndicator className={ style['tree-view-node-branch__control__chevron'] }>
+        <VendorTreeView.BranchIndicator
+          className={ style['tree-view-node-branch__chevron'] }>
           <Icon name={ ICON_NAME.chevronRight } />
         </VendorTreeView.BranchIndicator>
-
         { multiple ? (
           <VendorTreeView.NodeCheckbox
             aria-disabled={ isDisabled }
-            className={ style['tree-view-node-branch__control__checkbox'] }
+            className={ style['tree-view-node-branch__checkbox'] }
             data-disabled={ isDisabled ? true : undefined }
             tabIndex={ -1 }
-            ref={ checkboxRef }>
+            ref={ checkboxRef as unknown as Ref<HTMLSpanElement> }>
             <TreeViewNodeCheckboxIndicator isDisabled={ isDisabled } />
-
-            <TreeViewNodeLabel item={ item }>
-              { labelChildren }
+            <TreeViewNodeLabel item={ item } multiple={ multiple }>
+              { labelChildren as never }
             </TreeViewNodeLabel>
           </VendorTreeView.NodeCheckbox>
         ) : (
           <>
-            <TreeViewNodeLabel item={ item }>
-              { labelChildren }
+            <TreeViewNodeLabel item={ item } multiple={ multiple }>
+              { labelChildren as never }
             </TreeViewNodeLabel>
           </>
         ) }
       </VendorTreeView.BranchControl>
-
       <VendorTreeView.BranchContent
-        className={ style['tree-view-node-branch__control__children'] }>
+        className={ style['tree-view-node-branch__children'] }>
         <VendorTreeView.BranchIndentGuide />
         { item.children?.map((child, index) => {
           if (!child?.id || !child?.name) {

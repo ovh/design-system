@@ -185,3 +185,33 @@ export const AccessibilityFormField: Story = {
     </FormField>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexFlow: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <Clipboard value="Clipboard">
+        <ClipboardControl />
+        <ClipboardTrigger />
+      </Clipboard>
+
+      <Clipboard value="Masked">
+        <ClipboardControl maskOption={{ enable: true }} />
+        <ClipboardTrigger />
+      </Clipboard>
+
+      <Clipboard value="Loading">
+        <ClipboardControl loading />
+        <ClipboardTrigger />
+      </Clipboard>
+
+      <Clipboard value="Disabled" disabled>
+        <ClipboardControl />
+        <ClipboardTrigger />
+      </Clipboard>
+    </div>
+  ),
+};

@@ -19,6 +19,15 @@
     "./default/fonts": {
       "sass": "./src/default/fonts.scss",
       "default": "./dist/default/fonts.css"
+    },
+    "./test/css": {
+      "default": "./dist/test/index.css"
+    },
+    "./dist/default/index.css": {
+      "default": "./dist/default/index.css"
+    },
+    "./dist/test/index.css": {
+      "default": "./dist/test/index.css"
     }
   },
   "types": "dist/index.d.ts",

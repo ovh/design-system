@@ -26,6 +26,7 @@ enum HOME_TITLE {
   migration17to18 = `${SECTION.home}/${SECTION.whatsNew}/${SECTION.migrationGuide}/17.x to 18.x`,
   sandboxTool = `${SECTION.home}/${SECTION.tools}/Code Sandbox`,
   styleCustomization = `${SECTION.home}/${SECTION.design}/Style Customization`,
+  themeGeneratorTool = `${SECTION.home}/${SECTION.tools}/Theme Generator`,
   welcome = `${SECTION.home}/Welcome`,
 }
 

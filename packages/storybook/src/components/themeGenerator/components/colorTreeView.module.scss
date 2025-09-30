@@ -1,0 +1,89 @@
+// Color Tree View - BEM Structure
+// Block: color-tree-view
+// Elements: __content
+// Sub-blocks: tree-item, color-picker
+
+.color-tree-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  // Element: Content area
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+  }
+}
+
+// Sub-block: Tree item
+.tree-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: var(--ods-border-radius-sm);
+
+  // Element: Item name
+  &__name {
+    font-size: 14px;
+    color: var(--ods-color-text);
+    font-weight: 500;
+  }
+
+  // Element: Item count badge
+  &__count {
+    font-size: 12px;
+    color: var(--ods-color-neutral-500);
+    background-color: var(--ods-color-neutral-100);
+    padding: 2px 6px;
+    border-radius: var(--ods-border-radius-sm);
+  }
+}
+
+// Sub-block: Color picker
+.color-picker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 8px;
+  cursor: pointer;
+
+  // Element: Color name
+  &__name {
+    font-size: 13px;
+    color: var(--ods-color-text);
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 500;
+    flex: 1;
+  }
+
+  // Element: Color input
+  &__input {
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: var(--ods-border-radius-sm);
+    cursor: pointer;
+    background: none;
+    padding: 0;
+
+    // Webkit color swatch styling
+    &::-webkit-color-swatch-wrapper {
+      padding: 0;
+      border-radius: var(--ods-border-radius-sm);
+      border: solid var(--ods-border-width-sm) var(--ods-color-neutral-300);
+    }
+
+    &::-webkit-color-swatch {
+      border: none;
+      border-radius: var(--ods-border-radius-sm);
+    }
+
+    // Firefox color swatch styling
+    &::-moz-color-swatch {
+      border: none;
+      border-radius: var(--ods-border-radius-sm);
+    }
+  }
+}

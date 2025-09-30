@@ -1,4 +1,5 @@
-import { normalizeSelectedOnChange } from '../../src/controller/tree-view';
+import type { TreeViewItem } from '../../src/contexts/useTreeView';
+import { computeDefaultExpanded, normalizeSelectedOnChange } from '../../src/controller/tree-view';
 
 describe('TreeView controller', () => {
   describe('normalizeSelectedOnChange', () => {
@@ -14,5 +15,48 @@ describe('TreeView controller', () => {
       expect(normalizeSelectedOnChange(['a', 'b'], true)).toEqual(['a', 'b']);
     });
   });
+
+  describe('computeDefaultExpanded', () => {
+    const items: Array<TreeViewItem> = [
+      {
+        children: [
+          { id: 'a', name: 'a' },
+          { children: [{ id: 'b1', name: 'b1' }, { id: 'b2', name: 'b2' }], id: 'b', name: 'b' },
+        ],
+        id: 'root',
+        name: 'root',
+      },
+    ];
+
+    it('should expand everything when defaultExpandAll is true', () => {
+      const expanded = computeDefaultExpanded(items, { defaultExpandAll: true });
+      expect(expanded.sort()).toEqual(['root', 'a', 'b', 'b1', 'b2'].sort());
+    });
+
+    it('should expand marked nodes from item.expanded', () => {
+      const expanded = computeDefaultExpanded(
+        [{ children: [{ id: 'a', name: 'a' }, { expanded: true, id: 'b', name: 'b' }], id: 'root', name: 'root' }],
+        { defaultExpandAll: false },
+      );
+      expect(expanded).toEqual(['b']);
+    });
+
+    it('should expand ancestors of initially selected values (value)', () => {
+      const expanded = computeDefaultExpanded(items, { defaultExpandAll: false, value: ['b2'] });
+      // ancestors of b2 are root and b
+      expect(expanded.sort()).toEqual(['root', 'b'].sort());
+    });
+
+    it('should expand ancestors of initially selected values (defaultValue)', () => {
+      const expanded = computeDefaultExpanded(items, { defaultExpandAll: false, defaultValue: ['b1'] });
+      expect(expanded.sort()).toEqual(['root', 'b'].sort());
+    });
+
+    it('should be empty when nothing selected and no expanded flags', () => {
+      const expanded = computeDefaultExpanded([{ id: 'x', name: 'x' }], { defaultExpandAll: false });
+      expect(expanded).toEqual([]);
+    });
+  });
+
 });
 

@@ -529,3 +529,40 @@ export const Overview: Story = {
     </Modal>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexFlow: 'row', gap: '12px' }}>
+      <Modal>
+        <ModalTrigger asChild>
+          <Button>Default</Button>
+        </ModalTrigger>
+        <ModalContent>
+          <ModalBody>Default</ModalBody>
+        </ModalContent>
+      </Modal>
+
+      <Modal>
+        <ModalTrigger asChild>
+          <Button>Non dismissible</Button>
+        </ModalTrigger>
+        <ModalContent dismissible={ false }>
+          <ModalBody>Non dismissible</ModalBody>
+        </ModalContent>
+      </Modal>
+
+      <Modal>
+        <ModalTrigger asChild>
+          <Button color={ BUTTON_COLOR.critical }>Critical</Button>
+        </ModalTrigger>
+        <ModalContent color={ MODAL_COLOR.critical }>
+          <ModalBody>Critical</ModalBody>
+        </ModalContent>
+      </Modal>
+    </div>
+  ),
+};

@@ -1,0 +1,45 @@
+.theme-preview {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+  }
+
+  &__section {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__component-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+    align-items: center;
+  }
+
+  &__card {
+    padding: 16px;
+    border: solid var(--ods-border-width-sm) var(--ods-color-neutral-200);
+    border-radius: var(--ods-border-radius-md);
+    background-color: var(--ods-color-neutral-000);
+    min-width: 200px;
+
+    &-header {
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: solid var(--ods-border-width-sm) var(--ods-color-neutral-200);
+    }
+
+    &-body {
+    }
+  }
+}

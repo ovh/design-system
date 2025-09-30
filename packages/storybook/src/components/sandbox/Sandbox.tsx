@@ -1,4 +1,4 @@
-import { Splitter } from '@ark-ui/react/splitter'
+import { Splitter } from '@ark-ui/react'
 import * as ODSReact from '@ovhcloud/ods-react';
 import classNames from 'classnames';
 import lzString from 'lz-string';

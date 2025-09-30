@@ -1,0 +1,23 @@
+// Theme Switch - BEM Structure
+// Block: theme-switch
+// Elements: __label
+
+.theme-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  // Element: Label text
+  &__label {
+    font-size: 14px;
+    color: var(--ods-color-text);
+    font-weight: 500;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 12px;
+  }
+}

@@ -287,3 +287,49 @@ export const AccessibilityAriaLabel: Story = {
     </Drawer>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '12px' }}>
+      <Drawer>
+        <DrawerTrigger asChild>
+          <Button>Left</Button>
+        </DrawerTrigger>
+        <DrawerContent position={ DRAWER_POSITION.left }>
+          <DrawerBody>Left drawer</DrawerBody>
+        </DrawerContent>
+      </Drawer>
+
+      <Drawer>
+        <DrawerTrigger asChild>
+          <Button>Right</Button>
+        </DrawerTrigger>
+        <DrawerContent position={ DRAWER_POSITION.right }>
+          <DrawerBody>Right drawer</DrawerBody>
+        </DrawerContent>
+      </Drawer>
+
+      <Drawer>
+        <DrawerTrigger asChild>
+          <Button>Top</Button>
+        </DrawerTrigger>
+        <DrawerContent position={ DRAWER_POSITION.top }>
+          <DrawerBody>Top drawer</DrawerBody>
+        </DrawerContent>
+      </Drawer>
+
+      <Drawer>
+        <DrawerTrigger asChild>
+          <Button>Bottom</Button>
+        </DrawerTrigger>
+        <DrawerContent position={ DRAWER_POSITION.bottom }>
+          <DrawerBody>Bottom drawer</DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </div>
+  ),
+};

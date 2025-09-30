@@ -1,6 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React, { useRef, useState } from 'react';
-import { Button, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT } from '../../../../ods-react/src/components/button/src';
+import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { Icon, ICON_NAME } from '../../../../ods-react/src/components/icon/src';
 import {
@@ -11,22 +10,55 @@ import {
   type TreeViewValueChangeDetail,
 } from '../../../../ods-react/src/components/tree-view/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
+import { Button, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT } from '@ovhcloud/ods-react';
+
 
 type Story = StoryObj<TreeViewProp>;
 
 const meta: Meta<TreeViewProp> = {
-  argTypes: excludeFromDemoControls(['defaultExpandedValue', 'defaultValue', 'items', 'onExpandedChange', 'onValueChange', 'expandedValue', 'value']),
   component: TreeView,
   subcomponents: { TreeViewNode },
   title: 'React Components/Tree View',
 };
 
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      { id: 'src', name: 'src', children: [ { id: 'components', name: 'components', children: [ { id: 'Button.tsx', name: 'Button.tsx' } ] } ] },
+      { id: 'package.json', name: 'package.json' },
+    ];
+    return (
+      <div style={{ display: 'flex', gap: '24px' }}>
+        <TreeView items={ items }>
+          <TreeViewNodes>
+            { items.map((item) => (
+              <TreeViewNode key={ item.id } item={ item } />
+            )) }
+          </TreeViewNodes>
+        </TreeView>
+
+        <TreeView disabled items={ items }>
+          <TreeViewNodes>
+            { items.map((item) => (
+              <TreeViewNode key={ item.id } item={ item } />
+            )) }
+          </TreeViewNodes>
+        </TreeView>
+      </div>
+    );
+  }
+};
+
 export default meta;
 
 export const Demo: Story = {
-  render: (arg) => {
+  render: (arg: TreeViewProp) => {
     const items = [
       {
         id: 'src',
@@ -50,9 +82,8 @@ export const Demo: Story = {
 
     return (
       <TreeView
-        defaultExpandedValue={ arg.defaultExpandedValue }
+        defaultExpandAll={ arg.defaultExpandAll }
         disabled={ arg.disabled }
-        expandedValue={ arg.expandedValue }
         items={ items }
         multiple={ arg.multiple }>
         <TreeViewNodes>
@@ -64,6 +95,12 @@ export const Demo: Story = {
     );
   },
   argTypes: orderControls({
+    defaultExpandAll: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: 'boolean',
+    },
     disabled: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -81,7 +118,7 @@ export const Demo: Story = {
 
 export const Default: Story = {
   globals: {
-    imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+    imports: `import { TreeView, type TreeViewProp, TreeViewNode, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => {
@@ -107,7 +144,9 @@ export const Default: Story = {
     ];
 
     return (
-      <TreeView items={ items }>
+      <TreeView
+        items={ items }
+        onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
         <TreeViewNodes>
           { items.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
@@ -143,7 +182,9 @@ export const Overview: Story = {
     ];
 
     return (
-      <TreeView items={ items }>
+      <TreeView
+        items={ items }
+        onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
         <TreeViewNodes>
           { items.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
@@ -156,7 +197,7 @@ export const Overview: Story = {
 
 export const Multiple: Story = {
   globals: {
-    imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
+    imports: `import { TreeView, type TreeViewProp, TreeViewNode, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
   },
   parameters: {
     docs: {
@@ -188,7 +229,8 @@ export const Multiple: Story = {
     return (
       <TreeView
         items={ items }
-        multiple>
+        multiple
+        onValueChange={(d: TreeViewValueChangeDetail) => console.log('onValueChange', d)}>
         <TreeViewNodes>
           { items.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
@@ -199,7 +241,7 @@ export const Multiple: Story = {
   }
 }
 
-export const DefaultExpandedValue: Story = {
+export const DefaultExpandAll: Story = {
   globals: {
     imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
   },
@@ -232,7 +274,7 @@ export const DefaultExpandedValue: Story = {
     ];
     return (
       <TreeView
-        defaultExpandedValue={["src", "components"]}
+        defaultExpandAll
         items={ items }>
         <TreeViewNodes>
           { items.map((item) => (
@@ -246,8 +288,7 @@ export const DefaultExpandedValue: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { TreeView, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';
-import { useState } from 'react';`,
+    imports: `import { TreeView, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
   },
   parameters: {
     docs: {
@@ -260,6 +301,7 @@ import { useState } from 'react';`,
       {
         id: 'src',
         name: 'src',
+        expanded: true,
         children: [
           { id: 'app.tsx', name: 'app.tsx' },
           { id: 'index.ts', name: 'index.ts' },
@@ -276,7 +318,7 @@ import { useState } from 'react';`,
       { id: 'package.json', name: 'package.json' },
       { id: 'readme.md', name: 'README.md' },
     ];
-    const [selectedId, setSelectedId] = useState<string | undefined>('package.json');
+    const [selectedId, setSelectedId] = React.useState<string | undefined>('package.json');
     return (
       <>
         <TreeView
@@ -297,8 +339,7 @@ import { useState } from 'react';`,
 
 export const ControlledMultiple: Story = {
   globals: {
-    imports: `import { TreeView, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';
-import { useState } from 'react';`,
+    imports: `import { TreeView, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '@ovhcloud/ods-react';`,
   },
   parameters: {
     docs: {
@@ -327,7 +368,7 @@ import { useState } from 'react';`,
       { id: 'package.json', name: 'package.json' },
       { id: 'readme.md', name: 'README.md' },
     ];
-    const [selectedIds, setSelectedIds] = useState<string[]>(['package.json', 'index.ts']);
+    const [selectedIds, setSelectedIds] = React.useState<string[]>(['package.json', 'index.ts']);
     return (
       <>
         <TreeView
@@ -407,6 +448,7 @@ export const DisabledItems: Story = {
       {
         id: 'src',
         name: 'src',
+        expanded: true,
         children: [
           { id: 'app.tsx', name: 'app.tsx' },
           { id: 'index.ts', name: 'index.ts', disabled: true },
@@ -414,6 +456,7 @@ export const DisabledItems: Story = {
             id: 'components',
             name: 'components',
             disabled: true,
+            expanded: true,
             children: [
               { id: 'Button.tsx', name: 'Button.tsx' },
               { id: 'Card.tsx', name: 'Card.tsx', disabled: true },
@@ -534,8 +577,7 @@ export const InFormField: Story = {
 
 export const DynamicChildren: Story = {
   globals: {
-    imports: `import { Button, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';
-import { useRef, useState } from 'react';`,
+    imports: `import { Button, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Icon, ICON_NAME, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`,
   },
   parameters: {
     docs: {
@@ -545,7 +587,7 @@ import { useRef, useState } from 'react';`,
   tags: ['!dev'],
   render: ({}) => {
     type Item = { id: string, name: string, children?: Item[] };
-    const [items, setItems] = useState<Item[]>([
+    const [items, setItems] = React.useState<Item[]>([
       {
         id: 'src',
         name: 'src',
@@ -558,7 +600,7 @@ import { useRef, useState } from 'react';`,
       { id: 'package.json', name: 'package.json' },
       { id: 'readme.md', name: 'README.md' },
     ]);
-    const counter = useRef(1);
+    const counter = React.useRef(1);
 
     function addChildTo(collection: Item[], parentId: string, newNode: Item): Item[] {
       return collection.map((node) => {
@@ -608,6 +650,7 @@ import { useRef, useState } from 'react';`,
           </Button>
         </div>
         <TreeView
+          defaultExpandAll
           items={ items }
           multiple>
           <TreeViewNodes>

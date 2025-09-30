@@ -513,3 +513,38 @@ export const Readonly: Story = {
     </Select>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <Select items={[{ label: 'Dog', value:'dog' },{ label: 'Cat', value:'cat' }]}>
+        <SelectControl placeholder="Default" />
+        <SelectContent />
+      </Select>
+
+      <Select multiple items={[{ label: 'Dog', value:'dog' },{ label: 'Cat', value:'cat' }]}>
+        <SelectControl placeholder="Multiple" />
+        <SelectContent />
+      </Select>
+
+      <Select disabled items={[{ label: 'Dog', value:'dog' },{ label: 'Cat', value:'cat' }]}>
+        <SelectControl placeholder="Disabled" />
+        <SelectContent />
+      </Select>
+
+      <Select readOnly items={[{ label: 'Dog', value:'dog' },{ label: 'Cat', value:'cat' }]}>
+        <SelectControl placeholder="Read only" />
+        <SelectContent />
+      </Select>
+
+      <Select invalid items={[{ label: 'Dog', value:'dog' },{ label: 'Cat', value:'cat' }]}>
+        <SelectControl placeholder="Invalid" />
+        <SelectContent />
+      </Select>
+    </div>
+  ),
+};

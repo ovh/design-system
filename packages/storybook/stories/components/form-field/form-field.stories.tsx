@@ -194,3 +194,28 @@ export const AccessibilityLabel: Story = {
     </FormField>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <FormField>
+        <FormFieldLabel>Label</FormFieldLabel>
+        <Input name="input" />
+      </FormField>
+
+      <FormField>
+        <Input name="input" />
+        <FormFieldHelper>Helper text</FormFieldHelper>
+      </FormField>
+
+      <FormField invalid>
+        <Input name="input" />
+        <FormFieldError>Error message</FormFieldError>
+      </FormField>
+    </div>
+  ),
+};

@@ -8,6 +8,16 @@
     $gap: 8px;
     $padding-x: 8px;
 
+    &__chevron {
+      display: flex;
+      flex: 0 0 $chevron-size;
+      align-items: center;
+      justify-content: center;
+      transition: transform .2s ease;
+      width: $chevron-size;
+      height: $chevron-size;
+    }
+
     &__control {
       display: flex;
       gap: $gap;
@@ -26,8 +36,8 @@
         }
       }
 
-      &:has(.tree-view-node-branch__control__checkbox[data-state="checked"]),
-      &:has(.tree-view-node-branch__control__checkbox[data-state="indeterminate"]) {
+      &:has(.tree-view-node-branch__checkbox[data-state="checked"]),
+      &:has(.tree-view-node-branch__checkbox[data-state="indeterminate"]) {
         background-color: var(--ods-color-primary-050);
 
         &:not([data-disabled]):hover {
@@ -39,9 +49,10 @@
         @include state.ods-is-disabled();
 
         background-color: transparent;
+        cursor: default;
       }
 
-      &[data-selected]:not(:has(.tree-view-node-branch__control__checkbox)) {
+      &[data-selected]:not(:has(.tree-view-node-branch__checkbox)) {
         background-color: var(--ods-color-primary-050);
 
         &:not([data-disabled]):hover {
@@ -56,43 +67,31 @@
         z-index: 2;
         background-color: var(--ods-color-primary-100);
       }
+    }
 
-      &__chevron {
-        display: flex;
-        flex: 0 0 $chevron-size;
-        align-items: center;
-        justify-content: center;
-        transition: transform .2s ease;
-        width: $chevron-size;
-        height: $chevron-size;
+    &__children {
+      position: relative;
+      margin-left: 1rem;
+      padding-left: .5rem;
 
-        &:is([aria-expanded="true"], [data-state="open"]) {
-          transform: rotate(90deg);
-        }
+      &::before {
+        position: absolute;
+        top: .25rem;
+        bottom: .25rem;
+        left: 0;
+        opacity: .15;
+        background-color: var(--ods-color-form-element-border-default);
+        width: 2px;
+        content: '';
       }
+    }
 
-      &__children {
-        position: relative;
-        margin-left: 1rem;
-        padding-left: .5rem;
-
-        &::before {
-          position: absolute;
-          top: .25rem;
-          bottom: .25rem;
-          left: 0;
-          opacity: .15;
-          background-color: var(--ods-color-form-element-border-default);
-          width: 2px;
-          content: '';
-        }
-      }
-
-      &__checkbox {
-        display: flex;
-        gap: $gap;
-        width: 100%;
-      }
+    &__checkbox {
+      display: flex;
+      gap: $gap;
+      width: 100%;
     }
   }
 }
+
+

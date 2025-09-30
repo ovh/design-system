@@ -336,3 +336,38 @@ export const Variant: Story = {
     </>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'inline-flex', flexFlow: 'column', gap: '8px' }}>
+      <Message>
+        <MessageIcon name={ ICON_NAME.circleInfo } />
+        <MessageBody>Default message</MessageBody>
+      </Message>
+      <Message color={ MESSAGE_COLOR.information }>
+        <MessageIcon name={ ICON_NAME.circleInfo } />
+        <MessageBody>Information</MessageBody>
+      </Message>
+      <Message color={ MESSAGE_COLOR.success }>
+        <MessageIcon name={ ICON_NAME.circleCheck } />
+        <MessageBody>Success</MessageBody>
+      </Message>
+      <Message color={ MESSAGE_COLOR.warning }>
+        <MessageIcon name={ ICON_NAME.triangleExclamation } />
+        <MessageBody>Warning</MessageBody>
+      </Message>
+      <Message color={ MESSAGE_COLOR.critical }>
+        <MessageIcon name={ ICON_NAME.hexagonExclamation } />
+        <MessageBody>Critical</MessageBody>
+      </Message>
+      <Message variant={ MESSAGE_VARIANT.light }>
+        <MessageIcon name={ ICON_NAME.circleInfo } />
+        <MessageBody>Light variant</MessageBody>
+      </Message>
+    </div>
+  ),
+};

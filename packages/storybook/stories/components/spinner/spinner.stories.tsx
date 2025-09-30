@@ -121,3 +121,19 @@ export const AccessibilityAriaLabelledBy: Story = {
     </div>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'inline-flex', flexFlow: 'row', gap: '12px', alignItems: 'center' }}>
+      <Spinner />
+      <Spinner size={ SPINNER_SIZE.sm } />
+      <Spinner size={ SPINNER_SIZE.lg } />
+      <Spinner color={ SPINNER_COLOR.neutral } />
+      <Spinner color={ SPINNER_COLOR.primary } />
+    </div>
+  ),
+};

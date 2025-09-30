@@ -53,3 +53,17 @@ export const AccessibilityBadPracticeLoading: Story = {
     </div>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', gap: '12px' }}>
+      <Skeleton />
+      <Skeleton />
+      <Skeleton />
+    </div>
+  ),
+};

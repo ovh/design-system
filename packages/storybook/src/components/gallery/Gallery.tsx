@@ -1,5 +1,5 @@
 import { CARD_COLOR, Card } from '@ovhcloud/ods-react';
-import { Canvas } from '@storybook/blocks';
+import { Canvas, Story } from '@storybook/blocks';
 import { type ModuleExport } from '@storybook/types';
 import React from 'react';
 import { STORY } from '../../constants/meta';
@@ -10,7 +10,7 @@ type Props = {
   components: {
     kind: string,
     name: string,
-    story: ModuleExport
+    story: ModuleExport | string
   }[],
 }
 
@@ -25,8 +25,13 @@ const Gallery = ({ components }: Props) => {
             key={ idx }>
             <Canvas
               className={ styles['gallery__item__preview'] }
-              of={ component.story }
-              sourceState="none" />
+              sourceState="none">
+              {
+                typeof component.story === 'string'
+                  ? <Story id={ component.story } />
+                  : <Story of={ component.story } />
+              }
+            </Canvas>
 
             <StorybookLink
               className={ styles['gallery__item__title'] }

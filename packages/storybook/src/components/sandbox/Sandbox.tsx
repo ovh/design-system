@@ -2,7 +2,10 @@ import { Splitter } from '@ark-ui/react/splitter'
 import * as ODSReact from '@ovhcloud/ods-react';
 import classNames from 'classnames';
 import lzString from 'lz-string';
-import React, { type JSX, useMemo, useRef, useState } from 'react';
+import { format } from 'prettier/standalone';
+import * as prettierPluginEstree from 'prettier/plugins/estree';
+import parser from 'prettier/plugins/typescript';
+import React, { type JSX, useEffect, useRef, useState } from 'react';
 import { Playground } from 'storybook-addon-code-editor';
 import { ORIENTATION, OrientationSwitch } from './actions/OrientationSwitch';
 import { ResetSandbox } from './actions/ResetSandbox';
@@ -46,10 +49,22 @@ function decodeUrl(location: Location) {
 }
 
 const Sandbox = ({ location }: Prop): JSX.Element => {
+  const [initialCode, setInitialCode] = useState('');
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [orientation, setOrientation] = useState(ORIENTATION.horizontal);
   const editorRef = useRef<Editor>();
-  const initialCode = useMemo(() => decodeUrl(location), [location]);
+
+  useEffect(() => {
+    format(decodeUrl(location), {
+      bracketSameLine: true,
+      bracketSpacing: true,
+      htmlWhitespaceSensitivity: 'ignore',
+      parser: 'typescript',
+      plugins: [parser, prettierPluginEstree],
+      singleAttributePerLine: true,
+      singleQuote: true,
+    }).then((code) => setInitialCode(code));
+  }, [location]);
 
   function onReset() {
     editorRef.current?.setValue(initialCode);
@@ -57,6 +72,14 @@ const Sandbox = ({ location }: Prop): JSX.Element => {
 
   function onToggleFullscreen() {
     setIsFullscreen((v) => !v);
+  }
+
+  if (!initialCode) {
+    return (
+      <div className={ styles['sandbox-loading'] }>
+        <ODSReact.Spinner />
+      </div>
+    );
   }
 
   return (

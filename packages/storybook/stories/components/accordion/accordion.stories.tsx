@@ -90,7 +90,7 @@ export const Demo: Story = {
 
 export const Default: Story = {
   globals: {
-    imports: `import { AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (

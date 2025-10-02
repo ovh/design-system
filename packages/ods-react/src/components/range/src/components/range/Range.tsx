@@ -1,75 +1,22 @@
 import { Slider } from '@ark-ui/react/slider';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useMemo } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useImperativeHandle, useMemo, useRef } from 'react';
 import { useFormField } from '../../../../form-field/src';
+import { THUMB_SIZE } from '../../constants/thumb';
+import { RangeProvider, type RangeRootProp, type RangeValueChangeDetail, useRange } from '../../contexts/useRange';
 import { RangeBounds } from '../range-bounds/RangeBounds';
 import { RangeThumb } from '../range-thumb/RangeThumb';
+import { RangeTicks } from '../range-ticks/RangeTicks';
 import { RangeTrack } from '../range-track/RangeTrack';
 import style from './range.module.scss';
 
-interface RangeValueChangeDetail {
-  value: number[],
-}
+interface RangeProp extends Omit<ComponentPropsWithRef<'div'>, 'aria-label' | 'aria-labelledby' | 'defaultValue'>, RangeRootProp {}
 
-interface RangeProp extends Omit<ComponentPropsWithRef<'div'>, 'aria-label' | 'aria-labelledby' | 'defaultValue'> {
-  /**
-   * The aria-label of each slider thumb. Useful for providing an accessible name to the slider.
-   */
-  'aria-label'?: string[],
-  /**
-   * The id of the elements that labels each slider thumb. Useful for providing an accessible name to the slider.
-   */
-  'aria-labelledby'?: string[],
-  /**
-   * The initial selected value(s). Use when you don't need to control the value(s) of the range.
-   */
-  defaultValue?: number[],
-  /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean,
-  /**
-   * Whether the component is in error state.
-   */
-  invalid?: boolean,
-  /**
-   * The maximum value that can be selected.
-   */
-  max?: number,
-  /**
-   * The minimum value that can be selected.
-   */
-  min?: number,
-  /**
-   * The name of the form element. Useful for form submission.
-   */
-  name?: string,
-  /**
-   * Callback fired when the thumb moves.
-   */
-  onDragging?: (detail: RangeValueChangeDetail) => void,
-  /**
-   * Callback fired when the thumb is released.
-   */
-  onValueChange?: (detail: RangeValueChangeDetail) => void,
-  /**
-   * The amount to increment or decrement the value by.
-   */
-  step?: number,
-  /**
-   * List of tick indicators to display alongside the range.
-   */
-  ticks?: number[],
-  /**
-   * The controlled selected value(s).
-   */
-  value?: number[],
-}
-
-const Range: FC<RangeProp> = forwardRef(({
+const RangeRoot: FC<RangeProp> = forwardRef(({
   className,
   defaultValue,
-  disabled,
+  displayBounds = true,
+  displayTooltip = true,
   id,
   invalid,
   max = 100,
@@ -82,7 +29,9 @@ const Range: FC<RangeProp> = forwardRef(({
   value,
   ...props
 }, ref): JSX.Element => {
+  const { disabled, rootPadding } = useRange();
   const fieldContext = useFormField();
+  const rangeRef = useRef<HTMLDivElement>(null);
   const isInvalid = useMemo(() => invalid || fieldContext?.invalid, [fieldContext, invalid]);
 
   const nbThumb = useMemo(() => {
@@ -93,6 +42,16 @@ const Range: FC<RangeProp> = forwardRef(({
     }
     return 1;
   }, [defaultValue, value]);
+
+  useImperativeHandle(ref, () => rangeRef.current!, [rangeRef]);
+
+  useEffect(() => {
+    if (rangeRef.current) {
+      rangeRef.current.style.setProperty('--ods-range-padding-bottom', `${rootPadding.bottom}px`);
+      rangeRef.current.style.setProperty('--ods-range-padding-left', `${rootPadding.left}px`);
+      rangeRef.current.style.setProperty('--ods-range-padding-right', `${rootPadding.right}px`);
+    }
+  }, [rangeRef, rootPadding]);
 
   return (
     <Slider.Root
@@ -111,12 +70,12 @@ const Range: FC<RangeProp> = forwardRef(({
       orientation="horizontal"
       onValueChange={ onDragging }
       onValueChangeEnd={ onValueChange }
-      ref={ ref }
+      ref={ rangeRef }
       role="group"
       step={ step }
       thumbSize={{
-        height: 16,
-        width: 16,
+        height: THUMB_SIZE,
+        width: THUMB_SIZE,
       }}
       value={ value }
       { ...props }>
@@ -126,7 +85,7 @@ const Range: FC<RangeProp> = forwardRef(({
         {
           Array.from({ length: nbThumb }).map((_, idx) => (
             <RangeThumb
-              disabled={ disabled }
+              displayTooltip={ displayTooltip }
               index={ idx }
               invalid={ isInvalid }
               key={ idx } />
@@ -136,26 +95,31 @@ const Range: FC<RangeProp> = forwardRef(({
 
       {
         ticks && ticks.length > 0 &&
-        <Slider.MarkerGroup className={ style['range__ticks'] }>
-          {
-            ticks.map((tick) => (
-              <Slider.Marker
-                className={ classNames(
-                  style['range__ticks__tick'],
-                  { [style['range__ticks__tick--single-mode']]: nbThumb <= 1 },
-                )}
-                key={ tick }
-                value={ tick } />
-            ))
-          }
-        </Slider.MarkerGroup>
+        <RangeTicks
+          singleMode={ nbThumb <= 1 }
+          ticks={ ticks } />
       }
 
-      <RangeBounds
-        disabled={ disabled }
-        max={ max }
-        min={ min } />
+      {
+        displayBounds &&
+        <RangeBounds
+          max={ max }
+          min={ min } />
+      }
     </Slider.Root>
+  );
+});
+
+const Range: FC<RangeProp> = forwardRef(({
+  disabled,
+  ...props
+}, ref): JSX.Element => {
+  return (
+    <RangeProvider disabled={ disabled }>
+      <RangeRoot
+        ref={ ref }
+        { ...props } />
+    </RangeProvider>
   );
 });
 

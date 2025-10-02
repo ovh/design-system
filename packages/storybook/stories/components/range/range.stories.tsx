@@ -51,6 +51,18 @@ export const Demo: StoryObj = {
       },
       control: { type: 'boolean' },
     },
+    displayBounds: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: { type: 'boolean' },
+    },
+    displayTooltip: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: { type: 'boolean' },
+    },
     dualRange: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -249,6 +261,41 @@ export const Ticks: Story = {
   ),
 };
 
+export const TicksLabels: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>{ story() }</div>],
+  globals: {
+    imports: `import { Range } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => (
+    <>
+      <Range ticks={[
+        { label: 'Low', value: 25 },
+        { label: 'Medium', value: 50 },
+        { label: 'High', value: 75 },
+      ]} />
+
+      <Range
+        displayBounds={ false }
+        displayTooltip={ false }
+        max={ 5 }
+        min={ 1 }
+        ticks={[
+          { label: 'Very Poor', value: 1 },
+          { label: 'Poor', value: 2 },
+          { label: 'Average', value: 3 },
+          { label: 'Good', value: 4 },
+          { label: 'Excellent', value: 5 },
+        ]} />
+    </>
+  ),
+};
+
 export const AccessibilityFormField: Story = {
   globals: {
     imports: `import { FormField, FormFieldLabel, Range } from '@ovhcloud/ods-react';`,
@@ -261,22 +308,6 @@ export const AccessibilityFormField: Story = {
       </FormFieldLabel>
 
       <Range defaultValue={ [50] } />
-    </FormField>
-  ),
-};
-
-export const AccessibilityDualRangeFormField: Story = {
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Range } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <FormField>
-      <FormFieldLabel>
-        Price range
-      </FormFieldLabel>
-
-      <Range defaultValue={ [30, 70] } />
     </FormField>
   ),
 };

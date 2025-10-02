@@ -1,8 +1,10 @@
+@use '../../../../../style/range';
+
 @layer ods-atoms {
   .range-bounds {
     display: flex;
     justify-content: space-between;
-    padding-top: 8px;
+    padding-top: range.$ods-range-label-padding-top;
     color: var(--ods-color-text);
     font-weight: 600;
 

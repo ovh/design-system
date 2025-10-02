@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { Range, type RangeValueChangeDetail } from '.';
 import style from './dev.module.css';
@@ -178,6 +178,18 @@ export const MaxMin = () => (
   </>
 );
 
+export const Ref = () => {
+  const rangeRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <>
+      <Range ref={ rangeRef } />
+
+      <button type="button" onClick={ () => console.log(rangeRef.current) }>Log Ref</button>
+    </>
+  );
+}
+
 export const States = () => (
   <>
     <Range
@@ -206,8 +218,50 @@ export const Ticks = () => (
   <>
     <Range ticks={ [10, 20, 30, 40, 50, 60, 70, 80, 90] } />
 
+    <br /><br />
+
     <Range
       defaultValue={ [50, 75] }
       ticks={ [10, 20, 30, 40, 50, 60, 70, 80, 90] } />
   </>
 );
+
+export const TicksLabels = () => {
+  const qualityTicks = useMemo(() => [
+    { label: 'Very Poor', value: 1 },
+    { label: 'Poor', value: 2 },
+    { label: 'Average', value: 3 },
+    { label: 'Good', value: 4 },
+    { label: 'Excellent', value: 5 },
+  ], []);
+  const loadTicks = useMemo(() => [
+    { label: 'Low', value: 0 },
+    { label: 'Medium', value: 50 },
+    { label: 'High', value: 100 },
+  ], []);
+
+  return (
+    <>
+      <Range
+        displayBounds={ false }
+        ticks={ loadTicks } />
+
+      <br /><br />
+
+      <Range
+        displayBounds={ false }
+        defaultValue={ [50, 75] }
+        disabled
+        ticks={ loadTicks } />
+
+      <br /><br />
+
+      <Range
+        displayBounds={ false }
+        displayTooltip={ false }
+        max={ 5 }
+        min={ 1 }
+        ticks={ qualityTicks } />
+    </>
+  );
+}

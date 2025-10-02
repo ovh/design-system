@@ -347,3 +347,21 @@ import { useState } from 'react';`,
     );
   },
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '240px' }}>
+      <Range />
+      <Range defaultValue={ [50, 75] } />
+      <Range disabled defaultValue={ [20] } />
+      <Range disabled defaultValue={ [50, 75] } />
+      <Range step={ 5 } defaultValue={ [20] } />
+      <Range ticks={ [10,20,30,40,50,60,70,80,90] } defaultValue={ [20] } />
+    </div>
+  ),
+};

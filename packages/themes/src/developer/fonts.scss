@@ -1,0 +1,9 @@
+/*
+ * Expose the font-faces.
+ */
+@use '../helpers/fonts';
+@include fonts.ods-icon-font-face(url('../../assets/fonts/ods-icon/icomoon/icomoon.woff'));
+@include fonts.source-code-pro-font-face(url('../../assets/fonts/source-code-pro/woff2/source-code-pro.woff2'));
+@include fonts.source-code-pro-italic-font-face(url('../../assets/fonts/source-code-pro/woff2/source-code-pro-italic.woff2'));
+@include fonts.source-sans-pro-font-face(url('../../assets/fonts/source-sans-pro/woff2/source-sans3-variable-custom.woff2'));
+@include fonts.source-sans-pro-italic-font-face(url('../../assets/fonts/source-sans-pro/woff2/source-sans3-variable-custom-italic.woff2'));

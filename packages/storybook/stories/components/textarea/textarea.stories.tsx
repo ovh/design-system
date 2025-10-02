@@ -196,3 +196,19 @@ export const Resizable: Story = {
     <Textarea style={{ resize: 'both' }} />
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <Textarea placeholder="Default" />
+      <Textarea disabled placeholder="Disabled" />
+      <Textarea invalid placeholder="Invalid" />
+      <Textarea readOnly defaultValue="Read only" />
+    </div>
+  ),
+};

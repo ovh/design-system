@@ -272,3 +272,21 @@ export const AccessibilityI18n: Story = {
     </FormField>
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <Input placeholder="Default" />
+      <Input clearable defaultValue="Clearable" />
+      <Input loading placeholder="Loading" />
+      <Input disabled placeholder="Disabled" />
+      <Input invalid placeholder="Invalid" />
+      <Input readOnly defaultValue="Read only" />
+    </div>
+  ),
+};

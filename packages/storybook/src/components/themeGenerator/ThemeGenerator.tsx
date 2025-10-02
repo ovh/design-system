@@ -1,14 +1,14 @@
 import { Splitter } from '@ark-ui/react/splitter';
 import React, { type JSX, useEffect, useState } from 'react';
 import classNames from 'classnames';
-import * as ODSReact from '@ovhcloud/ods-react';
+import { Button, BUTTON_COLOR, BUTTON_VARIANT, Icon, ICON_NAME, Switch, type SwitchValueChangeDetail, SwitchItem } from '@ovhcloud/ods-react';
 import { ORIENTATION, OrientationSwitch } from '../sandbox/actions/OrientationSwitch';
 import styles from './themeGenerator.module.css';
 import { ThemeGeneratorTreeView } from './themeGeneratorTreeView/ThemeGeneratorTreeView';
 import { ThemeGeneratorPreview } from './themeGeneratorPreview/ThemeGeneratorPreview';
-import { parseCssVariables } from './useThemeGenerator';
-import { ThemeGeneratorModal } from './themeGeneratorModal/ThemeGeneratorModal';
-import { ThemeGeneratorJSON } from './themeGeneratorJSON/ThemeGeneratorJSON';
+import { parseCssVariables } from './themeVariableUtils';
+import { ThemeGeneratorSwitchThemeModal } from './themeGeneratorSwitchThemeModal/ThemeGeneratorSwitchThemeModal';
+import { ThemeGeneratorJSONModal } from './themeGeneratorJSONModal/ThemeGeneratorJSONModal';
 
 const ThemeGenerator = (): JSX.Element => {
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -26,23 +26,21 @@ const ThemeGenerator = (): JSX.Element => {
         setIsCustomTheme(true);
         return;
       }
-      
+
       try {
-        console.log('Selected theme:', selectedTheme);
-        
+
         // Fetch the CSS file from the static directory
         // Path: /themes/{themeName}/index.css (exposed via staticDirs in main.ts)
         const response = await fetch(`/themes/${selectedTheme}/index.css`);
-        
+
         if (!response.ok) {
           throw new Error(`Failed to fetch theme: ${response.statusText}`);
         }
-        
+
         const cssContent = await response.text();
 
         // Parse CSS variables
         const variables = parseCssVariables(cssContent);
-        console.log('Parsed variables:', Object.keys(variables).length, 'variables found');
         setEditedVariables(variables);
         setIsCustomTheme(false);
       } catch (error) {
@@ -63,7 +61,7 @@ const ThemeGenerator = (): JSX.Element => {
       ...prev,
       [name]: value,
     }));
-    
+
     // Automatically switch to custom theme when user edits a variable
     if (!isCustomTheme) {
       setSelectedTheme('custom');
@@ -77,15 +75,15 @@ const ThemeGenerator = (): JSX.Element => {
     )}>
       <div className={ styles['theme-generator__menu'] }>
         <div className={styles['theme-generator__menu__left']}>
-          <ODSReact.Button
-            variant={ ODSReact.BUTTON_VARIANT.ghost }
+          <Button
+            variant={ BUTTON_VARIANT.ghost }
             onClick={ () => setIsJsonOpen(true) }>
-            <ODSReact.Icon name={ODSReact.ICON_NAME.chevronLeftUnderscore} />
+            <Icon name={ ICON_NAME.chevronLeftUnderscore } />
             JSON
-          </ODSReact.Button>
-          <ODSReact.Switch 
+          </Button>
+          <Switch
             value={selectedTheme}
-            onValueChange={(details: { value: string }) => {
+            onValueChange={(details: SwitchValueChangeDetail) => {
               const next = details.value;
               const isLeavingCustom = isCustomTheme && next !== 'custom';
 
@@ -98,27 +96,27 @@ const ThemeGenerator = (): JSX.Element => {
               setSelectedTheme(next);
             }}
             >
-            <ODSReact.SwitchItem value="default">
+            <SwitchItem value="default">
               Default
-            </ODSReact.SwitchItem>
-            <ODSReact.SwitchItem value="developer">
+            </SwitchItem>
+            <SwitchItem value="developer">
               Developer
-            </ODSReact.SwitchItem>
-            <ODSReact.SwitchItem value="custom">
+            </SwitchItem>
+            <SwitchItem value="custom">
               Custom
-            </ODSReact.SwitchItem>
-          </ODSReact.Switch>
+            </SwitchItem>
+          </Switch>
         </div>
         <div className={styles['theme-generator__menu__right']}>
           <OrientationSwitch
             onChange={ (value) => setOrientation(value) }
             orientation={ orientation } />
 
-          <ODSReact.Button
+          <Button
             onClick={ onToggleFullscreen }
-            variant={ ODSReact.BUTTON_VARIANT.ghost }>
-            <ODSReact.Icon name={ isFullscreen ? ODSReact.ICON_NAME.shrink : ODSReact.ICON_NAME.resize } />
-          </ODSReact.Button>
+            variant={ BUTTON_VARIANT.ghost }>
+            <Icon name={ isFullscreen ? ICON_NAME.shrink : ICON_NAME.resize } />
+          </Button>
         </div>
       </div>
     <Splitter.Root
@@ -126,7 +124,7 @@ const ThemeGenerator = (): JSX.Element => {
       orientation={ orientation }
       panels={ [{ id: 'tree-view', minSize: 10 }, { id: 'preview', minSize: 10 }] }>
       <Splitter.Panel id="tree-view">
-        <ThemeGeneratorTreeView 
+        <ThemeGeneratorTreeView
           variables={editedVariables}
           onVariableChange={onVariableChange} />
       </Splitter.Panel>
@@ -135,13 +133,13 @@ const ThemeGenerator = (): JSX.Element => {
         asChild
         aria-label="Resize"
         id="tree-view:preview">
-        <ODSReact.Button
+        <Button
           className={ classNames(
             styles['theme-generator__container__resize'],
             { [styles['theme-generator__container__resize--horizontal']]: orientation === ORIENTATION.horizontal },
             { [styles['theme-generator__container__resize--vertical']]: orientation === ORIENTATION.vertical },
           )}
-          color={ ODSReact.BUTTON_COLOR.neutral } />
+          color={ BUTTON_COLOR.neutral } />
       </Splitter.ResizeTrigger>
 
       <Splitter.Panel id="preview">
@@ -151,7 +149,7 @@ const ThemeGenerator = (): JSX.Element => {
       </Splitter.Panel>
     </Splitter.Root>
 
-    <ThemeGeneratorModal
+    <ThemeGeneratorSwitchThemeModal
       open={ isConfirmOpen }
       targetTheme={ pendingTheme }
       onConfirm={() => {
@@ -167,7 +165,7 @@ const ThemeGenerator = (): JSX.Element => {
       }}
     />
 
-    <ThemeGeneratorJSON
+    <ThemeGeneratorJSONModal
       open={ isJsonOpen }
       variables={ editedVariables }
       onClose={ () => setIsJsonOpen(false) }

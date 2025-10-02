@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState, type JSX } from 'react';
 import { Button, BUTTON_VARIANT, Modal, ModalBody, ModalContent, Text, TEXT_PRESET } from '@ovhcloud/ods-react';
-import styles from './themeGeneratorJSON.module.css';
+import styles from './themeGeneratorJSONModal.module.css';
 
 interface ThemeGeneratorJSONProps {
   open: boolean;
@@ -9,7 +9,7 @@ interface ThemeGeneratorJSONProps {
   onReplace: (nextVariables: Record<string, string>) => void;
 }
 
-const ThemeGeneratorJSON = ({ open, variables, onClose, onReplace }: ThemeGeneratorJSONProps): JSX.Element => {
+const ThemeGeneratorJSONModal = ({ open, variables, onClose, onReplace }: ThemeGeneratorJSONProps): JSX.Element => {
   const initialText = useMemo(() => JSON.stringify(variables, null, 2), [variables]);
   const [textValue, setTextValue] = useState(initialText);
   const [error, setError] = useState<string | null>(null);
@@ -81,6 +81,6 @@ const ThemeGeneratorJSON = ({ open, variables, onClose, onReplace }: ThemeGenera
   );
 };
 
-export { ThemeGeneratorJSON };
+export { ThemeGeneratorJSONModal };
 
 

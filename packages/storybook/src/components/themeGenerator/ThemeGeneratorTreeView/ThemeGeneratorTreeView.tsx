@@ -1,10 +1,7 @@
-import { Spinner, Text, TreeView, TreeViewNode, TreeViewNodes  } from '@ovhcloud/ods-react';
+import { Spinner, Text, TreeView, TreeViewNode, TreeViewNodes, SPINNER_SIZE, TEXT_PRESET } from '@ovhcloud/ods-react';
 import React, { useMemo } from 'react';
-import { categorizeCssVariables } from '../useThemeGenerator';
+import { categorizeCssVariables } from '../themeVariableUtils';
 import styles from './themeGeneratorTreeView.module.css';
-import { SPINNER_SIZE } from '../../../../../ods-react/src/components/spinner/src/constants/spinner-size';
-import { TEXT_PRESET } from '../../../../../ods-react/src/components/text/src/constants/text-preset';
-
 interface TreeItem {
   id: string;
   name: string;
@@ -62,18 +59,18 @@ const ThemeGeneratorTreeView = ({ variables, onVariableChange }: ThemeGeneratorT
     <TreeView
       className={styles['theme-generator-tree-view']}
       items={items}
-      onValueChange={() => {}}>
+      >
       <TreeViewNodes>
         {items.map((item) => (
           <TreeViewNode key={item.id} item={item}>
             {({ item, isBranch }: { item: TreeItem; isBranch: boolean }) => (
               <div className={styles['theme-generator-tree-view__item']}>
-                <Text className={styles['theme-generator-tree-view__name']}>
+                <Text className={styles['theme-generator-tree-view__item__name']}>
                   {item.name}
                 </Text>
                 {!isBranch && item.value && (
                   <input
-                    className={styles['theme-generator-tree-view__color-input']}
+                    className={styles['theme-generator-tree-view__item__color-input']}
                     type="color"
                     onClick={(e) => {
                       e.stopPropagation();

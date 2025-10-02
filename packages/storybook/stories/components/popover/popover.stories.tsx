@@ -338,3 +338,28 @@ export const SameWidth: Story = {
     </Popover>
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '12px' }}>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button>Default</Button>
+        </PopoverTrigger>
+        <PopoverContent>This is the popover content</PopoverContent>
+      </Popover>
+
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button>With Arrow</Button>
+        </PopoverTrigger>
+        <PopoverContent withArrow>This is the popover content</PopoverContent>
+      </Popover>
+    </div>
+  ),
+};

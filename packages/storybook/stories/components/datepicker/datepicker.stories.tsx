@@ -319,3 +319,44 @@ export const AccessibilityI18n: Story = {
     </FormField>
   )
 }
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <Datepicker>
+        <DatepickerControl placeholder="Default" />
+        <DatepickerContent />
+      </Datepicker>
+
+      <Datepicker>
+        <DatepickerControl loading placeholder="Loading" />
+        <DatepickerContent />
+      </Datepicker>
+
+      <Datepicker>
+        <DatepickerControl clearable placeholder="Clearable" />
+        <DatepickerContent />
+      </Datepicker>
+
+      <Datepicker invalid>
+        <DatepickerControl placeholder="Invalid" />
+        <DatepickerContent />
+      </Datepicker>
+
+      <Datepicker disabled>
+        <DatepickerControl placeholder="Disabled" />
+        <DatepickerContent />
+      </Datepicker>
+
+      <Datepicker readOnly>
+        <DatepickerControl placeholder="Read only" />
+        <DatepickerContent />
+      </Datepicker>
+    </div>
+  ),
+};

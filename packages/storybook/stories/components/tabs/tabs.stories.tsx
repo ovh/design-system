@@ -221,3 +221,23 @@ export const WithContent: Story = {
     </Tabs>
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Tabs defaultValue="tab1">
+      <TabList>
+        <Tab value="tab1">Tab 1</Tab>
+        <Tab value="tab2" disabled>Tab 2</Tab>
+        <Tab value="tab3">Tab 3</Tab>
+      </TabList>
+      <TabContent value="tab1"><p>Content 1</p></TabContent>
+      <TabContent value="tab2"><p>Content 2</p></TabContent>
+      <TabContent value="tab3"><p>Content 3</p></TabContent>
+    </Tabs>
+  ),
+};

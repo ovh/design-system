@@ -279,3 +279,32 @@ export const Overview: Story = {
     </RadioGroup>
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', gap: '24px' }}>
+      <RadioGroup>
+        <Radio value="html"><RadioControl /><RadioLabel>HTML</RadioLabel></Radio>
+        <Radio value="css"><RadioControl /><RadioLabel>CSS</RadioLabel></Radio>
+        <Radio value="js"><RadioControl /><RadioLabel>JavaScript</RadioLabel></Radio>
+      </RadioGroup>
+
+      <RadioGroup disabled>
+        <Radio value="html"><RadioControl /><RadioLabel>HTML</RadioLabel></Radio>
+        <Radio value="css"><RadioControl /><RadioLabel>CSS</RadioLabel></Radio>
+        <Radio value="js"><RadioControl /><RadioLabel>JavaScript</RadioLabel></Radio>
+      </RadioGroup>
+
+      <RadioGroup>
+        <Radio disabled value="html"><RadioControl /><RadioLabel>HTML</RadioLabel></Radio>
+        <Radio value="css"><RadioControl /><RadioLabel>CSS</RadioLabel></Radio>
+        <Radio value="js"><RadioControl /><RadioLabel>JavaScript</RadioLabel></Radio>
+      </RadioGroup>
+    </div>
+  ),
+};

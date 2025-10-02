@@ -8,21 +8,21 @@ import {
   ModalContent,
 } from '@ovhcloud/ods-react';
 import { Text, TEXT_PRESET } from '@ovhcloud/ods-react';
-import styles from './themeGeneratorModal.module.css';
+import styles from './themeGeneratorSwitchThemeModal.module.css';
 
-interface ThemeGeneratorModalProps {
+interface ThemeGeneratorSwitchThemeModalProps {
   open: boolean;
   targetTheme?: string | null;
   onConfirm: () => void;
   onCancel: () => void;
 }
 
-const ThemeGeneratorModal = ({
+const ThemeGeneratorSwitchThemeModal = ({
   open,
   targetTheme,
   onConfirm,
   onCancel,
-}: ThemeGeneratorModalProps): JSX.Element => {
+}: ThemeGeneratorSwitchThemeModalProps): JSX.Element => {
   function onOpenChange({ open }: { open: boolean }) {
     if (!open) {
       onCancel();
@@ -45,7 +45,7 @@ const ThemeGeneratorModal = ({
             You have unsaved customizations. Switching to { targetLabel || 'another theme' } will discard them.
           </Text>
 
-          <div className={ styles.actions }>
+          <div className={ styles['theme-generator-switch-theme-modal__actions'] }>
             <Button onClick={ onConfirm } color={ BUTTON_COLOR.critical }>
               Switch to { targetLabel || 'theme' }
             </Button>
@@ -60,6 +60,6 @@ const ThemeGeneratorModal = ({
   );
 };
 
-export { ThemeGeneratorModal };
+export { ThemeGeneratorSwitchThemeModal };
 
 

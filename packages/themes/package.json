@@ -19,18 +19,23 @@
     "./default/fonts": {
       "sass": "./src/default/fonts.scss",
       "default": "./dist/default/fonts.css"
+    },
+    "./default/tokens": {
+      "default": "./dist/default/tokens.json"
     }
   },
   "types": "dist/index.d.ts",
   "scripts": {
     "build:ci": "npm run build:prod",
-    "build:prod": "tsc && sass src:dist --no-source-map --pkg-importer=node && postcss dist/**/*.css --replace --use autoprefixer --parser postcss-scss --no-map",
+    "build:prod": "tsc && sass src:dist --no-source-map --pkg-importer=node && postcss dist/**/*.css --replace --use autoprefixer --parser postcss-scss --no-map && npm run generate:tokens",
     "clean": "rimraf dist",
+    "generate:tokens": "node scripts/generate-token-lists.js",
     "lint:scss": "stylelint '{assets,src}/**/*.scss'",
     "lint:ts": "eslint 'src/**/*.{js,ts,tsx}'"
   },
   "devDependencies": {
     "autoprefixer": "10.4.17",
+    "cssjson": "2.1.3",
     "postcss": "8.4.35",
     "postcss-cli": "11.0.0",
     "postcss-scss": "4.0.9",

@@ -2,6 +2,7 @@ $ods-range-background-color: var(--ods-color-neutral-200);
 $ods-range-background-color-active: var(--ods-color-primary-500);
 $ods-range-track-height: 8px;
 $ods-range-thumb-size: 20px;
+$ods-range-label-padding-top: 8px;
 
 @mixin ods-range-thumb() {
   box-sizing: border-box;

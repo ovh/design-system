@@ -3,32 +3,16 @@
 
 @layer ods-atoms {
   .range {
+    --ods-range-padding-bottom: 0;
+    --ods-range-padding-right: 0;
+    --ods-range-padding-left: 0;
+
+    padding: (math.div(range.$ods-range-thumb-size, 2) - math.div(range.$ods-range-track-height, 2)) var(--ods-range-padding-right) var(--ods-range-padding-bottom) var(--ods-range-padding-left);
+
     &__control {
       display: flex;
       align-items: center;
       z-index: 2;
-    }
-
-    &__ticks {
-      bottom: math.div(range.$ods-range-thumb-size, 2) + math.div(range.$ods-range-track-height, 2);
-
-      &__tick {
-        &::after {
-          display: block;
-          border-radius: 6px;
-          background-color: range.$ods-range-background-color;
-          width: 2px;
-          height: range.$ods-range-thumb-size;
-          content: '';
-        }
-
-        &[data-state="at-value"],
-        &--single-mode[data-state="under-value"] {
-          &::after {
-            background-color: range.$ods-range-background-color-active;
-          }
-        }
-      }
     }
   }
 }

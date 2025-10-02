@@ -99,6 +99,13 @@ export const MultipleUncontrolled = () => (
   </Combobox>
 );
 
+export const OnBlur = () => (
+  <Combobox items={ simpleItems }>
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+);
+
 export const Readonly = () => (
   <Combobox
     items={ simpleItems }

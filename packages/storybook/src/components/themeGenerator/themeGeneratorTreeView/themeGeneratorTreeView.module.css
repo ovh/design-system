@@ -1,0 +1,27 @@
+.theme-generator-tree-view {
+  height: 100%;
+  overflow: auto;
+  padding: 1rem;
+}
+
+.theme-generator-tree-view__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.theme-generator-tree-view__name {
+  color: var(--ods-color-text);
+  flex: 1;
+}
+
+.theme-generator-tree-view__color-input {
+  cursor: pointer;
+  height: 26px;
+  width: 24px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}

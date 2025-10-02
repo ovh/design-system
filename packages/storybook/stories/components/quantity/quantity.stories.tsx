@@ -219,3 +219,38 @@ export const Step: Story = {
     </Quantity>
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <Quantity>
+        <QuantityControl>
+          <QuantityInput placeholder="Default" />
+        </QuantityControl>
+      </Quantity>
+
+      <Quantity disabled>
+        <QuantityControl>
+          <QuantityInput placeholder="Disabled" />
+        </QuantityControl>
+      </Quantity>
+
+      <Quantity readOnly>
+        <QuantityControl>
+          <QuantityInput defaultValue="3" />
+        </QuantityControl>
+      </Quantity>
+
+      <Quantity invalid>
+        <QuantityControl>
+          <QuantityInput placeholder="Invalid" />
+        </QuantityControl>
+      </Quantity>
+    </div>
+  ),
+};

@@ -182,3 +182,35 @@ export const AccessibilityAriaLabel: Story = {
     </Toggle>
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+      <Toggle>
+        <ToggleControl />
+      </Toggle>
+
+      <Toggle disabled>
+        <ToggleControl />
+      </Toggle>
+
+      <Toggle invalid>
+        <ToggleControl />
+      </Toggle>
+
+      <Toggle withLabels>
+        <ToggleControl />
+      </Toggle>
+
+      <Toggle>
+        <ToggleControl />
+        <ToggleLabel>With label</ToggleLabel>
+      </Toggle>
+    </div>
+  ),
+};

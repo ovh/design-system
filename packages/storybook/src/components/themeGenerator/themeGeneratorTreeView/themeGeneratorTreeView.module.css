@@ -1,27 +1,27 @@
 .theme-generator-tree-view {
+  padding: 1rem;
   height: 100%;
   overflow: auto;
-  padding: 1rem;
 }
 
 .theme-generator-tree-view__item {
   display: flex;
+  gap: 0.5rem;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
   width: 100%;
 }
 
-.theme-generator-tree-view__name {
-  color: var(--ods-color-text);
+.theme-generator-tree-view__item__name {
   flex: 1;
+  color: var(--ods-color-text);
 }
 
-.theme-generator-tree-view__color-input {
-  cursor: pointer;
-  height: 26px;
-  width: 24px;
-  padding: 0;
+.theme-generator-tree-view__item__color-input {
   border: none;
   background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 26px;
 }

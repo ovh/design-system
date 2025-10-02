@@ -29,6 +29,26 @@ async function typeOnInput(page: Page, text: string): Promise<void> {
 }
 
 describe('Combobox behaviour', () => {
+  describe('on blur', () => {
+    beforeEach(async() => {
+      await gotoStory(page, 'behavior/on-blur');
+      await page.waitForSelector('[data-ods="combobox"]');
+    });
+
+    it('should reset the input value to the current selection', async() => {
+      await openContent(page);
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+
+      expect(await getInputValue(page)).toBe('Apple');
+
+      await typeOnInput(page, 'Dummy');
+      await page.keyboard.press('Tab');
+
+      expect(await getInputValue(page)).toBe('Apple');
+    });
+  });
+
   describe('keyboard navigation', () => {
     beforeEach(async() => {
       await gotoStory(page, 'behavior/keyboard-navigation');

@@ -4746,6 +4746,7 @@ __metadata:
   resolution: "@ovhcloud/ods-themes@workspace:packages/themes"
   dependencies:
     autoprefixer: 10.4.17
+    cssjson: 2.1.3
     postcss: 8.4.35
     postcss-cli: 11.0.0
     postcss-scss: 4.0.9
@@ -10158,6 +10159,13 @@ __metadata:
   bin:
     cssesc: bin/cssesc
   checksum: f8c4ababffbc5e2ddf2fa9957dda1ee4af6048e22aeda1869d0d00843223c1b13ad3f5d88b51caa46c994225eacb636b764eb807a8883e2fb6f99b4f4e8c48b2
+  languageName: node
+  linkType: hard
+
+"cssjson@npm:2.1.3":
+  version: 2.1.3
+  resolution: "cssjson@npm:2.1.3"
+  checksum: e9f76eb21f40d133b92c57931a6cd8886311c6b877d125912315d1835421e419c31a03b7eba64ceb665760ec3f50ea179e76d2dbf39c86364a05866e7d2e4f5b
   languageName: node
   linkType: hard
 

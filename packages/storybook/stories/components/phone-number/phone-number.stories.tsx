@@ -338,3 +338,32 @@ export const AccessibilityI18n: Story = {
   ),
 };
 
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <PhoneNumber>
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <PhoneNumber>
+        <PhoneNumberControl loading />
+      </PhoneNumber>
+
+      <PhoneNumber disabled>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </div>
+  ),
+};

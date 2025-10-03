@@ -93,3 +93,18 @@ export const Spacing: Story = {
     </>
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div>
+      <Divider color={ DIVIDER_COLOR.neutral } />
+      <br />
+      <Divider color={ DIVIDER_COLOR.primary } />
+    </div>
+  ),
+};

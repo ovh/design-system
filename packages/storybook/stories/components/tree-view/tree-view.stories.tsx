@@ -652,3 +652,36 @@ import { useRef, useState } from 'react';`,
     );
   }
 }
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      { id: 'src', name: 'src', children: [ { id: 'components', name: 'components', children: [ { id: 'Button.tsx', name: 'Button.tsx' } ] } ] },
+      { id: 'package.json', name: 'package.json' },
+    ];
+    return (
+      <div style={{ display: 'flex', gap: '24px' }}>
+        <TreeView items={ items }>
+          <TreeViewNodes>
+            { items.map((item) => (
+              <TreeViewNode key={ item.id } item={ item } />
+            )) }
+          </TreeViewNodes>
+        </TreeView>
+
+        <TreeView disabled items={ items }>
+          <TreeViewNodes>
+            { items.map((item) => (
+              <TreeViewNode key={ item.id } item={ item } />
+            )) }
+          </TreeViewNodes>
+        </TreeView>
+      </div>
+    );
+  }
+};

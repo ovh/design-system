@@ -3,22 +3,24 @@ import classNames from 'classnames';
 import { type FC, type JSX, type KeyboardEvent, useRef, useState } from 'react';
 import { useFormField } from '../../../../form-field/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../tooltip/src';
+import { useRange } from '../../contexts/useRange';
 import style from './rangeThumb.module.scss';
 
 interface RangeThumbProp {
-  disabled?: boolean,
+  displayTooltip?: boolean,
   index: number,
   invalid?: boolean,
 }
 
 const RangeThumb: FC<RangeThumbProp> = ({
-  disabled,
+  displayTooltip,
   index,
   invalid,
 }): JSX.Element => {
   const thumbRef = useRef<HTMLDivElement>(null);
   const fieldContext = useFormField();
   const { value } = useSliderContext();
+  const { disabled } = useRange();
   const [isFocused, setIsFocused] = useState(false);
   const [isTooltipOpen, setIsTooltipOpen] = useState(false);
 
@@ -39,11 +41,11 @@ const RangeThumb: FC<RangeThumbProp> = ({
   }
 
   return (
-    <Tooltip open={ !disabled && (isFocused || isTooltipOpen) }>
+    <Tooltip open={ displayTooltip && !disabled && (isFocused || isTooltipOpen) }>
       <TooltipTrigger asChild>
         <Slider.Thumb
-          aria-invalid={ invalid }
           aria-describedby={ fieldContext?.ariaDescribedBy }
+          aria-invalid={ invalid }
           aria-labelledby={ index === 0 ? fieldContext?.labelId : undefined }
           className={ classNames(
             style['range-thumb'],
@@ -57,8 +59,7 @@ const RangeThumb: FC<RangeThumbProp> = ({
           onMouseLeave={ () => setIsTooltipOpen(false) }
           onMouseOver={ () => setIsTooltipOpen(true) }
           ref={ thumbRef }
-          role="slider"
-        >
+          role="slider">
           <Slider.HiddenInput />
         </Slider.Thumb>
       </TooltipTrigger>

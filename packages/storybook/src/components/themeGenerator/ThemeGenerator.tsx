@@ -4,11 +4,12 @@ import classNames from 'classnames';
 import { Button, BUTTON_COLOR, BUTTON_VARIANT, Icon, ICON_NAME, Switch, type SwitchValueChangeDetail, SwitchItem } from '@ovhcloud/ods-react';
 import { ORIENTATION, OrientationSwitch } from '../sandbox/actions/OrientationSwitch';
 import styles from './themeGenerator.module.css';
-import { ThemeGeneratorTreeView } from './themeGeneratorTreeView/ThemeGeneratorTreeView';
+import { ThemeGeneratorTreeView } from './ThemeGeneratorTreeView/ThemeGeneratorTreeView';
 import { ThemeGeneratorPreview } from './themeGeneratorPreview/ThemeGeneratorPreview';
-import { parseCssVariables } from './themeVariableUtils';
 import { ThemeGeneratorSwitchThemeModal } from './themeGeneratorSwitchThemeModal/ThemeGeneratorSwitchThemeModal';
 import { ThemeGeneratorJSONModal } from './themeGeneratorJSONModal/ThemeGeneratorJSONModal';
+import defaultTokens from '@ovhcloud/ods-themes/default/tokens';
+import developerTokens from '@ovhcloud/ods-themes/developer/tokens';
 
 const ThemeGenerator = (): JSX.Element => {
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -21,34 +22,14 @@ const ThemeGenerator = (): JSX.Element => {
   const [isJsonOpen, setIsJsonOpen] = useState(false);
 
   useEffect(() => {
-    const loadTheme = async () => {
-      if (selectedTheme === 'custom') {
-        setIsCustomTheme(true);
-        return;
-      }
+    if (selectedTheme === 'custom') {
+      setIsCustomTheme(true);
+      return;
+    }
 
-      try {
-
-        // Fetch the CSS file from the static directory
-        // Path: /themes/{themeName}/index.css (exposed via staticDirs in main.ts)
-        const response = await fetch(`/themes/${selectedTheme}/index.css`);
-
-        if (!response.ok) {
-          throw new Error(`Failed to fetch theme: ${response.statusText}`);
-        }
-
-        const cssContent = await response.text();
-
-        // Parse CSS variables
-        const variables = parseCssVariables(cssContent);
-        setEditedVariables(variables);
-        setIsCustomTheme(false);
-      } catch (error) {
-        console.error('Failed to load theme:', error);
-      }
-    };
-
-    loadTheme();
+    const themeTokens = selectedTheme === 'developer' ? developerTokens : defaultTokens;
+    setEditedVariables(themeTokens.root);
+    setIsCustomTheme(false);
   }, [selectedTheme]);
 
 
@@ -62,7 +43,6 @@ const ThemeGenerator = (): JSX.Element => {
       [name]: value,
     }));
 
-    // Automatically switch to custom theme when user edits a variable
     if (!isCustomTheme) {
       setSelectedTheme('custom');
       setIsCustomTheme(true);

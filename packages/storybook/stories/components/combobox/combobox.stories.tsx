@@ -227,6 +227,7 @@ export const Readonly: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Combobox
+      defaultValue={ ['parrot'] }
       items={[
         { label: 'Dog', value: 'dog' },
         { label: 'Cat', value: 'cat' },
@@ -392,9 +393,9 @@ export const CustomOptions: Story = {
     },
   },
   render: ({}) => {
-    type CustomData = {
-      color: string;
-      info: string;
+    type MyData = {
+      color?: string;
+      info?: string;
     };
 
     const items = [
@@ -405,7 +406,7 @@ export const CustomOptions: Story = {
       { label: 'Blueberry', value: 'blueberry', customRendererData: { color: 'blue', info: 'Fruit' }},
     ];
 
-    function customOptionRenderer(item: ComboboxItem<CustomData>) {
+    function customOptionRenderer(item: ComboboxItem<MyData>) {
       return (
         <span style={{ color: item.customRendererData?.color, fontWeight: 'bold' }}>
           { item.label } { item.customRendererData?.info && <span style={{ fontWeight: 'normal', fontSize: 12, color: '#888' }}>({ item.customRendererData.info })</span> }

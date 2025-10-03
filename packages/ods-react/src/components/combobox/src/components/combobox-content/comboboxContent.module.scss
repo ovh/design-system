@@ -1,22 +1,26 @@
-@use '../../../../../style/overlay';
-
 @layer ods-organisms {
   .combobox-content {
     box-sizing: border-box;
-    z-index: overlay.$ods-overlay-select-z-index;
     margin: 0;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: var(--ods-border-radius-sm);
+    border: 1px solid var(--ods-color-form-element-border-hover-default);
     background: var(--ods-color-primary-000);
     padding: 0;
-    color: var(--ods-color-text);
+    max-height: 400px;
+    overflow: auto;
+
+    &--open-bottom {
+      border-radius: 0 0 var(--ods-border-radius-sm) var(--ods-border-radius-sm);
+    }
+
+    &--open-top {
+      border-radius: var(--ods-border-radius-sm) var(--ods-border-radius-sm) 0 0;
+    }
 
     &__empty {
       display: flex;
       align-items: center;
       padding: 0 8px;
       min-height: 32px;
-      color: var(--ods-color-text);
     }
   }
 }

@@ -1,5 +1,19 @@
 import { Children, type ReactElement, type ReactNode, isValidElement } from 'react';
 
+function elementParentHasAttribute(element: HTMLElement | null, attribute: string, values?: string[]): boolean {
+  if (!element || !element.parentElement || element.parentElement.tagName === 'BODY') {
+    return false;
+  }
+
+  const parentAttribute = element.parentElement.getAttribute(attribute);
+
+  if (parentAttribute) {
+    return values && values.length ? values.indexOf(parentAttribute) > -1 : true;
+  }
+
+  return elementParentHasAttribute(element.parentElement, attribute, values);
+}
+
 function elementToString(element: ReactNode): string {
   if (typeof element === 'undefined' || element === null || typeof element === 'boolean') {
     return '';
@@ -42,6 +56,7 @@ function hasChildren(element: ReactNode): boolean {
 }
 
 export {
+  elementParentHasAttribute,
   getElementText,
   getValidChildren,
 };

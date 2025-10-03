@@ -1,42 +1,3 @@
-const parseCssVariables = (cssContent: string): Record<string, string> => {
-  const variables: Record<string, string> = {};
-  
-  const extractVariablesFromRoot = (content: string, startIndex: number = 0): void => {
-    const rootMatch = /:root\s*\{([^}]+)\}/g;
-    rootMatch.lastIndex = startIndex;
-    const match = rootMatch.exec(content);
-    
-    if (!match) return;
-    
-    const rootContent = match[1];
-    extractVariablesFromContent(rootContent);
-    
-    extractVariablesFromRoot(content, rootMatch.lastIndex);
-  };
-  
-  const extractVariablesFromContent = (content: string, startIndex: number = 0): void => {
-    const varRegex = /(--[^:]+):\s*([^;]+);/g;
-    varRegex.lastIndex = startIndex;
-    const match = varRegex.exec(content);
-    
-    if (!match) return;
-    
-    const propertyName = match[1].trim();
-    const propertyValue = match[2].trim();
-    
-    // Only include --ods-* variables
-    if (propertyName.startsWith('--ods-')) {
-      variables[propertyName] = propertyValue;
-    }
-    
-    // Recursively find next variable
-    extractVariablesFromContent(content, varRegex.lastIndex);
-  };
-  
-  extractVariablesFromRoot(cssContent);
-  return variables;
-};
-
 interface CategorizedVariables {
   colors: Array<{ name: string; value: string }>;
   border: Array<{ name: string; value: string }>;
@@ -77,4 +38,4 @@ const categorizeCssVariables = (variables: Record<string, string>): CategorizedV
   return categories;
 };
 
-export { categorizeCssVariables, type CategorizedVariables, parseCssVariables };
+export { categorizeCssVariables, type CategorizedVariables };

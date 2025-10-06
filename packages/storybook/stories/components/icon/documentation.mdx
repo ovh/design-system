@@ -1,9 +1,9 @@
 import { ICON_NAME, Icon, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as IconStories from './icon.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -87,7 +87,7 @@ Proper attributes should be used to ensure that **Icons** are either perceivable
 
 If the **Icon** conveys essential information, it must be accompanied by an accessible label using <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role">role="img"</ExternalLink>.
 
-<OdsCanvas of={ IconStories.AccessibilityInformative } sourceState="shown" />
+<Canvas of={ IconStories.AccessibilityInformative } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, ensuring users understand the **Icon**'s meaning.

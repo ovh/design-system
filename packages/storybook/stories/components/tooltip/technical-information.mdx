@@ -1,7 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import SpecificationsTooltip from '../../../../ods-react/src/components/tooltip/documentation/tooltip.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TooltipStories from './tooltip.stories';
@@ -16,7 +17,7 @@ import * as TooltipStories from './tooltip.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-![Component anatomy](components/tooltip/anatomy-tech.png "Component anatomy")
+<Anatomy src="components/tooltip/anatomy-tech.png" />
 
 1. **Tooltip**
 2. **Tooltip Content**
@@ -44,16 +45,16 @@ import * as TooltipStories from './tooltip.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<OdsCanvas of={ TooltipStories.Default } sourceState="shown" />
+<Canvas of={ TooltipStories.Default } sourceState="shown" />
 
 <Heading label="Custom Trigger" level={ 3 } />
 
-<OdsCanvas of={ TooltipStories.CustomTrigger } sourceState="shown" />
+<Canvas of={ TooltipStories.CustomTrigger } sourceState="shown" />
 
 <Heading label="Controlled" level={ 3 } />
 
-<OdsCanvas of={ TooltipStories.Controlled } sourceState="shown" />
+<Canvas of={ TooltipStories.Controlled } sourceState="shown" />
 
 <Heading label="Grid" level={ 3 } />
 
-<OdsCanvas of={ TooltipStories.Grid } sourceState="shown" />
+<Canvas of={ TooltipStories.Grid } sourceState="shown" />

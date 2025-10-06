@@ -1,7 +1,8 @@
-import { Canvas, Meta, Source } from '@storybook/blocks';
+import { Meta, Source } from '@storybook/blocks';
 import SpecificationsLink from '../../../../ods-react/src/components/link/documentation/link.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -17,7 +18,7 @@ import * as LinkStories from './link.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-![Component anatomy](components/link/anatomy-tech.png "Component anatomy")
+<Anatomy src="components/link/anatomy-tech.png" />
 
 1. **Link**
 
@@ -37,15 +38,15 @@ import * as LinkStories from './link.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<OdsCanvas of={ LinkStories.Default } sourceState="shown" />
+<Canvas of={ LinkStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<OdsCanvas of={ LinkStories.Disabled } sourceState="shown" />
+<Canvas of={ LinkStories.Disabled } sourceState="shown" />
 
 <Heading label="With Icon" level={ 3 } />
 
-<OdsCanvas of={ LinkStories.WithIcon } sourceState="shown" />
+<Canvas of={ LinkStories.WithIcon } sourceState="shown" />
 
 <Heading label="React Router integration" level={ 3 } />
 

@@ -1,6 +1,5 @@
-import { BADGE_COLOR, BADGE_SIZE, ICON_NAME, Badge, Icon } from '@ovhcloud/ods-react';
+import { BADGE_COLOR, BADGE_SIZE, ICON_NAME, TABLE_VARIANT, Badge, Icon, Table } from '@ovhcloud/ods-react';
 import { CodeOrSourceMdx } from '@storybook/blocks';
-import { Table } from '@storybook/components';
 import React, { type JSX, useMemo } from 'react';
 import { ExternalLink } from '../externalLink/ExternalLink';
 import { Heading } from '../heading/Heading';
@@ -45,14 +44,14 @@ const ClassModule = ({ component, extraInfo }: ClassModuleProp): JSX.Element => 
           <p>
             This component has no specific properties.
           </p> :
-          <Table>
-            <thead className={ styles['class-module__properties__header'] }>
+          <Table variant={ TABLE_VARIANT.striped }>
+            <thead>
               <tr>
                 {
                   COLUMNS.map((column) => (
-                    <td key={ column }>
+                    <th key={ column }>
                       { column }
-                    </td>
+                    </th>
                   ))
                 }
               </tr>

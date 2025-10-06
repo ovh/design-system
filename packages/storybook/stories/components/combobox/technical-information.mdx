@@ -1,7 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import SpecificationsCombobox from '../../../../ods-react/src/components/combobox/documentation/combobox.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -15,6 +16,14 @@ import * as ComboboxStories from './combobox.stories';
 <Heading label="Overview" level={ 2 } />
 
 <Canvas of={ ComboboxStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/combobox/anatomy-tech.png" />
+
+1. **Combobox**
+2. **Combobox Control**
+3. **Combobox Content**
 
 <TechnicalSpecification
   data={ SpecificationsCombobox }
@@ -44,54 +53,54 @@ import * as ComboboxStories from './combobox.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<OdsCanvas of={ ComboboxStories.Default } sourceState="shown" />
+<Canvas of={ ComboboxStories.Default } sourceState="shown" />
 
 <Heading label="Clearable" level={ 3 } />
 
-<OdsCanvas of={ ComboboxStories.Clearable } sourceState="shown" />
+<Canvas of={ ComboboxStories.Clearable } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<OdsCanvas of={ ComboboxStories.Disabled } sourceState="shown" />
+<Canvas of={ ComboboxStories.Disabled } sourceState="shown" />
 
 <Heading label="Readonly" level={ 3 } />
 
-<OdsCanvas of={ ComboboxStories.Readonly } sourceState="shown" />
+<Canvas of={ ComboboxStories.Readonly } sourceState="shown" />
 
 <Heading label="Group" level={ 3 } />
 
-<OdsCanvas of={ ComboboxStories.Group } sourceState="shown" />
+<Canvas of={ ComboboxStories.Group } sourceState="shown" />
 
 <Heading label="Invalid" level={ 3 } />
 
-<OdsCanvas of={ ComboboxStories.Invalid } sourceState="shown" />
+<Canvas of={ ComboboxStories.Invalid } sourceState="shown" />
 
 <Heading label="Controlled" level={ 3 } />
 
-<OdsCanvas of={ ComboboxStories.Controlled } sourceState="shown" />
+<Canvas of={ ComboboxStories.Controlled } sourceState="shown" />
 
 <Heading label="Highlight" level={ 3 } />
 
-<OdsCanvas of={ ComboboxStories.Highlight } sourceState="shown" />
+<Canvas of={ ComboboxStories.Highlight } sourceState="shown" />
 
 <Heading label="Custom Options" level={ 3 } />
 
-<OdsCanvas of={ ComboboxStories.CustomOptions } sourceState="shown" />
+<Canvas of={ ComboboxStories.CustomOptions } sourceState="shown" />
 
 <Heading label="Custom Filtering" level={ 3 } />
 
-<OdsCanvas of={ ComboboxStories.CustomFilter } sourceState="shown" />
+<Canvas of={ ComboboxStories.CustomFilter } sourceState="shown" />
 
 <Heading label="Empty" level={ 3 } />
 
-<OdsCanvas of={ ComboboxStories.Empty } sourceState="shown" />
+<Canvas of={ ComboboxStories.Empty } sourceState="shown" />
 
 <Heading label="Multiple" level={ 3 } />
 
-<OdsCanvas of={ ComboboxStories.Multiple } sourceState="shown" />
+<Canvas of={ ComboboxStories.Multiple } sourceState="shown" />
 
 <Heading label="Form field" level={ 3 }>
   <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
 </Heading>
 
-<OdsCanvas of={ ComboboxStories.InFormField } sourceState="shown" />
+<Canvas of={ ComboboxStories.InFormField } sourceState="shown" />

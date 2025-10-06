@@ -1,8 +1,10 @@
-import { Canvas, Meta } from '@storybook/blocks';
-import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
+import { Meta } from '@storybook/blocks';
 import * as RadioGroupStories from './radio-group.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 
@@ -54,7 +56,7 @@ Also, it can serve as :
 
 <Heading label="Best Practices in Context" level={ 3 } />
 
-![Component anatomy](components/radio-group/anatomy.png "Component anatomy")
+<Anatomy src="components/radio-group/anatomy.png" />
 
 1. **Radio Group**
 2. **Radio button**

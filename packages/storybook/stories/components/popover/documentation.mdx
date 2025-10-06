@@ -1,10 +1,11 @@
 import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import * as PopoverStories from './popover.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
@@ -63,11 +64,11 @@ It can include interactive elements such as a button or a link.
 
 <Heading label="Best Practices in Context" level={ 3 } />
 
-![Component anatomy](components/popover/anatomy.png "Component anatomy")
+<Anatomy src="components/popover/anatomy.png" />
 
 1. **Popover**
 2. **Content**
-3. **Carret tip** - optional
+3. **Caret tip** - optional
 4. **Trigger**
 
 <Heading label="Placement" level={ 2 } />
@@ -166,7 +167,7 @@ Update the content type on the **Popover Trigger**, which is set by default to `
 
 <Heading label="Using aria-popup for a Popover containing a Menu" level={ 3 } />
 
-<OdsCanvas of={PopoverStories.AccessibilityWithMenu} sourceState='shown' />
+<Canvas of={PopoverStories.AccessibilityWithMenu} sourceState='shown' />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will recognize that **Popover** contains a menu and menu items. It indicates that the element can trigger a popup and the nature of this popup.

@@ -1,7 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import SpecificationsDatepicker from '../../../../ods-react/src/components/datepicker/documentation/datepicker.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -18,11 +19,11 @@ import * as DatepickerStories from './datepicker.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-![Component anatomy](components/datepicker/anatomy-tech.png "Component anatomy")
+<Anatomy src="components/datepicker/anatomy-tech.png" />
 
 1. **Datepicker**
-1. **Datepicker Control**
-1. **Datepicker Content**
+2. **Datepicker Control**
+3. **Datepicker Content**
 
 <TechnicalSpecification
   data={ SpecificationsDatepicker }
@@ -52,34 +53,34 @@ import * as DatepickerStories from './datepicker.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<OdsCanvas of={ DatepickerStories.Default } sourceState="shown" />
+<Canvas of={ DatepickerStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<OdsCanvas of={ DatepickerStories.Disabled } sourceState="shown" />
+<Canvas of={ DatepickerStories.Disabled } sourceState="shown" />
 
 <Heading label="Readonly" level={ 3 } />
 
-<OdsCanvas of={ DatepickerStories.Readonly } sourceState="shown" />
+<Canvas of={ DatepickerStories.Readonly } sourceState="shown" />
 
 <Heading label="Date formatter" level={ 3 } />
 
-<OdsCanvas of={ DatepickerStories.DateFormatter } sourceState="shown" />
+<Canvas of={ DatepickerStories.DateFormatter } sourceState="shown" />
 
 <Heading label="Max / Min" level={ 3 } />
 
-<OdsCanvas of={ DatepickerStories.MinMax } sourceState="shown" />
+<Canvas of={ DatepickerStories.MinMax } sourceState="shown" />
 
 <Heading label="Max view" level={ 3 } />
 
-<OdsCanvas of={ DatepickerStories.MaxView } sourceState="shown" />
+<Canvas of={ DatepickerStories.MaxView } sourceState="shown" />
 
 <Heading label="Min view" level={ 3 } />
 
-<OdsCanvas of={ DatepickerStories.MinView } sourceState="shown" />
+<Canvas of={ DatepickerStories.MinView } sourceState="shown" />
 
 <Heading label="Form field" level={ 3 }>
   <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
 </Heading>
 
-<OdsCanvas of={ DatepickerStories.InFormField } sourceState="shown" />
+<Canvas of={ DatepickerStories.InFormField } sourceState="shown" />

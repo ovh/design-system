@@ -6,14 +6,14 @@
   width: 32px;
   margin: 0 auto;
 }
-  
+
 .borderRadius {
   background-color: var(--ods-color-primary-100);
   border: 1px solid var(--ods-color-primary-300);
   height: 24px;
   width: 24px;
 }
-  
+
 .borderWidth {
   background-color: var(--ods-color-neutral-000);
   border-color: var(--ods-color-primary-500);
@@ -21,7 +21,7 @@
   height: 24px;
   width: 24px;
 }
-  
+
 .color {
   background-color: var(--ods-color-neutral-000);
   border: 1px solid var(--ods-color-neutral-200);
@@ -29,14 +29,14 @@
   height: 24px;
   width: 24px;
 }
-  
+
 .fontFamily {
   color: var(--ods-color-neutral-900);
   font-size: 18px;
   height: auto;
   width: auto;
 }
-  
+
 .outline {
   background-color: var(--ods-color-neutral-000);
   border: 1px solid var(--ods-color-neutral-300);
@@ -45,8 +45,7 @@
   position: relative;
   width: 20px;
 }
-  
+
 .formElement {
   align-items: flex-end;
-  background-color: var(--ods-color-neutral-000);
 }

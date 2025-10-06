@@ -2,9 +2,11 @@ import { type BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
 import { addons } from '@storybook/manager-api';
 import classNames from 'classnames';
 import React from 'react';
-import { ADDON_NAME as GITHUB_LINK_ADDON_NAME, githubLinkAddon } from './addons/githubLink';
-import { ADDON_NAME as ODS_VERSIONS_ADDON_NAME, odsVersionsAddon } from './addons/odsVersions';
-import theme from './ods.theme';
+import { ADDON_NAME as BRAND_ADDON_NAME, brandAddon } from './addons/brand/brand';
+import { ADDON_NAME as GITHUB_LINK_ADDON_NAME, githubLinkAddon } from './addons/githubLink/githubLink';
+import { ADDON_NAME as ODS_VERSIONS_ADDON_NAME, odsVersionsAddon } from './addons/odsVersions/odsVersions';
+import { ADDON_NAME as THEME_SELECTOR_ADDON_NAME, themeSelectorAddon } from './addons/themeSelector/themeSelector';
+import { light } from './ods.theme';
 import styles from './manager.module.css';
 
 function renderLabel(name: string, tags: string[], isDoc: boolean) {
@@ -39,6 +41,8 @@ function renderLabel(name: string, tags: string[], isDoc: boolean) {
   );
 }
 
+addons.register(BRAND_ADDON_NAME, brandAddon);
+addons.register(THEME_SELECTOR_ADDON_NAME, themeSelectorAddon);
 addons.register(ODS_VERSIONS_ADDON_NAME, odsVersionsAddon);
 addons.register(GITHUB_LINK_ADDON_NAME, githubLinkAddon);
 
@@ -62,5 +66,5 @@ addons.setConfig({
     },
   },
   showToolbar: true,
-  theme,
+  theme: light,
 });

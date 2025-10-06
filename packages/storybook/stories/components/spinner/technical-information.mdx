@@ -1,7 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import SpecificationsSpinner from '../../../../ods-react/src/components/spinner/documentation/spinner.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as SpinnerStories from './spinner.stories';
@@ -16,7 +17,7 @@ import * as SpinnerStories from './spinner.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-![Component anatomy](components/spinner/anatomy-tech.png "Component anatomy")
+<Anatomy src="components/spinner/anatomy-tech.png" />
 
 1. **Spinner**
 
@@ -36,12 +37,12 @@ import * as SpinnerStories from './spinner.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<OdsCanvas of={ SpinnerStories.Default } sourceState="shown" />
+<Canvas of={ SpinnerStories.Default } sourceState="shown" />
 
 <Heading label="Color" level={ 3 } />
 
-<OdsCanvas of={ SpinnerStories.Color } sourceState="shown" />
+<Canvas of={ SpinnerStories.Color } sourceState="shown" />
 
 <Heading label="Size" level={ 3 } />
 
-<OdsCanvas of={ SpinnerStories.Size } sourceState="shown" />
+<Canvas of={ SpinnerStories.Size } sourceState="shown" />

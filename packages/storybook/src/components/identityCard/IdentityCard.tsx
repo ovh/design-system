@@ -1,4 +1,4 @@
-import { Table } from '@storybook/components';
+import { TABLE_VARIANT, Table } from '@ovhcloud/ods-react';
 import React, { type ReactNode, useMemo } from 'react';
 import { ExternalLink } from '../externalLink/ExternalLink';
 import { getPreviousMajorFullVersion } from '../../helpers/version';
@@ -37,7 +37,9 @@ const IdentityCard = ({ aliases, children, figmaLink, githubUrl, name, startingV
         { children || '' }
       </div>
 
-      <Table className={ styles['identity-card__table'] }>
+      <Table
+        className={ styles['identity-card__table'] }
+        variant={ TABLE_VARIANT.striped }>
         <tbody>
         <tr>
           <th scope="row">
@@ -65,20 +67,23 @@ const IdentityCard = ({ aliases, children, figmaLink, githubUrl, name, startingV
           </th>
 
           <td>
-            <ExternalLink className={ styles['identity-card__app-link'] }
-                     href={ figmaLink }>
+            <ExternalLink
+              className={ styles['identity-card__app-link'] }
+              href={ figmaLink }>
               Design
             </ExternalLink>
 
-            <ExternalLink className={ styles['identity-card__app-link'] }
-                     href={ githubUrl }>
+            <ExternalLink
+              className={ styles['identity-card__app-link'] }
+              href={ githubUrl }>
               Github
             </ExternalLink>
 
             {
               previousVersionUrl &&
-              <ExternalLink className={ styles['identity-card__app-link'] }
-                            href={ previousVersionUrl }>
+              <ExternalLink
+                className={ styles['identity-card__app-link'] }
+                href={ previousVersionUrl }>
                 Previous major version
               </ExternalLink>
             }
@@ -90,4 +95,6 @@ const IdentityCard = ({ aliases, children, figmaLink, githubUrl, name, startingV
   );
 };
 
-export { IdentityCard };
+export {
+  IdentityCard,
+};

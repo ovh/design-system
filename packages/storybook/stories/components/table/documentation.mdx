@@ -1,7 +1,9 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as TableStories from './table.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -45,7 +47,7 @@ _A component to display data in a tabular format._
 
 <Heading label="Best Practices in Context" level={ 3 } />
 
-![Component anatomy](components/table/anatomy.png "Component anatomy")
+<Anatomy src="components/table/anatomy.png" />
 
 1. **Table**
 2. **Header cell**

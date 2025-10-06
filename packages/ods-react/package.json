@@ -33,7 +33,7 @@
     "test:spec:ci": "npm run test:spec"
   },
   "dependencies": {
-    "@ark-ui/react": "5.25.0",
+    "@ark-ui/react": "5.25.1",
     "classnames": "2.5.1",
     "libphonenumber-js": "1.12.8"
   },

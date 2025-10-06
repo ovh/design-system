@@ -1,7 +1,7 @@
 import { CARD_COLOR, Card } from '@ovhcloud/ods-react';
-import { Canvas } from '@storybook/blocks';
 import { type ModuleExport } from '@storybook/types';
 import React from 'react';
+import { Canvas } from '../canvas/Canvas';
 import { STORY } from '../../constants/meta';
 import { StorybookLink } from '../storybookLink/StorybookLink';
 import styles from './gallery.module.css';

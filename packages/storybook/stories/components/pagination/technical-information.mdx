@@ -1,7 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import SpecificationsPagination from '../../../../ods-react/src/components/pagination/documentation/pagination.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as PaginationStories from './pagination.stories';
@@ -16,7 +17,7 @@ import * as PaginationStories from './pagination.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-![Component anatomy](components/pagination/anatomy-tech.png "Component anatomy")
+<Anatomy src="components/pagination/anatomy-tech.png" />
 
 1. **Pagination**
 
@@ -36,28 +37,28 @@ import * as PaginationStories from './pagination.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<OdsCanvas of={ PaginationStories.Default } sourceState="shown" />
+<Canvas of={ PaginationStories.Default } sourceState="shown" />
 
 <Heading label="Controlled" level={ 3 } />
 
-<OdsCanvas of={ PaginationStories.Controlled } sourceState="shown" />
+<Canvas of={ PaginationStories.Controlled } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<OdsCanvas of={ PaginationStories.Disabled } sourceState="shown" />
+<Canvas of={ PaginationStories.Disabled } sourceState="shown" />
 
 <Heading label="Items per page" level={ 3 } />
 
-<OdsCanvas of={ PaginationStories.ItemsPerPage } sourceState="shown" />
+<Canvas of={ PaginationStories.ItemsPerPage } sourceState="shown" />
 
 <Heading label="Sibling count" level={ 3 } />
 
-<OdsCanvas of={ PaginationStories.SiblingCount } sourceState="shown" />
+<Canvas of={ PaginationStories.SiblingCount } sourceState="shown" />
 
 <Heading label="With labels" level={ 3 } />
 
-<OdsCanvas of={ PaginationStories.WithLabels } sourceState="shown" />
+<Canvas of={ PaginationStories.WithLabels } sourceState="shown" />
 
 <Heading label="With total items" level={ 3 } />
 
-<OdsCanvas of={ PaginationStories.TotalItems } sourceState="shown" />
+<Canvas of={ PaginationStories.TotalItems } sourceState="shown" />

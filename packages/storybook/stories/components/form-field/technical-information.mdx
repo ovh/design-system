@@ -1,7 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import SpecificationsFormField from '../../../../ods-react/src/components/form-field/documentation/form-field.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -20,7 +21,7 @@ To learn more about **Form Field** usage, please refer to the <StorybookLink tit
 
 <Heading label="Anatomy" level={ 2 } />
 
-![Component anatomy](components/form-field/anatomy-tech.png "Component anatomy")
+<Anatomy src="components/form-field/anatomy-tech.png" />
 
 1. **Form Field**
 2. **Form Field Label**
@@ -61,16 +62,16 @@ To learn more about **Form Field** usage, please refer to the <StorybookLink tit
 
 <Heading label="Default" level={ 3 } />
 
-<OdsCanvas of={ FormFieldStories.Default } sourceState="shown" />
+<Canvas of={ FormFieldStories.Default } sourceState="shown" />
 
 <Heading label="Field label" level={ 3 } />
 
-<OdsCanvas of={ FormFieldStories.Label } sourceState="shown" />
+<Canvas of={ FormFieldStories.Label } sourceState="shown" />
 
 <Heading label="Helper message" level={ 3 } />
 
-<OdsCanvas of={ FormFieldStories.Helper } sourceState="shown" />
+<Canvas of={ FormFieldStories.Helper } sourceState="shown" />
 
 <Heading label="Error message" level={ 3 } />
 
-<OdsCanvas of={ FormFieldStories.Error } sourceState="shown" />
+<Canvas of={ FormFieldStories.Error } sourceState="shown" />

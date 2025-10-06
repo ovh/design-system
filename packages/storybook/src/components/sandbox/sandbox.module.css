@@ -3,7 +3,7 @@
   border: solid var(--ods-border-width-sm) var(--ods-color-primary-500);
   border-radius: var(--ods-border-radius-md);
   overflow: hidden;
-  background-color: #fff;
+  background-color: var(--ods-theme-background-color);
 }
 
 .sandbox-loading {

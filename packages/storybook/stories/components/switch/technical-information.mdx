@@ -1,7 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import SpecificationsSwitch from '../../../../ods-react/src/components/switch/documentation/switch.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as SwitchStories from './switch.stories';
@@ -16,7 +17,7 @@ import * as SwitchStories from './switch.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-![Component anatomy](components/switch/anatomy-tech.png "Component anatomy")
+<Anatomy src="components/switch/anatomy-tech.png" />
 
 1. **Switch**
 2. **Switch Item**
@@ -43,16 +44,16 @@ import * as SwitchStories from './switch.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<OdsCanvas of={ SwitchStories.Default } sourceState="shown" />
+<Canvas of={ SwitchStories.Default } sourceState="shown" />
 
 <Heading label="Checked" level={ 3 } />
 
-<OdsCanvas of={ SwitchStories.Checked } sourceState="shown" />
+<Canvas of={ SwitchStories.Checked } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<OdsCanvas of={ SwitchStories.Disabled } sourceState="shown" />
+<Canvas of={ SwitchStories.Disabled } sourceState="shown" />
 
 <Heading label="Sizes" level={ 3 } />
 
-<OdsCanvas of={ SwitchStories.Sizes } sourceState="shown" />
+<Canvas of={ SwitchStories.Sizes } sourceState="shown" />

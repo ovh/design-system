@@ -1,7 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import SpecificationsPassword from '../../../../ods-react/src/components/password/documentation/password.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -18,7 +19,7 @@ import * as PasswordStories from './password.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-![Component anatomy](components/password/anatomy-tech.png "Component anatomy")
+<Anatomy src="components/password/anatomy-tech.png" />
 
 1. **Password**
 
@@ -38,26 +39,26 @@ import * as PasswordStories from './password.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<OdsCanvas of={ PasswordStories.Default } sourceState="shown" />
+<Canvas of={ PasswordStories.Default } sourceState="shown" />
 
 <Heading label="Disabled" level={ 3 } />
 
-<OdsCanvas of={ PasswordStories.Disabled } sourceState="shown" />
+<Canvas of={ PasswordStories.Disabled } sourceState="shown" />
 
 <Heading label="Readonly" level={ 3 } />
 
-<OdsCanvas of={ PasswordStories.ReadOnly } sourceState="shown" />
+<Canvas of={ PasswordStories.ReadOnly } sourceState="shown" />
 
 <Heading label="Clearable" level={ 3 } />
 
-<OdsCanvas of={ PasswordStories.Clearable } sourceState="shown" />
+<Canvas of={ PasswordStories.Clearable } sourceState="shown" />
 
 <Heading label="Loading" level={ 3 } />
 
-<OdsCanvas of={ PasswordStories.Loading } sourceState="shown" />
+<Canvas of={ PasswordStories.Loading } sourceState="shown" />
 
 <Heading label="Form field" level={ 3 }>
   <StorybookLink title={ HOME_TITLE.handlingFormGuide }>(see handling form guide)</StorybookLink>
 </Heading>
 
-<OdsCanvas of={ PasswordStories.InFormField } sourceState="shown" />
+<Canvas of={ PasswordStories.InFormField } sourceState="shown" />

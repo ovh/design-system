@@ -3,21 +3,20 @@ import React from 'react';
 import { HOME_TITLE } from '../../constants/meta';
 import { ExternalLink } from '../externalLink/ExternalLink';
 import { StorybookLink } from '../storybookLink/StorybookLink';
+import { Brand } from './Brand';
 import styles from './homepage.module.css';
 import imageFile from '../../../assets/ods_bg.png';
 
 const Homepage = () => {
   return (
-    <div className={ styles.homepage }
-         style={{
-           background: `url(${imageFile}) no-repeat center center fixed`,
-           backgroundSize: 'cover',
-         }}>
+    <div
+      className={ styles.homepage }
+      style={{
+        background: `url(${imageFile}) no-repeat center center fixed`,
+        backgroundSize: 'cover',
+      }}>
       <div className={ styles['homepage__content'] }>
-        <img alt="OVHcloud logo"
-             height="64"
-             src="ods_logo.svg"
-             width="640" />
+        <Brand />
 
         <Text preset={ TEXT_PRESET.heading3 }>
           A collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.

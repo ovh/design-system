@@ -1,9 +1,10 @@
 import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as BadgeStories from './badge.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -76,7 +77,7 @@ All product statuses are of type "New", "Limited edition", "Sold out"
 
 <Heading label="Best Practices in Context" level={ 3 } />
 
-![Component anatomy](components/badge/anatomy.png "Component anatomy")
+<Anatomy src="components/badge/anatomy.png" />
 
 1. **Badge**
 2. **Icon** - optional (left or right)
@@ -127,14 +128,14 @@ Their grouping should be made clear to assistive technologies and proper ARIA at
 
 If a **Badge** contains only an icon, it must include an <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> to provide context.
 
-<OdsCanvas of={ BadgeStories.AccessibilityAriaLabel } sourceState="shown" />
+<Canvas of={ BadgeStories.AccessibilityAriaLabel } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the aria-label instead of ignoring the **Badge**.
 
 Since an icon-only **Badge** may lack detailed information, attach a tooltip and use an <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> when extra context is needed:
 
-<OdsCanvas of={ BadgeStories.AccessibilityWithTooltip } sourceState="shown" />
+<Canvas of={ BadgeStories.AccessibilityWithTooltip } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the **Tooltip** content when focusing on the **Badge**.
@@ -143,7 +144,7 @@ Since an icon-only **Badge** may lack detailed information, attach a tooltip and
 
 When displaying multiple **Badges** together, they should be wrapped within an unordered list of items (`<ul>` and `<li>`) to ensure a proper announcement by screen readers.
 
-<OdsCanvas of={ BadgeStories.AccessibilityGrouping } sourceState="shown" />
+<Canvas of={ BadgeStories.AccessibilityGrouping } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This structure ensures that assistive technologies announce **Badges** as a list, rather than reading them as separate, unrelated announcements.
@@ -153,7 +154,7 @@ Screen readers will announce the list, the number of items and the **Badges** co
 
 When modifying the HTML structure is not possible, use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role">role="list"</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role">role="listitem"</ExternalLink> to mimic list semantics.
 
-<OdsCanvas of={ BadgeStories.AccessibilityAlternativeGrouping } sourceState="shown" />
+<Canvas of={ BadgeStories.AccessibilityAlternativeGrouping } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> This ensures that screen readers recognize the **Badges** as a structured list even without native `<ul>` and `<li>` elements.

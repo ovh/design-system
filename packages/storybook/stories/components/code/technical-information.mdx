@@ -1,8 +1,9 @@
 import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
-import { Canvas, Meta, Source } from '@storybook/blocks';
+import { Meta, Source } from '@storybook/blocks';
 import SpecificationsCode from '../../../../ods-react/src/components/code/documentation/code.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
@@ -18,7 +19,7 @@ import * as CodeStories from './code.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-![Component anatomy](components/code/anatomy-tech.png "Component anatomy")
+<Anatomy src="components/code/anatomy-tech.png" />
 
 1. **Code**
 
@@ -81,16 +82,16 @@ const HighlightedCode = () => (
 
 <Heading label="Default" level={ 3 } />
 
-<OdsCanvas of={ CodeStories.Default } sourceState="shown" />
+<Canvas of={ CodeStories.Default } sourceState="shown" />
 
 <Heading label="Multiline" level={ 3 } />
 
-<OdsCanvas of={ CodeStories.Multiline } sourceState="shown" />
+<Canvas of={ CodeStories.Multiline } sourceState="shown" />
 
 <Heading label="With copy button enabled" level={ 3 } />
 
-<OdsCanvas of={ CodeStories.CanCopy } sourceState="shown" />
+<Canvas of={ CodeStories.CanCopy } sourceState="shown" />
 
 <Heading label="Custom labels" level={ 3 } />
 
-<OdsCanvas of={ CodeStories.CustomLabels } sourceState="shown" />
+<Canvas of={ CodeStories.CustomLabels } sourceState="shown" />

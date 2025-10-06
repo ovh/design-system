@@ -1,7 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import SpecificationsModal from '../../../../ods-react/src/components/modal/documentation/modal.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as ModalStories from './modal.stories';
@@ -16,7 +17,7 @@ import * as ModalStories from './modal.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-![Component anatomy](components/modal/anatomy-tech.png "Component anatomy")
+<Anatomy src="components/modal/anatomy-tech.png" />
 
 1. **Modal**
 2. **Modal Content**
@@ -51,28 +52,28 @@ import * as ModalStories from './modal.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<OdsCanvas of={ ModalStories.Default } sourceState="shown" />
+<Canvas of={ ModalStories.Default } sourceState="shown" />
 
 <Heading label="Colors" level={ 3 } />
 
-<OdsCanvas of={ ModalStories.Colors } sourceState="shown" />
+<Canvas of={ ModalStories.Colors } sourceState="shown" />
 
 <Heading label="Controlled" level={ 3 } />
 
-<OdsCanvas of={ ModalStories.Controlled } sourceState="shown" />
+<Canvas of={ ModalStories.Controlled } sourceState="shown" />
 
 <Heading label="Non Dismissible" level={ 3 } />
 
-<OdsCanvas of={ ModalStories.NonDismissible } sourceState="shown" />
+<Canvas of={ ModalStories.NonDismissible } sourceState="shown" />
 
 <Heading label="Non Escapable" level={ 3 } />
 
-<OdsCanvas of={ ModalStories.NonEscapable } sourceState="shown" />
+<Canvas of={ ModalStories.NonEscapable } sourceState="shown" />
 
 <Heading label="Actions" level={ 3 } />
 
-<OdsCanvas of={ ModalStories.Actions } sourceState="shown" />
+<Canvas of={ ModalStories.Actions } sourceState="shown" />
 
 <Heading label="Overlay Elements" level={ 3 } />
 
-<OdsCanvas of={ ModalStories.OverlayElements } sourceState="shown" />
+<Canvas of={ ModalStories.OverlayElements } sourceState="shown" />

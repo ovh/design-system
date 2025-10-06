@@ -1,9 +1,9 @@
 import { Icon, ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as SpinnerStories from './spinner.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -87,7 +87,7 @@ The **Spinner** component does not automatically provide enough context for assi
 
 The **Spinner** itself does not convey the loading state. This responsibility falls on the container where content is being loaded by using  <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy">aria-busy</ExternalLink> and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live">aria-live</ExternalLink>.
 
-<OdsCanvas of={ SpinnerStories.AccessibilityAriaBusyAriaLive } sourceState="shown" />
+<Canvas of={ SpinnerStories.AccessibilityAriaBusyAriaLive } sourceState="shown" />
 
 Explanations:
 - `aria-busy="true"` informs assistive technologies that content is being updated.
@@ -107,12 +107,12 @@ Explanations:
 
 If the **Spinner** is associated with a specific loading action, it should be explicitly labeled using <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> or <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink>.
 
-<OdsCanvas of={ SpinnerStories.AccessibilityAriaLabel } sourceState="shown" />
+<Canvas of={ SpinnerStories.AccessibilityAriaLabel } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the spinner and its current state.
 
-<OdsCanvas of={ SpinnerStories.AccessibilityAriaLabelledBy } sourceState="shown" />
+<Canvas of={ SpinnerStories.AccessibilityAriaLabelledBy } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the spinner and its current state.

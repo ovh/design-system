@@ -7,6 +7,7 @@ import * as prettierPluginEstree from 'prettier/plugins/estree';
 import parser from 'prettier/plugins/typescript';
 import React, { type JSX, useEffect, useRef, useState } from 'react';
 import { Playground } from 'storybook-addon-code-editor';
+import { ResetTheme } from '../resetTheme/ResetTheme';
 import { ORIENTATION, OrientationSwitch } from './actions/OrientationSwitch';
 import { ResetSandbox } from './actions/ResetSandbox';
 import { ShareLink } from './actions/ShareLink';
@@ -87,69 +88,71 @@ const Sandbox = ({ location }: Prop): JSX.Element => {
       styles['sandbox'],
       { [styles['sandbox--fullscreen']]: isFullscreen },
     )}>
-      <div className={ styles['sandbox__menu'] }>
-        <ResetSandbox onConfirm={ onReset } />
+      <ResetTheme>
+        <div className={ styles['sandbox__menu'] }>
+          <ResetSandbox onConfirm={ onReset } />
 
-        <ShareLink
-          editorRef={ editorRef }
-          location={ location } />
+          <ShareLink
+            editorRef={ editorRef }
+            location={ location } />
 
-        <OrientationSwitch
-          onChange={ (value) => setOrientation(value) }
-          orientation={ orientation } />
+          <OrientationSwitch
+            onChange={ (value) => setOrientation(value) }
+            orientation={ orientation } />
 
-        <ODSReact.Button
-          onClick={ onToggleFullscreen }
-          variant={ ODSReact.BUTTON_VARIANT.ghost }>
-          <ODSReact.Icon name={ isFullscreen ? ODSReact.ICON_NAME.shrink : ODSReact.ICON_NAME.resize } />
-        </ODSReact.Button>
-      </div>
+          <ODSReact.Button
+            onClick={ onToggleFullscreen }
+            variant={ ODSReact.BUTTON_VARIANT.ghost }>
+            <ODSReact.Icon name={ isFullscreen ? ODSReact.ICON_NAME.shrink : ODSReact.ICON_NAME.resize } />
+          </ODSReact.Button>
+        </div>
 
-      <Playground
-        availableImports={{
-          '@ovhcloud/ods-react': ODSReact,
-        }}
-        code={ initialCode }
-        Container={ ({ editor, preview }) => (
-          <Splitter.Root
-            className={ styles['sandbox__container'] }
-            orientation={ orientation }
-            panels={ [{ id: 'editor', minSize: 10 }, { id: 'preview', minSize: 10 }] }>
-            <Splitter.Panel id="editor">
-              { editor }
-            </Splitter.Panel>
+        <Playground
+          availableImports={{
+            '@ovhcloud/ods-react': ODSReact,
+          }}
+          code={ initialCode }
+          Container={ ({ editor, preview }) => (
+            <Splitter.Root
+              className={ styles['sandbox__container'] }
+              orientation={ orientation }
+              panels={ [{ id: 'editor', minSize: 10 }, { id: 'preview', minSize: 10 }] }>
+              <Splitter.Panel id="editor">
+                { editor }
+              </Splitter.Panel>
 
-            <Splitter.ResizeTrigger
-              asChild
-              aria-label="Resize"
-              id="editor:preview">
-              <ODSReact.Button
-                className={ classNames(
-                  styles['sandbox__container__resize'],
-                  { [styles['sandbox__container__resize--horizontal']]: orientation === ORIENTATION.horizontal },
-                  { [styles['sandbox__container__resize--vertical']]: orientation === ORIENTATION.vertical },
-                )}
-                color={ ODSReact.BUTTON_COLOR.neutral } />
-            </Splitter.ResizeTrigger>
+              <Splitter.ResizeTrigger
+                asChild
+                aria-label="Resize"
+                id="editor:preview">
+                <ODSReact.Button
+                  className={ classNames(
+                    styles['sandbox__container__resize'],
+                    { [styles['sandbox__container__resize--horizontal']]: orientation === ORIENTATION.horizontal },
+                    { [styles['sandbox__container__resize--vertical']]: orientation === ORIENTATION.vertical },
+                  )}
+                  color={ ODSReact.BUTTON_COLOR.neutral } />
+              </Splitter.ResizeTrigger>
 
-            <Splitter.Panel id="preview">
-              <div className={ styles['sandbox__container__preview'] }>
-                { preview }
-              </div>
-            </Splitter.Panel>
-          </Splitter.Root>
-        )}
-        defaultEditorOptions={{
-          fontFamily: 'Source Code Pro',
-          fontSize: 14,
-          minimap: { enabled: false },
-          padding: { bottom: 8, top: 8 },
-          scrollBeyondLastLine: false,
-        }}
-        modifyEditor={ (monaco, editor) => {
-          monaco.editor.setTheme('vs-dark');
-          editorRef.current = editor;
-        }} />
+              <Splitter.Panel id="preview">
+                <div className={ styles['sandbox__container__preview'] }>
+                  { preview }
+                </div>
+              </Splitter.Panel>
+            </Splitter.Root>
+          )}
+          defaultEditorOptions={{
+            fontFamily: 'Source Code Pro',
+            fontSize: 14,
+            minimap: { enabled: false },
+            padding: { bottom: 8, top: 8 },
+            scrollBeyondLastLine: false,
+          }}
+          modifyEditor={ (monaco, editor) => {
+            monaco.editor.setTheme('vs-dark');
+            editorRef.current = editor;
+          }} />
+      </ResetTheme>
     </div>
   );
 };

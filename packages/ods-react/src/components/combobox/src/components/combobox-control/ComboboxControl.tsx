@@ -91,8 +91,12 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
       return;
     }
 
-    if (!multiple && selection.length) {
-      setInputValue(selection[0].isNewElement ? selection[0].value : selection[0].label);
+    if (!multiple) {
+      if (selection.length) {
+        setInputValue(selection[0].isNewElement ? selection[0].value : selection[0].label);
+      } else {
+        setInputValue('');
+      }
     }
 
     resetTagFocus();

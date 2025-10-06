@@ -34,12 +34,12 @@ const RangeTick: FC<RangeTickProp> = ({
         if (index === 0) {
           setRootPadding((padding) => ({
             ...padding,
-            left: (width / 2) - (THUMB_SIZE / 2),
+            left: Math.max(0, (width / 2) - (THUMB_SIZE / 2)),
           }));
         } else if (isLast) {
           setRootPadding((padding) => ({
             ...padding,
-            right: (width / 2) - (THUMB_SIZE / 2),
+            right: Math.max(0, (width / 2) - (THUMB_SIZE / 2)),
           }));
         }
 

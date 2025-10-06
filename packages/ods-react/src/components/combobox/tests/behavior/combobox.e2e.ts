@@ -29,10 +29,63 @@ async function typeOnInput(page: Page, text: string): Promise<void> {
 }
 
 describe('Combobox behaviour', () => {
+  describe('clearable', () => {
+    describe('uncontrolled', () => {
+      beforeEach(async() => {
+        await gotoStory(page, 'behavior/clearable');
+        await page.waitForSelector('[data-ods="combobox"]');
+      });
+
+      it('should clear the input value', async() => {
+        await typeOnInput(page, 'Value');
+
+        expect(await getInputValue(page)).toBe('Value');
+
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+
+        expect(await getInputValue(page)).toBe('');
+
+        await page.click('body');
+
+        expect(await getInputValue(page)).toBe('');
+      });
+    });
+
+    describe('controlled', () => {
+      beforeEach(async() => {
+        await gotoStory(page, 'behavior/clearable-controlled');
+        await page.waitForSelector('[data-ods="combobox"]');
+      });
+
+      it('should clear the input value', async() => {
+        await typeOnInput(page, 'Value');
+
+        expect(await getInputValue(page)).toBe('Value');
+
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+
+        expect(await getInputValue(page)).toBe('');
+
+        await page.click('body');
+
+        expect(await getInputValue(page)).toBe('');
+      });
+    });
+  });
+
   describe('on blur', () => {
     beforeEach(async() => {
       await gotoStory(page, 'behavior/on-blur');
       await page.waitForSelector('[data-ods="combobox"]');
+    });
+
+    it('should reset the input value to an empty value', async() => {
+      await typeOnInput(page, 'Dummy');
+      await page.keyboard.press('Tab');
+
+      expect(await getInputValue(page)).toBe('');
     });
 
     it('should reset the input value to the current selection', async() => {

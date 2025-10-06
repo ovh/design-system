@@ -33,6 +33,27 @@ const groupedItems = [
   }
 ];
 
+export const Clearable = () => (
+  <Combobox items={ simpleItems }>
+    <ComboboxControl clearable />
+    <ComboboxContent />
+  </Combobox>
+);
+
+export const ClearableControlled = () => {
+  const [values, setValues] = useState<string[]>([]);
+
+  return (
+    <Combobox
+      items={ simpleItems }
+      value={ values }
+      onValueChange={ ({ value }) => setValues(value) }>
+      <ComboboxControl clearable />
+      <ComboboxContent />
+    </Combobox>
+  );
+}
+
 export const Disabled = () => (
   <Combobox
     disabled
@@ -59,8 +80,8 @@ export const Group = () => {
       <div data-testid="group-value">{ values.join(',') }</div>
       <Combobox
         items={ groupedItems }
-        value={ values }
-        onValueChange={ ({ value }) => setValues(value) }>
+        onValueChange={ ({ value }) => setValues(value) }
+        value={ values }>
         <ComboboxControl />
         <ComboboxContent />
       </Combobox>

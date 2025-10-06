@@ -1,0 +1,21 @@
+/* TODO update when ODS component will get an actual dark theme */
+.theme-selector__trigger--dark {
+  --ods-button-background-color-primary-ghost-hover: #f4f5f5;
+  --ods-button-background-color-primary-ghost-active: #dfe1e2;
+  --ods-button-text-color-primary-ghost: #c9cdcf;
+  --ods-button-text-color-primary-ghost-hover: #9ea5a9;
+  --ods-button-text-color-primary-ghost-active: #889196;
+  --ods-theme-outline-color: #fff;
+}
+
+.theme-selector__content {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+}
+
+.theme-selector__content__option {
+  justify-content: start;
+  gap: 8px;
+  width: 100%;
+}

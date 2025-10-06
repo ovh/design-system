@@ -49,7 +49,9 @@ const TokenPreview: React.FC<TokenPreviewProps> = ({ name, type, value }) => {
   };
 
   return (
-    <div className={previewClasses[type] || styles.root} style={stylesMap}>
+    <div
+      className={ previewClasses[type] || styles.root }
+      style={ stylesMap }>
       {type === TokenType.FONT_FAMILY ?
       'Aa'
       : type === TokenType.FORM_ELEMENT ?

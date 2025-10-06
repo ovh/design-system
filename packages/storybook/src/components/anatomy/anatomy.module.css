@@ -1,0 +1,7 @@
+.anatomy {
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 4px;
+  background-color: #fff;
+}

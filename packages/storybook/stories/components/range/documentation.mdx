@@ -1,10 +1,11 @@
 import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
-import { Canvas, Meta } from '@storybook/blocks';
-import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
+import { Meta } from '@storybook/blocks';
 import * as RangeStories from './range.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 
@@ -57,7 +58,7 @@ A dual **Range** allows the user to select a numeric range value that is no less
 
 <Heading label="Best Practices in Context" level={ 3 } />
 
-![Component anatomy](components/range/anatomy.png "Component anatomy")
+<Anatomy src="components/range/anatomy.png" />
 
 1. **Range**
 2. **Track**
@@ -118,7 +119,7 @@ This component complies with the <ExternalLink href="https://www.w3.org/WAI/ARIA
 Every **Range** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
 using either **FormField** or a native label tag.
 
-<OdsCanvas of={ RangeStories.AccessibilityFormField } sourceState="shown" />
+<Canvas of={ RangeStories.AccessibilityFormField } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the value, the slider and its label.
@@ -128,7 +129,7 @@ using either **FormField** or a native label tag.
 Sub-label provide additional context about the values that are selected or adjusted by the user. This sub-label should be vocalized by screen readers.
 Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">aria-labelledby</ExternalLink> to link the sub-label and <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions">aria-live="polite"</ExternalLink> to ensure that the content is vocalized by screen readers.
 
-<OdsCanvas of={ RangeStories.AccessibilityDescriptiveSubLabel } sourceState="shown" />
+<Canvas of={ RangeStories.AccessibilityDescriptiveSubLabel } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the values, the slider and its label.

@@ -1,7 +1,9 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as TreeViewStories from './tree-view.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -27,15 +29,6 @@ import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 The **Tree View** component displays hierarchical data in a parent-child structure. It allows users to expand, collapse, and interact with nested items.
 </IdentityCard>
 
-<Heading label="Anatomy" level={ 2 } />
-
-![Component anatomy](components/tree-view/anatomy.png "Component anatomy")
-
-1. **Tree View**
-2. **Node/item**
-3. **Checkbox (multi-selection)**
-4. **Node/item name**
-
 <Heading label="Usage" level={ 2 } />
 
 The **Tree View** component is used to navigate or manage hierarchical datasets,
@@ -58,17 +51,31 @@ Common use cases include:
   ]}
 />
 
+<Heading label="Best Practices in Context" level={ 3 } />
+
+<Anatomy src="components/tree-view/anatomy.png" />
+
+1. **Tree View**
+2. **Node/item**
+3. **Checkbox (multi-selection)**
+4. **Node/item name**
+
 <Heading label="Behavior" level={ 2 } />
 
 <Heading label="Expand / Collapse" level={ 3 } />
+
 - Items/Nodes can be expanded or collapsed to show or hide their children
 - The Tree View can be rendered with all nodes expanded by default
 - Individual nodes can be configured to start in an expanded state when the Tree View is rendered
 
 <Heading label="Selection" level={ 3 } />
+
 <Heading label="Single Selection" level={ 4 } />
+
 - Clicking a node selects it and deselects any previously selected node
+
 <Heading label="Checkbox tree/multi-selection" level={ 4 } />
+
 - Each node/item has a checkbox for selection
 - Parent checkbox can represent:
   - Checked: all children are selected
@@ -81,7 +88,9 @@ Common use cases include:
 Disabled nodes cannot be selected, expanded, collapsed, or interact with. They are still display in the hierarchy for context.
 
 <Heading label="Navigation" level={ 2 } />
+
 <Heading label="Focus Management" level={ 3 } />
+
 Only one node in the Tree View is focusable at a time.
 
 Focus remains on a single visible node and moves predictably with keyboard navigation.
@@ -89,6 +98,7 @@ Focus remains on a single visible node and moves predictably with keyboard navig
 If a node contains interactive elements (e.g., a checkbox or link), those elements can receive focus.
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
+
 Pressing `Arrow Up / Down` moves focus to the previous or next visible node.
 
 Pressing `Arrow Right`:

@@ -1,7 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import SpecificationsMeter from '../../../../ods-react/src/components/meter/documentation/meter.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as MeterStories from './meter.stories';
@@ -19,7 +20,7 @@ import * as MeterStories from './meter.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-![Component anatomy](components/meter/anatomy-tech.png "Component anatomy")
+<Anatomy src="components/meter/anatomy-tech.png" />
 
 1. **Meter**
 
@@ -29,12 +30,12 @@ import * as MeterStories from './meter.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<OdsCanvas of={ MeterStories.Default } sourceState="shown" />
+<Canvas of={ MeterStories.Default } sourceState="shown" />
 
 <Heading label="Thresholds" level={ 3 } />
 
-<OdsCanvas of={ MeterStories.Thresholds } sourceState="shown" />
+<Canvas of={ MeterStories.Thresholds } sourceState="shown" />
 
 <Heading label="Optimum" level={ 3 } />
 
-<OdsCanvas of={ MeterStories.Optimum } sourceState="shown" />
+<Canvas of={ MeterStories.Optimum } sourceState="shown" />

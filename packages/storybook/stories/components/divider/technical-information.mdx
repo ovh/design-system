@@ -1,7 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import SpecificationsDivider from '../../../../ods-react/src/components/divider/documentation/divider.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as DividerStories from './divider.stories';
@@ -16,7 +17,7 @@ import * as DividerStories from './divider.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-![Component anatomy](components/divider/anatomy-tech.png "Component anatomy")
+<Anatomy src="components/divider/anatomy-tech.png" />
 
 1. **Divider**
 
@@ -36,12 +37,12 @@ import * as DividerStories from './divider.stories';
 
 <Heading label="Default" level={ 3 } />
 
-<OdsCanvas of={ DividerStories.Default } sourceState="shown" />
+<Canvas of={ DividerStories.Default } sourceState="shown" />
 
 <Heading label="Color" level={ 3 } />
 
-<OdsCanvas of={ DividerStories.Color } sourceState="shown" />
+<Canvas of={ DividerStories.Color } sourceState="shown" />
 
 <Heading label="Spacing" level={ 3 } />
 
-<OdsCanvas of={ DividerStories.Spacing } sourceState="shown" />
+<Canvas of={ DividerStories.Spacing } sourceState="shown" />

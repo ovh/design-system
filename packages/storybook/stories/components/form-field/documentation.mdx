@@ -1,9 +1,10 @@
 import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as FormFieldStories from './form-field.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 
@@ -52,7 +53,7 @@ Users will also type or enter information in the expected format and avoid mista
 
 <Heading label="Best Practices in Context" level={ 3 } />
 
-![Component anatomy](components/form-field/anatomy.png "Component anatomy")
+<Anatomy src="components/form-field/anatomy.png" />
 
 1. **Form Field**
 2. **Label** - optional
@@ -82,7 +83,7 @@ Focus behavior and keyboard navigation are determined by the specific form eleme
 
 The **Form Field** component handles by itself the accessibility requirements by using its internal components.
 
-<OdsCanvas of={ FormFieldStories.AccessibilityLabel } sourceState="shown" />
+<Canvas of={ FormFieldStories.AccessibilityLabel } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the field, its content and the helper text.

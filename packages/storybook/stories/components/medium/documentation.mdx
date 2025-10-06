@@ -1,8 +1,8 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as MediumStories from './medium.stories';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 
@@ -60,4 +60,4 @@ The **Medium** component is non-interactive and does not receive keyboard focus.
 Caption is useful to add information about the image itself (ex: copyright),
 whereas the alternative text always describe what the image actually conveys.
 
-<OdsCanvas of={ MediumStories.Caption } sourceState="shown" />
+<Canvas of={ MediumStories.Caption } sourceState="shown" />

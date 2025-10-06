@@ -1,0 +1,8 @@
+.brand {
+  text-align: center;
+  text-decoration: none;
+}
+
+.brand__logo {
+  width: 150px;
+}

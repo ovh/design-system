@@ -6,21 +6,23 @@
 }
 
 .gallery__item {
-  display: flex;
-  flex-flow: column;
-  padding-bottom: .5rem;
+  display: grid;
+  grid-template-rows: 1fr max-content;
+  row-gap: 8px;
+  padding-bottom: 8px;
+  overflow: hidden;
 }
 
 /* increase weight to override default storybook style */
 .gallery .gallery__item__preview {
   margin: 0;
-  flex: 1 1 auto;
   box-shadow: none;
   border: none;
-  border-radius: .5rem;
+  border-radius: 0;
+  height: 100%;
 }
 
 .gallery__item__title {
-  align-self: center;
+  justify-self: center;
   font-size: 1.25rem;
 }

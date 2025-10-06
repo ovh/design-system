@@ -1,6 +1,7 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as {{> ComponentName }}Stories from './{{> component-name }}.stories';
 import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -25,10 +26,6 @@ _**{{> ComponentName }}** TODO some text about the component_
   TODO some text about the component.
 </IdentityCard>
 
-<Heading label="Anatomy" level={ 2 } />
-
-TODO picture
-
 <Heading label="Usage" level={ 2 } />
 
 TODO if relevant
@@ -39,6 +36,12 @@ TODO if relevant
   donts={[]}
   dos={[]}
 />
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+<Anatomy src="components/{{> component-name }}/anatomy.png" />
+
+1. **{{> ComponentName }}**
 
 <Heading label="Placement" level={ 2 } />
 

@@ -103,16 +103,19 @@ const DesignTokens: React.FC = () => {
 
   return (
     <div>
-      {tokenCategories.map((group) => (
-        <section key={ group.name }>
-          <Heading
-          label={ group.name }
-          level={2} />
-          <TokensTable
-          category={ group.name }
-          tokens={ group.tokens } />
-        </section>
-      ))}
+      {
+        tokenCategories.map((group) => (
+          <section key={ group.name }>
+            <Heading
+              label={ group.name }
+              level={2} />
+
+            <TokensTable
+              category={ group.name }
+              tokens={ group.tokens } />
+          </section>
+        ))
+      }
     </div>
   );
 };

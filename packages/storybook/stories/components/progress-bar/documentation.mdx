@@ -1,9 +1,10 @@
 import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import * as ProgressBarStories from './progress-bar.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
-import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
@@ -50,7 +51,7 @@ _A horizontal bar indicating the current completion status of a long-running tas
 
 <Heading label="Best Practices in Context" level={ 3 } />
 
-![Component anatomy](components/progress-bar/anatomy.png "Component anatomy")
+<Anatomy src="components/progress-bar/anatomy.png" />
 
 1. **Progress Bar**
 2. **Track**
@@ -76,7 +77,7 @@ The **Progress Bar** component is non-interactive and does not receive keyboard 
 
 To ensure the **Progress Bar** is correctly recognized, an <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label</ExternalLink> should be added to explicitly identify it.
 
-<OdsCanvas of={ ProgressBarStories.AccessibilityLabel } sourceState="shown" />
+<Canvas of={ ProgressBarStories.AccessibilityLabel } sourceState="shown" />
 
 <Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the label, the value and the progress bar.

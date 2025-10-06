@@ -1,54 +1,47 @@
-import { Table } from '@storybook/components';
-import React from 'react';
-import styles from './tokensTable.module.css';
+import { TABLE_SIZE, Table } from '@ovhcloud/ods-react';
+import React, { type FC, type ReactNode } from 'react';
 
 interface TokenTableProps {
-  category: string;
+  category: string,
   tokens: Array<{
-    name: string;
-    preview: React.ReactNode;
-    value: string;
+    name: string,
+    preview: ReactNode,
+    value: string,
   }>;
 }
 
-const TokensTable: React.FC<TokenTableProps> = ({ tokens }) => {
+const TokensTable: FC<TokenTableProps> = ({ tokens }) => {
   return (
-    <Table className={ styles['tokens-table'] }>
+    <Table size={ TABLE_SIZE.sm }>
       <thead>
-        <tr className={ styles['tokens-table__header__row'] }>
-          <th className={ styles['tokens-table__header__row__header-cell'] }>
+        <tr>
+          <th>
             Token
           </th>
 
-          <th className={ styles['tokens-table__header__row__header-cell'] }>
+          <th>
             Value
           </th>
 
-          <th className={ `${styles['tokens-table__header__row__header-cell']} ${styles['tokens-table__header__row__header-cell--centered']}` }>
+          <th>
             Preview
           </th>
         </tr>
       </thead>
 
-      <tbody className={ styles['tokens-table__body'] }>
+      <tbody>
         {
           tokens.map((token) => (
-            <tr
-              className={ styles['tokens-table__body__row'] }
-              key={ token.name }>
-              <td className={ styles['tokens-table__body__row__cell'] }>
-                <span className={ styles['tokens-table__body__row__cell__name'] }>
-                  { token.name }
-                </span>
+            <tr key={ token.name }>
+              <td>
+                { token.name }
               </td>
 
-              <td className={ styles['tokens-table__body__row__cell'] }>
-                <span className={ styles['tokens-table__body__row__cell__value'] }>
-                  { token.value }
-                </span>
+              <td>
+                { token.value }
               </td>
 
-              <td className={ styles['tokens-table__body__row__preview'] }>
+              <td>
                 { token.preview }
               </td>
             </tr>

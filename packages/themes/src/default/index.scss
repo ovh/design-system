@@ -5,9 +5,7 @@
 @layer ods-quarks, ods-atoms, ods-molecules, ods-organisms;
 
 :root {
-  /*
-   * Color Palettes
-   */
+  // Color Palettes
   --ods-color-alpha: #{var.$ods-color-alpha};
   --ods-color-beta: #{var.$ods-color-beta};
   --ods-color-critical-000: #{var.$ods-color-critical-000};
@@ -90,10 +88,6 @@
   --ods-color-warning-700: #{var.$ods-color-warning-700};
   --ods-color-warning-800: #{var.$ods-color-warning-800};
   --ods-color-warning-900: #{var.$ods-color-warning-900};
-
-  /*
-   * Theme variables
-   */
 
   // Theme colors
   --ods-theme-anchor-text-color: #{var.$ods-color-primary-500};

@@ -9,6 +9,7 @@ type Story = StoryObj<MeterProp>;
 
 const meta: Meta<MeterProp> = {
   component: Meter,
+  tags: ['new'],
   title: 'React Components/Meter',
 };
 

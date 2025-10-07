@@ -5,12 +5,32 @@ export default {
   title: 'Tests rendering',
 };
 
-export const customStyle = () => (
+export const ClearableDefaultValue = () => (
+  <Input
+    clearable
+    defaultValue="Some value"
+    locale="en" />
+);
+
+export const ClearableEmpty = () => (
+  <Input
+    clearable
+    locale="en" />
+);
+
+export const ClearableValue = () => (
+  <Input
+    clearable
+    locale="en"
+    value="Some value" />
+);
+
+export const CustomStyle = () => (
   <Input
     data-testid="custom-style"
     style={{ height: '42px' }} />
 );
 
-export const render = () => (
+export const Render = () => (
   <Input data-testid="render" />
 );

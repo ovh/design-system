@@ -125,8 +125,34 @@ export const Actions = () => (
   </>
 );
 
-export const Clearable = () => {
-  const [inputValue, setInputValue] = useState('');
+export const Clearable = () => (
+  <>
+    <Input clearable />
+
+    <br /><br />
+
+    <Input
+      clearable
+      defaultValue="Some value" />
+
+    <br /><br />
+
+    <Input
+      clearable
+      onChange={ () => {} }
+      value="" />
+
+    <br /><br />
+
+    <Input
+      clearable
+      onChange={ () => {} }
+      value="Some value" />
+  </>
+);
+
+export const ClearableControlled = () => {
+  const [inputValue, setInputValue] = useState('Some value');
 
   return (
     <>

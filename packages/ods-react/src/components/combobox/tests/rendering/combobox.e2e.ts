@@ -7,7 +7,7 @@ async function getInputValue(page: Page): Promise<string> {
 }
 
 async function getItems(page: Page): Promise<ElementHandle[]> {
-  return await page.$$('[role="option"]');
+  return page.$$('[role="option"]');
 }
 
 async function openContent(page: Page): Promise<void> {

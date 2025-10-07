@@ -34,7 +34,7 @@ export const Actions = () => (
   </>
 );
 
-export const Clearable = () => {
+export const ClearableControlled = () => {
   const [inputValue, setInputValue] = useState('');
 
   return (
@@ -42,13 +42,19 @@ export const Clearable = () => {
       clearable
       onChange={ (e: ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
-      } }
+      }}
       onClear={ () => {
         setInputValue('');
-      } }
+      }}
       value={ inputValue } />
   );
 };
+
+export const ClearableDefaultValue = () => (
+  <Password
+    clearable
+    defaultValue="Some value" />
+);
 
 export const ControlledUncontrolled = () => {
   const [controlledValue, setControlledValue] = useState('');
@@ -61,7 +67,7 @@ export const ControlledUncontrolled = () => {
         onChange={ (e: ChangeEvent<HTMLInputElement>) => setControlledValue(e.target.value) }
         onClear={ () => {
           setControlledValue('');
-        } }
+        }}
         value={ controlledValue } />
 
       <br /><br />

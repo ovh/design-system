@@ -30,14 +30,15 @@ const Input: FC<InputProp> = forwardRef(({
   const inputRef = useRef<HTMLInputElement>(null);
   const [hasValue, setHasValue] = useState(isValueDefined(defaultValue) || isValueDefined(value));
   const [isMaskOpen, setIsMaskOpen] = useState(maskOption?.initialState === INPUT_MASK_STATE.open);
-  const isControlled = value !== undefined;
   const isInvalid = invalid || fieldContext?.invalid;
   const inputId = id || fieldContext?.id || defaultId;
 
   useImperativeHandle(ref, () => inputRef.current!, [inputRef]);
 
   useEffect(() => {
-    setHasValue(isValueDefined(value));
+    if (value !== undefined) {
+      setHasValue(isValueDefined(value));
+    }
   }, [value]);
 
   const hasClearButton = useMemo(() => {
@@ -63,7 +64,7 @@ const Input: FC<InputProp> = forwardRef(({
   function onChange(e: ChangeEvent<HTMLInputElement>): void {
     props.onChange && props.onChange(e);
 
-    if (!isControlled) {
+    if (value === undefined) {
       setHasValue(isValueDefined(e.target.value));
     }
   }

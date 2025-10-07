@@ -47,7 +47,7 @@ addons.setConfig({
   sidebar: {
     renderLabel: (item, api) => {
       // Collapsed children are not available, so we have to manually check each child tags
-      if (item.type === 'group') {
+      if (item.type === 'group' || item.type === 'component') {
         const children = item.children || [];
 
         const allTags = children.map((childId) => {

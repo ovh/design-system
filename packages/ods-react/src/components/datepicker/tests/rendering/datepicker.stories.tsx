@@ -5,8 +5,36 @@ export default {
   title: 'Tests rendering',
 };
 
-export const render = () => (
-  <Datepicker data-testid="render">
+export const ClearableDefaultValue = () => (
+  <Datepicker
+    defaultValue={ new Date() }
+    locale="en">
+    <DatepickerControl clearable />
+
+    <DatepickerContent />
+  </Datepicker>
+);
+
+export const ClearableEmpty = () => (
+  <Datepicker locale="en">
+    <DatepickerControl clearable />
+
+    <DatepickerContent />
+  </Datepicker>
+);
+
+export const ClearableValue = () => (
+  <Datepicker
+    locale="en"
+    value={ new Date() }>
+    <DatepickerControl clearable />
+
+    <DatepickerContent />
+  </Datepicker>
+);
+
+export const Render = () => (
+  <Datepicker>
     <DatepickerControl />
 
     <DatepickerContent />

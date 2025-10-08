@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { Quantity, QuantityControl, QuantityInput } from '.';
@@ -49,6 +49,82 @@ export const Disabled = () => (
   </Quantity>
 );
 
+export const Ids = () => (
+  <>
+    <Quantity>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+
+    <Quantity id="toto">
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+
+    <Quantity>
+      <QuantityControl>
+        <QuantityInput id="my-input" />
+      </QuantityControl>
+    </Quantity>
+
+    <Quantity id="toto">
+      <QuantityControl>
+        <QuantityInput id="my-input" />
+      </QuantityControl>
+    </Quantity>
+
+    <FormField>
+      <FormFieldLabel>
+        My quantity:
+      </FormFieldLabel>
+
+      <Quantity>
+        <QuantityControl>
+          <QuantityInput />
+        </QuantityControl>
+      </Quantity>
+    </FormField>
+
+    <FormField>
+      <FormFieldLabel>
+        My quantity:
+      </FormFieldLabel>
+
+      <Quantity id="toto">
+        <QuantityControl>
+          <QuantityInput />
+        </QuantityControl>
+      </Quantity>
+    </FormField>
+
+    <FormField id="my-input1">
+      <FormFieldLabel>
+        My quantity:
+      </FormFieldLabel>
+
+      <Quantity>
+        <QuantityControl>
+          <QuantityInput />
+        </QuantityControl>
+      </Quantity>
+    </FormField>
+
+    <FormField id="my-input2">
+      <FormFieldLabel>
+        My quantity:
+      </FormFieldLabel>
+
+      <Quantity id="toto">
+        <QuantityControl>
+          <QuantityInput />
+        </QuantityControl>
+      </Quantity>
+    </FormField>
+  </>
+);
+
 export const InFormField = () => {
   const [isInvalid, setIsInvalid] = useState(false);
 
@@ -63,7 +139,7 @@ export const InFormField = () => {
           My quantity:
         </FormFieldLabel>
 
-        <Quantity>
+        <Quantity defaultValue="42">
           <QuantityControl>
             <QuantityInput />
           </QuantityControl>
@@ -128,6 +204,22 @@ export const Readonly = () => (
     </QuantityControl>
   </Quantity>
 );
+
+export const Ref = () => {
+  const quantityRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <>
+      <Quantity ref={ quantityRef }>
+        <QuantityControl>
+          <QuantityInput />
+        </QuantityControl>
+      </Quantity>
+
+      <button type="button" onClick={ () => console.log(quantityRef.current) }>Log Ref</button>
+    </>
+  );
+};
 
 export const States = () => (
   <>

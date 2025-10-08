@@ -1,3 +1,4 @@
+import { FormField, FormFieldLabel } from '../../../form-field/src';
 import { Quantity, QuantityControl, QuantityInput } from '../../src';
 
 export default {
@@ -5,18 +6,46 @@ export default {
   title: 'Tests rendering',
 };
 
-export const customStyle = () => (
-  <Quantity
-    data-testid="custom-style"
-    style={{ height: '42px' }}>
+export const CustomStyle = () => (
+  <Quantity style={{ height: '42px' }}>
     <QuantityControl>
       <QuantityInput />
     </QuantityControl>
   </Quantity>
 );
 
-export const render = () => (
-  <Quantity data-testid="render">
+export const IdFormField = () => (
+  <FormField id="form-field-id">
+    <FormFieldLabel>
+      Quantity:
+    </FormFieldLabel>
+
+    <Quantity>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+  </FormField>
+);
+
+export const IdSet = () => (
+  <Quantity>
+    <QuantityControl>
+      <QuantityInput id="input-id" />
+    </QuantityControl>
+  </Quantity>
+);
+
+export const IdUnset = () => (
+  <Quantity>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+);
+
+export const Render = () => (
+  <Quantity>
     <QuantityControl>
       <QuantityInput />
     </QuantityControl>

@@ -1,12 +1,11 @@
 import { DatePicker, useDatePickerContext } from '@ark-ui/react/date-picker';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { type Locale } from '../../../../../utils/locales';
 import { BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { useFormField } from '../../../../form-field/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
-import { Input } from '../../../../input/src';
 import { useDatepicker } from '../../contexts/useDatepicker';
+import { DatepickerInput } from '../datepicker-input/DatepickerInput';
 import style from './datepickerControl.module.scss';
 
 interface DatepickerControlProp extends ComponentPropsWithRef<'input'> {
@@ -27,31 +26,24 @@ const DatepickerControl: FC<DatepickerControlProp> = forwardRef(({
   loading,
   ...props
 }, ref): JSX.Element => {
-  const { i18n, invalid, locale, required } = useDatepicker();
+  const { invalid } = useDatepicker();
   const { getInputProps, open } = useDatePickerContext();
   const fieldContext = useFormField();
   const { disabled, readOnly } = getInputProps();
 
   return (
     <DatePicker.Control className={ classNames(style['datepicker-control'], className) }>
-      <DatePicker.Input
-        asChild
+      <DatepickerInput
         className={ classNames(
           style['datepicker-control__input'],
           { [style['datepicker-control__input--open']]: open },
         )}
+        clearable={ clearable }
         data-ods="datepicker-control"
+        id={ id || fieldContext?.id }
+        loading={ loading }
         ref={ ref }
-        { ...props }>
-        <Input
-          clearable={ clearable }
-          i18n={ i18n }
-          id={ id || fieldContext?.id }
-          invalid={ invalid || fieldContext?.invalid }
-          loading={ loading }
-          locale={ locale as Locale }
-          required={ required } />
-      </DatePicker.Input>
+        { ...props } />
 
       <DatePicker.Trigger asChild>
         <Button

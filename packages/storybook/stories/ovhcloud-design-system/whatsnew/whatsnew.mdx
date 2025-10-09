@@ -9,6 +9,105 @@ import { HOME_TITLE, REACT_COMPONENTS_TITLE, STORY } from '../../../src/constant
 
 <Heading label="What's new ?" level={ 1 } />
 
+<Heading label="v19.2.0" level={ 2 } />
+
+<Heading label="New components:" level={ 3 } />
+
+**Meter**
+
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.meter } story={ STORY.documentation }>See Documentation</StorybookLink>
+
+**TreeView**
+
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.treeView } story={ STORY.documentation }>See Documentation</StorybookLink>
+
+<Heading label="Font changes:" level={ 3 } />
+
+Font files are now accessible as actual files instead of base64 conversion.
+This will reduce the size of the ODS style bundle and allow browser resource loading parallelization.
+
+Thanks to <ExternalLink href="https://github.com/ennoriel">Ennoriel</ExternalLink> for the contribution.
+
+**@ovhcloud/ods-react**
+- Now exposes a css reset file (using `import '@ovhcloud/ods-react/normalize-css';`)
+
+**@ovhcloud/ods-themes**
+- Now exposes css without fonts (using `import '@ovhcloud/ods-themes/default/css';`)
+- Now exposes font-faces separately (using `import '@ovhcloud/ods-themes/default/fonts';`)
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**@ovhcloud/ods-themes**
+- Now exposes design tokens as JSON (using `import '@ovhcloud/ods-themes/default/tokens';`)
+
+**File Upload**
+- Improve i18n default translations.
+
+**Icon**
+- Add 40 new icons.
+
+**Password**
+- Improve i18n default translations.
+
+**Phone Number**
+- Improve i18n default translations.
+
+**Popover**
+- New attribute `autoFocus` has been added.
+- New attribute `gutter` has been added.
+- New attribute `sameWidth` has been added.
+- New attribute `onPositionChange` has been added.
+- New attribute `triggerId` has been added.
+
+**Range**
+- New attribute `displayBounds` has been added.
+- New attribute `displayTooltip` has been added.
+- Ticks now accepts objects with custom labels.
+- Range component size is now correctly computed, it will fit better in the page rendering flow.
+
+**Tabs**
+- New attribute `withArrows` has been added.
+
+**Timepicker**
+- Improve i18n default translations.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Combobox**
+- Has been rewritten internally, but the usage stays the same.
+- Fix selection behavior issues.
+- Add style on selected element.
+- Fix missing style on group separator.
+
+**Input**
+- Clearable now always appears correctly when controlled.
+
+**Quantity**
+- Fix default value stuck when used inside a FormField.
+
+**Range**
+- Update ticks position computation to match thumb size.
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+A new tool has been added to the documentation, the `Code sandbox`.
+This allows users to experiment with the ODS library directly in the storybook.
+You can also share your sandbox code with others. This is especially useful when trying to reproduce some issue you encounter, but in a smaller dedicated context.
+
+- New section `Tools` added to the documentation.
+- A sandbox shortcut has been added to every examples.
+- New dedicated page about Tailwind integration.
+- Add badges when relevant near navigation menu items.
+- Update "Get Started" with fonts changes.
+- Update "Apply ODS Style" with CSS reset.
+- Update GitHub repository contributing page.
+- Update FAQ with contribution information.
+- Multiple typo fixes.
+
+<Heading label="ODS dependencies upgrade:" level={ 3 } />
+
+- ArkUI bumps from `5.12.0` to `5.25.1`.
+
 <Heading label="v19.1.0" level={ 2 } />
 
 <Heading label="Accessibility improvements:" level={ 3 } />

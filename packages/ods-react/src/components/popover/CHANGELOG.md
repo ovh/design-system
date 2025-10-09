@@ -8,6 +8,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.2.0](https://ovh.github.io/design-system/v19.2.0/?path=/docs/design-system-changelog--page) (2025-10-09)
+[compare](https://github.com/ovh/design-system/compare/v19.1.0...v19.2.0)
+
+### Features
+
+* **popover:** add autoFocus, sameWidth and triggerId attributes ([00ccfcf](https://github.com/ovh/design-system/commit/00ccfcf35bb7107cbb54fe8e4faba96a608d975c))
+* **popover:** add gutter attribute ([40ec4a7](https://github.com/ovh/design-system/commit/40ec4a75184a363c320c6af3cbf9dbc603d09aaf))
+* **popover:** add onPositionChange attribute ([b39f3e1](https://github.com/ovh/design-system/commit/b39f3e1381e661f86ff2926d19db733b4466eb3d))
+* **theme:** expose variable font file & normalizer ([10c56cf](https://github.com/ovh/design-system/commit/10c56cfa2da49e473dd78b967513ba7fbe7b7d26))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.1.0](https://ovh.github.io/design-system/v19.1.0/?path=/docs/design-system-changelog--page) (2025-08-08)
 [compare](https://github.com/ovh/design-system/compare/v19.0.1...v19.1.0)
 

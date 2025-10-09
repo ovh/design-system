@@ -8,6 +8,24 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.2.0](https://ovh.github.io/design-system/v19.2.0/?path=/docs/design-system-changelog--page) (2025-10-09)
+[compare](https://github.com/ovh/design-system/compare/v19.1.0...v19.2.0)
+
+### Features
+
+* **tabs:** add arrows display option ([eb701e9](https://github.com/ovh/design-system/commit/eb701e9eec4237a2f4cae05250c46849f4576aa5))
+* **tabs:** add transition on arrow gradients ([fa19246](https://github.com/ovh/design-system/commit/fa1924629761812ac21e2ef16037b2ba1d06b849))
+* **tabs:** move withArrows to root context & add tab scroll on focus ([335470a](https://github.com/ovh/design-system/commit/335470a5676543a60d4faf88487863e5d4894edf))
+* **tabs:** update scroll buttons state on resize ([9b6e4da](https://github.com/ovh/design-system/commit/9b6e4dae4421f3a3c73f5e3d142a5cf86cd53d17))
+* **theme:** expose variable font file & normalizer ([10c56cf](https://github.com/ovh/design-system/commit/10c56cfa2da49e473dd78b967513ba7fbe7b7d26))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.1.0](https://ovh.github.io/design-system/v19.1.0/?path=/docs/design-system-changelog--page) (2025-08-08)
 [compare](https://github.com/ovh/design-system/compare/v19.0.1...v19.1.0)
 

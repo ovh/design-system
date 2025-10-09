@@ -8,6 +8,26 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.2.0](https://ovh.github.io/design-system/v19.2.0/?path=/docs/design-system-changelog--page) (2025-10-09)
+[compare](https://github.com/ovh/design-system/compare/v19.1.0...v19.2.0)
+
+### Bug Fixes
+
+* **icon:** fix inverted name ([ffcdb79](https://github.com/ovh/design-system/commit/ffcdb7919984b292bcef15f03967a055ce9c6165))
+
+
+### Features
+
+* **icon:** add new icons & aliases, fix bbox warning ([552ebe1](https://github.com/ovh/design-system/commit/552ebe15b0f8b395ffb305f9b88b96f62f056972))
+* **theme:** expose variable font file & normalizer ([10c56cf](https://github.com/ovh/design-system/commit/10c56cfa2da49e473dd78b967513ba7fbe7b7d26))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.1.0](https://ovh.github.io/design-system/v19.1.0/?path=/docs/design-system-changelog--page) (2025-08-08)
 [compare](https://github.com/ovh/design-system/compare/v19.0.1...v19.1.0)
 

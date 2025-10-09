@@ -8,6 +8,63 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.2.0](https://ovh.github.io/design-system/v19.2.0/?path=/docs/design-system-changelog--page) (2025-10-09)
+[compare](https://github.com/ovh/design-system/compare/v19.1.0...v19.2.0)
+
+### Bug Fixes
+
+* **build:** prevent declaration file not being generated ([b053f9a](https://github.com/ovh/design-system/commit/b053f9afb3a4793850fdc58d018bb93215b9cbf9))
+* **combobox:** add missing a11y params && update documentation ([466fa9b](https://github.com/ovh/design-system/commit/466fa9b8cc9c969c3fc79c344a65e75dfd103707))
+* **combobox:** init correctly group items with default value(s) ([6139b69](https://github.com/ovh/design-system/commit/6139b69129cfcec07481432649d65cecb05069ff))
+* **combobox:** prevent clearable to reset input value ([1bd460f](https://github.com/ovh/design-system/commit/1bd460fc183c6de4a30662001cbf65f37055e49c))
+* **combobox:** reset control to empty on blur if no selection ([1badc76](https://github.com/ovh/design-system/commit/1badc76abb43555f01124f3cc608b60eb960429b))
+* **datepicker:** use custom input to manage value as expected ([f0f46a8](https://github.com/ovh/design-system/commit/f0f46a8f26b44746d88e6b0d836adcef7bc4e389))
+* **doc:** add meter to gallery ([e00ad84](https://github.com/ovh/design-system/commit/e00ad84800568d231c6a6a31d837a933e0d087af))
+* **doc:** hide persistent monaco editor outline ([3099c8a](https://github.com/ovh/design-system/commit/3099c8afdacee72ef42d4479043bdf85d6e44fad))
+* **doc:** update popover demo controls & examples ([dee2489](https://github.com/ovh/design-system/commit/dee24898044948d644341c906fd655534ee03064))
+* **icon:** fix inverted name ([ffcdb79](https://github.com/ovh/design-system/commit/ffcdb7919984b292bcef15f03967a055ce9c6165))
+* **input:** enforce clearable display on initial render when a value is set ([705c1d3](https://github.com/ovh/design-system/commit/705c1d3607fe895dc239b1be226b0b1fa8745bcd))
+* **input:** update hasValue based on value prop change ([f26cb2d](https://github.com/ovh/design-system/commit/f26cb2da1bf0146017978fb39878e3cb26003807))
+* **quantity:** use correct id on subcomponent input ([6816333](https://github.com/ovh/design-system/commit/6816333f8062d6b26f9f55d4ecb03329d0b81d6a))
+* **range:** prevent negative horizontal paddings ([62e7a2c](https://github.com/ovh/design-system/commit/62e7a2ca726f030540b742f9646d5b7f1286f6e7))
+* **range:** update ticks position computation to match thumb size ([b3f237e](https://github.com/ovh/design-system/commit/b3f237eb98e83cce6769848b4642801bf14dd7c9))
+
+
+### Features
+
+* **combobox:** reset input value to selection on blur ([9f6c748](https://github.com/ovh/design-system/commit/9f6c748798bb9021764cc8900e8ee56e48400c81))
+* **doc:** add badges on sidebar ([63fa238](https://github.com/ovh/design-system/commit/63fa238a26df5b19f2123a8d205a038da9ecfbda))
+* **doc:** add code sandbox ([acdb151](https://github.com/ovh/design-system/commit/acdb15176e3385d7b3d9b167db8c43ba2ce94f27))
+* **doc:** add code sandbox link on each examples ([5c0f980](https://github.com/ovh/design-system/commit/5c0f980db479c7352ad44cfb75329353756f8a1d))
+* **doc:** add new tag on newly added components ([5b84002](https://github.com/ovh/design-system/commit/5b8400255a8b5cf49ba028671fac6dfc23a5e293))
+* **doc:** format code before display in code sandbox ([362661f](https://github.com/ovh/design-system/commit/362661fb7fa20dd1927e657064fca433d2e82378))
+* **fonts:** new default way to load fonts (2 extra exports + fonts) ([f9ed13f](https://github.com/ovh/design-system/commit/f9ed13f597a78c4ef3cfd4dd8e2994901afe6a43))
+* **icon:** add new icons & aliases, fix bbox warning ([552ebe1](https://github.com/ovh/design-system/commit/552ebe15b0f8b395ffb305f9b88b96f62f056972))
+* **meter:** implement component ([54fa446](https://github.com/ovh/design-system/commit/54fa446d7565fce078d6b788a1366c35d9365494))
+* **packages:** bump to ark 5.25.1 ([bbe98cc](https://github.com/ovh/design-system/commit/bbe98cc5cc5e20322495c1e7e3fceccc5582ded1))
+* **popover:** add autoFocus, sameWidth and triggerId attributes ([00ccfcf](https://github.com/ovh/design-system/commit/00ccfcf35bb7107cbb54fe8e4faba96a608d975c))
+* **popover:** add gutter attribute ([40ec4a7](https://github.com/ovh/design-system/commit/40ec4a75184a363c320c6af3cbf9dbc603d09aaf))
+* **popover:** add onPositionChange attribute ([b39f3e1](https://github.com/ovh/design-system/commit/b39f3e1381e661f86ff2926d19db733b4466eb3d))
+* **range:** add custom ticks & correct rect size ([8aff937](https://github.com/ovh/design-system/commit/8aff9371d417647d169d7f6f06c650a479e3e35d))
+* **tabs:** add arrows display option ([eb701e9](https://github.com/ovh/design-system/commit/eb701e9eec4237a2f4cae05250c46849f4576aa5))
+* **tabs:** add transition on arrow gradients ([fa19246](https://github.com/ovh/design-system/commit/fa1924629761812ac21e2ef16037b2ba1d06b849))
+* **tabs:** move withArrows to root context & add tab scroll on focus ([335470a](https://github.com/ovh/design-system/commit/335470a5676543a60d4faf88487863e5d4894edf))
+* **tabs:** update scroll buttons state on resize ([9b6e4da](https://github.com/ovh/design-system/commit/9b6e4dae4421f3a3c73f5e3d142a5cf86cd53d17))
+* **theme:** expose variable font file & normalizer ([10c56cf](https://github.com/ovh/design-system/commit/10c56cfa2da49e473dd78b967513ba7fbe7b7d26))
+* **themes:** export design tokens as JSON ([18a2f7d](https://github.com/ovh/design-system/commit/18a2f7d7166b32aa58a79df415c556f166e17179))
+* **tree-view:** enhance structure, improve typings, and update styles and documentation ([c114f01](https://github.com/ovh/design-system/commit/c114f01d2302192af3a5df7c748a7a0959c2a91f))
+* **tree-view:** implement component ([0953645](https://github.com/ovh/design-system/commit/09536458912880e3332b6f1066d54290f91edae3))
+* **tree-view:** remove redundant name property and update related implementation and tests ([db3feeb](https://github.com/ovh/design-system/commit/db3feeb3519eaefda502a837e3cc342f03f920c5))
+* **tree-view:** remove redundant name property and update related implementation and tests ([7e02f6b](https://github.com/ovh/design-system/commit/7e02f6b60051f42eee4a1545b2610e3b76b606d5))
+* **tree-view:** update typings, enhance callback details, and simplify stories ([7c2d979](https://github.com/ovh/design-system/commit/7c2d97930d2c9b3e1dc25998352e0f0a93132339))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.1.0](https://ovh.github.io/design-system/v19.1.0/?path=/docs/design-system-changelog--page) (2025-08-08)
 [compare](https://github.com/ovh/design-system/compare/v19.0.1...v19.1.0)
 

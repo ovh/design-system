@@ -279,7 +279,7 @@ export const AccessibilityDateFormat: Story = {
       </FormFieldLabel>
 
       <Datepicker>
-        <DatepickerControl />
+        <DatepickerControl placeholder="DD-MM-YYYY" />
 
         <DatepickerContent />
       </Datepicker>

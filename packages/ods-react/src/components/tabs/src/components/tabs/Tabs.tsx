@@ -1,5 +1,5 @@
 import { Tabs as VendorTabs } from '@ark-ui/react/tabs';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect } from 'react';
 import { TabsProvider, type TabsRootProp } from '../../contexts/useTabs';
 
 /**
@@ -16,6 +16,12 @@ const Tabs: FC<TabsProp> = forwardRef(({
   withArrows,
   ...props
 }, ref): JSX.Element => {
+  useEffect(() => {
+    if (!value && !defaultValue) {
+      console.warn('No value or defaultValue provided. Please provide `defaultValue` or a controlled `value`');
+    }
+  }, [value, defaultValue]);
+
   return (
     <TabsProvider withArrows={ withArrows }>
       <VendorTabs.Root

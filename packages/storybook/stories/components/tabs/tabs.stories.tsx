@@ -120,7 +120,7 @@ export const Default: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Tabs>
+    <Tabs defaultValue='tab1'>
       <TabList>
         <Tab value="tab1">Tab 1</Tab>
         <Tab value="tab2">Tab 2</Tab>

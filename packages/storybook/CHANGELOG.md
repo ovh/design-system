@@ -8,6 +8,46 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.2.0](https://ovh.github.io/design-system/v19.2.0/?path=/docs/design-system-changelog--page) (2025-10-09)
+[compare](https://github.com/ovh/design-system/compare/v19.1.0...v19.2.0)
+
+### Bug Fixes
+
+* **combobox:** add missing a11y params && update documentation ([466fa9b](https://github.com/ovh/design-system/commit/466fa9b8cc9c969c3fc79c344a65e75dfd103707))
+* **doc:** add meter to gallery ([e00ad84](https://github.com/ovh/design-system/commit/e00ad84800568d231c6a6a31d837a933e0d087af))
+* **doc:** hide persistent monaco editor outline ([3099c8a](https://github.com/ovh/design-system/commit/3099c8afdacee72ef42d4479043bdf85d6e44fad))
+* **doc:** update popover demo controls & examples ([dee2489](https://github.com/ovh/design-system/commit/dee24898044948d644341c906fd655534ee03064))
+
+
+### Features
+
+* **doc:** add badges on sidebar ([63fa238](https://github.com/ovh/design-system/commit/63fa238a26df5b19f2123a8d205a038da9ecfbda))
+* **doc:** add code sandbox ([acdb151](https://github.com/ovh/design-system/commit/acdb15176e3385d7b3d9b167db8c43ba2ce94f27))
+* **doc:** add code sandbox link on each examples ([5c0f980](https://github.com/ovh/design-system/commit/5c0f980db479c7352ad44cfb75329353756f8a1d))
+* **doc:** add new tag on newly added components ([5b84002](https://github.com/ovh/design-system/commit/5b8400255a8b5cf49ba028671fac6dfc23a5e293))
+* **doc:** format code before display in code sandbox ([362661f](https://github.com/ovh/design-system/commit/362661fb7fa20dd1927e657064fca433d2e82378))
+* **fonts:** new default way to load fonts (2 extra exports + fonts) ([f9ed13f](https://github.com/ovh/design-system/commit/f9ed13f597a78c4ef3cfd4dd8e2994901afe6a43))
+* **icon:** add new icons & aliases, fix bbox warning ([552ebe1](https://github.com/ovh/design-system/commit/552ebe15b0f8b395ffb305f9b88b96f62f056972))
+* **meter:** implement component ([54fa446](https://github.com/ovh/design-system/commit/54fa446d7565fce078d6b788a1366c35d9365494))
+* **packages:** bump to ark 5.25.1 ([bbe98cc](https://github.com/ovh/design-system/commit/bbe98cc5cc5e20322495c1e7e3fceccc5582ded1))
+* **popover:** add gutter attribute ([40ec4a7](https://github.com/ovh/design-system/commit/40ec4a75184a363c320c6af3cbf9dbc603d09aaf))
+* **range:** add custom ticks & correct rect size ([8aff937](https://github.com/ovh/design-system/commit/8aff9371d417647d169d7f6f06c650a479e3e35d))
+* **tabs:** add arrows display option ([eb701e9](https://github.com/ovh/design-system/commit/eb701e9eec4237a2f4cae05250c46849f4576aa5))
+* **tabs:** move withArrows to root context & add tab scroll on focus ([335470a](https://github.com/ovh/design-system/commit/335470a5676543a60d4faf88487863e5d4894edf))
+* **theme:** expose variable font file & normalizer ([10c56cf](https://github.com/ovh/design-system/commit/10c56cfa2da49e473dd78b967513ba7fbe7b7d26))
+* **tree-view:** enhance structure, improve typings, and update styles and documentation ([c114f01](https://github.com/ovh/design-system/commit/c114f01d2302192af3a5df7c748a7a0959c2a91f))
+* **tree-view:** implement component ([0953645](https://github.com/ovh/design-system/commit/09536458912880e3332b6f1066d54290f91edae3))
+* **tree-view:** remove redundant name property and update related implementation and tests ([db3feeb](https://github.com/ovh/design-system/commit/db3feeb3519eaefda502a837e3cc342f03f920c5))
+* **tree-view:** remove redundant name property and update related implementation and tests ([7e02f6b](https://github.com/ovh/design-system/commit/7e02f6b60051f42eee4a1545b2610e3b76b606d5))
+* **tree-view:** update typings, enhance callback details, and simplify stories ([7c2d979](https://github.com/ovh/design-system/commit/7c2d97930d2c9b3e1dc25998352e0f0a93132339))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.1.0](https://ovh.github.io/design-system/v19.1.0/?path=/docs/design-system-changelog--page) (2025-08-08)
 [compare](https://github.com/ovh/design-system/compare/v19.0.1...v19.1.0)
 

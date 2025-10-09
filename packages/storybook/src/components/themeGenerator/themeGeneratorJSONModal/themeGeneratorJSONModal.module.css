@@ -1,0 +1,29 @@
+.theme-generator-json-modal {
+  max-width: 60vw;
+  max-height: 80vh;
+}
+
+.theme-generator-json-modal__textarea {
+  margin: 12px 0;
+  border: 1px solid var(--ods-color-neutral-300);
+  border-radius: var(--ods-border-radius-sm);
+  background-color: #000000;
+  padding: 8px;
+  width: 100%;
+  min-height: 220px;
+  color: #FFFFFF;
+  font-family: var(--ods-font-family-code);
+  font-size: 12px;
+}
+
+.theme-generator-json-modal__actions {
+  display: flex;
+  gap: 8px;
+  justify-content: end;
+}
+
+.theme-generator-json-modal__error {
+  color: var(--ods-color-critical-600);
+}
+
+

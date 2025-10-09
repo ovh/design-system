@@ -297,3 +297,28 @@ export const AccessibilityTooltip: Story = {
     </Tooltip>
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon name={ ICON_NAME.circleQuestion } style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+        <TooltipContent>This is the tooltip content</TooltipContent>
+      </Tooltip>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+        <TooltipContent withArrow>This is the tooltip content</TooltipContent>
+      </Tooltip>
+    </div>
+  ),
+};

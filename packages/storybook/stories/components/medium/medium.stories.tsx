@@ -112,3 +112,18 @@ export const Width: Story = {
       width={ 300 } />
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+      <Medium alt="OVHcloud logo" src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
+      <Medium alt="OVHcloud logo" height={ 20 } src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
+      <Medium alt="OVHcloud logo" width={ 300 } src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
+    </div>
+  ),
+};

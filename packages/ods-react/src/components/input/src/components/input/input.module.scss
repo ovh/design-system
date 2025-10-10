@@ -15,7 +15,15 @@
     &:focus-within {
       &:not(:has(button:focus-within)) {
         @include focus.ods-focus();
+
+        &:not([data-readonly]) {
+          border-color: var(--ods-color-form-element-border-hover-default);
+        }
       }
+    }
+
+    &:hover {
+      border-color: var(--ods-color-form-element-border-hover-default);
     }
 
     &:not([data-disabled])[data-readonly] {

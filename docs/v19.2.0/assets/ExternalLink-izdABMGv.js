@@ -1,0 +1,1 @@
+import{t as n,l as o}from"./ods-react60-CRx7zEey.js";import{y as a}from"./Link-BWQEuWpd-DsrdP0qI.js";import{e}from"./index-jIWwRBLr.js";const m=({children:t,...r})=>e.createElement(a,{...r,target:"_blank"},t," ",e.createElement(n,{name:o.externalLink}));m.__docgenInfo={description:"",methods:[],displayName:"ExternalLink"};export{m as E};

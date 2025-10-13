@@ -1,0 +1,1 @@
+function r(t){const e=[...t.matchAll(/render: \({[\w\s,]*}\) => {?([.\s\S]*)}?\n}$/gm)];return e.length&&e[0].length>=2?e[0][1]:t}function n(){return{format:"dedent",transform:r,type:"code"}}export{r as e,n as s};

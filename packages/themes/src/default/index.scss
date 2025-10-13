@@ -5,6 +5,91 @@
 @layer ods-quarks, ods-atoms, ods-molecules, ods-organisms;
 
 :root {
+  // TODO add z-indexes
+  //  - expose here the base we use
+  //  - expose each component z-index on its own
+
+  // TODO prefix all with --ods-theme-
+
+
+  --ods-theme-background-color: #fff;
+  --ods-theme-text-color: #000;
+  --ods-theme-heading-text-color: #000; // TODO see select multiple merge text
+  --ods-theme-background-color-selected: #000; // TODO see pagination selected page button
+  --ods-theme-border-color-selected: #000; // TODO see pagination selected page button
+  //--ods-theme-background-color-hover: #fff; // ??
+  //--ods-theme-background-color-active: #fff; // ??
+
+  --ods-theme-backdrop-background-color: #fff;
+  --ods-theme-backdrop-opacity: 0;
+
+  // For each color
+  --ods-theme-background-color-default: #fff;
+  --ods-theme-background-color-default-hover: #fff;
+  --ods-theme-background-color-default-active: #fff;
+  //...
+
+  --ods-theme-background-color-critical: #fff;
+  --ods-theme-background-color-critical-hover: #fff;
+  --ods-theme-background-color-critical-active: #fff;
+  --ods-theme-border-color-critical: #fff;
+  --ods-theme-border-color-critical-hover: #fff;
+  --ods-theme-border-color-critical-active: #fff;
+  --ods-theme-text-color-critical: #fff;
+  --ods-theme-background-color-critical-ghost: #fff;
+  --ods-theme-background-color-critical-ghost-hover: #fff;
+  --ods-theme-background-color-critical-ghost-active: #fff;
+  --ods-theme-border-color-critical-ghost: #fff;
+  --ods-theme-border-color-critical-ghost-hover: #fff;
+  --ods-theme-border-color-critical-ghost-active: #fff;
+  --ods-theme-text-color-critical-ghost: #fff;
+  --ods-theme-background-color-critical-outline: #fff;
+  --ods-theme-background-color-critical-outline-hover: #fff;
+  --ods-theme-background-color-critical-outline-active: #fff;
+  --ods-theme-border-color-critical-outline: #fff;
+  --ods-theme-border-color-critical-outline-hover: #fff;
+  --ods-theme-border-color-critical-outline-active: #fff;
+  --ods-theme-text-color-critical-outline: #fff;
+
+  --ods-theme-border-radius: 8px;
+  --ods-theme-border-width: 2px;
+  --ods-theme-padding-horizontal: 8px;
+  --ods-theme-padding-vertical: 8px;
+
+  //  --ods-theme-background-color-disabled
+  //  --ods-theme-border-color-disabled
+  //  --ods-theme-text-color-disabled
+  //  --ods-theme-background-color-readonly
+  //  --ods-theme-border-color-readonly
+  //  --ods-theme-outline-color
+  //  --ods-theme-outline-offset
+  //  --ods-theme-outline-style
+  //  --ods-theme-outline-width
+
+
+
+  --ods-theme-input-border-color: #fff;
+  --ods-theme-input-border-color-hover: #fff;
+  --ods-theme-input-border-color-invalid: #fff;
+  --ods-theme-input-background-color-invalid: #fff;
+  --ods-theme-input-text-color-invalid: #fff;
+  --ods-theme-input-border-radius: 0;
+  --ods-theme-input-border-width: 0;
+  --ods-theme-input-height: 0;
+  --ods-theme-input-padding-horizontal: 0;
+  --ods-theme-input-padding-vertical: 0;
+  --ods-theme-input-text-color: #fff;
+  --ods-theme-input-text-color-checked: #fff;
+  --ods-theme-input-placeholder-text-color: #fff;
+  --ods-theme-input-background-color-checked: #fff;
+  --ods-theme-input-border-color-checked: #fff;
+  --ods-theme-input-overlay-item-background-color-hover: #fff;
+  --ods-theme-input-overlay-item-background-color-selected: #fff;
+  --ods-theme-input-overlay-item-background-color-selected-hover: #fff;
+
+
+
+  // PREV deprecated
   --ods-border-radius-xs: #{var.$ods-border-radius-xs};
   --ods-border-radius-sm: #{var.$ods-border-radius-sm};
   --ods-border-radius-md: #{var.$ods-border-radius-md};

@@ -1,3 +1,10 @@
+// TODO rename to
+//  --ods-theme-background-color-disabled
+//  --ods-theme-border-color-disabled
+//  --ods-theme-text-color-disabled
+//  --ods-theme-background-color-readonly
+//  --ods-theme-border-color-readonly
+
 $ods-state-is-disabled-background-color: var(--ods-color-background-disabled-default);
 $ods-state-is-disabled-border-color: var(--ods-color-border-disabled-default);
 $ods-state-is-disabled-text-color: var(--ods-color-text-disabled-default);

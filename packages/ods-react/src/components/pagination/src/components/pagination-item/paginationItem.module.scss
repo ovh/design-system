@@ -7,8 +7,8 @@ $ods-pagination-button-width: 2.5rem;
 
   &[data-selected] {
     &:not(:disabled) {
-      border-color: var(--ods-color-element-background-selected);
-      background-color: var(--ods-color-element-background-selected);
+      border-color: var(--ods-color-element-background-selected); // --ods-theme-border-color-selected
+      background-color: var(--ods-color-element-background-selected); // --ods-theme-background-color-selected
     }
   }
 }

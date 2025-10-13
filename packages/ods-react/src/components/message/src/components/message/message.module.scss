@@ -2,6 +2,9 @@
 
 @layer ods-molecules {
   .message {
+    // Issues:
+    // - Close color button needs to be overwritten (color: var(--ods-color-neutral-000))
+
     $message: &;
 
     @include message.ods-message();

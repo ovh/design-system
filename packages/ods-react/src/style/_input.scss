@@ -1,7 +1,7 @@
 @use './focus';
 @use './state';
 
-$ods-input-actions-padding-right: 4px;
+$ods-input-actions-padding-right: 4px; // TODO use generic spacing
 $ods-input-field-height: var(--ods-form-element-input-height);
 $ods-input-placeholder-color: var(--ods-color-form-element-text-placeholder-default);
 

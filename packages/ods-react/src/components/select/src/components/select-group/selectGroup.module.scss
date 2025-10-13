@@ -6,9 +6,9 @@
     display: flex;
     align-items: center;
     background-color: inherit;
-    padding: 0 8px;
+    padding: 0 8px; // TODO spacing
     min-height: input.$ods-input-field-height;
-    color: var(--ods-color-heading);
+    color: var(--ods-color-heading); // TODO use new token
     font-size: 1rem;
     font-weight: 600;
 
@@ -17,7 +17,7 @@
     }
 
     &__option {
-      padding-left: 24px;
+      padding-left: 24px; // TODO spacing * 3
     }
   }
 }

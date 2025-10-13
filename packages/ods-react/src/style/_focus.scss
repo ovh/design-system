@@ -1,4 +1,10 @@
 @mixin ods-focus() {
+  // TODO rename to
+  //  --ods-theme-outline-color
+  //  --ods-theme-outline-offset
+  //  --ods-theme-outline-style
+  //  --ods-theme-outline-width
+
   outline: var(--ods-outline-style-default) var(--ods-outline-width) var(--ods-outline-color-default);
   outline-offset: var(--ods-outline-offset);
 }

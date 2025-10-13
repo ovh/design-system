@@ -2,6 +2,8 @@
 @include modal.ods-modal-animation();
 
 @layer ods-molecules {
+  --ods-modal-z-index: 99;
+
   .modal-backdrop {
     @include modal.ods-modal-backdrop();
   }

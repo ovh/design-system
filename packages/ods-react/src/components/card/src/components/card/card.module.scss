@@ -6,7 +6,7 @@
     border-radius: 8px;
 
     &--critical {
-      border-color: var(--ods-color-critical-200);
+      border-color: var(--ods-color-critical-200); // ods-theme-border-color-critical
     }
 
     &--information {

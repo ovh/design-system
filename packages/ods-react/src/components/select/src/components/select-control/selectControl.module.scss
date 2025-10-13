@@ -8,28 +8,28 @@
 
     box-sizing: border-box;
     display: inline-flex;
-    column-gap: 8px;
+    column-gap: 8px; // TODO spacing
     align-items: center;
     justify-content: space-between;
-    border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
-    border-radius: var(--ods-border-radius-sm);
-    background-color: #fff;
+    border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default); // TODO input token
+    border-radius: var(--ods-border-radius-sm); // TODO input token
+    background-color: #fff; // ods-theme-bg
     cursor: pointer;
-    padding: 0 8px;
+    padding: 0 8px; // TODO spacing
     width: 100%;
     min-height: input.$ods-input-field-height;
-    color: var(--ods-color-text);
+    color: var(--ods-color-text); // TODO new token
     font-family: inherit;
     font-size: 1rem;
 
     &:focus {
       @include focus.ods-focus();
 
-      border-color: var(--ods-color-form-element-border-hover-default);
+      border-color: var(--ods-color-form-element-border-hover-default); // TODO input token
     }
 
     &:not([data-disabled], [data-readonly]):hover {
-      border-color: var(--ods-color-form-element-border-hover-default);
+      border-color: var(--ods-color-form-element-border-hover-default); // TODO input token
     }
 
     &:not([data-disabled])[data-readonly] {
@@ -47,7 +47,7 @@
     }
 
     &[data-state="open"] {
-      border-color: var(--ods-color-form-element-border-hover-default);
+      border-color: var(--ods-color-form-element-border-hover-default); // TODO input token
 
       &[data-empty="false"] {
         &[data-placement="bottom-start"] {
@@ -67,7 +67,7 @@
     }
 
     &__icon {
-      color: var(--ods-color-primary-500);
+      color: var(--ods-color-primary-500); // --ods-theme-text-color-ghost
       font-size: 1.25rem;
 
       &[data-state="open"] {
@@ -75,7 +75,7 @@
       }
 
       &--disabled {
-        color: var(--ods-color-neutral-600);
+        color: var(--ods-color-neutral-600); // TODO should be the same as --ods-theme-text-color-ghost-disabled (which is neutral-500)
       }
     }
   }

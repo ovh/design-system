@@ -6,11 +6,20 @@
   .input {
     $input: &;
 
+    --ods-input-border-color: var(--ods-theme-input-border-color);
+    --ods-input-border-color-invalid: var(--ods-theme-input-text-color-invalid);
+    --ods-input-border-radius: var(--ods-theme-input-border-radius); // calc?
+    --ods-input-border-width: var(--ods-theme-input-border-width); // calc?
+    --ods-input-height: var(--ods-theme-input-height);
+    --ods-input-padding-horizontal: var(--ods-theme-input-padding-horizontal);
+    --ods-input-padding-vertical: var(--ods-theme-input-padding-vertical);
+    --ods-input-text-color: var(--ods-theme-input-text-color);
+
     @include input.ods-input();
 
     display: inline-flex;
     flex-flow: row;
-    column-gap: 4px;
+    column-gap: 4px; // TODO spacing
 
     &:focus-within {
       &:not(:has(button:focus-within)) {
@@ -31,7 +40,7 @@
     }
 
     &--with-actions {
-      padding-right: input.$ods-input-actions-padding-right;
+      padding-right: input.$ods-input-actions-padding-right; // TODO spacing
     }
 
     &__field {

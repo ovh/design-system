@@ -9,10 +9,10 @@ $ods-checkbox-size: 16px;
   margin: 0;
   border: solid 1px var(--ods-color-neutral-300);
   border-radius: var(--ods-border-radius-sm);
-  background: var(--ods-color-primary-000);
+  background: var(--ods-color-primary-000);//--ods-theme-background-color
   cursor: pointer;
   width: $ods-checkbox-size;
   height: $ods-checkbox-size;
-  color: var(--ods-color-primary-000);
+  color: var(--ods-color-primary-000); //--ods-theme-input-text-color-checked
   font-size: 0.875rem;
 }

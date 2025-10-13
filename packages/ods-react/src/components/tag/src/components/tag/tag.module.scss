@@ -6,6 +6,27 @@
   .tag {
     $tag: &;
 
+    // TODO TBD normalize gap
+
+    //--ods-tag-border-radius: var(--ods-container-border-radius-lg|big|xl);
+    --ods-tag-border-radius: calc(var(--ods-container-border-radius) * 2);
+    --ods-tag-border-width: var(--ods-container-border-width);
+
+    //--ods-container-background-color-primary-[outline|ghost]
+    --ods-tag-background-color-critical: var(--ods-container-background-color-critical-outline);
+    --ods-tag-background-color-critical-hover: var(--ods-container-background-color-critical-outline-hover);
+    --ods-tag-background-color-critical-active: var(--ods-container-background-color-critical-outline-active);
+    --ods-tag-border-color-critical: var(--ods-container-border-color-critical-outline);
+    --ods-tag-border-color-critical-hover: var(--ods-container-border-color-critical-outline-hover);
+    --ods-tag-border-color-critical-active: var(--ods-container-border-color-critical-outline-active);
+    --ods-tag-text-color-critical: var(--ods-container-text-color-critical-outline);
+    // ... same for each color
+
+    --ods-tag-horizontal-padding: calc(var(--ods-container-padding-horizontal) / 123456789);
+    --ods-tag-vertical-padding: calc(var(--ods-container-padding-vertical) / 123456789);
+
+
+
     @include tag.ods-tag();
 
     &:not(:disabled) {

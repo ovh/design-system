@@ -3,18 +3,18 @@
   box-sizing: border-box;
   display: inline-flex;
   margin: 0;
-  border: 1px solid var(--ods-color-neutral-300);
-  border-radius: 50%;
+  border: 1px solid var(--ods-color-neutral-300); // use --ods-theme-input-....
+  border-radius: 50%; // OK custom
   cursor: pointer;
-  width: 16px;
-  height: 16px;
+  width: 16px; // OK custom (check to share with checkbox)
+  height: 16px; // OK custom (check to share with checkbox)
 
   &::before {
     transform: scale(0);
     transition: 120ms all ease-in-out;
     margin: auto;
     border-radius: 50%;
-    background-color: var(--ods-color-primary-000);
+    background-color: var(--ods-color-primary-000); // use --ods-theme-background-color
     width: 4px;
     height: 4px;
     content: "";

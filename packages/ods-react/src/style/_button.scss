@@ -1,8 +1,8 @@
 @use './focus';
 @use './state';
 
-$ods-button-border-radius-xs: var(--ods-border-radius-xs);
-$ods-button-border-radius-md: var(--ods-border-radius-md);
+$ods-button-border-radius-xs: var(--ods-border-radius-xs); // calc(var(--ods-container-border-radius) / 4);
+$ods-button-border-radius-md: var(--ods-border-radius-md); // calc(var(--ods-container-border-radius) / 2);
 $ods-button-border-radius-width: var(--ods-border-width-sm);
 $ods-button-size-xs: 24px;
 $ods-button-size-sm: 32px;

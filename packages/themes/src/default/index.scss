@@ -5,6 +5,229 @@
 @layer ods-quarks, ods-atoms, ods-molecules, ods-organisms;
 
 :root {
+  // TODO
+  //  -add z-indexes
+  //    - expose here the base we use
+  //    - expose each component z-index on its own
+  //  - update SCSS var to new notation (ex: $ods-color-background-disabled-default) + keep previous as deprecated + update usage in this file
+  --ods-theme-background-color: #fff;
+  --ods-theme-text-color: #{var.$ods-color-text};
+  --ods-theme-heading-text-color: #{var.$ods-color-heading}; // TODO see select multiple merge text
+  --ods-theme-background-color-selected: #{var.$ods-color-element-background-selected}; // TODO see pagination selected page button
+  --ods-theme-border-color-selected: #{var.$ods-color-element-background-selected}; // TODO see pagination selected page button
+  // --ods-theme-background-color-hover: #???; // TODO needed?
+  // --ods-theme-background-color-active: #???; // TODO needed?
+  --ods-theme-backdrop-background-color: #{var.$ods-color-primary-500};
+  --ods-theme-backdrop-opacity: 0;
+  --ods-theme-background-color-disabled: #{var.$ods-color-background-disabled-default};
+  --ods-theme-border-color-disabled: #{var.$ods-color-border-disabled-default};
+  --ods-theme-text-color-disabled: #{var.$ods-color-text-disabled-default};
+  --ods-theme-background-color-readonly: #{var.$ods-color-background-readonly-default};
+  --ods-theme-border-color-readonly: #{var.$ods-color-border-readonly-default};
+  --ods-theme-outline-color: #{var.$ods-outline-color-default};
+  --ods-theme-outline-offset: #{var.$ods-outline-offset};
+  --ods-theme-outline-style: #{var.$ods-outline-style-default};
+  --ods-theme-outline-width: #{var.$ods-outline-width};
+  --ods-theme-border-radius: 8px;
+  --ods-theme-border-width: 2px;
+  --ods-theme-padding-horizontal: 8px;
+  --ods-theme-padding-vertical: 8px;
+
+  // Critical
+  --ods-theme-background-color-critical: #{var.$ods-color-critical-500};
+  --ods-theme-background-color-critical-hover: #{var.$ods-color-critical-700};
+  --ods-theme-background-color-critical-active: #{var.$ods-color-critical-800};
+  --ods-theme-border-color-critical: #{var.$ods-color-critical-500};
+  --ods-theme-border-color-critical-hover: #{var.$ods-color-critical-700};
+  --ods-theme-border-color-critical-active: #{var.$ods-color-critical-800};
+  --ods-theme-text-color-critical: #{var.$ods-color-critical-000};
+  --ods-theme-text-color-critical-hover: #{var.$ods-color-critical-000};
+  --ods-theme-text-color-critical-active: #{var.$ods-color-critical-000};
+  --ods-theme-background-color-critical-ghost: inherit;
+  --ods-theme-background-color-critical-ghost-hover: #{var.$ods-color-critical-100};
+  --ods-theme-background-color-critical-ghost-active: #{var.$ods-color-critical-200};
+  --ods-theme-border-color-critical-ghost: unset;
+  --ods-theme-border-color-critical-ghost-hover: unset;
+  --ods-theme-border-color-critical-ghost-active: unset;
+  --ods-theme-text-color-critical-ghost: #{var.$ods-color-critical-500};
+  --ods-theme-text-color-critical-ghost-hover: #{var.$ods-color-critical-700};
+  --ods-theme-text-color-critical-ghost-active: #{var.$ods-color-critical-800};
+  --ods-theme-background-color-critical-outline: #{var.$ods-color-critical-000};
+  --ods-theme-background-color-critical-outline-hover: #{var.$ods-color-critical-100};
+  --ods-theme-background-color-critical-outline-active: #{var.$ods-color-critical-200};
+  --ods-theme-border-color-critical-outline: #{var.$ods-color-critical-500};
+  --ods-theme-border-color-critical-outline-hover: #{var.$ods-color-critical-700};
+  --ods-theme-border-color-critical-outline-active: #{var.$ods-color-critical-800};
+  --ods-theme-text-color-critical-outline: #{var.$ods-color-critical-500};
+  --ods-theme-text-color-critical-outline-hover: #{var.$ods-color-critical-700};
+  --ods-theme-text-color-critical-outline-active: #{var.$ods-color-critical-800};
+
+  // Information (TODO use a dedicated information color palette)
+  --ods-theme-background-color-information: #{var.$ods-color-information-100};
+  --ods-theme-background-color-information-hover: #{var.$ods-color-information-200};
+  --ods-theme-background-color-information-active: #{var.$ods-color-information-300};
+  --ods-theme-border-color-information: #{var.$ods-color-information-100};
+  --ods-theme-border-color-information-hover: #{var.$ods-color-information-200};
+  --ods-theme-border-color-information-active: #{var.$ods-color-information-300};
+  --ods-theme-text-color-information: #{var.$ods-color-information-700};
+  --ods-theme-text-color-information-hover: #{var.$ods-color-information-700};
+  --ods-theme-text-color-information-active: #{var.$ods-color-information-700};
+  --ods-theme-background-color-information-ghost: inherit;
+  --ods-theme-background-color-information-ghost-hover: #{var.$ods-color-information-100};
+  --ods-theme-background-color-information-ghost-active: #{var.$ods-color-information-200};
+  --ods-theme-border-color-information-ghost: unset;
+  --ods-theme-border-color-information-ghost-hover: unset;
+  --ods-theme-border-color-information-ghost-active: unset;
+  --ods-theme-text-color-information-ghost: #{var.$ods-color-information-500};
+  --ods-theme-text-color-information-ghost-hover: #{var.$ods-color-information-700};
+  --ods-theme-text-color-information-ghost-active: #{var.$ods-color-information-800};
+  --ods-theme-background-color-information-outline: #{var.$ods-color-information-000};
+  --ods-theme-background-color-information-outline-hover: #{var.$ods-color-information-100};
+  --ods-theme-background-color-information-outline-active: #{var.$ods-color-information-200};
+  --ods-theme-border-color-information-outline: #{var.$ods-color-information-500};
+  --ods-theme-border-color-information-outline-hover: #{var.$ods-color-information-700};
+  --ods-theme-border-color-information-outline-active: #{var.$ods-color-information-800};
+  --ods-theme-text-color-information-outline: #{var.$ods-color-information-500};
+  --ods-theme-text-color-information-outline-hover: #{var.$ods-color-information-700};
+  --ods-theme-text-color-information-outline-active: #{var.$ods-color-information-800};
+
+  // Neutral
+  --ods-theme-background-color-neutral: #{var.$ods-color-neutral-600};
+  --ods-theme-background-color-neutral-hover: #{var.$ods-color-neutral-700};
+  --ods-theme-background-color-neutral-active: #{var.$ods-color-neutral-800};
+  --ods-theme-border-color-neutral: #{var.$ods-color-neutral-600};
+  --ods-theme-border-color-neutral-hover: #{var.$ods-color-neutral-700};
+  --ods-theme-border-color-neutral-active: #{var.$ods-color-neutral-800};
+  --ods-theme-text-color-neutral: #{var.$ods-color-neutral-000};
+  --ods-theme-text-color-neutral-hover: #{var.$ods-color-neutral-000};
+  --ods-theme-text-color-neutral-active: #{var.$ods-color-neutral-000};
+  --ods-theme-background-color-neutral-ghost: inherit;
+  --ods-theme-background-color-neutral-ghost-hover: #{var.$ods-color-neutral-100};
+  --ods-theme-background-color-neutral-ghost-active: #{var.$ods-color-neutral-200};
+  --ods-theme-border-color-neutral-ghost: unset;
+  --ods-theme-border-color-neutral-ghost-hover: unset;
+  --ods-theme-border-color-neutral-ghost-active: unset;
+  --ods-theme-text-color-neutral-ghost: #{var.$ods-color-neutral-600};
+  --ods-theme-text-color-neutral-ghost-hover: #{var.$ods-color-neutral-700};
+  --ods-theme-text-color-neutral-ghost-active: #{var.$ods-color-neutral-800};
+  --ods-theme-background-color-neutral-outline: #{var.$ods-color-neutral-000};
+  --ods-theme-background-color-neutral-outline-hover: #{var.$ods-color-neutral-100};
+  --ods-theme-background-color-neutral-outline-active: #{var.$ods-color-neutral-200};
+  --ods-theme-border-color-neutral-outline: #{var.$ods-color-neutral-600};
+  --ods-theme-border-color-neutral-outline-hover: #{var.$ods-color-neutral-700};
+  --ods-theme-border-color-neutral-outline-active: #{var.$ods-color-neutral-800};
+  --ods-theme-text-color-neutral-outline: #{var.$ods-color-neutral-600};
+  --ods-theme-text-color-neutral-outline-hover: #{var.$ods-color-neutral-700};
+  --ods-theme-text-color-neutral-outline-active: #{var.$ods-color-neutral-800};
+
+  // Primary
+  --ods-theme-background-color-primary: #{var.$ods-color-primary-500};
+  --ods-theme-background-color-primary-hover: #{var.$ods-color-primary-700};
+  --ods-theme-background-color-primary-active: #{var.$ods-color-primary-800};
+  --ods-theme-border-color-primary: #{var.$ods-color-primary-500};
+  --ods-theme-border-color-primary-hover: #{var.$ods-color-primary-700};
+  --ods-theme-border-color-primary-active: #{var.$ods-color-primary-800};
+  --ods-theme-text-color-primary: #{var.$ods-color-primary-000};
+  --ods-theme-text-color-primary-hover: #{var.$ods-color-primary-000};
+  --ods-theme-text-color-primary-active: #{var.$ods-color-primary-000};
+  --ods-theme-background-color-primary-ghost: inherit;
+  --ods-theme-background-color-primary-ghost-hover: #{var.$ods-color-primary-100};
+  --ods-theme-background-color-primary-ghost-active: #{var.$ods-color-primary-200};
+  --ods-theme-border-color-primary-ghost: unset;
+  --ods-theme-border-color-primary-ghost-hover: unset;
+  --ods-theme-border-color-primary-ghost-active: unset;
+  --ods-theme-text-color-primary-ghost: #{var.$ods-color-primary-500};
+  --ods-theme-text-color-primary-ghost-hover: #{var.$ods-color-primary-700};
+  --ods-theme-text-color-primary-ghost-active: #{var.$ods-color-primary-800};
+  --ods-theme-background-color-primary-outline: #{var.$ods-color-primary-000};
+  --ods-theme-background-color-primary-outline-hover: #{var.$ods-color-primary-100};
+  --ods-theme-background-color-primary-outline-active: #{var.$ods-color-primary-200};
+  --ods-theme-border-color-primary-outline: #{var.$ods-color-primary-500};
+  --ods-theme-border-color-primary-outline-hover: #{var.$ods-color-primary-700};
+  --ods-theme-border-color-primary-outline-active: #{var.$ods-color-primary-800};
+  --ods-theme-text-color-primary-outline: #{var.$ods-color-primary-500};
+  --ods-theme-text-color-primary-outline-hover: #{var.$ods-color-primary-700};
+  --ods-theme-text-color-primary-outline-active: #{var.$ods-color-primary-800};
+
+  // Success
+  --ods-theme-background-color-success: #{var.$ods-color-success-500};
+  --ods-theme-background-color-success-hover: #{var.$ods-color-success-700};
+  --ods-theme-background-color-success-active: #{var.$ods-color-success-800};
+  --ods-theme-border-color-success: #{var.$ods-color-success-500};
+  --ods-theme-border-color-success-hover: #{var.$ods-color-success-700};
+  --ods-theme-border-color-success-active: #{var.$ods-color-success-800};
+  --ods-theme-text-color-success: #{var.$ods-color-success-000};
+  --ods-theme-text-color-success-hover: #{var.$ods-color-success-000};
+  --ods-theme-text-color-success-active: #{var.$ods-color-success-000};
+  --ods-theme-background-color-success-ghost: inherit;
+  --ods-theme-background-color-success-ghost-hover: #{var.$ods-color-success-100};
+  --ods-theme-background-color-success-ghost-active: #{var.$ods-color-success-200};
+  --ods-theme-border-color-success-ghost: unset;
+  --ods-theme-border-color-success-ghost-hover: unset;
+  --ods-theme-border-color-success-ghost-active: unset;
+  --ods-theme-text-color-success-ghost: #{var.$ods-color-success-500};
+  --ods-theme-text-color-success-ghost-hover: #{var.$ods-color-success-700};
+  --ods-theme-text-color-success-ghost-active: #{var.$ods-color-success-800};
+  --ods-theme-background-color-success-outline: #{var.$ods-color-success-000};
+  --ods-theme-background-color-success-outline-hover: #{var.$ods-color-success-100};
+  --ods-theme-background-color-success-outline-active: #{var.$ods-color-success-200};
+  --ods-theme-border-color-success-outline: #{var.$ods-color-success-500};
+  --ods-theme-border-color-success-outline-hover: #{var.$ods-color-success-700};
+  --ods-theme-border-color-success-outline-active: #{var.$ods-color-success-800};
+  --ods-theme-text-color-success-outline: #{var.$ods-color-success-500};
+  --ods-theme-text-color-success-outline-hover: #{var.$ods-color-success-700};
+  --ods-theme-text-color-success-outline-active: #{var.$ods-color-success-800};
+
+  // Warning
+  --ods-theme-background-color-warning: #{var.$ods-color-warning-400};
+  --ods-theme-background-color-warning-hover: #{var.$ods-color-warning-500};
+  --ods-theme-background-color-warning-active: #{var.$ods-color-warning-600};
+  --ods-theme-border-color-warning: #{var.$ods-color-warning-400};
+  --ods-theme-border-color-warning-hover: #{var.$ods-color-warning-500};
+  --ods-theme-border-color-warning-active: #{var.$ods-color-warning-600};
+  --ods-theme-text-color-warning: #{var.$ods-color-warning-900};
+  --ods-theme-text-color-warning-hover: #{var.$ods-color-warning-900};
+  --ods-theme-text-color-warning-active: #{var.$ods-color-warning-900};
+  --ods-theme-background-color-warning-ghost: inherit;
+  --ods-theme-background-color-warning-ghost-hover: #{var.$ods-color-warning-100};
+  --ods-theme-background-color-warning-ghost-active: #{var.$ods-color-warning-200};
+  --ods-theme-border-color-warning-ghost: unset;
+  --ods-theme-border-color-warning-ghost-hover: unset;
+  --ods-theme-border-color-warning-ghost-active: unset;
+  --ods-theme-text-color-warning-ghost: #{var.$ods-color-warning-700};
+  --ods-theme-text-color-warning-ghost-hover: #{var.$ods-color-warning-800};
+  --ods-theme-text-color-warning-ghost-active: #{var.$ods-color-warning-900};
+  --ods-theme-background-color-warning-outline: #{var.$ods-color-warning-000};
+  --ods-theme-background-color-warning-outline-hover: #{var.$ods-color-warning-100};
+  --ods-theme-background-color-warning-outline-active: #{var.$ods-color-warning-200};
+  --ods-theme-border-color-warning-outline: #{var.$ods-color-warning-700};
+  --ods-theme-border-color-warning-outline-hover: #{var.$ods-color-warning-800};
+  --ods-theme-border-color-warning-outline-active: #{var.$ods-color-warning-900};
+  --ods-theme-text-color-warning-outline: #{var.$ods-color-warning-700};
+  --ods-theme-text-color-warning-outline-hover: #{var.$ods-color-warning-800};
+  --ods-theme-text-color-warning-outline-active: #{var.$ods-color-warning-900};
+
+  // Form elements
+  --ods-theme-input-border-color: #{var.$ods-color-form-element-border-default};;
+  --ods-theme-input-border-color-hover: #{var.$ods-color-form-element-border-hover-default};
+  --ods-theme-input-border-color-invalid: #{var.$ods-color-form-element-border-critical};;
+  // --ods-theme-input-background-color-invalid: #fff; // TODO needed?
+  // --ods-theme-input-text-color-invalid: #fff; // TODO needed?
+  --ods-theme-input-border-radius: calc(var(--ods-theme-border-radius) / 2);
+  --ods-theme-input-border-width: calc(var(--ods-theme-border-width) / 2);
+  --ods-theme-input-height: #{var.$ods-form-element-input-height};
+  --ods-theme-input-padding-horizontal: calc(var(--ods-theme-padding-horizontal) / 2);
+  --ods-theme-input-padding-vertical: var(--ods-theme-padding-vertical);
+  // --ods-theme-input-text-color: #fff; // TODO needed?
+  --ods-theme-input-text-color-checked: var(--ods-theme-background-color);
+  --ods-theme-input-placeholder-text-color: #{var.$ods-color-form-element-text-placeholder-default};
+  --ods-theme-input-background-color-checked: #{var.$ods-color-primary-500};
+  --ods-theme-input-border-color-checked: #{var.$ods-color-primary-500};
+  --ods-theme-input-overlay-item-background-color-hover: #{var.$ods-color-primary-100};
+  --ods-theme-input-overlay-item-background-color-selected: #{var.$ods-color-primary-050};
+  --ods-theme-input-overlay-item-background-color-selected-hover: #{var.$ods-color-primary-100};
+
+  // Deprecated
   --ods-border-radius-xs: #{var.$ods-border-radius-xs};
   --ods-border-radius-sm: #{var.$ods-border-radius-sm};
   --ods-border-radius-md: #{var.$ods-border-radius-md};

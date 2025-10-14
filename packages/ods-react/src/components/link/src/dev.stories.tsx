@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { forwardRef, useRef } from 'react';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Link } from '.';
 import style from './dev.module.css';
@@ -90,6 +90,25 @@ export const Ref = () => {
   return (
     <>
       <Link href="#" ref={ linkRef }>
+        My link
+      </Link>
+      <br />
+      <button onClick={ () => console.log(linkRef.current) }>Log ref</button>
+    </>
+  );
+};
+
+const DummyLink = forwardRef(({ children, ...props }: any, ref) => {
+  return (
+    <a data-test="dummy" { ...props } ref={ ref }>{ children }</a>
+  );
+});
+export const RefAs = () => {
+  const linkRef = useRef(null);
+
+  return (
+    <>
+      <Link as={ DummyLink } href="#" ref={ linkRef }>
         My link
       </Link>
       <br />

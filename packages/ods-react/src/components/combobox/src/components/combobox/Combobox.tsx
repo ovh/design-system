@@ -11,6 +11,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   allowCustomValue = true,
   children,
   className,
+  customFilter,
   customOptionRenderer,
   defaultValue,
   disabled,
@@ -36,6 +37,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   return (
     <ComboboxProvider
       allowCustomValue={ allowCustomValue }
+      customFilter={ customFilter }
       customOptionRenderer={ customOptionRenderer }
       defaultValue={ defaultValue }
       disabled={ disabled }

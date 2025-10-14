@@ -156,6 +156,22 @@ export const Controlled = () => {
   );
 }
 
+export const CustomFilter = () => (
+  <>
+    <span>Search from right to left in each word</span>
+
+    <Combobox
+      customFilter={ (label, inputValue) => {
+        const reversedLabel = label.split('').reverse().join('');
+        return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
+      }}
+      items={ items }>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+  </>
+);
+
 export const CustomOptionRenderer = () => {
   type MyData = {
     description?: string,
@@ -599,6 +615,23 @@ export const MultipleClearable = () => (
       onValueChange={ (v) => console.log(`[DEV]: value:`, v) }
       readOnly>
       <ComboboxControl clearable />
+      <ComboboxContent />
+    </Combobox>
+  </>
+);
+
+export const MultipleCustomFilter = () => (
+  <>
+    <span>Search from right to left in each word</span>
+
+    <Combobox
+      customFilter={ (label, inputValue) => {
+        const reversedLabel = label.split('').reverse().join('');
+        return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
+      }}
+      items={ items }
+      multiple>
+      <ComboboxControl />
       <ComboboxContent />
     </Combobox>
   </>

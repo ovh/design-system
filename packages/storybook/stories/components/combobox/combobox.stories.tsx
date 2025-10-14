@@ -197,6 +197,32 @@ export const Clearable: Story = {
   ),
 };
 
+export const CustomFilter: Story = {
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Combobox
+      customFilter={ (label, inputValue) => {
+        const reversedLabel = label.split('').reverse().join('');
+        return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
+      }}
+      items={[
+        { label: 'Dog', value: 'dog' },
+        { label: 'Cat', value: 'cat' },
+        { label: 'Hamster', value: 'hamster' },
+        { label: 'Parrot', value: 'parrot' },
+        { label: 'Spider', value: 'spider' },
+        { label: 'Goldfish', value: 'goldfish' },
+      ]}>
+      <ComboboxControl placeholder="Search from right to left in each word" />
+
+      <ComboboxContent />
+    </Combobox>
+  ),
+};
+
 export const Disabled: Story = {
   globals: {
     imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,

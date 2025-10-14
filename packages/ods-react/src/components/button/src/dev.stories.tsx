@@ -1,4 +1,4 @@
-import { BUTTON_COLORS, BUTTON_VARIANTS, Button } from '.';
+import { BUTTON_COLORS, BUTTON_SIZES, BUTTON_VARIANTS, Button } from '.';
 import style from './dev.module.css';
 
 export default {
@@ -52,3 +52,18 @@ export const Accessibility = () => (
     Accessibility
   </Button>
 )
+
+export const Sizes = () => (
+  <div style={{ display: 'flex', flexFlow: 'row', columnGap: '16px' }}>
+    {
+      BUTTON_SIZES.map((size) => (
+        <Button
+          style={{ alignSelf: 'center' }}
+          key={ size }
+          size={ size }>
+          Button - { size }
+        </Button>
+      ))
+    }
+  </div>
+);

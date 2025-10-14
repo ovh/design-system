@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { forwardRef, useRef } from 'react';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '.';
 import style from './dev.module.css';
 
@@ -169,6 +169,35 @@ export const Ref = () => {
 
         <BreadcrumbItem>
           <BreadcrumbLink href="#">Link 3</BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
+
+      <button onClick={ () => console.log(linkRef.current) }>Log link ref</button>
+    </>
+  );
+};
+
+const DummyLink = forwardRef(({ children, ...props }: any, ref) => {
+  return (
+    <a data-test="dummy" { ...props } ref={ ref }>{ children }</a>
+  );
+});
+export const RefAs = () => {
+  const linkRef = useRef(null);
+
+  return (
+    <>
+      <Breadcrumb>
+        <BreadcrumbItem>
+          <BreadcrumbLink as={ DummyLink } href="#" ref={ linkRef }>Link 1</BreadcrumbLink>
+        </BreadcrumbItem>
+
+        <BreadcrumbItem>
+          <BreadcrumbLink as={ DummyLink } href="#">Link 2</BreadcrumbLink>
+        </BreadcrumbItem>
+
+        <BreadcrumbItem>
+          <BreadcrumbLink as={ DummyLink } href="#">Link 3</BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
 

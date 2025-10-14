@@ -1,3 +1,4 @@
+import { Code } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
 import { ExternalLink } from '../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../src/components/heading/Heading';
@@ -105,3 +106,38 @@ Replace the `Fragment` with an actual node:
 
 Ensure you did import the fonts in your application, check the <StorybookLink title={ HOME_TITLE.getStarted }>get started</StorybookLink>
 page to read more about how to achieve this.
+
+<Heading label="Warning: Function components cannot be given refs" level={ 2 } />
+
+When using components enabling dynamic component (through the `as` attribute), you may encounter the following error message in the console:
+
+<Code>
+Warning: Function components cannot be given refs.
+Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+</Code>
+
+This means you're passing a function component to the `as` attribute and it needs to be wrapped by a `forwardRef` to be able to manage the `ref` correctly.
+
+<Source code={`
+import { Link } from '@ovhcloud/ods-react';
+import { forwardRef, useRef } from 'react';
+
+const DummyLink = forwardRef(({ children, ...props }, ref) => {
+  return (
+    <a data-test="dummy" { ...props } ref={ ref }>{ children }</a>
+  );
+});
+
+const MyApp = () => {
+  const linkRef = useRef(null);
+
+  return (
+    <div>
+      ...
+      <Link as={ DummyLink } href="#" ref={ linkRef }>...</Link>
+    </div>
+  );
+};
+`}
+        dark="true"
+        language="tsx" />

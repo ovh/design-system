@@ -72,6 +72,19 @@ export const Filtering = () => (
   </Combobox>
 );
 
+export const FilteringCustom = () => (
+  <Combobox
+    allowCustomValue={ false }
+    customFilter={ (label, inputValue) => {
+      const reversedLabel = label.split('').reverse().join('');
+      return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
+    }}
+    items={ simpleItems }>
+    <ComboboxControl clearable />
+    <ComboboxContent />
+  </Combobox>
+);
+
 export const Group = () => {
   const [values, setValues] = useState<string[]>([]);
 

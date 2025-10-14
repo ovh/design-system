@@ -40,6 +40,10 @@ type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'defaultValue' | 'onS
    */
   allowCustomValue?: boolean,
   /**
+   * Custom filter logic to apply to each item.
+   */
+  customFilter?: (label: string, query: string) => boolean,
+  /**
    * Custom render for each option item.
    */
   customOptionRenderer?: (item: ComboboxItem) => JSX.Element,
@@ -142,6 +146,7 @@ const ComboboxContext = createContext<ComboboxContextType | undefined>(undefined
 const ComboboxProvider = ({
   allowCustomValue,
   children,
+  customFilter,
   defaultValue,
   disabled,
   items,
@@ -158,8 +163,10 @@ const ComboboxProvider = ({
   const defaultSelection = useMemo(() => getDefaultSelection(items, defaultValue || value), []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const { contains } = useFilter({ sensitivity: 'base' });
-  // Strangely, useFilter does update on each render, so we memoize it to avoid useEffect issue.
-  const filterFn = useCallback(contains, []); // eslint-disable-line react-hooks/exhaustive-deps
+  // useFilter seems to update on each render, so we memoize it to avoid useEffect issue.
+  const filterFn = useCallback((label: string, query: string) => {
+    return customFilter ? customFilter(label, query) : contains(label, query);
+  }, [customFilter]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const controlId = useId();
   const inputRef = useRef<HTMLInputElement>(null);

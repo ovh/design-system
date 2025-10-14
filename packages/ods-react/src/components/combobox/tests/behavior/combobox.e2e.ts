@@ -118,31 +118,62 @@ describe('Combobox behaviour', () => {
   });
 
   describe('filtering', () => {
-    beforeEach(async() => {
-      await gotoStory(page, 'behavior/filtering');
-      await page.waitForSelector('[data-ods="combobox"]');
+    describe('default', () => {
+      beforeEach(async() => {
+        await gotoStory(page, 'behavior/filtering');
+        await page.waitForSelector('[data-ods="combobox"]');
+      });
+
+      it('should filter items based on input value', async() => {
+        await openContent(page);
+
+        expect((await getItems(page)).length).toBe(4);
+
+        await typeOnInput(page, 'ba');
+
+        expect((await getItems(page)).length).toBe(1);
+      });
+
+      it('should show all items when input is cleared', async() => {
+        await typeOnInput(page, 'ba');
+
+        expect((await getItems(page)).length).toBe(1);
+
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await openContent(page);
+
+        expect((await getItems(page)).length).toBe(4);
+      });
     });
 
-    it('should filter items based on input value', async() => {
-      await openContent(page);
+    describe('custom', () => {
+      beforeEach(async() => {
+        await gotoStory(page, 'behavior/filtering-custom');
+        await page.waitForSelector('[data-ods="combobox"]');
+      });
 
-      expect((await getItems(page)).length).toBe(4);
+      it('should filter items based on input value', async() => {
+        await openContent(page);
 
-      await typeOnInput(page, 'ba');
+        expect((await getItems(page)).length).toBe(4);
 
-      expect((await getItems(page)).length).toBe(1);
-    });
+        await typeOnInput(page, 'yrr');
 
-    it('should show all items when input is cleared', async() => {
-      await typeOnInput(page, 'ba');
+        expect((await getItems(page)).length).toBe(1);
+      });
 
-      expect((await getItems(page)).length).toBe(1);
+      it('should show all items when input is cleared', async() => {
+        await typeOnInput(page, 'yrr');
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await openContent(page);
+        expect((await getItems(page)).length).toBe(1);
 
-      expect((await getItems(page)).length).toBe(4);
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+        await openContent(page);
+
+        expect((await getItems(page)).length).toBe(4);
+      });
     });
   });
 

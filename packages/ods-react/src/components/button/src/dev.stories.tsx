@@ -1,4 +1,4 @@
-import { BUTTON_COLORS, BUTTON_SIZES, BUTTON_VARIANTS, Button } from '.';
+import { BUTTON_COLOR, BUTTON_COLORS, BUTTON_SIZES, BUTTON_VARIANTS, Button } from '.';
 import style from './dev.module.css';
 
 export default {
@@ -30,9 +30,21 @@ export const Colors = () => (
 );
 
 export const CustomStyle = () => (
-  <Button className={ style['custom-button'] }>
-    Custom Styled Button
-  </Button>
+  <>
+    <Button className={ style['custom-button'] }>
+      Custom Styled Button
+    </Button>
+
+    <br /><br />
+    <Button color={ BUTTON_COLOR.critical }>
+      Normal critical
+    </Button>
+    <Button
+      className={ style['custom-button-critical'] }
+      color={ BUTTON_COLOR.critical }>
+      Overridden critical
+    </Button>
+  </>
 );
 
 export const Default = () => (
@@ -54,15 +66,24 @@ export const Accessibility = () => (
 )
 
 export const Sizes = () => (
-  <div style={{ display: 'flex', flexFlow: 'row', columnGap: '16px' }}>
+  <div style={{ display: 'flex', flexFlow: 'column', rowGap: '16px' }}>
     {
-      BUTTON_SIZES.map((size) => (
-        <Button
-          style={{ alignSelf: 'center' }}
-          key={ size }
-          size={ size }>
-          Button - { size }
-        </Button>
+      BUTTON_VARIANTS.map((variant) => (
+        <div
+          key={ variant }
+          style={{ display: 'flex', flexFlow: 'row', columnGap: '8px' }}>
+          {
+            BUTTON_SIZES.map((size) => (
+              <Button
+                style={{ alignSelf: 'center' }}
+                key={ size }
+                size={ size }
+                variant={ variant }>
+                { variant } - { size }
+              </Button>
+            ))
+          }
+        </div>
       ))
     }
   </div>

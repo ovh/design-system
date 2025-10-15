@@ -1,2 +1,6 @@
-$ods-accordion-border-size: 1px;
-$ods-accordion-padding: 24px;
+@layer ods-atoms {
+  .accordion {
+    --ods-accordion-border-width: 1px;
+    --ods-accordion-padding: 24px;
+  }
+}

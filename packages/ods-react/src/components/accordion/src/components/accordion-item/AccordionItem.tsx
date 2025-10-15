@@ -23,13 +23,12 @@ const AccordionItem: FC<AccordionItemProp> = forwardRef(({
 }, ref): JSX.Element => {
   return (
     <Accordion.Item
-      className={ classNames(style[ 'accordion-item' ], className) }
+      className={ classNames(style['accordion-item'], className) }
       data-ods="accordion-item"
       disabled={ disabled }
       ref={ ref }
       value={ value }
-      { ...props }
-    >
+      { ...props }>
       { children }
     </Accordion.Item>
   );

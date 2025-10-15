@@ -1,8 +1,8 @@
-$ods-state-is-disabled-background-color: var(--ods-color-background-disabled-default);
-$ods-state-is-disabled-border-color: var(--ods-color-border-disabled-default);
-$ods-state-is-disabled-text-color: var(--ods-color-text-disabled-default);
-$ods-state-is-readonly-background-color: var(--ods-color-background-readonly-default);
-$ods-state-is-readonly-border-color: var(--ods-color-border-readonly-default);
+$ods-state-is-disabled-background-color: var(--ods-theme-background-color-disabled);
+$ods-state-is-disabled-border-color: var(--ods-theme-border-color-disabled);
+$ods-state-is-disabled-text-color: var(--ods-theme-text-color-disabled);
+$ods-state-is-readonly-background-color: var(--ods-theme-background-color-readonly);
+$ods-state-is-readonly-border-color: var(--ods-theme-border-color-readonly);
 
 @mixin ods-is-disabled() {
   border-color: $ods-state-is-disabled-border-color;

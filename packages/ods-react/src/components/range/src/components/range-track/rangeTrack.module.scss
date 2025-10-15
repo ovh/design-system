@@ -10,7 +10,7 @@
       @include range.ods-range-track(true);
 
       &[data-disabled] {
-        background-color: var(--ods-color-neutral-500);
+        background-color: var(--ods-theme-track-background-color-disabled);
       }
     }
   }

@@ -2,7 +2,7 @@
   .phone-number-country-option {
     display: grid;
     grid-template-columns: max-content 1fr;
-    column-gap: 8px;
+    column-gap: var(--ods-theme-column-gap);
     white-space: nowrap;
   }
 }

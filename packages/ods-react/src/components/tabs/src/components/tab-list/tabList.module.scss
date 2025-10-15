@@ -5,6 +5,8 @@ $tab-list-border-bottom-size: 2px;
 
 @layer ods-molecules {
   .tab-list {
+    --ods-tab-list-border-color: var(--ods-color-neutral-100);
+
     display: flex;
     position: relative;
     align-items: baseline;
@@ -71,7 +73,7 @@ $tab-list-border-bottom-size: 2px;
         right: 0;
         bottom: 0;
         left: 0;
-        border-bottom: solid $tab-list-border-bottom-size var(--ods-color-neutral-100);
+        border-bottom: solid $tab-list-border-bottom-size var(--ods-tab-list-border-color);
         content: '';
       }
 

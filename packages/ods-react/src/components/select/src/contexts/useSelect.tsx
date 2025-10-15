@@ -20,6 +20,7 @@ type SelectGroupItem<T extends CustomData = CustomData> = {
 type SelectItem<T extends CustomData = CustomData> = SelectGroupItem<T> | SelectOptionItem<T>;
 
 type SelectContextType = {
+  invalid?: boolean,
   items: SelectItem[],
   multiple: SelectMultipleMode,
   readOnly?: boolean,
@@ -46,13 +47,15 @@ interface SelectProviderProp extends SelectContextType {
 }
 
 const SelectContext = createContext<SelectContextType>({
+  invalid: false,
   items: [],
   multiple: false,
 });
 
-function SelectProvider({ children, items, multiple, readOnly }: SelectProviderProp): JSX.Element {
+function SelectProvider({ children, invalid, items, multiple, readOnly }: SelectProviderProp): JSX.Element {
   return (
     <SelectContext.Provider value={{
+      invalid,
       items,
       multiple,
       readOnly,

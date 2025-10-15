@@ -4,7 +4,7 @@ $spacings: 0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 64;
   .divider {
     transform: scaleY(1);
     border: none;
-    background-color: var(--ods-color-neutral-100);
+    background-color: var(--ods-theme-split-background-color);
     height: 1px;
 
     // [Deprecated] will be removed in next major version
@@ -14,7 +14,7 @@ $spacings: 0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 64;
 
     // [Deprecated] will be removed in next major version
     &--primary {
-      background-color: var(--ods-color-neutral-100);
+      background-color: var(--ods-theme-split-background-color);
     }
 
     @each $spacing in $spacings {

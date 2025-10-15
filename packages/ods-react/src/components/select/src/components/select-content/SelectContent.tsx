@@ -30,13 +30,17 @@ const SelectContent: FC<SelectContentProp> = forwardRef(({
   customOptionRenderer,
   ...props
 }, ref): JSX.Element => {
-  const { items } = useSelect();
+  const { invalid, items } = useSelect();
 
   return (
     <Portal disabled={ !createPortal }>
       <Select.Positioner>
         <Select.Content
-          className={ classNames(style['select-content'], className) }
+          className={ classNames(
+            style['select-content'],
+            { [style['select-content--invalid']]: invalid },
+            className,
+          )}
           data-empty={ items.length === 0 }
           data-ods="select-content"
           ref={ ref }

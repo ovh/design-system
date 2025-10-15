@@ -1,12 +1,10 @@
-@use '../file-upload/fileUpload.module';
-
 @layer ods-organisms {
   .file-upload-list {
     margin: 0;
     padding: 0;
 
     &--not-empty {
-      padding-bottom: fileUpload.$ods-file-upload-padding;
+      padding-bottom: var(--ods-file-upload-padding-vertical);
     }
   }
 }

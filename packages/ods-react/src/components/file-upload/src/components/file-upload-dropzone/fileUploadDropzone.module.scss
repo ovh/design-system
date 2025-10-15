@@ -1,5 +1,4 @@
 @use '../../../../../style/state';
-@use '../file-upload/fileUpload.module';
 
 @layer ods-organisms {
   .file-upload-dropzone {
@@ -7,9 +6,9 @@
 
     display: flex;
     flex-flow: column;
-    row-gap: fileUpload.$ods-file-upload-spacing;
+    row-gap: var(--ods-theme-row-gap);
     align-items: center;
-    padding: fileUpload.$ods-file-upload-padding fileUpload.$ods-file-upload-padding 0;
+    padding: var(--ods-file-upload-padding-vertical) var(--ods-file-upload-padding-horizontal) 0;
 
     &--disabled {
       #{$dropzone}__icon {
@@ -18,15 +17,15 @@
     }
 
     &--dragging {
-      background-color: var(--ods-color-primary-100);
+      background-color: var(--ods-theme-background-color-drag-over);
     }
 
     &--empty {
-      padding: fileUpload.$ods-file-upload-padding;
+      padding: var(--ods-file-upload-padding-vertical) var(--ods-file-upload-padding-horizontal);
     }
 
     &__icon {
-      color: var(--ods-color-primary-500);
+      color: var(--ods-theme-primary-color);
       font-size: 2rem;
     }
 
@@ -40,8 +39,8 @@
     &__error {
       display: flex;
       flex-flow: column;
-      row-gap: fileUpload.$ods-file-upload-spacing;
-      color: var(--ods-color-critical-500);
+      row-gap: var(--ods-theme-row-gap);
+      color: var(--ods-theme-input-text-color-invalid);
       font-size: 0.75rem;
       font-weight: 600;
 

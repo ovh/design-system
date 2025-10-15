@@ -45,4 +45,8 @@ const PaginationPageSizeSelector: FC<PaginationPageSizeSelectorProp> = ({
   );
 };
 
-export { PaginationPageSizeSelector, type PaginationPageSizeSelectorProp, type PaginationTotalItemsLabelRenderer };
+export {
+  PaginationPageSizeSelector,
+  type PaginationPageSizeSelectorProp,
+  type PaginationTotalItemsLabelRenderer,
+};

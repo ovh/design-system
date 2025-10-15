@@ -1,5 +1,8 @@
 @layer ods-organisms {
   .combobox-content {
+    --ods-combobox-group-option-padding-horizontal: calc(var(--ods-theme-input-padding-horizontal) * 3);
+    --ods-combobox-option-new-column-gap: calc(var(--ods-theme-column-gap) / 2);
+
     box-sizing: border-box;
     margin: 0;
     border: 1px solid var(--ods-color-form-element-border-hover-default);
@@ -7,6 +10,10 @@
     padding: 0;
     max-height: 400px;
     overflow: auto;
+
+    &--invalid {
+      border-color: var(--ods-theme-input-border-color-invalid);
+    }
 
     &--open-bottom {
       border-radius: 0 0 var(--ods-border-radius-sm) var(--ods-border-radius-sm);

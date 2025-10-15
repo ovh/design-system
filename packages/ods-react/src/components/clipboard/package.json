@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-clipboard",
-  "version": "19.2.0",
+  "version": "19.2.1",
   "private": true,
   "description": "ODS React Clipboard component",
   "type": "module",

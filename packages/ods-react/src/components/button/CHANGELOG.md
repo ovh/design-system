@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.2.1](https://ovh.github.io/design-system/v19.2.1/?path=/docs/design-system-changelog--page) (2025-10-15)
+[compare](https://github.com/ovh/design-system/compare/v19.2.0...v19.2.1)
+
+### Bug Fixes
+
+* **button:** use correct border-radius for sm size ([e3809b0](https://github.com/ovh/design-system/commit/e3809b03d2d53eddb7b1763558b4748ceadeadf4))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.2.0](https://ovh.github.io/design-system/v19.2.0/?path=/docs/design-system-changelog--page) (2025-10-09)
 [compare](https://github.com/ovh/design-system/compare/v19.1.0...v19.2.0)
 

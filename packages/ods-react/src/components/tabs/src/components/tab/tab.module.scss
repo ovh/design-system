@@ -5,6 +5,7 @@
 @layer ods-molecules {
   .tab {
     display: block;
+    z-index: 1;
     border-top: none;
     border-right: none;
     border-bottom: solid tab-list.$tab-list-border-bottom-size var(--ods-color-neutral-100);
@@ -24,7 +25,7 @@
     &:focus-visible {
       @include focus.ods-focus();
 
-      z-index: 1;
+      z-index: 2;
       outline-offset: calc(var(--ods-outline-offset) * -1);
     }
 

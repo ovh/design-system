@@ -32,7 +32,11 @@ const config: StorybookConfig = {
     ${head}
     <link rel="stylesheet" type="text/css" href="css/preview.css" />
   `,
-  staticDirs: ['../assets', ...getCodeEditorStaticDirs(__filename)],
+  staticDirs: [
+    '../assets',
+    { from: '../../themes/dist', to: '/themes' },
+    ...getCodeEditorStaticDirs(__filename)
+  ],
   stories: [
     '../stories/**/*.mdx',
     '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',

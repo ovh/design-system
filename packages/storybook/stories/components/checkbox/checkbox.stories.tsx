@@ -214,3 +214,47 @@ export const States: Story = {
     </>
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexFlow: 'column', gap: '12px' }}>
+      <div style={{ display: 'flex', flexFlow: 'row', gap: '16px', alignItems: 'center' }}>
+        <Checkbox>
+          <CheckboxControl />
+          <CheckboxLabel>Unchecked</CheckboxLabel>
+        </Checkbox>
+        <Checkbox disabled>
+          <CheckboxControl />
+          <CheckboxLabel>Unchecked disabled</CheckboxLabel>
+        </Checkbox>
+      </div>
+
+      <div style={{ display: 'flex', flexFlow: 'row', gap: '16px', alignItems: 'center' }}>
+        <Checkbox checked>
+          <CheckboxControl />
+          <CheckboxLabel>Checked</CheckboxLabel>
+        </Checkbox>
+        <Checkbox checked disabled>
+          <CheckboxControl />
+          <CheckboxLabel>Checked disabled</CheckboxLabel>
+        </Checkbox>
+      </div>
+
+      <div style={{ display: 'flex', flexFlow: 'row', gap: '16px', alignItems: 'center' }}>
+        <Checkbox checked="indeterminate">
+          <CheckboxControl />
+          <CheckboxLabel>Indeterminate</CheckboxLabel>
+        </Checkbox>
+        <Checkbox checked="indeterminate" disabled>
+          <CheckboxControl />
+          <CheckboxLabel>Indeterminate disabled</CheckboxLabel>
+        </Checkbox>
+      </div>
+    </div>
+  ),
+};

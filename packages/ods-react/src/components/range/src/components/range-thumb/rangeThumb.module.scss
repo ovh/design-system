@@ -10,8 +10,7 @@
     &:not([data-disabled]) {
       &:hover,
       &[data-focus] {
-        border-color: var(--ods-color-primary-200);
-        background-color: var(--ods-color-primary-200);
+        border-color: var(--ods-theme-input-border-color-hover);
       }
     }
 
@@ -21,20 +20,16 @@
     }
 
     &[data-disabled] {
-      background-color: var(--ods-color-background-disabled-default);
+      background-color: var(--ods-theme-background-color-disabled);
       cursor: not-allowed;
     }
 
-    &[data-dragging] {
-      background-color: var(--ods-color-primary-200);
-    }
-
     &#{$thumb}--invalid {
-      border-color: var(--ods-color-form-element-border-critical);
+      border-color: var(--ods-theme-input-border-color-invalid);
 
       &:hover,
       &[data-focus] {
-        border-color: var(--ods-color-form-element-border-critical);
+        border-color: var(--ods-theme-input-border-color-invalid);
       }
     }
   }

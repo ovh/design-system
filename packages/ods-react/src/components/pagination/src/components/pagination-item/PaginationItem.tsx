@@ -18,17 +18,23 @@ const PaginationItem: FC<PaginationItemProp> = ({
 }): JSX.Element => {
   const { page: currentPage } = usePaginationContext();
 
-  return <VendorPagination.Item
-    type={ 'page' }
-    asChild
-    className={ style[ 'pagination__item' ] }
-    key={ index } { ...page }>
-    <Button
-      disabled={ disabled }
-      variant={ currentPage === page.value ? BUTTON_VARIANT.default : BUTTON_VARIANT.ghost }>
-      { page.value }
-    </Button>
-  </VendorPagination.Item>;
+  return (
+    <VendorPagination.Item
+      asChild
+      className={ style['pagination-item'] }
+      key={ index }
+      type="page"
+      { ...page }>
+      <Button
+        disabled={ disabled }
+        variant={ currentPage === page.value ? BUTTON_VARIANT.default : BUTTON_VARIANT.ghost }>
+        { page.value }
+      </Button>
+    </VendorPagination.Item>
+  );
 };
 
-export { PaginationItem, type PaginationItemProp };
+export {
+  PaginationItem,
+  type PaginationItemProp,
+};

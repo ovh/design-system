@@ -26,6 +26,7 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
     filteredItems,
     highlightedOptionValue,
     isOpen,
+    invalid,
     noResultLabel,
     setContentId,
     setContentPosition,
@@ -53,6 +54,7 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
       <PopoverContent
         className={ classNames(
           style['combobox-content'],
+          { [style['combobox-content--invalid']]: invalid },
           { [style['combobox-content--open-bottom']]: contentPosition === POPOVER_POSITION.bottom },
           { [style['combobox-content--open-top']]: contentPosition === POPOVER_POSITION.top },
           className,

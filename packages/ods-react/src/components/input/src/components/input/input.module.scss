@@ -10,20 +10,20 @@
 
     display: inline-flex;
     flex-flow: row;
-    column-gap: 4px;
+    column-gap: calc(var(--ods-theme-column-gap) / 2);
 
     &:focus-within {
       &:not(:has(button:focus-within)) {
         @include focus.ods-focus();
 
         &:not([data-readonly]) {
-          border-color: var(--ods-color-form-element-border-hover-default);
+          border-color: var(--ods-theme-input-border-color-hover);
         }
       }
     }
 
     &:hover {
-      border-color: var(--ods-color-form-element-border-hover-default);
+      border-color: var(--ods-theme-input-border-color-hover);
     }
 
     &:not([data-disabled])[data-readonly] {

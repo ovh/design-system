@@ -1,29 +1,47 @@
 @use './breakpoint';
 @use './overlay';
 
-$ods-modal-border-radius: var(--ods-border-radius-sm);
+$ods-modal-border-radius: calc(var(--ods-theme-border-radius) / 2);
 $ods-modal-header-height: 32px;
-$ods-modal-margin: 16px;
+$ods-modal-margin: 16px; // [Deprecated] will be removed in next major version
+$ods-modal-margin-horizontal: calc(var(--ods-theme-padding-horizontal) * 2);
+$ods-modal-margin-vertical: calc(var(--ods-theme-padding-vertical) * 2);
 $ods-modal-size: 512px;
 $ods-modal-z-index: overlay.$ods-overlay-modal-z-index;
 
 @mixin ods-modal() {
+  --ods-modal-border-radius: #{$ods-modal-border-radius};
+  --ods-modal-header-height: #{$ods-modal-header-height};
+  --ods-modal-header-background-color-critical: var(--ods-color-critical-075);
+  --ods-modal-header-background-color-information: var(--ods-color-information-075);
+  --ods-modal-header-background-color-neutral: var(--ods-color-neutral-075);
+  --ods-modal-header-background-color-primary: var(--ods-color-primary-500);
+  --ods-modal-header-background-color-success: var(--ods-color-success-075);
+  --ods-modal-header-background-color-warning: var(--ods-color-warning-075);
+  --ods-modal-header-padding-horizontal: calc(var(--ods-theme-padding-horizontal) / 2);
+  --ods-modal-header-padding-vertical: calc(var(--ods-theme-padding-vertical) / 2);
+  --ods-modal-margin-horizontal: #{$ods-modal-margin-horizontal};
+  --ods-modal-margin-vertical: #{$ods-modal-margin-vertical};
+  --ods-modal-mobile-max-height: #{$ods-modal-size};
+  --ods-modal-mobile-max-width: #{$ods-modal-size};
+  --ods-modal-z-index: #{$ods-modal-z-index};
+
   display: flex;
   flex-direction: column;
-  margin: auto $ods-modal-margin;
+  margin: auto var(--ods-modal-margin-horizontal);
   border: none;
-  border-radius: $ods-modal-border-radius;
-  background: var(--ods-color-neutral-000);
+  border-radius: var(--ods-modal-border-radius);
+  background: var(--ods-theme-background-color);
   width: 100%;
   min-width: 320px;
-  max-width: calc(100% - ($ods-modal-margin * 2));
+  max-width: calc(100% - (var(--ods-modal-margin-horizontal) * 2));
   min-height: 100px;
-  max-height: calc(100% - ($ods-modal-margin * 2));
+  max-height: calc(100% - (var(--ods-modal-margin-vertical) * 2));
 
   @media screen and (width >= (breakpoint.$ods-breakpoint-mobile)) {
     margin: auto;
-    max-width: $ods-modal-size;
-    max-height: $ods-modal-size;
+    max-width: var(--ods-modal-mobile-max-width);
+    max-height: var(--ods-modal-mobile-max-height);
   }
 }
 
@@ -56,31 +74,31 @@ $ods-modal-z-index: overlay.$ods-overlay-modal-z-index;
 @mixin ods-modal-backdrop() {
   position: fixed;
   inset: 0;
-  opacity: 0.75;
-  z-index: $ods-modal-z-index - 1;
-  background-color: var(--ods-color-primary-500);
+  opacity: var(--ods-theme-backdrop-opacity);
+  z-index: var(--ods-modal-z-index) - 1;
+  background-color: var(--ods-theme-backdrop-background-color);
 }
 
 @mixin ods-modal-body() {
-  border-bottom-left-radius: $ods-modal-border-radius;
-  border-bottom-right-radius: $ods-modal-border-radius;
+  border-bottom-left-radius: var(--ods-modal-border-radius);
+  border-bottom-right-radius: var(--ods-modal-border-radius);
   padding: 24px;
   overflow-y: auto;
 }
 
 @mixin ods-modal-color($color) {
   @if $color == 'critical' {
-    background-color: var(--ods-color-critical-075);
+    background-color: var(--ods-modal-header-background-color-critical);
   } @else if $color == 'information' {
-    background-color: var(--ods-color-information-075);
+    background-color: var(--ods-modal-header-background-color-information);
   } @else if $color == 'neutral' {
-    background-color: var(--ods-color-neutral-075);
+    background-color: var(--ods-modal-header-background-color-neutral);
   } @else if $color == 'primary' {
-    background-color: var(--ods-color-primary-500);
+    background-color: var(--ods-modal-header-background-color-primary);
   } @else if $color == 'success' {
-    background-color: var(--ods-color-success-075);
+    background-color: var(--ods-modal-header-background-color-success);
   } @else if $color == 'warning' {
-    background-color: var(--ods-color-warning-075);
+    background-color: var(--ods-modal-header-background-color-warning);
   }
 }
 
@@ -90,9 +108,9 @@ $ods-modal-z-index: overlay.$ods-overlay-modal-z-index;
   flex-shrink: 0;
   align-items: center;
   justify-content: flex-end;
-  border-top-left-radius: $ods-modal-border-radius;
-  border-top-right-radius: $ods-modal-border-radius;
-  padding: 4px;
-  height: $ods-modal-header-height;
+  border-top-left-radius: var(--ods-modal-border-radius);
+  border-top-right-radius: var(--ods-modal-border-radius);
+  padding: var(--ods-modal-header-padding-vertical) var(--ods-modal-header-padding-horizontal);
+  height: var(--ods-modal-header-height);
   overflow: hidden;
 }

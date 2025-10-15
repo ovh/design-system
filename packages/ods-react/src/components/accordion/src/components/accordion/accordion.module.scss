@@ -1,2 +1,8 @@
-$ods-accordion-border-size: 1px;
-$ods-accordion-padding: 24px;
+@layer ods-atoms {
+  .accordion {
+    --ods-accordion-border-color: var(--ods-color-neutral-200);
+    --ods-accordion-border-color-hover: var(--ods-color-neutral-500);
+    --ods-accordion-border-width: 1px;
+    --ods-accordion-padding: 24px;
+  }
+}

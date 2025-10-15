@@ -19,14 +19,14 @@
 
     &__label-on {
       left: 2px;
-      color: var(--ods-color-neutral-000);
+      color: var(--ods-toggle-control-label-on-text-color);
 
       &--checked {
         display: flex;
       }
 
       &--disabled {
-        color: var(--ods-color-text-disabled-default);
+        color: var(--ods-theme-text-color-disabled);
       }
     }
 
@@ -34,18 +34,14 @@
       $label-off: &;
 
       right: 2px;
-      color: var(--ods-color-neutral-700);
+      color: var(--ods-toggle-control-label-off-text-color);
 
       &--unchecked {
         display: flex;
       }
 
-      &--focused:not(#{$label-off}--disabled) {
-        color: var(--ods-color-neutral-800);
-      }
-
       &--disabled {
-        color: var(--ods-color-text-disabled-default);
+        color: var(--ods-theme-text-color-disabled);
       }
     }
   }

@@ -8,28 +8,28 @@
 
     box-sizing: border-box;
     display: inline-flex;
-    column-gap: 8px;
+    column-gap: var(--ods-theme-column-gap);
     align-items: center;
     justify-content: space-between;
-    border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
-    border-radius: var(--ods-border-radius-sm);
-    background-color: #fff;
+    border: var(--ods-theme-input-border-width) solid var(--ods-theme-input-border-color);
+    border-radius: var(--ods-theme-input-border-radius);
+    background-color: var(--ods-theme-background-color);
     cursor: pointer;
-    padding: 0 8px;
+    padding: 0 var(--ods-theme-input-padding-horizontal);
     width: 100%;
     min-height: input.$ods-input-field-height;
-    color: var(--ods-color-text);
+    color: var(--ods-theme-input-text-color);
     font-family: inherit;
     font-size: 1rem;
 
     &:focus {
       @include focus.ods-focus();
 
-      border-color: var(--ods-color-form-element-border-hover-default);
+      border-color: var(--ods-theme-input-border-color-hover);
     }
 
     &:not([data-disabled], [data-readonly]):hover {
-      border-color: var(--ods-color-form-element-border-hover-default);
+      border-color: var(--ods-theme-input-border-color-hover);
     }
 
     &:not([data-disabled])[data-readonly] {
@@ -47,7 +47,7 @@
     }
 
     &[data-state="open"] {
-      border-color: var(--ods-color-form-element-border-hover-default);
+      border-color: var(--ods-theme-input-border-color-hover);
 
       &[data-empty="false"] {
         &[data-placement="bottom-start"] {
@@ -67,7 +67,7 @@
     }
 
     &__icon {
-      color: var(--ods-color-primary-500);
+      color: var(--ods-theme-primary-color);
       font-size: 1.25rem;
 
       &[data-state="open"] {
@@ -75,7 +75,7 @@
       }
 
       &--disabled {
-        color: var(--ods-color-neutral-600);
+        color: var(--ods-theme-text-color-disabled);
       }
     }
   }

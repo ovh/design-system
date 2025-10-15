@@ -1,6 +1,4 @@
 @use '../../../../../style/focus';
-@use '../../../../../style/state';
-@use "../accordion/accordion.module";
 
 @layer ods-atoms {
   .accordion-trigger {
@@ -8,12 +6,12 @@
 
     display: grid;
     grid-template-columns: 1fr max-content;
-    column-gap: accordion.$ods-accordion-padding;
+    column-gap: var(--ods-accordion-padding);
     align-items: center;
-    border: accordion.$ods-accordion-border-size solid transparent;
+    border: solid var(--ods-accordion-border-width) transparent;
     background: transparent;
     cursor: pointer;
-    padding: accordion.$ods-accordion-padding;
+    padding: var(--ods-accordion-padding);
     text-align: left;
     font-family: inherit;
     font-size: inherit;
@@ -27,14 +25,14 @@
         @include focus.ods-focus();
       }
 
-      &[data-state='open'] {
+      &[data-state="open"] {
         #{$trigger}__icon {
           transform: rotate(180deg);
         }
       }
 
       #{$trigger}__icon {
-        color: var(--ods-color-primary-500);
+        color: var(--ods-theme-primary-color);
         font-size: 1.25rem;
       }
     }

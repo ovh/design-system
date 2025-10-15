@@ -73,5 +73,6 @@ const TreeViewNodeItem: FC<TreeViewNodeItemProp> = forwardRef(({
   );
 });
 
-export { TreeViewNodeItem };
-
+export {
+  TreeViewNodeItem,
+};

@@ -25,8 +25,8 @@ const SelectOption: FC<SelectOptionProp> = ({
         { [style['select-option--multiple']]: !!multiple },
         className,
       )}
-      key={ item.value }
-      item={ item }>
+      item={ item }
+      key={ item.value }>
       {
         !!multiple &&
         <Select.ItemIndicator asChild>

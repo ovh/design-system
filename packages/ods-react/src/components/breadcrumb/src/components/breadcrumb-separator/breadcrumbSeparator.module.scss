@@ -1,10 +1,8 @@
-@use '../breadcrumb/breadcrumb.module';
-
 @layer ods-molecules {
   .breadcrumb-separator {
     &::after {
-      padding: 0 breadcrumb.$breadcrumb-spacing;
-      color: var(--ods-color-text);
+      padding: 0 var(--ods-theme-padding-horizontal);
+      color: var(--ods-theme-text-color);
       font-weight: 700;
       content: '|';
     }

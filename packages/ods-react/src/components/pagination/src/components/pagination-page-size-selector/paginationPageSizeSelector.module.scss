@@ -1,12 +1,12 @@
 @layer molecules {
   .pagination-page-size-selector {
     display: flex;
-    gap: 8px;
+    gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
     align-items: center;
 
     &__label {
       margin: 0;
-      color: var(--ods-color-text);
+      color: var(--ods-theme-text-color);
       font-weight: 600;
     }
   }

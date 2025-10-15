@@ -1,6 +1,7 @@
 import { Accordion as VendorAccordion } from '@ark-ui/react/accordion';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import styles from './accordion.module.scss';
 
 interface AccordionChangeDetail {
   value: string[],
@@ -40,7 +41,7 @@ const Accordion: FC<AccordionProp> = forwardRef(({
 }, ref): JSX.Element => {
   return (
     <VendorAccordion.Root
-      className={ classNames(className) }
+      className={ classNames(styles['accordion'], className) }
       collapsible={ true }
       data-ods="accordion"
       defaultValue={ defaultValue }
@@ -49,8 +50,7 @@ const Accordion: FC<AccordionProp> = forwardRef(({
       multiple={ multiple }
       onValueChange={ onChange }
       value={ value }
-      { ...props }
-    />
+      { ...props } />
   );
 });
 

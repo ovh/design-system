@@ -49,4 +49,7 @@ const ClipboardControl: FC<ClipboardControlProp> = forwardRef(({
 
 ClipboardControl.displayName = 'ClipboardControl';
 
-export { ClipboardControl, type ClipboardControlProp };
+export {
+  ClipboardControl,
+  type ClipboardControlProp,
+};

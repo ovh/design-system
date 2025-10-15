@@ -62,8 +62,18 @@ $tab-list-border-bottom-size: 2px;
 
       display: inline-block;
       position: relative;
+      width: 100%;
       overflow: auto hidden;
       white-space: nowrap;
+
+      &::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-bottom: solid $tab-list-border-bottom-size var(--ods-color-neutral-100);
+        content: '';
+      }
 
       &__tabs {
         display: flex;

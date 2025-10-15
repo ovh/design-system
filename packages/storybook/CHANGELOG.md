@@ -8,6 +8,22 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.2.1](https://ovh.github.io/design-system/v19.2.1/?path=/docs/design-system-changelog--page) (2025-10-15)
+[compare](https://github.com/ovh/design-system/compare/v19.2.0...v19.2.1)
+
+### Features
+
+* **combobox:** add custom filter attribute ([ccd2d84](https://github.com/ovh/design-system/commit/ccd2d84273eae39417c21167dd1fef1a908180bb))
+* **doc:** remove ToC on changelog page ([cc58fc3](https://github.com/ovh/design-system/commit/cc58fc35b27f30e89796e729c27859379f1c82af))
+* **doc:** update FAQ with custom as component forwardRef ([ab0b4d3](https://github.com/ovh/design-system/commit/ab0b4d3d19a6339ebbca5ddc6189a624bbbe855d))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.2.0](https://ovh.github.io/design-system/v19.2.0/?path=/docs/design-system-changelog--page) (2025-10-09)
 [compare](https://github.com/ovh/design-system/compare/v19.1.0...v19.2.0)
 

@@ -8,6 +8,28 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.2.1](https://ovh.github.io/design-system/v19.2.1/?path=/docs/design-system-changelog--page) (2025-10-15)
+[compare](https://github.com/ovh/design-system/compare/v19.2.0...v19.2.1)
+
+### Bug Fixes
+
+* **button:** use correct border-radius for sm size ([e3809b0](https://github.com/ovh/design-system/commit/e3809b03d2d53eddb7b1763558b4748ceadeadf4))
+* **tabs:** ensure container take the whole space with a visible border bottom ([8d7a1a5](https://github.com/ovh/design-system/commit/8d7a1a58d783a980a0dc884f730eab02600e50fc))
+
+
+### Features
+
+* **combobox:** add custom filter attribute ([ccd2d84](https://github.com/ovh/design-system/commit/ccd2d84273eae39417c21167dd1fef1a908180bb))
+* **doc:** update FAQ with custom as component forwardRef ([ab0b4d3](https://github.com/ovh/design-system/commit/ab0b4d3d19a6339ebbca5ddc6189a624bbbe855d))
+* **input:** add hover & focus state styling for border color ([f4af1ca](https://github.com/ovh/design-system/commit/f4af1cad9cf5266f3163f8c3c0b4560ba6c0f9db))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.2.0](https://ovh.github.io/design-system/v19.2.0/?path=/docs/design-system-changelog--page) (2025-10-09)
 [compare](https://github.com/ovh/design-system/compare/v19.1.0...v19.2.0)
 

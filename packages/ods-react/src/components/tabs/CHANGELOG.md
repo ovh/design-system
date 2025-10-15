@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.2.1](https://ovh.github.io/design-system/v19.2.1/?path=/docs/design-system-changelog--page) (2025-10-15)
+[compare](https://github.com/ovh/design-system/compare/v19.2.0...v19.2.1)
+
+### Bug Fixes
+
+* **tabs:** ensure container take the whole space with a visible border bottom ([8d7a1a5](https://github.com/ovh/design-system/commit/8d7a1a58d783a980a0dc884f730eab02600e50fc))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.2.0](https://ovh.github.io/design-system/v19.2.0/?path=/docs/design-system-changelog--page) (2025-10-09)
 [compare](https://github.com/ovh/design-system/compare/v19.1.0...v19.2.0)
 

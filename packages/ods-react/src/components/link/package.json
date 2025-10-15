@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-link",
-  "version": "19.2.0",
+  "version": "19.2.1",
   "private": true,
   "description": "ODS React Link component",
   "type": "module",

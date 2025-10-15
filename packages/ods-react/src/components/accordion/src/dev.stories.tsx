@@ -1,28 +1,38 @@
 import { useState } from 'react';
+import { Button } from '../../button/src';
+import { Text } from '../../text/src';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '.';
-import { Button } from '../../button/src/index';
-import { Text } from '../../text/src/index';
+import style from './dev.module.css';
 
 export default {
   component: Accordion,
   title: 'Accordion dev',
 };
 
+export const CustomStyle = () => (
+  <Accordion className={ style['custom-accordion'] }>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        My content
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+);
+
 export const Default = () => (
-  <div style={ { width: '300px' } }>
-    <Accordion>
-      <AccordionItem value="1">
-        <AccordionTrigger>
-          <Text preset="paragraph">My content</Text>
-        </AccordionTrigger>
-        <AccordionContent>
-          <Text preset="paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </Text>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  </div>
+  <Accordion>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        My content
+      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
 );
 
 export const Multiple = () => (

@@ -55,6 +55,13 @@ export const Loading = () => (
   </Clipboard>
 );
 
+export const Placeholder = () => (
+  <Clipboard>
+    <ClipboardControl placeholder="Placeholder" />
+    <ClipboardTrigger />
+  </Clipboard>
+);
+
 export const Refs = () => {
   const refControl = useRef(null);
   const refTrigger = useRef(null);

@@ -1,20 +1,22 @@
+$ods-radio-size: 16px;
+
 @mixin ods-radio() {
   appearance: none;
   box-sizing: border-box;
   display: inline-flex;
   margin: 0;
-  border: 1px solid var(--ods-color-neutral-300);
+  border: solid var(--ods-theme-input-border-width) var(--ods-theme-input-border-color);
   border-radius: 50%;
   cursor: pointer;
-  width: 16px;
-  height: 16px;
+  width: $ods-radio-size;
+  height: $ods-radio-size;
 
   &::before {
     transform: scale(0);
     transition: 120ms all ease-in-out;
     margin: auto;
     border-radius: 50%;
-    background-color: var(--ods-color-primary-000);
+    background-color: var(--ods-theme-background-color);
     width: 4px;
     height: 4px;
     content: "";

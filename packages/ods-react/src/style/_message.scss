@@ -1,47 +1,76 @@
 @mixin ods-message() {
+  --ods-message-background-color-critical: var(--ods-color-critical-075);
+  --ods-message-background-color-critical-light: var(--ods-theme-background-color);
+  --ods-message-background-color-information: var(--ods-color-information-075);
+  --ods-message-background-color-information-light: var(--ods-theme-background-color);
+  --ods-message-background-color-neutral: var(--ods-color-neutral-075);
+  --ods-message-background-color-neutral-light: var(--ods-theme-background-color);
+  --ods-message-background-color-primary: var(--ods-color-primary-500);
+  --ods-message-background-color-primary-light: var(--ods-theme-background-color);
+  --ods-message-background-color-success: var(--ods-color-success-075);
+  --ods-message-background-color-success-light: var(--ods-theme-background-color);
+  --ods-message-background-color-warning: var(--ods-color-warning-075);
+  --ods-message-background-color-warning-light: var(--ods-theme-background-color);
+  --ods-message-text-color-critical: var(--ods-color-critical-700);
+  --ods-message-text-color-critical-light: var(--ods-color-critical-700);
+  --ods-message-text-color-information: var(--ods-color-information-700);
+  --ods-message-text-color-information-light: var(--ods-color-information-700);
+  --ods-message-text-color-neutral: var(--ods-color-neutral-700);
+  --ods-message-text-color-neutral-light: var(--ods-color-neutral-700);
+  --ods-message-text-color-primary: var(--ods-color-primary-000);
+  --ods-message-text-color-primary-light: var(--ods-color-primary-700);
+  --ods-message-text-color-success: var(--ods-color-success-700);
+  --ods-message-text-color-success-light: var(--ods-color-success-700);
+  --ods-message-text-color-warning: var(--ods-color-warning-700);
+  --ods-message-text-color-warning-light: var(--ods-color-warning-700);
+
   box-sizing: border-box;
   display: inline-flex;
-  column-gap: 0.5rem;
+  column-gap: var(--ods-theme-column-gap);
   align-items: center;
-  padding: 0.5rem;
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
 }
 
 @mixin ods-message-variant-default($color) {
   @if $color == 'critical' {
-    background-color: var(--ods-color-critical-075);
-    color: var(--ods-color-critical-700);
+    background-color: var(--ods-message-background-color-critical);
+    color: var(--ods-message-text-color-critical);
   } @else if $color == 'information' {
-    background-color: var(--ods-color-information-075);
-    color: var(--ods-color-information-700);
+    background-color: var(--ods-message-background-color-information);
+    color: var(--ods-message-text-color-information);
   } @else if $color == 'neutral' {
-    background-color: var(--ods-color-neutral-075);
-    color: var(--ods-color-neutral-700);
+    background-color: var(--ods-message-background-color-neutral);
+    color: var(--ods-message-text-color-neutral);
   } @else if $color == 'primary' {
-    background-color: var(--ods-color-primary-500);
-    color: var(--ods-color-primary-000);
+    background-color: var(--ods-message-background-color-primary);
+    color: var(--ods-message-text-color-primary);
   } @else if $color == 'success' {
-    background-color: var(--ods-color-success-075);
-    color: var(--ods-color-success-700);
+    background-color: var(--ods-message-background-color-success);
+    color: var(--ods-message-text-color-success);
   } @else if $color == 'warning' {
-    background-color: var(--ods-color-warning-075);
-    color: var(--ods-color-warning-700);
+    background-color: var(--ods-message-background-color-warning);
+    color: var(--ods-message-text-color-warning);
   }
 }
 
 @mixin ods-message-variant-light($color) {
-  background-color: var(--ods-color-neutral-000);
-
   @if $color == 'critical' {
-    color: var(--ods-color-critical-700);
+    background-color: var(--ods-message-background-color-critical-light);
+    color: var(--ods-message-text-color-critical-light);
   } @else if $color == 'information' {
-    color: var(--ods-color-information-700);
+    background-color: var(--ods-message-background-color-information-light);
+    color: var(--ods-message-text-color-information-light);
   } @else if $color == 'neutral' {
-    color: var(--ods-color-neutral-700);
+    background-color: var(--ods-message-background-color-neutral-light);
+    color: var(--ods-message-text-color-neutral-light);
   } @else if $color == 'primary' {
-    color: var(--ods-color-primary-700);
+    background-color: var(--ods-message-background-color-primary-light);
+    color: var(--ods-message-text-color-primary-light);
   } @else if $color == 'success' {
-    color: var(--ods-color-success-700);
+    background-color: var(--ods-message-background-color-success-light);
+    color: var(--ods-message-text-color-success-light);
   } @else if $color == 'warning' {
-    color: var(--ods-color-warning-700);
+    background-color: var(--ods-message-background-color-warning-light);
+    color: var(--ods-message-text-color-warning-light);
   }
 }

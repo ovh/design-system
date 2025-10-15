@@ -3,26 +3,23 @@
 
 @layer ods-molecules {
   .tree-view-node-item {
-    $gap: 8px;
-    $padding-x: 8px;
-
     display: flex;
-    gap: $gap;
+    gap: var(--ods-tree-view-node-row-gap) var(--ods-tree-view-node-column-gap);
     align-items: center;
-    border-radius: var(--ods-border-radius-sm);
-    padding: 4px $padding-x;
+    border-radius: var(--ods-tree-view-node-border-radius);
+    padding: var(--ods-tree-view-node-padding-vertical) var(--ods-tree-view-node-padding-horizontal);
 
     &:hover {
-      background-color: var(--ods-color-primary-100);
+      background-color: var(--ods-theme-input-option-background-color-hover);
       cursor: pointer;
     }
 
     &:has(.tree-view-node-item__checkbox[data-state="checked"]),
     &:has(.tree-view-node-item__checkbox[data-state="indeterminate"]) {
-      background-color: var(--ods-color-primary-050);
+      background-color: var(--ods-theme-input-option-background-color-selected);
 
       &:not([data-disabled]):hover {
-        background-color: var(--ods-color-primary-100);
+        background-color: var(--ods-theme-input-option-background-color-selected-hover);
       }
     }
 
@@ -33,10 +30,10 @@
     }
 
     &[data-selected]:not(:has(.tree-view-node-item__checkbox)) {
-      background-color: var(--ods-color-primary-050);
+      background-color: var(--ods-theme-input-option-background-color-selected);
 
       &:not([data-disabled]):hover {
-        background-color: var(--ods-color-primary-100);
+        background-color: var(--ods-theme-input-option-background-color-selected-hover);
       }
     }
 
@@ -45,12 +42,12 @@
 
       position: relative;
       z-index: 2;
-      background-color: var(--ods-color-primary-100);
+      background-color: var(--ods-theme-input-option-background-color-hover);
     }
 
     &__checkbox {
       display: flex;
-      gap: $gap;
+      gap: var(--ods-tree-view-node-row-gap) var(--ods-tree-view-node-column-gap);
       width: 100%;
     }
   }

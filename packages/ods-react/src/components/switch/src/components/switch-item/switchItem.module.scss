@@ -3,20 +3,27 @@
 
 @layer ods-atoms {
   .switch-item {
+    --ods-switch-item-background-color: inherit;
+    --ods-switch-item-background-color-checked: var(--ods-color-primary-600);
+    --ods-switch-item-background-color-checked-disabled: var(--ods-color-neutral-500);
+    --ods-switch-item-background-color-hover: var(--ods-color-primary-100);
+    --ods-switch-item-text-color: var(--ods-color-primary-500);
+    --ods-switch-item-text-color-checked: var(--ods-theme-input-text-color-checked);
+
     transition: background-color .3s, color .3s;
     border: none;
-    border-radius: var(--ods-border-radius-lg);
-    background-color: inherit;
+    border-radius: var(--ods-switch-border-radius);
+    background-color: var(--ods-switch-item-background-color);
     cursor: pointer;
     padding: 0 12px;
     height: 100%;
-    color: var(--ods-color-primary-500);
+    color: var(--ods-switch-item-text-color);
     font-family: inherit;
     font-size: 1rem;
     font-weight: 600;
 
     &:hover {
-      background-color:  var(--ods-color-primary-100);
+      background-color:  var(--ods-switch-item-background-color-hover);
     }
 
     &[data-disabled] {
@@ -26,16 +33,16 @@
     &[data-focus] {
       @include focus.ods-focus();
 
-      background-color:  var(--ods-color-primary-100);
+      background-color:  var(--ods-switch-item-background-color-hover);
     }
 
     &[data-state="on"] {
-      background-color:  var(--ods-color-primary-600);
-      color:  var(--ods-color-primary-000);
+      background-color:  var(--ods-switch-item-background-color-checked);
+      color:  var(--ods-switch-item-text-color-checked);
 
       &[data-disabled] {
-        background-color: var(--ods-color-neutral-500);
-        color: var(--ods-color-neutral-000);
+        background-color: var(--ods-switch-item-background-color-checked-disabled);
+        color: var(--ods-switch-item-text-color-checked);
       }
     }
   }

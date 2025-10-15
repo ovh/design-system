@@ -1,8 +1,12 @@
 @layer ods-atoms {
   .meter {
+    --ods-meter-background-color-critical: var(--ods-theme-critical-color);
+    --ods-meter-background-color-normal: var(--ods-theme-primary-color);
+    --ods-meter-background-color-warning: var(--ods-theme-warning-color);
+
     position: relative;
-    border-radius: var(--ods-border-radius-md);
-    background-color: var(--ods-color-neutral-100);
+    border-radius: var(--ods-theme-border-radius);
+    background-color: var(--ods-theme-track-background-color);
     width: 100%;
     height: 8px;
 
@@ -17,15 +21,15 @@
     }
 
     &--critical::after {
-      background-color: var(--ods-color-critical-500);
+      background-color: var(--ods-meter-background-color-critical);
     }
 
     &--normal::after {
-      background-color: var(--ods-color-primary-500);
+      background-color: var(--ods-meter-background-color-normal);
     }
 
     &--warning::after {
-      background-color: var(--ods-color-warning-500);
+      background-color: var(--ods-meter-background-color-warning);
     }
   }
 }

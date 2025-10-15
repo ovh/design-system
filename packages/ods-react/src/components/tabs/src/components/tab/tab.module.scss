@@ -4,20 +4,30 @@
 
 @layer ods-molecules {
   .tab {
+    --ods-tab-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 2);
+    --ods-tab-padding-vertical: calc(var(--ods-theme-padding-vertical) / 4);
+    --ods-tab-background-color-hover: var(--ods-color-neutral-050);
+    --ods-tab-border-color: var(--ods-tab-list-border-color);
+    --ods-tab-border-color-disabled: var(--ods-color-neutral-100);
+    --ods-tab-border-color-hover: var(--ods-color-neutral-050);
+    --ods-tab-border-color-selected: var(--ods-color-primary-500);
+    --ods-tab-border-color-selected-disabled: var(--ods-color-neutral-500);
+    --ods-tab-text-color-selected: var(--ods-color-primary-500);
+
     display: block;
     z-index: 1;
     border-top: none;
     border-right: none;
-    border-bottom: solid tab-list.$tab-list-border-bottom-size var(--ods-color-neutral-100);
+    border-bottom: solid tab-list.$tab-list-border-bottom-size var(--ods-tab-border-color);
     border-left: none;
-    border-top-left-radius: var(--ods-border-radius-md);
-    border-top-right-radius: var(--ods-border-radius-md);
+    border-top-left-radius: var(--ods-theme-border-radius);
+    border-top-right-radius: var(--ods-theme-border-radius);
     background: none;
     cursor: pointer;
-    padding: 2px 16px;
+    padding: var(--ods-tab-padding-vertical) var(--ods-tab-padding-horizontal);
     text-align: center;
     white-space: nowrap;
-    color: var(--ods-color-text);
+    color: var(--ods-theme-text-color);
     font-family: inherit;
     font-size: inherit;
     font-weight: 600;
@@ -26,30 +36,30 @@
       @include focus.ods-focus();
 
       z-index: 2;
-      outline-offset: calc(var(--ods-outline-offset) * -1);
+      outline-offset: calc(var(--ods-theme-outline-offset) * -1);
     }
 
     &:focus-visible:not([disabled], [aria-selected="true"]),
     &:hover:not([disabled], [aria-selected="true"]) {
-      border-color: var(--ods-color-neutral-050);
-      background-color: var(--ods-color-neutral-050);
+      border-color: var(--ods-tab-border-color-hover);
+      background-color: var(--ods-tab-background-color-hover);
     }
 
     &[disabled] {
       @include state.ods-is-disabled();
 
-      border-color: var(--ods-color-neutral-100);
+      border-color: var(--ods-tab-border-color-disabled);
       background-color: inherit;
     }
 
     &[aria-selected="true"] {
       &:not([disabled]) {
-        border-color: var(--ods-color-primary-500);
-        color: var(--ods-color-primary-500);
+        border-color: var(--ods-tab-border-color-selected);
+        color: var(--ods-tab-text-color-selected);
       }
 
       &[disabled] {
-        border-color: var(--ods-color-neutral-500);
+        border-color: var(--ods-tab-border-color-selected-disabled);
       }
     }
   }

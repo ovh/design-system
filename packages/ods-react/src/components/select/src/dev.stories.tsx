@@ -265,12 +265,12 @@ export const Groups = () => (
         label: 'Europe',
         options: [
           { label: 'France', value: 'fr' },
-          { label: 'Germany', value: 'de', disabled: true },
+          { label: 'Germany', value: 'de' },
           { label: 'Italy', value: 'it' },
         ]
       },
       {
-        label: 'Asia', disabled: true,
+        label: 'Asia',
         options: [
           { label: 'China', value: 'cn' },
           { label: 'Japan', value: 'jp' },

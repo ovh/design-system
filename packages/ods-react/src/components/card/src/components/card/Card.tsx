@@ -13,6 +13,7 @@ interface CardProp extends ComponentPropsWithRef<'div'> {
 
 const Card: FC<CardProp> = forwardRef(({
   className,
+  children,
   color = CARD_COLOR.primary,
   ...props
 }, ref): JSX.Element => {
@@ -26,6 +27,7 @@ const Card: FC<CardProp> = forwardRef(({
       data-ods="card"
       ref={ ref }
       { ...props }>
+      { children }
     </div>
   );
 });

@@ -3,15 +3,18 @@
 $ods-link-font-weight: 600;
 
 @mixin ods-link() {
+  --ods-link-column-gap: var(--ods-theme-column-gap);
+  --ods-link-row-gap: var(--ods-theme-row-gap);
+
   display: inline-flex;
   position: relative;
   flex-flow: row;
-  gap: 8px;
+  gap: var(--ods-link-row-gap) var(--ods-link-column-gap);
   align-items: center;
   cursor: pointer;
   width: max-content;
   text-decoration: none;
-  color: var(--ods-color-primary-500);
+  color: var(--ods-theme-anchor-text-color);
   font-weight: $ods-link-font-weight;
 
   &::after {
@@ -30,7 +33,7 @@ $ods-link-font-weight: 600;
 
   &:hover,
   &:focus-visible {
-    color: var(--ods-color-primary-600);
+    color: var(--ods-theme-anchor-text-color-hover);
 
     &::after {
       transform: scaleX(1);
@@ -42,6 +45,6 @@ $ods-link-font-weight: 600;
   }
 
   &:visited {
-    color: var(--ods-color-primary-700);
+    color: var(--ods-theme-anchor-text-color-visited);
   }
 }

@@ -19,4 +19,7 @@ const PaginationButtonWithTooltip: FC<PaginationButtonWithTooltipProp> = ({
     <>{ children }</>
   );
 
-export { PaginationButtonWithTooltip, type PaginationButtonWithTooltipProp };
+export {
+  PaginationButtonWithTooltip,
+  type PaginationButtonWithTooltipProp,
+};

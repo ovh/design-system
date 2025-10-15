@@ -5,19 +5,17 @@
   .tree-view-node-branch {
     $branch: &;
     $chevron-size: 1rem;
-    $gap: 8px;
-    $padding-x: 8px;
 
     &__control {
       display: flex;
-      gap: $gap;
+      gap: var(--ods-tree-view-node-row-gap) var(--ods-tree-view-node-column-gap);
       align-items: center;
-      border-radius: var(--ods-border-radius-sm);
+      border-radius: var(--ods-tree-view-node-border-radius);
       cursor: pointer;
-      padding: 4px $padding-x;
+      padding: var(--ods-tree-view-node-padding-vertical) var(--ods-tree-view-node-padding-horizontal);
 
       &:not([data-disabled]):hover {
-        background-color: var(--ods-color-primary-100);
+        background-color: var(--ods-theme-input-option-background-color-hover);
       }
 
       &:is([aria-expanded="true"], [data-state="open"]) {
@@ -28,10 +26,10 @@
 
       &:has(.tree-view-node-branch__control__checkbox[data-state="checked"]),
       &:has(.tree-view-node-branch__control__checkbox[data-state="indeterminate"]) {
-        background-color: var(--ods-color-primary-050);
+        background-color: var(--ods-theme-input-option-background-color-selected);
 
         &:not([data-disabled]):hover {
-          background-color: var(--ods-color-primary-100);
+          background-color: var(--ods-theme-input-option-background-color-selected-hover);
         }
       }
 
@@ -42,10 +40,10 @@
       }
 
       &[data-selected]:not(:has(.tree-view-node-branch__control__checkbox)) {
-        background-color: var(--ods-color-primary-050);
+        background-color: var(--ods-theme-input-option-background-color-selected);
 
         &:not([data-disabled]):hover {
-          background-color: var(--ods-color-primary-100);
+          background-color: var(--ods-theme-input-option-background-color-selected-hover);
         }
       }
 
@@ -54,7 +52,7 @@
 
         position: relative;
         z-index: 2;
-        background-color: var(--ods-color-primary-100);
+        background-color: var(--ods-theme-input-option-background-color-hover);
       }
 
       &__chevron {
@@ -82,7 +80,7 @@
           bottom: .25rem;
           left: 0;
           opacity: .15;
-          background-color: var(--ods-color-form-element-border-default);
+          background-color: var(--ods-theme-input-border-color);
           width: 2px;
           content: '';
         }
@@ -90,7 +88,7 @@
 
       &__checkbox {
         display: flex;
-        gap: $gap;
+        gap: var(--ods-tree-view-node-row-gap) var(--ods-tree-view-node-column-gap);
         width: 100%;
       }
     }

@@ -1,32 +1,41 @@
 @layer ods-atoms {
   .card {
+    --ods-card-border-radius: var(--ods-theme-border-radius);
+    --ods-card-border-width: var(--ods-theme-border-width);
+    --ods-card-border-color-critical: var(--ods-color-critical-200);
+    --ods-card-border-color-information: var(--ods-color-information-200);
+    --ods-card-border-color-neutral: var(--ods-color-neutral-200);
+    --ods-card-border-color-primary: var(--ods-color-primary-500);
+    --ods-card-border-color-success: var(--ods-color-success-200);
+    --ods-card-border-color-warning: var(--ods-color-warning-200);
+
     box-sizing: border-box;
     display: inline-block;
-    border: 1px solid;
-    border-radius: 8px;
+    border: var(--ods-card-border-width) solid;
+    border-radius: var(--ods-card-border-radius);
 
     &--critical {
-      border-color: var(--ods-color-critical-200);
+      border-color: var(--ods-card-border-color-critical);
     }
 
     &--information {
-      border-color: var(--ods-color-information-200);
+      border-color: var(--ods-card-border-color-information);
     }
 
     &--neutral {
-      border-color: var(--ods-color-neutral-200);
+      border-color: var(--ods-card-border-color-neutral);
     }
 
     &--primary {
-      border-color: var(--ods-color-primary-500);
+      border-color: var(--ods-card-border-color-primary);
     }
 
     &--success {
-      border-color: var(--ods-color-success-200);
+      border-color: var(--ods-card-border-color-success);
     }
 
     &--warning {
-      border-color: var(--ods-color-warning-200);
+      border-color: var(--ods-card-border-color-warning);
     }
   }
 }

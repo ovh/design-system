@@ -29,7 +29,7 @@ export const Default = () => (
 export const Disabled = () => (
   <Tabs defaultValue="tab1">
     <TabList>
-      <Tab value="tab1">Tab 1</Tab>
+      <Tab value="tab1" disabled>Tab 1</Tab>
       <Tab value="tab2" disabled>Tab 2</Tab>
       <Tab value="tab3" disabled>Tab 3</Tab>
     </TabList>

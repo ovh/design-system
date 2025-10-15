@@ -5,19 +5,27 @@
   .toggle-control {
     $control: &;
 
+    --ods-toggle-control-background-color: var(--ods-color-neutral-200);
+    --ods-toggle-control-background-color-hover: var(--ods-color-neutral-300);
+    --ods-toggle-control-border-color: var(--ods-color-neutral-200);
+    --ods-toggle-control-border-color-hover: var(--ods-color-neutral-300);
+    --ods-toggle-control-label-off-text-color: var(--ods-color-neutral-700);
+    --ods-toggle-control-label-on-text-color: var(--ods-color-neutral-000);
+    --ods-toggle-control-thumb-background-color: var(--ods-color-neutral-000);
+
     box-sizing: border-box;
     display: inline-block;
     position: relative;
-    border: 1px solid var(--ods-color-neutral-200);
+    border: 1px solid var(--ods-toggle-control-border-color);
     border-radius: 1rem;
-    background-color: var(--ods-color-neutral-200);
+    background-color: var(--ods-toggle-control-background-color);
     width: 48px;
     height: 24px;
 
     &:hover,
     &[data-focus] {
-      border-color: var(--ods-color-neutral-300);
-      background-color: var(--ods-color-neutral-300);
+      border-color: var(--ods-toggle-control-border-color-hover);
+      background-color: var(--ods-toggle-control-background-color-hover);
     }
 
     &[data-focus] {
@@ -33,20 +41,20 @@
     &[data-state="checked"] {
       &:not([data-disabled]) {
         transition: background-color 0.2s ease, border-color 0.2s ease;
-        border-color: var(--ods-color-primary-500);
-        background-color: var(--ods-color-primary-500);
+        border-color: var(--ods-theme-input-border-color-checked);
+        background-color: var(--ods-theme-input-background-color-checked);
 
         &:hover, &[data-focus] {
-          border-color: var(--ods-color-primary-700);
-          background-color: var(--ods-color-primary-700);
+          border-color: var(--ods-theme-input-border-color-checked-hover);
+          background-color: var(--ods-theme-input-background-color-checked-hover);
 
           &[data-invalid] {
-            border-color: var(--ods-color-form-element-border-critical);
+            border-color: var(--ods-theme-input-border-color-invalid);
           }
         }
 
         &[data-invalid] {
-          background-color: var(--ods-color-form-element-background-selected-critical);
+          background-color: var(--ods-theme-input-background-color-invalid);
         }
       }
 
@@ -56,7 +64,7 @@
     }
 
     &#{$control}[data-invalid] {
-      border-color: var(--ods-color-form-element-border-critical);
+      border-color: var(--ods-theme-input-border-color-invalid);
     }
 
     &__thumb {
@@ -67,8 +75,8 @@
       transition: transform 0.4s ease;
       z-index: 2;
       margin: auto;
-      border-radius: 1rem;
-      background-color: var(--ods-color-neutral-000);
+      border-radius: 16px;
+      background-color: var(--ods-toggle-control-thumb-background-color);
       width: 20px;
       height: 20px;
 

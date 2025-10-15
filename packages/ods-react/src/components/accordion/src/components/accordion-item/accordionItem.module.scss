@@ -1,26 +1,23 @@
-@use '../../../../../style/focus';
 @use '../../../../../style/state';
-@use "../accordion/accordion.module";
 
 @layer ods-atoms {
   .accordion-item {
     display: grid;
-    border-width: accordion.$ods-accordion-border-size;
+    position: relative;
+    border-width: var(--ods-accordion-border-width);
     border-style: solid;
-    border-color: transparent;
+    border-color: var(--ods-accordion-border-color);
 
     &:not(:first-child) {
       margin-top: -1px;
     }
 
     &:not([data-disabled]) {
-      &[data-state='closed']:hover, &:focus-within {
-        transition: .3s border-color ease-out;
-        border-color: var(--ods-color-primary-200);
-      }
-
-      &[data-state='open'] {
-        border-color: var(--ods-color-primary-500);
+      &[data-state='open'],
+      &[data-state='closed']:hover,
+      &:focus-within {
+        z-index: 1;
+        border-color: var(--ods-accordion-border-color-hover);
       }
     }
 

@@ -1,0 +1,9 @@
+@layer ods-molecules {
+  .tree-view-node {
+    --ods-tree-view-node-border-radius: calc(var(--ods-theme-border-radius) / 2);
+    --ods-tree-view-node-column-gap: var(--ods-theme-column-gap);
+    --ods-tree-view-node-row-gap: var(--ods-theme-row-gap);
+    --ods-tree-view-node-padding-horizontal: var(--ods-theme-padding-horizontal);
+    --ods-tree-view-node-padding-vertical: calc(var(--ods-theme-padding-horizontal) / 2);
+  }
+}

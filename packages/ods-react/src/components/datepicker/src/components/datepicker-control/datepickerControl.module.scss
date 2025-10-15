@@ -16,12 +16,12 @@
       }
 
       &--open:not([data-disabled], [data-invalid], [data-readonly]) {
-        border-color: var(--ods-color-form-element-border-hover-default);
+        border-color: var(--ods-theme-input-border-color-hover);
       }
     }
 
     &__trigger {
-      border-radius: var(--ods-border-radius-sm);
+      border-radius: var(--ods-theme-input-border-radius);
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
 

@@ -5,6 +5,7 @@ $ods-code-secondary-color: #000;
 
 @layer ods-organisms {
   .code {
+    --ods-code-border-radius: calc(var(--ods-theme-border-radius) / 2);
     --ods-code-primary-color: #{$ods-code-primary-color};
     --ods-code-secondary-color: #{$ods-code-secondary-color};
     --ods-code-trigger-background-color: #{$ods-code-primary-color};
@@ -14,11 +15,11 @@ $ods-code-secondary-color: #000;
 
     display: inline-flex;
     flex-flow: row;
-    column-gap: 8px;
+    column-gap: var(--ods-theme-column-gap);
     justify-content: space-between;
-    border-radius: var(--ods-border-radius-sm);
+    border-radius: var(--ods-code-border-radius);
     background-color: var(--ods-code-secondary-color);
-    padding: 12px;
+    padding: calc(var(--ods-theme-padding-vertical) * 1.5) calc(var(--ods-theme-padding-horizontal) * 1.5);
     height: auto;
     min-height: input.$ods-input-field-height;
 
@@ -33,7 +34,7 @@ $ods-code-secondary-color: #000;
       white-space: pre-wrap;
 
       &__code {
-        font-family: var(--ods-font-family-code);
+        font-family: var(--ods-theme-font-family-code);
       }
     }
 

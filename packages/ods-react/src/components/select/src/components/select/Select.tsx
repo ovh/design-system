@@ -96,6 +96,7 @@ const Select: FC<SelectProp> = forwardRef(({
 
   return (
     <SelectProvider
+      invalid={ invalid }
       items={ items }
       multiple={ multiple }
       readOnly={ readOnly }>

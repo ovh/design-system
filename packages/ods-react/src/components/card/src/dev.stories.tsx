@@ -31,5 +31,7 @@ export const CustomStyle = () => (
 );
 
 export const Default = () => (
-  <Card />
+  <Card>
+    Default Card
+  </Card>
 );

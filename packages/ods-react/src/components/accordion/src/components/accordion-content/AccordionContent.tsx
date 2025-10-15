@@ -12,11 +12,10 @@ const AccordionContent: FC<AccordionContentProp> = forwardRef(({
 }, ref): JSX.Element => {
   return (
     <Accordion.ItemContent
-      className={ classNames(style[ 'accordion-content' ], className) }
+      className={ classNames(style['accordion-content'], className) }
       data-ods="accordion-content"
       ref={ ref }
-      { ...props }
-    >
+      { ...props }>
       { children }
     </Accordion.ItemContent>
   );

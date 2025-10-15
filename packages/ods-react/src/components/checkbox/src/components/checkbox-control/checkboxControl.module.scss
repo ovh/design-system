@@ -8,29 +8,26 @@
 
     &:not([data-disabled]) {
       &:not([data-invalid]) {
+        &[data-focus],
         &:hover {
-          border-color: var(--ods-color-form-element-border-hover-default);
-        }
-
-        &[data-focus] {
-          border-color: var(--ods-color-form-element-border-focus-default);
+          border-color: var(--ods-theme-input-border-color-hover);
         }
       }
 
       &[data-state="checked"],
       &[data-state="indeterminate"] {
-        border-color: var(--ods-color-primary-500);
-        background: var(--ods-color-primary-500);
+        border-color: var(--ods-theme-input-border-color-checked);
+        background: var(--ods-theme-input-background-color-checked);
 
         &[data-focus],
         &:hover {
-          border-color: var(--ods-color-primary-700);
-          background: var(--ods-color-primary-700);
+          border-color: var(--ods-theme-input-border-color-checked-hover);
+          background: var(--ods-theme-input-background-color-checked-hover);
         }
 
         &[data-invalid] {
-          border-color: var(--ods-color-form-element-border-critical);
-          background-color: var(--ods-color-form-element-background-selected-critical);
+          border-color: var(--ods-theme-input-border-color-invalid);
+          background-color: var(--ods-theme-input-background-color-invalid);
         }
       }
     }
@@ -44,7 +41,7 @@
     }
 
     &[data-invalid] {
-      border-color: var(--ods-color-form-element-border-critical);
+      border-color: var(--ods-theme-input-border-color-invalid);
     }
 
     &__icon {

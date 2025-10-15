@@ -35,11 +35,11 @@ $spinner-size-lg: 80px;
     }
 
     &--neutral {
-      fill: var(--ods-color-neutral-500);
+      fill: var(--ods-theme-neutral-color);
     }
 
     &--primary {
-      fill: var(--ods-color-primary-500);
+      fill: var(--ods-theme-primary-color);
     }
 
     &__svg {

@@ -5,15 +5,15 @@
     box-sizing: border-box;
 
     &:not(:last-child) {
-      border-bottom: solid var(--ods-border-width-sm) var(--ods-color-neutral-100);
+      border-bottom: solid var(--ods-theme-input-border-width) var(--ods-theme-split-border-color);
     }
 
     &__label {
       display: flex;
       align-items: center;
-      padding: 0 8px;
-      min-height: 32px;
-      color: var(--ods-color-heading);
+      padding: 0 var(--ods-theme-input-padding-horizontal);
+      min-height: var(--ods-theme-input-height);
+      color: var(--ods-theme-heading-text-color);
       font-weight: 600;
 
       &--disabled {
@@ -22,7 +22,7 @@
     }
 
     &__option {
-      padding: 0 16px;
+      padding: 0 var(--ods-combobox-group-option-padding-horizontal);
     }
   }
 }

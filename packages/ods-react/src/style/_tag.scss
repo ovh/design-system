@@ -1,15 +1,84 @@
 @use './focus';
 
+$ods-tag-border-width: calc(var(--ods-theme-border-width) * 2);
+$ods-tag-column-gap: calc(var(--ods-theme-column-gap) / 2);
+$ods-tag-row-gap: calc(var(--ods-theme-row-gap) / 2);
 $ods-tag-height-md: 24px;
 $ods-tag-height-lg: 28px;
+$ods-tag-padding-horizontal-md: var(--ods-theme-padding-horizontal);
+$ods-tag-padding-vertical-md: calc(var(--ods-theme-padding-vertical) / 8);
+$ods-tag-padding-horizontal-lg: calc(var(--ods-theme-padding-horizontal) * 1.25);
+$ods-tag-padding-vertical-lg: calc(var(--ods-theme-padding-vertical) / 4);
 
 @mixin ods-tag() {
+  --ods-tag-border-width: #{$ods-tag-border-width};
+  --ods-tag-column-gap: #{$ods-tag-column-gap};
+  --ods-tag-row-gap: #{$ods-tag-row-gap};
+  --ods-tag-padding-horizontal-md: #{$ods-tag-padding-horizontal-md};
+  --ods-tag-padding-vertical-md: #{$ods-tag-padding-vertical-md};
+  --ods-tag-padding-horizontal-lg: #{$ods-tag-padding-horizontal-lg};
+  --ods-tag-padding-vertical-lg: #{$ods-tag-padding-vertical-lg};
+  --ods-tag-border-color-critical: var(--ods-color-critical-100);
+  --ods-tag-border-color-critical-active: var(--ods-color-critical-300);
+  --ods-tag-border-color-critical-hover: var(--ods-color-critical-200);
+  --ods-tag-background-color-critical: var(--ods-color-critical-000);
+  --ods-tag-background-color-critical-active: var(--ods-color-critical-100);
+  --ods-tag-background-color-critical-hover: var(--ods-color-critical-050);
+  --ods-tag-text-color-critical: var(--ods-color-critical-900);
+  --ods-tag-text-color-critical-active: var(--ods-color-critical-900);
+  --ods-tag-text-color-critical-hover: var(--ods-color-critical-900);
+  --ods-tag-border-color-information: var(--ods-color-information-100);
+  --ods-tag-border-color-information-active: var(--ods-color-information-300);
+  --ods-tag-border-color-information-hover: var(--ods-color-information-200);
+  --ods-tag-background-color-information: var(--ods-color-information-000);
+  --ods-tag-background-color-information-active: var(--ods-color-information-200);
+  --ods-tag-background-color-information-hover: var(--ods-color-information-100);
+  --ods-tag-text-color-information: var(--ods-color-information-900);
+  --ods-tag-text-color-information-active: var(--ods-color-information-900);
+  --ods-tag-text-color-information-hover: var(--ods-color-information-900);
+  --ods-tag-border-color-neutral: var(--ods-color-neutral-100);
+  --ods-tag-border-color-neutral-active: var(--ods-color-neutral-300);
+  --ods-tag-border-color-neutral-hover: var(--ods-color-neutral-200);
+  --ods-tag-background-color-neutral: var(--ods-color-neutral-000);
+  --ods-tag-background-color-neutral-active: var(--ods-color-neutral-200);
+  --ods-tag-background-color-neutral-hover: var(--ods-color-neutral-100);
+  --ods-tag-text-color-neutral: var(--ods-color-neutral-700);
+  --ods-tag-text-color-neutral-active: var(--ods-color-neutral-700);
+  --ods-tag-text-color-neutral-hover: var(--ods-color-neutral-700);
+  --ods-tag-border-color-primary: var(--ods-color-primary-500);
+  --ods-tag-border-color-primary-active: var(--ods-color-primary-700);
+  --ods-tag-border-color-primary-hover: var(--ods-color-primary-600);
+  --ods-tag-background-color-primary: var(--ods-color-primary-000);
+  --ods-tag-background-color-primary-active: var(--ods-color-primary-200);
+  --ods-tag-background-color-primary-hover: var(--ods-color-primary-100);
+  --ods-tag-text-color-primary: var(--ods-color-primary-900);
+  --ods-tag-text-color-primary-active: var(--ods-color-primary-900);
+  --ods-tag-text-color-primary-hover: var(--ods-color-primary-900);
+  --ods-tag-border-color-success: var(--ods-color-success-100);
+  --ods-tag-border-color-success-active: var(--ods-color-success-300);
+  --ods-tag-border-color-success-hover: var(--ods-color-success-200);
+  --ods-tag-background-color-success: var(--ods-color-success-000);
+  --ods-tag-background-color-success-active: var(--ods-color-success-100);
+  --ods-tag-background-color-success-hover: var(--ods-color-success-050);
+  --ods-tag-text-color-success: var(--ods-color-success-900);
+  --ods-tag-text-color-success-active: var(--ods-color-success-900);
+  --ods-tag-text-color-success-hover: var(--ods-color-success-900);
+  --ods-tag-border-color-warning: var(--ods-color-warning-100);
+  --ods-tag-border-color-warning-active: var(--ods-color-warning-300);
+  --ods-tag-border-color-warning-hover: var(--ods-color-warning-200);
+  --ods-tag-background-color-warning: var(--ods-color-warning-000);
+  --ods-tag-background-color-warning-active: var(--ods-color-warning-100);
+  --ods-tag-background-color-warning-hover: var(--ods-color-warning-050);
+  --ods-tag-text-color-warning: var(--ods-color-warning-900);
+  --ods-tag-text-color-warning-active: var(--ods-color-warning-900);
+  --ods-tag-text-color-warning-hover: var(--ods-color-warning-900);
+
   box-sizing: border-box;
   display: inline-flex;
   flex-flow: row;
-  gap: 0.25rem;
+  gap: var(--ods-tag-row-gap) var(--ods-tag-column-gap);
   align-items: center;
-  border-width: 2px;
+  border-width: var(--ods-tag-border-width);
   border-style: solid;
   border-radius: var(--ods-border-radius-lg);
   cursor: pointer;
@@ -22,11 +91,11 @@ $ods-tag-height-lg: 28px;
 
 @mixin ods-tag-size($size) {
   @if $size == 'md' {
-    padding: 1px 8px;
+    padding: var(--ods-tag-padding-vertical-md) var(--ods-tag-padding-horizontal-md);
     height: $ods-tag-height-md;
     font-size: 0.875rem;
   } @else if $size == 'lg' {
-    padding: 2px 10px;
+    padding: var(--ods-tag-padding-vertical-lg) var(--ods-tag-padding-horizontal-lg);
     height: $ods-tag-height-lg;
     font-size: 1rem;
   }
@@ -34,94 +103,94 @@ $ods-tag-height-lg: 28px;
 
 @mixin ods-tag-color($color) {
   @if $color == 'critical' {
-    border-color: var(--ods-color-critical-100);
-    background-color: var(--ods-color-critical-000);
-    color: var(--ods-color-critical-900);
+    border-color: var(--ods-tag-border-color-critical);
+    background-color: var(--ods-tag-background-color-critical);
+    color: var(--ods-tag-text-color-critical);
 
     &:focus-visible,
     &:hover {
-      border-color: var(--ods-color-critical-200);
-      background-color: var(--ods-color-critical-050);
+      border-color: var(--ods-tag-border-color-critical-hover);
+      background-color: var(--ods-tag-background-color-critical-hover);
     }
 
     &:active {
-      border-color: var(--ods-color-critical-300);
-      background-color: var(--ods-color-critical-100);
+      border-color: var(--ods-tag-border-color-critical-active);
+      background-color: var(--ods-tag-background-color-critical-active);
     }
   } @else if $color == 'information' {
-    border-color: var(--ods-color-information-100);
-    background-color: var(--ods-color-information-000);
-    color: var(--ods-color-information-900);
+    border-color: var(--ods-tag-border-color-information);
+    background-color: var(--ods-tag-background-color-information);
+    color: var(--ods-tag-text-color-information);
 
     &:focus-visible,
     &:hover {
-      border-color: var(--ods-color-information-200);
-      background-color: var(--ods-color-information-100);
+      border-color: var(--ods-tag-border-color-information-hover);
+      background-color: var(--ods-tag-background-color-information-hover);
     }
 
     &:active {
-      border-color: var(--ods-color-information-300);
-      background-color: var(--ods-color-information-200);
+      border-color: var(--ods-tag-border-color-information-active);
+      background-color: var(--ods-tag-background-color-information-active);
     }
   } @else if $color == 'neutral' {
-    border-color: var(--ods-color-neutral-100);
-    background-color: var(--ods-color-neutral-000);
-    color: var(--ods-color-neutral-700);
+    border-color: var(--ods-tag-border-color-neutral);
+    background-color: var(--ods-tag-background-color-neutral);
+    color: var(--ods-tag-text-color-neutral);
 
     &:focus-visible,
     &:hover {
-      border-color: var(--ods-color-neutral-200);
-      background-color: var(--ods-color-neutral-100);
+      border-color: var(--ods-tag-border-color-neutral-hover);
+      background-color: var(--ods-tag-background-color-neutral-hover);
     }
 
     &:active {
-      border-color: var(--ods-color-neutral-300);
-      background-color: var(--ods-color-neutral-200);
+      border-color: var(--ods-tag-border-color-neutral-active);
+      background-color: var(--ods-tag-background-color-neutral-active);
     }
   } @else if $color == 'primary' {
-    border-color: var(--ods-color-primary-500);
-    background-color: var(--ods-color-primary-000);
-    color: var(--ods-color-primary-900);
+    border-color: var(--ods-tag-border-color-primary);
+    background-color: var(--ods-tag-background-color-primary);
+    color: var(--ods-tag-text-color-primary);
 
     &:focus-visible,
     &:hover {
-      border-color: var(--ods-color-primary-600);
-      background-color: var(--ods-color-primary-100);
+      border-color: var(--ods-tag-border-color-primary-hover);
+      background-color: var(--ods-tag-background-color-primary-hover);
     }
 
     &:active {
-      border-color: var(--ods-color-primary-700);
-      background-color: var(--ods-color-primary-200);
+      border-color: var(--ods-tag-border-color-primary-active);
+      background-color: var(--ods-tag-background-color-primary-active);
     }
   } @else if $color == 'success' {
-    border-color: var(--ods-color-success-100);
-    background-color: var(--ods-color-success-000);
-    color: var(--ods-color-success-900);
+    border-color: var(--ods-tag-border-color-success);
+    background-color: var(--ods-tag-background-color-success);
+    color: var(--ods-tag-text-color-success);
 
     &:focus-visible,
     &:hover {
-      border-color: var(--ods-color-success-200);
-      background-color: var(--ods-color-success-050);
+      border-color: var(--ods-tag-border-color-success-hover);
+      background-color: var(--ods-tag-background-color-success-hover);
     }
 
     &:active {
-      border-color: var(--ods-color-success-300);
-      background-color: var(--ods-color-success-100);
+      border-color: var(--ods-tag-border-color-success-active);
+      background-color: var(--ods-tag-background-color-success-active);
     }
   } @else if $color == 'warning' {
-    border-color: var(--ods-color-warning-100);
-    background-color: var(--ods-color-warning-000);
-    color: var(--ods-color-warning-900);
+    border-color: var(--ods-tag-border-color-warning);
+    background-color: var(--ods-tag-background-color-warning);
+    color: var(--ods-tag-text-color-warning);
 
     &:focus-visible,
     &:hover {
-      border-color: var(--ods-color-warning-200);
-      background-color: var(--ods-color-warning-050);
+      border-color: var(--ods-tag-border-color-warning-hover);
+      background-color: var(--ods-tag-background-color-warning-hover);
     }
 
     &:active {
-      border-color: var(--ods-color-warning-300);
-      background-color: var(--ods-color-warning-100);
+      border-color: var(--ods-tag-border-color-warning-active);
+      background-color: var(--ods-tag-background-color-warning-active);
     }
   }
 }

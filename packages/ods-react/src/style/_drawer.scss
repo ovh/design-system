@@ -2,20 +2,26 @@
 
 $animation-duration: 0.3s;
 $drawer-size: 320px;
-$drawer-max-size: calc(100% - 48px);
+$drawer-max-size: calc(100% - 48px); // [Deprecated] will be removed in next major version
+$drawer-max-height: calc(100% - calc(var(--ods-theme-padding-vertical) * 6));
+$drawer-max-width: calc(100% - calc(var(--ods-theme-padding-horizontal) * 6));
 
 @mixin ods-drawer() {
+  --ods-drawer-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 2);
+  --ods-drawer-padding-vertical: calc(var(--ods-theme-padding-vertical) * 2);
+  --ods-drawer-z-index: #{overlay.$ods-overlay-drawer-z-index};
+
   display: block;
   position: fixed;
   inset-block: auto;
   inset-inline: auto;
-  z-index: overlay.$ods-overlay-drawer-z-index;
+  z-index: var(--ods-drawer-z-index);
   margin: 0;
   outline: none;
   border: none;
-  box-shadow: 0 2px 8px 0 rgba(0, 14, 156, .2);
-  background: var(--ods-color-neutral-000);
-  padding: 16px;
+  box-shadow: var(--ods-theme-overlay-box-shadow);
+  background: var(--ods-theme-background-color);
+  padding: var(--ods-drawer-padding-vertical) var(--ods-drawer-padding-horizontal);
   width: auto;
   overflow: auto;
 }
@@ -27,7 +33,7 @@ $drawer-max-size: calc(100% - 48px);
     left: 0;
     width: 100%;
     height: $drawer-size;
-    max-height: $drawer-max-size;
+    max-height: $drawer-max-height;
     animation: drawer-open-bottom $animation-duration ease-in-out;
 
     @keyframes drawer-open-bottom {
@@ -54,7 +60,7 @@ $drawer-max-size: calc(100% - 48px);
     bottom: 0;
     left: 0;
     width: $drawer-size;
-    max-width: $drawer-max-size;
+    max-width: $drawer-max-width;
     height: 100%;
     animation: drawer-open-left $animation-duration ease-in-out;
 
@@ -82,7 +88,7 @@ $drawer-max-size: calc(100% - 48px);
     right: 0;
     bottom: 0;
     width: $drawer-size;
-    max-width: $drawer-max-size;
+    max-width: $drawer-max-width;
     height: 100%;
     animation: drawer-open-right $animation-duration ease-in-out;
 
@@ -111,7 +117,7 @@ $drawer-max-size: calc(100% - 48px);
     left: 0;
     width: 100%;
     height: $drawer-size;
-    max-height: $drawer-max-size;
+    max-height: $drawer-max-height;
     animation: drawer-open-top $animation-duration ease-in-out;
 
     @keyframes drawer-open-top {

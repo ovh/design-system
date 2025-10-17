@@ -26,8 +26,8 @@ interface CodeProp extends ComponentPropsWithRef<'div'> {
 
 const Code: FC<CodeProp> = forwardRef(({
   canCopy = false,
-  className,
   children,
+  className,
   labelCopy,
   labelCopySuccess,
   onCopy,
@@ -40,7 +40,6 @@ const Code: FC<CodeProp> = forwardRef(({
       ref={ ref }
       role={ canCopy ? 'group' : '' }
       { ...props }>
-
       <pre className={ style['code__preformat'] }>
         <code className={ style['code__preformat__code'] }>
           { children }
@@ -66,7 +65,6 @@ const Code: FC<CodeProp> = forwardRef(({
           </ClipboardTrigger>
         </Clipboard>
       }
-
     </div>
   );
 });

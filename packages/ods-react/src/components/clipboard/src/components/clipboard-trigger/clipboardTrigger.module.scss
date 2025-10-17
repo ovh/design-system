@@ -5,6 +5,8 @@
     }
 
     &__tooltip {
+      --clipboard-trigger-tooltip-column-gap: calc(var(--ods-theme-column-gap) / 2);
+
       margin: 0;
       font-size: 0.75rem;
       font-weight: 600;
@@ -12,7 +14,7 @@
       &--success {
         display: flex;
         flex-flow: row;
-        column-gap: 4px;
+        column-gap: var(--clipboard-trigger-tooltip-column-gap);
         align-items: center;
       }
 

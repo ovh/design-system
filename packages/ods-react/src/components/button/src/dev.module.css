@@ -12,3 +12,8 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
+
+.custom-button-critical {
+  --ods-theme-border-color-critical: #c47e01;
+  --ods-theme-background-color-critical: #ffa400;
+}

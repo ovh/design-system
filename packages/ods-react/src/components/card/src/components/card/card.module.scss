@@ -1,32 +1,35 @@
 @layer ods-atoms {
   .card {
+    --ods-card-border-radius: var(--ods-theme-border-radius);
+    --ods-card-border-width: var(--ods-theme-border-width);
+
     box-sizing: border-box;
     display: inline-block;
-    border: 1px solid;
-    border-radius: 8px;
+    border: var(--ods-card-border-width) solid;
+    border-radius: var(--ods-card-border-radius);
 
     &--critical {
-      border-color: var(--ods-color-critical-200);
+      border-color: var(--ods-color-critical-200); // TODO
     }
 
     &--information {
-      border-color: var(--ods-color-information-200);
+      border-color: var(--ods-color-information-200); // TODO
     }
 
     &--neutral {
-      border-color: var(--ods-color-neutral-200);
+      border-color: var(--ods-color-neutral-200); // TODO
     }
 
     &--primary {
-      border-color: var(--ods-color-primary-500);
+      border-color: var(--ods-color-primary-500); // TODO
     }
 
     &--success {
-      border-color: var(--ods-color-success-200);
+      border-color: var(--ods-color-success-200); // TODO
     }
 
     &--warning {
-      border-color: var(--ods-color-warning-200);
+      border-color: var(--ods-color-warning-200); // TODO
     }
   }
 }

@@ -1,7 +1,8 @@
 @mixin ods-skeleton() {
   display: block;
-  border-radius: .5rem;
-  background-color : var(--ods-color-neutral-050);
+  border-radius: var(--ods-theme-border-radius); // TODO use same as ProgressBar track
+  background-color : var(--ods-color-neutral-050); // TODO
+  // TODO
   background-image: linear-gradient(-90deg, var(--ods-color-neutral-050), var(--ods-color-neutral-100) 46%, var(--ods-color-neutral-100) 61%, var(--ods-color-neutral-050));
   background-position: -200% 0;
   background-repeat: repeat-y;

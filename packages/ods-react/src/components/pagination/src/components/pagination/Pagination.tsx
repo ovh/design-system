@@ -22,13 +22,13 @@ interface PaginationPageSizeChangeDetail {
 
 interface PaginationProp extends ComponentPropsWithRef<'nav'> {
   /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean;
-  /**
    * The initial active page. Use when you don't need to control the active page of the pagination.
    */
   defaultPage?: number;
+  /**
+   * Whether the component is disabled.
+   */
+  disabled?: boolean;
   /**
    * The tooltip label on the "next page" button.
    */
@@ -75,17 +75,17 @@ const defaultRenderTotalItemsLabel: PaginationTotalItemsLabelRenderer = ({ total
 
 const Pagination: FC<PaginationProp> = forwardRef(({
   className,
-  disabled,
   defaultPage,
+  disabled,
   labelTooltipNext,
   labelTooltipPrev,
   onPageChange,
   onPageSizeChange,
   page,
   pageSize = 10,
+  renderTotalItemsLabel = defaultRenderTotalItemsLabel,
   siblingCount,
   totalItems,
-  renderTotalItemsLabel = defaultRenderTotalItemsLabel,
   withPageSizeSelector,
   ...props
 }, ref): JSX.Element => {
@@ -117,7 +117,7 @@ const Pagination: FC<PaginationProp> = forwardRef(({
 
   return (
     <VendorPagination.Root
-      className={ classNames(style[ 'pagination' ], className) }
+      className={ classNames(style['pagination'], className) }
       count={ totalItems }
       data-ods="pagination"
       defaultPage={ defaultPage }

@@ -1,7 +1,7 @@
 @layer ods-atoms {
   .toggle {
     display: inline-flex;
-    gap: 8px;
+    gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
     cursor: pointer;
   }
 }

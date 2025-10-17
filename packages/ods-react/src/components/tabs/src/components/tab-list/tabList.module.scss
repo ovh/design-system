@@ -71,7 +71,7 @@ $tab-list-border-bottom-size: 2px;
         right: 0;
         bottom: 0;
         left: 0;
-        border-bottom: solid $tab-list-border-bottom-size var(--ods-color-neutral-100);
+        border-bottom: solid $tab-list-border-bottom-size var(--ods-color-neutral-100); // TODO
         content: '';
       }
 

@@ -7,11 +7,11 @@ $spacings: 0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 64;
     height: 1px;
 
     &--neutral {
-      background-color: var(--ods-color-neutral-700);
+      background-color: var(--ods-color-neutral-700); // TODO
     }
 
     &--primary {
-      background-color: var(--ods-color-neutral-100);
+      background-color: var(--ods-color-neutral-100); // TODO
     }
 
     @each $spacing in $spacings {

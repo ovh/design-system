@@ -1,6 +1,7 @@
 .custom-badge {
+  --ods-badge-border-radius: 16px;
+
   border: 2px solid #4b0082;
-  border-radius: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   background-color: #8a2be2;
   padding: 4px 8px;

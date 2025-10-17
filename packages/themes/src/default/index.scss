@@ -9,7 +9,7 @@
   //  -add z-indexes
   //    - expose here the base we use
   //    - expose each component z-index on its own
-  //  - update SCSS var to new notation (ex: $ods-color-background-disabled-default) + keep previous as deprecated + update usage in this file
+  //  - update SCSS var to new notation? (ex: $ods-color-background-disabled-default) + keep previous as deprecated + update usage in this file
   --ods-theme-background-color: #fff;
   --ods-theme-text-color: #{var.$ods-color-text};
   --ods-theme-heading-text-color: #{var.$ods-color-heading}; // TODO see select multiple merge text
@@ -17,8 +17,11 @@
   --ods-theme-border-color-selected: #{var.$ods-color-element-background-selected}; // TODO see pagination selected page button
   // --ods-theme-background-color-hover: #???; // TODO needed?
   // --ods-theme-background-color-active: #???; // TODO needed?
+  --ods-theme-anchor-text-color: #{var.$ods-color-primary-500};
+  --ods-theme-anchor-text-color-hover: #{var.$ods-color-primary-600};
+  --ods-theme-anchor-text-color-visited: #{var.$ods-color-primary-700};
   --ods-theme-backdrop-background-color: #{var.$ods-color-primary-500};
-  --ods-theme-backdrop-opacity: 0;
+  --ods-theme-backdrop-opacity: 0.75;
   --ods-theme-background-color-disabled: #{var.$ods-color-background-disabled-default};
   --ods-theme-border-color-disabled: #{var.$ods-color-border-disabled-default};
   --ods-theme-text-color-disabled: #{var.$ods-color-text-disabled-default};
@@ -29,9 +32,14 @@
   --ods-theme-outline-style: #{var.$ods-outline-style-default};
   --ods-theme-outline-width: #{var.$ods-outline-width};
   --ods-theme-border-radius: 8px;
-  --ods-theme-border-width: 2px;
+  --ods-theme-border-width: 1px;
   --ods-theme-padding-horizontal: 8px;
   --ods-theme-padding-vertical: 8px;
+  // TODO TBD
+  --ods-theme-column-gap: 8px;
+  --ods-theme-row-gap: 8px;
+  --ods-theme-font-family: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+  --ods-theme-font-family-code: 'Source Code Pro', arial;
 
   // Critical
   --ods-theme-background-color-critical: #{var.$ods-color-critical-500};
@@ -208,21 +216,23 @@
   --ods-theme-text-color-warning-outline-active: #{var.$ods-color-warning-900};
 
   // Form elements
-  --ods-theme-input-border-color: #{var.$ods-color-form-element-border-default};;
+  --ods-theme-input-background-color-invalid: #{var.$ods-color-form-element-background-selected-critical};
+  --ods-theme-input-border-color: #{var.$ods-color-form-element-border-default};
   --ods-theme-input-border-color-hover: #{var.$ods-color-form-element-border-hover-default};
-  --ods-theme-input-border-color-invalid: #{var.$ods-color-form-element-border-critical};;
-  // --ods-theme-input-background-color-invalid: #fff; // TODO needed?
-  // --ods-theme-input-text-color-invalid: #fff; // TODO needed?
+  --ods-theme-input-border-color-invalid: #{var.$ods-color-form-element-border-critical};
   --ods-theme-input-border-radius: calc(var(--ods-theme-border-radius) / 2);
-  --ods-theme-input-border-width: calc(var(--ods-theme-border-width) / 2);
+  --ods-theme-input-border-width: var(--ods-theme-border-width);
   --ods-theme-input-height: #{var.$ods-form-element-input-height};
-  --ods-theme-input-padding-horizontal: calc(var(--ods-theme-padding-horizontal) / 2);
-  --ods-theme-input-padding-vertical: var(--ods-theme-padding-vertical);
-  // --ods-theme-input-text-color: #fff; // TODO needed?
+  --ods-theme-input-padding-horizontal: var(--ods-theme-padding-horizontal);
+  --ods-theme-input-padding-vertical: calc(var(--ods-theme-padding-vertical) / 2);
+  --ods-theme-input-text-color: var(--ods-theme-text-color);
   --ods-theme-input-text-color-checked: var(--ods-theme-background-color);
+  --ods-theme-input-text-color-invalid: #{var.$ods-color-critical-500};
   --ods-theme-input-placeholder-text-color: #{var.$ods-color-form-element-text-placeholder-default};
   --ods-theme-input-background-color-checked: #{var.$ods-color-primary-500};
+  --ods-theme-input-background-color-checked-hover: #{var.$ods-color-primary-700};
   --ods-theme-input-border-color-checked: #{var.$ods-color-primary-500};
+  --ods-theme-input-border-color-checked-hover: #{var.$ods-color-primary-700};
   --ods-theme-input-overlay-item-background-color-hover: #{var.$ods-color-primary-100};
   --ods-theme-input-overlay-item-background-color-selected: #{var.$ods-color-primary-050};
   --ods-theme-input-overlay-item-background-color-selected-hover: #{var.$ods-color-primary-100};

@@ -4,13 +4,13 @@
 
     &[data-orientation="horizontal"] {
       flex-flow: row;
-      column-gap: 8px;
+      column-gap: var(--ods-theme-column-gap);
       align-items: center;
     }
 
     &[data-orientation="vertical"] {
       flex-flow: column;
-      row-gap: 8px;
+      row-gap: var(--ods-theme-row-gap);
     }
   }
 }

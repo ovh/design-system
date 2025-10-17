@@ -2,13 +2,12 @@
 
 @layer ods-molecules {
   .tab-content {
-    padding: 8px 0;
+    padding: var(--ods-theme-padding-vertical) 0;
 
     &:focus-visible {
       @include focus.ods-focus();
 
       outline-offset: 0;
     }
-
   }
 }

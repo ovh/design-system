@@ -4,13 +4,17 @@
 
 @layer ods-molecules {
   .datepicker-content {
-    border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-hover-default);
-    border-radius: var(--ods-border-radius-sm);
-    background-color: var(--ods-color-primary-000);
-    padding: 4px;
+    --ods-datepicker-content-padding-horizontal: calc(var(--ods-theme-padding-horizontal) / 2);
+    --ods-datepicker-content-padding-vertical: calc(var(--ods-theme-padding-vertical) / 2);
+
+    border: var(--ods-theme-input-border-width) solid var(--ods-theme-input-border-color-hover);
+    border-radius: var(--ods-theme-input-border-radius);
+    background-color: var(--ods-theme-background-color);
+    padding: var(--ods-datepicker-content-padding-vertical) var(--ods-datepicker-content-padding-horizontal);
 
     &--invalid {
-      border-color: var(--ods-color-form-element-border-critical);
+      // TODO need normalization with Select & Combobox
+      border-color: var(--ods-theme-input-border-color-invalid);
     }
 
     &__table {
@@ -21,7 +25,7 @@
         box-sizing: border-box;
         width: button.$ods-button-size-sm;
         height: button.$ods-button-size-sm;
-        color: var(--ods-color-text);
+        color: var(--ods-theme-text-color);
         font-size: 1rem;
         font-weight: 400;
 
@@ -35,6 +39,7 @@
           &[data-selected] {
             &[data-today] {
               &::after {
+                // TODO
                 background-color: var(--ods-color-element-text-selected);
               }
             }
@@ -42,10 +47,12 @@
 
           &[data-today] {
             &::after {
+              // TODO
               background-color: var(--ods-color-primary-500);
 
               &:hover {
                 &::after {
+                  // TODO
                   background-color: var(--ods-color-primary-700);
                 }
               }
@@ -81,17 +88,23 @@
 
         &:not(:disabled) {
           &[data-focus] {
+            // TODO
             background-color: var(--ods-color-primary-100);
+            // TODO
             color: var(--ods-color-primary-700);
           }
 
           &[data-selected] {
+            // TODO
             background-color: var(--ods-color-element-background-selected);
+            // TODO
             color: var(--ods-color-element-text-selected);
 
             &:focus-visible,
             &:hover {
+              // TODO
               background-color: var(--ods-color-element-background-selected);
+              // TODO
               color: var(--ods-color-element-text-selected);
             }
           }
@@ -103,14 +116,14 @@
           }
 
           &[data-unavailable] {
-            background-color: var(--ods-color-background-disabled-default);
-            color: var(--ods-color-text-disabled-default);
+            background-color: var(--ods-theme-background-color-disabled);
+            color: var(--ods-theme-border-color-disabled);
           }
         }
 
         &[data-selected] {
-          background-color: var(--ods-color-background-disabled-default);
-          color: var(--ods-color-text-disabled-default);
+          background-color: var(--ods-theme-background-color-disabled);
+          color: var(--ods-theme-border-color-disabled);
         }
       }
 

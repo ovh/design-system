@@ -1,8 +1,10 @@
 import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
+import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, type ReactNode, forwardRef } from 'react';
 import { type TreeViewCustomRendererArg, type TreeViewItem, useTreeView } from '../../contexts/useTreeView';
 import { TreeViewNodeBranch } from '../tree-view-node-branch/TreeViewNodeBranch';
 import { TreeViewNodeItem } from '../tree-view-node-item/TreeViewNodeItem';
+import style from './treeViewNode.module.scss';
 
 interface TreeViewNodeProp extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
   /**
@@ -41,7 +43,7 @@ const TreeViewNode: FC<TreeViewNodeProp> = forwardRef(({
       node={ processedItem }>
       { isBranch ? (
         <TreeViewNodeBranch
-          className={ className }
+          className={ classNames(style['tree-view-node'], className) }
           effectiveIndexPath={ effectiveIndexPath }
           getIndexPathForId={ getIndexPathForId }
           isDisabled={ isDisabled }
@@ -58,7 +60,7 @@ const TreeViewNode: FC<TreeViewNodeProp> = forwardRef(({
         />
       ) : (
         <TreeViewNodeItem
-          className={ className }
+          className={ classNames(style['tree-view-node'], className) }
           isDisabled={ isDisabled }
           item={ item }
           labelChildren={ children }

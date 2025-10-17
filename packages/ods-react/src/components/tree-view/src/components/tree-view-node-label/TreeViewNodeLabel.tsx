@@ -37,4 +37,6 @@ const TreeViewNodeLabel: FC<TreeViewNodeLabelProp> = ({
   );
 };
 
-export { TreeViewNodeLabel };
+export {
+  TreeViewNodeLabel,
+};

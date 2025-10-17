@@ -7,13 +7,13 @@
     @include checkbox.ods-checkbox();
 
     &:checked {
-      border-color: var(--ods-color-primary-500);
-      background: var(--ods-color-primary-500);
+      border-color: var(--ods-theme-input-border-color-checked);
+      background: var(--ods-theme-input-background-color-checked);
 
       &::before {
         @include icon.ods-icon();
 
-        content: "\e914";
+        content: '\e914';
       }
     }
 

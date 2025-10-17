@@ -18,12 +18,9 @@
     }
 
     &:not([data-invalid], :disabled, :read-only) {
-      &:focus {
-        border-color: var(--ods-color-form-element-border-focus-default);
-      }
-
+      &:focus,
       &:hover {
-        border-color: var(--ods-color-form-element-border-hover-default);
+        border-color: var(--ods-theme-input-border-color-hover);
       }
     }
 

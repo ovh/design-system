@@ -78,4 +78,7 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
 
 ClipboardTrigger.displayName = 'ClipboardTrigger';
 
-export { ClipboardTrigger, type ClipboardTriggerProp };
+export {
+  ClipboardTrigger,
+  type ClipboardTriggerProp,
+};

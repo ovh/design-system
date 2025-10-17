@@ -1,4 +1,4 @@
-$ods-overlay-arrow-background-color: var(--ods-color-primary-000);
+$ods-overlay-arrow-background-color: var(--ods-theme-background-color);
 $ods-overlay-arrow-size: 8px;
 $ods-overlay-base-z-index: 99;
 $ods-overlay-select-z-index: $ods-overlay-base-z-index;
@@ -9,7 +9,7 @@ $ods-overlay-drawer-z-index: $ods-overlay-modal-z-index - 1;
   z-index: $ods-overlay-base-z-index;
   border-radius: 4px;
   filter: drop-shadow(0 2px 8px rgba(0, 14, 156, 0.2));
-  background: var(--ods-color-primary-000);
-  padding: 8px;
-  color: var(--ods-color-text);
+  background: var(--ods-theme-background-color);
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+  color: var(--ods-theme-text-color);
 }

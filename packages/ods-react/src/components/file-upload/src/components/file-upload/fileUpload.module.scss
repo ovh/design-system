@@ -1,25 +1,25 @@
 @use '../../../../../style/state';
 
-$ods-file-upload-padding: 24px;
-$ods-file-upload-spacing: 8px;
-
 @layer ods-organisms {
   .file-upload {
     $file-upload: &;
 
+    --ods-file-upload-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 3);
+    --ods-file-upload-padding-vertical: calc(var(--ods-theme-padding-vertical) * 3);
+
     display: inline-flex;
     flex-flow: column;
-    border: dashed 1px var(--ods-color-form-element-border-default);
+    border: dashed 1px var(--ods-theme-input-border-color);
     border-radius: 4px;
     overflow: hidden;
-    color: var(--ods-color-text);
+    color: var(--ods-theme-input-text-color);
 
     &[data-disabled] {
       @include state.ods-is-disabled();
     }
 
     &#{$file-upload}--invalid {
-      border-color: var(--ods-color-form-element-border-critical);
+      border-color: var(--ods-theme-input-border-color-invalid);
     }
   }
 }

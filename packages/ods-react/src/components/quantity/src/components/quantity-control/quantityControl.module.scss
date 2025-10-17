@@ -1,14 +1,12 @@
 @use '../../../../../style/button';
 @use '../../../../../style/input';
 
-$ods-quantity-input-width: 50px;
-
 @layer ods-molecules {
   .quantity-control {
     display: inline-grid;
     grid-template-columns: max-content 1fr max-content;
     align-items: center;
-    width: calc(button.$ods-button-size-sm * 2 + $ods-quantity-input-width);
+    width: calc(button.$ods-button-size-sm * 2 + 50px);
 
     &__decrement {
       border-top-right-radius: 0;

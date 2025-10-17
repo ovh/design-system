@@ -1,7 +1,7 @@
 @layer ods-atoms {
   .radio {
     display: flex;
-    column-gap: 8px;
+    column-gap: var(--ods-theme-column-gap);
     align-items: center;
     cursor: pointer;
     width: max-content;

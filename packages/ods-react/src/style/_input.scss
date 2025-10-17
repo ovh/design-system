@@ -1,23 +1,23 @@
 @use './focus';
 @use './state';
 
-$ods-input-actions-padding-right: 4px;
-$ods-input-field-height: var(--ods-form-element-input-height);
-$ods-input-placeholder-color: var(--ods-color-form-element-text-placeholder-default);
+$ods-input-actions-padding-right: calc(var(--ods-theme-padding-horizontal) / 2);
+$ods-input-field-height: var(--ods-theme-input-height);
+$ods-input-placeholder-color: var(--ods-theme-input-placeholder-text-color);
 
 @mixin ods-input() {
   box-sizing: border-box;
-  border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
-  border-radius: var(--ods-border-radius-sm);
-  padding: 3px 8px;
+  border: var(--ods-theme-input-border-width) solid var(--ods-theme-input-border-color);
+  border-radius: var(--ods-theme-input-border-radius);
+  padding: var(--ods-theme-input-padding-vertical) var(--ods-theme-input-padding-horizontal);
   height: $ods-input-field-height;
-  color: var(--ods-color-text);
+  color: var(--ods-theme-input-text-color);
   font-family: inherit;
   font-size: 1rem;
 }
 
 @mixin ods-input-error() {
-  border-color: var(--ods-color-form-element-border-critical);
+  border-color: var(--ods-theme-input-border-color-invalid);
 }
 
 @mixin ods-input-state() {

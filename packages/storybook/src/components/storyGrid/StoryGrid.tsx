@@ -38,22 +38,20 @@ function StoryGrid({ components, themeClass, themeVariables }: Props): JSX.Eleme
   const iframeRefs = useRef<(HTMLIFrameElement | null)[]>([]);
 
   const injectThemeIntoIframe = (iframe: HTMLIFrameElement) => {
-    if (!iframe?.contentDocument || !themeVariables || !themeClass) return;
+    if (!iframe?.contentDocument || !iframe?.contentDocument?.head || !themeVariables || !themeClass) return;
 
     const styleId = 'theme-generator-variables';
     let styleElement = iframe.contentDocument.getElementById(styleId) as HTMLStyleElement;
-    
+
     if (!styleElement) {
       styleElement = iframe.contentDocument.createElement('style');
       styleElement.id = styleId;
       iframe.contentDocument.head.appendChild(styleElement);
     }
 
-    const cssText = `.${themeClass} {\n${Object.entries(themeVariables)
-      .map(([key, value]) => `  ${key}: ${value};`)
-      .join('\n')}\n}`;
-    
-    styleElement.textContent = cssText;
+    styleElement.textContent = `.${ themeClass } {\n${ Object.entries(themeVariables)
+      .map(([key, value]) => `  ${ key }: ${ value };`)
+      .join('\n') }\n}`;
     iframe.contentDocument.body.classList.add(themeClass);
   };
 

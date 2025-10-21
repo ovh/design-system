@@ -10,6 +10,7 @@ import { ThemeGeneratorSwitchThemeModal } from './themeGeneratorSwitchThemeModal
 import { ThemeGeneratorJSONModal } from './themeGeneratorJSONModal/ThemeGeneratorJSONModal';
 import defaultTokens from '@ovhcloud/ods-themes/default/tokens';
 import developerTokens from '@ovhcloud/ods-themes/developer/tokens';
+import { ThemeGeneratorPaletteModal } from './themeGeneratorPaletteModal/ThemeGeneratorPaletteModal';
 
 const ThemeGenerator = (): JSX.Element => {
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -20,6 +21,7 @@ const ThemeGenerator = (): JSX.Element => {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [pendingTheme, setPendingTheme] = useState<string | null>(null);
   const [isJsonOpen, setIsJsonOpen] = useState(false);
+  const [isPaletteOpen, setIsPaletteOpen] = useState(false);
 
   useEffect(() => {
     if (selectedTheme === 'custom') {
@@ -86,6 +88,12 @@ const ThemeGenerator = (): JSX.Element => {
               Custom
             </SwitchItem>
           </Switch>
+          <Button 
+            onClick={ () => setIsPaletteOpen(true) }
+            variant={ BUTTON_VARIANT.ghost }>
+            <Icon name={ ICON_NAME.magicWand }/>
+            Generate palette
+          </Button>
         </div>
         <div className={styles['theme-generator__menu__right']}>
           <OrientationSwitch
@@ -142,6 +150,20 @@ const ThemeGenerator = (): JSX.Element => {
       onCancel={() => {
         setPendingTheme(null);
         setIsConfirmOpen(false);
+      }}
+    />
+
+    <ThemeGeneratorPaletteModal
+      open={ isPaletteOpen }
+      onClose={ () => setIsPaletteOpen(false) }
+      currentVariables={ editedVariables }
+      onApply={(variables) => {
+        setEditedVariables((prev) => ({
+          ...prev,
+          ...variables,
+        }));
+        setSelectedTheme('custom');
+        setIsCustomTheme(true);
       }}
     />
 

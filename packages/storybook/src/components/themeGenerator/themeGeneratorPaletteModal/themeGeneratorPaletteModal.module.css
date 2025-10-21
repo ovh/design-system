@@ -1,0 +1,61 @@
+.theme-generator-palette-modal {
+  min-width: 700px;
+  max-width: 80vw;
+  max-height: 85vh;
+}
+
+.theme-generator-palette-modal__preview {
+  padding: 1rem;
+  height: 500px;
+  overflow: auto;
+}
+
+.theme-generator-palette-modal__tree-view {
+  width: 100%;
+}
+
+.theme-generator-palette-modal__tree-item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.theme-generator-palette-modal__tree-item__name {
+  flex: 1;
+  color: var(--ods-color-text);
+}
+
+.theme-generator-palette-modal__tree-item__controls {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.theme-generator-palette-modal__tree-item__seed-input {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 26px;
+}
+
+.theme-generator-palette-modal__tree-item__color-input {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 26px;
+}
+
+.theme-generator-palette-modal__actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  border-top: 1px solid var(--ods-color-neutral-200);
+  padding-top: 16px;
+}

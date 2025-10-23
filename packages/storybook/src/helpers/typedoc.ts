@@ -9,6 +9,7 @@ type TypedocEnumMember = {
 
 type ComponentTypedoc = {
   enums: {
+    deprecated?: boolean,
     members: TypedocEnumMember[],
     name: string,
   }[],
@@ -41,6 +42,7 @@ function getComponentTypedoc(data: ProjectReflection): ComponentTypedoc {
     .filter((declaration) => declaration.type && declaration.type.type === 'union');
 
   const enums = enumDeclarations.map((enumDeclaration) => ({
+    deprecated: enumDeclaration.comment?.blockTags.some(({ tag }) => tag === TAG.deprecated),
     name: enumDeclaration.name,
     members: filterByKinds(enumDeclaration.children, [ReflectionKind.EnumMember])
       .map((member) => ({
@@ -49,6 +51,7 @@ function getComponentTypedoc(data: ProjectReflection): ComponentTypedoc {
       })),
   }));
   const fakeEnums = fakeEnumDeclarations.map((fakeEnumDeclaration) => ({
+    deprecated: false,
     name: fakeEnumDeclaration.name,
     members: filterByKinds((fakeEnumDeclaration.type as ReflectionType)?.declaration.children, [ReflectionKind.EnumMember])
       .map((member) => ({
@@ -59,6 +62,7 @@ function getComponentTypedoc(data: ProjectReflection): ComponentTypedoc {
 
   return {
     enums: sortByName(enums.concat(fakeEnums).map((enumDoc) => ({
+      deprecated: enumDoc.deprecated,
       name: enumDoc.name,
       members: sortByName(enumDoc.members),
     }))),

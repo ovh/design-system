@@ -1,3 +1,4 @@
+import { BADGE_COLOR, BADGE_SIZE, Badge } from '@ovhcloud/ods-react';
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import { type ModuleExports } from '@storybook/types';
 import React, { Fragment, type JSX, useMemo } from 'react';
@@ -56,7 +57,16 @@ const TechnicalSpecification = ({ data, extraInfo, of }: Props): JSX.Element => 
             enums.map((enumObj, idx) => (
               <Fragment key={ idx }>
                 <Heading label={ enumObj.name }
-                         level={ 3 } />
+                         level={ 3 }>
+                  {
+                    enumObj.deprecated &&
+                    <Badge
+                      color={ BADGE_COLOR.warning }
+                      size={ BADGE_SIZE.sm }>
+                      Deprecated
+                    </Badge>
+                  }
+                </Heading>
 
                 <EnumList
                   className={ styles['technical-specification__enums__keys'] }

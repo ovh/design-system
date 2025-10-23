@@ -1,4 +1,4 @@
-import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
+import { BADGE_COLOR, BADGE_SIZE, ICON_NAME, Badge, Icon } from '@ovhcloud/ods-react';
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import React, { type JSX, useMemo } from 'react';
@@ -75,6 +75,14 @@ const ClassModule = ({ component, extraInfo }: ClassModuleProp): JSX.Element => 
                   <tr key={ idx }>
                     <td>
                       { prop.name }
+                      {
+                        prop.deprecated &&
+                        <Badge
+                          color={ BADGE_COLOR.warning }
+                          size={ BADGE_SIZE.sm }>
+                          Deprecated
+                        </Badge>
+                      }
                     </td>
 
                     <td>

@@ -2,11 +2,13 @@ import { type Documentation, type FunctionSignatureType, type LiteralType, type 
 
 enum TAG {
   defaultValue = '@default-value',
+  deprecated = '@deprecated',
   internal = '@internal',
   type = '@type',
 }
 
 type ComponentProp = {
+  deprecated: boolean,
   description: string,
   defaultValue: string,
   isOptional: boolean,
@@ -47,6 +49,7 @@ function getComponentProp(name: string, prop: PropDescriptor): ComponentProp | u
   }
 
   return {
+    deprecated: tagsMap.has(TAG.deprecated),
     description: prop.description || '',
     defaultValue: prop.defaultValue?.value?.toString() || tagsMap.get(TAG.defaultValue) || 'undefined',
     isOptional: !prop.required,

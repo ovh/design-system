@@ -1,7 +1,9 @@
 import React, { type JSX, useState, useEffect, useMemo } from 'react';
-import { Button, BUTTON_SIZE, BUTTON_VARIANT, Modal, ModalBody, ModalContent, Text, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';
+import { Button, BUTTON_VARIANT, Modal, ModalBody, ModalContent, Text, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';
+ 
 import styles from './themeGeneratorPaletteModal.module.css';
-import { generatePalette, formatPaletteAsCssVariables, COLOR_FAMILIES, type ColorFamily, type PaletteResult } from './paletteGenerator';
+import { generatePalette, formatPaletteAsCssVariables, COLOR_FAMILIES, PALETTE_STEPS, type ColorFamily, type PaletteResult } from './paletteGenerator';
+import { ThemeGeneratorColorPicker } from '../ThemeGeneratorColorPicker';
 
 interface TreeItem {
   id: string;
@@ -31,8 +33,6 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
   }, [currentVariables]);
 
   const treeItems = useMemo(() => {
-    const steps = ['000', '025', '050', '075', '100', '200', '300', '400', '500', '600', '700', '800', '900'];
-
     return COLOR_FAMILIES.map((family) => {
       let palette: PaletteResult;
 
@@ -40,13 +40,13 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
         palette = generatedPalettes[family];
       } else {
         palette = {};
-        for (const step of steps) {
+        for (const step of PALETTE_STEPS) {
           const varName = `--ods-color-${family}-${step}`;
           palette[step] = currentVariables[varName] || '#000000';
         }
       }
 
-      const children: TreeItem[] = steps.map((step) => ({
+      const children: TreeItem[] = PALETTE_STEPS.map((step) => ({
         id: `${family}-${step}`,
         name: `--ods-color-${family}-${step}`,
         value: palette[step] || '#000000',
@@ -66,12 +66,15 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
     }
   }
 
-  function handleGeneratePalette(family: ColorFamily) {
+  function handleSeedColorChange(family: ColorFamily, color: string) {
+    setSeedColors(prev => ({
+      ...prev,
+      [family]: color,
+    }));
+    
+    // Generate palette automatically when seed color changes
     try {
-      const seedColor = seedColors[family];
-      if (!seedColor) return;
-
-      const palette = generatePalette(seedColor, 'light');
+      const palette = generatePalette(color);
       setGeneratedPalettes(prev => ({
         ...prev,
         [family]: palette,
@@ -79,13 +82,6 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
     } catch (error) {
       console.error('Failed to generate palette:', error);
     }
-  }
-
-  function handleSeedColorChange(family: ColorFamily, color: string) {
-    setSeedColors(prev => ({
-      ...prev,
-      [family]: color,
-    }));
   }
 
   function handleApply() {
@@ -114,44 +110,24 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
                   <TreeViewNode key={item.id} item={item}>
                     {({ item, isBranch }: { item: TreeItem; isBranch: boolean }) => (
                       <div className={styles['theme-generator-palette-modal__tree-item']}>
-                        <Text className={styles['theme-generator-palette-modal__tree-item__name']}>
-                          {item.name}
-                        </Text>
                         {isBranch ? (
-                          <div className={styles['theme-generator-palette-modal__tree-item__controls']}>
-                            <input
-                              className={styles['theme-generator-palette-modal__tree-item__seed-input']}
-                              type="color"
+                          <>
+                            <Text className={styles['theme-generator-palette-modal__tree-item-name']}>
+                              {item.name}
+                            </Text>
+                            <ThemeGeneratorColorPicker
                               value={seedColors[item.id as ColorFamily] || '#000000'}
-                              onChange={(e) => {
-                                e.stopPropagation();
-                                handleSeedColorChange(item.id as ColorFamily, e.target.value);
-                              }}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                              }}
+                              onChange={(color) => handleSeedColorChange(item.id as ColorFamily, color)}
+                              showLabel={false}
                             />
-                            <Button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleGeneratePalette(item.id as ColorFamily);
-                              }}
-                              variant={BUTTON_VARIANT.default}
-                              size={BUTTON_SIZE.sm}
-                            >
-                              Generate
-                            </Button>
-                          </div>
+                          </>
                         ) : (
                           item.value && (
-                            <input
-                              className={styles['theme-generator-palette-modal__tree-item__color-input']}
-                              type="color"
+                            <ThemeGeneratorColorPicker
+                              label={item.name}
                               value={item.value}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                              }}
-                              readOnly
+                              onChange={() => {}}
+                              disabled
                             />
                           )
                         )}
@@ -178,5 +154,3 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
 };
 
 export { ThemeGeneratorPaletteModal };
-
-

@@ -5,7 +5,7 @@
 }
 
 .theme-generator-palette-modal__preview {
-  padding: 1rem;
+  padding: 16px;
   height: 500px;
   overflow: auto;
 }
@@ -16,40 +16,15 @@
 
 .theme-generator-palette-modal__tree-item {
   display: flex;
-  gap: 0.5rem;
+  gap: 8px;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.theme-generator-palette-modal__tree-item__name {
+.theme-generator-palette-modal__tree-item-name {
   flex: 1;
   color: var(--ods-color-text);
-}
-
-.theme-generator-palette-modal__tree-item__controls {
-  display: flex;
-  flex-shrink: 0;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.theme-generator-palette-modal__tree-item__seed-input {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 0;
-  width: 24px;
-  height: 26px;
-}
-
-.theme-generator-palette-modal__tree-item__color-input {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 0;
-  width: 24px;
-  height: 26px;
 }
 
 .theme-generator-palette-modal__actions {

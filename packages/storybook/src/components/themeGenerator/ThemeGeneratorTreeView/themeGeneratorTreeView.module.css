@@ -4,6 +4,13 @@
   overflow: auto;
 }
 
+.theme-generator-tree-view__loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px;
+}
+
 .theme-generator-tree-view__item {
   display: flex;
   gap: 0.5rem;
@@ -12,16 +19,7 @@
   width: 100%;
 }
 
-.theme-generator-tree-view__item__name {
+.theme-generator-tree-view__item-name {
   flex: 1;
   color: var(--ods-color-text);
-}
-
-.theme-generator-tree-view__item__color-input {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 0;
-  width: 24px;
-  height: 26px;
 }

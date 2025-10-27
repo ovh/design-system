@@ -4729,9 +4729,9 @@ __metadata:
     "@storybook/react": 8.6.12
     "@storybook/react-vite": 8.6.12
     "@storybook/types": 8.6.12
-    "@types/culori": ^4.0.1
+    "@types/culori": 4.0.1
     classnames: 2.5.1
-    culori: ^4.0.2
+    culori: 4.0.2
     custom-elements-manifest: 1.0.0
     lz-string: 1.5.0
     node-fetch: 2.7.0
@@ -5742,7 +5742,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/culori@npm:^4.0.1":
+"@types/culori@npm:4.0.1":
   version: 4.0.1
   resolution: "@types/culori@npm:4.0.1"
   checksum: 4e7552951d0b32b728c51bbbb8c5c2fd5d882fb948f0168a2fd6e49654f2a0304c4fe10b606e3e3ad15fcddef037729a35b68b08bfa7ca70a0d889a98ce5f79f
@@ -10205,7 +10205,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"culori@npm:^4.0.2":
+"culori@npm:4.0.2":
   version: 4.0.2
   resolution: "culori@npm:4.0.2"
   checksum: 2edeba0eb666ae55dd6cc95b124f3a458283689b18bdf5319b155e1dc2c477bbfcc51d0fdbed06e1b80343e291d9e24ff2b88f32a9d3767fd6411ecdb8befdc3

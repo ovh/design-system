@@ -1,7 +1,9 @@
 import { Spinner, Text, TreeView, TreeViewNode, TreeViewNodes, SPINNER_SIZE, TEXT_PRESET } from '@ovhcloud/ods-react';
 import React, { useMemo } from 'react';
 import { categorizeCssVariables } from '../themeVariableUtils';
+import { ThemeGeneratorColorPicker } from '../ThemeGeneratorColorPicker';
 import styles from './themeGeneratorTreeView.module.css';
+
 interface TreeItem {
   id: string;
   name: string;
@@ -42,47 +44,41 @@ const groupColorsByPrefix = (colors: Array<{ name: string; value: string }>): Tr
 const ThemeGeneratorTreeView = ({ variables, onVariableChange }: ThemeGeneratorTreeViewProps) => {
   const items: TreeItem[] = useMemo(() => {
     const categorized = categorizeCssVariables(variables);
-    
     return groupColorsByPrefix(categorized.colors);
   }, [variables]);
 
   if (Object.keys(variables).length === 0) {
-    return <div className={styles['theme-generator-tree-view']}>
-      <Spinner size={SPINNER_SIZE.xs} />
-      <Text preset={TEXT_PRESET.caption}>
-        Loading theme...
-        </Text>
-      </div>;
+    return (
+      <div className={styles['theme-generator-tree-view__loading']}>
+        <Spinner size={SPINNER_SIZE.xs} />
+        <Text preset={TEXT_PRESET.caption}>Loading theme...</Text>
+      </div>
+    );
   }
 
   return (
-    <TreeView
-      className={styles['theme-generator-tree-view']}
-      items={items}
-      >
+    <TreeView className={styles['theme-generator-tree-view']} items={items}>
       <TreeViewNodes>
         {items.map((item) => (
           <TreeViewNode key={item.id} item={item}>
-            {({ item, isBranch }: { item: TreeItem; isBranch: boolean }) => (
-              <div className={styles['theme-generator-tree-view__item']}>
-                <Text className={styles['theme-generator-tree-view__item__name']}>
-                  {item.name}
-                </Text>
-                {!isBranch && item.value && (
-                  <input
-                    className={styles['theme-generator-tree-view__item__color-input']}
-                    type="color"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                    }}
-                    onChange={(e) => {
-                      onVariableChange(item.name, e.target.value);
-                    }}
-                    value={item.value}
-                  />
-                )}
-              </div>
-            )}
+            {({ item, isBranch }: { item: TreeItem; isBranch: boolean }) => {
+              if (isBranch || !item.value) {
+                return (
+                  <div className={styles['theme-generator-tree-view__item']}>
+                    <Text className={styles['theme-generator-tree-view__item-name']}>{item.name}</Text>
+                  </div>
+                );
+              }
+
+              return (
+                <ThemeGeneratorColorPicker
+                  key={item.id}
+                  label={item.name}
+                  value={item.value}
+                  onChange={(value) => onVariableChange(item.name, value)}
+                />
+              );
+            }}
           </TreeViewNode>
         ))}
       </TreeViewNodes>

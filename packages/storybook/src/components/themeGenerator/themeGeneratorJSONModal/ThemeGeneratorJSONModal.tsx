@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState, type JSX } from 'react';
-import { Button, BUTTON_VARIANT, Modal, ModalBody, ModalContent, Text, TEXT_PRESET } from '@ovhcloud/ods-react';
+import { Button, BUTTON_VARIANT, Modal, ModalBody, ModalContent, Text, TEXT_PRESET, Textarea } from '@ovhcloud/ods-react';
 import styles from './themeGeneratorJSONModal.module.css';
 
 interface ThemeGeneratorJSONProps {
@@ -54,7 +54,7 @@ const ThemeGeneratorJSONModal = ({ open, variables, onClose, onReplace }: ThemeG
             Theme variables (JSON)
           </Text>
 
-          <textarea
+          <Textarea
             className={ styles['theme-generator-json-modal__textarea'] }
             onChange={(e) => setTextValue(e.target.value)}
             spellCheck={false}

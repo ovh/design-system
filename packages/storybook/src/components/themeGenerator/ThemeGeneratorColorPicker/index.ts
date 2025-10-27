@@ -1,0 +1,2 @@
+export { ThemeGeneratorColorPicker } from './ThemeGeneratorColorPicker';
+

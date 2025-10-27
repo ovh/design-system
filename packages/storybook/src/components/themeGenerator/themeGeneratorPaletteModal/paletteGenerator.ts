@@ -1,6 +1,29 @@
 import { formatHex, oklch, parse } from 'culori';
 
-const PALETTE_STEPS = ['000', '025', '050', '075', '100', '200', '300', '400', '500', '600', '700', '800', '900'] as const;
+const CHROMA_MULTIPLIERS: Record<string, number> = {
+  '000': 0.30,
+  '025': 0.40,
+  '050': 0.55,
+  '075': 0.70,
+  '100': 0.80,
+  '200': 0.90,
+  '300': 0.95,
+  '400': 0.98,
+  '500': 1.00,
+  '600': 0.85,
+  '700': 0.65,
+  '800': 0.40,
+  '900': 0.20,
+};
+
+const COLOR_FAMILIES = Object.freeze([
+  'neutral',
+  'primary',
+  'information',
+  'success',
+  'warning',
+  'critical',
+] as const);
 
 const LIGHTNESS_MAP_LIGHT: Record<string, number> = {
   '000': 0.95,
@@ -18,24 +41,38 @@ const LIGHTNESS_MAP_LIGHT: Record<string, number> = {
   '900': 0.15,
 };
 
-const CHROMA_MULTIPLIERS: Record<string, number> = {
-  '000': 0.30,
-  '025': 0.40,
-  '050': 0.55,
-  '075': 0.70,
-  '100': 0.80,
-  '200': 0.90,
-  '300': 0.95,
-  '400': 0.98,
-  '500': 1.00,
-  '600': 0.85,
-  '700': 0.65,
-  '800': 0.40,
-  '900': 0.20,
-};
+const PALETTE_STEPS = Object.freeze(['000', '025', '050', '075', '100', '200', '300', '400', '500', '600', '700', '800', '900'] as const);
 
-export interface PaletteResult {
+type ColorFamily = typeof COLOR_FAMILIES[number];
+
+interface PaletteResult {
   [step: string]: string;
+}
+
+/**
+ * Formats palette result into CSS variable format
+ *
+ * @param family - Color family name
+ * @param palette - Generated palette
+ * @returns Record of CSS variable names to hex values
+ *
+ * @example
+ * const palette = generatePalette('#466AFF', 'light');
+ * const cssVars = formatPaletteAsCssVariables('primary', palette);
+ * // Returns: { '--ods-color-primary-000': '#ffffff', ... }
+ */
+function formatPaletteAsCssVariables(
+  family: ColorFamily,
+  palette: PaletteResult
+): Record<string, string> {
+  const result: Record<string, string> = {};
+
+  for (const [step, hex] of Object.entries(palette)) {
+    const varName = `--ods-color-${family}-${step}`;
+    result[varName] = hex;
+  }
+
+  return result;
 }
 
 /**
@@ -48,7 +85,7 @@ export interface PaletteResult {
  * const palette = generatePalette('#466AFF');
  * // Returns: { '000': '#ffffff', '025': '#f3fdff', ... }
  */
-export function generatePalette(seedHex: string): PaletteResult {
+function generatePalette(seedHex: string): PaletteResult {
   const seedColor = parse(seedHex);
   if (!seedColor) {
     throw new Error(`Invalid hex color: ${seedHex}`);
@@ -84,41 +121,11 @@ export function generatePalette(seedHex: string): PaletteResult {
   return palette;
 }
 
-export const COLOR_FAMILIES = [
-  'neutral',
-  'primary',
-  'information',
-  'success',
-  'warning',
-  'critical',
-] as const;
-
-export type ColorFamily = typeof COLOR_FAMILIES[number];
-
-/**
- * Formats palette result into CSS variable format
- *
- * @param family - Color family name
- * @param palette - Generated palette
- * @returns Record of CSS variable names to hex values
- *
- * @example
- * const palette = generatePalette('#466AFF', 'light');
- * const cssVars = formatPaletteAsCssVariables('primary', palette);
- * // Returns: { '--ods-color-primary-000': '#ffffff', ... }
- */
-export function formatPaletteAsCssVariables(
-  family: ColorFamily,
-  palette: PaletteResult
-): Record<string, string> {
-  const result: Record<string, string> = {};
-
-  for (const [step, hex] of Object.entries(palette)) {
-    const varName = `--ods-color-${family}-${step}`;
-    result[varName] = hex;
-  }
-
-  return result;
-}
-
-
+export {
+  COLOR_FAMILIES,
+  type ColorFamily,
+  formatPaletteAsCssVariables,
+  generatePalette,
+  PALETTE_STEPS,
+  type PaletteResult,
+};

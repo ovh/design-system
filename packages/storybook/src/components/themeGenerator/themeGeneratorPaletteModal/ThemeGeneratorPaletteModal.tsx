@@ -102,17 +102,17 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
         <ModalBody>
           <div className={styles['theme-generator-palette-modal__preview']}>
             <TreeView
-              className={styles['theme-generator-palette-modal__tree-view']}
+              className={styles['theme-generator-palette-modal__preview__tree-view']}
               items={treeItems}
             >
               <TreeViewNodes>
                 {treeItems.map((item) => (
                   <TreeViewNode key={item.id} item={item}>
                     {({ item, isBranch }: { item: TreeItem; isBranch: boolean }) => (
-                      <div className={styles['theme-generator-palette-modal__tree-item']}>
+                      <div className={styles['theme-generator-palette-modal__preview__tree-view__tree-item']}>
                         {isBranch ? (
                           <>
-                            <Text className={styles['theme-generator-palette-modal__tree-item-name']}>
+                            <Text className={styles['theme-generator-palette-modal__preview__tree-view__tree-item__name']}>
                               {item.name}
                             </Text>
                             <ThemeGeneratorColorPicker

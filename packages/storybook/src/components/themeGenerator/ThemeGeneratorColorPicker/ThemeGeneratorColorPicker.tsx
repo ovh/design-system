@@ -1,6 +1,6 @@
-import { Button, BUTTON_SIZE, BUTTON_COLOR, BUTTON_VARIANT, Icon, ICON_NAME } from '@ovhcloud/ods-react';
 import { ColorPicker, parseColor } from '@ark-ui/react/color-picker';
 import React from 'react';
+import { FormField, FormFieldLabel, Input, Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';
 import styles from './themeGeneratorColorPicker.module.css';
 
 interface ThemeGeneratorColorPickerProps {
@@ -75,10 +75,10 @@ const ThemeGeneratorColorPicker = ({
   return (
     <ColorPicker.Root
       className={`${styles['theme-generator-color-picker']} ${className}`}
-      value={parseColorWithRoundedAlpha(value)}
-      onValueChange={handleValueChange}
-      disabled={disabled}
-      onClick={handleClick}
+      disabled={ disabled }
+      onClick={ handleClick }
+      onValueChange={ handleValueChange }
+      value={ parseColorWithRoundedAlpha(value) }
     >
       {showLabel && label && (
         <ColorPicker.Label className={styles['theme-generator-color-picker__label']}>
@@ -87,47 +87,59 @@ const ThemeGeneratorColorPicker = ({
       )}
 
       <ColorPicker.Control className={styles['theme-generator-color-picker__control']}>
-        <ColorPicker.Trigger className={styles['theme-generator-color-picker__trigger']}>
-          <ColorPicker.ValueSwatch className={styles['theme-generator-color-picker__swatch']} />
+        <ColorPicker.Trigger className={styles['theme-generator-color-picker__control__trigger']}>
+          <ColorPicker.ValueSwatch className={styles['theme-generator-color-picker__control__trigger__swatch']} />
         </ColorPicker.Trigger>
       </ColorPicker.Control>
 
       <ColorPicker.Positioner>
         <ColorPicker.Content className={styles['theme-generator-color-picker__popover']}>
-          <ColorPicker.Area className={styles['theme-generator-color-picker__area']}>
-            <ColorPicker.AreaBackground className={styles['theme-generator-color-picker__area-background']} />
-            <ColorPicker.AreaThumb className={styles['theme-generator-color-picker__area-thumb']} />
+          <ColorPicker.Area className={styles['theme-generator-color-picker__popover__area']}>
+            <ColorPicker.AreaBackground className={styles['theme-generator-color-picker__popover__area__background']} />
+            <ColorPicker.AreaThumb className={styles['theme-generator-color-picker__popover__area__thumb']} />
           </ColorPicker.Area>
 
-          <ColorPicker.ChannelSlider channel="hue" className={styles['theme-generator-color-picker__slider']}>
-            <ColorPicker.ChannelSliderTrack className={styles['theme-generator-color-picker__slider-track']} />
-            <ColorPicker.ChannelSliderThumb className={styles['theme-generator-color-picker__slider-thumb']} />
+          <ColorPicker.ChannelSlider channel="hue" className={styles['theme-generator-color-picker__popover__slider']}>
+            <ColorPicker.ChannelSliderTrack className={styles['theme-generator-color-picker__popover__slider__track']} />
+            <ColorPicker.ChannelSliderThumb className={styles['theme-generator-color-picker__popover__slider__thumb']} />
           </ColorPicker.ChannelSlider>
 
-          <ColorPicker.ChannelSlider channel="alpha" className={styles['theme-generator-color-picker__slider']}>
-            <ColorPicker.TransparencyGrid className={styles['theme-generator-color-picker__transparency-grid']} />
-            <ColorPicker.ChannelSliderTrack className={styles['theme-generator-color-picker__slider-track']} />
-            <ColorPicker.ChannelSliderThumb className={styles['theme-generator-color-picker__slider-thumb']} />
+          <ColorPicker.ChannelSlider channel="alpha" className={styles['theme-generator-color-picker__popover__slider']}>
+            <ColorPicker.TransparencyGrid className={styles['theme-generator-color-picker__popover__slider__transparency-grid']} />
+            <ColorPicker.ChannelSliderTrack className={styles['theme-generator-color-picker__popover__slider__track']} />
+            <ColorPicker.ChannelSliderThumb className={styles['theme-generator-color-picker__popover__slider__thumb']} />
           </ColorPicker.ChannelSlider>
 
-          <div className={styles['theme-generator-color-picker__inputs']}>
-            <ColorPicker.EyeDropperTrigger asChild>
-              <Button variant={BUTTON_VARIANT.default} size={BUTTON_SIZE.sm}>
-                <Icon name={ICON_NAME.flaskHalf} color={BUTTON_COLOR.primary} />
-              </Button>
-            </ColorPicker.EyeDropperTrigger>
-            <ColorPicker.ChannelInput
-              channel="hex"
-              className={styles['theme-generator-color-picker__channel-input']}
-              onKeyDown={(e) => e.stopPropagation()}
-            />
-            <ColorPicker.ChannelInput
-              channel="alpha"
-              className={styles['theme-generator-color-picker__channel-input']}
-              onKeyDown={handleAlphaKeyDown}
-              onBlur={handleAlphaBlur}
-              step={0.01}
-            />
+          <div className={styles['theme-generator-color-picker__popover__inputs']}>
+            <FormField>
+              <FormFieldLabel>
+                Hex
+              </FormFieldLabel>
+              <ColorPicker.ChannelInput
+                asChild
+                channel="hex"
+                onKeyDown={(e) => e.stopPropagation()}
+              >
+                <Input type="text" />
+              </ColorPicker.ChannelInput>
+            </FormField>
+            <FormField>
+              <FormFieldLabel>
+                Alpha
+              </FormFieldLabel>
+              <ColorPicker.ChannelInput
+                asChild
+                channel="alpha"
+                onKeyDown={handleAlphaKeyDown}
+                onBlur={handleAlphaBlur}
+              >
+                <Quantity min={0} max={1} step={0.01}>
+                  <QuantityControl>
+                    <QuantityInput />
+                  </QuantityControl>
+                </Quantity>
+              </ColorPicker.ChannelInput>
+            </FormField>
           </div>
         </ColorPicker.Content>
       </ColorPicker.Positioner>

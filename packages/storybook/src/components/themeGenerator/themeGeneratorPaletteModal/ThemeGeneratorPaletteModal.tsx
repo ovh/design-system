@@ -1,9 +1,20 @@
 import React, { type JSX, useState, useEffect, useMemo } from 'react';
 import { Button, BUTTON_VARIANT, Modal, ModalBody, ModalContent, Text, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';
- 
 import styles from './themeGeneratorPaletteModal.module.css';
 import { generatePalette, formatPaletteAsCssVariables, COLOR_FAMILIES, PALETTE_STEPS, type ColorFamily, type PaletteResult } from './paletteGenerator';
-import { ThemeGeneratorColorPicker } from '../ThemeGeneratorColorPicker';
+import { ThemeGeneratorColorPicker } from '../ThemeGeneratorColorPicker/ThemeGeneratorColorPicker';
+
+const ODS_COLOR_PREFIX = '--ods-color';
+
+/**
+ * Builds a CSS variable name for a color token
+ * @param family - Color family (e.g., 'primary', 'neutral')
+ * @param step - Optional color step (e.g., '500', '100')
+ * @returns CSS variable name (e.g., '--ods-color-primary-500')
+ */
+function buildColorVar(family: string, step?: string): string {
+  return step ? `${ODS_COLOR_PREFIX}-${family}-${step}` : `${ODS_COLOR_PREFIX}-${family}`;
+}
 
 interface TreeItem {
   id: string;
@@ -22,11 +33,12 @@ interface ThemeGeneratorPaletteModalProps {
 const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }: ThemeGeneratorPaletteModalProps): JSX.Element => {
   const [generatedPalettes, setGeneratedPalettes] = useState<Record<ColorFamily, PaletteResult>>({} as Record<ColorFamily, PaletteResult>);
   const [seedColors, setSeedColors] = useState<Record<ColorFamily, string>>({} as Record<ColorFamily, string>);
+  const [errors, setErrors] = useState<Partial<Record<ColorFamily, string>>>({});
 
   useEffect(() => {
     const initialSeeds: Record<ColorFamily, string> = {} as Record<ColorFamily, string>;
     COLOR_FAMILIES.forEach((family) => {
-      const defaultColorVar = `--ods-color-${family}-500`;
+      const defaultColorVar = buildColorVar(family, '500');
       initialSeeds[family] = currentVariables[defaultColorVar] || '#000000';
     });
     setSeedColors(initialSeeds);
@@ -34,23 +46,18 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
 
   const treeItems = useMemo(() => {
     return COLOR_FAMILIES.map((family) => {
-      let palette: PaletteResult;
+      const palette = generatedPalettes[family];
 
-      if (generatedPalettes[family]) {
-        palette = generatedPalettes[family];
-      } else {
-        palette = {};
-        for (const step of PALETTE_STEPS) {
-          const varName = `--ods-color-${family}-${step}`;
-          palette[step] = currentVariables[varName] || '#000000';
-        }
-      }
+      const children: TreeItem[] = PALETTE_STEPS.map((step) => {
+        const varName = buildColorVar(family, step);
+        const value = palette?.[step] || currentVariables[varName] || '#000000';
 
-      const children: TreeItem[] = PALETTE_STEPS.map((step) => ({
-        id: `${family}-${step}`,
-        name: `--ods-color-${family}-${step}`,
-        value: palette[step] || '#000000',
-      }));
+        return {
+          id: `${family}-${step}`,
+          name: varName,
+          value,
+        };
+      });
 
       return {
         id: family,
@@ -71,8 +78,13 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
       ...prev,
       [family]: color,
     }));
-    
-    // Generate palette automatically when seed color changes
+
+    setErrors(prev => {
+      const newErrors = { ...prev };
+      delete newErrors[family];
+      return newErrors;
+    });
+
     try {
       const palette = generatePalette(color);
       setGeneratedPalettes(prev => ({
@@ -80,7 +92,11 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
         [family]: palette,
       }));
     } catch (error) {
-      console.error('Failed to generate palette:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Failed to generate palette';
+      setErrors(prev => ({
+        ...prev,
+        [family]: errorMessage,
+      }));
     }
   }
 
@@ -108,31 +124,42 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
               <TreeViewNodes>
                 {treeItems.map((item) => (
                   <TreeViewNode key={item.id} item={item}>
-                    {({ item, isBranch }: { item: TreeItem; isBranch: boolean }) => (
-                      <div className={styles['theme-generator-palette-modal__preview__tree-view__tree-item']}>
-                        {isBranch ? (
-                          <>
-                            <Text className={styles['theme-generator-palette-modal__preview__tree-view__tree-item__name']}>
-                              {item.name}
-                            </Text>
-                            <ThemeGeneratorColorPicker
-                              value={seedColors[item.id as ColorFamily] || '#000000'}
-                              onChange={(color) => handleSeedColorChange(item.id as ColorFamily, color)}
-                              showLabel={false}
-                            />
-                          </>
-                        ) : (
-                          item.value && (
-                            <ThemeGeneratorColorPicker
-                              label={item.name}
-                              value={item.value}
-                              onChange={() => {}}
-                              disabled
-                            />
-                          )
-                        )}
-                      </div>
-                    )}
+                    {({ item, isBranch }: { item: TreeItem; isBranch: boolean }) => {
+                      const familyError = isBranch ? errors[item.id as ColorFamily] : undefined;
+
+                      return (
+                        <div className={styles['theme-generator-palette-modal__preview__tree-view__tree-item']}>
+                          {isBranch ? (
+                            <>
+                              <div className={styles['theme-generator-palette-modal__preview__tree-view__tree-item__header']}>
+                                <Text className={styles['theme-generator-palette-modal__preview__tree-view__tree-item__name']}>
+                                  {item.name}
+                                </Text>
+                                <ThemeGeneratorColorPicker
+                                  value={seedColors[item.id as ColorFamily] || '#000000'}
+                                  onChange={(color) => handleSeedColorChange(item.id as ColorFamily, color)}
+                                  showLabel={false}
+                                />
+                              </div>
+                              {familyError && (
+                                <Text className={styles['theme-generator-palette-modal__preview__tree-view__tree-item__error']}>
+                                  {familyError}
+                                </Text>
+                              )}
+                            </>
+                          ) : (
+                            item.value && (
+                              <ThemeGeneratorColorPicker
+                                label={item.name}
+                                value={item.value}
+                                onChange={() => {}}
+                                disabled
+                              />
+                            )
+                          )}
+                        </div>
+                      );
+                    }}
                   </TreeViewNode>
                 ))}
               </TreeViewNodes>

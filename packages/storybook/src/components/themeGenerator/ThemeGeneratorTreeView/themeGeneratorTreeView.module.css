@@ -6,14 +6,14 @@
 
 .theme-generator-tree-view__loading {
   display: flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
   margin: 16px;
 }
 
 .theme-generator-tree-view__item {
   display: flex;
-  gap: 0.5rem;
+  gap: 8px;
   align-items: center;
   justify-content: space-between;
   width: 100%;

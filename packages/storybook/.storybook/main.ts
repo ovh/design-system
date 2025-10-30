@@ -34,7 +34,6 @@ const config: StorybookConfig = {
   `,
   staticDirs: [
     '../assets',
-    { from: '../../themes/dist', to: '/themes' },
     ...getCodeEditorStaticDirs(__filename)
   ],
   stories: [

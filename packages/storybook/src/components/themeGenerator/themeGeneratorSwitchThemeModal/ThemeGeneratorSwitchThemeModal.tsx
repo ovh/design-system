@@ -6,8 +6,9 @@ import {
   Modal,
   ModalBody,
   ModalContent,
+  Text,
+  TEXT_PRESET,
 } from '@ovhcloud/ods-react';
-import { Text, TEXT_PRESET } from '@ovhcloud/ods-react';
 import styles from './themeGeneratorSwitchThemeModal.module.css';
 
 interface ThemeGeneratorSwitchThemeModalProps {
@@ -61,5 +62,3 @@ const ThemeGeneratorSwitchThemeModal = ({
 };
 
 export { ThemeGeneratorSwitchThemeModal };
-
-

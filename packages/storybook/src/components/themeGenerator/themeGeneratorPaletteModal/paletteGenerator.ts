@@ -1,20 +1,4 @@
-import { formatHex, oklch, parse } from 'culori';
-
-const CHROMA_MULTIPLIERS: Record<string, number> = {
-  '000': 0.30,
-  '025': 0.40,
-  '050': 0.55,
-  '075': 0.70,
-  '100': 0.80,
-  '200': 0.90,
-  '300': 0.95,
-  '400': 0.98,
-  '500': 1.00,
-  '600': 0.85,
-  '700': 0.65,
-  '800': 0.40,
-  '900': 0.20,
-};
+import { generate } from '@ant-design/colors';
 
 const COLOR_FAMILIES = Object.freeze([
   'neutral',
@@ -25,23 +9,7 @@ const COLOR_FAMILIES = Object.freeze([
   'critical',
 ] as const);
 
-const LIGHTNESS_MAP_LIGHT: Record<string, number> = {
-  '000': 0.95,
-  '025': 0.90,
-  '050': 0.85,
-  '075': 0.80,
-  '100': 0.75,
-  '200': 0.68,
-  '300': 0.60,
-  '400': 0.55,
-  '500': 0.50,
-  '600': 0.42,
-  '700': 0.35,
-  '800': 0.25,
-  '900': 0.15,
-};
-
-const PALETTE_STEPS = Object.freeze(['000', '025', '050', '075', '100', '200', '300', '400', '500', '600', '700', '800', '900'] as const);
+const PALETTE_STEPS = Object.freeze(['000', '100', '200', '300', '400', '500', '600', '700', '800', '900']);
 
 type ColorFamily = typeof COLOR_FAMILIES[number];
 
@@ -76,49 +44,32 @@ function formatPaletteAsCssVariables(
 }
 
 /**
- * Generates a 13-step color palette from a seed color using OKLCH color space
+ * Generates a 10-step color palette from a seed color using Ant Design's color algorithm
+ * 
+ * Uses @ant-design/colors generate function which produces perceptually uniform colors.
+ * The seed color maps to step 500 (index 5 in the Ant Design palette).
  *
  * @param seedHex - Seed color in hex format (e.g., "#466AFF")
  * @returns Object with step names as keys and hex colors as values
  *
  * @example
  * const palette = generatePalette('#466AFF');
- * // Returns: { '000': '#ffffff', '025': '#f3fdff', ... }
+ * // Returns: { '000': '#f0f5ff', '100': '#d6e4ff', ..., '500': '#466AFF', ..., '900': '#061178' }
  */
 function generatePalette(seedHex: string): PaletteResult {
-  const seedColor = parse(seedHex);
-  if (!seedColor) {
-    throw new Error(`Invalid hex color: ${seedHex}`);
-  }
-
-  const seedOklch = oklch(seedColor);
-  if (!seedOklch) {
-    throw new Error(`Failed to convert ${seedHex} to OKLCH`);
-  }
-
-  const baseChroma = seedOklch.c ?? 0;
-  const hue = seedOklch.h ?? 0;
-
-  const palette: PaletteResult = {};
-
-  for (const step of PALETTE_STEPS) {
-    const lightness = LIGHTNESS_MAP_LIGHT[step];
-    const chromaMultiplier = CHROMA_MULTIPLIERS[step];
-    const chroma = baseChroma * chromaMultiplier;
-
-    const stepColor = oklch({
-      mode: 'oklch',
-      l: lightness,
-      c: chroma,
-      h: hue,
+  try {
+    const colors = generate(seedHex);
+    
+    const palette: PaletteResult = {};
+    
+    PALETTE_STEPS.forEach((step, index) => {
+      palette[step] = colors[index];
     });
-
-    const hexColor = formatHex(stepColor);
-
-    palette[step] = hexColor;
+    
+    return palette;
+  } catch (error) {
+    throw new Error(`Invalid color: ${seedHex}`);
   }
-
-  return palette;
 }
 
 export {

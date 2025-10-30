@@ -82,5 +82,3 @@ const ThemeGeneratorJSONModal = ({ open, variables, onClose, onReplace }: ThemeG
 };
 
 export { ThemeGeneratorJSONModal };
-
-

@@ -15,6 +15,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ant-design/colors@npm:7.1.0":
+  version: 7.1.0
+  resolution: "@ant-design/colors@npm:7.1.0"
+  dependencies:
+    "@ctrl/tinycolor": ^3.6.1
+  checksum: 6488b4159cea52be8a904caf541064e9f0e267c1df74ed687abd9364e6cfeb0353c64ee078878069f48aa6c381feca2af17612efe0529517c0260f989472b7ae
+  languageName: node
+  linkType: hard
+
 "@ark-ui/react@npm:5.25.1":
   version: 5.25.1
   resolution: "@ark-ui/react@npm:5.25.1"
@@ -1828,6 +1837,13 @@ __metadata:
   peerDependencies:
     postcss-selector-parser: ^6.0.13
   checksum: 3786a6afea97b08ad739ee8f4004f7e0a9e25049cee13af809dbda6462090744012a54bd9275a44712791e8f103f85d21641f14e81799f9dab946b0459a5e1ef
+  languageName: node
+  linkType: hard
+
+"@ctrl/tinycolor@npm:^3.6.1":
+  version: 3.6.1
+  resolution: "@ctrl/tinycolor@npm:3.6.1"
+  checksum: cefec6fcaaa3eb8ddf193f981e097dccf63b97b93b1e861cb18c645654824c831a568f444996e15ee509f255658ed82fba11c5365494a6e25b9b12ac454099e0
   languageName: node
   linkType: hard
 
@@ -4719,6 +4735,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-storybook@workspace:packages/storybook"
   dependencies:
+    "@ant-design/colors": 7.1.0
     "@ark-ui/react": 5.25.1
     "@ovhcloud/ods-react": 19.2.1
     "@ovhcloud/ods-themes": 19.2.1
@@ -4729,9 +4746,7 @@ __metadata:
     "@storybook/react": 8.6.12
     "@storybook/react-vite": 8.6.12
     "@storybook/types": 8.6.12
-    "@types/culori": 4.0.1
     classnames: 2.5.1
-    culori: 4.0.2
     custom-elements-manifest: 1.0.0
     lz-string: 1.5.0
     node-fetch: 2.7.0
@@ -5739,13 +5754,6 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 7eb1bc5342a9604facd57598a6c62621e244822442976c443efb84ff745246b10d06e8b309b6e80130026a396f19bf6793b7cecd7380169f369dac3bfc46fb99
-  languageName: node
-  linkType: hard
-
-"@types/culori@npm:4.0.1":
-  version: 4.0.1
-  resolution: "@types/culori@npm:4.0.1"
-  checksum: 4e7552951d0b32b728c51bbbb8c5c2fd5d882fb948f0168a2fd6e49654f2a0304c4fe10b606e3e3ad15fcddef037729a35b68b08bfa7ca70a0d889a98ce5f79f
   languageName: node
   linkType: hard
 
@@ -10202,13 +10210,6 @@ __metadata:
   version: 3.1.3
   resolution: "csstype@npm:3.1.3"
   checksum: 8db785cc92d259102725b3c694ec0c823f5619a84741b5c7991b8ad135dfaa66093038a1cc63e03361a6cd28d122be48f2106ae72334e067dd619a51f49eddf7
-  languageName: node
-  linkType: hard
-
-"culori@npm:4.0.2":
-  version: 4.0.2
-  resolution: "culori@npm:4.0.2"
-  checksum: 2edeba0eb666ae55dd6cc95b124f3a458283689b18bdf5319b155e1dc2c477bbfcc51d0fdbed06e1b80343e291d9e24ff2b88f32a9d3767fd6411ecdb8befdc3
   languageName: node
   linkType: hard
 

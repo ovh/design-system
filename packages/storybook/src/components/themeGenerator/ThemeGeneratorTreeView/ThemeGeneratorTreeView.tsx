@@ -1,7 +1,7 @@
 import { Spinner, Text, TreeView, TreeViewNode, TreeViewNodes, SPINNER_SIZE, TEXT_PRESET } from '@ovhcloud/ods-react';
 import React, { useMemo } from 'react';
 import { categorizeCssVariables } from '../themeVariableUtils';
-import { ThemeGeneratorColorPicker } from '../ThemeGeneratorColorPicker';
+import { ThemeGeneratorColorPicker } from '../ThemeGeneratorColorPicker/ThemeGeneratorColorPicker';
 import styles from './themeGeneratorTreeView.module.css';
 
 interface TreeItem {

@@ -28,10 +28,14 @@ const formatColorValue = (colorValue: any): string => {
 };
 
 const parseColorWithRoundedAlpha = (colorString: string) => {
-  const color = parseColor(colorString);
-  const alpha = color.getChannelValue('alpha');
-  const roundedAlpha = Math.round(alpha * 100) / 100;
-  return color.withChannelValue('alpha', roundedAlpha);
+  try {
+    const color = parseColor(colorString.startsWith('var(') ? '#000000' : colorString);
+    const alpha = color.getChannelValue('alpha');
+    const roundedAlpha = Math.round(alpha * 100) / 100;
+    return color.withChannelValue('alpha', roundedAlpha);
+  } catch {
+    return parseColor('#000000');
+  }
 };
 
 const ThemeGeneratorColorPicker = ({
@@ -85,8 +89,14 @@ const ThemeGeneratorColorPicker = ({
           {label}
         </ColorPicker.Label>
       )}
-
       <ColorPicker.Control className={styles['theme-generator-color-picker__control']}>
+        <ColorPicker.ChannelInput
+          asChild
+          channel="hex"
+          onKeyDown={(e) => e.stopPropagation()}
+        >
+          <Input type="text" />
+        </ColorPicker.ChannelInput>
         <ColorPicker.Trigger className={styles['theme-generator-color-picker__control__trigger']}>
           <ColorPicker.ValueSwatch className={styles['theme-generator-color-picker__control__trigger__swatch']} />
         </ColorPicker.Trigger>

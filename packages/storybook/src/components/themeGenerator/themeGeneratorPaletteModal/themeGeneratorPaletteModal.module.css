@@ -11,14 +11,21 @@
 }
 
 .theme-generator-palette-modal__preview__tree-view {
-  padding: 1rem;
+  padding: 16px;
   height: 100%;
   overflow: auto;
 }
 
 .theme-generator-palette-modal__preview__tree-view__tree-item {
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.theme-generator-palette-modal__preview__tree-view__tree-item__header {
+  display: flex;
+  gap: 8px;
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -27,6 +34,12 @@
 .theme-generator-palette-modal__preview__tree-view__tree-item__name {
   flex: 1;
   color: var(--ods-color-text);
+}
+
+.theme-generator-palette-modal__preview__tree-view__tree-item__error {
+  padding-left: 8px;
+  color: var(--ods-color-critical-500);
+  font-size: 12px;
 }
 
 .theme-generator-palette-modal__actions {

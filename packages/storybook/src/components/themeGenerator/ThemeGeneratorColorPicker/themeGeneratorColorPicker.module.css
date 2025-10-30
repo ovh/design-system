@@ -1,6 +1,6 @@
 .theme-generator-color-picker {
   display: flex;
-  gap: 0.5rem;
+  gap: 8px;
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -28,7 +28,7 @@
 }
 
 .theme-generator-color-picker__control__trigger:disabled {
-  opacity: 0.5;
+  opacity: 1;
   cursor: not-allowed;
 }
 
@@ -128,4 +128,3 @@
   gap: 8px;
   min-width: 200px;
 }
-

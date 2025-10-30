@@ -245,7 +245,7 @@ export const AccessibilityInformative: Story = {
 
 export const All: StoryObj<AllArg> = {
   render: (arg: AllArg) => {
-    const regexp = new RegExp(arg.search)
+    const regexp = new RegExp((arg.search || '').replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
 
     const names = arg.search ?
       Object.entries<string>(ICON_NAME)

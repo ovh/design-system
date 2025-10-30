@@ -6,8 +6,8 @@
 
 .theme-generator-tree-view__loading {
   display: flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
   margin: 16px;
 }
 

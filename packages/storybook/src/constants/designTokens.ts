@@ -1,35 +1,59 @@
-enum TokenType {
-  BORDER_RADIUS = 'border-radius',
-  BORDER_WIDTH = 'border-width',
-  COLOR = 'color',
-  FONT_FAMILY = 'font-family',
-  FORM_ELEMENT = 'form-element',
-  OUTLINE = 'outline',
+const MONO_COLORS = Object.freeze([
+  'alpha',
+  'beta',
+  'new',
+  'promotion',
+]);
+
+const PALETTES = Object.freeze([
+  'critical',
+  'information',
+  'neutral',
+  'primary',
+  'success',
+  'warning',
+]);
+
+enum TOKEN_TYPE {
+  borderRadius = 'border-radius',
+  borderWidth = 'border-width',
+  boxShadow = 'box-shadow',
+  color = 'color',
+  fontFamily = 'font-family',
+  gap = 'gap',
+  height = 'height',
+  opacity = 'opacity',
+  outline = 'outline',
+  padding = 'padding',
+  palette = 'palette',
+  unknown = 'unknown',
+  zIndex = 'z-index',
 }
 
-enum TokenCategory {
-  BORDER_RADIUS = 'Border Radius',
-  BORDER_WIDTH = 'Border Width',
-  COLORS = 'Colors',
-  FONT_FAMILY = 'Font Family',
-  FORM_ELEMENT = 'Form Element',
-  OUTLINE = 'Outline',
+const TOKEN_TYPES = Object.freeze(Object.values(TOKEN_TYPE));
+
+enum TOKEN_CATEGORY {
+  color = 'theme-color',
+  deprecated = 'deprecated',
+  fontFamily = 'font-family',
+  formElement = 'form-element',
+  outline = 'outline',
+  overlay = 'overlay',
+  palette = 'color-palette',
+  spacing = 'spacing',
 }
 
 interface Token {
-  name: string;
-  type: TokenType;
-  value: string;
+  name: string,
+  type: TOKEN_TYPE,
+  value: string,
 }
 
-interface TokenGroup {
-  name: TokenCategory;
-  tokens: Token[];
-}
-
-export {  
-  type Token,  
-  TokenCategory,  
-  type TokenGroup,  
-  TokenType,  
-}  
+export {
+  MONO_COLORS,
+  PALETTES,
+  TOKEN_CATEGORY,
+  TOKEN_TYPE,
+  TOKEN_TYPES,
+  type Token,
+};

@@ -1,16 +1,13 @@
 import { TABLE_SIZE, Table } from '@ovhcloud/ods-react';
-import React, { type FC, type ReactNode } from 'react';
+import React, { type FC, type JSX } from 'react';
+import { type Token } from '../../../constants/designTokens';
+import { TokenPreview } from '../tokenPreview/TokenPreview';
 
-interface TokenTableProps {
-  category: string,
-  tokens: Array<{
-    name: string,
-    preview: ReactNode,
-    value: string,
-  }>;
+interface TokenTableProp {
+  tokens: Token[],
 }
 
-const TokensTable: FC<TokenTableProps> = ({ tokens }) => {
+const TokensTable: FC<TokenTableProp> = ({ tokens }): JSX.Element => {
   return (
     <Table size={ TABLE_SIZE.sm }>
       <thead>
@@ -42,7 +39,7 @@ const TokensTable: FC<TokenTableProps> = ({ tokens }) => {
               </td>
 
               <td>
-                { token.preview }
+                <TokenPreview token={ token } />
               </td>
             </tr>
           ))

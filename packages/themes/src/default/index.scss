@@ -103,10 +103,6 @@
   --ods-theme-border-color-readonly: #{var.$ods-color-border-readonly-default};
   --ods-theme-border-color-selected: #{var.$ods-color-element-background-selected};
   --ods-theme-heading-text-color: #{var.$ods-color-heading};
-  --ods-theme-outline-color: #{var.$ods-outline-color-default};
-  --ods-theme-outline-offset: #{var.$ods-outline-offset};
-  --ods-theme-outline-style: #{var.$ods-outline-style-default};
-  --ods-theme-outline-width: #{var.$ods-outline-width};
   --ods-theme-progress-background-color: var(--ods-color-primary-500);
   --ods-theme-split-background-color: #{var.$ods-color-neutral-100};
   --ods-theme-split-border-color: #{var.$ods-color-neutral-100};
@@ -123,6 +119,12 @@
   --ods-theme-primary-color: var(--ods-color-primary-500);
   --ods-theme-success-color: var(--ods-color-success-500);
   --ods-theme-warning-color: var(--ods-color-warning-500);
+
+  // Outline
+  --ods-theme-outline-color: #{var.$ods-outline-color-default};
+  --ods-theme-outline-offset: #{var.$ods-outline-offset};
+  --ods-theme-outline-style: #{var.$ods-outline-style-default};
+  --ods-theme-outline-width: #{var.$ods-outline-width};
 
   // Overlay
   --ods-theme-backdrop-background-color: #{var.$ods-color-primary-500};

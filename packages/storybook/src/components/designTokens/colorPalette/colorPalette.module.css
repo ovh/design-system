@@ -1,0 +1,21 @@
+.color-palette {
+  display: flex;
+  flex-flow: row;
+  height: 80px;
+}
+
+.color-palette__block {
+  display: flex;
+  flex: 1 1 0;
+  cursor: pointer;
+}
+
+.color-palette__token {
+  display: flex;
+  flex-flow: column;
+  row-gap: 8px;
+}
+
+.color-palette__token__name {
+  font-weight: bold;
+}

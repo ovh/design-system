@@ -1,63 +1,123 @@
-import { Input } from '@ovhcloud/ods-react';
-import React from 'react';
-import { TokenType } from '../../../constants/designTokens';
+import React, { type CSSProperties, type FC, type JSX } from 'react';
+import { type Token, TOKEN_TYPE } from '../../../constants/designTokens';
 import styles from './tokenPreview.module.css';
 
-interface TokenPreviewProps {
-  name?: string;
-  type: TokenType;
-  value: string;
+interface PreviewProp {
+  style: CSSProperties,
 }
 
-const getOutlineStyles = (name: string | undefined, value: string): React.CSSProperties => {
-  if (!name) {
-    return {};
-  }
-  if (name.includes('color')) {
-    return { outline: `3px solid ${value}`, outlineOffset: '0' };
-  }
-  if (name.includes('width')) {
-    return { outline: `${value} solid var(--ods-color-primary-500)`, outlineOffset: '0' };
-  }
-  if (name.includes('style')) {
-    return { outline: `3px ${value} var(--ods-color-primary-500)`, outlineOffset: '0' };
-  }
-  if (name.includes('offset')) {
-    return { outline: '3px solid var(--ods-color-primary-500)', outlineOffset: value };
-  }
-  return {};
+interface TokenPreviewProp {
+  token: Token,
+}
+
+function capitalizeFirstLetter(str: string): string {
+  return `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
+}
+
+const Preview: FC<PreviewProp> = ({ style }): JSX.Element => {
+  return (
+    <div
+      className={ styles['preview'] }
+      style={ style } />
+  );
 };
 
-const TokenPreview: React.FC<TokenPreviewProps> = ({ name, type, value }) => {
-  const previewClasses: Record<TokenType, string> = {
-    [TokenType.BORDER_RADIUS]: styles.borderRadius,
-    [TokenType.BORDER_WIDTH]: styles.borderWidth,
-    [TokenType.COLOR]: styles.color,
-    [TokenType.FORM_ELEMENT]: styles.formElement,
-    [TokenType.FONT_FAMILY]: styles.fontFamily,
-    [TokenType.OUTLINE]: styles.outline,
-  };
+const PreviewFont: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
+  return (
+    <div style={{ fontFamily: token.value }}>
+      Aa
+    </div>
+  );
+};
 
-  const outlineStyles = getOutlineStyles(name, value);
-
-  const stylesMap: React.CSSProperties = {
-    ...(type === TokenType.BORDER_RADIUS && { borderRadius: value }),
-    ...(type === TokenType.BORDER_WIDTH && { borderWidth: value }),
-    ...(type === TokenType.COLOR && { backgroundColor: value }),
-    ...(type === TokenType.FONT_FAMILY && { fontFamily: value }),
-    ...(type === TokenType.OUTLINE && outlineStyles),
-  };
+const PreviewGap: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
+  const column = token.name.includes('column');
 
   return (
     <div
-      className={ previewClasses[type] || styles.root }
-      style={ stylesMap }>
-      {type === TokenType.FONT_FAMILY ?
-      'Aa'
-      : type === TokenType.FORM_ELEMENT ?
-      <Input
-        defaultValue={ value }
-        readOnly /> : null}
+      className={ styles['preview-gap'] }
+      style={{
+        flexFlow: column ? 'row' : 'column',
+        [column ? 'columnGap' : 'rowGap']: token.value,
+      }}>
+      <div className={ styles['preview'] } />
+      <div className={ styles['preview'] } />
+    </div>
+  );
+};
+
+const PreviewPadding: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
+  const horizontal = token.name.includes('horizontal');
+
+  return (
+    <div
+      className={ styles['preview-padding'] }
+      style={{ padding: horizontal ? `0 ${token.value}` : `${token.value} 0` }}>
+      <div className={ styles['preview-padding__child'] } />
+    </div>
+  );
+};
+
+const PreviewOutline: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
+  const matches = token.name.match(/outline-(.*)/);
+  const prop = matches && matches.length > 0 ? matches[1].replace(/-default/, '') : '';
+
+  return (
+    <div
+      className={ styles['preview-outline'] }
+      style={{ [`outline${capitalizeFirstLetter(prop)}`]: token.value }} />
+  );
+};
+
+const PreviewZIndex: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
+  return (
+    <div className={ styles['preview-z-index'] }>
+      <div className={ styles['preview-z-index__back'] } />
+
+      <div
+        className={ styles['preview-z-index__front'] }
+        style={{ zIndex: token.value }} />
+    </div>
+  );
+};
+
+function renderPreview(token: Token): JSX.Element {
+  switch (token.type) {
+    case TOKEN_TYPE.borderRadius:
+      return <Preview style={{ borderRadius: token.value }} />;
+    case TOKEN_TYPE.borderWidth:
+      return <Preview style={{ borderWidth: token.value }} />;
+    case TOKEN_TYPE.boxShadow:
+      return <Preview style={{ boxShadow: token.value }} />;
+    case TOKEN_TYPE.color:
+      return <Preview style={{ backgroundColor: token.value }} />;
+    case TOKEN_TYPE.fontFamily:
+      return <PreviewFont token={ token } />;
+    case TOKEN_TYPE.gap:
+      return <PreviewGap token={ token } />;
+    case TOKEN_TYPE.height:
+      return <Preview style={{ height: token.value }} />;
+    case TOKEN_TYPE.opacity:
+      return <Preview style={{ opacity: token.value }} />;
+    case TOKEN_TYPE.outline:
+      if (token.name.endsWith('color')) {
+        return <Preview style={{ backgroundColor: token.value }} />;
+      }
+      return <PreviewOutline token={ token } />;
+    case TOKEN_TYPE.padding:
+      return <PreviewPadding token={ token } />;
+    case TOKEN_TYPE.zIndex:
+      return <PreviewZIndex token={ token } />;
+    case TOKEN_TYPE.unknown:
+    default:
+      return <></>;
+  }
+}
+
+const TokenPreview: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
+  return (
+    <div className={ styles['token-preview' ]}>
+      { renderPreview(token) }
     </div>
   );
 };

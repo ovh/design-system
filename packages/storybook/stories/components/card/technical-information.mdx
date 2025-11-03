@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsCard from '../../../../ods-react/src/components/card/documentation/card.json';
+import cssVariable from '../../../../ods-react/src/components/card/documentation/cssVariable.json';
+import specificationsCard from '../../../../ods-react/src/components/card/documentation/card.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -22,7 +23,8 @@ import * as CardStories from './card.stories';
 1. **Card**
 
 <TechnicalSpecification
-  data={ SpecificationsCard }
+  cssVariable={ cssVariable }
+  data={ specificationsCard }
   extraInfo={{
     'Card': {
       extendAttribute: {

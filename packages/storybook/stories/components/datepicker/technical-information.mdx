@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsDatepicker from '../../../../ods-react/src/components/datepicker/documentation/datepicker.json';
+import cssVariable from '../../../../ods-react/src/components/datepicker/documentation/cssVariable.json';
+import specificationsDatepicker from '../../../../ods-react/src/components/datepicker/documentation/datepicker.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -26,7 +27,8 @@ import * as DatepickerStories from './datepicker.stories';
 3. **Datepicker Content**
 
 <TechnicalSpecification
-  data={ SpecificationsDatepicker }
+  cssVariable={ cssVariable }
+  data={ specificationsDatepicker }
   extraInfo={{
     'Datepicker': {
       extendAttribute: {

@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsBreadcrumb from '../../../../ods-react/src/components/breadcrumb/documentation/breadcrumb.json';
+import cssVariable from '../../../../ods-react/src/components/breadcrumb/documentation/cssVariable.json';
+import specificationsBreadcrumb from '../../../../ods-react/src/components/breadcrumb/documentation/breadcrumb.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -24,7 +25,8 @@ import * as BreadcrumbStories from './breadcrumb.stories';
 3. **Breadcrumb Link**
 
 <TechnicalSpecification
-  data={ SpecificationsBreadcrumb }
+  cssVariable={ cssVariable }
+  data={ specificationsBreadcrumb }
   extraInfo={{
     'Breadcrumb': {
       extendAttribute: {

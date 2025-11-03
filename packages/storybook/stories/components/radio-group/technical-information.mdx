@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsRadioGroup from '../../../../ods-react/src/components/radio-group/documentation/radio-group.json';
+import cssVariable from '../../../../ods-react/src/components/radio-group/documentation/cssVariable.json';
+import specificationsRadioGroup from '../../../../ods-react/src/components/radio-group/documentation/radio-group.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -27,7 +28,8 @@ import * as RadioGroupStories from './radio-group.stories';
 4. **Radio Label**
 
 <TechnicalSpecification
-  data={ SpecificationsRadioGroup }
+  cssVariable={ cssVariable }
+  data={ specificationsRadioGroup }
   extraInfo={{
     'Radio': {
       extendAttribute: {

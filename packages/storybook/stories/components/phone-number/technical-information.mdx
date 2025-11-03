@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsPhoneNumber from '../../../../ods-react/src/components/phone-number/documentation/phone-number.json';
+import cssVariable from '../../../../ods-react/src/components/phone-number/documentation/cssVariable.json';
+import specificationsPhoneNumber from '../../../../ods-react/src/components/phone-number/documentation/phone-number.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -26,7 +27,8 @@ import * as PhoneNumberStories from './phone-number.stories';
 3. **Phone Number Control**
 
 <TechnicalSpecification
-  data={ SpecificationsPhoneNumber }
+  cssVariable={ cssVariable }
+  data={ specificationsPhoneNumber }
   extraInfo={{
     'PhoneNumber': {
       extendAttribute: {

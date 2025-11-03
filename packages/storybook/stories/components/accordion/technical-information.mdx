@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsAccordion from '../../../../ods-react/src/components/accordion/documentation/accordion.json';
+import cssVariable from '../../../../ods-react/src/components/accordion/documentation/cssVariable.json';
+import specificationsAccordion from '../../../../ods-react/src/components/accordion/documentation/accordion.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -25,7 +26,8 @@ import * as AccordionStories from './accordion.stories';
 4. **Accordion Content**
 
 <TechnicalSpecification
-  data={ SpecificationsAccordion }
+  cssVariable={ cssVariable }
+  data={ specificationsAccordion }
   extraInfo={{
     'Accordion': {
       extendAttribute: {

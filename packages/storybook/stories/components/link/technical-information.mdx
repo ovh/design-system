@@ -1,5 +1,6 @@
 import { Meta, Source } from '@storybook/blocks';
-import SpecificationsLink from '../../../../ods-react/src/components/link/documentation/link.json';
+import cssVariable from '../../../../ods-react/src/components/link/documentation/cssVariable.json';
+import specificationsLink from '../../../../ods-react/src/components/link/documentation/link.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -23,7 +24,8 @@ import * as LinkStories from './link.stories';
 1. **Link**
 
 <TechnicalSpecification
-  data={ SpecificationsLink }
+  cssVariable={ cssVariable }
+  data={ specificationsLink }
   extraInfo={{
     'Link': {
       extendAttribute: {

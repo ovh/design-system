@@ -3,11 +3,11 @@
 
 @layer ods-atoms {
   .range {
-    --ods-range-padding-bottom: 0;
-    --ods-range-padding-right: 0;
-    --ods-range-padding-left: 0;
+    --range-padding-bottom: 0;
+    --range-padding-right: 0;
+    --range-padding-left: 0;
 
-    padding: (math.div(range.$ods-range-thumb-size, 2) - math.div(range.$ods-range-track-height, 2)) var(--ods-range-padding-right) var(--ods-range-padding-bottom) var(--ods-range-padding-left);
+    padding: (math.div(range.$ods-range-thumb-size, 2) - math.div(range.$ods-range-track-height, 2)) var(--range-padding-right) var(--range-padding-bottom) var(--range-padding-left);
 
     &__control {
       display: flex;

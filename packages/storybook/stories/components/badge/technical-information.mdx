@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsBadge from '../../../../ods-react/src/components/badge/documentation/badge.json';
+import cssVariable from '../../../../ods-react/src/components/badge/documentation/cssVariable.json';
+import specificationsBadge from '../../../../ods-react/src/components/badge/documentation/badge.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -22,7 +23,8 @@ import * as BadgeStories from './badge.stories';
 1. **Badge**
 
 <TechnicalSpecification
-  data={ SpecificationsBadge }
+  cssVariable={ cssVariable }
+  data={ specificationsBadge }
   extraInfo={{
     'Badge': {
       extendAttribute: {

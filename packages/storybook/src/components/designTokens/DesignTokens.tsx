@@ -2,14 +2,11 @@ import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
 import lightThemeTokens from '@ovhcloud/ods-themes/default/tokens';
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import React, { useMemo } from 'react';
-import { MONO_COLORS, PALETTES, TOKEN_CATEGORY, TOKEN_TYPE, TOKEN_TYPES, type Token } from '../../constants/designTokens';
+import { MONO_COLORS, PALETTES, TOKEN_CATEGORY, TOKEN_TYPE, type Token } from '../../constants/designTokens';
+import { guessTokenType } from '../../helpers/designTokens';
 import { Heading } from '../heading/Heading';
 import { ColorPalette } from './colorPalette/ColorPalette';
 import { TokensTable } from './tokensTable/TokensTable';
-
-function guessTokenType(name: string): TOKEN_TYPE {
-  return TOKEN_TYPES.find((type) => name.includes(`-${type}`)) || TOKEN_TYPE.unknown;
-}
 
 function isPalette(name: string): boolean {
   const paletteNameSplits = name.split(/^--ods-color-([a-z]+)(-.)*/);

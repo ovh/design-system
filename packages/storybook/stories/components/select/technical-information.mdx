@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsSelect from '../../../../ods-react/src/components/select/documentation/select.json';
+import cssVariable from '../../../../ods-react/src/components/select/documentation/cssVariable.json';
+import specificationsSelect from '../../../../ods-react/src/components/select/documentation/select.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -26,7 +27,8 @@ import * as SelectStories from './select.stories';
 3. **Select Content**
 
 <TechnicalSpecification
-  data={ SpecificationsSelect }
+  cssVariable={ cssVariable }
+  data={ specificationsSelect }
   extraInfo={{
     'Select': {
       extendAttribute: {

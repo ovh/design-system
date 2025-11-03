@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsSkeleton from '../../../../ods-react/src/components/skeleton/documentation/skeleton.json';
+import cssVariable from '../../../../ods-react/src/components/skeleton/documentation/cssVariable.json';
+import specificationsSkeleton from '../../../../ods-react/src/components/skeleton/documentation/skeleton.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -22,7 +23,8 @@ import * as SkeletonStories from './skeleton.stories';
 1. **Skeleton**
 
 <TechnicalSpecification
-  data={ SpecificationsSkeleton }
+  cssVariable={ cssVariable }
+  data={ specificationsSkeleton }
   extraInfo={{
     'Skeleton': {
       extendAttribute: {

@@ -8,20 +8,21 @@ type CustomTheme = ThemeVars & {
 
 const darkThemeTokens = {
   root: {
-    '--ods-color-primary-500': lightThemeTokens.root['--ods-color-primary-500'],
+    '--ods-color-primary-500': '#66a2f7',
     '--ods-font-family-default': `'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif`,
     '--ods-theme-background-color': '#1b1c1d',
     '--ods-theme-border-radius': '8px',
-    '--ods-theme-heading-text-color': '#798186',
-    '--ods-theme-input-border-color': '#d7bacd',
-    '--ods-theme-input-placeholder-text-color': '#9b8093',
-    '--ods-theme-input-text-color': '#c9cdcf',
-    '--ods-theme-text-color': '#c9cdcf',
+    '--ods-theme-heading-text-color': '#a2ccfb',
+    '--ods-theme-input-border-color': '#adadad',
+    '--ods-theme-input-placeholder-text-color': '#c2c2c2',
+    '--ods-theme-input-text-color': '#e0e2f7',
+    '--ods-theme-text-color': '#e0e2f7',
   },
 };
 
 function getCommonTheme(tokens: Record<string, string>): Record<string, string | number> {
   return {
+    appBg: tokens['--ods-theme-background-color'],
     appBorderColor: tokens['--ods-color-primary-500'],
     appBorderRadius: parseInt(removeUnit(tokens['--ods-theme-border-radius']), 10) / 2,
     barHoverColor: tokens['--ods-color-primary-500'],

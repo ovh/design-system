@@ -4,12 +4,12 @@
 
 /* TODO update when ODS component will get an actual dark theme */
 .ods-versions__trigger--dark {
-  --ods-button-background-color-primary-ghost-hover: #f4f5f5;
-  --ods-button-background-color-primary-ghost-active: #dfe1e2;
-  --ods-button-text-color-primary-ghost: #c9cdcf;
-  --ods-button-text-color-primary-ghost-hover: #9ea5a9;
-  --ods-button-text-color-primary-ghost-active: #889196;
-  --ods-theme-outline-color: #fff;
+  --ods-button-background-color-primary-ghost-hover: #383838;
+  --ods-button-background-color-primary-ghost-active: #676767;
+  --ods-button-text-color-primary-ghost: #adadad;
+  --ods-button-text-color-primary-ghost-hover: #f0f0f0;
+  --ods-button-text-color-primary-ghost-active: #fafafa;
+  --ods-theme-outline-color: #f0f0f0;
 }
 
 .ods-versions__content {

@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsTextarea from '../../../../ods-react/src/components/textarea/documentation/textarea.json';
+import cssVariable from '../../../../ods-react/src/components/textarea/documentation/cssVariable.json';
+import specificationsTextarea from '../../../../ods-react/src/components/textarea/documentation/textarea.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -24,7 +25,8 @@ import * as TextareaStories from './textarea.stories';
 1. **Textarea**
 
 <TechnicalSpecification
-  data={ SpecificationsTextarea }
+  cssVariable={ cssVariable }
+  data={ specificationsTextarea }
   extraInfo={{
     'Textarea': {
       extendAttribute: {

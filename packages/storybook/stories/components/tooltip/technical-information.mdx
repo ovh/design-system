@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsTooltip from '../../../../ods-react/src/components/tooltip/documentation/tooltip.json';
+import cssVariable from '../../../../ods-react/src/components/tooltip/documentation/cssVariable.json';
+import specificationsTooltip from '../../../../ods-react/src/components/tooltip/documentation/tooltip.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -24,7 +25,8 @@ import * as TooltipStories from './tooltip.stories';
 3. **Tooltip Trigger**
 
 <TechnicalSpecification
-  data={ SpecificationsTooltip }
+  cssVariable={ cssVariable }
+  data={ specificationsTooltip }
   extraInfo={{
     'TooltipContent': {
       extendAttribute: {

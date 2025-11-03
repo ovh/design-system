@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsProgressBar from '../../../../ods-react/src/components/progress-bar/documentation/progress-bar.json';
+import cssVariable from '../../../../ods-react/src/components/progress-bar/documentation/cssVariable.json';
+import specificationsProgressBar from '../../../../ods-react/src/components/progress-bar/documentation/progress-bar.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -22,7 +23,8 @@ import * as ProgressBarStories from './progress-bar.stories';
 1. **Progress Bar**
 
 <TechnicalSpecification
-  data={ SpecificationsProgressBar }
+  cssVariable={ cssVariable }
+  data={ specificationsProgressBar }
   extraInfo={{
     'ProgressBar': {
       extendAttribute: {

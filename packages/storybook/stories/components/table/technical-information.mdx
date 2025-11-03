@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsTable from '../../../../ods-react/src/components/table/documentation/table.json';
+import cssVariable from '../../../../ods-react/src/components/table/documentation/cssVariable.json';
+import specificationsTable from '../../../../ods-react/src/components/table/documentation/table.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -22,7 +23,8 @@ import * as TableStories from './table.stories';
 1. **Table**
 
 <TechnicalSpecification
-  data={ SpecificationsTable }
+  cssVariable={ cssVariable }
+  data={ specificationsTable }
   extraInfo={{
     'Table': {
       extendAttribute: {

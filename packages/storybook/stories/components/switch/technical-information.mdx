@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsSwitch from '../../../../ods-react/src/components/switch/documentation/switch.json';
+import cssVariable from '../../../../ods-react/src/components/switch/documentation/cssVariable.json';
+import specificationsSwitch from '../../../../ods-react/src/components/switch/documentation/switch.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -23,7 +24,8 @@ import * as SwitchStories from './switch.stories';
 2. **Switch Item**
 
 <TechnicalSpecification
-  data={ SpecificationsSwitch }
+  cssVariable={ cssVariable }
+  data={ specificationsSwitch }
   extraInfo={{
     'Switch': {
       extendAttribute: {

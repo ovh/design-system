@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsTimepicker from '../../../../ods-react/src/components/timepicker/documentation/timepicker.json';
+import cssVariable from '../../../../ods-react/src/components/timepicker/documentation/cssVariable.json';
+import specificationsTimepicker from '../../../../ods-react/src/components/timepicker/documentation/timepicker.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -26,7 +27,8 @@ import * as TimepickerStories from './timepicker.stories';
 3. **Timepicker Timezone List**
 
 <TechnicalSpecification
-  data={ SpecificationsTimepicker }
+  cssVariable={ cssVariable }
+  data={ specificationsTimepicker }
   extraInfo={{
     'Timepicker': {
       extendAttribute: {

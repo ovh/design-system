@@ -47,9 +47,9 @@ const RangeRoot: FC<RangeProp> = forwardRef(({
 
   useEffect(() => {
     if (rangeRef.current) {
-      rangeRef.current.style.setProperty('--ods-range-padding-bottom', `${rootPadding.bottom}px`);
-      rangeRef.current.style.setProperty('--ods-range-padding-left', `${rootPadding.left}px`);
-      rangeRef.current.style.setProperty('--ods-range-padding-right', `${rootPadding.right}px`);
+      rangeRef.current.style.setProperty('--range-padding-bottom', `${rootPadding.bottom}px`);
+      rangeRef.current.style.setProperty('--range-padding-left', `${rootPadding.left}px`);
+      rangeRef.current.style.setProperty('--range-padding-right', `${rootPadding.right}px`);
     }
   }, [rangeRef, rootPadding]);
 

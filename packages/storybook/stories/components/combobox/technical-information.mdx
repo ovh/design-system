@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsCombobox from '../../../../ods-react/src/components/combobox/documentation/combobox.json';
+import cssVariable from '../../../../ods-react/src/components/combobox/documentation/cssVariable.json';
+import specificationsCombobox from '../../../../ods-react/src/components/combobox/documentation/combobox.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -26,7 +27,8 @@ import * as ComboboxStories from './combobox.stories';
 3. **Combobox Content**
 
 <TechnicalSpecification
-  data={ SpecificationsCombobox }
+  cssVariable={ cssVariable }
+  data={ specificationsCombobox }
   of={ ComboboxStories }
   extraInfo={ {
     Combobox: {

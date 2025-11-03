@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsClipboard from '../../../../ods-react/src/components/clipboard/documentation/clipboard.json';
+import cssVariable from '../../../../ods-react/src/components/clipboard/documentation/cssVariable.json';
+import specificationsClipboard from '../../../../ods-react/src/components/clipboard/documentation/clipboard.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -24,7 +25,8 @@ import * as ClipboardStories from './clipboard.stories';
 3. **Clipboard Trigger**
 
 <TechnicalSpecification
-  data={ SpecificationsClipboard }
+  cssVariable={ cssVariable }
+  data={ specificationsClipboard }
   extraInfo={{
     'Clipboard': {
       extendAttribute: {

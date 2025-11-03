@@ -1,6 +1,7 @@
 import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
 import { Meta, Source } from '@storybook/blocks';
-import SpecificationsCode from '../../../../ods-react/src/components/code/documentation/code.json';
+import cssVariable from '../../../../ods-react/src/components/code/documentation/cssVariable.json';
+import specificationsCode from '../../../../ods-react/src/components/code/documentation/code.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -24,7 +25,8 @@ import * as CodeStories from './code.stories';
 1. **Code**
 
 <TechnicalSpecification
-  data={ SpecificationsCode }
+  cssVariable={ cssVariable}
+  data={ specificationsCode }
   extraInfo={{
     'Code': {
       extendAttribute: {

@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsDivider from '../../../../ods-react/src/components/divider/documentation/divider.json';
+import cssVariable from '../../../../ods-react/src/components/divider/documentation/cssVariable.json';
+import specificationsDivider from '../../../../ods-react/src/components/divider/documentation/divider.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -22,7 +23,8 @@ import * as DividerStories from './divider.stories';
 1. **Divider**
 
 <TechnicalSpecification
-  data={ SpecificationsDivider }
+  cssVariable={ cssVariable }
+  data={ specificationsDivider }
   extraInfo={{
     'Divider': {
       extendAttribute: {

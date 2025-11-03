@@ -14,12 +14,20 @@ const Heading = ({ children, label, level }: Props) => {
 
   return (
     <>
-      {/* @ts-ignore to fix when extra time */}
-      <HeaderMdx className={ styles.heading }
-                 as={ `h${level}` }
-                 id={ tagID }>
-        { label } { children && <span className={ styles['heading__child'] }>{ children }</span> }
-      </HeaderMdx>
+      <div className={ styles.heading }>
+        <HeaderMdx
+          as={ `h${level}` }
+          id={ tagID }>
+          { label }
+        </HeaderMdx>
+
+        {
+          children &&
+          <span className={ styles['heading__child'] }>
+            { children }
+          </span>
+        }
+      </div>
 
       {
         level < 3 &&

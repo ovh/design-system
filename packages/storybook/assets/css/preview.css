@@ -9,17 +9,18 @@ body {
 
 /* Apply theme modifiers on root element beneath body to avoid impacting portal elements */
 body[data-theme="dark"] > #storybook-docs {
-  --ods-theme-anchor-text-color: #ffae00;
-  --ods-theme-anchor-text-color-hover: #e59400;
-  --ods-theme-anchor-text-color-visited: #c78200;
-  --ods-theme-background-color: #000;
-  --ods-theme-heading-text-color: #c9cdcf;
-  --ods-theme-outline-color: #fff;
-  --ods-theme-text-color: #fff;
+  --ods-theme-anchor-text-color: #66a2f7;
+  --ods-theme-anchor-text-color-hover: #87bbfa;
+  --ods-theme-anchor-text-color-visited: #a2ccfb;
+  --ods-theme-background-color: #232628;
+  --ods-theme-heading-text-color: #a2ccfb;
+  --ods-theme-outline-color: #f0f0f0;
+  --ods-theme-text-color: #e0e2f7;
 }
 
 body[data-theme="dark"] [data-ods="table"] {
-  --ods-table-striped-background-color: var(--ods-theme-heading-text-color);
+  --ods-table-head-background-color: #383838;
+  --ods-table-striped-background-color: #383838;
 }
 
 body > #storybook-docs {

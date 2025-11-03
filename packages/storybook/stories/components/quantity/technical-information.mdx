@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsQuantity from '../../../../ods-react/src/components/quantity/documentation/quantity.json';
+import cssVariable from '../../../../ods-react/src/components/quantity/documentation/cssVariable.json';
+import specificationsQuantity from '../../../../ods-react/src/components/quantity/documentation/quantity.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -26,7 +27,8 @@ import * as QuantityStories from './quantity.stories';
 3. **Quantity Input**
 
 <TechnicalSpecification
-  data={ SpecificationsQuantity }
+  cssVariable={ cssVariable }
+  data={ specificationsQuantity }
   extraInfo={{
     'Quantity': {
       extendAttribute: {

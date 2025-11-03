@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsButton from '../../../../ods-react/src/components/button/documentation/button.json';
+import cssVariable from '../../../../ods-react/src/components/button/documentation/cssVariable.json';
+import specificationsButton from '../../../../ods-react/src/components/button/documentation/button.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -22,7 +23,8 @@ import * as ButtonStories from './button.stories';
 1. **Button**
 
 <TechnicalSpecification
-  data={ SpecificationsButton }
+  cssVariable={ cssVariable }
+  data={ specificationsButton }
   extraInfo={{
     'Button': {
       extendAttribute: {

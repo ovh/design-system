@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsToggle from '../../../../ods-react/src/components/toggle/documentation/toggle.json';
+import cssVariable from '../../../../ods-react/src/components/toggle/documentation/cssVariable.json';
+import specificationsToggle from '../../../../ods-react/src/components/toggle/documentation/toggle.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -26,7 +27,8 @@ import * as ToggleStories from './toggle.stories';
 3. **ToggleLabel**
 
 <TechnicalSpecification
-  data={ SpecificationsToggle }
+  cssVariable={ cssVariable }
+  data={ specificationsToggle }
   extraInfo={{
     'Toggle': {
       extendAttribute: {

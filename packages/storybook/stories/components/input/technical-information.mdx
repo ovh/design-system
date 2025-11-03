@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsInput from '../../../../ods-react/src/components/input/documentation/input.json';
+import cssVariable from '../../../../ods-react/src/components/input/documentation/cssVariable.json';
+import specificationsInput from '../../../../ods-react/src/components/input/documentation/input.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -24,7 +25,8 @@ import * as InputStories from './input.stories';
 1. **Input**
 
 <TechnicalSpecification
-  data={ SpecificationsInput }
+  cssVariable={ cssVariable }
+  data={ specificationsInput }
   extraInfo={{
     'Input': {
       extendAttribute: {

@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsCheckbox from '../../../../ods-react/src/components/checkbox/documentation/checkbox.json';
+import cssVariable from '../../../../ods-react/src/components/checkbox/documentation/cssVariable.json';
+import specificationsCheckbox from '../../../../ods-react/src/components/checkbox/documentation/checkbox.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -27,7 +28,8 @@ import * as CheckboxStories from './checkbox.stories';
 4. **Checkbox Group**
 
 <TechnicalSpecification
-  data={ SpecificationsCheckbox }
+  cssVariable={ cssVariable }
+  data={ specificationsCheckbox }
   extraInfo={{
     'Checkbox': {
       extendAttribute: {

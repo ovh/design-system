@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsMessage from '../../../../ods-react/src/components/message/documentation/message.json';
+import cssVariable from '../../../../ods-react/src/components/message/documentation/cssVariable.json';
+import specificationsMessage from '../../../../ods-react/src/components/message/documentation/message.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -22,7 +23,8 @@ import * as MessageStories from './message.stories';
 1. **Message**
 
 <TechnicalSpecification
-  data={ SpecificationsMessage }
+  cssVariable={ cssVariable }
+  data={ specificationsMessage }
   extraInfo={{
     'Message': {
       extendAttribute: {

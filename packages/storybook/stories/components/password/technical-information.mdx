@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsPassword from '../../../../ods-react/src/components/password/documentation/password.json';
+import cssVariable from '../../../../ods-react/src/components/password/documentation/cssVariable.json';
+import specificationsPassword from '../../../../ods-react/src/components/password/documentation/password.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -24,7 +25,8 @@ import * as PasswordStories from './password.stories';
 1. **Password**
 
 <TechnicalSpecification
-  data={ SpecificationsPassword }
+  cssVariable={ cssVariable }
+  data={ specificationsPassword }
   extraInfo={{
     'Password': {
       extendAttribute: {

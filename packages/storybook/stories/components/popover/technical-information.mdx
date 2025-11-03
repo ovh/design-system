@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsPopover from '../../../../ods-react/src/components/popover/documentation/popover.json';
+import cssVariable from '../../../../ods-react/src/components/popover/documentation/cssVariable.json';
+import specificationsPopover from '../../../../ods-react/src/components/popover/documentation/popover.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -24,7 +25,8 @@ import * as PopoverStories from './popover.stories';
 3. **Popover trigger**
 
 <TechnicalSpecification
-  data={ SpecificationsPopover }
+  cssVariable={ cssVariable }
+  data={ specificationsPopover }
   extraInfo={{
     'PopoverContent': {
       extendAttribute: {

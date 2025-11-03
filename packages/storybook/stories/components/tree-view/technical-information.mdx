@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsTreeView from '../../../../ods-react/src/components/tree-view/documentation/tree-view.json';
+import cssVariable from '../../../../ods-react/src/components/tree-view/documentation/cssVariable.json';
+import specificationsTreeView from '../../../../ods-react/src/components/tree-view/documentation/tree-view.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -26,7 +27,10 @@ import * as TreeViewStories from './tree-view.stories';
 2. **TreeView Nodes**
 3. **TreeView Node**
 
-<TechnicalSpecification data={ SpecificationsTreeView } of={ TreeViewStories } />
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsTreeView }
+  of={ TreeViewStories } />
 
 <Heading label="Examples" level={ 2 } />
 

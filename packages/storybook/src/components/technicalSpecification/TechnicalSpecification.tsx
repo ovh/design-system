@@ -5,7 +5,12 @@ import React, { Fragment, type JSX, useMemo } from 'react';
 import { type ProjectReflection } from 'typedoc';
 import { ClassModule, type ClassModuleProp } from './ClassModule';
 import { EnumList } from './EnumList';
+import { TokensTable } from '../designTokens/tokensTable/TokensTable';
 import { Heading } from '../heading/Heading';
+import { StorybookLink } from '../storybookLink/StorybookLink';
+import { type Token } from '../../constants/designTokens';
+import { HOME_TITLE } from '../../constants/meta';
+import { guessTokenType } from '../../helpers/designTokens';
 import { type Component, getComponentsInfo } from '../../helpers/docgen';
 import { type ComponentTypedoc, getComponentTypedoc } from '../../helpers/typedoc';
 import styles from './technicalSpecification.module.css';
@@ -15,12 +20,13 @@ type ProcessedData = ComponentTypedoc & {
 }
 
 type Props = {
+  cssVariable: Record<string, string>,
   data: ProjectReflection,
   extraInfo?: ClassModuleProp['extraInfo'],
   of: ModuleExports,
 }
 
-const TechnicalSpecification = ({ data, extraInfo, of }: Props): JSX.Element => {
+const TechnicalSpecification = ({ cssVariable, data, extraInfo, of }: Props): JSX.Element => {
   const { components, enums, interfaces, unions } = useMemo<ProcessedData>(() => {
     const typedoc = getComponentTypedoc(data);
 
@@ -36,6 +42,11 @@ const TechnicalSpecification = ({ data, extraInfo, of }: Props): JSX.Element => 
       unions: typedoc.unions,
     };
   }, [data, of]);
+  const cssVariables: Token[] = useMemo(() => {
+    return Object.entries(cssVariable || {})
+      .map(([key, value]) => ({ name: key, type: guessTokenType(key), value }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }, [cssVariable]);
 
   return (
     <div>
@@ -123,6 +134,18 @@ const TechnicalSpecification = ({ data, extraInfo, of }: Props): JSX.Element => 
               ))
             }
           </ul>
+        </>
+      }
+
+      {
+        cssVariables.length > 0 &&
+        <>
+          <Heading label="Css Variables"
+                   level={ 2 }>
+            <StorybookLink title={ HOME_TITLE.styleCustomization }>(see style customization)</StorybookLink>
+          </Heading>
+
+          <TokensTable tokens={ cssVariables } />
         </>
       }
     </div>

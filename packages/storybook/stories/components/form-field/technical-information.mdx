@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsFormField from '../../../../ods-react/src/components/form-field/documentation/form-field.json';
+import cssVariable from '../../../../ods-react/src/components/form-field/documentation/cssVariable.json';
+import specificationsFormField from '../../../../ods-react/src/components/form-field/documentation/form-field.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -29,7 +30,8 @@ To learn more about **Form Field** usage, please refer to the <StorybookLink tit
 4. **Form Field Error**
 
 <TechnicalSpecification
-  data={ SpecificationsFormField }
+  cssVariable={ cssVariable }
+  data={ specificationsFormField }
   extraInfo={{
     'FormField': {
       extendAttribute: {

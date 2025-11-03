@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsFileUpload from '../../../../ods-react/src/components/file-upload/documentation/file-upload.json';
+import cssVariable from '../../../../ods-react/src/components/file-upload/documentation/cssVariable.json';
+import specificationsFileUpload from '../../../../ods-react/src/components/file-upload/documentation/file-upload.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -25,7 +26,8 @@ import * as FileUploadStories from './file-upload.stories';
 3. **File Upload Item**
 
 <TechnicalSpecification
-  data={ SpecificationsFileUpload }
+  cssVariable={ cssVariable }
+  data={ specificationsFileUpload }
   extraInfo={{
     'FileUpload': {
       extendAttribute: {

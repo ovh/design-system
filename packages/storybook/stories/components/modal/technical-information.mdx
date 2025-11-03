@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsModal from '../../../../ods-react/src/components/modal/documentation/modal.json';
+import cssVariable from '../../../../ods-react/src/components/modal/documentation/cssVariable.json';
+import specificationsModal from '../../../../ods-react/src/components/modal/documentation/modal.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -25,7 +26,8 @@ import * as ModalStories from './modal.stories';
 4. **Modal Trigger**
 
 <TechnicalSpecification
-  data={ SpecificationsModal }
+  cssVariable={ cssVariable }
+  data={ specificationsModal }
   extraInfo={{
     'ModalBody': {
       extendAttribute: {

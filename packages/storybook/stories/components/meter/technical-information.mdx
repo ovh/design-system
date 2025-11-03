@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsMeter from '../../../../ods-react/src/components/meter/documentation/meter.json';
+import cssVariable from '../../../../ods-react/src/components/meter/documentation/cssVariable.json';
+import specificationsMeter from '../../../../ods-react/src/components/meter/documentation/meter.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -24,7 +25,10 @@ import * as MeterStories from './meter.stories';
 
 1. **Meter**
 
-<TechnicalSpecification data={ SpecificationsMeter } of={ MeterStories } />
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsMeter }
+  of={ MeterStories } />
 
 <Heading label="Examples" level={ 2 } />
 

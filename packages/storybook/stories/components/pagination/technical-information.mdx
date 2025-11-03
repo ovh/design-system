@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsPagination from '../../../../ods-react/src/components/pagination/documentation/pagination.json';
+import cssVariable from '../../../../ods-react/src/components/pagination/documentation/cssVariable.json';
+import specificationsPagination from '../../../../ods-react/src/components/pagination/documentation/pagination.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -22,7 +23,8 @@ import * as PaginationStories from './pagination.stories';
 1. **Pagination**
 
 <TechnicalSpecification
-  data={ SpecificationsPagination }
+  cssVariable={ cssVariable }
+  data={ specificationsPagination }
   extraInfo={{
     'Pagination': {
       extendAttribute: {

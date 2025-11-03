@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsRange from '../../../../ods-react/src/components/range/documentation/range.json';
+import cssVariable from '../../../../ods-react/src/components/range/documentation/cssVariable.json';
+import specificationsRange from '../../../../ods-react/src/components/range/documentation/range.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -24,7 +25,8 @@ import * as RangeStories from './range.stories';
 1. **Range**
 
 <TechnicalSpecification
-  data={ SpecificationsRange }
+  cssVariable={ cssVariable }
+  data={ specificationsRange }
   extraInfo={{
     'Range': {
       extendAttribute: {

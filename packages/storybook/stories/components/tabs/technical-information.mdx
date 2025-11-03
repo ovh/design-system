@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import SpecificationsTabs from '../../../../ods-react/src/components/tabs/documentation/tabs.json';
+import cssVariable from '../../../../ods-react/src/components/tabs/documentation/cssVariable.json';
+import specificationsTabs from '../../../../ods-react/src/components/tabs/documentation/tabs.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -25,7 +26,8 @@ import * as TabsStories from './tabs.stories';
 4. **Tab Content**
 
 <TechnicalSpecification
-  data={ SpecificationsTabs }
+  cssVariable={ cssVariable }
+  data={ specificationsTabs }
   extraInfo={{
     'Tab': {
       extendAttribute: {

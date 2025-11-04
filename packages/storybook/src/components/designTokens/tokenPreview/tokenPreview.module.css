@@ -21,9 +21,14 @@
   background-color: var(--preview-spacing-background-color);
 }
 
-.preview-height {
+.preview-margin {
+  background-color: var(--preview-spacing-background-color);
+}
+
+.preview-margin__child {
   box-sizing: border-box;
   border: 1px solid var(--preview-border-color);
+  background-color: var(--preview-background-color);
   height: var(--preview-size);
   width: var(--preview-size);
 }
@@ -35,6 +40,18 @@
   height: var(--preview-size);
   width: var(--preview-size);
   outline: solid;
+}
+
+.preview-size {
+  box-sizing: border-box;
+  border: 1px solid var(--preview-border-color);
+  background-color: var(--preview-background-color);
+  height: var(--preview-size);
+  width: var(--preview-size);
+}
+
+.preview-size--extra-large {
+/* TODO find a way to show that size is not entirely rendered */
 }
 
 .preview-padding {

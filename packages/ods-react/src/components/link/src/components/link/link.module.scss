@@ -18,8 +18,9 @@
 
       &:focus-visible,
       &:hover {
-        transition: none;
-        background-size: 0;
+        &::after {
+          transform: scaleX(0);
+        }
       }
     }
   }

@@ -22,11 +22,13 @@ enum TOKEN_TYPE {
   fontFamily = 'font-family',
   gap = 'gap',
   height = 'height',
+  margin = 'margin',
   opacity = 'opacity',
   outline = 'outline',
   padding = 'padding',
   palette = 'palette',
   unknown = 'unknown',
+  width = 'width',
   zIndex = 'z-index',
 }
 

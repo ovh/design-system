@@ -16,25 +16,25 @@ interface ThemeGeneratorTreeViewProps {
   onVariableChange: (name: string, value: string) => void;
 }
 
-const groupColorsByPrefix = (colors: Array<{ name: string; value: string }>): TreeItem[] => {
+const groupSemanticTokens = (semanticTokens: Array<{ name: string; value: string }>): TreeItem[] => {
   const groups: Record<string, TreeItem> = {};
 
-  colors.forEach((color) => {
-    const match = color.name.match(/--ods-color-([^-]+)/);
+  semanticTokens.forEach((token) => {
+    const match = token.name.match(/--ods-(.+)-color/);
     const groupName = match ? match[1] : 'other';
 
     if (!groups[groupName]) {
       groups[groupName] = {
         id: `group-${groupName}`,
-        name: groupName.charAt(0).toUpperCase() + groupName.slice(1),
+        name: groupName.charAt(0).toUpperCase() + groupName.slice(1).replace(/-/g, ' '),
         children: [],
       };
     }
 
     groups[groupName].children!.push({
-      id: color.name,
-      name: color.name,
-      value: color.value,
+      id: token.name,
+      name: token.name,
+      value: token.value,
     });
   });
 
@@ -44,7 +44,13 @@ const groupColorsByPrefix = (colors: Array<{ name: string; value: string }>): Tr
 const ThemeGeneratorTreeView = ({ variables, onVariableChange }: ThemeGeneratorTreeViewProps) => {
   const items: TreeItem[] = useMemo(() => {
     const categorized = categorizeCssVariables(variables);
-    return groupColorsByPrefix(categorized.colors);
+
+    const allColors = [...categorized.colors, ...categorized.other];
+    const semanticTokens = allColors.filter((token) =>
+      token.name.match(/--ods-.*-color/) && !token.name.match(/^--ods-color-/)
+    );
+
+    return groupSemanticTokens(semanticTokens);
   }, [variables]);
 
   if (Object.keys(variables).length === 0) {

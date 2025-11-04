@@ -389,3 +389,20 @@ export const AccessibilityRating: Story = {
     </>
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '16px', alignItems: 'center' }}>
+      <Icon name={ ICON_NAME.home } />
+      <Icon name={ ICON_NAME.circleInfo } />
+      <Icon name={ ICON_NAME.tag } />
+      <Icon name={ ICON_NAME.check } />
+      <Icon name={ ICON_NAME.triangleExclamation } />
+    </div>
+  ),
+};

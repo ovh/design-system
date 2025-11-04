@@ -11,6 +11,7 @@
     "start": "yarn generate:versions && storybook dev -p 6006 --no-open"
   },
   "dependencies": {
+    "@ant-design/colors": "7.1.0",
     "@ark-ui/react": "5.25.1",
     "@ovhcloud/ods-react": "19.2.1",
     "@ovhcloud/ods-themes": "19.2.1",

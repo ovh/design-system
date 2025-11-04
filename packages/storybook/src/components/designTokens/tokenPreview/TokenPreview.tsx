@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { type CSSProperties, type FC, type JSX } from 'react';
 import { type Token, TOKEN_TYPE } from '../../../constants/designTokens';
 import styles from './tokenPreview.module.css';
@@ -9,6 +10,9 @@ interface PreviewProp {
 interface TokenPreviewProp {
   token: Token,
 }
+
+const MAX_HEIGHT = 100;
+const MAX_WIDTH = 100;
 
 function capitalizeFirstLetter(str: string): string {
   return `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
@@ -46,14 +50,14 @@ const PreviewGap: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
   );
 };
 
-const PreviewPadding: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
+const PreviewMargin: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
   const horizontal = token.name.includes('horizontal');
 
   return (
     <div
-      className={ styles['preview-padding'] }
+      className={ styles['preview-margin'] }
       style={{ padding: horizontal ? `0 ${token.value}` : `${token.value} 0` }}>
-      <div className={ styles['preview-padding__child'] } />
+      <div className={ styles['preview-margin__child'] } />
     </div>
   );
 };
@@ -66,6 +70,33 @@ const PreviewOutline: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
     <div
       className={ styles['preview-outline'] }
       style={{ [`outline${capitalizeFirstLetter(prop)}`]: token.value }} />
+  );
+};
+
+const PreviewPadding: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
+  const horizontal = token.name.includes('horizontal');
+
+  return (
+    <div
+      className={ styles['preview-padding'] }
+      style={{ padding: horizontal ? `0 ${token.value}` : `${token.value} 0` }}>
+      <div className={ styles['preview-padding__child'] } />
+    </div>
+  );
+};
+
+const PreviewSize: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
+  const height = token.name.includes('height');
+  const tokenNumericalValue = parseInt(token.value, 10);
+  const value = Math.min(tokenNumericalValue, height ? MAX_HEIGHT : MAX_WIDTH);
+
+  return (
+    <div
+      className={ classNames(
+        styles['preview-size'],
+        { [styles['preview-size--extra-large']]: value !== tokenNumericalValue }
+      )}
+      style={{ [height ? 'height' : 'width']: value }} />
   );
 };
 
@@ -96,7 +127,10 @@ function renderPreview(token: Token): JSX.Element {
     case TOKEN_TYPE.gap:
       return <PreviewGap token={ token } />;
     case TOKEN_TYPE.height:
-      return <Preview style={{ height: token.value }} />;
+    case TOKEN_TYPE.width:
+      return <PreviewSize token={ token } />;
+    case TOKEN_TYPE.margin:
+      return <PreviewMargin token={ token } />;
     case TOKEN_TYPE.opacity:
       return <Preview style={{ opacity: token.value }} />;
     case TOKEN_TYPE.outline:

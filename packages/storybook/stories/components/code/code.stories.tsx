@@ -136,3 +136,26 @@ export const Multiline: Story = {
     </Code>
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: 600 }}>
+      <Code>
+        console.log('Hello world');
+      </Code>
+
+      <Code canCopy>
+        { `import { Text } from '@ovhcloud/ods-react';` }
+      </Code>
+
+      <Code canCopy labelCopy="Copy" labelCopySuccess="Copied!">
+        { `const sum = (a, b) => a + b;` }
+      </Code>
+    </div>
+  ),
+};

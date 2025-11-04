@@ -223,3 +223,31 @@ export const WithSeconds: Story = {
     </>
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <Timepicker>
+        <TimepickerControl />
+      </Timepicker>
+
+      <Timepicker>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+
+      <Timepicker disabled>
+        <TimepickerControl />
+      </Timepicker>
+
+      <Timepicker readOnly>
+        <TimepickerControl />
+      </Timepicker>
+    </div>
+  ),
+};

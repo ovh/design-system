@@ -186,3 +186,24 @@ export const AccessibilityAriaLabel: Story = {
     </Tag>
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px', alignItems: 'center' }}>
+      <Tag>Default</Tag>
+      <Tag disabled>Disabled</Tag>
+      <Tag size={ TAG_SIZE.lg }>Large</Tag>
+      <Tag color={ TAG_COLOR.primary }>Primary</Tag>
+      <Tag color={ TAG_COLOR.success }>Success</Tag>
+      <Tag color={ TAG_COLOR.warning }>Warning</Tag>
+      <Tag color={ TAG_COLOR.critical }>Critical</Tag>
+      <Tag color={ TAG_COLOR.information }>Info</Tag>
+      <Tag color={ TAG_COLOR.neutral }>Neutral</Tag>
+    </div>
+  ),
+};

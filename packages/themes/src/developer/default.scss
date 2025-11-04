@@ -1,0 +1,17 @@
+/*
+ * The theme plus the fonts packaged as base64.
+ * Use this only if you encounter some issues with the font files import.
+ * Otherwise prefer using distinct /css and /fonts imports.
+ */
+@use '../../assets/fonts/ods-icon/icomoon/icomoon';
+@use '../../assets/fonts/source-code-pro/base64/source-code-pro-variable';
+@use '../../assets/fonts/source-code-pro/base64/source-code-pro-variable-italic';
+@use '../../assets/fonts/source-sans-pro/base64/source-sans3-variable-custom';
+@use '../../assets/fonts/source-sans-pro/base64/source-sans3-variable-custom-italic';
+@use '../helpers/fonts';
+@use './index';
+@include fonts.ods-icon-font-face(icomoon.$base64);
+@include fonts.source-code-pro-font-face(source-code-pro-variable.$base64);
+@include fonts.source-code-pro-italic-font-face(source-code-pro-variable-italic.$base64);
+@include fonts.source-sans-pro-font-face(source-sans3-variable-custom.$base64);
+@include fonts.source-sans-pro-italic-font-face(source-sans3-variable-custom-italic.$base64);

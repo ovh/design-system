@@ -22,6 +22,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ant-design/colors@npm:7.1.0":
+  version: 7.1.0
+  resolution: "@ant-design/colors@npm:7.1.0"
+  dependencies:
+    "@ctrl/tinycolor": ^3.6.1
+  checksum: 6488b4159cea52be8a904caf541064e9f0e267c1df74ed687abd9364e6cfeb0353c64ee078878069f48aa6c381feca2af17612efe0529517c0260f989472b7ae
+  languageName: node
+  linkType: hard
+
 "@ark-ui/react@npm:5.25.1":
   version: 5.25.1
   resolution: "@ark-ui/react@npm:5.25.1"
@@ -1901,6 +1910,13 @@ __metadata:
   peerDependencies:
     postcss-selector-parser: ^6.0.13
   checksum: 3786a6afea97b08ad739ee8f4004f7e0a9e25049cee13af809dbda6462090744012a54bd9275a44712791e8f103f85d21641f14e81799f9dab946b0459a5e1ef
+  languageName: node
+  linkType: hard
+
+"@ctrl/tinycolor@npm:^3.6.1":
+  version: 3.6.1
+  resolution: "@ctrl/tinycolor@npm:3.6.1"
+  checksum: cefec6fcaaa3eb8ddf193f981e097dccf63b97b93b1e861cb18c645654824c831a568f444996e15ee509f255658ed82fba11c5365494a6e25b9b12ac454099e0
   languageName: node
   linkType: hard
 
@@ -4961,6 +4977,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-storybook@workspace:packages/storybook"
   dependencies:
+    "@ant-design/colors": 7.1.0
     "@ark-ui/react": 5.25.1
     "@ovhcloud/ods-react": 19.2.1
     "@ovhcloud/ods-themes": 19.2.1

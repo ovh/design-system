@@ -189,3 +189,19 @@ export const TotalItems: Story = {
       withPageSizeSelector />
   ),
 };
+
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <Pagination totalItems={ 100 } />
+      <Pagination totalItems={ 500 } pageSize={ 25 } />
+      <Pagination totalItems={ 500 } disabled />
+      <Pagination totalItems={ 100 } withPageSizeSelector />
+    </div>
+  ),
+};

@@ -2,6 +2,12 @@
 
 @layer ods-quarks {
   .text {
+    $text: &;
+
+    &--disabled#{&} {
+      color: var(--ods-color-text-disabled-default);
+    }
+
     &--caption {
       @include text.ods-text-caption();
     }

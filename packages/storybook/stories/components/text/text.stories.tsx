@@ -21,6 +21,12 @@ export const Demo: Story = {
       },
       control: 'text',
     },
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: 'boolean',
+    },
     preset: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -42,6 +48,18 @@ export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Text>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </Text>
+  ),
+};
+
+export const Disabled: Story = {
+  globals: {
+    imports: `import { Text } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Text disabled>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </Text>
   ),

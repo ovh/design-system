@@ -12,6 +12,22 @@ export const Default = () => (
   </Text>
 );
 
+export const Disabled = () => (
+  <>
+    <Text disabled preset="caption">Caption</Text><br />
+    <Text disabled preset="code">Code</Text><br />
+    <Text disabled preset="label">Label</Text>
+    <Text disabled preset="paragraph">Paragraph</Text>
+    <Text disabled preset="span">Span</Text><br />
+    <Text disabled preset="heading-1">Heading-1</Text>
+    <Text disabled preset="heading-2">Heading-2</Text>
+    <Text disabled preset="heading-3">Heading-3</Text>
+    <Text disabled preset="heading-4">Heading-4</Text>
+    <Text disabled preset="heading-5">Heading-5</Text>
+    <Text disabled preset="heading-6">Heading-6</Text>
+  </>
+);
+
 export const Presets = () => (
   <>
     <Text preset="caption">Caption</Text><br />

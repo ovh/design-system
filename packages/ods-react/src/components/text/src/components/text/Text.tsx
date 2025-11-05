@@ -8,6 +8,10 @@ import style from './text.module.scss';
 // so we extends this one for now, could be optimized in the future
 interface TextProp extends ComponentPropsWithRef<'label'> {
   /**
+   * Whether the text is displayed in a disabled context.
+   */
+  disabled?: boolean,
+  /**
    * The text preset to use.
    */
   preset?: TextPreset,
@@ -16,6 +20,7 @@ interface TextProp extends ComponentPropsWithRef<'label'> {
 const Text: FC<TextProp> = forwardRef(({
   children,
   className,
+  disabled,
   preset = TEXT_PRESET.paragraph,
   ...props
 }, ref): JSX.Element => {
@@ -25,7 +30,12 @@ const Text: FC<TextProp> = forwardRef(({
     // @ts-ignore TODO
     <Tag
       // @ts-ignore TODO
-      className={ classNames(style['text'], style[`text--${preset}`], className) }
+      className={ classNames(
+        style['text'],
+        style[`text--${preset}`],
+        { [style['text--disabled']]: disabled },
+        className,
+      )}
       data-ods="text"
       ref={ ref }
       { ...props }>

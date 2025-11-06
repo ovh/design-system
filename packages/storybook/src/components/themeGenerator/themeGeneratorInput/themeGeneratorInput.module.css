@@ -1,0 +1,16 @@
+.theme-generator-input {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.theme-generator-input label {
+  font-weight: normal;
+}
+
+.theme-generator-input__range {
+  min-width: 170px;
+}
+

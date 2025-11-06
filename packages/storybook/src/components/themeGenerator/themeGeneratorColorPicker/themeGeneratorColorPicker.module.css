@@ -14,6 +14,7 @@
 .theme-generator-color-picker__label {
   flex: 1;
   color: var(--ods-color-text);
+  font-weight: normal;
 }
 
 .theme-generator-color-picker__control {

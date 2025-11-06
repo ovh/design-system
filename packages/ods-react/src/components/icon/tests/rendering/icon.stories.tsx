@@ -7,13 +7,10 @@ export default {
 
 export const customStyle = () => (
   <Icon
-    data-testid="custom-style"
     name={ ICON_NAME.circleCheck }
-    style={{ fontSize: '42px' }} />
+    style={{ color: 'red' }} />
 );
 
 export const render = () => (
-  <Icon
-    data-testid="render"
-    name={ ICON_NAME.circleCheck } />
+  <Icon name={ ICON_NAME.circleCheck } />
 );

@@ -5,7 +5,6 @@ describe('Icon rendering', () => {
   it('should render the web component', async() => {
     await gotoStory(page, 'rendering/render');
 
-    expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
     expect(await page.waitForSelector('[data-ods="icon"]')).not.toBeNull();
   });
 
@@ -13,10 +12,10 @@ describe('Icon rendering', () => {
     it('should render with custom style applied', async() => {
       await gotoStory(page, 'rendering/custom-style');
 
-      const icon = await page.waitForSelector('[data-testid="custom-style"]');
-      const height = await icon?.evaluate((el: Element) => el.getBoundingClientRect().height);
+      const icon = await page.waitForSelector('[data-ods="icon"]');
+      const color = await icon?.evaluate((el: Element) => window.getComputedStyle(el).color);
 
-      expect(height).toBe(42);
+      expect(color).toBe('rgb(255, 0, 0)');
     });
   });
 });

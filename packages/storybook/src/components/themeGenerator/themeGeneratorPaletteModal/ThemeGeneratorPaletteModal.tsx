@@ -1,7 +1,8 @@
 import React, { type JSX, useState, useEffect, useMemo } from 'react';
-import { Button, BUTTON_VARIANT, Modal, ModalBody, ModalContent, Text, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';
+import { Button, BUTTON_VARIANT, Modal, ModalBody, ModalContent, Text, TEXT_PRESET, TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';
+import { PALETTES } from '../../../constants/designTokens';
 import styles from './themeGeneratorPaletteModal.module.css';
-import { generatePalette, formatPaletteAsCssVariables, COLOR_FAMILIES, PALETTE_STEPS, type ColorFamily, type PaletteResult } from './paletteGenerator';
+import { generatePalette, formatPaletteAsCssVariables, PALETTE_STEPS, type ColorFamily, type PaletteResult } from './paletteGenerator';
 import { ThemeGeneratorColorPicker } from '../themeGeneratorColorPicker/ThemeGeneratorColorPicker';
 
 const ODS_COLOR_PREFIX = '--ods-color';
@@ -37,7 +38,7 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
 
   useEffect(() => {
     const initialSeeds: Record<ColorFamily, string> = {} as Record<ColorFamily, string>;
-    COLOR_FAMILIES.forEach((family) => {
+    PALETTES.forEach((family) => {
       const defaultColorVar = buildColorVar(family, '500');
       initialSeeds[family] = currentVariables[defaultColorVar] || '#000000';
     });
@@ -45,7 +46,7 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
   }, [currentVariables]);
 
   const treeItems = useMemo(() => {
-    return COLOR_FAMILIES.map((family) => {
+    return PALETTES.map((family) => {
       const palette = generatedPalettes[family];
 
       const children: TreeItem[] = PALETTE_STEPS.map((step) => {
@@ -64,7 +65,7 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
         name: family.charAt(0).toUpperCase() + family.slice(1),
         children,
       };
-    });
+    }).sort((a, b) => a.name.localeCompare(b.name));
   }, [generatedPalettes, currentVariables]);
 
   function onOpenChange({ open }: { open: boolean }) {
@@ -116,6 +117,15 @@ const ThemeGeneratorPaletteModal = ({ open, onClose, onApply, currentVariables }
     <Modal open={ open } onOpenChange={ onOpenChange }>
       <ModalContent className={styles['theme-generator-palette-modal']}>
         <ModalBody>
+          <div className={styles['theme-generator-palette-modal__header']}>
+            <Text preset={ TEXT_PRESET.heading4 }>
+              Color Palette Generator
+            </Text>
+            <Text>
+              Generate color palettes for each color family by selecting a seed color. The palette will automatically generate 10 color steps from your selection.
+            </Text>
+          </div>
+
           <div className={styles['theme-generator-palette-modal__preview']}>
             <TreeView
               className={styles['theme-generator-palette-modal__preview__tree-view']}

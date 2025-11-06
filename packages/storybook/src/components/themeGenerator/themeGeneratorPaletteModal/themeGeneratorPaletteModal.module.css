@@ -4,6 +4,13 @@
   max-height: 85vh;
 }
 
+.theme-generator-palette-modal__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
 .theme-generator-palette-modal__preview {
   padding: 16px;
   height: 500px;

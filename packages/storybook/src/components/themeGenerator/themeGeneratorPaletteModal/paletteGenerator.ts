@@ -1,17 +1,9 @@
 import { generate } from '@ant-design/colors';
-
-const COLOR_FAMILIES = Object.freeze([
-  'neutral',
-  'primary',
-  'information',
-  'success',
-  'warning',
-  'critical',
-] as const);
+import { PALETTES } from '../../../constants/designTokens';
 
 const PALETTE_STEPS = Object.freeze(['000', '100', '200', '300', '400', '500', '600', '700', '800', '900']);
 
-type ColorFamily = typeof COLOR_FAMILIES[number];
+type ColorFamily = typeof PALETTES[number];
 
 interface PaletteResult {
   [step: string]: string;
@@ -73,7 +65,6 @@ function generatePalette(seedHex: string): PaletteResult {
 }
 
 export {
-  COLOR_FAMILIES,
   type ColorFamily,
   formatPaletteAsCssVariables,
   generatePalette,

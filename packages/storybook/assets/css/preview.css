@@ -30,10 +30,10 @@ body > #storybook-docs {
 
 /* Code preview typography */
 pre * {
-  font-family: var(--ods-font-family-code);
-  font-size: 13px;
   line-height: 19px;
   color: #fff;
+  font-family: var(--ods-font-family-code);
+  font-size: 13px;
 }
 
 img {
@@ -42,8 +42,8 @@ img {
 
 /* Doc pages content */
 #storybook-docs > .sbdocs-wrapper {
-  padding: 1.5rem 3rem 3rem 3rem;
   background-color: var(--ods-theme-background-color);
+  padding: 1.5rem 3rem 3rem;
 }
 
 /* Force ODS link color while there are still some markdown links */
@@ -67,4 +67,9 @@ img {
 /* Hide live coding editor overflow container weird persistent line */
 #monacoOverflowContainer {
   outline: none;
+}
+
+/* We need to add padding to avoid outline being cut off */
+.theme-generator-preview {
+  padding: 4px!important;
 }

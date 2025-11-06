@@ -1,7 +1,8 @@
 import { Spinner, Text, TreeView, TreeViewNode, TreeViewNodes, SPINNER_SIZE, TEXT_PRESET } from '@ovhcloud/ods-react';
 import React, { useMemo } from 'react';
-import { categorizeCssVariables } from '../themeVariableUtils';
-import { ThemeGeneratorColorPicker } from '../themeGeneratorColorPicker/ThemeGeneratorColorPicker';
+import { TOKEN_CATEGORY, type Token } from '../../../constants/designTokens';
+import { categorizeTokens } from '../../../helpers/designTokens';
+import { ThemeGeneratorInput } from '../themeGeneratorInput/ThemeGeneratorInput';
 import styles from './themeGeneratorTreeView.module.css';
 
 interface TreeItem {
@@ -16,16 +17,17 @@ interface ThemeGeneratorTreeViewProps {
   onVariableChange: (name: string, value: string) => void;
 }
 
-const groupSemanticTokens = (semanticTokens: Array<{ name: string; value: string }>): TreeItem[] => {
+const groupTokensByCategory = (tokens: Token[], categoryName: string): TreeItem[] => {
   const groups: Record<string, TreeItem> = {};
 
-  semanticTokens.forEach((token) => {
-    const match = token.name.match(/--ods-(.+)-color/);
+  tokens.forEach((token) => {
+    // Extract group name from token name (e.g., --ods-theme-padding-horizontal -> padding)
+    const match = token.name.match(/--ods-theme-([^-]+)/);
     const groupName = match ? match[1] : 'other';
 
     if (!groups[groupName]) {
       groups[groupName] = {
-        id: `group-${groupName}`,
+        id: `group-${categoryName}-${groupName}`,
         name: groupName.charAt(0).toUpperCase() + groupName.slice(1).replace(/-/g, ' '),
         children: [],
       };
@@ -42,16 +44,47 @@ const groupSemanticTokens = (semanticTokens: Array<{ name: string; value: string
 };
 
 const ThemeGeneratorTreeView = ({ variables, onVariableChange }: ThemeGeneratorTreeViewProps) => {
+  const categorized = useMemo(() => categorizeTokens(variables), [variables]);
+
+  // Create a map for quick token lookup
+  const tokenMap = useMemo(() => {
+    const map = new Map<string, Token>();
+    Object.values(categorized).flat().forEach((token) => {
+      map.set(token.name, token);
+    });
+    return map;
+  }, [categorized]);
+
   const items: TreeItem[] = useMemo(() => {
-    const categorized = categorizeCssVariables(variables);
+    // Combine all editable categories (excluding deprecated and palette)
+    const editableCategories = [
+      { category: TOKEN_CATEGORY.color, label: 'Color' },
+      { category: TOKEN_CATEGORY.spacing, label: 'Spacing' },
+      { category: TOKEN_CATEGORY.outline, label: 'Outline' },
+      { category: TOKEN_CATEGORY.overlay, label: 'Overlay' },
+      { category: TOKEN_CATEGORY.fontFamily, label: 'Font Family' },
+      { category: TOKEN_CATEGORY.formElement, label: 'Form Element' },
+    ];
 
-    const allColors = [...categorized.colors, ...categorized.other];
-    const semanticTokens = allColors.filter((token) =>
-      token.name.match(/--ods-.*-color/) && !token.name.match(/^--ods-color-/)
-    );
+    const allItems: TreeItem[] = [];
 
-    return groupSemanticTokens(semanticTokens);
-  }, [variables]);
+    editableCategories.forEach(({ category, label }) => {
+      const tokens = categorized[category];
+      if (tokens.length > 0) {
+        // Add category header
+        const categoryGroups = groupTokensByCategory(tokens, category);
+        if (categoryGroups.length > 0) {
+          allItems.push({
+            id: `category-${category}`,
+            name: label,
+            children: categoryGroups.flatMap((group) => group.children || []),
+          });
+        }
+      }
+    });
+
+    return allItems;
+  }, [categorized]);
 
   if (Object.keys(variables).length === 0) {
     return (
@@ -76,11 +109,17 @@ const ThemeGeneratorTreeView = ({ variables, onVariableChange }: ThemeGeneratorT
                 );
               }
 
+              // Find the token from the token map
+              const token = tokenMap.get(item.name);
+
+              if (!token) {
+                return null;
+              }
+
               return (
-                <ThemeGeneratorColorPicker
+                <ThemeGeneratorInput
                   key={item.id}
-                  label={item.name}
-                  value={item.value}
+                  token={token}
                   onChange={(value) => onVariableChange(item.name, value)}
                 />
               );

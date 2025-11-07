@@ -2,6 +2,7 @@ import { type FileUploadFileRejectDetails, FileUpload as VendorFileUpload } from
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useCallback } from 'react';
 import { useFormField } from '../../../../form-field/src';
+import { FILE_UPLOAD_VARIANT } from '../../constants/file-upload-variant';
 import { FileUploadProvider, type FileUploadRootProp } from '../../contexts/useFileUpload';
 import { mapErrorCodes } from '../../controller/file-upload';
 import { FileUploadDropzone } from '../file-upload-dropzone/FileUploadDropzone';
@@ -29,6 +30,7 @@ const FileUpload: FC<FileUploadProp> = forwardRef(({
   onFileReject,
   required,
   triggerLabel = 'Browse files',
+  variant = FILE_UPLOAD_VARIANT.default,
   ...props
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
@@ -49,7 +51,6 @@ const FileUpload: FC<FileUploadProp> = forwardRef(({
         allowDrop={ true }
         className={ classNames(
           style['file-upload'],
-          { [style['file-upload--invalid']]: isInvalid },
           className,
         )}
         data-ods="file-upload"
@@ -75,11 +76,13 @@ const FileUpload: FC<FileUploadProp> = forwardRef(({
             acceptedFileLabel={ acceptedFileLabel }
             dropzoneLabel={ dropzoneLabel }
             error={ error }
+            invalid={ isInvalid }
             maxFile={ maxFile }
             maxFileLabel={ maxFileLabel }
             maxSize={ maxSize }
             maxSizeLabel={ maxSizeLabel }
-            triggerLabel={ triggerLabel } />
+            triggerLabel={ triggerLabel }
+            variant={ variant } />
 
           { children }
         </VendorFileUpload.Dropzone>

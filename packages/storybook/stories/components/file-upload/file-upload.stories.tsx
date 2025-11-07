@@ -1,7 +1,7 @@
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
-import { FILE_UPLOAD_I18N, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadProp, type FileUploadRejectDetail } from '../../../../ods-react/src/components/file-upload/src';
+import { FILE_UPLOAD_I18N, FILE_UPLOAD_VARIANT, FILE_UPLOAD_VARIANTS, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadProp, type FileUploadRejectDetail } from '../../../../ods-react/src/components/file-upload/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -110,6 +110,14 @@ export const Demo: Story = {
       },
       control: 'text',
     },
+    variant: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: { summary: 'FILE_UPLOAD_VARIANT' }
+      },
+      control: { type: 'select' },
+      options: FILE_UPLOAD_VARIANTS,
+    },
   }),
 };
 
@@ -143,7 +151,8 @@ import { useState } from 'react';`,
         acceptedFileLabel="Png files only"
         error={ error }
         onFileAccept={ onAccept }
-        onFileReject={ onReject }>
+        onFileReject={ onReject }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
         <FileUploadList>
           {
             files.map((file: File, idx) => (
@@ -173,7 +182,9 @@ import { useState } from 'react';`,
     const [files, setFiles] = useState<File[]>([]);
 
     return (
-      <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
         <FileUploadList>
           {
             files.map((file: File, idx) => (
@@ -184,6 +195,38 @@ import { useState } from 'react';`,
                   [FILE_UPLOAD_I18N.deleteButton]: `Remove ${file.name}`,
                   [FILE_UPLOAD_I18N.progressBar]: `Uploading ${file.name}`,
                 }}
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
+export const Compact: Story = {
+  globals: {
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
                 key={ idx } />
             ))
           }
@@ -216,7 +259,8 @@ import { useState } from 'react';`,
         maxSize={ 524288000 }
         maxSizeLabel="Taille de fichier max :"
         onFileAccept={ ({ files }) => setFiles(files) }
-        triggerLabel="Parcourir les fichiers">
+        triggerLabel="Parcourir les fichiers"
+        variant={ FILE_UPLOAD_VARIANT.compact }>
         <FileUploadList>
           {
             files.map((file: File, idx) => (
@@ -269,7 +313,9 @@ export const Disabled: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <FileUpload disabled>
+    <FileUpload
+      disabled
+      variant={ FILE_UPLOAD_VARIANT.compact }>
       <FileUploadList />
     </FileUpload>
   ),
@@ -305,7 +351,8 @@ import { useState } from 'react';`,
         maxFile={ 3 }
         maxFileLabel="Maximum file allowed:"
         onFileAccept={ onAccept }
-        onFileReject={ onReject }>
+        onFileReject={ onReject }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
         <FileUploadList>
           {
             files.map((file: File, idx) => (
@@ -350,7 +397,8 @@ import { useState } from 'react';`,
         maxSize={ 1000000 }
         maxSizeLabel="No file larger than:"
         onFileAccept={ onAccept }
-        onFileReject={ onReject }>
+        onFileReject={ onReject }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
         <FileUploadList>
           {
             files.map((file: File, idx) => (
@@ -374,7 +422,9 @@ export const Overview: Story = {
     const [files, setFiles] = useState<File[]>([]);
 
     return (
-      <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
         <FileUploadList>
           {
             files.map((file: File, idx) => (
@@ -432,7 +482,9 @@ import { useEffect, useState } from 'react';`,
     }
 
     return (
-      <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
         <FileUploadList>
           {
             files.map((file, idx) => (
@@ -469,7 +521,9 @@ import { useState } from 'react';`,
             Files:
           </FormFieldLabel>
 
-          <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+          <FileUpload
+            onFileAccept={ ({ files }) => setFiles(files) }
+            variant={ FILE_UPLOAD_VARIANT.compact }>
             <FileUploadList>
               {
                 files.map((file: File, idx) => (
@@ -505,7 +559,9 @@ import { useState } from 'react';`,
           Files:
         </FormFieldLabel>
 
-        <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+        <FileUpload
+          onFileAccept={ ({ files }) => setFiles(files) }
+          variant={ FILE_UPLOAD_VARIANT.compact }>
           <FileUploadList>
             {
               files.map((file: File, idx) => (

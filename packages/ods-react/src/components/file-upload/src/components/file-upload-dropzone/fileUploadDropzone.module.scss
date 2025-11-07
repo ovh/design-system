@@ -2,51 +2,60 @@
 
 @layer ods-organisms {
   .file-upload-dropzone {
-    $dropzone: &;
-
     display: flex;
     flex-flow: column;
     row-gap: var(--ods-theme-row-gap);
-    align-items: center;
-    padding: var(--ods-file-upload-padding-vertical) var(--ods-file-upload-padding-horizontal) 0;
-
-    &--disabled {
-      #{$dropzone}__icon {
-        color: state.$ods-state-is-disabled-text-color;
-      }
-    }
-
-    &--dragging {
-      background-color: var(--ods-theme-background-color-drag-over);
-    }
-
-    &--empty {
-      padding: var(--ods-file-upload-padding-vertical) var(--ods-file-upload-padding-horizontal);
-    }
-
-    &__icon {
-      color: var(--ods-theme-primary-color);
-      font-size: 2rem;
-    }
 
     &__rules {
       display: flex;
       flex-flow: column;
-      align-self: flex-start;
       font-size: 0.75rem;
     }
 
-    &__error {
+    &__zone {
+      $zone: &;
+
       display: flex;
       flex-flow: column;
-      row-gap: var(--ods-theme-row-gap);
+      gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+      align-items: center;
+      border: dashed 1px var(--ods-theme-input-border-color);
+      border-radius: calc(var(--ods-theme-border-radius) / 2);
+      padding: calc(var(--ods-file-upload-padding-vertical) * 3) calc(var(--ods-file-upload-padding-horizontal) * 3);
+
+      &--compact {
+        flex-flow: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--ods-file-upload-padding-vertical) var(--ods-file-upload-padding-horizontal);
+      }
+
+      &--dragging {
+        background-color: var(--ods-theme-background-color-drag-over);
+      }
+
+      &--disabled {
+        @include state.ods-is-disabled();
+
+        #{$zone}__icon {
+          color: state.$ods-state-is-disabled-text-color;
+        }
+      }
+
+      &--invalid#{$zone}--invalid {
+        border-color: var(--ods-theme-input-border-color-invalid);
+      }
+
+      &__icon {
+        color: var(--ods-theme-primary-color);
+        font-size: 2rem;
+      }
+    }
+
+    &__error {
       color: var(--ods-theme-input-text-color-invalid);
       font-size: 0.75rem;
       font-weight: 600;
-
-      &__divider {
-        width: 100%;
-      }
     }
   }
 }

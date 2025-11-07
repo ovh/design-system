@@ -4,6 +4,7 @@ import {
   BUTTON_COLOR,
   BUTTON_VARIANT,
   Modal,
+  MODAL_COLOR,
   ModalBody,
   ModalContent,
   Text,
@@ -36,7 +37,7 @@ const ThemeGeneratorSwitchThemeModal = ({
 
   return (
     <Modal open={ open } onOpenChange={ onOpenChange }>
-      <ModalContent>
+      <ModalContent color={ MODAL_COLOR.warning }>
         <ModalBody>
           <Text preset={ TEXT_PRESET.heading4 }>
             Leave custom theme?
@@ -47,12 +48,12 @@ const ThemeGeneratorSwitchThemeModal = ({
           </Text>
 
           <div className={ styles['theme-generator-switch-theme-modal__actions'] }>
-            <Button onClick={ onConfirm } color={ BUTTON_COLOR.critical }>
-              Switch to { targetLabel || 'theme' }
-            </Button>
-
             <Button onClick={ onCancel } variant={ BUTTON_VARIANT.outline }>
               Stay on Custom
+            </Button>
+
+            <Button onClick={ onConfirm } color={ BUTTON_COLOR.critical }>
+              Switch to { targetLabel || 'theme' }
             </Button>
           </div>
         </ModalBody>

@@ -9,7 +9,6 @@ import { ThemeGeneratorPreview } from './themeGeneratorPreview/ThemeGeneratorPre
 import { ThemeGeneratorSwitchThemeModal } from './themeGeneratorSwitchThemeModal/ThemeGeneratorSwitchThemeModal';
 import { ThemeGeneratorJSONModal } from './themeGeneratorJSONModal/ThemeGeneratorJSONModal';
 import defaultTokens from '@ovhcloud/ods-themes/default/tokens';
-import developerTokens from '@ovhcloud/ods-themes/developer/tokens';
 import { ThemeGeneratorPaletteModal } from './themeGeneratorPaletteModal/ThemeGeneratorPaletteModal';
 
 const ThemeGenerator = (): JSX.Element => {
@@ -29,8 +28,7 @@ const ThemeGenerator = (): JSX.Element => {
       return;
     }
 
-    const themeTokens = selectedTheme === 'developer' ? developerTokens : defaultTokens;
-    setEditedVariables(themeTokens.root);
+    setEditedVariables(defaultTokens.root);
     setIsCustomTheme(false);
   }, [selectedTheme]);
 
@@ -80,9 +78,6 @@ const ThemeGenerator = (): JSX.Element => {
             >
             <SwitchItem value="default">
               Default
-            </SwitchItem>
-            <SwitchItem value="developer">
-              Developer
             </SwitchItem>
             <SwitchItem value="custom">
               Custom

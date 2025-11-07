@@ -35,7 +35,7 @@ const ResetSandbox = ({ onCancel, onConfirm }: Prop): JSX.Element => {
       <Modal
         onOpenChange={ ({ open }) => setIsModalOpen(open) }
         open={ isModalOpen }>
-        <ModalContent color={ MODAL_COLOR.critical }>
+        <ModalContent color={ MODAL_COLOR.warning }>
           <ModalBody>
             <p>
               Are you sure you want to reset the sandbox?
@@ -45,16 +45,15 @@ const ResetSandbox = ({ onCancel, onConfirm }: Prop): JSX.Element => {
 
             <div className={ styles['reset-sandbox__modal__actions'] }>
               <Button
-                color={ BUTTON_COLOR.critical }
-                onClick={ onConfirmClick }>
-                Confirm
+                onClick={ onCancelClick }
+                variant={ BUTTON_VARIANT.outline }>
+                Cancel
               </Button>
 
               <Button
                 color={ BUTTON_COLOR.critical }
-                onClick={ onCancelClick }
-                variant={ BUTTON_VARIANT.outline }>
-                Cancel
+                onClick={ onConfirmClick }>
+                Confirm
               </Button>
             </div>
           </ModalBody>

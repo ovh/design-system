@@ -20,6 +20,7 @@
 .theme-generator-color-picker__control {
   display: flex;
   border: 0;
+  width: 130px;
 }
 
 .theme-generator-color-picker__control__trigger {
@@ -34,10 +35,12 @@
 }
 
 .theme-generator-color-picker__control__trigger__swatch {
+  box-sizing: border-box;
   border: 1px solid var(--ods-color-neutral-300);
   cursor: pointer;
-  width: 16px;
-  height: 16px;
+  width: var(--ods-theme-input-height);
+  height: var(--ods-theme-input-height);
+  border-radius: var(--ods-theme-input-border-radius);
 }
 
 .theme-generator-color-picker__popover {

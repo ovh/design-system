@@ -15,7 +15,7 @@ export const Demo: Story = {};
 
 export const Default: Story = {
   globals: {
-    imports: `import { Skeleton } from '@ovhcloud/ods-react';`,
+    imports: 'import { Skeleton } from \'@ovhcloud/ods-react\';',
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -32,7 +32,7 @@ export const Overview: Story = {
 
 export const AccessibilityLoading: Story = {
   globals: {
-    imports: `import { Skeleton } from '@ovhcloud/ods-react';`,
+    imports: 'import { Skeleton } from \'@ovhcloud/ods-react\';',
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -44,7 +44,7 @@ export const AccessibilityLoading: Story = {
 
 export const AccessibilityBadPracticeLoading: Story = {
   globals: {
-    imports: `import { Skeleton } from '@ovhcloud/ods-react';`,
+    imports: 'import { Skeleton } from \'@ovhcloud/ods-react\';',
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -54,14 +54,13 @@ export const AccessibilityBadPracticeLoading: Story = {
   ),
 };
 
-
 export const ThemeGenerator: Story = {
   parameters: {
     layout: 'fullscreen',
   },
   tags: ['!dev'],
   render: ({}) => (
-    <div style={{ display: 'flex', gap: '12px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
       <Skeleton />
       <Skeleton />
       <Skeleton />

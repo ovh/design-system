@@ -78,7 +78,7 @@ enum INPUT_TYPE {
 }
 
 function getInputTypeForToken(token: Token): INPUT_TYPE {
-  const { name, type } = token;
+  const { name, type, value } = token;
 
   // Color tokens use color picker
   if (type === TOKEN_TYPE.color || name.includes('-color')) {
@@ -90,18 +90,23 @@ function getInputTypeForToken(token: Token): INPUT_TYPE {
     return INPUT_TYPE.quantity;
   }
 
-  // Border radius uses range
-  if (type === TOKEN_TYPE.borderRadius || name.includes('border-radius')) {
-    return INPUT_TYPE.range;
-  }
-
   // Border style and outline style use select
   if (name.includes('style')) {
     return INPUT_TYPE.select;
   }
 
-  // Spacing-related tokens use quantity
-  if (type === TOKEN_TYPE.margin || type === TOKEN_TYPE.padding || type === TOKEN_TYPE.gap || name.includes('spacing')) {
+  // Values ending with "px" use quantity
+  if (value.trim().endsWith('px')) {
+    return INPUT_TYPE.quantity;
+  }
+
+  // Z-index tokens use quantity
+  if (type === TOKEN_TYPE.zIndex || name.includes('z-index')) {
+    return INPUT_TYPE.quantity;
+  }
+
+  // Border radius and spacing-related tokens use quantity
+  if (type === TOKEN_TYPE.borderRadius || name.includes('border-radius') || type === TOKEN_TYPE.margin || type === TOKEN_TYPE.padding || type === TOKEN_TYPE.gap || name.includes('spacing')) {
     return INPUT_TYPE.quantity;
   }
 

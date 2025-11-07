@@ -2,9 +2,5 @@
   .file-upload-list {
     margin: 0;
     padding: 0;
-
-    &--not-empty {
-      padding-bottom: var(--ods-file-upload-padding-vertical);
-    }
   }
 }

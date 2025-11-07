@@ -4,10 +4,10 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import { useI18n } from '../../../../../hooks/useI18n';
 import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
+import { SPINNER_SIZE, Spinner } from '../../../../spinner/src';
 import { FILE_UPLOAD_I18N, TRANSLATION_FILE } from '../../constants/file-upload-i18n';
 import { useFileUpload } from '../../contexts/useFileUpload';
 import { isUploading } from '../../controller/file-upload';
-import { FileUploadItemStatus } from '../file-upload-item-status/FileUploadItemStatus';
 import style from './fileUploadItem.module.scss';
 
 interface FileUploadItemProp extends ComponentPropsWithRef<'li'> {
@@ -28,7 +28,9 @@ interface FileUploadItemProp extends ComponentPropsWithRef<'li'> {
    */
   progress?: number,
   /**
+   * @deprecated
    * The label displayed after a successful upload.
+   * DEPRECATED: Latest design change removed the upload success label in favor of a visual icon update.
    */
   uploadSuccessLabel?: string,
 }
@@ -39,11 +41,11 @@ const FileUploadItem: FC<FileUploadItemProp> = forwardRef(({
   file,
   i18n,
   progress,
-  uploadSuccessLabel = 'File uploaded',
   ...props
 }, ref): JSX.Element => {
   const { locale } = useFileUpload();
   const { translate } = useI18n(TRANSLATION_FILE, locale, i18n);
+  const isInProgress = isUploading(progress);
 
   return (
     <FileUpload.Item
@@ -52,29 +54,52 @@ const FileUploadItem: FC<FileUploadItemProp> = forwardRef(({
       file={ file }
       ref={ ref }
       { ...props }>
-      <Icon
-        className={ style['file-upload-item__icon'] }
-        name={ ICON_NAME.file } />
+      {
+        isInProgress
+          ? <span role="status">
+            <Spinner
+              aria-label={ translate(FILE_UPLOAD_I18N.progressBar) }
+              size={ SPINNER_SIZE.sm } />
+          </span>
+          : <Icon
+            className={ classNames(
+              style['file-upload-item__icon'],
+              { [style['file-upload-item__icon--error']]: !!error },
+            )}
+            name={ error ? ICON_NAME.circleXmark : ICON_NAME.file } />
+      }
 
-      <FileUpload.ItemName className={ style['file-upload-item__name'] } />
+      <div className={ style['file-upload-item__info'] }>
+        <FileUpload.ItemName className={ classNames(
+          style['file-upload-item__info__name'],
+          { [style['file-upload-item__info__name--error']]: !!error },
+        )} />
 
-      <FileUpload.ItemSizeText className={ style['file-upload-item__size'] } />
+        {
+          isInProgress
+            ? <span className={ style['file-upload-item__info__size'] }>{ progress }%</span>
+            : <FileUpload.ItemSizeText className={ style['file-upload-item__info__size'] } />
+        }
+      </div>
 
       <FileUpload.ItemDeleteTrigger asChild>
         <Button
-          aria-label={ isUploading(progress) ? translate(FILE_UPLOAD_I18N.cancelButton) : translate(FILE_UPLOAD_I18N.deleteButton) }
-          size={ BUTTON_SIZE.sm }
+          aria-label={ isInProgress ? translate(FILE_UPLOAD_I18N.cancelButton) : translate(FILE_UPLOAD_I18N.deleteButton) }
+          className={ style['file-upload-item__delete'] }
+          size={ BUTTON_SIZE.xs }
           variant={ BUTTON_VARIANT.ghost }>
           <Icon name={ ICON_NAME.xmark } />
         </Button>
       </FileUpload.ItemDeleteTrigger>
 
-      <FileUploadItemStatus
-        className={ style['file-upload-item__status'] }
-        error={ error }
-        progress={ progress }
-        progressLabel={ translate(FILE_UPLOAD_I18N.progressBar) }
-        successLabel={ uploadSuccessLabel } />
+      {
+        !!error &&
+        <span
+          className={ style['file-upload-item__error'] }
+          role="error">
+          { error }
+        </span>
+      }
     </FileUpload.Item>
   );
 });

@@ -55,8 +55,8 @@ Common use cases include form submissions, profile picture updates, and document
 <Anatomy src="components/file-upload/anatomy.png" />
 
 1. **File Upload**
-2. **Dropzone**
-3. **Description** - optional (file limitations)
+2. **Description** - optional (file limitations)
+3. **Dropzone**
 4. **Upload button**
 5. **Uploaded files zone**
 6. **Delete button**
@@ -79,33 +79,23 @@ Users can drag & drop a file, the drop zone being the whole **File Upload** comp
 
 <Heading label="Uploading files" level={ 3 } />
 
-<Heading label="With known size" level={ 4 } />
+When a file upload is in progress, the file name and its size (if available) are displayed.
 
-When a file upload is in progress, the file name and its size are displayed.
-
-A Progress Bar with its percentage is displayed to indicate how the upload is progressing. It remains visible as long as the file uploading is not finished yet.
+A Spinner is displayed to indicate the file is uploading. It remains visible as long as the file uploading is not finished yet. The uploading progress percentage can be indicated next to the file name.
 
 A close icon Button is displayed as soon as a file upload is in progress. It is displayed as long as the user does not interrupt the upload or removes an already uploaded file.
-
-<Heading label="With unknown size" level={ 4 } />
-
-In some situations, file size is hidden in the uploading process due to an unknown file size.
 
 <Heading label="Upload complete" level={ 3 } />
 
 <Heading label="With success" level={ 4 } />
 
-A `success` message is displayed, replacing the previously displayed Progress Bar, as soon as a file has been uploaded, meaning the upload is successful and complete.
+The Spinner is replaced with the file icon, the file name and the icon turn green, as soon as a file has been uploaded, meaning the upload is successful and complete.
 
 <Heading label="With error" level={ 4 } />
 
-If the uploading of a file went wrong, a specific `error` message is displayed below the uploaded file.
+If the uploading of a file went wrong, the Spinner is replaced with an error icon, and the file name and the icon turn red. A specific `error` message may be displayed below the uploaded file.
 
-The user is still able to upload another file but the `error` message will persist until user removes the file in `error`.
-
-When several files are in `error`, there will be an accumulation of `error` messages, each below their related files.
-
-When a file is in `error` and the user uploads a file without any issue, success message is triggered as expected below this file but, the `error` message persists below the file in error.
+The user is still able to upload another file but the file in error will remain in error until user removes it.
 
 Depending on the error, the global component can be displayed in an error state.
 
@@ -115,7 +105,7 @@ Depending on the error, the global component can be displayed in an error state.
 
 Number of files, maximum sizes and expected formats can be set globally inside the component.
 
-A global `error` message and a Divider are displayed when:
+A global `error` message is displayed when:
 * Wrong file format has been uploaded
 * Maximum file size exceeded
 * Maximum number of files exceeded

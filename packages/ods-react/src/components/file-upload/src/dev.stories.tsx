@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
-import { FileUpload, FileUploadItem, FileUploadList } from '.';
+import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList } from '.';
 import style from './dev.module.css';
 
 export default {
@@ -90,6 +90,75 @@ export const AccessibilityErrors = () => {
   );
 };
 
+export const AllSet = () => {
+  const [files, setFiles] = useState<File[]>([]);
+
+  return (
+    <>
+      <FileUpload
+        acceptedFileLabel="Formats acceptés : images"
+        error="Global error message, long enough to see how it will be rendered."
+        maxFile={ 3 }
+        maxFileLabel="Nombre maximal de fichiers :"
+        maxSize={ 524288000 }
+        maxSizeLabel="Taille de fichier max :"
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+
+      <br /><br />
+
+      <FileUpload
+        acceptedFileLabel="Formats acceptés : images"
+        error="Global error message, long enough to see how it will be rendered."
+        maxFile={ 3 }
+        maxFileLabel="Nombre maximal de fichiers :"
+        maxSize={ 524288000 }
+        maxSizeLabel="Taille de fichier max :"
+        onFileAccept={ ({ files }) => setFiles(files) }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    </>
+  );
+};
+
+export const Compact = () => {
+  const [files, setFiles] = useState<File[]>([]);
+
+  return (
+    <FileUpload
+      onFileAccept={ ({ files }) => setFiles(files) }
+      variant={ FILE_UPLOAD_VARIANT.compact }>
+      <FileUploadList>
+        {
+          files.map((file: File, idx) => (
+            <FileUploadItem
+              file={ file }
+              key={ idx } />
+          ))
+        }
+      </FileUploadList>
+    </FileUpload>
+  );
+};
+
 export const CustomCSS = () => {
   const [files, setFiles] = useState<File[]>([]);
 
@@ -131,7 +200,10 @@ export const Default = () => {
 
 export const Disabled = () => (
   <FileUpload disabled>
-    <FileUploadList />
+    <FileUploadList>
+      <FileUploadItem
+        file={ new File([], 'EmptyFile.txt') } />
+    </FileUploadList>
   </FileUpload>
 );
 
@@ -198,6 +270,18 @@ export const FakeUpload = () => {
               progress={ file.progress } />
           ))
         }
+      </FileUploadList>
+    </FileUpload>
+  );
+};
+
+export const FileError = () => {
+  return (
+    <FileUpload>
+      <FileUploadList>
+        <FileUploadItem
+          error="Some file error message"
+          file={ new File([], 'EmptyFile.txt') } />
       </FileUploadList>
     </FileUpload>
   );

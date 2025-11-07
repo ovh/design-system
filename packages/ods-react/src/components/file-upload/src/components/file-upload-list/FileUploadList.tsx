@@ -1,4 +1,4 @@
-import { FileUpload, useFileUploadContext } from '@ark-ui/react/file-upload';
+import { FileUpload } from '@ark-ui/react/file-upload';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import style from './fileUploadList.module.scss';
@@ -10,13 +10,10 @@ const FileUploadList: FC<FileUploadListProp> = forwardRef(({
   className,
   ...props
 }, ref): JSX.Element => {
-  const { acceptedFiles } = useFileUploadContext();
-
   return (
     <FileUpload.ItemGroup
       className={ classNames(
         style['file-upload-list'],
-        { [style['file-upload-list--not-empty']]: acceptedFiles.length > 0 },
         className,
       )}
       data-ods="file-upload-list"

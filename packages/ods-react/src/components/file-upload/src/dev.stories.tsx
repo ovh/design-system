@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
-import { FileUpload, FileUploadItem, FileUploadList } from '.';
+import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList } from '.';
 import style from './dev.module.css';
 
 export default {
@@ -87,6 +87,26 @@ export const AccessibilityErrors = () => {
         </FileUploadList>
       </FileUpload>
     </>
+  );
+};
+
+export const Compact = () => {
+  const [files, setFiles] = useState<File[]>([]);
+
+  return (
+    <FileUpload
+      onFileAccept={ ({ files }) => setFiles(files) }
+      variant={ FILE_UPLOAD_VARIANT.compact }>
+      <FileUploadList>
+        {
+          files.map((file: File, idx) => (
+            <FileUploadItem
+              file={ file }
+              key={ idx } />
+          ))
+        }
+      </FileUploadList>
+    </FileUpload>
   );
 };
 

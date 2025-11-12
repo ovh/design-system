@@ -1,5 +1,5 @@
 import { Splitter } from '@ark-ui/react/splitter';
-import React, { type JSX, useEffect, useState } from 'react';
+import React, { type JSX, useCallback, useEffect, useMemo, useRef, useState, useTransition } from 'react';
 import classNames from 'classnames';
 import { Button, BUTTON_COLOR, BUTTON_VARIANT, Icon, ICON_NAME, Switch, type SwitchValueChangeDetail, SwitchItem } from '@ovhcloud/ods-react';
 import { ORIENTATION, OrientationSwitch } from '../sandbox/actions/OrientationSwitch';
@@ -16,11 +16,14 @@ const ThemeGenerator = (): JSX.Element => {
   const [orientation, setOrientation] = useState(ORIENTATION.horizontal);
   const [selectedTheme, setSelectedTheme] = useState('default');
   const [editedVariables, setEditedVariables] = useState<Record<string, string>>({});
+  const [debouncedVariables, setDebouncedVariables] = useState<Record<string, string>>({});
   const [isCustomTheme, setIsCustomTheme] = useState(false);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [pendingTheme, setPendingTheme] = useState<string | null>(null);
   const [isJsonOpen, setIsJsonOpen] = useState(false);
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
+  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (selectedTheme === 'custom') {
@@ -28,16 +31,39 @@ const ThemeGenerator = (): JSX.Element => {
       return;
     }
 
-    setEditedVariables(defaultTokens.root);
+    const tokens = defaultTokens.root;
+    setEditedVariables(tokens);
+    setDebouncedVariables(tokens);
     setIsCustomTheme(false);
   }, [selectedTheme]);
 
+  useEffect(() => {
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+
+    debounceTimerRef.current = setTimeout(() => {
+      startTransition(() => {
+        setDebouncedVariables(editedVariables);
+      });
+    }, 150);
+
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, [editedVariables]);
+
+  const previewStyle = useMemo(() => {
+    return debouncedVariables as React.CSSProperties;
+  }, [debouncedVariables]);
 
   function onToggleFullscreen() {
     setIsFullscreen((v) => !v);
   }
 
-  function onVariableChange(name: string, value: string) {
+  const onVariableChange = useCallback((name: string, value: string) => {
     setEditedVariables((prev) => ({
       ...prev,
       [name]: value,
@@ -47,6 +73,51 @@ const ThemeGenerator = (): JSX.Element => {
       setSelectedTheme('custom');
       setIsCustomTheme(true);
     }
+  }, [isCustomTheme]);
+
+  const onOrientationChange = useCallback((value: ORIENTATION) => {
+    setOrientation(value);
+  }, []);
+
+  function handleSwitchThemeConfirm() {
+    if (pendingTheme) {
+      setSelectedTheme(pendingTheme);
+    }
+    setPendingTheme(null);
+    setIsConfirmOpen(false);
+  }
+
+  function handleSwitchThemeCancel() {
+    setPendingTheme(null);
+    setIsConfirmOpen(false);
+  }
+
+  function handlePaletteApply(variables: Record<string, string>) {
+    setEditedVariables((prev) => ({
+      ...prev,
+      ...variables,
+    }));
+    setSelectedTheme('custom');
+    setIsCustomTheme(true);
+  }
+
+  function handleJsonReplace(next: Record<string, string>) {
+    setEditedVariables(next);
+    setSelectedTheme('custom');
+    setIsCustomTheme(true);
+  }
+
+  function handleThemeValueChange(details: SwitchValueChangeDetail) {
+    const next = details.value;
+    const isLeavingCustom = isCustomTheme && next !== 'custom';
+
+    if (isLeavingCustom) {
+      setPendingTheme(next);
+      setIsConfirmOpen(true);
+      return;
+    }
+
+    setSelectedTheme(next);
   }
 
   return <div className={ classNames(
@@ -63,18 +134,7 @@ const ThemeGenerator = (): JSX.Element => {
           </Button>
           <Switch
             value={selectedTheme}
-            onValueChange={(details: SwitchValueChangeDetail) => {
-              const next = details.value;
-              const isLeavingCustom = isCustomTheme && next !== 'custom';
-
-              if (isLeavingCustom) {
-                setPendingTheme(next);
-                setIsConfirmOpen(true);
-                return;
-              }
-
-              setSelectedTheme(next);
-            }}
+            onValueChange={handleThemeValueChange}
             >
             <SwitchItem value="default">
               Default
@@ -92,7 +152,7 @@ const ThemeGenerator = (): JSX.Element => {
         </div>
         <div className={styles['theme-generator__menu__right']}>
           <OrientationSwitch
-            onChange={ (value) => setOrientation(value) }
+            onChange={ onOrientationChange }
             orientation={ orientation } />
 
           <Button
@@ -126,8 +186,13 @@ const ThemeGenerator = (): JSX.Element => {
       </Splitter.ResizeTrigger>
 
       <Splitter.Panel id="preview">
-        <div className={ styles['theme-generator__container__preview'] }>
-          <ThemeGeneratorPreview themeVariables={editedVariables} />
+        <div 
+          className={ classNames(
+            styles['theme-generator__container__preview'],
+            { [styles['theme-generator__container__preview--updating']]: isPending }
+          )}
+          style={previewStyle}>
+          <ThemeGeneratorPreview />
         </div>
       </Splitter.Panel>
     </Splitter.Root>
@@ -135,42 +200,22 @@ const ThemeGenerator = (): JSX.Element => {
     <ThemeGeneratorSwitchThemeModal
       open={ isConfirmOpen }
       targetTheme={ pendingTheme }
-      onConfirm={() => {
-        if (pendingTheme) {
-          setSelectedTheme(pendingTheme);
-        }
-        setPendingTheme(null);
-        setIsConfirmOpen(false);
-      }}
-      onCancel={() => {
-        setPendingTheme(null);
-        setIsConfirmOpen(false);
-      }}
+      onConfirm={ handleSwitchThemeConfirm }
+      onCancel={ handleSwitchThemeCancel }
     />
 
     <ThemeGeneratorPaletteModal
       open={ isPaletteOpen }
       onClose={ () => setIsPaletteOpen(false) }
       currentVariables={ editedVariables }
-      onApply={(variables) => {
-        setEditedVariables((prev) => ({
-          ...prev,
-          ...variables,
-        }));
-        setSelectedTheme('custom');
-        setIsCustomTheme(true);
-      }}
+      onApply={ handlePaletteApply }
     />
 
     <ThemeGeneratorJSONModal
       open={ isJsonOpen }
       variables={ editedVariables }
       onClose={ () => setIsJsonOpen(false) }
-      onReplace={(next) => {
-        setEditedVariables(next);
-        setSelectedTheme('custom');
-        setIsCustomTheme(true);
-      }}
+      onReplace={ handleJsonReplace }
     />
     </div>
 }

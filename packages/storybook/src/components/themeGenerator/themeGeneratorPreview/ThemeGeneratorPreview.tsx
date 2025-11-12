@@ -43,11 +43,6 @@ import * as ToggleStories from '../../../../stories/components/toggle/toggle.sto
 import * as TooltipStories from '../../../../stories/components/tooltip/tooltip.stories';
 import * as TreeViewStories from '../../../../stories/components/tree-view/tree-view.stories';
 import { REACT_COMPONENTS_TITLE } from '../../../constants/meta';
-import { ResetTheme } from '../../resetTheme/ResetTheme';
-
-type ThemeGeneratorPreviewProps = {
-  themeVariables?: Record<string, string>;
-};
 
 const THEME_STORY_MODULES = {
   Accordion: AccordionStories,
@@ -164,27 +159,19 @@ const COMPOSED_THEME_STORIES: Partial<Record<ThemeComponentKey, React.ComponentT
 
 function VariablesScope({
   themeClass,
-  themeVariables,
   children,
 }: {
   themeClass: string;
-  themeVariables?: Record<string, string>;
   children: React.ReactElement;
 }): React.ReactElement {
-  const scopedStyle = React.useMemo(() => (
-    themeVariables ? (themeVariables as React.CSSProperties) : undefined
-  ), [themeVariables]);
-
   return (
-    <div className={ themeClass } style={ scopedStyle }>
-      <ResetTheme style={{ backgroundColor: 'transparent' }}>
-        { children }
-      </ResetTheme>
+    <div className={ themeClass }>
+      { children }
     </div>
   );
 }
 
-const ThemeGeneratorPreview = ({ themeVariables }: ThemeGeneratorPreviewProps): React.ReactElement => {
+const ThemeGeneratorPreview = (): React.ReactElement => {
   const renderSectionHeading = (label: string, description?: string): React.ReactElement => (
     <header style={{ marginBottom: '0.75rem' }}>
       <h3 style={{ margin: 0 }}>{ label }</h3>
@@ -215,8 +202,7 @@ const ThemeGeneratorPreview = ({ themeVariables }: ThemeGeneratorPreviewProps): 
                   <h4 style={{ marginBottom: '0.5rem', marginTop: 0 }}>{ label }</h4>
 
                   <VariablesScope
-                    themeClass="theme-generator-preview"
-                    themeVariables={ themeVariables }>
+                    themeClass="theme-generator-preview">
                     <Composed />
                   </VariablesScope>
                 </div>

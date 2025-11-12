@@ -5,16 +5,26 @@ $ods-code-secondary-color: #000;
 
 @layer ods-organisms {
   .code {
+    --ods-code-primary-color: #{$ods-code-primary-color};
+    --ods-code-secondary-color: #{$ods-code-secondary-color};
+    --ods-code-trigger-background-color: #{$ods-code-primary-color};
+    --ods-code-trigger-background-color-active: var(--ods-color-neutral-700);
+    --ods-code-trigger-background-color-hover: var(--ods-color-neutral-600);
+    --ods-code-trigger-outline-color: #{$ods-code-primary-color};
+
     display: inline-flex;
     flex-flow: row;
     column-gap: 8px;
     justify-content: space-between;
     border-radius: var(--ods-border-radius-sm);
-    background-color: $ods-code-secondary-color;
+    background-color: var(--ods-code-secondary-color);
     padding: 12px;
     height: auto;
     min-height: input.$ods-input-field-height;
-    color: $ods-code-primary-color;
+
+    &--unthemed {
+      color: var(--ods-code-primary-color);
+    }
 
     &__preformat {
       display: flex;
@@ -33,19 +43,19 @@ $ods-code-secondary-color: #000;
 
       &__trigger {
         &__button {
-          color: $ods-code-primary-color;
+          color: var(--ods-code-trigger-background-color);
 
           &:focus-visible,
           &:hover {
-            background-color: var(--ods-color-neutral-600);
+            background-color: var(--ods-code-trigger-background-color-hover);
           }
 
           &:active {
-            background-color: var(--ods-color-neutral-700);
+            background-color: var(--ods-code-trigger-background-color-active);
           }
 
           &:focus {
-            outline-color: $ods-code-primary-color;
+            outline-color: var(--ods-code-trigger-outline-color);
           }
         }
       }

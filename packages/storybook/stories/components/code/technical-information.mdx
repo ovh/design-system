@@ -1,7 +1,9 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
+import { Canvas, Meta, Source } from '@storybook/blocks';
 import SpecificationsCode from '../../../../ods-react/src/components/code/documentation/code.json';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas as OdsCanvas } from '../../../src/components/canvas/Canvas';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as CodeStories from './code.stories';
@@ -32,6 +34,49 @@ import * as CodeStories from './code.stories';
   }}
   of={ CodeStories } />
 
+<Heading label="Setup custom highlighter" level={ 2 } />
+
+By default, `Code` provides the lightest bundle needed to display your code. But you may want to use some highlighter
+to provide a better visual to your end-users.
+
+`Code` does support all <ExternalLink href="https://shiki.style/">Shiki v3</ExternalLink> languages and themes.
+
+<Message
+  color={ MESSAGE_COLOR.information }
+  dismissible={ false }
+  style={{ width: '100%' }}>
+  <MessageIcon name={ ICON_NAME.lightbulb } />
+
+  <MessageBody>
+    You can test all languages and themes in the <ExternalLink href="https://textmate-grammars-themes.netlify.app/">Shiki playground</ExternalLink>.
+  </MessageBody>
+</Message>
+
+To setup an highlighter:
+- pick a <ExternalLink href="https://shiki.style/languages">language</ExternalLink> and a <ExternalLink href="https://shiki.style/themes">theme</ExternalLink>.
+- include both on your app side.
+- pass them to the `Code component`.
+
+<Source code={`
+import { Code } from '@ovhcloud/ods-react';
+import lang from '@shikijs/langs/typescript';
+import theme from '@shikijs/themes/nord';
+
+const HighlightedCode = () => (
+  <Code
+    highlighter={{
+      language: lang,
+      theme: theme,
+    }}>
+    console.log('Hello World');
+  </Code>
+);
+`}
+  dark="true"
+  language="typescript" />
+
+<Canvas of={ CodeStories.Highlighter } sourceState="none" />
+
 <Heading label="Examples" level={ 2 } />
 
 <Heading label="Default" level={ 3 } />
@@ -49,4 +94,3 @@ import * as CodeStories from './code.stories';
 <Heading label="Custom labels" level={ 3 } />
 
 <OdsCanvas of={ CodeStories.CustomLabels } sourceState="shown" />
-

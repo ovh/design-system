@@ -21,7 +21,6 @@ const groupTokensByCategory = (tokens: Token[], categoryName: string): TreeItem[
   const groups: Record<string, TreeItem> = {};
 
   tokens.forEach((token) => {
-    // Extract group name from token name (e.g., --ods-theme-padding-horizontal -> padding)
     const match = token.name.match(/--ods-theme-([^-]+)/);
     const groupName = match ? match[1] : 'other';
 
@@ -46,7 +45,6 @@ const groupTokensByCategory = (tokens: Token[], categoryName: string): TreeItem[
 const ThemeGeneratorTreeView = ({ variables, onVariableChange }: ThemeGeneratorTreeViewProps) => {
   const categorized = useMemo(() => categorizeTokens(variables), [variables]);
 
-  // Create a map for quick token lookup
   const tokenMap = useMemo(() => {
     const map = new Map<string, Token>();
     Object.values(categorized).flat().forEach((token) => {
@@ -56,7 +54,6 @@ const ThemeGeneratorTreeView = ({ variables, onVariableChange }: ThemeGeneratorT
   }, [categorized]);
 
   const items: TreeItem[] = useMemo(() => {
-    // Combine all editable categories (excluding deprecated and palette)
     const editableCategories = [
       { category: TOKEN_CATEGORY.color, label: 'Color' },
       { category: TOKEN_CATEGORY.spacing, label: 'Spacing' },
@@ -71,7 +68,6 @@ const ThemeGeneratorTreeView = ({ variables, onVariableChange }: ThemeGeneratorT
     editableCategories.forEach(({ category, label }) => {
       const tokens = categorized[category];
       if (tokens.length > 0) {
-        // Add category header
         const categoryGroups = groupTokensByCategory(tokens, category);
         if (categoryGroups.length > 0) {
           allItems.push({
@@ -109,7 +105,6 @@ const ThemeGeneratorTreeView = ({ variables, onVariableChange }: ThemeGeneratorT
                 );
               }
 
-              // Find the token from the token map
               const token = tokenMap.get(item.name);
 
               if (!token) {

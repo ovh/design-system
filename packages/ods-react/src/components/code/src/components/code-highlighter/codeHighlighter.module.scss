@@ -1,0 +1,15 @@
+@layer ods-organisms {
+  .code-highlighter {
+    display: flex;
+    align-items: center;
+
+    :global(.shiki) {
+      margin: 0;
+      white-space: pre-wrap;
+
+      code {
+        font-family: var(--ods-font-family-code);
+      }
+    }
+  }
+}

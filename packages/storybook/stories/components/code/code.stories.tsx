@@ -1,3 +1,5 @@
+import lang from '@shikijs/langs/typescript';
+import theme from '@shikijs/themes/nord';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Code, type CodeProp } from '../../../../ods-react/src/components/code/src';
@@ -7,7 +9,7 @@ import { excludeFromDemoControls, orderControls } from '../../../src/helpers/con
 type Story = StoryObj<CodeProp>;
 
 const meta: Meta<CodeProp> = {
-  argTypes: excludeFromDemoControls(['onCopy']),
+  argTypes: excludeFromDemoControls(['highlighter', 'onCopy']),
   component: Code,
   title: 'React Components/Code',
 };
@@ -95,6 +97,24 @@ export const CustomLabels: Story = {
       labelCopy="Click to copy"
       labelCopySuccess="Successfully copied">
       console.log('Hello world');
+    </Code>
+  ),
+};
+
+export const Highlighter: Story = {
+  globals: {
+    imports: `import { Code } from '@ovhcloud/ods-react';
+import lang from '@shikijs/langs/typescript';
+import theme from '@shikijs/themes/nord';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Code
+      highlighter={{
+        language: lang,
+        theme: theme,
+      }}>
+      console.log('Hello World');
     </Code>
   ),
 };

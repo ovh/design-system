@@ -18,6 +18,7 @@ export const Disabled = () => (
     <Text disabled preset="code">Code</Text><br />
     <Text disabled preset="label">Label</Text>
     <Text disabled preset="paragraph">Paragraph</Text>
+    <Text disabled preset="small">Small</Text><br />
     <Text disabled preset="span">Span</Text><br />
     <Text disabled preset="heading-1">Heading-1</Text>
     <Text disabled preset="heading-2">Heading-2</Text>
@@ -34,6 +35,7 @@ export const Presets = () => (
     <Text preset="code">Code</Text><br />
     <Text preset="label">Label</Text>
     <Text preset="paragraph">Paragraph</Text>
+    <Text preset="small">Small</Text><br />
     <Text preset="span">Span</Text><br />
     <Text preset="heading-1">Heading-1</Text>
     <Text preset="heading-2">Heading-2</Text>

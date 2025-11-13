@@ -106,6 +106,7 @@ export const Preset: Story = {
       <Text preset={ TEXT_PRESET.code }>Code</Text><br />
       <Text preset={ TEXT_PRESET.label }>Label</Text>
       <Text preset={ TEXT_PRESET.paragraph }>Paragraph</Text>
+      <Text preset={ TEXT_PRESET.small }>Small</Text><br />
       <Text preset={ TEXT_PRESET.span }>Span</Text><br />
       <Text preset={ TEXT_PRESET.heading1 }>Heading-1</Text>
       <Text preset={ TEXT_PRESET.heading2 }>Heading-2</Text>

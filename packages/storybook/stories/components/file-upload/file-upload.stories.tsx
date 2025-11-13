@@ -527,19 +527,41 @@ export const ThemeGenerator: Story = {
     layout: 'fullscreen',
   },
   tags: ['!dev'],
-  render: ({}) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-      <FileUpload>
-        <FileUploadList />
-      </FileUpload>
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
 
-      <FileUpload disabled>
-        <FileUploadList />
-      </FileUpload>
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <FileUpload onFileAccept={ ({ files }) => setFiles(files) }>
+          <FileUploadList>
+            {
+              files.map((file: File, idx) => (
+                <FileUploadItem
+                  file={ file }
+                  key={ idx } />
+              ))
+            }
+          </FileUploadList>
+        </FileUpload>
 
-      <FileUpload invalid>
-        <FileUploadList />
-      </FileUpload>
-    </div>
-  ),
+        <FileUpload disabled>
+          <FileUploadList />
+        </FileUpload>
+
+        <FileUpload
+          invalid
+          onFileAccept={ ({ files }) => setFiles(files) }>
+          <FileUploadList>
+            {
+              files.map((file: File, idx) => (
+                <FileUploadItem
+                  file={ file }
+                  key={ idx } />
+              ))
+            }
+          </FileUploadList>
+        </FileUpload>
+      </div>
+    );
+  },
 };

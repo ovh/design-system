@@ -662,7 +662,7 @@ export const ThemeGenerator: Story = {
   tags: ['!dev'],
   render: ({}) => {
     const items = [
-      { id: 'src', name: 'src', children: [ { id: 'components', name: 'components', children: [ { id: 'Button.tsx', name: 'Button.tsx' } ] } ] },
+      { id: 'src', name: 'src', children: [ { id: 'components', name: 'components', children: [{ id: 'Button.tsx', name: 'Button.tsx' }, { id: 'button.scss', name: 'button.scss' }] } ] },
       { id: 'package.json', name: 'package.json' },
     ];
     return (

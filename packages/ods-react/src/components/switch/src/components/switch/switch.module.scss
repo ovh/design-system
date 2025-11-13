@@ -5,10 +5,11 @@ $ods-switch-height-md: 32px;
   .switch {
     --ods-switch-background-color: var(--ods-color-neutral-100);
     --ods-switch-border-radius: calc(var(--ods-theme-border-radius) * 2);
+    --ods-switch-column-gap: calc(var(--ods-theme-column-gap) / 2);
 
     box-sizing: border-box;
     display: inline-flex;
-    gap: 4px;
+    column-gap: var(--ods-switch-column-gap);
     align-items: center;
     justify-content: center;
     border-radius: var(--ods-switch-border-radius);

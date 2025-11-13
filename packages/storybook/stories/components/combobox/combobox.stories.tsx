@@ -608,6 +608,11 @@ export const ThemeGenerator: Story = {
         <ComboboxControl placeholder="Read only" />
         <ComboboxContent />
       </Combobox>
+
+      <Combobox items={[{ label: 'Dog', value: 'dog' }, { label: 'Cat', value: 'cat' }]} multiple>
+        <ComboboxControl placeholder="Multiple" />
+        <ComboboxContent />
+      </Combobox>
     </div>
   ),
 };

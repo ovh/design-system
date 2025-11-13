@@ -387,6 +387,12 @@ export const ThemeGenerator: StoryObj = {
           </div>
         </div>
       )) }
+
+      <div>
+        <Button>
+          <Icon name={ ICON_NAME.xmark } /> Close
+        </Button>
+      </div>
     </div>
   ),
 };

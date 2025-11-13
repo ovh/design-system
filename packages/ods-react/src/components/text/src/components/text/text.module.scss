@@ -48,6 +48,10 @@
       @include text.ods-text-paragraph();
     }
 
+    &--small {
+      @include text.ods-text-small();
+    }
+
     &--span {
       @include text.ods-text-span();
     }

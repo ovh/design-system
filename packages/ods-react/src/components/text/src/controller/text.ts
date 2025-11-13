@@ -22,6 +22,8 @@ function getTag(preset: TextPreset): string {
       return 'label';
     case TEXT_PRESET.paragraph:
       return 'p';
+    case TEXT_PRESET.small:
+      return 'small';
     case TEXT_PRESET.span:
       return 'span';
     default:

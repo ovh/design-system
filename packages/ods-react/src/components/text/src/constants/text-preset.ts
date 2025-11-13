@@ -9,6 +9,7 @@ enum TEXT_PRESET {
   heading6 = 'heading-6',
   label = 'label',
   paragraph = 'paragraph',
+  small = 'small',
   span = 'span',
 }
 

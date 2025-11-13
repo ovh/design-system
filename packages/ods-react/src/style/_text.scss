@@ -66,6 +66,12 @@
   font-weight: 400;
 }
 
+@mixin ods-text-small() {
+  color: var(--ods-color-text);
+  font-size: 14px;
+  font-weight: 400;
+}
+
 @mixin ods-text-span() {
   color: var(--ods-color-text);
   font-size: 16px;

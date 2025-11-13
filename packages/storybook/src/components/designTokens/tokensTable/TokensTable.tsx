@@ -1,5 +1,6 @@
-import { TABLE_SIZE, Table } from '@ovhcloud/ods-react';
+import { TABLE_SIZE } from '@ovhcloud/ods-react';
 import React, { type FC, type JSX } from 'react';
+import { Table } from '../../table/Table';
 import { type Token } from '../../../constants/designTokens';
 import { TokenPreview } from '../tokenPreview/TokenPreview';
 

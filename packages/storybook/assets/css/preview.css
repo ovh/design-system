@@ -18,7 +18,7 @@ body[data-theme="dark"] > #storybook-docs {
   --ods-theme-text-color: #e0e2f7;
 }
 
-body[data-theme="dark"] [data-ods="table"] {
+body[data-theme="dark"] [data-storybook="table"] {
   --ods-table-head-background-color: #383838;
   --ods-table-striped-background-color: #383838;
 }

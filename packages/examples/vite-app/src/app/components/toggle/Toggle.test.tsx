@@ -9,7 +9,7 @@ describe('Toggle', () => {
     const handleCheckedChange = vi.fn();
 
     render(
-      <Toggle onCheckedChange={handleCheckedChange}>
+      <Toggle checked={false} onCheckedChange={handleCheckedChange}>
         <ToggleControl />
       </Toggle>
     );
@@ -28,12 +28,28 @@ describe('Toggle', () => {
         checked: true,
       })
     );
+  });
+
+  it('should fire onCheckedChange when toggled off', async () => {
+    const user = userEvent.setup();
+    const handleCheckedChange = vi.fn();
+
+    render(
+      <Toggle checked={true} onCheckedChange={handleCheckedChange}>
+        <ToggleControl />
+      </Toggle>
+    );
+
+    const toggle = screen.getByRole('checkbox');
+    
+    expect(toggle).toBeChecked();
+    expect(handleCheckedChange).not.toHaveBeenCalled();
 
     await user.click(toggle);
     
     expect(toggle).not.toBeChecked();
-    expect(handleCheckedChange).toHaveBeenCalledTimes(2);
-    expect(handleCheckedChange).toHaveBeenLastCalledWith(
+    expect(handleCheckedChange).toHaveBeenCalledTimes(1);
+    expect(handleCheckedChange).toHaveBeenCalledWith(
       expect.objectContaining({
         checked: false,
       })

@@ -1,6 +1,7 @@
-import { TABLE_VARIANT, Table } from '@ovhcloud/ods-react';
+import { TABLE_VARIANT } from '@ovhcloud/ods-react';
 import React, { type ReactNode, useMemo } from 'react';
 import { ExternalLink } from '../externalLink/ExternalLink';
+import { Table } from '../table/Table';
 import { getPreviousMajorFullVersion } from '../../helpers/version';
 import styles from './identityCard.module.css';
 

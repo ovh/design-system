@@ -1,7 +1,8 @@
-import { BADGE_COLOR, BADGE_SIZE, ICON_NAME, TABLE_VARIANT, Badge, Icon, Table } from '@ovhcloud/ods-react';
+import { BADGE_COLOR, BADGE_SIZE, ICON_NAME, TABLE_VARIANT, Badge, Icon } from '@ovhcloud/ods-react';
 import { CodeOrSourceMdx } from '@storybook/blocks';
 import React, { type JSX, useMemo } from 'react';
 import { ExternalLink } from '../externalLink/ExternalLink';
+import { Table } from '../table/Table';
 import { Heading } from '../heading/Heading';
 import { type Component, removeTags } from '../../helpers/docgen';
 import styles from './classModule.module.css';

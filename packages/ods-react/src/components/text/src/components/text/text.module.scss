@@ -5,7 +5,7 @@
     $text: &;
 
     &--disabled#{&} {
-      color: var(--ods-color-text-disabled-default);
+      color: var(--ods-theme-text-color-disabled);
     }
 
     &--caption {

@@ -6,12 +6,12 @@
 
     display: grid;
     grid-template-columns: 1fr max-content;
-    column-gap: var(--ods-accordion-padding);
+    column-gap: var(--ods-theme-column-gap);
     align-items: center;
     border: solid var(--ods-accordion-border-width) transparent;
     background: transparent;
     cursor: pointer;
-    padding: var(--ods-accordion-padding);
+    padding: var(--ods-accordion-padding-vertical) var(--ods-accordion-padding-horizontal);
     text-align: left;
     color: inherit;
     font-family: inherit;

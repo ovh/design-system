@@ -155,7 +155,7 @@ export const ThemeGenerator: Story = {
   render: ({}) => (
     <div style={{ display: 'flex', gap: '16px' }}>
       { CARD_COLORS.map((color) => (
-        <Card key={ String(color) } color={ color } style={{ padding: '8px' }}>
+        <Card key={ String(color) } color={ color }>
           <p style={{ margin: 0 }}>{ String(color) }</p>
         </Card>
       )) }

@@ -83,15 +83,15 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-theme-padding-vertical) / 2);
 @mixin ods-badge-size($size) {
   @if $size == 'sm' {
     padding: var(--ods-badge-padding-vertical-sm) var(--ods-badge-padding-horizontal-sm);
-    height: $ods-badge-height-sm;
+    min-height: $ods-badge-height-sm;
     font-size: 0.75rem;
   } @else if $size == 'md' {
     padding: var(--ods-badge-padding-vertical-md) var(--ods-badge-padding-horizontal-md);
-    height: $ods-badge-height-md;
+    min-height: $ods-badge-height-md;
     font-size: 0.875rem;
   } @else if $size == 'lg' {
     padding: var(--ods-badge-padding-vertical-lg) var(--ods-badge-padding-horizontal-lg);
-    height: $ods-badge-height-lg;
+    min-height: $ods-badge-height-lg;
     font-size: 1rem;
   }
 }

@@ -273,7 +273,6 @@ export const AccessibilityI18n: Story = {
   ),
 };
 
-
 export const ThemeGenerator: Story = {
   parameters: {
     layout: 'fullscreen',
@@ -287,6 +286,7 @@ export const ThemeGenerator: Story = {
       <Input disabled placeholder="Disabled" />
       <Input invalid placeholder="Invalid" />
       <Input readOnly defaultValue="Read only" />
+      <Input clearable maskOption={{ enable: true }} defaultValue="Clearable" />
     </div>
   ),
 };

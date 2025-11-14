@@ -21,7 +21,7 @@
     border-radius: var(--ods-theme-input-border-radius);
     padding: var(--ods-combobox-control-padding-vertical) var(--ods-theme-input-padding-horizontal);
     width: 100%;
-    min-height: var(--ods-theme-input-height);
+    min-height: var(--ods-theme-input-min-height);
 
     &:not(#{$control}--invalid, #{$control}--disabled, #{$control}--read-only) {
       &:hover,
@@ -69,7 +69,7 @@
       border: none;
       background: transparent;
       padding: 0;
-      height: calc(var(--ods-theme-input-height) - (var(--ods-combobox-control-padding-vertical) * 2) - (var(--ods-theme-input-border-width) * 2));
+      min-height: calc(var(--ods-theme-input-min-height) - (var(--ods-combobox-control-padding-vertical) * 2) - (var(--ods-theme-input-border-width) * 2));
     }
   }
 }

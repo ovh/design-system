@@ -351,14 +351,14 @@ export const ThemeGenerator: Story = {
         <PopoverTrigger asChild>
           <Button>Default</Button>
         </PopoverTrigger>
-        <PopoverContent>This is the popover content</PopoverContent>
+        <PopoverContent createPortal={ false }>This is the popover content</PopoverContent>
       </Popover>
 
       <Popover>
         <PopoverTrigger asChild>
           <Button>With Arrow</Button>
         </PopoverTrigger>
-        <PopoverContent withArrow>This is the popover content</PopoverContent>
+        <PopoverContent createPortal={ false } withArrow>This is the popover content</PopoverContent>
       </Popover>
     </div>
   ),

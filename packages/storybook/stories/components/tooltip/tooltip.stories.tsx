@@ -310,14 +310,14 @@ export const ThemeGenerator: Story = {
         <TooltipTrigger asChild>
           <Icon name={ ICON_NAME.circleQuestion } style={{ fontSize: '24px' }} />
         </TooltipTrigger>
-        <TooltipContent>This is the tooltip content</TooltipContent>
+        <TooltipContent createPortal={ false }>This is the tooltip content</TooltipContent>
       </Tooltip>
 
       <Tooltip>
         <TooltipTrigger asChild>
           <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
         </TooltipTrigger>
-        <TooltipContent withArrow>This is the tooltip content</TooltipContent>
+        <TooltipContent createPortal={ false } withArrow>This is the tooltip content</TooltipContent>
       </Tooltip>
     </div>
   ),

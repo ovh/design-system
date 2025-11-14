@@ -586,32 +586,32 @@ export const ThemeGenerator: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
       <Combobox items={[{ label: 'Dog', value: 'dog' }, { label: 'Cat', value: 'cat' }]}>
         <ComboboxControl placeholder="Default" />
-        <ComboboxContent />
+        <ComboboxContent createPortal={ false } />
       </Combobox>
 
       <Combobox items={[{ label: 'Dog', value: 'dog' }, { label: 'Cat', value: 'cat' }]}>
         <ComboboxControl clearable placeholder="Clearable" />
-        <ComboboxContent />
+        <ComboboxContent createPortal={ false } />
       </Combobox>
 
       <Combobox items={[{ label: 'Dog', value: 'dog' }, { label: 'Cat', value: 'cat' }]}>
         <ComboboxControl loading placeholder="Loading" />
-        <ComboboxContent />
+        <ComboboxContent createPortal={ false } />
       </Combobox>
 
       <Combobox disabled items={[{ label: 'Dog', value: 'dog' }, { label: 'Cat', value: 'cat' }]}>
         <ComboboxControl placeholder="Disabled" />
-        <ComboboxContent />
+        <ComboboxContent createPortal={ false } />
       </Combobox>
 
       <Combobox readOnly items={[{ label: 'Dog', value: 'dog' }, { label: 'Cat', value: 'cat' }]}>
         <ComboboxControl placeholder="Read only" />
-        <ComboboxContent />
+        <ComboboxContent createPortal={ false } />
       </Combobox>
 
       <Combobox items={[{ label: 'Dog', value: 'dog' }, { label: 'Cat', value: 'cat' }]} multiple>
         <ComboboxControl placeholder="Multiple" />
-        <ComboboxContent />
+        <ComboboxContent createPortal={ false } />
       </Combobox>
     </div>
   ),

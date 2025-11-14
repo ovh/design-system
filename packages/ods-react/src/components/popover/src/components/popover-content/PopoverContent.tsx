@@ -58,7 +58,7 @@ const PopoverContent: FC<PopoverContentProp> = forwardRef(({
 
   return (
     <Portal disabled={ !createPortal }>
-      <Popover.Positioner>
+      <Popover.Positioner className={ style['popover-positioner'] }>
         <Popover.Content
           className={ classNames(style['popover-content'], className) }
           data-ods="popover-content"

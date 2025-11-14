@@ -1,6 +1,7 @@
 @layer ods-organisms {
   .phone-number-country-list {
     &__control {
+      display: flex;
       border-right: none;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;

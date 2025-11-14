@@ -300,7 +300,7 @@ export const ThemeGenerator: Story = {
         <DrawerTrigger asChild>
           <Button>Left</Button>
         </DrawerTrigger>
-        <DrawerContent position={ DRAWER_POSITION.left }>
+        <DrawerContent createPortal={ false } position={ DRAWER_POSITION.left }>
           <DrawerBody>Left drawer</DrawerBody>
         </DrawerContent>
       </Drawer>
@@ -309,7 +309,7 @@ export const ThemeGenerator: Story = {
         <DrawerTrigger asChild>
           <Button>Right</Button>
         </DrawerTrigger>
-        <DrawerContent position={ DRAWER_POSITION.right }>
+        <DrawerContent createPortal={ false } position={ DRAWER_POSITION.right }>
           <DrawerBody>Right drawer</DrawerBody>
         </DrawerContent>
       </Drawer>
@@ -318,7 +318,7 @@ export const ThemeGenerator: Story = {
         <DrawerTrigger asChild>
           <Button>Top</Button>
         </DrawerTrigger>
-        <DrawerContent position={ DRAWER_POSITION.top }>
+        <DrawerContent createPortal={ false } position={ DRAWER_POSITION.top }>
           <DrawerBody>Top drawer</DrawerBody>
         </DrawerContent>
       </Drawer>
@@ -327,7 +327,7 @@ export const ThemeGenerator: Story = {
         <DrawerTrigger asChild>
           <Button>Bottom</Button>
         </DrawerTrigger>
-        <DrawerContent position={ DRAWER_POSITION.bottom }>
+        <DrawerContent createPortal={ false } position={ DRAWER_POSITION.bottom }>
           <DrawerBody>Bottom drawer</DrawerBody>
         </DrawerContent>
       </Drawer>

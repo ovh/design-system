@@ -330,32 +330,32 @@ export const ThemeGenerator: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
       <Datepicker>
         <DatepickerControl placeholder="Default" />
-        <DatepickerContent />
+        <DatepickerContent createPortal={ false } />
       </Datepicker>
 
       <Datepicker>
         <DatepickerControl loading placeholder="Loading" />
-        <DatepickerContent />
+        <DatepickerContent createPortal={ false } />
       </Datepicker>
 
       <Datepicker>
         <DatepickerControl clearable placeholder="Clearable" />
-        <DatepickerContent />
+        <DatepickerContent createPortal={ false } />
       </Datepicker>
 
       <Datepicker invalid>
         <DatepickerControl placeholder="Invalid" />
-        <DatepickerContent />
+        <DatepickerContent createPortal={ false } />
       </Datepicker>
 
       <Datepicker disabled>
         <DatepickerControl placeholder="Disabled" />
-        <DatepickerContent />
+        <DatepickerContent createPortal={ false } />
       </Datepicker>
 
       <Datepicker readOnly>
         <DatepickerControl placeholder="Read only" />
-        <DatepickerContent />
+        <DatepickerContent createPortal={ false } />
       </Datepicker>
     </div>
   ),

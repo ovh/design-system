@@ -524,27 +524,27 @@ export const ThemeGenerator: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
       <Select items={[{ label: 'Dog', value:'dog' },{ label: 'Cat', value:'cat' }]}>
         <SelectControl placeholder="Default" />
-        <SelectContent />
+        <SelectContent createPortal={ false } />
       </Select>
 
       <Select multiple items={[{ label: 'Dog', value:'dog' },{ label: 'Cat', value:'cat' }]}>
         <SelectControl placeholder="Multiple" />
-        <SelectContent />
+        <SelectContent createPortal={ false } />
       </Select>
 
       <Select disabled items={[{ label: 'Dog', value:'dog' },{ label: 'Cat', value:'cat' }]}>
         <SelectControl placeholder="Disabled" />
-        <SelectContent />
+        <SelectContent createPortal={ false } />
       </Select>
 
       <Select readOnly items={[{ label: 'Dog', value:'dog' },{ label: 'Cat', value:'cat' }]}>
         <SelectControl placeholder="Read only" />
-        <SelectContent />
+        <SelectContent createPortal={ false } />
       </Select>
 
       <Select invalid items={[{ label: 'Dog', value:'dog' },{ label: 'Cat', value:'cat' }]}>
         <SelectControl placeholder="Invalid" />
-        <SelectContent />
+        <SelectContent createPortal={ false } />
       </Select>
     </div>
   ),

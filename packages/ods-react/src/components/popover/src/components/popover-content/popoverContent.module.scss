@@ -1,6 +1,10 @@
 @use '../../../../../style/overlay';
 
 @layer ods-atoms {
+  .popover-positioner {
+    z-index: overlay.$ods-overlay-base-z-index !important;
+  }
+
   .popover-content {
     --arrow-size: #{overlay.$ods-overlay-arrow-size};
     --arrow-background: #{overlay.$ods-overlay-arrow-background-color};

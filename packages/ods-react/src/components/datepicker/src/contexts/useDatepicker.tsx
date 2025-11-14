@@ -9,8 +9,8 @@ interface DatepickerFormatterArg {
 }
 
 interface DatepickerValueChangeDetail {
-  value: Date,
-  valueAsString: string,
+  value: Date | null,
+  valueAsString: string | null,
 }
 
 interface DatepickerRootProp {
@@ -97,7 +97,7 @@ interface DatepickerRootProp {
   /**
    * The controlled selected date.
    */
-  value?: Date | string,
+  value?: Date | string | null,
   /**
    * The controlled view of the calendar (day, month, year).
    */

@@ -20,6 +20,7 @@ export const Clearable = () => (
 
 export const Controlled = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState<Date | null>(new Date());
   const [view, setView] = useState<DatepickerView>('year');
 
   return (
@@ -32,10 +33,13 @@ export const Controlled = () => {
         Toggle view
       </button>
 
-      <Datepicker open={ isOpen }
-                  locale="fr"
-                  view={ view }>
-        <DatepickerControl />
+      <Datepicker
+        onValueChange={ ({ value }) => setValue(value) }
+        open={ isOpen }
+        locale="fr"
+        value={ value }
+        view={ view }>
+        <DatepickerControl clearable />
 
         <DatepickerContent />
       </Datepicker>
@@ -52,8 +56,9 @@ export const CustomCSS = () => (
 );
 
 export const DateFormatter = () => (
-  <Datepicker open
-              dateFormatter={ ({ date }) => `${date.getFullYear()}` }>
+  <Datepicker
+    dateFormatter={ ({ date }) => `${date.getFullYear()}` }
+    open>
     <DatepickerControl />
 
     <DatepickerContent />
@@ -68,6 +73,14 @@ export const Default = () => (
   </Datepicker>
 );
 
+export const DefaultValue = () => (
+  <Datepicker defaultValue={ new Date() }>
+    <DatepickerControl clearable />
+
+    <DatepickerContent />
+  </Datepicker>
+);
+
 export const Disabled = () => (
   <>
     <Datepicker disabled>
@@ -76,7 +89,9 @@ export const Disabled = () => (
       <DatepickerContent />
     </Datepicker>
 
-    <Datepicker disabled open>
+    <Datepicker
+      disabled
+      open>
       <DatepickerControl />
 
       <DatepickerContent />
@@ -107,6 +122,14 @@ export const DisabledWeekDays = () => (
 export const I18n = () => (
   <Datepicker i18n={{ [INPUT_I18N.clearButton]: 'Clear datepicker' }}>
     <DatepickerControl clearable />
+
+    <DatepickerContent />
+  </Datepicker>
+);
+
+export const Ids = () => (
+  <Datepicker id="my-root">
+    <DatepickerControl id="my-control" />
 
     <DatepickerContent />
   </Datepicker>
@@ -191,7 +214,9 @@ export const Locales = () => {
         <option value="pt">PT</option>
       </select>
 
-      <Datepicker locale={ locale } open>
+      <Datepicker
+        locale={ locale }
+        open>
         <DatepickerControl />
 
         <DatepickerContent />

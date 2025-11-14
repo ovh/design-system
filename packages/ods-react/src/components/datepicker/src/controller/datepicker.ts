@@ -40,10 +40,14 @@ function toDate(value: DateValue): Date {
   return value.toDate('Europe/Paris');
 }
 
-function toDateValue(value?: Date | string): DateValue | undefined {
+function toDateValue(value?: Date | string | null): DateValue | null | undefined {
   if (value) {
     return parseDate(value);
   }
+  if (value === null) {
+    return null;
+  }
+  return undefined;
 }
 
 export {

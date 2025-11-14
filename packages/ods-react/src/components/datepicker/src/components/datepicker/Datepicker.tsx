@@ -37,9 +37,9 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
   const computedDefaultView = useMemo(() => getDefaultView(defaultView, maxView, minView), [defaultView, maxView, minView]);
-  const convertedDefaultValue = useMemo(() => toDateValue(defaultValue), [defaultValue]);
-  const convertedMax = useMemo(() => toDateValue(max), [max]);
-  const convertedMin = useMemo(() => toDateValue(min), [min]);
+  const convertedDefaultValue = useMemo(() => toDateValue(defaultValue) as DateValue | undefined, [defaultValue]);
+  const convertedMax = useMemo(() => toDateValue(max) as DateValue | undefined, [max]);
+  const convertedMin = useMemo(() => toDateValue(min) as DateValue | undefined, [min]);
   const convertedValue = useMemo(() => toDateValue(value), [value]);
 
   const isDateUnavailable = useCallback((date: DateValue) => {
@@ -60,8 +60,8 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
   function onChange({ value, valueAsString }: DatePickerValueChangeDetails): void {
     if (onValueChange) {
       onValueChange({
-        value: toDate(value[0]),
-        valueAsString: valueAsString[0],
+        value: value && value.length ? toDate(value[0]) : null,
+        valueAsString: valueAsString && valueAsString.length ? valueAsString[0] : null,
       });
     }
   }
@@ -97,8 +97,10 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
         }}
         readOnly={ readOnly }
         ref={ ref }
-        value={ convertedValue && [convertedValue] }
         view={ view }
+        { ...(convertedValue !== undefined ? {
+          value: convertedValue ? [convertedValue] : [],
+        } : {})}
         { ...props }>
         { children }
       </DatePicker.Root>

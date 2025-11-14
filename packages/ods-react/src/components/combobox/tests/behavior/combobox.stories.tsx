@@ -52,7 +52,7 @@ export const ClearableControlled = () => {
       <ComboboxContent />
     </Combobox>
   );
-}
+};
 
 export const Disabled = () => (
   <Combobox

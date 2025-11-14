@@ -87,7 +87,8 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
   }
 
   function handleBlur(e: FocusEvent): void {
-    if (elementParentHasAttribute(e.relatedTarget as HTMLElement, 'data-ods', ['combobox-content', 'combobox-control'])) {
+    if (elementParentHasAttribute(e.relatedTarget as HTMLElement, 'data-ods', ['combobox-content', 'combobox-control']) &&
+      elementParentHasAttribute(e.relatedTarget as HTMLElement, 'id', [contentId, controlId])) {
       return;
     }
 

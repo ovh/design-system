@@ -230,13 +230,13 @@ export const ThemeGenerator: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
       <Quantity>
         <QuantityControl>
-          <QuantityInput placeholder="Default" />
+          <QuantityInput />
         </QuantityControl>
       </Quantity>
 
       <Quantity disabled>
         <QuantityControl>
-          <QuantityInput placeholder="Disabled" />
+          <QuantityInput />
         </QuantityControl>
       </Quantity>
 
@@ -248,7 +248,7 @@ export const ThemeGenerator: Story = {
 
       <Quantity invalid>
         <QuantityControl>
-          <QuantityInput placeholder="Invalid" />
+          <QuantityInput />
         </QuantityControl>
       </Quantity>
     </div>

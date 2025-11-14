@@ -34,7 +34,7 @@ const SelectContent: FC<SelectContentProp> = forwardRef(({
 
   return (
     <Portal disabled={ !createPortal }>
-      <Select.Positioner>
+      <Select.Positioner className={ style['select-positioner'] }>
         <Select.Content
           className={ classNames(
             style['select-content'],

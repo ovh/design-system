@@ -1,7 +1,6 @@
 @use './breakpoint';
 @use './overlay';
 
-$ods-modal-border-radius: calc(var(--ods-theme-border-radius) / 2);
 $ods-modal-header-height: 32px;
 $ods-modal-margin: 16px; // [Deprecated] will be removed in next major version
 $ods-modal-margin-horizontal: calc(var(--ods-theme-padding-horizontal) * 2);
@@ -10,7 +9,7 @@ $ods-modal-size: 512px;
 $ods-modal-z-index: overlay.$ods-overlay-modal-z-index;
 
 @mixin ods-modal() {
-  --ods-modal-border-radius: #{$ods-modal-border-radius};
+  --ods-modal-border-radius: var(--ods-theme-overlay-border-radius);
   --ods-modal-header-height: #{$ods-modal-header-height};
   --ods-modal-header-background-color-critical: var(--ods-color-critical-075);
   --ods-modal-header-background-color-information: var(--ods-color-information-075);

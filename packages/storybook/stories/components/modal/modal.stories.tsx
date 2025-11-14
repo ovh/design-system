@@ -542,7 +542,7 @@ export const ThemeGenerator: Story = {
         <ModalTrigger asChild>
           <Button>Default</Button>
         </ModalTrigger>
-        <ModalContent>
+        <ModalContent createPortal={ false }>
           <ModalBody>Default</ModalBody>
         </ModalContent>
       </Modal>
@@ -551,7 +551,7 @@ export const ThemeGenerator: Story = {
         <ModalTrigger asChild>
           <Button>Non dismissible</Button>
         </ModalTrigger>
-        <ModalContent dismissible={ false }>
+        <ModalContent createPortal={ false } dismissible={ false }>
           <ModalBody>Non dismissible</ModalBody>
         </ModalContent>
       </Modal>
@@ -560,7 +560,7 @@ export const ThemeGenerator: Story = {
         <ModalTrigger asChild>
           <Button color={ BUTTON_COLOR.critical }>Critical</Button>
         </ModalTrigger>
-        <ModalContent color={ MODAL_COLOR.critical }>
+        <ModalContent color={ MODAL_COLOR.critical } createPortal={ false }>
           <ModalBody>Critical</ModalBody>
         </ModalContent>
       </Modal>

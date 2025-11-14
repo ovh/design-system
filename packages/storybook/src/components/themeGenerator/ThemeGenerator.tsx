@@ -26,6 +26,20 @@ const ThemeGenerator = (): JSX.Element => {
   const [isPending, startTransition] = useTransition();
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Set overflow hidden on body/html when component mounts
+  useEffect(() => {
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
+    };
+  }, []);
+
   useEffect(() => {
     if (selectedTheme === 'custom') {
       setIsCustomTheme(true);
@@ -175,6 +189,7 @@ const ThemeGenerator = (): JSX.Element => {
           panels={ [{ id: 'tree-view', minSize: 10 }, { id: 'preview', minSize: 10 }] }>
           <Splitter.Panel id="tree-view">
             <ThemeGeneratorTreeView
+              isFullscreen={ isFullscreen }
               onVariableChange={ onVariableChange }
               variables={ editedVariables } />
           </Splitter.Panel>
@@ -199,7 +214,7 @@ const ThemeGenerator = (): JSX.Element => {
                 { [styles['theme-generator__container__preview--updating']]: isPending }
               )}
               style={ previewStyle }>
-              <ThemeGeneratorPreview />
+              <ThemeGeneratorPreview isFullscreen={ isFullscreen } />
             </div>
           </Splitter.Panel>
         </Splitter.Root>

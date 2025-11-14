@@ -2,7 +2,7 @@
 @use './state';
 
 $ods-input-actions-padding-right: calc(var(--ods-theme-padding-horizontal) / 2);
-$ods-input-field-height: var(--ods-theme-input-height);
+$ods-input-field-height: var(--ods-theme-input-min-height);
 $ods-input-placeholder-color: var(--ods-theme-input-placeholder-text-color);
 
 @mixin ods-input() {
@@ -10,7 +10,7 @@ $ods-input-placeholder-color: var(--ods-theme-input-placeholder-text-color);
   border: var(--ods-theme-input-border-width) solid var(--ods-theme-input-border-color);
   border-radius: var(--ods-theme-input-border-radius);
   padding: var(--ods-theme-input-padding-vertical) var(--ods-theme-input-padding-horizontal);
-  height: $ods-input-field-height;
+  min-height: $ods-input-field-height;
   color: var(--ods-theme-input-text-color);
   font-family: inherit;
   font-size: 1rem;

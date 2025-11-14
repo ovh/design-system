@@ -128,6 +128,7 @@
 
   // Overlay
   --ods-theme-backdrop-background-color: #{var.$ods-color-primary-500};
+  --ods-theme-overlay-border-radius: calc(var(--ods-theme-border-radius) / 2);
   --ods-theme-backdrop-opacity: 0.75;
   --ods-theme-overlay-box-shadow: 0 2px 8px rgba(0, 14, 156, 0.2);
   --ods-theme-overlay-z-index: 99;
@@ -155,12 +156,12 @@
   --ods-theme-input-border-color-invalid: #{var.$ods-color-form-element-border-critical};
   --ods-theme-input-border-radius: calc(var(--ods-theme-border-radius) / 2);
   --ods-theme-input-border-width: var(--ods-theme-border-width);
-  --ods-theme-input-height: #{var.$ods-form-element-input-height};
+  --ods-theme-input-min-height: #{var.$ods-form-element-input-height};
   --ods-theme-input-option-background-color-hover: #{var.$ods-color-primary-100};
   --ods-theme-input-option-background-color-selected: #{var.$ods-color-primary-050};
   --ods-theme-input-option-background-color-selected-hover: #{var.$ods-color-primary-100};
   --ods-theme-input-padding-horizontal: var(--ods-theme-padding-horizontal);
-  --ods-theme-input-padding-vertical: calc(var(--ods-theme-padding-vertical) / 2);
+  --ods-theme-input-padding-vertical: calc(var(--ods-theme-padding-vertical) / 4);
   --ods-theme-input-placeholder-text-color: #{var.$ods-color-form-element-text-placeholder-default};
   --ods-theme-input-text-color: var(--ods-theme-text-color);
   --ods-theme-input-text-color-checked: var(--ods-theme-background-color);

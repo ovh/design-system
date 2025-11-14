@@ -15,7 +15,7 @@
     border-radius: var(--ods-theme-input-border-radius);
     background-color: var(--ods-theme-background-color);
     cursor: pointer;
-    padding: 0 var(--ods-theme-input-padding-horizontal);
+    padding: var(--ods-theme-input-padding-vertical) var(--ods-theme-input-padding-horizontal);
     width: 100%;
     min-height: input.$ods-input-field-height;
     color: var(--ods-theme-input-text-color);

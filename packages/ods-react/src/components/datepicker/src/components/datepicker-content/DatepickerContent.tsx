@@ -28,7 +28,7 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
 
   return (
     <Portal disabled={ !createPortal }>
-      <DatePicker.Positioner>
+      <DatePicker.Positioner className={ style['datepicker-positioner'] }>
         <DatePicker.Content
           className={ classNames(
             style['datepicker-content'],

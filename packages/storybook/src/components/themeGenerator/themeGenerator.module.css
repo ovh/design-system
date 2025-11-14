@@ -9,7 +9,7 @@
 .theme-generator--fullscreen {
   position: fixed;
   inset: 0;
-  z-index: 90;
+  z-index: 1;
   border: 0;
 }
 
@@ -37,8 +37,6 @@
 
 .theme-generator__container__preview {
   padding: 16px;
-  max-height: 90vh;
-  overflow: auto;
 }
 
 .theme-generator__container__resize {

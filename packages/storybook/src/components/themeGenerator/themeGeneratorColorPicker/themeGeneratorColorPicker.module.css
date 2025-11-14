@@ -37,10 +37,10 @@
 .theme-generator-color-picker__control__trigger__swatch {
   box-sizing: border-box;
   border: 1px solid var(--ods-color-neutral-300);
-  cursor: pointer;
-  width: var(--ods-theme-input-height);
-  height: var(--ods-theme-input-height);
   border-radius: var(--ods-theme-input-border-radius);
+  cursor: pointer;
+  width: var(--ods-theme-input-min-height);
+  height: var(--ods-theme-input-min-height);
 }
 
 .theme-generator-color-picker__popover {

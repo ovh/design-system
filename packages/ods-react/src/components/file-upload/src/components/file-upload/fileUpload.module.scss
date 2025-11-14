@@ -10,7 +10,7 @@
     display: inline-flex;
     flex-flow: column;
     border: dashed 1px var(--ods-theme-input-border-color);
-    border-radius: 4px;
+    border-radius: calc(var(--ods-theme-border-radius) / 2);
     overflow: hidden;
     color: var(--ods-theme-input-text-color);
 

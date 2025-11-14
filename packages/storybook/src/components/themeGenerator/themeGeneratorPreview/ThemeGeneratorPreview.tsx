@@ -171,7 +171,11 @@ function VariablesScope({
   );
 }
 
-const ThemeGeneratorPreview = (): React.ReactElement => {
+interface ThemeGeneratorPreviewProps {
+  isFullscreen?: boolean;
+}
+
+const ThemeGeneratorPreview = ({ isFullscreen }: ThemeGeneratorPreviewProps): React.ReactElement => {
   const renderSectionHeading = (label: string, description?: string): React.ReactElement => (
     <header style={{ marginBottom: '0.75rem' }}>
       <h3 style={{ margin: 0 }}>{ label }</h3>
@@ -185,7 +189,7 @@ const ThemeGeneratorPreview = (): React.ReactElement => {
 
   return (
     <div>
-      <section style={{ marginBottom: '2rem' }}>
+      <section style={{ marginBottom: '2rem', maxHeight: isFullscreen ? '94vh' : '70vh', overflow: 'auto' }}>
         { renderSectionHeading('Theme previews') }
 
         <div style={{ display: 'grid', gap: '1.5rem' }}>

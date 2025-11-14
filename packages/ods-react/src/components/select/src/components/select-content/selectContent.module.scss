@@ -2,11 +2,13 @@
 @use '../../../../../style/overlay';
 
 @layer ods-molecules {
+  .select-positioner {
+    z-index: overlay.$ods-overlay-select-z-index !important;
+  }
+
   .select-content {
     --ods-select-group-option-padding-horizontal: calc(var(--ods-theme-input-padding-horizontal) * 3);
-    --ods-select-z-index: #{overlay.$ods-overlay-select-z-index};
 
-    z-index: var(--ods-select-z-index);
     border: var(--ods-theme-input-border-width) solid var(--ods-theme-input-border-color-hover);
     background-color: var(--ods-theme-background-color);
     padding: 0;
@@ -24,13 +26,13 @@
 
     &[data-state="open"] {
       &[data-placement="bottom-start"] {
-        border-bottom-left-radius: var(--ods-theme-input-border-radius);
-        border-bottom-right-radius: var(--ods-theme-input-border-radius);
+        border-bottom-left-radius: var(--ods-theme-overlay-border-radius);
+        border-bottom-right-radius: var(--ods-theme-overlay-border-radius);
       }
 
       &[data-placement="top-start"] {
-        border-top-left-radius: var(--ods-theme-input-border-radius);
-        border-top-right-radius: var(--ods-theme-input-border-radius);
+        border-top-left-radius: var(--ods-theme-overlay-border-radius);
+        border-top-right-radius: var(--ods-theme-overlay-border-radius);
       }
     }
 

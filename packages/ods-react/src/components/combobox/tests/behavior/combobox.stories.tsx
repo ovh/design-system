@@ -109,6 +109,24 @@ export const KeyboardNavigation = () => (
   </Combobox>
 );
 
+export const MultipleCombobox = () => (
+  <>
+    <Combobox
+      id="combobox1"
+      items={ simpleItems }>
+      <ComboboxControl />
+      <ComboboxContent createPortal={ false } />
+    </Combobox>
+
+    <Combobox
+      id="combobox2"
+      items={ simpleItems }>
+      <ComboboxControl />
+      <ComboboxContent createPortal={ false } />
+    </Combobox>
+  </>
+);
+
 export const MultipleControlled = () => {
   const [values, setValues] = useState<string[]>([]);
 

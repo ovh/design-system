@@ -255,6 +255,20 @@ export const Disabled = () => (
   </>
 );
 
+export const Double = () => (
+  <div style={{ display: 'flex', gap: '8px' }}>
+    <Combobox items={ items }>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+
+    <Combobox items={ items }>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+  </div>
+);
+
 export const Group = () => (
   <Combobox items={ groupedItems }>
     <ComboboxControl />

@@ -265,4 +265,41 @@ describe('Combobox behaviour', () => {
       });
     });
   });
+
+  describe('multiple combobox', () => {
+    async function isContentOpened(element: ElementHandle | null): Promise<boolean> {
+      if (!element) {
+        return false;
+      }
+      return element?.$eval('[data-ods="combobox-content"]', (el) => !!el && !el.hasAttribute('hidden'));
+    }
+
+    async function typeOnInput(element: ElementHandle | null, text: string): Promise<void> {
+      const input = await element?.$('[data-ods="combobox-control"] input');
+      await input?.click();
+      await input?.type(text);
+      await element?.waitForSelector('[data-ods="combobox-content"]:not([hidden])');
+    }
+
+    beforeEach(async() => {
+      await gotoStory(page, 'behavior/multiple-combobox');
+      await page.waitForSelector('#combobox1');
+      await page.waitForSelector('#combobox2');
+    });
+
+    it('should blur current one when focusing the second', async() => {
+      const combobox1 = await page.waitForSelector('#combobox1');
+      const combobox2 = await page.waitForSelector('#combobox2');
+
+      await typeOnInput(combobox1, '1');
+
+      expect(await isContentOpened(combobox1)).toBe(true);
+      expect(await isContentOpened(combobox2)).toBe(false);
+
+      await typeOnInput(combobox2, '2');
+
+      expect(await isContentOpened(combobox1)).toBe(false);
+      expect(await isContentOpened(combobox2)).toBe(true);
+    });
+  });
 });

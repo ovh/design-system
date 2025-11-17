@@ -165,22 +165,26 @@ export const ThemeGenerator: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <div style={{ display: 'flex', gap: '24px' }}>
-      <Switch>
+    <div style={{ display: 'flex', flexFlow: 'column', rowGap: '16px' }}>
+      <Switch style={{ alignSelf: 'start' }}>
         <SwitchItem value="item-1">Item 1</SwitchItem>
         <SwitchItem value="item-2">Item 2</SwitchItem>
         <SwitchItem value="item-3">Item 3</SwitchItem>
       </Switch>
 
-      <Switch disabled>
+      <Switch
+        disabled
+        style={{ alignSelf: 'start' }}>
         <SwitchItem value="item-1">Item 1</SwitchItem>
         <SwitchItem value="item-2">Item 2</SwitchItem>
         <SwitchItem value="item-3">Item 3</SwitchItem>
       </Switch>
 
-      <Switch size={ SWITCH_SIZE.sm }>
-        <SwitchItem value="item-1">Sm 1</SwitchItem>
-        <SwitchItem value="item-2">Sm 2</SwitchItem>
+      <Switch
+        size={ SWITCH_SIZE.sm }
+        style={{ alignSelf: 'start' }}>
+        <SwitchItem value="item-1">Small 1</SwitchItem>
+        <SwitchItem value="item-2">Small 2</SwitchItem>
       </Switch>
     </div>
   ),

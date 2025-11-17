@@ -128,8 +128,8 @@
 
   // Overlay
   --ods-theme-backdrop-background-color: #{var.$ods-color-primary-500};
-  --ods-theme-overlay-border-radius: calc(var(--ods-theme-border-radius) / 2);
   --ods-theme-backdrop-opacity: 0.75;
+  --ods-theme-overlay-border-radius: calc(var(--ods-theme-border-radius) / 2);
   --ods-theme-overlay-box-shadow: 0 2px 8px rgba(0, 14, 156, 0.2);
   --ods-theme-overlay-z-index: 99;
 

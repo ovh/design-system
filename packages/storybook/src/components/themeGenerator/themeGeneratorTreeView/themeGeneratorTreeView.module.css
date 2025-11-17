@@ -1,11 +1,5 @@
 .theme-generator-tree-view {
-  padding: 1rem;
-  max-height: 70vh;
-  overflow: auto;
-}
-
-.theme-generator-tree-view--fullscreen {
-  max-height: 94vh;
+  padding: 16px;
 }
 
 .theme-generator-tree-view__loading {
@@ -25,5 +19,5 @@
 
 .theme-generator-tree-view__item-name {
   flex: 1;
-  color: var(--ods-color-text);
+  color: var(--ods-theme-text-color);
 }

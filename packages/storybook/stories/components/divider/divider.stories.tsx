@@ -101,10 +101,6 @@ export const ThemeGenerator: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <div>
-      <Divider color={ DIVIDER_COLOR.neutral } />
-      <br />
-      <Divider color={ DIVIDER_COLOR.primary } />
-    </div>
+    <Divider />
   ),
 };

@@ -1,22 +1,20 @@
 import { Spinner, Text, TreeView, TreeViewNode, TreeViewNodes, SPINNER_SIZE, TEXT_PRESET } from '@ovhcloud/ods-react';
 import React, { useMemo } from 'react';
-import classNames from 'classnames';
 import { TOKEN_CATEGORY, type Token } from '../../../constants/designTokens';
 import { categorizeTokens } from '../../../helpers/designTokens';
 import { ThemeGeneratorInput } from '../themeGeneratorInput/ThemeGeneratorInput';
 import styles from './themeGeneratorTreeView.module.css';
 
 interface TreeItem {
-  id: string;
-  name: string;
-  value?: string;
-  children?: TreeItem[];
+  children?: TreeItem[],
+  id: string,
+  name: string,
+  value?: string,
 }
 
 interface ThemeGeneratorTreeViewProps {
-  variables: Record<string, string>;
-  onVariableChange: (name: string, value: string) => void;
-  isFullscreen?: boolean;
+  onVariableChange: (name: string, value: string) => void,
+  variables: Record<string, string>,
 }
 
 const groupTokensByCategory = (tokens: Token[], categoryName: string): TreeItem[] => {
@@ -44,7 +42,7 @@ const groupTokensByCategory = (tokens: Token[], categoryName: string): TreeItem[
   return Object.values(groups);
 };
 
-const ThemeGeneratorTreeView = ({ variables, onVariableChange, isFullscreen }: ThemeGeneratorTreeViewProps) => {
+const ThemeGeneratorTreeView = ({ variables, onVariableChange }: ThemeGeneratorTreeViewProps) => {
   const categorized = useMemo(() => categorizeTokens(variables), [variables]);
 
   const tokenMap = useMemo(() => {
@@ -94,10 +92,9 @@ const ThemeGeneratorTreeView = ({ variables, onVariableChange, isFullscreen }: T
   }
 
   return (
-    <TreeView className={classNames(
-      styles['theme-generator-tree-view'],
-      { [styles['theme-generator-tree-view--fullscreen']]: isFullscreen }
-    )} items={items}>
+    <TreeView
+      className={ styles['theme-generator-tree-view'] }
+      items={ items }>
       <TreeViewNodes>
         {items.map((item) => (
           <TreeViewNode key={item.id} item={item}>

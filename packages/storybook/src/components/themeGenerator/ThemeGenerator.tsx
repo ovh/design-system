@@ -1,7 +1,8 @@
 import { Splitter } from '@ark-ui/react/splitter';
-import React, { type JSX, useCallback, useEffect, useMemo, useRef, useState, useTransition } from 'react';
+import React, { type JSX, useEffect, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { Button, BUTTON_COLOR, BUTTON_VARIANT, Icon, ICON_NAME, Switch, type SwitchValueChangeDetail, SwitchItem } from '@ovhcloud/ods-react';
+import { resolveTokenValues } from '../../helpers/designTokens';
 import { ResetTheme } from '../resetTheme/ResetTheme';
 import { ORIENTATION, OrientationSwitch } from '../sandbox/actions/OrientationSwitch';
 import styles from './themeGenerator.module.css';
@@ -23,22 +24,11 @@ const ThemeGenerator = (): JSX.Element => {
   const [pendingTheme, setPendingTheme] = useState<string | null>(null);
   const [isJsonOpen, setIsJsonOpen] = useState(false);
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
-  const [isPending, startTransition] = useTransition();
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Set overflow hidden on body/html when component mounts
-  useEffect(() => {
-    const originalBodyOverflow = document.body.style.overflow;
-    const originalHtmlOverflow = document.documentElement.style.overflow;
-
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
-
-    return () => {
-      document.body.style.overflow = originalBodyOverflow;
-      document.documentElement.style.overflow = originalHtmlOverflow;
-    };
-  }, []);
+  const rootTokens = useMemo(() => {
+    return resolveTokenValues(defaultTokens.root);
+  }, [defaultTokens]);
 
   useEffect(() => {
     if (selectedTheme === 'custom') {
@@ -46,7 +36,7 @@ const ThemeGenerator = (): JSX.Element => {
       return;
     }
 
-    const tokens = defaultTokens.root;
+    const tokens = rootTokens;
     setEditedVariables(tokens);
     setDebouncedVariables(tokens);
     setIsCustomTheme(false);
@@ -58,9 +48,7 @@ const ThemeGenerator = (): JSX.Element => {
     }
 
     debounceTimerRef.current = setTimeout(() => {
-      startTransition(() => {
-        setDebouncedVariables(editedVariables);
-      });
+      setDebouncedVariables(editedVariables);
     }, 150);
 
     return () => {
@@ -69,30 +57,6 @@ const ThemeGenerator = (): JSX.Element => {
       }
     };
   }, [editedVariables]);
-
-  const previewStyle = useMemo(() => {
-    return debouncedVariables as React.CSSProperties;
-  }, [debouncedVariables]);
-
-  function onToggleFullscreen() {
-    setIsFullscreen((v) => !v);
-  }
-
-  const onVariableChange = useCallback((name: string, value: string) => {
-    setEditedVariables((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-
-    if (!isCustomTheme) {
-      setSelectedTheme('custom');
-      setIsCustomTheme(true);
-    }
-  }, [isCustomTheme]);
-
-  const onOrientationChange = useCallback((value: ORIENTATION) => {
-    setOrientation(value);
-  }, []);
 
   function handleSwitchThemeConfirm() {
     if (pendingTheme) {
@@ -135,107 +99,123 @@ const ThemeGenerator = (): JSX.Element => {
     setSelectedTheme(next);
   }
 
+  function onToggleFullscreen() {
+    setIsFullscreen((v) => !v);
+  }
+
+  function onVariableChange(name: string, value: string) {
+    setEditedVariables((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    if (!isCustomTheme) {
+      setSelectedTheme('custom');
+      setIsCustomTheme(true);
+    }
+  }
+
   return (
-    <div className={ classNames(
-      styles['theme-generator'],
-      { [ styles['theme-generator--fullscreen']]: isFullscreen },
-    )}>
-      <ResetTheme>
-        <div className={ styles['theme-generator__menu'] }>
-          <div className={styles['theme-generator__menu__left']}>
-            <Button
-              onClick={ () => setIsJsonOpen(true) }
-              variant={ BUTTON_VARIANT.ghost }>
-              <Icon name={ ICON_NAME.chevronLeftUnderscore } />
-              JSON
-            </Button>
+    <div className={ styles['theme-generator-wrapper'] }>
+      <ResetTheme style={{ height: 'inherit' }}>
+        <div className={ classNames(
+          styles['theme-generator'],
+          { [ styles['theme-generator--fullscreen']]: isFullscreen },
+        )}>
+            <div className={ styles['theme-generator__menu'] }>
+              <div className={styles['theme-generator__menu__left']}>
+                <Button
+                  onClick={ () => setIsJsonOpen(true) }
+                  variant={ BUTTON_VARIANT.ghost }>
+                  <Icon name={ ICON_NAME.chevronLeftUnderscore } />
+                  JSON
+                </Button>
 
-            <Switch
-              onValueChange={ handleThemeValueChange }
-              value={ selectedTheme }>
-              <SwitchItem value="default">
-                Default
-              </SwitchItem>
+                <Switch
+                  onValueChange={ handleThemeValueChange }
+                  value={ selectedTheme }>
+                  <SwitchItem value="default">
+                    Default
+                  </SwitchItem>
 
-              <SwitchItem value="custom">
-                Custom
-              </SwitchItem>
-            </Switch>
+                  <SwitchItem value="custom">
+                    Custom
+                  </SwitchItem>
+                </Switch>
 
-            <Button
-              onClick={ () => setIsPaletteOpen(true) }
-              variant={ BUTTON_VARIANT.ghost }>
-              <Icon name={ ICON_NAME.magicWand } />
-              Generate palette
-            </Button>
-          </div>
+                <Button
+                  onClick={ () => setIsPaletteOpen(true) }
+                  variant={ BUTTON_VARIANT.ghost }>
+                  <Icon name={ ICON_NAME.magicWand } />
+                  Generate palette
+                </Button>
+              </div>
 
-          <div className={ styles['theme-generator__menu__right'] }>
-            <OrientationSwitch
-              onChange={ onOrientationChange }
-              orientation={ orientation } />
+              <div className={ styles['theme-generator__menu__right'] }>
+                <OrientationSwitch
+                  onChange={ (value) => setOrientation(value) }
+                  orientation={ orientation } />
 
-            <Button
-              onClick={ onToggleFullscreen }
-              variant={ BUTTON_VARIANT.ghost }>
-              <Icon name={ isFullscreen ? ICON_NAME.shrink : ICON_NAME.resize } />
-            </Button>
-          </div>
-        </div>
-
-        <Splitter.Root
-          className={ styles['theme-generator__container'] }
-          orientation={ orientation }
-          panels={ [{ id: 'tree-view', minSize: 10 }, { id: 'preview', minSize: 10 }] }>
-          <Splitter.Panel id="tree-view">
-            <ThemeGeneratorTreeView
-              isFullscreen={ isFullscreen }
-              onVariableChange={ onVariableChange }
-              variables={ editedVariables } />
-          </Splitter.Panel>
-
-          <Splitter.ResizeTrigger
-            aria-label="Resize"
-            asChild
-            id="tree-view:preview">
-            <Button
-              className={ classNames(
-                styles['theme-generator__container__resize'],
-                { [styles['theme-generator__container__resize--horizontal']]: orientation === ORIENTATION.horizontal },
-                { [styles['theme-generator__container__resize--vertical']]: orientation === ORIENTATION.vertical },
-              )}
-              color={ BUTTON_COLOR.neutral } />
-          </Splitter.ResizeTrigger>
-
-          <Splitter.Panel id="preview">
-            <div
-              className={ classNames(
-                styles['theme-generator__container__preview'],
-                { [styles['theme-generator__container__preview--updating']]: isPending }
-              )}
-              style={ previewStyle }>
-              <ThemeGeneratorPreview isFullscreen={ isFullscreen } />
+                <Button
+                  onClick={ onToggleFullscreen }
+                  variant={ BUTTON_VARIANT.ghost }>
+                  <Icon name={ isFullscreen ? ICON_NAME.shrink : ICON_NAME.resize } />
+                </Button>
+              </div>
             </div>
-          </Splitter.Panel>
-        </Splitter.Root>
 
-        <ThemeGeneratorSwitchThemeModal
-          onCancel={ handleSwitchThemeCancel }
-          onConfirm={ handleSwitchThemeConfirm }
-          open={ isConfirmOpen }
-          targetTheme={ pendingTheme } />
+            <Splitter.Root
+              className={ styles['theme-generator__container'] }
+              orientation={ orientation }
+              panels={ [{ id: 'tree-view', minSize: 10 }, { id: 'preview', minSize: 10 }] }>
+              <Splitter.Panel
+                id="tree-view"
+                style={{ overflow: 'auto' }}>
+                <ThemeGeneratorTreeView
+                  onVariableChange={ onVariableChange }
+                  variables={ editedVariables } />
+              </Splitter.Panel>
 
-        <ThemeGeneratorPaletteModal
-          currentVariables={ editedVariables }
-          onApply={ handlePaletteApply }
-          onClose={ () => setIsPaletteOpen(false) }
-          open={ isPaletteOpen } />
+              <Splitter.ResizeTrigger
+                aria-label="Resize"
+                asChild
+                id="tree-view:preview">
+                <Button
+                  className={ classNames(
+                    styles['theme-generator__container__resize'],
+                    { [styles['theme-generator__container__resize--horizontal']]: orientation === ORIENTATION.horizontal },
+                    { [styles['theme-generator__container__resize--vertical']]: orientation === ORIENTATION.vertical },
+                  )}
+                  color={ BUTTON_COLOR.neutral } />
+              </Splitter.ResizeTrigger>
 
-        <ThemeGeneratorJSONModal
-          onClose={ () => setIsJsonOpen(false) }
-          onReplace={ handleJsonReplace }
-          open={ isJsonOpen }
-          variables={ editedVariables } />
+              <Splitter.Panel
+                id="preview"
+                style={{ overflow: 'auto' }}>
+                <div style={ debouncedVariables }>
+                  <ThemeGeneratorPreview />
+                </div>
+              </Splitter.Panel>
+            </Splitter.Root>
+
+            <ThemeGeneratorSwitchThemeModal
+              onCancel={ handleSwitchThemeCancel }
+              onConfirm={ handleSwitchThemeConfirm }
+              open={ isConfirmOpen }
+              targetTheme={ pendingTheme } />
+
+            <ThemeGeneratorPaletteModal
+              currentVariables={ editedVariables }
+              onApply={ handlePaletteApply }
+              onClose={ () => setIsPaletteOpen(false) }
+              open={ isPaletteOpen } />
+
+            <ThemeGeneratorJSONModal
+              onClose={ () => setIsJsonOpen(false) }
+              onReplace={ handleJsonReplace }
+              open={ isJsonOpen }
+              variables={ editedVariables } />
+        </div>
       </ResetTheme>
     </div>
   );

@@ -158,10 +158,18 @@ export const ThemeGenerator: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <div>
-      <Text preset={ TEXT_PRESET.heading4 }>Heading</Text>
-      <Text preset={ TEXT_PRESET.paragraph }>Paragraph text</Text>
-      <Text preset={ TEXT_PRESET.caption }>Caption</Text>
+      <Text preset={ TEXT_PRESET.caption }>Caption</Text><br />
+      <Text preset={ TEXT_PRESET.code }>Code</Text><br />
       <Text preset={ TEXT_PRESET.label }>Label</Text>
+      <Text preset={ TEXT_PRESET.paragraph }>Paragraph</Text>
+      <Text preset={ TEXT_PRESET.small }>Small</Text><br />
+      <Text preset={ TEXT_PRESET.span }>Span</Text><br />
+      <Text preset={ TEXT_PRESET.heading1 }>Heading-1</Text>
+      <Text preset={ TEXT_PRESET.heading2 }>Heading-2</Text>
+      <Text preset={ TEXT_PRESET.heading3 }>Heading-3</Text>
+      <Text preset={ TEXT_PRESET.heading4 }>Heading-4</Text>
+      <Text preset={ TEXT_PRESET.heading5 }>Heading-5</Text>
+      <Text preset={ TEXT_PRESET.heading6 }>Heading-6</Text>
     </div>
   ),
 };

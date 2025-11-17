@@ -24,7 +24,7 @@ const TooltipContent: FC<TooltipContentProp> = forwardRef(({
 }, ref): JSX.Element => {
   return (
     <Portal disabled={ !createPortal }>
-      <Tooltip.Positioner className={ style['tooltip-positioner'] }>
+      <Tooltip.Positioner style={{ zIndex: 'var(--ods-theme-overlay-z-index)' }}>
         <Tooltip.Content
           className={ classNames(style['tooltip-content'], className) }
           data-ods="tooltip-content"

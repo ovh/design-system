@@ -32,9 +32,13 @@ const ModalContent: FC<ModalContentProp> = forwardRef(({
 }, ref): JSX.Element => {
   return (
     <Portal disabled={ !createPortal }>
-      <Dialog.Backdrop className={ style['modal-backdrop'] } />
+      <Dialog.Backdrop
+        className={ style['modal-backdrop'] }
+        style={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) - 2)' }} />
 
-      <Dialog.Positioner className={ style['modal-positioner'] }>
+      <Dialog.Positioner
+        className={ style['modal-positioner'] }
+        style={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) - 1)' }}>
         <Dialog.Content
           aria-describedby={ props['aria-describedby'] || '' }
           aria-labelledby={ props['aria-labelledby'] || '' }

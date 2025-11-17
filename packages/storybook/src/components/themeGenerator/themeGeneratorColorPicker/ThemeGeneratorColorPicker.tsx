@@ -1,18 +1,18 @@
-import { ColorPicker, parseColor } from '@ark-ui/react/color-picker';
-import React from 'react';
+import { ColorPicker, type ColorPickerValueChangeDetails, parseColor } from '@ark-ui/react/color-picker';
+import React, { type FocusEvent, type KeyboardEvent, type MouseEvent } from 'react';
 import { FormField, FormFieldLabel, Input, Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';
 import styles from './themeGeneratorColorPicker.module.css';
 
 interface ThemeGeneratorColorPickerProps {
-  label?: string;
-  value: string;
-  onChange: (value: string) => void;
   className?: string;
-  showLabel?: boolean;
   disabled?: boolean;
+  label?: string;
+  onChange: (value: string) => void;
+  showLabel?: boolean;
+  value: string;
 }
 
-const formatColorValue = (colorValue: any): string => {
+function formatColorValue(colorValue: any): string {
   const hexColor = colorValue.toString('hex');
   const alpha = colorValue.getChannelValue('alpha');
 
@@ -25,9 +25,9 @@ const formatColorValue = (colorValue: any): string => {
   const alphaHex = Math.round(roundedAlpha * 255).toString(16).padStart(2, '0');
 
   return `${hexColor}${alphaHex}`;
-};
+}
 
-const parseColorWithRoundedAlpha = (colorString: string) => {
+function parseColorWithRoundedAlpha(colorString: string) {
   try {
     const color = parseColor(colorString.startsWith('var(') ? '#000000' : colorString);
     const alpha = color.getChannelValue('alpha');
@@ -36,21 +36,21 @@ const parseColorWithRoundedAlpha = (colorString: string) => {
   } catch {
     return parseColor('#000000');
   }
-};
+}
 
 const ThemeGeneratorColorPicker = ({
-  label,
-  value,
-  onChange,
   className = '',
-  showLabel = true,
   disabled = false,
+  label,
+  onChange,
+  showLabel = true,
+  value,
 }: ThemeGeneratorColorPickerProps) => {
-  const handleValueChange = (details: any) => {
+  function handleValueChange(details: ColorPickerValueChangeDetails) {
     onChange(formatColorValue(details.value));
-  };
+  }
 
-  const roundAlphaValue = (inputValue: string) => {
+  function roundAlphaValue(inputValue: string) {
     const parsedValue = parseFloat(inputValue);
     if (!isNaN(parsedValue)) {
       const rounded = Math.round(parsedValue * 100) / 100;
@@ -58,23 +58,23 @@ const ThemeGeneratorColorPicker = ({
       const newColor = currentColor.withChannelValue('alpha', rounded);
       onChange(formatColorValue(newColor));
     }
-  };
+  }
 
-  const handleAlphaBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+  function handleAlphaBlur(e: FocusEvent<HTMLInputElement>) {
     roundAlphaValue(e.target.value);
-  };
+  }
 
-  const handleAlphaKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  function handleAlphaKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     e.stopPropagation();
     if (e.key === 'Enter') {
       roundAlphaValue(e.currentTarget.value);
       e.currentTarget.blur();
     }
-  };
+  }
 
-  const handleClick = (e: React.MouseEvent) => {
+  function handleClick(e: MouseEvent) {
     e.stopPropagation();
-  };
+  }
 
   return (
     <ColorPicker.Root

@@ -1,13 +1,8 @@
 @use '../../../../../style/button';
 @use '../../../../../style/focus';
-@use '../../../../../style/overlay';
 @use '../../../../../style/state';
 
 @layer ods-molecules {
-  .datepicker-positioner {
-    z-index: overlay.$ods-overlay-base-z-index !important;
-  }
-
   .datepicker-content {
     --ods-datepicker-content-padding-horizontal: calc(var(--ods-theme-padding-horizontal) / 2);
     --ods-datepicker-content-padding-vertical: calc(var(--ods-theme-padding-vertical) / 2);

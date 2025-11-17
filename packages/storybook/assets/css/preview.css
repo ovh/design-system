@@ -68,8 +68,3 @@ img {
 #monacoOverflowContainer {
   outline: none;
 }
-
-/* We need to add padding to avoid outline being cut off */
-.theme-generator-preview {
-  padding: 4px!important;
-}

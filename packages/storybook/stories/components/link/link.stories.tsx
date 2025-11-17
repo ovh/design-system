@@ -156,7 +156,7 @@ export const ThemeGenerator: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+    <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>
       <Link href="https://www.ovhcloud.com">Default Link</Link>
       <Link disabled href="https://www.ovhcloud.com">Disabled</Link>
       <Link href="https://www.ovhcloud.com"><Icon name={ ICON_NAME.arrowLeft } />Icon Left</Link>

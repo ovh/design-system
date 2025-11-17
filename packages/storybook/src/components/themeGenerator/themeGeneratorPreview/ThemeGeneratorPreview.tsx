@@ -1,5 +1,5 @@
 import { composeStories } from '@storybook/react';
-import * as React from 'react';
+import React, { type ComponentType, type ReactElement } from 'react';
 import * as AccordionStories from '../../../../stories/components/accordion/accordion.stories';
 import * as BadgeStories from '../../../../stories/components/badge/badge.stories';
 import * as BreadcrumbStories from '../../../../stories/components/breadcrumb/breadcrumb.stories';
@@ -43,6 +43,7 @@ import * as ToggleStories from '../../../../stories/components/toggle/toggle.sto
 import * as TooltipStories from '../../../../stories/components/tooltip/tooltip.stories';
 import * as TreeViewStories from '../../../../stories/components/tree-view/tree-view.stories';
 import { REACT_COMPONENTS_TITLE } from '../../../constants/meta';
+import style from './themeGeneratorPreview.module.css';
 
 const THEME_STORY_MODULES = {
   Accordion: AccordionStories,
@@ -94,10 +95,10 @@ type ThemeComponentKey = keyof typeof THEME_STORY_MODULES;
 type ThemePreviewItem = {
   /** Matches the key used in THEME_STORY_MODULES / composed stories map. */
   key: ThemeComponentKey;
-  /** Human readable name displayed above the preview. */
-  label: string;
   /** Story `kind` used for contextual information (e.g. Storybook navigation). */
   kind: string;
+  /** Human readable name displayed above the preview. */
+  label: string;
 };
 
 const THEME_PREVIEW_COMPONENTS: ThemePreviewItem[] = [
@@ -145,77 +146,49 @@ const THEME_PREVIEW_COMPONENTS: ThemePreviewItem[] = [
   { key: 'TreeView', kind: REACT_COMPONENTS_TITLE.treeView, label: 'Tree View' },
 ];
 
-const COMPOSED_THEME_STORIES: Partial<Record<ThemeComponentKey, React.ComponentType>> = Object.entries(THEME_STORY_MODULES)
+const COMPOSED_THEME_STORIES: Partial<Record<ThemeComponentKey, ComponentType>> = Object.entries(THEME_STORY_MODULES)
   .reduce((acc, [key, module]) => {
-    const composedStories = composeStories(module as Parameters<typeof composeStories>[0]) as Record<string, React.ComponentType>;
-    const story = composedStories.ThemeGenerator as React.ComponentType | undefined;
+    const composedStories = composeStories(module as Parameters<typeof composeStories>[0]) as Record<string, ComponentType>;
+    const story = composedStories.ThemeGenerator as ComponentType | undefined;
 
     if (story) {
       acc[key as ThemeComponentKey] = story;
     }
 
     return acc;
-  }, {} as Partial<Record<ThemeComponentKey, React.ComponentType>>);
+  }, {} as Partial<Record<ThemeComponentKey, ComponentType>>);
 
-function VariablesScope({
-  themeClass,
-  children,
-}: {
-  themeClass: string;
-  children: React.ReactElement;
-}): React.ReactElement {
+const ThemeGeneratorPreview = (): ReactElement => {
   return (
-    <div className={ themeClass }>
-      { children }
-    </div>
-  );
-}
+    <section className={ style['theme-generator-preview'] }>
+      <h3>
+        Theme previews
+      </h3>
 
-interface ThemeGeneratorPreviewProps {
-  isFullscreen?: boolean;
-}
+      <div className={ style['theme-generator-preview__component'] }>
+        {
+          THEME_PREVIEW_COMPONENTS.map(({ key, label }) => {
+            const Composed = COMPOSED_THEME_STORIES[key];
 
-const ThemeGeneratorPreview = ({ isFullscreen }: ThemeGeneratorPreviewProps): React.ReactElement => {
-  const renderSectionHeading = (label: string, description?: string): React.ReactElement => (
-    <header style={{ marginBottom: '0.75rem' }}>
-      <h3 style={{ margin: 0 }}>{ label }</h3>
-      { description ? (
-        <p style={{ color: 'var(--ods-theme-text-color-muted, #516173)', margin: '0.25rem 0 0' }}>
-          { description }
-        </p>
-      ) : null }
-    </header>
-  );
+            if (!Composed) {
+              return null;
+            }
 
-  return (
-    <div>
-      <section style={{ marginBottom: '2rem', maxHeight: isFullscreen ? '94vh' : '70vh', overflow: 'auto' }}>
-        { renderSectionHeading('Theme previews') }
+            return (
+              <div key={ key }>
+                <h4 className={ style['theme-generator-preview__component__name'] }>
+                  { label }
+                </h4>
 
-        <div style={{ display: 'grid', gap: '1.5rem' }}>
-          {
-            THEME_PREVIEW_COMPONENTS.map(({ key, label }) => {
-              const Composed = COMPOSED_THEME_STORIES[key];
-
-              if (!Composed) {
-                return null;
-              }
-
-              return (
-                <div key={`compose-${key}`}>
-                  <h4 style={{ marginBottom: '0.5rem', marginTop: 0 }}>{ label }</h4>
-
-                  <VariablesScope
-                    themeClass="theme-generator-preview">
-                    <Composed />
-                  </VariablesScope>
+                <div className={ style['theme-generator-preview__component__preview'] }>
+                  <Composed />
                 </div>
-              );
-            })
-          }
-        </div>
-      </section>
-    </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </section>
   );
 };
 

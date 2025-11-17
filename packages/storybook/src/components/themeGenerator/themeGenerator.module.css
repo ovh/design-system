@@ -1,16 +1,23 @@
-.theme-generator {
+.theme-generator-wrapper {
   box-sizing: border-box;
   border: solid var(--ods-border-width-sm) var(--ods-color-primary-500);
   border-radius: var(--ods-border-radius-md);
-  background-color: #fff;
   overflow: hidden;
+  background-color: var(--ods-theme-background-color);
+}
+
+.theme-generator {
+  background-color: var(--ods-theme-background-color);
 }
 
 .theme-generator--fullscreen {
+  display: grid;
+  grid-template-rows: max-content 1fr;
   position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 90;
   border: 0;
+  height: 100vh;
 }
 
 .theme-generator__menu {
@@ -23,20 +30,17 @@
   padding: 0 8px;
 }
 
-.theme-generator__menu__left, .theme-generator__menu__right {
+.theme-generator__menu__left,
+.theme-generator__menu__right {
   display: flex;
   gap: 8px;
   align-items: center;
 }
 
 .theme-generator__container {
-  min-height: 50vh;
   overflow: hidden;
+  min-height: 50vh;
   resize: vertical;
-}
-
-.theme-generator__container__preview {
-  padding: 16px;
 }
 
 .theme-generator__container__resize {

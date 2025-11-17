@@ -1,0 +1,18 @@
+.theme-generator-preview {
+  padding: 16px;
+}
+
+.theme-generator-preview__component {
+  display: flex;
+  flex-flow: column;
+  row-gap: 16px;
+}
+
+.theme-generator-preview__component__name {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.theme-generator-preview__component__preview {
+  padding: 4px;
+}

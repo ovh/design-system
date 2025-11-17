@@ -22,9 +22,6 @@
     },
     "./default/tokens": {
       "default": "./dist/default/tokens.json"
-    },
-    "./developer/tokens": {
-      "default": "./dist/developer/tokens.json"
     }
   },
   "types": "dist/index.d.ts",

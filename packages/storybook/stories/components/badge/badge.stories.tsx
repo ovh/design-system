@@ -192,7 +192,7 @@ export const ThemeGenerator: Story = {
   render: ({}) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       { BADGE_SIZES.map((size) => (
-        <div key={ size } style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>
+        <div key={ size } style={{ display: 'flex', flexFlow: 'row', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
           { BADGE_COLORS.map((color) => (
             <Badge key={`${String(size)}-${String(color)}`} size={ size } color={ color }>
               { String(color) }

@@ -1,11 +1,6 @@
 @use '../../../../../style/focus';
-@use '../../../../../style/overlay';
 
 @layer ods-molecules {
-  .select-positioner {
-    z-index: overlay.$ods-overlay-select-z-index !important;
-  }
-
   .select-content {
     --ods-select-group-option-padding-horizontal: calc(var(--ods-theme-input-padding-horizontal) * 3);
 

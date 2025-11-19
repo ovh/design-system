@@ -1,0 +1,113 @@
+import { Meta, Source } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/toaster/documentation/cssVariable.json';
+import specificationsToaster from '../../../../ods-react/src/components/toaster/documentation/toaster.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as ToasterStories from './toaster.stories';
+
+<Meta of={ ToasterStories } name="Technical information" />
+
+<Banner of={ ToasterStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ ToasterStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/toaster/anatomy-tech.png" />
+
+1. **Toaster**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsToaster }
+  of={ ToasterStories } />
+
+<Heading label="How to use?" level={ 2 } />
+
+1. Add the `<Toaster />` component somewhere in your app.
+2. Import the `toast` function.
+3. Trigger toasts using `toast` functions.
+
+<Heading label="Triggering toast" level={ 3 } />
+
+The `toast` exposes the following trigger methods:
+- itself as a function to trigger a default toast.
+- `critical`: to trigger a critical toast.
+- `information`: to trigger an information toast.
+- `neutral`: to trigger a neutral toast.
+- `primary`: to trigger a primary toast.
+- `success`: to trigger a success toast.
+- `warning`: to trigger a warning toast.
+
+Each trigger method implements the following interface: `(content: ReactNode, option?: ToastOption) => string`
+and will return the toast `id`.
+
+By default the toast will apply the configuration of the `Toaster` component (dismissible, duration, ...).
+But you can override this setting per toast using `ToastOption` (check examples beneath for more details).
+
+<Heading label="Removing toast" level={ 3 } />
+
+By default, a toast will disappear after its duration, or if dismissible, on the close button click.
+
+Though you can also programmatically remove a specific toast using the `toast` remove method:
+`remove: (toasterId: string) => void`.
+
+<Heading label="Managing multiple Toaster" level={ 3 } />
+
+If you want to manage multiple toasters, you'll have to set an `id` to each and set the `toasterId` when triggering the toast.
+
+<Source code={`
+import { TOASTER_POSITION, Toaster, toast } from '@ovhcloud/ods-react';
+
+const MyApp = () => (
+  <>
+    <Toaster id="notifications" />
+    <Toaster id="alerts" position={ TOASTER_POSITION.top } />
+
+    <button onClick={ () => toast('Some notification', { toasterId: 'notifications' }) }>
+      Trigger notification
+    </button>
+
+    <button onClick={ () => toast.critical('Some alert', { toasterId: 'alerts' }) }>
+      Trigger alert
+    </button>
+  </>
+);
+`}
+  dark="true"
+  language="typescript" />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ ToasterStories.Default } sourceState="shown" />
+
+<Heading label="Colors" level={ 3 } />
+
+<Canvas of={ ToasterStories.Colors } sourceState="shown" />
+
+<Heading label="Dismissible" level={ 3 } />
+
+<Canvas of={ ToasterStories.Dismissible } sourceState="shown" />
+
+<Heading label="Duration" level={ 3 } />
+
+<Canvas of={ ToasterStories.Duration } sourceState="shown" />
+
+<Heading label="Icon" level={ 3 } />
+
+<Canvas of={ ToasterStories.Icon } sourceState="shown" />
+
+<Heading label="Position" level={ 3 } />
+
+<Canvas of={ ToasterStories.Position } sourceState="shown" />
+
+<Heading label="Custom Content" level={ 3 } />
+
+<Canvas of={ ToasterStories.CustomContent } sourceState="shown" />

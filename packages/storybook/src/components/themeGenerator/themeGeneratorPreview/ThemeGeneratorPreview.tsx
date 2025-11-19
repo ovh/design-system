@@ -39,6 +39,7 @@ import * as TagStories from '../../../../stories/components/tag/tag.stories';
 import * as TextStories from '../../../../stories/components/text/text.stories';
 import * as TextareaStories from '../../../../stories/components/textarea/textarea.stories';
 import * as TimepickerStories from '../../../../stories/components/timepicker/timepicker.stories';
+import * as ToasterStories from '../../../../stories/components/toaster/toaster.stories';
 import * as ToggleStories from '../../../../stories/components/toggle/toggle.stories';
 import * as TooltipStories from '../../../../stories/components/tooltip/tooltip.stories';
 import * as TreeViewStories from '../../../../stories/components/tree-view/tree-view.stories';
@@ -85,6 +86,7 @@ const THEME_STORY_MODULES = {
   Text: TextStories,
   Textarea: TextareaStories,
   Timepicker: TimepickerStories,
+  Toaster: ToasterStories,
   Toggle: ToggleStories,
   Tooltip: TooltipStories,
   TreeView: TreeViewStories,
@@ -141,6 +143,7 @@ const THEME_PREVIEW_COMPONENTS: ThemePreviewItem[] = [
   { key: 'Text', kind: REACT_COMPONENTS_TITLE.text, label: 'Text' },
   { key: 'Textarea', kind: REACT_COMPONENTS_TITLE.textarea, label: 'Textarea' },
   { key: 'Timepicker', kind: REACT_COMPONENTS_TITLE.timepicker, label: 'Timepicker' },
+  { key: 'Toaster', kind: REACT_COMPONENTS_TITLE.toaster, label: 'Toaster' },
   { key: 'Toggle', kind: REACT_COMPONENTS_TITLE.toggle, label: 'Toggle' },
   { key: 'Tooltip', kind: REACT_COMPONENTS_TITLE.tooltip, label: 'Tooltip' },
   { key: 'TreeView', kind: REACT_COMPONENTS_TITLE.treeView, label: 'Tree View' },

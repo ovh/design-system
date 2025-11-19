@@ -1,0 +1,45 @@
+@use '../../../../../style/overlay';
+
+$toaster-padding: 24px;
+
+@layer ods-organisms {
+  .toaster {
+    --ods-toaster-padding: #{$toaster-padding};
+
+    position: fixed;
+    inset: var(--ods-toaster-padding);
+    z-index: overlay.$ods-overlay-base-z-index;
+    pointer-events: none;
+
+    &__toast {
+      display: flex;
+      position: absolute;
+
+      &--bottom,
+      &--bottom-end,
+      &--bottom-start {
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      &--top,
+      &--top-end,
+      &--top-start {
+        top: 0;
+        right: 0;
+        left: 0;
+      }
+
+      &--bottom,
+      &--top {
+        justify-content: center;
+      }
+
+      &--bottom-end,
+      &--top-end {
+        justify-content: flex-end;
+      }
+    }
+  }
+}

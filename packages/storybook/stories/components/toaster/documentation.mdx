@@ -1,0 +1,130 @@
+import { Meta } from '@storybook/blocks';
+import * as ToasterStories from './toaster.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+
+<Meta of={ ToasterStories } name='Documentation' />
+
+<Banner of={ ToasterStories } />
+
+_**Toaster** component provides a section on the page where you'll be able to display **Toast** to notify the user._
+
+<Canvas of={ ToasterStories.Overview } sourceState='none' />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ ['Notification', 'Toast'] }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/9bnlxD8FSlsM1AkmxZbNLG/ODS---UI-Kit?node-id=11140-2948&p=f&t=Rrmj84Hj95VYn82V-0"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/toaster"
+              name="Toaster"
+              startingVersion={ 19 }>
+  A **Toast** is a non-blocking notification used to communicate brief messages to the user.
+</IdentityCard>
+
+<Heading label="Usage" level={ 2 } />
+
+The **Toast** is used for short-lived messages that do not demand immediate user action. They are commonly used for:
+- confirmations (e.g., "Changes saved").
+- warnings or errors (e.g., "Connection lost").
+- informational updates (e.g., "New message received").
+
+<Heading label="Message vs Toast" level={ 3 } />
+
+**Message**
+
+- Persistent or semi-persistent information banner.
+- Usually appears inline or at the top of a page as part of the content flow.
+- Designed for status communication (success, warning, critical error, info) that’s tied to a specific screen or context.
+- Remains visible until dismissed or until the state changes.
+
+**Toast**
+
+- Ephemeral notification that appears for a short time (usually overlay in a corner of the viewport)
+- Designed for lightweight, transient feedback ("Action succeeded", "File uploaded"), except for toast with actions.
+- Auto-dismisses after a few seconds.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    '- Use Toasts for critical alerts that require immediate user attention. Use Modal instead',
+    '- Overuse Toasts for every user action',
+    '- Allow Toasts to hide critical UI elements',
+    '- Display long content or actions that require extended attention in a Toast',
+  ]}
+  dos={[
+    '- Use a Toast to inform users of non-critical system events or confirmations',
+    '- Keep messages short and clear',
+    '- Queue multiple Toasts when triggered in quick succession',
+  ]}
+/>
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+<Anatomy src="components/toaster/anatomy.png" />
+
+1. **Toast**
+2. **Icon** - optional
+3. **Close button** - optional
+4. **Content**
+
+<Heading label="Placement" level={ 2 } />
+
+**Toasts** are typically positioned at one of the corners of the viewport (default is top-end), but the placement is configurable to match the application's UX needs.
+
+<Heading label="Behavior" level={ 2 } />
+
+<Heading label="Auto-dismiss" level={ 3 } />
+
+By default, a **Toast*** is ephemeral and disappears automatically after a predefined duration (default is 3 seconds).
+
+The auto-dismiss timer is paused when the user hovers over the **Toast**, and resumes once the hover ends.
+
+The **Toast** may include a close button, allowing the user to dismiss it before the timer expires.
+
+<Heading label="Persistent Toast" level={ 3 } />
+
+**Toasts** can be configured to remain visible until the user dismisses them or completes the associated action.
+
+In this case, a close button is always required.
+
+<Heading label="Manual dismiss" level={ 3 } />
+
+A close button is displayed for manual dismissal.
+
+Manual dismiss is compatible with both auto-dismiss and persistent **Toasts**.
+
+<Heading label="Stacking" level={ 3 } />
+
+**Toasts** stack within their display area, with a default maximum of 3 visible **Toasts**.
+
+The stack follows a FIFO (First In, First Out) order, the most recent **Toast** appears first.
+
+When a **Toast** is dismissed (automatically or manually), the remaining **Toasts** shift to fill the gap, preserving their relative order.
+
+Stacking direction depends on placement:
+- top placements: the newest **Toast** appears at the top of the stack, pushing older ones downward.
+- bottom placements: the newest **Toast** appears at the bottom of the stack, pushing older ones upward.
+
+<Heading label="Variation" level={ 2 } />
+
+<Heading label="Color" level={ 3 } />
+
+- **Information** _(default)_: informing users of specific content, providing global feedback to the user.
+- **Success**: confirming that an action has been completed successfully, providing positive feedback to the user.
+- **Warning**: alerting users to potential issues or cautionary information, prompting them to take preventive actions.
+- **Critical**: highlighting severe and potentially catastrophic issues that demand urgent and decisive action to prevent significant negative consequences.
+
+<Heading label="Navigation" level={ 2 } />
+
+**Toasts** interactive elements can receive keyboard focus.
+
+**Toasts** do not trap focus nor interfere with the active workflow.
+
+<Heading label="Accessibility" level={ 2 } />
+
+The **Toaster** component handles by itself the accessibility requirements.

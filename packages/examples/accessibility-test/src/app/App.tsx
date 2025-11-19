@@ -39,6 +39,7 @@ import {
   Text,
   Textarea,
   Timepicker, TimepickerControl, TimepickerTimezoneList,
+  Toaster, toast,
   Toggle,
   Tooltip,
   TooltipContent,
@@ -1204,6 +1205,16 @@ function App(): ReactElement {
               <TimepickerTimezoneList />
             </Timepicker>
           </FormField>
+        </section>
+
+        <section>
+          <h1>Toaster</h1>
+
+          <Toaster duration={ Infinity } />
+
+          <button onClick={ () => toast('Some message') }>
+            Trigger toast
+          </button>
         </section>
 
         <section>

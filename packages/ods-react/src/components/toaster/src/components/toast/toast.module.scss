@@ -1,0 +1,9 @@
+@layer ods-organisms {
+  .toast {
+    pointer-events: auto;
+
+    [data-ods="message-body"] {
+      color: var(--ods-theme-text-color);
+    }
+  }
+}

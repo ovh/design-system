@@ -11,6 +11,7 @@
   --ods-message-background-color-success-light: var(--ods-theme-background-color);
   --ods-message-background-color-warning: var(--ods-color-warning-075);
   --ods-message-background-color-warning-light: var(--ods-theme-background-color);
+  --ods-message-border-radius: calc(var(--ods-theme-border-radius) / 2);
   --ods-message-text-color-critical: var(--ods-color-critical-700);
   --ods-message-text-color-critical-light: var(--ods-color-critical-700);
   --ods-message-text-color-information: var(--ods-color-information-700);
@@ -28,6 +29,7 @@
   display: inline-flex;
   column-gap: var(--ods-theme-column-gap);
   align-items: center;
+  border-radius: var(--ods-message-border-radius);
   padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
 }
 
@@ -55,21 +57,27 @@
 
 @mixin ods-message-variant-light($color) {
   @if $color == 'critical' {
+    border: solid var(--ods-theme-border-width) var(--ods-message-text-color-critical-light);
     background-color: var(--ods-message-background-color-critical-light);
     color: var(--ods-message-text-color-critical-light);
   } @else if $color == 'information' {
+    border: solid var(--ods-theme-border-width) var(--ods-message-text-color-information-light);
     background-color: var(--ods-message-background-color-information-light);
     color: var(--ods-message-text-color-information-light);
   } @else if $color == 'neutral' {
+    border: solid var(--ods-theme-border-width) var(--ods-message-text-color-neutral-light);
     background-color: var(--ods-message-background-color-neutral-light);
     color: var(--ods-message-text-color-neutral-light);
   } @else if $color == 'primary' {
+    border: solid var(--ods-theme-border-width) var(--ods-message-text-color-primary-light);
     background-color: var(--ods-message-background-color-primary-light);
     color: var(--ods-message-text-color-primary-light);
   } @else if $color == 'success' {
+    border: solid var(--ods-theme-border-width) var(--ods-message-text-color-success-light);
     background-color: var(--ods-message-background-color-success-light);
     color: var(--ods-message-text-color-success-light);
   } @else if $color == 'warning' {
+    border: solid var(--ods-theme-border-width) var(--ods-message-text-color-warning-light);
     background-color: var(--ods-message-background-color-warning-light);
     color: var(--ods-message-text-color-warning-light);
   }

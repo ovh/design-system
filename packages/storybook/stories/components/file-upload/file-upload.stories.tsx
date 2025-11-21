@@ -1,7 +1,7 @@
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
-import { FILE_UPLOAD_I18N, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadProp, type FileUploadRejectDetail } from '../../../../ods-react/src/components/file-upload/src';
+import { FILE_UPLOAD_I18N, FILE_UPLOAD_VARIANT, FILE_UPLOAD_VARIANTS, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadProp, type FileUploadRejectDetail } from '../../../../ods-react/src/components/file-upload/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -110,6 +110,14 @@ export const Demo: Story = {
       },
       control: 'text',
     },
+    variant: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: { summary: 'FILE_UPLOAD_VARIANT' }
+      },
+      control: { type: 'select' },
+      options: FILE_UPLOAD_VARIANTS,
+    },
   }),
 };
 
@@ -184,6 +192,38 @@ import { useState } from 'react';`,
                   [FILE_UPLOAD_I18N.deleteButton]: `Remove ${file.name}`,
                   [FILE_UPLOAD_I18N.progressBar]: `Uploading ${file.name}`,
                 }}
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
+export const Compact: Story = {
+  globals: {
+    imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    return (
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
                 key={ idx } />
             ))
           }

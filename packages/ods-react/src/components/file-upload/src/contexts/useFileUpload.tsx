@@ -1,6 +1,7 @@
 import { type JSX, type ReactNode, createContext, useContext } from 'react';
 import { type Locale } from '../../../../utils/locales';
 import { type FILE_REJECTION_CAUSE } from '../constants/file-error';
+import { type FileUploadVariant } from '../constants/file-upload-variant';
 
 interface FileUploadAcceptDetail {
   files: File[],
@@ -78,6 +79,10 @@ interface FileUploadRootProp {
    * Upload button label.
    */
   triggerLabel?: string,
+  /**
+   * The variant preset to use.
+   */
+  variant?: FileUploadVariant,
 }
 
 type FileUploadContextType = Pick<FileUploadRootProp, 'locale'>

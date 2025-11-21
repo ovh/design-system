@@ -38,7 +38,21 @@ There are four different subtypes of standard **Messages**, in order of priority
 - **Success**: Reserved to provide to a success message. They are displayed as a snackbar.
 - **Warning**: Reserved for **Messages** that need the user attention and acknowledgment but might not cause errors.
 - **Critical**: Reserved for errors, malfunctions, as well as critical issues. Inform the user that a problem requires immediate intervention or correction before the process continues.
-- **Danger**: Reserved for alerts to an urgent and potentially hazardous situation that necessitates immediate action to prevent harm or serious consequences.
+
+<Heading label="Message vs Toast" level={ 3 } />
+
+**Message**
+
+- Persistent or semi-persistent information banner.
+- Usually appears inline or at the top of a page as part of the content flow.
+- Designed for status communication (success, warning, critical error, info) that’s tied to a specific screen or context.
+- Remains visible until dismissed or until the state changes.
+
+**Toast**
+
+- Ephemeral notification that appears for a short time (usually overlay in a corner of the viewport)
+- Designed for lightweight, transient feedback ("Action succeeded", "File uploaded"), except for toast with actions.
+- Auto-dismisses after a few seconds.
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
@@ -87,7 +101,6 @@ When a **Message** is dismissible, a click on the `xmark` icon button will dismi
 - **Information** _(default)_: informing users of specific content, providing global feedback to the user.
 - **Success**: confirming that an action has been completed successfully, providing positive feedback to the user.
 - **Warning**: alerting users to potential issues or cautionary information, prompting them to take preventive actions.
-- **Danger**: indicating serious issues or errors that require immediate attention, signaling a high level of urgency.
 - **Critical**: highlighting severe and potentially catastrophic issues that demand urgent and decisive action to prevent significant negative consequences.
 
 <Heading label="Variant" level={ 3 } />

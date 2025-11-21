@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
-import Specifications{{> ComponentName }} from '../../../../ods-react/src/components/{{> component-name }}/documentation/{{> component-name }}.json';
+import cssVariable from '../../../../ods-react/src/components/{{> component-name }}/documentation/cssVariable.json';
+import specifications{{> ComponentName }} from '../../../../ods-react/src/components/{{> component-name }}/documentation/{{> component-name }}.json';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
@@ -21,7 +22,10 @@ import * as {{> ComponentName }}Stories from './{{> component-name }}.stories';
 
 1. **{{> ComponentName }}**
 
-<TechnicalSpecification data={ Specifications{{> ComponentName }} } of={ {{> ComponentName }}Stories } />
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specifications{{> ComponentName }} }
+  of={ {{> ComponentName }}Stories } />
 
 <Heading label="Examples" level={ 2 } />
 

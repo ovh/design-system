@@ -36,6 +36,7 @@
     "@ark-ui/react": "5.25.1",
     "classnames": "2.5.1",
     "libphonenumber-js": "1.12.8",
+    "react-hot-toast": "2.6.0",
     "react-shiki": "0.9.0"
   },
   "peerDependencies": {

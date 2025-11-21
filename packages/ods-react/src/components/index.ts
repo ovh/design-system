@@ -41,3 +41,5 @@ export * from './combobox/src';
 
 export * from './tree-view/src';
 export * from './meter/src';
+
+export * from './toaster/src';

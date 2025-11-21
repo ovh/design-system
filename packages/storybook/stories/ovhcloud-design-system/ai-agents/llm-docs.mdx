@@ -1,0 +1,61 @@
+import { Meta, Source } from '@storybook/blocks';
+import { Heading } from '../../../src/components/heading/Heading';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
+import { NoToC } from '../../../src/components/noToC/NoToC';
+
+<Meta title="OVHcloud Design System/AI Agents/LLM Documentation" />
+
+<NoToC />
+
+<Heading label="OVHcloud Design System Documentation for LLMs" level={1} />
+
+> OVHcloud Design System is a collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
+
+This page provides AI/LLM-optimized documentation following the <ExternalLink href="https://llmstxt.org/">llmstxt.org</ExternalLink> specification.
+
+<Heading label="Documentation Sets" level={2} />
+
+- **<a href="/llms/llms-full.txt" target="_blank" rel="noopener noreferrer">Complete documentation</a>**: The complete OVHcloud Design System documentation including all components, styling, theming, guides, and tools
+
+- **<a href="/llms/ods-documentation-components.txt" target="_blank" rel="noopener noreferrer">Components</a>**: Documentation for all React components in OVHcloud Design System.
+
+- **<a href="/llms/ods-documentation-generic.txt" target="_blank" rel="noopener noreferrer">Generic Documentation</a>**: Documentation for design tokens, styling, theming, guides, tools, and general information about OVHcloud Design System.
+
+<Heading label="Notes" level={2} />
+
+- The complete documentation includes all content from the official documentation
+
+- Category-specific documentation files contain only the content relevant to that category
+
+- The content is automatically generated from the same source as the official documentation
+
+<Heading label="How to Use" level={2} />
+
+<Heading label="For AI Assistants" level={3} />
+
+Download one of the documentation files above and provide it to your AI assistant (ChatGPT, Claude, etc.) for better context about ODS components.
+
+<Heading label="For Developers" level={3} />
+
+Use the category-specific files for focused documentation, or the complete file for full context when training custom AI models on your design system.
+
+<Heading label="For Integration" level={3} />
+
+Point LLM tools to the `/llms/llms.txt` endpoint for automatic documentation access following the llmstxt.org specification.
+
+<Heading label="Regenerate Documentation" level={2} />
+
+To update the LLM documentation after making changes to the codebase:
+
+<Source
+  code={`cd packages/storybook
+yarn extract:llms`}
+  dark={true}
+  language="bash"
+/>
+
+The extraction process will:
+1. Read all Storybook stories and documentation
+2. Generate consolidated category files (components, generic)
+3. Create the complete documentation file
+4. Copy everything to the `assets/llms` folder for dev mode access

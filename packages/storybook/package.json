@@ -6,8 +6,10 @@
   "license": "Apache-2.0",
   "main": "index.js",
   "scripts": {
-    "build:storybook": "yarn generate:versions && storybook build -o dist",
+    "build:storybook": "yarn install:browsers && yarn generate:versions && storybook build -o dist && yarn extract:llms",
+    "extract:llms": "../../node_modules/.bin/storybook-llms-extractor --config llms.config.js && node scripts/postprocess-llms.js",
     "generate:versions": "node scripts/generate-version-list.js 'assets/ods-versions.json'",
+    "install:browsers": "../../node_modules/.bin/playwright install --with-deps chromium",
     "start": "yarn generate:versions && storybook dev -p 6006 --no-open"
   },
   "dependencies": {
@@ -23,6 +25,7 @@
     "typedoc": "0.28.1"
   },
   "devDependencies": {
+    "@fluentui/storybook-llms-extractor": "0.0.3",
     "@storybook/addon-essentials": "8.6.12",
     "@storybook/addon-links": "8.6.12",
     "@storybook/blocks": "8.6.12",
@@ -32,6 +35,7 @@
     "@storybook/types": "8.6.12",
     "custom-elements-manifest": "1.0.0",
     "node-fetch": "2.7.0",
+    "playwright": "1.56.1",
     "prop-types": "15.8.1",
     "react-docgen": "7.1.1",
     "storybook": "8.6.12",

@@ -1,4 +1,4 @@
-import { type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type JSX, type ReactNode, type RefObject, createContext, useContext, useState } from 'react';
 
 interface TabsValueChangeEvent {
   value: string,
@@ -23,17 +23,23 @@ interface TabsRootProp {
   withArrows?: boolean,
 }
 
-type TabsContextType = Pick<TabsRootProp, 'withArrows'>;
+interface TabsContextType {
+  withArrows?: boolean;
+  scrollContainerRef?: RefObject<HTMLElement> | null;
+  setScrollContainerRef?: (ref: RefObject<HTMLElement>) => void;
+}
 
-interface TabsProviderProp extends TabsContextType {
+interface TabsProviderProp extends Pick<TabsRootProp, 'withArrows'> {
   children: ReactNode;
 }
 
 const TabsContext = createContext<TabsContextType>({});
 
 function TabsProvider({ children, withArrows }: TabsProviderProp): JSX.Element {
+  const [scrollContainerRef, setScrollContainerRef] = useState<RefObject<HTMLElement> | null>(null);
+
   return (
-    <TabsContext.Provider value={{ withArrows }}>
+    <TabsContext.Provider value={{ withArrows, scrollContainerRef, setScrollContainerRef }}>
       { children }
     </TabsContext.Provider>
   );

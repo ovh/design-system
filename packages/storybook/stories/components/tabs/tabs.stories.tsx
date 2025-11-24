@@ -229,15 +229,39 @@ export const ThemeGenerator: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Tabs defaultValue="tab1">
+    <Tabs withArrows defaultValue="tab1">
       <TabList>
         <Tab value="tab1">Tab 1</Tab>
         <Tab value="tab2" disabled>Tab 2</Tab>
         <Tab value="tab3">Tab 3</Tab>
+        <Tab value="tab4">Tab 4</Tab>
+        <Tab value="tab5">Tab 5</Tab>
+        <Tab value="tab6">Tab 6</Tab>
+        <Tab value="tab7">Tab 7</Tab>
+        <Tab value="tab8">Tab 8</Tab>
+        <Tab value="tab9">Tab 9</Tab>
+        <Tab value="tab10">Tab 10</Tab>
+        <Tab value="tab11">Tab 11</Tab>
+        <Tab value="tab12">Tab 12</Tab>
+        <Tab value="tab13">Tab 13</Tab>
+        <Tab value="tab14">Tab 14</Tab>
+        <Tab value="tab15">Tab 15</Tab>
       </TabList>
       <TabContent value="tab1"><p>Content 1</p></TabContent>
       <TabContent value="tab2"><p>Content 2</p></TabContent>
       <TabContent value="tab3"><p>Content 3</p></TabContent>
+      <TabContent value="tab4"><p>Content 4</p></TabContent>
+      <TabContent value="tab5"><p>Content 5</p></TabContent>
+      <TabContent value="tab6"><p>Content 6</p></TabContent>
+      <TabContent value="tab7"><p>Content 7</p></TabContent>
+      <TabContent value="tab8"><p>Content 8</p></TabContent>
+      <TabContent value="tab9"><p>Content 9</p></TabContent>
+      <TabContent value="tab10"><p>Content 10</p></TabContent>
+      <TabContent value="tab11"><p>Content 11</p></TabContent>
+      <TabContent value="tab12"><p>Content 12</p></TabContent>
+      <TabContent value="tab13"><p>Content 13</p></TabContent>
+      <TabContent value="tab14"><p>Content 14</p></TabContent>
+      <TabContent value="tab15"><p>Content 15</p></TabContent>
     </Tabs>
   ),
 };

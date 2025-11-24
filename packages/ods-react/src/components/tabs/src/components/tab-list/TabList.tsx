@@ -14,10 +14,16 @@ const TabList: FC<TabListProp> = forwardRef(({
   className,
   ...props
 }, ref): JSX.Element => {
-  const { withArrows } = useTabs();
+  const { withArrows, setScrollContainerRef } = useTabs();
   const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(false);
   const [isRightButtonDisabled, setIsRightButtonDisabled] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (setScrollContainerRef) {
+      setScrollContainerRef(scrollRef);
+    }
+  }, [setScrollContainerRef]);
 
   const updateScrollButtonState = useCallback(() => {
     setIsLeftButtonDisabled(scrollRef.current ? scrollRef.current.scrollLeft === 0 : false);

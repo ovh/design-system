@@ -7,7 +7,8 @@
   "main": "index.js",
   "scripts": {
     "build:storybook": "yarn generate:versions && storybook build -o dist && yarn extract:llms",
-    "extract:llms": "../../node_modules/.bin/storybook-llms-extractor --config llms.config.js && node scripts/postprocess-llms.js",
+    "extract:llms": "storybook-llms-extractor --config llms.config.js && node scripts/postprocess-llms.js",
+    "install:browsers": "playwright install --with-deps chromium",
     "generate:versions": "node scripts/generate-version-list.js 'assets/ods-versions.json'",
     "start": "yarn generate:versions && storybook dev -p 6006 --no-open"
   },

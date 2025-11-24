@@ -5065,6 +5065,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@playwright/test@npm:1.56.1":
+  version: 1.56.1
+  resolution: "@playwright/test@npm:1.56.1"
+  dependencies:
+    playwright: 1.56.1
+  bin:
+    playwright: cli.js
+  checksum: 109544665800de973987893adffa17d1e563fb99d3485d6399784e8c8a9269081cae9a00e09ca308aa140e932a4e862dca0b3de07a21e2dfbf8cfcc3b2b6b4f3
+  languageName: node
+  linkType: hard
+
 "@polka/url@npm:^1.0.0-next.24":
   version: 1.0.0-next.29
   resolution: "@polka/url@npm:1.0.0-next.29"
@@ -19207,6 +19218,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": 18.6.1
     "@commitlint/config-conventional": 18.6.2
+    "@playwright/test": 1.56.1
     "@types/node": 18.15.3
     "@typescript-eslint/eslint-plugin": 7.0.1
     "@typescript-eslint/parser": 7.0.1

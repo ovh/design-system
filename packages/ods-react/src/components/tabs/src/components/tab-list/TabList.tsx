@@ -66,7 +66,7 @@ const TabList: FC<TabListProp> = forwardRef(({
   }
 
   return (
-    <Tabs.List
+    <div
       className={ classNames(style['tab-list'], className) }
       data-ods="tab-list"
       ref={ ref }
@@ -93,9 +93,9 @@ const TabList: FC<TabListProp> = forwardRef(({
         onScroll={ debouncedUpdateScrollButtonState }
         ref={ scrollRef }
         tabIndex={ -1 }>
-        <div className={ style['tab-list__container__tabs'] }>
+        <Tabs.List className={ style['tab-list__container__tabs'] }>
           { children }
-        </div>
+        </Tabs.List>
       </div>
 
       {
@@ -114,7 +114,7 @@ const TabList: FC<TabListProp> = forwardRef(({
           </Button>
         </div>
       }
-    </Tabs.List>
+    </div>
   );
 });
 

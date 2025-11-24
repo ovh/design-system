@@ -75,6 +75,23 @@ describe('Combobox behaviour', () => {
     });
   });
 
+  describe('controlled value', () => {
+    beforeEach(async() => {
+      await gotoStory(page, 'behavior/controlled-value');
+      await page.waitForSelector('[data-ods="combobox"]');
+    });
+
+    it('should reflect external change to value', async() => {
+      const changeValueButton = await page.$('#force-value');
+
+      expect(await getInputValue(page)).toBe('Apple');
+
+      await changeValueButton?.click();
+
+      expect(await getInputValue(page)).toBe('Banana');
+    });
+  });
+
   describe('on blur', () => {
     beforeEach(async() => {
       await gotoStory(page, 'behavior/on-blur');
@@ -297,6 +314,7 @@ describe('Combobox behaviour', () => {
       expect(await isContentOpened(combobox2)).toBe(false);
 
       await typeOnInput(combobox2, '2');
+      await combobox1?.waitForSelector('[data-ods="combobox-content"][hidden]');
 
       expect(await isContentOpened(combobox1)).toBe(false);
       expect(await isContentOpened(combobox2)).toBe(true);

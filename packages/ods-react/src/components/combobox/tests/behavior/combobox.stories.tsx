@@ -46,11 +46,33 @@ export const ClearableControlled = () => {
   return (
     <Combobox
       items={ simpleItems }
-      value={ values }
-      onValueChange={ ({ value }) => setValues(value) }>
+      onValueChange={ ({ value }) => setValues(value) }
+      value={ values }>
       <ComboboxControl clearable />
       <ComboboxContent />
     </Combobox>
+  );
+};
+
+export const ControlledValue = () => {
+  const [values, setValues] = useState<string[]>(['the-apple']);
+
+  return (
+    <>
+      <button
+        id="force-value"
+        onClick={ () => setValues(['the-banana']) }>
+        Force value "Banana"
+      </button>
+
+      <Combobox
+        items={ simpleItems }
+        onValueChange={ ({ value }) => setValues(value) }
+        value={ values }>
+        <ComboboxControl />
+        <ComboboxContent />
+      </Combobox>
+    </>
   );
 };
 

@@ -216,6 +216,20 @@ const ComboboxProvider = ({
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    const matchingItems = getDefaultSelection(items, value);
+
+    if (matchingItems.length) {
+      if (!multiple) {
+        setInputValue(matchingItems[0].label);
+        _setSelection([matchingItems[0]]);
+      } else {
+        setInputValue('');
+        _setSelection(matchingItems);
+      }
+    }
+  }, [value]); // eslint-disable-line react-hooks/exhaustive-deps
+
   function deselectItem(item: ComboboxOptionItem): void {
     if (disabled || readOnly || !multiple) {
       return;

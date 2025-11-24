@@ -42,20 +42,3 @@ Use the category-specific files for focused documentation, or the complete file 
 <Heading label="For Integration" level={3} />
 
 Point LLM tools to the `/llms/llms.txt` endpoint for automatic documentation access following the llmstxt.org specification.
-
-<Heading label="Regenerate Documentation" level={2} />
-
-To update the LLM documentation after making changes to the codebase:
-
-<Source
-  code={`cd packages/storybook
-yarn extract:llms`}
-  dark={true}
-  language="bash"
-/>
-
-The extraction process will:
-1. Read all Storybook stories and documentation
-2. Generate consolidated category files (components, generic)
-3. Create the complete documentation file
-4. Copy everything to the `assets/llms` folder for dev mode access

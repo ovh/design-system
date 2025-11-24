@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { BUTTON_COLOR, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME } from '../../../../ods-react/src/components/icon/src';
 import { Link } from '../../../../ods-react/src/components/link/src';
@@ -259,15 +259,24 @@ export const Overview: Story = {
   parameters: {
     layout: 'centered',
   },
-  render: ({}) => (
-    <>
-      <Toaster id="overview" />
+  render: ({}) => {
+    const [count, setCount] = useState(1);
 
-      <Button onClick={ () => toast('Notification message', { toasterId: 'overview' }) }>
-        Trigger toast
-      </Button>
-    </>
-  ),
+    function createToast(): void {
+      toast(`Toast message ${count}`, { toasterId: 'overview' });
+      setCount((c) => c + 1);
+    }
+
+    return (
+      <>
+        <Toaster id="overview" />
+
+        <Button onClick={ createToast }>
+          Trigger toast
+        </Button>
+      </>
+    );
+  },
 };
 
 export const Position: StoryObj = {

@@ -1,6 +1,7 @@
 import { Tabs, useTabsContext } from '@ark-ui/react/tabs';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+import { useTabs } from '../../contexts/useTabs';
 import style from './tab.module.scss';
 
 interface TabProp extends ComponentPropsWithRef<'button'> {
@@ -17,18 +18,28 @@ const Tab: FC<TabProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { focusedValue } = useTabsContext();
+  const { scrollContainerRef } = useTabs();
   const innerRef = useRef<HTMLButtonElement>(null);
 
   useImperativeHandle(ref, () => innerRef.current!, [innerRef]);
 
   useEffect(() => {
-    if (innerRef.current && focusedValue === value) {
-      innerRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-      });
+    if (innerRef.current && focusedValue === value && scrollContainerRef?.current) {
+      const element = innerRef.current;
+      const parent = scrollContainerRef.current;
+      
+      const elementLeft = element.offsetLeft;
+      const elementRight = elementLeft + element.offsetWidth;
+      const parentScrollLeft = parent.scrollLeft;
+      const parentWidth = parent.clientWidth;
+      
+      if (elementLeft < parentScrollLeft) {
+        parent.scrollTo({ left: elementLeft, behavior: 'smooth' });
+      } else if (elementRight > parentScrollLeft + parentWidth) {
+        parent.scrollTo({ left: elementRight - parentWidth, behavior: 'smooth' });
+      }
     }
-  }, [focusedValue, value]);
+  }, [focusedValue, value, scrollContainerRef]);
 
   return (
     <Tabs.Trigger

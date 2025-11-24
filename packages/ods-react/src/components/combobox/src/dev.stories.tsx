@@ -145,8 +145,12 @@ export const Controlled = () => {
         Current value: { values.join(', ') }
       </p>
 
+      <button onClick={ () => setValues(['the-cat']) }>
+        Force value "Cat"
+      </button>
+
       <Combobox
-        items={ groupedItems }
+        items={ items }
         onValueChange={ onValueChange }
         value={ values }>
         <ComboboxControl />
@@ -634,6 +638,35 @@ export const MultipleClearable = () => (
   </>
 );
 
+export const MultipleControlled = () => {
+  const [values, setValues] = useState([items[0].value, items[items.length - 1].value]);
+
+  function onValueChange({ value }: ComboboxValueChangeDetails): void {
+    setValues(value);
+  }
+
+  return (
+    <>
+      <p>
+        Current value: { values.join(', ') }
+      </p>
+
+      <button onClick={ () => setValues(['the-cat']) }>
+        Force value "Cat"
+      </button>
+
+      <Combobox
+        items={ items }
+        multiple
+        onValueChange={ onValueChange }
+        value={ values }>
+        <ComboboxControl />
+        <ComboboxContent />
+      </Combobox>
+    </>
+  );
+}
+
 export const MultipleCustomFilter = () => (
   <>
     <span>Search from right to left in each word</span>
@@ -678,6 +711,36 @@ export const MultipleGroup = () => (
     <ComboboxContent />
   </Combobox>
 );
+
+export const MultipleHandlers = () => {
+  const [inputValueChangeEvents, setInputValueChangeEvents] = useState<string[]>([]);
+  const [valueChangeEvents, setValueChangeEvents] = useState<string[]>([]);
+
+  return (
+    <>
+      <Combobox
+        items={ items }
+        multiple
+        onInputValueChange={ (event) => setInputValueChangeEvents((e) => e.concat([JSON.stringify(event)])) }
+        onValueChange={ (event) => setValueChangeEvents((e) => e.concat([JSON.stringify(event)])) }>
+        <ComboboxControl />
+        <ComboboxContent />
+      </Combobox>
+
+      <p>onInputValueChange events</p>
+      <textarea
+        readOnly
+        style={{ height: '200px', width: '100%' }}
+        value={ inputValueChangeEvents.join('\n----------\n') } />
+
+      <p>onValueChange events</p>
+      <textarea
+        readOnly
+        style={{ height: '200px', width: '100%' }}
+        value={ valueChangeEvents.join('\n----------\n') } />
+    </>
+  );
+}
 
 export const MultipleNoCustom = () => (
   <Combobox

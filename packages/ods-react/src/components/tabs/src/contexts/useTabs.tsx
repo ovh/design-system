@@ -23,8 +23,7 @@ interface TabsRootProp {
   withArrows?: boolean,
 }
 
-interface TabsContextType {
-  withArrows?: boolean;
+type TabsContextType = Omit<TabsProviderProp, 'children'> & {
   scrollContainerRef?: RefObject<HTMLElement> | null;
   setScrollContainerRef?: (ref: RefObject<HTMLElement>) => void;
 }
@@ -39,7 +38,7 @@ function TabsProvider({ children, withArrows }: TabsProviderProp): JSX.Element {
   const [scrollContainerRef, setScrollContainerRef] = useState<RefObject<HTMLElement> | null>(null);
 
   return (
-    <TabsContext.Provider value={{ withArrows, scrollContainerRef, setScrollContainerRef }}>
+    <TabsContext.Provider value={{ scrollContainerRef, setScrollContainerRef, withArrows }}>
       { children }
     </TabsContext.Provider>
   );

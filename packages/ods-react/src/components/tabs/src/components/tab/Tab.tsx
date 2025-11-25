@@ -27,16 +27,16 @@ const Tab: FC<TabProp> = forwardRef(({
     if (innerRef.current && focusedValue === value && scrollContainerRef?.current) {
       const element = innerRef.current;
       const parent = scrollContainerRef.current;
-      
+
       const elementLeft = element.offsetLeft;
       const elementRight = elementLeft + element.offsetWidth;
       const parentScrollLeft = parent.scrollLeft;
       const parentWidth = parent.clientWidth;
-      
+
       if (elementLeft < parentScrollLeft) {
-        parent.scrollTo({ left: elementLeft, behavior: 'smooth' });
+        parent.scrollTo({ behavior: 'smooth', left: elementLeft });
       } else if (elementRight > parentScrollLeft + parentWidth) {
-        parent.scrollTo({ left: elementRight - parentWidth, behavior: 'smooth' });
+        parent.scrollTo({ behavior: 'smooth', left: elementRight - parentWidth });
       }
     }
   }, [focusedValue, value, scrollContainerRef]);

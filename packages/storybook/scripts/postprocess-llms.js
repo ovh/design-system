@@ -214,11 +214,6 @@ async function main() {
 
   async function copyConsolidatedFilesToDirectory(targetDir) {
     await fs.mkdir(targetDir, { recursive: true });
-
-    const summaryDest = targetDir === DIST_LLMS_DIR 
-      ? path.join(DIST_DIR, SUMMARY_FILENAME) 
-      : path.join(targetDir, SUMMARY_FILENAME);
-    await fs.copyFile(SUMMARY_PATH, summaryDest);
     await fs.copyFile(fullDocPath, path.join(targetDir, 'llms-full.txt'));
 
     if (components.length > 0) {
@@ -231,25 +226,8 @@ async function main() {
     }
   }
 
-  async function copyIndividualFilesToDirectory(targetDir) {
-    const individualFilesDir = path.join(targetDir, 'individual');
-    if (await exists(LLMS_DIR)) {
-      await fs.mkdir(individualFilesDir, { recursive: true });
-      const files = await fs.readdir(LLMS_DIR);
-      for (const file of files) {
-        const srcPath = path.join(LLMS_DIR, file);
-        const stat = await fs.stat(srcPath);
-        if (stat.isFile() && !shouldExcludeFile(file)) {
-          const destPath = path.join(individualFilesDir, file);
-          await fs.copyFile(srcPath, destPath);
-        }
-      }
-    }
-  }
-
   try {
     await copyConsolidatedFilesToDirectory(ASSETS_LLMS_DIR);
-    await copyIndividualFilesToDirectory(ASSETS_LLMS_DIR);
     console.log('✅ LLM docs copied to assets/llms directory for dev mode access.');
 
     await copyConsolidatedFilesToDirectory(DIST_LLMS_DIR);

@@ -1,9 +1,11 @@
-import { Meta, Source } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import { Heading } from '../../../src/components/heading/Heading';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { NoToC } from '../../../src/components/noToC/NoToC';
 
-<Meta title="OVHcloud Design System/AI Agents/LLM Documentation" />
+<Meta
+  tags={ ['new'] }
+  title="OVHcloud Design System/AI Agents/LLM Documentation" />
 
 <NoToC />
 
@@ -15,11 +17,11 @@ This page provides AI/LLM-optimized documentation following the <ExternalLink hr
 
 <Heading label="Documentation Sets" level={2} />
 
-- **<a href="/llms/llms-full.txt" target="_blank" rel="noopener noreferrer">Complete documentation</a>**: The complete OVHcloud Design System documentation including all components, styling, theming, guides, and tools
+- **<ExternalLink href="/llms/llms-full.txt" rel="noopener noreferrer">Complete documentation</ExternalLink>**: The complete OVHcloud Design System documentation including all components, styling, theming, guides, and tools
 
-- **<a href="/llms/ods-documentation-components.txt" target="_blank" rel="noopener noreferrer">Components</a>**: Documentation for all React components in OVHcloud Design System.
+- **<ExternalLink href="/llms/ods-documentation-components.txt" rel="noopener noreferrer">Components</ExternalLink>**: Documentation for all React components in OVHcloud Design System.
 
-- **<a href="/llms/ods-documentation-generic.txt" target="_blank" rel="noopener noreferrer">Generic Documentation</a>**: Documentation for design tokens, styling, theming, guides, tools, and general information about OVHcloud Design System.
+- **<ExternalLink href="/llms/ods-documentation-generic.txt" rel="noopener noreferrer">Generic Documentation</ExternalLink>**: Documentation for design tokens, styling, theming, guides, tools, and general information about OVHcloud Design System.
 
 <Heading label="Notes" level={2} />
 
@@ -38,7 +40,3 @@ Download one of the documentation files above and provide it to your AI assistan
 <Heading label="For Developers" level={3} />
 
 Use the category-specific files for focused documentation, or the complete file for full context when training custom AI models on your design system.
-
-<Heading label="For Integration" level={3} />
-
-Point LLM tools to the `/llms/llms.txt` endpoint for automatic documentation access following the llmstxt.org specification.

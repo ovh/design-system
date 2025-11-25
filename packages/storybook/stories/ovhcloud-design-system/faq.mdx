@@ -26,6 +26,32 @@ Additionally, if you're interested in proposing a new feature, please reach us o
 
 Refer to our project <ExternalLink href="https://github.com/ovh/design-system?tab=contributing-ov-file#contributing-to-ods-project">README</ExternalLink> to learn more about installation and pre-requisites.
 
+<Heading label="How are releases managed?" level={ 2 } />
+
+The OVHcloud Design System follows a structured release process to deliver improvements regularly while letting teams adopt updates at their own pace.
+
+**Patch releases** deliver critical fixes or small improvements and can be adopted immediately.
+
+**Minor releases** introduce new non-breaking features and start the deprecation process when needed.
+
+**Major releases** contain breaking changes, removals of previously deprecated elements, and migration documentation.
+
+Releases are published several times a year based on user needs and product evolution.
+
+We support two major versions at the same time:
+
+- The current major version receives full support (features, improvements, fixes).
+- The previous major version receives maintenance support for six months (critical fixes only).
+- Older versions are no longer supported.
+
+Deprecations follow a two-step workflow:
+
+- They are announced in a minor release, marked as "Deprecated" in Storybook, and paired with migration guidance.
+- They are removed in the next major release.
+
+Teams may upgrade at their own pace and can skip versions.
+We recommend pinning a specific ODS version in your project to ensure consistent behaviour.
+
 <Heading label="I can't find a component I need" level={ 2 } />
 
 ODS provides base components that you can build on top of and implement in various contexts.

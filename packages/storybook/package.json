@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "main": "index.js",
   "scripts": {
-    "build:storybook": "yarn generate:versions && storybook build -o dist && yarn extract:llms",
+    "build:storybook": "yarn generate:versions && storybook build -o dist",
     "extract:llms": "storybook-llms-extractor --config llms.config.js && node scripts/postprocess-llms.js",
     "install:browsers": "playwright install --with-deps chromium",
     "generate:versions": "node scripts/generate-version-list.js 'assets/ods-versions.json'",

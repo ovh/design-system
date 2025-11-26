@@ -1,0 +1,99 @@
+import{j as e}from"./jsx-runtime-Cfl8ynUo.js";import{useMDXComponents as p}from"./index-ZwkxtaJJ.js";import{t as l,l as a}from"./ods-react60-DssFCbzP.js";import{M as x}from"./index-9orhCFJa.js";import{D as d,O as m,A as j,a as u,b as g}from"./datepicker.stories-ChH-UORI.js";import{A as f}from"./Anatomy-DkXJCwiR.js";import{B as y}from"./Banner-DiJ2utjo.js";import{I as v,B as w}from"./IdentityCard-0vzhW5ZM.js";import{C as c}from"./Canvas-CreDMEws.js";import{H as t}from"./Heading-eINcjqM4.js";import{S as s}from"./StorybookLink-CMOdzit3.js";import{S as i,R as r}from"./meta-t9Q7ez2Q.js";import"./index-jIWwRBLr.js";import"./index-CWkFp9WS-BSIT86NH.js";import"./iframe-BRevKSH1.js";import"./index-DWDEzXrj.js";import"./index-N93khynk.js";import"./index-CXQShRbs.js";import"./index-DrFu-skq.js";import"./index-CqY9YpN0.js";import"./FormFieldLabel-B8-lDkmb.js";import"./Text-DyiJ5nHV.js";import"./use-locale-context-6s5qsrWI.js";import"./index-CgXDLFtf.js";import"./index-DEFWe41X.js";import"./portal--PO1aV1j.js";import"./use-presence-Dwt5F0sJ.js";import"./use-event-c9j7vq_1.js";import"./Button-B-GJ-1TA.js";import"./Spinner-DJB5ZadI.js";import"./colors-DSObuHxd.js";import"./icon-name-C581wThh.js";import"./Input-DRCIBq_k.js";import"./useI18n-C0NLVYPv.js";import"./controls-BtiQQn1l.js";import"./source-CPEZJ6oD.js";import"./Table-BvR76ybm-DzE94PQp.js";import"./ExternalLink-C0Msq_QQ.js";import"./Link-CIjoG_UN-BDwROQOD.js";import"./Table-u83oGl00.js";import"./TooltipTrigger-CizyLvLy-D53hI2Ct.js";import"./index-blQ1D1fB.js";import"./lz-string-U2heoObX.js";import"./ResetTheme-BVzaMHe3.js";import"./tokens-VHDJ0kGa.js";function h(o){const n={code:"code",em:"em",li:"li",ol:"ol",p:"p",strong:"strong",ul:"ul",...p(),...o.components};return e.jsxs(e.Fragment,{children:[e.jsx(x,{of:d,name:"Documentation"}),`
+`,e.jsx(y,{of:d}),`
+`,e.jsx(n.p,{children:e.jsxs(n.em,{children:["A ",e.jsx(n.strong,{children:"Datepicker"})," component is used to allow users to select a date. They can navigate through days, months and years."]})}),`
+`,e.jsx(c,{of:m,sourceState:"none"}),`
+`,e.jsx(t,{label:"Overview",level:2}),`
+`,e.jsx(v,{aliases:["Calendar"],figmaLink:"https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=26-7958",githubUrl:"https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/datepicker",name:"Datepicker",children:e.jsx(n.p,{children:`The Datepicker component is used for selecting dates in forms and applications. It provides a user-friendly
+interface for choosing dates, ensuring that the date format is consistent and valid. This component can include
+features such as disabled dates and custom formats.`})}),`
+`,e.jsx(t,{label:"Usage",level:2}),`
+`,e.jsxs(n.p,{children:[e.jsx(n.strong,{children:"Datepicker"})," is used to ",e.jsx(n.strong,{children:"allow a selection of a specific date"})," in the near future or even past. It is ",e.jsx(n.strong,{children:"useful for scheduling, or defining user dates"}),"."]}),`
+`,e.jsx(t,{label:"Dos & Don'ts",level:3}),`
+`,e.jsx(w,{donts:["- Don't rely only on placeholders to communicate the date format. Users need persistent guidance (via a label or hint)","- Don't use a Datepicker when the user must select a date very far in the past or future (e.g., birthdate). Use a more accessible method like dropdowns or manual input","- Don't overload the interface with too many calendar options at once","- Don't default the calendar to an irrelevant month/year"],dos:["- Use a Datepicker when users need to select a specific date","- Choose a relevant default date when opening the calendar (e.g., default to the current year/month when not contextually set)","- Add a label alongside the input to clearly indicate the expected format, especially when the placeholder disappears on input","- Use a Datepicker when users need to select a single date or range of dates","- Use a Datepicker for recent or near future dates","- When the user has to pick dates in the distant past or future, do choose a more suitable day as Datepicker default date when it will open"]}),`
+`,e.jsx(t,{label:"Best Practices in Context",level:3}),`
+`,e.jsx(f,{src:"components/datepicker/anatomy.png"}),`
+`,e.jsxs(n.ol,{children:[`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Datepicker"})}),`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Date field"})}),`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Icon button"})}),`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Dropdown calendar"})}),`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Month/Year button"})}),`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Previous/Next month buttons"})}),`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Week days"})}),`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Day"})}),`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Selected day"})}),`
+`]}),`
+`,e.jsx(t,{label:"Placement",level:2}),`
+`,e.jsxs(n.p,{children:["A ",e.jsx(n.strong,{children:"Datepicker"})," can be used in a page as long as there is a need to allow users to pick a date."]}),`
+`,e.jsx(n.p,{children:"The date field has a fixed width by default but when used in a form its width should match the other inputs."}),`
+`,e.jsxs(n.p,{children:["The ",e.jsx(n.strong,{children:"Datepicker"})," dropdown has a fixed width and is not adjustable."]}),`
+`,e.jsx(t,{label:"Behavior",level:2}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Opening the Datepicker"})}),`
+`,e.jsxs(n.p,{children:["By clicking on the ",e.jsx(n.strong,{children:"Datepicker"})," icon button."]}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Closing the Datepicker"})}),`
+`,e.jsxs(n.ul,{children:[`
+`,e.jsxs(n.li,{children:["By clicking outside the ",e.jsx(n.strong,{children:"Datepicker"})," dropdown"]}),`
+`,e.jsx(n.li,{children:"By selecting a date"}),`
+`]}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Date picking mode"})}),`
+`,e.jsxs(n.p,{children:["Navigating to previous/next month : By clicking on arrow icon ",e.jsx(s,{kind:r.button,story:i.documentation,children:"Buttons"})," to navigate through months"]}),`
+`,e.jsxs(n.p,{children:["Selecting a month : By clicking on the month selection ",e.jsx(s,{kind:r.button,story:i.documentation,children:"Button"})," to switch to month picking mode"]}),`
+`,e.jsx(n.p,{children:"Picking a date : By clicking on a date"}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Month picking mode"})}),`
+`,e.jsxs(n.p,{children:["Navigating to previous/next year : By clicking on arrow icon ",e.jsx(s,{kind:r.button,story:i.documentation,children:"Buttons"})," to navigate through years"]}),`
+`,e.jsxs(n.p,{children:["Selecting a year : By clicking on the month selection ",e.jsx(s,{kind:r.button,story:i.documentation,children:"Button"})," to switch to year picking mode"]}),`
+`,e.jsx(n.p,{children:"Picking a month: By clicking on a month, the dropdown goes back to date picking mode"}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Year picking mode"})}),`
+`,e.jsxs(n.p,{children:["Navigating to previous/next range of years : By clicking on arrow icon ",e.jsx(s,{kind:r.button,story:i.documentation,children:"Buttons"})," to navigate through years"]}),`
+`,e.jsxs(n.p,{children:["Selecting a decade : By clicking on the month selection ",e.jsx(s,{kind:r.button,story:i.documentation,children:"Button"})," to switch to year picking mode"]}),`
+`,e.jsx(n.p,{children:"Picking a month: By clicking on a month, the dropdown goes back to date picking mode"}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Locale"})}),`
+`,e.jsxs(n.p,{children:["Locale determines how the week days will be displayed according to the localization. The ",e.jsx(n.strong,{children:"Datepicker"})," supports the following locales: English (default), German, Spanish, French, Italian, Dutch, Polish and Portuguese."]}),`
+`,e.jsx(t,{label:"Navigation",level:2}),`
+`,e.jsx(t,{label:"Focus Management",level:3}),`
+`,e.jsxs(n.p,{children:["The ",e.jsx(n.strong,{children:"Datepicker"})," icon button can receive the focus."]}),`
+`,e.jsx(n.p,{children:"When the dropdown calendar opens, the focus is moved to the currently selected date, or to today's date if none is selected."}),`
+`,e.jsx(n.p,{children:"When the dropdown is closed (via Escape or blur), focus returns to the Datepicker trigger (the input field)."}),`
+`,e.jsx(t,{label:"General Keyboard Shortcuts",level:3}),`
+`,e.jsxs(n.p,{children:["Pressing ",e.jsx(n.code,{children:"Escape"})," closes the Datepicker dropdown without selecting a date."]}),`
+`,e.jsxs(n.p,{children:["Pressing ",e.jsx(n.code,{children:"Tab"})," or ",e.jsx(n.code,{children:"Shift"})," + ",e.jsx(n.code,{children:"Tab"})," moves focus through dropdown controls when open."]}),`
+`,e.jsx(t,{label:"Navigating days",level:3}),`
+`,e.jsxs(n.ul,{children:[`
+`,e.jsxs(n.li,{children:[e.jsx(n.code,{children:"Arrow Left"}),": Move to the previous day"]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.code,{children:"Arrow Right"}),": Move to the next day"]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.code,{children:"Arrow Up"}),": Move to the same weekday of the previous week"]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.code,{children:"Arrow Down"}),": Move to the same weekday of the next week"]}),`
+`]}),`
+`,e.jsx(t,{label:"Jumping within the calendar",level:3}),`
+`,e.jsxs(n.ul,{children:[`
+`,e.jsxs(n.li,{children:[e.jsx(n.code,{children:"Home"}),": Move to the first day of the current month"]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.code,{children:"End"}),": Move to the last day of the current month"]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.code,{children:"Page Up"}),": Move to the same date of the previous month"]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.code,{children:"Page Down"}),": Move to the same date of the next month"]}),`
+`]}),`
+`,e.jsx(t,{label:"Selecting a date or changing view",level:3}),`
+`,e.jsxs(n.ul,{children:[`
+`,e.jsxs(n.li,{children:[e.jsx(n.code,{children:"Enter"}),": Select the currently focused date and close the dropdown"]}),`
+`,e.jsx(n.li,{children:"Typing a valid date format (e.g., yyyy-mm-dd) in the input and pressing Enter will also select the date"}),`
+`]}),`
+`,e.jsx(t,{label:"Navigating to month/year view",level:3}),`
+`,e.jsxs(n.ul,{children:[`
+`,e.jsxs(n.li,{children:[e.jsx(n.code,{children:"Ctrl"})," / ",e.jsx(n.code,{children:"Cmd"})," + ",e.jsx(n.code,{children:"Arrow Up"})," (first press): Switches to month selection view"]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.code,{children:"Ctrl"})," / ",e.jsx(n.code,{children:"Cmd"})," + ",e.jsx(n.code,{children:"Arrow U"}),"p (second press): Switches to year selection view"]}),`
+`,e.jsxs(n.li,{children:["Use ",e.jsx(n.code,{children:"Arrow"})," keys to move within month/year grids"]}),`
+`,e.jsxs(n.li,{children:["Press ",e.jsx(n.code,{children:"Enter"})," to confirm selection and return to the previous view"]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.code,{children:"Ctrl"})," / ",e.jsx(n.code,{children:"Cmd"})," + ",e.jsx(n.code,{children:"Arrow Left"})," / ",e.jsx(n.code,{children:"Arrow Right"}),": Quickly navigate to the previous or next month from date view"]}),`
+`]}),`
+`,e.jsx(t,{label:"Accessibility",level:2}),`
+`,e.jsxs(n.p,{children:["To ensure proper accessibility, the ",e.jsx(n.strong,{children:"Datepicker"})," must be correctly labeled, provide clear guidance on date format and meaningful context when a clearable button is used."]}),`
+`,e.jsx(t,{label:"Always provide an explicit label",level:3}),`
+`,e.jsxs(n.p,{children:["Every ",e.jsx(n.strong,{children:"Datepicker"}),` must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose
+using either `,e.jsx(n.strong,{children:"FormField"})," or a native label tag."]}),`
+`,e.jsx(c,{of:j,sourceState:"shown"}),`
+`,e.jsxs(n.p,{children:[e.jsx(l,{name:a.circleCheck,style:{color:"var(--ods-color-success-500)"}}),"  Screen readers will announce the label, the field and its content."]}),`
+`,e.jsx(t,{label:"Provide guidance on date format",level:3}),`
+`,e.jsxs(n.p,{children:["Since screen readers can only interact with the ",e.jsx(n.strong,{children:"Datepicker"})," input field, it’s important to provide guidance on the expected date format to ensure correct input."]}),`
+`,e.jsx(c,{of:u,sourceState:"shown"}),`
+`,e.jsxs(n.p,{children:[e.jsx(l,{name:a.circleCheck,style:{color:"var(--ods-color-success-500)"}})," Screen readers will announce the label, the field, its content and the helper."]}),`
+`,e.jsx(c,{of:g,sourceState:"shown"}),`
+`,e.jsxs(n.p,{children:[e.jsx(l,{name:a.circleCheck,style:{color:"var(--ods-color-success-500)"}})," Screen readers will announce the label, the field, its content and custom label of focused action."]})]})}function xe(o={}){const{wrapper:n}={...p(),...o.components};return n?e.jsx(n,{...o,children:e.jsx(h,{...o})}):h(o)}export{xe as default};

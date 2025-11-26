@@ -1,0 +1,49 @@
+import{j as e}from"./jsx-runtime-Cfl8ynUo.js";import{useMDXComponents as h}from"./index-ZwkxtaJJ.js";import{t as i,l as r}from"./ods-react60-DssFCbzP.js";import{M as d}from"./index-9orhCFJa.js";import{S as c,O as m,A as p,a as x}from"./switch.stories-gBOpleAp.js";import{A as u}from"./Anatomy-DkXJCwiR.js";import{B as j}from"./Banner-DiJ2utjo.js";import{I as g,B as b}from"./IdentityCard-0vzhW5ZM.js";import{C as o}from"./Canvas-CreDMEws.js";import{E as l}from"./ExternalLink-C0Msq_QQ.js";import{H as t}from"./Heading-eINcjqM4.js";import"./index-jIWwRBLr.js";import"./index-CWkFp9WS-BSIT86NH.js";import"./iframe-BRevKSH1.js";import"./index-DWDEzXrj.js";import"./index-N93khynk.js";import"./index-CXQShRbs.js";import"./index-DrFu-skq.js";import"./index-CqY9YpN0.js";import"./use-locale-context-6s5qsrWI.js";import"./Text-DyiJ5nHV.js";import"./controls-BtiQQn1l.js";import"./Table-BvR76ybm-DzE94PQp.js";import"./Table-u83oGl00.js";import"./TooltipTrigger-CizyLvLy-D53hI2Ct.js";import"./index-blQ1D1fB.js";import"./lz-string-U2heoObX.js";import"./meta-t9Q7ez2Q.js";import"./source-CPEZJ6oD.js";import"./ResetTheme-BVzaMHe3.js";import"./tokens-VHDJ0kGa.js";import"./Link-CIjoG_UN-BDwROQOD.js";function a(n){const s={code:"code",em:"em",li:"li",ol:"ol",p:"p",strong:"strong",...h(),...n.components};return e.jsxs(e.Fragment,{children:[e.jsx(d,{of:c,name:"Documentation"}),`
+`,e.jsx(j,{of:c}),`
+`,e.jsx(s.p,{children:e.jsxs(s.em,{children:["A ",e.jsx(s.strong,{children:"Switch"})," allows users to quickly and easily switch between several states, actions or options in a row."]})}),`
+`,e.jsx(o,{of:m,sourceState:"none"}),`
+`,e.jsx(t,{label:"Overview",level:2}),`
+`,e.jsx(g,{aliases:["Button group","Segmented control","Toggle group"],figmaLink:"https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-10578",githubUrl:"https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/switch",name:"Switch",children:e.jsxs(s.p,{children:["A ",e.jsx(s.strong,{children:"Switch"})," allows users to quickly and easily switch between several states, actions or options in a row."]})}),`
+`,e.jsx(t,{label:"Usage",level:2}),`
+`,e.jsxs(s.p,{children:["A ",e.jsx(s.strong,{children:"Switch"})," is used to switch between multiple states, actions or options (up-to 4)."]}),`
+`,e.jsx(s.p,{children:"It can be used for many use cases such as selecting a state within a group of states or filtering."}),`
+`,e.jsx(t,{label:"Dos & Don'ts",level:3}),`
+`,e.jsx(b,{donts:["- Don't use a Switch for more than 4 options. Prefer Radio Group, Checkbox, or Select instead depending on your use case","- Don't use a Switch for unrelated options, they should belong to a common category or context","- Don't use a Switch if selecting an option does not produce an immediate effect. Use a Checkbox or another control instead","- Don't rely solely on icons, add text for clarity"],dos:["- Use a Switch when the user must choose one active option among 2 to 4 closely related states or actions","- Ensure each Switch item has a clear, descriptive label","- Use a Switch when immediate feedback or real-time filtering is expected upon selection"]}),`
+`,e.jsx(t,{label:"Best Practices in Context",level:3}),`
+`,e.jsx(u,{src:"components/switch/anatomy.png"}),`
+`,e.jsxs(s.ol,{children:[`
+`,e.jsx(s.li,{children:e.jsx(s.strong,{children:"Switch"})}),`
+`,e.jsx(s.li,{children:e.jsx(s.strong,{children:"Active toggle button"})}),`
+`,e.jsx(s.li,{children:e.jsx(s.strong,{children:"Toggle button"})}),`
+`,e.jsx(s.li,{children:e.jsx(s.strong,{children:"Label"})}),`
+`]}),`
+`,e.jsx(t,{label:"Placement",level:2}),`
+`,e.jsxs(s.p,{children:["A ",e.jsx(s.strong,{children:"Switch"}),` can be used in a page when the user needs to select a choice from multiple states or items.
+It may replace two radio buttons or a single checkbox to allow users to choose between several states.`]}),`
+`,e.jsxs(s.p,{children:["By default, the width of a ",e.jsx(s.strong,{children:"Switch"}),` item is defined by the length of content.
+A custom width can be set so all items on the track will have the same size regardless of content length.`]}),`
+`,e.jsx(t,{label:"Behavior",level:2}),`
+`,e.jsxs(s.p,{children:["The user can switch between states by clicking the ",e.jsx(s.strong,{children:"Switch"})," items, and it has an immediate effect."]}),`
+`,e.jsx(t,{label:"Navigation",level:2}),`
+`,e.jsx(t,{label:"Focus Management",level:3}),`
+`,e.jsxs(s.p,{children:["When the ",e.jsx(s.strong,{children:"Switch"})," receives focus, it is set on the currently selected item, or on the first item if none is selected."]}),`
+`,e.jsxs(s.p,{children:["Each individual ",e.jsx(s.strong,{children:"Switch"})," item is focusable unless disabled. A disabled item cannot receive focus or be activated."]}),`
+`,e.jsx(s.p,{children:"Focus remains within the group when navigating between items using arrow keys."}),`
+`,e.jsx(t,{label:"General Keyboard Shortcuts",level:3}),`
+`,e.jsxs(s.p,{children:["Pressing ",e.jsx(s.code,{children:"Tab"})," moves focus to the selected item or the first item in the group."]}),`
+`,e.jsxs(s.p,{children:["Pressing ",e.jsx(s.code,{children:"Shift"})," + ",e.jsx(s.code,{children:"Tab"})," moves focus to the previous focusable element outside the ",e.jsx(s.strong,{children:"Switch"})," group."]}),`
+`,e.jsxs(s.p,{children:["Pressing ",e.jsx(s.code,{children:"Arrow Right"})," or ",e.jsx(s.code,{children:"Arrow Down"})," moves focus to the next item in the group."]}),`
+`,e.jsxs(s.p,{children:["Pressing ",e.jsx(s.code,{children:"Arrow Left"})," or ",e.jsx(s.code,{children:"Arrow Up"})," moves focus to the previous item in the group."]}),`
+`,e.jsxs(s.p,{children:["Pressing ",e.jsx(s.code,{children:"Home"})," (or ",e.jsx(s.code,{children:"fn"})," + ",e.jsx(s.code,{children:"Arrow Left"}),") moves focus to the first item."]}),`
+`,e.jsxs(s.p,{children:["Pressing ",e.jsx(s.code,{children:"End"})," (or ",e.jsx(s.code,{children:"fn"})," + ",e.jsx(s.code,{children:"Arrow Right"}),") moves focus to the last item."]}),`
+`,e.jsxs(s.p,{children:["Pressing ",e.jsx(s.code,{children:"Space"})," or ",e.jsx(s.code,{children:"Enter"})," activates or deactivates the focused item, updating the selection immediately."]}),`
+`,e.jsx(t,{label:"Accessibility",level:2}),`
+`,e.jsxs(s.p,{children:["To ensure proper accessibility, ",e.jsx(s.strong,{children:"Switch"})," must be correctly labeled."]}),`
+`,e.jsx(t,{label:"Always provide an explicit label",level:3}),`
+`,e.jsxs(s.p,{children:["Every ",e.jsx(s.strong,{children:"Switch"}),` must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose,
+using either an `,e.jsx(l,{href:"https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label",children:"aria-label"}),`
+or an `,e.jsx(l,{href:"https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby",children:"aria-labelledby"})," attribute."]}),`
+`,e.jsx(o,{of:p,sourceState:"shown"}),`
+`,e.jsxs(s.p,{children:[e.jsx(i,{name:r.circleCheck,style:{color:"var(--ods-color-success-500)"}})," Screen readers will announce the label and the option information (text, position, selection state)."]}),`
+`,e.jsx(o,{of:x,sourceState:"shown"}),`
+`,e.jsxs(s.p,{children:[e.jsx(i,{name:r.circleCheck,style:{color:"var(--ods-color-success-500)"}})," Screen readers will announce the label and the option information (text, position, selection state)."]})]})}function Y(n={}){const{wrapper:s}={...h(),...n.components};return s?e.jsx(s,{...n,children:e.jsx(a,{...n})}):a(n)}export{Y as default};

@@ -1,0 +1,1 @@
+@layer ods-molecules{._form-field_12ogr_2{--ods-form-field-row-gap: calc(var(--ods-theme-row-gap) / 2);display:flex;flex-direction:column;row-gap:var(--ods-form-field-row-gap)}}@layer ods-molecules{._form-field-error_mbu11_2{color:var(--ods-theme-input-text-color-invalid);font-weight:600}}@layer ods-molecules{._form-field-label_1udkg_2{width:fit-content}}

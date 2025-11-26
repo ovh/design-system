@@ -8,6 +8,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.3.0](https://ovh.github.io/design-system/v19.3.0/?path=/docs/design-system-changelog--page) (2025-11-26)
+[compare](https://github.com/ovh/design-system/compare/v19.2.1...v19.3.0)
+
+### Bug Fixes
+
+* **link:** prevent underline on hover when disabled ([53bbd41](https://github.com/ovh/design-system/commit/53bbd41558e633ab555f666841fce9dc496cd1be))
+
+
+### Features
+
+* **doc:** add css variables on component tech page ([82228ea](https://github.com/ovh/design-system/commit/82228ea53c80426ba53d905d2b34a3079c2de830))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.2.1](https://ovh.github.io/design-system/v19.2.1/?path=/docs/design-system-changelog--page) (2025-10-15)
 [compare](https://github.com/ovh/design-system/compare/v19.2.0...v19.2.1)
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.3.0](https://ovh.github.io/design-system/v19.3.0/?path=/docs/design-system-changelog--page) (2025-11-26)
+[compare](https://github.com/ovh/design-system/compare/v19.2.1...v19.3.0)
+
+### Features
+
+* **doc:** add css variables on component tech page ([82228ea](https://github.com/ovh/design-system/commit/82228ea53c80426ba53d905d2b34a3079c2de830))
+* **storybook:** add dark mode ([67f66b5](https://github.com/ovh/design-system/commit/67f66b59af7504513eb97a0f54d44635d21a0783))
+* **style:** update style to use design tokens ([661df0e](https://github.com/ovh/design-system/commit/661df0e6561be4d08bd68e62d9468c2cb9cbf580))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

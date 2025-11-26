@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.3.0](https://ovh.github.io/design-system/v19.3.0/?path=/docs/design-system-changelog--page) (2025-11-26)
+[compare](https://github.com/ovh/design-system/compare/v19.2.1...v19.3.0)
+
+### Bug Fixes
+
+* **theme-generator:** update design tokens for a better use ([5440285](https://github.com/ovh/design-system/commit/54402851419979ef5bcab4978176cade86013854))
+
+
+### Features
+
+* **doc:** add theme generator tool ([8190bab](https://github.com/ovh/design-system/commit/8190bab2b083b411a779fa9e3c64143d228a989a))
+* **doc:** update design tokens page ([1f1290e](https://github.com/ovh/design-system/commit/1f1290e07d62a0296b0fc692765d0d1efe2c3fc1))
+* **storybook:** add dark mode ([67f66b5](https://github.com/ovh/design-system/commit/67f66b59af7504513eb97a0f54d44635d21a0783))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

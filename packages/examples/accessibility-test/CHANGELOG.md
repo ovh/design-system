@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.3.0](https://ovh.github.io/design-system/v19.3.0/?path=/docs/design-system-changelog--page) (2025-11-26)
+[compare](https://github.com/ovh/design-system/compare/v19.2.1...v19.3.0)
+
+### Features
+
+* **toaster:** implement component ([5eabfb4](https://github.com/ovh/design-system/commit/5eabfb4eaacb7581a7b2901ce5b443e89c163d7a))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

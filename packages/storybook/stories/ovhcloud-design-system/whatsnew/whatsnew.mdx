@@ -9,6 +9,109 @@ import { HOME_TITLE, REACT_COMPONENTS_TITLE, STORY } from '../../../src/constant
 
 <Heading label="What's new ?" level={ 1 } />
 
+<Heading label="v19.3.0" level={ 2 } />
+
+<Heading label="New components:" level={ 3 } />
+
+**Toaster**
+
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.toaster } story={ STORY.documentation }>See Documentation</StorybookLink>
+
+<Heading label="Design updates:" level={ 3 } />
+
+ODS theme design tokens have been reworked to be more semantic.
+It is now easier to understand how each token should be used.
+Each component have been updated accordingly and are now more normalized design-wise.
+Each component now also expose custom tokens that may be used to override rendering on a component-level.
+
+All those changes are the first major step towards a complete reworked theme that aims to provide more consistency, easier customization and understanding.
+
+[DEPRECATED] Previous design tokens should be replaced by the corresponding theme tokens.
+
+**Accordion**
+- Border color has been changed and is now the same for every component states.
+
+**Combobox**
+- `invalid` overlay now uses the critical color.
+
+**File Upload**
+- A more compact version is now available (using `variant` attribute).
+- Existing layout has been updated to be more compact.
+
+**Message**
+- Light messages now have a colored border.
+
+**Range**
+- Track color now is the same as other track elements.
+- Cursor has been changed to default (as in native).
+- Thumb background color change on hover/focus/drag has been removed.
+
+**Select**
+- `invalid` overlay now uses the critical color.
+- Groups are now separated by a border.
+
+**Skeleton**
+- Default background color is now slightly darker.
+
+**Table**
+- Default `min-width` has been removed on mobile view.
+
+**Text**
+- Font size now uses `rem` instead of `px`. This will only impact app where the root element `font-size` is not `16px`.
+
+**Toggle**
+- Hover effect on `off` label has been removed.
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Code**
+- New attribute `highlighter` has been added.
+- Documentation has been updated with how to setup a custom highlighter.
+
+**Datepicker**
+- `value` now also accepts `null` as a value.
+- `DatepickerValueChangeDetail` `value` and `valueAsString` now may be `null`.
+
+**Divider**
+- [DEPRECATED] Color attribute will now always be primary, if you need another color, prefer overriding it using css.
+
+**File Upload**
+- New attribute `variant` has been added.
+
+**Text**
+- New attribute `disabled` has been added.
+- New preset `small` has been added.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Combobox**
+- Clicking another combobox while focused on another one, now correctly closes the first one.
+- Controlled value changed externally is now correctly reflected.
+
+**Datepicker**
+- Clear when controlled now works as expected.
+
+**Link**
+- Disabled links do not have an underline animation when hovered.
+
+**Tabs**
+- `tablist` role now correctly contains only valid children.
+- Now doesn't automatically scroll to the component on render.
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+A new tool has been added to the documentation, the `Theme Generator`. This allows users to experiment with the ODS tokens directly in the storybook. You can preview how each design tokens will impact the components, generate your own color palettes and export/import you custom theme.
+
+ODS documentation is now available as LLM files to help AI tools to better understand our library and its usage.
+
+- Add a theme selector on the top left menu.
+- Implement dark mode documentation.
+- New section `AI Agents` added to the documentation.
+- Design Tokens have been updated and completed with color palettes.
+- All technical pages have been updated with components custom CSS variables.
+- Icon `All` page search control now accepts special character.
+- Update FAQ.
+
 <Heading label="v19.2.1" level={ 2 } />
 
 <Heading label="Feature updates:" level={ 3 } />

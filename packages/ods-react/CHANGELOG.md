@@ -8,6 +8,42 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.3.0](https://ovh.github.io/design-system/v19.3.0/?path=/docs/design-system-changelog--page) (2025-11-26)
+[compare](https://github.com/ovh/design-system/compare/v19.2.1...v19.3.0)
+
+### Bug Fixes
+
+* **combobox:** ensure blur when moving to a different combobox ([a55b63d](https://github.com/ovh/design-system/commit/a55b63d3d63e6e9be91a416bef7786753ae724c8))
+* **combobox:** reflect external value changes ([828199e](https://github.com/ovh/design-system/commit/828199e1ed6b43bf31e2047252fb484c2b548889))
+* **datepicker:** manage null value when controlled ([fb42146](https://github.com/ovh/design-system/commit/fb42146a8805aa990020882713e606397afcb661))
+* **doc:** reset theme for theme generator & isolate Table ([36fbdc8](https://github.com/ovh/design-system/commit/36fbdc8988434bf8e4f777d45fb05aa906d7d67e))
+* **icon:** update e2e test to prevent random failure on CI ([e35e15c](https://github.com/ovh/design-system/commit/e35e15c903ef3057fa436b59635adb8f945876a6))
+* **link:** prevent underline on hover when disabled ([53bbd41](https://github.com/ovh/design-system/commit/53bbd41558e633ab555f666841fce9dc496cd1be))
+* **table:** remove min-width on mobile view ([cdf4d02](https://github.com/ovh/design-system/commit/cdf4d022739d967d37346c607625b9cbd999eb13))
+* **tabs:** ensure role is applied on tab container ([9c5bcfc](https://github.com/ovh/design-system/commit/9c5bcfc2dcff87c8aea0d9be0d5c1e77e2bb3d62))
+* **theme-generator:** update design tokens for a better use ([5440285](https://github.com/ovh/design-system/commit/54402851419979ef5bcab4978176cade86013854))
+
+
+### Features
+
+* **code:** add highlighter attribute ([663d6f1](https://github.com/ovh/design-system/commit/663d6f1166da6d16370dedd663e91836afa82e36))
+* **divider:** deprecate color attribute & update doc with badge ([5ee000e](https://github.com/ovh/design-system/commit/5ee000e0f4170014f65cccd9c9d19db2fbe99697))
+* **doc:** add css variables on component tech page ([82228ea](https://github.com/ovh/design-system/commit/82228ea53c80426ba53d905d2b34a3079c2de830))
+* **storybook:** add dark mode ([67f66b5](https://github.com/ovh/design-system/commit/67f66b59af7504513eb97a0f54d44635d21a0783))
+* **style:** update style to use design tokens ([661df0e](https://github.com/ovh/design-system/commit/661df0e6561be4d08bd68e62d9468c2cb9cbf580))
+* **tabs:** fix lint ([096f084](https://github.com/ovh/design-system/commit/096f08452c31d409b1e7c45af0dc6610c8f667d5))
+* **tabs:** uses manual scroll instead of scrollIntoView to handle horizontal scroll only ([43c93c3](https://github.com/ovh/design-system/commit/43c93c39c60f5cc8fba289a64a6254820d1c0f5c))
+* **text:** add disabled attribute ([78b8b49](https://github.com/ovh/design-system/commit/78b8b495dbdb072522cd6b3ef62871664f0ad6b0))
+* **text:** add support for "small" preset with styling and documentation ([fb18f58](https://github.com/ovh/design-system/commit/fb18f58e5d88a1f9888b2e188369d6864441220e))
+* **toaster:** implement component ([5eabfb4](https://github.com/ovh/design-system/commit/5eabfb4eaacb7581a7b2901ce5b443e89c163d7a))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.2.1](https://ovh.github.io/design-system/v19.2.1/?path=/docs/design-system-changelog--page) (2025-10-15)
 [compare](https://github.com/ovh/design-system/compare/v19.2.0...v19.2.1)
 

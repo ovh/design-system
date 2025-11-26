@@ -8,6 +8,28 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.3.0](https://ovh.github.io/design-system/v19.3.0/?path=/docs/design-system-changelog--page) (2025-11-26)
+[compare](https://github.com/ovh/design-system/compare/v19.2.1...v19.3.0)
+
+### Bug Fixes
+
+* **combobox:** ensure blur when moving to a different combobox ([a55b63d](https://github.com/ovh/design-system/commit/a55b63d3d63e6e9be91a416bef7786753ae724c8))
+* **combobox:** reflect external value changes ([828199e](https://github.com/ovh/design-system/commit/828199e1ed6b43bf31e2047252fb484c2b548889))
+* **datepicker:** manage null value when controlled ([fb42146](https://github.com/ovh/design-system/commit/fb42146a8805aa990020882713e606397afcb661))
+* **theme-generator:** update design tokens for a better use ([5440285](https://github.com/ovh/design-system/commit/54402851419979ef5bcab4978176cade86013854))
+
+
+### Features
+
+* **doc:** add css variables on component tech page ([82228ea](https://github.com/ovh/design-system/commit/82228ea53c80426ba53d905d2b34a3079c2de830))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.2.1](https://ovh.github.io/design-system/v19.2.1/?path=/docs/design-system-changelog--page) (2025-10-15)
 [compare](https://github.com/ovh/design-system/compare/v19.2.0...v19.2.1)
 

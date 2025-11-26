@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.3.0](https://ovh.github.io/design-system/v19.3.0/?path=/docs/design-system-changelog--page) (2025-11-26)
+[compare](https://github.com/ovh/design-system/compare/v19.2.1...v19.3.0)
+
+### Bug Fixes
+
+* **doc:** reset theme for theme generator & isolate Table ([36fbdc8](https://github.com/ovh/design-system/commit/36fbdc8988434bf8e4f777d45fb05aa906d7d67e))
+
+
+### Features
+
+* **doc:** add css variables on component tech page ([82228ea](https://github.com/ovh/design-system/commit/82228ea53c80426ba53d905d2b34a3079c2de830))
+* **text:** add disabled attribute ([78b8b49](https://github.com/ovh/design-system/commit/78b8b495dbdb072522cd6b3ef62871664f0ad6b0))
+* **text:** add support for "small" preset with styling and documentation ([fb18f58](https://github.com/ovh/design-system/commit/fb18f58e5d88a1f9888b2e188369d6864441220e))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

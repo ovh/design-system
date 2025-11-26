@@ -8,6 +8,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.3.0](https://ovh.github.io/design-system/v19.3.0/?path=/docs/design-system-changelog--page) (2025-11-26)
+[compare](https://github.com/ovh/design-system/compare/v19.2.1...v19.3.0)
+
+### Bug Fixes
+
+* **tabs:** ensure role is applied on tab container ([9c5bcfc](https://github.com/ovh/design-system/commit/9c5bcfc2dcff87c8aea0d9be0d5c1e77e2bb3d62))
+
+
+### Features
+
+* **doc:** add css variables on component tech page ([82228ea](https://github.com/ovh/design-system/commit/82228ea53c80426ba53d905d2b34a3079c2de830))
+* **tabs:** fix lint ([096f084](https://github.com/ovh/design-system/commit/096f08452c31d409b1e7c45af0dc6610c8f667d5))
+* **tabs:** uses manual scroll instead of scrollIntoView to handle horizontal scroll only ([43c93c3](https://github.com/ovh/design-system/commit/43c93c39c60f5cc8fba289a64a6254820d1c0f5c))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.2.1](https://ovh.github.io/design-system/v19.2.1/?path=/docs/design-system-changelog--page) (2025-10-15)
 [compare](https://github.com/ovh/design-system/compare/v19.2.0...v19.2.1)
 

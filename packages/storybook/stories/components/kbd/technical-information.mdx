@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/kbd/documentation/cssVariable.json';
+import specificationsKbd from '../../../../ods-react/src/components/kbd/documentation/kbd.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as KbdStories from './kbd.stories';
+
+<Meta of={ KbdStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ KbdStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ KbdStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/kbd/anatomy-tech.png" />
+
+1. **Kbd**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsKbd }
+  of={ KbdStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ KbdStories.Default } sourceState="shown" />

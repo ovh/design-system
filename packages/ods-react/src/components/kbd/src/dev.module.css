@@ -1,0 +1,11 @@
+.custom-kbd {
+  --ods-kbd-border-radius: 16px;
+  --ods-kbd-border-color: #4b0082;
+  --ods-kbd-background-color: #8a2be2;
+  --ods-kbd-padding-horizontal: 8px;
+  --ods-kbd-padding-vertical: 4px;
+
+  letter-spacing: 1px;
+  color: #ffffff;
+  font-weight: bold;
+}

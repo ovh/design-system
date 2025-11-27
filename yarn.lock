@@ -4801,6 +4801,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-kbd@workspace:packages/ods-react/src/components/kbd":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-kbd@workspace:packages/ods-react/src/components/kbd"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-link@workspace:packages/ods-react/src/components/link":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-link@workspace:packages/ods-react/src/components/link"

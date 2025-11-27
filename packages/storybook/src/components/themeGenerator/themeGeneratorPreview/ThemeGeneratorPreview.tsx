@@ -16,6 +16,7 @@ import * as FileUploadStories from '../../../../stories/components/file-upload/f
 import * as FormFieldStories from '../../../../stories/components/form-field/form-field.stories';
 import * as IconStories from '../../../../stories/components/icon/icon.stories';
 import * as InputStories from '../../../../stories/components/input/input.stories';
+import * as KbdStories from '../../../../stories/components/kbd/kbd.stories';
 import * as LinkStories from '../../../../stories/components/link/link.stories';
 import * as MediumStories from '../../../../stories/components/medium/medium.stories';
 import * as MessageStories from '../../../../stories/components/message/message.stories';
@@ -63,6 +64,7 @@ const THEME_STORY_MODULES = {
   FormField: FormFieldStories,
   Icon: IconStories,
   Input: InputStories,
+  Kbd: KbdStories,
   Link: LinkStories,
   Medium: MediumStories,
   Message: MessageStories,
@@ -120,6 +122,7 @@ const THEME_PREVIEW_COMPONENTS: ThemePreviewItem[] = [
   { key: 'FormField', kind: REACT_COMPONENTS_TITLE.formField, label: 'Form Field' },
   { key: 'Icon', kind: REACT_COMPONENTS_TITLE.icon, label: 'Icon' },
   { key: 'Input', kind: REACT_COMPONENTS_TITLE.input, label: 'Input' },
+  { key: 'Kbd', kind: REACT_COMPONENTS_TITLE.kbd, label: 'Kbd' },
   { key: 'Link', kind: REACT_COMPONENTS_TITLE.link, label: 'Link' },
   { key: 'Medium', kind: REACT_COMPONENTS_TITLE.medium, label: 'Medium' },
   { key: 'Message', kind: REACT_COMPONENTS_TITLE.message, label: 'Message' },

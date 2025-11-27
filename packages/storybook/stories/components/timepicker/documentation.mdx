@@ -1,4 +1,4 @@
-import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
+import { ICON_NAME, Icon, Kbd } from '@ovhcloud/ods-react';
 import { Meta } from '@storybook/blocks';
 import * as TimepickerStories from './timepicker.stories';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
@@ -88,35 +88,35 @@ Each individual segment can receive focus and be navigated independently using t
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-Pressing `Tab` moves focus forward through all focusable segments of the Timepicker:
+Pressing <Kbd>Tab</Kbd> moves focus forward through all focusable segments of the Timepicker:
 * Hour field
 * Minute field
 * Second field (if enabled)
 * AM/PM toggle (if 12-hour format)
 * Time zone Select (if present)
 
-Pressing `Shift` + `Tab` moves focus backward through the segments.
+Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus backward through the segments.
 
 When focused on an input segment (hour, minute, second):
 * Typing numeric values replaces the current value
-* Pressing `Arrow Up` increments the value
-* Pressing `Arrow Down` decrements the value
-* Pressing `Backspace` clears the content
-* Pressing `Home` or `fn` + `Arrow Up` increases the value by:
+* Pressing <Kbd>Arrow Up</Kbd> increments the value
+* Pressing <Kbd>Arrow Down</Kbd> decrements the value
+* Pressing <Kbd>Backspace</Kbd> clears the content
+* Pressing <Kbd>Home</Kbd> or <Kbd>fn</Kbd> + <Kbd>Arrow Up</Kbd> increases the value by:
   * 3 units for the hour segment
   * 10 units for minutes and seconds
-* Pressing `End` or `fn` + `Arrow Down` decreases the value by:
+* Pressing <Kbd>End</Kbd> or <Kbd>fn</Kbd> + <Kbd>Arrow Down</Kbd> decreases the value by:
   * 3 units for the hour segment
   * 10 units for minutes and seconds
 
 When focused on the AM/PM toggle:
-* Pressing `Arrow Up` or `Arrow Down` switches between AM and PM
+* Pressing <Kbd>Arrow Up</Kbd> or <Kbd>Arrow Down</Kbd> switches between AM and PM
 
 When focused on the timezone Select, keyboard shortcuts are similar to the Select component:
-* Pressing `Space` or `Arrow Down` opens the dropdown
-* `Arrow` keys navigate options
-* `Enter` or `Tab` selects the option and closes the dropdown
-* Pressing `Escape`closes the dropdown
+* Pressing <Kbd>Space</Kbd> or <Kbd>Arrow Down</Kbd> opens the dropdown
+* <Kbd>Arrow</Kbd> keys navigate options
+* <Kbd>Enter</Kbd> or <Kbd>Tab</Kbd> selects the option and closes the dropdown
+* Pressing <Kbd>Escape</Kbd>closes the dropdown
 
 <Heading label="Accessibility" level={ 2 } />
 

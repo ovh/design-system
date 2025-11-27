@@ -1,3 +1,4 @@
+import { Kbd } from '@ovhcloud/ods-react';
 import { Meta } from '@storybook/blocks';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
@@ -110,17 +111,17 @@ If the **Accordion** is disabled, it does not receive focus and cannot be activa
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-Pressing `Enter` or `Space` on a focused **Accordion** header toggles its expansion or collapse.
+Pressing <Kbd>Enter</Kbd> or <Kbd>Space</Kbd> on a focused **Accordion** header toggles its expansion or collapse.
 
-Pressing `Escape` does not close an expanded **Accordion** section (unless additional custom behavior is implemented).
+Pressing <Kbd>Escape</Kbd> does not close an expanded **Accordion** section (unless additional custom behavior is implemented).
 
 <Heading label="Navigation between sections" level={ 3 } />
 
-If multiple **Accordions** exist, users can navigate between headers using the `Tab` key.
+If multiple **Accordions** exist, users can navigate between headers using the <Kbd>Tab</Kbd> key.
 
-There is no looping between headers: pressing `Tab` on the last header moves focus to the next interactive element outside the Accordion.
+There is no looping between headers: pressing <Kbd>Tab</Kbd> on the last header moves focus to the next interactive element outside the Accordion.
 
-Arrow keys (`Arrow Up` / `Arrow Down`) do not move between **Accordions** by default.
+Arrow keys (<Kbd>Arrow Up</Kbd> / <Kbd>Arrow Down</Kbd>) do not move between **Accordions** by default.
 
 <Heading label="Accessibility" level={ 2 } />
 

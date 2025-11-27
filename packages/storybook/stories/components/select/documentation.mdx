@@ -1,4 +1,4 @@
-import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
+import { ICON_NAME, Icon, Kbd } from '@ovhcloud/ods-react';
 import { Meta } from '@storybook/blocks';
 import * as SelectStories from './select.stories';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
@@ -98,13 +98,13 @@ Disabled **Select** or disabled options cannot receive focus or be interacted wi
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-Pressing `Space`, `Enter`, `Arrow Down` or `Arrow Up` when the **Select** is focused opens the dropdown and highlights the selected or first option.
+Pressing <Kbd>Space</Kbd>, <Kbd>Enter</Kbd>, <Kbd>Arrow Down</Kbd> or <Kbd>Arrow Up</Kbd> when the **Select** is focused opens the dropdown and highlights the selected or first option.
 
 While the dropdown is open:
-* `Arrow Down` moves the highlight to the next option
-* `Arrow Up` moves the highlight to the previous option
-* `Enter` or `Tab` selects the currently highlighted option and closes the dropdown
-* `Escape` closes the dropdown without making a new selection
+* <Kbd>Arrow Down</Kbd> moves the highlight to the next option
+* <Kbd>Arrow Up</Kbd> moves the highlight to the previous option
+* <Kbd>Enter</Kbd> or <Kbd>Tab</Kbd> selects the currently highlighted option and closes the dropdown
+* <Kbd>Escape</Kbd> closes the dropdown without making a new selection
 
 Typing an alphanumeric character (A–Z, a–z) changes focus to the next option starting with that character.
 

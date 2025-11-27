@@ -1,4 +1,4 @@
-import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
+import { ICON_NAME, Icon, Kbd } from '@ovhcloud/ods-react';
 import { Meta } from '@storybook/blocks';
 import * as PaginationStories from './pagination.stories';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
@@ -121,11 +121,11 @@ Disabled navigation Buttons (e.g., “Previous” on the first page) are skipped
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-Pressing `Tab` moves focus forward through all interactive elements in the **Pagination** (Select, Buttons).
+Pressing <Kbd>Tab</Kbd> moves focus forward through all interactive elements in the **Pagination** (Select, Buttons).
 
-Pressing `Shift` + `Tab` moves focus backward.
+Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus backward.
 
-Pressing `Enter` or `Space` on a page button, "Previous", or "Next" triggers the corresponding page change.
+Pressing <Kbd>Enter</Kbd> or <Kbd>Space</Kbd> on a page button, "Previous", or "Next" triggers the corresponding page change.
 
 The "items per page" Select uses the same keyboard shortcuts as the standard Select component.
 

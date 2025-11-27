@@ -1,3 +1,4 @@
+import { Kbd } from '@ovhcloud/ods-react';
 import { Meta } from '@storybook/blocks';
 import * as TabsStories from './tabs.stories';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
@@ -95,17 +96,17 @@ Once a **Tab** is focused, its associated content is also activated.
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-Pressing `Tab` moves focus into or out of the **Tabs** component while keeping the active **Tab** selected.
+Pressing <Kbd>Tab</Kbd> moves focus into or out of the **Tabs** component while keeping the active **Tab** selected.
 
-Pressing `Arrow Right` moves focus to the next **Tab** and activates its content.
+Pressing <Kbd>Arrow Right</Kbd> moves focus to the next **Tab** and activates its content.
 
-Pressing `Arrow Left` moves focus to the previous **Tab** and activates its content.
+Pressing <Kbd>Arrow Left</Kbd> moves focus to the previous **Tab** and activates its content.
 
-Pressing `Home` / `fn` + `Arrow Left` moves focus to the first **Tab** and activates its content.
+Pressing <Kbd>Home</Kbd> / <Kbd>fn</Kbd> + <Kbd>Arrow Left</Kbd> moves focus to the first **Tab** and activates its content.
 
-Pressing `End` / `fn` + `Arrow Right` moves focus to the last **Tab** and activates its content.
+Pressing <Kbd>End</Kbd> / <Kbd>fn</Kbd> + <Kbd>Arrow Right</Kbd> moves focus to the last **Tab** and activates its content.
 
-Pressing `Home` / `End` jumps to the first or last **Tab**, even if these **Tabs** are not currently visible. In this case, the **Tabs** list automatically scrolls to bring the selected **Tab** into view.
+Pressing <Kbd>Home</Kbd> / <Kbd>End</Kbd> jumps to the first or last **Tab**, even if these **Tabs** are not currently visible. In this case, the **Tabs** list automatically scrolls to bring the selected **Tab** into view.
 
 Arrow navigation moves focus to the next or previous **Tab**, even if it is not currently visible. In this case, the **Tabs** list automatically scrolls to bring the focused **Tab** into view.
 

@@ -49,3 +49,10 @@ export const Overview: Story = {
     </>
   ),
 };
+
+export const ThemeGenerator: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Kbd>Cmd</Kbd>
+  ),
+};

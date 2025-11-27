@@ -49,6 +49,7 @@ enum REACT_COMPONENTS_TITLE {
   formField = `${SECTION.reactComponents}/Form Field`,
   icon = `${SECTION.reactComponents}/Icon`,
   input = `${SECTION.reactComponents}/Input`,
+  kbd = `${SECTION.reactComponents}/Kbd`,
   link = `${SECTION.reactComponents}/Link`,
   medium = `${SECTION.reactComponents}/Medium`,
   menu = `${SECTION.reactComponents}/Menu`,

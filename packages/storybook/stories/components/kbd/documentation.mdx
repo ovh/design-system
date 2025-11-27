@@ -1,0 +1,77 @@
+import { Meta } from '@storybook/blocks';
+import * as KbdStories from './kbd.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ KbdStories } name='Documentation' tags={ ['new'] } />
+
+<Banner of={ KbdStories } />
+
+The **Kbd** component is used to display keyboard keys or key combinations, typically for shortcuts or user instructions. It visually distinguishes key inputs from regular text.
+
+<Canvas of={ KbdStories.Overview } sourceState='none' />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ [] }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/kbd"
+              name="Kbd"
+              startingVersion={ 19 }>
+  **Kbd** is a non-interactive component designed to represent keyboard keys or combinations. The purpose of the **Kbd** is to provide a standardized way to format and present key inputs.
+</IdentityCard>
+
+<Heading label="Usage" level={ 2 } />
+
+**Kbd** is commonly used to display single keys (e.g., `Esc`) and keyboard shortcuts (e.g.,`⌘  + S`, `Ctrl + Shift + P`) in:
+
+- Documentation
+- Interactive guides
+- Accessibility section
+
+This component is not interactive and should not be used to trigger any action.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    "Use Kbd as a substitute for clickable button. It must not trigger any action",
+    "Nest Kbd inside other interactive elements",
+    "Use Kbd for decorative text or to stylize regular words",
+    "Add multiple keys into one element",
+    "Display unrealistic or platform-inconsistent combinations",
+    "Use it for icons or non-keyboard symbols"
+  ]}
+  dos={[
+    "Keep combinations consistent with platform conventions (e.g., ⌘ for macOS, Ctrl for Windows/Linux)",
+    "Keep separator usage consistent (using `+`)",
+    "Integrate Kbd inline with instructional text (e.g., `Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save your changes.`",
+    ]}
+/>
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+<Anatomy src="components/kbd/anatomy.png" />
+
+1. **Kbd**
+
+<Heading label="Behavior" level={ 2 } />
+
+**Kbd** has no interactive behavior. It is a purely visual component.
+
+The **Kbd** component adapts to its parent font size.
+
+<Heading label="Navigation" level={ 2 } />
+
+The **Kbd** component is not focusable by default, as it is non-interactive.
+
+<Heading label="Accessibility" level={ 2 } />
+
+This component complies with the <ExternalLink href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/kbd">Kbd HTML element</ExternalLink>.

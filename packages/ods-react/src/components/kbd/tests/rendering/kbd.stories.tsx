@@ -8,7 +8,7 @@ export default {
 export const customStyle = () => (
   <Kbd
     data-testid="custom-style"
-    style={{ height: '42px' }}>
+    style={{ color: '#ff0000' }}>
     Cmd + L
   </Kbd>
 );

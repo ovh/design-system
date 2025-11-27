@@ -10,9 +10,6 @@
     --ods-kbd-text-color: var(--ods-color-neutral-700);
 
     box-sizing: border-box;
-    display: inline-flex;
-    gap: 10px;
-    align-items: center;
     border-width: var(--ods-kbd-border-width);
     border-bottom-width: var(--ods-kbd-border-bottom-width);
     border-style: solid;
@@ -20,7 +17,6 @@
     border-color: var(--ods-kbd-border-color);
     background-color: var(--ods-kbd-background-color);
     padding: var(--ods-kbd-padding-vertical) var(--ods-kbd-padding-horizontal);
-    line-height: 1;
     color: var(--ods-kbd-text-color);
     font-family: var(--ods-theme-font-family-code), monospace;
   }

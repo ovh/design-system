@@ -13,9 +13,9 @@ describe('Kbd rendering', () => {
       await gotoStory(page, 'rendering/custom-style');
 
       const kbd = await page.waitForSelector('[data-testid="custom-style"]');
-      const height = await kbd?.evaluate((el: Element) => el.getBoundingClientRect().height);
+      const color = await kbd?.evaluate((el: Element) => getComputedStyle(el).getPropertyValue('color'));
 
-      expect(height).toBe(42);
+      expect(color).toBe('rgb(255, 0, 0)');
     });
   });
 });

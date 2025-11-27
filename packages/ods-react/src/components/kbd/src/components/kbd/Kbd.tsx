@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import style from './kbd.module.scss';
 
-interface KbdProp extends ComponentPropsWithRef<'span'> {}
+interface KbdProp extends ComponentPropsWithRef<'kbd'> {}
 
 const Kbd: FC<KbdProp> = forwardRef(({
   children,

@@ -1,4 +1,4 @@
-import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
+import { Icon, ICON_NAME, Kbd } from '@ovhcloud/ods-react';
 import { Meta } from '@storybook/blocks';
 import * as ComboboxStories from './combobox.stories';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
@@ -130,29 +130,29 @@ Group titles cannot be selected, clicked and are excluded from search.
 
 <Heading label="Focus management" level={ 3 } />
 
-The Input field can be focused using the `Tab` key. Pressing `Tab` again moves focus to the next element and closes the dropdown.
+The Input field can be focused using the <Kbd>Tab</Kbd> key. Pressing <Kbd>Tab</Kbd> again moves focus to the next element and closes the dropdown.
 
-If the Input field is clearable, pressing `Tab` first moves focus to the clear button, then to the next element.
+If the Input field is clearable, pressing <Kbd>Tab</Kbd> first moves focus to the clear button, then to the next element.
 
-Pressing `Shift` + `Tab` moves focus to the previous interactive element without confirming any item.
+Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus to the previous interactive element without confirming any item.
 
 <Heading label="General keyboard shortcuts" level={ 3 } />
 
-Pressing `Arrow Up/Down` navigates through items in the dropdown.
+Pressing <Kbd>Arrow Up</Kbd>/<Kbd>Arrow Down</Kbd> navigates through items in the dropdown.
 
-Pressing `Backspace` deletes the last character in the Input field (it does not clear the entire field at once).
+Pressing <Kbd>Backspace</Kbd> deletes the last character in the Input field (it does not clear the entire field at once).
 
-Pressing `Enter` selects the hovered item and closes the dropdown.
+Pressing <Kbd>Enter</Kbd> selects the hovered item and closes the dropdown.
 
-Pressing `Escape` closes the dropdown without selection.
+Pressing <Kbd>Escape</Kbd> closes the dropdown without selection.
 
 <Heading label="Multiple selection mode" level={ 4 } />
 
-Pressing `Arrow Left/Right` navigates between selected tags.
+Pressing <Kbd>Arrow Left</Kbd>/<Kbd>Arrow Right</Kbd> navigates between selected tags.
 
-Pressing `Backspace` while focusing a tag will remove it.
+Pressing <Kbd>Backspace</Kbd> while focusing a tag will remove it.
 
-Pressing `Enter` while focusing a tag will remove it.
+Pressing <Kbd>Enter</Kbd> while focusing a tag will remove it.
 
 <Heading label="Accessibility" level={ 2 } />
 

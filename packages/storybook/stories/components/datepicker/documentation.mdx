@@ -1,4 +1,4 @@
-import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
+import { Icon, ICON_NAME, Kbd } from '@ovhcloud/ods-react';
 import { Meta } from '@storybook/blocks';
 import * as DatepickerStories from './datepicker.stories';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
@@ -125,36 +125,36 @@ When the dropdown is closed (via Escape or blur), focus returns to the Datepicke
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-Pressing `Escape` closes the Datepicker dropdown without selecting a date.
+Pressing <Kbd>Escape</Kbd> closes the Datepicker dropdown without selecting a date.
 
-Pressing `Tab` or `Shift` + `Tab` moves focus through dropdown controls when open.
+Pressing <Kbd>Tab</Kbd> or <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus through dropdown controls when open.
 
 <Heading label="Navigating days" level={ 3 } />
 
-- `Arrow Left`: Move to the previous day
-- `Arrow Right`: Move to the next day
-- `Arrow Up`: Move to the same weekday of the previous week
-- `Arrow Down`: Move to the same weekday of the next week
+- <Kbd>Arrow Left</Kbd>: Move to the previous day
+- <Kbd>Arrow Right</Kbd>: Move to the next day
+- <Kbd>Arrow Up</Kbd>: Move to the same weekday of the previous week
+- <Kbd>Arrow Down</Kbd>: Move to the same weekday of the next week
 
 <Heading label="Jumping within the calendar" level={ 3 } />
 
-- `Home`: Move to the first day of the current month
-- `End`: Move to the last day of the current month
-- `Page Up`: Move to the same date of the previous month
-- `Page Down`: Move to the same date of the next month
+- <Kbd>Home</Kbd>: Move to the first day of the current month
+- <Kbd>End</Kbd>: Move to the last day of the current month
+- <Kbd>Page Up</Kbd>: Move to the same date of the previous month
+- <Kbd>Page Down</Kbd>: Move to the same date of the next month
 
 <Heading label="Selecting a date or changing view" level={ 3 } />
 
-- `Enter`: Select the currently focused date and close the dropdown
-- Typing a valid date format (e.g., yyyy-mm-dd) in the input and pressing Enter will also select the date
+- <Kbd>Enter</Kbd>: Select the currently focused date and close the dropdown
+- Typing a valid date format (e.g., yyyy-mm-dd) in the input and pressing <Kbd>Enter</Kbd> will also select the date
 
 <Heading label="Navigating to month/year view" level={ 3 } />
 
-- `Ctrl` / `Cmd` + `Arrow Up` (first press): Switches to month selection view
-- `Ctrl` / `Cmd` + `Arrow U`p (second press): Switches to year selection view
-- Use `Arrow` keys to move within month/year grids
-- Press `Enter` to confirm selection and return to the previous view
-- `Ctrl` / `Cmd` + `Arrow Left` / `Arrow Right`: Quickly navigate to the previous or next month from date view
+- <Kbd>Ctrl</Kbd> / <Kbd>Cmd</Kbd> + <Kbd>Arrow Up</Kbd> (first press): Switches to month selection view
+- <Kbd>Ctrl</Kbd> / <Kbd>Cmd</Kbd> + <Kbd>Arrow Up</Kbd> (second press): Switches to year selection view
+- Use <Kbd>Arrow</Kbd> keys to move within month/year grids
+- Press <Kbd>Enter</Kbd> to confirm selection and return to the previous view
+- <Kbd>Ctrl</Kbd> / <Kbd>Cmd</Kbd> + <Kbd>Arrow Left</Kbd> / <Kbd>Arrow Right</Kbd>: Quickly navigate to the previous or next month from date view
 
 <Heading label="Accessibility" level={ 2 } />
 

@@ -1,4 +1,4 @@
-import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
+import { ICON_NAME, Icon, Kbd } from '@ovhcloud/ods-react';
 import { Meta } from '@storybook/blocks';
 import * as ModalStories from './modal.stories';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
@@ -126,13 +126,13 @@ When the **Modal** is closed, focus returns to the trigger element unless otherw
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-Pressing `Escape` closes the **Modal** (if dismissible)
+Pressing <Kbd>Escape</Kbd> closes the **Modal** (if dismissible)
 
-Pressing `Tab` moves focus forward:
+Pressing <Kbd>Tab</Kbd> moves focus forward:
 * First to the close icon button (if available)
 * Then through any other focusable elements inside the **Modal** (e.g., buttons, inputs)
 
-Pressing `Shift` + `Tab` moves focus backward through the focusable elements.
+Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus backward through the focusable elements.
 
 Once the last focusable element is reached, focus loops back to the first focusable element, ensuring it remains within the **Modal**.
 

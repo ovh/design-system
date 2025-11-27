@@ -1,4 +1,4 @@
-import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
+import { ICON_NAME, Icon, Kbd } from '@ovhcloud/ods-react';
 import { Meta } from '@storybook/blocks';
 import * as PhoneNumberStories from './phone-number.stories';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
@@ -106,24 +106,24 @@ If the country selector is disabled or not rendered, focus starts directly on th
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-Pressing `Tab` moves focus forward:
+Pressing <Kbd>Tab</Kbd> moves focus forward:
 * First to the country selector (if present and enabled)
 * Then to the Phone Number Input field
 
-Pressing `Shift` + `Tab` moves focus backward through these elements.
+Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus backward through these elements.
 
 While focused on the country selector, keyboard shortcuts are similar to the Select component:
-* Pressing `Space` or `Arrow Down` opens the dropdown
-* Pressing `Arrow` keys navigates through the list of countries
-* Pressing `Home`/`fn`+ `Arrow Up` or `End`/`fn` + `Arrow Down` jumps to the first or last option
+* Pressing <Kbd>Space</Kbd> or <Kbd>Arrow Down</Kbd> opens the dropdown
+* Pressing <Kbd>Arrow</Kbd> keys navigates through the list of countries
+* Pressing <Kbd>Home</Kbd>/<Kbd>fn</Kbd>+ <Kbd>Arrow Up</Kbd> or <Kbd>End</Kbd>/<Kbd>fn</Kbd> + <Kbd>Arrow Down</Kbd> jumps to the first or last option
 * Typing letters focuses the first country whose name starts with the typed character
-* Pressing `Enter` or `Tab` selects the focused country and closes the dropdown
-* Pressing `Escape` closes the dropdown without selection
+* Pressing <Kbd>Enter</Kbd> or <Kbd>Tab</Kbd> selects the focused country and closes the dropdown
+* Pressing <Kbd>Escape</Kbd> closes the dropdown without selection
 
 While focused on the Input field:
 * Typing numeric characters enters the phone number
-* Pressing `Backspace` deletes the last character
-* Pressing `Arrow Left` or `Arrow Right` moves the cursor within the input
+* Pressing <Kbd>Backspace</Kbd> deletes the last character
+* Pressing <Kbd>Arrow Left</Kbd> or <Kbd>Arrow Right</Kbd> moves the cursor within the input
 
 <Heading label="Accessibility" level={ 2 } />
 

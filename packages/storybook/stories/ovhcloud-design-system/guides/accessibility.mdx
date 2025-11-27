@@ -1,4 +1,4 @@
-import { Icon, ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
+import { Icon, ICON_NAME, Kbd, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
 import { Meta } from '@storybook/blocks';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
@@ -330,12 +330,12 @@ Use <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/Accessibili
   <MessageIcon name="circle-info" />
 
   <MessageBody>
-    Please note that you should navigate within a radio group using `arrow` keys.
+    Please note that you should navigate within a radio group using <Kbd>Arrow</Kbd> keys.
   </MessageBody>
 </Message>
 
 In the example above, `tabindex="-1"` is applied to all elements except the currently selected one. This is because only one item in a radio group should be focusable at a time.
-Users can navigate between options using the `arrow` keys, rather than the `Tab` key, which moves focus to the next interactive element outside the group.
+Users can navigate between options using the <Kbd>Arrow</Kbd> keys, rather than the <Kbd>Tab</Kbd> key, which moves focus to the next interactive element outside the group.
 
 For more details, see <ExternalLink href="https://www.w3.org/WAI/ARIA/apg/patterns/radio/examples/radio/">Managing focus within components using a roving tabindex</ExternalLink>
 

@@ -1,4 +1,4 @@
-import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
+import { Icon, ICON_NAME, Kbd } from '@ovhcloud/ods-react';
 import { Meta } from '@storybook/blocks';
 import * as DrawerStories from './drawer.stories';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
@@ -95,11 +95,11 @@ When the **Drawer** is closed, focus returns to the trigger element unless overr
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-Pressing `Escape` closes the **Drawer**.
+Pressing <Kbd>Escape</Kbd> closes the **Drawer**.
 
-Pressing `Tab` moves focus forward through the focusable elements inside the **Drawer**.
+Pressing <Kbd>Tab</Kbd> moves focus forward through the focusable elements inside the **Drawer**.
 
-Pressing `Shift` + `Tab` moves focus backward within the **Drawer**.
+Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus backward within the **Drawer**.
 
 Once the last focusable element is reached, focus does not leave the **Drawer** unless it is closed.
 

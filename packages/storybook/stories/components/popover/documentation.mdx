@@ -1,4 +1,4 @@
-import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
+import { Icon, ICON_NAME, Kbd } from '@ovhcloud/ods-react';
 import { Meta } from '@storybook/blocks';
 import { Table } from '@storybook/components';
 import * as PopoverStories from './popover.stories';
@@ -97,11 +97,11 @@ Closing it returns focus to the trigger element.
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-Pressing `Escape` closes the currently opened **Popover**.
+Pressing <Kbd>Escape</Kbd> closes the currently opened **Popover**.
 
-Pressing `Tab` moves focus forward through the focusable elements inside the **Popover**.
+Pressing <Kbd>Tab</Kbd> moves focus forward through the focusable elements inside the **Popover**.
 
-Pressing `Shift` + `Tab` moves focus backward within the **Popover**.
+Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus backward within the **Popover**.
 
 <Heading label="Accessibility" level={ 2 } />
 To ensure proper accessibility, **Popover** component must specify its content nature using appropriate ARIA attributes.

@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/button-group/documentation/cssVariable.json';
+import specificationsButtonGroup from '../../../../ods-react/src/components/button-group/documentation/button-group.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as ButtonGroupStories from './button-group.stories';
+
+<Meta of={ ButtonGroupStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ ButtonGroupStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ ButtonGroupStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/button-group/anatomy-tech.png" />
+
+1. **ButtonGroup**
+2. **ButtonGroupItem**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsButtonGroup }
+  of={ ButtonGroupStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ ButtonGroupStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ ButtonGroupStories.Disabled } sourceState="shown" />
+
+<Heading label="Disabled Item" level={ 3 } />
+
+<Canvas of={ ButtonGroupStories.DisabledItem } sourceState="shown" />
+
+<Heading label="Controlled" level={ 3 } />
+
+<Canvas of={ ButtonGroupStories.Controlled } sourceState="shown" />
+
+<Heading label="Multiple" level={ 3 } />
+
+<Canvas of={ ButtonGroupStories.Multiple } sourceState="shown" />
+
+<Heading label="Size" level={ 3 } />
+
+<Canvas of={ ButtonGroupStories.Size } sourceState="shown" />

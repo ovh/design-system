@@ -4723,6 +4723,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-button-group@workspace:packages/ods-react/src/components/button-group":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-button-group@workspace:packages/ods-react/src/components/button-group"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-button@workspace:packages/ods-react/src/components/button":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-button@workspace:packages/ods-react/src/components/button"

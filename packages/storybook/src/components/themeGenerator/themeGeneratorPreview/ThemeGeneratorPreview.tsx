@@ -4,6 +4,7 @@ import * as AccordionStories from '../../../../stories/components/accordion/acco
 import * as BadgeStories from '../../../../stories/components/badge/badge.stories';
 import * as BreadcrumbStories from '../../../../stories/components/breadcrumb/breadcrumb.stories';
 import * as ButtonStories from '../../../../stories/components/button/button.stories';
+import * as ButtonGroupStories from '../../../../stories/components/button-group/button-group.stories';
 import * as CardStories from '../../../../stories/components/card/card.stories';
 import * as CheckboxStories from '../../../../stories/components/checkbox/checkbox.stories';
 import * as ClipboardStories from '../../../../stories/components/clipboard/clipboard.stories';
@@ -52,6 +53,7 @@ const THEME_STORY_MODULES = {
   Badge: BadgeStories,
   Breadcrumb: BreadcrumbStories,
   Button: ButtonStories,
+  ButtonGroup: ButtonGroupStories,
   Card: CardStories,
   Checkbox: CheckboxStories,
   Clipboard: ClipboardStories,
@@ -110,6 +112,7 @@ const THEME_PREVIEW_COMPONENTS: ThemePreviewItem[] = [
   { key: 'Badge', kind: REACT_COMPONENTS_TITLE.badge, label: 'Badge' },
   { key: 'Breadcrumb', kind: REACT_COMPONENTS_TITLE.breadcrumb, label: 'Breadcrumb' },
   { key: 'Button', kind: REACT_COMPONENTS_TITLE.button, label: 'Button' },
+  { key: 'ButtonGroup', kind: REACT_COMPONENTS_TITLE.buttonGroup, label: 'Button Group' },
   { key: 'Card', kind: REACT_COMPONENTS_TITLE.card, label: 'Card' },
   { key: 'Checkbox', kind: REACT_COMPONENTS_TITLE.checkbox, label: 'Checkbox' },
   { key: 'Clipboard', kind: REACT_COMPONENTS_TITLE.clipboard, label: 'Clipboard' },

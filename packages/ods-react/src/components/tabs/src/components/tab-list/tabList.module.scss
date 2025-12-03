@@ -1,11 +1,17 @@
 @use '../../../../../style/button';
+@use '../../../../../style/font';
 @use '../../../../../style/scroll';
 
 $tab-list-border-bottom-size: 2px;
 
 @layer ods-molecules {
   .tab-list {
+    --ods-tab-list-background-color-switch: var(--ods-color-neutral-050);
     --ods-tab-list-border-color: var(--ods-color-neutral-100);
+    --ods-tab-list-border-radius-switch-md: calc(var(--ods-theme-border-radius) * 1.25);
+    --ods-tab-list-border-radius-switch-sm: calc(var(--ods-theme-border-radius) * 0.75);
+    --ods-tab-list-border-radius-switch-xs: calc(var(--ods-theme-border-radius) / 2);
+    --ods-tab-list-border-width: #{$tab-list-border-bottom-size};
 
     display: flex;
     position: relative;
@@ -25,11 +31,17 @@ $tab-list-border-bottom-size: 2px;
         bottom: 0;
         transition: opacity ease .3s;
         opacity: 0;
-        z-index: 1;
+        z-index: 10;
         width: 60px;
         height: 100%;
         content: '';
         pointer-events: none;
+      }
+
+      &--xs {
+        [data-ods="button"] {
+          font-size: font.px-to-rem(10px);
+        }
       }
     }
 
@@ -38,9 +50,20 @@ $tab-list-border-bottom-size: 2px;
         background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
       }
 
+      &--md::after {
+        left: button.$ods-button-size-md;
+      }
+
+      &--sm::after {
+        left: button.$ods-button-size-sm;
+      }
+
+      &--xs::after {
+        left: button.$ods-button-size-xs;
+      }
+
       &--active {
         &::after {
-          left: button.$ods-button-size-xs;
           opacity: 1;
         }
       }
@@ -51,34 +74,66 @@ $tab-list-border-bottom-size: 2px;
         background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
       }
 
+      &--md::after {
+        right: button.$ods-button-size-md;
+      }
+
+      &--sm::after {
+        right: button.$ods-button-size-sm;
+      }
+
+      &--xs::after {
+        right: button.$ods-button-size-xs;
+      }
+
       &--active {
         &::after {
-          right: button.$ods-button-size-xs;
           opacity: 1;
         }
       }
     }
 
     &__container {
+      $container: &;
+
       @include scroll.hide-scrollbar();
 
       display: inline-block;
       position: relative;
-      width: 100%;
       overflow: auto hidden;
       white-space: nowrap;
 
-      &::after {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        border-bottom: solid $tab-list-border-bottom-size var(--ods-tab-list-border-color);
-        content: '';
+      &--default {
+        width: 100%;
+
+        &::after {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          border-bottom: solid var(--ods-tab-list-border-width) var(--ods-tab-list-border-color);
+          content: '';
+        }
+      }
+
+      &--switch {
+        background-color: var(--ods-tab-list-background-color-switch);
+
+        &#{$container}--md {
+          border-radius: var(--ods-tab-list-border-radius-switch-md);
+        }
+
+        &#{$container}--sm {
+          border-radius: var(--ods-tab-list-border-radius-switch-sm);
+        }
+
+        &#{$container}--xs {
+          border-radius: var(--ods-tab-list-border-radius-switch-xs);
+        }
       }
 
       &__tabs {
-        display: flex;
+        display: inline-flex;
       }
     }
   }

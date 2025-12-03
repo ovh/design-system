@@ -1,4 +1,4 @@
-import { type BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
+import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';
 import { addons } from '@storybook/manager-api';
 import classNames from 'classnames';
 import React from 'react';
@@ -10,12 +10,23 @@ import { light } from './ods.theme';
 import styles from './manager.module.css';
 
 function renderLabel(name: string, tags: string[], isDoc: boolean) {
-  let badge = '';
+  let badge;
 
   if (tags.indexOf('beta') > -1) {
-    badge = 'beta';
+    badge = {
+      color: BADGE_COLOR.beta,
+      label: 'beta',
+    }
   } else if (tags.indexOf('new') > -1) {
-    badge = 'new';
+    badge = {
+      color: BADGE_COLOR.new,
+      label: 'new',
+    }
+  } else if (tags.indexOf('deprecated') > -1) {
+    badge = {
+      color: BADGE_COLOR.warning,
+      label: 'deprecated',
+    }
   }
 
   if (!badge) {
@@ -33,9 +44,9 @@ function renderLabel(name: string, tags: string[], isDoc: boolean) {
 
       <Badge
         className={ styles['label__badge'] }
-        color={ badge as BADGE_COLOR }
+        color={ badge.color }
         size="sm">
-        { badge.toUpperCase() }
+        { badge.label.toUpperCase() }
       </Badge>
     </div>
   );

@@ -1,4 +1,6 @@
 import { type JSX, type ReactNode, type RefObject, createContext, useContext, useState } from 'react';
+import { type TabsSize } from '../constants/tabs-size';
+import { type TabsVariant } from '../constants/tabs-variant';
 
 interface TabsValueChangeEvent {
   value: string,
@@ -14,13 +16,25 @@ interface TabsRootProp {
    */
   onValueChange?: (event: TabsValueChangeEvent) => void,
   /**
+   * The size preset to use.
+   */
+  size?: TabsSize,
+  /**
    * The controlled value of the selected tab.
    */
   value?: string,
   /**
+   * The variant preset to use.
+   */
+  variant?: TabsVariant,
+  /**
    * Whether the component displays navigation arrows around the tabs.
    */
   withArrows?: boolean,
+}
+
+interface TabsProviderProp extends Pick<TabsRootProp, 'size' | 'variant' | 'withArrows'> {
+  children: ReactNode;
 }
 
 type TabsContextType = Omit<TabsProviderProp, 'children'> & {
@@ -28,17 +42,24 @@ type TabsContextType = Omit<TabsProviderProp, 'children'> & {
   setScrollContainerRef?: (ref: RefObject<HTMLElement>) => void;
 }
 
-interface TabsProviderProp extends Pick<TabsRootProp, 'withArrows'> {
-  children: ReactNode;
-}
-
 const TabsContext = createContext<TabsContextType>({});
 
-function TabsProvider({ children, withArrows }: TabsProviderProp): JSX.Element {
+function TabsProvider({
+  children,
+  size,
+  variant,
+  withArrows,
+}: TabsProviderProp): JSX.Element {
   const [scrollContainerRef, setScrollContainerRef] = useState<RefObject<HTMLElement> | null>(null);
 
   return (
-    <TabsContext.Provider value={{ scrollContainerRef, setScrollContainerRef, withArrows }}>
+    <TabsContext.Provider value={{
+      scrollContainerRef,
+      setScrollContainerRef,
+      size,
+      variant,
+      withArrows,
+    }}>
       { children }
     </TabsContext.Provider>
   );

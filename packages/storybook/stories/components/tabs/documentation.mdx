@@ -41,11 +41,14 @@ They can also be used to filter content via some common denominator.
     '- Don\'t overload the interface with too many tabs. Use dropdowns if you need more than 5 tabs',
     '- Don\'t use long or verbose labels',
     '- Don\'t use external links or actions as tab triggers, Tabs should only control the visibility of in-page content',
+    '- Avoid using the switch variant for main navigation or complex page segmentation. Prefer the default Tabs for those cases instead',
   ]}
   dos={[
     '- Use Tabs to group related content under the same page when it fits in a shared context',
     '- Keep Tab labels short, clear, and scannable, use nouns or very short phrases (1–3 words max)',
     '- Use Tabs for horizontal navigation, not hierarchical structure or progressive steps',
+    '- Do use default Tabs for main navigation',
+    '- Do use switch variant when Tabs act as a mode selector or view switcher (e.g., toggling between "List" and "Grid" views)',
   ]}
 />
 
@@ -85,6 +88,19 @@ When at the first tab, the left button is displayed but disabled.
 When at the last tab, the right button is displayed but disabled.
 
 Scroll buttons do not affect tab selection. They only change the visible portion of the **Tabs** list.
+
+<Heading label="Variation" level={ 2 } />
+
+<Heading label="Default (standard Tabs)" level={ 3 } />
+
+Used for displaying and organizing related content within the same page or view.
+The default **Tabs** variant follows the standard horizontal layout, with a clear underline or border to indicate the active state.
+It is ideal for primary navigation within a section or module.
+
+<Heading label="Switch (sub-navigation)" level={ 3 } />
+
+The switch variant is visually distinct of **Tabs**, designed for switching between sub-views or modes within the same context.
+It behaves as a lightweight navigation switch between views.
 
 <Heading label="Navigation" level={ 2 } />
 

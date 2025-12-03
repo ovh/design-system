@@ -1,6 +1,6 @@
 import { ToggleGroup, type ToggleGroupValueChangeDetails } from '@ark-ui/react/toggle-group';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect } from 'react';
 import { SWITCH_SIZE, type SwitchSize } from '../../constants/switch-size';
 import style from './switch.module.scss';
 
@@ -40,6 +40,10 @@ const Switch: FC<SwitchProp> = forwardRef(({
   value,
   ...props
 }, ref): JSX.Element => {
+  useEffect(() => {
+    console.warn('[DEPRECATED]: Switch component is not recommended anymore and will be removed in a next major release. Check the documentation for correct alternative.');
+  }, []);
+
   function onSwitchValueChange(detail: ToggleGroupValueChangeDetails): void {
     if (onValueChange) {
       onValueChange({ value: detail.value[0] });

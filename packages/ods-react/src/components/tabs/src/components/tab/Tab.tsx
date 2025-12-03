@@ -18,7 +18,7 @@ const Tab: FC<TabProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { focusedValue } = useTabsContext();
-  const { scrollContainerRef } = useTabs();
+  const { scrollContainerRef, size, variant } = useTabs();
   const innerRef = useRef<HTMLButtonElement>(null);
 
   useImperativeHandle(ref, () => innerRef.current!, [innerRef]);
@@ -43,7 +43,12 @@ const Tab: FC<TabProp> = forwardRef(({
 
   return (
     <Tabs.Trigger
-      className={ classNames(style['tab'], className) }
+      className={ classNames(
+        style['tab'],
+        style[`tab--${size}`],
+        style[`tab--${variant}`],
+        className,
+      )}
       data-ods="tab"
       ref={ innerRef }
       value={ value }

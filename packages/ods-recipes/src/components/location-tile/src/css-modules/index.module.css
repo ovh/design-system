@@ -1,0 +1,17 @@
+.location-tile {
+  display: inline-flex;
+  flex-flow: column;
+  row-gap: var(--ods-theme-row-gap);
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+}
+
+.location-tile__selection {
+  display: flex;
+  flex-flow: row;
+  column-gap: var(--ods-theme-column-gap);
+  align-items: center;
+}
+
+.location-tile__delivery {
+  color: var(--ods-theme-success-color);
+}

@@ -9,6 +9,8 @@
     "packages/examples/*",
     "packages/ods-react",
     "packages/ods-react/src/components/*",
+    "packages/ods-recipes",
+    "packages/ods-recipes/src/components/*",
     "packages/storybook",
     "packages/themes"
   ],

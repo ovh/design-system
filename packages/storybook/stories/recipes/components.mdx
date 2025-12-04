@@ -5,16 +5,34 @@ import { Heading } from '../../src/components/heading/Heading';
 import { NoToC } from '../../src/components/noToC/NoToC';
 import * as Stories from './components.stories';
 
+import { Recipes } from './Recipes';
+
+[//]: # (import { RecipeLocationTile } from './demo';)
+
+[//]: # (TODO extract recipes in separate private project, with sub servers as ods-react component and use it here as dep)
+
 <NoToC />
 
-<Meta title="Recipes/Components" />
+<Meta
+  tags={ ['new'] }
+  title="Recipes/Components" />
 
 <Banner
   label="Components"
   section="Recipes" />
 
-<Heading label="Config Tiles" level={ 3 } />
+Search engine with filters
 
-<Canvas of={ Stories.ConfigTileQuantity } sourceState="shown" />
+[//]: # (<Test of={ Stories.LocationTile } />)
 
-<Canvas of={ Stories.LocationTile } sourceState="shown" />
+[//]: # (<RecipeLocationTile />)
+
+<Recipes />
+
+[//]: # (<Heading label="Config Tiles" level={ 3 } />)
+
+[//]: # ()
+[//]: # (<Canvas of={ Stories.ConfigTileQuantity } sourceState="shown" />)
+
+[//]: # ()
+[//]: # (<Canvas of={ Stories.LocationTile } sourceState="shown" />)

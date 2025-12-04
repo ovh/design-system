@@ -5014,6 +5014,38 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-recipes-dummy-example@workspace:packages/ods-recipes/src/components/dummy-example":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-dummy-example@workspace:packages/ods-recipes/src/components/dummy-example"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-recipes-location-title@workspace:packages/ods-recipes/src/components/location-tile":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-location-title@workspace:packages/ods-recipes/src/components/location-tile"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-recipes@19.3.0, @ovhcloud/ods-recipes@workspace:packages/ods-recipes":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes@workspace:packages/ods-recipes"
+  dependencies:
+    "@ovhcloud/ods-react": 19.3.0
+    "@ovhcloud/ods-themes": 19.3.0
+    "@types/react": 18.2.56
+    "@types/react-dom": 18.2.25
+    "@vitejs/plugin-react": 4.3.4
+    react: 18.2.0
+    react-dom: 18.2.0
+    sass: 1.71.0
+    ts-node: 10.9.2
+    typescript: 5.3.3
+    vite: 6.2.0
+    vite-plugin-dts: 4.5.0
+    vite-plugin-lib-inject-css: 2.2.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-storybook@workspace:packages/storybook":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-storybook@workspace:packages/storybook"
@@ -5022,6 +5054,7 @@ __metadata:
     "@ark-ui/react": 5.25.1
     "@fluentui/storybook-llms-extractor": 0.0.3
     "@ovhcloud/ods-react": 19.3.0
+    "@ovhcloud/ods-recipes": 19.3.0
     "@ovhcloud/ods-themes": 19.3.0
     "@storybook/addon-essentials": 8.6.12
     "@storybook/addon-links": 8.6.12

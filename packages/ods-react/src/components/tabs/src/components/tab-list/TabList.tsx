@@ -4,6 +4,7 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useCallback,
 import { debounce } from '../../../../../utils/debounce';
 import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
+import { TABS_VARIANT } from '../../constants/tabs-variant';
 import { useTabs } from '../../contexts/useTabs';
 import style from './tabList.module.scss';
 
@@ -14,10 +15,11 @@ const TabList: FC<TabListProp> = forwardRef(({
   className,
   ...props
 }, ref): JSX.Element => {
-  const { withArrows, setScrollContainerRef } = useTabs();
+  const { setScrollContainerRef, size, variant, withArrows } = useTabs();
   const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(false);
   const [isRightButtonDisabled, setIsRightButtonDisabled] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const arrowSize = variant === TABS_VARIANT.default ? BUTTON_SIZE.xs : size;
 
   useEffect(() => {
     if (setScrollContainerRef) {
@@ -27,7 +29,7 @@ const TabList: FC<TabListProp> = forwardRef(({
 
   const updateScrollButtonState = useCallback(() => {
     setIsLeftButtonDisabled(scrollRef.current ? scrollRef.current.scrollLeft === 0 : false);
-    setIsRightButtonDisabled(scrollRef.current ? scrollRef.current.scrollLeft === scrollRef.current.scrollWidth - scrollRef.current.offsetWidth : false);
+    setIsRightButtonDisabled(scrollRef.current ? Math.ceil(scrollRef.current.scrollLeft) >= scrollRef.current.scrollWidth - scrollRef.current.offsetWidth : false);
   }, []);
 
   const debouncedUpdateScrollButtonState = useMemo(() => {
@@ -73,7 +75,10 @@ const TabList: FC<TabListProp> = forwardRef(({
 
   return (
     <div
-      className={ classNames(style['tab-list'], className) }
+      className={ classNames(
+        style['tab-list'],
+        className,
+      )}
       data-ods="tab-list"
       ref={ ref }
       { ...props }>
@@ -81,12 +86,13 @@ const TabList: FC<TabListProp> = forwardRef(({
         withArrows &&
         <div className={ classNames(
           style['tab-list__left-arrow'],
+          style[`tab-list__left-arrow--${arrowSize}`],
           { [style['tab-list__left-arrow--active']]: !isLeftButtonDisabled },
         )}>
           <Button
             disabled={ isLeftButtonDisabled }
             onClick={ onLeftScrollClick }
-            size={ BUTTON_SIZE.xs }
+            size={ arrowSize }
             tabIndex={ -1 }
             variant={ BUTTON_VARIANT.ghost }>
             <Icon name={ ICON_NAME.chevronLeft } />
@@ -95,7 +101,11 @@ const TabList: FC<TabListProp> = forwardRef(({
       }
 
       <div
-        className={ style['tab-list__container'] }
+        className={ classNames(
+          style['tab-list__container'],
+          style[`tab-list__container--${size}`],
+          style[`tab-list__container--${variant}`],
+        )}
         onScroll={ debouncedUpdateScrollButtonState }
         ref={ scrollRef }
         tabIndex={ -1 }>
@@ -108,12 +118,13 @@ const TabList: FC<TabListProp> = forwardRef(({
         withArrows &&
         <div className={ classNames(
           style['tab-list__right-arrow'],
+          style[`tab-list__right-arrow--${arrowSize}`],
           { [style['tab-list__right-arrow--active']]: !isRightButtonDisabled },
         )}>
           <Button
             disabled={ isRightButtonDisabled }
             onClick={ onRightScrollClick }
-            size={ BUTTON_SIZE.xs }
+            size={ arrowSize }
             tabIndex={ -1 }
             variant={ BUTTON_VARIANT.ghost }>
             <Icon name={ ICON_NAME.chevronRight } />

@@ -11,6 +11,7 @@ const meta: Meta<SwitchProp> = {
   argTypes: excludeFromDemoControls(['defaultValue', 'onValueChange', 'value']),
   component: Switch,
   subcomponents: { SwitchItem },
+  tags: ['deprecated'],
   title: 'React Components/Switch',
 };
 

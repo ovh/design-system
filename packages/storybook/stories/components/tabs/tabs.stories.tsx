@@ -1,12 +1,11 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Tabs, TabList, Tab, TabContent, type TabsProp, type TabsValueChangeEvent } from '../../../../ods-react/src/components/tabs/src';
+import { TABS_SIZE, TABS_SIZES, TABS_VARIANT, TABS_VARIANTS, Tabs, TabList, Tab, TabContent, type TabsProp, type TabsValueChangeEvent } from '../../../../ods-react/src/components/tabs/src';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 
 type Story = StoryObj<TabsProp>;
-// type DemoArg = Partial<TabListProp>;
 
 const meta: Meta<TabsProp> = {
   component: Tabs,
@@ -20,8 +19,8 @@ export default meta;
 export const Demo: Story = {
   render: (arg) => (
     <Tabs
-      defaultValue='tab1'
-      withArrows={ arg.withArrows }>
+      defaultValue="tab1"
+      { ...arg }>
       <TabList >
         <Tab value="tab1">Tab 1</Tab>
         <Tab value="tab2">Tab 2</Tab>
@@ -57,6 +56,22 @@ export const Demo: Story = {
     </Tabs>
   ),
   argTypes: orderControls({
+    size: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: { summary: 'TABS_SIZE' }
+      },
+      control: { type: 'select' },
+      options: TABS_SIZES,
+    },
+    variant: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: { summary: 'TABS_VARIANT' }
+      },
+      control: { type: 'select' },
+      options: TABS_VARIANTS,
+    },
     withArrows: {
       table: {
         category: CONTROL_CATEGORY.design,
@@ -120,7 +135,7 @@ export const Default: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Tabs defaultValue='tab1'>
+    <Tabs defaultValue="tab1">
       <TabList>
         <Tab value="tab1">Tab 1</Tab>
         <Tab value="tab2">Tab 2</Tab>
@@ -164,6 +179,70 @@ export const Overflow: Story = {
         </TabList>
       </Tabs>
     </div>
+  ),
+};
+
+export const Size: Story = {
+  globals: {
+    imports: `import { TABS_SIZE, TABS_VARIANT, Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <p>MD</p>
+      <Tabs
+        defaultValue="tab1"
+        size={ TABS_SIZE.md }
+        variant={ TABS_VARIANT.switch }>
+        <TabList>
+          <Tab value="tab1">Tab 1</Tab>
+          <Tab value="tab2">Tab 2</Tab>
+          <Tab value="tab3">Tab 3</Tab>
+        </TabList>
+      </Tabs>
+
+      <p>SM</p>
+      <Tabs
+        defaultValue="tab1"
+        size={ TABS_SIZE.sm }
+        variant={ TABS_VARIANT.switch }>
+        <TabList>
+          <Tab value="tab1">Tab 1</Tab>
+          <Tab value="tab2">Tab 2</Tab>
+          <Tab value="tab3">Tab 3</Tab>
+        </TabList>
+      </Tabs>
+
+      <p>XS</p>
+      <Tabs
+        defaultValue="tab1"
+        size={ TABS_SIZE.xs }
+        variant={ TABS_VARIANT.switch }>
+        <TabList>
+          <Tab value="tab1">Tab 1</Tab>
+          <Tab value="tab2">Tab 2</Tab>
+          <Tab value="tab3">Tab 3</Tab>
+        </TabList>
+      </Tabs>
+    </>
+  ),
+};
+
+export const Variant: Story = {
+  globals: {
+    imports: `import { TABS_VARIANT, Tabs, TabList, Tab } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Tabs
+      defaultValue="tab1"
+      variant={ TABS_VARIANT.switch }>
+      <TabList>
+        <Tab value="tab1">Tab 1</Tab>
+        <Tab value="tab2">Tab 2</Tab>
+        <Tab value="tab3">Tab 3</Tab>
+      </TabList>
+    </Tabs>
   ),
 };
 

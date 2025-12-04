@@ -6,6 +6,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { Deprecated } from './Deprecated';
 import * as SwitchStories from './switch.stories';
 
 <Meta of={ SwitchStories } name="Technical information" />
@@ -15,6 +16,8 @@ import * as SwitchStories from './switch.stories';
 <Heading label="Overview" level={ 2 } />
 
 <Canvas of={ SwitchStories.Overview } sourceState="none" />
+
+<Deprecated />
 
 <Heading label="Anatomy" level={ 2 } />
 

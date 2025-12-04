@@ -1,0 +1,51 @@
+{
+  "name": "@ovhcloud/ods-recipes",
+  "version": "19.3.0",
+  "private": true,
+  "description": "ODS Recipes",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/ods-recipes.js"
+    },
+    "./json": {
+      "default": "./dist/ods-recipes.json"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build:prod": "rimraf dist && tsc -b && vite build",
+    "clean": "rimraf dist",
+    "generate:json": "node scripts/generate-recipes-json.js",
+    "lint:scss": "stylelint 'src/style/*.scss'",
+    "lint:ts": "eslint '{src,tests}/!(components)/**/*.{ts,tsx}'",
+    "test:spec": "jest --passWithNoTests",
+    "test:spec:ci": "npm run test:spec"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-react": "19.3.0",
+    "@ovhcloud/ods-themes": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.56",
+    "@types/react-dom": "18.2.25",
+    "@vitejs/plugin-react": "4.3.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "1.71.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.3.3",
+    "vite": "6.2.0",
+    "vite-plugin-dts": "4.5.0",
+    "vite-plugin-lib-inject-css": "2.2.1"
+  }
+}

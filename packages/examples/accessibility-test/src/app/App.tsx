@@ -4,6 +4,7 @@ import {
   Badge,
   Breadcrumb, BreadcrumbItem, BreadcrumbLink,
   Button,
+  ButtonGroup, ButtonGroupItem,
   Card,
   Checkbox, CheckboxControl, CheckboxLabel,
   Clipboard, ClipboardControl, ClipboardTrigger,
@@ -247,6 +248,19 @@ function App(): ReactElement {
           <Button color={ BUTTON_COLOR.primary } size="sm" variant={ BUTTON_VARIANT.outline }>Primary</Button>
           <Button color={ BUTTON_COLOR.success } size="sm" variant={ BUTTON_VARIANT.outline }>Success</Button>
           <Button color={ BUTTON_COLOR.warning } size="sm" variant={ BUTTON_VARIANT.outline }>Warning</Button>
+        </section>
+
+        <section>
+          <h1>Button Group</h1>
+
+          <ButtonGroup>
+            <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+            <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+            <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+            <ButtonGroupItem value="custom">
+              <Icon name={ ICON_NAME.calendar } /> Custom
+            </ButtonGroupItem>
+          </ButtonGroup>
         </section>
 
         <section>

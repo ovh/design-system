@@ -34,6 +34,7 @@ enum REACT_COMPONENTS_TITLE {
   badge = `${SECTION.reactComponents}/Badge`,
   breadcrumb = `${SECTION.reactComponents}/Breadcrumb`,
   button = `${SECTION.reactComponents}/Button`,
+  buttonGroup = `${SECTION.reactComponents}/Button Group`,
   card = `${SECTION.reactComponents}/Card`,
   cart = `${SECTION.reactComponents}/Cart`,
   checkbox = `${SECTION.reactComponents}/Checkbox`,

@@ -1,0 +1,115 @@
+import { Kbd } from '@ovhcloud/ods-react';
+import { Meta } from '@storybook/blocks';
+import * as ButtonGroupStories from './button-group.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ ButtonGroupStories } name='Documentation' tags={ ['new'] } />
+
+<Banner of={ ButtonGroupStories } />
+
+<Canvas of={ ButtonGroupStories.Overview } sourceState="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ [] }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/lllHUGUkhU6rZKAracs1Ig/ODS---UI-Kit"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/button-group"
+              name="ButtonGroup"
+              startingVersion={ 19 }>
+  The **Button Group** component arranges multiple related button elements into a single, cohesive container.
+  It enables users to make selections from a set of related options, either allowing one or multiple active states depending on configuration.
+</IdentityCard>
+
+<Heading label="Usage" level={ 2 } />
+
+Use a **Button Group** when multiple buttons represent a set of related options or actions.
+
+It is commonly used for:
+- Toggle sets for text formatting or styling.
+- Filtering or grouping options within a toolbar.
+- Segmented controls in compact layouts.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    '- Group unrelated actions together',
+    '- Mix icon-only and text-only buttons inconsistently',
+    '- Overcrowd toolbars with too many grouped options',
+  ]}
+  dos={[
+    '- Use Button Group for logically related actions',
+    '- Keep labels short',
+    '- Use single selection for mutually exclusive choices',
+    '- Use multiple selection when combined states are allowed',
+  ]}
+/>
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+<Anatomy src="components/button-group/anatomy.png" />
+
+1. **ButtonGroup**
+2. **Inactive buttons**
+3. **Active buttons**
+
+<Heading label="Behavior" level={ 2 } />
+
+**Button Group** buttons can be focused and triggered.
+**Button Group** or its buttons can be disabled.
+
+<Heading label="Single Selection" level={ 3 } />
+
+Only one button in the group can be selected at a time.
+
+Selecting a new button automatically deselects the previously selected one.
+
+<Heading label="Multiple Selection" level={ 3 } />
+
+Several buttons can be selected simultaneously.
+
+Each button toggles independently between selected and unselected states.
+
+<Heading label="Unselected State" level={ 3 } />
+
+It may be allowed that no button is selected at all, when the user can clear all selections (e.g., "No filter applied").
+
+<Heading label="Navigation" level={ 2 } />
+
+<Heading label="Focus Management" level={ 3 } />
+
+When the **Button Group** receives focus, it is set on the first button.
+
+Disabled buttons are skipped in the focus order and cannot be activated.
+
+Focus remains within the group when navigating between items using arrow keys.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing <Kbd>Tab</Kbd> moves focus to the first button in the group.
+
+Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus to the previous focusable element outside the **Button Group**.
+
+Pressing <Kbd>Arrow Right</Kbd> moves focus to the next button in the group.
+
+Pressing <Kbd>Arrow Left</Kbd> moves focus to the previous item in the group.
+
+Pressing <Kbd>Home</Kbd> (or <Kbd>fn</Kbd> + <Kbd>Arrow Left</Kbd>) moves focus to the first button.
+
+Pressing <Kbd>End</Kbd> (or <Kbd>fn</Kbd> + <Kbd>Arrow Right</Kbd>) moves focus to the last button.
+
+Pressing <Kbd>Space</Kbd> or <Kbd>Enter</Kbd> activates or deactivates the focused button, updating the selection immediately.
+
+<Heading label="Accessibility" level={ 2 } />
+
+The **Button Group** component handles by itself the accessibility requirements regarding the control grouping.
+
+Though you need to ensure that each of your items follows the
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.button } story={ STORY.documentation }>Button Accessibility Best Practices</StorybookLink>.

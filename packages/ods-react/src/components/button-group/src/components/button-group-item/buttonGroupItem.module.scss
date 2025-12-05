@@ -1,0 +1,51 @@
+$ods-button-group-item-z-index: 1;
+
+@layer ods-molecules {
+  .button-group-item {
+    --ods-button-group-item-background-color-checked-disabled: var(--ods-color-neutral-500);
+
+    z-index: $ods-button-group-item-z-index;
+
+    &:first-child {
+      margin-inline-start: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:not(:first-child) {
+      margin-inline-start: -1px;
+
+      &:not(:last-child) {
+        border-radius: 0;
+      }
+    }
+
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &:hover,
+    &[data-focus],
+    &[data-state="on"] {
+      z-index: $ods-button-group-item-z-index + 1;
+    }
+
+    &[data-state="on"] {
+      &:not([data-disabled]) {
+        border-color: var(--ods-theme-background-color-selected);
+        background-color: var(--ods-theme-background-color-selected);
+      }
+
+      &[data-disabled] {
+        border-color: var(--ods-button-group-item-background-color-checked-disabled);
+        background-color: var(--ods-button-group-item-background-color-checked-disabled);
+        color: var(--ods-button-text-color-primary);
+      }
+    }
+
+    &[data-disabled] {
+      z-index: $ods-button-group-item-z-index - 1;
+    }
+  }
+}

@@ -1,37 +1,12 @@
 import { Card, Code } from '@ovhcloud/ods-react';
 import * as odsRecipePreview from '@ovhcloud/ods-recipes';
+import { type ComponentMetadataWithSources, type ComponentRecipe } from '@ovhcloud/ods-recipes';
 import odsRecipeJson from '@ovhcloud/ods-recipes/json';
-import React, { type JSX, type ReactElement } from 'react';
+import React, { type JSX } from 'react';
 import { ResetTheme } from '../../src/components/resetTheme/ResetTheme';
 
-// TODO manage missing files (ex: no css on some example)
-// TODO export type Recipe from @ovhcloud/ods-recipes
-
-type Recipe = {
-  additionalNote?: string,
-  description: string,
-  name: string,
-  reactTag: string,
-  source: {
-    cssModule: {
-      css?: string,
-      ts: string,
-    },
-    tailwind: {
-      ts: string,
-    },
-  },
-  tags: string[],
-}
-
-type RecipeComponent = {
-  CssModule: () => ReactElement,
-  Tailwind: () => ReactElement,
-}
-
-const Recipe = ({ recipe }: { recipe: Recipe }): JSX.Element => {
-  //const Preview = (odsRecipePreview as Record<string, () => ReactElement>)[recipe.reactTag];
-  const { CssModule, Tailwind } = (odsRecipePreview as Record<string, RecipeComponent>)[recipe.reactTag];
+const Recipe = ({ recipe }: { recipe: ComponentMetadataWithSources }): JSX.Element => {
+  const { CssModule, Tailwind } = (odsRecipePreview as unknown as Record<string, ComponentRecipe>)[recipe.reactTag];
 
   return (
     <div>
@@ -52,15 +27,15 @@ const Recipe = ({ recipe }: { recipe: Recipe }): JSX.Element => {
       </h1>
 
       <Code>
-        { recipe.source.cssModule.ts }
+        { recipe.source['css-modules'].ts }
       </Code>
 
       <br /><br />
 
       {
-        recipe.source.cssModule.css &&
+        recipe.source['css-modules'].css &&
         <Code>
-          { recipe.source.cssModule.css }
+          { recipe.source['css-modules'].css }
         </Code>
       }
 
@@ -75,7 +50,7 @@ const Recipe = ({ recipe }: { recipe: Recipe }): JSX.Element => {
 
 const Recipes = (): JSX.Element => {
   const RECIPES = odsRecipeJson.list?.components || [];
-  const componentRecipeList: Record<string, Recipe> = odsRecipeJson.component;
+  const componentRecipeList = odsRecipeJson.component as Record<string, ComponentMetadataWithSources>;
 
   // TODO manage error or missing data
 

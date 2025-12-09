@@ -1,19 +1,23 @@
 import { DummyExample as CssModule } from './css-modules';
 import { DummyExample as Tailwind } from './tailwind';
+import { type ComponentMetadata, type ComponentRecipe } from '../../../constants/recipe';
+import { SEARCH_TAG } from '../../../constants/search-tag';
 
-const recipe = {
+const metadata: ComponentMetadata = {
   additionalNote: 'Do not use.',
   description: 'A dummy example to test multiple recipes.',
   name: 'Dummy Example',
   reactTag: 'DummyExample',
-  tags: ['dummy', 'tile'],
-}
+  tags: [
+    SEARCH_TAG.tile,
+  ],
+};
 
-const DummyExample = {
+const DummyExample: ComponentRecipe = {
   CssModule,
-  recipe,
   Tailwind,
-}
+  metadata,
+};
 
 export {
   DummyExample,

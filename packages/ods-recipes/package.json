@@ -1,7 +1,6 @@
 {
   "name": "@ovhcloud/ods-recipes",
   "version": "19.3.0",
-  "private": true,
   "description": "ODS Recipes",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -23,13 +22,11 @@
     "*.css"
   ],
   "scripts": {
-    "build:prod": "rimraf dist && tsc -b && vite build",
-    "clean": "rimraf dist",
-    "generate:json": "node scripts/generate-recipes-json.js",
-    "lint:scss": "stylelint 'src/style/*.scss'",
-    "lint:ts": "eslint '{src,tests}/!(components)/**/*.{ts,tsx}'",
-    "test:spec": "jest --passWithNoTests",
-    "test:spec:ci": "npm run test:spec"
+    "build:prod": "rimraf dist && tsc -b && vite build && npm run generate:json",
+    "build:scripts": "rimraf scripts/dist && tsc -b && vite build --outDir scripts/dist -c scripts/vite.config.js",
+    "clean": "rimraf dist && rimraf scripts/dist",
+    "generate:json": "npm run build:scripts && node scripts/generate-recipes-json.js",
+    "lint:ts": "eslint 'src/!(components)/**/*.{ts,tsx}'"
   },
   "dependencies": {
     "@ovhcloud/ods-react": "19.3.0",

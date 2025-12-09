@@ -11,13 +11,8 @@ type ComponentMetadata = {
 
 type ComponentMetadataWithSources = ComponentMetadata & {
   source: {
-    'css-modules': {
-      css?: string,
-      ts: string,
-    },
-    tailwind: {
-      ts: string,
-    },
+    'css-modules': Record<string, string>,
+    tailwind: Record<string, string>,
   },
 }
 

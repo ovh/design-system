@@ -30,14 +30,7 @@ async function getComponentSources(src) {
     .filter((dirent) => dirent.isFile());
 
   for (const file of files) {
-    const contents = await fs.readFile(path.resolve(file.path, file.name), 'utf8');
-    const fileExt = path.parse(file.name).ext;
-
-    if (['.css', '.scss'].indexOf(fileExt) > -1) {
-      source['css'] = contents;
-    } else if (fileExt === '.tsx') {
-      source['ts'] = contents;
-    }
+    source[file.name] = await fs.readFile(path.resolve(file.path, file.name), 'utf8');
   }
 
   return source;

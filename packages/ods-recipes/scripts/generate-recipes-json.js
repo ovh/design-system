@@ -1,19 +1,46 @@
 #! /usr/bin/env node
 
-// import * as Recipe from '@ovhcloud/ods-recipes';
 import fs from 'fs/promises';
-import { glob } from 'glob';
 import path from 'path';
 
-async function getComponentData(src, name) {
-  // const myModule = await import(`${src}/index.ts`);
-  const myModule = await import(`@ovhcloud/ods-recipes/dist/components/${name}/index.ts`);
-  console.log('IMPORT?')
-  console.log(myModule)
-  // const recipe = Recipe[toPascalCase(name)]
-  // console.log(recipe)
+const SOURCES = ['css-modules', 'tailwind'];
 
-  return Promise.resolve({});
+async function getComponentData(src, module) {
+  const data = {
+    ...module.metadata,
+    source: {},
+  };
+
+  const sourceDirectories = (await fs.readdir(src, { withFileTypes: true }))
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name)
+    .filter((dirName) => SOURCES.indexOf(dirName) > -1);
+
+  for (const sourceDirectory of sourceDirectories) {
+    data.source[sourceDirectory] = await getComponentSources(path.resolve(src, sourceDirectory));
+  }
+
+  return Promise.resolve(data);
+}
+
+async function getComponentSources(src) {
+  const source = {};
+
+  const files = (await fs.readdir(src, { withFileTypes: true }))
+    .filter((dirent) => dirent.isFile());
+
+  for (const file of files) {
+    const contents = await fs.readFile(path.resolve(file.path, file.name), 'utf8');
+    const fileExt = path.parse(file.name).ext;
+
+    if (['.css', '.scss'].indexOf(fileExt) > -1) {
+      source['css'] = contents;
+    } else if (fileExt === '.tsx') {
+      source['ts'] = contents;
+    }
+  }
+
+  return source;
 }
 
 async function listComponents(src) {
@@ -23,11 +50,7 @@ async function listComponents(src) {
 }
 
 function toPascalCase(text) {
-  function clearAndUpper(text) {
-    return text.replace(/-/, "").toUpperCase();
-  }
-
-  return text.replace(/(^\w|-\w)/g, clearAndUpper);
+  return text.replace(/(^\w|-\w)/g, (t) => t.replace(/-/, "").toUpperCase());
 }
 
 async function writeOutput(content, outputFile) {
@@ -39,16 +62,33 @@ async function writeOutput(content, outputFile) {
 }
 
 (async function main() {
+  try {
+    await fs.access(path.resolve(process.cwd(), 'dist'));
+  } catch(error) {
+    console.error(`${path.resolve(process.cwd(), 'dist')} does not exists, please run "yarn build:prod" command.`);
+    return;
+  }
+
+  try {
+    await fs.access(path.resolve(process.cwd(), 'scripts', 'dist'));
+  } catch(error) {
+    console.error(`${path.resolve(process.cwd(), 'scripts', 'dist')} does not exists, please run "yarn build:scripts" command.`);
+    return;
+  }
+
+  const recipeModule = await import(`./dist/ods-recipes.js`);
   const componentsPath = path.resolve(process.cwd(), 'src', 'components');
   const finalData = {
     component: {},
-    list: [],
+    list: {
+      components: [],
+    },
   };
   let componentNames = [];
 
   try {
     componentNames = await listComponents(componentsPath);
-    finalData.list = componentNames;
+    finalData.list.components = componentNames;
   } catch(error) {
     console.error('Error while trying to list all components.');
     console.error(error);
@@ -57,17 +97,21 @@ async function writeOutput(content, outputFile) {
   }
 
   try {
-    const componentData = componentNames.reduce(async (res, name) => {
-      res[name] = await getComponentData(path.resolve(componentsPath, name, 'src'), name);
+    const componentsData = await Promise.all(componentNames.map((name) => {
+      const module = recipeModule[toPascalCase(name)];
+      return getComponentData(path.resolve(componentsPath, name, 'src'), module)
+    }));
+
+    finalData.component = componentNames.reduce((obj, name, idx) => {
+      obj[name] = componentsData[idx];
+      return obj;
     }, {});
-    finalData.component = componentData
   } catch(error) {
     console.error('Error while trying to fetch components data.');
     console.error(error);
     process.exitCode = 1;
     return;
   }
-
 
   try {
     return writeOutput(finalData, path.resolve(process.cwd(), 'dist', 'ods-recipes.json'));

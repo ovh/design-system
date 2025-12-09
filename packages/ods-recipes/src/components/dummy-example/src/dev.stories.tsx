@@ -1,9 +1,13 @@
-import { CssModules } from '.';
+import { DummyExample } from '.';
 
 export default {
   title: 'LocationTile dev',
 };
 
-export const Css = () => (
-  <CssModules />
+export const CssModule = () => (
+  <DummyExample.CssModule />
+);
+
+export const Tailwind = () => (
+  <DummyExample.Tailwind />
 );

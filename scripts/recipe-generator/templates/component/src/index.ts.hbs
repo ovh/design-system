@@ -1,0 +1,29 @@
+import { {{> ComponentName }} as CssModule } from './css-modules';
+{{#if (hasTailwindImplementation sources)}}
+import { {{> ComponentName }} as Tailwind } from './tailwind';
+{{/if}}
+import { type ComponentMetadata, type ComponentRecipe } from '../../../constants/recipe';
+import { SEARCH_TAG } from '../../../constants/search-tag';
+
+const metadata: ComponentMetadata = {
+  additionalNote: '',
+  description: '',
+  name: '{{> Component_Name }}',
+  reactTag: '{{> ComponentName }}',
+  tags: [
+    // Set here the tag related to your recipe that will help user find it when using the search, ex:
+    SEARCH_TAG.tile,
+  ],
+};
+
+const {{> ComponentName }}: ComponentRecipe = {
+  CssModule,
+{{#if (hasTailwindImplementation sources)}}
+  Tailwind,
+{{/if}}
+  metadata,
+};
+
+export {
+  {{> ComponentName }},
+};

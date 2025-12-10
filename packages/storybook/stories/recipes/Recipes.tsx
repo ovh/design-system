@@ -16,34 +16,34 @@ const Recipe = ({ recipe }: { recipe: ComponentMetadataWithSources }): JSX.Eleme
         </ResetTheme>
       </Card>
 
-      <Card>
-        <ResetTheme>
-          <Tailwind />
-        </ResetTheme>
-      </Card>
+      {
+        Tailwind &&
+        <Card>
+          <ResetTheme>
+            <Tailwind />
+          </ResetTheme>
+        </Card>
+      }
 
       <h1>
         { recipe.name }
       </h1>
 
-      <Code>
-        { recipe.source['css-modules'].ts }
-      </Code>
-
-      <br /><br />
-
       {
-        recipe.source['css-modules'].css &&
-        <Code>
-          { recipe.source['css-modules'].css }
-        </Code>
+        Object.values(recipe.source['css-modules']).map((source, i) => (
+          <Code key={ i }>
+            { source }
+          </Code>
+        ))
       }
 
-      <br /><br />
-
-      <Code>
-        { recipe.source.tailwind.ts }
-      </Code>
+      {
+        !!recipe.source['tailwind'] && Object.values(recipe.source['tailwind']).map((source, i) => (
+          <Code key={ i }>
+            { source }
+          </Code>
+        ))
+      }
     </div>
   );
 }

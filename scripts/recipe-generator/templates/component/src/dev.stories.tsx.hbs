@@ -1,0 +1,16 @@
+import { {{> ComponentName }} } from '.';
+
+export default {
+  component: {{> ComponentName }},
+  title: '{{> ComponentName }} dev',
+};
+
+export const CssModule = () => (
+  <{{> ComponentName }}.CssModule />
+);
+
+{{#if (hasTailwindImplementation sources)}}
+export const Tailwind = () => (
+  <{{> ComponentName }}.Tailwind />
+);
+{{/if}}

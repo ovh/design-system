@@ -12,13 +12,13 @@ type ComponentMetadata = {
 type ComponentMetadataWithSources = ComponentMetadata & {
   source: {
     'css-modules': Record<string, string>,
-    tailwind: Record<string, string>,
+    tailwind?: Record<string, string>,
   },
 }
 
 type ComponentRecipe = {
   CssModule: () => ReactElement,
-  Tailwind: () => ReactElement,
+  Tailwind?: () => ReactElement,
   metadata: ComponentMetadata,
 }
 

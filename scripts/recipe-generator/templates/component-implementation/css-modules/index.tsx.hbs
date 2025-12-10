@@ -1,0 +1,14 @@
+import { type JSX } from 'react';
+import style from './index.module.scss';
+
+const {{> ComponentName }} = (): JSX.Element => {
+  return (
+    <div className={ style['{{> component-name }}'] }>
+      CSS Modules Example
+    </div>
+  );
+};
+
+export {
+  {{> ComponentName }},
+};

@@ -25,6 +25,7 @@
     "lint:scss": "lerna run --concurrency 1 lint:scss",
     "lint:ts": "lerna run --concurrency 1 lint:ts",
     "new:component": "plop --plopfile scripts/component-generator/plopfile.js component",
+    "new:recipe": "plop --plopfile scripts/recipe-generator/plopfile.js recipe",
     "ods:graduate": "yarn ods:release:prepare && yarn version:graduate",
     "ods:major": "yarn ods:release:prepare && yarn version:major",
     "ods:minor": "yarn ods:release:prepare && yarn version:minor",

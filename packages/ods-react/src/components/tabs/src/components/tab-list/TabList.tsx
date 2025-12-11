@@ -2,9 +2,8 @@ import { Tabs } from '@ark-ui/react/tabs';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { debounce } from '../../../../../utils/debounce';
-import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../button/src';
+import { BUTTON_VARIANT, Button } from '../../../../button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
-import { TABS_VARIANT } from '../../constants/tabs-variant';
 import { useTabs } from '../../contexts/useTabs';
 import style from './tabList.module.scss';
 
@@ -19,7 +18,6 @@ const TabList: FC<TabListProp> = forwardRef(({
   const [isLeftButtonDisabled, setIsLeftButtonDisabled] = useState(false);
   const [isRightButtonDisabled, setIsRightButtonDisabled] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const arrowSize = variant === TABS_VARIANT.default ? BUTTON_SIZE.xs : size;
 
   useEffect(() => {
     if (setScrollContainerRef) {
@@ -86,13 +84,13 @@ const TabList: FC<TabListProp> = forwardRef(({
         withArrows &&
         <div className={ classNames(
           style['tab-list__left-arrow'],
-          style[`tab-list__left-arrow--${arrowSize}`],
+          style[`tab-list__left-arrow--${size}`],
           { [style['tab-list__left-arrow--active']]: !isLeftButtonDisabled },
         )}>
           <Button
             disabled={ isLeftButtonDisabled }
             onClick={ onLeftScrollClick }
-            size={ arrowSize }
+            size={ size }
             tabIndex={ -1 }
             variant={ BUTTON_VARIANT.ghost }>
             <Icon name={ ICON_NAME.chevronLeft } />
@@ -118,13 +116,13 @@ const TabList: FC<TabListProp> = forwardRef(({
         withArrows &&
         <div className={ classNames(
           style['tab-list__right-arrow'],
-          style[`tab-list__right-arrow--${arrowSize}`],
+          style[`tab-list__right-arrow--${size}`],
           { [style['tab-list__right-arrow--active']]: !isRightButtonDisabled },
         )}>
           <Button
             disabled={ isRightButtonDisabled }
             onClick={ onRightScrollClick }
-            size={ arrowSize }
+            size={ size }
             tabIndex={ -1 }
             variant={ BUTTON_VARIANT.ghost }>
             <Icon name={ ICON_NAME.chevronRight } />

@@ -12,14 +12,12 @@
     --ods-tab-margin-vertical-switch-md: calc(var(--ods-theme-padding-vertical) / 2);
     --ods-tab-margin-vertical-switch-sm: calc(var(--ods-theme-padding-vertical) / 2);
     --ods-tab-margin-vertical-switch-xs: calc(var(--ods-theme-padding-vertical) / 4);
-    --ods-tab-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 2);
-    --ods-tab-padding-horizontal-switch-md: calc(var(--ods-theme-padding-horizontal) * 1.5);
-    --ods-tab-padding-horizontal-switch-sm: var(--ods-theme-padding-horizontal);
-    --ods-tab-padding-horizontal-switch-xs: calc(var(--ods-theme-padding-horizontal) * 0.75);
-    --ods-tab-padding-vertical: calc(var(--ods-theme-padding-vertical) / 4);
-    --ods-tab-padding-vertical-switch-md: var(--ods-theme-padding-horizontal);
-    --ods-tab-padding-vertical-switch-sm: calc(var(--ods-theme-padding-horizontal) * 0.75);
-    --ods-tab-padding-vertical-switch-xs: calc(var(--ods-theme-padding-horizontal) / 2);
+    --ods-tab-padding-horizontal-md: calc(var(--ods-theme-padding-horizontal) * 1.5);
+    --ods-tab-padding-horizontal-sm: var(--ods-theme-padding-horizontal);
+    --ods-tab-padding-horizontal-xs: calc(var(--ods-theme-padding-horizontal) * 0.75);
+    --ods-tab-padding-vertical-md: var(--ods-theme-padding-horizontal);
+    --ods-tab-padding-vertical-sm: calc(var(--ods-theme-padding-horizontal) * 0.75);
+    --ods-tab-padding-vertical-xs: calc(var(--ods-theme-padding-horizontal) / 2);
     --ods-tab-background-color-hover: var(--ods-color-neutral-050);
     --ods-tab-background-color-selected-switch: var(--ods-color-neutral-000);
     --ods-tab-background-color-selected-disabled-switch: var(--ods-color-neutral-500);
@@ -29,9 +27,9 @@
     --ods-tab-border-color-selected: var(--ods-color-primary-500);
     --ods-tab-border-color-selected-disabled: var(--ods-color-neutral-500);
     --ods-tab-border-color-selected-disabled-switch: var(--ods-color-neutral-000);
-    --ods-tab-border-radius-switch-md: var(--ods-theme-border-radius);
-    --ods-tab-border-radius-switch-sm: calc(var(--ods-theme-border-radius) / 2);
-    --ods-tab-border-radius-switch-xs: calc(var(--ods-theme-border-radius) / 4);
+    --ods-tab-border-radius-md: var(--ods-theme-border-radius);
+    --ods-tab-border-radius-sm: calc(var(--ods-theme-border-radius) / 2);
+    --ods-tab-border-radius-xs: calc(var(--ods-theme-border-radius) / 4);
     --ods-tab-text-color-hover: var(--ods-color-primary-500);
     --ods-tab-text-color-selected: var(--ods-color-primary-500);
 
@@ -63,9 +61,6 @@
       border-right: none;
       border-bottom: solid var(--ods-tab-list-border-width) var(--ods-tab-border-color);
       border-left: none;
-      border-top-left-radius: var(--ods-theme-border-radius);
-      border-top-right-radius: var(--ods-theme-border-radius);
-      padding: var(--ods-tab-padding-vertical) var(--ods-tab-padding-horizontal);
 
       &:focus-visible:focus-visible {
         outline-offset: calc(var(--ods-theme-outline-offset) * -1);
@@ -86,6 +81,24 @@
         &[disabled] {
           border-color: var(--ods-tab-border-color-selected-disabled);
         }
+      }
+
+      &#{$tab}--md {
+        border-top-left-radius: var(--ods-tab-border-radius-md);
+        border-top-right-radius: var(--ods-tab-border-radius-md);
+        padding: var(--ods-tab-padding-vertical-md) var(--ods-tab-padding-horizontal-md);
+      }
+
+      &#{$tab}--sm {
+        border-top-left-radius: var(--ods-tab-border-radius-sm);
+        border-top-right-radius: var(--ods-tab-border-radius-sm);
+        padding: var(--ods-tab-padding-vertical-sm) var(--ods-tab-padding-horizontal-sm);
+      }
+
+      &#{$tab}--xs {
+        border-top-left-radius: var(--ods-tab-border-radius-xs);
+        border-top-right-radius: var(--ods-tab-border-radius-xs);
+        padding: var(--ods-tab-padding-vertical-xs) var(--ods-tab-padding-horizontal-xs);
       }
     }
 
@@ -110,20 +123,20 @@
 
       &#{$tab}--md {
         margin: var(--ods-tab-margin-vertical-switch-md) var(--ods-tab-margin-horizontal-switch-md);
-        border-radius: var(--ods-tab-border-radius-switch-md);
-        padding: var(--ods-tab-padding-vertical-switch-md) var(--ods-tab-padding-horizontal-switch-md);
+        border-radius: var(--ods-tab-border-radius-md);
+        padding: var(--ods-tab-padding-vertical-md) var(--ods-tab-padding-horizontal-md);
       }
 
       &#{$tab}--sm {
         margin: var(--ods-tab-margin-vertical-switch-sm) var(--ods-tab-margin-horizontal-switch-sm);
-        border-radius: var(--ods-tab-border-radius-switch-sm);
-        padding: var(--ods-tab-padding-vertical-switch-sm) var(--ods-tab-padding-horizontal-switch-sm);
+        border-radius: var(--ods-tab-border-radius-sm);
+        padding: var(--ods-tab-padding-vertical-sm) var(--ods-tab-padding-horizontal-sm);
       }
 
       &#{$tab}--xs {
         margin: var(--ods-tab-margin-vertical-switch-xs) var(--ods-tab-margin-horizontal-switch-xs);
-        border-radius: var(--ods-tab-border-radius-switch-xs);
-        padding: var(--ods-tab-padding-vertical-switch-xs) var(--ods-tab-padding-horizontal-switch-xs);
+        border-radius: var(--ods-tab-border-radius-xs);
+        padding: var(--ods-tab-padding-vertical-xs) var(--ods-tab-padding-horizontal-xs);
 
         &:focus-visible:focus-visible {
           outline-offset: 0;

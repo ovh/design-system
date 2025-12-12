@@ -5,6 +5,7 @@ import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TreeViewStories from './tree-view.stories';
 
@@ -73,3 +74,7 @@ import * as TreeViewStories from './tree-view.stories';
 <Heading label="Dynamic children" level={ 3 } />
 
 <Canvas of={ TreeViewStories.DynamicChildren } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="TreeView" />

@@ -3,11 +3,16 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-const SOURCES = ['css-modules', 'tailwind'];
+const SOURCE = Object.freeze({
+  cssModules: 'css-modules',
+  tailwind: 'tailwind',
+});
+const SOURCES = Object.freeze(Object.values(SOURCE));
 
 async function getComponentData(src, module) {
   const data = {
     ...module.metadata,
+    odsComponents: [],
     source: {},
   };
 
@@ -15,6 +20,10 @@ async function getComponentData(src, module) {
     .filter((dirent) => dirent.isDirectory())
     .map((dirent) => dirent.name)
     .filter((dirName) => SOURCES.indexOf(dirName) > -1);
+
+  if (sourceDirectories.length) {
+    data.odsComponents = await getImportedOdsComponents(path.resolve(src, sourceDirectories[0]));
+  }
 
   for (const sourceDirectory of sourceDirectories) {
     data.source[sourceDirectory] = await getComponentSources(path.resolve(src, sourceDirectory));
@@ -34,6 +43,27 @@ async function getComponentSources(src) {
   }
 
   return source;
+}
+
+async function getImportedOdsComponents(src) {
+  try {
+    await fs.access(path.resolve(src, 'index.tsx'));
+  } catch(error) {
+    console.warn(`Unable to find an index.tsx file in "${src}". Thus unable to find the list of imported ODS components.`);
+    return [];
+  }
+
+  const fileContent = await fs.readFile(path.resolve(src, 'index.tsx'), 'utf8');
+
+  const odsImportMatches = fileContent
+    .split(/\r?\n/)
+    .reduce((oneliner, line) => oneliner += line, '')
+    .match(/import\s+\{(.*)}\s+from\s+'@ovhcloud\/ods-react'/)
+
+  if (odsImportMatches?.length > 1) {
+    return odsImportMatches[1].split(',').map((s) => s.trim());
+  }
+  return [];
 }
 
 async function listComponents(src) {

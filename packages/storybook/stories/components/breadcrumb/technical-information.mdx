@@ -5,6 +5,7 @@ import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as BreadcrumbStories from './breadcrumb.stories';
 
@@ -70,3 +71,7 @@ You can also customize the threshold from when the breadcrumb will collapse.
 Or you can even deactivate the whole collapse logic.
 
 <Canvas of={ BreadcrumbStories.NoCollapse } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Breadcrumb" />

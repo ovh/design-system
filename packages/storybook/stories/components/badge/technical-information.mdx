@@ -5,6 +5,7 @@ import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as BadgeStories from './badge.stories';
 
@@ -48,3 +49,7 @@ import * as BadgeStories from './badge.stories';
 <Heading label="Size" level={ 3 } />
 
 <Canvas of={ BadgeStories.Size } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Badge" />

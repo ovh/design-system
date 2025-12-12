@@ -13,6 +13,7 @@ type ComponentMetadataWithSources = ComponentMetadata & {
   odsComponents: string[],
   source: {
     'css-modules': Record<string, string>,
+    'README.md': string,
     tailwind?: Record<string, string>,
   },
 }

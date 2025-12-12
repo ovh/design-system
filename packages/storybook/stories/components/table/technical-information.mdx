@@ -5,6 +5,7 @@ import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TableStories from './table.stories';
 
@@ -52,3 +53,7 @@ import * as TableStories from './table.stories';
 <Heading label="Text component caption preset" level={ 3 } />
 
 <Canvas of={ TableStories.CustomCaption } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Table" />

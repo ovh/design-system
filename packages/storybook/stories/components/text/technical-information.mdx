@@ -5,6 +5,7 @@ import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TextStories from './text.stories';
 
@@ -64,3 +65,7 @@ For actual `<caption>` (used in a table) or `<figcaption>` (image), use the nati
 <Heading label="Preset style on a different HTML element" level={ 3 } />
 
 <Canvas of={ TextStories.ReuseStyle } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Text" />

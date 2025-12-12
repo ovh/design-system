@@ -6,6 +6,7 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as FileUploadStories from './file-upload.stories';
 
@@ -91,3 +92,7 @@ It works exactly the same as the one from the native <ExternalLink href="https:/
 <Heading label="Form Field" level={ 3 } />
 
 <Canvas of={ FileUploadStories.InFormField } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="FileUpload" />

@@ -5,6 +5,7 @@ import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as PaginationStories from './pagination.stories';
 
@@ -64,3 +65,7 @@ import * as PaginationStories from './pagination.stories';
 <Heading label="With total items" level={ 3 } />
 
 <Canvas of={ PaginationStories.TotalItems } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Pagination" />

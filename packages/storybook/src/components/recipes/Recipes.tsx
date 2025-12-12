@@ -2,6 +2,7 @@ import { Card, Code } from '@ovhcloud/ods-react';
 import * as odsRecipePreview from '@ovhcloud/ods-recipes';
 import { type ComponentMetadataWithSources, type ComponentRecipe } from '@ovhcloud/ods-recipes';
 import odsRecipeJson from '@ovhcloud/ods-recipes/json';
+import { Markdown } from '@storybook/blocks';
 import React, { type JSX, useMemo } from 'react';
 import { ResetTheme } from '../resetTheme/ResetTheme';
 
@@ -44,6 +45,12 @@ const Recipe = ({ recipe }: { recipe: ComponentMetadataWithSources }): JSX.Eleme
           </Code>
         ))
       }
+
+      <h2>README</h2>
+
+      <Markdown>
+        { recipe.source['README.md'] }
+      </Markdown>
     </div>
   );
 }

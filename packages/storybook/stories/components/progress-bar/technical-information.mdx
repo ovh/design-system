@@ -5,6 +5,7 @@ import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as ProgressBarStories from './progress-bar.stories';
 
@@ -48,3 +49,7 @@ import * as ProgressBarStories from './progress-bar.stories';
 <Heading label="Value" level={ 3 } />
 
 <Canvas of={ ProgressBarStories.Value } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="ProgressBar" />

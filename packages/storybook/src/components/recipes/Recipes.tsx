@@ -2,8 +2,8 @@ import { Card, Code } from '@ovhcloud/ods-react';
 import * as odsRecipePreview from '@ovhcloud/ods-recipes';
 import { type ComponentMetadataWithSources, type ComponentRecipe } from '@ovhcloud/ods-recipes';
 import odsRecipeJson from '@ovhcloud/ods-recipes/json';
-import React, { type JSX } from 'react';
-import { ResetTheme } from '../../src/components/resetTheme/ResetTheme';
+import React, { type JSX, useMemo } from 'react';
+import { ResetTheme } from '../resetTheme/ResetTheme';
 
 const Recipe = ({ recipe }: { recipe: ComponentMetadataWithSources }): JSX.Element => {
   const { CssModule, Tailwind } = (odsRecipePreview as unknown as Record<string, ComponentRecipe>)[recipe.reactTag];
@@ -48,16 +48,29 @@ const Recipe = ({ recipe }: { recipe: ComponentMetadataWithSources }): JSX.Eleme
   );
 }
 
-const Recipes = (): JSX.Element => {
-  const RECIPES = odsRecipeJson.list?.components || [];
+// TODO manage error or missing data
+const Recipes = ({ component }: { component?: string }): JSX.Element => {
+  const recipes = useMemo(() => {
+    if (component) {
+      return Object.keys(odsRecipeJson.component)
+        .filter((key) => odsRecipeJson.component[key].odsComponents.indexOf(component) > -1)
+    }
+
+    return odsRecipeJson.list?.components || [];
+  }, [component]);
+
   const componentRecipeList = odsRecipeJson.component as Record<string, ComponentMetadataWithSources>;
 
-  // TODO manage error or missing data
+  if (!recipes || !recipes.length) {
+    return (
+      <p>No recipe defined for now.</p>
+    );
+  }
 
   return (
     <div>
       {
-        RECIPES.map((recipe) => (
+        recipes.map((recipe) => (
           <Recipe
             key={ recipe }
             recipe={ componentRecipeList[recipe] } />

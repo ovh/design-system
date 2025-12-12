@@ -96,7 +96,7 @@ const FileUploadItem: FC<FileUploadItemProp> = forwardRef(({
         !!error &&
         <span
           className={ style['file-upload-item__error'] }
-          role="error">
+          role="alert">
           { error }
         </span>
       }

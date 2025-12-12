@@ -3,6 +3,8 @@
 import fs from 'fs/promises';
 import path from 'path';
 
+const INDEX_FILE = 'index.tsx';
+const README_FILE = 'README.md';
 const SOURCE = Object.freeze({
   cssModules: 'css-modules',
   tailwind: 'tailwind',
@@ -29,7 +31,20 @@ async function getComponentData(src, module) {
     data.source[sourceDirectory] = await getComponentSources(path.resolve(src, sourceDirectory));
   }
 
+  data.source[README_FILE] = await getComponentReadMe(path.resolve(src));
+
   return Promise.resolve(data);
+}
+
+async function getComponentReadMe(src) {
+  try {
+    await fs.access(path.resolve(src, README_FILE));
+  } catch(error) {
+    console.warn(`Unable to find a ${README_FILE} file in "${src}". Thus unable to fill the documentation source.`);
+    return '';
+  }
+
+  return fs.readFile(path.resolve(src, README_FILE), 'utf8');
 }
 
 async function getComponentSources(src) {
@@ -47,13 +62,13 @@ async function getComponentSources(src) {
 
 async function getImportedOdsComponents(src) {
   try {
-    await fs.access(path.resolve(src, 'index.tsx'));
+    await fs.access(path.resolve(src, INDEX_FILE));
   } catch(error) {
-    console.warn(`Unable to find an index.tsx file in "${src}". Thus unable to find the list of imported ODS components.`);
+    console.warn(`Unable to find an ${INDEX_FILE} file in "${src}". Thus unable to find the list of imported ODS components.`);
     return [];
   }
 
-  const fileContent = await fs.readFile(path.resolve(src, 'index.tsx'), 'utf8');
+  const fileContent = await fs.readFile(path.resolve(src, INDEX_FILE), 'utf8');
 
   const odsImportMatches = fileContent
     .split(/\r?\n/)

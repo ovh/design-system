@@ -54,7 +54,7 @@ const ToasterRoot: FC<ToasterProp> = forwardRef(({
   }, [max, toasts]);
 
   return (
-    <div
+    <div // eslint-disable-line jsx-a11y/no-static-element-interactions
       aria-live="polite"
       className={ classNames(
         style['toaster'],

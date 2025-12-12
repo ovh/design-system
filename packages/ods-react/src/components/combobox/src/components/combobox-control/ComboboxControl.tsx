@@ -164,7 +164,7 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
   }
 
   return (
-    <div
+    <div // eslint-disable-line jsx-a11y/no-static-element-interactions
       className={ classNames(
         style['combobox-control'],
         { [style['combobox-control--disabled']]: disabled },

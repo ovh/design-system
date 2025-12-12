@@ -9,7 +9,7 @@ const Medium: FC<MediumProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   return (
-    <img
+    <img // eslint-disable-line jsx-a11y/alt-text
       className={ classNames(style['medium'], className) }
       data-ods="medium"
       ref={ ref }

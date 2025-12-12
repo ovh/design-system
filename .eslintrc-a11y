@@ -12,6 +12,9 @@
     "eslint-plugin-jsx-a11y"
   ],
   "root": true,
+  "rules": {
+    "jsx-a11y/no-autofocus": "off"
+  },
   "settings": {
     "import/resolver": {
       "typescript": {

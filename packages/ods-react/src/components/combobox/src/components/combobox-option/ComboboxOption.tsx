@@ -33,7 +33,7 @@ const ComboboxOption: FC<ComboboxOptionProp> = ({
   }
 
   return (
-    <div
+    <div // eslint-disable-line jsx-a11y/click-events-have-key-events
       aria-selected={ isHighlighted }
       className={ classNames(
         style['combobox-option'],

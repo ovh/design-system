@@ -1,5 +1,13 @@
-import { type JSX, type ReactNode, createContext, useContext } from 'react';
-import { type TreeViewExpandedChangeDetail, type TreeViewValueChangeDetail } from '../components/tree-view/TreeView';
+import { type JSX, type ReactNode, createContext } from 'react';
+import { useContext } from '../../../../utils/context';
+
+interface TreeViewValueChangeDetail {
+  value: string[];
+}
+
+interface TreeViewExpandedChangeDetail {
+  expandedValue: string[];
+}
 
 type CustomData = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
@@ -58,13 +66,12 @@ type TreeViewRootProp = {
   value?: string[];
 }
 
-type TreeViewContextType = Pick<TreeViewRootProp, 'disabled' | 'multiple'> & {
-  getIndexPathForId: (id: string) => number[] | undefined;
-};
-
-interface TreeViewProviderProp extends TreeViewContextType {
+interface TreeViewProviderProp extends Pick<TreeViewRootProp, 'disabled' | 'multiple'> {
   children: ReactNode;
+  getIndexPathForId: (id: string) => number[] | undefined;
 }
+
+type TreeViewContextType = Omit<TreeViewProviderProp, 'children'>;
 
 const TreeViewContext = createContext<TreeViewContextType | undefined>(undefined);
 
@@ -77,21 +84,17 @@ function TreeViewProvider({ children, disabled, getIndexPathForId, multiple }: T
 }
 
 function useTreeView(): TreeViewContextType {
-  const context = useContext(TreeViewContext);
-
-  if (!context) {
-    throw new Error('useTreeView must be used within a TreeViewProvider');
-  }
-
-  return context;
+  return useContext(TreeViewContext);
 }
 
 export {
   type TreeViewContextType,
   type TreeViewCustomRendererArg,
+  type TreeViewExpandedChangeDetail,
   type TreeViewItem,
   TreeViewProvider,
   type TreeViewRootProp,
+  type TreeViewValueChangeDetail,
   useTreeView,
 };
 

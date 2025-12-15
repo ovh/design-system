@@ -1,4 +1,5 @@
-import { type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type JSX, type ReactNode, createContext } from 'react';
+import { useContext } from '../../../../utils/context';
 import { type Locale } from '../../../../utils/locales';
 import { type INPUT_I18N } from '../../../input/src';
 
@@ -25,13 +26,13 @@ interface ClipboardRootProp {
   value?: string,
 }
 
-type ClipboardContextType = Pick<ClipboardRootProp, 'disabled' | 'i18n' | 'locale'>;
-
-interface ClipboardProviderProp extends ClipboardContextType {
+interface ClipboardProviderProp extends Pick<ClipboardRootProp, 'disabled' | 'i18n' | 'locale'> {
   children: ReactNode,
 }
 
-const ClipboardContext = createContext<ClipboardContextType>({});
+type ClipboardContextType = Omit<ClipboardProviderProp, 'children'>;
+
+const ClipboardContext = createContext<ClipboardContextType | undefined>(undefined);
 
 function ClipboardProvider({ children, disabled, i18n, locale }: ClipboardProviderProp): JSX.Element {
   return (

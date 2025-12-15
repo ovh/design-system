@@ -1,5 +1,6 @@
-import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext } from 'react';
 import { type Toast as VendorToast } from 'react-hot-toast/headless';
+import { useContext } from '../../../../utils/context';
 import { type IconName } from '../../../icon/src';
 import { type ToastColor } from '../constants/toast-color';
 import { type ToasterPosition } from '../constants/toaster-position';
@@ -62,13 +63,7 @@ const ToasterProvider = ({
 };
 
 function useToaster(): ToasterContextType {
-  const context = useContext(ToasterContext);
-
-  if (!context) {
-    throw new Error('useToaster must be used within a ToasterProvider');
-  }
-
-  return context;
+  return useContext(ToasterContext);
 }
 
 export {

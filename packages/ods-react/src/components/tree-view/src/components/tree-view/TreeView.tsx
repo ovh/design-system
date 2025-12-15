@@ -1,21 +1,10 @@
 import { TreeView as VendorTreeView } from '@ark-ui/react/tree-view';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useMemo } from 'react';
-import { type TreeViewItem, TreeViewProvider, type TreeViewRootProp } from '../../contexts/useTreeView';
+import { type TreeViewExpandedChangeDetail, type TreeViewItem, TreeViewProvider, type TreeViewRootProp } from '../../contexts/useTreeView';
 import { createCollectionFromItems, normalizeSelectedOnChange } from '../../controller/tree-view';
 import style from './treeView.module.scss';
 
-interface TreeViewValueChangeDetail {
-  value: string[];
-}
-
-interface TreeViewExpandedChangeDetail {
-  expandedValue: string[];
-}
-
-/**
- * @inheritDoc TreeViewRootProp
- */
 interface TreeViewProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultCheckedValue' | 'defaultValue'>, TreeViewRootProp {}
 
 const TreeView: FC<TreeViewProp> = forwardRef(({
@@ -78,8 +67,8 @@ const TreeView: FC<TreeViewProp> = forwardRef(({
   return (
     <TreeViewProvider
       disabled={ disabled }
-      multiple={ multiple }
-      getIndexPathForId={ (id: string) => idToIndexPath.get(id) as number[] | undefined }>
+      getIndexPathForId={ (id: string) => idToIndexPath.get(id) as number[] | undefined }
+      multiple={ multiple }>
       <VendorTreeView.Root
         className={ classNames(style['tree-view'], className) }
         collection={ collection }
@@ -114,6 +103,4 @@ TreeView.displayName = 'TreeView';
 export {
   TreeView,
   type TreeViewProp,
-  type TreeViewExpandedChangeDetail,
-  type TreeViewValueChangeDetail,
 };

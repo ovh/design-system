@@ -1,4 +1,5 @@
-import { type JSX, type ReactNode, createContext, useContext, useState } from 'react';
+import { type JSX, type ReactNode, createContext, useState } from 'react';
+import { useContext } from '../../../../utils/context';
 import { type PopoverPosition } from '../constants/popover-position';
 
 interface PopoverOpenChangeDetail {
@@ -80,11 +81,7 @@ function PopoverProvider({
 }
 
 function usePopover(): PopoverContextType {
-  const context = useContext(PopoverContext);
-  if (!context) {
-    throw new Error('usePopover must be used within a PopoverProvider');
-  }
-  return context;
+  return useContext(PopoverContext);
 }
 
 export {

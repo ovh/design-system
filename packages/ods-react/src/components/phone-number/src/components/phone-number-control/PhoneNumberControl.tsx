@@ -48,7 +48,7 @@ const PhoneNumberControl: FC<PhoneNumberControlProp> = forwardRef(({
     const value = e.currentTarget.value;
     const valueIsValid = isValid(value, isoCode);
 
-    setInputValue && setInputValue(value);
+    setInputValue(value);
 
     if (onValueChange) {
       const { error, phoneNumber } = formatPhoneNumber(value, isoCode);

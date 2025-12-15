@@ -1,4 +1,5 @@
-import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useContext, useEffect, useState } from 'react';
+import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useEffect, useState } from 'react';
+import { useContext } from '../../../../utils/context';
 import { type INPUT_I18N } from '../../../input/src';
 import { type PhoneNumberCountryIsoCode } from '../constants/phone-number-country-iso-code';
 import { type PhoneNumberCountriesPreset } from '../constants/phone-number-country-preset';
@@ -85,22 +86,22 @@ type PhoneNumberRootProp = {
 
 type PhoneNumberInputProp = Omit<ComponentPropsWithRef<'input'>, 'type' | keyof PhoneNumberRootProp>
 
-type PhoneNumberContextType = PhoneNumberRootProp & {
-  hasCountries?: boolean,
-  hasError?: boolean,
-  inputValue?: string,
-  isoCode?: PhoneNumberCountryIsoCode,
-  setHasCountries?: (value: boolean) => void,
-  setHasError?: (value: boolean) => void,
-  setInputValue?: (value: string) => void,
-  setIsoCode?: (value: PhoneNumberCountryIsoCode) => void,
-}
-
-interface PhoneNumberProviderProp extends PhoneNumberContextType {
+interface PhoneNumberProviderProp extends PhoneNumberRootProp {
   children: ReactNode,
 }
 
-const PhoneNumberContext = createContext<PhoneNumberContextType>({});
+type PhoneNumberContextType = Omit<PhoneNumberProviderProp, 'children'> & {
+  hasCountries: boolean,
+  hasError: boolean,
+  inputValue?: string,
+  isoCode: PhoneNumberCountryIsoCode,
+  setHasCountries: (value: boolean) => void,
+  setHasError: (value: boolean) => void,
+  setInputValue: (value: string) => void,
+  setIsoCode: (value: PhoneNumberCountryIsoCode) => void,
+};
+
+const PhoneNumberContext = createContext<PhoneNumberContextType | undefined>(undefined);
 
 function PhoneNumberProvider({ children, countries, country, ...prop }: PhoneNumberProviderProp): JSX.Element {
   const [hasCountries, setHasCountries] = useState(false);

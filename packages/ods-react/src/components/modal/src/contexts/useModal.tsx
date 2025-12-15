@@ -1,4 +1,5 @@
-import { type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type JSX, type ReactNode, createContext } from 'react';
+import { useContext } from '../../../../utils/context';
 import { type Locale } from '../../../../utils/locales';
 import { type MODAL_I18N } from '../constants/modal-i18n';
 
@@ -41,13 +42,13 @@ interface ModalRootProp {
   open?: boolean,
 }
 
-type ModalContextType = Pick<ModalRootProp, 'i18n' | 'locale'>
-
-interface ModalProviderProp extends ModalContextType {
+interface ModalProviderProp extends Pick<ModalRootProp, 'i18n' | 'locale'> {
   children: ReactNode,
 }
 
-const ModalContext = createContext<ModalContextType>({});
+type ModalContextType = Omit<ModalProviderProp, 'children'>;
+
+const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
 function ModalProvider({ children, i18n, locale }: ModalProviderProp): JSX.Element {
   return (

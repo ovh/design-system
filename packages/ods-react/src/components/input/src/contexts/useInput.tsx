@@ -1,4 +1,5 @@
-import { type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type JSX, type ReactNode, createContext } from 'react';
+import { useContext } from '../../../../utils/context';
 import { type Locale } from '../../../../utils/locales';
 import { type INPUT_I18N } from '../constants/input-i18n';
 import { type InputMaskState } from '../constants/input-mask-state';
@@ -42,13 +43,13 @@ interface InputRootProp {
   type?: InputType,
 }
 
-type InputContextType = Pick<InputRootProp, 'i18n' | 'locale'>;
-
-interface InputProviderProp extends InputContextType {
+interface InputProviderProp extends Pick<InputRootProp, 'i18n' | 'locale'> {
   children: ReactNode,
 }
 
-const InputContext = createContext<InputContextType>({});
+type InputContextType = Omit<InputProviderProp, 'children'>;
+
+const InputContext = createContext<InputContextType | undefined>(undefined);
 
 function InputProvider({ children, i18n, locale }: InputProviderProp): JSX.Element {
   return (

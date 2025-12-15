@@ -1,4 +1,5 @@
-import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useContext, useState } from 'react';
+import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useState } from 'react';
+import { useContext } from '../../../../utils/context';
 import { type Locale } from '../../../../utils/locales';
 import { type TIMEPICKER_I18N } from '../constants/timepicker-i18n';
 import { type TimezonesPreset } from '../constants/timepicker-timezone-preset';
@@ -81,16 +82,16 @@ type TimepickerRootProp = {
 
 type TimepickerInputProp = Omit<ComponentPropsWithRef<'input'>, 'type' | keyof TimepickerRootProp>
 
-type TimepickerContextType = TimepickerRootProp & {
-  currentTimezone?: Timezone,
-  setCurrentTimezone?: (value: Timezone) => void,
-}
-
-interface TimepickerProviderProp extends TimepickerContextType {
+interface TimepickerProviderProp extends TimepickerRootProp {
   children: ReactNode,
 }
 
-const TimepickerContext = createContext<TimepickerContextType>({});
+type TimepickerContextType = Omit<TimepickerProviderProp, 'children'> & {
+  currentTimezone: Timezone,
+  setCurrentTimezone: (value: Timezone) => void,
+}
+
+const TimepickerContext = createContext<TimepickerContextType | undefined>(undefined);
 
 function TimepickerProvider({ children, timezone, timezones, ...prop }: TimepickerProviderProp): JSX.Element {
   const [currentTimezone, setCurrentTimezone] = useState(getCurrentTimezone(timezone, timezones));

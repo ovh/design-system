@@ -20,9 +20,7 @@ const TabList: FC<TabListProp> = forwardRef(({
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (setScrollContainerRef) {
-      setScrollContainerRef(scrollRef);
-    }
+    setScrollContainerRef(scrollRef);
   }, [setScrollContainerRef]);
 
   const updateScrollButtonState = useCallback(() => {

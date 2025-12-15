@@ -1,35 +1,9 @@
 import { Tooltip as VendorTooltip } from '@ark-ui/react/tooltip';
 import { type FC, type JSX, type PropsWithChildren } from 'react';
-import { TOOLTIP_POSITION, type TooltipPosition } from '../../constants/tooltip-position';
-import { TooltipProvider, useTooltip } from '../../contexts/useTooltip';
+import { TOOLTIP_POSITION } from '../../constants/tooltip-position';
+import { TooltipProvider, type TooltipRootProp, useTooltip } from '../../contexts/useTooltip';
 
-interface TooltipOpenChangeDetail {
-  open: boolean,
-}
-
-interface TooltipProp {
-  /**
-   * Number of milliseconds before closing the tooltip.
-   */
-  closeDelay?: number,
-  /**
-   * Callback fired when the tooltip open state changes.
-   */
-  onOpenChange?: (detail: TooltipOpenChangeDetail) => void
-  /**
-   * The controlled open state of the tooltip.
-   */
-  open?: boolean,
-  /**
-   * Number of milliseconds before opening the tooltip.
-   */
-  openDelay?: number,
-  /**
-   * @type=TOOLTIP_POSITION
-   * The tooltip position around the trigger.
-   */
-  position?: TooltipPosition,
-}
+interface TooltipProp extends TooltipRootProp {}
 
 const TooltipRoot: FC<PropsWithChildren<TooltipProp>> = ({
   children,
@@ -76,6 +50,5 @@ Tooltip.displayName = 'Tooltip';
 
 export {
   Tooltip,
-  type TooltipOpenChangeDetail,
   type TooltipProp,
 };

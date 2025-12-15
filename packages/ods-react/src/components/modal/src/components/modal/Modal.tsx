@@ -2,9 +2,6 @@ import { Dialog } from '@ark-ui/react/dialog';
 import { type FC, type JSX, type PropsWithChildren } from 'react';
 import { ModalProvider, type ModalRootProp } from '../../contexts/useModal';
 
-/**
- * @inheritDoc ModalRootProp
- */
 interface ModalProp extends ModalRootProp {}
 
 const Modal: FC<PropsWithChildren<ModalProp>> = ({

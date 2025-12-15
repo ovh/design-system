@@ -49,10 +49,10 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
   }, [countries, locale]);
 
   useEffect(() => {
-    setHasCountries && setHasCountries(true);
+    setHasCountries(true);
 
     return () => {
-      setHasCountries && setHasCountries(false);
+      setHasCountries(false);
     };
   }, [setHasCountries]);
 
@@ -60,7 +60,7 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
     const newIsoCode = value[0] as PhoneNumberCountryIsoCode;
     const valueIsValid = isValid(inputValue, newIsoCode);
 
-    setIsoCode && setIsoCode(newIsoCode);
+    setIsoCode(newIsoCode);
 
     if (onCountryChange) {
       onCountryChange({

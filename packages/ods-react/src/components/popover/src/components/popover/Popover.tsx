@@ -3,9 +3,6 @@ import { type FC, type JSX, type PropsWithChildren } from 'react';
 import { POPOVER_POSITION } from '../../constants/popover-position';
 import { PopoverProvider, type PopoverRootProp, usePopover } from '../../contexts/usePopover';
 
-/**
- * @inheritDoc PopoverRootProp
- */
 interface PopoverProp extends PopoverRootProp {}
 
 const PopoverRoot: FC<PropsWithChildren<PopoverProp>> = ({

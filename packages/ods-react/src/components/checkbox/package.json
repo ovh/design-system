@@ -10,7 +10,6 @@
     "doc": "npm run clean && npm run doc:ts && npm run doc:css",
     "doc:css": "sass src/components:documentation --no-source-map --pkg-importer=node && node ../../../scripts/generate-component-token-list.js",
     "doc:ts": "typedoc",
-    "lint:a11y": "eslint --config ../../../../../.eslintrc-a11y 'src/**/*.{js,ts,tsx}' --ignore-pattern '*.stories.tsx'",
     "lint:scss": "stylelint 'src/components/**/*.scss'",
     "lint:ts": "eslint '{src,tests}/**/*.{js,ts,tsx}' --ignore-pattern '*.stories.tsx'",
     "start": "npm run start:storybook",

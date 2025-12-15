@@ -19,7 +19,6 @@
     "clean": "lerna run clean",
     "doc": "lerna run --concurrency 1 doc",
     "lint": "yarn lint:ts && yarn lint:scss",
-    "lint:a11y": "lerna run lint:a11y",
     "lint:css": "lerna run --concurrency 1 lint:css",
     "lint:scss": "lerna run --concurrency 1 lint:scss",
     "lint:ts": "lerna run --concurrency 1 lint:ts",

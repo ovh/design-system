@@ -2,6 +2,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:jsx-a11y/strict",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended-legacy"
@@ -15,6 +16,7 @@
   "plugins": [
     "@typescript-eslint",
     "eslint-plugin-import",
+    "eslint-plugin-jsx-a11y",
     "eslint-plugin-tsdoc",
     "react"
   ],
@@ -69,6 +71,7 @@
       }
     ],
     "indent": ["error", 2, { "SwitchCase": 1 }],
+    "jsx-a11y/no-autofocus": "off",
     "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
     "max-depth": ["error", {"max": 4}],
     "max-len": ["error", { "code": 400 }],

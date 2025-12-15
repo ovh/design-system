@@ -1,72 +1,50 @@
-import { Card, Code } from '@ovhcloud/ods-react';
-import * as odsRecipePreview from '@ovhcloud/ods-recipes';
-import { type ComponentMetadataWithSources, type ComponentRecipe } from '@ovhcloud/ods-recipes';
+import {
+  Divider,
+  DIVIDER_SPACING,
+  FormField,
+  FormFieldLabel,
+  Icon,
+  ICON_NAME,
+  Input,
+  INPUT_TYPE,
+} from '@ovhcloud/ods-react';
 import odsRecipeJson from '@ovhcloud/ods-recipes/json';
-import { Markdown } from '@storybook/blocks';
-import React, { type JSX, useMemo } from 'react';
-import { ResetTheme } from '../resetTheme/ResetTheme';
+import React, { type ChangeEvent, type JSX, useCallback, useMemo, useState } from 'react';
+import { RecipeCard, type Recipe } from '../recipeCard/RecipeCard';
+import styles from './recipes.module.css';
 
-const Recipe = ({ recipe }: { recipe: ComponentMetadataWithSources }): JSX.Element => {
-  const { CssModule, Tailwind } = (odsRecipePreview as unknown as Record<string, ComponentRecipe>)[recipe.reactTag];
-
-  return (
-    <div>
-      <Card>
-        <ResetTheme>
-          <CssModule />
-        </ResetTheme>
-      </Card>
-
-      {
-        Tailwind &&
-        <Card>
-          <ResetTheme>
-            <Tailwind />
-          </ResetTheme>
-        </Card>
-      }
-
-      <h1>
-        { recipe.name }
-      </h1>
-
-      {
-        Object.values(recipe.source['css-modules']).map((source, i) => (
-          <Code key={ i }>
-            { source }
-          </Code>
-        ))
-      }
-
-      {
-        !!recipe.source['tailwind'] && Object.values(recipe.source['tailwind']).map((source, i) => (
-          <Code key={ i }>
-            { source }
-          </Code>
-        ))
-      }
-
-      <h2>README</h2>
-
-      <Markdown>
-        { recipe.source['README.md'] }
-      </Markdown>
-    </div>
-  );
-}
-
-// TODO manage error or missing data
 const Recipes = ({ component }: { component?: string }): JSX.Element => {
-  const recipes = useMemo(() => {
+  const [openRecipeName, setOpenRecipeName] = useState<string | null>(null);
+  const [search, setSearch] = useState('');
+
+  const recipes = useMemo((): Recipe[] => {
+    const componentMap = odsRecipeJson.component as Record<string, Recipe>;
+    const componentKeys = (odsRecipeJson.list?.components || []) as string[];
+
+    const allRecipes = componentKeys
+      .map((key) => componentMap[key])
+      .filter(Boolean);
+
     if (component) {
-      return Object.keys(odsRecipeJson.component)
-        .filter((key) => odsRecipeJson.component[key].odsComponents.indexOf(component) > -1)
+      return allRecipes.filter((recipe) =>
+        (recipe.odsComponents?.indexOf(component) ?? -1) > -1
+      );
     }
 
-    return odsRecipeJson.list?.components || [];
+    return allRecipes;
   }, [component]);
 
-  const componentRecipeList = odsRecipeJson.component as Record<string, ComponentMetadataWithSources>;
+  const filteredRecipes = useMemo(() => {
+    const trimmedSearch = search.trim();
+    if (!trimmedSearch) {
+      return recipes;
+    }
+    const searchLower = trimmedSearch.toLowerCase();
+    return recipes.filter((recipe) =>
+      recipe.name.toLowerCase().includes(searchLower) ||
+      recipe.description.toLowerCase().includes(searchLower)
+    );
+  }, [search, recipes]);
 
   if (!recipes || !recipes.length) {
     return (
@@ -74,17 +52,50 @@ const Recipes = ({ component }: { component?: string }): JSX.Element => {
     );
   }
 
+  const handleSearchChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  }, []);
+
+  const handleToggle = useCallback((recipeName: string) => {
+    setOpenRecipeName((prev) => prev === recipeName ? null : recipeName);
+  }, []);
+
   return (
-    <div>
-      {
-        recipes.map((recipe) => (
-          <Recipe
-            key={ recipe }
-            recipe={ componentRecipeList[recipe] } />
-        ))
-      }
+    <div className={ styles.recipes }>
+      <div className={ styles['recipes__search'] }>
+        <FormField>
+          <FormFieldLabel>Search for a recipe</FormFieldLabel>
+          <Input
+            clearable
+            onChange={ handleSearchChange }
+            placeholder="Name or description..."
+            type={ INPUT_TYPE.search }
+            value={ search }
+          />
+        </FormField>
+      </div>
+
+      <Divider spacing={ DIVIDER_SPACING['_48'] } />
+
+      <div className={ styles['recipes__grid'] }>
+        { filteredRecipes.length > 0 ? (
+          filteredRecipes.map((recipe) => (
+            <RecipeCard
+              isOpen={ openRecipeName === recipe.name }
+              key={ recipe.name }
+              onToggle={ handleToggle }
+              recipe={ recipe }
+            />
+          ))
+        ) : (
+          <div className={ styles['recipes__empty'] }>
+            <Icon name={ ICON_NAME.circleInfo } />
+            <span>No recipe found for "{ search }"</span>
+          </div>
+        ) }
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export { Recipes };

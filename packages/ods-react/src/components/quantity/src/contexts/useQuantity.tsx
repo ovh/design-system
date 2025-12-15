@@ -1,4 +1,5 @@
-import { type JSX, type ReactNode, createContext, useContext, useState } from 'react';
+import { type JSX, type ReactNode, createContext, useState } from 'react';
+import { useContext } from '../../../../utils/context';
 
 interface QuantityValueChangeDetail {
   value: string;
@@ -79,13 +80,7 @@ function QuantityProvider({
 }
 
 function useQuantity(): QuantityContextType {
-  const context = useContext(QuantityContext);
-
-  if (!context) {
-    throw new Error('useQuantity must be used within a QuantityProvider');
-  }
-
-  return context;
+  return useContext(QuantityContext);
 }
 
 export {

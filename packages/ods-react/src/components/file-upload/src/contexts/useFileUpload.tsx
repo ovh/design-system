@@ -1,4 +1,5 @@
-import { type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type JSX, type ReactNode, createContext } from 'react';
+import { useContext } from '../../../../utils/context';
 import { type Locale } from '../../../../utils/locales';
 import { type FILE_REJECTION_CAUSE } from '../constants/file-error';
 import { type FileUploadVariant } from '../constants/file-upload-variant';
@@ -85,13 +86,13 @@ interface FileUploadRootProp {
   variant?: FileUploadVariant,
 }
 
-type FileUploadContextType = Pick<FileUploadRootProp, 'locale'>
-
-interface FileUploadProviderProp extends FileUploadContextType {
+interface FileUploadProviderProp extends Pick<FileUploadRootProp, 'locale'> {
   children: ReactNode,
 }
 
-const FileUploadContext = createContext<FileUploadContextType>({});
+type FileUploadContextType = Omit<FileUploadProviderProp, 'children'>;
+
+const FileUploadContext = createContext<FileUploadContextType | undefined>(undefined);
 
 function FileUploadProvider({ children, locale }: FileUploadProviderProp): JSX.Element {
   return (

@@ -1,4 +1,5 @@
-import { type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type JSX, type ReactNode, createContext } from 'react';
+import { useContext } from '../../../../utils/context';
 import { type INPUT_I18N } from '../../../input/src';
 import { type DATEPICKER_DAY } from '../constants/datepicker-day';
 import { type DatepickerView } from '../constants/datepicker-view';
@@ -104,13 +105,13 @@ interface DatepickerRootProp {
   view?: DatepickerView,
 }
 
-type DatepickerContextType = Pick<DatepickerRootProp, 'i18n' | 'invalid' | 'locale' | 'required'>;
-
-interface DatepickerProviderProp extends DatepickerContextType {
+interface DatepickerProviderProp extends Pick<DatepickerRootProp, 'i18n' | 'invalid' | 'locale' | 'required'> {
   children: ReactNode,
 }
 
-const DatepickerContext = createContext<DatepickerContextType>({});
+type DatepickerContextType = Omit<DatepickerProviderProp, 'children'>
+
+const DatepickerContext = createContext<DatepickerContextType | undefined>(undefined);
 
 function DatepickerProvider({ children, i18n, invalid, locale, required }: DatepickerProviderProp): JSX.Element {
   return (

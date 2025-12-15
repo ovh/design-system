@@ -1,5 +1,6 @@
 import { useFilter } from '@ark-ui/react/locale';
-import { type ComponentPropsWithRef, type JSX, type ReactNode, type RefObject, type SetStateAction, createContext, useCallback, useContext, useEffect, useId, useMemo, useRef, useState } from 'react';
+import { type ComponentPropsWithRef, type JSX, type ReactNode, type RefObject, type SetStateAction, createContext, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useContext } from '../../../../utils/context';
 import { type Locale } from '../../../../utils/locales';
 import { type INPUT_I18N } from '../../../input/src';
 import { type PopoverPosition } from '../../../popover/src';
@@ -382,13 +383,7 @@ const ComboboxProvider = ({
 };
 
 function useCombobox(): ComboboxContextType {
-  const context = useContext(ComboboxContext);
-
-  if (!context) {
-    throw new Error('useCombobox must be used within a ComboboxProvider');
-  }
-
-  return context;
+  return useContext(ComboboxContext);
 }
 
 export {

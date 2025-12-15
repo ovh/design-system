@@ -1,4 +1,5 @@
-import { type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type JSX, type ReactNode, createContext } from 'react';
+import { useContext } from '../../../../utils/context';
 
 interface ToggleCheckedChangeDetail {
   checked: boolean,
@@ -43,13 +44,13 @@ interface ToggleRootProp {
   withLabels?: boolean;
 }
 
-type ToggleContextType = Pick<ToggleRootProp, 'withLabels'>;
-
-interface ToggleProviderProp extends ToggleContextType {
+interface ToggleProviderProp extends Pick<ToggleRootProp, 'withLabels'> {
   children: ReactNode,
 }
 
-const ToggleContext = createContext<ToggleContextType>({});
+type ToggleContextType = Omit<ToggleProviderProp, 'children'>;
+
+const ToggleContext = createContext<ToggleContextType | undefined>(undefined);
 
 function ToggleProvider({ children, withLabels }: ToggleProviderProp): JSX.Element {
   return (

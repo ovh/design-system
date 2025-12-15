@@ -3,9 +3,6 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import { useFormField } from '../../../../form-field/src';
 import { QuantityProvider, type QuantityRootProp, useQuantity } from '../../contexts/useQuantity';
 
-/**
- * @inheritDoc QuantityRootProp
- */
 interface QuantityProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue' | 'inputMode'>, QuantityRootProp {}
 
 const QuantityRoot: FC<QuantityProp> = forwardRef(({

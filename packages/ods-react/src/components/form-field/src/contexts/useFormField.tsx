@@ -11,7 +11,11 @@ type FormFieldRootProp = {
   invalid?: boolean,
 }
 
-type FormFieldContextType = FormFieldRootProp & {
+interface FormFieldProviderProp extends FormFieldRootProp {
+  children: ReactNode,
+}
+
+type FormFieldContextType = Omit<FormFieldProviderProp, 'children'> & {
   ariaDescribedBy?: string,
   errorId?: string,
   helperId?: string,
@@ -19,11 +23,7 @@ type FormFieldContextType = FormFieldRootProp & {
   setErrorId?: (value?: string) => void,
   setHelperId?: (value?: string) => void,
   setLabelId?: (value?: string) => void,
-}
-
-interface FormFieldProviderProp extends FormFieldContextType {
-  children: ReactNode,
-}
+};
 
 const FormFieldContext = createContext<FormFieldContextType>({});
 

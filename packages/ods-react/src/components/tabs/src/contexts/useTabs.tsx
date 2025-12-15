@@ -1,4 +1,5 @@
-import { type JSX, type ReactNode, type RefObject, createContext, useContext, useState } from 'react';
+import { type JSX, type ReactNode, type RefObject, createContext, useState } from 'react';
+import { useContext } from '../../../../utils/context';
 import { type TabsSize } from '../constants/tabs-size';
 import { type TabsVariant } from '../constants/tabs-variant';
 
@@ -39,10 +40,10 @@ interface TabsProviderProp extends Pick<TabsRootProp, 'size' | 'variant' | 'with
 
 type TabsContextType = Omit<TabsProviderProp, 'children'> & {
   scrollContainerRef?: RefObject<HTMLElement> | null;
-  setScrollContainerRef?: (ref: RefObject<HTMLElement>) => void;
+  setScrollContainerRef: (ref: RefObject<HTMLElement>) => void;
 }
 
-const TabsContext = createContext<TabsContextType>({});
+const TabsContext = createContext<TabsContextType | undefined>(undefined);
 
 function TabsProvider({
   children,

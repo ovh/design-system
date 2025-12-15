@@ -4,9 +4,6 @@ import { useFormField } from '../../../../form-field/src';
 import { TimepickerProvider, type TimepickerRootProp } from '../../contexts/useTimepicker';
 import style from './timepicker.module.scss';
 
-/**
- * @inheritDoc TimepickerRootProp
- */
 interface TimepickerProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue'>, TimepickerRootProp {}
 
 const Timepicker: FC<TimepickerProp> = forwardRef(({

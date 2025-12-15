@@ -1,4 +1,5 @@
-import { type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type JSX, type ReactNode, createContext } from 'react';
+import { useContext } from '../../../../utils/context';
 import { type Locale } from '../../../../utils/locales';
 import { type BREADCRUMB_I18N } from '../constants/breadcrumb-i18n';
 
@@ -37,13 +38,13 @@ interface BreadcrumbRootProp {
   onExpand?: () => void,
 }
 
-type BreadcrumbContextType = Pick<BreadcrumbRootProp, 'i18n' | 'locale'>;
-
-interface BreadcrumbProviderProp extends BreadcrumbContextType {
+interface BreadcrumbProviderProp extends Pick<BreadcrumbRootProp, 'i18n' | 'locale'> {
   children: ReactNode,
 }
 
-const BreadcrumbContext = createContext<BreadcrumbContextType>({});
+type BreadcrumbContextType = Omit<BreadcrumbProviderProp, 'children'>;
+
+const BreadcrumbContext = createContext<BreadcrumbContextType | undefined>(undefined);
 
 function BreadcrumbProvider({ children, i18n, locale }: BreadcrumbProviderProp): JSX.Element {
   return (

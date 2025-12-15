@@ -1,4 +1,5 @@
-import { type Dispatch, type JSX, type ReactNode, type SetStateAction, createContext, useContext, useState } from 'react';
+import { type Dispatch, type JSX, type ReactNode, type SetStateAction, createContext, useState } from 'react';
+import { useContext } from '../../../../utils/context';
 
 type RangeTickCustomItem = { label: string, value: number };
 type RangeTickItem = number | RangeTickCustomItem;
@@ -106,13 +107,7 @@ function RangeProvider({ children, disabled }: RangeProviderProp): JSX.Element {
 }
 
 function useRange(): RangeContextType {
-  const context = useContext(RangeContext);
-
-  if (!context) {
-    throw new Error('useRange must be used within a RangeProvider');
-  }
-
-  return context;
+  return useContext(RangeContext);
 }
 
 export {

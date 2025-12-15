@@ -1,4 +1,5 @@
-import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext } from 'react';
+import { useContext } from '../../../../utils/context';
 import { type ButtonGroupSize } from '../constants/button-group-size';
 
 interface ButtonGroupValueChangeDetail {
@@ -54,13 +55,7 @@ const ButtonGroupProvider = ({
 };
 
 function useButtonGroup(): ButtonGroupContextType {
-  const context = useContext(ButtonGroupContext);
-
-  if (!context) {
-    throw new Error('useButtonGroup must be used within a ButtonGroupProvider');
-  }
-
-  return context;
+  return useContext(ButtonGroupContext);
 }
 
 export {

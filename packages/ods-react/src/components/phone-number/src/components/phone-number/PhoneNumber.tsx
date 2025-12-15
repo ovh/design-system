@@ -4,9 +4,6 @@ import { useFormField } from '../../../../form-field/src';
 import { PhoneNumberProvider, type PhoneNumberRootProp } from '../../contexts/usePhoneNumber';
 import style from './phoneNumber.module.scss';
 
-/**
- * @inheritDoc PhoneNumberRootProp
- */
 interface PhoneNumberProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue'>, PhoneNumberRootProp {}
 
 const PhoneNumber: FC<PhoneNumberProp> = forwardRef(({

@@ -22,12 +22,12 @@ const TooltipTrigger: FC<TooltipTriggerProp> = forwardRef(({
 
   useEffect(() => {
     if (!asChild && props.id) {
-      setTriggerId?.(props.id);
+      setTriggerId(props.id);
       return;
     }
 
     if (children && (children as ReactElement).props?.id) {
-      setTriggerId?.((children as ReactElement).props.id);
+      setTriggerId((children as ReactElement).props.id);
     }
   }, [asChild, children, props, setTriggerId]);
 

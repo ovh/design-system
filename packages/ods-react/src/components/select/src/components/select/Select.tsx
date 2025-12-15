@@ -1,60 +1,10 @@
 import { Select as VendorSelect, createListCollection } from '@ark-ui/react/select';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useMemo } from 'react';
+import { type FC, type JSX, forwardRef, useMemo } from 'react';
 import { useFormField } from '../../../../form-field/src';
-import { type SelectGroupItem, type SelectItem, type SelectMultipleMode, type SelectOptionItem, SelectProvider } from '../../contexts/useSelect';
+import { type SelectGroupItem, type SelectOptionItem, SelectProvider, type SelectRootProp } from '../../contexts/useSelect';
 import { isGroup } from '../../controller/select';
 
-interface SelectValueChangeDetail {
-  items: SelectItem[],
-  value: string[],
-}
-
-interface SelectProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> {
-  /**
-   * The initial selected value(s). Use when you don't need to control the selected value(s) of the select.
-   */
-  defaultValue?: string | string[],
-  /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean,
-  /**
-   * Whether the dropdown width should stay the same as the input.
-   */
-  fitControlWidth?: boolean,
-  /**
-   * Whether the component is in error state.
-   */
-  invalid?: boolean,
-  /**
-   * The list of items
-   */
-  items: SelectItem[],
-  /**
-   * Allows multiple selection and define how it should be rendered.
-   */
-  multiple?: SelectMultipleMode,
-  /**
-   * The name of the form element. Useful for form submission.
-   */
-  name?: string,
-  /**
-   * Callback fired when the value(s) changes.
-   */
-  onValueChange?: (detail: SelectValueChangeDetail) => void,
-  /**
-   * Whether the component is readonly.
-   */
-  readOnly?: boolean,
-  /**
-   * Whether the component is required.
-   */
-  required?: boolean,
-  /**
-   * The controlled selected value(s).
-   */
-  value?: string[],
-}
+interface SelectProp extends SelectRootProp {}
 
 const Select: FC<SelectProp> = forwardRef(({
   children,
@@ -132,5 +82,4 @@ Select.displayName = 'Select';
 export {
   Select,
   type SelectProp,
-  type SelectValueChangeDetail,
 };

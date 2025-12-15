@@ -2,9 +2,6 @@ import { type FC, type JSX, forwardRef } from 'react';
 import { useFormField } from '../../../../form-field/src';
 import { ComboboxProvider, type ComboboxRootProp } from '../../contexts/useCombobox';
 
-/**
- * @inheritDoc ComboboxRootProp
- */
 interface ComboboxProp extends ComboboxRootProp {}
 
 const Combobox: FC<ComboboxProp> = forwardRef(({

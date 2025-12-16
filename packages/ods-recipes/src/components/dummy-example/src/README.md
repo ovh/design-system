@@ -1,26 +1,3 @@
 # Dummy Example
 
-[//]: # (All information to set here should be available on the Figma page matching the recipe you're trying to create)
-[//]: # (If that's not the case, please reach out to us or the involved designer to get those information)
-
-Some description of the recipe.
-
-## Best practices
-
-### ✅ Do
-
-- Define some best practice to apply
-- ...
-
-### ❌ Don't
-
-- Define some bad practice to avoid
-- ...
-
-## Usage
-
-Describe when and how should this recipe be used.
-
-## Placement
-
-Describe where this recipe should be used in the page.
+A dummy example to test multiple recipes.

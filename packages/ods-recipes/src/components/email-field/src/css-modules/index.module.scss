@@ -1,0 +1,34 @@
+.email-field {
+  &__field {
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    align-items: center;
+
+    &__input {
+      z-index: 1;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &__at {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--ods-theme-background-color-readonly);
+      width: 30px;
+      height: 100%;
+    }
+
+    &__select {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  &__helper {
+    &__list {
+      margin: 0;
+      padding: 0 calc(var(--ods-theme-padding-horizontal) * 2);
+    }
+  }
+}

@@ -4,8 +4,6 @@ import { type ComponentMetadata, type ComponentRecipe } from '../../../constants
 import { SEARCH_TAG } from '../../../constants/search-tag';
 
 const metadata: ComponentMetadata = {
-  additionalNote: '',
-  description: 'A tile that offers a location option.',
   name: 'Location Tile',
   reactTag: 'LocationTile',
   tags: [

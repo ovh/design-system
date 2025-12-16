@@ -2,8 +2,6 @@ import { type ReactElement } from 'react';
 import { type SearchTag } from './search-tag';
 
 type ComponentMetadata = {
-  additionalNote?: string,
-  description: string,
   name: string,
   reactTag: string,
   tags: Array<SearchTag | string>,

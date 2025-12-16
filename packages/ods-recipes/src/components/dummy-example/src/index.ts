@@ -4,8 +4,6 @@ import { type ComponentMetadata, type ComponentRecipe } from '../../../constants
 import { SEARCH_TAG } from '../../../constants/search-tag';
 
 const metadata: ComponentMetadata = {
-  additionalNote: 'Do not use.',
-  description: 'A dummy example to test multiple recipes.',
   name: 'Dummy Example',
   reactTag: 'DummyExample',
   tags: [

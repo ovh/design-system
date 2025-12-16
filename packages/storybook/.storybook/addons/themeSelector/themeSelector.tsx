@@ -2,7 +2,6 @@ import { BUTTON_SIZE, BUTTON_VARIANT, ICON_NAME, Button, Icon, Popover, PopoverC
 import { type API, addons, types } from '@storybook/manager-api';
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
-import { ICON_NAME as DOC_ICON_NAME, Icon as DocIcon } from '../../components/icon/Icon';
 import { THEME, THEME_STORAGE_KEY } from '../../constants/theme';
 import { localGet, localSave } from '../../helpers/storage';
 import { dark, light } from '../../ods.theme';
@@ -50,7 +49,7 @@ const themeSelectorAddon = (api: API) => {
                 onClick={ () => selectTheme(THEME.light) }
                 size={ BUTTON_SIZE.xs }
                 variant={ BUTTON_VARIANT.ghost }>
-                <DocIcon name={ DOC_ICON_NAME.sun } /> Light theme
+                <Icon name={ ICON_NAME.sun } /> Light theme
               </Button>
 
               <Button
@@ -58,7 +57,7 @@ const themeSelectorAddon = (api: API) => {
                 onClick={ () => selectTheme(THEME.dark) }
                 size={ BUTTON_SIZE.xs }
                 variant={ BUTTON_VARIANT.ghost }>
-                <DocIcon name={ DOC_ICON_NAME.moon } style={{ width: '16px' }} /> Dark theme
+                <Icon name={ ICON_NAME.moon } /> Dark theme
               </Button>
 
               <Button

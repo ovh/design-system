@@ -18,6 +18,7 @@
     &--arrow-up-right::before { content: '\e90a'; }
     &--bell::before { content: '\e90e'; }
     &--bill::before { content: '\e913'; }
+    &--blog::before { content: '\e9b8'; }
     &--book::before { content: '\e90f'; }
     &--box::before { content: '\e91c'; }
     &--building::before { content: '\e953'; }
@@ -25,6 +26,7 @@
     &--calculator::before { content: '\e96e'; }
     &--calendar::before { content: '\e910'; }
     &--castle::before { content: '\e987'; }
+    &--chain-link::before { content: '\e9bd'; }
     &--check::before { content: '\e914'; }
     &--chevron-double-left::before { content: '\e915'; }
     &--chevron-double-right::before { content: '\e916'; }
@@ -65,8 +67,10 @@
     &--diamond-exclamation::before { content: '\e930'; }
     &--diamond-exclamation-full::before { content: '\e92f'; }
     &--diamonds-full::before { content: '\e92a'; }
+    &--discord::before { content: '\e9b9'; }
     &--disk::before { content: '\e998'; }
     &--download::before { content: '\e934'; }
+    &--drag-drop::before { content: '\e9ba'; }
     &--ellipsis-horizontal::before { content: '\e935'; }
     &--ellipsis-vertical::before { content: '\e936'; }
     &--email::before { content: '\e937'; }
@@ -80,6 +84,7 @@
     &--external-link::before { content: '\e940'; }
     &--eye::before { content: '\e942'; }
     &--eye-off::before { content: '\e941'; }
+    &--facebook::before { content: '\e9bb'; }
     &--fiber::before { content: '\e999'; }
     &--file::before { content: '\e946'; }
     &--file-copy::before { content: '\e943'; }
@@ -101,6 +106,7 @@
     &--game-controller-alt::before { content: '\e94d'; }
     &--gathering::before { content: '\e94f'; }
     &--gift::before { content: '\e99d'; }
+    &--github::before { content: '\e9bc'; }
     &--globe::before { content: '\e950'; }
     &--grid::before { content: '\e900'; }
     &--grid-alt::before { content: '\e951'; }
@@ -118,6 +124,7 @@
     &--lifebuoy::before { content: '\e95c'; }
     &--lightbulb::before { content: '\e95d'; }
     &--lightning::before { content: '\e9a2'; }
+    &--linkedin::before { content: '\e9be'; }
     &--list::before { content: '\e95e'; }
     &--location::before { content: '\e95f'; }
     &--lock-close::before { content: '\e960'; }
@@ -125,17 +132,22 @@
     &--magic-wand::before { content: '\e9a3'; }
     &--magnifying-glass::before { content: '\e971'; }
     &--meter::before { content: '\e997'; }
+    &--mic::before { content: '\e9c0'; }
+    &--mic-off::before { content: '\e9bf'; }
     &--minus::before { content: '\e963'; }
     &--money::before { content: '\e964'; }
     &--money-bag-default::before { content: '\e9a6'; }
     &--money-bag-dollar::before { content: '\e9a4'; }
     &--money-bag-euro::before { content: '\e9a5'; }
     &--monitor::before { content: '\e931'; }
+    &--moon::before { content: '\e9c1'; }
     &--network::before { content: '\e965'; }
     &--pen::before { content: '\e966'; }
     &--percent::before { content: '\e9a7'; }
     &--phone::before { content: '\e967'; }
     &--piggy-bank::before { content: '\e9a8'; }
+    &--pin::before { content: '\e9c3'; }
+    &--pin-off::before { content: '\e9c2'; }
     &--plus::before { content: '\e968'; }
     &--printer::before { content: '\e969'; }
     &--question::before { content: '\e96d'; }
@@ -145,6 +157,7 @@
     &--server::before { content: '\e90d'; }
     &--server-rack::before { content: '\e90c'; }
     &--share-nodes::before { content: '\e972'; }
+    &--share-screen::before { content: '\e9c4'; }
     &--shield::before { content: '\e97b'; }
     &--shield-check::before { content: '\e973'; }
     &--shield-exclamation::before { content: '\e97a'; }
@@ -172,6 +185,7 @@
     &--star-full::before { content: '\e988'; }
     &--star-half::before { content: '\e9ad'; }
     &--store::before { content: '\e98a'; }
+    &--sun::before { content: '\e9c5'; }
     &--sync::before { content: '\e9ae'; }
     &--tag::before { content: '\e96b'; }
     &--thumbs-down::before { content: '\e9af'; }
@@ -183,10 +197,13 @@
     &--triangle-exclamation-full::before { content: '\e994'; }
     &--triangle-three-nodes::before { content: '\e96a'; }
     &--truck::before { content: '\e98f'; }
+    &--twitch::before { content: '\e9c6'; }
     &--undo::before { content: '\e990'; }
     &--upload::before { content: '\e991'; }
     &--user::before { content: '\e993'; }
     &--vault::before { content: '\e9b1'; }
+    &--x::before { content: '\e9c7'; }
     &--xmark::before { content: '\e98b'; }
+    &--youtube::before { content: '\e9c8'; }
   }
 }

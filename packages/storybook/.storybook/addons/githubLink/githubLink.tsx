@@ -1,6 +1,6 @@
+import { ICON_NAME, Icon } from '@ovhcloud/ods-react';
 import { addons, types, useStorybookState } from '@storybook/manager-api';
 import React from 'react';
-import { Icon, ICON_NAME } from '../../components/icon/Icon';
 import style from './githubLink.module.css';
 
 const ADDON_NAME = 'githubLink';

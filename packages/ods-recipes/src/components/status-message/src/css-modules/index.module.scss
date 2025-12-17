@@ -1,0 +1,21 @@
+.status-message {
+  &__body {
+    display: flex;
+    flex-flow: column;
+    row-gap: var(--ods-theme-row-gap);
+
+    &__content {
+      display: flex;
+      flex-flow: column;
+      row-gap: calc(var(--ods-theme-row-gap) / 2);
+
+      &__title {
+        font-weight: 700;
+      }
+
+      &__message {
+        margin: 0;
+      }
+    }
+  }
+}

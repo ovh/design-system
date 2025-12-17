@@ -1,8 +1,8 @@
 {
-  "name": "@ovhcloud/ods-recipes-dummy-example",
+  "name": "@ovhcloud/ods-recipes-status-message",
   "version": "19.3.0",
   "private": true,
-  "description": "ODS Recipes DummyExample",
+  "description": "ODS Recipes StatusMessage",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {

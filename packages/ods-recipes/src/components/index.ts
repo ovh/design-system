@@ -3,3 +3,4 @@ export * from './location-tile/src';
 
 export * from './email-field/src';
 export * from './feature-list/src';
+export * from './price/src';

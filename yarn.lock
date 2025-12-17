@@ -5031,12 +5031,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-recipes-dummy-example@workspace:packages/ods-recipes/src/components/dummy-example":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-recipes-dummy-example@workspace:packages/ods-recipes/src/components/dummy-example"
-  languageName: unknown
-  linkType: soft
-
 "@ovhcloud/ods-recipes-email-field@workspace:packages/ods-recipes/src/components/email-field":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-recipes-email-field@workspace:packages/ods-recipes/src/components/email-field"
@@ -5049,15 +5043,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-recipes-location-title@workspace:packages/ods-recipes/src/components/location-tile":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-recipes-location-title@workspace:packages/ods-recipes/src/components/location-tile"
-  languageName: unknown
-  linkType: soft
-
 "@ovhcloud/ods-recipes-price@workspace:packages/ods-recipes/src/components/price":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-recipes-price@workspace:packages/ods-recipes/src/components/price"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-recipes-status-message@workspace:packages/ods-recipes/src/components/status-message":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-status-message@workspace:packages/ods-recipes/src/components/status-message"
   languageName: unknown
   linkType: soft
 

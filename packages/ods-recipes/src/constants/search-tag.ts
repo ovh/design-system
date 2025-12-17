@@ -2,11 +2,7 @@ enum SEARCH_TAG {
   form = 'form',
   interactive = 'interactive',
   presentation = 'presentation',
-  // TODO remove those when deleting example recipes
-  checkbox = 'checkbox',
-  location = 'location',
-  selection = 'selection',
-  tile = 'tile',
+  status = 'status',
 }
 
 type SearchTag = `${SEARCH_TAG}`;

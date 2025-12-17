@@ -130,6 +130,7 @@ const RecipeCard = memo(({ isOpen, onToggle, recipe }: RecipeCardProps) => {
           <Button
             aria-expanded={ isOpen }
             aria-label={ isOpen ? `Collapse ${recipe.name}` : `Expand ${recipe.name}` }
+            data-storybook="button-ghost"
             onClick={ handleToggle }
             variant={ BUTTON_VARIANT.ghost }
           >

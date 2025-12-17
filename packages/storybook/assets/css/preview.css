@@ -16,11 +16,17 @@ body[data-theme="dark"] > #storybook-docs {
   --ods-theme-heading-text-color: #a2ccfb;
   --ods-theme-outline-color: #f0f0f0;
   --ods-theme-text-color: #e0e2f7;
+  --ods-theme-input-text-color: #e0e2f7;
+  --ods-theme-input-placeholder-text-color: #c4c4c4;
 }
 
 body[data-theme="dark"] [data-storybook="table"] {
   --ods-table-head-background-color: #383838;
   --ods-table-striped-background-color: #383838;
+}
+
+body[data-theme="dark"] [data-storybook="button-ghost"], body[data-theme="dark"] [data-storybook="input-search"] ~ * [data-ods="button"] {
+  --ods-button-text-color-primary-ghost: #e0e2f7;
 }
 
 body > #storybook-docs {
@@ -69,32 +75,3 @@ img {
   outline: none;
 }
 
-/* Dark mode styles for recipe search input */
-body[data-theme="dark"] [data-ods="input"],
-body[data-theme="dark"] [data-ods="input"]:focus {
-  border-color: var(--ods-theme-input-border-color);
-  background-color: var(--ods-theme-background-color);
-  color: var(--ods-theme-text-color);
-}
-
-body[data-theme="dark"] [data-ods="input"]::placeholder {
-  color: var(--ods-theme-input-placeholder-text-color);
-}
-
-body[data-theme="dark"] [data-ods="input"]:hover {
-  border-color: var(--ods-theme-input-border-color-hover);
-}
-
-/* Dark mode styles for input action buttons icons */
-body[data-theme="dark"] :has([data-ods="input"]) [data-ods="icon"] {
-  color: var(--ods-theme-text-color);
-}
-
-/* Dark mode styles for input action buttons ghost hover */
-body[data-theme="dark"] :has([data-ods="input"]) [data-ods="button"]:hover {
-  color: var(--ods-theme-anchor-text-color-hover);
-}
-
-body[data-theme="dark"] :has([data-ods="input"]) [data-ods="button"]:hover [data-ods="icon"] {
-  color: var(--ods-theme-anchor-text-color);
-}

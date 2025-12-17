@@ -80,6 +80,7 @@ const Recipes = ({ component, searchable = true }: RecipesProps): JSX.Element =>
               <FormFieldLabel>Search for a recipe</FormFieldLabel>
                 <Input
                   clearable
+                  data-storybook="input-search"
                   onChange={ handleSearchChange }
                   placeholder="Keyword..."
                   type={ INPUT_TYPE.search }

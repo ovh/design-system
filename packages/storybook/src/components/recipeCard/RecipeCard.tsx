@@ -18,12 +18,14 @@ import {
   TABS_SIZE,
   TABS_VARIANT,
 } from '@ovhcloud/ods-react';
-import { type ComponentMetadataWithSources, type ComponentRecipe, DummyExample, LocationTile } from '@ovhcloud/ods-recipes';
+import * as RECIPES from '@ovhcloud/ods-recipes';
+import { type ComponentMetadataWithSources, type ComponentRecipe } from '@ovhcloud/ods-recipes';
 import langCss from '@shikijs/langs/css';
 import langScss from '@shikijs/langs/scss';
 import langTsx from '@shikijs/langs/tsx';
 import theme from '@shikijs/themes/nord';
 import { Markdown } from '@storybook/blocks';
+import classNames from 'classnames';
 import React, { memo, useMemo, useState } from 'react';
 import { ResetTheme } from '../resetTheme/ResetTheme';
 import styles from './recipeCard.module.css';
@@ -52,11 +54,6 @@ const STYLE_MODE_ITEMS: SelectItem[] = [
   { label: 'Tailwind', value: 'tailwind' },
 ];
 
-const RECIPES: Record<string, ComponentRecipe> = {
-  DummyExample,
-  LocationTile,
-};
-
 const EXT_TO_LANG: Record<string, ShikiLang> = {
   css: langCss,
   scss: langScss,
@@ -80,7 +77,7 @@ const RecipeCard = memo(({ isOpen, onToggle, recipe }: RecipeCardProps) => {
   };
 
   const component = useMemo(
-    () => RECIPES[recipe.reactTag],
+    () => (RECIPES as unknown as Record<string, ComponentRecipe>)[recipe.reactTag],
     [recipe.reactTag]
   );
 
@@ -126,10 +123,10 @@ const RecipeCard = memo(({ isOpen, onToggle, recipe }: RecipeCardProps) => {
   };
 
   return (
-    <div className={ `${styles['recipe-card']} ${isOpen ? styles['recipe-card--open'] : ''}` }>
+    <div className={ classNames(styles['recipe-card'], { [styles['recipe-card--open']]: isOpen }) }>
       <Card className={ styles['recipe-card__inner'] } color={ CARD_COLOR.neutral }>
-        <div className={ styles['recipe-card__header'] }>
-          <h3 className={ styles['recipe-card__header__title'] }>{ recipe.name }</h3>
+        <div className={ styles['recipe-card__inner__header'] }>
+          <h3 className={ styles['recipe-card__inner__header__title'] }>{ recipe.name }</h3>
           <Button
             aria-expanded={ isOpen }
             aria-label={ isOpen ? `Collapse ${recipe.name}` : `Expand ${recipe.name}` }
@@ -140,26 +137,26 @@ const RecipeCard = memo(({ isOpen, onToggle, recipe }: RecipeCardProps) => {
           </Button>
         </div>
 
-        <p className={ styles['recipe-card__description'] }>{ recipe.description }</p>
+        <p className={ styles['recipe-card__inner__description'] }>{ recipe.description }</p>
 
-        <div className={ styles['recipe-card__canvas'] }>
+        <div className={ styles['recipe-card__inner__canvas'] }>
           <ResetTheme>
-            <div className={ styles['recipe-card__canvas__preview'] }>
+            <div className={ styles['recipe-card__inner__canvas__preview'] }>
               { Preview ? (
                 <Preview />
               ) : (
-                <div className={ styles['recipe-card__canvas__preview__placeholder'] }>{ recipe.name }</div>
+                <div className={ styles['recipe-card__inner__canvas__preview__placeholder'] }>{ recipe.name }</div>
               ) }
             </div>
           </ResetTheme>
         </div>
 
         { isOpen && (
-          <div className={ styles['recipe-card__code'] }>
+          <div className={ styles['recipe-card__inner__code'] }>
             { tabs.length > 0 ? (
               <Tabs defaultValue={ tabs[0]?.filename } key={ mode } size={ TABS_SIZE.xs } variant={ TABS_VARIANT.switch }>
                 <ResetTheme style={{ backgroundColor: 'transparent' }}>
-                  <div className={ styles['recipe-card__code__toolbar'] }>
+                  <div className={ styles['recipe-card__inner__code__toolbar'] }>
                     <TabList>
                       { tabs.map((tab) => (
                         <Tab key={ tab.filename } value={ tab.filename }>
@@ -178,9 +175,9 @@ const RecipeCard = memo(({ isOpen, onToggle, recipe }: RecipeCardProps) => {
                   </div>
                 </ResetTheme>
                 { tabs.map((tab) => (
-                  <TabContent className={ styles['recipe-card__code__panel'] } key={ tab.filename } value={ tab.filename }>
+                  <TabContent className={ styles['recipe-card__inner__code__panel'] } key={ tab.filename } value={ tab.filename }>
                     { tab.isMarkdown ? (
-                      <div className={ styles['recipe-card__code__panel__markdown'] }>
+                      <div className={ styles['recipe-card__inner__code__panel__markdown'] }>
                         <Markdown>
                           { tab.code }
                         </Markdown>
@@ -188,7 +185,7 @@ const RecipeCard = memo(({ isOpen, onToggle, recipe }: RecipeCardProps) => {
                     ) : (
                       <Code
                         canCopy
-                        className={ styles['recipe-card__code__panel__editor'] }
+                        className={ styles['recipe-card__inner__code__panel__editor'] }
                         highlighter={{ language: tab.lang, theme }}
                       >
                         { tab.code }

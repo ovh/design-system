@@ -3,17 +3,25 @@ import {
   DIVIDER_SPACING,
   FormField,
   FormFieldLabel,
-  Icon,
   ICON_NAME,
   Input,
   INPUT_TYPE,
+  Message,
+  MESSAGE_COLOR,
+  MessageBody,
+  MessageIcon,
 } from '@ovhcloud/ods-react';
 import odsRecipeJson from '@ovhcloud/ods-recipes/json';
-import React, { type ChangeEvent, type JSX, useCallback, useMemo, useState } from 'react';
+import React, { type ChangeEvent, type JSX, useMemo, useState } from 'react';
 import { RecipeCard, type Recipe } from '../recipeCard/RecipeCard';
 import styles from './recipes.module.css';
 
-const Recipes = ({ component }: { component?: string }): JSX.Element => {
+type RecipesProps = {
+  component?: string;
+  searchable?: boolean;
+}
+
+const Recipes = ({ component, searchable = true }: RecipesProps): JSX.Element => {
   const [openRecipeName, setOpenRecipeName] = useState<string | null>(null);
   const [search, setSearch] = useState('');
 
@@ -52,30 +60,34 @@ const Recipes = ({ component }: { component?: string }): JSX.Element => {
     );
   }
 
-  const handleSearchChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
-  }, []);
+  };
 
-  const handleToggle = useCallback((recipeName: string) => {
+  const handleToggle = (recipeName: string) => {
     setOpenRecipeName((prev) => prev === recipeName ? null : recipeName);
-  }, []);
+  };
 
   return (
     <div className={ styles.recipes }>
-      <div className={ styles['recipes__search'] }>
-        <FormField>
-          <FormFieldLabel>Search for a recipe</FormFieldLabel>
-          <Input
-            clearable
-            onChange={ handleSearchChange }
-            placeholder="Name or description..."
-            type={ INPUT_TYPE.search }
-            value={ search }
-          />
-        </FormField>
-      </div>
+      { searchable && (
+        <>
+          <div className={ styles['recipes__search'] }>
+            <FormField>
+              <FormFieldLabel>Search for a recipe</FormFieldLabel>
+              <Input
+                clearable
+                onChange={ handleSearchChange }
+                placeholder="Keyword..."
+                type={ INPUT_TYPE.search }
+                value={ search }
+              />
+            </FormField>
+          </div>
 
-      <Divider spacing={ DIVIDER_SPACING['_48'] } />
+          <Divider spacing={ DIVIDER_SPACING._48 } />
+        </>
+      ) }
 
       <div className={ styles['recipes__grid'] }>
         { filteredRecipes.length > 0 ? (
@@ -88,10 +100,16 @@ const Recipes = ({ component }: { component?: string }): JSX.Element => {
             />
           ))
         ) : (
-          <div className={ styles['recipes__empty'] }>
-            <Icon name={ ICON_NAME.circleInfo } />
-            <span>No recipe found for "{ search }"</span>
-          </div>
+            <Message
+              className={ styles['recipes__empty'] }
+              color={ MESSAGE_COLOR.information }
+              dismissible={ false }
+            >
+              <MessageIcon name={ ICON_NAME.circleInfo } />
+              <MessageBody>
+                No recipe found for "{ search }"
+              </MessageBody>
+            </Message>
         ) }
       </div>
     </div>

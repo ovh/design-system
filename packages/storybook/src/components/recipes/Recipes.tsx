@@ -50,7 +50,10 @@ const Recipes = ({ component, searchable = true }: RecipesProps): JSX.Element =>
     const searchLower = trimmedSearch.toLowerCase();
     return recipes.filter((recipe) =>
       recipe.name.toLowerCase().includes(searchLower) ||
-      recipe.description.toLowerCase().includes(searchLower)
+      recipe.description.toLowerCase().includes(searchLower) ||
+      recipe.tags?.some((tag) =>
+        tag.toLowerCase().includes(searchLower)
+      )
     );
   }, [search, recipes]);
 
@@ -75,13 +78,13 @@ const Recipes = ({ component, searchable = true }: RecipesProps): JSX.Element =>
           <div className={ styles['recipes__search'] }>
             <FormField>
               <FormFieldLabel>Search for a recipe</FormFieldLabel>
-              <Input
-                clearable
-                onChange={ handleSearchChange }
-                placeholder="Keyword..."
-                type={ INPUT_TYPE.search }
-                value={ search }
-              />
+                <Input
+                  clearable
+                  onChange={ handleSearchChange }
+                  placeholder="Keyword..."
+                  type={ INPUT_TYPE.search }
+                  value={ search }
+                />
             </FormField>
           </div>
 

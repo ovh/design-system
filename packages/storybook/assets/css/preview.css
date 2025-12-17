@@ -68,3 +68,33 @@ img {
 #monacoOverflowContainer {
   outline: none;
 }
+
+/* Dark mode styles for recipe search input */
+body[data-theme="dark"] [data-ods="input"],
+body[data-theme="dark"] [data-ods="input"]:focus {
+  border-color: var(--ods-theme-input-border-color);
+  background-color: var(--ods-theme-background-color);
+  color: var(--ods-theme-text-color);
+}
+
+body[data-theme="dark"] [data-ods="input"]::placeholder {
+  color: var(--ods-theme-input-placeholder-text-color);
+}
+
+body[data-theme="dark"] [data-ods="input"]:hover {
+  border-color: var(--ods-theme-input-border-color-hover);
+}
+
+/* Dark mode styles for input action buttons icons */
+body[data-theme="dark"] :has([data-ods="input"]) [data-ods="icon"] {
+  color: var(--ods-theme-text-color);
+}
+
+/* Dark mode styles for input action buttons ghost hover */
+body[data-theme="dark"] :has([data-ods="input"]) [data-ods="button"]:hover {
+  color: var(--ods-theme-anchor-text-color-hover);
+}
+
+body[data-theme="dark"] :has([data-ods="input"]) [data-ods="button"]:hover [data-ods="icon"] {
+  color: var(--ods-theme-anchor-text-color);
+}

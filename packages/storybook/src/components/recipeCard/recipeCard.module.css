@@ -26,11 +26,6 @@
   font-weight: 600;
 }
 
-.recipe-card__inner__description {
-  margin: 8px 0 0;
-  font-size: 14px;
-}
-
 .recipe-card__inner__canvas {
   margin-top: 12px;
   border: 1px solid var(--ods-color-neutral-200);
@@ -39,15 +34,7 @@
 }
 
 .recipe-card__inner__canvas__preview {
-  padding: 8px 0;
-}
-
-.recipe-card__inner__canvas__preview__placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  font-size: 13px;
+  padding: 8px;
 }
 
 .recipe-card__inner__code {

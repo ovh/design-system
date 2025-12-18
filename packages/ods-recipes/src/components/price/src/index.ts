@@ -6,6 +6,7 @@ const metadata: ComponentMetadata = {
   name: 'Price',
   reactTag: 'Price',
   tags: [
+    SEARCH_TAG.cart,
     SEARCH_TAG.presentation,
   ],
 };

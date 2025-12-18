@@ -1,0 +1,7 @@
+@use '../../../../../style/font';
+
+@layer ods-molecules {
+  .select-value {
+    @include font.ellipsis();
+  }
+}

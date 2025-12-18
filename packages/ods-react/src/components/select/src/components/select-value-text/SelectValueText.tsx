@@ -2,6 +2,7 @@ import { Select, useSelectContext } from '@ark-ui/react/select';
 import { type FC, type JSX } from 'react';
 import { type SelectCustomItemRendererArg, useSelect } from '../../contexts/useSelect';
 import { SelectMergedSelection } from '../select-merged-selection/SelectMergedSelection';
+import style from './selectValue.module.scss';
 
 interface SelectValueTextProp {
   customItemRenderer?: (arg: SelectCustomItemRendererArg) => JSX.Element,
@@ -35,7 +36,9 @@ const SelectValueText: FC<SelectValueTextProp> = ({
   }
 
   return (
-    <Select.ValueText placeholder={ placeholder } />
+    <Select.ValueText
+      className={ style['select-value'] }
+      placeholder={ placeholder } />
   );
 };
 

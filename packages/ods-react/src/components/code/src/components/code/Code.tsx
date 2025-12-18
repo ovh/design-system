@@ -53,6 +53,12 @@ const Code: FC<CodeProp> = forwardRef(({
   const shouldHighlight = language && language.length && theme;
 
   useEffect(() => {
+    return () => {
+      highlighterCore?.dispose();
+    };
+  }, [highlighterCore]);
+
+  useEffect(() => {
     let active = true;
     createHighlighter();
 

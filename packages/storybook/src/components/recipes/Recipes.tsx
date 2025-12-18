@@ -1,13 +1,13 @@
 import {
-  Divider,
   DIVIDER_SPACING,
+  Divider,
   FormField,
   FormFieldLabel,
   ICON_NAME,
-  Input,
   INPUT_TYPE,
-  Message,
+  Input,
   MESSAGE_COLOR,
+  Message,
   MessageBody,
   MessageIcon,
 } from '@ovhcloud/ods-react';
@@ -16,13 +16,13 @@ import React, { type ChangeEvent, type JSX, useMemo, useState } from 'react';
 import { RecipeCard, type Recipe } from '../recipeCard/RecipeCard';
 import styles from './recipes.module.css';
 
-type RecipesProps = {
+type RecipesProp = {
   component?: string;
   searchable?: boolean;
 }
 
-const Recipes = ({ component, searchable = true }: RecipesProps): JSX.Element => {
-  const [openRecipeName, setOpenRecipeName] = useState<string | null>(null);
+const Recipes = ({ component, searchable = false }: RecipesProp): JSX.Element => {
+  const [openRecipeName, setOpenRecipeName] = useState('');
   const [search, setSearch] = useState('');
 
   const recipes = useMemo((): Recipe[] => {
@@ -50,12 +50,11 @@ const Recipes = ({ component, searchable = true }: RecipesProps): JSX.Element =>
     const searchLower = trimmedSearch.toLowerCase();
     return recipes.filter((recipe) =>
       recipe.name.toLowerCase().includes(searchLower) ||
-      recipe.description.toLowerCase().includes(searchLower) ||
       recipe.tags?.some((tag) =>
         tag.toLowerCase().includes(searchLower)
       )
     );
-  }, [search, recipes]);
+  }, [recipes, search]);
 
   if (!recipes || !recipes.length) {
     return (
@@ -63,31 +62,29 @@ const Recipes = ({ component, searchable = true }: RecipesProps): JSX.Element =>
     );
   }
 
-  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+  function handleSearchChange(e: ChangeEvent<HTMLInputElement>) {
     setSearch(e.target.value);
-  };
+  }
 
-  const handleToggle = (recipeName: string) => {
-    setOpenRecipeName((prev) => prev === recipeName ? null : recipeName);
-  };
+  function handleToggle(recipeName: string) {
+    setOpenRecipeName((prev) => prev === recipeName ? '' : recipeName);
+  }
 
   return (
     <div className={ styles.recipes }>
       { searchable && (
         <>
-          <div className={ styles['recipes__search'] }>
-            <FormField>
-              <FormFieldLabel>Search for a recipe</FormFieldLabel>
-                <Input
-                  clearable
-                  data-storybook="input-search"
-                  onChange={ handleSearchChange }
-                  placeholder="Keyword..."
-                  type={ INPUT_TYPE.search }
-                  value={ search }
-                />
-            </FormField>
-          </div>
+          <FormField className={ styles['recipes__search'] }>
+            <FormFieldLabel>Filter recipes:</FormFieldLabel>
+
+            <Input
+              clearable
+              data-storybook="input-search"
+              onChange={ handleSearchChange }
+              placeholder="Keyword..."
+              type={ INPUT_TYPE.text }
+              value={ search } />
+          </FormField>
 
           <Divider spacing={ DIVIDER_SPACING._48 } />
         </>
@@ -105,7 +102,7 @@ const Recipes = ({ component, searchable = true }: RecipesProps): JSX.Element =>
           ))
         ) : (
             <Message
-              className={ styles['recipes__empty'] }
+              className={ styles['recipes__grid__empty'] }
               color={ MESSAGE_COLOR.information }
               dismissible={ false }
             >

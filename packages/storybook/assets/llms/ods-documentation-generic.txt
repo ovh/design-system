@@ -1013,25 +1013,16 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 
 Screen readers will announce a button.
 
+Filter your search results
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Button aria-labelledby="filter-btn">
-        <Icon name={ICON_NAME.filter} />
-      </Button>
-      <span id="filter-btn">Filter your search results</span>
-    </>
-}
+<>
+  <Button aria-labelledby="filter-btn">
+    <Icon name="filter" />
+  </Button>
+  <span id="filter-btn">
+    Filter your search results  </span>
+</>
 ```
 
 When the **Button** is focused, the screen reader should announce the linked label.
@@ -1069,26 +1060,20 @@ Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 | Provide contextual help / information (e.g., input rules, field error) |  |  |
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Modal>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal        </Button>
-      </ModalTrigger>
-      <ModalContent>
-        <ModalBody>
-          <h2 id="modal-title">
-            Delete item          </h2>
-          <p id="modal-content">
-            Are you sure you want to delete this item? This action cannot be undone.          </p>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-}
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal    </Button>
+  </ModalTrigger>
+  <ModalContent>
+    <ModalBody>
+      <h2 id="modal-title">
+        Delete item      </h2>
+      <p id="modal-content">
+        Are you sure you want to delete this item? This action cannot be undone.      </p>
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
 Screen readers won't announce the **Modal** content.
@@ -1354,24 +1339,45 @@ Screen readers will announce the error message, even when the user is focused el
 
 [radiogroup](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/radiogroup_role) and [radio](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/radio_role) roles ensure that screen readers correctly interpret and announce the selection.
 
+Rating
+
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <label htmlFor="rating">
-        Rating      </label>
-      <div id="rating">
-        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="one star" role="img" />
-        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="two star" role="img" />
-        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="three star" role="img" />
-        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="four star" role="img" />
-        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="five star" role="img" />
-      </div>
-    </>
-}
+<>
+  <label htmlFor="rating">
+    Rating  </label>
+  <div id="rating">
+    <Icon
+      aria-label="one star"
+      name="star"
+      role="img"
+      tabIndex={0}
+    />
+    <Icon
+      aria-label="two star"
+      name="star"
+      role="img"
+      tabIndex={0}
+    />
+    <Icon
+      aria-label="three star"
+      name="star"
+      role="img"
+      tabIndex={0}
+    />
+    <Icon
+      aria-label="four star"
+      name="star"
+      role="img"
+      tabIndex={0}
+    />
+    <Icon
+      aria-label="five star"
+      name="star"
+      role="img"
+      tabIndex={0}
+    />
+  </div>
+</>
 ```
 
 Screen readers will read each star individually with no context of selection group.
@@ -1398,9 +1404,9 @@ Screen readers will read each star individually with no context of selection gro
 
 Screen readers will announce a radio button, its label and aria-label, which item is focused on out of the total amount of items and that it is a radio group.
 
-Please note that you should navigate within a radio group using `arrow` keys.
+Please note that you should navigate within a radio group using Arrow keys.
 
-In the example above, `tabindex="-1"` is applied to all elements except the currently selected one. This is because only one item in a radio group should be focusable at a time. Users can navigate between options using the `arrow` keys, rather than the `Tab` key, which moves focus to the next interactive element outside the group.
+In the example above, `tabindex="-1"` is applied to all elements except the currently selected one. This is because only one item in a radio group should be focusable at a time. Users can navigate between options using the Arrow keys, rather than the Tab key, which moves focus to the next interactive element outside the group.
 
 For more details, see [Managing focus within components using a roving tabindex](https://www.w3.org/WAI/ARIA/apg/patterns/radio/examples/radio/)
 

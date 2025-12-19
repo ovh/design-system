@@ -1,0 +1,66 @@
+diff --git a/node_modules/@fluentui/storybook-llms-extractor/dist/src/utils.js b/node_modules/@fluentui/storybook-llms-extractor/dist/src/utils.js
+index 2852bb0..2c7b0f5 100644
+--- a/node_modules/@fluentui/storybook-llms-extractor/dist/src/utils.js
++++ b/node_modules/@fluentui/storybook-llms-extractor/dist/src/utils.js
+@@ -134,6 +134,43 @@ async function extractStorybookData({ distPath }) {
+                 };
+             }
+         }
++        // PATCH: Extract attached-mdx pages from index.json
++        const indexJsonPath = (0, _nodepath.join)(distPath, 'index.json');
++        if ((0, _nodefs.existsSync)(indexJsonPath)) {
++            const indexJson = JSON.parse(await (0, _promises.readFile)(indexJsonPath, 'utf8'));
++            const entries = indexJson.entries || {};
++            for (const [entryId, entry] of Object.entries(entries)) {
++                const tags = entry.tags || [];
++                if (tags.includes('attached-mdx') && entry.type === 'docs') {
++                    console.log(`Extracting attached-mdx: "${entryId}"`);
++                    const pageUrl = `http://localhost/iframe.html?viewMode=docs&id=${entryId}`;
++                    const fullSource = await extractMDXStoryContentWithBrowser(pageUrl, context, distPath);
++                    if (fullSource) {
++                        // Create a new item for this attached-mdx page
++                        const parentTitle = entry.title || entryId;
++                        const pageName = entry.name || entryId.split('--').pop();
++                        storeItems.push({
++                            meta: {
++                                id: entryId,
++                                title: `${parentTitle}/${pageName}`,
++                                parameters: { fileName: entry.importPath || '' }
++                            },
++                            stories: {
++                                [entryId]: {
++                                    id: entryId,
++                                    name: pageName,
++                                    parameters: {
++                                        fullSource,
++                                        docsOnly: true,
++                                        docs: {}
++                                    }
++                                }
++                            }
++                        });
++                    }
++                }
++            }
++        }
+         console.log(`✔️ Extracted ${storeItems.length} stories from Storybook store.`);
+         return storeItems;
+     } finally{
+@@ -153,6 +190,17 @@ async function extractStorybookData({ distPath }) {
+     await page.waitForFunction(()=>{
+         return window.__STORYBOOK_PREVIEW__;
+     });
++    // PATCH: Wait for storyStore to be fully initialized before accessing it
++    await page.waitForFunction(() => {
++        try {
++            const preview = window.__STORYBOOK_PREVIEW__;
++            if (!preview) return false;
++            const store = preview.storyStoreValue || preview.storyStore;
++            return store && store.storyIndex;
++        } catch {
++            return false;
++        }
++    }, { timeout: 30000 });
+     const stories = await page.evaluate(async ()=>{
+         /**
+      * Retrieves the Storybook story store from the global window object.

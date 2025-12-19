@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, useEffect, useRef } from 'react';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { type ComboboxOptionItem, useCombobox } from '../../contexts/useCombobox';
 import { ComboboxHighlight } from '../combobox-highlight/ComboboxHighlight';
@@ -25,6 +25,13 @@ const ComboboxOption: FC<ComboboxOptionProp> = ({
     selection,
     selectItem,
   } = useCombobox();
+  const optionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (optionRef.current && isHighlighted) {
+      optionRef.current.scrollIntoView({ block: 'nearest' });
+    }
+  }, [isHighlighted, optionRef]);
 
   function onClick(): void {
     if (!disabled) {
@@ -45,6 +52,7 @@ const ComboboxOption: FC<ComboboxOptionProp> = ({
       )}
       onClick={ onClick }
       onPointerEnter={ () => highlightOption(item) }
+      ref={ optionRef }
       role="option"
       tabIndex={ -1 }
       { ...props }>

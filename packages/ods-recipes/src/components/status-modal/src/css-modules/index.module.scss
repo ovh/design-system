@@ -1,0 +1,25 @@
+@use '@ovhcloud/ods-react/style';
+
+.status-modal {
+  &__body {
+    display: flex;
+    flex-flow: column;
+    row-gap: calc(var(--ods-theme-row-gap) * 3);
+
+    &__content {
+      display: flex;
+      flex-flow: column;
+      row-gap: calc(var(--ods-theme-row-gap) * 2);
+
+      &__title {
+        @include style.ods-text-heading-3();
+      }
+    }
+
+    &__actions {
+      display: flex;
+      column-gap: calc(var(--ods-theme-column-gap) * 2);
+      justify-content: flex-end;
+    }
+  }
+}

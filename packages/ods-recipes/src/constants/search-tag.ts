@@ -1,5 +1,6 @@
 enum SEARCH_TAG {
   cart = 'cart',
+  dialog = 'dialog',
   form = 'form',
   interactive = 'interactive',
   presentation = 'presentation',

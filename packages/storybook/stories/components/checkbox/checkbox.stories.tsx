@@ -1,3 +1,4 @@
+import { CHECKBOX_VARIANT } from '@ovhcloud/ods-react-checkbox/src/constants/checkbox-variant';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel, type CheckboxProp } from '../../../../ods-react/src/components/checkbox/src';
@@ -212,6 +213,22 @@ export const States: Story = {
         </CheckboxLabel>
       </Checkbox>
     </>
+  ),
+};
+
+export const Variants: Story = {
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Checkbox variant={ CHECKBOX_VARIANT.tile }>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        Tile
+      </CheckboxLabel>
+    </Checkbox>
   ),
 };
 

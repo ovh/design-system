@@ -10,4 +10,30 @@
       cursor: not-allowed;
     }
   }
+
+  .tile {
+    --ods-tile-background-color-checked: var(--ods-color-primary-025);
+
+    outline: 1px solid var(--ods-theme-input-border-color);
+    outline-offset: -1px;
+    border-color: var(--ods-theme-input-border-color);
+    padding: 16px;
+
+    &:hover {
+      outline-width: 2px;
+      border-color: var(--ods-theme-input-border-color-hover);
+    }
+
+    &:has([data-state="checked"]) {
+      outline-width: 2px;
+      outline-color: var(--ods-theme-input-background-color-checked);
+      background-color: var(--ods-tile-background-color-checked);
+    }
+
+    &:has([data-disabled]) {
+      outline-width: 1px;
+      outline-color: var(--ods-theme-border-color-disabled);
+      background-color: var(--ods-theme-background-color-disabled);
+    }
+  }
 }

@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel } from '.';
 import { FormField, FormFieldError, FormFieldHelper } from '../../form-field/src';
-import { TEXT_PRESET, Text } from '../../text/src';
+import { Text, TEXT_PRESET } from '../../text/src';
+import { CHECKBOX_VARIANT } from './constants/checkbox-variant';
 import style from './dev.module.css';
-import { useState } from 'react';
 
 export default {
   component: Checkbox,
@@ -12,30 +13,30 @@ export default {
 export const CustomStyle = () => (
   <>
     <h4>Single Checkbox with Custom Style</h4>
-    <Checkbox className={ style['custom-checkbox'] }>
-      <CheckboxControl className={ style['custom-checkbox-control'] } />
+    <Checkbox className={ style[ 'custom-checkbox' ] }>
+      <CheckboxControl className={ style[ 'custom-checkbox-control' ] } />
 
-      <CheckboxLabel className={ style['custom-checkbox-label'] }>
+      <CheckboxLabel className={ style[ 'custom-checkbox-label' ] }>
         Custom styled checkbox
       </CheckboxLabel>
     </Checkbox>
 
     <h4>Checkbox Group with Custom Style</h4>
     <CheckboxGroup
-      className={ style['custom-checkbox-group'] }
+      className={ style[ 'custom-checkbox-group' ] }
       name="custom-group">
-      <Checkbox className={ style['custom-checkbox'] } value="custom1">
-        <CheckboxControl className={ style['custom-checkbox-control'] } />
+      <Checkbox className={ style[ 'custom-checkbox' ] } value="custom1">
+        <CheckboxControl className={ style[ 'custom-checkbox-control' ] } />
 
-        <CheckboxLabel className={ style['custom-checkbox-label'] }>
+        <CheckboxLabel className={ style[ 'custom-checkbox-label' ] }>
           Custom checkbox 1
         </CheckboxLabel>
       </Checkbox>
 
-      <Checkbox className={ style['custom-checkbox'] } value="custom2">
-        <CheckboxControl className={ style['custom-checkbox-control'] } />
+      <Checkbox className={ style[ 'custom-checkbox' ] } value="custom2">
+        <CheckboxControl className={ style[ 'custom-checkbox-control' ] } />
 
-        <CheckboxLabel className={ style['custom-checkbox-label'] }>
+        <CheckboxLabel className={ style[ 'custom-checkbox-label' ] }>
           Custom checkbox 2
         </CheckboxLabel>
       </Checkbox>
@@ -209,26 +210,26 @@ export const ControlledIndeterminate = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div style={ { display: 'flex', flexDirection: 'column', gap: '8px' } }>
       <Checkbox
-        checked={isAllSelected ? true : isIndeterminate ? 'indeterminate' : false}
-        onCheckedChange={handleSelectAllChange}
+        checked={ isAllSelected ? true : isIndeterminate ? 'indeterminate' : false }
+        onCheckedChange={ handleSelectAllChange }
       >
         <CheckboxControl />
         <CheckboxLabel>Select all</CheckboxLabel>
       </Checkbox>
 
       <CheckboxGroup
-        value={value}
-        onValueChange={(v) => setValue(v)}
-        style={{ display: 'flex', flexDirection: 'column', marginLeft: '20px', gap: '8px' }}
+        value={ value }
+        onValueChange={ (v) => setValue(v) }
+        style={ { display: 'flex', flexDirection: 'column', marginLeft: '20px', gap: '8px' } }
       >
-        {items.map((item) => (
-          <Checkbox key={item} value={item}>
+        { items.map((item) => (
+          <Checkbox key={ item } value={ item }>
             <CheckboxControl />
-            <CheckboxLabel>{item}</CheckboxLabel>
+            <CheckboxLabel>{ item }</CheckboxLabel>
           </Checkbox>
-        ))}
+        )) }
       </CheckboxGroup>
     </div>
   );
@@ -251,28 +252,71 @@ export const UncontrolledIndeterminate = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div style={ { display: 'flex', flexDirection: 'column', gap: '8px' } }>
       <Checkbox
-        checked={allChecked ? true : isIndeterminate ? 'indeterminate' : false}
-        onCheckedChange={handleSelectAllChange}
+        checked={ allChecked ? true : isIndeterminate ? 'indeterminate' : false }
+        onCheckedChange={ handleSelectAllChange }
       >
         <CheckboxControl />
         <CheckboxLabel>Select all</CheckboxLabel>
       </Checkbox>
 
       <CheckboxGroup
-        key={groupKey}
-        defaultValue={defaultValue}
-        onValueChange={(v) => setCurrentValue(v)}
-        style={{ display: 'flex', flexDirection: 'column', marginLeft: '20px', gap: '8px' }}
+        key={ groupKey }
+        defaultValue={ defaultValue }
+        onValueChange={ (v) => setCurrentValue(v) }
+        style={ { display: 'flex', flexDirection: 'column', marginLeft: '20px', gap: '8px' } }
       >
-        {items.map((item) => (
-          <Checkbox key={item} value={item}>
+        { items.map((item) => (
+          <Checkbox key={ item } value={ item }>
             <CheckboxControl />
-            <CheckboxLabel>{item}</CheckboxLabel>
+            <CheckboxLabel>{ item }</CheckboxLabel>
           </Checkbox>
-        ))}
+        )) }
       </CheckboxGroup>
     </div>
   );
 };
+
+export const ControlledTile = () => {
+  const items = ['react', 'solid', 'vue'];
+  const [value, setValue] = useState<string[]>(['react']);
+  {
+    return <CheckboxGroup
+      value={ value }
+      onValueChange={ (v) => setValue(v) }
+      style={ { display: 'flex', flexDirection: 'column', marginLeft: '20px', gap: '8px' } }
+    >
+      { items.map((item) => (
+        <Checkbox key={ item } value={ item } variant={ CHECKBOX_VARIANT.tile }>
+          <CheckboxControl />
+          <CheckboxLabel>{ item }</CheckboxLabel>
+        </Checkbox>
+      )) }
+    </CheckboxGroup>
+  }
+}
+
+export const UncontrolledTile = () => {
+  const items = ['react', 'solid', 'vue'];
+  {
+    return <CheckboxGroup
+      style={ { display: 'flex', flexDirection: 'column', marginLeft: '20px', gap: '8px' } }
+    >
+      <h4>Default</h4>
+      { items.map((item) => (
+        <Checkbox key={ item } value={ item } variant={ CHECKBOX_VARIANT.tile }>
+          <CheckboxControl />
+          <CheckboxLabel>{ item }</CheckboxLabel>
+        </Checkbox>
+      )) }
+      <h4>Disabled</h4>
+      { items.map((item) => (
+        <Checkbox disabled key={ item } value={ item } variant={ CHECKBOX_VARIANT.tile }>
+          <CheckboxControl />
+          <CheckboxLabel>{ item }</CheckboxLabel>
+        </Checkbox>
+      )) }
+    </CheckboxGroup>
+  }
+}

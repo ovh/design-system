@@ -1,7 +1,10 @@
+import type { CheckboxVariant } from '../../constants/checkbox-variant';
 import { Checkbox as VendorCheckbox } from '@ark-ui/react/checkbox';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, Fragment, type JSX, forwardRef } from 'react';
+import { Card } from '../../../../card/src/components/card/Card';
 import { useFormField } from '../../../../form-field/src';
+import { CHECKBOX_VARIANT } from '../../constants/checkbox-variant';
 import style from './checkbox.module.scss';
 
 type CheckboxCheckedState = boolean | 'indeterminate';
@@ -43,6 +46,10 @@ interface CheckboxProp extends ComponentPropsWithRef<'label'> {
    * The value of form element. Useful for form submission.
    */
   value?: string,
+  /**
+   * The variant preset to use.
+   */
+  variant?: CheckboxVariant,
 }
 
 const Checkbox: FC<CheckboxProp> = forwardRef(({
@@ -57,27 +64,31 @@ const Checkbox: FC<CheckboxProp> = forwardRef(({
   onCheckedChange,
   required,
   value,
+  variant = CHECKBOX_VARIANT.default,
   ...props
 }, ref): JSX.Element => {
   const fieldContext = useFormField();
+  const Wrapper = variant === CHECKBOX_VARIANT.tile ? Card : Fragment;
 
   return (
-    <VendorCheckbox.Root
-      checked={ checked }
-      className={ classNames(style['checkbox'], className) }
-      data-ods="checkbox"
-      defaultChecked={ defaultChecked }
-      disabled={ disabled }
-      id={ id || fieldContext?.id }
-      invalid={ invalid || fieldContext?.invalid }
-      name={ name }
-      onCheckedChange={ onCheckedChange }
-      ref={ ref }
-      required={ required }
-      value={ value }
-      { ...props }>
-      { children }
-    </VendorCheckbox.Root>
+    <Wrapper className={ style[ variant ] }>
+      <VendorCheckbox.Root
+        checked={ checked }
+        className={ classNames(style[ 'checkbox' ], className) }
+        data-ods="checkbox"
+        defaultChecked={ defaultChecked }
+        disabled={ disabled }
+        id={ id || fieldContext?.id }
+        invalid={ invalid || fieldContext?.invalid }
+        name={ name }
+        onCheckedChange={ onCheckedChange }
+        ref={ ref }
+        required={ required }
+        value={ value }
+        { ...props }>
+        { children }
+      </VendorCheckbox.Root>
+    </Wrapper>
   );
 });
 

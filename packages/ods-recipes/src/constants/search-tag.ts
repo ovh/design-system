@@ -4,6 +4,7 @@ enum SEARCH_TAG {
   form = 'form',
   interactive = 'interactive',
   presentation = 'presentation',
+  product = 'product',
   status = 'status',
 }
 

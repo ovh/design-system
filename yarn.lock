@@ -5043,6 +5043,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-recipes-media-product-card@workspace:packages/ods-recipes/src/components/media-product-card":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-media-product-card@workspace:packages/ods-recipes/src/components/media-product-card"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-recipes-price@workspace:packages/ods-recipes/src/components/price":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-recipes-price@workspace:packages/ods-recipes/src/components/price"
@@ -5113,7 +5119,6 @@ __metadata:
     prop-types: 15.8.1
     react: 18.2.0
     react-docgen: 7.1.1
-    react-frame-component: 5.2.7
     storybook: 8.6.12
     storybook-addon-code-editor: 4.1.2
     typedoc: 0.28.1
@@ -21278,17 +21283,6 @@ __metadata:
   version: 2.0.4
   resolution: "react-fast-compare@npm:2.0.4"
   checksum: 06046595f90a4e3e3a56f40a8078c00aa71bdb064ddb98343f577f546aa22e888831fd45f009c93b34707cc842b4c637737e956fd13d6f80607ee92fb9cf9a1c
-  languageName: node
-  linkType: hard
-
-"react-frame-component@npm:5.2.7":
-  version: 5.2.7
-  resolution: "react-frame-component@npm:5.2.7"
-  peerDependencies:
-    prop-types: ^15.5.9
-    react: ">= 16.3"
-    react-dom: ">= 16.3"
-  checksum: e28975cf8ca1e730f66f1fc9e4d4248f33970088b95737d6a271ba8650bc35c1bbf97537685c8ab9a32af0fd89c52777e03de848b8cc3c9e8842506ddc3f65d9
   languageName: node
   linkType: hard
 

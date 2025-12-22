@@ -1,0 +1,31 @@
+@use '@ovhcloud/ods-react/style';
+
+.media-product-card {
+  overflow: hidden;
+
+  &__body {
+    display: flex;
+    flex-flow: column;
+    row-gap: calc(var(--ods-theme-row-gap) * 3);
+    padding: calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-horizontal) * 2);
+
+    &__logo {
+      align-self: center;
+    }
+
+    &__content {
+      display: flex;
+      flex-flow: column;
+      row-gap: calc(var(--ods-theme-row-gap) * 2);
+
+      &__title {
+        @include style.ods-text-heading-2();
+      }
+    }
+  }
+
+  &__footer {
+    background-color: var(--ods-theme-background-color-readonly);
+    padding: calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-horizontal) * 2);
+  }
+}

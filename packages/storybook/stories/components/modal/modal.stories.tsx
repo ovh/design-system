@@ -206,44 +206,6 @@ export const AccessibilityBadPracticesAria: Story = {
   ),
 };
 
-export const Actions: Story = {
-  globals: {
-    imports: `import { BUTTON_VARIANT, TEXT_PRESET, Button, Modal, ModalBody, ModalContent, ModalTrigger, Text } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Modal>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal
-        </Button>
-      </ModalTrigger>
-
-      <ModalContent>
-        <ModalBody style={{ display: 'flex', flexDirection: 'column', rowGap: '16px' }}>
-          <Text preset={ TEXT_PRESET.heading4 }>
-            Hosting removal
-          </Text>
-
-          <Text>
-            You're about to remove the hosting "1 vCore 2,4 GHz, 2 Go RAM".
-          </Text>
-
-          <div style={{ display: 'flex', alignSelf: 'flex-end', columnGap: '8px' }}>
-            <Button>
-              Confirm
-            </Button>
-
-            <Button variant={ BUTTON_VARIANT.outline }>
-              Cancel
-            </Button>
-          </div>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-  ),
-};
-
 export const Colors: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
   globals: {

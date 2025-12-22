@@ -97,15 +97,13 @@ const Recipes = ({ component, searchable = false }: RecipesProp): JSX.Element =>
               isOpen={ openRecipeName === recipe.name }
               key={ recipe.name }
               onToggle={ handleToggle }
-              recipe={ recipe }
-            />
+              recipe={ recipe } />
           ))
         ) : (
             <Message
               className={ styles['recipes__grid__empty'] }
               color={ MESSAGE_COLOR.information }
-              dismissible={ false }
-            >
+              dismissible={ false }>
               <MessageIcon name={ ICON_NAME.circleInfo } />
               <MessageBody>
                 No recipe found for "{ search }"

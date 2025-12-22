@@ -144,9 +144,9 @@ const RecipeCard = memo(({ isOpen, onToggle, recipe }: RecipeCardProp) => {
         className={ styles['recipe-card__inner'] }
         color={ CARD_COLOR.neutral }>
         <div className={ styles['recipe-card__inner__header'] }>
-          <h3 className={ styles['recipe-card__inner__header__title'] }>
+          <span className={ styles['recipe-card__inner__header__title'] }>
             { recipe.name }
-          </h3>
+          </span>
 
           <Button
             aria-expanded={ isOpen }

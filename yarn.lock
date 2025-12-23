@@ -5043,6 +5043,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-recipes-media-product-card@workspace:packages/ods-recipes/src/components/media-product-card":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-media-product-card@workspace:packages/ods-recipes/src/components/media-product-card"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-recipes-order-button@workspace:packages/ods-recipes/src/components/order-button":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-order-button@workspace:packages/ods-recipes/src/components/order-button"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-recipes-price@workspace:packages/ods-recipes/src/components/price":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-recipes-price@workspace:packages/ods-recipes/src/components/price"
@@ -5052,6 +5064,12 @@ __metadata:
 "@ovhcloud/ods-recipes-status-message@workspace:packages/ods-recipes/src/components/status-message":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-recipes-status-message@workspace:packages/ods-recipes/src/components/status-message"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-recipes-status-modal@workspace:packages/ods-recipes/src/components/status-modal":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-status-modal@workspace:packages/ods-recipes/src/components/status-modal"
   languageName: unknown
   linkType: soft
 

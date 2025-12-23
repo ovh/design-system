@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/blocks';
+import specification from '../../../../ods-react/documentation/utils.json';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { HelperSpecification } from '../../../src/components/helperSpecification/HelperSpecification';
+import * as Stories from './formatPrice.stories';
+
+<Meta
+  of={ Stories }
+  name="Documentation"
+  tags={ ['new'] } />
+
+<Banner of={ Stories } />
+
+<Heading label="Specifications" level={ 2 } />
+
+<HelperSpecification
+  data={ specification }
+  name="formatPrice"  />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ Stories.Default } sourceState="shown" />
+
+<Heading label="Locales" level={ 3 } />
+
+<Canvas of={ Stories.Locales } sourceState="shown" />
+
+<Heading label="Currencies" level={ 3 } />
+
+<Canvas of={ Stories.Currencies } sourceState="shown" />

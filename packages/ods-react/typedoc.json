@@ -1,7 +1,7 @@
 {
   "disableGit": true,
   "disableSources": true,
-  "entryPoints": ["src/index.ts"],
+  "entryPoints": ["src/utils/index.ts"],
   "excludeExternals": true,
   "excludeInternal": true,
   "excludePrivate": true,
@@ -9,7 +9,7 @@
   "outputs": [
     {
       "name": "json",
-      "path": "./documentation/{{> component-name }}.json"
+      "path": "./documentation/utils.json"
     }
   ],
   "sort": ["source-order"],

@@ -28,9 +28,9 @@ type ComponentMetadataWithSources = ComponentMetadata & {
   source: ComponentSource,
 }
 
-type ComponentRecipe = {
-  CssModule: () => ReactElement,
-  Tailwind?: () => ReactElement,
+type ComponentRecipe<T = Record<string, never>> = {
+  CssModule: (prop: T) => ReactElement,
+  Tailwind?: (prop: T) => ReactElement,
   metadata: ComponentMetadata,
 }
 

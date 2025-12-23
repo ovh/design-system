@@ -1,6 +1,6 @@
-import { Comment, type DeclarationReflection, type IntrinsicType, type LiteralType, type ProjectReflection, type ReferenceType, type ReflectionType, type SomeType, type UnknownType, type UnionType } from 'typedoc';
+import { Comment, type DeclarationReflection, type InlineTagDisplayPart, type IntrinsicType, type LiteralType, type ProjectReflection, type ReferenceType, type ReflectionType, type SomeType, type UnionType, type UnknownType } from 'typedoc';
 import { ReflectionKind } from 'typedoc/models';
-import { TAG, extractTags } from './docgen';
+import { extractTags, TAG } from './docgen';
 
 type TypedocEnumMember = {
   name: string,
@@ -25,6 +25,20 @@ type ComponentTypedoc = {
     value: string,
   }[],
 }
+
+type HelperFunctionTypedoc = {
+  arguments: {
+    defaultValue?: string,
+    description: string,
+    name: string,
+    type: string,
+  }[],
+  description: string,
+  links: {
+    href: string,
+    label: string,
+  }[],
+};
 
 function filterByKinds(children: DeclarationReflection[] | undefined, kinds: ReflectionKind[]): DeclarationReflection[] {
   return (children || []).filter((child) => kinds.indexOf(child.kind) > -1);
@@ -79,6 +93,35 @@ function getComponentTypedoc(data: ProjectReflection): ComponentTypedoc {
         .map((item: any) => item.name || `"${item.value}"`)
         .join(' | '),
     }))),
+  };
+}
+
+function getHelperFunctionTypedoc(data: ProjectReflection, functionName: string): HelperFunctionTypedoc | undefined {
+  const functionData = (data.children || []).find((child) => child.name === functionName);
+
+  if (!functionData || !functionData.signatures?.length) {
+    return;
+  }
+
+  const functionSignature = functionData.signatures[0];
+  const functionDescription = functionSignature.comment?.summary[0].text;
+
+  return {
+    arguments: (functionSignature.parameters || [])
+      .filter((param) => param.kind === ReflectionKind.Parameter)
+      .map((param) => ({
+        defaultValue: param.defaultValue,
+        description: param.comment?.summary[0]?.text || '',
+        name: param.name,
+        type: getTypeValue(param.type),
+      })),
+    description: functionDescription || '',
+    links: (functionSignature.comment?.blockTags || [])
+      .filter((block) => block.tag === '@see')
+      .map((block) => ({
+        href: (block.content[0] as InlineTagDisplayPart)?.target as string || '#',
+        label: block.content[0]?.text,
+      })),
   };
 }
 
@@ -172,6 +215,8 @@ function sortByName<T extends { name: string }>(array: T[]): T[] {
 
 export {
   type ComponentTypedoc,
+  type HelperFunctionTypedoc,
   type TypedocEnumMember,
   getComponentTypedoc,
+  getHelperFunctionTypedoc,
 };

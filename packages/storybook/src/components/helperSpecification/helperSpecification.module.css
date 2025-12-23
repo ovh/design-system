@@ -1,0 +1,7 @@
+.helper-specification__table code {
+  white-space: break-spaces;
+}
+
+.helper-specification__table__default-value {
+  text-align: center;
+}

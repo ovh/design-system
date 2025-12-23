@@ -25,8 +25,9 @@
     "*.css"
   ],
   "scripts": {
-    "build:prod": "rimraf dist && tsc -b && vite build",
+    "build:prod": "npm run clean && tsc -b && vite build",
     "clean": "rimraf dist",
+    "doc": "rimraf documentation && typedoc",
     "lint:scss": "stylelint 'src/style/*.scss'",
     "lint:ts": "eslint '{src,tests}/!(components)/**/*.{ts,tsx}'",
     "test:spec": "jest --passWithNoTests",

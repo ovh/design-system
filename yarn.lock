@@ -5049,6 +5049,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-recipes-order-button@workspace:packages/ods-recipes/src/components/order-button":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-order-button@workspace:packages/ods-recipes/src/components/order-button"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-recipes-price@workspace:packages/ods-recipes/src/components/price":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-recipes-price@workspace:packages/ods-recipes/src/components/price"

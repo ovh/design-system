@@ -5,3 +5,4 @@ export * from './status-message/src';
 
 export * from './status-modal/src';
 export * from './media-product-card/src';
+export * from './order-button/src';

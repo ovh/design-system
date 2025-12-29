@@ -5061,6 +5061,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-recipes-range-input@workspace:packages/ods-recipes/src/components/range-input":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-range-input@workspace:packages/ods-recipes/src/components/range-input"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-recipes-status-message@workspace:packages/ods-recipes/src/components/status-message":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-recipes-status-message@workspace:packages/ods-recipes/src/components/status-message"

@@ -31,6 +31,7 @@
   }
 
   &:not(:disabled) {
+    transition: background ease .3s, box-shadow ease .3s;
     box-shadow: -3px -3px 6px 0 #ff4800 inset, 3px 3px 6px 0 #ea0000 inset, -3px -3px 6px 0 #ffd2d2b2, 3px 3px 6px 0 #82000040;
     background: $primary-color linear-gradient(86.59deg, rgba(255, 187, 0, 0) 82.69%, rgba(255, 187, 0, 0.75) 100%);
     cursor: pointer;

@@ -2,12 +2,13 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { TEXT_PRESET, TEXT_PRESETS, Text, type TextProp }  from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<TextProp>;
 
 const meta: Meta<TextProp> = {
   component: Text,
+  argTypes: excludeFromDemoControls(['as']),
   title: 'React Components/Text',
 };
 
@@ -115,6 +116,20 @@ export const Preset: Story = {
       <Text preset={ TEXT_PRESET.heading5 }>Heading-5</Text>
       <Text preset={ TEXT_PRESET.heading6 }>Heading-6</Text>
     </>
+  ),
+};
+
+export const ReuseStyle: Story = {
+  globals: {
+    imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Text
+      as="span"
+      preset={ TEXT_PRESET.heading5 }>
+      I am a &lt;span&gt; using the heading5 preset style.
+    </Text>
   ),
 };
 

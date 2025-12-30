@@ -30,9 +30,11 @@ const StatusModal = (): JSX.Element => {
       <ModalContent color={ MODAL_COLOR.information }>
         <ModalBody className={ style['status-modal__body'] }>
           <div className={ style['status-modal__body__content'] }>
-            <span className={ style['status-modal__body__content__title'] }>
+            <Text
+              as="span"
+              preset={ TEXT_PRESET.heading3 }>
               Change your password
-            </span>
+            </Text>
 
             <Text preset={ TEXT_PRESET.paragraph }>
               An email will be sent to the address example@ovhcloud.com with the procedure to follow in order to make this change.

@@ -17,9 +17,11 @@ const MediaProductCard = (): JSX.Element => {
           width={ 174 } />
 
         <div className={ style['media-product-card__body__content'] }>
-          <span className={ style['media-product-card__body__content__title'] }>
+          <Text
+            as="span"
+            preset={ TEXT_PRESET.heading2 }>
             AI Deploy
-          </span>
+          </Text>
 
           <Text preset={ TEXT_PRESET.paragraph }>
             Easily deploy machine learning models and applications into production, create your API access points with ease, and make effective predictions.

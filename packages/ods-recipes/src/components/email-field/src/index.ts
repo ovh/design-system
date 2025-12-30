@@ -13,6 +13,7 @@ const metadata: ComponentMetadata = {
 
 const EmailField: ComponentRecipe = {
   CssModule,
+  Tailwind: () => null,
   metadata,
 };
 

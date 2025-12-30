@@ -9,3 +9,6 @@ export const CssModule = () => (
   <StatusModal.CssModule />
 );
 
+export const Tailwind = () => (
+  <StatusModal.Tailwind />
+);

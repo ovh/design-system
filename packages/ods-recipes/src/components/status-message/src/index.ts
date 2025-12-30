@@ -1,4 +1,5 @@
 import { StatusMessage as CssModule } from './css-modules';
+import { StatusMessage as Tailwind } from './tailwind';
 import { type ComponentMetadata, type ComponentRecipe } from '../../../constants/recipe';
 import { SEARCH_TAG } from '../../../constants/search-tag';
 
@@ -13,6 +14,7 @@ const metadata: ComponentMetadata = {
 
 const StatusMessage: ComponentRecipe = {
   CssModule,
+  Tailwind,
   metadata,
 };
 

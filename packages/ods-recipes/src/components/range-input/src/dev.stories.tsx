@@ -9,3 +9,6 @@ export const CssModule = () => (
   <RangeInput.CssModule />
 );
 
+export const Tailwind = () => (
+  <RangeInput.Tailwind />
+);

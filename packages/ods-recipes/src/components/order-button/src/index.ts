@@ -13,6 +13,7 @@ const metadata: ComponentMetadata = {
 
 const OrderButton: ComponentRecipe<OrderButtonProp> = {
   CssModule,
+  Tailwind: () => null,
   metadata,
 };
 

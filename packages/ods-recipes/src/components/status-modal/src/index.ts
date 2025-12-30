@@ -14,6 +14,7 @@ const metadata: ComponentMetadata = {
 
 const StatusModal: ComponentRecipe = {
   CssModule,
+  Tailwind: () => null,
   metadata,
 };
 

@@ -13,6 +13,7 @@ const metadata: ComponentMetadata = {
 
 const MediaProductCard: ComponentRecipe = {
   CssModule,
+  Tailwind: () => null,
   metadata,
 };
 

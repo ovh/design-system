@@ -16,9 +16,7 @@ const metadata: ComponentMetadata = {
 
 const {{> ComponentName }}: ComponentRecipe = {
   CssModule,
-{{#if (hasTailwindImplementation sources)}}
-  Tailwind,
-{{/if}}
+  Tailwind{{#unless (hasTailwindImplementation sources)}}: () => null{{/unless}},
   metadata,
 };
 

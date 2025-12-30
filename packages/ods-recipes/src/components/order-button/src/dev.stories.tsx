@@ -13,3 +13,6 @@ export const CssModule = () => (
   </>
 );
 
+export const Tailwind = () => (
+  <OrderButton.Tailwind />
+);

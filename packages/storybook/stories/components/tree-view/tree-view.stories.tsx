@@ -20,7 +20,6 @@ const meta: Meta<TreeViewProp> = {
   argTypes: excludeFromDemoControls(['defaultExpandedValue', 'defaultValue', 'items', 'onExpandedChange', 'onValueChange', 'expandedValue', 'value']),
   component: TreeView,
   subcomponents: { TreeViewNode },
-  tags: ['new'],
   title: 'React Components/Tree View',
 };
 

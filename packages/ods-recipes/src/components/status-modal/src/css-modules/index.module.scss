@@ -1,5 +1,3 @@
-@use '@ovhcloud/ods-react/style';
-
 .status-modal {
   &__body {
     display: flex;
@@ -10,10 +8,6 @@
       display: flex;
       flex-flow: column;
       row-gap: calc(var(--ods-theme-row-gap) * 2);
-
-      &__title {
-        @include style.ods-text-heading-3();
-      }
     }
 
     &__actions {

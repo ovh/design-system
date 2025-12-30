@@ -9,3 +9,6 @@ export const CssModule = () => (
   <FeatureList.CssModule />
 );
 
+export const Tailwind = () => (
+  <FeatureList.Tailwind />
+);

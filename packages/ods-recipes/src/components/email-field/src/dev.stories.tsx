@@ -9,3 +9,6 @@ export const CssModule = () => (
   <EmailField.CssModule />
 );
 
+export const Tailwind = () => (
+  <EmailField.Tailwind />
+);

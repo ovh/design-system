@@ -12,6 +12,7 @@ const metadata: ComponentMetadata = {
 
 const FeatureList: ComponentRecipe = {
   CssModule,
+  Tailwind: () => null,
   metadata,
 };
 

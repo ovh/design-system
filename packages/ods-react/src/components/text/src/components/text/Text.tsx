@@ -8,6 +8,11 @@ import style from './text.module.scss';
 // so we extends this one for now, could be optimized in the future
 interface TextProp extends ComponentPropsWithRef<'label'> {
   /**
+   * Pass a HTML tag you may want to use instead of the preset one.
+   * Useful for example to apply heading style to a non-heading element.
+   * */
+  as?: string,
+  /**
    * Whether the text is displayed in a disabled context.
    */
   disabled?: boolean,
@@ -18,13 +23,14 @@ interface TextProp extends ComponentPropsWithRef<'label'> {
 }
 
 const Text: FC<TextProp> = forwardRef(({
+  as,
   children,
   className,
   disabled,
   preset = TEXT_PRESET.paragraph,
   ...props
 }, ref): JSX.Element => {
-  const Tag = getTag(preset) as keyof JSX.IntrinsicElements;
+  const Tag = as || getTag(preset) as keyof JSX.IntrinsicElements;
 
   return (
     // @ts-ignore TODO

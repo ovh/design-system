@@ -1,21 +1,26 @@
-import { Text } from '../../src';
+import { TEXT_PRESET, Text } from '../../src';
 
 export default {
   component: Text,
   title: 'Tests rendering',
 };
 
-export const customStyle = () => (
-  <Text
-    data-testid="custom-style"
-    style={{ color: 'rgb(255, 0, 0)' }}>
+export const CustomStyle = () => (
+  <Text style={{ color: 'rgb(255, 0, 0)' }}>
     Custom Style
   </Text>
 );
 
-export const render = () => (
+export const CustomTag = () => (
   <Text
-    data-testid="render">
+    preset={ TEXT_PRESET.heading3 }
+    as="span">
+    Should render a span
+  </Text>
+);
+
+export const Render = () => (
+  <Text>
     Render
   </Text>
 );

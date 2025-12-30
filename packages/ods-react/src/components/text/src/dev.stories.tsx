@@ -6,6 +6,18 @@ export default {
   title: 'Text dev',
 };
 
+export const As = () => (
+  <>
+    <Text preset="heading-4" as="span">
+      Preset heading-4 as span
+    </Text>
+
+    <Text preset="caption" as="small">
+      Preset caption as small
+    </Text>
+  </>
+);
+
 export const Default = () => (
   <Text>
     Default text

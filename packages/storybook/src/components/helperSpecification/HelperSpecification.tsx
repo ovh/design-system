@@ -30,8 +30,10 @@ const HelperSpecification = ({ data, name }: Props): JSX.Element => {
 
       {
         typedoc.links.length > 0 &&
-        <p>
-          See also:
+        <>
+          <p>
+            See also:
+          </p>
 
           <ul>
             {
@@ -44,7 +46,7 @@ const HelperSpecification = ({ data, name }: Props): JSX.Element => {
               ))
             }
           </ul>
-        </p>
+        </>
       }
 
       <Table

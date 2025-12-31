@@ -8,6 +8,59 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.4.0](https://ovh.github.io/design-system/v19.4.0/?path=/docs/design-system-changelog--page) (2025-12-31)
+[compare](https://github.com/ovh/design-system/compare/v19.3.0...v19.4.0)
+
+### Bug Fixes
+
+* **combobox:** prevent content close on scrollbar click ([7eea350](https://github.com/ovh/design-system/commit/7eea35006b1c4e8f30cd5fa5aef3d978ddecb87d))
+* **combobox:** scroll option into view on highlight ([5213bcd](https://github.com/ovh/design-system/commit/5213bcda70d49039797d6521508fe5bb8fbcdb63))
+* **components:** resolve lint:a11y issues ([1c66ea7](https://github.com/ovh/design-system/commit/1c66ea7bea91572d9e1afe11336f46347cfa0207))
+* **media-product-card:** set card to neutral ([d1eeae2](https://github.com/ovh/design-system/commit/d1eeae2b8833b7833a2ce50f9410f90e3846d53e))
+* **range:** prevent thumb focus when value is changed by external sources ([75d5689](https://github.com/ovh/design-system/commit/75d5689ca07cd335e63e24c77835fbc44ba93451))
+
+
+### Features
+
+* **app:** add lint:css global command ([5acb773](https://github.com/ovh/design-system/commit/5acb773c78a1cfdfd0ddebc62c131b21e7a12e52))
+* **buttonGroup:** implement component ([8104e06](https://github.com/ovh/design-system/commit/8104e065c5ae020dd79317ad23940a65f969e12d))
+* **doc:** add example of recipe doc page ([f1d8216](https://github.com/ovh/design-system/commit/f1d8216f1a22b2ab92ed3ee3afe8c335641d126b))
+* **doc:** add helpers documentation page ([db6633c](https://github.com/ovh/design-system/commit/db6633c975433d0652f583168c1a9e0be8dcd196))
+* **doc:** update recipe doc ([5c5916f](https://github.com/ovh/design-system/commit/5c5916fbc9a16d1dea59fcb7466c1c9fe5539a2b))
+* **doc:** update Text doc ([adc3587](https://github.com/ovh/design-system/commit/adc3587744b6e4b3f1b6d3adb3529d57bf2cfac8))
+* **icons:** add new set of icons ([d30e961](https://github.com/ovh/design-system/commit/d30e96132d31f366dc4892472d95bc2727effb2d))
+* **kbd:** initiate component ([bfb50bb](https://github.com/ovh/design-system/commit/bfb50bbc7a18e3fe936510d77cb0c51bea3ac3a5))
+* **ods-recipes:** add tags & types ([2221942](https://github.com/ovh/design-system/commit/222194229a16f227693a4621b94e419ae6a96ef6))
+* **ods-recipes:** implement project ([dd7596a](https://github.com/ovh/design-system/commit/dd7596af99c354a25c0d5f15e9309bbf6ee8b6db))
+* **order-button:** add transition ([ad0d21a](https://github.com/ovh/design-system/commit/ad0d21a33f1a38577f1246e044d5374c6f4baf98))
+* **recipes:** add odsComponents list to json data ([922383e](https://github.com/ovh/design-system/commit/922383edd42dad94f2cbd5eeaa3bb2e96e744e92))
+* **recipes:** add readme to each recipe ([ac5bd4d](https://github.com/ovh/design-system/commit/ac5bd4d3d3f0dd73257e2760c173d405da29e9cd))
+* **recipes:** add some tailwind implementations & update structure ([2278755](https://github.com/ovh/design-system/commit/2278755578d0e7bbd656b0b5e73f77f158afc21c))
+* **recipes:** divide into recipe card and add search ([925d603](https://github.com/ovh/design-system/commit/925d60390b3dcceec898a242b3c3d17b69a8d235))
+* **recipes:** divide into recipe card and add search ([817f49b](https://github.com/ovh/design-system/commit/817f49b15eb65b7b28efdb4c23ee0534e158c89b))
+* **recipes:** enhance search with tag filtering and dark mode styles ([0e8e0fb](https://github.com/ovh/design-system/commit/0e8e0fb7f55eba0fb7fc2ceb98c4e62d5452b148))
+* **recipes:** implement EmailField ([5c7e857](https://github.com/ovh/design-system/commit/5c7e857a6f425c2c1216aea17520b5c3a8ea44e4))
+* **recipes:** implement FeatureList ([fa96d5d](https://github.com/ovh/design-system/commit/fa96d5d723145a412230e6432af5cd99113d7623))
+* **recipes:** implement MediaProductCard ([98d3e31](https://github.com/ovh/design-system/commit/98d3e3146833e5d8df2dfa94877be9bcf385b62a))
+* **recipes:** implement OrderButton ([eb31922](https://github.com/ovh/design-system/commit/eb319221e1c0f90f38bf403e4bba0329e89aa184))
+* **recipes:** implement Price ([9eac03f](https://github.com/ovh/design-system/commit/9eac03fe1430eacd5c5b205d3f121ef202a834f1))
+* **recipes:** implement RangeInput ([afeb195](https://github.com/ovh/design-system/commit/afeb195100cf2dba529186d86182279f67426e12))
+* **recipes:** implement StatusMessage ([e20645d](https://github.com/ovh/design-system/commit/e20645def7029b3014638c8cee2d7b8d6e862b45))
+* **recipes:** implement StatusModal ([801d3ef](https://github.com/ovh/design-system/commit/801d3efa8095879996a7978538e74dbcd9be7e8c))
+* **recipes:** update README with contibution information ([65bbe18](https://github.com/ovh/design-system/commit/65bbe1834c2331dd84244d8342eab5c93957e35e))
+* **recipes:** update styles and improve dark mode support for inputs and buttons ([d3a726a](https://github.com/ovh/design-system/commit/d3a726acbf3fe912780866e91a2c4226a556fbd6))
+* **scripts:** add recipe generator CLI & add tailwind integration to ods-recipes ([0272cf1](https://github.com/ovh/design-system/commit/0272cf12bc374ecdcba8f7dfcf267b8c53fefa9c))
+* **storybook:** enhance LLM extraction logic to support attached-mdx pages and improve initialization handling ([29438ec](https://github.com/ovh/design-system/commit/29438ec407cfa8f3c5d46f066f319b54c8f06078))
+* **tabs:** add switch variant & deprecate Switch ([cabdb68](https://github.com/ovh/design-system/commit/cabdb688fc1fdc6285ad1aa653e1a05a8c7df1a8))
+* **text:** add as attribute ([3dbf3de](https://github.com/ovh/design-system/commit/3dbf3decd69dd6a398ca3334d68d2aab1243884f))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.3.0](https://ovh.github.io/design-system/v19.3.0/?path=/docs/design-system-changelog--page) (2025-11-26)
 [compare](https://github.com/ovh/design-system/compare/v19.2.1...v19.3.0)
 

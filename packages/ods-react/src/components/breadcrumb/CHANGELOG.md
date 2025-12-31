@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.4.0](https://ovh.github.io/design-system/v19.4.0/?path=/docs/design-system-changelog--page) (2025-12-31)
+[compare](https://github.com/ovh/design-system/compare/v19.3.0...v19.4.0)
+
+### Bug Fixes
+
+* **components:** resolve lint:a11y issues ([1c66ea7](https://github.com/ovh/design-system/commit/1c66ea7bea91572d9e1afe11336f46347cfa0207))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.3.0](https://ovh.github.io/design-system/v19.3.0/?path=/docs/design-system-changelog--page) (2025-11-26)
 [compare](https://github.com/ovh/design-system/compare/v19.2.1...v19.3.0)
 

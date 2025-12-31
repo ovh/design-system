@@ -2,6 +2,144 @@
 
 Documentation for design tokens, styling, theming, guides, tools, and general information about OVHcloud Design System.
 
+## Helpers
+
+# formatPrice
+
+## Specifications
+
+---
+
+Format a numeric value to a price matching given locale format with expected currency.
+
+See also:
+
+-   [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)
+
+| Argument | Type | Default value | Description |
+| --- | --- | --- | --- |
+| value | `number` | `   undefined   ` | The numeric value to format. |
+| locale | `string` | `'fr-FR'` | The locale to use. |
+| currency | `string` | `'EUR'` | The currency expected. |
+
+## Examples
+
+---
+
+### Default
+
+123 456,79 €
+
+```jsx
+<>{formatPrice(123456.789)}</>
+```
+
+### Locales
+
+France: 123 456,79 €
+
+Germany: 123.456,79 €
+
+Arabic: ‏١٢٣٬٤٥٦٫٧٩ €
+
+India: €1,23,456.79
+
+```jsx
+<>
+  <p>France: {formatPrice(123456.789, 'fr-FR')}</p>
+  <p>Germany: {formatPrice(123456.789, 'de-DE')}</p>
+  <p>Arabic: {formatPrice(123456.789, 'ar-EG')}</p>
+  <p>India: {formatPrice(123456.789, 'en-IN')}</p>
+</>
+```
+
+### Currencies
+
+Euro: 123 456,79 €
+
+Dollar: 123 456,79 $
+
+Yen: 123 457 ¥
+
+```jsx
+<>
+  <p>Euro: {formatPrice(123456.789, 'fr-FR', 'EUR')}</p>
+  <p>Dollar: {formatPrice(123456.789, 'fr-FR', 'USD')}</p>
+  <p>Yen: {formatPrice(123456.789, 'fr-FR', 'JPY')}</p>
+</>
+```
+
+## Helpers/formatPrice
+
+## Examples
+
+
+### Currencies
+
+```tsx
+{
+  globals: {
+    imports: `import { formatPrice } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>Euro: {formatPrice(123456.789, 'fr-FR', 'EUR')}</p>
+      <p>Dollar: {formatPrice(123456.789, 'fr-FR', 'USD')}</p>
+      <p>Yen: {formatPrice(123456.789, 'fr-FR', 'JPY')}</p>
+    </>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { formatPrice } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => <>{formatPrice(123456.789)}</>
+}
+```
+
+### Locales
+
+```tsx
+{
+  globals: {
+    imports: `import { formatPrice } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>France: {formatPrice(123456.789, 'fr-FR')}</p>
+      <p>Germany: {formatPrice(123456.789, 'de-DE')}</p>
+      <p>Arabic: {formatPrice(123456.789, 'ar-EG')}</p>
+      <p>India: {formatPrice(123456.789, 'en-IN')}</p>
+    </>
+}
+```
+
 ## Apply ODS Style
 
 ---
@@ -950,15 +1088,9 @@ In addition to the predefined accessibility features of our components, you can 
 Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) when an element needs a descriptive name but has no visible text.
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Button>
-      <Icon name={ICON_NAME.xmark} />
-    </Button>
-}
+<Button>
+  <Icon name="xmark" />
+</Button>
 ```
 
 Screen readers will announce a button.
@@ -990,25 +1122,16 @@ Screen readers will announce a button and the aria-label.
 
 Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) to associate an element with an existing label (instead of duplicating text).
 
+Filter your search results
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Button>
-        <Icon name={ICON_NAME.filter} />
-      </Button>
-      <span>Filter your search results</span>
-    </>
-}
+<>
+  <Button>
+    <Icon name="filter" />
+  </Button>
+  <span>
+    Filter your search results  </span>
+</>
 ```
 
 Screen readers will announce a button.
@@ -1060,20 +1183,26 @@ Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 | Provide contextual help / information (e.g., input rules, field error) |  |  |
 
 ```jsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button>
-      Trigger Modal    </Button>
-  </ModalTrigger>
-  <ModalContent>
-    <ModalBody>
-      <h2 id="modal-title">
-        Delete item      </h2>
-      <p id="modal-content">
-        Are you sure you want to delete this item? This action cannot be undone.      </p>
-    </ModalBody>
-  </ModalContent>
-</Modal>
+{
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal        </Button>
+      </ModalTrigger>
+      <ModalContent>
+        <ModalBody>
+          <h2 id="modal-title">
+            Delete item          </h2>
+          <p id="modal-content">
+            Are you sure you want to delete this item? This action cannot be undone.          </p>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+}
 ```
 
 Screen readers won't announce the **Modal** content.
@@ -1114,14 +1243,6 @@ Screen readers will announce the **Modal** content.
 Use [aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden) set to `"true"` on elements that are purely decorative and should not be announced by screen readers.
 
 ```jsx
-<Icon name="home" />
-```
-
-Some screen readers will announce the icon and detect the presence of the image.
-
-Depending on the screen reader, some additional information might be read aloud, which is confusing and unhelpful.
-
-```jsx
 {
   globals: {
     imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
@@ -1129,6 +1250,14 @@ Depending on the screen reader, some additional information might be read aloud,
   tags: ['!dev'],
   render: ({}) => <Icon name={ICON_NAME.home} />
 }
+```
+
+Some screen readers will announce the icon and detect the presence of the image.
+
+Depending on the screen reader, some additional information might be read aloud, which is confusing and unhelpful.
+
+```jsx
+<Icon name="home" />
 ```
 
 Screen readers will announce nothing, the icon is ignored.
@@ -1342,42 +1471,23 @@ Screen readers will announce the error message, even when the user is focused el
 Rating
 
 ```jsx
-<>
-  <label htmlFor="rating">
-    Rating  </label>
-  <div id="rating">
-    <Icon
-      aria-label="one star"
-      name="star"
-      role="img"
-      tabIndex={0}
-    />
-    <Icon
-      aria-label="two star"
-      name="star"
-      role="img"
-      tabIndex={0}
-    />
-    <Icon
-      aria-label="three star"
-      name="star"
-      role="img"
-      tabIndex={0}
-    />
-    <Icon
-      aria-label="four star"
-      name="star"
-      role="img"
-      tabIndex={0}
-    />
-    <Icon
-      aria-label="five star"
-      name="star"
-      role="img"
-      tabIndex={0}
-    />
-  </div>
-</>
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <label htmlFor="rating">
+        Rating      </label>
+      <div id="rating">
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="one star" role="img" />
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="two star" role="img" />
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="three star" role="img" />
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="four star" role="img" />
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="five star" role="img" />
+      </div>
+    </>
+}
 ```
 
 Screen readers will read each star individually with no context of selection group.
@@ -2066,6 +2176,88 @@ To check how to start with this new version, please follow the  documentation.
 ## What's new ?
 
 ---
+
+## v19.4.0
+
+---
+
+### New features:
+
+**Helpers**
+
+`@ovhcloud/ods-react` package now expose the following helper functions:
+
+-   `formatPrice`: useful to format an amount into a price with currency for a given locale.
+
+You can find more information about helpers on the new dedicated section in the documentation.
+
+**Recipes**
+
+Recipes are ready-to-use UI patterns built with ODS components. They provide pre-implemented code snippets for common use cases, helping you build consistent interfaces faster. Each recipe may include multiple implementations, so you can choose the styling approach that fits your project.
+
+We're still iterating on the whole recipe system to ensure it fits integrator needs. Feel free to share with us your feedback with your own experience while using those recipes.
+
+You can find more information about recipes on the new dedicated section in the documentation.
+
+### New components:
+
+**Button Group**
+
+.
+
+**Kbd**
+
+.
+
+### Design updates:
+
+**Tabs**
+
+This change may impact your layouts.
+
+-   Default tabs height have been increased.
+
+### Feature updates:
+
+**Icon**
+
+-   Add 17 new icons.
+
+**Switch**
+
+-   [DEPRECATED] Whole component is now deprecated, you can use the new Tabs `switch` variant instead.
+
+**Tabs**
+
+-   New attribute `size` has been added.
+-   New attribute `variant` has been added.
+
+### Bug fixes:
+
+**AI Agents**
+
+-   LLM files now contains all the storybook relevant pages.
+
+**Code**
+
+-   Highlighter instance is now correctly cleaned on unmount.
+
+**Combobox**
+
+-   Prevent content close on scrollbar click.
+-   Active option is now automatically scrolled into view.
+
+**FileUpload**
+
+-   Use correct role on file item error.
+
+**Range**
+
+-   Prevent thumb focus when value is changed by external sources.
+
+**Select**
+
+-   Value text and placeholder are now ellipse by default.
 
 ## v19.3.0
 
@@ -4271,3 +4463,55 @@ The V1 **Design System** graphical charter is finalized. This charter contains :
 -   **Chips & Badges**
 -   **Cards**
 -   **Cart**
+
+## Recipes
+
+# Components
+
+_Recipes are ready-to-use UI patterns built with ODS components. They provide pre-implemented code snippets for common use cases, helping you build consistent interfaces faster. Each recipe may include multiple implementations, so you can choose the styling approach that fits your project._
+
+Filter recipes:
+
+---
+
+Email Field
+
+Email:
+
+@
+
+.fr.com.dev
+
+The part before the email address (the text before the @) must follow these guidelines:
+
+-   It must end with a letter or a number
+-   Allowed special characters are: ".", "_", "-"
+-   Special characters cannot be placed next to each other
+
+Feature List
+
+-   Memory: up to 1.5 TB
+-   SLA: 99.99%
+-   Guaranteed public bandwidth from 5 Gbps to 25 Gbps
+-   25 Gbps private bandwidth included
+-   OVHcloud Link Aggregation
+
+Media Product Card
+
+AI Deploy
+
+Easily deploy machine learning models and applications into production, create your API access points with ease, and make effective predictions.
+
+Order Button
+
+Range Input
+
+0100
+
+Status Message
+
+Activate your project and get €200 in free cloud credit
+
+You are currently in discovery mode. Activate your project to unlock your cloud resources and start building in minutes.
+
+Status Modal

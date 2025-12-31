@@ -1,0 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.4.0](https://ovh.github.io/design-system/v19.4.0/?path=/docs/design-system-changelog--page) (2025-12-31)
+[compare](https://github.com/ovh/design-system/compare/v19.3.0...v19.4.0)
+
+### Features
+
+* **kbd:** initiate component ([bfb50bb](https://github.com/ovh/design-system/commit/bfb50bbc7a18e3fe936510d77cb0c51bea3ac3a5))

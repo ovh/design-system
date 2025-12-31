@@ -8,6 +8,34 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.4.0](https://ovh.github.io/design-system/v19.4.0/?path=/docs/design-system-changelog--page) (2025-12-31)
+[compare](https://github.com/ovh/design-system/compare/v19.3.0...v19.4.0)
+
+### Bug Fixes
+
+* **combobox:** prevent content close on scrollbar click ([7eea350](https://github.com/ovh/design-system/commit/7eea35006b1c4e8f30cd5fa5aef3d978ddecb87d))
+* **combobox:** scroll option into view on highlight ([5213bcd](https://github.com/ovh/design-system/commit/5213bcda70d49039797d6521508fe5bb8fbcdb63))
+* **components:** resolve lint:a11y issues ([1c66ea7](https://github.com/ovh/design-system/commit/1c66ea7bea91572d9e1afe11336f46347cfa0207))
+* **range:** prevent thumb focus when value is changed by external sources ([75d5689](https://github.com/ovh/design-system/commit/75d5689ca07cd335e63e24c77835fbc44ba93451))
+
+
+### Features
+
+* **buttonGroup:** implement component ([8104e06](https://github.com/ovh/design-system/commit/8104e065c5ae020dd79317ad23940a65f969e12d))
+* **doc:** add helpers documentation page ([db6633c](https://github.com/ovh/design-system/commit/db6633c975433d0652f583168c1a9e0be8dcd196))
+* **doc:** update recipe doc ([5c5916f](https://github.com/ovh/design-system/commit/5c5916fbc9a16d1dea59fcb7466c1c9fe5539a2b))
+* **icons:** add new set of icons ([d30e961](https://github.com/ovh/design-system/commit/d30e96132d31f366dc4892472d95bc2727effb2d))
+* **kbd:** initiate component ([bfb50bb](https://github.com/ovh/design-system/commit/bfb50bbc7a18e3fe936510d77cb0c51bea3ac3a5))
+* **tabs:** add switch variant & deprecate Switch ([cabdb68](https://github.com/ovh/design-system/commit/cabdb688fc1fdc6285ad1aa653e1a05a8c7df1a8))
+* **text:** add as attribute ([3dbf3de](https://github.com/ovh/design-system/commit/3dbf3decd69dd6a398ca3334d68d2aab1243884f))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.3.0](https://ovh.github.io/design-system/v19.3.0/?path=/docs/design-system-changelog--page) (2025-11-26)
 [compare](https://github.com/ovh/design-system/compare/v19.2.1...v19.3.0)
 

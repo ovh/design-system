@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.4.0](https://ovh.github.io/design-system/v19.4.0/?path=/docs/design-system-changelog--page) (2025-12-31)
+[compare](https://github.com/ovh/design-system/compare/v19.3.0...v19.4.0)
+
+### Bug Fixes
+
+* **range:** prevent thumb focus when value is changed by external sources ([75d5689](https://github.com/ovh/design-system/commit/75d5689ca07cd335e63e24c77835fbc44ba93451))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.3.0](https://ovh.github.io/design-system/v19.3.0/?path=/docs/design-system-changelog--page) (2025-11-26)
 [compare](https://github.com/ovh/design-system/compare/v19.2.1...v19.3.0)
 

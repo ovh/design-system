@@ -9,6 +9,82 @@ import { HOME_TITLE, REACT_COMPONENTS_TITLE, STORY } from '../../../src/constant
 
 <Heading label="What's new ?" level={ 1 } />
 
+<Heading label="v19.4.0" level={ 2 } />
+
+<Heading label="New features:" level={ 3 } />
+
+**Helpers**
+
+`@ovhcloud/ods-react` package now expose the following helper functions:
+- `formatPrice`: useful to format an amount into a price with currency for a given locale.
+
+You can find more information about helpers on the new dedicated section in the documentation.
+
+**Recipes**
+
+Recipes are ready-to-use UI patterns built with ODS components.
+They provide pre-implemented code snippets for common use cases, helping you build consistent interfaces faster.
+Each recipe may include multiple implementations, so you can choose the styling approach that fits your project.
+
+We're still iterating on the whole recipe system to ensure it fits integrator needs.
+Feel free to share with us your feedback with your own experience while using those recipes.
+
+You can find more information about recipes on the new dedicated section in the documentation.
+
+<Heading label="New components:" level={ 3 } />
+
+**Button Group**
+
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.buttonGroup } story={ STORY.documentation }>See Documentation</StorybookLink>.
+
+**Kbd**
+
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.kbd } story={ STORY.documentation }>See Documentation</StorybookLink>.
+
+<Heading label="Design updates:" level={ 3 } />
+
+**Tabs**
+<Message color={ MESSAGE_COLOR.warning } dismissible={ false } style={{ width: '100%' }}>
+  <MessageIcon name={ ICON_NAME.triangleExclamation } />
+  <MessageBody>
+    This change may impact your layouts.
+  </MessageBody>
+</Message>
+- Default tabs height have been increased.
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Icon**
+- Add 17 new icons.
+
+**Switch**
+- [DEPRECATED] Whole component is now deprecated, you can use the new Tabs `switch` variant instead.
+
+**Tabs**
+- New attribute `size` has been added.
+- New attribute `variant` has been added.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**AI Agents**
+- LLM files now contains all the storybook relevant pages.
+
+**Code**
+- Highlighter instance is now correctly cleaned on unmount.
+
+**Combobox**
+- Prevent content close on scrollbar click.
+- Active option is now automatically scrolled into view.
+
+**FileUpload**
+- Use correct role on file item error.
+
+**Range**
+- Prevent thumb focus when value is changed by external sources.
+
+**Select**
+- Value text and placeholder are now ellipse by default.
+
 <Heading label="v19.3.0" level={ 2 } />
 
 <Heading label="New components:" level={ 3 } />

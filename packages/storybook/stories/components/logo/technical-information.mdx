@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/logo/documentation/cssVariable.json';
+import specificationsLogo from '../../../../ods-react/src/components/logo/documentation/logo.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as LogoStories from './logo.stories';
+
+<Meta of={ LogoStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ LogoStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ LogoStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/logo/anatomy-tech.png" />
+
+1. **Logo**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsLogo }
+  extraInfo={{
+    'Logo': {
+      extendAttribute: {
+        name: 'svg',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/svg#attributes',
+      },
+    },
+  }}
+  of={ LogoStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ LogoStories.Default } sourceState="shown" />
+
+<Heading label="Size" level={ 3 } />
+
+<Canvas of={ LogoStories.Size } sourceState="shown" />
+
+<Heading label="Variant" level={ 3 } />
+
+<Canvas of={ LogoStories.Variant } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Logo" />

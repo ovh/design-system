@@ -1,0 +1,100 @@
+import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
+import { Meta } from '@storybook/blocks';
+import * as LogoStories from './logo.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+
+<Meta of={ LogoStories } name='Documentation' tags={ ['new'] } />
+
+<Banner of={ LogoStories } />
+
+<Canvas of={ LogoStories.Overview } sourceState="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ [] }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/LC3NLyBG7rTBB4z2BrgFtx/ODS---UI-Kit?node-id=14404-2175&t=hWEYBdYcCp9xXYYY-0"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/logo"
+              name="Logo"
+              startingVersion={ 19 }>
+  The **Logo** component is a visual representation of the official brand.
+</IdentityCard>
+
+<Heading label="Usage" level={ 2 } />
+
+Use the **Logo** component to display the brand identity in key areas of the interface, such as headers, navigation bars, footers, or branded sections.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    '- Do not change logo colors outside of the approved brand versions',
+    '- Do not use the Logo as an interactive element (button or link) unless explicitly wrapped by a dedicated navigation component',
+    '- Do not overcrowd the logo with surrounding content',
+  ]}
+  dos={[
+    '- Use the Logo component to represent the brand identity consistently across your interfaces',
+    '- Choose the appropriate variant based on available space and hierarchy',
+    '- Ensure adequate spacing around the logo so it remains clearly visible and legible',
+  ]}
+/>
+
+<Heading label="Placement" level={ 2 } />
+
+The **Logo** component can be used in various layouts, including:
+- Application headers and top navigation bars
+- Sidebars
+- Footers
+- Splash screens or landing pages
+- Branded sections within a page
+
+<Heading label="Variation" level={ 2 } />
+
+<Heading label="Variant" level={ 3 } />
+
+<Heading label="Emblem" level={ 4 } />
+
+Displays the logo emblem only.
+Best suited for compact spaces (e.g. collapsed navigation, mobile headers, favicon-like usage).
+
+<Heading label="Default" level={ 4 } />
+
+Displays the logo emblem and wordmark horizontally.
+
+Recommended for standard headers and navigation bars where horizontal space is available.
+
+<Heading label="Size" level={ 3 } />
+
+<Heading label="Small" level={ 4 } />
+
+Use in constrained spaces such as mobile headers, compact navigation bars, or secondary branding areas.
+
+<Heading label="Medium" level={ 4 } />
+
+Default choice for standard application headers and footers.
+
+<Heading label="Large" level={ 4 } />
+
+Use for high-visibility contexts such as landing pages, splash screens, or branded hero sections.
+
+<Heading label="Navigation" level={ 2 } />
+
+The **Logo** component is non-interactive and does not receive keyboard focus.
+It is used solely for displaying the brand identity and does not impact keyboard navigation.
+
+If the logo needs to act as a link (e.g. redirect to the homepage), it must be wrapped in a separate interactive element that handles navigation and focus.
+
+<Heading label="Accessibility" level={ 2 } />
+
+When the logo is used within a navigational element (for example, as a link in a header), an `aria-label` on the link should reflect the intended action, such as:
+- "Navigate to the homepage"
+- "Return to the [Brand name] home page"
+
+<Canvas of={ LogoStories.AccessibilityLink } sourceState="shown" />
+
+<Icon name={ ICON_NAME.circleCheck }
+      style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers will announce the `aria-label`.

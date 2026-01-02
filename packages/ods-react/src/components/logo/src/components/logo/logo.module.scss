@@ -1,0 +1,21 @@
+$logo-size-sm: 24px;
+$logo-size-md: 32px;
+$logo-size-lg: 40px;
+
+@layer ods-quarks {
+  .logo {
+    fill: var(--ods-theme-brand-color);
+
+    &--sm {
+      height: $logo-size-sm;
+    }
+
+    &--md {
+      height: $logo-size-md;
+    }
+
+    &--lg {
+      height: $logo-size-lg;
+    }
+  }
+}

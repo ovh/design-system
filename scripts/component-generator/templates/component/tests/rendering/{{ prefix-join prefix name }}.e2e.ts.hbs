@@ -5,14 +5,14 @@ describe('{{> ComponentName }} rendering', () => {
   it('should render the component', async() => {
     await gotoStory(page, 'rendering/render');
 
-    expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+    expect(await page.waitForSelector('[data-ods="{{> component-name }}"]')).not.toBeNull();
   });
 
   describe('custom style', () => {
     it('should render with custom style applied', async() => {
       await gotoStory(page, 'rendering/custom-style');
 
-      const {{> componentName }} = await page.waitForSelector('[data-testid="custom-style"]');
+      const {{> componentName }} = await page.waitForSelector('[data-ods="{{> component-name }}"]');
       const height = await {{> componentName }}?.evaluate((el: Element) => el.getBoundingClientRect().height);
 
       expect(height).toBe(42);

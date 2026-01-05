@@ -4,6 +4,7 @@ enum TAG {
   defaultValue = '@default-value',
   deprecated = '@deprecated',
   internal = '@internal',
+  param = '@param',
   type = '@type',
 }
 
@@ -33,11 +34,13 @@ function extractTags(str: string): Map<string, string | undefined> {
 }
 
 function getComponentInfo(docgen: Documentation): Component {
+  const props = Object.entries(docgen.props || {})
+    .map(([name, prop]) => getComponentProp(name, prop))
+    .filter((prop): prop is ComponentProp => !!prop);
+
   return {
     name: docgen.displayName || '',
-    props: Object.entries(docgen.props || {})
-      .map(([name, prop]) => getComponentProp(name, prop))
-      .filter((prop): prop is ComponentProp => !!prop),
+    props: props.concat(getCustomProps(docgen.description)),
   };
 }
 
@@ -60,6 +63,32 @@ function getComponentProp(name: string, prop: PropDescriptor): ComponentProp | u
 
 function getComponentsInfo(docgens: Documentation[]): Component[] {
   return docgens.map(getComponentInfo);
+}
+
+// As docgen may not be able to infer complex type prop inheritance, we parse the description searching for @param value
+// ex: "@param {boolean|optional} disabled - Whether the component is disabled"
+function getCustomProps(description = ''): ComponentProp[] {
+  return description.split('\n')
+    .filter((row) => row.startsWith(TAG.param))
+    .map((row) => {
+      const matches = row.match(/^@param\s({[a-z|]+})\s(\w+)\s-(.*)/);
+
+      if (!matches || matches.length < 4) {
+        return undefined;
+      }
+
+      const [type, optional] = matches[1].split('|');
+
+      return {
+        deprecated: false,
+        description: matches[3].trim(),
+        defaultValue: 'undefined',
+        isOptional: optional && optional.replace(/[{}]/g, '').trim() === 'optional',
+        name: matches[2].trim(),
+        type: type.replace(/[{}]/g, '').trim(),
+      };
+    })
+    .filter((prop): prop is ComponentProp => !!prop);
 }
 
 function removeTags(str: string): string {

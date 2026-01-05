@@ -1,0 +1,13 @@
+@use '../../../../../style/button';
+
+@layer ods-molecules {
+  .editable-display {
+    display: flex;
+    align-items: center;
+    min-height: button.$ods-button-size-sm;
+
+    &--hidden {
+      display: none;
+    }
+  }
+}

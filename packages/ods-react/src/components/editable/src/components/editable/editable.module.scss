@@ -1,0 +1,8 @@
+@layer ods-molecules {
+  .editable {
+    display: inline-flex;
+    flex-flow: row;
+    column-gap: var(--ods-theme-column-gap);
+    align-items: flex-start;
+  }
+}

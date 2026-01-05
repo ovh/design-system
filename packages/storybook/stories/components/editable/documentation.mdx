@@ -1,0 +1,113 @@
+import { Kbd } from '@ovhcloud/ods-react';
+import { Meta } from '@storybook/blocks';
+import * as EditableStories from './editable.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+
+<Meta of={ EditableStories } name="Documentation" tags={ ['new'] } />
+
+<Banner of={ EditableStories } />
+
+<Canvas of={ EditableStories.Overview } sourceState="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ ['Inline Editor'] }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/nrXo7riue1w773W2h4HGBS/ODS---UI-Kit?m=auto&node-id=14291-46529&t=rsFWlOhZe0TlF6Wd-1"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/editable"
+              name="Editable"
+              startingVersion={ 19 }>
+  The **Editable** component allows users to edit text directly in place. It replaces static text with an editable field,
+  letting users quickly update content without opening a form or modal.
+</IdentityCard>
+
+<Heading label="Usage" level={ 2 } />
+
+The **Editable** component is used when users need to modify text directly in the interface, without disrupting their workflow.
+
+They are commonly used for:
+- Inline editing of cell values in a datagrid or table (e.g., a nickname)
+- Editable titles or headings (e.g., rename a dashboard)
+- Settings panels (e.g. configuration values, such as thresholds or labels)
+- Text snippets (e.g., section titles, captions)
+- Lists and todo items
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    '- Remove visual cues that indicate editability.',
+    '- Use Editable for long or complex form content.',
+    '- Use Editable when changes must be reviewed or explicitly confirmed in a separate step.',
+  ]}
+  dos={[
+    '- Use Editable when users need to edit values quickly and frequently.',
+    '- Define a reasonable max length to prevent layout overflow.',
+    '- Ensure editable content has a meaningful default or empty state.',
+  ]}
+/>
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+<Anatomy src="components/editable/anatomy.png" />
+
+1. **Editable**
+2. **Preview / Editing field**
+3. **Actions**
+
+Preview displays static text when not in edit mode while the field is visible only during edit mode.
+
+<Heading label="Behavior" level={ 2 } />
+
+<Heading label="Edit Activation" level={ 3 } />
+
+Users can enter edit mode through different triggers:
+- By click on the edit trigger
+- By double-click on the preview
+
+<Heading label="Editing" level={ 3 } />
+
+When entering edit mode, the preview is replaced by a field containing the current value.
+
+Users can type in the field and update the current value.
+
+<Heading label="Submission" level={ 3 } />
+
+The editable value should be committed when the user activates the submit trigger.
+
+<Heading label="Cancellation" level={ 3 } />
+
+Activating the cancel trigger should discard the current changes and returns the component to its previous value.
+
+<Heading label="Empty" level={ 3 } />
+
+If the current value is empty, an empty state should be displayed to indicate that no content has been defined yet.
+
+<Heading label="Navigation" level={ 2 } />
+
+<Heading label="Focus Management" level={ 3 } />
+
+When edit mode is entered, focus should moves to the expected field.
+
+Exiting edit mode returns focus according to the surrounding context.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing <Kbd>Tab</Kbd> moves focus forward to the next interactive element.
+
+Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus backward to the previous interactive element.
+
+Pressing <Kbd>Enter</Kbd> on the edit trigger activates edit mode.
+
+Pressing <Kbd>Enter</Kbd> on the submit trigger should commit the current value and exits edit mode.
+
+Pressing <Kbd>Enter</Kbd> on the cancel trigger should discard the current changes and exits edit mode.
+
+<Heading label="Accessibility" level={ 2 } />
+
+Accessibility depends on the form elements used within **Editable**.
+Make sure inputs, triggers and custom actions follow standard accessibility rules.

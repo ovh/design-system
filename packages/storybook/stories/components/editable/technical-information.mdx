@@ -1,0 +1,108 @@
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/editable/documentation/cssVariable.json';
+import specificationsEditable from '../../../../ods-react/src/components/editable/documentation/editable.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as EditableStories from './editable.stories';
+
+<Meta of={ EditableStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ EditableStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ EditableStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/editable/anatomy-tech.png" />
+
+1. **Editable**
+2. **EditableDisplay**
+3. **EditableEditTrigger**
+4. **EditableDisplayEmpty**
+5. **EditableInput**
+6. **EditableActions**
+7. **EditableSubmitTrigger**
+8. **EditableCancelTrigger**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsEditable }
+  extraInfo={{
+    'Editable': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'EditableActions': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'EditableCancelTrigger': {
+      extendAttribute: {
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes',
+      },
+    },
+    'EditableDisplay': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'EditableDisplayEmpty': {
+      extendAttribute: {
+        name: 'span',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes',
+      },
+    },
+    'EditableEditTrigger': {
+      extendAttribute: {
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes',
+      },
+    },
+    'EditableInput': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'EditableSubmitTrigger': {
+      extendAttribute: {
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes',
+      },
+    },
+  }}
+  of={ EditableStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ EditableStories.Default } sourceState="shown" />
+
+<Heading label="Controlled" level={ 3 } />
+
+<Canvas of={ EditableStories.Controlled } sourceState="shown" />
+
+<Heading label="Custom Actions" level={ 3 } />
+
+<Canvas of={ EditableStories.CustomActions } sourceState="shown" />
+
+<Heading label="Complex Form Element" level={ 3 } />
+
+<Canvas of={ EditableStories.ComplexFormElement } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Editable" />

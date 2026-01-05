@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/blocks';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import * as TileStories from './tile.stories';
+
+<Meta of={ TileStories } name='Documentation' tags={ ['new'] } />
+
+<Banner of={ TileStories } />
+
+<Canvas of={ TileStories.Overview } sourceState="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ [] }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/l7NGsGx2CuieJpqHn4B1zo/ODS---UI-Kit?m=auto&node-id=13588-131&t=z9FF7UzVAAvDXO1U-1"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/tile"
+              name="Tile"
+              startingVersion={ 19 }>
+  **Tile** component is an interactive container that can integrate either a checkbox or a radio button, providing a
+  visually appealing and user-friendly way to present options to users.
+</IdentityCard>
+
+<Heading label="Usage" level={ 2 } />
+
+**Tile** component is typically used in forms, surveys, and preference settings where users need to make selections from a set of options.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={ [
+    '- Avoid using the Tile component for complex or lengthy content, as it may overwhelm the user.',
+    '- Do not use the Tile for options that require a high level of detail or explanation; instead, consider using a different component or providing additional context through Tooltips or Popovers.',
+    '- Refrain from mixing checkbox and radio button Tiles within the same selection group, as this can cause confusion.'
+  ] }
+  dos={[
+    '- Use the Tile component when you need to present a limited number of options to the user, especially when those options require a brief description or additional information.',
+    '- Utilize the checkbox version of Tile for multiple selections, and the radio button version for single selections.',
+    '- Ensure that the content within Tile is concise and relevant to the user\'s decision-making process.'
+  ]}
+/>
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+<Anatomy src="components/tile/anatomy.png" />
+
+1. **Tile**
+
+<Heading label="Placement" level={ 2 } />
+
+The **Tile** component can be used in various layouts, including but not limited to, grids, lists, and as standalone elements within a form.
+When placing multiple Tiles, ensure they are evenly spaced and aligned to provide a clear and organized user interface.
+Consider the mobile responsiveness of the Tiles, ensuring they adapt well to smaller screen sizes without losing their functionality or readability.
+
+<Heading label="Behavior" level={ 2 } />
+
+**Checkbox Tile**: Upon clicking on the component itself, the checkbox should toggle between checked and unchecked states. When a **Tile** is selected, a clear visual indication of its selected state appear.
+Radio Tile: Clicking on a **Radio Tile** should select that option and deselect any previously selected **Radio Tile** within the same group. Like the previous **Checkbox Tile**, a clear visual indication of its selected state appear.
+
+When clicking on a nested interactive element, **Tile** click is prevented.
+
+A **Tile** can be in disabled state, which disables all inner interaction on it, and it should also not respond to user input.
+
+<Heading label="Navigation" level={ 3 } />
+
+**Tile** component should be focusable via keyboard navigation on their control type (Checkbox or Radio button), allowing users to move between Tiles and select them using the same keyboard controls as in Checkbox or Radio Group.
+
+<Heading label="Accessibility" level={ 2 } />
+
+Inner controls
+
+Inner interactive elements have to be following the **Tile** selection element in tabulation order. They also need to be visible for screen readers when **Tile** element is selected only.

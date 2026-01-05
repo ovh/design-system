@@ -1,0 +1,34 @@
+@layer ods-atoms {
+  .tile {
+    --ods-tile-border-radius: var(--ods-theme-border-radius);
+    --ods-tile-border-width: var(--ods-theme-border-width);
+    --ods-tile-border-color: var(--ods-theme-input-border-color);
+    --ods-tile-background-color: var(--ods-theme-background-color);
+    --ods-tile-background-color-selected: var(--ods-color-primary-025);
+    --ods-tile-background-color-disabled: var(--ods-color-neutral-050);
+    --ods-tile-border-color-disabled: var(--ods-color-neutral-200);
+    --ods-tile-border-color-selected : var(--ods-theme-primary-color);
+    --ods-tile-border-color-hover : var(--ods-color-neutral-500);
+
+    box-sizing: border-box;
+    display: inline-block;
+    border-radius: var(--ods-tile-border-radius);
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover:not(&--selected, &--disabled), &:focus-within:not(&--selected, &--disabled)  {
+      border-color: var(--ods-tile-border-color-hover);
+    }
+
+    &--selected {
+      border-color: var( --ods-tile-border-color-selected);
+      background-color: var(--ods-tile-background-color-selected);
+    }
+
+    &--disabled {
+      border-color: var(--ods-tile-border-color-disabled);
+      background-color: var(--ods-tile-background-color-disabled);
+      cursor: not-allowed;
+    }
+  }
+}

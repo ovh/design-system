@@ -4968,6 +4968,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-tile@workspace:packages/ods-react/src/components/tile":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-tile@workspace:packages/ods-react/src/components/tile"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-timepicker@workspace:packages/ods-react/src/components/timepicker":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-timepicker@workspace:packages/ods-react/src/components/timepicker"

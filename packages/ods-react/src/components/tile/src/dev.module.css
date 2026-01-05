@@ -1,0 +1,10 @@
+.custom-tile__container {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 18px;
+}
+
+.custom-tile__alt-container {
+  padding: 18px;
+}

@@ -45,3 +45,4 @@ export * from './kbd/src';
 export * from './button-group/src';
 export * from './tile/src';
 export * from './logo/src';
+export * from './editable/src';

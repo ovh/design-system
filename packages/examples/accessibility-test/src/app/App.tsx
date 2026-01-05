@@ -13,6 +13,7 @@ import {
   Datepicker, DatepickerContent, DatepickerControl,
   Divider,
   Drawer, DrawerBody, DrawerContent, DrawerTrigger,
+  Editable, EditableActions, EditableDisplay, EditableInput,
   FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
   FileUpload, FileUploadItem, FileUploadList,
   Icon,
@@ -464,6 +465,23 @@ function App(): ReactElement {
               </DrawerBody>
             </DrawerContent>
           </Drawer>
+        </section>
+
+        <section>
+          <h1>Editable</h1>
+
+          <Editable>
+            <EditableDisplay>
+              Some render node
+            </EditableDisplay>
+
+            <EditableInput>
+              <label htmlFor="editable-input">Some input:</label>
+              <input id="editable-input" autoFocus />
+            </EditableInput>
+
+            <EditableActions />
+          </Editable>
         </section>
 
         <section>

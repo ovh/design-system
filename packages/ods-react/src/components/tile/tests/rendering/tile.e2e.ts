@@ -1,0 +1,21 @@
+import 'jest-puppeteer';
+import { gotoStory } from '../../../../helpers/test';
+
+describe('Tile rendering', () => {
+  it('should render the component', async() => {
+    await gotoStory(page, 'rendering/render');
+
+    expect(await page.waitForSelector('[data-testid="render"]')).not.toBeNull();
+  });
+
+  describe('custom style', () => {
+    it('should render with custom style applied', async() => {
+      await gotoStory(page, 'rendering/custom-style');
+
+      const tile = await page.waitForSelector('[data-testid="custom-style"]');
+      const height = await tile?.evaluate((el: Element) => el.getBoundingClientRect().height);
+
+      expect(height).toBe(42);
+    });
+  });
+});

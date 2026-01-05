@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/tile/documentation/cssVariable.json';
+import specificationsTile from '../../../../ods-react/src/components/tile/documentation/tile.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as TileStories from './tile.stories';
+
+<Meta of={ TileStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ TileStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ TileStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/tile/anatomy-tech.png" />
+
+1. **Tile**
+2. **Tile Alt Container**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsTile }
+  extraInfo={{
+    'Tile': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'TileAltContainer': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+  }}
+  of={ TileStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ TileStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ TileStories.Disabled } sourceState="shown" />
+
+<Heading label="Selected" level={ 3 } />
+
+<Canvas of={ TileStories.Selected } sourceState="shown" />

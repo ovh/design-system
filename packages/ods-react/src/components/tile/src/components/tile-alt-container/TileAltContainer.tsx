@@ -11,8 +11,8 @@ const TileAltContainer: FC<TileAltContainerProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const tileContext = useTile();
-  const selected = tileContext?.selected ?? false;
-  const disabled = tileContext?.disabled ?? false;
+  const selected = tileContext.selected ?? false;
+  const disabled = tileContext.disabled ?? false;
 
   return (
     <div

@@ -1,3 +1,5 @@
+@use '../../../../../style/state';
+
 @layer ods-atoms {
   .tile {
     --ods-tile-border-radius: var(--ods-theme-border-radius);
@@ -6,7 +8,6 @@
     --ods-tile-background-color: var(--ods-theme-background-color);
     --ods-tile-background-color-selected: var(--ods-color-primary-025);
     --ods-tile-background-color-disabled: var(--ods-color-neutral-050);
-    --ods-tile-border-color-disabled: var(--ods-color-neutral-200);
     --ods-tile-border-color-selected : var(--ods-theme-primary-color);
     --ods-tile-border-color-hover : var(--ods-color-neutral-500);
 
@@ -26,9 +27,9 @@
     }
 
     &--disabled {
-      border-color: var(--ods-tile-border-color-disabled);
+      @include state.ods-is-disabled();
+
       background-color: var(--ods-tile-background-color-disabled);
-      cursor: not-allowed;
     }
   }
 }

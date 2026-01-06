@@ -1,17 +1,24 @@
-import { type JSX, type ReactNode, createContext, useContext } from 'react';
+import { type JSX, type ReactNode, createContext } from 'react';
+import { useContext } from '../../../../utils/context';
 
-interface TileProviderProp {
+interface TileRootProp {
+  /**
+   * Whether the component is disabled.
+   */
+  disabled?: boolean,
+  /**
+   * Whether the component is selected.
+   */
+  selected?: boolean,
+}
+
+interface TileProviderProp extends Pick<TileRootProp, 'disabled' | 'selected'> {
   children: ReactNode,
-  disabled: boolean,
-  selected: boolean,
 }
 
 type TileContextType = Omit<TileProviderProp, 'children'>;
 
-const TileContext = createContext<TileContextType>({
-  disabled: false,
-  selected: false,
-});
+const TileContext = createContext<TileContextType | undefined>(undefined);
 
 function TileProvider({ children, disabled, selected }: TileProviderProp): JSX.Element {
   return (
@@ -27,5 +34,6 @@ function useTile(): TileContextType {
 
 export {
   TileProvider,
+  type TileRootProp,
   useTile,
 };

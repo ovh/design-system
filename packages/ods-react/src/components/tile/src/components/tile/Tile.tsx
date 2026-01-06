@@ -1,19 +1,10 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { CARD_COLOR, Card } from '../../../../card/src';
-import { TileProvider } from '../../contexts/useTile';
+import { TileProvider, type TileRootProp } from '../../contexts/useTile';
 import style from './tile.module.scss';
 
-interface TileProp extends ComponentPropsWithRef<'div'> {
-  /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean,
-  /**
-   * Whether the component is selected.
-   */
-  selected?: boolean,
-}
+interface TileProp extends ComponentPropsWithRef<'div'>, TileRootProp {}
 
 const Tile: FC<TileProp> = forwardRef(({
   className,

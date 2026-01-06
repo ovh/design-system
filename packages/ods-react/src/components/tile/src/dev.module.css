@@ -1,4 +1,4 @@
-.custom-tile__container {
+.custom-tile__container, .custom-tile__radio-container {
   display: flex;
   gap: 6px;
   align-items: center;
@@ -7,4 +7,18 @@
 
 .custom-tile__alt-container {
   padding: 18px;
+}
+
+/* Styles pour Checkbox et Radio à l'intérieur de Tile */
+.custom-tile > [data-ods="checkbox"],
+.custom-tile > [data-ods="radio"] {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.custom-tile__radio-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }

@@ -30,24 +30,16 @@ export const Demo: Story = {
     disabled: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'false' },
-        type: { summary: 'boolean' },
       },
       control: 'boolean',
     },
     selected: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'false' },
-        type: { summary: 'boolean' },
       },
       control: 'boolean',
     },
   }),
-  args: {
-    disabled: false,
-    selected: false,
-  },
 };
 
 export const Default: Story = {

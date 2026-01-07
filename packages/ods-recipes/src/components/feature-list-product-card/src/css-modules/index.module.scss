@@ -1,0 +1,187 @@
+@use '@ovhcloud/ods-react/style';
+
+.feature-list-product-card {
+  overflow: hidden;
+
+  &__info,
+  &__features,
+  &__footer {
+    padding: calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-horizontal) * 2);
+  }
+
+  &__info {
+    display: flex;
+    flex-flow: column;
+    row-gap: calc(var(--ods-theme-row-gap) * 3);
+
+    &__badges {
+      display: flex;
+      flex-flow: row;
+      gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+    }
+
+    &__description,
+    &__details {
+      display: flex;
+      flex-flow: column;
+      row-gap: calc(var(--ods-theme-row-gap) / 2);
+    }
+
+    &__pricing {
+      display: flex;
+      flex-flow: column;
+
+      &__from {
+        color: var(--ods-theme-text-color);
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      &__amount {
+        color: var(--ods-theme-primary-color);
+        font-size: 36px;
+        font-weight: 700;
+      }
+    }
+
+    &__details {
+      &__promotion {
+        color: var(--ods-color-promotion);
+        font-weight: 600;
+      }
+
+      &__installation {
+        display: flex;
+        flex-flow: row;
+        column-gap: calc(var(--ods-theme-column-gap) / 2);
+
+        &__fee {
+          color: var(--ods-color-promotion);
+          font-weight: 600;
+        }
+      }
+    }
+
+    &__order {
+      $primary-color: #ff0004;
+      $button: &;
+
+      --order-button-color-active: var(--ods-color-critical-700);
+      --order-button-color-hover: var(--ods-color-critical-500);
+      --order-button-text-color: #fff;
+
+      display: flex;
+      flex-flow: row;
+      column-gap: calc(var(--ods-theme-column-gap) * 2);
+      align-items: center;
+      align-self: center;
+      border: 0;
+      border-radius: var(--ods-theme-border-radius);
+      padding: calc(var(--ods-theme-padding-vertical) / 2) calc(var(--ods-theme-column-gap) * 2) calc(var(--ods-theme-padding-vertical) / 2) calc(var(--ods-theme-padding-horizontal) / 2);
+      font-weight: 600;
+
+      &:disabled {
+        background: var(--ods-theme-background-color-disabled);
+        color: var(--ods-theme-text-color-disabled);
+
+        #{$button}__icon {
+          color: var(--ods-theme-text-color-disabled);
+        }
+      }
+
+      &:focus-visible {
+        @include style.ods-focus();
+      }
+
+      &:not(:disabled) {
+        transition: background ease .3s, box-shadow ease .3s;
+        box-shadow: -3px -3px 6px 0 #ff4800 inset, 3px 3px 6px 0 #ea0000 inset, -3px -3px 6px 0 #ffd2d2b2, 3px 3px 6px 0 #82000040;
+        background: $primary-color linear-gradient(86.59deg, rgba(255, 187, 0, 0) 82.69%, rgba(255, 187, 0, 0.75) 100%);
+        cursor: pointer;
+        color: var(--order-button-text-color);
+
+        &:focus-visible,
+        &:hover {
+          box-shadow: none;
+          background: var(--order-button-color-hover);
+
+          #{$button}__icon {
+            box-shadow: none;
+            color: var(--order-button-color-hover);
+          }
+        }
+
+        &:active {
+          box-shadow: none;
+          background: var(--order-button-color-active);
+
+          #{$button}__icon {
+            box-shadow: none;
+            color: var(--order-button-color-active);
+          }
+        }
+
+        #{$button}__icon {
+          box-shadow: 3px 3px 6px 0 #82000040 inset, -3px -3px 6px 0 #ffd2d2b2 inset;
+        }
+      }
+
+      &__icon {
+        border-radius: calc(var(--ods-theme-border-radius) * .75);
+        background-color: var(--order-button-text-color);
+        padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+        color: $primary-color;
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__features {
+    display: flex;
+    flex-flow: column;
+    row-gap: calc(var(--ods-theme-row-gap) * 2);
+    margin: 0;
+    list-style: none;
+
+    &__section {
+      display: flex;
+      flex-flow: column;
+      row-gap: var(--ods-theme-row-gap);
+
+      &__tooltip-trigger {
+        align-self: center;
+        color: var(--ods-theme-primary-color);
+      }
+
+      &__items {
+        display: flex;
+        flex-flow: column;
+        row-gap: var(--ods-theme-row-gap);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        &__item {
+          display: flex;
+          flex-flow: row;
+          column-gap: calc(var(--ods-theme-column-gap) / 2);
+          align-items: baseline;
+
+          &__icon {
+            color: var(--ods-theme-success-color);
+          }
+
+          &__tooltip-trigger {
+            align-self: center;
+            color: var(--ods-theme-primary-color);
+          }
+        }
+      }
+    }
+  }
+
+  &__features,
+  &__footer {
+    background-color: var(--ods-theme-background-color-readonly);
+  }
+}

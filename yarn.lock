@@ -5049,6 +5049,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-recipes-feature-list-product-card@workspace:packages/ods-recipes/src/components/feature-list-product-card":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-feature-list-product-card@workspace:packages/ods-recipes/src/components/feature-list-product-card"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-recipes-feature-list@workspace:packages/ods-recipes/src/components/feature-list":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-recipes-feature-list@workspace:packages/ods-recipes/src/components/feature-list"

@@ -41,6 +41,7 @@ import * as TabsStories from '../../../../stories/components/tabs/tabs.stories';
 import * as TagStories from '../../../../stories/components/tag/tag.stories';
 import * as TextStories from '../../../../stories/components/text/text.stories';
 import * as TextareaStories from '../../../../stories/components/textarea/textarea.stories';
+import * as TileStories from '../../../../stories/components/tile/tile.stories';
 import * as TimepickerStories from '../../../../stories/components/timepicker/timepicker.stories';
 import * as ToasterStories from '../../../../stories/components/toaster/toaster.stories';
 import * as ToggleStories from '../../../../stories/components/toggle/toggle.stories';
@@ -91,6 +92,7 @@ const THEME_STORY_MODULES = {
   Tag: TagStories,
   Text: TextStories,
   Textarea: TextareaStories,
+  Tile: TileStories,
   Timepicker: TimepickerStories,
   Toaster: ToasterStories,
   Toggle: ToggleStories,
@@ -151,6 +153,7 @@ const THEME_PREVIEW_COMPONENTS: ThemePreviewItem[] = [
   { key: 'Tag', kind: REACT_COMPONENTS_TITLE.tag, label: 'Tag' },
   { key: 'Text', kind: REACT_COMPONENTS_TITLE.text, label: 'Text' },
   { key: 'Textarea', kind: REACT_COMPONENTS_TITLE.textarea, label: 'Textarea' },
+  { key: 'Tile', kind: REACT_COMPONENTS_TITLE.tile, label: 'Tile' },
   { key: 'Timepicker', kind: REACT_COMPONENTS_TITLE.timepicker, label: 'Timepicker' },
   { key: 'Toaster', kind: REACT_COMPONENTS_TITLE.toaster, label: 'Toaster' },
   { key: 'Toggle', kind: REACT_COMPONENTS_TITLE.toggle, label: 'Toggle' },

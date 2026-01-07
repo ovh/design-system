@@ -5,6 +5,7 @@ import { Radio, RadioControl, RadioGroup, RadioLabel } from '../../../../ods-rea
 import { Tile, TileAltContainer, type TileProp } from '../../../../ods-react/src/components/tile/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<TileProp>;
 
@@ -48,7 +49,7 @@ export const Default: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Tile style={{ padding: '16px' }}>
+    <Tile>
       This is a tile content.
     </Tile>
   ),
@@ -60,7 +61,7 @@ export const Disabled: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Tile disabled style={{ padding: '16px' }}>
+    <Tile disabled>
       This tile is disabled.
     </Tile>
   ),
@@ -72,89 +73,81 @@ export const Selected: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Tile selected style={{ padding: '16px' }}>
+    <Tile selected>
       This tile is selected.
-    </Tile>
-  ),
-};
-
-export const WithAltContainer: Story = {
-  globals: {
-    imports: `import { Tile, TileAltContainer } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Tile style={{ padding: '16px', width: '300px' }}>
-      <p style={{ margin: 0 }}>Main tile content</p>
-
-      <TileAltContainer style={{ marginTop: '8px', padding: '8px' }}>
-        This is content inside TileAltContainer
-      </TileAltContainer>
     </Tile>
   ),
 };
 
 export const WithCheckbox: Story = {
   globals: {
-    imports: `import { Checkbox, CheckboxControl, CheckboxLabel, Tile, TileAltContainer } from '@ovhcloud/ods-react';`,
+    imports: `import { Tile, Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';
+    import { useState } from 'react';`,
   },
   tags: ['!dev'],
-  render: function Render() {
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
     const [selected, setSelected] = useState(false);
 
     return (
-      <Checkbox
-        checked={ selected }
-        onCheckedChange={ (detail) => setSelected(detail.checked === true) }>
-        <Tile selected={ selected } style={{ padding: '16px', width: '300px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <Tile selected={ selected }>
+        <Checkbox
+          checked={ selected }
+          onCheckedChange={ (detail) => setSelected(detail.checked === true) }>
+          <div style={ { display: 'flex', alignItems: 'center', gap: '8px', padding: '16px' } }>
             <CheckboxControl />
             <CheckboxLabel>Checkbox tile</CheckboxLabel>
           </div>
-
-          <TileAltContainer style={{ marginTop: '8px', padding: '8px' }}>
-            Additional information
-          </TileAltContainer>
-        </Tile>
-      </Checkbox>
+        </Checkbox>
+      </Tile>
     );
   },
 };
 
-export const WithRadio: Story = {
+export const WithRadioGroup: Story = {
   globals: {
-    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel, Tile, TileAltContainer } from '@ovhcloud/ods-react';`,
+    imports: `import { Tile, Radio, RadioGroup, RadioControl, RadioLabel } from '@ovhcloud/ods-react';
+    import { useState } from 'react';`,
   },
   tags: ['!dev'],
-  render: function Render() {
-    const [selected, setSelected] = useState('option-1');
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [selected, setSelected] = useState('radio-1');
 
     return (
-      <RadioGroup
-        value={ selected }
-        onValueChange={ (detail) => setSelected(detail.value || '') }
-        style={{ display: 'flex', gap: '16px' }}>
-        <Radio value="option-1">
-          <Tile selected={ selected === 'option-1' } style={{ padding: '16px', width: '200px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <RadioControl />
-              <RadioLabel>Option 1</RadioLabel>
-            </div>
+      <RadioGroup value={ selected } onValueChange={ (detail) => setSelected(detail.value || '') }>
+        <div>
+          <Tile selected={ selected === 'radio-1' }>
+            <Radio value={ 'radio-1' }>
+              <div style={ { display: 'flex', alignItems: 'center', gap: '8px', padding: '16px' } }>
+                <RadioControl />
+                <RadioLabel>
+                  Radio 1
+                </RadioLabel>
+              </div>
+            </Radio>
           </Tile>
-        </Radio>
-
-        <Radio value="option-2">
-          <Tile selected={ selected === 'option-2' } style={{ padding: '16px', width: '200px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <RadioControl />
-              <RadioLabel>Option 2</RadioLabel>
-            </div>
-
-            <TileAltContainer style={{ marginTop: '8px', padding: '8px' }}>
-              With extra info
-            </TileAltContainer>
+        </div>
+        <div>
+          <Tile selected={ selected === 'radio-2' }>
+            <Radio value={ 'radio-2' }>
+              <div style={ { display: 'flex', alignItems: 'center', gap: '8px', padding: '16px' } }>
+                <RadioControl />
+                <RadioLabel>
+                  Radio 2
+                </RadioLabel>
+              </div>
+            </Radio>
           </Tile>
-        </Radio>
+        </div>
       </RadioGroup>
     );
   },
@@ -165,32 +158,48 @@ export const Overview: Story = {
   parameters: {
     layout: 'centered',
   },
-  render: ({}) => (
-    <Tile style={{ padding: '16px' }}>
-      This is a tile.
-    </Tile>
-  ),
+  render: ({}) => {
+    const [selected, setSelected] = useState(false);
+
+    return (
+      <Tile selected={ selected }>
+        <Checkbox
+          checked={ selected }
+          onCheckedChange={ (detail) => setSelected(detail.checked === true) }>
+          <div>
+            <div style={ { display: 'flex', alignItems: 'center', gap: '8px', padding: '16px' } }>
+              <CheckboxControl />
+              <CheckboxLabel>Checkbox tile</CheckboxLabel>
+            </div>
+
+            <TileAltContainer style={ { padding: '16px' } }>
+              Additional information
+            </TileAltContainer>
+          </div>
+        </Checkbox>
+      </Tile>
+    );
+  },
 };
 
-export const States: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', gap: '16px' }}>{ story() }</div>],
-  globals: {
-    imports: `import { Tile } from '@ovhcloud/ods-react';`,
+export const ThemeGenerator: Story = {
+  name: 'ThemeGenerator',
+  parameters: {
+    docs: { disable: true },
+    options: { showPanel: false },
   },
-  tags: ['!dev'],
+  tags: ['!dev', 'hidden'],
   render: ({}) => (
-    <>
-      <Tile style={{ padding: '16px', width: '150px' }}>
-        Default
+    <div style={ { display: 'flex', gap: '16px', padding: '16px' } }>
+      <Tile style={ { padding: '16px', width: '200px' } }>
+        Default tile
       </Tile>
-
-      <Tile selected style={{ padding: '16px', width: '150px' }}>
-        Selected
+      <Tile selected style={ { padding: '16px', width: '200px' } }>
+        Selected tile
       </Tile>
-
-      <Tile disabled style={{ padding: '16px', width: '150px' }}>
-        Disabled
+      <Tile disabled style={ { padding: '16px', width: '200px' } }>
+        Disabled tile
       </Tile>
-    </>
+    </div>
   ),
 };

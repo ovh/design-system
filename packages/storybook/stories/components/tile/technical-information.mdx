@@ -5,6 +5,7 @@ import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TileStories from './tile.stories';
 
@@ -55,3 +56,15 @@ import * as TileStories from './tile.stories';
 <Heading label="Selected" level={ 3 } />
 
 <Canvas of={ TileStories.Selected } sourceState="shown" />
+
+<Heading label="With Checkbox" level={ 3 } />
+
+<Canvas of={ TileStories.WithCheckbox } sourceState="shown" />
+
+<Heading label="With RadioGroup" level={ 3 } />
+
+<Canvas of={ TileStories.WithRadioGroup } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Tile" />

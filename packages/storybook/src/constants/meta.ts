@@ -76,6 +76,7 @@ enum REACT_COMPONENTS_TITLE {
   tag = `${SECTION.reactComponents}/Tag`,
   text = `${SECTION.reactComponents}/Text`,
   textarea = `${SECTION.reactComponents}/Textarea`,
+  tile = `${SECTION.reactComponents}/Tile`,
   timepicker = `${SECTION.reactComponents}/Timepicker`,
   toaster = `${SECTION.reactComponents}/Toaster`,
   toggle = `${SECTION.reactComponents}/Toggle`,

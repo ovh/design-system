@@ -4,7 +4,7 @@ import { CARD_COLOR, Card } from '../../../../card/src';
 import { TileProvider, type TileRootProp } from '../../contexts/useTile';
 import style from './tile.module.scss';
 
-interface TileProp extends ComponentPropsWithRef<'div'>, TileRootProp {}
+interface TileProp extends Omit<ComponentPropsWithRef<'div'>, 'color'>, TileRootProp {}
 
 const Tile: FC<TileProp> = forwardRef(({
   className,
@@ -20,10 +20,10 @@ const Tile: FC<TileProp> = forwardRef(({
           { [ style[ 'tile--selected' ] ]: selected },
           { [ style[ 'tile--disabled' ] ]: disabled },
           className) }
+        color={ CARD_COLOR.neutral }
         data-ods="tile"
         ref={ ref }
         { ...props }
-        color={ CARD_COLOR.neutral }
       >
         { children }
       </Card>

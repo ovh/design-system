@@ -1,8 +1,9 @@
+@use '../../../../../style/state';
+
 @layer ods-atoms {
   .tile-alt-container {
     --ods-tile-alt-container-background-color: var(--ods-color-neutral-050);
     --ods-tile-alt-container-background-color-selected: var(--ods-color-primary-075);
-    --ods-tile-alt-container-background-color-disabled: var(--ods-color-neutral-100);
 
     box-sizing: border-box;
     background-color: var(--ods-tile-alt-container-background-color);
@@ -12,8 +13,7 @@
     }
 
     &--disabled {
-      background-color: var(--ods-tile-alt-container-background-color-disabled);
-      cursor: not-allowed;
+      @include state.ods-is-disabled();
     }
   }
 }

@@ -4800,6 +4800,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-editable@workspace:packages/ods-react/src/components/editable":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-editable@workspace:packages/ods-react/src/components/editable"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-file-upload@workspace:packages/ods-react/src/components/file-upload":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-file-upload@workspace:packages/ods-react/src/components/file-upload"

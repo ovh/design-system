@@ -39,7 +39,7 @@ export const Demo: Story = {
     },
   }),
   args: {
-    src: 'https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg',
   },
 };
 
@@ -51,12 +51,12 @@ export const Caption: Story = {
   render: ({}) => (
     <figure>
       <Medium
-        alt="OVHcloud logo"
-        src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
+        alt="NASA Computer room"
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
 
       <figcaption>
         <Text preset={ TEXT_PRESET.caption }>
-          © Copyright 1999-2025 OVH SA
+          © Copyright National Aeronautics and Space Administration
         </Text>
       </figcaption>
     </figure>
@@ -70,8 +70,8 @@ export const Default: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Medium
-      alt="OVHcloud logo"
-      src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
+      alt="NASA Computer room"
+      src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
   ),
 };
 
@@ -82,8 +82,9 @@ export const Overview: Story = {
   },
   render: ({}) => (
     <Medium
-      alt="OVHcloud logo"
-      src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
+      alt="NASA Computer room"
+      height={ 100 }
+      src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
   ),
 };
 
@@ -94,9 +95,9 @@ export const Height: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Medium
-      alt="OVHcloud logo"
-      height={ 20 }
-      src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
+      alt="NASA Computer room"
+      height={ 40 }
+      src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
   ),
 };
 
@@ -107,12 +108,11 @@ export const Width: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <Medium
-      alt="OVHcloud logo"
-      src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4"
+      alt="NASA Computer room"
+      src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg"
       width={ 300 } />
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {
@@ -120,6 +120,9 @@ export const ThemeGenerator: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Medium alt="OVHcloud logo" height={ 20 } src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
+    <Medium
+      alt="NASA Computer room"
+      height={ 40 }
+      src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
   ),
 };

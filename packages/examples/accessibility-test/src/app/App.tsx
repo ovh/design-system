@@ -18,6 +18,7 @@ import {
   Icon,
   Input,
   Link,
+  Logo,
   Medium,
   Meter,
   Message, MessageBody, MessageIcon,
@@ -638,6 +639,13 @@ function App(): ReactElement {
             <Icon name="download" />
             <span>Download WCAG20 Guidelines (PDF, 481 KB)</span>
           </Link>
+        </section>
+
+        <section>
+          <h1>Logo</h1>
+
+          <Logo />
+          <Logo variant="emblem" />
         </section>
 
         <section>

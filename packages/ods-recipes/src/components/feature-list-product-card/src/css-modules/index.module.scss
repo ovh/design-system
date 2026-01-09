@@ -1,5 +1,16 @@
 @use '@ovhcloud/ods-react/style';
 
+@mixin feature-item() {
+  display: flex;
+  flex-flow: row;
+  column-gap: calc(var(--ods-theme-column-gap) / 2);
+  align-items: baseline;
+
+  &__tooltip-trigger {
+    color: var(--ods-theme-primary-color);
+  }
+}
+
 .feature-list-product-card {
   overflow: hidden;
 
@@ -12,7 +23,7 @@
   &__info {
     display: flex;
     flex-flow: column;
-    row-gap: calc(var(--ods-theme-row-gap) * 3);
+    row-gap: calc(var(--ods-theme-row-gap) * 2);
 
     &__badges {
       display: flex;
@@ -20,11 +31,10 @@
       gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
     }
 
-    &__description,
-    &__details {
+    &__description {
       display: flex;
       flex-flow: column;
-      row-gap: calc(var(--ods-theme-row-gap) / 2);
+      row-gap: var(--ods-theme-row-gap);
     }
 
     &__pricing {
@@ -37,14 +47,29 @@
         font-weight: 700;
       }
 
-      &__amount {
-        color: var(--ods-theme-primary-color);
-        font-size: 36px;
-        font-weight: 700;
+      &__price {
+        display: flex;
+        flex-flow: row;
+        column-gap: var(--ods-theme-column-gap);
+        align-items: baseline;
+
+        &__amount {
+          color: var(--ods-theme-primary-color);
+          font-size: 36px;
+          font-weight: 700;
+        }
+      }
+
+      &__duration {
+        font-weight: 600;
       }
     }
 
     &__details {
+      display: flex;
+      flex-flow: column;
+      row-gap: calc(var(--ods-theme-row-gap) / 2);
+
       &__promotion {
         color: var(--ods-color-promotion);
         font-weight: 600;
@@ -78,6 +103,7 @@
       border: 0;
       border-radius: var(--ods-theme-border-radius);
       padding: calc(var(--ods-theme-padding-vertical) / 2) calc(var(--ods-theme-column-gap) * 2) calc(var(--ods-theme-padding-vertical) / 2) calc(var(--ods-theme-padding-horizontal) / 2);
+      font-size: 16px;
       font-weight: 600;
 
       &:disabled {
@@ -148,9 +174,8 @@
       flex-flow: column;
       row-gap: var(--ods-theme-row-gap);
 
-      &__tooltip-trigger {
-        align-self: center;
-        color: var(--ods-theme-primary-color);
+      &__item {
+        @include feature-item();
       }
 
       &__items {
@@ -162,18 +187,10 @@
         list-style: none;
 
         &__item {
-          display: flex;
-          flex-flow: row;
-          column-gap: calc(var(--ods-theme-column-gap) / 2);
-          align-items: baseline;
+          @include feature-item();
 
           &__icon {
             color: var(--ods-theme-success-color);
-          }
-
-          &__tooltip-trigger {
-            align-self: center;
-            color: var(--ods-theme-primary-color);
           }
         }
       }

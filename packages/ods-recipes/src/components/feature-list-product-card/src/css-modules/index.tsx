@@ -69,9 +69,7 @@ const FeatureListProductCard = (): JSX.Element => {
       className={ style['feature-list-product-card'] }
       color={ CARD_COLOR.neutral }>
       <div className={ style['feature-list-product-card__info'] }>
-        <Text
-          as="span"
-          preset={ TEXT_PRESET.label }>
+        <Text preset={ TEXT_PRESET.span }>
           WEB HOSTING
         </Text>
 
@@ -114,15 +112,17 @@ const FeatureListProductCard = (): JSX.Element => {
             From
           </span>
 
-          <span className={ style['feature-list-product-card__info__pricing__amount'] }>
-            { formatPrice(24.46, 'en-GB', 'EUR') }
-          </span>
+          <div className={ style['feature-list-product-card__info__pricing__price'] }>
+            <span className={ style['feature-list-product-card__info__pricing__price__amount'] }>
+              { formatPrice(24.46, 'en-GB', 'EUR') }
+            </span>
 
-          <Text
-            as="span"
-            preset={ TEXT_PRESET.small }>
-            ex. VAT/month
-          </Text>
+            <Text
+              as="span"
+              preset={ TEXT_PRESET.small }>
+              ex. VAT/month
+            </Text>
+          </div>
 
           <Text
             as="span"
@@ -132,6 +132,7 @@ const FeatureListProductCard = (): JSX.Element => {
 
           <Text
             as="span"
+            className={ style['feature-list-product-card__info__pricing__duration'] }
             preset={ TEXT_PRESET.small }>
             for a 24-month registration
           </Text>
@@ -149,9 +150,7 @@ const FeatureListProductCard = (): JSX.Element => {
           </span>
 
           <div className={ style['feature-list-product-card__info__details__installation'] }>
-            <Text
-              as="span"
-              preset={ TEXT_PRESET.label }>
+            <Text preset={ TEXT_PRESET.span }>
               Installation fee:
             </Text>
 
@@ -183,7 +182,7 @@ const FeatureListProductCard = (): JSX.Element => {
               key={ idx }>
               {
                 title &&
-                <div>
+                <div className={ style['feature-list-product-card__features__section__item'] }>
                   <Text
                     as="span"
                     preset={ TEXT_PRESET.label }>
@@ -195,7 +194,7 @@ const FeatureListProductCard = (): JSX.Element => {
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <Icon
-                          className={ style['feature-list-product-card__features__section__tooltip-trigger'] }
+                          className={ style['feature-list-product-card__features__section__item__tooltip-trigger'] }
                           name={ ICON_NAME.circleQuestion } />
                       </TooltipTrigger>
 

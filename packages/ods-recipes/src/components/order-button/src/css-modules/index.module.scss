@@ -15,6 +15,7 @@
   border: 0;
   border-radius: var(--ods-theme-border-radius);
   padding: calc(var(--ods-theme-padding-vertical) / 2) calc(var(--ods-theme-column-gap) * 2) calc(var(--ods-theme-padding-vertical) / 2) calc(var(--ods-theme-padding-horizontal) / 2);
+  font-size: 16px;
   font-weight: 600;
 
   &:disabled {

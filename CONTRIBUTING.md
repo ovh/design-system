@@ -48,7 +48,7 @@ yarn storybook
 ODS is a monorepo project split into multiple sub-projects under the `/packages` directory:
 - `examples` regroups example projects to test some specific behavior (a11y, SSR, bundlers, ...).
 - `ods-react` contains the React implementation of the component library.
-- `ods-recipes` contains ODS recipe implementations (see [how to contribute](https://github.com/ovh/design-system/blob/master/packages/ods-recipex/README.md)).
+- `ods-recipes` contains ODS recipe implementations (see [how to contribute](https://github.com/ovh/design-system/blob/master/packages/ods-recipes/README.md)).
 - `storybook` is the public documentation.
 - `themes` regroups all the existing ODS themes and the design assets (fonts, design tokens, ...).
 

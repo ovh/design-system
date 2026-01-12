@@ -26,14 +26,10 @@ export const Demo: Story = {
     const [value, setValue] = useState('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.');
     const bufferValue = useRef(value);
 
-    function onSubmit(): void {
-      setValue(bufferValue.current);
-      bufferValue.current = '';
-    }
-
     return (
       <Editable
-        onSubmit={ onSubmit }
+        onCancel={ () => bufferValue.current = value }
+        onSubmit={ () => setValue(bufferValue.current) }
         style={{ display: 'flex' }}>
         <EditableDisplay>
           <p style={{ margin: 0 }}>
@@ -172,13 +168,10 @@ import { useRef, useState } from 'react';`,
     const [value, setValue] = useState('Double click to edit');
     const bufferValue = useRef(value);
 
-    function onSubmit(): void {
-      setValue(bufferValue.current);
-      bufferValue.current = '';
-    }
-
     return (
-      <Editable onSubmit={ onSubmit }>
+      <Editable
+        onCancel={ () => bufferValue.current = value }
+        onSubmit={ () => setValue(bufferValue.current) }>
         <EditableDisplay>
           { value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty> }
         </EditableDisplay>
@@ -231,13 +224,10 @@ import { useRef, useState } from 'react';`,
     const [value, setValue] = useState('Double click to edit');
     const bufferValue = useRef(value);
 
-    function onSubmit(): void {
-      setValue(bufferValue.current);
-      bufferValue.current = '';
-    }
-
     return (
-      <Editable onSubmit={ onSubmit }>
+      <Editable
+        onCancel={ () => bufferValue.current = value }
+        onSubmit={ () => setValue(bufferValue.current) }>
         <EditableDisplay>
           { value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty> }
         </EditableDisplay>
@@ -264,13 +254,10 @@ export const Overview: Story = {
     const [value, setValue] = useState('Double click to edit');
     const bufferValue = useRef(value);
 
-    function onSubmit(): void {
-      setValue(bufferValue.current);
-      bufferValue.current = '';
-    }
-
     return (
-      <Editable onSubmit={ onSubmit }>
+      <Editable
+        onCancel={ () => bufferValue.current = value }
+        onSubmit={ () => setValue(bufferValue.current) }>
         <EditableDisplay>
           { value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty> }
         </EditableDisplay>

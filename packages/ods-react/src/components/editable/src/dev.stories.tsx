@@ -218,13 +218,10 @@ export const Uncontrolled = () => {
   const [value, setValue] = useState(PARAGRAPH_VALUE);
   const bufferValue = useRef(value);
 
-  function onSubmit(): void {
-    setValue(bufferValue.current);
-    bufferValue.current = '';
-  }
-
   return (
-    <Editable onSubmit={ onSubmit }>
+    <Editable
+      onCancel={ () => bufferValue.current = value }
+      onSubmit={ () => setValue(bufferValue.current) }>
       <EditableDisplay>
         <p style={{ margin: 0 }}>
           { value }

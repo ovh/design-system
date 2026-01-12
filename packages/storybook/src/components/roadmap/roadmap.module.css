@@ -1,0 +1,86 @@
+.roadmap-error,
+.roadmap-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.roadmap {
+  --roadmap-components-color: var(--ods-theme-primary-color);
+  --roadmap-recipes-color: var(--ods-theme-success-color);
+  --roadmap-others-color: var(--ods-theme-warning-color);
+
+  display: grid;
+  grid-template-columns: max-content 1fr 1fr 1fr;
+  grid-column-gap: var(--ods-theme-column-gap);
+}
+
+.roadmap__section {
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+  writing-mode: vertical-rl;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+
+.roadmap__section--components {
+  background-color: var(--roadmap-components-color);
+}
+
+.roadmap__section--recipes {
+  background-color: var(--roadmap-recipes-color);
+}
+
+.roadmap__section--others {
+  background-color: var(--roadmap-others-color);
+}
+
+.roadmap__items {
+  display: flex;
+  flex-flow: column;
+}
+
+.roadmap__items__item--components {
+  border-color: var(--roadmap-components-color);
+  background-color: hwb(from var(--roadmap-components-color) h w b / .15);
+}
+
+.roadmap__items__item--recipes {
+  border-color: var(--roadmap-recipes-color);
+  background-color: hwb(from var(--roadmap-recipes-color) h w b / .15);
+}
+
+.roadmap__items__item--others {
+  border-color: var(--roadmap-others-color);
+  background-color: hwb(from var(--roadmap-others-color) h w b / .15);
+}
+
+.roadmap__release {
+  --roadmap-release-border-width: 1px;
+  --roadmap-release-margin-top: calc(var(--ods-theme-row-gap) / 2);
+
+  position: relative;
+  margin-top: var(--roadmap-release-margin-top);
+  border-top: solid var(--roadmap-release-border-width) var(--ods-theme-neutral-color);
+  padding-top: calc(var(--ods-theme-padding-vertical) / 2);
+  text-align: center;
+}
+
+.roadmap__release::after,
+.roadmap__release::before {
+  position: absolute;
+  top: calc((var(--roadmap-release-margin-top) + var(--roadmap-release-border-width)) * -1);
+  height: var(--roadmap-release-margin-top);
+  content: '';
+}
+
+.roadmap__release::before {
+  left: 0;
+  border-left: solid var(--roadmap-release-border-width) var(--ods-theme-neutral-color);
+}
+
+.roadmap__release::after {
+  right: 0;
+  border-right: solid var(--roadmap-release-border-width) var(--ods-theme-neutral-color);
+}

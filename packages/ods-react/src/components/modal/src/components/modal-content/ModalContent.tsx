@@ -1,15 +1,17 @@
 import { Dialog, useDialogContext } from '@ark-ui/react/dialog';
 import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect } from 'react';
 import { MODAL_COLOR, type ModalColor } from '../../constants/modal-color';
-import { ModalHeader } from '../modal-header/ModalHeader';
+import { useModal } from '../../contexts/useModal';
+import { ModalCloseTrigger } from '../modal-close-trigger/ModalCloseTrigger';
 import style from './modalContent.module.scss';
 
 interface ModalContentProp extends ComponentPropsWithRef<'div'> {
   /**
-   * @type=MODAL_COLOR
+   * @deprecated
    * The color preset to use.
+   * DEPRECATED: Color is no longer used and will be removed in the next major version.
    */
   color?: ModalColor,
   /**
@@ -32,6 +34,19 @@ const ModalContent: FC<ModalContentProp> = forwardRef(({
 }, ref): JSX.Element => {
   const { open } = useDialogContext();
 
+  const { hasHeader, setDismissible } = useModal();
+
+  if (color) {
+    console.warn('[DEPRECATED]: Color prop is deprecated and will be removed in the next major version.');
+  }
+
+  useEffect(() => {
+    setDismissible?.(dismissible);
+    return () => {
+      setDismissible?.(undefined);
+    };
+  }, [dismissible, setDismissible]);
+
   return (
     <Portal disabled={ !createPortal }>
       <Dialog.Backdrop
@@ -53,10 +68,11 @@ const ModalContent: FC<ModalContentProp> = forwardRef(({
             ...props.style,
             ...(!open ? { display: 'none' } : {}),
           }}>
-          <ModalHeader
-            color={ color }
-            dismissible={ dismissible } />
-
+          { !hasHeader && dismissible && (
+            <div className={ style['modal-content__close-trigger'] }>
+              <ModalCloseTrigger />
+            </div>
+          ) }
           { children }
         </Dialog.Content>
       </Dialog.Positioner>

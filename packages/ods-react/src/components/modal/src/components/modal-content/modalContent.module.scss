@@ -13,6 +13,8 @@
   }
 
   .modal-content {
+    position: relative;
+
     &:not([hidden]) {
       @include modal.ods-modal();
 
@@ -23,6 +25,14 @@
       &[data-state="closed"] {
         animation: modal-close 0.2s ease-in-out;
       }
+    }
+
+    &__close-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      z-index: 1;
+      padding: var(--ods-modal-header-padding-vertical) var(--ods-modal-header-padding-horizontal);
     }
   }
 }

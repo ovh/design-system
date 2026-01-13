@@ -3,7 +3,7 @@ import { Button } from '../../button/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Popover, PopoverContent, PopoverTrigger } from '../../popover/src';
 import { Select, SelectContent, SelectControl } from '../../select/src';
-import { Modal, ModalBody, ModalContent, type ModalOpenChangeDetail, ModalTrigger } from '.';
+import { Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail, ModalTrigger } from '.';
 import style from './dev.module.css';
 
 export default {
@@ -29,82 +29,6 @@ export const A11Y = () => (
       </ModalBody>
     </ModalContent>
   </Modal>
-);
-
-export const Colors = () => (
-  <>
-    <Modal>
-      <ModalTrigger>
-        Critical
-      </ModalTrigger>
-
-      <ModalContent color="critical">
-        <ModalBody>
-          Critical
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-
-    <Modal>
-      <ModalTrigger>
-        Information
-      </ModalTrigger>
-
-      <ModalContent color="information">
-        <ModalBody>
-          Information
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-
-    <Modal>
-      <ModalTrigger>
-        Neutral
-      </ModalTrigger>
-
-      <ModalContent color="neutral">
-        <ModalBody>
-          Neutral
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-
-    <Modal>
-      <ModalTrigger>
-        Primary
-      </ModalTrigger>
-
-      <ModalContent color="primary">
-        <ModalBody>
-          Primary
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-
-    <Modal>
-      <ModalTrigger>
-        Success
-      </ModalTrigger>
-
-      <ModalContent color="success">
-        <ModalBody>
-          Success
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-
-    <Modal>
-      <ModalTrigger>
-        Warning
-      </ModalTrigger>
-
-      <ModalContent color="warning">
-        <ModalBody>
-          Warning
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-  </>
 );
 
 export const Controlled = () => {
@@ -275,6 +199,92 @@ export const OverlayElements = () => (
             This is the popover content
           </PopoverContent>
         </Popover>
+      </ModalBody>
+    </ModalContent>
+  </Modal>
+);
+
+export const WithHeaderDismissible = () => (
+  <Modal>
+    <ModalTrigger>
+      Trigger
+    </ModalTrigger>
+
+    <ModalContent>
+      <ModalHeader>
+        My header
+      </ModalHeader>
+      <ModalBody>
+        Content
+      </ModalBody>
+    </ModalContent>
+  </Modal>
+);
+
+export const WithHeaderNonDismissible = () => (
+  <Modal>
+    <ModalTrigger>
+      Trigger
+    </ModalTrigger>
+
+    <ModalContent dismissible={ false }>
+      <ModalHeader>
+        My header
+      </ModalHeader>
+      <ModalBody>
+        Content
+      </ModalBody>
+    </ModalContent>
+  </Modal>
+);
+
+export const WithoutHeaderDismissible = () => (
+  <Modal>
+    <ModalTrigger>
+      Trigger
+    </ModalTrigger>
+
+    <ModalContent>
+      <ModalBody>
+        Content
+      </ModalBody>
+    </ModalContent>
+  </Modal>
+);
+
+export const WithoutHeaderNonDismissible = () => (
+  <Modal>
+    <ModalTrigger>
+      Trigger
+    </ModalTrigger>
+
+    <ModalContent dismissible={ false }>
+      <ModalBody>
+        Content
+      </ModalBody>
+    </ModalContent>
+  </Modal>
+);
+
+export const WithHeaderMultilineTitle = () => (
+  <Modal>
+    <ModalTrigger>
+      Trigger
+    </ModalTrigger>
+
+    <ModalContent>
+      <ModalHeader>
+        <h2>
+          This is a very long title that will wrap on multiple lines to test the behavior of the header with multiline content
+        </h2>
+      </ModalHeader>
+      <ModalBody>
+        <p>
+          This modal has a header with a multiline title to demonstrate how the layout behaves when the title wraps.
+        </p>
+        <p>
+          The close button should remain aligned to the right even when the title takes multiple lines.
+        </p>
       </ModalBody>
     </ModalContent>
   </Modal>

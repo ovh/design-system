@@ -4,6 +4,7 @@
 }
 
 .custom-tooltip-content {
+  display: flex;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   background-color: #f64b4b;
   font-family: 'Courier New', monospace;

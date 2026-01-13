@@ -1,4 +1,4 @@
-import { Dialog } from '@ark-ui/react/dialog';
+import { Dialog, useDialogContext } from '@ark-ui/react/dialog';
 import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
@@ -23,6 +23,8 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
   position = DRAWER_POSITION.left,
   ...props
 }, ref): JSX.Element => {
+  const { open } = useDialogContext();
+
   return (
     <Portal disabled={ !createPortal }>
       <Dialog.Positioner className={ style['drawer-positioner'] }>
@@ -36,7 +38,11 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
           )}
           data-ods="drawer-content"
           ref={ ref }
-          { ...props }>
+          { ...props }
+          style={{
+            ...props.style,
+            ...(!open ? { opacity: 0 } : {}),
+          }}>
           { children }
         </Dialog.Content>
       </Dialog.Positioner>

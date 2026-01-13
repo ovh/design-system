@@ -1,4 +1,4 @@
-import { Popover } from '@ark-ui/react/popover';
+import { Popover, usePopoverContext } from '@ark-ui/react/popover';
 import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef } from 'react';
@@ -27,6 +27,7 @@ const PopoverContent: FC<PopoverContentProp> = forwardRef(({
 }, ref): JSX.Element => {
   const defaultId = useId();
   const { onPositionChange, setContentId } = usePopover();
+  const { open } = usePopoverContext();
   const contentRef = useRef<HTMLDivElement>(null);
   const computedId = useMemo(() => id ?? defaultId, [defaultId, id]);
 
@@ -63,7 +64,11 @@ const PopoverContent: FC<PopoverContentProp> = forwardRef(({
           className={ classNames(style['popover-content'], className) }
           data-ods="popover-content"
           ref={ contentRef }
-          { ...props }>
+          { ...props }
+          style={{
+            ...props.style,
+            ...(!open ? { display: 'none' } : {}),
+          }}>
           {
             withArrow &&
             <Popover.Arrow>

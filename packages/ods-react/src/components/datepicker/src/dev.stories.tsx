@@ -47,11 +47,13 @@ export const Controlled = () => {
   );
 }
 
-export const CustomCSS = () => (
+export const CustomStyle = () => (
   <Datepicker className={ style['custom-datepicker'] }>
     <DatepickerControl className={ style['custom-datepicker-control'] } />
 
-    <DatepickerContent className={ style['custom-datepicker-content'] } />
+    <DatepickerContent
+      className={ style['custom-datepicker-content'] }
+      style={{ border: 'solid' }} />
   </Datepicker>
 );
 

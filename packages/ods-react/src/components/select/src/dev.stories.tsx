@@ -74,7 +74,7 @@ export const CustomLabel = () => (
   </>
 );
 
-export const CustomCSS = () => (
+export const CustomStyle = () => (
   <Select
     className={ style['custom-select'] }
     items={[
@@ -86,7 +86,10 @@ export const CustomCSS = () => (
       { label: 'Goldfish', value:'goldfish' },
     ]}>
     <SelectControl className={ style['custom-select-control'] } />
-    <SelectContent className={ style['custom-select-content'] } />
+
+    <SelectContent
+      className={ style['custom-select-content'] }
+      style={{ border: 'solid' }} />
   </Select>
 );
 

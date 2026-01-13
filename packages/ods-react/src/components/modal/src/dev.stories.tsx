@@ -144,7 +144,8 @@ export const CustomStyle = () => (
     </ModalTrigger>
 
     <ModalContent
-      className={ style['custom-modal-content'] }>
+      className={ style['custom-modal-content'] }
+      style={{ borderRadius: '40px' }}>
       <ModalBody className={ style['custom-modal-body'] }>
         <h3>Custom Styled Modal</h3>
         <p>This modal has custom styling applied through CSS modules.</p>

@@ -1,16 +1,5 @@
 @use '@ovhcloud/ods-react/style';
 
-@mixin feature-item() {
-  display: flex;
-  flex-flow: row;
-  column-gap: calc(var(--ods-theme-column-gap) / 2);
-  align-items: baseline;
-
-  &__tooltip-trigger {
-    color: var(--ods-theme-primary-color);
-  }
-}
-
 .feature-list-product-card {
   overflow: hidden;
 
@@ -175,7 +164,10 @@
       row-gap: var(--ods-theme-row-gap);
 
       &__item {
-        @include feature-item();
+        &__tooltip-trigger {
+          margin-left: calc(var(--ods-theme-column-gap) / 2);
+          color: var(--ods-theme-primary-color);
+        }
       }
 
       &__items {
@@ -187,7 +179,15 @@
         list-style: none;
 
         &__item {
-          @include feature-item();
+          display: flex;
+          flex-flow: row;
+          column-gap: calc(var(--ods-theme-column-gap) / 2);
+          align-items: baseline;
+
+          &__tooltip-trigger {
+            margin-left: calc(var(--ods-theme-column-gap) / 2);
+            color: var(--ods-theme-primary-color);
+          }
 
           &__icon {
             color: var(--ods-theme-success-color);

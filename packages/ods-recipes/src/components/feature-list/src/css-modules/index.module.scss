@@ -17,6 +17,7 @@
     }
 
     &__tooltip-trigger {
+      margin-left: calc(var(--ods-theme-column-gap) / 2);
       color: var(--ods-theme-primary-color);
     }
   }

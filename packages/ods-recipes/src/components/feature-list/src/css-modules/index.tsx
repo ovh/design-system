@@ -22,24 +22,26 @@ const FeatureList = (): JSX.Element => {
               className={ style['feature-list__item__icon'] }
               name={ ICON_NAME.check } />
 
-            <Text preset={ TEXT_PRESET.span }>
-              { label }
-            </Text>
+            <div>
+              <Text preset={ TEXT_PRESET.span }>
+                { label }
+              </Text>
 
-            {
-              !!tooltipContent &&
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Icon
-                    className={ style['feature-list__item__tooltip-trigger'] }
-                    name={ ICON_NAME.circleQuestion } />
-                </TooltipTrigger>
+              {
+                !!tooltipContent &&
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Icon
+                      className={ style['feature-list__item__tooltip-trigger'] }
+                      name={ ICON_NAME.circleQuestion } />
+                  </TooltipTrigger>
 
-                <TooltipContent>
-                  { tooltipContent }
-                </TooltipContent>
-              </Tooltip>
-            }
+                  <TooltipContent>
+                    { tooltipContent }
+                  </TooltipContent>
+                </Tooltip>
+              }
+            </div>
           </li>
         ))
       }

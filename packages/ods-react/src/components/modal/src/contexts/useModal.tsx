@@ -1,4 +1,4 @@
-import { type JSX, type ReactNode, createContext } from 'react';
+import { type JSX, type ReactNode, createContext, useState } from 'react';
 import { useContext } from '../../../../utils/context';
 import { type Locale } from '../../../../utils/locales';
 import { type MODAL_I18N } from '../constants/modal-i18n';
@@ -46,15 +46,27 @@ interface ModalProviderProp extends Pick<ModalRootProp, 'i18n' | 'locale'> {
   children: ReactNode,
 }
 
-type ModalContextType = Omit<ModalProviderProp, 'children'>;
+type ModalContextType = Omit<ModalProviderProp, 'children'> & {
+  dismissible?: boolean,
+  hasHeader: boolean,
+  setDismissible?: (value: boolean | undefined) => void,
+  setHasHeader?: (value: boolean) => void,
+};
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
 function ModalProvider({ children, i18n, locale }: ModalProviderProp): JSX.Element {
+  const [dismissible, setDismissible] = useState<boolean | undefined>(undefined);
+  const [hasHeader, setHasHeader] = useState<boolean>(false);
+
   return (
     <ModalContext.Provider value={{
+      dismissible,
+      hasHeader,
       i18n,
       locale,
+      setDismissible,
+      setHasHeader,
     }}>
       { children }
     </ModalContext.Provider>

@@ -34,14 +34,7 @@ _A **Modal** component is used to overlay with important content the main view o
 **Modals** are used in different cases:
 - alerting users about something that requires their agreement
 - confirming a user decision
-- notifying the user of an important information
-
-There are five different subtypes of **Modals** to inform users that a problem requires immediate response from them so the process can continue, depending on the usage:
-- **Neutral**: reserved for standard alerting
-- **Information**: provides information to users in context
-- **Success**: reserved to provide a static persistent success information
-- **Warning**: reserved for **Modals** that need the user attention and acknowledgment but might not cause errors
-- **Critical**: reserved for errors, malfunctions, as well as critical issues
+- notifying the user of important information
 
 They can be dismissable or not.
 
@@ -58,7 +51,6 @@ They can be dismissable or not.
   dos={[
     '- Use a Modal to capture user attention for critical decisions, confirmations, or required input that blocks the current flow',
     '- Ensure the Modal has a clear and focused purpose, with concise messaging and a single main action',
-    '- Use Modal color variants (Neutral, Info, Success, Warning, Critical) to match the intent and severity of the message',
     '- Allow the Modal to be dismissed via a cancel button, close icon, or Escape key, unless a decision is mandatory',
     '- Keep Modal content short and scannable. Support scroll only when necessary',
   ]}
@@ -81,7 +73,7 @@ When a **Modal** opening is triggered, it is displayed with a position aligned b
 
 **Modal** takes up 100% of the viewport width up to a maximum width of 512px.
 
-On small screen, the **Modal** takes all the available space with a margin of 16px.
+On smaller screens, the **Modal** takes all the available space with a margin of 16px.
 
 <Heading label="Behavior" level={ 2 } />
 
@@ -104,15 +96,6 @@ The hidden overflow behavior is removed whenever the **Modal** get closed.
 <Heading label="Scrolling" level={ 3 } />
 
 When necessary, depending on the viewport height and the **Modal** content, the user can scroll vertically with the header and the action button remaining in place.
-
-<Heading label="Variation" level={ 2 } />
-
-<Heading label="Color" level={ 3 } />
-
-- **Neutral**: providing general information or updates without implying any particular urgency or emotion.
-- **Success**: indicating that an action has been successfully completed, offering positive reinforcement to the user.
-- **Warning**: alerting users to potential issues or risks, encouraging caution and preventive measures.
-- **Critical**: highlighting urgent and severe issues that require immediate attention and action to prevent significant negative outcomes.
 
 <Heading label="Navigation" level={ 2 } />
 

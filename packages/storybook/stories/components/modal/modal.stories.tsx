@@ -2,7 +2,18 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { MODAL_COLOR, MODAL_COLORS, Modal, ModalBody, ModalContent, type ModalContentProp, type ModalOpenChangeDetail, type ModalProp, ModalTrigger } from '../../../../ods-react/src/components/modal/src';
+import {
+  MODAL_COLOR,
+  MODAL_COLORS,
+  Modal,
+  ModalBody,
+  ModalContent,
+  type ModalContentProp,
+  type ModalOpenChangeDetail,
+  type ModalProp,
+  ModalTrigger,
+  ModalHeader,
+} from '../../../../ods-react/src/components/modal/src';
 import { Select, SelectContent, SelectControl } from '../../../../ods-react/src/components/select/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
@@ -353,8 +364,8 @@ export const Default: Story = {
       <ModalTrigger>
         Trigger Modal
       </ModalTrigger>
-
       <ModalContent>
+        <ModalHeader>My modal header</ModalHeader>
         <ModalBody>
           My modal content
         </ModalBody>
@@ -478,11 +489,12 @@ export const Overview: Story = {
       </ModalTrigger>
 
       <ModalContent>
-        <ModalBody>
-          <Text preset={ TEXT_PRESET.heading4 }>
+        <ModalHeader>
+          <Text as={ 'span' } preset={ TEXT_PRESET.heading4 }>
             Overview
           </Text>
-
+        </ModalHeader>
+        <ModalBody>
           <Text>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Text>

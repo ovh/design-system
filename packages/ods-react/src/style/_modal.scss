@@ -18,8 +18,8 @@ $ods-modal-z-index: overlay.$ods-overlay-modal-z-index; // [Deprecated] will be 
   --ods-modal-header-background-color-primary: var(--ods-color-primary-500);
   --ods-modal-header-background-color-success: var(--ods-color-success-075);
   --ods-modal-header-background-color-warning: var(--ods-color-warning-075);
-  --ods-modal-header-padding-horizontal: calc(var(--ods-theme-padding-horizontal) / 2);
-  --ods-modal-header-padding-vertical: calc(var(--ods-theme-padding-vertical) / 2);
+  --ods-modal-header-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 2);
+  --ods-modal-header-padding-vertical: calc(var(--ods-theme-padding-vertical) * 2);
   --ods-modal-margin-horizontal: #{$ods-modal-margin-horizontal};
   --ods-modal-margin-vertical: #{$ods-modal-margin-vertical};
   --ods-modal-mobile-max-height: #{$ods-modal-size};
@@ -80,7 +80,7 @@ $ods-modal-z-index: overlay.$ods-overlay-modal-z-index; // [Deprecated] will be 
 @mixin ods-modal-body() {
   border-bottom-left-radius: var(--ods-modal-border-radius);
   border-bottom-right-radius: var(--ods-modal-border-radius);
-  padding: 24px;
+  padding: 16px;
   overflow-y: auto;
 }
 
@@ -109,6 +109,6 @@ $ods-modal-z-index: overlay.$ods-overlay-modal-z-index; // [Deprecated] will be 
   border-top-left-radius: var(--ods-modal-border-radius);
   border-top-right-radius: var(--ods-modal-border-radius);
   padding: var(--ods-modal-header-padding-vertical) var(--ods-modal-header-padding-horizontal);
-  height: var(--ods-modal-header-height);
+  padding-bottom: 0;
   overflow: hidden;
 }

@@ -1,17 +1,21 @@
 #! /usr/bin/env node
 
-import fs from 'fs/promises';
-import path from 'path';
+import fs from "fs/promises";
+import path from "path";
 
-const INDEX_FILE = 'index.tsx';
-const README_FILE = 'README.md';
+const INDEX_FILE = "index.tsx";
+const README_FILE = "README.md";
 const SOURCE = Object.freeze({
-  cssModules: 'css-modules',
-  tailwind: 'tailwind',
+  cssModules: "css-modules",
+  tailwind: "tailwind",
 });
 const SOURCES = Object.freeze(Object.values(SOURCE));
 
 async function getComponentData(src, module) {
+  if (!module || !module.metadata) {
+    throw new Error(`Module is missing or does not have metadata property`);
+  }
+
   const data = {
     ...module.metadata,
     odsComponents: [],
@@ -39,22 +43,21 @@ async function getComponentData(src, module) {
 async function getComponentReadMe(src) {
   try {
     await fs.access(path.resolve(src, README_FILE));
-  } catch(error) {
+  } catch (error) {
     console.warn(`Unable to find a ${README_FILE} file in "${src}". Thus unable to fill the documentation source.`);
-    return '';
+    return "";
   }
 
-  return fs.readFile(path.resolve(src, README_FILE), 'utf8');
+  return fs.readFile(path.resolve(src, README_FILE), "utf8");
 }
 
 async function getComponentSources(src) {
   const source = {};
 
-  const files = (await fs.readdir(src, { withFileTypes: true }))
-    .filter((dirent) => dirent.isFile());
+  const files = (await fs.readdir(src, { withFileTypes: true })).filter((dirent) => dirent.isFile());
 
   for (const file of files) {
-    source[file.name] = await fs.readFile(path.resolve(file.path, file.name), 'utf8');
+    source[file.name] = await fs.readFile(path.resolve(file.path, file.name), "utf8");
   }
 
   return source;
@@ -63,20 +66,22 @@ async function getComponentSources(src) {
 async function getImportedOdsComponents(src) {
   try {
     await fs.access(path.resolve(src, INDEX_FILE));
-  } catch(error) {
-    console.warn(`Unable to find an ${INDEX_FILE} file in "${src}". Thus unable to find the list of imported ODS components.`);
+  } catch (error) {
+    console.warn(
+      `Unable to find an ${INDEX_FILE} file in "${src}". Thus unable to find the list of imported ODS components.`,
+    );
     return [];
   }
 
-  const fileContent = await fs.readFile(path.resolve(src, INDEX_FILE), 'utf8');
+  const fileContent = await fs.readFile(path.resolve(src, INDEX_FILE), "utf8");
 
   const odsImportMatches = fileContent
     .split(/\r?\n/)
-    .reduce((oneliner, line) => oneliner += line, '')
-    .match(/import\s+\{(.*)}\s+from\s+'@ovhcloud\/ods-react'/)
+    .reduce((oneliner, line) => (oneliner += line), "")
+    .match(/import\s+\{(.*)}\s+from\s+'@ovhcloud\/ods-react'/);
 
   if (odsImportMatches?.length > 1) {
-    return odsImportMatches[1].split(',').map((s) => s.trim());
+    return odsImportMatches[1].split(",").map((s) => s.trim());
   }
   return [];
 }
@@ -93,29 +98,31 @@ function toPascalCase(text) {
 
 async function writeOutput(content, outputFile) {
   try {
-    await fs.writeFile(outputFile, JSON.stringify(content), 'utf8');
-  } catch(error) {
-    console.error('Something went wrong while writing the versions file', error);
+    await fs.writeFile(outputFile, JSON.stringify(content), "utf8");
+  } catch (error) {
+    console.error("Something went wrong while writing the versions file", error);
   }
 }
 
 (async function main() {
   try {
-    await fs.access(path.resolve(process.cwd(), 'dist'));
-  } catch(error) {
-    console.error(`${path.resolve(process.cwd(), 'dist')} does not exists, please run "yarn build:prod" command.`);
+    await fs.access(path.resolve(process.cwd(), "dist"));
+  } catch (error) {
+    console.error(`${path.resolve(process.cwd(), "dist")} does not exists, please run "yarn build:prod" command.`);
     return;
   }
 
   try {
-    await fs.access(path.resolve(process.cwd(), 'scripts', 'dist'));
-  } catch(error) {
-    console.error(`${path.resolve(process.cwd(), 'scripts', 'dist')} does not exists, please run "yarn build:scripts" command.`);
+    await fs.access(path.resolve(process.cwd(), "scripts", "dist"));
+  } catch (error) {
+    console.error(
+      `${path.resolve(process.cwd(), "scripts", "dist")} does not exists, please run "yarn build:scripts" command.`,
+    );
     return;
   }
 
   const recipeModule = await import(`./dist/ods-recipes.js`);
-  const componentsPath = path.resolve(process.cwd(), 'src', 'components');
+  const componentsPath = path.resolve(process.cwd(), "src", "components");
   const finalData = {
     component: {},
     list: {
@@ -127,34 +134,63 @@ async function writeOutput(content, outputFile) {
   try {
     componentNames = await listComponents(componentsPath);
     finalData.list.components = componentNames;
-  } catch(error) {
-    console.error('Error while trying to list all components.');
+  } catch (error) {
+    console.error("Error while trying to list all components.");
     console.error(error);
     process.exitCode = 1;
     return;
   }
 
   try {
-    const componentsData = await Promise.all(componentNames.map((name) => {
-      const module = recipeModule[toPascalCase(name)];
-      return getComponentData(path.resolve(componentsPath, name, 'src'), module)
-    }));
+    // Filter components that have the expected structure (src/ directory)
+    const validComponents = await Promise.all(
+      componentNames.map(async (name) => {
+        const srcPath = path.resolve(componentsPath, name, "src");
+        try {
+          await fs.access(srcPath);
+          return { name, hasSrc: true };
+        } catch {
+          return { name, hasSrc: false };
+        }
+      }),
+    );
 
-    finalData.component = componentNames.reduce((obj, name, idx) => {
+    const componentsToProcess = validComponents.filter(({ hasSrc }) => hasSrc).map(({ name }) => name);
+
+    console.log(`Processing ${componentsToProcess.length} components with recipe structure...`);
+    if (validComponents.some(({ hasSrc }) => !hasSrc)) {
+      const skipped = validComponents.filter(({ hasSrc }) => !hasSrc).map(({ name }) => name);
+      console.log(`Skipping ${skipped.length} components without recipe structure: ${skipped.join(", ")}`);
+    }
+
+    const componentsData = await Promise.all(
+      componentsToProcess.map(async (name) => {
+        const module = recipeModule[toPascalCase(name)];
+        if (!module) {
+          throw new Error(`Component "${name}" (${toPascalCase(name)}) not found in recipe module exports`);
+        }
+        return getComponentData(path.resolve(componentsPath, name, "src"), module);
+      }),
+    );
+
+    finalData.component = componentsToProcess.reduce((obj, name, idx) => {
       obj[name] = componentsData[idx];
       return obj;
     }, {});
-  } catch(error) {
-    console.error('Error while trying to fetch components data.');
+
+    // Update the list to only include processed components
+    finalData.list.components = componentsToProcess;
+  } catch (error) {
+    console.error("Error while trying to fetch components data.");
     console.error(error);
     process.exitCode = 1;
     return;
   }
 
   try {
-    return writeOutput(finalData, path.resolve(process.cwd(), 'dist', 'ods-recipes.json'));
-  } catch(error) {
-    console.error('Error while writing output file.');
+    return writeOutput(finalData, path.resolve(process.cwd(), "dist", "ods-recipes.json"));
+  } catch (error) {
+    console.error("Error while writing output file.");
     console.error(error);
     process.exitCode = 1;
   }

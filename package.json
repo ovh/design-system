@@ -76,7 +76,8 @@
     "stylelint": "16.2.1",
     "stylelint-config-concentric-order": "5.2.0",
     "stylelint-config-standard-scss": "13.0.0",
-    "stylelint-formatter-html": "1.0.1"
+    "stylelint-formatter-html": "1.0.1",
+    "typescript": "5.3.3"
   },
   "engines": {
     "node": ">= 22",

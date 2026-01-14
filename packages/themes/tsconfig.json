@@ -14,7 +14,8 @@
     "outDir": "dist",
     "removeComments": true,
     "strictNullChecks": true,
-    "target": "ES6"
+    "target": "ES6",
+    "skipLibCheck": true
   },
   "include": ["src"],
   "exclude": ["dist", "node_modules/**/*"]

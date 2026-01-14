@@ -11,5 +11,6 @@
 }
 
 .custom-select-content {
+  display: flex;
   max-height: 100px;
 }

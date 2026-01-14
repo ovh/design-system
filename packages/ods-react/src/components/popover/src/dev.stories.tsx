@@ -140,10 +140,12 @@ export const CustomId = () => {
 
 export const CustomStyle = () => (
   <Popover>
-    <PopoverTrigger className={ style[ 'custom-popover-trigger' ] }>
+    <PopoverTrigger className={ style['custom-popover-trigger'] }>
       Show custom popover
     </PopoverTrigger>
-    <PopoverContent className={ style[ 'custom-popover-content' ] }>
+    <PopoverContent
+      className={ style['custom-popover-content'] }
+      style={{ border: 'solid' }}>
       <div>
         This is the popover custom styled content
       </div>

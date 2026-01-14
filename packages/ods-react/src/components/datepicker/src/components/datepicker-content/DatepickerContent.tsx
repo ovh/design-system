@@ -22,7 +22,7 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { invalid } = useDatepicker();
-  const { getInputProps, isUnavailable } = useDatePickerContext();
+  const { getInputProps, isUnavailable, open } = useDatePickerContext();
   const fieldContext = useFormField();
   const { disabled, readOnly } = getInputProps();
 
@@ -37,7 +37,11 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
           )}
           data-ods="datepicker-content"
           ref={ ref }
-          { ...props }>
+          { ...props }
+          style={{
+            ...props.style,
+            ...(!open ? { display: 'none' } : {}),
+          }}>
           <DatePicker.View view={ DATEPICKER_VIEW.day }>
             <DatePicker.Context>
               {

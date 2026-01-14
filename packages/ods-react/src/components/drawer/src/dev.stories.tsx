@@ -30,7 +30,9 @@ export const CustomStyle = () => (
       Trigger drawer
     </DrawerTrigger>
 
-    <DrawerContent className={ style['custom-drawer__content'] }>
+    <DrawerContent
+      className={ style['custom-drawer__content'] }
+      style={{ border: 'solid' }}>
       <DrawerBody>
         Drawer Content
       </DrawerBody>

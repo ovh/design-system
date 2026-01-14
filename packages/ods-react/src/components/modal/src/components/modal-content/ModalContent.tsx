@@ -1,4 +1,4 @@
-import { Dialog } from '@ark-ui/react/dialog';
+import { Dialog, useDialogContext } from '@ark-ui/react/dialog';
 import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
@@ -30,6 +30,8 @@ const ModalContent: FC<ModalContentProp> = forwardRef(({
   dismissible = true,
   ...props
 }, ref): JSX.Element => {
+  const { open } = useDialogContext();
+
   return (
     <Portal disabled={ !createPortal }>
       <Dialog.Backdrop
@@ -46,7 +48,11 @@ const ModalContent: FC<ModalContentProp> = forwardRef(({
           data-ods="modal-content"
           ref={ ref }
           role={ color === MODAL_COLOR.critical ? 'alertdialog' : 'dialog' }
-          { ...props }>
+          { ...props }
+          style={{
+            ...props.style,
+            ...(!open ? { display: 'none' } : {}),
+          }}>
           <ModalHeader
             color={ color }
             dismissible={ dismissible } />

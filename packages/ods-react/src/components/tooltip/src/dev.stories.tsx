@@ -81,6 +81,19 @@ export const CustomId = () => {
   );
 };
 
+export const CustomStyle = () => (
+  <Tooltip>
+    <TooltipTrigger className={ style['custom-tooltip-trigger'] }>
+      Show custom tooltip
+    </TooltipTrigger>
+    <TooltipContent
+      className={ style['custom-tooltip-content'] }
+      style={{ border: 'solid' }}>
+      This is the tooltip custom content
+    </TooltipContent>
+  </Tooltip>
+);
+
 export const CustomTrigger = () => (
   <Tooltip>
     <TooltipTrigger asChild>
@@ -191,16 +204,6 @@ export const Grid = () => (
   </div>
 );
 
-export const CustomStyle = () => (
-  <Tooltip>
-    <TooltipTrigger className={ style['custom-tooltip-trigger'] }>
-      Show custom tooltip
-    </TooltipTrigger>
-    <TooltipContent className={ style['custom-tooltip-content'] }>
-      This is the tooltip custom content
-    </TooltipContent>
-  </Tooltip>
-)
 export const Accessibility = () => (
   <Tooltip>
     <TooltipTrigger asChild>
@@ -211,4 +214,4 @@ export const Accessibility = () => (
       This is the tooltip content
     </TooltipContent>
   </Tooltip>
-)
+);

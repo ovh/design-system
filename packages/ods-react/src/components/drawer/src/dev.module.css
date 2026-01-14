@@ -1,6 +1,8 @@
 .custom-drawer__content {
-    background-color: #f64b4b;
-    width: 200px;
+  display: flex;
+  background-color: #f64b4b;
+  width: 200px;
+  opacity: .5;
 }
 
 .custom-drawer__trigger {

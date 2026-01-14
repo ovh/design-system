@@ -4,6 +4,7 @@
 }
 
 .custom-popover-content {
+  display: flex;
   padding: 0;
 }
 

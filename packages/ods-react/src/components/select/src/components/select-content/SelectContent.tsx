@@ -1,5 +1,5 @@
 import { Portal } from '@ark-ui/react/portal';
-import { Select } from '@ark-ui/react/select';
+import { Select, useSelectContext } from '@ark-ui/react/select';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { type SelectCustomGroupRendererArg, type SelectCustomOptionRendererArg, type SelectGroupItem, type SelectOptionItem, useSelect } from '../../contexts/useSelect';
@@ -31,6 +31,7 @@ const SelectContent: FC<SelectContentProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { invalid, items } = useSelect();
+  const { open } = useSelectContext();
 
   return (
     <Portal disabled={ !createPortal }>
@@ -44,7 +45,11 @@ const SelectContent: FC<SelectContentProp> = forwardRef(({
           data-empty={ items.length === 0 }
           data-ods="select-content"
           ref={ ref }
-          { ...props }>
+          { ...props }
+          style={{
+            ...props.style,
+            ...(!open ? { display: 'none' } : {}),
+          }}>
           {
             items.map((item, idx) =>
               isGroup(item)

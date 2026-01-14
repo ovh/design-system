@@ -4,6 +4,7 @@
 }
 
 .custom-datepicker-content {
+  display: flex;
   background-color: #dffe81;
 }
 

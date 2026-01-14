@@ -3,3 +3,8 @@
   --ods-accordion-padding-horizontal: 40px;
   --ods-accordion-padding-vertical: 40px;
 }
+
+.product-details {
+  background-color: var(--ods-color-neutral-050);
+  padding-top: 24px;
+}

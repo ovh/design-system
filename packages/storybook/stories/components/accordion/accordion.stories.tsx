@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Accordion, AccordionContent, AccordionItem, type AccordionProp, AccordionTrigger } from '../../../../ods-react/src/components/accordion/src';
+import { Accordion, AccordionContent, AccordionItem, type AccordionProp, AccordionTrigger, EXPAND_ICON_POSITION } from '../../../../ods-react/src/components/accordion/src';
 import { Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
@@ -244,6 +244,38 @@ import { useState } from 'react';`,
       </Accordion>
     );
   },
+};
+
+export const ExpandIconPositionExample: Story = {
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, EXPAND_ICON_POSITION } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Accordion>
+        <AccordionItem value="0">
+          <AccordionTrigger expandIconPosition={ EXPAND_ICON_POSITION.right }>
+            Icon on the right (default)
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      <br />
+      <Accordion>
+        <AccordionItem value="1">
+          <AccordionTrigger expandIconPosition={ EXPAND_ICON_POSITION.left }>
+            Icon on the left
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </>
+  ),
 };
 
 export const ThemeGenerator: Story = {

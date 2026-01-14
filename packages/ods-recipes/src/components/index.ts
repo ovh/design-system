@@ -6,3 +6,5 @@ export * from './media-product-card/src';
 export * from './order-button/src';
 export * from './range-input/src';
 export * from './feature-list-product-card/src';
+
+export * from './dashboard-box/src';

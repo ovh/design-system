@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-phone-number",
-  "version": "19.4.0",
+  "version": "19.4.1",
   "private": true,
   "description": "ODS React PhoneNumber component",
   "type": "module",

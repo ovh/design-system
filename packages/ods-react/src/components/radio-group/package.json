@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-radio-group",
-  "version": "19.4.0",
+  "version": "19.4.1",
   "private": true,
   "description": "ODS React RadioGroup component",
   "type": "module",

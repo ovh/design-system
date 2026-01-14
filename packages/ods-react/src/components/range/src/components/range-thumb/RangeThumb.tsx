@@ -19,16 +19,31 @@ const RangeThumb: FC<RangeThumbProp> = ({
 }): JSX.Element => {
   const thumbRef = useRef<HTMLDivElement>(null);
   const fieldContext = useFormField();
-  const { focused, value } = useSliderContext();
+  const { value } = useSliderContext();
   const { disabled } = useRange();
   const [isFocused, setIsFocused] = useState(false);
   const [isTooltipOpen, setIsTooltipOpen] = useState(false);
 
   useEffect(() => {
-    if (focused) {
-      thumbRef.current?.focus();
+    if (thumbRef.current) {
+      const observer = new MutationObserver((mutations) => {
+        if (mutations.length) {
+          const dataset = (mutations[0].target as HTMLDivElement).dataset;
+
+          if (dataset.focus === '') {
+            thumbRef.current?.focus();
+          }
+        }
+      });
+
+      observer.observe(thumbRef.current, {
+        attributeFilter: ['data-focus'],
+        attributes: true,
+      });
+
+      return () => observer.disconnect();
     }
-  }, [focused]);
+  }, [thumbRef]);
 
   function onBlur(): void {
     setIsFocused(false);

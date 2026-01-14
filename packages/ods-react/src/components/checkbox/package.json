@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-checkbox",
-  "version": "19.4.0",
+  "version": "19.4.1",
   "private": true,
   "description": "ODS React Checkbox component",
   "type": "module",

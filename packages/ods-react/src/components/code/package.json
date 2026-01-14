@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-code",
-  "version": "19.4.0",
+  "version": "19.4.1",
   "private": true,
   "description": "ODS React Code component",
   "type": "module",

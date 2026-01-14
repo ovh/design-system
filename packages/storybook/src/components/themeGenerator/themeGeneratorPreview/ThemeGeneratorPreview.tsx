@@ -13,6 +13,7 @@ import * as ComboboxStories from '../../../../stories/components/combobox/combob
 import * as DatepickerStories from '../../../../stories/components/datepicker/datepicker.stories';
 import * as DividerStories from '../../../../stories/components/divider/divider.stories';
 import * as DrawerStories from '../../../../stories/components/drawer/drawer.stories';
+import * as EditableStories from '../../../../stories/components/editable/editable.stories';
 import * as FileUploadStories from '../../../../stories/components/file-upload/file-upload.stories';
 import * as FormFieldStories from '../../../../stories/components/form-field/form-field.stories';
 import * as IconStories from '../../../../stories/components/icon/icon.stories';
@@ -64,6 +65,7 @@ const THEME_STORY_MODULES = {
   Datepicker: DatepickerStories,
   Divider: DividerStories,
   Drawer: DrawerStories,
+  Editable: EditableStories,
   FileUpload: FileUploadStories,
   FormField: FormFieldStories,
   Icon: IconStories,
@@ -125,6 +127,7 @@ const THEME_PREVIEW_COMPONENTS: ThemePreviewItem[] = [
   { key: 'Datepicker', kind: REACT_COMPONENTS_TITLE.datepicker, label: 'Datepicker' },
   { key: 'Divider', kind: REACT_COMPONENTS_TITLE.divider, label: 'Divider' },
   { key: 'Drawer', kind: REACT_COMPONENTS_TITLE.drawer, label: 'Drawer' },
+  { key: 'Editable', kind: REACT_COMPONENTS_TITLE.editable, label: 'Editable' },
   { key: 'FileUpload', kind: REACT_COMPONENTS_TITLE.fileUpload, label: 'File Upload' },
   { key: 'FormField', kind: REACT_COMPONENTS_TITLE.formField, label: 'Form Field' },
   { key: 'Icon', kind: REACT_COMPONENTS_TITLE.icon, label: 'Icon' },

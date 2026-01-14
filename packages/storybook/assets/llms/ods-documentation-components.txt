@@ -128,6 +128,8 @@ This component complies with the [Accordion WAI-ARIA design pattern](https://www
 
 ---
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+
 ## Anatomy
 
 ---
@@ -214,93 +216,91 @@ This component complies with the [Accordion WAI-ARIA design pattern](https://www
 Lorem ipsum dolor sit amet.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Accordion>
-      <AccordionItem value="0">
-        <AccordionTrigger>
-          Hello World!        </AccordionTrigger>
-        <AccordionContent>
-          Lorem ipsum dolor sit amet.        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-}
+<Accordion>
+  <AccordionItem value="0">
+    <AccordionTrigger>
+      Hello World!    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.    </AccordionContent>
+  </AccordionItem>
+</Accordion>
 ```
 
 ### Multiple
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+  
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
 ```jsx
-{
-  globals: {
-    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Text } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Accordion>
-        <AccordionItem value="1">
-          <AccordionTrigger>
-            <Text preset="heading-4">Multiple</Text>
-          </AccordionTrigger>
-          <AccordionContent>
-            <Text preset="paragraph">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.            </Text>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="2">
-          <AccordionTrigger>
-            <Text preset="heading-4">Multiple</Text>
-          </AccordionTrigger>
-          <AccordionContent>
-            <Text preset="paragraph">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.            </Text>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-      <br />
-      <Accordion multiple={false}>
-        <AccordionItem value="3">
-          <AccordionTrigger>
-            <Text preset="heading-4">Non-multiple</Text>
-          </AccordionTrigger>
-          <AccordionContent>
-            <Text preset="paragraph">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.            </Text>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="4">
-          <AccordionTrigger>
-            <Text preset="heading-4">Non-multiple</Text>
-          </AccordionTrigger>
-          <AccordionContent>
-            <Text preset="paragraph">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.            </Text>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </>
-}
+<>
+  <Accordion>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        <Text preset="heading-4">
+          Multiple        </Text>
+      </AccordionTrigger>
+      <AccordionContent>
+        <Text preset="paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.        </Text>
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="2">
+      <AccordionTrigger>
+        <Text preset="heading-4">
+          Multiple        </Text>
+      </AccordionTrigger>
+      <AccordionContent>
+        <Text preset="paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.        </Text>
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+  <br />
+  <Accordion>
+    <AccordionItem value="3">
+      <AccordionTrigger>
+        <Text preset="heading-4">
+          Non-multiple        </Text>
+      </AccordionTrigger>
+      <AccordionContent>
+        <Text preset="paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.        </Text>
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="4">
+      <AccordionTrigger>
+        <Text preset="heading-4">
+          Non-multiple        </Text>
+      </AccordionTrigger>
+      <AccordionContent>
+        <Text preset="paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.        </Text>
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</>
 ```
 
 ### Disabled
 
+Lorem ipsum dolor sit amet.
+
 ```jsx
-{
-  globals: {
-    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Accordion disabled>
-      <AccordionItem value="0">
-        <AccordionTrigger>
-          Hello World!        </AccordionTrigger>
-        <AccordionContent>
-          Lorem ipsum dolor sit amet.        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-}
+<Accordion disabled>
+  <AccordionItem value="0">
+    <AccordionTrigger>
+      Hello World!    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.    </AccordionContent>
+  </AccordionItem>
+</Accordion>
 ```
 
 ### ItemDisabled
@@ -310,29 +310,30 @@ Lorem ipsum dolor sit amet.
 Lorem ipsum dolor sit amet.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Accordion>
-      <AccordionItem value="0" disabled>
-        <AccordionTrigger>
-          Hello World!        </AccordionTrigger>
-        <AccordionContent>
-          Lorem ipsum dolor sit amet.        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="1">
-        <AccordionTrigger>
-          Hello World!        </AccordionTrigger>
-        <AccordionContent>
-          Lorem ipsum dolor sit amet.        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-}
+<Accordion>
+  <AccordionItem
+    disabled
+    value="0"
+  >
+    <AccordionTrigger>
+      Hello World!    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="1">
+    <AccordionTrigger>
+      Hello World!    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.    </AccordionContent>
+  </AccordionItem>
+</Accordion>
 ```
 
 ### Controlled
+
+Lorem ipsum dolor sit amet.
+
+Lorem ipsum dolor sit amet.
 
 ```jsx
 const [value, setValue] = useState(['0']);
@@ -804,15 +805,13 @@ The accessibility of multiple **Badges** presented as a collection must be consi
 If a **Badge** contains only an icon, it must include an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to provide context.
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Badge, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Badge>
-      <Icon aria-label="Promotion" name={ICON_NAME.tag} role="img" />
-    </Badge>
-}
+<Badge>
+  <Icon
+    aria-label="Promotion"
+    name="tag"
+    role="img"
+  />
+</Badge>
 ```
 
 Screen readers will announce the aria-label instead of ignoring the **Badge**.
@@ -820,21 +819,18 @@ Screen readers will announce the aria-label instead of ignoring the **Badge**.
 Since an icon-only **Badge** may lack detailed information, attach a tooltip and use an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) when extra context is needed:
 
 ```jsx
-{
-  globals: {
-    imports: `import { BADGE_COLOR, ICON_NAME, Badge, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Tooltip>
-      <TooltipTrigger asChild>
-        <Badge aria-labelledby="tooltip-a11y" color={BADGE_COLOR.promotion}>
-          <Icon name={ICON_NAME.tag} />
-        </Badge>
-      </TooltipTrigger>
-      <TooltipContent id="tooltip-a11y">
-        Promotion valid from November 22 to 26      </TooltipContent>
-    </Tooltip>
-}
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Badge
+      aria-labelledby="tooltip-a11y"
+      color="promotion"
+    >
+      <Icon name="tag" />
+    </Badge>
+  </TooltipTrigger>
+  <TooltipContent id="tooltip-a11y">
+    Promotion valid from November 22 to 26  </TooltipContent>
+</Tooltip>
 ```
 
 Screen readers will announce the **Tooltip** content when focusing on the **Badge**.
@@ -843,30 +839,29 @@ Screen readers will announce the **Tooltip** content when focusing on the **Badg
 
 When displaying multiple **Badges** together, they should be wrapped within an unordered list of items (`<ul>` and `<li>`) to ensure a proper announcement by screen readers.
 
+-   Item 1
+-   Item 2
+
 ```jsx
-{
-  globals: {
-    imports: `import { Badge } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <ul style={{
+<ul
+  style={{
     display: 'flex',
     flexFlow: 'row',
     gap: '8px',
+    listStyle: 'none',
     margin: 0,
-    padding: 0,
-    listStyle: 'none'
-  }}>
-      <li>
-        <Badge>
-          Item 1        </Badge>
-      </li>
-      <li>
-        <Badge>
-          Item 2        </Badge>
-      </li>
-    </ul>
-}
+    padding: 0
+  }}
+>
+  <li>
+    <Badge>
+      Item 1    </Badge>
+  </li>
+  <li>
+    <Badge>
+      Item 2    </Badge>
+  </li>
+</ul>
 ```
 
 This structure ensures that assistive technologies announce **Badges** as a list, rather than reading them as separate, unrelated announcements. Screen readers will announce the list, the number of items and the **Badges** content.
@@ -2369,14 +2364,9 @@ This component complies with the [Button WAI-ARIA design pattern](https://www.w3
 **Button** should always have a clear and descriptive text content to indicate their purpose.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Button>
-      Clear    </Button>
-}
+<Button>
+  Clear
+</Button>
 ```
 
 Screen readers will announce the text content.
@@ -2397,25 +2387,16 @@ Screen readers will announce the label.
 
 When a **Button** is associated with an existing label, content is read by screen readers when the **Button** receives focus.
 
+Filter your search results
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Button aria-labelledby="filter-btn">
-        <Icon name={ICON_NAME.filter} />
-      </Button>
-      <span id="filter-btn">Filter your search results</span>
-    </>
-}
+<>
+  <Button aria-labelledby="filter-btn">
+    <Icon name="filter" />
+  </Button>
+  <span id="filter-btn">
+    Filter your search results  </span>
+</>
 ```
 
 When the **Button** is focused, the screen reader will announce the linked label.
@@ -3017,20 +2998,26 @@ When the **Button** is focused, the screen reader will announce the linked label
 ### Color
 
 ```jsx
-<>
-  <Button color="critical">
-    Critical  </Button>
-  <Button color="information">
-    Information  </Button>
-  <Button color="neutral">
-    Neutral  </Button>
-  <Button color="primary">
-    Primary  </Button>
-  <Button color="success">
-    Success  </Button>
-  <Button color="warning">
-    Warning  </Button>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { BUTTON_COLOR, Button } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Button color={BUTTON_COLOR.critical}>Critical</Button>
+      <Button color={BUTTON_COLOR.information}>Information</Button>
+      <Button color={BUTTON_COLOR.neutral}>Neutral</Button>
+      <Button color={BUTTON_COLOR.primary}>Primary</Button>
+      <Button color={BUTTON_COLOR.success}>Success</Button>
+      <Button color={BUTTON_COLOR.warning}>Warning</Button>
+    </>
+}
 ```
 
 ### Loading
@@ -3316,8 +3303,6 @@ Though you need to ensure that each of your items follows the .
 
 ### Controlled
 
- 
-
 ```jsx
 const [values, setValues] = useState(['hourly']);
   return <ButtonGroup onValueChange={({
@@ -3334,16 +3319,18 @@ const [values, setValues] = useState(['hourly']);
 ### Multiple
 
 ```jsx
-<ButtonGroup multiple>
-  <ButtonGroupItem value="option-1">
-    Option 1  </ButtonGroupItem>
-  <ButtonGroupItem value="option-2">
-    Option 2  </ButtonGroupItem>
-  <ButtonGroupItem value="option-3">
-    Option 3  </ButtonGroupItem>
-  <ButtonGroupItem value="option-4">
-    Option 4  </ButtonGroupItem>
-</ButtonGroup>
+{
+  globals: {
+    imports: `import { ButtonGroup, ButtonGroupItem } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ButtonGroup multiple>
+      <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
+      <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
+      <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
+      <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
+    </ButtonGroup>
+}
 ```
 
 ### Size
@@ -3355,44 +3342,35 @@ SM
 XS
 
 ```jsx
-<>
-  <p>
-    MD  </p>
-  <ButtonGroup size="md">
-    <ButtonGroupItem value="option-1">
-      Option 1    </ButtonGroupItem>
-    <ButtonGroupItem value="option-2">
-      Option 2    </ButtonGroupItem>
-    <ButtonGroupItem value="option-3">
-      Option 3    </ButtonGroupItem>
-    <ButtonGroupItem value="option-4">
-      Option 4    </ButtonGroupItem>
-  </ButtonGroup>
-  <p>
-    SM  </p>
-  <ButtonGroup size="sm">
-    <ButtonGroupItem value="option-1">
-      Option 1    </ButtonGroupItem>
-    <ButtonGroupItem value="option-2">
-      Option 2    </ButtonGroupItem>
-    <ButtonGroupItem value="option-3">
-      Option 3    </ButtonGroupItem>
-    <ButtonGroupItem value="option-4">
-      Option 4    </ButtonGroupItem>
-  </ButtonGroup>
-  <p>
-    XS  </p>
-  <ButtonGroup size="xs">
-    <ButtonGroupItem value="option-1">
-      Option 1    </ButtonGroupItem>
-    <ButtonGroupItem value="option-2">
-      Option 2    </ButtonGroupItem>
-    <ButtonGroupItem value="option-3">
-      Option 3    </ButtonGroupItem>
-    <ButtonGroupItem value="option-4">
-      Option 4    </ButtonGroupItem>
-  </ButtonGroup>
-</>
+{
+  globals: {
+    imports: `import { BUTTON_GROUP_SIZE, ButtonGroup, ButtonGroupItem } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>MD</p>
+      <ButtonGroup size={BUTTON_GROUP_SIZE.md}>
+        <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
+        <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
+        <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
+        <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
+      </ButtonGroup>
+      <p>SM</p>
+      <ButtonGroup size={BUTTON_GROUP_SIZE.sm}>
+        <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
+        <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
+        <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
+        <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
+      </ButtonGroup>
+      <p>XS</p>
+      <ButtonGroup size={BUTTON_GROUP_SIZE.xs}>
+        <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
+        <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
+        <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
+        <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
+      </ButtonGroup>
+    </>
+}
 ```
 
 ## Recipes
@@ -4146,6 +4124,9 @@ import { useState } from 'react';`
 
 _A **Card** is a versatile component designed to act as a container for various types of content, providing structure and context in a visually distinct box._
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
 ## Overview
 
 ---
@@ -4237,42 +4218,38 @@ When multiple **Cards** are grouped together, it is important to ensure their st
 
 If multiple **Cards** are displayed together (e.g., a collection of products, articles or dashboards), they should be wrapped in an unordered list of items (`<ul>` and `<li>`) to improve navigation for screen reader users.
 
--   Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
-    Interdum et malesuada fames ac ante ipsum primis in faucibus.
-    
--   Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
-    Interdum et malesuada fames ac ante ipsum primis in faucibus.
-    
-
 ```jsx
-<ul
-  style={{
+{
+  globals: {
+    imports: `import { Card } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <ul style={{
     display: 'flex',
     gap: '16px',
-    listStyleType: 'none',
+    padding: 0,
     margin: 0,
-    padding: 0
-  }}
->
-  <li>
-    <Card
-      style={{
+    listStyleType: 'none'
+  }}>
+      <li>
+        <Card style={{
         padding: '8px'
-      }}
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.      <br />
-      Interdum et malesuada fames ac ante ipsum primis in faucibus.    </Card>
-  </li>
-  <li>
-    <Card
-      style={{
+      }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+          Interdum et malesuada fames ac ante ipsum primis in faucibus.        </Card>
+      </li>
+      <li>
+        <Card style={{
         padding: '8px'
-      }}
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.      <br />
-      Interdum et malesuada fames ac ante ipsum primis in faucibus.    </Card>
-  </li>
-</ul>
+      }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+          Interdum et malesuada fames ac ante ipsum primis in faucibus.        </Card>
+      </li>
+    </ul>
+}
 ```
 
 This structure ensures that assistive technologies announce **Cards** as a list, rather than reading them as separate, unrelated announcements. Screen readers will announce the list and the number of items.
@@ -4288,30 +4265,30 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Interdum et malesuada fames ac ante ipsum primis in faucibus.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Card } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered'
-  },
-  render: ({}) => <div role="list" style={{
+<div
+  role="list"
+  style={{
     display: 'flex',
     gap: '16px'
-  }}>
-      <Card role="listitem" style={{
+  }}
+>
+  <Card
+    role="listitem"
+    style={{
       padding: '8px'
-    }}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
-        Interdum et malesuada fames ac ante ipsum primis in faucibus.      </Card>
-      <Card role="listitem" style={{
+    }}
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.    <br />
+    Interdum et malesuada fames ac ante ipsum primis in faucibus.  </Card>
+  <Card
+    role="listitem"
+    style={{
       padding: '8px'
-    }}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
-        Interdum et malesuada fames ac ante ipsum primis in faucibus.      </Card>
-    </div>
-}
+    }}
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.    <br />
+    Interdum et malesuada fames ac ante ipsum primis in faucibus.  </Card>
+</div>
 ```
 
 This ensures that screen readers still recognize the **Cards** as a structured list even without native `<ul>` and `<li>` elements.
@@ -5390,20 +5367,14 @@ Every **Clipboard** must have a clear and explicit label to ensure that users (e
 API key:
 
 ```jsx
-{
-  globals: {
-    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        API key:      </FormFieldLabel>
-      <Clipboard value="loremipsum">
-        <ClipboardControl />
-        <ClipboardTrigger />
-      </Clipboard>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    API key:  </FormFieldLabel>
+  <Clipboard value="loremipsum">
+    <ClipboardControl />
+    <ClipboardTrigger />
+  </Clipboard>
+</FormField>
 ```
 
 Screen readers will announce the label, the field and its content.
@@ -5975,10 +5946,6 @@ const HighlightedCode = () => (
     console.log('Hello World');
   </Code>
 );
-```
-
-```
-console.log('Hello World');
 ```
 
 ## Examples
@@ -6663,34 +6630,38 @@ Screen readers will announce the label, the field, its content and custom label 
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox disabled items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }, {
-    label: 'Hamster',
-    value: 'hamster'
-  }, {
-    label: 'Parrot',
-    value: 'parrot'
-  }, {
-    label: 'Spider',
-    value: 'spider'
-  }, {
-    label: 'Goldfish',
-    value: 'goldfish'
-  }]}>
-      <ComboboxControl placeholder="Combobox" />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox
+  disabled
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <ComboboxControl placeholder="Combobox" />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Readonly
@@ -8081,21 +8052,17 @@ To ensure proper accessibility, the **Datepicker** must be correctly labeled, pr
 
 Every **Datepicker** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose using either **FormField** or a native label tag.
 
+Start date:
+
 ```jsx
-{
-  globals: {
-    imports: `import { Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Start date:      </FormFieldLabel>
-      <Datepicker>
-        <DatepickerControl />
-        <DatepickerContent />
-      </Datepicker>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Start date:  </FormFieldLabel>
+  <Datepicker>
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
 ```
 
 Screen readers will announce the label, the field and its content.
@@ -8104,28 +8071,28 @@ Screen readers will announce the label, the field and its content.
 
 Since screen readers can only interact with the **Datepicker** input field, it’s important to provide guidance on the expected date format to ensure correct input.
 
+Start date:
+
+Expected format: DD-MM-YYYY
+
 ```jsx
-{
-  globals: {
-    imports: `import { TEXT_PRESET, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldHelper, FormFieldLabel, Text } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Start date:      </FormFieldLabel>
-      <Datepicker>
-        <DatepickerControl placeholder="DD-MM-YYYY" />
-        <DatepickerContent />
-      </Datepicker>
-      <FormFieldHelper>
-        <Text preset={TEXT_PRESET.caption}>
-          Expected format: DD-MM-YYYY        </Text>
-      </FormFieldHelper>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Start date:  </FormFieldLabel>
+  <Datepicker>
+    <DatepickerControl placeholder="DD-MM-YYYY" />
+    <DatepickerContent />
+  </Datepicker>
+  <FormFieldHelper>
+    <Text preset="caption">
+      Expected format: DD-MM-YYYY    </Text>
+  </FormFieldHelper>
+</FormField>
 ```
 
 Screen readers will announce the label, the field, its content and the helper.
+
+Start date:
 
 ```jsx
 <FormField>
@@ -8275,46 +8242,49 @@ Disabled Dates:
 Disabled Week Days:
 
 ```jsx
-<>
-  <p>
-    Disabled:  </p>
-  <Datepicker disabled>
-    <DatepickerControl />
-    <DatepickerContent />
-  </Datepicker>
-  <p>
-    Disabled Dates:  </p>
-  <Datepicker
-    disabledDates={[
-      new Date('2025-12-30T09:17:36.402Z'),
-      new Date('2025-12-31T09:17:36.402Z'),
-      new Date('2026-01-01T09:17:36.402Z')
-    ]}
-  >
-    <DatepickerControl />
-    <DatepickerContent />
-  </Datepicker>
-  <p>
-    Disabled Week Days:  </p>
-  <Datepicker
-    disabledWeekDays={[
-      0,
-      3
-    ]}
-  >
-    <DatepickerControl />
-    <DatepickerContent />
-  </Datepicker>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>Disabled:</p>
+      <Datepicker disabled>
+        <DatepickerControl />
+        <DatepickerContent />
+      </Datepicker>
+      <p>Disabled Dates:</p>
+      <Datepicker disabledDates={[new Date(Date.now() - 86400000), new Date(), new Date(Date.now() + 86400000)]}>
+        <DatepickerControl />
+        <DatepickerContent />
+      </Datepicker>
+      <p>Disabled Week Days:</p>
+      <Datepicker disabledWeekDays={[0, 3]}>
+        <DatepickerControl />
+        <DatepickerContent />
+      </Datepicker>
+    </>
+}
 ```
 
 ### Readonly
 
 ```jsx
-<Datepicker readOnly>
-  <DatepickerControl />
-  <DatepickerContent />
-</Datepicker>
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Datepicker readOnly>
+      <DatepickerControl />
+      <DatepickerContent />
+    </Datepicker>
+}
 ```
 
 ### Date formatter
@@ -8361,10 +8331,16 @@ Disabled Week Days:
 ### Min view
 
 ```jsx
-<Datepicker minView="month">
-  <DatepickerControl />
-  <DatepickerContent />
-</Datepicker>
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Datepicker minView="month">
+      <DatepickerControl />
+      <DatepickerContent />
+    </Datepicker>
+}
 ```
 
 ### Form field
@@ -9304,26 +9280,23 @@ Ensure that assistive technologies announce the **Drawer** correctly using [aria
 ```
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Drawer>
-      <DrawerTrigger asChild>
-        <Button>
-          Trigger Drawer        </Button>
-      </DrawerTrigger>
-      <DrawerContent aria-describedby="drawer-content" aria-labelledby="drawer-title">
-        <DrawerBody>
-          <h2 id="drawer-title">
-            My drawer          </h2>
-          <p id="drawer-content">
-            The drawer content          </p>
-        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-}
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer    </Button>
+  </DrawerTrigger>
+  <DrawerContent
+    aria-describedby="drawer-content"
+    aria-labelledby="drawer-title"
+  >
+    <DrawerBody>
+      <h2 id="drawer-title">
+        My drawer      </h2>
+      <p id="drawer-content">
+        The drawer content      </p>
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
 ```
 
 Screen readers will announce the sections referenced by the aria attributes.
@@ -10017,6 +9990,10 @@ To ensure proper accessibility, the **File Upload** component must be correctly 
 
 Every **File Upload** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
+Files:
+
+Drag & drop a file 
+
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
   return <FormField>
@@ -10037,6 +10014,8 @@ Screen readers will announce the label, the field and its content.
 ### Labeling cancel/delete Button
 
 The `Cancel` and `Delete` file buttons have to be explicit by adding context about their action and the file name.
+
+Drag & drop a file 
 
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
@@ -10062,8 +10041,6 @@ Screen readers will announce the action and the file name.
 ## Overview
 
 ---
-
-Drag & drop a file 
 
 ## Anatomy
 
@@ -10211,12 +10188,15 @@ const [files, setFiles] = useState<File[]>([]);
 Drag & drop a file 
 
 ```jsx
-<FileUpload
-  disabled
-  variant="compact"
->
-  <FileUploadList />
-</FileUpload>
+{
+  globals: {
+    imports: `import { FileUpload, FileUploadList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FileUpload disabled variant={FILE_UPLOAD_VARIANT.compact}>
+      <FileUploadList />
+    </FileUpload>
+}
 ```
 
 ### Custom labels
@@ -10242,10 +10222,6 @@ To limit the file types that can be uploaded, you can use the `accept` attribute
 
 It works exactly the same as the one from the native [input file](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept) .
 
-Png files only
-
-Drag & drop a file 
-
 ```jsx
 const [error, setError] = useState<string>('');
   const [files, setFiles] = useState<File[]>([]);  function onAccept({    files  }: FileUploadAcceptDetail): void {
@@ -10264,10 +10240,6 @@ const [error, setError] = useState<string>('');
 ```
 
 ### Limit the maximum number of file
-
-Maximum file allowed: 3
-
-Drag & drop a file 
 
 ```jsx
 const [error, setError] = useState<string>('');
@@ -10288,10 +10260,6 @@ const [error, setError] = useState<string>('');
 
 ### Limit the maximum size of each file
 
-No file larger than: 1 MB
-
-Drag & drop a file 
-
 ```jsx
 const [error, setError] = useState<string>('');
   const [files, setFiles] = useState<File[]>([]);  function onAccept({    files  }: FileUploadAcceptDetail): void {
@@ -10310,8 +10278,6 @@ const [error, setError] = useState<string>('');
 ```
 
 ### Display upload progress
-
-Drag & drop a file 
 
 ```jsx
 type MyFile = File & {
@@ -10349,10 +10315,6 @@ type MyFile = File & {
 ```
 
 ### Form Field
-
-Files:
-
-Drag & drop a file 
 
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
@@ -11447,7 +11409,12 @@ The part before the email address (the text before the @) must follow these guid
 
 # Gallery
 
-[Link](https://www.ovhcloud.com)
+ 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+Checkbox
 
 Message
 
@@ -11455,11 +11422,17 @@ Message
 
 of 100 results
 
-HTML
+AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigua & BarbudaArgentinaArmeniaArubaAustraliaAustriaAzerbaijanBahamasBahrainBangladeshBarbadosBelarusBelgiumBelizeBeninBermudaBhutanBoliviaBosnia & HerzegovinaBotswanaBrazilBritish Indian Ocean TerritoryBritish Virgin IslandsBruneiBulgariaBurkina FasoBurundiCambodiaCameroonCanadaCape VerdeCaribbean NetherlandsCayman IslandsCentral African RepublicChadChileChinaChristmas IslandCocos (Keeling) IslandsColombiaComorosCongo - BrazzavilleCongo - KinshasaCook IslandsCosta RicaCôte d’IvoireCroatiaCubaCuraçaoCyprusCzechiaDenmarkDjiboutiDominicaDominican RepublicEcuadorEgyptEl SalvadorEquatorial GuineaEritreaEstoniaEswatiniEthiopiaFalkland Islands (Islas Malvinas)Faroe IslandsFijiFinlandFranceFrench GuianaFrench PolynesiaGabonGambiaGeorgiaGermanyGhanaGibraltarGreeceGreenlandGrenadaGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHong KongHungaryIcelandIndiaIndonesiaIranIraqIrelandIsle of ManIsraelItalyJamaicaJapanJerseyJordanKazakhstanKenyaKiribatiKuwaitKyrgyzstanLaosLatviaLebanonLesothoLiberiaLibyaLiechtensteinLithuaniaLuxembourgMacaoMadagascarMalawiMalaysiaMaldivesMaliMaltaMarshall IslandsMartiniqueMauritaniaMauritiusMayotteMexicoMicronesiaMoldovaMonacoMongoliaMontenegroMontserratMoroccoMozambiqueMyanmar (Burma)NamibiaNauruNepalNetherlandsNew CaledoniaNew ZealandNicaraguaNigerNigeriaNiueNorfolk IslandNorth KoreaNorth MacedoniaNorthern Mariana IslandsNorwayOmanPakistanPalauPalestinePanamaPapua New GuineaParaguayPeruPhilippinesPolandPortugalPuerto RicoQatarRéunionRomaniaRussiaRwandaSamoaSan MarinoSão Tomé & PríncipeSaudi ArabiaSenegalSerbiaSeychellesSierra LeoneSingaporeSint MaartenSlovakiaSloveniaSolomon IslandsSomaliaSouth AfricaSouth KoreaSouth SudanSpainSri LankaSt. BarthélemySt. HelenaSt. Kitts & NevisSt. LuciaSt. MartinSt. Pierre & MiquelonSt. Vincent & GrenadinesSudanSurinameSvalbard & Jan MayenSwedenSwitzerlandSyriaTaiwanTajikistanTanzaniaThailandTimor-LesteTogoTokelauTongaTrinidad & TobagoTunisiaTürkiyeTurkmenistanTurks & Caicos IslandsTuvaluU.S. Virgin IslandsUgandaUkraineUnited Arab EmiratesUnited KingdomUnited StatesUruguayUzbekistanVanuatuVatican CityVenezuelaVietnamWallis & FutunaWestern SaharaYemenZambiaZimbabwe
 
-CSS
+DogCatHamsterParrotSpiderGoldfish
 
-JavaScript
+Front-end web developer course 2021
+| Person | Most interest in | Age |
+| --- | --- | --- |
+| Chris | HTML tables | 22 |
+| Dennis | Web accessibility | 45 |
+| Sarah | JavaScript frameworks | 29 |
+| Karen | Web performance | 36 |
 
 ## React Components
 
@@ -12266,22 +12239,19 @@ Screen readers will announce the label, the field, its content and custom label 
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Input } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Input disabled />
-}
+<Input disabled />
 ```
 
 ### Readonly
 
 ```jsx
-<Input
-  defaultValue="Readonly"
-  readOnly
-/>
+{
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Input defaultValue="Readonly" readOnly />
+}
 ```
 
 ### Clearable
@@ -12299,93 +12269,55 @@ Screen readers will announce the label, the field, its content and custom label 
 ### Loading
 
 ```jsx
-{
-  globals: {
-    imports: `import { Input } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Input loading />
-}
+<Input loading />
 ```
 
 ### Masked
 
 ```jsx
-{
-  globals: {
-    imports: `import { Input } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Input maskOption={{
+<Input
+  maskOption={{
     enable: true
-  }} />
-}
+  }}
+ />
 ```
 
 ### Types
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
 ```jsx
-<>
-  <Input
-    placeholder="email"
-    type="email"
-  />
-  <br />
-  <Input
-    placeholder="number"
-    type="number"
-  />
-  <br />
-  <Input
-    placeholder="password"
-    type="password"
-  />
-  <br />
-  <Input
-    placeholder="search"
-    type="search"
-  />
-  <br />
-  <Input
-    placeholder="text"
-    type="text"
-  />
-  <br />
-  <Input
-    placeholder="time"
-    type="time"
-  />
-  <br />
-  <Input
-    placeholder="url"
-    type="url"
-  />
-  <br />
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px',
+    alignItems: 'start'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { INPUT_TYPE, Input } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Input type={INPUT_TYPE.email} placeholder="email" /><br />
+      <Input type={INPUT_TYPE.number} placeholder="number" /><br />
+      <Input type={INPUT_TYPE.password} placeholder="password" /><br />
+      <Input type={INPUT_TYPE.search} placeholder="search" /><br />
+      <Input type={INPUT_TYPE.text} placeholder="text" /><br />
+      <Input type={INPUT_TYPE.time} placeholder="time" /><br />
+      <Input type={INPUT_TYPE.url} placeholder="url" /><br />
+    </>
+}
 ```
 
 ### Floating number
 
 ```jsx
-<Input
-  defaultValue="9.99"
-  step="any"
-  type="number"
-/>
+{
+  globals: {
+    imports: `import { INPUT_TYPE, Input } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Input defaultValue="9.99" step="any" type={INPUT_TYPE.number} />
+}
 ```
 
 ### Datalist
@@ -12405,14 +12337,18 @@ Screen readers will announce the label, the field, its content and custom label 
 
 ### Form field
 
-Name:
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Name:  </FormFieldLabel>
-  <Input />
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Name:      </FormFieldLabel>
+      <Input />
+    </FormField>
+}
 ```
 
 ## Recipes
@@ -12983,6 +12919,8 @@ No recipe defined for now.
 
 _**Link** is a component that enables redirection to a new page, section, website or other resources:_
 
+[Link](https://www.ovhcloud.com)
+
 ## Overview
 
 ---
@@ -13081,8 +13019,6 @@ This component complies with the [Link WAI-ARIA design pattern](https://www.w3.o
 
 If a **Link** is represented only by an **Icon**, it must have an explicit accessible label to provide context about its destination or action.
 
-[​](https://www.ovhcloud.com)
-
 ```jsx
 {
   globals: {
@@ -13101,16 +13037,16 @@ Screen readers will announce the link and its label.
 
 When a **Link** opens in a new tab (`target="_blank"`), users should be informed to avoid confusion. This can be done by adding a visual indicator (e.g., Icon: "external") and using `aria-label` to provide context.
 
-[​](https://www.ovhcloud.com)
-
 ```jsx
-<Link
-  aria-label="Visit Example (opens in a new tab)"
-  href="https://www.ovhcloud.com"
-  target="_blank"
->
-  <Icon name="external-link" />
-</Link>
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Link aria-label="Visit Example (opens in a new tab)" href="https://www.ovhcloud.com" target="_blank">
+      <Icon name={ICON_NAME.externalLink} />
+    </Link>
+}
 ```
 
 The screen reader will announce the link, the opening in a new tab behavior and the link label.
@@ -13119,26 +13055,22 @@ The screen reader will announce the link, the opening in a new tab behavior and 
 
 If a **Link** points to a file download, it should include the file type and size information.
 
+[​](https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf)[Download WCAG20 Guidelines (PDF, 481 KB)](https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf)
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'grid',
-    gridTemplateColumns: '1fr'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Link aria-label="Download WCAG20 Guidelines (PDF, 481 KB)" href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
-        <Icon name={ICON_NAME.download} />
-      </Link>
-      <Link href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
-        <Icon name={ICON_NAME.download} />
-        <span>Download WCAG20 Guidelines (PDF, 481 KB)</span>
-      </Link>
-    </>
-}
+<>
+  <Link
+    aria-label="Download WCAG20 Guidelines (PDF, 481 KB)"
+    href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf"
+  >
+    <Icon name="download" />
+  </Link>
+  <Link href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
+    <Icon name="download" />
+    <span>
+      Download WCAG20 Guidelines (PDF, 481 KB)    </span>
+  </Link>
+</>
 ```
 
 Screen readers will announce the link, the link label with the file name, type and size, ensuring users know they are downloading a file.
@@ -13835,35 +13767,31 @@ When displaying multiple **Messages** together, they should be wrapped within an
     
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <ul style={{
+<ul
+  style={{
     display: 'flex',
     flexFlow: 'column',
-    rowGap: '8px',
+    listStyle: 'none',
     margin: 0,
     padding: 0,
-    listStyle: 'none'
-  }}>
-      <li>
-        <Message>
-          <MessageIcon name={ICON_NAME.circleCheck} />
-          <MessageBody>
-            Your changes have been saved.          </MessageBody>
-        </Message>
-      </li>
-      <li>
-        <Message color={MESSAGE_COLOR.warning}>
-          <MessageIcon name={ICON_NAME.triangleExclamation} />
-          <MessageBody>
-            Some fields need your attention.          </MessageBody>
-        </Message>
-      </li>
-    </ul>
-}
+    rowGap: '8px'
+  }}
+>
+  <li>
+    <Message>
+      <MessageIcon name="circle-check" />
+      <MessageBody>
+        Your changes have been saved.      </MessageBody>
+    </Message>
+  </li>
+  <li>
+    <Message color="warning">
+      <MessageIcon name="triangle-exclamation" />
+      <MessageBody>
+        Some fields need your attention.      </MessageBody>
+    </Message>
+  </li>
+</ul>
 ```
 
 This structure ensures that assistive technologies announce **Messages** as a list, rather than reading them as separate, unrelated announcements.
@@ -13874,29 +13802,33 @@ Screen readers will announce the list, the number of items and the **Messages** 
 
 When modifying the HTML structure is not possible, use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [role="listitem"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) to mimic list semantics.
 
+Your changes have been saved.
+
+Some fields need your attention.
+
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <div role="list" style={{
+<div
+  role="list"
+  style={{
     display: 'flex',
     flexFlow: 'column',
     rowGap: '8px'
-  }}>
-      <Message role="listitem">
-        <MessageIcon name={ICON_NAME.circleCheck} />
-        <MessageBody>
-          Your changes have been saved.        </MessageBody>
-      </Message>
-      <Message color={MESSAGE_COLOR.warning} role="listitem">
-        <MessageIcon name={ICON_NAME.triangleExclamation} />
-        <MessageBody>
-          Some fields need your attention.        </MessageBody>
-      </Message>
-    </div>
-}
+  }}
+>
+  <Message role="listitem">
+    <MessageIcon name="circle-check" />
+    <MessageBody>
+      Your changes have been saved.    </MessageBody>
+  </Message>
+  <Message
+    color="warning"
+    role="listitem"
+  >
+    <MessageIcon name="triangle-exclamation" />
+    <MessageBody>
+      Some fields need your attention.    </MessageBody>
+  </Message>
+</div>
 ```
 
 ### Setting the container ARIA role
@@ -14729,29 +14661,30 @@ To ensure proper accessibility, **Meter** must be correctly labeled.
 Every **Meter** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) or an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) attribute.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Meter } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Meter aria-label="Gauge" low={40} value={35} />
-}
+<Meter
+  aria-label="Gauge"
+  low={40}
+  value={35}
+/>
 ```
 
 Screen readers will announce the label and the meter information.
 
+Gauge:
+
 ```jsx
-{
-  globals: {
-    imports: `import { TEXT_PRESET, Meter, Text } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Text id="meter-label" preset={TEXT_PRESET.label}>
-        Gauge:      </Text>
-      <Meter aria-labelledby="meter-label" low={40} value={35} />
-    </>
-}
+<>
+  <Text
+    id="meter-label"
+    preset="label"
+  >
+    Gauge:  </Text>
+  <Meter
+    aria-labelledby="meter-label"
+    low={40}
+    value={35}
+  />
+</>
 ```
 
 Screen readers will announce the label and the meter information.
@@ -15248,23 +15181,26 @@ Ensure that assistive technologies announce the **Modal** correctly using [aria-
 ```
 
 ```jsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button>
-      Trigger Modal    </Button>
-  </ModalTrigger>
-  <ModalContent
-    aria-describedby="modal-content"
-    aria-labelledby="modal-title"
-  >
-    <ModalBody>
-      <h2 id="modal-title">
-        Delete item      </h2>
-      <p id="modal-content">
-        Are you sure you want to delete this item? This action cannot be undone.      </p>
-    </ModalBody>
-  </ModalContent>
-</Modal>
+{
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal        </Button>
+      </ModalTrigger>
+      <ModalContent aria-describedby="modal-content" aria-labelledby="modal-title">
+        <ModalBody>
+          <h2 id="modal-title">
+            Delete item          </h2>
+          <p id="modal-content">
+            Are you sure you want to delete this item? This action cannot be undone.          </p>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+}
 ```
 
 Screen readers will announce the sections referenced by the aria attributes.
@@ -15274,32 +15210,36 @@ Screen readers will announce the sections referenced by the aria attributes.
 For **Modals** that require user decisions (e.g., confirmation dialogs), place the least critical **Button** first in the **Modal** actions section.
 
 ```jsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button>
-      Trigger Modal    </Button>
-  </ModalTrigger>
-  <ModalContent color="critical">
-    <ModalBody>
-      <h2 id="modal-title">
-        Delete item      </h2>
-      <p id="modal-content">
-        Are you sure you want to delete this item?      </p>
-      <div
-        style={{
+{
+  globals: {
+    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, MODAL_COLOR, Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal        </Button>
+      </ModalTrigger>
+      <ModalContent color={MODAL_COLOR.critical}>
+        <ModalBody>
+          <h2 id="modal-title">
+            Delete item          </h2>
+          <p id="modal-content">
+            Are you sure you want to delete this item?          </p>
+          <div style={{
           display: 'flex',
           gap: '8px',
           justifyContent: 'end'
-        }}
-      >
-        <Button variant="ghost">
-          Cancel        </Button>
-        <Button color="critical">
-          Delete        </Button>
-      </div>
-    </ModalBody>
-  </ModalContent>
-</Modal>
+        }}>
+            <Button variant={BUTTON_VARIANT.ghost}>
+              Cancel            </Button>
+            <Button color={BUTTON_COLOR.critical}>
+              Delete            </Button>
+          </div>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+}
 ```
 
 Users will first encounter the non-destructive action (e.g., "Cancel"), reducing accidental confirmations.
@@ -15447,14 +15387,20 @@ Users will first encounter the non-destructive action (e.g., "Cancel"), reducing
 ### Default
 
 ```jsx
-<Modal>
-  <ModalTrigger>
-    Trigger Modal  </ModalTrigger>
-  <ModalContent>
-    <ModalBody>
-      My modal content    </ModalBody>
-  </ModalContent>
-</Modal>
+{
+  globals: {
+    imports: `import { Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Modal>
+      <ModalTrigger>
+        Trigger Modal      </ModalTrigger>
+      <ModalContent>
+        <ModalBody>
+          My modal content        </ModalBody>
+      </ModalContent>
+    </Modal>
+}
 ```
 
 ### Colors
@@ -17380,21 +17326,19 @@ To ensure proper accessibility, the **Phone Number** component must be correctly
 
 Every **Phone Number** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
+Phone number:
+
+AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigua & BarbudaArgentinaArmeniaArubaAustraliaAustriaAzerbaijanBahamasBahrainBangladeshBarbadosBelarusBelgiumBelizeBeninBermudaBhutanBoliviaBosnia & HerzegovinaBotswanaBrazilBritish Indian Ocean TerritoryBritish Virgin IslandsBruneiBulgariaBurkina FasoBurundiCambodiaCameroonCanadaCape VerdeCaribbean NetherlandsCayman IslandsCentral African RepublicChadChileChinaChristmas IslandCocos (Keeling) IslandsColombiaComorosCongo - BrazzavilleCongo - KinshasaCook IslandsCosta RicaCôte d’IvoireCroatiaCubaCuraçaoCyprusCzechiaDenmarkDjiboutiDominicaDominican RepublicEcuadorEgyptEl SalvadorEquatorial GuineaEritreaEstoniaEswatiniEthiopiaFalkland Islands (Islas Malvinas)Faroe IslandsFijiFinlandFranceFrench GuianaFrench PolynesiaGabonGambiaGeorgiaGermanyGhanaGibraltarGreeceGreenlandGrenadaGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHong KongHungaryIcelandIndiaIndonesiaIranIraqIrelandIsle of ManIsraelItalyJamaicaJapanJerseyJordanKazakhstanKenyaKiribatiKuwaitKyrgyzstanLaosLatviaLebanonLesothoLiberiaLibyaLiechtensteinLithuaniaLuxembourgMacaoMadagascarMalawiMalaysiaMaldivesMaliMaltaMarshall IslandsMartiniqueMauritaniaMauritiusMayotteMexicoMicronesiaMoldovaMonacoMongoliaMontenegroMontserratMoroccoMozambiqueMyanmar (Burma)NamibiaNauruNepalNetherlandsNew CaledoniaNew ZealandNicaraguaNigerNigeriaNiueNorfolk IslandNorth KoreaNorth MacedoniaNorthern Mariana IslandsNorwayOmanPakistanPalauPalestinePanamaPapua New GuineaParaguayPeruPhilippinesPolandPortugalPuerto RicoQatarRéunionRomaniaRussiaRwandaSamoaSan MarinoSão Tomé & PríncipeSaudi ArabiaSenegalSerbiaSeychellesSierra LeoneSingaporeSint MaartenSlovakiaSloveniaSolomon IslandsSomaliaSouth AfricaSouth KoreaSouth SudanSpainSri LankaSt. BarthélemySt. HelenaSt. Kitts & NevisSt. LuciaSt. MartinSt. Pierre & MiquelonSt. Vincent & GrenadinesSudanSurinameSvalbard & Jan MayenSwedenSwitzerlandSyriaTaiwanTajikistanTanzaniaThailandTimor-LesteTogoTokelauTongaTrinidad & TobagoTunisiaTürkiyeTurkmenistanTurks & Caicos IslandsTuvaluU.S. Virgin IslandsUgandaUkraineUnited Arab EmiratesUnited KingdomUnited StatesUruguayUzbekistanVanuatuVatican CityVenezuelaVietnamWallis & FutunaWestern SaharaYemenZambiaZimbabwe
+
 ```jsx
-{
-  globals: {
-    imports: `import { FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Phone number:      </FormFieldLabel>
-      <PhoneNumber>
-        <PhoneNumberCountryList />
-        <PhoneNumberControl />
-      </PhoneNumber>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Phone number:  </FormFieldLabel>
+  <PhoneNumber>
+    <PhoneNumberCountryList />
+    <PhoneNumberControl />
+  </PhoneNumber>
+</FormField>
 ```
 
 Screen readers will announce the label, the field and its content.
@@ -17859,18 +17803,27 @@ AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigu
 
 ### Loading
 
-AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigua & BarbudaArgentinaArmeniaArubaAustraliaAustriaAzerbaijanBahamasBahrainBangladeshBarbadosBelarusBelgiumBelizeBeninBermudaBhutanBoliviaBosnia & HerzegovinaBotswanaBrazilBritish Indian Ocean TerritoryBritish Virgin IslandsBruneiBulgariaBurkina FasoBurundiCambodiaCameroonCanadaCape VerdeCaribbean NetherlandsCayman IslandsCentral African RepublicChadChileChinaChristmas IslandCocos (Keeling) IslandsColombiaComorosCongo - BrazzavilleCongo - KinshasaCook IslandsCosta RicaCôte d’IvoireCroatiaCubaCuraçaoCyprusCzechiaDenmarkDjiboutiDominicaDominican RepublicEcuadorEgyptEl SalvadorEquatorial GuineaEritreaEstoniaEswatiniEthiopiaFalkland Islands (Islas Malvinas)Faroe IslandsFijiFinlandFranceFrench GuianaFrench PolynesiaGabonGambiaGeorgiaGermanyGhanaGibraltarGreeceGreenlandGrenadaGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHong KongHungaryIcelandIndiaIndonesiaIranIraqIrelandIsle of ManIsraelItalyJamaicaJapanJerseyJordanKazakhstanKenyaKiribatiKuwaitKyrgyzstanLaosLatviaLebanonLesothoLiberiaLibyaLiechtensteinLithuaniaLuxembourgMacaoMadagascarMalawiMalaysiaMaldivesMaliMaltaMarshall IslandsMartiniqueMauritaniaMauritiusMayotteMexicoMicronesiaMoldovaMonacoMongoliaMontenegroMontserratMoroccoMozambiqueMyanmar (Burma)NamibiaNauruNepalNetherlandsNew CaledoniaNew ZealandNicaraguaNigerNigeriaNiueNorfolk IslandNorth KoreaNorth MacedoniaNorthern Mariana IslandsNorwayOmanPakistanPalauPalestinePanamaPapua New GuineaParaguayPeruPhilippinesPolandPortugalPuerto RicoQatarRéunionRomaniaRussiaRwandaSamoaSan MarinoSão Tomé & PríncipeSaudi ArabiaSenegalSerbiaSeychellesSierra LeoneSingaporeSint MaartenSlovakiaSloveniaSolomon IslandsSomaliaSouth AfricaSouth KoreaSouth SudanSpainSri LankaSt. BarthélemySt. HelenaSt. Kitts & NevisSt. LuciaSt. MartinSt. Pierre & MiquelonSt. Vincent & GrenadinesSudanSurinameSvalbard & Jan MayenSwedenSwitzerlandSyriaTaiwanTajikistanTanzaniaThailandTimor-LesteTogoTokelauTongaTrinidad & TobagoTunisiaTürkiyeTurkmenistanTurks & Caicos IslandsTuvaluU.S. Virgin IslandsUgandaUkraineUnited Arab EmiratesUnited KingdomUnited StatesUruguayUzbekistanVanuatuVatican CityVenezuelaVietnamWallis & FutunaWestern SaharaYemenZambiaZimbabwe
-
 ```jsx
-<>
-  <PhoneNumber>
-    <PhoneNumberControl loading />
-  </PhoneNumber>
-  <PhoneNumber>
-    <PhoneNumberCountryList />
-    <PhoneNumberControl loading />
-  </PhoneNumber>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <PhoneNumber>
+        <PhoneNumberControl loading />
+      </PhoneNumber>
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl loading />
+      </PhoneNumber>
+    </>
+}
 ```
 
 ### Locale
@@ -17878,6 +17831,14 @@ AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigu
 The locale manages the translation of the country list.
 
 For further explanation about locale strategy, see .
+
+Locale "fr"
+
+AfghanistanAfrique du SudAlbanieAlgérieAllemagneAndorreAngolaAnguillaAntigua-et-BarbudaArabie saouditeArgentineArménieArubaAustralieAutricheAzerbaïdjanBahamasBahreïnBangladeshBarbadeBelgiqueBelizeBéninBermudesBhoutanBiélorussieBolivieBosnie-HerzégovineBotswanaBrésilBruneiBulgarieBurkina FasoBurundiCambodgeCamerounCanadaCap-VertChiliChineChypreColombieComoresCongo-BrazzavilleCongo-KinshasaCorée du NordCorée du SudCosta RicaCôte d’IvoireCroatieCubaCuraçaoDanemarkDjiboutiDominiqueÉgypteÉmirats arabes unisÉquateurÉrythréeEspagneEstonieEswatiniÉtat de la Cité du VaticanÉtats-UnisÉthiopieFidjiFinlandeFranceGabonGambieGéorgieGhanaGibraltarGrèceGrenadeGroenlandGuadeloupeGuamGuatemalaGuerneseyGuinéeGuinée équatorialeGuinée-BissauGuyanaGuyane françaiseHaïtiHondurasHong KongHongrieÎle ChristmasÎle de ManÎle NorfolkÎles ÅlandÎles CaïmansÎles CocosÎles CookÎles FéroéÎles Malouines (Îles Falkland)Îles Mariannes du NordÎles MarshallÎles SalomonÎles Turques-et-CaïquesÎles Vierges britanniquesÎles Vierges des États-UnisIndeIndonésieIrakIranIrlandeIslandeIsraëlItalieJamaïqueJaponJerseyJordanieKazakhstanKenyaKirghizstanKiribatiKoweïtLa RéunionLaosLesothoLettonieLibanLiberiaLibyeLiechtensteinLituanieLuxembourgMacaoMacédoine du NordMadagascarMalaisieMalawiMaldivesMaliMalteMarocMartiniqueMauriceMauritanieMayotteMexiqueMicronésieMoldavieMonacoMongolieMonténégroMontserratMozambiqueMyanmar (Birmanie)NamibieNauruNépalNicaraguaNigerNigeriaNiueNorvègeNouvelle-CalédonieNouvelle-ZélandeOmanOugandaOuzbékistanPakistanPalaosPalestinePanamaPapouasie-Nouvelle-GuinéeParaguayPays-BasPays-Bas caribéensPérouPhilippinesPolognePolynésie françaisePorto RicoPortugalQatarRépublique centrafricaineRépublique dominicaineRoumanieRoyaume-UniRussieRwandaSahara occidentalSaint-BarthélemySaint-Christophe-et-NiévèsSaint-MarinSaint-MartinSaint-Martin (partie néerlandaise)Saint-Pierre-et-MiquelonSaint-Vincent-et-les GrenadinesSainte-HélèneSainte-LucieSalvadorSamoaSamoa américainesSao Tomé-et-PrincipeSénégalSerbieSeychellesSierra LeoneSingapourSlovaquieSlovénieSomalieSoudanSoudan du SudSri LankaSuèdeSuisseSurinameSvalbard et Jan MayenSyrieTadjikistanTaïwanTanzanieTchadTchéquieTerritoire britannique de l’océan IndienThaïlandeTimor orientalTogoTokelauTongaTrinité-et-TobagoTunisieTurkménistanTurquieTuvaluUkraineUruguayVanuatuVenezuelaViêt NamWallis-et-FutunaYémenZambieZimbabwe
+
+Locale "de"
+
+AfghanistanÄgyptenÅlandinselnAlbanienAlgerienAmerikanisch-SamoaAmerikanische JungferninselnAndorraAngolaAnguillaAntigua und BarbudaÄquatorialguineaArgentinienArmenienArubaAserbaidschanÄthiopienAustralienBahamasBahrainBangladeschBarbadosBelarusBelgienBelizeBeninBermudaBhutanBolivienBosnien und HerzegowinaBotsuanaBrasilienBritische JungferninselnBritisches Territorium im Indischen OzeanBrunei DarussalamBulgarienBurkina FasoBurundiCabo VerdeChileChinaCookinselnCosta RicaCôte d’IvoireCuraçaoDänemarkDeutschlandDominicaDominikanische RepublikDschibutiEcuadorEl SalvadorEritreaEstlandEswatiniFalklandinseln (Malwinen)FäröerFidschiFinnlandFrankreichFranzösisch-GuayanaFranzösisch-PolynesienGabunGambiaGeorgienGhanaGibraltarGrenadaGriechenlandGrönlandGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHongkongIndienIndonesienIrakIranIrlandIslandIsle of ManIsraelItalienJamaikaJapanJemenJerseyJordanienKaimaninselnKambodschaKamerunKanadaKaribische NiederlandeKasachstanKatarKeniaKirgisistanKiribatiKokosinselnKolumbienKomorenKongo-BrazzavilleKongo-KinshasaKroatienKubaKuwaitLaosLesothoLettlandLibanonLiberiaLibyenLiechtensteinLitauenLuxemburgMacauMadagaskarMalawiMalaysiaMaledivenMaliMaltaMarokkoMarshallinselnMartiniqueMauretanienMauritiusMayotteMexikoMikronesienMonacoMongoleiMontenegroMontserratMosambikMyanmarNamibiaNauruNepalNeukaledonienNeuseelandNicaraguaNiederlandeNigerNigeriaNiueNordkoreaNördliche MarianenNordmazedonienNorfolkinselNorwegenOmanÖsterreichPakistanPalästinaPalauPanamaPapua-NeuguineaParaguayPeruPhilippinenPolenPortugalPuerto RicoRepublik MoldauRéunionRuandaRumänienRusslandSalomonenSambiaSamoaSan MarinoSão Tomé und PríncipeSaudi-ArabienSchwedenSchweizSenegalSerbienSeychellenSierra LeoneSimbabweSingapurSint MaartenSlowakeiSlowenienSomaliaSpanienSpitzbergen und Jan MayenSri LankaSt. BarthélemySt. HelenaSt. Kitts und NevisSt. LuciaSt. MartinSt. Pierre und MiquelonSt. Vincent und die GrenadinenSüdafrikaSudanSüdkoreaSüdsudanSurinameSyrienTadschikistanTaiwanTansaniaThailandTimor-LesteTogoTokelauTongaTrinidad und TobagoTschadTschechienTunesienTürkeiTurkmenistanTurks- und CaicosinselnTuvaluUgandaUkraineUngarnUruguayUsbekistanVanuatuVatikanstadtVenezuelaVereinigte Arabische EmirateVereinigte StaatenVereinigtes KönigreichVietnamWallis und FutunaWeihnachtsinselWestsaharaZentralafrikanische RepublikZypern
 
 ```jsx
 {
@@ -17922,41 +17883,47 @@ Subset of countries
 FranceGermanyItalyUnited Kingdom
 
 ```jsx
-<>
-  <span>
-    All countries  </span>
-  <PhoneNumber>
-    <PhoneNumberCountryList />
-    <PhoneNumberControl />
-  </PhoneNumber>
-  <span>
-    Subset of countries  </span>
-  <PhoneNumber
-    countries={[
-      'de',
-      'fr',
-      'gb',
-      'it'
-    ]}
-  >
-    <PhoneNumberCountryList />
-    <PhoneNumberControl clearable />
-  </PhoneNumber>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <span>All countries</span>
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl />
+      </PhoneNumber>
+      <span>Subset of countries</span>
+      <PhoneNumber countries={['de', 'fr', 'gb', 'it']}>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+    </>
+}
 ```
 
 ### Form field
 
-Phone number:
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Phone number:  </FormFieldLabel>
-  <PhoneNumber>
-    <PhoneNumberControl />
-  </PhoneNumber>
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Phone number:      </FormFieldLabel>
+      <PhoneNumber>
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </FormField>
+}
 ```
 
 ## Recipes
@@ -18686,14 +18653,20 @@ Screen readers will recognize that **Popover** contains a menu and menu items. I
 ### Custom Trigger
 
 ```jsx
-<Popover>
-  <PopoverTrigger asChild>
-    <Button>
-      Custom Trigger    </Button>
-  </PopoverTrigger>
-  <PopoverContent>
-    This is the popover content  </PopoverContent>
-</Popover>
+{
+  globals: {
+    imports: `import { Button, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Popover>
+      <PopoverTrigger asChild>
+        <Button>
+          Custom Trigger        </Button>
+      </PopoverTrigger>
+      <PopoverContent>
+        This is the popover content      </PopoverContent>
+    </Popover>
+}
 ```
 
 ### Controlled
@@ -18731,57 +18704,72 @@ const [isOpen, setIsOpen] = useState(false);
 ### Grid
 
 ```jsx
-<>
-  <Popover position="top-start">
-    <PopoverTrigger>
-      Top Left    </PopoverTrigger>
-    <PopoverContent withArrow>
-      Top Left popover    </PopoverContent>
-  </Popover>
-  <Popover position="top">
-    <PopoverTrigger>
-      Top    </PopoverTrigger>
-    <PopoverContent withArrow>
-      Top popover    </PopoverContent>
-  </Popover>
-  <Popover position="top-end">
-    <PopoverTrigger>
-      Top Right    </PopoverTrigger>
-    <PopoverContent withArrow>
-      Top Right popover    </PopoverContent>
-  </Popover>
-  <Popover position="left">
-    <PopoverTrigger>
-      Middle Left    </PopoverTrigger>
-    <PopoverContent withArrow>
-      Middle Left popover    </PopoverContent>
-  </Popover>
-  <div />
-  <Popover position="right">
-    <PopoverTrigger>
-      Middle Right    </PopoverTrigger>
-    <PopoverContent withArrow>
-      Middle Right popover    </PopoverContent>
-  </Popover>
-  <Popover position="bottom-start">
-    <PopoverTrigger>
-      Bottom Left    </PopoverTrigger>
-    <PopoverContent withArrow>
-      Bottom Left popover    </PopoverContent>
-  </Popover>
-  <Popover position="bottom">
-    <PopoverTrigger>
-      Bottom    </PopoverTrigger>
-    <PopoverContent withArrow>
-      Bottom popover    </PopoverContent>
-  </Popover>
-  <Popover position="bottom-end">
-    <PopoverTrigger>
-      Bottom Right    </PopoverTrigger>
-    <PopoverContent withArrow>
-      Bottom Right popover    </PopoverContent>
-  </Popover>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateRows: 'repeat(3, 1fr)',
+    gap: '20px',
+    padding: '50px 150px'
+  }}>
+      {story()}
+    </div>],
+  globals: {
+    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Popover position="top-start">
+        <PopoverTrigger>
+          Top Left        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Top Left popover        </PopoverContent>
+      </Popover>
+      <Popover position="top">
+        <PopoverTrigger>
+          Top        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Top popover        </PopoverContent>
+      </Popover>
+      <Popover position="top-end">
+        <PopoverTrigger>
+          Top Right        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Top Right popover        </PopoverContent>
+      </Popover>
+      <Popover position="left">
+        <PopoverTrigger>
+          Middle Left        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Middle Left popover        </PopoverContent>
+      </Popover>
+      <div />
+      <Popover position="right">
+        <PopoverTrigger>
+          Middle Right        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Middle Right popover        </PopoverContent>
+      </Popover>
+      <Popover position="bottom-start">
+        <PopoverTrigger>
+          Bottom Left        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Bottom Left popover        </PopoverContent>
+      </Popover>
+      <Popover position="bottom">
+        <PopoverTrigger>
+          Bottom        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Bottom popover        </PopoverContent>
+      </Popover>
+      <Popover position="bottom-end">
+        <PopoverTrigger>
+          Bottom Right        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Bottom Right popover        </PopoverContent>
+      </Popover>
+    </>
+}
 ```
 
 ## Recipes
@@ -20866,17 +20854,15 @@ Volume
 0100
 
 ```jsx
-{
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Range } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Volume      </FormFieldLabel>
-      <Range defaultValue={[50]} />
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Volume  </FormFieldLabel>
+  <Range
+    defaultValue={[
+      50
+    ]}
+   />
+</FormField>
 ```
 
 Screen readers will announce the value, the slider and its label.
@@ -20981,23 +20967,91 @@ Screen readers will announce the values, the slider and its label.
 
 ### Default
 
+```jsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    rowGap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Range } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Range />
+      <Range defaultValue={[50, 75]} />
+    </>
+}
+```
+
+### Disabled
+
 0100
 
 0100
 
 ```jsx
 <>
-  <Range />
+  <Range
+    defaultValue={[
+      20
+    ]}
+    disabled
+  />
   <Range
     defaultValue={[
       50,
       75
     ]}
-   />
+    disabled
+  />
 </>
 ```
 
-### Disabled
+### Min / Max
+
+```jsx
+{
+  globals: {
+    imports: `import { Range } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>Max 500</p>
+      <Range defaultValue={[50]} max={500} />
+      <Range defaultValue={[50, 75]} max={500} />
+      <p>Min 25</p>
+      <Range defaultValue={[50]} min={25} />
+      <Range defaultValue={[50, 75]} min={25} />
+      <p>Max 75 & Min 25</p>
+      <Range defaultValue={[50]} max={75} min={25} />
+      <Range defaultValue={[50, 75]} max={75} min={25} />
+    </>
+}
+```
+
+### Step
+
+```jsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    rowGap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Range } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Range defaultValue={[20]} step={5} />
+      <Range defaultValue={[50, 75]} step={5} />
+    </>
+}
+```
+
+### Ticks
 
 0100
 
@@ -21015,159 +21069,13 @@ Screen readers will announce the values, the slider and its label.
   },
   tags: ['!dev'],
   render: ({}) => <>
-      <Range defaultValue={[20]} disabled />
-      <Range defaultValue={[50, 75]} disabled />
+      <Range defaultValue={[20]} ticks={[10, 20, 30, 40, 50, 60, 70, 80, 90]} />
+      <Range defaultValue={[50, 75]} ticks={[10, 20, 30, 40, 50, 60, 70, 80, 90]} />
     </>
 }
 ```
 
-### Min / Max
-
-Max 500
-
-0500
-
-0500
-
-Min 25
-
-25100
-
-25100
-
-Max 75 & Min 25
-
-2575
-
-2575
-
-```jsx
-<>
-  <p>
-    Max 500  </p>
-  <Range
-    defaultValue={[
-      50
-    ]}
-    max={500}
-  />
-  <Range
-    defaultValue={[
-      50,
-      75
-    ]}
-    max={500}
-  />
-  <p>
-    Min 25  </p>
-  <Range
-    defaultValue={[
-      50
-    ]}
-    min={25}
-  />
-  <Range
-    defaultValue={[
-      50,
-      75
-    ]}
-    min={25}
-  />
-  <p>
-    Max 75 & Min 25  </p>
-  <Range
-    defaultValue={[
-      50
-    ]}
-    max={75}
-    min={25}
-  />
-  <Range
-    defaultValue={[
-      50,
-      75
-    ]}
-    max={75}
-    min={25}
-  />
-</>
-```
-
-### Step
-
-0100
-
-0100
-
-```jsx
-<>
-  <Range
-    defaultValue={[
-      20
-    ]}
-    step={5}
-  />
-  <Range
-    defaultValue={[
-      50,
-      75
-    ]}
-    step={5}
-  />
-</>
-```
-
-### Ticks
-
-0100
-
-0100
-
-```jsx
-<>
-  <Range
-    defaultValue={[
-      20
-    ]}
-    ticks={[
-      10,
-      20,
-      30,
-      40,
-      50,
-      60,
-      70,
-      80,
-      90
-    ]}
-  />
-  <Range
-    defaultValue={[
-      50,
-      75
-    ]}
-    ticks={[
-      10,
-      20,
-      30,
-      40,
-      50,
-      60,
-      70,
-      80,
-      90
-    ]}
-  />
-</>
-```
-
 ### Custom Ticks
-
-LowMediumHigh
-
-0100
-
-Very PoorPoorAverageGoodExcellent
 
 ```jsx
 <>
@@ -21236,11 +21144,22 @@ Range:
 0100
 
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Range:  </FormFieldLabel>
-  <Range />
-</FormField>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    rowGap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Range } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Range:      </FormFieldLabel>
+      <Range />
+    </FormField>
+}
 ```
 
 ## Recipes
@@ -21941,35 +21860,40 @@ DogCatHamsterParrotSpiderGoldfish
 
 ### Default
 
+DogCatHamsterParrotSpiderGoldfish
+
 ```jsx
-{
-  globals: {
-    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Select items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }, {
-    label: 'Hamster',
-    value: 'hamster'
-  }, {
-    label: 'Parrot',
-    value: 'parrot'
-  }, {
-    label: 'Spider',
-    value: 'spider'
-  }, {
-    label: 'Goldfish',
-    value: 'goldfish'
-  }]}>
-      <SelectControl />
-      <SelectContent />
-    </Select>
-}
+<Select
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <SelectControl />
+  <SelectContent />
+</Select>
 ```
 
 ### Group
@@ -22039,14 +21963,6 @@ FranceGermanyItalyChinaJapanRussiaCanadaMexicoUnited States of America
 
 ### Multiple Selection
 
-Default multiple selection
-
-DogCatHamsterParrotSpiderGoldfish
-
-Merged multiple selection
-
-DogCatHamsterParrotSpiderGoldfish
-
 ```jsx
 {
   decorators: [story => <div style={{
@@ -22112,18 +22028,6 @@ DogCatHamsterParrotSpiderGoldfish
 ```
 
 ### Disabled
-
-Disabled
-
-DogCatHamsterParrotSpiderGoldfish
-
-Disabled options
-
-DogCatHamsterParrotSpiderGoldfish
-
-Disabled group or group option
-
-FranceGermanyItalyChinaJapanRussiaCanadaMexicoUnited States of America
 
 ```jsx
 {
@@ -22240,41 +22144,35 @@ FranceGermanyItalyChinaJapanRussiaCanadaMexicoUnited States of America
 
 ### Readonly
 
-DogCatHamsterParrotSpiderGoldfish
-
 ```jsx
-<Select
-  items={[
-    {
-      label: 'Dog',
-      value: 'dog'
-    },
-    {
-      label: 'Cat',
-      value: 'cat'
-    },
-    {
-      label: 'Hamster',
-      value: 'hamster'
-    },
-    {
-      label: 'Parrot',
-      value: 'parrot'
-    },
-    {
-      label: 'Spider',
-      value: 'spider'
-    },
-    {
-      label: 'Goldfish',
-      value: 'goldfish'
-    }
-  ]}
-  readOnly
->
-  <SelectControl placeholder="Select one or more pets" />
-  <SelectContent />
-</Select>
+{
+  globals: {
+    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Select items={[{
+    label: 'Dog',
+    value: 'dog'
+  }, {
+    label: 'Cat',
+    value: 'cat'
+  }, {
+    label: 'Hamster',
+    value: 'hamster'
+  }, {
+    label: 'Parrot',
+    value: 'parrot'
+  }, {
+    label: 'Spider',
+    value: 'spider'
+  }, {
+    label: 'Goldfish',
+    value: 'goldfish'
+  }]} readOnly>
+      <SelectControl placeholder="Select one or more pets" />
+      <SelectContent />
+    </Select>
+}
 ```
 
 ### Custom Renderer
@@ -22383,34 +22281,30 @@ type CustomData = {
 
 ### Form field
 
-Select a Web hosting
-
-1 vCore 2,4 GHz, 2 Go RAM1 vCore 2,4 GHz, 4 Go RAM2 vCores 2,4 GHz, 8 Go RAM
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Select a Web hosting  </FormFieldLabel>
-  <Select
-    items={[
-      {
-        label: '1 vCore 2,4 GHz, 2 Go RAM',
-        value: 'hosting-1'
-      },
-      {
-        label: '1 vCore 2,4 GHz, 4 Go RAM',
-        value: 'hosting-2'
-      },
-      {
-        label: '2 vCores 2,4 GHz, 8 Go RAM',
-        value: 'hosting-3'
-      }
-    ]}
-  >
-    <SelectControl />
-    <SelectContent />
-  </Select>
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Select a Web hosting      </FormFieldLabel>
+      <Select items={[{
+      label: '1 vCore 2,4 GHz, 2 Go RAM',
+      value: 'hosting-1'
+    }, {
+      label: '1 vCore 2,4 GHz, 4 Go RAM',
+      value: 'hosting-2'
+    }, {
+      label: '2 vCores 2,4 GHz, 8 Go RAM',
+      value: 'hosting-3'
+    }]}>
+        <SelectControl />
+        <SelectContent />
+      </Select>
+    </FormField>
+}
 ```
 
 ## Recipes
@@ -23477,12 +23371,15 @@ The **Spinner** component does not automatically provide enough context for assi
 The **Spinner** itself does not convey the loading state. This responsibility falls on the container where content is being loaded by using [aria-busy](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy) and [aria-live](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live) .
 
 ```jsx
-<div
-  aria-busy="true"
-  aria-live="polite"
->
-  <Spinner />
-</div>
+{
+  globals: {
+    imports: `import { Spinner } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <div aria-busy="true" aria-live="polite">
+      <Spinner />
+    </div>
+}
 ```
 
 Explanations:
@@ -23499,16 +23396,12 @@ Once the content is loaded, aria-busy should be set to false.
 If the **Spinner** is associated with a specific loading action, it should be explicitly labeled using [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) or [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) .
 
 ```jsx
-{
-  globals: {
-    imports: `import { Spinner } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Spinner aria-label="Loading user profile" />
-}
+<Spinner aria-label="Loading user profile" />
 ```
 
 Screen readers will announce the label, the spinner and its current state.
+
+Loading user profile
 
 ```jsx
 {
@@ -24571,152 +24464,120 @@ Front-end web developer course 2021
 | Karen | Web performance | 36 |
 
 ```jsx
-<>
-  <Table size="sm">
-    <caption>
-      Front-end web developer course 2021    </caption>
-    <thead>
-      <tr>
-        <th scope="col">
-          Person        </th>
-        <th scope="col">
-          Most interest in        </th>
-        <th scope="col">
-          Age        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">
-          Chris        </th>
-        <td>
-          HTML tables        </td>
-        <td>
-          22        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Dennis        </th>
-        <td>
-          Web accessibility        </td>
-        <td>
-          45        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Sarah        </th>
-        <td>
-          JavaScript frameworks        </td>
-        <td>
-          29        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Karen        </th>
-        <td>
-          Web performance        </td>
-        <td>
-          36        </td>
-      </tr>
-    </tbody>
-  </Table>
-  <Table size="md">
-    <caption>
-      Front-end web developer course 2021    </caption>
-    <thead>
-      <tr>
-        <th scope="col">
-          Person        </th>
-        <th scope="col">
-          Most interest in        </th>
-        <th scope="col">
-          Age        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">
-          Chris        </th>
-        <td>
-          HTML tables        </td>
-        <td>
-          22        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Dennis        </th>
-        <td>
-          Web accessibility        </td>
-        <td>
-          45        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Sarah        </th>
-        <td>
-          JavaScript frameworks        </td>
-        <td>
-          29        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Karen        </th>
-        <td>
-          Web performance        </td>
-        <td>
-          36        </td>
-      </tr>
-    </tbody>
-  </Table>
-  <Table size="lg">
-    <caption>
-      Front-end web developer course 2021    </caption>
-    <thead>
-      <tr>
-        <th scope="col">
-          Person        </th>
-        <th scope="col">
-          Most interest in        </th>
-        <th scope="col">
-          Age        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">
-          Chris        </th>
-        <td>
-          HTML tables        </td>
-        <td>
-          22        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Dennis        </th>
-        <td>
-          Web accessibility        </td>
-        <td>
-          45        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Sarah        </th>
-        <td>
-          JavaScript frameworks        </td>
-        <td>
-          29        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Karen        </th>
-        <td>
-          Web performance        </td>
-        <td>
-          36        </td>
-      </tr>
-    </tbody>
-  </Table>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '16px'
+  }}>
+      {story()}
+    </div>],
+  globals: {
+    imports: `import { TABLE_SIZE, Table } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Table size={TABLE_SIZE.sm}>
+        <caption>
+          Front-end web developer course 2021        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </Table>
+      <Table size={TABLE_SIZE.md}>
+        <caption>
+          Front-end web developer course 2021        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </Table>
+      <Table size={TABLE_SIZE.lg}>
+        <caption>
+          Front-end web developer course 2021        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </Table>
+    </>
+}
 ```
 
 ### Variant
@@ -25804,28 +25665,26 @@ XS
 ### Horizontal overflow
 
 ```jsx
-<div
-  style={{
+{
+  globals: {
+    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
     width: '300px'
-  }}
->
-  <Tabs defaultValue="tab1">
-    <TabList>
-      <Tab value="tab1">
-        Tab 1      </Tab>
-      <Tab value="tab2">
-        Tab 2      </Tab>
-      <Tab value="tab3">
-        Tab 3      </Tab>
-      <Tab value="tab4">
-        Tab 4      </Tab>
-      <Tab value="tab5">
-        Tab 5      </Tab>
-      <Tab value="tab6">
-        Tab 6      </Tab>
-    </TabList>
-  </Tabs>
-</div>
+  }}>
+      <Tabs defaultValue="tab1">
+        <TabList>
+          <Tab value="tab1">Tab 1</Tab>
+          <Tab value="tab2">Tab 2</Tab>
+          <Tab value="tab3">Tab 3</Tab>
+          <Tab value="tab4">Tab 4</Tab>
+          <Tab value="tab5">Tab 5</Tab>
+          <Tab value="tab6">Tab 6</Tab>
+        </TabList>
+      </Tabs>
+    </div>
+}
 ```
 
 ### With content
@@ -25837,28 +25696,28 @@ Content 2
 Content 3
 
 ```jsx
-{
-  globals: {
-    imports: `import { Tabs, TabContent, TabList, Tab } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Tabs defaultValue="tab1">
-      <TabList>
-        <Tab value="tab1">Tab 1</Tab>
-        <Tab value="tab2">Tab 2</Tab>
-        <Tab value="tab3">Tab 3</Tab>
-      </TabList>
-      <TabContent value="tab1">
-        <p>Content 1</p>
-      </TabContent>
-      <TabContent value="tab2">
-        <p>Content 2</p>
-      </TabContent>
-      <TabContent value="tab3">
-        <p>Content 3</p>
-      </TabContent>
-    </Tabs>
-}
+<Tabs defaultValue="tab1">
+  <TabList>
+    <Tab value="tab1">
+      Tab 1    </Tab>
+    <Tab value="tab2">
+      Tab 2    </Tab>
+    <Tab value="tab3">
+      Tab 3    </Tab>
+  </TabList>
+  <TabContent value="tab1">
+    <p>
+      Content 1    </p>
+  </TabContent>
+  <TabContent value="tab2">
+    <p>
+      Content 2    </p>
+  </TabContent>
+  <TabContent value="tab3">
+    <p>
+      Content 3    </p>
+  </TabContent>
+</Tabs>
 ```
 
 ### Controlled
@@ -25881,43 +25740,31 @@ const [value, setValue] = useState('tab1');
 ### With arrows
 
 ```jsx
-<Tabs
-  defaultValue="tab1"
-  withArrows
->
-  <TabList>
-    <Tab value="tab1">
-      Tab 1    </Tab>
-    <Tab value="tab2">
-      Tab 2    </Tab>
-    <Tab value="tab3">
-      Tab 3    </Tab>
-    <Tab value="tab4">
-      Tab 4    </Tab>
-    <Tab value="tab5">
-      Tab 5    </Tab>
-    <Tab value="tab6">
-      Tab 6    </Tab>
-    <Tab value="tab7">
-      Tab 7    </Tab>
-    <Tab value="tab8">
-      Tab 8    </Tab>
-    <Tab value="tab9">
-      Tab 9    </Tab>
-    <Tab value="tab10">
-      Tab 10    </Tab>
-    <Tab value="tab11">
-      Tab 11    </Tab>
-    <Tab value="tab12">
-      Tab 12    </Tab>
-    <Tab value="tab13">
-      Tab 13    </Tab>
-    <Tab value="tab14">
-      Tab 14    </Tab>
-    <Tab value="tab15">
-      Tab 15    </Tab>
-  </TabList>
-</Tabs>
+{
+  globals: {
+    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tabs defaultValue="tab1" withArrows>
+      <TabList>
+        <Tab value="tab1">Tab 1</Tab>
+        <Tab value="tab2">Tab 2</Tab>
+        <Tab value="tab3">Tab 3</Tab>
+        <Tab value="tab4">Tab 4</Tab>
+        <Tab value="tab5">Tab 5</Tab>
+        <Tab value="tab6">Tab 6</Tab>
+        <Tab value="tab7">Tab 7</Tab>
+        <Tab value="tab8">Tab 8</Tab>
+        <Tab value="tab9">Tab 9</Tab>
+        <Tab value="tab10">Tab 10</Tab>
+        <Tab value="tab11">Tab 11</Tab>
+        <Tab value="tab12">Tab 12</Tab>
+        <Tab value="tab13">Tab 13</Tab>
+        <Tab value="tab14">Tab 14</Tab>
+        <Tab value="tab15">Tab 15</Tab>
+      </TabList>
+    </Tabs>
+}
 ```
 
 ## Recipes
@@ -26468,23 +26315,20 @@ This allows screen readers to announce a list with the number of items, making i
 When modifying the HTML structure is not possible, use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [role="listitem"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) to mimic list semantics.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Tag } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <div role="list">
-      <div role="listitem">
-        <Tag>Design</Tag>
-      </div>
-      <div role="listitem">
-        <Tag>Development</Tag>
-      </div>
-      <div role="listitem">
-        <Tag>Accessibility</Tag>
-      </div>
-    </div>
-}
+<div role="list">
+  <div role="listitem">
+    <Tag>
+      Design    </Tag>
+  </div>
+  <div role="listitem">
+    <Tag>
+      Development    </Tag>
+  </div>
+  <div role="listitem">
+    <Tag>
+      Accessibility    </Tag>
+  </div>
+</div>
 ```
 
 This ensures that screen readers still recognize the **Tags** as a structured list, even without native `<ul>` and `<li>` elements.
@@ -26494,9 +26338,14 @@ This ensures that screen readers still recognize the **Tags** as a structured li
 Since the **Tag** is removable, it should provide clear feedback to assistive technologies.
 
 ```jsx
-<Tag aria-label="Remove my tag">
-  My tag
-</Tag>
+{
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tag aria-label="Remove my tag">
+      My tag    </Tag>
+}
 ```
 
 This ensures that users know the **Tag** can be removed. Screen readers will announce the tag aria label and the button type.
@@ -26739,9 +26588,17 @@ This ensures that users know the **Tag** can be removed. Screen readers will ann
 ### Default
 
 ```jsx
-<Tag>
-  My tag
-</Tag>
+{
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Tag>
+      My tag    </Tag>
+}
 ```
 
 ### Color
@@ -26766,20 +26623,41 @@ This ensures that users know the **Tag** can be removed. Screen readers will ann
 ### Disabled
 
 ```jsx
-<Tag disabled>
-  My tag
-</Tag>
+{
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Tag disabled>
+      My tag    </Tag>
+}
 ```
 
 ### Size
 
 ```jsx
-<>
-  <Tag size="md">
-    MD tag  </Tag>
-  <Tag size="lg">
-    LG tag  </Tag>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { TAG_SIZE, Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <>
+      <Tag size={TAG_SIZE.md}>MD tag</Tag>
+      <Tag size={TAG_SIZE.lg}>LG tag</Tag>
+    </>
+}
 ```
 
 ## Recipes
@@ -27674,8 +27552,6 @@ To ensure proper accessibility, it must be correctly labeled, and provide live u
 
 Every **Textarea** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
-Description:
-
 ```jsx
 {
   globals: {
@@ -27693,6 +27569,8 @@ Description:
 Screen readers will announce the label and the field.
 
 ### Linking helper text
+
+Description:Enter a brief description
 
 ```jsx
 {
@@ -28315,57 +28193,90 @@ UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UT
 ### Default
 
 ```jsx
-<Timepicker>
-  <TimepickerControl />
-</Timepicker>
+{
+  globals: {
+    imports: `import { Timepicker, TimepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Timepicker>
+      <TimepickerControl />
+    </Timepicker>
+}
 ```
 
 ### Disabled
 
-UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
-
 ```jsx
-<>
-  <Timepicker disabled>
-    <TimepickerControl />
-  </Timepicker>
-  <Timepicker disabled>
-    <TimepickerControl />
-    <TimepickerTimezoneList />
-  </Timepicker>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Timepicker disabled>
+        <TimepickerControl />
+      </Timepicker>
+      <Timepicker disabled>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+}
 ```
 
 ### Readonly
 
-UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
-
 ```jsx
-<>
-  <Timepicker readOnly>
-    <TimepickerControl />
-  </Timepicker>
-  <Timepicker readOnly>
-    <TimepickerControl />
-    <TimepickerTimezoneList />
-  </Timepicker>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Timepicker readOnly>
+        <TimepickerControl />
+      </Timepicker>
+      <Timepicker readOnly>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+}
 ```
 
 ### With seconds
 
-UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
-
 ```jsx
-<>
-  <Timepicker withSeconds>
-    <TimepickerControl />
-  </Timepicker>
-  <Timepicker withSeconds>
-    <TimepickerControl />
-    <TimepickerTimezoneList />
-  </Timepicker>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Timepicker withSeconds>
+        <TimepickerControl />
+      </Timepicker>
+      <Timepicker withSeconds>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+}
 ```
 
 ### Timezone list
@@ -28385,40 +28296,47 @@ Subset of timezone
 UTC-10UTC+0UTC+10
 
 ```jsx
-<>
-  <span>
-    All timezones  </span>
-  <Timepicker>
-    <TimepickerControl />
-    <TimepickerTimezoneList />
-  </Timepicker>
-  <span>
-    Subset of timezone  </span>
-  <Timepicker
-    timezones={[
-      'UTC-10',
-      'UTC+0',
-      'UTC+10'
-    ]}
-  >
-    <TimepickerControl />
-    <TimepickerTimezoneList />
-  </Timepicker>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <span>All timezones</span>
+      <Timepicker>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+      <span>Subset of timezone</span>
+      <Timepicker timezones={['UTC-10', 'UTC+0', 'UTC+10']}>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+}
 ```
 
 ### Form field
 
-Timepicker:
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Timepicker:  </FormFieldLabel>
-  <Timepicker>
-    <TimepickerControl />
-  </Timepicker>
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Timepicker:      </FormFieldLabel>
+      <Timepicker>
+        <TimepickerControl />
+      </Timepicker>
+    </FormField>
+}
 ```
 
 ## Recipes
@@ -29099,53 +29017,51 @@ const MyApp = () => (
 ### Position
 
 ```jsx
-<>
-  <Toaster
-    id="top-start"
-    position="top-start"
-  />
-  <Toaster
-    id="top"
-    position="top"
-  />
-  <Toaster
-    id="top-end"
-    position="top-end"
-  />
-  <Toaster
-    id="bottom-start"
-    position="bottom-start"
-  />
-  <Toaster
-    id="bottom"
-    position="bottom"
-  />
-  <Toaster
-    id="bottom-end"
-    position="bottom-end"
-  />
-  <div
-    style={{
+{
+  globals: {
+    imports: `import { ICON_NAME, TOASTER_POSITION, Button, Toaster, toast } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Toaster id="top-start" position={TOASTER_POSITION.topStart} />
+      <Toaster id="top" position={TOASTER_POSITION.top} />
+      <Toaster id="top-end" position={TOASTER_POSITION.topEnd} />
+      <Toaster id="bottom-start" position={TOASTER_POSITION.bottomStart} />
+      <Toaster id="bottom" position={TOASTER_POSITION.bottom} />
+      <Toaster id="bottom-end" position={TOASTER_POSITION.bottomEnd} />
+      <div style={{
       display: 'grid',
-      gap: '20px',
       gridTemplateColumns: 'repeat(3, 1fr)',
-      gridTemplateRows: 'repeat(2, 1fr)'
-    }}
-  >
-    <Button onClick={function Xs(){}}>
-      Top Start    </Button>
-    <Button onClick={function Xs(){}}>
-      Top    </Button>
-    <Button onClick={function Xs(){}}>
-      Top End    </Button>
-    <Button onClick={function Xs(){}}>
-      Bottom Start    </Button>
-    <Button onClick={function Xs(){}}>
-      Bottom    </Button>
-    <Button onClick={function Xs(){}}>
-      Bottom End    </Button>
-  </div>
-</>
+      gridTemplateRows: 'repeat(2, 1fr)',
+      gap: '20px'
+    }}>
+        <Button onClick={() => toast('Top Start', {
+        toasterId: 'top-start'
+      })}>
+          Top Start        </Button>
+        <Button onClick={() => toast('Top', {
+        toasterId: 'top'
+      })}>
+          Top        </Button>
+        <Button onClick={() => toast('Top End', {
+        toasterId: 'top-end'
+      })}>
+          Top End        </Button>
+        <Button onClick={() => toast('Bottom Start', {
+        toasterId: 'bottom-start'
+      })}>
+          Bottom Start        </Button>
+        <Button onClick={() => toast('Bottom', {
+        toasterId: 'bottom'
+      })}>
+          Bottom        </Button>
+        <Button onClick={() => toast('Bottom End', {
+        toasterId: 'bottom-end'
+      })}>
+          Bottom End        </Button>
+      </div>
+    </>
+}
 ```
 
 ### Custom Content
@@ -29737,14 +29653,18 @@ Enable dark mode
 
 Screen readers will announce a checkbox, its state and the label.
 
-Dark mode
-
 ```jsx
-<Toggle aria-label="Enable dark mode">
-  <ToggleControl />
-  <ToggleLabel>
-    Dark mode  </ToggleLabel>
-</Toggle>
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle aria-label="Enable dark mode">
+      <ToggleControl />
+      <ToggleLabel>
+        Dark mode      </ToggleLabel>
+    </Toggle>
+}
 ```
 
 Screen readers will announce a checkbox, its state and the label.
@@ -31020,22 +30940,6 @@ This component complies with the [Tree View WAI-ARIA design pattern](https://www
 
 ---
 
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
-
 ## Anatomy
 
 ---
@@ -31185,22 +31089,6 @@ README.md
 
 ### Multiple
 
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
-
 ```jsx
 const items = [{
     id: 'src',
@@ -31293,22 +31181,6 @@ const items = [{
 
 ### Custom render
 
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
-
 ```jsx
 const items = [{
     id: 'src',
@@ -31358,22 +31230,6 @@ const items = [{
 ```
 
 ### Default expanded
-
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
 
 ```jsx
 const items = [{
@@ -31456,24 +31312,6 @@ const items = [{
 ```
 
 ### Controlled multiple
-
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
-
-Selected: package.json, index.ts
 
 ```jsx
 const items = [{
@@ -31576,6 +31414,24 @@ const items = [{
 ```
 
 ### In form field
+
+Choose a file
+
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
 
 ```jsx
 const items = [{

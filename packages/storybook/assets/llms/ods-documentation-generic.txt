@@ -1088,9 +1088,15 @@ In addition to the predefined accessibility features of our components, you can 
 Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) when an element needs a descriptive name but has no visible text.
 
 ```jsx
-<Button>
-  <Icon name="xmark" />
-</Button>
+{
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button>
+      <Icon name={ICON_NAME.xmark} />
+    </Button>
+}
 ```
 
 Screen readers will announce a button.
@@ -1122,30 +1128,48 @@ Screen readers will announce a button and the aria-label.
 
 Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) to associate an element with an existing label (instead of duplicating text).
 
-Filter your search results
-
 ```jsx
-<>
-  <Button>
-    <Icon name="filter" />
-  </Button>
-  <span>
-    Filter your search results  </span>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Button>
+        <Icon name={ICON_NAME.filter} />
+      </Button>
+      <span>Filter your search results</span>
+    </>
+}
 ```
 
 Screen readers will announce a button.
 
-Filter your search results
-
 ```jsx
-<>
-  <Button aria-labelledby="filter-btn">
-    <Icon name="filter" />
-  </Button>
-  <span id="filter-btn">
-    Filter your search results  </span>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Button aria-labelledby="filter-btn">
+        <Icon name={ICON_NAME.filter} />
+      </Button>
+      <span id="filter-btn">Filter your search results</span>
+    </>
+}
 ```
 
 When the **Button** is focused, the screen reader should announce the linked label.
@@ -1208,26 +1232,23 @@ Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 Screen readers won't announce the **Modal** content.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Modal>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal        </Button>
-      </ModalTrigger>
-      <ModalContent aria-describedby="modal-content" aria-labelledby="modal-title">
-        <ModalBody>
-          <h2 id="modal-title">
-            Delete item          </h2>
-          <p id="modal-content">
-            Are you sure you want to delete this item? This action cannot be undone.          </p>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-}
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal    </Button>
+  </ModalTrigger>
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-labelledby="modal-title"
+  >
+    <ModalBody>
+      <h2 id="modal-title">
+        Delete item      </h2>
+      <p id="modal-content">
+        Are you sure you want to delete this item? This action cannot be undone.      </p>
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
 Screen readers will announce the **Modal** content.
@@ -1257,7 +1278,13 @@ Some screen readers will announce the icon and detect the presence of the image.
 Depending on the screen reader, some additional information might be read aloud, which is confusing and unhelpful.
 
 ```jsx
-<Icon name="home" />
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Icon name={ICON_NAME.home} />
+}
 ```
 
 Screen readers will announce nothing, the icon is ignored.
@@ -1467,8 +1494,6 @@ Screen readers will announce the error message, even when the user is focused el
 ### radiogroup and radio roles: Making custom radio controls accessible
 
 [radiogroup](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/radiogroup_role) and [radio](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/radio_role) roles ensure that screen readers correctly interpret and announce the selection.
-
-Rating
 
 ```jsx
 {
@@ -2176,6 +2201,40 @@ To check how to start with this new version, please follow the  documentation.
 ## What's new ?
 
 ---
+
+## v19.4.1
+
+---
+
+### Bug fixes:
+
+**Datepicker**
+
+-   Overriding `display` on `DatepickerContent` now won't cause any closing issue.
+
+**Drawer**
+
+-   Overriding `opacity` on `DrawerContent` now won't cause any closing issue.
+
+**Modal**
+
+-   Overriding `display` on `ModalContent` now won't cause any closing issue.
+
+**Popover**
+
+-   Overriding `display` on `PopoverContent` now won't cause any closing issue.
+
+**Range**
+
+-   Fix infinite loop that may occurs on dual range.
+
+**Select**
+
+-   Overriding `display` on `SelectContent` now won't cause any closing issue.
+
+**Tooltip**
+
+-   Overriding `display` on `TooltipContent` now won't cause any closing issue.
 
 ## v19.4.0
 

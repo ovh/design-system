@@ -3,6 +3,7 @@ import { Button } from '../../button/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Popover, PopoverContent, PopoverTrigger } from '../../popover/src';
 import { Select, SelectContent, SelectControl } from '../../select/src';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../../tooltip/src';
 import { Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail, ModalTrigger } from '.';
 import style from './dev.module.css';
 
@@ -284,6 +285,59 @@ export const WithHeaderMultilineTitle = () => (
         </p>
         <p>
           The close button should remain aligned to the right even when the title takes multiple lines.
+        </p>
+      </ModalBody>
+    </ModalContent>
+  </Modal>
+);
+
+/**
+ * Test case to verify that removing overflow:hidden from ModalHeader doesn't break anything.
+ * Elements inside the header (like Tooltip, Popover) should be able to overflow
+ * without being clipped.
+ */
+export const HeaderOverflowTest = () => (
+  <Modal>
+    <ModalTrigger>
+      Test Header Overflow
+    </ModalTrigger>
+
+    <ModalContent>
+      <ModalHeader>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%' }}>
+          <span>Header with Tooltip</span>
+
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Icon
+                name={ ICON_NAME.circleQuestion }
+                style={{ fontSize: '20px', cursor: 'pointer' }} />
+            </TooltipTrigger>
+            <TooltipContent createPortal={ false }>
+              This tooltip is inside the ModalHeader and should not be clipped
+            </TooltipContent>
+          </Tooltip>
+
+          <Popover>
+            <PopoverTrigger asChild>
+              <Icon
+                name={ ICON_NAME.ellipsisVertical }
+                style={{ fontSize: '20px', cursor: 'pointer', marginLeft: 'auto' }} />
+            </PopoverTrigger>
+            <PopoverContent createPortal={ false }>
+              <p>Popover menu in header</p>
+              <p>Should not be clipped!</p>
+            </PopoverContent>
+          </Popover>
+        </div>
+      </ModalHeader>
+      <ModalBody>
+        <p>
+          <strong>Test:</strong> Hover the question mark icon or click the menu icon in the header.
+        </p>
+        <p>
+          <strong>Expected:</strong> The Tooltip and Popover should be fully visible,
+          not clipped by the ModalHeader overflow.
         </p>
       </ModalBody>
     </ModalContent>

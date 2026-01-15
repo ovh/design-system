@@ -8,7 +8,6 @@ import style from './accordionTrigger.module.scss';
 interface AccordionTriggerProp extends ComponentPropsWithRef<'button'> {
   /**
    * The position of the expand icon.
-   * @default right
    */
   expandIconPosition?: ExpandIconPosition,
 }
@@ -18,31 +17,23 @@ const AccordionTrigger: FC<AccordionTriggerProp> = forwardRef(({
   children,
   className,
   ...props
-}, ref): JSX.Element => {
-  const expandIcon = (
+}, ref): JSX.Element => (
+  <Accordion.ItemTrigger
+    className={ classNames(style['accordion-trigger'], style[`accordion-trigger--expand-icon-${expandIconPosition}`], className) }
+    data-ods="accordion-trigger"
+    ref={ ref }
+    { ...props }>
+    <div className={ style['accordion-trigger__content'] }>
+      { children }
+    </div>
+
     <Accordion.ItemIndicator asChild>
       <Icon
         className={ style['accordion-trigger__icon'] }
         name={ ICON_NAME.chevronRight } />
     </Accordion.ItemIndicator>
-  );
-
-  return (
-    <Accordion.ItemTrigger
-      className={ classNames(style['accordion-trigger'], style[`accordion-trigger--expand-icon-${expandIconPosition}`], className) }
-      data-ods="accordion-trigger"
-      ref={ ref }
-      { ...props }>
-      { expandIconPosition === EXPAND_ICON_POSITION.left && expandIcon }
-
-      <div className={ style['accordion-trigger__content'] }>
-        { children }
-      </div>
-
-      { expandIconPosition === EXPAND_ICON_POSITION.right && expandIcon }
-    </Accordion.ItemTrigger>
-  );
-});
+  </Accordion.ItemTrigger>
+));
 
 AccordionTrigger.displayName = 'AccordionTrigger';
 

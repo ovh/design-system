@@ -4,9 +4,8 @@
   .accordion-trigger {
     $trigger: &;
 
-    display: grid;
-    grid-template-columns: 1fr max-content;
-    column-gap: var(--ods-theme-column-gap);
+    display: flex;
+    gap: var(--ods-theme-column-gap);
     align-items: center;
     border: solid var(--ods-accordion-border-width) transparent;
     background: transparent;
@@ -42,7 +41,11 @@
     }
 
     &--expand-icon-left {
-      grid-template-columns: max-content 1fr;
+      flex-flow: row-reverse;
+    }
+
+    &__content {
+      flex: 1;
     }
 
     &[data-state="open"] {

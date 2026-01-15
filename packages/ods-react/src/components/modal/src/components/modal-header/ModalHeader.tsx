@@ -22,13 +22,14 @@ const ModalHeader: FC<ModalHeaderProp> = ({
   }, [setHasHeader]);
 
   return (
-    <div className={ classNames(style['modal-header'], className) }>
-      { children && (
-        <div className={ style['modal-header__content'] }>
-          { children }
-        </div>
-      ) }
-      { dismissible && <ModalCloseTrigger className={ style['modal-header__close'] } /> }
+    <div className={ classNames(style[ 'modal-header' ], className) }>
+      <div className={ style[ 'modal-header__content' ] }>
+        { children }
+      </div>
+      {
+        dismissible &&
+        <ModalCloseTrigger className={ style[ 'modal-header__close' ] } />
+      }
     </div>
   );
 };

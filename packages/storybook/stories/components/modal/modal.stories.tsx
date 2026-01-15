@@ -4,7 +4,6 @@ import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../../ods-react/src/
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import {
   MODAL_COLOR,
-  MODAL_COLORS,
   Modal,
   ModalBody,
   ModalContent,
@@ -68,15 +67,6 @@ export const Demo: StoryObj = {
         category: CONTROL_CATEGORY.general,
       },
       control: { type: 'boolean' },
-    },
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: MODAL_COLOR.information },
-        type: { summary: 'MODAL_COLOR' },
-      },
-      control: { type: 'select' },
-      options: MODAL_COLORS,
     },
     content: {
       table: {
@@ -207,107 +197,6 @@ export const AccessibilityBadPracticesAria: Story = {
         </ModalBody>
       </ModalContent>
     </Modal>
-  ),
-};
-
-export const Colors: Story = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
-  globals: {
-    imports: `import { BUTTON_COLOR, MODAL_COLOR, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <>
-      <Modal>
-        <ModalTrigger asChild>
-          <Button color={ BUTTON_COLOR.critical }>
-            Critical
-          </Button>
-        </ModalTrigger>
-
-        <ModalContent color={ MODAL_COLOR.critical }>
-          <ModalHeader>Critical</ModalHeader>
-          <ModalBody>
-            Critical
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-
-      <Modal>
-        <ModalTrigger asChild>
-          <Button color={ BUTTON_COLOR.information }>
-            Information
-          </Button>
-        </ModalTrigger>
-
-        <ModalContent color={ MODAL_COLOR.information }>
-          <ModalHeader>Information</ModalHeader>
-          <ModalBody>
-            Information
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-
-      <Modal>
-        <ModalTrigger asChild>
-          <Button color={ BUTTON_COLOR.neutral }>
-            Neutral
-          </Button>
-        </ModalTrigger>
-
-        <ModalContent color={ MODAL_COLOR.neutral }>
-          <ModalHeader>Neutral</ModalHeader>
-          <ModalBody>
-            Neutral
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-
-      <Modal>
-        <ModalTrigger asChild>
-          <Button color={ BUTTON_COLOR.primary }>
-            Primary
-          </Button>
-        </ModalTrigger>
-
-        <ModalContent color={ MODAL_COLOR.primary }>
-          <ModalHeader>Primary</ModalHeader>
-          <ModalBody>
-            Primary
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-
-      <Modal>
-        <ModalTrigger asChild>
-          <Button color={ BUTTON_COLOR.success }>
-            Success
-          </Button>
-        </ModalTrigger>
-
-        <ModalContent color={ MODAL_COLOR.success }>
-          <ModalHeader>Success</ModalHeader>
-          <ModalBody>
-            Success
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-
-      <Modal>
-        <ModalTrigger asChild>
-          <Button color={ BUTTON_COLOR.warning }>
-            Warning
-          </Button>
-        </ModalTrigger>
-
-        <ModalContent color={ MODAL_COLOR.warning }>
-          <ModalHeader>Warning</ModalHeader>
-          <ModalBody>
-            Warning
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-    </>
   ),
 };
 

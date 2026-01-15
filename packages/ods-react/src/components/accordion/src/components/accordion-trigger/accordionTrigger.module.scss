@@ -27,6 +27,11 @@
 
         z-index: 1;
         border-radius: inherit;
+
+        &[data-state="open"] {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
       }
 
       #{$trigger}__icon {

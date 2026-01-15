@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '../../button/src';
-import { Text } from '../../text/src';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '.';
+import { Text, TEXT_PRESET } from '../../text/src';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, EXPAND_ICON_POSITION } from '.';
 import style from './dev.module.css';
 
 export default {
@@ -189,3 +189,48 @@ export const Nested = () => (
   </Accordion>
 );
 
+export const ExpandIconPosition = () => (
+  <>
+    <Accordion>
+      <AccordionItem value="1">
+        <AccordionTrigger expandIconPosition={ EXPAND_ICON_POSITION.right }>
+          <Text preset="paragraph">Icon on the right side</Text>
+        </AccordionTrigger>
+        <AccordionContent>
+          <Text preset="paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </Text>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+    <br />
+    <Accordion>
+      <AccordionItem value="2">
+        <AccordionTrigger expandIconPosition={ EXPAND_ICON_POSITION.left }>
+          <Text preset="paragraph">Icon on the left side</Text>
+        </AccordionTrigger>
+        <AccordionContent>
+          <Text preset="paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </Text>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  </>
+);
+
+export const Product = () => (
+  <Accordion>
+    <AccordionItem value="1">
+      <AccordionTrigger className={ style['accordion-custom-trigger'] } expandIconPosition={ EXPAND_ICON_POSITION.left }>
+        <Text preset={ TEXT_PRESET.paragraph } style={{ margin: 0}}>Nom de la famille du produit</Text>
+        <Text preset={ TEXT_PRESET.heading4 } as={'span'} style={{ margin: 0}}>Nom du produit</Text>
+      </AccordionTrigger>
+      <AccordionContent className={ style['product-details']}>
+        <Text preset="paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </Text>
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+)

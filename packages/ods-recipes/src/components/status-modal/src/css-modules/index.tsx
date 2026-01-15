@@ -1,4 +1,4 @@
-import { BUTTON_VARIANT, Button, MODAL_COLOR, Modal, ModalBody, ModalContent, type ModalOpenChangeDetail, ModalTrigger, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+import { BUTTON_VARIANT, Button, MODAL_COLOR, Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail, ModalTrigger, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type JSX, useState } from 'react';
 import style from './index.module.scss';
 
@@ -28,14 +28,16 @@ const StatusModal = (): JSX.Element => {
       </ModalTrigger>
 
       <ModalContent color={ MODAL_COLOR.information }>
+        <ModalHeader>
+          <Text
+            as="span"
+            preset={ TEXT_PRESET.heading3 }>
+            Change your password
+          </Text>
+        </ModalHeader>
+
         <ModalBody className={ style['status-modal__body'] }>
           <div className={ style['status-modal__body__content'] }>
-            <Text
-              as="span"
-              preset={ TEXT_PRESET.heading3 }>
-              Change your password
-            </Text>
-
             <Text preset={ TEXT_PRESET.paragraph }>
               An email will be sent to the address example@ovhcloud.com with the procedure to follow in order to make this change.
             </Text>

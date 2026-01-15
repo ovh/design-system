@@ -23,8 +23,9 @@ import * as ModalStories from './modal.stories';
 
 1. **Modal**
 2. **Modal Content**
-3. **Modal Body**
-4. **Modal Trigger**
+3. **Modal Header**
+4. **Modal Body**
+5. **Modal Trigger**
 
 <TechnicalSpecification
   cssVariable={ cssVariable }
@@ -37,6 +38,12 @@ import * as ModalStories from './modal.stories';
       },
     },
     'ModalContent': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'ModalHeader': {
       extendAttribute: {
         name: 'div',
         url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',

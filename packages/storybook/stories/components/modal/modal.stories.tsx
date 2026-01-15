@@ -29,7 +29,7 @@ type DemoArg = Partial<ModalProp> & Partial<ModalContentProp> & {
 const meta: Meta<ModalProp> = {
   argTypes: excludeFromDemoControls(['defaultOpen', 'i18n', 'initialFocusedElement', 'locale', 'onOpenChange', 'open']),
   component: Modal,
-  subcomponents: { ModalBody, ModalContent, ModalTrigger },
+  subcomponents: { ModalBody, ModalContent, ModalHeader, ModalTrigger },
   title: 'React Components/Modal',
 };
 
@@ -49,6 +49,7 @@ export const Demo: StoryObj = {
       <ModalContent
         color={ arg.color }
         dismissible={ arg.dismissible }>
+        <ModalHeader>Modal header</ModalHeader>
         <ModalBody>
           { arg.content }
         </ModalBody>
@@ -99,7 +100,7 @@ export const Demo: StoryObj = {
 
 export const AccessibilityActions: Story = {
   globals: {
-    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, MODAL_COLOR, Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, MODAL_COLOR, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -111,11 +112,8 @@ export const AccessibilityActions: Story = {
       </ModalTrigger>
 
       <ModalContent color={ MODAL_COLOR.critical }>
+        <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
         <ModalBody>
-          <h2 id="modal-title">
-            Delete item
-          </h2>
-
           <p id="modal-content">
             Are you sure you want to delete this item?
           </p>
@@ -137,7 +135,7 @@ export const AccessibilityActions: Story = {
 
 export const AccessibilityAriaLabelledBy: Story = {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -151,11 +149,8 @@ export const AccessibilityAriaLabelledBy: Story = {
       <ModalContent
         aria-describedby="modal-content"
         aria-labelledby="modal-title">
+        <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
         <ModalBody>
-          <h2 id="modal-title">
-            Delete item
-          </h2>
-
           <p id="modal-content">
             Are you sure you want to delete this item? This action cannot be undone.
           </p>
@@ -167,7 +162,7 @@ export const AccessibilityAriaLabelledBy: Story = {
 
 export const AccessibilityAriaLabel: Story = {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -181,6 +176,7 @@ export const AccessibilityAriaLabel: Story = {
       <ModalContent
         aria-describedby="modal-content"
         aria-label="Modal Content">
+        <ModalHeader>Modal header</ModalHeader>
         <ModalBody id="modal-content">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </ModalBody>
@@ -191,7 +187,7 @@ export const AccessibilityAriaLabel: Story = {
 
 export const AccessibilityBadPracticesAria: Story = {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -203,11 +199,8 @@ export const AccessibilityBadPracticesAria: Story = {
       </ModalTrigger>
 
       <ModalContent>
+        <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
         <ModalBody>
-          <h2 id="modal-title">
-            Delete item
-          </h2>
-
           <p id="modal-content">
             Are you sure you want to delete this item? This action cannot be undone.
           </p>
@@ -220,7 +213,7 @@ export const AccessibilityBadPracticesAria: Story = {
 export const Colors: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px' }}>{ story() }</div>],
   globals: {
-    imports: `import { BUTTON_COLOR, MODAL_COLOR, Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { BUTTON_COLOR, MODAL_COLOR, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -233,6 +226,7 @@ export const Colors: Story = {
         </ModalTrigger>
 
         <ModalContent color={ MODAL_COLOR.critical }>
+          <ModalHeader>Critical</ModalHeader>
           <ModalBody>
             Critical
           </ModalBody>
@@ -247,6 +241,7 @@ export const Colors: Story = {
         </ModalTrigger>
 
         <ModalContent color={ MODAL_COLOR.information }>
+          <ModalHeader>Information</ModalHeader>
           <ModalBody>
             Information
           </ModalBody>
@@ -261,6 +256,7 @@ export const Colors: Story = {
         </ModalTrigger>
 
         <ModalContent color={ MODAL_COLOR.neutral }>
+          <ModalHeader>Neutral</ModalHeader>
           <ModalBody>
             Neutral
           </ModalBody>
@@ -275,6 +271,7 @@ export const Colors: Story = {
         </ModalTrigger>
 
         <ModalContent color={ MODAL_COLOR.primary }>
+          <ModalHeader>Primary</ModalHeader>
           <ModalBody>
             Primary
           </ModalBody>
@@ -289,6 +286,7 @@ export const Colors: Story = {
         </ModalTrigger>
 
         <ModalContent color={ MODAL_COLOR.success }>
+          <ModalHeader>Success</ModalHeader>
           <ModalBody>
             Success
           </ModalBody>
@@ -303,6 +301,7 @@ export const Colors: Story = {
         </ModalTrigger>
 
         <ModalContent color={ MODAL_COLOR.warning }>
+          <ModalHeader>Warning</ModalHeader>
           <ModalBody>
             Warning
           </ModalBody>
@@ -314,7 +313,7 @@ export const Colors: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent } from '@ovhcloud/ods-react';
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -344,6 +343,7 @@ import { useState } from 'react';`,
           onOpenChange={ onOpenChange }
           open={ isOpen }>
           <ModalContent>
+            <ModalHeader>Controlled modal</ModalHeader>
             <ModalBody>
               Content
             </ModalBody>
@@ -356,7 +356,7 @@ import { useState } from 'react';`,
 
 export const Default: Story = {
   globals: {
-    imports: `import { Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -376,7 +376,7 @@ export const Default: Story = {
 
 export const NonDismissible: Story = {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   parameters: {
@@ -393,6 +393,7 @@ export const NonDismissible: Story = {
       </ModalTrigger>
 
       <ModalContent dismissible={ false }>
+        <ModalHeader>Non dismissible</ModalHeader>
         <ModalBody>
           My modal content
         </ModalBody>
@@ -403,7 +404,7 @@ export const NonDismissible: Story = {
 
 export const NonEscapable: Story = {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   parameters: {
@@ -422,6 +423,7 @@ export const NonEscapable: Story = {
       </ModalTrigger>
 
       <ModalContent>
+        <ModalHeader>Non escapable</ModalHeader>
         <ModalBody>
           My modal content
         </ModalBody>
@@ -432,7 +434,7 @@ export const NonEscapable: Story = {
 
 export const OverlayElements: Story = {
   globals: {
-    imports: `import { ICON_NAME, Button, Icon, Modal, ModalBody, ModalContent, ModalTrigger, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { ICON_NAME, Button, Icon, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -444,6 +446,7 @@ export const OverlayElements: Story = {
       </ModalTrigger>
 
       <ModalContent>
+        <ModalHeader>Overlay elements</ModalHeader>
         <ModalBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
           <Select items={[
             { label: 'Dog', value:'dog' },
@@ -517,6 +520,7 @@ export const ThemeGenerator: Story = {
           <Button>Default</Button>
         </ModalTrigger>
         <ModalContent createPortal={ false }>
+          <ModalHeader>Default</ModalHeader>
           <ModalBody>Default</ModalBody>
         </ModalContent>
       </Modal>
@@ -526,6 +530,7 @@ export const ThemeGenerator: Story = {
           <Button>Non dismissible</Button>
         </ModalTrigger>
         <ModalContent createPortal={ false } dismissible={ false }>
+          <ModalHeader>Non dismissible</ModalHeader>
           <ModalBody>Non dismissible</ModalBody>
         </ModalContent>
       </Modal>
@@ -535,6 +540,7 @@ export const ThemeGenerator: Story = {
           <Button color={ BUTTON_COLOR.critical }>Critical</Button>
         </ModalTrigger>
         <ModalContent color={ MODAL_COLOR.critical } createPortal={ false }>
+          <ModalHeader>Critical</ModalHeader>
           <ModalBody>Critical</ModalBody>
         </ModalContent>
       </Modal>

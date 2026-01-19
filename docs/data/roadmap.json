@@ -1,3 +1,101 @@
 {
-  "version": 0
+  "data": {
+    "next": {
+      "components": [
+        {
+          "description": "New component",
+          "label": "Cart",
+          "range": [0, 1]
+        },
+        {
+          "description": "New component",
+          "label": "Menu",
+          "range": [0, 0.33]
+        }
+      ],
+      "recipes": [
+        {
+          "description": "",
+          "label": "New recipes",
+          "range": [0, 1]
+        }
+      ],
+      "others": [
+        {
+          "description": "Functional documentation",
+          "label": "Form",
+          "range": [0, 0.33]
+        },
+        {
+          "description": "Functional documentation",
+          "label": "Charts",
+          "range": [0.33, 0.66]
+        }
+      ]
+    },
+    "n+2": {
+      "components": [
+        {
+          "description": "New component",
+          "label": "Datagrid - MVP",
+          "range": [0, 1]
+        },
+        {
+          "description": "New component",
+          "label": "Tags List",
+          "range": [0, 0.33]
+        }
+      ],
+      "recipes": [
+        {
+          "description": "",
+          "label": "New recipes",
+          "range": [0, 1]
+        }
+      ],
+      "others": [
+        {
+          "description": "",
+          "label": "Time helper",
+          "range": [0, 0.33]
+        },
+        {
+          "description": "",
+          "label": "Theme revamp",
+          "range": [0, 1]
+        }
+      ]
+    },
+    "n+3": {
+      "components": [
+        {
+          "description": "New component",
+          "label": "Datagrid - v2",
+          "range": [0, 1]
+        },
+        {
+          "description": "New component",
+          "label": "Command",
+          "range": [0, 0.33]
+        }
+      ],
+      "others": [
+        {
+          "description": "",
+          "label": "New React Playground",
+          "range": [0, 0.5]
+        }
+      ]
+    }
+  },
+  "releases": [
+    { "label": "Next release", "value": "next" },
+    { "label": "Release n+2", "value": "n+2" },
+    { "label": "Release n+3", "value": "n+3" }
+  ],
+  "sections": [
+    { "label": "Components", "value": "components" },
+    { "label": "Recipes", "value": "recipes" },
+    { "label": "Others", "value": "others" }
+  ]
 }

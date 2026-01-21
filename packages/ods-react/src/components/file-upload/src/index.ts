@@ -1,6 +1,15 @@
-export { FileUpload, type FileUploadProp } from './components/file-upload/FileUpload';
-export { FileUploadItem, type FileUploadItemProp } from './components/file-upload-item/FileUploadItem';
-export { FileUploadList, type FileUploadListProp } from './components/file-upload-list/FileUploadList';
+import { type FileUploadProp, FileUpload as FileUploadRoot } from './components/file-upload/FileUpload';
+import { FileUploadItem, type FileUploadItemProp } from './components/file-upload-item/FileUploadItem';
+import { FileUploadList, type FileUploadListProp } from './components/file-upload-list/FileUploadList';
+
+const FileUpload = Object.assign(FileUploadRoot, {
+  Item: FileUploadItem,
+  List: FileUploadList,
+});
+
+export { FileUpload };
+export { FileUploadItem, FileUploadList };
+export type { FileUploadProp, FileUploadItemProp, FileUploadListProp };
 export { FILE_REJECTION_CAUSE, FILE_REJECTION_CAUSES, type FileRejectionCause } from './constants/file-error';
 export { FILE_UPLOAD_I18N } from './constants/file-upload-i18n';
 export { FILE_UPLOAD_VARIANT, FILE_UPLOAD_VARIANTS, type FileUploadVariant } from './constants/file-upload-variant';

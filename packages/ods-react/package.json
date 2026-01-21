@@ -8,7 +8,11 @@
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",
-      "default": "./dist/ods-react.js"
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/src/components/*/src/index.d.ts",
+      "default": "./dist/components/*/index.js"
     },
     "./normalize-css": {
       "default": "./src/style/normalize.css"

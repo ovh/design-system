@@ -4,20 +4,16 @@ import { ModalContent, type ModalContentProp } from './components/modal-content/
 import { ModalHeader, type ModalHeaderProp } from './components/modal-header/ModalHeader';
 import { ModalTrigger, type ModalTriggerProp } from './components/modal-trigger/ModalTrigger';
 
-const Modal = Object.assign(ModalRoot, {
+const Modal = {
   Body: ModalBody,
   Content: ModalContent,
   Header: ModalHeader,
   Root: ModalRoot,
   Trigger: ModalTrigger,
-});
+};
 
-// Exports
+export { Modal };
+export type { ModalProp, ModalBodyProp, ModalContentProp, ModalHeaderProp, ModalTriggerProp };
 export { MODAL_COLOR, MODAL_COLORS, type ModalColor } from './constants/modal-color';
 export { MODAL_I18N } from './constants/modal-i18n';
 export { type ModalOpenChangeDetail } from './contexts/useModal';
-export { Modal, type ModalProp };
-export { ModalBody, type ModalBodyProp };
-export { ModalContent, type ModalContentProp };
-export { ModalHeader, type ModalHeaderProp };
-export { ModalTrigger, type ModalTriggerProp };

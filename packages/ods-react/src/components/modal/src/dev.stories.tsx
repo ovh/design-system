@@ -5,6 +5,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '../../popover/src';
 import { Select, SelectContent, SelectControl } from '../../select/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../tooltip/src';
 import { Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail, ModalTrigger } from '.';
+import { Modal as ModalCompound } from './compound';
 import style from './dev.module.css';
 
 export default {
@@ -342,4 +343,71 @@ export const HeaderOverflowTest = () => (
       </ModalBody>
     </ModalContent>
   </Modal>
+);
+
+export const CompoundBasic = () => (
+  <ModalCompound.Root>
+    <ModalCompound.Trigger>
+      Open Modal (Compound)
+    </ModalCompound.Trigger>
+
+    <ModalCompound.Content>
+      <ModalCompound.Header>Compound Modal</ModalCompound.Header>
+      <ModalCompound.Body>
+        This modal uses the compound pattern via subpath import.
+      </ModalCompound.Body>
+    </ModalCompound.Content>
+  </ModalCompound.Root>
+);
+
+export const CompoundControlled = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={ () => setIsOpen(true) }>
+        Open Controlled Modal
+      </Button>
+
+      <ModalCompound.Root open={ isOpen } onOpenChange={ ({ open }) => setIsOpen(open) }>
+        <ModalCompound.Content>
+          <ModalCompound.Header>Controlled Modal</ModalCompound.Header>
+          <ModalCompound.Body>
+            <p>This is a controlled modal using compound pattern.</p>
+            <Button onClick={ () => setIsOpen(false) }>Close</Button>
+          </ModalCompound.Body>
+        </ModalCompound.Content>
+      </ModalCompound.Root>
+    </>
+  );
+};
+
+export const CompoundComparison = () => (
+  <div style={{ display: 'flex', gap: '20px' }}>
+    <div>
+      <p><strong>Barrel (classique)</strong></p>
+      <code>{'import { Modal, ModalTrigger, ... }'}</code>
+      <br /><br />
+      <Modal>
+        <ModalTrigger>Open (Barrel)</ModalTrigger>
+        <ModalContent>
+          <ModalHeader>Barrel Modal</ModalHeader>
+          <ModalBody>Using individual imports</ModalBody>
+        </ModalContent>
+      </Modal>
+    </div>
+
+    <div>
+      <p><strong>Compound (subpath)</strong></p>
+      <code>{'import { Modal } from "@ovhcloud/ods-react/modal"'}</code>
+      <br /><br />
+      <ModalCompound.Root>
+        <ModalCompound.Trigger>Open (Compound)</ModalCompound.Trigger>
+        <ModalCompound.Content>
+          <ModalCompound.Header>Compound Modal</ModalCompound.Header>
+          <ModalCompound.Body>Using Modal.Root, Modal.Trigger, etc.</ModalCompound.Body>
+        </ModalCompound.Content>
+      </ModalCompound.Root>
+    </div>
+  </div>
 );

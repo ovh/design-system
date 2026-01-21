@@ -8,7 +8,195 @@
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",
-      "default": "./dist/ods-react.js"
+      "default": "./dist/index.js"
+    },
+    "./accordion": {
+      "types": "./dist/src/components/accordion/src/compound.d.ts",
+      "default": "./dist/components/accordion/src/compound.js"
+    },
+    "./badge": {
+      "types": "./dist/src/components/badge/src/index.d.ts",
+      "default": "./dist/components/badge/src/index.js"
+    },
+    "./breadcrumb": {
+      "types": "./dist/src/components/breadcrumb/src/compound.d.ts",
+      "default": "./dist/components/breadcrumb/src/compound.js"
+    },
+    "./button": {
+      "types": "./dist/src/components/button/src/index.d.ts",
+      "default": "./dist/components/button/src/index.js"
+    },
+    "./button-group": {
+      "types": "./dist/src/components/button-group/src/compound.d.ts",
+      "default": "./dist/components/button-group/src/compound.js"
+    },
+    "./card": {
+      "types": "./dist/src/components/card/src/index.d.ts",
+      "default": "./dist/components/card/src/index.js"
+    },
+    "./checkbox": {
+      "types": "./dist/src/components/checkbox/src/compound.d.ts",
+      "default": "./dist/components/checkbox/src/compound.js"
+    },
+    "./clipboard": {
+      "types": "./dist/src/components/clipboard/src/compound.d.ts",
+      "default": "./dist/components/clipboard/src/compound.js"
+    },
+    "./code": {
+      "types": "./dist/src/components/code/src/index.d.ts",
+      "default": "./dist/components/code/src/index.js"
+    },
+    "./combobox": {
+      "types": "./dist/src/components/combobox/src/compound.d.ts",
+      "default": "./dist/components/combobox/src/compound.js"
+    },
+    "./datepicker": {
+      "types": "./dist/src/components/datepicker/src/compound.d.ts",
+      "default": "./dist/components/datepicker/src/compound.js"
+    },
+    "./divider": {
+      "types": "./dist/src/components/divider/src/index.d.ts",
+      "default": "./dist/components/divider/src/index.js"
+    },
+    "./drawer": {
+      "types": "./dist/src/components/drawer/src/compound.d.ts",
+      "default": "./dist/components/drawer/src/compound.js"
+    },
+    "./file-upload": {
+      "types": "./dist/src/components/file-upload/src/compound.d.ts",
+      "default": "./dist/components/file-upload/src/compound.js"
+    },
+    "./form-field": {
+      "types": "./dist/src/components/form-field/src/compound.d.ts",
+      "default": "./dist/components/form-field/src/compound.js"
+    },
+    "./icon": {
+      "types": "./dist/src/components/icon/src/index.d.ts",
+      "default": "./dist/components/icon/src/index.js"
+    },
+    "./input": {
+      "types": "./dist/src/components/input/src/index.d.ts",
+      "default": "./dist/components/input/src/index.js"
+    },
+    "./kbd": {
+      "types": "./dist/src/components/kbd/src/index.d.ts",
+      "default": "./dist/components/kbd/src/index.js"
+    },
+    "./link": {
+      "types": "./dist/src/components/link/src/index.d.ts",
+      "default": "./dist/components/link/src/index.js"
+    },
+    "./logo": {
+      "types": "./dist/src/components/logo/src/index.d.ts",
+      "default": "./dist/components/logo/src/index.js"
+    },
+    "./medium": {
+      "types": "./dist/src/components/medium/src/index.d.ts",
+      "default": "./dist/components/medium/src/index.js"
+    },
+    "./message": {
+      "types": "./dist/src/components/message/src/compound.d.ts",
+      "default": "./dist/components/message/src/compound.js"
+    },
+    "./meter": {
+      "types": "./dist/src/components/meter/src/index.d.ts",
+      "default": "./dist/components/meter/src/index.js"
+    },
+    "./modal": {
+      "types": "./dist/src/components/modal/src/compound.d.ts",
+      "default": "./dist/components/modal/src/compound.js"
+    },
+    "./pagination": {
+      "types": "./dist/src/components/pagination/src/index.d.ts",
+      "default": "./dist/components/pagination/src/index.js"
+    },
+    "./password": {
+      "types": "./dist/src/components/password/src/index.d.ts",
+      "default": "./dist/components/password/src/index.js"
+    },
+    "./phone-number": {
+      "types": "./dist/src/components/phone-number/src/compound.d.ts",
+      "default": "./dist/components/phone-number/src/compound.js"
+    },
+    "./popover": {
+      "types": "./dist/src/components/popover/src/compound.d.ts",
+      "default": "./dist/components/popover/src/compound.js"
+    },
+    "./progress-bar": {
+      "types": "./dist/src/components/progress-bar/src/index.d.ts",
+      "default": "./dist/components/progress-bar/src/index.js"
+    },
+    "./quantity": {
+      "types": "./dist/src/components/quantity/src/compound.d.ts",
+      "default": "./dist/components/quantity/src/compound.js"
+    },
+    "./radio-group": {
+      "types": "./dist/src/components/radio-group/src/compound.d.ts",
+      "default": "./dist/components/radio-group/src/compound.js"
+    },
+    "./range": {
+      "types": "./dist/src/components/range/src/index.d.ts",
+      "default": "./dist/components/range/src/index.js"
+    },
+    "./select": {
+      "types": "./dist/src/components/select/src/compound.d.ts",
+      "default": "./dist/components/select/src/compound.js"
+    },
+    "./skeleton": {
+      "types": "./dist/src/components/skeleton/src/index.d.ts",
+      "default": "./dist/components/skeleton/src/index.js"
+    },
+    "./spinner": {
+      "types": "./dist/src/components/spinner/src/index.d.ts",
+      "default": "./dist/components/spinner/src/index.js"
+    },
+    "./switch": {
+      "types": "./dist/src/components/switch/src/index.d.ts",
+      "default": "./dist/components/switch/src/index.js"
+    },
+    "./table": {
+      "types": "./dist/src/components/table/src/index.d.ts",
+      "default": "./dist/components/table/src/index.js"
+    },
+    "./tabs": {
+      "types": "./dist/src/components/tabs/src/compound.d.ts",
+      "default": "./dist/components/tabs/src/compound.js"
+    },
+    "./tag": {
+      "types": "./dist/src/components/tag/src/index.d.ts",
+      "default": "./dist/components/tag/src/index.js"
+    },
+    "./text": {
+      "types": "./dist/src/components/text/src/index.d.ts",
+      "default": "./dist/components/text/src/index.js"
+    },
+    "./textarea": {
+      "types": "./dist/src/components/textarea/src/index.d.ts",
+      "default": "./dist/components/textarea/src/index.js"
+    },
+    "./tile": {
+      "types": "./dist/src/components/tile/src/compound.d.ts",
+      "default": "./dist/components/tile/src/compound.js"
+    },
+    "./timepicker": {
+      "types": "./dist/src/components/timepicker/src/compound.d.ts",
+      "default": "./dist/components/timepicker/src/compound.js"
+    },
+    "./toaster": {
+      "types": "./dist/src/components/toaster/src/index.d.ts",
+      "default": "./dist/components/toaster/src/index.js"
+    },
+    "./toggle": {
+      "types": "./dist/src/components/toggle/src/compound.d.ts",
+      "default": "./dist/components/toggle/src/compound.js"
+    },
+    "./tooltip": {
+      "types": "./dist/src/components/tooltip/src/compound.d.ts",
+      "default": "./dist/components/tooltip/src/compound.js"
+    },
+    "./tree-view": {
+      "types": "./dist/src/components/tree-view/src/compound.d.ts",
+      "default": "./dist/components/tree-view/src/compound.js"
     },
     "./normalize-css": {
       "default": "./src/style/normalize.css"

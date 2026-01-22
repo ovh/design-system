@@ -1,6 +1,6 @@
 $ods-badge-border-radius: calc(var(--ods-theme-border-radius) / 2);
-$ods-badge-height-sm: 19px;
-$ods-badge-height-md: 26px;
+$ods-badge-height-sm: 20px;
+$ods-badge-height-md: 24px;
 $ods-badge-height-lg: 28px;
 $ods-badge-padding-horizontal-sm: calc(var(--ods-theme-padding-horizontal) * 0.75);
 $ods-badge-padding-vertical-sm: calc(var(--ods-theme-padding-vertical) / 4);
@@ -84,14 +84,17 @@ $ods-badge-padding-vertical-lg: calc(var(--ods-theme-padding-vertical) / 2);
   @if $size == 'sm' {
     padding: var(--ods-badge-padding-vertical-sm) var(--ods-badge-padding-horizontal-sm);
     min-height: $ods-badge-height-sm;
+    line-height: 1;
     font-size: 0.75rem;
   } @else if $size == 'md' {
     padding: var(--ods-badge-padding-vertical-md) var(--ods-badge-padding-horizontal-md);
     min-height: $ods-badge-height-md;
+    line-height: 1;
     font-size: 0.875rem;
   } @else if $size == 'lg' {
     padding: var(--ods-badge-padding-vertical-lg) var(--ods-badge-padding-horizontal-lg);
     min-height: $ods-badge-height-lg;
+    line-height: 1;
     font-size: 1rem;
   }
 }

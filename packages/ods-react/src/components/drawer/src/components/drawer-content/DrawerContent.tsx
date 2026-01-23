@@ -3,6 +3,7 @@ import { Portal } from '@ark-ui/react/portal';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { DRAWER_POSITION } from '../../constants/drawer-position';
+import { useDrawer } from '../../contexts/useDrawer';
 import style from './drawerContent.module.scss';
 
 interface DrawerContentProp extends ComponentPropsWithRef<'div'> {
@@ -24,16 +25,17 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { open } = useDialogContext();
+  const { positionerStyle } = useDrawer();
 
   return (
     <Portal disabled={ !createPortal }>
-      <Dialog.Positioner className={ style['drawer-positioner'] }>
+      <Dialog.Positioner style={ positionerStyle }>
         <Dialog.Content
           aria-describedby={ props['aria-describedby'] || '' }
           aria-labelledby={ props['aria-labelledby'] || '' }
           className={ classNames(
-            style['drawer-positioner__content'],
-            style[`drawer-positioner__content--${ position }`],
+            style['drawer-content'],
+            style[`drawer-content--${ position }`],
             className,
           )}
           data-ods="drawer-content"

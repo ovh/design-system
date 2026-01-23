@@ -29,6 +29,7 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
   onValueChange,
   open,
   placeholder,
+  positionerStyle,
   readOnly,
   required,
   value,
@@ -69,6 +70,7 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
   return (
     <DatepickerProvider
       invalid={ invalid }
+      positionerStyle={ positionerStyle }
       required={ required }>
       <DatePicker.Root
         className={ classNames(style['datepicker'], className) }

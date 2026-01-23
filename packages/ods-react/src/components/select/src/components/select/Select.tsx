@@ -18,6 +18,7 @@ const Select: FC<SelectProp> = forwardRef(({
   multiple = false,
   name,
   onValueChange,
+  positionerStyle,
   readOnly = false,
   required,
   value,
@@ -49,6 +50,7 @@ const Select: FC<SelectProp> = forwardRef(({
       invalid={ invalid }
       items={ items }
       multiple={ multiple }
+      positionerStyle={ positionerStyle }
       readOnly={ readOnly }>
       <VendorSelect.Root
         className={ className }

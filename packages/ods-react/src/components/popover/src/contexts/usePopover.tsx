@@ -1,4 +1,4 @@
-import { type JSX, type ReactNode, createContext, useState } from 'react';
+import { type CSSProperties, type JSX, type ReactNode, createContext, useState } from 'react';
 import { useContext } from '../../../../utils/context';
 import { type PopoverPosition } from '../constants/popover-position';
 
@@ -38,6 +38,10 @@ interface PopoverRootProp {
    */
   position?: PopoverPosition,
   /**
+   * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
+   */
+  positionerStyle?: CSSProperties,
+  /**
    * Whether to make the floating element same width as the reference element.
    */
   sameWidth?: boolean,
@@ -47,7 +51,7 @@ interface PopoverRootProp {
   triggerId?: string,
 }
 
-interface PopoverProviderProp extends Pick<PopoverRootProp, 'onPositionChange'> {
+interface PopoverProviderProp extends Pick<PopoverRootProp, 'onPositionChange' | 'positionerStyle'> {
   children: ReactNode,
 }
 
@@ -63,6 +67,7 @@ const PopoverContext = createContext<PopoverContextType | undefined>(undefined);
 function PopoverProvider({
   children,
   onPositionChange,
+  positionerStyle,
 }: PopoverProviderProp): JSX.Element {
   const [contentId, setContentId] = useState<string>();
   const [triggerId, setTriggerId] = useState<string>();
@@ -71,6 +76,7 @@ function PopoverProvider({
     <PopoverContext.Provider value={{
       contentId,
       onPositionChange,
+      positionerStyle,
       setContentId,
       setTriggerId,
       triggerId,

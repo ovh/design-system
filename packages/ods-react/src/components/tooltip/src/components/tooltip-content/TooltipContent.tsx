@@ -2,6 +2,7 @@ import { Portal } from '@ark-ui/react/portal';
 import { Tooltip, useTooltipContext } from '@ark-ui/react/tooltip';
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { useTooltip } from '../../contexts/useTooltip';
 import style from './tooltipContent.module.scss';
 
 interface TooltipContentProp extends ComponentPropsWithRef<'div'> {
@@ -23,10 +24,14 @@ const TooltipContent: FC<TooltipContentProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { open } = useTooltipContext();
+  const { positionerStyle } = useTooltip();
 
   return (
     <Portal disabled={ !createPortal }>
-      <Tooltip.Positioner style={{ zIndex: 'var(--ods-theme-overlay-z-index)' }}>
+      <Tooltip.Positioner style={{
+        zIndex: 'var(--ods-theme-overlay-z-index)',
+        ...(positionerStyle || {}),
+      }}>
         <Tooltip.Content
           className={ classNames(style['tooltip-content'], className) }
           data-ods="tooltip-content"

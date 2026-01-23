@@ -1,4 +1,4 @@
-import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext } from 'react';
+import { type CSSProperties, type ComponentPropsWithRef, type JSX, type ReactNode, createContext } from 'react';
 import { useContext } from '../../../../utils/context';
 
 interface SelectValueChangeDetail {
@@ -76,6 +76,10 @@ interface SelectRootProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> 
    */
   onValueChange?: (detail: SelectValueChangeDetail) => void,
   /**
+   * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
+   */
+  positionerStyle?: CSSProperties,
+  /**
    * Whether the component is readonly.
    */
   readOnly?: boolean,
@@ -89,7 +93,7 @@ interface SelectRootProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> 
   value?: string[],
 }
 
-interface SelectProviderProp extends Pick<SelectRootProp, 'invalid' | 'items' | 'multiple' | 'readOnly'> {
+interface SelectProviderProp extends Pick<SelectRootProp, 'invalid' | 'items' | 'multiple' | 'positionerStyle' | 'readOnly'> {
   children: ReactNode,
 }
 
@@ -97,12 +101,20 @@ type SelectContextType = Omit<SelectProviderProp, 'children'>;
 
 const SelectContext = createContext<SelectContextType | undefined>(undefined);
 
-function SelectProvider({ children, invalid, items, multiple, readOnly }: SelectProviderProp): JSX.Element {
+function SelectProvider({
+  children,
+  invalid,
+  items,
+  multiple,
+  positionerStyle,
+  readOnly,
+}: SelectProviderProp): JSX.Element {
   return (
     <SelectContext.Provider value={{
       invalid,
       items,
       multiple,
+      positionerStyle,
       readOnly,
     }}>
       { children }

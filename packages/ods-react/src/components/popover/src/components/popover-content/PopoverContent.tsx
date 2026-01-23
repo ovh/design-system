@@ -26,7 +26,7 @@ const PopoverContent: FC<PopoverContentProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const defaultId = useId();
-  const { onPositionChange, setContentId } = usePopover();
+  const { onPositionChange, positionerStyle, setContentId } = usePopover();
   const { open } = usePopoverContext();
   const contentRef = useRef<HTMLDivElement>(null);
   const computedId = useMemo(() => id ?? defaultId, [defaultId, id]);
@@ -59,7 +59,10 @@ const PopoverContent: FC<PopoverContentProp> = forwardRef(({
 
   return (
     <Portal disabled={ !createPortal }>
-      <Popover.Positioner style={{ zIndex: 'var(--ods-theme-overlay-z-index)' }}>
+      <Popover.Positioner style={{
+        zIndex: 'var(--ods-theme-overlay-z-index)',
+        ...(positionerStyle || {}),
+      }}>
         <Popover.Content
           className={ classNames(style['popover-content'], className) }
           data-ods="popover-content"

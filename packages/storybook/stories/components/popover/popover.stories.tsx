@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
 import { Divider } from '../../../../ods-react/src/components/divider/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { POPOVER_POSITIONS, Popover, type PopoverProp, PopoverContent, type PopoverContentProp, PopoverTrigger } from '../../../../ods-react/src/components/popover/src';
+import { POPOVER_POSITION, POPOVER_POSITIONS, Popover, type PopoverProp, PopoverContent, type PopoverContentProp, PopoverTrigger } from '../../../../ods-react/src/components/popover/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -339,7 +339,6 @@ export const SameWidth: Story = {
   ),
 };
 
-
 export const ThemeGenerator: Story = {
   parameters: {
     layout: 'fullscreen',
@@ -361,5 +360,67 @@ export const ThemeGenerator: Story = {
         <PopoverContent createPortal={ false } withArrow>This is the popover content</PopoverContent>
       </Popover>
     </div>
+  ),
+};
+
+
+export const ZIndex: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon, POPOVER_POSITION, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <span>Default Z-axis order:</span>
+
+      <Popover open>
+        <PopoverTrigger asChild>
+          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+        </PopoverTrigger>
+
+        <PopoverContent withArrow>
+          Back
+        </PopoverContent>
+      </Popover>
+
+      <Popover open>
+        <PopoverTrigger asChild>
+          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+        </PopoverTrigger>
+
+        <PopoverContent withArrow>
+          Front
+        </PopoverContent>
+      </Popover>
+
+      <br />
+
+      <span>Custom Z-axis order:</span>
+
+      <Popover
+        open
+        position={ POPOVER_POSITION.bottom }
+        positionerStyle={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'}}>
+        <PopoverTrigger asChild>
+          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+        </PopoverTrigger>
+
+        <PopoverContent withArrow>
+          Front
+        </PopoverContent>
+      </Popover>
+
+      <Popover
+        open
+        position={ POPOVER_POSITION.bottom }>
+        <PopoverTrigger asChild>
+          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+        </PopoverTrigger>
+
+        <PopoverContent withArrow>
+          Back
+        </PopoverContent>
+      </Popover>
+    </>
   ),
 };

@@ -1,4 +1,4 @@
-import { type JSX, type ReactNode, createContext } from 'react';
+import { type CSSProperties, type JSX, type ReactNode, createContext } from 'react';
 import { useContext } from '../../../../utils/context';
 import { type INPUT_I18N } from '../../../input/src';
 import { type DATEPICKER_DAY } from '../constants/datepicker-day';
@@ -88,6 +88,10 @@ interface DatepickerRootProp {
    */
   placeholder?: string,
   /**
+   * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
+   */
+  positionerStyle?: CSSProperties,
+  /**
    * Whether the component is readonly.
    */
   readOnly?: boolean,
@@ -105,7 +109,7 @@ interface DatepickerRootProp {
   view?: DatepickerView,
 }
 
-interface DatepickerProviderProp extends Pick<DatepickerRootProp, 'i18n' | 'invalid' | 'locale' | 'required'> {
+interface DatepickerProviderProp extends Pick<DatepickerRootProp, 'i18n' | 'invalid' | 'locale' | 'positionerStyle' | 'required'> {
   children: ReactNode,
 }
 
@@ -113,12 +117,20 @@ type DatepickerContextType = Omit<DatepickerProviderProp, 'children'>
 
 const DatepickerContext = createContext<DatepickerContextType | undefined>(undefined);
 
-function DatepickerProvider({ children, i18n, invalid, locale, required }: DatepickerProviderProp): JSX.Element {
+function DatepickerProvider({
+  children,
+  i18n,
+  invalid,
+  locale,
+  positionerStyle,
+  required,
+}: DatepickerProviderProp): JSX.Element {
   return (
     <DatepickerContext.Provider value={{
       i18n,
       invalid,
       locale,
+      positionerStyle,
       required,
     }}>
       { children }

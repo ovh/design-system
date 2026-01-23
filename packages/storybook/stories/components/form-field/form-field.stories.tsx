@@ -1,7 +1,14 @@
 import { Input } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { type FormEvent, useState } from 'react';
-import { FormField, type FormFieldProp, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
+import {
+  FormField,
+  type FormFieldProp,
+  FormFieldError,
+  FormFieldHelper,
+  FormFieldLabel,
+  FormFieldLabelAddon,
+} from '../../../../ods-react/src/components/form-field/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { Textarea } from '../../../../ods-react/src/components/textarea/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
@@ -17,7 +24,7 @@ type DemoArg = Partial<FormFieldProp> & {
 const meta: Meta<FormFieldProp> = {
   argTypes: excludeFromDemoControls(['id', 'required']),
   component: FormField,
-  subcomponents: { FormFieldError, FormFieldHelper, FormFieldLabel },
+  subcomponents: { FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelAddon },
   title: 'React Components/Form Field',
 };
 
@@ -127,6 +134,23 @@ export const Label: Story = {
     <FormField>
       <FormFieldLabel>
         Description:
+      </FormFieldLabel>
+
+      <Textarea name="textarea" />
+    </FormField>
+  ),
+};
+
+export const LabelAddon: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldLabel, FormFieldLabelAddon, Textarea } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField>
+      <FormFieldLabel>
+        Description
+        <FormFieldLabelAddon>- mandatory</FormFieldLabelAddon>
       </FormFieldLabel>
 
       <Textarea name="textarea" />

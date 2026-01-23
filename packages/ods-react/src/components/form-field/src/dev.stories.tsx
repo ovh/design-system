@@ -1,5 +1,5 @@
 import { type FormEvent, useRef } from 'react';
-import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '.';
+import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelAddon } from '.';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { Textarea } from '../../textarea/src';
 import style from './dev.module.css';
@@ -35,6 +35,9 @@ export const FullForm = () => {
       <FormField>
         <FormFieldLabel>
           My textarea
+          <FormFieldLabelAddon>
+            - mandatory
+          </FormFieldLabelAddon>
         </FormFieldLabel>
 
         <Textarea name="textarea" minLength={ 2 } required />

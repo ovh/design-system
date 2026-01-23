@@ -363,7 +363,6 @@ export const ThemeGenerator: Story = {
   ),
 };
 
-
 export const ZIndex: Story = {
   globals: {
     imports: `import { ICON_NAME, Icon, POPOVER_POSITION, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`,

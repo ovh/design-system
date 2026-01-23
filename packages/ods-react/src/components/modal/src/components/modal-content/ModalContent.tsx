@@ -35,10 +35,6 @@ const ModalContent: FC<ModalContentProp> = forwardRef(({
   const { open } = useDialogContext();
   const { backdropStyle, hasHeader, positionerStyle, setDismissible } = useModal();
 
-  if (color) {
-    console.warn('[DEPRECATED]: Color prop is deprecated and will be removed in the next major version.');
-  }
-
   useEffect(() => {
     setDismissible?.(dismissible);
     return () => {

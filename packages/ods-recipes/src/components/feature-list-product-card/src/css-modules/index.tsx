@@ -145,18 +145,22 @@ const FeatureListProductCard = (): JSX.Element => {
             Minimum 2-year registration
           </Text>
 
-          <span className={ style['feature-list-product-card__info__details__promotion'] }>
-            €100 free with a 5-year registration
-          </span>
+          <Text
+            as="span"
+            preset={ TEXT_PRESET.heading6 }>
+            <Badge color={ BADGE_COLOR.promotion }><Icon name={ ICON_NAME.tag } /></Badge> €100 free with a 5-year registration
+          </Text>
 
           <div className={ style['feature-list-product-card__info__details__installation'] }>
             <Text preset={ TEXT_PRESET.span }>
               Installation fee:
             </Text>
 
-            <span className={ style['feature-list-product-card__info__details__installation__fee'] }>
+            <Text
+              as="span"
+              preset={ TEXT_PRESET.heading6 }>
               Free
-            </span>
+            </Text>
           </div>
         </div>
 

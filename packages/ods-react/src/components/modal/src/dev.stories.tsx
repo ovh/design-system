@@ -216,7 +216,7 @@ export const OverlayElements = () => (
         ]}>
           <SelectControl />
 
-          <SelectContent createPortal={ true } />
+          <SelectContent createPortal={ false } />
         </Select>
 
         <Popover>

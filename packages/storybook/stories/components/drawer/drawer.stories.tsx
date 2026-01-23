@@ -12,6 +12,9 @@ import {
   type DrawerOpenChangeDetail,
   DrawerTrigger,
 } from '../../../../ods-react/src/components/drawer/src';
+import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
+import { Select, SelectContent, SelectControl } from '../../../../ods-react/src/components/select/src';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -137,6 +140,51 @@ export const Default: Story = {
       <DrawerContent>
         <DrawerBody>
           My drawer content
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+  ),
+};
+
+export const OverlayElements: Story = {
+  globals: {
+    imports: `import { Button, Drawer, DrawerContent, DrawerBody, DrawerTrigger, ICON_NAME, Icon, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Drawer>
+      <DrawerTrigger asChild>
+        <Button>
+          Trigger Drawer
+        </Button>
+      </DrawerTrigger>
+
+      <DrawerContent>
+        <DrawerBody style={{ display: 'grid', columnGap: '8px', alignItems: 'center', gridTemplateColumns: '1fr max-content' }}>
+          <Select items={[
+            { label: 'Dog', value:'dog' },
+            { label: 'Cat', value:'cat' },
+            { label: 'Hamster', value:'hamster' },
+            { label: 'Parrot', value:'parrot' },
+            { label: 'Spider', value:'spider' },
+            { label: 'Goldfish', value:'goldfish' },
+          ]}>
+            <SelectControl />
+
+            <SelectContent createPortal={ false } />
+          </Select>
+
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Icon
+                name={ ICON_NAME.circleQuestion }
+                style={{ fontSize: '24px' }} />
+            </TooltipTrigger>
+
+            <TooltipContent createPortal={ false }>
+              This is the tooltip content
+            </TooltipContent>
+          </Tooltip>
         </DrawerBody>
       </DrawerContent>
     </Drawer>

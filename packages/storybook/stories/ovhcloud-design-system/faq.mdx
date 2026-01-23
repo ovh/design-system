@@ -3,7 +3,7 @@ import { Meta, Source } from '@storybook/blocks';
 import { ExternalLink } from '../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../src/components/heading/Heading';
 import { StorybookLink } from '../../src/components/storybookLink/StorybookLink';
-import { HOME_TITLE } from '../../src/constants/meta';
+import { HOME_TITLE, REACT_COMPONENTS_TITLE, STORY } from '../../src/constants/meta';
 
 <Meta title="OVHcloud Design System/F.A.Q." />
 
@@ -127,6 +127,17 @@ Replace the `Fragment` with an actual node:
 `}
         dark="true"
         language="tsx" />
+
+<Heading label="Overlay elements are not displayed correctly in a drawer/modal" level={ 2 } />
+
+`Modal` and `Drawer` components have a `z-index` greater than other overlay components.
+This is to prevent those to appear behind an open modal/drawer.
+
+To allow overlay elements to correcty render inside a modal/drawer, add the `createPortal={ false }` attribute to the
+`Content` component of the overlay element.
+
+See <StorybookLink kind={ REACT_COMPONENTS_TITLE.drawer } story={ STORY.technicalInformation }>Drawer example</StorybookLink>
+and <StorybookLink kind={ REACT_COMPONENTS_TITLE.modal } story={ STORY.technicalInformation }>Modal example</StorybookLink>.
 
 <Heading label="Icons are not displayed" level={ 2 } />
 

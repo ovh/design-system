@@ -2,8 +2,8 @@ $ods-overlay-arrow-background-color: var(--ods-theme-background-color);
 $ods-overlay-arrow-size: 8px;
 $ods-overlay-base-z-index: var(--ods-theme-overlay-z-index);
 $ods-overlay-select-z-index: $ods-overlay-base-z-index;
-$ods-overlay-modal-z-index: calc(#{$ods-overlay-base-z-index} - 1);
-$ods-overlay-drawer-z-index: calc(#{$ods-overlay-modal-z-index} - 1);
+$ods-overlay-modal-z-index: calc(#{$ods-overlay-base-z-index} + 1);
+$ods-overlay-drawer-z-index: calc(#{$ods-overlay-modal-z-index} + 1);
 
 @mixin ods-overlay() {
   z-index: $ods-overlay-base-z-index;

@@ -57,6 +57,16 @@ export const OverlayBehind = () => (
       <DrawerContent style={{ zIndex: 999 }}>
         <DrawerBody>
           Drawer content
+
+          <Popover>
+            <PopoverTrigger>
+              Inside Popover trigger
+            </PopoverTrigger>
+
+            <PopoverContent createPortal={ false }>
+              Inside Popover content
+            </PopoverContent>
+          </Popover>
         </DrawerBody>
       </DrawerContent>
     </Drawer>

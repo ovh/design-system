@@ -7,7 +7,7 @@ import {
   FormFieldError,
   FormFieldHelper,
   FormFieldLabel,
-  FormFieldLabelAddon,
+  FormFieldLabelSubLabel,
 } from '../../../../ods-react/src/components/form-field/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { Textarea } from '../../../../ods-react/src/components/textarea/src';
@@ -24,7 +24,7 @@ type DemoArg = Partial<FormFieldProp> & {
 const meta: Meta<FormFieldProp> = {
   argTypes: excludeFromDemoControls(['id', 'required']),
   component: FormField,
-  subcomponents: { FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelAddon },
+  subcomponents: { FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel },
   title: 'React Components/Form Field',
 };
 
@@ -141,16 +141,16 @@ export const Label: Story = {
   ),
 };
 
-export const LabelAddon: Story = {
+export const LabelSubLabel: Story = {
   globals: {
-    imports: `import { FormField, FormFieldLabel, FormFieldLabelAddon, Textarea } from '@ovhcloud/ods-react';`,
+    imports: `import { FormField, FormFieldLabel, FormFieldLabelSubLabel, Textarea } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <FormField>
       <FormFieldLabel>
         Description
-        <FormFieldLabelAddon>- mandatory</FormFieldLabelAddon>
+        <FormFieldLabelSubLabel>- mandatory</FormFieldLabelSubLabel>
       </FormFieldLabel>
 
       <Textarea name="textarea" />

@@ -59,20 +59,10 @@
       flex-flow: column;
       row-gap: calc(var(--ods-theme-row-gap) / 2);
 
-      &__promotion {
-        color: var(--ods-color-promotion);
-        font-weight: 600;
-      }
-
       &__installation {
         display: flex;
         flex-flow: row;
         column-gap: calc(var(--ods-theme-column-gap) / 2);
-
-        &__fee {
-          color: var(--ods-color-promotion);
-          font-weight: 600;
-        }
       }
     }
 

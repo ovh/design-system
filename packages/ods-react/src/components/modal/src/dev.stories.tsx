@@ -5,13 +5,14 @@ import { Popover, PopoverContent, PopoverTrigger } from '../../popover/src';
 import { Select, SelectContent, SelectControl } from '../../select/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../tooltip/src';
 import { Modal, ModalBody, ModalContent, ModalHeader, type ModalOpenChangeDetail, ModalTrigger } from '.';
-import { Modal as ModalCompound } from './compound';
 import style from './dev.module.css';
 
 export default {
   component: Modal,
   title: 'Modal dev',
 };
+
+const ModalCompound = Modal;
 
 export const A11Y = () => (
   <Modal>
@@ -346,7 +347,7 @@ export const HeaderOverflowTest = () => (
 );
 
 export const CompoundBasic = () => (
-  <ModalCompound.Root>
+  <ModalCompound>
     <ModalCompound.Trigger>
       Open Modal (Compound)
     </ModalCompound.Trigger>
@@ -354,10 +355,10 @@ export const CompoundBasic = () => (
     <ModalCompound.Content>
       <ModalCompound.Header>Compound Modal</ModalCompound.Header>
       <ModalCompound.Body>
-        This modal uses the compound pattern via subpath import.
+        This modal uses the compound pattern via the standard export.
       </ModalCompound.Body>
     </ModalCompound.Content>
-  </ModalCompound.Root>
+  </ModalCompound>
 );
 
 export const CompoundControlled = () => {
@@ -369,7 +370,7 @@ export const CompoundControlled = () => {
         Open Controlled Modal
       </Button>
 
-      <ModalCompound.Root open={ isOpen } onOpenChange={ ({ open }) => setIsOpen(open) }>
+      <ModalCompound open={ isOpen } onOpenChange={ ({ open }) => setIsOpen(open) }>
         <ModalCompound.Content>
           <ModalCompound.Header>Controlled Modal</ModalCompound.Header>
           <ModalCompound.Body>
@@ -377,7 +378,7 @@ export const CompoundControlled = () => {
             <Button onClick={ () => setIsOpen(false) }>Close</Button>
           </ModalCompound.Body>
         </ModalCompound.Content>
-      </ModalCompound.Root>
+      </ModalCompound>
     </>
   );
 };
@@ -398,16 +399,16 @@ export const CompoundComparison = () => (
     </div>
 
     <div>
-      <p><strong>Compound (subpath)</strong></p>
-      <code>{'import { Modal } from "@ovhcloud/ods-react/modal"'}</code>
+      <p><strong>Compound (property)</strong></p>
+      <code>{'import { Modal } from "@ovhcloud/ods-react"'}</code>
       <br /><br />
-      <ModalCompound.Root>
+      <ModalCompound>
         <ModalCompound.Trigger>Open (Compound)</ModalCompound.Trigger>
         <ModalCompound.Content>
           <ModalCompound.Header>Compound Modal</ModalCompound.Header>
-          <ModalCompound.Body>Using Modal.Root, Modal.Trigger, etc.</ModalCompound.Body>
+          <ModalCompound.Body>Using Modal, Modal.Trigger, etc.</ModalCompound.Body>
         </ModalCompound.Content>
-      </ModalCompound.Root>
+      </ModalCompound>
     </div>
   </div>
 );

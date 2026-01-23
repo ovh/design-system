@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '.';
 import { Button } from '../../button/src';
-import { Modal, ModalBody, ModalContent, ModalTrigger } from '../../modal/src';
+import { Modal, ModalBody, ModalContent, type ModalOpenChangeDetail, ModalTrigger } from '../../modal/src';
 import style from './dev.module.css';
 
 export default {
@@ -48,6 +48,10 @@ export const ControlledPlusModal = () => {
     setIsPopoverOpen((isOpen) => !isOpen);
   }
 
+  function onModalOpenChange({ open }: ModalOpenChangeDetail) {
+    setIsModalOpen(open);
+  }
+
   return (
     <>
       <Button
@@ -76,7 +80,7 @@ export const ControlledPlusModal = () => {
       </Popover>
 
       <Modal
-        onOpenChange={ ({ open }) => setIsModalOpen(open) }
+        onOpenChange={ onModalOpenChange }
         open={ isModalOpen }>
         <ModalTrigger>
           Trigger

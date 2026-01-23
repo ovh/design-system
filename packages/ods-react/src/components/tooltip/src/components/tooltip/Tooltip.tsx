@@ -38,9 +38,12 @@ const TooltipRoot: FC<PropsWithChildren<TooltipProp>> = ({
   );
 };
 
-const Tooltip: FC<PropsWithChildren<TooltipProp>> = (props): JSX.Element => {
+const Tooltip: FC<PropsWithChildren<TooltipProp>> = ({
+  positionerStyle,
+  ...props
+}): JSX.Element => {
   return (
-    <TooltipProvider>
+    <TooltipProvider positionerStyle={ positionerStyle }>
       <TooltipRoot { ...props } />
     </TooltipProvider>
   );

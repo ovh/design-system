@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { TOOLTIP_POSITIONS, Tooltip, type TooltipProp, TooltipContent, type TooltipContentProp, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
+import { TOOLTIP_POSITION, TOOLTIP_POSITIONS, Tooltip, type TooltipProp, TooltipContent, type TooltipContentProp, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -298,7 +298,6 @@ export const AccessibilityTooltip: Story = {
   ),
 };
 
-
 export const ThemeGenerator: Story = {
   parameters: {
     layout: 'fullscreen',
@@ -320,5 +319,66 @@ export const ThemeGenerator: Story = {
         <TooltipContent createPortal={ false } withArrow>This is the tooltip content</TooltipContent>
       </Tooltip>
     </div>
+  ),
+};
+
+export const ZIndex: Story = {
+  globals: {
+    imports: `import { ICON_NAME, Icon, TOOLTIP_POSITION, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <span>Default Z-axis order:</span>
+
+      <Tooltip open>
+        <TooltipTrigger asChild>
+          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+
+        <TooltipContent withArrow>
+          Back
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip open>
+        <TooltipTrigger asChild>
+          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+
+        <TooltipContent withArrow>
+          Front
+        </TooltipContent>
+      </Tooltip>
+
+      <br />
+
+      <span>Custom Z-axis order:</span>
+
+      <Tooltip
+        open
+        position={ TOOLTIP_POSITION.bottom }
+        positionerStyle={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'}}>
+        <TooltipTrigger asChild>
+          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+
+        <TooltipContent withArrow>
+          Front
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip
+        open
+        position={ TOOLTIP_POSITION.bottom }>
+        <TooltipTrigger asChild>
+          <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
+        </TooltipTrigger>
+
+        <TooltipContent withArrow>
+          Back
+        </TooltipContent>
+      </Tooltip>
+    </>
   ),
 };

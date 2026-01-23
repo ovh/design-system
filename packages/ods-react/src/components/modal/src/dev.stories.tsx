@@ -170,6 +170,34 @@ export const NonEscapable = () => (
   </Modal>
 );
 
+export const OverlayBehind = () => (
+  <>
+    <Popover open>
+      <PopoverTrigger>
+        Trigger Popover
+      </PopoverTrigger>
+
+      <PopoverContent>
+        Popover content
+      </PopoverContent>
+    </Popover>
+
+    <Modal
+      backdropStyle={{ zIndex: 1110 }}
+      positionerStyle={{ zIndex: 1111 }}>
+      <ModalTrigger>
+        Trigger Modal
+      </ModalTrigger>
+
+      <ModalContent>
+        <ModalBody>
+          Modal content
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  </>
+);
+
 export const OverlayElements = () => (
   <Modal>
     <ModalTrigger>
@@ -188,7 +216,7 @@ export const OverlayElements = () => (
         ]}>
           <SelectControl />
 
-          <SelectContent createPortal={ false } />
+          <SelectContent createPortal={ true } />
         </Select>
 
         <Popover>

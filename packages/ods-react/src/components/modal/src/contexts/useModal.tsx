@@ -1,4 +1,4 @@
-import { type JSX, type ReactNode, createContext, useState } from 'react';
+import { type CSSProperties, type JSX, type ReactNode, createContext, useState } from 'react';
 import { useContext } from '../../../../utils/context';
 import { type Locale } from '../../../../utils/locales';
 import { type MODAL_I18N } from '../constants/modal-i18n';
@@ -8,6 +8,10 @@ interface ModalOpenChangeDetail {
 }
 
 interface ModalRootProp {
+  /**
+   * Custom style applied to the modal backdrop. Useful if you want to override the backdrop z-index.
+   */
+  backdropStyle?: CSSProperties;
   /**
    * Whether to close the modal when the escape key is pressed.
    */
@@ -40,9 +44,13 @@ interface ModalRootProp {
    * The controlled open state of the modal.
    */
   open?: boolean,
+  /**
+   * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
+   */
+  positionerStyle?: CSSProperties,
 }
 
-interface ModalProviderProp extends Pick<ModalRootProp, 'i18n' | 'locale'> {
+interface ModalProviderProp extends Pick<ModalRootProp, 'backdropStyle' | 'i18n' | 'locale' | 'positionerStyle'> {
   children: ReactNode,
 }
 
@@ -55,16 +63,24 @@ type ModalContextType = Omit<ModalProviderProp, 'children'> & {
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
-function ModalProvider({ children, i18n, locale }: ModalProviderProp): JSX.Element {
+function ModalProvider({
+  backdropStyle,
+  children,
+  i18n,
+  locale,
+  positionerStyle,
+}: ModalProviderProp): JSX.Element {
   const [dismissible, setDismissible] = useState<boolean | undefined>(undefined);
   const [hasHeader, setHasHeader] = useState<boolean>(false);
 
   return (
     <ModalContext.Provider value={{
+      backdropStyle,
       dismissible,
       hasHeader,
       i18n,
       locale,
+      positionerStyle,
       setDismissible,
       setHasHeader,
     }}>

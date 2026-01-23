@@ -21,14 +21,17 @@ const DatepickerContent: FC<DatepickerContentProp> = forwardRef(({
   createPortal = true,
   ...props
 }, ref): JSX.Element => {
-  const { invalid } = useDatepicker();
+  const { invalid, positionerStyle } = useDatepicker();
   const { getInputProps, isUnavailable, open } = useDatePickerContext();
   const fieldContext = useFormField();
   const { disabled, readOnly } = getInputProps();
 
   return (
     <Portal disabled={ !createPortal }>
-      <DatePicker.Positioner style={{ zIndex: 'var(--ods-theme-overlay-z-index)' }}>
+      <DatePicker.Positioner style={{
+        zIndex: 'var(--ods-theme-overlay-z-index)',
+        ...(positionerStyle || {}),
+      }}>
         <DatePicker.Content
           className={ classNames(
             style['datepicker-content'],

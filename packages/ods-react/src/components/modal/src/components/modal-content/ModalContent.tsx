@@ -33,8 +33,7 @@ const ModalContent: FC<ModalContentProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { open } = useDialogContext();
-
-  const { hasHeader, setDismissible } = useModal();
+  const { backdropStyle, hasHeader, positionerStyle, setDismissible } = useModal();
 
   if (color) {
     console.warn('[DEPRECATED]: Color prop is deprecated and will be removed in the next major version.');
@@ -51,11 +50,17 @@ const ModalContent: FC<ModalContentProp> = forwardRef(({
     <Portal disabled={ !createPortal }>
       <Dialog.Backdrop
         className={ style['modal-backdrop'] }
-        style={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) - 2)' }} />
+        style={{
+          zIndex: 'calc(var(--ods-theme-overlay-z-index) - 2)',
+          ...(backdropStyle || {}),
+        }} />
 
       <Dialog.Positioner
         className={ style['modal-positioner'] }
-        style={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) - 1)' }}>
+        style={{
+          zIndex: 'calc(var(--ods-theme-overlay-z-index) - 1)',
+          ...(positionerStyle || {}),
+        }}>
         <Dialog.Content
           aria-describedby={ props['aria-describedby'] || '' }
           aria-labelledby={ props['aria-labelledby'] || '' }

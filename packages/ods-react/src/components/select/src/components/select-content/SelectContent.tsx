@@ -30,12 +30,15 @@ const SelectContent: FC<SelectContentProp> = forwardRef(({
   customOptionRenderer,
   ...props
 }, ref): JSX.Element => {
-  const { invalid, items } = useSelect();
+  const { invalid, items, positionerStyle } = useSelect();
   const { open } = useSelectContext();
 
   return (
     <Portal disabled={ !createPortal }>
-      <Select.Positioner style={{ zIndex: 'var(--ods-theme-overlay-z-index)' }}>
+      <Select.Positioner style={{
+        zIndex: 'var(--ods-theme-overlay-z-index)',
+        ...(positionerStyle || {}),
+      }}>
         <Select.Content
           className={ classNames(
             style['select-content'],

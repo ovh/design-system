@@ -1,4 +1,4 @@
-import { type JSX, type ReactNode, createContext, useState } from 'react';
+import { type CSSProperties, type JSX, type ReactNode, createContext, useState } from 'react';
 import { useContext } from '../../../../utils/context';
 import { type TooltipPosition } from '../constants/tooltip-position';
 
@@ -28,9 +28,13 @@ interface TooltipRootProp {
    * The tooltip position around the trigger.
    */
   position?: TooltipPosition,
+  /**
+   * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
+   */
+  positionerStyle?: CSSProperties,
 }
 
-interface TooltipProviderProp {
+interface TooltipProviderProp extends Pick<TooltipRootProp, 'positionerStyle'> {
   children: ReactNode,
 }
 
@@ -41,11 +45,12 @@ type TooltipContextType = Omit<TooltipProviderProp, 'children'> & {
 
 const TooltipContext = createContext<TooltipContextType | undefined>(undefined);
 
-function TooltipProvider({ children }: TooltipProviderProp): JSX.Element {
+function TooltipProvider({ children, positionerStyle }: TooltipProviderProp): JSX.Element {
   const [triggerId, setTriggerId] = useState<string>();
 
   return (
     <TooltipContext.Provider value={{
+      positionerStyle,
       setTriggerId,
       triggerId,
     }}>

@@ -40,10 +40,13 @@ const PopoverRoot: FC<PropsWithChildren<PopoverProp>> = ({
 
 const Popover: FC<PropsWithChildren<PopoverProp>> = ({
   onPositionChange,
+  positionerStyle,
   ...props
 }): JSX.Element => {
   return (
-    <PopoverProvider onPositionChange={ onPositionChange }>
+    <PopoverProvider
+      onPositionChange={ onPositionChange }
+      positionerStyle={ positionerStyle }>
       <PopoverRoot { ...props } />
     </PopoverProvider>
   );

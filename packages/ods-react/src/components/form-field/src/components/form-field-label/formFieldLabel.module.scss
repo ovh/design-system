@@ -1,5 +1,7 @@
 @layer ods-molecules {
   .form-field-label {
+    display: flex;
+    gap: .25rem;
     width: fit-content;
   }
 }

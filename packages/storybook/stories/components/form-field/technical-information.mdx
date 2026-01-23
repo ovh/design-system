@@ -27,8 +27,9 @@ To learn more about **Form Field** usage, please refer to the <StorybookLink tit
 
 1. **Form Field**
 2. **Form Field Label**
-3. **Form Field Helper**
-4. **Form Field Error**
+3. **Form Field Label Addon**
+4. **Form Field Helper**
+5. **Form Field Error**
 
 <TechnicalSpecification
   cssVariable={ cssVariable }
@@ -58,6 +59,12 @@ To learn more about **Form Field** usage, please refer to the <StorybookLink tit
         url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes',
       },
     },
+    'FormFieldLabelAddon': {
+      extendAttribute: {
+        name: 'span',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes',
+      },
+    },
   }}
   of={ FormFieldStories } />
 
@@ -70,6 +77,10 @@ To learn more about **Form Field** usage, please refer to the <StorybookLink tit
 <Heading label="Field label" level={ 3 } />
 
 <Canvas of={ FormFieldStories.Label } sourceState="shown" />
+
+<Heading label="Field label addon" level={ 3 } />
+
+<Canvas of={ FormFieldStories.LabelAddon } sourceState="shown" />
 
 <Heading label="Helper message" level={ 3 } />
 

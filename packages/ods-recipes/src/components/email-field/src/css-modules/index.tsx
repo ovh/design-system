@@ -1,4 +1,4 @@
-import { FormField, FormFieldHelper, FormFieldLabel, Input, Select, SelectContent, SelectControl, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+import { FormField, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, Select, SelectContent, SelectControl, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
 import { type JSX } from 'react';
 import style from './index.module.scss';
 
@@ -12,7 +12,8 @@ const EmailField = (): JSX.Element => {
   return (
     <FormField>
       <FormFieldLabel>
-        Email:
+        Email
+        <FormFieldLabelSubLabel>- mandatory</FormFieldLabelSubLabel>
       </FormFieldLabel>
 
       <div className={ style['email-field__field'] }>

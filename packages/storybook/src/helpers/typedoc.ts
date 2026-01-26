@@ -1,4 +1,4 @@
-import { Comment, type DeclarationReflection, type InlineTagDisplayPart, type IntrinsicType, type LiteralType, type ProjectReflection, type ReferenceType, type ReflectionType, type SomeType, type UnionType, type UnknownType } from 'typedoc';
+import { Comment, type DeclarationReflection, type InlineTagDisplayPart, type IntrinsicType, type LiteralType, type ProjectReflection, type ReferenceType, type ReflectionType, type SomeType, type TypeOperatorType, type UnionType, type UnknownType } from 'typedoc';
 import { ReflectionKind } from 'typedoc/models';
 import { extractTags, TAG } from './docgen';
 
@@ -72,7 +72,7 @@ function getComponentTypedoc(data: ProjectReflection): ComponentTypedoc {
         name: member.name,
         value: (member.type as LiteralType)?.value?.toString() || '',
       })),
-  }));
+  })).filter((fakeEnum) => fakeEnum.members.length);
 
   return {
     enums: sortByName(enums.concat(fakeEnums).map((enumDoc) => ({
@@ -81,14 +81,11 @@ function getComponentTypedoc(data: ProjectReflection): ComponentTypedoc {
       members: sortByName(enumDoc.members),
     }))),
     interfaces: sortByName(interfaceDeclarations.map((interfaceDeclaration) => ({
-      name: interfaceDeclaration.name,
-      props: (interfaceDeclaration.children || []).map((child) => ({
-        name: `${child.name}${(child.flags.isOptional ? '?' : '')}`,
-        type: getTypeValue(child.type, child.comment),
-      })),
+      name: getName(interfaceDeclaration),
+      props: getInterfaceProps(interfaceDeclaration),
     }))),
     unions: sortByName(unionTypeDeclarations.map((typeDeclaration) => ({
-      name: typeDeclaration.name,
+      name: getName(typeDeclaration),
       value: (typeDeclaration.type as UnionType).types
         .map((item: any) => item.name || `"${item.value}"`)
         .join(' | '),
@@ -125,9 +122,38 @@ function getHelperFunctionTypedoc(data: ProjectReflection, functionName: string)
   };
 }
 
+function getInterfaceProps(declaration: DeclarationReflection) {
+  if (declaration.children?.length) {
+    return declaration.children.map((child) => ({
+      name: `${child.name}${(child.flags.isOptional ? '?' : '')}`,
+      type: getTypeValue(child.type, child.comment),
+    }));
+  }
+
+  if (declaration.type && ['array', 'reference'].indexOf(declaration.type.type || '') >= 0) {
+    return [{
+      name: '',
+      type: getTypeValue(declaration.type),
+    }];
+  }
+
+  return [];
+}
+
+function getName(declaration: DeclarationReflection): string {
+  if (declaration.typeParameters?.length && declaration.typeParameters[0].kind === ReflectionKind.TypeParameter) {
+    return `${declaration.name}<${declaration.typeParameters[0].name}>`;
+  }
+  return declaration.name;
+}
+
 function getTypeValue(type?: SomeType, comment?: Comment): string {
   if (!type) {
     return '';
+  }
+
+  if (!type.type) {
+    return getTypeValue({ type } as unknown as SomeType, comment);
   }
 
   if (comment?.summary && comment.summary.length) {
@@ -153,17 +179,25 @@ function getTypeValue(type?: SomeType, comment?: Comment): string {
         return `${child.name}: ${getTypeValue(child.type)}`;
       });
 
-      return `{ ${children.join(', ')} }`;
+      return `{ ${children.join(', ')} }[]`;
     }
 
     return `${(type.elementType as ReferenceType).name}[]`;
   }
 
+  if (type.type === 'typeOperator') {
+    const target = (type as TypeOperatorType).target as ReferenceType;
+    return `${(type as TypeOperatorType).operator} ${target.name}`;
+  }
+
   if (type.type === 'reference' && (type as ReferenceType).typeArguments?.length) {
     const arg = ((type as ReferenceType).typeArguments || [])
       .map((t) => {
-        if (t.type === 'intrinsic') {
+        if (['intrinsic', 'reference'].indexOf(t.type) >= 0) {
           return (t as IntrinsicType).name;
+        }
+        if (t.type === 'literal') {
+          return `'${t.value}'`;
         }
         return '';
       })
@@ -171,6 +205,20 @@ function getTypeValue(type?: SomeType, comment?: Comment): string {
       .join(', ');
 
     return `${(type as ReferenceType).name}<${arg}>`;
+  }
+
+  if (type.type === 'reflection' && type.declaration.signatures?.length) {
+    const parameter = (type.declaration.signatures[0].parameters || [])
+      .map((p) => `${p.name}: ${getTypeValue(p.type)}`)
+      .join(', ');
+
+    const typeParameter = (type.declaration.signatures[0].typeParameters || [])
+      .map((p) => p.name)
+      .join(', ');
+
+    const returnType = getTypeValue(type.declaration.signatures[0].type);
+
+    return `${typeParameter ? `<${typeParameter}>` : ''}(${parameter}) => ${returnType}`;
   }
 
   if (type.type === 'union' && type.types && type.types.length) {

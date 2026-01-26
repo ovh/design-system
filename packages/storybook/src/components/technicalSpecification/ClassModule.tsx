@@ -45,7 +45,9 @@ const ClassModule = ({ component, extraInfo }: ClassModuleProp): JSX.Element => 
           <p>
             This component has no specific properties.
           </p> :
-          <Table variant={ TABLE_VARIANT.striped }>
+          <Table
+            className={ styles['class-module__properties'] }
+            variant={ TABLE_VARIANT.striped }>
             <thead>
               <tr>
                 {

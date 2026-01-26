@@ -1,0 +1,63 @@
+import { Meta } from '@storybook/blocks';
+import * as DataTableStories from './data-table.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ DataTableStories } name="Documentation" tags={ ['new'] } />
+
+<Banner of={ DataTableStories } />
+
+_**DataTable** TODO some text about the component_
+
+<Canvas of={ DataTableStories.Overview } sourceState="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ [] }
+              figmaLink="TODO"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/data-table"
+              name="DataTable"
+              startingVersion={ 19 }>
+  TODO some text about the component.
+</IdentityCard>
+
+<Heading label="Usage" level={ 2 } />
+
+TODO if relevant
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[]}
+  dos={[]}
+/>
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+<Anatomy src="components/data-table/anatomy.png" />
+
+1. **DataTable**
+
+<Heading label="Placement" level={ 2 } />
+
+TODO if relevant
+
+<Heading label="Behavior" level={ 2 } />
+
+TODO if relevant
+
+<Heading label="Variation" level={ 2 } />
+
+<Heading label="Variant" level={ 3 } />
+
+TODO if relevant
+
+<Heading label="Accessibility" level={ 2 } />
+
+TODO if relevant

@@ -9,3 +9,4 @@ export * from './feature-list-product-card/src';
 
 export * from './config-tile/src';
 export * from './dashboard-card/src';
+export * from './data-grid/src';

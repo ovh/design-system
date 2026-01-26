@@ -1,9 +1,10 @@
 @layer ods-molecules {
   .form-field-label {
     --ods-form-field-label-row-gap: calc(var(--ods-theme-row-gap) / 2);
+    --ods-form-field-label-column-gap: calc(var(--ods-theme-column-gap) / 2);
 
     display: flex;
-    gap: var(--ods-form-field-label-row-gap);
+    gap: var(--ods-form-field-label-row-gap) var(--ods-form-field-label-column-gap);
     width: fit-content;
   }
 }

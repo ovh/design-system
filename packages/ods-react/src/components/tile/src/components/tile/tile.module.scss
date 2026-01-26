@@ -19,16 +19,19 @@
 
     &:hover:not(&--selected, &--disabled), &:focus-within:not(&--selected, &--disabled)  {
       border-color: var(--ods-tile-border-color-hover);
+      box-shadow:  0 0 0 1px var(--ods-tile-border-color-hover);
     }
 
     &--selected {
       border-color: var( --ods-tile-border-color-selected);
+      box-shadow:  0 0 0 1px var(--ods-tile-border-color-selected);
       background-color: var(--ods-tile-background-color-selected);
     }
 
     &--disabled {
       @include state.ods-is-disabled();
 
+      box-shadow:  none;
       background-color: var(--ods-tile-background-color-disabled);
     }
   }

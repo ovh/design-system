@@ -1,0 +1,7 @@
+@layer ods-organisms {
+  .data-table-cell {
+    &__skeleton {
+      margin: 3px 0; // so that it matches by defaut a text filled cell height with a font-size of 16px;
+    }
+  }
+}

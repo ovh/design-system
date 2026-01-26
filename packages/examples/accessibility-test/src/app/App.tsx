@@ -11,6 +11,7 @@ import {
   Clipboard, ClipboardControl, ClipboardTrigger,
   Code,
   Combobox, ComboboxContent, ComboboxControl,
+  DataTable, type DataTableColumnDef, DataTableBody, DataTableEmpty, DataTableHead,
   Datepicker, DatepickerContent, DatepickerControl,
   Divider,
   Drawer, DrawerBody, DrawerContent, DrawerTrigger,
@@ -57,6 +58,54 @@ import {
 import { type ReactElement, useState } from 'react';
 import { AccessibilityControl } from './components/accessibilityControl/AccessibilityControl';
 import style from './app.module.scss';
+
+type Person = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  age: number;
+  email: string;
+  role: string;
+  uuid: string;
+};
+
+const sampleData: Person[] = [
+  {
+    id: '1',
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 30,
+    email: 'john.doe@example.com',
+    role: 'Admin',
+    uuid: '5ae49b94-9ceb-4612-a087-4079a812bb0b',
+  },
+  {
+    id: '2',
+    firstName: 'Jane',
+    lastName: 'Smith',
+    age: 25,
+    email: 'jane.smith@example.com',
+    role: 'User',
+    uuid: 'fb1c391c-bd88-4b96-ba39-8ab2a95d50bd',
+  },
+  {
+    id: '3',
+    firstName: 'Bob',
+    lastName: 'Johnson',
+    age: 35,
+    email: 'bob.johnson@example.com',
+    role: 'Manager',
+    uuid: 'a83a58a6-a007-47f0-b04b-83989e502171',
+  },
+];
+
+const sampleColumns: DataTableColumnDef<Person>[] = [
+  { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
+  { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
+  { id: 'age', header: 'Age', accessorKey: 'age' },
+  { id: 'email', header: 'Email', accessorKey: 'email' },
+  { id: 'role', header: 'Role', accessorKey: 'role' },
+];
 
 function App(): ReactElement {
   const [files, setFiles] = useState<File[]>([]);
@@ -496,6 +545,34 @@ function App(): ReactElement {
               <ComboboxContent />
             </Combobox>
           </FormField>
+        </section>
+
+        <section>
+          <h1>DataTable</h1>
+
+          <DataTable
+            columns={ sampleColumns }
+            data={ sampleData }>
+            <DataTableHead />
+
+            <DataTableBody />
+
+            <DataTableEmpty>
+              Aucun résultat
+            </DataTableEmpty>
+          </DataTable>
+
+          <DataTable
+            columns={ sampleColumns }
+            data={ [] }>
+            <DataTableHead />
+
+            <DataTableBody />
+
+            <DataTableEmpty>
+              Aucun résultat
+            </DataTableEmpty>
+          </DataTable>
         </section>
 
         <section>

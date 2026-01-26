@@ -11,6 +11,7 @@ import * as CheckboxStories from '../../../../stories/components/checkbox/checkb
 import * as ClipboardStories from '../../../../stories/components/clipboard/clipboard.stories';
 import * as CodeStories from '../../../../stories/components/code/code.stories';
 import * as ComboboxStories from '../../../../stories/components/combobox/combobox.stories';
+import * as DataTableStories from '../../../../stories/components/data-table/data-table.stories';
 import * as DatepickerStories from '../../../../stories/components/datepicker/datepicker.stories';
 import * as DividerStories from '../../../../stories/components/divider/divider.stories';
 import * as DrawerStories from '../../../../stories/components/drawer/drawer.stories';
@@ -66,6 +67,7 @@ const THEME_STORY_MODULES = {
   Clipboard: ClipboardStories,
   Code: CodeStories,
   Combobox: ComboboxStories,
+  DataTable: DataTableStories,
   Datepicker: DatepickerStories,
   Divider: DividerStories,
   Drawer: DrawerStories,
@@ -131,6 +133,7 @@ const THEME_PREVIEW_COMPONENTS: ThemePreviewItem[] = [
   { key: 'Clipboard', kind: REACT_COMPONENTS_TITLE.clipboard, label: 'Clipboard' },
   { key: 'Code', kind: REACT_COMPONENTS_TITLE.code, label: 'Code' },
   { key: 'Combobox', kind: REACT_COMPONENTS_TITLE.combobox, label: 'Combobox' },
+  { key: 'DataTable', kind: REACT_COMPONENTS_TITLE.dataTable, label: 'Data Table' },
   { key: 'Datepicker', kind: REACT_COMPONENTS_TITLE.datepicker, label: 'Datepicker' },
   { key: 'Divider', kind: REACT_COMPONENTS_TITLE.divider, label: 'Divider' },
   { key: 'Drawer', kind: REACT_COMPONENTS_TITLE.drawer, label: 'Drawer' },

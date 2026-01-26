@@ -12,6 +12,8 @@ export default {
   title: 'Modal dev',
 };
 
+const ModalCompound = Modal;
+
 export const A11Y = () => (
   <Modal>
     <ModalTrigger>
@@ -342,4 +344,71 @@ export const HeaderOverflowTest = () => (
       </ModalBody>
     </ModalContent>
   </Modal>
+);
+
+export const CompoundBasic = () => (
+  <ModalCompound>
+    <ModalCompound.Trigger>
+      Open Modal (Compound)
+    </ModalCompound.Trigger>
+
+    <ModalCompound.Content>
+      <ModalCompound.Header>Compound Modal</ModalCompound.Header>
+      <ModalCompound.Body>
+        This modal uses the compound pattern via the standard export.
+      </ModalCompound.Body>
+    </ModalCompound.Content>
+  </ModalCompound>
+);
+
+export const CompoundControlled = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={ () => setIsOpen(true) }>
+        Open Controlled Modal
+      </Button>
+
+      <ModalCompound open={ isOpen } onOpenChange={ ({ open }) => setIsOpen(open) }>
+        <ModalCompound.Content>
+          <ModalCompound.Header>Controlled Modal</ModalCompound.Header>
+          <ModalCompound.Body>
+            <p>This is a controlled modal using compound pattern.</p>
+            <Button onClick={ () => setIsOpen(false) }>Close</Button>
+          </ModalCompound.Body>
+        </ModalCompound.Content>
+      </ModalCompound>
+    </>
+  );
+};
+
+export const CompoundComparison = () => (
+  <div style={{ display: 'flex', gap: '20px' }}>
+    <div>
+      <p><strong>Barrel (classique)</strong></p>
+      <code>{'import { Modal, ModalTrigger, ... }'}</code>
+      <br /><br />
+      <Modal>
+        <ModalTrigger>Open (Barrel)</ModalTrigger>
+        <ModalContent>
+          <ModalHeader>Barrel Modal</ModalHeader>
+          <ModalBody>Using individual imports</ModalBody>
+        </ModalContent>
+      </Modal>
+    </div>
+
+    <div>
+      <p><strong>Compound (property)</strong></p>
+      <code>{'import { Modal } from "@ovhcloud/ods-react"'}</code>
+      <br /><br />
+      <ModalCompound>
+        <ModalCompound.Trigger>Open (Compound)</ModalCompound.Trigger>
+        <ModalCompound.Content>
+          <ModalCompound.Header>Compound Modal</ModalCompound.Header>
+          <ModalCompound.Body>Using Modal, Modal.Trigger, etc.</ModalCompound.Body>
+        </ModalCompound.Content>
+      </ModalCompound>
+    </div>
+  </div>
 );

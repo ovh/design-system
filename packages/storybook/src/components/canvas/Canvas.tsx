@@ -7,6 +7,10 @@ import { HOME_TITLE } from '../../constants/meta';
 import { extractStoryRenderSourceCode } from '../../helpers/source';
 import { ResetTheme } from '../resetTheme/ResetTheme';
 
+type CanvasProp = ComponentProps<typeof StorybookCanvas> & {
+  showSandbox?: boolean; // usefull to enforce sandbox link when sourceState is initially hidden while keeping it by default on all other canvas
+}
+
 function openInNewTab(href: string) {
   Object.assign(document.createElement('a'), {
     href: href,
@@ -28,7 +32,12 @@ function openSandbox(code: string) {
     });
 }
 
-const Canvas = ({ of, sourceState, ...prop }: ComponentProps<typeof StorybookCanvas>): JSX.Element => {
+const Canvas = ({
+  of,
+  showSandbox,
+  sourceState,
+  ...prop
+}: CanvasProp): JSX.Element => {
   const { story } = useOf(of || 'story', ['story']);
   const renderCode = extractStoryRenderSourceCode(story.moduleExport.parameters.docs.source.originalSource);
   const isJsxOnly = renderCode.trim().startsWith('<');
@@ -37,7 +46,7 @@ const Canvas = ({ of, sourceState, ...prop }: ComponentProps<typeof StorybookCan
   const sandboxCode = `${story.storyGlobals.imports}\n\n${exportStartCode}\n${renderCode}\n${exportEndCode}`;
 
   const additionalActions = useMemo(() => {
-    if (sourceState !== 'shown') {
+    if (sourceState !== 'shown' && !showSandbox) {
       return [];
     }
 

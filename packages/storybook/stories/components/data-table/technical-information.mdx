@@ -1,0 +1,115 @@
+import { Code, ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/data-table/documentation/cssVariable.json';
+import specificationsDataTable from '../../../../ods-react/src/components/data-table/documentation/data-table.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as DataTableStories from './data-table.stories';
+
+<Meta of={ DataTableStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ DataTableStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ DataTableStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/data-table/anatomy-tech.png" />
+
+1. **DataTable**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsDataTable }
+  extraInfo={{
+    DataTable: {
+      extendAttribute: {
+        name: "table",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table"
+      }
+    },
+    DataTableBody: {
+      extendAttribute: {
+        name: "tbody",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/tbody"
+      }
+    },
+    DataTableHead: {
+      extendAttribute: {
+        name: "thead",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/thead"
+      }
+    },
+  }}
+  of={ DataTableStories } />
+
+<Heading label="TODO" level={ 2 } />
+
+TODO explanation about data/columns memoization
+- why we do it like that in the doc
+- the necessity to check on their side that it is memoized
+
+<Heading label="Features" level={ 2 } />
+
+<Heading label="Controlling state" level={ 3 } />
+
+Although the table will manage its state on its own, you might need to handle it from your own context.
+
+If you don't need to switch to a controlled component, but want to initialize some values, you can use
+the `initialState` attribute.
+
+Here is an example with a pre-sorted table:
+
+<Canvas of={ DataTableStories.StateUncontrolled } sourceState="hidden" showSandbox />
+
+If you need to manage the state on your own, you can set it trough the `state` attribute.
+You will have to pass also the `onXxx` handler function to update the state.
+
+Here is an example with a controlled sorted table:
+
+<Canvas of={ DataTableStories.StateControlled } sourceState="hidden" showSandbox />
+
+<Message
+  color={ MESSAGE_COLOR.warning }
+  dismissible={ false }
+  style={{ width: '100%' }}>
+  <MessageIcon name={ ICON_NAME.triangleExclamation } />
+
+  <MessageBody>
+    Do not set the matching handler if you're using the `initialState`.
+
+    The following will not work as it expects you to be in controlled mode:
+
+    <Code>{`initialState={{ sorting: [...] }}
+onSortingChange={ () => ... }`}</Code>
+  </MessageBody>
+</Message>
+
+<Heading label="Sorting" level={ 3 } />
+
+Column sorting is enabled by default for all columns.
+If you want to disabled sorting for some specific column, you can set `enableSorting` to `false` in the
+columns definition.
+
+<Canvas of={ DataTableStories.SortingDisabledColumns } sourceState="hidden" showSandbox />
+
+By default, columns will be sorted alphanumerically.
+You can add more control on how each column should be sorted, by defining a `sortingFn` on the column definition.
+
+<Canvas of={ DataTableStories.SortingCustomFunction } sourceState="hidden" showSandbox />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ DataTableStories.Default } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="DataTable" />

@@ -72,7 +72,7 @@ function getComponentTypedoc(data: ProjectReflection): ComponentTypedoc {
         name: member.name,
         value: (member.type as LiteralType)?.value?.toString() || '',
       })),
-  }));
+  })).filter((fakeEnum) => fakeEnum.members.length);
 
   return {
     enums: sortByName(enums.concat(fakeEnums).map((enumDoc) => ({
@@ -81,14 +81,14 @@ function getComponentTypedoc(data: ProjectReflection): ComponentTypedoc {
       members: sortByName(enumDoc.members),
     }))),
     interfaces: sortByName(interfaceDeclarations.map((interfaceDeclaration) => ({
-      name: interfaceDeclaration.name,
+      name: getName(interfaceDeclaration),
       props: (interfaceDeclaration.children || []).map((child) => ({
         name: `${child.name}${(child.flags.isOptional ? '?' : '')}`,
         type: getTypeValue(child.type, child.comment),
       })),
     }))),
     unions: sortByName(unionTypeDeclarations.map((typeDeclaration) => ({
-      name: typeDeclaration.name,
+      name: getName(typeDeclaration),
       value: (typeDeclaration.type as UnionType).types
         .map((item: any) => item.name || `"${item.value}"`)
         .join(' | '),
@@ -123,6 +123,13 @@ function getHelperFunctionTypedoc(data: ProjectReflection, functionName: string)
         label: block.content[0]?.text,
       })),
   };
+}
+
+function getName(declaration: DeclarationReflection): string {
+  if (declaration.typeParameters?.length && declaration.typeParameters[0].kind === ReflectionKind.TypeParameter) {
+    return `${declaration.name}<${declaration.typeParameters[0].name}>`;
+  }
+  return declaration.name;
 }
 
 function getTypeValue(type?: SomeType, comment?: Comment): string {

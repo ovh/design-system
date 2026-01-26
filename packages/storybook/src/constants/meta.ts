@@ -43,6 +43,7 @@ enum REACT_COMPONENTS_TITLE {
   code = `${SECTION.reactComponents}/Code`,
   combobox = `${SECTION.reactComponents}/Combobox`,
   contentAddon = `${SECTION.reactComponents}/Content Addon`,
+  dataTable = `${SECTION.reactComponents}/Data Table`,
   datepicker = `${SECTION.reactComponents}/Datepicker`,
   divider = `${SECTION.reactComponents}/Divider`,
   drawer = `${SECTION.reactComponents}/Drawer`,

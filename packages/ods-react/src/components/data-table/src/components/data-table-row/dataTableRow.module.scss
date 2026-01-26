@@ -1,0 +1,24 @@
+// TODO
+
+@layer ods-organisms {
+  .data-table-row {
+    &--selectable {
+      cursor: pointer;
+
+      &:hover {
+        td,
+        th {
+          background-color: var(--ods-datagrid-row-hover-background-color, var(--ods-color-primary-050));
+        }
+      }
+    }
+
+    &--selected {
+      td,
+      th {
+        background-color: var(--ods-datagrid-row-selected-background-color, var(--ods-color-primary-100)) !important;
+      }
+    }
+  }
+}
+

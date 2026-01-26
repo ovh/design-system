@@ -4782,6 +4782,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-data-table@workspace:packages/ods-react/src/components/data-table":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-data-table@workspace:packages/ods-react/src/components/data-table"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-datepicker@workspace:packages/ods-react/src/components/datepicker":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-datepicker@workspace:packages/ods-react/src/components/datepicker"
@@ -5023,6 +5029,7 @@ __metadata:
     "@ark-ui/react": 5.25.1
     "@storybook/react": 8.6.12
     "@storybook/react-vite": 8.6.12
+    "@tanstack/react-table": 8.21.3
     "@types/jest": 29.5.12
     "@types/react": 18.2.56
     "@types/react-dom": 18.2.25
@@ -6279,6 +6286,25 @@ __metadata:
   dependencies:
     tslib: ^2.8.0
   checksum: 085e13b536323945dfc3a270debf270bda6dfc80a1c68fd2ed08f7cbdfcbdaeead402650b5b10722e54e4a24193afc8a3c6f63d3d6d719974e7470557fb415bd
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-table@npm:8.21.3":
+  version: 8.21.3
+  resolution: "@tanstack/react-table@npm:8.21.3"
+  dependencies:
+    "@tanstack/table-core": 8.21.3
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 1452e7bd1dd0febbfc37e656c61c2c426dc243136333a8688bfadfccfec233e87c9bbe83011d742b0e86ae52c9b3d436bdc5618be4ac675ab921f52317317780
+  languageName: node
+  linkType: hard
+
+"@tanstack/table-core@npm:8.21.3":
+  version: 8.21.3
+  resolution: "@tanstack/table-core@npm:8.21.3"
+  checksum: ce260ab981f334ba999240cf68ae942a524a28980f6853275da90d1864a8b56fa59b952bfd2266570f36ae11f66476d1c96dacc640ba5fd9d6d4e2a78cf05187
   languageName: node
   linkType: hard
 

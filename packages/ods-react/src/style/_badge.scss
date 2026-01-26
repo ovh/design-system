@@ -2,12 +2,12 @@ $ods-badge-border-radius: calc(var(--ods-theme-border-radius) / 2);
 $ods-badge-height-sm: 20px;
 $ods-badge-height-md: 24px;
 $ods-badge-height-lg: 28px;
-$ods-badge-padding-horizontal-sm: calc(var(--ods-theme-padding-horizontal) * 0.75);
-$ods-badge-padding-vertical-sm: calc(var(--ods-theme-padding-vertical) / 4);
-$ods-badge-padding-horizontal-md: var(--ods-theme-padding-horizontal);
+$ods-badge-padding-horizontal-sm: calc(var(--ods-theme-padding-horizontal) / 2);
+$ods-badge-padding-vertical-sm: calc(var(--ods-theme-padding-vertical) / 2);
+$ods-badge-padding-horizontal-md: calc(var(--ods-theme-padding-horizontal) / 2);
 $ods-badge-padding-vertical-md: calc(var(--ods-theme-padding-vertical) / 2);
-$ods-badge-padding-horizontal-lg: calc(var(--ods-theme-padding-horizontal) * 1.25);
-$ods-badge-padding-vertical-lg: calc(var(--ods-theme-padding-vertical) / 2);
+$ods-badge-padding-horizontal-lg: calc(var(--ods-theme-padding-horizontal) * 0.75);
+$ods-badge-padding-vertical-lg: calc(var(--ods-theme-padding-vertical) * 0.75);
 
 @mixin ods-badge() {
   --ods-badge-border-radius: #{$ods-badge-border-radius};

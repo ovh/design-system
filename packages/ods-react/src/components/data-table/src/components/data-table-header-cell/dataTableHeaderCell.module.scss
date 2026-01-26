@@ -1,0 +1,23 @@
+@layer ods-organisms {
+  .data-table-header-cell {
+    &__content {
+      display: flex;
+      flex-flow: row;
+      column-gap: var(--ods-theme-column-gap);
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    &--sortable {
+      cursor: pointer;
+    }
+
+    &__sort-icon {
+      color: var(--ods-theme-text-color-disabled);
+
+      &--sorted {
+        color: var(--ods-theme-primary-color);
+      }
+    }
+  }
+}

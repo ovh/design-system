@@ -1,0 +1,33 @@
+.data-grid {
+  display: flex;
+  flex-flow: column;
+  row-gap: calc(var(--ods-theme-row-gap) * 2);
+
+  &__toolbar {
+    display: flex;
+    flex-flow: row;
+    column-gap: var(--ods-theme-column-gap);
+    justify-content: space-between;
+
+    &__search {
+      display: flex;
+      flex-flow: row;
+      column-gap: var(--ods-theme-column-gap);
+    }
+  }
+
+  &__table {
+    max-height: 500px;
+    overflow: auto;
+
+    &__cell {
+      &__action-menu {
+        text-align: center;
+      }
+    }
+  }
+
+  &__pagination {
+    align-self: center;
+  }
+}

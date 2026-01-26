@@ -1,3 +1,8 @@
+.class-module__properties {
+  table-layout: fixed;
+  width: 100%;
+}
+
 .class-module__properties__body code {
   white-space: break-spaces;
 }

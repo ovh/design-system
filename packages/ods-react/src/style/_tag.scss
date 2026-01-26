@@ -92,12 +92,12 @@ $ods-tag-padding-vertical-lg: calc(var(--ods-theme-padding-vertical) / 4);
 @mixin ods-tag-size($size) {
   @if $size == 'md' {
     padding: var(--ods-tag-padding-vertical-md) var(--ods-tag-padding-horizontal-md);
-    height: $ods-tag-height-md;
+    min-height: $ods-tag-height-md;
     line-height: 1;
     font-size: 0.875rem;
   } @else if $size == 'lg' {
     padding: var(--ods-tag-padding-vertical-lg) var(--ods-tag-padding-horizontal-lg);
-    height: $ods-tag-height-lg;
+    min-height: $ods-tag-height-lg;
     line-height: 1;
     font-size: 1rem;
   }

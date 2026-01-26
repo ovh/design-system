@@ -81,3 +81,12 @@ export const inList = () => (
     </li>
   </ul>
 );
+
+export const Multiline = () => (
+  <Tag className={ style['ods-tag'] }>
+    <span>
+      This is a multiline tag <br />
+      with multiples lines
+    </span>
+  </Tag>
+)

@@ -19,6 +19,7 @@ type DemoArg = Partial<FormFieldProp> & {
   errorText?: string,
   helperText?: string,
   label?: string,
+  sublabel?: string,
 };
 
 const meta: Meta<FormFieldProp> = {
@@ -35,6 +36,9 @@ export const Demo: StoryObj = {
     <FormField invalid={ args.invalid }>
       <FormFieldLabel>
         { args.label }
+        <FormFieldLabelSubLabel>
+          { args.sublabel }
+        </FormFieldLabelSubLabel>
       </FormFieldLabel>
 
       <Textarea name="demo" />
@@ -70,6 +74,13 @@ export const Demo: StoryObj = {
       control: 'boolean',
     },
     label: {
+      table: {
+        category: CONTROL_CATEGORY.slot,
+        type: { summary: 'string' },
+      },
+      control: 'text',
+    },
+    sublabel: {
       table: {
         category: CONTROL_CATEGORY.slot,
         type: { summary: 'string' },

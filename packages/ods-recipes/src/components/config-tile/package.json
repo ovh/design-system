@@ -1,0 +1,17 @@
+{
+  "name": "@ovhcloud/ods-recipes-config-tile",
+  "version": "19.4.1",
+  "private": true,
+  "description": "ODS Recipes ConfigTile",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf node_modules",
+    "lint:a11y": "eslint --config ../../../../../.eslintrc-a11y 'src/**/*.{js,ts,tsx}' --ignore-pattern '*.stories.tsx'",
+    "lint:css": "stylelint --aei 'src/**/*.css'",
+    "lint:scss": "stylelint --aei 'src/**/*.scss'",
+    "lint:ts": "eslint 'src/**/*.{js,ts,tsx}' --ignore-pattern '*.stories.tsx'",
+    "start": "npm run start:storybook",
+    "start:storybook": "storybook dev -p 3000 --no-open"
+  }
+}

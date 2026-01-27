@@ -1,0 +1,88 @@
+@use '@ovhcloud/ods-react/style';
+
+.config-tile-select-item {
+  display: flex;
+  gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+  align-items: center;
+}
+
+.config-tile {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--ods-theme-row-gap) * 2) calc(var(--ods-theme-column-gap) * 2);
+  padding: calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-vertical) * 2);
+  width: 100%;
+
+  &__info {
+    display: flex;
+    flex-flow: column;
+    row-gap: calc(var(--ods-theme-row-gap) * 2);
+    width: 100%;
+
+    &__radio {
+      display: flex;
+      column-gap: var(--ods-theme-column-gap);
+      align-items: center;
+    }
+
+    &__features {
+      display: inline-flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+
+      &__item {
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+
+        &__icon {
+          color: var(--ods-theme-success-color);
+        }
+
+        &__label {
+          color: var(--ods-theme-text-color);
+          font-size: 16px;
+          font-weight: 700;
+        }
+      }
+    }
+
+    @media screen and (width >= #{style.$ods-breakpoint-mobile}) {
+      flex: 1;
+    }
+  }
+
+  &__quantity {
+    flex: 1;
+
+    @media screen and (width >= #{style.$ods-breakpoint-mobile}) {
+      flex: 0;
+    }
+  }
+
+  &__pricing {
+    display: flex;
+    flex: 1;
+    flex-flow: column;
+    align-items: end;
+    white-space: nowrap;
+
+    &__from {
+      color: var(--ods-theme-text-color);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    &__amount {
+      color: var(--ods-theme-primary-color);
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    @media screen and (width >= #{style.$ods-breakpoint-mobile}) {
+      flex: 0;
+    }
+  }
+}

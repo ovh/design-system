@@ -1,10 +1,16 @@
 import react from '@vitejs/plugin-react';
 import { globSync } from 'glob';
-import { extname, relative, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
+
+const componentEntries = Object.fromEntries(
+  globSync('src/components/*/src/index.ts').map((file) => {
+    const [, , name] = file.split('/');
+    return [`components/${name}/index`, resolve(__dirname, file)];
+  }),
+);
 
 export default defineConfig({
   build: {
@@ -15,22 +21,19 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
-      input: Object.fromEntries(
-        // see https://rollupjs.org/configuration-options/#input
-        globSync('src/**/*.ts').map((file) => [
-          relative('src', file.slice(0, file.length - extname(file).length)),
-          fileURLToPath(new URL(file, import.meta.url)),
-        ]),
-      ),
+      input: {
+        index: resolve(__dirname, 'src/index.ts'),
+        ...componentEntries,
+      },
       output: {
         globals: {
           react: 'React',
           'react-dom': 'React-dom',
           'react/jsx-runtime': 'react/jsx-runtime',
         },
-        preserveModules: true,
-        preserveModulesRoot: 'src',
         entryFileNames: '[name].js',
+        chunkFileNames: 'chunks/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash][extname]',
       },
     },
   },

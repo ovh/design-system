@@ -7,7 +7,7 @@ $ods-tag-height-md: 24px;
 $ods-tag-height-lg: 28px;
 $ods-tag-padding-horizontal-md: var(--ods-theme-padding-horizontal);
 $ods-tag-padding-vertical-md: calc(var(--ods-theme-padding-vertical) / 8);
-$ods-tag-padding-horizontal-lg: calc(var(--ods-theme-padding-horizontal) * 1.25);
+$ods-tag-padding-horizontal-lg: var(--ods-theme-padding-horizontal);
 $ods-tag-padding-vertical-lg: calc(var(--ods-theme-padding-vertical) / 4);
 
 @mixin ods-tag() {

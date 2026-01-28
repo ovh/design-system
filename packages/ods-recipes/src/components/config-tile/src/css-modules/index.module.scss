@@ -13,6 +13,7 @@
   gap: calc(var(--ods-theme-row-gap) * 2) calc(var(--ods-theme-column-gap) * 2);
   padding: calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-vertical) * 2);
   width: 100%;
+  container-type: inline-size;
 
   &__info {
     display: flex;
@@ -49,7 +50,7 @@
       }
     }
 
-    @media screen and (width >= #{style.$ods-breakpoint-mobile}) {
+    @container (width >= #{style.$ods-breakpoint-mobile}) {
       flex: 1;
     }
   }
@@ -57,7 +58,7 @@
   &__quantity {
     flex: 1;
 
-    @media screen and (width >= #{style.$ods-breakpoint-mobile}) {
+    @container (width >= #{style.$ods-breakpoint-mobile}) {
       flex: 0;
     }
   }
@@ -81,7 +82,7 @@
       font-weight: 700;
     }
 
-    @media screen and (width >= #{style.$ods-breakpoint-mobile}) {
+    @container (width >= #{style.$ods-breakpoint-mobile}) {
       flex: 0;
     }
   }

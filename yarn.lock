@@ -5049,6 +5049,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-recipes-config-tile@workspace:packages/ods-recipes/src/components/config-tile":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-config-tile@workspace:packages/ods-recipes/src/components/config-tile"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-recipes-email-field@workspace:packages/ods-recipes/src/components/email-field":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-recipes-email-field@workspace:packages/ods-recipes/src/components/email-field"

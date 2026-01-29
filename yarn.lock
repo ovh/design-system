@@ -4758,6 +4758,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-cart@workspace:packages/ods-react/src/components/cart":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-cart@workspace:packages/ods-react/src/components/cart"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-checkbox@workspace:packages/ods-react/src/components/checkbox":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-checkbox@workspace:packages/ods-react/src/components/checkbox"
@@ -5039,6 +5045,7 @@ __metadata:
     react-dom: 18.2.0
     react-hot-toast: 2.6.0
     react-shiki: 0.9.0
+    react-swipeable: 7.0.2
     sass: 1.71.0
     start-server-and-test: 2.0.10
     storybook: 8.6.12
@@ -21445,6 +21452,15 @@ __metadata:
     "@types/react-dom":
       optional: true
   checksum: aee7ad2be31bb520f30ab9e46d52d5a222212ceef9d7eecf3465f639bcae4f7f62106833c2a45ec9273744beefee95b20cc65f4a34cc546a0ee4b0c2f4091062
+  languageName: node
+  linkType: hard
+
+"react-swipeable@npm:7.0.2":
+  version: 7.0.2
+  resolution: "react-swipeable@npm:7.0.2"
+  peerDependencies:
+    react: ^16.8.3 || ^17 || ^18 || ^19.0.0 || ^19.0.0-rc
+  checksum: 3bcc470427049c676d47e8b5fefc852f2fef8875ac78b91da0b025170f5161c422bc1cf78506e97e7b2bf705c4e3687b72bb5c1344f29d3890083a874bc6366c
   languageName: node
   linkType: hard
 

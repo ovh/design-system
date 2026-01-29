@@ -6,6 +6,7 @@ import {
   Button,
   ButtonGroup, ButtonGroupItem,
   Card,
+  Cart, CartAction, CartEmpty, CartExtraContent, CartProductGroup, CartProductGroupItem, CartTotal,
   Checkbox, CheckboxControl, CheckboxLabel,
   Clipboard, ClipboardControl, ClipboardTrigger,
   Code,
@@ -50,6 +51,7 @@ import {
   TreeView,
   TreeViewNode,
   TreeViewNodes,
+  formatPrice
 } from '@ovhcloud/ods-react';
 import { type ReactElement, useState } from 'react';
 import { AccessibilityControl } from './components/accessibilityControl/AccessibilityControl';
@@ -302,6 +304,100 @@ function App(): ReactElement {
           <Card color={ CARD_COLOR.warning }>
             <p>Warning</p>
           </Card>
+        </section>
+
+        <section>
+          <h1>Cart</h1>
+
+          <Cart>
+            <CartEmpty>
+              Your cart is empty
+            </CartEmpty>
+
+            <CartAction>
+              Continue my order <Icon name={ ICON_NAME.arrowRight } />
+            </CartAction>
+          </Cart>
+
+          <Cart style={{ width: '320px' }}>
+            <CartProductGroup
+              details="Domain"
+              label="ods.fr"
+              onRemove={ () => {} }
+              open
+              price={ formatPrice(32.38, 'en-GB', 'EUR') }>
+              <CartProductGroupItem
+                details="Duration"
+                label="2 years"
+                onRemove={ () => {} }
+                price={ formatPrice(32.38, 'en-GB', 'EUR') } />
+
+              <CartProductGroupItem
+                details="DNSSEC"
+                label="Secure DNS"
+                onRemove={ () => {} }
+                price="Included"
+                quantity={ 1 } />
+
+              <CartProductGroupItem
+                details="E-mail account"
+                label="Zimbra Starter"
+                onRemove={ () => {} }
+                price="Included"
+                quantity={ 1 } />
+            </CartProductGroup>
+
+            <CartProductGroup
+              details="Domain"
+              label="ods-doc.fr"
+              onRemove={ () => {} }
+              price={ formatPrice(12.70, 'en-GB', 'EUR') }>
+              <CartProductGroupItem
+                details="Duration"
+                label="2 years"
+                onRemove={ () => {} }
+                price={ formatPrice(12.70, 'en-GB', 'EUR') } />
+
+              <CartProductGroupItem
+                details="DNSSEC"
+                label="Secure DNS"
+                onRemove={ () => {} }
+                price="Included"
+                quantity={ 1 } />
+
+              <CartProductGroupItem
+                details="E-mail account"
+                label="Zimbra Starter"
+                onRemove={ () => {} }
+                price="Included"
+                quantity={ 1 } />
+            </CartProductGroup>
+
+            <CartExtraContent>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ fontSize: '14px', fontWeight: 400, color: 'var(--ods-theme-heading-text-color)' }}>23% VAT / 2 years</span>
+                <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-theme-heading-text-color)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
+              </div>
+
+              <Divider style={{ marginTop: 'calc(var(--ods-theme-row-gap) * 2)' }} />
+            </CartExtraContent>
+
+            <CartTotal
+              label="Total"
+              priceDetails={
+                <div>
+                  <span>ex. VAT / year</span>
+                  <br />
+                  <span>i.e. €XX.XX incl. VAT / year</span>
+                </div>
+              }
+              totalDetails="2 products"
+              price={ formatPrice(58.55, 'en-GB', 'EUR') } />
+
+            <CartAction>
+              Continue my order <Icon name={ ICON_NAME.arrowRight } />
+            </CartAction>
+          </Cart>
         </section>
 
         <section>

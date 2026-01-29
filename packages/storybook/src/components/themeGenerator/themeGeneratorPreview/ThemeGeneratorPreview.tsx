@@ -6,6 +6,7 @@ import * as BreadcrumbStories from '../../../../stories/components/breadcrumb/br
 import * as ButtonStories from '../../../../stories/components/button/button.stories';
 import * as ButtonGroupStories from '../../../../stories/components/button-group/button-group.stories';
 import * as CardStories from '../../../../stories/components/card/card.stories';
+import * as CartStories from '../../../../stories/components/cart/cart.stories';
 import * as CheckboxStories from '../../../../stories/components/checkbox/checkbox.stories';
 import * as ClipboardStories from '../../../../stories/components/clipboard/clipboard.stories';
 import * as CodeStories from '../../../../stories/components/code/code.stories';
@@ -59,6 +60,7 @@ const THEME_STORY_MODULES = {
   Button: ButtonStories,
   ButtonGroup: ButtonGroupStories,
   Card: CardStories,
+  Cart: CartStories,
   Checkbox: CheckboxStories,
   Clipboard: ClipboardStories,
   Code: CodeStories,
@@ -122,6 +124,7 @@ const THEME_PREVIEW_COMPONENTS: ThemePreviewItem[] = [
   { key: 'Button', kind: REACT_COMPONENTS_TITLE.button, label: 'Button' },
   { key: 'ButtonGroup', kind: REACT_COMPONENTS_TITLE.buttonGroup, label: 'Button Group' },
   { key: 'Card', kind: REACT_COMPONENTS_TITLE.card, label: 'Card' },
+  { key: 'Cart', kind: REACT_COMPONENTS_TITLE.cart, label: 'Cart' },
   { key: 'Checkbox', kind: REACT_COMPONENTS_TITLE.checkbox, label: 'Checkbox' },
   { key: 'Clipboard', kind: REACT_COMPONENTS_TITLE.clipboard, label: 'Clipboard' },
   { key: 'Code', kind: REACT_COMPONENTS_TITLE.code, label: 'Code' },

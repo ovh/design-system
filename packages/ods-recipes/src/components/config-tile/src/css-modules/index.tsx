@@ -1,5 +1,5 @@
 import { BADGE_COLOR, BADGE_SIZE, Badge, ICON_NAME, Icon, Quantity, QuantityControl, QuantityInput, Radio, RadioControl, RadioGroup, RadioLabel, Select, SelectContent, SelectControl, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg, TEXT_PRESET, Text, Tile, formatPrice } from '@ovhcloud/ods-react';
-import { type JSX } from 'react';
+import { type JSX, useState } from 'react';
 import style from './index.module.scss';
 
 const FEATURES = [
@@ -42,9 +42,11 @@ function customSelectOptionRenderer({ customData, label }: SelectCustomOptionRen
 }
 
 const ConfigTile = (): JSX.Element => {
+  const [selected, setSelected] = useState(false);
+
   return (
-    <RadioGroup>
-      <Tile>
+    <RadioGroup onValueChange={ ({ value }) => setSelected(value === 'vps-1') }>
+      <Tile selected={ selected }>
         <Radio
           className={ style['config-tile'] }
           value="vps-1">

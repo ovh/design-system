@@ -14,7 +14,6 @@ type Story = StoryObj<ToasterProp>;
 const meta: Meta<ToasterProp> = {
   argTypes: excludeFromDemoControls(['createPortal']),
   component: Toaster,
-  tags: ['new'],
   title: 'React Components/Toaster',
 };
 

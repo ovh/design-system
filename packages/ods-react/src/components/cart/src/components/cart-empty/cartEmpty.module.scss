@@ -1,0 +1,19 @@
+@use '../../../../../style/text';
+
+@layer ods-organisms {
+  .cart-empty {
+    display: flex;
+    flex-flow: row;
+    column-gap: var(--ods-theme-column-gap);
+    align-items: center;
+    justify-content: center;
+
+    &__icon {
+      color: var(--ods-theme-primary-color);
+    }
+
+    &__content {
+      @include text.ods-text-heading-5();
+    }
+  }
+}

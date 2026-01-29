@@ -1,0 +1,97 @@
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/cart/documentation/cssVariable.json';
+import specificationsCart from '../../../../ods-react/src/components/cart/documentation/cart.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as CartStories from './cart.stories';
+
+<Meta of={ CartStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ CartStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ CartStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/cart/anatomy-tech.png" />
+
+1. **Cart**
+2. **CartProductGroup**
+3. **CartProductGroupItem**
+4. **CartExtraContent**
+5. **CartTotal**
+6. **CartAction**
+7. **CartEmpty**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsCart }
+  extraInfo={ {
+    Cart: {
+      extendAttribute: {
+        name: "div",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+      }
+    },
+    CartAction: {
+      extendAttribute: {
+        name: "button",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"
+      }
+    },
+    CartEmpty: {
+      extendAttribute: {
+        name: "div",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+      }
+    },
+    CartExtraContent: {
+      extendAttribute: {
+        name: "div",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+      }
+    },
+    CartProductGroup: {
+      extendAttribute: {
+        name: "div",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+      }
+    },
+    CartProductGroupItem: {
+      extendAttribute: {
+        name: "div",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+      }
+    },
+    CartTotal: {
+      extendAttribute: {
+        name: "div",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+      }
+    },
+  }}
+  of={ CartStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ CartStories.Default } sourceState="shown" />
+
+<Heading label="Empty" level={ 3 } />
+
+<Canvas of={ CartStories.Empty } sourceState="shown" />
+
+<Heading label="Complete" level={ 3 } />
+
+<Canvas of={ CartStories.Full } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Cart" />

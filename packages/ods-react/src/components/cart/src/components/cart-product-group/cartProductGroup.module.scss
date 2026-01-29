@@ -1,0 +1,43 @@
+@use '../../../../../style/font';
+
+@layer ods-organisms {
+  .cart-product-group {
+    &__header {
+      display: flex;
+      flex-flow: row;
+      column-gap: var(--ods-theme-column-gap);
+      align-items: center;
+      padding: calc(var(--ods-theme-padding-vertical) * 1.25) var(--ods-theme-padding-horizontal);
+
+      &__trigger {
+        flex: 1;
+        padding: 0;
+
+        &__product {
+          display: flex;
+          flex-flow: row;
+          column-gap: var(--ods-theme-column-gap);
+          align-items: center;
+
+          &__labels {
+            display: flex;
+            flex: 1;
+            flex-flow: column;
+            row-gap: calc(var(--ods-theme-row-gap) / 4);
+
+            &__details {
+              color: var(--ods-theme-heading-text-color);
+              font-size: font.px-to-rem(14px);
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    &__content {
+      padding: 0;
+      overflow: hidden;
+    }
+  }
+}

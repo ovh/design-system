@@ -1,0 +1,25 @@
+@layer ods-organisms {
+  .cart-total {
+    display: flex;
+    flex-flow: column;
+
+    &__pricing {
+      display: flex;
+      flex-flow: row;
+      column-gap: var(--ods-theme-column-gap);
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    &__details {
+      display: flex;
+      flex-flow: row;
+      column-gap: var(--ods-theme-column-gap);
+      justify-content: space-between;
+
+      &__price {
+        text-align: right;
+      }
+    }
+  }
+}

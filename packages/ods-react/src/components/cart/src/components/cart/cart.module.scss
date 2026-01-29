@@ -1,0 +1,26 @@
+@layer ods-organisms {
+  .cart {
+    --ods-cart-handle-height: 4px;
+    --ods-cart-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 2);
+    --ods-cart-padding-vertical: calc(var(--ods-theme-padding-vertical) * 2);
+
+    display: inline-flex;
+    position: relative;
+    flex-flow: column;
+    row-gap: calc(var(--ods-theme-row-gap) * 2);
+    box-shadow: 0 2px 8px 0 rgba(0, 14, 156, 0.2);
+    padding: var(--ods-cart-padding-vertical) var(--ods-cart-padding-horizontal);
+
+    &__handle {
+      position: absolute;
+      top: calc((var(--ods-cart-padding-vertical) / 2) - (var(--ods-cart-handle-height) / 2));
+      right: 0;
+      left: 0;
+      margin: auto;
+      padding: 0;
+      width: 80px;
+      height: var(--ods-cart-handle-height);
+      min-height: auto;
+    }
+  }
+}

@@ -3,11 +3,118 @@ import { Meta, Source } from '@storybook/blocks';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
-import { HOME_TITLE, REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { HOME_TITLE, REACT_COMPONENTS_TITLE, RECIPES_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta title="OVHcloud Design System/What's new?/What's new" />
 
 <Heading label="What's new ?" level={ 1 } />
+
+<Heading label="v19.5.0" level={ 2 } />
+
+<Heading label="New components:" level={ 3 } />
+
+**Editable**
+
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.editable } story={ STORY.documentation }>See Documentation</StorybookLink>.
+
+**Logo**
+
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.logo } story={ STORY.documentation }>See Documentation</StorybookLink>.
+
+**Tile**
+
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.tile } story={ STORY.documentation }>See Documentation</StorybookLink>.
+
+<Heading label="New recipes:" level={ 3 } />
+
+**Config Tile**
+
+<StorybookLink title={ RECIPES_TITLE.components }>See Recipes</StorybookLink>.
+
+**Feature List Product Card**
+
+<StorybookLink title={ RECIPES_TITLE.components }>See Recipes</StorybookLink>.
+
+<Heading label="Design updates:" level={ 3 } />
+
+**Theme**
+- New token `--ods-theme-brand-color` has been added.
+- `ods-color-promotion` has been updated to a new value.
+
+**Accordion**
+- Now has a default border radius.
+
+**Badge**
+- `--ods-badge-text-color-promotion` token as been updated to match new promotion color.
+- Badge sizes and padding have been adjusted.
+
+**Modal**
+- Header is now a colorless element that can contain actual content.
+
+**Tag**
+- Tag sizes and padding have been adjusted.
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Overlays z-index**
+In previous version of ODS, `Drawer` and `Modal` z-indexes were set to a lesser value than other overlay elements (popover, select, ...).
+This was allowing those to display correctly when set inside a modal.
+But this was causing an issue when, for example, a popover was kept open behind a modal, as it will be visible above the modal backdrop.
+
+Starting from this version, `Drawer` and `Modal` z-indexes are now greater than other overlay elements.
+This may cause issue with your current usage of overlay elements inside `Modal`.
+
+To use such element correctly, you'll have to set the `createPortal={ false }` on overlay elements inside `Modal`.
+You can see some examples on the <StorybookLink kind={ REACT_COMPONENTS_TITLE.modal } story={ STORY.technicalInformation }>Modal Technical Page</StorybookLink>.
+
+We've also added a `positionerStyle` attribute on all overlay elements to allow you to override the positioner style and set up your own `z-index` values if needed.
+
+**Accordion**
+- New attribute `expandIconPosition` has been added.
+
+**Datepicker**
+- New attribute `positionerStyle` has been added.
+
+**Drawer**
+- New attribute `positionerStyle` has been added.
+
+**Form Field**
+- New composition component `FormFieldLabelSubLabel` has been added.
+
+**Modal**
+- New attribute `backdropStyle` has been added.
+- New attribute `positionerStyle` has been added.
+- New composition component `ModalHeader` has been added.
+- You can now setup your own modal header with a custom node.
+- [DEPRECATED] Color attribute is not used anymore, as modal header doesn't have any color anymore.
+
+**Popover**
+- New attribute `positionerStyle` has been added.
+
+**Select**
+- New attribute `positionerStyle` has been added.
+
+**Tooltip**
+- New attribute `positionerStyle` has been added.
+
+<Heading label="Recipe changes:" level={ 3 } />
+
+**Feature List**
+**Order Button**
+**Product Card**
+- Style have updated with latest design requirements, mostly text changes and tooltip alignment.
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+A new page `Roadmap` has been added to the documentation.
+You can refer to it to have an overview of what we're working on and what you could expect for the future ODS releases.
+Please note that this page may be updated in case of major priority changes, outside of an ODS version release.
+
+- Medium examples have been updated as they were the same as `Logo`.
+
+<Heading label="Miscellaneous:" level={ 3 } />
+
+- Remove console warning about `Modal` color depreciation, as it was print even if color wasn't set.
 
 <Heading label="v19.4.1" level={ 2 } />
 

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.5.0](https://ovh.github.io/design-system/v19.5.0/?path=/docs/design-system-changelog--page) (2026-01-30)
+[compare](https://github.com/ovh/design-system/compare/v19.4.1...v19.5.0)
+
+### Features
+
+* **accordion:** add support for a configurable expand icon position ([e9c84e1](https://github.com/ovh/design-system/commit/e9c84e16aad6aca529d2bfe472ec7b0281328c3f))
+* **accordion:** update styles to adjust border radius for open state ([51d446f](https://github.com/ovh/design-system/commit/51d446f37cde5df8c42c31f405cbdaa69d411983))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

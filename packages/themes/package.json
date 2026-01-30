@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-themes",
-  "version": "19.4.1",
+  "version": "19.5.0",
   "description": "All ODS Themes",
   "license": "Apache-2.0",
   "exports": {

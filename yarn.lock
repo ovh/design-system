@@ -5010,7 +5010,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-react@19.4.1, @ovhcloud/ods-react@workspace:packages/ods-react":
+"@ovhcloud/ods-react@19.5.0, @ovhcloud/ods-react@workspace:packages/ods-react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react@workspace:packages/ods-react"
   dependencies:
@@ -5103,12 +5103,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-recipes@19.4.1, @ovhcloud/ods-recipes@workspace:packages/ods-recipes":
+"@ovhcloud/ods-recipes@19.5.0, @ovhcloud/ods-recipes@workspace:packages/ods-recipes":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-recipes@workspace:packages/ods-recipes"
   dependencies:
-    "@ovhcloud/ods-react": 19.4.1
-    "@ovhcloud/ods-themes": 19.4.1
+    "@ovhcloud/ods-react": 19.5.0
+    "@ovhcloud/ods-themes": 19.5.0
     "@storybook/react": 8.6.12
     "@storybook/react-vite": 8.6.12
     "@types/react": 18.2.56
@@ -5136,9 +5136,9 @@ __metadata:
     "@ant-design/colors": 7.1.0
     "@ark-ui/react": 5.25.1
     "@fluentui/storybook-llms-extractor": 0.0.3
-    "@ovhcloud/ods-react": 19.4.1
-    "@ovhcloud/ods-recipes": 19.4.1
-    "@ovhcloud/ods-themes": 19.4.1
+    "@ovhcloud/ods-react": 19.5.0
+    "@ovhcloud/ods-recipes": 19.5.0
+    "@ovhcloud/ods-themes": 19.5.0
     "@storybook/addon-essentials": 8.6.12
     "@storybook/addon-links": 8.6.12
     "@storybook/blocks": 8.6.12
@@ -5162,7 +5162,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-themes@19.4.1, @ovhcloud/ods-themes@workspace:packages/themes":
+"@ovhcloud/ods-themes@19.5.0, @ovhcloud/ods-themes@workspace:packages/themes":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-themes@workspace:packages/themes"
   dependencies:
@@ -8507,8 +8507,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "accessibility-test@workspace:packages/examples/accessibility-test"
   dependencies:
-    "@ovhcloud/ods-react": 19.4.1
-    "@ovhcloud/ods-themes": 19.4.1
+    "@ovhcloud/ods-react": 19.5.0
+    "@ovhcloud/ods-themes": 19.5.0
     "@types/react": 19.1.0
     "@types/react-dom": 19.1.1
     "@vitejs/plugin-react": 4.3.4
@@ -18939,8 +18939,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nextjs-app@workspace:packages/examples/nextjs-app"
   dependencies:
-    "@ovhcloud/ods-react": 19.4.1
-    "@ovhcloud/ods-themes": 19.4.1
+    "@ovhcloud/ods-react": 19.5.0
+    "@ovhcloud/ods-themes": 19.5.0
     "@types/node": 18.15.3
     "@types/react": 18.2.56
     "@types/react-dom": 18.2.25
@@ -21376,8 +21376,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "react-router-app@workspace:packages/examples/react-router-app"
   dependencies:
-    "@ovhcloud/ods-react": 19.4.1
-    "@ovhcloud/ods-themes": 19.4.1
+    "@ovhcloud/ods-react": 19.5.0
+    "@ovhcloud/ods-themes": 19.5.0
     "@types/react": 18.2.56
     "@types/react-dom": 18.2.25
     "@vitejs/plugin-react": 4.3.4
@@ -25690,8 +25690,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "vite-app@workspace:packages/examples/vite-app"
   dependencies:
-    "@ovhcloud/ods-react": 19.4.1
-    "@ovhcloud/ods-themes": 19.4.1
+    "@ovhcloud/ods-react": 19.5.0
+    "@ovhcloud/ods-themes": 19.5.0
     "@testing-library/dom": 10.4.0
     "@testing-library/jest-dom": 6.6.3
     "@testing-library/react": 16.0.1
@@ -26020,8 +26020,8 @@ __metadata:
     "@babel/preset-env": 7.23.9
     "@babel/preset-react": 7.23.3
     "@babel/preset-typescript": 7.23.3
-    "@ovhcloud/ods-react": 19.4.1
-    "@ovhcloud/ods-themes": 19.4.1
+    "@ovhcloud/ods-react": 19.5.0
+    "@ovhcloud/ods-themes": 19.5.0
     "@types/react": 18.2.56
     "@types/react-dom": 18.2.25
     babel-loader: 9.1.3

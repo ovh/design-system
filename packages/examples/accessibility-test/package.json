@@ -1,6 +1,6 @@
 {
   "name": "accessibility-test",
-  "version": "19.4.1",
+  "version": "19.5.0",
   "private": true,
   "description": "Running a11y checks on ODS components",
   "type": "module",
@@ -11,8 +11,8 @@
     "start:prod": "npm run build && vite preview"
   },
   "dependencies": {
-    "@ovhcloud/ods-react": "19.4.1",
-    "@ovhcloud/ods-themes": "19.4.1",
+    "@ovhcloud/ods-react": "19.5.0",
+    "@ovhcloud/ods-themes": "19.5.0",
     "classnames": "2.5.1",
     "react": "19.1.0",
     "react-dom": "19.1.0"

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.5.0](https://ovh.github.io/design-system/v19.5.0/?path=/docs/design-system-changelog--page) (2026-01-30)
+[compare](https://github.com/ovh/design-system/compare/v19.4.1...v19.5.0)
+
+### Features
+
+* **tag:** add multiline support and update styles for dynamic height ([ceee87f](https://github.com/ovh/design-system/commit/ceee87f613e82f59c3ee144660c16cb1e91053ab))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

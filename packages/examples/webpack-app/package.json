@@ -1,6 +1,6 @@
 {
   "name": "webpack-app",
-  "version": "19.4.1",
+  "version": "19.5.0",
   "private": true,
   "description": "Example of an app using ODS, bundled with Webpack",
   "main": "index.js",
@@ -9,8 +9,8 @@
     "start": "webpack serve --config webpack.config.js --mode=development"
   },
   "dependencies": {
-    "@ovhcloud/ods-react": "19.4.1",
-    "@ovhcloud/ods-themes": "19.4.1",
+    "@ovhcloud/ods-react": "19.5.0",
+    "@ovhcloud/ods-themes": "19.5.0",
     "formik": "2.4.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",

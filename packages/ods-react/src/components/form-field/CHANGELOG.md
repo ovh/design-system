@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.5.0](https://ovh.github.io/design-system/v19.5.0/?path=/docs/design-system-changelog--page) (2026-01-30)
+[compare](https://github.com/ovh/design-system/compare/v19.4.1...v19.5.0)
+
+### Features
+
+* **form-field:** add column gap support to form field label styles ([b29595c](https://github.com/ovh/design-system/commit/b29595cb157b354c5bd13869b708728225ef60ad))
+* **form-field:** add FormFieldLabelAddon component and update related stories ([dc57f7e](https://github.com/ovh/design-system/commit/dc57f7ed8d4acdc9081a5169c5194447b0de761d))
+* **form-field:** rename FormFieldLabelAddon to FormFieldLabelSubLabel ([adf1aee](https://github.com/ovh/design-system/commit/adf1aeed42c7e791ac5b4d5677e355c4c728317f))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

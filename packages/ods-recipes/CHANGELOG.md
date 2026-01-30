@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.5.0](https://ovh.github.io/design-system/v19.5.0/?path=/docs/design-system-changelog--page) (2026-01-30)
+[compare](https://github.com/ovh/design-system/compare/v19.4.1...v19.5.0)
+
+### Bug Fixes
+
+* **config-tile:** move from media query to container query ([59f4380](https://github.com/ovh/design-system/commit/59f4380dcf13921dd9ce4d54cc376aee4f29de0c))
+* **recipes:** update feature-list, order-button and product-card ([38a67d1](https://github.com/ovh/design-system/commit/38a67d1f3a8bf56a50c4e5effb44815a23030344))
+
+
+### Features
+
+* **config-tile:** add selected state ([fd92c53](https://github.com/ovh/design-system/commit/fd92c53157a12043089a372f620f4d1e076c8e6d))
+* **email-field:** add sublabel support to form field label ([035113e](https://github.com/ovh/design-system/commit/035113ec2b70ef65aa005ab7e9310dc96a2fdada))
+* **modal:** add ModalHeader component to documentation ([c7cb6d4](https://github.com/ovh/design-system/commit/c7cb6d4eb5e696889edf83bee7b713744c12c30b))
+* **modal:** expose modal header & deprecate color variants ([50e942e](https://github.com/ovh/design-system/commit/50e942e0036a4c80232993038a7ef1dce9e8da78))
+* **recipes:** implement ConfigTile ([a8a6e80](https://github.com/ovh/design-system/commit/a8a6e802f93a0208c1b53d9d833e627965398a08))
+* **recipes:** implement FeatureListProductCard ([c294329](https://github.com/ovh/design-system/commit/c294329531b404227fdbdb169916f793f1aee54d))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

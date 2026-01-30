@@ -1,0 +1,1 @@
+import{e as t}from"./index-jIWwRBLr.js";const a="_anatomy_pghsg_1",n={anatomy:a},o=({src:e})=>t.createElement("div",{className:n.anatomy},t.createElement("img",{alt:"Component anatomy",src:e}));o.__docgenInfo={description:"",methods:[],displayName:"Anatomy",props:{src:{required:!0,tsType:{name:"string"},description:""}}};export{o as A};

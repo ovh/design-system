@@ -1,0 +1,4797 @@
+# OVHcloud Design System — Generic Documentation
+
+Documentation for design tokens, styling, theming, guides, tools, and general information about OVHcloud Design System.
+
+## Helpers
+
+# formatPrice
+
+## Specifications
+
+---
+
+Format a numeric value to a price matching given locale format with expected currency.
+
+See also:
+
+-   [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)
+
+| Argument | Type | Default value | Description |
+| --- | --- | --- | --- |
+| value | `number` | `   undefined   ` | The numeric value to format. |
+| locale | `string` | `'fr-FR'` | The locale to use. |
+| currency | `string` | `'EUR'` | The currency expected. |
+
+## Examples
+
+---
+
+### Default
+
+123 456,79 €
+
+```jsx
+<>{formatPrice(123456.789)}</>
+```
+
+### Locales
+
+France: 123 456,79 €
+
+Germany: 123.456,79 €
+
+Arabic: ‏١٢٣٬٤٥٦٫٧٩ €
+
+India: €1,23,456.79
+
+```jsx
+<>
+  <p>France: {formatPrice(123456.789, 'fr-FR')}</p>
+  <p>Germany: {formatPrice(123456.789, 'de-DE')}</p>
+  <p>Arabic: {formatPrice(123456.789, 'ar-EG')}</p>
+  <p>India: {formatPrice(123456.789, 'en-IN')}</p>
+</>
+```
+
+### Currencies
+
+Euro: 123 456,79 €
+
+Dollar: 123 456,79 $
+
+Yen: 123 457 ¥
+
+```jsx
+<>
+  <p>Euro: {formatPrice(123456.789, 'fr-FR', 'EUR')}</p>
+  <p>Dollar: {formatPrice(123456.789, 'fr-FR', 'USD')}</p>
+  <p>Yen: {formatPrice(123456.789, 'fr-FR', 'JPY')}</p>
+</>
+```
+
+## Helpers/formatPrice
+
+## Examples
+
+
+### Currencies
+
+```tsx
+{
+  globals: {
+    imports: `import { formatPrice } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>Euro: {formatPrice(123456.789, 'fr-FR', 'EUR')}</p>
+      <p>Dollar: {formatPrice(123456.789, 'fr-FR', 'USD')}</p>
+      <p>Yen: {formatPrice(123456.789, 'fr-FR', 'JPY')}</p>
+    </>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { formatPrice } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => <>{formatPrice(123456.789)}</>
+}
+```
+
+### Locales
+
+```tsx
+{
+  globals: {
+    imports: `import { formatPrice } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>France: {formatPrice(123456.789, 'fr-FR')}</p>
+      <p>Germany: {formatPrice(123456.789, 'de-DE')}</p>
+      <p>Arabic: {formatPrice(123456.789, 'ar-EG')}</p>
+      <p>India: {formatPrice(123456.789, 'en-IN')}</p>
+    </>
+}
+```
+
+## Apply ODS Style
+
+---
+
+After installing ODS (following the  documentation), you'll be able to use every components with the correct style.
+
+For the non-component related style, you need to update your app accordingly.
+
+## Use the ODS font
+
+---
+
+ODS components does not enforce any font by default (minus a few exception like `ods-code`).
+
+To use one of the ODS fonts in your app, add the expected variables to the top of your app:
+
+```css
+html {
+  font-family: var(--ods-font-family-default);
+}
+```
+
+## Use the ODS design tokens
+
+---
+
+All ODS components are using common design tokens, that are accessible through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) .
+
+If you want to use any of those on your own components, you can refer to the exhaustive list on the [Figma dedicated page](https://www.figma.com/design/tIKzHa5KvHHyosgIgyBswB/Design-Tokens?m=auto&node-id=0-1&t=s57Qt3pa7WuFWKEh-1) .
+
+```css
+.my-custom-title {
+  color: var(--ods-color-text);
+  ...
+}
+```
+
+## Use ODS CSS reset
+
+---
+
+We recommend you to import the ODS CSS reset subset of rules to normalize the rendering of some elements, but it's not mandatory.
+
+```typescript
+import '@ovhcloud/ods-react/normalize-css';
+```
+
+## Design Tokens
+
+---
+
+Design tokens define reusable design values such as colors, borders, and outlines as variables. Instead of using hardcoded values, they provide a consistent, scalable, and maintainable way to style components across all products.
+
+## Usage
+
+---
+
+Design tokens are available as CSS custom properties (variables) and can be used in your CSS files:
+
+```css
+.my-component {
+  color: var(--ods-color-primary-500);
+  border-radius: var(--ods-border-radius-sm);
+}
+```
+
+## Theme Variables
+
+---
+
+### Color
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-theme-anchor-text-color | #0050d7 | 
+ |
+| --ods-theme-anchor-text-color-hover | #002dbe | 
+
+ |
+| --ods-theme-anchor-text-color-visited | #000e9c | 
+
+ |
+| --ods-theme-background-color | #fff | 
+
+ |
+| --ods-theme-background-color-disabled | #e6e6e6 | 
+
+ |
+| --ods-theme-background-color-drag-over | var(--ods-color-primary-100) | 
+
+ |
+| --ods-theme-background-color-readonly | #f2f2f2 | 
+
+ |
+| --ods-theme-background-color-selected | #00185e | 
+
+ |
+| --ods-theme-border-color-disabled | #cccccc | 
+
+ |
+| --ods-theme-border-color-drag-over | var(--ods-color-primary-100) | 
+
+ |
+| --ods-theme-border-color-readonly | #f2f2f2 | 
+
+ |
+| --ods-theme-border-color-selected | #00185e | 
+
+ |
+| --ods-theme-brand-color | #000e9c | 
+
+ |
+| --ods-theme-heading-text-color | #00185e | 
+
+ |
+| --ods-theme-progress-background-color | var(--ods-color-primary-500) | 
+
+ |
+| --ods-theme-split-background-color | #e6e6e6 | 
+
+ |
+| --ods-theme-split-border-color | #e6e6e6 | 
+
+ |
+| --ods-theme-text-color | #4d5592 | 
+
+ |
+| --ods-theme-text-color-disabled | #808080 | 
+
+ |
+| --ods-theme-text-color-selected | #ffffff | 
+
+ |
+| --ods-theme-track-background-color | var(--ods-color-neutral-100) | 
+
+ |
+| --ods-theme-track-background-color-disabled | var(--ods-color-neutral-500) | 
+
+ |
+| --ods-theme-critical-color | var(--ods-color-critical-500) | 
+
+ |
+| --ods-theme-information-color | var(--ods-color-information-500) | 
+
+ |
+| --ods-theme-neutral-color | var(--ods-color-neutral-500) | 
+
+ |
+| --ods-theme-primary-color | var(--ods-color-primary-500) | 
+
+ |
+| --ods-theme-success-color | var(--ods-color-success-500) | 
+
+ |
+| --ods-theme-warning-color | var(--ods-color-warning-500) | 
+
+ |
+
+### Outline
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-theme-outline-color | #000e9c | 
+ |
+| --ods-theme-outline-offset | 2px | 
+
+ |
+| --ods-theme-outline-style | solid | 
+
+ |
+| --ods-theme-outline-width | 2px | 
+
+ |
+
+### Overlay
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-theme-backdrop-background-color | #0050d7 | 
+ |
+| --ods-theme-backdrop-opacity | 0.75 | 
+
+ |
+| --ods-theme-overlay-border-radius | calc(var(--ods-theme-border-radius) / 2) | 
+
+ |
+| --ods-theme-overlay-box-shadow | 0 2px 8px rgba(0, 14, 156, 0.2) | 
+
+ |
+| --ods-theme-overlay-z-index | 99 | 
+
+ |
+
+### Spacing
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-theme-border-radius | 8px | 
+ |
+| --ods-theme-border-width | 1px | 
+
+ |
+| --ods-theme-column-gap | 8px | 
+
+ |
+| --ods-theme-padding-horizontal | 8px | 
+
+ |
+| --ods-theme-padding-vertical | 8px | 
+
+ |
+| --ods-theme-row-gap | 8px | 
+
+ |
+
+### Font Family
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-theme-font-family | "Source Sans Pro", "Trebuchet MS", arial, "Segoe UI", sans-serif | 
+Aa
+
+
+
+ |
+| --ods-theme-font-family-code | "Source Code Pro", arial | 
+
+Aa
+
+
+
+ |
+
+### Form Element
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-theme-input-background-color-checked | #0050d7 | 
+ |
+| --ods-theme-input-background-color-checked-hover | #000e9c | 
+
+ |
+| --ods-theme-input-background-color-invalid | #bf0020 | 
+
+ |
+| --ods-theme-input-border-color | #b3b3b3 | 
+
+ |
+| --ods-theme-input-border-color-checked | #0050d7 | 
+
+ |
+| --ods-theme-input-border-color-checked-hover | #000e9c | 
+
+ |
+| --ods-theme-input-border-color-hover | #808080 | 
+
+ |
+| --ods-theme-input-border-color-invalid | #bf0020 | 
+
+ |
+| --ods-theme-input-border-radius | calc(var(--ods-theme-border-radius) / 2) | 
+
+ |
+| --ods-theme-input-border-width | var(--ods-theme-border-width) | 
+
+ |
+| --ods-theme-input-min-height | 32px | 
+
+ |
+| --ods-theme-input-option-background-color-hover | #bef1ff | 
+
+ |
+| --ods-theme-input-option-background-color-selected | #e6faff | 
+
+ |
+| --ods-theme-input-option-background-color-selected-hover | #bef1ff | 
+
+ |
+| --ods-theme-input-padding-horizontal | var(--ods-theme-padding-horizontal) | 
+
+ |
+| --ods-theme-input-padding-vertical | calc(var(--ods-theme-padding-vertical) / 4) | 
+
+ |
+| --ods-theme-input-placeholder-text-color | #666666 | 
+
+ |
+| --ods-theme-input-text-color | var(--ods-theme-text-color) | 
+
+ |
+| --ods-theme-input-text-color-checked | var(--ods-theme-background-color) | 
+
+ |
+| --ods-theme-input-text-color-invalid | #bf0020 | 
+
+ |
+
+## Color Palettes
+
+---
+
+  
+
+## Previous tokens
+
+Deprecated
+
+---
+
+Following tokens have been deprecated and will be removed in a future major release.  
+Non spacing tokens have been renamed with the `--ods-theme` prefix.  
+Spacing tokens have been reduced to one base value, you should set your values based on this base, for example:`--my-border-radius-sm: calc(var(--ods-theme-border-radius)) / 2;`.
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-border-radius-xs | 2px | 
+ |
+| --ods-border-radius-sm | 4px | 
+
+ |
+| --ods-border-radius-md | 8px | 
+
+ |
+| --ods-border-radius-lg | 16px | 
+
+ |
+| --ods-border-width-sm | 1px | 
+
+ |
+| --ods-border-width-md | 2px | 
+
+ |
+| --ods-color-background-disabled-default | #e6e6e6 | 
+
+ |
+| --ods-color-background-readonly-default | #f2f2f2 | 
+
+ |
+| --ods-color-border-disabled-default | #cccccc | 
+
+ |
+| --ods-color-border-readonly-default | #f2f2f2 | 
+
+ |
+| --ods-color-element-background-selected | #00185e | 
+
+ |
+| --ods-color-element-text-selected | #ffffff | 
+
+ |
+| --ods-color-form-element-background-critical | #ffffff | 
+
+ |
+| --ods-color-form-element-background-default | #ffffff | 
+
+ |
+| --ods-color-form-element-background-focus-default | #ffffff | 
+
+ |
+| --ods-color-form-element-background-hover-default | #ffffff | 
+
+ |
+| --ods-color-form-element-background-selected-critical | #bf0020 | 
+
+ |
+| --ods-color-form-element-border-critical | #bf0020 | 
+
+ |
+| --ods-color-form-element-border-default | #b3b3b3 | 
+
+ |
+| --ods-color-form-element-border-focus-default | #808080 | 
+
+ |
+| --ods-color-form-element-border-hover-default | #808080 | 
+
+ |
+| --ods-color-form-element-text-default | #4d5592 | 
+
+ |
+| --ods-color-form-element-text-placeholder-default | #666666 | 
+
+ |
+| --ods-color-heading | #00185e | 
+
+ |
+| --ods-color-text | #4d5592 | 
+
+ |
+| --ods-color-text-disabled-default | #808080 | 
+
+ |
+| --ods-font-family-code | "Source Code Pro", arial | 
+
+Aa
+
+
+
+ |
+| --ods-font-family-default | "Source Sans Pro", "Trebuchet MS", arial, "Segoe UI", sans-serif | 
+
+Aa
+
+
+
+ |
+| --ods-form-element-input-height | 32px | 
+
+ |
+| --ods-outline-color-default | #000e9c | 
+
+ |
+| --ods-outline-offset | 2px | 
+
+ |
+| --ods-outline-style-default | solid | 
+
+ |
+| --ods-outline-width | 2px | 
+
+ |
+
+## Style Customization
+
+---
+
+Although ODS components comes with the expected designs, it is sometime useful to customize the rendering of a component to fit your context.
+
+Here we'll describe different ways to customize an ODS component.
+
+## Apply style directly on the component
+
+---
+
+The ODS component host behave like any other React element, so you can apply a class directly to it.
+
+For example, if you want to display a vertical list of `Link`, you can override the inline default display:
+
+```html
+<Link className="custom-link">
+  My link 1
+</Link>
+<Link className="custom-link">
+  My link 2
+</Link>
+<style>
+  .custom-link {
+    display: block;
+  }
+</style>
+```
+
+As there is no shadow DOM anymore, all of the component DOM can be targeted through CSS selectors. It is advised to not rely on cascading selector, as the DOM structure may evolve from one version to another.
+
+  
+
+To ensure reliable CSS, use a specific className on the component you want to customize.
+
+  
+
+If you want to specifically target underneath elements, you can rely on some [data attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes#css_access) , we'll update the documentation about those soon.
+
+## Reuse existing ODS style
+
+---
+
+In some cases where you cannot use an ODS component, you may want one of your own components to look like an ODS component (for example, when using an external library that doesn't allow custom templating).
+
+We did expose a bunch of [Sass](https://sass-lang.com) mixins that allows you to easily apply the ODS style to your own elements.
+
+For example, if you need to make an anchor tag looks like a `Link`:
+
+```css
+@import '@ovhcloud/ods-components/style';
+.my-link {
+  @include ods-link();
+  @include ods-link-color('primary');
+}
+```
+
+```html
+<a class="my-link"></a>
+```
+
+## CSS variables
+
+---
+
+All ODS components are using common design tokens, that are accessible through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) .
+
+We do advise to reuse those variables on your own style, this way your application will automatically be updated on current theme changes or when new themes will be released.
+
+You can find the whole list on the  documentation page.
+
+Example of CSS variables:
+
+```html
+<h1 class="my-own-page-title">
+  Welcome page
+</h1>
+<style>
+  .my-own-page-title {
+    color: var(--ods-color-primary-500);
+  }
+</style>
+```
+
+## Tailwind CSS Integration
+
+---
+
+This guide covers how to integrate Tailwind CSS with the OVHcloud Design System (ODS) for both v3 and v4 versions.
+
+Tailwind CSS is a utility-first CSS framework that can be integrated with ODS components and design tokens, but it is not mandatory as ODS is not based on Tailwind.
+
+Technically, you don't need any configuration to make ODS work with Tailwind. These guides are here to add some auto-completion and best practices when using Tailwind, but you can directly use the design tokens right out of the box without any additional configuration.
+
+## Tailwind CSS v3 Configuration
+
+---
+
+For Tailwind CSS v3, create a `tailwind.config.js` which contains a remapping of ODS variables:
+
+```js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      borderRadius: {
+        'ods-border-radius-xs': 'var(--ods-border-radius-xs)',
+        'ods-border-radius-sm': 'var(--ods-border-radius-sm)',
+        'ods-border-radius-md': 'var(--ods-border-radius-md)',
+        'ods-border-radius-lg': 'var(--ods-border-radius-lg)',
+      },
+      colors: {
+        'ods-color-primary-500': 'var(--ods-color-primary-500)',
+        'ods-color-success-500': 'var(--ods-color-success-500)',
+        'ods-color-warning-700': 'var(--ods-color-warning-700)',
+      },
+      fontFamily: {
+        'ods-font-family-default': 'var(--ods-font-family-default)',
+      },
+    },
+  },
+  plugins: [],
+}
+```
+
+### Integration with IDEs
+
+#### Integration with JetBrains
+
+This should work straight out of the box.
+
+#### Integration with VSCode
+
+Create a `./.vscode/tailwind.json` containing the classes you want to expose for autocompletion.
+
+```json
+{
+    "customClasses": [
+      "ods-color-primary-500",
+      "ods-color-success-500",
+      "ods-color-critical-700",
+      "ods-border-radius-xs",
+      "ods-border-radius-sm",
+      "ods-border-radius-md",
+      "ods-border-radius-lg",
+      "ods-font-family-default",
+    ]
+  }
+```
+
+## Tailwind CSS v4 Configuration
+
+---
+
+For Tailwind CSS v4, create a CSS file using the [@theme](https://tailwindcss.com/docs/adding-custom-styles) property:
+
+```css
+@theme {
+  --radius-ods-xs: var(--ods-border-radius-xs);
+  --radius-ods-sm: var(--ods-border-radius-sm);
+  --radius-ods-md: var(--ods-border-radius-md);
+  --radius-ods-lg: var(--ods-border-radius-lg);
+  --color-ods-primary: var(--ods-color-primary-500);
+  --color-ods-success: var(--ods-color-success-500);
+  --color-ods-critical: var(--ods-color-critical-700);
+  --font-ods-default: var(--ods-font-family-default);
+}
+```
+
+Then import that file after the main ODS theme and Tailwind CSS. In order for you to properly be able to overwrite the ODS theme, you need to redefine the order of the CSS layers. Base is optional.
+
+```typescript
+// index.css
+@layer theme, base, components, ods-quarks, ods-atoms, ods-molecules, ods-organisms, molecules, utilities;
+@import "tailwindcss";
+@import '@ovhcloud/ods-themes/default/css';
+@import '@ovhcloud/ods-themes/default/fonts';
+@import './ods-tailwind.css';
+```
+
+## Usage Examples
+
+---
+
+You can use Tailwind utilities alongside ODS components:
+
+```tsx
+import { Button } from '@ovhcloud/ods-react';
+function MyComponent() {
+  return (
+  <div>
+      <p className="text-critical">Click on the button!</p>
+      <Button className="bg-color-primary">Click me!</Button>
+  </div>
+  );
+}
+```
+
+## Best Practices & Troubleshooting
+
+---
+
+### Color Usage
+
+-   Use semantic color names (e.g., `ods-primary-500`, `ods-success-200`) instead of generic colors
+-   **Issue**: Color classes not working? Verify that the Tailwind config includes the ODS color mappings and ensure the content paths include your component files.
+
+### Spacing and Layout
+
+-   Use ODS border radius tokens (`rounded-ods-sm`, `rounded-ods-md`, etc.)
+-   Leverage ODS form element heights for consistent input sizing
+-   **Issue**: CSS variables not loading? Ensure `@ovhcloud/ods-themes` is imported before Tailwind and check that the theme is properly initialized in your app.
+
+### Typography
+
+-   Use the ODS font family (`font-ods` for body text, `font-ods-code` for code)
+-   Apply semantic text colors (`text-ods-text`, `text-ods-heading`)
+-   Maintain proper contrast ratios with ODS color combinations
+
+### Component Integration
+
+-   ODS components can be styled with Tailwind utilities using the `className` prop
+-   Avoid overriding core ODS component styles unless necessary
+-   Use Tailwind for layout and positioning, ODS for component behavior
+-   **Issue**: Responsive breakpoints not working? Confirm that the ODS breakpoint variables are properly defined and check that the screen configuration in Tailwind config is correct.
+
+## Resources
+
+---
+
+-   [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+-   [Tailwind v4 Migration Guide](https://tailwindcss.com/docs/upgrade-guide)
+-   
+-
+
+## Frequently Asked Questions
+
+---
+
+_Welcome to the F.A.Q. section of the OVHcloud Design System (ODS)._
+
+_Here, we aim to address common questions and provide helpful guidance for developers._
+
+## How can I contribute?
+
+---
+
+OVHcloud Design System is an evolving project, and we welcome contributions from the community. By keeping our repository open source, we aim to make it easier for anyone to suggest improvements, fix issues, or share ideas.
+
+Whether it’s a small fix or a new feature, every contribution helps improve the quality and usability of the system. We appreciate the time and effort of anyone who chooses to take part.
+
+Please note that while we welcome contributions, we encourage you to discuss major changes with our team to ensure alignment with the project's goals and overall quality. Additionally, if you're interested in proposing a new feature, please reach us out first to avoid duplicating effort, as we may already be working on a similar development.
+
+Refer to our project [README](https://github.com/ovh/design-system?tab=contributing-ov-file#contributing-to-ods-project) to learn more about installation and pre-requisites.
+
+## How are releases managed?
+
+---
+
+The OVHcloud Design System follows a structured release process to deliver improvements regularly while letting teams adopt updates at their own pace.
+
+**Patch releases** deliver critical fixes or small improvements and can be adopted immediately.
+
+**Minor releases** introduce new non-breaking features and start the deprecation process when needed.
+
+**Major releases** contain breaking changes, removals of previously deprecated elements, and migration documentation.
+
+Releases are published several times a year based on user needs and product evolution.
+
+We support two major versions at the same time:
+
+-   The current major version receives full support (features, improvements, fixes).
+-   The previous major version receives maintenance support for six months (critical fixes only).
+-   Older versions are no longer supported.
+
+Deprecations follow a two-step workflow:
+
+-   They are announced in a minor release, marked as "Deprecated" in Storybook, and paired with migration guidance.
+-   They are removed in the next major release.
+
+Teams may upgrade at their own pace and can skip versions. We recommend pinning a specific ODS version in your project to ensure consistent behaviour.
+
+## I can't find a component I need
+
+---
+
+ODS provides base components that you can build on top of and implement in various contexts.
+
+If you need a new component, we recommend working with the design team to request and design the component to ensure it aligns with the ODS guidelines.
+
+## Is my browser supported?
+
+---
+
+ODS supports the latest 2 versions of the following browsers:
+
+-   Google Chrome
+-   Microsoft Edge
+-   Mozilla Firefox
+-   Opera
+-   Safari
+
+## Can I use another CSS framework on top of ODS?
+
+---
+
+You can use any CSS framework on top of ODS.
+
+Note that some imperative CSS frameworks like Bootstrap may override ODS styling.
+
+Ensure compatibility by testing the integration in your project.
+
+## What about Web Components and Vue?
+
+---
+
+Starting from v19, ODS have moved to fully React-based components. Web Components and the Vue wrapper are now only available in v18.x, which is now in maintenance mode, so there won't be any new features for this version.
+
+If you still need to access documentation about Web Components or Vue, use the version selector at the top left to switch to the latest 18.x documentation, where you'll find the most up-to-date information.
+
+## TS2307: Cannot find module '@ovhcloud/ods-react' or its corresponding type declarations.
+
+---
+
+Check that you're using the `bundler` [module resolution](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler) in your `tsconfig.json`.
+
+```typescript
+"moduleResolution": "bundler"
+```
+
+## My popover/tooltip is not displayed correctly
+
+---
+
+Check that you're not using a `Fragment` as your trigger.
+
+The following will **not** work properly:
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <>
+      <Component1 />
+      <Component2 />
+    </>
+  </TooltipTrigger>
+  <TooltipContent>
+    ...  </TooltipContent>
+</Tooltip>
+```
+
+Replace the `Fragment` with an actual node:
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <MyTrigger>
+      ...    </MyTrigger>
+  </TooltipTrigger>
+  <TooltipContent>
+    ...  </TooltipContent>
+</Tooltip>
+```
+
+## Overlay elements are not displayed correctly in a drawer/modal
+
+---
+
+`Modal` and `Drawer` components have a `z-index` greater than other overlay components. This is to prevent those to appear behind an open modal/drawer.
+
+To allow overlay elements to correcty render inside a modal/drawer, add the `createPortal={ false }` attribute to the `Content` component of the overlay element.
+
+See  and .
+
+## Icons are not displayed
+
+---
+
+Ensure you did import the fonts in your application, check the  page to read more about how to achieve this.
+
+## Warning: Function components cannot be given refs
+
+---
+
+When using components enabling dynamic component (through the `as` attribute), you may encounter the following error message in the console:
+
+```
+Warning: Function components cannot be given refs.
+Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+```
+
+This means you're passing a function component to the `as` attribute and it needs to be wrapped by a `forwardRef` to be able to manage the `ref` correctly.
+
+```tsx
+import { Link } from '@ovhcloud/ods-react';
+import { forwardRef, useRef } from 'react';
+const DummyLink = forwardRef(({ children, ...props }, ref) => {
+  return (
+    <a data-test="dummy" { ...props } ref={ ref }>{ children }</a>
+  );
+});
+const MyApp = () => {
+  const linkRef = useRef(null);
+  return (
+    <div>
+      ...      <Link as={ DummyLink } href="#" ref={ linkRef }>...</Link>
+    </div>
+  );
+};
+```
+
+## Get Started
+
+---
+
+OVHcloud Design System is a set of reusable React UI components to create a consistent user experience across OVHcloud pages and products, acting as a single source of truth.
+
+All OVHcloud Design System packages are available on [NPM](https://www.npmjs.com) .
+
+## Installation
+
+---
+
+Include **ODS** in your projects like any other npm/yarn module:
+
+```bash
+npm i --save-exact @ovhcloud/ods-react @ovhcloud/ods-themes
+```
+
+or
+
+```bash
+yarn add --exact @ovhcloud/ods-react @ovhcloud/ods-themes
+```
+
+## Usage
+
+---
+
+```tsx
+import { Button } from '@ovhcloud/ods-react';
+const App = () => {
+  return (
+    <Button>
+      Some button    </Button>
+  );
+};
+```
+
+Components are compatible with React `v18.2+`, `v19+`.
+
+## Import components constants
+
+---
+
+All enums, interfaces, events are available directly from the `ods-react` lib
+
+```typescript
+import { BUTTON_SIZE, type CheckboxProp } from '@ovhcloud/ods-react';
+```
+
+## Import theme & fonts
+
+---
+
+You need to import a theme to display all the components correctly. It defines all the colors, typographies, etc...
+
+via ES import:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+```
+
+via Sass import:
+
+```css
+@import '@ovhcloud/ods-themes/default/css';
+@import '@ovhcloud/ods-themes/default/fonts';
+```
+
+In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default`. Though this will increase the bundle size and prevent browser resources loading optimization.
+
+## Typescript
+
+---
+
+To ensure the types are correctly resolved, you'll have to use the `bundler` module resolution, released with [Typescript 5.0](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler) .
+
+```typescript
+"moduleResolution": "bundler"
+```
+
+## Accessibility Guide
+
+---
+
+## Introduction
+
+---
+
+This guide focuses on accessibility best practices specifically for developers integrating the **OVHcloud Design System**.
+
+While our components are built with accessibility in mind, using semantic HTML elements and including the necessary ARIA attributes by default. Nevertheless, ensuring full accessibility in your specific use case might require you to implement additional ARIA attributes, roles, and behaviors at the integration level.
+
+However, depending on the context, you might need to enhance a component's accessibility. This guide will help you understand:
+
+-   When and how to use ARIA properly
+-   Common mistakes and best practices
+-   How screen readers interpret different ARIA attributes
+
+For broader accessibility information beyond the **OVHcloud Design System**, consult our [Accessibility Statement](https://www.ovhcloud.com/fr/accessibility/) available on our official website.
+
+### Before using ARIA
+
+#### Consult the Accessibility section for each component
+
+Each component in **OVHcloud Design System** comes with a dedicated **"Accessibility"** section that provides best practices and usage guidance.
+
+#### Be careful when adding extra ARIA attributes as ODS components may already handle it
+
+To be as close as possible to the accessible experiences provided by modern browsers, **OVHcloud Design System** aims to rely on semantic and native HTML elements whenever they are inherently well-suited for screen reader experiences.
+
+In addition to the predefined accessibility features of our components, you can find more guidance regarding accessible integration in the **"Accessibility"** section.
+
+## Essential ARIA attributes
+
+---
+
+### aria-label: Providing an accessible name
+
+Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) when an element needs a descriptive name but has no visible text.
+
+```jsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button>
+      <Icon name={ICON_NAME.xmark} />
+    </Button>
+}
+```
+
+Screen readers will announce a button.
+
+```jsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button aria-label='Clear'>
+        <Icon name={ICON_NAME.xmark} />
+    </Button>
+}
+```
+
+Screen readers will announce a button and the aria-label.
+
+#### Related Sources
+
+-   [MDN Documentation - aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label)
+-   [RGAA - 6.1](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#6.1)
+-   [RGAA - 7.2](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.2)
+-   [RGAA - 11.1](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.1)
+-   [RGAA - 11.2](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.2)
+-   [RGAA - 11.9](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.9)
+
+### aria-labelledby: Referencing another element as a label
+
+Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) to associate an element with an existing label (instead of duplicating text).
+
+```jsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Button>
+        <Icon name={ICON_NAME.filter} />
+      </Button>
+      <span>Filter your search results</span>
+    </>
+}
+```
+
+Screen readers will announce a button.
+
+Filter your search results
+
+```jsx
+<>
+  <Button aria-labelledby="filter-btn">
+    <Icon name="filter" />
+  </Button>
+  <span id="filter-btn">
+    Filter your search results  </span>
+</>
+```
+
+When the **Button** is focused, the screen reader should announce the linked label.
+
+Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) when there is no visible label, and [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) when there is one.
+
+#### Related Sources
+
+-   [MDN Documentation - aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby)
+-   [RGAA - 6.1](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#6.1)
+-   [RGAA - 7.2](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.2)
+-   [RGAA - 11.1](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.1)
+-   [RGAA - 11.2](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.2)
+-   [RGAA - 11.5](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.5)
+-   [RGAA - 11.9](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.9)
+
+### aria-describedby: Providing additional context
+
+[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby) associates an interactive element with extra information, ensuring screen reader users receive helpful guidance without disrupting the UI.
+
+#### Difference between aria-labelledby and aria-describedby
+
+| Attribute | Purpose | When to use it? | Reading order |
+| --- | --- | --- | --- |
+| aria-labelledby | Defines the main context of the element | When an element has no visible text or needs an external label | Read first by the screen reader |
+| aria-describedby | Provides additional description | When secondary information is needed to clarify context | Read after the main label |
+
+#### When to use aria-labelledby vs aria-describedby?
+
+| Use case | `aria-labelledby` | `aria-describedby` |
+| --- | --- | --- |
+| Use an external / hidden label |  |  |
+| Add complementary information |  |  |
+| Associate multiple elements to form a label (field group) |  |  |
+| Provide contextual help / information (e.g., input rules, field error) |  |  |
+
+```jsx
+{
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal        </Button>
+      </ModalTrigger>
+      <ModalContent>
+        <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+        <ModalBody>
+          <p id="modal-content">
+            Are you sure you want to delete this item? This action cannot be undone.          </p>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+}
+```
+
+Screen readers won't announce the **Modal** content.
+
+```jsx
+{
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal        </Button>
+      </ModalTrigger>
+      <ModalContent aria-describedby="modal-content" aria-labelledby="modal-title">
+        <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+        <ModalBody>
+          <p id="modal-content">
+            Are you sure you want to delete this item? This action cannot be undone.          </p>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+}
+```
+
+Screen readers will announce the **Modal** content.
+
+#### Related Sources
+
+-   [MDN Documentation - aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby)
+-   [RGAA - 11.5](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.5)
+-   [RGAA - 11.10](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.10)
+
+### aria-hidden: Hiding elements from screen readers
+
+Use [aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden) set to `"true"` on elements that are purely decorative and should not be announced by screen readers.
+
+```jsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Icon name={ICON_NAME.home} />
+}
+```
+
+Some screen readers will announce the icon and detect the presence of the image.
+
+Depending on the screen reader, some additional information might be read aloud, which is confusing and unhelpful.
+
+```jsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Icon name={ICON_NAME.home} />
+}
+```
+
+Screen readers will announce nothing, the icon is ignored.
+
+#### Related Sources
+
+-   [MDN Documentation - aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden)
+-   [RGAA - 11.2](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.2)
+
+### aria-busy: Indicating loading state
+
+When a section of the UI is loading, users should be informed that the content is not yet ready.
+
+[aria-busy](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy) set to `"true"` signals that an element is currently in a loading state. Once loading is complete, `aria-busy` should be set to `"false"`.
+
+```jsx
+{
+  globals: {
+    imports: 'import { Skeleton } from \'@ovhcloud/ods-react\';'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div>
+      <Skeleton />
+    </div>
+}
+```
+
+Screen readers will give no indication that the content is loading. The screen reader may start reading the page without knowing that this section is waiting to be updated.
+
+```jsx
+{
+  globals: {
+    imports: 'import { Skeleton } from \'@ovhcloud/ods-react\';'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div aria-busy="true">
+      <Skeleton />
+    </div>
+}
+```
+
+Screen readers understand that the content is not yet ready, so they delay announcing or interacting with it.
+
+#### Related Sources
+
+-   [MDN Documentation - aria-busy](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy)
+-   [RGAA - 7.4](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.4)
+
+### status role: Announcing dynamic status changes
+
+Use [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role) to ensure that important updates are announced by screen readers without disrupting focus.
+
+```jsx
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: () => {
+    const [message, setMessage] = useState('');
+    const handleClick = () => {
+      setMessage('Copied to clipboard.');
+    };
+    return <>
+        <Button onClick={handleClick}>
+          Copy        </Button>
+        <span style={{
+        marginLeft: '1rem'
+      }}>
+          {message}
+        </span>
+      </>;
+  }
+}
+```
+
+Screen readers will announce the button and its label.
+
+```jsx
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: () => {
+    const [message, setMessage] = useState('');
+    const handleClick = () => {
+      setMessage('Copied to clipboard.');
+    };
+    return <>
+        <Button onClick={handleClick}>
+          Copy        </Button>
+        <span aria-live="polite" role="status" style={{
+        marginLeft: '1rem'
+      }}>
+          {message}
+        </span>
+      </>;
+  }
+}
+```
+
+Screen readers will announce the button and its label, and the message on click or press.
+
+It also matters since it keeps focus on the button, avoiding disruption for keyboard users.
+
+#### Related Sources
+
+-   [MDN Documentation - status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role)
+-   [RGAA - 7.4](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.4)
+
+### alert role: Announcing important messages
+
+Use [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/alert_role) for critical, time-sensitive messages that require immediate attention. Unlike `status role`, `alert role` is announced by screen readers, even if the user is focused elsewhere.
+
+```jsx
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: () => {
+    const [error, setError] = useState('');
+    const handleClick = () => {
+      setError('A critical error occurred while saving.');
+    };
+    return <>
+        <Button onClick={handleClick}>
+          Save        </Button>
+        <span style={{
+        marginLeft: '1rem',
+        color: 'red'
+      }}>
+          {error}
+        </span>
+      </>;
+  }
+}
+```
+
+Screen readers won’t immediately announce the error message when it appears, unless the user manually navigates to it.
+
+```jsx
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: () => {
+    const [error, setError] = useState('');
+    const handleClick = () => {
+      setError('A critical error occurred while saving!');
+    };
+    return <>
+        <Button onClick={handleClick}>
+          Save        </Button>
+        <span role="alert" style={{
+        marginLeft: '1rem',
+        color: 'red'
+      }}>
+          {error}
+        </span>
+      </>;
+  }
+}
+```
+
+Screen readers will announce the error message, even when the user is focused elsewhere.
+
+#### Related Sources
+
+-   [MDN Documentation - alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/alert_role)
+-   [RGAA - 7.4](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.4)
+
+### radiogroup and radio roles: Making custom radio controls accessible
+
+[radiogroup](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/radiogroup_role) and [radio](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/radio_role) roles ensure that screen readers correctly interpret and announce the selection.
+
+```jsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <label htmlFor="rating">
+        Rating      </label>
+      <div id="rating">
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="one star" role="img" />
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="two star" role="img" />
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="three star" role="img" />
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="four star" role="img" />
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="five star" role="img" />
+      </div>
+    </>
+}
+```
+
+Screen readers will read each star individually with no context of selection group.
+
+Rating
+
+```jsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <label htmlFor="rating" id="rating-label">
+        Rating      </label>
+      <div aria-labelledby="rating-label" id="rating" role="radiogroup">
+        <Icon name={ICON_NAME.star} role="radio" tabIndex={-1} aria-label="one star" aria-checked="false" />
+        <Icon name={ICON_NAME.star} role="radio" tabIndex={0} aria-label="two star" aria-checked="true" />
+        <Icon name={ICON_NAME.star} role="radio" tabIndex={-1} aria-label="three star" aria-checked="false" />
+        <Icon name={ICON_NAME.star} role="radio" tabIndex={-1} aria-label="four star" aria-checked="false" />
+        <Icon name={ICON_NAME.star} role="radio" tabIndex={-1} aria-label="five star" aria-checked="false" />
+      </div>
+    </>
+}
+```
+
+Screen readers will announce a radio button, its label and aria-label, which item is focused on out of the total amount of items and that it is a radio group.
+
+Please note that you should navigate within a radio group using Arrow keys.
+
+In the example above, `tabindex="-1"` is applied to all elements except the currently selected one. This is because only one item in a radio group should be focusable at a time. Users can navigate between options using the Arrow keys, rather than the Tab key, which moves focus to the next interactive element outside the group.
+
+For more details, see [Managing focus within components using a roving tabindex](https://www.w3.org/WAI/ARIA/apg/patterns/radio/examples/radio/)
+
+#### Sources
+
+-   [MDN Documentation - radiogroup](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/radiogroup_role)
+-   [MDN Documentation - radio](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/radio_role)
+-   [RGAA - 11.5](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.5)
+
+## Final Accessibility check for ARIA roles
+
+---
+
+### Validate the screen reader behavior
+
+Test with a screen reader to ensure that your changes are communicated correctly.
+
+Ensure that actions such as button clicks, form submissions, and changes in state are clearly communicated to the user.
+
+### Testing Environment
+
+For consistent testing across different platforms and screen readers, here is the testing setup used by **OVHcloud Design System**, based on the recommendations from RGAA (France):
+
+| Assistive Technology | Browser |
+| --- | --- |
+| NVDA | Firefox |
+| JAWS | Firefox or Internet Explorer |
+| Safari | VoiceOver |
+
+## Resources to help you test accessibility
+
+---
+
+-   [Accessibility France Guidelines (FR)](https://accessibilite.numerique.gouv.fr) : The French government's official accessibility resource for best practices and testing criteria
+-   [Web Content Accessibility Guidelines (WCAG) 2.1](https://www.w3.org/TR/WCAG21) : The internationally recognized standards for web accessibility, providing guidelines for creating more accessible web content
+-   [WebAIM: Introduction to Web Accessibility](https://webaim.org/intro) : A guide to the principles of web accessibility from WebAIM
+-   [WebAIM: Semantic Structure](https://webaim.org/techniques/semanticstructure) : Learn about the importance of semantic HTML and how it impacts accessibility
+-   [WebAIM: Contrast Checker](https://webaim.org/resources/contrastchecker) : Tool to ensure sufficient color contrast between text and background for readability
+-   [French Accessibility Testing Methodology (FR)](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests) : An in-depth guide to testing web accessibility in France
+-   [French Testing Environment (FR)](https://accessibilite.numerique.gouv.fr/methode/environnement-de-test) : Official guidelines on the tools and technologies to use when testing accessibility on desktop computers
+-   [W3C Tutorial on Alternative Text for Images](https://www.w3.org/WAI/tutorials/images/decision-tree) : A decision tree for writing appropriate alternative text for images
+
+## Handling Form
+
+---
+
+ODS form elements can either be [controlled or uncontrolled](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components) .
+
+You can use each form element directly in your own form, or wrap them using the  component.
+
+## Form Field
+
+---
+
+Using  component will enforce layout, design, behavior and accessibility through a few dedicated components:
+
+-   `FormFieldLabel`
+-   `FormFieldHelperText`
+-   `FormFieldError`
+
+You can also deport the `invalid` prop from the form element to the `FormField` component which will handle the error display automatically.
+
+```tsx
+<FormField invalid={ someCondition }>
+  <FormFieldLabel>
+    Input:  </FormFieldLabel>
+  <Input name="input" />
+  {/* Displayed only if invalid on FormField is true */}
+  <FormFieldError>
+    Error message  </FormFieldError>
+</FormField>
+```
+
+## Uncontrolled Form
+
+---
+
+Uncontrolled component will not have the `value` property set.
+
+You can use the `defaultValue` property to initialize the component with a value.
+
+Example of uncontrolled form:
+
+```tsx
+import { Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { type FormEvent, useRef } from 'react';
+const UncontrolledForm = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  function onSubmit(e: FormEvent) {
+    e.preventDefault();
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
+      console.log(formData);
+    }
+  }
+  return (
+    <form
+      onSubmit={ onSubmit }
+      ref={ formRef }>
+      <FormField>
+        <FormFieldLabel>
+          Input:        </FormFieldLabel>
+        <Input
+          defaultValue="default"
+          name="input" />
+      </FormField>
+      <Button type="submit">
+        Submit button      </Button>
+    </form>
+  );
+};
+```
+
+## Controlled Form
+
+---
+
+Controlled components will manage their `value` prop on their own and react to value change events.
+
+Example of controlled form:
+
+```tsx
+import { Button, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { type ChangeEvent, useState } from 'react';
+const ControlledForm = () => {
+  const [inputValue, setInputValue] = useState('default');
+  function onInputChange(e: ChangeEvent<HTMLInputElement>) {
+    setInputValue(e.target.value);
+  }
+  function onSubmit(e: FormEvent) {
+    e.preventDefault();
+    console.log('input: ', inputValue);
+  }
+  return (
+    <form onSubmit={ onSubmit }>
+      <FormField>
+        <FormFieldLabel>
+          Input:        </FormFieldLabel>
+        <Input
+          name="input"
+          onChange={ onInputChange }
+          value={ inputValue } />
+      </FormField>
+      <Button type="submit">
+        Submit button      </Button>
+    </form>
+  );
+};
+```
+
+## Using form library
+
+---
+
+We'll demonstrate here a few form librairy, but you can plug ODS form elements with any library you like.
+
+Regardless of the library used, you can also use a schema validator to manage your data (like [yup](https://github.com/jquense/yup) or [zod](https://zod.dev/) ).
+
+### react-hook-form
+
+[React Hook Form](https://react-hook-form.com) is thought around native uncontrolled form elements (using `register`).
+
+These will mork on most ODS components, but some specific one may still need to rely on the lib `Controller` component.
+
+```tsx
+import { Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { Controller, useForm } from 'react-hook-form';
+type FormData = {
+  datepicker: string,
+  input: string,
+}
+const FormHookForm = () => {
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+    register,
+    setValue,
+  } = useForm<FormData>({ mode: 'onBlur' });
+  function onSubmit(data: FormData): void {
+    console.log(data);
+  }
+  return (
+    <form onSubmit={ handleSubmit(onSubmit) }>
+      <FormField invalid={ !!errors.input }>
+        <FormFieldLabel>
+          Input:        </FormFieldLabel>
+        <Input { ...register('input') } />
+      </FormField>
+      <Controller
+        control={ control }
+        name="datepicker"
+        render={ ({ field} ) => (
+          <FormField invalid={ !!errors.datepicker }>
+            <FormFieldLabel>
+              Datepicker:            </FormFieldLabel>
+            <Datepicker onValueChange={ ({ value }) => setValue(field.name, value) }>
+              <DatepickerControl />
+              <DatepickerContent />
+            </Datepicker>
+          </FormField>
+        )} />
+      <Button type="submit">
+        Submit button      </Button>
+    </form>
+  );
+}
+```
+
+### formik
+
+Here is another example using [Formik](https://formik.org) library.
+
+```tsx
+import { Button, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';
+import { useFormik } from 'formik';
+type FormData = {
+  datepicker: string,
+  input: string,
+}
+const FormFormik = () => {
+  const formik = useFormik<FormData>({
+    onSubmit: (values) => {
+      console.log(values);
+    },
+    validateOnMount: true,
+    validationSchema,
+  });
+  return (
+    <form onSubmit={ formik.handleSubmit }>
+      <FormField invalid={ formik.touched.input && !!formik.errors.input }>
+        <FormFieldLabel>
+          Input:        </FormFieldLabel>
+        <Input
+          name="input"
+          onBlur={ formik.handleBlur }
+          onChange={ formik.handleChange } />
+      </FormField>
+      <FormField invalid={ formik.touched.datepicker && !!formik.errors.datepicker }>
+        <FormFieldLabel>
+          Datepicker:        </FormFieldLabel>
+        <Datepicker
+          name="datepicker"
+          onBlur={ formik.handleBlur }
+          onValueChange={ ({ value }) => {
+            formik.setFieldValue('datepicker', value);
+          }}>
+          <DatepickerControl />
+          <DatepickerContent />
+        </Datepicker>
+      </FormField>
+      <Button type="submit">
+        Submit button      </Button>
+    </form>
+  );
+}
+```
+
+## Internationalization
+
+---
+
+ODS does not embed any i18n library, as most of the translatable contents are coming from the integration side.
+
+There are two exceptions, components with full embedded translation and components with default translation on some accessibility attribute.
+
+## Embedded translation
+
+---
+
+So far, only the following components internally manage a complete translation system:
+
+-   
+-   
+
+Both are relying on the native [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) feature.
+
+They do de-facto support the same locales as [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) .
+
+## ODS specific translation
+
+---
+
+Although you have complete control on label translation when using the ODS components, there are a few internal elements that need a textual description for accessibility purpose.
+
+For example, take the  component:
+
+Here, the close button needs to have the right `aria-label` value set for accessibility compliance. Though the element is not part of the composable components, it is internal.
+
+By default, ODS will provide a default `aria-label` message for all locales that we currently support. So if you use the component as-is, it will be accessible already.
+
+In case you want to change the locale to one supported by ODS, you can use the `locale` attribute of the component.
+
+```tsx
+// This will change the close button aria-label to the french version
+<Message locale="fr">
+  <MessageBody>
+    Mon message  </MessageBody>
+</Message>
+```
+
+If the `locale` is not set, the component will try to use the navigator languages by default.
+
+In case you want to change to a locale not supported by ODS, or you want to override the default messages, you can set your own translation using the `i18n` attribute of the component.
+
+```tsx
+// This will change the close button aria-label to your own string
+<Message i18n={{ [MESSAGE_I18N.closeButton]: 'Remove the notification' }}>
+  <MessageBody>
+    Mon message  </MessageBody>
+</Message>
+```
+
+## ODS supported locale
+
+---
+
+Current locales supported by ODS:
+
+-   de
+-   en
+-   es
+-   fr
+-   it
+-   nl
+-   pl
+-   pt
+
+## Roadmap
+
+---
+
+## ## A collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
+
+[Design Guidelines](https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system) [GitHub repository](https://github.com/ovh/design-system)
+
+## [12.1.3](https://ovh.github.io/design-system/v12.1.3/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [13.0.0](https://ovh.github.io/design-system/v13.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/12.1...release/13.0))
+
+## Select width
+
+---
+
+The Select component fixed width when non flex has been removed.
+
+```css
+width: calc(var(--ods-size-stack-08) * 11)
+```
+
+Should you need any width, you will have to set it on your component.
+
+## [13.0.1](https://ovh.github.io/design-system/v13.0.1/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [14.0.0](https://ovh.github.io/design-system/v14.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/13.0...release/14.0))
+
+## Tile interactive attribute
+
+---
+
+The Tile component `interactive` attribute has been removed.
+
+```typescript
+interactive?: boolean;
+```
+
+If you are using `interactive` attribute on a Tile in your project, you should remove it.
+
+## [14.1.1](https://ovh.github.io/design-system/v14.1.1/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [15.0.0](https://ovh.github.io/design-system/v15.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/14.0...release/15.0))
+
+## Text
+
+---
+
+### Dependency
+
+Add a dependency to `@ovhcloud/ods-component-text` or `@ovhcloud/ods-components`.
+
+### Import
+
+Replace any imports like the followings:
+
+```typescript
+// Component
+import { OsdsText } from '@ovhcloud/ods-stencil/components/text'
+import { OsdsText } from '@ovhcloud/ods-stencil/components/text/react'
+import { OsdsText } from '@ovhcloud/ods-stencil/components/text/vue'
+// Enums
+import { OdsTextLevel } from '@ovhcloud/ods-core'
+import { OdsTextLevelList } from '@ovhcloud/ods-core'
+import { OdsTextSize } from '@ovhcloud/ods-core'
+import { OdsTextSizeList } from '@ovhcloud/ods-core'
+// Interfaces
+import { OdsTextAttributes } from '@ovhcloud/ods-core'
+```
+
+to:
+
+```typescript
+// Component
+import { OsdsText } from '@ovhcloud/ods-component-text'
+import { OsdsText } from '@ovhcloud/ods-component-text/react'
+import { OsdsText } from '@ovhcloud/ods-component-text/vue'
+// Enums
+import { ODS_TEXT_LEVEL } from '@ovhcloud/ods-component-text'
+import { ODS_TEXT_LEVELS } from '@ovhcloud/ods-component-text'
+import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text'
+import { ODS_TEXT_SIZES } from '@ovhcloud/ods-component-text'
+// Interfaces
+import type { OdsTextAttribute } from '@ovhcloud/ods-component-text'
+```
+
+Following interfaces has been removed:
+
+-   `OdsText`
+-   `OdsTextEvents`
+-   `OdsTextMethods`
+-   `OdsTextLevelUnion`
+-   `OdsTextSizeUnion`
+
+## Textarea
+
+---
+
+### Dependency
+
+Add a dependency to `@ovhcloud/ods-component-textarea` or `@ovhcloud/ods-components`.
+
+### Import
+
+Replace any imports like the followings:
+
+```typescript
+import { OsdsTextarea } from '@ovhcloud/ods-stencil/components/textarea'
+import { OsdsTextarea } from '@ovhcloud/ods-stencil/components/textarea/react'
+import { OsdsTextarea } from '@ovhcloud/ods-stencil/components/textarea/vue'
+// Enums
+import { OdsTextAreaSize } from '@ovhcloud/ods-core'
+import { OdsTextAreaSizeList } from '@ovhcloud/ods-core'
+// Interfaces
+import { OdsTextAreaAttributes } from '@ovhcloud/ods-core'
+import { OdsTextAreaEvents, OdsTextAreaChangeEventDetail } from '@ovhcloud/ods-core'
+import { OdsTextAreaMethods } from '@ovhcloud/ods-core'
+```
+
+to:
+
+```typescript
+// Component
+import { OsdsTextarea } from '@ovhcloud/ods-component-textarea'
+import { OsdsTextarea } from '@ovhcloud/ods-component-textarea/react'
+import { OsdsTextarea } from '@ovhcloud/ods-component-textarea/vue'
+// Enums
+import { ODS_TEXT_LEVEL } from '@ovhcloud/ods-component-textarea'
+import { ODS_TEXT_LEVELS } from '@ovhcloud/ods-component-textarea'
+import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-textarea'
+import { ODS_TEXT_SIZES } from '@ovhcloud/ods-component-textarea'
+// Interfaces
+import type { OdsTextAreaAttribute } from '@ovhcloud/ods-component-textarea'
+import type { OdsTextAreaEvent, OdsTextAreaChangeEvent } from '@ovhcloud/ods-component-textarea'
+import type { OdsTextAreaMethod } from '@ovhcloud/ods-component-textarea'
+```
+
+Following interfaces has been removed:
+
+-   `OdsTextArea`
+-   `OdsTextAreaBehavior`
+-   `OdsTextAreaSizeUnion`
+
+## [15.0.1](https://ovh.github.io/design-system/v15.0.1/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [16.0.0](https://ovh.github.io/design-system/v16.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/15.0...release/16.0))
+
+Presenting all changes, components per components will cause a very long and hard to use changelog.
+
+Instead we'll present you the fundamental changes that have been applied for all of the existing components.
+
+The same logics has been applied to each components.
+
+If you have any issue finding a specific change, feel free to contact us directly and we'll help you migrate.
+
+## All Components
+
+---
+
+### Dependency
+
+To use the component add a dependency to either:
+
+-   `@ovhcloud/ods-component-<component>` to import only the specific component.
+-   `@ovhcloud/ods-components` to import all components.
+
+### Import
+
+Replace any imports like the followings:
+
+```typescript
+// Previously component were imported using one of:
+import { OsdsSpinner } from '@ovhcloud/ods-stencil/components/spinner'
+import { OsdsSpinner } from '@ovhcloud/ods-stencil/components/spinner/react'
+import { OsdsSpinner } from '@ovhcloud/ods-stencil/components/spinner/vue'
+// Enums were imported from the ods-core library
+import { OdsSpinnerSize, OdsSpinnerSizeList } from '@ovhcloud/ods-core'
+// Interfaces were imported from the ods-core library
+import { OdsSpinnerAttributes } from '@ovhcloud/ods-core'
+```
+
+to:
+
+```typescript
+// Component are now imported using one of:
+import { OsdsSpinner } from '@ovhcloud/ods-component-spinner'
+import { OsdsSpinner } from '@ovhcloud/ods-component-spinner/react'
+import { OsdsSpinner } from '@ovhcloud/ods-component-spinner/vue'
+// Enums are now imported directly from the component
+import { ODS_SPINNER_SIZE, ODS_SPINNER_SIZES } from '@ovhcloud/ods-component-spinner'
+// Interfaces are now imported directly from the component
+import type { OdsSpinnerAttribute } from '@ovhcloud/ods-component-spinner'
+```
+
+Some types have been removed from ODS, as they were empty or not used, if you can't find a type you were using, please contact us to see where it has been moved or how to replace it.
+
+## [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/16.0...release/17.0))
+
+Main focus on this version has been on simplifying ODS integration in existing projects (React, Vue, JS, ...).
+
+If you have any issue finding a specific change, feel free to contact us directly and we'll help you migrate.
+
+## All Components
+
+---
+
+### Dependency
+
+We now only publish one `ods-components` library that embed all the ODS components.
+
+You need to remove any component specific dependencies, ex:
+
+```text
+"ods-component-button": "16.6.0" // should be removed
+```
+
+Instead use only one dependency:
+
+```text
+"ods-components": "17.0.0"
+```
+
+### Import
+
+You can see more details in the updated 
+
+#### Native webcomponents
+
+Using lazy-loading:
+
+```typescript
+import { defineCustomElements } from '@ovhcloud/ods-components/dist/loader';
+defineCustomElements();
+```
+
+As module:
+
+```typescript
+import { defineCustomElement as defineButton } from '@ovhcloud/ods-components/dist/components/osds-button';
+defineButton();
+```
+
+#### React components
+
+```typescript
+import { OsdsButton, OsdsText } from '@ovhcloud/ods-components/react';
+```
+
+#### Vue components
+
+```typescript
+import { OsdsButton, OsdsText } from '@ovhcloud/ods-components/vue';
+```
+
+#### Types and constants
+
+All types and constants are accessible from the `ods-components` library:
+
+```typescript
+import type { OdsButtonAttribute } from '@ovhcloud/ods-components'
+import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES } from '@ovhcloud/ods-components';
+```
+
+### About `ods-common-xxx` libs
+
+We're trying to remove the need to add any `ods-common-xxx` lib to any project using ODS.
+
+For now, you will still need to add `ods-common-theming` as a dependency to access the `ODS_THEME_COLOR_INTENT` values.
+
+If you still ended up adding `ods-common-core` in your project, please give us the feedback so that we work on removing that need.
+
+## [17.2.2](https://ovh.github.io/design-system/v17.2.2/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [18.0.0](https://ovh.github.io/design-system/v18.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/17.0...release/18.0))
+
+If you have any questions or issues regarding the new version, feel free to reach us directly.
+
+## Libraries
+
+---
+
+The following libs have been removed:
+
+-   @ovhcloud/ods-cdk
+-   @ovhcloud/ods-common-core
+-   @ovhcloud/ods-common-stencil
+-   @ovhcloud/ods-common-testing
+-   @ovhcloud/ods-common-theming
+-   @ovhcloud/ods-theme-blue-jeans
+
+If you were using part of them, please reach out to us so that we can get more information about your usage.
+
+To use the new theme, replace `ods-theme-blue-jeans` with the following:
+
+```typescript
+import '@ovhcloud/ods-themes/default';
+```
+
+## Design tokens
+
+---
+
+Design tokens are now accessible through the `@ovhcloud/ods-themes` lib.
+
+The list of available tokens has been updated with the latest design changes and match what you may find on the Figma screens.
+
+## Components
+
+---
+
+As each component was refactored, there are too many changes to list everything here.
+
+The main common breaking change is the following: `osds-xxx` component is now `ods-xxx`
+
+A complete list of changes and a guide about how to migrate is available per component in the v18 documentation.
+
+Use the top-left version selector to move to the latest v18.x documentation where you'll find the latest up-to-date information.
+
+## Migrate to v19
+
+---
+
+Version 19 of ODS is not the direct follow-up of previous versions, it is a new library built 100% on top of [React](https://react.dev) .
+
+Previous versions were providing a React version of each components too, but there were in fact a wrapping of the Web Component. Thus it was designed with the constraints related to Web Component (no virtual DOM, relying on DOM selector, ...).
+
+With this new version we got rid of those constraints, which gave us some benefits like:
+
+-   component composition.
+-   easier style customization.
+-   easier React integration (no more `ref` needed, nor literal templates).
+
+We've also alleviate a lot of previous component restrictions, as most of them now accept React nodes instead of fixed property.
+
+For example, Button will now accept any node (text, text + icon, triple icon, ...) and won't force you to set only a label and an optional icon.
+
+Moving out of Web Component also means getting rid of the Shadow DOM. This means you now have direct access to the component DOM and it's easier to add you own style. Though this also means it is easier to break the component rendering, and some custom selectors may break from version to version (see  to know more).
+
+Regarding components, we tried to stay as close as possible to their previous interface while keeping them easy to integrate. Though, the way you'll integrate them in your React app should be rethought, to ensure you use them as real React components and not wrapped Web Components anymore.
+
+To check how to start with this new version, please follow the  documentation.
+
+## What's new ?
+
+---
+
+## v19.5.0
+
+---
+
+### New components:
+
+**Editable**
+
+.
+
+**Logo**
+
+.
+
+**Tile**
+
+.
+
+### New recipes:
+
+**Config Tile**
+
+.
+
+**Feature List Product Card**
+
+.
+
+### Design updates:
+
+**Theme**
+
+-   New token `--ods-theme-brand-color` has been added.
+-   `ods-color-promotion` has been updated to a new value.
+
+**Accordion**
+
+-   Now has a default border radius.
+
+**Badge**
+
+-   `--ods-badge-text-color-promotion` token as been updated to match new promotion color.
+-   Badge sizes and padding have been adjusted.
+
+**Modal**
+
+-   Header is now a colorless element that can contain actual content.
+
+**Tag**
+
+-   Tag sizes and padding have been adjusted.
+
+### Feature updates:
+
+**Overlays z-index** In previous version of ODS, `Drawer` and `Modal` z-indexes were set to a lesser value than other overlay elements (popover, select, ...). This was allowing those to display correctly when set inside a modal. But this was causing an issue when, for example, a popover was kept open behind a modal, as it will be visible above the modal backdrop.
+
+Starting from this version, `Drawer` and `Modal` z-indexes are now greater than other overlay elements. This may cause issue with your current usage of overlay elements inside `Modal`.
+
+To use such element correctly, you'll have to set the `createPortal={ false }` on overlay elements inside `Modal`. You can see some examples on the .
+
+We've also added a `positionerStyle` attribute on all overlay elements to allow you to override the positioner style and set up your own `z-index` values if needed.
+
+**Accordion**
+
+-   New attribute `expandIconPosition` has been added.
+
+**Datepicker**
+
+-   New attribute `positionerStyle` has been added.
+
+**Drawer**
+
+-   New attribute `positionerStyle` has been added.
+
+**Form Field**
+
+-   New composition component `FormFieldLabelSubLabel` has been added.
+
+**Modal**
+
+-   New attribute `backdropStyle` has been added.
+-   New attribute `positionerStyle` has been added.
+-   New composition component `ModalHeader` has been added.
+-   You can now setup your own modal header with a custom node.
+-   [DEPRECATED] Color attribute is not used anymore, as modal header doesn't have any color anymore.
+
+**Popover**
+
+-   New attribute `positionerStyle` has been added.
+
+**Select**
+
+-   New attribute `positionerStyle` has been added.
+
+**Tooltip**
+
+-   New attribute `positionerStyle` has been added.
+
+### Recipe changes:
+
+**Feature List** **Order Button** **Product Card**
+
+-   Style have updated with latest design requirements, mostly text changes and tooltip alignment.
+
+### Documentation improvements:
+
+A new page `Roadmap` has been added to the documentation. You can refer to it to have an overview of what we're working on and what you could expect for the future ODS releases. Please note that this page may be updated in case of major priority changes, outside of an ODS version release.
+
+-   Medium examples have been updated as they were the same as `Logo`.
+
+### Miscellaneous:
+
+-   Remove console warning about `Modal` color depreciation, as it was print even if color wasn't set.
+
+## v19.4.1
+
+---
+
+### Bug fixes:
+
+**Datepicker**
+
+-   Overriding `display` on `DatepickerContent` now won't cause any closing issue.
+
+**Drawer**
+
+-   Overriding `opacity` on `DrawerContent` now won't cause any closing issue.
+
+**Modal**
+
+-   Overriding `display` on `ModalContent` now won't cause any closing issue.
+
+**Popover**
+
+-   Overriding `display` on `PopoverContent` now won't cause any closing issue.
+
+**Range**
+
+-   Fix infinite loop that may occurs on dual range.
+
+**Select**
+
+-   Overriding `display` on `SelectContent` now won't cause any closing issue.
+
+**Tooltip**
+
+-   Overriding `display` on `TooltipContent` now won't cause any closing issue.
+
+## v19.4.0
+
+---
+
+### New features:
+
+**Helpers**
+
+`@ovhcloud/ods-react` package now expose the following helper functions:
+
+-   `formatPrice`: useful to format an amount into a price with currency for a given locale.
+
+You can find more information about helpers on the new dedicated section in the documentation.
+
+**Recipes**
+
+Recipes are ready-to-use UI patterns built with ODS components. They provide pre-implemented code snippets for common use cases, helping you build consistent interfaces faster. Each recipe may include multiple implementations, so you can choose the styling approach that fits your project.
+
+We're still iterating on the whole recipe system to ensure it fits integrator needs. Feel free to share with us your feedback with your own experience while using those recipes.
+
+You can find more information about recipes on the new dedicated section in the documentation.
+
+### New components:
+
+**Button Group**
+
+.
+
+**Kbd**
+
+.
+
+### Design updates:
+
+**Tabs**
+
+This change may impact your layouts.
+
+-   Default tabs height have been increased.
+
+### Feature updates:
+
+**Icon**
+
+-   Add 17 new icons.
+
+**Switch**
+
+-   [DEPRECATED] Whole component is now deprecated, you can use the new Tabs `switch` variant instead.
+
+**Tabs**
+
+-   New attribute `size` has been added.
+-   New attribute `variant` has been added.
+
+### Bug fixes:
+
+**AI Agents**
+
+-   LLM files now contains all the storybook relevant pages.
+
+**Code**
+
+-   Highlighter instance is now correctly cleaned on unmount.
+
+**Combobox**
+
+-   Prevent content close on scrollbar click.
+-   Active option is now automatically scrolled into view.
+
+**FileUpload**
+
+-   Use correct role on file item error.
+
+**Range**
+
+-   Prevent thumb focus when value is changed by external sources.
+
+**Select**
+
+-   Value text and placeholder are now ellipse by default.
+
+## v19.3.0
+
+---
+
+### New components:
+
+**Toaster**
+
+### Design updates:
+
+ODS theme design tokens have been reworked to be more semantic. It is now easier to understand how each token should be used. Each component have been updated accordingly and are now more normalized design-wise. Each component now also expose custom tokens that may be used to override rendering on a component-level.
+
+All those changes are the first major step towards a complete reworked theme that aims to provide more consistency, easier customization and understanding.
+
+[DEPRECATED] Previous design tokens should be replaced by the corresponding theme tokens.
+
+**Accordion**
+
+-   Border color has been changed and is now the same for every component states.
+
+**Combobox**
+
+-   `invalid` overlay now uses the critical color.
+
+**File Upload**
+
+-   A more compact version is now available (using `variant` attribute).
+-   Existing layout has been updated to be more compact.
+
+**Message**
+
+-   Light messages now have a colored border.
+
+**Range**
+
+-   Track color now is the same as other track elements.
+-   Cursor has been changed to default (as in native).
+-   Thumb background color change on hover/focus/drag has been removed.
+
+**Select**
+
+-   `invalid` overlay now uses the critical color.
+-   Groups are now separated by a border.
+
+**Skeleton**
+
+-   Default background color is now slightly darker.
+
+**Table**
+
+-   Default `min-width` has been removed on mobile view.
+
+**Text**
+
+-   Font size now uses `rem` instead of `px`. This will only impact app where the root element `font-size` is not `16px`.
+
+**Toggle**
+
+-   Hover effect on `off` label has been removed.
+
+### Feature updates:
+
+**Code**
+
+-   New attribute `highlighter` has been added.
+-   Documentation has been updated with how to setup a custom highlighter.
+
+**Datepicker**
+
+-   `value` now also accepts `null` as a value.
+-   `DatepickerValueChangeDetail` `value` and `valueAsString` now may be `null`.
+
+**Divider**
+
+-   [DEPRECATED] Color attribute will now always be primary, if you need another color, prefer overriding it using css.
+
+**File Upload**
+
+-   New attribute `variant` has been added.
+
+**Text**
+
+-   New attribute `disabled` has been added.
+-   New preset `small` has been added.
+
+### Bug fixes:
+
+**Combobox**
+
+-   Clicking another combobox while focused on another one, now correctly closes the first one.
+-   Controlled value changed externally is now correctly reflected.
+
+**Datepicker**
+
+-   Clear when controlled now works as expected.
+
+**Link**
+
+-   Disabled links do not have an underline animation when hovered.
+
+**Tabs**
+
+-   `tablist` role now correctly contains only valid children.
+-   Now doesn't automatically scroll to the component on render.
+
+### Documentation improvements:
+
+A new tool has been added to the documentation, the `Theme Generator`. This allows users to experiment with the ODS tokens directly in the storybook. You can preview how each design tokens will impact the components, generate your own color palettes and export/import you custom theme.
+
+ODS documentation is now available as LLM files to help AI tools to better understand our library and its usage.
+
+-   Add a theme selector on the top left menu.
+-   Implement dark mode documentation.
+-   New section `AI Agents` added to the documentation.
+-   Design Tokens have been updated and completed with color palettes.
+-   All technical pages have been updated with components custom CSS variables.
+-   Icon `All` page search control now accepts special character.
+-   Update FAQ.
+
+## v19.2.1
+
+---
+
+### Feature updates:
+
+**Combobox**
+
+-   New attribute `customFilter` has been added.
+
+### Bug fixes:
+
+**Button**
+
+-   Use correct border radius for `sm` size.
+
+**Input**
+
+-   Normalize border style on hover & focus.
+
+**Password**
+
+-   Normalize border style on hover & focus.
+
+**Tabs**
+
+-   Container bottom border takes the whole width.
+
+### Documentation improvements:
+
+-   Update FAQ.
+-   Remove ToC on Changelog page.
+
+### Miscellaneous:
+
+**Tabs**
+
+-   Add a console warning when no `defaultValue` or `value` are set.
+
+## v19.2.0
+
+---
+
+### New components:
+
+**Meter**
+
+**TreeView**
+
+### Font changes:
+
+Font files are now accessible as actual files instead of base64 conversion. This will reduce the size of the ODS style bundle and allow browser resource loading parallelization.
+
+Thanks to [Ennoriel](https://github.com/ennoriel) for the contribution.
+
+**@ovhcloud/ods-react**
+
+-   Now exposes a css reset file (using `import '@ovhcloud/ods-react/normalize-css';`)
+
+**@ovhcloud/ods-themes**
+
+-   Now exposes css without fonts (using `import '@ovhcloud/ods-themes/default/css';`)
+-   Now exposes font-faces separately (using `import '@ovhcloud/ods-themes/default/fonts';`)
+
+### Feature updates:
+
+**@ovhcloud/ods-themes**
+
+-   Now exposes design tokens as JSON (using `import '@ovhcloud/ods-themes/default/tokens';`)
+
+**File Upload**
+
+-   Improve i18n default translations.
+
+**Icon**
+
+-   Add 40 new icons.
+
+**Password**
+
+-   Improve i18n default translations.
+
+**Phone Number**
+
+-   Improve i18n default translations.
+
+**Popover**
+
+-   New attribute `autoFocus` has been added.
+-   New attribute `gutter` has been added.
+-   New attribute `sameWidth` has been added.
+-   New attribute `onPositionChange` has been added.
+-   New attribute `triggerId` has been added.
+
+**Range**
+
+-   New attribute `displayBounds` has been added.
+-   New attribute `displayTooltip` has been added.
+-   Ticks now accepts objects with custom labels.
+-   Range component size is now correctly computed, it will fit better in the page rendering flow.
+
+**Tabs**
+
+-   New attribute `withArrows` has been added.
+
+**Timepicker**
+
+-   Improve i18n default translations.
+
+### Bug fixes:
+
+**Combobox**
+
+-   Has been rewritten internally, but the usage stays the same.
+-   Fix selection behavior issues.
+-   Add style on selected element.
+-   Fix missing style on group separator.
+
+**Input**
+
+-   Clearable now always appears correctly when controlled.
+
+**Quantity**
+
+-   Fix default value stuck when used inside a FormField.
+
+**Range**
+
+-   Update ticks position computation to match thumb size.
+
+### Documentation improvements:
+
+A new tool has been added to the documentation, the `Code sandbox`. This allows users to experiment with the ODS library directly in the storybook. You can also share your sandbox code with others. This is especially useful when trying to reproduce some issue you encounter, but in a smaller dedicated context.
+
+-   New section `Tools` added to the documentation.
+-   A sandbox shortcut has been added to every examples.
+-   New dedicated page about Tailwind integration.
+-   Add badges when relevant near navigation menu items.
+-   Update "Get Started" with fonts changes.
+-   Update "Apply ODS Style" with CSS reset.
+-   Update GitHub repository contributing page.
+-   Update FAQ with contribution information.
+-   Multiple typo fixes.
+
+### ODS dependencies upgrade:
+
+-   ArkUI bumps from `5.12.0` to `5.25.1`.
+
+## v19.1.0
+
+---
+
+### Accessibility improvements:
+
+#### a11y
+
+This version focuses on improving the accessibility for each component.
+
+We've implemented all the internal requirements on each component, validated using [axe-core](https://github.com/dequelabs/axe-core) and [lighthouse](https://www.npmjs.com/package/lighthouse) .
+
+Though, ensuring accessibility for your context does require you to use the right `aria`/`role`/... attribute at the right place.
+
+To help you with that, we've added:
+
+-   a  best practices.
+-   a dedicated `Accessibility` section on each component `Documentation` page.
+
+#### i18n
+
+Some components provide internal features that need an explicit context. For example the clear button on the `Input` which require an `aria-label` describing that the button will clear the value.
+
+We do provide default values for each supported locales to ensure that integrating ODS component as is will already convey the minimal information to impaired users.
+
+You can customize those value further with your own translations.
+
+See the related storybook  for more information.
+
+### Design updates:
+
+Some design changes may impact your layouts.
+
+**Breadcrumb**
+
+-   `fontSize` is now inherited and no more fixed to `0.875rem`.
+
+**Checkbox**
+
+-   Added minimal vertical spacing on group.
+-   Checkbox size is now `16px`.
+
+**Design Tokens**
+
+-   New color variants `-025` and `-075` have been added.
+
+**Progress Bar**
+
+-   Now defaults to full width.
+
+**Tag**
+
+-   `md` height is now `24px` by default.
+
+### Feature updates:
+
+**All components**
+
+-   A new attribute `data-ods` has been added to each exposed component, allowing them to be identified in the DOM.
+
+**Breadcrumb**
+
+-   New attribute `i18n` has been added.
+-   New attribute `locale` has been added.
+
+**Button**
+
+-   Improve button contrast for accessibility.
+
+**Clipboard**
+
+-   New attribute `i18n` has been added.
+-   New attribute `locale` has been added.
+
+**Combobox**
+
+-   Added `customRendererData` on combobox items.
+-   New attribute `i18n` has been added.
+-   New attribute `locale` has been added.
+
+**Datepicker**
+
+-   New attribute `i18n` has been added.
+-   New attribute `locale` has been added.
+
+**File Upload**
+
+-   New attribute `i18n` has been added on `FileUploadItem`.
+-   New attribute `locale` has been added.
+
+**Input**
+
+-   New attribute `i18n` has been added.
+-   New attribute `locale` has been added.
+
+**Message**
+
+-   Improve color contrast for accessibility.
+-   New attribute `i18n` has been added.
+-   New attribute `locale` has been added.
+
+**Modal**
+
+-   New attribute `i18n` has been added.
+-   New attribute `initialFocusedElement` has been added.
+-   New attribute `locale` has been added.
+
+**Password**
+
+-   New attribute `i18n` has been added.
+-   New attribute `locale` has been added.
+
+**Phone Number**
+
+-   New attribute `i18n` has been added.
+-   New attribute `locale` has been added.
+
+**Quantity**
+
+-   Increment and decrement buttons are no longer focusable, allowing keyboard navigation to focus solely on the input field for consistent vocalization.
+
+**Select**
+
+-   Items `customData` now accept an optional generic type.
+
+**Timepicker**
+
+-   New attribute `i18n` has been added.
+-   New attribute `locale` has been added.
+
+**Toggle**
+
+-   New component `ToggleControl` has been added.
+-   New component `ToggleLabel` has been added.
+-   [DEPRECATED] Using `<Toggle />` alone will still works as expected, though we advise to move to composition using `ToggleControl` and `ToggleLabel`.
+
+### Bug fixes:
+
+**Combobox**
+
+-   Click on `FormField` label now behave like native.
+
+**File Upload**
+
+-   Click on `FormField` label now behave like native.
+
+**Phone Number**
+
+-   Following country codes `bq`, `gf`, `gp`, `io`, `pm`, `re`, `sj`, `sx` have been added.
+-   Click on `FormField` label now focus input instead of country select.
+
+**Popover**
+
+-   Positioning is now correct if a custom ID is set on the trigger element.
+-   The trigger is now focusable by default.
+
+**Tooltip**
+
+-   Positioning is now correct if a custom ID is set on the trigger element.
+-   The trigger is now focusable by default.
+
+### Documentation improvements:
+
+-   New `Accessibility` page has been added in the `Guides` section.
+-   New section `Accessibility` has been added on every component `Documentation` page with best practices and examples.
+-   A `react-router` `Link` example has been added.
+-   Github links on component `Documentation` pages have been fixed.
+-   Atomic design link on component `Documentation` pages have been removed, as it was not relevant.
+-   New link to previous major version doc has been added on component `Documentation` pages.
+-   A link to form guide has been added on each `FormField` examples.
+-   FAQ has been updated.
+
+### Miscellaneous:
+
+-   Fix Windows issues when cloning the repository and running the Storybook scripts.
+
+## v19.0.1
+
+---
+
+### Feature updates:
+
+**Pagination**
+
+-   Add `onPageSizeChange` handler.
+-   Add `pageSize` to `PaginationPageChangeDetail` detail object.
+
+## v19.0.0
+
+---
+
+Version 19 of ODS is not the direct follow-up of previous versions, it is a new library built 100% on top of [React](https://react.dev) .
+
+### Project changes:
+
+Previous versions were providing a React version of each components too, but there were in fact a wrapping of the Web Component. Thus it was designed with the constraints related to Web Component (no virtual DOM, relying on DOM selector, ...).
+
+With this new version we got rid of those constraints, which gave us some benefits like:
+
+-   component composition.
+-   easier style customization.
+-   easier React integration (no more `ref` needed, nor literal templates).
+
+Although, we tried to stay as close as possible to previous version behavior, the way you integrate ODS in your React app should be rethought, to ensure you use components as real React elements and not wrapped Web Components anymore.
+
+To check how to start with this new version, please follow the  documentation.
+
+Here is a non-exhaustive list of the major changes:
+
+-   rework of all components as React elements.
+-   tree-shaking.
+-   less restriction on components customization and usage.
+-   reduced CSS size by moving to variable fonts.
+-   no more Ods prefix on all components/constants.
+-   no more web-components nor Vue wrappers provided.
+-   updated icons (now with default padding embed).
+-   updated various component designs (datepicker, message, modal, spinner, ...).
+-   new design tokens.
+-   updated documentation.
+-   card default color changed.
+-   ...
+
+## v18.6.4
+
+---
+
+### Bug fixes:
+
+**Clipboard**
+
+-   Container now inherent parent width.
+
+**Code**
+
+-   Now correctly render large text with fixed height.
+
+**Combobox**
+
+-   Clicking an item now correctly select it on Safari.
+
+**File Upload**
+
+-   Allow same file to be uploaded again after cancellation.
+
+**Phone Number**
+
+-   Add following country codes: `bq`, `gf`, `gp`, `io`, `pm`, `re`, `sj`, `sx`.
+
+## v18.6.3
+
+---
+
+### Bug fixes:
+
+**Pagination**
+
+-   Now handles very large number of pages correctly.
+
+## v18.6.2
+
+---
+
+### Bug fixes:
+
+**Combobox**
+
+-   Ensure "Add new entry" option is visible when no items are present.
+-   Hide "Add new entry" option when input is cleared.
+-   Prevent duplicates when using value or default value in allow multiple mode.
+
+## v18.6.1
+
+---
+
+### Bug fixes:
+
+**Clipboard**
+
+-   Remove spacing between actions and copy button.
+
+**Input**
+
+-   Add spacing between value and actions.
+
+## v18.6.0
+
+---
+
+### New components:
+
+**Combobox**
+
+### Feature updates:
+
+**Badge**
+
+-   New feature to allow icon to be aligned either on left or right side.
+-   New attribute `iconAlignment` has been added.
+-   New constant `ODS_BADGE_ICON_ALIGNMENT` has been added.
+
+**Clipboard**
+
+-   New attribute `isMasked` has been added.
+
+**Icon**
+
+-   `alt` attribute has been removed. This optional attribute was in fact doing nothing at all, it can safely be kept if you were using it, but you should remove it and follow the  instead.
+
+### Bug fixes:
+
+**Button**
+
+-   Ensure button height stays the same for all variants.
+-   Fix `sm` height on all variants.
+
+**Modal**
+
+-   Backdrop is no longer removed when pressing `Escape` on non-dismissible modal.
+
+### Documentation improvements:
+
+-   Add new dedicated page about design tokens under the `Design and Style` section.
+-   Update the accessibility section of the  component, with best practices and examples.
+
+## v18.5.3
+
+---
+
+### Feature updates:
+
+**Select**
+
+-   New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+-   New constants `ODS_SELECT_STRATEGY` and `ODS_SELECT_STRATEGIES` are now available.
+
+## v18.5.2
+
+---
+
+### Feature updates:
+
+**Code**
+
+-   Add tooltip message on copy button.
+-   New attribute `labelCopy` added.
+-   New attribute `labelCopySuccess` added.
+
+**Design Tokens**
+
+-   Add new design token `--ods-form-element-input-height`. Useful when trying to use any input (ods-input, ods-datepicker, ods-select, ...) default height.
+
+**Modal**
+
+-   New part `dialog-content` added that let you customize the content of the modal (ie, between header and actions).
+
+**Phone Number**
+
+-   Pressing a letter while focusing the country selector will now move to the first matching country.
+
+### Bug fixes:
+
+**Code**
+
+-   Spacing will now be correctly preserved.
+
+**Input**
+
+-   Fix disabled style.
+
+**Phone Number**
+
+-   Countries are now correctly sorted when locale get changed.
+
+**Spinner**
+
+-   Spinner now use inline svg instead of svg file. This should remove some of the `eval` warnings on build.
+
+**Tabs**
+
+-   Tabs bottom border now takes the whole width on horizontal overflow context.
+
+### Documentation improvements:
+
+-   Add more documentation about managing overlays on a modal.
+
+## v18.5.1
+
+---
+
+### Feature updates:
+
+**Clipboard**
+
+-   New `ariaLabel` prop has been added.
+-   New `ariaLabelledby` prop has been added.
+-   New `name` prop has been added.
+
+**Datepicker**
+
+-   New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+-   New constants `ODS_DATEPICKER_STRATEGY` and `ODS_DATEPICKER_STRATEGIES` are now available.
+
+**Medium**
+
+-   Now expose an `image` part.
+
+**Password**
+
+-   New `maxlength` prop has been added.
+-   New `minlength` prop has been added.
+
+**Textarea**
+
+-   New `maxlength` prop has been added.
+-   New `minlength` prop has been added.
+
+### Bug fixes:
+
+**Accordion**
+
+-   Clickable elements in the slots now behaves as expected when using the React component.
+
+**Checkbox**
+
+-   Fix focus style on error state.
+
+**Code**
+
+-   Copy button is now correctly positioned on the right side.
+
+**Datepicker**
+
+-   Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Input**
+
+-   Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Password**
+
+-   Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Phone Number**
+
+-   Reset now correctly reset the flag, when `countries` is set.
+-   Clear button is now correctly displayed when `isClearable` is set, even for invalid value.
+
+**Popover**
+
+-   `triggerId` & `shadowDomTriggerId` now accepts id with special character (ex: `?`, `:`, ...).
+
+**Radio**
+
+-   Fix focus style on error state.
+
+**Tooltip**
+
+-   `triggerId` & `shadowDomTriggerId` now accepts id with special character (ex: `?`, `:`, ...).
+
+### Documentation improvements:
+
+-   Headings link url are now static, which means you can safely bookmark / share them.
+-   Fix the `Open canvas in new tab` action in the toolbar on Demo pages.
+-   Accessibility tabs has been removed from Demo pages, as it was giving wrong information (as demo are custom made and not valid use case).
+
+## v18.5.0
+
+---
+
+### New components:
+
+**Drawer**
+
+### Feature updates:
+
+**Accordion**
+
+-   Update internal logic to use the native behavior of `details` / `summary` tags.
+-   Interactive elements can now be used inside the accordion without toggling it.
+-   New methods `close`, `open` and `toggle` have been added.
+-   Add some documentation about usage with React state.
+
+**Link**
+
+-   Link will now display an ellipsis by default.
+-   New part `label` has been added to allow label customization.
+
+**Modal**
+
+-   Update default width and height.
+-   Update dimensions on mobile-size screen.
+-   `z-index` has been updated to use ODS overlay z indexes ordering.
+
+**Range**
+
+-   Range can now display ticks.
+-   New attribute `ticks` has been added.
+-   Thumb hitbox has been improved.
+
+**Select**
+
+-   `z-index` has been updated to use ODS overlay z indexes ordering.
+
+**Tooltip**
+
+-   Tooltip now stays open for a short time on trigger leave, which allows user to move over it and keep it open (and for example select its content).
+
+### Documentation improvements:
+
+-   Add new guide about using components events.
+-   Add new guide about using components methods.
+-   Update Properties array in the technical page to more clearly display which props are required.
+-   Update form-field caption examples.
+-   Fix FAQ broken link.
+
+## v18.4.1
+
+---
+
+### Feature updates:
+
+**Tabs**
+
+-   Apply new style on unselected tab text.
+-   Apply new hovering style.
+
+**Toggle**
+
+-   Expose new method `toggle`.
+
+### Bug fixes:
+
+**Toggle**
+
+-   Fix toggle style when selected and in an error state.
+
+### Miscellaneous:
+
+We did integrate [react-testing-library](https://testing-library.com/docs/react-testing-library/intro) to our React wrapper test suites, so that we can replicate more easily issues integrators may encounter.
+
+## v18.4.0
+
+---
+
+### Changes on form elements:
+
+This version is focused on implementing [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) to our form elements.
+
+This allows you to setup a fully working form without the need of any external library or custom validation code, as everything behave as a native form.
+
+Though you can of course use a lib on top of that if you want to. We've validated forms using native code (vanilla and React), [Formik](https://formik.org) and [React Hook Form](https://react-hook-form.com) on our tests and playgrounds.
+
+The changes on each component are massive, but we did focus on ensuring bumping to this version would be transparent for current ODS users.
+
+We won't go through an exhaustive list of changes, here are the most important ones for each form element:
+
+-   Consistent behavior regarding blur and error state.
+-   Consistent event triggering (check the guide about event lifecycle).
+-   New event `odsInvalid` triggered when component internal validity change.
+-   New methods available: `checkValidity`, `getValidationMessage`, `getValidity`, `reportValidity`, `willValidate`.
+-   New interface `OdsFormElement` available with this methods.
+-   Tons of unit & e2e tests have been added.
+
+### Feature updates:
+
+**Checkbox**
+
+-   New `hasError` prop has been added.
+-   New style when on error.
+
+**Clipboard**
+
+-   Now expose an `input` part.
+-   Input now inherit component length.
+
+**Datepicker**
+
+-   `defaultValue` now accepts Date or string.
+-   `max` now accepts Date or string.
+-   `min` now accepts Date or string.
+-   Added a new helper method `formatDate`.
+-   Added a new helper method `parseDate`.
+
+**Input**
+
+-   New input type `search` has been added.
+
+**Phone Number**
+
+-   New `customValidityMessage` prop has been added.
+
+**Radio**
+
+-   New `hasError` prop has been added.
+-   New style when on error.
+
+**Range**
+
+-   Now triggers an odsChange on thumb release, not on every move.
+
+**Select**
+
+-   Add a new method `updateCustomRenderer` if you need to update the custom template used.
+
+**Switch**
+
+-   Events are now send from `ods-switch` and not from `ods-switch-item` anymore. You may need to move your handlers if you were defining some on items.
+-   New `hasError` prop to enforce error state.
+-   Focus style has been updated.
+-   New style when on error.
+
+**Toggle**
+
+-   New `hasError` prop to enforce error state.
+-   New style when on error.
+
+### Documentation improvements:
+
+-   New Guide section, with a first one about form management.
+-   Added new control to visualize ValidityState on each form elements Demo page.
+-   Storybook update popup has been disabled.
+
+## v18.3.1
+
+---
+
+### Feature updates:
+
+**Icon**
+
+-   New icon "columns" has been added.
+
+**Link**
+
+-   Update hover & visited color to a lighter one.
+
+**Select**
+
+-   Update hover style to differentiate it from selected option.
+
+**Text**
+
+-   `caption` preset does not use a `caption` tag anymore, as these is tight to table usage only.
+-   New examples have been added regarding `caption` and `figcaption` usage.
+
+### Bug fixes:
+
+**Breadcrumb**
+
+-   Separator is now always correctly aligned, regardless of the number of items.
+
+**Modal**
+
+-   Dialog content height is now correct on Safari
+
+## v18.3.0
+
+---
+
+### Feature updates:
+
+**All form elements**
+
+-   Apply new style on readonly state.
+
+**Breadcrumb**
+
+-   A new part `last` is now available to customize the last item (which differ from other link items).
+
+**Input**
+
+-   You can now link a native `datalist` to an `ods-input` using the `list` attribute and the `list` slot. A full example is available in the  page.
+-   New attribute `list` has been added.
+-   New slot `list` is now available.
+
+**Message**
+
+-   Message can now be rendered without the close button, as a static message.
+-   New attribute `isDismissible` has been added.
+
+**Popover**
+
+-   New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+-   New constants `ODS_POPOVER_STRATEGY` and `ODS_POPOVER_STRATEGIES` are now available.
+
+**Tooltip**
+
+-   New attribute `strategy` added that let you manage different positioning, default strategy is `absolute`, you can change to `fixed` when in a fixed context (like in an ods-modal for example).
+-   New constants `ODS_TOOLTIP_STRATEGY` and `ODS_TOOLTIP_STRATEGIES` are now available.
+
+### Bug fixes:
+
+**All form elements**
+
+-   Pressing `Enter` on an action button (like the clear button) does not trigger a form submit anymore.
+
+**Badge**
+
+-   Now use the expected border-radius style.
+
+**Breadcrumb**
+
+-   Last attribute is now correctly reset on items changes.
+
+**Modal**
+
+-   `odsClose` event is no more emitted on component unmount. If you were relying on that, please reach out to us so we can find a better approach.
+-   Content is now wrapped by a div to prevent flex weird rendering.
+-   Modal height can now be customized using the `dialog` part.
+
+**Range**
+
+-   Apply correct style to hovered thumb on error state.
+
+**Select**
+
+-   Options are now correctly updated on change.
+-   Disable state is now correctly updated on change.
+
+### Internal changes:
+
+We now use an `ods-button` instead of a native one for all our internal actions. Ex: input clear, message close, modal close, ... This shouldn't have any impacts.
+
+## v18.2.0
+
+---
+
+### Feature updates:
+
+**Button**
+
+-   New color style `neutral` and new size `xs`are now available.
+-   New color `neutral` added to `ODS_BUTTON_COLOR`.
+-   New size `xs` added to `ODS_BUTTON_SIZE`.
+
+**Spinner**
+
+-   New size `xs` is now available.
+-   New size `xs` added to `ODS_SPINNER_SIZE`.
+
+### Bug fixes:
+
+**Modal**
+
+-   No `odsClose` event emitted anymore on element DOM disconnection if modal was already closed.
+
+**Password / Phone Number / Quantity / Timepicker**
+
+-   Setting a `width: 100%` to the ods element now correctly apply it to the underneath elements.
+
+## v18.1.0
+
+---
+
+### Documentation improvements:
+
+Storybook has been partially rewritten, so you may notice a few changes:
+
+-   some style has been updated
+-   broken links have been fixed
+-   components documentation has been migrated from `typedoc` to `custom-element-manifest`
+
+### Feature updates:
+
+**Button**
+
+-   New feature to allow icon to be aligned either on left or right side.
+-   New attribute `iconAlignment` has been added.
+-   New constant `ODS_BUTTON_ICON_ALIGNMENT` has been added.
+
+**Icon**
+
+-   New icons `bill` and `box` have been added.
+-   `globe` icon has been updated.
+
+**Link**
+
+-   New feature to allow icon to be aligned either on left or right side.
+-   New attribute `iconAlignment` has been added.
+-   New constant `ODS_LINK_ICON_ALIGNMENT` has been added.
+
+**Select**
+
+-   Apply new style to multi-select counter.
+
+**Table**
+
+-   Update header color to neutral-050.
+
+**Text**
+
+-   No more default margin on any presets.
+
+### Bug fixes:
+
+**All**
+
+-   Components now correctly inherits font-family.
+
+**Modal**
+
+-   Prevent undefined element when using with react testing library.
+
+**Phone Number**
+
+-   Locale fallback has been moved from french to english (fallback that is applied if no locale or a wrong locale is set and the locale of your browser is not managed).
+
+## v18.0.0
+
+---
+
+As it is a major version, you'll have to follow the 
+
+### Project changes:
+
+From the beginning of the project to the latest v17 version, our vision of the project has greatly evolved. Thanks to real-user feedbacks, a better understanding of our use cases and how ODS fits in the OVHCloud ecosystem.
+
+With this new version we've tried to tackle most of the known issues to offer a better end-user experience:
+
+-   components are now behaving more like native html elements
+-   components are now easier to use and to customize
+-   no more invasive `console.log`, we only print meaningful warnings when needed
+-   enum values can now be used directly instead of importing it
+-   events are now normalized for all components
+-   release process will be shorter
+
+On top of that, the v18 does bring new features:
+
+-   new components: file-upload and timepicker
+-   latest design applied on all components
+-   now sync with figma changes
+-   a new set of icons
+-   a reworked documentation
+
+To achieve all this, we had to rewrite almost the whole library.
+
+This is a major version change with tons of breaking changes. But this aims to be the last time.
+
+To help you moving from a previous version to the v18, we've added a dedicated page on each component presenting the changes and some migration examples.
+
+### ODS libraries
+
+The following libs have been removed:
+
+-   @ovhcloud/ods-cdk
+-   @ovhcloud/ods-common-core
+-   @ovhcloud/ods-common-stencil
+-   @ovhcloud/ods-common-testing
+-   @ovhcloud/ods-common-theming
+-   @ovhcloud/ods-theme-blue-jeans
+
+There is now only two library published that you should include:
+
+-   `@ovhcloud/ods-components` that contain all web-components, react and vue wrappers and the sass mixins
+-   `@ovhcloud/ods-themes` that contain the design tokens and the assets (fonts and icons)
+
+The CDK has been removed and we do not plan on publishing it again. If you were using part of it, please reach out to us so that we can get more information about your usage.
+
+All common libs have been and we do not plan on publishing them again. If you were using part of them, please reach out to us so that we can get more information about your usage.
+
+The `blue-jeans` theme has been replaced by the default theme of `@ovhcloud/ods-themes`.
+
+### ODS dependencies upgrade
+
+The new version comes with the following upgrade on major library:
+
+-   Stencil bumps from `4.12.0` to `4.16.0`
+-   `node-sass` is not supported anymore and was replaced by `sass` (`1.71.0`)
+-   Typescript bumps from `4.7.4` to `5.3.3`
+-   Storybook bumps from `6.4.19` to `8.0.4`
+
+### Style customization
+
+Although the ODS component comes with the expected design, you can now apply your own style directly on some part of the web-component shadow DOM, thanks to the [part selector](https://developer.mozilla.org/en-US/docs/Web/CSS/::part) .
+
+For example, you can add style on the native `input` element of an `ods-input` component through the following code:
+
+```html
+<style>
+  .my-input::part(input) {
+    width: 300px;
+  }
+</style>
+<ods-input class="my-input" ... />
+```
+
+Most of the component exposes one or more part like this, you can find more information on each component documentation page.
+
+### Sass helpers
+
+In addition to the easier customization, we're also exposing the "basic" style of some core component as Sass mixins that you can use to apply on a native element to get the same ODS rendering.
+
+For example, if you need to make an anchor tag looks like an `ods-link`:
+
+```css
+@import '@ovhcloud/ods-components/style';
+.my-link {
+  @include ods-link();
+  @include ods-link-color('primary');
+}
+```
+
+```html
+<a class="my-link" ...>...</a>
+```
+
+This can be useful when you can't manage some part of the DOM as you want, for example using a library that will always render an anchor and that provide no custom templating.
+
+Be careful though, this does only provide basic style, not all the feature of an ODS component, so we do recommend to use the web-component by default.
+
+### New components:
+
+**File Upload**
+
+**Timepicker**
+
+### Component changes:
+
+Please check the  regarding all the component changes.
+
+## v17.2.2
+
+---
+
+This update brings a few bug fixes across components, ensuring a smoother and more accessible user experience.
+
+### Bug fixes:
+
+**Button**
+
+-   Fix the issue where the button was still clickable on the border while disabled.
+
+### Feature updates:
+
+**Radio-button**
+
+-   Add 'XS' size to radio button.
+
+## v17.2.1
+
+---
+
+This update brings a few bug fixes across components, ensuring a smoother and more accessible user experience.
+
+### Bug fixes:
+
+**Clipboard**
+
+-   A white background is now properly displayed on the `Popover`.
+
+**Menu**
+
+-   A minimal height is now forced in the `Menu` component, giving proper styling on the bottom margin.
+
+## v17.2.0
+
+---
+
+This update introduces our new `Table` component, enhances various features and improves documentation. It also brings numerous bug fixes across components, ensuring a smoother and more accessible user experience.
+
+### New component:
+
+**Table**
+
+### Documentation improvements:
+
+**Form Field**
+
+-   Added an accessibility label.
+-   Updated Storybook Usage Guidelines.
+
+### Feature updates:
+
+**Clipboard**
+
+-   `Tooltip` now features a `3 seconds` closing delay.
+-   `Tooltip` won't be displayed if `success-message` OR `error-message` is not defined.
+
+**Datepicker**
+
+-   `Datepicker` days are now displayed with 2 letters.
+
+**Pagination**
+
+-   New attribute `defaultCurrentPage` has been added.
+-   New method `getCurrentPage()` has been added.
+-   Old attribute `current` has been removed.
+-   Navigation will be hidden if `totalItems` is lower than `itemPerPage`
+
+### Bug fixes:
+
+**Breadcrumb** **Link**
+
+-   Multiple active states issue on Safari browsers has been fixed.
+
+**Datepicker**
+
+-   Error color on `Datepicker`'s border has been fixed.
+
+**Input**
+
+-   Clearing the `Input` now properly focuses it afterwards.
+
+**Modal**
+
+-   Overlaying elements can now overflow from the `Modal`.
+-   Pressing the `ESCAPE` key when a `Select` is open inside a `Modal` no longer displays an unwanted backdrop.
+-   Width value has been fixed on breakpoint.
+
+**Popover**
+
+-   Overlaying elements can now overflow from the `Popover`.
+
+**Textarea**
+
+-   `Textarea` style has been fixed to match the `Input`.
+
+**Tile**
+
+-   Checked `Tile` styling has been fixed on Safari.
+
+**Search Bar**
+
+-   `odsSearchSubmit` event is now properly triggered on `KEY_DOWN` input.
+
+## v17.1.0
+
+---
+
+As we're working towards a massive uniformization of all ODS form elements (events, nav behavior, required state, validity state, ...), the amount of changes is too important to be released immediately.
+
+This release brings the expected form-association of form elements, so that they act as native one for formData submit and reset.
+
+It also fixes the missing types of event (`odsBlur`, `odsFocus`, `odsValueChange`).
+
+### Documentation improvements:
+
+Documentation usage guidelines have been completed with almost all components properties and slots:
+
+-   tons of new components examples
+-   dark background when `contrasted` prop is set
+-   shortcuts have been disabled due to issue with some input preview
+
+### Feature update:
+
+**Pagination**
+
+-   A new `defaultItemsPerPage` has been added, which allows to define the initial value of `itemsPerPage` on first render
+
+### Bug fixes:
+
+**Button / Checkbox / Radio / Range / Tile**
+
+-   Prevent click event on click when disabled on Chromium & Safari.
+
+**Modal**
+
+-   Modal is now correctly cleaned up on disconnect
+
+**Tile**
+
+-   Ensure position stays consistent regarding end/start slot emptiness
+
+### Miscellaneous:
+
+-   Upgrade to StencilJS 4.12
+
+## v17.0.3
+
+---
+
+### Bug fixes:
+
+**Input**
+
+-   Icon size are now displayed at the expected size
+
+**Quantity**
+
+-   Native arrow are now hidden on Safari
+
+**Radio / Radio group**
+
+-   Remove logger issue on documentation example page
+
+**Toggle**
+
+-   Toggle now shrink correctly when slot content are very large
+
+**Tile**
+
+-   Tile borders are now correctly rounded on Safari
+
+## v17.0.2
+
+---
+
+### Bug fixes:
+
+**Modal**
+
+-   Added `enter` and `space` keys binding on the close button + cancel button on Storybook
+-   Fixed display problems within the modal that could lead to some elements getting shrunk
+-   Scroll is now prevented when a modal is open
+
+## v17.0.1
+
+---
+
+### Bug fixes:
+
+**Pagination**
+
+-   Next & previous buttons have been fixed on Chrome & Safari where they could allow the user to go out of bound.
+
+**Radio-Button**
+
+-   Smaller text has been fixed and is now aligning vertically as well.
+
+**Fonts**
+
+-   Fonts have been fixed to display the correct font on Safari.
+
+## v17.0.0
+
+---
+
+As it is a major version, you'll have to follow the 
+
+### Project changes:
+
+Main focus on this version has been on simplifying ODS integration in existing projects (React, Vue, JS, ...).
+
+We now only publish one `ods-components` library that embed all the ODS components.
+
+What this means for your code:
+
+-   `ods-component-xxx` are no longer published and should be removed
+-   only one dependency to add to your `package.json`
+
+```text
+"ods-components": "17.0.0"
+```
+
+ODS components can then be either imported using lazy-loading (the code of each component is loaded on demand) or as a module (the code of the component is tree-shaked by your own bundling system).
+
+For more details on how to import ODS components, see:
+
+-   the updated 
+-   the 16.x to 17.x 
+
+### Documentation improvements:
+
+We went through each component to update:
+
+-   the Demo controls to be more relevant
+-   the Usage Guidelines, with more examples and the missing properties
+-   with React example when relevant (ex: `datagrid` reactFormatter with React 18 or `tabs` with React Router)
+
+### Component changes:
+
+**Pagination**
+
+-   Add `odsItemPerPageChange` when the item per page select change
+
+### Bug fixes:
+
+**Datagrid**
+
+-   Overflowing elements can now correctly be displayed (see updated documentation)
+
+**Menu**
+
+-   Ellipsis is now correctly displayed on Safari
+
+**Modal**
+
+-   Inner element with overlay are now correctly displayed
+
+**Tabs**
+
+-   Fix hover rendering
+
+## v16.6.0
+
+---
+
+### Feature update:
+
+**Breadcrumb**
+
+-   Add attributes on `breadcrumItem` : `disabled`, `rel`, `referrerpolicy`, `target`
+-   Add event on `breadcrumItem` : `odsBreadcrumbItemClick`
+-   Update `OdsHTMLAnchorElementRel` type
+
+**Chip**
+
+-   Added `odsChipRemoval` event
+-   If `OsdsChip` is removable and is clicked, it will emit event `odsChipRemoval`
+-   If `OsdsChip` is removable, focused on and key Enter is pressed, it will emit event `odsChipRemoval`
+
+### Bug fixes:
+
+**Button**
+
+-   Fix position of end slot when start slot is empty in `OsdsButton`
+
+**Datagrid**
+
+-   If the `OsdsDatagrid` contains an overflowing on-interaction element (such as `OsdsMenu`, `OsdsTooltip`, `OsdsSelect` or `OsdsPopover`), the element is either being displayed at the top left corner of the `OsdsDatagrid` (native) or beneath the element, making it unvisible (React). This fix intends to correct this problem in both environments.
+
+**Pagination**
+
+-   Add `itemPerPage` in payload event `odsChange`
+-   Watch `totalPages` & update it
+
+**Phone Number**
+
+-   Fix shadow of flag icon in the select that was cut behind overflow
+
+**Components**
+
+-   Some components were missing from package.json of components: `medium`, `range`, `toggle`
+
+## v16.5.0
+
+---
+
+### Feature update:
+
+**Documentation**
+
+-   Multiple updates to clarify documentation. (Welcome page, Get started, Design tokens, Code, Contributing & libraries)
+-   Removing Starter documentation, as it is deprecated for now.
+
+### Bug fixes:
+
+**Datagrid**
+
+-   `OsdsDatagrid` now emits the event `onBottomScroll`.
+-   `OsdsDatagrid` now supports React Formatters.
+-   Row change has been fixed.
+
+**Modal**
+
+-   `OsdsModal` is now using a `HTMLDialogElement`,
+
+**Phone Number**
+
+-   Flags have been fixed to be displayed with proper width & height.
+
+**Select**
+
+-   Enhanced React support for `OsdsSelect`.
+
+**Storybook**
+
+-   Storybook errors with displaying `OsdsPhoneNumber` & `OsdsSearchBar` inputs has been fixed.
+
+## v16.4.0
+
+---
+
+### New component:
+
+**Datagrid**
+
+-   See Documentation using version selector
+
+### Bug fixes:
+
+**Phone number**
+
+-   Now consistently triggers `odsValueChange` event on type.
+
+**Storybook**
+
+-   The release list now correctly displays the name of the latest version.
+
+### Feature update:
+
+**Component Generator**
+
+-   Component Generator has been upgraded to align with the new architecture (introduced in version 16.0.0).
+
+## v16.3.2
+
+---
+
+### New component:
+
+**Medium**
+
+### Bug fixes:
+
+**Phone number**
+
+-   Emit event when the value is valid
+
+**Accordion**
+
+-   Can't open when the component is disabled
+
+**Quantity**
+
+-   Change the value onblur to be valid with step
+
+**Modal**
+
+-   Add event open & close (odsModalOpen, odsModalClose)
+
+## v16.3.1
+
+---
+
+### Bug fixes:
+
+**Datepicker**
+
+-   The siblings months days are now updated after the datepicker was updated
+
+**Select**
+
+-   Keyboard navigation correction
+
+## v16.3.0
+
+---
+
+### Component changes:
+
+**Button**
+
+-   Each variant now display correctly when using circle button
+
+> ⚠️️ **Breaking change**
+
+-   Circle button may render differently regarding the variant you're using
+
+**Datepicker**
+
+-   Component now close itself when value is selected
+-   You can now hide adjacent month days with the attributes `showSiblingsMonthDays`
+
+**Flag**
+
+-   Component has been refactored internally, but this should not have any impacts
+
+**Icon**
+
+-   Component has been refactored internally, but this should not have any impacts
+
+### Bug fixes:
+
+**Menu**
+
+-   Now correctly work when used with React
+
+**Select**
+
+-   On Safari the component is displayed correctly when using flex
+
+**Textarea**
+
+-   On Safari the component is displayed correctly when using flex
+
+**Tile**
+
+-   On Safari the component is displayed correctly when using flex
+
+### Project changes:
+
+-   The whole project is now built using Stenciljs v4.7
+
+> ⚠️️ **Breaking change**
+
+-   We don't generate the bundle `custom-elements-bundle` anymore
+
+## v16.2.1
+
+---
+
+### Component changes:
+
+**Datepicker**
+
+-   New attribute `locale` to manage internationalization, accepted locales are for now:
+
+-   French
+-   English
+-   German
+-   Spanish
+-   Italian
+-   Polish
+-   Portuguese
+-   Dutch
+
+**Text**
+
+-   Component has been refactored internally, but this should not have any impacts
+
+### Bug fixes:
+
+**Datepicker**
+
+-   Add missing constants and types exports
+
+**Modal**
+
+-   Is now correctly destroyed on page change
+
+**Popover**
+
+-   Now correctly work when used with React
+
+**Select**
+
+-   Selected value is now correctly updated on cnange (ex: translation change)
+
+## v16.2.0
+
+---
+
+### New component:
+
+**Datepicker**
+
+### Component changes:
+
+**Clipboard**
+
+-   Added tooltip confirmation message on paste
+
+### Bug fixes:
+
+**Textarea**
+
+-   Correctly emit `odsValueChange` event on value change.
+
+### Documentation changes:
+
+-   Improve typedoc documentation
+
+## v16.1.1
+
+---
+
+### Documentation fixes:
+
+-   Component specification pages now displays correct information
+-   Tile sandbox now uses correct list of commands
+
+## v16.1.0
+
+---
+
+### New component:
+
+**Phone Number**
+
+### Component changes:
+
+**Input**
+
+-   New attribute `prefixValue` that allow to display a fixed prefix in front of the input value.
+
+**Progress Bar**
+
+> ⚠️️ **Breaking change**
+
+-   `max` and `value` attributes are now `number` and won`t accept` string` anymore.
+
+### Bug fixes:
+
+**Code**
+
+-   Contrasted version have now the right color.
+
+### Project changes:
+
+-   The whole project is now built using node 18.
+
+## v16.0.1
+
+---
+
+Fixes CI build issues when deploying Storybook.
+
+## v16.0.0
+
+---
+
+As it is a major version, you'll have to follow the 
+
+⚠️We're aware that not all the documentation is up-to-date with the latest technical changes ⚠️
+
+⚠️We're currently working on improving the storybook but didn't want to delay the release much more ⚠️
+
+⚠️If you have any issue migrating, reach us directly and we'll help you. ⚠️
+
+### Project changes:
+
+This version embed the whole new project architecture (initiated with the v15).
+
+We now have seperations between:
+
+-   `cdk` (@ovhcloud/ods-cdk) which provides public non component related utilities.
+-   `common` libs (@ovhcloud/ods-common-[core|stencil|testing|theming]) which provides internal helpers.
+-   `components` (@ovhcloud/ods-components or @ovhcloud/ods-component-`<component-name>`) which provide the agnostic components and their React, Vue wrapped versions.
+-   `examples` (@ovhcloud/ods-starter-[react|react-vite|vue-vite]) which contains application examples that use some ODS components.
+-   `shared-dependencies` to share common dependencies internally accross projects.
+-   `storybook` (@ovhcloud/ods-storybook) which tends to centralize all the ODS documentation content.
+-   `themes` (@ovhcloud/ods-theme-blue-jeans) which provides all existing themes that can be applied to ODS.
+
+### Component changes:
+
+**All Components**
+
+-   `@ovhcloud/ods-stencil` package does not exists anymore.
+    
+-   Components are now accessible by adding either `@ovhcloud/ods-component-<component>` or `@ovhcloud/ods-components` dependency.
+    
+-   All `@ovhcloud/ods-stencil-<component>` libs have been replaced by `@ovhcloud/ods-component-<component>`.
+    
+-   All `@ovhcloud/ods-stencil-<component>-react` libs have been replaced by `@ovhcloud/ods-component-<component>-react`.
+    
+-   All `@ovhcloud/ods-stencil-<component>-vue` libs have been replaced by `@ovhcloud/ods-component-<component>- vue`.
+    
+-   Constants/Enums have been renamed to follow new naming convention:
+    
+-   All constants are now in UPPER_SNAKE_CASE.
+    
+-   All objects are now in singular form.
+    
+-   All lists are now in plural form.
+    
+
+Ex: `OdsSpinnerSize` is now `ODS_SPINNER_SIZE`. `OdsSpinnerSizeList` is now `ODS_SPINNER_SIZES`. `OdsSpinnerSizeUnion` has been removed.
+
+-   Exported types follow also the same naming convention, thus most of them are now in singular form.
+
+Ex: `OdsSpinnerAttributes` is now `OdsSpinnerAttribute`.
+
+-   A lot of empty types who were exported previously have been removed.
+
+Ex: `OdsSpinnerEvents` have been removed, as the component does not handle any events. `OdsSpinnerMethods` have been removed, as the component does not expose any methods.
+
+### New component:
+
+**Clipboard**
+
+**Menu**
+
+See documentation using version selector
+
+**Modal**
+
+**Search Bar**
+
+See documentation using version selector
+
+### Features changes:
+
+**Button**
+
+-   Add a new attribute `textAlign` which allows to choose the button text alignement between `center`, `end` and `start`.
+
+### Bug fixes:
+
+**Button**
+
+-   Main slot is now correctly aligned vertically (visible when using icon).
+
+**Flag**
+
+-   Flags are now correctly displayed in the documentation.
+
+**Link**
+
+-   Outline is now correctly updated on viewport change.
+
+## v15.0.1
+
+---
+
+-   Fix new packages release process.
+-   Update documentation.
+
+## v15.0.0
+
+---
+
+As it is a major version, you have to do the 
+
+### Project changes:
+
+This version is the first step towards the new ODS internal architecture. The goal of this refactoring is to simplify and improve the whole project to:
+
+-   provide a better developer experience and thus reduce development time
+-   normalize all components behavior / design / attributes
+-   have better control on dependencies and lib version upgrade
+-   have better control on what ODS expose (through component or CDK)
+-   ...
+
+This first step only impact two components `osds-text` and `osds-textarea`.
+
+All other components will follow on next version.
+
+Then common ODS lib and theming will be refactored on next version.
+
+### Features changes:
+
+-   **Text**
+    
+-   `OsdsText` is no longer part of `@ovhcloud/ods-stencil` package.
+    
+-   `OsdsText` is now accessible by adding either `@ovhcloud/ods-component-text` or `@ovhcloud/ods-components` dependency.
+    
+-   `@ovhcloud/ods-stencil-text` lib has been replaced by `@ovhcloud/ods-component-text`.
+    
+-   `@ovhcloud/ods-stencil-text-react` lib has been replaced by `@ovhcloud/ods-component-text-react`.
+    
+-   `@ovhcloud/ods-stencil-text-vue` lib has been replaced by `@ovhcloud/ods-component-text- vue`.
+    
+-   `OdsTextSize` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_SIZE` from `@ovhcloud/ods-component-text`.
+    
+-   `OdsTextSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_SIZES` from `@ovhcloud/ods-component-text`.
+    
+-   `OdsTextSizeUnion` has been removed from `@ovhcloud/ods-core`.
+    
+-   `OdsTextLevel` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_LEVEL` from `@ovhcloud/ods-component-text`.
+    
+-   `OdsTextLevelList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_LEVELS` from `@ovhcloud/ods-component-text`.
+    
+-   `OdsTextLevelUnion` has been removed from `@ovhcloud/ods-core`.
+    
+-   `@ovhcloud/ods-component-text` exports only `OdsTextAttribute` as component interface.
+    
+-   **Textarea**
+    
+-   `OsdsTextarea` is no longer part of `@ovhcloud/ods-stencil` package.
+    
+-   `OsdsTextarea` is now accessible by adding either `@ovhcloud/ods-component-textarea` or `@ovhcloud/ods-components` dependency.
+    
+-   `@ovhcloud/ods-stencil-textarea` lib has been replaced by `@ovhcloud/ods-component-textarea`.
+    
+-   `@ovhcloud/ods-stencil-textarea-react` lib has been replaced by `@ovhcloud/ods-component-textarea-react`.
+    
+-   `@ovhcloud/ods-stencil-textarea-vue` lib has been replaced by `@ovhcloud/ods-component-textarea- vue`.
+    
+-   `OdsTextAreaSize` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZE` from `@ovhcloud/ods-component-textarea`.
+    
+-   `OdsTextAreaSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZES` from `@ovhcloud/ods-component-textarea`.
+    
+-   `OdsTextAreaSizeUnion` has been removed from `@ovhcloud/ods-core`.
+    
+-   `@ovhcloud/ods-component-textarea` exports only `OdsTextAttribute`, `OdsTextAreaEvent` and `OdsTextAreaValueChangeEvent` as component interfaces.
+    
+-   `OsdsTextarea` is now displayed as flex by default.
+    
+-   `OsdsTextarea` `flex` attribute has been removed.
+    
+-   `OsdsTextarea` `inline` attribute has been added.
+    
+
+## v14.1.0
+
+---
+
+### New features:
+
+-   **CDK**
+-   Manage surface position when located on the edge.
+-   The surface can now be centered at the top or bottom of the trigger. See CDK Documentation using version selector.
+
+We added the following components:
+
+**Form Field**
+
+**Switch**
+
+### Features changes:
+
+-   **Pagination**
+    
+-   Add tooltip to the arrows.
+    
+-   Can now show pages according to a numbers of items shown by page.
+    
+
+> For more information, check our documentation 
+
+-   **Location-tile**
+    
+-   Component is now deprecated and won't be supported anymore. It will be deleted in a future release.
+    
+
+> For more information, check our replacement guide using version selector.
+
+### Bug fixes:
+
+-   **Radio**:
+    
+-   Radio button is now unfocusable when disabled
+    
+-   **Input**:
+    
+-   cursor is set to not-allowed when disabled
+    
+
+## v14.0.0
+
+---
+
+As it is a major version, you have to do the 
+
+### New features:
+
+We added the following components:
+
+-   **Progress Bar**: 
+-   **Popover**: 
+-   **Tooltip**: 
+
+Components version 2:
+
+-   **Input V2**: 
+-   new properties have been added
+-   `loading`: it displays a Spinner
+-   `clearable`: it clears the input value on click
+-   `masked`: it indicates if the input value is hidden or not (to be used with password type)
+-   new types have been added: `date`, `email`, `password`, `search`, `tel`, `text`, `time` and `url`
+-   **Select V2**: it is now connected to our CDK and keyboard navigation has been added 
+
+**Quantity** component accepts four digits in the input field:
+
+**CDK** (Component Development Kit): new symmetry strategies have been added (left and right):
+
+See CDK Documentation using version selector.
+
+### Bug fixes:
+
+-   **Tile**:
+-   `hoverable` attribute has been added to avoid double focus
+-   `interactive` attribute has been removed
+
+> ⚠️️ **Breaking change**  
+> For more information, check our migration guide
+
+-   **Link**:
+-   add missing color for active state
+-   fix Link host container size to match its content
+-   **Icon**: add `hoverable` attribute so component color can change when in selectable parent
+-   **Checkbox Button**: aspect ratio has been added
+-   **Quantity**: icons alignment has been fixed
+-   **Textarea**: when component is resized and `flex` attribute is set to `true` and then, set back to `false`, Textarea width is no more blocked to 100%
+
+## v13.0.0
+
+---
+
+As it is a major version, you have to do the 
+
+### New features:
+
+We added the following components:
+
+-   Breadcrumb: 
+-   Collapsible: See Documentation using version selector
+-   Pagination: 
+-   Spinner: 
+
+Circle-shaped button has been added to Button Component (circle attribute)
+
+### Bug fixes:
+
+-   Button: `button' and` link`roles have been added (switching to`link` role when Button has a href property)
+    
+-   Chip: expected style on Chip focus has been applied
+    
+-   Icon: missing download icon has been added
+    
+-   Input: odsValueChange event won't emit on component init
+    
+-   Link:
+    
+-   all content in Link is now aligned as expected
+    
+-   href and target attributes are optional
+    
+-   Select :
+    
+-   check for outside click target inside its DOM
+    
+-   fixed width on non flex Select has been removed
+    
+
+> ⚠️️ **Breaking change**  
+> For more information, check our migration guide
+
+## v12.1.0
+
+---
+
+### New features:
+
+We added the Tabs component.  
+
+A component generator has been added. Now, you can use that tool to generate a new component easily.  
+
+A coding Style has also been added so you can check our guidelines and how to write code for OVHcloud Design System project.  
+
+The Contributing Documentation has been updated:
+
+-   How to use a component in an other one
+-   Theming: how to customize a style
+-   some warning about pushing any sensitive content
+
+### Bug fixes:
+
+Range component color when in error has been fixed.
+
+Some width issue on Button component has been fixed.  
+When in flex, a Button can now display an ellipsis for text content when necessary.
+
+## v12.0.5
+
+---
+
+### Bug fixes:
+
+Button component of type submit in a form will now submit the form as expected (by click or Enter / Space keys).
+
+Quantity component issue has been fixed regarding minus control that should be disabled when the input `min` attribute is equal to 0 and its value has reached 0 too.
+
+## v12.0.0
+
+---
+
+First release on GitHub. There is no new feature in this version. It is now open source
+
+## v11.0.0
+
+---
+
+Flag component has been modified; you’ll need to update as explained in the migration guide. For more details about assets, see  page. New attributes are available on this component: `lazy`, `assetPath` and `src`.
+
+Before importing any component you now have to setup ods.
+
+Dual range is now available for Range component; It offers two handles to set a min and max value.
+
+To build resilient infrastructure and promote sustainable industrialization, we moved code that could be agnostic. Now, ODS components logic has been moved into controllers. If you want to contribute to ODS by developing new components, please refer to the how-to section for controllers in our Storybook.
+
+Now, Button component has `download` and `rel` new attributes available when it is used as a link (href).
+
+We had blur events on Quantity component to set the correct value regarding the Quantity bounds. It means when the user set manually a value that is out of bounds for Quantity, the value will be automatically reset to a correct value. When Quantity is out of bounds, the field value is now in error state.
+
+## v10.2.0
+
+---
+
+A new library called `CDK` for `Component Development Kit` is available. The main objective is to make the development to be easier thanks to helpers. The first integrated feature is an overlay system that allows manipulating and displaying content on foreground of the page.
+
+We added a new entire section for `contributions` in the storybook. Feel free to read the Contributing Documentation if you want to contribute.
+
+We simplified our developer environment with a `global.dev.ts` file in order to make the developer tests isolated from the production build.
+
+We optimized our CI/CD workflow for a more reactive and efficient build time and release time.
+
+We fixed some issue about automated screenshot testing with some timeout.
+
+## v10.1.0
+
+---
+
+We added the select component (version 1).
+
+## v10.0.0
+
+---
+
+We updated a lot of third dependencies (stencilJs, typescript, jest, puppeteer, ...):
+
+```text
+@stencil/core ~2.6.0 to ~2.18.1
+@stencil/sass ~1.4.1 to ~2.0.0
+jest ~26.6.3 to ~27.4.5
+@types/jest ~26.0.24 to ~27.5.2
+jest-cli ~26.6.3 to ~27.4.5
+jest-puppeteer ^5.0.4 to ~6.1.1
+jest-puppeteer-preset ^5.0.4 to ~6.1.1
+ts-jest ~26.5.6 to ~27.1.5
+typescript 4.2.3 to 4.7.4
+puppeteer ~5.5.0 to ~10.0.0
+yarn-2.4.2 to yarn-3.2.4
+node-fetch ~2.6.6 to ~2.6.7
+ts-node ~9.1.1 to ~10.7.0
+```
+
+> If you are an `ODS` contributor, you may need to do some changes
+
+We now build all of our components for `React` and `Vue` frameworks. They allow to use all the potential and features of your high-end JS framework. You can read the updated  to initialize an App with ODS and see how it works depending the framework.
+
+Also, `ods-cart` is no more impacted by a parent container with `text-align:center`.
+
+`ods-textarea` had an incorrect `spellcheck` property than could be equal to `spellcheck="false'` which is incorrect in HTML. Now it is in DOM only if it is `true`.
+
+You can now disable animation on `ods-toggle` by defining a CSS value `--ods-toggle-transition-slider: none`.
+
+Css variables `--ods-size-squish-n-*` and `--ods-size-stretch-n-*` are no more incorrect. It was previously set with only one number instead of two, accordingly with CSS3.
+
+## v9.1.0
+
+---
+
+Adding 2 new components :
+
+-   accordion: display a content that can be collapsed
+-   code: display a snippet of code and copy it into the clipboard
+
+If you already have customized themes, you have to declare the variables for this 2 new components. see more in the migration guide 9.x
+
+## February 2022
+
+---
+
+The V1 **Design System** graphical charter is finalized. This charter contains :
+
+-   Multiple color palettes (blue, gray, red, orange, green, availability & promotion extra colors)
+-   A Typography system
+-   All spacing options
+-   Components:
+-   **Buttons**
+-   **Form items** (inputs, dropdowns, checkboxes, radios, radio buttons, toggle buttons, range, textarea, etc.)
+-   **Chips & Badges**
+-   **Cards**
+-   **Cart**
+
+## Recipes
+
+# Components
+
+_Recipes are ready-to-use UI patterns built with ODS components. They provide pre-implemented code snippets for common use cases, helping you build consistent interfaces faster. Each recipe may include multiple implementations, so you can choose the styling approach that fits your project._
+
+Filter recipes:
+
+---
+
+Config Tile
+
+VPS 1
+
+4 vCore8 Go RAM100 Go 1 day automated backup Unlimited traffic 200 Mbps
+
+12 months6 monthsNo commitment
+
+From€24.46ex. VAT/monthor €13.19 incl. VAT/month
+
+Email Field
+
+Email- mandatory
+
+@
+
+.fr.com.dev
+
+The part before the email address (the text before the @) must follow these guidelines:
+
+-   It must end with a letter or a number
+-   Allowed special characters are: ".", "_", "-"
+-   Special characters cannot be placed next to each other
+
+Feature List
+
+-   Memory: up to 1.5 TB
+    
+-   SLA: 99.99%
+    
+-   Guaranteed public bandwidth from 5 Gbps to 25 Gbps
+    
+-   25 Gbps private bandwidth included
+    
+-   OVHcloud Link Aggregation
+    
+
+Feature List Product Card
+
+WEB HOSTING
+
+NewBest seller
+
+Performance
+
+For demanding online stores and projects.
+
+1 vCore 2,4 GHz, 2 Go RAM1 vCore 2,4 GHz, 4 Go RAM2 vCores 2,4 GHz, 8 Go RAM
+
+From
+
+€24.46ex. VAT/month
+
+or €13.19 incl. VAT/monthfor a 24-month registration
+
+Minimum 2-year registration €100 free with a 5-year registration
+
+Installation fee:Free
+
+-   -   Unlimited websites
+        
+    -   High power level
+        
+    -   1 domain name free for the first
+        
+    -   500 GB SSD storage
+        
+    -   1,000 email addresses
+        
+-   1-click CMS
+    
+    -   WordPress
+        
+    -   Joomla!
+        
+    -   Drupal
+        
+    -   Prestashop
+        
+-   Database
+    
+    -   4 x 1 GB databases
+        
+    -   8 GB Web Cloud Databases
+        
+-   Security
+    
+    -   Unlimited free SSL
+        
+    -   Anti-DDoS protection
+        
+    -   Anti-virus and anti-spam
+        
+    -   Daily backups
+        
+-   Performance
+    
+    -   99.9% observed availability
+        
+    -   Guaranteed resources
+        
+    -   Unlimited traffic
+        
+    -   Service continuity
+        
+    -   Boost option to withstand temporary traffic spikes
+        
+-   Support and additional services
+    
+    -   Git
+        
+    -   Standard support
+        
+    -   SSH access
+        
+    -   CDN Basic
+        
+
+Media Product Card
+
+AI Deploy
+
+Easily deploy machine learning models and applications into production, create your API access points with ease, and make effective predictions.
+
+Order Button
+
+Range Input
+
+0100
+
+Status Message
+
+Activate your project and get €200 in free cloud credit
+
+You are currently in discovery mode. Activate your project to unlock your cloud resources and start building in minutes.
+
+Status Modal

@@ -8,6 +8,7 @@ enum SECTION {
   home = 'OVHcloud Design System',
   migrationGuide = 'Migration guide',
   reactComponents = 'React Components',
+  recipes = 'Recipes',
   tools = 'Tools',
   whatsNew = 'What\'s new?',
 }
@@ -85,6 +86,10 @@ enum REACT_COMPONENTS_TITLE {
   treeView = `${SECTION.reactComponents}/Tree View`,
 }
 
+enum RECIPES_TITLE {
+  components = `${SECTION.recipes}/Components`,
+}
+
 enum STORY {
   documentation = 'Documentation',
   technicalInformation = 'Technical information',
@@ -93,6 +98,7 @@ enum STORY {
 export {
   HOME_TITLE,
   REACT_COMPONENTS_TITLE,
+  RECIPES_TITLE,
   SECTION,
   STORY,
 };

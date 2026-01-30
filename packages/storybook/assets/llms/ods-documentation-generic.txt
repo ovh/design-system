@@ -249,6 +249,9 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | --ods-theme-border-color-selected | #00185e | 
 
  |
+| --ods-theme-brand-color | #000e9c | 
+
+ |
 | --ods-theme-heading-text-color | #00185e | 
 
  |
@@ -928,6 +931,16 @@ Replace the `Fragment` with an actual node:
 </Tooltip>
 ```
 
+## Overlay elements are not displayed correctly in a drawer/modal
+
+---
+
+`Modal` and `Drawer` components have a `z-index` greater than other overlay components. This is to prevent those to appear behind an open modal/drawer.
+
+To allow overlay elements to correcty render inside a modal/drawer, add the `createPortal={ false }` attribute to the `Content` component of the overlay element.
+
+See  and .
+
 ## Icons are not displayed
 
 ---
@@ -1151,25 +1164,16 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 
 Screen readers will announce a button.
 
+Filter your search results
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Button aria-labelledby="filter-btn">
-        <Icon name={ICON_NAME.filter} />
-      </Button>
-      <span id="filter-btn">Filter your search results</span>
-    </>
-}
+<>
+  <Button aria-labelledby="filter-btn">
+    <Icon name="filter" />
+  </Button>
+  <span id="filter-btn">
+    Filter your search results  </span>
+</>
 ```
 
 When the **Button** is focused, the screen reader should announce the linked label.
@@ -1209,7 +1213,7 @@ Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 ```jsx
 {
   globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalTrigger } from '@ovhcloud/ods-react';`
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`
   },
   tags: ['!dev'],
   render: ({}) => <Modal>
@@ -1218,9 +1222,8 @@ Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
           Trigger Modal        </Button>
       </ModalTrigger>
       <ModalContent>
+        <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
         <ModalBody>
-          <h2 id="modal-title">
-            Delete item          </h2>
           <p id="modal-content">
             Are you sure you want to delete this item? This action cannot be undone.          </p>
         </ModalBody>
@@ -1232,23 +1235,25 @@ Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 Screen readers won't announce the **Modal** content.
 
 ```jsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button>
-      Trigger Modal    </Button>
-  </ModalTrigger>
-  <ModalContent
-    aria-describedby="modal-content"
-    aria-labelledby="modal-title"
-  >
-    <ModalBody>
-      <h2 id="modal-title">
-        Delete item      </h2>
-      <p id="modal-content">
-        Are you sure you want to delete this item? This action cannot be undone.      </p>
-    </ModalBody>
-  </ModalContent>
-</Modal>
+{
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal        </Button>
+      </ModalTrigger>
+      <ModalContent aria-describedby="modal-content" aria-labelledby="modal-title">
+        <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+        <ModalBody>
+          <p id="modal-content">
+            Are you sure you want to delete this item? This action cannot be undone.          </p>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+}
 ```
 
 Screen readers will announce the **Modal** content.
@@ -1516,6 +1521,8 @@ Screen readers will announce the error message, even when the user is focused el
 ```
 
 Screen readers will read each star individually with no context of selection group.
+
+Rating
 
 ```jsx
 {
@@ -1870,6 +1877,10 @@ Current locales supported by ODS:
 -   pl
 -   pt
 
+## Roadmap
+
+---
+
 ## ## A collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
 
 [Design Guidelines](https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system) [GitHub repository](https://github.com/ovh/design-system)
@@ -2201,6 +2212,120 @@ To check how to start with this new version, please follow the  documentation.
 ## What's new ?
 
 ---
+
+## v19.5.0
+
+---
+
+### New components:
+
+**Editable**
+
+.
+
+**Logo**
+
+.
+
+**Tile**
+
+.
+
+### New recipes:
+
+**Config Tile**
+
+.
+
+**Feature List Product Card**
+
+.
+
+### Design updates:
+
+**Theme**
+
+-   New token `--ods-theme-brand-color` has been added.
+-   `ods-color-promotion` has been updated to a new value.
+
+**Accordion**
+
+-   Now has a default border radius.
+
+**Badge**
+
+-   `--ods-badge-text-color-promotion` token as been updated to match new promotion color.
+-   Badge sizes and padding have been adjusted.
+
+**Modal**
+
+-   Header is now a colorless element that can contain actual content.
+
+**Tag**
+
+-   Tag sizes and padding have been adjusted.
+
+### Feature updates:
+
+**Overlays z-index** In previous version of ODS, `Drawer` and `Modal` z-indexes were set to a lesser value than other overlay elements (popover, select, ...). This was allowing those to display correctly when set inside a modal. But this was causing an issue when, for example, a popover was kept open behind a modal, as it will be visible above the modal backdrop.
+
+Starting from this version, `Drawer` and `Modal` z-indexes are now greater than other overlay elements. This may cause issue with your current usage of overlay elements inside `Modal`.
+
+To use such element correctly, you'll have to set the `createPortal={ false }` on overlay elements inside `Modal`. You can see some examples on the .
+
+We've also added a `positionerStyle` attribute on all overlay elements to allow you to override the positioner style and set up your own `z-index` values if needed.
+
+**Accordion**
+
+-   New attribute `expandIconPosition` has been added.
+
+**Datepicker**
+
+-   New attribute `positionerStyle` has been added.
+
+**Drawer**
+
+-   New attribute `positionerStyle` has been added.
+
+**Form Field**
+
+-   New composition component `FormFieldLabelSubLabel` has been added.
+
+**Modal**
+
+-   New attribute `backdropStyle` has been added.
+-   New attribute `positionerStyle` has been added.
+-   New composition component `ModalHeader` has been added.
+-   You can now setup your own modal header with a custom node.
+-   [DEPRECATED] Color attribute is not used anymore, as modal header doesn't have any color anymore.
+
+**Popover**
+
+-   New attribute `positionerStyle` has been added.
+
+**Select**
+
+-   New attribute `positionerStyle` has been added.
+
+**Tooltip**
+
+-   New attribute `positionerStyle` has been added.
+
+### Recipe changes:
+
+**Feature List** **Order Button** **Product Card**
+
+-   Style have updated with latest design requirements, mostly text changes and tooltip alignment.
+
+### Documentation improvements:
+
+A new page `Roadmap` has been added to the documentation. You can refer to it to have an overview of what we're working on and what you could expect for the future ODS releases. Please note that this page may be updated in case of major priority changes, outside of an ODS version release.
+
+-   Medium examples have been updated as they were the same as `Logo`.
+
+### Miscellaneous:
+
+-   Remove console warning about `Modal` color depreciation, as it was print even if color wasn't set.
 
 ## v19.4.1
 
@@ -4533,9 +4658,19 @@ Filter recipes:
 
 ---
 
+Config Tile
+
+VPS 1
+
+4 vCore8 Go RAM100 Go 1 day automated backup Unlimited traffic 200 Mbps
+
+12 months6 monthsNo commitment
+
+From€24.46ex. VAT/monthor €13.19 incl. VAT/month
+
 Email Field
 
-Email:
+Email- mandatory
 
 @
 
@@ -4550,10 +4685,96 @@ The part before the email address (the text before the @) must follow these guid
 Feature List
 
 -   Memory: up to 1.5 TB
+    
 -   SLA: 99.99%
+    
 -   Guaranteed public bandwidth from 5 Gbps to 25 Gbps
+    
 -   25 Gbps private bandwidth included
+    
 -   OVHcloud Link Aggregation
+    
+
+Feature List Product Card
+
+WEB HOSTING
+
+NewBest seller
+
+Performance
+
+For demanding online stores and projects.
+
+1 vCore 2,4 GHz, 2 Go RAM1 vCore 2,4 GHz, 4 Go RAM2 vCores 2,4 GHz, 8 Go RAM
+
+From
+
+€24.46ex. VAT/month
+
+or €13.19 incl. VAT/monthfor a 24-month registration
+
+Minimum 2-year registration €100 free with a 5-year registration
+
+Installation fee:Free
+
+-   -   Unlimited websites
+        
+    -   High power level
+        
+    -   1 domain name free for the first
+        
+    -   500 GB SSD storage
+        
+    -   1,000 email addresses
+        
+-   1-click CMS
+    
+    -   WordPress
+        
+    -   Joomla!
+        
+    -   Drupal
+        
+    -   Prestashop
+        
+-   Database
+    
+    -   4 x 1 GB databases
+        
+    -   8 GB Web Cloud Databases
+        
+-   Security
+    
+    -   Unlimited free SSL
+        
+    -   Anti-DDoS protection
+        
+    -   Anti-virus and anti-spam
+        
+    -   Daily backups
+        
+-   Performance
+    
+    -   99.9% observed availability
+        
+    -   Guaranteed resources
+        
+    -   Unlimited traffic
+        
+    -   Service continuity
+        
+    -   Boost option to withstand temporary traffic spikes
+        
+-   Support and additional services
+    
+    -   Git
+        
+    -   Standard support
+        
+    -   SSH access
+        
+    -   CDN Basic
+        
 
 Media Product Card
 

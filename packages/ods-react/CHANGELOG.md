@@ -8,6 +8,37 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.5.0](https://ovh.github.io/design-system/v19.5.0/?path=/docs/design-system-changelog--page) (2026-01-30)
+[compare](https://github.com/ovh/design-system/compare/v19.4.1...v19.5.0)
+
+### Bug Fixes
+
+* **doc:** cancel correctly the editable value on uncontrolled ([b74b7b5](https://github.com/ovh/design-system/commit/b74b7b5ec39fdc00c8d49fb2d9efb9fdec9c2909))
+
+
+### Features
+
+* **accordion:** add support for a configurable expand icon position ([e9c84e1](https://github.com/ovh/design-system/commit/e9c84e16aad6aca529d2bfe472ec7b0281328c3f))
+* **accordion:** update styles to adjust border radius for open state ([51d446f](https://github.com/ovh/design-system/commit/51d446f37cde5df8c42c31f405cbdaa69d411983))
+* **editable:** implement component ([4eedfec](https://github.com/ovh/design-system/commit/4eedfec708bb5087e4460a0b547a9200a742f993))
+* **editable:** update default a11y translations ([719ed35](https://github.com/ovh/design-system/commit/719ed353de401b9a0ec4b5082cd3838e6404a063))
+* **form-field:** add column gap support to form field label styles ([b29595c](https://github.com/ovh/design-system/commit/b29595cb157b354c5bd13869b708728225ef60ad))
+* **form-field:** add FormFieldLabelAddon component and update related stories ([dc57f7e](https://github.com/ovh/design-system/commit/dc57f7ed8d4acdc9081a5169c5194447b0de761d))
+* **form-field:** rename FormFieldLabelAddon to FormFieldLabelSubLabel ([adf1aee](https://github.com/ovh/design-system/commit/adf1aeed42c7e791ac5b4d5677e355c4c728317f))
+* **modal:** add ModalHeader component to documentation ([c7cb6d4](https://github.com/ovh/design-system/commit/c7cb6d4eb5e696889edf83bee7b713744c12c30b))
+* **modal:** expose modal header & deprecate color variants ([50e942e](https://github.com/ovh/design-system/commit/50e942e0036a4c80232993038a7ef1dce9e8da78))
+* **overlays:** add positionerStyle attribute ([67851e1](https://github.com/ovh/design-system/commit/67851e1b6f4c8ba1868a8301518b36092e4134af))
+* **tag:** add multiline support and update styles for dynamic height ([ceee87f](https://github.com/ovh/design-system/commit/ceee87f613e82f59c3ee144660c16cb1e91053ab))
+* **tag:** adjust padding variable for large size ([f63c018](https://github.com/ovh/design-system/commit/f63c01872220b8b213ac09801cc79fc8b0c88b48))
+* **tile:** add box-shadow styles for hover and selected states ([c1cb633](https://github.com/ovh/design-system/commit/c1cb6335b4418c2b6070c4c968b9bb75295dee57))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.4.1](https://ovh.github.io/design-system/v19.4.1/?path=/docs/design-system-changelog--page) (2026-01-14)
 [compare](https://github.com/ovh/design-system/compare/v19.4.0...v19.4.1)
 

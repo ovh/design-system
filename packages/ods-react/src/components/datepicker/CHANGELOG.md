@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.5.0](https://ovh.github.io/design-system/v19.5.0/?path=/docs/design-system-changelog--page) (2026-01-30)
+[compare](https://github.com/ovh/design-system/compare/v19.4.1...v19.5.0)
+
+### Features
+
+* **overlays:** add positionerStyle attribute ([67851e1](https://github.com/ovh/design-system/commit/67851e1b6f4c8ba1868a8301518b36092e4134af))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.4.1](https://ovh.github.io/design-system/v19.4.1/?path=/docs/design-system-changelog--page) (2026-01-14)
 [compare](https://github.com/ovh/design-system/compare/v19.4.0...v19.4.1)
 

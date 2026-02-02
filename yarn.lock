@@ -4854,6 +4854,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-menu@workspace:packages/ods-react/src/components/menu":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-menu@workspace:packages/ods-react/src/components/menu"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-message@workspace:packages/ods-react/src/components/message":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-message@workspace:packages/ods-react/src/components/message"

@@ -1,0 +1,12 @@
+@layer ods-molecules {
+  .menu-submenu {
+    cursor: pointer;
+    padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+
+    &:hover,
+    &[data-highlighted],
+    &[data-highlighted]:hover {
+      background-color: var(--ods-theme-input-option-background-color-hover);
+    }
+  }
+}

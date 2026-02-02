@@ -8,3 +8,4 @@ export * from './range-input/src';
 export * from './feature-list-product-card/src';
 
 export * from './config-tile/src';
+export * from './dashboard-card/src';

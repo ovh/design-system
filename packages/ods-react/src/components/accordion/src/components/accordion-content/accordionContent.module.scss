@@ -1,6 +1,7 @@
 @layer ods-atoms {
   .accordion-content {
-    border-radius: inherit;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
     padding: 0 var(--ods-accordion-padding-horizontal) var(--ods-accordion-padding-vertical);
   }
 }

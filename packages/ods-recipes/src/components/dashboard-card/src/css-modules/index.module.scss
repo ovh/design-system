@@ -18,8 +18,7 @@
   &__name,
   &__id,
   &__region,
-  &__plugins,
-  &__footer {
+  &__plugins {
     display: flex;
     flex-flow: column;
     row-gap: var(--ods-theme-row-gap);
@@ -38,7 +37,7 @@
     &__content {
       display: flex;
       flex-flow: column;
-      row-gap: calc(var(--ods-theme-row-gap) / 2);
+      row-gap: var(--ods-theme-row-gap);
 
       &__plugin {
         display: inline-flex;

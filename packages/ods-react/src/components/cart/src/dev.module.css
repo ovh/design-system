@@ -1,0 +1,15 @@
+.custom-cart__product__label {
+  color: red;
+  font-size: 24px;
+}
+
+.custom-cart__product__price {
+  display: flex;
+  flex-flow: column;
+  row-gap: calc(var(--ods-theme-row-gap) / 4);
+}
+
+.custom-cart__product__price__old {
+  color: var(--ods-theme-text-color-disabled);
+  text-decoration: line-through;
+}

@@ -1,0 +1,119 @@
+import { Meta } from '@storybook/blocks';
+import * as MenuStories from './menu.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+
+<Meta of={ MenuStories } name="Documentation" tags={ ['new'] } />
+
+<Banner of={ MenuStories } />
+
+_A Menu component provides a list of options or actions that appear when a user interacts with its trigger element._
+
+<Canvas of={ MenuStories.Overview } sourceState="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+Name: Menu
+Also known as: Dropdown Menu, Context Menu, Options/Actions Menu
+
+<IdentityCard aliases={ ['Dropdown Menu', 'Context Menu', 'Options/Actions Menu'] }
+              figmaLink="TODO"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/menu"
+              name="Menu"
+              startingVersion={ 19 }>
+  The Menu component allows users to access related actions through a compact, organized list. It may inclue simple or grouped actions.
+</IdentityCard>
+
+<Heading label="Usage" level={ 2 } />
+
+The Menu component is commonly used for:
+
+- User account options (profile, settings, logout)
+- Contextual actions in tables or list (edit, duplicate, delete)
+- Organizing multiple secondary actions under one trigger (e.g., "More options")
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    '- Don’t use a Menu as primary navigation structure',
+    '- Don\'t overload a Menu with too many unrelated actions',
+    '- Don\'t place destructive actions (e.g., "Delete") without clear distinction or confirmation ?',
+  ]}
+  dos={[
+    '- Group related actions under headings when the list is long',
+    '- Use separators when needed to clarify structure between distinct actions',
+    '- Ensure the most frequently used actions are near the top',
+  ]}
+/>
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+img (attached to this Jira) TODO
+
+1. **Menu**
+2. **Trigger**
+3. **Menu container**
+4. **Item**
+5. **Group** - optional
+
+<Heading label="Behavior" level={ 2 } />
+
+The Menu opens when the trigger element is clicked. The list of items will be displayed.
+
+Selecting an item triggers its associated action and closes the Menu.
+
+Clicking outside closes the Menu.
+
+<Heading label="Disabling" level={ 3 } />
+
+Disabled items cannot be selected, or interact with.
+
+<Heading label="Grouping" level={ 3 } />
+
+Heading
+
+An optional label above a group of related items is displayed.
+
+Separator / Divider
+
+A separator is displayed between the groups or between items.
+
+<Heading label="Nested Menus" level={ 3 } />
+
+The Menu supports nested sub-menus with a maximum depth of one level.
+A menu item may expose a sub-menu, indicated visually with a right-facing arrow.
+Sub-menu opens when the user hovers over the parent menu item.
+Closing the Menu also closes any open sub-menu.
+
+<Heading label="Navigation" level={ 2 } />
+
+<Heading label="Focus Management" level={ 3 } />
+
+The Menu trigger can receive keyboard focus and is part of the standard tab order.
+
+When the Menu opens, the first enabled item is focused.
+
+Focus is trapped within the Menu until it is closed.
+
+If the Menu closes, focus returns to the trigger element.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing `Arrow Up / Down` navigates through items.
+
+Pressing `Enter` or `Space` activates the focused item.
+
+Pressing `Arrow Left` or `Escape` closes a sub-menu or the Menu.
+
+Pressing `Arrow Right` opens a sub-menu (when relevant)
+
+Pressing `Tab`, or `Shift` + `Tab`, exits the Menu and moves to the next/previous focusable element
+
+<Heading label="Accessibility" level={ 2 } />
+
+This component complies with the Menu WAI-ARIA design pattern.

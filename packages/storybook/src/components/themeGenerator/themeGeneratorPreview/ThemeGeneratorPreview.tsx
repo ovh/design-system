@@ -22,6 +22,7 @@ import * as KbdStories from '../../../../stories/components/kbd/kbd.stories';
 import * as LinkStories from '../../../../stories/components/link/link.stories';
 import * as LogoStories from '../../../../stories/components/logo/logo.stories';
 import * as MediumStories from '../../../../stories/components/medium/medium.stories';
+import * as MenuStories from '../../../../stories/components/menu/menu.stories';
 import * as MessageStories from '../../../../stories/components/message/message.stories';
 import * as MeterStories from '../../../../stories/components/meter/meter.stories';
 import * as ModalStories from '../../../../stories/components/modal/modal.stories';
@@ -74,6 +75,7 @@ const THEME_STORY_MODULES = {
   Link: LinkStories,
   Logo: LogoStories,
   Medium: MediumStories,
+  Menu: MenuStories,
   Message: MessageStories,
   Meter: MeterStories,
   Modal: ModalStories,
@@ -136,6 +138,7 @@ const THEME_PREVIEW_COMPONENTS: ThemePreviewItem[] = [
   { key: 'Link', kind: REACT_COMPONENTS_TITLE.link, label: 'Link' },
   { key: 'Logo', kind: REACT_COMPONENTS_TITLE.logo, label: 'Logo' },
   { key: 'Medium', kind: REACT_COMPONENTS_TITLE.medium, label: 'Medium' },
+  { key: 'Menu', kind: REACT_COMPONENTS_TITLE.menu, label: 'Menu' },
   { key: 'Message', kind: REACT_COMPONENTS_TITLE.message, label: 'Message' },
   { key: 'Meter', kind: REACT_COMPONENTS_TITLE.meter, label: 'Meter' },
   { key: 'Modal', kind: REACT_COMPONENTS_TITLE.modal, label: 'Modal' },

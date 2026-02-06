@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/menu/documentation/cssVariable.json';
+import specificationsMenu from '../../../../ods-react/src/components/menu/documentation/menu.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as MenuStories from './menu.stories';
+
+<Meta of={ MenuStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ MenuStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ MenuStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/menu/anatomy-tech.png" />
+
+1. **Menu**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsMenu }
+  of={ MenuStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ MenuStories.Default } sourceState="shown" />
+
+<Heading label="Controlled" level={ 3 } />
+
+<Canvas of={ MenuStories.Controlled } sourceState="shown" />
+
+<Heading label="Group" level={ 3 } />
+
+<Canvas of={ MenuStories.Group } sourceState="shown" />
+
+<Heading label="Nested" level={ 3 } />
+
+<Canvas of={ MenuStories.Nested } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Menu" />

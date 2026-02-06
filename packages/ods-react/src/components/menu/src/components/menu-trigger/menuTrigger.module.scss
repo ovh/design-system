@@ -1,0 +1,43 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/input';
+@use '../../../../../style/state';
+
+@layer ods-atoms {
+  .menu-trigger {
+    &:focus-visible {
+      @include focus.ods-focus();
+    }
+  }
+
+  .menu-submenu-trigger {
+    display: flex;
+    gap: var(--ods-theme-padding-horizontal);
+    align-items: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+    width: 100%;
+    text-align: left;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+
+    &:hover,
+    &[data-highlighted],
+    &[data-highlighted]:hover {
+      background-color: var(--ods-theme-input-option-background-color-hover);
+    }
+  }
+
+  .menu-submenu-trigger__label {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .menu-submenu-trigger__icon {
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+  }
+}

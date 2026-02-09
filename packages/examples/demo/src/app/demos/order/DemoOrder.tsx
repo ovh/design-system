@@ -5,7 +5,7 @@ function DemoOrder(): ReactElement {
   return (
     <div>
       ODS Order Demo<br />
-      <Link to="/design-system">Back</Link>
+      <Link to="/">Back</Link>
     </div>
   );
 }

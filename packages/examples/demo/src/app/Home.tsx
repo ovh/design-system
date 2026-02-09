@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 function Home(): ReactElement {
   return (
     <div>
-      <Link to="/design-system/manager">ManagerDemo</Link>
+      <Link to="/manager">ManagerDemo</Link>
       <br />
-      <Link to="/design-system/order">OrderDemo</Link>
+      <Link to="/order">OrderDemo</Link>
     </div>
   );
 }

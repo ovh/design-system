@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc -b && vite build",
+    "build:demo": "npm run build",
     "start": "vite",
     "test": "vitest",
     "test:ui": "vitest --ui",

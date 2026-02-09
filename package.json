@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "build:ci": "lerna run --stream build:ci",
+    "build:demo": "lerna run --stream build:demo",
     "build:prod": "lerna run --stream build:prod",
     "build:storybook": "lerna run --stream build:storybook",
     "clean": "lerna run clean",

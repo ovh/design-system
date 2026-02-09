@@ -5,7 +5,7 @@
     }
 
     &__tooltip {
-      --clipboard-trigger-tooltip-column-gap: calc(var(--ods-theme-column-gap) / 2);
+      --clipboard-trigger-tooltip-column-gap: var(--ods-theme-column-gap);
 
       margin: 0;
       font-size: 0.75rem;

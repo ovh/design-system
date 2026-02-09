@@ -7,7 +7,7 @@ $ods-overlay-drawer-z-index: calc(#{$ods-overlay-modal-z-index} + 1);
 
 @mixin ods-overlay() {
   z-index: $ods-overlay-base-z-index;
-  border-radius: calc(var(--ods-theme-border-radius) / 2);
+  border-radius: var(--ods-theme-border-radius);
   box-shadow: var(--ods-theme-overlay-box-shadow);
   background: var(--ods-theme-background-color);
   padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);

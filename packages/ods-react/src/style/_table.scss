@@ -3,9 +3,9 @@
   --ods-table-cell-padding-horizontal-sm: var(--ods-theme-padding-horizontal);
   --ods-table-cell-padding-vertical-sm: var(--ods-theme-padding-vertical);
   --ods-table-cell-padding-horizontal-md: var(--ods-theme-padding-horizontal);
-  --ods-table-cell-padding-vertical-md: calc(var(--ods-theme-padding-vertical) * 2);
+  --ods-table-cell-padding-vertical-md: var(--ods-theme-padding-vertical);
   --ods-table-cell-padding-horizontal-lg: var(--ods-theme-padding-horizontal);
-  --ods-table-cell-padding-vertical-lg: calc(var(--ods-theme-padding-vertical) * 3);
+  --ods-table-cell-padding-vertical-lg: var(--ods-theme-padding-vertical);
   --ods-table-head-background-color: var(--ods-color-neutral-050);
 
   width: 100%;

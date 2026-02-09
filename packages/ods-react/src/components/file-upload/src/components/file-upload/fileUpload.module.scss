@@ -1,7 +1,7 @@
 @layer ods-organisms {
   .file-upload {
     --ods-file-upload-item-background-color-hover: var(--ods-color-primary-050);
-    --ods-file-upload-item-border-radius: calc(var(--ods-theme-border-radius) / 2);
+    --ods-file-upload-item-border-radius: var(--ods-theme-border-radius);
     --ods-file-upload-padding-horizontal: var(--ods-theme-padding-horizontal);
     --ods-file-upload-padding-vertical: var(--ods-theme-padding-vertical);
 

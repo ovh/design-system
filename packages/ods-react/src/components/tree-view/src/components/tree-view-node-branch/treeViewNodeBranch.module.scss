@@ -14,9 +14,9 @@
       cursor: pointer;
       padding: var(--ods-tree-view-node-padding-vertical) var(--ods-tree-view-node-padding-horizontal);
 
-      &:not([data-disabled]):hover {
-        background-color: var(--ods-theme-input-option-background-color-hover);
-      }
+      //&:not([data-disabled]):hover {
+      //  background-color: var(--ods-theme-input-option-background-color-hover);
+      //}
 
       &:is([aria-expanded="true"], [data-state="open"]) {
         #{$branch}__chevron {
@@ -28,9 +28,9 @@
       &:has(.tree-view-node-branch__control__checkbox[data-state="indeterminate"]) {
         background-color: var(--ods-theme-input-option-background-color-selected);
 
-        &:not([data-disabled]):hover {
-          background-color: var(--ods-theme-input-option-background-color-selected-hover);
-        }
+        //&:not([data-disabled]):hover {
+        //  background-color: var(--ods-theme-input-option-background-color-selected-hover);
+        //}
       }
 
       &[data-disabled] {
@@ -42,9 +42,9 @@
       &[data-selected]:not(:has(.tree-view-node-branch__control__checkbox)) {
         background-color: var(--ods-theme-input-option-background-color-selected);
 
-        &:not([data-disabled]):hover {
-          background-color: var(--ods-theme-input-option-background-color-selected-hover);
-        }
+        //&:not([data-disabled]):hover {
+        //  background-color: var(--ods-theme-input-option-background-color-selected-hover);
+        //}
       }
 
       &[data-focus]:focus-visible {

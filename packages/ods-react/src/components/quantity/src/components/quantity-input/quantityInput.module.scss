@@ -18,8 +18,8 @@
     }
 
     &:not([data-invalid], :disabled, :read-only) {
-      &:focus,
-      &:hover {
+      &:focus {
+      //&:hover {
         border-color: var(--ods-theme-input-border-color-hover);
       }
     }

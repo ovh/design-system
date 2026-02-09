@@ -2,9 +2,9 @@
 
 @layer ods-molecules {
   .select-content {
-    --ods-select-group-option-padding-horizontal: calc(var(--ods-theme-input-padding-horizontal) * 3);
+    --ods-select-group-option-padding-horizontal: var(--ods-theme-input-padding-horizontal);
 
-    border: var(--ods-theme-input-border-width) solid var(--ods-theme-input-border-color-hover);
+    border: var(--ods-theme-input-border-width) solid var(--ods-theme-input-border-color);
     background-color: var(--ods-theme-background-color);
     padding: 0;
     max-height: 200px;

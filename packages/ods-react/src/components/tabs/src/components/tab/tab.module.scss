@@ -6,18 +6,18 @@
   .tab {
     $tab: &;
 
-    --ods-tab-margin-horizontal-switch-md: calc(var(--ods-theme-padding-horizontal) / 2);
-    --ods-tab-margin-horizontal-switch-sm: calc(var(--ods-theme-padding-horizontal) / 2);
-    --ods-tab-margin-horizontal-switch-xs: calc(var(--ods-theme-padding-horizontal) / 4);
-    --ods-tab-margin-vertical-switch-md: calc(var(--ods-theme-padding-vertical) / 2);
-    --ods-tab-margin-vertical-switch-sm: calc(var(--ods-theme-padding-vertical) / 2);
-    --ods-tab-margin-vertical-switch-xs: calc(var(--ods-theme-padding-vertical) / 4);
-    --ods-tab-padding-horizontal-md: calc(var(--ods-theme-padding-horizontal) * 1.5);
+    --ods-tab-margin-horizontal-switch-md: var(--ods-theme-padding-horizontal);
+    --ods-tab-margin-horizontal-switch-sm: var(--ods-theme-padding-horizontal);
+    --ods-tab-margin-horizontal-switch-xs: var(--ods-theme-padding-horizontal);
+    --ods-tab-margin-vertical-switch-md: var(--ods-theme-padding-vertical);
+    --ods-tab-margin-vertical-switch-sm: var(--ods-theme-padding-vertical);
+    --ods-tab-margin-vertical-switch-xs: var(--ods-theme-padding-vertical);
+    --ods-tab-padding-horizontal-md: var(--ods-theme-padding-horizontal);
     --ods-tab-padding-horizontal-sm: var(--ods-theme-padding-horizontal);
-    --ods-tab-padding-horizontal-xs: calc(var(--ods-theme-padding-horizontal) * 0.75);
+    --ods-tab-padding-horizontal-xs: var(--ods-theme-padding-horizontal);
     --ods-tab-padding-vertical-md: var(--ods-theme-padding-horizontal);
-    --ods-tab-padding-vertical-sm: calc(var(--ods-theme-padding-horizontal) * 0.75);
-    --ods-tab-padding-vertical-xs: calc(var(--ods-theme-padding-horizontal) / 2);
+    --ods-tab-padding-vertical-sm: var(--ods-theme-padding-horizontal);
+    --ods-tab-padding-vertical-xs: var(--ods-theme-padding-horizontal);
     --ods-tab-background-color-hover: var(--ods-color-neutral-050);
     --ods-tab-background-color-selected-switch: var(--ods-color-neutral-000);
     --ods-tab-background-color-selected-disabled-switch: var(--ods-color-neutral-500);
@@ -28,8 +28,8 @@
     --ods-tab-border-color-selected-disabled: var(--ods-color-neutral-500);
     --ods-tab-border-color-selected-disabled-switch: var(--ods-color-neutral-000);
     --ods-tab-border-radius-md: var(--ods-theme-border-radius);
-    --ods-tab-border-radius-sm: calc(var(--ods-theme-border-radius) / 2);
-    --ods-tab-border-radius-xs: calc(var(--ods-theme-border-radius) / 4);
+    --ods-tab-border-radius-sm: var(--ods-theme-border-radius);
+    --ods-tab-border-radius-xs: var(--ods-theme-border-radius);
     --ods-tab-text-color-hover: var(--ods-color-primary-500);
     --ods-tab-text-color-selected: var(--ods-color-primary-500);
 

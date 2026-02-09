@@ -1,7 +1,7 @@
 @layer ods-molecules {
   .form-field-label {
-    --ods-form-field-label-row-gap: calc(var(--ods-theme-row-gap) / 2);
-    --ods-form-field-label-column-gap: calc(var(--ods-theme-column-gap) / 2);
+    --ods-form-field-label-row-gap: var(--ods-theme-row-gap);
+    --ods-form-field-label-column-gap: var(--ods-theme-column-gap);
 
     display: flex;
     gap: var(--ods-form-field-label-row-gap) var(--ods-form-field-label-column-gap);

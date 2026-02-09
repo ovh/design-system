@@ -11,7 +11,7 @@
 
     display: inline-flex;
     flex-flow: row;
-    column-gap: calc(var(--ods-theme-column-gap) / 2);
+    column-gap: var(--ods-theme-column-gap);
 
     &:focus-within {
       &:not(:has(button:focus-within)) {
@@ -23,9 +23,9 @@
       }
     }
 
-    &:hover {
-      border-color: var(--ods-theme-input-border-color-hover);
-    }
+    //&:hover {
+    //  border-color: var(--ods-theme-input-border-color-hover);
+    //}
 
     &:not([data-disabled])[data-readonly] {
       @include state.ods-is-readonly();

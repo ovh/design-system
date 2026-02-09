@@ -1,7 +1,7 @@
 @layer ods-organisms {
   .combobox-content {
-    --ods-combobox-group-option-padding-horizontal: calc(var(--ods-theme-input-padding-horizontal) * 3);
-    --ods-combobox-option-new-column-gap: calc(var(--ods-theme-column-gap) / 2);
+    --ods-combobox-group-option-padding-horizontal: var(--ods-theme-input-padding-horizontal);
+    --ods-combobox-option-new-column-gap: var(--ods-theme-column-gap);
 
     box-sizing: border-box;
     margin: 0;

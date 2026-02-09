@@ -16,7 +16,7 @@ $ods-range-label-padding-top: var(--ods-theme-padding-vertical);
 }
 
 @mixin ods-range-track($filled: false) {
-  --ods-range-track-border-radius: calc(var(--ods-theme-border-radius) / 2);
+  --ods-range-track-border-radius: var(--ods-theme-border-radius);
 
   border-radius: var(--ods-range-track-border-radius);
   height: $ods-range-track-height;

@@ -8,8 +8,8 @@
 
     &:not([data-disabled]) {
       &:not([data-invalid]) {
-        &[data-focus],
-        &:hover {
+        &[data-focus] {
+        //&:hover {
           border-color: var(--ods-theme-input-border-color-hover);
         }
       }
@@ -22,8 +22,8 @@
           transform: scale(1);
         }
 
-        &[data-focus],
-        &:hover {
+        &[data-focus] {
+        //&:hover {
           border-color: var(--ods-theme-input-border-color-checked-hover);
           background: var(--ods-theme-input-background-color-checked-hover);
         }

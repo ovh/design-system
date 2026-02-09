@@ -4,8 +4,8 @@
 $ods-modal-border-radius: var(--ods-border-radius-sm); // [Deprecated] will be removed in next major version
 $ods-modal-header-height: 32px;
 $ods-modal-margin: 16px; // [Deprecated] will be removed in next major version
-$ods-modal-margin-horizontal: calc(var(--ods-theme-padding-horizontal) * 2);
-$ods-modal-margin-vertical: calc(var(--ods-theme-padding-vertical) * 2);
+$ods-modal-margin-horizontal: var(--ods-theme-padding-horizontal);
+$ods-modal-margin-vertical: var(--ods-theme-padding-vertical);
 $ods-modal-size: 512px;
 $ods-modal-z-index: overlay.$ods-overlay-modal-z-index; // [Deprecated] will be removed in next major version
 
@@ -18,8 +18,8 @@ $ods-modal-z-index: overlay.$ods-overlay-modal-z-index; // [Deprecated] will be 
   --ods-modal-header-background-color-primary: var(--ods-color-primary-500);
   --ods-modal-header-background-color-success: var(--ods-color-success-075);
   --ods-modal-header-background-color-warning: var(--ods-color-warning-075);
-  --ods-modal-header-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 2);
-  --ods-modal-header-padding-vertical: calc(var(--ods-theme-padding-vertical) * 2);
+  --ods-modal-header-padding-horizontal: var(--ods-theme-padding-horizontal);
+  --ods-modal-header-padding-vertical: var(--ods-theme-padding-vertical);
   --ods-modal-margin-horizontal: #{$ods-modal-margin-horizontal};
   --ods-modal-margin-vertical: #{$ods-modal-margin-vertical};
   --ods-modal-mobile-max-height: #{$ods-modal-size};
@@ -33,9 +33,9 @@ $ods-modal-z-index: overlay.$ods-overlay-modal-z-index; // [Deprecated] will be 
   background: var(--ods-theme-background-color);
   width: 100%;
   min-width: 320px;
-  max-width: calc(100% - (var(--ods-modal-margin-horizontal) * 2));
+  max-width: calc(100% - var(--ods-modal-margin-horizontal));
   min-height: 100px;
-  max-height: calc(100% - (var(--ods-modal-margin-vertical) * 2));
+  max-height: calc(100% - var(--ods-modal-margin-vertical));
 
   @media screen and (width >= (breakpoint.$ods-breakpoint-mobile)) {
     margin: auto;

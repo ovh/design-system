@@ -6,9 +6,9 @@
   .combobox-control {
     $control: &;
 
-    --ods-combobox-control-column-gap: calc(var(--ods-theme-column-gap) / 2);
-    --ods-combobox-control-row-gap: calc(var(--ods-theme-row-gap) / 2);
-    --ods-combobox-control-padding-vertical: calc(var(--ods-theme-input-padding-vertical) / 2);
+    --ods-combobox-control-column-gap: var(--ods-theme-column-gap);
+    --ods-combobox-control-row-gap: var(--ods-theme-row-gap);
+    --ods-combobox-control-padding-vertical: var(--ods-theme-input-padding-vertical);
 
     box-sizing: border-box;
     display: flex;
@@ -24,7 +24,7 @@
     min-height: var(--ods-theme-input-min-height);
 
     &:not(#{$control}--invalid, #{$control}--disabled, #{$control}--read-only) {
-      &:hover,
+      //&:hover,
       &#{$control}--focused {
         border-color: var(--ods-theme-input-border-color-hover);
       }

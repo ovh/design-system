@@ -11,9 +11,9 @@
     min-height: input.$ods-input-field-height;
     color: var(--ods-theme-input-text-color);
 
-    &:hover,
-    &[data-highlighted],
-    &[data-highlighted]:hover {
+    //&:hover,
+    &[data-highlighted] {
+    //&[data-highlighted]:hover {
       background-color: var(--ods-theme-input-option-background-color-hover);
     }
 
@@ -24,9 +24,9 @@
     &[data-state="checked"] {
       background-color: var(--ods-theme-input-option-background-color-selected);
 
-      &:hover,
-      &[data-highlighted],
-      &[data-highlighted]:hover {
+      //&:hover,
+      &[data-highlighted] {
+      //&[data-highlighted]:hover {
         background-color: var(--ods-theme-input-option-background-color-selected-hover);
       }
     }

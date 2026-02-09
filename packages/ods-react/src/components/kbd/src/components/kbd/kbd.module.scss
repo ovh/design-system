@@ -1,12 +1,12 @@
 @layer ods-atoms {
   .kbd {
     --ods-kbd-border-width: var(--ods-theme-border-width);
-    --ods-kbd-border-bottom-width: calc(var(--ods-theme-border-width) * 2);
-    --ods-kbd-border-radius: calc(var(--ods-theme-border-radius) / 2);
+    --ods-kbd-border-bottom-width: var(--ods-theme-border-width);
+    --ods-kbd-border-radius: var(--ods-theme-border-radius);
     --ods-kbd-border-color: var(--ods-color-neutral-200);
     --ods-kbd-background-color: var(--ods-color-neutral-100);
-    --ods-kbd-padding-vertical: calc(var(--ods-theme-padding-vertical) / 4);
-    --ods-kbd-padding-horizontal: calc(var(--ods-theme-padding-horizontal) / 2);
+    --ods-kbd-padding-vertical: var(--ods-theme-padding-vertical);
+    --ods-kbd-padding-horizontal: var(--ods-theme-padding-horizontal);
     --ods-kbd-text-color: var(--ods-color-neutral-700);
 
     box-sizing: border-box;

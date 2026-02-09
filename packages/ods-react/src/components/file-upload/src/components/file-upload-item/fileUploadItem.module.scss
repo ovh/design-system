@@ -10,16 +10,16 @@
     column-gap: var(--ods-theme-column-gap);
     align-items: center;
     border-radius: var(--ods-file-upload-item-border-radius);
-    padding: 0 calc(var(--ods-file-upload-padding-horizontal) / 2);
+    padding: 0 var(--ods-file-upload-padding-horizontal);
     min-height: 36px;
     color: var(--ods-theme-input-text-color);
 
     &:first-child {
-      margin-top: calc(var(--ods-file-upload-padding-vertical) / 2);
+      margin-top: var(--ods-file-upload-padding-vertical);
     }
 
     &:last-child {
-      margin-bottom: calc(var(--ods-file-upload-padding-vertical) / 2);
+      margin-bottom: var(--ods-file-upload-padding-vertical);
     }
 
     &:not([data-disabled]):hover:not(:has(#{$item}__delete:hover)) {

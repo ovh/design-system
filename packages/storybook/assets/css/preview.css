@@ -1,6 +1,6 @@
 /* Global typography */
 body {
-  font-family: var(--ods-font-family-default);
+  font-family: var(--ods-theme-font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -38,7 +38,7 @@ body > #storybook-docs {
 pre * {
   line-height: 19px;
   color: #fff;
-  font-family: var(--ods-font-family-code);
+  font-family: var(--ods-theme-font-family-code);
   font-size: 13px;
 }
 

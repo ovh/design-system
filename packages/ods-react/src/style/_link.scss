@@ -33,7 +33,7 @@ $ods-link-font-weight: 600;
 
   &:hover,
   &:focus-visible {
-    color: var(--ods-theme-anchor-text-color-hover);
+    //color: var(--ods-theme-anchor-text-color-hover);
 
     &::after {
       transform: scaleX(1);
@@ -42,6 +42,7 @@ $ods-link-font-weight: 600;
 
   &:focus-visible {
     @include focus.ods-focus();
+    color: var(--ods-theme-anchor-text-color-hover);
   }
 
   &:visited {

@@ -4,8 +4,8 @@ $ods-switch-height-md: 32px;
 @layer ods-atoms {
   .switch {
     --ods-switch-background-color: var(--ods-color-neutral-100);
-    --ods-switch-border-radius: calc(var(--ods-theme-border-radius) * 2);
-    --ods-switch-column-gap: calc(var(--ods-theme-column-gap) / 2);
+    --ods-switch-border-radius: var(--ods-theme-border-radius);
+    --ods-switch-column-gap: var(--ods-theme-column-gap);
 
     box-sizing: border-box;
     display: inline-flex;

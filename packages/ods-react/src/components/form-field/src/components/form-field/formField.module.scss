@@ -1,6 +1,6 @@
 @layer ods-molecules {
   .form-field {
-    --ods-form-field-row-gap: calc(var(--ods-theme-row-gap) / 2);
+    --ods-form-field-row-gap: var(--ods-theme-row-gap);
 
     display: flex;
     flex-direction: column;

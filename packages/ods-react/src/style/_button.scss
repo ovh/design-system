@@ -1,17 +1,17 @@
 @use './focus';
 @use './state';
 
-$ods-button-border-radius-xs: calc(var(--ods-theme-border-radius) / 4);
-$ods-button-border-radius-sm: calc(var(--ods-theme-border-radius) / 2);
+$ods-button-border-radius-xs: var(--ods-theme-border-radius);
+$ods-button-border-radius-sm: var(--ods-theme-border-radius);
 $ods-button-border-radius-md: var(--ods-theme-border-radius);
 $ods-button-border-radius-width: var(--ods-theme-border-width);
-$ods-button-column-gap-xs: calc(var(--ods-theme-column-gap) * 0.75);
-$ods-button-column-gap-sm: calc(var(--ods-theme-column-gap) * 0.75);
+$ods-button-column-gap-xs: var(--ods-theme-column-gap);
+$ods-button-column-gap-sm: var(--ods-theme-column-gap);
 $ods-button-column-gap-md: var(--ods-theme-column-gap);
-$ods-button-padding-horizontal-xs: calc(var(--ods-theme-padding-horizontal) * 0.75);
-$ods-button-padding-vertical-xs: calc(var(--ods-theme-padding-vertical) * 0.75);
-$ods-button-padding-horizontal-sm: calc(var(--ods-theme-padding-horizontal) * 0.75);
-$ods-button-padding-vertical-sm: calc(var(--ods-theme-padding-vertical) * 0.75);
+$ods-button-padding-horizontal-xs: var(--ods-theme-padding-horizontal);
+$ods-button-padding-vertical-xs: var(--ods-theme-padding-vertical);
+$ods-button-padding-horizontal-sm: var(--ods-theme-padding-horizontal);
+$ods-button-padding-vertical-sm: var(--ods-theme-padding-vertical);
 $ods-button-padding-horizontal-md: var(--ods-theme-padding-horizontal);
 $ods-button-padding-vertical-md: var(--ods-theme-padding-vertical);
 $ods-button-size-xs: 24px;
@@ -251,8 +251,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-critical);
       color: var(--ods-button-text-color-critical);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         border-color: var(--ods-button-border-color-critical-hover);
         background-color: var(--ods-button-background-color-critical-hover);
       }
@@ -266,8 +266,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-information);
       color: var(--ods-button-text-color-information);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         border-color: var(--ods-button-border-color-information-hover);
         background-color: var(--ods-button-background-color-information-hover);
       }
@@ -281,8 +281,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-neutral);
       color: var(--ods-button-text-color-neutral);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         border-color: var(--ods-button-border-color-neutral-hover);
         background-color: var(--ods-button-background-color-neutral-hover);
       }
@@ -296,8 +296,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-primary);
       color: var(--ods-button-text-color-primary);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         border-color: var(--ods-button-border-color-primary-hover);
         background-color: var(--ods-button-background-color-primary-hover);
       }
@@ -311,8 +311,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-success);
       color: var(--ods-button-text-color-success);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         border-color: var(--ods-button-border-color-success-hover);
         background-color: var(--ods-button-background-color-success-hover);
       }
@@ -326,8 +326,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-warning);
       color: var(--ods-button-text-color-warning);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         border-color: var(--ods-button-border-color-warning-hover);
         background-color: var(--ods-button-background-color-warning-hover);
       }
@@ -352,8 +352,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-critical-ghost);
       color: var(--ods-button-text-color-critical-ghost);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         background-color: var(--ods-button-background-color-critical-ghost-hover);
         color: var(--ods-button-text-color-critical-ghost-hover);
       }
@@ -366,8 +366,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-information-ghost);
       color: var(--ods-button-text-color-information-ghost);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         background-color: var(--ods-button-background-color-information-ghost-hover);
         color: var(--ods-button-text-color-information-ghost-hover);
       }
@@ -380,8 +380,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-neutral-ghost);
       color: var(--ods-button-text-color-neutral-ghost);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         background-color: var(--ods-button-background-color-neutral-ghost-hover);
         color: var(--ods-button-text-color-neutral-ghost-hover);
       }
@@ -394,8 +394,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-primary-ghost);
       color: var(--ods-button-text-color-primary-ghost);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         background-color: var(--ods-button-background-color-primary-ghost-hover);
         color: var(--ods-button-text-color-primary-ghost-hover);
       }
@@ -408,8 +408,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-success-ghost);
       color: var(--ods-button-text-color-success-ghost);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         background-color: var(--ods-button-background-color-success-ghost-hover);
         color: var(--ods-button-text-color-success-ghost-hover);
       }
@@ -422,8 +422,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-warning-ghost);
       color: var(--ods-button-text-color-warning-ghost);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         background-color: var(--ods-button-background-color-warning-ghost-hover);
         color: var(--ods-button-text-color-warning-ghost-hover);
       }
@@ -446,8 +446,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-critical-outline);
       color: var(--ods-button-text-color-critical-outline);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         border-color: var(--ods-button-border-color-critical-outline-hover);
         background-color: var(--ods-button-background-color-critical-outline-hover);
         color: var(--ods-button-text-color-critical-outline-hover);
@@ -463,8 +463,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-information-outline);
       color: var(--ods-button-text-color-information-outline);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         border-color: var(--ods-button-border-color-information-outline-hover);
         background-color: var(--ods-button-background-color-information-outline-hover);
         color: var(--ods-button-text-color-information-outline-hover);
@@ -480,8 +480,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-neutral-outline);
       color: var(--ods-button-text-color-neutral-outline);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         border-color: var(--ods-button-border-color-neutral-outline-hover);
         background-color: var(--ods-button-background-color-neutral-outline-hover);
         color: var(--ods-button-text-color-neutral-outline-hover);
@@ -497,8 +497,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-primary-outline);
       color: var(--ods-button-text-color-primary-outline);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         border-color: var(--ods-button-border-color-primary-outline-hover);
         background-color: var(--ods-button-background-color-primary-outline-hover);
         color: var(--ods-button-text-color-primary-outline-hover);
@@ -514,8 +514,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-success-outline);
       color: var(--ods-button-text-color-success-outline);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         border-color: var(--ods-button-border-color-success-outline-hover);
         background-color: var(--ods-button-background-color-success-outline-hover);
         color: var(--ods-button-text-color-success-outline-hover);
@@ -531,8 +531,8 @@ $ods-button-size-md: 40px;
       background-color: var(--ods-button-background-color-warning-outline);
       color: var(--ods-button-text-color-warning-outline);
 
-      &:focus-visible,
-      &:hover {
+      &:focus-visible {
+      //&:hover {
         border-color: var(--ods-button-border-color-warning-outline-hover);
         background-color: var(--ods-button-background-color-warning-outline-hover);
         color: var(--ods-button-text-color-warning-outline-hover);

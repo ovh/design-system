@@ -11,7 +11,7 @@
   --ods-message-background-color-success-light: var(--ods-theme-background-color);
   --ods-message-background-color-warning: var(--ods-color-warning-075);
   --ods-message-background-color-warning-light: var(--ods-theme-background-color);
-  --ods-message-border-radius: calc(var(--ods-theme-border-radius) / 2);
+  --ods-message-border-radius: var(--ods-theme-border-radius);
   --ods-message-text-color-critical: var(--ods-color-critical-700);
   --ods-message-text-color-critical-light: var(--ods-color-critical-600);
   --ods-message-text-color-information: var(--ods-color-information-700);

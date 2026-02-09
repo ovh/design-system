@@ -44,7 +44,8 @@
         border-color: var(--ods-theme-input-border-color-checked);
         background-color: var(--ods-theme-input-background-color-checked);
 
-        &:hover, &[data-focus] {
+        //&:hover,
+        &[data-focus] {
           border-color: var(--ods-theme-input-border-color-checked-hover);
           background-color: var(--ods-theme-input-background-color-checked-hover);
 

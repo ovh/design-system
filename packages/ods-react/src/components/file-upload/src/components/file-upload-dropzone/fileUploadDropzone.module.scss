@@ -20,8 +20,8 @@
       gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
       align-items: center;
       border: dashed 1px var(--ods-theme-input-border-color);
-      border-radius: calc(var(--ods-theme-border-radius) / 2);
-      padding: calc(var(--ods-file-upload-padding-vertical) * 3) calc(var(--ods-file-upload-padding-horizontal) * 3);
+      border-radius: var(--ods-theme-border-radius);
+      padding: var(--ods-file-upload-padding-vertical) var(--ods-file-upload-padding-horizontal);
 
       &--compact {
         flex-flow: row;

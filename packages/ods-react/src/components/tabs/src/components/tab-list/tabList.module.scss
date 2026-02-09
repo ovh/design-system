@@ -8,9 +8,9 @@ $tab-list-border-bottom-size: 2px;
   .tab-list {
     --ods-tab-list-background-color-switch: var(--ods-color-neutral-050);
     --ods-tab-list-border-color: var(--ods-color-neutral-100);
-    --ods-tab-list-border-radius-switch-md: calc(var(--ods-theme-border-radius) * 1.25);
-    --ods-tab-list-border-radius-switch-sm: calc(var(--ods-theme-border-radius) * 0.75);
-    --ods-tab-list-border-radius-switch-xs: calc(var(--ods-theme-border-radius) / 2);
+    --ods-tab-list-border-radius-switch-md: var(--ods-theme-border-radius);
+    --ods-tab-list-border-radius-switch-sm: var(--ods-theme-border-radius);
+    --ods-tab-list-border-radius-switch-xs: var(--ods-theme-border-radius);
     --ods-tab-list-border-width: #{$tab-list-border-bottom-size};
 
     display: flex;

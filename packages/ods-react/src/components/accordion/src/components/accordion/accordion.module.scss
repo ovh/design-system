@@ -1,10 +1,10 @@
 @layer ods-atoms {
   .accordion {
-    --ods-accordion-border-color: var(--ods-color-neutral-200);
-    --ods-accordion-border-color-hover: var(--ods-color-neutral-500);
+    --ods-accordion-border-color: var(--ods-theme-border-color);
+    //--ods-accordion-border-color-hover: var(--ods-color-neutral-500);
     --ods-accordion-border-width: 1px;
-    --ods-accordion-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 3);
-    --ods-accordion-padding-vertical: calc(var(--ods-theme-padding-vertical) * 3);
-    --ods-accordion-border-radius: calc(var(--ods-theme-border-radius) / 2);
+    --ods-accordion-padding-horizontal: var(--ods-theme-padding-horizontal);
+    --ods-accordion-padding-vertical: var(--ods-theme-padding-vertical);
+    --ods-accordion-border-radius: var(--ods-theme-border-radius);
   }
 }

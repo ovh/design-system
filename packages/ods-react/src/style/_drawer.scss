@@ -3,12 +3,12 @@
 $animation-duration: 0.3s;
 $drawer-size: 320px;
 $drawer-max-size: calc(100% - 48px); // [Deprecated] will be removed in next major version
-$drawer-max-height: calc(100% - calc(var(--ods-theme-padding-vertical) * 6));
-$drawer-max-width: calc(100% - calc(var(--ods-theme-padding-horizontal) * 6));
+$drawer-max-height: calc(100% - var(--ods-theme-padding-vertical));
+$drawer-max-width: calc(100% - var(--ods-theme-padding-horizontal));
 
 @mixin ods-drawer() {
-  --ods-drawer-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 2);
-  --ods-drawer-padding-vertical: calc(var(--ods-theme-padding-vertical) * 2);
+  --ods-drawer-padding-horizontal: var(--ods-theme-padding-horizontal);
+  --ods-drawer-padding-vertical: var(--ods-theme-padding-vertical);
   --ods-drawer-z-index: #{overlay.$ods-overlay-drawer-z-index};
 
   display: block;

@@ -15,11 +15,9 @@
   "dependencies": {
     "@ovhcloud/ods-react": "19.5.0",
     "@ovhcloud/ods-themes": "19.5.0",
-    "formik": "2.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-hook-form": "7.55.0",
-    "yup": "1.6.1"
+    "react-router-dom": "6.30.3"
   },
   "devDependencies": {
     "@testing-library/dom": "10.4.0",

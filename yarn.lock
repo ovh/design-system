@@ -5270,6 +5270,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@remix-run/router@npm:1.23.2":
+  version: 1.23.2
+  resolution: "@remix-run/router@npm:1.23.2"
+  checksum: 0f046e480372be17d14f88684435cd6af4c05ce842bd6094a549605dd5b8f0ab1e9a1e9d9e2faec9e4d5cd370d02179b456189192f06415e461bce44c28295d8
+  languageName: node
+  linkType: hard
+
 "@rollup/pluginutils@npm:^5.0.2, @rollup/pluginutils@npm:^5.1.4":
   version: 5.1.4
   resolution: "@rollup/pluginutils@npm:5.1.4"
@@ -11662,15 +11669,13 @@ __metadata:
     "@types/react-dom": 19.1.1
     "@vitejs/plugin-react": 4.3.4
     "@vitest/ui": 2.1.8
-    formik: 2.4.6
     jsdom: 25.0.1
     react: 19.1.0
     react-dom: 19.1.0
-    react-hook-form: 7.55.0
+    react-router-dom: 6.30.3
     typescript: 5.3.3
     vite: 6.2.0
     vitest: 2.1.8
-    yup: 1.6.1
   languageName: unknown
   linkType: soft
 
@@ -21434,6 +21439,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-router-dom@npm:6.30.3":
+  version: 6.30.3
+  resolution: "react-router-dom@npm:6.30.3"
+  dependencies:
+    "@remix-run/router": 1.23.2
+    react-router: 6.30.3
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 1f43ce47dd8cfc1bc728ea7b0cf10136416416491136726cda500aaea74da3c5dbcfcec24781bc390f6e8a4383ff72b8331b53887485e79dcb75387ffe5508c3
+  languageName: node
+  linkType: hard
+
 "react-router@npm:6.27.0":
   version: 6.27.0
   resolution: "react-router@npm:6.27.0"
@@ -21442,6 +21460,17 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
   checksum: d22eedc33bcb11891b431655f90eed2d52c2fb3165ad11ca625f62970caf59c4859e6b1a3f92e78902b31ff1a8b2482ebf97ddebb82e9687d1f98730c14e04e6
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.30.3":
+  version: 6.30.3
+  resolution: "react-router@npm:6.30.3"
+  dependencies:
+    "@remix-run/router": 1.23.2
+  peerDependencies:
+    react: ">=16.8"
+  checksum: b61e1a456b72ed35907dadc261d8572a65dd4caae008f7a85a6b09b437b1a4b90034fc7df0e418f1f01b73c2b8a8f6755d7fc0108b1ec3f2ed37f03a1e248513
   languageName: node
   linkType: hard
 

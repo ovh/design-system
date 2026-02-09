@@ -10,8 +10,8 @@ function App(): ReactElement {
   return (
     <div className={ style.app }>
       <Routes>
-        <Route path="/manager" element={ <DemoManager /> } />
-        <Route path="/order" element={ <DemoOrder /> } />
+        <Route path="/design-system/manager" element={ <DemoManager /> } />
+        <Route path="/design-system/order" element={ <DemoOrder /> } />
         <Route path="/*" element={ <Home /> } />
       </Routes>
     </div>

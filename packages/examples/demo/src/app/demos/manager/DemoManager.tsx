@@ -5,7 +5,7 @@ function DemoManager(): ReactElement {
   return (
     <div>
       ODS Manager Demo<br />
-      <Link to="/">Back</Link>
+      <Link to="/design-system">Back</Link>
     </div>
   );
 }

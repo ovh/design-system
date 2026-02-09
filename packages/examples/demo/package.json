@@ -1,0 +1,37 @@
+{
+  "name": "demo",
+  "version": "19.5.0",
+  "private": true,
+  "description": "Example of an app using ODS",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "start": "vite",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-react": "19.5.0",
+    "@ovhcloud/ods-themes": "19.5.0",
+    "formik": "2.4.6",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-hook-form": "7.55.0",
+    "yup": "1.6.1"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/jest-dom": "6.6.3",
+    "@testing-library/react": "16.0.1",
+    "@testing-library/user-event": "14.5.2",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.1",
+    "@vitejs/plugin-react": "4.3.4",
+    "@vitest/ui": "2.1.8",
+    "jsdom": "25.0.1",
+    "typescript": "5.3.3",
+    "vite": "6.2.0",
+    "vitest": "2.1.8"
+  }
+}

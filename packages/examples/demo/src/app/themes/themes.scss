@@ -1,0 +1,317 @@
+/* --- Global reset --- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--ods-theme-font-family, var(--ods-font-family-default));
+}
+
+/* ============================================================
+ * Custom themes that override ODS design tokens.
+ * Each theme redefines CSS custom properties on a data attribute
+ * set on the #root element.
+ *
+ * Available token groups:
+ *   - Color palettes (--ods-color-primary-*, --ods-color-neutral-*, etc.)
+ *   - Theme colors (--ods-theme-*-color)
+ *   - Spacings (border-radius, border-width, gap, padding)
+ *   - Outline (color, offset, style, width)
+ *   - Overlay (backdrop, box-shadow, z-index)
+ *   - Fonts (font-family, font-family-code)
+ *   - Form elements (input-*, min-height, padding)
+ * ============================================================ */
+
+/* --- ODS Default overrides --- */
+:root,
+#root {
+  --ods-theme-padding-horizontal: 8px;
+  --ods-theme-padding-vertical: 8px;
+  --ods-theme-input-padding-vertical: 4px;
+  --ods-theme-column-gap: 8px;
+  --ods-theme-row-gap: 8px;
+  --ods-theme-font-family: 'Noto Sans Display', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+  --ods-theme-font-family-code: 'Noto Sans Mono', arial;
+}
+
+[data-ods="card"] {
+  --ods-card-border-color-neutral: var(--ods-theme-border-color);
+}
+
+/* ============================================================
+ * ODS Classic theme
+ *
+ * Faithfully maps the original OVHcloud Manager design tokens.
+ * ============================================================ */
+#root[data-ods-theme="ods-classic"],
+:root:has(#root[data-ods-theme="ods-classic"]) {
+  // Color palettes
+  --ods-color-alpha: #fbfe47;
+  --ods-color-beta: #47fe78;
+  --ods-color-new: #47fffa;
+  --ods-color-promotion: #ccff66;
+
+  // Critical
+  --ods-color-critical-000: #ffffff;
+  --ods-color-critical-025: #fff3f5;
+  --ods-color-critical-050: #ffe6ec;
+  --ods-color-critical-075: #ffd9e3;
+  --ods-color-critical-100: #ffccd9;
+  --ods-color-critical-200: #ef99ab;
+  --ods-color-critical-300: #e67386;
+  --ods-color-critical-400: #cf334e;
+  --ods-color-critical-500: #bf0020;
+  --ods-color-critical-600: #a6001c;
+  --ods-color-critical-700: #800015;
+  --ods-color-critical-800: #660011;
+  --ods-color-critical-900: #4d000d;
+
+  // Information
+  --ods-color-information-000: #ffffff;
+  --ods-color-information-025: #f3fdff;
+  --ods-color-information-050: #e6faff;
+  --ods-color-information-075: #cef5ff;
+  --ods-color-information-100: #bef1ff;
+  --ods-color-information-200: #85d9fd;
+  --ods-color-information-300: #4bb2f6;
+  --ods-color-information-400: #157eea;
+  --ods-color-information-500: #0050d7;
+  --ods-color-information-600: #002dbe;
+  --ods-color-information-700: #000e9c;
+  --ods-color-information-800: #00185e;
+  --ods-color-information-900: #000d1f;
+
+  // Neutral
+  --ods-color-neutral-000: #ffffff;
+  --ods-color-neutral-025: #f9f9f9;
+  --ods-color-neutral-050: #f2f2f2;
+  --ods-color-neutral-075: #ececec;
+  --ods-color-neutral-100: #e6e6e6;
+  --ods-color-neutral-200: #cccccc;
+  --ods-color-neutral-300: #b3b3b3;
+  --ods-color-neutral-400: #999999;
+  --ods-color-neutral-500: #808080;
+  --ods-color-neutral-600: #666666;
+  --ods-color-neutral-700: #4d4d4d;
+  --ods-color-neutral-800: #333333;
+  --ods-color-neutral-900: #1a1a1a;
+
+  // Primary
+  --ods-color-primary-000: #ffffff;
+  --ods-color-primary-025: #f3fdff;
+  --ods-color-primary-050: #e6faff;
+  --ods-color-primary-075: #cef5ff;
+  --ods-color-primary-100: #bef1ff;
+  --ods-color-primary-200: #85d9fd;
+  --ods-color-primary-300: #4bb2f6;
+  --ods-color-primary-400: #157eea;
+  --ods-color-primary-500: #0050d7;
+  --ods-color-primary-600: #002dbe;
+  --ods-color-primary-700: #000e9c;
+  --ods-color-primary-800: #00185e;
+  --ods-color-primary-900: #000d1f;
+
+  // Success
+  --ods-color-success-000: #ffffff;
+  --ods-color-success-025: #f3fbeb;
+  --ods-color-success-050: #e7f7d7;
+  --ods-color-success-075: #ddf5d1;
+  --ods-color-success-100: #d2f2c2;
+  --ods-color-success-200: #90cc7a;
+  --ods-color-success-300: #64b347;
+  --ods-color-success-400: #47991f;
+  --ods-color-success-500: #2b8000;
+  --ods-color-success-600: #267300;
+  --ods-color-success-700: #226600;
+  --ods-color-success-800: #1a4d00;
+  --ods-color-success-900: #113300;
+
+  // Warning
+  --ods-color-warning-000: #ffffff;
+  --ods-color-warning-025: #fffbe5;
+  --ods-color-warning-050: #fff7cc;
+  --ods-color-warning-075: #feefa4;
+  --ods-color-warning-100: #feea86;
+  --ods-color-warning-200: #fed265;
+  --ods-color-warning-300: #ffbb43;
+  --ods-color-warning-400: #ffa322;
+  --ods-color-warning-500: #ff8b00;
+  --ods-color-warning-600: #cc7000;
+  --ods-color-warning-700: #995400;
+  --ods-color-warning-800: #663800;
+  --ods-color-warning-900: #4d2a00;
+
+  // Theme colors
+  --ods-theme-anchor-text-color: #0050d7;
+  --ods-theme-anchor-text-color-hover: #002dbe;
+  --ods-theme-anchor-text-color-visited: #000e9c;
+  --ods-theme-background-color: #fff;
+  --ods-theme-background-color-disabled: #e6e6e6;
+  --ods-theme-background-color-drag-over: #bef1ff;
+  --ods-theme-background-color-readonly: #f2f2f2;
+  --ods-theme-background-color-selected: #00185e;
+  --ods-theme-border-color: #cccccc;
+  --ods-theme-border-color-disabled: #cccccc;
+  --ods-theme-border-color-drag-over: #bef1ff;
+  --ods-theme-border-color-readonly: #f2f2f2;
+  --ods-theme-border-color-selected: #00185e;
+  --ods-theme-brand-color: #000e9c;
+  --ods-theme-heading-text-color: #00185e;
+  --ods-theme-progress-background-color: #0050d7;
+  --ods-theme-split-background-color: #e6e6e6;
+  --ods-theme-split-border-color: #e6e6e6;
+  --ods-theme-text-color: #4d5592;
+  --ods-theme-text-color-disabled: #808080;
+  --ods-theme-text-color-selected: #ffffff;
+  --ods-theme-track-background-color: #e6e6e6;
+  --ods-theme-track-background-color-disabled: #808080;
+
+  // Color variants
+  --ods-theme-critical-color: #bf0020;
+  --ods-theme-information-color: #0050d7;
+  --ods-theme-neutral-color: #808080;
+  --ods-theme-primary-color: #0050d7;
+  --ods-theme-success-color: #2b8000;
+  --ods-theme-warning-color: #ff8b00;
+
+  // Outline
+  --ods-theme-outline-color: #000e9c;
+  --ods-theme-outline-offset: 2px;
+  --ods-theme-outline-style: solid;
+  --ods-theme-outline-width: 2px;
+
+  // Spacings
+  --ods-theme-border-radius: 8px;
+  --ods-theme-border-width: 1px;
+  --ods-theme-column-gap: 8px;
+  --ods-theme-padding-horizontal: 8px;
+  --ods-theme-padding-vertical: 8px;
+  --ods-theme-row-gap: 8px;
+
+  // Overlay
+  --ods-theme-backdrop-background-color: #0050d7;
+  --ods-theme-backdrop-opacity: 0.75;
+  --ods-theme-overlay-border-radius: 4px;
+  --ods-theme-overlay-box-shadow: 0 2px 8px rgba(0, 14, 156, 0.2);
+  --ods-theme-overlay-z-index: 99;
+
+  // Fonts
+  --ods-theme-font-family: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+  --ods-theme-font-family-code: 'Source Code Pro', arial;
+
+  // Form elements
+  --ods-theme-input-background-color-checked: #0050d7;
+  --ods-theme-input-background-color-checked-hover: #000e9c;
+  --ods-theme-input-background-color-invalid: #bf0020;
+  --ods-theme-input-border-color: #b3b3b3;
+  --ods-theme-input-border-color-checked: #0050d7;
+  --ods-theme-input-border-color-checked-hover: #000e9c;
+  --ods-theme-input-border-color-hover: #808080;
+  --ods-theme-input-border-color-invalid: #bf0020;
+  --ods-theme-input-border-radius: 4px;
+  --ods-theme-input-border-width: 1px;
+  --ods-theme-input-min-height: 32px;
+  --ods-theme-input-option-background-color-hover: #bef1ff;
+  --ods-theme-input-option-background-color-selected: #e6faff;
+  --ods-theme-input-option-background-color-selected-hover: #bef1ff;
+  --ods-theme-input-padding-horizontal: 8px;
+  --ods-theme-input-padding-vertical: 2px;
+  --ods-theme-input-placeholder-text-color: #666666;
+  --ods-theme-input-text-color: #4d5592;
+  --ods-theme-input-text-color-checked: #fff;
+  --ods-theme-input-text-color-invalid: #bf0020;
+}
+
+/* ============================================================
+ * Dark mode overrides (works with any theme)
+ *
+ * Overrides all color tokens + adapts overlay/form tokens
+ * for dark backgrounds. Spacings/radius are NOT changed here
+ * so the active theme's geometry is preserved.
+ * ============================================================ */
+#root[data-ods-mode="dark"],
+:root:has(#root[data-ods-mode="dark"]) {
+  // Theme colors
+  --ods-theme-background-color: #1a1c2e;
+  --ods-theme-text-color: #e2e8f0;
+  --ods-theme-heading-text-color: #f1f5f9;
+  --ods-theme-anchor-text-color: #91c3ff;
+  --ods-theme-anchor-text-color-visited: #badbff;
+  --ods-theme-split-background-color: #252840;
+  --ods-theme-split-border-color: #333660;
+  --ods-theme-background-color-drag-over: #252840;
+  --ods-theme-border-color-drag-over: #333660;
+
+  // Neutral palette (inverted for dark)
+  --ods-color-neutral-000: #0f1022;
+  --ods-color-neutral-025: #151730;
+  --ods-color-neutral-050: #1a1c2e;
+  --ods-color-neutral-075: #252840;
+  --ods-color-neutral-100: #333660;
+  --ods-color-neutral-200: #414580;
+  --ods-color-neutral-300: #5a5f99;
+  --ods-color-neutral-400: #7a7fb3;
+  --ods-color-neutral-500: #9ca0c8;
+  --ods-color-neutral-600: #b8bbd8;
+  --ods-color-neutral-700: #d0d2e6;
+  --ods-color-neutral-800: #e2e4f0;
+  --ods-color-neutral-900: #f1f2f8;
+
+  // Borders & states
+  --ods-theme-border-color: #333660;
+  --ods-theme-border-color-disabled: #252840;
+  --ods-theme-border-color-readonly: #252840;
+  --ods-theme-border-color-selected: #91c3ff;
+  --ods-theme-background-color-disabled: #252840;
+  --ods-theme-background-color-readonly: #1a1c2e;
+  --ods-theme-background-color-selected: #355eab;
+  --ods-theme-text-color-disabled: #5a5f99;
+  --ods-theme-text-color-selected: #f1f2f8;
+
+  // Brand & variant colors
+  --ods-theme-brand-color: #91c3ff;
+  --ods-theme-primary-color: #91c3ff;
+  --ods-theme-neutral-color: #7a7fb3;
+  --ods-theme-information-color: #91c3ff;
+  --ods-theme-success-color: #85c26e;
+  --ods-theme-warning-color: #ffc66b;
+  --ods-theme-critical-color: #e3787f;
+
+  // Outline
+  --ods-theme-outline-color: #91c3ff;
+
+  // Overlay
+  --ods-theme-backdrop-background-color: #355eab;
+  --ods-theme-backdrop-opacity: 0.85;
+  --ods-theme-overlay-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  --ods-theme-progress-background-color: #91c3ff;
+  --ods-theme-track-background-color: #333660;
+  --ods-theme-track-background-color-disabled: #252840;
+
+  // Form elements
+  --ods-theme-input-border-color: #333660;
+  --ods-theme-input-border-color-hover: #5a5f99;
+  --ods-theme-input-border-color-invalid: #e3787f;
+  --ods-theme-input-border-color-checked: #4b7fd1;
+  --ods-theme-input-border-color-checked-hover: #355eab;
+  --ods-theme-input-background-color-checked: #4b7fd1;
+  --ods-theme-input-background-color-checked-hover: #355eab;
+  --ods-theme-input-background-color-invalid: #8a2536;
+  --ods-theme-input-option-background-color-hover: #252840;
+  --ods-theme-input-option-background-color-selected: #1a1c2e;
+  --ods-theme-input-option-background-color-selected-hover: #252840;
+  --ods-theme-input-placeholder-text-color: #7a7fb3;
+  --ods-theme-input-text-color: #e2e8f0;
+  --ods-theme-input-text-color-checked: #1a1c2e;
+  --ods-theme-input-text-color-invalid: #e3787f;
+}
+
+#root[data-ods-mode="dark"] [data-ods="message"] {
+  --ods-theme-text-color: currentcolor;
+  --ods-theme-heading-text-color: currentcolor;
+  --ods-theme-anchor-text-color: currentcolor;
+  --ods-theme-anchor-text-color-visited: currentcolor;
+}
+
+#root[data-ods-mode="dark"] {
+  background-color: #1a1c2e;
+  color: #e2e8f0;
+}

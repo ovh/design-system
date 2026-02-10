@@ -1,0 +1,18 @@
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-switcher__drawer-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.theme-switcher__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

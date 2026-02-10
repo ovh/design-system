@@ -1,0 +1,332 @@
+/* ============================================================
+ * DemoManager layout
+ *
+ * All spacing values use ODS theme tokens directly so
+ * that the layout adapts to each theme's density setting.
+ * ============================================================ */
+
+.demo-manager {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Navbar --- */
+.demo-manager__navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ods-theme-column-gap);
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+  background-color: var(--ods-color-primary-500);
+
+  /* Override ODS tokens so all child components render in white */
+  --ods-theme-text-color: #fff;
+  --ods-theme-heading-text-color: #fff;
+  --ods-theme-anchor-text-color: #fff;
+  --ods-theme-anchor-text-color-hover: #fff;
+  --ods-theme-anchor-text-color-visited: #fff;
+  --ods-theme-brand-color: #fff;
+  --ods-theme-border-color: rgba(255, 255, 255, 0.4);
+  --ods-theme-input-text-color: #fff;
+  --ods-theme-input-border-color: rgba(255, 255, 255, 0.4);
+  --ods-theme-input-border-color-checked: #fff;
+  --ods-theme-input-placeholder-text-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Fix switch Tabs inside blue navbar: neutral bg → semi-transparent white */
+.demo-manager__navbar [data-ods="tabs"] {
+  --ods-color-neutral-050: rgba(255, 255, 255, 0.15);
+  --ods-color-neutral-000: rgba(255, 255, 255, 0.3);
+  --ods-color-primary-500: #fff;
+}
+
+/* Fix Select inside blue navbar: transparent bg so white text is readable */
+.demo-manager__navbar [data-ods="select-control"] {
+  --ods-theme-background-color: transparent;
+}
+
+
+.demo-manager__navbar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--ods-theme-column-gap);
+  min-width: 0;
+  flex: 1;
+}
+
+.demo-manager__navbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--ods-theme-column-gap);
+  flex-shrink: 0;
+}
+
+.demo-manager__tabs {
+  background-color: var(--ods-theme-background-color);
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* --- Dashboard content (centered like Order page) --- */
+.demo-manager__dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--ods-theme-row-gap) * 2);
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal) calc(var(--ods-theme-padding-vertical) * 4);
+  box-sizing: border-box;
+}
+
+/* Force all ODS Cards inside dashboard to be block-level */
+.demo-manager__dashboard [data-ods="card"] {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --- Activity overview --- */
+.demo-manager__activity {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: calc(var(--ods-theme-row-gap) * 2);
+  column-gap: calc(var(--ods-theme-column-gap) * 2);
+}
+
+.demo-manager__activity-left {
+  display: flex;
+  flex: 1;
+  min-width: 400px;
+}
+
+.demo-manager__activity-left > * {
+  flex: 1;
+}
+
+.demo-manager__activity-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 300px;
+  gap: calc(var(--ods-theme-row-gap) * 2);
+}
+
+.demo-manager__activity-right > [data-ods="card"] {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Card internals --- */
+.demo-manager__card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-theme-row-gap);
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+}
+
+.demo-manager__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.demo-manager__card-title {
+  display: flex;
+  align-items: center;
+  gap: var(--ods-theme-column-gap);
+}
+
+/* --- Payment status table --- */
+.demo-manager__payment-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.demo-manager__payment-table th {
+  text-align: left;
+}
+
+.demo-manager__payment-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.demo-manager__payment-table [data-ods="badge"] {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.demo-manager__service-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.demo-manager__service-cell > *:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.demo-manager__popover-menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-theme-row-gap);
+}
+
+.demo-manager__popover-menu [data-ods="button"] {
+  justify-content: flex-start;
+  border-radius: 0;
+  width: 100%;
+}
+
+/* --- Invoices & Orders cards --- */
+.demo-manager__invoices {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-theme-row-gap);
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+}
+
+.demo-manager__orders-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-manager__orders-card .demo-manager__orders {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--ods-theme-row-gap);
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+}
+
+.demo-manager__order-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.demo-manager__order-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--ods-theme-column-gap);
+}
+
+.demo-manager__order-row [data-ods="link"] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+/* --- Tickets & Support row --- */
+.demo-manager__support-row {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: calc(var(--ods-theme-row-gap) * 2);
+  column-gap: calc(var(--ods-theme-column-gap) * 2);
+}
+
+.demo-manager__support-row > * {
+  flex: 1;
+  min-width: 300px;
+}
+
+.demo-manager__ticket-desc {
+  max-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.demo-manager__ticket-table {
+  table-layout: fixed;
+}
+
+.demo-manager__ticket-table td:last-child {
+  text-align: right;
+}
+
+.demo-manager__service-card > [data-ods="link"] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.demo-manager__support {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-theme-row-gap);
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+}
+
+.demo-manager__support-level {
+  display: flex;
+  align-items: center;
+  gap: var(--ods-theme-column-gap);
+}
+
+.demo-manager__support-meter {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.demo-manager__support-meter [data-ods="meter"] {
+  width: 100%;
+}
+
+.demo-manager__support-meter-legend {
+  display: flex;
+  justify-content: space-between;
+}
+
+.demo-manager__support-features {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--ods-theme-row-gap) / 2);
+}
+
+.demo-manager__support-feature {
+  display: flex;
+  align-items: center;
+  gap: var(--ods-theme-column-gap);
+}
+
+/* --- Offers & Services grid --- */
+.demo-manager__services {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: calc(var(--ods-theme-row-gap) * 2);
+  column-gap: calc(var(--ods-theme-column-gap) * 2);
+}
+
+.demo-manager__services > * {
+  flex: 1;
+  min-width: 200px;
+}
+
+.demo-manager__service-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-theme-row-gap);
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+}
+
+.demo-manager__services-footer {
+  display: flex;
+  justify-content: center;
+  padding: var(--ods-theme-padding-vertical) 0;
+}

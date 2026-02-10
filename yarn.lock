@@ -11660,6 +11660,7 @@ __metadata:
   resolution: "demo@workspace:packages/examples/demo"
   dependencies:
     "@ovhcloud/ods-react": 19.5.0
+    "@ovhcloud/ods-recipes": 19.5.0
     "@ovhcloud/ods-themes": 19.5.0
     "@testing-library/dom": 10.4.0
     "@testing-library/jest-dom": 6.6.3

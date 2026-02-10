@@ -1,0 +1,214 @@
+/* ============================================================
+ * DemoOrder layout
+ *
+ * All spacing values use ODS theme tokens directly so
+ * that the layout adapts to each theme's density setting.
+ * ============================================================ */
+
+.demo-order {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-theme-row-gap);
+}
+
+/* --- Header (sticky) --- */
+.demo-order__header {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.demo-order__navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+  background-color: var(--ods-color-primary-500);
+
+  /* Override ODS tokens so all child components render in white */
+  --ods-theme-text-color: #fff;
+  --ods-theme-heading-text-color: #fff;
+  --ods-theme-anchor-text-color: #fff;
+  --ods-theme-anchor-text-color-hover: #fff;
+  --ods-theme-anchor-text-color-visited: #fff;
+  --ods-theme-brand-color: #fff;
+  --ods-theme-border-color: rgba(255, 255, 255, 0.4);
+  --ods-theme-input-text-color: #fff;
+  --ods-theme-input-border-color: rgba(255, 255, 255, 0.4);
+  --ods-theme-input-placeholder-text-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Fix switch Tabs inside blue navbar: neutral bg → semi-transparent white */
+.demo-order__navbar [data-ods="tabs"] {
+  --ods-color-neutral-050: rgba(255, 255, 255, 0.15);
+  --ods-color-neutral-000: rgba(255, 255, 255, 0.3);
+  --ods-color-primary-500: #fff;
+}
+
+.demo-order__navbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--ods-theme-column-gap);
+}
+
+.demo-order__tabs {
+  background-color: var(--ods-theme-background-color);
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+}
+
+/* --- Page content (padded, below header) --- */
+.demo-order__page-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-theme-row-gap);
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal) var(--ods-theme-padding-vertical);
+  box-sizing: border-box;
+}
+
+.demo-order__title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ods-theme-row-gap);
+}
+
+.demo-order__title-badges {
+  display: flex;
+  gap: var(--ods-theme-column-gap);
+}
+
+.demo-order__content {
+  display: flex;
+  gap: var(--ods-theme-column-gap);
+}
+
+.demo-order__config {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--ods-theme-row-gap);
+}
+
+/* Region tabs must not overlap the sticky header */
+.demo-order__config [data-ods="tabs"] {
+  z-index: 0;
+  position: relative;
+}
+
+/* Force ODS Tile to take full width (ODS default is inline-block) */
+.demo-order__config [data-ods="tile"] {
+  display: block;
+  width: 100%;
+}
+
+.demo-order__tile-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-theme-row-gap);
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.demo-order__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.demo-order__option-left {
+  display: flex;
+  align-items: center;
+  gap: var(--ods-theme-column-gap);
+}
+
+/* Right-side price / label text aligned right */
+.demo-order__option-right {
+  text-align: right;
+}
+
+.demo-order__tile-info {
+  display: flex;
+  align-items: center;
+  gap: var(--ods-theme-column-gap);
+}
+
+.demo-order__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --- Summary card (cart) --- */
+.demo-order__summary {
+  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
+  position: sticky;
+  top: 7rem;
+  align-self: flex-start;
+}
+
+/* Force Card and Accordion inside summary to fill width */
+.demo-order__summary [data-ods="card"] {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.demo-order__summary [data-ods="accordion-content"] {
+  padding: 0;
+  overflow: hidden;
+}
+
+.demo-order__summary [data-ods="accordion"],
+.demo-order__summary [data-ods="accordion-item"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.demo-order__summary-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-theme-row-gap);
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+}
+
+.demo-order__summary-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.demo-order__summary-row-right {
+  text-align: right;
+}
+
+.demo-order__summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ods-theme-row-gap);
+  background-color: var(--ods-color-neutral-050, #f5f5f8);
+  padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+}
+
+/* Dividers in the summary cart – ensure visible, full-width */
+.demo-order__summary-divider {
+  display: block;
+  width: 100%;
+  min-height: 1px;
+  flex-shrink: 0;
+  margin: 0;
+  border: none;
+  background-color: var(--ods-theme-split-background-color, #c9ced6);
+}
+
+.demo-order__summary-empty {
+  display: flex;
+  align-items: center;
+  gap: var(--ods-theme-column-gap);
+}

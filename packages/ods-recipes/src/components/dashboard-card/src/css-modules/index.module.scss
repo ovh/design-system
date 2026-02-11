@@ -59,6 +59,7 @@
       display: flex;
       flex-flow: column;
       row-gap: var(--ods-theme-row-gap);
+      align-items: start;
     }
   }
 }

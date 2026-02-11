@@ -149,7 +149,7 @@ const DashboardCard = (): JSX.Element => {
       <Divider className="w-full" />
 
       <div className="flex flex-row gap-x-[var(--ods-theme-column-gap)] items-start justify-between">
-        <div className="flex flex-col gap-y-[var(--ods-theme-row-gap)]">
+        <div className="flex flex-col gap-y-[var(--ods-theme-row-gap)] items-start">
           <Button
             size={ BUTTON_SIZE.sm }
             variant={ BUTTON_VARIANT.ghost }>

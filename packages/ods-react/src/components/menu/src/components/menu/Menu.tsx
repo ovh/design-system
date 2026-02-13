@@ -6,12 +6,24 @@ interface MenuProp extends MenuRootProp {}
 
 const Menu: FC<PropsWithChildren<MenuProp>> = ({
   children,
+  onOpenChange,
+  onPositionChange,
+  open,
+  position,
+  positionerStyle,
+  triggerId,
   ...props
 }): JSX.Element => {
   return (
-    <MenuProvider { ...props }>
+    <MenuProvider
+      onPositionChange={ onPositionChange }
+      positionerStyle={ positionerStyle }>
       <VendorMenu.Root
-        data-ods="menu"
+        onOpenChange={ onOpenChange }
+        open={ open }
+        positioning={{
+          placement: position,
+        }}
         { ...props }>
         { children }
       </VendorMenu.Root>

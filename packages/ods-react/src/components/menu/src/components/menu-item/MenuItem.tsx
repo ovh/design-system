@@ -4,7 +4,13 @@ import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react
 import style from './menuItem.module.scss';
 
 interface MenuItemProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> {
+  /**
+   * Callback fired when the selection changes.
+   */
   onSelect?: () => void,
+  /**
+   * The value of the item.
+   */
   value: string,
 }
 

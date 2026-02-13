@@ -1,7 +1,7 @@
-import type { MenuPosition } from '../constants/menu-position';
-import type { CSSProperties, JSX, ReactNode } from 'react';
+import { type CSSProperties, type JSX, type ReactNode } from 'react';
 import { createContext, useState } from 'react';
 import { useContext } from '../../../../utils/context';
+import { type MenuPosition } from '../constants/menu-position';
 
 interface MenuOpenChangeDetail {
   open: boolean,

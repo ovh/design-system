@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Button } from '../../../../ods-react/src/components/button/src';
 import { Menu, MenuContent, MenuGroup, MenuGroupLabel, MenuItem, type MenuProp, MenuSubmenu, MenuTrigger } from '../../../../ods-react/src/components/menu/src';
-import { MENU_POSITIONS } from '../../../../ods-react/src/components/menu/src/constants/menu-position';
+import { MENU_POSITION, MENU_POSITIONS } from '../../../../ods-react/src/components/menu/src/constants/menu-position';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
@@ -55,15 +55,20 @@ export const Demo: StoryObj = {
       },
     },
   }),
+  args: {
+    position: MENU_POSITION.bottom,
+    triggerLabel: 'Open menu',
+    withArrow: false,
+  },
   render: (arg: Partial<DemoArg>) => (
     <Menu
       position={ arg.position }>
       <MenuTrigger asChild>
         <Button>
-          { arg.triggerLabel ?? 'Open menu' }
+          { arg.triggerLabel }
         </Button>
       </MenuTrigger>
-      <MenuContent withArrow={ arg.withArrow ?? false }>
+      <MenuContent withArrow={ arg.withArrow }>
         <MenuItem value="profile">Profile</MenuItem>
         <MenuItem value="settings">Settings</MenuItem>
       </MenuContent>
@@ -75,6 +80,7 @@ export const Default: Story = {
   globals: {
     imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`,
   },
+  tags: ['!dev'],
   render: ({}) => (
     <Menu>
       <MenuTrigger asChild>
@@ -89,7 +95,6 @@ export const Default: Story = {
       </MenuContent>
     </Menu>
   ),
-  tags: ['!dev'],
 };
 
 export const Controlled: Story = {
@@ -97,12 +102,12 @@ export const Controlled: Story = {
     imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
-  tags: ['!dev'],
   parameters: {
     docs: {
       source: { ...staticSourceRenderConfig() },
     },
   },
+  tags: ['!dev'],
   render: ({}) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -137,6 +142,7 @@ export const Nested: Story = {
   globals: {
     imports: `import { Button, Menu, MenuContent, MenuItem, MenuSubmenu, MenuTrigger } from '@ovhcloud/ods-react';`,
   },
+  tags: ['!dev'],
   render: ({}) => (
     <Menu>
       <MenuTrigger asChild>
@@ -157,13 +163,13 @@ export const Nested: Story = {
       </MenuContent>
     </Menu>
   ),
-  tags: ['!dev'],
 };
 
 export const Group: Story = {
   globals: {
     imports: `import { Button, Menu, MenuContent, MenuGroup, MenuGroupLabel, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`,
   },
+  tags: ['!dev'],
   render: ({}) => (
     <Menu>
       <MenuTrigger asChild>
@@ -185,13 +191,13 @@ export const Group: Story = {
       </MenuContent>
     </Menu>
   ),
-  tags: ['!dev'],
 };
 
 export const Overview: Story = {
   parameters: {
     layout: 'centered',
   },
+  tags: ['!dev'],
   render: ({}) => (
     <Menu>
       <MenuTrigger asChild>
@@ -209,13 +215,13 @@ export const Overview: Story = {
       </MenuContent>
     </Menu>
   ),
-  tags: ['!dev'],
 };
 
 export const ThemeGenerator: Story = {
   parameters: {
     layout: 'fullscreen',
   },
+  tags: ['!dev'],
   render: ({}) => (
     <Menu>
       <MenuTrigger asChild>
@@ -228,7 +234,5 @@ export const ThemeGenerator: Story = {
         <MenuItem value='settings'>Settings</MenuItem>
       </MenuContent>
     </Menu>
-
   ),
-  tags: ['!dev'],
 };

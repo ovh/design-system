@@ -1,7 +1,7 @@
 @use '../../../../../style/input';
 @use '../../../../../style/state';
 
-@layer ods-atoms {
+@layer ods-molecules {
   .menu-item {
     cursor: pointer;
     padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);

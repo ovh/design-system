@@ -5,3 +5,4 @@ export { MenuGroup, type MenuGroupProp } from './components/menu-group/MenuGroup
 export { MenuGroupLabel, type MenuGroupLabelProp } from './components/menu-group-label/MenuGroupLabel';
 export { MenuSubmenu, type MenuSubmenuProp } from './components/menu-submenu/MenuSubmenu';
 export { MenuTrigger, type MenuTriggerProp } from './components/menu-trigger/MenuTrigger';
+export { type MenuOpenChangeDetail, type MenuPositionChangeDetail } from './contexts/useMenu';

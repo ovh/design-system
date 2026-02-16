@@ -11,8 +11,9 @@
 
   .menu-submenu-trigger {
     display: flex;
-    gap: var(--ods-theme-column-gap) var(--ods-theme-row-gap);
+    gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
     align-items: center;
+    justify-content: space-between;
     border: none;
     background: transparent;
     cursor: pointer;
@@ -32,12 +33,6 @@
     &__label {
       display: inline-flex;
       align-items: center;
-    }
-
-    &__icon {
-      display: inline-flex;
-      align-items: center;
-      margin-left: auto;
     }
   }
 }

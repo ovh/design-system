@@ -49,7 +49,6 @@ const MenuTrigger: FC<MenuTriggerProp> = forwardRef(({
             { children }
           </span>
           <Icon
-            className={ style['menu-submenu-trigger__icon'] }
             name={ ICON_NAME.chevronRight } />
         </button>
       </Menu.TriggerItem>

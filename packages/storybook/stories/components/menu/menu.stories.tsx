@@ -1,6 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Button } from '../../../../ods-react/src/components/button/src';
+import { ICON_NAME } from '../../../../ods-react/src/components/icon/src/constants/icon-name';
+import { Icon } from '../../../../ods-react/src/components/icon/src';
 import { Menu, MenuContent, MenuGroup, MenuGroupLabel, MenuItem, type MenuProp, MenuSubmenu, MenuTrigger } from '../../../../ods-react/src/components/menu/src';
 import { MENU_POSITION, MENU_POSITIONS } from '../../../../ods-react/src/components/menu/src/constants/menu-position';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
@@ -99,7 +101,7 @@ export const Default: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';
+    imports: `import { Button, ICON_NAME, Icon, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   parameters: {
@@ -123,9 +125,7 @@ import { useState } from 'react';`,
 
         <Menu open={ isOpen }>
           <MenuTrigger asChild>
-            <Button>
-              Open menu
-            </Button>
+            <Icon name={ ICON_NAME.ellipsisVertical } />
           </MenuTrigger>
           <MenuContent>
             <MenuItem value='profile'>Profile</MenuItem>

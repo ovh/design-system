@@ -11,6 +11,7 @@
 
   .menu-submenu-trigger {
     display: flex;
+    position: relative;
     gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
     align-items: center;
     justify-content: space-between;

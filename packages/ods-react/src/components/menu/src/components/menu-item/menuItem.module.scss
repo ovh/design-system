@@ -3,6 +3,7 @@
 
 @layer ods-molecules {
   .menu-item {
+    position: relative;
     cursor: pointer;
     padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
 

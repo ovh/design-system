@@ -1,0 +1,452 @@
+# React Components/Phone Number
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `countries` | `` | No |  | A specific or preset list of country to display in the selector. |
+| `country` | `` | No |  | The controlled selected country. |
+| `defaultValue` | `` | No |  | The initial phone number value. Use when you don't need to control the value of the phone number. |
+| `disabled` | `` | No |  | Whether the component is disabled. |
+| `i18n` | `` | No |  | Internal translations override. |
+| `id` | `` | No |  | The field id. |
+| `invalid` | `` | No |  | Whether the component is in error state. |
+| `locale` | `` | No |  | The locale used for the translation of the country list and the internal elements. |
+| `name` | `` | No |  | The name of the form element. Useful for form submission. |
+| `onCountryChange` | `` | No |  | Callback fired when the country changes. |
+| `onValueChange` | `` | No |  | Callback fired when the value changes. |
+| `pattern` | `` | No |  | The phone number input expected pattern. |
+| `readOnly` | `` | No |  | Whether the component is readonly. |
+| `required` | `` | No |  | Whether the component is required. |
+| `value` | `` | No |  | The controlled phone number value. |
+
+
+## Subcomponents
+
+
+### PhoneNumberControl
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `clearable` | `` | No |  | Whether the clear button is displayed. |
+| `loading` | `` | No |  | Whether the component is in loading state. |
+
+
+
+### PhoneNumberCountryList
+
+
+
+## Examples
+
+
+### Accessibility Form Field
+
+```tsx
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Phone number:
+      </FormFieldLabel>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </FormField>
+}
+```
+
+### Accessibility I 18 N
+
+```tsx
+{
+  globals: {
+    imports: `import { INPUT_I18N, FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Phone number:
+      </FormFieldLabel>
+
+      <PhoneNumber country="fr" defaultValue="06 01 02 03 04" i18n={{
+      [INPUT_I18N.clearButton]: 'Clear phone number'
+    }}>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+    </FormField>
+}
+```
+
+### Accessibility Label
+
+```tsx
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Phone number:
+      </FormFieldLabel>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </FormField>
+}
+```
+
+### Clearable
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <PhoneNumber>
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+    </>
+}
+```
+
+### Country List
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <span>All countries</span>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <span>Subset of countries</span>
+
+      <PhoneNumber countries={['de', 'fr', 'gb', 'it']}>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+    </>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <PhoneNumber>
+      <PhoneNumberControl />
+    </PhoneNumber>
+}
+```
+
+### Demo
+
+```tsx
+{
+  render: (arg: DemoArg) => <PhoneNumber country={arg.country} disabled={arg.disabled} invalid={arg.invalid} locale={arg.locale} readOnly={arg.readOnly}>
+      {arg.withCountries && <PhoneNumberCountryList />}
+
+      <PhoneNumberControl clearable={arg.clearable} />
+    </PhoneNumber>,
+  argTypes: orderControls({
+    clearable: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'boolean'
+        }
+      },
+      control: 'boolean'
+    },
+    country: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'PHONE_NUMBER_COUNTRY_ISO_CODE'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: PHONE_NUMBER_COUNTRY_ISO_CODES
+    },
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+    invalid: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    locale: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: {
+        type: 'select'
+      },
+      options: PHONE_NUMBER_COUNTRY_ISO_CODES
+    },
+    readOnly: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    withCountries: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'boolean'
+        }
+      },
+      control: 'boolean'
+    }
+  })
+}
+```
+
+### Disabled
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <PhoneNumber disabled>
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <PhoneNumber disabled>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </>
+}
+```
+
+### In Form Field
+
+```tsx
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Phone number:
+      </FormFieldLabel>
+
+      <PhoneNumber>
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </FormField>
+}
+```
+
+### Loading
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <PhoneNumber>
+        <PhoneNumberControl loading />
+      </PhoneNumber>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl loading />
+      </PhoneNumber>
+    </>
+}
+```
+
+### Locale
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <span>Locale "fr"</span>
+      <PhoneNumber locale="fr">
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <span>Locale "de"</span>
+      <PhoneNumber locale="de">
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <PhoneNumber>
+      <PhoneNumberCountryList />
+
+      <PhoneNumberControl />
+    </PhoneNumber>
+}
+```
+
+### Readonly
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <PhoneNumber readOnly>
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <PhoneNumber readOnly>
+        <PhoneNumberCountryList />
+
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    alignItems: 'flex-start'
+  }}>
+      <PhoneNumber>
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl />
+      </PhoneNumber>
+
+      <PhoneNumber>
+        <PhoneNumberControl loading />
+      </PhoneNumber>
+
+      <PhoneNumber disabled>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </div>
+}
+```

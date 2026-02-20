@@ -1,0 +1,351 @@
+# React Components/Radio Group
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `defaultValue` | `` | No |  | The initial value of the checked radio. Use when you don't need to control the value of the radio group. |
+| `disabled` | `` | No |  | Whether the component is disabled. |
+| `name` | `` | No |  | The name of the form element. Useful for form submission. |
+| `onValueChange` | `` | No |  | Callback fired when the value changes. |
+| `orientation` | `` | No |  | The orientation of the radio group. |
+| `value` | `` | No |  | The controlled value of the radio group. |
+
+
+## Subcomponents
+
+
+### Radio
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `disabled` | `` | No |  | Whether the radio is disabled. |
+| `invalid` | `` | No |  | Whether the radio is in error state. |
+| `required` | `` | No |  | Whether the radio is required. |
+| `value` | `` | Yes |  | The value of the radio. |
+
+
+
+### RadioControl
+
+
+
+
+### RadioLabel
+
+
+
+## Examples
+
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <RadioGroup>
+      <Radio value="html">
+        <RadioControl />
+
+        <RadioLabel>HTML</RadioLabel>
+      </Radio>
+
+      <Radio value="css">
+        <RadioControl />
+
+        <RadioLabel>CSS</RadioLabel>
+      </Radio>
+
+      <Radio value="js">
+        <RadioControl />
+
+        <RadioLabel>JavaScript</RadioLabel>
+      </Radio>
+    </RadioGroup>
+}
+```
+
+### Demo
+
+```tsx
+{
+  render: (arg: DemoArg) => <RadioGroup disabled={arg.disabled} orientation={arg.orientation}>
+      <Radio invalid={arg.invalid} value="html">
+        <RadioControl />
+
+        <RadioLabel>HTML</RadioLabel>
+      </Radio>
+
+      <Radio invalid={arg.invalid} value="css">
+        <RadioControl />
+
+        <RadioLabel>CSS</RadioLabel>
+      </Radio>
+
+      <Radio invalid={arg.invalid} value="js">
+        <RadioControl />
+
+        <RadioLabel>JavaScript</RadioLabel>
+      </Radio>
+    </RadioGroup>,
+  argTypes: orderControls({
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+    invalid: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'boolean'
+        }
+      },
+      control: 'boolean'
+    },
+    orientation: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: ['horizontal', 'vertical']
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: ['horizontal', 'vertical']
+    }
+  })
+}
+```
+
+### Disabled Group
+
+```tsx
+{
+  globals: {
+    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <RadioGroup disabled>
+      <Radio value="html">
+        <RadioControl />
+
+        <RadioLabel>HTML</RadioLabel>
+      </Radio>
+
+      <Radio value="css">
+        <RadioControl />
+
+        <RadioLabel>CSS</RadioLabel>
+      </Radio>
+
+      <Radio value="js">
+        <RadioControl />
+
+        <RadioLabel>JavaScript</RadioLabel>
+      </Radio>
+    </RadioGroup>
+}
+```
+
+### Disabled Item
+
+```tsx
+{
+  globals: {
+    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <RadioGroup>
+      <Radio value="html">
+        <RadioControl />
+
+        <RadioLabel>HTML</RadioLabel>
+      </Radio>
+
+      <Radio disabled value="css">
+        <RadioControl />
+
+        <RadioLabel>CSS</RadioLabel>
+      </Radio>
+
+      <Radio value="js">
+        <RadioControl />
+
+        <RadioLabel>JavaScript</RadioLabel>
+      </Radio>
+    </RadioGroup>
+}
+```
+
+### In Form Field
+
+```tsx
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Pick a language:
+      </FormFieldLabel>
+
+      <RadioGroup>
+        <Radio value="html">
+          <RadioControl />
+
+          <RadioLabel>HTML</RadioLabel>
+        </Radio>
+
+        <Radio value="css">
+          <RadioControl />
+
+          <RadioLabel>CSS</RadioLabel>
+        </Radio>
+
+        <Radio value="js">
+          <RadioControl />
+
+          <RadioLabel>JavaScript</RadioLabel>
+        </Radio>
+      </RadioGroup>
+    </FormField>
+}
+```
+
+### Invalid
+
+```tsx
+{
+  globals: {
+    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <RadioGroup defaultValue="html">
+      <Radio value="html" invalid>
+        <RadioControl />
+
+        <RadioLabel>HTML</RadioLabel>
+      </Radio>
+
+      <Radio invalid value="css">
+        <RadioControl />
+
+        <RadioLabel>CSS</RadioLabel>
+      </Radio>
+
+      <Radio value="js">
+        <RadioControl />
+
+        <RadioLabel>JavaScript</RadioLabel>
+      </Radio>
+    </RadioGroup>
+}
+```
+
+### Orientation
+
+```tsx
+{
+  globals: {
+    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <RadioGroup orientation="horizontal">
+      <Radio value="html">
+        <RadioControl />
+
+        <RadioLabel>HTML</RadioLabel>
+      </Radio>
+
+      <Radio value="css">
+        <RadioControl />
+
+        <RadioLabel>CSS</RadioLabel>
+      </Radio>
+
+      <Radio value="js">
+        <RadioControl />
+
+        <RadioLabel>JavaScript</RadioLabel>
+      </Radio>
+    </RadioGroup>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <RadioGroup>
+      <Radio value="html">
+        <RadioControl />
+
+        <RadioLabel>HTML</RadioLabel>
+      </Radio>
+
+      <Radio value="css">
+        <RadioControl />
+
+        <RadioLabel>CSS</RadioLabel>
+      </Radio>
+
+      <Radio value="js">
+        <RadioControl />
+
+        <RadioLabel>JavaScript</RadioLabel>
+      </Radio>
+    </RadioGroup>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    gap: '24px'
+  }}>
+      <RadioGroup>
+        <Radio value="html"><RadioControl /><RadioLabel>HTML</RadioLabel></Radio>
+        <Radio value="css"><RadioControl /><RadioLabel>CSS</RadioLabel></Radio>
+        <Radio value="js"><RadioControl /><RadioLabel>JavaScript</RadioLabel></Radio>
+      </RadioGroup>
+
+      <RadioGroup disabled>
+        <Radio value="html"><RadioControl /><RadioLabel>HTML</RadioLabel></Radio>
+        <Radio value="css"><RadioControl /><RadioLabel>CSS</RadioLabel></Radio>
+        <Radio value="js"><RadioControl /><RadioLabel>JavaScript</RadioLabel></Radio>
+      </RadioGroup>
+
+      <RadioGroup>
+        <Radio disabled value="html"><RadioControl /><RadioLabel>HTML</RadioLabel></Radio>
+        <Radio value="css"><RadioControl /><RadioLabel>CSS</RadioLabel></Radio>
+        <Radio value="js"><RadioControl /><RadioLabel>JavaScript</RadioLabel></Radio>
+      </RadioGroup>
+    </div>
+}
+```

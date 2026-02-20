@@ -1,0 +1,201 @@
+React Components
+
+# Modal
+
+_A **Modal** component is used to overlay with important content the main view of a site and block interactions with it._
+
+## Overview
+
+---
+
+A **Modal** is used to provide some information to users that needs a response or immediate attention.
+
+While a **Modal** is triggered, there is no interaction possible on the page that is overlaid so users have to dismiss or click on an action Button to proceed further.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Modal</td></tr><tr><th scope="row">Also known as</th><td>Dialog, Alert Dialog, Confirm Dialog</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=47-2607" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/modal" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-modal--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+**Modals** are used in different cases:
+
+-   alerting users about something that requires their agreement
+-   confirming a user decision
+-   notifying the user of important information
+
+They can be dismissable or not.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Modal to capture user attention for critical decisions, confirmations, or required input that blocks the current flow |
+| - Ensure the Modal has a clear and focused purpose, with concise messaging and a single main action |
+| - Allow the Modal to be dismissed via a cancel button, close icon, or Escape key, unless a decision is mandatory |
+| - Keep Modal content short and scannable. Support scroll only when necessary |
+
+| ❌ Don't |
+| --- |
+| - Don't use Modals for non-interruptive information, prefer inline content or a Message component for passive feedback |
+| - Don't trigger a second Modal from within another Modal since this leads to confusion and poor accessibility |
+| - Don't use Modals for long-form content like documentation, complex forms, or multiple paragraphs. Consider a dedicated page or Drawer instead |
+| - Don't make a Modal dismissible if the user must take an action to proceed and ensure the intent is clear |
+| - Don't overload the Modal with multiple CTAs (Call-to-Action) or overly complex UI elements |
+
+### Best Practices in Context
+
+1.  **Modal**
+2.  **Header**
+3.  **Close button** - optional
+4.  **Content**
+5.  **Title & description**
+6.  **Actions**
+
+## Placement
+
+---
+
+When a **Modal** opening is triggered, it is displayed with a position aligned both horizontally and vertically within the viewport.
+
+**Modal** takes up 100% of the viewport width up to a maximum width of 512px.
+
+On smaller screens, the **Modal** takes all the available space with a margin of 16px.
+
+## Behavior
+
+---
+
+### Overlay
+
+A background overlay with opacity is displayed on the page to avoid distraction and help users to focus on the **Modal** content.
+
+An animation with the ease-in and out effect applies on opening.
+
+### Closing
+
+A **Modal** is dismissed by clicking on the close icon button.
+
+Dismissing a **Modal** means that it will be closed without submitting any data and the user won't proceed further.
+
+A **Modal** will be successfully closed only once the required action or response has been completed by the user, meaning that the task is completed so the user will proceed further.
+
+The hidden overflow behavior is removed whenever the **Modal** get closed.
+
+### Scrolling
+
+When necessary, depending on the viewport height and the **Modal** content, the user can scroll vertically with the header and the action button remaining in place.
+
+## Navigation
+
+---
+
+### Focus Management
+
+When the **Modal** is opened, focus is automatically set to the **Modal** itself.
+
+Focus is trapped within the **Modal** and its inner elements while it remains open.
+
+When the **Modal** is closed, focus returns to the trigger element unless otherwise specified.
+
+### General Keyboard Shortcuts
+
+Pressing Escape closes the **Modal** (if dismissible)
+
+Pressing Tab moves focus forward:
+
+-   First to the close icon button (if available)
+-   Then through any other focusable elements inside the **Modal** (e.g., buttons, inputs)
+
+Pressing Shift + Tab moves focus backward through the focusable elements.
+
+Once the last focusable element is reached, focus loops back to the first focusable element, ensuring it remains within the **Modal**.
+
+## Accessibility
+
+---
+
+This component complies with the [Modal WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) .
+
+### Linking the Modal title and content
+
+Ensure that assistive technologies announce the **Modal** correctly using [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) or [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) , and [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby) .
+
+```jsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal    </Button>
+  </ModalTrigger>
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-label="Modal Content"
+  >
+    <ModalHeader>
+      Modal header    </ModalHeader>
+    <ModalBody id="modal-content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+```jsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal    </Button>
+  </ModalTrigger>
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-labelledby="modal-title"
+  >
+    <ModalHeader>
+      <span id="modal-title">
+        Delete item      </span>
+    </ModalHeader>
+    <ModalBody>
+      <p id="modal-content">
+        Are you sure you want to delete this item? This action cannot be undone.      </p>
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+Screen readers will announce the sections referenced by the aria attributes.
+
+### Prioritize the least critical action in modal buttons
+
+For **Modals** that require user decisions (e.g., confirmation dialogs), place the least critical **Button** first in the **Modal** actions section.
+
+```jsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal    </Button>
+  </ModalTrigger>
+  <ModalContent color="critical">
+    <ModalHeader>
+      <span id="modal-title">
+        Delete item      </span>
+    </ModalHeader>
+    <ModalBody>
+      <p id="modal-content">
+        Are you sure you want to delete this item?      </p>
+      <div
+        style={{
+          display: 'flex',
+          gap: '8px',
+          justifyContent: 'end'
+        }}
+      >
+        <Button variant="ghost">
+          Cancel        </Button>
+        <Button color="critical">
+          Delete        </Button>
+      </div>
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+Users will first encounter the non-destructive action (e.g., "Cancel"), reducing accidental confirmations.

@@ -1,0 +1,132 @@
+React Components
+
+# Breadcrumb
+
+_A list of  showing the current page location in the navigational hierarchy._
+
+1.  
+2.  
+3.  Current
+
+## Overview
+
+---
+
+**Breadcrumb** is used to define the user's position in a site hierarchy, it can also be useful for a finer navigation in an inner application.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Breadcrumb</td></tr><tr><th scope="row">Also known as</th><td>Breadcrumb trail</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-22762" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/breadcrumb" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-breadcrumb--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+It has several usages :
+
+-   Displaying subpages of a site structure
+-   Show step progress of a process
+-   Simplify site structure navigation in a quicker way
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Start the Breadcrumb trail with a link to the homepage, using a "home" Icon or the "Home" label for example |
+| - Reflect the actual page hierarchy in the Breadcrumb structure (e.g., Section > Subsection > Current page) |
+| - Use Breadcrumb to provide contextual orientation, especially in deep navigation paths |
+| - Ensure that each Breadcrumb item (except the last one) is a clickable link to a parent page |
+| - Add the ellipsis to collapse long paths (more than 4 Links visible) |
+
+| ❌ Don't |
+| --- |
+| - Don't use Breadcrumbs as a primary navigation method, they are secondary and contextual only |
+| - Don't include external links in Breadcrumb items, all links should be internal |
+| - Don't nest Breadcrumbs or place more than one Breadcrumb component on the same page |
+| - Don't exceed 4 levels of depth. Overly complex paths reduce clarity and usability |
+| - Don't make the current page a link. The last item should be plain text to indicate the user's location |
+| - Don't change the Breadcrumb order to reflect user history or actions, it should always match site structure |
+| - Don't use Breadcrumb if the page doesn't belong to a clearly hierarchical structure |
+
+### Best Practices in Context
+
+1.  **Breadcrumb**
+2.  **Page link**
+3.  **Current page**
+4.  **Ellipsis**
+
+## Placement
+
+---
+
+A **Breadcrumb** is used at the top of a web page, preferably start-aligned.
+
+Its width is automatic, relative to its content and is not adjustable.
+
+## Behavior
+
+---
+
+When the **Breadcrumb** has more than 4 links visible, an ellipsis is displayed as a replacement for the middle link.
+
+A click on the ellipsis will expand all previously hidden links inline, the collapsed state can't be redone afterward.
+
+The **Breadcrumb** links are kept inline, even on mobile viewports.
+
+## Navigation
+
+---
+
+### Focus Management
+
+All links within the **Breadcrumb** component are focusable, following the reading order. The last item, which represents the current page, is static text and does not receive focus.
+
+### General Keyboard Shortcuts
+
+-   Pressing Tab moves focus through each link in the **Breadcrumb** trail
+-   Pressing Enter while a link is focused navigates to the corresponding page
+-   When an ellipsis (...) appears due to a long **Breadcrumb** trail (more than 4 elements), it behaves as a link:
+    -   Pressing Enter expands the full **Breadcrumb** list
+    -   Once expanded, additional link become accessible via Tab navigation
+
+## Accessibility
+
+---
+
+This component complies with the [Breadcrumb WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/) .
+
+### Identifying the Breadcrumb with aria-label
+
+**Breadcrumbs** are a form of navigation, but they serve a specific purpose distinct from primary navigation menus. To ensure they are correctly recognized, an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) should be added to explicitly identify them.
+
+**Breadcrumb Links** follow the same accessibility guidelines as a standard .
+
+1.  
+2.  
+3.  
+4.  Current page
+
+```jsx
+<Breadcrumb aria-label="Breadcrumb">
+  <BreadcrumbItem>
+    <BreadcrumbLink
+      aria-label="Home"
+      href="#"
+    >
+      <Icon name="home" />
+    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Category    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Subcategory    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Current page    </BreadcrumbLink>
+  </BreadcrumbItem>
+</Breadcrumb>
+```
+
+Screen readers will announce the link, the label of the first link, the list and the number of item.

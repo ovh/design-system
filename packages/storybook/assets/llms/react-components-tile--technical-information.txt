@@ -1,0 +1,187 @@
+React Components
+
+# Tile
+
+## Overview
+
+---
+
+Checkbox tile
+
+Additional information
+
+## Anatomy
+
+---
+
+1.  **Tile**
+2.  **Tile Alt Container**
+
+## Tile
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| disabled | `boolean` | - | `false` | Whether the component is disabled. |
+| selected | `boolean` | - | `false` | Whether the component is selected. |
+
+## TileAltContainer
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-tile-alt-container-background-color | var(--ods-color-neutral-050) | 
+ |
+| --ods-tile-alt-container-background-color-selected | var(--ods-color-primary-075) | 
+
+ |
+| --ods-tile-background-color | var(--ods-theme-background-color) | 
+
+ |
+| --ods-tile-background-color-disabled | var(--ods-color-neutral-050) | 
+
+ |
+| --ods-tile-background-color-selected | var(--ods-color-primary-025) | 
+
+ |
+| --ods-tile-border-color | var(--ods-theme-input-border-color) | 
+
+ |
+| --ods-tile-border-color-hover | var(--ods-color-neutral-500) | 
+
+ |
+| --ods-tile-border-color-selected | var(--ods-color-primary-500) | 
+
+ |
+| --ods-tile-border-radius | var(--ods-theme-border-radius) | 
+
+ |
+| --ods-tile-border-width | var(--ods-theme-border-width) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+This is a tile content.
+
+```jsx
+<Tile>
+  This is a tile content.
+</Tile>
+```
+
+### Disabled
+
+This tile is disabled.
+
+```jsx
+<Tile disabled>
+  This tile is disabled.
+</Tile>
+```
+
+### Selected
+
+This tile is selected.
+
+```jsx
+<Tile selected>
+  This tile is selected.
+</Tile>
+```
+
+### With Checkbox
+
+Checkbox tile
+
+```jsx
+const [selected, setSelected] = useState(false);
+  return <Tile selected={selected}>
+      <Checkbox checked={selected} onCheckedChange={detail => setSelected(detail.checked === true)}>
+        <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px',
+        padding: '16px'
+      }}>
+          <CheckboxControl />
+          <CheckboxLabel>Checkbox tile</CheckboxLabel>
+        </div>
+      </Checkbox>
+    </Tile>;
+}
+```
+
+### With RadioGroup
+
+Radio 1
+
+Radio 2
+
+```jsx
+const [selected, setSelected] = useState('radio-1');
+  return <RadioGroup value={selected} onValueChange={detail => setSelected(detail.value || '')}>
+      <div>
+        <Tile selected={selected === 'radio-1'}>
+          <Radio value={'radio-1'}>
+            <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '16px'
+          }}>
+              <RadioControl />
+              <RadioLabel>
+                Radio 1              </RadioLabel>
+            </div>
+          </Radio>
+        </Tile>
+      </div>
+      <div>
+        <Tile selected={selected === 'radio-2'}>
+          <Radio value={'radio-2'}>
+            <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '16px'
+          }}>
+              <RadioControl />
+              <RadioLabel>
+                Radio 2              </RadioLabel>
+            </div>
+          </Radio>
+        </Tile>
+      </div>
+    </RadioGroup>;
+}
+```
+
+## Recipes
+
+---
+
+Config Tile
+
+VPS 1
+
+4 vCore8 Go RAM100 Go 1 day automated backup Unlimited traffic 200 Mbps
+
+12 months6 monthsNo commitment
+
+From€24.46ex. VAT/monthor €13.19 incl. VAT/month

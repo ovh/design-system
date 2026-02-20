@@ -1,0 +1,384 @@
+React Components
+
+# Tooltip
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Tooltip**
+2.  **Tooltip Content**
+3.  **Tooltip Trigger**
+
+## Tooltip
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| closeDelay | `number` | - | `undefined` | Number of milliseconds before closing the tooltip. |
+| onOpenChange | `(detail: TooltipOpenChangeDetail) => void` | - | `undefined` | Callback fired when the tooltip open state changes. |
+| open | `boolean` | - | `undefined` | The controlled open state of the tooltip. |
+| openDelay | `number` | - | `undefined` | Number of milliseconds before opening the tooltip. |
+| position | `TOOLTIP_POSITION` | - | `undefined` | The tooltip position around the trigger. |
+| positionerStyle | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+
+## TooltipContent
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| createPortal | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
+| withArrow | `boolean` | - | `false` | Whether the component displays an arrow pointing to the trigger. |
+
+## TooltipTrigger
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## Enums
+
+---
+
+### TOOLTIP_POSITION
+
+-   bottom =`"bottom"`
+-   bottomEnd =`"bottom-end"`
+-   bottomStart =`"bottom-start"`
+-   left =`"left"`
+-   leftEnd =`"left-end"`
+-   leftStart =`"left-start"`
+-   right =`"right"`
+-   rightEnd =`"right-end"`
+-   rightStart =`"right-start"`
+-   top =`"top"`
+-   topEnd =`"top-end"`
+-   topStart =`"top-start"`
+
+## Interfaces
+
+---
+
+### TooltipOpenChangeDetail
+
+-   `open: boolean`
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Tooltip>
+  <TooltipTrigger>
+    Show tooltip  </TooltipTrigger>
+  <TooltipContent>
+    This is the tooltip content  </TooltipContent>
+</Tooltip>
+```
+
+### Custom Trigger
+
+```jsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Icon
+      name="circle-question"
+      style={{
+        fontSize: '24px'
+      }}
+    />
+  </TooltipTrigger>
+  <TooltipContent>
+    This is the tooltip content  </TooltipContent>
+</Tooltip>
+```
+
+### Controlled
+
+```jsx
+const [isOpen, setIsOpen] = useState(false);
+  function toggleTooltip() {
+    setIsOpen(isOpen => !isOpen);
+  }
+  return <>
+      <Button onClick={toggleTooltip}>
+        Toggle tooltip      </Button>
+      <Tooltip open={isOpen}>
+        <TooltipTrigger asChild>
+          <Icon name={ICON_NAME.circleQuestion} style={{
+          fontSize: '24px'
+        }} />
+        </TooltipTrigger>
+        <TooltipContent withArrow>
+          This is the tooltip content        </TooltipContent>
+      </Tooltip>
+    </>;
+}
+```
+
+### Grid
+
+```jsx
+<>
+  <Tooltip position="top-start">
+    <TooltipTrigger>
+      Top Left    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Top Left tooltip    </TooltipContent>
+  </Tooltip>
+  <Tooltip position="top">
+    <TooltipTrigger>
+      Top    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Top tooltip    </TooltipContent>
+  </Tooltip>
+  <Tooltip position="top-end">
+    <TooltipTrigger>
+      Top Right    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Top Right tooltip    </TooltipContent>
+  </Tooltip>
+  <Tooltip position="left">
+    <TooltipTrigger>
+      Middle Left    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Middle Left tooltip    </TooltipContent>
+  </Tooltip>
+  <div />
+  <Tooltip position="right">
+    <TooltipTrigger>
+      Middle Right    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Middle Right tooltip    </TooltipContent>
+  </Tooltip>
+  <Tooltip position="bottom-start">
+    <TooltipTrigger>
+      Bottom Left    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Bottom Left tooltip    </TooltipContent>
+  </Tooltip>
+  <Tooltip position="bottom">
+    <TooltipTrigger>
+      Bottom    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Bottom tooltip    </TooltipContent>
+  </Tooltip>
+  <Tooltip position="bottom-end">
+    <TooltipTrigger>
+      Bottom Right    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Bottom Right tooltip    </TooltipContent>
+  </Tooltip>
+</>
+```
+
+### Z index
+
+Default Z-axis order:  
+Custom Z-axis order:
+
+```jsx
+<>
+  <span>
+    Default Z-axis order:  </span>
+  <Tooltip open>
+    <TooltipTrigger asChild>
+      <Icon
+        name="circle-info"
+        style={{
+          fontSize: '24px'
+        }}
+      />
+    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Back    </TooltipContent>
+  </Tooltip>
+  <Tooltip open>
+    <TooltipTrigger asChild>
+      <Icon
+        name="circle-info"
+        style={{
+          fontSize: '24px'
+        }}
+      />
+    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Front    </TooltipContent>
+  </Tooltip>
+  <br />
+  <span>
+    Custom Z-axis order:  </span>
+  <Tooltip
+    open
+    position="bottom"
+    positionerStyle={{
+      zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'
+    }}
+  >
+    <TooltipTrigger asChild>
+      <Icon
+        name="circle-info"
+        style={{
+          fontSize: '24px'
+        }}
+      />
+    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Front    </TooltipContent>
+  </Tooltip>
+  <Tooltip
+    open
+    position="bottom"
+  >
+    <TooltipTrigger asChild>
+      <Icon
+        name="circle-info"
+        style={{
+          fontSize: '24px'
+        }}
+      />
+    </TooltipTrigger>
+    <TooltipContent withArrow>
+      Back    </TooltipContent>
+  </Tooltip>
+</>
+```
+
+## Recipes
+
+---
+
+Dashboard Card
+
+#### Cluster Information
+
+---
+
+Name
+
+MyCluster
+
+---
+
+ID
+
+---
+
+Region
+
+GRA91-AZ
+
+---
+
+Admission plugins
+
+Always Pull Images PluginEnable
+
+Plugin Node RestrictionEnable
+
+---
+
+Feature List
+
+-   Memory: up to 1.5 TB
+    
+-   SLA: 99.99%
+    
+-   Guaranteed public bandwidth from 5 Gbps to 25 Gbps
+    
+-   25 Gbps private bandwidth included
+    
+-   OVHcloud Link Aggregation
+    
+
+Feature List Product Card
+
+WEB HOSTING
+
+NewBest seller
+
+Performance
+
+For demanding online stores and projects.
+
+1 vCore 2,4 GHz, 2 Go RAM1 vCore 2,4 GHz, 4 Go RAM2 vCores 2,4 GHz, 8 Go RAM
+
+From
+
+€24.46ex. VAT/month
+
+or €13.19 incl. VAT/monthfor a 24-month registration
+
+Minimum 2-year registration €100 free with a 5-year registration
+
+Installation fee:Free
+
+-   -   Unlimited websites
+        
+    -   High power level
+        
+    -   1 domain name free for the first
+        
+    -   500 GB SSD storage
+        
+    -   1,000 email addresses
+        
+-   1-click CMS
+    
+    -   WordPress
+        
+    -   Joomla!
+        
+    -   Drupal
+        
+    -   Prestashop
+        
+-   Database
+    
+    -   4 x 1 GB databases
+        
+    -   8 GB Web Cloud Databases
+        
+-   Security
+    
+    -   Unlimited free SSL
+        
+    -   Anti-DDoS protection
+        
+    -   Anti-virus and anti-spam
+        
+    -   Daily backups
+        
+-   Performance
+    
+    -   99.9% observed availability
+        
+    -   Guaranteed resources
+        
+    -   Unlimited traffic
+        
+    -   Service continuity
+        
+    -   Boost option to withstand temporary traffic spikes
+        
+-   Support and additional services
+    
+    -   Git
+        
+    -   Standard support
+        
+    -   SSH access
+        
+    -   CDN Basic

@@ -1,0 +1,183 @@
+# React Components/Meter
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `high` | `` | No |  | The lower numeric bound of the high end of the measured range. |
+| `low` | `` | No |  | The upper numeric bound of the low end of the measured range. |
+| `max` | `` | No | 100 | The upper numeric bound of the measured range. |
+| `min` | `` | No | 0 | The lower numeric bound of the measured range. |
+| `optimum` | `` | No |  | The optimal numeric value. Combined with low and high, it will changes the coloring behaviour. |
+| `value` | `` | No | 0 | The current value of the meter |
+
+
+## Examples
+
+
+### Accessibility Aria Label
+
+```tsx
+{
+  globals: {
+    imports: `import { Meter } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Meter aria-label="Gauge" low={40} value={35} />
+}
+```
+
+### Accessibility Aria Labelledby
+
+```tsx
+{
+  globals: {
+    imports: `import { TEXT_PRESET, Meter, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Text id="meter-label" preset={TEXT_PRESET.label}>
+        Gauge:
+      </Text>
+
+      <Meter aria-labelledby="meter-label" low={40} value={35} />
+    </>
+}
+```
+
+### Accessibility Aria Valuetext
+
+```tsx
+{
+  globals: {
+    imports: `import { Meter } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Meter aria-label="Gauge" aria-valuetext="35 files uploaded" low={40} value={35} />
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Meter } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Meter />
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    high: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    },
+    low: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    },
+    max: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    },
+    min: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    },
+    optimum: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    },
+    value: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    }
+  })
+}
+```
+
+### Optimum
+
+```tsx
+{
+  globals: {
+    imports: `import { Meter } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>Low optimum and low value:</p>
+      <Meter high={80} low={40} optimum={30} value={20} />
+
+      <p>Low optimum and high value:</p>
+      <Meter high={80} low={40} optimum={30} value={60} />
+
+      <p>Low optimum and very high value:</p>
+      <Meter high={80} low={40} optimum={30} value={90} />
+    </>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Meter low={40} value={35} />
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px'
+  }}>
+      <Meter />
+      <Meter low={40} value={35} />
+      <Meter high={80} low={40} value={60} />
+      <Meter high={80} value={90} />
+      <Meter optimum={30} value={20} />
+    </div>
+}
+```
+
+### Thresholds
+
+```tsx
+{
+  globals: {
+    imports: `import { Meter } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>Value under low threshold:</p>
+      <Meter low={40} value={35} />
+
+      <p>Value between both thresholds:</p>
+      <Meter high={80} low={40} value={60} />
+
+      <p>Value above high threshold:</p>
+      <Meter high={80} value={90} />
+    </>
+}
+```

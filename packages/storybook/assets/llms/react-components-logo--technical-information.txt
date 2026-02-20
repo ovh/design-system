@@ -1,0 +1,79 @@
+React Components
+
+# Logo
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Logo**
+
+## Logo
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [svg attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/svg#attributes) . |
+| size | `LOGO_SIZE` | - | `LOGO_SIZE.md` | The size preset to use. |
+| variant | `LOGO_VARIANT` | - | `LOGO_VARIANT.default` | The variant preset to use. |
+
+## Enums
+
+---
+
+### LOGO_SIZE
+
+-   lg =`"lg"`
+-   md =`"md"`
+-   sm =`"sm"`
+
+### LOGO_VARIANT
+
+-   default =`"default"`
+-   emblem =`"emblem"`
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+{
+  globals: {
+    imports: `import { Logo } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Logo />
+}
+```
+
+### Size
+
+```jsx
+<>
+  <Logo size="sm" />
+  <Logo size="md" />
+  <Logo size="lg" />
+</>
+```
+
+### Variant
+
+```jsx
+<>
+  <Logo variant="default" />
+  <Logo variant="emblem" />
+</>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

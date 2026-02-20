@@ -1,0 +1,18 @@
+# OVHcloud Design System Documentation for LLMs
+
+> OVHcloud Design System is a collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
+
+## Documentation Sets
+
+- [Complete documentation](https://ovh.github.io/design-system/v19.5.0/llms-full.txt): The complete OVHcloud Design System documentation including all components, styling, theming, guides, and tools
+
+- [Components](https://ovh.github.io/design-system/v19.5.0/ods-documentation-components.txt): Documentation for all React components in OVHcloud Design System.
+- [Components Index](https://ovh.github.io/design-system/v19.5.0/llms/ods-components-index.txt): Individual per-component documentation files for targeted context
+- [Generic Documentation](https://ovh.github.io/design-system/v19.5.0/ods-documentation-generic.txt): Documentation for design tokens, styling, theming, guides, tools, and general information about OVHcloud Design System.
+
+## Notes
+
+- The complete documentation includes all content from the official documentation
+- Category-specific documentation files contain only the content relevant to that category
+- Individual component files are available for targeted LLM context (see Components Index)
+- The content is automatically generated from the same source as the official documentation

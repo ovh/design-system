@@ -1,0 +1,71 @@
+React Components
+
+# Kbd
+
+## Overview
+
+---
+
+Esc
+
+## Anatomy
+
+---
+
+1.  **Kbd**
+
+## Kbd
+
+---
+
+This component has no specific properties.
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-kbd-background-color | var(--ods-color-neutral-100) | 
+ |
+| --ods-kbd-border-bottom-width | calc(var(--ods-theme-border-width) * 2) | 
+
+ |
+| --ods-kbd-border-color | var(--ods-color-neutral-200) | 
+
+ |
+| --ods-kbd-border-radius | calc(var(--ods-theme-border-radius) / 2) | 
+
+ |
+| --ods-kbd-border-width | var(--ods-theme-border-width) | 
+
+ |
+| --ods-kbd-padding-horizontal | calc(var(--ods-theme-padding-horizontal) / 2) | 
+
+ |
+| --ods-kbd-padding-vertical | calc(var(--ods-theme-padding-vertical) / 4) | 
+
+ |
+| --ods-kbd-text-color | var(--ods-color-neutral-700) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+Cmd
+
+```jsx
+<Kbd>
+  Cmd
+</Kbd>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

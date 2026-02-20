@@ -1,0 +1,75 @@
+React Components
+
+# Spinner
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Spinner**
+
+## Spinner
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+| color | `SPINNER_COLOR` | - | `SPINNER_COLOR.primary` | The color preset to use. |
+| size | `SPINNER_SIZE` | - | `SPINNER_SIZE.md` | The size preset to use. |
+
+## Enums
+
+---
+
+### SPINNER_COLOR
+
+-   neutral =`"neutral"`
+-   primary =`"primary"`
+
+### SPINNER_SIZE
+
+-   lg =`"lg"`
+-   md =`"md"`
+-   sm =`"sm"`
+-   xs =`"xs"`
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Spinner />
+```
+
+### Color
+
+```jsx
+<>
+  <Spinner color="neutral" />
+  <Spinner color="primary" />
+</>
+```
+
+### Size
+
+```jsx
+<>
+  <Spinner size="xs" />
+  <Spinner size="sm" />
+  <Spinner size="md" />
+  <Spinner size="lg" />
+</>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

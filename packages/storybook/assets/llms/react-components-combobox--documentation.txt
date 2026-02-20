@@ -1,0 +1,238 @@
+React Components
+
+# Combobox
+
+_**Combobox** allows users to search, select, and add items from a dynamic or predefined list._
+
+## Overview
+
+---
+
+**Combobox** component allows users to search for and select items from a dynamic list of suggestions or a predefined set of allowed values. It supports both single and multiple selection modes and enables users to create new entries.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Combobox</td></tr><tr><th scope="row">Also known as</th><td>Autocomplete, Dropdown Search, Autosuggest, Filterable Select</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=6046-9189" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/combobox" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-combobox--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+The **Combobox** is best suited when users need to:
+
+-   search within a dataset and dynamically refine results
+-   provide suggestions based on user input (e.g., domain names, tags, predictive search)
+-   allow users to add custom values when applicable (e.g., creating tags)
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use Combobox for datasets where typing helps filter results |
+| - Suitable for datasets up to a few hundred entries |
+| - Provide meaningful empty states |
+| - Allow users to add custom entries when appropriate |
+
+| ❌ Don't |
+| --- |
+| - Avoid excessive grouping of items, as too many categories can overwhelm users |
+| - Avoid using combobox when the number of items is very small (except for if the user needs to be able to add their own entries), you can use Select or Radio |
+
+## Best Practices in Context
+
+---
+
+1.   where the user types the search query. It displays the current input value or selected tags (multiple selection mode)
+2.  **Dropdown list** displaying a scrollable list of suggested items. Items can be customized using a custom renderer.
+3.   _(multiple selection mode)_ to display selected items as tags inside the Input field
+4.  **Clearable**  _(optional)_ to allow users to clear the input content
+5.   _(optional)_ to indicate that data is being fetched
+6.  **Add entry option** _(optional)_ allows users to create new entries when no matching result is found. The label is customizable
+7.  **Empty state message** is a customizable message displayed when no suggestion match the query
+
+## Placement
+
+---
+
+The dropdown is positioned below the Input field when there is enough space.
+
+The dropdown width should match the Input field width.
+
+In multiple selection mode, the Input field height grows dynamically to accommodate selected tags.
+
+## Behavior
+
+---
+
+### Triggering the dropdown
+
+The dropdown appears when the user clicks on the input field.
+
+### Selecting items
+
+Selecting an item triggers a custom event, allowing integrators to process the selected value(s).
+
+#### Single selection mode
+
+Clicking on an item selects it, closes the dropdown, and updates the Input field value.
+
+If the user exits the field without selecting an item, the input reverts to the placeholder or the last selected value (if any).
+
+### Creating new entries
+
+User can create new entries when no matching result exists. An **"Add entry"** option appears at the top of the dropdown (label is customizable).
+
+New entries can be added by clicking on the "Add entry" option.
+
+#### Case sensitivity rules
+
+-   search input is case-insensitive (e.g., searching for "a" will match "A")
+    
+-   newly created entries are not case-sensitive
+    
+
+Users cannot create an entry that is already selected as a tag.
+
+If a custom entry added via "Add Entry" option is removed, it does not reappear in the dropdown, as it was not part of the original list.
+
+### Clearable Button
+
+If the clearable option is enabled, a dedicated Button appears inside the Input field when it contains text:
+
+-   clicking the clearable Button resets the Input field, removing any entered text or selected value(s)
+-   in multiple selection mode, only the current Input text is cleared; selected tags remain
+
+### Loading state
+
+A Spinner can be displayed in the Input field when results are being fetched.
+
+### Empty state
+
+When no matching results are found, a customizable message is displayed in the dropdown.
+
+This state can be combined with the "Add entry" option.
+
+### Grouped items
+
+Items can be categorized into groups in both single and multiple selection modes.
+
+Group titles cannot be selected, clicked and are excluded from search.
+
+## Navigation
+
+---
+
+### Focus management
+
+The Input field can be focused using the Tab key. Pressing Tab again moves focus to the next element and closes the dropdown.
+
+If the Input field is clearable, pressing Tab first moves focus to the clear button, then to the next element.
+
+Pressing Shift + Tab moves focus to the previous interactive element without confirming any item.
+
+### General keyboard shortcuts
+
+Pressing Arrow Up/Arrow Down navigates through items in the dropdown.
+
+Pressing Backspace deletes the last character in the Input field (it does not clear the entire field at once).
+
+Pressing Enter selects the hovered item and closes the dropdown.
+
+Pressing Escape closes the dropdown without selection.
+
+#### Multiple selection mode
+
+Pressing Arrow Left/Arrow Right navigates between selected tags.
+
+Pressing Backspace while focusing a tag will remove it.
+
+Pressing Enter while focusing a tag will remove it.
+
+## Accessibility
+
+---
+
+This component complies with the [Combobox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) .
+
+### Always provide an explicit label
+
+Every **Combobox** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
+
+Favorite pet:
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Favorite pet:  </FormFieldLabel>
+  <Combobox
+    items={[
+      {
+        label: 'Dog',
+        value: 'dog'
+      },
+      {
+        label: 'Cat',
+        value: 'cat'
+      },
+      {
+        label: 'Hamster',
+        value: 'hamster'
+      },
+      {
+        label: 'Parrot',
+        value: 'parrot'
+      },
+      {
+        label: 'Spider',
+        value: 'spider'
+      },
+      {
+        label: 'Goldfish',
+        value: 'goldfish'
+      }
+    ]}
+  >
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+</FormField>
+```
+
+Screen readers will announce the label, the field and its content.
+
+### Override action context
+
+To provide more context on the interactive elements, you can provide your own custom translations to the component.
+
+Favorite pet:
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Favorite pet:  </FormFieldLabel>
+  <Combobox i18n={{
+  [INPUT_I18N.clearButton]: 'Clear favorite pet selection'
+}} items={[{
+  label: 'Dog',
+  value: 'dog'
+}, {
+  label: 'Cat',
+  value: 'cat'
+}, {
+  label: 'Hamster',
+  value: 'hamster'
+}, {
+  label: 'Parrot',
+  value: 'parrot'
+}, {
+  label: 'Spider',
+  value: 'spider'
+}, {
+  label: 'Goldfish',
+  value: 'goldfish'
+}]}>
+    <ComboboxControl clearable />
+    <ComboboxContent />
+  </Combobox>
+</FormField>
+```
+
+Screen readers will announce the label, the field, its content and custom label of focused action.

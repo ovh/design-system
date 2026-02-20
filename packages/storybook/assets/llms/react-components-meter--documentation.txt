@@ -1,0 +1,125 @@
+React Components
+
+# Meter
+
+## Overview
+
+---
+
+The **Meter** component visually represents a quantitative value within a defined range.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Meter</td></tr><tr><th scope="row">Also known as</th><td>-</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/YdqCQ0e4CtGBm7dLbuLl1h/ODS---UI-Kit?node-id=10494-5637&amp;t=9pIeofapdgMDhhF4-0" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/meter" target="_blank">Github<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+The **Meter** component represents a quantitative value such as resource usage, storage availability, or other bounded metrics. It is distinct from a progress bar due to its focus on measurement and thresholds rather than progress toward a goal.
+
+Additionally, the **Meter** is primarily static, representing a fixed state or measurement, whereas the progress bar is dynamic, reflecting continuous updates or progress over time.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use the Meter to represent bounded measurements, such as disk usage or CPU load |
+| - Customize thresholds and colors to provide meaningful visual cues |
+| - Include appropriate labels when context is not immediately clear |
+
+| ❌ Don't |
+| --- |
+| Don't use a Meter to represent unbounded progress (use a progress bar instead) |
+| Avoid separating the Meter and its associated value across different sections of the UI to prevent confusion |
+| Avoid excessive customization that compromises readability or accessibility |
+
+### Best Practices in Context
+
+1.  **Meter**
+2.  **Track**
+3.  **Fill**
+
+## Placement
+
+---
+
+The placement of the **Meter** depends on its use case and the context within the UI.
+
+Place the **Meter** close to the element it represents (e.g., near a resource title).
+
+If the **Meter** is tied to a specific numeric value (e.g., "75% used"), display the value nearby for clarity, directly adjacent to the component.
+
+Include appropriate labels when context is not immediately clear:
+
+-   inline: labels can be placed above, below or beside the Meter.
+-   surrounding: labels for minimum and maximum values can be positioned at opposite ends of the track, as needed.
+-   hidden: for visual-only representation.
+
+## Behavior
+
+---
+
+Value representation supports minimum, maximum, and current value inputs. The filled portion of the **Meter** is dynamically adjusted based on the value.
+
+Low and high thresholds can be specified to visually indicate important ranges. Color will change based on those thresholds.
+
+The coloring behavior may be updated through the optimum attribute. See the [optimum documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meter#optimum) for more information.
+
+## Navigation
+
+---
+
+The **Meter** component is non-interactive and does not receive keyboard focus.
+
+## Accessibility
+
+---
+
+To ensure proper accessibility, **Meter** must be correctly labeled.
+
+### Always provide an explicit label
+
+Every **Meter** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) or an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) attribute.
+
+```jsx
+<Meter
+  aria-label="Gauge"
+  low={40}
+  value={35}
+/>
+```
+
+Screen readers will announce the label and the meter information.
+
+Gauge:
+
+```jsx
+<>
+  <Text
+    id="meter-label"
+    preset="label"
+  >
+    Gauge:  </Text>
+  <Meter
+    aria-labelledby="meter-label"
+    low={40}
+    value={35}
+  />
+</>
+```
+
+Screen readers will announce the label and the meter information.
+
+### Improve value readability
+
+Numbers aren't always user-friendly. You can use the [aria-valuetext](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-valuetext) attribute to present the current value in a more user-friendly, human-understandable way.
+
+```jsx
+<Meter
+  aria-label="Gauge"
+  aria-valuetext="35 files uploaded"
+  low={40}
+  value={35}
+/>
+```
+
+Screen readers will announce the label and the meter information in a more user-friendly, human-understandable way.

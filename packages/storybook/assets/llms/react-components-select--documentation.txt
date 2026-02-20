@@ -1,0 +1,148 @@
+React Components
+
+# Select
+
+_**Select** component is used to select one or more items from a list of values_
+
+DogCatHamsterParrotSpiderGoldfish
+
+## Overview
+
+---
+
+A **Select** is used to allow users to select one or more items from a list that is displayed after clicking on it.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Select</td></tr><tr><th scope="row">Also known as</th><td>Dropdown</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-24314" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/select" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-select--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+A **Select** is used to display to the user a list of items or options to choose from.
+
+The order of items or options in the list should be sorted as following, depending on the usage:
+
+-   **Frequency** of use: recommended item will be listed first
+-   **Alpha**: it can be used for countries or city locations for example
+-   **Numeric**: it can be used for sizes for example
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Select when users need to choose one option from a list of three or more items |
+| - Order the options logically (e.g., by frequency of use, alphabetical order, or numeric sequence) |
+| - Keep option labels short and scannable, ideally one word or a short phrase that fits on a single line |
+| - Use placeholder text to prompt users when no option is selected |
+| - Consider adding grouping if you have many related options and want to improve clarity |
+
+| ❌ Don't |
+| --- |
+| - Don't use a Select for binary choices like "Yes" or "No". Use Radio buttons instead for faster interaction |
+| - Don't use Select when users need to compare all available options. Use Radio buttons for better visibility |
+| - Don't include very long option labels that wrap multiple lines since it makes scanning and selection harder |
+| - Don't rely only on placeholder text to communicate intent. Always pair Select with a label |
+| - Don't overload Select with too many items (e.g., hundreds). Consider Combobox or a searchable alternative |
+
+### Best Practices in Context
+
+1.  **Select**
+2.  **Field containing placeholder or selection**
+3.  **Dropdown**
+4.  **List**
+5.  **Option**
+6.  **Group** - optional
+7.  **Multi-selection** - optional (display a checkbox)
+
+## Placement
+
+---
+
+**Select** should be vertically aligned with other form components on a same page.
+
+It has a width by default, but it can widen to match its container.
+
+## Behavior
+
+---
+
+**Select** can be focused and hovered. It also can be disabled. A single option and a group of options can be disabled to be more precise in inner **Select** items.
+
+## Variation
+
+---
+
+-   **Single selection**: Allows the user to select a single item from a dropdown list of options.
+-   **Multiple selection**: Allows the user to select multiple items from a dropdown list of options. The whole line is clickable.
+-   **Grouped options**: Related options can be grouped together in both a single and multi **Select**.
+
+## Navigation
+
+---
+
+### Focus Management
+
+When the **Select** is enabled, it can receive focus via keyboard interaction.
+
+When the **Select** is opened, focus moves into the dropdown content and highlights the selected option (if any), or the first available option.
+
+When closed, focus returns to the **Select** trigger.
+
+A read-only **Select** can receive focus, but the dropdown cannot be opened or interacted with.
+
+Disabled **Select** or disabled options cannot receive focus or be interacted with.
+
+### General Keyboard Shortcuts
+
+Pressing Space, Enter, Arrow Down or Arrow Up when the **Select** is focused opens the dropdown and highlights the selected or first option.
+
+While the dropdown is open:
+
+-   Arrow Down moves the highlight to the next option
+-   Arrow Up moves the highlight to the previous option
+-   Enter or Tab selects the currently highlighted option and closes the dropdown
+-   Escape closes the dropdown without making a new selection
+
+Typing an alphanumeric character (A–Z, a–z) changes focus to the next option starting with that character.
+
+## Accessibility
+
+---
+
+This component complies with the [Listbox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/) .
+
+### Always provide an explicit label
+
+Every **Select** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
+
+Select a Web hosting
+
+1 vCore 2,4 GHz, 2 Go RAM1 vCore 2,4 GHz, 4 Go RAM2 vCores 2,4 GHz, 8 Go RAM
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Select a Web hosting  </FormFieldLabel>
+  <Select
+    items={[
+      {
+        label: '1 vCore 2,4 GHz, 2 Go RAM',
+        value: 'hosting-1'
+      },
+      {
+        label: '1 vCore 2,4 GHz, 4 Go RAM',
+        value: 'hosting-2'
+      },
+      {
+        label: '2 vCores 2,4 GHz, 8 Go RAM',
+        value: 'hosting-3'
+      }
+    ]}
+  >
+    <SelectControl />
+    <SelectContent />
+  </Select>
+</FormField>
+```
+
+Screen readers will announce the label as well as the select.

@@ -1,0 +1,199 @@
+React Components
+
+# File Upload
+
+_**File Upload** allows users to select one or more files to upload to a specific location._
+
+## Overview
+
+---
+
+The **File Upload** component is used to enable users to upload files to a server or application.
+
+It provides a way to browse, select, and upload files, and is accompanied by progress indicators and feedback messages to guide users through the process.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>File Upload</td></tr><tr><th scope="row">Also known as</th><td>File input, File uploader, Dropzone</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=55-24358" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/file-upload" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-file-upload--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+Use the **File Upload** component when you need users to submit files, such as documents, images, or other data.
+
+Common use cases include form submissions, profile picture updates, and document management systems.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a single File Upload component per context when allowing users to upload multiple files on the same page |
+| - Clearly communicate constraints such as file type, size limits, or max number of files |
+| - Use short and clear success message once the upload is complete |
+| - Ensure error messages are specific and actionable (e.g., “File exceeds 5MB limit” instead of a generic “Upload failed”) |
+
+| ❌ Don't |
+| --- |
+| - Don't place the File Upload component inside a modal unless absolutely necessary |
+| - Don't allow file uploads without providing feedback or confirmation |
+| - Don't assume users know upload limitations. Make restrictions explicit |
+
+### Best Practices in Context
+
+1.  **File Upload**
+2.  **Description** - optional (file limitations)
+3.  **Dropzone**
+4.  **Upload button**
+5.  **Uploaded files zone**
+6.  **Delete button**
+
+## Placement
+
+---
+
+**File Upload** component can be part of a complex form, or displayed as a standalone.
+
+**File Upload** has an automatic default width, based on its content.
+
+## Behavior
+
+---
+
+### Selecting files
+
+When selecting the "Browse" Button, the native file selection popup opens to retrieve the needed file to upload.
+
+### Drag & Drop
+
+Users can drag & drop a file, the drop zone being the whole **File Upload** component.
+
+### Uploading files
+
+When a file upload is in progress, the file name and its size (if available) are displayed.
+
+A Spinner is displayed to indicate the file is uploading. It remains visible as long as the file uploading is not finished yet. The uploading progress percentage can be indicated next to the file name.
+
+A close icon Button is displayed as soon as a file upload is in progress. It is displayed as long as the user does not interrupt the upload or removes an already uploaded file.
+
+### Upload complete
+
+#### With success
+
+The Spinner is replaced with the file icon, the file name and the icon turn green, as soon as a file has been uploaded, meaning the upload is successful and complete.
+
+#### With error
+
+If the uploading of a file went wrong, the Spinner is replaced with an error icon, and the file name and the icon turn red. A specific `error` message may be displayed below the uploaded file.
+
+The user is still able to upload another file but the file in error will remain in error until user removes it.
+
+Depending on the error, the global component can be displayed in an error state.
+
+### Extra behavior
+
+#### Global configuration / error
+
+Number of files, maximum sizes and expected formats can be set globally inside the component.
+
+A global `error` message is displayed when:
+
+-   Wrong file format has been uploaded
+-   Maximum file size exceeded
+-   Maximum number of files exceeded
+
+The global component is displayed in an error state in this situation.
+
+#### Disabled
+
+When **File Upload** is disabled, user cannot interact with the Button and drag & drop feature is not available.
+
+#### Cancel a file upload in progress
+
+A click or press on the `close` icon Button interrupts the upload (or cancel an uploaded file).
+
+When the upload is canceled, the file upload is removed and the **File Upload** component returns to its default state, except for any other files in the queue.
+
+In case some other files have already been uploaded, and the user cancels an uploading file, the next one will take its place in the queue and so on.
+
+#### Remove an already uploaded file
+
+An already uploaded file can be removed by clicking or pressing the `close` icon Button anytime.
+
+Same as cancelling a file while it is uploading, if several files have already been uploaded and the user cancels an uploading file, the next one will take its place in the queue and so on.
+
+## Navigation
+
+---
+
+### Focus Management
+
+When tabbing through the page, the **File Upload** trigger button receives focus as part of the natural tab order.
+
+If one or more files are being uploaded or already uploaded, each close icon button becomes focusable in the tab order, in the order files were added.
+
+If the component is disabled, it cannot receive focus and no interaction is possible.
+
+The drag-and-drop area does not receive focus but accepts dropped files while the component is enabled.
+
+### General Keyboard Shortcuts
+
+Pressing Tab moves focus forward through the **File Upload** trigger button and all available close icon buttons.
+
+Pressing Shift + Tab moves focus backward through these same elements.
+
+Pressing Enter or Space while the trigger button is focused opens the native file selection dialog.
+
+Pressing Enter or Space on a close icon button cancels an upload in progress or removes the corresponding uploaded file from the list.
+
+## Accessibility
+
+---
+
+To ensure proper accessibility, the **File Upload** component must be correctly labeled and provide meaningful context when interactive elements (such as icon buttons) are used.
+
+### Always provide an explicit label
+
+Every **File Upload** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
+
+Files:
+
+Drag & drop a file 
+
+```jsx
+const [files, setFiles] = useState<File[]>([]);
+  return <FormField>
+      <FormFieldLabel>
+        Files:      </FormFieldLabel>
+      <FileUpload onFileAccept={({
+      files    }) => setFiles(files)} variant={FILE_UPLOAD_VARIANT.compact}>
+        <FileUploadList>
+          {files.map((file: File, idx) => <FileUploadItem file={file} key={idx} />)}
+        </FileUploadList>
+      </FileUpload>
+    </FormField>;
+}
+```
+
+Screen readers will announce the label, the field and its content.
+
+### Labeling cancel/delete Button
+
+The `Cancel` and `Delete` file buttons have to be explicit by adding context about their action and the file name.
+
+Drag & drop a file 
+
+```jsx
+const [files, setFiles] = useState<File[]>([]);
+  return <FileUpload onFileAccept={({
+    files  }) => setFiles(files)} variant={FILE_UPLOAD_VARIANT.compact}>
+      <FileUploadList>
+        {files.map((file: File, idx) => <FileUploadItem file={file} i18n={{
+        [FILE_UPLOAD_I18N.cancelButton]: `Cancel uploading ${file.name}`,
+        [FILE_UPLOAD_I18N.deleteButton]: `Remove ${file.name}`,
+        [FILE_UPLOAD_I18N.progressBar]: `Uploading ${file.name}`
+      }} key={idx} />)}
+      </FileUploadList>
+    </FileUpload>;
+}
+```
+
+Screen readers will announce the action and the file name.

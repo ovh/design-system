@@ -1,0 +1,292 @@
+# OVHcloud Design System - Components Index
+
+> Individual component documentation files for targeted LLM context.
+> Use these files to provide only the documentation you need, instead of the full documentation.
+
+## Accordion
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-accordion.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-accordion--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-accordion--technical-information.txt)
+
+## Badge
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-badge.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-badge--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-badge--technical-information.txt)
+
+## Breadcrumb
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-breadcrumb.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-breadcrumb--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-breadcrumb--technical-information.txt)
+
+## Button
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-button.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-button--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-button--technical-information.txt)
+
+## Button Group
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-button-group.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-button-group--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-button-group--technical-information.txt)
+
+## Card
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-card.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-card--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-card--technical-information.txt)
+
+## Checkbox
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-checkbox.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-checkbox--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-checkbox--technical-information.txt)
+
+## Clipboard
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-clipboard.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-clipboard--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-clipboard--technical-information.txt)
+
+## Code
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-code.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-code--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-code--technical-information.txt)
+
+## Combobox
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-combobox.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-combobox--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-combobox--technical-information.txt)
+
+## Datepicker
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-datepicker.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-datepicker--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-datepicker--technical-information.txt)
+
+## Divider
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-divider.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-divider--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-divider--technical-information.txt)
+
+## Drawer
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-drawer.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-drawer--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-drawer--technical-information.txt)
+
+## Editable
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-editable.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-editable--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-editable--technical-information.txt)
+
+## File Upload
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-file-upload.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-file-upload--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-file-upload--technical-information.txt)
+
+## Form Field
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-form-field.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-form-field--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-form-field--technical-information.txt)
+
+## Icon
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-icon.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-icon--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-icon--technical-information.txt)
+
+## Input
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-input.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-input--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-input--technical-information.txt)
+
+## Kbd
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-kbd.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-kbd--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-kbd--technical-information.txt)
+
+## Link
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-link.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-link--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-link--technical-information.txt)
+
+## Logo
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-logo.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-logo--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-logo--technical-information.txt)
+
+## Medium
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-medium.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-medium--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-medium--technical-information.txt)
+
+## Message
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-message.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-message--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-message--technical-information.txt)
+
+## Meter
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-meter.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-meter--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-meter--technical-information.txt)
+
+## Modal
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-modal.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-modal--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-modal--technical-information.txt)
+
+## Pagination
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-pagination.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-pagination--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-pagination--technical-information.txt)
+
+## Password
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-password.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-password--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-password--technical-information.txt)
+
+## Phone Number
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-phone-number.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-phone-number--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-phone-number--technical-information.txt)
+
+## Popover
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-popover.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-popover--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-popover--technical-information.txt)
+
+## Progress Bar
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-progress-bar.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-progress-bar--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-progress-bar--technical-information.txt)
+
+## Quantity
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-quantity.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-quantity--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-quantity--technical-information.txt)
+
+## Radio Group
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-radio-group.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-radio-group--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-radio-group--technical-information.txt)
+
+## Range
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-range.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-range--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-range--technical-information.txt)
+
+## Select
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-select.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-select--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-select--technical-information.txt)
+
+## Skeleton
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-skeleton.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-skeleton--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-skeleton--technical-information.txt)
+
+## Spinner
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-spinner.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-spinner--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-spinner--technical-information.txt)
+
+## Switch
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-switch.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-switch--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-switch--technical-information.txt)
+
+## Table
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-table.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-table--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-table--technical-information.txt)
+
+## Tabs
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tabs.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tabs--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tabs--technical-information.txt)
+
+## Tag
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tag.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tag--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tag--technical-information.txt)
+
+## Text
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-text.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-text--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-text--technical-information.txt)
+
+## Textarea
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-textarea.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-textarea--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-textarea--technical-information.txt)
+
+## Tile
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tile.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tile--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tile--technical-information.txt)
+
+## Timepicker
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-timepicker.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-timepicker--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-timepicker--technical-information.txt)
+
+## Toaster
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-toaster.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-toaster--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-toaster--technical-information.txt)
+
+## Toggle
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-toggle.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-toggle--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-toggle--technical-information.txt)
+
+## Tooltip
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tooltip.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tooltip--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tooltip--technical-information.txt)
+
+## Tree View
+
+- [Overview](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tree-view.txt)
+- [Documentation](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tree-view--documentation.txt)
+- [Technical Information](https://ovh.github.io/design-system/v19.5.0/llms/react-components-tree-view--technical-information.txt)

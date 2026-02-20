@@ -1,0 +1,132 @@
+React Components
+
+# Tree View
+
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
+
+## Overview
+
+---
+
+The **Tree View** component displays hierarchical data in a parent-child structure. It allows users to expand, collapse, and interact with nested items.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Tree View</td></tr><tr><th scope="row">Also known as</th><td>-</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/8NZfqeptysMQInF02WaIJR" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/tree-view" target="_blank">Github<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+The **Tree View** component is used to navigate or manage hierarchical datasets, for representing file systems, nested categories, any structured dataset that benefits from a collapsible interface.
+
+Common use cases include:
+
+-   Directory structures
+-   Nested navigation menus
+-   Category selectors
+-   Configurations and settings with nested options?
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Tree View for hierarchical data where relationships between items are important |
+
+| ❌ Don't |
+| --- |
+| - Don’t use a Tree View if there are no nodes or if the content is too minimal to justify a hierarchical structure |
+
+### Best Practices in Context
+
+1.  **Tree View**
+2.  **Node/item**
+3.  **Checkbox (multi-selection)**
+4.  **Node/item name**
+
+## Behavior
+
+---
+
+### Expand / Collapse
+
+-   Items/Nodes can be expanded or collapsed to show or hide their children
+-   The Tree View can be rendered with all nodes expanded by default
+-   Individual nodes can be configured to start in an expanded state when the Tree View is rendered
+
+### Selection
+
+#### Single Selection
+
+-   Clicking a node selects it and deselects any previously selected node
+
+#### Checkbox tree/multi-selection
+
+-   Each node/item has a checkbox for selection
+-   Parent checkbox can represent:
+    -   Checked: all children are selected
+    -   Unchecked: no children are selected
+    -   Indeterminate: partial selection of children
+-   Selecting a parent node/item selects or deselects all children recursively
+
+### Disabling
+
+Disabled nodes cannot be selected, expanded, collapsed, or interact with. They are still display in the hierarchy for context.
+
+## Navigation
+
+---
+
+### Focus Management
+
+Only one node in the Tree View is focusable at a time.
+
+Focus remains on a single visible node and moves predictably with keyboard navigation.
+
+If a node contains interactive elements (e.g., a checkbox or link), those elements can receive focus.
+
+### General Keyboard Shortcuts
+
+Pressing Arrow Up / Arrow Down moves focus to the previous or next visible node.
+
+Pressing Arrow Right:
+
+-   If the focused node is collapsed, expands it
+-   If the focused node is expanded, moves focus to its first child
+
+Pressing Arrow Left:
+
+-   If the focused node is expanded, collapses it
+-   If the focused node is collapsed, moves focus to its parent
+
+Pressing Home, or fn + Arrow Left, moves focus to the first visible node.
+
+Pressing End, or fn + Arrow Right moves focus to the last visible node.
+
+Pressing Enter or Space activates, expands, or collapses the focused node. If the node has a checkbox, it toggles its state.
+
+Pressing Enter or Space + Shift + Arrow Up / Arrow Down selects a continuous range of nodes (multi-selection mode).
+
+Pressing Enter or Space + Ctrl or Cmd toggles selection of individual node.
+
+Pressing Ctrl or Cmd + A selects all nodes in the tree. When all nodes are already selected, it unselects all nodes.
+
+Typing an alphanumeric character (`A-Z`, `a-z`) changes focus to the next node starting with that character.
+
+## Accessibility
+
+---
+
+This component complies with the [Tree View WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/)

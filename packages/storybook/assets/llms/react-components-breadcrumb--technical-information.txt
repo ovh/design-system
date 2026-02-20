@@ -1,0 +1,282 @@
+React Components
+
+# Breadcrumb
+
+## Overview
+
+---
+
+1.  
+2.  
+3.  Current
+
+## Anatomy
+
+---
+
+1.  **Breadcrumb**
+2.  **Breadcrumb Item**
+3.  **Breadcrumb Link**
+
+## Breadcrumb
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [nav attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/nav#attributes) . |
+| collapseThreshold | `number` | - | `4` | The number of items when the component will collapse to an ellipsis. |
+| i18n | `Partial` | - | `undefined` | Internal translations override. |
+| id | `string` | - | `undefined` | Id for the breadcrumb nav (overrides auto-generated id) |
+| locale | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| nbItemsAfterEllipsis | `number` | - | `1` | The number of items to display before the ellipsis. |
+| nbItemsBeforeEllipsis | `number` | - | `1` | The number of items to display after the ellipsis. |
+| noCollapse | `boolean` | - | `false` | Whether the component should not collapse in an ellipsis regarding the number of items. |
+| onExpand | `() => void` | - | `undefined` | Callback fired when an ellipsis is expanded. |
+
+## BreadcrumbItem
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [li attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/li#attributes) . |
+
+## BreadcrumbLink
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [a attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#attributes) . |
+| as | `<T>` | - | `'a'` | Pass a component you may want to use as custom Link component. Useful for example when using routing library like react-router. |
+
+## Enums
+
+---
+
+### BREADCRUMB_I18N
+
+-   ellipsisButton =`"breadcrumb.ellipsis.button"`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-link-column-gap | var(--ods-theme-column-gap) | 
+ |
+| --ods-link-row-gap | var(--ods-theme-row-gap) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+1.  
+2.  
+3.  Current
+
+```jsx
+<Breadcrumb>
+  <BreadcrumbItem>
+    <BreadcrumbLink
+      aria-label="Home"
+      href="#"
+    >
+      <Icon name="home" />
+    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Parent    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Current    </BreadcrumbLink>
+  </BreadcrumbItem>
+</Breadcrumb>
+```
+
+### Collapsed
+
+1.  
+2.  
+3.  RISE-2
+
+```jsx
+<Breadcrumb>
+  <BreadcrumbItem>
+    <BreadcrumbLink
+      aria-label="Homepage"
+      href="#"
+    >
+      Home    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Products    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Hosting    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Servers    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Dedicated    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Rise    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      RISE-2    </BreadcrumbLink>
+  </BreadcrumbItem>
+</Breadcrumb>
+```
+
+You can customize the number of item displayed before and after the ellipsis.
+
+1.  
+2.  
+3.  
+4.  
+5.  
+6.  RISE-2
+
+```jsx
+<Breadcrumb
+  nbItemsAfterEllipsis={4}
+  nbItemsBeforeEllipsis={1}
+>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Home    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Products    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Hosting    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Servers    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Dedicated    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Rise    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      RISE-2    </BreadcrumbLink>
+  </BreadcrumbItem>
+</Breadcrumb>
+```
+
+You can also customize the threshold from when the breadcrumb will collapse.
+
+1.  
+2.  
+3.  
+4.  
+5.  
+6.  
+7.  RISE-2
+
+```jsx
+<Breadcrumb collapseThreshold={7}>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Home    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Products    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Hosting    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Servers    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Dedicated    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Rise    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      RISE-2    </BreadcrumbLink>
+  </BreadcrumbItem>
+</Breadcrumb>
+```
+
+Or you can even deactivate the whole collapse logic.
+
+1.  
+2.  
+3.  
+4.  
+5.  
+6.  
+7.  RISE-2
+
+```jsx
+<Breadcrumb noCollapse>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Home    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Products    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Hosting    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Servers    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Dedicated    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      Rise    </BreadcrumbLink>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <BreadcrumbLink href="#">
+      RISE-2    </BreadcrumbLink>
+  </BreadcrumbItem>
+</Breadcrumb>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

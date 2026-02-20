@@ -1,0 +1,153 @@
+React Components
+
+# Quantity
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Quantity**
+2.  **Quantity Control**
+3.  **Quantity Input**
+
+## Quantity
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| defaultValue | `string` | - | `undefined` | The initial quantity value. Use when you don't need to control the value of the quantity. |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
+| max | `number` | - | `undefined` | The maximum quantity that can be selected. |
+| min | `number` | - | `undefined` | The minimum quantity that can be selected. |
+| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| onValueChange | `(detail: QuantityValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
+| readOnly | `boolean` | - | `undefined` | Whether the component is readonly. |
+| required | `boolean` | - | `undefined` | Whether the component is required. |
+| step | `number` | - | `undefined` | The amount to increment or decrement the value by. |
+| value | `string` | - | `undefined` | The controlled quantity value. |
+
+## QuantityControl
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## QuantityInput
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [input attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes) . |
+
+## Interfaces
+
+---
+
+### QuantityValueChangeDetail
+
+-   `value: string`
+-   `valueAsNumber: number`
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Quantity>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+### Disabled
+
+```jsx
+<Quantity disabled>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+### Readonly
+
+```jsx
+<Quantity readOnly>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+### Max
+
+```jsx
+<Quantity max={10}>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+### Min
+
+```jsx
+<Quantity min={0}>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+### Step
+
+```jsx
+<Quantity step={10}>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+### Form field
+
+Set a quantity:
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Set a quantity:  </FormFieldLabel>
+  <Quantity>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+</FormField>
+```
+
+## Recipes
+
+---
+
+Config Tile
+
+VPS 1
+
+4 vCore8 Go RAM100 Go 1 day automated backup Unlimited traffic 200 Mbps
+
+12 months6 monthsNo commitment
+
+From€24.46ex. VAT/monthor €13.19 incl. VAT/month

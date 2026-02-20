@@ -1,0 +1,110 @@
+React Components
+
+# Clipboard
+
+_**Clipboard** component allows user to view and copy information to its **Clipboard**._
+
+## Overview
+
+---
+
+**Clipboard** component is used to copy quickly and easily a text, a link and more to the **Clipboard**.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Clipboard</td></tr><tr><th scope="row">Also known as</th><td>Copy Component, Copy to Clipboard</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=26-7351" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/clipboard" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-clipboard--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+**Clipboard** is used to quickly and easily copy an amount of text to the user's **Clipboard**.
+
+It can be used when it is considered that it will cause trouble for the user to select and copy a text.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use the Clipboard component to allow users to easily copy non-editable text, such as tokens, or IDs |
+| - Use Clipboard when copying text manually would be error-prone or tedious |
+| - Use the mask/unmask toggle appropriately for sensitive content, like passwords or tokens |
+
+| ❌ Don't |
+| --- |
+| - Don't use the Clipboard just to display static text, use a read-only Input or Text component instead |
+| - Don't display text that should be editable in a Clipboard, this component is read-only by nature |
+| - Don't place the Clipboard in contexts where copying is unnecessary or irrelevant |
+
+### Best Practices in Context
+
+1.  **Clipboard**
+2.  **Input text**
+3.  **Copy button**
+4.  **Tooltip**
+5.  **Show/Hide button** - optional
+
+## Placement
+
+---
+
+By default, the **Clipboard** content is left-aligned in its container.
+
+**Clipboard**'s Tooltip is right-aligned after the component by default, and vertically centered.
+
+## Behavior
+
+---
+
+**Clipboard** can be focused and hovered. They can be disabled. When disabled, the component can't be hovered, focused nor clicked.
+
+The **Clipboard** component is used as read-only, to allow users to copy a predefined text that cannot be edited directly.
+
+Even if no visual indicator prompts the user to do so, the user can select the text directly in the Input.
+
+The trigger for copying the Input field content to the **Clipboard** is the "copy" button.
+
+When hovering or focusing, a Tooltip is displayed as a helper.
+
+The clipboard masking toggled using show/hide action is permanent. Users have to click again to show/hide the Input field content.
+
+A confirmation Tooltip is displayed (if user is still hovering the "copy" button) when **Clipboard** content has been successfully copied.
+
+## Navigation
+
+---
+
+### Focus Management
+
+The **Clipboard** receives focus as part of the natural tab order. Copy button becomes focusable immediately after the **Clipboard**.
+
+If the **Clipboard** is disabled, it is skipped in the tab order and cannot be focused.
+
+### General Keyboard Shortcuts
+
+Pressing Ctrl + C (or Cmd + C on macOS) while the input field is focused copies the selected text.
+
+Pressing Enter or Space when the copy button is focused triggers the copy action (button component behavior).
+
+## Accessibility
+
+---
+
+To ensure proper accessibility, the **Clipboard** component must be correctly labeled.
+
+### Always provide an explicit label
+
+Every **Clipboard** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
+
+API key:
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    API key:  </FormFieldLabel>
+  <Clipboard value="loremipsum">
+    <ClipboardControl />
+    <ClipboardTrigger />
+  </Clipboard>
+</FormField>
+```
+
+Screen readers will announce the label, the field and its content.

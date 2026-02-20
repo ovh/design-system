@@ -1,0 +1,219 @@
+React Components
+
+# Badge
+
+_**Badge** show concise metadata or the current status for an item, in a compact format._
+
+## Overview
+
+---
+
+A **Badge** component labels an item, a keyword or a status. They are non-interactive and used inline, next to the title or text they complete.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Badge</td></tr><tr><th scope="row">Also known as</th><td>Chip (previous name), Label</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-22285" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/badge" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-badge--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+Badges are used for items that need to be labelled or categorized.
+
+It can refer to these examples of enhanced data :
+
+-   A notification status
+-   A marketing category
+-   Additional product information
+
+### Notification Status
+
+The notification status can be used next to a menu entry, a label or an option ; in dashboards, Table or summary panels.
+
+There are four different sub-types of status, in order of severity:
+
+-   **Error** : Reserved for errors, malfunctions, as well as critical issues. System is unusable, or an action must be taken immediately.
+-   **Warning** : Reserved for critical messages that need the user attention and acknowledgment, but might not cause errors.
+-   **Information** : Provides information to users in context. Shouldn't replace regular content.
+-   **Success** : Reserved to provide to a static persistent success message.
+
+### Marketing category
+
+The marketing category is used in product Tiles or product descriptions; used as - temporary or permanent - marketing highlight.
+
+It can contain categories like _"Promotion", "Summer Deals", "Black Friday", "Limited Edition", "Flash Sales"_, ...
+
+### Additional product information
+
+The product status is used in product Tiles or product descriptions, it is bound inside the product structure to add tags and information.
+
+All product statuses are of type "New", "Limited edition", "Sold out"
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Keep the label short, specific, and readable (ideally one or two words) |
+| - Use Badge to indicate status, category, or metadata |
+| - Place Badge inline with related content, such as next to titles or list items |
+| - Use Badge to complement information, not replace it. They should add clarity, not create ambiguity |
+
+| ❌ Don't |
+| --- |
+| - Don't use Badge as interactive element (e.g., buttons or filters) |
+| - Don't write long sentences or complex phrases inside a Badge |
+| - Don't use too many Badges in the same line or component, as this creates visual clutter |
+| - Don't place Badge far from the content they describe, proximity reinforces meaning |
+
+### Best Practices in Context
+
+1.  **Badge**
+2.  **Icon** - optional (left or right)
+3.  **Label** - optional (specific use case only)
+
+## Placement
+
+---
+
+Since it provides extra information to a sibling element, in can be used inside components in various places, referring to the nature of its environment.
+
+Multiple **Badges** can be displayed:
+
+-   on a single line
+-   stacked vertically
+
+## Behavior
+
+---
+
+As the **Badge** is an informational component, its default behavior is being read-only.
+
+An icon can be displayed on the left or right of the **Badge** label content. Icon-only **Badge** also exists, but it must meet accessibility requirements. See Accessibility section below.
+
+## Variation
+
+---
+
+### Color
+
+-   **Information** _(default)_: display neutral or informational messages, such as updates, notifications, or general status.
+-   **Success**: indicate positive outcomes or successful actions, such as completed tasks or achievements.
+-   **Warning**: alert users to potential issues or cautionary information, signaling that attention is needed.
+
+### Size
+
+-   **Small**: compact and unobtrusive counts or statuses, suitable for tight spaces and minimalistic designs.
+-   **Medium** _(default)_: main size for displaying **Badges**.
+-   **Large**: prominent and easily noticeable counts or statuses, suitable for emphasizing important information.
+
+## Navigation
+
+---
+
+The **Badge** component is non-interactive and does not receive keyboard focus. It is purely decorative and used to label an item, keyword, or status.
+
+## Accessibility
+
+---
+
+**Badges** are read by screen readers as regular text.
+
+Icon-only **Badge** is only used in very specific cases. In that case, it should be accompanied by a tooltip to provide further context.
+
+The accessibility of multiple **Badges** presented as a collection must be considered during its implementation. Their grouping should be made clear to assistive technologies and proper ARIA attributes must be added to ensure full accessibility.
+
+### Icon-only Badge
+
+If a **Badge** contains only an icon, it must include an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to provide context.
+
+```jsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Badge, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Badge>
+      <Icon aria-label="Promotion" name={ICON_NAME.tag} role="img" />
+    </Badge>
+}
+```
+
+Screen readers will announce the aria-label instead of ignoring the **Badge**.
+
+Since an icon-only **Badge** may lack detailed information, attach a tooltip and use an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) when extra context is needed:
+
+```jsx
+{
+  globals: {
+    imports: `import { BADGE_COLOR, ICON_NAME, Badge, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tooltip>
+      <TooltipTrigger asChild>
+        <Badge aria-labelledby="tooltip-a11y" color={BADGE_COLOR.promotion}>
+          <Icon name={ICON_NAME.tag} />
+        </Badge>
+      </TooltipTrigger>
+      <TooltipContent id="tooltip-a11y">
+        Promotion valid from November 22 to 26      </TooltipContent>
+    </Tooltip>
+}
+```
+
+Screen readers will announce the **Tooltip** content when focusing on the **Badge**.
+
+### Structuring groups of Badges with lists
+
+When displaying multiple **Badges** together, they should be wrapped within an unordered list of items (`<ul>` and `<li>`) to ensure a proper announcement by screen readers.
+
+```jsx
+{
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ul style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    margin: 0,
+    padding: 0,
+    listStyle: 'none'
+  }}>
+      <li>
+        <Badge>
+          Item 1        </Badge>
+      </li>
+      <li>
+        <Badge>
+          Item 2        </Badge>
+      </li>
+    </ul>
+}
+```
+
+This structure ensures that assistive technologies announce **Badges** as a list, rather than reading them as separate, unrelated announcements. Screen readers will announce the list, the number of items and the **Badges** content.
+
+### Alternative approach with ARIA roles
+
+When modifying the HTML structure is not possible, use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [role="listitem"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) to mimic list semantics.
+
+```jsx
+{
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <div role="list" style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>
+      <Badge role="listitem">
+        Item 1      </Badge>
+      <Badge role="listitem">
+        Item 2      </Badge>
+    </div>
+}
+```
+
+This ensures that screen readers recognize the **Badges** as a structured list even without native `<ul>` and `<li>` elements.

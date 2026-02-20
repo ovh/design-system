@@ -1,0 +1,120 @@
+# React Components/Progress Bar
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `max` | `` | No | 100 | The maximum value of the progress bar. |
+| `value` | `` | No | 0 | The current value of the progress bar |
+
+
+## Examples
+
+
+### Accessibility Label
+
+```tsx
+{
+  globals: {
+    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ProgressBar aria-label="Converting" />
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ProgressBar />
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    max: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'number'
+        }
+      },
+      control: 'number'
+    },
+    value: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'number'
+        }
+      },
+      control: 'number'
+    }
+  })
+}
+```
+
+### Max
+
+```tsx
+{
+  globals: {
+    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ProgressBar max="500" value="50" />
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <ProgressBar value="50" />
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    width: '300px'
+  }}>
+      <ProgressBar />
+      <ProgressBar value="25" />
+      <ProgressBar value="50" />
+      <ProgressBar value="75" />
+      <ProgressBar max="500" value="50" />
+    </div>
+}
+```
+
+### Value
+
+```tsx
+{
+  globals: {
+    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ProgressBar value="50" />
+}
+```

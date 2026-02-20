@@ -1,0 +1,452 @@
+# React Components/Datepicker
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `dateFormatter` | `` | No |  | Format the date to display in the input. |
+| `defaultOpen` | `` | No |  | The initial open state of the datepicker. Use when you don't need to control the open state of the datepicker. |
+| `defaultValue` | `` | No |  | The initial selected date. Use when you don't need to control the selected date of the datepicker. |
+| `defaultView` | `` | No |  | The default view of the calendar (day, month, year). |
+| `disabled` | `` | No |  | Whether the component is disabled. |
+| `disabledDates` | `` | No |  | List of dates that cannot be selected. |
+| `disabledWeekDays` | `` | No |  | List of week days that cannot be selected. |
+| `i18n` | `` | No |  | Internal translations override (see Input i18n keys). |
+| `invalid` | `` | No |  | Whether the component is in error state. |
+| `locale` | `` | No |  | The locale to use when formatting the date. |
+| `max` | `` | No |  | The maximum date that can be selected. |
+| `maxView` | `` | No |  | The maximum view of the calendar (day, month, year). |
+| `min` | `` | No |  | The minimum date that can be selected. |
+| `minView` | `` | No |  | The minimum view of the calendar (day, month, year). |
+| `name` | `` | No |  | The name of the form element. Useful for form submission. |
+| `onValueChange` | `` | No |  | Callback fired when the value changes. |
+| `open` | `` | No |  | The controlled open state of the datepicker. |
+| `placeholder` | `` | No |  | The placeholder text to display in the input. |
+| `positionerStyle` | `` | No |  | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+| `readOnly` | `` | No |  | Whether the component is readonly. |
+| `required` | `` | No |  | Whether the component is required. |
+| `value` | `` | No |  | The controlled selected date. |
+| `view` | `` | No |  | The controlled view of the calendar (day, month, year). |
+
+
+## Subcomponents
+
+
+### DatepickerContent
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `createPortal` | `` | No | true | Whether the component should be rendered in the DOM close to the body tag. |
+
+
+
+### DatepickerControl
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `clearable` | `` | No |  | Whether the clear button is displayed. |
+| `loading` | `` | No |  | Whether the component is in loading state. |
+
+
+## Examples
+
+
+### Accessibility Date Format
+
+```tsx
+{
+  globals: {
+    imports: `import { TEXT_PRESET, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldHelper, FormFieldLabel, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Start date:
+      </FormFieldLabel>
+
+      <Datepicker>
+        <DatepickerControl placeholder="DD-MM-YYYY" />
+
+        <DatepickerContent />
+      </Datepicker>
+
+      <FormFieldHelper>
+        <Text preset={TEXT_PRESET.caption}>
+          Expected format: DD-MM-YYYY
+        </Text>
+      </FormFieldHelper>
+    </FormField>
+}
+```
+
+### Accessibility Form Field
+
+```tsx
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Start date:
+      </FormFieldLabel>
+
+      <Datepicker>
+        <DatepickerControl />
+
+        <DatepickerContent />
+      </Datepicker>
+    </FormField>
+}
+```
+
+### Accessibility I 18 N
+
+```tsx
+{
+  globals: {
+    imports: `import { INPUT_I18N, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Start date:
+      </FormFieldLabel>
+
+      <Datepicker i18n={{
+      [INPUT_I18N.clearButton]: 'Clear date'
+    }}>
+        <DatepickerControl clearable />
+
+        <DatepickerContent />
+      </Datepicker>
+    </FormField>
+}
+```
+
+### Date Formatter
+
+```tsx
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: ({}) => <Datepicker dateFormatter={({
+    date
+  }) => `${date.getFullYear()}`} placeholder="yyyy">
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Datepicker>
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+}
+```
+
+### Demo
+
+```tsx
+{
+  render: (arg: DemoArg) => <Datepicker disabled={arg.disabled} invalid={arg.invalid} locale={arg.locale} placeholder={arg.placeholder} readOnly={arg.readOnly}>
+      <DatepickerControl clearable={arg.clearable} loading={arg.loading} />
+
+      <DatepickerContent />
+    </Datepicker>,
+  argTypes: orderControls({
+    clearable: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'boolean'
+        }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+    invalid: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+    loading: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'boolean'
+        }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+    locale: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'iso code'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: ['de', 'en', 'es', 'fr', 'it', 'nl', 'pl', 'pt']
+    },
+    placeholder: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'text'
+    },
+    readOnly: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: {
+        type: 'boolean'
+      }
+    }
+  })
+}
+```
+
+### Disabled
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>Disabled:</p>
+
+      <Datepicker disabled>
+        <DatepickerControl />
+
+        <DatepickerContent />
+      </Datepicker>
+
+      <p>Disabled Dates:</p>
+
+      <Datepicker disabledDates={[new Date(Date.now() - 86400000), new Date(), new Date(Date.now() + 86400000)]}>
+        <DatepickerControl />
+
+        <DatepickerContent />
+      </Datepicker>
+
+      <p>Disabled Week Days:</p>
+
+      <Datepicker disabledWeekDays={[0, 3]}>
+        <DatepickerControl />
+
+        <DatepickerContent />
+      </Datepicker>
+    </>
+}
+```
+
+### In Form Field
+
+```tsx
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Label:
+      </FormFieldLabel>
+
+      <Datepicker>
+        <DatepickerControl />
+
+        <DatepickerContent />
+      </Datepicker>
+    </FormField>
+}
+```
+
+### Max View
+
+```tsx
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Datepicker maxView="day">
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+}
+```
+
+### Min Max
+
+```tsx
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Datepicker max={new Date(Date.now() + 86400000 * 10)} min={new Date(Date.now() - 86400000 * 10)}>
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+}
+```
+
+### Min View
+
+```tsx
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Datepicker minView="month">
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Datepicker defaultValue={new Date()}>
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+}
+```
+
+### Readonly
+
+```tsx
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Datepicker readOnly>
+      <DatepickerControl />
+
+      <DatepickerContent />
+    </Datepicker>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px'
+  }}>
+      <Datepicker>
+        <DatepickerControl placeholder="Default" />
+        <DatepickerContent createPortal={false} />
+      </Datepicker>
+
+      <Datepicker>
+        <DatepickerControl loading placeholder="Loading" />
+        <DatepickerContent createPortal={false} />
+      </Datepicker>
+
+      <Datepicker>
+        <DatepickerControl clearable placeholder="Clearable" />
+        <DatepickerContent createPortal={false} />
+      </Datepicker>
+
+      <Datepicker invalid>
+        <DatepickerControl placeholder="Invalid" />
+        <DatepickerContent createPortal={false} />
+      </Datepicker>
+
+      <Datepicker disabled>
+        <DatepickerControl placeholder="Disabled" />
+        <DatepickerContent createPortal={false} />
+      </Datepicker>
+
+      <Datepicker readOnly>
+        <DatepickerControl placeholder="Read only" />
+        <DatepickerContent createPortal={false} />
+      </Datepicker>
+    </div>
+}
+```

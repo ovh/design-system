@@ -1,4 +1,4 @@
-# OVHcloud Design System — Generic Documentation
+# OVHcloud Design System - Generic Documentation
 
 Documentation for design tokens, styling, theming, guides, tools, and general information about OVHcloud Design System.
 
@@ -1101,29 +1101,17 @@ In addition to the predefined accessibility features of our components, you can 
 Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) when an element needs a descriptive name but has no visible text.
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Button>
-      <Icon name={ICON_NAME.xmark} />
-    </Button>
-}
+<Button>
+  <Icon name="xmark" />
+</Button>
 ```
 
 Screen readers will announce a button.
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Button aria-label='Clear'>
-        <Icon name={ICON_NAME.xmark} />
-    </Button>
-}
+<Button aria-label="Clear">
+  <Icon name="xmark" />
+</Button>
 ```
 
 Screen readers will announce a button and the aria-label.
@@ -1140,6 +1128,8 @@ Screen readers will announce a button and the aria-label.
 ### aria-labelledby: Referencing another element as a label
 
 Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) to associate an element with an existing label (instead of duplicating text).
+
+Filter your search results
 
 ```jsx
 {
@@ -1164,16 +1154,25 @@ Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility
 
 Screen readers will announce a button.
 
-Filter your search results
-
 ```jsx
-<>
-  <Button aria-labelledby="filter-btn">
-    <Icon name="filter" />
-  </Button>
-  <span id="filter-btn">
-    Filter your search results  </span>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Button aria-labelledby="filter-btn">
+        <Icon name={ICON_NAME.filter} />
+      </Button>
+      <span id="filter-btn">Filter your search results</span>
+    </>
+}
 ```
 
 When the **Button** is focused, the screen reader should announce the linked label.
@@ -1235,25 +1234,25 @@ Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 Screen readers won't announce the **Modal** content.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Modal>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal        </Button>
-      </ModalTrigger>
-      <ModalContent aria-describedby="modal-content" aria-labelledby="modal-title">
-        <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
-        <ModalBody>
-          <p id="modal-content">
-            Are you sure you want to delete this item? This action cannot be undone.          </p>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-}
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal    </Button>
+  </ModalTrigger>
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-labelledby="modal-title"
+  >
+    <ModalHeader>
+      <span id="modal-title">
+        Delete item      </span>
+    </ModalHeader>
+    <ModalBody>
+      <p id="modal-content">
+        Are you sure you want to delete this item? This action cannot be undone.      </p>
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
 Screen readers will announce the **Modal** content.
@@ -4667,6 +4666,36 @@ VPS 1
 12 months6 monthsNo commitment
 
 From€24.46ex. VAT/monthor €13.19 incl. VAT/month
+
+Dashboard Card
+
+#### Cluster Information
+
+---
+
+Name
+
+MyCluster
+
+---
+
+ID
+
+---
+
+Region
+
+GRA91-AZ
+
+---
+
+Admission plugins
+
+Always Pull Images PluginEnable
+
+Plugin Node RestrictionEnable
+
+---
 
 Email Field
 

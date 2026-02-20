@@ -1,0 +1,160 @@
+React Components
+
+# Form Field
+
+## Overview
+
+---
+
+Description:Helper text0/200
+
+To learn more about **Form Field** usage, please refer to the .
+
+## Anatomy
+
+---
+
+1.  **Form Field**
+2.  **Form Field Label**
+3.  **Form Field Label Sub Label**
+4.  **Form Field Helper**
+5.  **Form Field Error**
+
+## FormField
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| id | `string` | - | `undefined` | The field id. |
+| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
+
+## FormFieldError
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+
+## FormFieldHelper
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+
+## FormFieldLabel
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [label attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes) . |
+
+## FormFieldLabelSubLabel
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-form-field-label-column-gap | calc(var(--ods-theme-column-gap) / 2) | 
+ |
+| --ods-form-field-label-row-gap | calc(var(--ods-theme-row-gap) / 2) | 
+
+ |
+| --ods-form-field-row-gap | calc(var(--ods-theme-row-gap) / 2) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<FormField>
+  <Textarea name="textarea" />
+</FormField>
+```
+
+### Field label
+
+Description:
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Description:  </FormFieldLabel>
+  <Textarea name="textarea" />
+</FormField>
+```
+
+### Field sub label
+
+Description- mandatory
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Description    <FormFieldLabelSubLabel>
+      - mandatory    </FormFieldLabelSubLabel>
+  </FormFieldLabel>
+  <Textarea name="textarea" />
+</FormField>
+```
+
+### Helper message
+
+Helper text
+
+```jsx
+<FormField>
+  <Textarea name="textarea" />
+  <FormFieldHelper>
+    <Text preset="caption">
+      Helper text    </Text>
+  </FormFieldHelper>
+</FormField>
+```
+
+### Error message
+
+Error message
+
+```jsx
+<FormField invalid>
+  <Textarea name="textarea" />
+  <FormFieldError>
+    Error message  </FormFieldError>
+</FormField>
+```
+
+## Recipes
+
+---
+
+Email Field
+
+Email- mandatory
+
+@
+
+.fr.com.dev
+
+The part before the email address (the text before the @) must follow these guidelines:
+
+-   It must end with a letter or a number
+-   Allowed special characters are: ".", "_", "-"
+-   Special characters cannot be placed next to each other

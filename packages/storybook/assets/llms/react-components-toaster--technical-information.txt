@@ -1,0 +1,306 @@
+React Components
+
+# Toaster
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Toaster**
+
+## Toaster
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| createPortal | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
+| dismissible | `boolean` | - | `undefined` | Whether toasts can be manually removed. |
+| duration | `number` | - | `3000` | Toast duration before being removed. |
+| max | `number` | - | `3` | The maximum number of toast displayed at the same time. |
+| position | `TOASTER_POSITION` | - | `TOASTER_POSITION.topEnd` | The position on screen where the toasts will appear. |
+
+## Enums
+
+---
+
+### TOASTER_POSITION
+
+-   bottom =`"bottom"`
+-   bottomEnd =`"bottom-end"`
+-   bottomStart =`"bottom-start"`
+-   top =`"top"`
+-   topEnd =`"top-end"`
+-   topStart =`"top-start"`
+
+### TOAST_COLOR
+
+-   critical =`"critical"`
+-   information =`"information"`
+-   neutral =`"neutral"`
+-   primary =`"primary"`
+-   success =`"success"`
+-   warning =`"warning"`
+
+## Interfaces
+
+---
+
+### ToastOption
+
+-   `className?: string`
+-   `dismissible?: boolean`
+-   `duration?: number`
+-   `icon?: IconName`
+-   `id?: string`
+-   `toasterId?: string`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-toaster-padding | 24px | 
+ |
+
+## How to use?
+
+---
+
+1.  Add the `<Toaster />` component somewhere in your app.
+2.  Import the `toast` function.
+3.  Trigger toasts using `toast` functions.
+
+### Triggering toast
+
+The `toast` exposes the following trigger methods:
+
+-   itself as a function to trigger a default toast.
+-   `critical`: to trigger a critical toast.
+-   `information`: to trigger an information toast.
+-   `neutral`: to trigger a neutral toast.
+-   `primary`: to trigger a primary toast.
+-   `success`: to trigger a success toast.
+-   `warning`: to trigger a warning toast.
+
+Each trigger method implements the following interface: `(content: ReactNode, option?: ToastOption) => string` and will return the toast `id`.
+
+By default the toast will apply the configuration of the `Toaster` component (dismissible, duration, ...). But you can override this setting per toast using `ToastOption` (check examples beneath for more details).
+
+### Removing toast
+
+By default, a toast will disappear after its duration, or if dismissible, on the close button click.
+
+Though you can also programmatically remove a specific toast using the `toast` remove method: `remove: (toasterId: string) => void`.
+
+### Managing multiple Toaster
+
+If you want to manage multiple toasters, you'll have to set an `id` to each and set the `toasterId` when triggering the toast.
+
+```typescript
+import { TOASTER_POSITION, Toaster, toast } from '@ovhcloud/ods-react';
+const MyApp = () => (
+  <>
+    <Toaster id="notifications" />
+    <Toaster id="alerts" position={ TOASTER_POSITION.top } />
+    <button onClick={ () => toast('Some notification', { toasterId: 'notifications' }) }>
+      Trigger notification    </button>
+    <button onClick={ () => toast.critical('Some alert', { toasterId: 'alerts' }) }>
+      Trigger alert    </button>
+  </>
+);
+```
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<>
+  <Toaster />
+  <Button onClick={() => toast('Notification message')}>
+    Trigger toast  </Button>
+</>
+```
+
+### Colors
+
+```jsx
+<>
+  <Toaster id="colors" />
+  <div style={{
+  display: 'flex',
+  gap: '8px',
+  flexWrap: 'wrap'
+}}>
+    <Button color={BUTTON_COLOR.critical} onClick={() => toast.critical('Critical', {
+    toasterId: 'colors'
+  })}>
+      Critical toast    </Button>
+    <Button color={BUTTON_COLOR.information} onClick={() => toast.information('Information', {
+    toasterId: 'colors'
+  })}>
+      Information toast    </Button>
+    <Button color={BUTTON_COLOR.neutral} onClick={() => toast.neutral('Neutral', {
+    toasterId: 'colors'
+  })}>
+      Neutral toast    </Button>
+    <Button color={BUTTON_COLOR.primary} onClick={() => toast.primary('Primary', {
+    toasterId: 'colors'
+  })}>
+      Primary toast    </Button>
+    <Button color={BUTTON_COLOR.success} onClick={() => toast.success('Success', {
+    toasterId: 'colors'
+  })}>
+      Success toast    </Button>
+    <Button color={BUTTON_COLOR.warning} onClick={() => toast.warning('Warning', {
+    toasterId: 'colors'
+  })}>
+      Warning toast    </Button>
+  </div>
+</>
+```
+
+### Dismissible
+
+```jsx
+<>
+  <Toaster dismissible={false} id="dismissible" />
+  <div style={{
+  display: 'flex',
+  gap: '8px',
+  flexWrap: 'wrap'
+}}>
+    <Button onClick={() => toast('Non dismissible toast', {
+    toasterId: 'dismissible'
+  })}>
+      Trigger non dismissible toast    </Button>
+    <Button onClick={() => toast('Dismissible toast', {
+    dismissible: true,
+    toasterId: 'dismissible'
+  })}>
+      Trigger dismissible toast    </Button>
+  </div>
+</>
+```
+
+### Duration
+
+```jsx
+<>
+  <Toaster duration={Infinity} id="duration" />
+  <div style={{
+  display: 'flex',
+  gap: '8px',
+  flexWrap: 'wrap'
+}}>
+    <Button onClick={() => toast('Infinite toast', {
+    toasterId: 'duration'
+  })}>
+      Trigger infinite toast    </Button>
+    <Button onClick={() => toast('3 seconds toast', {
+    duration: 3000,
+    toasterId: 'duration'
+  })}>
+      Trigger 3 seconds toast    </Button>
+  </div>
+</>
+```
+
+### Icon
+
+```jsx
+<>
+  <Toaster id="icon" />
+  <Button onClick={() => toast('Notification message with icon', {
+  icon: ICON_NAME.circleInfo,
+  toasterId: 'icon'
+})}>
+    Trigger toast  </Button>
+</>
+```
+
+### Position
+
+```jsx
+<>
+  <Toaster
+    id="top-start"
+    position="top-start"
+  />
+  <Toaster
+    id="top"
+    position="top"
+  />
+  <Toaster
+    id="top-end"
+    position="top-end"
+  />
+  <Toaster
+    id="bottom-start"
+    position="bottom-start"
+  />
+  <Toaster
+    id="bottom"
+    position="bottom"
+  />
+  <Toaster
+    id="bottom-end"
+    position="bottom-end"
+  />
+  <div
+    style={{
+      display: 'grid',
+      gap: '20px',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gridTemplateRows: 'repeat(2, 1fr)'
+    }}
+  >
+    <Button onClick={function Xs(){}}>
+      Top Start    </Button>
+    <Button onClick={function Xs(){}}>
+      Top    </Button>
+    <Button onClick={function Xs(){}}>
+      Top End    </Button>
+    <Button onClick={function Xs(){}}>
+      Bottom Start    </Button>
+    <Button onClick={function Xs(){}}>
+      Bottom    </Button>
+    <Button onClick={function Xs(){}}>
+      Bottom End    </Button>
+  </div>
+</>
+```
+
+### Custom Content
+
+```jsx
+<>
+  <Toaster id="custom-content" />
+  <Button onClick={() => toast(<div>
+        <Text preset={TEXT_PRESET.label}>
+          Toast title        </Text>
+        <Text>
+          Toast text helps users providing feedback or information.        </Text>
+        <Link>
+          Some Link        </Link>
+      </div>, {
+  icon: ICON_NAME.circleInfo,
+  toasterId: 'custom-content'
+})}>
+    Trigger toast  </Button>
+</>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

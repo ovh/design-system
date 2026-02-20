@@ -1,0 +1,136 @@
+React Components
+
+# Switch
+
+_A **Switch** allows users to quickly and easily switch between several states, actions or options in a row._
+
+Component is now deprecated and will be removed in a future major release. You can use different components instead depending on your use-case:
+
+-   managing navigation: move to  using the switch variant.
+-   managing option activation: move to a .
+-   as a form element: move to a .
+
+## Overview
+
+---
+
+A **Switch** allows users to quickly and easily switch between several states, actions or options in a row.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Switch</td></tr><tr><th scope="row">Also known as</th><td>Button group, Segmented control, Toggle group</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-10578" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/switch" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-switch--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+A **Switch** is used to switch between multiple states, actions or options (up-to 4).
+
+It can be used for many use cases such as selecting a state within a group of states or filtering.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Switch when the user must choose one active option among 2 to 4 closely related states or actions |
+| - Ensure each Switch item has a clear, descriptive label |
+| - Use a Switch when immediate feedback or real-time filtering is expected upon selection |
+
+| ❌ Don't |
+| --- |
+| - Don't use a Switch for more than 4 options. Prefer Radio Group, Checkbox, or Select instead depending on your use case |
+| - Don't use a Switch for unrelated options, they should belong to a common category or context |
+| - Don't use a Switch if selecting an option does not produce an immediate effect. Use a Checkbox or another control instead |
+| - Don't rely solely on icons, add text for clarity |
+
+### Best Practices in Context
+
+1.  **Switch**
+2.  **Active toggle button**
+3.  **Toggle button**
+4.  **Label**
+
+## Placement
+
+---
+
+A **Switch** can be used in a page when the user needs to select a choice from multiple states or items. It may replace two radio buttons or a single checkbox to allow users to choose between several states.
+
+By default, the width of a **Switch** item is defined by the length of content. A custom width can be set so all items on the track will have the same size regardless of content length.
+
+## Behavior
+
+---
+
+The user can switch between states by clicking the **Switch** items, and it has an immediate effect.
+
+## Navigation
+
+---
+
+### Focus Management
+
+When the **Switch** receives focus, it is set on the currently selected item, or on the first item if none is selected.
+
+Each individual **Switch** item is focusable unless disabled. A disabled item cannot receive focus or be activated.
+
+Focus remains within the group when navigating between items using arrow keys.
+
+### General Keyboard Shortcuts
+
+Pressing Tab moves focus to the selected item or the first item in the group.
+
+Pressing Shift + Tab moves focus to the previous focusable element outside the **Switch** group.
+
+Pressing Arrow Right or Arrow Down moves focus to the next item in the group.
+
+Pressing Arrow Left or Arrow Up moves focus to the previous item in the group.
+
+Pressing Home (or fn + Arrow Left) moves focus to the first item.
+
+Pressing End (or fn + Arrow Right) moves focus to the last item.
+
+Pressing Space or Enter activates or deactivates the focused item, updating the selection immediately.
+
+## Accessibility
+
+---
+
+To ensure proper accessibility, **Switch** must be correctly labeled.
+
+### Always provide an explicit label
+
+Every **Switch** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) or an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) attribute.
+
+```jsx
+<Switch aria-label="Select an item">
+  <SwitchItem value="item-1">
+    Item 1  </SwitchItem>
+  <SwitchItem value="item-2">
+    Item 2  </SwitchItem>
+  <SwitchItem value="item-3">
+    Item 3  </SwitchItem>
+</Switch>
+```
+
+Screen readers will announce the label and the option information (text, position, selection state).
+
+Select an item:
+
+```jsx
+<>
+  <Text
+    id="switch-label"
+    preset="label"
+  >
+    Select an item:  </Text>
+  <Switch aria-labelledby="switch-label">
+    <SwitchItem value="item-1">
+      Item 1    </SwitchItem>
+    <SwitchItem value="item-2">
+      Item 2    </SwitchItem>
+    <SwitchItem value="item-3">
+      Item 3    </SwitchItem>
+  </Switch>
+</>
+```
+
+Screen readers will announce the label and the option information (text, position, selection state).

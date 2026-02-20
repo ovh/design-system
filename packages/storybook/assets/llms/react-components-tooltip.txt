@@ -1,0 +1,434 @@
+# React Components/Tooltip
+
+## Subcomponents
+
+
+### TooltipContent
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `createPortal` | `` | No | true | Whether the component should be rendered in the DOM close to the body tag. |
+| `withArrow` | `` | No | false | Whether the component displays an arrow pointing to the trigger. |
+
+
+
+### TooltipTrigger
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `asChild` | `` | No |  | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+
+## Examples
+
+
+### Accessibility Tooltip
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tooltip>
+      <TooltipTrigger asChild>
+        <Icon aria-label="Open tooltip" name={ICON_NAME.circleInfo} role="img" style={{
+        fontSize: '24px'
+      }} />
+      </TooltipTrigger>
+
+      <TooltipContent>
+        Some additional context.
+      </TooltipContent>
+    </Tooltip>
+}
+```
+
+### Controlled
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: ({}) => {
+    const [isOpen, setIsOpen] = useState(false);
+    function toggleTooltip() {
+      setIsOpen(isOpen => !isOpen);
+    }
+    return <>
+        <Button onClick={toggleTooltip}>
+          Toggle tooltip
+        </Button>
+
+        <Tooltip open={isOpen}>
+          <TooltipTrigger asChild>
+            <Icon name={ICON_NAME.circleQuestion} style={{
+            fontSize: '24px'
+          }} />
+          </TooltipTrigger>
+
+          <TooltipContent withArrow>
+            This is the tooltip content
+          </TooltipContent>
+        </Tooltip>
+      </>;
+  }
+}
+```
+
+### Custom Trigger
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tooltip>
+      <TooltipTrigger asChild>
+        <Icon name={ICON_NAME.circleQuestion} style={{
+        fontSize: '24px'
+      }} />
+      </TooltipTrigger>
+
+      <TooltipContent>
+        This is the tooltip content
+      </TooltipContent>
+    </Tooltip>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tooltip>
+      <TooltipTrigger>
+        Show tooltip
+      </TooltipTrigger>
+
+      <TooltipContent>
+        This is the tooltip content
+      </TooltipContent>
+    </Tooltip>
+}
+```
+
+### Demo
+
+```tsx
+{
+  parameters: {
+    layout: 'centered'
+  },
+  render: (arg: DemoArg) => <Tooltip closeDelay={arg.closeDelay} openDelay={arg.openDelay} position={arg.position}>
+      <TooltipTrigger asChild>
+        <Icon name={ICON_NAME.circleQuestion} style={{
+        fontSize: '24px'
+      }} />
+      </TooltipTrigger>
+
+      <TooltipContent withArrow={arg.withArrow}>
+        {arg.content}
+      </TooltipContent>
+    </Tooltip>,
+  argTypes: orderControls({
+    closeDelay: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'number'
+    },
+    content: {
+      table: {
+        category: CONTROL_CATEGORY.slot
+      },
+      control: 'text'
+    },
+    openDelay: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'number'
+    },
+    position: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'TOOLTIP_POSITION'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: TOOLTIP_POSITIONS
+    },
+    withArrow: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: {
+          summary: false
+        },
+        type: {
+          summary: 'boolean'
+        }
+      },
+      control: {
+        type: 'boolean'
+      }
+    }
+  }),
+  args: {
+    content: 'My tooltip content'
+  }
+}
+```
+
+### Grid
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateRows: 'repeat(3, 1fr)',
+    gap: '20px',
+    padding: '50px 150px'
+  }}>
+      {story()}
+    </div>],
+  globals: {
+    imports: `import { Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Tooltip position="top-start">
+        <TooltipTrigger>
+          Top Left
+        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Top Left tooltip
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip position="top">
+        <TooltipTrigger>
+          Top
+        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Top tooltip
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip position="top-end">
+        <TooltipTrigger>
+          Top Right
+        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Top Right tooltip
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip position="left">
+        <TooltipTrigger>
+          Middle Left
+        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Middle Left tooltip
+        </TooltipContent>
+      </Tooltip>
+
+      <div />
+
+      <Tooltip position="right">
+        <TooltipTrigger>
+          Middle Right
+        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Middle Right tooltip
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip position="bottom-start">
+        <TooltipTrigger>
+          Bottom Left
+        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Bottom Left tooltip
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip position="bottom">
+        <TooltipTrigger>
+          Bottom
+        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Bottom tooltip
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip position="bottom-end">
+        <TooltipTrigger>
+          Bottom Right
+        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Bottom Right tooltip
+        </TooltipContent>
+      </Tooltip>
+    </>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Tooltip>
+      <TooltipTrigger asChild>
+        <Icon name={ICON_NAME.circleQuestion} style={{
+        fontSize: '24px'
+      }} />
+      </TooltipTrigger>
+
+      <TooltipContent>
+        This is the tooltip content
+      </TooltipContent>
+    </Tooltip>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    gap: '16px',
+    alignItems: 'center'
+  }}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon name={ICON_NAME.circleQuestion} style={{
+          fontSize: '24px'
+        }} />
+        </TooltipTrigger>
+        <TooltipContent createPortal={false}>This is the tooltip content</TooltipContent>
+      </Tooltip>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon name={ICON_NAME.circleInfo} style={{
+          fontSize: '24px'
+        }} />
+        </TooltipTrigger>
+        <TooltipContent createPortal={false} withArrow>This is the tooltip content</TooltipContent>
+      </Tooltip>
+    </div>
+}
+```
+
+### Z Index
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon, TOOLTIP_POSITION, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <span>Default Z-axis order:</span>
+
+      <Tooltip open>
+        <TooltipTrigger asChild>
+          <Icon name={ICON_NAME.circleInfo} style={{
+          fontSize: '24px'
+        }} />
+        </TooltipTrigger>
+
+        <TooltipContent withArrow>
+          Back
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip open>
+        <TooltipTrigger asChild>
+          <Icon name={ICON_NAME.circleInfo} style={{
+          fontSize: '24px'
+        }} />
+        </TooltipTrigger>
+
+        <TooltipContent withArrow>
+          Front
+        </TooltipContent>
+      </Tooltip>
+
+      <br />
+
+      <span>Custom Z-axis order:</span>
+
+      <Tooltip open position={TOOLTIP_POSITION.bottom} positionerStyle={{
+      zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'
+    }}>
+        <TooltipTrigger asChild>
+          <Icon name={ICON_NAME.circleInfo} style={{
+          fontSize: '24px'
+        }} />
+        </TooltipTrigger>
+
+        <TooltipContent withArrow>
+          Front
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip open position={TOOLTIP_POSITION.bottom}>
+        <TooltipTrigger asChild>
+          <Icon name={ICON_NAME.circleInfo} style={{
+          fontSize: '24px'
+        }} />
+        </TooltipTrigger>
+
+        <TooltipContent withArrow>
+          Back
+        </TooltipContent>
+      </Tooltip>
+    </>
+}
+```

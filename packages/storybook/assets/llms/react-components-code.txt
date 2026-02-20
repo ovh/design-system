@@ -1,0 +1,182 @@
+# React Components/Code
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `canCopy` | `` | No | false | Whether the copy button is displayed. |
+| `highlighter` | `` | No | {} | Configuration of a specific code highlighter (see beneath for more details). |
+| `labelCopy` | `` | No |  | The initial tooltip label on copy button. |
+| `labelCopySuccess` | `` | No |  | The tooltip label on copy button after a successful copy. |
+| `onCopy` | `` | No |  | Callback fired when the text is copied. |
+
+
+## Examples
+
+
+### Can Copy
+
+```tsx
+{
+  globals: {
+    imports: `import { Code } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Code canCopy>
+      {`import { Text } from '@ovhcloud/ods-react';`}
+    </Code>
+}
+```
+
+### Custom Labels
+
+```tsx
+{
+  globals: {
+    imports: `import { Code } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Code canCopy labelCopy="Click to copy" labelCopySuccess="Successfully copied">
+      console.log('Hello world');
+    </Code>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Code } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Code>
+      console.log('Hello world');
+    </Code>
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    canCopy: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    children: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'text'
+    },
+    labelCopy: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: {
+          summary: 'Copy to clipboard'
+        }
+      },
+      control: 'text'
+    },
+    labelCopySuccess: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: {
+          summary: 'Copied'
+        }
+      },
+      control: 'text'
+    }
+  }),
+  args: {
+    children: `import { Text } from '@ovhcloud/ods-react';`
+  }
+}
+```
+
+### Highlighter
+
+```tsx
+{
+  globals: {
+    imports: `import { Code } from '@ovhcloud/ods-react';
+import lang from '@shikijs/langs/typescript';
+import theme from '@shikijs/themes/nord';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Code highlighter={{
+    language: lang,
+    theme: theme
+  }}>
+      console.log('Hello World');
+    </Code>
+}
+```
+
+### Multiline
+
+```tsx
+{
+  globals: {
+    imports: `import { Code } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Code>
+      {`function isTargetInElement(event, element) {
+  if (!element) {
+    return false;
+  }
+
+    return element.contains(event.target) || event.composedPath().includes(element);
+  }`}
+    </Code>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Code canCopy>
+      {`import { Text } from '@ovhcloud/ods-react';`}
+    </Code>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    maxWidth: 600
+  }}>
+      <Code>
+        console.log('Hello world');
+      </Code>
+
+      <Code canCopy>
+        {`import { Text } from '@ovhcloud/ods-react';`}
+      </Code>
+
+      <Code canCopy labelCopy="Copy" labelCopySuccess="Copied!">
+        {`const sum = (a, b) => a + b;`}
+      </Code>
+    </div>
+}
+```

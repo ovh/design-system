@@ -84,9 +84,7 @@ const MenuContent: FC<MenuContentProp> = forwardRef(({
           }}>
           {
             withArrow &&
-            <Menu.Arrow>
-              <Menu.ArrowTip />
-            </Menu.Arrow>
+            <Menu.Arrow className={ style['menu-content__arrow']} />
           }
 
           { children }

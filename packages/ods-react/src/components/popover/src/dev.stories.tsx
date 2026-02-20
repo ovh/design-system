@@ -145,10 +145,8 @@ export const CustomStyle = () => (
     </PopoverTrigger>
     <PopoverContent
       className={ style['custom-popover-content'] }
-      style={{ border: 'solid' }}>
-      <div>
-        This is the popover custom styled content
-      </div>
+      withArrow>
+      This is the popover custom styled content
     </PopoverContent>
   </Popover>
 );

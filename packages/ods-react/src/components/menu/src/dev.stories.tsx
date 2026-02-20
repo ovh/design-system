@@ -1,18 +1,32 @@
 import { Menu as ArkMenu } from '@ark-ui/react/menu';
 import { Portal } from '@ark-ui/react/portal';
 import { type JSX, useState } from 'react';
-import style from './dev.module.css';
 import { BADGE_COLOR, Badge } from '../../badge/src';
 import { Button } from '../../button/src';
 import { Checkbox, CheckboxControl, CheckboxLabel } from '../../checkbox/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Kbd } from '../../kbd/src';
 import { Menu, MenuContent, MenuGroup, MenuGroupLabel, MenuItem, MenuSubmenu, MenuTrigger } from '.';
+import style from './dev.module.css';
 
 export default {
   component: Menu,
   title: 'Menu dev',
 };
+
+export const CustomStyle = () => (
+  <Menu>
+    <MenuTrigger className={ style['custom-menu-trigger'] }>
+      Menu
+    </MenuTrigger>
+    <MenuContent
+      className={ style['custom-menu-content'] }
+      withArrow>
+      <MenuItem value={ '1' }>Item 1</MenuItem>
+      <MenuItem value={ '2' }>Item 2</MenuItem>
+    </MenuContent>
+  </Menu>
+);
 
 export const Default = (): JSX.Element => (
   <Menu>
@@ -213,12 +227,12 @@ export const ViewsExample = (): JSX.Element => (
           Current view
         </MenuGroupLabel>
         <MenuItem
-          className={ style[ 'menu__menu-content__menu-group__menu-item__edit' ] }
+          className={ style[ 'menu__content__group__item__edit' ] }
           value="edit-current-view">
           <Icon name={ ICON_NAME.pen } /> Edit current view
         </MenuItem>
         <MenuItem
-          className={ style[ 'menu__menu-content__menu-group__menu-item__delete' ] }
+          className={ style[ 'menu__content__group__item__delete' ] }
           value="delete-current-view">
           <Icon name={ ICON_NAME.trash } /> Delete current view
         </MenuItem>

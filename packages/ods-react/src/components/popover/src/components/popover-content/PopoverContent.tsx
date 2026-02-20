@@ -74,9 +74,7 @@ const PopoverContent: FC<PopoverContentProp> = forwardRef(({
           }}>
           {
             withArrow &&
-            <Popover.Arrow>
-              <Popover.ArrowTip />
-            </Popover.Arrow>
+            <Popover.Arrow className={ style['popover-content__arrow']} />
           }
 
           { children }

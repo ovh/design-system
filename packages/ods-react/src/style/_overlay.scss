@@ -1,4 +1,4 @@
-$ods-overlay-arrow-background-color: var(--ods-theme-background-color);
+$ods-overlay-arrow-background-color: var(--ods-theme-background-color); // [Deprecated] will be removed in next major version
 $ods-overlay-arrow-size: 8px;
 $ods-overlay-base-z-index: var(--ods-theme-overlay-z-index);
 $ods-overlay-select-z-index: $ods-overlay-base-z-index;

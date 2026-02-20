@@ -3,7 +3,6 @@
 @layer ods-molecules {
   .menu-content {
     --arrow-size: #{overlay.$ods-overlay-arrow-size};
-    --arrow-background: #{overlay.$ods-overlay-arrow-background-color};
 
     @include overlay.ods-overlay();
 
@@ -11,5 +10,10 @@
     outline: none;
     padding: 0;
     overflow: hidden;
+
+    &__arrow {
+      transform: rotate(45deg);
+      background-color: inherit;
+    }
   }
 }

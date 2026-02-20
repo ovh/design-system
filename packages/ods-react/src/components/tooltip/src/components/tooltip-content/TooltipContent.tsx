@@ -43,9 +43,7 @@ const TooltipContent: FC<TooltipContentProp> = forwardRef(({
           }}>
           {
             withArrow &&
-            <Tooltip.Arrow>
-              <Tooltip.ArrowTip />
-            </Tooltip.Arrow>
+            <Tooltip.Arrow className={ style['tooltip-content__arrow']} />
           }
 
           { children }

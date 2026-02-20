@@ -3,8 +3,12 @@
 @layer ods-atoms {
   .popover-content {
     --arrow-size: #{overlay.$ods-overlay-arrow-size};
-    --arrow-background: #{overlay.$ods-overlay-arrow-background-color};
 
     @include overlay.ods-overlay();
+
+    &__arrow {
+      transform: rotate(45deg);
+      background-color: inherit;
+    }
   }
 }

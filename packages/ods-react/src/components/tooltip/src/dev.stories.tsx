@@ -88,7 +88,7 @@ export const CustomStyle = () => (
     </TooltipTrigger>
     <TooltipContent
       className={ style['custom-tooltip-content'] }
-      style={{ border: 'solid' }}>
+      withArrow>
       This is the tooltip custom content
     </TooltipContent>
   </Tooltip>

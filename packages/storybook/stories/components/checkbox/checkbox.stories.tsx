@@ -5,6 +5,7 @@ import { FormField } from '../../../../ods-react/src/components/form-field/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<CheckboxProp>;
 type DemoArg = Partial<CheckboxProp> & {
@@ -184,6 +185,11 @@ export const States: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   globals: {
     imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
   },
   tags: ['!dev'],
   render: ({}) => (

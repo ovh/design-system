@@ -1,0 +1,94 @@
+React Components
+
+# Form Field
+
+_A **Form Field** component is used to wrap several form components with logic, visual hints and additional styling_
+
+Description:Helper text0/200
+
+## Overview
+
+---
+
+A **Form Field** is based on a single form element or group components as a whole that are decorated with additional text to handle specific types of information, like a Password field for example.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Form Field</td></tr><tr><th scope="row">Also known as</th><td>Form Control</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=172-11996" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/form-field" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-form-field--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+A **Form Field** is used to wrap a field that can be customized with some additional information about this field.
+
+Additional information (label, placeholder, helper message) provides hint and help to users, so that they can easily understand what is required from them in a form.
+
+Users will also type or enter information in the expected format and avoid mistakes.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use Form Field to wrap form inputs with a clear structure, including a label, optional helper text, or extra information |
+| - Group related fields using multiple Form Fields to improve clarity and scannability |
+| - Include helper messages to guide users on expected input formats or constraints (e.g., password requirements) |
+| - Use error message to provide feedback after user interaction |
+
+| ❌ Don't |
+| --- |
+| - Don't place interactive elements like links or buttons inside the label |
+| - Don't rely on an asterisk alone to indicate required fields. Prefer explicit helper text or label |
+| - Overuse content related Form Fields with top aligned label in one group since it requires quite vertical space: split into smaller groups |
+| - Don't use Form Field when there's no input or interaction expected. It is meant for form inputs, not static content |
+
+### Best Practices in Context
+
+1.  **Form Field**
+2.  **Label** - optional
+3.  **Form element**
+4.  **Helper message** - optional
+5.  **Error message** - optional
+6.  **Hint text** - optional
+
+## Placement
+
+---
+
+A **Form Field** can be used everywhere in a page where there is a form and users may need help to fill in this form.
+
+## Behavior
+
+---
+
+A **Form Field** can react to validation states, such as error, often by visually updating elements like the border or text indicators.
+
+Helper text and error messages can be displayed freely around the field component, depending on the design or functional needs.
+
+## Navigation
+
+---
+
+The **Form Field** component itself is not focusable and does not receive keyboard focus.
+
+Only the interactive inner component it wraps, such as an Input, Password, Select, or other form element, can receive focus. Focus behavior and keyboard navigation are determined by the specific form element used within the **Form Field**.
+
+## Accessibility
+
+---
+
+The **Form Field** component handles by itself the accessibility requirements by using its internal components.
+
+Login:
+
+Username or email address
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Login:  </FormFieldLabel>
+  <Input name="input" />
+  <FormFieldHelper>
+    Username or email address  </FormFieldHelper>
+</FormField>
+```
+
+Screen readers will announce the label, the field, its content and the helper text.

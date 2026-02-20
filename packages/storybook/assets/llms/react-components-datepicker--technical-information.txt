@@ -1,0 +1,240 @@
+React Components
+
+# Datepicker
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Datepicker**
+2.  **Datepicker Control**
+3.  **Datepicker Content**
+
+## Datepicker
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| dateFormatter | `(arg: DatepickerFormatterArg) => string` | - | `undefined` | Format the date to display in the input. |
+| defaultOpen | `boolean` | - | `undefined` | The initial open state of the datepicker. Use when you don't need to control the open state of the datepicker. |
+| defaultValue | `Date | string` | - | `undefined` | The initial selected date. Use when you don't need to control the selected date of the datepicker. |
+| defaultView | `DATEPICKER_VIEW` | - | `undefined` | The default view of the calendar (day, month, year). |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| disabledDates | `Date[]` | - | `undefined` | List of dates that cannot be selected. |
+| disabledWeekDays | `DATEPICKER_DAY[]` | - | `undefined` | List of week days that cannot be selected. |
+| i18n | `Partial` | - | `undefined` | Internal translations override (see Input i18n keys). |
+| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
+| locale | `string` | - | `undefined` | The locale to use when formatting the date. |
+| max | `Date | string` | - | `undefined` | The maximum date that can be selected. |
+| maxView | `DATEPICKER_VIEW` | - | `undefined` | The maximum view of the calendar (day, month, year). |
+| min | `Date | string` | - | `undefined` | The minimum date that can be selected. |
+| minView | `DATEPICKER_VIEW` | - | `undefined` | The minimum view of the calendar (day, month, year). |
+| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| onValueChange | `(detail: DatepickerValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
+| open | `boolean` | - | `undefined` | The controlled open state of the datepicker. |
+| placeholder | `string` | - | `undefined` | The placeholder text to display in the input. |
+| positionerStyle | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+| readOnly | `boolean` | - | `undefined` | Whether the component is readonly. |
+| required | `boolean` | - | `undefined` | Whether the component is required. |
+| value | `Date | string | null` | - | `undefined` | The controlled selected date. |
+| view | `DATEPICKER_VIEW` | - | `undefined` | The controlled view of the calendar (day, month, year). |
+
+## DatepickerContent
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| createPortal | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
+
+## DatepickerControl
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [input attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes) . |
+| clearable | `boolean` | - | `undefined` | Whether the clear button is displayed. |
+| loading | `boolean` | - | `undefined` | Whether the component is in loading state. |
+
+## Enums
+
+---
+
+### DATEPICKER_DAY
+
+-   friday =`"5"`
+-   monday =`"1"`
+-   saturday =`"6"`
+-   sunday =`"0"`
+-   thursday =`"4"`
+-   tuesday =`"2"`
+-   wednesday =`"3"`
+
+### DATEPICKER_VIEW
+
+-   day =`"day"`
+-   month =`"month"`
+-   year =`"year"`
+
+## Interfaces
+
+---
+
+### DatepickerFormatterArg
+
+-   `date: Date`
+-   `locale: string`
+
+### DatepickerValueChangeDetail
+
+-   `value: null | Date`
+-   `valueAsString: string | null`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-datepicker-content-padding-horizontal | calc(var(--ods-theme-padding-horizontal) / 2) | 
+ |
+| --ods-datepicker-content-padding-vertical | calc(var(--ods-theme-padding-vertical) / 2) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Datepicker>
+  <DatepickerControl />
+  <DatepickerContent />
+</Datepicker>
+```
+
+### Disabled
+
+```jsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>Disabled:</p>
+      <Datepicker disabled>
+        <DatepickerControl />
+        <DatepickerContent />
+      </Datepicker>
+      <p>Disabled Dates:</p>
+      <Datepicker disabledDates={[new Date(Date.now() - 86400000), new Date(), new Date(Date.now() + 86400000)]}>
+        <DatepickerControl />
+        <DatepickerContent />
+      </Datepicker>
+      <p>Disabled Week Days:</p>
+      <Datepicker disabledWeekDays={[0, 3]}>
+        <DatepickerControl />
+        <DatepickerContent />
+      </Datepicker>
+    </>
+}
+```
+
+### Readonly
+
+```jsx
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Datepicker readOnly>
+      <DatepickerControl />
+      <DatepickerContent />
+    </Datepicker>
+}
+```
+
+### Date formatter
+
+```jsx
+<Datepicker dateFormatter={({
+  date
+}) => `${date.getFullYear()}`} placeholder="yyyy">
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+```
+
+### Max / Min
+
+```jsx
+<Datepicker
+  max={new Date("2026-03-07T11:02:23.303Z")}
+  min={new Date("2026-02-15T11:02:23.303Z")}
+>
+  <DatepickerControl />
+  <DatepickerContent />
+</Datepicker>
+```
+
+### Max view
+
+```jsx
+<Datepicker maxView="day">
+  <DatepickerControl />
+  <DatepickerContent />
+</Datepicker>
+```
+
+### Min view
+
+```jsx
+<Datepicker minView="month">
+  <DatepickerControl />
+  <DatepickerContent />
+</Datepicker>
+```
+
+### Form field
+
+Label:
+
+```jsx
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Label:      </FormFieldLabel>
+      <Datepicker>
+        <DatepickerControl />
+        <DatepickerContent />
+      </Datepicker>
+    </FormField>
+}
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

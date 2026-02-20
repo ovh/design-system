@@ -1,0 +1,116 @@
+React Components
+
+# Radio Group
+
+_A **Radio** button allows users to select only one option from a number of choices._
+
+HTML
+
+CSS
+
+JavaScript
+
+## Overview
+
+---
+
+**Radio Group** is a group of Radios to select a single state from multiples options.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Radio</td></tr><tr><th scope="row">Also known as</th><td>Radio button (previous name)</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-14625" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/radio-group" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-radio--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+In most situations where you want to present a list of mutually exclusive options.
+
+**Radio groups** can be used within a form.
+
+Also, it can serve as :
+
+-   Selecting choice
+-   Lists/sub-lists
+-   Filters
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use Radio Group when users must choose only one option from a set of two or more |
+| - Ensure each radio has a clear and concise label, wrapped text is preferable to truncated labels |
+| - Keep the number of radios concise (ideally 2 to 5) to avoid overwhelming the user |
+| - Consider using a Toggle instead of a two-option Radio Group when the options are affirmative/negative (e.g., "Enable notifications" yes/no) |
+| - Group related radios together with a visible label or legend to provide context |
+
+| ❌ Don't |
+| --- |
+| - Don't use Radio Group when multiple selections are allowed. Use Checkbox instead |
+| - Don't use a Radio Group with more than 5 options. Switch to a Select component for better usability |
+| - Avoid situations where all options in a set should be deselected |
+| - Don't truncate long labels, allow wrapping to maintain readability |
+
+### Best Practices in Context
+
+1.  **Radio Group**
+2.  **Radio button**
+3.  **Label**
+
+## Placement
+
+---
+
+**Radio Groups** should be vertical, meaning one radio button under another.
+
+Usage of horizontal **Radio Groups** should only occur if vertical space is limited.
+
+## Behavior
+
+---
+
+Radio button can be hovered, focused, clicked or disabled. When disabled, radio button cannot be focused nor clicked.
+
+When clicking on one of the radio button or its linked label, the radio button is selected or deselected depending on the previous state.
+
+Radio button behavior does work only when used in a situation of a **Radio group**. The **Radio group** can be in an error state, but also in a disabled state. It also can be focused and hovered.
+
+## Variation
+
+---
+
+Radio buttons follow the native behavior of the browser used, so the appearance of radio buttons may vary depending on the browser.
+
+## Navigation
+
+---
+
+### Focus Management
+
+When the **Radio Group** component is focused, focus is automatically set to the first focusable and not disabled radio in the group.
+
+If a radio button is checked, focus moves to that checked item when the component is focused.
+
+A read-only radio button can receive focus but cannot be selected or modified.
+
+If a radio button is disabled, it cannot receive focus and cannot be selected.
+
+Focus moves through the radio buttons sequentially.
+
+### General Keyboard Shortcuts
+
+Pressing Tab moves focus to the next focusable and enabled radio button in the group.
+
+Pressing Shift + Tab moves focus backward through the radio buttons.
+
+Pressing Arrow Down or Arrow Right moves focus and selects the next radio button in the group.
+
+Pressing Arrow Up or Arrow Left moves focus and selects the previous radio button in the group.
+
+Pressing Space when focused on an unchecked radio button selects it.
+
+## Accessibility
+
+---
+
+This component complies with the [Radio Group WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/)
+
+Try to keep a vertical spacing of at least `8px` between each radio buttons, to provide sufficient tactile and visual separation.

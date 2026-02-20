@@ -1,0 +1,357 @@
+# React Components/Accordion
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `defaultValue` | `` | No |  | The initial value of the expanded accordion items. Use when you don't need to control the value of the accordion. |
+| `disabled` | `` | No |  | Whether the component is disabled. |
+| `multiple` | `` | No | true | Whether multiple accordion items can be expanded at the same time. |
+| `onChange` | `` | No |  | Callback fired when the state of expanded/collapsed accordion items changes. |
+| `value` | `` | No |  | The controlled value of the expanded accordion items. |
+
+
+## Subcomponents
+
+
+### AccordionContent
+
+
+
+
+### AccordionItem
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `disabled` | `` | No |  | Whether the accordion item is disabled. |
+| `value` | `` | Yes |  | The value of the accordion item. |
+
+
+
+### AccordionTrigger
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `expandIconPosition` | `` | No | EXPAND_ICON_POSITION.right | The position of the expand icon. |
+
+
+## Examples
+
+
+### Controlled
+
+```tsx
+{
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: ({}) => {
+    const [value, setValue] = useState(['0']);
+    return <Accordion value={value} onChange={detail => setValue(detail.value)}>
+        <AccordionItem value="0">
+          <AccordionTrigger>
+            Hello World!
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="1">
+          <AccordionTrigger>
+            Hello World!
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>;
+  }
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Accordion>
+      <AccordionItem value="0">
+        <AccordionTrigger>
+          Hello World!
+        </AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+}
+```
+
+### Demo
+
+```tsx
+{
+  render: (arg: AccordionProp) => <Accordion disabled={arg.disabled} multiple={arg.multiple}>
+      <AccordionItem value="0">
+        <AccordionTrigger>
+          <Text preset="paragraph">
+            Hello World!
+          </Text>
+        </AccordionTrigger>
+        <AccordionContent>
+          <Text preset="paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit.
+          </Text>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="1">
+        <AccordionTrigger>
+          <Text preset="paragraph">
+            Bye World!
+          </Text>
+        </AccordionTrigger>
+        <AccordionContent>
+          <Text preset="paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit.
+          </Text>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>,
+  argTypes: orderControls({
+    multiple: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    }
+  })
+}
+```
+
+### Disabled
+
+```tsx
+{
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Accordion disabled>
+      <AccordionItem value="0">
+        <AccordionTrigger>
+          Hello World!
+        </AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+}
+```
+
+### Expand Icon Position Example
+
+```tsx
+{
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, EXPAND_ICON_POSITION } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Accordion>
+        <AccordionItem value="0">
+          <AccordionTrigger expandIconPosition={EXPAND_ICON_POSITION.right}>
+            Icon on the right (default)
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      <br />
+      <Accordion>
+        <AccordionItem value="1">
+          <AccordionTrigger expandIconPosition={EXPAND_ICON_POSITION.left}>
+            Icon on the left
+          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </>
+}
+```
+
+### Item Disabled
+
+```tsx
+{
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Accordion>
+      <AccordionItem value="0" disabled>
+        <AccordionTrigger>
+          Hello World!
+        </AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="1">
+        <AccordionTrigger>
+          Hello World!
+        </AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+}
+```
+
+### Multiple
+
+```tsx
+{
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Accordion>
+        <AccordionItem value="1">
+          <AccordionTrigger>
+            <Text preset="heading-4">Multiple</Text>
+          </AccordionTrigger>
+          <AccordionContent>
+            <Text preset="paragraph">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Text>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="2">
+          <AccordionTrigger>
+            <Text preset="heading-4">Multiple</Text>
+          </AccordionTrigger>
+          <AccordionContent>
+            <Text preset="paragraph">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Text>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      <br />
+      <Accordion multiple={false}>
+        <AccordionItem value="3">
+          <AccordionTrigger>
+            <Text preset="heading-4">Non-multiple</Text>
+          </AccordionTrigger>
+          <AccordionContent>
+            <Text preset="paragraph">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Text>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="4">
+          <AccordionTrigger>
+            <Text preset="heading-4">Non-multiple</Text>
+          </AccordionTrigger>
+          <AccordionContent>
+            <Text preset="paragraph">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Text>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Accordion>
+      <AccordionItem value="0">
+        <AccordionTrigger>
+          <Text preset="paragraph">
+            Hello World!
+          </Text>
+        </AccordionTrigger>
+        <AccordionContent>
+          <Text preset="paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit.
+          </Text>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  render: ({}) => <Accordion>
+      <AccordionItem value="0">
+        <AccordionTrigger>
+          <Text preset="paragraph">Hello World!</Text>
+        </AccordionTrigger>
+        <AccordionContent>
+          <Text preset="paragraph">Lorem ipsum dolor sit amet.</Text>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="1" disabled>
+        <AccordionTrigger>
+          <Text preset="paragraph">Disabled item</Text>
+        </AccordionTrigger>
+        <AccordionContent>
+          <Text preset="paragraph">This item is disabled.</Text>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>,
+  tags: ['!dev']
+}
+```

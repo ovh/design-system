@@ -1,0 +1,252 @@
+# React Components/Badge
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `color` | `` | No | BADGE_COLOR.information | The color preset to use. |
+| `size` | `` | No | BADGE_SIZE.md | The size preset to use. |
+
+
+## Examples
+
+
+### Accessibility Alternative Grouping
+
+```tsx
+{
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <div role="list" style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>
+      <Badge role="listitem">
+        Item 1
+      </Badge>
+      <Badge role="listitem">
+        Item 2
+      </Badge>
+    </div>
+}
+```
+
+### Accessibility Aria Label
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Badge, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Badge>
+      <Icon aria-label="Promotion" name={ICON_NAME.tag} role="img" />
+    </Badge>
+}
+```
+
+### Accessibility Grouping
+
+```tsx
+{
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ul style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    margin: 0,
+    padding: 0,
+    listStyle: 'none'
+  }}>
+      <li>
+        <Badge>
+          Item 1
+        </Badge>
+      </li>
+      <li>
+        <Badge>
+          Item 2
+        </Badge>
+      </li>
+    </ul>
+}
+```
+
+### Accessibility With Tooltip
+
+```tsx
+{
+  globals: {
+    imports: `import { BADGE_COLOR, ICON_NAME, Badge, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tooltip>
+      <TooltipTrigger asChild>
+        <Badge aria-labelledby="tooltip-a11y" color={BADGE_COLOR.promotion}>
+          <Icon name={ICON_NAME.tag} />
+        </Badge>
+      </TooltipTrigger>
+
+      <TooltipContent id="tooltip-a11y">
+        Promotion valid from November 22 to 26
+      </TooltipContent>
+    </Tooltip>
+}
+```
+
+### Color
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Badge color={BADGE_COLOR.alpha}>Alpha</Badge>
+      <Badge color={BADGE_COLOR.beta}>Beta</Badge>
+      <Badge color={BADGE_COLOR.critical}>Critical</Badge>
+      <Badge color={BADGE_COLOR.information}>Information</Badge>
+      <Badge color={BADGE_COLOR.neutral}>Neutral</Badge>
+      <Badge color={BADGE_COLOR.new}>New</Badge>
+      <Badge color={BADGE_COLOR.primary}>Primary</Badge>
+      <Badge color={BADGE_COLOR.promotion}>Promotion</Badge>
+      <Badge color={BADGE_COLOR.success}>Success</Badge>
+      <Badge color={BADGE_COLOR.warning}>Warning</Badge>
+    </>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Badge>
+      My badge
+    </Badge>
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    children: {
+      table: {
+        category: CONTROL_CATEGORY.slot
+      },
+      control: 'text'
+    },
+    color: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'BADGE_COLOR'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: BADGE_COLORS
+    },
+    size: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'BADGE_SIZE'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: BADGE_SIZES
+    }
+  }),
+  args: {
+    children: 'My badge'
+  }
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Badge>
+      Badge
+    </Badge>
+}
+```
+
+### Size
+
+```tsx
+{
+  globals: {
+    imports: `import { BADGE_SIZE, Badge } from '@ovhcloud/ods-react';`
+  },
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Badge size={BADGE_SIZE.sm}>SM badge</Badge>
+      <Badge size={BADGE_SIZE.md}>MD badge</Badge>
+      <Badge size={BADGE_SIZE.lg}>LG badge</Badge>
+    </>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px'
+  }}>
+      {BADGE_SIZES.map(size => <div key={size} style={{
+      display: 'flex',
+      flexFlow: 'row',
+      flexWrap: 'wrap',
+      gap: '8px',
+      alignItems: 'center'
+    }}>
+          {BADGE_COLORS.map(color => <Badge key={`${String(size)}-${String(color)}`} size={size} color={color}>
+              {String(color)}
+            </Badge>)}
+        </div>)}
+    </div>
+}
+```

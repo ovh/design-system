@@ -1,0 +1,157 @@
+React Components
+
+# Divider
+
+## Overview
+
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+---
+
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+## Anatomy
+
+---
+
+1.  **Divider**
+
+## Divider
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [hr attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/hr#attributes) . |
+| colorDeprecated | `DIVIDER_COLOR` | - | `undefined` | The color preset to use. DEPRECATED: Color will now always be primary, if you need another color, prefer overriding it using css. |
+| spacing | `DIVIDER_SPACING` | - | `DIVIDER_SPACING._2` | The spacing preset to use. |
+
+## Enums
+
+---
+
+### DIVIDER_COLOR
+
+Deprecated
+
+-   neutral =`"neutral"`
+-   primary =`"primary"`
+
+### DIVIDER_SPACING
+
+-   _0 =`"0"`
+-   _12 =`"12"`
+-   _16 =`"16"`
+-   _2 =`"2"`
+-   _24 =`"24"`
+-   _32 =`"32"`
+-   _4 =`"4"`
+-   _40 =`"40"`
+-   _48 =`"48"`
+-   _6 =`"6"`
+-   _64 =`"64"`
+-   _8 =`"8"`
+
+## Examples
+
+---
+
+### Default
+
+---
+
+```jsx
+<Divider />
+```
+
+### Color
+
+---
+
+---
+
+```jsx
+<>
+  <Divider color="neutral" />
+  <Divider color="primary" />
+</>
+```
+
+### Spacing
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+```jsx
+<>
+  <Divider spacing="0" />
+  <Divider spacing="2" />
+  <Divider spacing="4" />
+  <Divider spacing="6" />
+  <Divider spacing="8" />
+  <Divider spacing="12" />
+  <Divider spacing="16" />
+  <Divider spacing="24" />
+  <Divider spacing="32" />
+  <Divider spacing="40" />
+  <Divider spacing="48" />
+  <Divider spacing="64" />
+</>
+```
+
+## Recipes
+
+---
+
+Dashboard Card
+
+#### Cluster Information
+
+---
+
+Name
+
+MyCluster
+
+---
+
+ID
+
+---
+
+Region
+
+GRA91-AZ
+
+---
+
+Admission plugins
+
+Always Pull Images PluginEnable
+
+Plugin Node RestrictionEnable
+
+---

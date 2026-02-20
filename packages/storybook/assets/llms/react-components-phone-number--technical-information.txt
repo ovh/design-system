@@ -1,0 +1,535 @@
+React Components
+
+# Phone Number
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Phone Number**
+2.  **Phone Number Country List**
+3.  **Phone Number Control**
+
+## PhoneNumber
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| countries | `PhoneNumberCountryIsoCode[] | PhoneNumberCountriesPreset` | - | `undefined` | A specific or preset list of country to display in the selector. |
+| country | `PHONE_NUMBER_COUNTRY_ISO_CODE` | - | `undefined` | The controlled selected country. |
+| defaultValue | `string` | - | `undefined` | The initial phone number value. Use when you don't need to control the value of the phone number. |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| i18n | `Partial` | - | `undefined` | Internal translations override. |
+| id | `string` | - | `undefined` | The field id. |
+| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
+| locale | `string` | - | `undefined` | The locale used for the translation of the country list and the internal elements. |
+| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| onCountryChange | `(detail: PhoneNumberCountryChangeDetail) => void` | - | `undefined` | Callback fired when the country changes. |
+| onValueChange | `(detail: PhoneNumberValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
+| pattern | `string` | - | `undefined` | The phone number input expected pattern. |
+| readOnly | `boolean` | - | `undefined` | Whether the component is readonly. |
+| required | `boolean` | - | `undefined` | Whether the component is required. |
+| value | `string` | - | `undefined` | The controlled phone number value. |
+
+## PhoneNumberControl
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [input attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes) . |
+| clearable | `boolean` | - | `undefined` | Whether the clear button is displayed. |
+| loading | `boolean` | - | `undefined` | Whether the component is in loading state. |
+
+## PhoneNumberCountryList
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## Enums
+
+---
+
+### PHONE_NUMBER_COUNTRIES_PRESET
+
+-   all =`"all"`
+
+### PHONE_NUMBER_COUNTRY_ISO_CODE
+
+-   ad =`"ad"`
+-   ae =`"ae"`
+-   af =`"af"`
+-   ag =`"ag"`
+-   ai =`"ai"`
+-   al =`"al"`
+-   am =`"am"`
+-   ao =`"ao"`
+-   ar =`"ar"`
+-   as =`"as"`
+-   at =`"at"`
+-   au =`"au"`
+-   aw =`"aw"`
+-   ax =`"ax"`
+-   az =`"az"`
+-   ba =`"ba"`
+-   bb =`"bb"`
+-   bd =`"bd"`
+-   be =`"be"`
+-   bf =`"bf"`
+-   bg =`"bg"`
+-   bh =`"bh"`
+-   bi =`"bi"`
+-   bj =`"bj"`
+-   bl =`"bl"`
+-   bm =`"bm"`
+-   bn =`"bn"`
+-   bo =`"bo"`
+-   bq =`"bq"`
+-   br =`"br"`
+-   bs =`"bs"`
+-   bt =`"bt"`
+-   bw =`"bw"`
+-   by =`"by"`
+-   bz =`"bz"`
+-   ca =`"ca"`
+-   cc =`"cc"`
+-   cd =`"cd"`
+-   cf =`"cf"`
+-   cg =`"cg"`
+-   ch =`"ch"`
+-   ci =`"ci"`
+-   ck =`"ck"`
+-   cl =`"cl"`
+-   cm =`"cm"`
+-   cn =`"cn"`
+-   co =`"co"`
+-   cr =`"cr"`
+-   cu =`"cu"`
+-   cv =`"cv"`
+-   cw =`"cw"`
+-   cx =`"cx"`
+-   cy =`"cy"`
+-   cz =`"cz"`
+-   de =`"de"`
+-   dj =`"dj"`
+-   dk =`"dk"`
+-   dm =`"dm"`
+-   do =`"do"`
+-   dz =`"dz"`
+-   ec =`"ec"`
+-   ee =`"ee"`
+-   eg =`"eg"`
+-   eh =`"eh"`
+-   er =`"er"`
+-   es =`"es"`
+-   et =`"et"`
+-   fi =`"fi"`
+-   fj =`"fj"`
+-   fk =`"fk"`
+-   fm =`"fm"`
+-   fo =`"fo"`
+-   fr =`"fr"`
+-   ga =`"ga"`
+-   gb =`"gb"`
+-   gd =`"gd"`
+-   ge =`"ge"`
+-   gf =`"gf"`
+-   gg =`"gg"`
+-   gh =`"gh"`
+-   gi =`"gi"`
+-   gl =`"gl"`
+-   gm =`"gm"`
+-   gn =`"gn"`
+-   gp =`"gp"`
+-   gq =`"gq"`
+-   gr =`"gr"`
+-   gt =`"gt"`
+-   gu =`"gu"`
+-   gw =`"gw"`
+-   gy =`"gy"`
+-   hk =`"hk"`
+-   hn =`"hn"`
+-   hr =`"hr"`
+-   ht =`"ht"`
+-   hu =`"hu"`
+-   id =`"id"`
+-   ie =`"ie"`
+-   il =`"il"`
+-   im =`"im"`
+-   in =`"in"`
+-   io =`"io"`
+-   iq =`"iq"`
+-   ir =`"ir"`
+-   is =`"is"`
+-   it =`"it"`
+-   je =`"je"`
+-   jm =`"jm"`
+-   jo =`"jo"`
+-   jp =`"jp"`
+-   ke =`"ke"`
+-   kg =`"kg"`
+-   kh =`"kh"`
+-   ki =`"ki"`
+-   km =`"km"`
+-   kn =`"kn"`
+-   kp =`"kp"`
+-   kr =`"kr"`
+-   kw =`"kw"`
+-   ky =`"ky"`
+-   kz =`"kz"`
+-   la =`"la"`
+-   lb =`"lb"`
+-   lc =`"lc"`
+-   li =`"li"`
+-   lk =`"lk"`
+-   lr =`"lr"`
+-   ls =`"ls"`
+-   lt =`"lt"`
+-   lu =`"lu"`
+-   lv =`"lv"`
+-   ly =`"ly"`
+-   ma =`"ma"`
+-   mc =`"mc"`
+-   md =`"md"`
+-   me =`"me"`
+-   mf =`"mf"`
+-   mg =`"mg"`
+-   mh =`"mh"`
+-   mk =`"mk"`
+-   ml =`"ml"`
+-   mm =`"mm"`
+-   mn =`"mn"`
+-   mo =`"mo"`
+-   mp =`"mp"`
+-   mq =`"mq"`
+-   mr =`"mr"`
+-   ms =`"ms"`
+-   mt =`"mt"`
+-   mu =`"mu"`
+-   mv =`"mv"`
+-   mw =`"mw"`
+-   mx =`"mx"`
+-   my =`"my"`
+-   mz =`"mz"`
+-   na =`"na"`
+-   nc =`"nc"`
+-   ne =`"ne"`
+-   nf =`"nf"`
+-   ng =`"ng"`
+-   ni =`"ni"`
+-   nl =`"nl"`
+-   no =`"no"`
+-   np =`"np"`
+-   nr =`"nr"`
+-   nu =`"nu"`
+-   nz =`"nz"`
+-   om =`"om"`
+-   pa =`"pa"`
+-   pe =`"pe"`
+-   pf =`"pf"`
+-   pg =`"pg"`
+-   ph =`"ph"`
+-   pk =`"pk"`
+-   pl =`"pl"`
+-   pm =`"pm"`
+-   pr =`"pr"`
+-   ps =`"ps"`
+-   pt =`"pt"`
+-   pw =`"pw"`
+-   py =`"py"`
+-   qa =`"qa"`
+-   re =`"re"`
+-   ro =`"ro"`
+-   rs =`"rs"`
+-   ru =`"ru"`
+-   rw =`"rw"`
+-   sa =`"sa"`
+-   sb =`"sb"`
+-   sc =`"sc"`
+-   sd =`"sd"`
+-   se =`"se"`
+-   sg =`"sg"`
+-   sh =`"sh"`
+-   si =`"si"`
+-   sj =`"sj"`
+-   sk =`"sk"`
+-   sl =`"sl"`
+-   sm =`"sm"`
+-   sn =`"sn"`
+-   so =`"so"`
+-   sr =`"sr"`
+-   ss =`"ss"`
+-   st =`"st"`
+-   sv =`"sv"`
+-   sx =`"sx"`
+-   sy =`"sy"`
+-   sz =`"sz"`
+-   tc =`"tc"`
+-   td =`"td"`
+-   tg =`"tg"`
+-   th =`"th"`
+-   tj =`"tj"`
+-   tk =`"tk"`
+-   tl =`"tl"`
+-   tm =`"tm"`
+-   tn =`"tn"`
+-   to =`"to"`
+-   tr =`"tr"`
+-   tt =`"tt"`
+-   tv =`"tv"`
+-   tw =`"tw"`
+-   tz =`"tz"`
+-   ua =`"ua"`
+-   ug =`"ug"`
+-   us =`"us"`
+-   uy =`"uy"`
+-   uz =`"uz"`
+-   va =`"va"`
+-   vc =`"vc"`
+-   ve =`"ve"`
+-   vg =`"vg"`
+-   vi =`"vi"`
+-   vn =`"vn"`
+-   vu =`"vu"`
+-   wf =`"wf"`
+-   ws =`"ws"`
+-   ye =`"ye"`
+-   yt =`"yt"`
+-   za =`"za"`
+-   zm =`"zm"`
+-   zw =`"zw"`
+
+### PHONE_NUMBER_I18N
+
+-   countrySelect =`"phoneNumber.country.select"`
+
+### PHONE_NUMBER_PARSING_ERROR
+
+-   invalidCountry =`"invalid-country"`
+-   invalidLength =`"invalid-length"`
+-   notANumber =`"not-a-number"`
+-   tooLong =`"too-long"`
+-   tooShort =`"too-short"`
+-   unknownError =`"unknown-error"`
+
+## Interfaces
+
+---
+
+### PhoneNumberCountryChangeDetail
+
+-   `isNumberValid: boolean`
+-   `value: PHONE_NUMBER_COUNTRY_ISO_CODE`
+
+### PhoneNumberValueChangeDetail
+
+-   `country?: PHONE_NUMBER_COUNTRY_ISO_CODE`
+-   `formattedValue?: string`
+-   `isNumberValid: boolean`
+-   `parsingError?: string`
+-   `value: string`
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+{
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <PhoneNumber>
+      <PhoneNumberControl />
+    </PhoneNumber>
+}
+```
+
+### Disabled
+
+AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigua & BarbudaArgentinaArmeniaArubaAustraliaAustriaAzerbaijanBahamasBahrainBangladeshBarbadosBelarusBelgiumBelizeBeninBermudaBhutanBoliviaBosnia & HerzegovinaBotswanaBrazilBritish Indian Ocean TerritoryBritish Virgin IslandsBruneiBulgariaBurkina FasoBurundiCambodiaCameroonCanadaCape VerdeCaribbean NetherlandsCayman IslandsCentral African RepublicChadChileChinaChristmas IslandCocos (Keeling) IslandsColombiaComorosCongo - BrazzavilleCongo - KinshasaCook IslandsCosta RicaCôte d’IvoireCroatiaCubaCuraçaoCyprusCzechiaDenmarkDjiboutiDominicaDominican RepublicEcuadorEgyptEl SalvadorEquatorial GuineaEritreaEstoniaEswatiniEthiopiaFalkland Islands (Islas Malvinas)Faroe IslandsFijiFinlandFranceFrench GuianaFrench PolynesiaGabonGambiaGeorgiaGermanyGhanaGibraltarGreeceGreenlandGrenadaGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHong KongHungaryIcelandIndiaIndonesiaIranIraqIrelandIsle of ManIsraelItalyJamaicaJapanJerseyJordanKazakhstanKenyaKiribatiKuwaitKyrgyzstanLaosLatviaLebanonLesothoLiberiaLibyaLiechtensteinLithuaniaLuxembourgMacaoMadagascarMalawiMalaysiaMaldivesMaliMaltaMarshall IslandsMartiniqueMauritaniaMauritiusMayotteMexicoMicronesiaMoldovaMonacoMongoliaMontenegroMontserratMoroccoMozambiqueMyanmar (Burma)NamibiaNauruNepalNetherlandsNew CaledoniaNew ZealandNicaraguaNigerNigeriaNiueNorfolk IslandNorth KoreaNorth MacedoniaNorthern Mariana IslandsNorwayOmanPakistanPalauPalestinePanamaPapua New GuineaParaguayPeruPhilippinesPolandPortugalPuerto RicoQatarRéunionRomaniaRussiaRwandaSamoaSan MarinoSão Tomé & PríncipeSaudi ArabiaSenegalSerbiaSeychellesSierra LeoneSingaporeSint MaartenSlovakiaSloveniaSolomon IslandsSomaliaSouth AfricaSouth KoreaSouth SudanSpainSri LankaSt. BarthélemySt. HelenaSt. Kitts & NevisSt. LuciaSt. MartinSt. Pierre & MiquelonSt. Vincent & GrenadinesSudanSurinameSvalbard & Jan MayenSwedenSwitzerlandSyriaTaiwanTajikistanTanzaniaThailandTimor-LesteTogoTokelauTongaTrinidad & TobagoTunisiaTürkiyeTurkmenistanTurks & Caicos IslandsTuvaluU.S. Virgin IslandsUgandaUkraineUnited Arab EmiratesUnited KingdomUnited StatesUruguayUzbekistanVanuatuVatican CityVenezuelaVietnamWallis & FutunaWestern SaharaYemenZambiaZimbabwe
+
+```jsx
+<>
+  <PhoneNumber disabled>
+    <PhoneNumberControl />
+  </PhoneNumber>
+  <PhoneNumber disabled>
+    <PhoneNumberCountryList />
+    <PhoneNumberControl />
+  </PhoneNumber>
+</>
+```
+
+### Readonly
+
+```jsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <PhoneNumber readOnly>
+        <PhoneNumberControl />
+      </PhoneNumber>
+      <PhoneNumber readOnly>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </>
+}
+```
+
+### Clearable
+
+```jsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <PhoneNumber>
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+    </>
+}
+```
+
+### Loading
+
+AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigua & BarbudaArgentinaArmeniaArubaAustraliaAustriaAzerbaijanBahamasBahrainBangladeshBarbadosBelarusBelgiumBelizeBeninBermudaBhutanBoliviaBosnia & HerzegovinaBotswanaBrazilBritish Indian Ocean TerritoryBritish Virgin IslandsBruneiBulgariaBurkina FasoBurundiCambodiaCameroonCanadaCape VerdeCaribbean NetherlandsCayman IslandsCentral African RepublicChadChileChinaChristmas IslandCocos (Keeling) IslandsColombiaComorosCongo - BrazzavilleCongo - KinshasaCook IslandsCosta RicaCôte d’IvoireCroatiaCubaCuraçaoCyprusCzechiaDenmarkDjiboutiDominicaDominican RepublicEcuadorEgyptEl SalvadorEquatorial GuineaEritreaEstoniaEswatiniEthiopiaFalkland Islands (Islas Malvinas)Faroe IslandsFijiFinlandFranceFrench GuianaFrench PolynesiaGabonGambiaGeorgiaGermanyGhanaGibraltarGreeceGreenlandGrenadaGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHong KongHungaryIcelandIndiaIndonesiaIranIraqIrelandIsle of ManIsraelItalyJamaicaJapanJerseyJordanKazakhstanKenyaKiribatiKuwaitKyrgyzstanLaosLatviaLebanonLesothoLiberiaLibyaLiechtensteinLithuaniaLuxembourgMacaoMadagascarMalawiMalaysiaMaldivesMaliMaltaMarshall IslandsMartiniqueMauritaniaMauritiusMayotteMexicoMicronesiaMoldovaMonacoMongoliaMontenegroMontserratMoroccoMozambiqueMyanmar (Burma)NamibiaNauruNepalNetherlandsNew CaledoniaNew ZealandNicaraguaNigerNigeriaNiueNorfolk IslandNorth KoreaNorth MacedoniaNorthern Mariana IslandsNorwayOmanPakistanPalauPalestinePanamaPapua New GuineaParaguayPeruPhilippinesPolandPortugalPuerto RicoQatarRéunionRomaniaRussiaRwandaSamoaSan MarinoSão Tomé & PríncipeSaudi ArabiaSenegalSerbiaSeychellesSierra LeoneSingaporeSint MaartenSlovakiaSloveniaSolomon IslandsSomaliaSouth AfricaSouth KoreaSouth SudanSpainSri LankaSt. BarthélemySt. HelenaSt. Kitts & NevisSt. LuciaSt. MartinSt. Pierre & MiquelonSt. Vincent & GrenadinesSudanSurinameSvalbard & Jan MayenSwedenSwitzerlandSyriaTaiwanTajikistanTanzaniaThailandTimor-LesteTogoTokelauTongaTrinidad & TobagoTunisiaTürkiyeTurkmenistanTurks & Caicos IslandsTuvaluU.S. Virgin IslandsUgandaUkraineUnited Arab EmiratesUnited KingdomUnited StatesUruguayUzbekistanVanuatuVatican CityVenezuelaVietnamWallis & FutunaWestern SaharaYemenZambiaZimbabwe
+
+```jsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <PhoneNumber>
+        <PhoneNumberControl loading />
+      </PhoneNumber>
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl loading />
+      </PhoneNumber>
+    </>
+}
+```
+
+### Locale
+
+The locale manages the translation of the country list.
+
+For further explanation about locale strategy, see .
+
+Locale "fr"
+
+AfghanistanAfrique du SudAlbanieAlgérieAllemagneAndorreAngolaAnguillaAntigua-et-BarbudaArabie saouditeArgentineArménieArubaAustralieAutricheAzerbaïdjanBahamasBahreïnBangladeshBarbadeBelgiqueBelizeBéninBermudesBhoutanBiélorussieBolivieBosnie-HerzégovineBotswanaBrésilBruneiBulgarieBurkina FasoBurundiCambodgeCamerounCanadaCap-VertChiliChineChypreColombieComoresCongo-BrazzavilleCongo-KinshasaCorée du NordCorée du SudCosta RicaCôte d’IvoireCroatieCubaCuraçaoDanemarkDjiboutiDominiqueÉgypteÉmirats arabes unisÉquateurÉrythréeEspagneEstonieEswatiniÉtat de la Cité du VaticanÉtats-UnisÉthiopieFidjiFinlandeFranceGabonGambieGéorgieGhanaGibraltarGrèceGrenadeGroenlandGuadeloupeGuamGuatemalaGuerneseyGuinéeGuinée équatorialeGuinée-BissauGuyanaGuyane françaiseHaïtiHondurasHong KongHongrieÎle ChristmasÎle de ManÎle NorfolkÎles ÅlandÎles CaïmansÎles CocosÎles CookÎles FéroéÎles Malouines (Îles Falkland)Îles Mariannes du NordÎles MarshallÎles SalomonÎles Turques-et-CaïquesÎles Vierges britanniquesÎles Vierges des États-UnisIndeIndonésieIrakIranIrlandeIslandeIsraëlItalieJamaïqueJaponJerseyJordanieKazakhstanKenyaKirghizstanKiribatiKoweïtLa RéunionLaosLesothoLettonieLibanLiberiaLibyeLiechtensteinLituanieLuxembourgMacaoMacédoine du NordMadagascarMalaisieMalawiMaldivesMaliMalteMarocMartiniqueMauriceMauritanieMayotteMexiqueMicronésieMoldavieMonacoMongolieMonténégroMontserratMozambiqueMyanmar (Birmanie)NamibieNauruNépalNicaraguaNigerNigeriaNiueNorvègeNouvelle-CalédonieNouvelle-ZélandeOmanOugandaOuzbékistanPakistanPalaosPalestinePanamaPapouasie-Nouvelle-GuinéeParaguayPays-BasPays-Bas caribéensPérouPhilippinesPolognePolynésie françaisePorto RicoPortugalQatarRépublique centrafricaineRépublique dominicaineRoumanieRoyaume-UniRussieRwandaSahara occidentalSaint-BarthélemySaint-Christophe-et-NiévèsSaint-MarinSaint-MartinSaint-Martin (partie néerlandaise)Saint-Pierre-et-MiquelonSaint-Vincent-et-les GrenadinesSainte-HélèneSainte-LucieSalvadorSamoaSamoa américainesSao Tomé-et-PrincipeSénégalSerbieSeychellesSierra LeoneSingapourSlovaquieSlovénieSomalieSoudanSoudan du SudSri LankaSuèdeSuisseSurinameSvalbard et Jan MayenSyrieTadjikistanTaïwanTanzanieTchadTchéquieTerritoire britannique de l’océan IndienThaïlandeTimor orientalTogoTokelauTongaTrinité-et-TobagoTunisieTurkménistanTurquieTuvaluUkraineUruguayVanuatuVenezuelaViêt NamWallis-et-FutunaYémenZambieZimbabwe
+
+Locale "de"
+
+AfghanistanÄgyptenÅlandinselnAlbanienAlgerienAmerikanisch-SamoaAmerikanische JungferninselnAndorraAngolaAnguillaAntigua und BarbudaÄquatorialguineaArgentinienArmenienArubaAserbaidschanÄthiopienAustralienBahamasBahrainBangladeschBarbadosBelarusBelgienBelizeBeninBermudaBhutanBolivienBosnien und HerzegowinaBotsuanaBrasilienBritische JungferninselnBritisches Territorium im Indischen OzeanBrunei DarussalamBulgarienBurkina FasoBurundiCabo VerdeChileChinaCookinselnCosta RicaCôte d’IvoireCuraçaoDänemarkDeutschlandDominicaDominikanische RepublikDschibutiEcuadorEl SalvadorEritreaEstlandEswatiniFalklandinseln (Malwinen)FäröerFidschiFinnlandFrankreichFranzösisch-GuayanaFranzösisch-PolynesienGabunGambiaGeorgienGhanaGibraltarGrenadaGriechenlandGrönlandGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHongkongIndienIndonesienIrakIranIrlandIslandIsle of ManIsraelItalienJamaikaJapanJemenJerseyJordanienKaimaninselnKambodschaKamerunKanadaKaribische NiederlandeKasachstanKatarKeniaKirgisistanKiribatiKokosinselnKolumbienKomorenKongo-BrazzavilleKongo-KinshasaKroatienKubaKuwaitLaosLesothoLettlandLibanonLiberiaLibyenLiechtensteinLitauenLuxemburgMacauMadagaskarMalawiMalaysiaMaledivenMaliMaltaMarokkoMarshallinselnMartiniqueMauretanienMauritiusMayotteMexikoMikronesienMonacoMongoleiMontenegroMontserratMosambikMyanmarNamibiaNauruNepalNeukaledonienNeuseelandNicaraguaNiederlandeNigerNigeriaNiueNordkoreaNördliche MarianenNordmazedonienNorfolkinselNorwegenOmanÖsterreichPakistanPalästinaPalauPanamaPapua-NeuguineaParaguayPeruPhilippinenPolenPortugalPuerto RicoRepublik MoldauRéunionRuandaRumänienRusslandSalomonenSambiaSamoaSan MarinoSão Tomé und PríncipeSaudi-ArabienSchwedenSchweizSenegalSerbienSeychellenSierra LeoneSimbabweSingapurSint MaartenSlowakeiSlowenienSomaliaSpanienSpitzbergen und Jan MayenSri LankaSt. BarthélemySt. HelenaSt. Kitts und NevisSt. LuciaSt. MartinSt. Pierre und MiquelonSt. Vincent und die GrenadinenSüdafrikaSudanSüdkoreaSüdsudanSurinameSyrienTadschikistanTaiwanTansaniaThailandTimor-LesteTogoTokelauTongaTrinidad und TobagoTschadTschechienTunesienTürkeiTurkmenistanTurks- und CaicosinselnTuvaluUgandaUkraineUngarnUruguayUsbekistanVanuatuVatikanstadtVenezuelaVereinigte Arabische EmirateVereinigte StaatenVereinigtes KönigreichVietnamWallis und FutunaWeihnachtsinselWestsaharaZentralafrikanische RepublikZypern
+
+```jsx
+<>
+  <span>
+    Locale "fr"  </span>
+  <PhoneNumber locale="fr">
+    <PhoneNumberCountryList />
+    <PhoneNumberControl />
+  </PhoneNumber>
+  <span>
+    Locale "de"  </span>
+  <PhoneNumber locale="de">
+    <PhoneNumberCountryList />
+    <PhoneNumberControl />
+  </PhoneNumber>
+</>
+```
+
+### Country list
+
+You can use update the list of country to select from.
+
+By default, the list use the `all` preset that displays all supported iso codes. But you can pass a specific subset to limit the possible choices.
+
+For further explanation about country iso code strategy, see .
+
+```jsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <span>All countries</span>
+      <PhoneNumber>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl />
+      </PhoneNumber>
+      <span>Subset of countries</span>
+      <PhoneNumber countries={['de', 'fr', 'gb', 'it']}>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl clearable />
+      </PhoneNumber>
+    </>
+}
+```
+
+### Form field
+
+Phone number:
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Phone number:  </FormFieldLabel>
+  <PhoneNumber>
+    <PhoneNumberControl />
+  </PhoneNumber>
+</FormField>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

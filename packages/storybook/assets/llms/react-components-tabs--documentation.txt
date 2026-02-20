@@ -1,0 +1,123 @@
+React Components
+
+# Tabs
+
+_**Tabs** are a way of navigating between multiple panels, reducing clutter and fitting more into a smaller space_
+
+## Overview
+
+---
+
+**Tabs** are used to organize content by grouping similar information on the same page.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Tabs</td></tr><tr><th scope="row">Also known as</th><td>Tab Navigation, Tabbed interface</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11168" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/tabs" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-tabs--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+**Tabs** component is ideal for dashboards, settings pages, profile sections, and any interface where multiple views need to be accessible from the same page.
+
+They can also be used to filter content via some common denominator.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use Tabs to group related content under the same page when it fits in a shared context |
+| - Keep Tab labels short, clear, and scannable, use nouns or very short phrases (1–3 words max) |
+| - Use Tabs for horizontal navigation, not hierarchical structure or progressive steps |
+| - Do use default Tabs for main navigation |
+| - Do use switch variant when Tabs act as a mode selector or view switcher (e.g., toggling between "List" and "Grid" views) |
+
+| ❌ Don't |
+| --- |
+| - Don't use Tabs as a progress indicator or wizard steps |
+| - Don't nest Tabs inside other Tabs, this creates a confusing and hard-to-navigate experience |
+| - Don't overload the interface with too many tabs. Use dropdowns if you need more than 5 tabs |
+| - Don't use long or verbose labels |
+| - Don't use external links or actions as tab triggers, Tabs should only control the visibility of in-page content |
+| - Avoid using the switch variant for main navigation or complex page segmentation. Prefer the default Tabs for those cases instead |
+
+### Best Practices in Context
+
+1.  **Tabs**
+2.  **Scroll Buttons (previous/next) - optional**
+3.  **Active tab**
+4.  **Unselected tab**
+
+## Placement
+
+---
+
+**Tabs** are often used in the top part of a web page, as it can act as a navigation focus.
+
+## Behavior
+
+---
+
+By default, one of the **Tab** is always selected.
+
+Each **Tab** can be hovered, focused and selected. A **Tab** can also act as a disabled **Tab**.
+
+**Tabs** always stay on the same line, and can be horizontally scrolled through if they happen to not fit their container.
+
+Each **Tab** has a panel displaying content. Selecting a **Tab** displays the corresponding panel.
+
+The panel does not depend on the **Tab** component, it is in the developer's hands.
+
+### Scroll Buttons
+
+When the number of **Tabs** exceeds the visible container width, left and right scroll buttons can be displayed to allow horizontal navigation.
+
+Clicking a button scrolls to the next or previous group of **Tabs** that were not visible.
+
+When at the first tab, the left button is displayed but disabled.
+
+When at the last tab, the right button is displayed but disabled.
+
+Scroll buttons do not affect tab selection. They only change the visible portion of the **Tabs** list.
+
+## Variation
+
+---
+
+### Default (standard Tabs)
+
+Used for displaying and organizing related content within the same page or view. The default **Tabs** variant follows the standard horizontal layout, with a clear underline or border to indicate the active state. It is ideal for primary navigation within a section or module.
+
+### Switch (sub-navigation)
+
+The switch variant is visually distinct of **Tabs**, designed for switching between sub-views or modes within the same context. It behaves as a lightweight navigation switch between views.
+
+## Navigation
+
+---
+
+### Focus Management
+
+When focus moves to the **Tabs** component, it is set on the active **Tab**.
+
+Once a **Tab** is focused, its associated content is also activated.
+
+### General Keyboard Shortcuts
+
+Pressing Tab moves focus into or out of the **Tabs** component while keeping the active **Tab** selected.
+
+Pressing Arrow Right moves focus to the next **Tab** and activates its content.
+
+Pressing Arrow Left moves focus to the previous **Tab** and activates its content.
+
+Pressing Home / fn + Arrow Left moves focus to the first **Tab** and activates its content.
+
+Pressing End / fn + Arrow Right moves focus to the last **Tab** and activates its content.
+
+Pressing Home / End jumps to the first or last **Tab**, even if these **Tabs** are not currently visible. In this case, the **Tabs** list automatically scrolls to bring the selected **Tab** into view.
+
+Arrow navigation moves focus to the next or previous **Tab**, even if it is not currently visible. In this case, the **Tabs** list automatically scrolls to bring the focused **Tab** into view.
+
+## Accessibility
+
+---
+
+This component complies with the [Tabs WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) .

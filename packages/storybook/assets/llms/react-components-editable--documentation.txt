@@ -1,0 +1,106 @@
+React Components
+
+# Editable
+
+Double click to edit
+
+## Overview
+
+---
+
+The **Editable** component allows users to edit text directly in place. It replaces static text with an editable field, letting users quickly update content without opening a form or modal.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Editable</td></tr><tr><th scope="row">Also known as</th><td>Inline Editor</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/nrXo7riue1w773W2h4HGBS/ODS---UI-Kit?m=auto&amp;node-id=14291-46529&amp;t=rsFWlOhZe0TlF6Wd-1" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/editable" target="_blank">Github<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+The **Editable** component is used when users need to modify text directly in the interface, without disrupting their workflow.
+
+They are commonly used for:
+
+-   Inline editing of cell values in a datagrid or table (e.g., a nickname)
+-   Editable titles or headings (e.g., rename a dashboard)
+-   Settings panels (e.g. configuration values, such as thresholds or labels)
+-   Text snippets (e.g., section titles, captions)
+-   Lists and todo items
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use Editable when users need to edit values quickly and frequently. |
+| - Define a reasonable max length to prevent layout overflow. |
+| - Ensure editable content has a meaningful default or empty state. |
+
+| ❌ Don't |
+| --- |
+| - Remove visual cues that indicate editability. |
+| - Use Editable for long or complex form content. |
+| - Use Editable when changes must be reviewed or explicitly confirmed in a separate step. |
+
+### Best Practices in Context
+
+1.  **Editable**
+2.  **Preview / Editing field**
+3.  **Actions**
+
+Preview displays static text when not in edit mode while the field is visible only during edit mode.
+
+## Behavior
+
+---
+
+### Edit Activation
+
+Users can enter edit mode through different triggers:
+
+-   By click on the edit trigger
+-   By double-click on the preview
+
+### Editing
+
+When entering edit mode, the preview is replaced by a field containing the current value.
+
+Users can type in the field and update the current value.
+
+### Submission
+
+The editable value should be committed when the user activates the submit trigger.
+
+### Cancellation
+
+Activating the cancel trigger should discard the current changes and returns the component to its previous value.
+
+### Empty
+
+If the current value is empty, an empty state should be displayed to indicate that no content has been defined yet.
+
+## Navigation
+
+---
+
+### Focus Management
+
+When edit mode is entered, focus should moves to the expected field.
+
+Exiting edit mode returns focus according to the surrounding context.
+
+### General Keyboard Shortcuts
+
+Pressing Tab moves focus forward to the next interactive element.
+
+Pressing Shift + Tab moves focus backward to the previous interactive element.
+
+Pressing Enter on the edit trigger activates edit mode.
+
+Pressing Enter on the submit trigger should commit the current value and exits edit mode.
+
+Pressing Enter on the cancel trigger should discard the current changes and exits edit mode.
+
+## Accessibility
+
+---
+
+Accessibility depends on the form elements used within **Editable**. Make sure inputs, triggers and custom actions follow standard accessibility rules.

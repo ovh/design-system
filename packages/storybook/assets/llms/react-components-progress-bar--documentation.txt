@@ -1,0 +1,75 @@
+React Components
+
+# Progress Bar
+
+_A horizontal bar indicating the current completion status of a long-running task, usually updated continuously as the task progresses, instead of in discrete steps._
+
+## Overview
+
+---
+
+The **Progress Bar** component is used to indicate the progress of a task or process to users. It visually represents the completion percentage, providing users with feedback on the status of ongoing operations, such as file uploads, downloads, or form submissions.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Progress Bar</td></tr><tr><th scope="row">Also known as</th><td>Progress, Progress Loader, Preloader, Loading Bar, Progress Indicator</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-8976" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/progress-bar" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-progress-bar--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+**Progress Bar** component is only used in process progression, such as submitting, uploading or saving items.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Progress Bar to represent linear, quantifiable progression in processes like uploads or submissions |
+| - Prefer Progress Bar when the completion state is measurable (e.g. 0–100%), and users benefit from visual feedback on progress |
+| - Use clear labels or indicators (like percentage or step descriptions) if it adds clarity to the task |
+| - Pair the Progress Bar with contextual messaging to clarify what is being processed and what happens next |
+
+| ❌ Don't |
+| --- |
+| - Don't use a Progress Bar to visualize static data or compare values, use a chart or graph instead |
+| - Don't display all three labels (start value, end value, current value) at the same time |
+| - Don't rely solely on color to communicate progress, include text or value where helpful |
+| - Don't use Progress Bar for instantaneous actions where progress feedback is not meaningful, use a spinner instead |
+
+### Best Practices in Context
+
+1.  **Progress Bar**
+2.  **Track**
+3.  **Progress fill**
+
+## Placement
+
+---
+
+**Progress Bar** is usually centered in its container, and can be stretched to match the container width if necessary.
+
+## Behavior
+
+---
+
+**Progress Bar** is filled from the minimum to the maximum value, depending on the progress described.
+
+## Navigation
+
+---
+
+The **Progress Bar** component is non-interactive and does not receive keyboard focus. It is purely visual and used to indicate progress status without affecting keyboard navigation.
+
+## Accessibility
+
+---
+
+**Progress Bar** component should be properly identified and structured to ensure it is accessible to assistive technologies.
+
+### Linking the Progress Bar to loading details
+
+To ensure the **Progress Bar** is correctly recognized, an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) should be added to explicitly identify it.
+
+```jsx
+<ProgressBar aria-label="Converting" />
+```
+
+Screen readers will announce the label, the value and the progress bar.

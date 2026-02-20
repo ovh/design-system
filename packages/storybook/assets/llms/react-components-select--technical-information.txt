@@ -1,0 +1,715 @@
+React Components
+
+# Select
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Select**
+2.  **Select Control**
+3.  **Select Content**
+
+## Select
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| defaultValue | `string | string[]` | - | `undefined` | The initial selected value(s). Use when you don't need to control the selected value(s) of the select. |
+| disabled | `boolean` | - | `false` | Whether the component is disabled. |
+| fitControlWidth | `boolean` | - | `true` | Whether the dropdown width should stay the same as the input. |
+| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
+| items | `SelectItem[]` | - | `[]` | The list of items |
+| multiple | `boolean | 'merge'` | - | `false` | Allows multiple selection and define how it should be rendered. |
+| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| onValueChange | `(detail: SelectValueChangeDetail) => void` | - | `undefined` | Callback fired when the value(s) changes. |
+| positionerStyle | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+| readOnly | `boolean` | - | `false` | Whether the component is readonly. |
+| required | `boolean` | - | `undefined` | Whether the component is required. |
+| value | `string[]` | - | `undefined` | The controlled selected value(s). |
+
+## SelectContent
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| createPortal | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
+| customGroupRenderer | `(arg: SelectCustomGroupRendererArg) => JSX.Element` | - | `undefined` | Custom render for each group item. |
+| customOptionRenderer | `(arg: SelectCustomOptionRendererArg) => JSX.Element` | - | `undefined` | Custom render for each option item. |
+
+## SelectControl
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| customItemRenderer | `(arg: SelectCustomItemRendererArg) => JSX.Element` | - | `undefined` | Custom render for the selected item(s). |
+| multipleSelectionLabel | `string` | - | `undefined` | Label displayed on multiple selection when in "merge" mode. |
+| placeholder | `string` | - | `undefined` | The placeholder text to display in the select. |
+
+## Interfaces
+
+---
+
+### SelectCustomGroupRendererArg
+
+-   `customData?: T`
+-   `label: string`
+
+### SelectCustomItemRendererArg
+
+-   `selectedItems: SelectOptionItem[]`
+-   `text: string`
+-   `values: string[]`
+
+### SelectCustomOptionRendererArg
+
+-   `customData?: T`
+-   `label: string`
+
+### SelectGroupItem
+
+-   `customRendererData?: T`
+-   `disabled?: boolean`
+-   `label: string`
+-   `options: SelectOptionItem[]`
+
+### SelectOptionItem
+
+-   `customRendererData?: T`
+-   `disabled?: boolean`
+-   `label: string`
+-   `value: string`
+
+### SelectValueChangeDetail
+
+-   `items: SelectItem[]`
+-   `value: string[]`
+
+## Unions
+
+---
+
+-   `SelectItem = SelectGroupItem | SelectOptionItem`
+-   `SelectMultipleMode = boolean | "merge"`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-select-group-option-padding-horizontal | calc(var(--ods-theme-input-padding-horizontal) * 3) | 
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+{
+  globals: {
+    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Select items={[{
+    label: 'Dog',
+    value: 'dog'
+  }, {
+    label: 'Cat',
+    value: 'cat'
+  }, {
+    label: 'Hamster',
+    value: 'hamster'
+  }, {
+    label: 'Parrot',
+    value: 'parrot'
+  }, {
+    label: 'Spider',
+    value: 'spider'
+  }, {
+    label: 'Goldfish',
+    value: 'goldfish'
+  }]}>
+      <SelectControl />
+      <SelectContent />
+    </Select>
+}
+```
+
+### Group
+
+```jsx
+{
+  globals: {
+    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Select items={[{
+    label: 'Europe',
+    options: [{
+      label: 'France',
+      value: 'fr'
+    }, {
+      label: 'Germany',
+      value: 'de'
+    }, {
+      label: 'Italy',
+      value: 'it'
+    }]
+  }, {
+    label: 'Asia',
+    options: [{
+      label: 'China',
+      value: 'cn'
+    }, {
+      label: 'Japan',
+      value: 'jp'
+    }, {
+      label: 'Russia',
+      value: 'ru'
+    }]
+  }, {
+    label: 'North America',
+    options: [{
+      label: 'Canada',
+      value: 'ca'
+    }, {
+      label: 'Mexico',
+      value: 'mx'
+    }, {
+      label: 'United States of America',
+      value: 'us'
+    }]
+  }]}>
+      <SelectControl />
+      <SelectContent />
+    </Select>
+}
+```
+
+### Multiple Selection
+
+```jsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Select, SelectContent, SelectControl, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Select items={[{
+      label: 'Dog',
+      value: 'dog'
+    }, {
+      label: 'Cat',
+      value: 'cat'
+    }, {
+      label: 'Hamster',
+      value: 'hamster'
+    }, {
+      label: 'Parrot',
+      value: 'parrot'
+    }, {
+      label: 'Spider',
+      value: 'spider'
+    }, {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }]} multiple>
+        <Text htmlFor="multiple" preset={TEXT_PRESET.label}>
+          Default multiple selection        </Text>
+        <SelectControl id="multiple" placeholder="Select one or more pets" />
+        <SelectContent />
+      </Select>
+      <Select items={[{
+      label: 'Dog',
+      value: 'dog'
+    }, {
+      label: 'Cat',
+      value: 'cat'
+    }, {
+      label: 'Hamster',
+      value: 'hamster'
+    }, {
+      label: 'Parrot',
+      value: 'parrot'
+    }, {
+      label: 'Spider',
+      value: 'spider'
+    }, {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }]} multiple="merge">
+        <Text htmlFor="multiple-merged" preset={TEXT_PRESET.label}>
+          Merged multiple selection        </Text>
+        <SelectControl id="multiple-merged" placeholder="Select one or more pets" />
+        <SelectContent />
+      </Select>
+    </>
+}
+```
+
+### Disabled
+
+Disabled
+
+DogCatHamsterParrotSpiderGoldfish
+
+Disabled options
+
+DogCatHamsterParrotSpiderGoldfish
+
+Disabled group or group option
+
+FranceGermanyItalyChinaJapanRussiaCanadaMexicoUnited States of America
+
+```jsx
+<>
+  <Select
+    disabled
+    items={[
+      {
+        label: 'Dog',
+        value: 'dog'
+      },
+      {
+        label: 'Cat',
+        value: 'cat'
+      },
+      {
+        label: 'Hamster',
+        value: 'hamster'
+      },
+      {
+        label: 'Parrot',
+        value: 'parrot'
+      },
+      {
+        label: 'Spider',
+        value: 'spider'
+      },
+      {
+        label: 'Goldfish',
+        value: 'goldfish'
+      }
+    ]}
+  >
+    <Text
+      htmlFor="disabled"
+      preset="label"
+    >
+      Disabled    </Text>
+    <SelectControl
+      id="disabled"
+      placeholder="Select one or more pets"
+    />
+    <SelectContent />
+  </Select>
+  <Select
+    items={[
+      {
+        disabled: true,
+        label: 'Dog',
+        value: 'dog'
+      },
+      {
+        label: 'Cat',
+        value: 'cat'
+      },
+      {
+        label: 'Hamster',
+        value: 'hamster'
+      },
+      {
+        disabled: true,
+        label: 'Parrot',
+        value: 'parrot'
+      },
+      {
+        label: 'Spider',
+        value: 'spider'
+      },
+      {
+        label: 'Goldfish',
+        value: 'goldfish'
+      }
+    ]}
+  >
+    <Text
+      htmlFor="disabled-options"
+      preset="label"
+    >
+      Disabled options    </Text>
+    <SelectControl
+      id="disabled-options"
+      placeholder="Select one or more pets"
+    />
+    <SelectContent />
+  </Select>
+  <Select
+    items={[
+      {
+        label: 'Europe',
+        options: [
+          {
+            label: 'France',
+            value: 'fr'
+          },
+          {
+            disabled: true,
+            label: 'Germany',
+            value: 'de'
+          },
+          {
+            label: 'Italy',
+            value: 'it'
+          }
+        ]
+      },
+      {
+        disabled: true,
+        label: 'Asia',
+        options: [
+          {
+            disabled: true,
+            label: 'China',
+            value: 'cn'
+          },
+          {
+            disabled: true,
+            label: 'Japan',
+            value: 'jp'
+          },
+          {
+            disabled: true,
+            label: 'Russia',
+            value: 'ru'
+          }
+        ]
+      },
+      {
+        label: 'North America',
+        options: [
+          {
+            label: 'Canada',
+            value: 'ca'
+          },
+          {
+            label: 'Mexico',
+            value: 'mx'
+          },
+          {
+            label: 'United States of America',
+            value: 'us'
+          }
+        ]
+      }
+    ]}
+  >
+    <Text
+      htmlFor="disabled-group"
+      preset="label"
+    >
+      Disabled group or group option    </Text>
+    <SelectControl id="disabled-group" />
+    <SelectContent />
+  </Select>
+</>
+```
+
+### Readonly
+
+DogCatHamsterParrotSpiderGoldfish
+
+```jsx
+<Select
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+  readOnly
+>
+  <SelectControl placeholder="Select one or more pets" />
+  <SelectContent />
+</Select>
+```
+
+### Custom Renderer
+
+```jsx
+type CustomData = {
+    description?: string;
+    flag?: string;
+    logo?: string;
+  };
+  const items: SelectItem<CustomData>[] = [{
+    customRendererData: {
+      flag: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg'
+    },
+    label: 'EU providers',
+    options: [{
+      customRendererData: {
+        description: 'OVH, legally OVH Groupe SA, is a French cloud computing company which offers VPS, dedicated servers and other web services. As of 2016 OVH owned the world\'s largest data center in surface area. As of 2019, it was the largest hosting provider in Europe, and the third largest in the world based on physical servers.',
+        logo: 'https://ovh.github.io/manager/ovhcloud-logo.webp'
+      },
+      label: 'OVH Cloud',
+      value: 'ovh'
+    }]
+  }, {
+    customRendererData: {
+      flag: 'https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg'
+    },
+    label: 'US providers',
+    options: [{
+      customRendererData: {
+        description: 'Amazon Web Services, Inc. is a subsidiary of Amazon that provides on-demand cloud computing platforms and APIs to individuals, companies, and governments, on a metered, pay-as-you-go basis. Clients will often use this in combination with autoscaling.',
+        logo: 'https://cdn.icon-icons.com/icons2/2407/PNG/512/aws_icon_146074.png'
+      },
+      label: 'Amazon Web Services',
+      value: 'aws'
+    }, {
+      customRendererData: {
+        description: 'Microsoft Azure, often referred to as just Azure, is a cloud computing platform developed by Microsoft. It offers management, access and development of applications and services through its global infrastructure.',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/2048px-Microsoft_Azure.svg.png'
+      },
+      label: 'Microsoft Azure',
+      value: 'azure'
+    }, {
+      customRendererData: {
+        description: 'Google Cloud Platform, offered by Google, is a suite of cloud computing services that provides a series of modular cloud services including computing, data storage, data analytics, and machine learning, alongside a set of management tools.',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Google-cloud-platform.svg'
+      },
+      label: 'Google Cloud Platform',
+      value: 'gcp'
+    }]
+  }];
+  return <Select items={items} multiple>
+      <SelectControl customItemRenderer={({
+      selectedItems    }) => <span style={{
+      display: 'flex',
+      flexFlow: 'row',
+      gap: '8px',
+      flexWrap: 'wrap'
+    }}>
+        {selectedItems.map((item, idx) => <span style={{
+        display: 'flex',
+        flexFlow: 'row',
+        gap: '4px',
+        alignItems: 'center'
+      }} key={item.value}>
+              <img alt={item.label} height={15} src={item.customRendererData?.logo} width={15} />
+              <span>{item.label}{idx < selectedItems.length - 1 && ', '}</span>
+            </span>)}
+      </span>} />
+      <SelectContent customGroupRenderer={({
+      customData,
+      label    }) => <div style={{
+      display: 'flex',
+      flexFlow: 'row',
+      columnGap: '8px',
+      alignItems: 'center'
+    }}>
+            <img alt="flag" height={20} src={customData?.flag} width={30} />
+            <span>{label}</span>
+          </div>} customOptionRenderer={({
+      customData,
+      label    }) => <div style={{
+      display: 'flex',
+      flexFlow: 'row',
+      columnGap: '8px',
+      alignItems: 'center',
+      padding: '8px 0'
+    }}>
+            <img alt={label} height={50} src={customData?.logo} width={50} />
+            <div style={{
+        display: 'flex',
+        flexFlow: 'column',
+        rowGap: '8px'
+      }}>
+              <span style={{
+          fontWeight: 'bold'
+        }}>{label}</span>
+              <span>{customData?.description}</span>
+            </div>
+          </div>} />
+    </Select>;
+}
+```
+
+### Form field
+
+Select a Web hosting
+
+1 vCore 2,4 GHz, 2 Go RAM1 vCore 2,4 GHz, 4 Go RAM2 vCores 2,4 GHz, 8 Go RAM
+
+```jsx
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Select a Web hosting      </FormFieldLabel>
+      <Select items={[{
+      label: '1 vCore 2,4 GHz, 2 Go RAM',
+      value: 'hosting-1'
+    }, {
+      label: '1 vCore 2,4 GHz, 4 Go RAM',
+      value: 'hosting-2'
+    }, {
+      label: '2 vCores 2,4 GHz, 8 Go RAM',
+      value: 'hosting-3'
+    }]}>
+        <SelectControl />
+        <SelectContent />
+      </Select>
+    </FormField>
+}
+```
+
+## Recipes
+
+---
+
+Config Tile
+
+VPS 1
+
+4 vCore8 Go RAM100 Go 1 day automated backup Unlimited traffic 200 Mbps
+
+12 months6 monthsNo commitment
+
+From€24.46ex. VAT/monthor €13.19 incl. VAT/month
+
+Email Field
+
+Email- mandatory
+
+@
+
+.fr.com.dev
+
+The part before the email address (the text before the @) must follow these guidelines:
+
+-   It must end with a letter or a number
+-   Allowed special characters are: ".", "_", "-"
+-   Special characters cannot be placed next to each other
+
+Feature List Product Card
+
+WEB HOSTING
+
+NewBest seller
+
+Performance
+
+For demanding online stores and projects.
+
+1 vCore 2,4 GHz, 2 Go RAM1 vCore 2,4 GHz, 4 Go RAM2 vCores 2,4 GHz, 8 Go RAM
+
+From
+
+€24.46ex. VAT/month
+
+or €13.19 incl. VAT/monthfor a 24-month registration
+
+Minimum 2-year registration €100 free with a 5-year registration
+
+Installation fee:Free
+
+-   -   Unlimited websites
+        
+    -   High power level
+        
+    -   1 domain name free for the first
+        
+    -   500 GB SSD storage
+        
+    -   1,000 email addresses
+        
+-   1-click CMS
+    
+    -   WordPress
+        
+    -   Joomla!
+        
+    -   Drupal
+        
+    -   Prestashop
+        
+-   Database
+    
+    -   4 x 1 GB databases
+        
+    -   8 GB Web Cloud Databases
+        
+-   Security
+    
+    -   Unlimited free SSL
+        
+    -   Anti-DDoS protection
+        
+    -   Anti-virus and anti-spam
+        
+    -   Daily backups
+        
+-   Performance
+    
+    -   99.9% observed availability
+        
+    -   Guaranteed resources
+        
+    -   Unlimited traffic
+        
+    -   Service continuity
+        
+    -   Boost option to withstand temporary traffic spikes
+        
+-   Support and additional services
+    
+    -   Git
+        
+    -   Standard support
+        
+    -   SSH access
+        
+    -   CDN Basic

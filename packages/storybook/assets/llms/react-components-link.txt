@@ -1,0 +1,183 @@
+# React Components/Link
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `as` | `` | No |  | @default-value='a' Pass a component you may want to use as custom Link component. Useful for example when using routing library like react-router. |
+| `disabled` | `` | No | false | Whether the component is disabled. |
+
+
+## Examples
+
+
+### Accessibility File Download
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Link aria-label="Download WCAG20 Guidelines (PDF, 481 KB)" href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
+        <Icon name={ICON_NAME.download} />
+      </Link>
+
+      <Link href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
+        <Icon name={ICON_NAME.download} />
+
+        <span>Download WCAG20 Guidelines (PDF, 481 KB)</span>
+      </Link>
+    </>
+}
+```
+
+### Accessibility Icon Only Link
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Link aria-label="Go to homepage" href="https://www.ovhcloud.com">
+      <Icon name={ICON_NAME.home} />
+    </Link>
+}
+```
+
+### Accessibility In A New Tab
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Link aria-label="Visit Example (opens in a new tab)" href="https://www.ovhcloud.com" target="_blank">
+      <Icon name={ICON_NAME.externalLink} />
+    </Link>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Link } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Link href="https://www.ovhcloud.com">
+      Default Link
+    </Link>
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    children: {
+      table: {
+        category: CONTROL_CATEGORY.slot
+      },
+      control: 'text'
+    },
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    }
+  }),
+  args: {
+    // @ts-ignore check when time to do so
+    children: 'My link'
+  }
+}
+```
+
+### Disabled
+
+```tsx
+{
+  globals: {
+    imports: `import { Link } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Link disabled href="https://www.ovhcloud.com">
+      Disabled
+    </Link>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Link href="https://www.ovhcloud.com" target="_blank">
+      Link
+    </Link>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>
+      <Link href="https://www.ovhcloud.com">Default Link</Link>
+      <Link disabled href="https://www.ovhcloud.com">Disabled</Link>
+      <Link href="https://www.ovhcloud.com"><Icon name={ICON_NAME.arrowLeft} />Icon Left</Link>
+      <Link href="https://www.ovhcloud.com" style={{
+      justifySelf: 'right'
+    }}>Icon Right<Icon name={ICON_NAME.arrowRight} /></Link>
+    </div>
+}
+```
+
+### With Icon
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Link href="https://www.ovhcloud.com">
+        <Icon name={ICON_NAME.arrowLeft} />Icon Link
+      </Link>
+
+      <Link href="https://www.ovhcloud.com" style={{
+      justifySelf: 'right'
+    }}>
+        Icon Link<Icon name={ICON_NAME.arrowRight} />
+      </Link>
+    </>
+}
+```

@@ -1,0 +1,411 @@
+React Components
+
+# Tabs
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Tabs**
+2.  **Tab List**
+3.  **Tab**
+4.  **Tab Content**
+
+## Tabs
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| defaultValue | `string` | - | `undefined` | The initial value of the selected tab. Use when you don't need to control the value of the tabs. |
+| onValueChange | `(event: TabsValueChangeEvent) => void` | - | `undefined` | Callback fired when the state of selected tab changes. |
+| size | `TABS_SIZE` | - | `TABS_SIZE.md` | The size preset to use. |
+| value | `string` | - | `undefined` | The controlled value of the selected tab. |
+| variant | `TABS_VARIANT` | - | `TABS_VARIANT.default` | The variant preset to use. |
+| withArrows | `boolean` | - | `undefined` | Whether the component displays navigation arrows around the tabs. |
+
+## TabList
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## Tab
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| value | `string` |  | `undefined` | The value of the tab item. |
+
+## TabContent
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| value | `string` |  | `undefined` | The value of the tab content item. |
+
+## Enums
+
+---
+
+### TABS_SIZE
+
+-   md =`"md"`
+-   sm =`"sm"`
+-   xs =`"xs"`
+
+### TABS_VARIANT
+
+-   default =`"default"`
+-   switch =`"switch"`
+
+## Interfaces
+
+---
+
+### TabsValueChangeEvent
+
+-   `value: string`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-tab-background-color-hover | var(--ods-color-neutral-050) | 
+ |
+| --ods-tab-background-color-selected-disabled-switch | var(--ods-color-neutral-500) | 
+
+ |
+| --ods-tab-background-color-selected-switch | var(--ods-color-neutral-000) | 
+
+ |
+| --ods-tab-border-color | var(--ods-tab-list-border-color) | 
+
+ |
+| --ods-tab-border-color-disabled | var(--ods-color-neutral-100) | 
+
+ |
+| --ods-tab-border-color-hover | var(--ods-color-neutral-050) | 
+
+ |
+| --ods-tab-border-color-selected | var(--ods-color-primary-500) | 
+
+ |
+| --ods-tab-border-color-selected-disabled | var(--ods-color-neutral-500) | 
+
+ |
+| --ods-tab-border-color-selected-disabled-switch | var(--ods-color-neutral-000) | 
+
+ |
+| --ods-tab-border-radius-md | var(--ods-theme-border-radius) | 
+
+ |
+| --ods-tab-border-radius-sm | calc(var(--ods-theme-border-radius) / 2) | 
+
+ |
+| --ods-tab-border-radius-xs | calc(var(--ods-theme-border-radius) / 4) | 
+
+ |
+| --ods-tab-list-background-color-switch | var(--ods-color-neutral-050) | 
+
+ |
+| --ods-tab-list-border-color | var(--ods-color-neutral-100) | 
+
+ |
+| --ods-tab-list-border-radius-switch-md | calc(var(--ods-theme-border-radius) * 1.25) | 
+
+ |
+| --ods-tab-list-border-radius-switch-sm | calc(var(--ods-theme-border-radius) * 0.75) | 
+
+ |
+| --ods-tab-list-border-radius-switch-xs | calc(var(--ods-theme-border-radius) / 2) | 
+
+ |
+| --ods-tab-list-border-width | 2px | 
+
+ |
+| --ods-tab-margin-horizontal-switch-md | calc(var(--ods-theme-padding-horizontal) / 2) | 
+
+ |
+| --ods-tab-margin-horizontal-switch-sm | calc(var(--ods-theme-padding-horizontal) / 2) | 
+
+ |
+| --ods-tab-margin-horizontal-switch-xs | calc(var(--ods-theme-padding-horizontal) / 4) | 
+
+ |
+| --ods-tab-margin-vertical-switch-md | calc(var(--ods-theme-padding-vertical) / 2) | 
+
+ |
+| --ods-tab-margin-vertical-switch-sm | calc(var(--ods-theme-padding-vertical) / 2) | 
+
+ |
+| --ods-tab-margin-vertical-switch-xs | calc(var(--ods-theme-padding-vertical) / 4) | 
+
+ |
+| --ods-tab-padding-horizontal-md | calc(var(--ods-theme-padding-horizontal) * 1.5) | 
+
+ |
+| --ods-tab-padding-horizontal-sm | var(--ods-theme-padding-horizontal) | 
+
+ |
+| --ods-tab-padding-horizontal-xs | calc(var(--ods-theme-padding-horizontal) * 0.75) | 
+
+ |
+| --ods-tab-padding-vertical-md | var(--ods-theme-padding-horizontal) | 
+
+ |
+| --ods-tab-padding-vertical-sm | calc(var(--ods-theme-padding-horizontal) * 0.75) | 
+
+ |
+| --ods-tab-padding-vertical-xs | calc(var(--ods-theme-padding-horizontal) / 2) | 
+
+ |
+| --ods-tab-text-color-hover | var(--ods-color-primary-500) | 
+
+ |
+| --ods-tab-text-color-selected | var(--ods-color-primary-500) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+{
+  globals: {
+    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tabs defaultValue="tab1">
+      <TabList>
+        <Tab value="tab1">Tab 1</Tab>
+        <Tab value="tab2">Tab 2</Tab>
+        <Tab value="tab3">Tab 3</Tab>
+      </TabList>
+    </Tabs>
+}
+```
+
+### Variant
+
+```jsx
+<Tabs
+  defaultValue="tab1"
+  variant="switch"
+>
+  <TabList>
+    <Tab value="tab1">
+      Tab 1    </Tab>
+    <Tab value="tab2">
+      Tab 2    </Tab>
+    <Tab value="tab3">
+      Tab 3    </Tab>
+  </TabList>
+</Tabs>
+```
+
+### Size
+
+MD
+
+SM
+
+XS
+
+```jsx
+<>
+  <p>
+    MD  </p>
+  <Tabs
+    defaultValue="tab1"
+    size="md"
+    variant="switch"
+  >
+    <TabList>
+      <Tab value="tab1">
+        Tab 1      </Tab>
+      <Tab value="tab2">
+        Tab 2      </Tab>
+      <Tab value="tab3">
+        Tab 3      </Tab>
+    </TabList>
+  </Tabs>
+  <p>
+    SM  </p>
+  <Tabs
+    defaultValue="tab1"
+    size="sm"
+    variant="switch"
+  >
+    <TabList>
+      <Tab value="tab1">
+        Tab 1      </Tab>
+      <Tab value="tab2">
+        Tab 2      </Tab>
+      <Tab value="tab3">
+        Tab 3      </Tab>
+    </TabList>
+  </Tabs>
+  <p>
+    XS  </p>
+  <Tabs
+    defaultValue="tab1"
+    size="xs"
+    variant="switch"
+  >
+    <TabList>
+      <Tab value="tab1">
+        Tab 1      </Tab>
+      <Tab value="tab2">
+        Tab 2      </Tab>
+      <Tab value="tab3">
+        Tab 3      </Tab>
+    </TabList>
+  </Tabs>
+</>
+```
+
+### Disabled tab
+
+```jsx
+<Tabs defaultValue="tab1">
+  <TabList>
+    <Tab value="tab1">
+      Tab 1    </Tab>
+    <Tab
+      disabled
+      value="tab2"
+    >
+      Tab 2    </Tab>
+    <Tab value="tab3">
+      Tab 3    </Tab>
+  </TabList>
+</Tabs>
+```
+
+### Horizontal overflow
+
+```jsx
+{
+  globals: {
+    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    width: '300px'
+  }}>
+      <Tabs defaultValue="tab1">
+        <TabList>
+          <Tab value="tab1">Tab 1</Tab>
+          <Tab value="tab2">Tab 2</Tab>
+          <Tab value="tab3">Tab 3</Tab>
+          <Tab value="tab4">Tab 4</Tab>
+          <Tab value="tab5">Tab 5</Tab>
+          <Tab value="tab6">Tab 6</Tab>
+        </TabList>
+      </Tabs>
+    </div>
+}
+```
+
+### With content
+
+Content 1
+
+Content 2
+
+Content 3
+
+```jsx
+<Tabs defaultValue="tab1">
+  <TabList>
+    <Tab value="tab1">
+      Tab 1    </Tab>
+    <Tab value="tab2">
+      Tab 2    </Tab>
+    <Tab value="tab3">
+      Tab 3    </Tab>
+  </TabList>
+  <TabContent value="tab1">
+    <p>
+      Content 1    </p>
+  </TabContent>
+  <TabContent value="tab2">
+    <p>
+      Content 2    </p>
+  </TabContent>
+  <TabContent value="tab3">
+    <p>
+      Content 3    </p>
+  </TabContent>
+</Tabs>
+```
+
+### Controlled
+
+```jsx
+const [value, setValue] = useState('tab1');
+  const handleValueChange = (event: TabsValueChangeEvent) => {
+    setValue(event.value);
+  };
+  return <Tabs onValueChange={handleValueChange} value={value}>
+      <TabList>
+        <Tab value="tab1">Tab 1</Tab>
+        <Tab value="tab2">Tab 2</Tab>
+        <Tab value="tab3">Tab 3</Tab>
+      </TabList>
+    </Tabs>;
+}
+```
+
+### With arrows
+
+```jsx
+{
+  globals: {
+    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tabs defaultValue="tab1" withArrows>
+      <TabList>
+        <Tab value="tab1">Tab 1</Tab>
+        <Tab value="tab2">Tab 2</Tab>
+        <Tab value="tab3">Tab 3</Tab>
+        <Tab value="tab4">Tab 4</Tab>
+        <Tab value="tab5">Tab 5</Tab>
+        <Tab value="tab6">Tab 6</Tab>
+        <Tab value="tab7">Tab 7</Tab>
+        <Tab value="tab8">Tab 8</Tab>
+        <Tab value="tab9">Tab 9</Tab>
+        <Tab value="tab10">Tab 10</Tab>
+        <Tab value="tab11">Tab 11</Tab>
+        <Tab value="tab12">Tab 12</Tab>
+        <Tab value="tab13">Tab 13</Tab>
+        <Tab value="tab14">Tab 14</Tab>
+        <Tab value="tab15">Tab 15</Tab>
+      </TabList>
+    </Tabs>
+}
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

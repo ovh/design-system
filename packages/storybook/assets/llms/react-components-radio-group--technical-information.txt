@@ -1,0 +1,271 @@
+React Components
+
+# Radio Group
+
+## Overview
+
+---
+
+HTML
+
+CSS
+
+JavaScript
+
+## Anatomy
+
+---
+
+1.  **Radio Group**
+2.  **Radio**
+3.  **Radio Control**
+4.  **Radio Label**
+
+## RadioGroup
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| defaultValue | `string` | - | `undefined` | The initial value of the checked radio. Use when you don't need to control the value of the radio group. |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| onValueChange | `(detail: RadioValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
+| orientation | `'horizontal' | 'vertical'` | - | `undefined` | The orientation of the radio group. |
+| value | `string` | - | `undefined` | The controlled value of the radio group. |
+
+## Radio
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [label attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes) . |
+| disabled | `boolean` | - | `undefined` | Whether the radio is disabled. |
+| invalid | `boolean` | - | `undefined` | Whether the radio is in error state. |
+| required | `boolean` | - | `undefined` | Whether the radio is required. |
+| value | `string` |  | `undefined` | The value of the radio. |
+
+## RadioControl
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## RadioLabel
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+
+## Interfaces
+
+---
+
+### RadioValueChangeDetail
+
+-   `value: string | null`
+
+## Examples
+
+---
+
+### Default
+
+HTML
+
+CSS
+
+JavaScript
+
+```jsx
+<RadioGroup>
+  <Radio value="html">
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio value="css">
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+### Disabled
+
+HTML
+
+CSS
+
+JavaScript
+
+```jsx
+<RadioGroup disabled>
+  <Radio value="html">
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio value="css">
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+HTML
+
+CSS
+
+JavaScript
+
+```jsx
+<RadioGroup>
+  <Radio value="html">
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio
+    disabled
+    value="css"
+  >
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+### Invalid
+
+HTML
+
+CSS
+
+JavaScript
+
+```jsx
+<RadioGroup defaultValue="html">
+  <Radio
+    invalid
+    value="html"
+  >
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio
+    invalid
+    value="css"
+  >
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+### Orientation
+
+HTML
+
+CSS
+
+JavaScript
+
+```jsx
+<RadioGroup orientation="horizontal">
+  <Radio value="html">
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio value="css">
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+### Form field
+
+Pick a language:
+
+HTML
+
+CSS
+
+JavaScript
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Pick a language:  </FormFieldLabel>
+  <RadioGroup>
+    <Radio value="html">
+      <RadioControl />
+      <RadioLabel>
+        HTML      </RadioLabel>
+    </Radio>
+    <Radio value="css">
+      <RadioControl />
+      <RadioLabel>
+        CSS      </RadioLabel>
+    </Radio>
+    <Radio value="js">
+      <RadioControl />
+      <RadioLabel>
+        JavaScript      </RadioLabel>
+    </Radio>
+  </RadioGroup>
+</FormField>
+```
+
+## Recipes
+
+---
+
+Config Tile
+
+VPS 1
+
+4 vCore8 Go RAM100 Go 1 day automated backup Unlimited traffic 200 Mbps
+
+12 months6 monthsNo commitment
+
+From€24.46ex. VAT/monthor €13.19 incl. VAT/month

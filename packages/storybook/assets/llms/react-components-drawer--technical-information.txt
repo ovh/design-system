@@ -1,0 +1,227 @@
+React Components
+
+# Drawer
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Drawer**
+2.  **Drawer Content**
+3.  **Drawer Body**
+4.  **Drawer Trigger**
+
+## Drawer
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| closeOnEscape | `boolean` | - | `true` | Whether to close the drawer when the escape key is pressed. |
+| closeOnInteractOutside | `boolean` | - | `false` | Whether to close the drawer when the outside is clicked. |
+| defaultOpen | `boolean` | - | `undefined` | The initial open state of the drawer. Use when you don't need to control the open state of the drawer. |
+| onOpenChange | `(detail: DrawerOpenChangeDetail) => void` | - | `undefined` | Callback fired when the drawer open state changes. |
+| open | `boolean` | - | `undefined` | The controlled open state of the drawer. |
+| positionerStyle | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. |
+
+## DrawerBody
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## DrawerContent
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| createPortal | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
+| position | `DRAWER_POSITION` | - | `DRAWER_POSITION.left` | The drawer position in the screen. |
+
+## DrawerTrigger
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## Enums
+
+---
+
+### DRAWER_POSITION
+
+-   bottom =`"bottom"`
+-   left =`"left"`
+-   right =`"right"`
+-   top =`"top"`
+
+## Interfaces
+
+---
+
+### DrawerOpenChangeDetail
+
+-   `open: boolean`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-drawer-padding-horizontal | calc(var(--ods-theme-padding-horizontal) * 2) | 
+ |
+| --ods-drawer-padding-vertical | calc(var(--ods-theme-padding-vertical) * 2) | 
+
+ |
+| --ods-drawer-z-index | calc(calc(var(--ods-theme-overlay-z-index) + 1) + 1) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer    </Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerBody>
+      My drawer content    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
+### Position
+
+```jsx
+<>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Top drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="top">
+      <DrawerBody>
+        Top drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Left drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="left">
+      <DrawerBody>
+        Left drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Right Drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="right">
+      <DrawerBody>
+        Right drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Bottom Drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="bottom">
+      <DrawerBody>
+        Bottom drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+</>
+```
+
+### Overlay Elements
+
+```jsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer    </Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerBody
+      style={{
+        alignItems: 'center',
+        columnGap: '8px',
+        display: 'grid',
+        gridTemplateColumns: '1fr max-content'
+      }}
+    >
+      <Select
+        items={[
+          {
+            label: 'Dog',
+            value: 'dog'
+          },
+          {
+            label: 'Cat',
+            value: 'cat'
+          },
+          {
+            label: 'Hamster',
+            value: 'hamster'
+          },
+          {
+            label: 'Parrot',
+            value: 'parrot'
+          },
+          {
+            label: 'Spider',
+            value: 'spider'
+          },
+          {
+            label: 'Goldfish',
+            value: 'goldfish'
+          }
+        ]}
+      >
+        <SelectControl />
+        <SelectContent />
+      </Select>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon
+            name="circle-question"
+            style={{
+              fontSize: '24px'
+            }}
+          />
+        </TooltipTrigger>
+        <TooltipContent>
+          This is the tooltip content        </TooltipContent>
+      </Tooltip>
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

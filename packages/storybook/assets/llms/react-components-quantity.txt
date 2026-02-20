@@ -1,0 +1,298 @@
+# React Components/Quantity
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `defaultValue` | `` | No |  | The initial quantity value. Use when you don't need to control the value of the quantity. |
+| `disabled` | `` | No |  | Whether the component is disabled. |
+| `invalid` | `` | No |  | Whether the component is in error state. |
+| `max` | `` | No |  | The maximum quantity that can be selected. |
+| `min` | `` | No |  | The minimum quantity that can be selected. |
+| `name` | `` | No |  | The name of the form element. Useful for form submission. |
+| `onValueChange` | `` | No |  | Callback fired when the value changes. |
+| `readOnly` | `` | No |  | Whether the component is readonly. |
+| `required` | `` | No |  | Whether the component is required. |
+| `step` | `` | No |  | The amount to increment or decrement the value by. |
+| `value` | `` | No |  | The controlled quantity value. |
+
+
+## Subcomponents
+
+
+### QuantityControl
+
+
+
+
+### QuantityInput
+
+
+
+## Examples
+
+
+### Accessibility Label
+
+```tsx
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Number of CPUs:
+      </FormFieldLabel>
+
+      <Quantity max={10} min={0}>
+        <QuantityControl>
+          <QuantityInput />
+        </QuantityControl>
+      </Quantity>
+    </FormField>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Quantity>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+}
+```
+
+### Demo
+
+```tsx
+{
+  render: (arg: DemoArg) => <Quantity disabled={arg.disabled} invalid={arg.invalid} max={arg.max} min={arg.min} readOnly={arg.readOnly} step={arg.step}>
+      <QuantityControl>
+        <QuantityInput placeholder={arg.placeholder} />
+      </QuantityControl>
+    </Quantity>,
+  argTypes: orderControls({
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+    invalid: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    max: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: {
+        type: 'number'
+      }
+    },
+    min: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: {
+        type: 'number'
+      }
+    },
+    placeholder: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'string'
+        }
+      },
+      control: 'text'
+    },
+    readOnly: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    step: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: {
+        type: 'number'
+      }
+    }
+  })
+}
+```
+
+### Disabled
+
+```tsx
+{
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Quantity disabled>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+}
+```
+
+### In Form Field
+
+```tsx
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Set a quantity:
+      </FormFieldLabel>
+
+      <Quantity>
+        <QuantityControl>
+          <QuantityInput />
+        </QuantityControl>
+      </Quantity>
+    </FormField>
+}
+```
+
+### Max
+
+```tsx
+{
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Quantity max={10}>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+}
+```
+
+### Min
+
+```tsx
+{
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Quantity min={0}>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Quantity defaultValue="0" min={0}>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+}
+```
+
+### Readonly
+
+```tsx
+{
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Quantity readOnly>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+}
+```
+
+### Step
+
+```tsx
+{
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Quantity step={10}>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    alignItems: 'flex-start'
+  }}>
+      <Quantity>
+        <QuantityControl>
+          <QuantityInput />
+        </QuantityControl>
+      </Quantity>
+
+      <Quantity disabled>
+        <QuantityControl>
+          <QuantityInput />
+        </QuantityControl>
+      </Quantity>
+
+      <Quantity readOnly>
+        <QuantityControl>
+          <QuantityInput defaultValue="3" />
+        </QuantityControl>
+      </Quantity>
+
+      <Quantity invalid>
+        <QuantityControl>
+          <QuantityInput />
+        </QuantityControl>
+      </Quantity>
+    </div>
+}
+```

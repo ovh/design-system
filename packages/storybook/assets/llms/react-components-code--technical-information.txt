@@ -1,0 +1,163 @@
+React Components
+
+# Code
+
+## Overview
+
+---
+
+```
+import { Text } from '@ovhcloud/ods-react';
+```
+
+## Anatomy
+
+---
+
+1.  **Code**
+
+## Code
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| canCopy | `boolean` | - | `false` | Whether the copy button is displayed. |
+| children | `string` |  | `undefined` | The code to display. |
+| highlighter | `{ language: LanguageRegistration[], theme: ThemeRegistrationAny }` | - | `{}` | Configuration of a specific code highlighter (see beneath for more details). |
+| labelCopy | `string` | - | `undefined` | The initial tooltip label on copy button. |
+| labelCopySuccess | `string` | - | `undefined` | The tooltip label on copy button after a successful copy. |
+| onCopy | `() => void` | - | `undefined` | Callback fired when the text is copied. |
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-code-border-radius | calc(var(--ods-theme-border-radius) / 2) | 
+ |
+| --ods-code-primary-color | #fff | 
+
+ |
+| --ods-code-secondary-color | #000 | 
+
+ |
+| --ods-code-trigger-background-color | #fff | 
+
+ |
+| --ods-code-trigger-background-color-active | var(--ods-color-neutral-700) | 
+
+ |
+| --ods-code-trigger-background-color-hover | var(--ods-color-neutral-600) | 
+
+ |
+| --ods-code-trigger-outline-color | #fff | 
+
+ |
+
+## Setup custom highlighter
+
+---
+
+By default, `Code` provides the lightest bundle needed to display your code. But you may want to use some highlighter to provide a better visual to your end-users.
+
+`Code` does support all [Shiki v3](https://shiki.style/) languages and themes.
+
+You can test all languages and themes in the [Shiki playground](https://textmate-grammars-themes.netlify.app/) .
+
+To setup an highlighter:
+
+-   pick a [language](https://shiki.style/languages) and a [theme](https://shiki.style/themes) .
+-   include both on your app side.
+-   pass them to the `Code component`.
+
+```typescript
+import { Code } from '@ovhcloud/ods-react';
+import lang from '@shikijs/langs/typescript';
+import theme from '@shikijs/themes/nord';
+const HighlightedCode = () => (
+  <Code
+    highlighter={{
+      language: lang,
+      theme: theme,
+    }}>
+    console.log('Hello World');
+  </Code>
+);
+```
+
+```
+console.log('Hello World');
+```
+
+## Examples
+
+---
+
+### Default
+
+```
+console.log('Hello world');
+```
+
+```jsx
+<Code>
+  console.log('Hello world');
+</Code>
+```
+
+### Multiline
+
+```
+function isTargetInElement(event, element) {
+  if (!element) {
+    return false;
+  }
+
+    return element.contains(event.target) || event.composedPath().includes(element);
+  }
+```
+
+```jsx
+<Code>
+  {`function isTargetInElement(event, element) {
+    if (!element) {      return false;    }  
+      return element.contains(event.target) || event.composedPath().includes(element);    }`}
+</Code>
+```
+
+### With copy button enabled
+
+```
+import { Text } from '@ovhcloud/ods-react';
+```
+
+```jsx
+<Code canCopy>
+  {`import { Text } from '@ovhcloud/ods-react';`}
+</Code>
+```
+
+### Custom labels
+
+```
+console.log('Hello world');
+```
+
+```jsx
+<Code
+  canCopy
+  labelCopy="Click to copy"
+  labelCopySuccess="Successfully copied"
+>
+  console.log('Hello world');
+</Code>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

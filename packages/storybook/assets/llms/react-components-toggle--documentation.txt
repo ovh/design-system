@@ -1,0 +1,134 @@
+React Components
+
+# Toggle
+
+## Overview
+
+---
+
+The **Toggle** component is used to enable or disable a state, setting or feature.
+
+It provides a clear visual indication of the current state and allows users to change states with a single click or tap.
+
+**Toggles** are commonly used in settings, preferences, and forms where a binary choice is required.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Toggle</td></tr><tr><th scope="row">Also known as</th><td>Toggle Switch, Switch</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=53-15319" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/toggle" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-toggle--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+A **Toggle** is commonly used for binary choice.
+
+The user can decide to switch between two states with an immediate effect visible at a glance.
+
+It can be used in following use cases when you need to allow the user to:
+
+-   turn an option or settings on or off
+-   add or remove an item or an option
+
+A **Toggle** should never require users to press a button to apply their settings (if a setting requires a button, use a checkbox instead).
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Toggle to switch between two states when the change has an immediate effect (e.g., turning a setting on or off) |
+| - Ensure the Toggle label clearly describes the "on" state, so users understand what enabling it will do |
+| - Place any related elements (e.g., changes triggered by the Toggle) close to the Toggle to reinforce the connection visually |
+| - Use Toggle in mobile-friendly settings where quick, touch-based interactions are expected |
+| - Use Toggle in forms only when the change takes effect immediately and does not require submission to apply |
+
+| ❌ Don't |
+| --- |
+| - Don't use a Toggle for changes that only take effect after form submission. Use a Checkbox instead |
+| - Don't use ambiguous or overly long labels |
+| - Don't use Toggle for multi-state or complex options since it is meant for binary (on/off) interactions only |
+
+### Best Practices in Context
+
+1.  **Toggle**
+2.  **Handle**
+3.  **Track**
+4.  **State label** - optional
+
+## Placement
+
+---
+
+Place the **Toggle** component near the setting or feature it controls.
+
+It should be positioned within forms, settings panels, or any relevant context where a binary choice is required.
+
+Ensure it is easily accessible and visible.
+
+## Behavior
+
+---
+
+When the user clicks on a **Toggle**, it has an immediate effect:
+
+-   set to "on" position, the thumb will slide to the right of the track
+-   set to "off" position, the thumb will slide to the left of the track
+
+## Navigation
+
+---
+
+### Focus Management
+
+When the **Toggle** component is focused, focus is automatically set to the **Toggle** itself.
+
+A disabled **Toggle** cannot receive focus and cannot be toggled.
+
+### General Keyboard Shortcuts
+
+Pressing Tab moves focus to the **Toggle** component.
+
+Pressing Shift + Tab moves focus backward to the previous focusable element.
+
+When focused, pressing Space or Enter immediately changes the **Toggle**'s state from on to off or off to on.
+
+## Accessibility
+
+---
+
+This component complies with the [Checkbox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox) .
+
+### Always provide an explicit label
+
+Every **Toggle** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either a **ToggleLabel** or an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) for context.
+
+```jsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle>
+      <ToggleControl />
+      <ToggleLabel>
+        Enable dark mode      </ToggleLabel>
+    </Toggle>
+}
+```
+
+Screen readers will announce a checkbox, its state and the label.
+
+Dark mode
+
+```jsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle aria-label="Enable dark mode">
+      <ToggleControl />
+      <ToggleLabel>
+        Dark mode      </ToggleLabel>
+    </Toggle>
+}
+```
+
+Screen readers will announce a checkbox, its state and the label.

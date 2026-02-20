@@ -1,0 +1,48 @@
+React Components
+
+# Skeleton
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Skeleton**
+
+## Skeleton
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes) . |
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-skeleton-background-color | var(--ods-color-neutral-050) | 
+ |
+| --ods-skeleton-background-color-image | linear-gradient(-90deg, var(--ods-skeleton-background-color), var(--ods-skeleton-transition-background-color) 46%, var(--ods-skeleton-transition-background-color) 61%, var(--ods-skeleton-background-color)) | 
+
+ |
+| --ods-skeleton-transition-background-color | var(--ods-color-neutral-100) | 
+
+ |
+
+### Default
+
+```jsx
+<Skeleton />
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

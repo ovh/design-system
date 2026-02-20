@@ -1,0 +1,309 @@
+React Components
+
+# Popover
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Popover**
+2.  **Popover Content**
+3.  **Popover trigger**
+
+## Popover
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| autoFocus | `boolean` | - | `undefined` | Whether to automatically set focus on the first focusable content within the popover when opened. |
+| gutter | `number` | - | `undefined` | The main axis offset or gap between the reference and floating elements |
+| onOpenChange | `(detail: PopoverOpenChangeDetail) => void` | - | `undefined` | Callback fired when the popover open state changes. |
+| onPositionChange | `(detail: PopoverPositionChangeDetail) => void` | - | `undefined` | Callback fired when the popover position changes. |
+| open | `boolean` | - | `undefined` | The controlled open state of the popover. |
+| position | `POPOVER_POSITION` | - | `undefined` | The popover position around the trigger. |
+| positionerStyle | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+| sameWidth | `boolean` | - | `undefined` | Whether to make the floating element same width as the reference element. |
+| triggerId | `string` | - | `undefined` | ID of an external trigger element to use in place of the PopoverTrigger component. |
+
+## PopoverContent
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| createPortal | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
+| withArrow | `boolean` | - | `false` | Whether the component displays an arrow pointing to the trigger. |
+
+## PopoverTrigger
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## Enums
+
+---
+
+### POPOVER_POSITION
+
+-   bottom =`"bottom"`
+-   bottomEnd =`"bottom-end"`
+-   bottomStart =`"bottom-start"`
+-   left =`"left"`
+-   leftEnd =`"left-end"`
+-   leftStart =`"left-start"`
+-   right =`"right"`
+-   rightEnd =`"right-end"`
+-   rightStart =`"right-start"`
+-   top =`"top"`
+-   topEnd =`"top-end"`
+-   topStart =`"top-start"`
+
+## Interfaces
+
+---
+
+### PopoverOpenChangeDetail
+
+-   `open: boolean`
+
+### PopoverPositionChangeDetail
+
+-   `position: POPOVER_POSITION`
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+{
+  globals: {
+    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Popover>
+      <PopoverTrigger>
+        Show popover      </PopoverTrigger>
+      <PopoverContent>
+        This is the popover content      </PopoverContent>
+    </Popover>
+}
+```
+
+### Custom Trigger
+
+```jsx
+<Popover>
+  <PopoverTrigger asChild>
+    <Button>
+      Custom Trigger    </Button>
+  </PopoverTrigger>
+  <PopoverContent>
+    This is the popover content  </PopoverContent>
+</Popover>
+```
+
+### Controlled
+
+```jsx
+const [isOpen, setIsOpen] = useState(false);
+  function togglePopover() {
+    setIsOpen(isOpen => !isOpen);
+  }
+  return <>
+      <Button onClick={togglePopover}>
+        Toggle popover      </Button>
+      <Popover open={isOpen}>
+        <PopoverTrigger asChild>
+          <Icon name={ICON_NAME.cog} />
+        </PopoverTrigger>
+        <PopoverContent withArrow>
+          This is the popover content        </PopoverContent>
+      </Popover>
+    </>;
+}
+```
+
+### Use Trigger Width
+
+```jsx
+<Popover sameWidth>
+  <PopoverTrigger>
+    Show popover that will take this width as reference  </PopoverTrigger>
+  <PopoverContent>
+    The popover content  </PopoverContent>
+</Popover>
+```
+
+### Grid
+
+```jsx
+<>
+  <Popover position="top-start">
+    <PopoverTrigger>
+      Top Left    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Top Left popover    </PopoverContent>
+  </Popover>
+  <Popover position="top">
+    <PopoverTrigger>
+      Top    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Top popover    </PopoverContent>
+  </Popover>
+  <Popover position="top-end">
+    <PopoverTrigger>
+      Top Right    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Top Right popover    </PopoverContent>
+  </Popover>
+  <Popover position="left">
+    <PopoverTrigger>
+      Middle Left    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Middle Left popover    </PopoverContent>
+  </Popover>
+  <div />
+  <Popover position="right">
+    <PopoverTrigger>
+      Middle Right    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Middle Right popover    </PopoverContent>
+  </Popover>
+  <Popover position="bottom-start">
+    <PopoverTrigger>
+      Bottom Left    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Bottom Left popover    </PopoverContent>
+  </Popover>
+  <Popover position="bottom">
+    <PopoverTrigger>
+      Bottom    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Bottom popover    </PopoverContent>
+  </Popover>
+  <Popover position="bottom-end">
+    <PopoverTrigger>
+      Bottom Right    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Bottom Right popover    </PopoverContent>
+  </Popover>
+</>
+```
+
+### Z index
+
+Default Z-axis order:  
+Custom Z-axis order:
+
+```jsx
+<>
+  <span>
+    Default Z-axis order:  </span>
+  <Popover open>
+    <PopoverTrigger asChild>
+      <Icon
+        name="circle-info"
+        style={{
+          fontSize: '24px'
+        }}
+      />
+    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Back    </PopoverContent>
+  </Popover>
+  <Popover open>
+    <PopoverTrigger asChild>
+      <Icon
+        name="circle-info"
+        style={{
+          fontSize: '24px'
+        }}
+      />
+    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Front    </PopoverContent>
+  </Popover>
+  <br />
+  <span>
+    Custom Z-axis order:  </span>
+  <Popover
+    open
+    position="bottom"
+    positionerStyle={{
+      zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'
+    }}
+  >
+    <PopoverTrigger asChild>
+      <Icon
+        name="circle-info"
+        style={{
+          fontSize: '24px'
+        }}
+      />
+    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Front    </PopoverContent>
+  </Popover>
+  <Popover
+    open
+    position="bottom"
+  >
+    <PopoverTrigger asChild>
+      <Icon
+        name="circle-info"
+        style={{
+          fontSize: '24px'
+        }}
+      />
+    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Back    </PopoverContent>
+  </Popover>
+</>
+```
+
+## Recipes
+
+---
+
+Dashboard Card
+
+#### Cluster Information
+
+---
+
+Name
+
+MyCluster
+
+---
+
+ID
+
+---
+
+Region
+
+GRA91-AZ
+
+---
+
+Admission plugins
+
+Always Pull Images PluginEnable
+
+Plugin Node RestrictionEnable
+
+---

@@ -1,0 +1,402 @@
+React Components
+
+# Icon
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Icon**
+
+## Icon
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+| name | `ICON_NAME` |  | `undefined` | The icon name. |
+
+## Enums
+
+---
+
+### ICON_NAME
+
+-   analysis =`"analysis"`
+-   arrowCrossed =`"arrow-crossed"`
+-   arrowDown =`"arrow-down"`
+-   arrowDownLeft =`"arrow-down-left"`
+-   arrowDownRight =`"arrow-down-right"`
+-   arrowLeft =`"arrow-left"`
+-   arrowLeftRight =`"arrow-left-right"`
+-   arrowRight =`"arrow-right"`
+-   arrowUp =`"arrow-up"`
+-   arrowUpDown =`"arrow-up-down"`
+-   arrowUpLeft =`"arrow-up-left"`
+-   arrowUpRight =`"arrow-up-right"`
+-   bell =`"bell"`
+-   bill =`"bill"`
+-   blog =`"blog"`
+-   book =`"book"`
+-   box =`"box"`
+-   building =`"building"`
+-   cable =`"cable"`
+-   calculator =`"calculator"`
+-   calendar =`"calendar"`
+-   castle =`"castle"`
+-   chainLink =`"chain-link"`
+-   check =`"check"`
+-   chevronDoubleLeft =`"chevron-double-left"`
+-   chevronDoubleRight =`"chevron-double-right"`
+-   chevronDown =`"chevron-down"`
+-   chevronLeft =`"chevron-left"`
+-   chevronLeftSlash =`"chevron-left-slash"`
+-   chevronLeftUnderscore =`"chevron-left-underscore"`
+-   chevronRight =`"chevron-right"`
+-   chevronUp =`"chevron-up"`
+-   circleCheck =`"circle-check"`
+-   circleCheckFull =`"circle-check-full"`
+-   circleInfo =`"circle-info"`
+-   circleInfoFull =`"circle-info-full"`
+-   circleQuestion =`"circle-question"`
+-   circleQuestionFull =`"circle-question-full"`
+-   circleThreeNodes =`"circle-three-nodes"`
+-   circleUser =`"circle-user"`
+-   circleXmark =`"circle-xmark"`
+-   circleXmarkFull =`"circle-xmark-full"`
+-   clockTimeFour =`"clock-time-four"`
+-   clockTimeNine =`"clock-time-nine"`
+-   clockTimeSix =`"clock-time-six"`
+-   clockTimeThree =`"clock-time-three"`
+-   clockTimeTwelve =`"clock-time-twelve"`
+-   cloud =`"cloud"`
+-   cloudCheck =`"cloud-check"`
+-   cloudDownload =`"cloud-download"`
+-   cloudLock =`"cloud-lock"`
+-   cloudUpload =`"cloud-upload"`
+-   cloudXmark =`"cloud-xmark"`
+-   cog =`"cog"`
+-   columns =`"columns"`
+-   comment =`"comment"`
+-   cpu =`"cpu"`
+-   creditCard =`"credit-card"`
+-   crown =`"crown"`
+-   dPad =`"d-pad"`
+-   diamondExclamation =`"diamond-exclamation"`
+-   diamondExclamationFull =`"diamond-exclamation-full"`
+-   diamondsFull =`"diamonds-full"`
+-   discord =`"discord"`
+-   disk =`"disk"`
+-   download =`"download"`
+-   dragDrop =`"drag-drop"`
+-   ellipsisHorizontal =`"ellipsis-horizontal"`
+-   ellipsisVertical =`"ellipsis-vertical"`
+-   email =`"email"`
+-   emoticon =`"emoticon"`
+-   emoticonDizzy =`"emoticon-dizzy"`
+-   emoticonNeutral =`"emoticon-neutral"`
+-   emoticonSad =`"emoticon-sad"`
+-   emoticonSmile =`"emoticon-smile"`
+-   emoticonWink =`"emoticon-wink"`
+-   equal =`"equal"`
+-   externalLink =`"external-link"`
+-   eye =`"eye"`
+-   eyeOff =`"eye-off"`
+-   facebook =`"facebook"`
+-   fiber =`"fiber"`
+-   file =`"file"`
+-   fileCopy =`"file-copy"`
+-   fileMinus =`"file-minus"`
+-   filePlus =`"file-plus"`
+-   filter =`"filter"`
+-   flame =`"flame"`
+-   flaskEmpty =`"flask-empty"`
+-   flaskFull =`"flask-full"`
+-   flaskHalf =`"flask-half"`
+-   floppy =`"floppy"`
+-   focus =`"focus"`
+-   folder =`"folder"`
+-   folderMinus =`"folder-minus"`
+-   folderPlus =`"folder-plus"`
+-   funnel =`"funnel"`
+-   gameConsole =`"game-console"`
+-   gameController =`"game-controller"`
+-   gameControllerAlt =`"game-controller-alt"`
+-   gathering =`"gathering"`
+-   gift =`"gift"`
+-   github =`"github"`
+-   globe =`"globe"`
+-   grid =`"grid"`
+-   gridAlt =`"grid-alt"`
+-   hamburgerMenu =`"hamburger-menu"`
+-   heart =`"heart"`
+-   heartFull =`"heart-full"`
+-   heartHalf =`"heart-half"`
+-   hexagonExclamation =`"hexagon-exclamation"`
+-   hexagonExclamationFull =`"hexagon-exclamation-full"`
+-   hierarchy =`"hierarchy"`
+-   history =`"history"`
+-   home =`"home"`
+-   key =`"key"`
+-   leaf =`"leaf"`
+-   lifeBuoy =`"lifebuoy"`
+-   lightbulb =`"lightbulb"`
+-   lightning =`"lightning"`
+-   linkedin =`"linkedin"`
+-   list =`"list"`
+-   location =`"location"`
+-   lockClose =`"lock-close"`
+-   lockOpen =`"lock-open"`
+-   magicWand =`"magic-wand"`
+-   magnifyingGlass =`"magnifying-glass"`
+-   meter =`"meter"`
+-   mic =`"mic"`
+-   micOff =`"mic-off"`
+-   minus =`"minus"`
+-   money =`"money"`
+-   moneyBagDefault =`"money-bag-default"`
+-   moneyBagDollar =`"money-bag-dollar"`
+-   moneyBagEuro =`"money-bag-euro"`
+-   monitor =`"monitor"`
+-   moon =`"moon"`
+-   network =`"network"`
+-   pen =`"pen"`
+-   percent =`"percent"`
+-   phone =`"phone"`
+-   piggyBank =`"piggy-bank"`
+-   pin =`"pin"`
+-   pinOff =`"pin-off"`
+-   plus =`"plus"`
+-   printer =`"printer"`
+-   question =`"question"`
+-   refresh =`"refresh"`
+-   resize =`"resize"`
+-   robot =`"robot"`
+-   server =`"server"`
+-   serverRack =`"server-rack"`
+-   shareNodes =`"share-nodes"`
+-   shareScreen =`"share-screen"`
+-   shield =`"shield"`
+-   shieldCheck =`"shield-check"`
+-   shieldExclamation =`"shield-exclamation"`
+-   shieldFirewall =`"shield-firewall"`
+-   shieldLock =`"shield-lock"`
+-   shieldMinus =`"shield-minus"`
+-   shieldOff =`"shield-off"`
+-   shieldPlus =`"shield-plus"`
+-   shieldXmark =`"shield-xmark"`
+-   shoppingCart =`"shopping-cart"`
+-   shoppingCartError =`"shopping-cart-error"`
+-   shoppingCartMinus =`"shopping-cart-minus"`
+-   shoppingCartPlus =`"shopping-cart-plus"`
+-   shoppingCartXmark =`"shopping-cart-xmark"`
+-   shrink =`"shrink"`
+-   shutdown =`"shutdown"`
+-   sortAlphaDown =`"sort-alpha-down"`
+-   sortAlphaUp =`"sort-alpha-up"`
+-   sortNumericDown =`"sort-numeric-down"`
+-   sortNumericUp =`"sort-numeric-up"`
+-   sparkle =`"sparkle"`
+-   splitHorizontal =`"split-horizontal"`
+-   splitVertical =`"split-vertical"`
+-   star =`"star"`
+-   starFull =`"star-full"`
+-   starHalf =`"star-half"`
+-   store =`"store"`
+-   sun =`"sun"`
+-   sync =`"sync"`
+-   tag =`"tag"`
+-   thumbsDown =`"thumbs-down"`
+-   thumbsUp =`"thumbs-up"`
+-   timer =`"timer"`
+-   trafficCone =`"traffic-cone"`
+-   trash =`"trash"`
+-   triangleExclamation =`"triangle-exclamation"`
+-   triangleExclamationFull =`"triangle-exclamation-full"`
+-   triangleThreeNodes =`"triangle-three-nodes"`
+-   truck =`"truck"`
+-   twitch =`"twitch"`
+-   undo =`"undo"`
+-   upload =`"upload"`
+-   user =`"user"`
+-   vault =`"vault"`
+-   x =`"x"`
+-   xmark =`"xmark"`
+-   youtube =`"youtube"`
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Icon name="home" />
+```
+
+### Decorative
+
+```jsx
+<Icon name="home" />
+```
+
+### Informative
+
+```jsx
+<Icon
+  aria-label="Help"
+  name="circle-question"
+  role="img"
+/>
+```
+
+## Recipes
+
+---
+
+Config Tile
+
+VPS 1
+
+4 vCore8 Go RAM100 Go 1 day automated backup Unlimited traffic 200 Mbps
+
+12 months6 monthsNo commitment
+
+From€24.46ex. VAT/monthor €13.19 incl. VAT/month
+
+Dashboard Card
+
+#### Cluster Information
+
+---
+
+Name
+
+MyCluster
+
+---
+
+ID
+
+---
+
+Region
+
+GRA91-AZ
+
+---
+
+Admission plugins
+
+Always Pull Images PluginEnable
+
+Plugin Node RestrictionEnable
+
+---
+
+Feature List
+
+-   Memory: up to 1.5 TB
+    
+-   SLA: 99.99%
+    
+-   Guaranteed public bandwidth from 5 Gbps to 25 Gbps
+    
+-   25 Gbps private bandwidth included
+    
+-   OVHcloud Link Aggregation
+    
+
+Feature List Product Card
+
+WEB HOSTING
+
+NewBest seller
+
+Performance
+
+For demanding online stores and projects.
+
+1 vCore 2,4 GHz, 2 Go RAM1 vCore 2,4 GHz, 4 Go RAM2 vCores 2,4 GHz, 8 Go RAM
+
+From
+
+€24.46ex. VAT/month
+
+or €13.19 incl. VAT/monthfor a 24-month registration
+
+Minimum 2-year registration €100 free with a 5-year registration
+
+Installation fee:Free
+
+-   -   Unlimited websites
+        
+    -   High power level
+        
+    -   1 domain name free for the first
+        
+    -   500 GB SSD storage
+        
+    -   1,000 email addresses
+        
+-   1-click CMS
+    
+    -   WordPress
+        
+    -   Joomla!
+        
+    -   Drupal
+        
+    -   Prestashop
+        
+-   Database
+    
+    -   4 x 1 GB databases
+        
+    -   8 GB Web Cloud Databases
+        
+-   Security
+    
+    -   Unlimited free SSL
+        
+    -   Anti-DDoS protection
+        
+    -   Anti-virus and anti-spam
+        
+    -   Daily backups
+        
+-   Performance
+    
+    -   99.9% observed availability
+        
+    -   Guaranteed resources
+        
+    -   Unlimited traffic
+        
+    -   Service continuity
+        
+    -   Boost option to withstand temporary traffic spikes
+        
+-   Support and additional services
+    
+    -   Git
+        
+    -   Standard support
+        
+    -   SSH access
+        
+    -   CDN Basic
+        
+
+Media Product Card
+
+AI Deploy
+
+Easily deploy machine learning models and applications into production, create your API access points with ease, and make effective predictions.
+
+Order Button

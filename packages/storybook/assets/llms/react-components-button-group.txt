@@ -1,0 +1,249 @@
+# React Components/Button Group
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `defaultValue` | `` | No |  | The initial value of the selected items. Use when you don't need to control the value of the component. |
+| `disabled` | `` | No |  | Whether the component is disabled. |
+| `multiple` | `` | No |  | Whether multiple items can be selected at the same time. |
+| `onValueChange` | `` | No |  | Callback fired when the selection changes. |
+| `size` | `` | No |  | The size preset to use. |
+| `value` | `` | No |  | The controlled value of the selected items. |
+
+
+## Subcomponents
+
+
+### ButtonGroupItem
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `disabled` | `` | No |  | Whether the component is disabled. |
+| `value` | `` | Yes |  | The value of the item. |
+
+
+## Examples
+
+
+### Controlled
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const [values, setValues] = useState(['hourly']);
+    return <ButtonGroup onValueChange={({
+      value
+    }) => setValues(value)} value={values}>
+        <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+        <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+        <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+        <ButtonGroupItem value="custom">
+          <Icon name={ICON_NAME.calendar} /> Custom
+        </ButtonGroupItem>
+      </ButtonGroup>;
+  }
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ButtonGroup>
+      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+      <ButtonGroupItem value="custom">
+        <Icon name={ICON_NAME.calendar} /> Custom
+      </ButtonGroupItem>
+    </ButtonGroup>
+}
+```
+
+### Demo
+
+```tsx
+{
+  render: arg => <ButtonGroup {...arg}>
+      <ButtonGroupItem value="1">Option 1</ButtonGroupItem>
+      <ButtonGroupItem value="2">Option 2</ButtonGroupItem>
+      <ButtonGroupItem value="3">Option 3</ButtonGroupItem>
+    </ButtonGroup>,
+  argTypes: orderControls({
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    multiple: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    size: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'BUTTON_GROUP_SIZE'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: BUTTON_GROUP_SIZES
+    }
+  })
+}
+```
+
+### Disabled
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ButtonGroup disabled>
+      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+      <ButtonGroupItem value="custom">
+        <Icon name={ICON_NAME.calendar} /> Custom
+      </ButtonGroupItem>
+    </ButtonGroup>
+}
+```
+
+### Disabled Item
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ButtonGroup>
+      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+      <ButtonGroupItem disabled value="custom">
+        <Icon name={ICON_NAME.calendar} /> Custom
+      </ButtonGroupItem>
+    </ButtonGroup>
+}
+```
+
+### Multiple
+
+```tsx
+{
+  globals: {
+    imports: `import { ButtonGroup, ButtonGroupItem } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ButtonGroup multiple>
+      <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
+      <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
+      <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
+      <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
+    </ButtonGroup>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <ButtonGroup>
+      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+      <ButtonGroupItem value="custom">
+        <Icon name={ICON_NAME.calendar} /> Custom
+      </ButtonGroupItem>
+    </ButtonGroup>
+}
+```
+
+### Size
+
+```tsx
+{
+  globals: {
+    imports: `import { BUTTON_GROUP_SIZE, ButtonGroup, ButtonGroupItem } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>MD</p>
+      <ButtonGroup size={BUTTON_GROUP_SIZE.md}>
+        <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
+        <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
+        <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
+        <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
+      </ButtonGroup>
+
+      <p>SM</p>
+      <ButtonGroup size={BUTTON_GROUP_SIZE.sm}>
+        <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
+        <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
+        <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
+        <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
+      </ButtonGroup>
+
+      <p>XS</p>
+      <ButtonGroup size={BUTTON_GROUP_SIZE.xs}>
+        <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
+        <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
+        <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
+        <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
+      </ButtonGroup>
+    </>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <ButtonGroup multiple>
+      <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
+      <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
+      <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
+      <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
+    </ButtonGroup>
+}
+```

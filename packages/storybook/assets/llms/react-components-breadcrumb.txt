@@ -1,0 +1,474 @@
+# React Components/Breadcrumb
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `collapseThreshold` | `` | No | 4 | The number of items when the component will collapse to an ellipsis. |
+| `i18n` | `` | No |  | Internal translations override. |
+| `id` | `` | No |  | Id for the breadcrumb nav (overrides auto-generated id) |
+| `locale` | `` | No |  | The locale used for the translation of the internal elements. |
+| `nbItemsAfterEllipsis` | `` | No | 1 | The number of items to display before the ellipsis. |
+| `nbItemsBeforeEllipsis` | `` | No | 1 | The number of items to display after the ellipsis. |
+| `noCollapse` | `` | No | false | Whether the component should not collapse in an ellipsis regarding the number of items. |
+| `onExpand` | `` | No |  | Callback fired when an ellipsis is expanded. |
+
+
+## Subcomponents
+
+
+### BreadcrumbItem
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `autoFocus` | `` | No |  | @internal |
+| `isLast` | `` | No |  | @internal |
+
+
+
+### BreadcrumbLink
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `as` | `` | No |  | @default-value='a' Pass a component you may want to use as custom Link component. Useful for example when using routing library like react-router. |
+| `autoFocus` | `` | No |  | @internal |
+| `isLast` | `` | No |  | @internal |
+
+
+## Examples
+
+
+### Accessibility With Aria Label
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Breadcrumb aria-label="Breadcrumb">
+      <BreadcrumbItem>
+        <BreadcrumbLink aria-label="Home" href="#">
+          <Icon name={ICON_NAME.home} />
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Category
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Subcategory
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Current page
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+}
+```
+
+### Collapsed
+
+```tsx
+{
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Breadcrumb>
+      <BreadcrumbItem>
+        <BreadcrumbLink aria-label="Homepage" href="#">
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Products
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Hosting
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Servers
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Dedicated
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Rise
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          RISE-2
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+}
+```
+
+### Custom After Before Collapse
+
+```tsx
+{
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Breadcrumb nbItemsBeforeEllipsis={1} nbItemsAfterEllipsis={4}>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Products
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Hosting
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Servers
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Dedicated
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Rise
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          RISE-2
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+}
+```
+
+### Custom Collapse Threshold
+
+```tsx
+{
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Breadcrumb collapseThreshold={7}>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Products
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Hosting
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Servers
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Dedicated
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Rise
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          RISE-2
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Breadcrumb>
+      <BreadcrumbItem>
+        <BreadcrumbLink aria-label="Home" href="#">
+          <Icon name={ICON_NAME.home} />
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Parent
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Current
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+}
+```
+
+### Demo
+
+```tsx
+{
+  render: arg => <Breadcrumb collapseThreshold={arg.collapseThreshold} nbItemsAfterEllipsis={arg.nbItemsAfterEllipsis} nbItemsBeforeEllipsis={arg.nbItemsBeforeEllipsis}>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Page 1
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Page 2
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Page 3
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Current page
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>,
+  argTypes: orderControls({
+    collapseThreshold: {
+      table: {
+        category: CONTROL_CATEGORY.design
+      }
+    },
+    nbItemsAfterEllipsis: {
+      table: {
+        category: CONTROL_CATEGORY.design
+      }
+    },
+    nbItemsBeforeEllipsis: {
+      table: {
+        category: CONTROL_CATEGORY.design
+      }
+    }
+  })
+}
+```
+
+### No Collapse
+
+```tsx
+{
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Breadcrumb noCollapse>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Products
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Hosting
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Servers
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Dedicated
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Rise
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          RISE-2
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Breadcrumb>
+      <BreadcrumbItem>
+        <BreadcrumbLink aria-label="Home" href="#">
+          <Icon name={ICON_NAME.home} />
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Parent
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Current
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <Breadcrumb>
+      <BreadcrumbItem>
+        <BreadcrumbLink aria-label="Homepage" href="#">
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Products
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Hosting
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Servers
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Dedicated
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Rise
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          RISE-2
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+}
+```

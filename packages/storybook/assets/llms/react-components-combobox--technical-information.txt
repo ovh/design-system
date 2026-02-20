@@ -1,0 +1,577 @@
+React Components
+
+# Combobox
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Combobox**
+2.  **Combobox Control**
+3.  **Combobox Content**
+
+## Combobox
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) . |
+| allowCustomValue | `boolean` | - | `true` | Whether to allow adding a value which is not part of the items. |
+| customFilter | `(label: string, query: string) => boolean` | - | `undefined` | Custom filter logic to apply to each item. |
+| customOptionRenderer | `(item: ComboboxItem) => JSX.Element` | - | `undefined` | Custom render for each option item. |
+| defaultValue | `string[]` | - | `undefined` | The initial selected value(s). Use when you don't need to control the selected value(s) of the combobox. |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| highlightResults | `boolean` | - | `false` | Whether to highlight the matching part of filtered items. |
+| i18n | `Partial` | - | `undefined` | Internal translations override (see Input i18n keys). |
+| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
+| items | `ComboboxItem[]` |  | `undefined` | The list of items |
+| locale | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| multiple | `boolean` | - | `undefined` | Whether the multiple selection is allowed. |
+| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| newElementLabel | `string` | - | `'Add '` | Label displayed in front of a custom new value to add. |
+| noResultLabel | `string` | - | `'No results found'` | Label displayed when no values match the current input value. |
+| onInputValueChange | `(value: ComboboxInputValueChangeDetails) => void` | - | `undefined` | Callback fired when the input value changes. |
+| onValueChange | `(value: ComboboxValueChangeDetails) => void` | - | `undefined` | Callback fired when the value(s) changes. |
+| readOnly | `boolean` | - | `undefined` | Whether the component is readonly. |
+| required | `boolean` | - | `undefined` | Whether the component is required. /!\ Only work for single selection mode for now. |
+| value | `string[]` | - | `undefined` | The controlled selected value(s). |
+
+## ComboboxContent
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) . |
+| createPortal | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
+
+## ComboboxControl
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) . |
+| clearable | `boolean` | - | `undefined` | Whether the clear button is displayed. |
+| loading | `boolean` | - | `undefined` | Whether the component is in loading state. |
+| placeholder | `string` | - | `undefined` | The placeholder text to display in the input. |
+
+## Interfaces
+
+---
+
+### ComboboxGroupItem
+
+-   `customRendererData?: T`
+-   `disabled?: boolean`
+-   `label: string`
+-   `options: ComboboxOptionItem[]`
+
+### ComboboxInputValueChangeDetails
+
+-   `inputValue: string`
+
+### ComboboxOptionItem
+
+-   `customRendererData?: T`
+-   `disabled?: boolean`
+-   `group?: string`
+-   `label: string`
+-   `value: string`
+
+### ComboboxValueChangeDetails
+
+-   `value: string[]`
+
+## Unions
+
+---
+
+-   `ComboboxItem = ComboboxGroupItem | ComboboxOptionItem`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-combobox-control-column-gap | calc(var(--ods-theme-column-gap) / 2) | 
+ |
+| --ods-combobox-control-padding-vertical | calc(var(--ods-theme-input-padding-vertical) / 2) | 
+
+ |
+| --ods-combobox-control-row-gap | calc(var(--ods-theme-row-gap) / 2) | 
+
+ |
+| --ods-combobox-group-option-padding-horizontal | calc(var(--ods-theme-input-padding-horizontal) * 3) | 
+
+ |
+| --ods-combobox-option-new-column-gap | calc(var(--ods-theme-column-gap) / 2) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+{
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Combobox items={[{
+    label: 'Dog',
+    value: 'dog'
+  }, {
+    label: 'Cat',
+    value: 'cat'
+  }, {
+    label: 'Hamster',
+    value: 'hamster'
+  }, {
+    label: 'Parrot',
+    value: 'parrot'
+  }, {
+    label: 'Spider',
+    value: 'spider'
+  }, {
+    label: 'Goldfish',
+    value: 'goldfish'
+  }]}>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+}
+```
+
+### Clearable
+
+```jsx
+{
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Combobox items={[{
+    label: 'Dog',
+    value: 'dog'
+  }, {
+    label: 'Cat',
+    value: 'cat'
+  }, {
+    label: 'Hamster',
+    value: 'hamster'
+  }, {
+    label: 'Parrot',
+    value: 'parrot'
+  }, {
+    label: 'Spider',
+    value: 'spider'
+  }, {
+    label: 'Goldfish',
+    value: 'goldfish'
+  }]}>
+      <ComboboxControl clearable placeholder="Combobox" />
+      <ComboboxContent />
+    </Combobox>
+}
+```
+
+### Disabled
+
+```jsx
+<Combobox
+  disabled
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <ComboboxControl placeholder="Combobox" />
+  <ComboboxContent />
+</Combobox>
+```
+
+### Readonly
+
+```jsx
+<Combobox
+  defaultValue={[
+    'parrot'
+  ]}
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+  readOnly
+>
+  <ComboboxControl placeholder="Combobox" />
+  <ComboboxContent />
+</Combobox>
+```
+
+### Group
+
+```jsx
+{
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Combobox items={[{
+    label: 'Europe',
+    options: [{
+      label: 'France',
+      value: 'fr'
+    }, {
+      label: 'Germany',
+      value: 'de'
+    }, {
+      label: 'Italy',
+      value: 'it'
+    }]
+  }, {
+    label: 'Asia',
+    options: [{
+      label: 'China',
+      value: 'cn'
+    }, {
+      label: 'Japan',
+      value: 'jp'
+    }, {
+      label: 'Russia',
+      value: 'ru'
+    }]
+  }, {
+    label: 'World',
+    value: 'world'
+  }]}>
+      <ComboboxControl placeholder="Combobox" />
+      <ComboboxContent />
+    </Combobox>
+}
+```
+
+### Invalid
+
+```jsx
+{
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Combobox invalid items={[{
+    label: 'Dog',
+    value: 'dog'
+  }, {
+    label: 'Cat',
+    value: 'cat'
+  }]}>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+}
+```
+
+### Controlled
+
+```jsx
+const [value, setValue] = useState<string[]>(['dog']);
+  return <>
+      <Combobox items={[{
+      label: 'Dog',
+      value: 'dog'
+    }, {
+      label: 'Cat',
+      value: 'cat'
+    }, {
+      label: 'Hamster',
+      value: 'hamster'
+    }, {
+      label: 'Parrot',
+      value: 'parrot'
+    }, {
+      label: 'Spider',
+      value: 'spider'
+    }, {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }]} onValueChange={details => setValue(details.value)} value={value}>
+        <ComboboxControl placeholder="Select an animal" />
+        <ComboboxContent />
+      </Combobox>
+      <div style={{
+      marginTop: 8
+    }}>
+        <strong>Selected value:</strong> {value[0] ?? 'None'}
+      </div>
+    </>;
+}
+```
+
+### Highlight
+
+```jsx
+{
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Combobox highlightResults items={[{
+    label: 'Dog',
+    value: 'dog'
+  }, {
+    label: 'Cat',
+    value: 'cat'
+  }, {
+    label: 'Hamster',
+    value: 'hamster'
+  }, {
+    label: 'Parrot',
+    value: 'parrot'
+  }, {
+    label: 'Spider',
+    value: 'spider'
+  }, {
+    label: 'Goldfish',
+    value: 'goldfish'
+  }]}>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+}
+```
+
+### Custom Options
+
+```jsx
+type MyData = {
+    color?: string;
+    info?: string;
+  };
+  const items = [{
+    label: 'Apple',
+    value: 'apple',
+    customRendererData: {
+      color: 'red',
+      info: 'Fruit'
+    }
+  }, {
+    label: 'Banana',
+    value: 'banana',
+    customRendererData: {
+      color: 'yellow',
+      info: 'Fruit'
+    }
+  }, {
+    label: 'Carrot',
+    value: 'carrot',
+    customRendererData: {
+      color: 'orange',
+      info: 'Vegetable'
+    }
+  }, {
+    label: 'Broccoli',
+    value: 'broccoli',
+    customRendererData: {
+      color: 'green',
+      info: 'Vegetable'
+    }
+  }, {
+    label: 'Blueberry',
+    value: 'blueberry',
+    customRendererData: {
+      color: 'blue',
+      info: 'Fruit'
+    }
+  }];
+  function customOptionRenderer(item: ComboboxItem<MyData>) {
+    return <span style={{
+      color: item.customRendererData?.color,
+      fontWeight: 'bold'
+    }}>
+        {item.label} {item.customRendererData?.info && <span style={{
+        fontWeight: 'normal',
+        fontSize: 12,
+        color: '#888'
+      }}>({item.customRendererData.info})</span>}
+      </span>;
+  }
+  return <Combobox customOptionRenderer={customOptionRenderer} highlightResults items={items}>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>;
+}
+```
+
+### Custom Filtering
+
+```jsx
+{
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Combobox customFilter={(label, inputValue) => {
+    const reversedLabel = label.split('').reverse().join('');
+    return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
+  }} items={[{
+    label: 'Dog',
+    value: 'dog'
+  }, {
+    label: 'Cat',
+    value: 'cat'
+  }, {
+    label: 'Hamster',
+    value: 'hamster'
+  }, {
+    label: 'Parrot',
+    value: 'parrot'
+  }, {
+    label: 'Spider',
+    value: 'spider'
+  }, {
+    label: 'Goldfish',
+    value: 'goldfish'
+  }]}>
+      <ComboboxControl placeholder="Search from right to left in each word" />
+      <ComboboxContent />
+    </Combobox>
+}
+```
+
+### Empty
+
+```jsx
+{
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Combobox items={[]}>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+}
+```
+
+### Multiple
+
+```jsx
+<Combobox
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+  multiple
+>
+  <ComboboxControl />
+  <ComboboxContent />
+</Combobox>
+```
+
+### Form field
+
+Combobox
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Combobox  </FormFieldLabel>
+  <Combobox
+    items={[
+      {
+        label: 'Dog',
+        value: 'dog'
+      },
+      {
+        label: 'Cat',
+        value: 'cat'
+      }
+    ]}
+  >
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+</FormField>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

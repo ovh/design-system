@@ -1,0 +1,295 @@
+React Components
+
+# Modal
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Modal**
+2.  **Modal Content**
+3.  **Modal Header**
+4.  **Modal Body**
+5.  **Modal Trigger**
+
+## Modal
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| backdropStyle | `CSSProperties` | - | `undefined` | Custom style applied to the modal backdrop. Useful if you want to override the backdrop z-index. |
+| closeOnEscape | `boolean` | - | `true` | Whether to close the modal when the escape key is pressed. |
+| closeOnInteractOutside | `boolean` | - | `true` | Whether to close the modal when the outside is clicked. |
+| defaultOpen | `boolean` | - | `undefined` | The initial open state of the modal. Use when you don't need to control the open state of the modal. |
+| i18n | `Partial` | - | `undefined` | Internal translations override. |
+| initialFocusedElement | `() => HTMLElement | null` | - | `undefined` | Element that receive the focus when the dialog is opened. |
+| locale | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| onOpenChange | `(detail: ModalOpenChangeDetail) => void` | - | `undefined` | Callback fired when the modal open state changes. |
+| open | `boolean` | - | `undefined` | The controlled open state of the modal. |
+| positionerStyle | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+
+## ModalBody
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## ModalContent
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| colorDeprecated | `MODAL_COLOR` | - | `MODAL_COLOR.information` | The color preset to use. DEPRECATED: Color is no longer used and will be removed in the next major version. |
+| createPortal | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
+| dismissible | `boolean` | - | `true` | Whether the remove button is displayed. |
+
+## ModalHeader
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| className | `string` | - | `undefined` | - |
+
+## ModalTrigger
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## Enums
+
+---
+
+### MODAL_COLOR
+
+Deprecated
+
+-   critical =`"critical"`
+-   information =`"information"`
+-   neutral =`"neutral"`
+-   primary =`"primary"`
+-   success =`"success"`
+-   warning =`"warning"`
+
+### MODAL_I18N
+
+-   closeButton =`"modal.close.button"`
+
+## Interfaces
+
+---
+
+### ModalOpenChangeDetail
+
+-   `open: boolean`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-modal-border-radius | var(--ods-theme-overlay-border-radius) | 
+ |
+| --ods-modal-header-background-color-critical | var(--ods-color-critical-075) | 
+
+ |
+| --ods-modal-header-background-color-information | var(--ods-color-information-075) | 
+
+ |
+| --ods-modal-header-background-color-neutral | var(--ods-color-neutral-075) | 
+
+ |
+| --ods-modal-header-background-color-primary | var(--ods-color-primary-500) | 
+
+ |
+| --ods-modal-header-background-color-success | var(--ods-color-success-075) | 
+
+ |
+| --ods-modal-header-background-color-warning | var(--ods-color-warning-075) | 
+
+ |
+| --ods-modal-header-height | 32px | 
+
+ |
+| --ods-modal-header-padding-horizontal | calc(var(--ods-theme-padding-horizontal) * 2) | 
+
+ |
+| --ods-modal-header-padding-vertical | calc(var(--ods-theme-padding-vertical) * 2) | 
+
+ |
+| --ods-modal-margin-horizontal | calc(var(--ods-theme-padding-horizontal) * 2) | 
+
+ |
+| --ods-modal-margin-vertical | calc(var(--ods-theme-padding-vertical) * 2) | 
+
+ |
+| --ods-modal-mobile-max-height | 512px | 
+
+ |
+| --ods-modal-mobile-max-width | 512px | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Modal>
+  <ModalTrigger>
+    Trigger Modal  </ModalTrigger>
+  <ModalContent>
+    <ModalHeader>
+      My modal header    </ModalHeader>
+    <ModalBody>
+      My modal content    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+### Controlled
+
+```jsx
+const [isOpen, setIsOpen] = useState(false);
+  function onOpenChange({
+    open  }: ModalOpenChangeDetail) {
+    setIsOpen(open);
+  }
+  function openModal() {
+    setIsOpen(true);
+  }
+  return <>
+      <Button onClick={openModal}>
+        Trigger Modal      </Button>
+      <Modal onOpenChange={onOpenChange} open={isOpen}>
+        <ModalContent>
+          <ModalHeader>Controlled modal</ModalHeader>
+          <ModalBody>
+            Content          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </>;
+}
+```
+
+### Non Dismissible
+
+```jsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal    </Button>
+  </ModalTrigger>
+  <ModalContent dismissible={false}>
+    <ModalHeader>Non dismissible</ModalHeader>
+    <ModalBody>
+      My modal content    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+### Non Escapable
+
+```jsx
+<Modal closeOnEscape={false} closeOnInteractOutside={false}>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal    </Button>
+  </ModalTrigger>
+  <ModalContent>
+    <ModalHeader>Non escapable</ModalHeader>
+    <ModalBody>
+      My modal content    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+### Overlay Elements
+
+```jsx
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal    </Button>
+  </ModalTrigger>
+  <ModalContent>
+    <ModalHeader>
+      Overlay elements    </ModalHeader>
+    <ModalBody
+      style={{
+        alignItems: 'center',
+        columnGap: '8px',
+        display: 'grid',
+        gridTemplateColumns: '1fr max-content'
+      }}
+    >
+      <Select
+        items={[
+          {
+            label: 'Dog',
+            value: 'dog'
+          },
+          {
+            label: 'Cat',
+            value: 'cat'
+          },
+          {
+            label: 'Hamster',
+            value: 'hamster'
+          },
+          {
+            label: 'Parrot',
+            value: 'parrot'
+          },
+          {
+            label: 'Spider',
+            value: 'spider'
+          },
+          {
+            label: 'Goldfish',
+            value: 'goldfish'
+          }
+        ]}
+      >
+        <SelectControl />
+        <SelectContent />
+      </Select>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon
+            name="circle-question"
+            style={{
+              fontSize: '24px'
+            }}
+          />
+        </TooltipTrigger>
+        <TooltipContent>
+          This is the tooltip content        </TooltipContent>
+      </Tooltip>
+    </ModalBody>
+  </ModalContent>
+</Modal>
+```
+
+## Recipes
+
+---
+
+Status Modal

@@ -1,0 +1,246 @@
+# React Components/Textarea
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `invalid` | `` | No |  | Whether the component is in error state. |
+
+
+## Examples
+
+
+### Accessibility Described By
+
+```tsx
+{
+  globals: {
+    imports: `import { FormField, FormFieldHelper, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Description:
+      </FormFieldLabel>
+
+      <Textarea />
+
+      <FormFieldHelper>
+        Enter a brief description
+      </FormFieldHelper>
+    </FormField>
+}
+```
+
+### Accessibility Form Field
+
+```tsx
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Description:
+      </FormFieldLabel>
+
+      <Textarea />
+    </FormField>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Textarea />
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    cols: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'number'
+        }
+      },
+      control: 'number'
+    },
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'boolean'
+        }
+      },
+      control: 'boolean'
+    },
+    invalid: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    placeholder: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'string'
+        }
+      },
+      control: 'text'
+    },
+    readOnly: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'boolean'
+        }
+      },
+      control: 'boolean'
+    },
+    rows: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'number'
+        }
+      },
+      control: 'number'
+    }
+  })
+}
+```
+
+### Disabled
+
+```tsx
+{
+  globals: {
+    imports: `import { Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Textarea disabled />
+}
+```
+
+### In Form Field
+
+```tsx
+{
+  globals: {
+    imports: `import { TEXT_PRESET, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Text, Textarea } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: ({}) => {
+    const MAX_COUNT = 200;
+    const [count, setCount] = useState(0);
+    function onInput(e: FormEvent): void {
+      setCount((e.target as HTMLTextAreaElement).value.length);
+    }
+    return <FormField invalid={count > MAX_COUNT}>
+        <FormFieldLabel>
+          Description:
+        </FormFieldLabel>
+
+        <Textarea name="description" onInput={onInput} />
+
+        <FormFieldHelper style={{
+        display: 'flex',
+        justifyContent: 'space-between'
+      }}>
+          <Text preset={TEXT_PRESET.caption}>
+            Helper text
+          </Text>
+
+          <Text preset={TEXT_PRESET.caption}>
+            {count}/{MAX_COUNT}
+          </Text>
+        </FormFieldHelper>
+
+        <FormFieldError>
+          Error message
+        </FormFieldError>
+      </FormField>;
+  }
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Textarea placeholder="Textarea" />
+}
+```
+
+### Read Only
+
+```tsx
+{
+  globals: {
+    imports: `import { Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Textarea defaultValue="Readonly" readOnly />
+}
+```
+
+### Resizable
+
+```tsx
+{
+  globals: {
+    imports: `import { Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Textarea style={{
+    resize: 'both'
+  }} />
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    alignItems: 'flex-start'
+  }}>
+      <Textarea placeholder="Default" />
+      <Textarea disabled placeholder="Disabled" />
+      <Textarea invalid placeholder="Invalid" />
+      <Textarea readOnly defaultValue="Read only" />
+    </div>
+}
+```

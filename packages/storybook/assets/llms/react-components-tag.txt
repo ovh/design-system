@@ -1,0 +1,255 @@
+# React Components/Tag
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `color` | `` | No | TAG_COLOR.information | @type=TAG_COLOR The color preset to use. |
+| `size` | `` | No | TAG_SIZE.md | The size preset to use. |
+
+
+## Examples
+
+
+### Accessibility Aria Label
+
+```tsx
+{
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tag aria-label="Remove my tag">
+      My tag
+    </Tag>
+}
+```
+
+### Accessibility Aria Roles
+
+```tsx
+{
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <div role="list">
+      <div role="listitem">
+        <Tag>Design</Tag>
+      </div>
+
+      <div role="listitem">
+        <Tag>Development</Tag>
+      </div>
+
+      <div role="listitem">
+        <Tag>Accessibility</Tag>
+      </div>
+    </div>
+}
+```
+
+### Accessibility List
+
+```tsx
+{
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ul>
+      <li>
+        <Tag>Design</Tag>
+      </li>
+
+      <li>
+        <Tag>Development</Tag>
+      </li>
+
+      <li>
+        <Tag>Accessibility</Tag>
+      </li>
+    </ul>
+}
+```
+
+### Color
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { TAG_COLOR, Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <>
+      <Tag color={TAG_COLOR.critical}>Critical</Tag>
+      <Tag color={TAG_COLOR.information}>Information</Tag>
+      <Tag color={TAG_COLOR.neutral}>Neutral</Tag>
+      <Tag color={TAG_COLOR.primary}>Primary</Tag>
+      <Tag color={TAG_COLOR.success}>Success</Tag>
+      <Tag color={TAG_COLOR.warning}>Warning</Tag>
+    </>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Tag>
+      My tag
+    </Tag>
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    color: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'TAG_COLOR'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: TAG_COLORS
+    },
+    children: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'text'
+    },
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'boolean'
+        }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+    size: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'TAG_SIZE'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: TAG_SIZES
+    }
+  }),
+  args: {
+    children: 'My tag'
+  }
+}
+```
+
+### Disabled
+
+```tsx
+{
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Tag disabled>
+      My tag
+    </Tag>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Tag>
+      My tag
+    </Tag>
+}
+```
+
+### Size
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { TAG_SIZE, Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <>
+      <Tag size={TAG_SIZE.md}>MD tag</Tag>
+      <Tag size={TAG_SIZE.lg}>LG tag</Tag>
+    </>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexFlow: 'row wrap',
+    gap: '8px',
+    alignItems: 'center'
+  }}>
+      <Tag>Default</Tag>
+      <Tag disabled>Disabled</Tag>
+      <Tag size={TAG_SIZE.lg}>Large</Tag>
+      <Tag color={TAG_COLOR.primary}>Primary</Tag>
+      <Tag color={TAG_COLOR.success}>Success</Tag>
+      <Tag color={TAG_COLOR.warning}>Warning</Tag>
+      <Tag color={TAG_COLOR.critical}>Critical</Tag>
+      <Tag color={TAG_COLOR.information}>Info</Tag>
+      <Tag color={TAG_COLOR.neutral}>Neutral</Tag>
+    </div>
+}
+```

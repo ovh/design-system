@@ -1,0 +1,272 @@
+React Components
+
+# Message
+
+## Overview
+
+---
+
+Message
+
+## Anatomy
+
+---
+
+1.  **Message**
+
+## Message
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| color | `MESSAGE_COLOR` | - | `MESSAGE_COLOR.information` | The color preset to use. |
+| dismissible | `boolean` | - | `true` | Whether the remove button is displayed. |
+| i18n | `Partial` | - | `undefined` | Internal translations override. |
+| locale | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| onRemove | `() => void` | - | `undefined` | Callback fired when the close button is pressed. |
+| variant | `MESSAGE_VARIANT` | - | `MESSAGE_VARIANT.default` | The variant preset to use. |
+
+## MessageBody
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## MessageIcon
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+| name | `ICON_NAME` |  | `undefined` | The icon name. |
+
+## Enums
+
+---
+
+### MESSAGE_COLOR
+
+-   critical =`"critical"`
+-   information =`"information"`
+-   neutral =`"neutral"`
+-   primary =`"primary"`
+-   success =`"success"`
+-   warning =`"warning"`
+
+### MESSAGE_I18N
+
+-   closeButton =`"message.close.button"`
+
+### MESSAGE_VARIANT
+
+-   default =`"default"`
+-   light =`"light"`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-message-background-color-critical | var(--ods-color-critical-075) | 
+ |
+| --ods-message-background-color-critical-light | var(--ods-theme-background-color) | 
+
+ |
+| --ods-message-background-color-information | var(--ods-color-information-075) | 
+
+ |
+| --ods-message-background-color-information-light | var(--ods-theme-background-color) | 
+
+ |
+| --ods-message-background-color-neutral | var(--ods-color-neutral-075) | 
+
+ |
+| --ods-message-background-color-neutral-light | var(--ods-theme-background-color) | 
+
+ |
+| --ods-message-background-color-primary | var(--ods-color-primary-500) | 
+
+ |
+| --ods-message-background-color-primary-light | var(--ods-theme-background-color) | 
+
+ |
+| --ods-message-background-color-success | var(--ods-color-success-075) | 
+
+ |
+| --ods-message-background-color-success-light | var(--ods-theme-background-color) | 
+
+ |
+| --ods-message-background-color-warning | var(--ods-color-warning-075) | 
+
+ |
+| --ods-message-background-color-warning-light | var(--ods-theme-background-color) | 
+
+ |
+| --ods-message-border-radius | calc(var(--ods-theme-border-radius) / 2) | 
+
+ |
+| --ods-message-close-button-text-color-primary | var(--ods-color-neutral-000) | 
+
+ |
+| --ods-message-text-color-critical | var(--ods-color-critical-700) | 
+
+ |
+| --ods-message-text-color-critical-light | var(--ods-color-critical-600) | 
+
+ |
+| --ods-message-text-color-information | var(--ods-color-information-700) | 
+
+ |
+| --ods-message-text-color-information-light | var(--ods-color-information-600) | 
+
+ |
+| --ods-message-text-color-neutral | var(--ods-color-neutral-700) | 
+
+ |
+| --ods-message-text-color-neutral-light | var(--ods-color-neutral-600) | 
+
+ |
+| --ods-message-text-color-primary | var(--ods-color-primary-000) | 
+
+ |
+| --ods-message-text-color-primary-light | var(--ods-color-primary-600) | 
+
+ |
+| --ods-message-text-color-success | var(--ods-color-success-700) | 
+
+ |
+| --ods-message-text-color-success-light | var(--ods-color-success-600) | 
+
+ |
+| --ods-message-text-color-warning | var(--ods-color-warning-700) | 
+
+ |
+| --ods-message-text-color-warning-light | var(--ods-color-warning-600) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+Default message
+
+```jsx
+<Message>
+  <MessageIcon name="circle-info" />
+  <MessageBody>
+    Default message  </MessageBody>
+</Message>
+```
+
+### Color
+
+Critical message
+
+Information message
+
+Neutral message
+
+Primary message
+
+Success message
+
+Warning message
+
+```jsx
+<>
+  <Message color="critical">
+    <MessageIcon name="hexagon-exclamation" />
+    <MessageBody>
+      Critical message    </MessageBody>
+  </Message>
+  <Message color="information">
+    <MessageIcon name="circle-info" />
+    <MessageBody>
+      Information message    </MessageBody>
+  </Message>
+  <Message color="neutral">
+    <MessageIcon name="email" />
+    <MessageBody>
+      Neutral message    </MessageBody>
+  </Message>
+  <Message color="primary">
+    <MessageIcon name="lightbulb" />
+    <MessageBody>
+      Primary message    </MessageBody>
+  </Message>
+  <Message color="success">
+    <MessageIcon name="circle-check" />
+    <MessageBody>
+      Success message    </MessageBody>
+  </Message>
+  <Message color="warning">
+    <MessageIcon name="triangle-exclamation" />
+    <MessageBody>
+      Warning message    </MessageBody>
+  </Message>
+</>
+```
+
+### Variant
+
+Default variant Message
+
+Light variant Message
+
+```jsx
+<>
+  <Message variant="default">
+    <MessageIcon name="circle-info" />
+    <MessageBody>
+      Default variant Message    </MessageBody>
+  </Message>
+  <Message variant="light">
+    <MessageIcon name="circle-info" />
+    <MessageBody>
+      Light variant Message    </MessageBody>
+  </Message>
+</>
+```
+
+### Multiline
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.
+
+```jsx
+<Message>
+  <MessageIcon name="circle-info" />
+  <MessageBody>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.  </MessageBody>
+</Message>
+```
+
+### Non Dismissible
+
+Default message
+
+```jsx
+<Message>
+  <MessageIcon name="circle-info" />
+  <MessageBody>
+    Default message  </MessageBody>
+</Message>
+```
+
+## Recipes
+
+---
+
+Status Message
+
+Activate your project and get €200 in free cloud credit
+
+You are currently in discovery mode. Activate your project to unlock your cloud resources and start building in minutes.

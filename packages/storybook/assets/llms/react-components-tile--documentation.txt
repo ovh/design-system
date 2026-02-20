@@ -1,0 +1,73 @@
+React Components
+
+# Tile
+
+Checkbox tile
+
+Additional information
+
+## Overview
+
+---
+
+**Tile** is a selectable **Card** used to present options or content blocks that can be selected by the user.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Tile</td></tr><tr><th scope="row">Also known as</th><td>-</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/l7NGsGx2CuieJpqHn4B1zo/ODS---UI-Kit?m=auto&amp;node-id=13588-131&amp;t=z9FF7UzVAAvDXO1U-1" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/tile" target="_blank">Github<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+**Tile** is typically used to display a small set of options. Common use cases include:
+
+-   forms
+-   surveys
+-   preference or configuration screens
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use the Tile component when you need to present a limited number of options to the user, especially when those options require a brief description or additional information |
+| - Use a Tile with a checkbox for multiple selections, and with a radio button for single selections |
+| - Ensure that the content within Tile is concise and relevant to the user's decision-making process |
+
+| ❌ Don't |
+| --- |
+| - Avoid using the Tile component for complex or lengthy content, as it may overwhelm the user |
+| - Do not use the Tile for options that require a high level of detail or explanation; instead, consider using a different component or providing additional context through Tooltips or Popovers |
+| - Refrain from mixing checkbox and radio button in Tiles within the same selection group, as this can cause confusion |
+
+### Best Practices in Context
+
+1.  **Tile**
+
+## Placement
+
+---
+
+The **Tile** component can be used in various layouts, including but not limited to, grids, lists, and as standalone elements within a form. When displaying multiple **Tiles**, ensure they are evenly spaced and aligned to provide a clear and organized user interface. Consider responsive behavior so **Tiles** remain usable and readable on smaller screens.
+
+## Behavior
+
+---
+
+**Tile** component can be selected and disabled.
+
+When selected, **Tile** displays a clear visual indication of its selected state.
+
+When disabled, **Tile** does not respond to user interaction and cannot be selected. All content inside the **Tile** is visually and functionally disabled.
+
+**Tile** can contain any type of content, including interactive elements.
+
+### Navigation
+
+#### Focus Management
+
+**Tile** follows standard keyboard navigation patterns defined by its usage context.
+
+## Accessibility
+
+---
+
+Interactive elements inside **Tile** must follow a logical tab order. Inner interactive content must remain accessible to assistive technologies, without interfering with the **Tile** selection state.

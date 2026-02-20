@@ -1,0 +1,139 @@
+React Components
+
+# Input
+
+_**Input** component is an **Input** field where users can type into_
+
+## Overview
+
+---
+
+An **Input** is used to allow the user to enter a single line information in a field.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Input</td></tr><tr><th scope="row">Also known as</th><td>Text Input, Text Field</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=93-22570" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/input" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-input--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+An **Input** is used to type a free-form short text in a field. It is often used within a Form Field component that adds its label.
+
+It is commonly used in a form, such as asking the user their name or email address, data entered can be text or numbers.
+
+The **Input** component can be used in addition with an **Autocomplete**.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Always pair the Input with a clear and explicit label, using the Form Field component for example |
+| - Provide a helper message or validation feedback below the Input when appropriate (e.g., expected format or error state) |
+| - Use the clearable button option when it helps users reset the field quickly and efficiently |
+| - Use the toggle mask button for sensitive inputs to let users show or hide the content |
+| - Include a search button within the Input if a specific action is expected (e.g., triggering a search) |
+| - Choose the appropriate input type (email, password, search, etc.) to support native validation |
+
+| ❌ Don't |
+| --- |
+| - Don't use an Input for multi-line content, use a Textarea instead |
+| - Don't use an Input when users must choose from a predefined set of answers. Prefer Select, Combobox, or Radio |
+| - Don't leave an Input without a label |
+| - Don't overload the Input with multiple embedded actions (e.g., clear + search + toggle) since it creates visual clutter |
+| - Don't use an Input that is inappropriately sized for its content |
+
+### Best Practices in Context
+
+1.  **Input**
+2.  **Placeholder or input text**
+3.  **Clearable button** - optional
+
+## Placement
+
+---
+
+**Input** should be vertically aligned with other form components on a same page.
+
+**Inputs** that are strongly related in a form can be grouped. This group can flow horizontally left to right and/or vertically top to bottom.
+
+## Behavior
+
+---
+
+**Inputs** can be hovered, focused and clicked / triggered. They can be disabled or readonly as well.
+
+The user can start typing in the **Input** after clicking or focusing on the field container.
+
+A clearable button can be displayed within the **Input** to clear its content. This button becomes visible as soon as the user types the first character and removes all content when clicked.
+
+A toggle mask button can be displayed within the **Input** to toggle the visibility of its content, such as revealing or hiding a password in a masked input.
+
+A search button can be displayed within the **Input** to trigger a specific action, such as performing a search.
+
+## Navigation
+
+---
+
+### Focus Management
+
+The **Input** field receives focus as part of the natural tab order.
+
+If a clear button is present, it becomes focusable immediately after the **Input** field.
+
+If a toggle mask button (show/hide password) is present, it becomes focusable after the clear button.
+
+If a search button is present, it becomes focusable after the other **Input** action buttons.
+
+If the **Input** field is read-only, it can still receive focus but cannot be edited.
+
+If the **Input** is disabled, it is skipped in the tab order and cannot be edited.
+
+### General Keyboard Shortcuts
+
+Pressing Tab moves focus forward.
+
+Pressing Shift + Tab moves focus backward to the previous interactive element.
+
+Typing any character while the **Input** field is focused enters text into the field.
+
+Pressing Backspace deletes the character preceding the cursor.
+
+Pressing Enter while a clear, toggle mask, or search button is focused triggers the corresponding action.
+
+## Accessibility
+
+---
+
+To ensure proper accessibility, the **Input** component must be correctly labeled and provide meaningful context when interactive elements (such as icon buttons) are used.
+
+### Always provide an explicit label
+
+Every **Input** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
+
+Name:
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Name:  </FormFieldLabel>
+  <Input />
+</FormField>
+```
+
+Screen readers will announce the label, the field and its content.
+
+### Override action context
+
+To provide more context on the interactive elements, you can provide your own custom translations to the component.
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Search:  </FormFieldLabel>
+  <Input clearable defaultValue="my search" i18n={{
+  [INPUT_I18N.clearButton]: 'Clear current search',
+  [INPUT_I18N.searchButton]: 'Search in database'
+}} type='search' />
+</FormField>
+```
+
+Screen readers will announce the label, the field, its content and custom label of focused action.

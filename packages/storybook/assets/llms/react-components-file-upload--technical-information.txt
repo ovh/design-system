@@ -1,0 +1,319 @@
+React Components
+
+# File Upload
+
+## Overview
+
+---
+
+Drag & drop a file 
+
+## Anatomy
+
+---
+
+1.  **File Upload**
+2.  **File Upload List**
+3.  **File Upload Item**
+
+## FileUpload
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| accept | `string` | - | `undefined` | The accepted file types. |
+| acceptedFileLabel | `string` | - | `undefined` | Label describing the accepted file types. |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| dropzoneLabel | `string` | - | `'Drag & drop a file'` | The dropzone label. |
+| error | `string` | - | `undefined` | The global error message to display. |
+| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
+| locale | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| maxFile | `number` | - | `Infinity` | The maximum number of files that can be selected. |
+| maxFileLabel | `string` | - | `undefined` | Label describing the maximum number of files that can be selected. |
+| maxSize | `number` | - | `undefined` | The maximum size of selectable files. |
+| maxSizeLabel | `string` | - | `undefined` | Label describing the maximum size of selectable files. |
+| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| onFileAccept | `(detail: FileUploadAcceptDetail) => void` | - | `undefined` | Callback fired when a some files have been successfully added. |
+| onFileReject | `(detail: FileUploadRejectDetail) => void` | - | `undefined` | Callback fired when a some files have been rejected. |
+| required | `boolean` | - | `undefined` | Whether the component is required. |
+| triggerLabel | `string` | - | `'Browse files'` | Upload button label. |
+| variant | `FILE_UPLOAD_VARIANT` | - | `FILE_UPLOAD_VARIANT.default` | The variant preset to use. |
+
+## FileUploadItem
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [li attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/li#attributes) . |
+| error | `string` | - | `undefined` | The file error message to display. |
+| file | `File` |  | `undefined` | The current File object. |
+| i18n | `Partial` | - | `undefined` | Internal translations override. |
+| progress | `number` | - | `undefined` | The file upload progress. |
+| uploadSuccessLabelDeprecated | `string` | - | `undefined` | The label displayed after a successful upload. DEPRECATED: Latest design change removed the upload success label in favor of a visual icon update. |
+
+## FileUploadList
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [ul attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/ul#attributes) . |
+
+## Enums
+
+---
+
+### FILE_REJECTION_CAUSE
+
+-   invalidFile =`"invalid-file"`
+-   maxFileReached =`"max-file-reached"`
+-   sizeTooLarge =`"size-too-large"`
+-   unknownError =`"unknown-error"`
+-   wrongFormat =`"wrong-format"`
+
+### FILE_UPLOAD_I18N
+
+-   cancelButton =`"fileUpload.file.cancel.button"`
+-   deleteButton =`"fileUpload.file.delete.button"`
+-   progressBar =`"fileUpload.file.progressBar"`
+
+### FILE_UPLOAD_VARIANT
+
+-   compact =`"compact"`
+-   default =`"default"`
+
+## Interfaces
+
+---
+
+### FileUploadAcceptDetail
+
+-   `files: File[]`
+
+### FileUploadRejectDetail
+
+-   `files: { errors: FILE_REJECTION_CAUSE[], file: File }`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-file-upload-item-background-color-hover | var(--ods-color-primary-050) | 
+ |
+| --ods-file-upload-item-border-radius | calc(var(--ods-theme-border-radius) / 2) | 
+
+ |
+| --ods-file-upload-padding-horizontal | var(--ods-theme-padding-horizontal) | 
+
+ |
+| --ods-file-upload-padding-vertical | var(--ods-theme-padding-vertical) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+Drag & drop a file 
+
+```jsx
+const [files, setFiles] = useState<File[]>([]);
+  return <FileUpload onFileAccept={({
+    files  }) => setFiles(files)}>
+      <FileUploadList>
+        {files.map((file: File, idx) => <FileUploadItem file={file} key={idx} />)}
+      </FileUploadList>
+    </FileUpload>;
+}
+```
+
+### Compact
+
+Drag & drop a file 
+
+```jsx
+const [files, setFiles] = useState<File[]>([]);
+  return <FileUpload onFileAccept={({
+    files  }) => setFiles(files)} variant={FILE_UPLOAD_VARIANT.compact}>
+      <FileUploadList>
+        {files.map((file: File, idx) => <FileUploadItem file={file} key={idx} />)}
+      </FileUploadList>
+    </FileUpload>;
+}
+```
+
+### Disabled
+
+Drag & drop a file 
+
+```jsx
+<FileUpload
+  disabled
+  variant="compact"
+>
+  <FileUploadList />
+</FileUpload>
+```
+
+### Custom labels
+
+Nombre maximal de fichiers : 3Taille de fichier max : 524 MBFormats acceptés : images
+
+Glisser-déposer des fichiers 
+
+```jsx
+const [files, setFiles] = useState<File[]>([]);
+  return <FileUpload acceptedFileLabel="Formats acceptés : images" dropzoneLabel="Glisser-déposer des fichiers" maxFile={3} maxFileLabel="Nombre maximal de fichiers :" maxSize={524288000} maxSizeLabel="Taille de fichier max :" onFileAccept={({
+    files  }) => setFiles(files)} triggerLabel="Parcourir les fichiers" variant={FILE_UPLOAD_VARIANT.compact}>
+      <FileUploadList>
+        {files.map((file: File, idx) => <FileUploadItem file={file} key={idx} progress={100} uploadSuccessLabel="Fichier uploadé" />)}
+      </FileUploadList>
+    </FileUpload>;
+}
+```
+
+### Accept only specific file type
+
+To limit the file types that can be uploaded, you can use the `accept` attribute.
+
+It works exactly the same as the one from the native [input file](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept) .
+
+Png files only
+
+Drag & drop a file 
+
+```jsx
+const [error, setError] = useState<string>('');
+  const [files, setFiles] = useState<File[]>([]);  function onAccept({    files  }: FileUploadAcceptDetail): void {
+    setFiles(files);
+    setError('');
+  }
+  function onReject({    files  }: FileUploadRejectDetail): void {
+    setError(files.length ? 'File(s) not of the expected format' : '');
+  }
+  return <FileUpload accept="image/png" acceptedFileLabel="Png files only" error={error} onFileAccept={onAccept} onFileReject={onReject} variant={FILE_UPLOAD_VARIANT.compact}>
+      <FileUploadList>
+        {files.map((file: File, idx) => <FileUploadItem file={file} key={idx} />)}
+      </FileUploadList>
+    </FileUpload>;
+}
+```
+
+### Limit the maximum number of file
+
+Maximum file allowed: 3
+
+Drag & drop a file 
+
+```jsx
+const [error, setError] = useState<string>('');
+  const [files, setFiles] = useState<File[]>([]);  function onAccept({    files  }: FileUploadAcceptDetail): void {
+    setFiles(files);
+    setError('');
+  }
+  function onReject({    files  }: FileUploadRejectDetail): void {
+    setError(files.length ? 'Too many files' : '');
+  }
+  return <FileUpload error={error} maxFile={3} maxFileLabel="Maximum file allowed:" onFileAccept={onAccept} onFileReject={onReject} variant={FILE_UPLOAD_VARIANT.compact}>
+      <FileUploadList>
+        {files.map((file: File, idx) => <FileUploadItem file={file} key={idx} />)}
+      </FileUploadList>
+    </FileUpload>;
+}
+```
+
+### Limit the maximum size of each file
+
+No file larger than: 1 MB
+
+Drag & drop a file 
+
+```jsx
+const [error, setError] = useState<string>('');
+  const [files, setFiles] = useState<File[]>([]);  function onAccept({    files  }: FileUploadAcceptDetail): void {
+    setFiles(files);
+    setError('');
+  }
+  function onReject({    files  }: FileUploadRejectDetail): void {
+    setError(files.length ? 'File(s) too large' : '');
+  }
+  return <FileUpload error={error} maxSize={1000000} maxSizeLabel="No file larger than:" onFileAccept={onAccept} onFileReject={onReject} variant={FILE_UPLOAD_VARIANT.compact}>
+      <FileUploadList>
+        {files.map((file: File, idx) => <FileUploadItem file={file} key={idx} />)}
+      </FileUploadList>
+    </FileUpload>;
+}
+```
+
+### Display upload progress
+
+Drag & drop a file 
+
+```jsx
+type MyFile = File & {
+    error?: string;
+    progress?: number;
+  };
+  const [files, setFiles] = useState<MyFile[]>([]);
+  useEffect(() => {
+    files.forEach(file => {
+      if (!file.progress) {
+        uploadFile(file);
+      }
+    });
+  }, [files]);
+  function uploadFile(file: MyFile): void {
+    const intervalId = setInterval(() => {
+      setFiles(files => files.map(f => {
+        if (f.name === file.name) {
+          f.progress = (f.progress || 0) + Math.floor(Math.random() * 10 + 1);
+          if (f.progress >= 100) {
+            clearInterval(intervalId);
+          }
+        }
+        return f;
+      }));
+    }, 100);
+  }
+  return <FileUpload onFileAccept={({
+    files  }) => setFiles(files)} variant={FILE_UPLOAD_VARIANT.compact}>
+      <FileUploadList>
+        {files.map((file, idx) => <FileUploadItem error={file.error} file={file} key={idx} progress={file.progress} />)}
+      </FileUploadList>
+    </FileUpload>;
+}
+```
+
+### Form Field
+
+Files:
+
+Drag & drop a file 
+
+```jsx
+const [files, setFiles] = useState<File[]>([]);
+  return <FormField>
+        <FormFieldLabel>
+          Files:        </FormFieldLabel>
+        <FileUpload onFileAccept={({
+      files    }) => setFiles(files)} variant={FILE_UPLOAD_VARIANT.compact}>
+          <FileUploadList>
+            {files.map((file: File, idx) => <FileUploadItem file={file} key={idx} />)}
+          </FileUploadList>
+        </FileUpload>
+      </FormField>;
+}
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

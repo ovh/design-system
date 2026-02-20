@@ -282,6 +282,11 @@ export const NonDismissible: Story = {
   globals: {
     imports: `import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`,
   },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   tags: ['!dev'],
   render: ({}) => (
     <Message dismissible={ false }>

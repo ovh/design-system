@@ -111,6 +111,11 @@ export const Multiple: Story = {
   globals: {
     imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Text } from '@ovhcloud/ods-react';`,
   },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   tags: ['!dev'],
   render: ({}) => (
     <>

@@ -1,0 +1,135 @@
+React Components
+
+# Textarea
+
+_A **Textarea** component allows users to input and edit multiple lines of text._
+
+## Overview
+
+---
+
+The **Textarea** component is used to capture and display multi-line text input from users.
+
+It is typically used in forms where users need to provide detailed information, comments, or descriptions.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Textarea</td></tr><tr><th scope="row">Also known as</th><td>Text Box</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=53-11147" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/textarea" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-textarea--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+Use the **Textarea** component to allow users to enter multi-line text in forms, such as comments, messages, descriptions, or other detailed information.
+
+Ensure that the **Textarea** is appropriately sized for the expected input and provides clear guidance on what information is needed.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Textarea for inputs that may span multiple lines, such as comments, descriptions, or messages |
+| - Always pair the Textarea with a label to clearly explain what is expected |
+| - Use helper text to provide guidance or clarify formatting when needed |
+| - Allow scrolling or resizing if users are likely to enter long text (based on use case) |
+| - Use Textarea for a text longer than a single line |
+
+| ❌ Don't |
+| --- |
+| - Don't use a Textarea for short, single-line inputs. Use an Input instead |
+| - Don't rely on a placeholder as a substitute for a proper label since it disappears once the user starts typing |
+| - Don't disable resizing if users are expected to write long-form content and might need a larger view |
+
+### Best Practices in Context
+
+1.  **Textarea**
+2.  **Placeholder or textarea text**
+3.  **Resize handler** - optional
+
+## Placement
+
+---
+
+**Textarea** should be vertically aligned with other form components on a same page.
+
+## Behavior
+
+---
+
+**Textarea** can be hovered, focused, disabled, or set to read-only.
+
+When disabled, the component cannot be focused or interacted with.
+
+If the user types more text than the **Textarea** can display, a scrollbar appears to allow scrolling.
+
+The **Textarea** supports native browser resizing, but it is not enabled by default.
+
+## Navigation
+
+---
+
+### Focus Management
+
+When the **Textarea** is enabled, it can receive focus via keyboard interaction.
+
+A disabled **Textarea** cannot receive focus.
+
+A read-only **Textarea** can receive focus, allowing users to scroll and select content, but its content cannot be modified.
+
+### General Keyboard Shortcuts
+
+Pressing Tab moves focus to the **Textarea**.
+
+Pressing Shift + Tab moves focus to the previous focusable element.
+
+Pressing Enter creates a new line within the **Textarea**.
+
+Pressing Arrow keys moves the caret within the text content.
+
+Pressing Ctrl + Arrow Left / Arrow Right (or Option + Arrow Left / Arrow Right on macOS) moves the caret by word.
+
+Pressing Home / End (or Cmd+ Arrow keys on macOS) moves the caret to the beginning or end of the line.
+
+Pressing Page Up / Page Down scrolls through the content if it's longer than the visible area.
+
+## Accessibility
+
+---
+
+To ensure proper accessibility, it must be correctly labeled, and provide live updates if a character limit is set.
+
+### Always provide an explicit label
+
+Every **Textarea** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
+
+Description:
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Description:  </FormFieldLabel>
+  <Textarea />
+</FormField>
+```
+
+Screen readers will announce the label and the field.
+
+### Linking helper text
+
+Description:Enter a brief description
+
+```jsx
+{
+  globals: {
+    imports: `import { FormField, FormFieldHelper, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Description:      </FormFieldLabel>
+      <Textarea />
+      <FormFieldHelper>
+        Enter a brief description      </FormFieldHelper>
+    </FormField>
+}
+```
+
+Screen readers will announce the label, the field and the helper text.

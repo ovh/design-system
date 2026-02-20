@@ -1,0 +1,68 @@
+React Components
+
+# Kbd
+
+The **Kbd** component is used to display keyboard keys or key combinations, typically for shortcuts or user instructions. It visually distinguishes key inputs from regular text.
+
+Esc
+
+## Overview
+
+---
+
+**Kbd** is a non-interactive component designed to represent keyboard keys or combinations. The purpose of the **Kbd** is to provide a standardized way to format and present key inputs.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Kbd</td></tr><tr><th scope="row">Also known as</th><td>-</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/kbd" target="_blank">Github<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+**Kbd** is commonly used to display single keys (e.g., Esc) and keyboard shortcuts (e.g., ⌘ + S, Ctrl + Shift + P) in:
+
+-   Documentation
+-   Interactive guides
+-   Accessibility section
+
+This component is not interactive and should not be used to trigger any action.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| Keep combinations consistent with platform conventions (e.g., ⌘ for macOS, Ctrl for Windows/Linux) |
+| Keep separator usage consistent (using `+`) |
+| Integrate Kbd inline with instructional text (e.g., `Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save your changes.` |
+
+| ❌ Don't |
+| --- |
+| Use Kbd as a substitute for clickable button. It must not trigger any action |
+| Nest Kbd inside other interactive elements |
+| Use Kbd for decorative text or to stylize regular words |
+| Add multiple keys into one element |
+| Display unrealistic or platform-inconsistent combinations |
+| Use it for icons or non-keyboard symbols |
+
+### Best Practices in Context
+
+1.  **Kbd**
+
+## Behavior
+
+---
+
+**Kbd** has no interactive behavior. It is a purely visual component.
+
+The **Kbd** component adapts to its parent font size.
+
+## Navigation
+
+---
+
+The **Kbd** component is not focusable by default, as it is non-interactive.
+
+## Accessibility
+
+---
+
+This component complies with the [Kbd HTML element](https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/kbd) .

@@ -1,0 +1,470 @@
+# React Components/Popover
+
+## Subcomponents
+
+
+### PopoverContent
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `createPortal` | `` | No | true | Whether the component should be rendered in the DOM close to the body tag. |
+| `withArrow` | `` | No | false | Whether the component displays an arrow pointing to the trigger. |
+
+
+
+### PopoverTrigger
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `asChild` | `` | No |  | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+
+## Examples
+
+
+### Accessibility With Menu
+
+```tsx
+{
+  globals: {
+    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, ICON_NAME, Button, Divider, Icon, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Popover>
+      <PopoverTrigger aria-haspopup="menu" asChild>
+        <Button>
+          <Icon name={ICON_NAME.ellipsisVertical} />
+        </Button>
+      </PopoverTrigger>
+
+      <PopoverContent aria-label="Profile menu" withArrow>
+        <div role="menu" style={{
+        display: 'flex',
+        flexDirection: 'column'
+      }}>
+          <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>
+            Information
+          </Button>
+
+          <Button role="menuitem" variant={BUTTON_VARIANT.ghost}>
+            Notifications
+          </Button>
+
+          <Divider style={{
+          width: '100%'
+        }} />
+
+          <Button color={BUTTON_COLOR.critical} role="menuitem" variant={BUTTON_VARIANT.ghost}>
+            Sign out
+          </Button>
+        </div>
+      </PopoverContent>
+    </Popover>
+}
+```
+
+### Controlled
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: ({}) => {
+    const [isOpen, setIsOpen] = useState(false);
+    function togglePopover() {
+      setIsOpen(isOpen => !isOpen);
+    }
+    return <>
+        <Button onClick={togglePopover}>
+          Toggle popover
+        </Button>
+
+        <Popover open={isOpen}>
+          <PopoverTrigger asChild>
+            <Icon name={ICON_NAME.cog} />
+          </PopoverTrigger>
+
+          <PopoverContent withArrow>
+            This is the popover content
+          </PopoverContent>
+        </Popover>
+      </>;
+  }
+}
+```
+
+### Custom Trigger
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Popover>
+      <PopoverTrigger asChild>
+        <Button>
+          Custom Trigger
+        </Button>
+      </PopoverTrigger>
+
+      <PopoverContent>
+        This is the popover content
+      </PopoverContent>
+    </Popover>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Popover>
+      <PopoverTrigger>
+        Show popover
+      </PopoverTrigger>
+
+      <PopoverContent>
+        This is the popover content
+      </PopoverContent>
+    </Popover>
+}
+```
+
+### Demo
+
+```tsx
+{
+  parameters: {
+    layout: 'centered'
+  },
+  render: (arg: DemoArg) => <Popover gutter={arg.gutter} position={arg.position} sameWidth={arg.sameWidth}>
+      <PopoverTrigger>
+        Show popover
+      </PopoverTrigger>
+
+      <PopoverContent withArrow={arg.withArrow}>
+        {arg.content}
+      </PopoverContent>
+    </Popover>,
+  argTypes: orderControls({
+    content: {
+      table: {
+        category: CONTROL_CATEGORY.slot
+      },
+      control: 'text'
+    },
+    gutter: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'number'
+        }
+      },
+      control: 'number'
+    },
+    position: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'POPOVER_POSITION'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: POPOVER_POSITIONS
+    },
+    sameWidth: {
+      table: {
+        category: CONTROL_CATEGORY.design
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+    withArrow: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: {
+          summary: false
+        },
+        type: {
+          summary: 'boolean'
+        }
+      },
+      control: {
+        type: 'boolean'
+      }
+    }
+  }),
+  args: {
+    content: 'My popover content'
+  }
+}
+```
+
+### Grid
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateRows: 'repeat(3, 1fr)',
+    gap: '20px',
+    padding: '50px 150px'
+  }}>
+      {story()}
+    </div>],
+  globals: {
+    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Popover position="top-start">
+        <PopoverTrigger>
+          Top Left
+        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Top Left popover
+        </PopoverContent>
+      </Popover>
+
+      <Popover position="top">
+        <PopoverTrigger>
+          Top
+        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Top popover
+        </PopoverContent>
+      </Popover>
+
+      <Popover position="top-end">
+        <PopoverTrigger>
+          Top Right
+        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Top Right popover
+        </PopoverContent>
+      </Popover>
+
+      <Popover position="left">
+        <PopoverTrigger>
+          Middle Left
+        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Middle Left popover
+        </PopoverContent>
+      </Popover>
+
+      <div />
+
+      <Popover position="right">
+        <PopoverTrigger>
+          Middle Right
+        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Middle Right popover
+        </PopoverContent>
+      </Popover>
+
+      <Popover position="bottom-start">
+        <PopoverTrigger>
+          Bottom Left
+        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Bottom Left popover
+        </PopoverContent>
+      </Popover>
+
+      <Popover position="bottom">
+        <PopoverTrigger>
+          Bottom
+        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Bottom popover
+        </PopoverContent>
+      </Popover>
+
+      <Popover position="bottom-end">
+        <PopoverTrigger>
+          Bottom Right
+        </PopoverTrigger>
+        <PopoverContent withArrow>
+          Bottom Right popover
+        </PopoverContent>
+      </Popover>
+    </>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Popover>
+      <PopoverTrigger asChild>
+        <Button>
+          Show popover
+        </Button>
+      </PopoverTrigger>
+
+      <PopoverContent>
+        This is the popover content
+      </PopoverContent>
+    </Popover>
+}
+```
+
+### Same Width
+
+```tsx
+{
+  globals: {
+    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Popover sameWidth>
+      <PopoverTrigger>
+        Show popover that will take this width as reference
+      </PopoverTrigger>
+
+      <PopoverContent>
+        The popover content
+      </PopoverContent>
+    </Popover>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexFlow: 'row wrap',
+    gap: '12px'
+  }}>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button>Default</Button>
+        </PopoverTrigger>
+        <PopoverContent createPortal={false}>This is the popover content</PopoverContent>
+      </Popover>
+
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button>With Arrow</Button>
+        </PopoverTrigger>
+        <PopoverContent createPortal={false} withArrow>This is the popover content</PopoverContent>
+      </Popover>
+    </div>
+}
+```
+
+### Z Index
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon, POPOVER_POSITION, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <span>Default Z-axis order:</span>
+
+      <Popover open>
+        <PopoverTrigger asChild>
+          <Icon name={ICON_NAME.circleInfo} style={{
+          fontSize: '24px'
+        }} />
+        </PopoverTrigger>
+
+        <PopoverContent withArrow>
+          Back
+        </PopoverContent>
+      </Popover>
+
+      <Popover open>
+        <PopoverTrigger asChild>
+          <Icon name={ICON_NAME.circleInfo} style={{
+          fontSize: '24px'
+        }} />
+        </PopoverTrigger>
+
+        <PopoverContent withArrow>
+          Front
+        </PopoverContent>
+      </Popover>
+
+      <br />
+
+      <span>Custom Z-axis order:</span>
+
+      <Popover open position={POPOVER_POSITION.bottom} positionerStyle={{
+      zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'
+    }}>
+        <PopoverTrigger asChild>
+          <Icon name={ICON_NAME.circleInfo} style={{
+          fontSize: '24px'
+        }} />
+        </PopoverTrigger>
+
+        <PopoverContent withArrow>
+          Front
+        </PopoverContent>
+      </Popover>
+
+      <Popover open position={POPOVER_POSITION.bottom}>
+        <PopoverTrigger asChild>
+          <Icon name={ICON_NAME.circleInfo} style={{
+          fontSize: '24px'
+        }} />
+        </PopoverTrigger>
+
+        <PopoverContent withArrow>
+          Back
+        </PopoverContent>
+      </Popover>
+    </>
+}
+```

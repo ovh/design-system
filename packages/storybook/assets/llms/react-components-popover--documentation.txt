@@ -1,0 +1,168 @@
+React Components
+
+# Popover
+
+_**Popover** component is triggered by click and is used to provide additional information to the user in a new temporary surface that overlays the page_
+
+## Overview
+
+---
+
+A **Popover** will provide additional information to the user in a clear and concise way.
+
+It is commonly used to appear by click, thus crucial information should not be displayed in the **Popover**.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Popover</td></tr><tr><th scope="row">Also known as</th><td>Complex Tooltip</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-8447" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/popover" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-popover--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+A **Popover** is used to provide an explanation for a user interface element.
+
+It can include interactive elements such as a button or a link.
+
+### Tooltip vs Popover
+
+-   Both components look similar but a  is displayed on hover and focus while **Popover** is triggered by click.
+-   Tooltips are commonly used for shorter explanations, while longer text / complex UIs would suit a popover better.
+-   Use a popover when you need to insert interactive elements such as Button.
+-   A popover can be dismissed if an action button allows it.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a popover to display contextual information or options that are secondary to the main task |
+| - Prefer a popover over a tooltip when the content is longer, interactive, or requires formatting (but keep it focused) |
+| - Write a popover content using complete sentences |
+| - Ensure the popover is positioned clearly and does not overlap with its trigger element |
+| - Use a popover for lightweight content such as field explanations, secondary actions |
+
+| ❌ Don't |
+| --- |
+| - Don't place critical or mandatory information inside a popover. Users may miss it since it's only revealed on click |
+| - Don't overload a popover with rich content like images, videos, or large interactive components. Use a Modal or Drawer instead |
+| - Don't trigger a popover from non-obvious elements, the interactive element should clearly indicate it controls a popover |
+| - Don't rely on popovers for persistent content since they're meant to be transient and dismissible |
+| - Don't use a popover on elements that are already part of another complex interaction |
+
+### Best Practices in Context
+
+1.  **Popover**
+2.  **Content**
+3.  **Caret tip** - optional
+4.  **Trigger**
+
+## Placement
+
+---
+
+**Popover** can be set in a certain position by default around its trigger.
+
+**Popover** has automatic positioning feature. It can detect the edge of the browser so the container always stays visible on a page.
+
+## Behavior
+
+---
+
+By default, a **Popover** is hidden to the user.
+
+It triggers when the user clicks on the **Popover**'s trigger element such as a button.
+
+The **Popover** can be closed or dismissed by clicking anywhere on the page outside the **Popover**'s container.
+
+## Navigation
+
+---
+
+### Focus Management
+
+Depending on the **Popover** trigger used (e.g., a button or a link), refer to that component's documentation for its keyboard interaction.
+
+When the **Popover** is opened, it gains focus automatically. Focus remains within the **Popover** until it is closed.
+
+Closing it returns focus to the trigger element.
+
+### General Keyboard Shortcuts
+
+Pressing Escape closes the currently opened **Popover**.
+
+Pressing Tab moves focus forward through the focusable elements inside the **Popover**.
+
+Pressing Shift + Tab moves focus backward within the **Popover**.
+
+## Accessibility
+
+---
+
+To ensure proper accessibility, **Popover** component must specify its content nature using appropriate ARIA attributes.
+
+### Specify the Popover's content nature
+
+Update the content type on the **Popover Trigger**, which is set by default to `aria-haspopup="dialog"`.
+
+| Content Type | ARIA Attribute |
+| --- | --- |
+| Menu | `aria-haspopup="menu"` |
+| List | `aria-haspopup="listbox"` |
+| Tree | `aria-haspopup="tree"` |
+| Grid | `aria-haspopup="grid"` |
+| Dialog | `aria-haspopup="dialog"` |
+| Comment | `aria-details="comment"` |
+| Definition | `aria-details="term"` + `role="definition"` |
+| Caption | `aria-details="figure"` |
+| Footnote | `aria-details="doc-footnote"` |
+| Endnote | `aria-details="doc-endnote"` |
+| Description | `aria-details="true"` |
+
+### Using aria-popup for a Popover containing a Menu
+
+```jsx
+<Popover>
+  <PopoverTrigger
+    aria-haspopup="menu"
+    asChild
+  >
+    <Button>
+      <Icon name="ellipsis-vertical" />
+    </Button>
+  </PopoverTrigger>
+  <PopoverContent
+    aria-label="Profile menu"
+    withArrow
+  >
+    <div
+      role="menu"
+      style={{
+        display: 'flex',
+        flexDirection: 'column'
+      }}
+    >
+      <Button
+        role="menuitem"
+        variant="ghost"
+      >
+        Information      </Button>
+      <Button
+        role="menuitem"
+        variant="ghost"
+      >
+        Notifications      </Button>
+      <Divider
+        style={{
+          width: '100%'
+        }}
+       />
+      <Button
+        color="critical"
+        role="menuitem"
+        variant="ghost"
+      >
+        Sign out      </Button>
+    </div>
+  </PopoverContent>
+</Popover>
+```
+
+Screen readers will recognize that **Popover** contains a menu and menu items. It indicates that the element can trigger a popup and the nature of this popup.

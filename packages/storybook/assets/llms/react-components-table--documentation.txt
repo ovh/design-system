@@ -1,0 +1,84 @@
+React Components
+
+# Table
+
+_A component to display data in a tabular format._
+
+Front-end web developer course 2021
+| Person | Most interest in | Age |
+| --- | --- | --- |
+| Chris | HTML tables | 22 |
+| Dennis | Web accessibility | 45 |
+| Sarah | JavaScript frameworks | 29 |
+| Karen | Web performance | 36 |
+
+## Overview
+
+---
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Table</td></tr><tr><th scope="row">Also known as</th><td>-</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=93-12118" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/table" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-table--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Table to present structured data in a clear and readable layout |
+| - Limit the number of columns to 9 or fewer to maintain readability and avoid horizontal scrolling |
+| - Use concise, meaningful headers, and add a Tooltip or description if more context is needed |
+| - Display Skeletons in cells when data is loading asynchronously, rather than leaving them blank |
+| - Ensure the Table is responsive by allowing columns to adapt to content and screen size |
+
+| ❌ Don't |
+| --- |
+| - Don't use the Table for layout or alignment purposes, they are meant for displaying tabular data only |
+| - Don't use the Table component to display large datasets (e.g. 30+ rows) without pagination or a `Load more` button |
+| - Don't overload rows with too much content per cell, keep data atomic and easy to scan |
+| - Don't leave column headers unclear or overly abbreviated |
+| - Don't make the Table scroll in multiple directions unless absolutely necessary, to avoid poor mobile experiences |
+
+### Best Practices in Context
+
+1.  **Table**
+2.  **Header cell**
+3.  **Body cell**
+
+## Behavior
+
+---
+
+**Table** component acts like native HTML table. It dynamically sizes column widths and row heights based on content and available space.
+
+When an element is too large in a cell, the row height will adjust based on this element. It is possible to add a new line in a cell.
+
+## Variation
+
+---
+
+### Size
+
+-   **Small**: displaying compact data sets in limited spaces, making efficient use of the available area without overwhelming the user.
+-   **Medium** _(default)_: default size of presenting data in a **Table**.
+-   **Large**: presenting extensive data sets with more detailed information, often featuring more columns and rows to provide comprehensive visibility of the data.
+
+### Variant
+
+-   **Default**: provides default UI for the component, without distinctive background colors on rows/colors.
+-   **Striped**: improving readability by using alternating row colors to distinguish between consecutive rows of data, making it easier for users to follow and interpret the information. We recommend to use this variant when there are more than 10 rows in the **Table**.
+
+## Navigation
+
+---
+
+The **Table** component behaves like the native `<table>` element. Keyboard navigation depends on the structure and interactive elements within the Table (e.g., links, or buttons). Integrators should ensure proper focus management based on their specific implementation.
+
+## Accessibility
+
+---
+
+To ensure the **Table** component is fully accessible, it is essential to follow best practices for structuring tables with the correct semantic elements (`<thead>`, `<tbody>`, `<th>`, `<td>`...).
+
+Since **Table** implementation is handled by the integrator, we recommend referring to the [WCAG guidelines](https://www.w3.org/WAI/tutorials/tables) for accessible tables.

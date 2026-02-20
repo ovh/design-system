@@ -1,0 +1,76 @@
+React Components
+
+# Text
+
+_The **Text** component is used to display and style text content within an application._
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+## Overview
+
+---
+
+The **Text** component is a fundamental UI element for displaying text content.
+
+It supports various presets of styles, sizes, and weights to cater to different textual content requirements such as paragraphs, headings, and inline text.
+
+The component can be extra customized to fit the design and branding needs of the application.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Text</td></tr><tr><th scope="row">Also known as</th><td>Paragraph</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=172-12061" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/text" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-text--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+The **Text** component provides predefined text styles (font size, color, weight, etc.) to ensure visual consistency across the application.
+
+It is ideal when you want to apply a ready-made text style from the OVHcloud Design System without manually setting typography values.
+
+It is not meant for custom typography needs like overriding styles to match a specific heading or layout.
+
+If the available presets don't fit your use case, use the appropriate semantic HTML tag with your own styling instead.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use Text presets to ensure visual and semantic consistency across your UI |
+| - Respect a logical heading hierarchy (e.g., h2 follows h1, etc.) for accessibility and SEO |
+| - Use Text component to convey meaning and structure, not only appearance |
+| - Choose the appropriate preset for readability and emphasis, depending on the context |
+| - Ensure sufficient color contrast between text and background for readability and accessibility |
+
+| ❌ Don't |
+| --- |
+| - Don't skip heading levels (e.g., using heading-3 directly after heading-1), this harms accessibility and user comprehension |
+| - Don't override the semantic tag of a preset (e.g., using heading-2 styled as a div) |
+| - Don't use Text components just to apply a visual style, consider whether semantic meaning is appropriate |
+| - Don't use too many different font sizes and weights on a single view, it creates visual noise and weakens the hierarchy |
+
+## Placement
+
+---
+
+**Text** can be used everywhere in a page as long as levels and heading hierarchy are respected.
+
+It can stand alone or be included in other components depending on the usage.
+
+## Behavior
+
+---
+
+Based on its informational manner, the **Text** default behavior is being read-only.
+
+The user can only select its content if needed.
+
+## Navigation
+
+---
+
+The **Text** component is non-interactive and does not receive keyboard focus. It is purely visual and serves to display textual content without affecting keyboard navigation.
+
+## Accessibility
+
+---
+
+This component complies with the [h1 to h6](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) , [p](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/p) , [label](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label) , [small](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/small) , [span](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span) and [code](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/code) HTML elements.

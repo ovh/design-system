@@ -1,0 +1,286 @@
+React Components
+
+# Tag
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Tag**
+
+## Tag
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes) . |
+| color | `TAG_COLOR` | - | `TAG_COLOR.information` | The color preset to use. |
+| size | `TAG_SIZE` | - | `TAG_SIZE.md` | The size preset to use. |
+
+## Enums
+
+---
+
+### TAG_COLOR
+
+-   critical =`"critical"`
+-   information =`"information"`
+-   neutral =`"neutral"`
+-   primary =`"primary"`
+-   success =`"success"`
+-   warning =`"warning"`
+
+### TAG_SIZE
+
+-   lg =`"lg"`
+-   md =`"md"`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-tag-background-color-critical | var(--ods-color-critical-000) | 
+ |
+| --ods-tag-background-color-critical-active | var(--ods-color-critical-100) | 
+
+ |
+| --ods-tag-background-color-critical-hover | var(--ods-color-critical-050) | 
+
+ |
+| --ods-tag-background-color-information | var(--ods-color-information-000) | 
+
+ |
+| --ods-tag-background-color-information-active | var(--ods-color-information-200) | 
+
+ |
+| --ods-tag-background-color-information-hover | var(--ods-color-information-100) | 
+
+ |
+| --ods-tag-background-color-neutral | var(--ods-color-neutral-000) | 
+
+ |
+| --ods-tag-background-color-neutral-active | var(--ods-color-neutral-200) | 
+
+ |
+| --ods-tag-background-color-neutral-hover | var(--ods-color-neutral-100) | 
+
+ |
+| --ods-tag-background-color-primary | var(--ods-color-primary-000) | 
+
+ |
+| --ods-tag-background-color-primary-active | var(--ods-color-primary-200) | 
+
+ |
+| --ods-tag-background-color-primary-hover | var(--ods-color-primary-100) | 
+
+ |
+| --ods-tag-background-color-success | var(--ods-color-success-000) | 
+
+ |
+| --ods-tag-background-color-success-active | var(--ods-color-success-100) | 
+
+ |
+| --ods-tag-background-color-success-hover | var(--ods-color-success-050) | 
+
+ |
+| --ods-tag-background-color-warning | var(--ods-color-warning-000) | 
+
+ |
+| --ods-tag-background-color-warning-active | var(--ods-color-warning-100) | 
+
+ |
+| --ods-tag-background-color-warning-hover | var(--ods-color-warning-050) | 
+
+ |
+| --ods-tag-border-color-critical | var(--ods-color-critical-100) | 
+
+ |
+| --ods-tag-border-color-critical-active | var(--ods-color-critical-300) | 
+
+ |
+| --ods-tag-border-color-critical-hover | var(--ods-color-critical-200) | 
+
+ |
+| --ods-tag-border-color-information | var(--ods-color-information-100) | 
+
+ |
+| --ods-tag-border-color-information-active | var(--ods-color-information-300) | 
+
+ |
+| --ods-tag-border-color-information-hover | var(--ods-color-information-200) | 
+
+ |
+| --ods-tag-border-color-neutral | var(--ods-color-neutral-100) | 
+
+ |
+| --ods-tag-border-color-neutral-active | var(--ods-color-neutral-300) | 
+
+ |
+| --ods-tag-border-color-neutral-hover | var(--ods-color-neutral-200) | 
+
+ |
+| --ods-tag-border-color-primary | var(--ods-color-primary-500) | 
+
+ |
+| --ods-tag-border-color-primary-active | var(--ods-color-primary-700) | 
+
+ |
+| --ods-tag-border-color-primary-hover | var(--ods-color-primary-600) | 
+
+ |
+| --ods-tag-border-color-success | var(--ods-color-success-100) | 
+
+ |
+| --ods-tag-border-color-success-active | var(--ods-color-success-300) | 
+
+ |
+| --ods-tag-border-color-success-hover | var(--ods-color-success-200) | 
+
+ |
+| --ods-tag-border-color-warning | var(--ods-color-warning-100) | 
+
+ |
+| --ods-tag-border-color-warning-active | var(--ods-color-warning-300) | 
+
+ |
+| --ods-tag-border-color-warning-hover | var(--ods-color-warning-200) | 
+
+ |
+| --ods-tag-border-width | calc(var(--ods-theme-border-width) * 2) | 
+
+ |
+| --ods-tag-column-gap | calc(var(--ods-theme-column-gap) / 2) | 
+
+ |
+| --ods-tag-padding-horizontal-lg | var(--ods-theme-padding-horizontal) | 
+
+ |
+| --ods-tag-padding-horizontal-md | var(--ods-theme-padding-horizontal) | 
+
+ |
+| --ods-tag-padding-vertical-lg | calc(var(--ods-theme-padding-vertical) / 4) | 
+
+ |
+| --ods-tag-padding-vertical-md | calc(var(--ods-theme-padding-vertical) / 8) | 
+
+ |
+| --ods-tag-row-gap | calc(var(--ods-theme-row-gap) / 2) | 
+
+ |
+| --ods-tag-text-color-critical | var(--ods-color-critical-900) | 
+
+ |
+| --ods-tag-text-color-critical-active | var(--ods-color-critical-900) | 
+
+ |
+| --ods-tag-text-color-critical-hover | var(--ods-color-critical-900) | 
+
+ |
+| --ods-tag-text-color-information | var(--ods-color-information-900) | 
+
+ |
+| --ods-tag-text-color-information-active | var(--ods-color-information-900) | 
+
+ |
+| --ods-tag-text-color-information-hover | var(--ods-color-information-900) | 
+
+ |
+| --ods-tag-text-color-neutral | var(--ods-color-neutral-700) | 
+
+ |
+| --ods-tag-text-color-neutral-active | var(--ods-color-neutral-700) | 
+
+ |
+| --ods-tag-text-color-neutral-hover | var(--ods-color-neutral-700) | 
+
+ |
+| --ods-tag-text-color-primary | var(--ods-color-primary-900) | 
+
+ |
+| --ods-tag-text-color-primary-active | var(--ods-color-primary-900) | 
+
+ |
+| --ods-tag-text-color-primary-hover | var(--ods-color-primary-900) | 
+
+ |
+| --ods-tag-text-color-success | var(--ods-color-success-900) | 
+
+ |
+| --ods-tag-text-color-success-active | var(--ods-color-success-900) | 
+
+ |
+| --ods-tag-text-color-success-hover | var(--ods-color-success-900) | 
+
+ |
+| --ods-tag-text-color-warning | var(--ods-color-warning-900) | 
+
+ |
+| --ods-tag-text-color-warning-active | var(--ods-color-warning-900) | 
+
+ |
+| --ods-tag-text-color-warning-hover | var(--ods-color-warning-900) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Tag>
+  My tag
+</Tag>
+```
+
+### Color
+
+```jsx
+<>
+  <Tag color="critical">
+    Critical  </Tag>
+  <Tag color="information">
+    Information  </Tag>
+  <Tag color="neutral">
+    Neutral  </Tag>
+  <Tag color="primary">
+    Primary  </Tag>
+  <Tag color="success">
+    Success  </Tag>
+  <Tag color="warning">
+    Warning  </Tag>
+</>
+```
+
+### Disabled
+
+```jsx
+<Tag disabled>
+  My tag
+</Tag>
+```
+
+### Size
+
+```jsx
+<>
+  <Tag size="md">
+    MD tag  </Tag>
+  <Tag size="lg">
+    LG tag  </Tag>
+</>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

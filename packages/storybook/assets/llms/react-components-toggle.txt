@@ -1,0 +1,261 @@
+# React Components/Toggle
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `checked` | `` | No |  | The controlled checked state of the toggle. |
+| `defaultChecked` | `` | No |  | The initial checked state of the toggle. Use when you don't need to control the checked state of the toggle. |
+| `disabled` | `` | No |  | Whether the component is disabled. |
+| `invalid` | `` | No |  | Whether the component is in error state. |
+| `name` | `` | No |  | The name of the form element. Useful for form submission. |
+| `onCheckedChange` | `` | No |  | Callback fired when the checked state changes. |
+| `required` | `` | No |  | Whether the component is required. |
+| `value` | `` | No |  | The value of form element. Useful for form submission. |
+| `withLabels` | `` | No |  | Whether the component displays "ON/OFF" labels. |
+
+
+## Subcomponents
+
+
+### ToggleControl
+
+
+
+
+### ToggleLabel
+
+
+
+## Examples
+
+
+### Accessibility Aria Label
+
+```tsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle aria-label="Enable dark mode">
+      <ToggleControl />
+
+      <ToggleLabel>
+        Dark mode
+      </ToggleLabel>
+    </Toggle>
+}
+```
+
+### Accessibility Label
+
+```tsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle>
+      <ToggleControl />
+
+      <ToggleLabel>
+        Enable dark mode
+      </ToggleLabel>
+    </Toggle>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle>
+      <ToggleControl />
+    </Toggle>
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    invalid: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    withLabels: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    }
+  })
+}
+```
+
+### Disabled
+
+```tsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle disabled>
+      <ToggleControl />
+    </Toggle>
+}
+```
+
+### In Form Field
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, FormField, Text, Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Text preset={TEXT_PRESET.label}>
+        Notification settings:
+      </Text>
+
+      <FormField>
+        <Toggle>
+          <ToggleControl />
+
+          <ToggleLabel>
+            General Information
+          </ToggleLabel>
+        </Toggle>
+      </FormField>
+
+      <FormField>
+        <Toggle>
+          <ToggleControl />
+
+          <ToggleLabel>
+            Promotions
+          </ToggleLabel>
+        </Toggle>
+      </FormField>
+    </>
+}
+```
+
+### Invalid
+
+```tsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle invalid>
+      <ToggleControl />
+    </Toggle>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Toggle>
+      <ToggleControl />
+    </Toggle>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    gap: '24px',
+    alignItems: 'center'
+  }}>
+      <Toggle>
+        <ToggleControl />
+      </Toggle>
+
+      <Toggle disabled>
+        <ToggleControl />
+      </Toggle>
+
+      <Toggle invalid>
+        <ToggleControl />
+      </Toggle>
+
+      <Toggle withLabels>
+        <ToggleControl />
+      </Toggle>
+
+      <Toggle>
+        <ToggleControl />
+        <ToggleLabel>With label</ToggleLabel>
+      </Toggle>
+    </div>
+}
+```
+
+### With Label
+
+```tsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle>
+      <ToggleControl />
+
+      <ToggleLabel>
+        Enable dark mode
+      </ToggleLabel>
+    </Toggle>
+}
+```
+
+### With Labels
+
+```tsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle withLabels>
+      <ToggleControl />
+    </Toggle>
+}
+```

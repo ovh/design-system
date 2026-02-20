@@ -1,0 +1,79 @@
+React Components
+
+# Divider
+
+_A **Divider** component is a spacer used to add white space between two elements on a page._
+
+---
+
+## Overview
+
+---
+
+A **Divider** is a UI component used to separate content into clear, distinct sections, providing visual breaks between different elements or groups of content.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Divider</td></tr><tr><th scope="row">Also known as</th><td>Separator, Spacer, Horizontal Line</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=26-19845" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/divider" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-divider--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+**Divider** is used to separate content on a page.
+
+It brings clarity to a layout by dividing content in proximity.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Divider to visually separate content into meaningful sections or groups |
+| - Place a Divider below section titles or headers to emphasize hierarchy and structure |
+| - Use Divider to indicate content boundaries without relying solely on spacing or background changes |
+| - Keep Divider usage subtle and consistent across the layout to preserve clarity |
+
+| ❌ Don't |
+| --- |
+| - Don't place a Divider above section titles or headers, it breaks natural reading flow |
+| - Don't overuse Dividers on a single page, too many can create visual noise and clutter |
+| - Don't use Divider as a primary layout mechanism, prefer spacing, grouping, or cards for structure |
+| - Don't rely on Divider to fix unclear content grouping, improve the layout or hierarchy instead |
+| - Don't use Divider when spacing alone is sufficient to separate elements |
+| - Don't apply inconsistent styling (e.g., thickness, color) that breaks the visual consistency of the interface |
+
+### Best Practices in Context
+
+1.  **Divider**
+2.  **Spacing**
+
+## Placement
+
+---
+
+Use **Divider** between closely related content blocks or UI elements to enhance readability without adding visual noise.
+
+It works well in layouts like sidebars, menus, or cards to separate sections clearly.
+
+## Variation
+
+---
+
+### Spacing
+
+It can be adjusted around the **Divider** to match the layout and visual rhythm of the content.
+
+### Color
+
+-   **Light** (default): used on dark or colored backgrounds to maintain contrast
+-   **Dark**: used on light backgrounds for clear, subtle separation
+
+## Navigation
+
+---
+
+The **Divider** component is purely visual and does not receive keyboard focus. It serves as a separator between content sections and does not impact keyboard navigation.
+
+## Accessibility
+
+---
+
+The **Divider** provides a clear visual separation between content sections which can help users with visual impairments to better understand the layout and structure of the page.

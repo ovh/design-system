@@ -1,0 +1,142 @@
+React Components
+
+# Timepicker
+
+_A **Timepicker** is a component that allows users to select a time from a list or set a specific time._
+
+UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
+
+## Overview
+
+---
+
+The **Timepicker** component is used for selecting times in forms and applications. It provides an interface for users to choose a time, ensuring the format is consistent and valid. The component can include features like 12-hour or 24-hour formats, increments, and disabled times.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Timepicker</td></tr><tr><th scope="row">Also known as</th><td>Time</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=53-11662" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/timepicker" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-timepicker--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+**Timepicker** is used to allow a selection of a specific time.
+
+It is useful for scheduling such as planning a meeting.
+
+A **Timepicker** field includes the hour, minutes and optionally seconds. It can be followed by an AM/PM indicator.
+
+For some use case, an optional timezone Select can be added to allow users to select their desired timezone from a list of options.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Timepicker when users need to select a specific time, especially for scheduling or planning scenarios |
+| - Always pair the Timepicker with a clear label and/or helper text |
+| - Combine the Timepicker with a datepicker when both date and time selection are needed in the same context |
+| - When offering timezone selection, provide a restricted and relevant list to avoid overwhelming users. Limit options based on business relevance or geography |
+
+| ❌ Don't |
+| --- |
+| - Don't use a placeholder as a label since it disappears on input and fails accessibility standards |
+| - Don't rely on a placeholder to convey critical information like format or timezone. This should be communicated through helper text or labels |
+| - Don't use a Timepicker for ambiguous or unclear time selection use cases. Ensure it is the right fit for your form flow and user intent |
+| - Don't expose all global timezones unless necessary |
+
+### Best Practices in Context
+
+1.  **Timepicker**
+2.  **Input field**
+3.  **Timezones select** - optional
+
+## Placement
+
+---
+
+A **Timepicker** can be used in a page as long as there is a need to allow users to pick a time.
+
+The time field has a fixed width by default but, when used in a form, its width should match the other inputs.
+
+**Timepicker** should be vertically aligned with other form components on a same page.
+
+## Behavior
+
+---
+
+A **Timepicker** can widen to match its container (width of the elements is 50% each).
+
+It has the same states and behaviors for each inner component (i.e.  and ).
+
+## Navigation
+
+---
+
+### Focus Management
+
+When the **Timepicker** is focused, the first focusable segment (typically the hour Input) receives focus automatically.
+
+Focus then moves sequentially through the minute and second inputs (if present), followed by the AM/PM toggle (depending on the browser) and the optional timezone select.
+
+Each individual segment can receive focus and be navigated independently using the keyboard. If a segment (e.g., seconds or timezone) is not visible or disabled, it is skipped in the tab order.
+
+### General Keyboard Shortcuts
+
+Pressing Tab moves focus forward through all focusable segments of the Timepicker:
+
+-   Hour field
+-   Minute field
+-   Second field (if enabled)
+-   AM/PM toggle (if 12-hour format)
+-   Time zone Select (if present)
+
+Pressing Shift + Tab moves focus backward through the segments.
+
+When focused on an input segment (hour, minute, second):
+
+-   Typing numeric values replaces the current value
+-   Pressing Arrow Up increments the value
+-   Pressing Arrow Down decrements the value
+-   Pressing Backspace clears the content
+-   Pressing Home or fn + Arrow Up increases the value by:
+    -   3 units for the hour segment
+    -   10 units for minutes and seconds
+-   Pressing End or fn + Arrow Down decreases the value by:
+    -   3 units for the hour segment
+    -   10 units for minutes and seconds
+
+When focused on the AM/PM toggle:
+
+-   Pressing Arrow Up or Arrow Down switches between AM and PM
+
+When focused on the timezone Select, keyboard shortcuts are similar to the Select component:
+
+-   Pressing Space or Arrow Down opens the dropdown
+-   Arrow keys navigate options
+-   Enter or Tab selects the option and closes the dropdown
+-   Pressing Escapecloses the dropdown
+
+## Accessibility
+
+---
+
+To ensure proper accessibility, the **Timepicker** component must be correctly labeled.
+
+### Always provide an explicit label
+
+Every **Timepicker** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
+
+Starting time:
+
+UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Starting time:  </FormFieldLabel>
+  <Timepicker withSeconds>
+    <TimepickerControl />
+    <TimepickerTimezoneList />
+  </Timepicker>
+</FormField>
+```
+
+Screen readers will announce the label, the input time and the select field.

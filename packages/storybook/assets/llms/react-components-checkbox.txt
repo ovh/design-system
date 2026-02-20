@@ -1,0 +1,329 @@
+# React Components/Checkbox
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `checked` | `` | No |  | The controlled checked state of the checkbox. |
+| `defaultChecked` | `` | No |  | The initial checked state of the checkbox. Use when you don't need to control the checked state of the checkbox. |
+| `disabled` | `` | No |  | Whether the component is disabled. |
+| `invalid` | `` | No |  | Whether the component is in error state. |
+| `name` | `` | No |  | The name of the form element. Useful for form submission. |
+| `onCheckedChange` | `` | No |  | Callback fired when the checked state changes. |
+| `required` | `` | No |  | Whether the component is required. |
+| `value` | `` | No |  | The value of form element. Useful for form submission. |
+
+
+## Subcomponents
+
+
+### CheckboxControl
+
+
+
+
+### CheckboxGroup
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `defaultValue` | `` | No |  | The initial value of `value` when uncontrolled. |
+| `disabled` | `` | No |  | Whether the group is disabled. |
+| `invalid` | `` | No |  | Whether the group is in error. |
+| `name` | `` | No |  | The name of the form element. Useful for form submission. |
+| `onValueChange` | `` | No |  | Callback fired when the value changes. |
+| `readOnly` | `` | No |  | Whether the component is readonly. |
+| `value` | `` | No |  | The controlled value of the checkbox group. |
+
+
+
+### CheckboxLabel
+
+
+
+## Examples
+
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Checkbox, CheckboxControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Checkbox>
+      <CheckboxControl />
+    </Checkbox>
+}
+```
+
+### Demo
+
+```tsx
+{
+  render: (arg: DemoArg) => <Checkbox disabled={arg.disabled} invalid={arg.invalid}>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        {arg.label}
+      </CheckboxLabel>
+    </Checkbox>,
+  argTypes: orderControls({
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    invalid: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    label: {
+      table: {
+        category: CONTROL_CATEGORY.slot
+      },
+      control: 'text'
+    }
+  }),
+  args: {
+    label: 'My checkbox'
+  }
+}
+```
+
+### Disabled
+
+```tsx
+{
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Checkbox disabled>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        Checkbox
+      </CheckboxLabel>
+    </Checkbox>
+}
+```
+
+### Group
+
+```tsx
+{
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <CheckboxGroup defaultValue={['marketing']} name="acknowledgments">
+      <Checkbox value="term">
+        <CheckboxControl />
+
+        <CheckboxLabel>
+          I agree to the terms and conditions.
+        </CheckboxLabel>
+      </Checkbox>
+
+      <Checkbox value="marketing">
+        <CheckboxControl />
+
+        <CheckboxLabel>
+          I agree to receive marketing communications.
+        </CheckboxLabel>
+      </Checkbox>
+    </CheckboxGroup>
+}
+```
+
+### In Form Field
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Checkbox, CheckboxControl, CheckboxLabel, FormField, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Text preset={TEXT_PRESET.label}>
+        Legal considerations:
+      </Text>
+
+      <FormField>
+        <Checkbox>
+          <CheckboxControl />
+
+          <CheckboxLabel>
+            I agree to the terms and conditions.
+          </CheckboxLabel>
+        </Checkbox>
+      </FormField>
+
+      <FormField>
+        <Checkbox>
+          <CheckboxControl />
+
+          <CheckboxLabel>
+            I agree to receive marketing communications.
+          </CheckboxLabel>
+        </Checkbox>
+      </FormField>
+    </>
+}
+```
+
+### Invalid
+
+```tsx
+{
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Checkbox invalid>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        Checkbox
+      </CheckboxLabel>
+    </Checkbox>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Checkbox>
+      <CheckboxControl />
+
+      <CheckboxLabel>
+        Checkbox
+      </CheckboxLabel>
+    </Checkbox>
+}
+```
+
+### States
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Checkbox checked={false}>
+        <CheckboxControl />
+
+        <CheckboxLabel>
+          Unchecked
+        </CheckboxLabel>
+      </Checkbox>
+
+      <Checkbox checked={true}>
+        <CheckboxControl />
+
+        <CheckboxLabel>
+          Checked
+        </CheckboxLabel>
+      </Checkbox>
+
+      <Checkbox checked="indeterminate">
+        <CheckboxControl />
+
+        <CheckboxLabel>
+          Indeterminate
+        </CheckboxLabel>
+      </Checkbox>
+    </>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '12px'
+  }}>
+      <div style={{
+      display: 'flex',
+      flexFlow: 'row',
+      gap: '16px',
+      alignItems: 'center'
+    }}>
+        <Checkbox>
+          <CheckboxControl />
+          <CheckboxLabel>Unchecked</CheckboxLabel>
+        </Checkbox>
+        <Checkbox disabled>
+          <CheckboxControl />
+          <CheckboxLabel>Unchecked disabled</CheckboxLabel>
+        </Checkbox>
+      </div>
+
+      <div style={{
+      display: 'flex',
+      flexFlow: 'row',
+      gap: '16px',
+      alignItems: 'center'
+    }}>
+        <Checkbox checked>
+          <CheckboxControl />
+          <CheckboxLabel>Checked</CheckboxLabel>
+        </Checkbox>
+        <Checkbox checked disabled>
+          <CheckboxControl />
+          <CheckboxLabel>Checked disabled</CheckboxLabel>
+        </Checkbox>
+      </div>
+
+      <div style={{
+      display: 'flex',
+      flexFlow: 'row',
+      gap: '16px',
+      alignItems: 'center'
+    }}>
+        <Checkbox checked="indeterminate">
+          <CheckboxControl />
+          <CheckboxLabel>Indeterminate</CheckboxLabel>
+        </Checkbox>
+        <Checkbox checked="indeterminate" disabled>
+          <CheckboxControl />
+          <CheckboxLabel>Indeterminate disabled</CheckboxLabel>
+        </Checkbox>
+      </div>
+    </div>
+}
+```

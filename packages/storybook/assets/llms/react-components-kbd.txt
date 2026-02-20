@@ -1,0 +1,57 @@
+# React Components/Kbd
+
+## Examples
+
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Kbd } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Kbd>Cmd</Kbd>
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    children: {
+      table: {
+        category: CONTROL_CATEGORY.slot
+      },
+      control: 'text'
+    }
+  }),
+  args: {
+    children: 'Cmd + L'
+  }
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <>
+      <Kbd>Esc</Kbd>
+    </>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Kbd>Cmd</Kbd>
+}
+```

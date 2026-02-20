@@ -1,0 +1,507 @@
+React Components
+
+# Table
+
+## Overview
+
+---
+
+Front-end web developer course 2021
+| Person | Most interest in | Age |
+| --- | --- | --- |
+| Chris | HTML tables | 22 |
+| Dennis | Web accessibility | 45 |
+| Sarah | JavaScript frameworks | 29 |
+| Karen | Web performance | 36 |
+
+## Anatomy
+
+---
+
+1.  **Table**
+
+## Table
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [table attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table#attributes) . |
+| size | `TABLE_SIZE` | - | `TABLE_SIZE.md` | The size preset to use. |
+| variant | `TABLE_VARIANT` | - | `TABLE_VARIANT.default` | The variant preset to use. |
+
+## Enums
+
+---
+
+### TABLE_SIZE
+
+-   lg =`"lg"`
+-   md =`"md"`
+-   sm =`"sm"`
+
+### TABLE_VARIANT
+
+-   default =`"default"`
+-   striped =`"striped"`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-table-border-color | var(--ods-color-neutral-100) | 
+ |
+| --ods-table-cell-padding-horizontal-lg | var(--ods-theme-padding-horizontal) | 
+
+ |
+| --ods-table-cell-padding-horizontal-md | var(--ods-theme-padding-horizontal) | 
+
+ |
+| --ods-table-cell-padding-horizontal-sm | var(--ods-theme-padding-horizontal) | 
+
+ |
+| --ods-table-cell-padding-vertical-lg | calc(var(--ods-theme-padding-vertical) * 3) | 
+
+ |
+| --ods-table-cell-padding-vertical-md | calc(var(--ods-theme-padding-vertical) * 2) | 
+
+ |
+| --ods-table-cell-padding-vertical-sm | var(--ods-theme-padding-vertical) | 
+
+ |
+| --ods-table-head-background-color | var(--ods-color-neutral-050) | 
+
+ |
+| --ods-table-striped-background-color | var(--ods-color-neutral-050) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+Front-end web developer course 2021
+| Person | Most interest in | Age |
+| --- | --- | --- |
+| Chris | HTML tables | 22 |
+| Dennis | Web accessibility | 45 |
+| Sarah | JavaScript frameworks | 29 |
+| Karen | Web performance | 36 |
+
+```jsx
+<Table>
+  <caption>
+    Front-end web developer course 2021  </caption>
+  <thead>
+    <tr>
+      <th scope="col">
+        Person      </th>
+      <th scope="col">
+        Most interest in      </th>
+      <th scope="col">
+        Age      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">
+        Chris      </th>
+      <td>
+        HTML tables      </td>
+      <td>
+        22      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+        Dennis      </th>
+      <td>
+        Web accessibility      </td>
+      <td>
+        45      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+        Sarah      </th>
+      <td>
+        JavaScript frameworks      </td>
+      <td>
+        29      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+        Karen      </th>
+      <td>
+        Web performance      </td>
+      <td>
+        36      </td>
+    </tr>
+  </tbody>
+</Table>
+```
+
+### Size
+
+Front-end web developer course 2021
+| Person | Most interest in | Age |
+| --- | --- | --- |
+| Chris | HTML tables | 22 |
+| Dennis | Web accessibility | 45 |
+| Sarah | JavaScript frameworks | 29 |
+| Karen | Web performance | 36 |
+
+Front-end web developer course 2021
+| Person | Most interest in | Age |
+| --- | --- | --- |
+| Chris | HTML tables | 22 |
+| Dennis | Web accessibility | 45 |
+| Sarah | JavaScript frameworks | 29 |
+| Karen | Web performance | 36 |
+
+Front-end web developer course 2021
+| Person | Most interest in | Age |
+| --- | --- | --- |
+| Chris | HTML tables | 22 |
+| Dennis | Web accessibility | 45 |
+| Sarah | JavaScript frameworks | 29 |
+| Karen | Web performance | 36 |
+
+```jsx
+<>
+  <Table size="sm">
+    <caption>
+      Front-end web developer course 2021    </caption>
+    <thead>
+      <tr>
+        <th scope="col">
+          Person        </th>
+        <th scope="col">
+          Most interest in        </th>
+        <th scope="col">
+          Age        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">
+          Chris        </th>
+        <td>
+          HTML tables        </td>
+        <td>
+          22        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Dennis        </th>
+        <td>
+          Web accessibility        </td>
+        <td>
+          45        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Sarah        </th>
+        <td>
+          JavaScript frameworks        </td>
+        <td>
+          29        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Karen        </th>
+        <td>
+          Web performance        </td>
+        <td>
+          36        </td>
+      </tr>
+    </tbody>
+  </Table>
+  <Table size="md">
+    <caption>
+      Front-end web developer course 2021    </caption>
+    <thead>
+      <tr>
+        <th scope="col">
+          Person        </th>
+        <th scope="col">
+          Most interest in        </th>
+        <th scope="col">
+          Age        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">
+          Chris        </th>
+        <td>
+          HTML tables        </td>
+        <td>
+          22        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Dennis        </th>
+        <td>
+          Web accessibility        </td>
+        <td>
+          45        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Sarah        </th>
+        <td>
+          JavaScript frameworks        </td>
+        <td>
+          29        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Karen        </th>
+        <td>
+          Web performance        </td>
+        <td>
+          36        </td>
+      </tr>
+    </tbody>
+  </Table>
+  <Table size="lg">
+    <caption>
+      Front-end web developer course 2021    </caption>
+    <thead>
+      <tr>
+        <th scope="col">
+          Person        </th>
+        <th scope="col">
+          Most interest in        </th>
+        <th scope="col">
+          Age        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">
+          Chris        </th>
+        <td>
+          HTML tables        </td>
+        <td>
+          22        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Dennis        </th>
+        <td>
+          Web accessibility        </td>
+        <td>
+          45        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Sarah        </th>
+        <td>
+          JavaScript frameworks        </td>
+        <td>
+          29        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Karen        </th>
+        <td>
+          Web performance        </td>
+        <td>
+          36        </td>
+      </tr>
+    </tbody>
+  </Table>
+</>
+```
+
+### Variant
+
+Front-end web developer course 2021
+| Person | Most interest in | Age |
+| --- | --- | --- |
+| Chris | HTML tables | 22 |
+| Dennis | Web accessibility | 45 |
+| Sarah | JavaScript frameworks | 29 |
+| Karen | Web performance | 36 |
+
+Front-end web developer course 2021
+| Person | Most interest in | Age |
+| --- | --- | --- |
+| Chris | HTML tables | 22 |
+| Dennis | Web accessibility | 45 |
+| Sarah | JavaScript frameworks | 29 |
+| Karen | Web performance | 36 |
+
+```jsx
+<>
+  <Table variant="default">
+    <caption>
+      Front-end web developer course 2021    </caption>
+    <thead>
+      <tr>
+        <th scope="col">
+          Person        </th>
+        <th scope="col">
+          Most interest in        </th>
+        <th scope="col">
+          Age        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">
+          Chris        </th>
+        <td>
+          HTML tables        </td>
+        <td>
+          22        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Dennis        </th>
+        <td>
+          Web accessibility        </td>
+        <td>
+          45        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Sarah        </th>
+        <td>
+          JavaScript frameworks        </td>
+        <td>
+          29        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Karen        </th>
+        <td>
+          Web performance        </td>
+        <td>
+          36        </td>
+      </tr>
+    </tbody>
+  </Table>
+  <Table variant="striped">
+    <caption>
+      Front-end web developer course 2021    </caption>
+    <thead>
+      <tr>
+        <th scope="col">
+          Person        </th>
+        <th scope="col">
+          Most interest in        </th>
+        <th scope="col">
+          Age        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">
+          Chris        </th>
+        <td>
+          HTML tables        </td>
+        <td>
+          22        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Dennis        </th>
+        <td>
+          Web accessibility        </td>
+        <td>
+          45        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Sarah        </th>
+        <td>
+          JavaScript frameworks        </td>
+        <td>
+          29        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Karen        </th>
+        <td>
+          Web performance        </td>
+        <td>
+          36        </td>
+      </tr>
+    </tbody>
+  </Table>
+</>
+```
+
+### Text component caption preset
+
+Front-end web developer course 2021
+| Person | Most interest in | Age |
+| --- | --- | --- |
+| Chris | HTML tables | 22 |
+| Dennis | Web accessibility | 45 |
+| Sarah | JavaScript frameworks | 29 |
+| Karen | Web performance | 36 |
+
+```jsx
+<Table>
+  <caption>
+    <Text preset="caption">
+      Front-end web developer course 2021    </Text>
+  </caption>
+  <thead>
+    <tr>
+      <th scope="col">
+        Person      </th>
+      <th scope="col">
+        Most interest in      </th>
+      <th scope="col">
+        Age      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">
+        Chris      </th>
+      <td>
+        HTML tables      </td>
+      <td>
+        22      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+        Dennis      </th>
+      <td>
+        Web accessibility      </td>
+      <td>
+        45      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+        Sarah      </th>
+      <td>
+        JavaScript frameworks      </td>
+      <td>
+        29      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+        Karen      </th>
+      <td>
+        Web performance      </td>
+      <td>
+        36      </td>
+    </tr>
+  </tbody>
+</Table>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

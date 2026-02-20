@@ -1,0 +1,79 @@
+React Components
+
+# Skeleton
+
+_**Skeleton** component indicates that data is loading. It improves the perceived loading time for the user._
+
+## Overview
+
+---
+
+**Skeleton** indicates, through and animation, that content is loading and that the screen is not frozen.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Skeleton</td></tr><tr><th scope="row">Also known as</th><td>Skeleton loader</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-10250" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/skeleton" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-skeleton--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+A **Skeleton** can be used in a variety of contexts such as in Cards, lists, and table content.
+
+### Spinner vs Skeleton
+
+Both  and **Skeleton** indicate that content is loading, but they serve different purposes:
+
+-   Use a Spinner when the content or result is unknown and the user must wait. For example, after clicking a button or loading data from an API
+    
+-   Use a **Skeleton** when the structure of the content is known, but the actual data hasn't loaded yet. It helps set expectations and makes the wait feel shorter
+    
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Skeleton to indicate loading states for dynamic content, such as user data or content blocks |
+| - Prefer Skeleton when content will take more than a moment to load (usually > 500ms) |
+| - Ensure Skeleton is replaced with real content as soon as it is available |
+
+| ❌ Don't |
+| --- |
+| - Don't use Skeleton for static content that doesn't change, load it normally without placeholders |
+| - Don't apply Skeleton to interactive elements like buttons or inputs. Use Spinner or loading states instead |
+| - Don't show Skeleton for very short loading delays, it may feel like a glitch or visual noise |
+| - Don't animate excessively or use distracting visuals. Skeleton should feel smooth and unobtrusive |
+
+## Placement
+
+---
+
+A **Skeleton** can be placed whenever needed to indicate a content is loading.
+
+## Behavior
+
+---
+
+The **Skeleton** component has a linear animation to show to indicates a content is loading.
+
+## Navigation
+
+---
+
+The **Skeleton** component is non-interactive and does not receive keyboard focus. It is purely visual and serves as a placeholder for content loading, without affecting keyboard navigation.
+
+## Accessibility
+
+---
+
+The **Skeleton** component is purely decorative. Its role is to visually indicate that content is loading, but it does not carry any meaningful information for assistive technologies. For this reason, it is hidden from screen readers.
+
+### Indicating loading state
+
+To ensure screen reader users are aware that content is being loaded, you should set [aria-busy](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy) on the container that will eventually receive the content.
+
+```jsx
+<div aria-busy="true">
+  <Skeleton />
+</div>
+```
+
+Using this approach ensures that assistive technologies are aware that content is being updated, allowing them to wait before announcing changes.

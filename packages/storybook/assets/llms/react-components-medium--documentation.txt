@@ -1,0 +1,71 @@
+React Components
+
+# Medium
+
+## Overview
+
+---
+
+The **Medium** component is a versatile UI element designed to handle different types of media content.
+
+It ensures that media is displayed correctly and consistently within the application.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Medium</td></tr><tr><th scope="row">Also known as</th><td>Media, Image</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=237-13496" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/medium" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-medium--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+**Medium** is used to display assets with an alternative text description.
+
+When the asset is an image, it should be mostly presentation to draw user's attention visually.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use the Medium component to display images and media consistently across the application |
+| - Provide alt text, captions, or descriptions where appropriate, to ensure accessibility and context |
+| - Ensure responsive behavior so medium adapts well to different screen sizes |
+
+| ❌ Don't |
+| --- |
+| - Don't use Medium with embedded text that cannot be read by screen readers |
+| - Don't overload pages with high-resolution medium that may slow down load times |
+| - Don't stretch or distort Medium to fit containers, maintain proportions and visual quality |
+| - Don't rely on Medium alone to convey essential information. Always provide a textual equivalent when needed |
+
+## Placement
+
+---
+
+The width and height dimensions of the image can be set to fixed sizes.
+
+## Navigation
+
+---
+
+The **Medium** component is non-interactive and does not receive keyboard focus. It is used solely for displaying media content and does not impact keyboard navigation.
+
+## Accessibility
+
+---
+
+### Use caption text to add information about an image
+
+Caption is useful to add information about the image itself (ex: copyright), whereas the alternative text always describe what the image actually conveys.
+
+© Copyright National Aeronautics and Space Administration
+
+```jsx
+<figure>
+  <Medium
+    alt="NASA Computer room"
+    src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg"
+  />
+  <figcaption>
+    <Text preset="caption">
+      © Copyright National Aeronautics and Space Administration    </Text>
+  </figcaption>
+</figure>
+```

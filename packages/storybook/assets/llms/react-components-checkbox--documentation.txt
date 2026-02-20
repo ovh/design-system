@@ -1,0 +1,91 @@
+React Components
+
+# Checkbox
+
+_**Checkbox** are used for a list of options where the user may make a choice by selecting multiple options, including all or none._
+
+Checkbox
+
+## Overview
+
+---
+
+**Checkbox** are used to make a choice that must be confirmed by submitting a form. For an instantaneous choice (without submit), the use of a switch is preferred (see Switch).
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Checkbox</td></tr><tr><th scope="row">Also known as</th><td>Checkbox Button (previous name), Check Box, Tick Box</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-28514" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/checkbox" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-checkbox--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+**Checkbox** can be used in forms and containers.
+
+Also, it can serve as :
+
+-   Selecting/deselecting item(s)
+-   Lists/sub-lists
+-   Filters
+-   Agreement to terms and conditions
+
+A **Checkbox** group is used for a list of options where the user may make a choice by selecting multiple options, including all or none.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use clear, concise, and descriptive labels to explain what the Checkbox controls |
+| - Allow labels to wrap to multiple lines when necessary, readability is more important than keeping to one line here |
+| - Group related Checkboxes using a fieldset with a legend to provide context when applicable |
+| - Use Checkboxes when multiple selections are allowed within a group of options |
+
+| ❌ Don't |
+| --- |
+| - Don't use a Checkbox if the user can only select one option, use a Radio Group instead |
+| - Don't truncate labels with ellipsis |
+| - Don't place Checkboxes too close together, maintain sufficient spacing to prevent selection errors |
+| - Don't use Checkboxes for binary actions like "save" or "submit", use a Button instead |
+
+### Best Practices in Context
+
+1.  **Checkbox**
+2.  **Label**
+
+## Placement
+
+---
+
+The **Checkbox** can be autonomous, as it can be labelled in a starting/ending text.
+
+It can be inserted in containers or next to an external item.
+
+## Behavior
+
+---
+
+The default behavior is that when clicking on the **Checkbox** or its linked label, the **Checkbox** is alternatively selected or deselected depending on the previous state.
+
+The indeterminate state is used only when the **Checkbox** contains a sub-list of selections that are partially selected.
+
+The **Checkbox** can be in an error state, but also in a disabled state.
+
+## Navigation
+
+---
+
+### Focus Management
+
+The **Checkbox** component can receive keyboard focus and is part of the standard tab order.
+
+If the **Checkbox** is disabled, it does not receive focus and cannot be activated via keyboard.
+
+### General Keyboard Shortcuts
+
+Pressing Space toggles the **Checkbox** state (checked/unchecked).
+
+## Accessibility
+
+---
+
+This component complies with the [Checkbox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox) .
+
+Vertical spacing of at least `8px` between each checkbox is advised to provide sufficient tactile and visual separation.

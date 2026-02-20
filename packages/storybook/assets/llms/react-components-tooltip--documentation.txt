@@ -1,0 +1,134 @@
+React Components
+
+# Tooltip
+
+_**Tooltip** component is used to display contextual information when the user hovers or focuses a UI element in a page._
+
+## Overview
+
+---
+
+**Tooltip** component is used to display contextual information when the user hovers or focuses an element.
+
+It enhances user experience by providing helpful hints, explanations, or descriptions without cluttering the UI.
+
+**Tooltips** are commonly used with a button, an icon, or interactive elements.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Tooltip</td></tr><tr><th scope="row">Also known as</th><td>Info Bubble</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=55-23473" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/tooltip" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-tooltip--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+Use the **Tooltip** component to provide additional information or context for UI elements.
+
+**Tooltips** should be brief and helpful, enhancing user understanding without overwhelming them.
+
+They are suitable for a button, an icon, a link, and any other elements where additional context would be beneficial.
+
+### Tooltip vs Popover
+
+-   Both components look similar but a **Tooltip** is displayed on hover and focus while a  is triggered by click.
+-   **Tooltips** are commonly used for shorter explanations, while longer text / complex UIs would suit Popovers better.
+-   Use a Popover when you need to insert interactive elements such as a button.
+-   A Popover can be dismissed if an action button allows it.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Tooltip to provide concise, contextual help or clarification |
+| - Keep the content brief and easy to read, ideally under two lines |
+| - Use complete sentences with punctuation when space allows for improved readability |
+| - Use Tooltips only when the user might need additional context, not by default on every element |
+| - Position the Tooltip so it does not obstruct important elements |
+
+| ❌ Don't |
+| --- |
+| - Don't place critical or essential information inside a Tooltip, users may miss it |
+| - Don't use Tooltip to show error messages |
+| - Don't include interactive elements (e.g., buttons, links) inside a Tooltip |
+| - Don't repeat content already visible in the UI. Tooltips should complement, not duplicate |
+| - Don't overload Tooltips with rich content (images, media, long paragraphs) |
+
+### Best Practices in Context
+
+1.  **Tooltip**
+2.  **Content**
+3.  **Caret tip** - optional
+4.  **Trigger**
+
+## Placement
+
+---
+
+**Tooltip** has automatic positioning feature. It can detect the edge of the browser so the container always stays visible on a page.
+
+## Behavior
+
+---
+
+By default, a **Tooltip** is hidden to the user.
+
+It triggers when the user hovers or focuses on the **Tooltip**'s trigger element such as an icon.
+
+The **Tooltip** remains visible while the user's mouse or focus is active, with customizable open and close delays.
+
+It will hide when the users stop hovering over or focusing on this element.
+
+On a mobile device, a **Tooltip** is displayed upon tapping, and it will hide when the user taps an area outside the **Tooltip** container.
+
+## Variation
+
+---
+
+**With extra arrow**: providing a more pronounced visual connection between the tooltip and the element it describes, ensuring users clearly understand which element the tooltip is associated with.
+
+## Navigation
+
+---
+
+### Focus Management
+
+The **Tooltip** is tied to its trigger element and becomes visible when the trigger receives focus.
+
+It remains open as long as the trigger element is focused.
+
+### General Keyboard Shortcuts
+
+Pressing Tab moves focus to the trigger, opening the **Tooltip** without delay.
+
+Pressing Tab again moves focus away, closing the **Tooltip**.
+
+Pressing Escape closes the **Tooltip** immediately if it is open.
+
+## Accessibility
+
+---
+
+**Tooltips** are used to provide supplementary information about a UI element. This component complies with the [Tooltip WAI-ARIA design pattern](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tooltip_role) .
+
+You should set a minimal **Tooltip Trigger** height to at least `24px` to provide sufficient visual clarity.
+
+### Use tooltips to provide additional context
+
+If your UI includes an unlabeled or ambiguous element, consider attaching a **Tooltip** that explains its purpose.
+
+```jsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Icon
+      aria-label="Open tooltip"
+      name="circle-info"
+      role="img"
+      style={{
+        fontSize: '24px'
+      }}
+    />
+  </TooltipTrigger>
+  <TooltipContent>
+    Some additional context.  </TooltipContent>
+</Tooltip>
+```
+
+Screens will announce the tooltip information.

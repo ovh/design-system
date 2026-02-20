@@ -1,0 +1,156 @@
+React Components
+
+# Range
+
+_**Range** component is used to allow users to visually select one or more values from a range of values by moving the handle along a bar_
+
+0100
+
+## Overview
+
+---
+
+The **Range** component is used for selecting a numerical value or a range of values within a specified range.
+
+It provides a visual and interactive way to adjust values, often used in forms, settings, and data filtering.
+
+The component can support single-value sliders or dual-handle sliders for selecting ranges.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Range</td></tr><tr><th scope="row">Also known as</th><td>Slider</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=49-16052" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/range" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-range--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+A **Range** is used to select a numeric value within a given range with defined minimum and maximum values.
+
+It is easily adjustable in a visually pleasing interface and, after interacting with it, changes are reflected immediately.
+
+A dual **Range** allows the user to select a numeric range value that is no less than a given value, and no more than another given value.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Range component when users need to select a value (or values) within a defined numeric interval |
+| - Label the Range clearly using a Form Field to indicate what the value represents |
+| - Provide a default value or starting range to guide users and avoid ambiguity |
+| - Use a dual Range when allowing users to set a minimum and maximum value |
+| - Make sure the Range has enough horizontal space to be usable and legible |
+
+| ❌ Don't |
+| --- |
+| - Don't overload a page with too many Range components |
+| - Don't place a Range in tight or constrained spaces where the control becomes hard to use or interpret |
+| - Don't use a continuous Range for large intervals where precision is important. Use a discrete step Range or typed input instead |
+| - Don't omit labels or helper text |
+
+### Best Practices in Context
+
+1.  **Range**
+2.  **Track**
+3.  **Min/Max values**
+4.  **Handle**
+5.  **Active fill**
+6.  **Second handle** - optional (Dual Range)
+7.  **Tick marks** - optional
+
+## Placement
+
+---
+
+A **Range** can be used in a page as long as there is a need to allow users to select a numeric value within a given range, for a quantity or a volume for example.
+
+It has a width by default, but it can widen to match its container.
+
+The **Range** can also be used inside components.
+
+It also can be combined with other elements such as an input for a better control of the value selection.
+
+## Behavior
+
+---
+
+A **Range** can be focused and hovered. It also can be disabled.
+
+The user can select a numeric value by clicking and dragging the thumb along the track.
+
+## Navigation
+
+---
+
+### Focus Management
+
+The **Range** component can be focused. Focus will land on the first thumb if multiple are present.
+
+When multiple thumbs are used, each thumb can receive focus individually.
+
+Disabled **Range** and disabled thumbs cannot be focused or interacted with.
+
+### General Keyboard Shortcuts
+
+Pressing Arrow Right or Arrow Up increases the value of the focused thumb by one step.
+
+Pressing Arrow Left or Arrow Down decreases the value of the focused thumb by one step.
+
+Pressing Page Up or Shift + Arrow Right increases the value by a larger step.
+
+Pressing Page Down or Shift + Arrow Down decreases the value by a larger step.
+
+Pressing Home or fn + Arrow Left sets the value to the minimum.
+
+Pressing End or fn + Arrow Right sets the value to the maximum.
+
+Pressing Tab and Shift + Tab allow navigation between multiple thumbs (if present).
+
+## Accessibility
+
+---
+
+This component complies with the [Slider](https://www.w3.org/WAI/ARIA/apg/patterns/slider/) and [Slider (Multi-Thumb)](https://www.w3.org/WAI/ARIA/apg/patterns/slider-multithumb/) WAI-ARIA design patterns.
+
+### Always provide an explicit label
+
+Every **Range** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
+
+Volume
+
+0100
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Volume  </FormFieldLabel>
+  <Range
+    defaultValue={[
+      50
+    ]}
+   />
+</FormField>
+```
+
+Screen readers will announce the value, the slider and its label.
+
+### Always provide a descriptive sub-label in Dual Range
+
+Sub-label provide additional context about the values that are selected or adjusted by the user. This sub-label should be vocalized by screen readers. Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) to link the sub-label and [aria-live="polite"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions) to ensure that the content is vocalized by screen readers.
+
+Price rangeSelected values: 30 - 70€
+
+0100
+
+```jsx
+const [values, setValues] = useState([30, 70]);
+  return <FormField>
+      <FormFieldLabel id="range-label">
+        Price range      </FormFieldLabel>
+      <Text aria-live="polite" id="range-sublabel" preset={TEXT_PRESET.caption}>
+        Selected values: {values[0]} - {values[1]}€
+      </Text>
+      <Range aria-labelledby={['range-label', 'range-sublabel']} onDragging={({
+      value    }) => setValues(value)} value={values} />
+    </FormField>;
+}
+```
+
+Screen readers will announce the values, the slider and its label.

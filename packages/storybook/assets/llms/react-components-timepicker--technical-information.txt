@@ -1,0 +1,228 @@
+React Components
+
+# Timepicker
+
+## Overview
+
+---
+
+UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
+
+## Anatomy
+
+---
+
+1.  **Timepicker**
+2.  **Timepicker Control**
+3.  **Timepicker Timezone List**
+
+## Timepicker
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| defaultValue | `string` | - | `undefined` | The initial time value. Use when you don't need to control the value of the timepicker. |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| i18n | `Partial` | - | `undefined` | Internal translations override. |
+| id | `string` | - | `undefined` | The field id. |
+| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
+| locale | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| onTimezoneChange | `(detail: TimepickerTimezoneChangeDetail) => void` | - | `undefined` | Callback fired when the timezone changes. |
+| onValueChange | `(detail: TimepickerValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
+| readOnly | `boolean` | - | `undefined` | Whether the component is readonly. |
+| required | `boolean` | - | `undefined` | Whether the component is required. |
+| timezone | `TIMEZONE` | - | `undefined` | The controlled selected timezone. |
+| timezones | `Timezone[] | TimezonesPreset` | - | `undefined` | A specific or preset list of timezone to display in the selector. |
+| value | `string` | - | `undefined` | The controlled timepicker value. |
+| withSeconds | `boolean` | - | `undefined` | Whether the time input allows seconds selection. |
+
+## TimepickerControl
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [input attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes) . |
+
+## TimepickerTimezoneList
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## Enums
+
+---
+
+### TIMEPICKER_I18N
+
+-   timezoneSelect =`"timepicker.timezone.select"`
+
+### TIMEZONE
+
+-   UTC =`"UTC+0"`
+-   UTC1 =`"UTC+1"`
+-   UTC10 =`"UTC+10"`
+-   UTC11 =`"UTC+11"`
+-   UTC12 =`"UTC+12"`
+-   UTC2 =`"UTC+2"`
+-   UTC3 =`"UTC+3"`
+-   UTC4 =`"UTC+4"`
+-   UTC5 =`"UTC+5"`
+-   UTC6 =`"UTC+6"`
+-   UTC7 =`"UTC+7"`
+-   UTC8 =`"UTC+8"`
+-   UTC9 =`"UTC+9"`
+-   UTC_1 =`"UTC-1"`
+-   UTC_10 =`"UTC-10"`
+-   UTC_11 =`"UTC-11"`
+-   UTC_12 =`"UTC-12"`
+-   UTC_2 =`"UTC-2"`
+-   UTC_3 =`"UTC-3"`
+-   UTC_4 =`"UTC-4"`
+-   UTC_5 =`"UTC-5"`
+-   UTC_6 =`"UTC-6"`
+-   UTC_7 =`"UTC-7"`
+-   UTC_8 =`"UTC-8"`
+-   UTC_9 =`"UTC-9"`
+
+### TIMEZONES_PRESET
+
+-   all =`"all"`
+
+## Interfaces
+
+---
+
+### TimepickerTimezoneChangeDetail
+
+-   `value: TIMEZONE`
+
+### TimepickerValueChangeDetail
+
+-   `timezone?: TIMEZONE`
+-   `value: string`
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Timepicker>
+  <TimepickerControl />
+</Timepicker>
+```
+
+### Disabled
+
+UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
+
+```jsx
+<>
+  <Timepicker disabled>
+    <TimepickerControl />
+  </Timepicker>
+  <Timepicker disabled>
+    <TimepickerControl />
+    <TimepickerTimezoneList />
+  </Timepicker>
+</>
+```
+
+### Readonly
+
+UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
+
+```jsx
+<>
+  <Timepicker readOnly>
+    <TimepickerControl />
+  </Timepicker>
+  <Timepicker readOnly>
+    <TimepickerControl />
+    <TimepickerTimezoneList />
+  </Timepicker>
+</>
+```
+
+### With seconds
+
+UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
+
+```jsx
+<>
+  <Timepicker withSeconds>
+    <TimepickerControl />
+  </Timepicker>
+  <Timepicker withSeconds>
+    <TimepickerControl />
+    <TimepickerTimezoneList />
+  </Timepicker>
+</>
+```
+
+### Timezone list
+
+You can use update the list of timezone to select from.
+
+By default, the list use the `all` preset that displays all supported timezones. But you can pass a specific subset to limit the possible choices.
+
+For further explanation about timezone strategy, see .
+
+All timezones
+
+UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
+
+Subset of timezone
+
+UTC-10UTC+0UTC+10
+
+```jsx
+<>
+  <span>
+    All timezones  </span>
+  <Timepicker>
+    <TimepickerControl />
+    <TimepickerTimezoneList />
+  </Timepicker>
+  <span>
+    Subset of timezone  </span>
+  <Timepicker
+    timezones={[
+      'UTC-10',
+      'UTC+0',
+      'UTC+10'
+    ]}
+  >
+    <TimepickerControl />
+    <TimepickerTimezoneList />
+  </Timepicker>
+</>
+```
+
+### Form field
+
+Timepicker:
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Timepicker:  </FormFieldLabel>
+  <Timepicker>
+    <TimepickerControl />
+  </Timepicker>
+</FormField>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

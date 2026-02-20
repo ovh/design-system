@@ -1,0 +1,282 @@
+React Components
+
+# Accordion
+
+## Overview
+
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+
+## Anatomy
+
+---
+
+1.  **Accordion**
+2.  **Accordion Item**
+3.  **Accordion Trigger**
+4.  **Accordion Content**
+
+## Accordion
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| defaultValue | `string[]` | - | `undefined` | The initial value of the expanded accordion items. Use when you don't need to control the value of the accordion. |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| multiple | `boolean` | - | `true` | Whether multiple accordion items can be expanded at the same time. |
+| onChange | `(detail: AccordionChangeDetail) => void` | - | `undefined` | Callback fired when the state of expanded/collapsed accordion items changes. |
+| value | `string[]` | - | `undefined` | The controlled value of the expanded accordion items. |
+
+## AccordionContent
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## AccordionItem
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| disabled | `boolean` | - | `undefined` | Whether the accordion item is disabled. |
+| value | `string` |  | `undefined` | The value of the accordion item. |
+
+## AccordionTrigger
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| expandIconPosition | `EXPAND_ICON_POSITION` | - | `EXPAND_ICON_POSITION.right` | The position of the expand icon. |
+
+## Enums
+
+---
+
+### EXPAND_ICON_POSITION
+
+-   left =`"left"`
+-   right =`"right"`
+
+## Interfaces
+
+---
+
+### AccordionChangeDetail
+
+-   `value: string[]`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-accordion-border-color | var(--ods-color-neutral-200) | 
+ |
+| --ods-accordion-border-color-hover | var(--ods-color-neutral-500) | 
+
+ |
+| --ods-accordion-border-radius | calc(var(--ods-theme-border-radius) / 2) | 
+
+ |
+| --ods-accordion-border-width | 1px | 
+
+ |
+| --ods-accordion-padding-horizontal | calc(var(--ods-theme-padding-horizontal) * 3) | 
+
+ |
+| --ods-accordion-padding-vertical | calc(var(--ods-theme-padding-vertical) * 3) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+Lorem ipsum dolor sit amet.
+
+```jsx
+<Accordion>
+  <AccordionItem value="0">
+    <AccordionTrigger>
+      Hello World!    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### Multiple
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+  
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+```jsx
+<>
+  <Accordion>
+    <AccordionItem value="1">
+      <AccordionTrigger>
+        <Text preset="heading-4">
+          Multiple        </Text>
+      </AccordionTrigger>
+      <AccordionContent>
+        <Text preset="paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.        </Text>
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="2">
+      <AccordionTrigger>
+        <Text preset="heading-4">
+          Multiple        </Text>
+      </AccordionTrigger>
+      <AccordionContent>
+        <Text preset="paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.        </Text>
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+  <br />
+  <Accordion>
+    <AccordionItem value="3">
+      <AccordionTrigger>
+        <Text preset="heading-4">
+          Non-multiple        </Text>
+      </AccordionTrigger>
+      <AccordionContent>
+        <Text preset="paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.        </Text>
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="4">
+      <AccordionTrigger>
+        <Text preset="heading-4">
+          Non-multiple        </Text>
+      </AccordionTrigger>
+      <AccordionContent>
+        <Text preset="paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.        </Text>
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</>
+```
+
+### Disabled
+
+Lorem ipsum dolor sit amet.
+
+```jsx
+<Accordion disabled>
+  <AccordionItem value="0">
+    <AccordionTrigger>
+      Hello World!    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### ItemDisabled
+
+Lorem ipsum dolor sit amet.
+
+Lorem ipsum dolor sit amet.
+
+```jsx
+<Accordion>
+  <AccordionItem
+    disabled
+    value="0"
+  >
+    <AccordionTrigger>
+      Hello World!    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="1">
+    <AccordionTrigger>
+      Hello World!    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### Controlled
+
+Lorem ipsum dolor sit amet.
+
+Lorem ipsum dolor sit amet.
+
+```jsx
+const [value, setValue] = useState(['0']);
+  return <Accordion value={value} onChange={detail => setValue(detail.value)}>
+      <AccordionItem value="0">
+        <AccordionTrigger>
+          Hello World!        </AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet.        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="1">
+        <AccordionTrigger>
+          Hello World!        </AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet.        </AccordionContent>
+      </AccordionItem>
+    </Accordion>;
+}
+```
+
+### Expand Icon Position
+
+Lorem ipsum dolor sit amet.
+
+  
+
+Lorem ipsum dolor sit amet.
+
+```jsx
+<>
+  <Accordion>
+    <AccordionItem value="0">
+      <AccordionTrigger expandIconPosition="right">
+        Icon on the right (default)      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+  <br />
+  <Accordion>
+    <AccordionItem value="1">
+      <AccordionTrigger expandIconPosition="left">
+        Icon on the left      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

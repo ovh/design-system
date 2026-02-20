@@ -1,0 +1,204 @@
+React Components
+
+# Checkbox
+
+## Overview
+
+---
+
+Checkbox
+
+## Anatomy
+
+---
+
+1.  **Checkbox**
+2.  **Checkbox Control**
+3.  **Checkbox Label**
+4.  **Checkbox Group**
+
+## Checkbox
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [label attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes) . |
+| checked | `boolean | 'indeterminate'` | - | `undefined` | The controlled checked state of the checkbox. |
+| defaultChecked | `boolean` | - | `undefined` | The initial checked state of the checkbox. Use when you don't need to control the checked state of the checkbox. |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
+| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| onCheckedChange | `(detail: CheckboxCheckedChangeDetail) => void` | - | `undefined` | Callback fired when the checked state changes. |
+| required | `boolean` | - | `undefined` | Whether the component is required. |
+| value | `string` | - | `undefined` | The value of form element. Useful for form submission. |
+
+## CheckboxControl
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## CheckboxGroup
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| defaultValue | `string[]` | - | `undefined` | The initial value of `value` when uncontrolled. |
+| disabled | `boolean` | - | `undefined` | Whether the group is disabled. |
+| invalid | `boolean` | - | `undefined` | Whether the group is in error. |
+| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| onValueChange | `(value: string[]) => void` | - | `undefined` | Callback fired when the value changes. |
+| readOnly | `boolean` | - | `undefined` | Whether the component is readonly. |
+| value | `string[]` | - | `undefined` | The controlled value of the checkbox group. |
+
+## CheckboxLabel
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+
+## Interfaces
+
+---
+
+### CheckboxCheckedChangeDetail
+
+-   `checked: CheckboxCheckedState`
+
+## Unions
+
+---
+
+-   `CheckboxCheckedState = boolean | "indeterminate"`
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Checkbox>
+  <CheckboxControl />
+</Checkbox>
+```
+
+### Disabled
+
+Checkbox
+
+```jsx
+<Checkbox disabled>
+  <CheckboxControl />
+  <CheckboxLabel>
+    Checkbox  </CheckboxLabel>
+</Checkbox>
+```
+
+### Invalid
+
+Checkbox
+
+```jsx
+<Checkbox invalid>
+  <CheckboxControl />
+  <CheckboxLabel>
+    Checkbox  </CheckboxLabel>
+</Checkbox>
+```
+
+### States
+
+Unchecked
+
+Checked
+
+Indeterminate
+
+```jsx
+<>
+  <Checkbox>
+    <CheckboxControl />
+    <CheckboxLabel>
+      Unchecked    </CheckboxLabel>
+  </Checkbox>
+  <Checkbox checked>
+    <CheckboxControl />
+    <CheckboxLabel>
+      Checked    </CheckboxLabel>
+  </Checkbox>
+  <Checkbox checked="indeterminate">
+    <CheckboxControl />
+    <CheckboxLabel>
+      Indeterminate    </CheckboxLabel>
+  </Checkbox>
+</>
+```
+
+### Group
+
+I agree to the terms and conditions.
+
+I agree to receive marketing communications.
+
+```jsx
+<CheckboxGroup
+  defaultValue={[
+    'marketing'
+  ]}
+  name="acknowledgments"
+>
+  <Checkbox value="term">
+    <CheckboxControl />
+    <CheckboxLabel>
+      I agree to the terms and conditions.    </CheckboxLabel>
+  </Checkbox>
+  <Checkbox value="marketing">
+    <CheckboxControl />
+    <CheckboxLabel>
+      I agree to receive marketing communications.    </CheckboxLabel>
+  </Checkbox>
+</CheckboxGroup>
+```
+
+### Form field
+
+Legal considerations:
+
+I agree to the terms and conditions.
+
+I agree to receive marketing communications.
+
+```jsx
+<>
+  <Text preset="label">
+    Legal considerations:  </Text>
+  <FormField>
+    <Checkbox>
+      <CheckboxControl />
+      <CheckboxLabel>
+        I agree to the terms and conditions.      </CheckboxLabel>
+    </Checkbox>
+  </FormField>
+  <FormField>
+    <Checkbox>
+      <CheckboxControl />
+      <CheckboxLabel>
+        I agree to receive marketing communications.      </CheckboxLabel>
+    </Checkbox>
+  </FormField>
+</>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

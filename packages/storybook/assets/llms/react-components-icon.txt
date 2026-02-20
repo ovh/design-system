@@ -1,0 +1,216 @@
+# React Components/Icon
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `name` | `` | Yes |  | The icon name. |
+
+
+## Examples
+
+
+### Accessibility Bad Practice Decorative
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Icon name={ICON_NAME.home} />
+}
+```
+
+### Accessibility Bad Practice Rating
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <label htmlFor="rating">
+        Rating
+      </label>
+
+      <div id="rating">
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="one star" role="img" />
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="two star" role="img" />
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="three star" role="img" />
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="four star" role="img" />
+        <Icon name={ICON_NAME.star} tabIndex={0} aria-label="five star" role="img" />
+      </div>
+    </>
+}
+```
+
+### Accessibility Informative
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Icon aria-label="home" name={ICON_NAME.home} role="img" />
+}
+```
+
+### Accessibility Rating
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <label htmlFor="rating" id="rating-label">
+        Rating
+      </label>
+
+      <div aria-labelledby="rating-label" id="rating" role="radiogroup">
+        <Icon name={ICON_NAME.star} role="radio" tabIndex={-1} aria-label="one star" aria-checked="false" />
+        <Icon name={ICON_NAME.star} role="radio" tabIndex={0} aria-label="two star" aria-checked="true" />
+        <Icon name={ICON_NAME.star} role="radio" tabIndex={-1} aria-label="three star" aria-checked="false" />
+        <Icon name={ICON_NAME.star} role="radio" tabIndex={-1} aria-label="four star" aria-checked="false" />
+        <Icon name={ICON_NAME.star} role="radio" tabIndex={-1} aria-label="five star" aria-checked="false" />
+      </div>
+    </>
+}
+```
+
+### All
+
+```tsx
+{
+  render: (arg: AllArg) => {
+    const regexp = new RegExp((arg.search || '').replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
+    const names = arg.search ? Object.entries<string>(ICON_NAME).filter(([key, name]) => {
+      return [name].concat(ODS_ICON_TAG[key as IconNameKey] || []).some(value => regexp.test(value));
+    }).map(([_, name]) => name) : ICON_NAMES;
+    return <div style={{
+      display: 'flex',
+      flexFlow: 'row',
+      flexWrap: 'wrap',
+      gap: '1rem'
+    }}>
+        {names.map(name => <Icon key={name} name={name as ICON_NAME} title={name} />)}
+      </div>;
+  },
+  argTypes: {
+    name: {
+      table: {
+        disable: true
+      }
+    },
+    search: {
+      control: {
+        type: 'text'
+      },
+      description: 'Search for a specific icon name or tag'
+    }
+  }
+}
+```
+
+### Decorative
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Icon name={ICON_NAME.home} />
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Icon name={ICON_NAME.home} />
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    name: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'ICON_NAME'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: ICON_NAMES
+    }
+  }),
+  args: {
+    name: ICON_NAME.home
+  }
+}
+```
+
+### Informative
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Icon aria-label="Help" name={ICON_NAME.circleQuestion} role="img" />
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Icon name="home" style={{
+    fontSize: '2rem',
+    color: 'var(--ods-color-primary-500)'
+  }} />
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexFlow: 'row wrap',
+    gap: '16px',
+    alignItems: 'center'
+  }}>
+      <Icon name={ICON_NAME.home} />
+      <Icon name={ICON_NAME.circleInfo} />
+      <Icon name={ICON_NAME.tag} />
+      <Icon name={ICON_NAME.check} />
+      <Icon name={ICON_NAME.triangleExclamation} />
+    </div>
+}
+```

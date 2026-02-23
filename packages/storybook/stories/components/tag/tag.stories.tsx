@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { ICON_NAME } from '../../../../ods-react/src/components/icon/src';
+import { ICON_NAME, ICON_NAMES } from '../../../../ods-react/src/components/icon/src';
 import { TAG_COLOR, TAG_COLORS, TAG_SIZE, TAG_SIZES, Tag, type TagProp } from '../../../../ods-react/src/components/tag/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
@@ -37,6 +37,14 @@ export const Demo: Story = {
         type: { summary: 'boolean' },
       },
       control: { type: 'boolean' },
+    },
+    icon: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: { summary: 'ICON_NAME' },
+      },
+      control: { type: 'select' },
+      options: ICON_NAMES,
     },
     size: {
       table: {

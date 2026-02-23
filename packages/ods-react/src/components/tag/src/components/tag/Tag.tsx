@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
-import { ICON_NAME, Icon } from '../../../../icon/src';
+import { ICON_NAME, Icon, type IconName } from '../../../../icon/src';
 import { TAG_COLOR, type TagColor } from '../../constants/tag-color';
 import { TAG_SIZE, type TagSize } from '../../constants/tag-size';
 import style from './tag.module.scss';
@@ -12,6 +12,10 @@ interface TagProp extends ComponentPropsWithRef<'button'> {
    */
   color?: TagColor;
   /**
+   * The icon to display on the right side.
+   */
+  icon?: IconName | null,
+  /**
    * The size preset to use.
    */
   size?: TagSize;
@@ -21,6 +25,7 @@ const Tag: FC<TagProp> = forwardRef(({
   children,
   className,
   color = TAG_COLOR.information,
+  icon = ICON_NAME.xmark,
   size = TAG_SIZE.md,
   ...props
 }, ref): JSX.Element => {
@@ -37,9 +42,13 @@ const Tag: FC<TagProp> = forwardRef(({
       type="button"
       { ...props }>
       { children }
-      <Icon
-        className={ style['tag__close'] }
-        name={ ICON_NAME.xmark } />
+
+      {
+        !!icon &&
+        <Icon
+          className={ style['tag__close'] }
+          name={ icon } />
+      }
     </button>
   );
 });

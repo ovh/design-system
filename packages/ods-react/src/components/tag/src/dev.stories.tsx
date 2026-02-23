@@ -36,6 +36,18 @@ export const Disabled = () => (
   </Tag>
 );
 
+export const Icons = () => (
+  <>
+    <Tag icon={ null }>
+      No icon
+    </Tag>
+
+    <Tag icon={ ICON_NAME.trash }>
+      Custom icon
+    </Tag>
+  </>
+);
+
 export const RichContent = () => (
   <Tag className={ style['ods-tag'] }>
     <Icon name={ ICON_NAME.email } />

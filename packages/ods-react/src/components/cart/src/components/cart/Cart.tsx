@@ -22,6 +22,7 @@ const CartRoot: FC<CartProp> = forwardRef(({
   const swipeHandler = useSwipeable({
     onSwipedDown: closeCart,
     onSwipedUp: openCart,
+    preventScrollOnSwipe: true,
   });
 
   return (

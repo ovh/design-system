@@ -258,6 +258,100 @@ export const Full: Story = {
   ),
 };
 
+export const Mobile: Story = {
+  globals: {
+    imports: `import { Cart, CartAction, CartExtraContent, CartProductGroup, CartProductGroupItem, CartTotal, Divider, ICON_NAME, Icon, formatPrice } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+    userAgent: 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Cart style={{ width: '320px' }}>
+      <CartProductGroup
+        details="Domain"
+        label="ods.fr"
+        onRemove={ () => {} }
+        open
+        price={ formatPrice(32.38, 'en-GB', 'EUR') }>
+        <CartProductGroupItem
+          details="Duration"
+          label="2 years"
+          onRemove={ () => {} }
+          price={ formatPrice(32.38, 'en-GB', 'EUR') } />
+
+        <CartProductGroupItem
+          details="DNSSEC"
+          label="Secure DNS"
+          onRemove={ () => {} }
+          price="Included"
+          quantity={ 1 } />
+
+        <CartProductGroupItem
+          details="E-mail account"
+          label="Zimbra Starter"
+          onRemove={ () => {} }
+          price="Included"
+          quantity={ 1 } />
+      </CartProductGroup>
+
+      <CartProductGroup
+        details="Domain"
+        label="ods-doc.fr"
+        onRemove={ () => {} }
+        price={ formatPrice(12.70, 'en-GB', 'EUR') }>
+        <CartProductGroupItem
+          details="Duration"
+          label="2 years"
+          onRemove={ () => {} }
+          price={ formatPrice(12.70, 'en-GB', 'EUR') } />
+
+        <CartProductGroupItem
+          details="DNSSEC"
+          label="Secure DNS"
+          onRemove={ () => {} }
+          price="Included"
+          quantity={ 1 } />
+
+        <CartProductGroupItem
+          details="E-mail account"
+          label="Zimbra Starter"
+          onRemove={ () => {} }
+          price="Included"
+          quantity={ 1 } />
+      </CartProductGroup>
+
+      <CartExtraContent>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--ods-theme-text-color)' }}>23% VAT / 2 years</span>
+          <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ods-theme-text-color)' }}>{ formatPrice(13.47, 'en-GB', 'EUR') }</span>
+        </div>
+
+        <Divider style={{ marginTop: 'calc(var(--ods-theme-row-gap) * 2)' }} />
+      </CartExtraContent>
+
+      <CartTotal
+        label="Total"
+        priceDetails={
+          <div>
+            <span>ex. VAT / year</span>
+            <br />
+            <span>i.e. €XX.XX incl. VAT / year</span>
+          </div>
+        }
+        totalDetails="2 products"
+        price={ formatPrice(58.55, 'en-GB', 'EUR') } />
+
+      <CartAction>
+        Continue my order <Icon name={ ICON_NAME.arrowRight } />
+      </CartAction>
+    </Cart>
+  ),
+};
+
 export const Overview: Story = {
   tags: ['!dev'],
   parameters: {

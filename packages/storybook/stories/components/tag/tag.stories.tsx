@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
+import { ICON_NAME } from '../../../../ods-react/src/components/icon/src';
 import { TAG_COLOR, TAG_COLORS, TAG_SIZE, TAG_SIZES, Tag, type TagProp } from '../../../../ods-react/src/components/tag/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
@@ -68,6 +69,28 @@ export const Color: Story = {
       <Tag color={ TAG_COLOR.primary }>Primary</Tag>
       <Tag color={ TAG_COLOR.success }>Success</Tag>
       <Tag color={ TAG_COLOR.warning }>Warning</Tag>
+    </>
+  ),
+};
+
+export const CustomIcon: Story = {
+  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
+  globals: {
+    imports: `import { ICON_NAME, Tag } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: ({}) => (
+    <>
+      <Tag icon={ null }>
+        No Icon
+      </Tag>
+
+      <Tag icon={ ICON_NAME.star }>
+        Custom Icon
+      </Tag>
     </>
   ),
 };

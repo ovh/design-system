@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type FocusEvent, type JSX, type KeyboardEvent, forwardRef, useState } from 'react';
 import { elementParentHasAttribute } from '../../../../../utils/element';
 import { useFormField } from '../../../../form-field/src';
+import { ICON_NAME, Icon } from '../../../../icon/src';
 import { Input } from '../../../../input/src';
 import { POPOVER_POSITION } from '../../../../popover/src';
 import { Tag } from '../../../../tag/src';
@@ -197,39 +198,60 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
         ))
       }
 
-      <Input
-        aria-activedescendant={ highlightedOptionValue ? `${controlId}-${highlightedOptionValue}` : '' }
-        aria-autocomplete="list"
-        aria-controls={ contentId }
-        aria-expanded={ isOpen ? 'true' : 'false' }
-        autoCapitalize="none"
-        autoComplete="off"
-        autoCorrect="off"
-        className={ style['combobox-control__input'] }
-        clearable={ clearable }
-        disabled={ disabled }
-        i18n={ i18n }
-        id={ id || fieldContext?.id }
-        invalid={ invalid }
-        loading={ loading }
-        locale={ locale }
-        onChange={ (e) => {
-          resetTagFocus();
-          setInputValue(e.target.value);
-          setIsOpen(true);
-        }}
-        onClear={ () => !multiple && setSelection([]) }
-        onClick={ () => setIsOpen(true) }
-        onFocus={ () => setIsFocused(true) }
-        onKeyDown={ handleInputKeyDown }
-        name={ name }
-        placeholder={ placeholder }
-        readOnly={ readOnly }
-        ref={ inputRef }
-        required={ multiple ? false : required }
-        role="combobox"
-        spellCheck="false"
-        value={ inputValue } />
+      <div className={ style['combobox-control__field'] }>
+        <Input
+          aria-activedescendant={ highlightedOptionValue ? `${controlId}-${highlightedOptionValue}` : '' }
+          aria-autocomplete="list"
+          aria-controls={ contentId }
+          aria-expanded={ isOpen ? 'true' : 'false' }
+          autoCapitalize="none"
+          autoComplete="off"
+          autoCorrect="off"
+          className={ style['combobox-control__field__input'] }
+          clearable={ clearable }
+          disabled={ disabled }
+          i18n={ i18n }
+          id={ id || fieldContext?.id }
+          invalid={ invalid }
+          loading={ loading }
+          locale={ locale }
+          onChange={ (e) => {
+            resetTagFocus();
+            setInputValue(e.target.value);
+            setIsOpen(true);
+          }}
+          onClear={ () => !multiple && setSelection([]) }
+          onClick={ () => setIsOpen(true) }
+          onFocus={ () => setIsFocused(true) }
+          onKeyDown={ handleInputKeyDown }
+          name={ name }
+          placeholder={ placeholder }
+          readOnly={ readOnly }
+          ref={ inputRef }
+          required={ multiple ? false : required }
+          role="combobox"
+          spellCheck="false"
+          value={ inputValue } />
+
+        <button
+          className={ classNames(
+            style['combobox-control__field__caret'],
+            { [style['combobox-control__field__caret--disabled']]: disabled },
+          )}
+          onClick={ () => {
+            inputRef.current?.click();
+            inputRef.current?.focus();
+          }}
+          // We use an unfocusable button here to get a populated relatedTarget on container blur event
+          tabIndex={ -1 }>
+          <Icon
+            className={ classNames(
+              style['combobox-control__field__caret__icon'],
+              { [style['combobox-control__field__caret__icon--open']]: isOpen },
+            )}
+            name={ ICON_NAME.chevronDown } />
+        </button>
+      </div>
     </div>
   );
 });

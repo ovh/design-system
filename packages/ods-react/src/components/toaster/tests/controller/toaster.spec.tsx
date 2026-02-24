@@ -1,6 +1,6 @@
 jest.mock('react-hot-toast/headless', () => ({
   custom: jest.fn(),
-  remove: jest.fn(),
+  dismiss: jest.fn(),
 }));
 
 import vendorToast from 'react-hot-toast/headless';
@@ -83,7 +83,7 @@ describe('Toaster controller', () => {
 
         toast.remove(dummyId);
 
-        expect(vendorToast.remove).toHaveBeenLastCalledWith(dummyId);
+        expect(vendorToast.dismiss).toHaveBeenLastCalledWith(dummyId);
       });
     });
 

@@ -21,11 +21,11 @@ const ToasterRoot: FC<ToasterProp> = forwardRef(({
 }, ref): JSX.Element => {
   const { handlers } = useToaster({
     duration,
-    removeDelay: 0,
+    removeDelay: 300,
   }, id);
   const { toasts } = useToasterStore({
     duration,
-    removeDelay: 0,
+    removeDelay: 300,
   }, id);
 
   const isBottom = useMemo(() => {
@@ -37,9 +37,7 @@ const ToasterRoot: FC<ToasterProp> = forwardRef(({
       return [];
     }
 
-    return toasts
-      .filter((t) => t.visible)
-      .filter((_, i) => i < max) as ToastItem[];
+    return toasts as ToastItem[];
   }, [max, toasts]);
 
   const { calculateOffset, endPause, startPause, updateHeight } = handlers;
@@ -89,6 +87,7 @@ const ToasterRoot: FC<ToasterProp> = forwardRef(({
               ref={ toastRef }
               role={ toast.color === TOAST_COLOR.critical ? 'alert' : 'status' }
               style={{
+                opacity: toast.visible ? 1 : 0,
                 transform: `translateY(${isBottom ? -offset : offset}px)`,
               }}>
               <Toast toast={ toast } />

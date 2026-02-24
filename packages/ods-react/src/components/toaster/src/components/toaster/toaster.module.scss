@@ -3,6 +3,30 @@
 $toaster-padding: 24px;
 
 @layer ods-organisms {
+  @keyframes ods-toast-slide-in-bottom {
+    from {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes ods-toast-slide-in-end {
+    from {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes ods-toast-slide-in-start {
+    from {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes ods-toast-slide-in-top {
+    from {
+      transform: translateY(-100%);
+    }
+  }
+
   .toaster {
     --ods-toaster-padding: #{$toaster-padding};
 
@@ -14,6 +38,8 @@ $toaster-padding: 24px;
     &__toast {
       display: flex;
       position: absolute;
+      transition: opacity var(--ods-theme-transition-duration) ease-out,
+        transform var(--ods-theme-transition-duration) ease-out;
 
       &--bottom,
       &--bottom-end,
@@ -31,14 +57,32 @@ $toaster-padding: 24px;
         left: 0;
       }
 
-      &--bottom,
-      &--top {
+      &--bottom {
         justify-content: center;
+        animation: ods-toast-slide-in-bottom var(--ods-theme-transition-duration) ease-out;
       }
 
-      &--bottom-end,
+      &--bottom-end {
+        justify-content: flex-end;
+        animation: ods-toast-slide-in-end var(--ods-theme-transition-duration) ease-out;
+      }
+
+      &--bottom-start {
+        animation: ods-toast-slide-in-start var(--ods-theme-transition-duration) ease-out;
+      }
+
+      &--top {
+        justify-content: center;
+        animation: ods-toast-slide-in-top var(--ods-theme-transition-duration) ease-out;
+      }
+
       &--top-end {
         justify-content: flex-end;
+        animation: ods-toast-slide-in-end var(--ods-theme-transition-duration) ease-out;
+      }
+
+      &--top-start {
+        animation: ods-toast-slide-in-start var(--ods-theme-transition-duration) ease-out;
       }
     }
   }

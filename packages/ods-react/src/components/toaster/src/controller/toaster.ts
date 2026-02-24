@@ -26,7 +26,7 @@ const toast: ToastController = Object.assign(createToast, {
   information: (content: ReactNode, option?: ToastOption) => createToast(content, { ...option, color: TOAST_COLOR.information }),
   neutral: (content: ReactNode, option?: ToastOption) => createToast(content, { ...option, color: TOAST_COLOR.neutral }),
   primary: (content: ReactNode, option?: ToastOption) => createToast(content, { ...option, color: TOAST_COLOR.primary }),
-  remove: (toastId: string) => vendorToast.remove(toastId),
+  remove: (toastId: string) => vendorToast.dismiss(toastId),
   success: (content: ReactNode, option?: ToastOption) => createToast(content, { ...option, color: TOAST_COLOR.success }),
   warning: (content: ReactNode, option?: ToastOption) => createToast(content, { ...option, color: TOAST_COLOR.warning }),
 });

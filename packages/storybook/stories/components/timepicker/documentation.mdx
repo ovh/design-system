@@ -8,7 +8,7 @@ import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
-import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { HOME_TITLE, REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ TimepickerStories } name="Documentation" />
 
@@ -21,6 +21,7 @@ _A **Timepicker** is a component that allows users to select a time from a list 
 <Heading label="Overview" level={ 2 } />
 
 <IdentityCard aliases={ ['Time'] }
+              extraLinks={ [<StorybookLink title={ HOME_TITLE.formGuidelines }>Form Guidelines</StorybookLink>] }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=53-11662"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/timepicker"
               name="Timepicker">

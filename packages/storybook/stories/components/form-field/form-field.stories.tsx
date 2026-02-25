@@ -1,6 +1,7 @@
 import { Input } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { type FormEvent, useState } from 'react';
+import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
 import {
   FormField,
   type FormFieldProp,
@@ -9,6 +10,8 @@ import {
   FormFieldLabel,
   FormFieldLabelSubLabel,
 } from '../../../../ods-react/src/components/form-field/src';
+import { MESSAGE_COLOR, Message, MessageBody } from '../../../../ods-react/src/components/message/src';
+import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '../../../../ods-react/src/components/phone-number/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { Textarea } from '../../../../ods-react/src/components/textarea/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
@@ -115,6 +118,403 @@ export const Error: Story = {
         Error message
       </FormFieldError>
     </FormField>
+  ),
+};
+
+export const GuideFormCritical: Story = {
+  globals: {
+    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, Button, FormField, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const [localError, setLocalError] = useState<Record<string, string | undefined>>({});
+
+    function onBlur(e: FormEvent): void {
+      const target = e.target as HTMLInputElement;
+      setLocalError((error) => ({
+        ...error,
+        [target.name]: target.validity.valid ? undefined : target.validationMessage,
+      }));
+    }
+
+    return (
+      <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
+        <FormField>
+          <FormFieldLabel>
+            Please type DELETE to confirm
+            <FormFieldLabelSubLabel>
+              - mandatory
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
+
+          <Input
+            invalid={ !!localError.confirmation }
+            name="confirmation"
+            onBlur={ onBlur }
+            pattern="^DELETE$"
+            placeholder="DELETE"
+            required />
+
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
+              This action is irreversible.
+            </Text>
+          </FormFieldHelper>
+        </FormField>
+
+        <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
+          <Button variant={ BUTTON_VARIANT.outline }>
+            Cancel
+          </Button>
+
+          <Button color={ BUTTON_COLOR.critical }>
+            Delete account
+          </Button>
+        </div>
+      </form>
+    );
+  },
+};
+
+export const GuideFormError: Story = {
+  globals: {
+    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, Message, MessageBody, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+import { type FormEvent, useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const [localError, setLocalError] = useState<Record<string, string | undefined>>({});
+    const [globalError, setGlobalError] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    function handleSubmit(e: FormEvent): void {
+      e.preventDefault();
+      setGlobalError('');
+      setIsSubmitting(true);
+
+      // Fake API call
+      setTimeout(() => {
+        setGlobalError('Something went wrong');
+        setIsSubmitting(false);
+      }, 1000);
+    }
+
+    function onBlur(e: FormEvent): void {
+      const target = e.target as HTMLInputElement;
+      setLocalError((error) => ({
+        ...error,
+        [target.name]: target.validity.valid ? undefined : target.validationMessage,
+      }));
+    }
+
+    function onInvalid(e: FormEvent): void {
+      e.preventDefault();
+      const target = e.target as HTMLInputElement;
+      setLocalError((error) => ({
+        ...error,
+        [target.name]: target.validationMessage,
+      }));
+    }
+
+    return (
+      <form
+        onSubmit={ handleSubmit }
+        style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
+        <FormField invalid={ !!localError.firstname }>
+          <FormFieldLabel>
+            First name
+            <FormFieldLabelSubLabel>
+              - mandatory
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
+
+          <Input
+            invalid={ !!localError.firstname }
+            name="firstname"
+            onBlur={ onBlur }
+            onInvalid={ onInvalid }
+            placeholder="Type your first name"
+            required />
+
+          <FormFieldError>
+            { localError.firstname }
+          </FormFieldError>
+        </FormField>
+
+        <FormField invalid={ !!localError.email }>
+          <FormFieldLabel>
+            Email
+            <FormFieldLabelSubLabel>
+              - mandatory
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
+
+          <Input
+            invalid={ !!localError.email }
+            name="email"
+            onBlur={ onBlur }
+            onInvalid={ onInvalid }
+            pattern="^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$"
+            placeholder="Type your email"
+            required />
+
+          <FormFieldError>
+            { localError.email }
+          </FormFieldError>
+        </FormField>
+
+        {
+          !!globalError &&
+          <Message
+            color={ MESSAGE_COLOR.critical }
+            onRemove={ () => setGlobalError('') }>
+            <MessageBody>
+              { globalError }
+            </MessageBody>
+          </Message>
+        }
+
+        <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
+          <Button
+            disabled={ isSubmitting }
+            variant={ BUTTON_VARIANT.outline }>
+            Cancel
+          </Button>
+
+          <Button
+            color={ BUTTON_COLOR.critical }
+            loading={ isSubmitting }
+            type="submit">
+            Delete account
+          </Button>
+        </div>
+      </form>
+    );
+  },
+};
+
+export const GuideFormGroupedField: Story = {
+  globals: {
+    imports: `import { Button, FormField, FormFieldLabel, FormFieldLabelSubLabel, Input, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+import { type FormEvent, useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const [localError, setLocalError] = useState<Record<string, string | undefined>>({});
+
+    function onBlur(e: FormEvent): void {
+      const target = e.target as HTMLInputElement;
+      setLocalError((error) => ({
+        ...error,
+        [target.name]: target.validity.valid ? undefined : target.validationMessage,
+      }));
+    }
+
+    return (
+      <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
+        <Text preset={ TEXT_PRESET.heading3 }>
+          Personal Information
+        </Text>
+
+        <FormField>
+          <FormFieldLabel>
+            First name
+            <FormFieldLabelSubLabel>
+              - mandatory
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
+
+          <Input
+            invalid={ !!localError.firstname }
+            name="firstname"
+            onBlur={ onBlur }
+            placeholder="Type your first name"
+            required />
+        </FormField>
+
+        <FormField>
+          <FormFieldLabel>
+            Last name
+            <FormFieldLabelSubLabel>
+              - mandatory
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
+
+          <Input
+            invalid={ !!localError.lastname }
+            name="lastname"
+            onBlur={ onBlur }
+            placeholder="Type your last name"
+            required />
+        </FormField>
+
+        <Text preset={ TEXT_PRESET.heading3 }>
+          Company Information
+        </Text>
+
+        <FormField>
+          <FormFieldLabel>
+            Company name
+          </FormFieldLabel>
+
+          <Input
+            name="company"
+            placeholder="OVHcloud" />
+        </FormField>
+
+        <FormField>
+          <FormFieldLabel>
+            VAT number
+          </FormFieldLabel>
+
+          <Input
+            name="vat"
+            placeholder="vat" />
+        </FormField>
+
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button>
+            Save
+          </Button>
+        </div>
+      </form>
+    );
+  },
+};
+
+export const GuideFormMandatory: Story = {
+  globals: {
+    imports: `import { FormField, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel, Input, PhoneNumber, PhoneNumberControl, TEXT_PRESET, Text, Textarea } from '@ovhcloud/ods-react';
+import { type FormEvent, useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const [localError, setLocalError] = useState<Record<string, string | undefined>>({});
+
+    function onBlur(e: FormEvent): void {
+      const target = e.target as HTMLInputElement;
+      setLocalError((error) => ({
+        ...error,
+        [target.name]: target.validity.valid ? undefined : target.validationMessage,
+      }));
+    }
+
+    return (
+      <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
+        <FormField>
+          <FormFieldLabel>
+            First name
+            <FormFieldLabelSubLabel>
+              - mandatory
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
+
+          <Input
+            invalid={ !!localError.firstname }
+            name="firstname"
+            onBlur={ onBlur }
+            placeholder="Type your first name"
+            required />
+        </FormField>
+
+        <FormField>
+          <FormFieldLabel>
+            Last name
+            <FormFieldLabelSubLabel>
+              - mandatory
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
+
+          <Input
+            invalid={ !!localError.lastname }
+            name="lastname"
+            onBlur={ onBlur }
+            placeholder="Type your last name"
+            required />
+        </FormField>
+
+        <FormField>
+          <FormFieldLabel>
+            Company
+          </FormFieldLabel>
+
+          <Input
+            name="company"
+            placeholder="Company" />
+        </FormField>
+
+        <FormField>
+          <FormFieldLabel>
+            Phone
+          </FormFieldLabel>
+
+          <PhoneNumber name="phonenumber">
+            <PhoneNumberControl />
+          </PhoneNumber>
+
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
+              Include country code (e.g. +33 6 00 00 00 00)
+            </Text>
+          </FormFieldHelper>
+        </FormField>
+
+        <FormField>
+          <FormFieldLabel>
+            Email
+            <FormFieldLabelSubLabel>
+              - mandatory
+            </FormFieldLabelSubLabel>
+          </FormFieldLabel>
+
+          <Input
+            invalid={ !!localError.email }
+            name="email"
+            onBlur={ onBlur }
+            pattern="^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$"
+            placeholder="Your email"
+            required
+            type="email" />
+
+          <FormFieldHelper>
+            <Text preset={ TEXT_PRESET.caption }>
+              Format: name@example.com
+            </Text>
+          </FormFieldHelper>
+        </FormField>
+      </form>
+    );
+  },
+};
+
+export const GuideFormSimple: Story = {
+  globals: {
+    imports: `import { BUTTON_VARIANT, Button, FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <form style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
+      <FormField>
+        <FormFieldLabel>
+          Phone number
+        </FormFieldLabel>
+
+        <PhoneNumber name="phonenumber">
+          <PhoneNumberCountryList />
+          <PhoneNumberControl />
+        </PhoneNumber>
+      </FormField>
+
+      <div style={{ display: "flex", justifyContent: "flex-end", gap: "16px" }}>
+        <Button variant={ BUTTON_VARIANT.outline }>
+          Back
+        </Button>
+
+        <Button>
+          Update profile
+        </Button>
+      </div>
+    </form>
   ),
 };
 

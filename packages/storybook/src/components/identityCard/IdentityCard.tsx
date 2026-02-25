@@ -1,5 +1,5 @@
 import { TABLE_VARIANT } from '@ovhcloud/ods-react';
-import React, { type ReactNode, useMemo } from 'react';
+import React, { Fragment, type ReactNode, useMemo } from 'react';
 import { ExternalLink } from '../externalLink/ExternalLink';
 import { Table } from '../table/Table';
 import { getPreviousMajorFullVersion } from '../../helpers/version';
@@ -15,13 +15,14 @@ const PREVIOUS_FORM_ELEMENTS = ['checkbox', 'clipboard', 'combobox', 'datepicker
 type Prop = {
   aliases: string[],
   children?: ReactNode,
+  extraLinks?: ReactNode[],
   figmaLink: string,
   githubUrl: string,
   name: string,
   startingVersion?: number,
 }
 
-const IdentityCard = ({ aliases, children, figmaLink, githubUrl, name, startingVersion }: Prop) => {
+const IdentityCard = ({ aliases, children, extraLinks, figmaLink, githubUrl, name, startingVersion }: Prop) => {
   const previousVersionUrl = useMemo(() => {
     if (startingVersion && startingVersion >= PREVIOUS_MAJOR) {
       return '';
@@ -87,6 +88,13 @@ const IdentityCard = ({ aliases, children, figmaLink, githubUrl, name, startingV
                 href={ previousVersionUrl }>
                 Previous major version
               </ExternalLink>
+            }
+
+            {
+              extraLinks && extraLinks.length > 0 && extraLinks.map((extraLink, i) =>
+                <Fragment key={ i }>
+                  { extraLink }
+                </Fragment>)
             }
           </td>
         </tr>

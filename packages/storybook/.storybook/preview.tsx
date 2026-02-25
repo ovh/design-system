@@ -55,8 +55,11 @@ const preview: Preview = {
               '*',
             ],
             'Guides', [
+              'Form', [
+                'Guidelines',
+                '*',
+              ],
               'Accessibility',
-              'Handling Form',
               '*',
             ],
             'Tools', [

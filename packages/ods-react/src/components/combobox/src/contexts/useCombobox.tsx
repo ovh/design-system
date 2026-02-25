@@ -18,7 +18,6 @@ type CustomData = Record<string, any>; // eslint-disable-line @typescript-eslint
 
 type ComboboxOptionItem<T extends CustomData = CustomData> = {
   customRendererData?: T,
-  disabled?: boolean;
   group?: string;
   /** @internal */
   isNewElement?: boolean;
@@ -28,7 +27,6 @@ type ComboboxOptionItem<T extends CustomData = CustomData> = {
 
 type ComboboxGroupItem<T extends CustomData = CustomData> = {
   customRendererData?: T,
-  disabled?: boolean;
   label: string;
   options: ComboboxOptionItem[];
 };

@@ -19,7 +19,7 @@ type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {
 };
 
 const meta: Meta<ComboboxProp> = {
-  argTypes: excludeFromDemoControls(['customOptionRenderer', 'defaultValue', 'i18n', 'items', 'locale', 'name', 'onInputValueChange', 'onValueChange', 'required', 'value']),
+  argTypes: excludeFromDemoControls(['customFilter', 'customOptionRenderer', 'defaultValue', 'i18n', 'items', 'locale', 'name', 'onInputValueChange', 'onValueChange', 'required', 'value']),
   component: Combobox,
   subcomponents: { ComboboxContent, ComboboxControl },
   title: 'React Components/Combobox',
@@ -484,28 +484,6 @@ export const Multiple: Story = {
         { label: 'Goldfish', value: 'goldfish' },
       ]}>
       <ComboboxControl />
-
-      <ComboboxContent />
-    </Combobox>
-  ),
-};
-
-export const Placeholder: Story = {
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  render: ({}) => (
-    <Combobox
-      items={[
-        { label: 'Dog', value: 'dog' },
-        { label: 'Cat', value: 'cat' },
-        { label: 'Hamster', value: 'hamster', disabled: true },
-        { label: 'Parrot', value: 'parrot' },
-        { label: 'Spider', value: 'spider' },
-        { label: 'Goldfish', value: 'goldfish' },
-      ]}>
-      <ComboboxControl placeholder="Please select" />
 
       <ComboboxContent />
     </Combobox>

@@ -9,7 +9,7 @@ import { ExternalLink } from '../../../src/components/externalLink/ExternalLink'
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
-import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { HOME_TITLE, REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ ComboboxStories } name='Documentation' />
 
@@ -22,6 +22,7 @@ _**Combobox** allows users to search, select, and add items from a dynamic or pr
 <Heading label="Overview" level={ 2 } />
 
 <IdentityCard aliases={['Autocomplete', 'Dropdown Search', 'Autosuggest', 'Filterable Select']}
+              extraLinks={ [<StorybookLink title={ HOME_TITLE.formGuidelines }>Form Guidelines</StorybookLink>] }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=6046-9189"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/combobox"
               name="Combobox"

@@ -8,6 +8,8 @@ import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../../src/constants/meta';
 
 <Meta of={ ToggleStories } name='Documentation' />
 
@@ -18,6 +20,7 @@ import { IdentityCard } from '../../../src/components/identityCard/IdentityCard'
 <Heading label="Overview" level={ 2 } />
 
 <IdentityCard aliases={ ['Toggle Switch', 'Switch'] }
+              extraLinks={ [<StorybookLink title={ HOME_TITLE.formGuidelines }>Form Guidelines</StorybookLink>] }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=53-15319"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/toggle"
               name="Toggle">

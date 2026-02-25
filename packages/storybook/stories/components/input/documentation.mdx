@@ -7,6 +7,8 @@ import { BestPractices } from '../../../src/components/bestPractices/BestPractic
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../../src/constants/meta';
 
 <Meta of={ InputStories } name="Documentation" />
 
@@ -19,6 +21,7 @@ _**Input** component is an **Input** field where users can type into_
 <Heading label="Overview" level={ 2 } />
 
 <IdentityCard aliases={ ['Text Input', 'Text Field'] }
+              extraLinks={ [<StorybookLink title={ HOME_TITLE.formGuidelines }>Form Guidelines</StorybookLink>] }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=93-22570"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/input"
               name="Input">

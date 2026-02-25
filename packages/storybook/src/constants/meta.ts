@@ -16,9 +16,10 @@ enum SECTION {
 enum HOME_TITLE {
   accessibilityGuide = `${SECTION.home}/${SECTION.guides}/Accessibility`,
   designTokens = `${SECTION.home}/${SECTION.design}/Design Tokens`,
+  formGuidelines = `${SECTION.home}/${SECTION.guides}/Form/Guidelines`,
   getStarted = `${SECTION.home}/Get Started`,
-  handlingFormGuide = `${SECTION.home}/${SECTION.guides}/Handling Form`,
   i18nGuide = `${SECTION.home}/${SECTION.guides}/Internationalization`,
+  implementingFormGuide = `${SECTION.home}/${SECTION.guides}/Form/Implementing a Form`,
   migration12to13 = `${SECTION.home}/${SECTION.whatsNew}/${SECTION.migrationGuide}/12.x to 13.x`,
   migration13to14 = `${SECTION.home}/${SECTION.whatsNew}/${SECTION.migrationGuide}/13.x to 14.x`,
   migration14to15 = `${SECTION.home}/${SECTION.whatsNew}/${SECTION.migrationGuide}/14.x to 15.x`,

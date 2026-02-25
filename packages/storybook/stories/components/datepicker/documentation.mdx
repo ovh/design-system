@@ -8,7 +8,7 @@ import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
-import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+import { HOME_TITLE, REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Meta of={ DatepickerStories } name="Documentation" />
 
@@ -21,6 +21,7 @@ _A **Datepicker** component is used to allow users to select a date. They can na
 <Heading label="Overview" level={ 2 } />
 
 <IdentityCard aliases={ ['Calendar'] }
+              extraLinks={ [<StorybookLink title={ HOME_TITLE.formGuidelines }>Form Guidelines</StorybookLink>] }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=26-7958"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/datepicker"
               name="Datepicker">

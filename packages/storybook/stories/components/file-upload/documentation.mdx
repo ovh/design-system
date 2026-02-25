@@ -7,6 +7,8 @@ import { BestPractices } from '../../../src/components/bestPractices/BestPractic
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../../src/constants/meta';
 
 <Meta of={ FileUploadStories } name="Documentation" />
 
@@ -19,6 +21,7 @@ _**File Upload** allows users to select one or more files to upload to a specifi
 <Heading label="Overview" level={ 2 } />
 
 <IdentityCard aliases={ ['File input', 'File uploader', 'Dropzone'] }
+              extraLinks={ [<StorybookLink title={ HOME_TITLE.formGuidelines }>Form Guidelines</StorybookLink>] }
               figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=55-24358"
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/file-upload"
               name="File Upload">

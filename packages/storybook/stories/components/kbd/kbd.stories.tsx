@@ -8,7 +8,6 @@ type Story = StoryObj<KbdProp>;
 
 const meta: Meta<KbdProp> = {
   component: Kbd,
-  tags: ['new'],
   title: 'React Components/Kbd',
 };
 

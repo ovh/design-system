@@ -12,7 +12,6 @@ const meta: Meta<ButtonGroupProp> = {
   argTypes: excludeFromDemoControls(['defaultValue', 'onValueChange', 'value']),
   component: ButtonGroup,
   subcomponents: { ButtonGroupItem },
-  tags: ['new'],
   title: 'React Components/Button Group',
 };
 

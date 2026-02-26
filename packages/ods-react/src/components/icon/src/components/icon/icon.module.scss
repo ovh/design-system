@@ -21,6 +21,7 @@
     &--blog::before { content: '\e9b8'; }
     &--book::before { content: '\e90f'; }
     &--box::before { content: '\e91c'; }
+    &--brain::before { content: '\e9c9'; }
     &--building::before { content: '\e953'; }
     &--cable::before { content: '\e962'; }
     &--calculator::before { content: '\e96e'; }
@@ -67,6 +68,7 @@
     &--diamond-exclamation::before { content: '\e930'; }
     &--diamond-exclamation-full::before { content: '\e92f'; }
     &--diamonds-full::before { content: '\e92a'; }
+    &--diagnostic::before { content: '\e9ca'; }
     &--discord::before { content: '\e9b9'; }
     &--disk::before { content: '\e998'; }
     &--download::before { content: '\e934'; }
@@ -111,6 +113,8 @@
     &--grid::before { content: '\e900'; }
     &--grid-alt::before { content: '\e951'; }
     &--hamburger-menu::before { content: '\e952'; }
+    &--handshake::before { content: '\e9cb'; }
+    &--headphones::before { content: '\e9cc'; }
     &--heart::before { content: '\e99e'; }
     &--heart-full::before { content: '\e99f'; }
     &--heart-half::before { content: '\e9a0'; }
@@ -120,6 +124,7 @@
     &--history::before { content: '\e9a1'; }
     &--home::before { content: '\e955'; }
     &--key::before { content: '\e957'; }
+    &--keyboard::before { content: '\e9cd'; }
     &--leaf::before { content: '\e95b'; }
     &--lifebuoy::before { content: '\e95c'; }
     &--lightbulb::before { content: '\e95d'; }
@@ -151,6 +156,7 @@
     &--plus::before { content: '\e968'; }
     &--printer::before { content: '\e969'; }
     &--question::before { content: '\e96d'; }
+    &--reddit::before { content: '\e9ce'; }
     &--refresh::before { content: '\e96f'; }
     &--resize::before { content: '\e970'; }
     &--robot::before { content: '\e9a9'; }
@@ -174,6 +180,7 @@
     &--shopping-cart-xmark::before { content: '\e97c'; }
     &--shrink::before { content: '\e981'; }
     &--shutdown::before { content: '\e982'; }
+    &--snowflake::before { content: '\e9cf'; }
     &--sort-alpha-down::before { content: '\e983'; }
     &--sort-alpha-up::before { content: '\e984'; }
     &--sort-numeric-down::before { content: '\e985'; }
@@ -181,13 +188,16 @@
     &--sparkle::before { content: '\e9aa'; }
     &--split-horizontal::before { content: '\e9ab'; }
     &--split-vertical::before { content: '\e9ac'; }
+    &--ssl-key::before { content: '\e9d0'; }
     &--star::before { content: '\e989'; }
     &--star-full::before { content: '\e988'; }
     &--star-half::before { content: '\e9ad'; }
     &--store::before { content: '\e98a'; }
+    &--suitcase::before { content: '\e9d1'; }
     &--sun::before { content: '\e9c5'; }
     &--sync::before { content: '\e9ae'; }
     &--tag::before { content: '\e96b'; }
+    &--target::before { content: '\e9d2'; }
     &--thumbs-down::before { content: '\e9af'; }
     &--thumbs-up::before { content: '\e9b0'; }
     &--timer::before { content: '\e91b'; }
@@ -200,7 +210,8 @@
     &--twitch::before { content: '\e9c6'; }
     &--undo::before { content: '\e990'; }
     &--upload::before { content: '\e991'; }
-    &--user::before { content: '\e993'; }
+    &--user::before { content: '\e9d3'; }
+    &--user-full::before { content: '\e993'; }
     &--vault::before { content: '\e9b1'; }
     &--x::before { content: '\e9c7'; }
     &--xmark::before { content: '\e98b'; }

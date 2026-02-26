@@ -45,7 +45,7 @@ const CartProductGroupItem: FC<CartProductGroupItemProp> = forwardRef(({
 
         <div className={ style['cart-product-group-item__item'] }>
           {
-            quantity &&
+            quantity !== undefined &&
             <Text
               as="span"
               preset={ TEXT_PRESET.small }>

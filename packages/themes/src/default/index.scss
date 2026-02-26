@@ -171,6 +171,14 @@
   --ods-theme-input-text-color-checked: var(--ods-theme-background-color);
   --ods-theme-input-text-color-invalid: #{var.$ods-color-critical-500};
 
+  // Chart colors
+  --ods-theme-chart-background-color: var(--ods-theme-background-color);
+  --ods-theme-chart-axis-color: var(--ods-color-neutral-300);
+  --ods-theme-chart-tick-color: var(--ods-color-neutral-700);
+  --ods-theme-chart-legend-color: var(--ods-color-neutral-700);
+  --ods-theme-chart-grid-color: var(--ods-color-neutral-200);
+  --ods-theme-chart-reference-line-color: var(--ods-theme-critical-color);
+
   // [Deprecated] will be removed in next major version
   --ods-border-radius-xs: #{var.$ods-border-radius-xs};
   --ods-border-radius-sm: #{var.$ods-border-radius-sm};

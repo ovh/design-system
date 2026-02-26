@@ -1,0 +1,140 @@
+import { Meta } from '@storybook/blocks';
+import { ChartColorCards } from '../../../src/components/chartColorCards/ChartColorCards';
+import { TokenPreview } from '../../../src/components/designTokens/tokenPreview/TokenPreview';
+import { TOKEN_TYPE } from '../../../src/constants/designTokens';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Table } from '../../../src/components/table/Table';
+
+<Meta title="OVHcloud Design System/Guides/Charts - Usage Guidelines" />
+
+<Heading label="Charts - Usage Guidelines" level={ 1 } />
+
+These guidelines provide UI, functional, and UX rules to follow when creating charts.
+
+While this documentation is not exhaustive and does not cover technical implementation details, it serves as a comprehensive reference for designing effective and consistent data visualizations.
+
+<Heading label="General guidelines" level={ 2 } />
+
+- **Consistency**: Maintain consistency in your chart types and styles across your application or platform
+- **Labels**: Clearly label your axes, legend, and data points. Use descriptive titles (or Tooltips) to help users understand the chart's purpose and details
+- **Accessibility**: Ensure your charts are accessible to all users (see <ExternalLink href="https://www.a11y-collective.com/blog/accessible-charts/">Accessible Charts</ExternalLink>)
+
+<Heading label="Chart types" level={ 2 } />
+
+The following chart types are commonly used in OVHcloud, categorized by their primary use cases:
+
+<Heading label="Bar Charts" level={ 3 } />
+
+**Usage**
+
+- Comparing quantities or amounts between different categories
+- Displaying data in a stacked layout to show cumulative values
+
+**Best Practices**
+
+- Prefer using vertical bars rather than horizontal layout
+- Use solid bar colors to distinguish them from background
+
+<Heading label="Line Charts" level={ 3 } />
+
+**Usage**
+
+- Showing progression and trends of data over time
+- Comparing multiple lines through a common criterion such as a timespan
+
+**Best Practices**
+
+- Prefer using solid lines for data series
+
+<Heading label="Area Charts" level={ 3 } />
+
+**Usage**
+
+- Presenting the amplitude of content and focusing on drastic trend changes
+- Displaying data in a stacked layout to show cumulative values
+
+**Best Practices**
+
+- Top of areas must be a solid line to draw area limit
+- Opacity can be applied to areas to show data overlaps
+
+<Heading label="Pie Charts" level={ 3 } />
+
+**Usage**
+
+- Displaying proportions and percentages of a whole amount
+
+**Best Practices**
+
+- Avoid more than 5 slices to keep clarity
+
+<Heading label="Styling" level={ 2 } />
+
+<Heading label="Structural elements" level={ 3 } />
+
+For structural elements, here are the expected values to apply:
+
+<Table>
+  <thead>
+  <tr>
+    <th scope="col">Element</th>
+    <th scope="col">Token</th>
+    <th scope="col">Color</th>
+    <th scope="col">Preview</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Background</td>
+    <td><code>--ods-theme-chart-background-color</code></td>
+    <td><code>#ffffff</code></td>
+    <td><TokenPreview token={{ name: '--ods-theme-chart-background-color', type: TOKEN_TYPE.color, value: '#ffffff' }} /></td>
+  </tr>
+  <tr>
+    <td>Axis</td>
+    <td><code>--ods-theme-chart-axis-color</code></td>
+    <td><code>#b3b3b3</code></td>
+    <td><TokenPreview token={{ name: '--ods-theme-chart-axis-color', type: TOKEN_TYPE.color, value: '#b3b3b3' }} /></td>
+  </tr>
+  <tr>
+    <td>Ticks (axis labels)</td>
+    <td><code>--ods-theme-chart-tick-color</code></td>
+    <td><code>#4d4d4d</code></td>
+    <td><TokenPreview token={{ name: '--ods-theme-chart-tick-color', type: TOKEN_TYPE.color, value: '#4d4d4d' }} /></td>
+  </tr>
+  <tr>
+    <td>Legends</td>
+    <td><code>--ods-theme-chart-legend-color</code></td>
+    <td><code>#4d4d4d</code></td>
+    <td><TokenPreview token={{ name: '--ods-theme-chart-legend-color', type: TOKEN_TYPE.color, value: '#4d4d4d' }} /></td>
+  </tr>
+  <tr>
+    <td>Grids</td>
+    <td><code>--ods-theme-chart-grid-color</code></td>
+    <td><code>#cccccc</code></td>
+    <td><TokenPreview token={{ name: '--ods-theme-chart-grid-color', type: TOKEN_TYPE.color, value: '#cccccc' }} /></td>
+  </tr>
+  <tr>
+    <td>Reference Line</td>
+    <td><code>--ods-theme-chart-reference-line-color</code></td>
+    <td><code>#bf0020</code></td>
+    <td><TokenPreview token={{ name: '--ods-theme-chart-reference-line-color', type: TOKEN_TYPE.color, value: '#bf0020' }} /></td>
+  </tr>
+  </tbody>
+</Table>
+
+- Font-family must follow ODS pre-set for all text labelling
+- Font-size minimum values to use are:
+  - **12px** for axis labels
+  - **14px** for legends
+  - **16px** for tooltip content
+- ODS Tooltips must be used to define series data while hovering on values
+
+<Heading label="Color scheme" level={ 2 } />
+
+Use the following colors for your chart series, in the specified order:
+
+<ChartColorCards />
+
+These colors are picked for their likelihood to be valid regarding color contrast ratio, and can be distinguished from one another.

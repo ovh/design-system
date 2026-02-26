@@ -72,6 +72,7 @@ const preview: Preview = {
                 '*',
               ],
               'Accessibility',
+              'Charts - Usage Guidelines',
               '*',
             ],
             'Tools', [

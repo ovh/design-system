@@ -104,14 +104,20 @@ React Components
 ### Custom Trigger
 
 ```jsx
-<Popover>
-  <PopoverTrigger asChild>
-    <Button>
-      Custom Trigger    </Button>
-  </PopoverTrigger>
-  <PopoverContent>
-    This is the popover content  </PopoverContent>
-</Popover>
+{
+  globals: {
+    imports: `import { Button, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Popover>
+      <PopoverTrigger asChild>
+        <Button>
+          Custom Trigger        </Button>
+      </PopoverTrigger>
+      <PopoverContent>
+        This is the popover content      </PopoverContent>
+    </Popover>
+}
 ```
 
 ### Controlled
@@ -138,12 +144,18 @@ const [isOpen, setIsOpen] = useState(false);
 ### Use Trigger Width
 
 ```jsx
-<Popover sameWidth>
-  <PopoverTrigger>
-    Show popover that will take this width as reference  </PopoverTrigger>
-  <PopoverContent>
-    The popover content  </PopoverContent>
-</Popover>
+{
+  globals: {
+    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Popover sameWidth>
+      <PopoverTrigger>
+        Show popover that will take this width as reference      </PopoverTrigger>
+      <PopoverContent>
+        The popover content      </PopoverContent>
+    </Popover>
+}
 ```
 
 ### Grid

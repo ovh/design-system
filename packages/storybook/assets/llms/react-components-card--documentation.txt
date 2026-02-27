@@ -17,7 +17,7 @@ It is designed to be reusable, customizable, and responsive, as it can hold vari
 
 It also provides a consistent layout and styling for presenting information in a visually appealing way.
 
-<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Card</td></tr><tr><th scope="row">Also known as</th><td>Tile (previous name), Content Container, Product Card</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-28244" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/card" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-card--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Card</td></tr><tr><th scope="row">Also known as</th><td>Tile (previous name), Content Container, Product Card</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-28244" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/card" target="_blank">Github <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-card--documentation" target="_blank">Previous major version<span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
 
 ## Usage
 
@@ -142,37 +142,31 @@ This structure ensures that assistive technologies announce **Cards** as a list,
 
 When modifying the HTML structure is not possible, use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [role="listitem"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) to mimic list semantics.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
-Interdum et malesuada fames ac ante ipsum primis in faucibus.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
-Interdum et malesuada fames ac ante ipsum primis in faucibus.
-
 ```jsx
-<div
-  role="list"
-  style={{
+{
+  globals: {
+    imports: `import { Card } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <div role="list" style={{
     display: 'flex',
     gap: '16px'
-  }}
->
-  <Card
-    role="listitem"
-    style={{
+  }}>
+      <Card role="listitem" style={{
       padding: '8px'
-    }}
-  >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.    <br />
-    Interdum et malesuada fames ac ante ipsum primis in faucibus.  </Card>
-  <Card
-    role="listitem"
-    style={{
+    }}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+        Interdum et malesuada fames ac ante ipsum primis in faucibus.      </Card>
+      <Card role="listitem" style={{
       padding: '8px'
-    }}
-  >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.    <br />
-    Interdum et malesuada fames ac ante ipsum primis in faucibus.  </Card>
-</div>
+    }}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+        Interdum et malesuada fames ac ante ipsum primis in faucibus.      </Card>
+    </div>
+}
 ```
 
 This ensures that screen readers still recognize the **Cards** as a structured list even without native `<ul>` and `<li>` elements.

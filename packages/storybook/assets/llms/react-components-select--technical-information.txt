@@ -117,6 +117,8 @@ React Components
 
 ### Default
 
+DogCatHamsterParrotSpiderGoldfish
+
 ```jsx
 {
   globals: {
@@ -267,212 +269,155 @@ React Components
 
 ### Disabled
 
-Disabled
-
-DogCatHamsterParrotSpiderGoldfish
-
-Disabled options
-
-DogCatHamsterParrotSpiderGoldfish
-
-Disabled group or group option
-
-FranceGermanyItalyChinaJapanRussiaCanadaMexicoUnited States of America
-
 ```jsx
-<>
-  <Select
-    disabled
-    items={[
-      {
-        label: 'Dog',
-        value: 'dog'
-      },
-      {
-        label: 'Cat',
-        value: 'cat'
-      },
-      {
-        label: 'Hamster',
-        value: 'hamster'
-      },
-      {
-        label: 'Parrot',
-        value: 'parrot'
-      },
-      {
-        label: 'Spider',
-        value: 'spider'
-      },
-      {
-        label: 'Goldfish',
-        value: 'goldfish'
-      }
-    ]}
-  >
-    <Text
-      htmlFor="disabled"
-      preset="label"
-    >
-      Disabled    </Text>
-    <SelectControl
-      id="disabled"
-      placeholder="Select one or more pets"
-    />
-    <SelectContent />
-  </Select>
-  <Select
-    items={[
-      {
-        disabled: true,
-        label: 'Dog',
-        value: 'dog'
-      },
-      {
-        label: 'Cat',
-        value: 'cat'
-      },
-      {
-        label: 'Hamster',
-        value: 'hamster'
-      },
-      {
-        disabled: true,
-        label: 'Parrot',
-        value: 'parrot'
-      },
-      {
-        label: 'Spider',
-        value: 'spider'
-      },
-      {
-        label: 'Goldfish',
-        value: 'goldfish'
-      }
-    ]}
-  >
-    <Text
-      htmlFor="disabled-options"
-      preset="label"
-    >
-      Disabled options    </Text>
-    <SelectControl
-      id="disabled-options"
-      placeholder="Select one or more pets"
-    />
-    <SelectContent />
-  </Select>
-  <Select
-    items={[
-      {
-        label: 'Europe',
-        options: [
-          {
-            label: 'France',
-            value: 'fr'
-          },
-          {
-            disabled: true,
-            label: 'Germany',
-            value: 'de'
-          },
-          {
-            label: 'Italy',
-            value: 'it'
-          }
-        ]
-      },
-      {
-        disabled: true,
-        label: 'Asia',
-        options: [
-          {
-            disabled: true,
-            label: 'China',
-            value: 'cn'
-          },
-          {
-            disabled: true,
-            label: 'Japan',
-            value: 'jp'
-          },
-          {
-            disabled: true,
-            label: 'Russia',
-            value: 'ru'
-          }
-        ]
-      },
-      {
-        label: 'North America',
-        options: [
-          {
-            label: 'Canada',
-            value: 'ca'
-          },
-          {
-            label: 'Mexico',
-            value: 'mx'
-          },
-          {
-            label: 'United States of America',
-            value: 'us'
-          }
-        ]
-      }
-    ]}
-  >
-    <Text
-      htmlFor="disabled-group"
-      preset="label"
-    >
-      Disabled group or group option    </Text>
-    <SelectControl id="disabled-group" />
-    <SelectContent />
-  </Select>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Select, SelectContent, SelectControl, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Select disabled items={[{
+      label: 'Dog',
+      value: 'dog'
+    }, {
+      label: 'Cat',
+      value: 'cat'
+    }, {
+      label: 'Hamster',
+      value: 'hamster'
+    }, {
+      label: 'Parrot',
+      value: 'parrot'
+    }, {
+      label: 'Spider',
+      value: 'spider'
+    }, {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }]}>
+        <Text htmlFor="disabled" preset={TEXT_PRESET.label}>
+          Disabled        </Text>
+        <SelectControl id="disabled" placeholder="Select one or more pets" />
+        <SelectContent />
+      </Select>
+      <Select items={[{
+      label: 'Dog',
+      value: 'dog',
+      disabled: true
+    }, {
+      label: 'Cat',
+      value: 'cat'
+    }, {
+      label: 'Hamster',
+      value: 'hamster'
+    }, {
+      label: 'Parrot',
+      value: 'parrot',
+      disabled: true
+    }, {
+      label: 'Spider',
+      value: 'spider'
+    }, {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }]}>
+        <Text htmlFor="disabled-options" preset={TEXT_PRESET.label}>
+          Disabled options        </Text>
+        <SelectControl id="disabled-options" placeholder="Select one or more pets" />
+        <SelectContent />
+      </Select>
+      <Select items={[{
+      label: 'Europe',
+      options: [{
+        label: 'France',
+        value: 'fr'
+      }, {
+        label: 'Germany',
+        value: 'de',
+        disabled: true
+      }, {
+        label: 'Italy',
+        value: 'it'
+      }]
+    }, {
+      disabled: true,
+      label: 'Asia',
+      options: [{
+        label: 'China',
+        value: 'cn',
+        disabled: true
+      }, {
+        label: 'Japan',
+        value: 'jp',
+        disabled: true
+      }, {
+        label: 'Russia',
+        value: 'ru',
+        disabled: true
+      }]
+    }, {
+      label: 'North America',
+      options: [{
+        label: 'Canada',
+        value: 'ca'
+      }, {
+        label: 'Mexico',
+        value: 'mx'
+      }, {
+        label: 'United States of America',
+        value: 'us'
+      }]
+    }]}>
+        <Text htmlFor="disabled-group" preset={TEXT_PRESET.label}>
+          Disabled group or group option        </Text>
+        <SelectControl id="disabled-group" />
+        <SelectContent />
+      </Select>
+    </>
+}
 ```
 
 ### Readonly
 
-DogCatHamsterParrotSpiderGoldfish
-
 ```jsx
-<Select
-  items={[
-    {
-      label: 'Dog',
-      value: 'dog'
-    },
-    {
-      label: 'Cat',
-      value: 'cat'
-    },
-    {
-      label: 'Hamster',
-      value: 'hamster'
-    },
-    {
-      label: 'Parrot',
-      value: 'parrot'
-    },
-    {
-      label: 'Spider',
-      value: 'spider'
-    },
-    {
-      label: 'Goldfish',
-      value: 'goldfish'
-    }
-  ]}
-  readOnly
->
-  <SelectControl placeholder="Select one or more pets" />
-  <SelectContent />
-</Select>
+{
+  globals: {
+    imports: `import { Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Select items={[{
+    label: 'Dog',
+    value: 'dog'
+  }, {
+    label: 'Cat',
+    value: 'cat'
+  }, {
+    label: 'Hamster',
+    value: 'hamster'
+  }, {
+    label: 'Parrot',
+    value: 'parrot'
+  }, {
+    label: 'Spider',
+    value: 'spider'
+  }, {
+    label: 'Goldfish',
+    value: 'goldfish'
+  }]} readOnly>
+      <SelectControl placeholder="Select one or more pets" />
+      <SelectContent />
+    </Select>
+}
 ```
 
 ### Custom Renderer
+
+OVH CloudAmazon Web ServicesMicrosoft AzureGoogle Cloud Platform
 
 ```jsx
 type CustomData = {
@@ -581,29 +526,29 @@ Select a Web hosting
 1 vCore 2,4 GHz, 2 Go RAM1 vCore 2,4 GHz, 4 Go RAM2 vCores 2,4 GHz, 8 Go RAM
 
 ```jsx
-{
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Select a Web hosting      </FormFieldLabel>
-      <Select items={[{
-      label: '1 vCore 2,4 GHz, 2 Go RAM',
-      value: 'hosting-1'
-    }, {
-      label: '1 vCore 2,4 GHz, 4 Go RAM',
-      value: 'hosting-2'
-    }, {
-      label: '2 vCores 2,4 GHz, 8 Go RAM',
-      value: 'hosting-3'
-    }]}>
-        <SelectControl />
-        <SelectContent />
-      </Select>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Select a Web hosting  </FormFieldLabel>
+  <Select
+    items={[
+      {
+        label: '1 vCore 2,4 GHz, 2 Go RAM',
+        value: 'hosting-1'
+      },
+      {
+        label: '1 vCore 2,4 GHz, 4 Go RAM',
+        value: 'hosting-2'
+      },
+      {
+        label: '2 vCores 2,4 GHz, 8 Go RAM',
+        value: 'hosting-3'
+      }
+    ]}
+  >
+    <SelectControl />
+    <SelectContent />
+  </Select>
+</FormField>
 ```
 
 ## Recipes

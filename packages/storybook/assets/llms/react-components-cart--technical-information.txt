@@ -1,0 +1,415 @@
+React Components
+
+# Cart
+
+## Overview
+
+---
+
+Duration
+
+2 years€32.38
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+Duration
+
+2 years€12.70
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+23% VAT / 2 years€13.47
+
+---
+
+Total€58.55
+
+2 products
+
+ex. VAT / year  
+i.e. €XX.XX incl. VAT / year
+
+## Anatomy
+
+---
+
+1.  **Cart**
+2.  **CartProductGroup**
+3.  **CartProductGroupItem**
+4.  **CartExtraContent**
+5.  **CartTotal**
+6.  **CartAction**
+7.  **CartEmpty**
+
+## Cart
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) . |
+| i18n | `Partial` | - | `undefined` | Internal translations override. |
+| locale | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| onOpenChange | `(detail: CartOpenChangeDetail) => void` | - | `undefined` | Callback fired when the cart open state changes (on Mobile only). |
+
+## CartAction
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) . |
+
+## CartEmpty
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) . |
+
+## CartExtraContent
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) . |
+
+## CartProductGroup
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) . |
+| details | `ReactNode` | - | `undefined` | Product details node to display. |
+| label | `ReactNode` |  | `undefined` | Product label node to display. |
+| onRemove | `() => void` | - | `undefined` | Callback fired when the remove button is pressed. |
+| open | `boolean` | - | `undefined` | The controlled open state of the product group. |
+| price | `ReactNode` |  | `undefined` | Formatted price node to display. |
+
+## CartProductGroupItem
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) . |
+| details | `ReactNode` | - | `undefined` | Product details node to display. |
+| label | `ReactNode` |  | `undefined` | Product label node to display. |
+| onRemove | `() => void` | - | `undefined` | Callback fired when the remove button is pressed. |
+| price | `ReactNode` |  | `undefined` | Formatted price node to display. |
+| quantity | `number` | - | `undefined` | Number of selected product. |
+
+## CartTotal
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) . |
+| label | `ReactNode` |  | `undefined` | Total label node to display. |
+| price | `ReactNode` |  | `undefined` | Formatted price node to display. |
+| priceDetails | `ReactNode` | - | `undefined` | Price details node to display. |
+| totalDetails | `ReactNode` | - | `undefined` | Total details node to display. |
+
+## Enums
+
+---
+
+### CART_I18N
+
+-   expandButton =`"cart.expand"`
+-   reduceButton =`"cart.reduce"`
+-   removeProductButton =`"cart.product.remove.button"`
+
+## Interfaces
+
+---
+
+### CartOpenChangeDetail
+
+-   `open: boolean`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-cart-handle-height | 4px | 
+ |
+| --ods-cart-padding-horizontal | calc(var(--ods-theme-padding-horizontal) * 2) | 
+
+ |
+| --ods-cart-padding-vertical | calc(var(--ods-theme-padding-vertical) * 2) | 
+
+ |
+| --ods-cart-product-group-item-padding-horizontal | var(--ods-theme-padding-horizontal) | 
+
+ |
+| --ods-cart-product-group-item-padding-vertical | var(--ods-theme-padding-vertical) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+Lorem ipsum dolor3,24 €
+
+---
+
+Lorem ipsum dolor13,00 €
+
+---
+
+Total16,24 €
+
+```jsx
+<Cart>
+  <CartProductGroup label="Product" price={formatPrice(13.24)}>
+    <CartProductGroupItem label="Lorem ipsum dolor" price={formatPrice(3.24)} />
+    <CartProductGroupItem label="Lorem ipsum dolor" price={formatPrice(13)} />
+  </CartProductGroup>
+  <CartTotal label="Total" price={formatPrice(16.24)} />
+  <CartAction>
+    Continue my order <Icon name={ICON_NAME.arrowRight} />
+  </CartAction>
+</Cart>
+```
+
+### Empty
+
+Your cart is empty
+
+```jsx
+<Cart>
+  <CartEmpty>
+    Your cart is empty  </CartEmpty>
+  <CartAction>
+    Continue my order <Icon name={ICON_NAME.arrowRight} />
+  </CartAction>
+</Cart>
+```
+
+### Complete
+
+Duration
+
+2 years€32.38
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+Duration
+
+2 years€12.70
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+23% VAT / 2 years€13.47
+
+---
+
+Total€58.55
+
+2 products
+
+ex. VAT / year  
+i.e. €XX.XX incl. VAT / year
+
+```jsx
+<Cart style={{
+  width: '320px'
+}}>
+    <CartProductGroup details="Domain" label="ods.fr" onRemove={() => {}} open price={formatPrice(32.38, 'en-GB', 'EUR')}>
+      <CartProductGroupItem details="Duration" label="2 years" onRemove={() => {}} price={formatPrice(32.38, 'en-GB', 'EUR')} />
+      <CartProductGroupItem details="DNSSEC" label="Secure DNS" onRemove={() => {}} price="Included" quantity={1} />
+      <CartProductGroupItem details="E-mail account" label="Zimbra Starter" onRemove={() => {}} price="Included" quantity={1} />
+    </CartProductGroup>
+    <CartProductGroup details="Domain" label="ods-doc.fr" onRemove={() => {}} price={formatPrice(12.70, 'en-GB', 'EUR')}>
+      <CartProductGroupItem details="Duration" label="2 years" onRemove={() => {}} price={formatPrice(12.70, 'en-GB', 'EUR')} />
+      <CartProductGroupItem details="DNSSEC" label="Secure DNS" onRemove={() => {}} price="Included" quantity={1} />
+      <CartProductGroupItem details="E-mail account" label="Zimbra Starter" onRemove={() => {}} price="Included" quantity={1} />
+    </CartProductGroup>
+    <CartExtraContent>
+      <div style={{
+      display: 'flex',
+      justifyContent: 'space-between'
+    }}>
+        <span style={{
+        fontSize: '14px',
+        fontWeight: 600,
+        color: 'var(--ods-theme-text-color)'
+      }}>23% VAT / 2 years</span>
+        <span style={{
+        fontSize: '14px',
+        fontWeight: 700,
+        color: 'var(--ods-theme-text-color)'
+      }}>{formatPrice(13.47, 'en-GB', 'EUR')}</span>
+      </div>
+      <Divider style={{
+      marginTop: 'calc(var(--ods-theme-row-gap) * 2)'
+    }} />
+    </CartExtraContent>
+    <CartTotal label="Total" priceDetails={<div>
+          <span>ex. VAT / year</span>
+          <br />
+          <span>i.e. €XX.XX incl. VAT / year</span>
+        </div>} totalDetails="2 products" price={formatPrice(58.55, 'en-GB', 'EUR')} />
+    <CartAction>
+      Continue my order <Icon name={ICON_NAME.arrowRight} />
+    </CartAction>
+  </Cart>
+```
+
+### Mobile
+
+Duration
+
+2 years€32.38
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+Duration
+
+2 years€12.70
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+23% VAT / 2 years€13.47
+
+---
+
+Total€58.55
+
+2 products
+
+ex. VAT / year  
+i.e. €XX.XX incl. VAT / year
+
+```jsx
+<Cart style={{
+  width: '320px'
+}}>
+    <CartProductGroup details="Domain" label="ods.fr" onRemove={() => {}} open price={formatPrice(32.38, 'en-GB', 'EUR')}>
+      <CartProductGroupItem details="Duration" label="2 years" onRemove={() => {}} price={formatPrice(32.38, 'en-GB', 'EUR')} />
+      <CartProductGroupItem details="DNSSEC" label="Secure DNS" onRemove={() => {}} price="Included" quantity={1} />
+      <CartProductGroupItem details="E-mail account" label="Zimbra Starter" onRemove={() => {}} price="Included" quantity={1} />
+    </CartProductGroup>
+    <CartProductGroup details="Domain" label="ods-doc.fr" onRemove={() => {}} price={formatPrice(12.70, 'en-GB', 'EUR')}>
+      <CartProductGroupItem details="Duration" label="2 years" onRemove={() => {}} price={formatPrice(12.70, 'en-GB', 'EUR')} />
+      <CartProductGroupItem details="DNSSEC" label="Secure DNS" onRemove={() => {}} price="Included" quantity={1} />
+      <CartProductGroupItem details="E-mail account" label="Zimbra Starter" onRemove={() => {}} price="Included" quantity={1} />
+    </CartProductGroup>
+    <CartExtraContent>
+      <div style={{
+      display: 'flex',
+      justifyContent: 'space-between'
+    }}>
+        <span style={{
+        fontSize: '14px',
+        fontWeight: 600,
+        color: 'var(--ods-theme-text-color)'
+      }}>23% VAT / 2 years</span>
+        <span style={{
+        fontSize: '14px',
+        fontWeight: 700,
+        color: 'var(--ods-theme-text-color)'
+      }}>{formatPrice(13.47, 'en-GB', 'EUR')}</span>
+      </div>
+      <Divider style={{
+      marginTop: 'calc(var(--ods-theme-row-gap) * 2)'
+    }} />
+    </CartExtraContent>
+    <CartTotal label="Total" priceDetails={<div>
+          <span>ex. VAT / year</span>
+          <br />
+          <span>i.e. €XX.XX incl. VAT / year</span>
+        </div>} totalDetails="2 products" price={formatPrice(58.55, 'en-GB', 'EUR')} />
+    <CartAction>
+      Continue my order <Icon name={ICON_NAME.arrowRight} />
+    </CartAction>
+  </Cart>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

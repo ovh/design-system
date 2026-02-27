@@ -8,7 +8,7 @@ React Components
 
 The **Meter** component visually represents a quantitative value within a defined range.
 
-<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Meter</td></tr><tr><th scope="row">Also known as</th><td>-</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/YdqCQ0e4CtGBm7dLbuLl1h/ODS---UI-Kit?node-id=10494-5637&amp;t=9pIeofapdgMDhhF4-0" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/meter" target="_blank">Github<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Meter</td></tr><tr><th scope="row">Also known as</th><td>-</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/YdqCQ0e4CtGBm7dLbuLl1h/ODS---UI-Kit?node-id=10494-5637&amp;t=9pIeofapdgMDhhF4-0" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/meter" target="_blank">Github<span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
 
 ## Usage
 
@@ -81,11 +81,13 @@ To ensure proper accessibility, **Meter** must be correctly labeled.
 Every **Meter** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) or an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) attribute.
 
 ```jsx
-<Meter
-  aria-label="Gauge"
-  low={40}
-  value={35}
-/>
+{
+  globals: {
+    imports: `import { Meter } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Meter aria-label="Gauge" low={40} value={35} />
+}
 ```
 
 Screen readers will announce the label and the meter information.
@@ -93,18 +95,17 @@ Screen readers will announce the label and the meter information.
 Gauge:
 
 ```jsx
-<>
-  <Text
-    id="meter-label"
-    preset="label"
-  >
-    Gauge:  </Text>
-  <Meter
-    aria-labelledby="meter-label"
-    low={40}
-    value={35}
-  />
-</>
+{
+  globals: {
+    imports: `import { TEXT_PRESET, Meter, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Text id="meter-label" preset={TEXT_PRESET.label}>
+        Gauge:      </Text>
+      <Meter aria-labelledby="meter-label" low={40} value={35} />
+    </>
+}
 ```
 
 Screen readers will announce the label and the meter information.

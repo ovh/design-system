@@ -75,11 +75,17 @@ React Components
 ### Disabled
 
 ```jsx
-<Quantity disabled>
-  <QuantityControl>
-    <QuantityInput />
-  </QuantityControl>
-</Quantity>
+{
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Quantity disabled>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+}
 ```
 
 ### Readonly
@@ -105,11 +111,17 @@ React Components
 ### Min
 
 ```jsx
-<Quantity min={0}>
-  <QuantityControl>
-    <QuantityInput />
-  </QuantityControl>
-</Quantity>
+{
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Quantity min={0}>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+}
 ```
 
 ### Step
@@ -124,18 +136,22 @@ React Components
 
 ### Form field
 
-Set a quantity:
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Set a quantity:  </FormFieldLabel>
-  <Quantity>
-    <QuantityControl>
-      <QuantityInput />
-    </QuantityControl>
-  </Quantity>
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Set a quantity:      </FormFieldLabel>
+      <Quantity>
+        <QuantityControl>
+          <QuantityInput />
+        </QuantityControl>
+      </Quantity>
+    </FormField>
+}
 ```
 
 ## Recipes

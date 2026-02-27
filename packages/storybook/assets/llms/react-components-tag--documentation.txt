@@ -14,7 +14,7 @@ The **Tag** component is a small UI element used to represent metadata, keywords
 
 They are commonly used in interfaces for categorizing content, filtering, and adding contextual details.
 
-<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Tag</td></tr><tr><th scope="row">Also known as</th><td>Chip (previous name), Label, Pill</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11580" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/tag" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-tag--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Tag</td></tr><tr><th scope="row">Also known as</th><td>Chip (previous name), Label, Pill</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11580" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/tag" target="_blank">Github <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-tag--documentation" target="_blank">Previous major version<span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
 
 ## Usage
 
@@ -35,6 +35,7 @@ Ensure that **Tags** are clearly labelled and easily distinguishable from other 
 | - Use Tags in search contexts, facet filtering, or content classification |
 | - Allow Tags to be removable or toggleable if the interaction requires it (e.g., deselecting a filter) |
 | - Keep visual distinction between Tags (interactive) and Badges (static) |
+| - Trigger removal action when the Tag displays a delete icon |
 
 | ❌ Don't |
 | --- |
@@ -118,23 +119,20 @@ When multiple **Tags** are displayed together (e.g., a collection of selected fi
 -   
 
 ```jsx
-{
-  globals: {
-    imports: `import { Tag } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <ul>
-      <li>
-        <Tag>Design</Tag>
-      </li>
-      <li>
-        <Tag>Development</Tag>
-      </li>
-      <li>
-        <Tag>Accessibility</Tag>
-      </li>
-    </ul>
-}
+<ul>
+  <li>
+    <Tag>
+      Design    </Tag>
+  </li>
+  <li>
+    <Tag>
+      Development    </Tag>
+  </li>
+  <li>
+    <Tag>
+      Accessibility    </Tag>
+  </li>
+</ul>
 ```
 
 This allows screen readers to announce a list with the number of items, making it clear that these **Tags** belong to a structured set.
@@ -144,23 +142,20 @@ This allows screen readers to announce a list with the number of items, making i
 When modifying the HTML structure is not possible, use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [role="listitem"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) to mimic list semantics.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Tag } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <div role="list">
-      <div role="listitem">
-        <Tag>Design</Tag>
-      </div>
-      <div role="listitem">
-        <Tag>Development</Tag>
-      </div>
-      <div role="listitem">
-        <Tag>Accessibility</Tag>
-      </div>
-    </div>
-}
+<div role="list">
+  <div role="listitem">
+    <Tag>
+      Design    </Tag>
+  </div>
+  <div role="listitem">
+    <Tag>
+      Development    </Tag>
+  </div>
+  <div role="listitem">
+    <Tag>
+      Accessibility    </Tag>
+  </div>
+</div>
 ```
 
 This ensures that screen readers still recognize the **Tags** as a structured list, even without native `<ul>` and `<li>` elements.

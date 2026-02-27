@@ -14,7 +14,7 @@ _A **Button** component aims to initiate an action. Its text indicates the relat
 
 This component exists in many ways : variants, sizes and colors.
 
-<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Button</td></tr><tr><th scope="row">Also known as</th><td>Call To Action, CTA</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-23353" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/button" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-button--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Button</td></tr><tr><th scope="row">Also known as</th><td>Call To Action, CTA</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-23353" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/button" target="_blank">Github <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-button--documentation" target="_blank">Previous major version<span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
 
 ## Usage
 
@@ -121,14 +121,9 @@ This component complies with the [Button WAI-ARIA design pattern](https://www.w3
 **Button** should always have a clear and descriptive text content to indicate their purpose.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Button>
-      Clear    </Button>
-}
+<Button>
+  Clear
+</Button>
 ```
 
 Screen readers will announce the text content.
@@ -152,24 +147,13 @@ When a **Button** is associated with an existing label, content is read by scree
 Filter your search results
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Button aria-labelledby="filter-btn">
-        <Icon name={ICON_NAME.filter} />
-      </Button>
-      <span id="filter-btn">Filter your search results</span>
-    </>
-}
+<>
+  <Button aria-labelledby="filter-btn">
+    <Icon name="filter" />
+  </Button>
+  <span id="filter-btn">
+    Filter your search results  </span>
+</>
 ```
 
 When the **Button** is focused, the screen reader will announce the linked label.

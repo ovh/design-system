@@ -36,14 +36,6 @@ See also:
 
 ### Locales
 
-France: 123 456,79 €
-
-Germany: 123.456,79 €
-
-Arabic: ‏١٢٣٬٤٥٦٫٧٩ €
-
-India: €1,23,456.79
-
 ```jsx
 <>
   <p>France: {formatPrice(123456.789, 'fr-FR')}</p>
@@ -54,12 +46,6 @@ India: €1,23,456.79
 ```
 
 ### Currencies
-
-Euro: 123 456,79 €
-
-Dollar: 123 456,79 $
-
-Yen: 123 457 ¥
 
 ```jsx
 <>
@@ -297,6 +283,24 @@ Design tokens are available as CSS custom properties (variables) and can be used
 | --ods-theme-warning-color | var(--ods-color-warning-500) | 
 
  |
+| --ods-theme-chart-background-color | var(--ods-theme-background-color) | 
+
+ |
+| --ods-theme-chart-axis-color | var(--ods-color-neutral-300) | 
+
+ |
+| --ods-theme-chart-tick-color | var(--ods-color-neutral-700) | 
+
+ |
+| --ods-theme-chart-legend-color | var(--ods-color-neutral-700) | 
+
+ |
+| --ods-theme-chart-grid-color | var(--ods-color-neutral-200) | 
+
+ |
+| --ods-theme-chart-reference-line-color | var(--ods-theme-critical-color) | 
+
+ |
 
 ### Outline
 
@@ -352,6 +356,9 @@ Design tokens are available as CSS custom properties (variables) and can be used
 
  |
 | --ods-theme-row-gap | 8px | 
+
+ |
+| --ods-theme-transition-duration | 300ms | 
 
  |
 
@@ -613,7 +620,7 @@ We did expose a bunch of [Sass](https://sass-lang.com) mixins that allows you to
 For example, if you need to make an anchor tag looks like a `Link`:
 
 ```css
-@import '@ovhcloud/ods-components/style';
+@import '@ovhcloud/ods-react/style';
 .my-link {
   @include ods-link();
   @include ods-link-color('primary');
@@ -1101,9 +1108,15 @@ In addition to the predefined accessibility features of our components, you can 
 Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) when an element needs a descriptive name but has no visible text.
 
 ```jsx
-<Button>
-  <Icon name="xmark" />
-</Button>
+{
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button>
+      <Icon name={ICON_NAME.xmark} />
+    </Button>
+}
 ```
 
 Screen readers will announce a button.
@@ -1234,25 +1247,25 @@ Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 Screen readers won't announce the **Modal** content.
 
 ```jsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button>
-      Trigger Modal    </Button>
-  </ModalTrigger>
-  <ModalContent
-    aria-describedby="modal-content"
-    aria-labelledby="modal-title"
-  >
-    <ModalHeader>
-      <span id="modal-title">
-        Delete item      </span>
-    </ModalHeader>
-    <ModalBody>
-      <p id="modal-content">
-        Are you sure you want to delete this item? This action cannot be undone.      </p>
-    </ModalBody>
-  </ModalContent>
-</Modal>
+{
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal        </Button>
+      </ModalTrigger>
+      <ModalContent aria-describedby="modal-content" aria-labelledby="modal-title">
+        <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+        <ModalBody>
+          <p id="modal-content">
+            Are you sure you want to delete this item? This action cannot be undone.          </p>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+}
 ```
 
 Screen readers will announce the **Modal** content.
@@ -1521,8 +1534,6 @@ Screen readers will announce the error message, even when the user is focused el
 
 Screen readers will read each star individually with no context of selection group.
 
-Rating
-
 ```jsx
 {
   globals: {
@@ -1590,7 +1601,637 @@ For consistent testing across different platforms and screen readers, here is th
 -   [French Testing Environment (FR)](https://accessibilite.numerique.gouv.fr/methode/environnement-de-test) : Official guidelines on the tools and technologies to use when testing accessibility on desktop computers
 -   [W3C Tutorial on Alternative Text for Images](https://www.w3.org/WAI/tutorials/images/decision-tree) : A decision tree for writing appropriate alternative text for images
 
-## Handling Form
+## Charts - Usage Guidelines
+
+---
+
+These guidelines provide UI, functional, and UX rules to follow when creating charts.
+
+While this documentation is not exhaustive and does not cover technical implementation details, it serves as a comprehensive reference for designing effective and consistent data visualizations.
+
+## General guidelines
+
+---
+
+-   **Consistency**: Maintain consistency in your chart types and styles across your application or platform
+-   **Labels**: Clearly label your axes, legend, and data points. Use descriptive titles (or Tooltips) to help users understand the chart's purpose and details
+-   **Accessibility**: Ensure your charts are accessible to all users (see [Accessible Charts](https://www.a11y-collective.com/blog/accessible-charts/) )
+
+## Chart types
+
+---
+
+The following chart types are commonly used in OVHcloud, categorized by their primary use cases:
+
+### Bar Charts
+
+**Usage**
+
+-   Comparing quantities or amounts between different categories
+-   Displaying data in a stacked layout to show cumulative values
+
+**Best Practices**
+
+-   Prefer using vertical bars rather than horizontal layout
+-   Use solid bar colors to distinguish them from background
+
+### Line Charts
+
+**Usage**
+
+-   Showing progression and trends of data over time
+-   Comparing multiple lines through a common criterion such as a timespan
+
+**Best Practices**
+
+-   Prefer using solid lines for data series
+
+### Area Charts
+
+**Usage**
+
+-   Presenting the amplitude of content and focusing on drastic trend changes
+-   Displaying data in a stacked layout to show cumulative values
+
+**Best Practices**
+
+-   Top of areas must be a solid line to draw area limit
+-   Opacity can be applied to areas to show data overlaps
+
+### Pie Charts
+
+**Usage**
+
+-   Displaying proportions and percentages of a whole amount
+
+**Best Practices**
+
+-   Avoid more than 5 slices to keep clarity
+
+## Styling
+
+---
+
+### Structural elements
+
+For structural elements, here are the expected values to apply:
+
+| Element | Token | Color | Preview |
+| --- | --- | --- | --- |
+| Background | `--ods-theme-chart-background-color` | `#ffffff` | 
+ |
+| Axis | `--ods-theme-chart-axis-color` | `#b3b3b3` | 
+
+ |
+| Ticks (axis labels) | `--ods-theme-chart-tick-color` | `#4d4d4d` | 
+
+ |
+| Legends | `--ods-theme-chart-legend-color` | `#4d4d4d` | 
+
+ |
+| Grids | `--ods-theme-chart-grid-color` | `#cccccc` | 
+
+ |
+| Reference Line | `--ods-theme-chart-reference-line-color` | `#bf0020` | 
+
+ |
+
+-   Font-family must follow ODS pre-set for all text labelling
+-   Font-size minimum values to use are:
+    -   **12px** for axis labels
+    -   **14px** for legends
+    -   **16px** for tooltip content
+-   ODS Tooltips must be used to define series data while hovering on values
+
+## Color scheme
+
+---
+
+Use the following colors for your chart series, in the specified order:
+
+01#0050d7
+
+02#ac246f
+
+03#00875a
+
+04#df3400
+
+05#25327c
+
+06#a61e20
+
+07#006d77
+
+08#6a2ecf
+
+09#374151
+
+10#4f8400
+
+These colors are picked for their likelihood to be valid regarding color contrast ratio, and can be distinguished from one another.
+
+## Usage Guidelines
+
+---
+
+These guidelines define how forms should behave and be structured across products using the OVHcloud Design System.
+
+This documentation does not describe a technical implementation, but provides functional and UX rules to follow when designing and developing forms.
+
+## Mandatory and optional fields
+
+---
+
+### How to define mandatory fields
+
+A mandatory field must:
+
+-   Explicitly include the word "Mandatory" in the label.
+-   Never rely on an asterisk alone.
+-   Clearly communicate the expected format in the helper text when relevant.
+
+### Optional fields
+
+Optional fields do not need to be labeled "Optional" and can remain unmarked if mandatory fields are clearly identified.
+
+First name- mandatory
+
+Last name- mandatory
+
+Company
+
+Phone
+
+Include country code (e.g. +33 6 00 00 00 00)
+
+Email- mandatory
+
+Format: name@example.com
+
+## Submit behavior
+
+---
+
+In the OVHcloud Design System, the submit should button remain enabled at all times.
+
+Validation is triggered when the user attempts to submit the form.
+
+The form must provide feedback after user action rather than prevent the action.
+
+### Standard submit flow
+
+Initial state:
+
+-   The submit button is visible and enabled.
+-   Mandatory fields are clearly marked in the label.
+-   Helper text communicates expected formats when relevant.
+-   No error messages are displayed before interaction.
+
+When the user clicks the submit button:
+
+-   All mandatory fields are validated.
+-   All format validations are executed.
+-   Field-level errors are displayed where needed.
+-   A global error may be displayed if applicable.
+-   No field values are cleared.
+
+If errors are found:
+
+-   Each invalid field displays its error message.
+-   Error styling is applied.
+-   Fields remain populated.
+-   The submit button remains enabled.
+-   The user can immediately correct the fields and resubmit.
+
+If the form is displayed in a **Modal** or **Drawer**:
+
+-   The container remains open.
+-   Errors are displayed within the same context.
+
+If no errors are found:
+
+-   The form proceeds to submission.
+-   Success feedback is triggered (**Toast** or confirmation page depending on the flow).
+
+### Relationship with inline validation
+
+Inline validation (on blur):
+
+-   May display format errors as soon as the user leaves a field.
+-   Improves correction speed.
+-   Does not replace submit validation.
+
+On submit:
+
+-   All validations are executed again to ensure consistency.
+-   Required errors appear even if the field was never focused.
+
+### Loading & action buttons states
+
+When the user submits a form:
+
+-   The primary action button switches to a loading state.
+-   The secondary action, if any, becomes disabled.
+
+This prevents duplicate submissions and conflicting actions, and clearly communicates that the request is being processed.
+
+## Error handling
+
+---
+
+Error handling must clearly communicate what went wrong and how the user can correct it.
+
+Error handling exists at two levels.
+
+Global errors explain why submission failed. Field-level errors explain what needs correction.
+
+### Local errors (field-level)
+
+Field-level errors are tied to a specific input.
+
+They indicate that the value entered in a particular field is invalid or missing.
+
+#### When field-level errors are triggered
+
+Field-level errors can be triggered:
+
+-   On blur (inline validation).
+-   On submit.
+-   After asynchronous validation (e.g. backend check).
+
+Submit validation must always re-validate all fields, even if inline validation is enabled.
+
+#### Examples of field-level errors
+
+-   Required field left empty.
+-   Invalid email format.
+-   Password does not meet requirements.
+
+### Global errors (form-level)
+
+Global errors are not tied to a single field.
+
+They occur when:
+
+-   Backend validation fails.
+-   A network error occurs.
+-   A business rule prevents submission.
+-   The action cannot be completed.
+
+#### Types of Global Errors
+
+##### Recoverable Failure
+
+Use a **Toast** when:
+
+-   The failure is temporary.
+-   The user can retry immediately.
+-   The error does not block form structure.
+
+Example:
+
+-   Temporary network issue.
+
+##### Critical / Blocking Failure
+
+Use a critical Message component when:
+
+-   The submission fails definitively.
+-   The user must take action.
+-   The error is structural or business-related.
+-   The error message is long or detailed.
+
+##### In Modal or Drawer contexts
+
+-   Always use a critical **Message**.
+-   The message is displayed inside it.
+-   The container remains open.
+
+#### Placement of global error
+
+When using a critical **Message**:
+
+-   It should be placed above the action buttons.
+-   It must not replace field-level errors.
+
+### Example
+
+First name- mandatory
+
+Email- mandatory
+
+## Success handling
+
+---
+
+### Direct feedback
+
+Use a **Toast** when:
+
+-   The action is completed successfully.
+-   The user stays on the same page.
+-   No additional flow is required.
+
+### Confirmation page / modal
+
+Use when:
+
+-   The flow continues.
+-   The user moves to a next step.
+-   A confirmation summary is required.
+
+## Form structures
+
+---
+
+### Simple form with standard action buttons
+
+Phone number
+
+AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigua & BarbudaArgentinaArmeniaArubaAustraliaAustriaAzerbaijanBahamasBahrainBangladeshBarbadosBelarusBelgiumBelizeBeninBermudaBhutanBoliviaBosnia & HerzegovinaBotswanaBrazilBritish Indian Ocean TerritoryBritish Virgin IslandsBruneiBulgariaBurkina FasoBurundiCambodiaCameroonCanadaCape VerdeCaribbean NetherlandsCayman IslandsCentral African RepublicChadChileChinaChristmas IslandCocos (Keeling) IslandsColombiaComorosCongo - BrazzavilleCongo - KinshasaCook IslandsCosta RicaCôte d’IvoireCroatiaCubaCuraçaoCyprusCzechiaDenmarkDjiboutiDominicaDominican RepublicEcuadorEgyptEl SalvadorEquatorial GuineaEritreaEstoniaEswatiniEthiopiaFalkland Islands (Islas Malvinas)Faroe IslandsFijiFinlandFranceFrench GuianaFrench PolynesiaGabonGambiaGeorgiaGermanyGhanaGibraltarGreeceGreenlandGrenadaGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHong KongHungaryIcelandIndiaIndonesiaIranIraqIrelandIsle of ManIsraelItalyJamaicaJapanJerseyJordanKazakhstanKenyaKiribatiKuwaitKyrgyzstanLaosLatviaLebanonLesothoLiberiaLibyaLiechtensteinLithuaniaLuxembourgMacaoMadagascarMalawiMalaysiaMaldivesMaliMaltaMarshall IslandsMartiniqueMauritaniaMauritiusMayotteMexicoMicronesiaMoldovaMonacoMongoliaMontenegroMontserratMoroccoMozambiqueMyanmar (Burma)NamibiaNauruNepalNetherlandsNew CaledoniaNew ZealandNicaraguaNigerNigeriaNiueNorfolk IslandNorth KoreaNorth MacedoniaNorthern Mariana IslandsNorwayOmanPakistanPalauPalestinePanamaPapua New GuineaParaguayPeruPhilippinesPolandPortugalPuerto RicoQatarRéunionRomaniaRussiaRwandaSamoaSan MarinoSão Tomé & PríncipeSaudi ArabiaSenegalSerbiaSeychellesSierra LeoneSingaporeSint MaartenSlovakiaSloveniaSolomon IslandsSomaliaSouth AfricaSouth KoreaSouth SudanSpainSri LankaSt. BarthélemySt. HelenaSt. Kitts & NevisSt. LuciaSt. MartinSt. Pierre & MiquelonSt. Vincent & GrenadinesSudanSurinameSvalbard & Jan MayenSwedenSwitzerlandSyriaTaiwanTajikistanTanzaniaThailandTimor-LesteTogoTokelauTongaTrinidad & TobagoTunisiaTürkiyeTurkmenistanTurks & Caicos IslandsTuvaluU.S. Virgin IslandsUgandaUkraineUnited Arab EmiratesUnited KingdomUnited StatesUruguayUzbekistanVanuatuVatican CityVenezuelaVietnamWallis & FutunaWestern SaharaYemenZambiaZimbabwe
+
+### Grouped fields form
+
+### Personal Information
+
+First name- mandatory
+
+Last name- mandatory
+
+### Company Information
+
+Company name
+
+VAT number
+
+### Critical form
+
+Please type DELETE to confirm- mandatory
+
+This action is irreversible.
+
+## Accessibility requirements
+
+---
+
+-   "Mandatory" must be visible in the label.
+-   Expected input format must be visible in helper text.
+-   Error messages must be programmatically associated with fields.
+-   Fields must remain populated after validation errors.
+-   Inline validation must not trap focus.
+
+## Component selection guidelines
+
+---
+
+This non-exhaustive section helps teams choose the right input component depending on intent. It is presented from the user intention perspective.
+
+Choosing a component is not only about the type of data. It is about:
+
+-   How users think about the choice.
+-   Whether comparison is important.
+-   Whether precision is required.
+-   Whether the action is reversible.
+-   The cognitive load of the interface.
+
+The right component reduces friction before validation is even needed.
+
+### When the user needs to provide short, structured information
+
+Use  component.
+
+Use for:
+
+-   Personal information (First name, Last name).
+-   Identifiers (Reference number, Customer ID).
+-   Short labels (Project name, Tag name).
+
+Why?
+
+-   Users expect a single-line input for short, structured answers.
+-   Keeps vertical space minimal.
+-   Encourages concise input.
+
+Do not use when:
+
+-   The user must provide explanation or justification.
+-   The expected answer may exceed one short sentence.
+
+### When the user needs to explain, justify, or describe something
+
+Use  component.
+
+Use for:
+
+-   Explain why the user is requesting a change.
+-   Describe an issue the user encountered.
+-   Additional comments.
+
+Why?
+
+-   Visually communicates that longer input is expected.
+-   Encourages detailed answers.
+-   Prevents frustration caused by limited visible space.
+
+### When the user must create or confirm secure credentials
+
+Use  component.
+
+Use for:
+
+-   Account creation.
+-   Password reset.
+-   Sensitive authentication fields.
+
+Why?
+
+-   Hides sensitive information.
+-   May include strength indicators.
+-   Can support show/hide functionality.
+
+### When the user must enter an exact numeric value
+
+Use  or  component
+
+Use for:
+
+-   Quantity of items.
+-   Budget amount (precise value).
+-   Number of licenses.
+-   Percentage rate.
+
+Why?
+
+-   Precision matters.
+-   Value must be exact.
+
+Avoid when:
+
+-   The number has formatting rules (phone, IBAN, BIC).
+-   Users are more likely to think in ranges than exact values.
+
+### When the user is selecting an approximate value or a range
+
+Use  component.
+
+Use for:
+
+-   Budget filter.
+-   Price filtering in search results.
+-   Age range selection.
+-   Performance tuning.
+
+Why?
+
+-   Encourages exploration.
+-   Works well for filtering.
+-   Suitable when precision is not critical.
+
+Avoid when:
+
+-   Legal, financial, or contractual precision is required.
+-   The user must enter a specific numeric value.
+
+### When users must choose one option and all options should be visible
+
+Use  buttons.
+
+Use for:
+
+-   Choosing a subscription plan (e.g., Basic / Pro / Enterprise).
+-   Selecting delivery method.
+-   Choosing payment type.
+
+Why?
+
+-   All options are visible.
+-   Encourages comparison.
+-   Reduces hidden choices.
+-   Recommended when there are between 2 and 5 options.
+-   Each option has important contextual differences.
+
+### When users must choose one option from a list
+
+#### Select vs Combobox
+
+When a user must select a single option from a predefined list, the choice between **Select** and **Combobox** depends mainly on the size and complexity of the list.
+
+#### Use Select
+
+Use  when the list is limited and easy to scan visually.
+
+Typical situations:
+
+-   Selecting a status (Draft / Pending / Approved).
+-   Choosing a priority level (Low / Medium / High).
+-   Selecting a department in a small organization.
+
+**Select** is appropriate when:
+
+-   The number of options is moderate.
+-   Users can easily scroll and recognize the right option.
+-   Search is not necessary.
+
+#### Use Combobox
+
+Use  when the list is long or when search significantly improves usability.
+
+Typical situations:
+
+-   Selecting a country from a global list.
+-   Choosing a city.
+-   Assigning a user from a large organization.
+-   Selecting a product from a large catalog.
+
+**Combobox** is appropriate when:
+
+-   The dataset is large.
+-   Users are likely to know what they are looking for.
+-   Scrolling through the entire list would be inefficient.
+
+### When users can select multiple independent options
+
+Use .
+
+Use for:
+
+-   Selecting product features.
+-   Choosing notification preferences.
+-   Accepting multiple agreements.
+
+Why?
+
+-   Clearly communicates independence.
+-   No mutual exclusion implied.
+-   Good for visible, short lists.
+
+### When the user is enabling or disabling a setting
+
+Use  component.
+
+Use for:
+
+-   Enable dark mode.
+-   Activate notifications.
+-   Turn on auto-renewal.
+
+Why?
+
+-   Communicates immediate on/off state.
+-   Best for persistent settings.
+
+Avoid when:
+
+-   The action is critical or legally binding.
+-   The user must explicitly confirm something important.
+
+In those cases, use a .
+
+### When the user must select a specific date
+
+Use  component.
+
+Use for:
+
+-   Booking a meeting.
+-   Setting a deadline.
+-   Scheduling delivery.
+
+Why?
+
+-   Prevents format errors.
+-   Reduces cognitive load.
+-   Ensures valid date selection.
+
+Consider alternatives when:
+
+-   Only month and year are required.
+-   The user frequently types dates manually (advanced users).
+
+### When the user must provide supporting material
+
+Use  component.
+
+Use for:
+
+-   Uploading identity documents.
+-   Adding attachments to a request.
+-   Submitting supporting evidence.
+-   Uploading invoices.
+
+Why?
+
+-   Allows users to provide official or visual proof that cannot be reliably captured in structured fields.
+-   The content may need to be reviewed manually.
+-   Reproducing the information through fields would be incomplete or unreliable.
+
+Avoid when:
+
+-   The information can be captured through structured inputs (text, number, date, select).
+-   The upload is used to compensate for missing inputs.
+
+## Implementing a Form
 
 ---
 
@@ -2211,6 +2852,87 @@ To check how to start with this new version, please follow the  documentation.
 ## What's new ?
 
 ---
+
+## v19.6.0
+
+---
+
+### New components:
+
+**Cart**
+
+.
+
+**Menu**
+
+.
+
+### New recipes:
+
+**Dashboard Card**
+
+.
+
+### Design updates:
+
+**Theme**
+
+-   New token `--ods-theme-chart-axis-color` has been added.
+-   New token `--ods-theme-chart-background-color` has been added.
+-   New token `--ods-theme-chart-grid-color` has been added.
+-   New token `--ods-theme-chart-legend-color` has been added.
+-   New token `--ods-theme-chart-reference-line-color` has been added.
+-   New token `--ods-theme-chart-tick-color` has been added.
+
+**Combobox**
+
+-   A caret is now displayed on the right side of the control.
+
+**Toaster**
+
+-   Toasts are now animated.
+
+### Feature updates:
+
+**Icon**
+
+-   Add the following new icons: brain, diagnostic, handshake, headphones, keyboard, reddit, ssl-key, snowflake, suitcase, target, user-full
+-   `user` icon has been changed, previous icon is now called `user-full`.
+-   `mic-off` and `pin-off` icons have been updated.
+
+**Tag**
+
+-   New attribute `icon` has been added.
+
+### Bug fixes:
+
+**Accordion**
+
+-   Content style now inherit only bottom border-radius.
+
+**Combobox**
+
+-   `disable` has been remove from `ComboboxOptionItem` and `ComboboxGroupItem` interfaces, as they weren't doing anything.
+
+**Menu**
+
+-   Arrow tip dom has been changed to inherit content background color.
+
+**Popover**
+
+-   Arrow tip dom has been changed to inherit content background color.
+
+**Tooltip**
+
+-   Arrow tip dom has been changed to inherit content background color.
+
+### Documentation improvements:
+
+-   A new guide `Form Guidelines` has been added to the documentation.
+-   A new guide `Chart Guidelines` has been added to the documentation.
+-   A new separated LLM documentation for every components has been added.
+-   Fix mixin import example.
+-   Fix some code examples that weren't displaying false boolean attribute.
 
 ## v19.5.0
 

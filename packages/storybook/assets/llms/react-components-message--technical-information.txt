@@ -254,8 +254,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, liber
 Default message
 
 ```jsx
-<Message>
-  <MessageIcon name="circle-info" />
+<Message dismissible={false}>
+  <MessageIcon name={ICON_NAME.circleInfo} />
   <MessageBody>
     Default message  </MessageBody>
 </Message>

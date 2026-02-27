@@ -1,0 +1,188 @@
+React Components
+
+# Cart
+
+Duration
+
+2 years€32.38
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+Duration
+
+2 years€12.70
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+23% VAT / 2 years€13.47
+
+---
+
+Total€58.55
+
+2 products
+
+ex. VAT / year  
+i.e. €XX.XX incl. VAT / year
+
+## Overview
+
+---
+
+The **Cart** component provides a summary of the user’s current order. It displays the selected products, their associated options, pricing details, and the overall total before checkout.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Cart</td></tr><tr><th scope="row">Also known as</th><td>-</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/9r0DZb1pFrkQnX1uAq9R6y/ODS---UI-Kit?node-id=15891-3153&amp;t=vRk1EoUTDZKyd8fc-0" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/cart" target="_blank">Github<span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+Use the **Cart** component to:
+
+-   Display products and options added to the user’s order.
+-   Remove a product or an individual option from the order.
+-   Provide a clear breakdown of pricing, including promotions and included items.
+-   Show the total amount and allow users to continue their order.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use Cart sections (product header, options) to group related information clearly |
+| - Use expand/collapse only for optional details that help users review their order without cluttering the interface |
+| - Use promotions and included option labels to communicate value clearly |
+| - Display footer lines for additional contextual information such as VAT, shipping, or billing details |
+| - Use remove icon buttons consistently for products and options to allow quick corrections |
+
+| ❌ Don't |
+| --- |
+| - Don’t use the Cart to display unrelated content or marketing messages |
+| - Don’t include vague product or option labels since they should clearly identify the item |
+| - Don’t overload the Cart with too many optional lines, which can make it hard to scan |
+| - Don’t mix different types of content (e.g., recommendations) with the Cart items ? |
+
+### Best Practices in Context
+
+1.  **Cart**
+2.  **Product header**
+3.  **Product option list**
+4.  **Footer**
+
+## Placement
+
+---
+
+The **Cart** component is typically placed:
+
+-   On the right side of the page on desktop layouts.
+-   As a bottom sheet on mobile devices.
+
+It should remain visible and easily accessible throughout the ordering flow.
+
+## Behavior
+
+---
+
+### Desktop
+
+-   The **Cart** is open and fully expanded by default.
+-   Product can be expanded or collapsed to show or hide its options.
+-   The **Cart** content is vertically scrollable when it exceeds the available space.
+-   Clicking the product remove icon button removes the entire product and all associated options.
+-   Clicking an option remove icon button removes only that option and updates the product price and **Cart** total.
+
+### Mobile
+
+-   The **Cart** is closed by default.
+-   Only the handle and the **Cart** total area are visible while closed.
+-   Users can swipe the handle to open the **Cart** and review order details.
+-   While open, the **Cart** content is scrollable.
+-   Users can swipe the handle again to close the **Cart**.
+-   Remove icon buttons remain accessible within the **Cart** when open and expanded.
+
+### Empty Cart
+
+When no product is added:
+
+-   Display a message indicating that the cart is empty.
+-   Display a disabled "Continue my order" **Button**.
+-   When the last product is removed, the **Cart** immediately transitions to the empty state.
+
+## Navigation
+
+---
+
+### Focus Management
+
+All interactive elements inside the **Cart** (expand/collapse controls, buttons) can receive keyboard focus.
+
+The **Cart** container itself does not receive focus.
+
+When a product header expand/collapse control is activated, the focus remains on the control and the associated product options are revealed or hidden without moving focus.
+
+When the **Cart** is closed on mobile, only the **Cart** handle and visible interactive elements can receive focus.
+
+When the **Cart** is open on mobile, all interactive elements inside the **Cart** become focusable.
+
+The disabled **Button** cannot receive focus.
+
+### General Keyboard Shortcuts
+
+Pressing Tab or Shift + Tab moves focus sequentially through all interactive elements inside the **Cart**.
+
+Pressing Enter or Space activates the currently focused element. This can:
+
+-   Expand or collapse a product to show or hide its options.
+-   Remove the associated product or option.
+-   Trigger the **Cart** action button.
+
+Pressing Escape collapses the **Cart** when it is expanded on mobile and returns focus to the **Cart** handle.
+
+## Accessibility
+
+---
+
+### Announce product and option updates
+
+When a product or option is added, removed, or when the total price changes, screen readers are not automatically informed.
+
+To ensure users receive feedback, use a live region in your DOM and update its text content when the `Cart` changes.
+
+```tsx
+const liveRef = useRef<HTMLDivElement>(null);
+function updateLiveRegion() {
+  if (liveRef.current) {
+    liveRef.current.textContent = 'Product "My product" has been added to your cart. Total is now xx.xx€.';
+  }
+}
+return (
+  <div
+    ref={ liveRef }
+    role="status" />
+```
+
+Screen readers will inform users of product additions, removals, and total updates through the live region.

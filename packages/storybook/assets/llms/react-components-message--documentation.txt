@@ -14,7 +14,7 @@ Message
 
 It grabs the user's attention in a prominent way.
 
-<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Message</td></tr><tr><th scope="row">Also known as</th><td>Notifier, Notification, Banner, Alert, Feedback</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=44-8300" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/message" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-message--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Message</td></tr><tr><th scope="row">Also known as</th><td>Notifier, Notification, Banner, Alert, Feedback</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=44-8300" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/message" target="_blank">Github <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-message--documentation" target="_blank">Previous major version<span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
 
 ## Usage
 
@@ -168,29 +168,33 @@ Screen readers will announce the list, the number of items and the **Messages** 
 
 When modifying the HTML structure is not possible, use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [role="listitem"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) to mimic list semantics.
 
+Your changes have been saved.
+
+Some fields need your attention.
+
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <div role="list" style={{
+<div
+  role="list"
+  style={{
     display: 'flex',
     flexFlow: 'column',
     rowGap: '8px'
-  }}>
-      <Message role="listitem">
-        <MessageIcon name={ICON_NAME.circleCheck} />
-        <MessageBody>
-          Your changes have been saved.        </MessageBody>
-      </Message>
-      <Message color={MESSAGE_COLOR.warning} role="listitem">
-        <MessageIcon name={ICON_NAME.triangleExclamation} />
-        <MessageBody>
-          Some fields need your attention.        </MessageBody>
-      </Message>
-    </div>
-}
+  }}
+>
+  <Message role="listitem">
+    <MessageIcon name="circle-check" />
+    <MessageBody>
+      Your changes have been saved.    </MessageBody>
+  </Message>
+  <Message
+    color="warning"
+    role="listitem"
+  >
+    <MessageIcon name="triangle-exclamation" />
+    <MessageBody>
+      Some fields need your attention.    </MessageBody>
+  </Message>
+</div>
 ```
 
 ### Setting the container ARIA role

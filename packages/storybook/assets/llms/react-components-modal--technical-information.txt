@@ -224,68 +224,59 @@ const [isOpen, setIsOpen] = useState(false);
 ### Overlay Elements
 
 ```jsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button>
-      Trigger Modal    </Button>
-  </ModalTrigger>
-  <ModalContent>
-    <ModalHeader>
-      Overlay elements    </ModalHeader>
-    <ModalBody
-      style={{
-        alignItems: 'center',
-        columnGap: '8px',
+{
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal        </Button>
+      </ModalTrigger>
+      <ModalContent>
+        <ModalHeader>Overlay elements</ModalHeader>
+        <ModalBody style={{
         display: 'grid',
+        columnGap: '8px',
+        alignItems: 'center',
         gridTemplateColumns: '1fr max-content'
-      }}
-    >
-      <Select
-        items={[
-          {
-            label: 'Dog',
-            value: 'dog'
-          },
-          {
-            label: 'Cat',
-            value: 'cat'
-          },
-          {
-            label: 'Hamster',
-            value: 'hamster'
-          },
-          {
-            label: 'Parrot',
-            value: 'parrot'
-          },
-          {
-            label: 'Spider',
-            value: 'spider'
-          },
-          {
-            label: 'Goldfish',
-            value: 'goldfish'
-          }
-        ]}
-      >
-        <SelectControl />
-        <SelectContent />
-      </Select>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Icon
-            name="circle-question"
-            style={{
+      }}>
+          <Select items={[{
+          label: 'Dog',
+          value: 'dog'
+        }, {
+          label: 'Cat',
+          value: 'cat'
+        }, {
+          label: 'Hamster',
+          value: 'hamster'
+        }, {
+          label: 'Parrot',
+          value: 'parrot'
+        }, {
+          label: 'Spider',
+          value: 'spider'
+        }, {
+          label: 'Goldfish',
+          value: 'goldfish'
+        }]}>
+            <SelectControl />
+            <SelectContent createPortal={false} />
+          </Select>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Icon name={ICON_NAME.circleQuestion} style={{
               fontSize: '24px'
-            }}
-          />
-        </TooltipTrigger>
-        <TooltipContent>
-          This is the tooltip content        </TooltipContent>
-      </Tooltip>
-    </ModalBody>
-  </ModalContent>
-</Modal>
+            }} />
+            </TooltipTrigger>
+            <TooltipContent createPortal={false}>
+              This is the tooltip content            </TooltipContent>
+          </Tooltip>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+}
 ```
 
 ## Recipes

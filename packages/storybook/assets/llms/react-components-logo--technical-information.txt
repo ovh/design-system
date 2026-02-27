@@ -44,13 +44,7 @@ React Components
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Logo } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Logo />
-}
+<Logo />
 ```
 
 ### Size

@@ -95,23 +95,33 @@ Checkbox
 Checkbox
 
 ```jsx
-<Checkbox disabled>
-  <CheckboxControl />
-  <CheckboxLabel>
-    Checkbox  </CheckboxLabel>
-</Checkbox>
+{
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Checkbox disabled>
+      <CheckboxControl />
+      <CheckboxLabel>
+        Checkbox      </CheckboxLabel>
+    </Checkbox>
+}
 ```
 
 ### Invalid
 
-Checkbox
-
 ```jsx
-<Checkbox invalid>
-  <CheckboxControl />
-  <CheckboxLabel>
-    Checkbox  </CheckboxLabel>
-</Checkbox>
+{
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Checkbox invalid>
+      <CheckboxControl />
+      <CheckboxLabel>
+        Checkbox      </CheckboxLabel>
+    </Checkbox>
+}
 ```
 
 ### States
@@ -124,12 +134,12 @@ Indeterminate
 
 ```jsx
 <>
-  <Checkbox>
+  <Checkbox checked={false}>
     <CheckboxControl />
     <CheckboxLabel>
       Unchecked    </CheckboxLabel>
   </Checkbox>
-  <Checkbox checked>
+  <Checkbox checked={true}>
     <CheckboxControl />
     <CheckboxLabel>
       Checked    </CheckboxLabel>
@@ -177,24 +187,35 @@ I agree to the terms and conditions.
 I agree to receive marketing communications.
 
 ```jsx
-<>
-  <Text preset="label">
-    Legal considerations:  </Text>
-  <FormField>
-    <Checkbox>
-      <CheckboxControl />
-      <CheckboxLabel>
-        I agree to the terms and conditions.      </CheckboxLabel>
-    </Checkbox>
-  </FormField>
-  <FormField>
-    <Checkbox>
-      <CheckboxControl />
-      <CheckboxLabel>
-        I agree to receive marketing communications.      </CheckboxLabel>
-    </Checkbox>
-  </FormField>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Checkbox, CheckboxControl, CheckboxLabel, FormField, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Text preset={TEXT_PRESET.label}>
+        Legal considerations:      </Text>
+      <FormField>
+        <Checkbox>
+          <CheckboxControl />
+          <CheckboxLabel>
+            I agree to the terms and conditions.          </CheckboxLabel>
+        </Checkbox>
+      </FormField>
+      <FormField>
+        <Checkbox>
+          <CheckboxControl />
+          <CheckboxLabel>
+            I agree to receive marketing communications.          </CheckboxLabel>
+        </Checkbox>
+      </FormField>
+    </>
+}
 ```
 
 ## Recipes

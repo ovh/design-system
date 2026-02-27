@@ -6,22 +6,6 @@ React Components
 
 ---
 
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
-
 ## Anatomy
 
 ---
@@ -110,51 +94,6 @@ README.md
 
 ### Default
 
-```jsx
-{
-  globals: {
-    imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => {
-    const items = [{
-      id: 'src',
-      name: 'src',
-      children: [{
-        id: 'app.tsx',
-        name: 'app.tsx'
-      }, {
-        id: 'index.ts',
-        name: 'index.ts'
-      }, {
-        id: 'components',
-        name: 'components',
-        children: [{
-          id: 'Button.tsx',
-          name: 'Button.tsx'
-        }, {
-          id: 'Card.tsx',
-          name: 'Card.tsx'
-        }]
-      }]
-    }, {
-      id: 'package.json',
-      name: 'package.json'
-    }, {
-      id: 'readme.md',
-      name: 'README.md'
-    }];
-    return <TreeView items={items}>
-        <TreeViewNodes>
-          {items.map(item => <TreeViewNode key={item.id} item={item} />)}
-        </TreeViewNodes>
-      </TreeView>;
-  }
-}
-```
-
-### Multiple
-
 src
 
 app.tsx
@@ -170,6 +109,94 @@ Card.tsx
 package.json
 
 README.md
+
+```jsx
+<TreeView
+  items={[
+    {
+      children: [
+        {
+          id: 'app.tsx',
+          name: 'app.tsx'
+        },
+        {
+          id: 'index.ts',
+          name: 'index.ts'
+        },
+        {
+          children: [
+            {
+              id: 'Button.tsx',
+              name: 'Button.tsx'
+            },
+            {
+              id: 'Card.tsx',
+              name: 'Card.tsx'
+            }
+          ],
+          id: 'components',
+          name: 'components'
+        }
+      ],
+      id: 'src',
+      name: 'src'
+    },
+    {
+      id: 'package.json',
+      name: 'package.json'
+    },
+    {
+      id: 'readme.md',
+      name: 'README.md'
+    }
+  ]}
+>
+  <TreeViewNodes>
+    <TreeViewNode      item={{
+        children: [
+          {
+            id: 'app.tsx',
+            name: 'app.tsx'
+          },
+          {
+            id: 'index.ts',
+            name: 'index.ts'
+          },
+          {
+            children: [
+              {
+                id: 'Button.tsx',
+                name: 'Button.tsx'
+              },
+              {
+                id: 'Card.tsx',
+                name: 'Card.tsx'
+              }
+            ],
+            id: 'components',
+            name: 'components'
+          }
+        ],
+        id: 'src',
+        name: 'src'
+      }}
+     />    <TreeViewNode
+      item={{
+        id: 'package.json',
+        name: 'package.json'
+      }}
+     />
+    <TreeViewNode
+      item={{
+        id: 'readme.md',
+        name: 'README.md'
+      }}
+     />
+  </TreeViewNodes>
+</TreeView>
+```
+
+### Multiple
 
 ```jsx
 const items = [{
@@ -246,22 +273,6 @@ const items = [{
 ```
 
 ### Custom render
-
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
 
 ```jsx
 const items = [{
@@ -351,6 +362,24 @@ const items = [{
 
 ### Controlled
 
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
+
+Selected: package.json
+
 ```jsx
 const items = [{
     id: 'src',
@@ -394,6 +423,24 @@ const items = [{
 ```
 
 ### Controlled multiple
+
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
+
+Selected: package.json, index.ts
 
 ```jsx
 const items = [{
@@ -439,22 +486,6 @@ const items = [{
 
 ### Disabled items
 
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
-
 ```jsx
 const items = [{
     id: 'src',
@@ -496,24 +527,6 @@ const items = [{
 ```
 
 ### In form field
-
-Choose a file
-
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
 
 ```jsx
 const items = [{

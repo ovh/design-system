@@ -6,6 +6,7 @@
 | Name | Type | Required | Default | Description |
 |------|------|----------|---------|-------------|
 | `color` | `` | No | TAG_COLOR.information | @type=TAG_COLOR The color preset to use. |
+| `icon` | `` | No | ICON_NAME.xmark | The icon to display on the right side. |
 | `size` | `` | No | TAG_SIZE.md | The size preset to use. |
 
 
@@ -102,6 +103,35 @@
 }
 ```
 
+### Custom Icon
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <>
+      <Tag icon={null}>
+        No Icon
+      </Tag>
+
+      <Tag icon={ICON_NAME.star}>
+        Custom Icon
+      </Tag>
+    </>
+}
+```
+
 ### Default
 
 ```tsx
@@ -152,6 +182,18 @@
       control: {
         type: 'boolean'
       }
+    },
+    icon: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'ICON_NAME'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: ICON_NAMES
     },
     size: {
       table: {

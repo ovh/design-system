@@ -121,8 +121,6 @@ Drag & drop a file
 
 ### Default
 
-Drag & drop a file 
-
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
   return <FileUpload onFileAccept={({
@@ -154,12 +152,15 @@ const [files, setFiles] = useState<File[]>([]);
 Drag & drop a file 
 
 ```jsx
-<FileUpload
-  disabled
-  variant="compact"
->
-  <FileUploadList />
-</FileUpload>
+{
+  globals: {
+    imports: `import { FileUpload, FileUploadList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FileUpload disabled variant={FILE_UPLOAD_VARIANT.compact}>
+      <FileUploadList />
+    </FileUpload>
+}
 ```
 
 ### Custom labels
@@ -185,10 +186,6 @@ To limit the file types that can be uploaded, you can use the `accept` attribute
 
 It works exactly the same as the one from the native [input file](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept) .
 
-Png files only
-
-Drag & drop a file 
-
 ```jsx
 const [error, setError] = useState<string>('');
   const [files, setFiles] = useState<File[]>([]);  function onAccept({    files  }: FileUploadAcceptDetail): void {
@@ -207,10 +204,6 @@ const [error, setError] = useState<string>('');
 ```
 
 ### Limit the maximum number of file
-
-Maximum file allowed: 3
-
-Drag & drop a file 
 
 ```jsx
 const [error, setError] = useState<string>('');
@@ -231,10 +224,6 @@ const [error, setError] = useState<string>('');
 
 ### Limit the maximum size of each file
 
-No file larger than: 1 MB
-
-Drag & drop a file 
-
 ```jsx
 const [error, setError] = useState<string>('');
   const [files, setFiles] = useState<File[]>([]);  function onAccept({    files  }: FileUploadAcceptDetail): void {
@@ -253,8 +242,6 @@ const [error, setError] = useState<string>('');
 ```
 
 ### Display upload progress
-
-Drag & drop a file 
 
 ```jsx
 type MyFile = File & {
@@ -292,10 +279,6 @@ type MyFile = File & {
 ```
 
 ### Form Field
-
-Files:
-
-Drag & drop a file 
 
 ```jsx
 const [files, setFiles] = useState<File[]>([]);

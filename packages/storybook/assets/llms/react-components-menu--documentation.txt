@@ -1,0 +1,108 @@
+React Components
+
+# Menu
+
+_A Menu component provides a list of options or actions that appear when a user interacts with its trigger element._
+
+## Overview
+
+---
+
+The Menu component allows users to access related actions through a compact, organized list. It may inclue simple or grouped actions.
+
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Menu</td></tr><tr><th scope="row">Also known as</th><td>Dropdown Menu, Context Menu, Options/Actions Menu</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/ViIEmUvAGU3kR346yKSDXv/ODS---UI-Kit?m=auto&amp;node-id=14267-46263&amp;t=9NEhUC6EmfGbc7Fc-1" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/menu" target="_blank">Github<span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+The Menu component is commonly used for:
+
+-   User account options (profile, settings, logout)
+-   Contextual actions in tables or list (edit, duplicate, delete)
+-   Organizing multiple secondary actions under one trigger (e.g., "More options")
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Group related actions under headings when the list is long |
+| - Use separators when needed to clarify structure between distinct actions |
+| - Ensure the most frequently used actions are near the top |
+
+| ❌ Don't |
+| --- |
+| - Don’t use a Menu as primary navigation structure |
+| - Don't overload a Menu with too many unrelated actions |
+| - Don't place destructive actions (e.g., "Delete") without clear distinction or confirmation |
+
+### Best Practices in Context
+
+Menu Trigger Menu content Group - optional Group title - optional Item
+
+1.  **Menu**
+2.  **Trigger**
+3.  **Menu content**
+4.  **Group** - optional
+5.  **Group title** - optional
+6.  **Item**
+
+## Behavior
+
+---
+
+The Menu opens when the trigger element is clicked. The list of items will be displayed.
+
+Selecting an item triggers its associated action and closes the Menu.
+
+Clicking outside closes the Menu.
+
+### Disabling
+
+Disabled items cannot be selected, or interact with.
+
+### Grouping
+
+Heading
+
+An optional label above a group of related items is displayed.
+
+Separator / Divider
+
+A separator is displayed between the groups or between items.
+
+### Nested Menus
+
+The Menu supports nested sub-menus with a maximum depth of one level. A menu item may expose a sub-menu, indicated visually with a right-facing arrow. Sub-menu opens when the user hovers over the parent menu item. Closing the Menu also closes any open sub-menu.
+
+## Navigation
+
+---
+
+### Focus Management
+
+The Menu trigger can receive keyboard focus and is part of the standard tab order.
+
+When the Menu opens, the first enabled item is focused.
+
+Focus is trapped within the Menu until it is closed.
+
+If the Menu closes, focus returns to the trigger element.
+
+### General Keyboard Shortcuts
+
+Pressing `Arrow Up / Down` navigates through items.
+
+Pressing `Enter` or `Space` activates the focused item.
+
+Pressing `Arrow Left` or `Escape` closes a sub-menu or the Menu.
+
+Pressing `Arrow Right` opens a sub-menu (when relevant)
+
+Pressing `Tab`, or `Shift` + `Tab`, exits the Menu and moves to the next/previous focusable element
+
+## Accessibility
+
+---
+
+This component complies with the [Menu WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/) .

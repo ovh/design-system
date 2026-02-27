@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.6.0](https://ovh.github.io/design-system/v19.6.0/?path=/docs/design-system-changelog--page) (2026-02-27)
+[compare](https://github.com/ovh/design-system/compare/v19.5.0...v19.6.0)
+
+### Features
+
+* **tag:** add icon attribute ([c5ee951](https://github.com/ovh/design-system/commit/c5ee9514d26f80290fd3687323b96ab951c9639f))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.5.0](https://ovh.github.io/design-system/v19.5.0/?path=/docs/design-system-changelog--page) (2026-01-30)
 [compare](https://github.com/ovh/design-system/compare/v19.4.1...v19.5.0)
 

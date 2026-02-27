@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.6.0](https://ovh.github.io/design-system/v19.6.0/?path=/docs/design-system-changelog--page) (2026-02-27)
+[compare](https://github.com/ovh/design-system/compare/v19.5.0...v19.6.0)
+
+### Features
+
+* **themes:** add new icons & update existing ones to ods-icon font ([50888a4](https://github.com/ovh/design-system/commit/50888a493e959de0d2923e4b74bd475a8d3ee771))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

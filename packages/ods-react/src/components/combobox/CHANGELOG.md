@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.6.0](https://ovh.github.io/design-system/v19.6.0/?path=/docs/design-system-changelog--page) (2026-02-27)
+[compare](https://github.com/ovh/design-system/compare/v19.5.0...v19.6.0)
+
+### Bug Fixes
+
+* **combobox:** remove disable prop from items ([a44b0f3](https://github.com/ovh/design-system/commit/a44b0f395f1aa9aae612025480b8c98507243f9a))
+
+
+### Features
+
+* **combobox:** add caret on control ([98f43f2](https://github.com/ovh/design-system/commit/98f43f265b38f46efb9252f5bd24e99f5a20cc84))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

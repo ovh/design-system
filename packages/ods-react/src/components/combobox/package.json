@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-combobox",
-  "version": "19.5.0",
+  "version": "19.6.0",
   "private": true,
   "description": "ODS React Combobox component",
   "type": "module",

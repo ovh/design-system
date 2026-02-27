@@ -185,31 +185,46 @@ React Components
 ### Max / Min
 
 ```jsx
-<Datepicker
-  max={new Date("2026-03-07T11:02:23.303Z")}
-  min={new Date("2026-02-15T11:02:23.303Z")}
->
-  <DatepickerControl />
-  <DatepickerContent />
-</Datepicker>
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Datepicker max={new Date(Date.now() + 86400000 * 10)} min={new Date(Date.now() - 86400000 * 10)}>
+      <DatepickerControl />
+      <DatepickerContent />
+    </Datepicker>
+}
 ```
 
 ### Max view
 
 ```jsx
-<Datepicker maxView="day">
-  <DatepickerControl />
-  <DatepickerContent />
-</Datepicker>
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Datepicker maxView="day">
+      <DatepickerControl />
+      <DatepickerContent />
+    </Datepicker>
+}
 ```
 
 ### Min view
 
 ```jsx
-<Datepicker minView="month">
-  <DatepickerControl />
-  <DatepickerContent />
-</Datepicker>
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Datepicker minView="month">
+      <DatepickerControl />
+      <DatepickerContent />
+    </Datepicker>
+}
 ```
 
 ### Form field

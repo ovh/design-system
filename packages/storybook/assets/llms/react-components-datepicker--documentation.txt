@@ -10,7 +10,7 @@ _A **Datepicker** component is used to allow users to select a date. They can na
 
 The Datepicker component is used for selecting dates in forms and applications. It provides a user-friendly interface for choosing dates, ensuring that the date format is consistent and valid. This component can include features such as disabled dates and custom formats.
 
-<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Datepicker</td></tr><tr><th scope="row">Also known as</th><td>Calendar</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=26-7958" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/datepicker" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-datepicker--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Datepicker</td></tr><tr><th scope="row">Also known as</th><td>Calendar</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=26-7958" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/datepicker" target="_blank">Github <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-datepicker--documentation" target="_blank">Previous major version <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2" data-ods="link" href="#">Form Guidelines</a></td></tr></tbody></table>
 
 ## Usage
 
@@ -154,21 +154,17 @@ To ensure proper accessibility, the **Datepicker** must be correctly labeled, pr
 
 Every **Datepicker** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose using either **FormField** or a native label tag.
 
+Start date:
+
 ```jsx
-{
-  globals: {
-    imports: `import { Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Start date:      </FormFieldLabel>
-      <Datepicker>
-        <DatepickerControl />
-        <DatepickerContent />
-      </Datepicker>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Start date:  </FormFieldLabel>
+  <Datepicker>
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
 ```
 
 Screen readers will announce the label, the field and its content.
@@ -176,6 +172,10 @@ Screen readers will announce the label, the field and its content.
 ### Provide guidance on date format
 
 Since screen readers can only interact with the **Datepicker** input field, itâ€™s important to provide guidance on the expected date format to ensure correct input.
+
+Start date:
+
+Expected format: DD-MM-YYYY
 
 ```jsx
 {
@@ -199,6 +199,8 @@ Since screen readers can only interact with the **Datepicker** input field, itâ€
 ```
 
 Screen readers will announce the label, the field, its content and the helper.
+
+Start date:
 
 ```jsx
 <FormField>

@@ -1,0 +1,206 @@
+React Components
+
+# Menu
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Menu**
+2.  **Menu Trigger**
+3.  **Menu Content**
+4.  **Menu Group**
+5.  **Menu Group Label**
+6.  **Menu Item**
+7.  **Menu Submenu**
+
+## Menu
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| onOpenChange | `(detail: MenuOpenChangeDetail) => void` | - | `undefined` | Callback fired when the menu open state changes. |
+| onPositionChange | `(detail: MenuPositionChangeDetail) => void` | - | `undefined` | Callback fired when the menu position changes. |
+| open | `boolean` | - | `undefined` | The controlled open state of the menu. |
+| position | `MENU_POSITION` | - | `undefined` | The menu position around the trigger. |
+| positionerStyle | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+| triggerId | `string` | - | `undefined` | ID of an external trigger element to use in place of the MenuTrigger component. |
+
+## MenuContent
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| createPortal | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. This only works on the root menu and not in submenus. |
+| withArrow | `boolean` | - | `false` | Whether the component displays an arrow pointing to the trigger. |
+
+## MenuGroup
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## MenuGroupLabel
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## MenuItem
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| onSelect | `() => void` | - | `undefined` | Callback fired when the selection changes. |
+| value | `string` |  | `undefined` | The value of the item. |
+
+## MenuSubmenu
+
+---
+
+This component has no specific properties.
+
+## MenuTrigger
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## Interfaces
+
+---
+
+### MenuOpenChangeDetail
+
+-   `open: boolean`
+
+### MenuPositionChangeDetail
+
+-   `position: MENU_POSITION`
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Menu>
+  <MenuTrigger asChild>
+    <Button>
+      Open menu    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem value="profile">
+      Profile    </MenuItem>
+    <MenuItem value="settings">
+      Settings    </MenuItem>
+    <MenuItem value="logout">
+      Logout    </MenuItem>
+  </MenuContent>
+</Menu>
+```
+
+### Controlled
+
+```jsx
+const [isOpen, setIsOpen] = useState(false);
+  function toggleMenu() {
+    setIsOpen(isOpen => !isOpen);
+  }
+  return <>
+      <Button onClick={toggleMenu}>
+        Toggle menu      </Button>
+      <Menu open={isOpen}>
+        <MenuTrigger asChild>
+          <Icon name={ICON_NAME.ellipsisVertical} />
+        </MenuTrigger>
+        <MenuContent>
+          <MenuItem value='profile'>Profile</MenuItem>
+          <MenuItem value='settings'>Settings</MenuItem>
+          <MenuItem value='logout'>Logout</MenuItem>
+        </MenuContent>
+      </Menu>
+    </>;
+}
+```
+
+### Group
+
+```jsx
+<Menu>
+  <MenuTrigger asChild>
+    <Button>
+      Open menu    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuGroup>
+      <MenuGroupLabel>
+        Account      </MenuGroupLabel>
+      <MenuItem value="profile">
+        Profile      </MenuItem>
+      <MenuItem value="billing">
+        Billing      </MenuItem>
+    </MenuGroup>
+    <MenuGroup>
+      <MenuGroupLabel>
+        Support      </MenuGroupLabel>
+      <MenuItem value="help">
+        Help center      </MenuItem>
+      <MenuItem value="contact">
+        Contact support      </MenuItem>
+    </MenuGroup>
+  </MenuContent>
+</Menu>
+```
+
+### Nested
+
+```jsx
+<Menu>
+  <MenuTrigger asChild>
+    <Button>
+      Open menu    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem value="new">
+      New    </MenuItem>
+    <MenuItem value="open">
+      Open    </MenuItem>
+    <MenuSubmenu>
+      <MenuTrigger>
+        Share      </MenuTrigger>
+      <MenuContent>
+        <MenuItem value="email">
+          Email        </MenuItem>
+        <MenuItem value="message">
+          Message        </MenuItem>
+      </MenuContent>
+    </MenuSubmenu>
+  </MenuContent>
+</Menu>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

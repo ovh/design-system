@@ -5,7 +5,7 @@ const path = require('node:path');
 
 // TODO: Add version from lerna.json
 // const { version } = require('../../../lerna.json');
-const version = '19.5.0';
+const version = '19.6.0';
 
 const DIST_DIR = path.join(__dirname, '..', 'dist');
 const SUMMARY_FILENAME = 'llms.txt';

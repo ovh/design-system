@@ -6,8 +6,6 @@ React Components
 
 ---
 
-UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
-
 ## Anatomy
 
 ---
@@ -115,9 +113,15 @@ UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UT
 ### Default
 
 ```jsx
-<Timepicker>
-  <TimepickerControl />
-</Timepicker>
+{
+  globals: {
+    imports: `import { Timepicker, TimepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Timepicker>
+      <TimepickerControl />
+    </Timepicker>
+}
 ```
 
 ### Disabled
@@ -185,26 +189,29 @@ Subset of timezone
 UTC-10UTC+0UTC+10
 
 ```jsx
-<>
-  <span>
-    All timezones  </span>
-  <Timepicker>
-    <TimepickerControl />
-    <TimepickerTimezoneList />
-  </Timepicker>
-  <span>
-    Subset of timezone  </span>
-  <Timepicker
-    timezones={[
-      'UTC-10',
-      'UTC+0',
-      'UTC+10'
-    ]}
-  >
-    <TimepickerControl />
-    <TimepickerTimezoneList />
-  </Timepicker>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <span>All timezones</span>
+      <Timepicker>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+      <span>Subset of timezone</span>
+      <Timepicker timezones={['UTC-10', 'UTC+0', 'UTC+10']}>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+}
 ```
 
 ### Form field

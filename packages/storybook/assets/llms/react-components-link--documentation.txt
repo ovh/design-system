@@ -14,7 +14,7 @@ A **Link** allows users to move through a website by redirecting them to a diffe
 
 It can also enables **Links** to other resources.
 
-<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Link</td></tr><tr><th scope="row">Also known as</th><td>Hyperlink, Anchor</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=44-6837" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/link" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-link--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Link</td></tr><tr><th scope="row">Also known as</th><td>Hyperlink, Anchor</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=44-6837" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/link" target="_blank">Github <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-link--documentation" target="_blank">Previous major version<span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
 
 ## Usage
 
@@ -104,16 +104,15 @@ This component complies with the [Link WAI-ARIA design pattern](https://www.w3.o
 
 If a **Link** is represented only by an **Icon**, it must have an explicit accessible label to provide context about its destination or action.
 
+[​](https://www.ovhcloud.com)
+
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Link aria-label="Go to homepage" href="https://www.ovhcloud.com">
-      <Icon name={ICON_NAME.home} />
-    </Link>
-}
+<Link
+  aria-label="Go to homepage"
+  href="https://www.ovhcloud.com"
+>
+  <Icon name="home" />
+</Link>
 ```
 
 Screen readers will announce the link and its label.
@@ -125,15 +124,13 @@ When a **Link** opens in a new tab (`target="_blank"`), users should be informed
 [​](https://www.ovhcloud.com)
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Link aria-label="Visit Example (opens in a new tab)" href="https://www.ovhcloud.com" target="_blank">
-      <Icon name={ICON_NAME.externalLink} />
-    </Link>
-}
+<Link
+  aria-label="Visit Example (opens in a new tab)"
+  href="https://www.ovhcloud.com"
+  target="_blank"
+>
+  <Icon name="external-link" />
+</Link>
 ```
 
 The screen reader will announce the link, the opening in a new tab behavior and the link label.
@@ -142,26 +139,22 @@ The screen reader will announce the link, the opening in a new tab behavior and 
 
 If a **Link** points to a file download, it should include the file type and size information.
 
+[​](https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf)[Download WCAG20 Guidelines (PDF, 481 KB)](https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf)
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'grid',
-    gridTemplateColumns: '1fr'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Link aria-label="Download WCAG20 Guidelines (PDF, 481 KB)" href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
-        <Icon name={ICON_NAME.download} />
-      </Link>
-      <Link href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
-        <Icon name={ICON_NAME.download} />
-        <span>Download WCAG20 Guidelines (PDF, 481 KB)</span>
-      </Link>
-    </>
-}
+<>
+  <Link
+    aria-label="Download WCAG20 Guidelines (PDF, 481 KB)"
+    href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf"
+  >
+    <Icon name="download" />
+  </Link>
+  <Link href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
+    <Icon name="download" />
+    <span>
+      Download WCAG20 Guidelines (PDF, 481 KB)    </span>
+  </Link>
+</>
 ```
 
 Screen readers will announce the link, the link label with the file name, type and size, ensuring users know they are downloading a file.

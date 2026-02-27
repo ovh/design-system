@@ -61,22 +61,37 @@ React Components
 ### Default
 
 ```jsx
-<Input />
+{
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Input />
+}
 ```
 
 ### Disabled
 
 ```jsx
-<Input disabled />
+{
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Input disabled />
+}
 ```
 
 ### Readonly
 
 ```jsx
-<Input
-  defaultValue="Readonly"
-  readOnly
-/>
+{
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Input defaultValue="Readonly" readOnly />
+}
 ```
 
 ### Clearable
@@ -134,53 +149,39 @@ React Components
   
 
 ```jsx
-<>
-  <Input
-    placeholder="email"
-    type="email"
-  />
-  <br />
-  <Input
-    placeholder="number"
-    type="number"
-  />
-  <br />
-  <Input
-    placeholder="password"
-    type="password"
-  />
-  <br />
-  <Input
-    placeholder="search"
-    type="search"
-  />
-  <br />
-  <Input
-    placeholder="text"
-    type="text"
-  />
-  <br />
-  <Input
-    placeholder="time"
-    type="time"
-  />
-  <br />
-  <Input
-    placeholder="url"
-    type="url"
-  />
-  <br />
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px',
+    alignItems: 'start'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { INPUT_TYPE, Input } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Input type={INPUT_TYPE.email} placeholder="email" /><br />
+      <Input type={INPUT_TYPE.number} placeholder="number" /><br />
+      <Input type={INPUT_TYPE.password} placeholder="password" /><br />
+      <Input type={INPUT_TYPE.search} placeholder="search" /><br />
+      <Input type={INPUT_TYPE.text} placeholder="text" /><br />
+      <Input type={INPUT_TYPE.time} placeholder="time" /><br />
+      <Input type={INPUT_TYPE.url} placeholder="url" /><br />
+    </>
+}
 ```
 
 ### Floating number
 
 ```jsx
-<Input
-  defaultValue="9.99"
-  step="any"
-  type="number"
-/>
+{
+  globals: {
+    imports: `import { INPUT_TYPE, Input } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Input defaultValue="9.99" step="any" type={INPUT_TYPE.number} />
+}
 ```
 
 ### Datalist
@@ -200,14 +201,18 @@ React Components
 
 ### Form field
 
-Name:
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Name:  </FormFieldLabel>
-  <Input />
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Name:      </FormFieldLabel>
+      <Input />
+    </FormField>
+}
 ```
 
 ## Recipes

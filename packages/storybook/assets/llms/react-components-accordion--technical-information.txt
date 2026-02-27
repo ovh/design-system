@@ -107,14 +107,20 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 Lorem ipsum dolor sit amet.
 
 ```jsx
-<Accordion>
-  <AccordionItem value="0">
-    <AccordionTrigger>
-      Hello World!    </AccordionTrigger>
-    <AccordionContent>
-      Lorem ipsum dolor sit amet.    </AccordionContent>
-  </AccordionItem>
-</Accordion>
+{
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Accordion>
+      <AccordionItem value="0">
+        <AccordionTrigger>
+          Hello World!        </AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet.        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+}
 ```
 
 ### Multiple
@@ -134,8 +140,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   <Accordion>
     <AccordionItem value="1">
       <AccordionTrigger>
-        <Text preset="heading-4">
-          Multiple        </Text>
+        <Text preset="heading-4">Multiple</Text>
       </AccordionTrigger>
       <AccordionContent>
         <Text preset="paragraph">
@@ -144,8 +149,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </AccordionItem>
     <AccordionItem value="2">
       <AccordionTrigger>
-        <Text preset="heading-4">
-          Multiple        </Text>
+        <Text preset="heading-4">Multiple</Text>
       </AccordionTrigger>
       <AccordionContent>
         <Text preset="paragraph">
@@ -154,11 +158,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </AccordionItem>
   </Accordion>
   <br />
-  <Accordion>
+  <Accordion multiple={false}>
     <AccordionItem value="3">
       <AccordionTrigger>
-        <Text preset="heading-4">
-          Non-multiple        </Text>
+        <Text preset="heading-4">Non-multiple</Text>
       </AccordionTrigger>
       <AccordionContent>
         <Text preset="paragraph">
@@ -167,8 +170,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </AccordionItem>
     <AccordionItem value="4">
       <AccordionTrigger>
-        <Text preset="heading-4">
-          Non-multiple        </Text>
+        <Text preset="heading-4">Non-multiple</Text>
       </AccordionTrigger>
       <AccordionContent>
         <Text preset="paragraph">
@@ -254,25 +256,31 @@ Lorem ipsum dolor sit amet.
 Lorem ipsum dolor sit amet.
 
 ```jsx
-<>
-  <Accordion>
-    <AccordionItem value="0">
-      <AccordionTrigger expandIconPosition="right">
-        Icon on the right (default)      </AccordionTrigger>
-      <AccordionContent>
-        Lorem ipsum dolor sit amet.      </AccordionContent>
-    </AccordionItem>
-  </Accordion>
-  <br />
-  <Accordion>
-    <AccordionItem value="1">
-      <AccordionTrigger expandIconPosition="left">
-        Icon on the left      </AccordionTrigger>
-      <AccordionContent>
-        Lorem ipsum dolor sit amet.      </AccordionContent>
-    </AccordionItem>
-  </Accordion>
-</>
+{
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, EXPAND_ICON_POSITION } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Accordion>
+        <AccordionItem value="0">
+          <AccordionTrigger expandIconPosition={EXPAND_ICON_POSITION.right}>
+            Icon on the right (default)          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      <br />
+      <Accordion>
+        <AccordionItem value="1">
+          <AccordionTrigger expandIconPosition={EXPAND_ICON_POSITION.left}>
+            Icon on the left          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </>
+}
 ```
 
 ## Recipes

@@ -9,6 +9,75 @@ import { HOME_TITLE, REACT_COMPONENTS_TITLE, RECIPES_TITLE, STORY } from '../../
 
 <Heading label="What's new ?" level={ 1 } />
 
+<Heading label="v19.6.0" level={ 2 } />
+
+<Heading label="New components:" level={ 3 } />
+
+**Cart**
+
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.cart } story={ STORY.documentation }>See Documentation</StorybookLink>.
+
+**Menu**
+
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.menu } story={ STORY.documentation }>See Documentation</StorybookLink>.
+
+<Heading label="New recipes:" level={ 3 } />
+
+**Dashboard Card**
+
+<StorybookLink title={ RECIPES_TITLE.components }>See Recipes</StorybookLink>.
+
+<Heading label="Design updates:" level={ 3 } />
+
+**Theme**
+- New token `--ods-theme-chart-axis-color` has been added.
+- New token `--ods-theme-chart-background-color` has been added.
+- New token `--ods-theme-chart-grid-color` has been added.
+- New token `--ods-theme-chart-legend-color` has been added.
+- New token `--ods-theme-chart-reference-line-color` has been added.
+- New token `--ods-theme-chart-tick-color` has been added.
+
+**Combobox**
+- A caret is now displayed on the right side of the control.
+
+**Toaster**
+- Toasts are now animated.
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Icon**
+- Add the following new icons: brain, diagnostic, handshake, headphones, keyboard, reddit, ssl-key, snowflake, suitcase, target, user-full
+- `user` icon has been changed, previous icon is now called `user-full`.
+- `mic-off` and `pin-off` icons have been updated.
+
+**Tag**
+- New attribute `icon` has been added.
+
+<Heading label="Bug fixes:" level={ 3 } />
+
+**Accordion**
+- Content style now inherit only bottom border-radius.
+
+**Combobox**
+- `disable` has been remove from `ComboboxOptionItem` and `ComboboxGroupItem` interfaces, as they weren't doing anything.
+
+**Menu**
+- Arrow tip dom has been changed to inherit content background color.
+
+**Popover**
+- Arrow tip dom has been changed to inherit content background color.
+
+**Tooltip**
+- Arrow tip dom has been changed to inherit content background color.
+
+<Heading label="Documentation improvements:" level={ 3 } />
+
+- A new guide `Form Guidelines` has been added to the documentation.
+- A new guide `Chart Guidelines` has been added to the documentation.
+- A new separated LLM documentation for every components has been added.
+- Fix mixin import example.
+- Fix some code examples that weren't displaying false boolean attribute.
+
 <Heading label="v19.5.0" level={ 2 } />
 
 <Heading label="New components:" level={ 3 } />

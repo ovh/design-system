@@ -14,7 +14,7 @@ _A list of  showing the current page location in the navigational hierarchy._
 
 **Breadcrumb** is used to define the user's position in a site hierarchy, it can also be useful for a finer navigation in an inner application.
 
-<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Breadcrumb</td></tr><tr><th scope="row">Also known as</th><td>Breadcrumb trail</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-22762" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/breadcrumb" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-breadcrumb--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Breadcrumb</td></tr><tr><th scope="row">Also known as</th><td>Breadcrumb trail</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-22762" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/breadcrumb" target="_blank">Github <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-breadcrumb--documentation" target="_blank">Previous major version<span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
 
 ## Usage
 
@@ -105,28 +105,34 @@ This component complies with the [Breadcrumb WAI-ARIA design pattern](https://ww
 4.  Current page
 
 ```jsx
-<Breadcrumb aria-label="Breadcrumb">
-  <BreadcrumbItem>
-    <BreadcrumbLink
-      aria-label="Home"
-      href="#"
-    >
-      <Icon name="home" />
-    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Category    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Subcategory    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Current page    </BreadcrumbLink>
-  </BreadcrumbItem>
-</Breadcrumb>
+{
+  globals: {
+    imports: `import { ICON_NAME, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Breadcrumb aria-label="Breadcrumb">
+      <BreadcrumbItem>
+        <BreadcrumbLink aria-label="Home" href="#">
+          <Icon name={ICON_NAME.home} />
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Category        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Subcategory        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Current page        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+}
 ```
 
 Screen readers will announce the link, the label of the first link, the list and the number of item.

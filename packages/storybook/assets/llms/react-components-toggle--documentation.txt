@@ -12,7 +12,7 @@ It provides a clear visual indication of the current state and allows users to c
 
 **Toggles** are commonly used in settings, preferences, and forms where a binary choice is required.
 
-<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Toggle</td></tr><tr><th scope="row">Also known as</th><td>Toggle Switch, Switch</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=53-15319" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/toggle" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-toggle--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Toggle</td></tr><tr><th scope="row">Also known as</th><td>Toggle Switch, Switch</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=53-15319" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/toggle" target="_blank">Github <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-form-elements-toggle--documentation" target="_blank">Previous major version <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2" data-ods="link" href="#">Form Guidelines</a></td></tr></tbody></table>
 
 ## Usage
 
@@ -99,18 +99,14 @@ This component complies with the [Checkbox WAI-ARIA design pattern](https://www.
 
 Every **Toggle** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either a **ToggleLabel** or an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) for context.
 
+Enable dark mode
+
 ```jsx
-{
-  globals: {
-    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Toggle>
-      <ToggleControl />
-      <ToggleLabel>
-        Enable dark mode      </ToggleLabel>
-    </Toggle>
-}
+<Toggle>
+  <ToggleControl />
+  <ToggleLabel>
+    Enable dark mode  </ToggleLabel>
+</Toggle>
 ```
 
 Screen readers will announce a checkbox, its state and the label.
@@ -118,17 +114,11 @@ Screen readers will announce a checkbox, its state and the label.
 Dark mode
 
 ```jsx
-{
-  globals: {
-    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Toggle aria-label="Enable dark mode">
-      <ToggleControl />
-      <ToggleLabel>
-        Dark mode      </ToggleLabel>
-    </Toggle>
-}
+<Toggle aria-label="Enable dark mode">
+  <ToggleControl />
+  <ToggleLabel>
+    Dark mode  </ToggleLabel>
+</Toggle>
 ```
 
 Screen readers will announce a checkbox, its state and the label.

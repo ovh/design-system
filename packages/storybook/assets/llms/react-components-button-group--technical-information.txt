@@ -73,18 +73,19 @@ React Components
  
 
 ```jsx
-<ButtonGroup>
-  <ButtonGroupItem value="hourly">
-    Hourly  </ButtonGroupItem>
-  <ButtonGroupItem value="daily">
-    Daily  </ButtonGroupItem>
-  <ButtonGroupItem value="monthly">
-    Monthly  </ButtonGroupItem>
-  <ButtonGroupItem value="custom">
-    <Icon name="calendar" />
-    {' '}Custom
-  </ButtonGroupItem>
-</ButtonGroup>
+{
+  globals: {
+    imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ButtonGroup>
+      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+      <ButtonGroupItem value="custom">
+        <Icon name={ICON_NAME.calendar} /> Custom      </ButtonGroupItem>
+    </ButtonGroup>
+}
 ```
 
 ### Disabled
@@ -148,16 +149,18 @@ const [values, setValues] = useState(['hourly']);
 ### Multiple
 
 ```jsx
-<ButtonGroup multiple>
-  <ButtonGroupItem value="option-1">
-    Option 1  </ButtonGroupItem>
-  <ButtonGroupItem value="option-2">
-    Option 2  </ButtonGroupItem>
-  <ButtonGroupItem value="option-3">
-    Option 3  </ButtonGroupItem>
-  <ButtonGroupItem value="option-4">
-    Option 4  </ButtonGroupItem>
-</ButtonGroup>
+{
+  globals: {
+    imports: `import { ButtonGroup, ButtonGroupItem } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ButtonGroup multiple>
+      <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
+      <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
+      <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
+      <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
+    </ButtonGroup>
+}
 ```
 
 ### Size

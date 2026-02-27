@@ -222,81 +222,57 @@ React Components
 
 ### Size
 
-MD
-
-SM
-
-XS
-
 ```jsx
-<>
-  <p>
-    MD  </p>
-  <Tabs
-    defaultValue="tab1"
-    size="md"
-    variant="switch"
-  >
-    <TabList>
-      <Tab value="tab1">
-        Tab 1      </Tab>
-      <Tab value="tab2">
-        Tab 2      </Tab>
-      <Tab value="tab3">
-        Tab 3      </Tab>
-    </TabList>
-  </Tabs>
-  <p>
-    SM  </p>
-  <Tabs
-    defaultValue="tab1"
-    size="sm"
-    variant="switch"
-  >
-    <TabList>
-      <Tab value="tab1">
-        Tab 1      </Tab>
-      <Tab value="tab2">
-        Tab 2      </Tab>
-      <Tab value="tab3">
-        Tab 3      </Tab>
-    </TabList>
-  </Tabs>
-  <p>
-    XS  </p>
-  <Tabs
-    defaultValue="tab1"
-    size="xs"
-    variant="switch"
-  >
-    <TabList>
-      <Tab value="tab1">
-        Tab 1      </Tab>
-      <Tab value="tab2">
-        Tab 2      </Tab>
-      <Tab value="tab3">
-        Tab 3      </Tab>
-    </TabList>
-  </Tabs>
-</>
+{
+  globals: {
+    imports: `import { TABS_SIZE, TABS_VARIANT, Tabs, TabList, Tab } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>MD</p>
+      <Tabs defaultValue="tab1" size={TABS_SIZE.md} variant={TABS_VARIANT.switch}>
+        <TabList>
+          <Tab value="tab1">Tab 1</Tab>
+          <Tab value="tab2">Tab 2</Tab>
+          <Tab value="tab3">Tab 3</Tab>
+        </TabList>
+      </Tabs>
+      <p>SM</p>
+      <Tabs defaultValue="tab1" size={TABS_SIZE.sm} variant={TABS_VARIANT.switch}>
+        <TabList>
+          <Tab value="tab1">Tab 1</Tab>
+          <Tab value="tab2">Tab 2</Tab>
+          <Tab value="tab3">Tab 3</Tab>
+        </TabList>
+      </Tabs>
+      <p>XS</p>
+      <Tabs defaultValue="tab1" size={TABS_SIZE.xs} variant={TABS_VARIANT.switch}>
+        <TabList>
+          <Tab value="tab1">Tab 1</Tab>
+          <Tab value="tab2">Tab 2</Tab>
+          <Tab value="tab3">Tab 3</Tab>
+        </TabList>
+      </Tabs>
+    </>
+}
 ```
 
 ### Disabled tab
 
 ```jsx
-<Tabs defaultValue="tab1">
-  <TabList>
-    <Tab value="tab1">
-      Tab 1    </Tab>
-    <Tab
-      disabled
-      value="tab2"
-    >
-      Tab 2    </Tab>
-    <Tab value="tab3">
-      Tab 3    </Tab>
-  </TabList>
-</Tabs>
+{
+  globals: {
+    imports: `import { Tabs, TabList, Tab } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tabs defaultValue="tab1">
+      <TabList>
+        <Tab value="tab1">Tab 1</Tab>
+        <Tab value="tab2" disabled>Tab 2</Tab>
+        <Tab value="tab3">Tab 3</Tab>
+      </TabList>
+    </Tabs>
+}
 ```
 
 ### Horizontal overflow
@@ -333,28 +309,28 @@ Content 2
 Content 3
 
 ```jsx
-<Tabs defaultValue="tab1">
-  <TabList>
-    <Tab value="tab1">
-      Tab 1    </Tab>
-    <Tab value="tab2">
-      Tab 2    </Tab>
-    <Tab value="tab3">
-      Tab 3    </Tab>
-  </TabList>
-  <TabContent value="tab1">
-    <p>
-      Content 1    </p>
-  </TabContent>
-  <TabContent value="tab2">
-    <p>
-      Content 2    </p>
-  </TabContent>
-  <TabContent value="tab3">
-    <p>
-      Content 3    </p>
-  </TabContent>
-</Tabs>
+{
+  globals: {
+    imports: `import { Tabs, TabContent, TabList, Tab } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tabs defaultValue="tab1">
+      <TabList>
+        <Tab value="tab1">Tab 1</Tab>
+        <Tab value="tab2">Tab 2</Tab>
+        <Tab value="tab3">Tab 3</Tab>
+      </TabList>
+      <TabContent value="tab1">
+        <p>Content 1</p>
+      </TabContent>
+      <TabContent value="tab2">
+        <p>Content 2</p>
+      </TabContent>
+      <TabContent value="tab3">
+        <p>Content 3</p>
+      </TabContent>
+    </Tabs>
+}
 ```
 
 ### Controlled

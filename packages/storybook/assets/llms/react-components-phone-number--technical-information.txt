@@ -424,8 +424,6 @@ AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigu
 
 ### Loading
 
-AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigua & BarbudaArgentinaArmeniaArubaAustraliaAustriaAzerbaijanBahamasBahrainBangladeshBarbadosBelarusBelgiumBelizeBeninBermudaBhutanBoliviaBosnia & HerzegovinaBotswanaBrazilBritish Indian Ocean TerritoryBritish Virgin IslandsBruneiBulgariaBurkina FasoBurundiCambodiaCameroonCanadaCape VerdeCaribbean NetherlandsCayman IslandsCentral African RepublicChadChileChinaChristmas IslandCocos (Keeling) IslandsColombiaComorosCongo - BrazzavilleCongo - KinshasaCook IslandsCosta RicaCôte d’IvoireCroatiaCubaCuraçaoCyprusCzechiaDenmarkDjiboutiDominicaDominican RepublicEcuadorEgyptEl SalvadorEquatorial GuineaEritreaEstoniaEswatiniEthiopiaFalkland Islands (Islas Malvinas)Faroe IslandsFijiFinlandFranceFrench GuianaFrench PolynesiaGabonGambiaGeorgiaGermanyGhanaGibraltarGreeceGreenlandGrenadaGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHong KongHungaryIcelandIndiaIndonesiaIranIraqIrelandIsle of ManIsraelItalyJamaicaJapanJerseyJordanKazakhstanKenyaKiribatiKuwaitKyrgyzstanLaosLatviaLebanonLesothoLiberiaLibyaLiechtensteinLithuaniaLuxembourgMacaoMadagascarMalawiMalaysiaMaldivesMaliMaltaMarshall IslandsMartiniqueMauritaniaMauritiusMayotteMexicoMicronesiaMoldovaMonacoMongoliaMontenegroMontserratMoroccoMozambiqueMyanmar (Burma)NamibiaNauruNepalNetherlandsNew CaledoniaNew ZealandNicaraguaNigerNigeriaNiueNorfolk IslandNorth KoreaNorth MacedoniaNorthern Mariana IslandsNorwayOmanPakistanPalauPalestinePanamaPapua New GuineaParaguayPeruPhilippinesPolandPortugalPuerto RicoQatarRéunionRomaniaRussiaRwandaSamoaSan MarinoSão Tomé & PríncipeSaudi ArabiaSenegalSerbiaSeychellesSierra LeoneSingaporeSint MaartenSlovakiaSloveniaSolomon IslandsSomaliaSouth AfricaSouth KoreaSouth SudanSpainSri LankaSt. BarthélemySt. HelenaSt. Kitts & NevisSt. LuciaSt. MartinSt. Pierre & MiquelonSt. Vincent & GrenadinesSudanSurinameSvalbard & Jan MayenSwedenSwitzerlandSyriaTaiwanTajikistanTanzaniaThailandTimor-LesteTogoTokelauTongaTrinidad & TobagoTunisiaTürkiyeTurkmenistanTurks & Caicos IslandsTuvaluU.S. Virgin IslandsUgandaUkraineUnited Arab EmiratesUnited KingdomUnited StatesUruguayUzbekistanVanuatuVatican CityVenezuelaVietnamWallis & FutunaWestern SaharaYemenZambiaZimbabwe
-
 ```jsx
 {
   decorators: [story => <div style={{
@@ -455,29 +453,30 @@ The locale manages the translation of the country list.
 
 For further explanation about locale strategy, see .
 
-Locale "fr"
-
-AfghanistanAfrique du SudAlbanieAlgérieAllemagneAndorreAngolaAnguillaAntigua-et-BarbudaArabie saouditeArgentineArménieArubaAustralieAutricheAzerbaïdjanBahamasBahreïnBangladeshBarbadeBelgiqueBelizeBéninBermudesBhoutanBiélorussieBolivieBosnie-HerzégovineBotswanaBrésilBruneiBulgarieBurkina FasoBurundiCambodgeCamerounCanadaCap-VertChiliChineChypreColombieComoresCongo-BrazzavilleCongo-KinshasaCorée du NordCorée du SudCosta RicaCôte d’IvoireCroatieCubaCuraçaoDanemarkDjiboutiDominiqueÉgypteÉmirats arabes unisÉquateurÉrythréeEspagneEstonieEswatiniÉtat de la Cité du VaticanÉtats-UnisÉthiopieFidjiFinlandeFranceGabonGambieGéorgieGhanaGibraltarGrèceGrenadeGroenlandGuadeloupeGuamGuatemalaGuerneseyGuinéeGuinée équatorialeGuinée-BissauGuyanaGuyane françaiseHaïtiHondurasHong KongHongrieÎle ChristmasÎle de ManÎle NorfolkÎles ÅlandÎles CaïmansÎles CocosÎles CookÎles FéroéÎles Malouines (Îles Falkland)Îles Mariannes du NordÎles MarshallÎles SalomonÎles Turques-et-CaïquesÎles Vierges britanniquesÎles Vierges des États-UnisIndeIndonésieIrakIranIrlandeIslandeIsraëlItalieJamaïqueJaponJerseyJordanieKazakhstanKenyaKirghizstanKiribatiKoweïtLa RéunionLaosLesothoLettonieLibanLiberiaLibyeLiechtensteinLituanieLuxembourgMacaoMacédoine du NordMadagascarMalaisieMalawiMaldivesMaliMalteMarocMartiniqueMauriceMauritanieMayotteMexiqueMicronésieMoldavieMonacoMongolieMonténégroMontserratMozambiqueMyanmar (Birmanie)NamibieNauruNépalNicaraguaNigerNigeriaNiueNorvègeNouvelle-CalédonieNouvelle-ZélandeOmanOugandaOuzbékistanPakistanPalaosPalestinePanamaPapouasie-Nouvelle-GuinéeParaguayPays-BasPays-Bas caribéensPérouPhilippinesPolognePolynésie françaisePorto RicoPortugalQatarRépublique centrafricaineRépublique dominicaineRoumanieRoyaume-UniRussieRwandaSahara occidentalSaint-BarthélemySaint-Christophe-et-NiévèsSaint-MarinSaint-MartinSaint-Martin (partie néerlandaise)Saint-Pierre-et-MiquelonSaint-Vincent-et-les GrenadinesSainte-HélèneSainte-LucieSalvadorSamoaSamoa américainesSao Tomé-et-PrincipeSénégalSerbieSeychellesSierra LeoneSingapourSlovaquieSlovénieSomalieSoudanSoudan du SudSri LankaSuèdeSuisseSurinameSvalbard et Jan MayenSyrieTadjikistanTaïwanTanzanieTchadTchéquieTerritoire britannique de l’océan IndienThaïlandeTimor orientalTogoTokelauTongaTrinité-et-TobagoTunisieTurkménistanTurquieTuvaluUkraineUruguayVanuatuVenezuelaViêt NamWallis-et-FutunaYémenZambieZimbabwe
-
-Locale "de"
-
-AfghanistanÄgyptenÅlandinselnAlbanienAlgerienAmerikanisch-SamoaAmerikanische JungferninselnAndorraAngolaAnguillaAntigua und BarbudaÄquatorialguineaArgentinienArmenienArubaAserbaidschanÄthiopienAustralienBahamasBahrainBangladeschBarbadosBelarusBelgienBelizeBeninBermudaBhutanBolivienBosnien und HerzegowinaBotsuanaBrasilienBritische JungferninselnBritisches Territorium im Indischen OzeanBrunei DarussalamBulgarienBurkina FasoBurundiCabo VerdeChileChinaCookinselnCosta RicaCôte d’IvoireCuraçaoDänemarkDeutschlandDominicaDominikanische RepublikDschibutiEcuadorEl SalvadorEritreaEstlandEswatiniFalklandinseln (Malwinen)FäröerFidschiFinnlandFrankreichFranzösisch-GuayanaFranzösisch-PolynesienGabunGambiaGeorgienGhanaGibraltarGrenadaGriechenlandGrönlandGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHongkongIndienIndonesienIrakIranIrlandIslandIsle of ManIsraelItalienJamaikaJapanJemenJerseyJordanienKaimaninselnKambodschaKamerunKanadaKaribische NiederlandeKasachstanKatarKeniaKirgisistanKiribatiKokosinselnKolumbienKomorenKongo-BrazzavilleKongo-KinshasaKroatienKubaKuwaitLaosLesothoLettlandLibanonLiberiaLibyenLiechtensteinLitauenLuxemburgMacauMadagaskarMalawiMalaysiaMaledivenMaliMaltaMarokkoMarshallinselnMartiniqueMauretanienMauritiusMayotteMexikoMikronesienMonacoMongoleiMontenegroMontserratMosambikMyanmarNamibiaNauruNepalNeukaledonienNeuseelandNicaraguaNiederlandeNigerNigeriaNiueNordkoreaNördliche MarianenNordmazedonienNorfolkinselNorwegenOmanÖsterreichPakistanPalästinaPalauPanamaPapua-NeuguineaParaguayPeruPhilippinenPolenPortugalPuerto RicoRepublik MoldauRéunionRuandaRumänienRusslandSalomonenSambiaSamoaSan MarinoSão Tomé und PríncipeSaudi-ArabienSchwedenSchweizSenegalSerbienSeychellenSierra LeoneSimbabweSingapurSint MaartenSlowakeiSlowenienSomaliaSpanienSpitzbergen und Jan MayenSri LankaSt. BarthélemySt. HelenaSt. Kitts und NevisSt. LuciaSt. MartinSt. Pierre und MiquelonSt. Vincent und die GrenadinenSüdafrikaSudanSüdkoreaSüdsudanSurinameSyrienTadschikistanTaiwanTansaniaThailandTimor-LesteTogoTokelauTongaTrinidad und TobagoTschadTschechienTunesienTürkeiTurkmenistanTurks- und CaicosinselnTuvaluUgandaUkraineUngarnUruguayUsbekistanVanuatuVatikanstadtVenezuelaVereinigte Arabische EmirateVereinigte StaatenVereinigtes KönigreichVietnamWallis und FutunaWeihnachtsinselWestsaharaZentralafrikanische RepublikZypern
-
 ```jsx
-<>
-  <span>
-    Locale "fr"  </span>
-  <PhoneNumber locale="fr">
-    <PhoneNumberCountryList />
-    <PhoneNumberControl />
-  </PhoneNumber>
-  <span>
-    Locale "de"  </span>
-  <PhoneNumber locale="de">
-    <PhoneNumberCountryList />
-    <PhoneNumberControl />
-  </PhoneNumber>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <span>Locale "fr"</span>
+      <PhoneNumber locale="fr">
+        <PhoneNumberCountryList />
+        <PhoneNumberControl />
+      </PhoneNumber>
+      <span>Locale "de"</span>
+      <PhoneNumber locale="de">
+        <PhoneNumberCountryList />
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </>
+}
 ```
 
 ### Country list
@@ -487,6 +486,14 @@ You can use update the list of country to select from.
 By default, the list use the `all` preset that displays all supported iso codes. But you can pass a specific subset to limit the possible choices.
 
 For further explanation about country iso code strategy, see .
+
+All countries
+
+AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigua & BarbudaArgentinaArmeniaArubaAustraliaAustriaAzerbaijanBahamasBahrainBangladeshBarbadosBelarusBelgiumBelizeBeninBermudaBhutanBoliviaBosnia & HerzegovinaBotswanaBrazilBritish Indian Ocean TerritoryBritish Virgin IslandsBruneiBulgariaBurkina FasoBurundiCambodiaCameroonCanadaCape VerdeCaribbean NetherlandsCayman IslandsCentral African RepublicChadChileChinaChristmas IslandCocos (Keeling) IslandsColombiaComorosCongo - BrazzavilleCongo - KinshasaCook IslandsCosta RicaCôte d’IvoireCroatiaCubaCuraçaoCyprusCzechiaDenmarkDjiboutiDominicaDominican RepublicEcuadorEgyptEl SalvadorEquatorial GuineaEritreaEstoniaEswatiniEthiopiaFalkland Islands (Islas Malvinas)Faroe IslandsFijiFinlandFranceFrench GuianaFrench PolynesiaGabonGambiaGeorgiaGermanyGhanaGibraltarGreeceGreenlandGrenadaGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHong KongHungaryIcelandIndiaIndonesiaIranIraqIrelandIsle of ManIsraelItalyJamaicaJapanJerseyJordanKazakhstanKenyaKiribatiKuwaitKyrgyzstanLaosLatviaLebanonLesothoLiberiaLibyaLiechtensteinLithuaniaLuxembourgMacaoMadagascarMalawiMalaysiaMaldivesMaliMaltaMarshall IslandsMartiniqueMauritaniaMauritiusMayotteMexicoMicronesiaMoldovaMonacoMongoliaMontenegroMontserratMoroccoMozambiqueMyanmar (Burma)NamibiaNauruNepalNetherlandsNew CaledoniaNew ZealandNicaraguaNigerNigeriaNiueNorfolk IslandNorth KoreaNorth MacedoniaNorthern Mariana IslandsNorwayOmanPakistanPalauPalestinePanamaPapua New GuineaParaguayPeruPhilippinesPolandPortugalPuerto RicoQatarRéunionRomaniaRussiaRwandaSamoaSan MarinoSão Tomé & PríncipeSaudi ArabiaSenegalSerbiaSeychellesSierra LeoneSingaporeSint MaartenSlovakiaSloveniaSolomon IslandsSomaliaSouth AfricaSouth KoreaSouth SudanSpainSri LankaSt. BarthélemySt. HelenaSt. Kitts & NevisSt. LuciaSt. MartinSt. Pierre & MiquelonSt. Vincent & GrenadinesSudanSurinameSvalbard & Jan MayenSwedenSwitzerlandSyriaTaiwanTajikistanTanzaniaThailandTimor-LesteTogoTokelauTongaTrinidad & TobagoTunisiaTürkiyeTurkmenistanTurks & Caicos IslandsTuvaluU.S. Virgin IslandsUgandaUkraineUnited Arab EmiratesUnited KingdomUnited StatesUruguayUzbekistanVanuatuVatican CityVenezuelaVietnamWallis & FutunaWestern SaharaYemenZambiaZimbabwe
+
+Subset of countries
+
+FranceGermanyItalyUnited Kingdom
 
 ```jsx
 {
@@ -516,16 +523,20 @@ For further explanation about country iso code strategy, see .
 
 ### Form field
 
-Phone number:
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Phone number:  </FormFieldLabel>
-  <PhoneNumber>
-    <PhoneNumberControl />
-  </PhoneNumber>
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, PhoneNumber, PhoneNumberControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Phone number:      </FormFieldLabel>
+      <PhoneNumber>
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </FormField>
+}
 ```
 
 ## Recipes

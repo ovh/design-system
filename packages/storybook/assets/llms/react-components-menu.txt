@@ -1,0 +1,294 @@
+# React Components/Menu
+
+## Subcomponents
+
+
+### MenuContent
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `createPortal` | `` | No | true | Whether the component should be rendered in the DOM close to the body tag. This only works on the root menu and not in submenus. |
+| `withArrow` | `` | No | false | Whether the component displays an arrow pointing to the trigger. |
+
+
+
+### MenuGroup
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `asChild` | `` | No |  | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+
+
+### MenuGroupLabel
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `asChild` | `` | No |  | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+
+
+### MenuItem
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `onSelect` | `` | No |  | Callback fired when the selection changes. |
+| `value` | `` | Yes |  | The value of the item. |
+
+
+
+### MenuTrigger
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `asChild` | `` | No |  | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+
+## Examples
+
+
+### Controlled
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, ICON_NAME, Icon, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const [isOpen, setIsOpen] = useState(false);
+    function toggleMenu() {
+      setIsOpen(isOpen => !isOpen);
+    }
+    return <>
+        <Button onClick={toggleMenu}>
+          Toggle menu
+        </Button>
+
+        <Menu open={isOpen}>
+          <MenuTrigger asChild>
+            <Icon name={ICON_NAME.ellipsisVertical} />
+          </MenuTrigger>
+          <MenuContent>
+            <MenuItem value='profile'>Profile</MenuItem>
+            <MenuItem value='settings'>Settings</MenuItem>
+            <MenuItem value='logout'>Logout</MenuItem>
+          </MenuContent>
+        </Menu>
+      </>;
+  }
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Menu>
+      <MenuTrigger asChild>
+        <Button>
+          Open menu
+        </Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem value="profile">Profile</MenuItem>
+        <MenuItem value="settings">Settings</MenuItem>
+        <MenuItem value='logout'>Logout</MenuItem>
+      </MenuContent>
+    </Menu>
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    position: {
+      control: 'select',
+      options: MENU_POSITIONS,
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'MENU_POSITION'
+        }
+      }
+    },
+    triggerLabel: {
+      control: 'text',
+      table: {
+        category: CONTROL_CATEGORY.slot,
+        type: {
+          summary: 'string'
+        }
+      }
+    },
+    withArrow: {
+      control: 'boolean',
+      table: {
+        category: CONTROL_CATEGORY.design
+      }
+    }
+  }),
+  args: {
+    position: MENU_POSITION.bottom,
+    triggerLabel: 'Open menu',
+    withArrow: false
+  },
+  render: (arg: Partial<DemoArg>) => <Menu position={arg.position}>
+      <MenuTrigger asChild>
+        <Button>
+          {arg.triggerLabel}
+        </Button>
+      </MenuTrigger>
+      <MenuContent withArrow={arg.withArrow}>
+        <MenuItem value="profile">Profile</MenuItem>
+        <MenuItem value="settings">Settings</MenuItem>
+      </MenuContent>
+    </Menu>
+}
+```
+
+### Group
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Menu, MenuContent, MenuGroup, MenuGroupLabel, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Menu>
+      <MenuTrigger asChild>
+        <Button>
+          Open menu
+        </Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuGroup>
+          <MenuGroupLabel>Account</MenuGroupLabel>
+          <MenuItem value='profile'>Profile</MenuItem>
+          <MenuItem value='billing'>Billing</MenuItem>
+        </MenuGroup>
+        <MenuGroup>
+          <MenuGroupLabel>Support</MenuGroupLabel>
+          <MenuItem value='help'>Help center</MenuItem>
+          <MenuItem value='contact'>Contact support</MenuItem>
+        </MenuGroup>
+      </MenuContent>
+    </Menu>
+}
+```
+
+### Nested
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Menu, MenuContent, MenuItem, MenuSubmenu, MenuTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Menu>
+      <MenuTrigger asChild>
+        <Button>
+          Open menu
+        </Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem value='new'>New</MenuItem>
+        <MenuItem value='open'>Open</MenuItem>
+        <MenuSubmenu>
+          <MenuTrigger>Share</MenuTrigger>
+          <MenuContent>
+            <MenuItem value='email'>Email</MenuItem>
+            <MenuItem value='message'>Message</MenuItem>
+          </MenuContent>
+        </MenuSubmenu>
+      </MenuContent>
+    </Menu>
+}
+```
+
+### Overview
+
+```tsx
+{
+  parameters: {
+    layout: 'centered'
+  },
+  tags: ['!dev'],
+  render: ({}) => <Menu>
+      <MenuTrigger asChild>
+        <Button>
+          Account
+        </Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuGroup>
+          <MenuGroupLabel>My account</MenuGroupLabel>
+          <MenuItem value='profile'>Profile</MenuItem>
+          <MenuItem value='settings'>Settings</MenuItem>
+        </MenuGroup>
+        <MenuItem value='logout'>Logout</MenuItem>
+      </MenuContent>
+    </Menu>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <Menu>
+      <MenuTrigger asChild>
+        <Button>
+            Default
+        </Button>
+      </MenuTrigger>
+      <MenuContent createPortal={false}>
+        <MenuItem value='profile'>Profile</MenuItem>
+        <MenuItem value='settings'>Settings</MenuItem>
+      </MenuContent>
+    </Menu>
+}
+```

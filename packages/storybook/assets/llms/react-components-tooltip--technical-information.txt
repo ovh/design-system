@@ -80,29 +80,38 @@ React Components
 ### Default
 
 ```jsx
-<Tooltip>
-  <TooltipTrigger>
-    Show tooltip  </TooltipTrigger>
-  <TooltipContent>
-    This is the tooltip content  </TooltipContent>
-</Tooltip>
+{
+  globals: {
+    imports: `import { Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tooltip>
+      <TooltipTrigger>
+        Show tooltip      </TooltipTrigger>
+      <TooltipContent>
+        This is the tooltip content      </TooltipContent>
+    </Tooltip>
+}
 ```
 
 ### Custom Trigger
 
 ```jsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <Icon
-      name="circle-question"
-      style={{
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tooltip>
+      <TooltipTrigger asChild>
+        <Icon name={ICON_NAME.circleQuestion} style={{
         fontSize: '24px'
-      }}
-    />
-  </TooltipTrigger>
-  <TooltipContent>
-    This is the tooltip content  </TooltipContent>
-</Tooltip>
+      }} />
+      </TooltipTrigger>
+      <TooltipContent>
+        This is the tooltip content      </TooltipContent>
+    </Tooltip>
+}
 ```
 
 ### Controlled
@@ -186,74 +195,56 @@ const [isOpen, setIsOpen] = useState(false);
 
 ### Z index
 
-Default Z-axis order:  
-Custom Z-axis order:
-
 ```jsx
-<>
-  <span>
-    Default Z-axis order:  </span>
-  <Tooltip open>
-    <TooltipTrigger asChild>
-      <Icon
-        name="circle-info"
-        style={{
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon, TOOLTIP_POSITION, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <span>Default Z-axis order:</span>
+      <Tooltip open>
+        <TooltipTrigger asChild>
+          <Icon name={ICON_NAME.circleInfo} style={{
           fontSize: '24px'
-        }}
-      />
-    </TooltipTrigger>
-    <TooltipContent withArrow>
-      Back    </TooltipContent>
-  </Tooltip>
-  <Tooltip open>
-    <TooltipTrigger asChild>
-      <Icon
-        name="circle-info"
-        style={{
+        }} />
+        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Back        </TooltipContent>
+      </Tooltip>
+      <Tooltip open>
+        <TooltipTrigger asChild>
+          <Icon name={ICON_NAME.circleInfo} style={{
           fontSize: '24px'
-        }}
-      />
-    </TooltipTrigger>
-    <TooltipContent withArrow>
-      Front    </TooltipContent>
-  </Tooltip>
-  <br />
-  <span>
-    Custom Z-axis order:  </span>
-  <Tooltip
-    open
-    position="bottom"
-    positionerStyle={{
+        }} />
+        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Front        </TooltipContent>
+      </Tooltip>
+      <br />
+      <span>Custom Z-axis order:</span>
+      <Tooltip open position={TOOLTIP_POSITION.bottom} positionerStyle={{
       zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'
-    }}
-  >
-    <TooltipTrigger asChild>
-      <Icon
-        name="circle-info"
-        style={{
+    }}>
+        <TooltipTrigger asChild>
+          <Icon name={ICON_NAME.circleInfo} style={{
           fontSize: '24px'
-        }}
-      />
-    </TooltipTrigger>
-    <TooltipContent withArrow>
-      Front    </TooltipContent>
-  </Tooltip>
-  <Tooltip
-    open
-    position="bottom"
-  >
-    <TooltipTrigger asChild>
-      <Icon
-        name="circle-info"
-        style={{
+        }} />
+        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Front        </TooltipContent>
+      </Tooltip>
+      <Tooltip open position={TOOLTIP_POSITION.bottom}>
+        <TooltipTrigger asChild>
+          <Icon name={ICON_NAME.circleInfo} style={{
           fontSize: '24px'
-        }}
-      />
-    </TooltipTrigger>
-    <TooltipContent withArrow>
-      Back    </TooltipContent>
-  </Tooltip>
-</>
+        }} />
+        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Back        </TooltipContent>
+      </Tooltip>
+    </>
+}
 ```
 
 ## Recipes

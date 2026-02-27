@@ -8,6 +8,46 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.6.0](https://ovh.github.io/design-system/v19.6.0/?path=/docs/design-system-changelog--page) (2026-02-27)
+[compare](https://github.com/ovh/design-system/compare/v19.5.0...v19.6.0)
+
+### Bug Fixes
+
+* **accordion:** inherit only bottom border-radius on content ([23cf56a](https://github.com/ovh/design-system/commit/23cf56a66d9a9d7721636804e7e1381060bfdbbf))
+* **cart:** display 0 quantity correctlty ([9e70af0](https://github.com/ovh/design-system/commit/9e70af0714ba7ab3e71374a79dae7686b1b24466))
+* **combobox:** remove disable prop from items ([a44b0f3](https://github.com/ovh/design-system/commit/a44b0f395f1aa9aae612025480b8c98507243f9a))
+* **doc:** display false attribute correctly on example previews ([facf3a9](https://github.com/ovh/design-system/commit/facf3a909cf41d1460dc24f2c418ebe6ac58264e))
+* **doc:** put correct import on mixin usage example ([081f6ee](https://github.com/ovh/design-system/commit/081f6eecb7e7530eeb0401bbe2ae4332711ba254))
+* **overlays:** inherit arrow tip background color from content ([aec46dc](https://github.com/ovh/design-system/commit/aec46dc888e0bffbcf2de6c56c8423fd5fdc016c))
+* **recipe:** align dashboard-card actions ([2449ec2](https://github.com/ovh/design-system/commit/2449ec250e4758bf57a8770db33466035b64f375))
+
+
+### Features
+
+* **cart:** implement component ([5d92c38](https://github.com/ovh/design-system/commit/5d92c38ef99bf49fb04d59f1c7f77071a2efb55f))
+* **combobox:** add caret on control ([98f43f2](https://github.com/ovh/design-system/commit/98f43f265b38f46efb9252f5bd24e99f5a20cc84))
+* **doc:** add charts usage documentation ([6f4e745](https://github.com/ovh/design-system/commit/6f4e74548312b2cf79558f9ad5275dbfce5d6110))
+* **doc:** add form guideline guide ([3410f73](https://github.com/ovh/design-system/commit/3410f73177ae748c6d7f11d61bc1d7acfc083a0b))
+* **doc:** add mobile example for Cart ([27a3437](https://github.com/ovh/design-system/commit/27a3437cc1cbedaab1c2dd93d2bd8877d2f16dc6))
+* **doc:** improve tag icon control on Demo page ([7e41430](https://github.com/ovh/design-system/commit/7e41430f54d198b1358ea363678169d711958a3c))
+* **menu:** add position props, documentation updates, and style adjustments ([a3b8ca6](https://github.com/ovh/design-system/commit/a3b8ca634760ffb3906da54e7235c96b0c0c1adc))
+* **menu:** add relative positioning to menu items and update documentation with ARIA link ([8bbb8a6](https://github.com/ovh/design-system/commit/8bbb8a66d3a9b4fb379c367849ac1193f1b98123))
+* **menu:** better alignment for the ItemTrigger anatomy-tech image ([48b61fc](https://github.com/ovh/design-system/commit/48b61fcd8f97b73cc567e4c2452f7de1abc662de))
+* **menu:** introduce new menu component with examples and Storybook integration ([1aea812](https://github.com/ovh/design-system/commit/1aea812f59ff346836401531c93447fda634a997))
+* **menu:** update styles and documentation with anatomy visuals and figma links ([b0ed806](https://github.com/ovh/design-system/commit/b0ed806cd9252c06c77aa16506dca9c3d2cf203e))
+* **recipes:** add tailwind implementation on DashboardCard ([2e78675](https://github.com/ovh/design-system/commit/2e78675ef02b9cfa11cc2b71c701d5f7636d3d51))
+* **recipes:** implement DashboardCard ([9a9d133](https://github.com/ovh/design-system/commit/9a9d13356585db79aca8238a2dc8fd410e55d375))
+* **tag:** add icon attribute ([c5ee951](https://github.com/ovh/design-system/commit/c5ee9514d26f80290fd3687323b96ab951c9639f))
+* **themes:** add new icons & update existing ones to ods-icon font ([50888a4](https://github.com/ovh/design-system/commit/50888a493e959de0d2923e4b74bd475a8d3ee771))
+* **toaster:** add slide-in and slide/fade-out animations ([a520034](https://github.com/ovh/design-system/commit/a520034af1388b6ba76667ada9fcfca49e4175be))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.5.0](https://ovh.github.io/design-system/v19.5.0/?path=/docs/design-system-changelog--page) (2026-01-30)
 [compare](https://github.com/ovh/design-system/compare/v19.4.1...v19.5.0)
 

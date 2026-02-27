@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.6.0](https://ovh.github.io/design-system/v19.6.0/?path=/docs/design-system-changelog--page) (2026-02-27)
+[compare](https://github.com/ovh/design-system/compare/v19.5.0...v19.6.0)
+
+### Features
+
+* **toaster:** add slide-in and slide/fade-out animations ([a520034](https://github.com/ovh/design-system/commit/a520034af1388b6ba76667ada9fcfca49e4175be))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

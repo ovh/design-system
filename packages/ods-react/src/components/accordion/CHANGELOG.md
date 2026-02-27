@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.6.0](https://ovh.github.io/design-system/v19.6.0/?path=/docs/design-system-changelog--page) (2026-02-27)
+[compare](https://github.com/ovh/design-system/compare/v19.5.0...v19.6.0)
+
+### Bug Fixes
+
+* **accordion:** inherit only bottom border-radius on content ([23cf56a](https://github.com/ovh/design-system/commit/23cf56a66d9a9d7721636804e7e1381060bfdbbf))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.5.0](https://ovh.github.io/design-system/v19.5.0/?path=/docs/design-system-changelog--page) (2026-01-30)
 [compare](https://github.com/ovh/design-system/compare/v19.4.1...v19.5.0)
 

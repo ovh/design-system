@@ -1,0 +1,164 @@
+React Components
+
+# Switch
+
+## Overview
+
+---
+
+Component is now deprecated and will be removed in a future major release. You can use different components instead depending on your use-case:
+
+-   managing navigation: move to  using the switch variant.
+-   managing option activation: move to a .
+-   as a form element: move to a .
+
+## Anatomy
+
+---
+
+1.  **Switch**
+2.  **Switch Item**
+
+## Switch
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| defaultValue | `string` | - | `undefined` | The initial value of the selected item. Use when you don't need to control the value of the switch. |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| onValueChange | `(detail: SwitchValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
+| size | `SWITCH_SIZE` | - | `SWITCH_SIZE.md` | The size preset to use. |
+| value | `string` | - | `undefined` | The controlled value of the selected item. |
+
+## SwitchItem
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| value | `string` |  | `undefined` | The value of the switch item. |
+
+## Enums
+
+---
+
+### SWITCH_SIZE
+
+-   md =`"md"`
+-   sm =`"sm"`
+
+## Interfaces
+
+---
+
+### SwitchValueChangeDetail
+
+-   `value: string`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-switch-background-color | var(--ods-color-neutral-100) | 
+ |
+| --ods-switch-border-radius | calc(var(--ods-theme-border-radius) * 2) | 
+
+ |
+| --ods-switch-column-gap | calc(var(--ods-theme-column-gap) / 2) | 
+
+ |
+| --ods-switch-item-background-color | inherit | 
+
+ |
+| --ods-switch-item-background-color-checked | var(--ods-color-primary-600) | 
+
+ |
+| --ods-switch-item-background-color-checked-disabled | var(--ods-color-neutral-500) | 
+
+ |
+| --ods-switch-item-background-color-hover | var(--ods-color-primary-100) | 
+
+ |
+| --ods-switch-item-text-color | var(--ods-color-primary-500) | 
+
+ |
+| --ods-switch-item-text-color-checked | var(--ods-theme-input-text-color-checked) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Switch>
+  <SwitchItem value="item-1">
+    Item 1  </SwitchItem>
+  <SwitchItem value="item-2">
+    Item 2  </SwitchItem>
+  <SwitchItem value="item-3">
+    Item 3  </SwitchItem>
+</Switch>
+```
+
+### Checked
+
+```jsx
+<Switch defaultValue="item-1">
+  <SwitchItem value="item-1">
+    Item 1  </SwitchItem>
+  <SwitchItem value="item-2">
+    Item 2  </SwitchItem>
+  <SwitchItem value="item-3">
+    Item 3  </SwitchItem>
+</Switch>
+```
+
+### Disabled
+
+```jsx
+<Switch disabled>
+  <SwitchItem value="item-1">
+    Item 1  </SwitchItem>
+  <SwitchItem value="item-2">
+    Item 2  </SwitchItem>
+  <SwitchItem value="item-3">
+    Item 3  </SwitchItem>
+</Switch>
+```
+
+### Sizes
+
+```jsx
+<>
+  <Switch size="sm">
+    <SwitchItem value="item-1">
+      Item 1    </SwitchItem>
+    <SwitchItem value="item-2">
+      Item 2    </SwitchItem>
+    <SwitchItem value="item-3">
+      Item 3    </SwitchItem>
+  </Switch>
+  <Switch size="md">
+    <SwitchItem value="item-1">
+      Item 1    </SwitchItem>
+    <SwitchItem value="item-2">
+      Item 2    </SwitchItem>
+    <SwitchItem value="item-3">
+      Item 3    </SwitchItem>
+  </Switch>
+</>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

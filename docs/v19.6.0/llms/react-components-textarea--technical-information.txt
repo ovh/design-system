@@ -1,0 +1,95 @@
+React Components
+
+# Textarea
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Textarea**
+
+## Textarea
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [textarea attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes) . |
+| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Textarea />
+```
+
+### Disabled
+
+```jsx
+<Textarea disabled />
+```
+
+### Readonly
+
+Readonly
+
+```jsx
+<Textarea
+  defaultValue="Readonly"
+  readOnly
+/>
+```
+
+### Resizable
+
+```jsx
+<Textarea
+  style={{
+    resize: 'both'
+  }}
+ />
+```
+
+### Form field
+
+Description:Helper text0/200
+
+```jsx
+const MAX_COUNT = 200;
+  const [count, setCount] = useState(0);
+  function onInput(e: FormEvent): void {
+    setCount((e.target as HTMLTextAreaElement).value.length);
+  }
+  return <FormField invalid={count > MAX_COUNT}>
+      <FormFieldLabel>
+        Description:      </FormFieldLabel>
+      <Textarea name="description" onInput={onInput} />
+      <FormFieldHelper style={{
+      display: 'flex',
+      justifyContent: 'space-between'
+    }}>
+        <Text preset={TEXT_PRESET.caption}>
+          Helper text        </Text>
+        <Text preset={TEXT_PRESET.caption}>
+          {count}/{MAX_COUNT}
+        </Text>
+      </FormFieldHelper>
+      <FormFieldError>
+        Error message      </FormFieldError>
+    </FormField>;
+}
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

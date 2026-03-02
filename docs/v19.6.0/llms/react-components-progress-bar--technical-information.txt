@@ -1,0 +1,63 @@
+React Components
+
+# Progress Bar
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Progress Bar**
+
+## ProgressBar
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [progress attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/progress#attributes) . |
+| max | `string | number` | - | `100` | The maximum value of the progress bar. |
+| value | `string | number` | - | `0` | The current value of the progress bar |
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-progress-bar-border-radius | var(--ods-theme-border-radius) | 
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<ProgressBar />
+```
+
+### Max
+
+```jsx
+<ProgressBar
+  max="500"
+  value="50"
+/>
+```
+
+### Value
+
+```jsx
+<ProgressBar value="50" />
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

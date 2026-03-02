@@ -1,0 +1,49 @@
+/* Hide toolbar for non demo stories */
+/* :nth-child(4) is the  "Addons" pane at the bottom of individual Stories view */
+/* see https://github.com/storybookjs/storybook/discussions/20620 */
+[id='root'] > div:not(:has(> :nth-child(4))) [data-test-id='sb-preview-toolbar'] {
+  display: none;
+}
+
+/* Hide the "Filter by tag" option on search field */
+.search-field > div:last-child {
+  display: none;
+}
+
+/* Hide the "Create new story" option next to search field */
+.search-field ~ div {
+  display: none;
+}
+
+body {
+  letter-spacing: 0.03rem;
+}
+
+/* Hide the cog button with Storybook options */
+button[title="Shortcuts"] {
+  display: none;
+}
+
+/* Double class to increase the weight to overwrite storybook internal css */
+.sidebar-subheading.sidebar-subheading {
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.sidebar-header {
+  display: grid !important;
+  grid-template-columns: max-content 1fr max-content;
+}
+
+/* Hide original brand image */
+.sidebar-header > div:first-of-type {
+  display: none;
+}
+
+/* Enforce custom brand image to take the whole space */
+.sidebar-header > [data-addon="brand"] {
+  grid-column: span 3;
+  padding-left: 0 !important;
+}

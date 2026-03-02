@@ -1,0 +1,249 @@
+React Components
+
+# Card
+
+## Overview
+
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+## Anatomy
+
+---
+
+1.  **Card**
+
+## Card
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| color | `CARD_COLOR` | - | `CARD_COLOR.primary` | The color preset to use. |
+
+## Enums
+
+---
+
+### CARD_COLOR
+
+-   critical =`"critical"`
+-   information =`"information"`
+-   neutral =`"neutral"`
+-   primary =`"primary"`
+-   success =`"success"`
+-   warning =`"warning"`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-card-border-color-critical | var(--ods-color-critical-200) | 
+ |
+| --ods-card-border-color-information | var(--ods-color-information-200) | 
+
+ |
+| --ods-card-border-color-neutral | var(--ods-color-neutral-200) | 
+
+ |
+| --ods-card-border-color-primary | var(--ods-color-primary-500) | 
+
+ |
+| --ods-card-border-color-success | var(--ods-color-success-200) | 
+
+ |
+| --ods-card-border-color-warning | var(--ods-color-warning-200) | 
+
+ |
+| --ods-card-border-radius | var(--ods-theme-border-radius) | 
+
+ |
+| --ods-card-border-width | var(--ods-theme-border-width) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+```jsx
+<Card>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.    <br />
+    Interdum et malesuada fames ac ante ipsum primis in faucibus.  </p>
+</Card>
+```
+
+### Color
+
+Critical
+
+Information
+
+Neutral
+
+Primary
+
+Success
+
+Warning
+
+```jsx
+<>
+  <Card color="critical">
+    <p>
+      Critical    </p>
+  </Card>
+  <Card color="information">
+    <p>
+      Information    </p>
+  </Card>
+  <Card color="neutral">
+    <p>
+      Neutral    </p>
+  </Card>
+  <Card color="primary">
+    <p>
+      Primary    </p>
+  </Card>
+  <Card color="success">
+    <p>
+      Success    </p>
+  </Card>
+  <Card color="warning">
+    <p>
+      Warning    </p>
+  </Card>
+</>
+```
+
+## Recipes
+
+---
+
+Dashboard Card
+
+#### Cluster Information
+
+---
+
+Name
+
+MyCluster
+
+---
+
+ID
+
+---
+
+Region
+
+GRA91-AZ
+
+---
+
+Admission plugins
+
+Always Pull Images PluginEnable
+
+Plugin Node RestrictionEnable
+
+---
+
+Feature List Product Card
+
+WEB HOSTING
+
+NewBest seller
+
+Performance
+
+For demanding online stores and projects.
+
+1 vCore 2,4 GHz, 2 Go RAM1 vCore 2,4 GHz, 4 Go RAM2 vCores 2,4 GHz, 8 Go RAM
+
+From
+
+€24.46ex. VAT/month
+
+or €13.19 incl. VAT/monthfor a 24-month registration
+
+Minimum 2-year registration €100 free with a 5-year registration
+
+Installation fee:Free
+
+-   -   Unlimited websites
+        
+    -   High power level
+        
+    -   1 domain name free for the first
+        
+    -   500 GB SSD storage
+        
+    -   1,000 email addresses
+        
+-   1-click CMS
+    
+    -   WordPress
+        
+    -   Joomla!
+        
+    -   Drupal
+        
+    -   Prestashop
+        
+-   Database
+    
+    -   4 x 1 GB databases
+        
+    -   8 GB Web Cloud Databases
+        
+-   Security
+    
+    -   Unlimited free SSL
+        
+    -   Anti-DDoS protection
+        
+    -   Anti-virus and anti-spam
+        
+    -   Daily backups
+        
+-   Performance
+    
+    -   99.9% observed availability
+        
+    -   Guaranteed resources
+        
+    -   Unlimited traffic
+        
+    -   Service continuity
+        
+    -   Boost option to withstand temporary traffic spikes
+        
+-   Support and additional services
+    
+    -   Git
+        
+    -   Standard support
+        
+    -   SSH access
+        
+    -   CDN Basic
+        
+
+Media Product Card
+
+AI Deploy
+
+Easily deploy machine learning models and applications into production, create your API access points with ease, and make effective predictions.

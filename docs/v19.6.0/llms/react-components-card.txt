@@ -1,0 +1,208 @@
+# React Components/Card
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `color` | `` | No | CARD_COLOR.primary | @type=CARD_COLOR The color preset to use. |
+
+
+## Examples
+
+
+### Accessibility Alternative Grouping
+
+```tsx
+{
+  globals: {
+    imports: `import { Card } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <div role="list" style={{
+    display: 'flex',
+    gap: '16px'
+  }}>
+      <Card role="listitem" style={{
+      padding: '8px'
+    }}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+        Interdum et malesuada fames ac ante ipsum primis in faucibus.
+      </Card>
+      <Card role="listitem" style={{
+      padding: '8px'
+    }}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+        Interdum et malesuada fames ac ante ipsum primis in faucibus.
+      </Card>
+    </div>
+}
+```
+
+### Accessibility Grouping
+
+```tsx
+{
+  globals: {
+    imports: `import { Card } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <ul style={{
+    display: 'flex',
+    gap: '16px',
+    padding: 0,
+    margin: 0,
+    listStyleType: 'none'
+  }}>
+      <li>
+        <Card style={{
+        padding: '8px'
+      }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+          Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        </Card>
+      </li>
+      <li>
+        <Card style={{
+        padding: '8px'
+      }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+          Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        </Card>
+      </li>
+    </ul>
+}
+```
+
+### Color
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    gap: '16px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { CARD_COLOR, Card } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Card color={CARD_COLOR.critical}>
+        <p>Critical</p>
+      </Card>
+
+      <Card color={CARD_COLOR.information}>
+        <p>Information</p>
+      </Card>
+
+      <Card color={CARD_COLOR.neutral}>
+        <p>Neutral</p>
+      </Card>
+
+      <Card color={CARD_COLOR.primary}>
+        <p>Primary</p>
+      </Card>
+
+      <Card color={CARD_COLOR.success}>
+        <p>Success</p>
+      </Card>
+
+      <Card color={CARD_COLOR.warning}>
+        <p>Warning</p>
+      </Card>
+    </>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Card } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Card>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+    </Card>
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    color: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'CARD_COLOR'
+        }
+      },
+      control: 'select',
+      options: CARD_COLORS
+    },
+    children: {
+      table: {
+        category: CONTROL_CATEGORY.slot
+      },
+      control: 'text'
+    }
+  }),
+  args: {
+    children: 'Hello, world!'
+  }
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Card style={{
+    padding: '8px'
+  }}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+      Interdum et malesuada fames ac ante ipsum primis in faucibus.
+    </Card>
+}
+```
+
+### ThemeGenerator
+
+```tsx
+{
+  name: 'ThemeGenerator',
+  parameters: {
+    docs: {
+      disable: true
+    },
+    layout: 'fullscreen',
+    options: {
+      showPanel: false
+    }
+  },
+  tags: ['!dev', 'hidden'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    gap: '16px'
+  }}>
+      {CARD_COLORS.map(color => <Card key={String(color)} color={color}>
+          <p style={{
+        margin: 0
+      }}>{String(color)}</p>
+        </Card>)}
+    </div>
+}
+```

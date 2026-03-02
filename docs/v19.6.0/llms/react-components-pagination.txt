@@ -1,0 +1,230 @@
+# React Components/Pagination
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `defaultPage` | `` | No |  | The initial active page. Use when you don't need to control the active page of the pagination. |
+| `disabled` | `` | No |  | Whether the component is disabled. |
+| `labelTooltipNext` | `` | No |  | The tooltip label on the "next page" button. |
+| `labelTooltipPrev` | `` | No |  | The tooltip label on the "previous page" button. |
+| `onPageChange` | `` | No |  | Callback fired when the active page changes. |
+| `onPageSizeChange` | `` | No |  | Callback fired when the page size changes. |
+| `page` | `` | No |  | The controlled active page |
+| `pageSize` | `` | No | 10 | The number of items per page. |
+| `renderTotalItemsLabel` | `` | No | ({ totalItems }) => `of ${totalItems} results` | Format the label displayed near the per-page selector. |
+| `siblingCount` | `` | No |  | The number of pages to show beside active page. |
+| `totalItems` | `` | Yes |  | The total number of items. |
+| `withPageSizeSelector` | `` | No |  | Whether the per-page selector is displayed. |
+
+
+## Examples
+
+
+### Accessibility Label
+
+```tsx
+{
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination aria-label="Pagination" totalItems={5000} />
+}
+```
+
+### Controlled
+
+```tsx
+{
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: ({}) => {
+    const [page, setPage] = useState(1);
+    function handlePageChange({
+      page
+    }: PaginationPageChangeDetail) {
+      setPage(page);
+    }
+    return <Pagination onPageChange={handlePageChange} page={page} totalItems={500} />;
+  }
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination totalItems={5000} />
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    },
+    labelTooltipNext: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    },
+    labelTooltipPrev: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    },
+    pageSize: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    },
+    page: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    },
+    siblingCount: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    },
+    totalItems: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    },
+    withPageSizeSelector: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    }
+  }),
+  args: {
+    totalItems: 5000
+  }
+}
+```
+
+### Disabled
+
+```tsx
+{
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination disabled totalItems={500} />
+}
+```
+
+### Items Per Page
+
+```tsx
+{
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination pageSize={25} totalItems={500} />
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Pagination totalItems={100} withPageSizeSelector />
+}
+```
+
+### Sibling Count
+
+```tsx
+{
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination defaultPage={5} siblingCount={2} totalItems={500} />
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    alignItems: 'flex-start'
+  }}>
+      <Pagination totalItems={100} />
+      <Pagination totalItems={500} pageSize={25} />
+      <Pagination totalItems={500} disabled />
+      <Pagination totalItems={100} withPageSizeSelector />
+    </div>
+}
+```
+
+### Total Items
+
+```tsx
+{
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: ({}) => <Pagination renderTotalItemsLabel={({
+    totalItems
+  }) => `of ${totalItems} results`} totalItems={500} withPageSizeSelector />
+}
+```
+
+### With Labels
+
+```tsx
+{
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination labelTooltipPrev={'Go to previous page'} labelTooltipNext={'Go to next page'} totalItems={500} />
+}
+```

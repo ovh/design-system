@@ -4,49 +4,6 @@
       "components": [
         {
           "description": "New component",
-          "label": "Cart",
-          "range": [0, 0.60]
-        },
-        {
-          "description": "New component",
-          "label": "Menu",
-          "range": [0, 0.5]
-        },
-        {
-          "description": "Icon choice",
-          "label": "Tag - v3",
-          "range": [0.3, 0.8]
-        },
-        {
-          "description": "Add animation",
-          "label": "Toaster - v2",
-          "range": [0.6, 1]
-        }
-      ],
-      "recipes": [
-        {
-          "description": "New Recipe",
-          "label": "Dashboard Card",
-          "range": [0, 0.5]
-        }
-      ],
-      "others": [
-        {
-          "description": "Functional documentation",
-          "label": "Form",
-          "range": [0.20, 0.60]
-        },
-        {
-          "description": "Functional documentation",
-          "label": "Charts",
-          "range": [0.60, 1]
-        }
-      ]
-    },
-    "n+2": {
-      "components": [
-        {
-          "description": "New component",
           "label": "Data Table - MVP",
           "range": [0, 1]
         },
@@ -78,15 +35,9 @@
           "range": [0, 0.5]
         }
       ],
-      "others": [
-        {
-          "description": "",
-          "label": "Theme revamp",
-          "range": [0, 1]
-        }
-      ]
+      "others": []
     },
-    "n+3": {
+    "n+2": {
       "components": [
         {
           "description": "New component",
@@ -95,17 +46,17 @@
         },
         {
           "description": "New component",
-          "label": "Autocomplete",
-          "range": [0, 0.4]
-        },
-        {
-          "description": "New component",
           "label": "Command",
-          "range": [0.4, 0.8]
+          "range": [0.2, 0.6]
         },
         {
-          "description": "New component",
-          "label": "Tags List",
+          "label": "Progress Tracker",
+          "description": "New Component",
+          "range": [0.6, 1]
+        },
+        {
+          "label": "Timeline",
+          "description": "New Component",
           "range": [0.6, 1]
         }
       ],
@@ -123,16 +74,56 @@
           "range": [0, 0.5]
         }
       ]
+    },
+    "n+3": {
+      "components": [
+        {
+          "label": "Tags List",
+          "description": "New Component",
+          "range": [0, 0.4]
+        },
+        {
+          "label": "Code Editor",
+          "description": "New Component",
+          "range": [0, 0.4]
+        }
+      ],
+      "recipes": [
+        {
+          "label": "New Recipes",
+          "description": "Hero, Slider, etc.",
+          "range": [0, 0.4]
+        }
+      ],
+      "others": []
     }
   },
   "releases": [
-    { "label": "Next release", "value": "next" },
-    { "label": "Release n+2", "value": "n+2" },
-    { "label": "Release n+3", "value": "n+3" }
+    {
+      "label": "Next release",
+      "value": "next"
+    },
+    {
+      "label": "Release n+2",
+      "value": "n+2"
+    },
+    {
+      "label": "Release n+3",
+      "value": "n+3"
+    }
   ],
   "sections": [
-    { "label": "Components", "value": "components" },
-    { "label": "Recipes", "value": "recipes" },
-    { "label": "Others", "value": "others" }
+    {
+      "label": "Components",
+      "value": "components"
+    },
+    {
+      "label": "Recipes",
+      "value": "recipes"
+    },
+    {
+      "label": "Others",
+      "value": "others"
+    }
   ]
 }

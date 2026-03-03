@@ -234,6 +234,7 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
           value={ inputValue } />
 
         <button
+          aria-hidden="true"
           className={ classNames(
             style['combobox-control__field__caret'],
             { [style['combobox-control__field__caret--disabled']]: disabled },

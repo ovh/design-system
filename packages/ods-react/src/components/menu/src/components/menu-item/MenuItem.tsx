@@ -5,6 +5,10 @@ import style from './menuItem.module.scss';
 
 interface MenuItemProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> {
   /**
+   * Whether the item is disabled.
+   */
+  disabled?: boolean,
+  /**
    * Callback fired when the selection changes.
    */
   onSelect?: () => void,
@@ -17,6 +21,7 @@ interface MenuItemProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> {
 const MenuItem: FC<MenuItemProp> = forwardRef<HTMLDivElement, MenuItemProp>(({
   children,
   className,
+  disabled,
   onSelect,
   ...props
 }, ref): JSX.Element => {
@@ -24,6 +29,7 @@ const MenuItem: FC<MenuItemProp> = forwardRef<HTMLDivElement, MenuItemProp>(({
     <VendorMenuItem
       className={ classNames(style['menu-item'], className) }
       data-ods="menu-item"
+      disabled={ disabled }
       onSelect={ onSelect }
       ref={ ref }
       { ...props }>

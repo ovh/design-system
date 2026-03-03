@@ -214,6 +214,39 @@ export const ArkNestedWithPortal = (): JSX.Element => (
   </ArkMenu.Root>
 );
 
+export const Disabled = (): JSX.Element => (
+  <Menu>
+    <MenuTrigger>
+      Menu
+    </MenuTrigger>
+    <MenuContent>
+      <MenuItem value={ '1' }>Item 1</MenuItem>
+      <MenuItem disabled value={ '2' }>Item 2 (disabled)</MenuItem>
+      <MenuItem value={ '3' }>Item 3</MenuItem>
+    </MenuContent>
+  </Menu>
+);
+
+export const DisabledNested = (): JSX.Element => (
+  <Menu>
+    <MenuTrigger>
+      Menu
+    </MenuTrigger>
+    <MenuContent>
+      <MenuItem value="1">Item 1</MenuItem>
+      <MenuItem disabled value="2">Item 2 (disabled)</MenuItem>
+      <MenuSubmenu>
+        <MenuTrigger>Submenu</MenuTrigger>
+        <MenuContent>
+          <MenuItem value="3-1">Nested item 1</MenuItem>
+          <MenuItem disabled value="3-2">Nested item 2 (disabled)</MenuItem>
+          <MenuItem value="3-3">Nested item 3</MenuItem>
+        </MenuContent>
+      </MenuSubmenu>
+    </MenuContent>
+  </Menu>
+);
+
 export const ViewsExample = (): JSX.Element => (
   <Menu>
     <MenuTrigger asChild>

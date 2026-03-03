@@ -12,5 +12,9 @@
     &[data-highlighted]:hover {
       background-color: var(--ods-theme-input-option-background-color-hover);
     }
+
+    &[data-disabled] {
+      @include state.ods-is-disabled();
+    }
   }
 }

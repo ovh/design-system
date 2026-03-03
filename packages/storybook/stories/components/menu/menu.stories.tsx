@@ -193,6 +193,27 @@ export const Group: Story = {
   ),
 };
 
+export const Disabled: Story = {
+  globals: {
+    imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Menu>
+      <MenuTrigger asChild>
+        <Button>
+          Open menu
+        </Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem value="profile">Profile</MenuItem>
+        <MenuItem disabled value="settings">Settings</MenuItem>
+        <MenuItem value="logout">Logout</MenuItem>
+      </MenuContent>
+    </Menu>
+  ),
+};
+
 export const Overview: Story = {
   parameters: {
     layout: 'centered',

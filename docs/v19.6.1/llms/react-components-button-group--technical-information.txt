@@ -1,0 +1,216 @@
+React Components
+
+# Button Group
+
+## Overview
+
+---
+
+ 
+
+## Anatomy
+
+---
+
+1.  **ButtonGroup**
+2.  **ButtonGroupItem**
+
+## ButtonGroup
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| defaultValue | `string[]` | - | `undefined` | The initial value of the selected items. Use when you don't need to control the value of the component. |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| multiple | `boolean` | - | `undefined` | Whether multiple items can be selected at the same time. |
+| onValueChange | `(detail: ButtonGroupValueChangeDetail) => void` | - | `undefined` | Callback fired when the selection changes. |
+| size | `BUTTON_SIZE` | - | `undefined` | The size preset to use. |
+| value | `string[]` | - | `undefined` | The controlled value of the selected items. |
+
+## ButtonGroupItem
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| value | `string` |  | `undefined` | The value of the item. |
+
+## Enums
+
+---
+
+### BUTTON_GROUP_SIZE
+
+-   md =`"md"`
+-   sm =`"sm"`
+-   xs =`"xs"`
+
+## Interfaces
+
+---
+
+### ButtonGroupValueChangeDetail
+
+-   `value: string[]`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-button-group-item-background-color-checked-disabled | var(--ods-color-neutral-500) | 
+ |
+
+## Examples
+
+---
+
+### Default
+
+ 
+
+```jsx
+<ButtonGroup>
+  <ButtonGroupItem value="hourly">
+    Hourly  </ButtonGroupItem>
+  <ButtonGroupItem value="daily">
+    Daily  </ButtonGroupItem>
+  <ButtonGroupItem value="monthly">
+    Monthly  </ButtonGroupItem>
+  <ButtonGroupItem value="custom">
+    <Icon name="calendar" />
+    {' '}Custom
+  </ButtonGroupItem>
+</ButtonGroup>
+```
+
+### Disabled
+
+ 
+
+```jsx
+<ButtonGroup disabled>
+  <ButtonGroupItem value="hourly">
+    Hourly  </ButtonGroupItem>
+  <ButtonGroupItem value="daily">
+    Daily  </ButtonGroupItem>
+  <ButtonGroupItem value="monthly">
+    Monthly  </ButtonGroupItem>
+  <ButtonGroupItem value="custom">
+    <Icon name="calendar" />
+    {' '}Custom
+  </ButtonGroupItem>
+</ButtonGroup>
+```
+
+### Disabled Item
+
+ 
+
+```jsx
+<ButtonGroup>
+  <ButtonGroupItem value="hourly">
+    Hourly  </ButtonGroupItem>
+  <ButtonGroupItem value="daily">
+    Daily  </ButtonGroupItem>
+  <ButtonGroupItem value="monthly">
+    Monthly  </ButtonGroupItem>
+  <ButtonGroupItem
+    disabled
+    value="custom"
+  >
+    <Icon name="calendar" />
+    {' '}Custom
+  </ButtonGroupItem>
+</ButtonGroup>
+```
+
+### Controlled
+
+ 
+
+```jsx
+const [values, setValues] = useState(['hourly']);
+  return <ButtonGroup onValueChange={({
+    value  }) => setValues(value)} value={values}>
+      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+      <ButtonGroupItem value="custom">
+        <Icon name={ICON_NAME.calendar} /> Custom      </ButtonGroupItem>
+    </ButtonGroup>;
+}
+```
+
+### Multiple
+
+```jsx
+<ButtonGroup multiple>
+  <ButtonGroupItem value="option-1">
+    Option 1  </ButtonGroupItem>
+  <ButtonGroupItem value="option-2">
+    Option 2  </ButtonGroupItem>
+  <ButtonGroupItem value="option-3">
+    Option 3  </ButtonGroupItem>
+  <ButtonGroupItem value="option-4">
+    Option 4  </ButtonGroupItem>
+</ButtonGroup>
+```
+
+### Size
+
+MD
+
+SM
+
+XS
+
+```jsx
+<>
+  <p>
+    MD  </p>
+  <ButtonGroup size="md">
+    <ButtonGroupItem value="option-1">
+      Option 1    </ButtonGroupItem>
+    <ButtonGroupItem value="option-2">
+      Option 2    </ButtonGroupItem>
+    <ButtonGroupItem value="option-3">
+      Option 3    </ButtonGroupItem>
+    <ButtonGroupItem value="option-4">
+      Option 4    </ButtonGroupItem>
+  </ButtonGroup>
+  <p>
+    SM  </p>
+  <ButtonGroup size="sm">
+    <ButtonGroupItem value="option-1">
+      Option 1    </ButtonGroupItem>
+    <ButtonGroupItem value="option-2">
+      Option 2    </ButtonGroupItem>
+    <ButtonGroupItem value="option-3">
+      Option 3    </ButtonGroupItem>
+    <ButtonGroupItem value="option-4">
+      Option 4    </ButtonGroupItem>
+  </ButtonGroup>
+  <p>
+    XS  </p>
+  <ButtonGroup size="xs">
+    <ButtonGroupItem value="option-1">
+      Option 1    </ButtonGroupItem>
+    <ButtonGroupItem value="option-2">
+      Option 2    </ButtonGroupItem>
+    <ButtonGroupItem value="option-3">
+      Option 3    </ButtonGroupItem>
+    <ButtonGroupItem value="option-4">
+      Option 4    </ButtonGroupItem>
+  </ButtonGroup>
+</>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

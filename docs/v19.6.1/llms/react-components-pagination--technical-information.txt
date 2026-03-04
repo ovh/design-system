@@ -1,0 +1,140 @@
+React Components
+
+# Pagination
+
+## Overview
+
+---
+
+102550100300
+
+of 100 results
+
+## Anatomy
+
+---
+
+1.  **Pagination**
+
+## Pagination
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [nav attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/nav#attributes) . |
+| defaultPage | `number` | - | `undefined` | The initial active page. Use when you don't need to control the active page of the pagination. |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| labelTooltipNext | `string` | - | `undefined` | The tooltip label on the "next page" button. |
+| labelTooltipPrev | `string` | - | `undefined` | The tooltip label on the "previous page" button. |
+| onPageChange | `(detail: PaginationPageChangeDetail) => void` | - | `undefined` | Callback fired when the active page changes. |
+| onPageSizeChange | `(detail: PaginationPageSizeChangeDetail) => void` | - | `undefined` | Callback fired when the page size changes. |
+| page | `number` | - | `undefined` | The controlled active page |
+| pageSize | `number` | - | `10` | The number of items per page. |
+| renderTotalItemsLabel | `(params: { totalItems: number }) => string | number` | - | `` ({ totalItems }) => `of ${totalItems} results` `` | Format the label displayed near the per-page selector. |
+| siblingCount | `number` | - | `undefined` | The number of pages to show beside active page. |
+| totalItems | `number` |  | `undefined` | The total number of items. |
+| withPageSizeSelector | `boolean` | - | `undefined` | Whether the per-page selector is displayed. |
+
+## Enums
+
+---
+
+### PAGINATION_PER_PAGE
+
+-   option_10 =`"10"`
+-   option_100 =`"100"`
+-   option_25 =`"25"`
+-   option_300 =`"300"`
+-   option_50 =`"50"`
+
+## Interfaces
+
+---
+
+### PaginationPageChangeDetail
+
+-   `page: number`
+-   `pageSize: number`
+
+### PaginationPageSizeChangeDetail
+
+-   `pageSize: number`
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Pagination totalItems={5000} />
+```
+
+### Controlled
+
+```jsx
+const [page, setPage] = useState(1);
+  function handlePageChange({
+    page  }: PaginationPageChangeDetail) {
+    setPage(page);
+  }
+  return <Pagination onPageChange={handlePageChange} page={page} totalItems={500} />;
+}
+```
+
+### Disabled
+
+```jsx
+<Pagination
+  disabled
+  totalItems={500}
+/>
+```
+
+### Items per page
+
+```jsx
+<Pagination
+  pageSize={25}
+  totalItems={500}
+/>
+```
+
+### Sibling count
+
+```jsx
+<Pagination
+  defaultPage={5}
+  siblingCount={2}
+  totalItems={500}
+/>
+```
+
+### With labels
+
+```jsx
+<Pagination
+  labelTooltipNext="Go to next page"
+  labelTooltipPrev="Go to previous page"
+  totalItems={500}
+/>
+```
+
+### With total items
+
+102550100300
+
+of 500 results
+
+```jsx
+<Pagination renderTotalItemsLabel={({
+  totalItems
+}) => `of ${totalItems} results`} totalItems={500} withPageSizeSelector />
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

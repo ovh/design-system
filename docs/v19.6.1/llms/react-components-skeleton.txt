@@ -1,0 +1,79 @@
+# React Components/Skeleton
+
+## Examples
+
+
+### Accessibility Bad Practice Loading
+
+```tsx
+{
+  globals: {
+    imports: 'import { Skeleton } from \'@ovhcloud/ods-react\';'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div>
+      <Skeleton />
+    </div>
+}
+```
+
+### Accessibility Loading
+
+```tsx
+{
+  globals: {
+    imports: 'import { Skeleton } from \'@ovhcloud/ods-react\';'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div aria-busy="true">
+      <Skeleton />
+    </div>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: 'import { Skeleton } from \'@ovhcloud/ods-react\';'
+  },
+  tags: ['!dev'],
+  render: ({}) => <Skeleton />
+}
+```
+
+### Demo
+
+```tsx
+{}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Skeleton />
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px'
+  }}>
+      <Skeleton />
+      <Skeleton />
+      <Skeleton />
+    </div>
+}
+```

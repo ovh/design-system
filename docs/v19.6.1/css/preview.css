@@ -1,0 +1,77 @@
+/* Global typography */
+body {
+  font-family: var(--ods-font-family-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Apply theme modifiers on root element beneath body to avoid impacting portal elements */
+body[data-theme="dark"] > #storybook-docs {
+  --ods-theme-anchor-text-color: #66a2f7;
+  --ods-theme-anchor-text-color-hover: #87bbfa;
+  --ods-theme-anchor-text-color-visited: #a2ccfb;
+  --ods-theme-background-color: #232628;
+  --ods-theme-heading-text-color: #a2ccfb;
+  --ods-theme-outline-color: #f0f0f0;
+  --ods-theme-text-color: #e0e2f7;
+  --ods-theme-input-text-color: #e0e2f7;
+  --ods-theme-input-placeholder-text-color: #c4c4c4;
+}
+
+body[data-theme="dark"] [data-storybook="table"] {
+  --ods-table-head-background-color: #383838;
+  --ods-table-striped-background-color: #383838;
+}
+
+body[data-theme="dark"] [data-storybook="button-ghost"], body[data-theme="dark"] [data-storybook="input-search"] ~ * [data-ods="button"] {
+  --ods-button-text-color-primary-ghost: #e0e2f7;
+}
+
+body > #storybook-docs {
+  background-color: var(--ods-theme-background-color);
+  color: var(--ods-theme-text-color);
+}
+
+/* Code preview typography */
+pre * {
+  line-height: 19px;
+  color: #fff;
+  font-family: var(--ods-font-family-code);
+  font-size: 13px;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Doc pages content */
+#storybook-docs > .sbdocs-wrapper {
+  background-color: var(--ods-theme-background-color);
+  padding: 1.5rem 3rem 3rem;
+}
+
+/* Force ODS link color while there are still some markdown links */
+#storybook-docs .sbdocs-a {
+  color: var(--ods-theme-anchor-text-color);
+}
+
+.toc-list.toc-list .toc-list-item > a {
+  color: var(--ods-theme-text-color);
+}
+
+.toc-list.toc-list .toc-list-item.is-active-li > a {
+  color: var(--ods-theme-anchor-text-color);
+}
+
+/* Prevent storybook auto-added p tag to mess up the Message rendering */
+[data-ods="message-body"] p {
+  margin: 0;
+}
+
+/* Hide live coding editor overflow container weird persistent line */
+#monacoOverflowContainer {
+  outline: none;
+}
+

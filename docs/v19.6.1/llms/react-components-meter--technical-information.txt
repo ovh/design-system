@@ -1,0 +1,132 @@
+React Components
+
+# Meter
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Meter**
+
+## Meter
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| high | `number` | - | `undefined` | The lower numeric bound of the high end of the measured range. |
+| low | `number` | - | `undefined` | The upper numeric bound of the low end of the measured range. |
+| max | `number` | - | `100` | The upper numeric bound of the measured range. |
+| min | `number` | - | `0` | The lower numeric bound of the measured range. |
+| optimum | `number` | - | `undefined` | The optimal numeric value. Combined with low and high, it will changes the coloring behaviour. |
+| value | `number` | - | `0` | The current value of the meter |
+
+## Unions
+
+---
+
+-   `MeterState = "critical" | "normal" | "warning"`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-meter-background-color-critical | var(--ods-theme-critical-color) | 
+ |
+| --ods-meter-background-color-normal | var(--ods-theme-primary-color) | 
+
+ |
+| --ods-meter-background-color-warning | var(--ods-theme-warning-color) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Meter />
+```
+
+### Thresholds
+
+Value under low threshold:
+
+Value between both thresholds:
+
+Value above high threshold:
+
+```jsx
+<>
+  <p>
+    Value under low threshold:  </p>
+  <Meter
+    low={40}
+    value={35}
+  />
+  <p>
+    Value between both thresholds:  </p>
+  <Meter
+    high={80}
+    low={40}
+    value={60}
+  />
+  <p>
+    Value above high threshold:  </p>
+  <Meter
+    high={80}
+    value={90}
+  />
+</>
+```
+
+### Optimum
+
+Low optimum and low value:
+
+Low optimum and high value:
+
+Low optimum and very high value:
+
+```jsx
+<>
+  <p>
+    Low optimum and low value:  </p>
+  <Meter
+    high={80}
+    low={40}
+    optimum={30}
+    value={20}
+  />
+  <p>
+    Low optimum and high value:  </p>
+  <Meter
+    high={80}
+    low={40}
+    optimum={30}
+    value={60}
+  />
+  <p>
+    Low optimum and very high value:  </p>
+  <Meter
+    high={80}
+    low={40}
+    optimum={30}
+    value={90}
+  />
+</>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

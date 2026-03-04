@@ -1,0 +1,310 @@
+# React Components/Timepicker
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `defaultValue` | `` | No |  | The initial time value. Use when you don't need to control the value of the timepicker. |
+| `disabled` | `` | No |  | Whether the component is disabled. |
+| `i18n` | `` | No |  | Internal translations override. |
+| `id` | `` | No |  | The field id. |
+| `invalid` | `` | No |  | Whether the component is in error state. |
+| `locale` | `` | No |  | The locale used for the translation of the internal elements. |
+| `name` | `` | No |  | The name of the form element. Useful for form submission. |
+| `onTimezoneChange` | `` | No |  | Callback fired when the timezone changes. |
+| `onValueChange` | `` | No |  | Callback fired when the value changes. |
+| `readOnly` | `` | No |  | Whether the component is readonly. |
+| `required` | `` | No |  | Whether the component is required. |
+| `timezone` | `` | No |  | The controlled selected timezone. |
+| `timezones` | `` | No |  | A specific or preset list of timezone to display in the selector. |
+| `value` | `` | No |  | The controlled timepicker value. |
+| `withSeconds` | `` | No |  | Whether the time input allows seconds selection. |
+
+
+## Subcomponents
+
+
+### TimepickerControl
+
+
+
+
+### TimepickerTimezoneList
+
+
+
+## Examples
+
+
+### Accessibility Label
+
+```tsx
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Starting time:
+      </FormFieldLabel>
+
+      <Timepicker withSeconds>
+        <TimepickerControl />
+
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </FormField>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Timepicker, TimepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Timepicker>
+      <TimepickerControl />
+    </Timepicker>
+}
+```
+
+### Demo
+
+```tsx
+{
+  render: (arg: DemoArg) => <Timepicker disabled={arg.disabled} invalid={arg.invalid} readOnly={arg.readOnly} withSeconds={arg.withSeconds}>
+      <TimepickerControl />
+
+      {arg.withTimezones && <TimepickerTimezoneList />}
+    </Timepicker>,
+  argTypes: orderControls({
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+    invalid: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    readOnly: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    withSeconds: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'boolean'
+        }
+      },
+      control: 'boolean'
+    },
+    withTimezones: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'boolean'
+        }
+      },
+      control: 'boolean'
+    }
+  })
+}
+```
+
+### Disabled
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Timepicker disabled>
+        <TimepickerControl />
+      </Timepicker>
+
+      <Timepicker disabled>
+        <TimepickerControl />
+
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+}
+```
+
+### In Form Field
+
+```tsx
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Timepicker:
+      </FormFieldLabel>
+
+      <Timepicker>
+        <TimepickerControl />
+      </Timepicker>
+    </FormField>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Timepicker defaultValue="12:00">
+      <TimepickerControl />
+
+      <TimepickerTimezoneList />
+    </Timepicker>
+}
+```
+
+### Readonly
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Timepicker readOnly>
+        <TimepickerControl />
+      </Timepicker>
+
+      <Timepicker readOnly>
+        <TimepickerControl />
+
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    alignItems: 'flex-start'
+  }}>
+      <Timepicker>
+        <TimepickerControl />
+      </Timepicker>
+
+      <Timepicker>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+
+      <Timepicker disabled>
+        <TimepickerControl />
+      </Timepicker>
+
+      <Timepicker readOnly>
+        <TimepickerControl />
+      </Timepicker>
+    </div>
+}
+```
+
+### Timezone List
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <span>All timezones</span>
+
+      <Timepicker>
+        <TimepickerControl />
+
+        <TimepickerTimezoneList />
+      </Timepicker>
+
+      <span>Subset of timezone</span>
+
+      <Timepicker timezones={['UTC-10', 'UTC+0', 'UTC+10']}>
+        <TimepickerControl />
+
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+}
+```
+
+### With Seconds
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Timepicker withSeconds>
+        <TimepickerControl />
+      </Timepicker>
+
+      <Timepicker withSeconds>
+        <TimepickerControl />
+
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+}
+```

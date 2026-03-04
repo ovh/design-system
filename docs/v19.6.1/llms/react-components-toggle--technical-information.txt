@@ -1,0 +1,168 @@
+React Components
+
+# Toggle
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Toggle**
+2.  **ToggleControl**
+3.  **ToggleLabel**
+
+## Toggle
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [label attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes) . |
+| checked | `boolean` | - | `undefined` | The controlled checked state of the toggle. |
+| defaultChecked | `boolean` | - | `undefined` | The initial checked state of the toggle. Use when you don't need to control the checked state of the toggle. |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
+| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| onCheckedChange | `(detail: ToggleCheckedChangeDetail) => void` | - | `undefined` | Callback fired when the checked state changes. |
+| required | `boolean` | - | `undefined` | Whether the component is required. |
+| value | `string` | - | `undefined` | The value of form element. Useful for form submission. |
+| withLabels | `boolean` | - | `undefined` | Whether the component displays "ON/OFF" labels. |
+
+## ToggleControl
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+
+## ToggleLabel
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+
+## Interfaces
+
+---
+
+### ToggleCheckedChangeDetail
+
+-   `checked: boolean`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-toggle-control-background-color | var(--ods-color-neutral-200) | 
+ |
+| --ods-toggle-control-background-color-hover | var(--ods-color-neutral-300) | 
+
+ |
+| --ods-toggle-control-border-color | var(--ods-color-neutral-200) | 
+
+ |
+| --ods-toggle-control-border-color-hover | var(--ods-color-neutral-300) | 
+
+ |
+| --ods-toggle-control-label-off-text-color | var(--ods-color-neutral-700) | 
+
+ |
+| --ods-toggle-control-label-on-text-color | var(--ods-color-neutral-000) | 
+
+ |
+| --ods-toggle-control-thumb-background-color | var(--ods-color-neutral-000) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Toggle>
+  <ToggleControl />
+</Toggle>
+```
+
+### Disabled
+
+```jsx
+<Toggle disabled>
+  <ToggleControl />
+</Toggle>
+```
+
+### Invalid
+
+```jsx
+<Toggle invalid>
+  <ToggleControl />
+</Toggle>
+```
+
+### With label
+
+Enable dark mode
+
+```jsx
+<Toggle>
+  <ToggleControl />
+  <ToggleLabel>
+    Enable dark mode  </ToggleLabel>
+</Toggle>
+```
+
+### With inside labels
+
+ONOFF
+
+```jsx
+<Toggle withLabels>
+  <ToggleControl />
+</Toggle>
+```
+
+### Form field
+
+Notification settings:
+
+General Information
+
+Promotions
+
+```jsx
+<>
+  <Text preset="label">
+    Notification settings:  </Text>
+  <FormField>
+    <Toggle>
+      <ToggleControl />
+      <ToggleLabel>
+        General Information      </ToggleLabel>
+    </Toggle>
+  </FormField>
+  <FormField>
+    <Toggle>
+      <ToggleControl />
+      <ToggleLabel>
+        Promotions      </ToggleLabel>
+    </Toggle>
+  </FormField>
+</>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

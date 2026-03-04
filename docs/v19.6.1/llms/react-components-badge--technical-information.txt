@@ -1,0 +1,323 @@
+React Components
+
+# Badge
+
+## Overview
+
+---
+
+Badge
+
+## Anatomy
+
+---
+
+1.  **Badge**
+
+## Badge
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+| color | `BADGE_COLOR` | - | `BADGE_COLOR.information` | The color preset to use. |
+| size | `BADGE_SIZE` | - | `BADGE_SIZE.md` | The size preset to use. |
+
+## Enums
+
+---
+
+### BADGE_COLOR
+
+-   alpha =`"alpha"`
+-   beta =`"beta"`
+-   critical =`"critical"`
+-   information =`"information"`
+-   neutral =`"neutral"`
+-   new =`"new"`
+-   primary =`"primary"`
+-   promotion =`"promotion"`
+-   success =`"success"`
+-   warning =`"warning"`
+
+### BADGE_SIZE
+
+-   lg =`"lg"`
+-   md =`"md"`
+-   sm =`"sm"`
+
+## Interfaces
+
+---
+
+### BADGE_COLOR
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-badge-background-color-alpha | var(--ods-color-alpha) | 
+ |
+| --ods-badge-background-color-beta | var(--ods-color-beta) | 
+
+ |
+| --ods-badge-background-color-critical | var(--ods-color-critical-100) | 
+
+ |
+| --ods-badge-background-color-information | var(--ods-color-information-100) | 
+
+ |
+| --ods-badge-background-color-neutral | var(--ods-color-neutral-100) | 
+
+ |
+| --ods-badge-background-color-new | var(--ods-color-new) | 
+
+ |
+| --ods-badge-background-color-primary | var(--ods-color-primary-500) | 
+
+ |
+| --ods-badge-background-color-promotion | var(--ods-color-promotion) | 
+
+ |
+| --ods-badge-background-color-success | var(--ods-color-success-100) | 
+
+ |
+| --ods-badge-background-color-warning | var(--ods-color-warning-100) | 
+
+ |
+| --ods-badge-border-radius | calc(var(--ods-theme-border-radius) / 2) | 
+
+ |
+| --ods-badge-padding-horizontal-lg | calc(var(--ods-theme-padding-horizontal) * 0.75) | 
+
+ |
+| --ods-badge-padding-horizontal-md | calc(var(--ods-theme-padding-horizontal) / 2) | 
+
+ |
+| --ods-badge-padding-horizontal-sm | calc(var(--ods-theme-padding-horizontal) / 2) | 
+
+ |
+| --ods-badge-padding-vertical-lg | calc(var(--ods-theme-padding-vertical) * 0.75) | 
+
+ |
+| --ods-badge-padding-vertical-md | calc(var(--ods-theme-padding-vertical) / 2) | 
+
+ |
+| --ods-badge-padding-vertical-sm | calc(var(--ods-theme-padding-vertical) / 2) | 
+
+ |
+| --ods-badge-text-color-alpha | var(--ods-color-primary-900) | 
+
+ |
+| --ods-badge-text-color-beta | var(--ods-color-primary-900) | 
+
+ |
+| --ods-badge-text-color-critical | var(--ods-color-critical-900) | 
+
+ |
+| --ods-badge-text-color-information | var(--ods-color-information-900) | 
+
+ |
+| --ods-badge-text-color-neutral | var(--ods-color-neutral-700) | 
+
+ |
+| --ods-badge-text-color-new | var(--ods-color-primary-900) | 
+
+ |
+| --ods-badge-text-color-primary | var(--ods-color-neutral-000) | 
+
+ |
+| --ods-badge-text-color-promotion | var(--ods-color-primary-800) | 
+
+ |
+| --ods-badge-text-color-success | var(--ods-color-success-900) | 
+
+ |
+| --ods-badge-text-color-warning | var(--ods-color-warning-900) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+My badge
+
+```jsx
+<Badge>
+  My badge
+</Badge>
+```
+
+### Color
+
+AlphaBetaCriticalInformationNeutralNewPrimaryPromotionSuccessWarning
+
+```jsx
+<>
+  <Badge color="alpha">
+    Alpha  </Badge>
+  <Badge color="beta">
+    Beta  </Badge>
+  <Badge color="critical">
+    Critical  </Badge>
+  <Badge color="information">
+    Information  </Badge>
+  <Badge color="neutral">
+    Neutral  </Badge>
+  <Badge color="new">
+    New  </Badge>
+  <Badge color="primary">
+    Primary  </Badge>
+  <Badge color="promotion">
+    Promotion  </Badge>
+  <Badge color="success">
+    Success  </Badge>
+  <Badge color="warning">
+    Warning  </Badge>
+</>
+```
+
+### Size
+
+SM badgeMD badgeLG badge
+
+```jsx
+<>
+  <Badge size="sm">
+    SM badge  </Badge>
+  <Badge size="md">
+    MD badge  </Badge>
+  <Badge size="lg">
+    LG badge  </Badge>
+</>
+```
+
+## Recipes
+
+---
+
+Config Tile
+
+VPS 1
+
+4 vCore8 Go RAM100 Go 1 day automated backup Unlimited traffic 200 Mbps
+
+12 months6 monthsNo commitment
+
+From€24.46ex. VAT/monthor €13.19 incl. VAT/month
+
+Dashboard Card
+
+#### Cluster Information
+
+---
+
+Name
+
+MyCluster
+
+---
+
+ID
+
+---
+
+Region
+
+GRA91-AZ
+
+---
+
+Admission plugins
+
+Always Pull Images PluginEnable
+
+Plugin Node RestrictionEnable
+
+---
+
+Feature List Product Card
+
+WEB HOSTING
+
+NewBest seller
+
+Performance
+
+For demanding online stores and projects.
+
+1 vCore 2,4 GHz, 2 Go RAM1 vCore 2,4 GHz, 4 Go RAM2 vCores 2,4 GHz, 8 Go RAM
+
+From
+
+€24.46ex. VAT/month
+
+or €13.19 incl. VAT/monthfor a 24-month registration
+
+Minimum 2-year registration €100 free with a 5-year registration
+
+Installation fee:Free
+
+-   -   Unlimited websites
+        
+    -   High power level
+        
+    -   1 domain name free for the first
+        
+    -   500 GB SSD storage
+        
+    -   1,000 email addresses
+        
+-   1-click CMS
+    
+    -   WordPress
+        
+    -   Joomla!
+        
+    -   Drupal
+        
+    -   Prestashop
+        
+-   Database
+    
+    -   4 x 1 GB databases
+        
+    -   8 GB Web Cloud Databases
+        
+-   Security
+    
+    -   Unlimited free SSL
+        
+    -   Anti-DDoS protection
+        
+    -   Anti-virus and anti-spam
+        
+    -   Daily backups
+        
+-   Performance
+    
+    -   99.9% observed availability
+        
+    -   Guaranteed resources
+        
+    -   Unlimited traffic
+        
+    -   Service continuity
+        
+    -   Boost option to withstand temporary traffic spikes
+        
+-   Support and additional services
+    
+    -   Git
+        
+    -   Standard support
+        
+    -   SSH access
+        
+    -   CDN Basic

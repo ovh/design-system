@@ -80,38 +80,29 @@ React Components
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Tooltip>
-      <TooltipTrigger>
-        Show tooltip      </TooltipTrigger>
-      <TooltipContent>
-        This is the tooltip content      </TooltipContent>
-    </Tooltip>
-}
+<Tooltip>
+  <TooltipTrigger>
+    Show tooltip  </TooltipTrigger>
+  <TooltipContent>
+    This is the tooltip content  </TooltipContent>
+</Tooltip>
 ```
 
 ### Custom Trigger
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Tooltip>
-      <TooltipTrigger asChild>
-        <Icon name={ICON_NAME.circleQuestion} style={{
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Icon
+      name="circle-question"
+      style={{
         fontSize: '24px'
-      }} />
-      </TooltipTrigger>
-      <TooltipContent>
-        This is the tooltip content      </TooltipContent>
-    </Tooltip>
-}
+      }}
+    />
+  </TooltipTrigger>
+  <TooltipContent>
+    This is the tooltip content  </TooltipContent>
+</Tooltip>
 ```
 
 ### Controlled
@@ -140,60 +131,78 @@ const [isOpen, setIsOpen] = useState(false);
 ### Grid
 
 ```jsx
-<>
-  <Tooltip position="top-start">
-    <TooltipTrigger>
-      Top Left    </TooltipTrigger>
-    <TooltipContent withArrow>
-      Top Left tooltip    </TooltipContent>
-  </Tooltip>
-  <Tooltip position="top">
-    <TooltipTrigger>
-      Top    </TooltipTrigger>
-    <TooltipContent withArrow>
-      Top tooltip    </TooltipContent>
-  </Tooltip>
-  <Tooltip position="top-end">
-    <TooltipTrigger>
-      Top Right    </TooltipTrigger>
-    <TooltipContent withArrow>
-      Top Right tooltip    </TooltipContent>
-  </Tooltip>
-  <Tooltip position="left">
-    <TooltipTrigger>
-      Middle Left    </TooltipTrigger>
-    <TooltipContent withArrow>
-      Middle Left tooltip    </TooltipContent>
-  </Tooltip>
-  <div />
-  <Tooltip position="right">
-    <TooltipTrigger>
-      Middle Right    </TooltipTrigger>
-    <TooltipContent withArrow>
-      Middle Right tooltip    </TooltipContent>
-  </Tooltip>
-  <Tooltip position="bottom-start">
-    <TooltipTrigger>
-      Bottom Left    </TooltipTrigger>
-    <TooltipContent withArrow>
-      Bottom Left tooltip    </TooltipContent>
-  </Tooltip>
-  <Tooltip position="bottom">
-    <TooltipTrigger>
-      Bottom    </TooltipTrigger>
-    <TooltipContent withArrow>
-      Bottom tooltip    </TooltipContent>
-  </Tooltip>
-  <Tooltip position="bottom-end">
-    <TooltipTrigger>
-      Bottom Right    </TooltipTrigger>
-    <TooltipContent withArrow>
-      Bottom Right tooltip    </TooltipContent>
-  </Tooltip>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateRows: 'repeat(3, 1fr)',
+    gap: '20px',
+    padding: '50px 150px'
+  }}>
+      {story()}
+    </div>],
+  globals: {
+    imports: `import { Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Tooltip position="top-start">
+        <TooltipTrigger>
+          Top Left        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Top Left tooltip        </TooltipContent>
+      </Tooltip>
+      <Tooltip position="top">
+        <TooltipTrigger>
+          Top        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Top tooltip        </TooltipContent>
+      </Tooltip>
+      <Tooltip position="top-end">
+        <TooltipTrigger>
+          Top Right        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Top Right tooltip        </TooltipContent>
+      </Tooltip>
+      <Tooltip position="left">
+        <TooltipTrigger>
+          Middle Left        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Middle Left tooltip        </TooltipContent>
+      </Tooltip>
+      <div />
+      <Tooltip position="right">
+        <TooltipTrigger>
+          Middle Right        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Middle Right tooltip        </TooltipContent>
+      </Tooltip>
+      <Tooltip position="bottom-start">
+        <TooltipTrigger>
+          Bottom Left        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Bottom Left tooltip        </TooltipContent>
+      </Tooltip>
+      <Tooltip position="bottom">
+        <TooltipTrigger>
+          Bottom        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Bottom tooltip        </TooltipContent>
+      </Tooltip>
+      <Tooltip position="bottom-end">
+        <TooltipTrigger>
+          Bottom Right        </TooltipTrigger>
+        <TooltipContent withArrow>
+          Bottom Right tooltip        </TooltipContent>
+      </Tooltip>
+    </>
+}
 ```
 
 ### Z index
+
+Default Z-axis order:  
+Custom Z-axis order:
 
 ```jsx
 {

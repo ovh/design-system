@@ -28,13 +28,19 @@ See also:
 
 ### Default
 
-123 456,79 €
-
 ```jsx
 <>{formatPrice(123456.789)}</>
 ```
 
 ### Locales
+
+France: 123 456,79 €
+
+Germany: 123.456,79 €
+
+Arabic: ‏١٢٣٬٤٥٦٫٧٩ €
+
+India: €1,23,456.79
 
 ```jsx
 <>
@@ -46,6 +52,12 @@ See also:
 ```
 
 ### Currencies
+
+Euro: 123 456,79 €
+
+Dollar: 123 456,79 $
+
+Yen: 123 457 ¥
 
 ```jsx
 <>
@@ -1122,9 +1134,15 @@ Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 Screen readers will announce a button.
 
 ```jsx
-<Button aria-label="Clear">
-  <Icon name="xmark" />
-</Button>
+{
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button aria-label='Clear'>
+        <Icon name={ICON_NAME.xmark} />
+    </Button>
+}
 ```
 
 Screen readers will announce a button and the aria-label.
@@ -1141,8 +1159,6 @@ Screen readers will announce a button and the aria-label.
 ### aria-labelledby: Referencing another element as a label
 
 Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) to associate an element with an existing label (instead of duplicating text).
-
-Filter your search results
 
 ```jsx
 {
@@ -1223,25 +1239,22 @@ Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 | Provide contextual help / information (e.g., input rules, field error) |  |  |
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Modal>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal        </Button>
-      </ModalTrigger>
-      <ModalContent>
-        <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
-        <ModalBody>
-          <p id="modal-content">
-            Are you sure you want to delete this item? This action cannot be undone.          </p>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-}
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal    </Button>
+  </ModalTrigger>
+  <ModalContent>
+    <ModalHeader>
+      <span id="modal-title">
+        Delete item      </span>
+    </ModalHeader>
+    <ModalBody>
+      <p id="modal-content">
+        Are you sure you want to delete this item? This action cannot be undone.      </p>
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
 Screen readers won't announce the **Modal** content.
@@ -1318,15 +1331,9 @@ When a section of the UI is loading, users should be informed that the content i
 [aria-busy](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy) set to `"true"` signals that an element is currently in a loading state. Once loading is complete, `aria-busy` should be set to `"false"`.
 
 ```jsx
-{
-  globals: {
-    imports: 'import { Skeleton } from \'@ovhcloud/ods-react\';'
-  },
-  tags: ['!dev'],
-  render: ({}) => <div>
-      <Skeleton />
-    </div>
-}
+<div>
+  <Skeleton />
+</div>
 ```
 
 Screen readers will give no indication that the content is loading. The screen reader may start reading the page without knowing that this section is waiting to be updated.
@@ -2852,6 +2859,26 @@ To check how to start with this new version, please follow the  documentation.
 ## What's new ?
 
 ---
+
+## v19.6.1
+
+---
+
+### Feature updates:
+
+**Menu**
+
+-   handle disabled state on MenuItem.
+
+### Bug fixes:
+
+**Combobox**
+
+-   Hide caret button from screen readers.
+
+**FileUpload**
+
+-   Update file item size color to a valid contrasted one.
 
 ## v19.6.0
 

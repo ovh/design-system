@@ -345,31 +345,34 @@ React Components
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { PhoneNumber, PhoneNumberControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <PhoneNumber>
-      <PhoneNumberControl />
-    </PhoneNumber>
-}
+<PhoneNumber>
+  <PhoneNumberControl />
+</PhoneNumber>
 ```
 
 ### Disabled
 
-AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigua & BarbudaArgentinaArmeniaArubaAustraliaAustriaAzerbaijanBahamasBahrainBangladeshBarbadosBelarusBelgiumBelizeBeninBermudaBhutanBoliviaBosnia & HerzegovinaBotswanaBrazilBritish Indian Ocean TerritoryBritish Virgin IslandsBruneiBulgariaBurkina FasoBurundiCambodiaCameroonCanadaCape VerdeCaribbean NetherlandsCayman IslandsCentral African RepublicChadChileChinaChristmas IslandCocos (Keeling) IslandsColombiaComorosCongo - BrazzavilleCongo - KinshasaCook IslandsCosta RicaCôte d’IvoireCroatiaCubaCuraçaoCyprusCzechiaDenmarkDjiboutiDominicaDominican RepublicEcuadorEgyptEl SalvadorEquatorial GuineaEritreaEstoniaEswatiniEthiopiaFalkland Islands (Islas Malvinas)Faroe IslandsFijiFinlandFranceFrench GuianaFrench PolynesiaGabonGambiaGeorgiaGermanyGhanaGibraltarGreeceGreenlandGrenadaGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHong KongHungaryIcelandIndiaIndonesiaIranIraqIrelandIsle of ManIsraelItalyJamaicaJapanJerseyJordanKazakhstanKenyaKiribatiKuwaitKyrgyzstanLaosLatviaLebanonLesothoLiberiaLibyaLiechtensteinLithuaniaLuxembourgMacaoMadagascarMalawiMalaysiaMaldivesMaliMaltaMarshall IslandsMartiniqueMauritaniaMauritiusMayotteMexicoMicronesiaMoldovaMonacoMongoliaMontenegroMontserratMoroccoMozambiqueMyanmar (Burma)NamibiaNauruNepalNetherlandsNew CaledoniaNew ZealandNicaraguaNigerNigeriaNiueNorfolk IslandNorth KoreaNorth MacedoniaNorthern Mariana IslandsNorwayOmanPakistanPalauPalestinePanamaPapua New GuineaParaguayPeruPhilippinesPolandPortugalPuerto RicoQatarRéunionRomaniaRussiaRwandaSamoaSan MarinoSão Tomé & PríncipeSaudi ArabiaSenegalSerbiaSeychellesSierra LeoneSingaporeSint MaartenSlovakiaSloveniaSolomon IslandsSomaliaSouth AfricaSouth KoreaSouth SudanSpainSri LankaSt. BarthélemySt. HelenaSt. Kitts & NevisSt. LuciaSt. MartinSt. Pierre & MiquelonSt. Vincent & GrenadinesSudanSurinameSvalbard & Jan MayenSwedenSwitzerlandSyriaTaiwanTajikistanTanzaniaThailandTimor-LesteTogoTokelauTongaTrinidad & TobagoTunisiaTürkiyeTurkmenistanTurks & Caicos IslandsTuvaluU.S. Virgin IslandsUgandaUkraineUnited Arab EmiratesUnited KingdomUnited StatesUruguayUzbekistanVanuatuVatican CityVenezuelaVietnamWallis & FutunaWestern SaharaYemenZambiaZimbabwe
-
 ```jsx
-<>
-  <PhoneNumber disabled>
-    <PhoneNumberControl />
-  </PhoneNumber>
-  <PhoneNumber disabled>
-    <PhoneNumberCountryList />
-    <PhoneNumberControl />
-  </PhoneNumber>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <PhoneNumber disabled>
+        <PhoneNumberControl />
+      </PhoneNumber>
+      <PhoneNumber disabled>
+        <PhoneNumberCountryList />
+        <PhoneNumberControl />
+      </PhoneNumber>
+    </>
+}
 ```
 
 ### Readonly
@@ -398,6 +401,8 @@ AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigu
 ```
 
 ### Clearable
+
+AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigua & BarbudaArgentinaArmeniaArubaAustraliaAustriaAzerbaijanBahamasBahrainBangladeshBarbadosBelarusBelgiumBelizeBeninBermudaBhutanBoliviaBosnia & HerzegovinaBotswanaBrazilBritish Indian Ocean TerritoryBritish Virgin IslandsBruneiBulgariaBurkina FasoBurundiCambodiaCameroonCanadaCape VerdeCaribbean NetherlandsCayman IslandsCentral African RepublicChadChileChinaChristmas IslandCocos (Keeling) IslandsColombiaComorosCongo - BrazzavilleCongo - KinshasaCook IslandsCosta RicaCôte d’IvoireCroatiaCubaCuraçaoCyprusCzechiaDenmarkDjiboutiDominicaDominican RepublicEcuadorEgyptEl SalvadorEquatorial GuineaEritreaEstoniaEswatiniEthiopiaFalkland Islands (Islas Malvinas)Faroe IslandsFijiFinlandFranceFrench GuianaFrench PolynesiaGabonGambiaGeorgiaGermanyGhanaGibraltarGreeceGreenlandGrenadaGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHong KongHungaryIcelandIndiaIndonesiaIranIraqIrelandIsle of ManIsraelItalyJamaicaJapanJerseyJordanKazakhstanKenyaKiribatiKuwaitKyrgyzstanLaosLatviaLebanonLesothoLiberiaLibyaLiechtensteinLithuaniaLuxembourgMacaoMadagascarMalawiMalaysiaMaldivesMaliMaltaMarshall IslandsMartiniqueMauritaniaMauritiusMayotteMexicoMicronesiaMoldovaMonacoMongoliaMontenegroMontserratMoroccoMozambiqueMyanmar (Burma)NamibiaNauruNepalNetherlandsNew CaledoniaNew ZealandNicaraguaNigerNigeriaNiueNorfolk IslandNorth KoreaNorth MacedoniaNorthern Mariana IslandsNorwayOmanPakistanPalauPalestinePanamaPapua New GuineaParaguayPeruPhilippinesPolandPortugalPuerto RicoQatarRéunionRomaniaRussiaRwandaSamoaSan MarinoSão Tomé & PríncipeSaudi ArabiaSenegalSerbiaSeychellesSierra LeoneSingaporeSint MaartenSlovakiaSloveniaSolomon IslandsSomaliaSouth AfricaSouth KoreaSouth SudanSpainSri LankaSt. BarthélemySt. HelenaSt. Kitts & NevisSt. LuciaSt. MartinSt. Pierre & MiquelonSt. Vincent & GrenadinesSudanSurinameSvalbard & Jan MayenSwedenSwitzerlandSyriaTaiwanTajikistanTanzaniaThailandTimor-LesteTogoTokelauTongaTrinidad & TobagoTunisiaTürkiyeTurkmenistanTurks & Caicos IslandsTuvaluU.S. Virgin IslandsUgandaUkraineUnited Arab EmiratesUnited KingdomUnited StatesUruguayUzbekistanVanuatuVatican CityVenezuelaVietnamWallis & FutunaWestern SaharaYemenZambiaZimbabwe
 
 ```jsx
 {
@@ -496,29 +501,27 @@ Subset of countries
 FranceGermanyItalyUnited Kingdom
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'column',
-    gap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <span>All countries</span>
-      <PhoneNumber>
-        <PhoneNumberCountryList />
-        <PhoneNumberControl />
-      </PhoneNumber>
-      <span>Subset of countries</span>
-      <PhoneNumber countries={['de', 'fr', 'gb', 'it']}>
-        <PhoneNumberCountryList />
-        <PhoneNumberControl clearable />
-      </PhoneNumber>
-    </>
-}
+<>
+  <span>
+    All countries  </span>
+  <PhoneNumber>
+    <PhoneNumberCountryList />
+    <PhoneNumberControl />
+  </PhoneNumber>
+  <span>
+    Subset of countries  </span>
+  <PhoneNumber
+    countries={[
+      'de',
+      'fr',
+      'gb',
+      'it'
+    ]}
+  >
+    <PhoneNumberCountryList />
+    <PhoneNumberControl clearable />
+  </PhoneNumber>
+</>
 ```
 
 ### Form field

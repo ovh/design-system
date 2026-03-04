@@ -134,20 +134,6 @@ React Components
 
 ### Types
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
 ```jsx
 {
   decorators: [story => <div style={{
@@ -187,19 +173,27 @@ React Components
 ### Datalist
 
 ```jsx
-<>
-  <Input list="ice-cream-flavors" />
-  <datalist id="ice-cream-flavors">
-    <option value="Chocolate" />
-    <option value="Coconut" />
-    <option value="Mint" />
-    <option value="Strawberry" />
-    <option value="Vanilla" />
-  </datalist>
-</>
+{
+  globals: {
+    imports: `import { Input } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Input list="ice-cream-flavors" />
+      <datalist id="ice-cream-flavors">
+        <option value="Chocolate"></option>
+        <option value="Coconut"></option>
+        <option value="Mint"></option>
+        <option value="Strawberry"></option>
+        <option value="Vanilla"></option>
+      </datalist>
+    </>
+}
 ```
 
 ### Form field
+
+Name:
 
 ```jsx
 {

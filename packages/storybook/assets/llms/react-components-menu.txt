@@ -52,6 +52,7 @@
 
 | Name | Type | Required | Default | Description |
 |------|------|----------|---------|-------------|
+| `disabled` | `` | No |  | Whether the item is disabled. |
 | `onSelect` | `` | No |  | Callback fired when the selection changes. |
 | `value` | `` | Yes |  | The value of the item. |
 
@@ -181,6 +182,29 @@ import { useState } from 'react';`
       <MenuContent withArrow={arg.withArrow}>
         <MenuItem value="profile">Profile</MenuItem>
         <MenuItem value="settings">Settings</MenuItem>
+      </MenuContent>
+    </Menu>
+}
+```
+
+### Disabled
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Menu>
+      <MenuTrigger asChild>
+        <Button>
+          Open menu
+        </Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem value="profile">Profile</MenuItem>
+        <MenuItem disabled value="settings">Settings</MenuItem>
+        <MenuItem value="logout">Logout</MenuItem>
       </MenuContent>
     </Menu>
 }

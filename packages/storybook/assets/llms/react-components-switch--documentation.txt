@@ -101,36 +101,42 @@ To ensure proper accessibility, **Switch** must be correctly labeled.
 Every **Switch** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) or an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) attribute.
 
 ```jsx
-<Switch aria-label="Select an item">
-  <SwitchItem value="item-1">
-    Item 1  </SwitchItem>
-  <SwitchItem value="item-2">
-    Item 2  </SwitchItem>
-  <SwitchItem value="item-3">
-    Item 3  </SwitchItem>
-</Switch>
+{
+  globals: {
+    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Switch aria-label="Select an item">
+      <SwitchItem value="item-1">Item 1</SwitchItem>
+      <SwitchItem value="item-2">Item 2</SwitchItem>
+      <SwitchItem value="item-3">Item 3</SwitchItem>
+    </Switch>
+}
 ```
 
 Screen readers will announce the label and the option information (text, position, selection state).
 
-Select an item:
-
 ```jsx
-<>
-  <Text
-    id="switch-label"
-    preset="label"
-  >
-    Select an item:  </Text>
-  <Switch aria-labelledby="switch-label">
-    <SwitchItem value="item-1">
-      Item 1    </SwitchItem>
-    <SwitchItem value="item-2">
-      Item 2    </SwitchItem>
-    <SwitchItem value="item-3">
-      Item 3    </SwitchItem>
-  </Switch>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    alignItems: 'start'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Switch, SwitchItem, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Text id="switch-label" preset={TEXT_PRESET.label}>
+        Select an item:      </Text>
+      <Switch aria-labelledby="switch-label">
+        <SwitchItem value="item-1">Item 1</SwitchItem>
+        <SwitchItem value="item-2">Item 2</SwitchItem>
+        <SwitchItem value="item-3">Item 3</SwitchItem>
+      </Switch>
+    </>
+}
 ```
 
 Screen readers will announce the label and the option information (text, position, selection state).

@@ -4,9 +4,6 @@ React Components
 
 _A **Card** is a versatile component designed to act as a container for various types of content, providing structure and context in a visually distinct box._
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
-Interdum et malesuada fames ac ante ipsum primis in faucibus.
-
 ## Overview
 
 ---
@@ -141,6 +138,12 @@ This structure ensures that assistive technologies announce **Cards** as a list,
 ### Alternative approach with ARIA roles
 
 When modifying the HTML structure is not possible, use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [role="listitem"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) to mimic list semantics.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
 
 ```jsx
 {

@@ -100,14 +100,18 @@ To ensure proper accessibility, it must be correctly labeled, and provide live u
 
 Every **Textarea** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
-Description:
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Description:  </FormFieldLabel>
-  <Textarea />
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Description:      </FormFieldLabel>
+      <Textarea />
+    </FormField>
+}
 ```
 
 Screen readers will announce the label and the field.

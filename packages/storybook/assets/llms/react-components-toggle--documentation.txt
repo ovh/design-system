@@ -99,14 +99,18 @@ This component complies with the [Checkbox WAI-ARIA design pattern](https://www.
 
 Every **Toggle** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either a **ToggleLabel** or an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) for context.
 
-Enable dark mode
-
 ```jsx
-<Toggle>
-  <ToggleControl />
-  <ToggleLabel>
-    Enable dark mode  </ToggleLabel>
-</Toggle>
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle>
+      <ToggleControl />
+      <ToggleLabel>
+        Enable dark mode      </ToggleLabel>
+    </Toggle>
+}
 ```
 
 Screen readers will announce a checkbox, its state and the label.
@@ -114,11 +118,17 @@ Screen readers will announce a checkbox, its state and the label.
 Dark mode
 
 ```jsx
-<Toggle aria-label="Enable dark mode">
-  <ToggleControl />
-  <ToggleLabel>
-    Dark mode  </ToggleLabel>
-</Toggle>
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle aria-label="Enable dark mode">
+      <ToggleControl />
+      <ToggleLabel>
+        Dark mode      </ToggleLabel>
+    </Toggle>
+}
 ```
 
 Screen readers will announce a checkbox, its state and the label.

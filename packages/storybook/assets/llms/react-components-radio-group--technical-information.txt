@@ -105,12 +105,6 @@ JavaScript
 
 ### Disabled
 
-HTML
-
-CSS
-
-JavaScript
-
 ```jsx
 {
   globals: {
@@ -141,26 +135,26 @@ CSS
 JavaScript
 
 ```jsx
-{
-  globals: {
-    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <RadioGroup>
-      <Radio value="html">
-        <RadioControl />
-        <RadioLabel>HTML</RadioLabel>
-      </Radio>
-      <Radio disabled value="css">
-        <RadioControl />
-        <RadioLabel>CSS</RadioLabel>
-      </Radio>
-      <Radio value="js">
-        <RadioControl />
-        <RadioLabel>JavaScript</RadioLabel>
-      </Radio>
-    </RadioGroup>
-}
+<RadioGroup>
+  <Radio value="html">
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio
+    disabled
+    value="css"
+  >
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
 ```
 
 ### Invalid
@@ -206,23 +200,26 @@ CSS
 JavaScript
 
 ```jsx
-<RadioGroup orientation="horizontal">
-  <Radio value="html">
-    <RadioControl />
-    <RadioLabel>
-      HTML    </RadioLabel>
-  </Radio>
-  <Radio value="css">
-    <RadioControl />
-    <RadioLabel>
-      CSS    </RadioLabel>
-  </Radio>
-  <Radio value="js">
-    <RadioControl />
-    <RadioLabel>
-      JavaScript    </RadioLabel>
-  </Radio>
-</RadioGroup>
+{
+  globals: {
+    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <RadioGroup orientation="horizontal">
+      <Radio value="html">
+        <RadioControl />
+        <RadioLabel>HTML</RadioLabel>
+      </Radio>
+      <Radio value="css">
+        <RadioControl />
+        <RadioLabel>CSS</RadioLabel>
+      </Radio>
+      <Radio value="js">
+        <RadioControl />
+        <RadioLabel>JavaScript</RadioLabel>
+      </Radio>
+    </RadioGroup>
+}
 ```
 
 ### Form field
@@ -236,27 +233,30 @@ CSS
 JavaScript
 
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Pick a language:  </FormFieldLabel>
-  <RadioGroup>
-    <Radio value="html">
-      <RadioControl />
-      <RadioLabel>
-        HTML      </RadioLabel>
-    </Radio>
-    <Radio value="css">
-      <RadioControl />
-      <RadioLabel>
-        CSS      </RadioLabel>
-    </Radio>
-    <Radio value="js">
-      <RadioControl />
-      <RadioLabel>
-        JavaScript      </RadioLabel>
-    </Radio>
-  </RadioGroup>
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Pick a language:      </FormFieldLabel>
+      <RadioGroup>
+        <Radio value="html">
+          <RadioControl />
+          <RadioLabel>HTML</RadioLabel>
+        </Radio>
+        <Radio value="css">
+          <RadioControl />
+          <RadioLabel>CSS</RadioLabel>
+        </Radio>
+        <Radio value="js">
+          <RadioControl />
+          <RadioLabel>JavaScript</RadioLabel>
+        </Radio>
+      </RadioGroup>
+    </FormField>
+}
 ```
 
 ## Recipes

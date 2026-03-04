@@ -104,13 +104,11 @@ const [page, setPage] = useState(1);
 ### Sibling count
 
 ```jsx
-{
-  globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Pagination defaultPage={5} siblingCount={2} totalItems={500} />
-}
+<Pagination
+  defaultPage={5}
+  siblingCount={2}
+  totalItems={500}
+/>
 ```
 
 ### With labels

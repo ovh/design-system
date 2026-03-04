@@ -6,8 +6,6 @@ React Components
 
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
 ## Anatomy
 
 ---
@@ -49,6 +47,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 ---
 
 ### Default
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 ```jsx
 {
@@ -95,14 +95,9 @@ For actual `<caption>` (used in a table) or `<figcaption>` (image), use the nati
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Text } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Text disabled>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.    </Text>
-}
+<Text disabled>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</Text>
 ```
 
 ### Caption preset in <table>
@@ -141,8 +136,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 ### Caption preset in <figcaption>
 
-My picture title
-
 ```jsx
 {
   globals: {
@@ -163,15 +156,15 @@ My picture title
 
 ### Preset style on a different HTML element
 
-I am a <span> using the heading5 preset style.
-
 ```jsx
-<Text
-  as="span"
-  preset="heading-5"
->
-  {`I am a <span> using the heading5 preset style.`}
-</Text>
+{
+  globals: {
+    imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Text as="span" preset={TEXT_PRESET.heading5}>
+      I am a &lt;span&gt; using the heading5 preset style.    </Text>
+}
 ```
 
 ## Recipes

@@ -497,38 +497,34 @@ type MyData = {
 ### Multiple
 
 ```jsx
-<Combobox
-  items={[
-    {
-      label: 'Dog',
-      value: 'dog'
-    },
-    {
-      label: 'Cat',
-      value: 'cat'
-    },
-    {
-      label: 'Hamster',
-      value: 'hamster'
-    },
-    {
-      label: 'Parrot',
-      value: 'parrot'
-    },
-    {
-      label: 'Spider',
-      value: 'spider'
-    },
-    {
-      label: 'Goldfish',
-      value: 'goldfish'
-    }
-  ]}
-  multiple
->
-  <ComboboxControl />
-  <ComboboxContent />
-</Combobox>
+{
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Combobox multiple items={[{
+    label: 'Dog',
+    value: 'dog'
+  }, {
+    label: 'Cat',
+    value: 'cat'
+  }, {
+    label: 'Hamster',
+    value: 'hamster'
+  }, {
+    label: 'Parrot',
+    value: 'parrot'
+  }, {
+    label: 'Spider',
+    value: 'spider'
+  }, {
+    label: 'Goldfish',
+    value: 'goldfish'
+  }]}>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+}
 ```
 
 ### Form field

@@ -587,34 +587,33 @@ React Components
 ### Default
 
 ```jsx
-<Button>
-  My button
-</Button>
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button>
+      My button    </Button>
+}
 ```
 
 ### Color
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { BUTTON_COLOR, Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Button color={BUTTON_COLOR.critical}>Critical</Button>
-      <Button color={BUTTON_COLOR.information}>Information</Button>
-      <Button color={BUTTON_COLOR.neutral}>Neutral</Button>
-      <Button color={BUTTON_COLOR.primary}>Primary</Button>
-      <Button color={BUTTON_COLOR.success}>Success</Button>
-      <Button color={BUTTON_COLOR.warning}>Warning</Button>
-    </>
-}
+<>
+  <Button color="critical">
+    Critical  </Button>
+  <Button color="information">
+    Information  </Button>
+  <Button color="neutral">
+    Neutral  </Button>
+  <Button color="primary">
+    Primary  </Button>
+  <Button color="success">
+    Success  </Button>
+  <Button color="warning">
+    Warning  </Button>
+</>
 ```
 
 ### Loading

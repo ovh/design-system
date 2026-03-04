@@ -75,17 +75,11 @@ React Components
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Quantity disabled>
-      <QuantityControl>
-        <QuantityInput />
-      </QuantityControl>
-    </Quantity>
-}
+<Quantity disabled>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
 ```
 
 ### Readonly
@@ -136,22 +130,18 @@ React Components
 
 ### Form field
 
+Set a quantity:
+
 ```jsx
-{
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Set a quantity:      </FormFieldLabel>
-      <Quantity>
-        <QuantityControl>
-          <QuantityInput />
-        </QuantityControl>
-      </Quantity>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Set a quantity:  </FormFieldLabel>
+  <Quantity>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+</FormField>
 ```
 
 ## Recipes

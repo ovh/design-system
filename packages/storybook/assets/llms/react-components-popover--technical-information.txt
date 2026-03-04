@@ -144,18 +144,12 @@ const [isOpen, setIsOpen] = useState(false);
 ### Use Trigger Width
 
 ```jsx
-{
-  globals: {
-    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Popover sameWidth>
-      <PopoverTrigger>
-        Show popover that will take this width as reference      </PopoverTrigger>
-      <PopoverContent>
-        The popover content      </PopoverContent>
-    </Popover>
-}
+<Popover sameWidth>
+  <PopoverTrigger>
+    Show popover that will take this width as reference  </PopoverTrigger>
+  <PopoverContent>
+    The popover content  </PopoverContent>
+</Popover>
 ```
 
 ### Grid

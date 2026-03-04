@@ -229,8 +229,6 @@ React Components
 
 ### Form field
 
-Label:
-
 ```jsx
 {
   globals: {

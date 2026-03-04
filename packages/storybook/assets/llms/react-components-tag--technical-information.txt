@@ -237,17 +237,9 @@ React Components
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Tag } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered'
-  },
-  render: ({}) => <Tag>
-      My tag    </Tag>
-}
+<Tag>
+  My tag
+</Tag>
 ```
 
 ### Color

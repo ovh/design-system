@@ -120,8 +120,6 @@ Double click to edit
 
 ### Default
 
-Double click to edit
-
 ```jsx
 const [value, setValue] = useState('Double click to edit');
   const bufferValue = useRef(value);
@@ -139,8 +137,6 @@ const [value, setValue] = useState('Double click to edit');
 
 ### Controlled
 
-Double click to edit
-
 ```jsx
 const [displayValue, setDisplayValue] = useState('Double click to edit');
   const [value, setValue] = useState(displayValue);
@@ -157,8 +153,6 @@ const [displayValue, setDisplayValue] = useState('Double click to edit');
 ```
 
 ### Custom Actions
-
-Double click to edit
 
 ```jsx
 const [value, setValue] = useState('Double click to edit');

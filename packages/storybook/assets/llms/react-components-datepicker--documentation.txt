@@ -178,24 +178,18 @@ Start date:
 Expected format: DD-MM-YYYY
 
 ```jsx
-{
-  globals: {
-    imports: `import { TEXT_PRESET, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldHelper, FormFieldLabel, Text } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Start date:      </FormFieldLabel>
-      <Datepicker>
-        <DatepickerControl placeholder="DD-MM-YYYY" />
-        <DatepickerContent />
-      </Datepicker>
-      <FormFieldHelper>
-        <Text preset={TEXT_PRESET.caption}>
-          Expected format: DD-MM-YYYY        </Text>
-      </FormFieldHelper>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Start date:  </FormFieldLabel>
+  <Datepicker>
+    <DatepickerControl placeholder="DD-MM-YYYY" />
+    <DatepickerContent />
+  </Datepicker>
+  <FormFieldHelper>
+    <Text preset="caption">
+      Expected format: DD-MM-YYYY    </Text>
+  </FormFieldHelper>
+</FormField>
 ```
 
 Screen readers will announce the label, the field, its content and the helper.

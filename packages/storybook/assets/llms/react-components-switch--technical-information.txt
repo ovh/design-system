@@ -111,14 +111,17 @@ Component is now deprecated and will be removed in a future major release. You c
 ### Checked
 
 ```jsx
-<Switch defaultValue="item-1">
-  <SwitchItem value="item-1">
-    Item 1  </SwitchItem>
-  <SwitchItem value="item-2">
-    Item 2  </SwitchItem>
-  <SwitchItem value="item-3">
-    Item 3  </SwitchItem>
-</Switch>
+{
+  globals: {
+    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Switch defaultValue="item-1">
+      <SwitchItem value="item-1">Item 1</SwitchItem>
+      <SwitchItem value="item-2">Item 2</SwitchItem>
+      <SwitchItem value="item-3">Item 3</SwitchItem>
+    </Switch>
+}
 ```
 
 ### Disabled
@@ -137,24 +140,30 @@ Component is now deprecated and will be removed in a future major release. You c
 ### Sizes
 
 ```jsx
-<>
-  <Switch size="sm">
-    <SwitchItem value="item-1">
-      Item 1    </SwitchItem>
-    <SwitchItem value="item-2">
-      Item 2    </SwitchItem>
-    <SwitchItem value="item-3">
-      Item 3    </SwitchItem>
-  </Switch>
-  <Switch size="md">
-    <SwitchItem value="item-1">
-      Item 1    </SwitchItem>
-    <SwitchItem value="item-2">
-      Item 2    </SwitchItem>
-    <SwitchItem value="item-3">
-      Item 3    </SwitchItem>
-  </Switch>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { SWITCH_SIZE, Switch, SwitchItem } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Switch size={SWITCH_SIZE.sm}>
+        <SwitchItem value="item-1">Item 1</SwitchItem>
+        <SwitchItem value="item-2">Item 2</SwitchItem>
+        <SwitchItem value="item-3">Item 3</SwitchItem>
+      </Switch>
+      <Switch size={SWITCH_SIZE.md}>
+        <SwitchItem value="item-1">Item 1</SwitchItem>
+        <SwitchItem value="item-2">Item 2</SwitchItem>
+        <SwitchItem value="item-3">Item 3</SwitchItem>
+      </Switch>
+    </>
+}
 ```
 
 ## Recipes

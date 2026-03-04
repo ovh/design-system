@@ -94,43 +94,29 @@ React Components
 
 ### Disabled
 
+0100
+
+0100
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'column',
-    rowGap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { Range } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Range defaultValue={[20]} disabled />
-      <Range defaultValue={[50, 75]} disabled />
-    </>
-}
+<>
+  <Range
+    defaultValue={[
+      20
+    ]}
+    disabled
+  />
+  <Range
+    defaultValue={[
+      50,
+      75
+    ]}
+    disabled
+  />
+</>
 ```
 
 ### Min / Max
-
-Max 500
-
-0500
-
-0500
-
-Min 25
-
-25100
-
-25100
-
-Max 75 & Min 25
-
-2575
-
-2575
 
 ```jsx
 {
@@ -154,6 +140,10 @@ Max 75 & Min 25
 
 ### Step
 
+0100
+
+0100
+
 ```jsx
 {
   decorators: [story => <div style={{
@@ -173,10 +163,6 @@ Max 75 & Min 25
 ```
 
 ### Ticks
-
-0100
-
-0100
 
 ```jsx
 {
@@ -255,16 +241,23 @@ const [draggingValue, setDraggingValue] = useState<number>();
 
 ### Form field
 
-Range:
-
-0100
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Range:  </FormFieldLabel>
-  <Range />
-</FormField>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    rowGap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Range } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Range:      </FormFieldLabel>
+      <Range />
+    </FormField>
+}
 ```
 
 ## Recipes

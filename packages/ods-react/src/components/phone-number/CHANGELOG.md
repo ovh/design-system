@@ -6,6 +6,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.6.1](https://ovh.github.io/design-system/v19.6.1/?path=/docs/design-system-changelog--page) (2026-03-04)
+[compare](https://github.com/ovh/design-system/compare/v19.6.0...v19.6.1)
+
+**Note:** Version bump only for package @ovhcloud/ods-react-phone-number
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.6.0](https://ovh.github.io/design-system/v19.6.0/?path=/docs/design-system-changelog--page) (2026-02-27)
 [compare](https://github.com/ovh/design-system/compare/v19.5.0...v19.6.0)
 

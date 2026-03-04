@@ -5,34 +5,60 @@
         {
           "description": "New component",
           "label": "Data Table - MVP",
-          "range": [0, 1]
+          "range": [
+            0,
+            1
+          ]
         },
         {
           "description": "New component",
           "label": "Avatar",
-          "range": [0, 0.5]
+          "range": [
+            0,
+            0.4
+          ]
         },
         {
           "description": "New component",
           "label": "Message Bubble",
-          "range": [0, 0.5]
+          "range": [
+            0,
+            0.4
+          ]
         },
         {
           "description": "New component",
           "label": "Prompt Input",
-          "range": [0, 0.5]
+          "range": [
+            0.4,
+            0.8
+          ]
         },
         {
           "description": "New component",
           "label": "Query Filter",
-          "range": [0.5, 1]
+          "range": [
+            0.5,
+            1
+          ]
+        },
+        {
+          "label": "File Thumbnail",
+          "description": "New Component",
+          "range": [
+            0,
+            0.4
+          ]
         }
       ],
       "recipes": [
         {
           "description": "Price update based on quantity",
           "label": "Config Tile - v2",
-          "range": [0, 0.5]
+          "range": [
+            0.6,
+            1
+          ]
         }
       ],
       "others": []
@@ -42,36 +68,62 @@
         {
           "description": "New component",
           "label": "Data Table - v2",
-          "range": [0, 1]
+          "range": [
+            0,
+            1
+          ]
         },
         {
           "description": "New component",
           "label": "Command",
-          "range": [0.2, 0.6]
+          "range": [
+            0.4,
+            0.8
+          ]
         },
         {
           "label": "Progress Tracker",
           "description": "New Component",
-          "range": [0.6, 1]
+          "range": [
+            0.6,
+            1
+          ]
         },
         {
           "label": "Timeline",
           "description": "New Component",
-          "range": [0.6, 1]
+          "range": [
+            0.6,
+            1
+          ]
+        },
+        {
+          "label": "Markdown",
+          "description": "New Component",
+          "range": [
+            0,
+            0.4
+          ]
         }
       ],
       "recipes": [
         {
           "description": "New recipe",
           "label": "Data Toolbar",
-          "range": [0, 0.5]
+          "range": [
+            0,
+            0.5
+          ]
         }
       ],
       "others": [
         {
           "description": "",
           "label": "Time helper",
-          "range": [0, 0.5]
+          "range": [
+            0,
+            0.5
+          ]
         }
       ]
     },
@@ -80,19 +132,28 @@
         {
           "label": "Tags List",
           "description": "New Component",
-          "range": [0, 0.4]
+          "range": [
+            0.6,
+            1
+          ]
         },
         {
           "label": "Code Editor",
           "description": "New Component",
-          "range": [0, 0.4]
+          "range": [
+            0,
+            0.4
+          ]
         }
       ],
       "recipes": [
         {
-          "label": "New Recipes",
-          "description": "Hero, Slider, etc.",
-          "range": [0, 0.4]
+          "label": "New recipes",
+          "description": "",
+          "range": [
+            0,
+            1
+          ]
         }
       ],
       "others": []
@@ -108,7 +169,7 @@
       "value": "n+2"
     },
     {
-      "label": "Release n+3",
+      "label": "Beyond",
       "value": "n+3"
     }
   ],

@@ -85,15 +85,9 @@ Checkbox
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Checkbox, CheckboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Checkbox>
-      <CheckboxControl />
-    </Checkbox>
-}
+<Checkbox>
+  <CheckboxControl />
+</Checkbox>
 ```
 
 ### Disabled
@@ -130,12 +124,12 @@ Indeterminate
 
 ```jsx
 <>
-  <Checkbox checked={false}>
+  <Checkbox>
     <CheckboxControl />
     <CheckboxLabel>
       Unchecked    </CheckboxLabel>
   </Checkbox>
-  <Checkbox checked={true}>
+  <Checkbox checked>
     <CheckboxControl />
     <CheckboxLabel>
       Checked    </CheckboxLabel>

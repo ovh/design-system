@@ -12,7 +12,7 @@ Badge
 
 A **Badge** component labels an item, a keyword or a status. They are non-interactive and used inline, next to the title or text they complete.
 
-<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Badge</td></tr><tr><th scope="row">Also known as</th><td>Chip (previous name), Label</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-22285" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/badge" target="_blank">Github <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-badge--documentation" target="_blank">Previous major version<span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+<table class="_table_4upov_2 _table--md_4upov_54 _table--striped_4upov_152 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Badge</td></tr><tr><th scope="row">Also known as</th><td>Chip (previous name), Label</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=3-22285" target="_blank">Design <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/badge" target="_blank">Github <span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-badge--documentation" target="_blank">Previous major version<span class="_icon_1iyhc_2 _icon--external-link_1iyhc_244" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
 
 ## Usage
 
@@ -165,25 +165,29 @@ When displaying multiple **Badges** together, they should be wrapped within an u
 -   Item 2
 
 ```jsx
-<ul
-  style={{
+{
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ul style={{
     display: 'flex',
     flexFlow: 'row',
     gap: '8px',
-    listStyle: 'none',
     margin: 0,
-    padding: 0
-  }}
->
-  <li>
-    <Badge>
-      Item 1    </Badge>
-  </li>
-  <li>
-    <Badge>
-      Item 2    </Badge>
-  </li>
-</ul>
+    padding: 0,
+    listStyle: 'none'
+  }}>
+      <li>
+        <Badge>
+          Item 1        </Badge>
+      </li>
+      <li>
+        <Badge>
+          Item 2        </Badge>
+      </li>
+    </ul>
+}
 ```
 
 This structure ensures that assistive technologies announce **Badges** as a list, rather than reading them as separate, unrelated announcements. Screen readers will announce the list, the number of items and the **Badges** content.
@@ -192,23 +196,24 @@ This structure ensures that assistive technologies announce **Badges** as a list
 
 When modifying the HTML structure is not possible, use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [role="listitem"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) to mimic list semantics.
 
-Item 1Item 2
-
 ```jsx
-<div
-  role="list"
-  style={{
-    alignItems: 'center',
+{
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <div role="list" style={{
     display: 'flex',
     flexFlow: 'row',
-    gap: '8px'
-  }}
->
-  <Badge role="listitem">
-    Item 1  </Badge>
-  <Badge role="listitem">
-    Item 2  </Badge>
-</div>
+    gap: '8px',
+    alignItems: 'center'
+  }}>
+      <Badge role="listitem">
+        Item 1      </Badge>
+      <Badge role="listitem">
+        Item 2      </Badge>
+    </div>
+}
 ```
 
 This ensures that screen readers recognize the **Badges** as a structured list even without native `<ul>` and `<li>` elements.

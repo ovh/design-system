@@ -105,17 +105,11 @@ React Components
 ### Min
 
 ```jsx
-{
-  globals: {
-    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Quantity min={0}>
-      <QuantityControl>
-        <QuantityInput />
-      </QuantityControl>
-    </Quantity>
-}
+<Quantity min={0}>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
 ```
 
 ### Step

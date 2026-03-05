@@ -134,7 +134,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   <Accordion>
     <AccordionItem value="1">
       <AccordionTrigger>
-        <Text preset="heading-4">Multiple</Text>
+        <Text preset="heading-4">
+          Multiple        </Text>
       </AccordionTrigger>
       <AccordionContent>
         <Text preset="paragraph">
@@ -143,7 +144,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </AccordionItem>
     <AccordionItem value="2">
       <AccordionTrigger>
-        <Text preset="heading-4">Multiple</Text>
+        <Text preset="heading-4">
+          Multiple        </Text>
       </AccordionTrigger>
       <AccordionContent>
         <Text preset="paragraph">
@@ -152,10 +154,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </AccordionItem>
   </Accordion>
   <br />
-  <Accordion multiple={false}>
+  <Accordion>
     <AccordionItem value="3">
       <AccordionTrigger>
-        <Text preset="heading-4">Non-multiple</Text>
+        <Text preset="heading-4">
+          Non-multiple        </Text>
       </AccordionTrigger>
       <AccordionContent>
         <Text preset="paragraph">
@@ -164,7 +167,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </AccordionItem>
     <AccordionItem value="4">
       <AccordionTrigger>
-        <Text preset="heading-4">Non-multiple</Text>
+        <Text preset="heading-4">
+          Non-multiple        </Text>
       </AccordionTrigger>
       <AccordionContent>
         <Text preset="paragraph">
@@ -197,26 +201,23 @@ Lorem ipsum dolor sit amet.
 Lorem ipsum dolor sit amet.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Accordion>
-      <AccordionItem value="0" disabled>
-        <AccordionTrigger>
-          Hello World!        </AccordionTrigger>
-        <AccordionContent>
-          Lorem ipsum dolor sit amet.        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="1">
-        <AccordionTrigger>
-          Hello World!        </AccordionTrigger>
-        <AccordionContent>
-          Lorem ipsum dolor sit amet.        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-}
+<Accordion>
+  <AccordionItem
+    disabled
+    value="0"
+  >
+    <AccordionTrigger>
+      Hello World!    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="1">
+    <AccordionTrigger>
+      Hello World!    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.    </AccordionContent>
+  </AccordionItem>
+</Accordion>
 ```
 
 ### Controlled

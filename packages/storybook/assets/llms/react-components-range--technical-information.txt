@@ -6,8 +6,6 @@ React Components
 
 ---
 
-0100
-
 ## Anatomy
 
 ---
@@ -73,6 +71,10 @@ React Components
 ---
 
 ### Default
+
+0100
+
+0100
 
 ```jsx
 {
@@ -164,25 +166,55 @@ React Components
 
 ### Ticks
 
+0100
+
+0100
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'column',
-    rowGap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { Range } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Range defaultValue={[20]} ticks={[10, 20, 30, 40, 50, 60, 70, 80, 90]} />
-      <Range defaultValue={[50, 75]} ticks={[10, 20, 30, 40, 50, 60, 70, 80, 90]} />
-    </>
-}
+<>
+  <Range
+    defaultValue={[
+      20
+    ]}
+    ticks={[
+      10,
+      20,
+      30,
+      40,
+      50,
+      60,
+      70,
+      80,
+      90
+    ]}
+  />
+  <Range
+    defaultValue={[
+      50,
+      75
+    ]}
+    ticks={[
+      10,
+      20,
+      30,
+      40,
+      50,
+      60,
+      70,
+      80,
+      90
+    ]}
+  />
+</>
 ```
 
 ### Custom Ticks
+
+LowMediumHigh
+
+0100
+
+Very PoorPoorAverageGoodExcellent
 
 ```jsx
 <>
@@ -219,6 +251,11 @@ React Components
 
 This is a controlled component. The final value is only updated when the user releases the mouse button.
 
+Final value:  
+Dragged value:
+
+0100
+
 ```jsx
 const [draggingValue, setDraggingValue] = useState<number>();
   const [value, setValue] = useState<number>();
@@ -241,23 +278,16 @@ const [draggingValue, setDraggingValue] = useState<number>();
 
 ### Form field
 
+Range:
+
+0100
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'column',
-    rowGap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Range } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Range:      </FormFieldLabel>
-      <Range />
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Range:  </FormFieldLabel>
+  <Range />
+</FormField>
 ```
 
 ## Recipes

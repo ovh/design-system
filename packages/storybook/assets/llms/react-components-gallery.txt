@@ -2,6 +2,32 @@ React Components
 
 # Gallery
 
-Drag & drop a file 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+
+Badge
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+---
+
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+[Link](https://www.ovhcloud.com)
+
+0100
+
+DogCatHamsterParrotSpiderGoldfish
+
+Front-end web developer course 2021
+| Person | Most interest in | Age |
+| --- | --- | --- |
+| Chris | HTML tables | 22 |
+| Dennis | Web accessibility | 45 |
+| Sarah | JavaScript frameworks | 29 |
+| Karen | Web performance | 36 |
+
+Checkbox tile
+
+Additional information
 
 UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12

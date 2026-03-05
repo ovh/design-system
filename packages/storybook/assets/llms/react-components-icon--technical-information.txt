@@ -44,7 +44,6 @@ React Components
 -   blog =`"blog"`
 -   book =`"book"`
 -   box =`"box"`
--   brain =`"brain"`
 -   building =`"building"`
 -   cable =`"cable"`
 -   calculator =`"calculator"`
@@ -88,7 +87,6 @@ React Components
 -   creditCard =`"credit-card"`
 -   crown =`"crown"`
 -   dPad =`"d-pad"`
--   diagnostic =`"diagnostic"`
 -   diamondExclamation =`"diamond-exclamation"`
 -   diamondExclamationFull =`"diamond-exclamation-full"`
 -   diamondsFull =`"diamonds-full"`
@@ -136,8 +134,6 @@ React Components
 -   grid =`"grid"`
 -   gridAlt =`"grid-alt"`
 -   hamburgerMenu =`"hamburger-menu"`
--   handshake =`"handshake"`
--   headphones =`"headphones"`
 -   heart =`"heart"`
 -   heartFull =`"heart-full"`
 -   heartHalf =`"heart-half"`
@@ -147,7 +143,6 @@ React Components
 -   history =`"history"`
 -   home =`"home"`
 -   key =`"key"`
--   keyboard =`"keyboard"`
 -   leaf =`"leaf"`
 -   lifeBuoy =`"lifebuoy"`
 -   lightbulb =`"lightbulb"`
@@ -179,7 +174,6 @@ React Components
 -   plus =`"plus"`
 -   printer =`"printer"`
 -   question =`"question"`
--   reddit =`"reddit"`
 -   refresh =`"refresh"`
 -   resize =`"resize"`
 -   robot =`"robot"`
@@ -203,7 +197,6 @@ React Components
 -   shoppingCartXmark =`"shopping-cart-xmark"`
 -   shrink =`"shrink"`
 -   shutdown =`"shutdown"`
--   snowflake =`"snowflake"`
 -   sortAlphaDown =`"sort-alpha-down"`
 -   sortAlphaUp =`"sort-alpha-up"`
 -   sortNumericDown =`"sort-numeric-down"`
@@ -211,16 +204,13 @@ React Components
 -   sparkle =`"sparkle"`
 -   splitHorizontal =`"split-horizontal"`
 -   splitVertical =`"split-vertical"`
--   sslKey =`"ssl-key"`
 -   star =`"star"`
 -   starFull =`"star-full"`
 -   starHalf =`"star-half"`
 -   store =`"store"`
--   suitcase =`"suitcase"`
 -   sun =`"sun"`
 -   sync =`"sync"`
 -   tag =`"tag"`
--   target =`"target"`
 -   thumbsDown =`"thumbs-down"`
 -   thumbsUp =`"thumbs-up"`
 -   timer =`"timer"`
@@ -234,7 +224,6 @@ React Components
 -   undo =`"undo"`
 -   upload =`"upload"`
 -   user =`"user"`
--   userFull =`"user-full"`
 -   vault =`"vault"`
 -   x =`"x"`
 -   xmark =`"xmark"`

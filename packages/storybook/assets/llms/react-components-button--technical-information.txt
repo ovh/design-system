@@ -587,14 +587,9 @@ React Components
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Button>
-      My button    </Button>
-}
+<Button>
+  My button
+</Button>
 ```
 
 ### Color
@@ -619,58 +614,35 @@ React Components
 ### Loading
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Button loading={true}>
-      Loading button    </Button>
-}
+<Button loading>
+  Loading button
+</Button>
 ```
 
 ### Size
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { BUTTON_SIZE, Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Button size={BUTTON_SIZE.md}>MD button</Button>
-      <Button size={BUTTON_SIZE.sm}>SM button</Button>
-      <Button size={BUTTON_SIZE.xs}>XS button</Button>
-    </>
-}
+<>
+  <Button size="md">
+    MD button  </Button>
+  <Button size="sm">
+    SM button  </Button>
+  <Button size="xs">
+    XS button  </Button>
+</>
 ```
 
 ### Variant
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { BUTTON_VARIANT, Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Button variant={BUTTON_VARIANT.default}>Default button</Button>
-      <Button variant={BUTTON_VARIANT.outline}>Outline button</Button>
-      <Button variant={BUTTON_VARIANT.ghost}>Ghost button</Button>
-    </>
-}
+<>
+  <Button variant="default">
+    Default button  </Button>
+  <Button variant="outline">
+    Outline button  </Button>
+  <Button variant="ghost">
+    Ghost button  </Button>
+</>
 ```
 
 ## Recipes

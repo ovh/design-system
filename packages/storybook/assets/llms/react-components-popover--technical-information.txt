@@ -87,37 +87,25 @@ React Components
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Popover>
-      <PopoverTrigger>
-        Show popover      </PopoverTrigger>
-      <PopoverContent>
-        This is the popover content      </PopoverContent>
-    </Popover>
-}
+<Popover>
+  <PopoverTrigger>
+    Show popover  </PopoverTrigger>
+  <PopoverContent>
+    This is the popover content  </PopoverContent>
+</Popover>
 ```
 
 ### Custom Trigger
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Popover>
-      <PopoverTrigger asChild>
-        <Button>
-          Custom Trigger        </Button>
-      </PopoverTrigger>
-      <PopoverContent>
-        This is the popover content      </PopoverContent>
-    </Popover>
-}
+<Popover>
+  <PopoverTrigger asChild>
+    <Button>
+      Custom Trigger    </Button>
+  </PopoverTrigger>
+  <PopoverContent>
+    This is the popover content  </PopoverContent>
+</Popover>
 ```
 
 ### Controlled

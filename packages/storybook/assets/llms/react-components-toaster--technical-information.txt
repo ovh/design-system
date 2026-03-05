@@ -230,51 +230,53 @@ const MyApp = () => (
 ### Position
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, TOASTER_POSITION, Button, Toaster, toast } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Toaster id="top-start" position={TOASTER_POSITION.topStart} />
-      <Toaster id="top" position={TOASTER_POSITION.top} />
-      <Toaster id="top-end" position={TOASTER_POSITION.topEnd} />
-      <Toaster id="bottom-start" position={TOASTER_POSITION.bottomStart} />
-      <Toaster id="bottom" position={TOASTER_POSITION.bottom} />
-      <Toaster id="bottom-end" position={TOASTER_POSITION.bottomEnd} />
-      <div style={{
+<>
+  <Toaster
+    id="top-start"
+    position="top-start"
+  />
+  <Toaster
+    id="top"
+    position="top"
+  />
+  <Toaster
+    id="top-end"
+    position="top-end"
+  />
+  <Toaster
+    id="bottom-start"
+    position="bottom-start"
+  />
+  <Toaster
+    id="bottom"
+    position="bottom"
+  />
+  <Toaster
+    id="bottom-end"
+    position="bottom-end"
+  />
+  <div
+    style={{
       display: 'grid',
+      gap: '20px',
       gridTemplateColumns: 'repeat(3, 1fr)',
-      gridTemplateRows: 'repeat(2, 1fr)',
-      gap: '20px'
-    }}>
-        <Button onClick={() => toast('Top Start', {
-        toasterId: 'top-start'
-      })}>
-          Top Start        </Button>
-        <Button onClick={() => toast('Top', {
-        toasterId: 'top'
-      })}>
-          Top        </Button>
-        <Button onClick={() => toast('Top End', {
-        toasterId: 'top-end'
-      })}>
-          Top End        </Button>
-        <Button onClick={() => toast('Bottom Start', {
-        toasterId: 'bottom-start'
-      })}>
-          Bottom Start        </Button>
-        <Button onClick={() => toast('Bottom', {
-        toasterId: 'bottom'
-      })}>
-          Bottom        </Button>
-        <Button onClick={() => toast('Bottom End', {
-        toasterId: 'bottom-end'
-      })}>
-          Bottom End        </Button>
-      </div>
-    </>
-}
+      gridTemplateRows: 'repeat(2, 1fr)'
+    }}
+  >
+    <Button onClick={function Xs(){}}>
+      Top Start    </Button>
+    <Button onClick={function Xs(){}}>
+      Top    </Button>
+    <Button onClick={function Xs(){}}>
+      Top End    </Button>
+    <Button onClick={function Xs(){}}>
+      Bottom Start    </Button>
+    <Button onClick={function Xs(){}}>
+      Bottom    </Button>
+    <Button onClick={function Xs(){}}>
+      Bottom End    </Button>
+  </div>
+</>
 ```
 
 ### Custom Content

@@ -117,43 +117,58 @@ React Components
 ### Default
 
 ```jsx
-<Datepicker>
-  <DatepickerControl />
-  <DatepickerContent />
-</Datepicker>
-```
-
-### Disabled
-
-```jsx
 {
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'column',
-    gap: '8px'
-  }}>{story()}</div>],
   globals: {
     imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
   },
   tags: ['!dev'],
-  render: ({}) => <>
-      <p>Disabled:</p>
-      <Datepicker disabled>
-        <DatepickerControl />
-        <DatepickerContent />
-      </Datepicker>
-      <p>Disabled Dates:</p>
-      <Datepicker disabledDates={[new Date(Date.now() - 86400000), new Date(), new Date(Date.now() + 86400000)]}>
-        <DatepickerControl />
-        <DatepickerContent />
-      </Datepicker>
-      <p>Disabled Week Days:</p>
-      <Datepicker disabledWeekDays={[0, 3]}>
-        <DatepickerControl />
-        <DatepickerContent />
-      </Datepicker>
-    </>
+  render: ({}) => <Datepicker>
+      <DatepickerControl />
+      <DatepickerContent />
+    </Datepicker>
 }
+```
+
+### Disabled
+
+Disabled:
+
+Disabled Dates:
+
+Disabled Week Days:
+
+```jsx
+<>
+  <p>
+    Disabled:  </p>
+  <Datepicker disabled>
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+  <p>
+    Disabled Dates:  </p>
+  <Datepicker
+    disabledDates={[
+      new Date('2026-03-04T16:04:16.448Z'),
+      new Date('2026-03-05T16:04:16.448Z'),
+      new Date('2026-03-06T16:04:16.448Z')
+    ]}
+  >
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+  <p>
+    Disabled Week Days:  </p>
+  <Datepicker
+    disabledWeekDays={[
+      0,
+      3
+    ]}
+  >
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+</>
 ```
 
 ### Readonly
@@ -185,16 +200,13 @@ React Components
 ### Max / Min
 
 ```jsx
-{
-  globals: {
-    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Datepicker max={new Date(Date.now() + 86400000 * 10)} min={new Date(Date.now() - 86400000 * 10)}>
-      <DatepickerControl />
-      <DatepickerContent />
-    </Datepicker>
-}
+<Datepicker
+  max={new Date("2026-03-15T16:04:16.414Z")}
+  min={new Date("2026-02-23T16:04:16.414Z")}
+>
+  <DatepickerControl />
+  <DatepickerContent />
+</Datepicker>
 ```
 
 ### Max view
@@ -215,16 +227,10 @@ React Components
 ### Min view
 
 ```jsx
-{
-  globals: {
-    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Datepicker minView="month">
-      <DatepickerControl />
-      <DatepickerContent />
-    </Datepicker>
-}
+<Datepicker minView="month">
+  <DatepickerControl />
+  <DatepickerContent />
+</Datepicker>
 ```
 
 ### Form field

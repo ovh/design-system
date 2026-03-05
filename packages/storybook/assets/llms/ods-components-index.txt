@@ -39,12 +39,6 @@
 - [Documentation](https://ovh.github.io/design-system/v19.6.1/llms/react-components-card--documentation.txt)
 - [Technical Information](https://ovh.github.io/design-system/v19.6.1/llms/react-components-card--technical-information.txt)
 
-## Cart
-
-- [Overview](https://ovh.github.io/design-system/v19.6.1/llms/react-components-cart.txt)
-- [Documentation](https://ovh.github.io/design-system/v19.6.1/llms/react-components-cart--documentation.txt)
-- [Technical Information](https://ovh.github.io/design-system/v19.6.1/llms/react-components-cart--technical-information.txt)
-
 ## Checkbox
 
 - [Overview](https://ovh.github.io/design-system/v19.6.1/llms/react-components-checkbox.txt)
@@ -140,12 +134,6 @@
 - [Overview](https://ovh.github.io/design-system/v19.6.1/llms/react-components-medium.txt)
 - [Documentation](https://ovh.github.io/design-system/v19.6.1/llms/react-components-medium--documentation.txt)
 - [Technical Information](https://ovh.github.io/design-system/v19.6.1/llms/react-components-medium--technical-information.txt)
-
-## Menu
-
-- [Overview](https://ovh.github.io/design-system/v19.6.1/llms/react-components-menu.txt)
-- [Documentation](https://ovh.github.io/design-system/v19.6.1/llms/react-components-menu--documentation.txt)
-- [Technical Information](https://ovh.github.io/design-system/v19.6.1/llms/react-components-menu--technical-information.txt)
 
 ## Message
 

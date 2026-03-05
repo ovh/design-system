@@ -154,15 +154,12 @@ const [files, setFiles] = useState<File[]>([]);
 Drag & drop a file 
 
 ```jsx
-{
-  globals: {
-    imports: `import { FileUpload, FileUploadList } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FileUpload disabled variant={FILE_UPLOAD_VARIANT.compact}>
-      <FileUploadList />
-    </FileUpload>
-}
+<FileUpload
+  disabled
+  variant="compact"
+>
+  <FileUploadList />
+</FileUpload>
 ```
 
 ### Custom labels

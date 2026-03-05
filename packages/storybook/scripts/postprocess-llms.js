@@ -209,16 +209,16 @@ function buildSummary(componentsCount, genericCount) {
     '',
     '## Documentation Sets',
     '',
-    `- [Complete documentation](${BASE_URL}/llms-full.txt): The complete OVHcloud Design System documentation including all components, styling, theming, guides, and tools`,
+    `- [Complete documentation](${BASE_URL}/llms/llms-full.txt): The complete OVHcloud Design System documentation including all components, styling, theming, guides, and tools`,
     '',
   ];
 
   if (componentsCount > 0) {
-    lines.push(`- [${COMPONENTS_CATEGORY.title}](${BASE_URL}/${COMPONENTS_CATEGORY.filename}): ${COMPONENTS_CATEGORY.description}`);
+    lines.push(`- [${COMPONENTS_CATEGORY.title}](${BASE_URL}/llms/${COMPONENTS_CATEGORY.filename}): ${COMPONENTS_CATEGORY.description}`);
     lines.push(`- [Components Index](${BASE_URL}/llms/ods-components-index.txt): Individual per-component documentation files for targeted context`);
   }
   if (genericCount > 0) {
-    lines.push(`- [${GENERIC_CATEGORY.title}](${BASE_URL}/${GENERIC_CATEGORY.filename}): ${GENERIC_CATEGORY.description}`);
+    lines.push(`- [${GENERIC_CATEGORY.title}](${BASE_URL}/llms/${GENERIC_CATEGORY.filename}): ${GENERIC_CATEGORY.description}`);
   }
 
   lines.push('');

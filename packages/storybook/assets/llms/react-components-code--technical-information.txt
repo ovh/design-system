@@ -88,6 +88,10 @@ const HighlightedCode = () => (
 );
 ```
 
+```
+console.log('Hello World');
+```
+
 ## Examples
 
 ---

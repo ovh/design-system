@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Table } from '.';
 import style from './dev.module.css';
 
@@ -149,6 +150,45 @@ export const Size = () => (
     </Table>
   </>
 );
+
+export const StickyHeader = () => {
+  const data = useMemo(() => {
+    const dummyData = [];
+
+    for (let i = 0; i < 60; i++) {
+      dummyData.push({
+        age: Math.floor(Math.random() * 100),
+        id: i,
+        name: `dummy-${i}`,
+      });
+    }
+
+    return dummyData;
+  }, []);
+
+  return (
+    <Table variant="striped">
+      <thead>
+        <tr>
+          <th className={ style['sticky-header'] } scope="col">Id</th>
+          <th className={ style['sticky-header'] } scope="col">Name</th>
+          <th className={ style['sticky-header'] } scope="col">Age</th>
+        </tr>
+      </thead>
+      <tbody>
+      {
+        data.map((dummyData) => (
+          <tr>
+            <td>{ dummyData.id }</td>
+            <td>{ dummyData.name }</td>
+            <td>{ dummyData.age }</td>
+          </tr>
+        ))
+      }
+      </tbody>
+    </Table>
+  );
+}
 
 export const Variant = () => (
   <div style={ { display: 'flex', gap: '1rem' } }>

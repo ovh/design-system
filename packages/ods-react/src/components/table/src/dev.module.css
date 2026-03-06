@@ -5,3 +5,8 @@
   overflow: hidden;
   font-family: 'Courier New', monospace;
 }
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+}

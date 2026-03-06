@@ -9,7 +9,8 @@
   --ods-table-head-background-color: var(--ods-color-neutral-050);
 
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
 
   caption {
     padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
@@ -43,10 +44,16 @@
   thead {
     tr {
       th {
-        border: 1px solid var(--ods-table-border-color);
+        border-top: 1px solid var(--ods-table-border-color);
+        border-right: 1px solid var(--ods-table-border-color);
+        border-bottom: 1px solid var(--ods-table-border-color);
         background-color: var(--ods-table-head-background-color);
         color: var(--ods-theme-heading-text-color);
         font-weight: 600;
+
+        &:first-child {
+          border-left: 1px solid var(--ods-table-border-color);
+        }
       }
     }
   }
@@ -55,7 +62,6 @@
     tr {
       th,
       td {
-        border-top: 1px solid var(--ods-table-border-color);
         border-bottom: 1px solid var(--ods-table-border-color);
         background-color: var(--ods-theme-background-color);
         color: var(--ods-theme-text-color);

@@ -1,4 +1,4 @@
-import { BUTTON_SIZE, BUTTON_VARIANT, ICON_NAME, Button, Icon, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';
+import { BUTTON_VARIANT, ICON_NAME, Button, Icon, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';
 import { type API, addons, types } from '@storybook/manager-api';
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
@@ -16,7 +16,6 @@ const themeSelectorAddon = (api: API) => {
     type: types.experimental_SIDEBAR_TOP,
     render: () => {
       const [currentTheme, setCurrentTheme] = useState(localGet<string>(THEME_STORAGE_KEY) || THEME.system)
-      const [isOpen, setIsOpen] = useState(false);
 
       useEffect(() => {
         localSave(THEME_STORAGE_KEY, currentTheme);
@@ -25,51 +24,39 @@ const themeSelectorAddon = (api: API) => {
         });
       }, [currentTheme]);
 
-      function selectTheme(theme: THEME): void {
-        setCurrentTheme(theme);
-        setIsOpen(false);
-      }
-
       return (
-        <Popover
-          onOpenChange={ ({ open }) => setIsOpen(open) }
-          open={ isOpen }>
-          <PopoverTrigger asChild>
+        <Menu>
+          <MenuTrigger asChild>
             <Button
               className={ classNames({ [style['theme-selector__trigger--dark']]: currentTheme !== THEME.light }) }
               variant={ BUTTON_VARIANT.ghost }>
               <Icon name={ ICON_NAME.lightbulb } />
             </Button>
-          </PopoverTrigger>
+          </MenuTrigger>
 
-          <PopoverContent>
-            <div className={ style['theme-selector__content'] }>
-              <Button
-                className={ style['theme-selector__content__option'] }
-                onClick={ () => selectTheme(THEME.light) }
-                size={ BUTTON_SIZE.xs }
-                variant={ BUTTON_VARIANT.ghost }>
-                <Icon name={ ICON_NAME.sun } /> Light theme
-              </Button>
+          <MenuContent>
+            <MenuItem
+              className={ style['theme-selector__content__option'] }
+              onSelect={ () => setCurrentTheme(THEME.light) }
+              value={ THEME.light }>
+              <Icon name={ ICON_NAME.sun } /> Light theme
+            </MenuItem>
 
-              <Button
-                className={ style['theme-selector__content__option'] }
-                onClick={ () => selectTheme(THEME.dark) }
-                size={ BUTTON_SIZE.xs }
-                variant={ BUTTON_VARIANT.ghost }>
-                <Icon name={ ICON_NAME.moon } /> Dark theme
-              </Button>
+            <MenuItem
+              className={ style['theme-selector__content__option'] }
+              onSelect={ () => setCurrentTheme(THEME.dark) }
+              value={ THEME.dark }>
+              <Icon name={ ICON_NAME.moon } /> Dark theme
+            </MenuItem>
 
-              <Button
-                className={ style['theme-selector__content__option'] }
-                onClick={ () => selectTheme(THEME.system) }
-                size={ BUTTON_SIZE.xs }
-                variant={ BUTTON_VARIANT.ghost }>
-                <Icon name={ ICON_NAME.cpu } /> Use system theme
-              </Button>
-            </div>
-          </PopoverContent>
-        </Popover>
+            <MenuItem
+              className={ style['theme-selector__content__option'] }
+              onSelect={ () => setCurrentTheme(THEME.system) }
+              value={ THEME.system }>
+              <Icon name={ ICON_NAME.cpu } /> Use system theme
+            </MenuItem>
+          </MenuContent>
+        </Menu>
       );
     },
   });

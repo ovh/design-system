@@ -1,4 +1,4 @@
-import { BUTTON_COLOR, BUTTON_VARIANT, ICON_NAME, Button, Icon, Link, Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';
+import { BUTTON_COLOR, BUTTON_VARIANT, ICON_NAME, Button, Icon, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';
 import { addons, types, useStorybookState } from '@storybook/manager-api';
 import React from 'react';
 import versions from '../../../assets/ods-versions.json';
@@ -19,30 +19,30 @@ const odsVersionsAddon = () => {
 
       return (
         <div className={ style['ods-versions'] }>
-          <Popover>
-            <PopoverTrigger asChild>
+          <Menu>
+            <MenuTrigger asChild>
               <Button
                 className={ classNames({ [style['ods-versions__trigger--dark']]: theme.base == 'dark' }) }
                 color={ BUTTON_COLOR.primary }
                 variant={ BUTTON_VARIANT.ghost }>
                 { versions[0] } <Icon name={ ICON_NAME.chevronDown } />
               </Button>
-            </PopoverTrigger>
+            </MenuTrigger>
 
-            <PopoverContent className={ style['ods-versions__content'] }>
-                {
-                  (versions || []).map((version, idx) => (
-                    <Link
-                      className={ style['ods-versions__content__link'] }
-                      href={ `${BASE_URL}/v${version}` }
-                      key={ idx }
-                      target="_blank">
-                      { version }
-                    </Link>
-                  ))
-                }
-            </PopoverContent>
-          </Popover>
+            <MenuContent className={ style['ods-versions__content'] }>
+              {
+                (versions || []).map((version, idx) => (
+                  <MenuItem
+                    className={ style['ods-versions__content__option'] }
+                    key={ idx }
+                    onSelect={ () => window.open(`${BASE_URL}/v${version}`, '_blank') }
+                    value={ version }>
+                    { version }
+                  </MenuItem>
+                ))
+              }
+            </MenuContent>
+          </Menu>
         </div>
       );
     }

@@ -1,32 +1,6 @@
-import { BADGE_COLOR, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Badge, Button, CARD_COLOR, Card, Clipboard, ClipboardControl, ClipboardTrigger, Divider, Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, ICON_NAME, Icon, Input, Link, Popover, PopoverContent, PopoverTrigger, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
-import { type JSX, type PropsWithChildren, useRef, useState } from 'react';
+import { BADGE_COLOR, BUTTON_COLOR, BUTTON_SIZE, BUTTON_VARIANT, Badge, Button, CARD_COLOR, Card, Clipboard, ClipboardControl, ClipboardTrigger, Divider, Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput, ICON_NAME, Icon, Input, Link, Menu, MenuContent, MenuItem, MenuTrigger, TEXT_PRESET, Text, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';
+import { type JSX, useRef, useState } from 'react';
 import './index.module.css';
-
-const ActionMenu = ({ children }: PropsWithChildren): JSX.Element => {
-  return (
-    <Popover>
-      <PopoverTrigger
-        aria-haspopup="menu"
-        asChild>
-        <Button
-          size={ BUTTON_SIZE.sm }
-          variant={ BUTTON_VARIANT.ghost }>
-          <Icon name={ ICON_NAME.ellipsisVertical } />
-        </Button>
-      </PopoverTrigger>
-
-      <PopoverContent
-        aria-label="Action menu"
-        withArrow>
-        <div
-          className="flex flex-col items-start"
-          role="menu">
-          { children }
-        </div>
-      </PopoverContent>
-    </Popover>
-  );
-};
 
 const DashboardCard = (): JSX.Element => {
   const [clusterName, setClusterName] = useState('MyCluster');
@@ -164,21 +138,25 @@ const DashboardCard = (): JSX.Element => {
           </Button>
         </div>
 
-        <ActionMenu>
-          <Button
-            role="menuitem"
-            size={ BUTTON_SIZE.sm }
-            variant={ BUTTON_VARIANT.ghost }>
-            Change Deployment Strategy
-          </Button>
+        <Menu>
+          <MenuTrigger asChild>
+            <Button
+              size={ BUTTON_SIZE.sm }
+              variant={ BUTTON_VARIANT.ghost }>
+              <Icon name={ ICON_NAME.ellipsisVertical } />
+            </Button>
+          </MenuTrigger>
 
-          <Button
-            role="menuitem"
-            size={ BUTTON_SIZE.sm }
-            variant={ BUTTON_VARIANT.ghost }>
-            View Cluster Logs
-          </Button>
-        </ActionMenu>
+          <MenuContent withArrow>
+            <MenuItem value="strategy">
+              Change Deployment Strategy
+            </MenuItem>
+
+            <MenuItem value="logs">
+              View Cluster Logs
+            </MenuItem>
+          </MenuContent>
+        </Menu>
       </div>
     </Card>
   );

@@ -8,14 +8,8 @@
   --ods-theme-outline-color: #f0f0f0;
 }
 
-.theme-selector__content {
-  display: flex;
-  flex-flow: column;
-  align-items: start;
-}
-
 .theme-selector__content__option {
-  justify-content: start;
+  display: flex;
   gap: 8px;
-  width: 100%;
+  align-items: center;
 }

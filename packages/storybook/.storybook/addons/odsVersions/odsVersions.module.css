@@ -14,11 +14,13 @@
 
 .ods-versions__content {
   z-index: 1;
-  overflow-y: auto;
   max-height: 300px;
+  overflow-y: auto;
 }
 
-.ods-versions__content__link {
-  display: block;
-  margin: 0 32px;
+.ods-versions__content__option {
+  padding-right: calc(var(--ods-theme-padding-horizontal) * 2);
+  padding-left: calc(var(--ods-theme-padding-horizontal) * 2);
 }
+
+

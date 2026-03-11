@@ -16,6 +16,7 @@ import {
   Drawer, DrawerBody, DrawerContent, DrawerTrigger,
   Editable, EditableActions, EditableDisplay, EditableInput,
   FormField, FormFieldError, FormFieldHelper, FormFieldLabel,
+  FileThumbnail,
   FileUpload, FileUploadItem, FileUploadList,
   Icon,
   Input,
@@ -578,6 +579,20 @@ function App(): ReactElement {
 
             <EditableActions />
           </Editable>
+        </section>
+
+        <section>
+          <h1>File Thumbnail</h1>
+
+          <FileThumbnail file={ new File(['foo'], 'foo.txt', { type: 'text/plain' }) } />
+
+          <FileThumbnail
+            error="Something went wrong"
+            file={ new File(['foo'], 'foo.txt', { type: 'text/plain' }) } />
+
+          <FileThumbnail
+            file={ new File(['foo'], 'foo.txt', { type: 'text/plain' }) }
+            progress={ 50 } />
         </section>
 
         <section>

@@ -14,6 +14,10 @@ export const Default = () => (
   <Divider />
 );
 
+export const Vertical = () => (
+  <Divider orientation="vertical" />
+);
+
 export const Deprecated = () => (
   <>
     <Divider color={ DIVIDER_COLOR.primary } />

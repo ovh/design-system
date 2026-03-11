@@ -1,6 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { DIVIDER_COLOR, DIVIDER_COLORS, DIVIDER_SPACING, DIVIDER_SPACINGS, Divider, type DividerProp } from '../../../../ods-react/src/components/divider/src';
+import {
+  DIVIDER_COLOR, DIVIDER_COLORS, DIVIDER_SPACING, DIVIDER_SPACINGS, DIVIDER_ORIENTATION, DIVIDER_ORIENTATIONS, Divider, type DividerProp,
+} from '../../../../ods-react/src/components/divider/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { orderControls } from '../../../src/helpers/controls';
 
@@ -22,6 +24,14 @@ export const Demo: Story = {
       },
       control: { type: 'select' },
       options: DIVIDER_COLORS,
+    },
+    orientation: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: { summary: 'DIVIDER_ORIENTATION' },
+      },
+      control: { type: 'select' },
+      options: DIVIDER_ORIENTATIONS,
     },
     spacing: {
       table: {
@@ -67,6 +77,19 @@ export const Color: Story = {
     <>
       <Divider color={ DIVIDER_COLOR.neutral } />
       <Divider color={ DIVIDER_COLOR.primary } />
+    </>
+  ),
+};
+
+export const Orientation: Story = {
+  globals: {
+    imports: `import { DIVIDER_ORIENTATION, Divider } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <Divider orientation={ DIVIDER_ORIENTATION.horizontal } />
+      <Divider orientation={ DIVIDER_ORIENTATION.vertical } />
     </>
   ),
 };

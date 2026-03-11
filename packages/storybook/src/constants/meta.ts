@@ -48,6 +48,7 @@ enum REACT_COMPONENTS_TITLE {
   divider = `${SECTION.reactComponents}/Divider`,
   drawer = `${SECTION.reactComponents}/Drawer`,
   editable = `${SECTION.reactComponents}/Editable`,
+  fileThumbnail = `${SECTION.reactComponents}/File Thumbnail`,
   fileUpload = `${SECTION.reactComponents}/File Upload`,
   flag = `${SECTION.reactComponents}/Flag`,
   formField = `${SECTION.reactComponents}/Form Field`,

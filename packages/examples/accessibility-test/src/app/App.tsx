@@ -1,6 +1,7 @@
 import {
   BUTTON_COLOR, BUTTON_VARIANT, CARD_COLOR, DIVIDER_COLOR, DRAWER_POSITION, ICON_NAME, MESSAGE_COLOR, TAG_COLOR, TEXT_PRESET,
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
+  Avatar,
   Badge,
   Breadcrumb, BreadcrumbItem, BreadcrumbLink,
   Button,
@@ -154,6 +155,16 @@ function App(): ReactElement {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+        </section>
+
+        <section>
+          <h1>Avatar</h1>
+
+          <Avatar />
+
+          <Avatar src="https://images.crunchbase.com/image/upload/c_pad,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" />
+
+          <Avatar fallback="CA" />
         </section>
 
         <section>

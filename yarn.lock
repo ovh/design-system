@@ -4728,6 +4728,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-avatar@workspace:packages/ods-react/src/components/avatar":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-avatar@workspace:packages/ods-react/src/components/avatar"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-badge@workspace:packages/ods-react/src/components/badge":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-badge@workspace:packages/ods-react/src/components/badge"

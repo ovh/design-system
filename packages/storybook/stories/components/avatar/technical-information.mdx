@@ -1,0 +1,63 @@
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/avatar/documentation/cssVariable.json';
+import specificationsAvatar from '../../../../ods-react/src/components/avatar/documentation/avatar.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as AvatarStories from './avatar.stories';
+
+<Meta of={ AvatarStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ AvatarStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ AvatarStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/avatar/anatomy-tech.png" />
+
+1. **Avatar**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsAvatar }
+  extraInfo={{
+    'Avatar': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+  }}
+  of={ AvatarStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ AvatarStories.Default } sourceState="shown" />
+
+<Heading label="Initials" level={ 3 } />
+
+<Canvas of={ AvatarStories.Initials } sourceState="shown" />
+
+<Heading label="With Image" level={ 3 } />
+
+<Canvas of={ AvatarStories.WithImage } sourceState="shown" />
+
+<Heading label="With Fallback" level={ 3 } />
+
+<Canvas of={ AvatarStories.WithFallback } sourceState="shown" />
+
+<Heading label="With Icon" level={ 3 } />
+
+<Canvas of={ AvatarStories.WithIcon } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Avatar" />

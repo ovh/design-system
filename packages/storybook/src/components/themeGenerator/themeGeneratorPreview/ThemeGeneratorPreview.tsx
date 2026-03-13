@@ -1,6 +1,7 @@
 import { composeStories } from '@storybook/react';
 import React, { type ComponentType, type ReactElement } from 'react';
 import * as AccordionStories from '../../../../stories/components/accordion/accordion.stories';
+import * as AvatarStories from '../../../../stories/components/avatar/avatar.stories';
 import * as BadgeStories from '../../../../stories/components/badge/badge.stories';
 import * as BreadcrumbStories from '../../../../stories/components/breadcrumb/breadcrumb.stories';
 import * as ButtonStories from '../../../../stories/components/button/button.stories';
@@ -56,6 +57,7 @@ import style from './themeGeneratorPreview.module.css';
 
 const THEME_STORY_MODULES = {
   Accordion: AccordionStories,
+  Avatar: AvatarStories,
   Badge: BadgeStories,
   Breadcrumb: BreadcrumbStories,
   Button: ButtonStories,
@@ -121,6 +123,7 @@ type ThemePreviewItem = {
 
 const THEME_PREVIEW_COMPONENTS: ThemePreviewItem[] = [
   { key: 'Accordion', kind: REACT_COMPONENTS_TITLE.accordion, label: 'Accordion' },
+  { key: 'Avatar', kind: REACT_COMPONENTS_TITLE.avatar, label: 'Avatar' },
   { key: 'Badge', kind: REACT_COMPONENTS_TITLE.badge, label: 'Badge' },
   { key: 'Breadcrumb', kind: REACT_COMPONENTS_TITLE.breadcrumb, label: 'Breadcrumb' },
   { key: 'Button', kind: REACT_COMPONENTS_TITLE.button, label: 'Button' },

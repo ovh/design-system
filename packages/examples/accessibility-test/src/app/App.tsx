@@ -1,6 +1,7 @@
 import {
   BUTTON_COLOR, BUTTON_VARIANT, CARD_COLOR, DIVIDER_COLOR, DRAWER_POSITION, ICON_NAME, MESSAGE_COLOR, TAG_COLOR, TEXT_PRESET,
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
+  Avatar,
   Badge,
   Breadcrumb, BreadcrumbItem, BreadcrumbLink,
   Button,
@@ -104,6 +105,12 @@ function App(): ReactElement {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+        </section>
+
+        <section>
+          <h1>Avatar</h1>
+
+          <Avatar />
         </section>
 
         <section>

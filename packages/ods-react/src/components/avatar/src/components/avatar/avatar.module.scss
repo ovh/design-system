@@ -1,0 +1,25 @@
+@layer ods-atoms {
+  .avatar {
+    --ods-avatar-background-color: var( --ods-color-neutral-100 );
+    --ods-avatar-text-color: var(--ods-theme-text-color);
+    --ods-avatar-border-radius: 50%;
+    --ods-avatar-size: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ods-avatar-border-radius);
+    background-color: var(--ods-avatar-background-color);
+    width: var(--ods-avatar-size);
+    height: var(--ods-avatar-size);
+    overflow: hidden;
+    color: var(--ods-avatar-text-color);
+    font-weight: bold;
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

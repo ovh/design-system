@@ -33,6 +33,7 @@ enum HOME_TITLE {
 
 enum REACT_COMPONENTS_TITLE {
   accordion = `${SECTION.reactComponents}/Accordion`,
+  avatar = `${SECTION.reactComponents}/Avatar`,
   badge = `${SECTION.reactComponents}/Badge`,
   breadcrumb = `${SECTION.reactComponents}/Breadcrumb`,
   button = `${SECTION.reactComponents}/Button`,

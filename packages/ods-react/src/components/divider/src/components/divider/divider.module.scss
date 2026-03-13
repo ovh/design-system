@@ -17,10 +17,20 @@ $spacings: 0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 64;
       background-color: var(--ods-theme-split-background-color);
     }
 
+    &--vertical {
+      width: 1px;
+      height: 100%;
+      min-height: 1rem;
+    }
+
     @each $spacing in $spacings {
       &--#{$spacing} {
-        margin-top: #{calc($spacing / 2)}px;;
-        margin-bottom: #{calc($spacing / 2)}px;;
+        margin-top: #{calc($spacing / 2)}px;
+        margin-bottom: #{calc($spacing / 2)}px;
+      }
+
+      &--vertical#{&}--#{$spacing} {
+        margin: 0 #{calc($spacing / 2)}px;
       }
     }
   }

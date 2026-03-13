@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
 import { type DividerColor } from '../../constants/divider-color';
+import { DIVIDER_ORIENTATION } from '../../constants/divider-orientation';
 import { DIVIDER_SPACING, type DividerSpacing } from '../../constants/divider-spacing';
 import style from './divider.module.scss';
 
@@ -12,6 +13,10 @@ interface DividerProp extends ComponentPropsWithRef<'hr'> {
    */
   color?: DividerColor,
   /**
+   * The orientation of the divider.
+   */
+  orientation?: 'horizontal' | 'vertical',
+  /**
    * The spacing preset to use.
    */
   spacing?: DividerSpacing,
@@ -20,6 +25,7 @@ interface DividerProp extends ComponentPropsWithRef<'hr'> {
 const Divider: FC<DividerProp> = forwardRef(({
   className,
   color,
+  orientation = DIVIDER_ORIENTATION.horizontal,
   spacing = DIVIDER_SPACING._2,
   ...props
 }, ref): JSX.Element => {
@@ -32,6 +38,7 @@ const Divider: FC<DividerProp> = forwardRef(({
       className={ classNames(
         style['divider'],
         style[`divider--${color}`],
+        style[`divider--${orientation}`],
         style[`divider--${spacing}`],
         className,
       )}

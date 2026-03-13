@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/file-thumbnail/documentation/cssVariable.json';
+import specificationsFileThumbnail from '../../../../ods-react/src/components/file-thumbnail/documentation/file-thumbnail.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as FileThumbnailStories from './file-thumbnail.stories';
+
+<Meta of={ FileThumbnailStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ FileThumbnailStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ FileThumbnailStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/file-thumbnail/anatomy-tech.png" />
+
+1. **FileThumbnail**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsFileThumbnail }
+  of={ FileThumbnailStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ FileThumbnailStories.Default } sourceState="shown" />
+
+<Heading label="Progress" level={ 3 } />
+
+<Canvas of={ FileThumbnailStories.Progress } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ FileThumbnailStories.Disabled } sourceState="shown" />
+
+<Heading label="Error" level={ 3 } />
+
+<Canvas of={ FileThumbnailStories.Error } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="FileThumbnail" />

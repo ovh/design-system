@@ -39,6 +39,7 @@ import * as PopoverStories from '../../../../stories/components/popover/popover.
 import * as ProgressBarStories from '../../../../stories/components/progress-bar/progress-bar.stories';
 import * as PromptInputStories from '../../../../stories/components/prompt-input/prompt-input.stories';
 import * as QuantityStories from '../../../../stories/components/quantity/quantity.stories';
+import * as QueryfilterStories from '../../../../stories/components/query-filter/query-filter.stories';
 import * as RadioGroupStories from '../../../../stories/components/radio-group/radio-group.stories';
 import * as RangeStories from '../../../../stories/components/range/range.stories';
 import * as SelectStories from '../../../../stories/components/select/select.stories';
@@ -99,6 +100,7 @@ const THEME_STORY_MODULES = {
   ProgressBar: ProgressBarStories,
   PromptInput: PromptInputStories,
   Quantity: QuantityStories,
+  QueryFilter: QueryfilterStories,
   RadioGroup: RadioGroupStories,
   Range: RangeStories,
   Select: SelectStories,
@@ -169,6 +171,7 @@ const THEME_PREVIEW_COMPONENTS: ThemePreviewItem[] = [
   { key: 'ProgressBar', kind: REACT_COMPONENTS_TITLE.progressBar, label: 'Progress Bar' },
   { key: 'PromptInput', kind: REACT_COMPONENTS_TITLE.promptInput, label: 'Prompt Input' },
   { key: 'Quantity', kind: REACT_COMPONENTS_TITLE.quantity, label: 'Quantity' },
+  { key: 'QueryFilter', kind: REACT_COMPONENTS_TITLE.queryFilter, label: 'QueryFilter' },
   { key: 'RadioGroup', kind: REACT_COMPONENTS_TITLE.radioGroup, label: 'RadioGroup' },
   { key: 'Range', kind: REACT_COMPONENTS_TITLE.range, label: 'Range' },
   { key: 'Select', kind: REACT_COMPONENTS_TITLE.select, label: 'Select' },

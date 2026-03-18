@@ -1,0 +1,24 @@
+@use '../../../../../style/state';
+
+@layer ods-organisms {
+  .query-filter-group {
+    box-sizing: border-box;
+
+    &__label {
+      display: flex;
+      align-items: center;
+      padding: 0 var(--ods-theme-input-padding-horizontal);
+      min-height: var(--ods-theme-input-min-height);
+      color: var(--ods-theme-heading-text-color);
+      font-weight: 600;
+
+      &--disabled {
+        @include state.ods-is-disabled();
+      }
+    }
+
+    &__option {
+      padding: 0 var(--ods-query-filter-group-option-padding-horizontal);
+    }
+  }
+}

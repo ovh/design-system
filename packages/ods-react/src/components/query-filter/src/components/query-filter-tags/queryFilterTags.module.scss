@@ -1,0 +1,10 @@
+@layer ods-organisms {
+  .query-filter-tags {
+    display: flex;
+    flex-direction: row;
+    gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}

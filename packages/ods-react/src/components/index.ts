@@ -48,3 +48,5 @@ export * from './logo/src';
 export * from './editable/src';
 export * from './menu/src';
 export * from './cart/src';
+
+export * from './query-filter/src';

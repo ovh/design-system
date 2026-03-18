@@ -31,6 +31,7 @@ import {
   Popover, PopoverContent, PopoverTrigger,
   ProgressBar,
   Quantity, QuantityControl, QuantityInput,
+  QueryFilter, QueryFilterClear, QueryFilterContent, QueryFilterControl, QueryFilterTags,
   Radio, RadioControl, RadioGroup, RadioLabel,
   Range,
   Select, SelectContent, SelectControl,
@@ -56,6 +57,49 @@ import {
 import { type ReactElement, useState } from 'react';
 import { AccessibilityControl } from './components/accessibilityControl/AccessibilityControl';
 import style from './app.module.scss';
+
+const filterProperty = {
+  label: 'Properties',
+  options: [
+    { label: 'Instance ID', value: 'instance-id' },
+    { label: 'States', value: 'states' },
+  ],
+};
+
+const filterOption = {
+  ['instance-id']: {
+    operator: {
+      label: 'Operators I',
+      options: [
+        { label: 'equals', value: '=' },
+        { label: 'does not equal', value: '!=' },
+      ],
+    },
+    value: {
+      label: 'Instance Values',
+      options: [
+        { label: 'instance 1', value: 'instance-1' },
+        { label: 'instance 2', value: 'instance-2' },
+      ],
+    },
+  },
+  states: {
+    operator: {
+      label: 'Operators S',
+      options: [
+        { label: 'equals', value: '=' },
+        { label: 'does not equal', value: '!=' },
+      ],
+    },
+    value: {
+      label: 'State Values',
+      options: [
+        { label: 'Running', value: 'running' },
+        { label: 'Stopped', value: 'stopped' },
+      ],
+    },
+  }
+};
 
 function App(): ReactElement {
   const [files, setFiles] = useState<File[]>([]);
@@ -994,6 +1038,57 @@ function App(): ReactElement {
                 <QuantityInput />
               </QuantityControl>
             </Quantity>
+          </FormField>
+        </section>
+
+        <section>
+          <h1>Query Filter</h1>
+
+          <FormField>
+            <FormFieldLabel>
+              Define you filters:
+            </FormFieldLabel>
+
+            <QueryFilter
+              filterOption={ filterOption }
+              filterProperty={ filterProperty }>
+              <QueryFilterControl />
+
+              <QueryFilterContent />
+
+              <QueryFilterTags />
+
+              <QueryFilterClear>
+                Clear all
+              </QueryFilterClear>
+            </QueryFilter>
+          </FormField>
+
+          <FormField>
+            <FormFieldLabel>
+              Define you filters:
+            </FormFieldLabel>
+
+            <QueryFilter
+              defaultValue={[
+                ['states', '=', 'running'],
+                ['states', '===', 'running'],
+                [],
+                ['dummy', 'is fooled'],
+                ['very', 'long', 'filter', 'with', 'more', 'than', 'expected', 'values'],
+              ]}
+              filterOption={ filterOption }
+              filterProperty={ filterProperty }>
+              <QueryFilterControl />
+
+              <QueryFilterContent />
+
+              <QueryFilterTags />
+
+              <QueryFilterClear>
+                Clear all
+              </QueryFilterClear>
+            </QueryFilter>
           </FormField>
         </section>
 

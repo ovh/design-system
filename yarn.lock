@@ -4920,6 +4920,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-query-filter@workspace:packages/ods-react/src/components/query-filter":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-query-filter@workspace:packages/ods-react/src/components/query-filter"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-radio-group@workspace:packages/ods-react/src/components/radio-group":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-radio-group@workspace:packages/ods-react/src/components/radio-group"

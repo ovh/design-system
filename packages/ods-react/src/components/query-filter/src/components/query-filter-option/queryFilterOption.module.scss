@@ -1,0 +1,29 @@
+@use '../../../../../style/state';
+
+@layer ods-organisms {
+  .query-filter-option {
+    $option: &;
+
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 var(--ods-theme-input-padding-horizontal);
+    min-height: var(--ods-theme-input-min-height);
+    white-space: break-spaces;
+    color: var(--ods-theme-input-text-color);
+
+    &--disabled {
+      @include state.ods-is-disabled();
+    }
+
+    &--highlighted {
+      background-color: var(--ods-theme-input-option-background-color-hover);
+    }
+
+    &__new-item {
+      color: var(--ods-theme-primary-color);
+      font-weight: 600;
+    }
+  }
+}

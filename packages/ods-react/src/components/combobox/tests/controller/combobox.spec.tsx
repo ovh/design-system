@@ -1,6 +1,5 @@
-import { renderToString } from 'react-dom/server';
 import { type ComboboxItem } from '../../src';
-import { filterItems, findItemByValue, getDefaultInputValue, getDefaultSelection, highlightNode, isAtInputStart, isGroup } from '../../src/controller/combobox';
+import { filterItems, findItemByValue, getDefaultInputValue, getDefaultSelection, isAtInputStart, isGroup } from '../../src/controller/combobox';
 
 describe('Combobox controller', () => {
   const dummyItems: ComboboxItem[] = [
@@ -115,28 +114,6 @@ describe('Combobox controller', () => {
       expect(getDefaultSelection(dummyItems, ['item-1', 'item-3'])).toEqual([{ label: 'item 1', value: 'item-1' }, { label: 'item 3', value: 'item-3' }]);
       expect(getDefaultSelection(dummyItems, ['child-2'])).toEqual([{ label: 'child 2', value: 'child-2' }]);
       expect(getDefaultSelection(dummyItems, ['child-2', 'item-2'])).toEqual([{ label: 'child 2', value: 'child-2' }, { label: 'item 2', value: 'item-2' }]);
-    });
-  });
-
-  describe('highlightNode', () => {
-    it('should only the string if no match', () => {
-      expect(highlightNode('abcdef', 'wxy', ({ part }) => <mark>{ part }</mark>))
-        .toEqual(['abcdef']);
-    });
-
-    it('should return all the highlighted elements given a string', () => {
-      expect(highlightNode('abcdef', 'bc', ({ part }) => <mark>{ part }</mark>))
-        .toEqual(['a', <mark>bc</mark>, 'def']); // eslint-disable-line react/jsx-key
-    });
-
-    it('should the same node if no match', () => {
-      expect(renderToString(highlightNode(<div><span>I am</span><b>bold</b></div>, 'wxy', ({ part }) => <mark>{ part }</mark>)))
-        .toBe('<div><span>I am</span><b>bold</b></div>');
-    });
-
-    it('should return the highlighted node given a node', () => {
-      expect(renderToString(highlightNode(<div><span>I am</span><b>bold</b></div>, 'bo', ({ part }) => <mark>{ part }</mark>)))
-        .toBe('<div><span>I am</span><b><mark>bo</mark>ld</b></div>');
     });
   });
 

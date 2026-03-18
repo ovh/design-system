@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/message-bubble/documentation/cssVariable.json';
+import specificationsMessageBubble from '../../../../ods-react/src/components/message-bubble/documentation/message-bubble.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as MessageBubbleStories from './message-bubble.stories';
+
+<Meta of={ MessageBubbleStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ MessageBubbleStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ MessageBubbleStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/message-bubble/anatomy-tech.png" />
+
+1. **MessageBubble**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsMessageBubble }
+  extraInfo={{
+    'MessageBubble': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+  }}
+  of={ MessageBubbleStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ MessageBubbleStories.Default } sourceState="shown" />
+
+<Heading label="Variant" level={ 3 } />
+
+<Canvas of={ MessageBubbleStories.Variant } sourceState="shown" />
+
+<Heading label="Error" level={ 3 } />
+
+<Canvas of={ MessageBubbleStories.Error } sourceState="shown" />
+
+<Heading label="Typing" level={ 3 } />
+
+<Canvas of={ MessageBubbleStories.Typing } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="MessageBubble" />

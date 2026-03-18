@@ -27,6 +27,7 @@ import * as LogoStories from '../../../../stories/components/logo/logo.stories';
 import * as MediumStories from '../../../../stories/components/medium/medium.stories';
 import * as MenuStories from '../../../../stories/components/menu/menu.stories';
 import * as MessageStories from '../../../../stories/components/message/message.stories';
+import * as MessageBubbleStories from '../../../../stories/components/message-bubble/message-bubble.stories';
 import * as MeterStories from '../../../../stories/components/meter/meter.stories';
 import * as ModalStories from '../../../../stories/components/modal/modal.stories';
 import * as PaginationStories from '../../../../stories/components/pagination/pagination.stories';
@@ -83,6 +84,7 @@ const THEME_STORY_MODULES = {
   Medium: MediumStories,
   Menu: MenuStories,
   Message: MessageStories,
+  MessageBubble: MessageBubbleStories,
   Meter: MeterStories,
   Modal: ModalStories,
   Pagination: PaginationStories,
@@ -149,6 +151,7 @@ const THEME_PREVIEW_COMPONENTS: ThemePreviewItem[] = [
   { key: 'Medium', kind: REACT_COMPONENTS_TITLE.medium, label: 'Medium' },
   { key: 'Menu', kind: REACT_COMPONENTS_TITLE.menu, label: 'Menu' },
   { key: 'Message', kind: REACT_COMPONENTS_TITLE.message, label: 'Message' },
+  { key: 'MessageBubble', kind: REACT_COMPONENTS_TITLE.messageBubble, label: 'Message Bubble' },
   { key: 'Meter', kind: REACT_COMPONENTS_TITLE.meter, label: 'Meter' },
   { key: 'Modal', kind: REACT_COMPONENTS_TITLE.modal, label: 'Modal' },
   { key: 'Pagination', kind: REACT_COMPONENTS_TITLE.pagination, label: 'Pagination' },

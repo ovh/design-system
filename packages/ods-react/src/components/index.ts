@@ -50,3 +50,5 @@ export * from './menu/src';
 export * from './cart/src';
 export * from './file-thumbnail/src';
 export * from './data-table/src';
+
+export * from './message-bubble/src';

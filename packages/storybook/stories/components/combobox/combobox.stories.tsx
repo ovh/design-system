@@ -15,8 +15,7 @@ import { excludeFromDemoControls, orderControls } from '../../../src/helpers/con
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<ComboboxProp>;
-type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {
-};
+type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {};
 
 const meta: Meta<ComboboxProp> = {
   argTypes: excludeFromDemoControls(['customFilter', 'customOptionRenderer', 'defaultOpen', 'defaultValue', 'i18n', 'items', 'locale', 'name', 'onInputValueChange', 'onOpenChange', 'onValueChange', 'open', 'overlayConfig', 'required', 'value']),
@@ -39,7 +38,6 @@ export const Demo: StoryObj = {
         { label: 'Goldfish', value: 'goldfish' },
       ]}
       allowCustomValue={ arg.allowCustomValue }
-      defaultValue={ arg.defaultValue }
       disabled={ arg.disabled }
       highlightResults={ arg.highlightResults }
       invalid={ arg.invalid }
@@ -47,7 +45,11 @@ export const Demo: StoryObj = {
       newElementLabel={ arg.newElementLabel }
       noResultLabel={ arg.noResultLabel }
       readOnly={ arg.readOnly }>
-      <ComboboxControl clearable={ arg.clearable } placeholder={ arg.placeholder } loading={ arg.loading } />
+      <ComboboxControl
+        clearable={ arg.clearable }
+        loading={ arg.loading }
+        placeholder={ arg.placeholder } />
+
       <ComboboxContent />
     </Combobox>
   ),
@@ -64,12 +66,6 @@ export const Demo: StoryObj = {
         type: { summary: 'boolean' },
       },
       control: 'boolean',
-    },
-    defaultValue: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
     },
     disabled: {
       table: {

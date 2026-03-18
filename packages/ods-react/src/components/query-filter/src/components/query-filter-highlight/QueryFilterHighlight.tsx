@@ -1,14 +1,14 @@
 import { type FC, type JSX, type ReactNode } from 'react';
 import { highlightNode } from '../../../../../utils/element';
-import style from './comboboxHighlight.module.scss';
+import style from './queryFilterHighlight.module.scss';
 
-interface ComboboxHighlightProp {
+interface QueryFilterHighlightProp {
   children: ReactNode,
   highlight?: boolean,
   inputValue: string,
 }
 
-const ComboboxHighlight: FC<ComboboxHighlightProp> = ({
+const QueryFilterHighlight: FC<QueryFilterHighlightProp> = ({
   children,
   highlight,
   inputValue,
@@ -22,7 +22,7 @@ const ComboboxHighlight: FC<ComboboxHighlightProp> = ({
       {
         highlightNode(children, inputValue.toLowerCase(), ({ key, part }) => (
           <span
-            className={ style[ 'combobox-highlight' ] }
+            className={ style[ 'query-filter-highlight' ] }
             key={ key }>
             { part }
           </span>
@@ -33,6 +33,6 @@ const ComboboxHighlight: FC<ComboboxHighlightProp> = ({
 };
 
 export {
-  ComboboxHighlight,
-  type ComboboxHighlightProp,
+  QueryFilterHighlight,
+  type QueryFilterHighlightProp,
 };

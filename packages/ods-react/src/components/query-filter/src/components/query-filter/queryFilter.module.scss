@@ -1,0 +1,8 @@
+@layer ods-organisms {
+  .query-filter {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--ods-theme-row-gap);
+    align-items: start;
+  }
+}

@@ -1,4 +1,6 @@
-import { Children, type ReactElement, type ReactNode, isValidElement } from 'react';
+import { Children, type JSX, type ReactElement, type ReactNode, cloneElement, isValidElement } from 'react';
+
+type MarkWrapper = ({ key, part }: { key: string | number, part: string }) => JSX.Element;
 
 function elementParentHasAttribute(element: HTMLElement | null, attribute: string, values?: string[]): boolean {
   if (!element || !element.parentElement || element.parentElement.tagName === 'BODY') {
@@ -55,8 +57,39 @@ function hasChildren(element: ReactNode): boolean {
   return isValidElement(element) && !!element.props.children;
 }
 
+function highlightNode(node: ReactNode | string, searchText: string, markWrapper: MarkWrapper): ReactNode {
+  if (typeof node === 'string') {
+    return highlightText(node, searchText, markWrapper);
+  }
+
+  if (isValidElement(node)) {
+    const children = Children.map(node.props.children, (n) => highlightNode(n, searchText, markWrapper));
+    return cloneElement(node, node.props, children);
+  }
+
+  return node;
+}
+
+function highlightText(text: string, searchText: string, markWrapper: MarkWrapper): (JSX.Element | string)[] {
+  const parts = splitTextBySearchTerm(text, searchText);
+
+  return parts.map((part, idx) =>
+    part.toLowerCase() === searchText ? markWrapper({ key: idx, part }) : part);
+}
+
+function splitTextBySearchTerm(text: string, searchTerm: string): string[] {
+  if (!text || !searchTerm) {
+    return [text];
+  }
+
+  const escapedValue = searchTerm.toLowerCase().replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+  const regex = new RegExp(`(${escapedValue})`, 'gi');
+  return text.split(regex);
+}
+
 export {
   elementParentHasAttribute,
   getElementText,
   getValidChildren,
+  highlightNode,
 };

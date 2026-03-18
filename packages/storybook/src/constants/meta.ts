@@ -71,6 +71,7 @@ enum REACT_COMPONENTS_TITLE {
   progressBar = `${SECTION.reactComponents}/Progress Bar`,
   searchBar = `${SECTION.reactComponents}/Search Bar`,
   quantity = `${SECTION.reactComponents}/Quantity`,
+  queryFilter = `${SECTION.reactComponents}/Query Filter`,
   radioGroup = `${SECTION.reactComponents}/Radio Group`,
   range = `${SECTION.reactComponents}/Range`,
   select = `${SECTION.reactComponents}/Select`,

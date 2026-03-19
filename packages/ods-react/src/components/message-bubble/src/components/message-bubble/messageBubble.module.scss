@@ -4,6 +4,10 @@
     --ods-message-bubble-text-color: var(--ods-theme-text-color);
     --ods-message-bubble-border-radius: calc(var(--ods-theme-border-radius) * 2);
     --ods-message-bubble-padding: calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-horizontal) * 2);
+    --ods-message-bubble-human-background-color: var(--ods-color-neutral-050);
+    --ods-message-bubble-ai-background-color: var(--ods-color-information-025);
+    --ods-message-bubble-error-background-color: var(--ods-color-critical-025);
+    --ods-message-bubble-error-text-color: var(--ods-color-critical-500);
 
     border-radius: var(--ods-message-bubble-border-radius);
     background-color: var(--ods-message-bubble-background-color);
@@ -12,21 +16,21 @@
     color: var(--ods-message-bubble-text-color);
 
     &--human {
-      --ods-message-bubble-background-color: var(--ods-color-neutral-050);
+      --ods-message-bubble-background-color: var(--ods-message-bubble-human-background-color);
     }
 
     &--ai {
-      --ods-message-bubble-background-color: var(--ods-color-information-025);
+      --ods-message-bubble-background-color: var(--ods-message-bubble-ai-background-color);
     }
 
     &--error {
-      --ods-message-bubble-background-color: var(--ods-color-critical-025);
-      --ods-message-bubble-text-color: var(--ods-color-critical-500);
+      --ods-message-bubble-background-color: var(--ods-message-bubble-error-background-color);
+      --ods-message-bubble-text-color: var(--ods-message-bubble-error-text-color);
     }
 
     &--typing {
       display: flex;
-      gap: 4px;
+      gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
       align-items: center;
     }
 

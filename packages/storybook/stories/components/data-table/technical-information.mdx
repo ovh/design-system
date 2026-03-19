@@ -25,6 +25,9 @@ import * as DataTableStories from './data-table.stories';
 <Anatomy src="components/data-table/anatomy-tech.png" />
 
 1. **DataTable**
+2. **DataTableHead**
+3. **DataTableBody**
+4. **DataTableEmpty**
 
 <TechnicalSpecification
   cssVariable={ cssVariable }
@@ -205,11 +208,19 @@ Here is an example with a dummy API:
 
 <Canvas of={ DataTableStories.PaginationExample } sourceState="hidden" showSandbox />
 
+<Heading label="Column pinning" level={ 3 } />
+
+The column pinning feature allows some table columns to become sticky either on the left or right side of the table.
+
+The `columnPinning` state takes two arrays (left and right) of column ids that will be set as sticky.
+
+<Canvas of={ DataTableStories.PinnedColumns } sourceState="hidden" showSandbox />
+
 <Heading label="Column visibility" level={ 3 } />
 
 The column visibility feature allows table columns to be hidden or shown dynamically.
 
-The columnVisibility state is a map of column ids to boolean values.
+The `columnVisibility` state is a map of column ids to boolean values.
 A column will be hidden if its id is present in the map and the value is `false`.
 If the column id is not present in the map, or the value is `true`, the column will be shown.
 

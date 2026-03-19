@@ -304,6 +304,87 @@ import { useCallback, useEffect, useMemo, useState } from 'react';`,
   },
 };
 
+export const PinnedColumns: Story = {
+  globals: {
+    imports: `import { DataTable, DataTableBody, DataTableEmpty, DataTableHead } from '@ovhcloud/ods-react';
+import { useMemo } from 'react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    type Person = {
+      firstName: string;
+      lastName: string;
+      age: number;
+      email: string;
+      role: string;
+      uuid: string;
+    }
+
+    const sampleData: Person[] = useMemo(() => [
+      {
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 30,
+        email: 'john.doe@example.com',
+        role: 'Admin',
+        uuid: '5ae49b94-9ceb-4612-a087-4079a812bb0b',
+      },
+      {
+        firstName: 'Jane',
+        lastName: 'Smith',
+        age: 25,
+        email: 'jane.smith@example.com',
+        role: 'User',
+        uuid: 'fb1c391c-bd88-4b96-ba39-8ab2a95d50bd',
+      },
+      {
+        firstName: 'Bob',
+        lastName: 'Johnson',
+        age: 35,
+        email: 'bob.johnson@example.com',
+        role: 'Manager',
+        uuid: 'a83a58a6-a007-47f0-b04b-83989e502171',
+      },
+    ], []);
+
+    const sampleColumns: DataTableColumnDef<Person>[] = useMemo(() => [
+      { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
+      { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
+      { id: 'age', header: 'Age', accessorKey: 'age' },
+      { id: 'email', header: 'Email', accessorKey: 'email' },
+      { id: 'role', header: 'Role', accessorKey: 'role' },
+    ], []);
+
+    const pinningState = useMemo(() => ({
+      left: ['age'],
+      right: ['email'],
+    }), []);
+
+    return (
+      <DataTable
+        columns={ sampleColumns }
+        data={ sampleData }
+        state={{
+          columnPinning: pinningState,
+        }}
+        style={{ width: '1200px' }}>
+        <DataTableHead />
+
+        <DataTableBody />
+
+        <DataTableEmpty>
+          Empty table data
+        </DataTableEmpty>
+      </DataTable>
+    );
+  },
+};
+
 
 export const StateControlled: Story = {
   globals: {

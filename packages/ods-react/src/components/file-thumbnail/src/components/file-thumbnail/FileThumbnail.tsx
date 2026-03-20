@@ -86,10 +86,8 @@ const FileThumbnail: FC<FileThumbnailProp> = forwardRef(({
           ? <img
             alt={ file.name }
             className={ style['file-thumbnail__preview'] }
-            height={ 32 }
             onError={ () => setImageError(true) }
-            src={ preview }
-            width={ 32 } />
+            src={ preview } />
           : <Icon
             className={ classNames(
               style['file-thumbnail__icon'],

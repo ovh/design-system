@@ -1,0 +1,16 @@
+.conversation {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid #ccc;
+  padding: 16px;
+  max-width: 600px;
+}
+
+.conversation :nth-child(odd) {
+  margin-left: auto;
+}
+
+.conversation :nth-child(even) {
+  margin-right: auto;
+}

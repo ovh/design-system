@@ -105,7 +105,7 @@ const TechnicalSpecification = ({ cssVariable, data, extraInfo, of }: Props): JS
                     interfaceObj.props.map((prop, i) => (
                       <li key={ i }>
                         <CodeOrSourceMdx>
-                          { prop.name }: { prop.type }
+                          { prop.name ? `${prop.name}:` : '' } { prop.type }
                         </CodeOrSourceMdx>
                       </li>
                     ))

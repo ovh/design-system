@@ -5,6 +5,7 @@ import { DataTableProvider, type DataTableRootProp } from '../../contexts/useDat
 interface DataTableProp<T> extends DataTableRootProp<T> {}
 
 const DataTable = forwardRef(<T,>({
+  children,
   className,
   columns,
   data,
@@ -15,6 +16,7 @@ const DataTable = forwardRef(<T,>({
   loading,
   manualSorting,
   onColumnPinningChange,
+  onColumnVisibilityChange,
   onRowSelectionChange,
   onSortingChange,
   state,
@@ -32,6 +34,7 @@ const DataTable = forwardRef(<T,>({
       loading={ loading }
       manualSorting={ manualSorting }
       onColumnPinningChange={ onColumnPinningChange }
+      onColumnVisibilityChange={ onColumnVisibilityChange }
       onRowSelectionChange={ onRowSelectionChange }
       onSortingChange={ onSortingChange }
       state={ state }
@@ -41,6 +44,7 @@ const DataTable = forwardRef(<T,>({
         data-ods="data-table"
         ref={ ref }
         { ...props }>
+        { children }
       </Table>
     </DataTableProvider>
   );

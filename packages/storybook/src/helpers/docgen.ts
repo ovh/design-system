@@ -23,7 +23,7 @@ type Component = {
   props: ComponentProp[];
 }
 
-const tagRegExp = /(@[\w-]+)=?([\w${} ']+)?/gi;
+const tagRegExp = /(@[\w-]+)=?([^\s<]+<[^>]*>|[\w${} ']+)?/gi;
 
 function extractTags(str: string): Map<string, string | undefined> {
   const tagMatches = [...str.matchAll(tagRegExp)];

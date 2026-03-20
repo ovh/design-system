@@ -59,6 +59,7 @@ enum REACT_COMPONENTS_TITLE {
   kbd = `${SECTION.reactComponents}/Kbd`,
   link = `${SECTION.reactComponents}/Link`,
   logo = `${SECTION.reactComponents}/Logo`,
+  markdown = `${SECTION.reactComponents}/Markdown`,
   medium = `${SECTION.reactComponents}/Medium`,
   menu = `${SECTION.reactComponents}/Menu`,
   message = `${SECTION.reactComponents}/Message`,

@@ -110,6 +110,7 @@ export const Preset: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <>
+      <Text preset={ TEXT_PRESET.blockquote }>Blockquote</Text>
       <Text preset={ TEXT_PRESET.caption }>Caption</Text><br />
       <Text preset={ TEXT_PRESET.code }>Code</Text><br />
       <Text preset={ TEXT_PRESET.label }>Label</Text>
@@ -180,6 +181,7 @@ export const ThemeGenerator: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <div>
+      <Text preset={ TEXT_PRESET.blockquote }>Blockquote</Text>
       <Text preset={ TEXT_PRESET.caption }>Caption</Text><br />
       <Text preset={ TEXT_PRESET.code }>Code</Text><br />
       <Text preset={ TEXT_PRESET.label }>Label</Text>

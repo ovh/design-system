@@ -2,6 +2,8 @@ import { TEXT_PRESET, type TextPreset } from '../constants/text-preset';
 
 function getTag(preset: TextPreset): string {
   switch (preset) {
+    case TEXT_PRESET.blockquote:
+      return 'blockquote';
     case TEXT_PRESET.caption:
       return 'span';
     case TEXT_PRESET.code:

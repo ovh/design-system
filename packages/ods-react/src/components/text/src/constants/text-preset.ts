@@ -1,4 +1,5 @@
 enum TEXT_PRESET {
+  blockquote = 'blockquote',
   caption = 'caption',
   code = 'code',
   heading1 = 'heading-1',

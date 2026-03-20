@@ -48,11 +48,9 @@ export * from './logo/src';
 export * from './editable/src';
 export * from './menu/src';
 export * from './cart/src';
-
 export * from './file-thumbnail/src';
 export * from './avatar/src';
-
 export * from './data-table/src';
-
 export * from './message-bubble/src';
 export * from './prompt-input/src';
+export * from './markdown/src';

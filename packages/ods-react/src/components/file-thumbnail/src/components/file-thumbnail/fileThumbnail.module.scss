@@ -1,8 +1,11 @@
 @use '../../../../../style/font';
+@use '../../../../../style/state';
 
 @layer ods-molecules {
   .file-thumbnail {
     --ods-file-thumbnail-border-color: var(--ods-color-neutral-300);
+    --ods-file-thumbnail-object-fit: contain;
+    --ods-file-thumbnail-preview-size: 32px;
 
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr) max-content;
@@ -12,8 +15,7 @@
     padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
 
     &--disabled {
-      background-color: var(--ods-theme-background-color-disabled);
-      color: var(--ods-theme-text-color-disabled);
+      @include state.ods-is-disabled();
     }
 
     &--error {
@@ -23,9 +25,10 @@
     &__preview {
       align-self: center;
       border-radius: calc(var(--ods-theme-border-radius) / 2);
-      aspect-ratio: 1/1;
-      object-fit: contain;
+      object-fit: var(--ods-file-thumbnail-object-fit);
       object-position: center center;
+      width: var(--ods-file-thumbnail-preview-size);
+      height: var(--ods-file-thumbnail-preview-size);
     }
 
     &__icon {

@@ -8,6 +8,10 @@
       color: var(--ods-theme-text-color-disabled);
     }
 
+    &--blockquote {
+      @include text.ods-text-blockquote();
+    }
+
     &--caption {
       @include text.ods-text-caption();
     }

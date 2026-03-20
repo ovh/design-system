@@ -1,5 +1,14 @@
 @use './font';
 
+@mixin ods-text-blockquote() {
+  margin: 0;
+  border-left: solid 2px var(--ods-theme-primary-color);
+  padding-left: calc(var(--ods-theme-padding-horizontal) * 1.5);
+  color: var(--ods-theme-text-color);
+  font-size: font.px-to-rem(16px);
+  font-weight: 400;
+}
+
 @mixin ods-text-caption() {
   color: var(--ods-theme-text-color);
   font-size: font.px-to-rem(12px);

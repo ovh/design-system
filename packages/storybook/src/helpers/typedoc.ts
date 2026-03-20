@@ -72,7 +72,7 @@ function getComponentTypedoc(data: ProjectReflection): ComponentTypedoc {
         name: member.name,
         value: (member.type as LiteralType)?.value?.toString() || '',
       })),
-  })).filter((fakeEnum) => fakeEnum.members.length);
+  })).filter(({ members }) => !!members.length);
 
   return {
     enums: sortByName(enums.concat(fakeEnums).map((enumDoc) => ({

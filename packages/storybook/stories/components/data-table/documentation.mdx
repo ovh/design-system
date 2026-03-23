@@ -3,8 +3,9 @@ import { Meta } from '@storybook/blocks';
 import * as DataTableStories from './data-table.stories';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
-import { Canvas } from '../../../src/components/canvas/Canvas';
 import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
 import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
 import { TableVsDataTable } from '../../../src/components/tableVsDataTable/TableVsDataTable';
@@ -324,4 +325,8 @@ Row-level actions (such as ellipsis menus) are reachable via keyboard navigation
 
 <Heading label="Accessibility" level={ 2 } />
 
-TODO if relevant
+To ensure the `Data Table` component is fully accessible, it is essential to follow best practices for structuring
+tables with the correct attributes and a global caption to provide users with context.
+Please follow the <ExternalLink href="https://www.w3.org/TR/WCAG20-TECHS/H63">W3C technique</ExternalLink> for integrating them correctly.
+
+We also recommend referring to the <ExternalLink href="https://www.w3.org/WAI/tutorials/tables/">WCAG guidelines</ExternalLink> for building accessible `Data Tables`.

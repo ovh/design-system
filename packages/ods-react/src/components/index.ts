@@ -55,3 +55,4 @@ export * from './avatar/src';
 export * from './data-table/src';
 
 export * from './message-bubble/src';
+export * from './prompt-input/src';

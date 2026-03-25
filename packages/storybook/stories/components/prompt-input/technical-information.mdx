@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/prompt-input/documentation/cssVariable.json';
+import specificationsPromptInput from '../../../../ods-react/src/components/prompt-input/documentation/prompt-input.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as PromptInputStories from './prompt-input.stories';
+
+<Meta of={ PromptInputStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ PromptInputStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ PromptInputStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/prompt-input/anatomy-tech.png" />
+
+1. **PromptInput**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsPromptInput }
+  of={ PromptInputStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ PromptInputStories.Default } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="PromptInput" />

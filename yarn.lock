@@ -4926,6 +4926,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-prompt-input@workspace:packages/ods-react/src/components/prompt-input":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-prompt-input@workspace:packages/ods-react/src/components/prompt-input"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-quantity@workspace:packages/ods-react/src/components/quantity":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-quantity@workspace:packages/ods-react/src/components/quantity"

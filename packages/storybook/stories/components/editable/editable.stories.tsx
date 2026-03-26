@@ -15,7 +15,6 @@ const meta: Meta<EditableProp> = {
   argTypes: excludeFromDemoControls(['defaultEditing', 'editing', 'i18n', 'locale', 'onCancel', 'onEditChange', 'onSubmit']),
   component: Editable,
   subcomponents: { EditableActions, EditableCancelTrigger, EditableDisplay, EditableDisplayEmpty, EditableEditTrigger, EditableInput, EditableSubmitTrigger },
-  tags: ['new'],
   title: 'React Components/Editable',
 };
 

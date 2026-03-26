@@ -12,7 +12,6 @@ type Story = StoryObj<TileProp>;
 const meta: Meta<TileProp> = {
   component: Tile,
   subcomponents: { TileAltContainer },
-  tags: ['new'],
   title: 'React Components/Tile',
 };
 

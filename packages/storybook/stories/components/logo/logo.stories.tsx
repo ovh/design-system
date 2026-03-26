@@ -8,7 +8,6 @@ type Story = StoryObj<LogoProp>;
 
 const meta: Meta<LogoProp> = {
   component: Logo,
-  tags: ['new'],
   title: 'React Components/Logo',
 };
 

@@ -6,6 +6,7 @@ describe('Text controller', () => {
     it('should return the correct tag', () => {
       // @ts-ignore for test purpose
       expect(getTag()).toBe('p');
+      expect(getTag(TEXT_PRESET.blockquote)).toBe('blockquote');
       expect(getTag(TEXT_PRESET.caption)).toBe('span');
       expect(getTag(TEXT_PRESET.code)).toBe('code');
       expect(getTag(TEXT_PRESET.heading1)).toBe('h1');

@@ -1,17 +1,18 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type ComponentPropsWithoutRef, type FC, type JSX, forwardRef } from 'react';
 import { TEXT_PRESET, type TextPreset } from '../../constants/text-preset';
 import { getTag } from '../../controller/text';
 import style from './text.module.scss';
 
-// code, hx, p and span share the same global attribute, only label has a specific one ("for")
-// so we extends this one for now, could be optimized in the future
-interface TextProp extends ComponentPropsWithRef<'label'> {
+type AsTag = keyof JSX.IntrinsicElements;
+
+type TextProp<T extends AsTag = 'label'> = {
   /**
+   * @type=string
    * Pass a HTML tag you may want to use instead of the preset one.
    * Useful for example to apply heading style to a non-heading element.
    * */
-  as?: string,
+  as?: T,
   /**
    * Whether the text is displayed in a disabled context.
    */
@@ -20,22 +21,22 @@ interface TextProp extends ComponentPropsWithRef<'label'> {
    * The text preset to use.
    */
   preset?: TextPreset,
-}
+} & Omit<ComponentPropsWithoutRef<T>, 'as'>;
 
-const Text: FC<TextProp> = forwardRef(({
+type PolymorphicRef<T extends AsTag> = ComponentPropsWithRef<T>['ref'];
+
+const Text = forwardRef(function Inner<T extends AsTag = 'label'>({
   as,
   children,
   className,
   disabled,
   preset = TEXT_PRESET.paragraph,
   ...props
-}, ref): JSX.Element => {
-  const Tag = as || getTag(preset) as keyof JSX.IntrinsicElements;
+}: TextProp<T>, ref: PolymorphicRef<T>) {
+  const Tag = as || getTag(preset);
 
   return (
-    // @ts-ignore TODO
     <Tag
-      // @ts-ignore TODO
       className={ classNames(
         style['text'],
         style[`text--${preset}`],
@@ -48,9 +49,11 @@ const Text: FC<TextProp> = forwardRef(({
       { children }
     </Tag>
   );
-});
+}) as <T extends AsTag = 'label'>(
+  props: TextProp<T> & { ref?: PolymorphicRef<T> },
+) => JSX.Element;
 
-Text.displayName = 'Text';
+(Text as FC).displayName = 'Text';
 
 export {
   Text,

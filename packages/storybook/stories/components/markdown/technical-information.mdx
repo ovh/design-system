@@ -1,0 +1,84 @@
+import { Meta, Source } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/markdown/documentation/cssVariable.json';
+import specificationsMarkdown from '../../../../ods-react/src/components/markdown/documentation/markdown.json';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as MarkdownStories from './markdown.stories';
+
+<Meta of={ MarkdownStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ MarkdownStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ MarkdownStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<Anatomy src="components/markdown/anatomy-tech.png" />
+
+1. **Markdown**
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsMarkdown }
+  of={ MarkdownStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ MarkdownStories.Default } sourceState="shown" />
+
+<Heading label="Custom Component" level={ 3 } />
+
+You can use your own component to render some of the Markdown content.
+
+The `component` attribute is a Map that expects as key any HTML tag that are usually rendered from Markdown (h1, a, img, ...).
+
+Your renderer will be given as props the native attributes you'll normally received from the Markdown (like `href` for a link, `src`, `alt` and `title` for an image, ...).
+
+<Canvas of={ MarkdownStories.CustomComponent } sourceState="shown" />
+
+<Heading label="Code Highlighter" level={ 3 } />
+
+<Source code={`
+import { Code, Markdown } from '@ovhcloud/ods-react';
+import lang from '@shikijs/langs/typescript';
+import theme from '@shikijs/themes/nord';
+
+const HighlightedCode = () => (
+  <Markdown
+    component={{
+      code: ({ children }) => {
+        return (
+          <Code
+            highlighter={{
+              language: lang,
+              theme: theme,
+            }}>
+            { children as string }
+          </Code>
+        );
+      }
+    }}
+    content={\`# Highlighted Code
+\`\`\`
+// print something in the console
+console.log('Hello World!');
+\`\`\`
+\`} />
+);
+`}
+  dark="true"
+  language="typescript" />
+
+<Canvas of={ MarkdownStories.CodeHighlighter } sourceState="none" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Markdown" />

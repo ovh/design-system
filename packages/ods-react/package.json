@@ -44,8 +44,10 @@
     "classnames": "2.5.1",
     "libphonenumber-js": "1.12.8",
     "react-hot-toast": "2.6.0",
+    "react-markdown": "10.1.0",
     "react-shiki": "0.9.0",
-    "react-swipeable": "7.0.2"
+    "react-swipeable": "7.0.2",
+    "remark-gfm": "4.0.1"
   },
   "peerDependencies": {
     "react": ">=18.2.0",

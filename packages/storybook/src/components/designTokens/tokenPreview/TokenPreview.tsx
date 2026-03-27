@@ -75,11 +75,13 @@ const PreviewOutline: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
 
 const PreviewPadding: FC<TokenPreviewProp> = ({ token }): JSX.Element => {
   const horizontal = token.name.includes('horizontal');
+  const vertical = token.name.includes('vertical');
+  const padding = horizontal ? `0 ${token.value}` : vertical ? `${token.value} 0` : token.value;
 
   return (
     <div
       className={ styles['preview-padding'] }
-      style={{ padding: horizontal ? `0 ${token.value}` : `${token.value} 0` }}>
+      style={{ padding }}>
       <div className={ styles['preview-padding__child'] } />
     </div>
   );

@@ -4884,6 +4884,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-message-bubble@workspace:packages/ods-react/src/components/message-bubble":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-message-bubble@workspace:packages/ods-react/src/components/message-bubble"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-message@workspace:packages/ods-react/src/components/message":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-message@workspace:packages/ods-react/src/components/message"

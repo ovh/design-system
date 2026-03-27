@@ -98,6 +98,32 @@ export const Disabled: Story = {
   },
 };
 
+export const Undismissible: Story = {
+  globals: {
+    imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<FileThumbnail
+  dismissible={ false }
+  file={[object File]}
+/>`,
+      },
+    },
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const fakeFile = new File(['foo'], 'undismissible-file.txt', { type: 'text/plain' });
+
+    return (
+      <FileThumbnail
+        dismissible={ false }
+        file={ fakeFile } />
+    );
+  },
+};
+
 export const Error: Story = {
   globals: {
     imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`,

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { FileThumbnail, type FileThumbnailProp } from '../../../../ods-react/src/components/file-thumbnail/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<FileThumbnailProp>;
 
@@ -72,6 +73,11 @@ export const Default: Story = {
   globals: {
     imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`,
   },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   tags: ['!dev'],
   render: ({}) => {
     const fakeFile = new File(['foo'], 'foo.txt', { type: 'text/plain' });
@@ -86,6 +92,11 @@ export const Disabled: Story = {
   globals: {
     imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`,
   },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
   tags: ['!dev'],
   render: ({}) => {
     const fakeFile = new File(['foo'], 'foo.txt', { type: 'text/plain' });
@@ -98,23 +109,18 @@ export const Disabled: Story = {
   },
 };
 
-export const Undismissible: Story = {
+export const NonDismissible: Story = {
   globals: {
     imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`,
   },
   parameters: {
     docs: {
-      source: {
-        code: `<FileThumbnail
-  dismissible={ false }
-  file={[object File]}
-/>`,
-      },
+      source: { ...staticSourceRenderConfig() },
     },
   },
   tags: ['!dev'],
   render: ({}) => {
-    const fakeFile = new File(['foo'], 'undismissible-file.txt', { type: 'text/plain' });
+    const fakeFile = new File(['foo'], 'non-dismissible-file.txt', { type: 'text/plain' });
 
     return (
       <FileThumbnail
@@ -127,6 +133,11 @@ export const Undismissible: Story = {
 export const Error: Story = {
   globals: {
     imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
   },
   tags: ['!dev'],
   render: ({}) => {
@@ -141,10 +152,13 @@ export const Error: Story = {
 };
 
 export const Overview: Story = {
-  tags: ['!dev'],
   parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
     layout: 'centered',
   },
+  tags: ['!dev'],
   render: ({}) => {
     const fakeFile = new File(['foo'], 'foo.txt', { type: 'text/plain' });
 
@@ -157,6 +171,11 @@ export const Overview: Story = {
 export const Progress: Story = {
   globals: {
     imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`,
+  },
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
   },
   tags: ['!dev'],
   render: ({}) => {
@@ -172,6 +191,9 @@ export const Progress: Story = {
 
 export const ThemeGenerator: Story = {
   parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
     layout: 'fullscreen',
   },
   tags: ['!dev'],

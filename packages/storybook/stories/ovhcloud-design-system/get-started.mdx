@@ -25,14 +25,46 @@ or
 
 <Heading label="Usage" level={ 2 } />
 
+All components can be imported from the root path:
+
 <Source code={`
-import { Button } from '@ovhcloud/ods-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';
 
 const App = () => {
   return (
-    <Button>
-      Some button
-    </Button>
+    <Accordion>
+      <AccordionItem value="0">
+        <AccordionTrigger>
+          Hello World!
+        </AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+};
+`}
+        dark="true"
+        language="tsx" />
+
+Each component is also available as compound component from its subpath:
+
+<Source code={`
+import { Accordion } from '@ovhcloud/ods-react/accordion';
+
+const App = () => {
+  return (
+    <Accordion>
+      <Accordion.Item value="0">
+        <Accordion.Trigger>
+          Hello World!
+        </Accordion.Trigger>
+        <Accordion.Content>
+          Lorem ipsum dolor sit amet.
+        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion>
   );
 };
 `}

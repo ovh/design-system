@@ -32,7 +32,6 @@ const MessageBubble: FC<MessageBubbleProp> = forwardRef(({
         style['message-bubble'],
         style[`message-bubble--${variant}`],
         { [style['message-bubble--error']]: error },
-        { [style['message-bubble--typing']]: typing },
         className,
       ) }
       data-ods="message-bubble"
@@ -40,11 +39,11 @@ const MessageBubble: FC<MessageBubbleProp> = forwardRef(({
       { ...props }>
       {
         typing
-          ? <>
+          ? <div className={ style['message-bubble__typing-dots'] }>
             <span className={ style['message-bubble__typing-dot'] } />
             <span className={ style['message-bubble__typing-dot'] } />
             <span className={ style['message-bubble__typing-dot'] } />
-          </>
+          </div>
           : children
       }
     </div>

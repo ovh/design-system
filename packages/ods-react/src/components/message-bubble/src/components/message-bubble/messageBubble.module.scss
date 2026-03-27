@@ -28,9 +28,9 @@
       --ods-message-bubble-text-color: var(--ods-message-bubble-error-text-color);
     }
 
-    &--typing {
-      display: flex;
-      gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+    &__typing-dots {
+      display: inline-flex;
+      gap: var(--ods-theme-column-gap);
       align-items: center;
     }
 

@@ -21,6 +21,10 @@ interface FileThumbnailProp extends ComponentPropsWithRef<'div'> {
    */
   disabled?: boolean,
   /**
+   * Whether the component holds a dismiss button.
+   */
+  dismissible?: boolean,
+  /**
    * The file error message to display.
    */
   error?: string,
@@ -49,6 +53,7 @@ interface FileThumbnailProp extends ComponentPropsWithRef<'div'> {
 const FileThumbnail: FC<FileThumbnailProp> = forwardRef(({
   className,
   disabled,
+  dismissible = true,
   error,
   file,
   i18n,
@@ -141,16 +146,18 @@ const FileThumbnail: FC<FileThumbnailProp> = forwardRef(({
         }
       </div>
 
-      <Button
-        aria-label={ isInProgress ? translate(FILE_THUMBNAIL_I18N.cancelButton) : translate(FILE_THUMBNAIL_I18N.deleteButton) }
-        className={ style['file-thumbnail__delete'] }
-        color={ BUTTON_COLOR.neutral }
-        disabled={ disabled }
-        onClick={ () => onFileRemove?.({ file }) }
-        size={ BUTTON_SIZE.xs }
-        variant={ BUTTON_VARIANT.ghost }>
-        <Icon name={ ICON_NAME.xmark } />
-      </Button>
+      { dismissible &&
+        <Button
+          aria-label={ isInProgress ? translate(FILE_THUMBNAIL_I18N.cancelButton) : translate(FILE_THUMBNAIL_I18N.deleteButton) }
+          className={ style['file-thumbnail__delete'] }
+          color={ BUTTON_COLOR.neutral }
+          disabled={ disabled }
+          onClick={ () => onFileRemove?.({ file }) }
+          size={ BUTTON_SIZE.xs }
+          variant={ BUTTON_VARIANT.ghost }>
+          <Icon name={ ICON_NAME.xmark } />
+        </Button>
+      }
     </div>
   );
 });

@@ -16,7 +16,7 @@ const meta: Meta<FileThumbnailProp> = {
 export default meta;
 
 export const Demo: Story = {
-  render: ({ disabled, error, progress }) => {
+  render: ({ disabled, dismissible, error, progress }) => {
     const [file, setFile] = useState<File>();
 
     return (
@@ -32,6 +32,7 @@ export const Demo: Story = {
           file &&
           <FileThumbnail
             disabled={ disabled }
+            dismissible={ dismissible }
             error={ error }
             file={ file }
             progress={ progress } />
@@ -41,6 +42,12 @@ export const Demo: Story = {
   },
   argTypes: orderControls({
     disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: 'boolean',
+    },
+    dismissible: {
       table: {
         category: CONTROL_CATEGORY.general,
       },

@@ -8,6 +8,34 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.7.0-alpha.0](https://ovh.github.io/design-system/v19.7.0-alpha.0/?path=/docs/design-system-changelog--page) (2026-03-30)
+[compare](https://github.com/ovh/design-system/compare/v19.6.1...v19.7.0-alpha.0)
+
+### Bug Fixes
+
+* **dataTable:** add missing onColumnVisibilityChange on root component ([6a1bb81](https://github.com/ovh/design-system/commit/6a1bb812008ad70c5a9403df8a1cd7d9bd839a15))
+* **fileThumbnail:** add more token to allow customization ([532e1f9](https://github.com/ovh/design-system/commit/532e1f959588ac97805994a9c9c440e311fa90c3))
+* **meter:** prevent overflow in track container ([b3d5715](https://github.com/ovh/design-system/commit/b3d5715a23e55d8676eea81e0031710a75c4a862))
+* **table:** prevent border issue on scroll for sticky header ([8697da5](https://github.com/ovh/design-system/commit/8697da5ac1b1bcb6b8175787102f7ac62f69c9c9))
+
+
+### Features
+
+* **avatar:** initiate component ([0035798](https://github.com/ovh/design-system/commit/00357988a5f3c06a8ec2fc28c6999f230424f05c))
+* **components:** add compound file exports for reusable component patterns ([f2e9ac8](https://github.com/ovh/design-system/commit/f2e9ac840ebeb0550cced970f5cd6821d1951a2f))
+* **components:** implement new compound component exports ([67fdc79](https://github.com/ovh/design-system/commit/67fdc796fd0a4ed4940a9fb12df04cc420e1bba7))
+* **dataTable:** implement component ([9711cc4](https://github.com/ovh/design-system/commit/9711cc4cf965dab1663a6e2775b17891e4974178))
+* **divider:** add orientation to handle vertical version ([28e37cb](https://github.com/ovh/design-system/commit/28e37cb4f4dc1612784c2b0c7f539e927ae0e036))
+* **fileThumbnail:** implement component ([0f7a5fa](https://github.com/ovh/design-system/commit/0f7a5fa27f73615162fee6d9cbbee331fe7d1673))
+* **fileThumbnail:** toggle dismiss button ([69504f8](https://github.com/ovh/design-system/commit/69504f8b08eb7b4a510ea6119103721efe96479c))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.6.1](https://ovh.github.io/design-system/v19.6.1/?path=/docs/design-system-changelog--page) (2026-03-04)
 [compare](https://github.com/ovh/design-system/compare/v19.6.0...v19.6.1)
 

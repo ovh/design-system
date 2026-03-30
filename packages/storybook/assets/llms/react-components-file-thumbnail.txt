@@ -1,0 +1,236 @@
+# React Components/File Thumbnail
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `disabled` | `` | No |  | Whether the component is disabled. |
+| `dismissible` | `` | No | true | Whether the component holds a dismiss button. |
+| `error` | `` | No |  | The file error message to display. |
+| `file` | `` | Yes |  | The current File object. |
+| `i18n` | `` | No |  | Internal translations override. |
+| `locale` | `` | No |  | The locale used for size formatting and the translation of the internal elements. |
+| `onFileRemove` | `` | No |  | Callback fired when the file is removed. |
+| `progress` | `` | No |  | The file upload progress. |
+
+
+## Examples
+
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const fakeFile = new File(['foo'], 'foo.txt', {
+      type: 'text/plain'
+    });
+    return <FileThumbnail file={fakeFile} />;
+  }
+}
+```
+
+### Demo
+
+```tsx
+{
+  render: ({
+    disabled,
+    dismissible,
+    error,
+    progress
+  }) => {
+    const [file, setFile] = useState<File>();
+    return <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      rowGap: '16px'
+    }}>
+        <input onChange={e => {
+        if (e.target.files?.length) {
+          setFile(e.target.files[0]);
+        }
+      }} type="file" />
+        {file && <FileThumbnail disabled={disabled} dismissible={dismissible} error={error} file={file} progress={progress} />}
+      </div>;
+  },
+  argTypes: orderControls({
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    dismissible: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    error: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'text'
+    },
+    progress: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'number'
+    }
+  })
+}
+```
+
+### Disabled
+
+```tsx
+{
+  globals: {
+    imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const fakeFile = new File(['foo'], 'foo.txt', {
+      type: 'text/plain'
+    });
+    return <FileThumbnail disabled file={fakeFile} />;
+  }
+}
+```
+
+### Error
+
+```tsx
+{
+  globals: {
+    imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const fakeFile = new File(['foo'], 'foo.txt', {
+      type: 'text/plain'
+    });
+    return <FileThumbnail error="Something went wrong" file={fakeFile} />;
+  }
+}
+```
+
+### Non Dismissible
+
+```tsx
+{
+  globals: {
+    imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const fakeFile = new File(['foo'], 'non-dismissible-file.txt', {
+      type: 'text/plain'
+    });
+    return <FileThumbnail dismissible={false} file={fakeFile} />;
+  }
+}
+```
+
+### Overview
+
+```tsx
+{
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    },
+    layout: 'centered'
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const fakeFile = new File(['foo'], 'foo.txt', {
+      type: 'text/plain'
+    });
+    return <FileThumbnail file={fakeFile} />;
+  }
+}
+```
+
+### Progress
+
+```tsx
+{
+  globals: {
+    imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const fakeFile = new File(['foo'], 'foo.txt', {
+      type: 'text/plain'
+    });
+    return <FileThumbnail file={fakeFile} progress={45} />;
+  }
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    },
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const fakeFile = new File(['foo'], 'foo.txt', {
+      type: 'text/plain'
+    });
+    return <FileThumbnail file={fakeFile} />;
+  }
+}
+```

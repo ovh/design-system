@@ -20,6 +20,7 @@ React Components
 | --- | --- | --- | --- | --- |
 | This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes) . |
 | color | `TAG_COLOR` | - | `TAG_COLOR.information` | The color preset to use. |
+| icon | `IconName | null` | - | `ICON_NAME.xmark` | The icon to display on the right side. |
 | size | `TAG_SIZE` | - | `TAG_SIZE.md` | The size preset to use. |
 
 ## Enums
@@ -276,6 +277,17 @@ React Components
     MD tag  </Tag>
   <Tag size="lg">
     LG tag  </Tag>
+</>
+```
+
+### Custom icon
+
+```jsx
+<>
+  <Tag icon={null}>
+    No Icon  </Tag>
+  <Tag icon="star">
+    Custom Icon  </Tag>
 </>
 ```
 

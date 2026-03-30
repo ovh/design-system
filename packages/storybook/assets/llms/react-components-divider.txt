@@ -6,6 +6,7 @@
 | Name | Type | Required | Default | Description |
 |------|------|----------|---------|-------------|
 | `color` | `` | No |  | @deprecated The color preset to use. DEPRECATED: Color will now always be primary, if you need another color, prefer overriding it using css. |
+| `orientation` | `` | No | DIVIDER_ORIENTATION.horizontal | The orientation of the divider. |
 | `spacing` | `` | No | DIVIDER_SPACING._2 | The spacing preset to use. |
 
 
@@ -56,6 +57,18 @@
       },
       options: DIVIDER_COLORS
     },
+    orientation: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'DIVIDER_ORIENTATION'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: DIVIDER_ORIENTATIONS
+    },
     spacing: {
       table: {
         category: CONTROL_CATEGORY.design,
@@ -69,6 +82,21 @@
       options: DIVIDER_SPACINGS
     }
   })
+}
+```
+
+### Orientation
+
+```tsx
+{
+  globals: {
+    imports: `import { DIVIDER_ORIENTATION, Divider } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Divider orientation={DIVIDER_ORIENTATION.horizontal} />
+      <Divider orientation={DIVIDER_ORIENTATION.vertical} />
+    </>
 }
 ```
 

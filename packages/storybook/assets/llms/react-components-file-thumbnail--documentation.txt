@@ -1,0 +1,92 @@
+React Components
+
+# File Thumbnail
+
+foo.txt3 byte
+
+## Overview
+
+---
+
+File Thumbnail component is a visual representation of an uploaded file, displaying a preview or a standalone icon alongside file metadata. It is designed to be used in file upload interfaces, attachment lists, or media libraries.
+
+<table class="_table_e3iru_2 _table--md_e3iru_59 _table--striped_e3iru_167 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>FileThumbnail</td></tr><tr><th scope="row">Also known as</th><td>-</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/mwZtfuQ9nzv6fY0dfez4NZ/ODS---UI-Kit?node-id=18865-2253&amp;t=5Qpq63EmcZsiF0hy-0" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/file-thumbnail" target="_blank">Github<span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+File Thumbnail component is used to represent uploaded files in a compact format. It provides visual feedback about the file type, name, size, and upload time, while allowing users to remove the file. Common usages include:
+
+-   File upload zones: display attached files after selection or upload.
+-   Message composers: show file attachments before sending.
+-   Media libraries: list uploaded documents, images, or assets.
+-   Form fields: represent file inputs with selected file previews.
+
+### Best Practices in Context
+
+1.  **FileThumbnail**
+
+TODO
+
+## Behavior
+
+---
+
+### Content & Display
+
+Thumbnail / Preview:
+
+-   Displays an image preview for supported image types.
+-   Falls back to a generic file icon for non-image files.
+-   The thumbnail image is resized and centered to avoid distortion.
+
+Fallback priority:
+
+-   Image preview (if supported format and loads successfully).
+-   Generic file icon (if type is unknown or unrecognized).
+
+File Metadata:
+
+-   File name and extension, displayed with ellipsis truncation if too long; full name exposed via title attribute.
+-   File size, displayed in human-readable format (e.g., 340 KB, 1.2 MB, 3.4 GB).
+
+Remove Action:
+
+-   A remove button always visible.
+-   Clicking remove should either:
+    -   Immediately removes the component with a brief undo toast.
+    -   Triggers an inline confirmation step before removal.
+
+### States
+
+-   Default: Thumbnail or fallback icon displayed with full metadata and remove button.
+-   Read-only: Removal button disabled.
+-   Loading: Progress Bar shown in place of file size while file uploads.
+-   Error: Error icon shown with a short error message (e.g., "Preview unavailable" or "Upload failed"); file name and extension remain visible.
+
+## Navigation
+
+---
+
+The component is non-interactive by default, except for the remove button.
+
+The remove button receives keyboard focus via Tab.
+
+Pressing Enter or Space on the focused remove button triggers the remove action.
+
+Focus moves to the next thumbnail or the previous interactive element after removal.
+
+General Keyboard Shortcuts:
+
+-   Tab : Moves focus to the remove button of the thumbnail.
+-   Enter / Space : Activates the focused remove button.
+-   Shift + Tab : Moves focus backward to the previous interactive element.
+
+## Accessibility
+
+---
+
+Each **File Thumbnail** must be wrapped in a `role="listitem"` element, and its parent container must have `role="list"` to allow screen readers to navigate between thumbnails.
+
+On remove, if a confirmation step is triggered, focus must move to the confirmation dialog or inline prompt.

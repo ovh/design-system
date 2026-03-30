@@ -235,6 +235,13 @@
   globals: {
     imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`
   },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
   tags: ['!dev'],
   render: ({}) => <>
       <Checkbox checked={false}>

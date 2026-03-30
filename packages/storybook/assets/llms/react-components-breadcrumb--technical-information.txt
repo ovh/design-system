@@ -6,8 +6,10 @@ React Components
 
 ---
 
-1.  
-2.  
+1.  ---
+    
+2.  ---
+    
 3.  Current
 
 ## Anatomy
@@ -77,8 +79,10 @@ React Components
 
 ### Default
 
-1.  
-2.  
+1.  ---
+    
+2.  ---
+    
 3.  Current
 
 ```jsx
@@ -104,8 +108,10 @@ React Components
 
 ### Collapsed
 
-1.  
-2.  
+1.  ---
+    
+2.  ---
+    
 3.  RISE-2
 
 ```jsx
@@ -146,11 +152,16 @@ React Components
 
 You can customize the number of item displayed before and after the ellipsis.
 
-1.  
-2.  
-3.  
-4.  
-5.  
+1.  ---
+    
+2.  ---
+    
+3.  ---
+    
+4.  ---
+    
+5.  ---
+    
 6.  RISE-2
 
 ```jsx
@@ -191,88 +202,112 @@ You can customize the number of item displayed before and after the ellipsis.
 
 You can also customize the threshold from when the breadcrumb will collapse.
 
-1.  
-2.  
-3.  
-4.  
-5.  
-6.  
+1.  ---
+    
+2.  ---
+    
+3.  ---
+    
+4.  ---
+    
+5.  ---
+    
+6.  ---
+    
 7.  RISE-2
 
 ```jsx
-<Breadcrumb collapseThreshold={7}>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Home    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Products    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Hosting    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Servers    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Dedicated    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Rise    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      RISE-2    </BreadcrumbLink>
-  </BreadcrumbItem>
-</Breadcrumb>
+{
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Breadcrumb collapseThreshold={7}>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Home        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Products        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Hosting        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Servers        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Dedicated        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Rise        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          RISE-2        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+}
 ```
 
 Or you can even deactivate the whole collapse logic.
 
-1.  
-2.  
-3.  
-4.  
-5.  
-6.  
+1.  ---
+    
+2.  ---
+    
+3.  ---
+    
+4.  ---
+    
+5.  ---
+    
+6.  ---
+    
 7.  RISE-2
 
 ```jsx
-<Breadcrumb noCollapse>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Home    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Products    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Hosting    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Servers    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Dedicated    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      Rise    </BreadcrumbLink>
-  </BreadcrumbItem>
-  <BreadcrumbItem>
-    <BreadcrumbLink href="#">
-      RISE-2    </BreadcrumbLink>
-  </BreadcrumbItem>
-</Breadcrumb>
+{
+  globals: {
+    imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Breadcrumb noCollapse>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Home        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Products        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Hosting        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Servers        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Dedicated        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Rise        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          RISE-2        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+}
 ```
 
 ## Recipes

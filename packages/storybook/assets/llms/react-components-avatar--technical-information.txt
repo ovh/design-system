@@ -1,0 +1,95 @@
+React Components
+
+# Avatar
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+1.  **Avatar**
+
+## Avatar
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| fallback | `ReactNode` | - | `<Icon name={ ICON_NAME.user } />` | Fallback content to display when the image fails to load. Defaults to a user icon. |
+| src | `string` | - | `undefined` | The image source URL. |
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-avatar-background-color | var( --ods-color-primary-500 ) | 
+ |
+| --ods-avatar-border-radius | 50% | 
+
+ |
+| --ods-avatar-object-fit | cover | 
+
+ |
+| --ods-avatar-size | 24px | 
+
+ |
+| --ods-avatar-text-color | var(--ods-color-neutral-000) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+<Avatar />
+```
+
+### Initials
+
+JD
+
+```jsx
+<Avatar>
+  JD
+</Avatar>
+```
+
+### With Image
+
+```jsx
+<Avatar src="https://images.crunchbase.com/image/upload/c_pad,h_160,w_160,f_auto,b_white,q_auto:eco,dpr_1/fhi0pe8wd87fvujy9yk8" />
+```
+
+### With Fallback
+
+J
+
+```jsx
+<Avatar
+  fallback="J"
+  src="https://invalid-url.example.com/avatar.png"
+/>
+```
+
+### With Icon
+
+```jsx
+<Avatar>
+  <Icon name="sparkle" />
+</Avatar>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

@@ -8,6 +8,36 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.7.0-alpha.0](https://ovh.github.io/design-system/v19.7.0-alpha.0/?path=/docs/design-system-changelog--page) (2026-03-30)
+[compare](https://github.com/ovh/design-system/compare/v19.6.1...v19.7.0-alpha.0)
+
+### Bug Fixes
+
+* **fileThumbnail:** add more token to allow customization ([532e1f9](https://github.com/ovh/design-system/commit/532e1f959588ac97805994a9c9c440e311fa90c3))
+* **fileThumbnail:** update stories ([5333a2e](https://github.com/ovh/design-system/commit/5333a2e2dc38db5f5bfa2d9ae79ef747bb5f207c))
+* **llms:** update the /llms urls to match gh pages true urls ([79ec896](https://github.com/ovh/design-system/commit/79ec8969a978ba76a47658fd661ebe12adcf54e1))
+
+
+### Features
+
+* **avatar:** initiate component ([0035798](https://github.com/ovh/design-system/commit/00357988a5f3c06a8ec2fc28c6999f230424f05c))
+* **dataTable:** implement component ([9711cc4](https://github.com/ovh/design-system/commit/9711cc4cf965dab1663a6e2775b17891e4974178))
+* **divider:** add orientation to handle vertical version ([28e37cb](https://github.com/ovh/design-system/commit/28e37cb4f4dc1612784c2b0c7f539e927ae0e036))
+* **doc:** add accessibility brief on DataTable ([74bd1f0](https://github.com/ovh/design-system/commit/74bd1f01941c2fd2aac7c66c67e4c3e343d8cf02))
+* **doc:** add DataTable functional documentation ([4a1e880](https://github.com/ovh/design-system/commit/4a1e880e47d58fd27045edd4238f29d299f4ecb8))
+* **doc:** update import example in get started ([9e2c2aa](https://github.com/ovh/design-system/commit/9e2c2aad20e2d85097dab3145a8f4fd20df77318))
+* **docs:** update theme, version selector and recipes from using popover to menu ([5f8b30b](https://github.com/ovh/design-system/commit/5f8b30b2d59d2f9e1f48622859b144d7fa2a9855))
+* **fileThumbnail:** implement component ([0f7a5fa](https://github.com/ovh/design-system/commit/0f7a5fa27f73615162fee6d9cbbee331fe7d1673))
+* **fileThumbnail:** toggle dismiss button ([69504f8](https://github.com/ovh/design-system/commit/69504f8b08eb7b4a510ea6119103721efe96479c))
+* **fileThumbnail:** update technical doc ([8ba4555](https://github.com/ovh/design-system/commit/8ba4555513f84407992171327b7fa69aede8df53))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.6.1](https://ovh.github.io/design-system/v19.6.1/?path=/docs/design-system-changelog--page) (2026-03-04)
 [compare](https://github.com/ovh/design-system/compare/v19.6.0...v19.6.1)
 

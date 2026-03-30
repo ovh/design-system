@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.7.0-alpha.0](https://ovh.github.io/design-system/v19.7.0-alpha.0/?path=/docs/design-system-changelog--page) (2026-03-30)
+[compare](https://github.com/ovh/design-system/compare/v19.6.1...v19.7.0-alpha.0)
+
+### Features
+
+* **divider:** add orientation to handle vertical version ([28e37cb](https://github.com/ovh/design-system/commit/28e37cb4f4dc1612784c2b0c7f539e927ae0e036))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

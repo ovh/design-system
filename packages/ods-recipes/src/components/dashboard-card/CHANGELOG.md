@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [19.7.0-alpha.0](https://ovh.github.io/design-system/v19.7.0-alpha.0/?path=/docs/design-system-changelog--page) (2026-03-30)
+[compare](https://github.com/ovh/design-system/compare/v19.6.1...v19.7.0-alpha.0)
+
+### Features
+
+* **docs:** update theme, version selector and recipes from using popover to menu ([5f8b30b](https://github.com/ovh/design-system/commit/5f8b30b2d59d2f9e1f48622859b144d7fa2a9855))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

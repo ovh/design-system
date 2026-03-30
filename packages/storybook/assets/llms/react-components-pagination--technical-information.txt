@@ -6,10 +6,6 @@ React Components
 
 ---
 
-102550100300
-
-of 100 results
-
 ## Anatomy
 
 ---
@@ -68,7 +64,13 @@ of 100 results
 ### Default
 
 ```jsx
-<Pagination totalItems={5000} />
+{
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination totalItems={5000} />
+}
 ```
 
 ### Controlled
@@ -95,30 +97,37 @@ const [page, setPage] = useState(1);
 ### Items per page
 
 ```jsx
-<Pagination
-  pageSize={25}
-  totalItems={500}
-/>
+{
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination pageSize={25} totalItems={500} />
+}
 ```
 
 ### Sibling count
 
 ```jsx
-<Pagination
-  defaultPage={5}
-  siblingCount={2}
-  totalItems={500}
-/>
+{
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination defaultPage={5} siblingCount={2} totalItems={500} />
+}
 ```
 
 ### With labels
 
 ```jsx
-<Pagination
-  labelTooltipNext="Go to next page"
-  labelTooltipPrev="Go to previous page"
-  totalItems={500}
-/>
+{
+  globals: {
+    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination labelTooltipPrev={'Go to previous page'} labelTooltipNext={'Go to next page'} totalItems={500} />
+}
 ```
 
 ### With total items
@@ -137,4 +146,162 @@ of 500 results
 
 ---
 
-No recipe defined for now.
+Data Grid
+
+| 
+ | 
+
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+IP Address
+
+ | 
+
+Actions
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+
+102550100300
+
+of 0 results

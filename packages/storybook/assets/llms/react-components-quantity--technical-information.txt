@@ -75,11 +75,17 @@ React Components
 ### Disabled
 
 ```jsx
-<Quantity disabled>
-  <QuantityControl>
-    <QuantityInput />
-  </QuantityControl>
-</Quantity>
+{
+  globals: {
+    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Quantity disabled>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+}
 ```
 
 ### Readonly

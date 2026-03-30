@@ -59,18 +59,18 @@ README.md
 
 ---
 
-### TreeViewCustomRendererArg
+### TreeViewCustomRendererArg<T>
 
 -   `customData?: T`
 -   `isBranch: boolean`
 -   `isExpanded: boolean`
--   `item: TreeViewItem<>`
+-   `item: TreeViewItem<T>`
 
 ### TreeViewExpandedChangeDetail
 
 -   `expandedValue: string[]`
 
-### TreeViewItem
+### TreeViewItem<T>
 
 -   `children?: TreeViewItem[]`
 -   `customRendererData?: T`
@@ -127,89 +127,46 @@ package.json
 README.md
 
 ```jsx
-<TreeView
-  items={[
-    {
-      children: [
-        {
-          id: 'app.tsx',
-          name: 'app.tsx'
-        },
-        {
-          id: 'index.ts',
-          name: 'index.ts'
-        },
-        {
-          children: [
-            {
-              id: 'Button.tsx',
-              name: 'Button.tsx'
-            },
-            {
-              id: 'Card.tsx',
-              name: 'Card.tsx'
-            }
-          ],
-          id: 'components',
-          name: 'components'
-        }
-      ],
+{
+  globals: {
+    imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [{
       id: 'src',
-      name: 'src'
-    },
-    {
+      name: 'src',
+      children: [{
+        id: 'app.tsx',
+        name: 'app.tsx'
+      }, {
+        id: 'index.ts',
+        name: 'index.ts'
+      }, {
+        id: 'components',
+        name: 'components',
+        children: [{
+          id: 'Button.tsx',
+          name: 'Button.tsx'
+        }, {
+          id: 'Card.tsx',
+          name: 'Card.tsx'
+        }]
+      }]
+    }, {
       id: 'package.json',
       name: 'package.json'
-    },
-    {
+    }, {
       id: 'readme.md',
       name: 'README.md'
-    }
-  ]}
->
-  <TreeViewNodes>
-    <TreeViewNode      item={{
-        children: [
-          {
-            id: 'app.tsx',
-            name: 'app.tsx'
-          },
-          {
-            id: 'index.ts',
-            name: 'index.ts'
-          },
-          {
-            children: [
-              {
-                id: 'Button.tsx',
-                name: 'Button.tsx'
-              },
-              {
-                id: 'Card.tsx',
-                name: 'Card.tsx'
-              }
-            ],
-            id: 'components',
-            name: 'components'
-          }
-        ],
-        id: 'src',
-        name: 'src'
-      }}
-     />    <TreeViewNode
-      item={{
-        id: 'package.json',
-        name: 'package.json'
-      }}
-     />
-    <TreeViewNode
-      item={{
-        id: 'readme.md',
-        name: 'README.md'
-      }}
-     />
-  </TreeViewNodes>
-</TreeView>
+    }];
+    return <TreeView items={items}>
+        <TreeViewNodes>
+          {items.map(item => <TreeViewNode key={item.id} item={item} />)}
+        </TreeViewNodes>
+      </TreeView>;
+  }
+}
 ```
 
 ### Multiple
@@ -267,22 +224,6 @@ const items = [{
 ```
 
 ### Disabled
-
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
 
 ```jsx
 const items = [{
@@ -388,22 +329,6 @@ const items = [{
 
 ### Default expanded
 
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
-
 ```jsx
 const items = [{
     id: 'src',
@@ -441,24 +366,6 @@ const items = [{
 ```
 
 ### Controlled
-
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
-
-Selected: package.json
 
 ```jsx
 const items = [{
@@ -504,24 +411,6 @@ const items = [{
 
 ### Controlled multiple
 
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
-
-Selected: package.json, index.ts
-
 ```jsx
 const items = [{
     id: 'src',
@@ -566,22 +455,6 @@ const items = [{
 
 ### Disabled items
 
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
-
 ```jsx
 const items = [{
     id: 'src',
@@ -624,24 +497,6 @@ const items = [{
 
 ### In form field
 
-Choose a file
-
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
-
 ```jsx
 const items = [{
     id: 'src',
@@ -682,18 +537,6 @@ const items = [{
 ```
 
 ### Dynamic children
-
-src
-
-app.tsx
-
-index.ts
-
-components
-
-package.json
-
-README.md
 
 ```jsx
 type Item = {
@@ -827,4 +670,162 @@ type Item = {
 
 ---
 
-No recipe defined for now.
+Data Grid
+
+| 
+ | 
+
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+IP Address
+
+ | 
+
+Actions
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+
+102550100300
+
+of 0 results

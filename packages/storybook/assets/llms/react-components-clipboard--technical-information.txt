@@ -84,26 +84,33 @@ React Components
 ### Masked
 
 ```jsx
-<Clipboard value="Masked">
-  <ClipboardControl
-    maskOption={{
+{
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Clipboard value="Masked">
+      <ClipboardControl maskOption={{
       enable: true
-    }}
-   />
-  <ClipboardTrigger />
-</Clipboard>
+    }} />
+      <ClipboardTrigger />
+    </Clipboard>
+}
 ```
 
 ### Custom labels
 
 ```jsx
-<Clipboard value="Custom labels">
-  <ClipboardControl />
-  <ClipboardTrigger
-    labelCopy="Click to copy"
-    labelCopySuccess="Successfully copied"
-  />
-</Clipboard>
+{
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Clipboard value="Custom labels">
+      <ClipboardControl />
+      <ClipboardTrigger labelCopy="Click to copy" labelCopySuccess="Successfully copied" />
+    </Clipboard>
+}
 ```
 
 ## Recipes
@@ -139,3 +146,163 @@ Always Pull Images PluginEnable
 Plugin Node RestrictionEnable
 
 ---
+
+Data Grid
+
+| 
+ | 
+
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+IP Address
+
+ | 
+
+Actions
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+
+102550100300
+
+of 0 results

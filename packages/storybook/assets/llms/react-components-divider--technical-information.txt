@@ -26,6 +26,7 @@ Interdum et malesuada fames ac ante ipsum primis in faucibus.
 | --- | --- | --- | --- | --- |
 | This component extends all the native [hr attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/hr#attributes) . |
 | colorDeprecated | `DIVIDER_COLOR` | - | `undefined` | The color preset to use. DEPRECATED: Color will now always be primary, if you need another color, prefer overriding it using css. |
+| orientation | `'horizontal' | 'vertical'` | - | `DIVIDER_ORIENTATION.horizontal` | The orientation of the divider. |
 | spacing | `DIVIDER_SPACING` | - | `DIVIDER_SPACING._2` | The spacing preset to use. |
 
 ## Enums
@@ -38,6 +39,11 @@ Deprecated
 
 -   neutral =`"neutral"`
 -   primary =`"primary"`
+
+### DIVIDER_ORIENTATION
+
+-   horizontal =`"horizontal"`
+-   vertical =`"vertical"`
 
 ### DIVIDER_SPACING
 
@@ -76,6 +82,19 @@ Deprecated
 <>
   <Divider color="neutral" />
   <Divider color="primary" />
+</>
+```
+
+### Orientation
+
+---
+
+---
+
+```jsx
+<>
+  <Divider orientation="horizontal" />
+  <Divider orientation="vertical" />
 </>
 ```
 

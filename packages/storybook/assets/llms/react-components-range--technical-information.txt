@@ -77,6 +77,24 @@ React Components
 0100
 
 ```jsx
+<>
+  <Range />
+  <Range
+    defaultValue={[
+      50,
+      75
+    ]}
+   />
+</>
+```
+
+### Disabled
+
+0100
+
+0100
+
+```jsx
 {
   decorators: [story => <div style={{
     display: 'flex',
@@ -88,34 +106,10 @@ React Components
   },
   tags: ['!dev'],
   render: ({}) => <>
-      <Range />
-      <Range defaultValue={[50, 75]} />
+      <Range defaultValue={[20]} disabled />
+      <Range defaultValue={[50, 75]} disabled />
     </>
 }
-```
-
-### Disabled
-
-0100
-
-0100
-
-```jsx
-<>
-  <Range
-    defaultValue={[
-      20
-    ]}
-    disabled
-  />
-  <Range
-    defaultValue={[
-      50,
-      75
-    ]}
-    disabled
-  />
-</>
 ```
 
 ### Min / Max
@@ -142,10 +136,6 @@ React Components
 
 ### Step
 
-0100
-
-0100
-
 ```jsx
 {
   decorators: [story => <div style={{
@@ -166,55 +156,25 @@ React Components
 
 ### Ticks
 
-0100
-
-0100
-
 ```jsx
-<>
-  <Range
-    defaultValue={[
-      20
-    ]}
-    ticks={[
-      10,
-      20,
-      30,
-      40,
-      50,
-      60,
-      70,
-      80,
-      90
-    ]}
-  />
-  <Range
-    defaultValue={[
-      50,
-      75
-    ]}
-    ticks={[
-      10,
-      20,
-      30,
-      40,
-      50,
-      60,
-      70,
-      80,
-      90
-    ]}
-  />
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    rowGap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Range } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Range defaultValue={[20]} ticks={[10, 20, 30, 40, 50, 60, 70, 80, 90]} />
+      <Range defaultValue={[50, 75]} ticks={[10, 20, 30, 40, 50, 60, 70, 80, 90]} />
+    </>
+}
 ```
 
 ### Custom Ticks
-
-LowMediumHigh
-
-0100
-
-Very PoorPoorAverageGoodExcellent
 
 ```jsx
 <>
@@ -250,11 +210,6 @@ Very PoorPoorAverageGoodExcellent
 ### Controlled
 
 This is a controlled component. The final value is only updated when the user releases the mouse button.
-
-Final value:  
-Dragged value:
-
-0100
 
 ```jsx
 const [draggingValue, setDraggingValue] = useState<number>();

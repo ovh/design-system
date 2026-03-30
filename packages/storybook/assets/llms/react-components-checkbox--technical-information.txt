@@ -124,12 +124,12 @@ Indeterminate
 
 ```jsx
 <>
-  <Checkbox>
+  <Checkbox checked={false}>
     <CheckboxControl />
     <CheckboxLabel>
       Unchecked    </CheckboxLabel>
   </Checkbox>
-  <Checkbox checked>
+  <Checkbox checked={true}>
     <CheckboxControl />
     <CheckboxLabel>
       Checked    </CheckboxLabel>

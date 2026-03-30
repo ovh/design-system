@@ -157,15 +157,26 @@ UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UT
 UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
 
 ```jsx
-<>
-  <Timepicker withSeconds>
-    <TimepickerControl />
-  </Timepicker>
-  <Timepicker withSeconds>
-    <TimepickerControl />
-    <TimepickerTimezoneList />
-  </Timepicker>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Timepicker withSeconds>
+        <TimepickerControl />
+      </Timepicker>
+      <Timepicker withSeconds>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+}
 ```
 
 ### Timezone list

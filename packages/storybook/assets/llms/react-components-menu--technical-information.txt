@@ -104,20 +104,23 @@ This component has no specific properties.
 ### Default
 
 ```jsx
-<Menu>
-  <MenuTrigger asChild>
-    <Button>
-      Open menu    </Button>
-  </MenuTrigger>
-  <MenuContent>
-    <MenuItem value="profile">
-      Profile    </MenuItem>
-    <MenuItem value="settings">
-      Settings    </MenuItem>
-    <MenuItem value="logout">
-      Logout    </MenuItem>
-  </MenuContent>
-</Menu>
+{
+  globals: {
+    imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Menu>
+      <MenuTrigger asChild>
+        <Button>
+          Open menu        </Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem value="profile">Profile</MenuItem>
+        <MenuItem value="settings">Settings</MenuItem>
+        <MenuItem value='logout'>Logout</MenuItem>
+      </MenuContent>
+    </Menu>
+}
 ```
 
 ### Controlled
@@ -198,32 +201,221 @@ const [isOpen, setIsOpen] = useState(false);
 ### Nested
 
 ```jsx
-<Menu>
-  <MenuTrigger asChild>
-    <Button>
-      Open menu    </Button>
-  </MenuTrigger>
-  <MenuContent>
-    <MenuItem value="new">
-      New    </MenuItem>
-    <MenuItem value="open">
-      Open    </MenuItem>
-    <MenuSubmenu>
-      <MenuTrigger>
-        Share      </MenuTrigger>
+{
+  globals: {
+    imports: `import { Button, Menu, MenuContent, MenuItem, MenuSubmenu, MenuTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Menu>
+      <MenuTrigger asChild>
+        <Button>
+          Open menu        </Button>
+      </MenuTrigger>
       <MenuContent>
-        <MenuItem value="email">
-          Email        </MenuItem>
-        <MenuItem value="message">
-          Message        </MenuItem>
+        <MenuItem value='new'>New</MenuItem>
+        <MenuItem value='open'>Open</MenuItem>
+        <MenuSubmenu>
+          <MenuTrigger>Share</MenuTrigger>
+          <MenuContent>
+            <MenuItem value='email'>Email</MenuItem>
+            <MenuItem value='message'>Message</MenuItem>
+          </MenuContent>
+        </MenuSubmenu>
       </MenuContent>
-    </MenuSubmenu>
-  </MenuContent>
-</Menu>
+    </Menu>
+}
 ```
 
 ## Recipes
 
 ---
 
-No recipe defined for now.
+Dashboard Card
+
+#### Cluster Information
+
+---
+
+Name
+
+MyCluster
+
+---
+
+ID
+
+---
+
+Region
+
+GRA91-AZ
+
+---
+
+Admission plugins
+
+Always Pull Images PluginEnable
+
+Plugin Node RestrictionEnable
+
+---
+
+Data Grid
+
+| 
+ | 
+
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+IP Address
+
+ | 
+
+Actions
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+
+102550100300
+
+of 0 results

@@ -32,8 +32,7 @@ You'll mainly work under the `src` directory under which you'll find one or more
 depending on the configuration you choose during the init script prompt
 (by default you should at least see a `css-modules` directory).
 
-Each contains an `index.tsx` file where you should write the integrality of your recipe code
-(for now, we don't support splitting the codebase into multiple tsx files).
+Each contains an `index.tsx` file where you should start writing your recipe code .
 
 Please implement each of those directories before submitting any recipe.
 

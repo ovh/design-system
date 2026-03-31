@@ -3,7 +3,6 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-const INDEX_FILE = 'index.tsx';
 const README_FILE = 'README.md';
 const SOURCE = Object.freeze({
   cssModules: 'css-modules',
@@ -61,24 +60,26 @@ async function getComponentSources(src) {
 }
 
 async function getImportedOdsComponents(src) {
-  try {
-    await fs.access(path.resolve(src, INDEX_FILE));
-  } catch(error) {
-    console.warn(`Unable to find an ${INDEX_FILE} file in "${src}". Thus unable to find the list of imported ODS components.`);
-    return [];
+  const files = (await fs.readdir(src, { withFileTypes: true }))
+    .filter((dirent) => dirent.isFile())
+    .filter((dirent) => ['.ts', '.tsx'].indexOf(path.extname(dirent.name).toLowerCase()) > -1);
+
+  let odsImports = [];
+
+  for (const file of files) {
+    const fileContent = await fs.readFile(path.resolve(file.path, file.name), 'utf8');
+
+    const odsImportMatches = fileContent
+      .split(/\r?\n/)
+      .reduce((oneliner, line) => oneliner += line, '')
+      .match(/import\s+\{(.*)}\s+from\s+'@ovhcloud\/ods-react'/)
+
+    if (odsImportMatches?.length > 1) {
+      odsImports = odsImports.concat(odsImportMatches[1].split(',').map((s) => s.trim()));
+    }
   }
 
-  const fileContent = await fs.readFile(path.resolve(src, INDEX_FILE), 'utf8');
-
-  const odsImportMatches = fileContent
-    .split(/\r?\n/)
-    .reduce((oneliner, line) => oneliner += line, '')
-    .match(/import\s+\{(.*)}\s+from\s+'@ovhcloud\/ods-react'/)
-
-  if (odsImportMatches?.length > 1) {
-    return odsImportMatches[1].split(',').map((s) => s.trim());
-  }
-  return [];
+  return [...new Set(odsImports)];
 }
 
 async function listComponents(src) {

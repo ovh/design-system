@@ -111,9 +111,12 @@ const RecipeCard = memo(({ isOpen, onToggle, recipe }: RecipeCardProp) => {
         filename,
         lang: getShikiLang(filename),
       }))
-      .sort((a, b) =>
-        TAB_ORDER_EXTS.indexOf(a.ext) - TAB_ORDER_EXTS.indexOf(b.ext)
-      );
+      .sort((a, b) => {
+        if ([a.filename, b.filename].indexOf('index.tsx') > -1) {
+          return 1;
+        }
+        return TAB_ORDER_EXTS.indexOf(a.ext) - TAB_ORDER_EXTS.indexOf(b.ext)
+      });
 
     if (readme) {
       codeFiles.push({

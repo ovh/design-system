@@ -31,7 +31,7 @@ const filterProperty = {
 const filterOption = {
   ['instance-id']: {
     operator: {
-      label: 'Operators I',
+      label: 'Operators',
       options: [
         { label: 'equals', value: '=' },
         { label: 'does not equal', value: '!=' },
@@ -47,7 +47,7 @@ const filterOption = {
   },
   states: {
     operator: {
-      label: 'Operators S',
+      label: 'Operators',
       options: [
         { label: 'equals', value: '=' },
         { label: 'does not equal', value: '!=' },
@@ -247,15 +247,17 @@ export const Overview: Story = {
     <QueryFilter
       filterOption={ filterOption }
       filterProperty={ filterProperty }>
-      <QueryFilterControl />
+      <QueryFilterControl style={{ alignSelf: 'end', width: '300px' }} />
 
       <QueryFilterContent />
 
-      <QueryFilterTags />
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '8px', alignItems: 'center' }}>
+        <QueryFilterTags style={{ justifyContent: 'end' }} />
 
-      <QueryFilterClear>
-        Clear all
-      </QueryFilterClear>
+        <QueryFilterClear>
+          Clear
+        </QueryFilterClear>
+      </div>
     </QueryFilter>
   ),
 };

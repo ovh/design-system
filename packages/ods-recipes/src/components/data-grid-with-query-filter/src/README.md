@@ -1,6 +1,3 @@
 # Data Grid With Query Filter
 
-[//]: # (All information to set here should be available on the Figma page matching the recipe you're trying to create)
-[//]: # (If that's not the case, please reach out to us or the involved designer to get those information)
-
-Some description of the recipe.
+TODO

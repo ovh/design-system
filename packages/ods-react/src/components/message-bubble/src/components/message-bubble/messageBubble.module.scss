@@ -30,7 +30,7 @@
 
     &__typing-dots {
       display: inline-flex;
-      gap: var(--ods-theme-column-gap);
+      column-gap: var(--ods-theme-column-gap);
       align-items: center;
     }
 

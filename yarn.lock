@@ -5100,6 +5100,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-recipes-data-grid-with-query-filter@workspace:packages/ods-recipes/src/components/data-grid-with-query-filter":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-data-grid-with-query-filter@workspace:packages/ods-recipes/src/components/data-grid-with-query-filter"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-recipes-data-grid@workspace:packages/ods-recipes/src/components/data-grid":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-recipes-data-grid@workspace:packages/ods-recipes/src/components/data-grid"

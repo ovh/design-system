@@ -128,6 +128,7 @@ type QueryFilterContextType = Omit<QueryFilterProviderProp, 'children'> & {
   moveToPreviousStep: () => void;
   removeAllTags: () => void;
   removeTag: (tagId: string) => void;
+  resetControl: () => void;
   selection: QueryFilterItem[];
   selectHighlightedItem: () => void;
   selectItem: (item: QueryFilterItem, isCustom?: boolean) => void;
@@ -280,6 +281,12 @@ const QueryFilterProvider = ({
     setTags((tags) => tags.filter((tag) => tag.id !== tagId));
   }
 
+  function resetControl(): void {
+    setInputValue('');
+    setSelection([]);
+    setIsOpen(false);
+  }
+
   function selectHighlightedItem(): void {
     if (!highlightedOptionValue) {
       return;
@@ -297,12 +304,6 @@ const QueryFilterProvider = ({
   function selectItem(item: QueryFilterItem, isCustom = false): void {
     if (disabled || readOnly) {
       return;
-    }
-
-    function resetControl(): void {
-      setInputValue('');
-      setSelection([]);
-      setIsOpen(false);
     }
 
     if (isCustom) {
@@ -402,6 +403,7 @@ const QueryFilterProvider = ({
       readOnly,
       removeAllTags,
       removeTag,
+      resetControl,
       selectHighlightedItem,
       selectItem,
       selection,

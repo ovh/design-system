@@ -25,7 +25,9 @@ const QueryFilterTags: FC<QueryFilterTagsProp> = forwardRef(({
       {
         tags.map((tag) => (
           <li key={ tag.id }>
-            <Tag onClick={ () => removeTag(tag.id) }>
+            <Tag
+              className={ style['query-filter-tags__tag'] }
+              onClick={ () => removeTag(tag.id) }>
               { tag.label }
             </Tag>
           </li>

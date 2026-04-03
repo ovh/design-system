@@ -52,6 +52,7 @@ const QueryFilterControl: FC<QueryFilterControlProp> = forwardRef(({
     name,
     readOnly,
     required,
+    resetControl,
     selection,
     selectHighlightedItem,
     setInputValue,
@@ -67,9 +68,8 @@ const QueryFilterControl: FC<QueryFilterControlProp> = forwardRef(({
       return;
     }
 
-    setInputValue('');
     setIsFocused(false);
-    setIsOpen(false);
+    resetControl();
   }
 
   function handleInputChange(e: FormEvent<HTMLInputElement>): void {

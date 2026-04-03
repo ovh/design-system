@@ -1,0 +1,33 @@
+.data-grid-with-query-filter {
+  display: flex;
+  flex-flow: column;
+  row-gap: calc(var(--ods-theme-row-gap) * 2);
+
+  &__toolbar {
+    display: flex;
+    align-items: end;
+
+    &__control {
+      width: 300px;
+    }
+
+    &__filters {
+      display: flex;
+      gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+      align-items: center;
+
+      &__tags {
+        justify-content: end;
+      }
+    }
+  }
+
+  &__table {
+    max-height: 500px;
+    overflow: auto;
+  }
+
+  &__pagination {
+    align-self: center;
+  }
+}

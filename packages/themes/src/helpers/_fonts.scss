@@ -12,6 +12,7 @@
   @font-face {
     font-family: 'Source Code Pro';
     font-stretch: normal;
+    font-weight: 200 900;
     font-style: normal;
     font-display: fallback;
     src: $src format('woff2');
@@ -22,6 +23,7 @@
   @font-face {
     font-family: 'Source Code Pro';
     font-stretch: normal;
+    font-weight: 200 900;
     font-style: italic;
     font-display: fallback;
     src: $src format('woff2');
@@ -32,6 +34,7 @@
   @font-face {
     font-family: 'Source Sans Pro';
     font-stretch: normal;
+    font-weight: 200 900;
     font-style: normal;
     font-display: fallback;
     src: $src format('woff2');
@@ -42,6 +45,7 @@
   @font-face {
     font-family: 'Source Sans Pro';
     font-stretch: normal;
+    font-weight: 200 900;
     font-style: italic;
     font-display: fallback;
     src: $src format('woff2');

@@ -1,0 +1,120 @@
+import { Kbd } from '@ovhcloud/ods-react';
+import { Meta } from '@storybook/blocks';
+import * as QueryFilterStories from './query-filter.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ QueryFilterStories } name="Documentation" tags={ ['new'] } />
+
+<Banner of={ QueryFilterStories } />
+
+<Canvas of={ QueryFilterStories.Overview } sourceState="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ [] }
+              figmaLink="TODO"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/query-filter"
+              name="QueryFilter"
+              startingVersion={ 19 }>
+  The **Query Filter** component allows users to find specific items within a collection by constructing queries based
+  on properties and property values. Users can combine structured property conditions with free-text search to create
+  precise filters without writing raw query syntax.
+</IdentityCard>
+
+<Heading label="Usage" level={ 2 } />
+
+The **Query Filter** is typically used as a toolbar or input control above data tables or card grids to help users
+quickly narrow down large datasets.
+
+It is commonly used in:
+- Dashboards and admin interfaces.
+- Productivity tools with lists or tables of items.
+- Applications where filtering and search are core workflows.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    '- Don\'t rely on Query Filter for very small collections where scanning the list is faster',
+    '- Don\'t use property tokens for datasets dominated by long free-form text',
+    '- Don\'t use operators that don\'t match the property type (e.g., "between" for single-value properties)',
+  ]}
+  dos={[
+    '- Use Query Filter to enable multi-property search and filtering',
+    '- Apply the Query Filter to the full dataset, not just currently visible or loaded items',
+    '- Keep the query readable by ordering tokens logically and avoiding unnecessary duplication of conditions',
+  ]}
+/>
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+<Anatomy src="components/query-filter/anatomy.png" />
+
+1. **QueryFilter**
+2. **Filter input**
+3. **Suggestions panel**
+4. **Token**
+5. **Clear all filters button**
+
+<Heading label="Placement" level={ 2 } />
+
+The **Query Filter** component is typically positioned above the target data container.
+
+<Heading label="Behavior" level={ 2 } />
+
+<Heading label="Opening & Closing" level={ 3 } />
+
+Clicking the filter input opens the suggestions panel.
+
+The panel closes when:
+- A value is selected.
+- Clicking outside the component.
+- The <Kbd>Escape</Kbd> key is pressed.
+
+<Heading label="Adding a Filter" level={ 3 } />
+
+Suggestions guide the user through:
+- Property selection
+- Operator selection
+- Value entry
+
+Free-text is allowed and creates a distinct token.
+
+<Heading label="Removing a token" level={ 3 } />
+
+Each token can be removed by click.
+
+Backspace behavior does not remove last token unless specifically focused on it.
+
+Optional "Clear all filters" button removes all tokens in one action.
+
+<Heading label="Navigation" level={ 2 } />
+
+<Heading label="Focus Management" level={ 3 } />
+
+Focus follows a logical order from left to right.
+
+When the suggestions panel is open, focus moves within the panel without leaving the component.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing <Kbd>Tab</Kbd> moves focus between the input field, and other interactive elements.
+
+Pressing <Kbd>Arrow Down</Kbd> opens the suggestions panel and moves focus to the first suggestion.
+
+Pressing <Kbd>Escape</Kbd> closes the suggestions panel.
+
+Pressing <Kbd>Backspace</Kbd> deletes characters in the input field
+
+<Heading label="Accessibility" level={ 2 } />
+
+Use ARIA (Accessible Rich Internet Applications) live regions to announce filtering changes. For example:
+- When a filter is added: `aria-live` region could say "Filter 'Status: Active' has been applied.".
+- When a filter is removed: `aria-live` region could say "Filter 'Status: Active' has been removed.".

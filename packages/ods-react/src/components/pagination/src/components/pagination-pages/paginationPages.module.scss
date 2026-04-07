@@ -1,7 +1,5 @@
 @layer ods-molecules {
-  .pagination {
-    --ods-pagination-page-selector-input-width: 45px;
-
+  .pagination-pages {
     display: flex;
     flex-direction: row;
     align-items: center;

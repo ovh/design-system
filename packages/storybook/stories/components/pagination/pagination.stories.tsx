@@ -1,21 +1,43 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Pagination, PaginationPageChangeDetail, type PaginationProp } from '../../../../ods-react/src/components/pagination/src';
+import { Pagination, PaginationPageChangeDetail, PaginationPageSelector, PaginationPageSizeSelector, PaginationPages, type PaginationProp } from '../../../../ods-react/src/components/pagination/src';
 import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<PaginationProp>;
+type DemoArg = Partial<PaginationProp> & {
+  withPageSelector?: boolean;
+  withPageSizeSelector?: boolean;
+}
 
 const meta: Meta<PaginationProp> = {
   argTypes: excludeFromDemoControls(['defaultPage', 'onPageChange', 'onPageSizeChange', 'page', 'pageSize', 'renderTotalItemsLabel']),
   component: Pagination,
+  subcomponents: { PaginationPageSelector, PaginationPageSizeSelector, PaginationPages },
   title: 'React Components/Pagination',
 };
 
 export default meta;
 
 export const Demo: Story = {
+  render: ({ totalItems, withPageSelector, withPageSizeSelector, ...arg }: DemoArg) => (
+    <Pagination
+      totalItems={ totalItems ?? 5000 }
+      { ...arg }>
+      {
+        withPageSizeSelector &&
+        <PaginationPageSizeSelector />
+      }
+
+      <PaginationPages />
+
+      {
+        withPageSelector &&
+        <PaginationPageSelector />
+      }
+    </Pagination>
+  ),
   argTypes: orderControls({
     disabled : {
       table: {
@@ -52,6 +74,11 @@ export const Demo: Story = {
         category: CONTROL_CATEGORY.general,
       },
     },
+    withPageSelector: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+    },
     withPageSizeSelector: {
       table: {
         category: CONTROL_CATEGORY.general
@@ -65,19 +92,21 @@ export const Demo: Story = {
 
 export const AccessibilityLabel: Story = {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Pagination
       aria-label="Pagination"
-      totalItems={ 5000 } />
+      totalItems={ 5000 }>
+      <PaginationPages />
+    </Pagination>
   ),
 };
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -97,42 +126,50 @@ import { useState } from 'react';`,
       <Pagination
         onPageChange={ handlePageChange }
         page={ page }
-        totalItems={ 500 } />
+        totalItems={ 500 }>
+        <PaginationPages />
+      </Pagination>
     );
   },
 };
 
 export const Default: Story = {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Pagination totalItems={ 5000 } />
+    <Pagination totalItems={ 5000 }>
+      <PaginationPages />
+    </Pagination>
   ),
 };
 
 export const Disabled: Story = {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Pagination
       disabled
-      totalItems={ 500 } />
+      totalItems={ 500 }>
+      <PaginationPages />
+    </Pagination>
   ),
 };
 
 export const ItemsPerPage: Story = {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Pagination
       pageSize={ 25 }
-      totalItems={ 500 } />
+      totalItems={ 500 }>
+      <PaginationPages />
+    </Pagination>
   ),
 };
 
@@ -142,54 +179,57 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <Pagination totalItems={ 100 } withPageSizeSelector />
+    <Pagination totalItems={ 100 }>
+      <PaginationPageSizeSelector />
+      <PaginationPages />
+      <PaginationPageSelector />
+    </Pagination>
+  ),
+};
+
+export const PageSizeSelection: Story = {
+  globals: {
+    imports: `import { Pagination, PaginationPageSizeSelector, PaginationPages } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Pagination totalItems={ 500 }>
+      <PaginationPageSizeSelector />
+
+      <PaginationPages />
+    </Pagination>
   ),
 };
 
 export const SiblingCount: Story = {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Pagination
       defaultPage={ 5 }
       siblingCount={ 2 }
-      totalItems={ 500 } />
+      totalItems={ 500 }>
+      <PaginationPages />
+    </Pagination>
   ),
 }
 
-export const WithLabels: Story = {
+export const WithTooltipLabels: Story = {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Pagination
-      labelTooltipPrev={ 'Go to previous page' }
-      labelTooltipNext={ 'Go to next page' }
-      totalItems={ 500 } />
+      labelTooltipPrev="Go to previous page"
+      labelTooltipNext="Go to next page"
+      totalItems={ 500 }>
+      <PaginationPages />
+    </Pagination>
   ),
 };
-
-export const TotalItems: Story = {
-  globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`,
-  },
-  tags: ['!dev'],
-  parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
-  },
-  render: ({}) => (
-    <Pagination
-      renderTotalItemsLabel={ ({ totalItems }) => `of ${totalItems} results` }
-      totalItems={ 500 }
-      withPageSizeSelector />
-  ),
-};
-
 
 export const ThemeGenerator: Story = {
   parameters: {
@@ -198,10 +238,20 @@ export const ThemeGenerator: Story = {
   tags: ['!dev'],
   render: ({}) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
-      <Pagination totalItems={ 100 } />
-      <Pagination totalItems={ 500 } pageSize={ 25 } />
-      <Pagination totalItems={ 500 } disabled />
-      <Pagination totalItems={ 100 } withPageSizeSelector />
+      <Pagination totalItems={ 100 }>
+        <PaginationPages />
+      </Pagination>
+      <Pagination totalItems={ 500 } pageSize={ 25 }>
+        <PaginationPages />
+      </Pagination>
+      <Pagination totalItems={ 500 } disabled>
+        <PaginationPages />
+      </Pagination>
+      <Pagination totalItems={ 100 }>
+        <PaginationPageSizeSelector />
+        <PaginationPages />
+        <PaginationPageSelector />
+      </Pagination>
     </div>
   ),
 };

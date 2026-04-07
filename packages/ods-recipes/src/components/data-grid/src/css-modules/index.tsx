@@ -23,6 +23,8 @@ import {
   MenuTrigger,
   PAGINATION_PER_PAGE,
   Pagination,
+  PaginationPageSizeSelector,
+  PaginationPages,
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -280,8 +282,11 @@ const DataGrid = (): JSX.Element => {
         onPageSizeChange={ ({ pageSize }) => setPageSize(pageSize) }
         page={ currentPage }
         pageSize={ pageSize }
-        totalItems={ total }
-        withPageSizeSelector />
+        totalItems={ total }>
+        <PaginationPageSizeSelector />
+
+        <PaginationPages />
+      </Pagination>
     </div>
   );
 };

@@ -28,7 +28,7 @@ import {
   Meter,
   Message, MessageBody, MessageIcon,
   Modal, ModalBody, ModalContent, ModalTrigger,
-  Pagination,
+  Pagination, PaginationPageSelector, PaginationPageSizeSelector, PaginationPages,
   Password,
   PhoneNumber, PhoneNumberControl, PhoneNumberCountryList,
   Popover, PopoverContent, PopoverTrigger,
@@ -975,8 +975,18 @@ function App(): ReactElement {
           <h1>Pagination</h1>
 
           <Pagination
-            aria-label="Pagination"
-            totalItems={ 5000 } />
+            aria-label="Simple Pagination"
+            totalItems={ 5000 }>
+            <PaginationPages />
+          </Pagination>
+
+          <Pagination
+            aria-label="Full Pagination"
+            totalItems={ 5000 }>
+            <PaginationPageSizeSelector />
+            <PaginationPages />
+            <PaginationPageSelector />
+          </Pagination>
         </section>
 
         <section>

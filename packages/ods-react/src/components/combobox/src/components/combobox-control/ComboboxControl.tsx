@@ -244,7 +244,8 @@ const ComboboxControl: FC<ComboboxControlProp> = forwardRef(({
             inputRef.current?.focus();
           }}
           // We use an unfocusable button here to get a populated relatedTarget on container blur event
-          tabIndex={ -1 }>
+          tabIndex={ -1 }
+          type="button">
           <Icon
             className={ classNames(
               style['combobox-control__field__caret__icon'],

@@ -35,15 +35,15 @@ const CartProductGroupItem: FC<CartProductGroupItemProp> = forwardRef(({
       data-ods="cart-product-group-item"
       ref={ ref }
       { ...props }>
-      <div>
+      <div className={ style['cart-product-group-item__info'] }>
         {
           details &&
-          <span className={ style['cart-product-group-item__details'] }>
+          <span className={ style['cart-product-group-item__info__details'] }>
             { details }
           </span>
         }
 
-        <div className={ style['cart-product-group-item__item'] }>
+        <div className={ style['cart-product-group-item__info__item'] }>
           {
             quantity !== undefined &&
             <Text
@@ -53,11 +53,11 @@ const CartProductGroupItem: FC<CartProductGroupItemProp> = forwardRef(({
             </Text>
           }
 
-          <span className={ style['cart-product-group-item__item__label'] }>
+          <span className={ style['cart-product-group-item__info__item__label'] }>
             { label }
           </span>
 
-          <span className={ style['cart-product-group-item__item__price'] }>
+          <span className={ style['cart-product-group-item__info__item__price'] }>
             { price }
           </span>
         </div>

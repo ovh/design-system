@@ -15,6 +15,7 @@
     color: inherit;
     font-family: inherit;
     font-size: inherit;
+    user-select: text;
 
     &:disabled {
       cursor: inherit;

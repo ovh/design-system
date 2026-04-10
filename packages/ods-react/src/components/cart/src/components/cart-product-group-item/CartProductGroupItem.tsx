@@ -35,44 +35,42 @@ const CartProductGroupItem: FC<CartProductGroupItemProp> = forwardRef(({
       data-ods="cart-product-group-item"
       ref={ ref }
       { ...props }>
-      <div className={ style['cart-product-group-item__info'] }>
+      {
+        details &&
+        <span className={ style['cart-product-group-item__details'] }>
+          { details }
+        </span>
+      }
+
+      <div className={ style['cart-product-group-item__item'] }>
         {
-          details &&
-          <span className={ style['cart-product-group-item__info__details'] }>
-            { details }
-          </span>
+          quantity !== undefined &&
+          <Text
+            as="span"
+            preset={ TEXT_PRESET.small }>
+            { quantity }x
+          </Text>
         }
 
-        <div className={ style['cart-product-group-item__info__item'] }>
-          {
-            quantity !== undefined &&
-            <Text
-              as="span"
-              preset={ TEXT_PRESET.small }>
-              { quantity }x
-            </Text>
-          }
+        <span className={ style['cart-product-group-item__item__label'] }>
+          { label }
+        </span>
 
-          <span className={ style['cart-product-group-item__info__item__label'] }>
-            { label }
-          </span>
+        <span className={ style['cart-product-group-item__item__price'] }>
+          { price }
+        </span>
 
-          <span className={ style['cart-product-group-item__info__item__price'] }>
-            { price }
-          </span>
-        </div>
+        {
+          onRemove &&
+          <Button
+            aria-label={ translate(CART_I18N.removeProductButton) }
+            onClick={ onRemove }
+            size={ BUTTON_SIZE.sm }
+            variant={ BUTTON_VARIANT.ghost }>
+            <Icon name={ ICON_NAME.trash } />
+          </Button>
+        }
       </div>
-
-      {
-        onRemove &&
-        <Button
-          aria-label={ translate(CART_I18N.removeProductButton) }
-          onClick={ onRemove }
-          size={ BUTTON_SIZE.sm }
-          variant={ BUTTON_VARIANT.ghost }>
-          <Icon name={ ICON_NAME.trash } />
-        </Button>
-      }
 
       <Divider
         className={ style['cart-product-group-item__divider'] }

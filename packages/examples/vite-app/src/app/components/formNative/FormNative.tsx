@@ -1,4 +1,5 @@
-import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';
+/* eslint-disable no-console */
+import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControl, PromptInputSendButton, PromptInputTextControl, Textarea } from '@ovhcloud/ods-react';
 import { type FormEvent, type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.module.scss';
 
@@ -6,17 +7,17 @@ function FormNative(): ReactElement {
   const formRef = useRef<HTMLFormElement>(null);
   const [areAllRequired, setAreAllRequired] = useState(true);
 
-  async function onSubmit(e: FormEvent) {
+  async function onSubmit(e: FormEvent): Promise<void> {
     e.preventDefault();
 
     const formData = new FormData(formRef.current!);
 
     for (const [key, value] of formData) {
-      console.log(`${key}: ${value}`)
+      console.log(`${key}: ${value}`);
     }
   }
 
-  function onAllRequiredToggle() {
+  function onAllRequiredToggle(): void {
     setAreAllRequired(() => !areAllRequired);
   }
 
@@ -27,7 +28,7 @@ function FormNative(): ReactElement {
       ref={ formRef }>
       <div>
         <button onClick={ onAllRequiredToggle }
-                type="button">
+          type="button">
           Toggle All Required
         </button>
       </div>
@@ -37,6 +38,13 @@ function FormNative(): ReactElement {
         <br />
         - All fields required: { areAllRequired.toString() }
       </p>
+
+      <PromptInput required={areAllRequired}>
+        <PromptInputControl>
+          <PromptInputTextControl aria-label="enter your prompt" />
+          <PromptInputSendButton aria-label="send prompt" disabled={false} />
+        </PromptInputControl>
+      </PromptInput>
 
       <FormField>
         <FormFieldLabel>

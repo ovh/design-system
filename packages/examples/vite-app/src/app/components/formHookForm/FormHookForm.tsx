@@ -1,18 +1,22 @@
-import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';
+/* eslint-disable no-console */
+import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControl, PromptInputSendButton, PromptInputTextControl, Textarea } from '@ovhcloud/ods-react';
 import { type ReactElement, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import styles from './formHookForm.module.scss';
 
 type FormData = {
+  promptInput: string,
   textarea: string,
 }
 
 const defaultValue: FormData = {
+  promptInput: 'prompt input default value',
   textarea: 'default textarea',
 };
 
 function FormHookForm(): ReactElement {
   const {
+    control,
     formState: { errors },
     handleSubmit,
     register,
@@ -23,11 +27,11 @@ function FormHookForm(): ReactElement {
   const [areAllRequired, setAreAllRequired] = useState(false);
 
   function onSubmit(data: FormData): void {
-    console.log('-- submit --')
-    console.log(data)
+    console.log('-- submit --');
+    console.log(data);
   }
 
-  function onAllRequiredToggle() {
+  function onAllRequiredToggle(): void {
     setAreAllRequired(() => !areAllRequired);
   }
 
@@ -37,7 +41,7 @@ function FormHookForm(): ReactElement {
       onSubmit={ handleSubmit(onSubmit) }>
       <div>
         <button onClick={ onAllRequiredToggle }
-                type="button">
+          type="button">
           Toggle All Required
         </button>
       </div>
@@ -47,6 +51,32 @@ function FormHookForm(): ReactElement {
         <br />
         - All fields required: { areAllRequired.toString() }
       </p>
+
+      <Controller
+        control={control}
+        name="promptInput"
+        rules={{ required: areAllRequired }}
+        render={({ field }) => (
+          <FormField invalid={!!errors.promptInput}>
+            <PromptInput
+              defaultValue={defaultValue.promptInput}
+              name={field.name}
+              onInputSubmit={(value) => {
+                field.onChange(value);
+                handleSubmit(onSubmit)();
+              }}
+            >
+              <PromptInputControl>
+                <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, gap: '4px' }}>
+                  <PromptInputTextControl aria-label="enter your prompt" />
+                  <FormFieldError>Some error message</FormFieldError>
+                </div>
+                <PromptInputSendButton disabled={false} aria-label="send prompt" />
+              </PromptInputControl>
+            </PromptInput>
+          </FormField>
+        )}
+      />
 
       <FormField invalid={ !!errors.textarea }>
         <FormFieldLabel>

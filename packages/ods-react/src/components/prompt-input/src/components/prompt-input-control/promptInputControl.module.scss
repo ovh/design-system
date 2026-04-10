@@ -1,0 +1,7 @@
+@layer ods-organisms {
+  .prompt-input-control {
+    display: flex;
+    gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+    align-items: start;
+  }
+}

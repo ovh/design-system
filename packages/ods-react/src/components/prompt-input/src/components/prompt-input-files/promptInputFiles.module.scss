@@ -1,0 +1,30 @@
+@use "../../../../../style/scroll";
+
+@layer ods-organisms {
+  .prompt-input {
+    &__files {
+      @include scroll.hide-scrollbar();
+
+      display: flex;
+      position: relative;
+      flex-grow: 1;
+      gap: 8px;
+      overflow: auto;
+
+      &::after {
+        position: sticky;
+        right: 0;
+        flex-shrink: 0;
+        align-self: stretch;
+        background-image: linear-gradient(to left, var(--ods-theme-background-color), transparent);
+        width: 16px;
+        content: "";
+        pointer-events: none;
+      }
+    }
+
+    &__file {
+      flex-shrink: 0;
+    }
+  }
+}

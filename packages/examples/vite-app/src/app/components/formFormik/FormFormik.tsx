@@ -1,15 +1,18 @@
-import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, Quantity, QuantityControl, QuantityInput, Textarea } from '@ovhcloud/ods-react';
+/* eslint-disable no-console */
+import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControl, PromptInputSendButton, PromptInputTextControl, Quantity, QuantityControl, QuantityInput, Textarea } from '@ovhcloud/ods-react';
 import { useFormik } from 'formik';
 import { type ReactElement } from 'react';
 import * as yup from 'yup';
 import styles from './formFormik.module.scss';
 
 type FormData = {
+  promptInput: string;
   quantity: string,
   textarea: string,
 }
 
 const validationSchema = yup.object<FormData>({
+  promptInput: yup.string().nullable().required(),
   quantity: yup.string().nullable().required(),
   textarea: yup.string().nullable().required(),
 });
@@ -17,6 +20,7 @@ const validationSchema = yup.object<FormData>({
 function FormFormik(): ReactElement {
   const formik = useFormik<FormData>({
     initialValues: {
+      promptInput: 'prompt input default value',
       quantity: '42',
       textarea: 'default textarea',
     },
@@ -31,6 +35,26 @@ function FormFormik(): ReactElement {
     <form
       className={ styles['form-formik'] }
       onSubmit={ formik.handleSubmit }>
+
+      <FormField invalid={ formik.touched.quantity && !!formik.errors.quantity }>
+        <FormFieldLabel>
+          Prompt input:
+        </FormFieldLabel>
+        <PromptInput
+          defaultValue={formik.initialValues.promptInput}
+          name="promptInput"
+          onInputSubmit={async(value) => {
+            await formik.setFieldValue('promptInput', value);
+            formik.submitForm();
+          }}
+        >
+          <PromptInputControl>
+            <PromptInputTextControl placeholder="Placeholder" />
+            <PromptInputSendButton disabled={false} />
+          </PromptInputControl>
+        </PromptInput>
+      </FormField>
+
       <FormField invalid={ formik.touched.quantity && !!formik.errors.quantity }>
         <FormFieldLabel>
           Quantity:

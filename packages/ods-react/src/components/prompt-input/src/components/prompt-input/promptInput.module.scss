@@ -1,5 +1,20 @@
-@layer ods-[atoms|molecules|organisms|quarks] {
+@layer ods-organisms {
   .prompt-input {
-    // BEM elements and modifiers
+    --ods-prompt-input-border-color: var(--ods-color-information-500);
+    --ods-prompt-input-border-radius: var(--ods-theme-border-radius);
+    // ...
+    --ods-prompt-input-control-padding-vertical: calc(var(--ods-theme-padding-vertical) / 2);
+    --ods-prompt-input-control-padding-horizontal: var(--ods-theme-input-padding-horizontal);
+    --ods-prompt-input-control-border-color: transparent;
+    --ods-prompt-input-control-line-height: 1.375em;
+    --ods-prompt-input-control-min-lines: 1;
+    --ods-prompt-input-control-max-lines: 5;
+
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--ods-theme-row-gap) * 2) calc(var(--ods-theme-column-gap) * 2);
+    border: 1px solid var(--ods-prompt-input-border-color);
+    border-radius: var(--ods-prompt-input-border-radius);
+    padding: calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-horizontal) * 2 );
   }
 }

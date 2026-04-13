@@ -1,6 +1,11 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/state';
+
 @layer ods-organisms {
   .prompt-input {
-    --ods-prompt-input-border-color: var(--ods-color-information-500);
+    --ods-prompt-input-border-color: var(--ods-color-form-element-border-default);
+    --ods-prompt-input-border-color-focus: var(--ods-color-form-element-border-focus-default);
+    --ods-prompt-input-border-color-hover: var(--ods-color-form-element-border-hover-default);
     --ods-prompt-input-border-radius: var(--ods-theme-border-radius);
     // ...
     --ods-prompt-input-control-padding-vertical: calc(var(--ods-theme-padding-vertical) / 2);
@@ -16,5 +21,21 @@
     border: 1px solid var(--ods-prompt-input-border-color);
     border-radius: var(--ods-prompt-input-border-radius);
     padding: calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-horizontal) * 2 );
+    
+    &:hover {
+      border-color: var(--ods-prompt-input-border-color-hover); 
+    }
+    
+    &:has(textarea:focus),
+    &:has(textarea:focus-visible) {
+      @include focus.ods-focus();
+    
+      border-color: var(--ods-prompt-input-border-color-focus);
+    }
+
+    &--disabled {
+      @include state.ods-is-disabled();
+    }
+
   }
 }

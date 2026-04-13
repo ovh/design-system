@@ -1,5 +1,5 @@
 export { PromptInput, type PromptInputProp } from './components/prompt-input/PromptInput';
-export { PromptInputControl, type PromptInputControlProp } from './components/prompt-input-control/PromptInputControl';
+export { PromptInputControls, type PromptInputControlsProp } from './components/prompt-input-controls/PromptInputControls';
 export {
   PromptInputSendButton,
   type PromptInputSendButtonProp,

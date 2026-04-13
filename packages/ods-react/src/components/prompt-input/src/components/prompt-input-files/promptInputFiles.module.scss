@@ -1,30 +1,11 @@
-@use "../../../../../style/scroll";
-
 @layer ods-organisms {
-  .prompt-input {
-    &__files {
-      @include scroll.hide-scrollbar();
+  .prompt-input-files {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--ods-theme-row-gap);
 
-      display: flex;
-      position: relative;
-      flex-grow: 1;
-      gap: 8px;
-      overflow: auto;
-
-      &::after {
-        position: sticky;
-        right: 0;
-        flex-shrink: 0;
-        align-self: stretch;
-        background-image: linear-gradient(to left, var(--ods-theme-background-color), transparent);
-        width: 16px;
-        content: "";
-        pointer-events: none;
-      }
-    }
-
-    &__file {
-      flex-shrink: 0;
+    &:has(> :only-child) {
+      align-self: flex-start;
     }
   }
 }

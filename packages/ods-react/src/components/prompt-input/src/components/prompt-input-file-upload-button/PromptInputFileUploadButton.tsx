@@ -1,29 +1,51 @@
-import type { FileUploadRootProps } from '@ark-ui/react/file-upload';
 import type { ComponentPropsWithRef } from 'react';
-import { FileUpload } from '@ark-ui/react/file-upload';
-import { type FC, type JSX, forwardRef } from 'react';
-import { Button } from '../../../..//button/src';
-import { ICON_NAME, Icon } from '../../../../icon/src';
+import classNames from 'classnames';
+import { type FC, type JSX, forwardRef, useRef } from 'react';
+import { Button } from '../../../..//button/src';import { ICON_NAME, Icon } from '../../../../icon/src';
+import { usePromptInput } from '../../contexts/usePromptInput';
+import style from './PromptInputFileUploadButton.module.scss';
 
-interface PromptInputFileUploadButtonProp extends ComponentPropsWithRef<'div'>, FileUploadRootProps {}
+interface PromptInputFileUploadButtonProp extends ComponentPropsWithRef<'input'> {}
 
 const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forwardRef(
-  ({ onFileAccept, onFileReject, ...props }, ref): JSX.Element => {
+  ({ className, ...props }, ref): JSX.Element => {
+    const { disabled,
+      // loading
+    } = usePromptInput();
+    const inputRef = useRef<HTMLInputElement | null>(null);
+
     return (
-      <FileUpload.Root
-        data-ods="prompt-input-file-upload-button"
-        onFileAccept={onFileAccept}
-        onFileReject={onFileReject}
-        {...props}
-        ref={ref}
-      >
-        <FileUpload.Trigger asChild>
-          <Button size="sm" variant="ghost">
-            <Icon name={ICON_NAME.plus} />
-          </Button>
-        </FileUpload.Trigger>
-        <FileUpload.HiddenInput />
-      </FileUpload.Root>
+      <>
+        <input
+          ref={(node) => {
+            inputRef.current = node;
+            if (typeof ref === 'function') {
+              ref(node);
+            } else if (ref) {
+              ref.current = node;
+            }
+          }}
+          {...props}
+          className={style['prompt-input-file-upload-button__input']}
+          disabled={disabled}
+          aria-hidden
+          type="file"
+        />
+        <Button
+          aria-describedby={props['aria-describedby']}
+          aria-label={props['aria-label']}
+          className={classNames(style['prompt-input-file-upload-button__button'], className)}
+          data-ods="prompt-input-file-upload-button"
+          disabled={disabled}
+          // loading={loading}
+          onClick={() => inputRef.current?.click()}
+          size="sm"
+          type='button'
+          variant="ghost"
+        >
+          <Icon name={ICON_NAME.plus} />
+        </Button>
+      </>
     );
   },
 );

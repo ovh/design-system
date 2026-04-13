@@ -27,6 +27,10 @@ interface PromptInputRootProp {
    */
   onValueChange?: (value: string) => void;
   /**
+   * Callback fired when a file change is triggered.
+   */
+  onFileChange?: (value: File[]) => void;
+  /**
    * Whether the component is readonly.
    */
   readOnly?: boolean;
@@ -42,7 +46,9 @@ interface PromptInputProviderProp extends PromptInputRootProp {
 
 type PromptInputContextType = Omit<PromptInputProviderProp, 'children'> & {
   inputValue: string;
+  fileCollection: File[];
   setInputValue: (value: string) => void;
+  setFileCollection: (files: File[]) => void;
 };
 
 const PromptInputContext = createContext<PromptInputContextType | undefined>(undefined);
@@ -52,27 +58,32 @@ const PromptInputProvider = ({
   disabled,
   loading,
   onInputSubmit,
+  onFileChange,
   onValueChange,
   readOnly,
   required,
   ...props
 }: PromptInputProviderProp): JSX.Element => {
+  const [fileCollection, setFileCollection] = useState<File[]>([]);
   const [inputValue, setInputValue] = useState(props.defaultValue ?? '');
-  // TODO -> Get default value from context to set initial state of inputValue and isEmpty accordingly
 
   useEffect(() => {
+    onFileChange?.(fileCollection);
     onValueChange?.(inputValue);
-  }, [inputValue, onValueChange]);
+  }, [inputValue, onValueChange, onFileChange, fileCollection]);
 
   return (
     <PromptInputContext.Provider value={{
       disabled,
+      fileCollection,
       inputValue,
       loading,
+      onFileChange,
       onInputSubmit,
       onValueChange,
       readOnly,
       required,
+      setFileCollection,
       setInputValue,
       ...props,
     }}

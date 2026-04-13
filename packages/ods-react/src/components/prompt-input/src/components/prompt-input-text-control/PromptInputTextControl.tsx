@@ -15,6 +15,17 @@ function applyScrollHeight(el: HTMLTextAreaElement): void {
 
 const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
   ({ className, ...props }, ref): JSX.Element => {
+    const {
+      defaultValue,
+      disabled,
+      inputValue,
+      name,
+      onInputSubmit,
+      readOnly,
+      required,
+      setInputValue,
+    } = usePromptInput();
+
     const callbackRef: RefCallback<HTMLTextAreaElement> = useCallback(
       (node) => {
         if (node && !supportsFieldSizing) {
@@ -30,8 +41,23 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
       },
       [ref],
     );
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>): void => {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        if (!disabled && inputValue.trim() !== '') {
+          onInputSubmit?.(event.currentTarget.value);
+        }
+      }
+    };
 
-    const { disabled, defaultValue, loading, name, readOnly, required, setInputValue } = usePromptInput();
+    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+      if (!supportsFieldSizing) {
+        applyScrollHeight(event.target);
+      }
+      props.onChange?.(event);
+
+      setInputValue(event.target.value);
+    };
 
     return (
       <Textarea
@@ -41,14 +67,9 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
         defaultValue={defaultValue}
         disabled={disabled}
         name={name}
-        onChange={(event) => {
-          if (!supportsFieldSizing) {
-            applyScrollHeight(event.target);
-          }
-          props.onChange?.(event);
-          setInputValue(event.target.value);
-        }}
-        readOnly={readOnly || loading}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+        readOnly={readOnly}
         ref={callbackRef}
         required={required}
         rows={1}

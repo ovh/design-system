@@ -6,16 +6,16 @@ import style from './promptInput.module.scss';
 interface PromptInputProp extends Omit<ComponentPropsWithRef<'div'>, 'defaultValue'>, PromptInputRootProp {}
 
 const PromptInput: FC<PromptInputProp> = forwardRef(({
-  className,
-  disabled,
-  defaultValue,
   children,
+  className,
+  defaultValue,
+  disabled,
   loading,
-  required,
-  readOnly,
   name,
   onInputSubmit,
   onValueChange,
+  readOnly,
+  required,
   ...props
 }, ref): JSX.Element => {
 
@@ -23,15 +23,18 @@ const PromptInput: FC<PromptInputProp> = forwardRef(({
     <PromptInputProvider
       defaultValue={ defaultValue }
       disabled={ disabled }
+      // Will properly handle loading in another commit
+      loading={false}
       name={ name }
-      required={ required }
-      readOnly={ readOnly }
-      loading={ loading }
       onInputSubmit={ onInputSubmit }
       onValueChange={ onValueChange }
+      readOnly={ readOnly }
+      required={ required }
     >
       <div
-        className={ classNames(style['prompt-input'], className) }
+        className={ classNames(style['prompt-input'],
+          { [style['prompt-input--disabled']]: disabled },
+          className) }
         data-ods="prompt-input"
         ref={ ref }
         { ...props }

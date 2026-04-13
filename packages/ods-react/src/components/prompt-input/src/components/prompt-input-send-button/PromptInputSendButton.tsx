@@ -6,8 +6,13 @@ import { usePromptInput } from '../../contexts/usePromptInput';
 interface PromptInputSendButtonProp extends ButtonProp {}
 
 const PromptInputSendButton: FC<PromptInputSendButtonProp> = forwardRef(({ ...props }, ref): JSX.Element => {
-  const { loading, inputValue, disabled, onInputSubmit } = usePromptInput();
-  const isDisabled = props.disabled !== undefined ? props.disabled : inputValue === '' || disabled;
+  const {
+    disabled,
+    inputValue,
+    // loading,
+    onInputSubmit,
+  } = usePromptInput();
+  const isDisabled = disabled ?? inputValue.trim() === '';
 
   return (
     <Button
@@ -16,10 +21,10 @@ const PromptInputSendButton: FC<PromptInputSendButtonProp> = forwardRef(({ ...pr
       variant={BUTTON_VARIANT.ghost}
       ref={ref}
       {...props}
-      type="button"
-      loading={loading}
       disabled={isDisabled}
+      // loading={loading}
       onClick={() => onInputSubmit?.(inputValue)}
+      type="button"
     >
       <Icon name={ICON_NAME.arrowUp} />
     </Button>

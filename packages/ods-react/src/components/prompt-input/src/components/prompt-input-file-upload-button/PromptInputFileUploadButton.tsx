@@ -1,7 +1,7 @@
-import type { ComponentPropsWithRef } from 'react';
 import classNames from 'classnames';
-import { type FC, type JSX, forwardRef, useRef } from 'react';
-import { Button } from '../../../..//button/src';import { ICON_NAME, Icon } from '../../../../icon/src';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useRef } from 'react';
+import { Button } from '../../../..//button/src';
+import { ICON_NAME, Icon } from '../../../../icon/src';
 import { usePromptInput } from '../../contexts/usePromptInput';
 import style from './PromptInputFileUploadButton.module.scss';
 

@@ -117,20 +117,20 @@ export const Readonly = (): JSX.Element => (
   </PromptInput>
 );
 
-// export const Loading = (): JSX.Element => (
-//   <PromptInput
-//     loading
-//     name="prompt-input-textArea"
-//     defaultValue="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore"
-//     onValueChange={(v) => console.log('[DEV]: value:', v)}
-//   >
-//     <PromptInputControls>
-//       <PromptInputFileUploadButton />
-//       <PromptInputTextControl />
-//       <PromptInputSendButton />
-//     </PromptInputControls>
-//   </PromptInput>
-// );
+export const Loading = (): JSX.Element => (
+  <PromptInput
+    loading
+    name="prompt-input-textArea"
+    defaultValue="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore"
+    onValueChange={(v) => console.log('[DEV]: value:', v)}
+  >
+    <PromptInputControls>
+      <PromptInputFileUploadButton />
+      <PromptInputTextControl />
+      <PromptInputSendButton />
+    </PromptInputControls>
+  </PromptInput>
+);
 
 export const Disabled = (): JSX.Element => (
   <PromptInput

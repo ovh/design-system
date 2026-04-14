@@ -9,10 +9,10 @@ const PromptInputSendButton: FC<PromptInputSendButtonProp> = forwardRef(({ ...pr
   const {
     disabled,
     inputValue,
-    // loading,
+    loading,
     onInputSubmit,
   } = usePromptInput();
-  const isDisabled = disabled ?? inputValue.trim() === '';
+  const isDisabled = disabled || inputValue.trim() === '' || loading;
 
   return (
     <Button
@@ -21,8 +21,8 @@ const PromptInputSendButton: FC<PromptInputSendButtonProp> = forwardRef(({ ...pr
       variant={BUTTON_VARIANT.ghost}
       ref={ref}
       {...props}
-      disabled={isDisabled}
-      // loading={loading}
+      disabled={ isDisabled }
+      loading={ loading }
       onClick={() => onInputSubmit?.(inputValue)}
       type="button"
     >

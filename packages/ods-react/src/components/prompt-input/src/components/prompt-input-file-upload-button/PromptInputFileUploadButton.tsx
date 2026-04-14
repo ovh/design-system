@@ -9,9 +9,7 @@ interface PromptInputFileUploadButtonProp extends ComponentPropsWithRef<'input'>
 
 const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forwardRef(
   ({ className, ...props }, ref): JSX.Element => {
-    const { disabled,
-      // loading
-    } = usePromptInput();
+    const { disabled, loading } = usePromptInput();
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     return (
@@ -27,7 +25,7 @@ const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forward
           }}
           {...props}
           className={style['prompt-input-file-upload-button__input']}
-          disabled={disabled}
+          disabled={disabled || loading}
           aria-hidden
           type="file"
         />
@@ -36,8 +34,7 @@ const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forward
           aria-label={props['aria-label']}
           className={classNames(style['prompt-input-file-upload-button__button'], className)}
           data-ods="prompt-input-file-upload-button"
-          disabled={disabled}
-          // loading={loading}
+          disabled={disabled || loading}
           onClick={() => inputRef.current?.click()}
           size="sm"
           type='button'

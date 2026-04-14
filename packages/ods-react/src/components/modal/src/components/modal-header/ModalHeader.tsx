@@ -1,17 +1,16 @@
 import classNames from 'classnames';
-import { type FC, type JSX, type PropsWithChildren, useEffect } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useEffect } from 'react';
 import { useModal } from '../../contexts/useModal';
 import { ModalCloseTrigger } from '../modal-close-trigger/ModalCloseTrigger';
 import style from './modalHeader.module.scss';
 
-interface ModalHeaderProp extends PropsWithChildren {
-  className?: string,
-}
+interface ModalHeaderProp extends ComponentPropsWithRef<'div'> {}
 
-const ModalHeader: FC<ModalHeaderProp> = ({
+const ModalHeader: FC<ModalHeaderProp> = forwardRef(({
   children,
   className,
-}): JSX.Element => {
+  ...props
+}, ref): JSX.Element => {
   const { dismissible, setHasHeader } = useModal();
 
   useEffect(() => {
@@ -22,17 +21,21 @@ const ModalHeader: FC<ModalHeaderProp> = ({
   }, [setHasHeader]);
 
   return (
-    <div className={ classNames(style[ 'modal-header' ], className) }>
-      <div className={ style[ 'modal-header__content' ] }>
+    <div
+      className={ classNames(style['modal-header'], className) }
+      data-ods="modal-header"
+      ref={ ref }
+      { ...props }>
+      <div className={ style['modal-header__content'] }>
         { children }
       </div>
       {
         dismissible &&
-        <ModalCloseTrigger className={ style[ 'modal-header__close' ] } />
+        <ModalCloseTrigger className={ style['modal-header__close'] } />
       }
     </div>
   );
-};
+});
 
 ModalHeader.displayName = 'ModalHeader';
 

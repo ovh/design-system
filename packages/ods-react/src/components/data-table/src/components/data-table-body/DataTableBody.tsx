@@ -17,6 +17,7 @@ const DataTableBody: FC<DataTableBodyProp> = ({
   return (
     <tbody
       className={ className }
+      data-ods="data-table-body"
       { ...props }>
       {
         table.getRowModel().rows.map((row) => (

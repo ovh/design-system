@@ -1,0 +1,44 @@
+.anatomy-tech {
+  position: relative;
+  display: grid;
+  grid-template-columns: max-content max-content 1fr;
+  column-gap: calc(var(--ods-theme-column-gap) * 2);
+  border-radius: 4px;
+  padding: 30px 20px;
+}
+
+.anatomy-tech__components {
+  align-self: start;
+  overflow: hidden;
+}
+
+.anatomy-tech__components__item {
+  display: flex;
+  align-items: center;
+  column-gap: calc(var(--ods-theme-column-gap) / 2);
+}
+
+.anatomy-tech__components__item__icon {
+  color: var(--ods-theme-neutral-color);
+}
+
+.anatomy-tech__components__item__icon--selected {
+  color: var(--ods-theme-primary-color);
+}
+
+.anatomy-tech__story {
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+
+.anatomy-tech__story--align-start {
+  place-items: start;
+}
+
+.anatomy-tech-highlight {
+  position: absolute;
+  z-index: calc(var(--ods-theme-overlay-z-index) * 2);
+  box-shadow: 0 0 15px 5px #b73206;
+  pointer-events: none;
+}

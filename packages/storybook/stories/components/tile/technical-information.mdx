@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/tile/documentation/cssVariable.json';
 import specificationsTile from '../../../../ods-react/src/components/tile/documentation/tile.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -19,10 +19,7 @@ import * as TileStories from './tile.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/tile/anatomy-tech.png" />
-
-1. **Tile**
-2. **Tile Alt Container**
+<AnatomyTech of={ TileStories.AnatomyTech } />
 
 <TechnicalSpecification
   cssVariable={ cssVariable }

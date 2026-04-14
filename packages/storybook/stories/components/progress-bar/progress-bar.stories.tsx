@@ -32,6 +32,13 @@ export const Demo: Story = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <ProgressBar value="50" />
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { ProgressBar } from '@ovhcloud/ods-react';`,

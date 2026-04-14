@@ -2,7 +2,7 @@ import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ov
 import { Meta, Source } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/code/documentation/cssVariable.json';
 import specificationsCode from '../../../../ods-react/src/components/code/documentation/code.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
@@ -21,9 +21,7 @@ import * as CodeStories from './code.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/code/anatomy-tech.png" />
-
-1. **Code**
+<AnatomyTech of={ CodeStories.AnatomyTech } />
 
 <TechnicalSpecification
   cssVariable={ cssVariable}

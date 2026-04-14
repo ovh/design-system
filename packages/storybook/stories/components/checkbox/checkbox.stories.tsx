@@ -58,6 +58,31 @@ export const Demo: StoryObj = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <CheckboxGroup
+      defaultValue={ ['marketing'] }
+      name="acknowledgments">
+      <Checkbox value="term">
+        <CheckboxControl />
+
+        <CheckboxLabel>
+          I agree to the terms and conditions.
+        </CheckboxLabel>
+      </Checkbox>
+
+      <Checkbox value="marketing">
+        <CheckboxControl />
+
+        <CheckboxLabel>
+          I agree to receive marketing communications.
+        </CheckboxLabel>
+      </Checkbox>
+    </CheckboxGroup>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Checkbox, CheckboxControl } from '@ovhcloud/ods-react';`,

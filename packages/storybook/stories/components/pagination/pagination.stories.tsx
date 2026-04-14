@@ -104,6 +104,17 @@ export const AccessibilityLabel: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Pagination totalItems={ 100 }>
+      <PaginationPageSizeSelector />
+      <PaginationPages />
+      <PaginationPageSelector />
+    </Pagination>
+  ),
+};
+
 export const Controlled: Story = {
   globals: {
     imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';

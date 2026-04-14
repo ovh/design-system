@@ -82,6 +82,33 @@ export const Demo: StoryObj = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Drawer open>
+      <DrawerTrigger asChild>
+        <Button>
+          Drawer trigger
+        </Button>
+      </DrawerTrigger>
+
+      <DrawerContent
+        createPortal={ false }
+        position={ DRAWER_POSITION.right }
+        style={{
+          position: 'absolute',
+          width: 'auto',
+          height: 'auto',
+          animation: 'none',
+        }}>
+        <DrawerBody>
+          My drawer content
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+  ),
+};
+
 export const Controlled: Story = {
   globals: {
     imports: `import { Button, Drawer, DrawerBody, DrawerContent } from '@ovhcloud/ods-react';

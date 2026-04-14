@@ -93,6 +93,36 @@ export const Demo: StoryObj = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  parameters: {
+    layout: 'start',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ height: '230px' }}>
+      <Select
+        items={[
+          { label: 'Dog', value:'dog' },
+          { label: 'Cat', value:'cat' },
+          { label: 'Hamster', value:'hamster' },
+          { label: 'Parrot', value:'parrot' },
+          { label: 'Spider', value:'spider' },
+          { label: 'Goldfish', value:'goldfish' },
+        ]}
+        open
+        overlayConfig={{
+          flip: false,
+        }}>
+        <SelectControl
+          placeholder="Select one or more pets"
+          style={{ width: '230px' }} />
+
+        <SelectContent createPortal={ false } />
+      </Select>
+    </div>
+  ),
+};
+
 export const AccessibilityFormField: Story = {
   globals: {
     imports: `import { FormField, FormFieldLabel, Select, SelectContent, SelectControl } from '@ovhcloud/ods-react';`,

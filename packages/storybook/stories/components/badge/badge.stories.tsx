@@ -68,6 +68,15 @@ export const Color: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Badge>
+      Badge
+    </Badge>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Badge } from '@ovhcloud/ods-react';`,

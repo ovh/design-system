@@ -17,28 +17,6 @@ const meta: Meta<AccordionProp> = {
 
 export default meta;
 
-export const Overview: Story = {
-  tags: ['!dev'],
-  render: ({}) => (
-    <Accordion>
-      <AccordionItem value="0">
-        <AccordionTrigger>
-          <Text preset="paragraph">
-            Hello World!
-          </Text>
-        </AccordionTrigger>
-        <AccordionContent>
-          <Text preset="paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit.
-          </Text>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  ),
-};
-
 export const Demo: Story = {
   render: (arg: AccordionProp) => (
     <Accordion disabled={ arg.disabled } multiple={ arg.multiple }>
@@ -86,6 +64,44 @@ export const Demo: Story = {
       control: 'boolean',
     },
   }),
+};
+
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Accordion
+      defaultValue={ ['0'] }
+      style={{ width: '100%' }}>
+      <AccordionItem value="0">
+        <AccordionTrigger>
+          <Text preset="paragraph">
+            Item number 1
+          </Text>
+        </AccordionTrigger>
+        <AccordionContent>
+          <Text preset="paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit.
+          </Text>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="1">
+        <AccordionTrigger>
+          <Text preset="paragraph">
+            Item number 2
+          </Text>
+        </AccordionTrigger>
+        <AccordionContent>
+          <Text preset="paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit.
+          </Text>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ),
 };
 
 export const Default: Story = {
@@ -165,6 +181,28 @@ export const Multiple: Story = {
         </AccordionItem>
       </Accordion>
     </>
+  ),
+};
+
+export const Overview: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Accordion>
+      <AccordionItem value="0">
+        <AccordionTrigger>
+          <Text preset="paragraph">
+            Hello World!
+          </Text>
+        </AccordionTrigger>
+        <AccordionContent>
+          <Text preset="paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit.
+          </Text>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   ),
 };
 

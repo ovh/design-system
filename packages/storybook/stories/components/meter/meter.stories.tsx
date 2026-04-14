@@ -97,6 +97,17 @@ export const AccessibilityAriaValuetext: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ width: '200px' }}>
+      <Meter
+        low={ 40 }
+        value={ 35 } />
+    </div>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Meter } from '@ovhcloud/ods-react';`,

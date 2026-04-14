@@ -13,6 +13,15 @@ export default meta;
 
 export const Demo: Story = {};
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ width: '200px' }}>
+      <Skeleton />
+    </div>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: 'import { Skeleton } from \'@ovhcloud/ods-react\';',

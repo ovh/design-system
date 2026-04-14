@@ -50,6 +50,15 @@ export const Demo: Story = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Code canCopy>
+      { `import { Text } from '@ovhcloud/ods-react';` }
+    </Code>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Code } from '@ovhcloud/ods-react';`,

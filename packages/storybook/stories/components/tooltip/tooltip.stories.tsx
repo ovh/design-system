@@ -102,6 +102,28 @@ export const Demo: StoryObj = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Tooltip
+      open
+      overlayConfig={{
+        flip: false,
+        position: TOOLTIP_POSITION.top,
+      }}>
+      <TooltipTrigger asChild>
+        <Icon
+          name={ ICON_NAME.circleQuestion }
+          style={{ fontSize: '24px' }} />
+      </TooltipTrigger>
+
+      <TooltipContent createPortal={ false }>
+        This is the tooltip content
+      </TooltipContent>
+    </Tooltip>
+  ),
+};
+
 export const Controlled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {

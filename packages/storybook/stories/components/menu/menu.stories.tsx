@@ -97,6 +97,35 @@ export const Demo: StoryObj = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  parameters: {
+    layout: 'start',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Menu
+      open
+      overlayConfig={{
+        flip: false,
+      }}>
+      <MenuTrigger asChild>
+        <Button>
+          Menu trigger
+        </Button>
+      </MenuTrigger>
+
+      <MenuContent createPortal={ false }>
+        <MenuGroup>
+          <MenuGroupLabel>My account</MenuGroupLabel>
+          <MenuItem value='profile'>Profile</MenuItem>
+          <MenuItem value='settings'>Settings</MenuItem>
+        </MenuGroup>
+        <MenuItem value='logout'>Logout</MenuItem>
+      </MenuContent>
+    </Menu>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`,

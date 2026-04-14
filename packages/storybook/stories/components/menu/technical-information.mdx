@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/menu/documentation/cssVariable.json';
 import specificationsMenu from '../../../../ods-react/src/components/menu/documentation/menu.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -19,15 +19,16 @@ import * as MenuStories from './menu.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/menu/anatomy-tech.png" />
-
-1. **Menu**
-2. **Menu Trigger**
-3. **Menu Content**
-4. **Menu Group**
-5. **Menu Group Label**
-6. **Menu Item**
-7. **Menu Submenu**
+<AnatomyTech
+  of={ MenuStories.AnatomyTech }
+  mappingOption={{
+    'Menu': { disabled: true },
+    'MenuContent': { isOverlay: true },
+    'MenuGroup': { isOverlay: true },
+    'MenuGroupLabel': { isOverlay: true },
+    'MenuItem': { isOverlay: true },
+    'MenuSubmenu': { disabled: true },
+  }} />
 
 <TechnicalSpecification
   cssVariable={ cssVariable }

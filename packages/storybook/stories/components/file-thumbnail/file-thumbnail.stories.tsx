@@ -69,6 +69,17 @@ export const Demo: Story = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => {
+    const fakeFile = new File(['foo'], 'foo.txt', { type: 'text/plain' });
+
+    return (
+      <FileThumbnail file={ fakeFile } />
+    );
+  },
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { FileThumbnail } from '@ovhcloud/ods-react';`,
@@ -153,9 +164,6 @@ export const Error: Story = {
 
 export const Overview: Story = {
   parameters: {
-    docs: {
-      source: { ...staticSourceRenderConfig() },
-    },
     layout: 'centered',
   },
   tags: ['!dev'],

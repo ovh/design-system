@@ -43,6 +43,16 @@ export const Demo: Story = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Medium
+      alt="NASA Computer room"
+      height={ 100 }
+      src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+  ),
+};
+
 export const Caption: Story = {
   globals: {
     imports: `import { TEXT_PRESET, Medium, Text } from '@ovhcloud/ods-react';`,

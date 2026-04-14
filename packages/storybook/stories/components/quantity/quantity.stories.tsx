@@ -100,6 +100,19 @@ export const AccessibilityLabel: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Quantity
+      defaultValue="0"
+      min={ 0 }>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`,

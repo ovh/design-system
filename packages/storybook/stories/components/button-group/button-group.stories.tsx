@@ -49,6 +49,20 @@ export const Demo: Story = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <ButtonGroup>
+      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+      <ButtonGroupItem value="custom">
+        <Icon name={ ICON_NAME.calendar } /> Custom
+      </ButtonGroupItem>
+    </ButtonGroup>
+  ),
+};
+
 export const Controlled: Story = {
   globals: {
     imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';

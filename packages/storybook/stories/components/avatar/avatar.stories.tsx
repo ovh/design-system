@@ -33,6 +33,13 @@ export const Demo: Story = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Avatar />
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Avatar } from '@ovhcloud/ods-react';`,

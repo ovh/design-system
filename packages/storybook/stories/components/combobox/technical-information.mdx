@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/combobox/documentation/cssVariable.json';
 import specificationsCombobox from '../../../../ods-react/src/components/combobox/documentation/combobox.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -21,11 +21,11 @@ import * as ComboboxStories from './combobox.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/combobox/anatomy-tech.png" />
-
-1. **Combobox**
-2. **Combobox Control**
-3. **Combobox Content**
+<AnatomyTech
+  of={ ComboboxStories.AnatomyTech }
+  mappingOption={{
+    'ComboboxContent': { isOverlay: true },
+  }} />
 
 <TechnicalSpecification
   cssVariable={ cssVariable }

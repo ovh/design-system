@@ -107,6 +107,29 @@ export const Demo: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{
+      display: 'flex',
+      alignItems: 'start',
+      gap: 'var(--ods-theme-row-gap) var(--ods-theme-column-gap)',
+    }}>
+      <FullExample />
+
+      <Cart>
+        <CartEmpty>
+          Your cart is empty
+        </CartEmpty>
+
+        <CartAction>
+          Continue my order <Icon name={ ICON_NAME.arrowRight } />
+        </CartAction>
+      </Cart>
+    </div>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Cart, CartAction, CartProductGroup, CartProductGroupItem, CartTotal, ICON_NAME, Icon, formatPrice } from '@ovhcloud/ods-react';`,

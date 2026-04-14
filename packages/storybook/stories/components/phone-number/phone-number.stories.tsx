@@ -108,6 +108,17 @@ export const AccessibilityLabel: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <PhoneNumber>
+      <PhoneNumberCountryList />
+
+      <PhoneNumberControl />
+    </PhoneNumber>
+  ),
+};
+
 export const Clearable: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   globals: {

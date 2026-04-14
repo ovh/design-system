@@ -199,6 +199,19 @@ import { useState } from 'react';`,
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Message>
+      <MessageIcon name={ ICON_NAME.circleInfo } />
+
+      <MessageBody>
+        Message
+      </MessageBody>
+    </Message>
+  ),
+};
+
 export const Color: Story = {
   decorators: [(story) => <div style={{ display: 'inline-flex', flexFlow: 'column', gap: '8px' }}>{ story() }</div>],
   globals: {

@@ -102,6 +102,33 @@ export const Demo: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', rowGap: 'var(--ods-theme-row-gap)' }}>
+      <DataTable
+        columns={ sampleColumns }
+        data={ sampleData }>
+        <DataTableHead />
+
+        <DataTableBody />
+      </DataTable>
+
+      <DataTable
+        columns={ sampleColumns }
+        data={ [] }>
+        <DataTableHead />
+
+        <DataTableBody />
+
+        <DataTableEmpty>
+          Empty table data
+        </DataTableEmpty>
+      </DataTable>
+    </div>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { DataTable, DataTableBody, DataTableHead } from '@ovhcloud/ods-react';

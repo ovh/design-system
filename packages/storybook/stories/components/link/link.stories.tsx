@@ -36,6 +36,17 @@ export const Demo: Story = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Link
+      href="https://www.ovhcloud.com"
+      target="_blank">
+      Link
+    </Link>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Link } from '@ovhcloud/ods-react';`,

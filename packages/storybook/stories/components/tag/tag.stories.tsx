@@ -60,6 +60,15 @@ export const Demo: Story = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Tag>
+      My tag
+    </Tag>
+  ),
+};
+
 export const Color: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {

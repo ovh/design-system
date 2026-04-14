@@ -132,6 +132,34 @@ export const Demo: StoryObj = {
   },
 };
 
+export const AnatomyTech: Story = {
+  parameters: {
+    layout: 'start',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ height: '230px' }}>
+      <Combobox
+        items={[
+          { label: 'Dog', value: 'dog' },
+          { label: 'Cat', value: 'cat' },
+          { label: 'Hamster', value: 'hamster' },
+          { label: 'Parrot', value: 'parrot' },
+          { label: 'Spider', value: 'spider' },
+          { label: 'Goldfish', value: 'goldfish' },
+        ]}
+        open
+        overlayConfig={{
+          flip: false,
+        }}>
+        <ComboboxControl placeholder="Combobox" />
+
+        <ComboboxContent createPortal={ false } />
+      </Combobox>
+    </div>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`,

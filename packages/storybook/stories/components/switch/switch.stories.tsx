@@ -80,6 +80,17 @@ export const AccessibilityAriaLabelledby: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Switch defaultValue="item-1">
+      <SwitchItem value="item-1">Item 1</SwitchItem>
+      <SwitchItem value="item-2">Item 2</SwitchItem>
+      <SwitchItem value="item-3">Item 3</SwitchItem>
+    </Switch>
+  ),
+};
+
 export const Checked: Story = {
   globals: {
     imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`,

@@ -93,6 +93,32 @@ export const Demo: StoryObj = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <FormField invalid>
+      <FormFieldLabel>
+        Description:
+        <FormFieldLabelSubLabel>
+          - mandatory
+        </FormFieldLabelSubLabel>
+      </FormFieldLabel>
+
+      <Textarea name="description" />
+
+      <FormFieldHelper>
+        <Text preset={ TEXT_PRESET.caption }>
+          Helper text
+        </Text>
+      </FormFieldHelper>
+
+      <FormFieldError>
+        Error message
+      </FormFieldError>
+    </FormField>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { FormField, Textarea } from '@ovhcloud/ods-react';`,

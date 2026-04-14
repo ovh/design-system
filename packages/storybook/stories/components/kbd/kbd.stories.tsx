@@ -27,6 +27,13 @@ export const Demo: Story = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Kbd>Esc</Kbd>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Kbd } from '@ovhcloud/ods-react';`,
@@ -43,9 +50,7 @@ export const Overview: Story = {
     layout: 'centered',
   },
   render: ({}) => (
-    <>
-      <Kbd>Esc</Kbd>
-    </>
+    <Kbd>Esc</Kbd>
   ),
 };
 

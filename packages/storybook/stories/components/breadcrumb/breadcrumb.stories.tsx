@@ -72,6 +72,33 @@ export const Demo: Story = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Breadcrumb>
+      <BreadcrumbItem>
+        <BreadcrumbLink
+          aria-label="Home"
+          href="#">
+          <Icon name={ ICON_NAME.home } />
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Parent
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">
+          Current
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  ),
+};
+
 export const Collapsed: Story = {
   globals: {
     imports: `import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@ovhcloud/ods-react';`,
@@ -337,7 +364,6 @@ export const Overview: Story = {
     </Breadcrumb>
   ),
 };
-
 
 export const AccessibilityWithAriaLabel: Story = {
   globals: {

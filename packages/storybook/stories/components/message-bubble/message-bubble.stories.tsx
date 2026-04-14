@@ -49,6 +49,15 @@ export const Demo: Story = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <MessageBubble>
+      Hello, how can I help you?
+    </MessageBubble>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { MessageBubble } from '@ovhcloud/ods-react';`,

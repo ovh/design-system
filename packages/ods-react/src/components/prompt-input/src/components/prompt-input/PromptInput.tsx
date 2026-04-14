@@ -23,8 +23,7 @@ const PromptInput: FC<PromptInputProp> = forwardRef(({
     <PromptInputProvider
       defaultValue={ defaultValue }
       disabled={ disabled }
-      // Will properly handle loading in another commit
-      loading={false}
+      loading={ loading }
       name={ name }
       onInputSubmit={ onInputSubmit }
       onValueChange={ onValueChange }

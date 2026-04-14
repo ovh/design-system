@@ -19,6 +19,7 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
       defaultValue,
       disabled,
       inputValue,
+      loading,
       name,
       onInputSubmit,
       readOnly,
@@ -65,7 +66,7 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
         data-ods="prompt-input-text-control"
         {...props}
         defaultValue={defaultValue}
-        disabled={disabled}
+        disabled={disabled || loading}
         name={name}
         onChange={handleChange}
         onKeyDown={handleKeyDown}

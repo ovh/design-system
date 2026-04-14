@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/checkbox/documentation/cssVariable.json';
 import specificationsCheckbox from '../../../../ods-react/src/components/checkbox/documentation/checkbox.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -21,12 +21,7 @@ import * as CheckboxStories from './checkbox.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/checkbox/anatomy-tech.png" />
-
-1. **Checkbox**
-2. **Checkbox Control**
-3. **Checkbox Label**
-4. **Checkbox Group**
+<AnatomyTech of={ CheckboxStories.AnatomyTech } />
 
 <TechnicalSpecification
   cssVariable={ cssVariable }

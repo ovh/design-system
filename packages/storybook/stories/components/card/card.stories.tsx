@@ -35,6 +35,16 @@ export const Demo: Story = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Card style={{ padding: '8px' }}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+      Interdum et malesuada fames ac ante ipsum primis in faucibus.
+    </Card>
+  ),
+};
+
 export const Color: Story = {
   decorators: [(story) => <div style={{ display: 'flex', gap: '16px' }}>{ story() }</div>],
   globals: {

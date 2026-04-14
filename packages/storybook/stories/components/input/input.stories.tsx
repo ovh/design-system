@@ -87,6 +87,13 @@ export const Demo: StoryObj = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Input placeholder="Input" />
+  ),
+};
+
 export const Clearable: Story = {
   globals: {
     imports: `import { Input } from '@ovhcloud/ods-react';`,

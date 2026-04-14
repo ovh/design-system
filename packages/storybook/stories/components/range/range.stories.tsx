@@ -85,6 +85,14 @@ export const Demo: StoryObj = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  decorators: [(story) => <div style={{ width: '160px' }}>{ story() }</div>],
+  tags: ['!dev'],
+  render: ({}) => (
+    <Range defaultValue={ [50] } />
+  ),
+};
+
 export const Controlled: Story = {
   globals: {
     imports: `import { Range } from '@ovhcloud/ods-react';

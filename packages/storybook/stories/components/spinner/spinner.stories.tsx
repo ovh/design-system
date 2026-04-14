@@ -34,6 +34,13 @@ export const Demo: Story = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Spinner />
+  ),
+};
+
 export const Color: Story = {
   globals: {
     imports: `import { SPINNER_COLOR, Spinner } from '@ovhcloud/ods-react';`,

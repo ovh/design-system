@@ -88,6 +88,52 @@ export const Demo: StoryObj = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexFlow: 'column', rowGap: 'var(--ods-theme-row-gap)', alignItems: 'start' }}>
+      <div style={{
+        position: 'relative',
+        minWidth: '320px',
+        minHeight: '140px',
+      }}>
+        <Modal
+          backdropStyle={{ position: 'absolute' }}
+          // @ts-ignore force ark attribute to avoid inert on page
+          modal={ false }
+          open
+          positionerStyle={{ position: 'absolute' }}>
+          <ModalContent
+            createPortal={ false }
+            style={{
+              width: '280px',
+              minWidth: 'auto',
+              animation: 'none',
+            }}>
+            <ModalHeader>
+              <Text as="span" preset={ TEXT_PRESET.heading4 }>
+                Overview
+              </Text>
+            </ModalHeader>
+
+            <ModalBody>
+                Lorem ipsum dolor sit amet ...
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </div>
+
+      <Modal>
+        <ModalTrigger asChild>
+          <Button variant={ BUTTON_VARIANT.outline }>
+            Trigger Modal
+          </Button>
+        </ModalTrigger>
+      </Modal>
+    </div>
+  ),
+};
+
 export const AccessibilityActions: Story = {
   globals: {
     imports: `import { BUTTON_COLOR, BUTTON_VARIANT, MODAL_COLOR, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`,
@@ -382,7 +428,7 @@ export const Overview: Story = {
 
       <ModalContent>
         <ModalHeader>
-          <Text as={ 'span' } preset={ TEXT_PRESET.heading4 }>
+          <Text as="span" preset={ TEXT_PRESET.heading4 }>
             Overview
           </Text>
         </ModalHeader>
@@ -395,7 +441,6 @@ export const Overview: Story = {
     </Modal>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

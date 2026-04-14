@@ -72,6 +72,31 @@ export const Demo: StoryObj = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <RadioGroup>
+      <Radio value="html">
+        <RadioControl />
+
+        <RadioLabel>HTML</RadioLabel>
+      </Radio>
+
+      <Radio value="css">
+        <RadioControl />
+
+        <RadioLabel>CSS</RadioLabel>
+      </Radio>
+
+      <Radio value="js">
+        <RadioControl />
+
+        <RadioLabel>JavaScript</RadioLabel>
+      </Radio>
+    </RadioGroup>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`,
@@ -279,7 +304,6 @@ export const Overview: Story = {
     </RadioGroup>
   ),
 };
-
 
 export const ThemeGenerator: Story = {
   parameters: {

@@ -44,6 +44,17 @@ export const Demo: Story = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <Divider color={ DIVIDER_COLOR.primary } />
+      <p>Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+    </>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Divider } from '@ovhcloud/ods-react';`,

@@ -1,7 +1,7 @@
 import { Meta, Source } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/link/documentation/cssVariable.json';
 import specificationsLink from '../../../../ods-react/src/components/link/documentation/link.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
@@ -20,9 +20,7 @@ import * as LinkStories from './link.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/link/anatomy-tech.png" />
-
-1. **Link**
+<AnatomyTech of={ LinkStories.AnatomyTech } />
 
 <TechnicalSpecification
   cssVariable={ cssVariable }

@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/modal/documentation/cssVariable.json';
 import specificationsModal from '../../../../ods-react/src/components/modal/documentation/modal.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -19,13 +19,11 @@ import * as ModalStories from './modal.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/modal/anatomy-tech.png" />
-
-1. **Modal**
-2. **Modal Content**
-3. **Modal Header**
-4. **Modal Body**
-5. **Modal Trigger**
+<AnatomyTech
+  of={ ModalStories.AnatomyTech }
+  mappingOption={{
+    'Modal': { disabled: true },
+  }} />
 
 <TechnicalSpecification
   cssVariable={ cssVariable }

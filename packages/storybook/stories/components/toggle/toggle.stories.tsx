@@ -52,6 +52,19 @@ export const Default: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Toggle>
+      <ToggleControl />
+
+      <ToggleLabel>
+        Toggle label
+      </ToggleLabel>
+    </Toggle>
+  ),
+};
+
 export const Overview: Story = {
   tags: ['!dev'],
   parameters: {

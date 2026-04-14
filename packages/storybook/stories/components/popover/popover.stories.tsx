@@ -86,6 +86,28 @@ export const Demo: StoryObj = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Popover
+      open={ true }
+      overlayConfig={{
+        flip: false,
+        position: POPOVER_POSITION.top,
+      }}>
+      <PopoverTrigger asChild>
+        <Button>
+          Popover trigger
+        </Button>
+      </PopoverTrigger>
+
+      <PopoverContent createPortal={ false }>
+        This is the popover content
+      </PopoverContent>
+    </Popover>
+  ),
+};
+
 export const Controlled: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],
   globals: {

@@ -77,6 +77,13 @@ export const AccessibilityLabel: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Password />
+  ),
+};
+
 export const Clearable: Story = {
   globals: {
     imports: `import { Password } from '@ovhcloud/ods-react';`,

@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useRef, useState } from 'react';
 import { BUTTON_SIZE, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
+import { DIVIDER_SPACING, Divider } from '../../../../ods-react/src/components/divider/src';
 import { Editable, EditableActions, EditableCancelTrigger, EditableDisplay, EditableDisplayEmpty, EditableEditTrigger, EditableInput, EditableSubmitTrigger, type EditableProp } from '../../../../ods-react/src/components/editable/src';
 import { FormField } from '../../../../ods-react/src/components/form-field/src';
 import { Input } from '../../../../ods-react/src/components/input/src';
@@ -48,6 +49,31 @@ export const Demo: Story = {
       </Editable>
     );
   },
+};
+
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <div>
+      <Editable editing={ false }>
+        <EditableDisplay>
+          <EditableDisplayEmpty>Empty value</EditableDisplayEmpty>
+        </EditableDisplay>
+
+        <EditableActions />
+      </Editable>
+
+      <Divider spacing={ DIVIDER_SPACING._16 } />
+
+      <Editable editing={ true }>
+        <EditableInput>
+          <Input />
+        </EditableInput>
+
+        <EditableActions />
+      </Editable>
+    </div>
+  ),
 };
 
 export const ComplexFormElement: Story = {

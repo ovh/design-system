@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/phone-number/documentation/cssVariable.json';
 import specificationsPhoneNumber from '../../../../ods-react/src/components/phone-number/documentation/phone-number.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -21,11 +21,7 @@ import * as PhoneNumberStories from './phone-number.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/phone-number/anatomy-tech.png" />
-
-1. **Phone Number**
-2. **Phone Number Country List**
-3. **Phone Number Control**
+<AnatomyTech of={ PhoneNumberStories.AnatomyTech } />
 
 <TechnicalSpecification
   cssVariable={ cssVariable }

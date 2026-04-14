@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/radio-group/documentation/cssVariable.json';
 import specificationsRadioGroup from '../../../../ods-react/src/components/radio-group/documentation/radio-group.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -21,12 +21,7 @@ import * as RadioGroupStories from './radio-group.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/radio-group/anatomy-tech.png" />
-
-1. **Radio Group**
-2. **Radio**
-3. **Radio Control**
-4. **Radio Label**
+<AnatomyTech of={ RadioGroupStories.AnatomyTech } />
 
 <TechnicalSpecification
   cssVariable={ cssVariable }

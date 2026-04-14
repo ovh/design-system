@@ -42,6 +42,13 @@ export const Demo: Story = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Text } from '@ovhcloud/ods-react';`,

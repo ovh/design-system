@@ -98,6 +98,13 @@ export const AccessibilityFormField: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Textarea placeholder="Textarea" />
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Textarea } from '@ovhcloud/ods-react';`,

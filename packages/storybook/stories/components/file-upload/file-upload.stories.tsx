@@ -204,6 +204,32 @@ import { useState } from 'react';`,
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => {
+    const [files, setFiles] = useState<File[]>([
+      new File(['foo'], 'foo.txt', { type: 'text/plain' }),
+      new File(['dummy'], 'dummy.txt', { type: 'text/plain' }),
+    ]);
+
+    return (
+      <FileUpload
+        onFileAccept={ ({ files }) => setFiles(files) }
+        variant={ FILE_UPLOAD_VARIANT.compact }>
+        <FileUploadList>
+          {
+            files.map((file: File, idx) => (
+              <FileUploadItem
+                file={ file }
+                key={ idx } />
+            ))
+          }
+        </FileUploadList>
+      </FileUpload>
+    );
+  },
+};
+
 export const Compact: Story = {
   globals: {
     imports: `import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList } from '@ovhcloud/ods-react';

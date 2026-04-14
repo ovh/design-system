@@ -90,6 +90,17 @@ export const AccessibilityLabel: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Timepicker defaultValue="12:00">
+      <TimepickerControl />
+
+      <TimepickerTimezoneList />
+    </Timepicker>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Timepicker, TimepickerControl } from '@ovhcloud/ods-react';`,

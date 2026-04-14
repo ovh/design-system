@@ -1,7 +1,6 @@
 import { Meta, Source } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/toaster/documentation/cssVariable.json';
 import specificationsToaster from '../../../../ods-react/src/components/toaster/documentation/toaster.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -16,12 +15,6 @@ import * as ToasterStories from './toaster.stories';
 <Heading label="Overview" level={ 2 } />
 
 <Canvas of={ ToasterStories.Overview } sourceState="none" />
-
-<Heading label="Anatomy" level={ 2 } />
-
-<Anatomy src="components/toaster/anatomy-tech.png" />
-
-1. **Toaster**
 
 <TechnicalSpecification
   cssVariable={ cssVariable }

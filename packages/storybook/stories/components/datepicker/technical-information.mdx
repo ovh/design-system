@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/datepicker/documentation/cssVariable.json';
 import specificationsDatepicker from '../../../../ods-react/src/components/datepicker/documentation/datepicker.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -21,11 +21,11 @@ import * as DatepickerStories from './datepicker.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/datepicker/anatomy-tech.png" />
-
-1. **Datepicker**
-2. **Datepicker Control**
-3. **Datepicker Content**
+<AnatomyTech
+  of={ DatepickerStories.AnatomyTech }
+  mappingOption={{
+    'DatepickerContent': { isOverlay: true },
+  }} />
 
 <TechnicalSpecification
   cssVariable={ cssVariable }

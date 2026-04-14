@@ -2,7 +2,7 @@ import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ov
 import { Meta, Source } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/data-table/documentation/cssVariable.json';
 import specificationsDataTable from '../../../../ods-react/src/components/data-table/documentation/data-table.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -22,12 +22,7 @@ import * as DataTableStories from './data-table.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/data-table/anatomy-tech.png" />
-
-1. **DataTable**
-2. **DataTableHead**
-3. **DataTableBody**
-4. **DataTableEmpty**
+<AnatomyTech of={ DataTableStories.AnatomyTech } />
 
 <TechnicalSpecification
   cssVariable={ cssVariable }

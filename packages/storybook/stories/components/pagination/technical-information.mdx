@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/pagination/documentation/cssVariable.json';
 import specificationsPagination from '../../../../ods-react/src/components/pagination/documentation/pagination.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -19,15 +19,7 @@ import * as PaginationStories from './pagination.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/pagination/anatomy-tech.png" />
-
-1. **Pagination**
-
-TODO
-
-**PaginationPageSelector**
-**PaginationPageSizeSelector**
-**PaginationPages**
+<AnatomyTech of={ PaginationStories.AnatomyTech } />
 
 <TechnicalSpecification
   cssVariable={ cssVariable }

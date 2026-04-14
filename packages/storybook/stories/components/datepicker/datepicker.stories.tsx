@@ -85,6 +85,27 @@ export const Demo: StoryObj = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  parameters: {
+    layout: 'start',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ height: '330px' }}>
+      <Datepicker
+        defaultValue={ new Date() }
+        open
+        overlayConfig={{
+          flip: false,
+        }}>
+        <DatepickerControl />
+
+        <DatepickerContent createPortal={ false } />
+      </Datepicker>
+    </div>
+  ),
+};
+
 export const DateFormatter: Story = {
   globals: {
     imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`,

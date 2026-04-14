@@ -324,6 +324,15 @@ export const All: StoryObj<AllArg> = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Icon
+      name="home"
+      style={{ fontSize: '2rem', color: 'var(--ods-color-primary-500)' }} />
+  ),
+};
+
 export const Overview: Story = {
   tags: ['!dev'],
   parameters: {

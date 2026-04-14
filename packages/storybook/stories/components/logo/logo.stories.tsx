@@ -48,6 +48,15 @@ export const AccessibilityLink: Story = {
   ),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <div data-ods="logo-story">
+      <Logo />
+    </div>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Logo } from '@ovhcloud/ods-react';`,

@@ -42,6 +42,32 @@ export const Demo: Story = {
   }),
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => {
+    const [selected, setSelected] = useState(false);
+
+    return (
+      <Tile selected={ selected }>
+        <Checkbox
+          checked={ selected }
+          onCheckedChange={ (detail) => setSelected(detail.checked === true) }>
+          <div>
+            <div style={ { display: 'flex', alignItems: 'center', gap: '8px', padding: '16px' } }>
+              <CheckboxControl />
+              <CheckboxLabel>Checkbox tile</CheckboxLabel>
+            </div>
+
+            <TileAltContainer style={ { padding: '16px' } }>
+              Additional information
+            </TileAltContainer>
+          </div>
+        </Checkbox>
+      </Tile>
+    );
+  },
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Tile } from '@ovhcloud/ods-react';`,

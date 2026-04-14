@@ -19,7 +19,7 @@ type Story = StoryObj<TreeViewProp>;
 const meta: Meta<TreeViewProp> = {
   argTypes: excludeFromDemoControls(['defaultExpandedValue', 'defaultValue', 'items', 'onExpandedChange', 'onValueChange', 'expandedValue', 'value']),
   component: TreeView,
-  subcomponents: { TreeViewNode },
+  subcomponents: { TreeViewNode, TreeViewNodes },
   title: 'React Components/Tree View',
 };
 
@@ -77,6 +77,42 @@ export const Demo: Story = {
       control: 'boolean',
     },
   }),
+};
+
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'app.tsx', name: 'app.tsx' },
+          { id: 'index.ts', name: 'index.ts' },
+          {
+            id: 'components',
+            name: 'components',
+            children: [
+              { id: 'Button.tsx', name: 'Button.tsx' },
+              { id: 'Card.tsx', name: 'Card.tsx' },
+            ],
+          },
+        ],
+      },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ];
+
+    return (
+      <TreeView items={ items }>
+        <TreeViewNodes>
+          { items.map((item) => (
+            <TreeViewNode key={ item.id } item={ item } />
+          )) }
+        </TreeViewNodes>
+      </TreeView>
+    );
+  }
 };
 
 export const Default: Story = {
@@ -152,7 +188,7 @@ export const Overview: Story = {
       </TreeView>
     );
   }
-}
+};
 
 export const Multiple: Story = {
   globals: {

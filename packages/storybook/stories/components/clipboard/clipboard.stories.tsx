@@ -80,6 +80,17 @@ export const Demo: StoryObj = {
   },
 };
 
+export const AnatomyTech: Story = {
+  tags: ['!dev'],
+  render: ({}) => (
+    <Clipboard value="Clipboard">
+      <ClipboardControl />
+
+      <ClipboardTrigger />
+    </Clipboard>
+  ),
+};
+
 export const Default: Story = {
   globals: {
     imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`,

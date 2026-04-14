@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/text/documentation/cssVariable.json';
 import specificationsText from '../../../../ods-react/src/components/text/documentation/text.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -19,9 +19,7 @@ import * as TextStories from './text.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/text/anatomy-tech.png" />
-
-1. **Text**
+<AnatomyTech of={ TextStories.AnatomyTech } />
 
 <TechnicalSpecification
   cssVariable={ cssVariable }

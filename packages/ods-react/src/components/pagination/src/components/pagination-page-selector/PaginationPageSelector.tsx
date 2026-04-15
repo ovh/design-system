@@ -31,10 +31,10 @@ const PaginationPageSelector: FC<PaginationPageSelectorProp> = forwardRef(({
     event.preventDefault();
     event.stopPropagation();
     const formData = new FormData(event.target as HTMLFormElement);
-    const newPage = formData.get(INPUT_NAME) as number | null;
+    const newPage = Number(formData.get(INPUT_NAME));
 
-    if (newPage && newPage !== page) {
-      setPage(Math.min(newPage, totalPages));
+    if (!isNaN(newPage) && newPage !== page) {
+      setPage(Math.max(Math.min(newPage, totalPages), 1));
     }
   }
 

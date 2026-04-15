@@ -85,10 +85,6 @@
       &__icon {
         display: block;
         font-size: $caret-size;
-
-        &--open {
-          transform: rotate(180deg);
-        }
       }
     }
   }

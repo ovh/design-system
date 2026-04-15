@@ -169,11 +169,8 @@ const QueryFilterControl: FC<QueryFilterControlProp> = forwardRef(({
         // We use an unfocusable button here to get a populated relatedTarget on container blur event
         tabIndex={ -1 }>
         <Icon
-          className={ classNames(
-            style['query-filter-control__caret__icon'],
-            { [style['query-filter-control__caret__icon--open']]: isOpen },
-          )}
-          name={ ICON_NAME.chevronDown } />
+          className={ style['query-filter-control__caret__icon'] }
+          name={ ICON_NAME.magnifyingGlass } />
       </button>
     </div>
   );

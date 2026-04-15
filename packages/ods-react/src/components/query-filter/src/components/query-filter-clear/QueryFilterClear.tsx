@@ -22,7 +22,7 @@ const QueryFilterClear: FC<QueryFilterClearProp> = forwardRef(({
       onClick={ removeAllTags }
       ref={ ref }
       size={ BUTTON_SIZE.xs }
-      variant={ BUTTON_VARIANT.outline }
+      variant={ BUTTON_VARIANT.ghost }
       { ...props }>
       { children }
     </Button>

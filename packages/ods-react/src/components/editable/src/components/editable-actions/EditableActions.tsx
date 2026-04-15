@@ -30,6 +30,7 @@ const EditableActions: FC<EditableActionsProp> = forwardRef(({
   return (
     <div
       className={ className }
+      data-ods="editable-actions"
       ref={ ref }
       { ...props }>
       {

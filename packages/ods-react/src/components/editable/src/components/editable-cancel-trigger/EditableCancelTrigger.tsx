@@ -19,6 +19,7 @@ const EditableCancelTrigger: FC<EditableCancelTriggerProp> = forwardRef(({
   const { translate } = useI18n(TRANSLATION, locale, i18n);
   const sharedProps = {
     'aria-label': translate(EDITABLE_I18N.cancelButton),
+    'data-ods': 'editable-cancel-trigger',
     onClick: onCancelClick,
     ref,
   };

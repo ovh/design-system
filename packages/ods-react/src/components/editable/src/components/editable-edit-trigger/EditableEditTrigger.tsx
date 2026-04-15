@@ -19,6 +19,7 @@ const EditableEditTrigger: FC<EditableEditTriggerProp> = forwardRef(({
   const { translate } = useI18n(TRANSLATION, locale, i18n);
   const sharedProps = {
     'aria-label': translate(EDITABLE_I18N.editButton),
+    'data-ods': 'editable-edit-trigger',
     onClick: onEditClick,
     ref,
   };

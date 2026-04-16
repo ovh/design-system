@@ -379,6 +379,45 @@ export const Multiple = () => (
   </>
 );
 
+export const Opened = () => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  return (
+    <>
+      <Select
+        defaultOpen={ true }
+        items={[
+          { label: 'Dog', value:'dog' },
+          { label: 'Cat', value:'cat' },
+          { label: 'Hamster', value:'hamster' },
+          { label: 'Parrot', value:'parrot' },
+          { label: 'Spider', value:'spider' },
+          { label: 'Goldfish', value:'goldfish' },
+        ]}>
+        <SelectControl placeholder="Default open" />
+        <SelectContent />
+      </Select>
+
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+      <Select
+        items={[
+          { label: 'Dog', value:'dog' },
+          { label: 'Cat', value:'cat' },
+          { label: 'Hamster', value:'hamster' },
+          { label: 'Parrot', value:'parrot' },
+          { label: 'Spider', value:'spider' },
+          { label: 'Goldfish', value:'goldfish' },
+        ]}
+        onOpenChange={ ({ open }) => setIsOpen(open) }
+        open={ isOpen }>
+        <SelectControl placeholder="Controlled open" />
+        <SelectContent />
+      </Select>
+    </>
+  );
+}
+
 export const Placeholder = () => (
   <Select
     items={[

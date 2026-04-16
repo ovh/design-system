@@ -9,17 +9,18 @@ enum TAG {
 }
 
 type ComponentProp = {
-  deprecated: boolean,
-  description: string,
-  defaultValue: string,
-  isOptional: boolean,
-  name: string,
-  type: string,
+  defaultValue: string;
+  deprecated: boolean;
+  description: string;
+  entries?: ComponentProp[];
+  isOptional: boolean;
+  name: string;
+  type: string;
 }
 
 type Component = {
-  name: string,
-  props: ComponentProp[],
+  name: string;
+  props: ComponentProp[];
 }
 
 const tagRegExp = /(@[\w-]+)=?([\w${} ']+)?/gi;
@@ -51,14 +52,17 @@ function getComponentProp(name: string, prop: PropDescriptor): ComponentProp | u
     return;
   }
 
+  const type = tagsMap.get(TAG.type) || (prop.tsType ? typeToString(prop.tsType) : '');
+
   return {
+    defaultValue: prop.defaultValue?.value?.toString() || tagsMap.get(TAG.defaultValue) || 'undefined',
     deprecated: tagsMap.has(TAG.deprecated),
     description: prop.description || '',
-    defaultValue: prop.defaultValue?.value?.toString() || tagsMap.get(TAG.defaultValue) || 'undefined',
+    entries: type === 'object' ? getPropEntries(prop) : [],
     isOptional: !prop.required,
     name: name,
-    type: tagsMap.get(TAG.type) || (prop.tsType ? typeToString(prop.tsType) : ''),
-  }
+    type: type,
+  };
 }
 
 function getComponentsInfo(docgens: Documentation[]): Component[] {
@@ -80,15 +84,36 @@ function getCustomProps(description = ''): ComponentProp[] {
       const [type, optional] = matches[1].split('|');
 
       return {
+        defaultValue: 'undefined',
         deprecated: false,
         description: matches[3].trim(),
-        defaultValue: 'undefined',
         isOptional: optional && optional.replace(/[{}]/g, '').trim() === 'optional',
         name: matches[2].trim(),
         type: type.replace(/[{}]/g, '').trim(),
       };
     })
     .filter((prop): prop is ComponentProp => !!prop);
+}
+
+function getPropEntries(prop: PropDescriptor): ComponentProp[] {
+  return (prop.tsType as ObjectSignatureType).signature.properties.map((property) => {
+    const tagsMap = extractTags(property.description || '');
+
+    if (tagsMap.has(TAG.internal)) {
+      return;
+    }
+
+    const type = tagsMap.get(TAG.type) || property.value.name;
+
+    return {
+      defaultValue: '-',
+      deprecated: tagsMap.has(TAG.deprecated),
+      description: property.description || '',
+      isOptional: !property.value.required,
+      name: property.key.toString(),
+      type: type,
+    }
+  }).filter(Boolean) as ComponentProp[];
 }
 
 function removeTags(str: string): string {
@@ -101,17 +126,7 @@ function typeToString(type: TypeDescriptor): string {
   }
 
   if ((type as ObjectSignatureType).type === 'object') {
-    const objectType = type as ObjectSignatureType;
-
-    if (objectType.name === 'signature' && objectType.signature.properties.length) {
-      const signatureProp = objectType.signature.properties.map((property) => {
-        return `${property.key}: ${typeToString(property.value)}`;
-      }).join(', ');
-
-      return `{ ${signatureProp} }`;
-    }
-
-    return objectType.raw;
+    return (type as ObjectSignatureType).type;
   }
 
   if (type.name === 'literal') {
@@ -135,6 +150,7 @@ function typeToString(type: TypeDescriptor): string {
 export {
   TAG,
   type Component,
+  type ComponentProp,
   extractTags,
   getComponentsInfo,
   removeTags,

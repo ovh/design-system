@@ -1,23 +1,100 @@
 import { BADGE_COLOR, BADGE_SIZE, ICON_NAME, TABLE_VARIANT, Badge, Icon } from '@ovhcloud/ods-react';
 import { CodeOrSourceMdx } from '@storybook/blocks';
-import React, { type JSX, useMemo } from 'react';
+import classNames from 'classnames';
+import React, { Fragment, type JSX, useMemo } from 'react';
 import { ExternalLink } from '../externalLink/ExternalLink';
 import { Table } from '../table/Table';
 import { Heading } from '../heading/Heading';
-import { type Component, removeTags } from '../../helpers/docgen';
+import { type Component, type ComponentProp, removeTags } from '../../helpers/docgen';
 import styles from './classModule.module.css';
 
+type ClassModuleRowProp = {
+  isChild?: boolean | 'last';
+  prop: ComponentProp;
+}
+
 type ClassModuleProp = {
-  component: Component,
+  component: Component;
   extraInfo?: Record<string, {
     extendAttribute: {
-      name: string,
-      url: string,
+      name: string;
+      url: string;
     }
-  }>,
+  }>;
 }
 
 const COLUMNS = ['Property', 'Type', 'Required', 'Default value', 'Description'];
+
+const ClassModuleRow = ({ isChild, prop }: ClassModuleRowProp): JSX.Element => {
+  const tdClass = classNames({
+    [styles['class-module-row--has-child']]: !!prop.entries?.length || (isChild && isChild !== 'last'),
+  });
+
+  return (
+    <>
+      <tr>
+        <td className={ classNames(
+          tdClass,
+          { [styles['class-module-row__key--child']]: !!isChild },
+        )}>
+          {
+            isChild &&
+            <span className={ classNames(
+              styles['class-module-row__key__border'],
+              { [styles['class-module-row__key__border--last']]: isChild === 'last' },
+            )} />
+          }
+          <span className={ classNames(
+            { [styles['class-module-row__key__name--child']]: !!isChild },
+          )}>
+            { prop.name }
+          </span>
+          {
+            prop.deprecated &&
+            <Badge
+              color={ BADGE_COLOR.warning }
+              size={ BADGE_SIZE.sm }>
+              Deprecated
+            </Badge>
+          }
+        </td>
+
+        <td className={ tdClass }>
+          <CodeOrSourceMdx>
+            { prop.type }
+          </CodeOrSourceMdx>
+        </td>
+
+        <td className={ classNames(
+          tdClass,
+          styles['class-module__properties__body__is-required']
+        )}>
+          {
+            prop.isOptional ? '-' :
+              <Icon aria-label="Required"
+                    className={ styles['class-module__properties__body__is-required--required'] }
+                    name={ ICON_NAME.check }
+                    role="img" />
+          }
+        </td>
+
+        <td className={ tdClass }>
+          <CodeOrSourceMdx>
+            {
+              prop.defaultValue === undefined ?
+                <div className={ styles['class-module__properties__body__default-value'] }>undefined</div> :
+                prop.defaultValue
+            }
+          </CodeOrSourceMdx>
+        </td>
+
+        <td className={ tdClass }>
+          { removeTags(prop.description) || '-' }
+        </td>
+      </tr>
+    </>
+  );
+};
 
 const ClassModule = ({ component, extraInfo }: ClassModuleProp): JSX.Element => {
   const extraAttributeInfo = useMemo(() => {
@@ -38,7 +115,9 @@ const ClassModule = ({ component, extraInfo }: ClassModuleProp): JSX.Element => 
 
   return (
     <>
-      <Heading label={ component.name } level={ 2 } />
+      <Heading
+        label={ component.name }
+        level={ 2 } />
 
       {
         (props.length <= 0 && !extraAttributeInfo) ?
@@ -74,49 +153,18 @@ const ClassModule = ({ component, extraInfo }: ClassModuleProp): JSX.Element => 
 
               {
                 props.map((prop, idx) => (
-                  <tr key={ idx }>
-                    <td>
-                      { prop.name }
-                      {
-                        prop.deprecated &&
-                        <Badge
-                          color={ BADGE_COLOR.warning }
-                          size={ BADGE_SIZE.sm }>
-                          Deprecated
-                        </Badge>
-                      }
-                    </td>
+                  <Fragment key={ idx }>
+                    <ClassModuleRow prop={ prop } />
 
-                    <td>
-                      <CodeOrSourceMdx>
-                        { prop.type }
-                      </CodeOrSourceMdx>
-                    </td>
-
-                    <td className={ styles['class-module__properties__body__is-required'] }>
-                      {
-                        prop.isOptional ? '-' :
-                          <Icon aria-label="Required"
-                                className={ styles['class-module__properties__body__is-required--required'] }
-                                name={ ICON_NAME.check }
-                                role="img" />
-                      }
-                    </td>
-
-                    <td>
-                      <CodeOrSourceMdx>
-                        {
-                          prop.defaultValue === undefined ?
-                            <div className={ styles['class-module__properties__body__default-value'] }>undefined</div> :
-                            prop.defaultValue
-                        }
-                      </CodeOrSourceMdx>
-                    </td>
-
-                    <td>
-                      { removeTags(prop.description) || '-' }
-                    </td>
-                  </tr>
+                    {
+                      (prop.entries || []).map((entry, i) => (
+                        <ClassModuleRow
+                          isChild={ i === ((prop.entries || []).length - 1) ? 'last' : true }
+                          key={ i }
+                          prop={ entry } />
+                      ))
+                    }
+                  </Fragment>
                 ))
               }
             </tbody>

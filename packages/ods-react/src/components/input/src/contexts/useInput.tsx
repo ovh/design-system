@@ -27,10 +27,17 @@ interface InputRootProp {
    */
   locale?: Locale,
   /**
-   * Whether the masked display is active and its initial state.
+   * Masked display options.
    */
   maskOption?: {
+    /**
+     * Whether the masked display is active.
+     */
     enable: boolean,
+    /**
+     * @type=INPUT_MASK_STATE
+     * Initial state of the mask.
+     */
     initialState?: InputMaskState,
   },
   /**

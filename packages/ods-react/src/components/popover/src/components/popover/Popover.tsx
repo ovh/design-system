@@ -31,8 +31,8 @@ const PopoverRoot: FC<PropsWithChildren<PopoverProp>> = ({
       positioning={{
         flip: overlayConfig?.flip,
         gutter: overlayConfig?.gutter ?? gutter,
-        placement: overlayConfig?.position || position,
-        sameWidth: overlayConfig?.sameWidth || sameWidth,
+        placement: overlayConfig?.position ?? position,
+        sameWidth: overlayConfig?.sameWidth ?? sameWidth,
       }}
       { ...props }>
       { children }

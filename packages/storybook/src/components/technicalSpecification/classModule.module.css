@@ -17,12 +17,19 @@
   color: var(--ods-color-success-500);
 }
 
+.class-module-row {
+  position: relative;
+}
+
 .class-module-row--has-child {
   border-bottom: none;
 }
 
-.class-module-row__key--child {
-  position: relative;
+.class-module-row__key {
+  display: flex;
+  flex-flow: row;
+  column-gap: var(--ods-theme-column-gap);
+  align-items: center;
 }
 
 .class-module-row__key__name--child {

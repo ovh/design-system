@@ -60,7 +60,8 @@ interface SelectRootProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> 
    */
   disabled?: boolean,
   /**
-   * Whether the dropdown width should stay the same as the input.
+   * @deprecated
+   * Use overlayConfig.sameWidth instead
    */
   fitControlWidth?: boolean,
   /**
@@ -91,6 +92,19 @@ interface SelectRootProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> 
    * The controlled open state of the select.
    */
   open?: boolean,
+  /**
+   * The overlay configuration.
+   */
+  overlayConfig?: {
+    /**
+     * Whether to flip the position.
+     */
+    flip?: boolean,
+    /**
+     * Whether to make the floating element same width as the reference element.
+     */
+    sameWidth?: boolean,
+  }
   /**
    * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
    */

@@ -8,10 +8,12 @@ import { excludeFromDemoControls, orderControls } from '../../../src/helpers/con
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<SelectProp>;
-type DemoArg = Partial<SelectProp> & Partial<SelectControlProp> & {};
+type DemoArg = Partial<SelectProp> & Partial<SelectControlProp> & {
+  sameWidth?: boolean;
+};
 
 const meta: Meta<SelectProp> = {
-  argTypes: excludeFromDemoControls(['defaultValue', 'id', 'items', 'name', 'onValueChange', 'required', 'value']),
+  argTypes: excludeFromDemoControls(['defaultOpen', 'defaultValue', 'fitControlWidth', 'id', 'items', 'name', 'onOpenChange', 'onValueChange', 'open', 'overlayConfig', 'positionerStyle', 'required', 'value']),
   component: Select,
   subcomponents: { SelectContent, SelectControl },
   title: 'React Components/Select',
@@ -23,7 +25,6 @@ export const Demo: StoryObj = {
   render: (arg: DemoArg) => (
     <Select
       disabled={ arg.disabled }
-      fitControlWidth={ arg.fitControlWidth }
       invalid={ arg.invalid }
       items={[
         { label: 'Dog', value:'dog' },
@@ -34,6 +35,7 @@ export const Demo: StoryObj = {
         { label: 'Goldfish', value:'goldfish' },
       ]}
       multiple={ arg.multiple }
+      overlayConfig={{ sameWidth: arg.sameWidth }}
       readOnly={ arg.readOnly }>
       <SelectControl
         multipleSelectionLabel={ arg.multipleSelectionLabel }
@@ -44,12 +46,6 @@ export const Demo: StoryObj = {
   ),
   argTypes: orderControls({
     disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    fitControlWidth: {
       table: {
         category: CONTROL_CATEGORY.general,
       },
@@ -87,6 +83,12 @@ export const Demo: StoryObj = {
         category: CONTROL_CATEGORY.general,
       },
       control: 'boolean',
+    },
+    sameWidth: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+      },
+      control: { type: 'boolean' },
     },
   }),
 };

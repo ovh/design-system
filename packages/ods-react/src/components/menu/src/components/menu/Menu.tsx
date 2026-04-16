@@ -9,6 +9,7 @@ const Menu: FC<PropsWithChildren<MenuProp>> = ({
   onOpenChange,
   onPositionChange,
   open,
+  overlayConfig,
   position,
   positionerStyle,
   triggerId,
@@ -22,7 +23,10 @@ const Menu: FC<PropsWithChildren<MenuProp>> = ({
         onOpenChange={ onOpenChange }
         open={ open }
         positioning={{
-          placement: position,
+          flip: overlayConfig?.flip,
+          gutter: overlayConfig?.gutter,
+          placement: overlayConfig?.position ?? position,
+          sameWidth: overlayConfig?.sameWidth,
         }}
         { ...props }>
         { children }

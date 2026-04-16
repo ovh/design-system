@@ -20,6 +20,7 @@
     "eslint-plugin-tsdoc",
     "react"
   ],
+  "ignorePatterns": ["packages/storybook/**"],
   "root": true,
   "rules": {
     "@typescript-eslint/ban-types": "error",

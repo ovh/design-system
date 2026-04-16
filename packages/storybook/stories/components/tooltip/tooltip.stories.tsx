@@ -9,11 +9,14 @@ import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<TooltipProp>;
 type DemoArg = Partial<TooltipProp> & Partial<TooltipContentProp> & {
-  content?: string,
+  content?: string;
+  gutter?: number,
+  position?: TOOLTIP_POSITION,
+  sameWidth?: boolean,
 };
 
 const meta: Meta<TooltipProp> = {
-  argTypes: excludeFromDemoControls(['onOpenChange', 'open']),
+  argTypes: excludeFromDemoControls(['onOpenChange', 'open', 'overlayConfig', 'positionerStyle']),
   component: Tooltip,
   subcomponents: { TooltipContent, TooltipTrigger },
   title: 'React Components/Tooltip',
@@ -29,7 +32,11 @@ export const Demo: StoryObj = {
     <Tooltip
       closeDelay={ arg.closeDelay }
       openDelay={ arg.openDelay }
-      position={ arg.position }>
+      overlayConfig={{
+        gutter: arg.gutter,
+        position: arg.position,
+        sameWidth: arg.sameWidth,
+      }}>
       <TooltipTrigger asChild>
         <Icon
           name={ ICON_NAME.circleQuestion }
@@ -54,6 +61,13 @@ export const Demo: StoryObj = {
       },
       control: 'text',
     },
+    gutter: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: { summary: 'number' }
+      },
+      control: 'number',
+    },
     openDelay: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -67,6 +81,12 @@ export const Demo: StoryObj = {
       },
       control: { type: 'select' },
       options: TOOLTIP_POSITIONS,
+    },
+    sameWidth: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+      },
+      control: { type: 'boolean' },
     },
     withArrow: {
       table: {
@@ -179,7 +199,7 @@ export const Grid: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Tooltip position="top-start">
+      <Tooltip overlayConfig={{ position: 'top-start' }}>
         <TooltipTrigger>
           Top Left
         </TooltipTrigger>
@@ -188,7 +208,7 @@ export const Grid: StoryObj = {
         </TooltipContent>
       </Tooltip>
 
-      <Tooltip position="top">
+      <Tooltip overlayConfig={{ position: 'top' }}>
         <TooltipTrigger>
           Top
         </TooltipTrigger>
@@ -197,7 +217,7 @@ export const Grid: StoryObj = {
         </TooltipContent>
       </Tooltip>
 
-      <Tooltip position="top-end">
+      <Tooltip overlayConfig={{ position: 'top-end' }}>
         <TooltipTrigger>
           Top Right
         </TooltipTrigger>
@@ -206,7 +226,7 @@ export const Grid: StoryObj = {
         </TooltipContent>
       </Tooltip>
 
-      <Tooltip position="left">
+      <Tooltip overlayConfig={{ position: 'left' }}>
         <TooltipTrigger>
           Middle Left
         </TooltipTrigger>
@@ -217,7 +237,7 @@ export const Grid: StoryObj = {
 
       <div />
 
-      <Tooltip position="right">
+      <Tooltip overlayConfig={{ position: 'right' }}>
         <TooltipTrigger>
           Middle Right
         </TooltipTrigger>
@@ -226,7 +246,7 @@ export const Grid: StoryObj = {
         </TooltipContent>
       </Tooltip>
 
-      <Tooltip position="bottom-start">
+      <Tooltip overlayConfig={{ position: 'bottom-start' }}>
         <TooltipTrigger>
           Bottom Left
         </TooltipTrigger>
@@ -235,7 +255,7 @@ export const Grid: StoryObj = {
         </TooltipContent>
       </Tooltip>
 
-      <Tooltip position="bottom">
+      <Tooltip overlayConfig={{ position: 'bottom' }}>
         <TooltipTrigger>
           Bottom
         </TooltipTrigger>
@@ -244,7 +264,7 @@ export const Grid: StoryObj = {
         </TooltipContent>
       </Tooltip>
 
-      <Tooltip position="bottom-end">
+      <Tooltip overlayConfig={{ position: 'bottom-end' }}>
         <TooltipTrigger>
           Bottom Right
         </TooltipTrigger>
@@ -357,7 +377,7 @@ export const ZIndex: Story = {
 
       <Tooltip
         open
-        position={ TOOLTIP_POSITION.bottom }
+        overlayConfig={{ position: TOOLTIP_POSITION.bottom }}
         positionerStyle={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'}}>
         <TooltipTrigger asChild>
           <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
@@ -370,7 +390,7 @@ export const ZIndex: Story = {
 
       <Tooltip
         open
-        position={ TOOLTIP_POSITION.bottom }>
+        overlayConfig={{ position: TOOLTIP_POSITION.bottom }}>
         <TooltipTrigger asChild>
           <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
         </TooltipTrigger>

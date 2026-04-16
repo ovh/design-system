@@ -128,7 +128,7 @@ export const Grid = () => (
     gap: '20px',
     padding: '200px',
   }}>
-    <Tooltip position="top-start">
+    <Tooltip overlayConfig={{ position: 'top-start' }}>
       <TooltipTrigger>
         Top Left
       </TooltipTrigger>
@@ -137,7 +137,7 @@ export const Grid = () => (
       </TooltipContent>
     </Tooltip>
 
-    <Tooltip position="top">
+    <Tooltip overlayConfig={{ position: 'top' }}>
       <TooltipTrigger>
         Top
       </TooltipTrigger>
@@ -146,7 +146,7 @@ export const Grid = () => (
       </TooltipContent>
     </Tooltip>
 
-    <Tooltip position="top-end">
+    <Tooltip overlayConfig={{ position: 'top-end' }}>
       <TooltipTrigger>
         Top Right
       </TooltipTrigger>
@@ -155,7 +155,7 @@ export const Grid = () => (
       </TooltipContent>
     </Tooltip>
 
-    <Tooltip position="left">
+    <Tooltip overlayConfig={{ position: 'left' }}>
       <TooltipTrigger>
         Middle Left
       </TooltipTrigger>
@@ -166,7 +166,7 @@ export const Grid = () => (
 
     <div />
 
-    <Tooltip position="right">
+    <Tooltip overlayConfig={{ position: 'right' }}>
       <TooltipTrigger>
         Middle Right
       </TooltipTrigger>
@@ -175,7 +175,7 @@ export const Grid = () => (
       </TooltipContent>
     </Tooltip>
 
-    <Tooltip position="bottom-start">
+    <Tooltip overlayConfig={{ position: 'bottom-start' }}>
       <TooltipTrigger>
         Bottom Left
       </TooltipTrigger>
@@ -184,7 +184,7 @@ export const Grid = () => (
       </TooltipContent>
     </Tooltip>
 
-    <Tooltip position="bottom">
+    <Tooltip overlayConfig={{ position: 'bottom' }}>
       <TooltipTrigger>
         Bottom
       </TooltipTrigger>
@@ -193,7 +193,7 @@ export const Grid = () => (
       </TooltipContent>
     </Tooltip>
 
-    <Tooltip position="bottom-end">
+    <Tooltip overlayConfig={{ position: 'bottom-end' }}>
       <TooltipTrigger>
         Bottom Right
       </TooltipTrigger>
@@ -202,6 +202,30 @@ export const Grid = () => (
       </TooltipContent>
     </Tooltip>
   </div>
+);
+
+export const Gutter = () => (
+  <Tooltip overlayConfig={{ gutter: 0 }}>
+    <TooltipTrigger>
+      Show tooltip
+    </TooltipTrigger>
+
+    <TooltipContent>
+      This is the tooltip content
+    </TooltipContent>
+  </Tooltip>
+);
+
+export const SameWidth = () => (
+  <Tooltip overlayConfig={{ sameWidth: true }}>
+    <TooltipTrigger>
+      Show tooltip with this width
+    </TooltipTrigger>
+
+    <TooltipContent>
+      This is the tooltip content
+    </TooltipContent>
+  </Tooltip>
 );
 
 export const Accessibility = () => (

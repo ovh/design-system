@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '.';
 import { Button } from '../../button/src';
+import { DIVIDER_SPACING, Divider } from '../../divider/src';
 import { Modal, ModalBody, ModalContent, type ModalOpenChangeDetail, ModalTrigger } from '../../modal/src';
 import style from './dev.module.css';
 
@@ -219,7 +220,7 @@ export const Grid = () => (
     gap: '20px',
     padding: '200px',
   } }>
-    <Popover position="top-start">
+    <Popover overlayConfig={{ position: 'top-start' }}>
       <PopoverTrigger>
         Top Left
       </PopoverTrigger>
@@ -228,7 +229,7 @@ export const Grid = () => (
       </PopoverContent>
     </Popover>
 
-    <Popover position="top">
+    <Popover overlayConfig={{ position: 'top' }}>
       <PopoverTrigger>
         Top
       </PopoverTrigger>
@@ -237,7 +238,7 @@ export const Grid = () => (
       </PopoverContent>
     </Popover>
 
-    <Popover position="top-end">
+    <Popover overlayConfig={{ position: 'top-end' }}>
       <PopoverTrigger>
         Top Right
       </PopoverTrigger>
@@ -246,7 +247,7 @@ export const Grid = () => (
       </PopoverContent>
     </Popover>
 
-    <Popover position="left">
+    <Popover overlayConfig={{ position: 'left' }}>
       <PopoverTrigger>
         Middle Left
       </PopoverTrigger>
@@ -257,7 +258,7 @@ export const Grid = () => (
 
     <div />
 
-    <Popover position="right">
+    <Popover overlayConfig={{ position: 'right' }}>
       <PopoverTrigger>
         Middle Right
       </PopoverTrigger>
@@ -266,7 +267,7 @@ export const Grid = () => (
       </PopoverContent>
     </Popover>
 
-    <Popover position="bottom-start">
+    <Popover overlayConfig={{ position: 'bottom-start' }}>
       <PopoverTrigger>
         Bottom Left
       </PopoverTrigger>
@@ -275,7 +276,7 @@ export const Grid = () => (
       </PopoverContent>
     </Popover>
 
-    <Popover position="bottom">
+    <Popover overlayConfig={{ position: 'bottom' }}>
       <PopoverTrigger>
         Bottom
       </PopoverTrigger>
@@ -284,7 +285,7 @@ export const Grid = () => (
       </PopoverContent>
     </Popover>
 
-    <Popover position="bottom-end">
+    <Popover overlayConfig={{ position: 'bottom-end' }}>
       <PopoverTrigger>
         Bottom Right
       </PopoverTrigger>
@@ -296,15 +297,29 @@ export const Grid = () => (
 );
 
 export const Gutter = () => (
-  <Popover gutter={ 0 }>
-    <PopoverTrigger>
-      Show popover
-    </PopoverTrigger>
+  <>
+    <Popover overlayConfig={{ gutter: 0 }}>
+      <PopoverTrigger>
+        Show popover
+      </PopoverTrigger>
 
-    <PopoverContent>
-      This is the popover content
-    </PopoverContent>
-  </Popover>
+      <PopoverContent>
+        This is the popover content
+      </PopoverContent>
+    </Popover>
+
+    <Divider spacing={ DIVIDER_SPACING._32 } />
+
+    <Popover gutter={ 0 }>
+      <PopoverTrigger>
+        [DEPRECATED] Show popover
+      </PopoverTrigger>
+
+      <PopoverContent>
+        This is the popover content
+      </PopoverContent>
+    </Popover>
+  </>
 );
 
 export const OnPositionChange = () => {
@@ -319,7 +334,7 @@ export const OnPositionChange = () => {
       <Popover
         onPositionChange={ ({ position }) => setCurrentPosition(position) }
         open
-        position='bottom'>
+        overlayConfig={{ position: 'bottom' }}>
         <PopoverTrigger>
           Show popover
         </PopoverTrigger>
@@ -332,12 +347,25 @@ export const OnPositionChange = () => {
 }
 
 export const SameWidth = () => (
-  <Popover sameWidth>
-    <PopoverTrigger>
-      Show popover with this width
-    </PopoverTrigger>
-    <PopoverContent>
-      Popover
-    </PopoverContent>
-  </Popover>
+  <>
+    <Popover overlayConfig={{ sameWidth: true }}>
+      <PopoverTrigger>
+        Show popover with this width
+      </PopoverTrigger>
+      <PopoverContent>
+        Popover
+      </PopoverContent>
+    </Popover>
+
+    <Divider spacing={ DIVIDER_SPACING._32 } />
+
+    <Popover sameWidth>
+      <PopoverTrigger>
+        [DEPRECATED] Show popover with this width
+      </PopoverTrigger>
+      <PopoverContent>
+        Popover
+      </PopoverContent>
+    </Popover>
+  </>
 );

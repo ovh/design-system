@@ -11,6 +11,7 @@ const PopoverRoot: FC<PropsWithChildren<PopoverProp>> = ({
   gutter,
   onOpenChange,
   open,
+  overlayConfig,
   position = POPOVER_POSITION.top,
   sameWidth,
   triggerId,
@@ -28,9 +29,10 @@ const PopoverRoot: FC<PropsWithChildren<PopoverProp>> = ({
       onOpenChange={ onOpenChange }
       open={ open }
       positioning={{
-        gutter: gutter,
-        placement: position,
-        sameWidth: sameWidth,
+        flip: overlayConfig?.flip,
+        gutter: overlayConfig?.gutter ?? gutter,
+        placement: overlayConfig?.position || position,
+        sameWidth: overlayConfig?.sameWidth || sameWidth,
       }}
       { ...props }>
       { children }

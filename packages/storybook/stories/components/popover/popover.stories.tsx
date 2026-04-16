@@ -11,10 +11,13 @@ import { staticSourceRenderConfig } from '../../../src/helpers/source';
 type Story = StoryObj<PopoverProp>;
 type DemoArg = Partial<PopoverProp> & Partial<PopoverContentProp> & {
   content?: string,
+  gutter?: number,
+  position?: POPOVER_POSITION,
+  sameWidth?: boolean,
 };
 
 const meta: Meta<PopoverProp> = {
-  argTypes: excludeFromDemoControls(['autoFocus', 'onOpenChange', 'onPositionChange', 'open', 'triggerId']),
+  argTypes: excludeFromDemoControls(['autoFocus', 'onOpenChange', 'onPositionChange', 'open', 'overlayConfig', 'positionerStyle', 'triggerId']),
   component: Popover,
   subcomponents: { PopoverContent, PopoverTrigger },
   title: 'React Components/Popover',
@@ -27,10 +30,11 @@ export const Demo: StoryObj = {
     layout: 'centered',
   },
   render: (arg: DemoArg) => (
-    <Popover
-      gutter={ arg.gutter }
-      position={ arg.position }
-      sameWidth={ arg.sameWidth }>
+    <Popover overlayConfig={{
+      gutter: arg.gutter,
+      position: arg.position,
+      sameWidth: arg.sameWidth,
+    }}>
       <PopoverTrigger>
         Show popover
       </PopoverTrigger>
@@ -177,7 +181,7 @@ export const Grid: StoryObj = {
   tags: ['!dev'],
   render: ({}) => (
     <>
-      <Popover position="top-start">
+      <Popover overlayConfig={{ position: 'top-start' }}>
         <PopoverTrigger>
           Top Left
         </PopoverTrigger>
@@ -186,7 +190,7 @@ export const Grid: StoryObj = {
         </PopoverContent>
       </Popover>
 
-      <Popover position="top">
+      <Popover overlayConfig={{ position: 'top' }}>
         <PopoverTrigger>
           Top
         </PopoverTrigger>
@@ -195,7 +199,7 @@ export const Grid: StoryObj = {
         </PopoverContent>
       </Popover>
 
-      <Popover position="top-end">
+      <Popover overlayConfig={{ position: 'top-end' }}>
         <PopoverTrigger>
           Top Right
         </PopoverTrigger>
@@ -204,7 +208,7 @@ export const Grid: StoryObj = {
         </PopoverContent>
       </Popover>
 
-      <Popover position="left">
+      <Popover overlayConfig={{ position: 'left' }}>
         <PopoverTrigger>
           Middle Left
         </PopoverTrigger>
@@ -215,7 +219,7 @@ export const Grid: StoryObj = {
 
       <div />
 
-      <Popover position="right">
+      <Popover overlayConfig={{ position: 'right' }}>
         <PopoverTrigger>
           Middle Right
         </PopoverTrigger>
@@ -224,7 +228,7 @@ export const Grid: StoryObj = {
         </PopoverContent>
       </Popover>
 
-      <Popover position="bottom-start">
+      <Popover overlayConfig={{ position: 'bottom-start' }}>
         <PopoverTrigger>
           Bottom Left
         </PopoverTrigger>
@@ -233,7 +237,7 @@ export const Grid: StoryObj = {
         </PopoverContent>
       </Popover>
 
-      <Popover position="bottom">
+      <Popover overlayConfig={{ position: 'bottom' }}>
         <PopoverTrigger>
           Bottom
         </PopoverTrigger>
@@ -242,7 +246,7 @@ export const Grid: StoryObj = {
         </PopoverContent>
       </Popover>
 
-      <Popover position="bottom-end">
+      <Popover overlayConfig={{ position: 'bottom-end' }}>
         <PopoverTrigger>
           Bottom Right
         </PopoverTrigger>
@@ -327,7 +331,7 @@ export const SameWidth: Story = {
   },
   tags: ['!dev'],
   render: ({}) => (
-    <Popover sameWidth>
+    <Popover overlayConfig={{ sameWidth: true }}>
       <PopoverTrigger>
         Show popover that will take this width as reference
       </PopoverTrigger>
@@ -398,7 +402,7 @@ export const ZIndex: Story = {
 
       <Popover
         open
-        position={ POPOVER_POSITION.bottom }
+        overlayConfig={{ position: POPOVER_POSITION.bottom }}
         positionerStyle={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'}}>
         <PopoverTrigger asChild>
           <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
@@ -411,7 +415,7 @@ export const ZIndex: Story = {
 
       <Popover
         open
-        position={ POPOVER_POSITION.bottom }>
+        overlayConfig={{ position: POPOVER_POSITION.bottom }}>
         <PopoverTrigger asChild>
           <Icon name={ ICON_NAME.circleInfo } style={{ fontSize: '24px' }} />
         </PopoverTrigger>

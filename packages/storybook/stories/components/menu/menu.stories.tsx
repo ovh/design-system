@@ -11,13 +11,15 @@ import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<MenuProp>;
 type DemoArg = {
-  position: MenuProp['position'],
+  gutter?: number,
+  position?: MENU_POSITION,
+  sameWidth?: boolean,
   triggerLabel: string,
   withArrow: boolean,
 };
 
 const meta: Meta<MenuProp> = {
-  argTypes: excludeFromDemoControls(['onOpenChange', 'onPositionChange', 'open', 'positionerStyle', 'triggerId']),
+  argTypes: excludeFromDemoControls(['onOpenChange', 'onPositionChange', 'open', 'overlayConfig', 'positionerStyle', 'triggerId']),
   component: Menu,
   subcomponents: {
     MenuContent,
@@ -35,6 +37,13 @@ export default meta;
 
 export const Demo: StoryObj = {
   argTypes: orderControls({
+    gutter: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: { summary: 'number' }
+      },
+      control: 'number',
+    },
     position: {
       control: 'select',
       options: MENU_POSITIONS,
@@ -42,6 +51,12 @@ export const Demo: StoryObj = {
         category: CONTROL_CATEGORY.general,
         type: { summary: 'MENU_POSITION' },
       },
+    },
+    sameWidth: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+      },
+      control: { type: 'boolean' },
     },
     triggerLabel: {
       control: 'text',
@@ -63,13 +78,17 @@ export const Demo: StoryObj = {
     withArrow: false,
   },
   render: (arg: Partial<DemoArg>) => (
-    <Menu
-      position={ arg.position }>
+    <Menu overlayConfig={{
+      gutter: arg.gutter,
+      position: arg.position,
+      sameWidth: arg.sameWidth,
+    }}>
       <MenuTrigger asChild>
         <Button>
           { arg.triggerLabel }
         </Button>
       </MenuTrigger>
+
       <MenuContent withArrow={ arg.withArrow }>
         <MenuItem value="profile">Profile</MenuItem>
         <MenuItem value="settings">Settings</MenuItem>

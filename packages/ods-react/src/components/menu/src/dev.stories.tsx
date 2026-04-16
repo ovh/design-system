@@ -247,6 +247,32 @@ export const DisabledNested = (): JSX.Element => (
   </Menu>
 );
 
+export const Gutter = () => (
+  <Menu overlayConfig={{ gutter: 0 }}>
+    <MenuTrigger>
+      Show menu
+    </MenuTrigger>
+    <MenuContent>
+      <MenuItem value="menu">
+        Menu
+      </MenuItem>
+    </MenuContent>
+  </Menu>
+);
+
+export const SameWidth = () => (
+  <Menu overlayConfig={{ sameWidth: true }}>
+    <MenuTrigger>
+      Show popover with this width
+    </MenuTrigger>
+    <MenuContent>
+      <MenuItem value="menu">
+        Menu
+      </MenuItem>
+    </MenuContent>
+  </Menu>
+);
+
 export const ViewsExample = (): JSX.Element => (
   <Menu>
     <MenuTrigger asChild>

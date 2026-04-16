@@ -26,8 +26,31 @@ interface MenuRootProp {
    */
   open?: boolean,
   /**
+   * The overlay configuration.
+   */
+  overlayConfig?: {
+    /**
+     * Whether to flip the position.
+     */
+    flip?: boolean,
+    /**
+     * The main axis offset or gap between the reference and floating elements.
+     */
+    gutter?: number;
+    /**
+     * @type=MENU_POSITION
+     * The menu position around the trigger.
+     */
+    position?: MenuPosition,
+    /**
+     * Whether to make the floating element same width as the reference element.
+     */
+    sameWidth?: boolean,
+  }
+  /**
+   * @deprecated
    * @type=MENU_POSITION
-   * The menu position around the trigger.
+   * Moved to overlayConfig.
    */
   position?: MenuPosition,
   /**

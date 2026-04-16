@@ -29,6 +29,7 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
   onOpenChange,
   onValueChange,
   open,
+  overlayConfig,
   placeholder,
   positionerStyle,
   readOnly,
@@ -96,6 +97,7 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
         outsideDaySelectable={ true }
         placeholder={ placeholder }
         positioning={{
+          flip: overlayConfig?.flip,
           gutter: 4,
           placement: 'bottom-start',
         }}

@@ -92,6 +92,15 @@ interface DatepickerRootProp {
    */
   open?: boolean,
   /**
+   * The overlay configuration.
+   */
+  overlayConfig?: {
+    /**
+     * Whether to flip the position.
+     */
+    flip?: boolean,
+  }
+  /**
    * The placeholder text to display in the input.
    */
   placeholder?: string,

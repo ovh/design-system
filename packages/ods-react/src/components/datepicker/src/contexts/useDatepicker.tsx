@@ -9,6 +9,10 @@ interface DatepickerFormatterArg {
   locale: string,
 }
 
+interface DatepickerOpenChangeDetail {
+  open: boolean,
+}
+
 interface DatepickerValueChangeDetail {
   value: Date | null,
   valueAsString: string | null,
@@ -75,6 +79,10 @@ interface DatepickerRootProp {
    * The name of the form element. Useful for form submission.
    */
   name?: string,
+  /**
+   * Callback fired when the datepicker open state changes.
+   */
+  onOpenChange?: (detail: DatepickerOpenChangeDetail) => void
   /**
    * Callback fired when the value changes.
    */
@@ -145,6 +153,7 @@ function useDatepicker(): DatepickerContextType {
 export {
   type DatepickerContextType,
   type DatepickerFormatterArg,
+  type DatepickerOpenChangeDetail,
   DatepickerProvider,
   type DatepickerRootProp,
   type DatepickerValueChangeDetail,

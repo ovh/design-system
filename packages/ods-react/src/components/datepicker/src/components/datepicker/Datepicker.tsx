@@ -26,6 +26,7 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
   min,
   minView,
   name,
+  onOpenChange,
   onValueChange,
   open,
   placeholder,
@@ -89,6 +90,7 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
         min={ convertedMin }
         minView={ minView }
         name={ name }
+        onOpenChange={ onOpenChange }
         onValueChange={ onChange }
         open={ open }
         outsideDaySelectable={ true }

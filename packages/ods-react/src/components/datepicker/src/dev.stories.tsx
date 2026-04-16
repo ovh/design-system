@@ -295,6 +295,28 @@ export const MinView = () => (
   </div>
 );
 
+export const Opened = () => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  return (
+    <>
+      <Datepicker defaultOpen={ true }>
+        <DatepickerControl placeholder="Default open" />
+
+        <DatepickerContent />
+      </Datepicker>
+
+      <Datepicker
+        onOpenChange={ ({ open }) => setIsOpen(open) }
+        open={ isOpen }>
+        <DatepickerControl placeholder="Controlled open" />
+
+        <DatepickerContent />
+      </Datepicker>
+    </>
+  );
+};
+
 export const Placeholder = () => (
   <Datepicker placeholder="Pick a date">
     <DatepickerControl />

@@ -4,6 +4,8 @@
   .icon {
     @include icon.ods-icon();
 
+    &--accessibility-full::before { content: '\e9d6'; }
+    &--accessibility::before { content: '\e9d7'; }
     &--analysis::before { content: '\e933'; }
     &--arrow-crossed::before { content: '\e901'; }
     &--arrow-down::before { content: '\e904'; }
@@ -65,10 +67,10 @@
     &--credit-card::before { content: '\e92b'; }
     &--crown::before { content: '\e996'; }
     &--d-pad::before { content: '\e92e'; }
+    &--diagnostic::before { content: '\e9ca'; }
     &--diamond-exclamation::before { content: '\e930'; }
     &--diamond-exclamation-full::before { content: '\e92f'; }
     &--diamonds-full::before { content: '\e92a'; }
-    &--diagnostic::before { content: '\e9ca'; }
     &--discord::before { content: '\e9b9'; }
     &--disk::before { content: '\e998'; }
     &--download::before { content: '\e934'; }
@@ -147,12 +149,17 @@
     &--monitor::before { content: '\e931'; }
     &--moon::before { content: '\e9c1'; }
     &--network::before { content: '\e965'; }
+    &--paperclip::before { content: '\e9dd'; }
+    &--pause::before { content: '\e9d9'; }
+    &--pause-full::before { content: '\e9d8'; }
     &--pen::before { content: '\e966'; }
     &--percent::before { content: '\e9a7'; }
     &--phone::before { content: '\e967'; }
     &--piggy-bank::before { content: '\e9a8'; }
     &--pin::before { content: '\e9c3'; }
     &--pin-off::before { content: '\e9c2'; }
+    &--play::before { content: '\e9d5'; }
+    &--play-full::before { content: '\e9d4'; }
     &--plus::before { content: '\e968'; }
     &--printer::before { content: '\e969'; }
     &--question::before { content: '\e96d'; }
@@ -192,12 +199,15 @@
     &--star::before { content: '\e989'; }
     &--star-full::before { content: '\e988'; }
     &--star-half::before { content: '\e9ad'; }
+    &--stop::before { content: '\e9db'; }
+    &--stop-full::before { content: '\e9da'; }
     &--store::before { content: '\e98a'; }
     &--suitcase::before { content: '\e9d1'; }
     &--sun::before { content: '\e9c5'; }
     &--sync::before { content: '\e9ae'; }
     &--tag::before { content: '\e96b'; }
     &--target::before { content: '\e9d2'; }
+    &--theme::before { content: '\e9dc'; }
     &--thumbs-down::before { content: '\e9af'; }
     &--thumbs-up::before { content: '\e9b0'; }
     &--timer::before { content: '\e91b'; }

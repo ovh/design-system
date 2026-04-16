@@ -24,6 +24,29 @@ interface TooltipRootProp {
    */
   openDelay?: number,
   /**
+   * The overlay configuration.
+   */
+  overlayConfig?: {
+    /**
+     * Whether to flip the position.
+     */
+    flip?: boolean,
+    /**
+     * The main axis offset or gap between the reference and floating elements.
+     */
+    gutter?: number;
+    /**
+     * @type=TOOLTIP_POSITION
+     * The tooltip position around the trigger.
+     */
+    position?: TooltipPosition,
+    /**
+     * Whether to make the floating element same width as the reference element.
+     */
+    sameWidth?: boolean,
+  }
+  /**
+   * @deprecated
    * @type=TOOLTIP_POSITION
    * The tooltip position around the trigger.
    */

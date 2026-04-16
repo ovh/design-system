@@ -1,6 +1,10 @@
 import { type CSSProperties, type ComponentPropsWithRef, type JSX, type ReactNode, createContext } from 'react';
 import { useContext } from '../../../../utils/context';
 
+interface SelectOpenChangeDetail {
+  open: boolean,
+}
+
 interface SelectValueChangeDetail {
   items: SelectItem[],
   value: string[],
@@ -44,6 +48,10 @@ type SelectCustomOptionRendererArg<T extends CustomData = CustomData> = {
 
 interface SelectRootProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> {
   /**
+   * The initial open state of the select. Use when you don't need to control the open state of the select.
+   */
+  defaultOpen?: boolean,
+  /**
    * The initial selected value(s). Use when you don't need to control the selected value(s) of the select.
    */
   defaultValue?: string | string[],
@@ -72,9 +80,17 @@ interface SelectRootProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> 
    */
   name?: string,
   /**
+   * Callback fired when the select open state changes.
+   */
+  onOpenChange?: (detail: SelectOpenChangeDetail) => void
+  /**
    * Callback fired when the value(s) changes.
    */
   onValueChange?: (detail: SelectValueChangeDetail) => void,
+  /**
+   * The controlled open state of the select.
+   */
+  open?: boolean,
   /**
    * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
    */
@@ -133,6 +149,7 @@ export {
   type SelectGroupItem,
   type SelectItem,
   type SelectMultipleMode,
+  type SelectOpenChangeDetail,
   type SelectOptionItem,
   SelectProvider,
   type SelectRootProp,

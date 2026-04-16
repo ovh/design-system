@@ -10,4 +10,14 @@ const Select = Object.assign(SelectRoot, {
 export { Select };
 export { SelectContent, SelectControl };
 export type { SelectProp, SelectContentProp, SelectControlProp };
-export { type SelectCustomGroupRendererArg, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg, type SelectGroupItem, type SelectItem, type SelectMultipleMode, type SelectOptionItem, type SelectValueChangeDetail } from './contexts/useSelect';
+export {
+  type SelectCustomGroupRendererArg,
+  type SelectCustomItemRendererArg,
+  type SelectCustomOptionRendererArg,
+  type SelectGroupItem,
+  type SelectItem,
+  type SelectMultipleMode,
+  type SelectOpenChangeDetail,
+  type SelectOptionItem,
+  type SelectValueChangeDetail,
+} from './contexts/useSelect';

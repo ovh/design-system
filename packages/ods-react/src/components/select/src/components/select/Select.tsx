@@ -9,6 +9,7 @@ interface SelectProp extends SelectRootProp {}
 const Select: FC<SelectProp> = forwardRef(({
   children,
   className,
+  defaultOpen,
   defaultValue,
   disabled = false,
   fitControlWidth = true,
@@ -18,6 +19,7 @@ const Select: FC<SelectProp> = forwardRef(({
   multiple = false,
   name,
   onValueChange,
+  open,
   positionerStyle,
   readOnly = false,
   required,
@@ -56,6 +58,7 @@ const Select: FC<SelectProp> = forwardRef(({
         className={ className }
         collection={ collection }
         data-ods="select"
+        defaultOpen={ defaultOpen }
         defaultValue={ defaultValues }
         disabled={ disabled }
         id={ id || fieldContext?.id }
@@ -64,6 +67,7 @@ const Select: FC<SelectProp> = forwardRef(({
         multiple={ !!multiple }
         name={ name }
         onValueChange={ onValueChange }
+        open={ open }
         positioning={{
           gutter: -1,
           sameWidth: fitControlWidth,

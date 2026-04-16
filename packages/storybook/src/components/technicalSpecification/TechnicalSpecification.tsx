@@ -52,23 +52,26 @@ const TechnicalSpecification = ({ cssVariable, data, extraInfo, of }: Props): JS
     <div>
       {
         (components || []).map((component, idx) => (
-          <ClassModule key={ idx }
-                       component={ component }
-                       extraInfo={ extraInfo } />
+          <ClassModule
+            component={ component }
+            extraInfo={ extraInfo }
+            key={ idx } />
         ))
       }
 
       {
         enums.length > 0 &&
         <>
-          <Heading label="Enums"
-                   level={ 2 } />
+          <Heading
+            label="Enums"
+            level={ 2 } />
 
           {
             enums.map((enumObj, idx) => (
               <Fragment key={ idx }>
-                <Heading label={ enumObj.name }
-                         level={ 3 }>
+                <Heading
+                  label={ enumObj.name }
+                  level={ 3 }>
                   {
                     enumObj.deprecated &&
                     <Badge
@@ -91,14 +94,16 @@ const TechnicalSpecification = ({ cssVariable, data, extraInfo, of }: Props): JS
       {
         interfaces.length > 0 &&
         <>
-          <Heading label="Interfaces"
-                   level={ 2 } />
+          <Heading
+            label="Interfaces"
+            level={ 2 } />
 
           {
             interfaces.map((interfaceObj, idx) => (
               <Fragment key={ idx }>
-                <Heading label={ interfaceObj.name }
-                         level={ 3 } />
+                <Heading
+                  label={ interfaceObj.name }
+                  level={ 3 } />
 
                 <ul className={ styles['technical-specification__interfaces__keys'] }>
                   {
@@ -120,8 +125,9 @@ const TechnicalSpecification = ({ cssVariable, data, extraInfo, of }: Props): JS
       {
         unions.length > 0 &&
         <>
-          <Heading label="Unions"
-                   level={ 2 } />
+          <Heading
+            label="Unions"
+            level={ 2 } />
 
           <ul className={ styles['technical-specification__unions__keys'] }>
             {
@@ -140,8 +146,9 @@ const TechnicalSpecification = ({ cssVariable, data, extraInfo, of }: Props): JS
       {
         cssVariables.length > 0 &&
         <>
-          <Heading label="Css Variables"
-                   level={ 2 }>
+          <Heading
+            label="Css Variables"
+            level={ 2 }>
             <StorybookLink title={ HOME_TITLE.styleCustomization }>(see style customization)</StorybookLink>
           </Heading>
 

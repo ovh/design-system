@@ -21,7 +21,13 @@ interface CodeProp extends ComponentPropsWithRef<'div'> {
    * Configuration of a specific code highlighter (see beneath for more details).
    */
   highlighter?: {
+    /**
+     * The programming language displayed.
+     */
     language: LanguageRegistration[],
+    /**
+     * The theme to apply to the code.
+     */
     theme: ThemeRegistrationAny,
   },
   /**

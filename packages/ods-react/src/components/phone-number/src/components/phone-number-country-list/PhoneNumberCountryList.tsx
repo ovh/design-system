@@ -75,13 +75,13 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
       className={ classNames(style['phone-number-country-list'], className) }
       data-ods="phone-number-country-list"
       disabled={ disabled }
-      fitControlWidth={ false }
       invalid={ hasError || invalid }
       items={ countryItems }
       readOnly={ readOnly }
       required={ required }
       ref={ ref }
       onValueChange={ onValueChange }
+      overlayConfig={{ sameWidth: false }}
       value={ [isoCode || FALLBACK_ISO_CODE] }
       { ...props }>
       <SelectControl

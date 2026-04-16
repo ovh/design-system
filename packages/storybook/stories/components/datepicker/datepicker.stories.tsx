@@ -12,7 +12,7 @@ type Story = StoryObj<DatepickerProp>;
 type DemoArg = Partial<DatepickerProp> & Partial<DatepickerControlProp>;
 
 const meta: Meta<DatepickerProp> = {
-  argTypes: excludeFromDemoControls(['dateFormatter', 'defaultOpen', 'defaultValue', 'defaultView', 'disabledDates', 'disabledWeekDays', 'i18n', 'max', 'maxView', 'min', 'minView', 'name', 'onValueChange', 'open', 'required', 'value', 'view']),
+  argTypes: excludeFromDemoControls(['dateFormatter', 'defaultOpen', 'defaultValue', 'defaultView', 'disabledDates', 'disabledWeekDays', 'i18n', 'max', 'maxView', 'min', 'minView', 'name', 'onOpenChange', 'onValueChange', 'open', 'positionerStyle', 'required', 'value', 'view']),
   component: Datepicker,
   subcomponents: { DatepickerContent, DatepickerControl },
   title: 'React Components/Datepicker',

@@ -26,37 +26,39 @@ type ClassModuleProp = {
 const COLUMNS = ['Property', 'Type', 'Required', 'Default value', 'Description'];
 
 const ClassModuleRow = ({ isChild, prop }: ClassModuleRowProp): JSX.Element => {
-  const tdClass = classNames({
-    [styles['class-module-row--has-child']]: !!prop.entries?.length || (isChild && isChild !== 'last'),
-  });
+  const tdClass = classNames(
+    styles['class-module-row'],
+    { [styles['class-module-row--has-child']]: !!prop.entries?.length || (isChild && isChild !== 'last') },
+  );
 
   return (
     <>
       <tr>
-        <td className={ classNames(
-          tdClass,
-          { [styles['class-module-row__key--child']]: !!isChild },
-        )}>
-          {
-            isChild &&
+        <td className={ tdClass }>
+          <div className={ styles['class-module-row__key'] }>
+            {
+              isChild &&
+              <span className={ classNames(
+                styles['class-module-row__key__border'],
+                { [styles['class-module-row__key__border--last']]: isChild === 'last' },
+              )} />
+            }
+
             <span className={ classNames(
-              styles['class-module-row__key__border'],
-              { [styles['class-module-row__key__border--last']]: isChild === 'last' },
-            )} />
-          }
-          <span className={ classNames(
-            { [styles['class-module-row__key__name--child']]: !!isChild },
-          )}>
-            { prop.name }
-          </span>
-          {
-            prop.deprecated &&
-            <Badge
-              color={ BADGE_COLOR.warning }
-              size={ BADGE_SIZE.sm }>
-              Deprecated
-            </Badge>
-          }
+              { [styles['class-module-row__key__name--child']]: !!isChild },
+            )}>
+              { prop.name }
+            </span>
+
+            {
+              prop.deprecated &&
+              <Badge
+                color={ BADGE_COLOR.warning }
+                size={ BADGE_SIZE.sm }>
+                Deprecated
+              </Badge>
+            }
+          </div>
         </td>
 
         <td className={ tdClass }>

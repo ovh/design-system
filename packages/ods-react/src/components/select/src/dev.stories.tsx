@@ -224,7 +224,6 @@ export const Default = () => (
 
 export const DifferentWidth = () => (
   <Select
-    fitControlWidth={ false }
     items={[
       { label: 'Dog', value:'dog' },
       { label: 'Cat', value:'cat' },
@@ -232,7 +231,8 @@ export const DifferentWidth = () => (
       { label: 'Parrot', value:'parrot' },
       { label: 'Spider', value:'spider' },
       { label: 'Goldfish', value:'goldfish' },
-    ]}>
+    ]}
+    overlayConfig={{ sameWidth: false }}>
     <SelectControl />
     <SelectContent />
   </Select>

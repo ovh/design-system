@@ -20,6 +20,7 @@ const Select: FC<SelectProp> = forwardRef(({
   name,
   onValueChange,
   open,
+  overlayConfig,
   positionerStyle,
   readOnly = false,
   required,
@@ -69,8 +70,9 @@ const Select: FC<SelectProp> = forwardRef(({
         onValueChange={ onValueChange }
         open={ open }
         positioning={{
+          flip: overlayConfig?.flip,
           gutter: -1,
-          sameWidth: fitControlWidth,
+          sameWidth: overlayConfig?.sameWidth ?? fitControlWidth,
         }}
         readOnly={ readOnly }
         ref={ ref }

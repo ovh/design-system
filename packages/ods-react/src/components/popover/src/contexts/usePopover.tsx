@@ -17,7 +17,8 @@ interface PopoverRootProp {
    */
   autoFocus?: boolean,
   /**
-   * The main axis offset or gap between the reference and floating elements
+   * @deprecated
+   * Moved to overlayConfig.
    */
   gutter?: number;
   /**
@@ -33,8 +34,31 @@ interface PopoverRootProp {
    */
   open?: boolean,
   /**
+   * The overlay configuration.
+   */
+  overlayConfig?: {
+    /**
+     * Whether to flip the position.
+     */
+    flip?: boolean,
+    /**
+     * The main axis offset or gap between the reference and floating elements.
+     */
+    gutter?: number;
+    /**
+     * @type=POPOVER_POSITION
+     * The popover position around the trigger.
+     */
+    position?: PopoverPosition,
+    /**
+     * Whether to make the floating element same width as the reference element.
+     */
+    sameWidth?: boolean,
+  }
+  /**
+   * @deprecated
    * @type=POPOVER_POSITION
-   * The popover position around the trigger.
+   * Moved to overlayConfig.
    */
   position?: PopoverPosition,
   /**
@@ -42,7 +66,8 @@ interface PopoverRootProp {
    */
   positionerStyle?: CSSProperties,
   /**
-   * Whether to make the floating element same width as the reference element.
+   * @deprecated
+   * Moved to overlayConfig.
    */
   sameWidth?: boolean,
   /**

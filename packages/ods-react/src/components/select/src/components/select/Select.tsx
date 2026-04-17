@@ -18,6 +18,7 @@ const Select: FC<SelectProp> = forwardRef(({
   items = [],
   multiple = false,
   name,
+  onOpenChange,
   onValueChange,
   open,
   overlayConfig,
@@ -67,6 +68,7 @@ const Select: FC<SelectProp> = forwardRef(({
         loopFocus={ true }
         multiple={ !!multiple }
         name={ name }
+        onOpenChange={ onOpenChange }
         onValueChange={ onValueChange }
         open={ open }
         positioning={{

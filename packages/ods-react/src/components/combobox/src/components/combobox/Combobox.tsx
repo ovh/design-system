@@ -10,6 +10,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   className,
   customFilter,
   customOptionRenderer,
+  defaultOpen,
   defaultValue,
   disabled,
   highlightResults = false,
@@ -22,7 +23,10 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
   newElementLabel = 'Add ',
   noResultLabel = 'No results found',
   onInputValueChange,
+  onOpenChange,
   onValueChange,
+  open,
+  overlayConfig,
   readOnly,
   required,
   value,
@@ -36,6 +40,7 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
       allowCustomValue={ allowCustomValue }
       customFilter={ customFilter }
       customOptionRenderer={ customOptionRenderer }
+      defaultOpen={ defaultOpen }
       defaultValue={ defaultValue }
       disabled={ disabled }
       highlightResults={ highlightResults }
@@ -48,7 +53,10 @@ const Combobox: FC<ComboboxProp> = forwardRef(({
       newElementLabel={ newElementLabel }
       noResultLabel={ noResultLabel }
       onInputValueChange={ onInputValueChange }
+      onOpenChange={ onOpenChange }
       onValueChange={ onValueChange }
+      open={ open }
+      overlayConfig={ overlayConfig }
       readOnly={ readOnly }
       required={ required }
       value={ value }>

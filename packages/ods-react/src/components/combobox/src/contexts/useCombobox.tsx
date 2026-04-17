@@ -10,6 +10,10 @@ interface ComboboxInputValueChangeDetails {
   inputValue: string;
 }
 
+interface ComboboxOpenChangeDetail {
+  open: boolean,
+}
+
 interface ComboboxValueChangeDetails {
   value: string[];
 }
@@ -46,6 +50,10 @@ type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'defaultValue' | 'onS
    * Custom render for each option item.
    */
   customOptionRenderer?: (item: ComboboxItem) => JSX.Element,
+  /**
+   * The initial open state of the combobox. Use when you don't need to control the open state of the combobox.
+   */
+  defaultOpen?: boolean,
   /**
    * The initial selected value(s). Use when you don't need to control the selected value(s) of the combobox.
    */
@@ -95,9 +103,30 @@ type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'defaultValue' | 'onS
    */
   onInputValueChange?: (value: ComboboxInputValueChangeDetails) => void,
   /**
+   * Callback fired when the select open state changes.
+   */
+  onOpenChange?: (detail: ComboboxOpenChangeDetail) => void
+  /**
    * Callback fired when the value(s) changes.
    */
   onValueChange?: (value: ComboboxValueChangeDetails) => void,
+  /**
+   * The controlled open state of the combobox.
+   */
+  open?: boolean,
+  /**
+   * The overlay configuration.
+   */
+  overlayConfig?: {
+    /**
+     * Whether to flip the position.
+     */
+    flip?: boolean,
+    /**
+     * Whether to make the floating element same width as the reference element.
+     */
+    sameWidth?: boolean,
+  },
   /**
    * Whether the component is readonly.
    */
@@ -146,13 +175,16 @@ const ComboboxProvider = ({
   allowCustomValue,
   children,
   customFilter,
+  defaultOpen,
   defaultValue,
   disabled,
   items,
   multiple = false,
   newElementLabel,
   onInputValueChange,
+  onOpenChange,
   onValueChange,
+  open,
   readOnly,
   value,
   ...props
@@ -174,7 +206,7 @@ const ComboboxProvider = ({
   const [filteredItems, setFilteredItems] = useState(items);
   const [highlightedOptionValue, setHighlightedOptionValue] = useState('');
   const [inputValue, _setInputValue] = useState(defaultInputValue);
-  const [isOpen, _setIsOpen] = useState(false);
+  const [isOpen, _setIsOpen] = useState((defaultOpen ?? open) ?? false);
   const [selection, _setSelection] = useState<ComboboxOptionItem[]>(defaultSelection);
 
   const optionValues = useMemo(() => {
@@ -214,6 +246,12 @@ const ComboboxProvider = ({
       setHighlightedOptionValue('');
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (typeof open === 'boolean') {
+      _setIsOpen(open);
+    }
+  }, [open]);
 
   useEffect(() => {
     const matchingItems = getDefaultSelection(items, value);
@@ -322,10 +360,20 @@ const ComboboxProvider = ({
   }
 
   function setIsOpen(state: SetStateAction<boolean>): void {
+    let newState;
+
     if (disabled || readOnly) {
-      _setIsOpen(false);
+      newState = false;
     } else {
-      _setIsOpen(state);
+      newState = typeof state === 'function' ? state(isOpen) : state;
+    }
+
+    if (typeof open !== 'boolean') {
+      _setIsOpen(newState);
+    }
+
+    if (onOpenChange) {
+      onOpenChange({ open: newState });
     }
   }
 
@@ -388,6 +436,7 @@ export {
   type ComboboxGroupItem,
   type ComboboxInputValueChangeDetails,
   type ComboboxItem,
+  type ComboboxOpenChangeDetail,
   type ComboboxOptionItem,
   ComboboxProvider,
   type ComboboxRootProp,

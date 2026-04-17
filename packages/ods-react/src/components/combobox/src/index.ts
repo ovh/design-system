@@ -14,6 +14,7 @@ export {
   type ComboboxInputValueChangeDetails,
   type ComboboxGroupItem,
   type ComboboxItem,
+  type ComboboxOpenChangeDetail,
   type ComboboxOptionItem,
   type ComboboxValueChangeDetails,
 } from './contexts/useCombobox';

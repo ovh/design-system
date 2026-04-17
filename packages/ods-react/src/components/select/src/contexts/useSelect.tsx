@@ -104,7 +104,7 @@ interface SelectRootProp extends Omit<ComponentPropsWithRef<'div'>, 'onSelect'> 
      * Whether to make the floating element same width as the reference element.
      */
     sameWidth?: boolean,
-  }
+  },
   /**
    * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
    */

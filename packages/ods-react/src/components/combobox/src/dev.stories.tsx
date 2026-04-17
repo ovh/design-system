@@ -238,6 +238,15 @@ export const DefaultValue = () => (
   </Combobox>
 );
 
+export const DifferentWidth = () => (
+  <Combobox
+    items={ items }
+    overlayConfig={{ sameWidth: false }}>
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+);
+
 export const Disabled = () => (
   <>
     <Combobox
@@ -496,6 +505,31 @@ export const NoCustom = () => (
     <ComboboxContent />
   </Combobox>
 );
+
+export const Opened = () => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  return (
+    <>
+      <Combobox
+        defaultOpen={ true }
+        items={ items }>
+        <ComboboxControl />
+        <ComboboxContent />
+      </Combobox>
+
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+      <Combobox
+        items={ items }
+        onOpenChange={ ({ open }) => setIsOpen(open) }
+        open={ isOpen }>
+        <ComboboxControl />
+        <ComboboxContent />
+      </Combobox>
+    </>
+  );
+}
 
 export const Placeholder = () => (
   <Combobox items={ items }>

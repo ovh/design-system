@@ -28,6 +28,7 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
     isOpen,
     invalid,
     noResultLabel,
+    overlayConfig,
     setContentId,
     setContentPosition,
   } = useCombobox();
@@ -45,11 +46,14 @@ const ComboboxContent: FC<ComboboxContentProp> = forwardRef(({
   return (
     <Popover
       autoFocus={ false }
-      gutter={ -1 }
       onPositionChange={ handlePositionChange }
       open={ isOpen }
-      position={ POPOVER_POSITION.bottom }
-      sameWidth={ true }
+      overlayConfig={{
+        gutter: -1,
+        position: POPOVER_POSITION.bottom,
+        sameWidth: true,
+        ...overlayConfig,
+      }}
       triggerId={ controlId }>
       <PopoverContent
         className={ classNames(

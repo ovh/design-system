@@ -54,7 +54,7 @@ interface PopoverRootProp {
      * Whether to make the floating element same width as the reference element.
      */
     sameWidth?: boolean,
-  }
+  },
   /**
    * @deprecated
    * @type=POPOVER_POSITION

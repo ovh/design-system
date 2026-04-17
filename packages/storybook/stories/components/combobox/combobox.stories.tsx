@@ -19,7 +19,7 @@ type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {
 };
 
 const meta: Meta<ComboboxProp> = {
-  argTypes: excludeFromDemoControls(['customFilter', 'customOptionRenderer', 'defaultValue', 'i18n', 'items', 'locale', 'name', 'onInputValueChange', 'onValueChange', 'required', 'value']),
+  argTypes: excludeFromDemoControls(['customFilter', 'customOptionRenderer', 'defaultOpen', 'defaultValue', 'i18n', 'items', 'locale', 'name', 'onInputValueChange', 'onOpenChange', 'onValueChange', 'open', 'overlayConfig', 'required', 'value']),
   component: Combobox,
   subcomponents: { ComboboxContent, ComboboxControl },
   title: 'React Components/Combobox',

@@ -1,7 +1,7 @@
 @layer ods-organisms {
   .prompt-input-files {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
     gap: var(--ods-theme-row-gap);
 
     &:has(> :only-child) {

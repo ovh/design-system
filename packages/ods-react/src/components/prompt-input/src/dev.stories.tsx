@@ -54,6 +54,39 @@ export const Default = (): JSX.Element => {
     </>
   );
 };
+export const Events = (): JSX.Element => {
+  const [inputValue, setInputValue] = useState('');
+  const [submitValue, setSubmitValue] = useState('');
+  const [fileChangeValue, setFileChangeValue] = useState<File[]>([]);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <PromptInput
+        onValueChange={({ inputValue }) => {
+          setInputValue(inputValue);
+        }}
+        onInputSubmit={({ inputValue }) => {
+          setSubmitValue(inputValue);
+        }}
+        onFileChange={({ files }) => {
+          setFileChangeValue(files);
+        }}
+      >
+        <PromptInputControls>
+          <PromptInputFileUploadButton multiple />
+          <PromptInputTextControl />
+          <PromptInputSendButton />
+        </PromptInputControls>
+      </PromptInput>
+
+      <div>
+        Value : {inputValue}<br />
+        Submit value : {submitValue}  <br />
+        File change value : {fileChangeValue.map((file) => file.name).join(', ')}
+      </div>
+    </div>
+  );
+};
 
 export const WithFiles = (): JSX.Element => {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([
@@ -62,9 +95,8 @@ export const WithFiles = (): JSX.Element => {
   ]);
   const MAX_FILE_SIZE = 1_000_000;
 
-  function handleChange({ target }: React.ChangeEvent<HTMLInputElement>): void {
-    const selected = Array.from(target.files ?? []);
-    target.value = '';
+  function handleFileChange({ files }: { files: File[] }): void {
+    const selected = Array.from(files);
 
     const accepted = selected.filter((file) => file.size <= MAX_FILE_SIZE);
     const rejected = selected.filter((file) => file.size > MAX_FILE_SIZE);
@@ -79,7 +111,7 @@ export const WithFiles = (): JSX.Element => {
     }
   }
 
-  return <PromptInput>
+  return <PromptInput onFileChange={handleFileChange}>
     {Boolean(uploadedFiles?.length) &&
     <PromptInputFiles>
       {uploadedFiles.map((file, index) => (
@@ -95,7 +127,7 @@ export const WithFiles = (): JSX.Element => {
     </PromptInputFiles>
     }
     <PromptInputControls>
-      <PromptInputFileUploadButton accept='' multiple onChange={handleChange} />
+      <PromptInputFileUploadButton accept='' multiple />
       <PromptInputTextControl placeholder="Enter your prompt" />
       <PromptInputSendButton />
     </PromptInputControls>
@@ -156,7 +188,7 @@ export const InsideFormField = (): JSX.Element => {
       <PromptInput
         defaultValue={inputValue}
         name="prompt-input-textArea"
-        onValueChange={setInputValue}
+        onValueChange={({ inputValue }) => setInputValue(inputValue)}
       >
         <PromptInputControls>
           <PromptInputFileUploadButton />

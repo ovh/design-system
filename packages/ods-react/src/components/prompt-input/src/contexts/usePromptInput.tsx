@@ -1,9 +1,21 @@
-import { type JSX, type ReactNode, createContext, useEffect, useState } from 'react';
+import { type JSX, type ReactNode, createContext, useEffect, useRef, useState } from 'react';
 import { useContext } from '../../../../utils/context';
+
+interface PromptInputInputSubmitDetails {
+  inputValue: string;
+}
+
+interface PromptInputValueChangeDetails {
+  inputValue: string;
+}
+
+interface PromptInputFileChangeDetails {
+  files: File[];
+}
 
 interface PromptInputRootProp {
   /**
-   * The initial selected value(s). Use when you don't need to control the selected value(s) of the combobox.
+   * The initial textarea value. Use when you don't need to control the value of the textarea.
    */
   defaultValue?: string,
   /**
@@ -15,29 +27,25 @@ interface PromptInputRootProp {
    */
   loading?: boolean;
   /**
-   * The name of the form element. Useful for form submission.
+   * The name of the textarea form element. Useful for form submission.
    */
   name?: string,
   /**
-   * Callback fired when the input is submitted.
+   * Callback fired when the prompt input is submitted.
    */
-  onInputSubmit?: (value: string) => void;
+  onInputSubmit?: (detail: PromptInputInputSubmitDetails) => void;
   /**
-   * Callback fired when the value(s) changes.
+   * Callback fired when the prompt input text value changes.
    */
-  onValueChange?: (value: string) => void;
+  onValueChange?: (detail: PromptInputValueChangeDetails) => void;
   /**
    * Callback fired when a file change is triggered.
    */
-  onFileChange?: (value: File[]) => void;
+  onFileChange?: (detail: PromptInputFileChangeDetails) => void;
   /**
    * Whether the component is readonly.
    */
   readOnly?: boolean;
-  /**
-   * Whether the component is required.
-   */
-  required?: boolean,
 }
 
 interface PromptInputProviderProp extends PromptInputRootProp {
@@ -61,16 +69,22 @@ const PromptInputProvider = ({
   onFileChange,
   onValueChange,
   readOnly,
-  required,
   ...props
 }: PromptInputProviderProp): JSX.Element => {
   const [fileCollection, setFileCollection] = useState<File[]>([]);
   const [inputValue, setInputValue] = useState(props.defaultValue ?? '');
 
+  const onFileChangeRef = useRef(onFileChange);
+  onFileChangeRef.current = onFileChange;
   useEffect(() => {
-    onFileChange?.(fileCollection);
-    onValueChange?.(inputValue);
-  }, [inputValue, onValueChange, onFileChange, fileCollection]);
+    onFileChangeRef.current?.({ files: fileCollection });
+  }, [fileCollection]);
+
+  const onValueChangeRef = useRef(onValueChange);
+  onValueChangeRef.current = onValueChange;
+  useEffect(() => {
+    onValueChangeRef.current?.({ inputValue });
+  }, [inputValue]);
 
   return (
     <PromptInputContext.Provider value={{
@@ -82,7 +96,6 @@ const PromptInputProvider = ({
       onInputSubmit,
       onValueChange,
       readOnly,
-      required,
       setFileCollection,
       setInputValue,
       ...props,
@@ -97,4 +110,11 @@ function usePromptInput(): PromptInputContextType {
   return useContext(PromptInputContext);
 }
 
-export { PromptInputProvider, type PromptInputRootProp, usePromptInput };
+export {
+  PromptInputProvider,
+  type PromptInputRootProp,
+  type PromptInputInputSubmitDetails,
+  type PromptInputValueChangeDetails,
+  type PromptInputFileChangeDetails,
+  usePromptInput,
+};

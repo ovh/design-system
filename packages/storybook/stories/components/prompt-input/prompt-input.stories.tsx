@@ -1,52 +1,375 @@
-import { type Meta, type StoryObj } from '@storybook/react';
-import React from 'react';
-import { PromptInput, type PromptInputProp } from '../../../../ods-react/src/components/prompt-input/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
+import { type Meta, type StoryObj } from "@storybook/react";
+import React, { useState } from "react";
+import {
+  FormField,
+  FormFieldError,
+  FormFieldHelper,
+  FormFieldLabel,
+} from "../../../../ods-react/src/components/form-field/src";
+import { FileThumbnail } from "../../../../ods-react/src/components/file-thumbnail/src";
+import {
+  PromptInput,
+  PromptInputControls,
+  PromptInputFiles,
+  PromptInputFileUploadButton,
+  type PromptInputProp,
+  PromptInputSendButton,
+  PromptInputTextControl,
+} from "../../../../ods-react/src/components/prompt-input/src";
+import { TEXT_PRESET, Text } from "../../../../ods-react/src/components/text/src";
+import { CONTROL_CATEGORY } from "../../../src/constants/controls";
+import { excludeFromDemoControls, orderControls } from "../../../src/helpers/controls";
+import { staticSourceRenderConfig } from "../../../src/helpers/source";
+import { Divider } from "../../../../ods-react/src/components/divider/src";
 
 type Story = StoryObj<PromptInputProp>;
 
+type DemoArg = {
+  disabled: boolean;
+  loading: boolean;
+  readOnly: boolean;
+};
+
 const meta: Meta<PromptInputProp> = {
+  argTypes: excludeFromDemoControls(["defaultValue", "name", "onInputSubmit", "onValueChange", "onFileChange"]),
   component: PromptInput,
-  // subcomponents: { PromptInputXxx }, // Uncomment if sub components, otherwise remove
-  tags: ['new'],
-  title: 'React Components/PromptInput',
+  subcomponents: {
+    PromptInputControls,
+    PromptInputFileUploadButton,
+    PromptInputSendButton,
+    PromptInputTextControl,
+  },
+  tags: ["new"],
+  title: "React Components/Prompt Input",
 };
 
 export default meta;
 
-export const Demo: Story = {
+export const Demo: StoryObj = {
   argTypes: orderControls({
-    dummy: {
+    disabled: {
+      control: "boolean",
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        defaultValue: { summary: false },
+        type: { summary: "boolean" },
       },
-      control: 'text',
+    },
+    loading: {
+      control: "boolean",
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: "boolean" },
+      },
+    },
+    readOnly: {
+      control: "boolean",
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: "boolean" },
+      },
     },
   }),
   args: {
-    dummy: 'dummy default',
+    disabled: false,
+    loading: false,
+    readOnly: false,
   },
+  render: (arg: Partial<DemoArg>) => (
+    <PromptInput loading={arg.loading} readOnly={arg.readOnly} disabled={arg.disabled}>
+      <PromptInputControls>
+        <PromptInputFileUploadButton />
+        <PromptInputTextControl placeholder="Type your message here..." />
+        <PromptInputSendButton />
+      </PromptInputControls>
+    </PromptInput>
+  ),
 };
 
 export const Default: Story = {
+  tags: ["!dev"],
   globals: {
-    imports: `import { PromptInput } from '@ovhcloud/ods-react';`,
+    imports:
+      "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
   },
-  tags: ['!dev'],
   render: ({}) => (
-    <PromptInput />
+    <PromptInput>
+      <PromptInputControls>
+        <PromptInputFileUploadButton />
+        <PromptInputTextControl />
+        <PromptInputSendButton />
+      </PromptInputControls>
+    </PromptInput>
   ),
 };
 
 export const Overview: Story = {
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered',
+  tags: ["!dev"],
+  render: ({}) => {
+    const fakePdfFile = new File(["foo"], "loading-pdf-file.pdf", { type: "application/pdf" });
+    const fakeTextFile = new File(["bar"], "text-file.txt", { type: "text/plain" });
+
+    return (
+      <PromptInput>
+        <PromptInputFiles>
+          <FileThumbnail file={fakePdfFile} progress={45} />
+          <FileThumbnail file={fakeTextFile} />
+        </PromptInputFiles>
+        <PromptInputControls>
+          <PromptInputFileUploadButton aria-label="Attach a file" />
+          <PromptInputTextControl
+            aria-label="Ask someone about something…"
+            placeholder="Ask someone about something…"
+          />
+          <PromptInputSendButton aria-label="Send message" />
+        </PromptInputControls>
+      </PromptInput>
+    );
+  },
+};
+
+export const Disabled: Story = {
+  tags: ["!dev"],
+  globals: {
+    imports:
+      "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
   },
   render: ({}) => (
-    <PromptInput />
+    <PromptInput disabled defaultValue="Nobody’s here to answer…">
+      <PromptInputControls>
+        <PromptInputFileUploadButton aria-label="Attach a file" />
+        <PromptInputTextControl aria-label="Ask someone about something…" />
+        <PromptInputSendButton aria-label="Send message" />
+      </PromptInputControls>
+    </PromptInput>
+  ),
+};
+
+export const ReadOnly: Story = {
+  tags: ["!dev"],
+  globals: {
+    imports:
+      "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
+  },
+  render: ({}) => (
+    <PromptInput readOnly defaultValue="This is a read-only prompt input.">
+      <PromptInputControls>
+        <PromptInputFileUploadButton aria-label="Attach a file" />
+        <PromptInputTextControl aria-label="Ask someone about something…" />
+        <PromptInputSendButton aria-label="Send message" />
+      </PromptInputControls>
+    </PromptInput>
+  ),
+};
+
+export const Loading: Story = {
+  tags: ["!dev"],
+  globals: {
+    imports:
+      "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
+  },
+  render: ({}) => (
+    <PromptInput defaultValue="“Someone” is processing your request…" loading>
+      <PromptInputControls>
+        <PromptInputFileUploadButton aria-label="Attach a file" />
+        <PromptInputTextControl aria-label="Ask someone about something…" />
+        <PromptInputSendButton aria-label="Send message" />
+      </PromptInputControls>
+    </PromptInput>
+  ),
+};
+
+export const WithFiles: Story = {
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  globals: {
+    imports:
+      "import { FileThumbnail, PromptInput, PromptInputControls, PromptInputFiles, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
+  },
+  tags: ["!dev"],
+  render: ({}) => {
+    const fakePdfFile = new File(["foo"], "loading-pdf-file.pdf", { type: "application/pdf" });
+    const fakeTextFile = new File(["bar"], "text-file.txt", { type: "text/plain" });
+
+    return (
+      <PromptInput>
+        <PromptInputFiles>
+          <FileThumbnail file={fakePdfFile} progress={45} />
+          <FileThumbnail file={fakeTextFile} />
+        </PromptInputFiles>
+        <PromptInputControls>
+          <PromptInputFileUploadButton aria-label="Attach a file" />
+          <PromptInputTextControl
+            aria-label="Ask someone about something…"
+            placeholder="Ask someone about something…"
+          />
+          <PromptInputSendButton aria-label="Send message" />
+        </PromptInputControls>
+      </PromptInput>
+    );
+  },
+};
+
+export const InFormField: Story = {
+  globals: {
+    imports: `import { Divider, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton, Text, TEXT_PRESET } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ["!dev"],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const maxLength = 60;
+    const [inputValue, setInputValue] = useState("Some text that is almost hitting the length limit...");
+
+    return (
+      <FormField invalid={inputValue?.length > maxLength}>
+        <FormFieldLabel>Here is a prompt input inside a form field:</FormFieldLabel>
+        <PromptInput
+          defaultValue={inputValue}
+          name="prompt-input-textArea"
+          onValueChange={({ inputValue }) => setInputValue(inputValue)}
+        >
+          <PromptInputControls>
+            <PromptInputFileUploadButton aria-label="Attach a file" />
+            <div style={{ display: "flex", flexDirection: "column", flexGrow: 1, gap: "4px" }}>
+              <PromptInputTextControl aria-label="Ask someone about something…" />
+              <Divider style={{ width: "100%" }} />
+              <FormFieldHelper>
+                <Text preset={TEXT_PRESET.caption}>
+                  {inputValue?.length} / {maxLength}
+                </Text>
+              </FormFieldHelper>
+            </div>
+            <PromptInputSendButton aria-label="Send message" />
+          </PromptInputControls>
+        </PromptInput>
+        <FormFieldError>Character limit exceeded</FormFieldError>
+      </FormField>
+    );
+  },
+};
+
+export const AccessibilityAriaLabel: Story = {
+  tags: ["!dev"],
+  globals: {
+    imports:
+      "import { PromptInput, PromptInputControls, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
+  },
+  render: ({}) => (
+    <PromptInput>
+      <PromptInputControls>
+        <PromptInputTextControl aria-label="Ask someone about something…" />
+        <PromptInputSendButton />
+      </PromptInputControls>
+    </PromptInput>
+  ),
+};
+
+export const AccessibilityLabel: Story = {
+  tags: ["!dev"],
+  globals: {
+    imports:
+      "import { PromptInput, PromptInputControls, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
+  },
+  render: ({}) => (
+    <PromptInput>
+      <PromptInputControls>
+        <label className="sr-only" style={ { position: "absolute", width: "1px", height: "1px", overflow: "hidden", clip: "rect(0, 0, 0, 0)" }} htmlFor="prompt-input-textArea">Ask someone about something…</label>
+        <PromptInputTextControl id="prompt-input-textArea" />
+        <PromptInputSendButton />
+      </PromptInputControls>
+    </PromptInput>
+  ),
+};
+
+export const AccessibilityButtonsLabels: Story = {
+  tags: ["!dev"],
+  globals: {
+    imports:
+      "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
+  },
+  render: ({}) => (
+    <PromptInput>
+      <PromptInputControls>
+        <PromptInputFileUploadButton aria-label="Attach file" />
+        <PromptInputTextControl aria-label="Ask someone about something…" />
+        <PromptInputSendButton aria-label="Send request" />
+      </PromptInputControls>
+    </PromptInput>
+  ),
+};
+
+
+export const AccessibilityLoadingState: Story = {
+  tags: ["!dev"],
+  globals: {
+    imports:
+      "import { PromptInput, PromptInputControls, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
+  },
+  render: ({}) => (
+    <PromptInput loading>
+      <PromptInputControls>
+        <PromptInputTextControl aria-label="Ask someone about something…" />
+        <PromptInputSendButton aria-label="Request is processing" />
+      </PromptInputControls>
+    </PromptInput>
+  ),
+};
+
+export const ThemeGenerator: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <PromptInput>
+        <PromptInputFiles>
+          <FileThumbnail file={new File(["foo"], "file1.pdf", { type: "application/pdf" })} progress={45} />
+          <FileThumbnail file={new File(["bar"], "file2.txt", { type: "text/plain" })} />
+        </PromptInputFiles>
+        <PromptInputControls>
+          <PromptInputFileUploadButton aria-label="Attach file" />
+          <PromptInputTextControl aria-label="Ask someone about something…" placeholder="Ask someone about something…" />
+          <PromptInputSendButton aria-label="Send request" />
+        </PromptInputControls>
+      </PromptInput>
+       <PromptInput defaultValue="This is a default value">
+        <PromptInputControls>
+          <PromptInputFileUploadButton aria-label="Attach file" />
+          <PromptInputTextControl aria-label="Ask someone about something…" placeholder="Ask someone about something…" />
+          <PromptInputSendButton aria-label="Send request" />
+        </PromptInputControls>
+      </PromptInput>
+      <PromptInput disabled defaultValue="This is a default value in a disabled prompt input.">
+        <PromptInputControls>
+          <PromptInputFileUploadButton aria-label="Attach file" />
+          <PromptInputTextControl aria-label="Ask someone about something…" placeholder="Ask someone about something…" />
+          <PromptInputSendButton aria-label="Request is processing" />
+        </PromptInputControls>
+      </PromptInput>
+      <PromptInput loading>
+        <PromptInputControls>
+          <PromptInputFileUploadButton aria-label="Attach file" />
+          <PromptInputTextControl aria-label="Ask someone about something…" placeholder="Placeholder in loading prompt input…" />
+          <PromptInputSendButton aria-label="Request is processing" />
+        </PromptInputControls>
+      </PromptInput>
+      <PromptInput readOnly defaultValue="This is a read-only prompt input.">
+        <PromptInputControls>
+          <PromptInputTextControl aria-label="Ask someone about something…" placeholder="Ask someone about something…" />
+          <PromptInputSendButton aria-label="Request is processing" />
+        </PromptInputControls>
+      </PromptInput>
+    </div>
   ),
 };

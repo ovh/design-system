@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControl, PromptInputSendButton, PromptInputTextControl, Quantity, QuantityControl, QuantityInput, Textarea } from '@ovhcloud/ods-react';
+import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControls, PromptInputSendButton, PromptInputTextControl, Quantity, QuantityControl, QuantityInput, Textarea } from '@ovhcloud/ods-react';
 import { useFormik } from 'formik';
 import { type ReactElement } from 'react';
 import * as yup from 'yup';
@@ -35,23 +35,22 @@ function FormFormik(): ReactElement {
     <form
       className={ styles['form-formik'] }
       onSubmit={ formik.handleSubmit }>
-
-      <FormField invalid={ formik.touched.quantity && !!formik.errors.quantity }>
+      <FormField invalid={ formik.touched.promptInput && !!formik.errors.promptInput }>
         <FormFieldLabel>
           Prompt input:
         </FormFieldLabel>
         <PromptInput
           defaultValue={formik.initialValues.promptInput}
           name="promptInput"
-          onInputSubmit={async(value) => {
-            await formik.setFieldValue('promptInput', value);
+          onInputSubmit={async({ inputValue }) => {
+            await formik.setFieldValue('promptInput', inputValue.trim());
             formik.submitForm();
           }}
         >
-          <PromptInputControl>
+          <PromptInputControls>
             <PromptInputTextControl placeholder="Placeholder" />
-            <PromptInputSendButton disabled={false} />
-          </PromptInputControl>
+            <PromptInputSendButton />
+          </PromptInputControls>
         </PromptInput>
       </FormField>
 

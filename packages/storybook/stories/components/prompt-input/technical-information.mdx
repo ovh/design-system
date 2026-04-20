@@ -6,7 +6,9 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { Recipes } from '../../../src/components/recipes/Recipes';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import { HOME_TITLE } from '../../../src/constants/meta';
 import * as PromptInputStories from './prompt-input.stories';
 
 <Meta of={ PromptInputStories } name="Technical information" tags={ ['new'] } />
@@ -26,6 +28,38 @@ import * as PromptInputStories from './prompt-input.stories';
 <TechnicalSpecification
   cssVariable={ cssVariable }
   data={ specificationsPromptInput }
+  extraInfo={{
+    'PromptInput': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'PromptInputControls': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'PromptInputFileUploadButton': {
+      extendAttribute: {
+        name: 'file input',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes',
+      },
+    },
+    'PromptInputTextControl': {
+      extendAttribute: {
+        name: 'textarea',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/textarea#attributes',
+      },
+    },
+    'PromptInputSendButton': {
+      extendAttribute: {
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes',
+      },
+    },
+  }}
   of={ PromptInputStories } />
 
 <Heading label="Examples" level={ 2 } />
@@ -33,6 +67,28 @@ import * as PromptInputStories from './prompt-input.stories';
 <Heading label="Default" level={ 3 } />
 
 <Canvas of={ PromptInputStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ PromptInputStories.Disabled } sourceState="shown" />
+
+<Heading label="Readonly" level={ 3 } />
+
+<Canvas of={ PromptInputStories.ReadOnly } sourceState="shown" />
+
+<Heading label="Loading" level={ 3 } />
+
+<Canvas of={ PromptInputStories.Loading } sourceState="shown" />
+
+<Heading label="With files" level={ 3 } />
+
+<Canvas of={ PromptInputStories.WithFiles } sourceState="shown" />
+
+<Heading label="In form field" level={ 3 }>
+  <StorybookLink title={ HOME_TITLE.implementingFormGuide }>(see implementing form guide)</StorybookLink>
+</Heading>
+
+<Canvas of={ PromptInputStories.InFormField } sourceState="shown" />
 
 <Heading label="Recipes" level={ 2 } />
 

@@ -13,3 +13,9 @@ export {
   PromptInputTextControl,
   type PromptInputTextControlProp,
 } from './components/prompt-input-text-control/PromptInputTextControl';
+export {
+  type PromptInputRootProp,
+  type PromptInputInputSubmitDetails,
+  type PromptInputValueChangeDetails,
+  type PromptInputFileChangeDetails,
+} from './contexts/usePromptInput';

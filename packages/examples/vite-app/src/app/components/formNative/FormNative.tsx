@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControl, PromptInputSendButton, PromptInputTextControl, Textarea } from '@ovhcloud/ods-react';
+import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControls, PromptInputSendButton, PromptInputTextControl, Textarea } from '@ovhcloud/ods-react';
 import { type FormEvent, type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.module.scss';
 
@@ -39,11 +39,11 @@ function FormNative(): ReactElement {
         - All fields required: { areAllRequired.toString() }
       </p>
 
-      <PromptInput required={areAllRequired}>
-        <PromptInputControl>
-          <PromptInputTextControl aria-label="enter your prompt" />
+      <PromptInput name='prompt-input'>
+        <PromptInputControls>
+          <PromptInputTextControl required={areAllRequired} aria-label="enter your prompt" />
           <PromptInputSendButton aria-label="send prompt" disabled={false} />
-        </PromptInputControl>
+        </PromptInputControls>
       </PromptInput>
 
       <FormField>

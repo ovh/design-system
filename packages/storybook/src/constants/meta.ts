@@ -70,6 +70,7 @@ enum REACT_COMPONENTS_TITLE {
   phoneNumber = `${SECTION.reactComponents}/Phone Number`,
   popover = `${SECTION.reactComponents}/Popover`,
   progressBar = `${SECTION.reactComponents}/Progress Bar`,
+  promptInput = `${SECTION.reactComponents}/Prompt Input`,
   searchBar = `${SECTION.reactComponents}/Search Bar`,
   quantity = `${SECTION.reactComponents}/Quantity`,
   radioGroup = `${SECTION.reactComponents}/Radio Group`,

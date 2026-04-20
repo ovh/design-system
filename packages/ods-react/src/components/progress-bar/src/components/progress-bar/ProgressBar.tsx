@@ -10,7 +10,7 @@ interface ProgressBarProp extends ComponentPropsWithRef<'progress'> {
   /**
    * The current value of the progress bar
    */
-  value?: string | number,
+  value?: string | number | 'indeterminate',
 }
 
 const ProgressBar: FC<ProgressBarProp> = forwardRef(({
@@ -25,7 +25,7 @@ const ProgressBar: FC<ProgressBarProp> = forwardRef(({
       data-ods="progress-bar"
       max={ max }
       ref={ ref }
-      value={ value }
+      value={ value === 'indeterminate' ? undefined : value }
       { ...props } />
   );
 });

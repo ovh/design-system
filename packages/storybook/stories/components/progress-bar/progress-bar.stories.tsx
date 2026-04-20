@@ -49,6 +49,16 @@ export const Default: Story = {
   ),
 };
 
+export const Indeterminate: StoryObj = {
+  globals: {
+    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <ProgressBar value="indeterminate" />
+  ),
+};
+
 export const Max: StoryObj = {
   globals: {
     imports: `import { ProgressBar } from '@ovhcloud/ods-react';`,

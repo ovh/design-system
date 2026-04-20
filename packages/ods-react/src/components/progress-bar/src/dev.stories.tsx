@@ -16,6 +16,10 @@ export const Default = () => (
   <ProgressBar />
 );
 
+export const Indeterminate = () => (
+  <ProgressBar value="indeterminate" />
+);
+
 export const Max = () => (
   <ProgressBar
     max="50"

@@ -1,9 +1,13 @@
+@use 'sass:math';
+
 $ods-progress-bar-border-radius: var(--ods-theme-border-radius);
+$ods-progress-bar-inderterminate-percent-width: 30%;
 
 @mixin ods-progress-bar() {
   --ods-progress-bar-border-radius: #{$ods-progress-bar-border-radius};
 
   appearance: none;
+  position: relative;
   border: none;
   border-radius: var(--ods-progress-bar-border-radius);
   background-color: var(--ods-theme-track-background-color);
@@ -23,5 +27,49 @@ $ods-progress-bar-border-radius: var(--ods-theme-border-radius);
   &::-moz-progress-bar {
     border-radius: var(--ods-progress-bar-border-radius);
     background-color: var(--ods-theme-progress-background-color);
+  }
+
+  &:indeterminate {
+    // Firefox
+    &::-moz-progress-bar {
+      width: $ods-progress-bar-inderterminate-percent-width;
+      animation: progress-indeterminate 1.5s infinite ease-in-out;
+    }
+
+    // Safari
+    &::-webkit-progress-value {
+      width: $ods-progress-bar-inderterminate-percent-width;
+      animation: progress-indeterminate 1.5s infinite ease-in-out;
+    }
+
+    // Chromium
+    &::after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: var(--ods-progress-bar-border-radius);
+      background-color: var(--ods-theme-progress-background-color);
+      width: $ods-progress-bar-inderterminate-percent-width;
+      animation: progress-indeterminate 1.5s infinite ease-in-out;
+      content: '';
+    }
+  }
+
+  @keyframes progress-indeterminate {
+    0%,
+    5% {
+      transform: translateX(0);
+    }
+
+    45%,
+    55% {
+      transform: translateX(percentage(math.div(100 - $ods-progress-bar-inderterminate-percent-width, $ods-progress-bar-inderterminate-percent-width)));
+    }
+
+    95%,
+    100% {
+      transform: translateX(0);
+    }
   }
 }

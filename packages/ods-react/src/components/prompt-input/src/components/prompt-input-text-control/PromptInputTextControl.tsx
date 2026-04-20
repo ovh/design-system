@@ -4,7 +4,9 @@ import { Textarea, type TextareaProp } from '../../../../textarea/src';
 import { usePromptInput } from '../../contexts/usePromptInput';
 import style from './PromptInputTextControl.module.scss';
 
-interface PromptInputTextControlProp extends Omit<TextareaProp, 'rows'> {}
+interface PromptInputTextControlProp extends TextareaProp {
+  placeholder?: string;
+}
 
 const supportsFieldSizing = CSS.supports('field-sizing', 'content');
 
@@ -14,16 +16,16 @@ function applyScrollHeight(el: HTMLTextAreaElement): void {
 }
 
 const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
-  ({ className, ...props }, ref): JSX.Element => {
+  ({ className, placeholder, ...props }, ref): JSX.Element => {
     const {
       defaultValue,
       disabled,
       inputValue,
       loading,
       name,
+      onValueChange,
       onInputSubmit,
       readOnly,
-      required,
       setInputValue,
     } = usePromptInput();
 
@@ -46,7 +48,7 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
       if (event.key === 'Enter' && !event.shiftKey) {
         event.preventDefault();
         if (!disabled && inputValue.trim() !== '') {
-          onInputSubmit?.(event.currentTarget.value);
+          onInputSubmit?.({ inputValue: event.currentTarget.value });
         }
       }
     };
@@ -55,7 +57,7 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
       if (!supportsFieldSizing) {
         applyScrollHeight(event.target);
       }
-      props.onChange?.(event);
+      onValueChange?.({ inputValue: event.currentTarget.value });
 
       setInputValue(event.target.value);
     };
@@ -64,7 +66,9 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
       <Textarea
         className={classNames(style['prompt-input-text-control'], className)}
         data-ods="prompt-input-text-control"
+        rows={1}
         {...props}
+        placeholder={placeholder}
         defaultValue={defaultValue}
         disabled={disabled || loading}
         name={name}
@@ -72,8 +76,6 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
         onKeyDown={handleKeyDown}
         readOnly={readOnly}
         ref={callbackRef}
-        required={required}
-        rows={1}
       />
     );
   },

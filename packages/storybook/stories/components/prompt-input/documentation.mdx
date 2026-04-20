@@ -1,3 +1,4 @@
+import { ICON_NAME, Icon, Kbd } from '@ovhcloud/ods-react';
 import { Meta } from '@storybook/blocks';
 import * as PromptInputStories from './prompt-input.stories';
 import { Anatomy } from '../../../src/components/anatomy/Anatomy';
@@ -13,51 +14,95 @@ import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 
 <Banner of={ PromptInputStories } />
 
-_**PromptInput** TODO some text about the component_
+_The **Prompt Input** component is a composable text input with a submit button, designed for conversational and AI-driven interfaces._
 
 <Canvas of={ PromptInputStories.Overview } sourceState="none" />
 
 <Heading label="Overview" level={ 2 } />
 
-<IdentityCard aliases={ [] }
-              figmaLink="TODO"
+<IdentityCard aliases={ ['Prompt textarea', 'Chat input', 'Submissible text'] }
+              figmaLink="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/mwZtfuQ9nzv6fY0dfez4NZ/ODS---UI-Kit?node-id=18830-7160&p=f&t=321I8hUuyf5gg2uQ-0 "
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/prompt-input"
-              name="PromptInput"
+              name="Prompt Input"
               startingVersion={ 19 }>
-  TODO some text about the component.
+  The **Prompt Input** component combines a resizable textarea with an integrated send button and an optional file upload button.
 </IdentityCard>
 
 <Heading label="Usage" level={ 2 } />
 
-TODO if relevant
+Use the **Prompt Input** component whenever users need to compose and submit a message or query in a single interaction.
+
+Common use cases include:
+
+- AI assistant interfaces
+- Customer support or live chat widgets
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
-  donts={[]}
-  dos={[]}
+  donts={[
+    '- Omit an accessible label. Always provide an "aria-label" on the "PromptInputTextControl" or wrap the component with a visible label',
+  ]}
+  dos={[
+    '- Leverage the "loading" state to block interaction and show a spinner while a response is being generated',
+  ]}
 />
 
 <Heading label="Best Practices in Context" level={ 3 } />
 
 <Anatomy src="components/prompt-input/anatomy.png" />
 
-1. **PromptInput**
+1. **Prompt Input**
+2. **Uploaded file list** - optional
+3. **File upload button** - optional
+4. **Testarea**
+5. **Send button**
 
 <Heading label="Placement" level={ 2 } />
 
-TODO if relevant
+The **Prompt Input** is typically anchored at the bottom of a conversational view, spanning the full width of the content area.
+
+It should remain visible and accessible at all times during an active conversation, without being obscured by the message list above it.
 
 <Heading label="Behavior" level={ 2 } />
 
-TODO if relevant
+The **Prompt Input** supports several states:
 
-<Heading label="Variation" level={ 2 } />
+- **Default** - the user can type freely in the textarea, which grows vertically as content is added.
+- **Disabled** - the textarea, file upload button, and send button are all non-interactive.
+- **Read-only** - the textarea displays its current value but does not accept new input.
+- **Loading** - the textarea and both buttons are disabled, and the send button displays a spinner.
 
-<Heading label="Variant" level={ 3 } />
+The send button is automatically disabled whenever the textarea is empty, disabled, or in a loading state — no manual control of the button is required.
 
-TODO if relevant
+<Heading label="Keyboard Interaction" level={ 2 } />
+
+Pressing <Kbd>Enter</Kbd> triggers `onInputSubmit` (equivalent to clicking the send button).
+
+Pressing <Kbd>Shift</Kbd> + <Kbd>Enter</Kbd> inserts a new line without submitting.
+
+Pressing <Kbd>Tab</Kbd> moves focus to the next interactive element (send button, file upload button).
+
+Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus to the previous focusable element.
 
 <Heading label="Accessibility" level={ 2 } />
 
-TODO if relevant
+<Heading label="Textarea labelling" level={ 3 } />
+
+Because the **Prompt Input** does not render a visible label by default, you must supply an accessible name for the textarea.
+
+Use the `aria-label` prop on `PromptInputTextControl` to give screen readers a meaningful description of the field.
+
+<Canvas of={ PromptInputStories.AccessibilityAriaLabel } canvas="none" sourceState="shown" />
+
+<Canvas of={ PromptInputStories.AccessibilityLabel } sourceState="shown" />
+
+<Heading label="Button labelling" level={ 3 } />
+
+- The file upload button and the send button don't hold accessible text by default, therefore they must carry an `aria-label` (e.g. `"Attach file"`, `"Send request"`, …) to be announced correctly by assistive technologies.
+
+<Canvas of={ PromptInputStories.AccessibilityButtonsLabels } sourceState="shown" />
+
+- As the send button displays a loading spinner when the component is in the `loading` state, ensure the button's `aria-label` is updated to convey the loading state to users who can't rely on visual cues.
+
+<Canvas of={ PromptInputStories.AccessibilityLoadingState } sourceState="shown" />

@@ -23,7 +23,7 @@ const PromptInputSendButton: FC<PromptInputSendButtonProp> = forwardRef(({ ...pr
       {...props}
       disabled={ isDisabled }
       loading={ loading }
-      onClick={() => onInputSubmit?.(inputValue)}
+      onClick={() => onInputSubmit?.({ inputValue })}
       type="button"
     >
       <Icon name={ICON_NAME.arrowUp} />

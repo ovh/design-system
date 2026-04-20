@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControl, PromptInputSendButton, PromptInputTextControl, Textarea } from '@ovhcloud/ods-react';
+import { Button, FormField, FormFieldError, FormFieldHelper, FormFieldLabel, PromptInput, PromptInputControls, PromptInputSendButton, PromptInputTextControl, Textarea } from '@ovhcloud/ods-react';
 import { type ReactElement, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import styles from './formHookForm.module.scss';
@@ -66,13 +66,13 @@ function FormHookForm(): ReactElement {
                 handleSubmit(onSubmit)();
               }}
             >
-              <PromptInputControl>
+              <PromptInputControls>
                 <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, gap: '4px' }}>
                   <PromptInputTextControl aria-label="enter your prompt" />
                   <FormFieldError>Some error message</FormFieldError>
                 </div>
                 <PromptInputSendButton disabled={false} aria-label="send prompt" />
-              </PromptInputControl>
+              </PromptInputControls>
             </PromptInput>
           </FormField>
         )}

@@ -9,8 +9,14 @@ interface PromptInputFileUploadButtonProp extends ComponentPropsWithRef<'input'>
 
 const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forwardRef(
   ({ className, ...props }, ref): JSX.Element => {
-    const { disabled, loading } = usePromptInput();
+    const { disabled, fileCollection, loading, setFileCollection } = usePromptInput();
     const inputRef = useRef<HTMLInputElement | null>(null);
+
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+      const newFiles = Array.from(event.target.files ?? []);
+      event.target.value = '';
+      setFileCollection([...fileCollection, ...newFiles]);
+    };
 
     return (
       <>
@@ -28,6 +34,7 @@ const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forward
           disabled={disabled || loading}
           aria-hidden
           type="file"
+          onChange={handleFileChange}
         />
         <Button
           aria-describedby={props['aria-describedby']}
@@ -40,7 +47,7 @@ const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forward
           type='button'
           variant="ghost"
         >
-          <Icon name={ICON_NAME.plus} />
+          <Icon name={ICON_NAME.paperclip} />
         </Button>
       </>
     );

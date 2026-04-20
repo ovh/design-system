@@ -13,9 +13,9 @@ const PromptInput: FC<PromptInputProp> = forwardRef(({
   loading,
   name,
   onInputSubmit,
+  onFileChange,
   onValueChange,
   readOnly,
-  required,
   ...props
 }, ref): JSX.Element => {
 
@@ -26,13 +26,13 @@ const PromptInput: FC<PromptInputProp> = forwardRef(({
       loading={ loading }
       name={ name }
       onInputSubmit={ onInputSubmit }
+      onFileChange={ onFileChange }
       onValueChange={ onValueChange }
       readOnly={ readOnly }
-      required={ required }
     >
       <div
         className={ classNames(style['prompt-input'],
-          { [style['prompt-input--disabled']]: disabled },
+          { [style['prompt-input--disabled']]: disabled || loading },
           className) }
         data-ods="prompt-input"
         ref={ ref }

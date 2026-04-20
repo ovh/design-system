@@ -54,7 +54,13 @@ import {
   TreeView,
   TreeViewNode,
   TreeViewNodes,
-  formatPrice
+  formatPrice,
+  PromptInput,
+  PromptInputControls,
+  PromptInputFileUploadButton,
+  PromptInputTextControl,
+  PromptInputSendButton,
+  PromptInputFiles
 } from '@ovhcloud/ods-react';
 import { type ReactElement, useState } from 'react';
 import { AccessibilityControl } from './components/accessibilityControl/AccessibilityControl';
@@ -987,6 +993,21 @@ function App(): ReactElement {
             <PaginationPages />
             <PaginationPageSelector />
           </Pagination>
+        </section>
+
+        <section>
+          <h1>Prompt Input</h1>
+
+          <PromptInput>
+            <PromptInputFiles>
+              Lorem
+            </PromptInputFiles>
+            <PromptInputControls>
+              <PromptInputFileUploadButton aria-label="Attach file" />
+              <PromptInputTextControl aria-label="Ask someone about something…" />
+              <PromptInputSendButton aria-label="Send request" />
+            </PromptInputControls>
+          </PromptInput>
         </section>
 
         <section>

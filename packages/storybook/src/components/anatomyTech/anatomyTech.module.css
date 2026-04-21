@@ -39,6 +39,7 @@
 .anatomy-tech__highlight {
   position: absolute;
   z-index: calc(var(--ods-theme-overlay-z-index) * 2);
-  box-shadow: 0 0 15px 5px #b73206;
+  outline: 2px dashed #c54600;
+  border-radius: 2px;
   pointer-events: none;
 }

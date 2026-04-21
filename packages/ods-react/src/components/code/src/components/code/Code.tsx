@@ -105,17 +105,19 @@ const Code: FC<CodeProp> = forwardRef(({
       data-ods="code"
       ref={ ref }
       role={ canCopy ? 'group' : '' }
-      style={{ ...(shouldHighlight
-        ? {
-          ['--ods-code-secondary-color']: theme.colors && theme.colors['editor.background'],
-          ['--ods-code-trigger-background-color']: theme.colors && theme.colors['button.secondaryForeground'],
-          ['--ods-code-trigger-background-color-active']: theme.colors && theme.colors['button.secondaryHoverBackground'],
-          ['--ods-code-trigger-background-color-hover']: theme.colors && theme.colors['button.secondaryHoverBackground'],
-          ['--ods-code-trigger-outline-color']: theme.colors && theme.colors['button.secondaryForeground'],
-        } as CSSProperties
-        : {}),
-      }}
-      { ...props }>
+      { ...props }
+      style={{
+        ...props.style,
+        ...(shouldHighlight
+          ? {
+            ['--ods-code-secondary-color']: theme.colors && theme.colors['editor.background'],
+            ['--ods-code-trigger-background-color']: theme.colors && theme.colors['button.secondaryForeground'],
+            ['--ods-code-trigger-background-color-active']: theme.colors && theme.colors['button.secondaryHoverBackground'],
+            ['--ods-code-trigger-background-color-hover']: theme.colors && theme.colors['button.secondaryHoverBackground'],
+            ['--ods-code-trigger-outline-color']: theme.colors && theme.colors['button.secondaryForeground'],
+          } as CSSProperties
+          : {}),
+      }}>
       {
         shouldHighlight && highlighterCore
           ? <CodeHighlighter

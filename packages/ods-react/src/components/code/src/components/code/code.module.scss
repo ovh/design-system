@@ -6,6 +6,8 @@ $ods-code-secondary-color: #000;
 @layer ods-organisms {
   .code {
     --ods-code-border-radius: calc(var(--ods-theme-border-radius) / 2);
+    --ods-code-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 1.5);
+    --ods-code-padding-vertical: calc(var(--ods-theme-padding-vertical) * 1.5);
     --ods-code-primary-color: #{$ods-code-primary-color};
     --ods-code-secondary-color: #{$ods-code-secondary-color};
     --ods-code-trigger-background-color: #{$ods-code-primary-color};
@@ -19,7 +21,7 @@ $ods-code-secondary-color: #000;
     justify-content: space-between;
     border-radius: var(--ods-code-border-radius);
     background-color: var(--ods-code-secondary-color);
-    padding: calc(var(--ods-theme-padding-vertical) * 1.5) calc(var(--ods-theme-padding-horizontal) * 1.5);
+    padding: var(--ods-code-padding-vertical) var(--ods-code-padding-horizontal);
     height: auto;
     min-height: input.$ods-input-field-height;
 
@@ -39,6 +41,8 @@ $ods-code-secondary-color: #000;
     }
 
     &__clipboard {
+      position: sticky;
+      top: var(--ods-code-padding-vertical);
       background-color: transparent;
       padding: 0;
 

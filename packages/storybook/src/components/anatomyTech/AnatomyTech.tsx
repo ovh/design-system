@@ -73,7 +73,8 @@ const AnatomyTech = ({
     const resizeObserver = new ResizeObserver((entries) => {
       if (entries && entries.length) {
         if (selectedId) {
-          const elements = getElements(mappingOption?.[selectedId]?.aliases || [selectedId], containerRef.current);
+          const elements = getElements(mappingOption?.[selectedId]?.aliases || [selectedId], containerRef.current)
+            .filter((element) => element.offsetParent !== null);
 
           setTargets(elements.map((element) => {
             return {
@@ -175,7 +176,7 @@ const AnatomyTech = ({
       {
         targets.length > 0 && targets.map((target, idx) => (
           <div
-            className={ styles['anatomy-tech-highlight'] }
+            className={ styles['anatomy-tech__highlight'] }
             key={ idx }
             style={{
               height: target.element.offsetHeight,

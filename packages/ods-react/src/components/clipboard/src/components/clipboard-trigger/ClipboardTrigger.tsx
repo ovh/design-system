@@ -25,11 +25,15 @@ const ClipboardTrigger: FC<ClipboardTriggerProp> = forwardRef(({
   labelCopySuccess = 'Copied!',
   ...props
 }, ref): JSX.Element => {
-  const { disabled } = useClipboard();
+  const { disabled, positionerStyle } = useClipboard();
   const { copied } = useClipboardContext();
 
   return (
-    <Tooltip position={ TOOLTIP_POSITION.right }>
+    <Tooltip
+      overlayConfig={{
+        position: TOOLTIP_POSITION.right,
+      }}
+      positionerStyle={ positionerStyle }>
       <Clipboard.Trigger asChild>
         <TooltipTrigger
           aria-label={ copied ? labelCopySuccess : labelCopy }

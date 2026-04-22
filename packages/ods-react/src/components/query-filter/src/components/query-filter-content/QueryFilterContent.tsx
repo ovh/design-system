@@ -29,6 +29,7 @@ const QueryFilterContent: FC<QueryFilterContentProp> = forwardRef(({
     inputValue,
     invalid,
     noResultLabel,
+    overlayConfig,
     setContentId,
     setContentPosition,
   } = useQueryFilter();
@@ -46,11 +47,14 @@ const QueryFilterContent: FC<QueryFilterContentProp> = forwardRef(({
   return (
     <Popover
       autoFocus={ false }
-      gutter={ -1 }
       onPositionChange={ handlePositionChange }
       open={ isOpen }
-      position={ POPOVER_POSITION.bottom }
-      sameWidth={ true }
+      overlayConfig={{
+        gutter: -1,
+        position: POPOVER_POSITION.bottom,
+        sameWidth: true,
+        ...overlayConfig,
+      }}
       triggerId={ controlId }>
       <PopoverContent
         className={ classNames(

@@ -1,0 +1,20 @@
+.icon-gallery {
+  display: flex;
+  flex-flow: column;
+  row-gap: calc(var(--ods-theme-row-gap) * 2);
+  align-items: center;
+}
+
+.icon-gallery__search {
+  width: 250px;
+}
+
+.icon-gallery__list {
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

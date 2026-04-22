@@ -20,12 +20,18 @@ body[data-theme="dark"] > #storybook-docs {
   --ods-theme-input-placeholder-text-color: #c4c4c4;
 }
 
+body[data-theme="dark"] > #storybook-docs [data-ods="button"] {
+  --ods-button-background-color-primary-ghost-active: var(--ods-color-primary-600);
+  --ods-button-background-color-primary-ghost-hover: var(--ods-color-primary-500);
+}
+
 body[data-theme="dark"] [data-storybook="table"] {
   --ods-table-head-background-color: #383838;
   --ods-table-striped-background-color: #383838;
 }
 
-body[data-theme="dark"] [data-storybook="button-ghost"], body[data-theme="dark"] [data-storybook="input-search"] ~ * [data-ods="button"] {
+body[data-theme="dark"] [data-storybook="button-ghost"],
+body[data-theme="dark"] [data-storybook="input-search"] ~ * [data-ods="button"] {
   --ods-button-text-color-primary-ghost: #e0e2f7;
 }
 

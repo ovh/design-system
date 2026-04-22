@@ -1,0 +1,25 @@
+.icon-preview {
+  display: flex;
+  flex-flow: column;
+  row-gap: var(--ods-theme-row-gap);
+  width: 80px;
+  color: var(--ods-theme-text-color);
+}
+
+.icon-preview--selected {
+  border-color: var(--ods-theme-border-color-selected);
+  background-color: var(--ods-theme-background-color-selected);
+  color: var(--ods-theme-text-color-selected);
+}
+
+.icon-preview--selected .icon-preview__name {
+  color: var(--ods-theme-text-color-selected);
+}
+
+.icon-preview__name {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

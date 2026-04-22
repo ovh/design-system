@@ -37,7 +37,7 @@ You'll find the value of each icon content in the `style.css` file in the icomoo
 /!\ Some components are using icon content directly, you need to double-check if your changes did not break anything for those.
 (you can found them using a search on `@include icon.ods-icon();` in the `ods-react/src/components` directory)
 
-/!\ Please check also the icon tags list on the storybook icon story (`storybook/stories/components/icon/icon.stories.ts`).
+/!\ Please check also the icon tags list on the storybook icon story (`storybook/src/constants/iconTags.ts`).
 
 ## How to update theme-generated variables?
 

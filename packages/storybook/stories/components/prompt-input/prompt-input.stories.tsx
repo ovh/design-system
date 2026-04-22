@@ -24,17 +24,19 @@ import { Divider } from "../../../../ods-react/src/components/divider/src";
 
 type Story = StoryObj<PromptInputProp>;
 
-type DemoArg = {
-  disabled: boolean;
-  loading: boolean;
-  readOnly: boolean;
-};
-
 const meta: Meta<PromptInputProp> = {
-  argTypes: excludeFromDemoControls(["defaultValue", "name", "onInputSubmit", "onValueChange", "onFileChange"]),
+  argTypes: excludeFromDemoControls([
+    "defaultValue",
+    "fileCollection",
+    "name",
+    "onInputSubmit",
+    "onValueChange",
+    "onFileChange",
+  ]),
   component: PromptInput,
   subcomponents: {
     PromptInputControls,
+    PromptInputFiles,
     PromptInputFileUploadButton,
     PromptInputSendButton,
     PromptInputTextControl,
@@ -45,39 +47,28 @@ const meta: Meta<PromptInputProp> = {
 
 export default meta;
 
-export const Demo: StoryObj = {
+export const Demo: Story = {
   argTypes: orderControls({
     disabled: {
       control: "boolean",
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: "boolean" },
       },
     },
     loading: {
       control: "boolean",
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: "boolean" },
       },
     },
     readOnly: {
       control: "boolean",
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: "boolean" },
       },
     },
   }),
-  args: {
-    disabled: false,
-    loading: false,
-    readOnly: false,
-  },
-  render: (arg: Partial<DemoArg>) => (
+  render: (arg) => (
     <PromptInput loading={arg.loading} readOnly={arg.readOnly} disabled={arg.disabled}>
       <PromptInputControls>
         <PromptInputFileUploadButton />
@@ -86,6 +77,28 @@ export const Demo: StoryObj = {
       </PromptInputControls>
     </PromptInput>
   ),
+};
+
+export const AnatomyTech: Story = {
+  tags: ["!dev"],
+  render: ({}) => {
+    const uploadedFile = new File(["foo"], "a-default-text-file.txt", { type: "text/plain" });
+
+    return (
+      <div style={{minWidth: '500px'}}>
+        <PromptInput>
+          <PromptInputFiles>
+            <FileThumbnail file={uploadedFile} />
+          </PromptInputFiles>
+          <PromptInputControls>
+            <PromptInputFileUploadButton />
+            <PromptInputTextControl placeholder="This is where you can ask about something…" />
+            <PromptInputSendButton />
+          </PromptInputControls>
+        </PromptInput>
+      </div>
+    );
+  },
 };
 
 export const Default: Story = {
@@ -108,22 +121,48 @@ export const Default: Story = {
 export const Overview: Story = {
   tags: ["!dev"],
   render: ({}) => {
-    const fakePdfFile = new File(["foo"], "loading-pdf-file.pdf", { type: "application/pdf" });
-    const fakeTextFile = new File(["bar"], "text-file.txt", { type: "text/plain" });
+    const [uploadedFiles, setUploadedFiles] = useState<File[]>([
+      new File(["foo"], "a-default-text-file.txt", { type: "text/plain" }),
+      new File(["foo"], "another-default-text-file.txt", { type: "text/plain" }),
+    ]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleFileChange = ({ files }: { files: File[] }): void => {
+      setUploadedFiles((prev) => [...prev, ...files]);
+    };
+
+    const handleFileRemove = (fileToRemove: File): void => {
+      setUploadedFiles((prev) => prev.filter((file) => file !== fileToRemove));
+    };
+
+    const handleInputSubmit = (): void => {
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1500);
+    };
 
     return (
-      <PromptInput>
-        <PromptInputFiles>
-          <FileThumbnail file={fakePdfFile} progress={45} />
-          <FileThumbnail file={fakeTextFile} />
-        </PromptInputFiles>
+      <PromptInput
+        loading={isLoading}
+        onFileChange={handleFileChange}
+        onInputSubmit={handleInputSubmit}
+        fileCollection={uploadedFiles}
+      >
+        {Boolean(uploadedFiles?.length) && (
+          <PromptInputFiles>
+            {uploadedFiles.map((file, index) => (
+              <FileThumbnail key={index} file={file} onFileRemove={() => handleFileRemove(file)} />
+            ))}
+          </PromptInputFiles>
+        )}
         <PromptInputControls>
-          <PromptInputFileUploadButton aria-label="Attach a file" />
+          <PromptInputFileUploadButton multiple aria-description="description" aria-label="label" />
           <PromptInputTextControl
             aria-label="Ask someone about something…"
             placeholder="Ask someone about something…"
           />
-          <PromptInputSendButton aria-label="Send message" />
+          <PromptInputSendButton aria-label={isLoading ? "Sending message…" : "Send message"} />
         </PromptInputControls>
       </PromptInput>
     );
@@ -204,10 +243,7 @@ export const WithFiles: Story = {
         </PromptInputFiles>
         <PromptInputControls>
           <PromptInputFileUploadButton aria-label="Attach a file" />
-          <PromptInputTextControl
-            aria-label="Ask someone about something…"
-            placeholder="Ask someone about something…"
-          />
+          <PromptInputTextControl aria-label="Ask someone about something…" />
           <PromptInputSendButton aria-label="Send message" />
         </PromptInputControls>
       </PromptInput>
@@ -240,7 +276,7 @@ import { useState } from 'react';`,
         >
           <PromptInputControls>
             <PromptInputFileUploadButton aria-label="Attach a file" />
-            <div style={{ display: "flex", flexDirection: "column", flexGrow: 1, gap: "4px" }}>
+            <div style={{ display: "flex", flexDirection: "column", flexGrow: 1, rowGap: "var(--ods-theme-row-gap)" }}>
               <PromptInputTextControl aria-label="Ask someone about something…" />
               <Divider style={{ width: "100%" }} />
               <FormFieldHelper>
@@ -274,23 +310,6 @@ export const AccessibilityAriaLabel: Story = {
   ),
 };
 
-export const AccessibilityLabel: Story = {
-  tags: ["!dev"],
-  globals: {
-    imports:
-      "import { PromptInput, PromptInputControls, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
-  },
-  render: ({}) => (
-    <PromptInput>
-      <PromptInputControls>
-        <label className="sr-only" style={ { position: "absolute", width: "1px", height: "1px", overflow: "hidden", clip: "rect(0, 0, 0, 0)" }} htmlFor="prompt-input-textArea">Ask someone about something…</label>
-        <PromptInputTextControl id="prompt-input-textArea" />
-        <PromptInputSendButton />
-      </PromptInputControls>
-    </PromptInput>
-  ),
-};
-
 export const AccessibilityButtonsLabels: Story = {
   tags: ["!dev"],
   globals: {
@@ -308,7 +327,6 @@ export const AccessibilityButtonsLabels: Story = {
   ),
 };
 
-
 export const AccessibilityLoadingState: Story = {
   tags: ["!dev"],
   globals: {
@@ -318,6 +336,7 @@ export const AccessibilityLoadingState: Story = {
   render: ({}) => (
     <PromptInput loading>
       <PromptInputControls>
+        <PromptInputFileUploadButton aria-label="Attach file" />
         <PromptInputTextControl aria-label="Ask someone about something…" />
         <PromptInputSendButton aria-label="Request is processing" />
       </PromptInputControls>
@@ -327,11 +346,11 @@ export const AccessibilityLoadingState: Story = {
 
 export const ThemeGenerator: Story = {
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-  tags: ['!dev'],
+  tags: ["!dev"],
   render: ({}) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
       <PromptInput>
         <PromptInputFiles>
           <FileThumbnail file={new File(["foo"], "file1.pdf", { type: "application/pdf" })} progress={45} />
@@ -339,34 +358,49 @@ export const ThemeGenerator: Story = {
         </PromptInputFiles>
         <PromptInputControls>
           <PromptInputFileUploadButton aria-label="Attach file" />
-          <PromptInputTextControl aria-label="Ask someone about something…" placeholder="Ask someone about something…" />
+          <PromptInputTextControl
+            aria-label="Ask someone about something…"
+            placeholder="Ask someone about something…"
+          />
           <PromptInputSendButton aria-label="Send request" />
         </PromptInputControls>
       </PromptInput>
-       <PromptInput defaultValue="This is a default value">
+      <PromptInput defaultValue="This is a default value">
         <PromptInputControls>
           <PromptInputFileUploadButton aria-label="Attach file" />
-          <PromptInputTextControl aria-label="Ask someone about something…" placeholder="Ask someone about something…" />
+          <PromptInputTextControl
+            aria-label="Ask someone about something…"
+            placeholder="Ask someone about something…"
+          />
           <PromptInputSendButton aria-label="Send request" />
         </PromptInputControls>
       </PromptInput>
       <PromptInput disabled defaultValue="This is a default value in a disabled prompt input.">
         <PromptInputControls>
           <PromptInputFileUploadButton aria-label="Attach file" />
-          <PromptInputTextControl aria-label="Ask someone about something…" placeholder="Ask someone about something…" />
+          <PromptInputTextControl
+            aria-label="Ask someone about something…"
+            placeholder="Ask someone about something…"
+          />
           <PromptInputSendButton aria-label="Request is processing" />
         </PromptInputControls>
       </PromptInput>
       <PromptInput loading>
         <PromptInputControls>
           <PromptInputFileUploadButton aria-label="Attach file" />
-          <PromptInputTextControl aria-label="Ask someone about something…" placeholder="Placeholder in loading prompt input…" />
+          <PromptInputTextControl
+            aria-label="Ask someone about something…"
+            placeholder="Placeholder in loading prompt input…"
+          />
           <PromptInputSendButton aria-label="Request is processing" />
         </PromptInputControls>
       </PromptInput>
       <PromptInput readOnly defaultValue="This is a read-only prompt input.">
         <PromptInputControls>
-          <PromptInputTextControl aria-label="Ask someone about something…" placeholder="Ask someone about something…" />
+          <PromptInputTextControl
+            aria-label="Ask someone about something…"
+            placeholder="Ask someone about something…"
+          />
           <PromptInputSendButton aria-label="Request is processing" />
         </PromptInputControls>
       </PromptInput>

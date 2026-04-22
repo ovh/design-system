@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Divider, FileThumbnail } from '@ovhcloud/ods-react';
+import { BUTTON_VARIANT, Divider, FileThumbnail } from '@ovhcloud/ods-react';
 import { useState } from 'react';
 import { PromptInputControls } from './components/prompt-input-controls/PromptInputControls';
 import { PromptInputFileUploadButton } from './components/prompt-input-file-upload-button/PromptInputFileUploadButton';
@@ -63,12 +63,15 @@ export const Events = (): JSX.Element => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <PromptInput
         onValueChange={({ inputValue }) => {
+          console.log('fire valueChange');
           setInputValue(inputValue);
         }}
         onInputSubmit={({ inputValue }) => {
+          console.log('fire inputSubmit');
           setSubmitValue(inputValue);
         }}
         onFileChange={({ files }) => {
+          console.log('fire fileChange');
           setFileChangeValue(files);
         }}
       >
@@ -113,21 +116,21 @@ export const WithFiles = (): JSX.Element => {
 
   return <PromptInput onFileChange={handleFileChange}>
     {Boolean(uploadedFiles?.length) &&
-    <PromptInputFiles>
-      {uploadedFiles.map((file, index) => (
-        <FileThumbnail
-          key={index}
-          file={file}
-          progress={20}
-          onFileRemove={() => {
-            setUploadedFiles((prev) => prev.filter((_, i) => i !== index));
-          }}
-        />
-      ))}
-    </PromptInputFiles>
+      <PromptInputFiles>
+        {uploadedFiles.map((file, index) => (
+          <FileThumbnail
+            key={index}
+            file={file}
+            progress={20 * (index + 2)}
+            onFileRemove={() => {
+              setUploadedFiles((prev) => prev.filter((_, i) => i !== index));
+            }}
+          />
+        ))}
+      </PromptInputFiles>
     }
     <PromptInputControls>
-      <PromptInputFileUploadButton accept='' multiple />
+      <PromptInputFileUploadButton variant={BUTTON_VARIANT.default} accept="image/png" multiple />
       <PromptInputTextControl placeholder="Enter your prompt" />
       <PromptInputSendButton />
     </PromptInputControls>

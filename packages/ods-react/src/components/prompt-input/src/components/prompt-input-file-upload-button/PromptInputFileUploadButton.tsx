@@ -1,51 +1,54 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, forwardRef, useRef } from 'react';
-import { Button } from '../../../..//button/src';
+import { type ChangeEvent, type FC, type JSX, forwardRef, useRef } from 'react';
+import { BUTTON_SIZE, BUTTON_VARIANT, Button, type ButtonProp } from '../../../..//button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
 import { usePromptInput } from '../../contexts/usePromptInput';
 import style from './PromptInputFileUploadButton.module.scss';
 
-interface PromptInputFileUploadButtonProp extends ComponentPropsWithRef<'input'> {}
+interface PromptInputFileUploadButtonProp extends ButtonProp {
+  /**
+   * Expected file type in file upload controls
+   */
+  accept?: HTMLInputElement['accept'];
+  /**
+   * Whether multiple files can be selected at once
+   */
+  multiple?: HTMLInputElement['multiple'];
+}
 
 const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forwardRef(
-  ({ className, ...props }, ref): JSX.Element => {
-    const { disabled, fileCollection, loading, setFileCollection } = usePromptInput();
+  ({ accept, className, multiple, ...props }, ref): JSX.Element => {
+    const { disabled, fileCollection, loading, onFileChange, setFileCollection } = usePromptInput();
     const inputRef = useRef<HTMLInputElement | null>(null);
 
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const handleFileChange = (event: ChangeEvent<HTMLInputElement>): void => {
       const newFiles = Array.from(event.target.files ?? []);
-      event.target.value = '';
-      setFileCollection([...fileCollection, ...newFiles]);
+      onFileChange?.({ files: newFiles });
+      setFileCollection([...(fileCollection || []), ...newFiles]) ;
     };
 
     return (
       <>
         <input
-          ref={(node) => {
-            inputRef.current = node;
-            if (typeof ref === 'function') {
-              ref(node);
-            } else if (ref) {
-              ref.current = node;
-            }
-          }}
-          {...props}
-          className={style['prompt-input-file-upload-button__input']}
-          disabled={disabled || loading}
+          accept={accept}
           aria-hidden
-          type="file"
+          className={style['prompt-input-file-upload-button__input']}
+          disabled={disabled || loading || props.disabled}
+          multiple={multiple}
           onChange={handleFileChange}
+          ref={inputRef}
+          type="file"
         />
         <Button
-          aria-describedby={props['aria-describedby']}
-          aria-label={props['aria-label']}
           className={classNames(style['prompt-input-file-upload-button__button'], className)}
           data-ods="prompt-input-file-upload-button"
-          disabled={disabled || loading}
+          size={BUTTON_SIZE.sm}
+          variant={BUTTON_VARIANT.ghost}
+          {...props}
+          disabled={disabled || loading || props.disabled}
           onClick={() => inputRef.current?.click()}
-          size="sm"
+          ref={ref}
           type='button'
-          variant="ghost"
         >
           <Icon name={ICON_NAME.paperclip} />
         </Button>

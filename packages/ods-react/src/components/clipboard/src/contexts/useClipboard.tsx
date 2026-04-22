@@ -1,4 +1,4 @@
-import { type JSX, type ReactNode, createContext } from 'react';
+import { type CSSProperties, type JSX, type ReactNode, createContext } from 'react';
 import { useContext } from '../../../../utils/context';
 import { type Locale } from '../../../../utils/locales';
 import { type INPUT_I18N } from '../../../input/src';
@@ -21,12 +21,16 @@ interface ClipboardRootProp {
    */
   onCopy?: () => void,
   /**
+   * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
+   */
+  positionerStyle?: CSSProperties,
+  /**
    * The input value.
    */
   value?: string,
 }
 
-interface ClipboardProviderProp extends Pick<ClipboardRootProp, 'disabled' | 'i18n' | 'locale'> {
+interface ClipboardProviderProp extends Pick<ClipboardRootProp, 'disabled' | 'i18n' | 'locale' | 'positionerStyle'> {
   children: ReactNode,
 }
 
@@ -34,12 +38,19 @@ type ClipboardContextType = Omit<ClipboardProviderProp, 'children'>;
 
 const ClipboardContext = createContext<ClipboardContextType | undefined>(undefined);
 
-function ClipboardProvider({ children, disabled, i18n, locale }: ClipboardProviderProp): JSX.Element {
+function ClipboardProvider({
+  children,
+  disabled,
+  i18n,
+  locale,
+  positionerStyle,
+}: ClipboardProviderProp): JSX.Element {
   return (
     <ClipboardContext.Provider value={{
       disabled,
       i18n,
       locale,
+      positionerStyle,
     }}>
       { children }
     </ClipboardContext.Provider>

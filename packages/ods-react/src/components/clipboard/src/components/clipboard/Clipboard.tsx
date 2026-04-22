@@ -13,6 +13,7 @@ const Clipboard: FC<ClipboardProp> = forwardRef(({
   i18n,
   locale,
   onCopy,
+  positionerStyle,
   value,
   ...props
 }, ref): JSX.Element => {
@@ -20,7 +21,8 @@ const Clipboard: FC<ClipboardProp> = forwardRef(({
     <ClipboardProvider
       disabled={ disabled }
       i18n={ i18n }
-      locale={ locale }>
+      locale={ locale }
+      positionerStyle={ positionerStyle }>
       <VendorClipboard.Root
         className={ classNames(
           style['clipboard'],

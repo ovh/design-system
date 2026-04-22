@@ -135,6 +135,23 @@ export const DefaultValue = () => (
   </QueryFilter>
 );
 
+export const DifferentWidth = () => (
+  <QueryFilter
+    filterOption={ filterOption }
+    filterProperty={ filterProperty }
+    overlayConfig={{ sameWidth: false }}>
+    <QueryFilterControl />
+
+    <QueryFilterContent />
+
+    <QueryFilterTags />
+
+    <QueryFilterClear>
+      Clear filters
+    </QueryFilterClear>
+  </QueryFilter>
+);
+
 export const Disabled = () => (
   <QueryFilter
     disabled
@@ -224,6 +241,47 @@ export const InputOption = () => (
     </QueryFilter>
   </>
 );
+
+export const Opened = () => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  return (
+    <>
+      <QueryFilter
+        defaultOpen={ true }
+        filterOption={ filterOption }
+        filterProperty={ filterProperty }>
+        <QueryFilterControl />
+
+        <QueryFilterContent />
+
+        <QueryFilterTags />
+
+        <QueryFilterClear>
+          Clear filters
+        </QueryFilterClear>
+      </QueryFilter>
+
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+      <QueryFilter
+        filterOption={ filterOption }
+        filterProperty={ filterProperty }
+        onOpenChange={ ({ open }) => setIsOpen(open) }
+        open={ isOpen }>
+        <QueryFilterControl />
+
+        <QueryFilterContent />
+
+        <QueryFilterTags />
+
+        <QueryFilterClear>
+          Clear filters
+        </QueryFilterClear>
+      </QueryFilter>
+    </>
+  );
+};
 
 export const Readonly = () => (
   <QueryFilter

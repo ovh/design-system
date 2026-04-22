@@ -10,6 +10,10 @@ interface QueryFilterInputValueChangeDetails {
   inputValue: string;
 }
 
+interface QueryFilterOpenChangeDetail {
+  open: boolean,
+}
+
 interface QueryFilterValueChangeDetails {
   value: string[][];
 }
@@ -42,6 +46,10 @@ type QueryFilterRootProp = Omit<ComponentPropsWithRef<'div'>, 'defaultValue'> & 
    * Whether to allow adding a custom filter.
    */
   allowCustomValue?: boolean,
+  /**
+   * The initial open state of the query filter. Use when you don't need to control the open state of the query filter.
+   */
+  defaultOpen?: boolean,
   /**
    * The initial selected value(s). Use when you don't need to control the selected value(s) of the query filter.
    */
@@ -91,9 +99,30 @@ type QueryFilterRootProp = Omit<ComponentPropsWithRef<'div'>, 'defaultValue'> & 
    */
   onInputValueChange?: (value: QueryFilterInputValueChangeDetails) => void;
   /**
+   * Callback fired when the query filter open state changes.
+   */
+  onOpenChange?: (detail: QueryFilterOpenChangeDetail) => void
+  /**
    * Callback fired when the value(s) changes.
    */
   onValueChange?: (value: QueryFilterValueChangeDetails) => void;
+  /**
+   * The controlled open state of the query filter.
+   */
+  open?: boolean,
+  /**
+   * The overlay configuration.
+   */
+  overlayConfig?: {
+    /**
+     * Whether to flip the position.
+     */
+    flip?: boolean,
+    /**
+     * Whether to make the floating element same width as the reference element.
+     */
+    sameWidth?: boolean,
+  },
   /**
    * Whether the component is readonly.
    */
@@ -144,12 +173,15 @@ const QueryFilterContext = createContext<QueryFilterContextType | undefined>(und
 const QueryFilterProvider = ({
   allowCustomValue,
   children,
+  defaultOpen,
   defaultValue,
   disabled,
   filterOption,
   filterProperty,
   onInputValueChange,
+  onOpenChange,
   onValueChange,
+  open,
   readOnly,
   value,
   ...props
@@ -170,7 +202,7 @@ const QueryFilterProvider = ({
   const [filteredGroup, setFilteredGroup] = useState<QueryFilterGroup | undefined>(undefined);
   const [highlightedOptionValue, setHighlightedOptionValue] = useState('');
   const [inputValue, _setInputValue] = useState('');
-  const [isOpen, _setIsOpen] = useState(false);
+  const [isOpen, _setIsOpen] = useState((defaultOpen ?? open) ?? false);
   const [selection, setSelection] = useState<QueryFilterItem[]>([]);
   const [tags, _setTags] = useState<QueryFilterTag[]>(defaultTags);
 
@@ -214,6 +246,12 @@ const QueryFilterProvider = ({
       setHighlightedOptionValue('');
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (typeof open === 'boolean') {
+      _setIsOpen(open);
+    }
+  }, [open]);
 
   function focusInput(): void {
     inputRef.current?.focus();
@@ -356,10 +394,20 @@ const QueryFilterProvider = ({
   }
 
   function setIsOpen(state: SetStateAction<boolean>): void {
+    let newState;
+
     if (disabled || readOnly) {
-      _setIsOpen(false);
+      newState = false;
     } else {
-      _setIsOpen(state);
+      newState = typeof state === 'function' ? state(isOpen) : state;
+    }
+
+    if (typeof open !== 'boolean') {
+      _setIsOpen(newState);
+    }
+
+    if (onOpenChange) {
+      onOpenChange({ open: newState });
     }
   }
 
@@ -423,9 +471,10 @@ function useQueryFilter(): QueryFilterContextType {
 }
 
 export {
+  type QueryFilterGroup,
   type QueryFilterInputValueChangeDetails,
   type QueryFilterItem,
-  type QueryFilterGroup,
+  type QueryFilterOpenChangeDetail,
   type QueryFilterOption,
   type QueryFilterProperty,
   QueryFilterProvider,

@@ -11,7 +11,7 @@ type DemoArg = Partial<QueryFilterProp> & Partial<QueryFilterControlProp> & {
 };
 
 const meta: Meta<QueryFilterProp> = {
-  argTypes: excludeFromDemoControls(['defaultValue', 'i18n', 'filterOption', 'filterProperty', 'locale', 'name', 'onInputValueChange', 'onValueChange', 'required', 'value']),
+  argTypes: excludeFromDemoControls(['defaultOpen', 'defaultValue', 'i18n', 'filterOption', 'filterProperty', 'locale', 'name', 'onInputValueChange', 'onOpenChange', 'onValueChange', 'open', 'overlayConfig', 'required', 'value']),
   component: QueryFilter,
   subcomponents: { QueryFilterClear, QueryFilterContent, QueryFilterControl, QueryFilterTags },
   tags: ['new'],
@@ -163,6 +163,38 @@ export const Demo: StoryObj = {
     clearAllLabel: 'Clear all',
     placeholder: 'Add filters',
   },
+};
+
+export const AnatomyTech: Story = {
+  parameters: {
+    layout: 'start',
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <QueryFilter
+      filterOption={ filterOption }
+      filterProperty={ filterProperty }
+      open
+      overlayConfig={{
+        flip: false,
+      }}
+      value={[
+        ['instance-id', '!=', 'instance-1'],
+        ['states', '===', 'running'],
+      ]}>
+      <QueryFilterControl />
+
+      <QueryFilterContent createPortal={ false } />
+
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '8px', alignItems: 'center', marginTop: '100px' }}>
+        <QueryFilterTags style={{ justifyContent: 'end' }} />
+
+        <QueryFilterClear>
+          Clear
+        </QueryFilterClear>
+      </div>
+    </QueryFilter>
+  ),
 };
 
 export const Default: Story = {

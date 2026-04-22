@@ -10,6 +10,7 @@ const QueryFilter: FC<QueryFilterProp> = forwardRef(({
   allowCustomValue,
   children,
   className,
+  defaultOpen,
   defaultValue,
   disabled,
   filterOption,
@@ -22,7 +23,10 @@ const QueryFilter: FC<QueryFilterProp> = forwardRef(({
   newElementLabel = 'Use: ',
   noResultLabel = 'No results found',
   onInputValueChange,
+  onOpenChange,
   onValueChange,
+  open,
+  overlayConfig,
   readOnly,
   required,
   value,
@@ -34,6 +38,7 @@ const QueryFilter: FC<QueryFilterProp> = forwardRef(({
   return (
     <QueryFilterProvider
       allowCustomValue={ allowCustomValue }
+      defaultOpen={ defaultOpen }
       defaultValue={ defaultValue }
       disabled={ disabled }
       filterOption={ filterOption }
@@ -46,7 +51,10 @@ const QueryFilter: FC<QueryFilterProp> = forwardRef(({
       newElementLabel={ newElementLabel }
       noResultLabel={ noResultLabel }
       onInputValueChange={ onInputValueChange }
+      onOpenChange={ onOpenChange }
       onValueChange={ onValueChange }
+      open={ open }
+      overlayConfig={ overlayConfig }
       readOnly={ readOnly }
       required={ required }
       value={ value }>

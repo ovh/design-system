@@ -6,6 +6,7 @@ export { QueryFilterTags, type QueryFilterTagsProp } from './components/query-fi
 export {
   type QueryFilterInputValueChangeDetails,
   type QueryFilterItem,
+  type QueryFilterOpenChangeDetail,
   type QueryFilterOption,
   type QueryFilterProperty,
   type QueryFilterValueChangeDetails,

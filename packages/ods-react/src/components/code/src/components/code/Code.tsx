@@ -42,6 +42,10 @@ interface CodeProp extends ComponentPropsWithRef<'div'> {
    * Callback fired when the text is copied.
    */
   onCopy?: () => void,
+  /**
+   * Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index.
+   */
+  positionerStyle?: CSSProperties,
 }
 
 const Code: FC<CodeProp> = forwardRef(({
@@ -52,6 +56,7 @@ const Code: FC<CodeProp> = forwardRef(({
   labelCopy,
   labelCopySuccess,
   onCopy,
+  positionerStyle,
   ...props
 }, ref): JSX.Element => {
   const [highlighterCore, setHighlighterCore] = useState<HighlighterCore>();
@@ -135,6 +140,7 @@ const Code: FC<CodeProp> = forwardRef(({
         <Clipboard
           className={ style['code__clipboard'] }
           onCopy={ onCopy }
+          positionerStyle={ positionerStyle }
           value={ children?.toString() }>
           <ClipboardTrigger
             className={ style['code__clipboard__trigger'] }

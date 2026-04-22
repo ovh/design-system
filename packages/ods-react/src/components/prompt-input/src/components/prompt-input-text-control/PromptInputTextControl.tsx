@@ -1,5 +1,14 @@
 import classNames from 'classnames';
-import { type FC, type JSX, type MutableRefObject, type RefCallback, forwardRef, useCallback } from 'react';
+import {
+  type ChangeEvent,
+  type FC,
+  type JSX,
+  type KeyboardEvent,
+  forwardRef,
+  useImperativeHandle,
+  useLayoutEffect,
+  useRef,
+} from 'react';
 import { Textarea, type TextareaProp } from '../../../../textarea/src';
 import { usePromptInput } from '../../contexts/usePromptInput';
 import style from './PromptInputTextControl.module.scss';
@@ -11,7 +20,9 @@ interface PromptInputTextControlProp extends TextareaProp {
 const supportsFieldSizing = CSS.supports('field-sizing', 'content');
 
 function applyScrollHeight(el: HTMLTextAreaElement): void {
+  // Reset to 'unset' first so the browser recomputes scrollHeight without being constrained by the previously set height…
   el.style.setProperty('--explicit-height', 'unset');
+  // …then apply the fresh value.
   el.style.setProperty('--explicit-height', `${el.scrollHeight}px`);
 }
 
@@ -29,22 +40,17 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
       setInputValue,
     } = usePromptInput();
 
-    const callbackRef: RefCallback<HTMLTextAreaElement> = useCallback(
-      (node) => {
-        if (node && !supportsFieldSizing) {
-          applyScrollHeight(node);
-        }
+    const internalRef = useRef<HTMLTextAreaElement>(null);
 
-        if (ref) {
-          if (typeof ref === 'function') {
-            return (ref as RefCallback<HTMLTextAreaElement>)(node);
-          }
-          return ((ref as MutableRefObject<HTMLTextAreaElement | null>).current = node);
-        }
-      },
-      [ref],
-    );
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>): void => {
+    useImperativeHandle(ref, () => internalRef.current!);
+
+    useLayoutEffect(() => {
+      if (!supportsFieldSizing) {
+        applyScrollHeight(internalRef.current!);
+      }
+    }, []);
+
+    const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>): void => {
       if (event.key === 'Enter' && !event.shiftKey) {
         event.preventDefault();
         if (!disabled && inputValue.trim() !== '') {
@@ -53,7 +59,7 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
       }
     };
 
-    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    const handleChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
       if (!supportsFieldSizing) {
         applyScrollHeight(event.target);
       }
@@ -75,7 +81,7 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         readOnly={readOnly}
-        ref={callbackRef}
+        ref={internalRef}
       />
     );
   },

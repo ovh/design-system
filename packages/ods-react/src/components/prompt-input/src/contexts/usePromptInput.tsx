@@ -1,4 +1,4 @@
-import { type JSX, type ReactNode, createContext, useEffect, useRef, useState } from 'react';
+import { type JSX, type ReactNode, createContext, useState } from 'react';
 import { useContext } from '../../../../utils/context';
 
 interface PromptInputInputSubmitDetails {
@@ -39,13 +39,17 @@ interface PromptInputRootProp {
    */
   onValueChange?: (detail: PromptInputValueChangeDetails) => void;
   /**
-   * Callback fired when a file change is triggered.
+   * Callback fired when a file change is triggered on the file-upload button.
    */
   onFileChange?: (detail: PromptInputFileChangeDetails) => void;
   /**
    * Whether the component is readonly.
    */
   readOnly?: boolean;
+  /**
+   * Array of the files associated with the prompt input.
+   */
+  fileCollection?: File[];
 }
 
 interface PromptInputProviderProp extends PromptInputRootProp {
@@ -54,7 +58,6 @@ interface PromptInputProviderProp extends PromptInputRootProp {
 
 type PromptInputContextType = Omit<PromptInputProviderProp, 'children'> & {
   inputValue: string;
-  fileCollection: File[];
   setInputValue: (value: string) => void;
   setFileCollection: (files: File[]) => void;
 };
@@ -73,18 +76,6 @@ const PromptInputProvider = ({
 }: PromptInputProviderProp): JSX.Element => {
   const [fileCollection, setFileCollection] = useState<File[]>([]);
   const [inputValue, setInputValue] = useState(props.defaultValue ?? '');
-
-  const onFileChangeRef = useRef(onFileChange);
-  onFileChangeRef.current = onFileChange;
-  useEffect(() => {
-    onFileChangeRef.current?.({ files: fileCollection });
-  }, [fileCollection]);
-
-  const onValueChangeRef = useRef(onValueChange);
-  onValueChangeRef.current = onValueChange;
-  useEffect(() => {
-    onValueChangeRef.current?.({ inputValue });
-  }, [inputValue]);
 
   return (
     <PromptInputContext.Provider value={{

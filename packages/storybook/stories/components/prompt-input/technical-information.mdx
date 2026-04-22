@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/blocks';
 import cssVariable from '../../../../ods-react/src/components/prompt-input/documentation/cssVariable.json';
 import specificationsPromptInput from '../../../../ods-react/src/components/prompt-input/documentation/prompt-input.json';
-import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
@@ -21,9 +21,7 @@ import * as PromptInputStories from './prompt-input.stories';
 
 <Heading label="Anatomy" level={ 2 } />
 
-<Anatomy src="components/prompt-input/anatomy-tech.png" />
-
-1. **PromptInput**
+<AnatomyTech of={ PromptInputStories.AnatomyTech } />
 
 <TechnicalSpecification
   cssVariable={ cssVariable }
@@ -41,10 +39,16 @@ import * as PromptInputStories from './prompt-input.stories';
         url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
       },
     },
+    'PromptInputFiles': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
     'PromptInputFileUploadButton': {
       extendAttribute: {
-        name: 'file input',
-        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes',
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes',
       },
     },
     'PromptInputTextControl': {

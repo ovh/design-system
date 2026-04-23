@@ -29,7 +29,7 @@ interface PromptInputRootProp {
   /**
    * The controlled textarea value.
    */
-  inputValue?: string,
+  value?: string,
   /**
    * Whether the component is in loading state.
    */
@@ -80,7 +80,7 @@ const PromptInputProvider = ({
   ...props
 }: PromptInputProviderProp): JSX.Element => {
   const [fileCollection, setFileCollection] = useState<File[]>(props.fileCollection ?? []);
-  const [inputValue, setInputValue] = useState(props.inputValue ?? props.defaultValue ?? '');
+  const [inputValue, setInputValue] = useState(props.value ?? props.defaultValue ?? '');
 
   useEffect(() => {
     if (props.fileCollection !== undefined) {
@@ -89,10 +89,10 @@ const PromptInputProvider = ({
   }, [props.fileCollection]);
 
   useEffect(() => {
-    if (props.inputValue !== undefined) {
-      setInputValue(props.inputValue);
+    if (props.value !== undefined) {
+      setInputValue(props.value);
     }
-  }, [props.inputValue]);
+  }, [props.value]);
 
   return (
     <PromptInputContext.Provider value={{

@@ -11,7 +11,7 @@ const PromptInput: FC<PromptInputProp> = forwardRef(({
   defaultValue,
   disabled,
   fileCollection,
-  inputValue,
+  value,
   loading,
   name,
   onFileChange,
@@ -26,7 +26,7 @@ const PromptInput: FC<PromptInputProp> = forwardRef(({
       defaultValue={ defaultValue }
       disabled={ disabled }
       fileCollection={ fileCollection }
-      inputValue={ inputValue }
+      value={ value }
       loading={ loading }
       name={ name }
       onFileChange={ onFileChange }

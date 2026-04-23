@@ -69,7 +69,7 @@ export const ControlledPromptInput = (): JSX.Element => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-      <PromptInput inputValue={ inputValue } onValueChange={ onInputValueChange } fileCollection={ fileCollection } onFileChange={ onFileChange }>
+      <PromptInput value={ inputValue } onValueChange={ onInputValueChange } fileCollection={ fileCollection } onFileChange={ onFileChange }>
         {Boolean(fileCollection.length) &&
           <PromptInputFiles>
             {fileCollection.map((file, index) => (
@@ -89,7 +89,7 @@ export const ControlledPromptInput = (): JSX.Element => {
           <PromptInputSendButton />
         </PromptInputControls>
       </PromptInput>
-      <PromptInput inputValue={ inputValue } onValueChange={ onInputValueChange } fileCollection={ fileCollection } onFileChange={ onFileChange }>
+      <PromptInput value={ inputValue } onValueChange={ onInputValueChange } fileCollection={ fileCollection } onFileChange={ onFileChange }>
         {Boolean(fileCollection.length) &&
           <PromptInputFiles>
             {fileCollection.map((file, index) => (

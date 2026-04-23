@@ -17,13 +17,12 @@ interface PromptInputFileUploadButtonProp extends ButtonProp {
 
 const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forwardRef(
   ({ accept, className, multiple, ...props }, ref): JSX.Element => {
-    const { disabled, fileCollection, loading, onFileChange, setFileCollection } = usePromptInput();
+    const { disabled, loading, onFileChange } = usePromptInput();
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>): void => {
       const newFiles = Array.from(event.target.files ?? []);
       onFileChange?.({ files: newFiles });
-      setFileCollection([...(fileCollection || []), ...newFiles]) ;
     };
 
     return (

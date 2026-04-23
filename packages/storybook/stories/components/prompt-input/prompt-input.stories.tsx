@@ -331,7 +331,7 @@ export const AccessibilityLoadingState: Story = {
   tags: ["!dev"],
   globals: {
     imports:
-      "import { PromptInput, PromptInputControls, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
+      "import { PromptInput, PromptInputControls, PromptInputTextControl, PromptInputSendButton, PromptInputFileUploadButton } from '@ovhcloud/ods-react';",
   },
   render: ({}) => (
     <PromptInput loading>

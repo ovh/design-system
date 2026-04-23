@@ -1,4 +1,4 @@
-import { type JSX, type ReactNode, createContext, useState } from 'react';
+import { type JSX, type ReactNode, createContext, useEffect, useState } from 'react';
 import { useContext } from '../../../../utils/context';
 
 interface PromptInputInputSubmitDetails {
@@ -23,6 +23,14 @@ interface PromptInputRootProp {
    */
   disabled?: boolean;
   /**
+   * Array of the files associated with the prompt input.
+   */
+  fileCollection?: File[];
+  /**
+   * The controlled textarea value.
+   */
+  inputValue?: string,
+  /**
    * Whether the component is in loading state.
    */
   loading?: boolean;
@@ -46,10 +54,6 @@ interface PromptInputRootProp {
    * Whether the component is readonly.
    */
   readOnly?: boolean;
-  /**
-   * Array of the files associated with the prompt input.
-   */
-  fileCollection?: File[];
 }
 
 interface PromptInputProviderProp extends PromptInputRootProp {
@@ -59,6 +63,7 @@ interface PromptInputProviderProp extends PromptInputRootProp {
 type PromptInputContextType = Omit<PromptInputProviderProp, 'children'> & {
   inputValue: string;
   setInputValue: (value: string) => void;
+  fileCollection: File[];
   setFileCollection: (files: File[]) => void;
 };
 
@@ -74,11 +79,24 @@ const PromptInputProvider = ({
   readOnly,
   ...props
 }: PromptInputProviderProp): JSX.Element => {
-  const [fileCollection, setFileCollection] = useState<File[]>([]);
-  const [inputValue, setInputValue] = useState(props.defaultValue ?? '');
+  const [fileCollection, setFileCollection] = useState<File[]>(props.fileCollection ?? []);
+  const [inputValue, setInputValue] = useState(props.inputValue ?? props.defaultValue ?? '');
+
+  useEffect(() => {
+    if (props.fileCollection !== undefined) {
+      setFileCollection(props.fileCollection);
+    }
+  }, [props.fileCollection]);
+
+  useEffect(() => {
+    if (props.inputValue !== undefined) {
+      setInputValue(props.inputValue);
+    }
+  }, [props.inputValue]);
 
   return (
     <PromptInputContext.Provider value={{
+      ...props,
       disabled,
       fileCollection,
       inputValue,
@@ -89,7 +107,6 @@ const PromptInputProvider = ({
       readOnly,
       setFileCollection,
       setInputValue,
-      ...props,
     }}
     >
       {children}

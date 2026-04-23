@@ -54,6 +54,64 @@ export const Default = (): JSX.Element => {
     </>
   );
 };
+
+export const ControlledPromptInput = (): JSX.Element => {
+
+  const [inputValue, setInputValue] = useState('default controlled value');
+  const [fileCollection, setFileCollection] = useState<File[]>([]);
+
+  const onInputValueChange = ({ inputValue }: { inputValue: string }): void => {
+    setInputValue(inputValue);
+  };
+  const onFileChange = ({ files }: { files: File[] }): void => {
+    setFileCollection([...fileCollection, ...files]);
+  };
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <PromptInput inputValue={ inputValue } onValueChange={ onInputValueChange } fileCollection={ fileCollection } onFileChange={ onFileChange }>
+        {Boolean(fileCollection.length) &&
+          <PromptInputFiles>
+            {fileCollection.map((file, index) => (
+              <FileThumbnail
+                key={index}
+                file={file}
+                onFileRemove={() => {
+                  setFileCollection((prev) => prev.filter((_, i) => i !== index));
+                }}
+              />
+            ))}
+          </PromptInputFiles>
+        }
+        <PromptInputControls>
+          <PromptInputFileUploadButton />
+          <PromptInputTextControl />
+          <PromptInputSendButton />
+        </PromptInputControls>
+      </PromptInput>
+      <PromptInput inputValue={ inputValue } onValueChange={ onInputValueChange } fileCollection={ fileCollection } onFileChange={ onFileChange }>
+        {Boolean(fileCollection.length) &&
+          <PromptInputFiles>
+            {fileCollection.map((file, index) => (
+              <FileThumbnail
+                key={index}
+                file={file}
+                onFileRemove={() => {
+                  setFileCollection((prev) => prev.filter((_, i) => i !== index));
+                }}
+              />
+            ))}
+          </PromptInputFiles>
+        }
+        <PromptInputControls>
+          <PromptInputTextControl />
+          <PromptInputSendButton />
+        </PromptInputControls>
+      </PromptInput>
+    </div>
+  );
+};
+
 export const Events = (): JSX.Element => {
   const [inputValue, setInputValue] = useState('');
   const [submitValue, setSubmitValue] = useState('');
@@ -114,7 +172,7 @@ export const WithFiles = (): JSX.Element => {
     }
   }
 
-  return <PromptInput onFileChange={handleFileChange}>
+  return <PromptInput onFileChange={handleFileChange} fileCollection={uploadedFiles}>
     {Boolean(uploadedFiles?.length) &&
       <PromptInputFiles>
         {uploadedFiles.map((file, index) => (
@@ -179,6 +237,16 @@ export const Disabled = (): JSX.Element => (
       <PromptInputTextControl />
       <PromptInputSendButton />
     </PromptInputControls>
+  </PromptInput>
+);
+
+export const CompoundPattern = (): JSX.Element => (
+  <PromptInput>
+    <PromptInput.Controls>
+      <PromptInput.FileUploadButton />
+      <PromptInput.TextControl placeholder='placeholding the place' />
+      <PromptInput.SendButton />
+    </PromptInput.Controls>
   </PromptInput>
 );
 

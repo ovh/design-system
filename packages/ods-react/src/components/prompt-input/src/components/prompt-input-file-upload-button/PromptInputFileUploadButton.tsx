@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { type ChangeEvent, type FC, type JSX, forwardRef, useRef } from 'react';
 import { BUTTON_SIZE, BUTTON_VARIANT, Button, type ButtonProp } from '../../../..//button/src';
 import { ICON_NAME, Icon } from '../../../../icon/src';
@@ -40,7 +39,7 @@ const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forward
           type="file"
         />
         <Button
-          className={classNames(style['prompt-input-file-upload-button__button'], className)}
+          className={className}
           data-ods="prompt-input-file-upload-button"
           size={BUTTON_SIZE.sm}
           variant={BUTTON_VARIANT.ghost}

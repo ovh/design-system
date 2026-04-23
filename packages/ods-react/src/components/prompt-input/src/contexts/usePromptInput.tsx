@@ -63,8 +63,6 @@ interface PromptInputProviderProp extends PromptInputRootProp {
 type PromptInputContextType = Omit<PromptInputProviderProp, 'children'> & {
   inputValue: string;
   setInputValue: (value: string) => void;
-  fileCollection: File[];
-  setFileCollection: (files: File[]) => void;
 };
 
 const PromptInputContext = createContext<PromptInputContextType | undefined>(undefined);
@@ -79,14 +77,7 @@ const PromptInputProvider = ({
   readOnly,
   ...props
 }: PromptInputProviderProp): JSX.Element => {
-  const [fileCollection, setFileCollection] = useState<File[]>(props.fileCollection ?? []);
   const [inputValue, setInputValue] = useState(props.value ?? props.defaultValue ?? '');
-
-  useEffect(() => {
-    if (props.fileCollection !== undefined) {
-      setFileCollection(props.fileCollection);
-    }
-  }, [props.fileCollection]);
 
   useEffect(() => {
     if (props.value !== undefined) {
@@ -98,14 +89,12 @@ const PromptInputProvider = ({
     <PromptInputContext.Provider value={{
       ...props,
       disabled,
-      fileCollection,
       inputValue,
       loading,
       onFileChange,
       onInputSubmit,
       onValueChange,
       readOnly,
-      setFileCollection,
       setInputValue,
     }}
     >

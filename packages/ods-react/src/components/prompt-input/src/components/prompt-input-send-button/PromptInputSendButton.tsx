@@ -13,7 +13,7 @@ const PromptInputSendButton: FC<PromptInputSendButtonProp> = forwardRef(({ ...pr
     loading,
     onInputSubmit,
   } = usePromptInput();
-  const isDisabled = disabled || (inputValue.trim() === '' && fileCollection.length === 0) || loading;
+  const isDisabled = disabled || (inputValue.trim() === '' && fileCollection?.length === 0) || loading;
 
   return (
     <Button

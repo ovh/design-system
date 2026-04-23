@@ -10,6 +10,10 @@
     height: auto;
     resize: none;
 
+    &::placeholder {
+      color: var(--ods-theme-input-placeholder-text-color);
+    }
+
     &:not([data-invalid], :disabled, :read-only) {
       &:focus,
       &:hover {

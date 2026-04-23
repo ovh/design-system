@@ -29,7 +29,6 @@ function applyScrollHeight(el: HTMLTextAreaElement): void {
 const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
   ({ className, placeholder, ...props }, ref): JSX.Element => {
     const {
-      defaultValue,
       disabled,
       inputValue,
       loading,
@@ -75,7 +74,7 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
         rows={1}
         {...props}
         placeholder={placeholder}
-        defaultValue={defaultValue}
+        value={inputValue}
         disabled={disabled || loading}
         name={name}
         onChange={handleChange}

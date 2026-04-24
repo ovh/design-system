@@ -1,4 +1,4 @@
-import { type JSX, type ReactNode, createContext, useEffect, useState } from 'react';
+import { type JSX, type MutableRefObject, type ReactNode, createContext, useEffect, useRef, useState } from 'react';
 import { useContext } from '../../../../utils/context';
 
 interface PromptInputInputSubmitDetails {
@@ -63,6 +63,7 @@ interface PromptInputProviderProp extends PromptInputRootProp {
 type PromptInputContextType = Omit<PromptInputProviderProp, 'children'> & {
   inputValue: string;
   setInputValue: (value: string) => void;
+  textareaRef: MutableRefObject<HTMLTextAreaElement | null>;
 };
 
 const PromptInputContext = createContext<PromptInputContextType | undefined>(undefined);
@@ -78,12 +79,22 @@ const PromptInputProvider = ({
   ...props
 }: PromptInputProviderProp): JSX.Element => {
   const [inputValue, setInputValue] = useState(props.value ?? props.defaultValue ?? '');
+  const isControlled = props.value !== undefined;
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
     if (props.value !== undefined) {
-      setInputValue(props.value);
+      setInputValue(props.value!);
     }
-  }, [props.value]);
+  }, [props.value, isControlled]);
+
+  const handleInputSubmit = (detail: PromptInputInputSubmitDetails): void => {
+    onInputSubmit?.(detail);
+    if (!isControlled) {
+      setInputValue('');
+    }
+    textareaRef.current?.focus();
+  };
 
   return (
     <PromptInputContext.Provider value={{
@@ -92,10 +103,11 @@ const PromptInputProvider = ({
       inputValue,
       loading,
       onFileChange,
-      onInputSubmit,
+      onInputSubmit: handleInputSubmit,
       onValueChange,
       readOnly,
       setInputValue,
+      textareaRef,
     }}
     >
       {children}

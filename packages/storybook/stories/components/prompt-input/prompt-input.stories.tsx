@@ -149,13 +149,11 @@ export const Overview: Story = {
         onInputSubmit={handleInputSubmit}
         fileCollection={uploadedFiles}
       >
-        {Boolean(uploadedFiles?.length) && (
-          <PromptInputFiles>
-            {uploadedFiles.map((file, index) => (
-              <FileThumbnail key={index} file={file} onFileRemove={() => handleFileRemove(file)} />
-            ))}
-          </PromptInputFiles>
-        )}
+        <PromptInputFiles>
+          {uploadedFiles?.map((file, index) => (
+            <FileThumbnail key={index} file={file} onFileRemove={() => handleFileRemove(file)} />
+          ))}
+        </PromptInputFiles>
         <PromptInputControls>
           <PromptInputFileUploadButton multiple aria-description="description" aria-label="label" />
           <PromptInputTextControl

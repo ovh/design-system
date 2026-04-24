@@ -4956,6 +4956,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-query-filter@workspace:packages/ods-react/src/components/query-filter":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-query-filter@workspace:packages/ods-react/src/components/query-filter"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-radio-group@workspace:packages/ods-react/src/components/radio-group":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-radio-group@workspace:packages/ods-react/src/components/radio-group"
@@ -5111,6 +5117,12 @@ __metadata:
 "@ovhcloud/ods-recipes-dashboard-card@workspace:packages/ods-recipes/src/components/dashboard-card":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-recipes-dashboard-card@workspace:packages/ods-recipes/src/components/dashboard-card"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-recipes-data-grid-with-query-filter@workspace:packages/ods-recipes/src/components/data-grid-with-query-filter":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-data-grid-with-query-filter@workspace:packages/ods-recipes/src/components/data-grid-with-query-filter"
   languageName: unknown
   linkType: soft
 

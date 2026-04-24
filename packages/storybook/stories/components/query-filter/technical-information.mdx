@@ -1,0 +1,73 @@
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/query-filter/documentation/cssVariable.json';
+import specificationsQueryFilter from '../../../../ods-react/src/components/query-filter/documentation/query-filter.json';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as QueryFilterStories from './query-filter.stories';
+
+<Meta of={ QueryFilterStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ QueryFilterStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ QueryFilterStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<AnatomyTech
+  of={ QueryFilterStories.AnatomyTech }
+  mappingOption={{
+    'QueryFilterContent': { isOverlay: true },
+  }} />
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsQueryFilter }
+  of={ QueryFilterStories }
+  extraInfo={ {
+    QueryFilter: {
+      extendAttribute: {
+        name: "div",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+      }
+    },
+    QueryFilterClear: {
+      extendAttribute: {
+        name: "button",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"
+      }
+    },
+    QueryFilterContent: {
+      extendAttribute: {
+        name: "div",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+      }
+    },
+    QueryFilterControl: {
+      extendAttribute: {
+        name: "div",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+      }
+    },
+    QueryFilterTags: {
+      extendAttribute: {
+        name: "ul",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul"
+      }
+    },
+  }} />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ QueryFilterStories.Default } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="QueryFilter" />

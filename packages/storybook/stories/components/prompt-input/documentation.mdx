@@ -25,26 +25,34 @@ _The **Prompt Input** component is a composable text input with a submit button,
               githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/prompt-input"
               name="Prompt Input"
               startingVersion={ 19 }>
-  The **Prompt Input** component combines a resizable textarea with an integrated send button and an optional file upload button.
+  The **Prompt Input** component is a multi-line textarea with an integrated submit button, designed to handle user input and submission.
 </IdentityCard>
 
 <Heading label="Usage" level={ 2 } />
 
-Use the **Prompt Input** component whenever users need to compose and submit a message or query in a single interaction.
+The **Prompt Input** component is commonly used for user input and submission in chat interfaces, messaging applications, and other interactive systems.
 
-Common use cases include:
+It is commonly used for:
 
-- AI assistant interfaces
-- Customer support or live chat widgets
+- Chat interfaces to allow users to send messages to each other
+- Virtual assistants to allow users to input queries or commands
+- Content creation tools to allow users to input text or upload files for content creation
+- AI-powered writing tools to allow users to input prompts and receive generated text
+- Customer support platforms to allow users to input questions or issues and receive support
+
 
 <Heading label="Dos & Don'ts" level={ 3 } />
 
 <BestPractices
   donts={[
-    '- Omit an accessible label. Always provide an "aria-label" on the "PromptInputTextControl" or wrap the component with a visible label',
+    '- Provide a placeholder text to guide users on what to input',
+    '- Use the attachment upload feature to allow users to add files to their messages',
   ]}
   dos={[
-    '- Leverage the "loading" state to block interaction and show a spinner while a response is being generated',
+    '- disable the submit button without a clear reason (e.g., empty input, max length exceeded)',
+    '- allow submission while a file is still uploading',
+    '- use the component as a replacement for a standard textarea without considering the implications of the integrated submit button',
+    '- forget to handle errors and exceptions properly, such as when a user attempts to upload a file that exceeds the maximum allowed size',
   ]}
 />
 
@@ -53,9 +61,9 @@ Common use cases include:
 <Anatomy src="components/prompt-input/anatomy.png" />
 
 1. **Prompt Input**
-2. **Uploaded file list** - optional
+2. **File attachments (if attached)** - optional
 3. **File upload button** - optional
-4. **Textarea**
+4. **Input text area**
 5. **Send button**
 
 <Heading label="Placement" level={ 2 } />
@@ -66,24 +74,38 @@ It should remain visible and accessible at all times during an active conversati
 
 <Heading label="Behavior" level={ 2 } />
 
-The **Prompt Input** supports several states:
+<Heading label="Submission" level={ 3 } />
 
-- **Default** - the user can type freely in the textarea, which grows vertically as content is added.
-- **Disabled** - the textarea, file upload button, and send button are all non-interactive.
-- **Read-only** - the textarea displays its current value but does not accept new input.
-- **Loading** - the textarea and both buttons are disabled, and the send button displays a spinner.
+The submit button is enabled when the input is not empty and file stack is empty and the max length has not been exceeded. When the submit button is clicked, the component submits the user's input.
 
-The send button is automatically disabled whenever the textarea is empty, disabled, or in a loading state — no manual control of the button is required.
+After submission, input is being cleared.
 
-<Heading label="Keyboard Interaction" level={ 2 } />
+<Heading label="Processing State" level={ 3 } />
 
-Pressing <Kbd>Enter</Kbd> triggers `onInputSubmit` (equivalent to clicking the send button).
+When the component is in a processing or generating state, the input can be locked (configurable), and the submit button is replaced with a "stop" button.
 
-Pressing <Kbd>Shift</Kbd> + <Kbd>Enter</Kbd> inserts a new line without submitting.
+<Heading label="Attachments" level={ 3 } />
 
-Pressing <Kbd>Tab</Kbd> moves focus to the next interactive element (send button, file upload button).
+The component allows users to upload attachments, which are displayed in a preview area with a clear/remove button. The attachment upload feature can be triggered by a file upload trigger.
 
-Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus to the previous focusable element.
+<Heading label="Navigation" level={ 2 } />
+
+<Heading label="Focus Management" level={ 3 } />
+
+When the component receives focus, it should focus on the textarea. When the user interacts with the attachment upload feature, focus should be moved to the file upload trigger.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing <Kbd>Tab</Kbd>moves focus forward to the next interactive element.
+
+Pressing <Kbd>Shift</Kbd> + <Kbd>Tab</Kbd> moves focus backward to the previous interactive element.
+
+Pressing <Kbd>Enter</Kbd> submits the user's input when the submit button or the textarea is focused.
+
+Pressing <Kbd>Shift</Kbd> + <Kbd>Enter</Kbd> creates a new line in the user's input.
+
+Pressing <Kbd>Escape</Kbd> cancels the submission and closes any open attachment upload triggers.
+
 
 <Heading label="Accessibility" level={ 2 } />
 

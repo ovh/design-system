@@ -84,13 +84,13 @@ const PromptInputProvider = ({
 
   useEffect(() => {
     if (props.value !== undefined) {
-      setInputValue(props.value!);
+      setInputValue(props.value);
     }
   }, [props.value, isControlled]);
 
   const handleInputSubmit = (detail: PromptInputInputSubmitDetails): void => {
     onInputSubmit?.(detail);
-    if (!isControlled) {
+    if (!isControlled && !readOnly) {
       setInputValue('');
     }
     textareaRef.current?.focus();

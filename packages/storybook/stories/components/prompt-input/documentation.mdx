@@ -45,14 +45,14 @@ It is commonly used for:
 
 <BestPractices
   donts={[
-    '- Provide a placeholder text to guide users on what to input',
-    '- Use the attachment upload feature to allow users to add files to their messages',
+    '- Disable the submit button without a clear reason (e.g., empty input, max length exceeded)',
+    '- Allow submission while a file is still uploading',
+    '- Use the component as a replacement for a standard textarea without considering the implications of the integrated submit button',
+    '- Forget to handle errors and exceptions properly, such as when a user attempts to upload a file that exceeds the maximum allowed size',
   ]}
   dos={[
-    '- disable the submit button without a clear reason (e.g., empty input, max length exceeded)',
-    '- allow submission while a file is still uploading',
-    '- use the component as a replacement for a standard textarea without considering the implications of the integrated submit button',
-    '- forget to handle errors and exceptions properly, such as when a user attempts to upload a file that exceeds the maximum allowed size',
+    '- Provide a placeholder text to guide users on what to input',
+    '- Use the attachment upload feature to allow users to add files to their messages',
   ]}
 />
 

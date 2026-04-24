@@ -32,6 +32,7 @@ const meta: Meta<PromptInputProp> = {
     "onInputSubmit",
     "onValueChange",
     "onFileChange",
+    "value"
   ]),
   component: PromptInput,
   subcomponents: {

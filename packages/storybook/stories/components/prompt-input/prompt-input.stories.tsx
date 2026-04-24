@@ -236,7 +236,7 @@ export const WithFiles: Story = {
     const fakeTextFile = new File(["bar"], "text-file.txt", { type: "text/plain" });
 
     return (
-      <PromptInput>
+      <PromptInput fileCollection={[fakePdfFile, fakeTextFile]}>
         <PromptInputFiles>
           <FileThumbnail file={fakePdfFile} progress={45} />
           <FileThumbnail file={fakeTextFile} />

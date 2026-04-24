@@ -3,7 +3,7 @@ const isCI = !!process.env.CI;
 export default {
   launch: {
     headless: isCI,
-    slowMo: isCI ? 0 : 300,
+    slowMo: isCI ? 0 : 100,
     product: 'chrome',
     args: [
       '--no-sandbox',

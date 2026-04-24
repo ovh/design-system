@@ -21,7 +21,7 @@ describe('PromptInput behaviour', () => {
       const sendButton = await page.waitForSelector('[data-ods="prompt-input-send-button"]');
       expect(await sendButton?.evaluate((el) => el.hasAttribute('disabled'))).toBe(true);
 
-      await page.type('[data-ods="prompt-input-text-control"]', 'Hello');
+      await page.type('[data-ods="prompt-input-text-control"]', 'abc');
 
       expect(await sendButton?.evaluate((el) => el.hasAttribute('disabled'))).toBe(false);
     });

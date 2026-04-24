@@ -37,11 +37,16 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
       onInputSubmit,
       readOnly,
       setInputValue,
+      textareaRef,
     } = usePromptInput();
 
     const internalRef = useRef<HTMLTextAreaElement>(null);
 
     useImperativeHandle(ref, () => internalRef.current!);
+
+    useLayoutEffect(() => {
+      textareaRef.current = internalRef.current;
+    }, [textareaRef]);
 
     useLayoutEffect(() => {
       if (!supportsFieldSizing) {

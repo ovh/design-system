@@ -66,10 +66,19 @@ export const ControlledPromptInput = (): JSX.Element => {
   const onFileChange = ({ files }: { files: File[] }): void => {
     setFileCollection([...fileCollection, ...files]);
   };
+  const onSubmit = (): void => {
+    setInputValue('Flush this yourself with setInputValue(\'\')');
+  };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-      <PromptInput value={ inputValue } onValueChange={ onInputValueChange } fileCollection={ fileCollection } onFileChange={ onFileChange }>
+      <PromptInput
+        fileCollection={ fileCollection }
+        onFileChange={ onFileChange }
+        onInputSubmit={onSubmit}
+        onValueChange={ onInputValueChange }
+        value={ inputValue }
+      >
         <PromptInputFiles>
           {fileCollection?.map((file, index) => (
             <FileThumbnail
@@ -87,7 +96,13 @@ export const ControlledPromptInput = (): JSX.Element => {
           <PromptInputSendButton />
         </PromptInputControls>
       </PromptInput>
-      <PromptInput value={ inputValue } onValueChange={ onInputValueChange } fileCollection={ fileCollection } onFileChange={ onFileChange }>
+      <PromptInput
+        fileCollection={ fileCollection }
+        onFileChange={ onFileChange }
+        onInputSubmit={onSubmit}
+        onValueChange={ onInputValueChange }
+        value={ inputValue }
+      >
         <PromptInputFiles>
           {fileCollection?.map((file, index) => (
             <FileThumbnail

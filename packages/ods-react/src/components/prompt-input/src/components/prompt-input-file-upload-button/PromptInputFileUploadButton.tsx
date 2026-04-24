@@ -23,6 +23,8 @@ const PromptInputFileUploadButton: FC<PromptInputFileUploadButtonProp> = forward
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>): void => {
       const newFiles = Array.from(event.target.files ?? []);
       onFileChange?.({ files: newFiles });
+      /* Reset the input value to allow uploading the same file(s) again (Blink/WebKit). */
+      event.target.value = '';
     };
 
     return (

@@ -17,7 +17,7 @@ interface PromptInputTextControlProp extends TextareaProp {
   placeholder?: string;
 }
 
-const supportsFieldSizing = CSS.supports('field-sizing', 'content');
+const supportsFieldSizing = typeof CSS !== 'undefined' && CSS.supports('field-sizing', 'content');
 
 function applyScrollHeight(el: HTMLTextAreaElement): void {
   // Reset to 'unset' first so the browser recomputes scrollHeight without being constrained by the previously set height…

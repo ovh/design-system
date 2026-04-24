@@ -70,19 +70,17 @@ export const ControlledPromptInput = (): JSX.Element => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       <PromptInput value={ inputValue } onValueChange={ onInputValueChange } fileCollection={ fileCollection } onFileChange={ onFileChange }>
-        {Boolean(fileCollection.length) &&
-          <PromptInputFiles>
-            {fileCollection.map((file, index) => (
-              <FileThumbnail
-                key={index}
-                file={file}
-                onFileRemove={() => {
-                  setFileCollection((prev) => prev.filter((_, i) => i !== index));
-                }}
-              />
-            ))}
-          </PromptInputFiles>
-        }
+        <PromptInputFiles>
+          {fileCollection?.map((file, index) => (
+            <FileThumbnail
+              key={index}
+              file={file}
+              onFileRemove={() => {
+                setFileCollection((prev) => prev.filter((_, i) => i !== index));
+              }}
+            />
+          ))}
+        </PromptInputFiles>
         <PromptInputControls>
           <PromptInputFileUploadButton />
           <PromptInputTextControl />
@@ -90,19 +88,17 @@ export const ControlledPromptInput = (): JSX.Element => {
         </PromptInputControls>
       </PromptInput>
       <PromptInput value={ inputValue } onValueChange={ onInputValueChange } fileCollection={ fileCollection } onFileChange={ onFileChange }>
-        {Boolean(fileCollection.length) &&
-          <PromptInputFiles>
-            {fileCollection.map((file, index) => (
-              <FileThumbnail
-                key={index}
-                file={file}
-                onFileRemove={() => {
-                  setFileCollection((prev) => prev.filter((_, i) => i !== index));
-                }}
-              />
-            ))}
-          </PromptInputFiles>
-        }
+        <PromptInputFiles>
+          {fileCollection?.map((file, index) => (
+            <FileThumbnail
+              key={index}
+              file={file}
+              onFileRemove={() => {
+                setFileCollection((prev) => prev.filter((_, i) => i !== index));
+              }}
+            />
+          ))}
+        </PromptInputFiles>
         <PromptInputControls>
           <PromptInputTextControl />
           <PromptInputSendButton />
@@ -173,20 +169,18 @@ export const WithFiles = (): JSX.Element => {
   }
 
   return <PromptInput onFileChange={handleFileChange} fileCollection={uploadedFiles}>
-    {Boolean(uploadedFiles?.length) &&
-      <PromptInputFiles>
-        {uploadedFiles.map((file, index) => (
-          <FileThumbnail
-            key={index}
-            file={file}
-            progress={20 * (index + 2)}
-            onFileRemove={() => {
-              setUploadedFiles((prev) => prev.filter((_, i) => i !== index));
-            }}
-          />
-        ))}
-      </PromptInputFiles>
-    }
+    <PromptInputFiles>
+      {uploadedFiles?.map((file, index) => (
+        <FileThumbnail
+          key={index}
+          file={file}
+          progress={20 * (index + 2)}
+          onFileRemove={() => {
+            setUploadedFiles((prev) => prev.filter((_, i) => i !== index));
+          }}
+        />
+      ))}
+    </PromptInputFiles>
     <PromptInputControls>
       <PromptInputFileUploadButton variant={BUTTON_VARIANT.default} accept="image/png" multiple />
       <PromptInputTextControl placeholder="Enter your prompt" />

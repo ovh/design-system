@@ -13,7 +13,21 @@ async function getInputValue(page: Page): Promise<string> {
 }
 
 describe('Datepicker behavior', () => {
-  describe('clearable', () => {
+  describe('input', () => {
+    beforeEach(async() => {
+      await gotoStory(page, 'behavior/type-and-blur');
+      await page.waitForSelector('[data-ods="datepicker"]');
+    });
+
+    it('should keep the typed date visible after blur', async() => {
+      await page.type('[data-ods="datepicker-control"]', '01/01/2026');
+      await page.keyboard.press('Tab');
+
+      expect(await getInputValue(page)).not.toBe('');
+    });
+  });
+
+  describe.only('clearable', () => {
     describe('uncontrolled', () => {
       beforeEach(async() => {
         await gotoStory(page, 'behavior/clearable');

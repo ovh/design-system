@@ -18,6 +18,7 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
   disabled,
   disabledDates,
   disabledWeekDays,
+  i18n,
   id,
   invalid,
   locale,
@@ -71,7 +72,9 @@ const Datepicker: FC<DatepickerProp> = forwardRef(({
 
   return (
     <DatepickerProvider
+      i18n={ i18n }
       invalid={ invalid }
+      locale={ locale }
       positionerStyle={ positionerStyle }
       required={ required }>
       <DatePicker.Root

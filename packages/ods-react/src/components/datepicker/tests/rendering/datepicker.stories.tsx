@@ -34,7 +34,7 @@ export const ClearableValue = () => (
 );
 
 export const Render = () => (
-  <Datepicker>
+  <Datepicker locale='en'>
     <DatepickerControl />
 
     <DatepickerContent />

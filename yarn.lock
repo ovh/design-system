@@ -5108,6 +5108,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-recipes-chat@workspace:packages/ods-recipes/src/components/chat":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-recipes-chat@workspace:packages/ods-recipes/src/components/chat"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-recipes-config-tile@workspace:packages/ods-recipes/src/components/config-tile":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-recipes-config-tile@workspace:packages/ods-recipes/src/components/config-tile"

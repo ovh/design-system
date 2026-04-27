@@ -52,7 +52,7 @@ const PromptInputTextControl: FC<PromptInputTextControlProp> = forwardRef(
       if (!supportsFieldSizing) {
         applyScrollHeight(internalRef.current!);
       }
-    }, []);
+    }, [inputValue]);
 
     const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>): void => {
       if (event.key === 'Enter' && !event.shiftKey) {

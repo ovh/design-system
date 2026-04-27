@@ -16,6 +16,13 @@ export const Clearable = () => (
   </Datepicker>
 );
 
+export const TypeAndBlur = () => (
+  <Datepicker locale="en">
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+);
+
 export const ClearableControlled = () => {
   const [value, setValue] = useState<Date | null>(new Date());
 

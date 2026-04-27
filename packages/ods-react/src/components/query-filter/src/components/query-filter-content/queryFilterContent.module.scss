@@ -25,7 +25,7 @@
     &__empty {
       display: flex;
       align-items: center;
-      padding: 0 8px;
+      padding: 0 var(--ods-theme-padding-horizontal);
       min-height: 32px;
     }
   }

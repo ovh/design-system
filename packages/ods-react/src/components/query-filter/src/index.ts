@@ -1,8 +1,19 @@
-export { QueryFilter, type QueryFilterProp } from './components/query-filter/QueryFilter';
-export { QueryFilterClear, type QueryFilterClearProp } from './components/query-filter-clear/QueryFilterClear';
-export { QueryFilterContent, type QueryFilterContentProp } from './components/query-filter-content/QueryFilterContent';
-export { QueryFilterControl, type QueryFilterControlProp } from './components/query-filter-control/QueryFilterControl';
-export { QueryFilterTags, type QueryFilterTagsProp } from './components/query-filter-tags/QueryFilterTags';
+import { type QueryFilterProp, QueryFilter as QueryFilterRoot } from './components/query-filter/QueryFilter';
+import { QueryFilterClear, type QueryFilterClearProp } from './components/query-filter-clear/QueryFilterClear';
+import { QueryFilterContent, type QueryFilterContentProp } from './components/query-filter-content/QueryFilterContent';
+import { QueryFilterControl, type QueryFilterControlProp } from './components/query-filter-control/QueryFilterControl';
+import { QueryFilterTags, type QueryFilterTagsProp } from './components/query-filter-tags/QueryFilterTags';
+
+const QueryFilter = Object.assign(QueryFilterRoot, {
+  Clear: QueryFilterClear,
+  Content: QueryFilterContent,
+  Control: QueryFilterControl,
+  Tags: QueryFilterTags,
+});
+
+export { QueryFilter };
+export { QueryFilterClear, QueryFilterContent, QueryFilterControl, QueryFilterTags };
+export type { QueryFilterProp, QueryFilterClearProp, QueryFilterContentProp, QueryFilterControlProp, QueryFilterTagsProp };
 export {
   type QueryFilterInputValueChangeDetails,
   type QueryFilterItem,

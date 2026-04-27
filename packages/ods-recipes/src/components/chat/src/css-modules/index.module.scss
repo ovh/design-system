@@ -1,0 +1,60 @@
+.chat {
+  display: flex;
+  flex-flow: column;
+  row-gap: var(--ods-theme-row-gap);
+  justify-content: end;
+  height: inherit;
+
+  &__messages {
+    display: flex;
+    flex-flow: column;
+    row-gap: calc(var(--ods-theme-row-gap) * 2);
+    overflow: auto;
+  }
+}
+
+.chat-message {
+  display: flex;
+  flex-flow: column;
+  row-gap: calc(var(--ods-theme-row-gap) / 2);
+  align-items: start;
+
+  &--human {
+    align-items: end;
+  }
+
+  &__info {
+    display: flex;
+    flex-flow: row;
+    column-gap: var(--ods-theme-column-gap);
+    align-items: center;
+  }
+
+  &__bubble {
+    display: flex;
+    flex-flow: column;
+    row-gap: calc(var(--ods-theme-row-gap) * 2);
+
+    &__content {
+      white-space: pre-wrap;
+    }
+
+    &__files {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: calc(var(--ods-theme-row-gap) / 2) calc(var(--ods-theme-column-gap) / 2);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-flow: row;
+    column-gap: calc(var(--ods-theme-column-gap) / 2);
+    margin: 0 calc(var(--ods-theme-outline-offset) * 2) calc(var(--ods-theme-outline-offset) * 2);
+
+    &__copy {
+      background-color: transparent;
+      padding: 0;
+    }
+  }
+}

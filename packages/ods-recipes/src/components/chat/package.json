@@ -1,8 +1,8 @@
 {
-  "name": "@ovhcloud/ods-recipes-order-button",
+  "name": "@ovhcloud/ods-recipes-chat",
   "version": "19.6.1",
   "private": true,
-  "description": "ODS Recipes OrderButton",
+  "description": "ODS Recipes Chat",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {

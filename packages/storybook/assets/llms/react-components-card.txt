@@ -80,6 +80,20 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Card style={{
+    padding: '8px'
+  }}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+      Interdum et malesuada fames ac ante ipsum primis in faucibus.
+    </Card>
+}
+```
+
 ### Color
 
 ```tsx

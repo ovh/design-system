@@ -66,6 +66,17 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Link href="https://www.ovhcloud.com" target="_blank">
+      Link
+    </Link>
+}
+```
+
 ### Default
 
 ```tsx

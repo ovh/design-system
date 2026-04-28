@@ -9,6 +9,7 @@
 | `i18n` | `` | No |  | Internal translations override (see Input i18n keys). |
 | `locale` | `` | No |  | The locale used for the translation of the internal elements. |
 | `onCopy` | `` | No |  | Callback fired when the input value is copied. |
+| `positionerStyle` | `` | No |  | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 | `value` | `` | No |  | The input value. |
 
 
@@ -64,6 +65,19 @@
         <ClipboardTrigger />
       </Clipboard>
     </FormField>
+}
+```
+
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Clipboard value="Clipboard">
+      <ClipboardControl />
+
+      <ClipboardTrigger />
+    </Clipboard>
 }
 ```
 

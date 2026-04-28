@@ -10,7 +10,9 @@ React Components
 
 ---
 
-1.  **Tag**
+Tag
+
+---
 
 ## Tag
 
@@ -19,9 +21,20 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes) . |
-| color | `TAG_COLOR` | - | `TAG_COLOR.information` | The color preset to use. |
-| icon | `IconName | null` | - | `ICON_NAME.xmark` | The icon to display on the right side. |
-| size | `TAG_SIZE` | - | `TAG_SIZE.md` | The size preset to use. |
+| 
+color
+
+ | `TAG_COLOR` | - | `TAG_COLOR.information` | The color preset to use. |
+| 
+
+icon
+
+ | `IconName | null` | - | `ICON_NAME.xmark` | The icon to display on the right side. |
+| 
+
+size
+
+ | `TAG_SIZE` | - | `TAG_SIZE.md` | The size preset to use. |
 
 ## Enums
 
@@ -237,58 +250,111 @@ React Components
 ### Default
 
 ```jsx
-<Tag>
-  My tag
-</Tag>
+{
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Tag>
+      My tag    </Tag>
+}
 ```
 
 ### Color
 
 ```jsx
-<>
-  <Tag color="critical">
-    Critical  </Tag>
-  <Tag color="information">
-    Information  </Tag>
-  <Tag color="neutral">
-    Neutral  </Tag>
-  <Tag color="primary">
-    Primary  </Tag>
-  <Tag color="success">
-    Success  </Tag>
-  <Tag color="warning">
-    Warning  </Tag>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { TAG_COLOR, Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <>
+      <Tag color={TAG_COLOR.critical}>Critical</Tag>
+      <Tag color={TAG_COLOR.information}>Information</Tag>
+      <Tag color={TAG_COLOR.neutral}>Neutral</Tag>
+      <Tag color={TAG_COLOR.primary}>Primary</Tag>
+      <Tag color={TAG_COLOR.success}>Success</Tag>
+      <Tag color={TAG_COLOR.warning}>Warning</Tag>
+    </>
+}
 ```
 
 ### Disabled
 
 ```jsx
-<Tag disabled>
-  My tag
-</Tag>
+{
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Tag disabled>
+      My tag    </Tag>
+}
 ```
 
 ### Size
 
 ```jsx
-<>
-  <Tag size="md">
-    MD tag  </Tag>
-  <Tag size="lg">
-    LG tag  </Tag>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { TAG_SIZE, Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <>
+      <Tag size={TAG_SIZE.md}>MD tag</Tag>
+      <Tag size={TAG_SIZE.lg}>LG tag</Tag>
+    </>
+}
 ```
 
 ### Custom icon
 
 ```jsx
-<>
-  <Tag icon={null}>
-    No Icon  </Tag>
-  <Tag icon="star">
-    Custom Icon  </Tag>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <>
+      <Tag icon={null}>
+        No Icon      </Tag>
+      <Tag icon={ICON_NAME.star}>
+        Custom Icon      </Tag>
+    </>
+}
 ```
 
 ## Recipes

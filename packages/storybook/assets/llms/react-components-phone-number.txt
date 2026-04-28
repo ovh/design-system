@@ -121,6 +121,19 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <PhoneNumber>
+      <PhoneNumberCountryList />
+
+      <PhoneNumberControl />
+    </PhoneNumber>
+}
+```
+
 ### Clearable
 
 ```tsx

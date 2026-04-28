@@ -78,6 +78,18 @@ import { useState } from 'react';`
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  decorators: [story => <div style={{
+    width: '160px'
+  }}>{story()}</div>],
+  tags: ['!dev'],
+  render: ({}) => <Range defaultValue={[50]} />
+}
+```
+
 ### Controlled
 
 ```tsx

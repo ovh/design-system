@@ -10,9 +10,13 @@ React Components
 
 ---
 
-1.  **Phone Number**
-2.  **Phone Number Country List**
-3.  **Phone Number Control**
+PhoneNumber
+
+PhoneNumberControl
+
+PhoneNumberCountryList
+
+---
 
 ## PhoneNumber
 
@@ -21,21 +25,80 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| countries | `PhoneNumberCountryIsoCode[] | PhoneNumberCountriesPreset` | - | `undefined` | A specific or preset list of country to display in the selector. |
-| country | `PHONE_NUMBER_COUNTRY_ISO_CODE` | - | `undefined` | The controlled selected country. |
-| defaultValue | `string` | - | `undefined` | The initial phone number value. Use when you don't need to control the value of the phone number. |
-| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
-| i18n | `Partial` | - | `undefined` | Internal translations override. |
-| id | `string` | - | `undefined` | The field id. |
-| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
-| locale | `string` | - | `undefined` | The locale used for the translation of the country list and the internal elements. |
-| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
-| onCountryChange | `(detail: PhoneNumberCountryChangeDetail) => void` | - | `undefined` | Callback fired when the country changes. |
-| onValueChange | `(detail: PhoneNumberValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
-| pattern | `string` | - | `undefined` | The phone number input expected pattern. |
-| readOnly | `boolean` | - | `undefined` | Whether the component is readonly. |
-| required | `boolean` | - | `undefined` | Whether the component is required. |
-| value | `string` | - | `undefined` | The controlled phone number value. |
+| 
+countries
+
+ | `PhoneNumberCountryIsoCode[] | PhoneNumberCountriesPreset` | - | `undefined` | A specific or preset list of country to display in the selector. |
+| 
+
+country
+
+ | `PHONE_NUMBER_COUNTRY_ISO_CODE` | - | `undefined` | The controlled selected country. |
+| 
+
+defaultValue
+
+ | `string` | - | `undefined` | The initial phone number value. Use when you don't need to control the value of the phone number. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+i18n
+
+ | `Partial` | - | `undefined` | Internal translations override. |
+| 
+
+id
+
+ | `string` | - | `undefined` | The field id. |
+| 
+
+invalid
+
+ | `boolean` | - | `undefined` | Whether the component is in error state. |
+| 
+
+locale
+
+ | `string` | - | `undefined` | The locale used for the translation of the country list and the internal elements. |
+| 
+
+name
+
+ | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| 
+
+onCountryChange
+
+ | `(detail: PhoneNumberCountryChangeDetail) => void` | - | `undefined` | Callback fired when the country changes. |
+| 
+
+onValueChange
+
+ | `(detail: PhoneNumberValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
+| 
+
+pattern
+
+ | `string` | - | `undefined` | The phone number input expected pattern. |
+| 
+
+readOnly
+
+ | `boolean` | - | `undefined` | Whether the component is readonly. |
+| 
+
+required
+
+ | `boolean` | - | `undefined` | Whether the component is required. |
+| 
+
+value
+
+ | `string` | - | `undefined` | The controlled phone number value. |
 
 ## PhoneNumberControl
 
@@ -44,8 +107,15 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [input attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes) . |
-| clearable | `boolean` | - | `undefined` | Whether the clear button is displayed. |
-| loading | `boolean` | - | `undefined` | Whether the component is in loading state. |
+| 
+clearable
+
+ | `boolean` | - | `undefined` | Whether the clear button is displayed. |
+| 
+
+loading
+
+ | `boolean` | - | `undefined` | Whether the component is in loading state. |
 
 ## PhoneNumberCountryList
 
@@ -357,8 +427,6 @@ React Components
 ```
 
 ### Disabled
-
-AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigua & BarbudaArgentinaArmeniaArubaAustraliaAustriaAzerbaijanBahamasBahrainBangladeshBarbadosBelarusBelgiumBelizeBeninBermudaBhutanBoliviaBosnia & HerzegovinaBotswanaBrazilBritish Indian Ocean TerritoryBritish Virgin IslandsBruneiBulgariaBurkina FasoBurundiCambodiaCameroonCanadaCape VerdeCaribbean NetherlandsCayman IslandsCentral African RepublicChadChileChinaChristmas IslandCocos (Keeling) IslandsColombiaComorosCongo - BrazzavilleCongo - KinshasaCook IslandsCosta RicaCôte d’IvoireCroatiaCubaCuraçaoCyprusCzechiaDenmarkDjiboutiDominicaDominican RepublicEcuadorEgyptEl SalvadorEquatorial GuineaEritreaEstoniaEswatiniEthiopiaFalkland Islands (Islas Malvinas)Faroe IslandsFijiFinlandFranceFrench GuianaFrench PolynesiaGabonGambiaGeorgiaGermanyGhanaGibraltarGreeceGreenlandGrenadaGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHong KongHungaryIcelandIndiaIndonesiaIranIraqIrelandIsle of ManIsraelItalyJamaicaJapanJerseyJordanKazakhstanKenyaKiribatiKuwaitKyrgyzstanLaosLatviaLebanonLesothoLiberiaLibyaLiechtensteinLithuaniaLuxembourgMacaoMadagascarMalawiMalaysiaMaldivesMaliMaltaMarshall IslandsMartiniqueMauritaniaMauritiusMayotteMexicoMicronesiaMoldovaMonacoMongoliaMontenegroMontserratMoroccoMozambiqueMyanmar (Burma)NamibiaNauruNepalNetherlandsNew CaledoniaNew ZealandNicaraguaNigerNigeriaNiueNorfolk IslandNorth KoreaNorth MacedoniaNorthern Mariana IslandsNorwayOmanPakistanPalauPalestinePanamaPapua New GuineaParaguayPeruPhilippinesPolandPortugalPuerto RicoQatarRéunionRomaniaRussiaRwandaSamoaSan MarinoSão Tomé & PríncipeSaudi ArabiaSenegalSerbiaSeychellesSierra LeoneSingaporeSint MaartenSlovakiaSloveniaSolomon IslandsSomaliaSouth AfricaSouth KoreaSouth SudanSpainSri LankaSt. BarthélemySt. HelenaSt. Kitts & NevisSt. LuciaSt. MartinSt. Pierre & MiquelonSt. Vincent & GrenadinesSudanSurinameSvalbard & Jan MayenSwedenSwitzerlandSyriaTaiwanTajikistanTanzaniaThailandTimor-LesteTogoTokelauTongaTrinidad & TobagoTunisiaTürkiyeTurkmenistanTurks & Caicos IslandsTuvaluU.S. Virgin IslandsUgandaUkraineUnited Arab EmiratesUnited KingdomUnited StatesUruguayUzbekistanVanuatuVatican CityVenezuelaVietnamWallis & FutunaWestern SaharaYemenZambiaZimbabwe
 
 ```jsx
 {

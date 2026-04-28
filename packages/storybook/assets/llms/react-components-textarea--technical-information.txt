@@ -10,7 +10,9 @@ React Components
 
 ---
 
-1.  **Textarea**
+Textarea
+
+---
 
 ## Textarea
 
@@ -19,7 +21,10 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [textarea attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes) . |
-| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
+| 
+invalid
+
+ | `boolean` | - | `undefined` | Whether the component is in error state. |
 
 ## Examples
 
@@ -28,39 +33,54 @@ React Components
 ### Default
 
 ```jsx
-<Textarea />
+{
+  globals: {
+    imports: `import { Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Textarea />
+}
 ```
 
 ### Disabled
 
 ```jsx
-<Textarea disabled />
+{
+  globals: {
+    imports: `import { Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Textarea disabled />
+}
 ```
 
 ### Readonly
 
-Readonly
-
 ```jsx
-<Textarea
-  defaultValue="Readonly"
-  readOnly
-/>
+{
+  globals: {
+    imports: `import { Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Textarea defaultValue="Readonly" readOnly />
+}
 ```
 
 ### Resizable
 
 ```jsx
-<Textarea
-  style={{
+{
+  globals: {
+    imports: `import { Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Textarea style={{
     resize: 'both'
-  }}
- />
+  }} />
+}
 ```
 
 ### Form field
-
-Description:Helper text0/200
 
 ```jsx
 const MAX_COUNT = 200;

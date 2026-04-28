@@ -6,13 +6,15 @@ React Components
 
 ---
 
-[Link](https://www.ovhcloud.com)
-
 ## Anatomy
 
 ---
 
-1.  **Link**
+Link
+
+---
+
+[Link](https://www.ovhcloud.com)
 
 ## Link
 
@@ -21,8 +23,15 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [a attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#attributes) . |
-| as | `<T>` | - | `'a'` | Pass a component you may want to use as custom Link component. Useful for example when using routing library like react-router. |
-| disabled | `boolean` | - | `false` | Whether the component is disabled. |
+| 
+as
+
+ | `<T>` | - | `'a'` | Pass a component you may want to use as custom Link component. Useful for example when using routing library like react-router. |
+| 
+
+disabled
+
+ | `boolean` | - | `false` | Whether the component is disabled. |
 
 ## Css Variables
 
@@ -45,40 +54,52 @@ React Components
 [Default Link](https://www.ovhcloud.com)
 
 ```jsx
-<Link href="https://www.ovhcloud.com">
-  Default Link
-</Link>
+{
+  globals: {
+    imports: `import { Link } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Link href="https://www.ovhcloud.com">
+      Default Link    </Link>
+}
 ```
 
 ### Disabled
 
 ```jsx
-<Link
-  disabled
-  href="https://www.ovhcloud.com"
->
-  Disabled
-</Link>
+{
+  globals: {
+    imports: `import { Link } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Link disabled href="https://www.ovhcloud.com">
+      Disabled    </Link>
+}
 ```
 
 ### With Icon
 
-[Icon Link](https://www.ovhcloud.com)[Icon Link](https://www.ovhcloud.com)
-
 ```jsx
-<>
-  <Link href="https://www.ovhcloud.com">
-    <Icon name="arrow-left" />
-    Icon Link  </Link>
-  <Link
-    href="https://www.ovhcloud.com"
-    style={{
+{
+  decorators: [story => <div style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Link href="https://www.ovhcloud.com">
+        <Icon name={ICON_NAME.arrowLeft} />Icon Link
+      </Link>
+      <Link href="https://www.ovhcloud.com" style={{
       justifySelf: 'right'
-    }}
-  >
-    Icon Link    <Icon name="arrow-right" />
-  </Link>
-</>
+    }}>
+        Icon Link<Icon name={ICON_NAME.arrowRight} />
+      </Link>
+    </>
+}
 ```
 
 ### React Router integration

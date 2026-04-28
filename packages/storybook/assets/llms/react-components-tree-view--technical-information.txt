@@ -6,29 +6,17 @@ React Components
 
 ---
 
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
-
 ## Anatomy
 
 ---
 
-1.  **Tree View**
-2.  **TreeView Nodes**
-3.  **TreeView Node**
+TreeView
+
+TreeViewNode
+
+TreeViewNodes
+
+---
 
 ## TreeView
 
@@ -36,15 +24,50 @@ README.md
 
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
-| defaultExpandedValue | `string[]` | - | `undefined` | The initial expanded value(s). Use when you don't need to control the expanded value(s) of the tree view. |
-| defaultValue | `string[]` | - | `undefined` | The initial selected value(s). Use when you don't need to control the selected value(s) of the tree view. |
-| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
-| expandedValue | `string[]` | - | `undefined` | The controlled expanded value(s). |
-| items | `Array<TreeViewItem>` |  | `undefined` | The list of items |
-| multiple | `boolean` | - | `undefined` | Whether the multiple selection is allowed. |
-| onExpandedChange | `(details: TreeViewExpandedChangeDetail) => void` | - | `undefined` | Callback fired when the expanded value(s) changes. |
-| onValueChange | `(details: TreeViewValueChangeDetail) => void` | - | `undefined` | Callback fired when the value(s) changes. |
-| value | `string[]` | - | `undefined` | The controlled selected value(s). |
+| 
+defaultExpandedValue
+
+ | `string[]` | - | `undefined` | The initial expanded value(s). Use when you don't need to control the expanded value(s) of the tree view. |
+| 
+
+defaultValue
+
+ | `string[]` | - | `undefined` | The initial selected value(s). Use when you don't need to control the selected value(s) of the tree view. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+expandedValue
+
+ | `string[]` | - | `undefined` | The controlled expanded value(s). |
+| 
+
+items
+
+ | `Array<TreeViewItem>` |  | `undefined` | The list of items |
+| 
+
+multiple
+
+ | `boolean` | - | `undefined` | Whether the multiple selection is allowed. |
+| 
+
+onExpandedChange
+
+ | `(details: TreeViewExpandedChangeDetail) => void` | - | `undefined` | Callback fired when the expanded value(s) changes. |
+| 
+
+onValueChange
+
+ | `(details: TreeViewValueChangeDetail) => void` | - | `undefined` | Callback fired when the value(s) changes. |
+| 
+
+value
+
+ | `string[]` | - | `undefined` | The controlled selected value(s). |
 
 ## TreeViewNode
 
@@ -52,8 +75,21 @@ README.md
 
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
-| children | `ReactNode | ((arg: TreeViewCustomRendererArg) => ReactNode)` | - | `undefined` | Label content or custom render function. |
-| item | `TreeViewItem` |  | `undefined` | The tree node to render. |
+| 
+children
+
+ | `ReactNode | ((arg: TreeViewCustomRendererArg) => ReactNode)` | - | `undefined` | Label content or custom render function. |
+| 
+
+item
+
+ | `TreeViewItem` |  | `undefined` | The tree node to render. |
+
+## TreeViewNodes
+
+---
+
+This component has no specific properties.
 
 ## Interfaces
 
@@ -110,22 +146,6 @@ README.md
 
 ### Default
 
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
-
 ```jsx
 {
   globals: {
@@ -170,22 +190,6 @@ README.md
 ```
 
 ### Multiple
-
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
 
 ```jsx
 const items = [{

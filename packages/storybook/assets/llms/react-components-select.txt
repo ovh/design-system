@@ -5,14 +5,18 @@
 
 | Name | Type | Required | Default | Description |
 |------|------|----------|---------|-------------|
+| `defaultOpen` | `` | No |  | The initial open state of the select. Use when you don't need to control the open state of the select. |
 | `defaultValue` | `` | No |  | The initial selected value(s). Use when you don't need to control the selected value(s) of the select. |
 | `disabled` | `` | No | false | Whether the component is disabled. |
-| `fitControlWidth` | `` | No | true | Whether the dropdown width should stay the same as the input. |
+| `fitControlWidth` | `` | No | true | @deprecated Use overlayConfig.sameWidth instead |
 | `invalid` | `` | No |  | Whether the component is in error state. |
 | `items` | `` | No | [] | The list of items |
 | `multiple` | `` | No | false | Allows multiple selection and define how it should be rendered. |
 | `name` | `` | No |  | The name of the form element. Useful for form submission. |
+| `onOpenChange` | `` | No |  | Callback fired when the select open state changes. |
 | `onValueChange` | `` | No |  | Callback fired when the value(s) changes. |
+| `open` | `` | No |  | The controlled open state of the select. |
+| `overlayConfig` | `` | No |  | The overlay configuration. |
 | `positionerStyle` | `` | No |  | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 | `readOnly` | `` | No | false | Whether the component is readonly. |
 | `required` | `` | No |  | Whether the component is required. |
@@ -82,6 +86,48 @@
         <SelectContent />
       </Select>
     </FormField>
+}
+```
+
+### Anatomy Tech
+
+```tsx
+{
+  parameters: {
+    layout: 'start'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    height: '230px'
+  }}>
+      <Select items={[{
+      label: 'Dog',
+      value: 'dog'
+    }, {
+      label: 'Cat',
+      value: 'cat'
+    }, {
+      label: 'Hamster',
+      value: 'hamster'
+    }, {
+      label: 'Parrot',
+      value: 'parrot'
+    }, {
+      label: 'Spider',
+      value: 'spider'
+    }, {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }]} open overlayConfig={{
+      flip: false
+    }}>
+        <SelectControl placeholder="Select one or more pets" style={{
+        width: '230px'
+      }} />
+
+        <SelectContent createPortal={false} />
+      </Select>
+    </div>
 }
 ```
 
@@ -245,7 +291,7 @@
 
 ```tsx
 {
-  render: (arg: DemoArg) => <Select disabled={arg.disabled} fitControlWidth={arg.fitControlWidth} invalid={arg.invalid} items={[{
+  render: (arg: DemoArg) => <Select disabled={arg.disabled} invalid={arg.invalid} items={[{
     label: 'Dog',
     value: 'dog'
   }, {
@@ -263,21 +309,15 @@
   }, {
     label: 'Goldfish',
     value: 'goldfish'
-  }]} multiple={arg.multiple} readOnly={arg.readOnly}>
+  }]} multiple={arg.multiple} overlayConfig={{
+    sameWidth: arg.sameWidth
+  }} readOnly={arg.readOnly}>
       <SelectControl multipleSelectionLabel={arg.multipleSelectionLabel} placeholder={arg.placeholder} />
 
       <SelectContent />
     </Select>,
   argTypes: orderControls({
     disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    fitControlWidth: {
       table: {
         category: CONTROL_CATEGORY.general
       },
@@ -323,6 +363,14 @@
         category: CONTROL_CATEGORY.general
       },
       control: 'boolean'
+    },
+    sameWidth: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: {
+        type: 'boolean'
+      }
     }
   })
 }

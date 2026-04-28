@@ -6,39 +6,19 @@ React Components
 
 ---
 
-| 
-First Name
-
- | 
-
-Last Name
-
- | 
-
-Age
-
- | 
-
-Email
-
- | 
-
-Role
-
- |
-| --- | --- | --- | --- | --- |
-| John | Doe | 30 | john.doe@example.com | Admin |
-| Jane | Smith | 25 | jane.smith@example.com | User |
-| Bob | Johnson | 35 | bob.johnson@example.com | Manager |
-
 ## Anatomy
 
 ---
 
-1.  **DataTable**
-2.  **DataTableHead**
-3.  **DataTableBody**
-4.  **DataTableEmpty**
+DataTable
+
+DataTableBody
+
+DataTableEmpty
+
+DataTableHead
+
+---
 
 ## DataTable
 
@@ -47,20 +27,75 @@ Role
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [table attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table) . |
-| columns | `DataTableColumnDef<T>[]` |  | `undefined` | The columns definitions. |
-| data | `T[]` |  | `undefined` | The table data to display. |
-| enableMultiRowSelection | `boolean` | - | `true` | Whether the multi row selection is enabled. |
-| enableRowSelection | `boolean | ((row: DataTableRow<T>) => boolean)` | - | `undefined` | Whether the row selection is enabled. |
-| enableSorting | `boolean` | - | `true` | Whether the column sorting is enabled. |
-| getRowId | `(originalRow: T, index: number, parent?: DataTableRow<T>) => string` | - | `undefined` | By default, the component will look for an id attribute in a data item to identify each row. Using this function, you can define another attribute to use instead (like uuid). |
-| loading | `boolean` | - | `undefined` | Whether the table data are in a loading state. This will replace each cell with a Skeleton. |
-| manualSorting | `boolean` | - | `undefined` | Whether the sorting is handled outside of the table. Use this is the sorting is managed on server-side. |
-| onColumnPinningChange | `(updaterOrValue: T | ((old: T) => T)) => void` | - | `undefined` | Callback fired when the pinned columns changes. |
-| onColumnVisibilityChange | `(updaterOrValue: T | ((old: T) => T)) => void` | - | `undefined` | Callback fired when the column visibility changes. |
-| onRowSelectionChange | `(updaterOrValue: T | ((old: T) => T)) => void` | - | `undefined` | Callback fired when the selected rows changes. |
-| onSortingChange | `(updaterOrValue: T | ((old: T) => T)) => void` | - | `undefined` | Callback fired when the columns sorting changes. |
-| state | `DataTableState` | - | `undefined` | The controlled table values. |
-| stickyHeader | `boolean` | - | `undefined` | Whether the header should be sticky. |
+| 
+columns
+
+ | `DataTableColumnDef<T>[]` |  | `undefined` | The columns definitions. |
+| 
+
+data
+
+ | `T[]` |  | `undefined` | The table data to display. |
+| 
+
+enableMultiRowSelection
+
+ | `boolean` | - | `true` | Whether the multi row selection is enabled. |
+| 
+
+enableRowSelection
+
+ | `boolean | ((row: DataTableRow<T>) => boolean)` | - | `undefined` | Whether the row selection is enabled. |
+| 
+
+enableSorting
+
+ | `boolean` | - | `true` | Whether the column sorting is enabled. |
+| 
+
+getRowId
+
+ | `(originalRow: T, index: number, parent?: DataTableRow<T>) => string` | - | `undefined` | By default, the component will look for an id attribute in a data item to identify each row. Using this function, you can define another attribute to use instead (like uuid). |
+| 
+
+loading
+
+ | `boolean` | - | `undefined` | Whether the table data are in a loading state. This will replace each cell with a Skeleton. |
+| 
+
+manualSorting
+
+ | `boolean` | - | `undefined` | Whether the sorting is handled outside of the table. Use this is the sorting is managed on server-side. |
+| 
+
+onColumnPinningChange
+
+ | `(updaterOrValue: T | ((old: T) => T)) => void` | - | `undefined` | Callback fired when the pinned columns changes. |
+| 
+
+onColumnVisibilityChange
+
+ | `(updaterOrValue: T | ((old: T) => T)) => void` | - | `undefined` | Callback fired when the column visibility changes. |
+| 
+
+onRowSelectionChange
+
+ | `(updaterOrValue: T | ((old: T) => T)) => void` | - | `undefined` | Callback fired when the selected rows changes. |
+| 
+
+onSortingChange
+
+ | `(updaterOrValue: T | ((old: T) => T)) => void` | - | `undefined` | Callback fired when the columns sorting changes. |
+| 
+
+state
+
+ | `DataTableState` | - | `undefined` | The controlled table values. |
+| 
+
+stickyHeader
+
+ | `boolean` | - | `undefined` | Whether the header should be sticky. |
 
 ## DataTableBody
 
@@ -280,32 +315,6 @@ If you want to disabled sorting for the whole table, you can set the DataTable `
 
 If you want to disabled sorting for some specific column, you can set `enableSorting` to `false` in the columns definition.
 
-Sort disabled on some columns
-| 
-First Name
-
- | 
-
-Last Name
-
- | 
-
-Age
-
- | 
-
-Email
-
- | 
-
-Role
-
- |
-| --- | --- | --- | --- | --- |
-| John | Doe | 30 | john.doe@domain2.com | Admin |
-| Jane | Smith | 25 | jane.smith@domain1.com | User |
-| Bob | Johnson | 35 | bob.johnson@domain3.com | Manager |
-
 #### Custom sorting
 
 By default, columns will be sorted alphanumerically. You can add more control on how each column should be sorted, by defining a `sortingFn` on the column definition.
@@ -331,28 +340,6 @@ The `columnPinning` state takes two arrays (left and right) of column ids that w
 The column visibility feature allows table columns to be hidden or shown dynamically.
 
 The `columnVisibility` state is a map of column ids to boolean values. A column will be hidden if its id is present in the map and the value is `false`. If the column id is not present in the map, or the value is `true`, the column will be shown.
-
-Age column hidden
-| 
-First Name
-
- | 
-
-Last Name
-
- | 
-
-Email
-
- | 
-
-Role
-
- |
-| --- | --- | --- | --- |
-| John | Doe | john.doe@domain2.com | Admin |
-| Jane | Smith | jane.smith@domain1.com | User |
-| Bob | Johnson | bob.johnson@domain3.com | Manager |
 
 ## Examples
 
@@ -624,3 +611,96 @@ Actions
 102550100300
 
 of 0 results
+
+Data Grid With Query Filter
+
+| 
+Instance ID
+
+ | 
+
+Location
+
+ | 
+
+Model
+
+ | 
+
+Image
+
+ | 
+
+Backup Logic
+
+ | 
+
+Running since
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |

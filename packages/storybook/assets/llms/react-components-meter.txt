@@ -58,6 +58,19 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    width: '200px'
+  }}>
+      <Meter low={40} value={35} />
+    </div>
+}
+```
+
 ### Default
 
 ```tsx

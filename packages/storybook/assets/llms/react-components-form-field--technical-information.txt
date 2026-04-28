@@ -6,19 +6,23 @@ React Components
 
 ---
 
-Description:Helper text0/200
-
 To learn more about **Form Field** usage, please refer to the .
 
 ## Anatomy
 
 ---
 
-1.  **Form Field**
-2.  **Form Field Label**
-3.  **Form Field Label Sub Label**
-4.  **Form Field Helper**
-5.  **Form Field Error**
+FormField
+
+FormFieldError
+
+FormFieldHelper
+
+FormFieldLabel
+
+FormFieldLabelSubLabel
+
+---
 
 ## FormField
 
@@ -27,8 +31,15 @@ To learn more about **Form Field** usage, please refer to the .
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| id | `string` | - | `undefined` | The field id. |
-| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
+| 
+id
+
+ | `string` | - | `undefined` | The field id. |
+| 
+
+invalid
+
+ | `boolean` | - | `undefined` | Whether the component is in error state. |
 
 ## FormFieldError
 
@@ -84,21 +95,31 @@ To learn more about **Form Field** usage, please refer to the .
 ### Default
 
 ```jsx
-<FormField>
-  <Textarea name="textarea" />
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <Textarea name="textarea" />
+    </FormField>
+}
 ```
 
 ### Field label
 
-Description:
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Description:  </FormFieldLabel>
-  <Textarea name="textarea" />
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Description:      </FormFieldLabel>
+      <Textarea name="textarea" />
+    </FormField>
+}
 ```
 
 ### Field sub label
@@ -106,13 +127,18 @@ Description:
 Description- mandatory
 
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Description    <FormFieldLabelSubLabel>
-      - mandatory    </FormFieldLabelSubLabel>
-  </FormFieldLabel>
-  <Textarea name="textarea" />
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, FormFieldLabelSubLabel, Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Description        <FormFieldLabelSubLabel>- mandatory</FormFieldLabelSubLabel>
+      </FormFieldLabel>
+      <Textarea name="textarea" />
+    </FormField>
+}
 ```
 
 ### Helper message
@@ -120,25 +146,35 @@ Description- mandatory
 Helper text
 
 ```jsx
-<FormField>
-  <Textarea name="textarea" />
-  <FormFieldHelper>
-    <Text preset="caption">
-      Helper text    </Text>
-  </FormFieldHelper>
-</FormField>
+{
+  globals: {
+    imports: `import { TEXT_PRESET, FormField, FormFieldHelper, Text, Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <Textarea name="textarea" />
+      <FormFieldHelper>
+        <Text preset={TEXT_PRESET.caption}>
+          Helper text        </Text>
+      </FormFieldHelper>
+    </FormField>
+}
 ```
 
 ### Error message
 
-Error message
-
 ```jsx
-<FormField invalid>
-  <Textarea name="textarea" />
-  <FormFieldError>
-    Error message  </FormFieldError>
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldError, Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField invalid>
+      <Textarea name="textarea" />
+      <FormFieldError>
+        Error message      </FormFieldError>
+    </FormField>
+}
 ```
 
 ## Recipes

@@ -9,41 +9,51 @@ import { HOME_TITLE, REACT_COMPONENTS_TITLE, RECIPES_TITLE, STORY } from '../../
 
 <Heading label="What's new ?" level={ 1 } />
 
-<Heading label="v19.7.0-alpha.0" level={ 2 } />
+<Heading label="v19.7.0" level={ 2 } />
 
-<Message color={ MESSAGE_COLOR.information } dismissible={ false } style={{ width: '100%' }}>
-  <MessageIcon name={ ICON_NAME.circleInfo } />
+<Heading label="New components:" level={ 3 } />
 
-  <MessageBody>
-<h3 style={{ margin: 0 }}>
-Why an alpha version?
-</h3>
+**Avatar**
 
-This release includes two new features that we want to share beforehand so that we can ensure
-the final released version will match your expectation and will not cause any unexpected issues:
-- The new component `DataTable`.
-- New way to import components.
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.avatar } story={ STORY.documentation }>See Documentation</StorybookLink>.
 
-<h4 style={{ margin: 0 }}>
-The new component `DataTable`.
-</h4>
+**DataTable**
 
-In this first iteration, we've tried to provide an easy-to-use component with the minimal expected features.
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.dataTable } story={ STORY.documentation }>See Documentation</StorybookLink>.
 
-This component does differ from the actual `DataGrid` that you may use in your app today, as it is only focused on the table itself.
+**FileThumbnail**
 
-To see how you can use it in a more complex use-case, we've also added a new recipe `DataGrid` that demonstrates composition of multiple
-ODS components around the table.
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.fileThumbnail } story={ STORY.documentation }>See Documentation</StorybookLink>.
 
-Please share your feedbacks about:
-- the primary features that may be missing.
-- the painpoints you've encournted while using the component.
-- other improvements you may think of.
+**Markdown**
 
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.markdown } story={ STORY.documentation }>See Documentation</StorybookLink>.
 
-<h4 style={{ margin: 0 }}>
-New library exports
-</h4>
+**MessageBubble**
+
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.messageBubble } story={ STORY.documentation }>See Documentation</StorybookLink>.
+
+**PromptInput**
+
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.promptInput } story={ STORY.documentation }>See Documentation</StorybookLink>.
+
+**QueryFilter**
+
+<StorybookLink kind={ REACT_COMPONENTS_TITLE.queryFilter } story={ STORY.documentation }>See Documentation</StorybookLink>.
+
+<Heading label="New recipes:" level={ 3 } />
+
+**Data Grid with Query Filter**
+
+<StorybookLink title={ RECIPES_TITLE.components }>See Recipes</StorybookLink>.
+
+**Chat**
+
+<StorybookLink title={ RECIPES_TITLE.components}>See Recipes</StorybookLink>.
+
+<Heading label="Feature updates:" level={ 3 } />
+
+**Compound components**
 
 ODS now offers different ways to be imported in your project, either through the main export that provides everything (like in previous version) or per-component.
 
@@ -86,52 +96,87 @@ import { Accordion } from '@ovhcloud/ods-react/accordion';
 We did test on a bunch of different bundler configuration to ensure that the tree-shaking is still working as expected and that existing
 configuration will not be impacted.
 
-We would like to ensure you don't encounter any bundle issue with this new exports.
-Please share your feedbacks if you find any issue with this feature.
-  </MessageBody>
-</Message>
+**Clipboard**
+- New attribute `positionerStyle` has been added.
 
-<Heading label="New components:" level={ 3 } />
+**Code**
+- Copy button is now sticky when content is scrollable.
+- New attribute `positionerStyle` has been added.
 
-**Avatar**
+**Combobox**
+- New attributes `open`, `defaultOpen` and `onOpenChange` have been added.
+- New attribute `overlayConfig` has been added, with `flip` and `sameWidth` options.
 
-<StorybookLink kind={ REACT_COMPONENTS_TITLE.avatar } story={ STORY.documentation }>See Documentation</StorybookLink>.
-
-**DataTable**
-
-<StorybookLink kind={ REACT_COMPONENTS_TITLE.dataTable } story={ STORY.documentation }>See Documentation</StorybookLink>.
-
-**FileThumbnail**
-
-<StorybookLink kind={ REACT_COMPONENTS_TITLE.fileThumbnail } story={ STORY.documentation }>See Documentation</StorybookLink>.
-
-<Heading label="New recipes:" level={ 3 } />
-
-**DataGrid**
-
-<StorybookLink title={ RECIPES_TITLE.components }>See Recipes</StorybookLink>.
-
-<Heading label="Design updates:" level={ 3 } />
-
-**Breadcrumb**
-- Now uses the ODS vertical Divider, which involve a color change.
-
-<Heading label="Feature updates:" level={ 3 } />
+**Datepicker**
+- New attribute `onOpenChange` has been added.
+- New attribute `overlayConfig` has been added, with a `flip` option.
 
 **Divider**
-- New attribute `orientation` has been added.
+- New attribute `orientation` has been added to support vertical dividers.
+
+**Helpers**
+- New helper function `formatRelativeTime` has been added.
+
+**Icon**
+- Add the following new icons: `accessibility`, `accessibility-full`, `paperclip`, `pause`, `pause-full`, `phone`, `play`, `play-full`, `stop`, `stop-full`, `theme`.
+
+**Menu**
+- New attribute `overlayConfig` has been added, with `flip`, `gutter` and `sameWidth` options.
+
+**Pagination**
+- New page selector feature has been added.
+
+**Popover**
+- New attribute `overlayConfig` has been added, with a `flip` option.
+
+**ProgressBar**
+- New `indeterminate` value has been added.
+
+**Select**
+- New attributes `open`, `defaultOpen` and `onOpenChange` have been added.
+- New attribute `overlayConfig` has been added, with a `flip` option.
+
+**Tooltip**
+- New attribute `overlayConfig` has been added, with `flip`, `gutter` and `sameWidth` options.
 
 <Heading label="Bug fixes:" level={ 3 } />
 
+**Accordion**
+- Trigger text can now be selected.
+
+**Cart**
+- Remove button is now aligned with the label.
+- Item price is now correctly aligned to the right.
+
+**Combobox**
+- Caret click no longer triggers a form submit.
+
+**Datepicker**
+- Text input display bug has been fixed.
+
+**Font**
+- Variable weight declaration has been fixed.
+
 **Meter**
-- Hides gauge overflow on very small values.
+- Track container no longer overflows.
 
 **Table**
-- Changed `border-collapse` to `separate` to fix rendering when using sticky header
+- Sticky header border issue on scroll has been fixed.
+
+**Textarea**
+- Placeholder now uses the theme color.
 
 <Heading label="Documentation improvements:" level={ 3 } />
 
-- Update theme, version selector and recipes from using Popover to Menu.
+- Tech anatomy sections are now dynamic.
+- Icon gallery has been improved.
+
+
+
+
+
+
+
 
 <Heading label="v19.6.1" level={ 2 } />
 

@@ -73,6 +73,28 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Popover open={true} overlayConfig={{
+    flip: false,
+    position: POPOVER_POSITION.top
+  }}>
+      <PopoverTrigger asChild>
+        <Button>
+          Popover trigger
+        </Button>
+      </PopoverTrigger>
+
+      <PopoverContent createPortal={false}>
+        This is the popover content
+      </PopoverContent>
+    </Popover>
+}
+```
+
 ### Controlled
 
 ```tsx
@@ -168,7 +190,11 @@ import { useState } from 'react';`
   parameters: {
     layout: 'centered'
   },
-  render: (arg: DemoArg) => <Popover gutter={arg.gutter} position={arg.position} sameWidth={arg.sameWidth}>
+  render: (arg: DemoArg) => <Popover overlayConfig={{
+    gutter: arg.gutter,
+    position: arg.position,
+    sameWidth: arg.sameWidth
+  }}>
       <PopoverTrigger>
         Show popover
       </PopoverTrigger>
@@ -252,7 +278,9 @@ import { useState } from 'react';`
   },
   tags: ['!dev'],
   render: ({}) => <>
-      <Popover position="top-start">
+      <Popover overlayConfig={{
+      position: 'top-start'
+    }}>
         <PopoverTrigger>
           Top Left
         </PopoverTrigger>
@@ -261,7 +289,9 @@ import { useState } from 'react';`
         </PopoverContent>
       </Popover>
 
-      <Popover position="top">
+      <Popover overlayConfig={{
+      position: 'top'
+    }}>
         <PopoverTrigger>
           Top
         </PopoverTrigger>
@@ -270,7 +300,9 @@ import { useState } from 'react';`
         </PopoverContent>
       </Popover>
 
-      <Popover position="top-end">
+      <Popover overlayConfig={{
+      position: 'top-end'
+    }}>
         <PopoverTrigger>
           Top Right
         </PopoverTrigger>
@@ -279,7 +311,9 @@ import { useState } from 'react';`
         </PopoverContent>
       </Popover>
 
-      <Popover position="left">
+      <Popover overlayConfig={{
+      position: 'left'
+    }}>
         <PopoverTrigger>
           Middle Left
         </PopoverTrigger>
@@ -290,7 +324,9 @@ import { useState } from 'react';`
 
       <div />
 
-      <Popover position="right">
+      <Popover overlayConfig={{
+      position: 'right'
+    }}>
         <PopoverTrigger>
           Middle Right
         </PopoverTrigger>
@@ -299,7 +335,9 @@ import { useState } from 'react';`
         </PopoverContent>
       </Popover>
 
-      <Popover position="bottom-start">
+      <Popover overlayConfig={{
+      position: 'bottom-start'
+    }}>
         <PopoverTrigger>
           Bottom Left
         </PopoverTrigger>
@@ -308,7 +346,9 @@ import { useState } from 'react';`
         </PopoverContent>
       </Popover>
 
-      <Popover position="bottom">
+      <Popover overlayConfig={{
+      position: 'bottom'
+    }}>
         <PopoverTrigger>
           Bottom
         </PopoverTrigger>
@@ -317,7 +357,9 @@ import { useState } from 'react';`
         </PopoverContent>
       </Popover>
 
-      <Popover position="bottom-end">
+      <Popover overlayConfig={{
+      position: 'bottom-end'
+    }}>
         <PopoverTrigger>
           Bottom Right
         </PopoverTrigger>
@@ -359,7 +401,9 @@ import { useState } from 'react';`
     imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
   },
   tags: ['!dev'],
-  render: ({}) => <Popover sameWidth>
+  render: ({}) => <Popover overlayConfig={{
+    sameWidth: true
+  }}>
       <PopoverTrigger>
         Show popover that will take this width as reference
       </PopoverTrigger>
@@ -440,7 +484,9 @@ import { useState } from 'react';`
 
       <span>Custom Z-axis order:</span>
 
-      <Popover open position={POPOVER_POSITION.bottom} positionerStyle={{
+      <Popover open overlayConfig={{
+      position: POPOVER_POSITION.bottom
+    }} positionerStyle={{
       zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'
     }}>
         <PopoverTrigger asChild>
@@ -454,7 +500,9 @@ import { useState } from 'react';`
         </PopoverContent>
       </Popover>
 
-      <Popover open position={POPOVER_POSITION.bottom}>
+      <Popover open overlayConfig={{
+      position: POPOVER_POSITION.bottom
+    }}>
         <PopoverTrigger asChild>
           <Icon name={ICON_NAME.circleInfo} style={{
           fontSize: '24px'

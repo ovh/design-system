@@ -10,7 +10,9 @@ React Components
 
 ---
 
-1.  **Skeleton**
+Skeleton
+
+---
 
 ## Skeleton
 

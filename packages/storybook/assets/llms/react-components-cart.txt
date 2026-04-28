@@ -70,6 +70,31 @@
 ## Examples
 
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    alignItems: 'start',
+    gap: 'var(--ods-theme-row-gap) var(--ods-theme-column-gap)'
+  }}>
+      <FullExample />
+
+      <Cart>
+        <CartEmpty>
+          Your cart is empty
+        </CartEmpty>
+
+        <CartAction>
+          Continue my order <Icon name={ICON_NAME.arrowRight} />
+        </CartAction>
+      </Cart>
+    </div>
+}
+```
+
 ### Default
 
 ```tsx

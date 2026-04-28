@@ -6,15 +6,17 @@ React Components
 
 ---
 
-Drag & drop a file 
-
 ## Anatomy
 
 ---
 
-1.  **File Upload**
-2.  **File Upload List**
-3.  **File Upload Item**
+FileUpload
+
+FileUploadItem
+
+FileUploadList
+
+---
 
 ## FileUpload
 
@@ -23,23 +25,90 @@ Drag & drop a file
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| accept | `string` | - | `undefined` | The accepted file types. |
-| acceptedFileLabel | `string` | - | `undefined` | Label describing the accepted file types. |
-| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
-| dropzoneLabel | `string` | - | `'Drag & drop a file'` | The dropzone label. |
-| error | `string` | - | `undefined` | The global error message to display. |
-| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
-| locale | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
-| maxFile | `number` | - | `Infinity` | The maximum number of files that can be selected. |
-| maxFileLabel | `string` | - | `undefined` | Label describing the maximum number of files that can be selected. |
-| maxSize | `number` | - | `undefined` | The maximum size of selectable files. |
-| maxSizeLabel | `string` | - | `undefined` | Label describing the maximum size of selectable files. |
-| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
-| onFileAccept | `(detail: FileUploadAcceptDetail) => void` | - | `undefined` | Callback fired when a some files have been successfully added. |
-| onFileReject | `(detail: FileUploadRejectDetail) => void` | - | `undefined` | Callback fired when a some files have been rejected. |
-| required | `boolean` | - | `undefined` | Whether the component is required. |
-| triggerLabel | `string` | - | `'Browse files'` | Upload button label. |
-| variant | `FILE_UPLOAD_VARIANT` | - | `FILE_UPLOAD_VARIANT.default` | The variant preset to use. |
+| 
+accept
+
+ | `string` | - | `undefined` | The accepted file types. |
+| 
+
+acceptedFileLabel
+
+ | `string` | - | `undefined` | Label describing the accepted file types. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+dropzoneLabel
+
+ | `string` | - | `'Drag & drop a file'` | The dropzone label. |
+| 
+
+error
+
+ | `string` | - | `undefined` | The global error message to display. |
+| 
+
+invalid
+
+ | `boolean` | - | `undefined` | Whether the component is in error state. |
+| 
+
+locale
+
+ | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| 
+
+maxFile
+
+ | `number` | - | `Infinity` | The maximum number of files that can be selected. |
+| 
+
+maxFileLabel
+
+ | `string` | - | `undefined` | Label describing the maximum number of files that can be selected. |
+| 
+
+maxSize
+
+ | `number` | - | `undefined` | The maximum size of selectable files. |
+| 
+
+maxSizeLabel
+
+ | `string` | - | `undefined` | Label describing the maximum size of selectable files. |
+| 
+
+name
+
+ | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| 
+
+onFileAccept
+
+ | `(detail: FileUploadAcceptDetail) => void` | - | `undefined` | Callback fired when a some files have been successfully added. |
+| 
+
+onFileReject
+
+ | `(detail: FileUploadRejectDetail) => void` | - | `undefined` | Callback fired when a some files have been rejected. |
+| 
+
+required
+
+ | `boolean` | - | `undefined` | Whether the component is required. |
+| 
+
+triggerLabel
+
+ | `string` | - | `'Browse files'` | Upload button label. |
+| 
+
+variant
+
+ | `FILE_UPLOAD_VARIANT` | - | `FILE_UPLOAD_VARIANT.default` | The variant preset to use. |
 
 ## FileUploadItem
 
@@ -48,11 +117,30 @@ Drag & drop a file
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [li attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/li#attributes) . |
-| error | `string` | - | `undefined` | The file error message to display. |
-| file | `File` |  | `undefined` | The current File object. |
-| i18n | `Partial` | - | `undefined` | Internal translations override. |
-| progress | `number` | - | `undefined` | The file upload progress. |
-| uploadSuccessLabelDeprecated | `string` | - | `undefined` | The label displayed after a successful upload. DEPRECATED: Latest design change removed the upload success label in favor of a visual icon update. |
+| 
+error
+
+ | `string` | - | `undefined` | The file error message to display. |
+| 
+
+file
+
+ | `File` |  | `undefined` | The current File object. |
+| 
+
+i18n
+
+ | `Partial` | - | `undefined` | Internal translations override. |
+| 
+
+progress
+
+ | `number` | - | `undefined` | The file upload progress. |
+| 
+
+uploadSuccessLabelDeprecated
+
+ | `string` | - | `undefined` | The label displayed after a successful upload. DEPRECATED: Latest design change removed the upload success label in favor of a visual icon update. |
 
 ## FileUploadList
 
@@ -121,6 +209,8 @@ Drag & drop a file
 
 ### Default
 
+Drag & drop a file 
+
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
   return <FileUpload onFileAccept={({
@@ -133,6 +223,8 @@ const [files, setFiles] = useState<File[]>([]);
 ```
 
 ### Compact
+
+Drag & drop a file 
 
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
@@ -147,8 +239,6 @@ const [files, setFiles] = useState<File[]>([]);
 
 ### Disabled
 
-Drag & drop a file 
-
 ```jsx
 {
   globals: {
@@ -162,6 +252,10 @@ Drag & drop a file
 ```
 
 ### Custom labels
+
+Nombre maximal de fichiers : 3Taille de fichier max : 524 MBFormats acceptés : images
+
+Glisser-déposer des fichiers 
 
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
@@ -179,10 +273,6 @@ const [files, setFiles] = useState<File[]>([]);
 To limit the file types that can be uploaded, you can use the `accept` attribute.
 
 It works exactly the same as the one from the native [input file](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept) .
-
-Png files only
-
-Drag & drop a file 
 
 ```jsx
 const [error, setError] = useState<string>('');
@@ -202,10 +292,6 @@ const [error, setError] = useState<string>('');
 ```
 
 ### Limit the maximum number of file
-
-Maximum file allowed: 3
-
-Drag & drop a file 
 
 ```jsx
 const [error, setError] = useState<string>('');

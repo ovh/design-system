@@ -56,6 +56,15 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Spinner />
+}
+```
+
 ### Color
 
 ```tsx

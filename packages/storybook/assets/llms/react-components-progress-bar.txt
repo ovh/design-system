@@ -24,6 +24,15 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <ProgressBar value="50" />
+}
+```
+
 ### Default
 
 ```tsx
@@ -60,6 +69,18 @@
       control: 'number'
     }
   })
+}
+```
+
+### Indeterminate
+
+```tsx
+{
+  globals: {
+    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ProgressBar value="indeterminate" />
 }
 ```
 

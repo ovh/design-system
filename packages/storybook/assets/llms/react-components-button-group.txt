@@ -32,6 +32,22 @@
 ## Examples
 
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <ButtonGroup>
+      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+      <ButtonGroupItem value="custom">
+        <Icon name={ICON_NAME.calendar} /> Custom
+      </ButtonGroupItem>
+    </ButtonGroup>
+}
+```
+
 ### Controlled
 
 ```tsx

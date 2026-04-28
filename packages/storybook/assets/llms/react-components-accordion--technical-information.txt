@@ -6,16 +6,23 @@ React Components
 
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
-
 ## Anatomy
 
 ---
 
-1.  **Accordion**
-2.  **Accordion Item**
-3.  **Accordion Trigger**
-4.  **Accordion Content**
+Accordion
+
+AccordionContent
+
+AccordionItem
+
+AccordionTrigger
+
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
 
 ## Accordion
 
@@ -24,11 +31,30 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| defaultValue | `string[]` | - | `undefined` | The initial value of the expanded accordion items. Use when you don't need to control the value of the accordion. |
-| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
-| multiple | `boolean` | - | `true` | Whether multiple accordion items can be expanded at the same time. |
-| onChange | `(detail: AccordionChangeDetail) => void` | - | `undefined` | Callback fired when the state of expanded/collapsed accordion items changes. |
-| value | `string[]` | - | `undefined` | The controlled value of the expanded accordion items. |
+| 
+defaultValue
+
+ | `string[]` | - | `undefined` | The initial value of the expanded accordion items. Use when you don't need to control the value of the accordion. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+multiple
+
+ | `boolean` | - | `true` | Whether multiple accordion items can be expanded at the same time. |
+| 
+
+onChange
+
+ | `(detail: AccordionChangeDetail) => void` | - | `undefined` | Callback fired when the state of expanded/collapsed accordion items changes. |
+| 
+
+value
+
+ | `string[]` | - | `undefined` | The controlled value of the expanded accordion items. |
 
 ## AccordionContent
 
@@ -45,8 +71,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| disabled | `boolean` | - | `undefined` | Whether the accordion item is disabled. |
-| value | `string` |  | `undefined` | The value of the accordion item. |
+| 
+disabled
+
+ | `boolean` | - | `undefined` | Whether the accordion item is disabled. |
+| 
+
+value
+
+ | `string` |  | `undefined` | The value of the accordion item. |
 
 ## AccordionTrigger
 
@@ -55,7 +88,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
-| expandIconPosition | `EXPAND_ICON_POSITION` | - | `EXPAND_ICON_POSITION.right` | The position of the expand icon. |
+| 
+expandIconPosition
+
+ | `EXPAND_ICON_POSITION` | - | `EXPAND_ICON_POSITION.right` | The position of the expand icon. |
 
 ## Enums
 
@@ -203,33 +239,26 @@ Lorem ipsum dolor sit amet.
 Lorem ipsum dolor sit amet.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Accordion>
-      <AccordionItem value="0" disabled>
-        <AccordionTrigger>
-          Hello World!        </AccordionTrigger>
-        <AccordionContent>
-          Lorem ipsum dolor sit amet.        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="1">
-        <AccordionTrigger>
-          Hello World!        </AccordionTrigger>
-        <AccordionContent>
-          Lorem ipsum dolor sit amet.        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-}
+<Accordion>
+  <AccordionItem
+    disabled
+    value="0"
+  >
+    <AccordionTrigger>
+      Hello World!    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="1">
+    <AccordionTrigger>
+      Hello World!    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.    </AccordionContent>
+  </AccordionItem>
+</Accordion>
 ```
 
 ### Controlled
-
-Lorem ipsum dolor sit amet.
-
-Lorem ipsum dolor sit amet.
 
 ```jsx
 const [value, setValue] = useState(['0']);
@@ -252,32 +281,32 @@ const [value, setValue] = useState(['0']);
 
 ### Expand Icon Position
 
-Lorem ipsum dolor sit amet.
-
-  
-
-Lorem ipsum dolor sit amet.
-
 ```jsx
-<>
-  <Accordion>
-    <AccordionItem value="0">
-      <AccordionTrigger expandIconPosition="right">
-        Icon on the right (default)      </AccordionTrigger>
-      <AccordionContent>
-        Lorem ipsum dolor sit amet.      </AccordionContent>
-    </AccordionItem>
-  </Accordion>
-  <br />
-  <Accordion>
-    <AccordionItem value="1">
-      <AccordionTrigger expandIconPosition="left">
-        Icon on the left      </AccordionTrigger>
-      <AccordionContent>
-        Lorem ipsum dolor sit amet.      </AccordionContent>
-    </AccordionItem>
-  </Accordion>
-</>
+{
+  globals: {
+    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, EXPAND_ICON_POSITION } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Accordion>
+        <AccordionItem value="0">
+          <AccordionTrigger expandIconPosition={EXPAND_ICON_POSITION.right}>
+            Icon on the right (default)          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      <br />
+      <Accordion>
+        <AccordionItem value="1">
+          <AccordionTrigger expandIconPosition={EXPAND_ICON_POSITION.left}>
+            Icon on the left          </AccordionTrigger>
+          <AccordionContent>
+            Lorem ipsum dolor sit amet.          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </>
+}
 ```
 
 ## Recipes

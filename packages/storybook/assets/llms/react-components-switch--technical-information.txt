@@ -16,8 +16,11 @@ Component is now deprecated and will be removed in a future major release. You c
 
 ---
 
-1.  **Switch**
-2.  **Switch Item**
+Switch
+
+SwitchItem
+
+---
 
 ## Switch
 
@@ -26,11 +29,30 @@ Component is now deprecated and will be removed in a future major release. You c
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| defaultValue | `string` | - | `undefined` | The initial value of the selected item. Use when you don't need to control the value of the switch. |
-| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
-| onValueChange | `(detail: SwitchValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
-| size | `SWITCH_SIZE` | - | `SWITCH_SIZE.md` | The size preset to use. |
-| value | `string` | - | `undefined` | The controlled value of the selected item. |
+| 
+defaultValue
+
+ | `string` | - | `undefined` | The initial value of the selected item. Use when you don't need to control the value of the switch. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+onValueChange
+
+ | `(detail: SwitchValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
+| 
+
+size
+
+ | `SWITCH_SIZE` | - | `SWITCH_SIZE.md` | The size preset to use. |
+| 
+
+value
+
+ | `string` | - | `undefined` | The controlled value of the selected item. |
 
 ## SwitchItem
 
@@ -39,7 +61,10 @@ Component is now deprecated and will be removed in a future major release. You c
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
-| value | `string` |  | `undefined` | The value of the switch item. |
+| 
+value
+
+ | `string` |  | `undefined` | The value of the switch item. |
 
 ## Enums
 
@@ -98,63 +123,78 @@ Component is now deprecated and will be removed in a future major release. You c
 ### Default
 
 ```jsx
-<Switch>
-  <SwitchItem value="item-1">
-    Item 1  </SwitchItem>
-  <SwitchItem value="item-2">
-    Item 2  </SwitchItem>
-  <SwitchItem value="item-3">
-    Item 3  </SwitchItem>
-</Switch>
+{
+  globals: {
+    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Switch>
+      <SwitchItem value="item-1">Item 1</SwitchItem>
+      <SwitchItem value="item-2">Item 2</SwitchItem>
+      <SwitchItem value="item-3">Item 3</SwitchItem>
+    </Switch>
+}
 ```
 
 ### Checked
 
 ```jsx
-<Switch defaultValue="item-1">
-  <SwitchItem value="item-1">
-    Item 1  </SwitchItem>
-  <SwitchItem value="item-2">
-    Item 2  </SwitchItem>
-  <SwitchItem value="item-3">
-    Item 3  </SwitchItem>
-</Switch>
+{
+  globals: {
+    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Switch defaultValue="item-1">
+      <SwitchItem value="item-1">Item 1</SwitchItem>
+      <SwitchItem value="item-2">Item 2</SwitchItem>
+      <SwitchItem value="item-3">Item 3</SwitchItem>
+    </Switch>
+}
 ```
 
 ### Disabled
 
 ```jsx
-<Switch disabled>
-  <SwitchItem value="item-1">
-    Item 1  </SwitchItem>
-  <SwitchItem value="item-2">
-    Item 2  </SwitchItem>
-  <SwitchItem value="item-3">
-    Item 3  </SwitchItem>
-</Switch>
+{
+  globals: {
+    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Switch disabled>
+      <SwitchItem value="item-1">Item 1</SwitchItem>
+      <SwitchItem value="item-2">Item 2</SwitchItem>
+      <SwitchItem value="item-3">Item 3</SwitchItem>
+    </Switch>
+}
 ```
 
 ### Sizes
 
 ```jsx
-<>
-  <Switch size="sm">
-    <SwitchItem value="item-1">
-      Item 1    </SwitchItem>
-    <SwitchItem value="item-2">
-      Item 2    </SwitchItem>
-    <SwitchItem value="item-3">
-      Item 3    </SwitchItem>
-  </Switch>
-  <Switch size="md">
-    <SwitchItem value="item-1">
-      Item 1    </SwitchItem>
-    <SwitchItem value="item-2">
-      Item 2    </SwitchItem>
-    <SwitchItem value="item-3">
-      Item 3    </SwitchItem>
-  </Switch>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { SWITCH_SIZE, Switch, SwitchItem } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Switch size={SWITCH_SIZE.sm}>
+        <SwitchItem value="item-1">Item 1</SwitchItem>
+        <SwitchItem value="item-2">Item 2</SwitchItem>
+        <SwitchItem value="item-3">Item 3</SwitchItem>
+      </Switch>
+      <Switch size={SWITCH_SIZE.md}>
+        <SwitchItem value="item-1">Item 1</SwitchItem>
+        <SwitchItem value="item-2">Item 2</SwitchItem>
+        <SwitchItem value="item-3">Item 3</SwitchItem>
+      </Switch>
+    </>
+}
 ```
 
 ## Recipes

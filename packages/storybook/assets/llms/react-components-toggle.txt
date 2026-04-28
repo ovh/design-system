@@ -67,6 +67,21 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Toggle>
+      <ToggleControl />
+
+      <ToggleLabel>
+        Toggle label
+      </ToggleLabel>
+    </Toggle>
+}
+```
+
 ### Default
 
 ```tsx

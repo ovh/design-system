@@ -12,7 +12,11 @@ Badge
 
 ---
 
-1.  **Badge**
+Badge
+
+---
+
+Badge
 
 ## Badge
 
@@ -21,8 +25,15 @@ Badge
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
-| color | `BADGE_COLOR` | - | `BADGE_COLOR.information` | The color preset to use. |
-| size | `BADGE_SIZE` | - | `BADGE_SIZE.md` | The size preset to use. |
+| 
+color
+
+ | `BADGE_COLOR` | - | `BADGE_COLOR.information` | The color preset to use. |
+| 
+
+size
+
+ | `BADGE_SIZE` | - | `BADGE_SIZE.md` | The size preset to use. |
 
 ## Enums
 
@@ -149,38 +160,43 @@ Badge
 My badge
 
 ```jsx
-<Badge>
-  My badge
-</Badge>
+{
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Badge>
+      My badge    </Badge>
+}
 ```
 
 ### Color
 
-AlphaBetaCriticalInformationNeutralNewPrimaryPromotionSuccessWarning
-
 ```jsx
-<>
-  <Badge color="alpha">
-    Alpha  </Badge>
-  <Badge color="beta">
-    Beta  </Badge>
-  <Badge color="critical">
-    Critical  </Badge>
-  <Badge color="information">
-    Information  </Badge>
-  <Badge color="neutral">
-    Neutral  </Badge>
-  <Badge color="new">
-    New  </Badge>
-  <Badge color="primary">
-    Primary  </Badge>
-  <Badge color="promotion">
-    Promotion  </Badge>
-  <Badge color="success">
-    Success  </Badge>
-  <Badge color="warning">
-    Warning  </Badge>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { BADGE_COLOR, Badge } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Badge color={BADGE_COLOR.alpha}>Alpha</Badge>
+      <Badge color={BADGE_COLOR.beta}>Beta</Badge>
+      <Badge color={BADGE_COLOR.critical}>Critical</Badge>
+      <Badge color={BADGE_COLOR.information}>Information</Badge>
+      <Badge color={BADGE_COLOR.neutral}>Neutral</Badge>
+      <Badge color={BADGE_COLOR.new}>New</Badge>
+      <Badge color={BADGE_COLOR.primary}>Primary</Badge>
+      <Badge color={BADGE_COLOR.promotion}>Promotion</Badge>
+      <Badge color={BADGE_COLOR.success}>Success</Badge>
+      <Badge color={BADGE_COLOR.warning}>Warning</Badge>
+    </>
+}
 ```
 
 ### Size

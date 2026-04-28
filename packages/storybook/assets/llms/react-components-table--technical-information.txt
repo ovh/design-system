@@ -6,19 +6,13 @@ React Components
 
 ---
 
-Front-end web developer course 2021
-| Person | Most interest in | Age |
-| --- | --- | --- |
-| Chris | HTML tables | 22 |
-| Dennis | Web accessibility | 45 |
-| Sarah | JavaScript frameworks | 29 |
-| Karen | Web performance | 36 |
-
 ## Anatomy
 
 ---
 
-1.  **Table**
+Table
+
+---
 
 ## Table
 
@@ -27,8 +21,15 @@ Front-end web developer course 2021
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [table attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table#attributes) . |
-| size | `TABLE_SIZE` | - | `TABLE_SIZE.md` | The size preset to use. |
-| variant | `TABLE_VARIANT` | - | `TABLE_VARIANT.default` | The variant preset to use. |
+| 
+size
+
+ | `TABLE_SIZE` | - | `TABLE_SIZE.md` | The size preset to use. |
+| 
+
+variant
+
+ | `TABLE_VARIANT` | - | `TABLE_VARIANT.default` | The variant preset to use. |
 
 ## Enums
 
@@ -84,63 +85,46 @@ Front-end web developer course 2021
 
 ### Default
 
-Front-end web developer course 2021
-| Person | Most interest in | Age |
-| --- | --- | --- |
-| Chris | HTML tables | 22 |
-| Dennis | Web accessibility | 45 |
-| Sarah | JavaScript frameworks | 29 |
-| Karen | Web performance | 36 |
-
 ```jsx
-<Table>
-  <caption>
-    Front-end web developer course 2021  </caption>
-  <thead>
-    <tr>
-      <th scope="col">
-        Person      </th>
-      <th scope="col">
-        Most interest in      </th>
-      <th scope="col">
-        Age      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">
-        Chris      </th>
-      <td>
-        HTML tables      </td>
-      <td>
-        22      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-        Dennis      </th>
-      <td>
-        Web accessibility      </td>
-      <td>
-        45      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-        Sarah      </th>
-      <td>
-        JavaScript frameworks      </td>
-      <td>
-        29      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-        Karen      </th>
-      <td>
-        Web performance      </td>
-      <td>
-        36      </td>
-    </tr>
-  </tbody>
-</Table>
+{
+  globals: {
+    imports: `import { Table } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Table>
+      <caption>
+        Front-end web developer course 2021      </caption>
+      <thead>
+      <tr>
+        <th scope="col">Person</th>
+        <th scope="col">Most interest in</th>
+        <th scope="col">Age</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Chris</th>
+        <td>HTML tables</td>
+        <td>22</td>
+      </tr>
+      <tr>
+        <th scope="row">Dennis</th>
+        <td>Web accessibility</td>
+        <td>45</td>
+      </tr>
+      <tr>
+        <th scope="row">Sarah</th>
+        <td>JavaScript frameworks</td>
+        <td>29</td>
+      </tr>
+      <tr>
+        <th scope="row">Karen</th>
+        <td>Web performance</td>
+        <td>36</td>
+      </tr>
+      </tbody>
+    </Table>
+}
 ```
 
 ### Size
@@ -170,334 +154,252 @@ Front-end web developer course 2021
 | Karen | Web performance | 36 |
 
 ```jsx
-<>
-  <Table size="sm">
-    <caption>
-      Front-end web developer course 2021    </caption>
-    <thead>
-      <tr>
-        <th scope="col">
-          Person        </th>
-        <th scope="col">
-          Most interest in        </th>
-        <th scope="col">
-          Age        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">
-          Chris        </th>
-        <td>
-          HTML tables        </td>
-        <td>
-          22        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Dennis        </th>
-        <td>
-          Web accessibility        </td>
-        <td>
-          45        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Sarah        </th>
-        <td>
-          JavaScript frameworks        </td>
-        <td>
-          29        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Karen        </th>
-        <td>
-          Web performance        </td>
-        <td>
-          36        </td>
-      </tr>
-    </tbody>
-  </Table>
-  <Table size="md">
-    <caption>
-      Front-end web developer course 2021    </caption>
-    <thead>
-      <tr>
-        <th scope="col">
-          Person        </th>
-        <th scope="col">
-          Most interest in        </th>
-        <th scope="col">
-          Age        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">
-          Chris        </th>
-        <td>
-          HTML tables        </td>
-        <td>
-          22        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Dennis        </th>
-        <td>
-          Web accessibility        </td>
-        <td>
-          45        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Sarah        </th>
-        <td>
-          JavaScript frameworks        </td>
-        <td>
-          29        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Karen        </th>
-        <td>
-          Web performance        </td>
-        <td>
-          36        </td>
-      </tr>
-    </tbody>
-  </Table>
-  <Table size="lg">
-    <caption>
-      Front-end web developer course 2021    </caption>
-    <thead>
-      <tr>
-        <th scope="col">
-          Person        </th>
-        <th scope="col">
-          Most interest in        </th>
-        <th scope="col">
-          Age        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">
-          Chris        </th>
-        <td>
-          HTML tables        </td>
-        <td>
-          22        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Dennis        </th>
-        <td>
-          Web accessibility        </td>
-        <td>
-          45        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Sarah        </th>
-        <td>
-          JavaScript frameworks        </td>
-        <td>
-          29        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Karen        </th>
-        <td>
-          Web performance        </td>
-        <td>
-          36        </td>
-      </tr>
-    </tbody>
-  </Table>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '16px'
+  }}>
+      {story()}
+    </div>],
+  globals: {
+    imports: `import { TABLE_SIZE, Table } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Table size={TABLE_SIZE.sm}>
+        <caption>
+          Front-end web developer course 2021        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </Table>
+      <Table size={TABLE_SIZE.md}>
+        <caption>
+          Front-end web developer course 2021        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </Table>
+      <Table size={TABLE_SIZE.lg}>
+        <caption>
+          Front-end web developer course 2021        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </Table>
+    </>
+}
 ```
 
 ### Variant
 
-Front-end web developer course 2021
-| Person | Most interest in | Age |
-| --- | --- | --- |
-| Chris | HTML tables | 22 |
-| Dennis | Web accessibility | 45 |
-| Sarah | JavaScript frameworks | 29 |
-| Karen | Web performance | 36 |
-
-Front-end web developer course 2021
-| Person | Most interest in | Age |
-| --- | --- | --- |
-| Chris | HTML tables | 22 |
-| Dennis | Web accessibility | 45 |
-| Sarah | JavaScript frameworks | 29 |
-| Karen | Web performance | 36 |
-
 ```jsx
-<>
-  <Table variant="default">
-    <caption>
-      Front-end web developer course 2021    </caption>
-    <thead>
-      <tr>
-        <th scope="col">
-          Person        </th>
-        <th scope="col">
-          Most interest in        </th>
-        <th scope="col">
-          Age        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">
-          Chris        </th>
-        <td>
-          HTML tables        </td>
-        <td>
-          22        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Dennis        </th>
-        <td>
-          Web accessibility        </td>
-        <td>
-          45        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Sarah        </th>
-        <td>
-          JavaScript frameworks        </td>
-        <td>
-          29        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Karen        </th>
-        <td>
-          Web performance        </td>
-        <td>
-          36        </td>
-      </tr>
-    </tbody>
-  </Table>
-  <Table variant="striped">
-    <caption>
-      Front-end web developer course 2021    </caption>
-    <thead>
-      <tr>
-        <th scope="col">
-          Person        </th>
-        <th scope="col">
-          Most interest in        </th>
-        <th scope="col">
-          Age        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">
-          Chris        </th>
-        <td>
-          HTML tables        </td>
-        <td>
-          22        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Dennis        </th>
-        <td>
-          Web accessibility        </td>
-        <td>
-          45        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Sarah        </th>
-        <td>
-          JavaScript frameworks        </td>
-        <td>
-          29        </td>
-      </tr>
-      <tr>
-        <th scope="row">
-          Karen        </th>
-        <td>
-          Web performance        </td>
-        <td>
-          36        </td>
-      </tr>
-    </tbody>
-  </Table>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '16px'
+  }}>
+      {story()}
+    </div>],
+  globals: {
+    imports: `import { TABLE_VARIANT, Table } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Table variant={TABLE_VARIANT.default}>
+        <caption>
+          Front-end web developer course 2021        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </Table>
+      <Table variant={TABLE_VARIANT.striped}>
+        <caption>
+          Front-end web developer course 2021        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </Table>
+    </>
+}
 ```
 
 ### Text component caption preset
 
-Front-end web developer course 2021
-| Person | Most interest in | Age |
-| --- | --- | --- |
-| Chris | HTML tables | 22 |
-| Dennis | Web accessibility | 45 |
-| Sarah | JavaScript frameworks | 29 |
-| Karen | Web performance | 36 |
-
 ```jsx
-<Table>
-  <caption>
-    <Text preset="caption">
-      Front-end web developer course 2021    </Text>
-  </caption>
-  <thead>
-    <tr>
-      <th scope="col">
-        Person      </th>
-      <th scope="col">
-        Most interest in      </th>
-      <th scope="col">
-        Age      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">
-        Chris      </th>
-      <td>
-        HTML tables      </td>
-      <td>
-        22      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-        Dennis      </th>
-      <td>
-        Web accessibility      </td>
-      <td>
-        45      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-        Sarah      </th>
-      <td>
-        JavaScript frameworks      </td>
-      <td>
-        29      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-        Karen      </th>
-      <td>
-        Web performance      </td>
-      <td>
-        36      </td>
-    </tr>
-  </tbody>
-</Table>
+{
+  globals: {
+    imports: `import { TEXT_PRESET, Table, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Table>
+      <caption>
+        <Text preset={TEXT_PRESET.caption}>
+          Front-end web developer course 2021        </Text>
+      </caption>
+      <thead>
+      <tr>
+        <th scope="col">Person</th>
+        <th scope="col">Most interest in</th>
+        <th scope="col">Age</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Chris</th>
+        <td>HTML tables</td>
+        <td>22</td>
+      </tr>
+      <tr>
+        <th scope="row">Dennis</th>
+        <td>Web accessibility</td>
+        <td>45</td>
+      </tr>
+      <tr>
+        <th scope="row">Sarah</th>
+        <td>JavaScript frameworks</td>
+        <td>29</td>
+      </tr>
+      <tr>
+        <th scope="row">Karen</th>
+        <td>Web performance</td>
+        <td>36</td>
+      </tr>
+      </tbody>
+    </Table>
+}
 ```
 
 ## Recipes

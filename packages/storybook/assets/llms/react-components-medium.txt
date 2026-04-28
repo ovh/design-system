@@ -3,6 +3,15 @@
 ## Examples
 
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Medium alt="NASA Computer room" height={100} src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+}
+```
+
 ### Caption
 
 ```tsx

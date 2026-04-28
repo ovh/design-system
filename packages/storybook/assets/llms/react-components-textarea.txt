@@ -51,6 +51,15 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Textarea placeholder="Textarea" />
+}
+```
+
 ### Default
 
 ```tsx

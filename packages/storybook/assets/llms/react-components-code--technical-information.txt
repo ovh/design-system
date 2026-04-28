@@ -14,7 +14,13 @@ import { Text } from '@ovhcloud/ods-react';
 
 ---
 
-1.  **Code**
+Code
+
+---
+
+```
+import { Text } from '@ovhcloud/ods-react';
+```
 
 ## Code
 
@@ -23,12 +29,50 @@ import { Text } from '@ovhcloud/ods-react';
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| canCopy | `boolean` | - | `false` | Whether the copy button is displayed. |
-| children | `string` |  | `undefined` | The code to display. |
-| highlighter | `{ language: LanguageRegistration[], theme: ThemeRegistrationAny }` | - | `{}` | Configuration of a specific code highlighter (see beneath for more details). |
-| labelCopy | `string` | - | `undefined` | The initial tooltip label on copy button. |
-| labelCopySuccess | `string` | - | `undefined` | The tooltip label on copy button after a successful copy. |
-| onCopy | `() => void` | - | `undefined` | Callback fired when the text is copied. |
+| 
+canCopy
+
+ | `boolean` | - | `false` | Whether the copy button is displayed. |
+| 
+
+children
+
+ | `string` |  | `undefined` | The code to display. |
+| 
+
+highlighter
+
+ | `object` | - | `{}` | Configuration of a specific code highlighter (see beneath for more details). |
+| 
+
+language
+
+ | `Array` |  | `-` | The programming language displayed. |
+| 
+
+theme
+
+ | `ThemeRegistrationAny` |  | `-` | The theme to apply to the code. |
+| 
+
+labelCopy
+
+ | `string` | - | `undefined` | The initial tooltip label on copy button. |
+| 
+
+labelCopySuccess
+
+ | `string` | - | `undefined` | The tooltip label on copy button after a successful copy. |
+| 
+
+onCopy
+
+ | `() => void` | - | `undefined` | Callback fired when the text is copied. |
+| 
+
+positionerStyle
+
+ | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 
 ## Css Variables
 
@@ -37,6 +81,12 @@ import { Text } from '@ovhcloud/ods-react';
 | Token | Value | Preview |
 | --- | --- | --- |
 | --ods-code-border-radius | calc(var(--ods-theme-border-radius) / 2) | 
+ |
+| --ods-code-padding-horizontal | calc(var(--ods-theme-padding-horizontal) * 1.5) | 
+
+ |
+| --ods-code-padding-vertical | calc(var(--ods-theme-padding-vertical) * 1.5) | 
+
  |
 | --ods-code-primary-color | #fff | 
 
@@ -106,34 +156,32 @@ console.log('Hello world');
 
 ### Multiline
 
-```
-function isTargetInElement(event, element) {
-  if (!element) {
-    return false;
-  }
-
-    return element.contains(event.target) || event.composedPath().includes(element);
-  }
-```
-
 ```jsx
-<Code>
-  {`function isTargetInElement(event, element) {
-    if (!element) {      return false;    }  
-      return element.contains(event.target) || event.composedPath().includes(element);    }`}
-</Code>
+{
+  globals: {
+    imports: `import { Code } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Code>
+      {`function isTargetInElement(event, element) {
+  if (!element) {    return false;  }
+    return element.contains(event.target) || event.composedPath().includes(element);  }`}
+    </Code>
+}
 ```
 
 ### With copy button enabled
 
-```
-import { Text } from '@ovhcloud/ods-react';
-```
-
 ```jsx
-<Code canCopy>
-  {`import { Text } from '@ovhcloud/ods-react';`}
-</Code>
+{
+  globals: {
+    imports: `import { Code } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Code canCopy>
+      {`import { Text } from '@ovhcloud/ods-react';`}
+    </Code>
+}
 ```
 
 ### Custom labels

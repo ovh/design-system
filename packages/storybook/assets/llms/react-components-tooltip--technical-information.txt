@@ -10,9 +10,13 @@ React Components
 
 ---
 
-1.  **Tooltip**
-2.  **Tooltip Content**
-3.  **Tooltip Trigger**
+Tooltip
+
+TooltipContent
+
+TooltipTrigger
+
+---
 
 ## Tooltip
 
@@ -20,12 +24,60 @@ React Components
 
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
-| closeDelay | `number` | - | `undefined` | Number of milliseconds before closing the tooltip. |
-| onOpenChange | `(detail: TooltipOpenChangeDetail) => void` | - | `undefined` | Callback fired when the tooltip open state changes. |
-| open | `boolean` | - | `undefined` | The controlled open state of the tooltip. |
-| openDelay | `number` | - | `undefined` | Number of milliseconds before opening the tooltip. |
-| position | `TOOLTIP_POSITION` | - | `undefined` | The tooltip position around the trigger. |
-| positionerStyle | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+| 
+closeDelay
+
+ | `number` | - | `undefined` | Number of milliseconds before closing the tooltip. |
+| 
+
+onOpenChange
+
+ | `(detail: TooltipOpenChangeDetail) => void` | - | `undefined` | Callback fired when the tooltip open state changes. |
+| 
+
+open
+
+ | `boolean` | - | `undefined` | The controlled open state of the tooltip. |
+| 
+
+openDelay
+
+ | `number` | - | `undefined` | Number of milliseconds before opening the tooltip. |
+| 
+
+overlayConfig
+
+ | `object` | - | `undefined` | The overlay configuration. |
+| 
+
+flip
+
+ | `boolean` | - | `-` | Whether to flip the position. |
+| 
+
+gutter
+
+ | `number` | - | `-` | The main axis offset or gap between the reference and floating elements. |
+| 
+
+position
+
+ | `TOOLTIP_POSITION` | - | `-` | The tooltip position around the trigger. |
+| 
+
+sameWidth
+
+ | `boolean` | - | `-` | Whether to make the floating element same width as the reference element. |
+| 
+
+positionDeprecated
+
+ | `TOOLTIP_POSITION` | - | `undefined` | The tooltip position around the trigger. |
+| 
+
+positionerStyle
+
+ | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 
 ## TooltipContent
 
@@ -34,8 +86,15 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| createPortal | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
-| withArrow | `boolean` | - | `false` | Whether the component displays an arrow pointing to the trigger. |
+| 
+createPortal
+
+ | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
+| 
+
+withArrow
+
+ | `boolean` | - | `false` | Whether the component displays an arrow pointing to the trigger. |
 
 ## TooltipTrigger
 
@@ -44,7 +103,10 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
-| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| 
+asChild
+
+ | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
 
 ## Enums
 
@@ -155,50 +217,66 @@ const [isOpen, setIsOpen] = useState(false);
   },
   tags: ['!dev'],
   render: ({}) => <>
-      <Tooltip position="top-start">
+      <Tooltip overlayConfig={{
+      position: 'top-start'
+    }}>
         <TooltipTrigger>
           Top Left        </TooltipTrigger>
         <TooltipContent withArrow>
           Top Left tooltip        </TooltipContent>
       </Tooltip>
-      <Tooltip position="top">
+      <Tooltip overlayConfig={{
+      position: 'top'
+    }}>
         <TooltipTrigger>
           Top        </TooltipTrigger>
         <TooltipContent withArrow>
           Top tooltip        </TooltipContent>
       </Tooltip>
-      <Tooltip position="top-end">
+      <Tooltip overlayConfig={{
+      position: 'top-end'
+    }}>
         <TooltipTrigger>
           Top Right        </TooltipTrigger>
         <TooltipContent withArrow>
           Top Right tooltip        </TooltipContent>
       </Tooltip>
-      <Tooltip position="left">
+      <Tooltip overlayConfig={{
+      position: 'left'
+    }}>
         <TooltipTrigger>
           Middle Left        </TooltipTrigger>
         <TooltipContent withArrow>
           Middle Left tooltip        </TooltipContent>
       </Tooltip>
       <div />
-      <Tooltip position="right">
+      <Tooltip overlayConfig={{
+      position: 'right'
+    }}>
         <TooltipTrigger>
           Middle Right        </TooltipTrigger>
         <TooltipContent withArrow>
           Middle Right tooltip        </TooltipContent>
       </Tooltip>
-      <Tooltip position="bottom-start">
+      <Tooltip overlayConfig={{
+      position: 'bottom-start'
+    }}>
         <TooltipTrigger>
           Bottom Left        </TooltipTrigger>
         <TooltipContent withArrow>
           Bottom Left tooltip        </TooltipContent>
       </Tooltip>
-      <Tooltip position="bottom">
+      <Tooltip overlayConfig={{
+      position: 'bottom'
+    }}>
         <TooltipTrigger>
           Bottom        </TooltipTrigger>
         <TooltipContent withArrow>
           Bottom tooltip        </TooltipContent>
       </Tooltip>
-      <Tooltip position="bottom-end">
+      <Tooltip overlayConfig={{
+      position: 'bottom-end'
+    }}>
         <TooltipTrigger>
           Bottom Right        </TooltipTrigger>
         <TooltipContent withArrow>
@@ -238,7 +316,9 @@ const [isOpen, setIsOpen] = useState(false);
       </Tooltip>
       <br />
       <span>Custom Z-axis order:</span>
-      <Tooltip open position={TOOLTIP_POSITION.bottom} positionerStyle={{
+      <Tooltip open overlayConfig={{
+      position: TOOLTIP_POSITION.bottom
+    }} positionerStyle={{
       zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'
     }}>
         <TooltipTrigger asChild>
@@ -249,7 +329,9 @@ const [isOpen, setIsOpen] = useState(false);
         <TooltipContent withArrow>
           Front        </TooltipContent>
       </Tooltip>
-      <Tooltip open position={TOOLTIP_POSITION.bottom}>
+      <Tooltip open overlayConfig={{
+      position: TOOLTIP_POSITION.bottom
+    }}>
         <TooltipTrigger asChild>
           <Icon name={ICON_NAME.circleInfo} style={{
           fontSize: '24px'

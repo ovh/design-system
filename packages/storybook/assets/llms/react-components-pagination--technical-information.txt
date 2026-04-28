@@ -10,7 +10,15 @@ React Components
 
 ---
 
-1.  **Pagination**
+Pagination
+
+PaginationPageSelector
+
+PaginationPageSizeSelector
+
+PaginationPages
+
+---
 
 ## Pagination
 
@@ -19,18 +27,102 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [nav attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/nav#attributes) . |
-| defaultPage | `number` | - | `undefined` | The initial active page. Use when you don't need to control the active page of the pagination. |
-| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
-| labelTooltipNext | `string` | - | `undefined` | The tooltip label on the "next page" button. |
-| labelTooltipPrev | `string` | - | `undefined` | The tooltip label on the "previous page" button. |
-| onPageChange | `(detail: PaginationPageChangeDetail) => void` | - | `undefined` | Callback fired when the active page changes. |
-| onPageSizeChange | `(detail: PaginationPageSizeChangeDetail) => void` | - | `undefined` | Callback fired when the page size changes. |
-| page | `number` | - | `undefined` | The controlled active page |
-| pageSize | `number` | - | `10` | The number of items per page. |
-| renderTotalItemsLabel | `(params: { totalItems: number }) => string | number` | - | `` ({ totalItems }) => `of ${totalItems} results` `` | Format the label displayed near the per-page selector. |
-| siblingCount | `number` | - | `undefined` | The number of pages to show beside active page. |
-| totalItems | `number` |  | `undefined` | The total number of items. |
-| withPageSizeSelector | `boolean` | - | `undefined` | Whether the per-page selector is displayed. |
+| 
+defaultPage
+
+ | `number` | - | `undefined` | The initial active page. Use when you don't need to control the active page of the pagination. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+labelTooltipNext
+
+ | `string` | - | `undefined` | The tooltip label on the "next page" button. |
+| 
+
+labelTooltipPrev
+
+ | `string` | - | `undefined` | The tooltip label on the "previous page" button. |
+| 
+
+onPageChange
+
+ | `(detail: PaginationPageChangeDetail) => void` | - | `undefined` | Callback fired when the active page changes. |
+| 
+
+onPageSizeChange
+
+ | `(detail: PaginationPageSizeChangeDetail) => void` | - | `undefined` | Callback fired when the page size changes. |
+| 
+
+page
+
+ | `number` | - | `undefined` | The controlled active page |
+| 
+
+pageSize
+
+ | `number` | - | `undefined` | The number of items per page. |
+| 
+
+renderTotalItemsLabelDeprecated
+
+ | `(params: { totalItems: number }) => string | number` | - | `'of ${totalItems} results'` | Format the label displayed near the per-page selector. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector |
+| 
+
+siblingCount
+
+ | `number` | - | `undefined` | The number of pages to show beside active page. |
+| 
+
+totalItems
+
+ | `number` |  | `undefined` | The total number of items. |
+| 
+
+withPageSizeSelectorDeprecated
+
+ | `boolean` | - | `undefined` | Whether the per-page selector is displayed. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector |
+
+## PaginationPageSelector
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [form attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form#attributes) . |
+| 
+label
+
+ | `ReactNode` | - | `'Go to page'` | The label displayed near the go-to-page input. |
+| 
+
+submitLabel
+
+ | `ReactNode` | - | `'Go'` | The label displayed in the go-to-page submit button. |
+
+## PaginationPageSizeSelector
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| 
+label
+
+ | `ReactNode` | - | `'of ${totalItems} results'` | The label displayed near the per-page selector. |
+
+## PaginationPages
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
 
 ## Enums
 
@@ -57,6 +149,15 @@ React Components
 
 -   `pageSize: number`
 
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-pagination-page-selector-input-width | 45px | 
+ |
+
 ## Examples
 
 ---
@@ -66,32 +167,29 @@ React Components
 ```jsx
 {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
   },
   tags: ['!dev'],
-  render: ({}) => <Pagination totalItems={5000} />
+  render: ({}) => <Pagination totalItems={5000}>
+      <PaginationPages />
+    </Pagination>
 }
 ```
 
 ### Controlled
 
-```jsx
-const [page, setPage] = useState(1);
-  function handlePageChange({
-    page  }: PaginationPageChangeDetail) {
-    setPage(page);
-  }
-  return <Pagination onPageChange={handlePageChange} page={page} totalItems={500} />;
-}
-```
-
 ### Disabled
 
 ```jsx
-<Pagination
-  disabled
-  totalItems={500}
-/>
+{
+  globals: {
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination disabled totalItems={500}>
+      <PaginationPages />
+    </Pagination>
+}
 ```
 
 ### Items per page
@@ -99,10 +197,12 @@ const [page, setPage] = useState(1);
 ```jsx
 {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
   },
   tags: ['!dev'],
-  render: ({}) => <Pagination pageSize={25} totalItems={500} />
+  render: ({}) => <Pagination pageSize={25} totalItems={500}>
+      <PaginationPages />
+    </Pagination>
 }
 ```
 
@@ -111,35 +211,42 @@ const [page, setPage] = useState(1);
 ```jsx
 {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
   },
   tags: ['!dev'],
-  render: ({}) => <Pagination defaultPage={5} siblingCount={2} totalItems={500} />
+  render: ({}) => <Pagination defaultPage={5} siblingCount={2} totalItems={500}>
+      <PaginationPages />
+    </Pagination>
 }
 ```
 
-### With labels
+### With tooltip labels
 
 ```jsx
 {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
   },
   tags: ['!dev'],
-  render: ({}) => <Pagination labelTooltipPrev={'Go to previous page'} labelTooltipNext={'Go to next page'} totalItems={500} />
+  render: ({}) => <Pagination labelTooltipPrev="Go to previous page" labelTooltipNext="Go to next page" totalItems={500}>
+      <PaginationPages />
+    </Pagination>
 }
 ```
 
-### With total items
-
-102550100300
-
-of 500 results
+### With page size selection
 
 ```jsx
-<Pagination renderTotalItemsLabel={({
-  totalItems
-}) => `of ${totalItems} results`} totalItems={500} withPageSizeSelector />
+{
+  globals: {
+    imports: `import { Pagination, PaginationPageSizeSelector, PaginationPages } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination totalItems={500}>
+      <PaginationPageSizeSelector />
+      <PaginationPages />
+    </Pagination>
+}
 ```
 
 ## Recipes
@@ -305,3 +412,96 @@ Actions
 102550100300
 
 of 0 results
+
+Data Grid With Query Filter
+
+| 
+Instance ID
+
+ | 
+
+Location
+
+ | 
+
+Model
+
+ | 
+
+Image
+
+ | 
+
+Backup Logic
+
+ | 
+
+Running since
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |

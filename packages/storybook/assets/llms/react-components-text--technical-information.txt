@@ -6,13 +6,13 @@ React Components
 
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
 ## Anatomy
 
 ---
 
-1.  **Text**
+Text
+
+---
 
 ## Text
 
@@ -21,9 +21,20 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [text elements attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes) . |
-| as | `string` | - | `undefined` | Pass a HTML tag you may want to use instead of the preset one. Useful for example to apply heading style to a non-heading element. |
-| disabled | `boolean` | - | `undefined` | Whether the text is displayed in a disabled context. |
-| preset | `TEXT_PRESET` | - | `TEXT_PRESET.paragraph` | The text preset to use. |
+| 
+as
+
+ | `string` | - | `undefined` | Pass a HTML tag you may want to use instead of the preset one. Useful for example to apply heading style to a non-heading element. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the text is displayed in a disabled context. |
+| 
+
+preset
+
+ | `TEXT_PRESET` | - | `TEXT_PRESET.paragraph` | The text preset to use. |
 
 ## Enums
 
@@ -31,6 +42,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 ### TEXT_PRESET
 
+-   blockquote =`"blockquote"`
 -   caption =`"caption"`
 -   code =`"code"`
 -   heading1 =`"heading-1"`
@@ -50,12 +62,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 ### Default
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
 ```jsx
-<Text>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</Text>
+{
+  globals: {
+    imports: `import { Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Text>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.    </Text>
+}
 ```
 
 ### Preset
@@ -64,58 +79,28 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 For actual `<caption>` (used in a table) or `<figcaption>` (image), use the native tag using either an OdsText inside of it or the Saas mixin.
 
-Caption  
-`Code`  
-Label
-
-Paragraph
-
-Small  
-Span  
-
-# Heading-1
-
-## Heading-2
-
-### Heading-3
-
-#### Heading-4
-
-##### Heading-5
-
-###### Heading-6
-
 ```jsx
-<>
-  <Text preset="caption">
-    Caption  </Text>
-  <br />
-  <Text preset="code">
-    Code  </Text>
-  <br />
-  <Text preset="label">
-    Label  </Text>
-  <Text preset="paragraph">
-    Paragraph  </Text>
-  <Text preset="small">
-    Small  </Text>
-  <br />
-  <Text preset="span">
-    Span  </Text>
-  <br />
-  <Text preset="heading-1">
-    Heading-1  </Text>
-  <Text preset="heading-2">
-    Heading-2  </Text>
-  <Text preset="heading-3">
-    Heading-3  </Text>
-  <Text preset="heading-4">
-    Heading-4  </Text>
-  <Text preset="heading-5">
-    Heading-5  </Text>
-  <Text preset="heading-6">
-    Heading-6  </Text>
-</>
+{
+  globals: {
+    imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Text preset={TEXT_PRESET.blockquote}>Blockquote</Text>
+      <Text preset={TEXT_PRESET.caption}>Caption</Text><br />
+      <Text preset={TEXT_PRESET.code}>Code</Text><br />
+      <Text preset={TEXT_PRESET.label}>Label</Text>
+      <Text preset={TEXT_PRESET.paragraph}>Paragraph</Text>
+      <Text preset={TEXT_PRESET.small}>Small</Text><br />
+      <Text preset={TEXT_PRESET.span}>Span</Text><br />
+      <Text preset={TEXT_PRESET.heading1}>Heading-1</Text>
+      <Text preset={TEXT_PRESET.heading2}>Heading-2</Text>
+      <Text preset={TEXT_PRESET.heading3}>Heading-3</Text>
+      <Text preset={TEXT_PRESET.heading4}>Heading-4</Text>
+      <Text preset={TEXT_PRESET.heading5}>Heading-5</Text>
+      <Text preset={TEXT_PRESET.heading6}>Heading-6</Text>
+    </>
+}
 ```
 
 ### Disabled
@@ -132,11 +117,6 @@ Span
 ```
 
 ### Caption preset in <table>
-
-My table title
-| Person | Age |
-| --- | --- |
-| Chris | 22 |
 
 ```jsx
 {
@@ -206,6 +186,12 @@ My table title
 ## Recipes
 
 ---
+
+Chat
+
+Assistant2:59 PM
+
+Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 
 Config Tile
 

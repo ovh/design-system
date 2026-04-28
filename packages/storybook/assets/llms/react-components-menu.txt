@@ -73,6 +73,35 @@
 ## Examples
 
 
+### Anatomy Tech
+
+```tsx
+{
+  parameters: {
+    layout: 'start'
+  },
+  tags: ['!dev'],
+  render: ({}) => <Menu open overlayConfig={{
+    flip: false
+  }}>
+      <MenuTrigger asChild>
+        <Button>
+          Menu trigger
+        </Button>
+      </MenuTrigger>
+
+      <MenuContent createPortal={false}>
+        <MenuGroup>
+          <MenuGroupLabel>My account</MenuGroupLabel>
+          <MenuItem value='profile'>Profile</MenuItem>
+          <MenuItem value='settings'>Settings</MenuItem>
+        </MenuGroup>
+        <MenuItem value='logout'>Logout</MenuItem>
+      </MenuContent>
+    </Menu>
+}
+```
+
 ### Controlled
 
 ```tsx
@@ -142,6 +171,15 @@ import { useState } from 'react';`
 ```tsx
 {
   argTypes: orderControls({
+    gutter: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'number'
+        }
+      },
+      control: 'number'
+    },
     position: {
       control: 'select',
       options: MENU_POSITIONS,
@@ -150,6 +188,14 @@ import { useState } from 'react';`
         type: {
           summary: 'MENU_POSITION'
         }
+      }
+    },
+    sameWidth: {
+      table: {
+        category: CONTROL_CATEGORY.design
+      },
+      control: {
+        type: 'boolean'
       }
     },
     triggerLabel: {
@@ -173,12 +219,17 @@ import { useState } from 'react';`
     triggerLabel: 'Open menu',
     withArrow: false
   },
-  render: (arg: Partial<DemoArg>) => <Menu position={arg.position}>
+  render: (arg: Partial<DemoArg>) => <Menu overlayConfig={{
+    gutter: arg.gutter,
+    position: arg.position,
+    sameWidth: arg.sameWidth
+  }}>
       <MenuTrigger asChild>
         <Button>
           {arg.triggerLabel}
         </Button>
       </MenuTrigger>
+
       <MenuContent withArrow={arg.withArrow}>
         <MenuItem value="profile">Profile</MenuItem>
         <MenuItem value="settings">Settings</MenuItem>

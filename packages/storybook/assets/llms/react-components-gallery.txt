@@ -2,6 +2,6 @@ React Components
 
 # Gallery
 
-Drag & drop a file 
+Checkbox tile
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Additional information

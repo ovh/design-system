@@ -10,9 +10,13 @@ React Components
 
 ---
 
-1.  **Select**
-2.  **Select Control**
-3.  **Select Content**
+Select
+
+SelectContent
+
+SelectControl
+
+---
 
 ## Select
 
@@ -21,18 +25,95 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| defaultValue | `string | string[]` | - | `undefined` | The initial selected value(s). Use when you don't need to control the selected value(s) of the select. |
-| disabled | `boolean` | - | `false` | Whether the component is disabled. |
-| fitControlWidth | `boolean` | - | `true` | Whether the dropdown width should stay the same as the input. |
-| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
-| items | `SelectItem[]` | - | `[]` | The list of items |
-| multiple | `boolean | 'merge'` | - | `false` | Allows multiple selection and define how it should be rendered. |
-| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
-| onValueChange | `(detail: SelectValueChangeDetail) => void` | - | `undefined` | Callback fired when the value(s) changes. |
-| positionerStyle | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
-| readOnly | `boolean` | - | `false` | Whether the component is readonly. |
-| required | `boolean` | - | `undefined` | Whether the component is required. |
-| value | `string[]` | - | `undefined` | The controlled selected value(s). |
+| 
+defaultOpen
+
+ | `boolean` | - | `undefined` | The initial open state of the select. Use when you don't need to control the open state of the select. |
+| 
+
+defaultValue
+
+ | `string | string[]` | - | `undefined` | The initial selected value(s). Use when you don't need to control the selected value(s) of the select. |
+| 
+
+disabled
+
+ | `boolean` | - | `false` | Whether the component is disabled. |
+| 
+
+fitControlWidthDeprecated
+
+ | `boolean` | - | `true` | Use overlayConfig.sameWidth instead |
+| 
+
+invalid
+
+ | `boolean` | - | `undefined` | Whether the component is in error state. |
+| 
+
+items
+
+ | `SelectItem[]` | - | `[]` | The list of items |
+| 
+
+multiple
+
+ | `boolean | 'merge'` | - | `false` | Allows multiple selection and define how it should be rendered. |
+| 
+
+name
+
+ | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| 
+
+onOpenChange
+
+ | `(detail: SelectOpenChangeDetail) => void` | - | `undefined` | Callback fired when the select open state changes. |
+| 
+
+onValueChange
+
+ | `(detail: SelectValueChangeDetail) => void` | - | `undefined` | Callback fired when the value(s) changes. |
+| 
+
+open
+
+ | `boolean` | - | `undefined` | The controlled open state of the select. |
+| 
+
+overlayConfig
+
+ | `object` | - | `undefined` | The overlay configuration. |
+| 
+
+flip
+
+ | `boolean` | - | `-` | Whether to flip the position. |
+| 
+
+sameWidth
+
+ | `boolean` | - | `-` | Whether to make the floating element same width as the reference element. |
+| 
+
+positionerStyle
+
+ | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+| 
+
+readOnly
+
+ | `boolean` | - | `false` | Whether the component is readonly. |
+| 
+
+required
+
+ | `boolean` | - | `undefined` | Whether the component is required. |
+| 
+
+value
+
+ | `string[]` | - | `undefined` | The controlled selected value(s). |
 
 ## SelectContent
 
@@ -41,9 +122,20 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| createPortal | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
-| customGroupRenderer | `(arg: SelectCustomGroupRendererArg) => JSX.Element` | - | `undefined` | Custom render for each group item. |
-| customOptionRenderer | `(arg: SelectCustomOptionRendererArg) => JSX.Element` | - | `undefined` | Custom render for each option item. |
+| 
+createPortal
+
+ | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
+| 
+
+customGroupRenderer
+
+ | `(arg: SelectCustomGroupRendererArg) => JSX.Element` | - | `undefined` | Custom render for each group item. |
+| 
+
+customOptionRenderer
+
+ | `(arg: SelectCustomOptionRendererArg) => JSX.Element` | - | `undefined` | Custom render for each option item. |
 
 ## SelectControl
 
@@ -52,9 +144,20 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
-| customItemRenderer | `(arg: SelectCustomItemRendererArg) => JSX.Element` | - | `undefined` | Custom render for the selected item(s). |
-| multipleSelectionLabel | `string` | - | `undefined` | Label displayed on multiple selection when in "merge" mode. |
-| placeholder | `string` | - | `undefined` | The placeholder text to display in the select. |
+| 
+customItemRenderer
+
+ | `(arg: SelectCustomItemRendererArg) => JSX.Element` | - | `undefined` | Custom render for the selected item(s). |
+| 
+
+multipleSelectionLabel
+
+ | `string` | - | `undefined` | Label displayed on multiple selection when in "merge" mode. |
+| 
+
+placeholder
+
+ | `string` | - | `undefined` | The placeholder text to display in the select. |
 
 ## Interfaces
 
@@ -82,6 +185,10 @@ React Components
 -   `disabled?: boolean`
 -   `label: string`
 -   `options: SelectOptionItem[]`
+
+### SelectOpenChangeDetail
+
+-   `open: boolean`
 
 ### SelectOptionItem<T>
 
@@ -200,14 +307,6 @@ React Components
 ```
 
 ### Multiple Selection
-
-Default multiple selection
-
-DogCatHamsterParrotSpiderGoldfish
-
-Merged multiple selection
-
-DogCatHamsterParrotSpiderGoldfish
 
 ```jsx
 {

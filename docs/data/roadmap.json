@@ -4,69 +4,6 @@
       "components": [
         {
           "description": "New component",
-          "label": "Data Table - MVP",
-          "range": [
-            0,
-            1
-          ]
-        },
-        {
-          "description": "New component",
-          "label": "Avatar",
-          "range": [
-            0,
-            0.4
-          ]
-        },
-        {
-          "description": "New component",
-          "label": "Message Bubble",
-          "range": [
-            0,
-            0.4
-          ]
-        },
-        {
-          "description": "New component",
-          "label": "Prompt Input",
-          "range": [
-            0.4,
-            0.8
-          ]
-        },
-        {
-          "description": "New component",
-          "label": "Query Filter",
-          "range": [
-            0.5,
-            1
-          ]
-        },
-        {
-          "label": "File Thumbnail",
-          "description": "New Component",
-          "range": [
-            0,
-            0.4
-          ]
-        }
-      ],
-      "recipes": [
-        {
-          "description": "Price update based on quantity",
-          "label": "Config Tile - v2",
-          "range": [
-            0.6,
-            1
-          ]
-        }
-      ],
-      "others": []
-    },
-    "n+2": {
-      "components": [
-        {
-          "description": "New component",
           "label": "Data Table - v2",
           "range": [
             0,
@@ -77,32 +14,8 @@
           "description": "New component",
           "label": "Command",
           "range": [
-            0.4,
-            0.8
-          ]
-        },
-        {
-          "label": "Progress Tracker",
-          "description": "New Component",
-          "range": [
-            0.6,
-            1
-          ]
-        },
-        {
-          "label": "Timeline",
-          "description": "New Component",
-          "range": [
-            0.6,
-            1
-          ]
-        },
-        {
-          "label": "Markdown",
-          "description": "New Component",
-          "range": [
             0,
-            0.4
+            1
           ]
         }
       ],
@@ -112,50 +25,55 @@
           "label": "Data Toolbar",
           "range": [
             0,
-            0.5
+            1
           ]
         }
       ],
-      "others": [
-        {
-          "description": "",
-          "label": "Time helper",
-          "range": [
-            0,
-            0.5
-          ]
-        }
-      ]
+      "others": []
     },
-    "n+3": {
+    "n2": {
       "components": [
         {
-          "label": "Tags List",
+          "label": "Progress Tracker",
           "description": "New Component",
           "range": [
-            0.6,
+            0,
             1
           ]
         },
         {
-          "label": "Code Editor",
+          "label": "Timeline",
           "description": "New Component",
           "range": [
             0,
-            0.4
+            1
           ]
         }
       ],
       "recipes": [
         {
-          "label": "New recipes",
-          "description": "",
+          "description": "New recipe",
+          "label": "Password creator",
           "range": [
             0,
             1
           ]
         }
       ],
+      "others": []
+    },
+    "beyond": {
+      "components": [
+        {
+          "label": "Code editor",
+          "description": "New Component",
+          "range": [
+            0,
+            1
+          ]
+        }
+      ],
+      "recipes": [],
       "others": []
     }
   },
@@ -165,12 +83,12 @@
       "value": "next"
     },
     {
-      "label": "Release n+2",
-      "value": "n+2"
+      "label": "N+2",
+      "value": "n2"
     },
     {
       "label": "Beyond",
-      "value": "n+3"
+      "value": "beyond"
     }
   ],
   "sections": [

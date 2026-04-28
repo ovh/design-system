@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 import fs from 'fs/promises';
+import { existsSync } from 'node:fs';
 import path from 'path';
 
 const README_FILE = 'README.md';
@@ -84,7 +85,7 @@ async function getImportedOdsComponents(src) {
 
 async function listComponents(src) {
   return (await fs.readdir(src, { withFileTypes: true }))
-    .filter((dirent) => dirent.isDirectory())
+    .filter((dirent) => dirent.isDirectory() && existsSync(path.resolve(src, dirent.name, 'package.json')))
     .map((dirent) => dirent.name);
 }
 

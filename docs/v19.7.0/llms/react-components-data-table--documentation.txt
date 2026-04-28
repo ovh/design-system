@@ -1,0 +1,378 @@
+React Components
+
+# Data Table
+
+| 
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+Email
+
+ | 
+
+Role
+
+ |
+| --- | --- | --- | --- | --- |
+| John | Doe | 30 | john.doe@example.com | Admin |
+| Jane | Smith | 25 | jane.smith@example.com | User |
+| Bob | Johnson | 35 | bob.johnson@example.com | Manager |
+
+## Overview
+
+---
+
+The `Data Table` component provides a structured and flexible way to display, explore, and interact with tabular data.
+
+It is designed as a core component, intended to support a wide range of use cases while remaining composable, scalable, andproduct-agnostic.
+
+<table class="_table_e3iru_2 _table--md_e3iru_59 _table--striped_e3iru_167 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>DataTable</td></tr><tr><th scope="row">Also known as</th><td>-</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/branch/KKF2yPJ1fGICU7z9usG7Pl/ODS---UI-Kit?node-id=16269-23952&amp;p=f&amp;t=AvtT3fJhAIPZ0qbf-0" target="_blank">Design <span class="_icon_g76et_2 _icon--external-link_g76et_256" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/data-table" target="_blank">Github<span class="_icon_g76et_2 _icon--external-link_g76et_256" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+The `Data Table` is used to present collections of structured data and enable users to:
+
+-   Browse and scan information efficiently.
+-   Sort and organize data.
+-   Select one or multiple rows.
+-   Perform actions on individual row or in bulk.
+-   Interact with large datasets through pagination, search, and refresh.
+
+Typical use cases include:
+
+-   Administration panels.
+-   Management interfaces.
+-   Reporting and operational dashboards.
+-   Configuration screens.
+
+### Data Table vs Table
+
+`Table`:
+
+-   Static data display.
+-   Limited or no interaction.
+-   Often used for simple layouts or read-only content.
+
+`Data Table`:
+
+-   Interactive and stateful component.
+-   Supports sorting, selection, and actions.
+-   Integrated with application logic through composition.
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use a Data Table for managing collections of structured data |
+| - Use composition to inject business-specific actions and logic |
+| - Combine selection with bulk actions for efficiency |
+
+| ❌ Don't |
+| --- |
+| - Use a Data Table for simple, static content |
+| - Overload the table with too many visible actions |
+| - Trigger destructive actions without confirmation |
+| - Assume all rows behave identically in bulk operations |
+
+### Best Practices in Context
+
+1.  **Data Table**
+2.  **Header cell**
+3.  **Body cell**
+4.  **Column sorting**
+
+## Placement
+
+---
+
+The `Data Table` is typically placed as the main content of a page or section.
+
+It should:
+
+-   Expand horizontally to fit its container.
+-   Manage internal scrolling when necessary.
+-   Not overflow or break surrounding layouts.
+
+## Behavior
+
+---
+
+### Data & State Ownership
+
+The `Data Table` does not own data.
+
+Data fetching, transformation, and persistence are handled by the integrator.
+
+The component is responsible for rendering the provided dataset and reflecting externally managed states such as loading, sorting, selection, and pagination.
+
+The integrator is responsible for:
+
+-   Providing the data to display.
+-   Handling data fetching and refreshing.
+-   Managing all business rules and permissions.
+-   Synchronizing external state with the `Data Table` visual state.
+
+### Row Selection
+
+The `Data Table` supports row selection via checkboxes or radio buttons.
+
+The `Data Table` is responsible for:
+
+-   Rendering selection controls.
+-   Handling user interaction for selecting and deselecting rows.
+-   Visually reflecting the current selection state.
+-   Exposing selection changes to the integrator.
+
+The integrator is responsible for:
+
+-   Storing and managing the selection state.
+-   Defining whether selection is single or multiple.
+-   Deciding how selection behaves accross pagination or refresh.
+
+Disabled rows are not selectable.
+
+### Column Sorting
+
+The `Data Table` supports column-based sorting through interactions with column headers.
+
+The `Data Table` is responsible for:
+
+-   Rendering sortable and non-sortable column headers.
+-   Managing user interactions on sortable headers.
+-   Displaying visual indicators for sorting state (unsorted, ascending, descending).
+
+The integrator is reponsible for:
+
+-   Implemeting the sorting logic (if done server-side).
+-   Synchronizing the active sorting state with the `Data Table`.
+
+The `Data Table` can support either single-column sorting, where only one column can be sorted at a time, or multi-column sorting, where users can sort by multiple columns simultaneously.
+
+Non-sortable columns don't react to sorting interactions.
+
+### Pinned columns
+
+The `Data Table` supports pinning columns to keep them visible during horizontal scrolling.
+
+The `Data Table` is responsible for:
+
+-   Maintaining the pinned column position during scroll.
+-   Providing a visual separation between pinned and scrollable columns.
+
+The integrator is responsible for:
+
+-   Defining which columns are pinned.
+-   Ensuring that pinned columns are used appropriately (e.g. selection or actions).
+
+Pinned columns remain fully interactive and accessible.
+
+### Disabled Rows
+
+The `Data Table` supports disabled rows to represent non-interactive or restricted items.
+
+The `Data Table` is responsible for:
+
+-   Rendering disabled rows with a distinct visual style.
+-   Preventing interaction with disabled rows.
+
+The integrator is responsible for:
+
+-   Defining which rows are disabled and why.
+-   Optionnaly providing explanatory messaging (e.g. tooltip).
+
+Disabled rows must not participate in selection or bulk actions.
+
+### Sticky Header
+
+The `Data Table` may support sticky headers to maintain access to key controls during vertical scrolling.
+
+The `Data Table` is responsible for:
+
+-   Keeping the header visually fixed within the table container.
+
+The integrator is responsible for:
+
+-   Deciding whether sticky behavior is enabled.
+-   Ensuring that injected content (actions, menus, tooltips) behave correctly within the sticky area.
+
+Sticky behavior must not interfere with interactions such as sorting, tooltips, or menus.
+
+### Row-level Actions (Ellipsis Menu)
+
+Rows may expose contextual actions via an ellipsis menu.
+
+The integrator is responsible for:
+
+-   Rendering the menu trigger.
+-   Providing the menu content.
+-   Defining actions behavior and permissions.
+-   Managing disabled or loading states per action.
+
+### Global Table Actions
+
+A dedicated area associated with the `Data Table` for global actions, intended to host at least one primary action (e.g., "Create", "Add", "Import"), but may contain additional actions if required by the product context.
+
+The integrator is responsible for:
+
+-   Defining the actions themselves.
+-   Handling their behavior, permissions, and side effects.
+-   Supporting disabled and loading visual states.
+
+### Bulk actions
+
+Bulk actions are actions applied to a set of selected rows.
+
+The integrator is responsible for:
+
+-   Rendering the bulk actions area when one or more rows are selected.
+-   Defining bulk actions and their behavior.
+-   Handling business rules and permissions.
+-   Determining the eligibility of selected rows for each action.
+
+When a selection includes rows with mixed eligibility, the `Data Table` must support integrator-defined strategies such as disabling the action, allowing partial execution with confirmation, or dinamycally adjusting available actions.
+
+### Header tooltips
+
+Displaying tooltips attached to column headers.
+
+The integrator is responsible for:
+
+-   Rendering tooltip triggers.
+-   Providing tooltip content.
+
+Tooltips must not obstruct sorting or other header interactions.
+
+### Search
+
+Associating a global search input to the `Data Table`.
+
+The integrator is responsible for:
+
+-   Providing the search input.
+-   Implementing search logic.
+-   Visually indicating when a search is active.
+-   Handling empty and loading states resulting from search.
+
+### Pagination
+
+Adding paginated data display to the `Data Table`.
+
+The integrator is responsible for:
+
+-   Rendering pagination controls.
+-   Displaying the current page state.
+-   Providing pagination data (current page, total pages, total items).
+-   Handling page changes and data updates.
+
+The behavior of selection across page changes must be explicitly defined by the integrator.
+
+### Refresh
+
+Exposing a refresh control allowing users to explicitly request a data reload.
+
+The integrator is responsible for:
+
+-   Rendering the refresh trigger.
+-   Displaying a loading state when refresh is in progress.
+-   Implementing the refresh logic.
+-   Updating the data and loading state accordingly.
+
+When a refresh is triggered while a loading state is already active, the refresh action must be disabled or ignored to prevent duplicate requests.
+
+If rows were selected prior to a refresh, it is recommended to reset them.
+
+### Tags assignment
+
+Supporting tag assignment workflows through composition, using a modal.
+
+Tag assignment is treated as a business-specific action and is not implemented by the `Data Table` component.
+
+The tag assignment modal may be triggered from different entry points, such as a row-level action for example.
+
+The integrator is responsible for:
+
+-   Defining when an where the tag assignment action is available.
+-   Rendering the modal and its trigger.
+-   Handling the association between rows and tags.
+-   Providing existing tags to the modal.
+-   Resolving conflicts with already assigned tags.
+
+All error handling, messaging, and resolution strategies are the responsibility of the integrator.
+
+### Editable Content
+
+Allowing editable content to be injected through composition to the `Data Table`.
+
+The integrator is responsible for:
+
+-   Rendering editable content/component (ODS or custom).
+-   Managing side effects of editing (data updates, refresh, notifications).
+
+## Navigation
+
+---
+
+### Focus Management
+
+The `Data Table` is fully navigable using the keyboard.
+
+When focus enters the `Data Table`, it is placed on the first focusable element within the table, depending on the current configuration. This may include:
+
+-   a global table action.
+-   a sortable column header.
+-   a row selection checkbox.
+-   a focusable action within the first row.
+
+Focus is never trapped inside the `Data Table`. Users can move focus into and out of the component using standard keyboard navigation.
+
+If a header is not sortable or interactive, it must not receive focus.
+
+Disabled rows do not receive focus.
+
+### General Keyboard Shortcuts
+
+#### Table Navigation
+
+Keyboard navigation within the `Data Table` follows a predictable, linear order:
+
+-   Pressing Tab moves focus forward through focusable elements inside the table.
+-   Pressing Shift + Tab moves focus backward.
+
+#### Column Header Navigation
+
+When a column header is focusable:
+
+-   Pressing Enter or Space triggers the primary header action (e.g. sorting).
+-   Tooltip triggers in headers are reachable via keyboard focus.
+
+#### Row Selection via Keyboard
+
+Row selection controls are keyboard accessible.
+
+-   Pressing Space toggles the selection state of the focused row checkbox.
+-   The "select all" checkbox (when present) can be toggled using Space.
+
+Disabled rows cannot be selected via keyboard.
+
+#### Row-Level Actions
+
+Row-level actions (such as ellipsis menus) are reachable via keyboard navigation (Space or Enter depending on the focusabled element).
+
+## Accessibility
+
+---
+
+To ensure the `Data Table` component is fully accessible, it is essential to follow best practices for structuring tables with the correct attributes and a global caption to provide users with context. Please follow the [W3C technique](https://www.w3.org/TR/WCAG20-TECHS/H63) for integrating them correctly.
+
+We also recommend referring to the [WCAG guidelines](https://www.w3.org/WAI/tutorials/tables/) for building accessible `Data Tables`.

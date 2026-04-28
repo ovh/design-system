@@ -1,0 +1,488 @@
+# React Components/Button
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `color` | `` | No | BUTTON_COLOR.primary | @type=BUTTON_COLOR The color preset to use. |
+| `loading` | `` | No | false | Whether the component is in loading state, disabling it. |
+| `size` | `` | No | BUTTON_SIZE.md | The size preset to use. |
+| `variant` | `` | No | BUTTON_VARIANT.default | The variant preset to use. |
+
+
+## Examples
+
+
+### Accessibility Bad Practice Icon Only
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button>
+      <Icon name={ICON_NAME.xmark} />
+    </Button>
+}
+```
+
+### Accessibility Bad Practice Labelled By
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Button>
+        <Icon name={ICON_NAME.filter} />
+      </Button>
+      <span>Filter your search results</span>
+    </>
+}
+```
+
+### Accessibility Bad Practices Role Alert
+
+```tsx
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: () => {
+    const [error, setError] = useState('');
+    const handleClick = () => {
+      setError('A critical error occurred while saving.');
+    };
+    return <>
+        <Button onClick={handleClick}>
+          Save
+        </Button>
+
+        <span style={{
+        marginLeft: '1rem',
+        color: 'red'
+      }}>
+          {error}
+        </span>
+      </>;
+  }
+}
+```
+
+### Accessibility Bad Practices Role Status
+
+```tsx
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: () => {
+    const [message, setMessage] = useState('');
+    const handleClick = () => {
+      setMessage('Copied to clipboard.');
+    };
+    return <>
+        <Button onClick={handleClick}>
+          Copy
+        </Button>
+
+        <span style={{
+        marginLeft: '1rem'
+      }}>
+          {message}
+        </span>
+      </>;
+  }
+}
+```
+
+### Accessibility Explicit Text Content
+
+```tsx
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button>
+      Clear
+    </Button>
+}
+```
+
+### Accessibility Icon Only
+
+```tsx
+{
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button aria-label='Clear'>
+        <Icon name={ICON_NAME.xmark} />
+    </Button>
+}
+```
+
+### Accessibility Labelled By
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Button aria-labelledby="filter-btn">
+        <Icon name={ICON_NAME.filter} />
+      </Button>
+      <span id="filter-btn">Filter your search results</span>
+    </>
+}
+```
+
+### Accessibility Role Alert
+
+```tsx
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: () => {
+    const [error, setError] = useState('');
+    const handleClick = () => {
+      setError('A critical error occurred while saving!');
+    };
+    return <>
+        <Button onClick={handleClick}>
+          Save
+        </Button>
+
+        <span role="alert" style={{
+        marginLeft: '1rem',
+        color: 'red'
+      }}>
+          {error}
+        </span>
+      </>;
+  }
+}
+```
+
+### Accessibility Role Status
+
+```tsx
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: () => {
+    const [message, setMessage] = useState('');
+    const handleClick = () => {
+      setMessage('Copied to clipboard.');
+    };
+    return <>
+        <Button onClick={handleClick}>
+          Copy
+        </Button>
+
+        <span aria-live="polite" role="status" style={{
+        marginLeft: '1rem'
+      }}>
+          {message}
+        </span>
+      </>;
+  }
+}
+```
+
+### Color
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { BUTTON_COLOR, Button } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Button color={BUTTON_COLOR.critical}>Critical</Button>
+      <Button color={BUTTON_COLOR.information}>Information</Button>
+      <Button color={BUTTON_COLOR.neutral}>Neutral</Button>
+      <Button color={BUTTON_COLOR.primary}>Primary</Button>
+      <Button color={BUTTON_COLOR.success}>Success</Button>
+      <Button color={BUTTON_COLOR.warning}>Warning</Button>
+    </>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button>
+      My button
+    </Button>
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    children: {
+      table: {
+        category: CONTROL_CATEGORY.slot
+      },
+      control: 'text'
+    },
+    color: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'BUTTON_COLOR'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: BUTTON_COLORS
+    },
+    disabled: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'boolean'
+        }
+      },
+      control: 'boolean'
+    },
+    loading: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'boolean'
+    },
+    size: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'BUTTON_SIZE'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: BUTTON_SIZES
+    },
+    variant: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'BUTTON_VARIANT'
+        }
+      },
+      control: {
+        type: 'select'
+      },
+      options: BUTTON_VARIANTS
+    }
+  }),
+  args: {
+    children: 'My button'
+  }
+}
+```
+
+### Loading
+
+```tsx
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button loading={true}>
+      Loading button
+    </Button>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Button>
+      Button
+    </Button>
+}
+```
+
+### Size
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { BUTTON_SIZE, Button } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Button size={BUTTON_SIZE.md}>MD button</Button>
+      <Button size={BUTTON_SIZE.sm}>SM button</Button>
+      <Button size={BUTTON_SIZE.xs}>XS button</Button>
+    </>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px'
+  }}>
+      {BUTTON_SIZES.map(size => <div key={size} style={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '8px'
+    }}>
+          {BUTTON_VARIANTS.map(variant => <div key={`${String(size)}-${String(variant)}`} style={{
+        display: 'flex',
+        flexFlow: 'row wrap',
+        gap: '8px',
+        alignItems: 'center'
+      }}>
+              {BUTTON_COLORS.map(color => <Button key={`${String(size)}-${String(variant)}-${String(color)}`} size={size} variant={variant} color={color}>
+                  {`${String(variant)} ${String(color)}`}
+                </Button>)}
+            </div>)}
+          <div style={{
+        display: 'flex',
+        flexFlow: 'row wrap',
+        gap: '8px',
+        alignItems: 'center'
+      }}>
+            {BUTTON_VARIANTS.map(variant => <Button key={`disabled-${String(size)}-${String(variant)}`} size={size} variant={variant} disabled>
+                Disabled
+              </Button>)}
+          </div>
+          <div style={{
+        display: 'flex',
+        flexFlow: 'row wrap',
+        gap: '8px',
+        alignItems: 'center'
+      }}>
+            {BUTTON_VARIANTS.map(variant => <Button key={`loading-${String(size)}-${String(variant)}`} size={size} variant={variant} loading>
+                Loading
+              </Button>)}
+          </div>
+        </div>)}
+
+      <div>
+        <Button>
+          <Icon name={ICON_NAME.xmark} /> Close
+        </Button>
+      </div>
+    </div>
+}
+```
+
+### Variant
+
+```tsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { BUTTON_VARIANT, Button } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Button variant={BUTTON_VARIANT.default}>Default button</Button>
+      <Button variant={BUTTON_VARIANT.outline}>Outline button</Button>
+      <Button variant={BUTTON_VARIANT.ghost}>Ghost button</Button>
+    </>
+}
+```

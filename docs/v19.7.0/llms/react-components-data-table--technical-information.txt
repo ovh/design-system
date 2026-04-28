@@ -1,0 +1,706 @@
+React Components
+
+# Data Table
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+DataTable
+
+DataTableBody
+
+DataTableEmpty
+
+DataTableHead
+
+---
+
+## DataTable
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [table attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table) . |
+| 
+columns
+
+ | `DataTableColumnDef<T>[]` |  | `undefined` | The columns definitions. |
+| 
+
+data
+
+ | `T[]` |  | `undefined` | The table data to display. |
+| 
+
+enableMultiRowSelection
+
+ | `boolean` | - | `true` | Whether the multi row selection is enabled. |
+| 
+
+enableRowSelection
+
+ | `boolean | ((row: DataTableRow<T>) => boolean)` | - | `undefined` | Whether the row selection is enabled. |
+| 
+
+enableSorting
+
+ | `boolean` | - | `true` | Whether the column sorting is enabled. |
+| 
+
+getRowId
+
+ | `(originalRow: T, index: number, parent?: DataTableRow<T>) => string` | - | `undefined` | By default, the component will look for an id attribute in a data item to identify each row. Using this function, you can define another attribute to use instead (like uuid). |
+| 
+
+loading
+
+ | `boolean` | - | `undefined` | Whether the table data are in a loading state. This will replace each cell with a Skeleton. |
+| 
+
+manualSorting
+
+ | `boolean` | - | `undefined` | Whether the sorting is handled outside of the table. Use this is the sorting is managed on server-side. |
+| 
+
+onColumnPinningChange
+
+ | `(updaterOrValue: T | ((old: T) => T)) => void` | - | `undefined` | Callback fired when the pinned columns changes. |
+| 
+
+onColumnVisibilityChange
+
+ | `(updaterOrValue: T | ((old: T) => T)) => void` | - | `undefined` | Callback fired when the column visibility changes. |
+| 
+
+onRowSelectionChange
+
+ | `(updaterOrValue: T | ((old: T) => T)) => void` | - | `undefined` | Callback fired when the selected rows changes. |
+| 
+
+onSortingChange
+
+ | `(updaterOrValue: T | ((old: T) => T)) => void` | - | `undefined` | Callback fired when the columns sorting changes. |
+| 
+
+state
+
+ | `DataTableState` | - | `undefined` | The controlled table values. |
+| 
+
+stickyHeader
+
+ | `boolean` | - | `undefined` | Whether the header should be sticky. |
+
+## DataTableBody
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [tbody attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/tbody) . |
+
+## DataTableEmpty
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [tbody attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/tbody) . |
+
+## DataTableHead
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [thead attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/thead) . |
+
+## Interfaces
+
+---
+
+### DataTableCell<T>
+
+-   `column: DataTableColumn<T>`
+-   `getValue: <TValue>() => TValue`
+-   `id: string`
+-   `row: DataTableRow<T>`
+
+### DataTableCellContext<T>
+
+-   `cell: DataTableCell<T>`
+-   `column: DataTableColumn<T>`
+-   `table: DataTableTable<T>`
+
+### DataTableColumn<T>
+
+-   `clearSorting: () => void`
+-   `columnDef: Omit<DataTableColumnDef, 'accessorKey'>`
+-   `getCanSort: () => boolean`
+-   `getIsPinned: () => false | left | right`
+-   `getIsSorted: () => false | asc | desc`
+-   `getIsVisible: () => boolean`
+-   `getPinnedIndex: () => number`
+-   `id: string`
+
+### DataTableColumnDef<T>
+
+-   `accessorKey?: string | keyof T`
+-   `cell?: string | (cellContext: DataTableCellContext<T>) => ReactNode`
+-   `enableSorting?: boolean`
+-   `header?: string | (headerContext: DataTableHeaderContext<T>) => ReactNode`
+-   `id: string`
+-   `sortingFn?: (rowA: DataTableRow<T>, rowB: DataTableRow<T>, columnId: string) => number`
+-   `size?: number`
+
+### DataTableColumnPinningState
+
+-   `left?: string[]`
+-   `right?: string[]`
+
+### DataTableColumnVisibilityState
+
+-   `Record<string, boolean>`
+
+### DataTableHeader<T>
+
+-   `column: DataTableColumn<T>`
+-   `id: string`
+
+### DataTableHeaderContext<T>
+
+-   `column: DataTableColumn<T>`
+-   `header: DataTableHeader<T>`
+-   `table: DataTableTable<T>`
+
+### DataTableRow<T>
+
+-   `getValue: <TValue>(columnId: string) => TValue`
+-   `index: number`
+-   `original: T`
+
+### DataTableRowSelectionState
+
+-   `Record<string, boolean>`
+
+### DataTableSortingState
+
+-   `{ desc: boolean, id: string }[]`
+
+### DataTableState
+
+-   `columnPinning?: DataTableColumnPinningState`
+-   `columnVisibility?: DataTableColumnVisibilityState`
+-   `rowSelection?: DataTableRowSelectionState`
+-   `sorting?: DataTableSortingState`
+
+### DataTableTable<T>
+
+-   `getAllColumns: () => DataTableColumn[]`
+-   `getColumn: (columnId: string) => undefined | DataTableColumn<T>`
+-   `getRow: (id: string) => DataTableRow<T>`
+
+## Get Started
+
+---
+
+### Defining Data Types
+
+The `data` attribute is an array of objects that will be turned into the rows of your table. Each object in the array represents a row of data.
+
+The first step is to define a type for the shape of your data. This type is used as a generic type for all of the other table, column, row, and cell instances.
+
+For example, if we have a table that displays a list of person:
+
+```typescript
+type Person = {
+  firstName: string;
+  lastName: string;
+  age: number;
+  email: string;
+  role: string;
+}
+const data: Person[] = useMemo(() => [...], []);
+```
+
+### Defining Columns
+
+Column definitions are a very important part of building the table as they're responsible for:
+
+-   building the underlying data model that will be used for everything including sorting, pinning, ...
+-   formatting the data model into what will be displayed in the table.
+-   creating columns for display-only purposes, eg. action buttons, checkboxes, ...
+
+```typescript
+const columns: DataTableColumnDef<Person>[] = [
+  { id: 'firstName', header: 'First Name', accessorKey: 'firstName' },
+  { id: 'lastName', header: 'Last Name', accessorKey: 'lastName' },
+  { id: 'age', header: 'Age', accessorKey: 'age' },
+  { id: 'email', header: 'Email', accessorKey: 'email' },
+  { id: 'role', header: 'Role', accessorKey: 'role' },
+];
+```
+
+### Data memoization
+
+The data array and the column definition that you pass to the table instance must have a stable reference in order to prevent possible infinite re-renders or other performance issue.
+
+Ensuring this stable reference can be done in multiple ways:
+
+-   use `useState` or `useMemo` (like in the documentation examples).
+-   define the data outside of the component.
+-   use a 3rd party state management library (Redux, Zustand, TanStackQuery, ...).
+
+Ensuring your data are correctly memoized is of outmost importance to ensure DataTable behavior and performance.
+
+```typescript
+function MyComponent() {
+  const columns = useMemo(() => [...], []); // ✅ GOOD
+  const columns = [...]; // ❌ BAD
+  const [data, setData] = useState(() => [...]); // ✅ GOOD
+  const data = [...]; // ❌ BAD
+  return (
+    <DataTable
+      columns={ columns }
+      data={ data }>
+      ...
+    </DataTable>
+  );
+}
+```
+
+Be careful also when setting fallback data as, if defined inline, it will get re-created on every render.
+
+```typescript
+const fallbackData = [];
+function MyComponent() {
+  ...
+  return (
+    <DataTable
+      columns={ columns }
+      data={ data ?? fallbackData } // ✅ GOOD
+      data={ data ?? [] } // ❌ BAD
+      >
+      ...
+    </DataTable>
+  );
+}
+```
+
+## Features
+
+---
+
+### Controlling state
+
+Most of the table feature will work out of the box, but you will need to manage a controlled state ou your side if you need to initialize values or react to some change events.
+
+You can set it trough the `state` attribute and keep it in sync by passing the matching `onXxx` handler function.
+
+Here is an example of a controlled sorted table:
+
+### Sorting
+
+#### Disable sorting
+
+Column sorting is enabled by default for all columns.
+
+If you want to disabled sorting for the whole table, you can set the DataTable `enableSorting` attribute to `false`.
+
+If you want to disabled sorting for some specific column, you can set `enableSorting` to `false` in the columns definition.
+
+#### Custom sorting
+
+By default, columns will be sorted alphanumerically. You can add more control on how each column should be sorted, by defining a `sortingFn` on the column definition.
+
+#### Controlled sorting
+
+If you want to handle the sorting state on your own, for example to pre-sort table on first render or to update it from an external source, you can use the table `state` and the `onSortingChange` handler function.
+
+### Pagination
+
+Pagination is not actually handled by the DataTable, you can use the  component next to your table and update your data object on page change.
+
+Here is an example with a dummy API:
+
+### Column pinning
+
+The column pinning feature allows some table columns to become sticky either on the left or right side of the table.
+
+The `columnPinning` state takes two arrays (left and right) of column ids that will be set as sticky.
+
+### Column visibility
+
+The column visibility feature allows table columns to be hidden or shown dynamically.
+
+The `columnVisibility` state is a map of column ids to boolean values. A column will be hidden if its id is present in the map and the value is `false`. If the column id is not present in the map, or the value is `true`, the column will be shown.
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+type Person = {
+    firstName: string;
+    lastName: string;
+    age: number;
+    email: string;
+    role: string;
+    uuid: string;
+  };
+  const sampleData: Person[] = useMemo(() => [{
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 30,
+    email: 'john.doe@example.com',
+    role: 'Admin',
+    uuid: '5ae49b94-9ceb-4612-a087-4079a812bb0b'
+  }, {
+    firstName: 'Jane',
+    lastName: 'Smith',
+    age: 25,
+    email: 'jane.smith@example.com',
+    role: 'User',
+    uuid: 'fb1c391c-bd88-4b96-ba39-8ab2a95d50bd'
+  }, {
+    firstName: 'Bob',
+    lastName: 'Johnson',
+    age: 35,
+    email: 'bob.johnson@example.com',
+    role: 'Manager',
+    uuid: 'a83a58a6-a007-47f0-b04b-83989e502171'
+  }], []);
+  const sampleColumns: DataTableColumnDef<Person>[] = useMemo(() => [{
+    id: 'firstName',
+    header: 'First Name',
+    accessorKey: 'firstName'
+  }, {
+    id: 'lastName',
+    header: 'Last Name',
+    accessorKey: 'lastName'
+  }, {
+    id: 'age',
+    header: 'Age',
+    accessorKey: 'age'
+  }, {
+    id: 'email',
+    header: 'Email',
+    accessorKey: 'email'
+  }, {
+    id: 'role',
+    header: 'Role',
+    accessorKey: 'role'
+  }], []);
+  return <DataTable columns={sampleColumns} data={sampleData}>
+      <DataTableHead />
+      <DataTableBody />
+    </DataTable>;
+}
+```
+
+### Empty
+
+```jsx
+type Person = {
+    firstName: string;
+    lastName: string;
+    age: number;
+    email: string;
+    role: string;
+    uuid: string;
+  };
+  const sampleData: Person[] = useMemo(() => [], []);
+  const sampleColumns: DataTableColumnDef<Person>[] = useMemo(() => [{
+    id: 'firstName',
+    header: 'First Name',
+    accessorKey: 'firstName'
+  }, {
+    id: 'lastName',
+    header: 'Last Name',
+    accessorKey: 'lastName'
+  }, {
+    id: 'age',
+    header: 'Age',
+    accessorKey: 'age'
+  }, {
+    id: 'email',
+    header: 'Email',
+    accessorKey: 'email'
+  }, {
+    id: 'role',
+    header: 'Role',
+    accessorKey: 'role'
+  }], []);
+  return <DataTable columns={sampleColumns} data={sampleData}>
+      <DataTableHead />
+      <DataTableBody />
+      <DataTableEmpty>
+        Empty table data      </DataTableEmpty>
+    </DataTable>;
+}
+```
+
+## Recipes
+
+---
+
+Data Grid
+
+| 
+ | 
+
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+IP Address
+
+ | 
+
+Actions
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+
+102550100300
+
+of 0 results
+
+Data Grid With Query Filter
+
+| 
+Instance ID
+
+ | 
+
+Location
+
+ | 
+
+Model
+
+ | 
+
+Image
+
+ | 
+
+Backup Logic
+
+ | 
+
+Running since
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |

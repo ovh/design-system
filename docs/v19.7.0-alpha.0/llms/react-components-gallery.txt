@@ -1,0 +1,7 @@
+React Components
+
+# Gallery
+
+Drag & drop a file 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.

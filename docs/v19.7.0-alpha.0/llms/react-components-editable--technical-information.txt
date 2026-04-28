@@ -1,0 +1,270 @@
+React Components
+
+# Editable
+
+## Overview
+
+---
+
+Double click to edit
+
+## Anatomy
+
+---
+
+1.  **Editable**
+2.  **EditableDisplay**
+3.  **EditableEditTrigger**
+4.  **EditableDisplayEmpty**
+5.  **EditableInput**
+6.  **EditableActions**
+7.  **EditableSubmitTrigger**
+8.  **EditableCancelTrigger**
+
+## Editable
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| defaultEditing | `boolean` | - | `undefined` | The initial editing state of the editable. Use when you don't need to control the editing state of the editable. |
+| editing | `boolean` | - | `undefined` | The controlled editing state of the editable. |
+| i18n | `Partial` | - | `undefined` | Internal translations override. |
+| locale | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| onCancel | `() => void` | - | `undefined` | Callback fired when the cancel trigger is activated. |
+| onEditChange | `(detail: EditableEditingChangeDetail) => void` | - | `undefined` | Callback fired when the editing state changes. |
+| onSubmit | `() => void` | - | `undefined` | Callback fired when the submit trigger is activated. |
+
+## EditableActions
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| children | `(props: { editing: boolean }) => ReactNode` | - | `undefined` | Custom actions render function, that provides Editable current state. |
+
+## EditableCancelTrigger
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## EditableDisplay
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## EditableDisplayEmpty
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+
+## EditableEditTrigger
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## EditableInput
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## EditableSubmitTrigger
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## Enums
+
+---
+
+### EDITABLE_I18N
+
+-   cancelButton =`"editable.actions.cancel.button"`
+-   editButton =`"editable.actions.edit.button"`
+-   submitButton =`"editable.actions.submit.button"`
+
+## Interfaces
+
+---
+
+### EditableEditingChangeDetail
+
+-   `editing: boolean`
+
+## Examples
+
+---
+
+### Default
+
+Double click to edit
+
+```jsx
+const [value, setValue] = useState('Double click to edit');
+  const bufferValue = useRef(value);
+  return <Editable onCancel={() => bufferValue.current = value} onSubmit={() => setValue(bufferValue.current)}>
+      <EditableDisplay>
+        {value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty>}
+      </EditableDisplay>
+      <EditableInput>
+        <Input autoFocus defaultValue={value} onChange={e => bufferValue.current = e.target.value} />
+      </EditableInput>
+      <EditableActions />
+    </Editable>;
+}
+```
+
+### Controlled
+
+Double click to edit
+
+```jsx
+const [displayValue, setDisplayValue] = useState('Double click to edit');
+  const [value, setValue] = useState(displayValue);
+  return <Editable onCancel={() => setValue(displayValue)} onSubmit={() => setDisplayValue(value)}>
+      <EditableDisplay>
+        {displayValue || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty>}
+      </EditableDisplay>
+      <EditableInput>
+        <Input autoFocus onChange={e => setValue(e.target.value)} value={value} />
+      </EditableInput>
+      <EditableActions />
+    </Editable>;
+}
+```
+
+### Custom Actions
+
+Double click to edit
+
+```jsx
+const [value, setValue] = useState('Double click to edit');
+  const bufferValue = useRef(value);
+  return <Editable onCancel={() => bufferValue.current = value} onSubmit={() => setValue(bufferValue.current)}>
+      <EditableDisplay>
+        {value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty>}
+      </EditableDisplay>
+      <EditableInput>
+        <Input autoFocus defaultValue={value} onChange={e => bufferValue.current = e.target.value} />
+      </EditableInput>
+      <EditableActions>
+        {({
+        editing      }) => editing ? <>
+                <EditableSubmitTrigger asChild>
+                  <Button size={BUTTON_SIZE.sm}>Submit</Button>
+                </EditableSubmitTrigger>
+                <EditableCancelTrigger asChild>
+                  <Button size={BUTTON_SIZE.sm} variant={BUTTON_VARIANT.outline}>Cancel</Button>
+                </EditableCancelTrigger>
+              </> : <EditableEditTrigger asChild>
+                <Button size={BUTTON_SIZE.sm}>Edit</Button>
+              </EditableEditTrigger>}
+      </EditableActions>
+    </Editable>;
+}
+```
+
+### Complex Form Element
+
+Account name
+
+```jsx
+const [displayValue, setDisplayValue] = useState('');
+  const [accountValue, setAccountValue] = useState('');
+  const [domainValue, setDomainValue] = useState('');
+  function onCancel(): void {
+    const [account, domain] = displayValue.split('@ovhcloud');
+    setAccountValue(account || '');
+    setDomainValue(domain || '');
+  }
+  return <Editable onCancel={onCancel} onSubmit={() => setDisplayValue(`${accountValue}@ovhcloud${domainValue}`)}>
+      <EditableDisplay>
+        {displayValue || <EditableDisplayEmpty>Account name</EditableDisplayEmpty>}
+      </EditableDisplay>
+      <EditableInput>
+        <FormField style={{
+        display: 'flex',
+        flexFlow: 'row',
+        alignItems: 'center',
+        columnGap: '8px'
+      }}>
+          <Input name="account-name" onChange={e => setAccountValue(e.target.value)} pattern="^([a-zA-Z0-9]|([._\-](?![._\-])))*[a-zA-Z0-9]$" placeholder="Account name" value={accountValue} />
+          <span>
+            @ovhcloud          </span>
+          <Select items={[{
+          label: '.fr',
+          value: '.fr'
+        }, {
+          label: '.com',
+          value: '.com'
+        }, {
+          label: '.dev',
+          value: '.dev'
+        }]} name="domain" onValueChange={({
+          value        }) => setDomainValue(value[0])} value={domainValue ? [domainValue] : []}>
+            <SelectControl placeholder="Select domain" />
+            <SelectContent />
+          </Select>
+        </FormField>
+      </EditableInput>
+      <EditableActions />
+    </Editable>;
+}
+```
+
+## Recipes
+
+---
+
+Dashboard Card
+
+#### Cluster Information
+
+---
+
+Name
+
+MyCluster
+
+---
+
+ID
+
+---
+
+Region
+
+GRA91-AZ
+
+---
+
+Admission plugins
+
+Always Pull Images PluginEnable
+
+Plugin Node RestrictionEnable
+
+---

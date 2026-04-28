@@ -1,0 +1,240 @@
+React Components
+
+# Toggle
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+Toggle
+
+ToggleControl
+
+ToggleLabel
+
+---
+
+Toggle label
+
+## Toggle
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [label attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes) . |
+| 
+checked
+
+ | `boolean` | - | `undefined` | The controlled checked state of the toggle. |
+| 
+
+defaultChecked
+
+ | `boolean` | - | `undefined` | The initial checked state of the toggle. Use when you don't need to control the checked state of the toggle. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+invalid
+
+ | `boolean` | - | `undefined` | Whether the component is in error state. |
+| 
+
+name
+
+ | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| 
+
+onCheckedChange
+
+ | `(detail: ToggleCheckedChangeDetail) => void` | - | `undefined` | Callback fired when the checked state changes. |
+| 
+
+required
+
+ | `boolean` | - | `undefined` | Whether the component is required. |
+| 
+
+value
+
+ | `string` | - | `undefined` | The value of form element. Useful for form submission. |
+| 
+
+withLabels
+
+ | `boolean` | - | `undefined` | Whether the component displays "ON/OFF" labels. |
+
+## ToggleControl
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+
+## ToggleLabel
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
+
+## Interfaces
+
+---
+
+### ToggleCheckedChangeDetail
+
+-   `checked: boolean`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-toggle-control-background-color | var(--ods-color-neutral-200) | 
+ |
+| --ods-toggle-control-background-color-hover | var(--ods-color-neutral-300) | 
+
+ |
+| --ods-toggle-control-border-color | var(--ods-color-neutral-200) | 
+
+ |
+| --ods-toggle-control-border-color-hover | var(--ods-color-neutral-300) | 
+
+ |
+| --ods-toggle-control-label-off-text-color | var(--ods-color-neutral-700) | 
+
+ |
+| --ods-toggle-control-label-on-text-color | var(--ods-color-neutral-000) | 
+
+ |
+| --ods-toggle-control-thumb-background-color | var(--ods-color-neutral-000) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle>
+      <ToggleControl />
+    </Toggle>
+}
+```
+
+### Disabled
+
+```jsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle disabled>
+      <ToggleControl />
+    </Toggle>
+}
+```
+
+### Invalid
+
+```jsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle invalid>
+      <ToggleControl />
+    </Toggle>
+}
+```
+
+### With label
+
+```jsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle>
+      <ToggleControl />
+      <ToggleLabel>
+        Enable dark mode      </ToggleLabel>
+    </Toggle>
+}
+```
+
+### With inside labels
+
+```jsx
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle withLabels>
+      <ToggleControl />
+    </Toggle>
+}
+```
+
+### Form field
+
+```jsx
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, FormField, Text, Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Text preset={TEXT_PRESET.label}>
+        Notification settings:      </Text>
+      <FormField>
+        <Toggle>
+          <ToggleControl />
+          <ToggleLabel>
+            General Information          </ToggleLabel>
+        </Toggle>
+      </FormField>
+      <FormField>
+        <Toggle>
+          <ToggleControl />
+          <ToggleLabel>
+            Promotions          </ToggleLabel>
+        </Toggle>
+      </FormField>
+    </>
+}
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

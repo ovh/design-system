@@ -1,0 +1,132 @@
+# React Components/Avatar
+
+## Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `fallback` | `` | No | <Icon name={ ICON_NAME.user } /> | Fallback content to display when the image fails to load. Defaults to a user icon. |
+| `src` | `` | No |  | The image source URL. |
+
+
+## Examples
+
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Avatar } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Avatar />
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    fallback: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'text'
+    },
+    src: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      },
+      control: 'text'
+    }
+  })
+}
+```
+
+### Initials
+
+```tsx
+{
+  globals: {
+    imports: `import { Avatar } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Avatar>
+      JD
+    </Avatar>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Avatar />
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    gap: '8px',
+    alignItems: 'center'
+  }}>
+      <Avatar />
+      <Avatar>JD</Avatar>
+      <Avatar>
+        <Icon name={ICON_NAME.sparkle} />
+      </Avatar>
+    </div>
+}
+```
+
+### With Fallback
+
+```tsx
+{
+  globals: {
+    imports: `import { Avatar, Icon, ICON_NAME } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Avatar fallback={"J"} src="https://invalid-url.example.com/avatar.png" />
+}
+```
+
+### With Icon
+
+```tsx
+{
+  globals: {
+    imports: `import { Avatar, Icon, ICON_NAME } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Avatar>
+      <Icon name={ICON_NAME.sparkle} />
+    </Avatar>
+}
+```
+
+### With Image
+
+```tsx
+{
+  globals: {
+    imports: `import { Avatar } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Avatar src="https://images.crunchbase.com/image/upload/c_pad,h_160,w_160,f_auto,b_white,q_auto:eco,dpr_1/fhi0pe8wd87fvujy9yk8" />
+}
+```

@@ -1,0 +1,135 @@
+React Components
+
+# File Thumbnail
+
+## Overview
+
+---
+
+foo.txt3 byte
+
+## Anatomy
+
+---
+
+1.  **FileThumbnail**
+
+## FileThumbnail
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
+| dismissible | `boolean` | - | `true` | Whether the component holds a dismiss button. |
+| error | `string` | - | `undefined` | The file error message to display. |
+| file | `File` |  | `undefined` | The current File object. |
+| i18n | `Partial` | - | `undefined` | Internal translations override. |
+| locale | `LOCALE` | - | `undefined` | The locale used for size formatting and the translation of the internal elements. |
+| onFileRemove | `(detail: FileThumbnailRemoveDetail) => void` | - | `undefined` | Callback fired when the file is removed. |
+| progress | `number` | - | `undefined` | The file upload progress. |
+
+## Enums
+
+---
+
+### FILE_THUMBNAIL_I18N
+
+-   cancelButton =`"fileThumbnail.file.cancel.button"`
+-   deleteButton =`"fileThumbnail.file.delete.button"`
+-   progressBar =`"fileThumbnail.file.progressBar"`
+
+## Interfaces
+
+---
+
+### FileThumbnailRemoveDetail
+
+-   `file: File`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-file-thumbnail-border-color | var(--ods-color-neutral-300) | 
+ |
+| --ods-file-thumbnail-object-fit | contain | 
+
+ |
+| --ods-file-thumbnail-preview-size | 32px | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+foo.txt3 byte
+
+```jsx
+const fakeFile = new File(['foo'], 'foo.txt', {
+    type: 'text/plain'
+  });
+  return <FileThumbnail file={fakeFile} />;
+}
+```
+
+### Progress
+
+foo.txt
+
+​
+
+```jsx
+const fakeFile = new File(['foo'], 'foo.txt', {
+    type: 'text/plain'
+  });
+  return <FileThumbnail file={fakeFile} progress={45} />;
+}
+```
+
+### Disabled
+
+foo.txt3 byte
+
+```jsx
+const fakeFile = new File(['foo'], 'foo.txt', {
+    type: 'text/plain'
+  });
+  return <FileThumbnail disabled file={fakeFile} />;
+}
+```
+
+### Non-dismissible
+
+non-dismissible-file.txt3 byte
+
+```jsx
+const fakeFile = new File(['foo'], 'non-dismissible-file.txt', {
+    type: 'text/plain'
+  });
+  return <FileThumbnail dismissible={false} file={fakeFile} />;
+}
+```
+
+### Error
+
+foo.txtSomething went wrong
+
+```jsx
+const fakeFile = new File(['foo'], 'foo.txt', {
+    type: 'text/plain'
+  });
+  return <FileThumbnail error="Something went wrong" file={fakeFile} />;
+}
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

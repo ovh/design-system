@@ -1,0 +1,173 @@
+React Components
+
+# Divider
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+Divider
+
+---
+
+## Divider
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [hr attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/hr#attributes) . |
+| 
+colorDeprecated
+
+ | `DIVIDER_COLOR` | - | `undefined` | The color preset to use. DEPRECATED: Color will now always be primary, if you need another color, prefer overriding it using css. |
+| 
+
+orientation
+
+ | `'horizontal' | 'vertical'` | - | `DIVIDER_ORIENTATION.horizontal` | The orientation of the divider. |
+| 
+
+spacing
+
+ | `DIVIDER_SPACING` | - | `DIVIDER_SPACING._2` | The spacing preset to use. |
+
+## Enums
+
+---
+
+### DIVIDER_COLOR
+
+Deprecated
+
+-   neutral =`"neutral"`
+-   primary =`"primary"`
+
+### DIVIDER_ORIENTATION
+
+-   horizontal =`"horizontal"`
+-   vertical =`"vertical"`
+
+### DIVIDER_SPACING
+
+-   _0 =`"0"`
+-   _12 =`"12"`
+-   _16 =`"16"`
+-   _2 =`"2"`
+-   _24 =`"24"`
+-   _32 =`"32"`
+-   _4 =`"4"`
+-   _40 =`"40"`
+-   _48 =`"48"`
+-   _6 =`"6"`
+-   _64 =`"64"`
+-   _8 =`"8"`
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+{
+  globals: {
+    imports: `import { Divider } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Divider />
+}
+```
+
+### Color
+
+```jsx
+{
+  globals: {
+    imports: `import { DIVIDER_COLOR, Divider } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Divider color={DIVIDER_COLOR.neutral} />
+      <Divider color={DIVIDER_COLOR.primary} />
+    </>
+}
+```
+
+### Orientation
+
+```jsx
+{
+  globals: {
+    imports: `import { DIVIDER_ORIENTATION, Divider } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Divider orientation={DIVIDER_ORIENTATION.horizontal} />
+      <Divider orientation={DIVIDER_ORIENTATION.vertical} />
+    </>
+}
+```
+
+### Spacing
+
+```jsx
+{
+  globals: {
+    imports: `import { DIVIDER_SPACING, Divider } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Divider spacing={DIVIDER_SPACING._0} />
+      <Divider spacing={DIVIDER_SPACING._2} />
+      <Divider spacing={DIVIDER_SPACING._4} />
+      <Divider spacing={DIVIDER_SPACING._6} />
+      <Divider spacing={DIVIDER_SPACING._8} />
+      <Divider spacing={DIVIDER_SPACING._12} />
+      <Divider spacing={DIVIDER_SPACING._16} />
+      <Divider spacing={DIVIDER_SPACING._24} />
+      <Divider spacing={DIVIDER_SPACING._32} />
+      <Divider spacing={DIVIDER_SPACING._40} />
+      <Divider spacing={DIVIDER_SPACING._48} />
+      <Divider spacing={DIVIDER_SPACING._64} />
+    </>
+}
+```
+
+## Recipes
+
+---
+
+Dashboard Card
+
+#### Cluster Information
+
+---
+
+Name
+
+MyCluster
+
+---
+
+ID
+
+---
+
+Region
+
+GRA91-AZ
+
+---
+
+Admission plugins
+
+Always Pull Images PluginEnable
+
+Plugin Node RestrictionEnable
+
+---

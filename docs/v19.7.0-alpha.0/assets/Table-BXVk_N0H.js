@@ -1,0 +1,1 @@
+import{u as t}from"./Table-Bof_Nsov-CS9ZUwCH.js";import{e as r}from"./index-jIWwRBLr.js";const a=({children:e,...o})=>r.createElement(t,{...o,"data-storybook":"table"},e);a.__docgenInfo={description:"",methods:[],displayName:"Table"};export{a as T};

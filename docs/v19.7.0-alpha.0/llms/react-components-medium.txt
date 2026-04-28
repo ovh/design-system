@@ -1,0 +1,123 @@
+# React Components/Medium
+
+## Examples
+
+
+### Caption
+
+```tsx
+{
+  globals: {
+    imports: `import { TEXT_PRESET, Medium, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <figure>
+      <Medium alt="NASA Computer room" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+
+      <figcaption>
+        <Text preset={TEXT_PRESET.caption}>
+          © Copyright National Aeronautics and Space Administration
+        </Text>
+      </figcaption>
+    </figure>
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Medium } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Medium alt="NASA Computer room" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+}
+```
+
+### Demo
+
+```tsx
+{
+  argTypes: orderControls({
+    height: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'number'
+        }
+      },
+      control: 'number'
+    },
+    src: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'string'
+        }
+      },
+      control: 'text'
+    },
+    width: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        type: {
+          summary: 'number'
+        }
+      },
+      control: 'number'
+    }
+  }),
+  args: {
+    src: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg'
+  }
+}
+```
+
+### Height
+
+```tsx
+{
+  globals: {
+    imports: `import { Medium } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Medium alt="NASA Computer room" height={40} src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Medium alt="NASA Computer room" height={100} src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <Medium alt="NASA Computer room" height={40} src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+}
+```
+
+### Width
+
+```tsx
+{
+  globals: {
+    imports: `import { Medium } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Medium alt="NASA Computer room" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" width={300} />
+}
+```

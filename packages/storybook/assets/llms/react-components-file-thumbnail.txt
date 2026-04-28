@@ -18,6 +18,20 @@
 ## Examples
 
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => {
+    const fakeFile = new File(['foo'], 'foo.txt', {
+      type: 'text/plain'
+    });
+    return <FileThumbnail file={fakeFile} />;
+  }
+}
+```
+
 ### Default
 
 ```tsx
@@ -172,11 +186,6 @@
 ```tsx
 {
   parameters: {
-    docs: {
-      source: {
-        ...staticSourceRenderConfig()
-      }
-    },
     layout: 'centered'
   },
   tags: ['!dev'],

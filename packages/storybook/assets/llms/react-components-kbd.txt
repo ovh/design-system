@@ -3,6 +3,15 @@
 ## Examples
 
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Kbd>Esc</Kbd>
+}
+```
+
 ### Default
 
 ```tsx
@@ -41,9 +50,7 @@
   parameters: {
     layout: 'centered'
   },
-  render: ({}) => <>
-      <Kbd>Esc</Kbd>
-    </>
+  render: ({}) => <Kbd>Esc</Kbd>
 }
 ```
 

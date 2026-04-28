@@ -10,9 +10,26 @@ React Components
 
 ---
 
-1.  **Datepicker**
-2.  **Datepicker Control**
-3.  **Datepicker Content**
+Datepicker
+
+DatepickerContent
+
+DatepickerControl
+
+---
+
+| Sun | Mon | Tue | Wed | Thu | Fri | Sat |
+| --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |
+
+<table data-scope="date-picker" data-part="table" role="grid" data-columns="4" aria-roledescription="calendar year" id="datepicker::rb::table:month :re:" data-view="month" dir="ltr" tabindex="-1" class="_datepicker-content__table_i233a_13"><tbody data-scope="date-picker" data-part="table-body" data-view="month"><tr data-scope="date-picker" data-part="table-row" data-view="month"><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="1"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:1" aria-label="January 2026" data-view="month" data-value="1" tabindex="-1" type="button">Jan</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:2" aria-label="February 2026" data-view="month" data-value="2" tabindex="-1" type="button">Feb</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="3"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:3" aria-label="March 2026" data-view="month" data-value="3" tabindex="-1" type="button">Mar</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" aria-selected="true" data-selected="" data-value="4"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:4" data-selected="" data-focus="" aria-label="April 2026" data-view="month" data-value="4" tabindex="0" type="button">Apr</button></td></tr><tr data-scope="date-picker" data-part="table-row" data-view="month"><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="5"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:5" aria-label="May 2026" data-view="month" data-value="5" tabindex="-1" type="button">May</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="6"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:6" aria-label="June 2026" data-view="month" data-value="6" tabindex="-1" type="button">Jun</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="7"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:7" aria-label="July 2026" data-view="month" data-value="7" tabindex="-1" type="button">Jul</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="8"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:8" aria-label="August 2026" data-view="month" data-value="8" tabindex="-1" type="button">Aug</button></td></tr><tr data-scope="date-picker" data-part="table-row" data-view="month"><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="9"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:9" aria-label="September 2026" data-view="month" data-value="9" tabindex="-1" type="button">Sep</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="10"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:10" aria-label="October 2026" data-view="month" data-value="10" tabindex="-1" type="button">Oct</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="11"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:11" aria-label="November 2026" data-view="month" data-value="11" tabindex="-1" type="button">Nov</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="12"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:12" aria-label="December 2026" data-view="month" data-value="12" tabindex="-1" type="button">Dec</button></td></tr></tbody></table>
+
+<table data-scope="date-picker" data-part="table" role="grid" data-columns="4" aria-roledescription="calendar decade" id="datepicker::rb::table:year :rf:" data-view="year" dir="ltr" tabindex="-1" class="_datepicker-content__table_i233a_13"><tbody data-scope="date-picker" data-part="table-body" data-view="year"><tr data-scope="date-picker" data-part="table-row" data-view="year"><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2020"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:2020" aria-label="2020" data-value="2020" data-view="year" tabindex="-1" type="button">2020</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2021"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:2021" aria-label="2021" data-value="2021" data-view="year" tabindex="-1" type="button">2021</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2022"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:2022" aria-label="2022" data-value="2022" data-view="year" tabindex="-1" type="button">2022</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2023"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:2023" aria-label="2023" data-value="2023" data-view="year" tabindex="-1" type="button">2023</button></td></tr><tr data-scope="date-picker" data-part="table-row" data-view="year"><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2024"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:2024" aria-label="2024" data-value="2024" data-view="year" tabindex="-1" type="button">2024</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2025"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:2025" aria-label="2025" data-value="2025" data-view="year" tabindex="-1" type="button">2025</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" aria-selected="true" data-selected="" data-value="2026"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:2026" data-selected="" data-focus="" aria-label="2026" data-value="2026" data-view="year" tabindex="0" type="button">2026</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2027"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:2027" aria-label="2027" data-value="2027" data-view="year" tabindex="-1" type="button">2027</button></td></tr><tr data-scope="date-picker" data-part="table-row" data-view="year"><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2028"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:2028" aria-label="2028" data-value="2028" data-view="year" tabindex="-1" type="button">2028</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2029"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:2029" aria-label="2029" data-value="2029" data-view="year" tabindex="-1" type="button">2029</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2030"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:2030" aria-label="2030" data-outside-range="" data-value="2030" data-view="year" tabindex="-1" type="button">2030</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2031"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::rb::cell-trigger:2031" aria-label="2031" data-outside-range="" data-value="2031" data-view="year" tabindex="-1" type="button">2031</button></td></tr></tbody></table>
 
 ## Datepicker
 
@@ -21,29 +38,135 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| dateFormatter | `(arg: DatepickerFormatterArg) => string` | - | `undefined` | Format the date to display in the input. |
-| defaultOpen | `boolean` | - | `undefined` | The initial open state of the datepicker. Use when you don't need to control the open state of the datepicker. |
-| defaultValue | `Date | string` | - | `undefined` | The initial selected date. Use when you don't need to control the selected date of the datepicker. |
-| defaultView | `DATEPICKER_VIEW` | - | `undefined` | The default view of the calendar (day, month, year). |
-| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
-| disabledDates | `Date[]` | - | `undefined` | List of dates that cannot be selected. |
-| disabledWeekDays | `DATEPICKER_DAY[]` | - | `undefined` | List of week days that cannot be selected. |
-| i18n | `Partial` | - | `undefined` | Internal translations override (see Input i18n keys). |
-| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
-| locale | `string` | - | `undefined` | The locale to use when formatting the date. |
-| max | `Date | string` | - | `undefined` | The maximum date that can be selected. |
-| maxView | `DATEPICKER_VIEW` | - | `undefined` | The maximum view of the calendar (day, month, year). |
-| min | `Date | string` | - | `undefined` | The minimum date that can be selected. |
-| minView | `DATEPICKER_VIEW` | - | `undefined` | The minimum view of the calendar (day, month, year). |
-| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
-| onValueChange | `(detail: DatepickerValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
-| open | `boolean` | - | `undefined` | The controlled open state of the datepicker. |
-| placeholder | `string` | - | `undefined` | The placeholder text to display in the input. |
-| positionerStyle | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
-| readOnly | `boolean` | - | `undefined` | Whether the component is readonly. |
-| required | `boolean` | - | `undefined` | Whether the component is required. |
-| value | `Date | string | null` | - | `undefined` | The controlled selected date. |
-| view | `DATEPICKER_VIEW` | - | `undefined` | The controlled view of the calendar (day, month, year). |
+| 
+dateFormatter
+
+ | `(arg: DatepickerFormatterArg) => string` | - | `undefined` | Format the date to display in the input. |
+| 
+
+defaultOpen
+
+ | `boolean` | - | `undefined` | The initial open state of the datepicker. Use when you don't need to control the open state of the datepicker. |
+| 
+
+defaultValue
+
+ | `Date | string` | - | `undefined` | The initial selected date. Use when you don't need to control the selected date of the datepicker. |
+| 
+
+defaultView
+
+ | `DATEPICKER_VIEW` | - | `undefined` | The default view of the calendar (day, month, year). |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+disabledDates
+
+ | `Date[]` | - | `undefined` | List of dates that cannot be selected. |
+| 
+
+disabledWeekDays
+
+ | `DATEPICKER_DAY[]` | - | `undefined` | List of week days that cannot be selected. |
+| 
+
+i18n
+
+ | `Partial` | - | `undefined` | Internal translations override (see Input i18n keys). |
+| 
+
+invalid
+
+ | `boolean` | - | `undefined` | Whether the component is in error state. |
+| 
+
+locale
+
+ | `string` | - | `undefined` | The locale to use when formatting the date. |
+| 
+
+max
+
+ | `Date | string` | - | `undefined` | The maximum date that can be selected. |
+| 
+
+maxView
+
+ | `DATEPICKER_VIEW` | - | `undefined` | The maximum view of the calendar (day, month, year). |
+| 
+
+min
+
+ | `Date | string` | - | `undefined` | The minimum date that can be selected. |
+| 
+
+minView
+
+ | `DATEPICKER_VIEW` | - | `undefined` | The minimum view of the calendar (day, month, year). |
+| 
+
+name
+
+ | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| 
+
+onOpenChange
+
+ | `(detail: DatepickerOpenChangeDetail) => void` | - | `undefined` | Callback fired when the datepicker open state changes. |
+| 
+
+onValueChange
+
+ | `(detail: DatepickerValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
+| 
+
+open
+
+ | `boolean` | - | `undefined` | The controlled open state of the datepicker. |
+| 
+
+overlayConfig
+
+ | `object` | - | `undefined` | The overlay configuration. |
+| 
+
+flip
+
+ | `boolean` | - | `-` | Whether to flip the position. |
+| 
+
+placeholder
+
+ | `string` | - | `undefined` | The placeholder text to display in the input. |
+| 
+
+positionerStyle
+
+ | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+| 
+
+readOnly
+
+ | `boolean` | - | `undefined` | Whether the component is readonly. |
+| 
+
+required
+
+ | `boolean` | - | `undefined` | Whether the component is required. |
+| 
+
+value
+
+ | `Date | string | null` | - | `undefined` | The controlled selected date. |
+| 
+
+view
+
+ | `DATEPICKER_VIEW` | - | `undefined` | The controlled view of the calendar (day, month, year). |
 
 ## DatepickerContent
 
@@ -52,7 +175,10 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| createPortal | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
+| 
+createPortal
+
+ | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
 
 ## DatepickerControl
 
@@ -61,8 +187,15 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [input attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes) . |
-| clearable | `boolean` | - | `undefined` | Whether the clear button is displayed. |
-| loading | `boolean` | - | `undefined` | Whether the component is in loading state. |
+| 
+clearable
+
+ | `boolean` | - | `undefined` | Whether the clear button is displayed. |
+| 
+
+loading
+
+ | `boolean` | - | `undefined` | Whether the component is in loading state. |
 
 ## Enums
 
@@ -92,6 +225,10 @@ React Components
 
 -   `date: Date`
 -   `locale: string`
+
+### DatepickerOpenChangeDetail
+
+-   `open: boolean`
 
 ### DatepickerValueChangeDetail
 
@@ -165,10 +302,16 @@ React Components
 ### Readonly
 
 ```jsx
-<Datepicker readOnly>
-  <DatepickerControl />
-  <DatepickerContent />
-</Datepicker>
+{
+  globals: {
+    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Datepicker readOnly>
+      <DatepickerControl />
+      <DatepickerContent />
+    </Datepicker>
+}
 ```
 
 ### Date formatter
@@ -228,8 +371,6 @@ React Components
 ```
 
 ### Form field
-
-Label:
 
 ```jsx
 {

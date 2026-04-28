@@ -10,7 +10,9 @@ React Components
 
 ---
 
-1.  **Medium**
+Medium
+
+---
 
 ## Medium
 
@@ -36,21 +38,25 @@ React Components
 ### Height
 
 ```jsx
-<Medium
-  alt="NASA Computer room"
-  height={40}
-  src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg"
-/>
+{
+  globals: {
+    imports: `import { Medium } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Medium alt="NASA Computer room" height={40} src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
+}
 ```
 
 ### Width
 
 ```jsx
-<Medium
-  alt="NASA Computer room"
-  src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg"
-  width={300}
-/>
+{
+  globals: {
+    imports: `import { Medium } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Medium alt="NASA Computer room" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" width={300} />
+}
 ```
 
 ## Recipes

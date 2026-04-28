@@ -59,6 +59,19 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Timepicker defaultValue="12:00">
+      <TimepickerControl />
+
+      <TimepickerTimezoneList />
+    </Timepicker>
+}
+```
+
 ### Default
 
 ```tsx

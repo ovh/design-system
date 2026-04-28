@@ -28,11 +28,21 @@ See also:
 
 ### Default
 
+123 456,79 €
+
 ```jsx
 <>{formatPrice(123456.789)}</>
 ```
 
 ### Locales
+
+France: 123 456,79 €
+
+Germany: 123.456,79 €
+
+Arabic: ‏١٢٣٬٤٥٦٫٧٩ €
+
+India: €1,23,456.79
 
 ```jsx
 <>
@@ -126,6 +136,156 @@ Yen: 123 457 ¥
       <p>Germany: {formatPrice(123456.789, 'de-DE')}</p>
       <p>Arabic: {formatPrice(123456.789, 'ar-EG')}</p>
       <p>India: {formatPrice(123456.789, 'en-IN')}</p>
+    </>
+}
+```
+
+## Helpers
+
+# formatRelativeTime
+
+## Specifications
+
+---
+
+Format a date to a human readable relative time (like 'a month ago').
+
+See also:
+
+-   [Intl.RelativeTimeFormatOptions](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat)
+
+| Argument | Type | Default value | Description |
+| --- | --- | --- | --- |
+| date | `Date` | `   undefined   ` | The date to format. |
+| locale | `string` | `'en-GB'` | The locale to use. |
+| option | `RelativeTimeFormatOptions` | `   undefined   ` | Language-sensitive formatting options. |
+
+## Examples
+
+---
+
+### Default
+
+in 0 seconds
+
+```jsx
+<>{formatRelativeTime(new Date())}</>
+```
+
+### Locales
+
+France: il y a 0 seconde
+
+Germany: in 0 Sekunden
+
+Arabic: قبل ٠ ثانية
+
+India: in 0 seconds
+
+```jsx
+<>
+  <p>France: {formatRelativeTime(new Date(), 'fr-FR')}</p>
+  <p>Germany: {formatRelativeTime(new Date(), 'de-DE')}</p>
+  <p>Arabic: {formatRelativeTime(new Date(), 'ar-EG')}</p>
+  <p>India: {formatRelativeTime(new Date(), 'en-IN')}</p>
+</>
+```
+
+### Format option
+
+Long: in 0 seconds
+
+Short: in 0 sec.
+
+Narrow: in 0s
+
+```jsx
+<>
+  <p>Long: {formatRelativeTime(new Date(), 'en-US', {
+    style: 'long'
+  })}</p>
+  <p>Short: {formatRelativeTime(new Date(), 'en-US', {
+    style: 'short'
+  })}</p>
+  <p>Narrow: {formatRelativeTime(new Date(), 'en-US', {
+    style: 'narrow'
+  })}</p>
+</>
+```
+
+## Helpers/formatRelativeTime
+
+## Examples
+
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { formatRelativeTime } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => <>{formatRelativeTime(new Date())}</>
+}
+```
+
+### Locales
+
+```tsx
+{
+  globals: {
+    imports: `import { formatRelativeTime } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>France: {formatRelativeTime(new Date(), 'fr-FR')}</p>
+      <p>Germany: {formatRelativeTime(new Date(), 'de-DE')}</p>
+      <p>Arabic: {formatRelativeTime(new Date(), 'ar-EG')}</p>
+      <p>India: {formatRelativeTime(new Date(), 'en-IN')}</p>
+    </>
+}
+```
+
+### Option
+
+```tsx
+{
+  globals: {
+    imports: `import { formatRelativeTime } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>Long: {formatRelativeTime(new Date(), 'en-US', {
+        style: 'long'
+      })}</p>
+      <p>Short: {formatRelativeTime(new Date(), 'en-US', {
+        style: 'short'
+      })}</p>
+      <p>Narrow: {formatRelativeTime(new Date(), 'en-US', {
+        style: 'narrow'
+      })}</p>
     </>
 }
 ```
@@ -1178,6 +1338,8 @@ Screen readers will announce a button and the aria-label.
 
 Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) to associate an element with an existing label (instead of duplicating text).
 
+Filter your search results
+
 ```jsx
 {
   decorators: [story => <div style={{
@@ -1281,25 +1443,25 @@ Use [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 Screen readers won't announce the **Modal** content.
 
 ```jsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button>
-      Trigger Modal    </Button>
-  </ModalTrigger>
-  <ModalContent
-    aria-describedby="modal-content"
-    aria-labelledby="modal-title"
-  >
-    <ModalHeader>
-      <span id="modal-title">
-        Delete item      </span>
-    </ModalHeader>
-    <ModalBody>
-      <p id="modal-content">
-        Are you sure you want to delete this item? This action cannot be undone.      </p>
-    </ModalBody>
-  </ModalContent>
-</Modal>
+{
+  globals: {
+    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Modal>
+      <ModalTrigger asChild>
+        <Button>
+          Trigger Modal        </Button>
+      </ModalTrigger>
+      <ModalContent aria-describedby="modal-content" aria-labelledby="modal-title">
+        <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
+        <ModalBody>
+          <p id="modal-content">
+            Are you sure you want to delete this item? This action cannot be undone.          </p>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+}
 ```
 
 Screen readers will announce the **Modal** content.
@@ -1329,7 +1491,13 @@ Some screen readers will announce the icon and detect the presence of the image.
 Depending on the screen reader, some additional information might be read aloud, which is confusing and unhelpful.
 
 ```jsx
-<Icon name="home" />
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Icon name={ICON_NAME.home} />
+}
 ```
 
 Screen readers will announce nothing, the icon is ignored.
@@ -1346,9 +1514,15 @@ When a section of the UI is loading, users should be informed that the content i
 [aria-busy](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy) set to `"true"` signals that an element is currently in a loading state. Once loading is complete, `aria-busy` should be set to `"false"`.
 
 ```jsx
-<div>
-  <Skeleton />
-</div>
+{
+  globals: {
+    imports: 'import { Skeleton } from \'@ovhcloud/ods-react\';'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div>
+      <Skeleton />
+    </div>
+}
 ```
 
 Screen readers will give no indication that the content is loading. The screen reader may start reading the page without knowing that this section is waiting to be updated.
@@ -2875,38 +3049,53 @@ To check how to start with this new version, please follow the  documentation.
 
 ---
 
-## v19.7.0-alpha.0
+## v19.7.0
 
 ---
 
-### 
+### New components:
 
-Why an alpha version?
+**Avatar**
 
-This release includes two new features that we want to share beforehand so that we can ensure the final released version will match your expectation and will not cause any unexpected issues:
+.
 
--   The new component `DataTable`.
--   New way to import components.
+**DataTable**
 
-#### 
+.
 
-The new component `DataTable`.
+**FileThumbnail**
 
-In this first iteration, we've tried to provide an easy-to-use component with the minimal expected features.
+.
 
-This component does differ from the actual `DataGrid` that you may use in your app today, as it is only focused on the table itself.
+**Markdown**
 
-To see how you can use it in a more complex use-case, we've also added a new recipe `DataGrid` that demonstrates composition of multiple ODS components around the table.
+.
 
-Please share your feedbacks about:
+**MessageBubble**
 
--   the primary features that may be missing.
--   the painpoints you've encournted while using the component.
--   other improvements you may think of.
+.
 
-#### 
+**PromptInput**
 
-New library exports
+.
+
+**QueryFilter**
+
+.
+
+### New recipes:
+
+**Data Grid with Query Filter**
+
+.
+
+**Chat**
+
+.
+
+### Feature updates:
+
+**Compound components**
 
 ODS now offers different ways to be imported in your project, either through the main export that provides everything (like in previous version) or per-component.
 
@@ -2940,53 +3129,101 @@ import { Accordion } from '@ovhcloud/ods-react/accordion';
 
 We did test on a bunch of different bundler configuration to ensure that the tree-shaking is still working as expected and that existing configuration will not be impacted.
 
-We would like to ensure you don't encounter any bundle issue with this new exports. Please share your feedbacks if you find any issue with this feature.
+**Clipboard**
 
-### New components:
+-   New attribute `positionerStyle` has been added.
 
-**Avatar**
+**Code**
 
-.
+-   Copy button is now sticky when content is scrollable.
+-   New attribute `positionerStyle` has been added.
 
-**DataTable**
+**Combobox**
 
-.
+-   New attributes `open`, `defaultOpen` and `onOpenChange` have been added.
+-   New attribute `overlayConfig` has been added, with `flip` and `sameWidth` options.
 
-**FileThumbnail**
+**Datepicker**
 
-.
-
-### New recipes:
-
-**DataGrid**
-
-.
-
-### Design updates:
-
-**Breadcrumb**
-
--   Now uses the ODS vertical Divider, which involve a color change.
-
-### Feature updates:
+-   New attribute `onOpenChange` has been added.
+-   New attribute `overlayConfig` has been added, with a `flip` option.
 
 **Divider**
 
--   New attribute `orientation` has been added.
+-   New attribute `orientation` has been added to support vertical dividers.
+
+**Helpers**
+
+-   New helper function `formatRelativeTime` has been added.
+
+**Icon**
+
+-   Add the following new icons: `accessibility`, `accessibility-full`, `paperclip`, `pause`, `pause-full`, `phone`, `play`, `play-full`, `stop`, `stop-full`, `theme`.
+
+**Menu**
+
+-   New attribute `overlayConfig` has been added, with `flip`, `gutter` and `sameWidth` options.
+
+**Pagination**
+
+-   New page selector feature has been added.
+
+**Popover**
+
+-   New attribute `overlayConfig` has been added, with a `flip` option.
+
+**ProgressBar**
+
+-   New `indeterminate` value has been added.
+
+**Select**
+
+-   New attributes `open`, `defaultOpen` and `onOpenChange` have been added.
+-   New attribute `overlayConfig` has been added, with a `flip` option.
+
+**Tooltip**
+
+-   New attribute `overlayConfig` has been added, with `flip`, `gutter` and `sameWidth` options.
 
 ### Bug fixes:
 
+**Accordion**
+
+-   Trigger text can now be selected.
+
+**Cart**
+
+-   Remove button is now aligned with the label.
+-   Item price is now correctly aligned to the right.
+
+**Combobox**
+
+-   Caret click no longer triggers a form submit.
+
+**Datepicker**
+
+-   Text input display bug has been fixed.
+
+**Font**
+
+-   Variable weight declaration has been fixed.
+
 **Meter**
 
--   Hides gauge overflow on very small values.
+-   Track container no longer overflows.
 
 **Table**
 
--   Changed `border-collapse` to `separate` to fix rendering when using sticky header
+-   Sticky header border issue on scroll has been fixed.
+
+**Textarea**
+
+-   Placeholder now uses the theme color.
 
 ### Documentation improvements:
 
--   Update theme, version selector and recipes from using Popover to Menu.
+-   Tech anatomy sections are now dynamic.
+-   Icon gallery has been improved.
 
 ## v19.6.1
 
@@ -5534,6 +5771,12 @@ Filter recipes:
 
 ---
 
+Chat
+
+Assistant2:58 PM
+
+Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
+
 Config Tile
 
 VPS 1
@@ -5733,6 +5976,99 @@ Actions
 102550100300
 
 of 0 results
+
+Data Grid With Query Filter
+
+| 
+Instance ID
+
+ | 
+
+Location
+
+ | 
+
+Model
+
+ | 
+
+Image
+
+ | 
+
+Backup Logic
+
+ | 
+
+Running since
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
 
 Email Field
 

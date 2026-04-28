@@ -12,11 +12,45 @@
 | `onPageChange` | `` | No |  | Callback fired when the active page changes. |
 | `onPageSizeChange` | `` | No |  | Callback fired when the page size changes. |
 | `page` | `` | No |  | The controlled active page |
-| `pageSize` | `` | No | 10 | The number of items per page. |
-| `renderTotalItemsLabel` | `` | No | ({ totalItems }) => `of ${totalItems} results` | Format the label displayed near the per-page selector. |
+| `pageSize` | `` | No |  | The number of items per page. |
+| `renderTotalItemsLabel` | `` | No |  | @deprecated @default-value='of ${totalItems} results' Format the label displayed near the per-page selector. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector |
 | `siblingCount` | `` | No |  | The number of pages to show beside active page. |
 | `totalItems` | `` | Yes |  | The total number of items. |
-| `withPageSizeSelector` | `` | No |  | Whether the per-page selector is displayed. |
+| `withPageSizeSelector` | `` | No |  | @deprecated Whether the per-page selector is displayed. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector |
+
+
+## Subcomponents
+
+
+### PaginationPageSelector
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `label` | `` | No | 'Go to page' | The label displayed near the go-to-page input. |
+| `submitLabel` | `` | No | 'Go' | The label displayed in the go-to-page submit button. |
+
+
+
+### PaginationPageSizeSelector
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `label` | `` | No |  | @default-value='of ${totalItems} results' The label displayed near the per-page selector. |
+
+
+
+### PaginationPages
+
 
 
 ## Examples
@@ -27,10 +61,25 @@
 ```tsx
 {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
   },
   tags: ['!dev'],
-  render: ({}) => <Pagination aria-label="Pagination" totalItems={5000} />
+  render: ({}) => <Pagination aria-label="Pagination" totalItems={5000}>
+      <PaginationPages />
+    </Pagination>
+}
+```
+
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Pagination totalItems={100}>
+      <PaginationPageSizeSelector />
+      <PaginationPages />
+      <PaginationPageSelector />
+    </Pagination>
 }
 ```
 
@@ -39,7 +88,7 @@
 ```tsx
 {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';
 import { useState } from 'react';`
   },
   tags: ['!dev'],
@@ -57,7 +106,9 @@ import { useState } from 'react';`
     }: PaginationPageChangeDetail) {
       setPage(page);
     }
-    return <Pagination onPageChange={handlePageChange} page={page} totalItems={500} />;
+    return <Pagination onPageChange={handlePageChange} page={page} totalItems={500}>
+        <PaginationPages />
+      </Pagination>;
   }
 }
 ```
@@ -67,10 +118,12 @@ import { useState } from 'react';`
 ```tsx
 {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
   },
   tags: ['!dev'],
-  render: ({}) => <Pagination totalItems={5000} />
+  render: ({}) => <Pagination totalItems={5000}>
+      <PaginationPages />
+    </Pagination>
 }
 ```
 
@@ -78,6 +131,18 @@ import { useState } from 'react';`
 
 ```tsx
 {
+  render: ({
+    totalItems,
+    withPageSelector,
+    withPageSizeSelector,
+    ...arg
+  }: DemoArg) => <Pagination totalItems={totalItems ?? 5000} {...arg}>
+      {withPageSizeSelector && <PaginationPageSizeSelector />}
+
+      <PaginationPages />
+
+      {withPageSelector && <PaginationPageSelector />}
+    </Pagination>,
   argTypes: orderControls({
     disabled: {
       table: {
@@ -114,6 +179,11 @@ import { useState } from 'react';`
         category: CONTROL_CATEGORY.general
       }
     },
+    withPageSelector: {
+      table: {
+        category: CONTROL_CATEGORY.general
+      }
+    },
     withPageSizeSelector: {
       table: {
         category: CONTROL_CATEGORY.general
@@ -131,10 +201,12 @@ import { useState } from 'react';`
 ```tsx
 {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
   },
   tags: ['!dev'],
-  render: ({}) => <Pagination disabled totalItems={500} />
+  render: ({}) => <Pagination disabled totalItems={500}>
+      <PaginationPages />
+    </Pagination>
 }
 ```
 
@@ -143,10 +215,12 @@ import { useState } from 'react';`
 ```tsx
 {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
   },
   tags: ['!dev'],
-  render: ({}) => <Pagination pageSize={25} totalItems={500} />
+  render: ({}) => <Pagination pageSize={25} totalItems={500}>
+      <PaginationPages />
+    </Pagination>
 }
 ```
 
@@ -158,7 +232,27 @@ import { useState } from 'react';`
   parameters: {
     layout: 'centered'
   },
-  render: ({}) => <Pagination totalItems={100} withPageSizeSelector />
+  render: ({}) => <Pagination totalItems={100}>
+      <PaginationPageSizeSelector />
+      <PaginationPages />
+      <PaginationPageSelector />
+    </Pagination>
+}
+```
+
+### Page Size Selection
+
+```tsx
+{
+  globals: {
+    imports: `import { Pagination, PaginationPageSizeSelector, PaginationPages } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination totalItems={500}>
+      <PaginationPageSizeSelector />
+
+      <PaginationPages />
+    </Pagination>
 }
 ```
 
@@ -167,10 +261,12 @@ import { useState } from 'react';`
 ```tsx
 {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
   },
   tags: ['!dev'],
-  render: ({}) => <Pagination defaultPage={5} siblingCount={2} totalItems={500} />
+  render: ({}) => <Pagination defaultPage={5} siblingCount={2} totalItems={500}>
+      <PaginationPages />
+    </Pagination>
 }
 ```
 
@@ -188,43 +284,34 @@ import { useState } from 'react';`
     gap: '12px',
     alignItems: 'flex-start'
   }}>
-      <Pagination totalItems={100} />
-      <Pagination totalItems={500} pageSize={25} />
-      <Pagination totalItems={500} disabled />
-      <Pagination totalItems={100} withPageSizeSelector />
+      <Pagination totalItems={100}>
+        <PaginationPages />
+      </Pagination>
+      <Pagination totalItems={500} pageSize={25}>
+        <PaginationPages />
+      </Pagination>
+      <Pagination totalItems={500} disabled>
+        <PaginationPages />
+      </Pagination>
+      <Pagination totalItems={100}>
+        <PaginationPageSizeSelector />
+        <PaginationPages />
+        <PaginationPageSelector />
+      </Pagination>
     </div>
 }
 ```
 
-### Total Items
+### With Tooltip Labels
 
 ```tsx
 {
   globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
   },
   tags: ['!dev'],
-  parameters: {
-    docs: {
-      source: {
-        ...staticSourceRenderConfig()
-      }
-    }
-  },
-  render: ({}) => <Pagination renderTotalItemsLabel={({
-    totalItems
-  }) => `of ${totalItems} results`} totalItems={500} withPageSizeSelector />
-}
-```
-
-### With Labels
-
-```tsx
-{
-  globals: {
-    imports: `import { Pagination } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Pagination labelTooltipPrev={'Go to previous page'} labelTooltipNext={'Go to next page'} totalItems={500} />
+  render: ({}) => <Pagination labelTooltipPrev="Go to previous page" labelTooltipNext="Go to next page" totalItems={500}>
+      <PaginationPages />
+    </Pagination>
 }
 ```

@@ -248,6 +248,17 @@ import { useState } from 'react';`
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Button>
+      Button
+    </Button>
+}
+```
+
 ### Color
 
 ```tsx

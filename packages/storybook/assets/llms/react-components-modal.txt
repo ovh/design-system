@@ -23,6 +23,11 @@
 
 
 
+### ModalHeader
+
+
+
+
 ### ModalTrigger
 
 
@@ -155,6 +160,58 @@
         </ModalBody>
       </ModalContent>
     </Modal>
+}
+```
+
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    rowGap: 'var(--ods-theme-row-gap)',
+    alignItems: 'start'
+  }}>
+      <div style={{
+      position: 'relative',
+      minWidth: '320px',
+      minHeight: '140px'
+    }}>
+        <Modal backdropStyle={{
+        position: 'absolute'
+      }}
+      // @ts-ignore force ark attribute to avoid inert on page
+      modal={false} open positionerStyle={{
+        position: 'absolute'
+      }}>
+          <ModalContent createPortal={false} style={{
+          width: '280px',
+          minWidth: 'auto',
+          animation: 'none'
+        }}>
+            <ModalHeader>
+              <Text as="span" preset={TEXT_PRESET.heading4}>
+                Overview
+              </Text>
+            </ModalHeader>
+
+            <ModalBody>
+                Lorem ipsum dolor sit amet ...
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </div>
+
+      <Modal>
+        <ModalTrigger asChild>
+          <Button variant={BUTTON_VARIANT.outline}>
+            Trigger Modal
+          </Button>
+        </ModalTrigger>
+      </Modal>
+    </div>
 }
 ```
 
@@ -431,7 +488,7 @@ import { useState } from 'react';`
 
       <ModalContent>
         <ModalHeader>
-          <Text as={'span'} preset={TEXT_PRESET.heading4}>
+          <Text as="span" preset={TEXT_PRESET.heading4}>
             Overview
           </Text>
         </ModalHeader>

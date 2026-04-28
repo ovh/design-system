@@ -6,16 +6,15 @@ React Components
 
 ---
 
-Checkbox tile
-
-Additional information
-
 ## Anatomy
 
 ---
 
-1.  **Tile**
-2.  **Tile Alt Container**
+Tile
+
+TileAltContainer
+
+---
 
 ## Tile
 
@@ -24,8 +23,15 @@ Additional information
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| disabled | `boolean` | - | `false` | Whether the component is disabled. |
-| selected | `boolean` | - | `false` | Whether the component is selected. |
+| 
+disabled
+
+ | `boolean` | - | `false` | Whether the component is disabled. |
+| 
+
+selected
+
+ | `boolean` | - | `false` | Whether the component is selected. |
 
 ## TileAltContainer
 
@@ -77,37 +83,44 @@ Additional information
 
 ### Default
 
-This is a tile content.
-
 ```jsx
-<Tile>
-  This is a tile content.
-</Tile>
+{
+  globals: {
+    imports: `import { Tile } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tile>
+      This is a tile content.    </Tile>
+}
 ```
 
 ### Disabled
 
-This tile is disabled.
-
 ```jsx
-<Tile disabled>
-  This tile is disabled.
-</Tile>
+{
+  globals: {
+    imports: `import { Tile } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tile disabled>
+      This tile is disabled.    </Tile>
+}
 ```
 
 ### Selected
 
-This tile is selected.
-
 ```jsx
-<Tile selected>
-  This tile is selected.
-</Tile>
+{
+  globals: {
+    imports: `import { Tile } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tile selected>
+      This tile is selected.    </Tile>
+}
 ```
 
 ### With Checkbox
-
-Checkbox tile
 
 ```jsx
 const [selected, setSelected] = useState(false);
@@ -128,10 +141,6 @@ const [selected, setSelected] = useState(false);
 ```
 
 ### With RadioGroup
-
-Radio 1
-
-Radio 2
 
 ```jsx
 const [selected, setSelected] = useState('radio-1');

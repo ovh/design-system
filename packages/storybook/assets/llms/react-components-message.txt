@@ -166,6 +166,21 @@ import { useState } from 'react';`
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Message>
+      <MessageIcon name={ICON_NAME.circleInfo} />
+
+      <MessageBody>
+        Message
+      </MessageBody>
+    </Message>
+}
+```
+
 ### Color
 
 ```tsx

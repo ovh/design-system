@@ -54,6 +54,28 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Tooltip open overlayConfig={{
+    flip: false,
+    position: TOOLTIP_POSITION.top
+  }}>
+      <TooltipTrigger asChild>
+        <Icon name={ICON_NAME.circleQuestion} style={{
+        fontSize: '24px'
+      }} />
+      </TooltipTrigger>
+
+      <TooltipContent createPortal={false}>
+        This is the tooltip content
+      </TooltipContent>
+    </Tooltip>
+}
+```
+
 ### Controlled
 
 ```tsx
@@ -151,7 +173,11 @@ import { useState } from 'react';`
   parameters: {
     layout: 'centered'
   },
-  render: (arg: DemoArg) => <Tooltip closeDelay={arg.closeDelay} openDelay={arg.openDelay} position={arg.position}>
+  render: (arg: DemoArg) => <Tooltip closeDelay={arg.closeDelay} openDelay={arg.openDelay} overlayConfig={{
+    gutter: arg.gutter,
+    position: arg.position,
+    sameWidth: arg.sameWidth
+  }}>
       <TooltipTrigger asChild>
         <Icon name={ICON_NAME.circleQuestion} style={{
         fontSize: '24px'
@@ -175,6 +201,15 @@ import { useState } from 'react';`
       },
       control: 'text'
     },
+    gutter: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: {
+          summary: 'number'
+        }
+      },
+      control: 'number'
+    },
     openDelay: {
       table: {
         category: CONTROL_CATEGORY.general
@@ -192,6 +227,14 @@ import { useState } from 'react';`
         type: 'select'
       },
       options: TOOLTIP_POSITIONS
+    },
+    sameWidth: {
+      table: {
+        category: CONTROL_CATEGORY.design
+      },
+      control: {
+        type: 'boolean'
+      }
     },
     withArrow: {
       table: {
@@ -232,7 +275,9 @@ import { useState } from 'react';`
   },
   tags: ['!dev'],
   render: ({}) => <>
-      <Tooltip position="top-start">
+      <Tooltip overlayConfig={{
+      position: 'top-start'
+    }}>
         <TooltipTrigger>
           Top Left
         </TooltipTrigger>
@@ -241,7 +286,9 @@ import { useState } from 'react';`
         </TooltipContent>
       </Tooltip>
 
-      <Tooltip position="top">
+      <Tooltip overlayConfig={{
+      position: 'top'
+    }}>
         <TooltipTrigger>
           Top
         </TooltipTrigger>
@@ -250,7 +297,9 @@ import { useState } from 'react';`
         </TooltipContent>
       </Tooltip>
 
-      <Tooltip position="top-end">
+      <Tooltip overlayConfig={{
+      position: 'top-end'
+    }}>
         <TooltipTrigger>
           Top Right
         </TooltipTrigger>
@@ -259,7 +308,9 @@ import { useState } from 'react';`
         </TooltipContent>
       </Tooltip>
 
-      <Tooltip position="left">
+      <Tooltip overlayConfig={{
+      position: 'left'
+    }}>
         <TooltipTrigger>
           Middle Left
         </TooltipTrigger>
@@ -270,7 +321,9 @@ import { useState } from 'react';`
 
       <div />
 
-      <Tooltip position="right">
+      <Tooltip overlayConfig={{
+      position: 'right'
+    }}>
         <TooltipTrigger>
           Middle Right
         </TooltipTrigger>
@@ -279,7 +332,9 @@ import { useState } from 'react';`
         </TooltipContent>
       </Tooltip>
 
-      <Tooltip position="bottom-start">
+      <Tooltip overlayConfig={{
+      position: 'bottom-start'
+    }}>
         <TooltipTrigger>
           Bottom Left
         </TooltipTrigger>
@@ -288,7 +343,9 @@ import { useState } from 'react';`
         </TooltipContent>
       </Tooltip>
 
-      <Tooltip position="bottom">
+      <Tooltip overlayConfig={{
+      position: 'bottom'
+    }}>
         <TooltipTrigger>
           Bottom
         </TooltipTrigger>
@@ -297,7 +354,9 @@ import { useState } from 'react';`
         </TooltipContent>
       </Tooltip>
 
-      <Tooltip position="bottom-end">
+      <Tooltip overlayConfig={{
+      position: 'bottom-end'
+    }}>
         <TooltipTrigger>
           Bottom Right
         </TooltipTrigger>
@@ -404,7 +463,9 @@ import { useState } from 'react';`
 
       <span>Custom Z-axis order:</span>
 
-      <Tooltip open position={TOOLTIP_POSITION.bottom} positionerStyle={{
+      <Tooltip open overlayConfig={{
+      position: TOOLTIP_POSITION.bottom
+    }} positionerStyle={{
       zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'
     }}>
         <TooltipTrigger asChild>
@@ -418,7 +479,9 @@ import { useState } from 'react';`
         </TooltipContent>
       </Tooltip>
 
-      <Tooltip open position={TOOLTIP_POSITION.bottom}>
+      <Tooltip open overlayConfig={{
+      position: TOOLTIP_POSITION.bottom
+    }}>
         <TooltipTrigger asChild>
           <Icon name={ICON_NAME.circleInfo} style={{
           fontSize: '24px'

@@ -8,6 +8,7 @@
 | `allowCustomValue` | `` | No | true | Whether to allow adding a value which is not part of the items. |
 | `customFilter` | `` | No |  | Custom filter logic to apply to each item. |
 | `customOptionRenderer` | `` | No |  | Custom render for each option item. |
+| `defaultOpen` | `` | No |  | The initial open state of the combobox. Use when you don't need to control the open state of the combobox. |
 | `defaultValue` | `` | No |  | The initial selected value(s). Use when you don't need to control the selected value(s) of the combobox. |
 | `disabled` | `` | No |  | Whether the component is disabled. |
 | `highlightResults` | `` | No | false | Whether to highlight the matching part of filtered items. |
@@ -20,7 +21,10 @@
 | `newElementLabel` | `` | No | 'Add ' | Label displayed in front of a custom new value to add. |
 | `noResultLabel` | `` | No | 'No results found' | Label displayed when no values match the current input value. |
 | `onInputValueChange` | `` | No |  | Callback fired when the input value changes. |
+| `onOpenChange` | `` | No |  | Callback fired when the select open state changes. |
 | `onValueChange` | `` | No |  | Callback fired when the value(s) changes. |
+| `open` | `` | No |  | The controlled open state of the combobox. |
+| `overlayConfig` | `` | No |  | The overlay configuration. |
 | `readOnly` | `` | No |  | Whether the component is readonly. |
 | `required` | `` | No |  | Whether the component is required. /!\ Only work for single selection mode for now. |
 | `value` | `` | No |  | The controlled selected value(s). |
@@ -145,6 +149,46 @@
         <ComboboxContent />
       </Combobox>
     </FormField>
+}
+```
+
+### Anatomy Tech
+
+```tsx
+{
+  parameters: {
+    layout: 'start'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    height: '230px'
+  }}>
+      <Combobox items={[{
+      label: 'Dog',
+      value: 'dog'
+    }, {
+      label: 'Cat',
+      value: 'cat'
+    }, {
+      label: 'Hamster',
+      value: 'hamster'
+    }, {
+      label: 'Parrot',
+      value: 'parrot'
+    }, {
+      label: 'Spider',
+      value: 'spider'
+    }, {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }]} open overlayConfig={{
+      flip: false
+    }}>
+        <ComboboxControl placeholder="Combobox" />
+
+        <ComboboxContent createPortal={false} />
+      </Combobox>
+    </div>
 }
 ```
 
@@ -405,8 +449,9 @@ import { useState } from 'react';`
   }, {
     label: 'Goldfish',
     value: 'goldfish'
-  }]} allowCustomValue={arg.allowCustomValue} defaultValue={arg.defaultValue} disabled={arg.disabled} highlightResults={arg.highlightResults} invalid={arg.invalid} multiple={arg.multiple} newElementLabel={arg.newElementLabel} noResultLabel={arg.noResultLabel} readOnly={arg.readOnly}>
-      <ComboboxControl clearable={arg.clearable} placeholder={arg.placeholder} loading={arg.loading} />
+  }]} allowCustomValue={arg.allowCustomValue} disabled={arg.disabled} highlightResults={arg.highlightResults} invalid={arg.invalid} multiple={arg.multiple} newElementLabel={arg.newElementLabel} noResultLabel={arg.noResultLabel} readOnly={arg.readOnly}>
+      <ComboboxControl clearable={arg.clearable} loading={arg.loading} placeholder={arg.placeholder} />
+
       <ComboboxContent />
     </Combobox>,
   argTypes: orderControls({
@@ -424,12 +469,6 @@ import { useState } from 'react';`
         }
       },
       control: 'boolean'
-    },
-    defaultValue: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
     },
     disabled: {
       table: {

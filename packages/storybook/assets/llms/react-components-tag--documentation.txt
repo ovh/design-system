@@ -14,7 +14,7 @@ The **Tag** component is a small UI element used to represent metadata, keywords
 
 They are commonly used in interfaces for categorizing content, filtering, and adding contextual details.
 
-<table class="_table_e3iru_2 _table--md_e3iru_59 _table--striped_e3iru_167 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Tag</td></tr><tr><th scope="row">Also known as</th><td>Chip (previous name), Label, Pill</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11580" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/tag" target="_blank">Github <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-tag--documentation" target="_blank">Previous major version<span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+<table class="_table_e3iru_2 _table--md_e3iru_59 _table--striped_e3iru_167 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Tag</td></tr><tr><th scope="row">Also known as</th><td>Chip (previous name), Label, Pill</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=52-11580" target="_blank">Design <span class="_icon_g76et_2 _icon--external-link_g76et_256" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/tag" target="_blank">Github <span class="_icon_g76et_2 _icon--external-link_g76et_256" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-tag--documentation" target="_blank">Previous major version<span class="_icon_g76et_2 _icon--external-link_g76et_256" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
 
 ## Usage
 
@@ -114,25 +114,24 @@ Unlike , **Tags** are interactive and can be removed by the user. To ensure acce
 
 When multiple **Tags** are displayed together (e.g., a collection of selected filters or labels), they should be wrapped in an unordered list of items (`<ul>` and `<li>`) to ensure proper announcement by screen readers.
 
--   
--   
--   
-
 ```jsx
-<ul>
-  <li>
-    <Tag>
-      Design    </Tag>
-  </li>
-  <li>
-    <Tag>
-      Development    </Tag>
-  </li>
-  <li>
-    <Tag>
-      Accessibility    </Tag>
-  </li>
-</ul>
+{
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ul>
+      <li>
+        <Tag>Design</Tag>
+      </li>
+      <li>
+        <Tag>Development</Tag>
+      </li>
+      <li>
+        <Tag>Accessibility</Tag>
+      </li>
+    </ul>
+}
 ```
 
 This allows screen readers to announce a list with the number of items, making it clear that these **Tags** belong to a structured set.
@@ -165,9 +164,14 @@ This ensures that screen readers still recognize the **Tags** as a structured li
 Since the **Tag** is removable, it should provide clear feedback to assistive technologies.
 
 ```jsx
-<Tag aria-label="Remove my tag">
-  My tag
-</Tag>
+{
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tag aria-label="Remove my tag">
+      My tag    </Tag>
+}
 ```
 
 This ensures that users know the **Tag** can be removed. Screen readers will announce the tag aria label and the button type.

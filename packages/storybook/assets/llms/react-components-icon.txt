@@ -83,37 +83,15 @@
 }
 ```
 
-### All
+### Anatomy Tech
 
 ```tsx
 {
-  render: (arg: AllArg) => {
-    const regexp = new RegExp((arg.search || '').replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
-    const names = arg.search ? Object.entries<string>(ICON_NAME).filter(([key, name]) => {
-      return [name].concat(ODS_ICON_TAG[key as IconNameKey] || []).some(value => regexp.test(value));
-    }).map(([_, name]) => name) : ICON_NAMES;
-    return <div style={{
-      display: 'flex',
-      flexFlow: 'row',
-      flexWrap: 'wrap',
-      gap: '1rem'
-    }}>
-        {names.map(name => <Icon key={name} name={name as ICON_NAME} title={name} />)}
-      </div>;
-  },
-  argTypes: {
-    name: {
-      table: {
-        disable: true
-      }
-    },
-    search: {
-      control: {
-        type: 'text'
-      },
-      description: 'Search for a specific icon name or tag'
-    }
-  }
+  tags: ['!dev'],
+  render: ({}) => <Icon name="home" style={{
+    fontSize: '2rem',
+    color: 'var(--ods-color-primary-500)'
+  }} />
 }
 ```
 

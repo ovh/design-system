@@ -13,6 +13,19 @@
 ## Examples
 
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <Divider color={DIVIDER_COLOR.primary} />
+      <p>Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+    </>
+}
+```
+
 ### Color
 
 ```tsx

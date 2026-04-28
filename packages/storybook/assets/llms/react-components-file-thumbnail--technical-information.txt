@@ -6,13 +6,13 @@ React Components
 
 ---
 
-foo.txt3 byte
-
 ## Anatomy
 
 ---
 
-1.  **FileThumbnail**
+FileThumbnail
+
+---
 
 ## FileThumbnail
 
@@ -20,14 +20,45 @@ foo.txt3 byte
 
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
-| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
-| dismissible | `boolean` | - | `true` | Whether the component holds a dismiss button. |
-| error | `string` | - | `undefined` | The file error message to display. |
-| file | `File` |  | `undefined` | The current File object. |
-| i18n | `Partial` | - | `undefined` | Internal translations override. |
-| locale | `LOCALE` | - | `undefined` | The locale used for size formatting and the translation of the internal elements. |
-| onFileRemove | `(detail: FileThumbnailRemoveDetail) => void` | - | `undefined` | Callback fired when the file is removed. |
-| progress | `number` | - | `undefined` | The file upload progress. |
+| 
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+dismissible
+
+ | `boolean` | - | `true` | Whether the component holds a dismiss button. |
+| 
+
+error
+
+ | `string` | - | `undefined` | The file error message to display. |
+| 
+
+file
+
+ | `File` |  | `undefined` | The current File object. |
+| 
+
+i18n
+
+ | `Partial` | - | `undefined` | Internal translations override. |
+| 
+
+locale
+
+ | `LOCALE` | - | `undefined` | The locale used for size formatting and the translation of the internal elements. |
+| 
+
+onFileRemove
+
+ | `(detail: FileThumbnailRemoveDetail) => void` | - | `undefined` | Callback fired when the file is removed. |
+| 
+
+progress
+
+ | `number` | - | `undefined` | The file upload progress. |
 
 ## Enums
 
@@ -118,8 +149,6 @@ const fakeFile = new File(['foo'], 'non-dismissible-file.txt', {
 
 ### Error
 
-foo.txtSomething went wrong
-
 ```jsx
 const fakeFile = new File(['foo'], 'foo.txt', {
     type: 'text/plain'
@@ -132,4 +161,8 @@ const fakeFile = new File(['foo'], 'foo.txt', {
 
 ---
 
-No recipe defined for now.
+Chat
+
+Assistant2:58 PM
+
+Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.

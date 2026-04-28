@@ -55,6 +55,19 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Quantity defaultValue="0" min={0}>
+      <QuantityControl>
+        <QuantityInput />
+      </QuantityControl>
+    </Quantity>
+}
+```
+
 ### Default
 
 ```tsx

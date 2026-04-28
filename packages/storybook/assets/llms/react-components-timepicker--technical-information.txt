@@ -6,15 +6,17 @@ React Components
 
 ---
 
-UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
-
 ## Anatomy
 
 ---
 
-1.  **Timepicker**
-2.  **Timepicker Control**
-3.  **Timepicker Timezone List**
+Timepicker
+
+TimepickerControl
+
+TimepickerTimezoneList
+
+---
 
 ## Timepicker
 
@@ -23,21 +25,80 @@ UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UT
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| defaultValue | `string` | - | `undefined` | The initial time value. Use when you don't need to control the value of the timepicker. |
-| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
-| i18n | `Partial` | - | `undefined` | Internal translations override. |
-| id | `string` | - | `undefined` | The field id. |
-| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
-| locale | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
-| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
-| onTimezoneChange | `(detail: TimepickerTimezoneChangeDetail) => void` | - | `undefined` | Callback fired when the timezone changes. |
-| onValueChange | `(detail: TimepickerValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
-| readOnly | `boolean` | - | `undefined` | Whether the component is readonly. |
-| required | `boolean` | - | `undefined` | Whether the component is required. |
-| timezone | `TIMEZONE` | - | `undefined` | The controlled selected timezone. |
-| timezones | `Timezone[] | TimezonesPreset` | - | `undefined` | A specific or preset list of timezone to display in the selector. |
-| value | `string` | - | `undefined` | The controlled timepicker value. |
-| withSeconds | `boolean` | - | `undefined` | Whether the time input allows seconds selection. |
+| 
+defaultValue
+
+ | `string` | - | `undefined` | The initial time value. Use when you don't need to control the value of the timepicker. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+i18n
+
+ | `Partial` | - | `undefined` | Internal translations override. |
+| 
+
+id
+
+ | `string` | - | `undefined` | The field id. |
+| 
+
+invalid
+
+ | `boolean` | - | `undefined` | Whether the component is in error state. |
+| 
+
+locale
+
+ | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| 
+
+name
+
+ | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| 
+
+onTimezoneChange
+
+ | `(detail: TimepickerTimezoneChangeDetail) => void` | - | `undefined` | Callback fired when the timezone changes. |
+| 
+
+onValueChange
+
+ | `(detail: TimepickerValueChangeDetail) => void` | - | `undefined` | Callback fired when the value changes. |
+| 
+
+readOnly
+
+ | `boolean` | - | `undefined` | Whether the component is readonly. |
+| 
+
+required
+
+ | `boolean` | - | `undefined` | Whether the component is required. |
+| 
+
+timezone
+
+ | `TIMEZONE` | - | `undefined` | The controlled selected timezone. |
+| 
+
+timezones
+
+ | `Timezone[] | TimezonesPreset` | - | `undefined` | A specific or preset list of timezone to display in the selector. |
+| 
+
+value
+
+ | `string` | - | `undefined` | The controlled timepicker value. |
+| 
+
+withSeconds
+
+ | `boolean` | - | `undefined` | Whether the time input allows seconds selection. |
 
 ## TimepickerControl
 
@@ -115,9 +176,15 @@ UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UT
 ### Default
 
 ```jsx
-<Timepicker>
-  <TimepickerControl />
-</Timepicker>
+{
+  globals: {
+    imports: `import { Timepicker, TimepickerControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Timepicker>
+      <TimepickerControl />
+    </Timepicker>
+}
 ```
 
 ### Disabled
@@ -125,36 +192,54 @@ UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UT
 UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
 
 ```jsx
-<>
-  <Timepicker disabled>
-    <TimepickerControl />
-  </Timepicker>
-  <Timepicker disabled>
-    <TimepickerControl />
-    <TimepickerTimezoneList />
-  </Timepicker>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Timepicker disabled>
+        <TimepickerControl />
+      </Timepicker>
+      <Timepicker disabled>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+}
 ```
 
 ### Readonly
 
-UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
-
 ```jsx
-<>
-  <Timepicker readOnly>
-    <TimepickerControl />
-  </Timepicker>
-  <Timepicker readOnly>
-    <TimepickerControl />
-    <TimepickerTimezoneList />
-  </Timepicker>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Timepicker readOnly>
+        <TimepickerControl />
+      </Timepicker>
+      <Timepicker readOnly>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+}
 ```
 
 ### With seconds
-
-UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
 
 ```jsx
 {
@@ -187,49 +272,48 @@ By default, the list use the `all` preset that displays all supported timezones.
 
 For further explanation about timezone strategy, see .
 
-All timezones
-
-UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
-
-Subset of timezone
-
-UTC-10UTC+0UTC+10
-
 ```jsx
-<>
-  <span>
-    All timezones  </span>
-  <Timepicker>
-    <TimepickerControl />
-    <TimepickerTimezoneList />
-  </Timepicker>
-  <span>
-    Subset of timezone  </span>
-  <Timepicker
-    timezones={[
-      'UTC-10',
-      'UTC+0',
-      'UTC+10'
-    ]}
-  >
-    <TimepickerControl />
-    <TimepickerTimezoneList />
-  </Timepicker>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <span>All timezones</span>
+      <Timepicker>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+      <span>Subset of timezone</span>
+      <Timepicker timezones={['UTC-10', 'UTC+0', 'UTC+10']}>
+        <TimepickerControl />
+        <TimepickerTimezoneList />
+      </Timepicker>
+    </>
+}
 ```
 
 ### Form field
 
-Timepicker:
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Timepicker:  </FormFieldLabel>
-  <Timepicker>
-    <TimepickerControl />
-  </Timepicker>
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Timepicker:      </FormFieldLabel>
+      <Timepicker>
+        <TimepickerControl />
+      </Timepicker>
+    </FormField>
+}
 ```
 
 ## Recipes

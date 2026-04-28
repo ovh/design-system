@@ -36,6 +36,35 @@
 ## Examples
 
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: 'var(--ods-theme-row-gap)'
+  }}>
+      <DataTable columns={sampleColumns} data={sampleData}>
+        <DataTableHead />
+
+        <DataTableBody />
+      </DataTable>
+
+      <DataTable columns={sampleColumns} data={[]}>
+        <DataTableHead />
+
+        <DataTableBody />
+
+        <DataTableEmpty>
+          Empty table data
+        </DataTableEmpty>
+      </DataTable>
+    </div>
+}
+```
+
 ### Default
 
 ```tsx

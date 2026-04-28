@@ -10,7 +10,7 @@
 | `i18n` | `` | No |  | Internal translations override. |
 | `loading` | `` | No | false | Whether the component is in loading state. |
 | `locale` | `` | No |  | The locale used for the translation of the internal elements. |
-| `maskOption` | `` | No | { enable: false, initialState: INPUT_MASK_STATE.close } | Whether the masked display is active and its initial state. |
+| `maskOption` | `` | No | { enable: false, initialState: INPUT_MASK_STATE.close } | Masked display options. |
 | `onClear` | `` | No |  | Callback fired when the input value is cleared. |
 | `type` | `` | No | INPUT_TYPE.text | The input type. |
 
@@ -61,6 +61,15 @@
       [INPUT_I18N.searchButton]: 'Search in database'
     }} type='search' />
     </FormField>
+}
+```
+
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Input placeholder="Input" />
 }
 ```
 

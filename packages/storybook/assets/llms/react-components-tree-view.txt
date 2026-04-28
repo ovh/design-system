@@ -32,8 +32,55 @@
 | `item` | `` | Yes |  | The tree node to render. |
 
 
+
+### TreeViewNodes
+
+
+
 ## Examples
 
+
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => {
+    const items = [{
+      id: 'src',
+      name: 'src',
+      children: [{
+        id: 'app.tsx',
+        name: 'app.tsx'
+      }, {
+        id: 'index.ts',
+        name: 'index.ts'
+      }, {
+        id: 'components',
+        name: 'components',
+        children: [{
+          id: 'Button.tsx',
+          name: 'Button.tsx'
+        }, {
+          id: 'Card.tsx',
+          name: 'Card.tsx'
+        }]
+      }]
+    }, {
+      id: 'package.json',
+      name: 'package.json'
+    }, {
+      id: 'readme.md',
+      name: 'README.md'
+    }];
+    return <TreeView items={items}>
+        <TreeViewNodes>
+          {items.map(item => <TreeViewNode key={item.id} item={item} />)}
+        </TreeViewNodes>
+      </TreeView>;
+  }
+}
+```
 
 ### Controlled
 

@@ -10,7 +10,9 @@ React Components
 
 ---
 
-1.  **Icon**
+Icon
+
+---
 
 ## Icon
 
@@ -19,7 +21,10 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [span attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/span#attributes) . |
-| name | `ICON_NAME` |  | `undefined` | The icon name. |
+| 
+name
+
+ | `ICON_NAME` |  | `undefined` | The icon name. |
 
 ## Enums
 
@@ -27,6 +32,8 @@ React Components
 
 ### ICON_NAME
 
+-   accessibility =`"accessibility"`
+-   accessibilityFull =`"accessibility-full"`
 -   analysis =`"analysis"`
 -   arrowCrossed =`"arrow-crossed"`
 -   arrowDown =`"arrow-down"`
@@ -170,12 +177,17 @@ React Components
 -   monitor =`"monitor"`
 -   moon =`"moon"`
 -   network =`"network"`
+-   paperclip =`"paperclip"`
+-   pause =`"pause"`
+-   pauseFull =`"pause-full"`
 -   pen =`"pen"`
 -   percent =`"percent"`
 -   phone =`"phone"`
 -   piggyBank =`"piggy-bank"`
 -   pin =`"pin"`
 -   pinOff =`"pin-off"`
+-   play =`"play"`
+-   playFull =`"play-full"`
 -   plus =`"plus"`
 -   printer =`"printer"`
 -   question =`"question"`
@@ -215,12 +227,15 @@ React Components
 -   star =`"star"`
 -   starFull =`"star-full"`
 -   starHalf =`"star-half"`
+-   stop =`"stop"`
+-   stopFull =`"stop-full"`
 -   store =`"store"`
 -   suitcase =`"suitcase"`
 -   sun =`"sun"`
 -   sync =`"sync"`
 -   tag =`"tag"`
 -   target =`"target"`
+-   theme =`"theme"`
 -   thumbsDown =`"thumbs-down"`
 -   thumbsUp =`"thumbs-up"`
 -   timer =`"timer"`
@@ -259,22 +274,36 @@ React Components
 ### Decorative
 
 ```jsx
-<Icon name="home" />
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Icon name={ICON_NAME.home} />
+}
 ```
 
 ### Informative
 
 ```jsx
-<Icon
-  aria-label="Help"
-  name="circle-question"
-  role="img"
-/>
+{
+  globals: {
+    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Icon aria-label="Help" name={ICON_NAME.circleQuestion} role="img" />
+}
 ```
 
 ## Recipes
 
 ---
+
+Chat
+
+Assistant2:58 PM
+
+Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 
 Config Tile
 

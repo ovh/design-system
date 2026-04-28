@@ -14,7 +14,7 @@ Message
 
 It grabs the user's attention in a prominent way.
 
-<table class="_table_e3iru_2 _table--md_e3iru_59 _table--striped_e3iru_167 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Message</td></tr><tr><th scope="row">Also known as</th><td>Notifier, Notification, Banner, Alert, Feedback</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=44-8300" target="_blank">Design <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/message" target="_blank">Github <span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-message--documentation" target="_blank">Previous major version<span class="_icon_1b4hj_2 _icon--external-link_1b4hj_250" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+<table class="_table_e3iru_2 _table--md_e3iru_59 _table--striped_e3iru_167 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Message</td></tr><tr><th scope="row">Also known as</th><td>Notifier, Notification, Banner, Alert, Feedback</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=44-8300" target="_blank">Design <span class="_icon_g76et_2 _icon--external-link_g76et_256" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/message" target="_blank">Github <span class="_icon_g76et_2 _icon--external-link_g76et_256" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://ovh.github.io/design-system/v18.6.4/?path=/docs/ods-components-message--documentation" target="_blank">Previous major version<span class="_icon_g76et_2 _icon--external-link_g76et_256" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
 
 ## Usage
 
@@ -133,31 +133,35 @@ When displaying multiple **Messages** together, they should be wrapped within an
     
 
 ```jsx
-<ul
-  style={{
+{
+  globals: {
+    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ul style={{
     display: 'flex',
     flexFlow: 'column',
-    listStyle: 'none',
+    rowGap: '8px',
     margin: 0,
     padding: 0,
-    rowGap: '8px'
-  }}
->
-  <li>
-    <Message>
-      <MessageIcon name="circle-check" />
-      <MessageBody>
-        Your changes have been saved.      </MessageBody>
-    </Message>
-  </li>
-  <li>
-    <Message color="warning">
-      <MessageIcon name="triangle-exclamation" />
-      <MessageBody>
-        Some fields need your attention.      </MessageBody>
-    </Message>
-  </li>
-</ul>
+    listStyle: 'none'
+  }}>
+      <li>
+        <Message>
+          <MessageIcon name={ICON_NAME.circleCheck} />
+          <MessageBody>
+            Your changes have been saved.          </MessageBody>
+        </Message>
+      </li>
+      <li>
+        <Message color={MESSAGE_COLOR.warning}>
+          <MessageIcon name={ICON_NAME.triangleExclamation} />
+          <MessageBody>
+            Some fields need your attention.          </MessageBody>
+        </Message>
+      </li>
+    </ul>
+}
 ```
 
 This structure ensures that assistive technologies announce **Messages** as a list, rather than reading them as separate, unrelated announcements.
@@ -173,28 +177,28 @@ Your changes have been saved.
 Some fields need your attention.
 
 ```jsx
-<div
-  role="list"
-  style={{
+{
+  globals: {
+    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <div role="list" style={{
     display: 'flex',
     flexFlow: 'column',
     rowGap: '8px'
-  }}
->
-  <Message role="listitem">
-    <MessageIcon name="circle-check" />
-    <MessageBody>
-      Your changes have been saved.    </MessageBody>
-  </Message>
-  <Message
-    color="warning"
-    role="listitem"
-  >
-    <MessageIcon name="triangle-exclamation" />
-    <MessageBody>
-      Some fields need your attention.    </MessageBody>
-  </Message>
-</div>
+  }}>
+      <Message role="listitem">
+        <MessageIcon name={ICON_NAME.circleCheck} />
+        <MessageBody>
+          Your changes have been saved.        </MessageBody>
+      </Message>
+      <Message color={MESSAGE_COLOR.warning} role="listitem">
+        <MessageIcon name={ICON_NAME.triangleExclamation} />
+        <MessageBody>
+          Some fields need your attention.        </MessageBody>
+      </Message>
+    </div>
+}
 ```
 
 ### Setting the container ARIA role

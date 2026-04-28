@@ -12,6 +12,15 @@
 ## Examples
 
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Avatar />
+}
+```
+
 ### Default
 
 ```tsx

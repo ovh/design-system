@@ -1,0 +1,137 @@
+React Components
+
+# Markdown
+
+## Overview
+
+---
+
+# Readme
+
+Wanna know more about **OVHCloud Design System**?
+
+Check the [Documentation](https://ovh.github.io/design-system/).
+
+# Readme Wanna know more about **OVHCloud Design System**? Check the [Documentation](https://ovh.github.io/design-system/).
+
+## Anatomy
+
+---
+
+Markdown
+
+---
+
+## Markdown
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| 
+component
+
+ | `Record<keyof JSX.IntrinsicElements, ReactNode>` | - | `undefined` | Override of default component rendering |
+| 
+
+content
+
+ | `string` |  | `undefined` | The Markdown content to transform. |
+
+## Examples
+
+---
+
+### Default
+
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+
+> Blockquotes
+
+`Inline code`
+
+```
+// print something in the console
+console.log('Hello World!');
+```
+
+| Column 1 | Column 2 |
+| --- | --- |
+| Value 1 | Value 2 |
+
+```jsx
+{
+  globals: {
+    imports: `import { Markdown } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Markdown content={`# Heading 1
+  ## Heading 2  ### Heading 3  #### Heading 4  ##### Heading 5  ###### Heading 6  > Blockquotes
+  \`Inline code\`  \`\`\`  // print something in the console  console.log('Hello World!');  \`\`\`
+  | Column 1 | Column 2 |  | --- | --- |  | Value 1 | Value 2 |  `} />
+}
+```
+
+### Custom Component
+
+You can use your own component to render some of the Markdown content.
+
+The `component` attribute is a Map that expects as key any HTML tag that are usually rendered from Markdown (h1, a, img, ...).
+
+Your renderer will be given as props the native attributes you'll normally received from the Markdown (like `href` for a link, `src`, `alt` and `title` for an image, ...).
+
+Here is an example with a [target blank link](https://ovh.github.io/design-system/)
+
+```jsx
+<Markdown component={{
+  a: ({
+    children,
+    href  }) => <Link href={href} target="_blank">{children}</Link>
+}} content="Here is an example with a [target blank link](https://ovh.github.io/design-system/)" />
+```
+
+### Code Highlighter
+
+```typescript
+import { Code, Markdown } from '@ovhcloud/ods-react';
+import lang from '@shikijs/langs/typescript';
+import theme from '@shikijs/themes/nord';
+const HighlightedCode = () => (
+  <Markdown
+    component={{
+      code: ({ children }) => {
+        return (
+          <Code
+            highlighter={{
+              language: lang,
+              theme: theme,
+            }}>
+            { children as string }
+          </Code>
+        );
+      }
+    }}
+    content={`# Highlighted Code
+```
+// print something in the console
+console.log('Hello World!');
+```
+`} />
+);
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

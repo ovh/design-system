@@ -5,13 +5,22 @@
 
 | Name | Type | Required | Default | Description |
 |------|------|----------|---------|-------------|
-| `as` | `` | No |  | Pass a HTML tag you may want to use instead of the preset one. Useful for example to apply heading style to a non-heading element. |
+| `as` | `` | No |  | @type=string Pass a HTML tag you may want to use instead of the preset one. Useful for example to apply heading style to a non-heading element. |
 | `disabled` | `` | No |  | Whether the text is displayed in a disabled context. |
 | `preset` | `` | No | TEXT_PRESET.paragraph | The text preset to use. |
 
 
 ## Examples
 
+
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+}
+```
 
 ### Default
 
@@ -120,6 +129,7 @@
   },
   tags: ['!dev'],
   render: ({}) => <>
+      <Text preset={TEXT_PRESET.blockquote}>Blockquote</Text>
       <Text preset={TEXT_PRESET.caption}>Caption</Text><br />
       <Text preset={TEXT_PRESET.code}>Code</Text><br />
       <Text preset={TEXT_PRESET.label}>Label</Text>
@@ -195,6 +205,7 @@
   },
   tags: ['!dev'],
   render: ({}) => <div>
+      <Text preset={TEXT_PRESET.blockquote}>Blockquote</Text>
       <Text preset={TEXT_PRESET.caption}>Caption</Text><br />
       <Text preset={TEXT_PRESET.code}>Code</Text><br />
       <Text preset={TEXT_PRESET.label}>Label</Text>

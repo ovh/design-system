@@ -102,6 +102,17 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Badge>
+      Badge
+    </Badge>
+}
+```
+
 ### Color
 
 ```tsx

@@ -6,16 +6,19 @@ React Components
 
 ---
 
-Checkbox
-
 ## Anatomy
 
 ---
 
-1.  **Checkbox**
-2.  **Checkbox Control**
-3.  **Checkbox Label**
-4.  **Checkbox Group**
+Checkbox
+
+CheckboxControl
+
+CheckboxGroup
+
+CheckboxLabel
+
+---
 
 ## Checkbox
 
@@ -24,14 +27,45 @@ Checkbox
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [label attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#attributes) . |
-| checked | `boolean | 'indeterminate'` | - | `undefined` | The controlled checked state of the checkbox. |
-| defaultChecked | `boolean` | - | `undefined` | The initial checked state of the checkbox. Use when you don't need to control the checked state of the checkbox. |
-| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
-| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
-| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
-| onCheckedChange | `(detail: CheckboxCheckedChangeDetail) => void` | - | `undefined` | Callback fired when the checked state changes. |
-| required | `boolean` | - | `undefined` | Whether the component is required. |
-| value | `string` | - | `undefined` | The value of form element. Useful for form submission. |
+| 
+checked
+
+ | `boolean | 'indeterminate'` | - | `undefined` | The controlled checked state of the checkbox. |
+| 
+
+defaultChecked
+
+ | `boolean` | - | `undefined` | The initial checked state of the checkbox. Use when you don't need to control the checked state of the checkbox. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+invalid
+
+ | `boolean` | - | `undefined` | Whether the component is in error state. |
+| 
+
+name
+
+ | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| 
+
+onCheckedChange
+
+ | `(detail: CheckboxCheckedChangeDetail) => void` | - | `undefined` | Callback fired when the checked state changes. |
+| 
+
+required
+
+ | `boolean` | - | `undefined` | Whether the component is required. |
+| 
+
+value
+
+ | `string` | - | `undefined` | The value of form element. Useful for form submission. |
 
 ## CheckboxControl
 
@@ -48,13 +82,40 @@ Checkbox
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| defaultValue | `string[]` | - | `undefined` | The initial value of `value` when uncontrolled. |
-| disabled | `boolean` | - | `undefined` | Whether the group is disabled. |
-| invalid | `boolean` | - | `undefined` | Whether the group is in error. |
-| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
-| onValueChange | `(value: string[]) => void` | - | `undefined` | Callback fired when the value changes. |
-| readOnly | `boolean` | - | `undefined` | Whether the component is readonly. |
-| value | `string[]` | - | `undefined` | The controlled value of the checkbox group. |
+| 
+defaultValue
+
+ | `string[]` | - | `undefined` | The initial value of `value` when uncontrolled. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the group is disabled. |
+| 
+
+invalid
+
+ | `boolean` | - | `undefined` | Whether the group is in error. |
+| 
+
+name
+
+ | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| 
+
+onValueChange
+
+ | `(value: string[]) => void` | - | `undefined` | Callback fired when the value changes. |
+| 
+
+readOnly
+
+ | `boolean` | - | `undefined` | Whether the component is readonly. |
+| 
+
+value
+
+ | `string[]` | - | `undefined` | The controlled value of the checkbox group. |
 
 ## CheckboxLabel
 
@@ -85,42 +146,50 @@ Checkbox
 ### Default
 
 ```jsx
-<Checkbox>
-  <CheckboxControl />
-</Checkbox>
+{
+  globals: {
+    imports: `import { Checkbox, CheckboxControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Checkbox>
+      <CheckboxControl />
+    </Checkbox>
+}
 ```
 
 ### Disabled
 
-Checkbox
-
 ```jsx
-<Checkbox disabled>
-  <CheckboxControl />
-  <CheckboxLabel>
-    Checkbox  </CheckboxLabel>
-</Checkbox>
+{
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Checkbox disabled>
+      <CheckboxControl />
+      <CheckboxLabel>
+        Checkbox      </CheckboxLabel>
+    </Checkbox>
+}
 ```
 
 ### Invalid
 
-Checkbox
-
 ```jsx
-<Checkbox invalid>
-  <CheckboxControl />
-  <CheckboxLabel>
-    Checkbox  </CheckboxLabel>
-</Checkbox>
+{
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Checkbox invalid>
+      <CheckboxControl />
+      <CheckboxLabel>
+        Checkbox      </CheckboxLabel>
+    </Checkbox>
+}
 ```
 
 ### States
-
-Unchecked
-
-Checked
-
-Indeterminate
 
 ```jsx
 <>
@@ -149,52 +218,58 @@ I agree to the terms and conditions.
 I agree to receive marketing communications.
 
 ```jsx
-<CheckboxGroup
-  defaultValue={[
-    'marketing'
-  ]}
-  name="acknowledgments"
->
-  <Checkbox value="term">
-    <CheckboxControl />
-    <CheckboxLabel>
-      I agree to the terms and conditions.    </CheckboxLabel>
-  </Checkbox>
-  <Checkbox value="marketing">
-    <CheckboxControl />
-    <CheckboxLabel>
-      I agree to receive marketing communications.    </CheckboxLabel>
-  </Checkbox>
-</CheckboxGroup>
+{
+  globals: {
+    imports: `import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <CheckboxGroup defaultValue={['marketing']} name="acknowledgments">
+      <Checkbox value="term">
+        <CheckboxControl />
+        <CheckboxLabel>
+          I agree to the terms and conditions.        </CheckboxLabel>
+      </Checkbox>
+      <Checkbox value="marketing">
+        <CheckboxControl />
+        <CheckboxLabel>
+          I agree to receive marketing communications.        </CheckboxLabel>
+      </Checkbox>
+    </CheckboxGroup>
+}
 ```
 
 ### Form field
 
-Legal considerations:
-
-I agree to the terms and conditions.
-
-I agree to receive marketing communications.
-
 ```jsx
-<>
-  <Text preset="label">
-    Legal considerations:  </Text>
-  <FormField>
-    <Checkbox>
-      <CheckboxControl />
-      <CheckboxLabel>
-        I agree to the terms and conditions.      </CheckboxLabel>
-    </Checkbox>
-  </FormField>
-  <FormField>
-    <Checkbox>
-      <CheckboxControl />
-      <CheckboxLabel>
-        I agree to receive marketing communications.      </CheckboxLabel>
-    </Checkbox>
-  </FormField>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    gap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { TEXT_PRESET, Checkbox, CheckboxControl, CheckboxLabel, FormField, Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Text preset={TEXT_PRESET.label}>
+        Legal considerations:      </Text>
+      <FormField>
+        <Checkbox>
+          <CheckboxControl />
+          <CheckboxLabel>
+            I agree to the terms and conditions.          </CheckboxLabel>
+        </Checkbox>
+      </FormField>
+      <FormField>
+        <Checkbox>
+          <CheckboxControl />
+          <CheckboxLabel>
+            I agree to receive marketing communications.          </CheckboxLabel>
+        </Checkbox>
+      </FormField>
+    </>
+}
 ```
 
 ## Recipes

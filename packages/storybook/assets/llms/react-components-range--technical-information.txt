@@ -10,7 +10,9 @@ React Components
 
 ---
 
-1.  **Range**
+Range
+
+---
 
 ## Range
 
@@ -19,21 +21,80 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| aria-label | `string[]` | - | `undefined` | The aria-label of each slider thumb. Useful for providing an accessible name to the slider. |
-| aria-labelledby | `string[]` | - | `undefined` | The id of the elements that labels each slider thumb. Useful for providing an accessible name to the slider. |
-| defaultValue | `number[]` | - | `undefined` | The initial selected value(s). Use when you don't need to control the value(s) of the range. |
-| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
-| displayBounds | `boolean` | - | `undefined` | Whether the range bounds are displayed under the track. |
-| displayTooltip | `boolean` | - | `undefined` | Whether a tooltip with the current thumb value is displayed on drag. |
-| invalid | `boolean` | - | `undefined` | Whether the component is in error state. |
-| max | `number` | - | `undefined` | The maximum value that can be selected. |
-| min | `number` | - | `undefined` | The minimum value that can be selected. |
-| name | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
-| onDragging | `(detail: RangeValueChangeDetail) => void` | - | `undefined` | Callback fired when the thumb moves. |
-| onValueChange | `(detail: RangeValueChangeDetail) => void` | - | `undefined` | Callback fired when the thumb is released. |
-| step | `number` | - | `undefined` | The amount to increment or decrement the value by. |
-| ticks | `RangeTickItem[]` | - | `undefined` | List of tick indicators to display alongside the range. |
-| value | `number[]` | - | `undefined` | The controlled selected value(s). |
+| 
+aria-label
+
+ | `string[]` | - | `undefined` | The aria-label of each slider thumb. Useful for providing an accessible name to the slider. |
+| 
+
+aria-labelledby
+
+ | `string[]` | - | `undefined` | The id of the elements that labels each slider thumb. Useful for providing an accessible name to the slider. |
+| 
+
+defaultValue
+
+ | `number[]` | - | `undefined` | The initial selected value(s). Use when you don't need to control the value(s) of the range. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+displayBounds
+
+ | `boolean` | - | `undefined` | Whether the range bounds are displayed under the track. |
+| 
+
+displayTooltip
+
+ | `boolean` | - | `undefined` | Whether a tooltip with the current thumb value is displayed on drag. |
+| 
+
+invalid
+
+ | `boolean` | - | `undefined` | Whether the component is in error state. |
+| 
+
+max
+
+ | `number` | - | `undefined` | The maximum value that can be selected. |
+| 
+
+min
+
+ | `number` | - | `undefined` | The minimum value that can be selected. |
+| 
+
+name
+
+ | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| 
+
+onDragging
+
+ | `(detail: RangeValueChangeDetail) => void` | - | `undefined` | Callback fired when the thumb moves. |
+| 
+
+onValueChange
+
+ | `(detail: RangeValueChangeDetail) => void` | - | `undefined` | Callback fired when the thumb is released. |
+| 
+
+step
+
+ | `number` | - | `undefined` | The amount to increment or decrement the value by. |
+| 
+
+ticks
+
+ | `RangeTickItem[]` | - | `undefined` | List of tick indicators to display alongside the range. |
+| 
+
+value
+
+ | `number[]` | - | `undefined` | The controlled selected value(s). |
 
 ## Interfaces
 
@@ -72,27 +133,25 @@ React Components
 
 ### Default
 
-0100
-
-0100
-
 ```jsx
-<>
-  <Range />
-  <Range
-    defaultValue={[
-      50,
-      75
-    ]}
-   />
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    rowGap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { Range } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Range />
+      <Range defaultValue={[50, 75]} />
+    </>
+}
 ```
 
 ### Disabled
-
-0100
-
-0100
 
 ```jsx
 {
@@ -233,16 +292,23 @@ const [draggingValue, setDraggingValue] = useState<number>();
 
 ### Form field
 
-Range:
-
-0100
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Range:  </FormFieldLabel>
-  <Range />
-</FormField>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    rowGap: '8px'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Range } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Range:      </FormFieldLabel>
+      <Range />
+    </FormField>
+}
 ```
 
 ## Recipes

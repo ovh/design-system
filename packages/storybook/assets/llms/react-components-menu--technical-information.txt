@@ -10,13 +10,21 @@ React Components
 
 ---
 
-1.  **Menu**
-2.  **Menu Trigger**
-3.  **Menu Content**
-4.  **Menu Group**
-5.  **Menu Group Label**
-6.  **Menu Item**
-7.  **Menu Submenu**
+Menu
+
+MenuContent
+
+MenuGroup
+
+MenuGroupLabel
+
+MenuItem
+
+MenuSubmenu
+
+MenuTrigger
+
+---
 
 ## Menu
 
@@ -24,12 +32,60 @@ React Components
 
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
-| onOpenChange | `(detail: MenuOpenChangeDetail) => void` | - | `undefined` | Callback fired when the menu open state changes. |
-| onPositionChange | `(detail: MenuPositionChangeDetail) => void` | - | `undefined` | Callback fired when the menu position changes. |
-| open | `boolean` | - | `undefined` | The controlled open state of the menu. |
-| position | `MENU_POSITION` | - | `undefined` | The menu position around the trigger. |
-| positionerStyle | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
-| triggerId | `string` | - | `undefined` | ID of an external trigger element to use in place of the MenuTrigger component. |
+| 
+onOpenChange
+
+ | `(detail: MenuOpenChangeDetail) => void` | - | `undefined` | Callback fired when the menu open state changes. |
+| 
+
+onPositionChange
+
+ | `(detail: MenuPositionChangeDetail) => void` | - | `undefined` | Callback fired when the menu position changes. |
+| 
+
+open
+
+ | `boolean` | - | `undefined` | The controlled open state of the menu. |
+| 
+
+overlayConfig
+
+ | `object` | - | `undefined` | The overlay configuration. |
+| 
+
+flip
+
+ | `boolean` | - | `-` | Whether to flip the position. |
+| 
+
+gutter
+
+ | `number` | - | `-` | The main axis offset or gap between the reference and floating elements. |
+| 
+
+position
+
+ | `MENU_POSITION` | - | `-` | The menu position around the trigger. |
+| 
+
+sameWidth
+
+ | `boolean` | - | `-` | Whether to make the floating element same width as the reference element. |
+| 
+
+positionDeprecated
+
+ | `MENU_POSITION` | - | `undefined` | Moved to overlayConfig. |
+| 
+
+positionerStyle
+
+ | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+| 
+
+triggerId
+
+ | `string` | - | `undefined` | ID of an external trigger element to use in place of the MenuTrigger component. |
 
 ## MenuContent
 
@@ -38,8 +94,15 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| createPortal | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. This only works on the root menu and not in submenus. |
-| withArrow | `boolean` | - | `false` | Whether the component displays an arrow pointing to the trigger. |
+| 
+createPortal
+
+ | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. This only works on the root menu and not in submenus. |
+| 
+
+withArrow
+
+ | `boolean` | - | `false` | Whether the component displays an arrow pointing to the trigger. |
 
 ## MenuGroup
 
@@ -48,7 +111,10 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| 
+asChild
+
+ | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
 
 ## MenuGroupLabel
 
@@ -57,7 +123,10 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| 
+asChild
+
+ | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
 
 ## MenuItem
 
@@ -66,9 +135,20 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| disabled | `boolean` | - | `undefined` | Whether the item is disabled. |
-| onSelect | `() => void` | - | `undefined` | Callback fired when the selection changes. |
-| value | `string` |  | `undefined` | The value of the item. |
+| 
+disabled
+
+ | `boolean` | - | `undefined` | Whether the item is disabled. |
+| 
+
+onSelect
+
+ | `() => void` | - | `undefined` | Callback fired when the selection changes. |
+| 
+
+value
+
+ | `string` |  | `undefined` | The value of the item. |
 
 ## MenuSubmenu
 
@@ -83,7 +163,10 @@ This component has no specific properties.
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
-| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| 
+asChild
+
+ | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
 
 ## Interfaces
 
@@ -150,52 +233,52 @@ const [isOpen, setIsOpen] = useState(false);
 ### Disabled
 
 ```jsx
-<Menu>
-  <MenuTrigger asChild>
-    <Button>
-      Open menu    </Button>
-  </MenuTrigger>
-  <MenuContent>
-    <MenuItem value="profile">
-      Profile    </MenuItem>
-    <MenuItem
-      disabled
-      value="settings"
-    >
-      Settings    </MenuItem>
-    <MenuItem value="logout">
-      Logout    </MenuItem>
-  </MenuContent>
-</Menu>
+{
+  globals: {
+    imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Menu>
+      <MenuTrigger asChild>
+        <Button>
+          Open menu        </Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem value="profile">Profile</MenuItem>
+        <MenuItem disabled value="settings">Settings</MenuItem>
+        <MenuItem value="logout">Logout</MenuItem>
+      </MenuContent>
+    </Menu>
+}
 ```
 
 ### Group
 
 ```jsx
-<Menu>
-  <MenuTrigger asChild>
-    <Button>
-      Open menu    </Button>
-  </MenuTrigger>
-  <MenuContent>
-    <MenuGroup>
-      <MenuGroupLabel>
-        Account      </MenuGroupLabel>
-      <MenuItem value="profile">
-        Profile      </MenuItem>
-      <MenuItem value="billing">
-        Billing      </MenuItem>
-    </MenuGroup>
-    <MenuGroup>
-      <MenuGroupLabel>
-        Support      </MenuGroupLabel>
-      <MenuItem value="help">
-        Help center      </MenuItem>
-      <MenuItem value="contact">
-        Contact support      </MenuItem>
-    </MenuGroup>
-  </MenuContent>
-</Menu>
+{
+  globals: {
+    imports: `import { Button, Menu, MenuContent, MenuGroup, MenuGroupLabel, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Menu>
+      <MenuTrigger asChild>
+        <Button>
+          Open menu        </Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuGroup>
+          <MenuGroupLabel>Account</MenuGroupLabel>
+          <MenuItem value='profile'>Profile</MenuItem>
+          <MenuItem value='billing'>Billing</MenuItem>
+        </MenuGroup>
+        <MenuGroup>
+          <MenuGroupLabel>Support</MenuGroupLabel>
+          <MenuItem value='help'>Help center</MenuItem>
+          <MenuItem value='contact'>Contact support</MenuItem>
+        </MenuGroup>
+      </MenuContent>
+    </Menu>
+}
 ```
 
 ### Nested

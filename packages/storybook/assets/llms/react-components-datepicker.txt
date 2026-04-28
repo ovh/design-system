@@ -20,8 +20,10 @@
 | `min` | `` | No |  | The minimum date that can be selected. |
 | `minView` | `` | No |  | The minimum view of the calendar (day, month, year). |
 | `name` | `` | No |  | The name of the form element. Useful for form submission. |
+| `onOpenChange` | `` | No |  | Callback fired when the datepicker open state changes. |
 | `onValueChange` | `` | No |  | Callback fired when the value changes. |
 | `open` | `` | No |  | The controlled open state of the datepicker. |
+| `overlayConfig` | `` | No |  | The overlay configuration. |
 | `placeholder` | `` | No |  | The placeholder text to display in the input. |
 | `positionerStyle` | `` | No |  | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 | `readOnly` | `` | No |  | Whether the component is readonly. |
@@ -140,6 +142,28 @@
         <DatepickerContent />
       </Datepicker>
     </FormField>
+}
+```
+
+### Anatomy Tech
+
+```tsx
+{
+  parameters: {
+    layout: 'start'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    height: '330px'
+  }}>
+      <Datepicker defaultValue={new Date()} open overlayConfig={{
+      flip: false
+    }}>
+        <DatepickerControl />
+
+        <DatepickerContent createPortal={false} />
+      </Datepicker>
+    </div>
 }
 ```
 

@@ -6,20 +6,31 @@ React Components
 
 ---
 
-Double click to edit
-
 ## Anatomy
 
 ---
 
-1.  **Editable**
-2.  **EditableDisplay**
-3.  **EditableEditTrigger**
-4.  **EditableDisplayEmpty**
-5.  **EditableInput**
-6.  **EditableActions**
-7.  **EditableSubmitTrigger**
-8.  **EditableCancelTrigger**
+Editable
+
+EditableActions
+
+EditableCancelTrigger
+
+EditableDisplay
+
+EditableDisplayEmpty
+
+EditableEditTrigger
+
+EditableInput
+
+EditableSubmitTrigger
+
+---
+
+Empty value
+
+---
 
 ## Editable
 
@@ -28,13 +39,40 @@ Double click to edit
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| defaultEditing | `boolean` | - | `undefined` | The initial editing state of the editable. Use when you don't need to control the editing state of the editable. |
-| editing | `boolean` | - | `undefined` | The controlled editing state of the editable. |
-| i18n | `Partial` | - | `undefined` | Internal translations override. |
-| locale | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
-| onCancel | `() => void` | - | `undefined` | Callback fired when the cancel trigger is activated. |
-| onEditChange | `(detail: EditableEditingChangeDetail) => void` | - | `undefined` | Callback fired when the editing state changes. |
-| onSubmit | `() => void` | - | `undefined` | Callback fired when the submit trigger is activated. |
+| 
+defaultEditing
+
+ | `boolean` | - | `undefined` | The initial editing state of the editable. Use when you don't need to control the editing state of the editable. |
+| 
+
+editing
+
+ | `boolean` | - | `undefined` | The controlled editing state of the editable. |
+| 
+
+i18n
+
+ | `Partial` | - | `undefined` | Internal translations override. |
+| 
+
+locale
+
+ | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| 
+
+onCancel
+
+ | `() => void` | - | `undefined` | Callback fired when the cancel trigger is activated. |
+| 
+
+onEditChange
+
+ | `(detail: EditableEditingChangeDetail) => void` | - | `undefined` | Callback fired when the editing state changes. |
+| 
+
+onSubmit
+
+ | `() => void` | - | `undefined` | Callback fired when the submit trigger is activated. |
 
 ## EditableActions
 
@@ -43,7 +81,10 @@ Double click to edit
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
-| children | `(props: { editing: boolean }) => ReactNode` | - | `undefined` | Custom actions render function, that provides Editable current state. |
+| 
+children
+
+ | `(props: { editing: boolean }) => ReactNode` | - | `undefined` | Custom actions render function, that provides Editable current state. |
 
 ## EditableCancelTrigger
 
@@ -52,7 +93,10 @@ Double click to edit
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
-| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| 
+asChild
+
+ | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
 
 ## EditableDisplay
 
@@ -77,7 +121,10 @@ Double click to edit
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
-| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| 
+asChild
+
+ | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
 
 ## EditableInput
 
@@ -94,7 +141,10 @@ Double click to edit
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
-| asChild | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+| 
+asChild
+
+ | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
 
 ## Enums
 
@@ -119,8 +169,6 @@ Double click to edit
 ---
 
 ### Default
-
-Double click to edit
 
 ```jsx
 const [value, setValue] = useState('Double click to edit');
@@ -158,8 +206,6 @@ const [displayValue, setDisplayValue] = useState('Double click to edit');
 
 ### Custom Actions
 
-Double click to edit
-
 ```jsx
 const [value, setValue] = useState('Double click to edit');
   const bufferValue = useRef(value);
@@ -188,8 +234,6 @@ const [value, setValue] = useState('Double click to edit');
 ```
 
 ### Complex Form Element
-
-Account name
 
 ```jsx
 const [displayValue, setDisplayValue] = useState('');

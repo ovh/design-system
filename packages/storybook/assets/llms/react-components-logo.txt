@@ -26,6 +26,17 @@
 }
 ```
 
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <div data-ods="logo-story">
+      <Logo />
+    </div>
+}
+```
+
 ### Default
 
 ```tsx

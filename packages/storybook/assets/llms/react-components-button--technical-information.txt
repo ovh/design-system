@@ -10,7 +10,9 @@ React Components
 
 ---
 
-1.  **Button**
+Button
+
+---
 
 ## Button
 
@@ -19,10 +21,25 @@ React Components
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
 | This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes) . |
-| color | `BUTTON_COLOR` | - | `BUTTON_COLOR.primary` | The color preset to use. |
-| loading | `boolean` | - | `false` | Whether the component is in loading state, disabling it. |
-| size | `BUTTON_SIZE` | - | `BUTTON_SIZE.md` | The size preset to use. |
-| variant | `BUTTON_VARIANT` | - | `BUTTON_VARIANT.default` | The variant preset to use. |
+| 
+color
+
+ | `BUTTON_COLOR` | - | `BUTTON_COLOR.primary` | The color preset to use. |
+| 
+
+loading
+
+ | `boolean` | - | `false` | Whether the component is in loading state, disabling it. |
+| 
+
+size
+
+ | `BUTTON_SIZE` | - | `BUTTON_SIZE.md` | The size preset to use. |
+| 
+
+variant
+
+ | `BUTTON_VARIANT` | - | `BUTTON_VARIANT.default` | The variant preset to use. |
 
 ## Enums
 
@@ -587,9 +604,14 @@ React Components
 ### Default
 
 ```jsx
-<Button>
-  My button
-</Button>
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button>
+      My button    </Button>
+}
 ```
 
 ### Color
@@ -620,9 +642,14 @@ React Components
 ### Loading
 
 ```jsx
-<Button loading>
-  Loading button
-</Button>
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button loading={true}>
+      Loading button    </Button>
+}
 ```
 
 ### Size
@@ -672,6 +699,12 @@ React Components
 ## Recipes
 
 ---
+
+Chat
+
+Assistant2:58 PM
+
+Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 
 Dashboard Card
 

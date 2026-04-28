@@ -10,10 +10,22 @@
 | `labelCopy` | `` | No |  | The initial tooltip label on copy button. |
 | `labelCopySuccess` | `` | No |  | The tooltip label on copy button after a successful copy. |
 | `onCopy` | `` | No |  | Callback fired when the text is copied. |
+| `positionerStyle` | `` | No |  | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
 
 
 ## Examples
 
+
+### Anatomy Tech
+
+```tsx
+{
+  tags: ['!dev'],
+  render: ({}) => <Code canCopy>
+      {`import { Text } from '@ovhcloud/ods-react';`}
+    </Code>
+}
+```
 
 ### Can Copy
 

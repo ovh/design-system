@@ -6,14 +6,15 @@ React Components
 
 ---
 
- 
-
 ## Anatomy
 
 ---
 
-1.  **ButtonGroup**
-2.  **ButtonGroupItem**
+ButtonGroup
+
+ButtonGroupItem
+
+---
 
 ## ButtonGroup
 
@@ -21,12 +22,35 @@ React Components
 
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
-| defaultValue | `string[]` | - | `undefined` | The initial value of the selected items. Use when you don't need to control the value of the component. |
-| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
-| multiple | `boolean` | - | `undefined` | Whether multiple items can be selected at the same time. |
-| onValueChange | `(detail: ButtonGroupValueChangeDetail) => void` | - | `undefined` | Callback fired when the selection changes. |
-| size | `BUTTON_SIZE` | - | `undefined` | The size preset to use. |
-| value | `string[]` | - | `undefined` | The controlled value of the selected items. |
+| 
+defaultValue
+
+ | `string[]` | - | `undefined` | The initial value of the selected items. Use when you don't need to control the value of the component. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+multiple
+
+ | `boolean` | - | `undefined` | Whether multiple items can be selected at the same time. |
+| 
+
+onValueChange
+
+ | `(detail: ButtonGroupValueChangeDetail) => void` | - | `undefined` | Callback fired when the selection changes. |
+| 
+
+size
+
+ | `BUTTON_SIZE` | - | `undefined` | The size preset to use. |
+| 
+
+value
+
+ | `string[]` | - | `undefined` | The controlled value of the selected items. |
 
 ## ButtonGroupItem
 
@@ -34,8 +58,15 @@ React Components
 
 | Property | Type | Required | Default value | Description |
 | --- | --- | --- | --- | --- |
-| disabled | `boolean` | - | `undefined` | Whether the component is disabled. |
-| value | `string` |  | `undefined` | The value of the item. |
+| 
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+value
+
+ | `string` |  | `undefined` | The value of the item. |
 
 ## Enums
 
@@ -70,21 +101,20 @@ React Components
 
 ### Default
 
- 
-
 ```jsx
-<ButtonGroup>
-  <ButtonGroupItem value="hourly">
-    Hourly  </ButtonGroupItem>
-  <ButtonGroupItem value="daily">
-    Daily  </ButtonGroupItem>
-  <ButtonGroupItem value="monthly">
-    Monthly  </ButtonGroupItem>
-  <ButtonGroupItem value="custom">
-    <Icon name="calendar" />
-    {' '}Custom
-  </ButtonGroupItem>
-</ButtonGroup>
+{
+  globals: {
+    imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ButtonGroup>
+      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+      <ButtonGroupItem value="custom">
+        <Icon name={ICON_NAME.calendar} /> Custom      </ButtonGroupItem>
+    </ButtonGroup>
+}
 ```
 
 ### Disabled
@@ -92,45 +122,40 @@ React Components
  
 
 ```jsx
-<ButtonGroup disabled>
-  <ButtonGroupItem value="hourly">
-    Hourly  </ButtonGroupItem>
-  <ButtonGroupItem value="daily">
-    Daily  </ButtonGroupItem>
-  <ButtonGroupItem value="monthly">
-    Monthly  </ButtonGroupItem>
-  <ButtonGroupItem value="custom">
-    <Icon name="calendar" />
-    {' '}Custom
-  </ButtonGroupItem>
-</ButtonGroup>
+{
+  globals: {
+    imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ButtonGroup disabled>
+      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+      <ButtonGroupItem value="custom">
+        <Icon name={ICON_NAME.calendar} /> Custom      </ButtonGroupItem>
+    </ButtonGroup>
+}
 ```
 
 ### Disabled Item
 
- 
-
 ```jsx
-<ButtonGroup>
-  <ButtonGroupItem value="hourly">
-    Hourly  </ButtonGroupItem>
-  <ButtonGroupItem value="daily">
-    Daily  </ButtonGroupItem>
-  <ButtonGroupItem value="monthly">
-    Monthly  </ButtonGroupItem>
-  <ButtonGroupItem
-    disabled
-    value="custom"
-  >
-    <Icon name="calendar" />
-    {' '}Custom
-  </ButtonGroupItem>
-</ButtonGroup>
+{
+  globals: {
+    imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ButtonGroup>
+      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
+      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
+      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
+      <ButtonGroupItem disabled value="custom">
+        <Icon name={ICON_NAME.calendar} /> Custom      </ButtonGroupItem>
+    </ButtonGroup>
+}
 ```
 
 ### Controlled
-
- 
 
 ```jsx
 const [values, setValues] = useState(['hourly']);
@@ -148,16 +173,18 @@ const [values, setValues] = useState(['hourly']);
 ### Multiple
 
 ```jsx
-<ButtonGroup multiple>
-  <ButtonGroupItem value="option-1">
-    Option 1  </ButtonGroupItem>
-  <ButtonGroupItem value="option-2">
-    Option 2  </ButtonGroupItem>
-  <ButtonGroupItem value="option-3">
-    Option 3  </ButtonGroupItem>
-  <ButtonGroupItem value="option-4">
-    Option 4  </ButtonGroupItem>
-</ButtonGroup>
+{
+  globals: {
+    imports: `import { ButtonGroup, ButtonGroupItem } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ButtonGroup multiple>
+      <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
+      <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
+      <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
+      <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
+    </ButtonGroup>
+}
 ```
 
 ### Size

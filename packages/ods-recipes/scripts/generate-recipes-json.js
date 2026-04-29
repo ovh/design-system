@@ -54,7 +54,7 @@ async function getComponentSources(src) {
     .filter((dirent) => dirent.isFile());
 
   for (const file of files) {
-    source[file.name] = await fs.readFile(path.resolve(file.path, file.name), 'utf8');
+    source[file.name] = await fs.readFile(path.resolve(file.parentPath, file.name), 'utf8');
   }
 
   return source;
@@ -68,7 +68,7 @@ async function getImportedOdsComponents(src) {
   let odsImports = [];
 
   for (const file of files) {
-    const fileContent = await fs.readFile(path.resolve(file.path, file.name), 'utf8');
+    const fileContent = await fs.readFile(path.resolve(file.parentPath, file.name), 'utf8');
 
     const odsImportMatches = fileContent
       .split(/\r?\n/)

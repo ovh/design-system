@@ -25,11 +25,24 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
   ...props
 }, ref): JSX.Element => {
   const { open } = useDialogContext();
-  const { positionerStyle } = useDrawer();
+  const { backdrop, backdropStyle, positionerStyle } = useDrawer();
 
   return (
     <Portal disabled={ !createPortal }>
-      <Dialog.Positioner style={ positionerStyle }>
+      {
+        backdrop &&
+        <Dialog.Backdrop
+          className={ style['drawer-backdrop'] }
+          style={{
+            zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)',
+            ...(backdropStyle || {}),
+          }} />
+      }
+
+      <Dialog.Positioner style={{
+        zIndex: 'calc(var(--ods-theme-overlay-z-index) + 2)',
+        ...(positionerStyle || {}),
+      }}>
         <Dialog.Content
           aria-describedby={ props['aria-describedby'] || '' }
           aria-labelledby={ props['aria-labelledby'] || '' }

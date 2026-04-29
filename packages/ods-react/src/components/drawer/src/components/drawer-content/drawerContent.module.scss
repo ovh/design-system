@@ -1,6 +1,11 @@
 @use '../../../../../style/drawer';
+@use '../../../../../style/modal';
 
 @layer ods-molecules {
+  .drawer-backdrop {
+    @include modal.ods-modal-backdrop();
+  }
+
   .drawer-content {
     @include drawer.ods-drawer();
 

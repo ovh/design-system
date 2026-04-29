@@ -5,6 +5,8 @@ import { DrawerProvider, type DrawerRootProp } from '../../contexts/useDrawer';
 interface DrawerProp extends DrawerRootProp {}
 
 const Drawer: FC<PropsWithChildren<DrawerProp>> = ({
+  backdrop,
+  backdropStyle,
   children,
   closeOnEscape = true,
   closeOnInteractOutside = false,
@@ -14,16 +16,19 @@ const Drawer: FC<PropsWithChildren<DrawerProp>> = ({
   positionerStyle,
 }): JSX.Element => {
   return (
-    <DrawerProvider positionerStyle={ positionerStyle }>
+    <DrawerProvider
+      backdrop={ backdrop }
+      backdropStyle={ backdropStyle }
+      positionerStyle={ positionerStyle }>
       <Dialog.Root
         closeOnEscape={ closeOnEscape }
         closeOnInteractOutside={ closeOnInteractOutside }
         defaultOpen={ defaultOpen }
-        modal={ false }
+        modal={ backdrop === true }
         onOpenChange={ onOpenChange }
         open={ open }
         preventScroll={ false }
-        trapFocus={ false }>
+        trapFocus={ backdrop === true }>
         { children }
       </Dialog.Root>
     </DrawerProvider>

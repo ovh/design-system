@@ -1,4 +1,4 @@
-import { DRAWER_POSITION, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '.';
+import { Drawer, DRAWER_POSITION, DrawerBody, DrawerContent, DrawerTrigger } from '.';
 import { Popover, PopoverContent, PopoverTrigger } from '../../popover/src';
 import style from './dev.module.css';
 
@@ -6,6 +6,20 @@ export default {
   component: Drawer,
   title: 'Drawer dev',
 };
+
+export const Backdrop = () => (
+  <Drawer backdrop>
+    <DrawerTrigger>
+      Trigger drawer
+    </DrawerTrigger>
+
+    <DrawerContent position={ DRAWER_POSITION.right }>
+      <DrawerBody>
+        Drawer Content
+      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+);
 
 export const Default = () => (
   <Drawer>

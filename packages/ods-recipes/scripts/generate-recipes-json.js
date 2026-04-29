@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 import fs from 'fs/promises';
+import { existsSync } from 'node:fs';
 import path from 'path';
 
 const README_FILE = 'README.md';
@@ -53,7 +54,7 @@ async function getComponentSources(src) {
     .filter((dirent) => dirent.isFile());
 
   for (const file of files) {
-    source[file.name] = await fs.readFile(path.resolve(file.path, file.name), 'utf8');
+    source[file.name] = await fs.readFile(path.resolve(file.parentPath, file.name), 'utf8');
   }
 
   return source;
@@ -67,7 +68,7 @@ async function getImportedOdsComponents(src) {
   let odsImports = [];
 
   for (const file of files) {
-    const fileContent = await fs.readFile(path.resolve(file.path, file.name), 'utf8');
+    const fileContent = await fs.readFile(path.resolve(file.parentPath, file.name), 'utf8');
 
     const odsImportMatches = fileContent
       .split(/\r?\n/)
@@ -84,7 +85,7 @@ async function getImportedOdsComponents(src) {
 
 async function listComponents(src) {
   return (await fs.readdir(src, { withFileTypes: true }))
-    .filter((dirent) => dirent.isDirectory())
+    .filter((dirent) => dirent.isDirectory() && existsSync(path.resolve(src, dirent.name, 'package.json')))
     .map((dirent) => dirent.name);
 }
 

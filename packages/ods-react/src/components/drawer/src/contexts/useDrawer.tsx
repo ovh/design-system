@@ -7,6 +7,14 @@ interface DrawerOpenChangeDetail {
 
 interface DrawerRootProp {
   /**
+   * Whether a backdrop is displayed.
+   */
+  backdrop?: boolean;
+  /**
+   * Custom style applied to the drawer backdrop. Useful if you want to override the backdrop z-index.
+   */
+  backdropStyle?: CSSProperties;
+  /**
    * Whether to close the drawer when the escape key is pressed.
    */
   closeOnEscape?: boolean,
@@ -32,7 +40,7 @@ interface DrawerRootProp {
   positionerStyle?: CSSProperties,
 }
 
-interface DrawerProviderProp extends Pick<DrawerRootProp, 'positionerStyle'> {
+interface DrawerProviderProp extends Pick<DrawerRootProp, 'backdrop' | 'backdropStyle' | 'positionerStyle'> {
   children: ReactNode,
 }
 
@@ -40,9 +48,18 @@ type DrawerContextType = Omit<DrawerProviderProp, 'children'>;
 
 const DrawerContext = createContext<DrawerContextType | undefined>(undefined);
 
-function DrawerProvider({ children, positionerStyle }: DrawerProviderProp): JSX.Element {
+function DrawerProvider({
+  backdrop,
+  backdropStyle,
+  children,
+  positionerStyle,
+}: DrawerProviderProp): JSX.Element {
   return (
-    <DrawerContext.Provider value={{ positionerStyle }}>
+    <DrawerContext.Provider value={{
+      backdrop,
+      backdropStyle,
+      positionerStyle,
+    }}>
       { children }
     </DrawerContext.Provider>
   );

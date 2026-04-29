@@ -7,6 +7,20 @@ export default {
   title: 'Drawer dev',
 };
 
+export const Backdrop = () => (
+  <Drawer backdrop>
+    <DrawerTrigger>
+      Trigger drawer
+    </DrawerTrigger>
+
+    <DrawerContent position={ DRAWER_POSITION.right }>
+      <DrawerBody>
+        Drawer Content
+      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+);
+
 export const Default = () => (
   <Drawer>
     <DrawerTrigger>

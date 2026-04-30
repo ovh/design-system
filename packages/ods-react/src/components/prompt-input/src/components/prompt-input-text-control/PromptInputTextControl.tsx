@@ -9,6 +9,7 @@ import {
   useLayoutEffect,
   useRef,
 } from 'react';
+import { cssSupports } from '../../../../../utils/browser';
 import { Textarea, type TextareaProp } from '../../../../textarea/src';
 import { usePromptInput } from '../../contexts/usePromptInput';
 import style from './PromptInputTextControl.module.scss';
@@ -17,7 +18,7 @@ interface PromptInputTextControlProp extends TextareaProp {
   placeholder?: string;
 }
 
-const supportsFieldSizing = typeof CSS !== 'undefined' && CSS.supports('field-sizing', 'content');
+const supportsFieldSizing = cssSupports('field-sizing', 'content');
 
 function applyScrollHeight(el: HTMLTextAreaElement): void {
   // Reset to 'unset' first so the browser recomputes scrollHeight without being constrained by the previously set height…

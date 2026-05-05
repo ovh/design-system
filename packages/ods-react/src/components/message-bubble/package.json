@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-message-bubble",
-  "version": "19.6.1",
+  "version": "19.7.1",
   "private": true,
   "description": "ODS React MessageBubble component",
   "type": "module",

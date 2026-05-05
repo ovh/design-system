@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-query-filter",
-  "version": "19.6.1",
+  "version": "19.7.1",
   "private": true,
   "description": "ODS React QueryFilter component",
   "type": "module",

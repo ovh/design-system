@@ -1,0 +1,441 @@
+React Components
+
+# Query Filter
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+QueryFilter
+
+QueryFilterClear
+
+QueryFilterContent
+
+QueryFilterControl
+
+QueryFilterTags
+
+---
+
+## QueryFilter
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) . |
+| 
+allowCustomValue
+
+ | `boolean` | - | `undefined` | Whether to allow adding a custom filter. |
+| 
+
+defaultOpen
+
+ | `boolean` | - | `undefined` | The initial open state of the query filter. Use when you don't need to control the open state of the query filter. |
+| 
+
+defaultValue
+
+ | `string[][]` | - | `undefined` | The initial selected value(s). Use when you don't need to control the selected value(s) of the query filter. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+filterOption
+
+ | `Record` |  | `undefined` | The property filter options (operator and value). |
+| 
+
+filterProperty
+
+ | `object` |  | `undefined` | The properties that may be used as a filter. |
+| 
+
+label
+
+ | `string` |  | `-` | - |
+| 
+
+options
+
+ | `Array` |  | `-` | - |
+| 
+
+highlightResults
+
+ | `boolean` | - | `false` | Whether to highlight the matching part of filtered items. |
+| 
+
+i18n
+
+ | `Partial` | - | `undefined` | Internal translations override (see Input i18n keys). |
+| 
+
+invalid
+
+ | `boolean` | - | `undefined` | Whether the component is in error state. |
+| 
+
+locale
+
+ | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| 
+
+name
+
+ | `string` | - | `undefined` | The name of the form element. Useful for form submission. |
+| 
+
+newElementLabel
+
+ | `string` | - | `'Use: '` | Label displayed in front of a custom filter to add. |
+| 
+
+noResultLabel
+
+ | `string` | - | `'No results found'` | Label displayed when no values match the current input value. |
+| 
+
+onInputValueChange
+
+ | `(value: QueryFilterInputValueChangeDetails) => void` | - | `undefined` | Callback fired when the input value changes. |
+| 
+
+onOpenChange
+
+ | `(detail: QueryFilterOpenChangeDetail) => void` | - | `undefined` | Callback fired when the query filter open state changes. |
+| 
+
+onValueChange
+
+ | `(value: QueryFilterValueChangeDetails) => void` | - | `undefined` | Callback fired when the value(s) changes. |
+| 
+
+open
+
+ | `boolean` | - | `undefined` | The controlled open state of the query filter. |
+| 
+
+overlayConfig
+
+ | `object` | - | `undefined` | The overlay configuration. |
+| 
+
+flip
+
+ | `boolean` | - | `-` | Whether to flip the position. |
+| 
+
+sameWidth
+
+ | `boolean` | - | `-` | Whether to make the floating element same width as the reference element. |
+| 
+
+readOnly
+
+ | `boolean` | - | `undefined` | Whether the component is readonly. |
+| 
+
+required
+
+ | `boolean` | - | `undefined` | Whether the component is required. |
+| 
+
+value
+
+ | `string[][]` | - | `undefined` | The controlled selected value(s). |
+
+## QueryFilterClear
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) . |
+| 
+color
+
+ | `BUTTON_COLOR` | - | `undefined` | The color preset to use. |
+| 
+
+loading
+
+ | `boolean` | - | `undefined` | Whether the component is in loading state, disabling it. |
+| 
+
+size
+
+ | `BUTTON_SIZE` | - | `undefined` | The size preset to use. |
+| 
+
+variant
+
+ | `BUTTON_VARIANT` | - | `undefined` | The variant preset to use. |
+
+## QueryFilterContent
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) . |
+| 
+createPortal
+
+ | `boolean` | - | `true` | Whether the component should be rendered in the DOM close to the body tag. |
+
+## QueryFilterControl
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) . |
+| 
+clearable
+
+ | `boolean` | - | `undefined` | Whether the clear button is displayed. |
+| 
+
+loading
+
+ | `boolean` | - | `undefined` | Whether the component is in loading state. |
+| 
+
+placeholder
+
+ | `string` | - | `undefined` | The placeholder text to display in the input. |
+
+## QueryFilterTags
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [ul attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul) . |
+
+## Interfaces
+
+---
+
+### QueryFilterInputValueChangeDetails
+
+-   `inputValue: string`
+
+### QueryFilterItem
+
+-   `label: string`
+-   `value: string`
+
+### QueryFilterOpenChangeDetail
+
+-   `open: boolean`
+
+### QueryFilterOption
+
+-   `Record<string>`
+
+### QueryFilterProperty
+
+-   `QueryFilterGroup`
+
+### QueryFilterValueChangeDetails
+
+-   `value: undefined[]`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-query-filter-control-column-gap | calc(var(--ods-theme-column-gap) / 2) | 
+ |
+| --ods-query-filter-control-padding-vertical | calc(var(--ods-theme-input-padding-vertical) / 2) | 
+
+ |
+| --ods-query-filter-control-row-gap | calc(var(--ods-theme-row-gap) / 2) | 
+
+ |
+| --ods-query-filter-group-option-padding-horizontal | calc(var(--ods-theme-input-padding-horizontal) * 3) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+const filterProperty = useMemo(() => ({
+    label: 'Properties',
+    options: [{
+      label: 'Instance ID',
+      value: 'instance-id'
+    }, {
+      label: 'States',
+      value: 'states'
+    }]
+  }), []);
+  const filterOption = useMemo(() => ({
+    ['instance-id']: {
+      operator: {
+        label: 'Operators I',
+        options: [{
+          label: 'equals',
+          value: '='
+        }, {
+          label: 'does not equal',
+          value: '!='
+        }]
+      },
+      value: {
+        label: 'Instance Values',
+        options: [{
+          label: 'instance 1',
+          value: 'instance-1'
+        }, {
+          label: 'instance 2',
+          value: 'instance-2'
+        }]
+      }
+    },
+    states: {
+      operator: {
+        label: 'Operators S',
+        options: [{
+          label: 'equals',
+          value: '='
+        }, {
+          label: 'does not equal',
+          value: '!='
+        }]
+      },
+      value: {
+        label: 'State Values',
+        options: [{
+          label: 'Running',
+          value: 'running'
+        }, {
+          label: 'Stopped',
+          value: 'stopped'
+        }]
+      }
+    }
+  }), []);
+  return <QueryFilter filterOption={filterOption} filterProperty={filterProperty}>
+      <QueryFilterControl />
+      <QueryFilterContent />
+      <QueryFilterTags />
+      <QueryFilterClear>
+        Clear all      </QueryFilterClear>
+    </QueryFilter>;
+}
+```
+
+## Recipes
+
+---
+
+Data Grid With Query Filter
+
+| 
+Instance ID
+
+ | 
+
+Location
+
+ | 
+
+Model
+
+ | 
+
+Image
+
+ | 
+
+Backup Logic
+
+ | 
+
+Running since
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |

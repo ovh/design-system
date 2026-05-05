@@ -1,0 +1,73 @@
+React Components
+
+# Avatar
+
+_**Avatar** is a visual representation of a user or entity, supporting multiple content types such as user images, icons, and user initials._
+
+## Overview
+
+---
+
+The **Avatar** component is a visual representation of a user or entity, supporting multiple content types such as user images, icons, and user initials.
+
+<table class="_table_e3iru_2 _table--md_e3iru_59 _table--striped_e3iru_167 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Avatar</td></tr><tr><th scope="row">Also known as</th><td>-</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/mwZtfuQ9nzv6fY0dfez4NZ/-Q3-2026--IA-element?node-id=18697-768" target="_blank">Design <span class="_icon_g76et_2 _icon--external-link_g76et_256" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/avatar" target="_blank">Github<span class="_icon_g76et_2 _icon--external-link_g76et_256" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+The **Avatar** component is commonly used to represent users, bots, or systems in various applications, such as chat interfaces, user profiles, or notification systems.
+
+It is commonly used for:
+
+-   **User profiles**: display a user's avatar next to their name and other profile information
+-   **Chat interfaces**: use avatars to represent users or bots in a conversation
+-   **Notification systems**: display an avatar for the sender or recipient of a notification
+-   **Team or member lists**: show avatars for each team member or user in a list
+-   **Comment sections**: display an avatar for each commenter to help identify the author of a comment
+
+### Dos & Don'ts
+
+| ✅ Do |
+| --- |
+| - Use the Avatar component to represent a user or entity in a concise and recognizable way |
+| - Choose the appropriate content type (image, icon, or initials) based on the context and available information |
+| - Use the Avatar component with sufficient contrast or color scheme |
+
+| ❌ Don't |
+| --- |
+| - Don't use the Avatar component as a decorative element or without a clear purpose |
+| - Don't overload the Avatar component with too much information or complex graphics |
+| - Don't use an Avatar that is too small or too large for the context, which can affect readability and recognition |
+| - Don't forget to provide a fallback logic for cases where the image fails to load or no name is provided (i.e. initials, icons) |
+
+### Best Practices in Context
+
+1.  **Avatar**
+
+## Behavior
+
+---
+
+The **Avatar** component is a static display-only element, providing a visual representation of a user or entity without any interactive functionality.
+
+The component follows a content priority chain:
+
+-   If **children** are provided, they are displayed (initials, custom icon, etc.)
+-   If a **src** URL is provided, an image is rendered
+-   If the image fails to load (error), the **fallback** content is displayed
+-   If no fallback is provided, a default user icon is shown
+
+## Navigation
+
+---
+
+The **Avatar** component is non-interactive and does not receive keyboard focus when used alone.
+
+## Accessibility
+
+---
+
+When used inside interactive contexts (e.g. next to a user name link or inside a button), ensure the parent element provides the necessary accessible label.
+
+When the **Avatar** displays an image, the `alt` attribute is empty by default since the avatar is typically decorative. If the avatar conveys meaningful information, wrap it in an element with an appropriate `aria-label`.

@@ -1,0 +1,507 @@
+React Components
+
+# Pagination
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+Pagination
+
+PaginationPageSelector
+
+PaginationPageSizeSelector
+
+PaginationPages
+
+---
+
+## Pagination
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [nav attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/nav#attributes) . |
+| 
+defaultPage
+
+ | `number` | - | `undefined` | The initial active page. Use when you don't need to control the active page of the pagination. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+labelTooltipNext
+
+ | `string` | - | `undefined` | The tooltip label on the "next page" button. |
+| 
+
+labelTooltipPrev
+
+ | `string` | - | `undefined` | The tooltip label on the "previous page" button. |
+| 
+
+onPageChange
+
+ | `(detail: PaginationPageChangeDetail) => void` | - | `undefined` | Callback fired when the active page changes. |
+| 
+
+onPageSizeChange
+
+ | `(detail: PaginationPageSizeChangeDetail) => void` | - | `undefined` | Callback fired when the page size changes. |
+| 
+
+page
+
+ | `number` | - | `undefined` | The controlled active page |
+| 
+
+pageSize
+
+ | `number` | - | `undefined` | The number of items per page. |
+| 
+
+renderTotalItemsLabelDeprecated
+
+ | `(params: { totalItems: number }) => string | number` | - | `'of ${totalItems} results'` | Format the label displayed near the per-page selector. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector |
+| 
+
+siblingCount
+
+ | `number` | - | `undefined` | The number of pages to show beside active page. |
+| 
+
+totalItems
+
+ | `number` |  | `undefined` | The total number of items. |
+| 
+
+withPageSizeSelectorDeprecated
+
+ | `boolean` | - | `undefined` | Whether the per-page selector is displayed. DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector |
+
+## PaginationPageSelector
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [form attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form#attributes) . |
+| 
+label
+
+ | `ReactNode` | - | `'Go to page'` | The label displayed near the go-to-page input. |
+| 
+
+submitLabel
+
+ | `ReactNode` | - | `'Go'` | The label displayed in the go-to-page submit button. |
+
+## PaginationPageSizeSelector
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| 
+label
+
+ | `ReactNode` | - | `'of ${totalItems} results'` | The label displayed near the per-page selector. |
+
+## PaginationPages
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## Enums
+
+---
+
+### PAGINATION_PER_PAGE
+
+-   option_10 =`"10"`
+-   option_100 =`"100"`
+-   option_25 =`"25"`
+-   option_300 =`"300"`
+-   option_50 =`"50"`
+
+## Interfaces
+
+---
+
+### PaginationPageChangeDetail
+
+-   `page: number`
+-   `pageSize: number`
+
+### PaginationPageSizeChangeDetail
+
+-   `pageSize: number`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-pagination-page-selector-input-width | 45px | 
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+{
+  globals: {
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination totalItems={5000}>
+      <PaginationPages />
+    </Pagination>
+}
+```
+
+### Controlled
+
+### Disabled
+
+```jsx
+{
+  globals: {
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination disabled totalItems={500}>
+      <PaginationPages />
+    </Pagination>
+}
+```
+
+### Items per page
+
+```jsx
+{
+  globals: {
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination pageSize={25} totalItems={500}>
+      <PaginationPages />
+    </Pagination>
+}
+```
+
+### Sibling count
+
+```jsx
+{
+  globals: {
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination defaultPage={5} siblingCount={2} totalItems={500}>
+      <PaginationPages />
+    </Pagination>
+}
+```
+
+### With tooltip labels
+
+```jsx
+{
+  globals: {
+    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination labelTooltipPrev="Go to previous page" labelTooltipNext="Go to next page" totalItems={500}>
+      <PaginationPages />
+    </Pagination>
+}
+```
+
+### With page size selection
+
+```jsx
+{
+  globals: {
+    imports: `import { Pagination, PaginationPageSizeSelector, PaginationPages } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Pagination totalItems={500}>
+      <PaginationPageSizeSelector />
+      <PaginationPages />
+    </Pagination>
+}
+```
+
+## Recipes
+
+---
+
+Data Grid
+
+| 
+ | 
+
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+IP Address
+
+ | 
+
+Actions
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+
+102550100300
+
+of 0 results
+
+Data Grid With Query Filter
+
+| 
+Instance ID
+
+ | 
+
+Location
+
+ | 
+
+Model
+
+ | 
+
+Image
+
+ | 
+
+Backup Logic
+
+ | 
+
+Running since
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |

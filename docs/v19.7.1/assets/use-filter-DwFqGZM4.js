@@ -1,0 +1,1 @@
+import{c as r}from"./index-BXelFz3z.js";import{r as a}from"./index-jIWwRBLr.js";import{u as c}from"./use-locale-context-CGqEQCyU.js";function n(e){const t=c(),o=e.locale??t.locale;return a.useMemo(()=>r({...e,locale:o}),[o,e])}export{n as u};

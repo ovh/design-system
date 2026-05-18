@@ -254,6 +254,10 @@ const ComboboxProvider = ({
   }, [open]);
 
   useEffect(() => {
+    if (!value) {
+      return;
+    }
+
     const matchingItems = getDefaultSelection(items, value);
 
     if (matchingItems.length) {
@@ -264,6 +268,9 @@ const ComboboxProvider = ({
         setInputValue('');
         _setSelection(matchingItems);
       }
+    } else if (value.length === 0) {
+      setInputValue('');
+      _setSelection([]);
     }
   }, [value]); // eslint-disable-line react-hooks/exhaustive-deps
 

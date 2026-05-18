@@ -90,6 +90,16 @@ describe('Combobox behaviour', () => {
 
       expect(await getInputValue(page)).toBe('Banana');
     });
+
+    it('should clear value when set to []', async() => {
+      const clearValueButton = await page.$('#clear-value');
+
+      expect(await getInputValue(page)).toBe('Apple');
+
+      await clearValueButton?.click();
+
+      expect(await getInputValue(page)).toBe('');
+    });
   });
 
   describe('on blur', () => {

@@ -65,6 +65,12 @@ export const ControlledValue = () => {
         Force value "Banana"
       </button>
 
+      <button
+        id="clear-value"
+        onClick={ () => setValues([]) }>
+        Clear value
+      </button>
+
       <Combobox
         items={ simpleItems }
         onValueChange={ ({ value }) => setValues(value) }

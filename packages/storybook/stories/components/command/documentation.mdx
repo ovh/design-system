@@ -1,0 +1,189 @@
+import { Code, Kbd } from '@ovhcloud/ods-react';
+import { Meta } from '@storybook/blocks';
+import lang from '@shikijs/langs/tsx';
+import theme from '@shikijs/themes/one-dark-pro';
+import * as CommandStories from './command.stories';
+import { Anatomy } from '../../../src/components/anatomy/Anatomy';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { BestPractices } from '../../../src/components/bestPractices/BestPractices';
+import { Heading } from '../../../src/components/heading/Heading';
+import { IdentityCard } from '../../../src/components/identityCard/IdentityCard';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
+
+<Meta of={ CommandStories } name="Documentation" tags={ ['new'] } />
+
+<Banner of={ CommandStories } />
+
+_The **Command** component provides a fast and efficient way to search, filter, and trigger actions from anywhere in an application._
+
+<Canvas of={ CommandStories.Overview } sourceState="none" />
+
+<Heading label="Overview" level={ 2 } />
+
+<IdentityCard aliases={ ['Command Menu', 'Command Palette', 'Spotlight', 'Quick Actions'] }
+              figmaLink="TODO"
+              githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/command"
+              name="Command"
+              startingVersion={ 19 }>
+  The **Command** component is a modal-like overlay that allows users to quickly find and execute actions or navigate through the application. It accelerates workflows by centralizing shortcuts and actions into a single entry point.
+</IdentityCard>
+
+<Heading label="Usage" level={ 2 } />
+
+The **Command** component is ideal for applications with a rich set of actions, navigation entries, or shortcuts, where speed and discoverability are critical.
+
+It is commonly used for:
+
+- Productivity tools and dashboards
+- Developer tools and admin interfaces
+- Large applications with deep navigation
+
+The **Command** component acts as a generic container. It does not enforce how commands are visually rendered, allowing integrators full freedom to define the dropdown content structure.
+
+<Heading label="Dos & Don'ts" level={ 3 } />
+
+<BestPractices
+  donts={[
+    '- Don’t use Command for critical or destructive actions without confirmation',
+    '- Don’t overload Command with too many unrelated actions, which can overwhelm users',
+    '- Don’t rely solely on Command for essential navigation; it should complement, not replace, standard UI'
+  ]}
+  dos={[
+    '- Use Command as a global entry point for actions and navigation',
+    '- Group related commands to improve scanability',
+    '- Keep command labels concise and action-oriented',
+    '- Use icons and shortcut hints to help users quickly identify commands'
+  ]}
+/>
+
+<Heading label="Best Practices in Context" level={ 3 } />
+
+<Anatomy src="components/command/anatomy.png" />
+
+1. **Command**
+
+<Heading label="Placement" level={ 2 } />
+
+The **Command** component opens as a centered, modal-like overlay on top of the application content.
+
+<Heading label="Behavior" level={ 2 } />
+
+<Heading label="Opening & Closing" level={ 3 } />
+
+The **Command** opens as an overlay centered in the viewport.
+
+It can be triggered:
+- Via a dedicated UI trigger
+- Via a keyboard shortcut (⌘ + K on macOS, Ctrl + K on Windows/Linux)
+
+The Command closes when:
+- An item is selected (unless explicitly prevented by the integrator)
+- The Escape key is pressed
+- The overlay is dismissed
+
+<Heading label="Search & Filtering" level={ 3 } />
+
+- The Command provides a search input used to filter available items.
+
+<Heading label="Items & Groups" level={ 3 } />
+
+Items are displayed in a vertically scrollable list and can be organized into groups.
+
+Groups, dividers, headers, and any additional UI elements are fully customizable.
+
+Each item may expose:
+- Label (required)
+- Icon (optional)
+- Shortcut hint (optional, e.g. ⌘ + N)
+- Description (optional)
+- Custom content
+
+<Heading label="Custom Rendering" level={ 3 } />
+
+Integrators are free to render:
+- Badges
+- Keyboard hints (kbd)
+- Icons
+- Group headers
+- Dividers
+- Any custom layout or component
+
+The Command component does not impose constraints on item layout or structure.
+
+<Heading label="Navigation" level={ 2 } />
+
+<Heading label="Focus Management" level={ 3 } />
+
+When the Command opens, focus is set on the search input.
+
+Keyboard navigation moves focus between items in the dropdown.
+
+Focus remains trapped within the Command until it is closed.
+
+<Heading label="General Keyboard Shortcuts" level={ 3 } />
+
+Pressing <Kbd>↓</Kbd> or <Kbd>↑</Kbd> moves focus to the next / previous item.
+
+Pressing <Kbd>Enter</Kbd> executes the focused item.
+
+Pressing <Kbd>Escape</Kbd> closes the Command.
+
+Pressing <Kbd>Home</Kbd> moves tothe first item.
+
+Pressing <Kbd>End</Kbd> moves to the last item.
+
+<Heading label="Accessibility" level={ 2 } />
+
+<Heading label="Roles" level={ 3 } />
+
+**Command** is a `listbox`-based component, nested within a `dialog` role element. 
+
+The search input has a `combobox` role, and an `aria-controls` relationship with the `listbox` (**CommandList**).
+ 
+<Code 
+  highlighter={{
+    language: lang,
+    theme: theme,
+  }}
+  style={{ inlineSize: '100%', marginBlockEnd: '2rem' }} 
+>
+{`<Command>
+  <CommandContent> --> role='dialog'
+    <CommandFilter /> --> role='combobox'
+    <CommandList> --> role='listbox'
+      <CommandGroup> --> role='group'
+        <CommandOption /> --> role='option'
+        <CommandOption />
+      </CommandGroup>
+    </CommandList>
+  </CommandContent>
+</Command>`}
+</Code>
+
+<Heading label="Labelling" level={ 3 } />
+
+- Because the **Command** dialog does not display a visible title by default, you must supply an accessible name for it. Use the `aria-label` prop on **CommandContent** to give screen readers a meaningful description of the dialog when it opens.
+
+- The **CommandFilter** search input does not render a visible label, so you must provide an accessible name for it.
+
+- A `listbox` must always have an accessible name, (**CommandContent** and **CommandList** can share the same label).
+
+<Canvas of={ CommandStories.AccessibilityLabels } sourceState="shown" />
+
+<Heading label="CommandGroup naming" level={ 3 } />
+
+In the case of several groups, it is recommended to provide an accessible name for each group. 
+- Either by using the `heading` prop on **CommandGroup**, which renders a visible header, 
+- or by using `aria-label` to provide an accessible name without a visible header.
+
+`aria-label` takes precedence.
+
+<Canvas of={ CommandStories.AccessibilityGroupNames } sourceState="shown" />
+
+<Heading label="Disabled options" level={ 3 } />
+
+To mark a **CommandOption** as non-interactive, use `aria-disabled="true"` instead of the native `disabled` attribute. This is required because **CommandOption** renders a **div** with `role="option"`, which does not support the native `disabled` attribute.
+
+<Canvas of={ CommandStories.AccessibilityDisabledOption } sourceState="shown" />

@@ -1,0 +1,110 @@
+import { Meta } from '@storybook/blocks';
+import cssVariable from '../../../../ods-react/src/components/command/documentation/cssVariable.json';
+import specificationsCommand from '../../../../ods-react/src/components/command/documentation/command.json';
+import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
+import * as CommandStories from './command.stories';
+
+<Meta of={ CommandStories } name="Technical information" tags={ ['new'] } />
+
+<Banner of={ CommandStories } />
+
+<Heading label="Overview" level={ 2 } />
+
+<Canvas of={ CommandStories.Overview } sourceState="none" />
+
+<Heading label="Anatomy" level={ 2 } />
+
+<AnatomyTech of={ CommandStories.AnatomyTech }
+  mappingOption={{
+    'Command': { disabled: true },
+  }} />
+
+<TechnicalSpecification
+  cssVariable={ cssVariable }
+  data={ specificationsCommand }
+  extraInfo={{
+    'CommandContent': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'CommandEmpty': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'CommandFilter': {
+      extendAttribute: {
+        name: 'input',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes',
+      },
+    },
+    'CommandGroup': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'CommandInput': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'CommandOption': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'CommandList': {
+      extendAttribute: {
+        name: 'div',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes',
+      },
+    },
+    'CommandTrigger': {
+      extendAttribute: {
+        name: 'button',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes',
+      },
+    },
+  }}
+  of={ CommandStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ CommandStories.Default } sourceState="shown" />
+
+<Heading label="Controlled" level={ 3 } />
+
+<Canvas of={ CommandStories.Controlled } sourceState="shown" />
+
+<Heading label="With shortcuts" level={ 3 } />
+
+<Canvas of={ CommandStories.WithShortcuts } sourceState="shown" />
+
+<Heading label="With onSelect" level={ 3 } />
+
+<Canvas of={ CommandStories.WithOnSelect } sourceState="shown" />
+
+<Heading label="Without filter" level={ 3 } />
+
+<Canvas of={ CommandStories.WithoutFilter } sourceState="shown" />
+
+<Heading label="Empty state" level={ 3 } />
+
+<Canvas of={ CommandStories.EmptyState } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Command" />

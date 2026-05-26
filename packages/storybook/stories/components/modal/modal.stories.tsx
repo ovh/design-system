@@ -91,11 +91,18 @@ export const Demo: StoryObj = {
 export const AnatomyTech: Story = {
   tags: ['!dev'],
   render: ({}) => (
-    <div style={{ display: 'flex', flexFlow: 'column', rowGap: 'var(--ods-theme-row-gap)', alignItems: 'start' }}>
+    <div style={{
+      display: 'flex',
+      flexFlow: 'column',
+      rowGap: 'var(--ods-theme-row-gap)',
+      alignItems: 'start',
+      zIndex: 0,
+      position: 'relative'
+    }}>
       <div style={{
         position: 'relative',
         minWidth: '320px',
-        minHeight: '140px',
+        minHeight: '140px'
       }}>
         <Modal
           backdropStyle={{ position: 'absolute' }}

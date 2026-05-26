@@ -1,0 +1,20 @@
+@use '../../../../../style/state';
+
+@layer ods-organisms {
+  .command-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: calc(var(--ods-theme-border-radius) / 2);
+    cursor: pointer;
+    padding: calc(var(--ods-theme-padding-vertical) / 2) var(--ods-theme-padding-horizontal);
+
+    &[aria-disabled='true'] {
+      @include state.ods-is-disabled();
+    }
+
+    &--highlighted {
+      background-color: var(--ods-theme-input-option-background-color-hover);
+    }
+  }
+}

@@ -12,6 +12,7 @@ import {
   Clipboard, ClipboardControl, ClipboardTrigger,
   Code,
   Combobox, ComboboxContent, ComboboxControl,
+  Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandOption, CommandList, CommandTrigger,
   DataTable, type DataTableColumnDef, DataTableBody, DataTableEmpty, DataTableHead,
   Datepicker, DatepickerContent, DatepickerControl,
   Divider,
@@ -606,6 +607,30 @@ function App(): ReactElement {
               <ComboboxContent />
             </Combobox>
           </FormField>
+        </section>
+
+        <section>
+          <h1>Command</h1>
+
+          <Command>
+            <CommandTrigger asChild>
+              <Button>Open command</Button>
+            </CommandTrigger>
+            <CommandContent aria-label="Command palette">
+              <CommandFilter aria-label="Search command palette" placeholder="Search..." />
+              <CommandList aria-label="Command palette">
+                <CommandGroup heading="Visible group name">
+                  <CommandOption>New file</CommandOption>
+                  <CommandOption>Open file</CommandOption>
+                </CommandGroup>
+                <CommandGroup aria-label="Hidden group name">
+                  <CommandOption>Some help</CommandOption>
+                  <CommandOption>Some more help</CommandOption>
+                </CommandGroup>
+                <CommandEmpty>No results found.</CommandEmpty>
+              </CommandList>
+            </CommandContent>
+          </Command>
         </section>
 
         <section>

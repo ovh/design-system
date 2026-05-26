@@ -44,6 +44,7 @@ enum REACT_COMPONENTS_TITLE {
   clipboard = `${SECTION.reactComponents}/Clipboard`,
   code = `${SECTION.reactComponents}/Code`,
   combobox = `${SECTION.reactComponents}/Combobox`,
+  command = `${SECTION.reactComponents}/Command`,
   contentAddon = `${SECTION.reactComponents}/Content Addon`,
   dataTable = `${SECTION.reactComponents}/Data Table`,
   datepicker = `${SECTION.reactComponents}/Datepicker`,

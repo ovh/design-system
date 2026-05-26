@@ -72,18 +72,18 @@ describe('Command behaviour', () => {
 
     it('should not go past the last option with repeated ArrowDown', async() => {
       await clickFilter(page);
-      for (let i = 0; i < 10; i++) {
-        await page.keyboard.press('ArrowDown');
-      }
+      await page.keyboard.press('End');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
 
       expect(await getHighlightedOptionId(page)).toBe('opt-save-file');
     });
 
     it('should not go past the first option with repeated ArrowUp', async() => {
       await clickFilter(page);
-      for (let i = 0; i < 10; i++) {
-        await page.keyboard.press('ArrowUp');
-      }
+      await page.keyboard.press('Home');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
 
       expect(await getHighlightedOptionId(page)).toBe('opt-new-file');
     });
@@ -231,12 +231,13 @@ describe('Command behaviour', () => {
     it('should open when the trigger is clicked', async() => {
       await page.click('[data-ods="command-trigger"]');
 
-      expect(await page.waitForSelector('[data-ods="command-content"]')).not.toBeNull();
+      expect(await page.waitForSelector('[data-ods="command-content"]', { visible: true })).not.toBeNull();
     });
 
     it('should close on Escape key', async() => {
       await page.click('[data-ods="command-trigger"]');
-      await page.waitForSelector('[data-ods="command-content"]');
+      await page.waitForSelector('[data-ods="command-content"]', { visible: true });
+      await page.click('[data-ods="command-filter"]');
 
       await page.keyboard.press('Escape');
       await page.waitForSelector('[data-ods="command-content"]', { hidden: true });
@@ -250,25 +251,25 @@ describe('Command behaviour', () => {
 
     it('should re-open after being closed', async() => {
       await page.click('[data-ods="command-trigger"]');
-      await page.waitForSelector('[data-ods="command-content"]');
+      await page.waitForSelector('[data-ods="command-content"]', { visible: true });
       await page.keyboard.press('Escape');
       await page.waitForSelector('[data-ods="command-content"]', { hidden: true });
 
       await page.click('[data-ods="command-trigger"]');
 
-      expect(await page.waitForSelector('[data-ods="command-content"]')).not.toBeNull();
+      expect(await page.waitForSelector('[data-ods="command-content"]', { visible: true })).not.toBeNull();
     });
 
     it('should reset filter when closed and reopened', async() => {
       await page.click('[data-ods="command-trigger"]');
-      await page.waitForSelector('[data-ods="command-content"]');
+      await page.waitForSelector('[data-ods="command-content"]', { visible: true });
       await typeInFilter(page, 'file');
 
       await page.keyboard.press('Escape');
       await page.waitForSelector('[data-ods="command-content"]', { hidden: true });
 
       await page.click('[data-ods="command-trigger"]');
-      await page.waitForSelector('[data-ods="command-content"]');
+      await page.waitForSelector('[data-ods="command-content"]', { visible: true });
 
       const filterValue = await page.$eval('[data-ods="command-filter"]', (el) => (el as HTMLInputElement).value);
 

@@ -47,7 +47,7 @@ const header = `
 {{~/if}}
 `;
 
-module.exports = Promise.resolve()
+module.exports = () => Promise.resolve()
   .then(() => require('conventional-changelog-angular'))
   .then(preset => {
     preset.writerOpts.mainTemplate = main;

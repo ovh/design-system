@@ -4,6 +4,11 @@
   "description": "ODS React Components",
   "author": "OVH SAS",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ovh/design-system.git",
+    "directory": "packages/ods-react"
+  },
   "type": "module",
   "exports": {
     ".": {

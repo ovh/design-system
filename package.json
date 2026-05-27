@@ -5,6 +5,10 @@
   "description": "OVHCloud Design System",
   "author": "OVH SAS",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ovh/design-system.git"
+  },
   "workspaces": [
     "packages/examples/*",
     "packages/ods-react",

@@ -47,12 +47,12 @@ const header = `
 {{~/if}}
 `;
 
-module.exports = () => Promise.resolve()
-  .then(() => require('conventional-changelog-angular'))
-  .then(preset => {
-    preset.writerOpts.mainTemplate = main;
-    preset.writerOpts.headerPartial = header;
-    preset.writerOpts.commitUrlFormat = '{{host}}/{{owner}}/{{repository}}/commits/{{hash}}';
-    preset.writerOpts.compareUrlFormat = '{{host}}/{{owner}}/{{repository}}/compare/{{currentTag}}...{{previousTag}}';
-    return preset;
-  });
+module.exports = async () => {
+  const createPreset = require('conventional-changelog-angular');
+  const preset = await createPreset();
+  preset.writerOpts.mainTemplate = main;
+  preset.writerOpts.headerPartial = header;
+  preset.writerOpts.commitUrlFormat = '{{host}}/{{owner}}/{{repository}}/commits/{{hash}}';
+  preset.writerOpts.compareUrlFormat = '{{host}}/{{owner}}/{{repository}}/compare/{{currentTag}}...{{previousTag}}';
+  return preset;
+};

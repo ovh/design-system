@@ -4,6 +4,11 @@
   "description": "ODS Storybook",
   "author": "OVH SAS",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ovh/design-system.git",
+    "directory": "packages/storybook"
+  },
   "main": "index.js",
   "scripts": {
     "build:storybook": "yarn generate:versions && storybook build -o dist",

@@ -1,0 +1,46 @@
+import { ArgTypes, Meta } from '@storybook/blocks';
+import * as DefinitionListStories from './definition-list.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { REACT_COMPONENTS_TITLE } from '../../../src/constants/meta';
+
+<Meta of={ DefinitionListStories } name="Documentation" />
+
+<Banner of={ DefinitionListStories } />
+
+_The **Definition List** organism displays a list of label/value pairs, supporting rich content (Badge, Code, Link, etc.) and optional tooltips._
+
+<Canvas of={ DefinitionListStories.Overview } sourceState="none" story={{ inline: false, height: '200px' }} />
+
+<Heading label="Components used" level={ 2 } />
+
+- <StorybookLink kind={ REACT_COMPONENTS_TITLE.text }>Text</StorybookLink> — Label rendered with `label` preset
+- <StorybookLink kind={ REACT_COMPONENTS_TITLE.icon }>Icon</StorybookLink> — Tooltip trigger icon
+- <StorybookLink kind={ REACT_COMPONENTS_TITLE.tooltip }>Tooltip</StorybookLink> — Optional additional information on the label
+
+<Heading label="Properties" level={ 2 } />
+
+<ArgTypes of={ DefinitionListStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ DefinitionListStories.Default } sourceState="shown" story={{ inline: false, height: '150px' }} />
+
+<Heading label="Empty values" level={ 3 } />
+
+<Canvas of={ DefinitionListStories.WithEmptyValues } sourceState="shown" story={{ inline: false, height: '150px' }} />
+
+<Heading label="With Tooltips" level={ 3 } />
+
+<Canvas of={ DefinitionListStories.WithTooltips } sourceState="shown" story={{ inline: false, height: '200px' }} />
+
+<Heading label="Rich values (Badge, Code, Link)" level={ 3 } />
+
+<Canvas of={ DefinitionListStories.WithRichValues } sourceState="shown" story={{ inline: false, height: '200px' }} />
+
+
+

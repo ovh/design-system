@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/blocks';
+import { Overview as DefinitionList } from './definition-list/definition-list.stories';
+import { Overview as FeatureList } from './feature-list/feature-list.stories';
+import { Overview as RangeInput } from './range-input/range-input.stories';
+import { Banner } from '../../src/components/banner/Banner';
+import { Gallery } from '../../src/components/gallery/Gallery';
+import { NoToC } from '../../src/components/noToC/NoToC';
+import { ORGANISMS_TITLE } from '../../src/constants/meta';
+
+<NoToC />
+
+<Meta title="Organisms/Gallery" />
+
+<Banner
+  label="Gallery"
+  section="Organisms" />
+
+_Organisms are larger UI compositions built from multiple ODS components working together.
+They provide ready-to-use, opinionated patterns for common UI needs._
+
+<Gallery components={[
+  { kind: ORGANISMS_TITLE.definitionList, name: 'Definition List', story: DefinitionList },
+  { kind: ORGANISMS_TITLE.featureList, name: 'Feature List', story: FeatureList },
+  { kind: ORGANISMS_TITLE.rangeInput, name: 'Range Input', story: RangeInput },
+]} />
+

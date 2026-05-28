@@ -7,6 +7,7 @@ enum SECTION {
   guides = 'Guides',
   home = 'OVHcloud Design System',
   migrationGuide = 'Migration guide',
+  organisms = 'Organisms',
   reactComponents = 'React Components',
   recipes = 'Recipes',
   tools = 'Tools',
@@ -29,6 +30,12 @@ enum HOME_TITLE {
   sandboxTool = `${SECTION.home}/${SECTION.tools}/Code Sandbox`,
   styleCustomization = `${SECTION.home}/${SECTION.design}/Style Customization`,
   welcome = `${SECTION.home}/Welcome`,
+}
+
+enum ORGANISMS_TITLE {
+  definitionList = `${SECTION.organisms}/Definition List`,
+  featureList = `${SECTION.organisms}/Feature List`,
+  rangeInput = `${SECTION.organisms}/Range Input`,
 }
 
 enum REACT_COMPONENTS_TITLE {
@@ -105,6 +112,7 @@ enum STORY {
 
 export {
   HOME_TITLE,
+  ORGANISMS_TITLE,
   REACT_COMPONENTS_TITLE,
   RECIPES_TITLE,
   SECTION,

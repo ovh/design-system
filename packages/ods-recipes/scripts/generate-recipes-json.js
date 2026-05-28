@@ -53,7 +53,7 @@ async function getComponentSources(src) {
     .filter((dirent) => dirent.isFile());
 
   for (const file of files) {
-    source[file.name] = await fs.readFile(path.resolve(file.path, file.name), 'utf8');
+    source[file.name] = await fs.readFile(path.resolve(src, file.name), 'utf8');
   }
 
   return source;
@@ -67,7 +67,7 @@ async function getImportedOdsComponents(src) {
   let odsImports = [];
 
   for (const file of files) {
-    const fileContent = await fs.readFile(path.resolve(file.path, file.name), 'utf8');
+    const fileContent = await fs.readFile(path.resolve(src, file.name), 'utf8');
 
     const odsImportMatches = fileContent
       .split(/\r?\n/)
@@ -136,6 +136,16 @@ async function writeOutput(content, outputFile) {
   }
 
   try {
+    componentNames = componentNames.filter((name) => {
+      const module = recipeModule[toPascalCase(name)];
+      if (!module) {
+        console.warn(`No module found for "${name}", skipping.`);
+        return false;
+      }
+      return true;
+    });
+    finalData.list.components = componentNames;
+
     const componentsData = await Promise.all(componentNames.map((name) => {
       const module = recipeModule[toPascalCase(name)];
       return getComponentData(path.resolve(componentsPath, name, 'src'), module)

@@ -2,8 +2,10 @@ import { Children, type JSX, type ReactElement, type ReactNode, cloneElement, is
 
 type MarkWrapper = ({ key, part }: { key: string | number, part: string }) => JSX.Element;
 
-function elementParentHasAttribute(element: HTMLElement | null, attribute: string, values?: string[]): boolean {
-  if (!element || !element.parentElement || element.parentElement.tagName === 'BODY') {
+const MAX_DEPTH = 10;
+
+function elementParentHasAttribute(element: HTMLElement | null, attribute: string, values?: string[], depth: number = 0): boolean {
+  if (depth >= MAX_DEPTH || !element || !element.parentElement || element.parentElement.tagName === 'BODY') {
     return false;
   }
 
@@ -13,7 +15,7 @@ function elementParentHasAttribute(element: HTMLElement | null, attribute: strin
     return values && values.length ? values.indexOf(parentAttribute) > -1 : true;
   }
 
-  return elementParentHasAttribute(element.parentElement, attribute, values);
+  return elementParentHasAttribute(element.parentElement, attribute, values, depth + 1);
 }
 
 function elementToString(element: ReactNode): string {
@@ -21,15 +23,28 @@ function elementToString(element: ReactNode): string {
     return '';
   }
 
-  if (JSON.stringify(element) === '{}') {
+  if (typeof element === 'string') {
+    return element;
+  }
+
+  if (typeof element === 'number') {
+    return String(element);
+  }
+
+  if (typeof element === 'object') {
     return '';
   }
 
-  return element.toString();
+  return '';
 }
 
 // Inspired by https://github.com/fernandopasik/react-children-utilities/blob/main/src/lib/onlyText.ts
-function getElementText(element: ReactNode | ReactNode[]): string {
+
+function getElementText(element: ReactNode | ReactNode[], depth: number = 0): string {
+  if (depth >= MAX_DEPTH) {
+    return '';
+  }
+
   if (!(element instanceof Array) && !isValidElement(element)) {
     return elementToString(element);
   }
@@ -38,7 +53,7 @@ function getElementText(element: ReactNode | ReactNode[]): string {
     let newText = '';
 
     if (hasChildren(child)) {
-      newText = getElementText((child as ReactElement<{ children: ReactNode | ReactNode[] }>).props.children);
+      newText = getElementText((child as ReactElement<{ children: ReactNode | ReactNode[] }>).props.children, depth + 1);
     } else if (isValidElement(child)) {
       newText = '';
     } else {
@@ -57,13 +72,17 @@ function hasChildren(element: ReactNode): boolean {
   return isValidElement(element) && !!element.props.children;
 }
 
-function highlightNode(node: ReactNode | string, searchText: string, markWrapper: MarkWrapper): ReactNode {
+function highlightNode(node: ReactNode | string, searchText: string, markWrapper: MarkWrapper, depth: number = 0): ReactNode {
+  if (depth >= MAX_DEPTH) {
+    return node;
+  }
+
   if (typeof node === 'string') {
     return highlightText(node, searchText, markWrapper);
   }
 
   if (isValidElement(node)) {
-    const children = Children.map(node.props.children, (n) => highlightNode(n, searchText, markWrapper));
+    const children = Children.map(node.props.children, (n) => highlightNode(n, searchText, markWrapper, depth + 1));
     return cloneElement(node, node.props, children);
   }
 

@@ -88,6 +88,13 @@ const preview: Preview = {
               '*',
             ],
           ],
+          'Organisms', [
+            'Gallery',
+            '*', [
+              'Documentation',
+              '*',
+            ],
+          ],
         ],
       },
     },

@@ -1,0 +1,43 @@
+.definition-list {
+  display: flex;
+  flex-flow: column;
+  row-gap: var(--ods-theme-row-gap);
+  margin: 0;
+  padding: 0;
+}
+
+.definition-list__item {
+  display: flex;
+  flex-flow: column;
+  row-gap: calc(var(--ods-theme-row-gap) / 4);
+}
+
+.definition-list__item__term {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  column-gap: calc(var(--ods-theme-column-gap) / 2);
+}
+
+.definition-list__item__term__tooltip-trigger {
+  color: var(--ods-theme-primary-color);
+  cursor: help;
+}
+
+.definition-list__item__definition {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  column-gap: calc(var(--ods-theme-column-gap) / 2);
+  margin: 0;
+  min-width: 0;
+}
+
+.definition-list__item__definition__value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+

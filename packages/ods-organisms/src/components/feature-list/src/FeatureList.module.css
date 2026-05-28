@@ -1,0 +1,25 @@
+.feature-list {
+  display: flex;
+  flex-flow: column;
+  row-gap: var(--ods-theme-row-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feature-list__item {
+  display: flex;
+  flex-flow: row;
+  column-gap: calc(var(--ods-theme-column-gap) / 2);
+  align-items: baseline;
+}
+
+.feature-list__item__icon {
+  color: var(--ods-theme-success-color);
+}
+
+.feature-list__item__tooltip-trigger {
+  margin-left: calc(var(--ods-theme-column-gap) / 2);
+  color: var(--ods-theme-primary-color);
+}
+

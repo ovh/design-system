@@ -15,6 +15,7 @@
   "dependencies": {
     "@ant-design/colors": "7.1.0",
     "@ark-ui/react": "5.25.1",
+    "@ovhcloud/ods-organisms": "19.7.1",
     "@ovhcloud/ods-react": "19.7.1",
     "@ovhcloud/ods-recipes": "19.7.1",
     "@ovhcloud/ods-themes": "19.7.1",

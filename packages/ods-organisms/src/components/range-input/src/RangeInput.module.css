@@ -1,0 +1,11 @@
+.range-input {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  column-gap: calc(var(--ods-theme-column-gap) * 2);
+  align-items: baseline;
+}
+
+.range-input__input {
+  width: 60px;
+}
+

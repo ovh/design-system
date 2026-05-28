@@ -1,0 +1,36 @@
+import { ArgTypes, Meta } from '@storybook/blocks';
+import * as FeatureListStories from './feature-list.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { REACT_COMPONENTS_TITLE } from '../../../src/constants/meta';
+
+<Meta of={ FeatureListStories } name="Documentation" />
+
+<Banner of={ FeatureListStories } />
+
+_The **Feature List** organism displays concise product capabilities with a check indicator and optional tooltip._
+
+<Canvas of={ FeatureListStories.Overview } sourceState="none" />
+
+<Heading label="Components used" level={ 2 } />
+
+- <StorybookLink kind={ REACT_COMPONENTS_TITLE.icon }>Icon</StorybookLink> — Check mark indicator for each feature
+- <StorybookLink kind={ REACT_COMPONENTS_TITLE.text }>Text</StorybookLink> — Feature label text
+- <StorybookLink kind={ REACT_COMPONENTS_TITLE.tooltip }>Tooltip</StorybookLink> — Optional additional information on hover
+
+<Heading label="Properties" level={ 2 } />
+
+<ArgTypes of={ FeatureListStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ FeatureListStories.Default } sourceState="shown" />
+
+<Heading label="With Tooltips" level={ 3 } />
+
+<Canvas of={ FeatureListStories.WithTooltips } sourceState="shown" />
+

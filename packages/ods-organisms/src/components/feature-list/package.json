@@ -1,0 +1,13 @@
+{
+  "name": "@ovhcloud/ods-organisms-feature-list",
+  "version": "19.7.1",
+  "private": true,
+  "description": "ODS Organisms FeatureList",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf node_modules",
+    "lint:css": "stylelint --aei 'src/**/*.css'",
+    "lint:ts": "eslint 'src/**/*.{js,ts,tsx}' --ignore-pattern '*.stories.tsx'"
+  }
+}

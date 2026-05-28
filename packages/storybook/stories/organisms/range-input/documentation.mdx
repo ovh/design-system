@@ -1,0 +1,38 @@
+import { ArgTypes, Meta } from '@storybook/blocks';
+import * as RangeInputStories from './range-input.stories';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { REACT_COMPONENTS_TITLE } from '../../../src/constants/meta';
+
+<Meta of={ RangeInputStories } name="Documentation" />
+
+<Banner of={ RangeInputStories } />
+
+_The **Range Input** organism combines a Range slider with a numeric Input field, keeping both in sync._
+
+<Canvas of={ RangeInputStories.Overview } sourceState="none" />
+
+<Heading label="Components used" level={ 2 } />
+
+- <StorybookLink kind={ REACT_COMPONENTS_TITLE.range }>Range</StorybookLink> — Slider to visually select a value
+- <StorybookLink kind={ REACT_COMPONENTS_TITLE.input }>Input</StorybookLink> — Numeric field for precise value entry
+
+<Heading label="Properties" level={ 2 } />
+
+<ArgTypes of={ RangeInputStories } />
+
+<Heading label="Examples" level={ 2 } />
+
+<Heading label="Default" level={ 3 } />
+
+<Canvas of={ RangeInputStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 3 } />
+
+<Canvas of={ RangeInputStories.Disabled } sourceState="shown" />
+
+<Heading label="Custom Range (min, max, step)" level={ 3 } />
+
+<Canvas of={ RangeInputStories.CustomRange } sourceState="shown" />

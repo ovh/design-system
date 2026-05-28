@@ -1,0 +1,45 @@
+{
+  "name": "@ovhcloud/ods-organisms",
+  "version": "19.7.1",
+  "description": "ODS Organisms",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/ods-organisms.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build:prod": "rimraf dist && tsc -b && vite build",
+    "clean": "rimraf dist",
+    "lint:ts": "eslint 'src/**/*.{ts,tsx}' --ignore-pattern '*.stories.tsx'"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-react": "19.7.1",
+    "@ovhcloud/ods-themes": "19.7.1"
+  },
+  "devDependencies": {
+    "@storybook/react": "8.6.12",
+    "@storybook/react-vite": "8.6.12",
+    "@types/react": "18.2.56",
+    "@types/react-dom": "18.2.25",
+    "@vitejs/plugin-react": "4.3.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "1.71.0",
+    "storybook": "8.6.12",
+    "typescript": "5.3.3",
+    "vite": "6.2.0",
+    "vite-plugin-dts": "4.5.0",
+    "vite-plugin-lib-inject-css": "2.2.1"
+  }
+}

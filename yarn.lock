@@ -4615,6 +4615,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-react-command@workspace:packages/ods-react/src/components/command":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-react-command@workspace:packages/ods-react/src/components/command"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-data-table@workspace:packages/ods-react/src/components/data-table":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-data-table@workspace:packages/ods-react/src/components/data-table"

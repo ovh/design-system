@@ -1,0 +1,16 @@
+@use '../../../../../style/scroll';
+
+@layer ods-organisms {
+  .command-list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--ods-theme-padding-vertical) / 2);
+
+    &__wrapper {
+      @include scroll.hide-scrollbar();
+
+      flex-grow: 1;
+      overflow: auto;
+    }
+  }
+}

@@ -9,15 +9,6 @@
     "type": "git",
     "url": "https://github.com/ovh/design-system.git"
   },
-  "workspaces": [
-    "packages/examples/*",
-    "packages/ods-react",
-    "packages/ods-react/src/components/*",
-    "packages/ods-recipes",
-    "packages/ods-recipes/src/components/*",
-    "packages/storybook",
-    "packages/themes"
-  ],
   "scripts": {
     "build:ci": "lerna run --stream build:ci",
     "build:prod": "lerna run --stream build:prod",
@@ -82,11 +73,9 @@
     "stylelint-config-standard-scss": "13.0.0",
     "stylelint-formatter-html": "1.0.1"
   },
+  "packageManager": "pnpm@11.2.2",
   "engines": {
     "node": ">= 22",
-    "yarn": ">= 2.4.0"
-  },
-  "resolutions": {
-    "@types/scheduler": "< 0.23.0"
+    "pnpm": ">= 9"
   }
 }

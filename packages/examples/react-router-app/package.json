@@ -9,8 +9,8 @@
     "start": "vite"
   },
   "dependencies": {
-    "@ovhcloud/ods-react": "19.7.1",
-    "@ovhcloud/ods-themes": "19.7.1",
+    "@ovhcloud/ods-react": "workspace:*",
+    "@ovhcloud/ods-themes": "workspace:*",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.27.0"

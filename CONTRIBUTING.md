@@ -14,7 +14,7 @@ Additionally, if you're interested in proposing a new feature, please reach us o
 ### Pre-requisites
 
 - [Node.js](https://nodejs.org/) >= 22
-- [Yarn](https://yarnpkg.com/) >= 2.4.0
+- [pnpm](https://pnpm.io/) >= 9
 - [Chrome browser](https://www.google.com/intl/fr_fr/chrome/) locally installed (if you need to run the [lighthouse](https://github.com/GoogleChrome/lighthouse#readme) tests)
 
 ### Building the project
@@ -25,10 +25,10 @@ Additionally, if you're interested in proposing a new feature, please reach us o
 
 ```shell
 # Install the dependencies and link the monorepo.
-yarn
+pnpm install
 
 # Build the different packages.
-yarn build:prod
+pnpm build:prod
 ```
 
 ### Running the documentation locally
@@ -37,10 +37,10 @@ At the root of the repository, run the following commands:
 
 ```shell
 # Generate all the needed documentation files.
-yarn doc
+pnpm doc
 
 # Start the storybook local server.
-yarn storybook
+pnpm storybook
 ```
 
 ## Project architecture
@@ -57,7 +57,7 @@ ODS is a monorepo project split into multiple sub-projects under the `/packages`
 To create a new component, run the following command at the root of the repository and follow the prompt:
 
 ```shell
-yarn new:component
+pnpm new:component
 ```
 
 This will generate all the component resources and the documentation files in the storybook package.
@@ -100,7 +100,7 @@ defined in the src/dev.stories.tsx file.
 
 To start the server, run:
 ```shell
-yarn start
+pnpm start
 ```
 
 You can add as many stories as needed to help you handle all the use cases of the component.
@@ -112,8 +112,8 @@ Please keep in mind that those stories are for dev purposes only; they do not re
 When you're done, ensure that your codebase follows the linter rules by running:
 
 ```shell
-yarn lint:ts
-yarn lint:scss
+pnpm lint:ts
+pnpm lint:scss
 ```
 
 Fix the potential errors, warnings until all commands passes.
@@ -124,7 +124,7 @@ Ensure all functions you add (usually grouped in the controller files) are cover
 
 When you're done, ensure that your tests still pass by running:
 ```shell
-yarn test:spec
+pnpm test:spec
 ```
 
 ### E2e tests
@@ -133,7 +133,7 @@ Ensure all rendering/behaviour changes added to the component are covered by e2e
 
 When you're done, ensure that your tests still pass by running:
 ```shell
-yarn test:e2e
+pnpm test:e2e
 ```
 
 ### Updating the style
@@ -172,7 +172,7 @@ stories/
 If some of your changes impacts how the component behave (in a functional way), please update its `documentation.mdx` file accordingly.
 
 If some of your changes impacts the technical side of the component:
-- check that the generated interfaces/definitions are correct (run `yarn doc` at the root to get the latest data).
+- check that the generated interfaces/definitions are correct (run `pnpm doc` at the root to get the latest data).
 - if relevant, add some stories in the `<component-name>.stories.tsx` file, then reference them in the `technical-information.mdx` file.
 
 If you've updated the attributes list of a component, check that the `Demo` page controls are still relevant.
@@ -188,9 +188,9 @@ Before submitting your Pull Request:
 - ensure all the following commands succeed (run at the root of the project):
 
 ```shell
-yarn lint
-yarn test:spec:ci
-yarn test:e2e:ci
+pnpm lint
+pnpm test:spec:ci
+pnpm test:e2e:ci
 ```
 
 # Licensing for new files

@@ -125,13 +125,13 @@ typings/
 # WebStorm project folder
 .idea
 
-# Yarn 2 (not using Zero-Installs https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored)
-.yarn/*
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
+# pnpm debug log
+pnpm-debug.log*
+
+# Prevent accidental yarn recreation
+yarn.lock
+.yarnrc.yml
+.yarn/
 
 #
 .DS_Store

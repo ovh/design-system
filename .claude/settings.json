@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs -I{} sh -c 'echo \"=== {} ===\" && cat {}')",
+      "Bash(pnpm --version)",
+      "Bash(node -e \"require\\('js-yaml'\\) && console.log\\('ok'\\)\")",
+      "Bash(python3 -c \"import yaml; yaml.safe_load\\(open\\('pnpm-workspace.yaml'\\)\\); print\\('pnpm-workspace.yaml: valid YAML'\\)\")",
+      "Bash(pnpm install *)",
+      "Bash(pnpm ls *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(python3 -c \"import sys,json; h=json.load\\(sys.stdin\\).get\\('husky',{}\\); print\\(json.dumps\\(h, indent=2\\)\\)\")",
+      "Bash(pnpm --filter @ovhcloud/ods-themes run build:ci)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(pnpm patch *)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('patchedDependencies:', d.get\\('pnpm',{}\\).get\\('patchedDependencies', 'NOT FOUND'\\)\\); print\\('postinstall:', d.get\\('scripts',{}\\).get\\('postinstall','NOT FOUND'\\)\\)\")"
+    ]
+  }
+}

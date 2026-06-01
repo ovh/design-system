@@ -5,6 +5,9 @@
   "description": "ODS Recipes Chat",
   "type": "module",
   "main": "dist/index.js",
+  "dependencies": {
+    "@ovhcloud/ods-react": "workspace:*"
+  },
   "scripts": {
     "clean": "rimraf node_modules",
     "lint:css": "stylelint --aei 'src/**/*.css'",

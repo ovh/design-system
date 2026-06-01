@@ -1,7 +1,7 @@
-diff --git a/node_modules/@fluentui/storybook-llms-extractor/dist/src/utils.js b/node_modules/@fluentui/storybook-llms-extractor/dist/src/utils.js
-index 2852bb0..2c7b0f5 100644
---- a/node_modules/@fluentui/storybook-llms-extractor/dist/src/utils.js
-+++ b/node_modules/@fluentui/storybook-llms-extractor/dist/src/utils.js
+diff --git a/dist/src/utils.js b/dist/src/utils.js
+index 2852bb0e7f7763a7ba2d0b6765554921917f3d91..2c7b0f50978c3dfc2864c84dc4e857710012082a 100644
+--- a/dist/src/utils.js
++++ b/dist/src/utils.js
 @@ -134,6 +134,43 @@ async function extractStorybookData({ distPath }) {
                  };
              }

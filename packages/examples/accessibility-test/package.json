@@ -11,8 +11,8 @@
     "start:prod": "npm run build && vite preview"
   },
   "dependencies": {
-    "@ovhcloud/ods-react": "19.7.1",
-    "@ovhcloud/ods-themes": "19.7.1",
+    "@ovhcloud/ods-react": "workspace:*",
+    "@ovhcloud/ods-themes": "workspace:*",
     "classnames": "2.5.1",
     "react": "19.1.0",
     "react-dom": "19.1.0"

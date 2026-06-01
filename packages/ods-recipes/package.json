@@ -34,8 +34,8 @@
     "lint:ts": "eslint 'src/!(components)/**/*.{ts,tsx}'"
   },
   "dependencies": {
-    "@ovhcloud/ods-react": "19.7.1",
-    "@ovhcloud/ods-themes": "19.7.1",
+    "@ovhcloud/ods-react": "workspace:*",
+    "@ovhcloud/ods-themes": "workspace:*",
     "tailwindcss": "3.4.18"
   },
   "devDependencies": {

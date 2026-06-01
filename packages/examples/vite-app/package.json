@@ -12,8 +12,8 @@
     "test:run": "vitest run"
   },
   "dependencies": {
-    "@ovhcloud/ods-react": "19.7.1",
-    "@ovhcloud/ods-themes": "19.7.1",
+    "@ovhcloud/ods-react": "workspace:*",
+    "@ovhcloud/ods-themes": "workspace:*",
     "formik": "2.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",

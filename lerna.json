@@ -1,6 +1,6 @@
 {
   "version": "19.7.1",
-  "npmClient": "yarn",
+  "npmClient": "pnpm",
   "useNx": false,
   "command": {
     "publish": {
@@ -15,3 +15,4 @@
     }
   }
 }
+                          

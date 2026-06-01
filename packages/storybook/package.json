@@ -11,11 +11,11 @@
   },
   "main": "index.js",
   "scripts": {
-    "build:storybook": "yarn generate:versions && storybook build -o dist",
+    "build:storybook": "pnpm generate:versions && storybook build -o dist",
     "extract:llms": "storybook-llms-extractor --config llms.config.js && node scripts/postprocess-llms.js",
     "install:browsers": "playwright install --with-deps chromium",
     "generate:versions": "node scripts/generate-version-list.js 'assets/ods-versions.json'",
-    "start": "yarn generate:versions && storybook dev -p 6006 --no-open"
+    "start": "pnpm generate:versions && storybook dev -p 6006 --no-open"
   },
   "dependencies": {
     "@ant-design/colors": "7.1.0",

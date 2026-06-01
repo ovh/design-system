@@ -12,5 +12,8 @@
     "lint:ts": "eslint 'src/**/*.{js,ts,tsx}' --ignore-pattern '*.stories.tsx'",
     "start": "npm run start:storybook",
     "start:storybook": "storybook dev -p 3000 --no-open"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-react": "workspace:*"
   }
 }

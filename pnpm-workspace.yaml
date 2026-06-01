@@ -9,6 +9,7 @@ packages:
 
 overrides:
   "@types/scheduler": "< 0.23.0"
+  "@types/react": "^18.0.0"
 
 patchedDependencies:
   '@fluentui/storybook-llms-extractor@0.0.3': patches/@fluentui__storybook-llms-extractor@0.0.3.patch

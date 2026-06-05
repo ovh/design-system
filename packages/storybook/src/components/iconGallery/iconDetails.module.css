@@ -15,8 +15,8 @@
 .icon-details__header__aliases {
   display: flex;
   flex-flow: row;
-  column-gap: calc(var(--ods-theme-column-gap) / 2);
   grid-column: span 2;
+  column-gap: calc(var(--ods-theme-column-gap) / 2);
 }
 
 .icon-details__preview {
@@ -38,11 +38,11 @@
 .icon-details__colors__color {
   appearance: none;
   box-sizing: border-box;
-  cursor: pointer;
   border: none;
   border-radius: 50%;
-  height: 32px;
+  cursor: pointer;
   width: 32px;
+  height: 32px;
 }
 
 .icon-details__colors__color--selected {

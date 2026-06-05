@@ -2,8 +2,8 @@
   box-sizing: border-box;
   border: solid var(--ods-border-width-sm) var(--ods-color-primary-500);
   border-radius: var(--ods-border-radius-md);
-  overflow: hidden;
   background-color: var(--ods-theme-background-color);
+  overflow: hidden;
 }
 
 .sandbox {
@@ -12,9 +12,9 @@
 
 .sandbox--fullscreen {
   display: grid;
-  grid-template-rows: max-content 1fr;
   position: fixed;
   inset: 0;
+  grid-template-rows: max-content 1fr;
   z-index: 90;
   border: 0;
   height: 100vh;
@@ -38,12 +38,12 @@
 }
 
 .sandbox__container {
-  overflow: hidden;
   min-height: 50vh;
+  overflow: hidden;
   resize: vertical;
 }
 
-.sandbox__container__editor :global(.line-numbers):before {
+.sandbox__container__editor :global(.line-numbers)::before {
   display: none;
 }
 

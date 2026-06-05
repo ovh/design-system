@@ -1,6 +1,6 @@
 .class-module__properties {
-  table-layout: fixed;
   width: 100%;
+  table-layout: fixed;
 }
 
 .class-module__properties__body code {
@@ -38,9 +38,9 @@
 
 .class-module-row__key__border {
   position: absolute;
-  left: calc(var(--ods-theme-padding-horizontal) * 2);
   top: 0;
   bottom: 0;
+  left: calc(var(--ods-theme-padding-horizontal) * 2);
   margin: 0 var(--ods-theme-padding-horizontal);
   border-left: solid 1px;
 }

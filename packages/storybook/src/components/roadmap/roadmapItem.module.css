@@ -1,8 +1,8 @@
 .roadmap-item {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
   border: solid 1px;
   padding: 0 calc(var(--ods-theme-padding-horizontal) / 2);
 }

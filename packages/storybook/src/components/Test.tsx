@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { BUTTON_VARIANT, CARD_COLOR, ICON_NAME, Card, Button, Icon } from '@ovhcloud/ods-react';
 // import { Canvas as StorybookCanvas, Canvas } from '@storybook/blocks';
 import lang from '@shikijs/langs/css';

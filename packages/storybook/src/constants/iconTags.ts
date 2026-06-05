@@ -1,4 +1,4 @@
-import { type ICON_NAME } from '@ovhcloud/ods-react-icon/src';
+import { type ICON_NAME } from '@ovhcloud/ods-react';
 
 type IconNameKey = keyof typeof ICON_NAME;
 

@@ -45,7 +45,7 @@ async function writeOutput(content, outputFile) {
   try {
     await fs.access(path.resolve(process.cwd(), 'documentation'));
   } catch(error) {
-    console.error(`${path.resolve(process.cwd(), 'documentation')} does not exists, please run "yarn doc" command.`);
+    console.error(`${path.resolve(process.cwd(), 'documentation')} does not exists, please run "pnpm doc" command.`);
     return;
   }
 

@@ -7,6 +7,9 @@ import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 export default defineConfig({
+  resolve: {
+    preserveSymlinks: true,
+  },
   build: {
     copyPublicDir: false,
     lib: {
@@ -14,10 +17,10 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: ['react', 'react-dom', 'react/jsx-runtime', 'tailwindcss', /^@ovhcloud\//],
       input: Object.fromEntries(
         // see https://rollupjs.org/configuration-options/#input
-        globSync('src/**/*.ts').map((file) => [
+        globSync('src/**/*.ts', { ignore: ['**/node_modules/**'] }).map((file) => [
           relative('src', file.slice(0, file.length - extname(file).length)),
           fileURLToPath(new URL(file, import.meta.url)),
         ]),

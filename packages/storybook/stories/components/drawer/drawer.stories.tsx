@@ -1,4 +1,4 @@
-import { Button } from '@ovhcloud/ods-react-button/src';
+import { Button } from '@ovhcloud/ods-react';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import {

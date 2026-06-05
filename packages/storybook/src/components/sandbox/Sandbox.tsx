@@ -3,7 +3,7 @@ import * as ODSReact from '@ovhcloud/ods-react';
 import classNames from 'classnames';
 import lzString from 'lz-string';
 import { format } from 'prettier/standalone';
-import * as prettierPluginEstree from 'prettier/plugins/estree';
+import prettierPluginEstree from 'prettier/plugins/estree';
 import parser from 'prettier/plugins/typescript';
 import React, { type JSX, useEffect, useRef, useState } from 'react';
 import { Playground } from 'storybook-addon-code-editor';

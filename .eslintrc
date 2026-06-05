@@ -20,7 +20,15 @@
     "eslint-plugin-tsdoc",
     "react"
   ],
-  "ignorePatterns": ["packages/storybook/**"],
+  "ignorePatterns": ["packages/storybook/**", "**/*.stories.tsx"],
+  "overrides": [
+    {
+      "files": ["*.js", "*.mjs", "*.config.ts"],
+      "parserOptions": {
+        "project": false
+      }
+    }
+  ],
   "root": true,
   "rules": {
     "@typescript-eslint/ban-types": "error",

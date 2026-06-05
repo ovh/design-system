@@ -7,8 +7,8 @@ module.exports = function (plop) {
   const componentsPath = `${process.cwd()}/packages/ods-react/src`;
   const storybookPath = `${process.cwd()}/packages/storybook`;
 
-  plop.setActionType('yarn-install', function() {
-    spawnSync('yarn', []);
+  plop.setActionType('pnpm-install', function() {
+    spawnSync('pnpm', ['install']);
   });
 
   plop.setHelper('prefix-join', function(prefix, text) {
@@ -79,7 +79,7 @@ module.exports = function (plop) {
       },
       // --- Link the new package to the workspace
       {
-        type: 'yarn-install',
+        type: 'pnpm-install',
       },
     ],
   });

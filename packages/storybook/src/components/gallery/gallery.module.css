@@ -16,9 +16,9 @@
 /* increase weight to override default storybook style */
 .gallery .gallery__item__preview {
   margin: 0;
-  box-shadow: none;
   border: none;
   border-radius: 0;
+  box-shadow: none;
   height: 100%;
 }
 

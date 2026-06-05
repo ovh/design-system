@@ -5,7 +5,7 @@ import { Divider } from '../../../../ods-react/src/components/divider/src';
 import { formatPrice } from '../../../../ods-react/src/utils/format';
 import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
-import { Icon, ICON_NAME } from '@ovhcloud/ods-react-icon/src';
+import { Icon, ICON_NAME } from '@ovhcloud/ods-react';
 
 type Story = StoryObj<CartProp>;
 

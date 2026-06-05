@@ -29,7 +29,7 @@ async function writeOutput(tokens, outputFile) {
   try {
     await fs.access(path.resolve(process.cwd(), 'dist'));
   } catch(error) {
-    console.error(`${path.resolve(process.cwd(), 'dist')} does not exists, please run "yarn build:prod" command.`);
+    console.error(`${path.resolve(process.cwd(), 'dist')} does not exists, please run "pnpm build:prod" command.`);
     return;
   }
 

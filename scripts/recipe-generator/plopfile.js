@@ -14,8 +14,8 @@ module.exports = function (plop) {
     console.log(`=> Setup completed, you can start working on your recipe here: ${process.cwd()}/packages/ods-recipes/src/components/${name}`);
   });
 
-  plop.setActionType('yarn-install', function() {
-    spawnSync('yarn', []);
+  plop.setActionType('pnpm-install', function() {
+    spawnSync('pnpm', ['install']);
   });
 
   plop.setHelper('hasTailwindImplementation', function(sources) {
@@ -98,7 +98,7 @@ module.exports = function (plop) {
       },
       // --- Link the new package to the workspace
       {
-        type: 'yarn-install',
+        type: 'pnpm-install',
       },
       {
         type: 'end',

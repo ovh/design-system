@@ -34,7 +34,7 @@ In order to make a new release of the `ODS` packages, you must:
 - your local branch is up-to-date
 - add a migration guide when there are breaking changes
 
-Then, to make a release, you have to execute the npm script `yarn ods:<VERSION_TYPE>`
+Then, to make a release, you have to execute the npm script `pnpm ods:<VERSION_TYPE>`
 where `<VERSION_TYPE>` can be `patch`, `minor`, `major`, `premajor` `prerelase` or `graduate`.
 
 ### Versioning commands: what level of tag to use?
@@ -43,14 +43,14 @@ Here's a summed up table of which command to launch to create the appropriate ta
 
 | Command               | Target       | Usage                                | version before   | version after   |
 |-----------------------|--------------|--------------------------------------|------------------|-----------------|
-| `yarn ods:prepatch`   | `testing`    | Prepare patch release                | `1.0.0`          | `1.0.1-alpha.0` |
-| `yarn ods:preminor`   | `testing`    | Prepare minor release                | `1.0.0`          | `1.1.0-alpha.0` |
-| `yarn ods:premajor`   | `testing`    | Prepare major release                | `1.0.0`          | `2.0.0-alpha.0` |
-| `yarn ods:prerelease` | `testing`    | Prepare a new pre-release            | `1.2.3-alpha.2`  | `1.2.3-alpha.3` |
-| `yarn ods:patch`      | `production` | Fix a bug                            | `1.0.0`          | `1.0.1`         |
-| `yarn ods:minor`      | `production` | Add features without breaking change | `1.0.0`          | `1.1.0`         |
-| `yarn ods:major`      | `production` | Add breaking change                  | `1.0.0`          | `2.0.0`         |
-| `yarn ods:graduate`   | `production` | From `-alpha` versions to plain tag  | `3.1.2-alpha.21` | `3.1.2`         |
+| `pnpm ods:prepatch`   | `testing`    | Prepare patch release                | `1.0.0`          | `1.0.1-alpha.0` |
+| `pnpm ods:preminor`   | `testing`    | Prepare minor release                | `1.0.0`          | `1.1.0-alpha.0` |
+| `pnpm ods:premajor`   | `testing`    | Prepare major release                | `1.0.0`          | `2.0.0-alpha.0` |
+| `pnpm ods:prerelease` | `testing`    | Prepare a new pre-release            | `1.2.3-alpha.2`  | `1.2.3-alpha.3` |
+| `pnpm ods:patch`      | `production` | Fix a bug                            | `1.0.0`          | `1.0.1`         |
+| `pnpm ods:minor`      | `production` | Add features without breaking change | `1.0.0`          | `1.1.0`         |
+| `pnpm ods:major`      | `production` | Add breaking change                  | `1.0.0`          | `2.0.0`         |
+| `pnpm ods:graduate`   | `production` | From `-alpha` versions to plain tag  | `3.1.2-alpha.21` | `3.1.2`         |
 
 You can find all explanations for these commands below:
 
@@ -60,7 +60,7 @@ You fixed a bug **(without any other breaking changes)** for a released version 
 You have to release it from the same branch:
 
 ```bash
-yarn ods:patch
+pnpm ods:patch
 ```
 
 ### Minor: add extra features
@@ -71,7 +71,7 @@ Create a release branch from up-to-date `release/next` that corresponds to the v
 Then, you have to generate a minor version from your branch.
 
 ```bash
-yarn ods:minor
+pnpm ods:minor
 ```
 
 The release branch will be used for bugfixes later (patch).
@@ -100,7 +100,7 @@ import MigrationXxToYx from '../../../../../../packages/doc/src/migration/MIGRAT
 Then, you have to generate a major version from your branch.
 
 ```bash
-yarn ods:major
+pnpm ods:major
 ```
 
 The release branch will be used for bugfixes later (patch).
@@ -114,7 +114,7 @@ production)**.
 You can generate a PRE-patch version from `release/next` branch:
 
 ```bash
-yarn ods:prepatch
+pnpm ods:prepatch
 ```
 
 Once this version is finalized, you will have to graduate the release: see graduate release below.
@@ -127,7 +127,7 @@ not production)**.
 You can generate a PRE-minor version from `release/next` branch:
 
 ```bash
-yarn ods:preminor
+pnpm ods:preminor
 ```
 
 Once this version is finalized, you will have to graduate the release: see Graduate a release below.
@@ -140,7 +140,7 @@ not production)**.
 You can generate a PRE-major version from `release/next` branch:
 
 ```bash
-yarn ods:premajor
+pnpm ods:premajor
 ```
 
 Then create a release branch from the commit tag that correspond to the version like `release/X.Y-alpha`.
@@ -158,7 +158,7 @@ only **(not production)**.
 You have to generate a new PRE-release version from `release/X.Y-alpha` branch:
 
 ```bash
-yarn ods:prerelease
+pnpm ods:prerelease
 ```
 
 Once this version is finalized, you will have to graduate the release: see Graduate a release below.
@@ -172,7 +172,7 @@ All tests are valid, you want to release the final version like from `1.2.0-alph
 You have to graduate the version from `release/X.Y-alpha` branch:
 
 ```bash
-yarn ods:graduate
+pnpm ods:graduate
 ```
 
 Then, create a release branch from the commit tag that correspond to the version like `release/X.Y`.

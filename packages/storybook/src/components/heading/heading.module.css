@@ -1,8 +1,8 @@
 .heading {
   display: flex;
   flex-flow: row;
-  align-items: center;
   column-gap: .5rem;
+  align-items: center;
   margin-bottom: 0;
   color: var(--ods-theme-heading-text-color);
 }

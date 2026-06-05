@@ -7,6 +7,13 @@ packages:
   - "packages/storybook"
   - "packages/themes"
 
+allowBuilds:
+  esbuild: true
+  husky: true
+  nx: true
+  puppeteer: true
+  sharp: true
+
 overrides:
   "@types/scheduler": "< 0.23.0"
   "@types/react": "^18.0.0"

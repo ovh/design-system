@@ -12,7 +12,8 @@
   "scripts": {
     "build:ci": "lerna run --stream build:ci",
     "build:prod": "lerna run --stream build:prod",
-    "build:storybook": "lerna run --stream build:storybook",
+    "build:storybook": "pnpm build:storybook:deps && lerna run --stream build:storybook",
+    "build:storybook:deps": "([ -d packages/ods-react/dist ] || pnpm --filter @ovhcloud/ods-react run build:prod) && ([ -d packages/ods-recipes/dist ] || pnpm --filter @ovhcloud/ods-recipes run build:prod) && ([ -d packages/themes/dist ] || pnpm --filter @ovhcloud/ods-themes run build:prod) && ([ -d packages/ods-react/src/components/accordion/documentation ] || pnpm doc)",
     "clean": "lerna run clean",
     "doc": "lerna run --concurrency 1 doc",
     "lint": "pnpm lint:ts && pnpm lint:scss",
@@ -31,7 +32,7 @@
     "ods:prerelease": "pnpm ods:release:prepare && pnpm version:prerelease",
     "ods:release:prepare": "npx zx scripts/ods-release-prepare.mjs",
     "publish": "lerna publish --concurrency 1 from-package --yes",
-    "storybook": "pnpm --filter @ovhcloud/ods-storybook run start",
+    "storybook": "pnpm build:storybook:deps && pnpm --filter @ovhcloud/ods-storybook run start",
     "test:e2e:ci": "lerna run --stream --concurrency 1 test:e2e:ci",
     "test:spec:ci": "lerna run --stream --concurrency 1 test:spec:ci",
     "test:wrapper:react": "lerna run --stream --concurrency 1 test:wrapper:react",
@@ -47,6 +48,12 @@
     "version:prerelease": "lerna version --conventional-commits --exact --force-publish --conventional-prerelease"
   },
   "devDependencies": {
+    "@ovhcloud/ods-themes": "workspace:*",
+    "jest": "29.7.0",
+    "sass": "1.71.0",
+    "start-server-and-test": "2.0.10",
+    "storybook": "8.6.12",
+    "typedoc": "0.28.1",
     "@commitlint/cli": "18.6.1",
     "@commitlint/config-conventional": "18.6.2",
     "@playwright/test": "1.56.1",

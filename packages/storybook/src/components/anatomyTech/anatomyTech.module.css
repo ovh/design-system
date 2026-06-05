@@ -1,6 +1,6 @@
 .anatomy-tech {
-  position: relative;
   display: grid;
+  position: relative;
   grid-template-columns: max-content max-content 1fr;
   column-gap: calc(var(--ods-theme-column-gap) * 2);
   border-radius: 4px;
@@ -14,8 +14,8 @@
 
 .anatomy-tech__components__item {
   display: flex;
-  align-items: center;
   column-gap: calc(var(--ods-theme-column-gap) / 2);
+  align-items: center;
 }
 
 .anatomy-tech__components__item__icon {

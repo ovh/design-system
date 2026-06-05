@@ -53,7 +53,7 @@ async function getComponentSources(src) {
     .filter((dirent) => dirent.isFile());
 
   for (const file of files) {
-    source[file.name] = await fs.readFile(path.resolve(file.path, file.name), 'utf8');
+    source[file.name] = await fs.readFile(path.resolve(file.parentPath, file.name), 'utf8');
   }
 
   return source;
@@ -67,7 +67,7 @@ async function getImportedOdsComponents(src) {
   let odsImports = [];
 
   for (const file of files) {
-    const fileContent = await fs.readFile(path.resolve(file.path, file.name), 'utf8');
+    const fileContent = await fs.readFile(path.resolve(file.parentPath, file.name), 'utf8');
 
     const odsImportMatches = fileContent
       .split(/\r?\n/)
@@ -104,14 +104,14 @@ async function writeOutput(content, outputFile) {
   try {
     await fs.access(path.resolve(process.cwd(), 'dist'));
   } catch(error) {
-    console.error(`${path.resolve(process.cwd(), 'dist')} does not exists, please run "yarn build:prod" command.`);
+    console.error(`${path.resolve(process.cwd(), 'dist')} does not exists, please run "pnpm build:prod" command.`);
     return;
   }
 
   try {
     await fs.access(path.resolve(process.cwd(), 'scripts', 'dist'));
   } catch(error) {
-    console.error(`${path.resolve(process.cwd(), 'scripts', 'dist')} does not exists, please run "yarn build:scripts" command.`);
+    console.error(`${path.resolve(process.cwd(), 'scripts', 'dist')} does not exists, please run "pnpm build:scripts" command.`);
     return;
   }
 

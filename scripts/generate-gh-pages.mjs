@@ -32,11 +32,19 @@ const outDirName = 'docs';
     await $`mkdir -p ${dir}`;
     await $`ls -l ${dir}`;
 
-    // find the url and download
-    let tarball = await $`npm view ${packageName}@${version} dist.tarball`;
-    tarball = `${tarball.stdout.trim()}`;
-    const command = `curl -sS "${tarball}" | tar -xzf - -C ${dir} --strip 1`;
-    await $([command]);
+    if (process.env.CDS_INTEGRATION_ARTIFACT_MANAGER_TOKEN) {
+      // npm pack respects the configured registry + auth (Artifactory)
+      await $`npm pack ${packageName}@${version} --pack-destination ${dir}`;
+      const tgzName = `${packageName.replace('@', '').replace('/', '-')}-${version}.tgz`;
+      const tgzPath = resolve(dir, tgzName);
+      await $`tar -xzf ${tgzPath} -C ${dir} --strip 1`;
+      await $`rm ${tgzPath}`;
+    } else {
+      let tarball = await $`npm view ${packageName}@${version} dist.tarball`;
+      tarball = `${tarball.stdout.trim()}`;
+      const command = `curl -sS "${tarball}" | tar -xzf - -C ${dir} --strip 1`;
+      await $([command]);
+    }
 
     try {
       await $`mv ${dir}/dist dist/v${version}`;

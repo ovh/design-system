@@ -13,7 +13,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/ods-recipes.js"
+      "default": "./dist/index.js"
     },
     "./json": {
       "default": "./dist/ods-recipes.json"

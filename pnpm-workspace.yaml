@@ -16,7 +16,8 @@ allowBuilds:
 
 overrides:
   "@types/scheduler": "< 0.23.0"
-  "@types/react": "^18.0.0"
+  "@types/react": "18.2.56"
 
 patchedDependencies:
   '@fluentui/storybook-llms-extractor@0.0.3': patches/@fluentui__storybook-llms-extractor@0.0.3.patch
+  husky@4.3.8: patches/husky@4.3.8.patch

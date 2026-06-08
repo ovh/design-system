@@ -109,6 +109,28 @@ export const AnatomyTech: Story = {
   ),
 };
 
+export const Backdrop: Story = {
+  globals: {
+    imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Drawer backdrop>
+      <DrawerTrigger asChild>
+        <Button>
+          Trigger Drawer
+        </Button>
+      </DrawerTrigger>
+
+      <DrawerContent>
+        <DrawerBody>
+          My drawer content
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+  ),
+};
+
 export const Controlled: Story = {
   globals: {
     imports: `import { Button, Drawer, DrawerBody, DrawerContent } from '@ovhcloud/ods-react';

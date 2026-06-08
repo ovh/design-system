@@ -31,7 +31,7 @@
     "ods:premajor": "pnpm ods:release:prepare && pnpm version:premajor",
     "ods:prerelease": "pnpm ods:release:prepare && pnpm version:prerelease",
     "ods:release:prepare": "npx zx scripts/ods-release-prepare.mjs",
-    "publish": "lerna publish --concurrency 1 from-package --yes",
+    "publish": "lerna publish --concurrency 1 from-package --yes --dryRun",
     "storybook": "pnpm build:storybook:deps && pnpm --filter @ovhcloud/ods-storybook run start",
     "test:e2e:ci": "lerna run --stream --concurrency 1 test:e2e:ci",
     "test:spec:ci": "lerna run --stream --concurrency 1 test:spec:ci",

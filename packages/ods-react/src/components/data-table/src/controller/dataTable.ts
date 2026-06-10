@@ -3,7 +3,10 @@ import { type CSSProperties } from 'react';
 
 function getCellZIndex(isPinned: boolean, stickyHeader: boolean): number {
   if (isPinned) {
-    return 2;
+    if (stickyHeader) {
+      return 2;
+    }
+    return 1;
   }
 
   return stickyHeader ? 1 : 0;

@@ -1,5 +1,5 @@
-import { BADGE_COLORS, BADGE_SIZES, Badge } from '.';
 import style from './dev.module.css';
+import { BADGE_COLORS, BADGE_SIZES, Badge } from '.';
 
 export default {
   component: Badge,

@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { type ChangeEvent, useEffect, useRef, useState } from 'react';
+import style from './dev.module.css';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { INPUT_TYPE, Input } from '.';
-import style from './dev.module.css';
 
 export default {
   component: Input,
@@ -160,7 +161,9 @@ export const ClearableControlled = () => {
 
       <Input
         clearable
-        onChange={ (e: ChangeEvent<HTMLInputElement>) => { setInputValue(e.target.value)} }
+        onChange={ (e: ChangeEvent<HTMLInputElement>) => {
+          setInputValue(e.target.value);
+        }}
         value={ inputValue } />
     </>
   );
@@ -175,7 +178,9 @@ export const ControlledUncontrolled = () => {
       <Input
         clearable
         onChange={ (e: ChangeEvent<HTMLInputElement>) => setControlledValue(e.target.value) }
-        onClear={ () => { setControlledValue('') } }
+        onClear={ () => {
+          setControlledValue('');
+        }}
         value={ controlledValue } />
 
       <br /><br />
@@ -321,7 +326,7 @@ export const Ref = () => {
   return (
     <Input ref={ inputRef } />
   );
-}
+};
 
 export const States = () => (
   <>

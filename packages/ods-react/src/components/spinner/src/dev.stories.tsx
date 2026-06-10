@@ -1,5 +1,5 @@
-import { Spinner } from '.';
 import style from './dev.module.css';
+import { Spinner } from '.';
 
 export default {
   component: Spinner,
@@ -18,11 +18,11 @@ export const Accessibility = () => (
   <div aria-busy="true" aria-live="polite">
     <Spinner />
   </div>
-)
+);
 
 export const AccessibilityAriaLabelledBy = () => (
   <div aria-busy="true" aria-live="polite">
     <Spinner aria-labelledby="loading-text" />
     <p id="loading-text">Loading...</p>
   </div>
-)
+);

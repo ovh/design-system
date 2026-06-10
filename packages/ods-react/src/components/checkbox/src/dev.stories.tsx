@@ -1,8 +1,8 @@
-import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel } from '.';
+import { useState } from 'react';
+import style from './dev.module.css';
 import { FormField, FormFieldError, FormFieldHelper } from '../../form-field/src';
 import { TEXT_PRESET, Text } from '../../text/src';
-import style from './dev.module.css';
-import { useState } from 'react';
+import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel } from '.';
 
 export default {
   component: Checkbox,
@@ -211,6 +211,7 @@ export const ControlledIndeterminate = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       <Checkbox
+        // eslint-disable-next-line no-nested-ternary
         checked={isAllSelected ? true : isIndeterminate ? 'indeterminate' : false}
         onCheckedChange={handleSelectAllChange}
       >
@@ -247,12 +248,13 @@ export const UncontrolledIndeterminate = () => {
     const newValues = details.checked ? items : [];
     setCurrentValue(newValues);
     setDefaultValue(newValues);
-    setGroupKey(k => k + 1);
+    setGroupKey((k: number) => k + 1);
   };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       <Checkbox
+        // eslint-disable-next-line no-nested-ternary
         checked={allChecked ? true : isIndeterminate ? 'indeterminate' : false}
         onCheckedChange={handleSelectAllChange}
       >

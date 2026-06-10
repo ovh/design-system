@@ -1,5 +1,5 @@
-import { Text } from '.';
 import style from './dev.module.css';
+import { Text } from '.';
 
 export default {
   component: Text,

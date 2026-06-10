@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
-import { TEXT_PRESET, Text } from '../../text/src';
-import { TIMEPICKER_I18N, Timepicker, TimepickerControl, type TimepickerTimezoneChangeDetail, TimepickerTimezoneList, type TimepickerValueChangeDetail, Timezone } from '.';
 import { getBrowserTimezone } from './controller/timepicker';
 import style from './dev.module.css';
+import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
+import { TEXT_PRESET, Text } from '../../text/src';
+import { TIMEPICKER_I18N, Timepicker, TimepickerControl, type TimepickerTimezoneChangeDetail, TimepickerTimezoneList, type TimepickerValueChangeDetail, type Timezone } from '.';
 
 export default {
   component: Timepicker,
@@ -40,7 +40,7 @@ export const ControlledTimezone = () => {
   const [timezone, setTimezone] = useState<Timezone>('UTC-2');
 
   function onTimezoneChange(detail: TimepickerTimezoneChangeDetail) {
-    setTimezone(detail.value)
+    setTimezone(detail.value);
   }
 
   return (
@@ -326,7 +326,7 @@ export const Timezones = () => (
       Incorrect timezone set, should fallback to browser ({ getBrowserTimezone() }):
     </p>
 
-    {/* @ts-ignore */}
+    {/* @ts-ignore - this is a test case for an invalid timezone */}
     <Timepicker timezone="XXX">
       <TimepickerControl />
 

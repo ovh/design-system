@@ -1,5 +1,5 @@
-import { DIVIDER_COLOR, Divider } from '.';
 import style from './dev.module.css';
+import { DIVIDER_COLOR, Divider } from '.';
 
 export default {
   component: Divider,

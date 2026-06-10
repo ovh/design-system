@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+import type { Locale } from '../../../utils/locales';
 import { useState } from 'react';
-import { MESSAGE_COLORS, MESSAGE_I18N, MESSAGE_VARIANTS, Message, MessageBody, MessageIcon } from '.';
 import style from './dev.module.css';
-import { Locale } from '../../../utils/locales';
+import { MESSAGE_COLORS, MESSAGE_I18N, MESSAGE_VARIANTS, Message, MessageBody, MessageIcon } from '.';
 
 export default {
   component: Message,
@@ -47,7 +48,7 @@ export const A11Y = () => {
       </div>
     </>
   );
-}
+};
 
 export const Colors = () => (
   <div style={{ display: 'flex', flexFlow: 'column', rowGap: '8px' }}>
@@ -165,7 +166,11 @@ export const Multiline = () => (
   <>
     <Message>
       <MessageBody>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum.
       </MessageBody>
     </Message>
 
@@ -175,7 +180,11 @@ export const Multiline = () => (
       <MessageIcon name="circle-info" />
 
       <MessageBody>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum.
       </MessageBody>
     </Message>
   </>

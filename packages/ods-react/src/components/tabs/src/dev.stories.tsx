@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { TABS_SIZE, TABS_VARIANT, Tab, TabContent, TabList, Tabs } from '.';
 import style from './dev.module.css';
+import { TABS_SIZE, TABS_VARIANT, Tab, TabContent, TabList, Tabs } from '.';
 
 export default {
   component: Tabs,

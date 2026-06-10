@@ -1,9 +1,9 @@
-import { Tag } from '.';
-import { ICON_NAME, Icon } from '../../icon/src';
-import { Text } from '../../text/src';
 import { TAG_COLORS } from './constants/tag-color';
 import { TAG_SIZE } from './constants/tag-size';
 import style from './dev.module.css';
+import { ICON_NAME, Icon } from '../../icon/src';
+import { Text } from '../../text/src';
+import { Tag } from '.';
 
 export default {
   component: Tag,
@@ -101,4 +101,4 @@ export const Multiline = () => (
       with multiples lines
     </span>
   </Tag>
-)
+);

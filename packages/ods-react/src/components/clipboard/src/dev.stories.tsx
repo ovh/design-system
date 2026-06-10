@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
+import style from './dev.module.css';
 import { INPUT_I18N } from '../../input/src';
 import { Clipboard, ClipboardControl, ClipboardTrigger } from '.';
-import style from './dev.module.css';
 
 export default {
   component: Clipboard,

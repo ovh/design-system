@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { QueryFilter, QueryFilterClear, QueryFilterContent, QueryFilterControl, QueryFilterTags, type QueryFilterValueChangeDetails } from '.';
 
 export default {
@@ -46,7 +46,7 @@ const filterOption = {
         { label: 'Stopped', value: 'stopped' },
       ],
     },
-  }
+  },
 };
 
 export const AllowCustomValue = () => (
@@ -98,7 +98,7 @@ export const Controlled = () => {
       </QueryFilter>
     </>
   );
-}
+};
 
 export const Default = () => (
   <QueryFilter

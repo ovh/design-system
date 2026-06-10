@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
+import style from './dev.module.css';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { Range, type RangeValueChangeDetail } from '.';
-import style from './dev.module.css';
 
 export default {
   component: Range,
@@ -188,7 +188,7 @@ export const Ref = () => {
       <button type="button" onClick={ () => console.log(rangeRef.current) }>Log Ref</button>
     </>
   );
-}
+};
 
 export const States = () => (
   <>
@@ -264,4 +264,4 @@ export const TicksLabels = () => {
         ticks={ qualityTicks } />
     </>
   );
-}
+};

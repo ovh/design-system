@@ -126,15 +126,15 @@ export const CustomActions = () => (
       {
         ({ editing }) => (
           editing
-          ? <>
-            <EditableSubmitTrigger asChild>
-              <button>Custom Submit</button>
-            </EditableSubmitTrigger>
-            <EditableCancelTrigger asChild>
-              <button>Custom Cancel</button>
-            </EditableCancelTrigger>
-          </>
-          : <EditableEditTrigger asChild>
+            ? <>
+              <EditableSubmitTrigger asChild>
+                <button>Custom Submit</button>
+              </EditableSubmitTrigger>
+              <EditableCancelTrigger asChild>
+                <button>Custom Cancel</button>
+              </EditableCancelTrigger>
+            </>
+            : <EditableEditTrigger asChild>
               <button>Custom Edit</button>
             </EditableEditTrigger>
         )
@@ -182,11 +182,11 @@ export const Refs = () => {
   const editTriggerAsChildRef = useRef<HTMLButtonElement>(null);
 
   function logRefs() {
-    console.log(`rootRef:`, rootRef.current);
-    console.log(`displayRef:`, displayRef.current);
-    console.log(`inputRef:`, inputRef.current);
-    console.log(`editTriggerRef:`, editTriggerRef.current);
-    console.log(`editTriggerAsChildRef:`, editTriggerAsChildRef.current);
+    console.log('rootRef:', rootRef.current);
+    console.log('displayRef:', displayRef.current);
+    console.log('inputRef:', inputRef.current);
+    console.log('editTriggerRef:', editTriggerRef.current);
+    console.log('editTriggerAsChildRef:', editTriggerAsChildRef.current);
   }
 
   return (

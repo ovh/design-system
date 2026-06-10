@@ -20,12 +20,31 @@
     "eslint-plugin-tsdoc",
     "react"
   ],
-  "ignorePatterns": ["packages/storybook/**", "**/*.stories.tsx"],
+  "ignorePatterns": ["packages/storybook/**", "**/tests/**/*.stories.tsx"],
   "overrides": [
     {
       "files": ["*.js", "*.mjs", "*.config.ts"],
       "parserOptions": {
         "project": false
+      }
+    },
+    {
+      "files": ["**/src/dev.stories.tsx"],
+      "parserOptions": {
+        "project": false
+      },
+      "rules": {
+        "@typescript-eslint/consistent-type-exports": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "no-console": "off",
+        "react/no-unescaped-entities": "off",
+        "no-restricted-imports": ["error", {
+          "paths": [{
+            "name": "@ovhcloud/ods-react",
+            "message": "Use relative imports to sibling component sources instead of the package barrel."
+          }]
+        }],
+        "sort-keys": "off"
       }
     }
   ],

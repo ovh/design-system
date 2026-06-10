@@ -1,6 +1,6 @@
-import { DRAWER_POSITION, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '.';
-import { Popover, PopoverContent, PopoverTrigger } from '../../popover/src';
 import style from './dev.module.css';
+import { Popover, PopoverContent, PopoverTrigger } from '../../popover/src';
+import { DRAWER_POSITION, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '.';
 
 export default {
   component: Drawer,
@@ -76,50 +76,50 @@ export const OverlayBehind = () => (
 export const Position = () => (
   <div>
 
-  <Drawer>
-    <DrawerTrigger>
-      Top
-    </DrawerTrigger>
-
-    <DrawerContent position={ DRAWER_POSITION.top }>
-      <DrawerBody>
+    <Drawer>
+      <DrawerTrigger>
         Top
-      </DrawerBody>
-    </DrawerContent>
-  </Drawer>
+      </DrawerTrigger>
 
-  <Drawer>
-    <DrawerTrigger>
-      Left
-    </DrawerTrigger>
+      <DrawerContent position={ DRAWER_POSITION.top }>
+        <DrawerBody>
+          Top
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
 
-    <DrawerContent position={ DRAWER_POSITION.left }>
-      <DrawerBody>
+    <Drawer>
+      <DrawerTrigger>
         Left
-      </DrawerBody>
-    </DrawerContent>
-  </Drawer>
-  <Drawer>
-    <DrawerTrigger>
-      Bottom
-    </DrawerTrigger>
+      </DrawerTrigger>
 
-    <DrawerContent position={ DRAWER_POSITION.bottom }>
-      <DrawerBody>
+      <DrawerContent position={ DRAWER_POSITION.left }>
+        <DrawerBody>
+          Left
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+    <Drawer>
+      <DrawerTrigger>
         Bottom
-      </DrawerBody>
-    </DrawerContent>
-  </Drawer>
-  <Drawer>
-    <DrawerTrigger>
-      Right
-    </DrawerTrigger>
+      </DrawerTrigger>
 
-    <DrawerContent position={ DRAWER_POSITION.right }>
-      <DrawerBody>
+      <DrawerContent position={ DRAWER_POSITION.bottom }>
+        <DrawerBody>
+          Bottom
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
+    <Drawer>
+      <DrawerTrigger>
         Right
-      </DrawerBody>
-    </DrawerContent>
-  </Drawer>
+      </DrawerTrigger>
+
+      <DrawerContent position={ DRAWER_POSITION.right }>
+        <DrawerBody>
+          Right
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
   </div>
 );

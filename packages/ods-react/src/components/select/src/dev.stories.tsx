@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
+import style from './dev.module.css';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { ICON_NAME, Icon } from '../../icon/src';
-import { Select, SelectContent, SelectControl, type SelectCustomGroupRendererArg, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg, type SelectItem, type SelectOptionItem } from '.';
 import { TEXT_PRESET, Text } from '../../text/src';
-import style from './dev.module.css';
+import { Select, SelectContent, SelectControl, type SelectCustomGroupRendererArg, type SelectCustomItemRendererArg, type SelectCustomOptionRendererArg, type SelectItem, type SelectOptionItem } from '.';
 
 export default {
   component: Select,
@@ -19,7 +19,7 @@ export const Accessibility = () => {
         res.push({ label: `${value[0].toUpperCase()}${value.slice(1)}`, value });
       }
       return res;
-    }, [])
+    }, []);
   }, []);
 
   return (
@@ -28,7 +28,7 @@ export const Accessibility = () => {
       <SelectContent />
     </Select>
   );
-}
+};
 
 export const Controlled = () => {
   const [values, setValues] = useState(['dog']);
@@ -49,7 +49,7 @@ export const Controlled = () => {
       <SelectContent />
     </Select>
   );
-}
+};
 
 export const CustomLabel = () => (
   <>
@@ -185,7 +185,7 @@ export const CustomRenderer = () => {
               { label: 'France', value: 'fr' },
               { label: 'Germany', value: 'de', disabled: true },
               { label: 'Italy', value: 'it' },
-            ]
+            ],
           },
           {
             customRendererData: { code: 'AS' },
@@ -195,7 +195,7 @@ export const CustomRenderer = () => {
               { label: 'China', value: 'cn' },
               { label: 'Japan', value: 'jp' },
               { label: 'Russia', value: 'ru' },
-            ]
+            ],
           },
           { label: 'World', value: 'world' },
         ]}>
@@ -270,7 +270,7 @@ export const Groups = () => (
           { label: 'France', value: 'fr' },
           { label: 'Germany', value: 'de' },
           { label: 'Italy', value: 'it' },
-        ]
+        ],
       },
       {
         label: 'Asia',
@@ -278,7 +278,7 @@ export const Groups = () => (
           { label: 'China', value: 'cn' },
           { label: 'Japan', value: 'jp' },
           { label: 'Russia', value: 'ru' },
-        ]
+        ],
       },
       { label: 'World', value: 'world' },
     ]}>
@@ -416,7 +416,7 @@ export const Opened = () => {
       </Select>
     </>
   );
-}
+};
 
 export const Placeholder = () => (
   <Select

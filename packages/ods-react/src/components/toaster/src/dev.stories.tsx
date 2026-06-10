@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
+import style from './dev.module.css';
 import { ICON_NAME } from '../../icon/src';
 import { TOASTER_POSITION, Toaster, toast } from '.';
-import style from './dev.module.css';
 
 export default {
   component: Toaster,
@@ -78,7 +78,7 @@ export const CustomStyle = () => (
     <Toaster />
 
     <button onClick={ () => toast.information('Icon toast', {
-      className: style['custom-toast']
+      className: style['custom-toast'],
     })}>
       Trigger custom toast
     </button>

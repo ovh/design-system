@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Tooltip, TooltipContent, TooltipTrigger } from '.';
-import { Button } from '../../button/src';
-import { Icon, ICON_NAME } from '../../icon/src';
 import style from './dev.module.css';
+import { Button } from '../../button/src';
+import { ICON_NAME, Icon } from '../../icon/src';
+import { Tooltip, TooltipContent, TooltipTrigger } from '.';
 
 export default {
   component: Tooltip,

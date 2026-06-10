@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import style from './dev.module.css';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { INPUT_I18N } from '../../input/src';
 import { TEXT_PRESET, Text } from '../../text/src';
-import { PHONE_NUMBER_I18N, PhoneNumber, PhoneNumberControl, type PhoneNumberCountryChangeDetail, PhoneNumberCountryList, type PhoneNumberCountryIsoCode, type PhoneNumberValueChangeDetail } from '.';
-import style from './dev.module.css';
+import { PHONE_NUMBER_I18N, PhoneNumber, PhoneNumberControl, type PhoneNumberCountryChangeDetail, type PhoneNumberCountryIsoCode, PhoneNumberCountryList, type PhoneNumberValueChangeDetail } from '.';
 
 export default {
   component: PhoneNumber,
@@ -28,7 +28,7 @@ export const ControlledCountry = () => {
   const [country, setCountry] = useState<PhoneNumberCountryIsoCode>('fr');
 
   function onCountryChange(detail: PhoneNumberCountryChangeDetail) {
-    setCountry(detail.value)
+    setCountry(detail.value);
   }
 
   return (
@@ -58,7 +58,7 @@ export const ControlledInput = () => {
   const [value, setValue] = useState('');
 
   function onValueChange(detail: PhoneNumberValueChangeDetail) {
-    setValue(detail.value)
+    setValue(detail.value);
   }
 
   return (
@@ -231,7 +231,7 @@ export const IsoCode = () => (
       Incorrect isoCode set, should fallback from navigator languages ({ navigator.languages.join(', ') }):
     </p>
 
-    {/* @ts-ignore */}
+    {/* @ts-ignore - incorrect iso code */}
     <PhoneNumber country="ww">
       <PhoneNumberCountryList />
 

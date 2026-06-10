@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import style from './dev.module.css';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { FILE_UPLOAD_VARIANT, FileUpload, FileUploadItem, FileUploadList } from '.';
-import style from './dev.module.css';
 
 export default {
   component: FileUpload,
@@ -43,10 +43,11 @@ export const AccessibilityErrors = () => {
         uploadFile(file);
       }
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [files]);
 
   function toggleGlobalError() {
-    setGlobalError((err) => !!err ? '' : 'Global Error!');
+    setGlobalError((err) => err ? '' : 'Global Error!');
   }
 
   function uploadFile(file: MyFile): void {
@@ -241,6 +242,7 @@ export const FakeUpload = () => {
         uploadFile(file);
       }
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [files]);
 
   function uploadFile(file: MyFile): void {

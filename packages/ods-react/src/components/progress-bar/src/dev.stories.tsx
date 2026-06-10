@@ -1,5 +1,5 @@
-import { ProgressBar } from '.';
 import style from './dev.module.css';
+import { ProgressBar } from '.';
 
 export default {
   component: ProgressBar,

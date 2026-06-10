@@ -1,6 +1,6 @@
 import { forwardRef, useRef } from 'react';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '.';
 import style from './dev.module.css';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '.';
 
 export default {
   component: Breadcrumb,
@@ -177,6 +177,7 @@ export const Ref = () => {
   );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DummyLink = forwardRef(({ children, ...props }: any, ref) => {
   return (
     <a data-test="dummy" { ...props } ref={ ref }>{ children }</a>

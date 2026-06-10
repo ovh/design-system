@@ -1,8 +1,8 @@
-import { TreeView, type TreeViewItem, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '.';
 import { useMemo, useRef, useState } from 'react';
-import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
-import { Icon, ICON_NAME } from '../../icon/src';
 import { Button } from '../../button/src';
+import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
+import { ICON_NAME, Icon } from '../../icon/src';
+import { TreeView, type TreeViewItem, TreeViewNode, TreeViewNodes, type TreeViewValueChangeDetail } from '.';
 
 export default {
   component: TreeView,
@@ -44,7 +44,7 @@ export const Default = () => {
   return (
     <TreeView
       items={ collection }
-      >
+    >
       <TreeViewNodes>
         { collection.map((item) => (
           <TreeViewNode key={ item.id } item={ item } />
@@ -80,7 +80,7 @@ export const Uncontrolled = () => {
     <>
       <TreeView
         items={ collection }
-        >
+      >
         <TreeViewNodes>
           { collection.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
@@ -117,7 +117,7 @@ export const MultipleSelection = () => {
     <TreeView
       multiple
       items={ collection }
-      >
+    >
       <TreeViewNodes>
         { collection.map((item) => (
           <TreeViewNode key={ item.id } item={ item } />
@@ -152,8 +152,8 @@ export const DefaultExpanded = () => {
   return (
     <TreeView
       items={ items }
-      defaultExpandedValue={["src", "components"]}
-      >
+      defaultExpandedValue={['src', 'components']}
+    >
       <TreeViewNodes>
         { items.map((item) => (
           <TreeViewNode key={ item.id } item={ item } />
@@ -278,7 +278,7 @@ export const UncontrolledMultiple = () => {
       <TreeView
         items={ collection }
         multiple
-        >
+      >
         <TreeViewNodes>
           { collection.map((item) => (
             <TreeViewNode key={ item.id } item={ item } />
@@ -315,7 +315,7 @@ export const Disabled = () => {
     <TreeView
       disabled
       items={ collection }
-      >
+    >
       <TreeViewNodes>
         { collection.map((item) => (
           <TreeViewNode key={ item.id } item={ item } />
@@ -351,7 +351,7 @@ export const DisabledItems = () => {
   return (
     <TreeView
       items={ collection }
-      >
+    >
       <TreeViewNodes>
         { collection.map((item) => (
           <TreeViewNode key={ item.id } item={ item } />
@@ -388,7 +388,7 @@ export const DisabledItemsMultiple = () => {
     <TreeView
       multiple
       items={ collection }
-      >
+    >
       <TreeViewNodes>
         { collection.map((item) => (
           <TreeViewNode key={ item.id } item={ item } />
@@ -431,6 +431,7 @@ export const CustomRender = () => {
           <TreeViewNode key={ item.id } item={ item }>
             { ({ item, isBranch, isExpanded }) => (
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                {/* eslint-disable-next-line no-nested-ternary */}
                 { isBranch ? isExpanded ? <Icon name={ ICON_NAME.folderMinus } /> : <Icon name={ ICON_NAME.folderPlus } /> : <Icon name={ ICON_NAME.file } /> }
                 <span>{ item.name } { item.customRendererData?.type === 'typescript' ? '(ts)' : '(other)'}
                 </span>
@@ -469,12 +470,13 @@ export const CustomRenderMultiple = () => {
     <TreeView
       items={ items }
       multiple
-      >
+    >
       <TreeViewNodes>
         { items.map((item) => (
           <TreeViewNode key={ item.id } item={ item }>
             { ({ item, isBranch, isExpanded }) => (
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                {/* eslint-disable-next-line no-nested-ternary */}
                 { isBranch ? (isExpanded ? <Icon name={ ICON_NAME.folderMinus } /> : <Icon name={ ICON_NAME.folderPlus } />) : <Icon name={ ICON_NAME.file } /> }
                 <span>{ item.name }</span>
               </span>
@@ -518,7 +520,7 @@ export const InFormField = () => {
 
         <TreeView
           items={ items }
-          >
+        >
           <TreeViewNodes>
             { items.map((item) => (
               <TreeViewNode key={ item.id } item={ item } />
@@ -598,7 +600,7 @@ export const DynamicChildren = () => {
     <TreeView
       multiple
       items={ items }
-      >
+    >
       <TreeViewNodes>
         { items.map((item) => (
           <TreeViewNode key={ item.id } item={ item }>
@@ -613,7 +615,9 @@ export const DynamicChildren = () => {
                     <button
                       type="button"
                       aria-label="Add child"
-                      onClick={(e) => { e.stopPropagation(); handleAddChild(item.id); }}
+                      onClick={(e) => {
+                        e.stopPropagation(); handleAddChild(item.id);
+                      }}
                       style={{ background: 'transparent', border: 'none', padding: 2, cursor: 'pointer' }}>
                       <Icon name={ ICON_NAME.plus } />
                     </button>
@@ -621,7 +625,9 @@ export const DynamicChildren = () => {
                   <button
                     type="button"
                     aria-label="Delete"
-                    onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
+                    onClick={(e) => {
+                      e.stopPropagation(); handleDelete(item.id);
+                    }}
                     style={{ background: 'transparent', border: 'none', padding: 2, cursor: 'pointer' }}>
                     <Icon name={ ICON_NAME.xmark } />
                   </button>

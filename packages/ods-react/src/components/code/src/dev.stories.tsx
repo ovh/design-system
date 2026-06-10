@@ -1,7 +1,7 @@
-import { Code } from '.';
-import style from './dev.module.css'
 import lang from '@shikijs/langs/typescript';
 import theme from '@shikijs/themes/nord';
+import style from './dev.module.css';
+import { Code } from '.';
 
 export default {
   component: Code,
@@ -10,19 +10,19 @@ export default {
 
 export const CanCopy = () => (
   <Code canCopy>
-    {`import { Text } from '@ovhcloud/ods-react';`}
+    {'import { Text } from \'@ovhcloud/ods-react\';'}
   </Code>
 );
 
 export const CustomStyle = () => (
   <Code canCopy className={ style['custom-code'] }>
-    {`import { Text } from '@ovhcloud/ods-react';`}
+    {'import { Text } from \'@ovhcloud/ods-react\';'}
   </Code>
 );
 
 export const Default = () => (
   <Code>
-    {`import { Text } from '@ovhcloud/ods-react';`}
+    {'import { Text } from \'@ovhcloud/ods-react\';'}
   </Code>
 );
 
@@ -33,7 +33,7 @@ export const Highlight = () => (
         language: lang,
         theme: theme,
       }}>
-      {`import { Text } from '@ovhcloud/ods-react';`}
+      {'import { Text } from \'@ovhcloud/ods-react\';'}
     </Code>
 
     <br /><br />
@@ -44,7 +44,7 @@ export const Highlight = () => (
         language: lang,
         theme: theme,
       }}>
-      {`import { Text } from '@ovhcloud/ods-react';`}
+      {'import { Text } from \'@ovhcloud/ods-react\';'}
     </Code>
   </>
 );

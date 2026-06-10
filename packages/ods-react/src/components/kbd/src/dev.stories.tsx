@@ -1,5 +1,5 @@
-import { Kbd } from '.';
 import style from './dev.module.css';
+import { Kbd } from '.';
 
 export default {
   component: Kbd,

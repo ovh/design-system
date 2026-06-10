@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { DataTable, DataTableBody, type DataTableColumnDef, type DataTableColumnPinningState, type DataTableColumnVisibilityState, DataTableEmpty, DataTableHead, type DataTableRowSelectionState, type DataTableSortingState } from '.';
 import { Editable, EditableActions, EditableDisplay, EditableDisplayEmpty, EditableInput } from '../../editable/src';
 import { ICON_NAME, Icon } from '../../icon/src';
-import { Quantity, QuantityControl, QuantityInput } from '../../quantity/src';
 import { Pagination } from '../../pagination/src';
+import { Quantity, QuantityControl, QuantityInput } from '../../quantity/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../tooltip/src';
+import { DataTable, DataTableBody, type DataTableColumnDef, type DataTableColumnPinningState, type DataTableColumnVisibilityState, DataTableEmpty, DataTableHead, type DataTableRowSelectionState, type DataTableSortingState } from '.';
 
 export default {
   component: DataTable,
@@ -100,6 +100,7 @@ export const CustomRender = () => {
       id: 'age',
       cell: ({ cell }) => {
         const value = cell.getValue<number>();
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         const bufferValue = useRef(value);
 
         return (
@@ -127,7 +128,7 @@ export const CustomRender = () => {
 
             <EditableActions />
           </Editable>
-        )
+        );
       },
       header: () => (
         <div>
@@ -214,7 +215,7 @@ export const Pinning = () => {
         <DataTableBody />
       </DataTable>
 
-      <button onClick={() => setPinningState({right: ['firstName']})}>UPDATE</button>
+      <button onClick={() => setPinningState({ right: ['firstName'] })}>UPDATE</button>
     </>
   );
 };
@@ -306,7 +307,8 @@ export const Sorting = () => {
         const valueB = rowB.getValue<string>(columnId).split('-')[1];
 
         return Number(valueA) - Number(valueB);
-      }},
+      },
+    },
   ], []);
 
   const customSortingData = useMemo(() => [
@@ -380,7 +382,7 @@ export const StickyHeader = () => {
     }
 
     return dummyData;
-  }, [])
+  }, []);
 
   return (
     <DataTable
@@ -396,7 +398,7 @@ export const StickyHeader = () => {
       </DataTableEmpty>
     </DataTable>
   );
-}
+};
 
 export const Visibility = () => {
   const [columnVisibility, setColumnVisibility] = useState<DataTableColumnVisibilityState>({
@@ -421,7 +423,7 @@ export const Visibility = () => {
       </DataTableEmpty>
     </DataTable>
   );
-}
+};
 
 type PaginationPerson = {
   id: string;

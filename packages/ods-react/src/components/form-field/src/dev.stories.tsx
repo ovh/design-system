@@ -1,8 +1,8 @@
 import { type FormEvent, useRef } from 'react';
-import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel } from '.';
+import style from './dev.module.css';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { Textarea } from '../../textarea/src';
-import style from './dev.module.css';
+import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel, FormFieldLabelSubLabel } from '.';
 
 export default {
   component: FormField,
@@ -24,7 +24,7 @@ export const FullForm = () => {
     const formData = new FormData(formRef.current!);
 
     for (const [key, value] of formData) {
-      console.log(`${key}: ${value}`)
+      console.log(`${key}: ${value}`);
     }
   }
 

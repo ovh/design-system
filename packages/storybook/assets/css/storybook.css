@@ -37,6 +37,11 @@ button[title="Shortcuts"] {
   grid-template-columns: max-content 1fr max-content;
 }
 
+/* Hide Welcome page from sidebar (accessible via logo click) */
+.sidebar-item[data-item-id="ovhcloud-design-system-welcome--docs"] {
+  display: none;
+}
+
 /* Hide original brand image */
 .sidebar-header > div:first-of-type {
   display: none;

@@ -2,24 +2,28 @@ import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-reac
 import { Meta, Source } from '@storybook/blocks';
 import { ExternalLink } from '../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../src/components/heading/Heading';
+import { HOME_TITLE } from '../../src/constants/meta';
+import { StorybookLink } from '../../src/components/storybookLink/StorybookLink';
 
 <Meta title="OVHcloud Design System/Get Started" />
 
 <Heading label="Get Started" level={ 1 } />
 
-OVHcloud Design System is a set of reusable React UI components to create a consistent user experience across OVHcloud pages and products, acting as a single source of truth.
+OVHcloud Design System (ODS) is a set of reusable React UI components crafted and tailored specifically for OVHcloud products. It embodies the OVHcloud brand expression and ensures a consistent user experience across all OVHcloud interfaces.
 
 All OVHcloud Design System packages are available on <ExternalLink href="https://www.npmjs.com">NPM</ExternalLink>.
 
 <Heading label="Installation" level={ 2 } />
 
-Include **ODS** in your projects like any other npm/yarn module:
+Include **ODS** in your projects like any other npm/yarn/pnpm module:
 
 <Source code="npm i --save-exact @ovhcloud/ods-react @ovhcloud/ods-themes"
         dark="true"
         language="bash" />
-or
 <Source code="yarn add --exact @ovhcloud/ods-react @ovhcloud/ods-themes"
+        dark="true"
+        language="bash" />
+<Source code="pnpm add --save-exact @ovhcloud/ods-react @ovhcloud/ods-themes"
         dark="true"
         language="bash" />
 
@@ -75,7 +79,7 @@ Components are compatible with React `v18.2+`, `v19+`.
 
 <Heading label="Import components constants" level={ 2 } />
 
-All enums, interfaces, events are available directly from the `ods-react` lib
+All (optional) enums, interfaces, events are available directly from the `ods-react` lib
 
 <Source code={ `import { BUTTON_SIZE, type CheckboxProp } from '@ovhcloud/ods-react';` }
         dark="true"
@@ -109,14 +113,36 @@ via Sass import:
 
   <MessageBody>
     In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default`.
-    Though this will increase the bundle size and prevent browser resources loading optimization.
+    Please notice that this will increase the bundle size and prevent browser resources loading optimization.
   </MessageBody>
 </Message>
 
 <Heading label="Typescript" level={ 2 } />
 
-To ensure the types are correctly resolved, you'll have to use the `bundler` module resolution, released with <ExternalLink href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler">Typescript 5.0</ExternalLink>.
+ODS packages use modern `exports` fields in their `package.json`, which require the `bundler` module resolution strategy, released with <ExternalLink href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler">Typescript 5.0</ExternalLink>.
 
 <Source code={ `"moduleResolution": "bundler"` }
         dark="true"
         language="typescript" />
+
+<Heading label="Next steps" level={ 2 } />
+
+Now that you're set up, here are some common next steps:
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '1.1rem' }}>
+  <StorybookLink title={ `React Components/Gallery` }>
+    Explore components — browse the full component library
+  </StorybookLink>
+
+  <StorybookLink title={ HOME_TITLE.applyOdsStyle }>
+    Apply and customize styling — set up ODS styles in your project
+  </StorybookLink>
+
+  <StorybookLink title={ HOME_TITLE.accessibilityGuide }>
+    Set up accessibility — learn about ODS accessibility features
+  </StorybookLink>
+
+  <StorybookLink title={ HOME_TITLE.tailwind }>
+    Integrate with Tailwind — use ODS alongside Tailwind CSS
+  </StorybookLink>
+</div>

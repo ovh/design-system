@@ -1,0 +1,334 @@
+import { Meta, Source } from '@storybook/blocks';
+import { Heading } from '../../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../../../src/constants/meta';
+
+<Meta title="OVHcloud Design System/Upgrade/Previous Migrations" />
+
+<Heading label="Previous Migrations" level={ 1 } />
+
+Migration guides for versions prior to v19.
+
+<Heading label="17.x to 18.x" level={ 2 } />
+
+[17.2.2](https://ovh.github.io/design-system/v17.2.2/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [18.0.0](https://ovh.github.io/design-system/v18.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/17.0...release/18.0))
+
+If you have any questions or issues regarding the new version, feel free to reach us directly.
+
+<Heading label="Libraries" level={ 3 } />
+
+The following libs have been removed:
+- @ovhcloud/ods-cdk
+- @ovhcloud/ods-common-core
+- @ovhcloud/ods-common-stencil
+- @ovhcloud/ods-common-testing
+- @ovhcloud/ods-common-theming
+- @ovhcloud/ods-theme-blue-jeans
+
+If you were using part of them, please reach out to us so that we can get more information about your usage.
+
+To use the new theme, replace `ods-theme-blue-jeans` with the following:
+
+<Source code="import '@ovhcloud/ods-themes/default';"
+        dark="true"
+        language="typescript" />
+
+<Heading label="Design tokens" level={ 3 } />
+
+Design tokens are now accessible through the `@ovhcloud/ods-themes` lib.
+
+The list of available tokens has been updated with the latest design changes and match what you may find on the Figma screens.
+
+<Heading label="Components" level={ 3 } />
+
+As each component was refactored, there are too many changes to list everything here.
+
+The main common breaking change is the following: `osds-xxx` component is now `ods-xxx`
+
+A complete list of changes and a guide about how to migrate is available per component in the v18 documentation.
+
+Use the top-left version selector to move to the latest v18.x documentation where you'll find the latest up-to-date information.
+
+<Heading label="16.x to 17.x" level={ 2 } />
+
+[16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/16.0...release/17.0))
+
+Main focus on this version has been on simplifying ODS integration in existing projects (React, Vue, JS, ...).
+
+If you have any issue finding a specific change, feel free to contact us directly and we'll help you migrate.
+
+<Heading label="All Components" level={ 3 } />
+
+<Heading label="Dependency" level={ 4 } />
+
+We now only publish one `ods-components` library that embed all the ODS components.
+
+You need to remove any component specific dependencies, ex:
+
+<Source code={`"ods-component-button": "16.6.0" // should be removed`}
+        dark="true"
+        language="text" />
+
+Instead use only one dependency:
+
+<Source code={`"ods-components": "17.0.0"`}
+        dark="true"
+        language="text" />
+
+<Heading label="Import" level={ 4 } />
+
+You can see more details in the updated <StorybookLink title={ HOME_TITLE.startHere }>Get Started documentation</StorybookLink>
+
+<Heading label="Native webcomponents" level={ 5 } />
+
+Using lazy-loading:
+
+<Source code={`
+import { defineCustomElements } from '@ovhcloud/ods-components/dist/loader';
+defineCustomElements();
+`}
+        dark="true"
+        language="typescript" />
+
+As module:
+
+<Source code={`
+import { defineCustomElement as defineButton } from '@ovhcloud/ods-components/dist/components/osds-button';
+defineButton();
+`}
+        dark="true"
+        language="typescript" />
+
+<Heading label="React components" level={ 5 } />
+
+<Source code="import { OsdsButton, OsdsText } from '@ovhcloud/ods-components/react';"
+        dark="true"
+        language="typescript" />
+
+<Heading label="Vue components" level={ 5 } />
+
+<Source code="import { OsdsButton, OsdsText } from '@ovhcloud/ods-components/vue';"
+        dark="true"
+        language="typescript" />
+
+<Heading label="Types and constants" level={ 5 } />
+
+All types and constants are accessible from the `ods-components` library:
+
+<Source code={`
+import type { OdsButtonAttribute } from '@ovhcloud/ods-components'
+import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES } from '@ovhcloud/ods-components';
+`}
+        dark="true"
+        language="typescript" />
+
+<Heading label="About ods-common-xxx libs" level={ 4 } />
+
+We're trying to remove the need to add any `ods-common-xxx` lib to any project using ODS.
+
+For now, you will still need to add `ods-common-theming` as a dependency to access the `ODS_THEME_COLOR_INTENT` values.
+
+If you still ended up adding `ods-common-core` in your project, please give us the feedback so that we work on removing that need.
+
+<Heading label="15.x to 16.x" level={ 2 } />
+
+[15.0.1](https://ovh.github.io/design-system/v15.0.1/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [16.0.0](https://ovh.github.io/design-system/v16.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/15.0...release/16.0))
+
+Presenting all changes, components per components will cause a very long and hard to use changelog.
+
+Instead we'll present you the fundamental changes that have been applied for all of the existing components.
+
+The same logics has been applied to each components.
+
+If you have any issue finding a specific change, feel free to contact us directly and we'll help you migrate.
+
+<Heading label="All Components" level={ 3 } />
+
+<Heading label="Dependency" level={ 4 } />
+
+To use the component add a dependency to either:
+
+* `@ovhcloud/ods-component-<component>` to import only the specific component.
+* `@ovhcloud/ods-components` to import all components.
+
+<Heading label="Import" level={ 4 } />
+
+Replace any imports like the followings:
+
+<Source code={`
+// Previously component were imported using one of:
+import { OsdsSpinner } from '@ovhcloud/ods-stencil/components/spinner'
+import { OsdsSpinner } from '@ovhcloud/ods-stencil/components/spinner/react'
+import { OsdsSpinner } from '@ovhcloud/ods-stencil/components/spinner/vue'
+
+// Enums were imported from the ods-core library
+import { OdsSpinnerSize, OdsSpinnerSizeList } from '@ovhcloud/ods-core'
+
+// Interfaces were imported from the ods-core library
+import { OdsSpinnerAttributes } from '@ovhcloud/ods-core'
+`}
+        dark="true"
+        language="typescript" />
+
+to:
+
+<Source code={`
+// Component are now imported using one of:
+import { OsdsSpinner } from '@ovhcloud/ods-component-spinner'
+import { OsdsSpinner } from '@ovhcloud/ods-component-spinner/react'
+import { OsdsSpinner } from '@ovhcloud/ods-component-spinner/vue'
+
+// Enums are now imported directly from the component
+import { ODS_SPINNER_SIZE, ODS_SPINNER_SIZES } from '@ovhcloud/ods-component-spinner'
+
+// Interfaces are now imported directly from the component
+import type { OdsSpinnerAttribute } from '@ovhcloud/ods-component-spinner'
+`}
+        dark="true"
+        language="typescript" />
+
+Some types have been removed from ODS, as they were empty or not used, if you can't find a type you were using,
+please contact us to see where it has been moved or how to replace it.
+
+<Heading label="14.x to 15.x" level={ 2 } />
+
+[14.1.1](https://ovh.github.io/design-system/v14.1.1/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [15.0.0](https://ovh.github.io/design-system/v15.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/14.0...release/15.0))
+
+<Heading label="Text" level={ 3 } />
+
+<Heading label="Dependency" level={ 4 } />
+
+Add a dependency to `@ovhcloud/ods-component-text` or `@ovhcloud/ods-components`.
+
+<Heading label="Import" level={ 4 } />
+
+Replace any imports like the followings:
+
+<Source code={`
+// Component
+import { OsdsText } from '@ovhcloud/ods-stencil/components/text'
+import { OsdsText } from '@ovhcloud/ods-stencil/components/text/react'
+import { OsdsText } from '@ovhcloud/ods-stencil/components/text/vue'
+
+// Enums
+import { OdsTextLevel } from '@ovhcloud/ods-core'
+import { OdsTextLevelList } from '@ovhcloud/ods-core'
+import { OdsTextSize } from '@ovhcloud/ods-core'
+import { OdsTextSizeList } from '@ovhcloud/ods-core'
+
+// Interfaces
+import { OdsTextAttributes } from '@ovhcloud/ods-core'
+`}
+        dark="true"
+        language="typescript" />
+
+to:
+
+<Source code={`
+// Component
+import { OsdsText } from '@ovhcloud/ods-component-text'
+import { OsdsText } from '@ovhcloud/ods-component-text/react'
+import { OsdsText } from '@ovhcloud/ods-component-text/vue'
+
+// Enums
+import { ODS_TEXT_LEVEL } from '@ovhcloud/ods-component-text'
+import { ODS_TEXT_LEVELS } from '@ovhcloud/ods-component-text'
+import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text'
+import { ODS_TEXT_SIZES } from '@ovhcloud/ods-component-text'
+
+// Interfaces
+import type { OdsTextAttribute } from '@ovhcloud/ods-component-text'
+`}
+        dark="true"
+        language="typescript" />
+
+Following interfaces has been removed:
+
+* `OdsText`
+* `OdsTextEvents`
+* `OdsTextMethods`
+* `OdsTextLevelUnion`
+* `OdsTextSizeUnion`
+
+<Heading label="Textarea" level={ 3 } />
+
+<Heading label="Dependency" level={ 4 } />
+
+Add a dependency to `@ovhcloud/ods-component-textarea` or `@ovhcloud/ods-components`.
+
+<Heading label="Import" level={ 4 } />
+
+Replace any imports like the followings:
+
+<Source code={`
+import { OsdsTextarea } from '@ovhcloud/ods-stencil/components/textarea'
+import { OsdsTextarea } from '@ovhcloud/ods-stencil/components/textarea/react'
+import { OsdsTextarea } from '@ovhcloud/ods-stencil/components/textarea/vue'
+
+// Enums
+import { OdsTextAreaSize } from '@ovhcloud/ods-core'
+import { OdsTextAreaSizeList } from '@ovhcloud/ods-core'
+
+// Interfaces
+import { OdsTextAreaAttributes } from '@ovhcloud/ods-core'
+import { OdsTextAreaEvents, OdsTextAreaChangeEventDetail } from '@ovhcloud/ods-core'
+import { OdsTextAreaMethods } from '@ovhcloud/ods-core'
+`}
+        dark="true"
+        language="typescript" />
+
+to:
+
+<Source code={`
+// Component
+import { OsdsTextarea } from '@ovhcloud/ods-component-textarea'
+import { OsdsTextarea } from '@ovhcloud/ods-component-textarea/react'
+import { OsdsTextarea } from '@ovhcloud/ods-component-textarea/vue'
+
+// Enums
+import { ODS_TEXT_LEVEL } from '@ovhcloud/ods-component-textarea'
+import { ODS_TEXT_LEVELS } from '@ovhcloud/ods-component-textarea'
+import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-textarea'
+import { ODS_TEXT_SIZES } from '@ovhcloud/ods-component-textarea'
+
+// Interfaces
+import type { OdsTextAreaAttribute } from '@ovhcloud/ods-component-textarea'
+import type { OdsTextAreaEvent, OdsTextAreaChangeEvent } from '@ovhcloud/ods-component-textarea'
+import type { OdsTextAreaMethod } from '@ovhcloud/ods-component-textarea'
+`}
+        dark="true"
+        language="typescript" />
+
+Following interfaces has been removed:
+
+* `OdsTextArea`
+* `OdsTextAreaBehavior`
+* `OdsTextAreaSizeUnion`
+
+<Heading label="13.x to 14.x" level={ 2 } />
+
+[13.0.1](https://ovh.github.io/design-system/v13.0.1/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [14.0.0](https://ovh.github.io/design-system/v14.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/13.0...release/14.0))
+
+<Heading label="Tile interactive attribute" level={ 3 } />
+
+The Tile component `interactive` attribute has been removed.
+
+<Source code="interactive?: boolean;"
+        dark="true"
+        language="typescript" />
+
+If you are using `interactive` attribute on a Tile in your project, you should remove it.
+
+<Heading label="12.x to 13.x" level={ 2 } />
+
+[12.1.3](https://ovh.github.io/design-system/v12.1.3/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [13.0.0](https://ovh.github.io/design-system/v13.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/12.1...release/13.0))
+
+<Heading label="Select width" level={ 3 } />
+
+The Select component fixed width when non flex has been removed.
+
+<Source code="width: calc(var(--ods-size-stack-08) * 11)"
+        dark="true"
+        language="css" />
+
+Should you need any width, you will have to set it on your component.

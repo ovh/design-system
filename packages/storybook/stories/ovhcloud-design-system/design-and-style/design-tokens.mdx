@@ -2,11 +2,15 @@ import { Meta, Source } from '@storybook/blocks';
 import { DesignTokens } from '../../../src/components/designTokens/DesignTokens';
 import { Heading } from '../../../src/components/heading/Heading';
 
-<Meta title="OVHcloud Design System/Design and Style/Design Tokens" />
+<Meta title="OVHcloud Design System/Customize/Design Tokens" />
 
 <Heading label="Design Tokens" level={1} />
 
 Design tokens define reusable design values such as colors, borders, and outlines as variables. Instead of using hardcoded values, they provide a consistent, scalable, and maintainable way to style components across all products.
+
+<Heading label="Why use design tokens?" level={2} />
+
+Using design tokens instead of hardcoded values ensures your UI stays aligned with ODS updates. When the design system evolves, your application benefits automatically through updated token values.
 
 <Heading label="Usage" level={2} />
 
@@ -22,5 +26,16 @@ Design tokens are available as CSS custom properties (variables) and can be used
   dark="true"
   language="css"
 />
+
+<Heading label="Available categories" level={2} />
+
+Tokens are organized into the following categories:
+- **Colors** — semantic colors (primary, success, warning, critical), neutral shades
+- **Border** — radius sizes (xs, sm, md, lg), border widths
+- **Typography** — font families (default, code)
+- **Spacing** — padding, gaps, and layout spacing
+- **Theme** — overarching tokens for backgrounds, text, borders, overlays, and inputs
+
+Browse the full list below:
 
 <DesignTokens />

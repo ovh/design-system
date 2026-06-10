@@ -5,7 +5,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { HOME_TITLE, REACT_COMPONENTS_TITLE, RECIPES_TITLE, STORY } from '../../../src/constants/meta';
 
-<Meta title="OVHcloud Design System/What's new?/What's new" />
+<Meta title="OVHcloud Design System/Upgrade/What's new" />
 
 <Heading label="What's new ?" level={ 1 } />
 
@@ -890,7 +890,7 @@ With this new version we got rid of those constraints, which gave us some benefi
 Although, we tried to stay as close as possible to previous version behavior, the way you integrate ODS in your React app should be rethought,
 to ensure you use components as real React elements and not wrapped Web Components anymore.
 
-To check how to start with this new version, please follow the <StorybookLink title={ HOME_TITLE.getStarted }>Get Started</StorybookLink> documentation.
+To check how to start with this new version, please follow the <StorybookLink title={ HOME_TITLE.startHere }>Get Started</StorybookLink> documentation.
 
 Here is a non-exhaustive list of the major changes:
 - rework of all components as React elements.
@@ -1393,7 +1393,7 @@ Storybook has been partially rewritten, so you may notice a few changes:
 
 <Heading label="v18.0.0" level={ 2 } />
 
-As it is a major version, you'll have to follow the <StorybookLink title={ HOME_TITLE.migration17to18 }>migration guide 17.x to 18.x</StorybookLink>
+As it is a major version, you'll have to follow the <StorybookLink title={ HOME_TITLE.previousMigrations }>migration guide 17.x to 18.x</StorybookLink>
 
 <Heading label="Project changes:" level={ 3 } />
 
@@ -1514,7 +1514,7 @@ to use the web-component by default.
 
 <Heading label="Component changes:" level={ 3 } />
 
-Please check the <StorybookLink title={ HOME_TITLE.migration17to18 }>migration guide</StorybookLink> regarding all the component changes.
+Please check the <StorybookLink title={ HOME_TITLE.previousMigrations }>migration guide</StorybookLink> regarding all the component changes.
 
 <Heading label="v17.2.2" level={ 2 } />
 
@@ -1712,7 +1712,7 @@ Documentation usage guidelines have been completed with almost all components pr
 
 <Heading label="v17.0.0" level={ 2 } />
 
-As it is a major version, you'll have to follow the <StorybookLink title={ HOME_TITLE.migration16to17 }>migration guide 16.x to 17.x</StorybookLink>
+As it is a major version, you'll have to follow the <StorybookLink title={ HOME_TITLE.previousMigrations }>migration guide 16.x to 17.x</StorybookLink>
 
 <Heading label="Project changes:" level={ 3 } />
 
@@ -1733,8 +1733,8 @@ ODS components can then be either imported using lazy-loading (the code of each 
 
 For more details on how to import ODS components, see:
 
-* the updated <StorybookLink title={ HOME_TITLE.getStarted }>Get Started documentation</StorybookLink>
-* the 16.x to 17.x <StorybookLink title={ HOME_TITLE.migration16to17 }>Migration guide</StorybookLink>
+* the updated <StorybookLink title={ HOME_TITLE.startHere }>Get Started documentation</StorybookLink>
+* the 16.x to 17.x <StorybookLink title={ HOME_TITLE.previousMigrations }>Migration guide</StorybookLink>
 
 <Heading label="Documentation improvements:" level={ 3 } />
 
@@ -2055,7 +2055,7 @@ Fixes CI build issues when deploying Storybook.
 
 <Heading label="v16.0.0" level={ 2 } />
 
-As it is a major version, you'll have to follow the <StorybookLink title={ HOME_TITLE.migration15to16 }>migration guide 15.x to 16.x</StorybookLink>
+As it is a major version, you'll have to follow the <StorybookLink title={ HOME_TITLE.previousMigrations }>migration guide 15.x to 16.x</StorybookLink>
 
 ⚠️We're aware that not all the documentation is up-to-date with the latest technical changes ⚠️
 
@@ -2157,7 +2157,7 @@ See documentation using version selector
 
 <Heading label="v15.0.0" level={ 2 } />
 
-As it is a major version, you have to do the <StorybookLink title={ HOME_TITLE.migration14to15 }>migration guide 14.x to 15.x</StorybookLink>
+As it is a major version, you have to do the <StorybookLink title={ HOME_TITLE.previousMigrations }>migration guide 14.x to 15.x</StorybookLink>
 
 <Heading label="Project changes:" level={ 3 } />
 
@@ -2276,7 +2276,7 @@ We added the following components:
 
 <Heading label="v14.0.0" level={ 2 } />
 
-As it is a major version, you have to do the <StorybookLink title={ HOME_TITLE.migration13to14 }>migration guide 13.x to 14.x</StorybookLink>
+As it is a major version, you have to do the <StorybookLink title={ HOME_TITLE.previousMigrations }>migration guide 13.x to 14.x</StorybookLink>
 
 <Heading label="New features:" level={ 3 } />
 
@@ -2321,7 +2321,7 @@ See CDK Documentation using version selector.
 
 <Heading label="v13.0.0" level={ 2 } />
 
-As it is a major version, you have to do the <StorybookLink title={ HOME_TITLE.migration12to13 }>migration guide 12.x to 13.x</StorybookLink>
+As it is a major version, you have to do the <StorybookLink title={ HOME_TITLE.previousMigrations }>migration guide 12.x to 13.x</StorybookLink>
 
 <Heading label="New features:" level={ 3 } />
 
@@ -2398,7 +2398,7 @@ First release on GitHub. There is no new feature in this version. It is now open
 <Heading label="v11.0.0" level={ 2 } />
 
 Flag component has been modified; you’ll need to update as explained in the migration guide.
-For more details about assets, see <StorybookLink title={ HOME_TITLE.getStarted }>Installation</StorybookLink> page.
+For more details about assets, see <StorybookLink title={ HOME_TITLE.startHere }>Installation</StorybookLink> page.
 New attributes are available on this component: `lazy`, `assetPath` and `src`.
 
 Before importing any component you now have to setup ods.
@@ -2464,7 +2464,7 @@ ts-node ~9.1.1 to ~10.7.0
 
 We now build all of our components for `React` and `Vue` frameworks.
 They allow to use all the potential and features of your high-end JS framework.
-You can read the updated <StorybookLink title={ HOME_TITLE.getStarted }>Getting Started</StorybookLink>
+You can read the updated <StorybookLink title={ HOME_TITLE.startHere }>Getting Started</StorybookLink>
 to initialize an App with ODS and see how it works depending the framework.
 
 Also, `ods-cart` is no more impacted by a parent container with `text-align:center`.

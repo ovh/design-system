@@ -5,7 +5,7 @@ import { Heading } from '../../../src/components/heading/Heading';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { HOME_TITLE } from '../../../src/constants/meta';
 
-<Meta title="OVHcloud Design System/Design and Style/Tailwind CSS Integration" />
+<Meta title="OVHcloud Design System/Customize/Tailwind CSS Integration" />
 
 <Heading label="Tailwind CSS Integration" level={ 1 } />
 
@@ -66,7 +66,7 @@ Create a `./.vscode/tailwind.json` containing the classes you want to expose for
     "customClasses": [
       "ods-color-primary-500",
       "ods-color-success-500",
-      "ods-color-critical-700",
+      "ods-color-warning-700",
       "ods-border-radius-xs",
       "ods-border-radius-sm",
       "ods-border-radius-md",
@@ -110,7 +110,7 @@ Base is optional.
 @import './ods-tailwind.css';
 `}
         dark
-        language="typescript" />
+        language="css" />
 
 <Heading label="Usage Examples" level={ 2 } />
 
@@ -161,5 +161,5 @@ function MyComponent() {
 
 - <ExternalLink href="https://tailwindcss.com/docs">Tailwind CSS Documentation</ExternalLink>
 - <ExternalLink href="https://tailwindcss.com/docs/upgrade-guide">Tailwind v4 Migration Guide</ExternalLink>
-- <StorybookLink title={ HOME_TITLE.getStarted }>ODS Get Started Guide</StorybookLink>
+- <StorybookLink title={ HOME_TITLE.startHere }>ODS Get Started Guide</StorybookLink>
 - <StorybookLink title={ HOME_TITLE.designTokens }>ODS Design Tokens</StorybookLink>

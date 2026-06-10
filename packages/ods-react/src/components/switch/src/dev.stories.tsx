@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import style from './dev.module.css';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { Switch, SwitchItem, type SwitchValueChangeDetail } from '.';
-import style from './dev.module.css';
 
 export default {
   component: Switch,
@@ -36,7 +36,7 @@ export const ControlledInput = () => {
   const [value, setValue] = useState('item-1');
 
   function onValueChange({ value }: SwitchValueChangeDetail) {
-    setValue(value)
+    setValue(value);
   }
 
   return (

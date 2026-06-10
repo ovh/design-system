@@ -1,7 +1,7 @@
 import { forwardRef, useRef } from 'react';
+import style from './dev.module.css';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Link } from '.';
-import style from './dev.module.css';
 
 export default {
   component: Link,
@@ -98,6 +98,7 @@ export const Ref = () => {
   );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DummyLink = forwardRef(({ children, ...props }: any, ref) => {
   return (
     <a data-test="dummy" { ...props } ref={ ref }>{ children }</a>
@@ -145,15 +146,15 @@ export const CustomStyle = () => (
       </Link>
     </div>
   </>
-)
+);
 
 export const Accessibility = () => (
   <>
     <h3>Icon only</h3>
     <h4>With href</h4>
-  <Link aria-label="Go to homepage" href="https://www.ovhcloud.com/">
-    <Icon name={ ICON_NAME.home } />
-  </Link>
+    <Link aria-label="Go to homepage" href="https://www.ovhcloud.com/">
+      <Icon name={ ICON_NAME.home } />
+    </Link>
     <h4>Without href</h4>
     <Link aria-label="Go to homepage">
       <Icon name={ ICON_NAME.home } />

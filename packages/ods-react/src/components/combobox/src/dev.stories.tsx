@@ -1,10 +1,10 @@
 import { type FormEvent, useRef, useState } from 'react';
+import style from './dev.module.css';
 import { FormField, FormFieldError, FormFieldLabel } from '../../form-field/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { INPUT_I18N } from '../../input/src';
 import { Modal, ModalBody, ModalContent, ModalTrigger } from '../../modal/src';
 import { Combobox, ComboboxContent, ComboboxControl, type ComboboxItem, type ComboboxValueChangeDetails } from '.';
-import style from './dev.module.css';
 
 export default {
   component: Combobox,
@@ -93,7 +93,7 @@ export const Clearable = () => (
   <>
     <Combobox
       items={ items }
-      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }>
+      onValueChange={ (v) => console.log('[DEV]: value:', v) }>
       <ComboboxControl clearable />
       <ComboboxContent />
     </Combobox>
@@ -103,7 +103,7 @@ export const Clearable = () => (
     <Combobox
       defaultValue={ [items[0].value] }
       items={ items }
-      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }>
+      onValueChange={ (v) => console.log('[DEV]: value:', v) }>
       <ComboboxControl clearable />
       <ComboboxContent />
     </Combobox>
@@ -114,7 +114,7 @@ export const Clearable = () => (
       defaultValue={ [items[0].value] }
       disabled
       items={ items }
-      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }>
+      onValueChange={ (v) => console.log('[DEV]: value:', v) }>
       <ComboboxControl clearable />
       <ComboboxContent />
     </Combobox>
@@ -124,8 +124,9 @@ export const Clearable = () => (
     <Combobox
       defaultValue={ [items[0].value] }
       items={ items }
-      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }
-      readOnly>
+      onValueChange={ (v) => console.log('[DEV]: value:', v) }
+      readOnly
+    >
       <ComboboxControl clearable />
       <ComboboxContent />
     </Combobox>
@@ -146,7 +147,7 @@ export const Controlled = () => {
       </p>
 
       <button onClick={ () => setValues(['the-cat']) }>
-        Force value "Cat"
+        Force value `Cat`
       </button>
 
       <Combobox
@@ -158,7 +159,7 @@ export const Controlled = () => {
       </Combobox>
     </>
   );
-}
+};
 
 export const CustomFilter = () => (
   <>
@@ -182,12 +183,12 @@ export const CustomOptionRenderer = () => {
   }
 
   const items = [
-    { label: 'Dog', value: 'dog', customRendererData: { description: 'My dog is stupid' }},
-    { label: 'Cat', value: 'cat', customRendererData: { description: 'All cats are awesome' }},
-    { label: 'Hamster', value: 'hamster', customRendererData: { description: 'Where is my hamster?' }},
-    { label: 'Parrot', value: 'parrot', customRendererData: { description: 'Repeat repeat repeat' }},
-    { label: 'Spider', value: 'spider', customRendererData: { description: 'Spider? Where?' }},
-    { label: 'Goldfish', value: 'goldfish', customRendererData: { description: 'Cool a new aquarium' }},
+    { label: 'Dog', value: 'dog', customRendererData: { description: 'My dog is stupid' } },
+    { label: 'Cat', value: 'cat', customRendererData: { description: 'All cats are awesome' } },
+    { label: 'Hamster', value: 'hamster', customRendererData: { description: 'Where is my hamster?' } },
+    { label: 'Parrot', value: 'parrot', customRendererData: { description: 'Repeat repeat repeat' } },
+    { label: 'Spider', value: 'spider', customRendererData: { description: 'Spider? Where?' } },
+    { label: 'Goldfish', value: 'goldfish', customRendererData: { description: 'Cool a new aquarium' } },
   ];
 
   return (
@@ -343,7 +344,7 @@ export const Handlers = () => {
         value={ valueChangeEvents.join('\n----------\n') } />
     </>
   );
-}
+};
 
 export const HighlightResults = () => (
   <Combobox
@@ -398,7 +399,7 @@ export const InFormRequired = () => {
     const formData = new FormData(formRef.current!);
 
     for (const [key, value] of formData) {
-      console.log(`${key}: ${value}`)
+      console.log(`${key}: ${value}`);
     }
   }
 
@@ -529,7 +530,7 @@ export const Opened = () => {
       </Combobox>
     </>
   );
-}
+};
 
 export const Placeholder = () => (
   <Combobox items={ items }>
@@ -630,7 +631,7 @@ export const MultipleClearable = () => (
     <Combobox
       items={ items }
       multiple
-      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }>
+      onValueChange={ (v) => console.log('[DEV]: value:', v) }>
       <ComboboxControl clearable />
       <ComboboxContent />
     </Combobox>
@@ -641,7 +642,7 @@ export const MultipleClearable = () => (
       defaultValue={ [items[0].value] }
       items={ items }
       multiple
-      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }>
+      onValueChange={ (v) => console.log('[DEV]: value:', v) }>
       <ComboboxControl clearable />
       <ComboboxContent />
     </Combobox>
@@ -653,7 +654,7 @@ export const MultipleClearable = () => (
       disabled
       items={ items }
       multiple
-      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }>
+      onValueChange={ (v) => console.log('[DEV]: value:', v) }>
       <ComboboxControl clearable />
       <ComboboxContent />
     </Combobox>
@@ -664,7 +665,7 @@ export const MultipleClearable = () => (
       defaultValue={ [items[0].value] }
       items={ items }
       multiple
-      onValueChange={ (v) => console.log(`[DEV]: value:`, v) }
+      onValueChange={ (v) => console.log('[DEV]: value:', v) }
       readOnly>
       <ComboboxControl clearable />
       <ComboboxContent />
@@ -686,7 +687,7 @@ export const MultipleControlled = () => {
       </p>
 
       <button onClick={ () => setValues(['the-cat']) }>
-        Force value "Cat"
+        Force value `Cat`
       </button>
 
       <Combobox
@@ -699,7 +700,7 @@ export const MultipleControlled = () => {
       </Combobox>
     </>
   );
-}
+};
 
 export const MultipleCustomFilter = () => (
   <>
@@ -774,7 +775,7 @@ export const MultipleHandlers = () => {
         value={ valueChangeEvents.join('\n----------\n') } />
     </>
   );
-}
+};
 
 export const MultipleNoCustom = () => (
   <Combobox

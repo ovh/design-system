@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Popover, PopoverContent, PopoverTrigger } from '.';
+import style from './dev.module.css';
 import { Button } from '../../button/src';
 import { DIVIDER_SPACING, Divider } from '../../divider/src';
 import { Modal, ModalBody, ModalContent, type ModalOpenChangeDetail, ModalTrigger } from '../../modal/src';
-import style from './dev.module.css';
+import { Popover, PopoverContent, PopoverTrigger } from '.';
 
 export default {
   component: Popover,
@@ -344,7 +344,7 @@ export const OnPositionChange = () => {
       </Popover>
     </>
   );
-}
+};
 
 export const SameWidth = () => (
   <>

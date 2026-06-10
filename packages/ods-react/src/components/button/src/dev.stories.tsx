@@ -1,5 +1,5 @@
-import { BUTTON_COLOR, BUTTON_COLORS, BUTTON_SIZES, BUTTON_VARIANTS, Button } from '.';
 import style from './dev.module.css';
+import { BUTTON_COLOR, BUTTON_COLORS, BUTTON_SIZES, BUTTON_VARIANTS, Button } from '.';
 
 export default {
   component: Button,
@@ -63,7 +63,7 @@ export const Accessibility = () => (
   <Button aria-label="Accessibility">
     Accessibility
   </Button>
-)
+);
 
 export const Sizes = () => (
   <div style={{ display: 'flex', flexFlow: 'column', rowGap: '16px' }}>

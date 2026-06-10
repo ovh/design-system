@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Meter } from '.';
 import style from './dev.module.css';
+import { Meter } from '.';
 
 export default {
   component: Meter,
@@ -95,7 +95,6 @@ export const Optimum = () => {
     </>
   );
 };
-
 
 export const Thresholds = () => {
   const [high, setHigh] = useState(66);

@@ -1,11 +1,12 @@
-/* eslint-disable no-console */
-import { BUTTON_VARIANT, Divider, FileThumbnail } from '@ovhcloud/ods-react';
 import { useState } from 'react';
 import { PromptInputControls } from './components/prompt-input-controls/PromptInputControls';
 import { PromptInputFileUploadButton } from './components/prompt-input-file-upload-button/PromptInputFileUploadButton';
 import { PromptInputFiles } from './components/prompt-input-files/PromptInputFiles';
 import { PromptInputSendButton } from './components/prompt-input-send-button/PromptInputSendButton';
 import { PromptInputTextControl } from './components/prompt-input-text-control/PromptInputTextControl';
+import { BUTTON_VARIANT } from '../../button/src';
+import { Divider } from '../../divider/src';
+import { FileThumbnail } from '../../file-thumbnail/src';
 import { FormField, FormFieldError, FormFieldHelper } from '../../form-field/src';
 import { PromptInput } from '.';
 

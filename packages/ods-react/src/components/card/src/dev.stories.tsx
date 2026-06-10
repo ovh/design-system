@@ -1,5 +1,5 @@
-import { CARD_COLORS, Card } from '.';
 import style from './dev.module.css';
+import { CARD_COLORS, Card } from '.';
 
 export default {
   component: Card,

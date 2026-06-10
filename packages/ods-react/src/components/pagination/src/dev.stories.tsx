@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { Pagination, type PaginationPageChangeDetail, PaginationPageSelector, type PaginationPageSizeChangeDetail, PaginationPageSizeSelector, PaginationPages } from '.';
 import style from './dev.module.css';
+import { Pagination, type PaginationPageChangeDetail, PaginationPageSelector, type PaginationPageSizeChangeDetail, PaginationPageSizeSelector, PaginationPages } from '.';
 
 export default {
   component: Pagination,
@@ -134,10 +134,10 @@ export const Refs = () => {
       </Pagination>
 
       <button onClick={ () => {
-        console.log(paginationRef.current)
-        console.log(paginationPagesRef.current)
-        console.log(paginationPageSelectorRef.current)
-        console.log(paginationPageSizeSelectorRef.current)
+        console.log(paginationRef.current);
+        console.log(paginationPagesRef.current);
+        console.log(paginationPageSelectorRef.current);
+        console.log(paginationPageSizeSelectorRef.current);
       }}>
         Log refs
       </button>

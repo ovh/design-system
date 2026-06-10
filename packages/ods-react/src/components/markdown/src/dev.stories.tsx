@@ -21,7 +21,7 @@ export const CustomComponents = () => (
             { children as string }
           </Code>
         );
-      }
+      },
     }}
     content={`# heading 1
   \`\`\`
@@ -76,4 +76,4 @@ export const ODSComponents = () => {
         content={ content } />
     </>
   );
-}
+};

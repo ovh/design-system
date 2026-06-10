@@ -1,5 +1,5 @@
-import { Skeleton } from '.';
 import style from './dev.module.css';
+import { Skeleton } from '.';
 
 export default {
   component: Skeleton,

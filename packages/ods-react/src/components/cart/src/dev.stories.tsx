@@ -1,8 +1,8 @@
+import styles from './dev.module.css';
 import { formatPrice } from '../../../utils';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { Cart, CartAction, CartEmpty, CartExtraContent, CartProductGroup, CartProductGroupItem, CartTotal } from '.';
-import styles from './dev.module.css';
 
 export default {
   component: Cart,

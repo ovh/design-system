@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import style from './dev.module.css';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { Toggle, ToggleControl, ToggleLabel } from '.';
-import style from './dev.module.css';
 
 export default {
   component: Toggle,

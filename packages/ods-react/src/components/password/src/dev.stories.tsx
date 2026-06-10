@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { type ChangeEvent, useState } from 'react';
+import style from './dev.module.css';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { INPUT_I18N } from '../../input/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { Password } from '.';
-import style from './dev.module.css';
 
 export default {
   component: Password,
@@ -119,7 +120,7 @@ export const DisabledActions = () => (
 export const I18n = () => (
   <Password i18n={{
     [INPUT_I18N.maskButtonHide]: 'Hide away your password',
-    [INPUT_I18N.maskButtonShow]: 'Show me your password'
+    [INPUT_I18N.maskButtonShow]: 'Show me your password',
   }} />
 );
 

@@ -1,15 +1,8 @@
-import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxLabel,
-  Radio,
-  RadioControl,
-  RadioGroup,
-  RadioLabel,
-} from '@ovhcloud/ods-react';
 import { useState } from 'react';
-import { Tile, TileAltContainer } from '.';
 import style from './dev.module.css';
+import { Checkbox, CheckboxControl, CheckboxLabel } from '../../checkbox/src';
+import { Radio, RadioControl, RadioGroup, RadioLabel } from '../../radio-group/src';
+import { Tile, TileAltContainer } from '.';
 
 export default {
   component: Tile,
@@ -65,7 +58,7 @@ export const WithCheckbox = () => {
         </TileAltContainer>
       </Checkbox>
     </Tile>
-  </div>
+  </div>;
 };
 
 export const WithRadio = () => {

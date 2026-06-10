@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
+import style from './dev.module.css';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { TEXT_PRESET, Text } from '../../text/src';
 import { Quantity, QuantityControl, QuantityInput } from '.';
-import style from './dev.module.css';
 
 export default {
   component: Quantity,
@@ -192,7 +192,7 @@ export const MaxMin = () => (
 export const Placeholder = () => (
   <Quantity>
     <QuantityControl>
-      <QuantityInput placeholder="--"  />
+      <QuantityInput placeholder="--" />
     </QuantityControl>
   </Quantity>
 );

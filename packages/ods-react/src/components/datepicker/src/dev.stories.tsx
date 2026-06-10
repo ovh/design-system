@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import style from './dev.module.css';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../form-field/src';
 import { INPUT_I18N } from '../../input/src';
 import { Modal, ModalBody, ModalContent } from '../../modal/src';
 import { Datepicker, DatepickerContent, DatepickerControl, type DatepickerView } from '.';
-import style from './dev.module.css';
 
 export default {
   component: Datepicker,
@@ -45,7 +45,7 @@ export const Controlled = () => {
       </Datepicker>
     </>
   );
-}
+};
 
 export const CustomStyle = () => (
   <Datepicker className={ style['custom-datepicker'] }>

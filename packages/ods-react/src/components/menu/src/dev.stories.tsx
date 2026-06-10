@@ -1,13 +1,13 @@
 import { Menu as ArkMenu } from '@ark-ui/react/menu';
 import { Portal } from '@ark-ui/react/portal';
 import { type JSX, useState } from 'react';
+import style from './dev.module.css';
 import { BADGE_COLOR, Badge } from '../../badge/src';
 import { Button } from '../../button/src';
 import { Checkbox, CheckboxControl, CheckboxLabel } from '../../checkbox/src';
 import { ICON_NAME, Icon } from '../../icon/src';
 import { Kbd } from '../../kbd/src';
 import { Menu, MenuContent, MenuGroup, MenuGroupLabel, MenuItem, MenuSubmenu, MenuTrigger } from '.';
-import style from './dev.module.css';
 
 export default {
   component: Menu,

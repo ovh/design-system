@@ -1,5 +1,5 @@
-import { ICON_NAME, Icon } from '.';
 import style from './dev.module.css';
+import { ICON_NAME, Icon } from '.';
 
 export default {
   component: Icon,
@@ -11,8 +11,8 @@ export const Default = () => (
 );
 
 export const CustomStyle = () => (
-    <Icon
-      className={ style['custom-icon'] }
-      name={ ICON_NAME.circleCheck }
-    />
+  <Icon
+    className={ style['custom-icon'] }
+    name={ ICON_NAME.circleCheck }
+  />
 );

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Button } from '../../button/src';
-import { Text, TEXT_PRESET } from '../../text/src';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, EXPAND_ICON_POSITION } from '.';
 import style from './dev.module.css';
+import { Button } from '../../button/src';
+import { TEXT_PRESET, Text } from '../../text/src';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, EXPAND_ICON_POSITION } from '.';
 
 export default {
   component: Accordion,
@@ -223,8 +223,8 @@ export const Product = () => (
   <Accordion>
     <AccordionItem value="1">
       <AccordionTrigger className={ style['accordion-custom-trigger'] } expandIconPosition={ EXPAND_ICON_POSITION.left }>
-        <Text preset={ TEXT_PRESET.paragraph } style={{ margin: 0}}>Nom de la famille du produit</Text>
-        <Text preset={ TEXT_PRESET.heading4 } as={'span'} style={{ margin: 0}}>Nom du produit</Text>
+        <Text preset={ TEXT_PRESET.paragraph } style={{ margin: 0 }}>Nom de la famille du produit</Text>
+        <Text preset={ TEXT_PRESET.heading4 } as={'span'} style={{ margin: 0 }}>Nom du produit</Text>
       </AccordionTrigger>
       <AccordionContent className={ style['product-details']}>
         <Text preset="paragraph">
@@ -233,4 +233,4 @@ export const Product = () => (
       </AccordionContent>
     </AccordionItem>
   </Accordion>
-)
+);

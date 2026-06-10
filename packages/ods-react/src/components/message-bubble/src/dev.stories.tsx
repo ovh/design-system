@@ -1,5 +1,5 @@
-import { MESSAGE_BUBBLE_VARIANT, MessageBubble } from '.';
 import styles from './dev.module.css';
+import { MESSAGE_BUBBLE_VARIANT, MessageBubble } from '.';
 
 export default {
   component: MessageBubble,
@@ -16,8 +16,8 @@ export const Typing = () => (
 
 export const Variant = () => (
   <>
-  <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.ai } />
-  <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.human } />
+    <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.ai } />
+    <MessageBubble variant={ MESSAGE_BUBBLE_VARIANT.human } />
   </>
 );
 
@@ -34,4 +34,4 @@ export const Conversation = () => (
     <MessageBubble>How are you?</MessageBubble>
     <MessageBubble typing />
   </div>
-)
+);

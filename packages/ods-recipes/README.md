@@ -5,7 +5,7 @@
 From the root of the `design-system` project, run the following:
 
 ```shell
-yarn new:recipe
+pnpm new:recipe
 ```
 Then follow the prompt.
 
@@ -19,10 +19,10 @@ You should not update any files outside of this directory.
 
 In your component directory, you have access to the following commands:
 
-- `yarn start`: start a development storybook that you can use to implement your recipe
-- `yarn lint:css`: run the linter rules regarding CSS files (if any)
-- `yarn lint:scss`: run the linter rules regarding SCSS files (if any)
-- `yarn lint:ts`: run the linter rules regarding TS files
+- `pnpm start`: start a development storybook that you can use to implement your recipe
+- `pnpm lint:css`: run the linter rules regarding CSS files (if any)
+- `pnpm lint:scss`: run the linter rules regarding SCSS files (if any)
+- `pnpm lint:ts`: run the linter rules regarding TS files
 
 ### Folders
 
@@ -40,7 +40,7 @@ The `css-modules` implementation is mandatory and should not be bypassed.
 
 #### Dev stories
 
-The file `dev.stories.tsx` contains all the test frames that will be rendered on the development storybook when running `yarn start`.
+The file `dev.stories.tsx` contains all the test frames that will be rendered on the development storybook when running `pnpm start`.
 
 Use this file as you please to create as many use case that you need to validate your recipe.
 

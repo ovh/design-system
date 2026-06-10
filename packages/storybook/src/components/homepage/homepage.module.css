@@ -1,19 +1,85 @@
 .homepage {
   position: absolute;
   inset: 0;
+  overflow-y: auto;
 }
 
-.homepage__content {
+.homepage__hero {
   display: flex;
   flex-flow: column;
   row-gap: 2rem;
-  padding: 4rem;
+  padding: 4rem 4rem 1rem;
   max-width: 45rem;
 }
 
-.homepage__content__links {
+.homepage__hero__links {
   display: flex;
   flex-flow: column;
   row-gap: 2rem;
   font-size: 1.4rem;
+}
+
+.homepage__section {
+  padding: 2rem 4rem;
+}
+
+.homepage__section__title {
+  margin-bottom: 1.5rem;
+}
+
+.homepage__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.homepage__stats__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2rem;
+  margin: 0;
+  border-radius: var(--ods-theme-border-radius);
+  border: var(--ods-theme-border-width) solid var(--ods-color-neutral-200);
+  min-width: 10rem;
+  text-align: center;
+  flex: 1;
+}
+
+.homepage__quickpaths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.homepage__quickpaths__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem 2rem;
+  border-radius: var(--ods-theme-border-radius);
+  border: var(--ods-theme-border-width) solid var(--ods-color-neutral-200);
+  min-width: 14rem;
+  flex: 1;
+  font-size: 1.1rem;
+}
+
+.homepage__quickpaths__card__title {
+  display: flex;
+  place-items: center;
+  gap: .5rem;
+}
+
+.homepage__quickpaths__card__body {
+  flex: 1;
+}
+
+.homepage__external {
+  display: flex;
+  flex-wrap: wrap;
+  place-content: flex-end;
+  gap: 2rem;
+  padding: 2rem 4rem;
+  font-size: 1.2rem;
 }

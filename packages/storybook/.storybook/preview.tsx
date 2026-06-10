@@ -54,30 +54,32 @@ const preview: Preview = {
         includeNames: true,
         order: [
           'OVHcloud Design System', [
-            'Welcome',
             'Get Started',
-            'What\'s new?', [
-              'What\'s new',
-              'Changelog',
-              'Migration guide',
+            'Build', [
+              'Accessibility',
+              'Charts',
+              'Forms',
+              'Internationalization',
+              'Code Sandbox',
             ],
-            'Design and Style', [
+            'Customize', [
               'Apply ODS Style',
               'Style Customization',
-              '*',
+              'Design Tokens',
+              'Tailwind CSS Integration',
+              'Theme Generator',
             ],
-            'Guides', [
-              'Form', [
-                'Guidelines',
-                '*',
-              ],
-              'Accessibility',
-              'Charts - Usage Guidelines',
-              '*',
+            'Upgrade', [
+              'What\'s new',
+              'Changelog',
+              'Migration to v19',
+              'Previous Migrations',
             ],
-            'Tools', [
-              '*',
+            'Resources', [
+              'LLM Documentation',
+              'F.A.Q.',
             ],
+            'Roadmap',
           ],
           'React Components', [
             'Gallery',

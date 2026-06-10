@@ -15,8 +15,22 @@ type Props = {
 }
 
 const Gallery = ({ components }: Props) => {
+  const galleryRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const content = galleryRef.current?.closest('.sbdocs-content') as HTMLElement | null;
+    if (content) {
+      content.style.maxWidth = 'initial';
+    }
+    return () => {
+      if (content) {
+        content.style.maxWidth = '';
+      }
+    };
+  }, []);
+
   return (
-    <div className={ styles.gallery }>
+    <div ref={ galleryRef } className={ styles.gallery }>
       {
         components.map((component, idx) => (
           <Card

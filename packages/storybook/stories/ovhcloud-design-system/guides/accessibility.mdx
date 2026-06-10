@@ -9,7 +9,7 @@ import * as IconStories from '../../components/icon/icon.stories';
 import * as ModalStories from '../../components/modal/modal.stories';
 import * as SkeletonStories from '../../components/skeleton/skeleton.stories';
 
-<Meta title="OVHcloud Design System/Guides/Accessibility" />
+<Meta title="OVHcloud Design System/Build/Accessibility" />
 
 <Heading label="Accessibility Guide" level={ 1 } />
 
@@ -258,7 +258,7 @@ When a section of the UI is loading, users should be informed that the content i
 
 <Canvas of={ SkeletonStories.AccessibilityLoading } sourceState="shown" />
 
-<Icon name={ ICON_NAME.circleXmark }
+<Icon name={ ICON_NAME.circleCheck }
       style={{ color: 'var(--ods-color-success-500)' }} /> Screen readers understand that the content is not yet ready, so they delay announcing or interacting with it.
 
 <Heading label="Related Sources" level={ 4 } />
@@ -371,7 +371,7 @@ For consistent testing across different platforms and screen readers, here is th
   </tr>
   <tr style={{ textAlign: 'center' }}>
     <td>JAWS</td>
-    <td>Firefox or Internet Explorer</td>
+    <td>Firefox or Chrome</td>
   </tr>
   <tr style={{ textAlign: 'center' }}>
     <td>Safari</td>

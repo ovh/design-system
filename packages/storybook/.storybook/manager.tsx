@@ -63,14 +63,7 @@ addons.setConfig({
     renderLabel: (item, api) => {
       // Collapsed children are not available, so we have to manually check each child tags
       if (item.type === 'group' || item.type === 'component') {
-        const children = item.children || [];
-
-        const allTags = children.map((childId) => {
-          const childData = api.getData(childId);
-          return childData ? childData.tags || [] : [];
-        }).flat();
-
-        return renderLabel(item.name, allTags, false);
+        return item.name;
       }
 
       return renderLabel(item.name, item.tags, true);

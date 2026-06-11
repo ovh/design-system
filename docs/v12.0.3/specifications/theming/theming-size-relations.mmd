@@ -1,0 +1,41 @@
+erDiagram
+    ThemeSizeProperties ||--o{ ThemeComponentSize : "set the size properties"
+    ThemeSizeProperties {
+        number height
+        number width
+        etc etc
+    }
+
+    ThemeComponentSize ||--o{ ThemeSizes : "set the size for each component"
+    ThemeComponentSize {
+        ThemeSizeProperties sm
+        ThemeSizeProperties md
+        etc etc
+    }
+    ThemeSizes ||--|| SizeConfig : "configure"
+    ThemeSizes {
+        ThemeComponentSize button
+        ThemeComponentSize tile
+        etc etc
+    }
+    SizeConfig ||--|| THEME-CONFIG : "theme defines a SizeConfig"
+
+
+    SizeProperties ||--o{ ComponentSizeDefinition : "is composed of"
+    SizeProperties {
+        variable--ods-component-size-height height
+        variable--ods-component-size-width width
+        etc etc
+    }
+    ComponentSizeDefinition ||--o{ SizeDefinitions : "is composed of"
+    ComponentSizeDefinition {
+        SizeProperties sm
+        SizeProperties md
+        etc etc
+    }
+    SizeDefinitions ||--|| THEMING-SYSTEM : "system is made of sizeDefinitions"
+    SizeDefinitions {
+        ComponentSizeDefinition button
+        ComponentSizeDefinition tile
+        etc etc
+    }

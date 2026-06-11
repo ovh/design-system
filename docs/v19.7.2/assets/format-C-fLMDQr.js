@@ -1,0 +1,1 @@
+import{f as a}from"./index-BXelFz3z.js";function o(r,e="fr-FR",t="EUR"){return new Intl.NumberFormat(e,{currency:t,currencyDisplay:"narrowSymbol",style:"currency"}).format(r)}function m(r,e="en-GB",t){return a(r,e,t)}export{m as a,o as f};

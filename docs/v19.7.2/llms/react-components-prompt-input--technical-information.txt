@@ -1,0 +1,375 @@
+React Components
+
+# Prompt Input
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+PromptInput
+
+PromptInputControls
+
+PromptInputFiles
+
+PromptInputFileUploadButton
+
+PromptInputSendButton
+
+PromptInputTextControl
+
+---
+
+## PromptInput
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| 
+defaultValue
+
+ | `string` | - | `undefined` | The initial textarea value. Use when you don't need to control the value of the textarea. |
+| 
+
+disabled
+
+ | `boolean` | - | `undefined` | Whether the component is disabled. |
+| 
+
+fileCollection
+
+ | `File[]` | - | `undefined` | Array of the files associated with the prompt input. |
+| 
+
+loading
+
+ | `boolean` | - | `undefined` | Whether the component is in loading state. |
+| 
+
+name
+
+ | `string` | - | `undefined` | The name of the textarea form element. Useful for form submission. |
+| 
+
+onFileChange
+
+ | `(detail: PromptInputFileChangeDetails) => void` | - | `undefined` | Callback fired when a file change is triggered on the file-upload button. |
+| 
+
+onInputSubmit
+
+ | `(detail: PromptInputInputSubmitDetails) => void` | - | `undefined` | Callback fired when the prompt input is submitted. |
+| 
+
+onValueChange
+
+ | `(detail: PromptInputValueChangeDetails) => void` | - | `undefined` | Callback fired when the prompt input text value changes. |
+| 
+
+readOnly
+
+ | `boolean` | - | `undefined` | Whether the component is readonly. |
+| 
+
+value
+
+ | `string` | - | `undefined` | The controlled textarea value. |
+
+## PromptInputControls
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## PromptInputFiles
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## PromptInputFileUploadButton
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| 
+accept
+
+ | `HTMLInputElement['accept']` | - | `undefined` | Expected file type in file upload controls |
+| 
+
+color
+
+ | `BUTTON_COLOR` | - | `undefined` | The color preset to use. |
+| 
+
+loading
+
+ | `boolean` | - | `undefined` | Whether the component is in loading state, disabling it. |
+| 
+
+multiple
+
+ | `HTMLInputElement['multiple']` | - | `undefined` | Whether multiple files can be selected at once |
+| 
+
+size
+
+ | `BUTTON_SIZE` | - | `undefined` | The size preset to use. |
+| 
+
+variant
+
+ | `BUTTON_VARIANT` | - | `undefined` | The variant preset to use. |
+
+## PromptInputSendButton
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| 
+color
+
+ | `BUTTON_COLOR` | - | `undefined` | The color preset to use. |
+| 
+
+loading
+
+ | `boolean` | - | `undefined` | Whether the component is in loading state, disabling it. |
+| 
+
+size
+
+ | `BUTTON_SIZE` | - | `undefined` | The size preset to use. |
+| 
+
+variant
+
+ | `BUTTON_VARIANT` | - | `undefined` | The variant preset to use. |
+
+## PromptInputTextControl
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [textarea attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/textarea#attributes) . |
+| 
+invalid
+
+ | `boolean` | - | `undefined` | Whether the component is in error state. |
+| 
+
+placeholder
+
+ | `string` | - | `undefined` | - |
+
+## Interfaces
+
+---
+
+### PromptInputFileChangeDetails
+
+-   `files: File[]`
+
+### PromptInputInputSubmitDetails
+
+-   `inputValue: string`
+
+### PromptInputValueChangeDetails
+
+-   `inputValue: string`
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-prompt-input-border-color | var(--ods-color-form-element-border-default) | 
+ |
+| --ods-prompt-input-border-color-focus | var(--ods-color-form-element-border-focus-default) | 
+
+ |
+| --ods-prompt-input-border-color-hover | var(--ods-color-form-element-border-hover-default) | 
+
+ |
+| --ods-prompt-input-border-radius | var(--ods-theme-border-radius) | 
+
+ |
+| --ods-prompt-input-control-border-color | transparent | 
+
+ |
+| --ods-prompt-input-control-line-height | 1.375em | 
+
+ |
+| --ods-prompt-input-control-max-lines | 5 | 
+
+ |
+| --ods-prompt-input-control-min-lines | 1 | 
+
+ |
+| --ods-prompt-input-control-padding-horizontal | var(--ods-theme-input-padding-horizontal) | 
+
+ |
+| --ods-prompt-input-control-padding-vertical | calc(var(--ods-theme-padding-vertical) / 2) | 
+
+ |
+
+## Examples
+
+---
+
+### Default
+
+```jsx
+{
+  tags: ["!dev"],
+  globals: {
+    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
+  },
+  render: ({}) => <PromptInput>
+      <PromptInputControls>
+        <PromptInputFileUploadButton />
+        <PromptInputTextControl />
+        <PromptInputSendButton />
+      </PromptInputControls>
+    </PromptInput>
+}
+```
+
+### Disabled
+
+```jsx
+{
+  tags: ["!dev"],
+  globals: {
+    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
+  },
+  render: ({}) => <PromptInput disabled defaultValue="Nobody’s here to answer…">
+      <PromptInputControls>
+        <PromptInputFileUploadButton aria-label="Attach a file" />
+        <PromptInputTextControl aria-label="Ask someone about something…" />
+        <PromptInputSendButton aria-label="Send message" />
+      </PromptInputControls>
+    </PromptInput>
+}
+```
+
+### Readonly
+
+```jsx
+{
+  tags: ["!dev"],
+  globals: {
+    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
+  },
+  render: ({}) => <PromptInput readOnly defaultValue="This is a read-only prompt input.">
+      <PromptInputControls>
+        <PromptInputFileUploadButton aria-label="Attach a file" />
+        <PromptInputTextControl aria-label="Ask someone about something…" />
+        <PromptInputSendButton aria-label="Send message" />
+      </PromptInputControls>
+    </PromptInput>
+}
+```
+
+### Loading
+
+```jsx
+{
+  tags: ["!dev"],
+  globals: {
+    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
+  },
+  render: ({}) => <PromptInput defaultValue="“Someone” is processing your request…" loading>
+      <PromptInputControls>
+        <PromptInputFileUploadButton aria-label="Attach a file" />
+        <PromptInputTextControl aria-label="Ask someone about something…" />
+        <PromptInputSendButton aria-label="Send message" />
+      </PromptInputControls>
+    </PromptInput>
+}
+```
+
+### With files
+
+```jsx
+const fakePdfFile = new File(["foo"], "loading-pdf-file.pdf", {
+    type: "application/pdf"
+  });
+  const fakeTextFile = new File(["bar"], "text-file.txt", {
+    type: "text/plain"
+  });
+  return <PromptInput fileCollection={[fakePdfFile, fakeTextFile]}>
+      <PromptInputFiles>
+        <FileThumbnail file={fakePdfFile} progress={45} />
+        <FileThumbnail file={fakeTextFile} />
+      </PromptInputFiles>
+      <PromptInputControls>
+        <PromptInputFileUploadButton aria-label="Attach a file" />
+        <PromptInputTextControl aria-label="Ask someone about something…" />
+        <PromptInputSendButton aria-label="Send message" />
+      </PromptInputControls>
+    </PromptInput>;
+}
+```
+
+### In form field
+
+```jsx
+const maxLength = 60;
+  const [inputValue, setInputValue] = useState("Some text that is almost hitting the length limit...");
+  return <FormField invalid={inputValue?.length > maxLength}>
+      <FormFieldLabel>Here is a prompt input inside a form field:</FormFieldLabel>
+      <PromptInput defaultValue={inputValue} name="prompt-input-textArea" onValueChange={({
+      inputValue    }) => setInputValue(inputValue)}>
+        <PromptInputControls>
+          <PromptInputFileUploadButton aria-label="Attach a file" />
+          <div style={{
+          display: "flex",
+          flexDirection: "column",
+          flexGrow: 1,
+          rowGap: "var(--ods-theme-row-gap)"
+        }}>
+            <PromptInputTextControl aria-label="Ask someone about something…" />
+            <Divider style={{
+            width: "100%"
+          }} />
+            <FormFieldHelper>
+              <Text preset={TEXT_PRESET.caption}>
+                {inputValue?.length} / {maxLength}
+              </Text>
+            </FormFieldHelper>
+          </div>
+          <PromptInputSendButton aria-label="Send message" />
+        </PromptInputControls>
+      </PromptInput>
+      <FormFieldError>Character limit exceeded</FormFieldError>
+    </FormField>;
+}
+```
+
+## Recipes
+
+---
+
+Chat
+
+Assistant2:58 PM
+
+Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.

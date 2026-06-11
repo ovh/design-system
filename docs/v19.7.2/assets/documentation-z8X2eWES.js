@@ -1,0 +1,38 @@
+import{j as e}from"./jsx-runtime-Cfl8ynUo.js";import{useMDXComponents as o}from"./index-ZwkxtaJJ.js";import{M as a}from"./index-DBhu1Uji.js";import{D as s,a as l}from"./divider.stories-B-Tmjc_N.js";import{A as c}from"./Anatomy-CqwcYEDe.js";import{B as d}from"./Banner-CTn57inQ.js";import{B as p}from"./BestPractices-DyDReNjg.js";import{C as m}from"./Canvas-8Qs4JaTy.js";import{H as t}from"./Heading-BYU90ura.js";import{I as h}from"./IdentityCard-BK7dxrtI.js";import"./index-jIWwRBLr.js";import"./iframe-B0u0SFI5.js";import"./index-CBDu-Hu-.js";import"./index-BU5bNkZt.js";import"./index-DgH-xKnr.js";import"./index-DrFu-skq.js";import"./divider-color-DMT-YAbT.js";import"./index-C322fmIg.js";import"./colors-B-ZpHcIp.js";import"./controls-BtiQQn1l.js";import"./icon-name-Dw8X1wVO-CGXOlIt0.js";import"./index-B2JRaoNz-yqrnVa7N.js";import"./index-BUs_y8So.js";import"./context-Z_Xa7sWf-5kwUyuQy.js";import"./index-FEhFxDPX.js";import"./lz-string-DchBFh8t.js";import"./meta-twt-Yy4M.js";import"./source-CPEZJ6oD.js";import"./ResetTheme-CLF5P7Bf.js";import"./tokens-BrWUS-3i.js";import"./divider-color-Db-mIl6C-CkLYwequ.js";import"./colors-C1Wmnk_L-aAAP9SXj.js";import"./Table-CVRGubjq-DRuAT4A2.js";import"./ExternalLink-CLruuYCX.js";import"./Link-nyzSghSi-C9HsY39r.js";import"./Table-CddzZ923.js";function r(i){const n={em:"em",li:"li",ol:"ol",p:"p",strong:"strong",ul:"ul",...o(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(a,{of:s,name:"Documentation"}),`
+`,e.jsx(d,{of:s}),`
+`,e.jsx(n.p,{children:e.jsxs(n.em,{children:["A ",e.jsx(n.strong,{children:"Divider"})," component is a spacer used to add white space between two elements on a page."]})}),`
+`,e.jsx(m,{of:l,sourceState:"none"}),`
+`,e.jsx(t,{label:"Overview",level:2}),`
+`,e.jsx(h,{aliases:["Separator","Spacer","Horizontal Line"],figmaLink:"https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=26-19845",githubUrl:"https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/divider",name:"Divider",children:e.jsxs(n.p,{children:["A ",e.jsx(n.strong,{children:"Divider"}),` is a UI component used to separate content into clear, distinct sections, providing visual breaks
+between different elements or groups of content.`]})}),`
+`,e.jsx(t,{label:"Usage",level:2}),`
+`,e.jsxs(n.p,{children:[e.jsx(n.strong,{children:"Divider"})," is used to separate content on a page."]}),`
+`,e.jsx(n.p,{children:"It brings clarity to a layout by dividing content in proximity."}),`
+`,e.jsx(t,{label:"Dos & Don'ts",level:3}),`
+`,e.jsx(p,{donts:["- Don't place a Divider above section titles or headers, it breaks natural reading flow","- Don't overuse Dividers on a single page, too many can create visual noise and clutter","- Don't use Divider as a primary layout mechanism, prefer spacing, grouping, or cards for structure","- Don't rely on Divider to fix unclear content grouping, improve the layout or hierarchy instead","- Don't use Divider when spacing alone is sufficient to separate elements","- Don't apply inconsistent styling (e.g., thickness, color) that breaks the visual consistency of the interface"],dos:["- Use a Divider to visually separate content into meaningful sections or groups","- Place a Divider below section titles or headers to emphasize hierarchy and structure","- Use Divider to indicate content boundaries without relying solely on spacing or background changes","- Keep Divider usage subtle and consistent across the layout to preserve clarity"]}),`
+`,e.jsx(t,{label:"Best Practices in Context",level:3}),`
+`,e.jsx(c,{src:"components/divider/anatomy.png"}),`
+`,e.jsxs(n.ol,{children:[`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Divider"})}),`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:"Spacing"})}),`
+`]}),`
+`,e.jsx(t,{label:"Placement",level:2}),`
+`,e.jsxs(n.p,{children:["Use ",e.jsx(n.strong,{children:"Divider"})," between closely related content blocks or UI elements to enhance readability without adding visual noise."]}),`
+`,e.jsx(n.p,{children:"It works well in layouts like sidebars, menus, or cards to separate sections clearly."}),`
+`,e.jsx(t,{label:"Variation",level:2}),`
+`,e.jsx(t,{label:"Spacing",level:3}),`
+`,e.jsxs(n.p,{children:["It can be adjusted around the ",e.jsx(n.strong,{children:"Divider"})," to match the layout and visual rhythm of the content."]}),`
+`,e.jsx(t,{label:"Color",level:3}),`
+`,e.jsxs(n.ul,{children:[`
+`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Light"})," (default): used on dark or colored backgrounds to maintain contrast"]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Dark"}),": used on light backgrounds for clear, subtle separation"]}),`
+`]}),`
+`,e.jsx(t,{label:"Orientation",level:3}),`
+`,e.jsxs(n.ul,{children:[`
+`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Horizontal"})," (default): separates content stacked vertically (for example, between sections of a page)"]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Vertical"}),": separates content arranged horizontally (for example, between items in a toolbar, breadcrumbs, inline actions, or columns)"]}),`
+`]}),`
+`,e.jsx(t,{label:"Navigation",level:2}),`
+`,e.jsxs(n.p,{children:["The ",e.jsx(n.strong,{children:"Divider"})," component is purely visual and does not receive keyboard focus. It serves as a separator between content sections and does not impact keyboard navigation."]}),`
+`,e.jsx(t,{label:"Accessibility",level:2}),`
+`,e.jsxs(n.p,{children:["The ",e.jsx(n.strong,{children:"Divider"})," provides a clear visual separation between content sections which can help users with visual impairments to better understand the layout and structure of the page."]})]})}function W(i={}){const{wrapper:n}={...o(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(r,{...i})}):r(i)}export{W as default};

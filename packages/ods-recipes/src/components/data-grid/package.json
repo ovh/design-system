@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-recipes-data-grid",
-  "version": "19.7.1",
+  "version": "19.7.2",
   "private": true,
   "description": "ODS Recipes DataGrid",
   "type": "module",

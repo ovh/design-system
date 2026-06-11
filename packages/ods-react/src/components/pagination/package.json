@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-pagination",
-  "version": "19.7.1",
+  "version": "19.7.2",
   "private": true,
   "description": "ODS React Pagination component",
   "type": "module",

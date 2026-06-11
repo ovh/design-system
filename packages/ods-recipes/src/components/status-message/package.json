@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-recipes-status-message",
-  "version": "19.7.1",
+  "version": "19.7.2",
   "private": true,
   "description": "ODS Recipes StatusMessage",
   "type": "module",

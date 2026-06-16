@@ -1,0 +1,19 @@
+import{j as e}from"./jsx-runtime-Cfl8ynUo.js";import{useMDXComponents as r}from"./index-ZwkxtaJJ.js";import{M as m}from"./index-D-djnn7r.js";import{M as n,O as d,C as l}from"./medium.stories-CYW_6M0A.js";import{B as p}from"./Banner-BB6twgK5.js";import{B as c}from"./BestPractices-DB-TO6-n.js";import{C as s}from"./Canvas-C9gcQMrM.js";import{H as i}from"./Heading-C-5iIN8e.js";import{I as h}from"./IdentityCard-DSQgfBPC.js";import"./index-jIWwRBLr.js";import"./iframe-Bd9G7Yv2.js";import"./index-CBDu-Hu-.js";import"./index-BU5bNkZt.js";import"./index-DgH-xKnr.js";import"./index-DrFu-skq.js";import"./Medium-Bu3W8_bU.js";import"./index-C322fmIg.js";import"./Text-CzHK83-l.js";import"./controls-BtiQQn1l.js";import"./icon-name-Dw8X1wVO-CGXOlIt0.js";import"./index-B2JRaoNz-yqrnVa7N.js";import"./index-BUs_y8So.js";import"./context-Z_Xa7sWf-5kwUyuQy.js";import"./index-Dy2uwWxE.js";import"./lz-string-DchBFh8t.js";import"./meta-twt-Yy4M.js";import"./source-CPEZJ6oD.js";import"./ResetTheme-CLF5P7Bf.js";import"./tokens-BrWUS-3i.js";import"./divider-color-Db-mIl6C-CkLYwequ.js";import"./colors-C1Wmnk_L-aAAP9SXj.js";import"./Table-CVRGubjq-DRuAT4A2.js";import"./ExternalLink-CLruuYCX.js";import"./Link-nyzSghSi-C9HsY39r.js";import"./Table-CddzZ923.js";function a(o){const t={p:"p",strong:"strong",...r(),...o.components};return e.jsxs(e.Fragment,{children:[e.jsx(m,{of:n,name:"Documentation"}),`
+`,e.jsx(p,{of:n}),`
+`,e.jsx(s,{of:d,sourceState:"none"}),`
+`,e.jsx(i,{label:"Overview",level:2}),`
+`,e.jsxs(h,{aliases:["Media","Image"],figmaLink:"https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=237-13496",githubUrl:"https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/medium",name:"Medium",children:[e.jsxs(t.p,{children:["The ",e.jsx(t.strong,{children:"Medium"})," component is a versatile UI element designed to handle different types of media content."]}),e.jsx(t.p,{children:"It ensures that media is displayed correctly and consistently within the application."})]}),`
+`,e.jsx(i,{label:"Usage",level:2}),`
+`,e.jsxs(t.p,{children:[e.jsx(t.strong,{children:"Medium"})," is used to display assets with an alternative text description."]}),`
+`,e.jsx(t.p,{children:"When the asset is an image, it should be mostly presentation to draw user's attention visually."}),`
+`,e.jsx(i,{label:"Dos & Don'ts",level:3}),`
+`,e.jsx(c,{donts:["- Don't use Medium with embedded text that cannot be read by screen readers","- Don't overload pages with high-resolution medium that may slow down load times","- Don't stretch or distort Medium to fit containers, maintain proportions and visual quality","- Don't rely on Medium alone to convey essential information. Always provide a textual equivalent when needed"],dos:["- Use the Medium component to display images and media consistently across the application","- Provide alt text, captions, or descriptions where appropriate, to ensure accessibility and context","- Ensure responsive behavior so medium adapts well to different screen sizes"]}),`
+`,e.jsx(i,{label:"Placement",level:2}),`
+`,e.jsx(t.p,{children:"The width and height dimensions of the image can be set to fixed sizes."}),`
+`,e.jsx(i,{label:"Navigation",level:2}),`
+`,e.jsxs(t.p,{children:["The ",e.jsx(t.strong,{children:"Medium"})," component is non-interactive and does not receive keyboard focus. It is used solely for displaying media content and does not impact keyboard navigation."]}),`
+`,e.jsx(i,{label:"Accessibility",level:2}),`
+`,e.jsx(i,{label:"Use caption text to add information about an image",level:3}),`
+`,e.jsx(t.p,{children:`Caption is useful to add information about the image itself (ex: copyright),
+whereas the alternative text always describe what the image actually conveys.`}),`
+`,e.jsx(s,{of:l,sourceState:"shown"})]})}function Q(o={}){const{wrapper:t}={...r(),...o.components};return t?e.jsx(t,{...o,children:e.jsx(a,{...o})}):a(o)}export{Q as default};

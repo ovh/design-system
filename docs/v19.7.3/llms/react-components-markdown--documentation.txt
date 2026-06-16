@@ -1,0 +1,49 @@
+React Components
+
+# Markdown
+
+# Readme
+
+Wanna know more about **OVHCloud Design System**?
+
+Check the [Documentation](https://ovh.github.io/design-system/).
+
+# Readme Wanna know more about **OVHCloud Design System**? Check the [Documentation](https://ovh.github.io/design-system/).
+
+## Overview
+
+---
+
+**Markdown** component is a versatile tool for rendering Markdown syntax into a visually appealing and user-friendly format. It transforms Markdown elements into corresponding ODS components, ensuring consistency and accessibility.
+
+<table class="_table_e3iru_2 _table--md_e3iru_59 _table--striped_e3iru_167 _identity-card__table_75e8e_7" data-ods="table" data-storybook="table"><tbody><tr><th scope="row">Name</th><td>Markdown</td></tr><tr><th scope="row">Also known as</th><td>-</td></tr><tr><th scope="row">Links</th><td><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://www.figma.com/design/9jDDTcR4a9jPRFcdjawAlf/ODS---UI-Kit?node-id=0-1&amp;p=f&amp;t=kwInPIiCg5eOsgBa-0" target="_blank">Design <span class="_icon_g76et_2 _icon--external-link_g76et_256" data-ods="icon" role="presentation"></span></a><a class="_link_1qra4_2 _identity-card__app-link_75e8e_12" data-ods="link" href="https://github.com/ovh/design-system/tree/master/packages/ods-react/src/components/markdown" target="_blank">Github<span class="_icon_g76et_2 _icon--external-link_g76et_256" data-ods="icon" role="presentation"></span></a></td></tr></tbody></table>
+
+## Usage
+
+---
+
+**Markdown** component is used to parse Markdown content and convert it in a readable and engaging way. It is ideal for rendering user-generated content, documentation, and other types of text that require formatting and styling.
+
+## Placement
+
+---
+
+**Markdown** component can be used in various contexts, such as articles, blogs, forums, and documentation pages. It can be placed in a container or used as a standalone element, depending on the desired layout and design.
+
+## Behavior
+
+---
+
+**Markdown** component automatically parses and renders Markdown syntax, including headings, text formatting, links, code blocks, and other elements. It also supports customization and overrides for individual Markdown elements, allowing developers to adapt the rendering to specific use cases.
+
+## Navigation
+
+---
+
+**Markdown** component does not have any navigational elements, as it is primarily used for rendering static content.
+
+## Accessibility
+
+---
+
+**Markdown** accessibility follows what components they are formatting the text into.

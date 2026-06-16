@@ -8,6 +8,22 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.7.3](https://ovh.github.io/design-system/v19.7.3/?path=/docs/design-system-changelog--page) (2026-06-16)
+[compare](https://github.com/ovh/design-system/compare/v19.7.0...v19.7.3)
+
+### Bug Fixes
+
+* **chore:** ban barrel imports and lint dev.stories.tsx files ([4649530](https://github.com/ovh/design-system/commit/46495301e4dbd0320bd10d27f0e79e229af5d357))
+* **combobox:** allow controlled combobox to be cleared programmatically ([7fe0c17](https://github.com/ovh/design-system/commit/7fe0c17a2f29fe807663991d501b061f4555354e))
+* **combobox:** allow selection clearing - e2e ([9ec797b](https://github.com/ovh/design-system/commit/9ec797beb96f1e8a1287f3c7646fb5cfc4dbd9e7))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.7.2](https://ovh.github.io/design-system/v19.7.2/?path=/docs/design-system-changelog--page) (2026-06-11)
 [compare](https://github.com/ovh/design-system/compare/v19.7.0...v19.7.2)
 

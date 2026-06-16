@@ -1,6 +1,6 @@
 {
   "name": "react-router-app",
-  "version": "19.7.2",
+  "version": "19.7.3",
   "private": true,
   "description": "Example of an app using ODS and React Router, bundled with Vite",
   "type": "module",

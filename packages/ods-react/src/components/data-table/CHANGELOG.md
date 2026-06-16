@@ -8,6 +8,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.7.3](https://ovh.github.io/design-system/v19.7.3/?path=/docs/design-system-changelog--page) (2026-06-16)
+[compare](https://github.com/ovh/design-system/compare/v19.7.0...v19.7.3)
+
+### Bug Fixes
+
+* **chore:** ban barrel imports and lint dev.stories.tsx files ([4649530](https://github.com/ovh/design-system/commit/46495301e4dbd0320bd10d27f0e79e229af5d357))
+* **datatable:** sticky-header z-index simpler fix ([8f581d0](https://github.com/ovh/design-system/commit/8f581d08647d6143bc8a710f4952f04b99977046))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.7.2](https://ovh.github.io/design-system/v19.7.2/?path=/docs/design-system-changelog--page) (2026-06-11)
 [compare](https://github.com/ovh/design-system/compare/v19.7.0...v19.7.2)
 

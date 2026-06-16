@@ -8,6 +8,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.7.3](https://ovh.github.io/design-system/v19.7.3/?path=/docs/design-system-changelog--page) (2026-06-16)
+[compare](https://github.com/ovh/design-system/compare/v19.7.0...v19.7.3)
+
+### Features
+
+* **chore:** delete npmrc and fix docs ([97e8f47](https://github.com/ovh/design-system/commit/97e8f47cdc2097f045e6dd963c3247a015360571))
+* **ci:** update dependencies ([c048d9d](https://github.com/ovh/design-system/commit/c048d9d8e6bbb814f16b55e69553939e4e59dacd))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.7.2](https://ovh.github.io/design-system/v19.7.2/?path=/docs/design-system-changelog--page) (2026-06-11)
 [compare](https://github.com/ovh/design-system/compare/v19.7.0...v19.7.2)
 

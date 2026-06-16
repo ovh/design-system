@@ -1,6 +1,6 @@
 {
   "name": "accessibility-test",
-  "version": "19.7.2",
+  "version": "19.7.3",
   "private": true,
   "description": "Running a11y checks on ODS components",
   "type": "module",

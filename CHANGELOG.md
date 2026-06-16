@@ -8,6 +8,33 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [19.7.3](https://ovh.github.io/design-system/v19.7.3/?path=/docs/design-system-changelog--page) (2026-06-16)
+[compare](https://github.com/ovh/design-system/compare/v19.7.0...v19.7.3)
+
+### Bug Fixes
+
+* **chore:** ban barrel imports and lint dev.stories.tsx files ([4649530](https://github.com/ovh/design-system/commit/46495301e4dbd0320bd10d27f0e79e229af5d357))
+* **ci:** rename script to avoid lerna conflicts ([b269141](https://github.com/ovh/design-system/commit/b26914185535fa1827cbfa60beee4714c8c3e089))
+* **combobox:** allow controlled combobox to be cleared programmatically ([7fe0c17](https://github.com/ovh/design-system/commit/7fe0c17a2f29fe807663991d501b061f4555354e))
+* **combobox:** allow selection clearing - e2e ([9ec797b](https://github.com/ovh/design-system/commit/9ec797beb96f1e8a1287f3c7646fb5cfc4dbd9e7))
+* **datatable:** sticky-header z-index simpler fix ([8f581d0](https://github.com/ovh/design-system/commit/8f581d08647d6143bc8a710f4952f04b99977046))
+* declare phantom @ovhcloud/ods-react deps and pin @types/react (phase 6) ([69f19f1](https://github.com/ovh/design-system/commit/69f19f1ac277b1e256a158547454451bc3cce5ee))
+* jsDom/nodeJs browser definition handling ([56e02ab](https://github.com/ovh/design-system/commit/56e02abd3b54407820530302f3f92f0bea2f1188))
+
+
+### Features
+
+* **chore:** delete npmrc and fix docs ([97e8f47](https://github.com/ovh/design-system/commit/97e8f47cdc2097f045e6dd963c3247a015360571))
+* **chore:** fix storybook builds ([1f4c9f6](https://github.com/ovh/design-system/commit/1f4c9f636791d8c5b3b4ebcd2246164166af9f91))
+* **ci:** update dependencies ([c048d9d](https://github.com/ovh/design-system/commit/c048d9d8e6bbb814f16b55e69553939e4e59dacd))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [19.7.2](https://ovh.github.io/design-system/v19.7.2/?path=/docs/design-system-changelog--page) (2026-06-11)
 [compare](https://github.com/ovh/design-system/compare/v19.7.0...v19.7.2)
 

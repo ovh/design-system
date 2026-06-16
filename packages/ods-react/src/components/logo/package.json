@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-react-logo",
-  "version": "19.7.2",
+  "version": "19.7.3",
   "private": true,
   "description": "ODS React Logo component",
   "type": "module",

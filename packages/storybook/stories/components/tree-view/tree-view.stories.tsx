@@ -10,8 +10,7 @@ import {
   type TreeViewProp,
   type TreeViewValueChangeDetail,
 } from '../../../../ods-react/src/components/tree-view/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<TreeViewProp>;
@@ -24,60 +23,6 @@ const meta: Meta<TreeViewProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  render: (arg) => {
-    const items = [
-      {
-        id: 'src',
-        name: 'src',
-        children: [
-          { id: 'app.tsx', name: 'app.tsx' },
-          { id: 'index.ts', name: 'index.ts' },
-          {
-            id: 'components',
-            name: 'components',
-            children: [
-              { id: 'Button.tsx', name: 'Button.tsx' },
-              { id: 'Card.tsx', name: 'Card.tsx' },
-            ],
-          },
-        ],
-      },
-      { id: 'package.json', name: 'package.json' },
-      { id: 'readme.md', name: 'README.md' },
-    ];
-
-    return (
-      <TreeView
-        defaultExpandedValue={ arg.defaultExpandedValue }
-        disabled={ arg.disabled }
-        expandedValue={ arg.expandedValue }
-        items={ items }
-        multiple={ arg.multiple }>
-        <TreeViewNodes>
-          { items.map((item) => (
-            <TreeViewNode key={ item.id } item={ item } />
-          )) }
-        </TreeViewNodes>
-      </TreeView>
-    );
-  },
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    multiple: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

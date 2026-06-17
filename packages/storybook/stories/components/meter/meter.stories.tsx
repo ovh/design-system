@@ -2,8 +2,6 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Meter, type MeterProp } from '../../../../ods-react/src/components/meter/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<MeterProp>;
 
@@ -13,41 +11,6 @@ const meta: Meta<MeterProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    high : {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-    low : {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-    max : {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-    min : {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-    optimum : {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-    value : {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-  }),
-};
 
 export const AccessibilityAriaLabel: Story = {
   globals: {

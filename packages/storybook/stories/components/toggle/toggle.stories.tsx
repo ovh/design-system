@@ -3,8 +3,7 @@ import React from 'react';
 import { FormField } from '../../../../ods-react/src/components/form-field/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { Toggle, ToggleControl, ToggleLabel, type ToggleProp } from '../../../../ods-react/src/components/toggle/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<ToggleProp>;
 
@@ -16,29 +15,6 @@ const meta: Meta<ToggleProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    withLabels: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-  }),
-};
 
 export const Default: Story = {
   globals: {

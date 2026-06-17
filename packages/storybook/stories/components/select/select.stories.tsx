@@ -1,16 +1,12 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { Select, SelectContent, SelectControl, type SelectControlProp, type SelectItem, type SelectProp } from '../../../../ods-react/src/components/select/src';
+import { Select, SelectContent, SelectControl, type SelectItem, type SelectProp } from '../../../../ods-react/src/components/select/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<SelectProp>;
-type DemoArg = Partial<SelectProp> & Partial<SelectControlProp> & {
-  sameWidth?: boolean;
-};
 
 const meta: Meta<SelectProp> = {
   argTypes: excludeFromDemoControls(['defaultOpen', 'defaultValue', 'fitControlWidth', 'id', 'items', 'name', 'onOpenChange', 'onValueChange', 'open', 'overlayConfig', 'positionerStyle', 'required', 'value']),
@@ -20,78 +16,6 @@ const meta: Meta<SelectProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Select
-      disabled={ arg.disabled }
-      invalid={ arg.invalid }
-      items={[
-        { label: 'Dog', value:'dog' },
-        { label: 'Cat', value:'cat' },
-        { label: 'Hamster', value:'hamster' },
-        { label: 'Parrot', value:'parrot' },
-        { label: 'Spider', value:'spider' },
-        { label: 'Goldfish', value:'goldfish' },
-      ]}
-      multiple={ arg.multiple }
-      overlayConfig={{ sameWidth: arg.sameWidth }}
-      readOnly={ arg.readOnly }>
-      <SelectControl
-        multipleSelectionLabel={ arg.multipleSelectionLabel }
-        placeholder={ arg.placeholder } />
-
-      <SelectContent />
-    </Select>
-  ),
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    multiple: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'select' },
-      options: [true, false, 'merge'],
-    },
-    multipleSelectionLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'string' },
-      },
-      control: 'text',
-    },
-    placeholder: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'string' },
-      },
-      control: 'text',
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    sameWidth: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   parameters: {

@@ -4,18 +4,15 @@ import {
   Combobox,
   ComboboxContent,
   ComboboxControl,
-  ComboboxControlProp,
   type ComboboxItem,
   type ComboboxProp,
 } from '../../../../ods-react/src/components/combobox/src';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<ComboboxProp>;
-type DemoArg = Partial<ComboboxProp> & Partial<ComboboxControlProp> & {};
 
 const meta: Meta<ComboboxProp> = {
   argTypes: excludeFromDemoControls(['customFilter', 'customOptionRenderer', 'defaultOpen', 'defaultValue', 'i18n', 'items', 'locale', 'name', 'onInputValueChange', 'onOpenChange', 'onValueChange', 'open', 'overlayConfig', 'required', 'value']),
@@ -25,108 +22,6 @@ const meta: Meta<ComboboxProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Combobox
-      items={[
-        { label: 'Dog', value: 'dog' },
-        { label: 'Cat', value: 'cat' },
-        { label: 'Hamster', value: 'hamster' },
-        { label: 'Parrot', value: 'parrot' },
-        { label: 'Spider', value: 'spider' },
-        { label: 'Goldfish', value: 'goldfish' },
-      ]}
-      allowCustomValue={ arg.allowCustomValue }
-      disabled={ arg.disabled }
-      highlightResults={ arg.highlightResults }
-      invalid={ arg.invalid }
-      multiple={ arg.multiple }
-      newElementLabel={ arg.newElementLabel }
-      noResultLabel={ arg.noResultLabel }
-      readOnly={ arg.readOnly }>
-      <ComboboxControl
-        clearable={ arg.clearable }
-        loading={ arg.loading }
-        placeholder={ arg.placeholder } />
-
-      <ComboboxContent />
-    </Combobox>
-  ),
-  argTypes: orderControls({
-    allowCustomValue: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    clearable: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    highlightResults: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    loading: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
-    multiple: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    newElementLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-    noResultLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-    placeholder: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-  }),
-  args: {
-    placeholder: 'Start typing',
-  },
-};
 
 export const AnatomyTech: Story = {
   parameters: {

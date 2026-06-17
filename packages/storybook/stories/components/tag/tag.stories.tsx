@@ -1,9 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { ICON_NAME, ICON_NAMES } from '../../../../ods-react/src/components/icon/src';
-import { TAG_COLOR, TAG_COLORS, TAG_SIZE, TAG_SIZES, Tag, type TagProp } from '../../../../ods-react/src/components/tag/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { ICON_NAME } from '../../../../ods-react/src/components/icon/src';
+import { TAG_COLOR, TAG_SIZE, Tag, type TagProp } from '../../../../ods-react/src/components/tag/src';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<TagProp>;
 
@@ -14,51 +13,6 @@ const meta: Meta<TagProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'TAG_COLOR' },
-      },
-      control: { type: 'select' },
-      options: TAG_COLORS,
-    },
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: { type: 'boolean' },
-    },
-    icon: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'ICON_NAME' },
-      },
-      control: { type: 'select' },
-      options: ICON_NAMES,
-    },
-    size: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'TAG_SIZE' },
-      },
-      control: { type: 'select' },
-      options: TAG_SIZES,
-    },
-  }),
-  args: {
-    children: 'My tag',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

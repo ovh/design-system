@@ -1,14 +1,12 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { BUTTON_COLOR, Button } from '../../../../ods-react/src/components/button/src';
-import { ICON_NAME, ICON_NAMES } from '../../../../ods-react/src/components/icon/src';
-import { MESSAGE_COLOR, MESSAGE_COLORS, MESSAGE_VARIANT, MESSAGE_VARIANTS, Message, MessageBody, MessageIcon, type MessageIconProp, type MessageProp } from '../../../../ods-react/src/components/message/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { ICON_NAME } from '../../../../ods-react/src/components/icon/src';
+import { MESSAGE_COLOR, MESSAGE_VARIANT, Message, MessageBody, MessageIcon, type MessageProp } from '../../../../ods-react/src/components/message/src';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<MessageProp>;
-type DemoArg = Partial<MessageProp> & Partial<MessageIconProp>;
 
 const meta: Meta<MessageProp> = {
   argTypes: excludeFromDemoControls(['i18n', 'locale', 'onRemove']),
@@ -18,62 +16,6 @@ const meta: Meta<MessageProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Message
-      color={ arg.color }
-      dismissible={ arg.dismissible }
-      variant={ arg.variant }>
-      <MessageIcon name={ arg.name || ICON_NAME.circleInfo } />
-
-      <MessageBody>
-        { arg.children }
-      </MessageBody>
-    </Message>
-  ),
-  argTypes: orderControls({
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'MESSAGE_COLOR' },
-      },
-      control: { type: 'select' },
-      options: MESSAGE_COLORS,
-    },
-    dismissible: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    name: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'ICON_NAME' },
-      },
-      control: { type: 'select' },
-      options: ICON_NAMES,
-    },
-    variant: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'MESSAGE_VARIANT' },
-      },
-      control: { type: 'select' },
-      options: MESSAGE_VARIANTS,
-    },
-  }),
-  args: {
-    children: 'My message',
-  },
-};
 
 export const AccessibilityGrouping: Story = {
   globals: {

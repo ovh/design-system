@@ -2,18 +2,11 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { TOOLTIP_POSITION, TOOLTIP_POSITIONS, Tooltip, type TooltipProp, TooltipContent, type TooltipContentProp, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { TOOLTIP_POSITION, Tooltip, type TooltipProp, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<TooltipProp>;
-type DemoArg = Partial<TooltipProp> & Partial<TooltipContentProp> & {
-  content?: string;
-  gutter?: number,
-  position?: TOOLTIP_POSITION,
-  sameWidth?: boolean,
-};
 
 const meta: Meta<TooltipProp> = {
   argTypes: excludeFromDemoControls(['onOpenChange', 'open', 'overlayConfig', 'positionerStyle']),
@@ -23,84 +16,6 @@ const meta: Meta<TooltipProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  parameters: {
-    layout: 'centered',
-  },
-  render: (arg: DemoArg) => (
-    <Tooltip
-      closeDelay={ arg.closeDelay }
-      openDelay={ arg.openDelay }
-      overlayConfig={{
-        gutter: arg.gutter,
-        position: arg.position,
-        sameWidth: arg.sameWidth,
-      }}>
-      <TooltipTrigger asChild>
-        <Icon
-          name={ ICON_NAME.circleQuestion }
-          style={{ fontSize: '24px' }} />
-      </TooltipTrigger>
-
-      <TooltipContent withArrow={ arg.withArrow }>
-        { arg.content }
-      </TooltipContent>
-    </Tooltip>
-  ),
-  argTypes: orderControls({
-    closeDelay: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'number',
-    },
-    content: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
-    gutter: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'number' }
-      },
-      control: 'number',
-    },
-    openDelay: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'number',
-    },
-    position: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'TOOLTIP_POSITION' }
-      },
-      control: { type: 'select' },
-      options: TOOLTIP_POSITIONS,
-    },
-    sameWidth: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-      },
-      control: { type: 'boolean' },
-    },
-    withArrow: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' }
-      },
-      control: { type: 'boolean' },
-    },
-  }),
-  args: {
-    content: 'My tooltip content',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

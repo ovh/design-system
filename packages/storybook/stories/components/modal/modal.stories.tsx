@@ -7,7 +7,6 @@ import {
   Modal,
   ModalBody,
   ModalContent,
-  type ModalContentProp,
   type ModalOpenChangeDetail,
   type ModalProp,
   ModalTrigger,
@@ -16,14 +15,10 @@ import {
 import { Select, SelectContent, SelectControl } from '../../../../ods-react/src/components/select/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<ModalProp>;
-type DemoArg = Partial<ModalProp> & Partial<ModalContentProp> & {
-  content?: string,
-};
 
 const meta: Meta<ModalProp> = {
   argTypes: excludeFromDemoControls(['defaultOpen', 'i18n', 'initialFocusedElement', 'locale', 'onOpenChange', 'open']),
@@ -33,60 +28,6 @@ const meta: Meta<ModalProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Modal
-      closeOnEscape={ arg.closeOnEscape }
-      closeOnInteractOutside={ arg.closeOnInteractOutside }>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal
-        </Button>
-      </ModalTrigger>
-
-      <ModalContent
-        color={ arg.color }
-        dismissible={ arg.dismissible }>
-        <ModalHeader>Modal header</ModalHeader>
-        <ModalBody>
-          { arg.content }
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-  ),
-  argTypes: orderControls({
-    closeOnEscape: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    closeOnInteractOutside: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    content: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
-    dismissible: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: true },
-        type: { summary: 'boolean' },
-      },
-      control: { type: 'boolean' },
-    },
-  }),
-  args: {
-    content: 'My modal content',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

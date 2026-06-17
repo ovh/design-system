@@ -1,9 +1,8 @@
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
-import { FILE_UPLOAD_I18N, FILE_UPLOAD_VARIANT, FILE_UPLOAD_VARIANTS, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadProp, type FileUploadRejectDetail } from '../../../../ods-react/src/components/file-upload/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { FILE_UPLOAD_I18N, FILE_UPLOAD_VARIANT, FileUpload, type FileUploadAcceptDetail, FileUploadItem, FileUploadList, type FileUploadProp, type FileUploadRejectDetail } from '../../../../ods-react/src/components/file-upload/src';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<FileUploadProp>;
@@ -16,110 +15,6 @@ const meta: Meta<FileUploadProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  render: (arg) => {
-    const [error, setError] = useState<string>('');
-    const [files, setFiles] = useState<File[]>([]);
-
-    function onAccept({ files }: FileUploadAcceptDetail): void {
-      setFiles(files);
-      setError('');
-    }
-
-    function onReject({ files }: FileUploadRejectDetail): void {
-      setError(files.length ? 'File(s) rejected' : '');
-    }
-
-    return (
-      <FileUpload
-        { ...arg }
-        error={ arg.error || error }
-        onFileAccept={ onAccept }
-        onFileReject={ onReject }>
-        <FileUploadList>
-          {
-            files.map((file: File, idx) => (
-              <FileUploadItem
-                file={ file }
-                key={ idx } />
-            ))
-          }
-        </FileUploadList>
-      </FileUpload>
-    );
-  },
-  argTypes: orderControls({
-    acceptedFileLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    dropzoneLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-    error: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    maxFile: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'number',
-    },
-    maxFileLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-    maxSize: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'number',
-    },
-    maxSizeLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-    triggerLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-    variant: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'FILE_UPLOAD_VARIANT' }
-      },
-      control: { type: 'select' },
-      options: FILE_UPLOAD_VARIANTS,
-    },
-  }),
-};
 
 export const Accept: Story = {
   globals: {

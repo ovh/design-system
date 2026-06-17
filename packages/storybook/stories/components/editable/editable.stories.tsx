@@ -21,36 +21,6 @@ const meta: Meta<EditableProp> = {
 
 export default meta;
 
-export const Demo: Story = {
-  render: () => {
-    const [value, setValue] = useState('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.');
-    const bufferValue = useRef(value);
-
-    return (
-      <Editable
-        onCancel={ () => bufferValue.current = value }
-        onSubmit={ () => setValue(bufferValue.current) }
-        style={{ display: 'flex' }}>
-        <EditableDisplay>
-          <p style={{ margin: 0 }}>
-            { value || <EditableDisplayEmpty>Empty value</EditableDisplayEmpty> }
-          </p>
-        </EditableDisplay>
-
-        <EditableInput style={{ flex: '1 1 0' }}>
-          <Textarea
-            autoFocus
-            defaultValue={ value }
-            onChange={ (e) => bufferValue.current = e.target.value }
-            style={{ resize: 'vertical', width: '100%' }}/>
-        </EditableInput>
-
-        <EditableActions />
-      </Editable>
-    );
-  },
-};
-
 export const AnatomyTech: Story = {
   tags: ['!dev'],
   render: ({}) => (

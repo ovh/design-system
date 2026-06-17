@@ -1,9 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { BUTTON_GROUP_SIZE, BUTTON_GROUP_SIZES, ButtonGroup, ButtonGroupItem, type ButtonGroupProp } from '../../../../ods-react/src/components/button-group/src';
+import { BUTTON_GROUP_SIZE, ButtonGroup, ButtonGroupItem, type ButtonGroupProp } from '../../../../ods-react/src/components/button-group/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<ButtonGroupProp>;
@@ -16,38 +15,6 @@ const meta: Meta<ButtonGroupProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  render: (arg) => (
-    <ButtonGroup { ...arg }>
-      <ButtonGroupItem value="1">Option 1</ButtonGroupItem>
-      <ButtonGroupItem value="2">Option 2</ButtonGroupItem>
-      <ButtonGroupItem value="3">Option 3</ButtonGroupItem>
-    </ButtonGroup>
-  ),
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    multiple: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    size: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'BUTTON_GROUP_SIZE' }
-      },
-      control: { type: 'select' },
-      options: BUTTON_GROUP_SIZES,
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

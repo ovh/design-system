@@ -1,8 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { SPINNER_COLOR, SPINNER_COLORS, SPINNER_SIZE, SPINNER_SIZES, Spinner, type SpinnerProp } from '../../../../ods-react/src/components/spinner/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
+import { SPINNER_COLOR, SPINNER_SIZE, Spinner, type SpinnerProp } from '../../../../ods-react/src/components/spinner/src';
 
 type Story = StoryObj<SpinnerProp>;
 
@@ -12,27 +10,6 @@ const meta: Meta<SpinnerProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'SPINNER_COLOR' }
-      },
-      control: { type: 'select' },
-      options: SPINNER_COLORS,
-    },
-    size: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'SPINNER_SIZE' }
-      },
-      control: { type: 'select' },
-      options: SPINNER_SIZES,
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

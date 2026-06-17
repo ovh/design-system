@@ -176,7 +176,7 @@ export const Loading: Story = {
       "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
   },
   render: ({}) => (
-    <PromptInput defaultValue=""Someone" is processing your request…" loading>
+    <PromptInput defaultValue='"Someone" is processing your request…' loading>
       <PromptInputControls>
         <PromptInputFileUploadButton aria-label="Attach a file" />
         <PromptInputTextControl aria-label="Ask someone about something…" />

@@ -2,8 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Accordion, AccordionContent, AccordionItem, type AccordionProp, AccordionTrigger, EXPAND_ICON_POSITION } from '../../../../ods-react/src/components/accordion/src';
 import { Text } from '../../../../ods-react/src/components/text/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<AccordionProp>;
@@ -16,55 +15,6 @@ const meta: Meta<AccordionProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  render: (arg: AccordionProp) => (
-    <Accordion disabled={ arg.disabled } multiple={ arg.multiple }>
-      <AccordionItem value="0">
-        <AccordionTrigger>
-          <Text preset="paragraph">
-            Hello World!
-          </Text>
-        </AccordionTrigger>
-        <AccordionContent>
-          <Text preset="paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit.
-          </Text>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="1">
-        <AccordionTrigger>
-          <Text preset="paragraph">
-            Bye World!
-          </Text>
-        </AccordionTrigger>
-        <AccordionContent>
-          <Text preset="paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit.
-          </Text>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  ),
-  argTypes: orderControls({
-    multiple: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

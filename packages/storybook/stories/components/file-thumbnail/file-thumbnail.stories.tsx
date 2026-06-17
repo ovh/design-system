@@ -1,8 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import React from 'react';
 import { FileThumbnail, type FileThumbnailProp } from '../../../../ods-react/src/components/file-thumbnail/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<FileThumbnailProp>;
@@ -15,59 +14,6 @@ const meta: Meta<FileThumbnailProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  render: ({ disabled, dismissible, error, progress }) => {
-    const [file, setFile] = useState<File>();
-
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', rowGap: '16px' }}>
-        <input
-          onChange={ (e) => {
-            if (e.target.files?.length) {
-              setFile(e.target.files[0]);
-            }
-          }}
-          type="file" />
-        {
-          file &&
-          <FileThumbnail
-            disabled={ disabled }
-            dismissible={ dismissible }
-            error={ error }
-            file={ file }
-            progress={ progress } />
-        }
-      </div>
-    );
-  },
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    dismissible: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    error: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-    progress: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'number',
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

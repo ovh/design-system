@@ -1,8 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { LOGO_SIZE, LOGO_SIZES, LOGO_VARIANT, LOGO_VARIANTS, Logo, type LogoProp } from '../../../../ods-react/src/components/logo/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
+import { LOGO_SIZE, LOGO_VARIANT, Logo, type LogoProp } from '../../../../ods-react/src/components/logo/src';
 
 type Story = StoryObj<LogoProp>;
 
@@ -12,27 +10,6 @@ const meta: Meta<LogoProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    size: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'LOGO_SIZE' }
-      },
-      control: { type: 'select' },
-      options: LOGO_SIZES,
-    },
-    variant: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'LOGO_VARIANT' }
-      },
-      control: { type: 'select' },
-      options: LOGO_VARIANTS,
-    },
-  }),
-};
 
 export const AccessibilityLink: Story = {
   globals: {

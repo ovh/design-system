@@ -1,12 +1,10 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { Quantity, QuantityControl, QuantityInput, type QuantityInputProp, type QuantityProp } from '../../../../ods-react/src/components/quantity/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { Quantity, QuantityControl, QuantityInput, type QuantityProp } from '../../../../ods-react/src/components/quantity/src';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<QuantityProp>;
-type DemoArg = Partial<QuantityProp> & Partial<QuantityInputProp> & {};
 
 const meta: Meta<QuantityProp> = {
   argTypes: excludeFromDemoControls(['defaultValue', 'name', 'onValueChange', 'required', 'value']),
@@ -16,67 +14,6 @@ const meta: Meta<QuantityProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Quantity
-      disabled={ arg.disabled }
-      invalid={ arg.invalid }
-      max={ arg.max }
-      min={ arg.min }
-      readOnly={ arg.readOnly }
-      step={ arg.step }>
-      <QuantityControl>
-        <QuantityInput placeholder={ arg.placeholder } />
-      </QuantityControl>
-    </Quantity>
-  ),
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    max: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'number' },
-    },
-    min: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'number' },
-    },
-    placeholder: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'string' },
-      },
-      control: 'text',
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    step: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'number' },
-    },
-  }),
-};
 
 export const AccessibilityLabel: Story = {
   globals: {

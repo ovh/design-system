@@ -1,8 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { CARD_COLOR, CARD_COLORS, Card, type CardProp } from '../../../../ods-react/src/components/card/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<CardProp>;
 
@@ -12,28 +10,6 @@ const meta: Meta<CardProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'CARD_COLOR' },
-      },
-      control: 'select',
-      options: CARD_COLORS,
-    },
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
-  }),
-  args: {
-    children: 'Hello, world!',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

@@ -4,10 +4,8 @@ import React, { useState } from 'react';
 import {
   Drawer,
   DRAWER_POSITION,
-  DRAWER_POSITIONS,
   DrawerBody,
   DrawerContent,
-  DrawerContentProp,
   type DrawerProp,
   type DrawerOpenChangeDetail,
   DrawerTrigger,
@@ -15,14 +13,10 @@ import {
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { Select, SelectContent, SelectControl } from '../../../../ods-react/src/components/select/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<DrawerProp>;
-type DemoArg = Partial<DrawerProp> & Partial<DrawerContentProp> & {
-  content?: string;
-}
 
 const meta: Meta<DrawerProp> = {
   argTypes: excludeFromDemoControls(['defaultOpen', 'onOpenChange', 'open']),
@@ -32,55 +26,6 @@ const meta: Meta<DrawerProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Drawer closeOnEscape={arg.closeOnEscape} closeOnInteractOutside={arg.closeOnInteractOutside}>
-      <DrawerTrigger asChild>
-        <Button>
-          Trigger Drawer
-        </Button>
-      </DrawerTrigger>
-
-      <DrawerContent position={arg.position}>
-        <DrawerBody>
-          { arg.content }
-        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-  ),
-  argTypes: orderControls({
-    closeOnEscape: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    closeOnInteractOutside: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    content: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
-    position: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'DRAWER_POSITION' },
-      },
-      control: { type: 'select' },
-      options: DRAWER_POSITIONS
-    }
-  }),
-  args: {
-    content: 'My drawer content',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

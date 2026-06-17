@@ -3,8 +3,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { DataTable, DataTableBody, type DataTableColumnDef, DataTableEmpty, DataTableHead, type DataTableProp, type DataTableSortingState } from '../../../../ods-react/src/components/data-table/src';
 import { PAGINATION_PER_PAGE, Pagination } from '../../../../ods-react/src/components/pagination/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<DataTableProp<Person>>;
@@ -62,45 +61,6 @@ const sampleColumns: DataTableColumnDef<Person>[] = [
   { id: 'email', header: 'Email', accessorKey: 'email' },
   { id: 'role', header: 'Role', accessorKey: 'role' },
 ];
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    enableMultiRowSelection: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    enableRowSelection: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    enableSorting: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    loading: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-  }),
-  render: (arg) => (
-    <DataTable
-      { ...arg }
-      columns={ sampleColumns }
-      data={ sampleData }>
-      <DataTableHead />
-
-      <DataTableBody />
-    </DataTable>
-  ),
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

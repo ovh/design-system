@@ -2,8 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, type BreadcrumbProp } from '../../../../ods-react/src/components/breadcrumb/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<BreadcrumbProp>;
 
@@ -15,62 +14,6 @@ const meta: Meta<BreadcrumbProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  render: (arg) => (
-    <Breadcrumb
-      collapseThreshold={ arg.collapseThreshold }
-      nbItemsAfterEllipsis={ arg.nbItemsAfterEllipsis }
-      nbItemsBeforeEllipsis={ arg.nbItemsBeforeEllipsis }>
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">
-          Home
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">
-          Page 1
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">
-          Page 2
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">
-          Page 3
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">
-          Current page
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-    </Breadcrumb>
-  ),
-  argTypes: orderControls({
-    collapseThreshold: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-      },
-    },
-    nbItemsAfterEllipsis: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-      },
-    },
-    nbItemsBeforeEllipsis: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-      },
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

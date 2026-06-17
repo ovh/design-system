@@ -3,9 +3,6 @@ import React from 'react';
 import { BADGE_COLOR, BADGE_COLORS, BADGE_SIZE, BADGE_SIZES, Badge, type BadgeProp } from '../../../../ods-react/src/components/badge/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../../../../ods-react/src/components/tooltip/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
-
 
 type Story = StoryObj<BadgeProp>;
 
@@ -15,36 +12,6 @@ const meta: Meta<BadgeProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'BADGE_COLOR' }
-      },
-      control: { type: 'select' },
-      options: BADGE_COLORS,
-    },
-    size: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'BADGE_SIZE' }
-      },
-      control: { type: 'select' },
-      options: BADGE_SIZES,
-    },
-  }),
-  args: {
-    children: 'My badge',
-  },
-};
 
 export const Color: Story = {
   decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'row', gap: '8px', alignItems: 'center' }}>{ story() }</div>],

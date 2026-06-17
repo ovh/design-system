@@ -4,9 +4,8 @@ import { BUTTON_COLOR, Button } from '../../../../ods-react/src/components/butto
 import { ICON_NAME } from '../../../../ods-react/src/components/icon/src';
 import { Link } from '../../../../ods-react/src/components/link/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
-import { TOASTER_POSITION, TOASTER_POSITIONS, Toaster, type ToasterProp, toast } from '../../../../ods-react/src/components/toaster/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { TOASTER_POSITION, Toaster, type ToasterProp, toast } from '../../../../ods-react/src/components/toaster/src';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<ToasterProp>;
@@ -18,46 +17,6 @@ const meta: Meta<ToasterProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  render: (arg) => (
-    <>
-      <Toaster { ...arg } />
-
-      <Button onClick={ () => toast('Notification message') }>
-        Trigger toast
-      </Button>
-    </>
-  ),
-  argTypes: orderControls({
-    dismissible: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    duration: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'number',
-    },
-    position: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'TOASTER_POSITION' }
-      },
-      control: { type: 'select' },
-      options: TOASTER_POSITIONS,
-    },
-    max: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'number',
-    },
-  }),
-};
 
 export const Colors: Story = {
   globals: {

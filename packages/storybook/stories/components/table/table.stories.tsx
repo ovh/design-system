@@ -1,9 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { TABLE_SIZE, TABLE_SIZES, TABLE_VARIANT, TABLE_VARIANTS, Table, type TableProp } from '../../../../ods-react/src/components/table/src';
+import { TABLE_SIZE, TABLE_VARIANT, TABLE_VARIANTS, Table, type TableProp } from '../../../../ods-react/src/components/table/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<TableProp>;
 
@@ -13,63 +11,6 @@ const meta: Meta<TableProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  render: (prop) => (
-    <Table { ...prop }>
-      <caption>
-        Front-end web developer course 2021
-      </caption>
-      <thead>
-      <tr>
-        <th scope="col">Person</th>
-        <th scope="col">Most interest in</th>
-        <th scope="col">Age</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <th scope="row">Chris</th>
-        <td>HTML tables</td>
-        <td>22</td>
-      </tr>
-      <tr>
-        <th scope="row">Dennis</th>
-        <td>Web accessibility</td>
-        <td>45</td>
-      </tr>
-      <tr>
-        <th scope="row">Sarah</th>
-        <td>JavaScript frameworks</td>
-        <td>29</td>
-      </tr>
-      <tr>
-        <th scope="row">Karen</th>
-        <td>Web performance</td>
-        <td>36</td>
-      </tr>
-      </tbody>
-    </Table>
-  ),
-  argTypes: orderControls({
-    size: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'TABLE_SIZE' }
-      },
-      control: { type: 'select' },
-      options: TABLE_SIZES,
-    },
-    variant: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'TABLE_VARIANT' }
-      },
-      control: { type: 'select' },
-      options: TABLE_VARIANTS,
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   parameters: {

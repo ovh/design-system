@@ -17,8 +17,7 @@ import {
   PromptInputTextControl,
 } from "../../../../ods-react/src/components/prompt-input/src";
 import { TEXT_PRESET, Text } from "../../../../ods-react/src/components/text/src";
-import { CONTROL_CATEGORY } from "../../../src/constants/controls";
-import { excludeFromDemoControls, orderControls } from "../../../src/helpers/controls";
+import { excludeFromDemoControls } from "../../../src/helpers/controls";
 import { staticSourceRenderConfig } from "../../../src/helpers/source";
 import { Divider } from "../../../../ods-react/src/components/divider/src";
 
@@ -47,38 +46,6 @@ const meta: Meta<PromptInputProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    disabled: {
-      control: "boolean",
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-    },
-    loading: {
-      control: "boolean",
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-    },
-    readOnly: {
-      control: "boolean",
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-    },
-  }),
-  render: (arg) => (
-    <PromptInput loading={arg.loading} readOnly={arg.readOnly} disabled={arg.disabled}>
-      <PromptInputControls>
-        <PromptInputFileUploadButton />
-        <PromptInputTextControl placeholder="Type your message here..." />
-        <PromptInputSendButton />
-      </PromptInputControls>
-    </PromptInput>
-  ),
-};
 
 export const AnatomyTech: Story = {
   tags: ["!dev"],
@@ -175,7 +142,7 @@ export const Disabled: Story = {
       "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
   },
   render: ({}) => (
-    <PromptInput disabled defaultValue="Nobody’s here to answer…">
+    <PromptInput disabled defaultValue="Nobody's here to answer…">
       <PromptInputControls>
         <PromptInputFileUploadButton aria-label="Attach a file" />
         <PromptInputTextControl aria-label="Ask someone about something…" />
@@ -209,7 +176,7 @@ export const Loading: Story = {
       "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';",
   },
   render: ({}) => (
-    <PromptInput defaultValue="“Someone” is processing your request…" loading>
+    <PromptInput defaultValue=""Someone" is processing your request…" loading>
       <PromptInputControls>
         <PromptInputFileUploadButton aria-label="Attach a file" />
         <PromptInputTextControl aria-label="Ask someone about something…" />

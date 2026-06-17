@@ -2,8 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
 import { Link, LinkProp } from '../../../../ods-react/src/components/link/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<LinkProp>;
 
@@ -14,27 +13,6 @@ const meta: Meta<LinkProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-  }),
-  args: {
-    // @ts-ignore check when time to do so
-    children: 'My link',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

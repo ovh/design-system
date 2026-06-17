@@ -1,10 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import {
-  DIVIDER_COLOR, DIVIDER_COLORS, DIVIDER_SPACING, DIVIDER_SPACINGS, DIVIDER_ORIENTATION, DIVIDER_ORIENTATIONS, Divider, type DividerProp,
+  DIVIDER_COLOR, DIVIDER_SPACING, DIVIDER_ORIENTATION, Divider, type DividerProp,
 } from '../../../../ods-react/src/components/divider/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<DividerProp>;
 
@@ -14,35 +12,6 @@ const meta: Meta<DividerProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'DIVIDER_COLOR' },
-      },
-      control: { type: 'select' },
-      options: DIVIDER_COLORS,
-    },
-    orientation: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'DIVIDER_ORIENTATION' },
-      },
-      control: { type: 'select' },
-      options: DIVIDER_ORIENTATIONS,
-    },
-    spacing: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'DIVIDER_SPACING' },
-      },
-      control: { type: 'select' },
-      options: DIVIDER_SPACINGS,
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

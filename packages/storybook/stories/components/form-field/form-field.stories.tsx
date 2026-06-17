@@ -14,16 +14,9 @@ import { MESSAGE_COLOR, Message, MessageBody } from '../../../../ods-react/src/c
 import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList } from '../../../../ods-react/src/components/phone-number/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { Textarea } from '../../../../ods-react/src/components/textarea/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<FormFieldProp>;
-type DemoArg = Partial<FormFieldProp> & {
-  errorText?: string,
-  helperText?: string,
-  label?: string,
-  sublabel?: string,
-};
 
 const meta: Meta<FormFieldProp> = {
   argTypes: excludeFromDemoControls(['id', 'required']),
@@ -33,65 +26,6 @@ const meta: Meta<FormFieldProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  render: (args: DemoArg) => (
-    <FormField invalid={ args.invalid }>
-      <FormFieldLabel>
-        { args.label }
-        <FormFieldLabelSubLabel>
-          { args.sublabel }
-        </FormFieldLabelSubLabel>
-      </FormFieldLabel>
-
-      <Textarea name="demo" />
-
-      <FormFieldHelper>
-        { args.helperText }
-      </FormFieldHelper>
-
-      <FormFieldError>
-        { args.errorText }
-      </FormFieldError>
-    </FormField>
-  ),
-  argTypes: orderControls({
-    errorText: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-        type: { summary: 'string' },
-      },
-      control: 'text',
-    },
-    helperText: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-        type: { summary: 'string' },
-      },
-      control: 'text',
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    label: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-        type: { summary: 'string' },
-      },
-      control: 'text',
-    },
-    sublabel: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-        type: { summary: 'string' },
-      },
-      control: 'text',
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

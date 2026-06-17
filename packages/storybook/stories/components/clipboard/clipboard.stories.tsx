@@ -1,14 +1,10 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { Clipboard, ClipboardControl, type ClipboardControlProp, type ClipboardProp, ClipboardTrigger, type ClipboardTriggerProp } from '../../../../ods-react/src/components/clipboard/src';
+import { Clipboard, ClipboardControl, type ClipboardProp, ClipboardTrigger } from '../../../../ods-react/src/components/clipboard/src';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<ClipboardProp>;
-type DemoArg = Partial<ClipboardProp> & Partial<ClipboardControlProp> & Partial<ClipboardTriggerProp> & {
-  masked?: boolean,
-};
 
 const meta: Meta<ClipboardProp> = {
   argTypes: excludeFromDemoControls(['i18n', 'locale', 'onCopy']),
@@ -18,67 +14,6 @@ const meta: Meta<ClipboardProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Clipboard
-      disabled={ arg.disabled }
-      value={ arg.value }>
-      <ClipboardControl
-        loading={ arg.loading }
-        maskOption={{ enable: !!arg.masked }} />
-
-      <ClipboardTrigger
-        labelCopy={ arg.labelCopy }
-        labelCopySuccess={ arg.labelCopySuccess } />
-    </Clipboard>
-  ),
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    labelCopy: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'Copy' },
-      },
-      control: 'text',
-    },
-    labelCopySuccess: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'Copied' },
-      },
-      control: 'text',
-    },
-    loading: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
-    masked: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
-    value: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-  }),
-  args: {
-    value: 'Clipboard',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

@@ -2,15 +2,11 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { INPUT_I18N } from '../../../../ods-react/src/components/input/src';
-import { PHONE_NUMBER_COUNTRY_ISO_CODES, PhoneNumber, PhoneNumberControl, type PhoneNumberControlProp, PhoneNumberCountryList, type PhoneNumberProp } from '../../../../ods-react/src/components/phone-number/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { PhoneNumber, PhoneNumberControl, PhoneNumberCountryList, type PhoneNumberProp } from '../../../../ods-react/src/components/phone-number/src';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<PhoneNumberProp>;
-type DemoArg = Partial<PhoneNumberProp> & Partial<PhoneNumberControlProp> & {
-  withCountries?: boolean,
-};
 
 const meta: Meta<PhoneNumberProp> = {
   argTypes: excludeFromDemoControls(['countries', 'defaultValue', 'i18n', 'id', 'name', 'onCountryChange', 'onValueChange', 'pattern', 'required', 'value']),
@@ -20,73 +16,6 @@ const meta: Meta<PhoneNumberProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <PhoneNumber
-      country={ arg.country }
-      disabled={ arg.disabled }
-      invalid={ arg.invalid }
-      locale={ arg.locale }
-      readOnly={ arg.readOnly }>
-      {
-        arg.withCountries &&
-        <PhoneNumberCountryList />
-      }
-
-      <PhoneNumberControl clearable={ arg.clearable } />
-    </PhoneNumber>
-  ),
-  argTypes: orderControls({
-    clearable: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
-    country: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'PHONE_NUMBER_COUNTRY_ISO_CODE' },
-      },
-      control: { type: 'select' },
-      options: PHONE_NUMBER_COUNTRY_ISO_CODES,
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    locale: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'select' },
-      options: PHONE_NUMBER_COUNTRY_ISO_CODES,
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    withCountries: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
-  }),
-};
 
 export const AccessibilityLabel: Story = {
   globals: {

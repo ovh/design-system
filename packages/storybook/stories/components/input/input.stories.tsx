@@ -1,15 +1,11 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
-import { INPUT_I18N, INPUT_TYPE, INPUT_TYPES, Input, type InputProp } from '../../../../ods-react/src/components/input/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { INPUT_I18N, INPUT_TYPE, Input, type InputProp } from '../../../../ods-react/src/components/input/src';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<InputProp>;
-type DemoArg = Partial<InputProp> & {
-  masked?: boolean,
-};
 
 const meta: Meta<InputProp> = {
   argTypes: excludeFromDemoControls(['i18n', 'locale', 'maskOption', 'onClear']),
@@ -18,74 +14,6 @@ const meta: Meta<InputProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  render: (arg: DemoArg) => {
-    const { masked, ...inputArg } = arg;
-
-    return (
-      <Input
-        maskOption={{ enable: !!masked }}
-        { ...inputArg } />
-    )
-  },
-  argTypes: orderControls({
-    clearable: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    loading: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    masked: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
-    placeholder: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'string' },
-      },
-      control: 'text',
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
-    type: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'INPUT_TYPE' }
-      },
-      control: { type: 'select' },
-      options: INPUT_TYPES,
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

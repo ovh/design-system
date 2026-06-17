@@ -1,8 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { TEXT_PRESET, TEXT_PRESETS, Text, type TextProp }  from '../../../../ods-react/src/components/text/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { TEXT_PRESET, Text, type TextProp }  from '../../../../ods-react/src/components/text/src';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<TextProp>;
 
@@ -13,34 +12,6 @@ const meta: Meta<TextProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    preset: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'TEXT_PRESET' }
-      },
-      control: { type: 'select' },
-      options: TEXT_PRESETS,
-    }
-  }),
-  args: {
-    children: 'Lorem ipsum dolor sit amet',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

@@ -4,19 +4,10 @@ import { Button } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME } from '../../../../ods-react/src/components/icon/src/constants/icon-name';
 import { Icon } from '../../../../ods-react/src/components/icon/src';
 import { Menu, MenuContent, MenuGroup, MenuGroupLabel, MenuItem, type MenuProp, MenuSubmenu, MenuTrigger } from '../../../../ods-react/src/components/menu/src';
-import { MENU_POSITION, MENU_POSITIONS } from '../../../../ods-react/src/components/menu/src/constants/menu-position';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<MenuProp>;
-type DemoArg = {
-  gutter?: number,
-  position?: MENU_POSITION,
-  sameWidth?: boolean,
-  triggerLabel: string,
-  withArrow: boolean,
-};
 
 const meta: Meta<MenuProp> = {
   argTypes: excludeFromDemoControls(['onOpenChange', 'onPositionChange', 'open', 'overlayConfig', 'positionerStyle', 'triggerId']),
@@ -34,68 +25,6 @@ const meta: Meta<MenuProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  argTypes: orderControls({
-    gutter: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'number' }
-      },
-      control: 'number',
-    },
-    position: {
-      control: 'select',
-      options: MENU_POSITIONS,
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'MENU_POSITION' },
-      },
-    },
-    sameWidth: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-      },
-      control: { type: 'boolean' },
-    },
-    triggerLabel: {
-      control: 'text',
-      table: {
-        category: CONTROL_CATEGORY.slot,
-        type: { summary: 'string' },
-      },
-    },
-    withArrow: {
-      control: 'boolean',
-      table: {
-        category: CONTROL_CATEGORY.design,
-      },
-    },
-  }),
-  args: {
-    position: MENU_POSITION.bottom,
-    triggerLabel: 'Open menu',
-    withArrow: false,
-  },
-  render: (arg: Partial<DemoArg>) => (
-    <Menu overlayConfig={{
-      gutter: arg.gutter,
-      position: arg.position,
-      sameWidth: arg.sameWidth,
-    }}>
-      <MenuTrigger asChild>
-        <Button>
-          { arg.triggerLabel }
-        </Button>
-      </MenuTrigger>
-
-      <MenuContent withArrow={ arg.withArrow }>
-        <MenuItem value="profile">Profile</MenuItem>
-        <MenuItem value="settings">Settings</MenuItem>
-      </MenuContent>
-    </Menu>
-  ),
-};
 
 export const AnatomyTech: Story = {
   parameters: {

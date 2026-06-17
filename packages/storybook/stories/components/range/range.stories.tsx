@@ -1,16 +1,12 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FormField, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { Range, type RangeProp, type RangeValueChangeDetail } from '../../../../ods-react/src/components/range/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<RangeProp>;
-type DemoArg = Partial<RangeProp> & {
-  dualRange?: boolean,
-};
 
 const meta: Meta<RangeProp> = {
   argTypes: excludeFromDemoControls(['aria-label', 'aria-labelledby', 'defaultValue', 'max', 'min', 'name', 'onDragging', 'onValueChange', 'ticks', 'value']),
@@ -19,71 +15,6 @@ const meta: Meta<RangeProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  decorators: [(story) => <div style={{ display: 'flex', flexFlow: 'column', justifyContent: 'center', height: '80vh' }}>{ story() }</div>],
-  render: ({ dualRange, ...arg }: DemoArg) => {
-    const MAX_VALUE = 100;
-    const [values, setValues] = useState([0]);
-
-    useEffect(() => {
-      if (dualRange) {
-        const step = arg.step || 1;
-        const newValue = values[0] === MAX_VALUE ? values[0] - step : values[0];
-        setValues([newValue, newValue + step]);
-      } else {
-        setValues([values[0]]);
-      }
-    }, [dualRange]);
-
-    return (
-      <Range
-        { ...arg }
-        max={ MAX_VALUE }
-        onDragging={ ({ value }) => setValues(value) }
-        value={ values } />
-    );
-  },
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    displayBounds: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    displayTooltip: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    dualRange: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: { type: 'boolean' },
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    step: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'number',
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   decorators: [(story) => <div style={{ width: '160px' }}>{ story() }</div>],

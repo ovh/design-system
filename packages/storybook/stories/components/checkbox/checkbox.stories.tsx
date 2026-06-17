@@ -3,14 +3,10 @@ import React from 'react';
 import { Checkbox, CheckboxControl, CheckboxGroup, CheckboxLabel, type CheckboxProp } from '../../../../ods-react/src/components/checkbox/src';
 import { FormField } from '../../../../ods-react/src/components/form-field/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<CheckboxProp>;
-type DemoArg = Partial<CheckboxProp> & {
-  label?: string,
-};
 
 const meta: Meta<CheckboxProp> = {
   argTypes: excludeFromDemoControls(['checked', 'defaultChecked', 'name', 'onCheckedChange', 'required', 'value']),
@@ -20,43 +16,6 @@ const meta: Meta<CheckboxProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  render: (arg: DemoArg) => (
-    <Checkbox
-      disabled={ arg.disabled }
-      invalid={ arg.invalid }>
-      <CheckboxControl />
-
-      <CheckboxLabel>
-        { arg.label }
-      </CheckboxLabel>
-    </Checkbox>
-  ),
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    label: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    }
-  }),
-  args: {
-    label: 'My checkbox',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

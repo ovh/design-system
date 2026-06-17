@@ -6,8 +6,7 @@ import { Code } from '../../../../ods-react/src/components/code/src';
 import { Markdown, type MarkdownProp } from '../../../../ods-react/src/components/markdown/src';
 import { TABS_VARIANT, Tabs, TabContent, TabList, Tab } from '../../../../ods-react/src/components/tabs/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 import { Link } from '@ovhcloud/ods-react';
 
@@ -21,20 +20,6 @@ const meta: Meta<MarkdownProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    content: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-  }),
-  args: {
-    content: 'Markdown **bold** content',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

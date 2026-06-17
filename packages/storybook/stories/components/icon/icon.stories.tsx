@@ -1,8 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { ICON_NAME, ICON_NAMES, Icon, type IconProp } from '../../../../ods-react/src/components/icon/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
+import { ICON_NAME, Icon, type IconProp } from '../../../../ods-react/src/components/icon/src';
 
 type Story = StoryObj<IconProp>;
 
@@ -12,22 +10,6 @@ const meta: Meta<IconProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    name: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'ICON_NAME' },
-      },
-      control: { type: 'select' },
-      options: ICON_NAMES,
-    },
-  }),
-  args: {
-    name: ICON_NAME.home,
-  },
-};
 
 export const AccessibilityInformative: Story = {
   globals: {

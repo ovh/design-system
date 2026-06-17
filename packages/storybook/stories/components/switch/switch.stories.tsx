@@ -1,9 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { SWITCH_SIZE, SWITCH_SIZES, Switch, SwitchItem, type SwitchProp } from '../../../../ods-react/src/components/switch/src';
+import { SWITCH_SIZE, Switch, SwitchItem, type SwitchProp } from '../../../../ods-react/src/components/switch/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<SwitchProp>;
 
@@ -16,32 +15,6 @@ const meta: Meta<SwitchProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  render: (arg) => (
-    <Switch { ...arg }>
-      <SwitchItem value="item-1">Item 1</SwitchItem>
-      <SwitchItem value="item-2">Item 2</SwitchItem>
-      <SwitchItem value="item-3">Item 3</SwitchItem>
-    </Switch>
-  ),
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    size: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'SWITCH_SIZE' }
-      },
-      control: { type: 'select' },
-      options: SWITCH_SIZES,
-    },
-  }),
-};
 
 export const AccessibilityAriaLabel: Story = {
   globals: {

@@ -1,8 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Kbd, type KbdProp } from '../../../../ods-react/src/components/kbd/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<KbdProp>;
 
@@ -12,20 +10,6 @@ const meta: Meta<KbdProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
-  }),
-  args: {
-    children: 'Cmd + L',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

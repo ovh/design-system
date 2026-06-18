@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import * as TextStories from './text.stories';
+
+<Meta of={ TextStories } name="Examples" />
+
+<Banner of={ TextStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ TextStories.Default } sourceState="shown" />
+
+<Heading label="Preset" level={ 2 } />
+
+**Caption** preset can be used should you need ODS caption custom style.
+
+For actual `<caption>` (used in a table) or `<figcaption>` (image), use the native tag using either an OdsText inside of it or the Saas mixin.
+
+<Canvas of={ TextStories.Preset } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ TextStories.Disabled } sourceState="shown" />
+
+<Heading label="Caption preset in <table>" level={ 2 } />
+
+<Canvas of={ TextStories.TableCaption } sourceState="shown" />
+
+<Heading label="Caption preset in <figcaption>" level={ 2 } />
+
+<Canvas of={ TextStories.FigCaption } sourceState="shown" />
+
+<Heading label="Preset style on a different HTML element" level={ 2 } />
+
+<Canvas of={ TextStories.ReuseStyle } sourceState="shown" />

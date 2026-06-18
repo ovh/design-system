@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../../src/constants/meta';
+import * as PromptInputStories from './prompt-input.stories';
+
+<Meta of={ PromptInputStories } name="Examples" />
+
+<Banner of={ PromptInputStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ PromptInputStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ PromptInputStories.Disabled } sourceState="shown" />
+
+<Heading label="Readonly" level={ 2 } />
+
+<Canvas of={ PromptInputStories.ReadOnly } sourceState="shown" />
+
+<Heading label="Loading" level={ 2 } />
+
+<Canvas of={ PromptInputStories.Loading } sourceState="shown" />
+
+<Heading label="With files" level={ 2 } />
+
+<Canvas of={ PromptInputStories.WithFiles } sourceState="shown" />
+
+<Heading label="In form field" level={ 2 }>
+  <StorybookLink title={ HOME_TITLE.implementingFormGuide }>(see implementing form guide)</StorybookLink>
+</Heading>
+
+<Canvas of={ PromptInputStories.InFormField } sourceState="shown" />

@@ -1,0 +1,21 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import * as SpinnerStories from './spinner.stories';
+
+<Meta of={ SpinnerStories } name="Examples" />
+
+<Banner of={ SpinnerStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ SpinnerStories.Default } sourceState="shown" />
+
+<Heading label="Color" level={ 2 } />
+
+<Canvas of={ SpinnerStories.Color } sourceState="shown" />
+
+<Heading label="Size" level={ 2 } />
+
+<Canvas of={ SpinnerStories.Size } sourceState="shown" />

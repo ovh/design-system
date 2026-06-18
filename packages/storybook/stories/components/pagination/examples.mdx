@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import * as PaginationStories from './pagination.stories';
+
+<Meta of={ PaginationStories } name="Examples" />
+
+<Banner of={ PaginationStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ PaginationStories.Default } sourceState="shown" />
+
+<Heading label="Controlled" level={ 2 } />
+
+<Canvas of={ PaginationStories.Controlled } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ PaginationStories.Disabled } sourceState="shown" />
+
+<Heading label="Items per page" level={ 2 } />
+
+<Canvas of={ PaginationStories.ItemsPerPage } sourceState="shown" />
+
+<Heading label="Sibling count" level={ 2 } />
+
+<Canvas of={ PaginationStories.SiblingCount } sourceState="shown" />
+
+<Heading label="With tooltip labels" level={ 2 } />
+
+<Canvas of={ PaginationStories.WithTooltipLabels } sourceState="shown" />
+
+<Heading label="With page size selection" level={ 2 } />
+
+<Canvas of={ PaginationStories.PageSizeSelection } sourceState="shown" />

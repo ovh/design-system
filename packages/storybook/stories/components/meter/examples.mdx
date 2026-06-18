@@ -1,0 +1,21 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import * as MeterStories from './meter.stories';
+
+<Meta of={ MeterStories } name="Examples" />
+
+<Banner of={ MeterStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ MeterStories.Default } sourceState="shown" />
+
+<Heading label="Thresholds" level={ 2 } />
+
+<Canvas of={ MeterStories.Thresholds } sourceState="shown" />
+
+<Heading label="Optimum" level={ 2 } />
+
+<Canvas of={ MeterStories.Optimum } sourceState="shown" />

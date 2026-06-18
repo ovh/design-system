@@ -35,43 +35,6 @@ import * as LinkStories from './link.stories';
   }}
   of={ LinkStories } />
 
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ LinkStories.Default } sourceState="shown" />
-
-<Heading label="Disabled" level={ 3 } />
-
-<Canvas of={ LinkStories.Disabled } sourceState="shown" />
-
-<Heading label="With Icon" level={ 3 } />
-
-<Canvas of={ LinkStories.WithIcon } sourceState="shown" />
-
-<Heading label="React Router integration" level={ 3 } />
-
-Using the `as` attribute, you can use the **Link** component with external libraries like <ExternalLink href="https://reactrouter.com/">React Router</ExternalLink>.
-
-<Source code={`
-import { Link as OdsLink } from '@ovhcloud/ods-react';
-import { Link as RouterLink } from 'react-router-dom';
-
-const Link = ({ children, route }) => {
-  return (
-    <OdsLink
-      as={ RouterLink }
-      to={ route }>
-      { children }
-    </OdsLink>
-  );
-};
-
-export { Link };
-`}
-        dark="true"
-        language="typescript" />
-
 <Heading label="Recipes" level={ 2 } />
 
 <Recipes component="Link" />

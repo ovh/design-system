@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import * as TagStories from './tag.stories';
+
+<Meta of={ TagStories } name="Examples" />
+
+<Banner of={ TagStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ TagStories.Default } sourceState="shown" />
+
+<Heading label="Color" level={ 2 } />
+
+<Canvas of={ TagStories.Color } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ TagStories.Disabled } sourceState="shown" />
+
+<Heading label="Size" level={ 2 } />
+
+<Canvas of={ TagStories.Size } sourceState="shown" />
+
+<Heading label="Custom icon" level={ 2 } />
+
+<Canvas of={ TagStories.CustomIcon } sourceState="shown" />

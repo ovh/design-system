@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import * as TableStories from './table.stories';
+
+<Meta of={ TableStories } name="Examples" />
+
+<Banner of={ TableStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ TableStories.Default } sourceState="shown" />
+
+<Heading label="Size" level={ 2 } />
+
+<Canvas of={ TableStories.Size } sourceState="shown" />
+
+<Heading label="Variant" level={ 2 } />
+
+<Canvas of={ TableStories.Variant } sourceState="shown" />
+
+<Heading label="Text component caption preset" level={ 2 } />
+
+<Canvas of={ TableStories.CustomCaption } sourceState="shown" />

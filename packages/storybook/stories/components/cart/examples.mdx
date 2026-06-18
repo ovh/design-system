@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import * as CartStories from './cart.stories';
+
+<Meta of={ CartStories } name="Examples" />
+
+<Banner of={ CartStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ CartStories.Default } sourceState="shown" />
+
+<Heading label="Empty" level={ 2 } />
+
+<Canvas of={ CartStories.Empty } sourceState="shown" />
+
+<Heading label="Complete" level={ 2 } />
+
+<Canvas of={ CartStories.Full } sourceState="shown" />
+
+<Heading label="Mobile" level={ 2 } />
+
+<Canvas of={ CartStories.Mobile } sourceState="shown" />

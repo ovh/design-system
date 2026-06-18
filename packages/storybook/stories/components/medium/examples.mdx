@@ -1,0 +1,21 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import * as MediumStories from './medium.stories';
+
+<Meta of={ MediumStories } name="Examples" />
+
+<Banner of={ MediumStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ MediumStories.Default } sourceState="shown" />
+
+<Heading label="Height" level={ 2 } />
+
+<Canvas of={ MediumStories.Height } sourceState="shown" />
+
+<Heading label="Width" level={ 2 } />
+
+<Canvas of={ MediumStories.Width } sourceState="shown" />

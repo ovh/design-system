@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import * as FileThumbnailStories from './file-thumbnail.stories';
+
+<Meta of={ FileThumbnailStories } name="Examples" />
+
+<Banner of={ FileThumbnailStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ FileThumbnailStories.Default } sourceState="shown" />
+
+<Heading label="Progress" level={ 2 } />
+
+<Canvas of={ FileThumbnailStories.Progress } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ FileThumbnailStories.Disabled } sourceState="shown" />
+
+<Heading label="Non-dismissible" level={ 2 } />
+
+<Canvas of={ FileThumbnailStories.NonDismissible } sourceState="shown" />
+
+<Heading label="Error" level={ 2 } />
+
+<Canvas of={ FileThumbnailStories.Error } sourceState="shown" />

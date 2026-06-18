@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../../src/constants/meta';
+import * as DatepickerStories from './datepicker.stories';
+
+<Meta of={ DatepickerStories } name="Examples" />
+
+<Banner of={ DatepickerStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ DatepickerStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ DatepickerStories.Disabled } sourceState="shown" />
+
+<Heading label="Readonly" level={ 2 } />
+
+<Canvas of={ DatepickerStories.Readonly } sourceState="shown" />
+
+<Heading label="Date formatter" level={ 2 } />
+
+<Canvas of={ DatepickerStories.DateFormatter } sourceState="shown" />
+
+<Heading label="Max / Min" level={ 2 } />
+
+<Canvas of={ DatepickerStories.MinMax } sourceState="shown" />
+
+<Heading label="Max view" level={ 2 } />
+
+<Canvas of={ DatepickerStories.MaxView } sourceState="shown" />
+
+<Heading label="Min view" level={ 2 } />
+
+<Canvas of={ DatepickerStories.MinView } sourceState="shown" />
+
+<Heading label="Form field" level={ 2 }>
+  <StorybookLink title={ HOME_TITLE.implementingFormGuide }>(see implementing form guide)</StorybookLink>
+</Heading>
+
+<Canvas of={ DatepickerStories.InFormField } sourceState="shown" />

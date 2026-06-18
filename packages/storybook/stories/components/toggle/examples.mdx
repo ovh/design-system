@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../../src/constants/meta';
+import * as ToggleStories from './toggle.stories';
+
+<Meta of={ ToggleStories } name="Examples" />
+
+<Banner of={ ToggleStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ ToggleStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ ToggleStories.Disabled } sourceState="shown" />
+
+<Heading label="Invalid" level={ 2 } />
+
+<Canvas of={ ToggleStories.Invalid } sourceState="shown" />
+
+<Heading label="With label" level={ 2 } />
+
+<Canvas of={ ToggleStories.WithLabel } sourceState="shown" />
+
+<Heading label="With inside labels" level={ 2 } />
+
+<Canvas of={ ToggleStories.WithLabels } sourceState="shown" />
+
+<Heading label="Form field" level={ 2 }>
+  <StorybookLink title={ HOME_TITLE.implementingFormGuide }>(see implementing form guide)</StorybookLink>
+</Heading>
+
+<Canvas of={ ToggleStories.InFormField } sourceState="shown" />

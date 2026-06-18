@@ -259,6 +259,103 @@ export const WithContent: Story = {
 };
 
 
+export const ProductDetail: Story = {
+  globals: {
+    imports: `import { Tabs, TabList, Tab, TabContent } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Tabs defaultValue="description">
+      <TabList>
+        <Tab value="description">Description</Tab>
+        <Tab value="specifications">Specifications</Tab>
+        <Tab value="reviews">Reviews</Tab>
+      </TabList>
+
+      <TabContent value="description" style={{ padding: '16px 0' }}>
+        <p>A high-performance cloud server with 32 vCPUs, 128 GB RAM, and NVMe storage.</p>
+      </TabContent>
+
+      <TabContent value="specifications" style={{ padding: '16px 0' }}>
+        <ul>
+          <li>CPU: 32 vCPUs</li>
+          <li>RAM: 128 GB DDR4</li>
+          <li>Storage: 2 × 960 GB NVMe SSD</li>
+          <li>Network: 1 Gbps</li>
+        </ul>
+      </TabContent>
+
+      <TabContent value="reviews" style={{ padding: '16px 0' }}>
+        <p>Rating: 4.8 / 5 based on 142 reviews</p>
+        <p><em>&quot;Excellent performance for our production workloads.&quot;</em> — J. Martin</p>
+      </TabContent>
+    </Tabs>
+  ),
+};
+
+
+export const ControlledWithNavigation: Story = {
+  globals: {
+    imports: `import { Tabs, TabList, Tab, TabContent } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const tabs = [
+      { value: 'account', label: 'Account' },
+      { value: 'security', label: 'Security' },
+      { value: 'notifications', label: 'Notifications' },
+      { value: 'billing', label: 'Billing' },
+    ];
+    const [active, setActive] = useState('account');
+    const currentIndex = tabs.findIndex((t) => t.value === active);
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <Tabs
+          value={ active }
+          onValueChange={ (e: TabsValueChangeEvent) => setActive(e.value) }>
+          <TabList>
+            { tabs.map((tab) => (
+              <Tab key={ tab.value } value={ tab.value }>
+                { tab.label }
+              </Tab>
+            )) }
+          </TabList>
+
+          { tabs.map((tab) => (
+            <TabContent
+              key={ tab.value }
+              style={{ padding: '16px 0' }}
+              value={ tab.value }>
+              <p>{ tab.label } settings</p>
+            </TabContent>
+          )) }
+        </Tabs>
+
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <button
+            disabled={ currentIndex === 0 }
+            onClick={ () => setActive(tabs[currentIndex - 1].value) }>
+            ← Previous
+          </button>
+
+          <button
+            disabled={ currentIndex === tabs.length - 1 }
+            onClick={ () => setActive(tabs[currentIndex + 1].value) }>
+            Next →
+          </button>
+        </div>
+      </div>
+    );
+  },
+};
+
 export const ThemeGenerator: Story = {
   parameters: {
     layout: 'fullscreen',

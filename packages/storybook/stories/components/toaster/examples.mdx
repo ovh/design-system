@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import * as ToasterStories from './toaster.stories';
+
+<Meta of={ ToasterStories } name="Examples" />
+
+<Banner of={ ToasterStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ ToasterStories.Default } sourceState="shown" />
+
+<Heading label="Colors" level={ 2 } />
+
+<Canvas of={ ToasterStories.Colors } sourceState="shown" />
+
+<Heading label="Dismissible" level={ 2 } />
+
+<Canvas of={ ToasterStories.Dismissible } sourceState="shown" />
+
+<Heading label="Duration" level={ 2 } />
+
+<Canvas of={ ToasterStories.Duration } sourceState="shown" />
+
+<Heading label="Icon" level={ 2 } />
+
+<Canvas of={ ToasterStories.Icon } sourceState="shown" />
+
+<Heading label="Position" level={ 2 } />
+
+<Canvas of={ ToasterStories.Position } sourceState="shown" />
+
+<Heading label="Custom Content" level={ 2 } />
+
+<Canvas of={ ToasterStories.CustomContent } sourceState="shown" />

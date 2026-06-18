@@ -1,0 +1,21 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import * as LogoStories from './logo.stories';
+
+<Meta of={ LogoStories } name="Examples" />
+
+<Banner of={ LogoStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ LogoStories.Default } sourceState="shown" />
+
+<Heading label="Size" level={ 2 } />
+
+<Canvas of={ LogoStories.Size } sourceState="shown" />
+
+<Heading label="Variant" level={ 2 } />
+
+<Canvas of={ LogoStories.Variant } sourceState="shown" />

@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../../src/constants/meta';
+import * as TextareaStories from './textarea.stories';
+
+<Meta of={ TextareaStories } name="Examples" />
+
+<Banner of={ TextareaStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ TextareaStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ TextareaStories.Disabled } sourceState="shown" />
+
+<Heading label="Readonly" level={ 2 } />
+
+<Canvas of={ TextareaStories.ReadOnly } sourceState="shown" />
+
+<Heading label="Resizable" level={ 2 } />
+
+<Canvas of={ TextareaStories.Resizable } sourceState="shown" />
+
+<Heading label="Form field" level={ 2 }>
+  <StorybookLink title={ HOME_TITLE.implementingFormGuide }>(see implementing form guide)</StorybookLink>
+</Heading>
+
+<Canvas of={ TextareaStories.InFormField } sourceState="shown" />

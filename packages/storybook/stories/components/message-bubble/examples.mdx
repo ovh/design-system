@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import * as MessageBubbleStories from './message-bubble.stories';
+
+<Meta of={ MessageBubbleStories } name="Examples" />
+
+<Banner of={ MessageBubbleStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ MessageBubbleStories.Default } sourceState="shown" />
+
+<Heading label="Variant" level={ 2 } />
+
+<Canvas of={ MessageBubbleStories.Variant } sourceState="shown" />
+
+<Heading label="Error" level={ 2 } />
+
+<Canvas of={ MessageBubbleStories.Error } sourceState="shown" />
+
+<Heading label="Typing" level={ 2 } />
+
+<Canvas of={ MessageBubbleStories.Typing } sourceState="shown" />

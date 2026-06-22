@@ -6,6 +6,8 @@ React Components
 
 ---
 
+UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
+
 ## Anatomy
 
 ---
@@ -17,6 +19,8 @@ TimepickerControl
 TimepickerTimezoneList
 
 ---
+
+UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
 
 ## Timepicker
 
@@ -192,54 +196,36 @@ withSeconds
 UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'column',
-    gap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Timepicker disabled>
-        <TimepickerControl />
-      </Timepicker>
-      <Timepicker disabled>
-        <TimepickerControl />
-        <TimepickerTimezoneList />
-      </Timepicker>
-    </>
-}
+<>
+  <Timepicker disabled>
+    <TimepickerControl />
+  </Timepicker>
+  <Timepicker disabled>
+    <TimepickerControl />
+    <TimepickerTimezoneList />
+  </Timepicker>
+</>
 ```
 
 ### Readonly
 
+UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'column',
-    gap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Timepicker readOnly>
-        <TimepickerControl />
-      </Timepicker>
-      <Timepicker readOnly>
-        <TimepickerControl />
-        <TimepickerTimezoneList />
-      </Timepicker>
-    </>
-}
+<>
+  <Timepicker readOnly>
+    <TimepickerControl />
+  </Timepicker>
+  <Timepicker readOnly>
+    <TimepickerControl />
+    <TimepickerTimezoneList />
+  </Timepicker>
+</>
 ```
 
 ### With seconds
+
+UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
 
 ```jsx
 {
@@ -272,48 +258,49 @@ By default, the list use the `all` preset that displays all supported timezones.
 
 For further explanation about timezone strategy, see .
 
+All timezones
+
+UTC-12UTC-11UTC-10UTC-9UTC-8UTC-7UTC-6UTC-5UTC-4UTC-3UTC-2UTC-1UTC+0UTC+1UTC+2UTC+3UTC+4UTC+5UTC+6UTC+7UTC+8UTC+9UTC+10UTC+11UTC+12
+
+Subset of timezone
+
+UTC-10UTC+0UTC+10
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'column',
-    gap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <span>All timezones</span>
-      <Timepicker>
-        <TimepickerControl />
-        <TimepickerTimezoneList />
-      </Timepicker>
-      <span>Subset of timezone</span>
-      <Timepicker timezones={['UTC-10', 'UTC+0', 'UTC+10']}>
-        <TimepickerControl />
-        <TimepickerTimezoneList />
-      </Timepicker>
-    </>
-}
+<>
+  <span>
+    All timezones  </span>
+  <Timepicker>
+    <TimepickerControl />
+    <TimepickerTimezoneList />
+  </Timepicker>
+  <span>
+    Subset of timezone  </span>
+  <Timepicker
+    timezones={[
+      'UTC-10',
+      'UTC+0',
+      'UTC+10'
+    ]}
+  >
+    <TimepickerControl />
+    <TimepickerTimezoneList />
+  </Timepicker>
+</>
 ```
 
 ### Form field
 
+Timepicker:
+
 ```jsx
-{
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Timepicker, TimepickerControl, TimepickerTimezoneList } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Timepicker:      </FormFieldLabel>
-      <Timepicker>
-        <TimepickerControl />
-      </Timepicker>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Timepicker:  </FormFieldLabel>
+  <Timepicker>
+    <TimepickerControl />
+  </Timepicker>
+</FormField>
 ```
 
 ## Recipes

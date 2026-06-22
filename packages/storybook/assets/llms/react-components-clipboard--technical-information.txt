@@ -106,46 +106,31 @@ labelCopySuccess
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Clipboard value="Clipboard">
-      <ClipboardControl />
-      <ClipboardTrigger />
-    </Clipboard>
-}
+<Clipboard value="Clipboard">
+  <ClipboardControl />
+  <ClipboardTrigger />
+</Clipboard>
 ```
 
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Clipboard value="Disabled" disabled>
-      <ClipboardControl />
-      <ClipboardTrigger />
-    </Clipboard>
-}
+<Clipboard
+  disabled
+  value="Disabled"
+>
+  <ClipboardControl />
+  <ClipboardTrigger />
+</Clipboard>
 ```
 
 ### Loading
 
 ```jsx
-{
-  globals: {
-    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Clipboard value="Loading">
-      <ClipboardControl loading />
-      <ClipboardTrigger />
-    </Clipboard>
-}
+<Clipboard value="Loading">
+  <ClipboardControl loading />
+  <ClipboardTrigger />
+</Clipboard>
 ```
 
 ### Masked
@@ -186,7 +171,7 @@ labelCopySuccess
 
 Chat
 
-Assistant2:58 PM
+Assistant2:36 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 

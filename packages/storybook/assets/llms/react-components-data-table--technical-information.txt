@@ -20,6 +20,54 @@ DataTableHead
 
 ---
 
+| 
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+Email
+
+ | 
+
+Role
+
+ |
+| --- | --- | --- | --- | --- |
+| John | Doe | 30 | john.doe@example.com | Admin |
+| Jane | Smith | 25 | jane.smith@example.com | User |
+| Bob | Johnson | 35 | bob.johnson@example.com | Manager |
+
+| 
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+Email
+
+ | 
+
+Role
+
+ |
+| --- | --- | --- | --- | --- |
+| Empty table data |
+
 ## DataTable
 
 ---
@@ -315,9 +363,61 @@ If you want to disabled sorting for the whole table, you can set the DataTable `
 
 If you want to disabled sorting for some specific column, you can set `enableSorting` to `false` in the columns definition.
 
+Sort disabled on some columns
+| 
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+Email
+
+ | 
+
+Role
+
+ |
+| --- | --- | --- | --- | --- |
+| John | Doe | 30 | john.doe@domain2.com | Admin |
+| Jane | Smith | 25 | jane.smith@domain1.com | User |
+| Bob | Johnson | 35 | bob.johnson@domain3.com | Manager |
+
 #### Custom sorting
 
 By default, columns will be sorted alphanumerically. You can add more control on how each column should be sorted, by defining a `sortingFn` on the column definition.
+
+Email sorted by domain
+| 
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+Email
+
+ | 
+
+Role
+
+ |
+| --- | --- | --- | --- | --- |
+| John | Doe | 30 | john.doe@domain2.com | Admin |
+| Jane | Smith | 25 | jane.smith@domain1.com | User |
+| Bob | Johnson | 35 | bob.johnson@domain3.com | Manager |
 
 #### Controlled sorting
 

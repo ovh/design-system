@@ -16,6 +16,8 @@ MessageBubble
 
 ---
 
+Hello, how can I help you?
+
 ## MessageBubble
 
 ---
@@ -83,15 +85,12 @@ variant
 
 ### Default
 
+Hello, how can I help you?
+
 ```jsx
-{
-  globals: {
-    imports: `import { MessageBubble } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <MessageBubble>
-      Hello, how can I help you?    </MessageBubble>
-}
+<MessageBubble>
+  Hello, how can I help you?
+</MessageBubble>
 ```
 
 ### Variant
@@ -101,51 +100,28 @@ This is a human message
 This is an AI message
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { MESSAGE_BUBBLE_VARIANT, MessageBubble } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <MessageBubble variant={MESSAGE_BUBBLE_VARIANT.human}>
-        This is a human message      </MessageBubble>
-      <MessageBubble variant={MESSAGE_BUBBLE_VARIANT.ai}>
-        This is an AI message      </MessageBubble>
-    </>
-}
+<>
+  <MessageBubble variant="human">
+    This is a human message  </MessageBubble>
+  <MessageBubble variant="ai">
+    This is an AI message  </MessageBubble>
+</>
 ```
 
 ### Error
 
+An error occurred while generating the response.
+
 ```jsx
-{
-  globals: {
-    imports: `import { MessageBubble } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <MessageBubble error>
-      An error occurred while generating the response.    </MessageBubble>
-}
+<MessageBubble error>
+  An error occurred while generating the response.
+</MessageBubble>
 ```
 
 ### Typing
 
 ```jsx
-{
-  globals: {
-    imports: `import { MessageBubble } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered'
-  },
-  render: ({}) => <MessageBubble typing />
-}
+<MessageBubble typing />
 ```
 
 ## Recipes
@@ -154,6 +130,6 @@ This is an AI message
 
 Chat
 
-Assistant2:58 PM
+Assistant2:36 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.

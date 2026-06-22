@@ -18,18 +18,6 @@ ComboboxControl
 
 ---
 
-Dog
-
-Cat
-
-Hamster
-
-Parrot
-
-Spider
-
-Goldfish
-
 ## Combobox
 
 ---
@@ -292,34 +280,40 @@ placeholder
 ### Clearable
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }, {
-    label: 'Hamster',
-    value: 'hamster'
-  }, {
-    label: 'Parrot',
-    value: 'parrot'
-  }, {
-    label: 'Spider',
-    value: 'spider'
-  }, {
-    label: 'Goldfish',
-    value: 'goldfish'
-  }]}>
-      <ComboboxControl clearable placeholder="Combobox" />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <ComboboxControl
+    clearable
+    placeholder="Combobox"
+  />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Disabled
@@ -433,22 +427,22 @@ placeholder
 ### Invalid
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox invalid items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }]}>
-      <ComboboxControl />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox
+  invalid
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    }
+  ]}
+>
+  <ComboboxControl />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Controlled
@@ -621,16 +615,10 @@ type MyData = {
 ### Empty
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox items={[]}>
-      <ComboboxControl />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox items={[]}>
+  <ComboboxControl />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Multiple

@@ -237,91 +237,95 @@ const [isOpen, setIsOpen] = useState(false);
 ### Grid
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gridTemplateRows: 'repeat(3, 1fr)',
-    gap: '20px',
-    padding: '50px 150px'
-  }}>
-      {story()}
-    </div>],
-  globals: {
-    imports: `import { Popover, PopoverContent, PopoverTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Popover overlayConfig={{
+<>
+  <Popover
+    overlayConfig={{
       position: 'top-start'
-    }}>
-        <PopoverTrigger>
-          Top Left        </PopoverTrigger>
-        <PopoverContent withArrow>
-          Top Left popover        </PopoverContent>
-      </Popover>
-      <Popover overlayConfig={{
+    }}
+  >
+    <PopoverTrigger>
+      Top Left    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Top Left popover    </PopoverContent>
+  </Popover>
+  <Popover
+    overlayConfig={{
       position: 'top'
-    }}>
-        <PopoverTrigger>
-          Top        </PopoverTrigger>
-        <PopoverContent withArrow>
-          Top popover        </PopoverContent>
-      </Popover>
-      <Popover overlayConfig={{
+    }}
+  >
+    <PopoverTrigger>
+      Top    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Top popover    </PopoverContent>
+  </Popover>
+  <Popover
+    overlayConfig={{
       position: 'top-end'
-    }}>
-        <PopoverTrigger>
-          Top Right        </PopoverTrigger>
-        <PopoverContent withArrow>
-          Top Right popover        </PopoverContent>
-      </Popover>
-      <Popover overlayConfig={{
+    }}
+  >
+    <PopoverTrigger>
+      Top Right    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Top Right popover    </PopoverContent>
+  </Popover>
+  <Popover
+    overlayConfig={{
       position: 'left'
-    }}>
-        <PopoverTrigger>
-          Middle Left        </PopoverTrigger>
-        <PopoverContent withArrow>
-          Middle Left popover        </PopoverContent>
-      </Popover>
-      <div />
-      <Popover overlayConfig={{
+    }}
+  >
+    <PopoverTrigger>
+      Middle Left    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Middle Left popover    </PopoverContent>
+  </Popover>
+  <div />
+  <Popover
+    overlayConfig={{
       position: 'right'
-    }}>
-        <PopoverTrigger>
-          Middle Right        </PopoverTrigger>
-        <PopoverContent withArrow>
-          Middle Right popover        </PopoverContent>
-      </Popover>
-      <Popover overlayConfig={{
+    }}
+  >
+    <PopoverTrigger>
+      Middle Right    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Middle Right popover    </PopoverContent>
+  </Popover>
+  <Popover
+    overlayConfig={{
       position: 'bottom-start'
-    }}>
-        <PopoverTrigger>
-          Bottom Left        </PopoverTrigger>
-        <PopoverContent withArrow>
-          Bottom Left popover        </PopoverContent>
-      </Popover>
-      <Popover overlayConfig={{
+    }}
+  >
+    <PopoverTrigger>
+      Bottom Left    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Bottom Left popover    </PopoverContent>
+  </Popover>
+  <Popover
+    overlayConfig={{
       position: 'bottom'
-    }}>
-        <PopoverTrigger>
-          Bottom        </PopoverTrigger>
-        <PopoverContent withArrow>
-          Bottom popover        </PopoverContent>
-      </Popover>
-      <Popover overlayConfig={{
+    }}
+  >
+    <PopoverTrigger>
+      Bottom    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Bottom popover    </PopoverContent>
+  </Popover>
+  <Popover
+    overlayConfig={{
       position: 'bottom-end'
-    }}>
-        <PopoverTrigger>
-          Bottom Right        </PopoverTrigger>
-        <PopoverContent withArrow>
-          Bottom Right popover        </PopoverContent>
-      </Popover>
-    </>
-}
+    }}
+  >
+    <PopoverTrigger>
+      Bottom Right    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Bottom Right popover    </PopoverContent>
+  </Popover>
+</>
 ```
 
 ### Z index
+
+Default Z-axis order:  
+Custom Z-axis order:
 
 ```jsx
 {

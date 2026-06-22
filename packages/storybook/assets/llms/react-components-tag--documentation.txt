@@ -141,20 +141,23 @@ This allows screen readers to announce a list with the number of items, making i
 When modifying the HTML structure is not possible, use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [role="listitem"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) to mimic list semantics.
 
 ```jsx
-<div role="list">
-  <div role="listitem">
-    <Tag>
-      Design    </Tag>
-  </div>
-  <div role="listitem">
-    <Tag>
-      Development    </Tag>
-  </div>
-  <div role="listitem">
-    <Tag>
-      Accessibility    </Tag>
-  </div>
-</div>
+{
+  globals: {
+    imports: `import { Tag } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <div role="list">
+      <div role="listitem">
+        <Tag>Design</Tag>
+      </div>
+      <div role="listitem">
+        <Tag>Development</Tag>
+      </div>
+      <div role="listitem">
+        <Tag>Accessibility</Tag>
+      </div>
+    </div>
+}
 ```
 
 This ensures that screen readers still recognize the **Tags** as a structured list, even without native `<ul>` and `<li>` elements.

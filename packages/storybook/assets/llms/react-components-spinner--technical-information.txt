@@ -69,18 +69,12 @@ size
 ### Size
 
 ```jsx
-{
-  globals: {
-    imports: `import { SPINNER_SIZE, Spinner } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Spinner size={SPINNER_SIZE.xs} />
-      <Spinner size={SPINNER_SIZE.sm} />
-      <Spinner size={SPINNER_SIZE.md} />
-      <Spinner size={SPINNER_SIZE.lg} />
-    </>
-}
+<>
+  <Spinner size="xs" />
+  <Spinner size="sm" />
+  <Spinner size="md" />
+  <Spinner size="lg" />
+</>
 ```
 
 ## Recipes

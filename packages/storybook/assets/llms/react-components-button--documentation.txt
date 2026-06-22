@@ -121,9 +121,14 @@ This component complies with the [Button WAI-ARIA design pattern](https://www.w3
 **Button** should always have a clear and descriptive text content to indicate their purpose.
 
 ```jsx
-<Button>
-  Clear
-</Button>
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button>
+      Clear    </Button>
+}
 ```
 
 Screen readers will announce the text content.
@@ -144,16 +149,25 @@ Screen readers will announce the label.
 
 When a **Button** is associated with an existing label, content is read by screen readers when the **Button** receives focus.
 
-Filter your search results
-
 ```jsx
-<>
-  <Button aria-labelledby="filter-btn">
-    <Icon name="filter" />
-  </Button>
-  <span id="filter-btn">
-    Filter your search results  </span>
-</>
+{
+  decorators: [story => <div style={{
+    display: 'flex',
+    flexFlow: 'row',
+    gap: '8px',
+    alignItems: 'center'
+  }}>{story()}</div>],
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <Button aria-labelledby="filter-btn">
+        <Icon name={ICON_NAME.filter} />
+      </Button>
+      <span id="filter-btn">Filter your search results</span>
+    </>
+}
 ```
 
 When the **Button** is focused, the screen reader will announce the linked label.

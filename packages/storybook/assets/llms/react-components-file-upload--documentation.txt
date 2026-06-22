@@ -181,8 +181,6 @@ Screen readers will announce the label, the field and its content.
 
 The `Cancel` and `Delete` file buttons have to be explicit by adding context about their action and the file name.
 
-Drag & drop a file 
-
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
   return <FileUpload onFileAccept={({

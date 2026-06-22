@@ -112,11 +112,17 @@ Every **Input** must have a clear and explicit label to ensure that users (espec
 Name:
 
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Name:  </FormFieldLabel>
-  <Input />
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Name:      </FormFieldLabel>
+      <Input />
+    </FormField>
+}
 ```
 
 Screen readers will announce the label, the field and its content.

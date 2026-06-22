@@ -2,8 +2,6 @@ React Components
 
 # File Thumbnail
 
-foo.txt3 byte
-
 ## Overview
 
 ---

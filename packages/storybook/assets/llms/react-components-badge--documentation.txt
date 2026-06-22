@@ -4,8 +4,6 @@ React Components
 
 _**Badge** show concise metadata or the current status for an item, in a compact format._
 
-Badge
-
 ## Overview
 
 ---
@@ -127,13 +125,15 @@ The accessibility of multiple **Badges** presented as a collection must be consi
 If a **Badge** contains only an icon, it must include an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to provide context.
 
 ```jsx
-<Badge>
-  <Icon
-    aria-label="Promotion"
-    name="tag"
-    role="img"
-  />
-</Badge>
+{
+  globals: {
+    imports: `import { ICON_NAME, Badge, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Badge>
+      <Icon aria-label="Promotion" name={ICON_NAME.tag} role="img" />
+    </Badge>
+}
 ```
 
 Screen readers will announce the aria-label instead of ignoring the **Badge**.
@@ -141,18 +141,21 @@ Screen readers will announce the aria-label instead of ignoring the **Badge**.
 Since an icon-only **Badge** may lack detailed information, attach a tooltip and use an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) when extra context is needed:
 
 ```jsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <Badge
-      aria-labelledby="tooltip-a11y"
-      color="promotion"
-    >
-      <Icon name="tag" />
-    </Badge>
-  </TooltipTrigger>
-  <TooltipContent id="tooltip-a11y">
-    Promotion valid from November 22 to 26  </TooltipContent>
-</Tooltip>
+{
+  globals: {
+    imports: `import { BADGE_COLOR, ICON_NAME, Badge, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Tooltip>
+      <TooltipTrigger asChild>
+        <Badge aria-labelledby="tooltip-a11y" color={BADGE_COLOR.promotion}>
+          <Icon name={ICON_NAME.tag} />
+        </Badge>
+      </TooltipTrigger>
+      <TooltipContent id="tooltip-a11y">
+        Promotion valid from November 22 to 26      </TooltipContent>
+    </Tooltip>
+}
 ```
 
 Screen readers will announce the **Tooltip** content when focusing on the **Badge**.
@@ -165,25 +168,29 @@ When displaying multiple **Badges** together, they should be wrapped within an u
 -   Item 2
 
 ```jsx
-<ul
-  style={{
+{
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <ul style={{
     display: 'flex',
     flexFlow: 'row',
     gap: '8px',
-    listStyle: 'none',
     margin: 0,
-    padding: 0
-  }}
->
-  <li>
-    <Badge>
-      Item 1    </Badge>
-  </li>
-  <li>
-    <Badge>
-      Item 2    </Badge>
-  </li>
-</ul>
+    padding: 0,
+    listStyle: 'none'
+  }}>
+      <li>
+        <Badge>
+          Item 1        </Badge>
+      </li>
+      <li>
+        <Badge>
+          Item 2        </Badge>
+      </li>
+    </ul>
+}
 ```
 
 This structure ensures that assistive technologies announce **Badges** as a list, rather than reading them as separate, unrelated announcements. Screen readers will announce the list, the number of items and the **Badges** content.
@@ -192,23 +199,24 @@ This structure ensures that assistive technologies announce **Badges** as a list
 
 When modifying the HTML structure is not possible, use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [role="listitem"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) to mimic list semantics.
 
-Item 1Item 2
-
 ```jsx
-<div
-  role="list"
-  style={{
-    alignItems: 'center',
+{
+  globals: {
+    imports: `import { Badge } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <div role="list" style={{
     display: 'flex',
     flexFlow: 'row',
-    gap: '8px'
-  }}
->
-  <Badge role="listitem">
-    Item 1  </Badge>
-  <Badge role="listitem">
-    Item 2  </Badge>
-</div>
+    gap: '8px',
+    alignItems: 'center'
+  }}>
+      <Badge role="listitem">
+        Item 1      </Badge>
+      <Badge role="listitem">
+        Item 2      </Badge>
+    </div>
+}
 ```
 
 This ensures that screen readers recognize the **Badges** as a structured list even without native `<ul>` and `<li>` elements.

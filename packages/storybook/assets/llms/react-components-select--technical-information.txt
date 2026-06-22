@@ -6,6 +6,8 @@ React Components
 
 ---
 
+DogCatHamsterParrotSpiderGoldfish
+
 ## Anatomy
 
 ---
@@ -308,6 +310,14 @@ placeholder
 
 ### Multiple Selection
 
+Default multiple selection
+
+DogCatHamsterParrotSpiderGoldfish
+
+Merged multiple selection
+
+DogCatHamsterParrotSpiderGoldfish
+
 ```jsx
 {
   decorators: [story => <div style={{
@@ -489,6 +499,8 @@ placeholder
 
 ### Readonly
 
+DogCatHamsterParrotSpiderGoldfish
+
 ```jsx
 {
   globals: {
@@ -521,6 +533,8 @@ placeholder
 ```
 
 ### Custom Renderer
+
+OVH CloudAmazon Web ServicesMicrosoft AzureGoogle Cloud Platform
 
 ```jsx
 type CustomData = {

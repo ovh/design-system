@@ -14,6 +14,8 @@ Text
 
 ---
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
 ## Text
 
 ---
@@ -79,6 +81,29 @@ preset
 
 For actual `<caption>` (used in a table) or `<figcaption>` (image), use the native tag using either an OdsText inside of it or the Saas mixin.
 
+> Blockquote
+
+Caption  
+`Code`  
+Label
+
+Paragraph
+
+Small  
+Span  
+
+# Heading-1
+
+## Heading-2
+
+### Heading-3
+
+#### Heading-4
+
+##### Heading-5
+
+###### Heading-6
+
 ```jsx
 {
   globals: {
@@ -105,15 +130,12 @@ For actual `<caption>` (used in a table) or `<figcaption>` (image), use the nati
 
 ### Disabled
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
 ```jsx
-{
-  globals: {
-    imports: `import { Text } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Text disabled>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.    </Text>
-}
+<Text disabled>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</Text>
 ```
 
 ### Caption preset in <table>
@@ -152,35 +174,35 @@ For actual `<caption>` (used in a table) or `<figcaption>` (image), use the nati
 
 ### Caption preset in <figcaption>
 
+My picture title
+
 ```jsx
-{
-  globals: {
-    imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <figure>
-      <img alt="OVHcloud logo" src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4" style={{
+<figure>
+  <img
+    alt="OVHcloud logo"
+    src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4"
+    style={{
       height: '100px'
-    }} />
-      <figcaption>
-        <Text preset={TEXT_PRESET.caption}>
-          My picture title        </Text>
-      </figcaption>
-    </figure>
-}
+    }}
+  />
+  <figcaption>
+    <Text preset="caption">
+      My picture title    </Text>
+  </figcaption>
+</figure>
 ```
 
 ### Preset style on a different HTML element
 
+I am a <span> using the heading5 preset style.
+
 ```jsx
-{
-  globals: {
-    imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Text as="span" preset={TEXT_PRESET.heading5}>
-      I am a &lt;span&gt; using the heading5 preset style.    </Text>
-}
+<Text
+  as="span"
+  preset="heading-5"
+>
+  {`I am a <span> using the heading5 preset style.`}
+</Text>
 ```
 
 ## Recipes
@@ -189,7 +211,7 @@ For actual `<caption>` (used in a table) or `<figcaption>` (image), use the nati
 
 Chat
 
-Assistant2:59 PM
+Assistant2:36 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 

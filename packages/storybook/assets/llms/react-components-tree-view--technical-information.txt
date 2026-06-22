@@ -6,6 +6,22 @@ React Components
 
 ---
 
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
+
 ## Anatomy
 
 ---
@@ -17,6 +33,22 @@ TreeViewNode
 TreeViewNodes
 
 ---
+
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
 
 ## TreeView
 
@@ -191,6 +223,22 @@ This component has no specific properties.
 
 ### Multiple
 
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
+
 ```jsx
 const items = [{
     id: 'src',
@@ -266,22 +314,6 @@ const items = [{
 ```
 
 ### Custom render
-
-src
-
-app.tsx
-
-index.ts
-
-components
-
-Button.tsx
-
-Card.tsx
-
-package.json
-
-README.md
 
 ```jsx
 const items = [{
@@ -371,6 +403,24 @@ const items = [{
 
 ### Controlled
 
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
+
+Selected: package.json
+
 ```jsx
 const items = [{
     id: 'src',
@@ -459,6 +509,22 @@ const items = [{
 
 ### Disabled items
 
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
+
 ```jsx
 const items = [{
     id: 'src',
@@ -500,6 +566,24 @@ const items = [{
 ```
 
 ### In form field
+
+Choose a file
+
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
 
 ```jsx
 const items = [{

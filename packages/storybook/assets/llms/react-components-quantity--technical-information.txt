@@ -112,117 +112,77 @@ value
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Quantity>
-      <QuantityControl>
-        <QuantityInput />
-      </QuantityControl>
-    </Quantity>
-}
+<Quantity>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
 ```
 
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Quantity disabled>
-      <QuantityControl>
-        <QuantityInput />
-      </QuantityControl>
-    </Quantity>
-}
+<Quantity disabled>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
 ```
 
 ### Readonly
 
 ```jsx
-{
-  globals: {
-    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Quantity readOnly>
-      <QuantityControl>
-        <QuantityInput />
-      </QuantityControl>
-    </Quantity>
-}
+<Quantity readOnly>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
 ```
 
 ### Max
 
 ```jsx
-{
-  globals: {
-    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Quantity max={10}>
-      <QuantityControl>
-        <QuantityInput />
-      </QuantityControl>
-    </Quantity>
-}
+<Quantity max={10}>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
 ```
 
 ### Min
 
 ```jsx
-{
-  globals: {
-    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Quantity min={0}>
-      <QuantityControl>
-        <QuantityInput />
-      </QuantityControl>
-    </Quantity>
-}
+<Quantity min={0}>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
 ```
 
 ### Step
 
 ```jsx
-{
-  globals: {
-    imports: `import { Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Quantity step={10}>
-      <QuantityControl>
-        <QuantityInput />
-      </QuantityControl>
-    </Quantity>
-}
+<Quantity step={10}>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
 ```
 
 ### Form field
 
+Set a quantity:
+
 ```jsx
-{
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Quantity, QuantityControl, QuantityInput } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Set a quantity:      </FormFieldLabel>
-      <Quantity>
-        <QuantityControl>
-          <QuantityInput />
-        </QuantityControl>
-      </Quantity>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Set a quantity:  </FormFieldLabel>
+  <Quantity>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+</FormField>
 ```
 
 ## Recipes

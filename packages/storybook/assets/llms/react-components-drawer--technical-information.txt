@@ -20,6 +20,8 @@ DrawerTrigger
 
 ---
 
+My drawer content
+
 ## Drawer
 
 ---
@@ -155,60 +157,48 @@ asChild
 ### Position
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    alignItems: 'center',
-    gap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { DRAWER_POSITION, Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-    <Drawer>
-      <DrawerTrigger asChild>
-        <Button>
-          Top drawer        </Button>
-      </DrawerTrigger>
-      <DrawerContent position={DRAWER_POSITION.top}>
-        <DrawerBody>
-          Top drawer content        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-   <Drawer>
-      <DrawerTrigger asChild>
-        <Button>
-          Left drawer        </Button>
-      </DrawerTrigger>
-      <DrawerContent position={DRAWER_POSITION.left}>
-        <DrawerBody>
-          Left drawer content        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-   <Drawer>
-      <DrawerTrigger asChild>
-        <Button>
-          Right Drawer        </Button>
-      </DrawerTrigger>
-      <DrawerContent position={DRAWER_POSITION.right}>
-        <DrawerBody>
-          Right drawer content        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-   <Drawer>
-      <DrawerTrigger asChild>
-        <Button>
-          Bottom Drawer        </Button>
-      </DrawerTrigger>
-      <DrawerContent position={DRAWER_POSITION.bottom}>
-        <DrawerBody>
-          Bottom drawer content        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-    </>
-}
+<>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Top drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="top">
+      <DrawerBody>
+        Top drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Left drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="left">
+      <DrawerBody>
+        Left drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Right Drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="right">
+      <DrawerBody>
+        Right drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Bottom Drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="bottom">
+      <DrawerBody>
+        Bottom drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+</>
 ```
 
 ### Overlay Elements

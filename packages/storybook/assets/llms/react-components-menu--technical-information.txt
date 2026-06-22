@@ -26,6 +26,14 @@ MenuTrigger
 
 ---
 
+My account
+
+Profile
+
+Settings
+
+Logout
+
 ## Menu
 
 ---
@@ -233,52 +241,52 @@ const [isOpen, setIsOpen] = useState(false);
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Menu>
-      <MenuTrigger asChild>
-        <Button>
-          Open menu        </Button>
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItem value="profile">Profile</MenuItem>
-        <MenuItem disabled value="settings">Settings</MenuItem>
-        <MenuItem value="logout">Logout</MenuItem>
-      </MenuContent>
-    </Menu>
-}
+<Menu>
+  <MenuTrigger asChild>
+    <Button>
+      Open menu    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem value="profile">
+      Profile    </MenuItem>
+    <MenuItem
+      disabled
+      value="settings"
+    >
+      Settings    </MenuItem>
+    <MenuItem value="logout">
+      Logout    </MenuItem>
+  </MenuContent>
+</Menu>
 ```
 
 ### Group
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Menu, MenuContent, MenuGroup, MenuGroupLabel, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Menu>
-      <MenuTrigger asChild>
-        <Button>
-          Open menu        </Button>
-      </MenuTrigger>
-      <MenuContent>
-        <MenuGroup>
-          <MenuGroupLabel>Account</MenuGroupLabel>
-          <MenuItem value='profile'>Profile</MenuItem>
-          <MenuItem value='billing'>Billing</MenuItem>
-        </MenuGroup>
-        <MenuGroup>
-          <MenuGroupLabel>Support</MenuGroupLabel>
-          <MenuItem value='help'>Help center</MenuItem>
-          <MenuItem value='contact'>Contact support</MenuItem>
-        </MenuGroup>
-      </MenuContent>
-    </Menu>
-}
+<Menu>
+  <MenuTrigger asChild>
+    <Button>
+      Open menu    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuGroup>
+      <MenuGroupLabel>
+        Account      </MenuGroupLabel>
+      <MenuItem value="profile">
+        Profile      </MenuItem>
+      <MenuItem value="billing">
+        Billing      </MenuItem>
+    </MenuGroup>
+    <MenuGroup>
+      <MenuGroupLabel>
+        Support      </MenuGroupLabel>
+      <MenuItem value="help">
+        Help center      </MenuItem>
+      <MenuItem value="contact">
+        Contact support      </MenuItem>
+    </MenuGroup>
+  </MenuContent>
+</Menu>
 ```
 
 ### Nested

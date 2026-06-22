@@ -8,7 +8,8 @@ const EXCLUDED_VERSIONS = ['16.0.0'];
 
 async function getVersions() {
   try {
-    const data = await fetch(`https://registry.npmjs.org/@ovhcloud/ods-storybook`).then(r => r.json());
+    const registry = (process.env.npm_config_registry || 'https://registry.npmjs.org').replace(/\/$/, '');
+    const data = await fetch(`${registry}/@ovhcloud/ods-storybook`).then(r => r.json());
 
     if (!data || !data.versions) {
       return [];
@@ -26,6 +27,7 @@ async function getVersions() {
       .filter((version) => version === currentVersion || !/-alpha\.\d+$/gi.test(version));
   } catch(error) {
     console.error('Something went wrong while fetching release version on npm', error);
+    return [currentVersion];
   }
 }
 

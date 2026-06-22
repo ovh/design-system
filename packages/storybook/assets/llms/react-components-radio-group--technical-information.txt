@@ -6,6 +6,12 @@ React Components
 
 ---
 
+HTML
+
+CSS
+
+JavaScript
+
 ## Anatomy
 
 ---
@@ -19,6 +25,12 @@ RadioControl
 RadioLabel
 
 ---
+
+HTML
+
+CSS
+
+JavaScript
 
 ## RadioGroup
 
@@ -114,100 +126,121 @@ value
 
 ### Default
 
+HTML
+
+CSS
+
+JavaScript
+
 ```jsx
-{
-  globals: {
-    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <RadioGroup>
-      <Radio value="html">
-        <RadioControl />
-        <RadioLabel>HTML</RadioLabel>
-      </Radio>
-      <Radio value="css">
-        <RadioControl />
-        <RadioLabel>CSS</RadioLabel>
-      </Radio>
-      <Radio value="js">
-        <RadioControl />
-        <RadioLabel>JavaScript</RadioLabel>
-      </Radio>
-    </RadioGroup>
-}
+<RadioGroup>
+  <Radio value="html">
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio value="css">
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
 ```
 
 ### Disabled
 
-```jsx
-{
-  globals: {
-    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <RadioGroup disabled>
-      <Radio value="html">
-        <RadioControl />
-        <RadioLabel>HTML</RadioLabel>
-      </Radio>
-      <Radio value="css">
-        <RadioControl />
-        <RadioLabel>CSS</RadioLabel>
-      </Radio>
-      <Radio value="js">
-        <RadioControl />
-        <RadioLabel>JavaScript</RadioLabel>
-      </Radio>
-    </RadioGroup>
-}
-```
+HTML
+
+CSS
+
+JavaScript
 
 ```jsx
-{
-  globals: {
-    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <RadioGroup>
-      <Radio value="html">
-        <RadioControl />
-        <RadioLabel>HTML</RadioLabel>
-      </Radio>
-      <Radio disabled value="css">
-        <RadioControl />
-        <RadioLabel>CSS</RadioLabel>
-      </Radio>
-      <Radio value="js">
-        <RadioControl />
-        <RadioLabel>JavaScript</RadioLabel>
-      </Radio>
-    </RadioGroup>
-}
+<RadioGroup disabled>
+  <Radio value="html">
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio value="css">
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+HTML
+
+CSS
+
+JavaScript
+
+```jsx
+<RadioGroup>
+  <Radio value="html">
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio
+    disabled
+    value="css"
+  >
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
 ```
 
 ### Invalid
 
+HTML
+
+CSS
+
+JavaScript
+
 ```jsx
-{
-  globals: {
-    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <RadioGroup defaultValue="html">
-      <Radio value="html" invalid>
-        <RadioControl />
-        <RadioLabel>HTML</RadioLabel>
-      </Radio>
-      <Radio invalid value="css">
-        <RadioControl />
-        <RadioLabel>CSS</RadioLabel>
-      </Radio>
-      <Radio value="js">
-        <RadioControl />
-        <RadioLabel>JavaScript</RadioLabel>
-      </Radio>
-    </RadioGroup>
-}
+<RadioGroup defaultValue="html">
+  <Radio
+    invalid
+    value="html"
+  >
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio
+    invalid
+    value="css"
+  >
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
 ```
 
 ### Orientation
@@ -219,29 +252,34 @@ CSS
 JavaScript
 
 ```jsx
-{
-  globals: {
-    imports: `import { Radio, RadioControl, RadioGroup, RadioLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <RadioGroup orientation="horizontal">
-      <Radio value="html">
-        <RadioControl />
-        <RadioLabel>HTML</RadioLabel>
-      </Radio>
-      <Radio value="css">
-        <RadioControl />
-        <RadioLabel>CSS</RadioLabel>
-      </Radio>
-      <Radio value="js">
-        <RadioControl />
-        <RadioLabel>JavaScript</RadioLabel>
-      </Radio>
-    </RadioGroup>
-}
+<RadioGroup orientation="horizontal">
+  <Radio value="html">
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio value="css">
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
 ```
 
 ### Form field
+
+Pick a language:
+
+HTML
+
+CSS
+
+JavaScript
 
 ```jsx
 {

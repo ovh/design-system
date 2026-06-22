@@ -105,12 +105,18 @@ Because the **Prompt Input** does not render a visible label by default, you mus
 Use the `aria-label` prop on `PromptInputTextControl` to give screen readers a meaningful description of the field.
 
 ```jsx
-<PromptInput>
-  <PromptInputControls>
-    <PromptInputTextControl aria-label="Ask someone about something…" />
-    <PromptInputSendButton />
-  </PromptInputControls>
-</PromptInput>
+{
+  tags: ["!dev"],
+  globals: {
+    imports: "import { PromptInput, PromptInputControls, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
+  },
+  render: ({}) => <PromptInput>
+      <PromptInputControls>
+        <PromptInputTextControl aria-label="Ask someone about something…" />
+        <PromptInputSendButton />
+      </PromptInputControls>
+    </PromptInput>
+}
 ```
 
 ### Button labelling
@@ -118,19 +124,13 @@ Use the `aria-label` prop on `PromptInputTextControl` to give screen readers a m
 -   The file upload button and the send button don't hold accessible text by default, therefore they must carry an `aria-label` (e.g. `"Attach file"`, `"Send request"`, …) to be announced correctly by assistive technologies.
 
 ```jsx
-{
-  tags: ["!dev"],
-  globals: {
-    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
-  },
-  render: ({}) => <PromptInput>
-      <PromptInputControls>
-        <PromptInputFileUploadButton aria-label="Attach file" />
-        <PromptInputTextControl aria-label="Ask someone about something…" />
-        <PromptInputSendButton aria-label="Send request" />
-      </PromptInputControls>
-    </PromptInput>
-}
+<PromptInput>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Send request" />
+  </PromptInputControls>
+</PromptInput>
 ```
 
 -   As the send button displays a loading spinner when the component is in the `loading` state, ensure the button's `aria-label` is updated to convey the loading state to users who can't rely on visual cues.

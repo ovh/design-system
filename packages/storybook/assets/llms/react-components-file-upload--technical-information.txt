@@ -6,6 +6,8 @@ React Components
 
 ---
 
+Drag & drop a file 
+
 ## Anatomy
 
 ---
@@ -209,8 +211,6 @@ uploadSuccessLabelDeprecated
 
 ### Default
 
-Drag & drop a file 
-
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
   return <FileUpload onFileAccept={({
@@ -223,8 +223,6 @@ const [files, setFiles] = useState<File[]>([]);
 ```
 
 ### Compact
-
-Drag & drop a file 
 
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
@@ -239,23 +237,18 @@ const [files, setFiles] = useState<File[]>([]);
 
 ### Disabled
 
+Drag & drop a file 
+
 ```jsx
-{
-  globals: {
-    imports: `import { FileUpload, FileUploadList } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FileUpload disabled variant={FILE_UPLOAD_VARIANT.compact}>
-      <FileUploadList />
-    </FileUpload>
-}
+<FileUpload
+  disabled
+  variant="compact"
+>
+  <FileUploadList />
+</FileUpload>
 ```
 
 ### Custom labels
-
-Nombre maximal de fichiers : 3Taille de fichier max : 524 MBFormats acceptés : images
-
-Glisser-déposer des fichiers 
 
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
@@ -312,6 +305,10 @@ const [error, setError] = useState<string>('');
 
 ### Limit the maximum size of each file
 
+No file larger than: 1 MB
+
+Drag & drop a file 
+
 ```jsx
 const [error, setError] = useState<string>('');
   const [files, setFiles] = useState<File[]>([]);  function onAccept({    files  }: FileUploadAcceptDetail): void {
@@ -330,6 +327,8 @@ const [error, setError] = useState<string>('');
 ```
 
 ### Display upload progress
+
+Drag & drop a file 
 
 ```jsx
 type MyFile = File & {
@@ -367,6 +366,10 @@ type MyFile = File & {
 ```
 
 ### Form Field
+
+Files:
+
+Drag & drop a file 
 
 ```jsx
 const [files, setFiles] = useState<File[]>([]);

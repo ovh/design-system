@@ -604,14 +604,9 @@ variant
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Button>
-      My button    </Button>
-}
+<Button>
+  My button
+</Button>
 ```
 
 ### Color
@@ -702,7 +697,7 @@ variant
 
 Chat
 
-Assistant2:58 PM
+Assistant2:36 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 

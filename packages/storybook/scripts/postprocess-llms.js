@@ -3,9 +3,7 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
 
-// TODO: Add version from lerna.json
-// const { version } = require('../../../lerna.json');
-const version = '19.7.0';
+const { version } = require('../../../lerna.json');
 
 const DIST_DIR = path.join(__dirname, '..', 'dist');
 const SUMMARY_FILENAME = 'llms.txt';

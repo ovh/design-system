@@ -138,6 +138,10 @@ const HighlightedCode = () => (
 );
 ```
 
+```
+console.log('Hello World');
+```
+
 ## Examples
 
 ---
@@ -156,32 +160,34 @@ console.log('Hello world');
 
 ### Multiline
 
+```
+function isTargetInElement(event, element) {
+  if (!element) {
+    return false;
+  }
+
+    return element.contains(event.target) || event.composedPath().includes(element);
+  }
+```
+
 ```jsx
-{
-  globals: {
-    imports: `import { Code } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Code>
-      {`function isTargetInElement(event, element) {
-  if (!element) {    return false;  }
-    return element.contains(event.target) || event.composedPath().includes(element);  }`}
-    </Code>
-}
+<Code>
+  {`function isTargetInElement(event, element) {
+    if (!element) {      return false;    }  
+      return element.contains(event.target) || event.composedPath().includes(element);    }`}
+</Code>
 ```
 
 ### With copy button enabled
 
+```
+import { Text } from '@ovhcloud/ods-react';
+```
+
 ```jsx
-{
-  globals: {
-    imports: `import { Code } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Code canCopy>
-      {`import { Text } from '@ovhcloud/ods-react';`}
-    </Code>
-}
+<Code canCopy>
+  {`import { Text } from '@ovhcloud/ods-react';`}
+</Code>
 ```
 
 ### Custom labels

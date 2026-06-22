@@ -33,54 +33,39 @@ invalid
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Textarea } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Textarea />
-}
+<Textarea />
 ```
 
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Textarea } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Textarea disabled />
-}
+<Textarea disabled />
 ```
 
 ### Readonly
 
+Readonly
+
 ```jsx
-{
-  globals: {
-    imports: `import { Textarea } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Textarea defaultValue="Readonly" readOnly />
-}
+<Textarea
+  defaultValue="Readonly"
+  readOnly
+/>
 ```
 
 ### Resizable
 
 ```jsx
-{
-  globals: {
-    imports: `import { Textarea } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Textarea style={{
+<Textarea
+  style={{
     resize: 'both'
-  }} />
-}
+  }}
+ />
 ```
 
 ### Form field
+
+Description:Helper text0/200
 
 ```jsx
 const MAX_COUNT = 200;

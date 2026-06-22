@@ -6,6 +6,9 @@ React Components
 
 ---
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
 ## Anatomy
 
 ---
@@ -78,16 +81,15 @@ color
 
 ### Default
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
 ```jsx
-{
-  globals: {
-    imports: `import { Card } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Card>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-    </Card>
-}
+<Card>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.    <br />
+    Interdum et malesuada fames ac ante ipsum primis in faucibus.  </p>
+</Card>
 ```
 
 ### Color
@@ -105,36 +107,32 @@ Success
 Warning
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    gap: '16px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { CARD_COLOR, Card } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Card color={CARD_COLOR.critical}>
-        <p>Critical</p>
-      </Card>
-      <Card color={CARD_COLOR.information}>
-        <p>Information</p>
-      </Card>
-      <Card color={CARD_COLOR.neutral}>
-        <p>Neutral</p>
-      </Card>
-      <Card color={CARD_COLOR.primary}>
-        <p>Primary</p>
-      </Card>
-      <Card color={CARD_COLOR.success}>
-        <p>Success</p>
-      </Card>
-      <Card color={CARD_COLOR.warning}>
-        <p>Warning</p>
-      </Card>
-    </>
-}
+<>
+  <Card color="critical">
+    <p>
+      Critical    </p>
+  </Card>
+  <Card color="information">
+    <p>
+      Information    </p>
+  </Card>
+  <Card color="neutral">
+    <p>
+      Neutral    </p>
+  </Card>
+  <Card color="primary">
+    <p>
+      Primary    </p>
+  </Card>
+  <Card color="success">
+    <p>
+      Success    </p>
+  </Card>
+  <Card color="warning">
+    <p>
+      Warning    </p>
+  </Card>
+</>
 ```
 
 ## Recipes

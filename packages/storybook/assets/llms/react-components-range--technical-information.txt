@@ -6,6 +6,8 @@ React Components
 
 ---
 
+0100
+
 ## Anatomy
 
 ---
@@ -133,22 +135,20 @@ value
 
 ### Default
 
+0100
+
+0100
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'column',
-    rowGap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { Range } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Range />
-      <Range defaultValue={[50, 75]} />
-    </>
-}
+<>
+  <Range />
+  <Range
+    defaultValue={[
+      50,
+      75
+    ]}
+   />
+</>
 ```
 
 ### Disabled
@@ -195,6 +195,10 @@ value
 
 ### Step
 
+0100
+
+0100
+
 ```jsx
 {
   decorators: [story => <div style={{
@@ -215,25 +219,55 @@ value
 
 ### Ticks
 
+0100
+
+0100
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'column',
-    rowGap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { Range } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Range defaultValue={[20]} ticks={[10, 20, 30, 40, 50, 60, 70, 80, 90]} />
-      <Range defaultValue={[50, 75]} ticks={[10, 20, 30, 40, 50, 60, 70, 80, 90]} />
-    </>
-}
+<>
+  <Range
+    defaultValue={[
+      20
+    ]}
+    ticks={[
+      10,
+      20,
+      30,
+      40,
+      50,
+      60,
+      70,
+      80,
+      90
+    ]}
+  />
+  <Range
+    defaultValue={[
+      50,
+      75
+    ]}
+    ticks={[
+      10,
+      20,
+      30,
+      40,
+      50,
+      60,
+      70,
+      80,
+      90
+    ]}
+  />
+</>
 ```
 
 ### Custom Ticks
+
+LowMediumHigh
+
+0100
+
+Very PoorPoorAverageGoodExcellent
 
 ```jsx
 <>
@@ -269,6 +303,11 @@ value
 ### Controlled
 
 This is a controlled component. The final value is only updated when the user releases the mouse button.
+
+Final value:  
+Dragged value:
+
+0100
 
 ```jsx
 const [draggingValue, setDraggingValue] = useState<number>();

@@ -59,21 +59,11 @@ variant
 ### Size
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'grid',
-    rowGap: '16px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { LOGO_SIZE, Logo } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Logo size={LOGO_SIZE.sm} />
-      <Logo size={LOGO_SIZE.md} />
-      <Logo size={LOGO_SIZE.lg} />
-    </>
-}
+<>
+  <Logo size="sm" />
+  <Logo size="md" />
+  <Logo size="lg" />
+</>
 ```
 
 ### Variant

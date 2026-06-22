@@ -6,6 +6,8 @@ React Components
 
 ---
 
+Double click to edit
+
 ## Anatomy
 
 ---
@@ -170,6 +172,8 @@ asChild
 
 ### Default
 
+Double click to edit
+
 ```jsx
 const [value, setValue] = useState('Double click to edit');
   const bufferValue = useRef(value);
@@ -206,6 +210,8 @@ const [displayValue, setDisplayValue] = useState('Double click to edit');
 
 ### Custom Actions
 
+Double click to edit
+
 ```jsx
 const [value, setValue] = useState('Double click to edit');
   const bufferValue = useRef(value);
@@ -234,6 +240,8 @@ const [value, setValue] = useState('Double click to edit');
 ```
 
 ### Complex Form Element
+
+Account name
 
 ```jsx
 const [displayValue, setDisplayValue] = useState('');

@@ -114,16 +114,20 @@ Screen readers will announce the label and the field.
 
 ### Linking helper text
 
-Description:Enter a brief description
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    Description:  </FormFieldLabel>
-  <Textarea />
-  <FormFieldHelper>
-    Enter a brief description  </FormFieldHelper>
-</FormField>
+{
+  globals: {
+    imports: `import { FormField, FormFieldHelper, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        Description:      </FormFieldLabel>
+      <Textarea />
+      <FormFieldHelper>
+        Enter a brief description      </FormFieldHelper>
+    </FormField>
+}
 ```
 
 Screen readers will announce the label, the field and the helper text.

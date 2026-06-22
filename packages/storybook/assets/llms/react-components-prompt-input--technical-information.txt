@@ -6,6 +6,10 @@ React Components
 
 ---
 
+a-default-text-file.txt3 byte
+
+another-default-text-file.txt3 byte
+
 ## Anatomy
 
 ---
@@ -23,6 +27,8 @@ PromptInputSendButton
 PromptInputTextControl
 
 ---
+
+a-default-text-file.txt3 byte
 
 ## PromptInput
 
@@ -237,22 +243,18 @@ placeholder
 ### Default
 
 ```jsx
-{
-  tags: ["!dev"],
-  globals: {
-    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
-  },
-  render: ({}) => <PromptInput>
-      <PromptInputControls>
-        <PromptInputFileUploadButton />
-        <PromptInputTextControl />
-        <PromptInputSendButton />
-      </PromptInputControls>
-    </PromptInput>
-}
+<PromptInput>
+  <PromptInputControls>
+    <PromptInputFileUploadButton />
+    <PromptInputTextControl />
+    <PromptInputSendButton />
+  </PromptInputControls>
+</PromptInput>
 ```
 
 ### Disabled
+
+Nobody’s here to answer…
 
 ```jsx
 {
@@ -272,41 +274,45 @@ placeholder
 
 ### Readonly
 
+This is a read-only prompt input.
+
 ```jsx
-{
-  tags: ["!dev"],
-  globals: {
-    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
-  },
-  render: ({}) => <PromptInput readOnly defaultValue="This is a read-only prompt input.">
-      <PromptInputControls>
-        <PromptInputFileUploadButton aria-label="Attach a file" />
-        <PromptInputTextControl aria-label="Ask someone about something…" />
-        <PromptInputSendButton aria-label="Send message" />
-      </PromptInputControls>
-    </PromptInput>
-}
+<PromptInput
+  defaultValue="This is a read-only prompt input."
+  readOnly
+>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach a file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Send message" />
+  </PromptInputControls>
+</PromptInput>
 ```
 
 ### Loading
 
+“Someone” is processing your request…
+
 ```jsx
-{
-  tags: ["!dev"],
-  globals: {
-    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
-  },
-  render: ({}) => <PromptInput defaultValue="“Someone” is processing your request…" loading>
-      <PromptInputControls>
-        <PromptInputFileUploadButton aria-label="Attach a file" />
-        <PromptInputTextControl aria-label="Ask someone about something…" />
-        <PromptInputSendButton aria-label="Send message" />
-      </PromptInputControls>
-    </PromptInput>
-}
+<PromptInput
+  defaultValue="“Someone” is processing your request…"
+  loading
+>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach a file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Send message" />
+  </PromptInputControls>
+</PromptInput>
 ```
 
 ### With files
+
+loading-pdf-file.pdf
+
+​
+
+text-file.txt3 byte
 
 ```jsx
 const fakePdfFile = new File(["foo"], "loading-pdf-file.pdf", {
@@ -330,6 +336,14 @@ const fakePdfFile = new File(["foo"], "loading-pdf-file.pdf", {
 ```
 
 ### In form field
+
+Here is a prompt input inside a form field:
+
+Some text that is almost hitting the length limit...
+
+---
+
+52 / 60
 
 ```jsx
 const maxLength = 60;
@@ -370,6 +384,6 @@ const maxLength = 60;
 
 Chat
 
-Assistant2:58 PM
+Assistant2:36 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.

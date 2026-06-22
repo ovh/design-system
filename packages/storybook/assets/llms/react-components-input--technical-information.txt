@@ -204,13 +204,11 @@ type
 ### Floating number
 
 ```jsx
-{
-  globals: {
-    imports: `import { INPUT_TYPE, Input } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Input defaultValue="9.99" step="any" type={INPUT_TYPE.number} />
-}
+<Input
+  defaultValue="9.99"
+  step="any"
+  type="number"
+/>
 ```
 
 ### Datalist

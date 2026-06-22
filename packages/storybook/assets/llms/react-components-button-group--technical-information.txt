@@ -6,6 +6,8 @@ React Components
 
 ---
 
+ 
+
 ## Anatomy
 
 ---
@@ -15,6 +17,8 @@ ButtonGroup
 ButtonGroupItem
 
 ---
+
+ 
 
 ## ButtonGroup
 
@@ -101,20 +105,21 @@ value
 
 ### Default
 
+ 
+
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <ButtonGroup>
-      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
-      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
-      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
-      <ButtonGroupItem value="custom">
-        <Icon name={ICON_NAME.calendar} /> Custom      </ButtonGroupItem>
-    </ButtonGroup>
-}
+<ButtonGroup>
+  <ButtonGroupItem value="hourly">
+    Hourly  </ButtonGroupItem>
+  <ButtonGroupItem value="daily">
+    Daily  </ButtonGroupItem>
+  <ButtonGroupItem value="monthly">
+    Monthly  </ButtonGroupItem>
+  <ButtonGroupItem value="custom">
+    <Icon name="calendar" />
+    {' '}Custom
+  </ButtonGroupItem>
+</ButtonGroup>
 ```
 
 ### Disabled
@@ -122,40 +127,45 @@ value
  
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <ButtonGroup disabled>
-      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
-      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
-      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
-      <ButtonGroupItem value="custom">
-        <Icon name={ICON_NAME.calendar} /> Custom      </ButtonGroupItem>
-    </ButtonGroup>
-}
+<ButtonGroup disabled>
+  <ButtonGroupItem value="hourly">
+    Hourly  </ButtonGroupItem>
+  <ButtonGroupItem value="daily">
+    Daily  </ButtonGroupItem>
+  <ButtonGroupItem value="monthly">
+    Monthly  </ButtonGroupItem>
+  <ButtonGroupItem value="custom">
+    <Icon name="calendar" />
+    {' '}Custom
+  </ButtonGroupItem>
+</ButtonGroup>
 ```
 
 ### Disabled Item
 
+ 
+
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, ButtonGroup, ButtonGroupItem, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <ButtonGroup>
-      <ButtonGroupItem value="hourly">Hourly</ButtonGroupItem>
-      <ButtonGroupItem value="daily">Daily</ButtonGroupItem>
-      <ButtonGroupItem value="monthly">Monthly</ButtonGroupItem>
-      <ButtonGroupItem disabled value="custom">
-        <Icon name={ICON_NAME.calendar} /> Custom      </ButtonGroupItem>
-    </ButtonGroup>
-}
+<ButtonGroup>
+  <ButtonGroupItem value="hourly">
+    Hourly  </ButtonGroupItem>
+  <ButtonGroupItem value="daily">
+    Daily  </ButtonGroupItem>
+  <ButtonGroupItem value="monthly">
+    Monthly  </ButtonGroupItem>
+  <ButtonGroupItem
+    disabled
+    value="custom"
+  >
+    <Icon name="calendar" />
+    {' '}Custom
+  </ButtonGroupItem>
+</ButtonGroup>
 ```
 
 ### Controlled
+
+ 
 
 ```jsx
 const [values, setValues] = useState(['hourly']);
@@ -173,52 +183,65 @@ const [values, setValues] = useState(['hourly']);
 ### Multiple
 
 ```jsx
-{
-  globals: {
-    imports: `import { ButtonGroup, ButtonGroupItem } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <ButtonGroup multiple>
-      <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
-      <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
-      <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
-      <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
-    </ButtonGroup>
-}
+<ButtonGroup multiple>
+  <ButtonGroupItem value="option-1">
+    Option 1  </ButtonGroupItem>
+  <ButtonGroupItem value="option-2">
+    Option 2  </ButtonGroupItem>
+  <ButtonGroupItem value="option-3">
+    Option 3  </ButtonGroupItem>
+  <ButtonGroupItem value="option-4">
+    Option 4  </ButtonGroupItem>
+</ButtonGroup>
 ```
 
 ### Size
 
+MD
+
+SM
+
+XS
+
 ```jsx
-{
-  globals: {
-    imports: `import { BUTTON_GROUP_SIZE, ButtonGroup, ButtonGroupItem } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <p>MD</p>
-      <ButtonGroup size={BUTTON_GROUP_SIZE.md}>
-        <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
-        <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
-        <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
-        <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
-      </ButtonGroup>
-      <p>SM</p>
-      <ButtonGroup size={BUTTON_GROUP_SIZE.sm}>
-        <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
-        <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
-        <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
-        <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
-      </ButtonGroup>
-      <p>XS</p>
-      <ButtonGroup size={BUTTON_GROUP_SIZE.xs}>
-        <ButtonGroupItem value="option-1">Option 1</ButtonGroupItem>
-        <ButtonGroupItem value="option-2">Option 2</ButtonGroupItem>
-        <ButtonGroupItem value="option-3">Option 3</ButtonGroupItem>
-        <ButtonGroupItem value="option-4">Option 4</ButtonGroupItem>
-      </ButtonGroup>
-    </>
-}
+<>
+  <p>
+    MD  </p>
+  <ButtonGroup size="md">
+    <ButtonGroupItem value="option-1">
+      Option 1    </ButtonGroupItem>
+    <ButtonGroupItem value="option-2">
+      Option 2    </ButtonGroupItem>
+    <ButtonGroupItem value="option-3">
+      Option 3    </ButtonGroupItem>
+    <ButtonGroupItem value="option-4">
+      Option 4    </ButtonGroupItem>
+  </ButtonGroup>
+  <p>
+    SM  </p>
+  <ButtonGroup size="sm">
+    <ButtonGroupItem value="option-1">
+      Option 1    </ButtonGroupItem>
+    <ButtonGroupItem value="option-2">
+      Option 2    </ButtonGroupItem>
+    <ButtonGroupItem value="option-3">
+      Option 3    </ButtonGroupItem>
+    <ButtonGroupItem value="option-4">
+      Option 4    </ButtonGroupItem>
+  </ButtonGroup>
+  <p>
+    XS  </p>
+  <ButtonGroup size="xs">
+    <ButtonGroupItem value="option-1">
+      Option 1    </ButtonGroupItem>
+    <ButtonGroupItem value="option-2">
+      Option 2    </ButtonGroupItem>
+    <ButtonGroupItem value="option-3">
+      Option 3    </ButtonGroupItem>
+    <ButtonGroupItem value="option-4">
+      Option 4    </ButtonGroupItem>
+  </ButtonGroup>
+</>
 ```
 
 ## Recipes

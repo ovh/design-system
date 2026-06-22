@@ -178,6 +178,18 @@ label
 
 ### Controlled
 
+```jsx
+const [page, setPage] = useState(1);
+  function handlePageChange({
+    page  }: PaginationPageChangeDetail) {
+    setPage(page);
+  }
+  return <Pagination onPageChange={handlePageChange} page={page} totalItems={500}>
+      <PaginationPages />
+    </Pagination>;
+}
+```
+
 ### Disabled
 
 ```jsx
@@ -235,6 +247,10 @@ label
 ```
 
 ### With page size selection
+
+102550100300
+
+of 500 results
 
 ```jsx
 {

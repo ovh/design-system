@@ -59,38 +59,23 @@ src
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Avatar } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Avatar />
-}
+<Avatar />
 ```
 
 ### Initials
 
+JD
+
 ```jsx
-{
-  globals: {
-    imports: `import { Avatar } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Avatar>
-      JD    </Avatar>
-}
+<Avatar>
+  JD
+</Avatar>
 ```
 
 ### With Image
 
 ```jsx
-{
-  globals: {
-    imports: `import { Avatar } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Avatar src="https://images.crunchbase.com/image/upload/c_pad,h_160,w_160,f_auto,b_white,q_auto:eco,dpr_1/fhi0pe8wd87fvujy9yk8" />
-}
+<Avatar src="https://images.crunchbase.com/image/upload/c_pad,h_160,w_160,f_auto,b_white,q_auto:eco,dpr_1/fhi0pe8wd87fvujy9yk8" />
 ```
 
 ### With Fallback
@@ -118,6 +103,6 @@ J
 
 Chat
 
-Assistant2:58 PM
+Assistant2:36 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.

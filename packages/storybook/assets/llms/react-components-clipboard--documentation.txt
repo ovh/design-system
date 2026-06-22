@@ -94,17 +94,21 @@ To ensure proper accessibility, the **Clipboard** component must be correctly la
 
 Every **Clipboard** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
-API key:
-
 ```jsx
-<FormField>
-  <FormFieldLabel>
-    API key:  </FormFieldLabel>
-  <Clipboard value="loremipsum">
-    <ClipboardControl />
-    <ClipboardTrigger />
-  </Clipboard>
-</FormField>
+{
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FormField>
+      <FormFieldLabel>
+        API key:      </FormFieldLabel>
+      <Clipboard value="loremipsum">
+        <ClipboardControl />
+        <ClipboardTrigger />
+      </Clipboard>
+    </FormField>
+}
 ```
 
 Screen readers will announce the label, the field and its content.

@@ -286,13 +286,11 @@ name
 ### Informative
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Icon aria-label="Help" name={ICON_NAME.circleQuestion} role="img" />
-}
+<Icon
+  aria-label="Help"
+  name="circle-question"
+  role="img"
+/>
 ```
 
 ## Recipes
@@ -301,7 +299,7 @@ name
 
 Chat
 
-Assistant2:58 PM
+Assistant2:36 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 

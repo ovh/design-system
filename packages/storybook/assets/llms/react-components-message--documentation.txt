@@ -4,8 +4,6 @@ React Components
 
 _**Message** component helps to communicate with users providing feedback or information._
 
-Message
-
 ## Overview
 
 ---
@@ -133,35 +131,31 @@ When displaying multiple **Messages** together, they should be wrapped within an
     
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <ul style={{
+<ul
+  style={{
     display: 'flex',
     flexFlow: 'column',
-    rowGap: '8px',
+    listStyle: 'none',
     margin: 0,
     padding: 0,
-    listStyle: 'none'
-  }}>
-      <li>
-        <Message>
-          <MessageIcon name={ICON_NAME.circleCheck} />
-          <MessageBody>
-            Your changes have been saved.          </MessageBody>
-        </Message>
-      </li>
-      <li>
-        <Message color={MESSAGE_COLOR.warning}>
-          <MessageIcon name={ICON_NAME.triangleExclamation} />
-          <MessageBody>
-            Some fields need your attention.          </MessageBody>
-        </Message>
-      </li>
-    </ul>
-}
+    rowGap: '8px'
+  }}
+>
+  <li>
+    <Message>
+      <MessageIcon name="circle-check" />
+      <MessageBody>
+        Your changes have been saved.      </MessageBody>
+    </Message>
+  </li>
+  <li>
+    <Message color="warning">
+      <MessageIcon name="triangle-exclamation" />
+      <MessageBody>
+        Some fields need your attention.      </MessageBody>
+    </Message>
+  </li>
+</ul>
 ```
 
 This structure ensures that assistive technologies announce **Messages** as a list, rather than reading them as separate, unrelated announcements.

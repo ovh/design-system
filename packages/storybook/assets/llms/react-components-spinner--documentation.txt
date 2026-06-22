@@ -84,12 +84,15 @@ The **Spinner** component does not automatically provide enough context for assi
 The **Spinner** itself does not convey the loading state. This responsibility falls on the container where content is being loaded by using [aria-busy](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy) and [aria-live](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live) .
 
 ```jsx
-<div
-  aria-busy="true"
-  aria-live="polite"
->
-  <Spinner />
-</div>
+{
+  globals: {
+    imports: `import { Spinner } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <div aria-busy="true" aria-live="polite">
+      <Spinner />
+    </div>
+}
 ```
 
 Explanations:
@@ -111,14 +114,18 @@ If the **Spinner** is associated with a specific loading action, it should be ex
 
 Screen readers will announce the label, the spinner and its current state.
 
-Loading user profile
-
 ```jsx
-<div>
-  <span id="loading-text">
-    Loading user profile  </span>
-  <Spinner aria-labelledby="loading-text" />
-</div>
+{
+  globals: {
+    imports: `import { Spinner } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <div>
+      <span id="loading-text">
+        Loading user profile      </span>
+      <Spinner aria-labelledby="loading-text" />
+    </div>
+}
 ```
 
 Screen readers will announce the label, the spinner and its current state.

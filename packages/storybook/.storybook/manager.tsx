@@ -60,6 +60,9 @@ addons.register(GITHUB_LINK_ADDON_NAME, githubLinkAddon);
 addons.setConfig({
   enableShortcuts: false,
   sidebar: {
+    filters: {
+      patterns: (item) => !item.tags?.includes('!sidebar'),
+    },
     renderLabel: (item, api) => {
       // Collapsed children are not available, so we have to manually check each child tags
       if (item.type === 'group' || item.type === 'component') {

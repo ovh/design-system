@@ -52,6 +52,17 @@ img {
   max-width: 100%;
 }
 
+.sr-only {
+  position: absolute;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
 /* Doc pages content */
 #storybook-docs > .sbdocs-wrapper {
   background-color: var(--ods-theme-background-color);
@@ -77,7 +88,7 @@ img {
 }
 
 /* Hide live coding editor overflow container weird persistent line */
+/* stylelint-disable-next-line selector-id-pattern */
 #monacoOverflowContainer {
   outline: none;
 }
-

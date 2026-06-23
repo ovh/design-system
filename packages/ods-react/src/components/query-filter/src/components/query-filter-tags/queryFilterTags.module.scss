@@ -5,7 +5,7 @@
     gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
     margin: 0;
     padding: 0;
-    list-style: none;
+    list-style-type: "";
 
     &__tag {
       white-space: nowrap;

@@ -1,7 +1,8 @@
-import { Icon, Toaster, toast } from '@ovhcloud/ods-react';
 import { useState } from 'react';
 import style from './dev.module.css';
+import { Icon } from '../../icon/src';
 import { Kbd } from '../../kbd/src';
+import { Toaster, toast } from '../../toaster/src';
 import { Command } from './index';
 
 type StoryGroup = {

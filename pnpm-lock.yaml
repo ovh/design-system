@@ -494,6 +494,8 @@ importers:
 
   packages/ods-react/src/components/combobox: {}
 
+  packages/ods-react/src/components/command: {}
+
   packages/ods-react/src/components/data-table: {}
 
   packages/ods-react/src/components/datepicker: {}

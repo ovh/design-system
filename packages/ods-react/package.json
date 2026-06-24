@@ -34,8 +34,9 @@
     "*.css"
   ],
   "scripts": {
-    "build:prod": "npm run clean && tsc -b && vite build",
+    "build:prod": "npm run clean && tsc -b && vite build && npm run copy:llms",
     "clean": "rimraf dist",
+    "copy:llms": "node scripts/copy-llms.js",
     "doc": "rimraf documentation && typedoc",
     "lint:scss": "stylelint 'src/style/*.scss'",
     "lint:ts": "eslint '{src,tests}/!(components)/**/*.{ts,tsx}'",

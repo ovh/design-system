@@ -50,12 +50,12 @@
     "postcss": "8.4.35",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "1.71.0",
+    "sass": "1.101.0",
     "storybook": "8.6.12",
     "string-hash": "1.1.3",
     "typescript": "5.3.3",
     "vite": "6.2.0",
     "vite-plugin-dts": "4.5.0",
-    "vite-plugin-lib-inject-css": "2.2.1"
+    "vite-plugin-lib-inject-css": "2.2.2"
   }
 }

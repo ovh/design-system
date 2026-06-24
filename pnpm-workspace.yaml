@@ -8,11 +8,17 @@ packages:
   - "packages/themes"
 
 allowBuilds:
+  '@parcel/watcher': false
   esbuild: true
   husky: true
   nx: true
   puppeteer: true
   sharp: true
+
+minimumReleaseAgeExclude:
+  - '@playwright/test@1.61.1'
+  - playwright-core@1.61.1
+  - playwright@1.61.1
 
 overrides:
   "@types/scheduler": "< 0.23.0"

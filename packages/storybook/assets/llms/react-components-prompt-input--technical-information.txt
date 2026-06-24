@@ -1,4 +1,12 @@
-React Components
+---
+title: "Prompt Input"
+slug: prompt-input
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 2383
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--technical-information.txt
+---
 
 # Prompt Input
 
@@ -243,13 +251,19 @@ placeholder
 ### Default
 
 ```jsx
-<PromptInput>
-  <PromptInputControls>
-    <PromptInputFileUploadButton />
-    <PromptInputTextControl />
-    <PromptInputSendButton />
-  </PromptInputControls>
-</PromptInput>
+{
+  tags: ["!dev"],
+  globals: {
+    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
+  },
+  render: ({}) => <PromptInput>
+      <PromptInputControls>
+        <PromptInputFileUploadButton />
+        <PromptInputTextControl />
+        <PromptInputSendButton />
+      </PromptInputControls>
+    </PromptInput>
+}
 ```
 
 ### Disabled
@@ -257,12 +271,27 @@ placeholder
 Nobody’s here to answer…
 
 ```jsx
+<PromptInput
+  defaultValue="Nobody’s here to answer…"
+  disabled
+>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach a file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Send message" />
+  </PromptInputControls>
+</PromptInput>
+```
+
+### Readonly
+
+```jsx
 {
   tags: ["!dev"],
   globals: {
     imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
   },
-  render: ({}) => <PromptInput disabled defaultValue="Nobody’s here to answer…">
+  render: ({}) => <PromptInput readOnly defaultValue="This is a read-only prompt input.">
       <PromptInputControls>
         <PromptInputFileUploadButton aria-label="Attach a file" />
         <PromptInputTextControl aria-label="Ask someone about something…" />
@@ -272,38 +301,24 @@ Nobody’s here to answer…
 }
 ```
 
-### Readonly
-
-This is a read-only prompt input.
-
-```jsx
-<PromptInput
-  defaultValue="This is a read-only prompt input."
-  readOnly
->
-  <PromptInputControls>
-    <PromptInputFileUploadButton aria-label="Attach a file" />
-    <PromptInputTextControl aria-label="Ask someone about something…" />
-    <PromptInputSendButton aria-label="Send message" />
-  </PromptInputControls>
-</PromptInput>
-```
-
 ### Loading
 
 “Someone” is processing your request…
 
 ```jsx
-<PromptInput
-  defaultValue="“Someone” is processing your request…"
-  loading
->
-  <PromptInputControls>
-    <PromptInputFileUploadButton aria-label="Attach a file" />
-    <PromptInputTextControl aria-label="Ask someone about something…" />
-    <PromptInputSendButton aria-label="Send message" />
-  </PromptInputControls>
-</PromptInput>
+{
+  tags: ["!dev"],
+  globals: {
+    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
+  },
+  render: ({}) => <PromptInput defaultValue="“Someone” is processing your request…" loading>
+      <PromptInputControls>
+        <PromptInputFileUploadButton aria-label="Attach a file" />
+        <PromptInputTextControl aria-label="Ask someone about something…" />
+        <PromptInputSendButton aria-label="Send message" />
+      </PromptInputControls>
+    </PromptInput>
+}
 ```
 
 ### With files
@@ -384,6 +399,6 @@ const maxLength = 60;
 
 Chat
 
-Assistant2:36 PM
+Assistant3:37 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.

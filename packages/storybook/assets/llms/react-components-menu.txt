@@ -1,4 +1,14 @@
-# React Components/Menu
+---
+title: "Menu"
+slug: menu
+category: component
+type: overview
+version: 19.7.3
+tokens: 2032
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu.txt
+---
+
+# Menu
 
 ## Subcomponents
 

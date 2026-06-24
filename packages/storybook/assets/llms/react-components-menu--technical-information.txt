@@ -1,4 +1,12 @@
-React Components
+---
+title: "Menu"
+slug: menu
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1922
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--technical-information.txt
+---
 
 # Menu
 
@@ -25,14 +33,6 @@ MenuSubmenu
 MenuTrigger
 
 ---
-
-My account
-
-Profile
-
-Settings
-
-Logout
 
 ## Menu
 
@@ -241,23 +241,23 @@ const [isOpen, setIsOpen] = useState(false);
 ### Disabled
 
 ```jsx
-<Menu>
-  <MenuTrigger asChild>
-    <Button>
-      Open menu    </Button>
-  </MenuTrigger>
-  <MenuContent>
-    <MenuItem value="profile">
-      Profile    </MenuItem>
-    <MenuItem
-      disabled
-      value="settings"
-    >
-      Settings    </MenuItem>
-    <MenuItem value="logout">
-      Logout    </MenuItem>
-  </MenuContent>
-</Menu>
+{
+  globals: {
+    imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Menu>
+      <MenuTrigger asChild>
+        <Button>
+          Open menu        </Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem value="profile">Profile</MenuItem>
+        <MenuItem disabled value="settings">Settings</MenuItem>
+        <MenuItem value="logout">Logout</MenuItem>
+      </MenuContent>
+    </Menu>
+}
 ```
 
 ### Group

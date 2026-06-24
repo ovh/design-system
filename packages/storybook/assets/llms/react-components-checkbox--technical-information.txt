@@ -1,4 +1,12 @@
-React Components
+---
+title: "Checkbox"
+slug: checkbox
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1218
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-checkbox--technical-information.txt
+---
 
 # Checkbox
 

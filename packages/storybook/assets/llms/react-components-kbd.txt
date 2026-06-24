@@ -1,4 +1,14 @@
-# React Components/Kbd
+---
+title: "Kbd"
+slug: kbd
+category: component
+type: overview
+version: 19.7.3
+tokens: 170
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-kbd.txt
+---
+
+# Kbd
 
 ## Examples
 

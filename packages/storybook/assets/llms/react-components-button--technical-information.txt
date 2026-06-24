@@ -1,4 +1,12 @@
-React Components
+---
+title: "Button"
+slug: button
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 4520
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--technical-information.txt
+---
 
 # Button
 
@@ -604,9 +612,14 @@ variant
 ### Default
 
 ```jsx
-<Button>
-  My button
-</Button>
+{
+  globals: {
+    imports: `import { Button } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button>
+      My button    </Button>
+}
 ```
 
 ### Color
@@ -637,36 +650,22 @@ variant
 ### Loading
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Button loading={true}>
-      Loading button    </Button>
-}
+<Button loading>
+  Loading button
+</Button>
 ```
 
 ### Size
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { BUTTON_SIZE, Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Button size={BUTTON_SIZE.md}>MD button</Button>
-      <Button size={BUTTON_SIZE.sm}>SM button</Button>
-      <Button size={BUTTON_SIZE.xs}>XS button</Button>
-    </>
-}
+<>
+  <Button size="md">
+    MD button  </Button>
+  <Button size="sm">
+    SM button  </Button>
+  <Button size="xs">
+    XS button  </Button>
+</>
 ```
 
 ### Variant
@@ -697,7 +696,7 @@ variant
 
 Chat
 
-Assistant2:36 PM
+Assistant3:37 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 

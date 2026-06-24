@@ -1,4 +1,14 @@
-# React Components/File Upload
+---
+title: "File Upload"
+slug: file-upload
+category: component
+type: overview
+version: 19.7.3
+tokens: 3872
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload.txt
+---
+
+# File Upload
 
 ## Props
 

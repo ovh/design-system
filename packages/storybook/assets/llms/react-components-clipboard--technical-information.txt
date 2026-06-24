@@ -1,4 +1,12 @@
-React Components
+---
+title: "Clipboard"
+slug: clipboard
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1097
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipboard--technical-information.txt
+---
 
 # Clipboard
 
@@ -106,31 +114,46 @@ labelCopySuccess
 ### Default
 
 ```jsx
-<Clipboard value="Clipboard">
-  <ClipboardControl />
-  <ClipboardTrigger />
-</Clipboard>
+{
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Clipboard value="Clipboard">
+      <ClipboardControl />
+      <ClipboardTrigger />
+    </Clipboard>
+}
 ```
 
 ### Disabled
 
 ```jsx
-<Clipboard
-  disabled
-  value="Disabled"
->
-  <ClipboardControl />
-  <ClipboardTrigger />
-</Clipboard>
+{
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Clipboard value="Disabled" disabled>
+      <ClipboardControl />
+      <ClipboardTrigger />
+    </Clipboard>
+}
 ```
 
 ### Loading
 
 ```jsx
-<Clipboard value="Loading">
-  <ClipboardControl loading />
-  <ClipboardTrigger />
-</Clipboard>
+{
+  globals: {
+    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Clipboard value="Loading">
+      <ClipboardControl loading />
+      <ClipboardTrigger />
+    </Clipboard>
+}
 ```
 
 ### Masked
@@ -171,7 +194,7 @@ labelCopySuccess
 
 Chat
 
-Assistant2:36 PM
+Assistant3:37 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 

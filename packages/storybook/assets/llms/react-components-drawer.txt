@@ -1,4 +1,14 @@
-# React Components/Drawer
+---
+title: "Drawer"
+slug: drawer
+category: component
+type: overview
+version: 19.7.3
+tokens: 2395
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer.txt
+---
+
+# Drawer
 
 ## Subcomponents
 

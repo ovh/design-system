@@ -1,0 +1,79 @@
+---
+title: "Internationalization"
+slug: ovhcloud-design-system-guides-internationalization
+category: generic
+type: overview
+version: 19.7.3
+tokens: 546
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-guides-internationalization.txt
+---
+
+# Internationalization
+
+---
+
+ODS does not embed any i18n library, as most of the translatable contents are coming from the integration side.
+
+There are two exceptions, components with full embedded translation and components with default translation on some accessibility attribute.
+
+## Embedded translation
+
+---
+
+So far, only the following components internally manage a complete translation system:
+
+-   
+-   
+
+Both are relying on the native [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) feature.
+
+They do de-facto support the same locales as [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) .
+
+## ODS specific translation
+
+---
+
+Although you have complete control on label translation when using the ODS components, there are a few internal elements that need a textual description for accessibility purpose.
+
+For example, take the  component:
+
+Here, the close button needs to have the right `aria-label` value set for accessibility compliance. Though the element is not part of the composable components, it is internal.
+
+By default, ODS will provide a default `aria-label` message for all locales that we currently support. So if you use the component as-is, it will be accessible already.
+
+In case you want to change the locale to one supported by ODS, you can use the `locale` attribute of the component.
+
+```tsx
+// This will change the close button aria-label to the french version
+<Message locale="fr">
+  <MessageBody>
+    Mon message  </MessageBody>
+</Message>
+```
+
+If the `locale` is not set, the component will try to use the navigator languages by default.
+
+In case you want to change to a locale not supported by ODS, or you want to override the default messages, you can set your own translation using the `i18n` attribute of the component.
+
+```tsx
+// This will change the close button aria-label to your own string
+<Message i18n={{ [MESSAGE_I18N.closeButton]: 'Remove the notification' }}>
+  <MessageBody>
+    Mon message  </MessageBody>
+</Message>
+```
+
+## ODS supported locale
+
+---
+
+Current locales supported by ODS:
+
+-   de
+-   en
+-   es
+-   fr
+-   it
+-   nl
+-   pl
+-   pt

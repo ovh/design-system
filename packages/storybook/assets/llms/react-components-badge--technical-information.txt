@@ -1,4 +1,12 @@
-React Components
+---
+title: "Badge"
+slug: badge
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1392
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--technical-information.txt
+---
 
 # Badge
 

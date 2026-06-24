@@ -1,8 +1,18 @@
-React Components
+---
+title: "Badge"
+slug: badge
+category: component
+type: documentation
+version: 19.7.3
+tokens: 2092
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--documentation.txt
+---
 
 # Badge
 
 _**Badge** show concise metadata or the current status for an item, in a compact format._
+
+Badge
 
 ## Overview
 
@@ -141,21 +151,18 @@ Screen readers will announce the aria-label instead of ignoring the **Badge**.
 Since an icon-only **Badge** may lack detailed information, attach a tooltip and use an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) when extra context is needed:
 
 ```jsx
-{
-  globals: {
-    imports: `import { BADGE_COLOR, ICON_NAME, Badge, Icon, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Tooltip>
-      <TooltipTrigger asChild>
-        <Badge aria-labelledby="tooltip-a11y" color={BADGE_COLOR.promotion}>
-          <Icon name={ICON_NAME.tag} />
-        </Badge>
-      </TooltipTrigger>
-      <TooltipContent id="tooltip-a11y">
-        Promotion valid from November 22 to 26      </TooltipContent>
-    </Tooltip>
-}
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Badge
+      aria-labelledby="tooltip-a11y"
+      color="promotion"
+    >
+      <Icon name="tag" />
+    </Badge>
+  </TooltipTrigger>
+  <TooltipContent id="tooltip-a11y">
+    Promotion valid from November 22 to 26  </TooltipContent>
+</Tooltip>
 ```
 
 Screen readers will announce the **Tooltip** content when focusing on the **Badge**.
@@ -163,9 +170,6 @@ Screen readers will announce the **Tooltip** content when focusing on the **Badg
 ### Structuring groups of Badges with lists
 
 When displaying multiple **Badges** together, they should be wrapped within an unordered list of items (`<ul>` and `<li>`) to ensure a proper announcement by screen readers.
-
--   Item 1
--   Item 2
 
 ```jsx
 {
@@ -199,24 +203,23 @@ This structure ensures that assistive technologies announce **Badges** as a list
 
 When modifying the HTML structure is not possible, use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [role="listitem"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) to mimic list semantics.
 
+Item 1Item 2
+
 ```jsx
-{
-  globals: {
-    imports: `import { Badge } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <div role="list" style={{
+<div
+  role="list"
+  style={{
+    alignItems: 'center',
     display: 'flex',
     flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>
-      <Badge role="listitem">
-        Item 1      </Badge>
-      <Badge role="listitem">
-        Item 2      </Badge>
-    </div>
-}
+    gap: '8px'
+  }}
+>
+  <Badge role="listitem">
+    Item 1  </Badge>
+  <Badge role="listitem">
+    Item 2  </Badge>
+</div>
 ```
 
 This ensures that screen readers recognize the **Badges** as a structured list even without native `<ul>` and `<li>` elements.

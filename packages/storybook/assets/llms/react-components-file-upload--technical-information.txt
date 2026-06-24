@@ -1,4 +1,12 @@
-React Components
+---
+title: "File Upload"
+slug: file-upload
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 2483
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--technical-information.txt
+---
 
 # File Upload
 
@@ -19,6 +27,17 @@ FileUploadItem
 FileUploadList
 
 ---
+
+Drag & drop a file 
+
+-   foo.txt
+    
+    3 byte
+    
+-   dummy.txt
+    
+    5 byte
+    
 
 ## FileUpload
 
@@ -211,6 +230,8 @@ uploadSuccessLabelDeprecated
 
 ### Default
 
+Drag & drop a file 
+
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
   return <FileUpload onFileAccept={({
@@ -240,15 +261,22 @@ const [files, setFiles] = useState<File[]>([]);
 Drag & drop a file 
 
 ```jsx
-<FileUpload
-  disabled
-  variant="compact"
->
-  <FileUploadList />
-</FileUpload>
+{
+  globals: {
+    imports: `import { FileUpload, FileUploadList } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <FileUpload disabled variant={FILE_UPLOAD_VARIANT.compact}>
+      <FileUploadList />
+    </FileUpload>
+}
 ```
 
 ### Custom labels
+
+Nombre maximal de fichiers : 3Taille de fichier max : 524 MBFormats acceptés : images
+
+Glisser-déposer des fichiers 
 
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
@@ -266,6 +294,10 @@ const [files, setFiles] = useState<File[]>([]);
 To limit the file types that can be uploaded, you can use the `accept` attribute.
 
 It works exactly the same as the one from the native [input file](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept) .
+
+Png files only
+
+Drag & drop a file 
 
 ```jsx
 const [error, setError] = useState<string>('');
@@ -286,6 +318,10 @@ const [error, setError] = useState<string>('');
 
 ### Limit the maximum number of file
 
+Maximum file allowed: 3
+
+Drag & drop a file 
+
 ```jsx
 const [error, setError] = useState<string>('');
   const [files, setFiles] = useState<File[]>([]);  function onAccept({    files  }: FileUploadAcceptDetail): void {
@@ -304,10 +340,6 @@ const [error, setError] = useState<string>('');
 ```
 
 ### Limit the maximum size of each file
-
-No file larger than: 1 MB
-
-Drag & drop a file 
 
 ```jsx
 const [error, setError] = useState<string>('');

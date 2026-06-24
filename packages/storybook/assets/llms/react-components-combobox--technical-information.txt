@@ -1,4 +1,12 @@
-React Components
+---
+title: "Combobox"
+slug: combobox
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 3299
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox--technical-information.txt
+---
 
 # Combobox
 
@@ -17,6 +25,18 @@ ComboboxContent
 ComboboxControl
 
 ---
+
+Dog
+
+Cat
+
+Hamster
+
+Parrot
+
+Spider
+
+Goldfish
 
 ## Combobox
 
@@ -280,40 +300,34 @@ placeholder
 ### Clearable
 
 ```jsx
-<Combobox
-  items={[
-    {
-      label: 'Dog',
-      value: 'dog'
-    },
-    {
-      label: 'Cat',
-      value: 'cat'
-    },
-    {
-      label: 'Hamster',
-      value: 'hamster'
-    },
-    {
-      label: 'Parrot',
-      value: 'parrot'
-    },
-    {
-      label: 'Spider',
-      value: 'spider'
-    },
-    {
-      label: 'Goldfish',
-      value: 'goldfish'
-    }
-  ]}
->
-  <ComboboxControl
-    clearable
-    placeholder="Combobox"
-  />
-  <ComboboxContent />
-</Combobox>
+{
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Combobox items={[{
+    label: 'Dog',
+    value: 'dog'
+  }, {
+    label: 'Cat',
+    value: 'cat'
+  }, {
+    label: 'Hamster',
+    value: 'hamster'
+  }, {
+    label: 'Parrot',
+    value: 'parrot'
+  }, {
+    label: 'Spider',
+    value: 'spider'
+  }, {
+    label: 'Goldfish',
+    value: 'goldfish'
+  }]}>
+      <ComboboxControl clearable placeholder="Combobox" />
+      <ComboboxContent />
+    </Combobox>
+}
 ```
 
 ### Disabled
@@ -427,22 +441,22 @@ placeholder
 ### Invalid
 
 ```jsx
-<Combobox
-  invalid
-  items={[
-    {
-      label: 'Dog',
-      value: 'dog'
-    },
-    {
-      label: 'Cat',
-      value: 'cat'
-    }
-  ]}
->
-  <ComboboxControl />
-  <ComboboxContent />
-</Combobox>
+{
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Combobox invalid items={[{
+    label: 'Dog',
+    value: 'dog'
+  }, {
+    label: 'Cat',
+    value: 'cat'
+  }]}>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+}
 ```
 
 ### Controlled
@@ -615,10 +629,16 @@ type MyData = {
 ### Empty
 
 ```jsx
-<Combobox items={[]}>
-  <ComboboxControl />
-  <ComboboxContent />
-</Combobox>
+{
+  globals: {
+    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Combobox items={[]}>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>
+}
 ```
 
 ### Multiple

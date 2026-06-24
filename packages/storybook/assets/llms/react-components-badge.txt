@@ -1,4 +1,14 @@
-# React Components/Badge
+---
+title: "Badge"
+slug: badge
+category: component
+type: overview
+version: 19.7.3
+tokens: 1237
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge.txt
+---
+
+# Badge
 
 ## Props
 

@@ -1,4 +1,12 @@
-React Components
+---
+title: "Spinner"
+slug: spinner
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1560
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner--documentation.txt
+---
 
 # Spinner
 
@@ -109,7 +117,13 @@ Once the content is loaded, aria-busy should be set to false.
 If the **Spinner** is associated with a specific loading action, it should be explicitly labeled using [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) or [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) .
 
 ```jsx
-<Spinner aria-label="Loading user profile" />
+{
+  globals: {
+    imports: `import { Spinner } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Spinner aria-label="Loading user profile" />
+}
 ```
 
 Screen readers will announce the label, the spinner and its current state.

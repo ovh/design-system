@@ -1,4 +1,12 @@
-React Components
+---
+title: "Message"
+slug: message
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1610
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--technical-information.txt
+---
 
 # Message
 

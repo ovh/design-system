@@ -1,4 +1,12 @@
-React Components
+---
+title: "Message Bubble"
+slug: message-bubble
+category: component
+type: documentation
+version: 19.7.3
+tokens: 729
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message-bubble--documentation.txt
+---
 
 # Message Bubble
 

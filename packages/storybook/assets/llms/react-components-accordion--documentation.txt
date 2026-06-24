@@ -1,4 +1,12 @@
-React Components
+---
+title: "Accordion"
+slug: accordion
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1391
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--documentation.txt
+---
 
 # Accordion
 

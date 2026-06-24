@@ -1,4 +1,12 @@
-React Components
+---
+title: "Range"
+slug: range
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1645
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range--documentation.txt
+---
 
 # Range
 
@@ -111,10 +119,6 @@ This component complies with the [Slider](https://www.w3.org/WAI/ARIA/apg/patter
 
 Every **Range** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
-Volume
-
-0100
-
 ```jsx
 {
   globals: {
@@ -134,6 +138,10 @@ Screen readers will announce the value, the slider and its label.
 ### Always provide a descriptive sub-label in Dual Range
 
 Sub-label provide additional context about the values that are selected or adjusted by the user. This sub-label should be vocalized by screen readers. Use [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) to link the sub-label and [aria-live="polite"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions) to ensure that the content is vocalized by screen readers.
+
+Price rangeSelected values: 30 - 70€
+
+0100
 
 ```jsx
 const [values, setValues] = useState([30, 70]);

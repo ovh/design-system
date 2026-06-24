@@ -1,4 +1,12 @@
-React Components
+---
+title: "Drawer"
+slug: drawer
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1598
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer--documentation.txt
+---
 
 # Drawer
 
@@ -105,22 +113,19 @@ To ensure the **Drawer** is fully accessible, correct ARIA attributes must be im
 Ensure that assistive technologies announce the **Drawer** correctly using [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) or [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) , and [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby) .
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Drawer>
-      <DrawerTrigger asChild>
-        <Button>
-          Trigger Drawer        </Button>
-      </DrawerTrigger>
-      <DrawerContent aria-describedby="drawer-content" aria-label="My drawer">
-        <DrawerBody id="drawer-content">
-          The drawer content        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-}
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer    </Button>
+  </DrawerTrigger>
+  <DrawerContent
+    aria-describedby="drawer-content"
+    aria-label="My drawer"
+  >
+    <DrawerBody id="drawer-content">
+      The drawer content    </DrawerBody>
+  </DrawerContent>
+</Drawer>
 ```
 
 ```jsx

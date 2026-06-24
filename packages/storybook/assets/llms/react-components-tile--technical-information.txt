@@ -1,4 +1,12 @@
-React Components
+---
+title: "Tile"
+slug: tile
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 930
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile--technical-information.txt
+---
 
 # Tile
 

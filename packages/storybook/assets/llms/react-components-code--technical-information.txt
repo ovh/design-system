@@ -1,4 +1,12 @@
-React Components
+---
+title: "Code"
+slug: code
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 962
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code--technical-information.txt
+---
 
 # Code
 

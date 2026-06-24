@@ -1,0 +1,509 @@
+---
+title: "Usage Guidelines"
+slug: ovhcloud-design-system-guides-form-guidelines
+category: generic
+type: overview
+version: 19.7.3
+tokens: 3407
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-guides-form-guidelines.txt
+---
+
+# Usage Guidelines
+
+---
+
+These guidelines define how forms should behave and be structured across products using the OVHcloud Design System.
+
+This documentation does not describe a technical implementation, but provides functional and UX rules to follow when designing and developing forms.
+
+## Mandatory and optional fields
+
+---
+
+### How to define mandatory fields
+
+A mandatory field must:
+
+-   Explicitly include the word "Mandatory" in the label.
+-   Never rely on an asterisk alone.
+-   Clearly communicate the expected format in the helper text when relevant.
+
+### Optional fields
+
+Optional fields do not need to be labeled "Optional" and can remain unmarked if mandatory fields are clearly identified.
+
+First name- mandatory
+
+Last name- mandatory
+
+Company
+
+Phone
+
+Include country code (e.g. +33 6 00 00 00 00)
+
+Email- mandatory
+
+Format: name@example.com
+
+## Submit behavior
+
+---
+
+In the OVHcloud Design System, the submit should button remain enabled at all times.
+
+Validation is triggered when the user attempts to submit the form.
+
+The form must provide feedback after user action rather than prevent the action.
+
+### Standard submit flow
+
+Initial state:
+
+-   The submit button is visible and enabled.
+-   Mandatory fields are clearly marked in the label.
+-   Helper text communicates expected formats when relevant.
+-   No error messages are displayed before interaction.
+
+When the user clicks the submit button:
+
+-   All mandatory fields are validated.
+-   All format validations are executed.
+-   Field-level errors are displayed where needed.
+-   A global error may be displayed if applicable.
+-   No field values are cleared.
+
+If errors are found:
+
+-   Each invalid field displays its error message.
+-   Error styling is applied.
+-   Fields remain populated.
+-   The submit button remains enabled.
+-   The user can immediately correct the fields and resubmit.
+
+If the form is displayed in a **Modal** or **Drawer**:
+
+-   The container remains open.
+-   Errors are displayed within the same context.
+
+If no errors are found:
+
+-   The form proceeds to submission.
+-   Success feedback is triggered (**Toast** or confirmation page depending on the flow).
+
+### Relationship with inline validation
+
+Inline validation (on blur):
+
+-   May display format errors as soon as the user leaves a field.
+-   Improves correction speed.
+-   Does not replace submit validation.
+
+On submit:
+
+-   All validations are executed again to ensure consistency.
+-   Required errors appear even if the field was never focused.
+
+### Loading & action buttons states
+
+When the user submits a form:
+
+-   The primary action button switches to a loading state.
+-   The secondary action, if any, becomes disabled.
+
+This prevents duplicate submissions and conflicting actions, and clearly communicates that the request is being processed.
+
+## Error handling
+
+---
+
+Error handling must clearly communicate what went wrong and how the user can correct it.
+
+Error handling exists at two levels.
+
+Global errors explain why submission failed. Field-level errors explain what needs correction.
+
+### Local errors (field-level)
+
+Field-level errors are tied to a specific input.
+
+They indicate that the value entered in a particular field is invalid or missing.
+
+#### When field-level errors are triggered
+
+Field-level errors can be triggered:
+
+-   On blur (inline validation).
+-   On submit.
+-   After asynchronous validation (e.g. backend check).
+
+Submit validation must always re-validate all fields, even if inline validation is enabled.
+
+#### Examples of field-level errors
+
+-   Required field left empty.
+-   Invalid email format.
+-   Password does not meet requirements.
+
+### Global errors (form-level)
+
+Global errors are not tied to a single field.
+
+They occur when:
+
+-   Backend validation fails.
+-   A network error occurs.
+-   A business rule prevents submission.
+-   The action cannot be completed.
+
+#### Types of Global Errors
+
+##### Recoverable Failure
+
+Use a **Toast** when:
+
+-   The failure is temporary.
+-   The user can retry immediately.
+-   The error does not block form structure.
+
+Example:
+
+-   Temporary network issue.
+
+##### Critical / Blocking Failure
+
+Use a critical Message component when:
+
+-   The submission fails definitively.
+-   The user must take action.
+-   The error is structural or business-related.
+-   The error message is long or detailed.
+
+##### In Modal or Drawer contexts
+
+-   Always use a critical **Message**.
+-   The message is displayed inside it.
+-   The container remains open.
+
+#### Placement of global error
+
+When using a critical **Message**:
+
+-   It should be placed above the action buttons.
+-   It must not replace field-level errors.
+
+### Example
+
+First name- mandatory
+
+Email- mandatory
+
+## Success handling
+
+---
+
+### Direct feedback
+
+Use a **Toast** when:
+
+-   The action is completed successfully.
+-   The user stays on the same page.
+-   No additional flow is required.
+
+### Confirmation page / modal
+
+Use when:
+
+-   The flow continues.
+-   The user moves to a next step.
+-   A confirmation summary is required.
+
+## Form structures
+
+---
+
+### Simple form with standard action buttons
+
+Phone number
+
+AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorraAngolaAnguillaAntigua & BarbudaArgentinaArmeniaArubaAustraliaAustriaAzerbaijanBahamasBahrainBangladeshBarbadosBelarusBelgiumBelizeBeninBermudaBhutanBoliviaBosnia & HerzegovinaBotswanaBrazilBritish Indian Ocean TerritoryBritish Virgin IslandsBruneiBulgariaBurkina FasoBurundiCambodiaCameroonCanadaCape VerdeCaribbean NetherlandsCayman IslandsCentral African RepublicChadChileChinaChristmas IslandCocos (Keeling) IslandsColombiaComorosCongo - BrazzavilleCongo - KinshasaCook IslandsCosta RicaCôte d’IvoireCroatiaCubaCuraçaoCyprusCzechiaDenmarkDjiboutiDominicaDominican RepublicEcuadorEgyptEl SalvadorEquatorial GuineaEritreaEstoniaEswatiniEthiopiaFalkland Islands (Islas Malvinas)Faroe IslandsFijiFinlandFranceFrench GuianaFrench PolynesiaGabonGambiaGeorgiaGermanyGhanaGibraltarGreeceGreenlandGrenadaGuadeloupeGuamGuatemalaGuernseyGuineaGuinea-BissauGuyanaHaitiHondurasHong KongHungaryIcelandIndiaIndonesiaIranIraqIrelandIsle of ManIsraelItalyJamaicaJapanJerseyJordanKazakhstanKenyaKiribatiKuwaitKyrgyzstanLaosLatviaLebanonLesothoLiberiaLibyaLiechtensteinLithuaniaLuxembourgMacaoMadagascarMalawiMalaysiaMaldivesMaliMaltaMarshall IslandsMartiniqueMauritaniaMauritiusMayotteMexicoMicronesiaMoldovaMonacoMongoliaMontenegroMontserratMoroccoMozambiqueMyanmar (Burma)NamibiaNauruNepalNetherlandsNew CaledoniaNew ZealandNicaraguaNigerNigeriaNiueNorfolk IslandNorth KoreaNorth MacedoniaNorthern Mariana IslandsNorwayOmanPakistanPalauPalestinePanamaPapua New GuineaParaguayPeruPhilippinesPolandPortugalPuerto RicoQatarRéunionRomaniaRussiaRwandaSamoaSan MarinoSão Tomé & PríncipeSaudi ArabiaSenegalSerbiaSeychellesSierra LeoneSingaporeSint MaartenSlovakiaSloveniaSolomon IslandsSomaliaSouth AfricaSouth KoreaSouth SudanSpainSri LankaSt. BarthélemySt. HelenaSt. Kitts & NevisSt. LuciaSt. MartinSt. Pierre & MiquelonSt. Vincent & GrenadinesSudanSurinameSvalbard & Jan MayenSwedenSwitzerlandSyriaTaiwanTajikistanTanzaniaThailandTimor-LesteTogoTokelauTongaTrinidad & TobagoTunisiaTürkiyeTurkmenistanTurks & Caicos IslandsTuvaluU.S. Virgin IslandsUgandaUkraineUnited Arab EmiratesUnited KingdomUnited StatesUruguayUzbekistanVanuatuVatican CityVenezuelaVietnamWallis & FutunaWestern SaharaYemenZambiaZimbabwe
+
+### Grouped fields form
+
+### Personal Information
+
+First name- mandatory
+
+Last name- mandatory
+
+### Company Information
+
+Company name
+
+VAT number
+
+### Critical form
+
+Please type DELETE to confirm- mandatory
+
+This action is irreversible.
+
+## Accessibility requirements
+
+---
+
+-   "Mandatory" must be visible in the label.
+-   Expected input format must be visible in helper text.
+-   Error messages must be programmatically associated with fields.
+-   Fields must remain populated after validation errors.
+-   Inline validation must not trap focus.
+
+## Component selection guidelines
+
+---
+
+This non-exhaustive section helps teams choose the right input component depending on intent. It is presented from the user intention perspective.
+
+Choosing a component is not only about the type of data. It is about:
+
+-   How users think about the choice.
+-   Whether comparison is important.
+-   Whether precision is required.
+-   Whether the action is reversible.
+-   The cognitive load of the interface.
+
+The right component reduces friction before validation is even needed.
+
+### When the user needs to provide short, structured information
+
+Use  component.
+
+Use for:
+
+-   Personal information (First name, Last name).
+-   Identifiers (Reference number, Customer ID).
+-   Short labels (Project name, Tag name).
+
+Why?
+
+-   Users expect a single-line input for short, structured answers.
+-   Keeps vertical space minimal.
+-   Encourages concise input.
+
+Do not use when:
+
+-   The user must provide explanation or justification.
+-   The expected answer may exceed one short sentence.
+
+### When the user needs to explain, justify, or describe something
+
+Use  component.
+
+Use for:
+
+-   Explain why the user is requesting a change.
+-   Describe an issue the user encountered.
+-   Additional comments.
+
+Why?
+
+-   Visually communicates that longer input is expected.
+-   Encourages detailed answers.
+-   Prevents frustration caused by limited visible space.
+
+### When the user must create or confirm secure credentials
+
+Use  component.
+
+Use for:
+
+-   Account creation.
+-   Password reset.
+-   Sensitive authentication fields.
+
+Why?
+
+-   Hides sensitive information.
+-   May include strength indicators.
+-   Can support show/hide functionality.
+
+### When the user must enter an exact numeric value
+
+Use  or  component
+
+Use for:
+
+-   Quantity of items.
+-   Budget amount (precise value).
+-   Number of licenses.
+-   Percentage rate.
+
+Why?
+
+-   Precision matters.
+-   Value must be exact.
+
+Avoid when:
+
+-   The number has formatting rules (phone, IBAN, BIC).
+-   Users are more likely to think in ranges than exact values.
+
+### When the user is selecting an approximate value or a range
+
+Use  component.
+
+Use for:
+
+-   Budget filter.
+-   Price filtering in search results.
+-   Age range selection.
+-   Performance tuning.
+
+Why?
+
+-   Encourages exploration.
+-   Works well for filtering.
+-   Suitable when precision is not critical.
+
+Avoid when:
+
+-   Legal, financial, or contractual precision is required.
+-   The user must enter a specific numeric value.
+
+### When users must choose one option and all options should be visible
+
+Use  buttons.
+
+Use for:
+
+-   Choosing a subscription plan (e.g., Basic / Pro / Enterprise).
+-   Selecting delivery method.
+-   Choosing payment type.
+
+Why?
+
+-   All options are visible.
+-   Encourages comparison.
+-   Reduces hidden choices.
+-   Recommended when there are between 2 and 5 options.
+-   Each option has important contextual differences.
+
+### When users must choose one option from a list
+
+#### Select vs Combobox
+
+When a user must select a single option from a predefined list, the choice between **Select** and **Combobox** depends mainly on the size and complexity of the list.
+
+#### Use Select
+
+Use  when the list is limited and easy to scan visually.
+
+Typical situations:
+
+-   Selecting a status (Draft / Pending / Approved).
+-   Choosing a priority level (Low / Medium / High).
+-   Selecting a department in a small organization.
+
+**Select** is appropriate when:
+
+-   The number of options is moderate.
+-   Users can easily scroll and recognize the right option.
+-   Search is not necessary.
+
+#### Use Combobox
+
+Use  when the list is long or when search significantly improves usability.
+
+Typical situations:
+
+-   Selecting a country from a global list.
+-   Choosing a city.
+-   Assigning a user from a large organization.
+-   Selecting a product from a large catalog.
+
+**Combobox** is appropriate when:
+
+-   The dataset is large.
+-   Users are likely to know what they are looking for.
+-   Scrolling through the entire list would be inefficient.
+
+### When users can select multiple independent options
+
+Use .
+
+Use for:
+
+-   Selecting product features.
+-   Choosing notification preferences.
+-   Accepting multiple agreements.
+
+Why?
+
+-   Clearly communicates independence.
+-   No mutual exclusion implied.
+-   Good for visible, short lists.
+
+### When the user is enabling or disabling a setting
+
+Use  component.
+
+Use for:
+
+-   Enable dark mode.
+-   Activate notifications.
+-   Turn on auto-renewal.
+
+Why?
+
+-   Communicates immediate on/off state.
+-   Best for persistent settings.
+
+Avoid when:
+
+-   The action is critical or legally binding.
+-   The user must explicitly confirm something important.
+
+In those cases, use a .
+
+### When the user must select a specific date
+
+Use  component.
+
+Use for:
+
+-   Booking a meeting.
+-   Setting a deadline.
+-   Scheduling delivery.
+
+Why?
+
+-   Prevents format errors.
+-   Reduces cognitive load.
+-   Ensures valid date selection.
+
+Consider alternatives when:
+
+-   Only month and year are required.
+-   The user frequently types dates manually (advanced users).
+
+### When the user must provide supporting material
+
+Use  component.
+
+Use for:
+
+-   Uploading identity documents.
+-   Adding attachments to a request.
+-   Submitting supporting evidence.
+-   Uploading invoices.
+
+Why?
+
+-   Allows users to provide official or visual proof that cannot be reliably captured in structured fields.
+-   The content may need to be reviewed manually.
+-   Reproducing the information through fields would be incomplete or unreliable.
+
+Avoid when:
+
+-   The information can be captured through structured inputs (text, number, date, select).
+-   The upload is used to compensate for missing inputs.

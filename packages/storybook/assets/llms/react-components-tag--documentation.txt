@@ -1,4 +1,12 @@
-React Components
+---
+title: "Tag"
+slug: tag
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1682
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--documentation.txt
+---
 
 # Tag
 
@@ -114,6 +122,10 @@ Unlike , **Tags** are interactive and can be removed by the user. To ensure acce
 
 When multiple **Tags** are displayed together (e.g., a collection of selected filters or labels), they should be wrapped in an unordered list of items (`<ul>` and `<li>`) to ensure proper announcement by screen readers.
 
+-   
+-   
+-   
+
 ```jsx
 {
   globals: {
@@ -141,23 +153,20 @@ This allows screen readers to announce a list with the number of items, making i
 When modifying the HTML structure is not possible, use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [role="listitem"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) to mimic list semantics.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Tag } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <div role="list">
-      <div role="listitem">
-        <Tag>Design</Tag>
-      </div>
-      <div role="listitem">
-        <Tag>Development</Tag>
-      </div>
-      <div role="listitem">
-        <Tag>Accessibility</Tag>
-      </div>
-    </div>
-}
+<div role="list">
+  <div role="listitem">
+    <Tag>
+      Design    </Tag>
+  </div>
+  <div role="listitem">
+    <Tag>
+      Development    </Tag>
+  </div>
+  <div role="listitem">
+    <Tag>
+      Accessibility    </Tag>
+  </div>
+</div>
 ```
 
 This ensures that screen readers still recognize the **Tags** as a structured list, even without native `<ul>` and `<li>` elements.

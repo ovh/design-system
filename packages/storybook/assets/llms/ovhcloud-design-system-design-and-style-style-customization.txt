@@ -1,0 +1,94 @@
+---
+title: "Style Customization"
+slug: ovhcloud-design-system-design-and-style-style-customization
+category: generic
+type: overview
+version: 19.7.3
+tokens: 606
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-design-and-style-style-customization.txt
+---
+
+# Style Customization
+
+---
+
+Although ODS components comes with the expected designs, it is sometime useful to customize the rendering of a component to fit your context.
+
+Here we'll describe different ways to customize an ODS component.
+
+## Apply style directly on the component
+
+---
+
+The ODS component host behave like any other React element, so you can apply a class directly to it.
+
+For example, if you want to display a vertical list of `Link`, you can override the inline default display:
+
+```html
+<Link className="custom-link">
+  My link 1
+</Link>
+<Link className="custom-link">
+  My link 2
+</Link>
+<style>
+  .custom-link {
+    display: block;
+  }
+</style>
+```
+
+As there is no shadow DOM anymore, all of the component DOM can be targeted through CSS selectors. It is advised to not rely on cascading selector, as the DOM structure may evolve from one version to another.
+
+  
+
+To ensure reliable CSS, use a specific className on the component you want to customize.
+
+  
+
+If you want to specifically target underneath elements, you can rely on some [data attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes#css_access) , we'll update the documentation about those soon.
+
+## Reuse existing ODS style
+
+---
+
+In some cases where you cannot use an ODS component, you may want one of your own components to look like an ODS component (for example, when using an external library that doesn't allow custom templating).
+
+We did expose a bunch of [Sass](https://sass-lang.com) mixins that allows you to easily apply the ODS style to your own elements.
+
+For example, if you need to make an anchor tag looks like a `Link`:
+
+```css
+@import '@ovhcloud/ods-react/style';
+.my-link {
+  @include ods-link();
+  @include ods-link-color('primary');
+}
+```
+
+```html
+<a class="my-link"></a>
+```
+
+## CSS variables
+
+---
+
+All ODS components are using common design tokens, that are accessible through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) .
+
+We do advise to reuse those variables on your own style, this way your application will automatically be updated on current theme changes or when new themes will be released.
+
+You can find the whole list on the  documentation page.
+
+Example of CSS variables:
+
+```html
+<h1 class="my-own-page-title">
+  Welcome page
+</h1>
+<style>
+  .my-own-page-title {
+    color: var(--ods-color-primary-500);
+  }
+</style>
+```

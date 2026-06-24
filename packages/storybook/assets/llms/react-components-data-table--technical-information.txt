@@ -1,22 +1,16 @@
-React Components
+---
+title: "Data Table"
+slug: data-table
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 3424
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-table--technical-information.txt
+---
 
 # Data Table
 
 ## Overview
-
----
-
-## Anatomy
-
----
-
-DataTable
-
-DataTableBody
-
-DataTableEmpty
-
-DataTableHead
 
 ---
 
@@ -45,28 +39,19 @@ Role
 | Jane | Smith | 25 | jane.smith@example.com | User |
 | Bob | Johnson | 35 | bob.johnson@example.com | Manager |
 
-| 
-First Name
+## Anatomy
 
- | 
+---
 
-Last Name
+DataTable
 
- | 
+DataTableBody
 
-Age
+DataTableEmpty
 
- | 
+DataTableHead
 
-Email
-
- | 
-
-Role
-
- |
-| --- | --- | --- | --- | --- |
-| Empty table data |
+---
 
 ## DataTable
 
@@ -353,17 +338,7 @@ You can set it trough the `state` attribute and keep it in sync by passing the m
 
 Here is an example of a controlled sorted table:
 
-### Sorting
-
-#### Disable sorting
-
-Column sorting is enabled by default for all columns.
-
-If you want to disabled sorting for the whole table, you can set the DataTable `enableSorting` attribute to `false`.
-
-If you want to disabled sorting for some specific column, you can set `enableSorting` to `false` in the columns definition.
-
-Sort disabled on some columns
+Controlled sorted table
 | 
 First Name
 
@@ -385,9 +360,19 @@ Role
 
  |
 | --- | --- | --- | --- | --- |
-| John | Doe | 30 | john.doe@domain2.com | Admin |
 | Jane | Smith | 25 | jane.smith@domain1.com | User |
 | Bob | Johnson | 35 | bob.johnson@domain3.com | Manager |
+| John | Doe | 30 | john.doe@domain2.com | Admin |
+
+### Sorting
+
+#### Disable sorting
+
+Column sorting is enabled by default for all columns.
+
+If you want to disabled sorting for the whole table, you can set the DataTable `enableSorting` attribute to `false`.
+
+If you want to disabled sorting for some specific column, you can set `enableSorting` to `false` in the columns definition.
 
 #### Custom sorting
 
@@ -434,6 +419,31 @@ Here is an example with a dummy API:
 The column pinning feature allows some table columns to become sticky either on the left or right side of the table.
 
 The `columnPinning` state takes two arrays (left and right) of column ids that will be set as sticky.
+
+| 
+Age
+
+ | 
+
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Role
+
+ | 
+
+Email
+
+ |
+| --- | --- | --- | --- | --- |
+| 30 | John | Doe | Admin | john.doe@example.com |
+| 25 | Jane | Smith | User | jane.smith@example.com |
+| 35 | Bob | Johnson | Manager | bob.johnson@example.com |
 
 ### Column visibility
 
@@ -507,6 +517,29 @@ type Person = {
 ```
 
 ### Empty
+
+| 
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+Email
+
+ | 
+
+Role
+
+ |
+| --- | --- | --- | --- | --- |
+| Empty table data |
 
 ```jsx
 type Person = {

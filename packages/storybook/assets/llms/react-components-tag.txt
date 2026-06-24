@@ -1,4 +1,14 @@
-# React Components/Tag
+---
+title: "Tag"
+slug: tag
+category: component
+type: overview
+version: 19.7.3
+tokens: 1317
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag.txt
+---
+
+# Tag
 
 ## Props
 

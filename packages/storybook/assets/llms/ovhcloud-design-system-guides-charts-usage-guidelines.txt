@@ -1,0 +1,139 @@
+---
+title: "Charts - Usage Guidelines"
+slug: ovhcloud-design-system-guides-charts-usage-guidelines
+category: generic
+type: overview
+version: 19.7.3
+tokens: 768
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-guides-charts-usage-guidelines.txt
+---
+
+# Charts - Usage Guidelines
+
+---
+
+These guidelines provide UI, functional, and UX rules to follow when creating charts.
+
+While this documentation is not exhaustive and does not cover technical implementation details, it serves as a comprehensive reference for designing effective and consistent data visualizations.
+
+## General guidelines
+
+---
+
+-   **Consistency**: Maintain consistency in your chart types and styles across your application or platform
+-   **Labels**: Clearly label your axes, legend, and data points. Use descriptive titles (or Tooltips) to help users understand the chart's purpose and details
+-   **Accessibility**: Ensure your charts are accessible to all users (see [Accessible Charts](https://www.a11y-collective.com/blog/accessible-charts/) )
+
+## Chart types
+
+---
+
+The following chart types are commonly used in OVHcloud, categorized by their primary use cases:
+
+### Bar Charts
+
+**Usage**
+
+-   Comparing quantities or amounts between different categories
+-   Displaying data in a stacked layout to show cumulative values
+
+**Best Practices**
+
+-   Prefer using vertical bars rather than horizontal layout
+-   Use solid bar colors to distinguish them from background
+
+### Line Charts
+
+**Usage**
+
+-   Showing progression and trends of data over time
+-   Comparing multiple lines through a common criterion such as a timespan
+
+**Best Practices**
+
+-   Prefer using solid lines for data series
+
+### Area Charts
+
+**Usage**
+
+-   Presenting the amplitude of content and focusing on drastic trend changes
+-   Displaying data in a stacked layout to show cumulative values
+
+**Best Practices**
+
+-   Top of areas must be a solid line to draw area limit
+-   Opacity can be applied to areas to show data overlaps
+
+### Pie Charts
+
+**Usage**
+
+-   Displaying proportions and percentages of a whole amount
+
+**Best Practices**
+
+-   Avoid more than 5 slices to keep clarity
+
+## Styling
+
+---
+
+### Structural elements
+
+For structural elements, here are the expected values to apply:
+
+| Element | Token | Color | Preview |
+| --- | --- | --- | --- |
+| Background | `--ods-theme-chart-background-color` | `#ffffff` | 
+ |
+| Axis | `--ods-theme-chart-axis-color` | `#b3b3b3` | 
+
+ |
+| Ticks (axis labels) | `--ods-theme-chart-tick-color` | `#4d4d4d` | 
+
+ |
+| Legends | `--ods-theme-chart-legend-color` | `#4d4d4d` | 
+
+ |
+| Grids | `--ods-theme-chart-grid-color` | `#cccccc` | 
+
+ |
+| Reference Line | `--ods-theme-chart-reference-line-color` | `#bf0020` | 
+
+ |
+
+-   Font-family must follow ODS pre-set for all text labelling
+-   Font-size minimum values to use are:
+    -   **12px** for axis labels
+    -   **14px** for legends
+    -   **16px** for tooltip content
+-   ODS Tooltips must be used to define series data while hovering on values
+
+## Color scheme
+
+---
+
+Use the following colors for your chart series, in the specified order:
+
+01#0050d7
+
+02#ac246f
+
+03#00875a
+
+04#df3400
+
+05#25327c
+
+06#a61e20
+
+07#006d77
+
+08#6a2ecf
+
+09#374151
+
+10#4f8400
+
+These colors are picked for their likelihood to be valid regarding color contrast ratio, and can be distinguished from one another.

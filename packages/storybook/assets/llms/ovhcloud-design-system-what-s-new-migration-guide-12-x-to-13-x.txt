@@ -1,0 +1,23 @@
+---
+title: "What S New Migration Guide 12 X To 13 X"
+slug: ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x
+category: generic
+type: overview
+version: 19.7.3
+tokens: 64
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x.txt
+---
+
+# What S New Migration Guide 12 X To 13 X
+
+## Select width
+
+---
+
+The Select component fixed width when non flex has been removed.
+
+```css
+width: calc(var(--ods-size-stack-08) * 11)
+```
+
+Should you need any width, you will have to set it on your component.

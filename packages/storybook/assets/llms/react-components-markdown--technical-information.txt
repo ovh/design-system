@@ -1,4 +1,12 @@
-React Components
+---
+title: "Markdown"
+slug: markdown
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 681
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-markdown--technical-information.txt
+---
 
 # Markdown
 
@@ -134,11 +142,6 @@ console.log('Hello World!');
 ```
 
 # Highlighted Code
-
-```
-// print something in the console
-console.log('Hello World!');
-```
 
 ## Recipes
 

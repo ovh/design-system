@@ -1,4 +1,14 @@
-# React Components/Text
+---
+title: "Text"
+slug: text
+category: component
+type: overview
+version: 19.7.3
+tokens: 1261
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text.txt
+---
+
+# Text
 
 ## Props
 

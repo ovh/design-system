@@ -1,4 +1,12 @@
-React Components
+---
+title: "Cart"
+slug: cart
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 2541
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart--technical-information.txt
+---
 
 # Cart
 

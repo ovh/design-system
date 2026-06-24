@@ -1,10 +1,16 @@
-React Components
+---
+title: "File Upload"
+slug: file-upload
+category: component
+type: documentation
+version: 19.7.3
+tokens: 2095
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--documentation.txt
+---
 
 # File Upload
 
 _**File Upload** allows users to select one or more files to upload to a specific location._
-
-Drag & drop a file 
 
 ## Overview
 
@@ -180,6 +186,8 @@ Screen readers will announce the label, the field and its content.
 ### Labeling cancel/delete Button
 
 The `Cancel` and `Delete` file buttons have to be explicit by adding context about their action and the file name.
+
+Drag & drop a file 
 
 ```jsx
 const [files, setFiles] = useState<File[]>([]);

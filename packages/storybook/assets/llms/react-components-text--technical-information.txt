@@ -1,4 +1,12 @@
-React Components
+---
+title: "Text"
+slug: text
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1604
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text--technical-information.txt
+---
 
 # Text
 
@@ -13,8 +21,6 @@ React Components
 Text
 
 ---
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 ## Text
 
@@ -105,40 +111,59 @@ Span
 ###### Heading-6
 
 ```jsx
-{
-  globals: {
-    imports: `import { TEXT_PRESET, Text } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Text preset={TEXT_PRESET.blockquote}>Blockquote</Text>
-      <Text preset={TEXT_PRESET.caption}>Caption</Text><br />
-      <Text preset={TEXT_PRESET.code}>Code</Text><br />
-      <Text preset={TEXT_PRESET.label}>Label</Text>
-      <Text preset={TEXT_PRESET.paragraph}>Paragraph</Text>
-      <Text preset={TEXT_PRESET.small}>Small</Text><br />
-      <Text preset={TEXT_PRESET.span}>Span</Text><br />
-      <Text preset={TEXT_PRESET.heading1}>Heading-1</Text>
-      <Text preset={TEXT_PRESET.heading2}>Heading-2</Text>
-      <Text preset={TEXT_PRESET.heading3}>Heading-3</Text>
-      <Text preset={TEXT_PRESET.heading4}>Heading-4</Text>
-      <Text preset={TEXT_PRESET.heading5}>Heading-5</Text>
-      <Text preset={TEXT_PRESET.heading6}>Heading-6</Text>
-    </>
-}
+<>
+  <Text preset="blockquote">
+    Blockquote  </Text>
+  <Text preset="caption">
+    Caption  </Text>
+  <br />
+  <Text preset="code">
+    Code  </Text>
+  <br />
+  <Text preset="label">
+    Label  </Text>
+  <Text preset="paragraph">
+    Paragraph  </Text>
+  <Text preset="small">
+    Small  </Text>
+  <br />
+  <Text preset="span">
+    Span  </Text>
+  <br />
+  <Text preset="heading-1">
+    Heading-1  </Text>
+  <Text preset="heading-2">
+    Heading-2  </Text>
+  <Text preset="heading-3">
+    Heading-3  </Text>
+  <Text preset="heading-4">
+    Heading-4  </Text>
+  <Text preset="heading-5">
+    Heading-5  </Text>
+  <Text preset="heading-6">
+    Heading-6  </Text>
+</>
 ```
 
 ### Disabled
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
 ```jsx
-<Text disabled>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</Text>
+{
+  globals: {
+    imports: `import { Text } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Text disabled>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.    </Text>
+}
 ```
 
 ### Caption preset in <table>
+
+My table title
+| Person | Age |
+| --- | --- |
+| Chris | 22 |
 
 ```jsx
 {
@@ -211,7 +236,7 @@ I am a <span> using the heading5 preset style.
 
 Chat
 
-Assistant2:36 PM
+Assistant3:38 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 

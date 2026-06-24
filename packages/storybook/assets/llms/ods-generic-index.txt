@@ -1,0 +1,31 @@
+# OVHcloud Design System - Generic Documentation Index
+
+> Individual documentation files (design tokens, styling, guides, FAQ, ...) for targeted LLM context.
+> Use these files to provide only the documentation you need, instead of the full documentation.
+
+- [Accessibility Guide](./ovhcloud-design-system-guides-accessibility.txt) (~4792 tokens)
+- [Apply ODS Style](./ovhcloud-design-system-design-and-style-apply-ods-style.txt) (~309 tokens)
+- [Charts - Usage Guidelines](./ovhcloud-design-system-guides-charts-usage-guidelines.txt) (~768 tokens)
+- [Components](./recipes-components.txt) (~967 tokens)
+- [Design Tokens](./ovhcloud-design-system-design-and-style-design-tokens.txt) (~1879 tokens)
+- [formatPrice](./helpers-formatprice--documentation.txt) (~265 tokens)
+- [formatPrice](./helpers-formatprice.txt) (~311 tokens)
+- [formatRelativeTime](./helpers-formatrelativetime--documentation.txt) (~341 tokens)
+- [formatRelativeTime](./helpers-formatrelativetime.txt) (~351 tokens)
+- [Frequently Asked Questions](./ovhcloud-design-system-f-a-q.txt) (~1482 tokens)
+- [Get Started](./ovhcloud-design-system-get-started.txt) (~661 tokens)
+- [Implementing a Form](./ovhcloud-design-system-guides-form-implementing-a-form.txt) (~1495 tokens)
+- [Internationalization](./ovhcloud-design-system-guides-internationalization.txt) (~546 tokens)
+- [Migrate to v19](./ovhcloud-design-system-what-s-new-migration-guide-to-19-x.txt) (~400 tokens)
+- [Roadmap](./ovhcloud-design-system-roadmap.txt) (~4 tokens)
+- [Style Customization](./ovhcloud-design-system-design-and-style-style-customization.txt) (~606 tokens)
+- [Tailwind CSS Integration](./ovhcloud-design-system-design-and-style-tailwind-css-integration.txt) (~1231 tokens)
+- [Usage Guidelines](./ovhcloud-design-system-guides-form-guidelines.txt) (~3407 tokens)
+- [Welcome](./ovhcloud-design-system-welcome.txt) (~70 tokens)
+- [What S New Migration Guide 12 X To 13 X](./ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x.txt) (~64 tokens)
+- [What S New Migration Guide 13 X To 14 X](./ovhcloud-design-system-what-s-new-migration-guide-13-x-to-14-x.txt) (~68 tokens)
+- [What S New Migration Guide 14 X To 15 X](./ovhcloud-design-system-what-s-new-migration-guide-14-x-to-15-x.txt) (~768 tokens)
+- [What S New Migration Guide 15 X To 16 X](./ovhcloud-design-system-what-s-new-migration-guide-15-x-to-16-x.txt) (~488 tokens)
+- [What S New Migration Guide 16 X To 17 X](./ovhcloud-design-system-what-s-new-migration-guide-16-x-to-17-x.txt) (~458 tokens)
+- [What S New Migration Guide 17 X To 18 X](./ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x.txt) (~323 tokens)
+- [What's new ?](./ovhcloud-design-system-what-s-new-what-s-new.txt) (~17596 tokens)

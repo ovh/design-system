@@ -1,4 +1,12 @@
-React Components
+---
+title: "Progress Bar"
+slug: progress-bar
+category: component
+type: documentation
+version: 19.7.3
+tokens: 983
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar--documentation.txt
+---
 
 # Progress Bar
 

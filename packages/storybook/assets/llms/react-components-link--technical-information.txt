@@ -1,4 +1,12 @@
-React Components
+---
+title: "Link"
+slug: link
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 894
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--technical-information.txt
+---
 
 # Link
 

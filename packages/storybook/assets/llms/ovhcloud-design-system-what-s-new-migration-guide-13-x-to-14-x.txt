@@ -1,0 +1,23 @@
+---
+title: "What S New Migration Guide 13 X To 14 X"
+slug: ovhcloud-design-system-what-s-new-migration-guide-13-x-to-14-x
+category: generic
+type: overview
+version: 19.7.3
+tokens: 68
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-what-s-new-migration-guide-13-x-to-14-x.txt
+---
+
+# What S New Migration Guide 13 X To 14 X
+
+## Tile interactive attribute
+
+---
+
+The Tile component `interactive` attribute has been removed.
+
+```typescript
+interactive?: boolean;
+```
+
+If you are using `interactive` attribute on a Tile in your project, you should remove it.

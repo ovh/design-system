@@ -1,0 +1,86 @@
+---
+title: "formatRelativeTime"
+slug: helpers-formatrelativetime
+category: generic
+type: overview
+version: 19.7.3
+tokens: 351
+source: https://ovh.github.io/design-system/v19.7.3/llms/helpers-formatrelativetime.txt
+---
+
+# formatRelativeTime
+
+## Examples
+
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { formatRelativeTime } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => <>{formatRelativeTime(new Date())}</>
+}
+```
+
+### Locales
+
+```tsx
+{
+  globals: {
+    imports: `import { formatRelativeTime } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>France: {formatRelativeTime(new Date(), 'fr-FR')}</p>
+      <p>Germany: {formatRelativeTime(new Date(), 'de-DE')}</p>
+      <p>Arabic: {formatRelativeTime(new Date(), 'ar-EG')}</p>
+      <p>India: {formatRelativeTime(new Date(), 'en-IN')}</p>
+    </>
+}
+```
+
+### Option
+
+```tsx
+{
+  globals: {
+    imports: `import { formatRelativeTime } from '@ovhcloud/ods-react';`
+  },
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  tags: ['!dev'],
+  render: ({}) => <>
+      <p>Long: {formatRelativeTime(new Date(), 'en-US', {
+        style: 'long'
+      })}</p>
+      <p>Short: {formatRelativeTime(new Date(), 'en-US', {
+        style: 'short'
+      })}</p>
+      <p>Narrow: {formatRelativeTime(new Date(), 'en-US', {
+        style: 'narrow'
+      })}</p>
+    </>
+}
+```

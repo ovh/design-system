@@ -1,0 +1,185 @@
+---
+title: "Frequently Asked Questions"
+slug: ovhcloud-design-system-f-a-q
+category: generic
+type: overview
+version: 19.7.3
+tokens: 1482
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-f-a-q.txt
+---
+
+# Frequently Asked Questions
+
+---
+
+_Welcome to the F.A.Q. section of the OVHcloud Design System (ODS)._
+
+_Here, we aim to address common questions and provide helpful guidance for developers._
+
+## How can I contribute?
+
+---
+
+OVHcloud Design System is an evolving project, and we welcome contributions from the community. By keeping our repository open source, we aim to make it easier for anyone to suggest improvements, fix issues, or share ideas.
+
+Whether it’s a small fix or a new feature, every contribution helps improve the quality and usability of the system. We appreciate the time and effort of anyone who chooses to take part.
+
+Please note that while we welcome contributions, we encourage you to discuss major changes with our team to ensure alignment with the project's goals and overall quality. Additionally, if you're interested in proposing a new feature, please reach us out first to avoid duplicating effort, as we may already be working on a similar development.
+
+Refer to our project [README](https://github.com/ovh/design-system?tab=contributing-ov-file#contributing-to-ods-project) to learn more about installation and pre-requisites.
+
+## How are releases managed?
+
+---
+
+The OVHcloud Design System follows a structured release process to deliver improvements regularly while letting teams adopt updates at their own pace.
+
+**Patch releases** deliver critical fixes or small improvements and can be adopted immediately.
+
+**Minor releases** introduce new non-breaking features and start the deprecation process when needed.
+
+**Major releases** contain breaking changes, removals of previously deprecated elements, and migration documentation.
+
+Releases are published several times a year based on user needs and product evolution.
+
+We support two major versions at the same time:
+
+-   The current major version receives full support (features, improvements, fixes).
+-   The previous major version receives maintenance support for six months (critical fixes only).
+-   Older versions are no longer supported.
+
+Deprecations follow a two-step workflow:
+
+-   They are announced in a minor release, marked as "Deprecated" in Storybook, and paired with migration guidance.
+-   They are removed in the next major release.
+
+Teams may upgrade at their own pace and can skip versions. We recommend pinning a specific ODS version in your project to ensure consistent behavior.
+
+## I can't find a component I need
+
+---
+
+ODS provides base components that you can build on top of and implement in various contexts.
+
+If you need a new component, we recommend working with the design team to request and design the component to ensure it aligns with the ODS guidelines.
+
+## Is my browser supported?
+
+---
+
+ODS supports the latest 2 versions of the following browsers:
+
+-   Google Chrome
+-   Microsoft Edge
+-   Mozilla Firefox
+-   Opera
+-   Safari
+
+## Can I use another CSS framework on top of ODS?
+
+---
+
+You can use any CSS framework on top of ODS.
+
+Note that some imperative CSS frameworks like Bootstrap may override ODS styling.
+
+Ensure compatibility by testing the integration in your project.
+
+## What about Web Components and Vue?
+
+---
+
+Starting from v19, ODS have moved to fully React-based components. Web Components and the Vue wrapper are now only available in v18.x, which is now in maintenance mode, so there won't be any new features for this version.
+
+If you still need to access documentation about Web Components or Vue, use the version selector at the top left to switch to the latest 18.x documentation, where you'll find the most up-to-date information.
+
+## TS2307: Cannot find module '@ovhcloud/ods-react' or its corresponding type declarations.
+
+---
+
+Check that you're using the `bundler` [module resolution](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler) in your `tsconfig.json`.
+
+```typescript
+"moduleResolution": "bundler"
+```
+
+## My popover/tooltip is not displayed correctly
+
+---
+
+Check that you're not using a `Fragment` as your trigger.
+
+The following will **not** work properly:
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <>
+      <Component1 />
+      <Component2 />
+    </>
+  </TooltipTrigger>
+  <TooltipContent>
+    ...  </TooltipContent>
+</Tooltip>
+```
+
+Replace the `Fragment` with an actual node:
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <MyTrigger>
+      ...    </MyTrigger>
+  </TooltipTrigger>
+  <TooltipContent>
+    ...  </TooltipContent>
+</Tooltip>
+```
+
+## Overlay elements are not displayed correctly in a drawer/modal
+
+---
+
+`Modal` and `Drawer` components have a `z-index` greater than other overlay components. This is to prevent those to appear behind an open modal/drawer.
+
+To allow overlay elements to correcty render inside a modal/drawer, add the `createPortal={ false }` attribute to the `Content` component of the overlay element.
+
+See  and .
+
+## Icons are not displayed
+
+---
+
+Ensure you did import the fonts in your application, check the  page to read more about how to achieve this.
+
+## Warning: Function components cannot be given refs
+
+---
+
+When using components enabling dynamic component (through the `as` attribute), you may encounter the following error message in the console:
+
+```
+Warning: Function components cannot be given refs.
+Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+```
+
+This means you're passing a function component to the `as` attribute and it needs to be wrapped by a `forwardRef` to be able to manage the `ref` correctly.
+
+```tsx
+import { Link } from '@ovhcloud/ods-react';
+import { forwardRef, useRef } from 'react';
+const DummyLink = forwardRef(({ children, ...props }, ref) => {
+  return (
+    <a data-test="dummy" { ...props } ref={ ref }>{ children }</a>
+  );
+});
+const MyApp = () => {
+  const linkRef = useRef(null);
+  return (
+    <div>
+      ...      <Link as={ DummyLink } href="#" ref={ linkRef }>...</Link>
+    </div>
+  );
+};
+```

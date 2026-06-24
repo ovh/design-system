@@ -1,4 +1,12 @@
-React Components
+---
+title: "Tooltip"
+slug: tooltip
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 2401
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip--technical-information.txt
+---
 
 # Tooltip
 
@@ -17,6 +25,8 @@ TooltipContent
 TooltipTrigger
 
 ---
+
+This is the tooltip content
 
 ## Tooltip
 

@@ -1,4 +1,12 @@
-React Components
+---
+title: "Button"
+slug: button
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1913
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--documentation.txt
+---
 
 # Button
 
@@ -138,9 +146,15 @@ Screen readers will announce the text content.
 If a **Button** contains only an icon, it must include an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to provide context.
 
 ```jsx
-<Button aria-label="Clear">
-  <Icon name="xmark" />
-</Button>
+{
+  globals: {
+    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Button aria-label='Clear'>
+        <Icon name={ICON_NAME.xmark} />
+    </Button>
+}
 ```
 
 Screen readers will announce the label.

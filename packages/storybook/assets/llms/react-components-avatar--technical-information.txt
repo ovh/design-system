@@ -1,4 +1,12 @@
-React Components
+---
+title: "Avatar"
+slug: avatar
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 363
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-avatar--technical-information.txt
+---
 
 # Avatar
 
@@ -103,6 +111,6 @@ J
 
 Chat
 
-Assistant2:36 PM
+Assistant3:37 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.

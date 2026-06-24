@@ -1,4 +1,12 @@
-React Components
+---
+title: "Icon"
+slug: icon
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 2498
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-icon--technical-information.txt
+---
 
 # Icon
 
@@ -262,25 +270,13 @@ name
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Icon name={ICON_NAME.home} />
-}
+<Icon name="home" />
 ```
 
 ### Decorative
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Icon name={ICON_NAME.home} />
-}
+<Icon name="home" />
 ```
 
 ### Informative
@@ -299,7 +295,7 @@ name
 
 Chat
 
-Assistant2:36 PM
+Assistant3:37 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 

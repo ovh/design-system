@@ -1,4 +1,14 @@
-# React Components/Combobox
+---
+title: "Combobox"
+slug: combobox
+category: component
+type: overview
+version: 19.7.3
+tokens: 4589
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox.txt
+---
+
+# Combobox
 
 ## Props
 

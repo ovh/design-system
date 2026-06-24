@@ -1,10 +1,24 @@
-React Components
+---
+title: "Pagination"
+slug: pagination
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1549
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--technical-information.txt
+---
 
 # Pagination
 
 ## Overview
 
 ---
+
+102550100300
+
+of 100 results
+
+Go to page
 
 ## Anatomy
 
@@ -19,6 +33,12 @@ PaginationPageSizeSelector
 PaginationPages
 
 ---
+
+102550100300
+
+of 100 results
+
+Go to page
 
 ## Pagination
 
@@ -221,15 +241,13 @@ const [page, setPage] = useState(1);
 ### Sibling count
 
 ```jsx
-{
-  globals: {
-    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Pagination defaultPage={5} siblingCount={2} totalItems={500}>
-      <PaginationPages />
-    </Pagination>
-}
+<Pagination
+  defaultPage={5}
+  siblingCount={2}
+  totalItems={500}
+>
+  <PaginationPages />
+</Pagination>
 ```
 
 ### With tooltip labels
@@ -247,10 +265,6 @@ const [page, setPage] = useState(1);
 ```
 
 ### With page size selection
-
-102550100300
-
-of 500 results
 
 ```jsx
 {

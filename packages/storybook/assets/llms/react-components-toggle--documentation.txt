@@ -1,4 +1,12 @@
-React Components
+---
+title: "Toggle"
+slug: toggle
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1280
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle--documentation.txt
+---
 
 # Toggle
 
@@ -111,14 +119,18 @@ Enable dark mode
 
 Screen readers will announce a checkbox, its state and the label.
 
-Dark mode
-
 ```jsx
-<Toggle aria-label="Enable dark mode">
-  <ToggleControl />
-  <ToggleLabel>
-    Dark mode  </ToggleLabel>
-</Toggle>
+{
+  globals: {
+    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Toggle aria-label="Enable dark mode">
+      <ToggleControl />
+      <ToggleLabel>
+        Dark mode      </ToggleLabel>
+    </Toggle>
+}
 ```
 
 Screen readers will announce a checkbox, its state and the label.

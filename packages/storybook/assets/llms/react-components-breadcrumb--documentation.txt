@@ -1,4 +1,12 @@
-React Components
+---
+title: "Breadcrumb"
+slug: breadcrumb
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1377
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-breadcrumb--documentation.txt
+---
 
 # Breadcrumb
 

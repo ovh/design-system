@@ -1,4 +1,14 @@
-# React Components/Switch
+---
+title: "Switch"
+slug: switch
+category: component
+type: overview
+version: 19.7.3
+tokens: 1426
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch.txt
+---
+
+# Switch
 
 ## Props
 

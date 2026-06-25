@@ -1,10 +1,65 @@
-React Components
+---
+title: "Cart"
+slug: cart
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 2541
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart--technical-information.txt
+---
 
 # Cart
 
 ## Overview
 
 ---
+
+Duration
+
+2 years€32.38
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+Duration
+
+2 years€12.70
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+23% VAT / 2 years€13.47
+
+---
+
+Total€58.55
+
+2 products
+
+ex. VAT / year  
+i.e. €XX.XX incl. VAT / year
 
 ## Anatomy
 
@@ -25,6 +80,55 @@ CartProductGroupItem
 CartTotal
 
 ---
+
+Duration
+
+2 years€32.38
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+Duration
+
+2 years€12.70
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+23% VAT / 2 years€13.47
+
+---
+
+Total€58.55
+
+2 products
+
+ex. VAT / year  
+i.e. €XX.XX incl. VAT / year
+
+Your cart is empty
 
 ## Cart
 
@@ -233,6 +337,8 @@ Total16,24 €
 
 ### Empty
 
+Your cart is empty
+
 ```jsx
 <Cart>
   <CartEmpty>
@@ -244,6 +350,53 @@ Total16,24 €
 ```
 
 ### Complete
+
+Duration
+
+2 years€32.38
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+Duration
+
+2 years€12.70
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+23% VAT / 2 years€13.47
+
+---
+
+Total€58.55
+
+2 products
+
+ex. VAT / year  
+i.e. €XX.XX incl. VAT / year
 
 ```jsx
 <Cart style={{
@@ -291,6 +444,53 @@ Total16,24 €
 ```
 
 ### Mobile
+
+Duration
+
+2 years€32.38
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+Duration
+
+2 years€12.70
+
+---
+
+DNSSEC
+
+1xSecure DNSIncluded
+
+---
+
+E-mail account
+
+1xZimbra StarterIncluded
+
+---
+
+23% VAT / 2 years€13.47
+
+---
+
+Total€58.55
+
+2 products
+
+ex. VAT / year  
+i.e. €XX.XX incl. VAT / year
 
 ```jsx
 <Cart style={{

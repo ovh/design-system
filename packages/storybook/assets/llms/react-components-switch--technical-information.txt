@@ -1,4 +1,12 @@
-React Components
+---
+title: "Switch"
+slug: switch
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 893
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch--technical-information.txt
+---
 
 # Switch
 
@@ -123,78 +131,63 @@ value
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Switch>
-      <SwitchItem value="item-1">Item 1</SwitchItem>
-      <SwitchItem value="item-2">Item 2</SwitchItem>
-      <SwitchItem value="item-3">Item 3</SwitchItem>
-    </Switch>
-}
+<Switch>
+  <SwitchItem value="item-1">
+    Item 1  </SwitchItem>
+  <SwitchItem value="item-2">
+    Item 2  </SwitchItem>
+  <SwitchItem value="item-3">
+    Item 3  </SwitchItem>
+</Switch>
 ```
 
 ### Checked
 
 ```jsx
-{
-  globals: {
-    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Switch defaultValue="item-1">
-      <SwitchItem value="item-1">Item 1</SwitchItem>
-      <SwitchItem value="item-2">Item 2</SwitchItem>
-      <SwitchItem value="item-3">Item 3</SwitchItem>
-    </Switch>
-}
+<Switch defaultValue="item-1">
+  <SwitchItem value="item-1">
+    Item 1  </SwitchItem>
+  <SwitchItem value="item-2">
+    Item 2  </SwitchItem>
+  <SwitchItem value="item-3">
+    Item 3  </SwitchItem>
+</Switch>
 ```
 
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Switch, SwitchItem } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Switch disabled>
-      <SwitchItem value="item-1">Item 1</SwitchItem>
-      <SwitchItem value="item-2">Item 2</SwitchItem>
-      <SwitchItem value="item-3">Item 3</SwitchItem>
-    </Switch>
-}
+<Switch disabled>
+  <SwitchItem value="item-1">
+    Item 1  </SwitchItem>
+  <SwitchItem value="item-2">
+    Item 2  </SwitchItem>
+  <SwitchItem value="item-3">
+    Item 3  </SwitchItem>
+</Switch>
 ```
 
 ### Sizes
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { SWITCH_SIZE, Switch, SwitchItem } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Switch size={SWITCH_SIZE.sm}>
-        <SwitchItem value="item-1">Item 1</SwitchItem>
-        <SwitchItem value="item-2">Item 2</SwitchItem>
-        <SwitchItem value="item-3">Item 3</SwitchItem>
-      </Switch>
-      <Switch size={SWITCH_SIZE.md}>
-        <SwitchItem value="item-1">Item 1</SwitchItem>
-        <SwitchItem value="item-2">Item 2</SwitchItem>
-        <SwitchItem value="item-3">Item 3</SwitchItem>
-      </Switch>
-    </>
-}
+<>
+  <Switch size="sm">
+    <SwitchItem value="item-1">
+      Item 1    </SwitchItem>
+    <SwitchItem value="item-2">
+      Item 2    </SwitchItem>
+    <SwitchItem value="item-3">
+      Item 3    </SwitchItem>
+  </Switch>
+  <Switch size="md">
+    <SwitchItem value="item-1">
+      Item 1    </SwitchItem>
+    <SwitchItem value="item-2">
+      Item 2    </SwitchItem>
+    <SwitchItem value="item-3">
+      Item 3    </SwitchItem>
+  </Switch>
+</>
 ```
 
 ## Recipes

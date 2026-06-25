@@ -1,0 +1,164 @@
+---
+title: "Tailwind CSS Integration"
+slug: ovhcloud-design-system-design-and-style-tailwind-css-integration
+category: generic
+type: overview
+version: 19.7.3
+tokens: 1231
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-design-and-style-tailwind-css-integration.txt
+---
+
+# Tailwind CSS Integration
+
+---
+
+This guide covers how to integrate Tailwind CSS with the OVHcloud Design System (ODS) for both v3 and v4 versions.
+
+Tailwind CSS is a utility-first CSS framework that can be integrated with ODS components and design tokens, but it is not mandatory as ODS is not based on Tailwind.
+
+Technically, you don't need any configuration to make ODS work with Tailwind. These guides are here to add some auto-completion and best practices when using Tailwind, but you can directly use the design tokens right out of the box without any additional configuration.
+
+## Tailwind CSS v3 Configuration
+
+---
+
+For Tailwind CSS v3, create a `tailwind.config.js` which contains a remapping of ODS variables:
+
+```js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      borderRadius: {
+        'ods-border-radius-xs': 'var(--ods-border-radius-xs)',
+        'ods-border-radius-sm': 'var(--ods-border-radius-sm)',
+        'ods-border-radius-md': 'var(--ods-border-radius-md)',
+        'ods-border-radius-lg': 'var(--ods-border-radius-lg)',
+      },
+      colors: {
+        'ods-color-primary-500': 'var(--ods-color-primary-500)',
+        'ods-color-success-500': 'var(--ods-color-success-500)',
+        'ods-color-warning-700': 'var(--ods-color-warning-700)',
+      },
+      fontFamily: {
+        'ods-font-family-default': 'var(--ods-font-family-default)',
+      },
+    },
+  },
+  plugins: [],
+}
+```
+
+### Integration with IDEs
+
+#### Integration with JetBrains
+
+This should work straight out of the box.
+
+#### Integration with VSCode
+
+Create a `./.vscode/tailwind.json` containing the classes you want to expose for autocompletion.
+
+```json
+{
+    "customClasses": [
+      "ods-color-primary-500",
+      "ods-color-success-500",
+      "ods-color-critical-700",
+      "ods-border-radius-xs",
+      "ods-border-radius-sm",
+      "ods-border-radius-md",
+      "ods-border-radius-lg",
+      "ods-font-family-default",
+    ]
+  }
+```
+
+## Tailwind CSS v4 Configuration
+
+---
+
+For Tailwind CSS v4, create a CSS file using the [@theme](https://tailwindcss.com/docs/adding-custom-styles) property:
+
+```css
+@theme {
+  --radius-ods-xs: var(--ods-border-radius-xs);
+  --radius-ods-sm: var(--ods-border-radius-sm);
+  --radius-ods-md: var(--ods-border-radius-md);
+  --radius-ods-lg: var(--ods-border-radius-lg);
+  --color-ods-primary: var(--ods-color-primary-500);
+  --color-ods-success: var(--ods-color-success-500);
+  --color-ods-critical: var(--ods-color-critical-700);
+  --font-ods-default: var(--ods-font-family-default);
+}
+```
+
+Then import that file after the main ODS theme and Tailwind CSS. In order for you to properly be able to overwrite the ODS theme, you need to redefine the order of the CSS layers. Base is optional.
+
+```typescript
+// index.css
+@layer theme, base, components, ods-quarks, ods-atoms, ods-molecules, ods-organisms, molecules, utilities;
+@import "tailwindcss";
+@import '@ovhcloud/ods-themes/default/css';
+@import '@ovhcloud/ods-themes/default/fonts';
+@import './ods-tailwind.css';
+```
+
+## Usage Examples
+
+---
+
+You can use Tailwind utilities alongside ODS components:
+
+```tsx
+import { Button } from '@ovhcloud/ods-react';
+function MyComponent() {
+  return (
+  <div>
+      <p className="text-critical">Click on the button!</p>
+      <Button className="bg-color-primary">Click me!</Button>
+  </div>
+  );
+}
+```
+
+## Best Practices & Troubleshooting
+
+---
+
+### Color Usage
+
+-   Use semantic color names (e.g., `ods-primary-500`, `ods-success-200`) instead of generic colors
+-   **Issue**: Color classes not working? Verify that the Tailwind config includes the ODS color mappings and ensure the content paths include your component files.
+
+### Spacing and Layout
+
+-   Use ODS border radius tokens (`rounded-ods-sm`, `rounded-ods-md`, etc.)
+-   Leverage ODS form element heights for consistent input sizing
+-   **Issue**: CSS variables not loading? Ensure `@ovhcloud/ods-themes` is imported before Tailwind and check that the theme is properly initialized in your app.
+
+### Typography
+
+-   Use the ODS font family (`font-ods` for body text, `font-ods-code` for code)
+-   Apply semantic text colors (`text-ods-text`, `text-ods-heading`)
+-   Maintain proper contrast ratios with ODS color combinations
+
+### Component Integration
+
+-   ODS components can be styled with Tailwind utilities using the `className` prop
+-   Avoid overriding core ODS component styles unless necessary
+-   Use Tailwind for layout and positioning, ODS for component behavior
+-   **Issue**: Responsive breakpoints not working? Confirm that the ODS breakpoint variables are properly defined and check that the screen configuration in Tailwind config is correct.
+
+## Resources
+
+---
+
+-   [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+-   [Tailwind v4 Migration Guide](https://tailwindcss.com/docs/upgrade-guide)
+-   
+-

@@ -1,10 +1,24 @@
-React Components
+---
+title: "Pagination"
+slug: pagination
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1367
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--technical-information.txt
+---
 
 # Pagination
 
 ## Overview
 
 ---
+
+102550100300
+
+of 100 results
+
+Go to page
 
 ## Anatomy
 
@@ -19,6 +33,12 @@ PaginationPageSizeSelector
 PaginationPages
 
 ---
+
+102550100300
+
+of 100 results
+
+Go to page
 
 ## Pagination
 
@@ -165,88 +185,82 @@ label
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Pagination totalItems={5000}>
-      <PaginationPages />
-    </Pagination>
-}
+<Pagination totalItems={5000}>
+  <PaginationPages />
+</Pagination>
 ```
 
 ### Controlled
 
+```jsx
+const [page, setPage] = useState(1);
+  function handlePageChange({
+    page  }: PaginationPageChangeDetail) {
+    setPage(page);
+  }
+  return <Pagination onPageChange={handlePageChange} page={page} totalItems={500}>
+      <PaginationPages />
+    </Pagination>;
+}
+```
+
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Pagination disabled totalItems={500}>
-      <PaginationPages />
-    </Pagination>
-}
+<Pagination
+  disabled
+  totalItems={500}
+>
+  <PaginationPages />
+</Pagination>
 ```
 
 ### Items per page
 
 ```jsx
-{
-  globals: {
-    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Pagination pageSize={25} totalItems={500}>
-      <PaginationPages />
-    </Pagination>
-}
+<Pagination
+  pageSize={25}
+  totalItems={500}
+>
+  <PaginationPages />
+</Pagination>
 ```
 
 ### Sibling count
 
 ```jsx
-{
-  globals: {
-    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Pagination defaultPage={5} siblingCount={2} totalItems={500}>
-      <PaginationPages />
-    </Pagination>
-}
+<Pagination
+  defaultPage={5}
+  siblingCount={2}
+  totalItems={500}
+>
+  <PaginationPages />
+</Pagination>
 ```
 
 ### With tooltip labels
 
 ```jsx
-{
-  globals: {
-    imports: `import { Pagination, PaginationPages } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Pagination labelTooltipPrev="Go to previous page" labelTooltipNext="Go to next page" totalItems={500}>
-      <PaginationPages />
-    </Pagination>
-}
+<Pagination
+  labelTooltipNext="Go to next page"
+  labelTooltipPrev="Go to previous page"
+  totalItems={500}
+>
+  <PaginationPages />
+</Pagination>
 ```
 
 ### With page size selection
 
+102550100300
+
+of 500 results
+
 ```jsx
-{
-  globals: {
-    imports: `import { Pagination, PaginationPageSizeSelector, PaginationPages } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Pagination totalItems={500}>
-      <PaginationPageSizeSelector />
-      <PaginationPages />
-    </Pagination>
-}
+<Pagination totalItems={500}>
+  <PaginationPageSizeSelector />
+  <PaginationPages />
+</Pagination>
 ```
 
 ## Recipes

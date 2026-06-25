@@ -1,4 +1,12 @@
-React Components
+---
+title: "Modal"
+slug: modal
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1937
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal--documentation.txt
+---
 
 # Modal
 
@@ -122,45 +130,43 @@ This component complies with the [Modal WAI-ARIA design pattern](https://www.w3.
 Ensure that assistive technologies announce the **Modal** correctly using [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) or [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) , and [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby) .
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Modal>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal        </Button>
-      </ModalTrigger>
-      <ModalContent aria-describedby="modal-content" aria-label="Modal Content">
-        <ModalHeader>Modal header</ModalHeader>
-        <ModalBody id="modal-content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.        </ModalBody>
-      </ModalContent>
-    </Modal>
-}
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal    </Button>
+  </ModalTrigger>
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-label="Modal Content"
+  >
+    <ModalHeader>
+      Modal header    </ModalHeader>
+    <ModalBody id="modal-content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Modal>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal        </Button>
-      </ModalTrigger>
-      <ModalContent aria-describedby="modal-content" aria-labelledby="modal-title">
-        <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
-        <ModalBody>
-          <p id="modal-content">
-            Are you sure you want to delete this item? This action cannot be undone.          </p>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-}
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal    </Button>
+  </ModalTrigger>
+  <ModalContent
+    aria-describedby="modal-content"
+    aria-labelledby="modal-title"
+  >
+    <ModalHeader>
+      <span id="modal-title">
+        Delete item      </span>
+    </ModalHeader>
+    <ModalBody>
+      <p id="modal-content">
+        Are you sure you want to delete this item? This action cannot be undone.      </p>
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
 Screen readers will announce the sections referenced by the aria attributes.
@@ -170,35 +176,34 @@ Screen readers will announce the sections referenced by the aria attributes.
 For **Modals** that require user decisions (e.g., confirmation dialogs), place the least critical **Button** first in the **Modal** actions section.
 
 ```jsx
-{
-  globals: {
-    imports: `import { BUTTON_COLOR, BUTTON_VARIANT, MODAL_COLOR, Button, Modal, ModalBody, ModalContent, ModalHeader, ModalTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Modal>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal        </Button>
-      </ModalTrigger>
-      <ModalContent color={MODAL_COLOR.critical}>
-        <ModalHeader><span id="modal-title">Delete item</span></ModalHeader>
-        <ModalBody>
-          <p id="modal-content">
-            Are you sure you want to delete this item?          </p>
-          <div style={{
+<Modal>
+  <ModalTrigger asChild>
+    <Button>
+      Trigger Modal    </Button>
+  </ModalTrigger>
+  <ModalContent color="critical">
+    <ModalHeader>
+      <span id="modal-title">
+        Delete item      </span>
+    </ModalHeader>
+    <ModalBody>
+      <p id="modal-content">
+        Are you sure you want to delete this item?      </p>
+      <div
+        style={{
           display: 'flex',
           gap: '8px',
           justifyContent: 'end'
-        }}>
-            <Button variant={BUTTON_VARIANT.ghost}>
-              Cancel            </Button>
-            <Button color={BUTTON_COLOR.critical}>
-              Delete            </Button>
-          </div>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-}
+        }}
+      >
+        <Button variant="ghost">
+          Cancel        </Button>
+        <Button color="critical">
+          Delete        </Button>
+      </div>
+    </ModalBody>
+  </ModalContent>
+</Modal>
 ```
 
 Users will first encounter the non-destructive action (e.g., "Cancel"), reducing accidental confirmations.

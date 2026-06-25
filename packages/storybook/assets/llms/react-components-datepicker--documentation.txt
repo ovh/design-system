@@ -1,4 +1,12 @@
-React Components
+---
+title: "Datepicker"
+slug: datepicker
+category: component
+type: documentation
+version: 19.7.3
+tokens: 2020
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker--documentation.txt
+---
 
 # Datepicker
 
@@ -154,21 +162,17 @@ To ensure proper accessibility, the **Datepicker** must be correctly labeled, pr
 
 Every **Datepicker** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose using either **FormField** or a native label tag.
 
+Start date:
+
 ```jsx
-{
-  globals: {
-    imports: `import { Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Start date:      </FormFieldLabel>
-      <Datepicker>
-        <DatepickerControl />
-        <DatepickerContent />
-      </Datepicker>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Start date:  </FormFieldLabel>
+  <Datepicker>
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
 ```
 
 Screen readers will announce the label, the field and its content.
@@ -177,25 +181,23 @@ Screen readers will announce the label, the field and its content.
 
 Since screen readers can only interact with the **Datepicker** input field, it’s important to provide guidance on the expected date format to ensure correct input.
 
+Start date:
+
+Expected format: DD-MM-YYYY
+
 ```jsx
-{
-  globals: {
-    imports: `import { TEXT_PRESET, Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldHelper, FormFieldLabel, Text } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Start date:      </FormFieldLabel>
-      <Datepicker>
-        <DatepickerControl placeholder="DD-MM-YYYY" />
-        <DatepickerContent />
-      </Datepicker>
-      <FormFieldHelper>
-        <Text preset={TEXT_PRESET.caption}>
-          Expected format: DD-MM-YYYY        </Text>
-      </FormFieldHelper>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Start date:  </FormFieldLabel>
+  <Datepicker>
+    <DatepickerControl placeholder="DD-MM-YYYY" />
+    <DatepickerContent />
+  </Datepicker>
+  <FormFieldHelper>
+    <Text preset="caption">
+      Expected format: DD-MM-YYYY    </Text>
+  </FormFieldHelper>
+</FormField>
 ```
 
 Screen readers will announce the label, the field, its content and the helper.

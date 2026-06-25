@@ -1,4 +1,12 @@
-React Components
+---
+title: "Progress Bar"
+slug: progress-bar
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 239
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar--technical-information.txt
+---
 
 # Progress Bar
 
@@ -47,37 +55,22 @@ value
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <ProgressBar />
-}
+<ProgressBar />
 ```
 
 ### Max
 
 ```jsx
-{
-  globals: {
-    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <ProgressBar max="500" value="50" />
-}
+<ProgressBar
+  max="500"
+  value="50"
+/>
 ```
 
 ### Value
 
 ```jsx
-{
-  globals: {
-    imports: `import { ProgressBar } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <ProgressBar value="50" />
-}
+<ProgressBar value="50" />
 ```
 
 ### Indeterminate

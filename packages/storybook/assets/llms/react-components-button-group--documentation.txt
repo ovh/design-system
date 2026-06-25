@@ -1,8 +1,14 @@
-React Components
+---
+title: "Button Group"
+slug: button-group
+category: component
+type: documentation
+version: 19.7.3
+tokens: 903
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button-group--documentation.txt
+---
 
 # Button Group
-
- 
 
 ## Overview
 

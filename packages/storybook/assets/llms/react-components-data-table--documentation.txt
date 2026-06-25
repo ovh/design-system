@@ -1,4 +1,12 @@
-React Components
+---
+title: "Data Table"
+slug: data-table
+category: component
+type: documentation
+version: 19.7.3
+tokens: 3070
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-table--documentation.txt
+---
 
 # Data Table
 

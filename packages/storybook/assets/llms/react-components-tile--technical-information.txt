@@ -1,10 +1,22 @@
-React Components
+---
+title: "Tile"
+slug: tile
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 930
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile--technical-information.txt
+---
 
 # Tile
 
 ## Overview
 
 ---
+
+Checkbox tile
+
+Additional information
 
 ## Anatomy
 
@@ -15,6 +27,10 @@ Tile
 TileAltContainer
 
 ---
+
+Checkbox tile
+
+Additional information
 
 ## Tile
 
@@ -83,44 +99,37 @@ selected
 
 ### Default
 
+This is a tile content.
+
 ```jsx
-{
-  globals: {
-    imports: `import { Tile } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Tile>
-      This is a tile content.    </Tile>
-}
+<Tile>
+  This is a tile content.
+</Tile>
 ```
 
 ### Disabled
 
+This tile is disabled.
+
 ```jsx
-{
-  globals: {
-    imports: `import { Tile } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Tile disabled>
-      This tile is disabled.    </Tile>
-}
+<Tile disabled>
+  This tile is disabled.
+</Tile>
 ```
 
 ### Selected
 
+This tile is selected.
+
 ```jsx
-{
-  globals: {
-    imports: `import { Tile } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Tile selected>
-      This tile is selected.    </Tile>
-}
+<Tile selected>
+  This tile is selected.
+</Tile>
 ```
 
 ### With Checkbox
+
+Checkbox tile
 
 ```jsx
 const [selected, setSelected] = useState(false);
@@ -141,6 +150,10 @@ const [selected, setSelected] = useState(false);
 ```
 
 ### With RadioGroup
+
+Radio 1
+
+Radio 2
 
 ```jsx
 const [selected, setSelected] = useState('radio-1');

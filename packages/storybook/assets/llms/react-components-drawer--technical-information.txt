@@ -1,4 +1,12 @@
-React Components
+---
+title: "Drawer"
+slug: drawer
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1318
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer--technical-information.txt
+---
 
 # Drawer
 
@@ -19,6 +27,8 @@ DrawerContent
 DrawerTrigger
 
 ---
+
+My drawer content
 
 ## Drawer
 
@@ -134,138 +144,128 @@ asChild
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Drawer>
-      <DrawerTrigger asChild>
-        <Button>
-          Trigger Drawer        </Button>
-      </DrawerTrigger>
-      <DrawerContent>
-        <DrawerBody>
-          My drawer content        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-}
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer    </Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerBody>
+      My drawer content    </DrawerBody>
+  </DrawerContent>
+</Drawer>
 ```
 
 ### Position
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    alignItems: 'center',
-    gap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { DRAWER_POSITION, Button, Drawer, DrawerBody, DrawerContent, DrawerTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-    <Drawer>
-      <DrawerTrigger asChild>
-        <Button>
-          Top drawer        </Button>
-      </DrawerTrigger>
-      <DrawerContent position={DRAWER_POSITION.top}>
-        <DrawerBody>
-          Top drawer content        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-   <Drawer>
-      <DrawerTrigger asChild>
-        <Button>
-          Left drawer        </Button>
-      </DrawerTrigger>
-      <DrawerContent position={DRAWER_POSITION.left}>
-        <DrawerBody>
-          Left drawer content        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-   <Drawer>
-      <DrawerTrigger asChild>
-        <Button>
-          Right Drawer        </Button>
-      </DrawerTrigger>
-      <DrawerContent position={DRAWER_POSITION.right}>
-        <DrawerBody>
-          Right drawer content        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-   <Drawer>
-      <DrawerTrigger asChild>
-        <Button>
-          Bottom Drawer        </Button>
-      </DrawerTrigger>
-      <DrawerContent position={DRAWER_POSITION.bottom}>
-        <DrawerBody>
-          Bottom drawer content        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-    </>
-}
+<>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Top drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="top">
+      <DrawerBody>
+        Top drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Left drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="left">
+      <DrawerBody>
+        Left drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Right Drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="right">
+      <DrawerBody>
+        Right drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Bottom Drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="bottom">
+      <DrawerBody>
+        Bottom drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+</>
 ```
 
 ### Overlay Elements
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Drawer, DrawerContent, DrawerBody, DrawerTrigger, ICON_NAME, Icon, Select, SelectContent, SelectControl, Tooltip, TooltipContent, TooltipTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Drawer>
-      <DrawerTrigger asChild>
-        <Button>
-          Trigger Drawer        </Button>
-      </DrawerTrigger>
-      <DrawerContent>
-        <DrawerBody style={{
-        display: 'grid',
-        columnGap: '8px',
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer    </Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerBody
+      style={{
         alignItems: 'center',
+        columnGap: '8px',
+        display: 'grid',
         gridTemplateColumns: '1fr max-content'
-      }}>
-          <Select items={[{
-          label: 'Dog',
-          value: 'dog'
-        }, {
-          label: 'Cat',
-          value: 'cat'
-        }, {
-          label: 'Hamster',
-          value: 'hamster'
-        }, {
-          label: 'Parrot',
-          value: 'parrot'
-        }, {
-          label: 'Spider',
-          value: 'spider'
-        }, {
-          label: 'Goldfish',
-          value: 'goldfish'
-        }]}>
-            <SelectControl />
-            <SelectContent createPortal={false} />
-          </Select>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Icon name={ICON_NAME.circleQuestion} style={{
+      }}
+    >
+      <Select
+        items={[
+          {
+            label: 'Dog',
+            value: 'dog'
+          },
+          {
+            label: 'Cat',
+            value: 'cat'
+          },
+          {
+            label: 'Hamster',
+            value: 'hamster'
+          },
+          {
+            label: 'Parrot',
+            value: 'parrot'
+          },
+          {
+            label: 'Spider',
+            value: 'spider'
+          },
+          {
+            label: 'Goldfish',
+            value: 'goldfish'
+          }
+        ]}
+      >
+        <SelectControl />
+        <SelectContent />
+      </Select>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon
+            name="circle-question"
+            style={{
               fontSize: '24px'
-            }} />
-            </TooltipTrigger>
-            <TooltipContent createPortal={false}>
-              This is the tooltip content            </TooltipContent>
-          </Tooltip>
-        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-}
+            }}
+          />
+        </TooltipTrigger>
+        <TooltipContent>
+          This is the tooltip content        </TooltipContent>
+      </Tooltip>
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
 ```
 
 ## Recipes

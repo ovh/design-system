@@ -1,8 +1,20 @@
-React Components
+---
+title: "Prompt Input"
+slug: prompt-input
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1484
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--documentation.txt
+---
 
 # Prompt Input
 
 _The **Prompt Input** component is a composable text input with a submit button, designed for conversational and AI-driven interfaces._
+
+a-default-text-file.txt3 byte
+
+another-default-text-file.txt3 byte
 
 ## Overview
 
@@ -118,35 +130,23 @@ Use the `aria-label` prop on `PromptInputTextControl` to give screen readers a m
 -   The file upload button and the send button don't hold accessible text by default, therefore they must carry an `aria-label` (e.g. `"Attach file"`, `"Send request"`, …) to be announced correctly by assistive technologies.
 
 ```jsx
-{
-  tags: ["!dev"],
-  globals: {
-    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
-  },
-  render: ({}) => <PromptInput>
-      <PromptInputControls>
-        <PromptInputFileUploadButton aria-label="Attach file" />
-        <PromptInputTextControl aria-label="Ask someone about something…" />
-        <PromptInputSendButton aria-label="Send request" />
-      </PromptInputControls>
-    </PromptInput>
-}
+<PromptInput>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Send request" />
+  </PromptInputControls>
+</PromptInput>
 ```
 
 -   As the send button displays a loading spinner when the component is in the `loading` state, ensure the button's `aria-label` is updated to convey the loading state to users who can't rely on visual cues.
 
 ```jsx
-{
-  tags: ["!dev"],
-  globals: {
-    imports: "import { PromptInput, PromptInputControls, PromptInputTextControl, PromptInputSendButton, PromptInputFileUploadButton } from '@ovhcloud/ods-react';"
-  },
-  render: ({}) => <PromptInput loading>
-      <PromptInputControls>
-        <PromptInputFileUploadButton aria-label="Attach file" />
-        <PromptInputTextControl aria-label="Ask someone about something…" />
-        <PromptInputSendButton aria-label="Request is processing" />
-      </PromptInputControls>
-    </PromptInput>
-}
+<PromptInput loading>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Request is processing" />
+  </PromptInputControls>
+</PromptInput>
 ```

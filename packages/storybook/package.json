@@ -13,6 +13,7 @@
   "scripts": {
     "build:storybook": "pnpm generate:versions && storybook build -o dist",
     "extract:llms": "storybook-llms-extractor --config llms.config.js && node scripts/postprocess-llms.js",
+    "verify:llms": "bash scripts/verify-llms.sh",
     "install:browsers": "playwright install --with-deps chromium",
     "generate:versions": "node scripts/generate-version-list.js 'assets/ods-versions.json'",
     "start": "pnpm generate:versions && storybook dev -p 6006 --no-open"

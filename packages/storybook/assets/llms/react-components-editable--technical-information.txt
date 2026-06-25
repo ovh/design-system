@@ -1,10 +1,20 @@
-React Components
+---
+title: "Editable"
+slug: editable
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 2075
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-editable--technical-information.txt
+---
 
 # Editable
 
 ## Overview
 
 ---
+
+Double click to edit
 
 ## Anatomy
 
@@ -170,6 +180,8 @@ asChild
 
 ### Default
 
+Double click to edit
+
 ```jsx
 const [value, setValue] = useState('Double click to edit');
   const bufferValue = useRef(value);
@@ -206,6 +218,8 @@ const [displayValue, setDisplayValue] = useState('Double click to edit');
 
 ### Custom Actions
 
+Double click to edit
+
 ```jsx
 const [value, setValue] = useState('Double click to edit');
   const bufferValue = useRef(value);
@@ -234,6 +248,8 @@ const [value, setValue] = useState('Double click to edit');
 ```
 
 ### Complex Form Element
+
+Account name
 
 ```jsx
 const [displayValue, setDisplayValue] = useState('');

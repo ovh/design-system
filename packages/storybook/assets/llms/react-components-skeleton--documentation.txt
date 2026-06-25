@@ -1,4 +1,12 @@
-React Components
+---
+title: "Skeleton"
+slug: skeleton
+category: component
+type: documentation
+version: 19.7.3
+tokens: 992
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skeleton--documentation.txt
+---
 
 # Skeleton
 

@@ -1,10 +1,20 @@
-React Components
+---
+title: "Message"
+slug: message
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1610
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--technical-information.txt
+---
 
 # Message
 
 ## Overview
 
 ---
+
+Message
 
 ## Anatomy
 
@@ -17,6 +27,8 @@ MessageBody
 MessageIcon
 
 ---
+
+Message
 
 ## Message
 
@@ -187,107 +199,101 @@ name
 
 ### Default
 
+Default message
+
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Message>
-      <MessageIcon name={ICON_NAME.circleInfo} />
-      <MessageBody>
-        Default message      </MessageBody>
-    </Message>
-}
+<Message>
+  <MessageIcon name="circle-info" />
+  <MessageBody>
+    Default message  </MessageBody>
+</Message>
 ```
 
 ### Color
 
+Critical message
+
+Information message
+
+Neutral message
+
+Primary message
+
+Success message
+
+Warning message
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'inline-flex',
-    flexFlow: 'column',
-    gap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Message color={MESSAGE_COLOR.critical}>
-        <MessageIcon name={ICON_NAME.hexagonExclamation} />
-        <MessageBody>Critical message</MessageBody>
-      </Message>
-      <Message color={MESSAGE_COLOR.information}>
-        <MessageIcon name={ICON_NAME.circleInfo} />
-        <MessageBody>Information message</MessageBody>
-      </Message>
-      <Message color={MESSAGE_COLOR.neutral}>
-        <MessageIcon name={ICON_NAME.email} />
-        <MessageBody>Neutral message</MessageBody>
-      </Message>
-      <Message color={MESSAGE_COLOR.primary}>
-        <MessageIcon name={ICON_NAME.lightbulb} />
-        <MessageBody>Primary message</MessageBody>
-      </Message>
-      <Message color={MESSAGE_COLOR.success}>
-        <MessageIcon name={ICON_NAME.circleCheck} />
-        <MessageBody>Success message</MessageBody>
-      </Message>
-      <Message color={MESSAGE_COLOR.warning}>
-        <MessageIcon name={ICON_NAME.triangleExclamation} />
-        <MessageBody>Warning message</MessageBody>
-      </Message>
-    </>
-}
+<>
+  <Message color="critical">
+    <MessageIcon name="hexagon-exclamation" />
+    <MessageBody>
+      Critical message    </MessageBody>
+  </Message>
+  <Message color="information">
+    <MessageIcon name="circle-info" />
+    <MessageBody>
+      Information message    </MessageBody>
+  </Message>
+  <Message color="neutral">
+    <MessageIcon name="email" />
+    <MessageBody>
+      Neutral message    </MessageBody>
+  </Message>
+  <Message color="primary">
+    <MessageIcon name="lightbulb" />
+    <MessageBody>
+      Primary message    </MessageBody>
+  </Message>
+  <Message color="success">
+    <MessageIcon name="circle-check" />
+    <MessageBody>
+      Success message    </MessageBody>
+  </Message>
+  <Message color="warning">
+    <MessageIcon name="triangle-exclamation" />
+    <MessageBody>
+      Warning message    </MessageBody>
+  </Message>
+</>
 ```
 
 ### Variant
 
+Default variant Message
+
+Light variant Message
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'inline-flex',
-    flexFlow: 'column',
-    gap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { ICON_NAME, MESSAGE_VARIANT, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Message variant={MESSAGE_VARIANT.default}>
-        <MessageIcon name={ICON_NAME.circleInfo} />
-        <MessageBody>
-          Default variant Message        </MessageBody>
-      </Message>
-      <Message variant={MESSAGE_VARIANT.light}>
-        <MessageIcon name={ICON_NAME.circleInfo} />
-        <MessageBody>
-          Light variant Message        </MessageBody>
-      </Message>
-    </>
-}
+<>
+  <Message variant="default">
+    <MessageIcon name="circle-info" />
+    <MessageBody>
+      Default variant Message    </MessageBody>
+  </Message>
+  <Message variant="light">
+    <MessageIcon name="circle-info" />
+    <MessageBody>
+      Light variant Message    </MessageBody>
+  </Message>
+</>
 ```
 
 ### Multiline
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.
+
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Message>
-      <MessageIcon name={ICON_NAME.circleInfo} />
-      <MessageBody>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.      </MessageBody>
-    </Message>
-}
+<Message>
+  <MessageIcon name="circle-info" />
+  <MessageBody>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.  </MessageBody>
+</Message>
 ```
 
 ### Non Dismissible
+
+Default message
 
 ```jsx
 <Message dismissible={false}>

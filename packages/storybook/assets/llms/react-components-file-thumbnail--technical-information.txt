@@ -1,10 +1,20 @@
-React Components
+---
+title: "File Thumbnail"
+slug: file-thumbnail
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 642
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-thumbnail--technical-information.txt
+---
 
 # File Thumbnail
 
 ## Overview
 
 ---
+
+foo.txt3 byte
 
 ## Anatomy
 
@@ -13,6 +23,8 @@ React Components
 FileThumbnail
 
 ---
+
+foo.txt3 byte
 
 ## FileThumbnail
 
@@ -149,6 +161,8 @@ const fakeFile = new File(['foo'], 'non-dismissible-file.txt', {
 
 ### Error
 
+foo.txtSomething went wrong
+
 ```jsx
 const fakeFile = new File(['foo'], 'foo.txt', {
     type: 'text/plain'
@@ -163,6 +177,6 @@ const fakeFile = new File(['foo'], 'foo.txt', {
 
 Chat
 
-Assistant2:58 PM
+Assistant1:00 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.

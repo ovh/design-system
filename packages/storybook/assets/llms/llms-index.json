@@ -1,0 +1,1402 @@
+{
+  "name": "OVHcloud Design System",
+  "version": "19.7.3",
+  "baseUrl": "https://ovh.github.io/design-system/v19.7.3/llms",
+  "generatedFrom": "storybook-llms-extractor",
+  "sets": {
+    "full": {
+      "url": "./llms-full.txt"
+    },
+    "components": {
+      "url": "./ods-documentation-components.txt",
+      "index": "./ods-components-index.txt"
+    },
+    "generic": {
+      "url": "./ods-documentation-generic.txt",
+      "index": "./ods-generic-index.txt"
+    }
+  },
+  "components": [
+    {
+      "slug": "accordion",
+      "title": "Accordion",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2748,
+          "url": "./react-components-accordion.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1391,
+          "url": "./react-components-accordion--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1919,
+          "url": "./react-components-accordion--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "avatar",
+      "title": "Avatar",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 554,
+          "url": "./react-components-avatar.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 938,
+          "url": "./react-components-avatar--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 363,
+          "url": "./react-components-avatar--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "badge",
+      "title": "Badge",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1237,
+          "url": "./react-components-badge.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 2023,
+          "url": "./react-components-badge--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1392,
+          "url": "./react-components-badge--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "breadcrumb",
+      "title": "Breadcrumb",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2704,
+          "url": "./react-components-breadcrumb.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1377,
+          "url": "./react-components-breadcrumb--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1612,
+          "url": "./react-components-breadcrumb--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "button",
+      "title": "Button",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2478,
+          "url": "./react-components-button.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1774,
+          "url": "./react-components-button--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 4323,
+          "url": "./react-components-button--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "button-group",
+      "title": "Button Group",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1776,
+          "url": "./react-components-button-group.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 903,
+          "url": "./react-components-button-group--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1150,
+          "url": "./react-components-button-group--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "card",
+      "title": "Card",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1058,
+          "url": "./react-components-card.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1779,
+          "url": "./react-components-card--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1002,
+          "url": "./react-components-card--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "cart",
+      "title": "Cart",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2143,
+          "url": "./react-components-cart.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1500,
+          "url": "./react-components-cart--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 2541,
+          "url": "./react-components-cart--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "checkbox",
+      "title": "Checkbox",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1882,
+          "url": "./react-components-checkbox.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1014,
+          "url": "./react-components-checkbox--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1218,
+          "url": "./react-components-checkbox--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "clipboard",
+      "title": "Clipboard",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1431,
+          "url": "./react-components-clipboard.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1153,
+          "url": "./react-components-clipboard--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 890,
+          "url": "./react-components-clipboard--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "code",
+      "title": "Code",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 915,
+          "url": "./react-components-code.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 928,
+          "url": "./react-components-code--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 962,
+          "url": "./react-components-code--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "combobox",
+      "title": "Combobox",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 4589,
+          "url": "./react-components-combobox.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 2028,
+          "url": "./react-components-combobox--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 2986,
+          "url": "./react-components-combobox--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "data-table",
+      "title": "Data Table",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 5110,
+          "url": "./react-components-data-table.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 3070,
+          "url": "./react-components-data-table--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 3865,
+          "url": "./react-components-data-table--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "datepicker",
+      "title": "Datepicker",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2711,
+          "url": "./react-components-datepicker.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 2020,
+          "url": "./react-components-datepicker--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 4860,
+          "url": "./react-components-datepicker--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "divider",
+      "title": "Divider",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 858,
+          "url": "./react-components-divider.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 986,
+          "url": "./react-components-divider--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 564,
+          "url": "./react-components-divider--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "drawer",
+      "title": "Drawer",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2395,
+          "url": "./react-components-drawer.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1598,
+          "url": "./react-components-drawer--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1318,
+          "url": "./react-components-drawer--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "editable",
+      "title": "Editable",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2417,
+          "url": "./react-components-editable.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 958,
+          "url": "./react-components-editable--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 2075,
+          "url": "./react-components-editable--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "file-thumbnail",
+      "title": "File Thumbnail",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1144,
+          "url": "./react-components-file-thumbnail.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 967,
+          "url": "./react-components-file-thumbnail--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 642,
+          "url": "./react-components-file-thumbnail--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "file-upload",
+      "title": "File Upload",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 3872,
+          "url": "./react-components-file-upload.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 2100,
+          "url": "./react-components-file-upload--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 2459,
+          "url": "./react-components-file-upload--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "form-field",
+      "title": "Form Field",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 3998,
+          "url": "./react-components-form-field.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1102,
+          "url": "./react-components-form-field--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 807,
+          "url": "./react-components-form-field--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "icon",
+      "title": "Icon",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 992,
+          "url": "./react-components-icon.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1141,
+          "url": "./react-components-icon--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 2498,
+          "url": "./react-components-icon--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "input",
+      "title": "Input",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1688,
+          "url": "./react-components-input.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1525,
+          "url": "./react-components-input--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 996,
+          "url": "./react-components-input--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "kbd",
+      "title": "Kbd",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 170,
+          "url": "./react-components-kbd.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 665,
+          "url": "./react-components-kbd--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 220,
+          "url": "./react-components-kbd--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "link",
+      "title": "Link",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 989,
+          "url": "./react-components-link.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1618,
+          "url": "./react-components-link--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 894,
+          "url": "./react-components-link--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "logo",
+      "title": "Logo",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 571,
+          "url": "./react-components-logo.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 872,
+          "url": "./react-components-logo--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 223,
+          "url": "./react-components-logo--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "markdown",
+      "title": "Markdown",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 832,
+          "url": "./react-components-markdown.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 627,
+          "url": "./react-components-markdown--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 699,
+          "url": "./react-components-markdown--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "medium",
+      "title": "Medium",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 676,
+          "url": "./react-components-medium.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 810,
+          "url": "./react-components-medium--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 250,
+          "url": "./react-components-medium--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "menu",
+      "title": "Menu",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2032,
+          "url": "./react-components-menu.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 950,
+          "url": "./react-components-menu--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1808,
+          "url": "./react-components-menu--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "message",
+      "title": "Message",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2554,
+          "url": "./react-components-message.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 2293,
+          "url": "./react-components-message--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1610,
+          "url": "./react-components-message--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "message-bubble",
+      "title": "Message Bubble",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 837,
+          "url": "./react-components-message-bubble.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 729,
+          "url": "./react-components-message-bubble--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 562,
+          "url": "./react-components-message-bubble--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "meter",
+      "title": "Meter",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 919,
+          "url": "./react-components-meter.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1205,
+          "url": "./react-components-meter--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 526,
+          "url": "./react-components-meter--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "modal",
+      "title": "Modal",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 3094,
+          "url": "./react-components-modal.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1937,
+          "url": "./react-components-modal--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1852,
+          "url": "./react-components-modal--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "pagination",
+      "title": "Pagination",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1724,
+          "url": "./react-components-pagination.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1531,
+          "url": "./react-components-pagination--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1367,
+          "url": "./react-components-pagination--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "password",
+      "title": "Password",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1164,
+          "url": "./react-components-password.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1368,
+          "url": "./react-components-password--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 370,
+          "url": "./react-components-password--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "phone-number",
+      "title": "Phone Number",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2417,
+          "url": "./react-components-phone-number.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 3418,
+          "url": "./react-components-phone-number--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 7444,
+          "url": "./react-components-phone-number--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "popover",
+      "title": "Popover",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2682,
+          "url": "./react-components-popover.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1575,
+          "url": "./react-components-popover--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 2000,
+          "url": "./react-components-popover--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "progress-bar",
+      "title": "Progress Bar",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 543,
+          "url": "./react-components-progress-bar.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 983,
+          "url": "./react-components-progress-bar--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 239,
+          "url": "./react-components-progress-bar--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "prompt-input",
+      "title": "Prompt Input",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 3582,
+          "url": "./react-components-prompt-input.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1484,
+          "url": "./react-components-prompt-input--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 2210,
+          "url": "./react-components-prompt-input--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "quantity",
+      "title": "Quantity",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1520,
+          "url": "./react-components-quantity.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1168,
+          "url": "./react-components-quantity--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 791,
+          "url": "./react-components-quantity--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "query-filter",
+      "title": "Query Filter",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2188,
+          "url": "./react-components-query-filter.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 978,
+          "url": "./react-components-query-filter--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1829,
+          "url": "./react-components-query-filter--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "radio-group",
+      "title": "Radio Group",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1905,
+          "url": "./react-components-radio-group.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1202,
+          "url": "./react-components-radio-group--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1239,
+          "url": "./react-components-radio-group--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "range",
+      "title": "Range",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2337,
+          "url": "./react-components-range.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1614,
+          "url": "./react-components-range--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1325,
+          "url": "./react-components-range--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "select",
+      "title": "Select",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 4605,
+          "url": "./react-components-select.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1508,
+          "url": "./react-components-select--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 4354,
+          "url": "./react-components-select--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "skeleton",
+      "title": "Skeleton",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 282,
+          "url": "./react-components-skeleton.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 992,
+          "url": "./react-components-skeleton--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 218,
+          "url": "./react-components-skeleton--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "spinner",
+      "title": "Spinner",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 735,
+          "url": "./react-components-spinner.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1470,
+          "url": "./react-components-spinner--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 241,
+          "url": "./react-components-spinner--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "switch",
+      "title": "Switch",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1426,
+          "url": "./react-components-switch.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1420,
+          "url": "./react-components-switch--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 893,
+          "url": "./react-components-switch--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "table",
+      "title": "Table",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2751,
+          "url": "./react-components-table.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1189,
+          "url": "./react-components-table--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 2662,
+          "url": "./react-components-table--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "tabs",
+      "title": "Tabs",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2440,
+          "url": "./react-components-tabs.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1442,
+          "url": "./react-components-tabs--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 2156,
+          "url": "./react-components-tabs--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "tag",
+      "title": "Tag",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1317,
+          "url": "./react-components-tag.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1620,
+          "url": "./react-components-tag--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1571,
+          "url": "./react-components-tag--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "text",
+      "title": "Text",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1261,
+          "url": "./react-components-text.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1089,
+          "url": "./react-components-text--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1571,
+          "url": "./react-components-text--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "textarea",
+      "title": "Textarea",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1127,
+          "url": "./react-components-textarea.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1255,
+          "url": "./react-components-textarea--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 376,
+          "url": "./react-components-textarea--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "tile",
+      "title": "Tile",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1456,
+          "url": "./react-components-tile.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 833,
+          "url": "./react-components-tile--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 930,
+          "url": "./react-components-tile--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "timepicker",
+      "title": "Timepicker",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1654,
+          "url": "./react-components-timepicker.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1586,
+          "url": "./react-components-timepicker--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1405,
+          "url": "./react-components-timepicker--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "toaster",
+      "title": "Toaster",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2355,
+          "url": "./react-components-toaster.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1262,
+          "url": "./react-components-toaster--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 1715,
+          "url": "./react-components-toaster--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "toggle",
+      "title": "Toggle",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 1204,
+          "url": "./react-components-toggle.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1241,
+          "url": "./react-components-toggle--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 873,
+          "url": "./react-components-toggle--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "tooltip",
+      "title": "Tooltip",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 2590,
+          "url": "./react-components-tooltip.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1397,
+          "url": "./react-components-tooltip--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 2163,
+          "url": "./react-components-tooltip--technical-information.txt"
+        }
+      }
+    },
+    {
+      "slug": "tree-view",
+      "title": "Tree View",
+      "pages": {
+        "overview": {
+          "type": "overview",
+          "tokens": 5020,
+          "url": "./react-components-tree-view.txt"
+        },
+        "documentation": {
+          "type": "documentation",
+          "tokens": 1088,
+          "url": "./react-components-tree-view--documentation.txt"
+        },
+        "technical-information": {
+          "type": "technical-information",
+          "tokens": 4130,
+          "url": "./react-components-tree-view--technical-information.txt"
+        }
+      }
+    }
+  ],
+  "generic": [
+    {
+      "slug": "ovhcloud-design-system-guides-accessibility",
+      "title": "Accessibility Guide",
+      "type": "overview",
+      "tokens": 4474,
+      "url": "./ovhcloud-design-system-guides-accessibility.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-design-and-style-apply-ods-style",
+      "title": "Apply ODS Style",
+      "type": "overview",
+      "tokens": 309,
+      "url": "./ovhcloud-design-system-design-and-style-apply-ods-style.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-guides-charts-usage-guidelines",
+      "title": "Charts - Usage Guidelines",
+      "type": "overview",
+      "tokens": 768,
+      "url": "./ovhcloud-design-system-guides-charts-usage-guidelines.txt"
+    },
+    {
+      "slug": "recipes-components",
+      "title": "Components",
+      "type": "overview",
+      "tokens": 967,
+      "url": "./recipes-components.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-design-and-style-design-tokens",
+      "title": "Design Tokens",
+      "type": "overview",
+      "tokens": 1879,
+      "url": "./ovhcloud-design-system-design-and-style-design-tokens.txt"
+    },
+    {
+      "slug": "helpers-formatprice",
+      "title": "formatPrice",
+      "type": "documentation",
+      "tokens": 302,
+      "url": "./helpers-formatprice--documentation.txt"
+    },
+    {
+      "slug": "helpers-formatprice",
+      "title": "formatPrice",
+      "type": "overview",
+      "tokens": 311,
+      "url": "./helpers-formatprice.txt"
+    },
+    {
+      "slug": "helpers-formatrelativetime",
+      "title": "formatRelativeTime",
+      "type": "documentation",
+      "tokens": 340,
+      "url": "./helpers-formatrelativetime--documentation.txt"
+    },
+    {
+      "slug": "helpers-formatrelativetime",
+      "title": "formatRelativeTime",
+      "type": "overview",
+      "tokens": 351,
+      "url": "./helpers-formatrelativetime.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-f-a-q",
+      "title": "Frequently Asked Questions",
+      "type": "overview",
+      "tokens": 1482,
+      "url": "./ovhcloud-design-system-f-a-q.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-get-started",
+      "title": "Get Started",
+      "type": "overview",
+      "tokens": 661,
+      "url": "./ovhcloud-design-system-get-started.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-guides-form-implementing-a-form",
+      "title": "Implementing a Form",
+      "type": "overview",
+      "tokens": 1495,
+      "url": "./ovhcloud-design-system-guides-form-implementing-a-form.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-guides-internationalization",
+      "title": "Internationalization",
+      "type": "overview",
+      "tokens": 546,
+      "url": "./ovhcloud-design-system-guides-internationalization.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-what-s-new-migration-guide-to-19-x",
+      "title": "Migrate to v19",
+      "type": "overview",
+      "tokens": 400,
+      "url": "./ovhcloud-design-system-what-s-new-migration-guide-to-19-x.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-roadmap",
+      "title": "Roadmap",
+      "type": "overview",
+      "tokens": 4,
+      "url": "./ovhcloud-design-system-roadmap.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-design-and-style-style-customization",
+      "title": "Style Customization",
+      "type": "overview",
+      "tokens": 606,
+      "url": "./ovhcloud-design-system-design-and-style-style-customization.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-design-and-style-tailwind-css-integration",
+      "title": "Tailwind CSS Integration",
+      "type": "overview",
+      "tokens": 1231,
+      "url": "./ovhcloud-design-system-design-and-style-tailwind-css-integration.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-guides-form-guidelines",
+      "title": "Usage Guidelines",
+      "type": "overview",
+      "tokens": 3407,
+      "url": "./ovhcloud-design-system-guides-form-guidelines.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-welcome",
+      "title": "Welcome",
+      "type": "overview",
+      "tokens": 70,
+      "url": "./ovhcloud-design-system-welcome.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x",
+      "title": "What S New Migration Guide 12 X To 13 X",
+      "type": "overview",
+      "tokens": 64,
+      "url": "./ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-what-s-new-migration-guide-13-x-to-14-x",
+      "title": "What S New Migration Guide 13 X To 14 X",
+      "type": "overview",
+      "tokens": 68,
+      "url": "./ovhcloud-design-system-what-s-new-migration-guide-13-x-to-14-x.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-what-s-new-migration-guide-14-x-to-15-x",
+      "title": "What S New Migration Guide 14 X To 15 X",
+      "type": "overview",
+      "tokens": 768,
+      "url": "./ovhcloud-design-system-what-s-new-migration-guide-14-x-to-15-x.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-what-s-new-migration-guide-15-x-to-16-x",
+      "title": "What S New Migration Guide 15 X To 16 X",
+      "type": "overview",
+      "tokens": 488,
+      "url": "./ovhcloud-design-system-what-s-new-migration-guide-15-x-to-16-x.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-what-s-new-migration-guide-16-x-to-17-x",
+      "title": "What S New Migration Guide 16 X To 17 X",
+      "type": "overview",
+      "tokens": 458,
+      "url": "./ovhcloud-design-system-what-s-new-migration-guide-16-x-to-17-x.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x",
+      "title": "What S New Migration Guide 17 X To 18 X",
+      "type": "overview",
+      "tokens": 323,
+      "url": "./ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x.txt"
+    },
+    {
+      "slug": "ovhcloud-design-system-what-s-new-what-s-new",
+      "title": "What's new ?",
+      "type": "overview",
+      "tokens": 17596,
+      "url": "./ovhcloud-design-system-what-s-new-what-s-new.txt"
+    }
+  ]
+}

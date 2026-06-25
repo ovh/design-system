@@ -1,4 +1,12 @@
-React Components
+---
+title: "Toggle"
+slug: toggle
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 873
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle--technical-information.txt
+---
 
 # Toggle
 
@@ -130,107 +138,76 @@ withLabels
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Toggle>
-      <ToggleControl />
-    </Toggle>
-}
+<Toggle>
+  <ToggleControl />
+</Toggle>
 ```
 
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Toggle disabled>
-      <ToggleControl />
-    </Toggle>
-}
+<Toggle disabled>
+  <ToggleControl />
+</Toggle>
 ```
 
 ### Invalid
 
 ```jsx
-{
-  globals: {
-    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Toggle invalid>
-      <ToggleControl />
-    </Toggle>
-}
+<Toggle invalid>
+  <ToggleControl />
+</Toggle>
 ```
 
 ### With label
 
+Enable dark mode
+
 ```jsx
-{
-  globals: {
-    imports: `import { Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Toggle>
-      <ToggleControl />
-      <ToggleLabel>
-        Enable dark mode      </ToggleLabel>
-    </Toggle>
-}
+<Toggle>
+  <ToggleControl />
+  <ToggleLabel>
+    Enable dark mode  </ToggleLabel>
+</Toggle>
 ```
 
 ### With inside labels
 
+ONOFF
+
 ```jsx
-{
-  globals: {
-    imports: `import { Toggle, ToggleControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Toggle withLabels>
-      <ToggleControl />
-    </Toggle>
-}
+<Toggle withLabels>
+  <ToggleControl />
+</Toggle>
 ```
 
 ### Form field
 
+Notification settings:
+
+General Information
+
+Promotions
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'column',
-    gap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { TEXT_PRESET, FormField, Text, Toggle, ToggleControl, ToggleLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Text preset={TEXT_PRESET.label}>
-        Notification settings:      </Text>
-      <FormField>
-        <Toggle>
-          <ToggleControl />
-          <ToggleLabel>
-            General Information          </ToggleLabel>
-        </Toggle>
-      </FormField>
-      <FormField>
-        <Toggle>
-          <ToggleControl />
-          <ToggleLabel>
-            Promotions          </ToggleLabel>
-        </Toggle>
-      </FormField>
-    </>
-}
+<>
+  <Text preset="label">
+    Notification settings:  </Text>
+  <FormField>
+    <Toggle>
+      <ToggleControl />
+      <ToggleLabel>
+        General Information      </ToggleLabel>
+    </Toggle>
+  </FormField>
+  <FormField>
+    <Toggle>
+      <ToggleControl />
+      <ToggleLabel>
+        Promotions      </ToggleLabel>
+    </Toggle>
+  </FormField>
+</>
 ```
 
 ## Recipes

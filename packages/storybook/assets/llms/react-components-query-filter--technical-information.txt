@@ -1,4 +1,12 @@
-React Components
+---
+title: "Query Filter"
+slug: query-filter
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1829
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter--technical-information.txt
+---
 
 # Query Filter
 
@@ -21,6 +29,15 @@ QueryFilterControl
 QueryFilterTags
 
 ---
+
+Properties
+
+Instance ID
+
+States
+
+-   
+-   
 
 ## QueryFilter
 

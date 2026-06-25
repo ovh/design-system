@@ -4,15 +4,18 @@
 
 ## Documentation Sets
 
-- [Complete documentation](https://ovh.github.io/design-system/v19.7.0/llms/llms-full.txt): The complete OVHcloud Design System documentation including all components, styling, theming, guides, and tools
+- [Complete documentation](./llms-full.txt): The complete OVHcloud Design System documentation including all components, styling, theming, guides, and tools
+- [Machine-readable index](./llms-index.json): JSON index of every documentation file with its type, token estimate and canonical URL
 
-- [Components](https://ovh.github.io/design-system/v19.7.0/llms/ods-documentation-components.txt): Documentation for all React components in OVHcloud Design System.
-- [Components Index](https://ovh.github.io/design-system/v19.7.0/llms/ods-components-index.txt): Individual per-component documentation files for targeted context
-- [Generic Documentation](https://ovh.github.io/design-system/v19.7.0/llms/ods-documentation-generic.txt): Documentation for design tokens, styling, theming, guides, tools, and general information about OVHcloud Design System.
+- [Components](./ods-documentation-components.txt): Documentation for all React components in OVHcloud Design System.
+- [Components Index](./ods-components-index.txt): Individual per-component documentation files for targeted context
+- [Generic Documentation](./ods-documentation-generic.txt): Documentation for design tokens, styling, theming, guides, tools, and general information about OVHcloud Design System.
+- [Generic Documentation Index](./ods-generic-index.txt): Individual per-page documentation files for targeted context
 
 ## Notes
 
 - The complete documentation includes all content from the official documentation
 - Category-specific documentation files contain only the content relevant to that category
-- Individual component files are available for targeted LLM context (see Components Index)
+- Individual files are available for targeted LLM context (see the Components and Generic Documentation indexes)
+- The machine-readable index (JSON) lists every file with a token estimate for context budgeting
 - The content is automatically generated from the same source as the official documentation

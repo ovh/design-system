@@ -1,0 +1,54 @@
+---
+title: "What S New Migration Guide 17 X To 18 X"
+slug: ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x
+category: generic
+type: overview
+version: 19.7.3
+tokens: 323
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x.txt
+---
+
+# What S New Migration Guide 17 X To 18 X
+
+If you have any questions or issues regarding the new version, feel free to reach us directly.
+
+## Libraries
+
+---
+
+The following libs have been removed:
+
+-   @ovhcloud/ods-cdk
+-   @ovhcloud/ods-common-core
+-   @ovhcloud/ods-common-stencil
+-   @ovhcloud/ods-common-testing
+-   @ovhcloud/ods-common-theming
+-   @ovhcloud/ods-theme-blue-jeans
+
+If you were using part of them, please reach out to us so that we can get more information about your usage.
+
+To use the new theme, replace `ods-theme-blue-jeans` with the following:
+
+```typescript
+import '@ovhcloud/ods-themes/default';
+```
+
+## Design tokens
+
+---
+
+Design tokens are now accessible through the `@ovhcloud/ods-themes` lib.
+
+The list of available tokens has been updated with the latest design changes and match what you may find on the Figma screens.
+
+## Components
+
+---
+
+As each component was refactored, there are too many changes to list everything here.
+
+The main common breaking change is the following: `osds-xxx` component is now `ods-xxx`
+
+A complete list of changes and a guide about how to migrate is available per component in the v18 documentation.
+
+Use the top-left version selector to move to the latest v18.x documentation where you'll find the latest up-to-date information.

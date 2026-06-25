@@ -1,10 +1,20 @@
-React Components
+---
+title: "Link"
+slug: link
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 894
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--technical-information.txt
+---
 
 # Link
 
 ## Overview
 
 ---
+
+[Link](https://www.ovhcloud.com)
 
 ## Anatomy
 
@@ -54,52 +64,40 @@ disabled
 [Default Link](https://www.ovhcloud.com)
 
 ```jsx
-{
-  globals: {
-    imports: `import { Link } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Link href="https://www.ovhcloud.com">
-      Default Link    </Link>
-}
+<Link href="https://www.ovhcloud.com">
+  Default Link
+</Link>
 ```
 
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Link } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Link disabled href="https://www.ovhcloud.com">
-      Disabled    </Link>
-}
+<Link
+  disabled
+  href="https://www.ovhcloud.com"
+>
+  Disabled
+</Link>
 ```
 
 ### With Icon
 
+[Icon Link](https://www.ovhcloud.com)[Icon Link](https://www.ovhcloud.com)
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Link href="https://www.ovhcloud.com">
-        <Icon name={ICON_NAME.arrowLeft} />Icon Link
-      </Link>
-      <Link href="https://www.ovhcloud.com" style={{
+<>
+  <Link href="https://www.ovhcloud.com">
+    <Icon name="arrow-left" />
+    Icon Link  </Link>
+  <Link
+    href="https://www.ovhcloud.com"
+    style={{
       justifySelf: 'right'
-    }}>
-        Icon Link<Icon name={ICON_NAME.arrowRight} />
-      </Link>
-    </>
-}
+    }}
+  >
+    Icon Link    <Icon name="arrow-right" />
+  </Link>
+</>
 ```
 
 ### React Router integration

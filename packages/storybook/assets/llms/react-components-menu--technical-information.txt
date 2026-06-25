@@ -1,4 +1,12 @@
-React Components
+---
+title: "Menu"
+slug: menu
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1808
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu--technical-information.txt
+---
 
 # Menu
 
@@ -25,6 +33,14 @@ MenuSubmenu
 MenuTrigger
 
 ---
+
+My account
+
+Profile
+
+Settings
+
+Logout
 
 ## Menu
 
@@ -187,23 +203,20 @@ asChild
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Menu>
-      <MenuTrigger asChild>
-        <Button>
-          Open menu        </Button>
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItem value="profile">Profile</MenuItem>
-        <MenuItem value="settings">Settings</MenuItem>
-        <MenuItem value='logout'>Logout</MenuItem>
-      </MenuContent>
-    </Menu>
-}
+<Menu>
+  <MenuTrigger asChild>
+    <Button>
+      Open menu    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem value="profile">
+      Profile    </MenuItem>
+    <MenuItem value="settings">
+      Settings    </MenuItem>
+    <MenuItem value="logout">
+      Logout    </MenuItem>
+  </MenuContent>
+</Menu>
 ```
 
 ### Controlled
@@ -233,80 +246,79 @@ const [isOpen, setIsOpen] = useState(false);
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Menu, MenuContent, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Menu>
-      <MenuTrigger asChild>
-        <Button>
-          Open menu        </Button>
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItem value="profile">Profile</MenuItem>
-        <MenuItem disabled value="settings">Settings</MenuItem>
-        <MenuItem value="logout">Logout</MenuItem>
-      </MenuContent>
-    </Menu>
-}
+<Menu>
+  <MenuTrigger asChild>
+    <Button>
+      Open menu    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem value="profile">
+      Profile    </MenuItem>
+    <MenuItem
+      disabled
+      value="settings"
+    >
+      Settings    </MenuItem>
+    <MenuItem value="logout">
+      Logout    </MenuItem>
+  </MenuContent>
+</Menu>
 ```
 
 ### Group
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Menu, MenuContent, MenuGroup, MenuGroupLabel, MenuItem, MenuTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Menu>
-      <MenuTrigger asChild>
-        <Button>
-          Open menu        </Button>
-      </MenuTrigger>
-      <MenuContent>
-        <MenuGroup>
-          <MenuGroupLabel>Account</MenuGroupLabel>
-          <MenuItem value='profile'>Profile</MenuItem>
-          <MenuItem value='billing'>Billing</MenuItem>
-        </MenuGroup>
-        <MenuGroup>
-          <MenuGroupLabel>Support</MenuGroupLabel>
-          <MenuItem value='help'>Help center</MenuItem>
-          <MenuItem value='contact'>Contact support</MenuItem>
-        </MenuGroup>
-      </MenuContent>
-    </Menu>
-}
+<Menu>
+  <MenuTrigger asChild>
+    <Button>
+      Open menu    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuGroup>
+      <MenuGroupLabel>
+        Account      </MenuGroupLabel>
+      <MenuItem value="profile">
+        Profile      </MenuItem>
+      <MenuItem value="billing">
+        Billing      </MenuItem>
+    </MenuGroup>
+    <MenuGroup>
+      <MenuGroupLabel>
+        Support      </MenuGroupLabel>
+      <MenuItem value="help">
+        Help center      </MenuItem>
+      <MenuItem value="contact">
+        Contact support      </MenuItem>
+    </MenuGroup>
+  </MenuContent>
+</Menu>
 ```
 
 ### Nested
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button, Menu, MenuContent, MenuItem, MenuSubmenu, MenuTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Menu>
-      <MenuTrigger asChild>
-        <Button>
-          Open menu        </Button>
-      </MenuTrigger>
+<Menu>
+  <MenuTrigger asChild>
+    <Button>
+      Open menu    </Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem value="new">
+      New    </MenuItem>
+    <MenuItem value="open">
+      Open    </MenuItem>
+    <MenuSubmenu>
+      <MenuTrigger>
+        Share      </MenuTrigger>
       <MenuContent>
-        <MenuItem value='new'>New</MenuItem>
-        <MenuItem value='open'>Open</MenuItem>
-        <MenuSubmenu>
-          <MenuTrigger>Share</MenuTrigger>
-          <MenuContent>
-            <MenuItem value='email'>Email</MenuItem>
-            <MenuItem value='message'>Message</MenuItem>
-          </MenuContent>
-        </MenuSubmenu>
+        <MenuItem value="email">
+          Email        </MenuItem>
+        <MenuItem value="message">
+          Message        </MenuItem>
       </MenuContent>
-    </Menu>
-}
+    </MenuSubmenu>
+  </MenuContent>
+</Menu>
 ```
 
 ## Recipes

@@ -11,35 +11,23 @@ import { NoToC } from '../../../src/components/noToC/NoToC';
 
 > OVHcloud Design System is a collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
 
-This page provides AI/LLM-optimized documentation following the <ExternalLink href="https://llmstxt.org/">llmstxt.org</ExternalLink> specification. The entry point for AI agents is the <ExternalLink href="/llms/llms.txt" rel="noopener noreferrer">llms.txt</ExternalLink> file.
+This page provides AI/LLM-optimized documentation following the <ExternalLink href="https://llmstxt.org/">llmstxt.org</ExternalLink> specification.
 
-<Heading label="Documentation Sets" level={2} />
+<Heading label="Entry Point" level={2} />
 
-- **<ExternalLink href="/llms/llms-full.txt" rel="noopener noreferrer">Complete ODS documentation</ExternalLink>**: The complete OVHcloud Design System documentation including all components, styling, theming, guides, and tools
+The single entry point for AI agents is the <ExternalLink href="/llms/llms.txt" rel="noopener noreferrer">llms.txt</ExternalLink> file. It is automatically generated from the official documentation and always lists the available documentation sets, including:
 
-- **<ExternalLink href="/llms/ods-documentation-components.txt" rel="noopener noreferrer">Components only</ExternalLink>**: Documentation for all React components in OVHcloud Design System.
+- the complete documentation and per-category files (components, generic);
+- per-file indexes for targeted context (one file per component or page);
+- a machine-readable <ExternalLink href="/llms/llms-index.json" rel="noopener noreferrer">JSON index</ExternalLink> exposing, for every file, its type, a token estimate and its canonical URL.
 
-- **<ExternalLink href="/llms/ods-documentation-generic.txt" rel="noopener noreferrer">Generic Documentation only</ExternalLink>**: Documentation for design tokens, styling, theming, guides, tools, and general information about OVHcloud Design System.
-
-- **<ExternalLink href="/llms/ods-components-index.txt" rel="noopener noreferrer">Components Index</ExternalLink>**: Individual per-component documentation files for targeted context. Use this to find the file for a specific component.
-
-<Heading label="Notes" level={2} />
-
-- The complete documentation includes all content from the official documentation
-
-- Category-specific documentation files contain only the content relevant to that category
-
-- Individual component files are available for targeted LLM context (see Components Index)
-
-- The content is automatically generated from the same source as the official documentation
+Always refer to <ExternalLink href="/llms/llms.txt" rel="noopener noreferrer">llms.txt</ExternalLink> for the current, authoritative list: it is kept in sync with every release, so this page intentionally does not duplicate it.
 
 <Heading label="How to Use" level={2} />
 
 <Heading label="For AI Assistants" level={3} />
 
-Download one of the documentation files above and provide it to your AI assistant (ChatGPT, Claude, etc.) for better context about ODS components.
-
-For a specific component, use the **Components Index** to find and download only the file you need, saving tokens and improving response quality.
+Start from <ExternalLink href="/llms/llms.txt" rel="noopener noreferrer">llms.txt</ExternalLink> and download the documentation set that fits your need, then provide it to your AI assistant (ChatGPT, Claude, etc.) for better context about ODS. For a specific component or page, use the per-file indexes to fetch only the file you need; the JSON index exposes a token estimate so you can budget context and save tokens.
 
 <Heading label="For Developers" level={3} />
 

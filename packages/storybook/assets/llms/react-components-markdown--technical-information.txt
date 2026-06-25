@@ -1,4 +1,12 @@
-React Components
+---
+title: "Markdown"
+slug: markdown
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 699
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-markdown--technical-information.txt
+---
 
 # Markdown
 
@@ -21,6 +29,12 @@ Check the [Documentation](https://ovh.github.io/design-system/).
 Markdown
 
 ---
+
+# Readme
+
+Wanna know more about **OVHCloud Design System**?
+
+Check the [Documentation](https://ovh.github.io/design-system/).
 
 ## Markdown
 
@@ -70,16 +84,13 @@ console.log('Hello World!');
 | Value 1 | Value 2 |
 
 ```jsx
-{
-  globals: {
-    imports: `import { Markdown } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Markdown content={`# Heading 1
+<Markdown
+  content="# Heading 1
   ## Heading 2  ### Heading 3  #### Heading 4  ##### Heading 5  ###### Heading 6  > Blockquotes
-  \`Inline code\`  \`\`\`  // print something in the console  console.log('Hello World!');  \`\`\`
-  | Column 1 | Column 2 |  | --- | --- |  | Value 1 | Value 2 |  `} />
-}
+  `Inline code`  ```  // print something in the console  console.log('Hello World!');
+  ```
+  | Column 1 | Column 2 |  | --- | --- |  | Value 1 | Value 2 |  "
+ />
 ```
 
 ### Custom Component
@@ -128,6 +139,13 @@ console.log('Hello World!');
 ```
 `} />
 );
+```
+
+# Highlighted Code
+
+```
+// print something in the console
+console.log('Hello World!');
 ```
 
 ## Recipes

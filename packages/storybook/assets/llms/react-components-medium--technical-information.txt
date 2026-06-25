@@ -1,4 +1,12 @@
-React Components
+---
+title: "Medium"
+slug: medium
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 250
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium--technical-information.txt
+---
 
 # Medium
 
@@ -38,25 +46,21 @@ Medium
 ### Height
 
 ```jsx
-{
-  globals: {
-    imports: `import { Medium } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Medium alt="NASA Computer room" height={40} src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
-}
+<Medium
+  alt="NASA Computer room"
+  height={40}
+  src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg"
+/>
 ```
 
 ### Width
 
 ```jsx
-{
-  globals: {
-    imports: `import { Medium } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Medium alt="NASA Computer room" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" width={300} />
-}
+<Medium
+  alt="NASA Computer room"
+  src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg"
+  width={300}
+/>
 ```
 
 ## Recipes

@@ -1,4 +1,12 @@
-React Components
+---
+title: "Spinner"
+slug: spinner
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1470
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner--documentation.txt
+---
 
 # Spinner
 

@@ -1,10 +1,20 @@
-React Components
+---
+title: "Accordion"
+slug: accordion
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1919
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion--technical-information.txt
+---
 
 # Accordion
 
 ## Overview
 
 ---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
 
 ## Anatomy
 
@@ -143,20 +153,14 @@ expandIconPosition
 Lorem ipsum dolor sit amet.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Accordion>
-      <AccordionItem value="0">
-        <AccordionTrigger>
-          Hello World!        </AccordionTrigger>
-        <AccordionContent>
-          Lorem ipsum dolor sit amet.        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-}
+<Accordion>
+  <AccordionItem value="0">
+    <AccordionTrigger>
+      Hello World!    </AccordionTrigger>
+    <AccordionContent>
+      Lorem ipsum dolor sit amet.    </AccordionContent>
+  </AccordionItem>
+</Accordion>
 ```
 
 ### Multiple
@@ -260,6 +264,10 @@ Lorem ipsum dolor sit amet.
 
 ### Controlled
 
+Lorem ipsum dolor sit amet.
+
+Lorem ipsum dolor sit amet.
+
 ```jsx
 const [value, setValue] = useState(['0']);
   return <Accordion value={value} onChange={detail => setValue(detail.value)}>
@@ -281,32 +289,32 @@ const [value, setValue] = useState(['0']);
 
 ### Expand Icon Position
 
+Lorem ipsum dolor sit amet.
+
+  
+
+Lorem ipsum dolor sit amet.
+
 ```jsx
-{
-  globals: {
-    imports: `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, EXPAND_ICON_POSITION } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Accordion>
-        <AccordionItem value="0">
-          <AccordionTrigger expandIconPosition={EXPAND_ICON_POSITION.right}>
-            Icon on the right (default)          </AccordionTrigger>
-          <AccordionContent>
-            Lorem ipsum dolor sit amet.          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-      <br />
-      <Accordion>
-        <AccordionItem value="1">
-          <AccordionTrigger expandIconPosition={EXPAND_ICON_POSITION.left}>
-            Icon on the left          </AccordionTrigger>
-          <AccordionContent>
-            Lorem ipsum dolor sit amet.          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </>
-}
+<>
+  <Accordion>
+    <AccordionItem value="0">
+      <AccordionTrigger expandIconPosition="right">
+        Icon on the right (default)      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+  <br />
+  <Accordion>
+    <AccordionItem value="1">
+      <AccordionTrigger expandIconPosition="left">
+        Icon on the left      </AccordionTrigger>
+      <AccordionContent>
+        Lorem ipsum dolor sit amet.      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</>
 ```
 
 ## Recipes

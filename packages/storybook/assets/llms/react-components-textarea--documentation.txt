@@ -1,4 +1,12 @@
-React Components
+---
+title: "Textarea"
+slug: textarea
+category: component
+type: documentation
+version: 19.7.3
+tokens: 1255
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textarea--documentation.txt
+---
 
 # Textarea
 

@@ -1,10 +1,34 @@
-React Components
+---
+title: "Tree View"
+slug: tree-view
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 4130
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-view--technical-information.txt
+---
 
 # Tree View
 
 ## Overview
 
 ---
+
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
 
 ## Anatomy
 
@@ -17,6 +41,22 @@ TreeViewNode
 TreeViewNodes
 
 ---
+
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
 
 ## TreeView
 
@@ -146,50 +186,125 @@ This component has no specific properties.
 
 ### Default
 
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
+
 ```jsx
-{
-  globals: {
-    imports: `import { TreeView, TreeViewNode, TreeViewNodes } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => {
-    const items = [{
+<TreeView
+  items={[
+    {
+      children: [
+        {
+          id: 'app.tsx',
+          name: 'app.tsx'
+        },
+        {
+          id: 'index.ts',
+          name: 'index.ts'
+        },
+        {
+          children: [
+            {
+              id: 'Button.tsx',
+              name: 'Button.tsx'
+            },
+            {
+              id: 'Card.tsx',
+              name: 'Card.tsx'
+            }
+          ],
+          id: 'components',
+          name: 'components'
+        }
+      ],
       id: 'src',
-      name: 'src',
-      children: [{
-        id: 'app.tsx',
-        name: 'app.tsx'
-      }, {
-        id: 'index.ts',
-        name: 'index.ts'
-      }, {
-        id: 'components',
-        name: 'components',
-        children: [{
-          id: 'Button.tsx',
-          name: 'Button.tsx'
-        }, {
-          id: 'Card.tsx',
-          name: 'Card.tsx'
-        }]
-      }]
-    }, {
+      name: 'src'
+    },
+    {
       id: 'package.json',
       name: 'package.json'
-    }, {
+    },
+    {
       id: 'readme.md',
       name: 'README.md'
-    }];
-    return <TreeView items={items}>
-        <TreeViewNodes>
-          {items.map(item => <TreeViewNode key={item.id} item={item} />)}
-        </TreeViewNodes>
-      </TreeView>;
-  }
-}
+    }
+  ]}
+>
+  <TreeViewNodes>
+    <TreeViewNode      item={{
+        children: [
+          {
+            id: 'app.tsx',
+            name: 'app.tsx'
+          },
+          {
+            id: 'index.ts',
+            name: 'index.ts'
+          },
+          {
+            children: [
+              {
+                id: 'Button.tsx',
+                name: 'Button.tsx'
+              },
+              {
+                id: 'Card.tsx',
+                name: 'Card.tsx'
+              }
+            ],
+            id: 'components',
+            name: 'components'
+          }
+        ],
+        id: 'src',
+        name: 'src'
+      }}
+     />    <TreeViewNode
+      item={{
+        id: 'package.json',
+        name: 'package.json'
+      }}
+     />
+    <TreeViewNode
+      item={{
+        id: 'readme.md',
+        name: 'README.md'
+      }}
+     />
+  </TreeViewNodes>
+</TreeView>
 ```
 
 ### Multiple
+
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
 
 ```jsx
 const items = [{
@@ -228,6 +343,22 @@ const items = [{
 ```
 
 ### Disabled
+
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
 
 ```jsx
 const items = [{
@@ -333,6 +464,22 @@ const items = [{
 
 ### Default expanded
 
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
+
 ```jsx
 const items = [{
     id: 'src',
@@ -370,6 +517,24 @@ const items = [{
 ```
 
 ### Controlled
+
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
+
+Selected: package.json
 
 ```jsx
 const items = [{
@@ -415,6 +580,24 @@ const items = [{
 
 ### Controlled multiple
 
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
+
+Selected: package.json, index.ts
+
 ```jsx
 const items = [{
     id: 'src',
@@ -459,6 +642,22 @@ const items = [{
 
 ### Disabled items
 
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
+
 ```jsx
 const items = [{
     id: 'src',
@@ -501,6 +700,24 @@ const items = [{
 
 ### In form field
 
+Choose a file
+
+src
+
+app.tsx
+
+index.ts
+
+components
+
+Button.tsx
+
+Card.tsx
+
+package.json
+
+README.md
+
 ```jsx
 const items = [{
     id: 'src',
@@ -541,6 +758,18 @@ const items = [{
 ```
 
 ### Dynamic children
+
+src
+
+app.tsx
+
+index.ts
+
+components
+
+package.json
+
+README.md
 
 ```jsx
 type Item = {

@@ -9,7 +9,7 @@ overrides:
   '@types/react': 18.2.56
 
 patchedDependencies:
-  '@fluentui/storybook-llms-extractor@0.0.3': 54e8842c83413417aacfe1a58ad3539c52e191c9ae24b6cfd75cad78c56b32b9
+  '@fluentui/storybook-llms-extractor@0.0.3': 2bfbb9137f1b68c057bb8e394b8c32ff10320b5078022b17f4d6037f57e86b7c
   husky@4.3.8: bb86c80f1fd4533ee6ce5051d22685597fec4a643b2675758e492b75155fd297
 
 importers:
@@ -773,7 +773,7 @@ importers:
     devDependencies:
       '@fluentui/storybook-llms-extractor':
         specifier: 0.0.3
-        version: 0.0.3(patch_hash=54e8842c83413417aacfe1a58ad3539c52e191c9ae24b6cfd75cad78c56b32b9)
+        version: 0.0.3(patch_hash=2bfbb9137f1b68c057bb8e394b8c32ff10320b5078022b17f4d6037f57e86b7c)
       '@storybook/addon-docs':
         specifier: 8.6.12
         version: 8.6.12(@types/react@18.2.56)(storybook@8.6.12(prettier@3.6.2))
@@ -12027,7 +12027,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.11': {}
 
-  '@fluentui/storybook-llms-extractor@0.0.3(patch_hash=54e8842c83413417aacfe1a58ad3539c52e191c9ae24b6cfd75cad78c56b32b9)':
+  '@fluentui/storybook-llms-extractor@0.0.3(patch_hash=2bfbb9137f1b68c057bb8e394b8c32ff10320b5078022b17f4d6037f57e86b7c)':
     dependencies:
       '@swc/helpers': 0.5.23
       playwright: 1.56.1

@@ -1,4 +1,12 @@
-React Components
+---
+title: "Button"
+slug: button
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 4323
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--technical-information.txt
+---
 
 # Button
 
@@ -604,96 +612,62 @@ variant
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Button>
-      My button    </Button>
-}
+<Button>
+  My button
+</Button>
 ```
 
 ### Color
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { BUTTON_COLOR, Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Button color={BUTTON_COLOR.critical}>Critical</Button>
-      <Button color={BUTTON_COLOR.information}>Information</Button>
-      <Button color={BUTTON_COLOR.neutral}>Neutral</Button>
-      <Button color={BUTTON_COLOR.primary}>Primary</Button>
-      <Button color={BUTTON_COLOR.success}>Success</Button>
-      <Button color={BUTTON_COLOR.warning}>Warning</Button>
-    </>
-}
+<>
+  <Button color="critical">
+    Critical  </Button>
+  <Button color="information">
+    Information  </Button>
+  <Button color="neutral">
+    Neutral  </Button>
+  <Button color="primary">
+    Primary  </Button>
+  <Button color="success">
+    Success  </Button>
+  <Button color="warning">
+    Warning  </Button>
+</>
 ```
 
 ### Loading
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Button loading={true}>
-      Loading button    </Button>
-}
+<Button loading>
+  Loading button
+</Button>
 ```
 
 ### Size
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { BUTTON_SIZE, Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Button size={BUTTON_SIZE.md}>MD button</Button>
-      <Button size={BUTTON_SIZE.sm}>SM button</Button>
-      <Button size={BUTTON_SIZE.xs}>XS button</Button>
-    </>
-}
+<>
+  <Button size="md">
+    MD button  </Button>
+  <Button size="sm">
+    SM button  </Button>
+  <Button size="xs">
+    XS button  </Button>
+</>
 ```
 
 ### Variant
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { BUTTON_VARIANT, Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Button variant={BUTTON_VARIANT.default}>Default button</Button>
-      <Button variant={BUTTON_VARIANT.outline}>Outline button</Button>
-      <Button variant={BUTTON_VARIANT.ghost}>Ghost button</Button>
-    </>
-}
+<>
+  <Button variant="default">
+    Default button  </Button>
+  <Button variant="outline">
+    Outline button  </Button>
+  <Button variant="ghost">
+    Ghost button  </Button>
+</>
 ```
 
 ## Recipes
@@ -702,7 +676,7 @@ variant
 
 Chat
 
-Assistant2:58 PM
+Assistant1:00 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 

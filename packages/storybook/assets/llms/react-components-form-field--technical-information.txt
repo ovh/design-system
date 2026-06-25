@@ -1,10 +1,20 @@
-React Components
+---
+title: "Form Field"
+slug: form-field
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 807
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-field--technical-information.txt
+---
 
 # Form Field
 
 ## Overview
 
 ---
+
+Description:Helper text0/200
 
 To learn more about **Form Field** usage, please refer to the .
 
@@ -23,6 +33,8 @@ FormFieldLabel
 FormFieldLabelSubLabel
 
 ---
+
+Description:- mandatoryHelper textError message
 
 ## FormField
 
@@ -95,31 +107,21 @@ invalid
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { FormField, Textarea } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <Textarea name="textarea" />
-    </FormField>
-}
+<FormField>
+  <Textarea name="textarea" />
+</FormField>
 ```
 
 ### Field label
 
+Description:
+
 ```jsx
-{
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Textarea } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Description:      </FormFieldLabel>
-      <Textarea name="textarea" />
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Description:  </FormFieldLabel>
+  <Textarea name="textarea" />
+</FormField>
 ```
 
 ### Field sub label
@@ -127,18 +129,13 @@ invalid
 Description- mandatory
 
 ```jsx
-{
-  globals: {
-    imports: `import { FormField, FormFieldLabel, FormFieldLabelSubLabel, Textarea } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Description        <FormFieldLabelSubLabel>- mandatory</FormFieldLabelSubLabel>
-      </FormFieldLabel>
-      <Textarea name="textarea" />
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Description    <FormFieldLabelSubLabel>
+      - mandatory    </FormFieldLabelSubLabel>
+  </FormFieldLabel>
+  <Textarea name="textarea" />
+</FormField>
 ```
 
 ### Helper message
@@ -146,35 +143,25 @@ Description- mandatory
 Helper text
 
 ```jsx
-{
-  globals: {
-    imports: `import { TEXT_PRESET, FormField, FormFieldHelper, Text, Textarea } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <Textarea name="textarea" />
-      <FormFieldHelper>
-        <Text preset={TEXT_PRESET.caption}>
-          Helper text        </Text>
-      </FormFieldHelper>
-    </FormField>
-}
+<FormField>
+  <Textarea name="textarea" />
+  <FormFieldHelper>
+    <Text preset="caption">
+      Helper text    </Text>
+  </FormFieldHelper>
+</FormField>
 ```
 
 ### Error message
 
+Error message
+
 ```jsx
-{
-  globals: {
-    imports: `import { FormField, FormFieldError, Textarea } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField invalid>
-      <Textarea name="textarea" />
-      <FormFieldError>
-        Error message      </FormFieldError>
-    </FormField>
-}
+<FormField invalid>
+  <Textarea name="textarea" />
+  <FormFieldError>
+    Error message  </FormFieldError>
+</FormField>
 ```
 
 ## Recipes

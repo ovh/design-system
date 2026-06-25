@@ -4,13 +4,15 @@ slug: file-upload
 category: component
 type: documentation
 version: 19.7.3
-tokens: 2095
+tokens: 2100
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--documentation.txt
 ---
 
 # File Upload
 
 _**File Upload** allows users to select one or more files to upload to a specific location._
+
+Drag & drop a file 
 
 ## Overview
 

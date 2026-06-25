@@ -4,7 +4,7 @@ slug: meter
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1267
+tokens: 1205
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter--documentation.txt
 ---
 
@@ -89,29 +89,30 @@ To ensure proper accessibility, **Meter** must be correctly labeled.
 Every **Meter** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) or an [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby) attribute.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Meter } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Meter aria-label="Gauge" low={40} value={35} />
-}
+<Meter
+  aria-label="Gauge"
+  low={40}
+  value={35}
+/>
 ```
 
 Screen readers will announce the label and the meter information.
 
+Gauge:
+
 ```jsx
-{
-  globals: {
-    imports: `import { TEXT_PRESET, Meter, Text } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Text id="meter-label" preset={TEXT_PRESET.label}>
-        Gauge:      </Text>
-      <Meter aria-labelledby="meter-label" low={40} value={35} />
-    </>
-}
+<>
+  <Text
+    id="meter-label"
+    preset="label"
+  >
+    Gauge:  </Text>
+  <Meter
+    aria-labelledby="meter-label"
+    low={40}
+    value={35}
+  />
+</>
 ```
 
 Screen readers will announce the label and the meter information.

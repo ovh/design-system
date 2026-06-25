@@ -4,7 +4,7 @@ slug: combobox
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 3299
+tokens: 2986
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox--technical-information.txt
 ---
 
@@ -267,199 +267,229 @@ placeholder
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }, {
-    label: 'Hamster',
-    value: 'hamster'
-  }, {
-    label: 'Parrot',
-    value: 'parrot'
-  }, {
-    label: 'Spider',
-    value: 'spider'
-  }, {
-    label: 'Goldfish',
-    value: 'goldfish'
-  }]}>
-      <ComboboxControl />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <ComboboxControl />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Clearable
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }, {
-    label: 'Hamster',
-    value: 'hamster'
-  }, {
-    label: 'Parrot',
-    value: 'parrot'
-  }, {
-    label: 'Spider',
-    value: 'spider'
-  }, {
-    label: 'Goldfish',
-    value: 'goldfish'
-  }]}>
-      <ComboboxControl clearable placeholder="Combobox" />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <ComboboxControl
+    clearable
+    placeholder="Combobox"
+  />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox disabled items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }, {
-    label: 'Hamster',
-    value: 'hamster'
-  }, {
-    label: 'Parrot',
-    value: 'parrot'
-  }, {
-    label: 'Spider',
-    value: 'spider'
-  }, {
-    label: 'Goldfish',
-    value: 'goldfish'
-  }]}>
-      <ComboboxControl placeholder="Combobox" />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox
+  disabled
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <ComboboxControl placeholder="Combobox" />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Readonly
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox defaultValue={['parrot']} items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }, {
-    label: 'Hamster',
-    value: 'hamster'
-  }, {
-    label: 'Parrot',
-    value: 'parrot'
-  }, {
-    label: 'Spider',
-    value: 'spider'
-  }, {
-    label: 'Goldfish',
-    value: 'goldfish'
-  }]} readOnly>
-      <ComboboxControl placeholder="Combobox" />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox
+  defaultValue={[
+    'parrot'
+  ]}
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+  readOnly
+>
+  <ComboboxControl placeholder="Combobox" />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Group
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox items={[{
-    label: 'Europe',
-    options: [{
-      label: 'France',
-      value: 'fr'
-    }, {
-      label: 'Germany',
-      value: 'de'
-    }, {
-      label: 'Italy',
-      value: 'it'
-    }]
-  }, {
-    label: 'Asia',
-    options: [{
-      label: 'China',
-      value: 'cn'
-    }, {
-      label: 'Japan',
-      value: 'jp'
-    }, {
-      label: 'Russia',
-      value: 'ru'
-    }]
-  }, {
-    label: 'World',
-    value: 'world'
-  }]}>
-      <ComboboxControl placeholder="Combobox" />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox
+  items={[
+    {
+      label: 'Europe',
+      options: [
+        {
+          label: 'France',
+          value: 'fr'
+        },
+        {
+          label: 'Germany',
+          value: 'de'
+        },
+        {
+          label: 'Italy',
+          value: 'it'
+        }
+      ]
+    },
+    {
+      label: 'Asia',
+      options: [
+        {
+          label: 'China',
+          value: 'cn'
+        },
+        {
+          label: 'Japan',
+          value: 'jp'
+        },
+        {
+          label: 'Russia',
+          value: 'ru'
+        }
+      ]
+    },
+    {
+      label: 'World',
+      value: 'world'
+    }
+  ]}
+>
+  <ComboboxControl placeholder="Combobox" />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Invalid
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox invalid items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }]}>
-      <ComboboxControl />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox
+  invalid
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    }
+  ]}
+>
+  <ComboboxControl />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Controlled
+
+**Selected value:** dog
 
 ```jsx
 const [value, setValue] = useState<string[]>(['dog']);
@@ -498,34 +528,38 @@ const [value, setValue] = useState<string[]>(['dog']);
 ### Highlight
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox highlightResults items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }, {
-    label: 'Hamster',
-    value: 'hamster'
-  }, {
-    label: 'Parrot',
-    value: 'parrot'
-  }, {
-    label: 'Spider',
-    value: 'spider'
-  }, {
-    label: 'Goldfish',
-    value: 'goldfish'
-  }]}>
-      <ComboboxControl />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox
+  highlightResults
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <ComboboxControl />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Custom Options
@@ -593,110 +627,110 @@ type MyData = {
 ### Custom Filtering
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox customFilter={(label, inputValue) => {
-    const reversedLabel = label.split('').reverse().join('');
-    return new RegExp(`^${inputValue}`, 'i').test(reversedLabel);
-  }} items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }, {
-    label: 'Hamster',
-    value: 'hamster'
-  }, {
-    label: 'Parrot',
-    value: 'parrot'
-  }, {
-    label: 'Spider',
-    value: 'spider'
-  }, {
-    label: 'Goldfish',
-    value: 'goldfish'
-  }]}>
-      <ComboboxControl placeholder="Search from right to left in each word" />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox
+  customFilter={function Xs(){}}
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <ComboboxControl placeholder="Search from right to left in each word" />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Empty
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox items={[]}>
-      <ComboboxControl />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox items={[]}>
+  <ComboboxControl />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Multiple
 
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Combobox multiple items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }, {
-    label: 'Hamster',
-    value: 'hamster'
-  }, {
-    label: 'Parrot',
-    value: 'parrot'
-  }, {
-    label: 'Spider',
-    value: 'spider'
-  }, {
-    label: 'Goldfish',
-    value: 'goldfish'
-  }]}>
-      <ComboboxControl />
-      <ComboboxContent />
-    </Combobox>
-}
+<Combobox
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+  multiple
+>
+  <ComboboxControl />
+  <ComboboxContent />
+</Combobox>
 ```
 
 ### Form field
 
+Combobox
+
 ```jsx
-{
-  globals: {
-    imports: `import { Combobox, ComboboxContent, ComboboxControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Combobox      </FormFieldLabel>
-      <Combobox items={[{
-      label: 'Dog',
-      value: 'dog'
-    }, {
-      label: 'Cat',
-      value: 'cat'
-    }]}>
-        <ComboboxControl />
-        <ComboboxContent />
-      </Combobox>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Combobox  </FormFieldLabel>
+  <Combobox
+    items={[
+      {
+        label: 'Dog',
+        value: 'dog'
+      },
+      {
+        label: 'Cat',
+        value: 'cat'
+      }
+    ]}
+  >
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+</FormField>
 ```
 
 ## Recipes

@@ -4,7 +4,7 @@ slug: link
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1678
+tokens: 1618
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link--documentation.txt
 ---
 
@@ -112,16 +112,15 @@ This component complies with the [Link WAI-ARIA design pattern](https://www.w3.o
 
 If a **Link** is represented only by an **Icon**, it must have an explicit accessible label to provide context about its destination or action.
 
+[​](https://www.ovhcloud.com)
+
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Link aria-label="Go to homepage" href="https://www.ovhcloud.com">
-      <Icon name={ICON_NAME.home} />
-    </Link>
-}
+<Link
+  aria-label="Go to homepage"
+  href="https://www.ovhcloud.com"
+>
+  <Icon name="home" />
+</Link>
 ```
 
 Screen readers will announce the link and its label.
@@ -148,26 +147,22 @@ The screen reader will announce the link, the opening in a new tab behavior and 
 
 If a **Link** points to a file download, it should include the file type and size information.
 
+[​](https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf)[Download WCAG20 Guidelines (PDF, 481 KB)](https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf)
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'grid',
-    gridTemplateColumns: '1fr'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { ICON_NAME, Icon, Link } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Link aria-label="Download WCAG20 Guidelines (PDF, 481 KB)" href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
-        <Icon name={ICON_NAME.download} />
-      </Link>
-      <Link href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
-        <Icon name={ICON_NAME.download} />
-        <span>Download WCAG20 Guidelines (PDF, 481 KB)</span>
-      </Link>
-    </>
-}
+<>
+  <Link
+    aria-label="Download WCAG20 Guidelines (PDF, 481 KB)"
+    href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf"
+  >
+    <Icon name="download" />
+  </Link>
+  <Link href="https://www.w3.org/TR/2024/REC-WCAG21-20241212.pdf">
+    <Icon name="download" />
+    <span>
+      Download WCAG20 Guidelines (PDF, 481 KB)    </span>
+  </Link>
+</>
 ```
 
 Screen readers will announce the link, the link label with the file name, type and size, ensuring users know they are downloading a file.

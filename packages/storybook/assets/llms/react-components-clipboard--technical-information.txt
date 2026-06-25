@@ -4,7 +4,7 @@ slug: clipboard
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1097
+tokens: 890
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipboard--technical-information.txt
 ---
 
@@ -114,78 +114,56 @@ labelCopySuccess
 ### Default
 
 ```jsx
-{
-  globals: {
-    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Clipboard value="Clipboard">
-      <ClipboardControl />
-      <ClipboardTrigger />
-    </Clipboard>
-}
+<Clipboard value="Clipboard">
+  <ClipboardControl />
+  <ClipboardTrigger />
+</Clipboard>
 ```
 
 ### Disabled
 
 ```jsx
-{
-  globals: {
-    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Clipboard value="Disabled" disabled>
-      <ClipboardControl />
-      <ClipboardTrigger />
-    </Clipboard>
-}
+<Clipboard
+  disabled
+  value="Disabled"
+>
+  <ClipboardControl />
+  <ClipboardTrigger />
+</Clipboard>
 ```
 
 ### Loading
 
 ```jsx
-{
-  globals: {
-    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Clipboard value="Loading">
-      <ClipboardControl loading />
-      <ClipboardTrigger />
-    </Clipboard>
-}
+<Clipboard value="Loading">
+  <ClipboardControl loading />
+  <ClipboardTrigger />
+</Clipboard>
 ```
 
 ### Masked
 
 ```jsx
-{
-  globals: {
-    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Clipboard value="Masked">
-      <ClipboardControl maskOption={{
+<Clipboard value="Masked">
+  <ClipboardControl
+    maskOption={{
       enable: true
-    }} />
-      <ClipboardTrigger />
-    </Clipboard>
-}
+    }}
+   />
+  <ClipboardTrigger />
+</Clipboard>
 ```
 
 ### Custom labels
 
 ```jsx
-{
-  globals: {
-    imports: `import { Clipboard, ClipboardControl, ClipboardTrigger } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Clipboard value="Custom labels">
-      <ClipboardControl />
-      <ClipboardTrigger labelCopy="Click to copy" labelCopySuccess="Successfully copied" />
-    </Clipboard>
-}
+<Clipboard value="Custom labels">
+  <ClipboardControl />
+  <ClipboardTrigger
+    labelCopy="Click to copy"
+    labelCopySuccess="Successfully copied"
+  />
+</Clipboard>
 ```
 
 ## Recipes
@@ -194,7 +172,7 @@ labelCopySuccess
 
 Chat
 
-Assistant3:37 PM
+Assistant1:00 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 

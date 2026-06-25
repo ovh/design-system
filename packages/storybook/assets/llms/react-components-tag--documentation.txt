@@ -4,7 +4,7 @@ slug: tag
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1682
+tokens: 1620
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--documentation.txt
 ---
 
@@ -127,23 +127,20 @@ When multiple **Tags** are displayed together (e.g., a collection of selected fi
 -   
 
 ```jsx
-{
-  globals: {
-    imports: `import { Tag } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <ul>
-      <li>
-        <Tag>Design</Tag>
-      </li>
-      <li>
-        <Tag>Development</Tag>
-      </li>
-      <li>
-        <Tag>Accessibility</Tag>
-      </li>
-    </ul>
-}
+<ul>
+  <li>
+    <Tag>
+      Design    </Tag>
+  </li>
+  <li>
+    <Tag>
+      Development    </Tag>
+  </li>
+  <li>
+    <Tag>
+      Accessibility    </Tag>
+  </li>
+</ul>
 ```
 
 This allows screen readers to announce a list with the number of items, making it clear that these **Tags** belong to a structured set.
@@ -176,14 +173,9 @@ This ensures that screen readers still recognize the **Tags** as a structured li
 Since the **Tag** is removable, it should provide clear feedback to assistive technologies.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Tag } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Tag aria-label="Remove my tag">
-      My tag    </Tag>
-}
+<Tag aria-label="Remove my tag">
+  My tag
+</Tag>
 ```
 
 This ensures that users know the **Tag** can be removed. Screen readers will announce the tag aria label and the button type.

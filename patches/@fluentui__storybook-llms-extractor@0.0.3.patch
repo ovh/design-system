@@ -1,5 +1,5 @@
 diff --git a/dist/src/utils.js b/dist/src/utils.js
-index 2852bb0e7f7763a7ba2d0b6765554921917f3d91..2c7b0f50978c3dfc2864c84dc4e857710012082a 100644
+index 2852bb0e7f7763a7ba2d0b6765554921917f3d91..e8c1476c6585184626eb0c234cff60e4e8ed445f 100644
 --- a/dist/src/utils.js
 +++ b/dist/src/utils.js
 @@ -134,6 +134,43 @@ async function extractStorybookData({ distPath }) {
@@ -64,3 +64,66 @@ index 2852bb0e7f7763a7ba2d0b6765554921917f3d91..2c7b0f50978c3dfc2864c84dc4e85771
      const stories = await page.evaluate(async ()=>{
          /**
       * Retrieves the Storybook story store from the global window object.
+@@ -190,12 +238,59 @@ async function extractStorybookData({ distPath }) {
+         // Set up routing for this page
+         await setupStaticRouting(page, distPath);
+         console.log(`Extracting: "${url}"`);
+-        await page.goto(url);
++        // PATCH: freeze the clock before rendering so examples that display the
++        // current time (e.g. chat/message bubbles) extract a stable value
++        // instead of the wall-clock time, which otherwise differs every run.
++        await page.clock.setFixedTime(new Date('2025-01-01T12:00:00Z'));
++        // PATCH: seed randomness before any page script runs so examples that
++        // generate data (random UUIDs, faker rows) render identical content
++        // every run. Deterministic data also keeps the React component tree
++        // stable, which in turn stabilises useId-generated DOM ids.
++        await page.addInitScript(() => {
++            let seed = 1234567;
++            const rand = () => {
++                seed = (seed * 1103515245 + 12345) & 0x7fffffff;
++                return seed / 0x7fffffff;
++            };
++            Math.random = rand;
++            if (globalThis.crypto) {
++                globalThis.crypto.getRandomValues = (arr) => {
++                    for (let i = 0; i < arr.length; i++) arr[i] = Math.floor(rand() * 256);
++                    return arr;
++                };
++                globalThis.crypto.randomUUID = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
++                    const r = Math.floor(rand() * 16);
++                    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
++                });
++            }
++        });
++        // PATCH: capture a settled DOM so extraction is deterministic. The docs
++        // page mounts its story previews asynchronously, so reading innerHTML
++        // right after the container attaches races the rendering and yields
++        // different output between runs. Wait for the network to go idle, freeze
++        // animations/transitions, then poll until the content stops changing.
++        await page.goto(url, {
++            waitUntil: 'networkidle'
++        });
++        await page.addStyleTag({
++            content: '*,*::before,*::after{animation:none!important;transition:none!important;}'
++        });
+         await page.waitForSelector('.sbdocs-content', {
+             state: 'attached',
+-            timeout: 2000
++            timeout: 30000
+         });
+-        const html = await page.locator('.sbdocs-content').innerHTML();
++        let html = '';
++        let stable = 0;
++        for(let i = 0; i < 40 && stable < 3; i++){
++            const current = await page.locator('.sbdocs-content').innerHTML();
++            if (current === html) {
++                stable++;
++            } else {
++                stable = 0;
++                html = current;
++            }
++            await page.waitForTimeout(150);
++        }
+         await page.close();
+         return convertHtmlToMarkdown(html);
+     } catch (error) {

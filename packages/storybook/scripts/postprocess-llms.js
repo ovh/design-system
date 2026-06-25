@@ -172,6 +172,12 @@ function parseDoc(file, raw) {
     title = title.split('/').pop().trim();
   }
 
+  // Normalize React useId / Ark-UI generated ids (e.g. ":r1j:", rendered as
+  // "datepicker::rv::table:month") in captured component HTML. They are
+  // render-order dependent and carry no meaning for an LLM, so collapsing them
+  // keeps the extraction deterministic across runs.
+  body = body.replace(/:r[0-9a-z]+:/g, ':r:');
+
   const content = body.length > 0 ? body : null;
 
   return {

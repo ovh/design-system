@@ -4,7 +4,7 @@ slug: input
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1564
+tokens: 1525
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--documentation.txt
 ---
 
@@ -120,17 +120,11 @@ Every **Input** must have a clear and explicit label to ensure that users (espec
 Name:
 
 ```jsx
-{
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Input } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Name:      </FormFieldLabel>
-      <Input />
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Name:  </FormFieldLabel>
+  <Input />
+</FormField>
 ```
 
 Screen readers will announce the label, the field and its content.
@@ -138,6 +132,8 @@ Screen readers will announce the label, the field and its content.
 ### Override action context
 
 To provide more context on the interactive elements, you can provide your own custom translations to the component.
+
+Search:
 
 ```jsx
 <FormField>

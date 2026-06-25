@@ -4,13 +4,15 @@ slug: range
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1645
+tokens: 1614
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range--documentation.txt
 ---
 
 # Range
 
 _**Range** component is used to allow users to visually select one or more values from a range of values by moving the handle along a bar_
+
+0100
 
 ## Overview
 
@@ -119,18 +121,20 @@ This component complies with the [Slider](https://www.w3.org/WAI/ARIA/apg/patter
 
 Every **Range** must have a clear and explicit label to ensure that users (especially screen reader users) understand its purpose, using either **FormField** or a native label tag.
 
+Volume
+
+0100
+
 ```jsx
-{
-  globals: {
-    imports: `import { FormField, FormFieldLabel, Range } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Volume      </FormFieldLabel>
-      <Range defaultValue={[50]} />
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Volume  </FormFieldLabel>
+  <Range
+    defaultValue={[
+      50
+    ]}
+   />
+</FormField>
 ```
 
 Screen readers will announce the value, the slider and its label.

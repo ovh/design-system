@@ -4,7 +4,7 @@ slug: card
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1756
+tokens: 1779
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card--documentation.txt
 ---
 
@@ -106,38 +106,42 @@ When multiple **Cards** are grouped together, it is important to ensure their st
 
 If multiple **Cards** are displayed together (e.g., a collection of products, articles or dashboards), they should be wrapped in an unordered list of items (`<ul>` and `<li>`) to improve navigation for screen reader users.
 
+-   Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
+    Interdum et malesuada fames ac ante ipsum primis in faucibus.
+    
+-   Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
+    Interdum et malesuada fames ac ante ipsum primis in faucibus.
+    
+
 ```jsx
-{
-  globals: {
-    imports: `import { Card } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  parameters: {
-    layout: 'centered'
-  },
-  render: ({}) => <ul style={{
+<ul
+  style={{
     display: 'flex',
     gap: '16px',
-    padding: 0,
+    listStyleType: 'none',
     margin: 0,
-    listStyleType: 'none'
-  }}>
-      <li>
-        <Card style={{
+    padding: 0
+  }}
+>
+  <li>
+    <Card
+      style={{
         padding: '8px'
-      }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
-          Interdum et malesuada fames ac ante ipsum primis in faucibus.        </Card>
-      </li>
-      <li>
-        <Card style={{
+      }}
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.      <br />
+      Interdum et malesuada fames ac ante ipsum primis in faucibus.    </Card>
+  </li>
+  <li>
+    <Card
+      style={{
         padding: '8px'
-      }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
-          Interdum et malesuada fames ac ante ipsum primis in faucibus.        </Card>
-      </li>
-    </ul>
-}
+      }}
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.      <br />
+      Interdum et malesuada fames ac ante ipsum primis in faucibus.    </Card>
+  </li>
+</ul>
 ```
 
 This structure ensures that assistive technologies announce **Cards** as a list, rather than reading them as separate, unrelated announcements. Screen readers will announce the list and the number of items.

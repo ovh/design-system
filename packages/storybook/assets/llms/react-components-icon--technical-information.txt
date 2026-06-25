@@ -295,7 +295,7 @@ name
 
 Chat
 
-Assistant3:37 PM
+Assistant1:00 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
 

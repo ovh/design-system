@@ -4,7 +4,7 @@ slug: helpers-formatrelativetime
 category: generic
 type: documentation
 version: 19.7.3
-tokens: 341
+tokens: 340
 source: https://ovh.github.io/design-system/v19.7.3/llms/helpers-formatrelativetime--documentation.txt
 ---
 
@@ -40,7 +40,7 @@ in 0 seconds
 
 ### Locales
 
-France: il y a 0 seconde
+France: dans 0 seconde
 
 Germany: in 0 Sekunden
 
@@ -59,7 +59,7 @@ India: in 0 seconds
 
 ### Format option
 
-Long: 0 seconds ago
+Long: in 0 seconds
 
 Short: in 0 sec.
 

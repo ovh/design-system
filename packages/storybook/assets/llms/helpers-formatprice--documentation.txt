@@ -4,7 +4,7 @@ slug: helpers-formatprice
 category: generic
 type: documentation
 version: 19.7.3
-tokens: 265
+tokens: 302
 source: https://ovh.github.io/design-system/v19.7.3/llms/helpers-formatprice--documentation.txt
 ---
 
@@ -40,6 +40,14 @@ See also:
 
 ### Locales
 
+France: 123 456,79 €
+
+Germany: 123.456,79 €
+
+Arabic: ‏١٢٣٬٤٥٦٫٧٩ €
+
+India: €1,23,456.79
+
 ```jsx
 <>
   <p>France: {formatPrice(123456.789, 'fr-FR')}</p>
@@ -50,6 +58,12 @@ See also:
 ```
 
 ### Currencies
+
+Euro: 123 456,79 €
+
+Dollar: 123 456,79 $
+
+Yen: 123 457 ¥
 
 ```jsx
 <>

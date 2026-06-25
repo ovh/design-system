@@ -70,7 +70,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 2092,
+          "tokens": 2023,
           "url": "./react-components-badge--documentation.txt"
         },
         "technical-information": {
@@ -112,12 +112,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1913,
+          "tokens": 1774,
           "url": "./react-components-button--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 4520,
+          "tokens": 4323,
           "url": "./react-components-button--technical-information.txt"
         }
       }
@@ -154,7 +154,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1756,
+          "tokens": 1779,
           "url": "./react-components-card--documentation.txt"
         },
         "technical-information": {
@@ -222,7 +222,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1097,
+          "tokens": 890,
           "url": "./react-components-clipboard--technical-information.txt"
         }
       }
@@ -264,7 +264,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 3299,
+          "tokens": 2986,
           "url": "./react-components-combobox--technical-information.txt"
         }
       }
@@ -285,7 +285,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 3424,
+          "tokens": 3865,
           "url": "./react-components-data-table--technical-information.txt"
         }
       }
@@ -301,12 +301,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 2133,
+          "tokens": 2020,
           "url": "./react-components-datepicker--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1806,
+          "tokens": 4860,
           "url": "./react-components-datepicker--technical-information.txt"
         }
       }
@@ -406,12 +406,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 2095,
+          "tokens": 2100,
           "url": "./react-components-file-upload--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 2483,
+          "tokens": 2459,
           "url": "./react-components-file-upload--technical-information.txt"
         }
       }
@@ -469,12 +469,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1564,
+          "tokens": 1525,
           "url": "./react-components-input--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1276,
+          "tokens": 996,
           "url": "./react-components-input--technical-information.txt"
         }
       }
@@ -511,7 +511,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1678,
+          "tokens": 1618,
           "url": "./react-components-link--documentation.txt"
         },
         "technical-information": {
@@ -558,7 +558,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 681,
+          "tokens": 699,
           "url": "./react-components-markdown--technical-information.txt"
         }
       }
@@ -600,7 +600,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1922,
+          "tokens": 1808,
           "url": "./react-components-menu--technical-information.txt"
         }
       }
@@ -616,7 +616,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 2335,
+          "tokens": 2293,
           "url": "./react-components-message--documentation.txt"
         },
         "technical-information": {
@@ -658,7 +658,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1267,
+          "tokens": 1205,
           "url": "./react-components-meter--documentation.txt"
         },
         "technical-information": {
@@ -705,7 +705,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1549,
+          "tokens": 1367,
           "url": "./react-components-pagination--technical-information.txt"
         }
       }
@@ -747,7 +747,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 5651,
+          "tokens": 7444,
           "url": "./react-components-phone-number--technical-information.txt"
         }
       }
@@ -768,7 +768,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 2254,
+          "tokens": 2000,
           "url": "./react-components-popover--technical-information.txt"
         }
       }
@@ -805,12 +805,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1660,
+          "tokens": 1484,
           "url": "./react-components-prompt-input--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 2383,
+          "tokens": 2210,
           "url": "./react-components-prompt-input--technical-information.txt"
         }
       }
@@ -873,7 +873,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1463,
+          "tokens": 1239,
           "url": "./react-components-radio-group--technical-information.txt"
         }
       }
@@ -889,12 +889,12 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1645,
+          "tokens": 1614,
           "url": "./react-components-range--documentation.txt"
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1430,
+          "tokens": 1325,
           "url": "./react-components-range--technical-information.txt"
         }
       }
@@ -915,7 +915,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 4295,
+          "tokens": 4354,
           "url": "./react-components-select--technical-information.txt"
         }
       }
@@ -952,7 +952,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1560,
+          "tokens": 1470,
           "url": "./react-components-spinner--documentation.txt"
         },
         "technical-information": {
@@ -973,7 +973,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1522,
+          "tokens": 1420,
           "url": "./react-components-switch--documentation.txt"
         },
         "technical-information": {
@@ -999,7 +999,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 2666,
+          "tokens": 2662,
           "url": "./react-components-table--technical-information.txt"
         }
       }
@@ -1020,7 +1020,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 2324,
+          "tokens": 2156,
           "url": "./react-components-tabs--technical-information.txt"
         }
       }
@@ -1036,7 +1036,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1682,
+          "tokens": 1620,
           "url": "./react-components-tag--documentation.txt"
         },
         "technical-information": {
@@ -1062,7 +1062,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1604,
+          "tokens": 1571,
           "url": "./react-components-text--technical-information.txt"
         }
       }
@@ -1125,7 +1125,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 1635,
+          "tokens": 1405,
           "url": "./react-components-timepicker--technical-information.txt"
         }
       }
@@ -1162,7 +1162,7 @@
         },
         "documentation": {
           "type": "documentation",
-          "tokens": 1280,
+          "tokens": 1241,
           "url": "./react-components-toggle--documentation.txt"
         },
         "technical-information": {
@@ -1188,7 +1188,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 2401,
+          "tokens": 2163,
           "url": "./react-components-tooltip--technical-information.txt"
         }
       }
@@ -1209,7 +1209,7 @@
         },
         "technical-information": {
           "type": "technical-information",
-          "tokens": 3817,
+          "tokens": 4130,
           "url": "./react-components-tree-view--technical-information.txt"
         }
       }
@@ -1220,7 +1220,7 @@
       "slug": "ovhcloud-design-system-guides-accessibility",
       "title": "Accessibility Guide",
       "type": "overview",
-      "tokens": 4792,
+      "tokens": 4474,
       "url": "./ovhcloud-design-system-guides-accessibility.txt"
     },
     {
@@ -1255,7 +1255,7 @@
       "slug": "helpers-formatprice",
       "title": "formatPrice",
       "type": "documentation",
-      "tokens": 265,
+      "tokens": 302,
       "url": "./helpers-formatprice--documentation.txt"
     },
     {
@@ -1269,7 +1269,7 @@
       "slug": "helpers-formatrelativetime",
       "title": "formatRelativeTime",
       "type": "documentation",
-      "tokens": 341,
+      "tokens": 340,
       "url": "./helpers-formatrelativetime--documentation.txt"
     },
     {

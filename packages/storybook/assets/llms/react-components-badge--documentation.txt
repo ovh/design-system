@@ -4,7 +4,7 @@ slug: badge
 category: component
 type: documentation
 version: 19.7.3
-tokens: 2092
+tokens: 2023
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge--documentation.txt
 ---
 
@@ -135,15 +135,13 @@ The accessibility of multiple **Badges** presented as a collection must be consi
 If a **Badge** contains only an icon, it must include an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to provide context.
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Badge, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Badge>
-      <Icon aria-label="Promotion" name={ICON_NAME.tag} role="img" />
-    </Badge>
-}
+<Badge>
+  <Icon
+    aria-label="Promotion"
+    name="tag"
+    role="img"
+  />
+</Badge>
 ```
 
 Screen readers will announce the aria-label instead of ignoring the **Badge**.
@@ -171,30 +169,29 @@ Screen readers will announce the **Tooltip** content when focusing on the **Badg
 
 When displaying multiple **Badges** together, they should be wrapped within an unordered list of items (`<ul>` and `<li>`) to ensure a proper announcement by screen readers.
 
+-   Item 1
+-   Item 2
+
 ```jsx
-{
-  globals: {
-    imports: `import { Badge } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <ul style={{
+<ul
+  style={{
     display: 'flex',
     flexFlow: 'row',
     gap: '8px',
+    listStyle: 'none',
     margin: 0,
-    padding: 0,
-    listStyle: 'none'
-  }}>
-      <li>
-        <Badge>
-          Item 1        </Badge>
-      </li>
-      <li>
-        <Badge>
-          Item 2        </Badge>
-      </li>
-    </ul>
-}
+    padding: 0
+  }}
+>
+  <li>
+    <Badge>
+      Item 1    </Badge>
+  </li>
+  <li>
+    <Badge>
+      Item 2    </Badge>
+  </li>
+</ul>
 ```
 
 This structure ensures that assistive technologies announce **Badges** as a list, rather than reading them as separate, unrelated announcements. Screen readers will announce the list, the number of items and the **Badges** content.

@@ -4,13 +4,15 @@ slug: message
 category: component
 type: documentation
 version: 19.7.3
-tokens: 2335
+tokens: 2293
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message--documentation.txt
 ---
 
 # Message
 
 _**Message** component helps to communicate with users providing feedback or information._
+
+Message
 
 ## Overview
 
@@ -174,29 +176,33 @@ Screen readers will announce the list, the number of items and the **Messages** 
 
 When modifying the HTML structure is not possible, use [role="list"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [role="listitem"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) to mimic list semantics.
 
+Your changes have been saved.
+
+Some fields need your attention.
+
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, MESSAGE_COLOR, Message, MessageBody, MessageIcon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <div role="list" style={{
+<div
+  role="list"
+  style={{
     display: 'flex',
     flexFlow: 'column',
     rowGap: '8px'
-  }}>
-      <Message role="listitem">
-        <MessageIcon name={ICON_NAME.circleCheck} />
-        <MessageBody>
-          Your changes have been saved.        </MessageBody>
-      </Message>
-      <Message color={MESSAGE_COLOR.warning} role="listitem">
-        <MessageIcon name={ICON_NAME.triangleExclamation} />
-        <MessageBody>
-          Some fields need your attention.        </MessageBody>
-      </Message>
-    </div>
-}
+  }}
+>
+  <Message role="listitem">
+    <MessageIcon name="circle-check" />
+    <MessageBody>
+      Your changes have been saved.    </MessageBody>
+  </Message>
+  <Message
+    color="warning"
+    role="listitem"
+  >
+    <MessageIcon name="triangle-exclamation" />
+    <MessageBody>
+      Some fields need your attention.    </MessageBody>
+  </Message>
+</div>
 ```
 
 ### Setting the container ARIA role

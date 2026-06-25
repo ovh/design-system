@@ -4,7 +4,7 @@ slug: data-table
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 3424
+tokens: 3865
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-table--technical-information.txt
 ---
 
@@ -52,6 +52,54 @@ DataTableEmpty
 DataTableHead
 
 ---
+
+| 
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+Email
+
+ | 
+
+Role
+
+ |
+| --- | --- | --- | --- | --- |
+| John | Doe | 30 | john.doe@example.com | Admin |
+| Jane | Smith | 25 | jane.smith@example.com | User |
+| Bob | Johnson | 35 | bob.johnson@example.com | Manager |
+
+| 
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+Email
+
+ | 
+
+Role
+
+ |
+| --- | --- | --- | --- | --- |
+| Empty table data |
 
 ## DataTable
 
@@ -374,6 +422,32 @@ If you want to disabled sorting for the whole table, you can set the DataTable `
 
 If you want to disabled sorting for some specific column, you can set `enableSorting` to `false` in the columns definition.
 
+Sort disabled on some columns
+| 
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+Email
+
+ | 
+
+Role
+
+ |
+| --- | --- | --- | --- | --- |
+| John | Doe | 30 | john.doe@domain2.com | Admin |
+| Jane | Smith | 25 | jane.smith@domain1.com | User |
+| Bob | Johnson | 35 | bob.johnson@domain3.com | Manager |
+
 #### Custom sorting
 
 By default, columns will be sorted alphanumerically. You can add more control on how each column should be sorted, by defining a `sortingFn` on the column definition.
@@ -408,11 +482,70 @@ Role
 
 If you want to handle the sorting state on your own, for example to pre-sort table on first render or to update it from an external source, you can use the table `state` and the `onSortingChange` handler function.
 
+Controlled sorting
+| 
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+Email
+
+ | 
+
+Role
+
+ |
+| --- | --- | --- | --- | --- |
+| Jane | Smith | 25 | jane.smith@domain1.com | User |
+| Bob | Johnson | 35 | bob.johnson@domain3.com | Manager |
+| John | Doe | 30 | john.doe@domain2.com | Admin |
+
 ### Pagination
 
 Pagination is not actually handled by the DataTable, you can use the  component next to your table and update your data object on page change.
 
 Here is an example with a dummy API:
+
+Paginated Table
+| 
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+Email
+
+ | 
+
+Role
+
+ |
+| --- | --- | --- | --- | --- |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
 
 ### Column pinning
 
@@ -451,11 +584,58 @@ The column visibility feature allows table columns to be hidden or shown dynamic
 
 The `columnVisibility` state is a map of column ids to boolean values. A column will be hidden if its id is present in the map and the value is `false`. If the column id is not present in the map, or the value is `true`, the column will be shown.
 
+Age column hidden
+| 
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Email
+
+ | 
+
+Role
+
+ |
+| --- | --- | --- | --- |
+| John | Doe | john.doe@domain2.com | Admin |
+| Jane | Smith | jane.smith@domain1.com | User |
+| Bob | Johnson | bob.johnson@domain3.com | Manager |
+
 ## Examples
 
 ---
 
 ### Default
+
+| 
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+Email
+
+ | 
+
+Role
+
+ |
+| --- | --- | --- | --- | --- |
+| John | Doe | 30 | john.doe@example.com | Admin |
+| Jane | Smith | 25 | jane.smith@example.com | User |
+| Bob | Johnson | 35 | bob.johnson@example.com | Manager |
 
 ```jsx
 type Person = {

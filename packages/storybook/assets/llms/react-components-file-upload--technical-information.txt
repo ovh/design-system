@@ -4,7 +4,7 @@ slug: file-upload
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 2483
+tokens: 2459
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-file-upload--technical-information.txt
 ---
 
@@ -245,6 +245,8 @@ const [files, setFiles] = useState<File[]>([]);
 
 ### Compact
 
+Drag & drop a file 
+
 ```jsx
 const [files, setFiles] = useState<File[]>([]);
   return <FileUpload onFileAccept={({
@@ -261,15 +263,12 @@ const [files, setFiles] = useState<File[]>([]);
 Drag & drop a file 
 
 ```jsx
-{
-  globals: {
-    imports: `import { FileUpload, FileUploadList } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FileUpload disabled variant={FILE_UPLOAD_VARIANT.compact}>
-      <FileUploadList />
-    </FileUpload>
-}
+<FileUpload
+  disabled
+  variant="compact"
+>
+  <FileUploadList />
+</FileUpload>
 ```
 
 ### Custom labels
@@ -340,6 +339,10 @@ const [error, setError] = useState<string>('');
 ```
 
 ### Limit the maximum size of each file
+
+No file larger than: 1 MB
+
+Drag & drop a file 
 
 ```jsx
 const [error, setError] = useState<string>('');

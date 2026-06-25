@@ -4,7 +4,7 @@ slug: prompt-input
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 2383
+tokens: 2210
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--technical-information.txt
 ---
 
@@ -251,19 +251,13 @@ placeholder
 ### Default
 
 ```jsx
-{
-  tags: ["!dev"],
-  globals: {
-    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
-  },
-  render: ({}) => <PromptInput>
-      <PromptInputControls>
-        <PromptInputFileUploadButton />
-        <PromptInputTextControl />
-        <PromptInputSendButton />
-      </PromptInputControls>
-    </PromptInput>
-}
+<PromptInput>
+  <PromptInputControls>
+    <PromptInputFileUploadButton />
+    <PromptInputTextControl />
+    <PromptInputSendButton />
+  </PromptInputControls>
+</PromptInput>
 ```
 
 ### Disabled
@@ -285,20 +279,19 @@ Nobody’s here to answer…
 
 ### Readonly
 
+This is a read-only prompt input.
+
 ```jsx
-{
-  tags: ["!dev"],
-  globals: {
-    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
-  },
-  render: ({}) => <PromptInput readOnly defaultValue="This is a read-only prompt input.">
-      <PromptInputControls>
-        <PromptInputFileUploadButton aria-label="Attach a file" />
-        <PromptInputTextControl aria-label="Ask someone about something…" />
-        <PromptInputSendButton aria-label="Send message" />
-      </PromptInputControls>
-    </PromptInput>
-}
+<PromptInput
+  defaultValue="This is a read-only prompt input."
+  readOnly
+>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach a file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Send message" />
+  </PromptInputControls>
+</PromptInput>
 ```
 
 ### Loading
@@ -306,19 +299,16 @@ Nobody’s here to answer…
 “Someone” is processing your request…
 
 ```jsx
-{
-  tags: ["!dev"],
-  globals: {
-    imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
-  },
-  render: ({}) => <PromptInput defaultValue="“Someone” is processing your request…" loading>
-      <PromptInputControls>
-        <PromptInputFileUploadButton aria-label="Attach a file" />
-        <PromptInputTextControl aria-label="Ask someone about something…" />
-        <PromptInputSendButton aria-label="Send message" />
-      </PromptInputControls>
-    </PromptInput>
-}
+<PromptInput
+  defaultValue="“Someone” is processing your request…"
+  loading
+>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach a file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Send message" />
+  </PromptInputControls>
+</PromptInput>
 ```
 
 ### With files
@@ -399,6 +389,6 @@ const maxLength = 60;
 
 Chat
 
-Assistant3:37 PM
+Assistant1:00 PM
 
 Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.

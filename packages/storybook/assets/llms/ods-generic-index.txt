@@ -3,14 +3,14 @@
 > Individual documentation files (design tokens, styling, guides, FAQ, ...) for targeted LLM context.
 > Use these files to provide only the documentation you need, instead of the full documentation.
 
-- [Accessibility Guide](./ovhcloud-design-system-guides-accessibility.txt) (~4792 tokens)
+- [Accessibility Guide](./ovhcloud-design-system-guides-accessibility.txt) (~4474 tokens)
 - [Apply ODS Style](./ovhcloud-design-system-design-and-style-apply-ods-style.txt) (~309 tokens)
 - [Charts - Usage Guidelines](./ovhcloud-design-system-guides-charts-usage-guidelines.txt) (~768 tokens)
 - [Components](./recipes-components.txt) (~967 tokens)
 - [Design Tokens](./ovhcloud-design-system-design-and-style-design-tokens.txt) (~1879 tokens)
-- [formatPrice](./helpers-formatprice--documentation.txt) (~265 tokens)
+- [formatPrice](./helpers-formatprice--documentation.txt) (~302 tokens)
 - [formatPrice](./helpers-formatprice.txt) (~311 tokens)
-- [formatRelativeTime](./helpers-formatrelativetime--documentation.txt) (~341 tokens)
+- [formatRelativeTime](./helpers-formatrelativetime--documentation.txt) (~340 tokens)
 - [formatRelativeTime](./helpers-formatrelativetime.txt) (~351 tokens)
 - [Frequently Asked Questions](./ovhcloud-design-system-f-a-q.txt) (~1482 tokens)
 - [Get Started](./ovhcloud-design-system-get-started.txt) (~661 tokens)

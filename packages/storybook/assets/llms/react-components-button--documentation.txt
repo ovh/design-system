@@ -4,7 +4,7 @@ slug: button
 category: component
 type: documentation
 version: 19.7.3
-tokens: 1913
+tokens: 1774
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--documentation.txt
 ---
 
@@ -129,14 +129,9 @@ This component complies with the [Button WAI-ARIA design pattern](https://www.w3
 **Button** should always have a clear and descriptive text content to indicate their purpose.
 
 ```jsx
-{
-  globals: {
-    imports: `import { Button } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Button>
-      Clear    </Button>
-}
+<Button>
+  Clear
+</Button>
 ```
 
 Screen readers will announce the text content.
@@ -146,15 +141,9 @@ Screen readers will announce the text content.
 If a **Button** contains only an icon, it must include an [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to provide context.
 
 ```jsx
-{
-  globals: {
-    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Button aria-label='Clear'>
-        <Icon name={ICON_NAME.xmark} />
-    </Button>
-}
+<Button aria-label="Clear">
+  <Icon name="xmark" />
+</Button>
 ```
 
 Screen readers will announce the label.
@@ -163,25 +152,16 @@ Screen readers will announce the label.
 
 When a **Button** is associated with an existing label, content is read by screen readers when the **Button** receives focus.
 
+Filter your search results
+
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '8px',
-    alignItems: 'center'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { ICON_NAME, Button, Icon } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <Button aria-labelledby="filter-btn">
-        <Icon name={ICON_NAME.filter} />
-      </Button>
-      <span id="filter-btn">Filter your search results</span>
-    </>
-}
+<>
+  <Button aria-labelledby="filter-btn">
+    <Icon name="filter" />
+  </Button>
+  <span id="filter-btn">
+    Filter your search results  </span>
+</>
 ```
 
 When the **Button** is focused, the screen reader will announce the linked label.

@@ -4,7 +4,7 @@ slug: datepicker
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1806
+tokens: 4860
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker--technical-information.txt
 ---
 
@@ -25,6 +25,19 @@ DatepickerContent
 DatepickerControl
 
 ---
+
+| Sun | Mon | Tue | Wed | Thu | Fri | Sat |
+| --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |
+
+<table data-scope="date-picker" data-part="table" role="grid" data-columns="4" aria-roledescription="calendar year" id="datepicker::r::table:month :r:" data-view="month" dir="ltr" tabindex="-1" class="_datepicker-content__table_i233a_13"><tbody data-scope="date-picker" data-part="table-body" data-view="month"><tr data-scope="date-picker" data-part="table-row" data-view="month"><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" aria-selected="true" data-selected="" data-value="1"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:1" data-selected="" data-focus="" aria-label="January 2025" data-view="month" data-value="1" tabindex="0" type="button">Jan</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:2" aria-label="February 2025" data-view="month" data-value="2" tabindex="-1" type="button">Feb</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="3"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:3" aria-label="March 2025" data-view="month" data-value="3" tabindex="-1" type="button">Mar</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="4"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:4" aria-label="April 2025" data-view="month" data-value="4" tabindex="-1" type="button">Apr</button></td></tr><tr data-scope="date-picker" data-part="table-row" data-view="month"><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="5"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:5" aria-label="May 2025" data-view="month" data-value="5" tabindex="-1" type="button">May</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="6"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:6" aria-label="June 2025" data-view="month" data-value="6" tabindex="-1" type="button">Jun</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="7"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:7" aria-label="July 2025" data-view="month" data-value="7" tabindex="-1" type="button">Jul</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="8"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:8" aria-label="August 2025" data-view="month" data-value="8" tabindex="-1" type="button">Aug</button></td></tr><tr data-scope="date-picker" data-part="table-row" data-view="month"><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="9"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:9" aria-label="September 2025" data-view="month" data-value="9" tabindex="-1" type="button">Sep</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="10"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:10" aria-label="October 2025" data-view="month" data-value="10" tabindex="-1" type="button">Oct</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="11"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:11" aria-label="November 2025" data-view="month" data-value="11" tabindex="-1" type="button">Nov</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="12"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__month_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:12" aria-label="December 2025" data-view="month" data-value="12" tabindex="-1" type="button">Dec</button></td></tr></tbody></table>
+
+<table data-scope="date-picker" data-part="table" role="grid" data-columns="4" aria-roledescription="calendar decade" id="datepicker::r::table:year :r:" data-view="year" dir="ltr" tabindex="-1" class="_datepicker-content__table_i233a_13"><tbody data-scope="date-picker" data-part="table-body" data-view="year"><tr data-scope="date-picker" data-part="table-row" data-view="year"><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2020"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:2020" aria-label="2020" data-value="2020" data-view="year" tabindex="-1" type="button">2020</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2021"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:2021" aria-label="2021" data-value="2021" data-view="year" tabindex="-1" type="button">2021</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2022"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:2022" aria-label="2022" data-value="2022" data-view="year" tabindex="-1" type="button">2022</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2023"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:2023" aria-label="2023" data-value="2023" data-view="year" tabindex="-1" type="button">2023</button></td></tr><tr data-scope="date-picker" data-part="table-row" data-view="year"><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2024"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:2024" aria-label="2024" data-value="2024" data-view="year" tabindex="-1" type="button">2024</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" aria-selected="true" data-selected="" data-value="2025"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:2025" data-selected="" data-focus="" aria-label="2025" data-value="2025" data-view="year" tabindex="0" type="button">2025</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2026"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:2026" aria-label="2026" data-value="2026" data-view="year" tabindex="-1" type="button">2026</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2027"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:2027" aria-label="2027" data-value="2027" data-view="year" tabindex="-1" type="button">2027</button></td></tr><tr data-scope="date-picker" data-part="table-row" data-view="year"><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2028"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:2028" aria-label="2028" data-value="2028" data-view="year" tabindex="-1" type="button">2028</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2029"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:2029" aria-label="2029" data-value="2029" data-view="year" tabindex="-1" type="button">2029</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2030"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:2030" aria-label="2030" data-outside-range="" data-value="2030" data-view="year" tabindex="-1" type="button">2030</button></td><td data-scope="date-picker" data-part="table-cell" dir="ltr" role="gridcell" data-value="2031"><button class="_button_6crpx_2 _button--primary_6crpx_276 _button--sm_6crpx_209 _button--ghost_6crpx_327 _datepicker-content__table__year_i233a_55" data-ods="button" data-scope="date-picker" data-part="table-cell-trigger" dir="ltr" role="button" id="datepicker::r::cell-trigger:2031" aria-label="2031" data-outside-range="" data-value="2031" data-view="year" tabindex="-1" type="button">2031</button></td></tr></tbody></table>
 
 ## Datepicker
 
@@ -264,34 +277,37 @@ Disabled Dates:
 Disabled Week Days:
 
 ```jsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'column',
-    gap: '8px'
-  }}>{story()}</div>],
-  globals: {
-    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <>
-      <p>Disabled:</p>
-      <Datepicker disabled>
-        <DatepickerControl />
-        <DatepickerContent />
-      </Datepicker>
-      <p>Disabled Dates:</p>
-      <Datepicker disabledDates={[new Date(Date.now() - 86400000), new Date(), new Date(Date.now() + 86400000)]}>
-        <DatepickerControl />
-        <DatepickerContent />
-      </Datepicker>
-      <p>Disabled Week Days:</p>
-      <Datepicker disabledWeekDays={[0, 3]}>
-        <DatepickerControl />
-        <DatepickerContent />
-      </Datepicker>
-    </>
-}
+<>
+  <p>
+    Disabled:  </p>
+  <Datepicker disabled>
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+  <p>
+    Disabled Dates:  </p>
+  <Datepicker
+    disabledDates={[
+      new Date('2024-12-31T12:00:00.000Z'),
+      new Date('2025-01-01T12:00:00.000Z'),
+      new Date('2025-01-02T12:00:00.000Z')
+    ]}
+  >
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+  <p>
+    Disabled Week Days:  </p>
+  <Datepicker
+    disabledWeekDays={[
+      0,
+      3
+    ]}
+  >
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+</>
 ```
 
 ### Readonly
@@ -317,31 +333,22 @@ Disabled Week Days:
 ### Max / Min
 
 ```jsx
-{
-  globals: {
-    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Datepicker max={new Date(Date.now() + 86400000 * 10)} min={new Date(Date.now() - 86400000 * 10)}>
-      <DatepickerControl />
-      <DatepickerContent />
-    </Datepicker>
-}
+<Datepicker
+  max={new Date("2025-01-11T12:00:00.000Z")}
+  min={new Date("2024-12-22T12:00:00.000Z")}
+>
+  <DatepickerControl />
+  <DatepickerContent />
+</Datepicker>
 ```
 
 ### Max view
 
 ```jsx
-{
-  globals: {
-    imports: `import { Datepicker, DatepickerContent, DatepickerControl } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <Datepicker maxView="day">
-      <DatepickerControl />
-      <DatepickerContent />
-    </Datepicker>
-}
+<Datepicker maxView="day">
+  <DatepickerControl />
+  <DatepickerContent />
+</Datepicker>
 ```
 
 ### Min view
@@ -355,21 +362,17 @@ Disabled Week Days:
 
 ### Form field
 
+Label:
+
 ```jsx
-{
-  globals: {
-    imports: `import { Datepicker, DatepickerContent, DatepickerControl, FormField, FormFieldLabel } from '@ovhcloud/ods-react';`
-  },
-  tags: ['!dev'],
-  render: ({}) => <FormField>
-      <FormFieldLabel>
-        Label:      </FormFieldLabel>
-      <Datepicker>
-        <DatepickerControl />
-        <DatepickerContent />
-      </Datepicker>
-    </FormField>
-}
+<FormField>
+  <FormFieldLabel>
+    Label:  </FormFieldLabel>
+  <Datepicker>
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
 ```
 
 ## Recipes

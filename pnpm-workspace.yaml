@@ -24,6 +24,10 @@ minimumReleaseAgeExclude:
 overrides:
   "@types/scheduler": "< 0.23.0"
   "@types/react": "18.2.56"
+  # jest-puppeteer (incl. latest v11) still pins jest-environment-node@^29, whose
+  # jest-mock@29 is incompatible with the jest@30 runtime (clearMocksOnScope).
+  # Force the jest-30 environment so the e2e puppeteer suite runs under jest 30.
+  "jest-environment-node": "30.4.1"
 
 patchedDependencies:
   '@fluentui/storybook-llms-extractor@0.0.3': patches/@fluentui__storybook-llms-extractor@0.0.3.patch

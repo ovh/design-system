@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@ovhcloud/ods-themes": "workspace:*",
-    "jest": "29.7.0",
+    "jest": "30.4.2",
     "sass": "1.101.0",
     "start-server-and-test": "2.0.10",
     "storybook": "8.6.12",

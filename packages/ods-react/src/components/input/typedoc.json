@@ -1,7 +1,9 @@
 {
   "disableGit": true,
   "disableSources": true,
-  "entryPoints": ["src/index.ts"],
+  "entryPoints": [
+    "src/index.ts"
+  ],
   "excludeExternals": true,
   "excludeInternal": true,
   "excludePrivate": true,
@@ -12,5 +14,5 @@
       "path": "./documentation/input.json"
     }
   ],
-  "tsconfig":"tsconfig.json"
+  "tsconfig": "tsconfig.typedoc.json"
 }

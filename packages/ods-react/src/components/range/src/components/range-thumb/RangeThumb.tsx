@@ -41,7 +41,7 @@ const RangeThumb: FC<RangeThumbProp> = ({
         attributes: true,
       });
 
-      return () => observer.disconnect();
+      return (): void => observer.disconnect();
     }
   }, [thumbRef]);
 

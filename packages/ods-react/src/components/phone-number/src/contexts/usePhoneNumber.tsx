@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+
 import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useEffect, useState } from 'react';
 import { useContext } from '../../../../utils/context';
 import { type INPUT_I18N } from '../../../input/src';
@@ -8,12 +10,12 @@ import { getCurrentIsoCode, isValid } from '../controller/phone-number';
 
 interface PhoneNumberCountryChangeDetail {
   isNumberValid: boolean,
-  /** @type=PHONE_NUMBER_COUNTRY_ISO_CODE */
+  /** \@type=PHONE_NUMBER_COUNTRY_ISO_CODE */
   value: PhoneNumberCountryIsoCode,
 }
 
 interface PhoneNumberValueChangeDetail {
-  /** @type=PHONE_NUMBER_COUNTRY_ISO_CODE */
+  /** \@type=PHONE_NUMBER_COUNTRY_ISO_CODE */
   country?: PhoneNumberCountryIsoCode,
   formattedValue?: string,
   isNumberValid: boolean,

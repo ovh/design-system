@@ -4,7 +4,8 @@ import { type ComponentPropsWithRef, type FC, type JSX, type ReactElement, forwa
 import { usePopover } from '../../contexts/usePopover';
 import style from './popoverTrigger.module.scss';
 
-interface PopoverTriggerProp extends ComponentPropsWithRef<'button'> {
+interface PopoverTriggerProp extends Omit<ComponentPropsWithRef<'button'>, 'value'> {
+  value?: string,
   /**
    * Use the provided child element as the default rendered element, combining their props and behavior.
    * Be careful to pass an actual Node, not a Fragment.

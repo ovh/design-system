@@ -52,7 +52,7 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
             onExpand={ () => {
               setIsExpanded(true);
               setFocusIdx(firstCollapsedIdx);
-              onExpand && onExpand();
+              onExpand?.();
             } }
           />,
         );

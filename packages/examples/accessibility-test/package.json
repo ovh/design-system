@@ -23,7 +23,7 @@
     "@vitejs/plugin-react": "4.3.4",
     "axe-core": "4.10.3",
     "lighthouse": "12.8.0",
-    "typescript": "5.3.3",
+    "typescript": "6.0.3",
     "vite": "6.2.0"
   }
 }

@@ -1,7 +1,9 @@
 {
   "disableGit": true,
   "disableSources": true,
-  "entryPoints": ["src/index.ts"],
+  "entryPoints": [
+    "src/index.ts"
+  ],
   "excludeExternals": true,
   "excludeInternal": true,
   "excludePrivate": true,
@@ -12,6 +14,8 @@
       "path": "./documentation/checkbox.json"
     }
   ],
-  "sort": ["source-order"],
-  "tsconfig":"tsconfig.json"
+  "sort": [
+    "source-order"
+  ],
+  "tsconfig": "tsconfig.typedoc.json"
 }

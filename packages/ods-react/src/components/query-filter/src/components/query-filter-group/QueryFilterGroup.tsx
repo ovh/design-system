@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithRef, type FC, type JSX, useId } from 'react';
-import { type QueryFilterGroup, useQueryFilter } from '../../contexts/useQueryFilter';
+import { type QueryFilterGroup as QueryFilterGroupItem, useQueryFilter } from '../../contexts/useQueryFilter';
 import { QueryFilterOption } from '../query-filter-option/QueryFilterOption';
 import style from './queryFilterGroup.module.scss';
 
 interface QueryFilterGroupProp extends ComponentPropsWithRef<'div'> {
-  group: QueryFilterGroup;
+  group: QueryFilterGroupItem;
 }
 
 const QueryFilterGroup: FC<QueryFilterGroupProp> = ({

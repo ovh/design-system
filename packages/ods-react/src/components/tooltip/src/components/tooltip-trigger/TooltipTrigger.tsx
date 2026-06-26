@@ -4,12 +4,13 @@ import { type ComponentPropsWithRef, type FC, type JSX, type ReactElement, forwa
 import { useTooltip } from '../../contexts/useTooltip';
 import style from './tooltipTrigger.module.scss';
 
-interface TooltipTriggerProp extends ComponentPropsWithRef<'button'> {
+interface TooltipTriggerProp extends Omit<ComponentPropsWithRef<'button'>, 'value'> {
   /**
    * Use the provided child element as the default rendered element, combining their props and behavior.
    * Be careful to pass an actual Node, not a Fragment.
    */
   asChild?: boolean,
+  value?: string,
 }
 
 const TooltipTrigger: FC<TooltipTriggerProp> = forwardRef(({

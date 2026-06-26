@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+
 import { useFilter } from '@ark-ui/react/locale';
 import { type ComponentPropsWithRef, type JSX, type ReactNode, type RefObject, type SetStateAction, createContext, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useContext } from '../../../../utils/context';

@@ -13,5 +13,5 @@
     }
   ],
   "sort": ["source-order"],
-  "tsconfig": "tsconfig.json"
+  "tsconfig": "tsconfig.typedoc.json"
 }

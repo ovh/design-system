@@ -51,7 +51,7 @@ const PhoneNumberCountryList: FC<PhoneNumberCountryListProp> = forwardRef(({
   useEffect(() => {
     setHasCountries(true);
 
-    return () => {
+    return (): void => {
       setHasCountries(false);
     };
   }, [setHasCountries]);

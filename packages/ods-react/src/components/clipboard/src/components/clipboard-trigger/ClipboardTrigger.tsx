@@ -7,7 +7,8 @@ import { TOOLTIP_POSITION, Tooltip, TooltipContent, TooltipTrigger } from '../..
 import { useClipboard } from '../../contexts/useClipboard';
 import style from './clipboardTrigger.module.scss';
 
-interface ClipboardTriggerProp extends ComponentPropsWithRef<'button'> {
+interface ClipboardTriggerProp extends Omit<ComponentPropsWithRef<'button'>, 'value'> {
+  value?: string,
   /**
    * The initial tooltip label on copy button.
    */

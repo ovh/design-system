@@ -62,7 +62,7 @@ const Input: FC<InputProp> = forwardRef(({
   }, [hasClearButton, hasSearchButton, hasToggleMaskIcon, loading]);
 
   function onChange(e: ChangeEvent<HTMLInputElement>): void {
-    props.onChange && props.onChange(e);
+    props.onChange?.(e);
 
     if (value === undefined) {
       setHasValue(isValueDefined(e.target.value));
@@ -70,7 +70,7 @@ const Input: FC<InputProp> = forwardRef(({
   }
 
   function onClearClick(): void {
-    onClear && onClear();
+    onClear?.();
 
     if (inputRef.current) {
       const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value')!.set;

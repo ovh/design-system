@@ -64,7 +64,7 @@ $ods-progress-bar-inderterminate-percent-width: 30%;
 
     45%,
     55% {
-      transform: translateX(percentage(math.div(100 - $ods-progress-bar-inderterminate-percent-width, $ods-progress-bar-inderterminate-percent-width)));
+      transform: translateX(math.percentage(math.div(100 - $ods-progress-bar-inderterminate-percent-width, $ods-progress-bar-inderterminate-percent-width)));
     }
 
     95%,

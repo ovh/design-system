@@ -42,7 +42,7 @@ const TabList: FC<TabListProp> = forwardRef(({
 
       observer.observe(scrollRef.current);
 
-      return () => {
+      return (): void => {
         observer.disconnect();
       };
     }

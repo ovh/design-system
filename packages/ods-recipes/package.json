@@ -31,7 +31,7 @@
     "build:scripts": "rimraf scripts/dist && tsc -b && vite build --outDir scripts/dist -c scripts/vite.config.js",
     "clean": "rimraf dist && rimraf scripts/dist",
     "generate:json": "npm run build:scripts && node scripts/generate-recipes-json.js",
-    "lint:ts": "eslint 'src/!(components)/**/*.{ts,tsx}'"
+    "lint:ts": "eslint 'src/constants/**/*.{ts,tsx}'"
   },
   "dependencies": {
     "@ovhcloud/ods-react": "workspace:*",
@@ -53,7 +53,7 @@
     "sass": "1.101.0",
     "storybook": "8.6.12",
     "string-hash": "1.1.3",
-    "typescript": "5.3.3",
+    "typescript": "6.0.3",
     "vite": "6.2.0",
     "vite-plugin-dts": "4.5.0",
     "vite-plugin-lib-inject-css": "2.2.2"

@@ -57,7 +57,7 @@ const MenuContent: FC<MenuContentProp> = forwardRef(({
         attributes: true,
       });
 
-      return () => {
+      return (): void => {
         observer.disconnect();
       };
     }

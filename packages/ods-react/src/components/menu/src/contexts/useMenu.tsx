@@ -38,7 +38,7 @@ interface MenuRootProp {
      */
     gutter?: number;
     /**
-     * @type=MENU_POSITION
+     * \@type=MENU_POSITION
      * The menu position around the trigger.
      */
     position?: MenuPosition,
@@ -49,7 +49,7 @@ interface MenuRootProp {
   }
   /**
    * @deprecated
-   * @type=MENU_POSITION
+   * \@type=MENU_POSITION
    * Moved to overlayConfig.
    */
   position?: MenuPosition,

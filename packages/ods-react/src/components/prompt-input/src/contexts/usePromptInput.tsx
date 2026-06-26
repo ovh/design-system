@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+
 import { type JSX, type MutableRefObject, type ReactNode, createContext, useEffect, useRef, useState } from 'react';
 import { useContext } from '../../../../utils/context';
 

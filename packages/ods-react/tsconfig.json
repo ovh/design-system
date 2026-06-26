@@ -1,4 +1,9 @@
 {
+  "ts-node": {
+    "compilerOptions": {
+      "types": ["node"]
+    }
+  },
   "compilerOptions": {
     "allowImportingTsExtensions": false,
     "esModuleInterop": true,
@@ -14,6 +19,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2020",
+    "types": ["jest", "node"],
     "useDefineForClassFields": true
   },
   "include": ["src", "tests"],

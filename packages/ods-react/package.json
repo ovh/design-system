@@ -38,7 +38,7 @@
     "clean": "rimraf dist",
     "doc": "rimraf documentation && typedoc",
     "lint:scss": "stylelint 'src/style/*.scss'",
-    "lint:ts": "eslint '{src,tests}/!(components)/**/*.{ts,tsx}'",
+    "lint:ts": "eslint 'src/{helpers,hooks,style,utils}/**/*.{ts,tsx}' 'tests/**/*.{ts,tsx}'",
     "test:spec": "jest --passWithNoTests",
     "test:spec:ci": "npm run test:spec"
   },
@@ -80,10 +80,10 @@
     "sass": "1.101.0",
     "start-server-and-test": "2.0.10",
     "storybook": "8.6.12",
-    "ts-jest": "29.1.2",
+    "ts-jest": "29.4.11",
     "ts-node": "10.9.2",
     "typedoc": "0.28.19",
-    "typescript": "5.3.3",
+    "typescript": "6.0.3",
     "vite": "6.2.0",
     "vite-plugin-dts": "4.5.0",
     "vite-plugin-lib-inject-css": "2.2.2"

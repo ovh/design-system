@@ -15,7 +15,7 @@ const ModalHeader: FC<ModalHeaderProp> = forwardRef(({
 
   useEffect(() => {
     setHasHeader?.(true);
-    return () => {
+    return (): void => {
       setHasHeader?.(false);
     };
   }, [setHasHeader]);

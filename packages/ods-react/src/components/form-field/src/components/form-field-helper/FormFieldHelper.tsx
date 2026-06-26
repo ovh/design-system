@@ -14,7 +14,7 @@ const FormFieldHelper: FC<FormFieldHelperProp> = forwardRef(({
   const computedId = useMemo(() => id ?? defaultId, [defaultId, id]);
 
   useEffect(() => {
-    setHelperId && setHelperId(computedId);
+    setHelperId?.(computedId);
   }, [computedId, setHelperId]);
 
   return (

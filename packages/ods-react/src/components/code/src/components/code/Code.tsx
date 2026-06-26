@@ -24,11 +24,11 @@ interface CodeProp extends ComponentPropsWithRef<'div'> {
     /**
      * The programming language displayed.
      */
-    language: LanguageRegistration[],
+    language?: LanguageRegistration[],
     /**
      * The theme to apply to the code.
      */
-    theme: ThemeRegistrationAny,
+    theme?: ThemeRegistrationAny,
   },
   /**
    * The initial tooltip label on copy button.
@@ -64,7 +64,7 @@ const Code: FC<CodeProp> = forwardRef(({
   const shouldHighlight = language && language.length && theme;
 
   useEffect(() => {
-    return () => {
+    return (): void => {
       highlighterCore?.dispose();
     };
   }, [highlighterCore]);
@@ -73,7 +73,7 @@ const Code: FC<CodeProp> = forwardRef(({
     let active = true;
     createHighlighter();
 
-    return () => {
+    return (): void => {
       active = false;
     };
 

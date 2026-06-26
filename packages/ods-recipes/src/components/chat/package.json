@@ -12,7 +12,7 @@
     "clean": "rimraf node_modules",
     "lint:css": "stylelint --aei 'src/**/*.css'",
     "lint:scss": "stylelint --aei 'src/**/*.scss'",
-    "lint:ts": "eslint 'src/**/*.{js,ts,tsx}' --ignore-pattern '*.stories.tsx'",
+    "lint:ts": "eslint 'src/**/*.{js,ts,tsx}'",
     "start": "pnpm run start:storybook",
     "start:storybook": "storybook dev -p 3000 --no-open"
   }

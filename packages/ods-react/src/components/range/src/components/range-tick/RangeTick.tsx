@@ -52,7 +52,7 @@ const RangeTick: FC<RangeTickProp> = ({
 
     resizeObserver.observe(tickRef.current);
 
-    return () => {
+    return (): void => {
       resizeObserver.disconnect();
     };
   }, [index, isLast, setRootPadding, tick, tickRef]);

@@ -51,7 +51,7 @@ const PopoverContent: FC<PopoverContentProp> = forwardRef(({
         attributes: true,
       });
 
-      return () => {
+      return (): void => {
         observer.disconnect();
       };
     }

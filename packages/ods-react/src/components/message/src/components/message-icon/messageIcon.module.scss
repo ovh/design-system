@@ -1,6 +1,6 @@
 @layer ods-molecules {
   .message-icon {
-    align-self: start;
+    align-self: flex-start;
     padding: 0.125rem 0; // TODO Crappy fix due to custom font
     font-size: 1.25rem;
   }

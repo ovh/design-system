@@ -3,8 +3,8 @@
     display: flex;
     column-gap: var(--ods-theme-column-gap);
     align-items: center;
-    cursor: pointer;
     width: max-content;
+    cursor: pointer;
 
     &[data-disabled] {
       cursor: not-allowed;

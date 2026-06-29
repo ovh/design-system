@@ -12,8 +12,8 @@ body {
     top: 0;
     right: 0;
     left: 0;
-    height: $accessibility-header-height;
-    background-color: var(--ods-color-neutral-100);
     z-index: 9999;
+    background-color: var(--ods-color-neutral-100);
+    height: $accessibility-header-height;
   }
 }

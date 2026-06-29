@@ -3,7 +3,7 @@
 @layer ods-organisms {
   .phone-number-country-flag {
     display: inline-block;
-    filter: drop-shadow(0 0 2px rgba(0, 13, 31, 0.25));
+    filter: drop-shadow(0 0 2px rgb(0, 13, 31, 0.25));
     background-image: sprite.$sprite-flags-background-image;
     background-repeat: no-repeat;
     width: 24px;

@@ -9,12 +9,12 @@
     align-items: center;
     border: solid var(--ods-accordion-border-width) transparent;
     background: transparent;
-    cursor: pointer;
     padding: var(--ods-accordion-padding-vertical) var(--ods-accordion-padding-horizontal);
     text-align: left;
     color: inherit;
     font-family: inherit;
     font-size: inherit;
+    cursor: pointer;
     user-select: text;
 
     &:disabled {

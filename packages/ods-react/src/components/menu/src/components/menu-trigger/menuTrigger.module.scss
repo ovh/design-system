@@ -17,13 +17,13 @@
     justify-content: space-between;
     border: none;
     background: transparent;
-    cursor: pointer;
     padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
     width: 100%;
     text-align: left;
     color: inherit;
     font-family: inherit;
     font-size: inherit;
+    cursor: pointer;
 
     &:hover,
     &[data-highlighted],

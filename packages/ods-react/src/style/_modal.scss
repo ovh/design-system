@@ -38,9 +38,11 @@ $ods-modal-z-index: overlay.$ods-overlay-modal-z-index; // [Deprecated] will be 
   max-height: calc(100% - (var(--ods-modal-margin-vertical) * 2));
 
   @media screen and (width >= (breakpoint.$ods-breakpoint-mobile)) {
+    /* stylelint-disable no-invalid-position-declaration -- valid: this mixin is always @included inside a selector */
     margin: auto;
     max-width: var(--ods-modal-mobile-max-width);
     max-height: var(--ods-modal-mobile-max-height);
+    /* stylelint-enable no-invalid-position-declaration */
   }
 }
 

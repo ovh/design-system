@@ -14,13 +14,13 @@
     border: var(--ods-theme-input-border-width) solid var(--ods-theme-input-border-color);
     border-radius: var(--ods-theme-input-border-radius);
     background-color: var(--ods-theme-background-color);
-    cursor: pointer;
     padding: var(--ods-theme-input-padding-vertical) var(--ods-theme-input-padding-horizontal);
     width: 100%;
     min-height: input.$ods-input-field-height;
     color: var(--ods-theme-input-text-color);
     font-family: inherit;
     font-size: 1rem;
+    cursor: pointer;
 
     &:focus {
       @include focus.ods-focus();

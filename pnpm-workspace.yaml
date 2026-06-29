@@ -14,7 +14,7 @@ allowBuilds:
   nx: true
   puppeteer: true
   sharp: true
-  unrs-resolver: set this to true or false
+  unrs-resolver: true
 
 minimumReleaseAgeExclude:
   - '@playwright/test@1.61.1'

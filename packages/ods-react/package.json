@@ -78,7 +78,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "1.101.0",
-    "start-server-and-test": "2.0.10",
+    "start-server-and-test": "3.0.11",
     "storybook": "8.6.12",
     "ts-jest": "29.4.11",
     "ts-node": "10.9.2",

@@ -11,11 +11,11 @@ $ods-link-font-weight: 600;
   flex-flow: row;
   gap: var(--ods-link-row-gap) var(--ods-link-column-gap);
   align-items: center;
-  cursor: pointer;
   width: max-content;
   text-decoration: none;
   color: var(--ods-theme-anchor-text-color);
   font-weight: $ods-link-font-weight;
+  cursor: pointer;
 
   &::after {
     position: absolute;

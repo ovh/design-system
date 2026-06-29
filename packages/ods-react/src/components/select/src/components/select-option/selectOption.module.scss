@@ -6,10 +6,10 @@
     display: flex;
     gap: var(--ods-theme-row-gap) var(--ods-theme-column-gap);
     align-items: center;
-    cursor: pointer;
     padding: 0 var(--ods-theme-input-padding-horizontal);
     min-height: input.$ods-input-field-height;
     color: var(--ods-theme-input-text-color);
+    cursor: pointer;
 
     &:hover,
     &[data-highlighted],

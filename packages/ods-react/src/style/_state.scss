@@ -7,8 +7,8 @@ $ods-state-is-readonly-border-color: var(--ods-theme-border-color-readonly);
 @mixin ods-is-disabled() {
   border-color: $ods-state-is-disabled-border-color;
   background-color: $ods-state-is-disabled-background-color;
-  cursor: not-allowed;
   color : $ods-state-is-disabled-text-color;
+  cursor: not-allowed;
 }
 
 @mixin ods-is-readonly() {

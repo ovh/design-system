@@ -47,7 +47,7 @@ $tab-list-border-bottom-size: 2px;
 
     &__left-arrow {
       &::after {
-        background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
+        background: linear-gradient(270deg, rgb(255, 255, 255, 0) 0, rgb(255, 255, 255, 1) 100%);
       }
 
       &--md::after {
@@ -71,7 +71,7 @@ $tab-list-border-bottom-size: 2px;
 
     &__right-arrow {
       &::after {
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
+        background: linear-gradient(90deg, rgb(255, 255, 255, 0) 0, rgb(255, 255, 255, 1) 100%);
       }
 
       &--md::after {

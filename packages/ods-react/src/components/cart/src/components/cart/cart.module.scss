@@ -8,7 +8,7 @@
     position: relative;
     flex-flow: column;
     row-gap: calc(var(--ods-theme-row-gap) * 2);
-    box-shadow: 0 2px 8px 0 rgba(0, 14, 156, 0.2);
+    box-shadow: 0 2px 8px 0 rgb(0, 14, 156, 0.2);
     padding: var(--ods-cart-padding-vertical) var(--ods-cart-padding-horizontal);
 
     &__handle {

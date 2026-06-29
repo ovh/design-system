@@ -9,7 +9,6 @@
     border-color: transparent;
     padding: var(--ods-prompt-input-control-padding-vertical) var(--ods-prompt-input-control-padding-horizontal);
     width: 100%;
-    overflow-wrap: anywhere;
     min-height: calc(
       var(--ods-prompt-input-control-min-lines) * var(--ods-prompt-input-control-line-height) + var(--ods-prompt-input-control-padding-vertical) * 2 + var(--prompt-input-control-border-width) * 2
       );
@@ -17,6 +16,7 @@
       var(--ods-prompt-input-control-max-lines, 5) * var(--ods-prompt-input-control-line-height) + var(--ods-prompt-input-control-padding-vertical) * 2 + var(--prompt-input-control-border-width) * 2
       );
     line-height: var(--ods-prompt-input-control-line-height);
+    overflow-wrap: anywhere;
     /* stylelint-disable-next-line property-no-unknown -- Fallback is provided */
     field-sizing: content;
     

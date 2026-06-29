@@ -602,9 +602,6 @@ importers:
       classnames:
         specifier: 2.5.1
         version: 2.5.1
-      tailwindcss:
-        specifier: 3.4.18
-        version: 3.4.18(yaml@2.9.0)
     devDependencies:
       '@storybook/react':
         specifier: 8.6.12
@@ -645,6 +642,9 @@ importers:
       string-hash:
         specifier: 1.1.3
         version: 1.1.3
+      tailwindcss:
+        specifier: 3.4.18
+        version: 3.4.18(yaml@2.9.0)
       typescript:
         specifier: 6.0.3
         version: 6.0.3

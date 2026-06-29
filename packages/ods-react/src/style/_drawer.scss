@@ -34,10 +34,10 @@ $drawer-max-width: calc(100% - calc(var(--ods-theme-padding-horizontal) * 6));
     right: 0;
     bottom: 0;
     left: 0;
+    animation: drawer-open-bottom $animation-duration ease-in-out;
     width: 100%;
     height: $drawer-size;
     max-height: $drawer-max-height;
-    animation: drawer-open-bottom $animation-duration ease-in-out;
 
     @keyframes drawer-open-bottom {
       from {
@@ -62,10 +62,10 @@ $drawer-max-width: calc(100% - calc(var(--ods-theme-padding-horizontal) * 6));
     top: 0;
     bottom: 0;
     left: 0;
+    animation: drawer-open-left $animation-duration ease-in-out;
     width: $drawer-size;
     max-width: $drawer-max-width;
     height: 100%;
-    animation: drawer-open-left $animation-duration ease-in-out;
 
     @keyframes drawer-open-left {
       from {
@@ -90,10 +90,10 @@ $drawer-max-width: calc(100% - calc(var(--ods-theme-padding-horizontal) * 6));
     top: 0;
     right: 0;
     bottom: 0;
+    animation: drawer-open-right $animation-duration ease-in-out;
     width: $drawer-size;
     max-width: $drawer-max-width;
     height: 100%;
-    animation: drawer-open-right $animation-duration ease-in-out;
 
     @keyframes drawer-open-right {
       from {
@@ -118,10 +118,10 @@ $drawer-max-width: calc(100% - calc(var(--ods-theme-padding-horizontal) * 6));
     top: 0;
     right: 0;
     left: 0;
+    animation: drawer-open-top $animation-duration ease-in-out;
     width: 100%;
     height: $drawer-size;
     max-height: $drawer-max-height;
-    animation: drawer-open-top $animation-duration ease-in-out;
 
     @keyframes drawer-open-top {
       from {

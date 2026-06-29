@@ -7,9 +7,9 @@ $ods-radio-size: 16px;
   margin: 0;
   border: solid var(--ods-theme-input-border-width) var(--ods-theme-input-border-color);
   border-radius: 50%;
-  cursor: pointer;
   width: $ods-radio-size;
   height: $ods-radio-size;
+  cursor: pointer;
 
   &::before {
     transform: scale(0);

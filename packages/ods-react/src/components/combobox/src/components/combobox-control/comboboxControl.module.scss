@@ -83,15 +83,15 @@
         appearance: none;
         border: 0;
         background: inherit;
-        cursor: pointer;
         padding: 0;
         width: $caret-size;
         height: $caret-size;
         color: var(--ods-theme-primary-color);
+        cursor: pointer;
 
         &--disabled {
-          cursor: not-allowed;
           color: var(--ods-theme-text-color-disabled);
+          cursor: not-allowed;
         }
 
         &__icon {

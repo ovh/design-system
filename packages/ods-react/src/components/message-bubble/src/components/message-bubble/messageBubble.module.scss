@@ -36,11 +36,11 @@
 
     &__typing-dot {
       display: block;
+      animation: message-bubble-bounce 900ms infinite ease-in-out;
       border-radius: 50%;
       background-color: currentcolor;
       width: 8px;
       height: 8px;
-      animation: message-bubble-bounce 900ms infinite ease-in-out;
 
       &:nth-child(2) {
         animation-delay: 150ms;

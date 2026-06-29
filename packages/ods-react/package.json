@@ -50,19 +50,19 @@
     "libphonenumber-js": "1.13.7",
     "react-hot-toast": "2.6.0",
     "react-markdown": "10.1.0",
-    "react-shiki": "0.9.0",
+    "react-shiki": "0.10.1",
     "react-swipeable": "7.0.2",
     "remark-gfm": "4.0.1",
-    "shiki": "^3.11.0"
+    "shiki": "^4.3.0"
   },
   "peerDependencies": {
     "react": ">=18.2.0",
     "react-dom": ">=18.2.0"
   },
   "devDependencies": {
-    "@shikijs/langs": "^3.11.0",
-    "@shikijs/themes": "^3.11.0",
-    "@shikijs/types": "^3.11.0",
+    "@shikijs/langs": "^4.3.0",
+    "@shikijs/themes": "^4.3.0",
+    "@shikijs/types": "^4.3.0",
     "@storybook/react": "8.6.12",
     "@storybook/react-vite": "8.6.12",
     "@types/jest": "30.0.0",
@@ -74,7 +74,7 @@
     "jest": "30.4.2",
     "jest-puppeteer": "10.0.1",
     "jest-transform-stub": "2.0.0",
-    "puppeteer": "22.15.0",
+    "puppeteer": "25.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "1.101.0",

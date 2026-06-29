@@ -20,7 +20,7 @@
   "devDependencies": {
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
-    "@vitejs/plugin-react": "4.3.4",
+    "@vitejs/plugin-react": "5.2.0",
     "axe-core": "4.10.3",
     "lighthouse": "12.8.0",
     "typescript": "6.0.3",

@@ -2,7 +2,7 @@
   display: flex;
   flex-flow: column;
   row-gap: var(--ods-theme-row-gap);
-  justify-content: end;
+  justify-content: flex-end;
   height: inherit;
 
   &__messages {
@@ -17,10 +17,10 @@
   display: flex;
   flex-flow: column;
   row-gap: calc(var(--ods-theme-row-gap) / 2);
-  align-items: start;
+  align-items: flex-start;
 
   &--human {
-    align-items: end;
+    align-items: flex-end;
   }
 
   &__info {

@@ -30,7 +30,8 @@ module.exports = (env, options) => {
               loader: 'css-loader',
               options: {
                 modules: {
-                  localIdentName: '[name]__[local]--[contenthash:base64:5]'
+                  localIdentName: '[name]__[local]--[contenthash:base64:5]',
+                  namedExport: false,
                 }
               }
             },

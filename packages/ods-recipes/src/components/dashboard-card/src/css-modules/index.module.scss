@@ -46,14 +46,14 @@
     display: flex;
     flex-flow: row;
     column-gap: var(--ods-theme-column-gap);
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
 
     &__actions {
       display: flex;
       flex-flow: column;
       row-gap: var(--ods-theme-row-gap);
-      align-items: start;
+      align-items: flex-start;
     }
   }
 }

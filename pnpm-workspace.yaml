@@ -20,6 +20,7 @@ minimumReleaseAgeExclude:
   - '@playwright/test@1.61.1'
   - playwright-core@1.61.1
   - playwright@1.61.1
+  - webpack@5.108.2
 
 overrides:
   # @types/react@18 depends on @types/scheduler@*, and @types/scheduler >=0.23.0 ships type

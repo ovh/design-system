@@ -22,12 +22,25 @@ minimumReleaseAgeExclude:
   - playwright@1.61.1
 
 overrides:
+  # @types/react@18 depends on @types/scheduler@*, and @types/scheduler >=0.23.0 ships type
+  # changes incompatible with the React 18 types. Cap it below 0.23.0. (Yarn-era resolution,
+  # migrated to pnpm in 77c914e78.)
+  # REMOVE WHEN: upgrading to React 19 — @types/react@19 no longer depends on @types/scheduler.
   "@types/scheduler": "< 0.23.0"
+  # Pin a single @types/react version tree-wide: pnpm's strict node_modules exposed duplicate
+  # copies that yarn's hoisting had masked (added in the pnpm migration, 69f19f1ac).
+  # REMOVE/RE-PIN WHEN: upgrading to React 19 (re-pin to the matching 19.x), or once the tree
+  # resolves to a single @types/react version on its own.
   "@types/react": "18.2.56"
   # jest-puppeteer (incl. latest v11) still pins jest-environment-node@^29, whose
   # jest-mock@29 is incompatible with the jest@30 runtime (clearMocksOnScope).
   # Force the jest-30 environment so the e2e puppeteer suite runs under jest 30.
+  # REMOVE WHEN: jest-environment-puppeteer ships a release depending on jest-environment-node@^30.
   "jest-environment-node": "30.4.1"
+  # stylelint-config-concentric-order@5.5.0 still pins stylelint-order@^7 (stylelint <=16).
+  # Force stylelint-order@8 so concentric-order works with stylelint 17.
+  # REMOVE WHEN: stylelint-config-concentric-order ships a release pinning stylelint-order@^8.
+  "stylelint-order": "8.1.1"
 
 patchedDependencies:
   '@fluentui/storybook-llms-extractor@0.0.3': patches/@fluentui__storybook-llms-extractor@0.0.3.patch

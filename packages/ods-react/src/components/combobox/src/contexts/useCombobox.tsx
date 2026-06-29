@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+
 import { useFilter } from '@ark-ui/react/locale';
 import { type ComponentPropsWithRef, type JSX, type ReactNode, type RefObject, type SetStateAction, createContext, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useContext } from '../../../../utils/context';
@@ -133,7 +135,7 @@ type ComboboxRootProp = Omit<ComponentPropsWithRef<'div'>, 'defaultValue' | 'onS
   readOnly?: boolean,
   /**
    * Whether the component is required.
-   * /!\ Only work for single selection mode for now.
+   * Warning! - Only work for single selection mode for now.
    */
   required?: boolean,
   /**

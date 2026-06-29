@@ -4,6 +4,7 @@
   --ods-skeleton-background-color-image: linear-gradient(-90deg, var(--ods-skeleton-background-color), var(--ods-skeleton-transition-background-color) 46%, var(--ods-skeleton-transition-background-color) 61%, var(--ods-skeleton-background-color));
 
   display: block;
+  animation: skeleton linear 2s infinite;
   border-radius: var(--ods-theme-border-radius);
   background-color : var(--ods-skeleton-background-color);
   background-image: var(--ods-skeleton-background-color-image);
@@ -12,7 +13,6 @@
   background-size: 50% 12.5rem;
   height: .5rem;
   min-height: 10px;
-  animation: skeleton linear 2s infinite;
 
   @keyframes skeleton {
     to {

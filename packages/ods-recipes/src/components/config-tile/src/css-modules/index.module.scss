@@ -9,11 +9,11 @@
 .config-tile {
   box-sizing: border-box;
   display: flex;
+  container-type: inline-size;
   flex-wrap: wrap;
   gap: calc(var(--ods-theme-row-gap) * 2) calc(var(--ods-theme-column-gap) * 2);
-  padding: calc(var(--ods-theme-padding-vertical) * 2) calc(var(--ods-theme-padding-vertical) * 2);
+  padding: calc(var(--ods-theme-padding-vertical) * 2);
   width: 100%;
-  container-type: inline-size;
 
   &__info {
     display: flex;

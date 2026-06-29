@@ -32,14 +32,14 @@ $ods-progress-bar-inderterminate-percent-width: 30%;
   &:indeterminate {
     // Firefox
     &::-moz-progress-bar {
-      width: $ods-progress-bar-inderterminate-percent-width;
       animation: progress-indeterminate 1.5s infinite ease-in-out;
+      width: $ods-progress-bar-inderterminate-percent-width;
     }
 
     // Safari
     &::-webkit-progress-value {
-      width: $ods-progress-bar-inderterminate-percent-width;
       animation: progress-indeterminate 1.5s infinite ease-in-out;
+      width: $ods-progress-bar-inderterminate-percent-width;
     }
 
     // Chromium
@@ -48,10 +48,10 @@ $ods-progress-bar-inderterminate-percent-width: 30%;
       top: 0;
       bottom: 0;
       left: 0;
+      animation: progress-indeterminate 1.5s infinite ease-in-out;
       border-radius: var(--ods-progress-bar-border-radius);
       background-color: var(--ods-theme-progress-background-color);
       width: $ods-progress-bar-inderterminate-percent-width;
-      animation: progress-indeterminate 1.5s infinite ease-in-out;
       content: '';
     }
   }
@@ -64,7 +64,7 @@ $ods-progress-bar-inderterminate-percent-width: 30%;
 
     45%,
     55% {
-      transform: translateX(percentage(math.div(100 - $ods-progress-bar-inderterminate-percent-width, $ods-progress-bar-inderterminate-percent-width)));
+      transform: translateX(math.percentage(math.div(100 - $ods-progress-bar-inderterminate-percent-width, $ods-progress-bar-inderterminate-percent-width)));
     }
 
     95%,

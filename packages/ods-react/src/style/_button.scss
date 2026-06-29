@@ -199,12 +199,12 @@ $ods-button-size-md: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   overflow: hidden;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
+  cursor: pointer;
 
   &:disabled {
     @include state.ods-is-disabled();

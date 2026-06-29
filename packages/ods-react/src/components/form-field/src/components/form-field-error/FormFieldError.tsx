@@ -16,7 +16,7 @@ const FormFieldError: FC<FormFieldErrorProp> = forwardRef(({
   const computedId = useMemo(() => id ?? defaultId, [defaultId, id]);
 
   useEffect(() => {
-    setErrorId && setErrorId(computedId);
+    setErrorId?.(computedId);
   }, [computedId, setErrorId]);
 
   if (!invalid) {

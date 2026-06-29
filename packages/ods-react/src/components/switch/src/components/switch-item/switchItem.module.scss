@@ -14,13 +14,13 @@
     border: none;
     border-radius: var(--ods-switch-border-radius);
     background-color: var(--ods-switch-item-background-color);
-    cursor: pointer;
     padding: 0 12px;
     height: 100%;
     color: var(--ods-switch-item-text-color);
     font-family: inherit;
     font-size: 1rem;
     font-weight: 600;
+    cursor: pointer;
 
     &:hover {
       background-color:  var(--ods-switch-item-background-color-hover);

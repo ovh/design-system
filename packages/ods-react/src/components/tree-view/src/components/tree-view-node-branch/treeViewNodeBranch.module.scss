@@ -11,8 +11,8 @@
       gap: var(--ods-tree-view-node-row-gap) var(--ods-tree-view-node-column-gap);
       align-items: center;
       border-radius: var(--ods-tree-view-node-border-radius);
-      cursor: pointer;
       padding: var(--ods-tree-view-node-padding-vertical) var(--ods-tree-view-node-padding-horizontal);
+      cursor: pointer;
 
       &:not([data-disabled]):hover {
         background-color: var(--ods-theme-input-option-background-color-hover);

@@ -1,22 +1,22 @@
 .accessibility-control {
   display: flex;
-  align-items: center;
   column-gap: 10px;
+  align-items: center;
   padding: 0 10px;
   height: 100%;
 
   &__results {
     display: flex;
-    align-items: center;
     column-gap: 15px;
+    align-items: center;
 
     &__inapplicables,
     &__incompletes,
     &__passes,
     &__violations {
       display: flex;
-      align-items: center;
       column-gap: 5px;
+      align-items: center;
     }
 
     &__passes {

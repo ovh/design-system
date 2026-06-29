@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+
 import {
   DataTable,
   DataTableBody,
@@ -96,10 +98,6 @@ const DataGridWithQueryFilter = (): JSX.Element => {
       });
   }, [setQueryFilterOption]);
 
-  useEffect(() => {
-    updateData(currentPage, filters);
-  }, [currentPage, filters]);
-
   async function updateData(page: number, filters: string[][]): Promise<void> {
     setIsLoading(true);
 
@@ -109,6 +107,10 @@ const DataGridWithQueryFilter = (): JSX.Element => {
       setIsLoading(false);
     });
   }
+
+  useEffect(() => {
+    updateData(currentPage, filters);
+  }, [currentPage, filters]);
 
   return (
     <div className={ style['data-grid-with-query-filter'] }>

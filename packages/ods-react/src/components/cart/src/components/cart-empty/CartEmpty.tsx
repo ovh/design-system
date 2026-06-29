@@ -16,7 +16,7 @@ const CartEmpty: FC<CartEmptyProp> = forwardRef(({
   useEffect(() => {
     setIsEmpty(true);
 
-    return () => {
+    return (): void => {
       setIsEmpty(false);
     };
   }, [setIsEmpty]);

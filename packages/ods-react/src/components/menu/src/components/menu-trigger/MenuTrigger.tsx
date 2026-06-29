@@ -6,7 +6,8 @@ import { useMenu } from '../../contexts/useMenu';
 import { useSubmenu } from '../../contexts/useSubmenu';
 import style from './menuTrigger.module.scss';
 
-interface MenuTriggerProp extends ComponentPropsWithRef<'button'> {
+interface MenuTriggerProp extends Omit<ComponentPropsWithRef<'button'>, 'value'> {
+  value?: string,
   /**
    * Use the provided child element as the default rendered element, combining their props and behavior.
    * Be careful to pass an actual Node, not a Fragment.

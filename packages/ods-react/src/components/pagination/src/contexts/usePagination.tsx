@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+
 import { type ComponentPropsWithRef, type JSX, type ReactNode, createContext, useEffect, useState } from 'react';
 import { useContext } from '../../../../utils/context';
 
@@ -50,7 +52,7 @@ interface PaginationRootProp extends ComponentPropsWithRef<'nav'> {
   pageSize?: number;
   /**
    * @deprecated
-   * @default-value='of ${totalItems} results'
+   * \@default-value='of $\{totalItems\} results'
    * Format the label displayed near the per-page selector.
    * DEPRECATED: prefer the use of the sub component PaginationPageSizeSelector
    */

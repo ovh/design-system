@@ -17,7 +17,7 @@ const FormFieldLabel: FC<FormFieldLabelProp> = forwardRef(({
   const computedId = useMemo(() => id ?? defaultId, [defaultId, id]);
 
   useEffect(() => {
-    setLabelId && setLabelId(computedId);
+    setLabelId?.(computedId);
   }, [computedId, setLabelId]);
 
   return (

@@ -5,7 +5,7 @@ import style from './link.module.scss';
 
 interface LinkProp<T extends ElementType = 'a'> {
   /**
-   * @default-value='a'
+   * \@default-value='a'
    * Pass a component you may want to use as custom Link component.
    * Useful for example when using routing library like react-router.
    * */
@@ -34,7 +34,7 @@ const Link = forwardRef(function Link<T extends ElementType>({
       event.preventDefault();
       event.stopPropagation();
     } else {
-      props.onClick && props.onClick(event);
+      props?.onClick(event);
     }
   }
 

@@ -14,8 +14,8 @@
     box-sizing: border-box;
     display: inline-block;
     border-radius: var(--ods-tile-border-radius);
-    cursor: pointer;
     overflow: hidden;
+    cursor: pointer;
 
     &:hover:not(&--selected, &--disabled), &:focus-within:not(&--selected, &--disabled)  {
       border-color: var(--ods-tile-border-color-hover);

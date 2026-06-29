@@ -36,12 +36,12 @@
     display: block;
     z-index: 1;
     background: none;
-    cursor: pointer;
     text-align: center;
     white-space: nowrap;
     color: var(--ods-theme-text-color);
     font-family: inherit;
     font-weight: 600;
+    cursor: pointer;
 
     &:focus-visible {
       @include focus.ods-focus();

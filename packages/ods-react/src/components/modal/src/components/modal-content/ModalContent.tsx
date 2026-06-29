@@ -37,7 +37,7 @@ const ModalContent: FC<ModalContentProp> = forwardRef(({
 
   useEffect(() => {
     setDismissible?.(dismissible);
-    return () => {
+    return (): void => {
       setDismissible?.(undefined);
     };
   }, [dismissible, setDismissible]);

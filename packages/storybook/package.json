@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@ant-design/colors": "7.1.0",
-    "@ark-ui/react": "5.25.1",
+    "@ark-ui/react": "5.37.2",
     "@ovhcloud/ods-react": "workspace:*",
     "@ovhcloud/ods-recipes": "workspace:*",
     "@ovhcloud/ods-themes": "workspace:*",
@@ -30,7 +30,7 @@
     "prettier": "3.6.2",
     "react": "18.2.0",
     "storybook-addon-code-editor": "4.1.2",
-    "typedoc": "0.28.1"
+    "typedoc": "0.28.19"
   },
   "devDependencies": {
     "@fluentui/storybook-llms-extractor": "0.0.3",
@@ -48,10 +48,10 @@
     "custom-elements-manifest": "1.0.0",
     "monaco-editor": "0.52.2",
     "node-fetch": "2.7.0",
-    "playwright": "1.56.1",
+    "playwright": "1.61.1",
     "prop-types": "15.8.1",
     "react-docgen": "7.1.1",
     "storybook": "8.6.12",
-    "typescript": "5.3.3"
+    "typescript": "6.0.3"
   }
 }

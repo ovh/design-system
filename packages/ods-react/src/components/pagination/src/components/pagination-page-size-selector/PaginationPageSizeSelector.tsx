@@ -8,7 +8,7 @@ import style from './paginationPageSizeSelector.module.scss';
 
 interface PaginationPageSizeSelectorProp extends ComponentPropsWithRef<'div'> {
   /**
-   * @default-value='of ${totalItems} results'
+   * \@default-value='of $\{totalItems\} results'
    * The label displayed near the per-page selector.
    */
   label?: ReactNode;

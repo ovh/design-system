@@ -4,8 +4,9 @@
     "alwaysStrict": true,
     "declaration": true,
     "esModuleInterop": true,
+    "ignoreDeprecations": "6.0",
     "lib": ["dom", "ESNext"],
-    "moduleResolution": "node",
+    "moduleResolution": "node10",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noUncheckedIndexedAccess": true,
@@ -13,6 +14,7 @@
     "noUnusedParameters": true,
     "outDir": "dist",
     "removeComments": true,
+    "rootDir": "src",
     "strictNullChecks": true,
     "target": "ES6"
   },

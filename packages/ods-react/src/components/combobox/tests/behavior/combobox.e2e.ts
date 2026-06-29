@@ -2,8 +2,12 @@ import 'jest-puppeteer';
 import { type ElementHandle, type Page } from 'puppeteer';
 import { gotoStory } from '../../../../helpers/test';
 
-async function getInputValue(page: Page): Promise<string> {
-  return page.$eval('[data-ods="combobox-control"] input', (el) => el.value);
+async function expectInputValue(page: Page, value: string): Promise<void> {
+  await page.waitForFunction(
+    (v) => (document.querySelector('[data-ods="combobox-control"] input') as HTMLInputElement | null)?.value === v,
+    {},
+    value,
+  );
 }
 
 async function getItems(page: Page): Promise<ElementHandle[]> {
@@ -12,6 +16,18 @@ async function getItems(page: Page): Promise<ElementHandle[]> {
 
 async function getTags(page: Page): Promise<ElementHandle[]> {
   return page.$$('[data-ods="combobox-control"] [data-ods="tag"]');
+}
+
+async function waitForItemCount(page: Page, count: number): Promise<void> {
+  await page.waitForFunction((n) => document.querySelectorAll('[role="option"]').length === n, {}, count);
+}
+
+async function waitForTagCount(page: Page, count: number): Promise<void> {
+  await page.waitForFunction(
+    (n) => document.querySelectorAll('[data-ods="combobox-control"] [data-ods="tag"]').length === n,
+    {},
+    count,
+  );
 }
 
 async function isContentOpened(page: Page): Promise<boolean> {
@@ -39,16 +55,16 @@ describe('Combobox behaviour', () => {
       it('should clear the input value', async() => {
         await typeOnInput(page, 'Value');
 
-        expect(await getInputValue(page)).toBe('Value');
+        await expectInputValue(page, 'Value');
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
 
-        expect(await getInputValue(page)).toBe('');
+        await expectInputValue(page, '');
 
         await page.click('body');
 
-        expect(await getInputValue(page)).toBe('');
+        await expectInputValue(page, '');
       });
     });
 
@@ -61,16 +77,16 @@ describe('Combobox behaviour', () => {
       it('should clear the input value', async() => {
         await typeOnInput(page, 'Value');
 
-        expect(await getInputValue(page)).toBe('Value');
+        await expectInputValue(page, 'Value');
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
 
-        expect(await getInputValue(page)).toBe('');
+        await expectInputValue(page, '');
 
         await page.click('body');
 
-        expect(await getInputValue(page)).toBe('');
+        await expectInputValue(page, '');
       });
     });
   });
@@ -84,21 +100,21 @@ describe('Combobox behaviour', () => {
     it('should reflect external change to value', async() => {
       const changeValueButton = await page.$('#force-value');
 
-      expect(await getInputValue(page)).toBe('Apple');
+      await expectInputValue(page, 'Apple');
 
       await changeValueButton?.click();
 
-      expect(await getInputValue(page)).toBe('Banana');
+      await expectInputValue(page, 'Banana');
     });
 
     it('should clear value when set to []', async() => {
       const clearValueButton = await page.$('#clear-value');
 
-      expect(await getInputValue(page)).toBe('Apple');
+      await expectInputValue(page, 'Apple');
 
       await clearValueButton?.click();
 
-      expect(await getInputValue(page)).toBe('');
+      await expectInputValue(page, '');
     });
   });
 
@@ -112,7 +128,7 @@ describe('Combobox behaviour', () => {
       await typeOnInput(page, 'Dummy');
       await page.keyboard.press('Tab');
 
-      expect(await getInputValue(page)).toBe('');
+      await expectInputValue(page, '');
     });
 
     it('should reset the input value to the current selection', async() => {
@@ -120,12 +136,12 @@ describe('Combobox behaviour', () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
 
-      expect(await getInputValue(page)).toBe('Apple');
+      await expectInputValue(page, 'Apple');
 
       await typeOnInput(page, 'Dummy');
       await page.keyboard.press('Tab');
 
-      expect(await getInputValue(page)).toBe('Apple');
+      await expectInputValue(page, 'Apple');
     });
   });
 
@@ -140,7 +156,7 @@ describe('Combobox behaviour', () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
 
-      expect(await getInputValue(page)).toBe('Apple');
+      await expectInputValue(page, 'Apple');
     });
   });
 
@@ -158,18 +174,21 @@ describe('Combobox behaviour', () => {
 
         await typeOnInput(page, 'ba');
 
+        await waitForItemCount(page, 1);
         expect((await getItems(page)).length).toBe(1);
       });
 
       it('should show all items when input is cleared', async() => {
         await typeOnInput(page, 'ba');
 
+        await waitForItemCount(page, 1);
         expect((await getItems(page)).length).toBe(1);
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await openContent(page);
 
+        await waitForItemCount(page, 4);
         expect((await getItems(page)).length).toBe(4);
       });
     });
@@ -187,18 +206,21 @@ describe('Combobox behaviour', () => {
 
         await typeOnInput(page, 'yrr');
 
+        await waitForItemCount(page, 1);
         expect((await getItems(page)).length).toBe(1);
       });
 
       it('should show all items when input is cleared', async() => {
         await typeOnInput(page, 'yrr');
 
+        await waitForItemCount(page, 1);
         expect((await getItems(page)).length).toBe(1);
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Enter');
         await openContent(page);
 
+        await waitForItemCount(page, 4);
         expect((await getItems(page)).length).toBe(4);
       });
     });
@@ -251,7 +273,7 @@ describe('Combobox behaviour', () => {
 
       expect(await page.$eval('[data-testid="group-value"]',
         (el) => el.textContent || '')).toBe('the-apple');
-      expect(await getInputValue(page)).toBe('Apple');
+      await expectInputValue(page, 'Apple');
     });
   });
 
@@ -264,12 +286,14 @@ describe('Combobox behaviour', () => {
 
       it('should update display values when multiple items are selected', async() => {
         await openContent(page);
-        await page.click('[role="option"]:nth-child(1)');
+        await page.locator('[role="option"]:nth-child(1)').click();
 
+        await waitForTagCount(page, 1);
         expect((await getTags(page)).length).toBe(1);
 
-        await page.click('[role="option"]:nth-child(1)');
+        await page.locator('[role="option"]:nth-child(1)').click();
 
+        await waitForTagCount(page, 2);
         expect((await getTags(page)).length).toBe(2);
       });
     });
@@ -282,12 +306,14 @@ describe('Combobox behaviour', () => {
 
       it('should update display values when multiple items are selected', async() => {
         await openContent(page);
-        await page.click('[role="option"]:nth-child(1)');
+        await page.locator('[role="option"]:nth-child(1)').click();
 
+        await waitForTagCount(page, 1);
         expect((await getTags(page)).length).toBe(1);
 
-        await page.click('[role="option"]:nth-child(1)');
+        await page.locator('[role="option"]:nth-child(1)').click();
 
+        await waitForTagCount(page, 2);
         expect((await getTags(page)).length).toBe(2);
       });
     });

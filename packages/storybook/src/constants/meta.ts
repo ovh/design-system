@@ -10,6 +10,7 @@ enum SECTION {
   reactComponents = 'React Components',
   recipes = 'Recipes',
   resources = 'Resources',
+  aiAgents = 'AI Agents',
   tools = 'Tools',
   upgrade = 'Upgrade',
 }
@@ -25,7 +26,7 @@ enum HOME_TITLE {
   getStarted = `${SECTION.home}/Get Started`,
   i18nGuide = `${SECTION.home}/${SECTION.build}/Internationalization`,
   implementingFormGuide = `${SECTION.home}/${SECTION.build}/Forms`,
-  llmDocs = `${SECTION.home}/${SECTION.resources}/LLM Documentation`,
+  llmDocs = `${SECTION.home}/${SECTION.aiAgents}/LLM Documentation`,
   migration12to13 = `${SECTION.home}/${SECTION.upgrade}/${SECTION.previousMigrations}/12.x to 13.x`,
   migration13to14 = `${SECTION.home}/${SECTION.upgrade}/${SECTION.previousMigrations}/13.x to 14.x`,
   migration14to15 = `${SECTION.home}/${SECTION.upgrade}/${SECTION.previousMigrations}/14.x to 15.x`,

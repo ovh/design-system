@@ -9,7 +9,6 @@ import {
   Link,
   BADGE_COLOR,
 } from "@ovhcloud/ods-react";
-import { navigate } from "@storybook/addon-links";
 import React from "react";
 import { useStoryHref } from "../../helpers/useStoryHref";
 import { HOME_TITLE, REACT_COMPONENTS_TITLE, RECIPES_TITLE } from "../../constants/meta";
@@ -20,7 +19,7 @@ import { HomepageTile } from "./HomepageTile";
 import imageFile from "../../../assets/ods_bg.png";
 
 const Homepage = () => {
-  const getStartedHref = useStoryHref(HOME_TITLE.getStarted);
+  const getStartedHref = useStoryHref(HOME_TITLE.getStarted, "docs");
 
   return (
     <div className={styles.homepage} data-page="homepage" style={{ backgroundImage: `url(${imageFile})` }}>
@@ -57,14 +56,16 @@ const Homepage = () => {
 
         <div className={styles["homepage__tiles"]}>
           <HomepageTile
-            description="Browse 60+ production-ready React components."
+            description="60+ production-ready React components."
             icon={ICON_NAME.grid}
+            linkLabel="Browse components"
             path={REACT_COMPONENTS_TITLE.gallery}
             title="Components"
           />
           <HomepageTile
             description="500+ icons crafted for OVHcloud products."
             icon={ICON_NAME.sparkle}
+            linkLabel="Browse icons"
             name="Gallery"
             path={REACT_COMPONENTS_TITLE.icon}
             title="Icons"
@@ -72,31 +73,30 @@ const Homepage = () => {
           <HomepageTile
             description="Proven UI patterns that combine multiple components."
             icon={ICON_NAME.lightbulb}
+            linkLabel="Browse recipes"
             path={RECIPES_TITLE.components}
             title="Recipes"
           />
         </div>
 
-        <div className={styles["homepage__content__links"]}>
-          <Link
-            href={getStartedHref}
-            onClick={(event: React.MouseEvent) => {
-              event.preventDefault();
-              navigate({ title: HOME_TITLE.getStarted });
-            }}
-          >
-            Get Started <Icon name={ICON_NAME.arrowRight} />
-          </Link>
-
-          <ExternalLink href="https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system">
-            Design Guidelines
-          </ExternalLink>
-
-          <ExternalLink href="https://github.com/ovh/design-system">
-            <Icon name={ICON_NAME.github} />
-            GitHub repository
-          </ExternalLink>
-        </div>
+        <ul className={styles["homepage__content__links"]}>
+          <li>
+            <Link href={getStartedHref}>
+              Get Started <Icon name={ICON_NAME.chevronRight} />
+            </Link>
+          </li>
+          <li>
+            <ExternalLink href="https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system">
+              Design Guidelines
+            </ExternalLink>
+          </li>
+          <li>
+            <ExternalLink href="https://github.com/ovh/design-system">
+              <Icon name={ICON_NAME.github} />
+              GitHub repository
+            </ExternalLink>
+          </li>
+        </ul>
       </div>
     </div>
   );

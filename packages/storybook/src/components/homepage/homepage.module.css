@@ -62,8 +62,10 @@
 
 .homepage__content__links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 2rem;
+  flex-flow: column wrap;
+  gap: 1.25rem 2rem;
+  padding: 0;
+  list-style-type: "";
   font-size: 1rem;
 }
 
@@ -74,9 +76,5 @@
 
   .homepage__content {
     padding: 2.5rem;
-  }
-
-  .homepage__content__links {
-    flex-direction: column;
   }
 }

@@ -1,31 +1,15 @@
 .homepage-tile {
   display: flex;
   flex: 1;
-  transition: background-color 120ms ease;
-  background-color: var(--ods-theme-background-color);
-  
-  &:hover {
-    background-color: var(--ods-color-information-100);
-  }
-}
-
-.homepage-tile__link {
-  display: flex;
   flex-direction: column;
   gap: 0.5rem;
   align-items: flex-start;
-  border-radius: inherit;
-  background-color: transparent;
+  background-color: var(--ods-theme-background-color);
   padding: 1rem;
   inline-size: 100%;
-  min-inline-size: 10rem;
+  min-inline-size: 12.5rem;
   text-decoration: none;
   color: inherit;
-
-  &:focus-visible {
-    outline: var(--ods-theme-outline-style) var(--ods-theme-outline-width) var(--ods-theme-outline-color);
-    outline-offset: var(--ods-theme-outline-offset);
-  }
 }
 
 .homepage-tile__title {
@@ -34,6 +18,15 @@
   align-items: center;
 }
 
+.homepage-tile__divider {
+  margin-block-start: auto;
+  inline-size: 100%;
+}
+
 .homepage-tile__icon {
   font-size: 1.25rem;
+}
+
+.homepage-tile__link {
+  margin-block-start: 0.5rem;
 }

@@ -54,6 +54,7 @@ const preview: Preview = {
         includeNames: true,
         order: [
           'OVHcloud Design System', [
+            'Welcome',
             'Get Started',
             'Build', [
               'Accessibility',
@@ -67,7 +68,6 @@ const preview: Preview = {
               'Style Customization',
               'Design Tokens',
               'Tailwind CSS Integration',
-              'Theme Generator',
               '*',
             ],
             'Upgrade', [
@@ -81,8 +81,15 @@ const preview: Preview = {
             ],
             'Resources', [
               'F.A.Q.',
-              'Sandbox',
               'Roadmap',
+              '*',
+            ],
+            'Tools', [
+              'Code Sandbox',
+              'Theme Generator',
+              '*',
+            ],
+            'AI Agents', [
               'LLM Documentation',
               '*',
             ],

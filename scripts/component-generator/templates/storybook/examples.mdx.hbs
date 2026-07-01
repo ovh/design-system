@@ -3,20 +3,16 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
 import { Recipes } from '../../../src/components/recipes/Recipes';
-import * as DataTableStories from './data-table.stories';
+import * as {{> ComponentName }}Stories from './{{> component-name }}.stories';
 
-<Meta of={ DataTableStories } name="Examples" />
+<Meta of={ {{> ComponentName }}Stories } name="Examples" />
 
-<Banner of={ DataTableStories } />
+<Banner of={ {{> ComponentName }}Stories } />
 
 <Heading label="Default" level={ 2 } />
 
-<Canvas of={ DataTableStories.Default } sourceState="shown" />
-
-<Heading label="Empty" level={ 2 } />
-
-<Canvas of={ DataTableStories.Empty } sourceState="shown" />
+<Canvas of={ {{> ComponentName }}Stories.Default } sourceState="shown" />
 
 <Heading label="Recipes" level={ 2 } />
 
-<Recipes component="DataTable" />
+<Recipes component="{{> ComponentName }}" />

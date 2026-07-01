@@ -2,6 +2,7 @@ import { Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import * as MediumStories from './medium.stories';
 
 <Meta of={ MediumStories } name="Examples" />
@@ -19,3 +20,7 @@ import * as MediumStories from './medium.stories';
 <Heading label="Width" level={ 2 } />
 
 <Canvas of={ MediumStories.Width } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Medium" />

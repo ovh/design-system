@@ -2,6 +2,7 @@ import { Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import * as SpinnerStories from './spinner.stories';
 
 <Meta of={ SpinnerStories } name="Examples" />
@@ -19,3 +20,7 @@ import * as SpinnerStories from './spinner.stories';
 <Heading label="Size" level={ 2 } />
 
 <Canvas of={ SpinnerStories.Size } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Spinner" />

@@ -2,6 +2,7 @@ import { Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import * as CodeStories from './code.stories';
 
 <Meta of={ CodeStories } name="Examples" />
@@ -23,3 +24,7 @@ import * as CodeStories from './code.stories';
 <Heading label="Custom labels" level={ 2 } />
 
 <Canvas of={ CodeStories.CustomLabels } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Code" />

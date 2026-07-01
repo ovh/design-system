@@ -2,6 +2,7 @@ import { Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { HOME_TITLE } from '../../../src/constants/meta';
 import * as RadioGroupStories from './radio-group.stories';
@@ -33,3 +34,7 @@ import * as RadioGroupStories from './radio-group.stories';
 </Heading>
 
 <Canvas of={ RadioGroupStories.InFormField } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="RadioGroup" />

@@ -2,6 +2,7 @@ import { Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import * as ButtonStories from './button.stories';
 
 <Meta of={ ButtonStories } name="Examples" />
@@ -27,3 +28,7 @@ import * as ButtonStories from './button.stories';
 <Heading label="Variant" level={ 2 } />
 
 <Canvas of={ ButtonStories.Variant } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Button" />

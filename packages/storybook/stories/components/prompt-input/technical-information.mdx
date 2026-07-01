@@ -5,13 +5,12 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import { HOME_TITLE } from '../../../src/constants/meta';
 import * as PromptInputStories from './prompt-input.stories';
 
-<Meta of={ PromptInputStories } name="Technical information" tags={ ['new'] } />
+<Meta of={ PromptInputStories } name="Technical information" />
 
 <Banner of={ PromptInputStories } />
 
@@ -65,7 +64,3 @@ import * as PromptInputStories from './prompt-input.stories';
     },
   }}
   of={ PromptInputStories } />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="PromptInput" />

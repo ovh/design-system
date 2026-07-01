@@ -5,11 +5,10 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as MarkdownStories from './markdown.stories';
 
-<Meta of={ MarkdownStories } name="Technical information" tags={ ['new'] } />
+<Meta of={ MarkdownStories } name="Technical information" />
 
 <Banner of={ MarkdownStories } />
 
@@ -29,7 +28,3 @@ import * as MarkdownStories from './markdown.stories';
   cssVariable={ cssVariable }
   data={ specificationsMarkdown }
   of={ MarkdownStories } />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="Markdown" />

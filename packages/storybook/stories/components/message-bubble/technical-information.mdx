@@ -5,11 +5,10 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as MessageBubbleStories from './message-bubble.stories';
 
-<Meta of={ MessageBubbleStories } name="Technical information" tags={ ['new'] } />
+<Meta of={ MessageBubbleStories } name="Technical information" />
 
 <Banner of={ MessageBubbleStories } />
 
@@ -33,7 +32,3 @@ import * as MessageBubbleStories from './message-bubble.stories';
     },
   }}
   of={ MessageBubbleStories } />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="MessageBubble" />

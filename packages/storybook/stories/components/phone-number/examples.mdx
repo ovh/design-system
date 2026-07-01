@@ -2,6 +2,7 @@ import { Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { HOME_TITLE, REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 import * as PhoneNumberStories from './phone-number.stories';
@@ -53,3 +54,7 @@ For further explanation about country iso code strategy, see <StorybookLink kind
 </Heading>
 
 <Canvas of={ PhoneNumberStories.InFormField } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="PhoneNumber" />

@@ -2,6 +2,7 @@ import { Meta, Source } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import * as MarkdownStories from './markdown.stories';
 
 <Meta of={ MarkdownStories } name="Examples" />
@@ -56,3 +57,7 @@ console.log('Hello World!');
   language="typescript" />
 
 <Canvas of={ MarkdownStories.CodeHighlighter } sourceState="none" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Markdown" />

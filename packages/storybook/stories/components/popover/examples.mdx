@@ -2,6 +2,7 @@ import { Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import * as PopoverStories from './popover.stories';
 
 <Meta of={ PopoverStories } name="Examples" />
@@ -31,3 +32,7 @@ import * as PopoverStories from './popover.stories';
 <Heading label="Z index" level={ 2 } />
 
 <Canvas of={ PopoverStories.ZIndex } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Popover" />

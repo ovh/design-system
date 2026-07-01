@@ -165,6 +165,7 @@ stories/
       <component-name>.stories.tsx
       documentation.mdx
       technical-information.mdx
+      examples.mdx
   ovhcloud-design-system/
     <contains more generic information about the whole library>
 ```
@@ -173,9 +174,7 @@ If some of your changes impacts how the component behave (in a functional way), 
 
 If some of your changes impacts the technical side of the component:
 - check that the generated interfaces/definitions are correct (run `pnpm doc` at the root to get the latest data).
-- if relevant, add some stories in the `<component-name>.stories.tsx` file, then reference them in the `technical-information.mdx` file.
-
-If you've updated the attributes list of a component, check that the `Demo` page controls are still relevant.
+- if relevant, add some stories in the `<component-name>.stories.tsx` file, then reference them in the `examples.mdx` file.
 
 # Code submission
 

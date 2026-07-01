@@ -2,6 +2,7 @@ import { Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import * as LogoStories from './logo.stories';
 
 <Meta of={ LogoStories } name="Examples" />
@@ -19,3 +20,7 @@ import * as LogoStories from './logo.stories';
 <Heading label="Variant" level={ 2 } />
 
 <Canvas of={ LogoStories.Variant } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Logo" />

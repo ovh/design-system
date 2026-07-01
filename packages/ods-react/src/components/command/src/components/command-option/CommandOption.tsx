@@ -40,13 +40,16 @@ const CommandOption: FC<CommandOptionProp> = forwardRef(({
 
   useImperativeHandle(ref, () => nodeRef.current!, []);
 
+  const onSelectRef = useRef(onSelect);
+  onSelectRef.current = onSelect;
+
   useEffect(() => {
-    if (!onSelect || !isVisible || isDisabled) {
+    if (!isVisible || isDisabled) {
       return;
     }
-    registerHandler(itemId, onSelect);
+    registerHandler(itemId, () => onSelectRef.current?.());
     return () => unregisterHandler(itemId);
-  }, [isDisabled, itemId, onSelect, isVisible, registerHandler, unregisterHandler]);
+  }, [isDisabled, itemId, isVisible, registerHandler, unregisterHandler]);
 
   useEffect(() => {
     if (!isVisible || isDisabled || !nodeRef.current) {

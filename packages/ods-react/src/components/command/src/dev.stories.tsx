@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import style from './dev.module.css';
 import { Icon } from '../../icon/src';
 import { Kbd } from '../../kbd/src';
@@ -91,12 +91,12 @@ export const Default = (): JSX.Element => {
                     {item.shortcut &&
                       <kbd style={{ alignItems: 'center',display: 'flex', gap: '2px' }}>
                         {getParts(item.shortcut).map((part, idx) => (
-                          <>
+                          <Fragment key={idx}>
                             { idx > 0 && '+' }
-                            <Kbd key={idx}>
+                            <Kbd>
                               {part}
                             </Kbd>
-                          </>
+                          </Fragment>
                         ))}
                       </kbd>
                     }

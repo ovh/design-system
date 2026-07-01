@@ -397,7 +397,7 @@ export const AnatomyTech: Story = {
           </CommandContent>
         </Command>
       </div>
-      <Command aria-label="Command component demo">
+      <Command open={false} aria-label="Command component demo">
         <CommandTrigger asChild>
           <Button variant={ BUTTON_VARIANT.outline }>
             Trigger Command

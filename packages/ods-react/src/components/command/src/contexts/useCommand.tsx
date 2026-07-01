@@ -1,4 +1,4 @@
-import { type JSX, type ReactNode, createContext, useCallback, useEffect, useId, useRef, useState } from 'react';
+import { type JSX, type ReactNode, createContext, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useContext } from '../../../../utils/context';
 
 interface CommandProviderProp {
@@ -29,7 +29,7 @@ const CommandContext = createContext<CommandContextType | undefined>(undefined);
 
 function CommandProvider({ children, open }: CommandProviderProp): JSX.Element {
   const id = useId();
-  const [filter, setFilterRaw] = useState('');
+  const [filter, setFilter] = useState('');
   const [highlightedValue, setHighlightedValue] = useState<string | undefined>(undefined);
   const [registeredItems, setRegisteredItems] = useState<string[]>([]);
   const handlersRef = useRef(new Map<string, VoidFunction>());
@@ -37,7 +37,7 @@ function CommandProvider({ children, open }: CommandProviderProp): JSX.Element {
 
   useEffect(() => {
     if (!open) {
-      setFilterRaw('');
+      setFilter('');
       setHighlightedValue(registeredItems[0]);
     }
   }, [open, registeredItems]);
@@ -54,15 +54,11 @@ function CommandProvider({ children, open }: CommandProviderProp): JSX.Element {
     });
   }, [registeredItems]);
 
-  function setFilter(value: string): void {
-    setFilterRaw(value);
-  }
-
-  const registerItem = useCallback((value: string, node: HTMLElement): void => {
-    itemNodesRef.current.set(value, node);
+  // Items append on registration (cheap); re-sort once per batch into DOM order.
+  // Needed because options re-register out of order when a filter is cleared.
+  useEffect(() => {
     setRegisteredItems((prev) => {
-      const next = [...prev, value];
-      return next.sort((a, b) => {
+      const sorted = [...prev].sort((a, b) => {
         const nodeA = itemNodesRef.current.get(a);
         const nodeB = itemNodesRef.current.get(b);
         if (!nodeA || !nodeB) {
@@ -70,7 +66,13 @@ function CommandProvider({ children, open }: CommandProviderProp): JSX.Element {
         }
         return nodeA.compareDocumentPosition(nodeB) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
       });
+      return sorted.every((value, index) => value === prev[index]) ? prev : sorted;
     });
+  }, [registeredItems]);
+
+  const registerItem = useCallback((value: string, node: HTMLElement): void => {
+    itemNodesRef.current.set(value, node);
+    setRegisteredItems((prev) => (prev.includes(value) ? prev : [...prev, value]));
   }, []);
 
   const unregisterItem = useCallback((value: string): void => {
@@ -86,7 +88,7 @@ function CommandProvider({ children, open }: CommandProviderProp): JSX.Element {
     handlersRef.current.delete(value);
   }, []);
 
-  function highlightNext(): void {
+  const highlightNext = useCallback((): void => {
     if (!registeredItems.length) {
       return;
     }
@@ -94,9 +96,9 @@ function CommandProvider({ children, open }: CommandProviderProp): JSX.Element {
     if (idx < registeredItems.length - 1) {
       setHighlightedValue(registeredItems[idx + 1]);
     }
-  }
+  }, [registeredItems, highlightedValue]);
 
-  function highlightPrevious(): void {
+  const highlightPrevious = useCallback((): void => {
     if (!registeredItems.length) {
       return;
     }
@@ -104,49 +106,67 @@ function CommandProvider({ children, open }: CommandProviderProp): JSX.Element {
     if (idx > 0) {
       setHighlightedValue(registeredItems[idx - 1]);
     }
-  }
+  }, [registeredItems, highlightedValue]);
 
-  function highlightFirst(): void {
+  const highlightFirst = useCallback((): void => {
     if (registeredItems.length) {
       setHighlightedValue(registeredItems[0]);
     }
-  }
+  }, [registeredItems]);
 
-  function highlightLast(): void {
+  const highlightLast = useCallback((): void => {
     if (registeredItems.length) {
       setHighlightedValue(registeredItems[registeredItems.length - 1]);
     }
-  }
+  }, [registeredItems]);
 
-  function highlightItem(value: string): void {
+  const highlightItem = useCallback((value: string): void => {
     setHighlightedValue(value);
-  }
+  }, []);
 
-  function selectHighlighted(): void {
+  const selectHighlighted = useCallback((): void => {
     if (highlightedValue) {
       handlersRef.current.get(highlightedValue)?.();
     }
-  }
+  }, [highlightedValue]);
+
+  const value = useMemo<CommandContextType>(() => ({
+    filter,
+    highlightFirst,
+    highlightItem,
+    highlightLast,
+    highlightNext,
+    highlightPrevious,
+    highlightedValue,
+    id,
+    open: open ?? false,
+    registerHandler,
+    registerItem,
+    registeredItems,
+    selectHighlighted,
+    setFilter,
+    unregisterHandler,
+    unregisterItem,
+  }), [
+    filter,
+    highlightFirst,
+    highlightItem,
+    highlightLast,
+    highlightNext,
+    highlightPrevious,
+    highlightedValue,
+    id,
+    open,
+    registerHandler,
+    registerItem,
+    registeredItems,
+    selectHighlighted,
+    unregisterHandler,
+    unregisterItem,
+  ]);
 
   return (
-    <CommandContext.Provider value={{
-      filter,
-      highlightFirst,
-      highlightItem,
-      highlightLast,
-      highlightNext,
-      highlightPrevious,
-      highlightedValue,
-      id,
-      open: open ?? false,
-      registerHandler,
-      registerItem,
-      registeredItems,
-      selectHighlighted,
-      setFilter,
-      unregisterHandler,
-      unregisterItem,
-    }}>
+    <CommandContext.Provider value={ value }>
       { children }
     </CommandContext.Provider>
   );

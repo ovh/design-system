@@ -79,11 +79,6 @@ const preview: Preview = {
               ],
               '*',
             ],
-            'Resources', [
-              'F.A.Q.',
-              'Roadmap',
-              '*',
-            ],
             'Tools', [
               'Code Sandbox',
               'Theme Generator',
@@ -93,6 +88,8 @@ const preview: Preview = {
               'LLM Documentation',
               '*',
             ],
+            'F.A.Q.',
+            'Roadmap',
           ],
           'React Components', [
             'Gallery',

@@ -5,11 +5,10 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as QueryFilterStories from './query-filter.stories';
 
-<Meta of={ QueryFilterStories } name="Technical information" tags={ ['new'] } />
+<Meta of={ QueryFilterStories } name="Technical information" />
 
 <Banner of={ QueryFilterStories } />
 
@@ -61,7 +60,3 @@ import * as QueryFilterStories from './query-filter.stories';
       }
     },
   }} />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="QueryFilter" />

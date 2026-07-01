@@ -2,6 +2,7 @@ import { Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import * as DrawerStories from './drawer.stories';
 
 <Meta of={ DrawerStories } name="Examples" />
@@ -19,3 +20,7 @@ import * as DrawerStories from './drawer.stories';
 <Heading label="Overlay Elements" level={ 2 } />
 
 <Canvas of={ DrawerStories.OverlayElements } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Drawer" />

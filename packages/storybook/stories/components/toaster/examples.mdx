@@ -2,6 +2,7 @@ import { Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import * as ToasterStories from './toaster.stories';
 
 <Meta of={ ToasterStories } name="Examples" />
@@ -35,3 +36,7 @@ import * as ToasterStories from './toaster.stories';
 <Heading label="Custom Content" level={ 2 } />
 
 <Canvas of={ ToasterStories.CustomContent } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Toaster" />

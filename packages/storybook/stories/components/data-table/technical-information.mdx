@@ -6,13 +6,12 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import { REACT_COMPONENTS_TITLE, STORY } from '../../../src/constants/meta';
 import * as DataTableStories from './data-table.stories';
 
-<Meta of={ DataTableStories } name="Technical information" tags={ ['new'] } />
+<Meta of={ DataTableStories } name="Technical information" />
 
 <Banner of={ DataTableStories } />
 
@@ -220,7 +219,3 @@ A column will be hidden if its id is present in the map and the value is `false`
 If the column id is not present in the map, or the value is `true`, the column will be shown.
 
 <Canvas of={ DataTableStories.VisibilityExample } sourceState="hidden" showSandbox />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="DataTable" />

@@ -2,6 +2,7 @@ import { Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import * as AccordionStories from './accordion.stories';
 
 <Meta of={ AccordionStories } name="Examples" />
@@ -31,3 +32,7 @@ import * as AccordionStories from './accordion.stories';
 <Heading label="Expand Icon Position" level={ 2 } />
 
 <Canvas of={ AccordionStories.ExpandIconPositionExample } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Accordion" />

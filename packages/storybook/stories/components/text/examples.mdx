@@ -2,6 +2,7 @@ import { Meta } from '@storybook/blocks';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
 import * as TextStories from './text.stories';
 
 <Meta of={ TextStories } name="Examples" />
@@ -35,3 +36,7 @@ For actual `<caption>` (used in a table) or `<figcaption>` (image), use the nati
 <Heading label="Preset style on a different HTML element" level={ 2 } />
 
 <Canvas of={ TextStories.ReuseStyle } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Text" />

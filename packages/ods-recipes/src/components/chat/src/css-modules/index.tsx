@@ -17,8 +17,12 @@ const ChatRoot = (): JSX.Element => {
   const messageContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (messageContainerRef.current) {
-      messageContainerRef.current.lastElementChild?.scrollIntoView({ behavior: 'smooth' });
+    const container = messageContainerRef.current;
+
+    if (container) {
+      // Scroll the message container itself rather than using scrollIntoView,
+      // which would also scroll every scrollable ancestor (including the page).
+      container.scrollTo({ behavior: 'smooth', top: container.scrollHeight });
     }
   }, [messages]);
 

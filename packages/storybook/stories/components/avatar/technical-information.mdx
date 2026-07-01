@@ -5,11 +5,10 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as AvatarStories from './avatar.stories';
 
-<Meta of={ AvatarStories } name="Technical information" tags={ ['new'] } />
+<Meta of={ AvatarStories } name="Technical information" />
 
 <Banner of={ AvatarStories } />
 
@@ -33,7 +32,3 @@ import * as AvatarStories from './avatar.stories';
     },
   }}
   of={ AvatarStories } />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="Avatar" />

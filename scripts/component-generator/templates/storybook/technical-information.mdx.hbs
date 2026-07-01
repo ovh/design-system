@@ -5,11 +5,10 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as {{> ComponentName }}Stories from './{{> component-name }}.stories';
 
-<Meta of={ {{> ComponentName }}Stories } name="Technical information" tags={ ['new'] } />
+<Meta of={ {{> ComponentName }}Stories } name="Technical information" />
 
 <Banner of={ {{> ComponentName }}Stories } />
 
@@ -25,13 +24,3 @@ import * as {{> ComponentName }}Stories from './{{> component-name }}.stories';
   cssVariable={ cssVariable }
   data={ specifications{{> ComponentName }} }
   of={ {{> ComponentName }}Stories } />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ {{> ComponentName }}Stories.Default } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="{{> ComponentName }}" />

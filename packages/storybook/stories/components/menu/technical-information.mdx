@@ -5,11 +5,10 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as MenuStories from './menu.stories';
 
-<Meta of={ MenuStories } name="Technical information" tags={ ['new'] } />
+<Meta of={ MenuStories } name="Technical information" />
 
 <Banner of={ MenuStories } />
 
@@ -66,29 +65,3 @@ import * as MenuStories from './menu.stories';
     },
   }}
   of={ MenuStories } />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ MenuStories.Default } sourceState="shown" />
-
-<Heading label="Controlled" level={ 3 } />
-
-<Canvas of={ MenuStories.Controlled } sourceState="shown" />
-
-<Heading label="Disabled" level={ 3 } />
-
-<Canvas of={ MenuStories.Disabled } sourceState="shown" />
-
-<Heading label="Group" level={ 3 } />
-
-<Canvas of={ MenuStories.Group } sourceState="shown" />
-
-<Heading label="Nested" level={ 3 } />
-
-<Canvas of={ MenuStories.Nested } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="Menu" />

@@ -2,8 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Avatar, type AvatarProp } from '../../../../ods-react/src/components/avatar/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<AvatarProp>;
 
@@ -15,23 +14,6 @@ const meta: Meta<AvatarProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    fallback: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-    src: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

@@ -5,7 +5,6 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import { HOME_TITLE } from '../../../src/constants/meta';
@@ -53,33 +52,3 @@ import * as RadioGroupStories from './radio-group.stories';
     },
   }}
   of={ RadioGroupStories } />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ RadioGroupStories.Default } sourceState="shown" />
-
-<Heading label="Disabled" level={ 3 } />
-
-<Canvas of={ RadioGroupStories.DisabledGroup } sourceState="shown" />
-
-<Canvas of={ RadioGroupStories.DisabledItem } sourceState="shown" />
-
-<Heading label="Invalid" level={ 3 } />
-
-<Canvas of={ RadioGroupStories.Invalid } sourceState="shown" />
-
-<Heading label="Orientation" level={ 3 } />
-
-<Canvas of={ RadioGroupStories.Orientation } sourceState="shown" />
-
-<Heading label="Form field" level={ 3 }>
-  <StorybookLink title={ HOME_TITLE.implementingFormGuide }>(see implementing form guide)</StorybookLink>
-</Heading>
-
-<Canvas of={ RadioGroupStories.InFormField } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="RadioGroup" />

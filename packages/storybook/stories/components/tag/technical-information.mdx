@@ -5,7 +5,6 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TagStories from './tag.stories';
 
@@ -33,29 +32,3 @@ import * as TagStories from './tag.stories';
     },
   }}
   of={ TagStories } />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ TagStories.Default } sourceState="shown" />
-
-<Heading label="Color" level={ 3 } />
-
-<Canvas of={ TagStories.Color } sourceState="shown" />
-
-<Heading label="Disabled" level={ 3 } />
-
-<Canvas of={ TagStories.Disabled } sourceState="shown" />
-
-<Heading label="Size" level={ 3 } />
-
-<Canvas of={ TagStories.Size } sourceState="shown" />
-
-<Heading label="Custom icon" level={ 3 } />
-
-<Canvas of={ TagStories.CustomIcon } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="Tag" />

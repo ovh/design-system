@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import * as TileStories from './tile.stories';
+
+<Meta of={ TileStories } name="Examples" />
+
+<Banner of={ TileStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ TileStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ TileStories.Disabled } sourceState="shown" />
+
+<Heading label="Selected" level={ 2 } />
+
+<Canvas of={ TileStories.Selected } sourceState="shown" />
+
+<Heading label="With Checkbox" level={ 2 } />
+
+<Canvas of={ TileStories.WithCheckbox } sourceState="shown" />
+
+<Heading label="With RadioGroup" level={ 2 } />
+
+<Canvas of={ TileStories.WithRadioGroup } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Tile" />

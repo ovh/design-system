@@ -5,7 +5,6 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TreeViewStories from './tree-view.stories';
 
@@ -31,49 +30,3 @@ import * as TreeViewStories from './tree-view.stories';
   cssVariable={ cssVariable }
   data={ specificationsTreeView }
   of={ TreeViewStories } />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ TreeViewStories.Default } sourceState="shown" />
-
-<Heading label="Multiple" level={ 3 } />
-
-<Canvas of={ TreeViewStories.Multiple } sourceState="shown" />
-
-<Heading label="Disabled" level={ 3 } />
-
-<Canvas of={ TreeViewStories.Disabled } sourceState="shown" />
-
-<Heading label="Custom render" level={ 3 } />
-
-<Canvas of={ TreeViewStories.CustomRender } sourceState="shown" />
-
-<Heading label="Default expanded" level={ 3 } />
-
-<Canvas of={ TreeViewStories.DefaultExpandedValue } sourceState="shown" />
-
-<Heading label="Controlled" level={ 3 } />
-
-<Canvas of={ TreeViewStories.Controlled } sourceState="shown" />
-
-<Heading label="Controlled multiple" level={ 3 } />
-
-<Canvas of={ TreeViewStories.ControlledMultiple } sourceState="shown" />
-
-<Heading label="Disabled items" level={ 3 } />
-
-<Canvas of={ TreeViewStories.DisabledItems } sourceState="shown" />
-
-<Heading label="In form field" level={ 3 } />
-
-<Canvas of={ TreeViewStories.InFormField } sourceState="shown" />
-
-<Heading label="Dynamic children" level={ 3 } />
-
-<Canvas of={ TreeViewStories.DynamicChildren } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="TreeView" />

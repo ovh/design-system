@@ -3,8 +3,7 @@ import theme from '@shikijs/themes/nord';
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { Code, type CodeProp } from '../../../../ods-react/src/components/code/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<CodeProp>;
 
@@ -15,40 +14,6 @@ const meta: Meta<CodeProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    canCopy: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'text',
-    },
-    labelCopy: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'Copy to clipboard' },
-      },
-      control: 'text',
-    },
-    labelCopySuccess: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'Copied' },
-      },
-      control: 'text',
-    },
-  }),
-  args: {
-    children: `import { Text } from '@ovhcloud/ods-react';`,
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

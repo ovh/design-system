@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import * as DividerStories from './divider.stories';
+
+<Meta of={ DividerStories } name="Examples" />
+
+<Banner of={ DividerStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ DividerStories.Default } sourceState="shown" />
+
+<Heading label="Color" level={ 2 } />
+
+<Canvas of={ DividerStories.Color } sourceState="shown" />
+
+<Heading label="Orientation" level={ 2 } />
+
+<Canvas of={ DividerStories.Orientation } sourceState="shown" />
+
+<Heading label="Spacing" level={ 2 } />
+
+<Canvas of={ DividerStories.Spacing } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Divider" />

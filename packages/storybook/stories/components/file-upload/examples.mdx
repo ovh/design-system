@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import * as FileUploadStories from './file-upload.stories';
+
+<Meta of={ FileUploadStories } name="Examples" />
+
+<Banner of={ FileUploadStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ FileUploadStories.Default } sourceState="shown" />
+
+<Heading label="Compact" level={ 2 } />
+
+<Canvas of={ FileUploadStories.Compact } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ FileUploadStories.Disabled } sourceState="shown" />
+
+<Heading label="Custom labels" level={ 2 } />
+
+<Canvas of={ FileUploadStories.CustomLabels } sourceState="shown" />
+
+<Heading label="Accept only specific file type" level={ 2 } />
+
+To limit the file types that can be uploaded, you can use the `accept` attribute.
+
+It works exactly the same as the one from the native <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept" target="_blank">input file</ExternalLink>.
+
+<Canvas of={ FileUploadStories.Accept } sourceState="shown" />
+
+<Heading label="Limit the maximum number of file" level={ 2 } />
+
+<Canvas of={ FileUploadStories.MaxFile } sourceState="shown" />
+
+<Heading label="Limit the maximum size of each file" level={ 2 } />
+
+<Canvas of={ FileUploadStories.MaxSize } sourceState="shown" />
+
+<Heading label="Display upload progress" level={ 2 } />
+
+<Canvas of={ FileUploadStories.Upload } sourceState="shown" />
+
+<Heading label="Form Field" level={ 2 } />
+
+<Canvas of={ FileUploadStories.InFormField } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="FileUpload" />

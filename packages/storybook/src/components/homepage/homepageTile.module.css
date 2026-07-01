@@ -1,0 +1,32 @@
+.homepage-tile {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  background-color: var(--ods-theme-background-color);
+  padding: 1rem;
+  inline-size: 100%;
+  min-inline-size: 12.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.homepage-tile__title {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.homepage-tile__divider {
+  margin-block-start: auto;
+  inline-size: 100%;
+}
+
+.homepage-tile__icon {
+  font-size: 1.25rem;
+}
+
+.homepage-tile__link {
+  margin-block-start: 0.5rem;
+}

@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import * as TooltipStories from './tooltip.stories';
+
+<Meta of={ TooltipStories } name="Examples" />
+
+<Banner of={ TooltipStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ TooltipStories.Default } sourceState="shown" />
+
+<Heading label="Custom Trigger" level={ 2 } />
+
+<Canvas of={ TooltipStories.CustomTrigger } sourceState="shown" />
+
+<Heading label="Controlled" level={ 2 } />
+
+<Canvas of={ TooltipStories.Controlled } sourceState="shown" />
+
+<Heading label="Grid" level={ 2 } />
+
+<Canvas of={ TooltipStories.Grid } sourceState="shown" />
+
+<Heading label="Z index" level={ 2 } />
+
+<Canvas of={ TooltipStories.ZIndex } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Tooltip" />

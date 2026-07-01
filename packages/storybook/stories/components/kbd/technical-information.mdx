@@ -5,7 +5,6 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as KbdStories from './kbd.stories';
 
@@ -25,13 +24,3 @@ import * as KbdStories from './kbd.stories';
   cssVariable={ cssVariable }
   data={ specificationsKbd }
   of={ KbdStories } />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ KbdStories.Default } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="Kbd" />

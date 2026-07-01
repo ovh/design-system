@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import * as EditableStories from './editable.stories';
+
+<Meta of={ EditableStories } name="Examples" />
+
+<Banner of={ EditableStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ EditableStories.Default } sourceState="shown" />
+
+<Heading label="Controlled" level={ 2 } />
+
+<Canvas of={ EditableStories.Controlled } sourceState="shown" />
+
+<Heading label="Custom Actions" level={ 2 } />
+
+<Canvas of={ EditableStories.CustomActions } sourceState="shown" />
+
+<Heading label="Complex Form Element" level={ 2 } />
+
+<Canvas of={ EditableStories.ComplexFormElement } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Editable" />

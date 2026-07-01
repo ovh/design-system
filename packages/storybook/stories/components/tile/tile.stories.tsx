@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { Checkbox, CheckboxControl, CheckboxLabel } from '../../../../ods-react/src/components/checkbox/src';
 import { Radio, RadioControl, RadioGroup, RadioLabel } from '../../../../ods-react/src/components/radio-group/src';
 import { Tile, TileAltContainer, type TileProp } from '../../../../ods-react/src/components/tile/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<TileProp>;
@@ -16,31 +14,6 @@ const meta: Meta<TileProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  render: (args) => (
-    <Tile
-      disabled={ args.disabled }
-      selected={ args.selected }
-      style={{ padding: '16px', width: '300px' }}>
-      This is a tile content.
-    </Tile>
-  ),
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    selected: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

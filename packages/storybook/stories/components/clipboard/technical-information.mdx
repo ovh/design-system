@@ -5,7 +5,6 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as ClipboardStories from './clipboard.stories';
 
@@ -45,29 +44,3 @@ import * as ClipboardStories from './clipboard.stories';
     },
   }}
   of={ ClipboardStories } />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ ClipboardStories.Default } sourceState="shown" />
-
-<Heading label="Disabled" level={ 3 } />
-
-<Canvas of={ ClipboardStories.Disabled } sourceState="shown" />
-
-<Heading label="Loading" level={ 3 } />
-
-<Canvas of={ ClipboardStories.Loading } sourceState="shown" />
-
-<Heading label="Masked" level={ 3 } />
-
-<Canvas of={ ClipboardStories.Masked } sourceState="shown" />
-
-<Heading label="Custom labels" level={ 3 } />
-
-<Canvas of={ ClipboardStories.CustomLabels } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="Clipboard" />

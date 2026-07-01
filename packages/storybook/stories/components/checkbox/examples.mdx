@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../../src/constants/meta';
+import * as CheckboxStories from './checkbox.stories';
+
+<Meta of={ CheckboxStories } name="Examples" />
+
+<Banner of={ CheckboxStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ CheckboxStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ CheckboxStories.Disabled } sourceState="shown" />
+
+<Heading label="Invalid" level={ 2 } />
+
+<Canvas of={ CheckboxStories.Invalid } sourceState="shown" />
+
+<Heading label="States" level={ 2 } />
+
+<Canvas of={ CheckboxStories.States } sourceState="shown" />
+
+<Heading label="Group" level={ 2 } />
+
+<Canvas of={ CheckboxStories.Group } sourceState="shown" />
+
+<Heading label="Form field" level={ 2 }>
+  <StorybookLink title={ HOME_TITLE.implementingFormGuide }>(see implementing form guide)</StorybookLink>
+</Heading>
+
+<Canvas of={ CheckboxStories.InFormField } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Checkbox" />

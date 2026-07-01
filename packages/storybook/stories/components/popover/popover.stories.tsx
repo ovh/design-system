@@ -3,18 +3,11 @@ import React, { useState } from 'react';
 import { BUTTON_COLOR, BUTTON_VARIANT, Button } from '../../../../ods-react/src/components/button/src';
 import { Divider } from '../../../../ods-react/src/components/divider/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { POPOVER_POSITION, POPOVER_POSITIONS, Popover, type PopoverProp, PopoverContent, type PopoverContentProp, PopoverTrigger } from '../../../../ods-react/src/components/popover/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { POPOVER_POSITION, Popover, type PopoverProp, PopoverContent, PopoverTrigger } from '../../../../ods-react/src/components/popover/src';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<PopoverProp>;
-type DemoArg = Partial<PopoverProp> & Partial<PopoverContentProp> & {
-  content?: string,
-  gutter?: number,
-  position?: POPOVER_POSITION,
-  sameWidth?: boolean,
-};
 
 const meta: Meta<PopoverProp> = {
   argTypes: excludeFromDemoControls(['autoFocus', 'onOpenChange', 'onPositionChange', 'open', 'overlayConfig', 'positionerStyle', 'triggerId']),
@@ -24,67 +17,6 @@ const meta: Meta<PopoverProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  parameters: {
-    layout: 'centered',
-  },
-  render: (arg: DemoArg) => (
-    <Popover overlayConfig={{
-      gutter: arg.gutter,
-      position: arg.position,
-      sameWidth: arg.sameWidth,
-    }}>
-      <PopoverTrigger>
-        Show popover
-      </PopoverTrigger>
-
-      <PopoverContent withArrow={ arg.withArrow }>
-        { arg.content }
-      </PopoverContent>
-    </Popover>
-  ),
-  argTypes: orderControls({
-    content: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
-    gutter: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'number' }
-      },
-      control: 'number',
-    },
-    position: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'POPOVER_POSITION' }
-      },
-      control: { type: 'select' },
-      options: POPOVER_POSITIONS,
-    },
-    sameWidth: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-      },
-      control: { type: 'boolean' },
-    },
-    withArrow: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' }
-      },
-      control: { type: 'boolean' },
-    },
-  }),
-  args: {
-    content: 'My popover content',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

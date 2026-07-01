@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import * as ClipboardStories from './clipboard.stories';
+
+<Meta of={ ClipboardStories } name="Examples" />
+
+<Banner of={ ClipboardStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ ClipboardStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ ClipboardStories.Disabled } sourceState="shown" />
+
+<Heading label="Loading" level={ 2 } />
+
+<Canvas of={ ClipboardStories.Loading } sourceState="shown" />
+
+<Heading label="Masked" level={ 2 } />
+
+<Canvas of={ ClipboardStories.Masked } sourceState="shown" />
+
+<Heading label="Custom labels" level={ 2 } />
+
+<Canvas of={ ClipboardStories.CustomLabels } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Clipboard" />

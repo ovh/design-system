@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import * as BadgeStories from './badge.stories';
+
+<Meta of={ BadgeStories } name="Examples" />
+
+<Banner of={ BadgeStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ BadgeStories.Default } sourceState="shown" />
+
+<Heading label="Color" level={ 2 } />
+
+<Canvas of={ BadgeStories.Color } sourceState="shown" />
+
+<Heading label="Size" level={ 2 } />
+
+<Canvas of={ BadgeStories.Size } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Badge" />

@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import * as SwitchStories from './switch.stories';
+
+<Meta of={ SwitchStories } name="Examples" />
+
+<Banner of={ SwitchStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ SwitchStories.Default } sourceState="shown" />
+
+<Heading label="Checked" level={ 2 } />
+
+<Canvas of={ SwitchStories.Checked } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ SwitchStories.Disabled } sourceState="shown" />
+
+<Heading label="Sizes" level={ 2 } />
+
+<Canvas of={ SwitchStories.Sizes } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Switch" />

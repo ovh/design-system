@@ -3,8 +3,6 @@ import React, { type FormEvent, useState } from 'react';
 import { FormField, FormFieldError, FormFieldHelper, FormFieldLabel } from '../../../../ods-react/src/components/form-field/src';
 import { TEXT_PRESET, Text } from '../../../../ods-react/src/components/text/src';
 import { Textarea, type TextareaProp } from '../../../../ods-react/src/components/textarea/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<TextareaProp>;
@@ -15,52 +13,6 @@ const meta: Meta<TextareaProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    cols: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'number' },
-      },
-      control: 'number',
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    placeholder: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'string' },
-      },
-      control: 'text',
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
-    rows: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'number' },
-      },
-      control: 'number',
-    },
-  }),
-};
 
 export const AccessibilityDescribedBy: Story = {
   globals: {

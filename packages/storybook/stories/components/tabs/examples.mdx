@@ -1,0 +1,74 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import * as TabsStories from './tabs.stories';
+
+<Meta of={ TabsStories } name="Examples" />
+
+<Banner of={ TabsStories } />
+
+<Heading label="Default" level={ 2 } />
+
+The default variant with uncontrolled selection and three tabs.
+
+<Canvas of={ TabsStories.Default } sourceState="shown" />
+
+<Heading label="Variant: Switch" level={ 2 } />
+
+The switch variant provides a pill-style tablist suited for toggling between sub-views or modes.
+
+<Canvas of={ TabsStories.Variant } sourceState="shown" />
+
+<Heading label="Size" level={ 2 } />
+
+Three sizes are available: `md` (default), `sm`, and `xs`.
+
+<Canvas of={ TabsStories.Size } sourceState="shown" />
+
+<Heading label="Disabled tab" level={ 2 } />
+
+Individual tabs can be disabled — they remain visible but are not interactive.
+
+<Canvas of={ TabsStories.Disabled } sourceState="shown" />
+
+<Heading label="Horizontal overflow" level={ 2 } />
+
+When tabs exceed their container width they scroll horizontally without wrapping.
+
+<Canvas of={ TabsStories.Overflow } sourceState="shown" />
+
+<Heading label="With scroll arrows" level={ 2 } />
+
+The `withArrows` prop adds previous/next scroll buttons alongside an overflowing tablist, useful for touch or keyboard users.
+
+<Canvas of={ TabsStories.WithArrows } sourceState="shown" />
+
+<Heading label="With content panels" level={ 2 } />
+
+Use `TabContent` to associate a panel with each tab. Only the active panel is rendered.
+
+<Canvas of={ TabsStories.WithContent } sourceState="shown" />
+
+<Heading label="Product detail" level={ 2 } />
+
+Realistic labels and rich panel content — a common pattern for product or resource detail pages.
+
+<Canvas of={ TabsStories.ProductDetail } sourceState="shown" />
+
+<Heading label="Controlled" level={ 2 } />
+
+Manage the active tab externally using the `value` and `onValueChange` props.
+
+<Canvas of={ TabsStories.Controlled } sourceState="shown" />
+
+<Heading label="Controlled with prev / next navigation" level={ 2 } />
+
+External previous/next buttons drive tab selection — useful in wizard-like flows or multi-step forms.
+
+<Canvas of={ TabsStories.ControlledWithNavigation } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Tabs" />

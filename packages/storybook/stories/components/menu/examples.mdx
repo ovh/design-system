@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import * as MenuStories from './menu.stories';
+
+<Meta of={ MenuStories } name="Examples" />
+
+<Banner of={ MenuStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ MenuStories.Default } sourceState="shown" />
+
+<Heading label="Controlled" level={ 2 } />
+
+<Canvas of={ MenuStories.Controlled } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ MenuStories.Disabled } sourceState="shown" />
+
+<Heading label="Group" level={ 2 } />
+
+<Canvas of={ MenuStories.Group } sourceState="shown" />
+
+<Heading label="Nested" level={ 2 } />
+
+<Canvas of={ MenuStories.Nested } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Menu" />

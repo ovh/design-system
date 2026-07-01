@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import * as AvatarStories from './avatar.stories';
+
+<Meta of={ AvatarStories } name="Examples" />
+
+<Banner of={ AvatarStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ AvatarStories.Default } sourceState="shown" />
+
+<Heading label="Initials" level={ 2 } />
+
+<Canvas of={ AvatarStories.Initials } sourceState="shown" />
+
+<Heading label="With Image" level={ 2 } />
+
+<Canvas of={ AvatarStories.WithImage } sourceState="shown" />
+
+<Heading label="With Fallback" level={ 2 } />
+
+<Canvas of={ AvatarStories.WithFallback } sourceState="shown" />
+
+<Heading label="With Icon" level={ 2 } />
+
+<Canvas of={ AvatarStories.WithIcon } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Avatar" />

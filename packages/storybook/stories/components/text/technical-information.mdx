@@ -5,7 +5,6 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as TextStories from './text.stories';
 
@@ -33,37 +32,3 @@ import * as TextStories from './text.stories';
     },
   }}
   of={ TextStories } />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ TextStories.Default } sourceState="shown" />
-
-<Heading label="Preset" level={ 3 } />
-
-**Caption** preset can be used should you need ODS caption custom style.
-
-For actual `<caption>` (used in a table) or `<figcaption>` (image), use the native tag using either an OdsText inside of it or the Saas mixin.
-
-<Canvas of={ TextStories.Preset } sourceState="shown" />
-
-<Heading label="Disabled" level={ 3 } />
-
-<Canvas of={ TextStories.Disabled } sourceState="shown" />
-
-<Heading label="Caption preset in <table>" level={ 3 } />
-
-<Canvas of={ TextStories.TableCaption } sourceState="shown" />
-
-<Heading label="Caption preset in <figcaption>" level={ 3 } />
-
-<Canvas of={ TextStories.FigCaption } sourceState="shown" />
-
-<Heading label="Preset style on a different HTML element" level={ 3 } />
-
-<Canvas of={ TextStories.ReuseStyle } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="Text" />

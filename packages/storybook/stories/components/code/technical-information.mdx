@@ -7,7 +7,6 @@ import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { ExternalLink } from '../../../src/components/externalLink/ExternalLink';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as CodeStories from './code.stories';
 
@@ -78,25 +77,3 @@ const HighlightedCode = () => (
   language="typescript" />
 
 <Canvas of={ CodeStories.Highlighter } sourceState="none" />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ CodeStories.Default } sourceState="shown" />
-
-<Heading label="Multiline" level={ 3 } />
-
-<Canvas of={ CodeStories.Multiline } sourceState="shown" />
-
-<Heading label="With copy button enabled" level={ 3 } />
-
-<Canvas of={ CodeStories.CanCopy } sourceState="shown" />
-
-<Heading label="Custom labels" level={ 3 } />
-
-<Canvas of={ CodeStories.CustomLabels } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="Code" />

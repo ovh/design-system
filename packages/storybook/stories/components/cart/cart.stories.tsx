@@ -101,12 +101,6 @@ const FullExample = () => (
   </Cart>
 );
 
-export const Demo: Story = {
-  render: () => (
-    <FullExample />
-  ),
-};
-
 export const AnatomyTech: Story = {
   tags: ['!dev'],
   render: ({}) => (

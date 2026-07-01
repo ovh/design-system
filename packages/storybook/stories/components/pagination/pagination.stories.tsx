@@ -1,15 +1,10 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Pagination, PaginationPageChangeDetail, PaginationPageSelector, PaginationPageSizeSelector, PaginationPages, type PaginationProp } from '../../../../ods-react/src/components/pagination/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<PaginationProp>;
-type DemoArg = Partial<PaginationProp> & {
-  withPageSelector?: boolean;
-  withPageSizeSelector?: boolean;
-}
 
 const meta: Meta<PaginationProp> = {
   argTypes: excludeFromDemoControls(['defaultPage', 'onPageChange', 'onPageSizeChange', 'page', 'pageSize', 'renderTotalItemsLabel']),
@@ -19,76 +14,6 @@ const meta: Meta<PaginationProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  render: ({ totalItems, withPageSelector, withPageSizeSelector, ...arg }: DemoArg) => (
-    <Pagination
-      totalItems={ totalItems ?? 5000 }
-      { ...arg }>
-      {
-        withPageSizeSelector &&
-        <PaginationPageSizeSelector />
-      }
-
-      <PaginationPages />
-
-      {
-        withPageSelector &&
-        <PaginationPageSelector />
-      }
-    </Pagination>
-  ),
-  argTypes: orderControls({
-    disabled : {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-    labelTooltipNext : {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-    labelTooltipPrev : {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-    pageSize : {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-    page : {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-    siblingCount : {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-    totalItems: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-    },
-    withPageSelector: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-    withPageSizeSelector: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-    },
-  }),
-  args: {
-    totalItems: 5000,
-  },
-};
 
 export const AccessibilityLabel: Story = {
   globals: {

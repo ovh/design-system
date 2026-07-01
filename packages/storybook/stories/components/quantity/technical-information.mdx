@@ -5,7 +5,6 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import { HOME_TITLE } from '../../../src/constants/meta';
@@ -47,39 +46,3 @@ import * as QuantityStories from './quantity.stories';
     },
   }}
   of={ QuantityStories } />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ QuantityStories.Default } sourceState="shown" />
-
-<Heading label="Disabled" level={ 3 } />
-
-<Canvas of={ QuantityStories.Disabled } sourceState="shown" />
-
-<Heading label="Readonly" level={ 3 } />
-
-<Canvas of={ QuantityStories.Readonly } sourceState="shown" />
-
-<Heading label="Max" level={ 3 } />
-
-<Canvas of={ QuantityStories.Max } sourceState="shown" />
-
-<Heading label="Min" level={ 3 } />
-
-<Canvas of={ QuantityStories.Min } sourceState="shown" />
-
-<Heading label="Step" level={ 3 } />
-
-<Canvas of={ QuantityStories.Step } sourceState="shown" />
-
-<Heading label="Form field" level={ 3 }>
-  <StorybookLink title={ HOME_TITLE.implementingFormGuide }>(see implementing form guide)</StorybookLink>
-</Heading>
-
-<Canvas of={ QuantityStories.InFormField } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="Quantity" />

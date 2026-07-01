@@ -5,11 +5,10 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as FileThumbnailStories from './file-thumbnail.stories';
 
-<Meta of={ FileThumbnailStories } name="Technical information" tags={ ['new'] } />
+<Meta of={ FileThumbnailStories } name="Technical information" />
 
 <Banner of={ FileThumbnailStories } />
 
@@ -25,29 +24,3 @@ import * as FileThumbnailStories from './file-thumbnail.stories';
   cssVariable={ cssVariable }
   data={ specificationsFileThumbnail }
   of={ FileThumbnailStories } />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ FileThumbnailStories.Default } sourceState="shown" />
-
-<Heading label="Progress" level={ 3 } />
-
-<Canvas of={ FileThumbnailStories.Progress } sourceState="shown" />
-
-<Heading label="Disabled" level={ 3 } />
-
-<Canvas of={ FileThumbnailStories.Disabled } sourceState="shown" />
-
-<Heading label="Non-dismissible" level={ 3 } />
-
-<Canvas of={ FileThumbnailStories.NonDismissible } sourceState="shown" />
-
-<Heading label="Error" level={ 3 } />
-
-<Canvas of={ FileThumbnailStories.Error } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="FileThumbnail" />

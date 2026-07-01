@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import * as AccordionStories from './accordion.stories';
+
+<Meta of={ AccordionStories } name="Examples" />
+
+<Banner of={ AccordionStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ AccordionStories.Default } sourceState="shown" />
+
+<Heading label="Multiple" level={ 2 } />
+
+<Canvas of={ AccordionStories.Multiple } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ AccordionStories.Disabled } sourceState="shown" />
+
+<Heading label="ItemDisabled" level={ 2 } />
+
+<Canvas of={ AccordionStories.ItemDisabled } sourceState="shown" />
+
+<Heading label="Controlled" level={ 2 } />
+
+<Canvas of={ AccordionStories.Controlled } sourceState="shown" />
+
+<Heading label="Expand Icon Position" level={ 2 } />
+
+<Canvas of={ AccordionStories.ExpandIconPositionExample } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Accordion" />

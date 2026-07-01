@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../../src/constants/meta';
+import * as PasswordStories from './password.stories';
+
+<Meta of={ PasswordStories } name="Examples" />
+
+<Banner of={ PasswordStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ PasswordStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ PasswordStories.Disabled } sourceState="shown" />
+
+<Heading label="Readonly" level={ 2 } />
+
+<Canvas of={ PasswordStories.ReadOnly } sourceState="shown" />
+
+<Heading label="Clearable" level={ 2 } />
+
+<Canvas of={ PasswordStories.Clearable } sourceState="shown" />
+
+<Heading label="Loading" level={ 2 } />
+
+<Canvas of={ PasswordStories.Loading } sourceState="shown" />
+
+<Heading label="Form field" level={ 2 }>
+  <StorybookLink title={ HOME_TITLE.implementingFormGuide }>(see implementing form guide)</StorybookLink>
+</Heading>
+
+<Canvas of={ PasswordStories.InFormField } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Password" />

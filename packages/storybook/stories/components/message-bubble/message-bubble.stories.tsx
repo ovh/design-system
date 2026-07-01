@@ -1,8 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
 import { MESSAGE_BUBBLE_VARIANT, MESSAGE_BUBBLE_VARIANTS, MessageBubble, type MessageBubbleProp } from '../../../../ods-react/src/components/message-bubble/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
 
 type Story = StoryObj<MessageBubbleProp>;
 
@@ -13,41 +11,6 @@ const meta: Meta<MessageBubbleProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
-    error: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    typing: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    variant: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: MESSAGE_BUBBLE_VARIANT.human },
-        type: { summary: 'MESSAGE_BUBBLE_VARIANT' },
-      },
-      control: { type: 'select' },
-      options: MESSAGE_BUBBLE_VARIANTS,
-    },
-  }),
-  args: {
-    children: 'Hello, how can I help you?',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

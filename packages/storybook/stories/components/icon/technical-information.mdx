@@ -5,7 +5,6 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as IconStories from './icon.stories';
 
@@ -33,21 +32,3 @@ import * as IconStories from './icon.stories';
     },
   }}
   of={ IconStories } />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ IconStories.Default } sourceState="shown" />
-
-<Heading label="Decorative" level={ 3 } />
-
-<Canvas of={ IconStories.Decorative } sourceState="shown" />
-
-<Heading label="Informative" level={ 3 } />
-
-<Canvas of={ IconStories.Informative } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="Icon" />

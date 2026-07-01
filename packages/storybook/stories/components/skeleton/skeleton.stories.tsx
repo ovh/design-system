@@ -11,8 +11,6 @@ const meta: Meta<SkeletonProp> = {
 
 export default meta;
 
-export const Demo: Story = {};
-
 export const AnatomyTech: Story = {
   tags: ['!dev'],
   render: ({}) => (

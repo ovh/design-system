@@ -5,7 +5,6 @@ import { AnatomyTech } from '../../../src/components/anatomyTech/AnatomyTech';
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as BreadcrumbStories from './breadcrumb.stories';
 
@@ -45,29 +44,3 @@ import * as BreadcrumbStories from './breadcrumb.stories';
     }
   }}
   of={ BreadcrumbStories } />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ BreadcrumbStories.Default } sourceState="shown" />
-
-<Heading label="Collapsed" level={ 3 } />
-
-<Canvas of={ BreadcrumbStories.Collapsed } sourceState="shown" />
-
-You can customize the number of item displayed before and after the ellipsis.
-
-<Canvas of={ BreadcrumbStories.CustomAfterBeforeCollapse } sourceState="shown" />
-
-You can also customize the threshold from when the breadcrumb will collapse.
-
-<Canvas of={ BreadcrumbStories.CustomCollapseThreshold } sourceState="shown" />
-
-Or you can even deactivate the whole collapse logic.
-
-<Canvas of={ BreadcrumbStories.NoCollapse } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="Breadcrumb" />

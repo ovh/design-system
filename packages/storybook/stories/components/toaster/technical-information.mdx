@@ -4,7 +4,6 @@ import specificationsToaster from '../../../../ods-react/src/components/toaster/
 import { Banner } from '../../../src/components/banner/Banner';
 import { Canvas } from '../../../src/components/canvas/Canvas';
 import { Heading } from '../../../src/components/heading/Heading';
-import { Recipes } from '../../../src/components/recipes/Recipes';
 import { TechnicalSpecification } from '../../../src/components/technicalSpecification/TechnicalSpecification';
 import * as ToasterStories from './toaster.stories';
 
@@ -75,37 +74,3 @@ const MyApp = () => (
 `}
   dark="true"
   language="typescript" />
-
-<Heading label="Examples" level={ 2 } />
-
-<Heading label="Default" level={ 3 } />
-
-<Canvas of={ ToasterStories.Default } sourceState="shown" />
-
-<Heading label="Colors" level={ 3 } />
-
-<Canvas of={ ToasterStories.Colors } sourceState="shown" />
-
-<Heading label="Dismissible" level={ 3 } />
-
-<Canvas of={ ToasterStories.Dismissible } sourceState="shown" />
-
-<Heading label="Duration" level={ 3 } />
-
-<Canvas of={ ToasterStories.Duration } sourceState="shown" />
-
-<Heading label="Icon" level={ 3 } />
-
-<Canvas of={ ToasterStories.Icon } sourceState="shown" />
-
-<Heading label="Position" level={ 3 } />
-
-<Canvas of={ ToasterStories.Position } sourceState="shown" />
-
-<Heading label="Custom Content" level={ 3 } />
-
-<Canvas of={ ToasterStories.CustomContent } sourceState="shown" />
-
-<Heading label="Recipes" level={ 2 } />
-
-<Recipes component="Toaster" />

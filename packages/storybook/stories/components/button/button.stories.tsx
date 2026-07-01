@@ -2,8 +2,6 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { BUTTON_COLOR, BUTTON_COLORS, BUTTON_SIZE, BUTTON_SIZES, BUTTON_VARIANT, BUTTON_VARIANTS, Button, type ButtonProp } from '../../../../ods-react/src/components/button/src';
 import { ICON_NAME, Icon } from '../../../../ods-react/src/components/icon/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { orderControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 
 type Story = StoryObj<ButtonProp>;
@@ -14,57 +12,6 @@ const meta: Meta<ButtonProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  argTypes: orderControls({
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'BUTTON_COLOR' },
-      },
-      control: { type: 'select' },
-      options: BUTTON_COLORS,
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
-    loading: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: 'boolean',
-    },
-    size: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'BUTTON_SIZE' }
-      },
-      control: { type: 'select' },
-      options: BUTTON_SIZES,
-    },
-    variant: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'BUTTON_VARIANT' }
-      },
-      control: { type: 'select' },
-      options: BUTTON_VARIANTS,
-    },
-  }),
-  args: {
-    children: 'My button',
-  },
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],

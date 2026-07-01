@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import * as ButtonGroupStories from './button-group.stories';
+
+<Meta of={ ButtonGroupStories } name="Examples" />
+
+<Banner of={ ButtonGroupStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ ButtonGroupStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ ButtonGroupStories.Disabled } sourceState="shown" />
+
+<Heading label="Disabled Item" level={ 2 } />
+
+<Canvas of={ ButtonGroupStories.DisabledItem } sourceState="shown" />
+
+<Heading label="Controlled" level={ 2 } />
+
+<Canvas of={ ButtonGroupStories.Controlled } sourceState="shown" />
+
+<Heading label="Multiple" level={ 2 } />
+
+<Canvas of={ ButtonGroupStories.Multiple } sourceState="shown" />
+
+<Heading label="Size" level={ 2 } />
+
+<Canvas of={ ButtonGroupStories.Size } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="ButtonGroup" />

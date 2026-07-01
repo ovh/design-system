@@ -1,0 +1,52 @@
+import { Meta } from '@storybook/blocks';
+import { Banner } from '../../../src/components/banner/Banner';
+import { Canvas } from '../../../src/components/canvas/Canvas';
+import { Heading } from '../../../src/components/heading/Heading';
+import { Recipes } from '../../../src/components/recipes/Recipes';
+import { StorybookLink } from '../../../src/components/storybookLink/StorybookLink';
+import { HOME_TITLE } from '../../../src/constants/meta';
+import * as RangeStories from './range.stories';
+
+<Meta of={ RangeStories } name="Examples" />
+
+<Banner of={ RangeStories } />
+
+<Heading label="Default" level={ 2 } />
+
+<Canvas of={ RangeStories.Default } sourceState="shown" />
+
+<Heading label="Disabled" level={ 2 } />
+
+<Canvas of={ RangeStories.Disabled } sourceState="shown" />
+
+<Heading label="Min / Max" level={ 2 } />
+
+<Canvas of={ RangeStories.MaxMin } sourceState="shown" />
+
+<Heading label="Step" level={ 2 } />
+
+<Canvas of={ RangeStories.Step } sourceState="shown" />
+
+<Heading label="Ticks" level={ 2 } />
+
+<Canvas of={ RangeStories.Ticks } sourceState="shown" />
+
+<Heading label="Custom Ticks" level={ 2 } />
+
+<Canvas of={ RangeStories.TicksLabels } sourceState="shown" />
+
+<Heading label="Controlled" level={ 2 } />
+
+This is a controlled component. The final value is only updated when the user releases the mouse button.
+
+<Canvas of={ RangeStories.Controlled } sourceState="shown" />
+
+<Heading label="Form field" level={ 2 }>
+  <StorybookLink title={ HOME_TITLE.implementingFormGuide }>(see implementing form guide)</StorybookLink>
+</Heading>
+
+<Canvas of={ RangeStories.InFormField } sourceState="shown" />
+
+<Heading label="Recipes" level={ 2 } />
+
+<Recipes component="Range" />

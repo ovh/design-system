@@ -1,9 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { TABS_SIZE, TABS_SIZES, TABS_VARIANT, TABS_VARIANTS, Tabs, TabList, Tab, TabContent, type TabsProp, type TabsValueChangeEvent } from '../../../../ods-react/src/components/tabs/src';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { TABS_SIZE, TABS_VARIANT, Tabs, TabList, Tab, TabContent, type TabsProp, type TabsValueChangeEvent } from '../../../../ods-react/src/components/tabs/src';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
 
 type Story = StoryObj<TabsProp>;
 
@@ -15,71 +14,6 @@ const meta: Meta<TabsProp> = {
 };
 
 export default meta;
-
-export const Demo: Story = {
-  render: (arg) => (
-    <Tabs
-      defaultValue="tab1"
-      { ...arg }>
-      <TabList >
-        <Tab value="tab1">Tab 1</Tab>
-        <Tab value="tab2">Tab 2</Tab>
-        <Tab value="tab3">Tab 3</Tab>
-        <Tab value="tab4">Tab 4</Tab>
-        <Tab value="tab5">Tab 5</Tab>
-        <Tab value="tab6">Tab 6</Tab>
-      </TabList>
-
-      <TabContent value="tab1">
-        <p>Tab 1 Content</p>
-      </TabContent>
-
-      <TabContent value="tab2">
-        <p>Tab 2 Content</p>
-      </TabContent>
-
-      <TabContent value="tab3">
-        <p>Tab 3 Content</p>
-      </TabContent>
-
-      <TabContent value="tab4">
-        <p>Tab 4 Content</p>
-      </TabContent>
-
-      <TabContent value="tab5">
-        <p>Tab 5 Content</p>
-      </TabContent>
-
-      <TabContent value="tab6">
-        <p>Tab 6 Content</p>
-      </TabContent>
-    </Tabs>
-  ),
-  argTypes: orderControls({
-    size: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'TABS_SIZE' }
-      },
-      control: { type: 'select' },
-      options: TABS_SIZES,
-    },
-    variant: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: 'TABS_VARIANT' }
-      },
-      control: { type: 'select' },
-      options: TABS_VARIANTS,
-    },
-    withArrows: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-      },
-      control: { type: 'boolean' },
-    },
-  }),
-};
 
 export const AnatomyTech: Story = {
   tags: ['!dev'],
@@ -324,6 +258,103 @@ export const WithContent: Story = {
   ),
 };
 
+
+export const ProductDetail: Story = {
+  globals: {
+    imports: `import { Tabs, TabList, Tab, TabContent } from '@ovhcloud/ods-react';`,
+  },
+  tags: ['!dev'],
+  render: ({}) => (
+    <Tabs defaultValue="description">
+      <TabList>
+        <Tab value="description">Description</Tab>
+        <Tab value="specifications">Specifications</Tab>
+        <Tab value="reviews">Reviews</Tab>
+      </TabList>
+
+      <TabContent value="description" style={{ padding: '16px 0' }}>
+        <p>A high-performance cloud server with 32 vCPUs, 128 GB RAM, and NVMe storage.</p>
+      </TabContent>
+
+      <TabContent value="specifications" style={{ padding: '16px 0' }}>
+        <ul>
+          <li>CPU: 32 vCPUs</li>
+          <li>RAM: 128 GB DDR4</li>
+          <li>Storage: 2 × 960 GB NVMe SSD</li>
+          <li>Network: 1 Gbps</li>
+        </ul>
+      </TabContent>
+
+      <TabContent value="reviews" style={{ padding: '16px 0' }}>
+        <p>Rating: 4.8 / 5 based on 142 reviews</p>
+        <p><em>&quot;Excellent performance for our production workloads.&quot;</em> — J. Martin</p>
+      </TabContent>
+    </Tabs>
+  ),
+};
+
+
+export const ControlledWithNavigation: Story = {
+  globals: {
+    imports: `import { Tabs, TabList, Tab, TabContent } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const tabs = [
+      { value: 'account', label: 'Account' },
+      { value: 'security', label: 'Security' },
+      { value: 'notifications', label: 'Notifications' },
+      { value: 'billing', label: 'Billing' },
+    ];
+    const [active, setActive] = useState('account');
+    const currentIndex = tabs.findIndex((t) => t.value === active);
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <Tabs
+          value={ active }
+          onValueChange={ (e: TabsValueChangeEvent) => setActive(e.value) }>
+          <TabList>
+            { tabs.map((tab) => (
+              <Tab key={ tab.value } value={ tab.value }>
+                { tab.label }
+              </Tab>
+            )) }
+          </TabList>
+
+          { tabs.map((tab) => (
+            <TabContent
+              key={ tab.value }
+              style={{ padding: '16px 0' }}
+              value={ tab.value }>
+              <p>{ tab.label } settings</p>
+            </TabContent>
+          )) }
+        </Tabs>
+
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <button
+            disabled={ currentIndex === 0 }
+            onClick={ () => setActive(tabs[currentIndex - 1].value) }>
+            ← Previous
+          </button>
+
+          <button
+            disabled={ currentIndex === tabs.length - 1 }
+            onClick={ () => setActive(tabs[currentIndex + 1].value) }>
+            Next →
+          </button>
+        </div>
+      </div>
+    );
+  },
+};
 
 export const ThemeGenerator: Story = {
   parameters: {

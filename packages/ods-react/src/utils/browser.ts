@@ -1,5 +1,3 @@
-type NavigatorWithUA = Navigator & { userAgentData?: { platform: string } };
-
 function cssSupports(property: string, value: string): boolean {
   try {
     return CSS.supports(property, value);
@@ -8,16 +6,4 @@ function cssSupports(property: string, value: string): boolean {
   }
 }
 
-function getPlatform(): string {
-  try {
-    return (navigator as NavigatorWithUA).userAgentData?.platform ?? navigator.userAgent ?? '';
-  } catch {
-    return '';
-  }
-}
-
-const platform = getPlatform();
-const isMac = /mac/i.test(platform);
-const isWindows = /win/i.test(platform);
-
-export { cssSupports, isMac, isWindows };
+export { cssSupports };

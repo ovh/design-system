@@ -13,6 +13,10 @@
   text-align: center;
 }
 
+.class-module__properties__body__is-required {
+  inline-size: 100px;
+}
+
 .class-module__properties__body__is-required--required {
   color: var(--ods-color-success-500);
 }

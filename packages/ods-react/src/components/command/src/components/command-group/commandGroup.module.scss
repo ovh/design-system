@@ -1,0 +1,25 @@
+@use '../../../../../style/text';
+
+@layer ods-organisms {
+  $empty-group: '.command-group:has(.command-group__items:empty)';
+  $filled-group: '.command-group:has(.command-group__items:not(:empty))';
+
+  .command-group {
+    display: flex;
+    flex-direction: column;
+
+    &__heading {
+      padding: var(--ods-theme-padding-vertical) var(--ods-theme-padding-horizontal);
+    }
+  }
+
+  #{$empty-group} {
+    display: none;
+  }
+
+  #{$filled-group}:not(:nth-child(1 of #{$filled-group})) {
+    margin-top: var(--ods-theme-padding-vertical);
+    border-top: 1px solid var(--ods-color-neutral-200);
+    padding-top: var(--ods-theme-padding-vertical);
+  }
+}

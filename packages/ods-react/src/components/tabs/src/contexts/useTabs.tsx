@@ -39,8 +39,8 @@ interface TabsProviderProp extends Pick<TabsRootProp, 'size' | 'variant' | 'with
 }
 
 type TabsContextType = Omit<TabsProviderProp, 'children'> & {
-  scrollContainerRef?: RefObject<HTMLElement> | null;
-  setScrollContainerRef: (ref: RefObject<HTMLElement>) => void;
+  scrollContainerRef?: RefObject<HTMLElement | null> | null;
+  setScrollContainerRef: (ref: RefObject<HTMLElement | null>) => void;
 }
 
 const TabsContext = createContext<TabsContextType | undefined>(undefined);
@@ -51,7 +51,7 @@ function TabsProvider({
   variant,
   withArrows,
 }: TabsProviderProp): JSX.Element {
-  const [scrollContainerRef, setScrollContainerRef] = useState<RefObject<HTMLElement> | null>(null);
+  const [scrollContainerRef, setScrollContainerRef] = useState<RefObject<HTMLElement | null> | null>(null);
 
   return (
     <TabsContext.Provider value={{

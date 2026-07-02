@@ -34,6 +34,11 @@
     "ods:publish": "lerna publish --concurrency 1 from-package --yes",
     "storybook": "pnpm build:storybook:deps && pnpm --filter @ovhcloud/ods-storybook run start",
     "test:e2e:ci": "lerna run --stream --concurrency 1 test:e2e:ci",
+    "test:api": "bash scripts/api-snapshot.sh",
+
+    "test:api:update": "bash scripts/api-snapshot.sh --update",
+
+    "test:examples": "bash scripts/test-example-apps.sh",
     "test:spec:ci": "lerna run --stream --concurrency 2 test:spec:ci",
     "version": "pnpm install && git add pnpm-lock.yaml && echo \"more info, see: https://github.com/lerna/lerna/issues/2891#issuecomment-953823502\"",
     "version:graduate": "lerna version --conventional-commits --exact --force-publish --conventional-graduate",

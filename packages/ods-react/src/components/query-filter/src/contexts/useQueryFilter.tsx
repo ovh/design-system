@@ -152,7 +152,7 @@ type QueryFilterContextType = Omit<QueryFilterProviderProp, 'children'> & {
   highlightNextOption: () => void;
   highlightOption: (item: QueryFilterItem) => void;
   highlightPreviousOption: () => void;
-  inputRef: RefObject<HTMLInputElement>;
+  inputRef: RefObject<HTMLInputElement | null>;
   inputValue: string;
   isOpen: boolean;
   moveToNextStep: () => void;

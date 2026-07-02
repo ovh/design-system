@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithRef, type FC, type JSX, cloneElement, forwardRef } from 'react';
+import { type ComponentPropsWithRef, type FC, type JSX, type ReactElement, cloneElement, forwardRef } from 'react';
 import { getValidChildren } from '../../../../../utils/element';
 import { BreadcrumbLink } from '../breadcrumb-link/BreadcrumbLink';
 import { BreadcrumbSeparator } from '../breadcrumb-separator/BreadcrumbSeparator';
@@ -23,7 +23,7 @@ const BreadcrumbItem: FC<BreadcrumbItemProp> = forwardRef(({
 
   const clones = validChildren.map((child) => {
     if (child.type === BreadcrumbLink) {
-      return cloneElement(child, {
+      return cloneElement(child as ReactElement<{ autoFocus?: boolean, isLast?: boolean }>, {
         autoFocus,
         isLast,
       });

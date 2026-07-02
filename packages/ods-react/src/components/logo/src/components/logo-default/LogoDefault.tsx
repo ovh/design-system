@@ -1,15 +1,16 @@
-import { type ComponentPropsWithoutRef, type FC, type JSX } from 'react';
+import { type ComponentPropsWithoutRef, type JSX, forwardRef } from 'react';
 
 interface LogoDefaultProp extends ComponentPropsWithoutRef<'svg'> {}
 
-const LogoDefault: FC<LogoDefaultProp> = ({
+const LogoDefault = forwardRef<SVGSVGElement, LogoDefaultProp>(({
   className,
   ...props
-}): JSX.Element => {
+}, ref): JSX.Element => {
   /* eslint-disable max-len */
   return (
     <svg
       className={ className }
+      ref={ ref }
       viewBox="0 0 202 32"
       xmlns="http://www.w3.org/2000/svg"
       { ...props }>
@@ -28,7 +29,7 @@ const LogoDefault: FC<LogoDefaultProp> = ({
     </svg>
   );
   /* eslint-enable max-len */
-};
+});
 
 LogoDefault.displayName = 'LogoDefault';
 

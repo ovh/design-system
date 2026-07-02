@@ -61,7 +61,7 @@ const Breadcrumb: FC<BreadcrumbProp> = forwardRef(({
       return res;
     }
 
-    res.push(cloneElement(child, {
+    res.push(cloneElement(child as ReactElement<{ autoFocus?: boolean, isLast?: boolean }>, {
       autoFocus: isExpanded && focusIdx !== null && idx === focusIdx,
       isLast: count === idx + 1,
     }));

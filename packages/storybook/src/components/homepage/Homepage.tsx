@@ -30,19 +30,19 @@ const Homepage = () => {
             <li>
               <Badge color={BADGE_COLOR.information}>
                 <Icon name={ICON_NAME.circleThreeNodes} />
-                <Text preset={TEXT_PRESET.label}>React-based</Text>
+                React-based
               </Badge>
             </li>
             <li>
               <Badge color={BADGE_COLOR.information}>
                 <Icon name={ICON_NAME.accessibilityFull} />
-                <Text preset={TEXT_PRESET.label}>Fully accessible</Text>
+                Fully accessible
               </Badge>
             </li>
             <li>
               <Badge color={BADGE_COLOR.information}>
                 <Icon name={ICON_NAME.lockOpen} />
-                <Text preset={TEXT_PRESET.label}>Open source</Text>
+                Open source
               </Badge>
             </li>
           </ul>

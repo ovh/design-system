@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputFiles, PromptInputSendButton, PromptInputTextControl } from '../../src';
 
 export default {

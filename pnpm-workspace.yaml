@@ -45,6 +45,13 @@ overrides:
   # Force stylelint-order@8 so concentric-order works with stylelint 17.
   # REMOVE WHEN: stylelint-config-concentric-order ships a release pinning stylelint-order@^8.
   "stylelint-order": "8.1.1"
+  # TODO(storybook-9): retirer ce pin React une fois migré vers Storybook 9.
+  # SB 8.6 ne tourne pas sous React 19 (bug manager connu, storybook#32095 / #29805) ;
+  # l'isolation "manager seul en React 18" est impossible → pin React 18 global en attendant.
+  # NB: depuis #1101 les apps d'exemples déclarent React 19.2.7 — ce pin les rétrograde aussi,
+  # voir la discussion sur la PR.
+  "react": "18.2.0"
+  "react-dom": "18.2.0"
 
 patchedDependencies:
   '@fluentui/storybook-llms-extractor@0.0.3': patches/@fluentui__storybook-llms-extractor@0.0.3.patch

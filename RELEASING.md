@@ -2,62 +2,53 @@
 
 **NB:** releases process is handled by ODS core team but you can still have a look here about our process.
 
-<!-- TOC -->
+## Overview
 
-* [Deployment and versioning](#deployment-and-versioning)
-* [Deployment](#deployment)
-* [Releases](#releases)
-* [Versioning commands: what level of tag to use?](#versioning-commands--what-level-of-tag-to-use)
-* [Patch: fix a bug](#patch--fix-a-bug)
-* [Minor: add extra features](#minor--add-extra-features)
-* [Major: breaking changes](#major--breaking-changes)
-* [PRE-patch: prepare a future patch release](#pre-patch--prepare-a-future-patch-release)
-* [PRE-minor: prepare a future release without breaking changes](#pre-minor--prepare-a-future-release-without-breaking-changes)
-* [PRE-major: prepare a future release with breaking changes](#pre-major--prepare-a-future-release-with-breaking-changes)
-* [PRE-release: prepare a new pre-release](#pre-release--prepare-a-new-pre-release)
-* [Graduate a release](#graduate-a-release)
+Publishing a release is mostly automated. As a releaser, you only:
 
-<!-- TOC -->
+1. Create a release branch
+2. Add a "What's New" entry
+3. Run the version command (which tags and pushes)
+4. Merge the release branch back to `master`
 
-## Deployment
+Everything in between — building the packages, publishing them to npm, and deploying the documentation — is handled automatically by our CI as soon as the version tag is pushed. No manual action is needed while it runs.
 
-release/next acts as our main branch, then for major and minor versioning a new release/* branch is created.
+## Making a release
 
-For patch versioning, it can be added in the specific release/* or release/next, depending on its scope.
+Before starting, make sure you are on a release branch, your working tree is clean, your branch is up to date, and you have added a migration guide if the release contains breaking changes.
 
-## Releases
+### 1. Create the release branch
 
-In order to make a new release of the `ODS` packages, you must:
+For a major or minor version, create a new `release/X.Y` branch. For a patch, use the existing release branch that matches its scope.
 
-- be sure that you are on a release branch like `release/next` or `release/X.Y`
-- no local changes to commit
-- your local branch is up-to-date
-- add a migration guide when there are breaking changes
+### 2. Add a "What's New" entry
 
-Then, to make a release, you have to execute the npm script `pnpm ods:<VERSION_TYPE>`
-where `<VERSION_TYPE>` can be `patch`, `minor`, `major`, `premajor` `prerelase` or `graduate`.
+Edit `packages/storybook/stories/ovhcloud-design-system/whatsnew/whatsnew.mdx`, add a short description of the release, and commit it. Your working tree must be clean before the next step.
 
-### Versioning commands: what level of tag to use?
+### 3. Bump the version
 
-Here's a summed up table of which command to launch to create the appropriate tag:
+Run `pnpm ods:<VERSION_TYPE>` (see the table below to choose the type). This bumps every package, updates the changelogs, creates the version tag, and pushes it. You will be asked to confirm the new version — type `y`.
 
-| Command               | Target       | Usage                                | version before   | version after   |
-|-----------------------|--------------|--------------------------------------|------------------|-----------------|
-| `pnpm ods:prepatch`   | `testing`    | Prepare patch release                | `1.0.0`          | `1.0.1-alpha.0` |
-| `pnpm ods:preminor`   | `testing`    | Prepare minor release                | `1.0.0`          | `1.1.0-alpha.0` |
-| `pnpm ods:premajor`   | `testing`    | Prepare major release                | `1.0.0`          | `2.0.0-alpha.0` |
-| `pnpm ods:prerelease` | `testing`    | Prepare a new pre-release            | `1.2.3-alpha.2`  | `1.2.3-alpha.3` |
-| `pnpm ods:patch`      | `production` | Fix a bug                            | `1.0.0`          | `1.0.1`         |
-| `pnpm ods:minor`      | `production` | Add features without breaking change | `1.0.0`          | `1.1.0`         |
-| `pnpm ods:major`      | `production` | Add breaking change                  | `1.0.0`          | `2.0.0`         |
-| `pnpm ods:graduate`   | `production` | From `-alpha` versions to plain tag  | `3.1.2-alpha.21` | `3.1.2`         |
+Once the tag is pushed, our CI takes over and the release is out shortly after.
+
+### 4. Merge back to `master`
+
+Open a pull request from your `release/*` branch to `master` and merge it, so the version bump, changelogs, and "What's New" entry land on `master`.
+
+## Versioning commands: what level of tag to use?
+
+| Command          | Usage                                | version before | version after |
+|------------------|--------------------------------------|----------------|---------------|
+| `pnpm ods:patch` | Fix a bug                            | `1.0.0`        | `1.0.1`       |
+| `pnpm ods:minor` | Add features without breaking change | `1.0.0`        | `1.1.0`       |
+| `pnpm ods:major` | Add breaking change                  | `1.0.0`        | `2.0.0`       |
 
 You can find all explanations for these commands below:
 
 ### Patch: fix a bug
 
-You fixed a bug **(without any other breaking changes)** for a released version in the branch `release/X.Y`.
-You have to release it from the same branch:
+You fixed a bug **(without any other breaking changes)**.
+Create a release branch from up-to-date `master` like `release/X.Y.Z`, then release from it:
 
 ```bash
 pnpm ods:patch
@@ -65,8 +56,8 @@ pnpm ods:patch
 
 ### Minor: add extra features
 
-You added one or several features **without any breaking changes** in the branch `release/next`.
-Create a release branch from up-to-date `release/next` that corresponds to the version you are going to release like `release/X.Y`.
+You added one or several features **without any breaking changes**.
+Create a release branch from up-to-date `master` that corresponds to the version you are going to release like `release/X.Y.Z`.
 
 Then, you have to generate a minor version from your branch.
 
@@ -75,14 +66,13 @@ pnpm ods:minor
 ```
 
 The release branch will be used for bugfixes later (patch).
-It will be used for bug fixes later (patch).
 Once the support for the version has ended, the branch will be un-referenced.
 
 ### Major: breaking changes
 
-You added breaking changes in the `release/next` branch:
+You added breaking changes:
 
-Create a release branch from up-to-date `release/next` that corresponds to the version you are going to release like `release/X.Y`.
+Create a release branch from up-to-date `master` that corresponds to the version you are going to release like `release/X.Y`.
 In `docs/migration`, rename the migration guide previously created according to the version like `MIGRATION-x.y-to-next.mdx` to `MIGRATION-x.y-to-z.y.mdx`.
 Create a new empty migration guide for future release: `MIGRATION-x.y-to-next.mdx`.
 
@@ -105,76 +95,3 @@ pnpm ods:major
 
 The release branch will be used for bugfixes later (patch).
 Once the support for the version has ended, the branch will be unreferenced.
-
-### PRE-patch: prepare a future patch release
-
-You fixed a bug in the `release/next` branch, and you want to release it as a candidate for testing purpose only **(not
-production)**.
-
-You can generate a PRE-patch version from `release/next` branch:
-
-```bash
-pnpm ods:prepatch
-```
-
-Once this version is finalized, you will have to graduate the release: see graduate release below.
-
-### PRE-minor: prepare a future release without breaking changes
-
-You added features in the `release/next` branch, and you want to release it as a candidate for testing purpose only **(
-not production)**.
-
-You can generate a PRE-minor version from `release/next` branch:
-
-```bash
-pnpm ods:preminor
-```
-
-Once this version is finalized, you will have to graduate the release: see Graduate a release below.
-
-### PRE-major: prepare a future release with breaking changes
-
-You added features in the `release/next` branch, and you want to release it as a candidate for testing purpose only **(
-not production)**.
-
-You can generate a PRE-major version from `release/next` branch:
-
-```bash
-pnpm ods:premajor
-```
-
-Then create a release branch from the commit tag that correspond to the version like `release/X.Y-alpha`.
-It will be used later in case of modification (fix, features, breaking changes).
-Once this version is finalized, you will have to graduate the release: see Graduate a release below.
-
-### PRE-release: prepare a new pre-release
-
-You already are in a prerelease version with `alpha.x` (meaning you previously made a `pre-major`, `pre-minor`
-or `pre-patch`).
-
-You want to prerelease a new one and increment the `alpha` number. You want to continue prerelease for testing purpose
-only **(not production)**.
-
-You have to generate a new PRE-release version from `release/X.Y-alpha` branch:
-
-```bash
-pnpm ods:prerelease
-```
-
-Once this version is finalized, you will have to graduate the release: see Graduate a release below.
-
-### Graduate a release
-
-You already released a `pre-major/minor/patch` or a `pre-release`.
-
-All tests are valid, you want to release the final version like from `1.2.0-alpha-X` to `1.2.0`.
-
-You have to graduate the version from `release/X.Y-alpha` branch:
-
-```bash
-pnpm ods:graduate
-```
-
-Then, create a release branch from the commit tag that correspond to the version like `release/X.Y`.
-It will be used for bug fixes later (patch).
-Once the support for the version has ended, the branch will be un-referenced.

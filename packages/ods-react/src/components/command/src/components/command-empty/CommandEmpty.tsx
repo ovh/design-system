@@ -14,12 +14,15 @@ const CommandEmpty: FC<CommandEmptyProp> = forwardRef(({
     return null;
   }
 
+  // role="presentation" keeps the listbox structure valid: a listbox only
+  // allows option / group children, and the message is purely visual
   return (
     <div
       className={ className }
       data-ods="command-empty"
       ref={ ref }
-      { ...props }>
+      { ...props }
+      role="presentation">
       { children }
     </div>
   );

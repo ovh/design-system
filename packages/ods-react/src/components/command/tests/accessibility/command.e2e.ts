@@ -22,6 +22,10 @@ describe('Command accessibility', () => {
       expect(await getFilterAttr(page, 'aria-expanded')).toBe('true');
     });
 
+    it('should have aria-autocomplete="list"', async() => {
+      expect(await getFilterAttr(page, 'aria-autocomplete')).toBe('list');
+    });
+
     it('should have aria-controls pointing to the listbox', async() => {
       const controlsId = await getFilterAttr(page, 'aria-controls');
 

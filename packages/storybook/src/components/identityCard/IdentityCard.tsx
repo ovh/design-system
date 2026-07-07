@@ -16,7 +16,7 @@ type Prop = {
   aliases: string[],
   children?: ReactNode,
   extraLinks?: ReactNode[],
-  figmaLink: string,
+  figmaLink?: string,
   githubUrl: string,
   name: string,
   startingVersion?: number,
@@ -69,11 +69,14 @@ const IdentityCard = ({ aliases, children, extraLinks, figmaLink, githubUrl, nam
           </th>
 
           <td>
-            <ExternalLink
-              className={ styles['identity-card__app-link'] }
-              href={ figmaLink }>
-              Design
-            </ExternalLink>
+            {
+              figmaLink &&
+                <ExternalLink
+                  className={ styles['identity-card__app-link'] }
+                  href={ figmaLink }>
+                  Design
+                </ExternalLink>
+            }
 
             <ExternalLink
               className={ styles['identity-card__app-link'] }

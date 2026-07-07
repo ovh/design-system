@@ -73,7 +73,7 @@ export const Demo: StoryObj = {
             <CommandOption>Open file</CommandOption>
             <CommandOption>Save file</CommandOption>
           </CommandGroup>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <Command.Empty>No results found.</Command.Empty>
         </CommandList>
       </CommandContent>
     </Command>
@@ -82,7 +82,7 @@ export const Demo: StoryObj = {
 
 export const Default: Story = {
   globals: {
-    imports: `import { Command } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
@@ -149,7 +149,7 @@ export const Overview: Story = {
 
 export const Controlled: Story = {
   globals: {
-    imports: `import { Button, Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandOption, CommandList } from '@ovhcloud/ods-react';
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -178,17 +178,17 @@ import { useState } from 'react';`,
         <Command
           onOpenChange={ onOpenChange }
           open={ isOpen }>
-          <CommandContent>
-            <CommandFilter placeholder="Search..." />
-            <CommandList>
-              <CommandGroup heading="Actions">
-                <CommandOption>New file</CommandOption>
-                <CommandOption>Open file</CommandOption>
-                <CommandOption>Save file</CommandOption>
-              </CommandGroup>
-              <CommandEmpty>No results found.</CommandEmpty>
-            </CommandList>
-          </CommandContent>
+          <Command.Content>
+            <Command.Filter placeholder="Search..." />
+            <Command.List>
+              <Command.Group heading="Actions">
+                <Command.Option>New file</Command.Option>
+                <Command.Option>Open file</Command.Option>
+                <Command.Option>Save file</Command.Option>
+              </Command.Group>
+              <Command.Empty>No results found.</Command.Empty>
+            </Command.List>
+          </Command.Content>
         </Command>
       </>
     );
@@ -197,7 +197,7 @@ import { useState } from 'react';`,
 
 export const ControlledFiltering: Story = {
   globals: {
-    imports: `import { Button, Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandOption, CommandList, CommandTrigger } from '@ovhcloud/ods-react';
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';
 import { useState } from 'react';`,
   },
   tags: ['!dev'],
@@ -214,24 +214,24 @@ import { useState } from 'react';`,
 
     return (
       <Command>
-        <CommandTrigger asChild>
+        <Command.Trigger asChild>
           <Button>Open command</Button>
-        </CommandTrigger>
-        <CommandContent>
-          <CommandFilter
+        </Command.Trigger>
+        <Command.Content>
+          <Command.Filter
             onChange={ (e) => setQuery(e.target.value) }
             placeholder="Search..."
             value={ query }
           />
-          <CommandList>
-            <CommandGroup heading="Actions">
+          <Command.List>
+            <Command.Group heading="Actions">
               { visibleActions.map((action) => (
-                <CommandOption key={ action }>{ action }</CommandOption>
+                <Command.Option key={ action }>{ action }</Command.Option>
               )) }
-            </CommandGroup>
-            <CommandEmpty>No results found.</CommandEmpty>
-          </CommandList>
-        </CommandContent>
+            </Command.Group>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
       </Command>
     );
   },
@@ -239,41 +239,41 @@ import { useState } from 'react';`,
 
 export const WithShortcuts: Story = {
   globals: {
-    imports: `import { Button, Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandOption, CommandList, CommandTrigger, Kbd } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Command, Kbd } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Command>
-      <CommandTrigger asChild>
+      <Command.Trigger asChild>
         <Button>Open command</Button>
-      </CommandTrigger>
-      <CommandContent>
-        <CommandFilter placeholder="Search..." />
-        <CommandList>
-          <CommandGroup heading="File">
-            <CommandOption>
+      </Command.Trigger>
+      <Command.Content>
+        <Command.Filter placeholder="Search..." />
+        <Command.List>
+          <Command.Group heading="File">
+            <Command.Option>
               New file
               <kbd style={{ alignItems: 'center', display: 'flex', gap: '2px' }}>
                 <Kbd>⌘</Kbd>+<Kbd>n</Kbd>
               </kbd>
-            </CommandOption>
-            <CommandOption>
+            </Command.Option>
+            <Command.Option>
               Open file
-            </CommandOption>
-            <CommandOption>
+            </Command.Option>
+            <Command.Option>
               Save file
-            </CommandOption>
-          </CommandGroup>
-          <CommandEmpty>No results found.</CommandEmpty>
-        </CommandList>
-      </CommandContent>
+            </Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
     </Command>
   ),
 };
 
 export const WithOnSelect: Story = {
   globals: {
-    imports: `import { Button, Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandOption, CommandList, CommandTrigger, Toaster, toast } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Command, Toaster, toast } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   parameters: {
@@ -284,20 +284,20 @@ export const WithOnSelect: Story = {
   render: ({}) => (
     <>
       <Command>
-        <CommandTrigger asChild>
+        <Command.Trigger asChild>
           <Button>Open command</Button>
-        </CommandTrigger>
-        <CommandContent>
-          <CommandFilter placeholder="Search..." />
-          <CommandList>
-            <CommandGroup heading="Actions">
-              <CommandOption onSelect={ () => toast('New file', { toasterId: 'command-on-select' }) }>New file</CommandOption>
-              <CommandOption onSelect={ () => toast('Open file', { toasterId: 'command-on-select' }) }>Open file</CommandOption>
-              <CommandOption onSelect={ () => toast('Save file', { toasterId: 'command-on-select' }) }>Save file</CommandOption>
-            </CommandGroup>
-            <CommandEmpty>No results found.</CommandEmpty>
-          </CommandList>
-        </CommandContent>
+        </Command.Trigger>
+        <Command.Content>
+          <Command.Filter placeholder="Search..." />
+          <Command.List>
+            <Command.Group heading="Actions">
+              <Command.Option onSelect={ () => toast('New file', { toasterId: 'command-on-select' }) }>New file</Command.Option>
+              <Command.Option onSelect={ () => toast('Open file', { toasterId: 'command-on-select' }) }>Open file</Command.Option>
+              <Command.Option onSelect={ () => toast('Save file', { toasterId: 'command-on-select' }) }>Save file</Command.Option>
+            </Command.Group>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
       </Command>
 
       <Toaster id="command-on-select" style={{ zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)' }} />
@@ -307,58 +307,58 @@ export const WithOnSelect: Story = {
 
 export const WithoutFilter: Story = {
   globals: {
-    imports: `import { Button, Command, CommandContent, CommandEmpty, CommandGroup, CommandOption, CommandList, CommandTrigger, Kbd } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Command, Kbd } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Command>
-      <CommandTrigger asChild>
+      <Command.Trigger asChild>
         <Button>Open command</Button>
-      </CommandTrigger>
-      <CommandContent>
-        <CommandList aria-label="Actions">
-          <CommandGroup heading="File">
-            <CommandOption>
+      </Command.Trigger>
+      <Command.Content>
+        <Command.List aria-label="Actions">
+          <Command.Group heading="File">
+            <Command.Option>
               New file
-            </CommandOption>
-            <CommandOption>
+            </Command.Option>
+            <Command.Option>
               Open file
-            </CommandOption>
-            <CommandOption>
+            </Command.Option>
+            <Command.Option>
               Save file
-            </CommandOption>
-          </CommandGroup>
-          <CommandGroup heading="Edit">
-            <CommandOption>
+            </Command.Option>
+          </Command.Group>
+          <Command.Group heading="Edit">
+            <Command.Option>
               Undo
-            </CommandOption>
-            <CommandOption>
+            </Command.Option>
+            <Command.Option>
               Redo
-            </CommandOption>
-          </CommandGroup>
-          <CommandEmpty>No results found.</CommandEmpty>
-        </CommandList>
-      </CommandContent>
+            </Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
     </Command>
   ),
 };
 
 export const EmptyState: Story = {
   globals: {
-    imports: `import { Button, Command, CommandContent, CommandEmpty, CommandFilter, CommandList, CommandTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Command>
-      <CommandTrigger asChild>
+      <Command.Trigger asChild>
         <Button>Open command</Button>
-      </CommandTrigger>
-      <CommandContent>
-        <CommandFilter placeholder="Search..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-        </CommandList>
-      </CommandContent>
+      </Command.Trigger>
+      <Command.Content>
+        <Command.Filter placeholder="Search..." />
+        <Command.List>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
     </Command>
   ),
 };
@@ -387,7 +387,7 @@ export const AnatomyTech: Story = {
           open
           positionerStyle={{ position: 'absolute' }}
         >
-          <CommandContent
+          <Command.Content
             createPortal={ false }
             style={{
               width: '280px',
@@ -395,19 +395,19 @@ export const AnatomyTech: Story = {
               animation: 'none',
             }}
           >
-            <CommandFilter aria-label='search command' />
-            <CommandList>
-              <CommandGroup heading="Group a">
-                <CommandOption>item a-1</CommandOption>
-                <CommandOption>item a-2</CommandOption>
-              </CommandGroup>
-              <CommandGroup heading="Group b">
-                <CommandOption>item b-1</CommandOption>
-                <CommandOption>item b-2</CommandOption>
-              </CommandGroup>
-              <CommandEmpty>No results found.</CommandEmpty>
-            </CommandList>
-          </CommandContent>
+            <Command.Filter aria-label='search command' />
+            <Command.List>
+              <Command.Group heading="Group a">
+                <Command.Option>item a-1</Command.Option>
+                <Command.Option>item a-2</Command.Option>
+              </Command.Group>
+              <Command.Group heading="Group b">
+                <Command.Option>item b-1</Command.Option>
+                <Command.Option>item b-2</Command.Option>
+              </Command.Group>
+              <Command.Empty>No results found.</Command.Empty>
+            </Command.List>
+          </Command.Content>
         </Command>
       </div>
       <div style={{
@@ -423,7 +423,7 @@ export const AnatomyTech: Story = {
           open
           positionerStyle={{ position: 'absolute' }}
         >
-          <CommandContent
+          <Command.Content
             createPortal={ false }
             style={{
               width: '280px',
@@ -431,20 +431,20 @@ export const AnatomyTech: Story = {
               animation: 'none',
             }}
           >
-            <CommandFilter aria-label='search command' />
-            <CommandList>
-              <CommandEmpty>No results found<br />…
-              </CommandEmpty>
-            </CommandList>
-          </CommandContent>
+            <Command.Filter aria-label='search command' />
+            <Command.List>
+              <Command.Empty>No results found<br />…
+              </Command.Empty>
+            </Command.List>
+          </Command.Content>
         </Command>
       </div>
       <Command open={false} aria-label="Command component demo">
-        <CommandTrigger asChild>
+        <Command.Trigger asChild>
           <Button variant={ BUTTON_VARIANT.outline }>
             Trigger Command
           </Button>
-        </CommandTrigger>
+        </Command.Trigger>
       </Command>
     </div>
   )
@@ -452,25 +452,25 @@ export const AnatomyTech: Story = {
 
 export const AccessibilityLabels: Story = {
   globals: {
-    imports: `import { Button, Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandOption, CommandList, CommandTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Command>
-      <CommandTrigger asChild>
+      <Command.Trigger asChild>
         <Button>Open command</Button>
-      </CommandTrigger>
-      <CommandContent aria-label="Command palette">
-        <CommandFilter aria-label="Search command palette" placeholder="Search..." />
-        <CommandList aria-label="Command palette">
-          <CommandGroup heading="Actions">
-            <CommandOption>New file</CommandOption>
-            <CommandOption>Open file</CommandOption>
-            <CommandOption>Save file</CommandOption>
-          </CommandGroup>
-          <CommandEmpty>No results found.</CommandEmpty>
-        </CommandList>
-      </CommandContent>
+      </Command.Trigger>
+      <Command.Content aria-label="Command palette">
+        <Command.Filter aria-label="Search command palette" placeholder="Search..." />
+        <Command.List aria-label="Command palette">
+          <Command.Group heading="Actions">
+            <Command.Option>New file</Command.Option>
+            <Command.Option>Open file</Command.Option>
+            <Command.Option>Save file</Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
     </Command>
   ),
 };
@@ -478,81 +478,81 @@ export const AccessibilityLabels: Story = {
 export const AccessibilityFilterLabel: Story = {
   tags: ['!dev'],
   globals: {
-    imports: `import { Button, Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandOption, CommandList, CommandTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';`,
   },
   render: ({}) => (
     <Command>
-      <CommandTrigger asChild>
+      <Command.Trigger asChild>
         <Button>Open command</Button>
-      </CommandTrigger>
-      <CommandContent aria-label="Command palette">
-        <CommandFilter aria-label="Search command palette" placeholder="Search..." />
-        <CommandList>
-          <CommandGroup heading="Actions">
-            <CommandOption>New file</CommandOption>
-            <CommandOption>Open file</CommandOption>
-            <CommandOption>Save file</CommandOption>
-          </CommandGroup>
-          <CommandEmpty>No results found.</CommandEmpty>
-        </CommandList>
-      </CommandContent>
+      </Command.Trigger>
+      <Command.Content aria-label="Command palette">
+        <Command.Filter aria-label="Search command palette" placeholder="Search..." />
+        <Command.List>
+          <Command.Group heading="Actions">
+            <Command.Option>New file</Command.Option>
+            <Command.Option>Open file</Command.Option>
+            <Command.Option>Save file</Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
     </Command>
   ),
 };
 
 export const AccessibilityGroupNames: Story = {
   globals: {
-    imports: `import { Button, Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandOption, CommandList, CommandTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Command>
-      <CommandTrigger asChild>
+      <Command.Trigger asChild>
         <Button>Open command</Button>
-      </CommandTrigger>
-      <CommandContent aria-label="Command palette">
-        <CommandFilter aria-label="Search command palette" placeholder="Search..." />
-        <CommandList aria-label="Command palette">
-          <CommandGroup heading="Visible group name">
-            <CommandOption>New file</CommandOption>
-            <CommandOption>Open file</CommandOption>
-          </CommandGroup>
-          <CommandGroup aria-label="Hidden group name">
-            <CommandOption>Some help</CommandOption>
-            <CommandOption>Some more help</CommandOption>
-          </CommandGroup>
-          <CommandEmpty>No results found.</CommandEmpty>
-        </CommandList>
-      </CommandContent>
+      </Command.Trigger>
+      <Command.Content aria-label="Command palette">
+        <Command.Filter aria-label="Search command palette" placeholder="Search..." />
+        <Command.List aria-label="Command palette">
+          <Command.Group heading="Visible group name">
+            <Command.Option>New file</Command.Option>
+            <Command.Option>Open file</Command.Option>
+          </Command.Group>
+          <Command.Group aria-label="Hidden group name">
+            <Command.Option>Some help</Command.Option>
+            <Command.Option>Some more help</Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
     </Command>
   ),
 };
 
 export const AccessibilityDisabledOption: Story = {
   globals: {
-    imports: `import { Button, Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandOption, CommandList, CommandTrigger } from '@ovhcloud/ods-react';`,
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';`,
   },
   tags: ['!dev'],
   render: ({}) => (
     <Command>
-      <CommandTrigger asChild>
+      <Command.Trigger asChild>
         <Button>Open command</Button>
-      </CommandTrigger>
-      <CommandContent aria-label="Command palette">
-        <CommandFilter aria-label="Search command palette" placeholder="Search..." />
-        <CommandList>
-          <CommandGroup heading="Actions">
-            <CommandOption>New file</CommandOption>
-            <CommandOption>Open file</CommandOption>
-            <CommandOption aria-disabled="true">Save file</CommandOption>
-          </CommandGroup>
-          <CommandGroup heading="Help">
-            <CommandOption>Some help</CommandOption>
-            <CommandOption>Some more help</CommandOption>
-          </CommandGroup>
-          <CommandEmpty>No results found.</CommandEmpty>
-        </CommandList>
-      </CommandContent>
+      </Command.Trigger>
+      <Command.Content aria-label="Command palette">
+        <Command.Filter aria-label="Search command palette" placeholder="Search..." />
+        <Command.List>
+          <Command.Group heading="Actions">
+            <Command.Option>New file</Command.Option>
+            <Command.Option>Open file</Command.Option>
+            <Command.Option aria-disabled="true">Save file</Command.Option>
+          </Command.Group>
+          <Command.Group heading="Help">
+            <Command.Option>Some help</Command.Option>
+            <Command.Option>Some more help</Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
     </Command>
   ),
 };
@@ -565,80 +565,80 @@ export const ThemeGenerator: Story = {
   render: ({}) => (
     <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '12px' }}>
       <Command>
-        <CommandTrigger asChild>
+        <Command.Trigger asChild>
           <Button>Default</Button>
-        </CommandTrigger>
-        <CommandContent createPortal={ false }>
-          <CommandFilter placeholder="Search..." />
-          <CommandList>
-            <CommandGroup heading="Actions">
-              <CommandOption>New file</CommandOption>
-              <CommandOption>Open file</CommandOption>
-              <CommandOption>Save file</CommandOption>
-            </CommandGroup>
-            <CommandEmpty>No results found.</CommandEmpty>
-          </CommandList>
-        </CommandContent>
+        </Command.Trigger>
+        <Command.Content createPortal={ false }>
+          <Command.Filter placeholder="Search..." />
+          <Command.List>
+            <Command.Group heading="Actions">
+              <Command.Option>New file</Command.Option>
+              <Command.Option>Open file</Command.Option>
+              <Command.Option>Save file</Command.Option>
+            </Command.Group>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
       </Command>
 
       <Command>
-        <CommandTrigger asChild>
+        <Command.Trigger asChild>
           <Button>With shortcuts</Button>
-        </CommandTrigger>
-        <CommandContent createPortal={ false }>
-          <CommandFilter placeholder="Search..." />
-          <CommandList>
-            <CommandGroup heading="File">
-              <CommandOption>
+        </Command.Trigger>
+        <Command.Content createPortal={ false }>
+          <Command.Filter placeholder="Search..." />
+          <Command.List>
+            <Command.Group heading="File">
+              <Command.Option>
                 New file
                 <kbd style={{ alignItems: 'center', display: 'flex', gap: '2px' }}>
                   <Kbd>Meta</Kbd>+<Kbd>n</Kbd>
                 </kbd>
-              </CommandOption>
-              <CommandOption>
+              </Command.Option>
+              <Command.Option>
                 Open file
                 <kbd style={{ alignItems: 'center', display: 'flex', gap: '2px' }}>
                   <Kbd>Meta</Kbd>+<Kbd>o</Kbd>
                 </kbd>
-              </CommandOption>
-              <CommandOption>
+              </Command.Option>
+              <Command.Option>
                 Save file
                 <kbd style={{ alignItems: 'center', display: 'flex', gap: '2px' }}>
                   <Kbd>Meta</Kbd>+<Kbd>s</Kbd>
                 </kbd>
-              </CommandOption>
-            </CommandGroup>
-            <CommandEmpty>No results found.</CommandEmpty>
-          </CommandList>
-        </CommandContent>
+              </Command.Option>
+            </Command.Group>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
       </Command>
 
       <Command>
-        <CommandTrigger asChild>
+        <Command.Trigger asChild>
           <Button>Empty state</Button>
-        </CommandTrigger>
-        <CommandContent createPortal={ false }>
-          <CommandFilter placeholder="Search..." />
-          <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
-          </CommandList>
-        </CommandContent>
+        </Command.Trigger>
+        <Command.Content createPortal={ false }>
+          <Command.Filter placeholder="Search..." />
+          <Command.List>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
       </Command>
 
       <Command>
-        <CommandTrigger asChild>
+        <Command.Trigger asChild>
           <Button>Without filter</Button>
-        </CommandTrigger>
-        <CommandContent createPortal={ false }>
-          <CommandList aria-label="Actions">
-            <CommandGroup heading="Actions">
-              <CommandOption>New file</CommandOption>
-              <CommandOption>Open file</CommandOption>
-              <CommandOption>Save file</CommandOption>
-            </CommandGroup>
-            <CommandEmpty>No results found.</CommandEmpty>
-          </CommandList>
-        </CommandContent>
+        </Command.Trigger>
+        <Command.Content createPortal={ false }>
+          <Command.List aria-label="Actions">
+            <Command.Group heading="Actions">
+              <Command.Option>New file</Command.Option>
+              <Command.Option>Open file</Command.Option>
+              <Command.Option>Save file</Command.Option>
+            </Command.Group>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
       </Command>
     </div>
   ),

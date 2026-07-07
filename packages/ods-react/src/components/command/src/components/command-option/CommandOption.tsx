@@ -36,7 +36,8 @@ const CommandOption: FC<CommandOptionProp> = forwardRef(({
   const isDisabled = props['aria-disabled'] === true || props['aria-disabled'] === 'true';
 
   const isHighlighted = highlightedValue === itemId;
-  const isVisible = !filter || getChildrenText(children).toLowerCase().includes(filter.toLowerCase());
+  const text = getChildrenText(children);
+  const isVisible = !filter || text.toLowerCase().includes(filter.toLowerCase());
 
   useImperativeHandle(ref, () => nodeRef.current!, []);
 
@@ -44,20 +45,29 @@ const CommandOption: FC<CommandOptionProp> = forwardRef(({
   onSelectRef.current = onSelect;
 
   useEffect(() => {
-    if (!isVisible || isDisabled) {
+    if (isDisabled) {
       return;
     }
     registerHandler(itemId, () => onSelectRef.current?.());
     return () => unregisterHandler(itemId);
-  }, [isDisabled, itemId, isVisible, registerHandler, unregisterHandler]);
+  }, [isDisabled, itemId, registerHandler, unregisterHandler]);
 
+  // Not keyed on the filter: the item stays registered while filtered out
+  // (the provider derives visibility from the registered text), so typing
+  // never rebuilds the registry. Re-runs only refresh the stored
+  // node/text/disabled state, which is a no-op for the provider state when
+  // nothing changed. Disabled options register too, so the empty state can
+  // account for them; the provider excludes them from keyboard navigation.
   useEffect(() => {
-    if (!isVisible || isDisabled || !nodeRef.current) {
+    if (!isVisible) {
       return;
     }
-    registerItem(itemId, nodeRef.current);
+    registerItem(itemId, nodeRef.current, text, isDisabled);
+  }, [isDisabled, isVisible, itemId, registerItem, text]);
+
+  useEffect(() => {
     return () => unregisterItem(itemId);
-  }, [isDisabled, isVisible, itemId, registerItem, unregisterItem]);
+  }, [itemId, unregisterItem]);
 
   useEffect(() => {
     if (isHighlighted) {
@@ -83,10 +93,11 @@ const CommandOption: FC<CommandOptionProp> = forwardRef(({
         }
         props.onClick?.(e);
       } }
-      onPointerEnter={ () => {
+      onPointerEnter={ (e) => {
         if (!isDisabled) {
           highlightItem(itemId);
         }
+        props.onPointerEnter?.(e);
       } }
       ref={ nodeRef }
       role="option">

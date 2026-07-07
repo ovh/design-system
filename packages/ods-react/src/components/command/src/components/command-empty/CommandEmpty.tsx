@@ -8,14 +8,15 @@ const CommandEmpty: FC<CommandEmptyProp> = forwardRef(({
   className,
   ...props
 }, ref): JSX.Element | null => {
-  const { registeredItems } = useCommand();
+  const { filteredItems } = useCommand();
 
-  if (registeredItems.length > 0) {
+  if (filteredItems.length > 0) {
     return null;
   }
 
   return (
     <div
+      className={ className }
       data-ods="command-empty"
       ref={ ref }
       { ...props }>

@@ -89,6 +89,12 @@ import * as CommandStories from './command.stories';
 
 <Canvas of={ CommandStories.Controlled } sourceState="shown" />
 
+<Heading label="Controlled filtering" level={ 3 } />
+
+Passing a `value` to **CommandFilter** disables the built-in filtering: the integrator owns the query and filters the options themselves.
+
+<Canvas of={ CommandStories.ControlledFiltering } sourceState="shown" />
+
 <Heading label="With shortcuts" level={ 3 } />
 
 <Canvas of={ CommandStories.WithShortcuts } sourceState="shown" />

@@ -195,6 +195,48 @@ import { useState } from 'react';`,
   },
 };
 
+export const ControlledFiltering: Story = {
+  globals: {
+    imports: `import { Button, Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandOption, CommandList, CommandTrigger } from '@ovhcloud/ods-react';
+import { useState } from 'react';`,
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: { ...staticSourceRenderConfig() },
+    },
+  },
+  render: ({}) => {
+    const [query, setQuery] = useState('');
+
+    const actions = ['New file', 'Open file', 'Save file'];
+    const visibleActions = actions.filter((action) => !query || action.toLowerCase().includes(query.toLowerCase()));
+
+    return (
+      <Command>
+        <CommandTrigger asChild>
+          <Button>Open command</Button>
+        </CommandTrigger>
+        <CommandContent>
+          <CommandFilter
+            onChange={ (e) => setQuery(e.target.value) }
+            placeholder="Search..."
+            value={ query }
+          />
+          <CommandList>
+            <CommandGroup heading="Actions">
+              { visibleActions.map((action) => (
+                <CommandOption key={ action }>{ action }</CommandOption>
+              )) }
+            </CommandGroup>
+            <CommandEmpty>No results found.</CommandEmpty>
+          </CommandList>
+        </CommandContent>
+      </Command>
+    );
+  },
+};
+
 export const WithShortcuts: Story = {
   globals: {
     imports: `import { Button, Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandOption, CommandList, CommandTrigger, Kbd } from '@ovhcloud/ods-react';`,

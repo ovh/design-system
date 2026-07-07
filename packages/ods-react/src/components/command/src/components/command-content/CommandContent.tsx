@@ -17,8 +17,10 @@ const CommandContent: FC<CommandContentProp> = forwardRef(({
   createPortal,
   ...props
 }, ref): JSX.Element => {
-  const { highlightFirst, highlightLast, highlightNext, highlightPrevious, highlightedValue, open, selectHighlighted } = useCommand();
+  const { highlightNext, highlightPrevious, highlightedValue, open, selectHighlighted } = useCommand();
 
+  // Home/End are deliberately not intercepted: the APG combobox pattern
+  // reserves them for moving the caret within the input.
   function handleKeyDown(e: KeyboardEvent<HTMLDivElement>): void {
     switch (e.key) {
       case 'ArrowDown':
@@ -29,19 +31,11 @@ const CommandContent: FC<CommandContentProp> = forwardRef(({
         e.preventDefault();
         highlightPrevious();
         break;
-      case 'End':
-        e.preventDefault();
-        highlightLast();
-        break;
       case 'Enter':
         if (highlightedValue) {
           e.preventDefault();
           selectHighlighted();
         }
-        break;
-      case 'Home':
-        e.preventDefault();
-        highlightFirst();
         break;
       default:
         break;
@@ -78,9 +72,14 @@ const CommandContent: FC<CommandContentProp> = forwardRef(({
       createPortal={ createPortal }
       data-ods="command-content"
       dismissible={ false }
-      onKeyDown={ handleKeyDown }
       ref={ nodeRef }
       { ...props }
+      // chained after the spread so a consumer handler observes key events
+      // but can never replace the built-in keyboard navigation
+      onKeyDown={ (e) => {
+        handleKeyDown(e);
+        props.onKeyDown?.(e);
+      } }
       color={ undefined } // Color is no longer used and will be removed in the next major version. Setting to undefined to avoid passing deprecated prop to ModalContent.
     >
       <ModalBody className={ classNames(style['command-content__body']) }>

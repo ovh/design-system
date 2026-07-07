@@ -55,24 +55,10 @@ describe('Command behaviour', () => {
       expect(await getHighlightedOptionId(page)).toBe('opt-open-file');
     });
 
-    it('should highlight the last option on End', async() => {
-      await clickFilter(page);
-      await page.keyboard.press('End');
-
-      expect(await getHighlightedOptionId(page)).toBe('opt-save-file');
-    });
-
-    it('should highlight the first option on Home', async() => {
-      await clickFilter(page);
-      await page.keyboard.press('End');
-      await page.keyboard.press('Home');
-
-      expect(await getHighlightedOptionId(page)).toBe('opt-new-file');
-    });
-
     it('should not go past the last option with repeated ArrowDown', async() => {
       await clickFilter(page);
-      await page.keyboard.press('End');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
 
@@ -81,11 +67,19 @@ describe('Command behaviour', () => {
 
     it('should not go past the first option with repeated ArrowUp', async() => {
       await clickFilter(page);
-      await page.keyboard.press('Home');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('ArrowUp');
 
       expect(await getHighlightedOptionId(page)).toBe('opt-new-file');
+    });
+
+    it('should reserve Home and End for the input caret', async() => {
+      await typeInFilter(page, 'file');
+      await page.keyboard.press('Home');
+
+      const caret = await page.$eval('[data-ods="command-filter"]', (el) => (el as HTMLInputElement).selectionStart);
+
+      expect(caret).toBe(0);
     });
   });
 
@@ -122,6 +116,22 @@ describe('Command behaviour', () => {
       await page.hover('#opt-save-file');
 
       expect(await getHighlightedOptionId(page)).toBe('opt-save-file');
+    });
+  });
+
+  describe('consumer onKeyDown', () => {
+    beforeEach(async() => {
+      await gotoStory(page, 'behavior/consumer-key-down');
+      await page.waitForSelector('[data-ods="command-content"]');
+      await page.waitForSelector('[data-ods="command-option"][aria-selected="true"]');
+    });
+
+    it('should keep keyboard navigation working and still call the consumer handler', async() => {
+      await clickFilter(page);
+      await page.keyboard.press('ArrowDown');
+
+      expect(await getHighlightedOptionId(page)).toBe('opt-open-file');
+      expect(await page.$eval('[data-testid="last-key"]', (el) => el.textContent)).toBe('ArrowDown');
     });
   });
 
@@ -202,7 +212,7 @@ describe('Command behaviour', () => {
 
     it('should not highlight a disabled option via keyboard', async() => {
       await clickFilter(page);
-      await page.keyboard.press('End');
+      await page.keyboard.press('ArrowDown');
 
       expect(await getHighlightedOptionId(page)).toBe('opt-enabled');
     });
@@ -211,6 +221,13 @@ describe('Command behaviour', () => {
       await page.click('#opt-enabled');
 
       expect(await getSelectedValue(page)).toBe('enabled');
+    });
+
+    it('should not show the empty state when only a disabled option matches the filter', async() => {
+      await typeInFilter(page, 'disabled');
+
+      expect((await getOptions(page)).length).toBe(1);
+      expect(await page.$('[data-ods="command-empty"]')).toBeNull();
     });
   });
 
@@ -292,14 +309,18 @@ describe('Command behaviour', () => {
 
     it('should navigate across groups with ArrowDown', async() => {
       await clickFilter(page);
-      await page.keyboard.press('End');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
 
       expect(await getHighlightedOptionId(page)).toBe('opt-paste');
     });
 
     it('should select an option from a different group via keyboard', async() => {
       await clickFilter(page);
-      await page.keyboard.press('End');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
 
       expect(await getSelectedValue(page)).toBe('paste');

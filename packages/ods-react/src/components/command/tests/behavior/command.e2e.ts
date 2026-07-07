@@ -269,6 +269,8 @@ describe('Command behaviour', () => {
     it('should re-open after being closed', async() => {
       await page.click('[data-ods="command-trigger"]');
       await page.waitForSelector('[data-ods="command-content"]', { visible: true });
+      // Escape is only handled once the dialog has settled (autofocus reached the filter)
+      await page.waitForFunction(() => document.activeElement?.getAttribute('data-ods') === 'command-filter');
       await page.keyboard.press('Escape');
       await page.waitForSelector('[data-ods="command-content"]', { hidden: true });
 

@@ -11,7 +11,7 @@ const Command: FC<PropsWithChildren<CommandProp>> = ({
   open: openProp,
   ...modalProps
 }): JSX.Element => {
-  const [isOpen, setIsOpen] = useState(openProp ?? defaultOpen ?? false);
+  const [isOpen, setIsOpen] = useState(defaultOpen ?? false);
 
   function handleOpenChange(detail: ModalOpenChangeDetail): void {
     setIsOpen(detail.open);

@@ -44,7 +44,6 @@ describe('Command accessibility', () => {
 
     it('should update aria-activedescendant when the highlight changes', async() => {
       await page.click('[data-ods="command-filter"]');
-      await page.keyboard.press('Home');
       await page.waitForSelector('#opt-new-file[aria-selected="true"]');
 
       const before = await getFilterAttr(page, 'aria-activedescendant');

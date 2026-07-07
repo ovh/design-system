@@ -83,13 +83,15 @@ It can be triggered:
 - Via a keyboard shortcut (⌘ + K on macOS, Ctrl + K on Windows/Linux)
 
 The Command closes when:
-- An item is selected (unless explicitly prevented by the integrator)
 - The Escape key is pressed
 - The overlay is dismissed
 
+Selecting an item does not close the Command. To close it on selection, control the `open` state and set it to `false` from the option's `onSelect` callback (see the Controlled example on the Technical information page).
+
 <Heading label="Search & Filtering" level={ 3 } />
 
-- The Command provides a search input used to filter available items.
+- The Command provides a search input used to filter available items: by default, typing filters the options on their text content.
+- Passing a `value` to **CommandFilter** switches to controlled filtering: the built-in filtering is fully disabled. The integrator owns the query state (updated through `onChange`) and is responsible for rendering only the matching options.
 
 <Heading label="Items & Groups" level={ 3 } />
 
@@ -122,21 +124,19 @@ The Command component does not impose constraints on item layout or structure.
 
 When the Command opens, focus is set on the search input.
 
-Keyboard navigation moves focus between items in the dropdown.
+Focus stays on the search input while navigating: the arrow keys move a visual highlight through the items, exposed to assistive technology via `aria-activedescendant` (see the Roles section).
 
 Focus remains trapped within the Command until it is closed.
 
 <Heading label="General Keyboard Shortcuts" level={ 3 } />
 
-Pressing <Kbd>↓</Kbd> or <Kbd>↑</Kbd> moves focus to the next / previous item.
+Pressing <Kbd>↓</Kbd> or <Kbd>↑</Kbd> highlights the next / previous item.
 
-Pressing <Kbd>Enter</Kbd> executes the focused item.
+Pressing <Kbd>Enter</Kbd> executes the highlighted item.
 
 Pressing <Kbd>Escape</Kbd> closes the Command.
 
-Pressing <Kbd>Home</Kbd> moves tothe first item.
-
-Pressing <Kbd>End</Kbd> moves to the last item.
+Pressing <Kbd>Home</Kbd> or <Kbd>End</Kbd> moves the cursor within the search input.
 
 <Heading label="Accessibility" level={ 2 } />
 

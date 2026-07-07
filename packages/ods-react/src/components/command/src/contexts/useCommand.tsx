@@ -6,19 +6,23 @@ interface CommandProviderProp {
   open?: boolean;
 }
 
+interface CommandItem {
+  isDisabled: boolean;
+  text: string;
+  value: string;
+}
+
 interface CommandContextType {
   filter: string;
+  filteredItems: string[];
   highlightedValue: string | undefined;
   id: string;
   open: boolean;
-  registeredItems: string[];
-  highlightFirst: () => void;
   highlightItem: (value: string) => void;
-  highlightLast: () => void;
   highlightNext: () => void;
   highlightPrevious: () => void;
   registerHandler: (value: string, handler: () => void) => void;
-  registerItem: (value: string, node: HTMLElement) => void;
+  registerItem: (value: string, node: HTMLElement | null, text: string, isDisabled: boolean) => void;
   selectHighlighted: () => void;
   setFilter: (value: string) => void;
   unregisterHandler: (value: string) => void;
@@ -31,53 +35,82 @@ function CommandProvider({ children, open }: CommandProviderProp): JSX.Element {
   const id = useId();
   const [filter, setFilter] = useState('');
   const [highlightedValue, setHighlightedValue] = useState<string | undefined>(undefined);
-  const [registeredItems, setRegisteredItems] = useState<string[]>([]);
+  const [items, setItems] = useState<CommandItem[]>([]);
   const handlersRef = useRef(new Map<string, VoidFunction>());
   const itemNodesRef = useRef(new Map<string, HTMLElement>());
+
+  // Items register once and stay registered while filtered out; typing only
+  // recomputes these derived lists. All matching options (disabled included)
+  // drive the empty state...
+  const filteredItems = useMemo(() => {
+    const query = filter.toLowerCase();
+    return items
+      .filter((item) => !query || item.text.toLowerCase().includes(query))
+      .map((item) => item.value);
+  }, [filter, items]);
+
+  // ...while only matching enabled options can be highlighted.
+  const navigableItems = useMemo(() => {
+    const query = filter.toLowerCase();
+    return items
+      .filter((item) => !item.isDisabled && (!query || item.text.toLowerCase().includes(query)))
+      .map((item) => item.value);
+  }, [filter, items]);
 
   useEffect(() => {
     if (!open) {
       setFilter('');
-      setHighlightedValue(registeredItems[0]);
+      setHighlightedValue(navigableItems[0]);
     }
-  }, [open, registeredItems]);
+  }, [open, navigableItems]);
 
   useEffect(() => {
     setHighlightedValue((current) => {
-      if (registeredItems.length === 0) {
+      if (navigableItems.length === 0) {
         return undefined;
       }
-      if (!registeredItems.includes(current ?? '')) {
-        return registeredItems[0];
+      if (!navigableItems.includes(current ?? '')) {
+        return navigableItems[0];
       }
       return current;
     });
-  }, [registeredItems]);
+  }, [navigableItems]);
 
-  // Items append on registration (cheap); re-sort once per batch into DOM order.
-  // Needed because options re-register out of order when a filter is cleared.
+  // Items append on registration (cheap); re-sort once per membership change
+  // into DOM order. Needed because a dynamically mounted option registers
+  // after its siblings regardless of its position in the DOM.
   useEffect(() => {
-    setRegisteredItems((prev) => {
+    setItems((prev) => {
       const sorted = [...prev].sort((a, b) => {
-        const nodeA = itemNodesRef.current.get(a);
-        const nodeB = itemNodesRef.current.get(b);
+        const nodeA = itemNodesRef.current.get(a.value);
+        const nodeB = itemNodesRef.current.get(b.value);
         if (!nodeA || !nodeB) {
           return 0;
         }
         return nodeA.compareDocumentPosition(nodeB) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
       });
-      return sorted.every((value, index) => value === prev[index]) ? prev : sorted;
+      return sorted.every((item, index) => item === prev[index]) ? prev : sorted;
     });
-  }, [registeredItems]);
+  }, [items]);
 
-  const registerItem = useCallback((value: string, node: HTMLElement): void => {
-    itemNodesRef.current.set(value, node);
-    setRegisteredItems((prev) => (prev.includes(value) ? prev : [...prev, value]));
+  const registerItem = useCallback((value: string, node: HTMLElement | null, text: string, isDisabled: boolean): void => {
+    if (node) {
+      itemNodesRef.current.set(value, node);
+    }
+    setItems((prev) => {
+      const existing = prev.find((item) => item.value === value);
+      if (!existing) {
+        return [...prev, { isDisabled, text, value }];
+      }
+      return existing.text === text && existing.isDisabled === isDisabled
+        ? prev
+        : prev.map((item) => (item.value === value ? { isDisabled, text, value } : item));
+    });
   }, []);
 
   const unregisterItem = useCallback((value: string): void => {
     itemNodesRef.current.delete(value);
-    setRegisteredItems((prev) => prev.filter((v) => v !== value));
+    setItems((prev) => prev.filter((item) => item.value !== value));
   }, []);
 
   const registerHandler = useCallback((value: string, handler: VoidFunction): void => {
@@ -89,36 +122,24 @@ function CommandProvider({ children, open }: CommandProviderProp): JSX.Element {
   }, []);
 
   const highlightNext = useCallback((): void => {
-    if (!registeredItems.length) {
+    if (!navigableItems.length) {
       return;
     }
-    const idx = registeredItems.indexOf(highlightedValue ?? '');
-    if (idx < registeredItems.length - 1) {
-      setHighlightedValue(registeredItems[idx + 1]);
+    const idx = navigableItems.indexOf(highlightedValue ?? '');
+    if (idx < navigableItems.length - 1) {
+      setHighlightedValue(navigableItems[idx + 1]);
     }
-  }, [registeredItems, highlightedValue]);
+  }, [navigableItems, highlightedValue]);
 
   const highlightPrevious = useCallback((): void => {
-    if (!registeredItems.length) {
+    if (!navigableItems.length) {
       return;
     }
-    const idx = registeredItems.indexOf(highlightedValue ?? '');
+    const idx = navigableItems.indexOf(highlightedValue ?? '');
     if (idx > 0) {
-      setHighlightedValue(registeredItems[idx - 1]);
+      setHighlightedValue(navigableItems[idx - 1]);
     }
-  }, [registeredItems, highlightedValue]);
-
-  const highlightFirst = useCallback((): void => {
-    if (registeredItems.length) {
-      setHighlightedValue(registeredItems[0]);
-    }
-  }, [registeredItems]);
-
-  const highlightLast = useCallback((): void => {
-    if (registeredItems.length) {
-      setHighlightedValue(registeredItems[registeredItems.length - 1]);
-    }
-  }, [registeredItems]);
+  }, [navigableItems, highlightedValue]);
 
   const highlightItem = useCallback((value: string): void => {
     setHighlightedValue(value);
@@ -132,9 +153,8 @@ function CommandProvider({ children, open }: CommandProviderProp): JSX.Element {
 
   const value = useMemo<CommandContextType>(() => ({
     filter,
-    highlightFirst,
+    filteredItems,
     highlightItem,
-    highlightLast,
     highlightNext,
     highlightPrevious,
     highlightedValue,
@@ -142,16 +162,14 @@ function CommandProvider({ children, open }: CommandProviderProp): JSX.Element {
     open: open ?? false,
     registerHandler,
     registerItem,
-    registeredItems,
     selectHighlighted,
     setFilter,
     unregisterHandler,
     unregisterItem,
   }), [
     filter,
-    highlightFirst,
+    filteredItems,
     highlightItem,
-    highlightLast,
     highlightNext,
     highlightPrevious,
     highlightedValue,
@@ -159,7 +177,6 @@ function CommandProvider({ children, open }: CommandProviderProp): JSX.Element {
     open,
     registerHandler,
     registerItem,
-    registeredItems,
     selectHighlighted,
     unregisterHandler,
     unregisterItem,

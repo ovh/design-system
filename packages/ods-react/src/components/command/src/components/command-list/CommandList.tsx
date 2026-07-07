@@ -10,12 +10,11 @@ const CommandList: FC<CommandListProp> = forwardRef(({
   className,
   ...props
 }, ref): JSX.Element => {
-  const { highlightedValue, id } = useCommand();
+  const { id } = useCommand();
 
   return (
     <div className={ classNames(style['command-list__wrapper']) }>
       <div
-        aria-activedescendant={highlightedValue}
         className={ classNames(style['command-list'], className) }
         data-ods="command-list"
         id={ `${id}-list` }

@@ -50,6 +50,26 @@ export const OnSelect = () => {
   );
 };
 
+export const ConsumerKeyDown = () => {
+  const [lastKey, setLastKey] = useState('');
+
+  return (
+    <>
+      <div data-testid="last-key">{ lastKey }</div>
+      <Command open>
+        <Command.Content createPortal={ false } onKeyDown={ (e) => setLastKey(e.key) }>
+          <Command.Filter placeholder="Search..." />
+          <Command.List>
+            { fileOptions.map((opt) => (
+              <Command.Option key={ opt.id } id={ opt.id }>{ opt.label }</Command.Option>
+            )) }
+          </Command.List>
+        </Command.Content>
+      </Command>
+    </>
+  );
+};
+
 export const Filter = () => (
   <Command open>
     <Command.Content createPortal={ false }>
@@ -113,6 +133,7 @@ export const DisabledOption = () => {
             <Command.Option aria-disabled="true" id="opt-disabled" onSelect={ () => setSelected('disabled') }>
               Disabled option
             </Command.Option>
+            <Command.Empty>No results found.</Command.Empty>
           </Command.List>
         </Command.Content>
       </Command>

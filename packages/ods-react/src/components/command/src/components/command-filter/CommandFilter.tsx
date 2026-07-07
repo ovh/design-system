@@ -4,7 +4,14 @@ import { Input, type InputProp } from '../../../../input/src';
 import { useCommand } from '../../contexts/useCommand';
 import style from './commandFilter.module.scss';
 
-interface CommandFilterProp extends InputProp {}
+interface CommandFilterProp extends InputProp {
+  /**
+   * The controlled filter query. When set, the built-in option filtering is
+   * fully disabled: the consumer owns the query state (via `onChange`) and is
+   * responsible for rendering only the matching options.
+   */
+  value?: InputProp['value'];
+}
 
 const CommandFilter: FC<CommandFilterProp> = forwardRef(({
   className,

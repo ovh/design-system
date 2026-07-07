@@ -225,8 +225,8 @@ describe('Command behaviour', () => {
 
     it('should not show the empty state when only a disabled option matches the filter', async() => {
       await typeInFilter(page, 'disabled');
+      await page.waitForFunction(() => document.querySelectorAll('[data-ods="command-option"]').length === 1);
 
-      expect((await getOptions(page)).length).toBe(1);
       expect(await page.$('[data-ods="command-empty"]')).toBeNull();
     });
   });

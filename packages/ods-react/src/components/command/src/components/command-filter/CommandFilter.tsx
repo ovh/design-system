@@ -25,6 +25,7 @@ const CommandFilter: FC<CommandFilterProp> = forwardRef(({
   return (
     <Input
       aria-activedescendant={ highlightedValue ? highlightedValue : undefined }
+      aria-autocomplete="list"
       aria-controls={ `${id}-list` }
       aria-expanded="true"
       className={ classNames(style['command-filter'], className) }

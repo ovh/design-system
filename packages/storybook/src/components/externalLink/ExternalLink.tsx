@@ -21,11 +21,10 @@ const ExternalLink = ({ children, href, ...prop }: LinkProp & Omit<ComponentProp
 
   return (
     <Link
+      size="small"
       { ...prop }
       href={ resolvedHref }
-      size="small"
-      target="_blank"
-    >
+      target="_blank">
       { children } <Icon name={ ICON_NAME.externalLink } />
     </Link>
   );

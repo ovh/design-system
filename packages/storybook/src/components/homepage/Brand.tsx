@@ -1,28 +1,26 @@
-import React, { useState } from "react";
-import { ThemeApplier } from "../../../.storybook/components/themeApplier/ThemeApplier";
-import { dark, light } from "../../../.storybook/ods.theme";
+import React, { useState } from 'react';
+import { ThemeApplier } from '../../../.storybook/components/themeApplier/ThemeApplier';
+import { dark, light } from '../../../.storybook/ods.theme';
 
 const Brand = () => {
   const [fillerColor, setFillerColor] = useState(light.brandColor);
 
   return (
     <ThemeApplier
-      onDarkTheme={() => setFillerColor(dark.brandColor)}
-      onLightTheme={() => setFillerColor(light.brandColor)}
-    >
+      onDarkTheme={ () => setFillerColor(dark.brandColor) }
+      onLightTheme={ () => setFillerColor(light.brandColor) }>
       <h1 className="sr-only">OVHcloud Design System</h1>
       <svg
         aria-hidden
-        fill={fillerColor}
-        height={64}
-        style={{ blockSize: "auto", maxInlineSize: "100%"}}
+        fill={ fillerColor }
+        height={ 64 }
+        style={{ blockSize: 'auto', maxInlineSize: '100%' }}
         version="1.1"
         viewBox="0 0 681.06 55.64"
-        width={640}
+        width={ 640 }
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        xmlSpace="preserve"
-      >
+        xmlSpace="preserve">
         <g transform="matrix(1 0 0 1 1241.33 419.7)">
           <g transform="matrix(1 0 0 1 -109.93 0)">
             <path
@@ -216,4 +214,6 @@ const Brand = () => {
   );
 };
 
-export { Brand };
+export {
+  Brand,
+};

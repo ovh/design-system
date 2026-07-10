@@ -2,18 +2,12 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Command, CommandContent, CommandEmpty, CommandFilter, CommandGroup, CommandOption, CommandList, CommandTrigger, type CommandProp } from '../../../../ods-react/src/components/command/src';
 import { Kbd } from '../../../../ods-react/src/components/kbd/src';
-import { CONTROL_CATEGORY } from '../../../src/constants/controls';
-import { excludeFromDemoControls, orderControls } from '../../../src/helpers/controls';
+import { excludeFromDemoControls } from '../../../src/helpers/controls';
 import { staticSourceRenderConfig } from '../../../src/helpers/source';
 import { Button, BUTTON_VARIANT } from '../../../../ods-react/src/components/button/src';
 import { Toaster, toast } from '../../../../ods-react/src/components/toaster/src';
 
 type Story = StoryObj<CommandProp>;
-
-type DemoArg = Partial<CommandProp> & {
-  filterPlaceholder?: string;
-};
-
 
 const meta: Meta<CommandProp> = {
   argTypes: excludeFromDemoControls(['defaultOpen', 'content', 'i18n', 'initialFocusedElement', 'locale', 'onOpenChange', 'open']),
@@ -32,53 +26,6 @@ const meta: Meta<CommandProp> = {
 };
 
 export default meta;
-
-export const Demo: StoryObj = {
-  argTypes: orderControls({
-    closeOnEscape: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    closeOnInteractOutside: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-      },
-      control: { type: 'boolean' },
-    },
-    filterPlaceholder: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-      },
-      control: 'text',
-    },
-  }),
-  args: {
-    content: 'My modal content',
-  },
-
-  render: (arg: DemoArg) => (
-    <Command
-      closeOnEscape={ arg.closeOnEscape }
-      closeOnInteractOutside={ arg.closeOnInteractOutside }>
-      <CommandTrigger asChild>
-        <Button>Open command</Button>
-      </CommandTrigger>
-      <CommandContent>
-        <CommandFilter placeholder={ arg.filterPlaceholder } />
-        <CommandList>
-          <CommandGroup heading="Actions">
-            <CommandOption>New file</CommandOption>
-            <CommandOption>Open file</CommandOption>
-            <CommandOption>Save file</CommandOption>
-          </CommandGroup>
-          <Command.Empty>No results found.</Command.Empty>
-        </CommandList>
-      </CommandContent>
-    </Command>
-  ),
-};
 
 export const Default: Story = {
   globals: {

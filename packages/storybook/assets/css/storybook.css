@@ -37,7 +37,9 @@ button[title="Shortcuts"] {
   grid-template-columns: max-content 1fr max-content;
 }
 
-/* Hide Welcome page from sidebar (accessible via logo click) */
+/* Hide Welcome page from sidebar (accessible via logo click).
+   The `!sidebar` tag filter is the target mechanism, but tags set on unattached MDX do not reach
+   the story index in Storybook 8.6, so this CSS does the actual hiding until the Storybook upgrade. */
 .sidebar-item[data-item-id="ovhcloud-design-system-welcome--docs"] {
   display: none;
 }

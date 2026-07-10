@@ -1,88 +1,81 @@
-import {
-  ICON_NAME,
-  TEXT_PRESET,
-  Icon,
-  Text,
-  Divider,
-  DIVIDER_SPACING,
-  Badge,
-  Link,
-  BADGE_COLOR,
-} from "@ovhcloud/ods-react";
-import React from "react";
-import { useStoryHref } from "../../helpers/useStoryHref";
-import { HOME_TITLE, REACT_COMPONENTS_TITLE, RECIPES_TITLE } from "../../constants/meta";
-import { ExternalLink } from "../externalLink/ExternalLink";
-import styles from "./homepage.module.css";
-import { Brand } from "./Brand";
-import { HomepageTile } from "./HomepageTile";
-import imageFile from "../../../assets/ods_bg.png";
+import { BADGE_COLOR, Badge, DIVIDER_SPACING, Divider, ICON_NAME, Icon, Link, TEXT_PRESET, Text } from '@ovhcloud/ods-react';
+import React from 'react';
+import imageFile from '../../../assets/ods_bg.png';
+import { HOME_TITLE, REACT_COMPONENTS_TITLE, RECIPES_TITLE } from '../../constants/meta';
+import { useStoryHref } from '../../helpers/useStoryHref';
+import { ExternalLink } from '../externalLink/ExternalLink';
+import { Brand } from './Brand';
+import { HomepageTile } from './HomepageTile';
+import styles from './homepage.module.css';
 
 const Homepage = () => {
-  const getStartedHref = useStoryHref(HOME_TITLE.getStarted, "docs");
+  const getStartedHref = useStoryHref(HOME_TITLE.getStarted, 'docs');
 
   return (
-    <div className={styles.homepage} data-page="homepage" style={{ backgroundImage: `url(${imageFile})` }}>
-      <div className={styles["homepage__content"]}>
-        <div className={styles["homepage__heading"]}>
+    <div
+      className={ styles.homepage }
+      data-page="homepage"
+      style={{ backgroundImage: `url(${imageFile})` }}>
+      <div className={ styles['homepage__content'] }>
+        <div className={ styles['homepage__heading'] }>
           <Brand />
-          <ul className={styles["homepage__features"]}>
+
+          <ul className={ styles['homepage__features'] }>
             <li>
-              <Badge color={BADGE_COLOR.information}>
-                <Icon name={ICON_NAME.circleThreeNodes} />
+              <Badge color={ BADGE_COLOR.information }>
+                <Icon name={ ICON_NAME.circleThreeNodes } />
                 React-based
               </Badge>
             </li>
             <li>
-              <Badge color={BADGE_COLOR.information}>
-                <Icon name={ICON_NAME.accessibilityFull} />
+              <Badge color={ BADGE_COLOR.information }>
+                <Icon name={ ICON_NAME.accessibilityFull } />
                 Fully accessible
               </Badge>
             </li>
             <li>
-              <Badge color={BADGE_COLOR.information}>
-                <Icon name={ICON_NAME.lockOpen} />
+              <Badge color={ BADGE_COLOR.information }>
+                <Icon name={ ICON_NAME.lockOpen } />
                 Open source
               </Badge>
             </li>
           </ul>
-          <Divider aria-hidden className={styles["homepage__divider"]} spacing={DIVIDER_SPACING._16} />
+
+          <Divider aria-hidden className={ styles['homepage__divider'] } spacing={ DIVIDER_SPACING._16 } />
         </div>
 
-        <Text as="p" preset={TEXT_PRESET.heading5}>
-          A collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud
-          products.
+        <Text as="p" preset={ TEXT_PRESET.heading5 }>
+          A collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
         </Text>
 
-        <div className={styles["homepage__tiles"]}>
+        <div className={ styles['homepage__tiles'] }>
           <HomepageTile
             description="60+ production-ready React components."
-            icon={ICON_NAME.grid}
+            icon={ ICON_NAME.grid }
             linkLabel="Browse components"
-            path={REACT_COMPONENTS_TITLE.gallery}
-            title="Components"
-          />
+            path={ REACT_COMPONENTS_TITLE.gallery }
+            title="Components" />
+
           <HomepageTile
             description="500+ icons crafted for OVHcloud products."
-            icon={ICON_NAME.sparkle}
+            icon={ ICON_NAME.sparkle }
             linkLabel="Browse icons"
             name="Gallery"
-            path={REACT_COMPONENTS_TITLE.icon}
-            title="Icons"
-          />
+            path={ REACT_COMPONENTS_TITLE.icon }
+            title="Icons" />
+
           <HomepageTile
             description="Proven UI patterns that combine multiple components."
-            icon={ICON_NAME.lightbulb}
+            icon={ ICON_NAME.lightbulb }
             linkLabel="Browse recipes"
-            path={RECIPES_TITLE.components}
-            title="Recipes"
-          />
+            path={ RECIPES_TITLE.components }
+            title="Recipes" />
         </div>
 
-        <ul className={styles["homepage__content__links"]}>
+        <ul className={ styles['homepage__content__links'] }>
           <li>
-            <Link href={getStartedHref}>
-              Get Started <Icon name={ICON_NAME.chevronRight} />
+            <Link href={ getStartedHref }>
+              Get Started <Icon name={ ICON_NAME.chevronRight } />
             </Link>
           </li>
           <li>
@@ -92,7 +85,7 @@ const Homepage = () => {
           </li>
           <li>
             <ExternalLink href="https://github.com/ovh/design-system">
-              <Icon name={ICON_NAME.github} />
+              <Icon name={ ICON_NAME.github } />
               GitHub repository
             </ExternalLink>
           </li>
@@ -102,4 +95,6 @@ const Homepage = () => {
   );
 };
 
-export { Homepage };
+export {
+  Homepage,
+};

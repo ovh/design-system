@@ -39,8 +39,11 @@ const DrawerContent: FC<DrawerContentProp> = forwardRef(({
           }} />
       }
 
+      { /* The inline z-index only applies with a backdrop (modal-like stacking): applying it
+           unconditionally would turn the positioner into a stacking context and silently break
+           the documented --ods-drawer-z-index override for existing backdrop-less drawers. */ }
       <Dialog.Positioner style={{
-        zIndex: 'calc(var(--ods-theme-overlay-z-index) + 2)',
+        ...(backdrop ? { zIndex: 'calc(var(--ods-theme-overlay-z-index) + 2)' } : {}),
         ...(positionerStyle || {}),
       }}>
         <Dialog.Content

@@ -17,3 +17,29 @@ export const render = () => (
     </DrawerContent>
   </Drawer>
 );
+
+export const withBackdrop = () => (
+  <Drawer backdrop defaultOpen>
+    <DrawerTrigger data-testid="render-backdrop">
+      Trigger
+    </DrawerTrigger>
+    <DrawerContent>
+      <DrawerBody>
+        Content
+      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+);
+
+export const withoutBackdrop = () => (
+  <Drawer defaultOpen>
+    <DrawerTrigger data-testid="render-no-backdrop">
+      Trigger
+    </DrawerTrigger>
+    <DrawerContent>
+      <DrawerBody>
+        Content
+      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+);

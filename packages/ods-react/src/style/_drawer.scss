@@ -9,6 +9,9 @@ $drawer-max-width: calc(100% - calc(var(--ods-theme-padding-horizontal) * 6));
 @mixin ods-drawer() {
   --ods-drawer-padding-horizontal: calc(var(--ods-theme-padding-horizontal) * 2);
   --ods-drawer-padding-vertical: calc(var(--ods-theme-padding-vertical) * 2);
+  // Only effective without `backdrop`: with a backdrop the positioner carries an inline z-index
+  // (modal-like stacking) and creates a stacking context, so this variable only reorders content
+  // inside it — use the `positionerStyle`/`backdropStyle` props to override stacking in that case.
   --ods-drawer-z-index: #{overlay.$ods-overlay-drawer-z-index};
 
   display: block;

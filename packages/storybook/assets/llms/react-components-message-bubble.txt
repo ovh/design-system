@@ -4,7 +4,7 @@ slug: message-bubble
 category: component
 type: overview
 version: 19.7.3
-tokens: 837
+tokens: 642
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message-bubble.txt
 ---
 
@@ -45,51 +45,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-messag
   render: ({}) => <MessageBubble>
       Hello, how can I help you?
     </MessageBubble>
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot
-      },
-      control: 'text'
-    },
-    error: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    typing: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    variant: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        defaultValue: {
-          summary: MESSAGE_BUBBLE_VARIANT.human
-        },
-        type: {
-          summary: 'MESSAGE_BUBBLE_VARIANT'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: MESSAGE_BUBBLE_VARIANTS
-    }
-  }),
-  args: {
-    children: 'Hello, how can I help you?'
-  }
 }
 ```
 

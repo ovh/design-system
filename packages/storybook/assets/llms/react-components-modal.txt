@@ -4,7 +4,7 @@ slug: modal
 category: component
 type: overview
 version: 19.7.3
-tokens: 3094
+tokens: 2799
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal.txt
 ---
 
@@ -182,7 +182,9 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-modal.
     display: 'flex',
     flexFlow: 'column',
     rowGap: 'var(--ods-theme-row-gap)',
-    alignItems: 'start'
+    alignItems: 'start',
+    zIndex: 0,
+    position: 'relative'
   }}>
       <div style={{
       position: 'relative',
@@ -288,68 +290,6 @@ import { useState } from 'react';`
         </ModalBody>
       </ModalContent>
     </Modal>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: DemoArg) => <Modal closeOnEscape={arg.closeOnEscape} closeOnInteractOutside={arg.closeOnInteractOutside}>
-      <ModalTrigger asChild>
-        <Button>
-          Trigger Modal
-        </Button>
-      </ModalTrigger>
-
-      <ModalContent color={arg.color} dismissible={arg.dismissible}>
-        <ModalHeader>Modal header</ModalHeader>
-        <ModalBody>
-          {arg.content}
-        </ModalBody>
-      </ModalContent>
-    </Modal>,
-  argTypes: orderControls({
-    closeOnEscape: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    closeOnInteractOutside: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    content: {
-      table: {
-        category: CONTROL_CATEGORY.slot
-      },
-      control: 'text'
-    },
-    dismissible: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: {
-          summary: true
-        },
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: {
-        type: 'boolean'
-      }
-    }
-  }),
-  args: {
-    content: 'My modal content'
-  }
 }
 ```
 

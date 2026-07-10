@@ -4,7 +4,7 @@ slug: popover
 category: component
 type: overview
 version: 19.7.3
-tokens: 2682
+tokens: 2338
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover.txt
 ---
 
@@ -190,83 +190,6 @@ import { useState } from 'react';`
         This is the popover content
       </PopoverContent>
     </Popover>
-}
-```
-
-### Demo
-
-```tsx
-{
-  parameters: {
-    layout: 'centered'
-  },
-  render: (arg: DemoArg) => <Popover overlayConfig={{
-    gutter: arg.gutter,
-    position: arg.position,
-    sameWidth: arg.sameWidth
-  }}>
-      <PopoverTrigger>
-        Show popover
-      </PopoverTrigger>
-
-      <PopoverContent withArrow={arg.withArrow}>
-        {arg.content}
-      </PopoverContent>
-    </Popover>,
-  argTypes: orderControls({
-    content: {
-      table: {
-        category: CONTROL_CATEGORY.slot
-      },
-      control: 'text'
-    },
-    gutter: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'number'
-        }
-      },
-      control: 'number'
-    },
-    position: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'POPOVER_POSITION'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: POPOVER_POSITIONS
-    },
-    sameWidth: {
-      table: {
-        category: CONTROL_CATEGORY.design
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    withArrow: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        defaultValue: {
-          summary: false
-        },
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: {
-        type: 'boolean'
-      }
-    }
-  }),
-  args: {
-    content: 'My popover content'
-  }
 }
 ```
 

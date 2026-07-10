@@ -1,0 +1,363 @@
+---
+title: "Pagination"
+slug: pagination
+category: component
+type: examples
+version: 19.7.3
+tokens: 490
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination--examples.txt
+---
+
+# Pagination
+
+## Default
+
+---
+
+```jsx
+<Pagination totalItems={5000}>
+  <PaginationPages />
+</Pagination>
+```
+
+## Controlled
+
+---
+
+```jsx
+const [page, setPage] = useState(1);
+  function handlePageChange({
+    page  }: PaginationPageChangeDetail) {
+    setPage(page);
+  }
+  return <Pagination onPageChange={handlePageChange} page={page} totalItems={500}>
+      <PaginationPages />
+    </Pagination>;
+}
+```
+
+## Disabled
+
+---
+
+```jsx
+<Pagination
+  disabled
+  totalItems={500}
+>
+  <PaginationPages />
+</Pagination>
+```
+
+## Items per page
+
+---
+
+```jsx
+<Pagination
+  pageSize={25}
+  totalItems={500}
+>
+  <PaginationPages />
+</Pagination>
+```
+
+## Sibling count
+
+---
+
+```jsx
+<Pagination
+  defaultPage={5}
+  siblingCount={2}
+  totalItems={500}
+>
+  <PaginationPages />
+</Pagination>
+```
+
+## With tooltip labels
+
+---
+
+```jsx
+<Pagination
+  labelTooltipNext="Go to next page"
+  labelTooltipPrev="Go to previous page"
+  totalItems={500}
+>
+  <PaginationPages />
+</Pagination>
+```
+
+## With page size selection
+
+---
+
+102550100300
+
+of 500 results
+
+```jsx
+<Pagination totalItems={500}>
+  <PaginationPageSizeSelector />
+  <PaginationPages />
+</Pagination>
+```
+
+## Recipes
+
+---
+
+Data Grid
+
+| 
+ | 
+
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+IP Address
+
+ | 
+
+Actions
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+
+102550100300
+
+of 0 results
+
+Data Grid With Query Filter
+
+| 
+Instance ID
+
+ | 
+
+Location
+
+ | 
+
+Model
+
+ | 
+
+Image
+
+ | 
+
+Backup Logic
+
+ | 
+
+Running since
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |

@@ -4,7 +4,7 @@ slug: data-table
 category: component
 type: overview
 version: 19.7.3
-tokens: 5110
+tokens: 4936
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-data-table.txt
 ---
 
@@ -149,44 +149,6 @@ import { useMemo } from 'react';`
         <DataTableBody />
       </DataTable>;
   }
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    enableMultiRowSelection: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    enableRowSelection: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    enableSorting: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    loading: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    }
-  }),
-  render: arg => <DataTable {...arg} columns={sampleColumns} data={sampleData}>
-      <DataTableHead />
-
-      <DataTableBody />
-    </DataTable>
 }
 ```
 

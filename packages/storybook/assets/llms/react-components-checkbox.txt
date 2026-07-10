@@ -4,7 +4,7 @@ slug: checkbox
 category: component
 type: overview
 version: 19.7.3
-tokens: 1882
+tokens: 1725
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-checkbox.txt
 ---
 
@@ -95,43 +95,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-checkb
   render: ({}) => <Checkbox>
       <CheckboxControl />
     </Checkbox>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: DemoArg) => <Checkbox disabled={arg.disabled} invalid={arg.invalid}>
-      <CheckboxControl />
-
-      <CheckboxLabel>
-        {arg.label}
-      </CheckboxLabel>
-    </Checkbox>,
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    label: {
-      table: {
-        category: CONTROL_CATEGORY.slot
-      },
-      control: 'text'
-    }
-  }),
-  args: {
-    label: 'My checkbox'
-  }
 }
 ```
 

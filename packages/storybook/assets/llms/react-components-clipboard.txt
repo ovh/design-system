@@ -4,7 +4,7 @@ slug: clipboard
 category: component
 type: overview
 version: 19.7.3
-tokens: 1431
+tokens: 1104
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipboard.txt
 ---
 
@@ -120,73 +120,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-clipbo
 
       <ClipboardTrigger />
     </Clipboard>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: DemoArg) => <Clipboard disabled={arg.disabled} value={arg.value}>
-      <ClipboardControl loading={arg.loading} maskOption={{
-      enable: !!arg.masked
-    }} />
-
-      <ClipboardTrigger labelCopy={arg.labelCopy} labelCopySuccess={arg.labelCopySuccess} />
-    </Clipboard>,
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    labelCopy: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: {
-          summary: 'Copy'
-        }
-      },
-      control: 'text'
-    },
-    labelCopySuccess: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: {
-          summary: 'Copied'
-        }
-      },
-      control: 'text'
-    },
-    loading: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    masked: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    value: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
-    }
-  }),
-  args: {
-    value: 'Clipboard'
-  }
 }
 ```
 

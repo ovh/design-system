@@ -4,7 +4,7 @@ slug: range
 category: component
 type: overview
 version: 19.7.3
-tokens: 2337
+tokens: 1936
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-range.txt
 ---
 
@@ -156,87 +156,6 @@ import { useState } from 'react';`
 
       <Range defaultValue={[50, 75]} />
     </>
-}
-```
-
-### Demo
-
-```tsx
-{
-  decorators: [story => <div style={{
-    display: 'flex',
-    flexFlow: 'column',
-    justifyContent: 'center',
-    height: '80vh'
-  }}>{story()}</div>],
-  render: ({
-    dualRange,
-    ...arg
-  }: DemoArg) => {
-    const MAX_VALUE = 100;
-    const [values, setValues] = useState([0]);
-    useEffect(() => {
-      if (dualRange) {
-        const step = arg.step || 1;
-        const newValue = values[0] === MAX_VALUE ? values[0] - step : values[0];
-        setValues([newValue, newValue + step]);
-      } else {
-        setValues([values[0]]);
-      }
-    }, [dualRange]);
-    return <Range {...arg} max={MAX_VALUE} onDragging={({
-      value
-    }) => setValues(value)} value={values} />;
-  },
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    displayBounds: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    displayTooltip: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    dualRange: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    step: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'number'
-    }
-  })
 }
 ```
 

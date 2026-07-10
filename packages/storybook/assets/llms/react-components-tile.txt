@@ -4,7 +4,7 @@ slug: tile
 category: component
 type: overview
 version: 19.7.3
-tokens: 1456
+tokens: 1341
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile.txt
 ---
 
@@ -72,33 +72,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tile.t
   render: ({}) => <Tile>
       This is a tile content.
     </Tile>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: args => <Tile disabled={args.disabled} selected={args.selected} style={{
-    padding: '16px',
-    width: '300px'
-  }}>
-      This is a tile content.
-    </Tile>,
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    selected: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    }
-  })
 }
 ```
 

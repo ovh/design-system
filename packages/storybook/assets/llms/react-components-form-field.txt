@@ -4,7 +4,7 @@ slug: form-field
 category: component
 type: overview
 version: 19.7.3
-tokens: 3998
+tokens: 3685
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-field.txt
 ---
 
@@ -105,75 +105,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-f
   render: ({}) => <FormField>
       <Textarea name="textarea" />
     </FormField>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (args: DemoArg) => <FormField invalid={args.invalid}>
-      <FormFieldLabel>
-        {args.label}
-        <FormFieldLabelSubLabel>
-          {args.sublabel}
-        </FormFieldLabelSubLabel>
-      </FormFieldLabel>
-
-      <Textarea name="demo" />
-
-      <FormFieldHelper>
-        {args.helperText}
-      </FormFieldHelper>
-
-      <FormFieldError>
-        {args.errorText}
-      </FormFieldError>
-    </FormField>,
-  argTypes: orderControls({
-    errorText: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-        type: {
-          summary: 'string'
-        }
-      },
-      control: 'text'
-    },
-    helperText: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-        type: {
-          summary: 'string'
-        }
-      },
-      control: 'text'
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    label: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-        type: {
-          summary: 'string'
-        }
-      },
-      control: 'text'
-    },
-    sublabel: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-        type: {
-          summary: 'string'
-        }
-      },
-      control: 'text'
-    }
-  })
 }
 ```
 

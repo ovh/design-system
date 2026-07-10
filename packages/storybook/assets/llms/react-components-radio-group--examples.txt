@@ -1,0 +1,216 @@
+---
+title: "Radio Group"
+slug: radio-group
+category: component
+type: examples
+version: 19.7.3
+tokens: 684
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-group--examples.txt
+---
+
+# Radio Group
+
+## Default
+
+---
+
+HTML
+
+CSS
+
+JavaScript
+
+```jsx
+<RadioGroup>
+  <Radio value="html">
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio value="css">
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+## Disabled
+
+---
+
+HTML
+
+CSS
+
+JavaScript
+
+```jsx
+<RadioGroup disabled>
+  <Radio value="html">
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio value="css">
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+HTML
+
+CSS
+
+JavaScript
+
+```jsx
+<RadioGroup>
+  <Radio value="html">
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio
+    disabled
+    value="css"
+  >
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+## Invalid
+
+---
+
+HTML
+
+CSS
+
+JavaScript
+
+```jsx
+<RadioGroup defaultValue="html">
+  <Radio
+    invalid
+    value="html"
+  >
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio
+    invalid
+    value="css"
+  >
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+## Orientation
+
+---
+
+HTML
+
+CSS
+
+JavaScript
+
+```jsx
+<RadioGroup orientation="horizontal">
+  <Radio value="html">
+    <RadioControl />
+    <RadioLabel>
+      HTML    </RadioLabel>
+  </Radio>
+  <Radio value="css">
+    <RadioControl />
+    <RadioLabel>
+      CSS    </RadioLabel>
+  </Radio>
+  <Radio value="js">
+    <RadioControl />
+    <RadioLabel>
+      JavaScript    </RadioLabel>
+  </Radio>
+</RadioGroup>
+```
+
+## Form field
+
+---
+
+Pick a language:
+
+HTML
+
+CSS
+
+JavaScript
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Pick a language:  </FormFieldLabel>
+  <RadioGroup>
+    <Radio value="html">
+      <RadioControl />
+      <RadioLabel>
+        HTML      </RadioLabel>
+    </Radio>
+    <Radio value="css">
+      <RadioControl />
+      <RadioLabel>
+        CSS      </RadioLabel>
+    </Radio>
+    <Radio value="js">
+      <RadioControl />
+      <RadioLabel>
+        JavaScript      </RadioLabel>
+    </Radio>
+  </RadioGroup>
+</FormField>
+```
+
+## Recipes
+
+---
+
+Config Tile
+
+VPS 1
+
+4 vCore8 Go RAM100 Go 1 day automated backup Unlimited traffic 200 Mbps
+
+12 months6 monthsNo commitment
+
+From€24.46ex. VAT/monthor €13.19 incl. VAT/month

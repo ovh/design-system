@@ -4,7 +4,7 @@ slug: tree-view
 category: component
 type: overview
 version: 19.7.3
-tokens: 5020
+tokens: 4730
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tree-view.txt
 ---
 
@@ -369,61 +369,6 @@ import { useState } from 'react';`
         </TreeViewNodes>
       </TreeView>;
   }
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: arg => {
-    const items = [{
-      id: 'src',
-      name: 'src',
-      children: [{
-        id: 'app.tsx',
-        name: 'app.tsx'
-      }, {
-        id: 'index.ts',
-        name: 'index.ts'
-      }, {
-        id: 'components',
-        name: 'components',
-        children: [{
-          id: 'Button.tsx',
-          name: 'Button.tsx'
-        }, {
-          id: 'Card.tsx',
-          name: 'Card.tsx'
-        }]
-      }]
-    }, {
-      id: 'package.json',
-      name: 'package.json'
-    }, {
-      id: 'readme.md',
-      name: 'README.md'
-    }];
-    return <TreeView defaultExpandedValue={arg.defaultExpandedValue} disabled={arg.disabled} expandedValue={arg.expandedValue} items={items} multiple={arg.multiple}>
-        <TreeViewNodes>
-          {items.map(item => <TreeViewNode key={item.id} item={item} />)}
-        </TreeViewNodes>
-      </TreeView>;
-  },
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    multiple: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    }
-  })
 }
 ```
 

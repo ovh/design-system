@@ -4,7 +4,7 @@ slug: combobox
 category: component
 type: overview
 version: 19.7.3
-tokens: 4589
+tokens: 4032
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox.txt
 ---
 
@@ -434,113 +434,6 @@ import { useState } from 'react';`
 
       <ComboboxContent />
     </Combobox>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: DemoArg) => <Combobox items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }, {
-    label: 'Hamster',
-    value: 'hamster'
-  }, {
-    label: 'Parrot',
-    value: 'parrot'
-  }, {
-    label: 'Spider',
-    value: 'spider'
-  }, {
-    label: 'Goldfish',
-    value: 'goldfish'
-  }]} allowCustomValue={arg.allowCustomValue} disabled={arg.disabled} highlightResults={arg.highlightResults} invalid={arg.invalid} multiple={arg.multiple} newElementLabel={arg.newElementLabel} noResultLabel={arg.noResultLabel} readOnly={arg.readOnly}>
-      <ComboboxControl clearable={arg.clearable} loading={arg.loading} placeholder={arg.placeholder} />
-
-      <ComboboxContent />
-    </Combobox>,
-  argTypes: orderControls({
-    allowCustomValue: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    clearable: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    highlightResults: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    loading: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    multiple: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    newElementLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
-    },
-    noResultLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
-    },
-    placeholder: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    }
-  }),
-  args: {
-    placeholder: 'Start typing'
-  }
 }
 ```
 

@@ -4,7 +4,7 @@ slug: switch
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 893
+tokens: 593
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch--technical-information.txt
 ---
 
@@ -123,75 +123,3 @@ value
 | --ods-switch-item-text-color-checked | var(--ods-theme-input-text-color-checked) | 
 
  |
-
-## Examples
-
----
-
-### Default
-
-```jsx
-<Switch>
-  <SwitchItem value="item-1">
-    Item 1  </SwitchItem>
-  <SwitchItem value="item-2">
-    Item 2  </SwitchItem>
-  <SwitchItem value="item-3">
-    Item 3  </SwitchItem>
-</Switch>
-```
-
-### Checked
-
-```jsx
-<Switch defaultValue="item-1">
-  <SwitchItem value="item-1">
-    Item 1  </SwitchItem>
-  <SwitchItem value="item-2">
-    Item 2  </SwitchItem>
-  <SwitchItem value="item-3">
-    Item 3  </SwitchItem>
-</Switch>
-```
-
-### Disabled
-
-```jsx
-<Switch disabled>
-  <SwitchItem value="item-1">
-    Item 1  </SwitchItem>
-  <SwitchItem value="item-2">
-    Item 2  </SwitchItem>
-  <SwitchItem value="item-3">
-    Item 3  </SwitchItem>
-</Switch>
-```
-
-### Sizes
-
-```jsx
-<>
-  <Switch size="sm">
-    <SwitchItem value="item-1">
-      Item 1    </SwitchItem>
-    <SwitchItem value="item-2">
-      Item 2    </SwitchItem>
-    <SwitchItem value="item-3">
-      Item 3    </SwitchItem>
-  </Switch>
-  <Switch size="md">
-    <SwitchItem value="item-1">
-      Item 1    </SwitchItem>
-    <SwitchItem value="item-2">
-      Item 2    </SwitchItem>
-    <SwitchItem value="item-3">
-      Item 3    </SwitchItem>
-  </Switch>
-</>
-```
-
-## Recipes
-
----
-
-No recipe defined for now.

@@ -1,0 +1,98 @@
+---
+title: "Meter"
+slug: meter
+category: component
+type: examples
+version: 19.7.3
+tokens: 244
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter--examples.txt
+---
+
+# Meter
+
+## Default
+
+---
+
+```jsx
+<Meter />
+```
+
+## Thresholds
+
+---
+
+Value under low threshold:
+
+Value between both thresholds:
+
+Value above high threshold:
+
+```jsx
+<>
+  <p>
+    Value under low threshold:  </p>
+  <Meter
+    low={40}
+    value={35}
+  />
+  <p>
+    Value between both thresholds:  </p>
+  <Meter
+    high={80}
+    low={40}
+    value={60}
+  />
+  <p>
+    Value above high threshold:  </p>
+  <Meter
+    high={80}
+    value={90}
+  />
+</>
+```
+
+## Optimum
+
+---
+
+Low optimum and low value:
+
+Low optimum and high value:
+
+Low optimum and very high value:
+
+```jsx
+<>
+  <p>
+    Low optimum and low value:  </p>
+  <Meter
+    high={80}
+    low={40}
+    optimum={30}
+    value={20}
+  />
+  <p>
+    Low optimum and high value:  </p>
+  <Meter
+    high={80}
+    low={40}
+    optimum={30}
+    value={60}
+  />
+  <p>
+    Low optimum and very high value:  </p>
+  <Meter
+    high={80}
+    low={40}
+    optimum={30}
+    value={90}
+  />
+</>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

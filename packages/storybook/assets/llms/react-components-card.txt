@@ -4,7 +4,7 @@ slug: card
 category: component
 type: overview
 version: 19.7.3
-tokens: 1058
+tokens: 956
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card.txt
 ---
 
@@ -155,34 +155,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-card.t
   render: ({}) => <Card>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
     </Card>
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'CARD_COLOR'
-        }
-      },
-      control: 'select',
-      options: CARD_COLORS
-    },
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot
-      },
-      control: 'text'
-    }
-  }),
-  args: {
-    children: 'Hello, world!'
-  }
 }
 ```
 

@@ -4,7 +4,7 @@ slug: progress-bar
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 239
+tokens: 168
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar--technical-information.txt
 ---
 
@@ -47,40 +47,3 @@ value
 | --- | --- | --- |
 | --ods-progress-bar-border-radius | var(--ods-theme-border-radius) | 
  |
-
-## Examples
-
----
-
-### Default
-
-```jsx
-<ProgressBar />
-```
-
-### Max
-
-```jsx
-<ProgressBar
-  max="500"
-  value="50"
-/>
-```
-
-### Value
-
-```jsx
-<ProgressBar value="50" />
-```
-
-### Indeterminate
-
-```jsx
-<ProgressBar value="indeterminate" />
-```
-
-## Recipes
-
----
-
-No recipe defined for now.

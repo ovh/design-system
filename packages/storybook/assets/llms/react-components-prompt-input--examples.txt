@@ -1,0 +1,168 @@
+---
+title: "Prompt Input"
+slug: prompt-input
+category: component
+type: examples
+version: 19.7.3
+tokens: 927
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input--examples.txt
+---
+
+# Prompt Input
+
+## Default
+
+---
+
+```jsx
+<PromptInput>
+  <PromptInputControls>
+    <PromptInputFileUploadButton />
+    <PromptInputTextControl />
+    <PromptInputSendButton />
+  </PromptInputControls>
+</PromptInput>
+```
+
+## Disabled
+
+---
+
+Nobody's here to answer…
+
+```jsx
+<PromptInput
+  defaultValue="Nobody's here to answer…"
+  disabled
+>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach a file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Send message" />
+  </PromptInputControls>
+</PromptInput>
+```
+
+## Readonly
+
+---
+
+This is a read-only prompt input.
+
+```jsx
+<PromptInput
+  defaultValue="This is a read-only prompt input."
+  readOnly
+>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach a file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Send message" />
+  </PromptInputControls>
+</PromptInput>
+```
+
+## Loading
+
+---
+
+"Someone" is processing your request…
+
+```jsx
+<PromptInput
+  defaultValue="&quot;Someone&quot; is processing your request…"
+  loading
+>
+  <PromptInputControls>
+    <PromptInputFileUploadButton aria-label="Attach a file" />
+    <PromptInputTextControl aria-label="Ask someone about something…" />
+    <PromptInputSendButton aria-label="Send message" />
+  </PromptInputControls>
+</PromptInput>
+```
+
+## With files
+
+---
+
+loading-pdf-file.pdf
+
+​
+
+text-file.txt3 byte
+
+```jsx
+const fakePdfFile = new File(["foo"], "loading-pdf-file.pdf", {
+    type: "application/pdf"
+  });
+  const fakeTextFile = new File(["bar"], "text-file.txt", {
+    type: "text/plain"
+  });
+  return <PromptInput fileCollection={[fakePdfFile, fakeTextFile]}>
+      <PromptInputFiles>
+        <FileThumbnail file={fakePdfFile} progress={45} />
+        <FileThumbnail file={fakeTextFile} />
+      </PromptInputFiles>
+      <PromptInputControls>
+        <PromptInputFileUploadButton aria-label="Attach a file" />
+        <PromptInputTextControl aria-label="Ask someone about something…" />
+        <PromptInputSendButton aria-label="Send message" />
+      </PromptInputControls>
+    </PromptInput>;
+}
+```
+
+## In form field
+
+---
+
+Here is a prompt input inside a form field:
+
+Some text that is almost hitting the length limit...
+
+---
+
+52 / 60
+
+```jsx
+const maxLength = 60;
+  const [inputValue, setInputValue] = useState("Some text that is almost hitting the length limit...");
+  return <FormField invalid={inputValue?.length > maxLength}>
+      <FormFieldLabel>Here is a prompt input inside a form field:</FormFieldLabel>
+      <PromptInput defaultValue={inputValue} name="prompt-input-textArea" onValueChange={({
+      inputValue    }) => setInputValue(inputValue)}>
+        <PromptInputControls>
+          <PromptInputFileUploadButton aria-label="Attach a file" />
+          <div style={{
+          display: "flex",
+          flexDirection: "column",
+          flexGrow: 1,
+          rowGap: "var(--ods-theme-row-gap)"
+        }}>
+            <PromptInputTextControl aria-label="Ask someone about something…" />
+            <Divider style={{
+            width: "100%"
+          }} />
+            <FormFieldHelper>
+              <Text preset={TEXT_PRESET.caption}>
+                {inputValue?.length} / {maxLength}
+              </Text>
+            </FormFieldHelper>
+          </div>
+          <PromptInputSendButton aria-label="Send message" />
+        </PromptInputControls>
+      </PromptInput>
+      <FormFieldError>Character limit exceeded</FormFieldError>
+    </FormField>;
+}
+```
+
+## Recipes
+
+---
+
+Chat
+
+Assistant1:00 PM
+
+Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.

@@ -4,7 +4,7 @@ slug: skeleton
 category: component
 type: overview
 version: 19.7.3
-tokens: 282
+tokens: 276
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skeleton.txt
 ---
 
@@ -64,12 +64,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-skelet
   tags: ['!dev'],
   render: ({}) => <Skeleton />
 }
-```
-
-### Demo
-
-```tsx
-{}
 ```
 
 ### Overview

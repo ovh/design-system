@@ -4,7 +4,7 @@ slug: code
 category: component
 type: overview
 version: 19.7.3
-tokens: 915
+tokens: 733
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code.txt
 ---
 
@@ -76,48 +76,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code.t
   render: ({}) => <Code>
       console.log('Hello world');
     </Code>
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    canCopy: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
-    },
-    labelCopy: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: {
-          summary: 'Copy to clipboard'
-        }
-      },
-      control: 'text'
-    },
-    labelCopySuccess: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: {
-          summary: 'Copied'
-        }
-      },
-      control: 'text'
-    }
-  }),
-  args: {
-    children: `import { Text } from '@ovhcloud/ods-react';`
-  }
 }
 ```
 

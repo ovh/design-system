@@ -1,0 +1,49 @@
+---
+title: "Spinner"
+slug: spinner
+category: component
+type: examples
+version: 19.7.3
+tokens: 80
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-spinner--examples.txt
+---
+
+# Spinner
+
+## Default
+
+---
+
+```jsx
+<Spinner />
+```
+
+## Color
+
+---
+
+```jsx
+<>
+  <Spinner color="neutral" />
+  <Spinner color="primary" />
+</>
+```
+
+## Size
+
+---
+
+```jsx
+<>
+  <Spinner size="xs" />
+  <Spinner size="sm" />
+  <Spinner size="md" />
+  <Spinner size="lg" />
+</>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

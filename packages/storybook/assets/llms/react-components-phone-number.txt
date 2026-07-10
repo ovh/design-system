@@ -4,7 +4,7 @@ slug: phone-number
 category: component
 type: overview
 version: 19.7.3
-tokens: 2417
+tokens: 2040
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-number.txt
 ---
 
@@ -215,79 +215,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-phone-
   render: ({}) => <PhoneNumber>
       <PhoneNumberControl />
     </PhoneNumber>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: DemoArg) => <PhoneNumber country={arg.country} disabled={arg.disabled} invalid={arg.invalid} locale={arg.locale} readOnly={arg.readOnly}>
-      {arg.withCountries && <PhoneNumberCountryList />}
-
-      <PhoneNumberControl clearable={arg.clearable} />
-    </PhoneNumber>,
-  argTypes: orderControls({
-    clearable: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    country: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'PHONE_NUMBER_COUNTRY_ISO_CODE'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: PHONE_NUMBER_COUNTRY_ISO_CODES
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    locale: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'select'
-      },
-      options: PHONE_NUMBER_COUNTRY_ISO_CODES
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    withCountries: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    }
-  })
 }
 ```
 

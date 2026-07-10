@@ -4,7 +4,7 @@ slug: avatar
 category: component
 type: overview
 version: 19.7.3
-tokens: 554
+tokens: 485
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-avatar.txt
 ---
 
@@ -40,27 +40,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-avatar
   },
   tags: ['!dev'],
   render: ({}) => <Avatar />
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    fallback: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
-    },
-    src: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
-    }
-  })
 }
 ```
 

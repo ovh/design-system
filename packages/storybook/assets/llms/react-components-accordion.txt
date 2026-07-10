@@ -4,7 +4,7 @@ slug: accordion
 category: component
 type: overview
 version: 19.7.3
-tokens: 2748
+tokens: 2346
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-accordion.txt
 ---
 
@@ -157,57 +157,6 @@ import { useState } from 'react';`
         </AccordionContent>
       </AccordionItem>
     </Accordion>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: AccordionProp) => <Accordion disabled={arg.disabled} multiple={arg.multiple}>
-      <AccordionItem value="0">
-        <AccordionTrigger>
-          <Text preset="paragraph">
-            Hello World!
-          </Text>
-        </AccordionTrigger>
-        <AccordionContent>
-          <Text preset="paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit.
-          </Text>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="1">
-        <AccordionTrigger>
-          <Text preset="paragraph">
-            Bye World!
-          </Text>
-        </AccordionTrigger>
-        <AccordionContent>
-          <Text preset="paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit.
-          </Text>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>,
-  argTypes: orderControls({
-    multiple: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    }
-  })
 }
 ```
 

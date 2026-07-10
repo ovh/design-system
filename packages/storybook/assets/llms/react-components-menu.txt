@@ -4,7 +4,7 @@ slug: menu
 category: component
 type: overview
 version: 19.7.3
-tokens: 2032
+tokens: 1680
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-menu.txt
 ---
 
@@ -171,78 +171,6 @@ import { useState } from 'react';`
         <MenuItem value="profile">Profile</MenuItem>
         <MenuItem value="settings">Settings</MenuItem>
         <MenuItem value='logout'>Logout</MenuItem>
-      </MenuContent>
-    </Menu>
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    gutter: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'number'
-        }
-      },
-      control: 'number'
-    },
-    position: {
-      control: 'select',
-      options: MENU_POSITIONS,
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'MENU_POSITION'
-        }
-      }
-    },
-    sameWidth: {
-      table: {
-        category: CONTROL_CATEGORY.design
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    triggerLabel: {
-      control: 'text',
-      table: {
-        category: CONTROL_CATEGORY.slot,
-        type: {
-          summary: 'string'
-        }
-      }
-    },
-    withArrow: {
-      control: 'boolean',
-      table: {
-        category: CONTROL_CATEGORY.design
-      }
-    }
-  }),
-  args: {
-    position: MENU_POSITION.bottom,
-    triggerLabel: 'Open menu',
-    withArrow: false
-  },
-  render: (arg: Partial<DemoArg>) => <Menu overlayConfig={{
-    gutter: arg.gutter,
-    position: arg.position,
-    sameWidth: arg.sameWidth
-  }}>
-      <MenuTrigger asChild>
-        <Button>
-          {arg.triggerLabel}
-        </Button>
-      </MenuTrigger>
-
-      <MenuContent withArrow={arg.withArrow}>
-        <MenuItem value="profile">Profile</MenuItem>
-        <MenuItem value="settings">Settings</MenuItem>
       </MenuContent>
     </Menu>
 }

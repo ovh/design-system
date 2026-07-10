@@ -1,0 +1,411 @@
+---
+title: "Popover"
+slug: popover
+category: component
+type: examples
+version: 19.7.3
+tokens: 1200
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-popover--examples.txt
+---
+
+# Popover
+
+## Default
+
+---
+
+```jsx
+<Popover>
+  <PopoverTrigger>
+    Show popover  </PopoverTrigger>
+  <PopoverContent>
+    This is the popover content  </PopoverContent>
+</Popover>
+```
+
+## Custom Trigger
+
+---
+
+```jsx
+<Popover>
+  <PopoverTrigger asChild>
+    <Button>
+      Custom Trigger    </Button>
+  </PopoverTrigger>
+  <PopoverContent>
+    This is the popover content  </PopoverContent>
+</Popover>
+```
+
+## Controlled
+
+---
+
+```jsx
+const [isOpen, setIsOpen] = useState(false);
+  function togglePopover() {
+    setIsOpen(isOpen => !isOpen);
+  }
+  return <>
+      <Button onClick={togglePopover}>
+        Toggle popover      </Button>
+      <Popover open={isOpen}>
+        <PopoverTrigger asChild>
+          <Icon name={ICON_NAME.cog} />
+        </PopoverTrigger>
+        <PopoverContent withArrow>
+          This is the popover content        </PopoverContent>
+      </Popover>
+    </>;
+}
+```
+
+## Use Trigger Width
+
+---
+
+```jsx
+<Popover
+  overlayConfig={{
+    sameWidth: true
+  }}
+>
+  <PopoverTrigger>
+    Show popover that will take this width as reference  </PopoverTrigger>
+  <PopoverContent>
+    The popover content  </PopoverContent>
+</Popover>
+```
+
+## Grid
+
+---
+
+```jsx
+<>
+  <Popover
+    overlayConfig={{
+      position: 'top-start'
+    }}
+  >
+    <PopoverTrigger>
+      Top Left    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Top Left popover    </PopoverContent>
+  </Popover>
+  <Popover
+    overlayConfig={{
+      position: 'top'
+    }}
+  >
+    <PopoverTrigger>
+      Top    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Top popover    </PopoverContent>
+  </Popover>
+  <Popover
+    overlayConfig={{
+      position: 'top-end'
+    }}
+  >
+    <PopoverTrigger>
+      Top Right    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Top Right popover    </PopoverContent>
+  </Popover>
+  <Popover
+    overlayConfig={{
+      position: 'left'
+    }}
+  >
+    <PopoverTrigger>
+      Middle Left    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Middle Left popover    </PopoverContent>
+  </Popover>
+  <div />
+  <Popover
+    overlayConfig={{
+      position: 'right'
+    }}
+  >
+    <PopoverTrigger>
+      Middle Right    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Middle Right popover    </PopoverContent>
+  </Popover>
+  <Popover
+    overlayConfig={{
+      position: 'bottom-start'
+    }}
+  >
+    <PopoverTrigger>
+      Bottom Left    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Bottom Left popover    </PopoverContent>
+  </Popover>
+  <Popover
+    overlayConfig={{
+      position: 'bottom'
+    }}
+  >
+    <PopoverTrigger>
+      Bottom    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Bottom popover    </PopoverContent>
+  </Popover>
+  <Popover
+    overlayConfig={{
+      position: 'bottom-end'
+    }}
+  >
+    <PopoverTrigger>
+      Bottom Right    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Bottom Right popover    </PopoverContent>
+  </Popover>
+</>
+```
+
+## Z index
+
+---
+
+Default Z-axis order:  
+Custom Z-axis order:
+
+```jsx
+<>
+  <span>
+    Default Z-axis order:  </span>
+  <Popover open>
+    <PopoverTrigger asChild>
+      <Icon
+        name="circle-info"
+        style={{
+          fontSize: '24px'
+        }}
+      />
+    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Back    </PopoverContent>
+  </Popover>
+  <Popover open>
+    <PopoverTrigger asChild>
+      <Icon
+        name="circle-info"
+        style={{
+          fontSize: '24px'
+        }}
+      />
+    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Front    </PopoverContent>
+  </Popover>
+  <br />
+  <span>
+    Custom Z-axis order:  </span>
+  <Popover
+    open
+    overlayConfig={{
+      position: 'bottom'
+    }}
+    positionerStyle={{
+      zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'
+    }}
+  >
+    <PopoverTrigger asChild>
+      <Icon
+        name="circle-info"
+        style={{
+          fontSize: '24px'
+        }}
+      />
+    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Front    </PopoverContent>
+  </Popover>
+  <Popover
+    open
+    overlayConfig={{
+      position: 'bottom'
+    }}
+  >
+    <PopoverTrigger asChild>
+      <Icon
+        name="circle-info"
+        style={{
+          fontSize: '24px'
+        }}
+      />
+    </PopoverTrigger>
+    <PopoverContent withArrow>
+      Back    </PopoverContent>
+  </Popover>
+</>
+```
+
+## Recipes
+
+---
+
+Data Grid
+
+| 
+ | 
+
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+IP Address
+
+ | 
+
+Actions
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+
+102550100300
+
+of 0 results

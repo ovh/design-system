@@ -4,7 +4,7 @@ slug: cart
 category: component
 type: overview
 version: 19.7.3
-tokens: 2143
+tokens: 2129
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart.txt
 ---
 
@@ -133,14 +133,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-cart.t
         Continue my order <Icon name={ICON_NAME.arrowRight} />
       </CartAction>
     </Cart>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: () => <FullExample />
 }
 ```
 

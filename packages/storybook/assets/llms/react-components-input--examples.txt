@@ -1,0 +1,382 @@
+---
+title: "Input"
+slug: input
+category: component
+type: examples
+version: 19.7.3
+tokens: 596
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input--examples.txt
+---
+
+# Input
+
+## Default
+
+---
+
+```jsx
+<Input />
+```
+
+## Disabled
+
+---
+
+```jsx
+<Input disabled />
+```
+
+## Readonly
+
+---
+
+```jsx
+<Input
+  defaultValue="Readonly"
+  readOnly
+/>
+```
+
+## Clearable
+
+---
+
+```jsx
+<Input
+  clearable
+  defaultValue="Clearable"
+/>
+```
+
+## Loading
+
+---
+
+```jsx
+<Input loading />
+```
+
+## Masked
+
+---
+
+```jsx
+<Input
+  maskOption={{
+    enable: true
+  }}
+ />
+```
+
+## Types
+
+---
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+```jsx
+<>
+  <Input
+    placeholder="email"
+    type="email"
+  />
+  <br />
+  <Input
+    placeholder="number"
+    type="number"
+  />
+  <br />
+  <Input
+    placeholder="password"
+    type="password"
+  />
+  <br />
+  <Input
+    placeholder="search"
+    type="search"
+  />
+  <br />
+  <Input
+    placeholder="text"
+    type="text"
+  />
+  <br />
+  <Input
+    placeholder="time"
+    type="time"
+  />
+  <br />
+  <Input
+    placeholder="url"
+    type="url"
+  />
+  <br />
+</>
+```
+
+## Floating number
+
+---
+
+```jsx
+<Input
+  defaultValue="9.99"
+  step="any"
+  type="number"
+/>
+```
+
+## Datalist
+
+---
+
+```jsx
+<>
+  <Input list="ice-cream-flavors" />
+  <datalist id="ice-cream-flavors">
+    <option value="Chocolate" />
+    <option value="Coconut" />
+    <option value="Mint" />
+    <option value="Strawberry" />
+    <option value="Vanilla" />
+  </datalist>
+</>
+```
+
+## Form field
+
+---
+
+Name:
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Name:  </FormFieldLabel>
+  <Input />
+</FormField>
+```
+
+## Recipes
+
+---
+
+Dashboard Card
+
+#### Cluster Information
+
+---
+
+Name
+
+MyCluster
+
+---
+
+ID
+
+---
+
+Region
+
+GRA91-AZ
+
+---
+
+Admission plugins
+
+Always Pull Images PluginEnable
+
+Plugin Node RestrictionEnable
+
+---
+
+Data Grid
+
+| 
+ | 
+
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+IP Address
+
+ | 
+
+Actions
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+
+102550100300
+
+of 0 results
+
+Email Field
+
+Email- mandatory
+
+@
+
+.fr.com.dev
+
+The part before the email address (the text before the @) must follow these guidelines:
+
+-   It must end with a letter or a number
+-   Allowed special characters are: ".", "_", "-"
+-   Special characters cannot be placed next to each other
+
+Range Input
+
+0100

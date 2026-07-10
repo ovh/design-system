@@ -4,7 +4,7 @@ slug: switch
 category: component
 type: overview
 version: 19.7.3
-tokens: 1426
+tokens: 1275
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch.txt
 ---
 
@@ -125,38 +125,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-switch
       <SwitchItem value="item-2">Item 2</SwitchItem>
       <SwitchItem value="item-3">Item 3</SwitchItem>
     </Switch>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: arg => <Switch {...arg}>
-      <SwitchItem value="item-1">Item 1</SwitchItem>
-      <SwitchItem value="item-2">Item 2</SwitchItem>
-      <SwitchItem value="item-3">Item 3</SwitchItem>
-    </Switch>,
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    size: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'SWITCH_SIZE'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: SWITCH_SIZES
-    }
-  })
 }
 ```
 

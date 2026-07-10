@@ -4,7 +4,7 @@ slug: link
 category: component
 type: overview
 version: 19.7.3
-tokens: 989
+tokens: 898
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link.txt
 ---
 
@@ -98,31 +98,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-link.t
   render: ({}) => <Link href="https://www.ovhcloud.com">
       Default Link
     </Link>
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot
-      },
-      control: 'text'
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    }
-  }),
-  args: {
-    // @ts-ignore check when time to do so
-    children: 'My link'
-  }
 }
 ```
 

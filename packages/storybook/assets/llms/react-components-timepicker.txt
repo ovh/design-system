@@ -4,7 +4,7 @@ slug: timepicker
 category: component
 type: overview
 version: 19.7.3
-tokens: 1654
+tokens: 1399
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepicker.txt
 ---
 
@@ -93,58 +93,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-timepi
   render: ({}) => <Timepicker>
       <TimepickerControl />
     </Timepicker>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: DemoArg) => <Timepicker disabled={arg.disabled} invalid={arg.invalid} readOnly={arg.readOnly} withSeconds={arg.withSeconds}>
-      <TimepickerControl />
-
-      {arg.withTimezones && <TimepickerTimezoneList />}
-    </Timepicker>,
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    withSeconds: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    withTimezones: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    }
-  })
 }
 ```
 

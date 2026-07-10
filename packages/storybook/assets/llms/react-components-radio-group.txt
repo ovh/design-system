@@ -4,7 +4,7 @@ slug: radio-group
 category: component
 type: overview
 version: 19.7.3
-tokens: 1905
+tokens: 1623
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-group.txt
 ---
 
@@ -108,63 +108,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-radio-
         <RadioLabel>JavaScript</RadioLabel>
       </Radio>
     </RadioGroup>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: DemoArg) => <RadioGroup disabled={arg.disabled} orientation={arg.orientation}>
-      <Radio invalid={arg.invalid} value="html">
-        <RadioControl />
-
-        <RadioLabel>HTML</RadioLabel>
-      </Radio>
-
-      <Radio invalid={arg.invalid} value="css">
-        <RadioControl />
-
-        <RadioLabel>CSS</RadioLabel>
-      </Radio>
-
-      <Radio invalid={arg.invalid} value="js">
-        <RadioControl />
-
-        <RadioLabel>JavaScript</RadioLabel>
-      </Radio>
-    </RadioGroup>,
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    orientation: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: ['horizontal', 'vertical']
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: ['horizontal', 'vertical']
-    }
-  })
 }
 ```
 

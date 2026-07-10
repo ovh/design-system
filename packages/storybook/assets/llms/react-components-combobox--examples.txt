@@ -1,0 +1,512 @@
+---
+title: "Combobox"
+slug: combobox
+category: component
+type: examples
+version: 19.7.3
+tokens: 1741
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-combobox--examples.txt
+---
+
+# Combobox
+
+## Default
+
+---
+
+```jsx
+<Combobox
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <ComboboxControl />
+  <ComboboxContent />
+</Combobox>
+```
+
+## Clearable
+
+---
+
+```jsx
+<Combobox
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <ComboboxControl
+    clearable
+    placeholder="Combobox"
+  />
+  <ComboboxContent />
+</Combobox>
+```
+
+## Disabled
+
+---
+
+```jsx
+<Combobox
+  disabled
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <ComboboxControl placeholder="Combobox" />
+  <ComboboxContent />
+</Combobox>
+```
+
+## Readonly
+
+---
+
+```jsx
+<Combobox
+  defaultValue={[
+    'parrot'
+  ]}
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+  readOnly
+>
+  <ComboboxControl placeholder="Combobox" />
+  <ComboboxContent />
+</Combobox>
+```
+
+## Group
+
+---
+
+```jsx
+<Combobox
+  items={[
+    {
+      label: 'Europe',
+      options: [
+        {
+          label: 'France',
+          value: 'fr'
+        },
+        {
+          label: 'Germany',
+          value: 'de'
+        },
+        {
+          label: 'Italy',
+          value: 'it'
+        }
+      ]
+    },
+    {
+      label: 'Asia',
+      options: [
+        {
+          label: 'China',
+          value: 'cn'
+        },
+        {
+          label: 'Japan',
+          value: 'jp'
+        },
+        {
+          label: 'Russia',
+          value: 'ru'
+        }
+      ]
+    },
+    {
+      label: 'World',
+      value: 'world'
+    }
+  ]}
+>
+  <ComboboxControl placeholder="Combobox" />
+  <ComboboxContent />
+</Combobox>
+```
+
+## Invalid
+
+---
+
+```jsx
+<Combobox
+  invalid
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    }
+  ]}
+>
+  <ComboboxControl />
+  <ComboboxContent />
+</Combobox>
+```
+
+## Controlled
+
+---
+
+**Selected value:** dog
+
+```jsx
+const [value, setValue] = useState<string[]>(['dog']);
+  return <>
+      <Combobox items={[{
+      label: 'Dog',
+      value: 'dog'
+    }, {
+      label: 'Cat',
+      value: 'cat'
+    }, {
+      label: 'Hamster',
+      value: 'hamster'
+    }, {
+      label: 'Parrot',
+      value: 'parrot'
+    }, {
+      label: 'Spider',
+      value: 'spider'
+    }, {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }]} onValueChange={details => setValue(details.value)} value={value}>
+        <ComboboxControl placeholder="Select an animal" />
+        <ComboboxContent />
+      </Combobox>
+      <div style={{
+      marginTop: 8
+    }}>
+        <strong>Selected value:</strong> {value[0] ?? 'None'}
+      </div>
+    </>;
+}
+```
+
+## Highlight
+
+---
+
+```jsx
+<Combobox
+  highlightResults
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <ComboboxControl />
+  <ComboboxContent />
+</Combobox>
+```
+
+## Custom Options
+
+---
+
+```jsx
+type MyData = {
+    color?: string;
+    info?: string;
+  };
+  const items = [{
+    label: 'Apple',
+    value: 'apple',
+    customRendererData: {
+      color: 'red',
+      info: 'Fruit'
+    }
+  }, {
+    label: 'Banana',
+    value: 'banana',
+    customRendererData: {
+      color: 'yellow',
+      info: 'Fruit'
+    }
+  }, {
+    label: 'Carrot',
+    value: 'carrot',
+    customRendererData: {
+      color: 'orange',
+      info: 'Vegetable'
+    }
+  }, {
+    label: 'Broccoli',
+    value: 'broccoli',
+    customRendererData: {
+      color: 'green',
+      info: 'Vegetable'
+    }
+  }, {
+    label: 'Blueberry',
+    value: 'blueberry',
+    customRendererData: {
+      color: 'blue',
+      info: 'Fruit'
+    }
+  }];
+  function customOptionRenderer(item: ComboboxItem<MyData>) {
+    return <span style={{
+      color: item.customRendererData?.color,
+      fontWeight: 'bold'
+    }}>
+        {item.label} {item.customRendererData?.info && <span style={{
+        fontWeight: 'normal',
+        fontSize: 12,
+        color: '#888'
+      }}>({item.customRendererData.info})</span>}
+      </span>;
+  }
+  return <Combobox customOptionRenderer={customOptionRenderer} highlightResults items={items}>
+      <ComboboxControl />
+      <ComboboxContent />
+    </Combobox>;
+}
+```
+
+## Custom Filtering
+
+---
+
+```jsx
+<Combobox
+  customFilter={function Xs(){}}
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+>
+  <ComboboxControl placeholder="Search from right to left in each word" />
+  <ComboboxContent />
+</Combobox>
+```
+
+## Empty
+
+---
+
+```jsx
+<Combobox items={[]}>
+  <ComboboxControl />
+  <ComboboxContent />
+</Combobox>
+```
+
+## Multiple
+
+---
+
+```jsx
+<Combobox
+  items={[
+    {
+      label: 'Dog',
+      value: 'dog'
+    },
+    {
+      label: 'Cat',
+      value: 'cat'
+    },
+    {
+      label: 'Hamster',
+      value: 'hamster'
+    },
+    {
+      label: 'Parrot',
+      value: 'parrot'
+    },
+    {
+      label: 'Spider',
+      value: 'spider'
+    },
+    {
+      label: 'Goldfish',
+      value: 'goldfish'
+    }
+  ]}
+  multiple
+>
+  <ComboboxControl />
+  <ComboboxContent />
+</Combobox>
+```
+
+## Form field
+
+---
+
+Combobox
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Combobox  </FormFieldLabel>
+  <Combobox
+    items={[
+      {
+        label: 'Dog',
+        value: 'dog'
+      },
+      {
+        label: 'Cat',
+        value: 'cat'
+      }
+    ]}
+  >
+    <ComboboxControl />
+    <ComboboxContent />
+  </Combobox>
+</FormField>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

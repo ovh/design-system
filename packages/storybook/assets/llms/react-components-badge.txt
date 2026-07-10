@@ -4,7 +4,7 @@ slug: badge
 category: component
 type: overview
 version: 19.7.3
-tokens: 1237
+tokens: 1075
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge.txt
 ---
 
@@ -163,48 +163,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-badge.
   render: ({}) => <Badge>
       My badge
     </Badge>
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot
-      },
-      control: 'text'
-    },
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'BADGE_COLOR'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: BADGE_COLORS
-    },
-    size: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'BADGE_SIZE'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: BADGE_SIZES
-    }
-  }),
-  args: {
-    children: 'My badge'
-  }
 }
 ```
 

@@ -1,0 +1,232 @@
+---
+title: "Command"
+slug: command
+category: component
+type: examples
+version: 19.7.3
+tokens: 1320
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--examples.txt
+---
+
+# Command
+
+## Default
+
+---
+
+```jsx
+<Command>
+  <CommandTrigger asChild>
+    <Button>
+      Open command    </Button>
+  </CommandTrigger>
+  <CommandContent>
+    <CommandFilter />
+    <CommandList>
+      <CommandGroup>
+        <CommandOption>
+          item 1        </CommandOption>
+        <CommandOption>
+          item 2        </CommandOption>
+      </CommandGroup>
+      <CommandEmpty>
+        No results found.      </CommandEmpty>
+    </CommandList>
+  </CommandContent>
+</Command>
+```
+
+## Controlled
+
+---
+
+```jsx
+const [isOpen, setIsOpen] = useState(false);
+  function onOpenChange({
+    open  }: {
+    open: boolean;
+  }) {
+    setIsOpen(open);
+  }
+  function openCommand() {
+    setIsOpen(true);
+  }
+  return <>
+      <Button onClick={openCommand}>
+        Open command      </Button>
+      <Command onOpenChange={onOpenChange} open={isOpen}>
+        <Command.Content>
+          <Command.Filter placeholder="Search..." />
+          <Command.List>
+            <Command.Group heading="Actions">
+              <Command.Option>New file</Command.Option>
+              <Command.Option>Open file</Command.Option>
+              <Command.Option>Save file</Command.Option>
+            </Command.Group>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
+      </Command>
+    </>;
+}
+```
+
+## Controlled filtering
+
+---
+
+Passing a `value` to **CommandFilter** disables the built-in filtering: the integrator owns the query and filters the options themselves.
+
+```jsx
+const [query, setQuery] = useState('');
+  const actions = ['New file', 'Open file', 'Save file'];
+  const visibleActions = actions.filter(action => !query || action.toLowerCase().includes(query.toLowerCase()));
+  return <Command>
+      <Command.Trigger asChild>
+        <Button>Open command</Button>
+      </Command.Trigger>
+      <Command.Content>
+        <Command.Filter onChange={e => setQuery(e.target.value)} placeholder="Search..." value={query} />
+        <Command.List>
+          <Command.Group heading="Actions">
+            {visibleActions.map(action => <Command.Option key={action}>{action}</Command.Option>)}
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
+    </Command>;
+}
+```
+
+## With shortcuts
+
+---
+
+```jsx
+<Command>
+  <CommandTrigger asChild>
+    <Button>
+      Open command    </Button>
+  </CommandTrigger>
+  <CommandContent>
+    <CommandFilter placeholder="Search..." />
+    <CommandList>
+      <CommandGroup heading="File">
+        <CommandOption>
+          New file          <kbd
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              gap: '2px'
+            }}
+          >
+            <Kbd>
+              ⌘            </Kbd>
+            +            <Kbd>
+              n            </Kbd>
+          </kbd>
+        </CommandOption>
+        <CommandOption>
+          Open file        </CommandOption>
+        <CommandOption>
+          Save file        </CommandOption>
+      </CommandGroup>
+      <CommandEmpty>
+        No results found.      </CommandEmpty>
+    </CommandList>
+  </CommandContent>
+</Command>
+```
+
+## With onSelect
+
+---
+
+```jsx
+<>
+  <Command>
+    <Command.Trigger asChild>
+      <Button>Open command</Button>
+    </Command.Trigger>
+    <Command.Content>
+      <Command.Filter placeholder="Search..." />
+      <Command.List>
+        <Command.Group heading="Actions">
+          <Command.Option onSelect={() => toast('New file', {
+          toasterId: 'command-on-select'
+        })}>New file</Command.Option>
+          <Command.Option onSelect={() => toast('Open file', {
+          toasterId: 'command-on-select'
+        })}>Open file</Command.Option>
+          <Command.Option onSelect={() => toast('Save file', {
+          toasterId: 'command-on-select'
+        })}>Save file</Command.Option>
+        </Command.Group>
+        <Command.Empty>No results found.</Command.Empty>
+      </Command.List>
+    </Command.Content>
+  </Command>
+  <Toaster id="command-on-select" style={{
+  zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'
+}} />
+</>
+```
+
+## Without filter
+
+---
+
+```jsx
+<Command>
+  <CommandTrigger asChild>
+    <Button>
+      Open command    </Button>
+  </CommandTrigger>
+  <CommandContent>
+    <CommandList aria-label="Actions">
+      <CommandGroup heading="File">
+        <CommandOption>
+          New file        </CommandOption>
+        <CommandOption>
+          Open file        </CommandOption>
+        <CommandOption>
+          Save file        </CommandOption>
+      </CommandGroup>
+      <CommandGroup heading="Edit">
+        <CommandOption>
+          Undo        </CommandOption>
+        <CommandOption>
+          Redo        </CommandOption>
+      </CommandGroup>
+      <CommandEmpty>
+        No results found.      </CommandEmpty>
+    </CommandList>
+  </CommandContent>
+</Command>
+```
+
+## Empty state
+
+---
+
+```jsx
+<Command>
+  <CommandTrigger asChild>
+    <Button>
+      Open command    </Button>
+  </CommandTrigger>
+  <CommandContent>
+    <CommandFilter placeholder="Search..." />
+    <CommandList>
+      <CommandEmpty>
+        No results found.      </CommandEmpty>
+    </CommandList>
+  </CommandContent>
+</Command>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

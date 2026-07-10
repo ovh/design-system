@@ -1,0 +1,167 @@
+---
+title: "Drawer"
+slug: drawer
+category: component
+type: examples
+version: 19.7.3
+tokens: 712
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-drawer--examples.txt
+---
+
+# Drawer
+
+## Default
+
+---
+
+```jsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer    </Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerBody>
+      My drawer content    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
+## Backdrop
+
+---
+
+```jsx
+<Drawer backdrop>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer    </Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerBody>
+      My drawer content    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
+## Position
+
+---
+
+```jsx
+<>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Top drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="top">
+      <DrawerBody>
+        Top drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Left drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="left">
+      <DrawerBody>
+        Left drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Right Drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="right">
+      <DrawerBody>
+        Right drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button>
+        Bottom Drawer      </Button>
+    </DrawerTrigger>
+    <DrawerContent position="bottom">
+      <DrawerBody>
+        Bottom drawer content      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+</>
+```
+
+## Overlay Elements
+
+---
+
+```jsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button>
+      Trigger Drawer    </Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerBody
+      style={{
+        alignItems: 'center',
+        columnGap: '8px',
+        display: 'grid',
+        gridTemplateColumns: '1fr max-content'
+      }}
+    >
+      <Select
+        items={[
+          {
+            label: 'Dog',
+            value: 'dog'
+          },
+          {
+            label: 'Cat',
+            value: 'cat'
+          },
+          {
+            label: 'Hamster',
+            value: 'hamster'
+          },
+          {
+            label: 'Parrot',
+            value: 'parrot'
+          },
+          {
+            label: 'Spider',
+            value: 'spider'
+          },
+          {
+            label: 'Goldfish',
+            value: 'goldfish'
+          }
+        ]}
+      >
+        <SelectControl />
+        <SelectContent />
+      </Select>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Icon
+            name="circle-question"
+            style={{
+              fontSize: '24px'
+            }}
+          />
+        </TooltipTrigger>
+        <TooltipContent>
+          This is the tooltip content        </TooltipContent>
+      </Tooltip>
+    </DrawerBody>
+  </DrawerContent>
+</Drawer>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

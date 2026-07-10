@@ -4,7 +4,7 @@ slug: kbd
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 220
+tokens: 192
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-kbd--technical-information.txt
 ---
 
@@ -61,23 +61,3 @@ This component has no specific properties.
 | --ods-kbd-text-color | var(--ods-color-neutral-700) | 
 
  |
-
-## Examples
-
----
-
-### Default
-
-Cmd
-
-```jsx
-<Kbd>
-  Cmd
-</Kbd>
-```
-
-## Recipes
-
----
-
-No recipe defined for now.

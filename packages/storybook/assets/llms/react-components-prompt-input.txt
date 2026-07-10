@@ -4,7 +4,7 @@ slug: prompt-input
 category: component
 type: overview
 version: 19.7.3
-tokens: 3582
+tokens: 3399
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt-input.txt
 ---
 
@@ -188,40 +188,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt
 }
 ```
 
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    disabled: {
-      control: "boolean",
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    loading: {
-      control: "boolean",
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    readOnly: {
-      control: "boolean",
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    }
-  }),
-  render: arg => <PromptInput loading={arg.loading} readOnly={arg.readOnly} disabled={arg.disabled}>
-      <PromptInputControls>
-        <PromptInputFileUploadButton />
-        <PromptInputTextControl placeholder="Type your message here..." />
-        <PromptInputSendButton />
-      </PromptInputControls>
-    </PromptInput>
-}
-```
-
 ### Disabled
 
 ```tsx
@@ -230,7 +196,7 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-prompt
   globals: {
     imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
   },
-  render: ({}) => <PromptInput disabled defaultValue="Nobody’s here to answer…">
+  render: ({}) => <PromptInput disabled defaultValue="Nobody's here to answer…">
       <PromptInputControls>
         <PromptInputFileUploadButton aria-label="Attach a file" />
         <PromptInputTextControl aria-label="Ask someone about something…" />
@@ -299,7 +265,7 @@ import { useState } from 'react';`
   globals: {
     imports: "import { PromptInput, PromptInputControls, PromptInputFileUploadButton, PromptInputTextControl, PromptInputSendButton } from '@ovhcloud/ods-react';"
   },
-  render: ({}) => <PromptInput defaultValue="“Someone” is processing your request…" loading>
+  render: ({}) => <PromptInput defaultValue='"Someone" is processing your request…' loading>
       <PromptInputControls>
         <PromptInputFileUploadButton aria-label="Attach a file" />
         <PromptInputTextControl aria-label="Ask someone about something…" />

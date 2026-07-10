@@ -4,7 +4,7 @@ slug: textarea
 category: component
 type: overview
 version: 19.7.3
-tokens: 1127
+tokens: 873
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textarea.txt
 ---
 
@@ -79,66 +79,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-textar
   },
   tags: ['!dev'],
   render: ({}) => <Textarea />
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    cols: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'number'
-        }
-      },
-      control: 'number'
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    placeholder: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'string'
-        }
-      },
-      control: 'text'
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    rows: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'number'
-        }
-      },
-      control: 'number'
-    }
-  })
 }
 ```
 

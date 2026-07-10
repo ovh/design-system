@@ -4,7 +4,7 @@ slug: divider
 category: component
 type: overview
 version: 19.7.3
-tokens: 858
+tokens: 667
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-divider.txt
 ---
 
@@ -60,51 +60,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-divide
   },
   tags: ['!dev'],
   render: ({}) => <Divider />
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'DIVIDER_COLOR'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: DIVIDER_COLORS
-    },
-    orientation: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'DIVIDER_ORIENTATION'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: DIVIDER_ORIENTATIONS
-    },
-    spacing: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'DIVIDER_SPACING'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: DIVIDER_SPACINGS
-    }
-  })
 }
 ```
 

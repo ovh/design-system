@@ -4,7 +4,7 @@ slug: toggle
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 873
+tokens: 637
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle--technical-information.txt
 ---
 
@@ -130,88 +130,3 @@ withLabels
 | --ods-toggle-control-thumb-background-color | var(--ods-color-neutral-000) | 
 
  |
-
-## Examples
-
----
-
-### Default
-
-```jsx
-<Toggle>
-  <ToggleControl />
-</Toggle>
-```
-
-### Disabled
-
-```jsx
-<Toggle disabled>
-  <ToggleControl />
-</Toggle>
-```
-
-### Invalid
-
-```jsx
-<Toggle invalid>
-  <ToggleControl />
-</Toggle>
-```
-
-### With label
-
-Enable dark mode
-
-```jsx
-<Toggle>
-  <ToggleControl />
-  <ToggleLabel>
-    Enable dark mode  </ToggleLabel>
-</Toggle>
-```
-
-### With inside labels
-
-ONOFF
-
-```jsx
-<Toggle withLabels>
-  <ToggleControl />
-</Toggle>
-```
-
-### Form field
-
-Notification settings:
-
-General Information
-
-Promotions
-
-```jsx
-<>
-  <Text preset="label">
-    Notification settings:  </Text>
-  <FormField>
-    <Toggle>
-      <ToggleControl />
-      <ToggleLabel>
-        General Information      </ToggleLabel>
-    </Toggle>
-  </FormField>
-  <FormField>
-    <Toggle>
-      <ToggleControl />
-      <ToggleLabel>
-        Promotions      </ToggleLabel>
-    </Toggle>
-  </FormField>
-</>
-```
-
-## Recipes
-
----
-
-No recipe defined for now.

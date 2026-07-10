@@ -4,7 +4,7 @@ slug: tag
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 1571
+tokens: 1398
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag--technical-information.txt
 ---
 
@@ -250,70 +250,3 @@ size
 | --ods-tag-text-color-warning-hover | var(--ods-color-warning-900) | 
 
  |
-
-## Examples
-
----
-
-### Default
-
-```jsx
-<Tag>
-  My tag
-</Tag>
-```
-
-### Color
-
-```jsx
-<>
-  <Tag color="critical">
-    Critical  </Tag>
-  <Tag color="information">
-    Information  </Tag>
-  <Tag color="neutral">
-    Neutral  </Tag>
-  <Tag color="primary">
-    Primary  </Tag>
-  <Tag color="success">
-    Success  </Tag>
-  <Tag color="warning">
-    Warning  </Tag>
-</>
-```
-
-### Disabled
-
-```jsx
-<Tag disabled>
-  My tag
-</Tag>
-```
-
-### Size
-
-```jsx
-<>
-  <Tag size="md">
-    MD tag  </Tag>
-  <Tag size="lg">
-    LG tag  </Tag>
-</>
-```
-
-### Custom icon
-
-```jsx
-<>
-  <Tag icon={null}>
-    No Icon  </Tag>
-  <Tag icon="star">
-    Custom Icon  </Tag>
-</>
-```
-
-## Recipes
-
----
-
-No recipe defined for now.

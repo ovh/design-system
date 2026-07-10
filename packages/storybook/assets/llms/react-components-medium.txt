@@ -4,7 +4,7 @@ slug: medium
 category: component
 type: overview
 version: 19.7.3
-tokens: 676
+tokens: 510
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium.txt
 ---
 
@@ -51,45 +51,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-medium
   },
   tags: ['!dev'],
   render: ({}) => <Medium alt="NASA Computer room" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg" />
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    height: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'number'
-        }
-      },
-      control: 'number'
-    },
-    src: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'string'
-        }
-      },
-      control: 'text'
-    },
-    width: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'number'
-        }
-      },
-      control: 'number'
-    }
-  }),
-  args: {
-    src: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/NASAComputerRoom7090.NARA.jpg'
-  }
 }
 ```
 

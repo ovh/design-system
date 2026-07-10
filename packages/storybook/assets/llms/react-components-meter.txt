@@ -4,7 +4,7 @@ slug: meter
 category: component
 type: overview
 version: 19.7.3
-tokens: 919
+tokens: 777
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter.txt
 ---
 
@@ -90,45 +90,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-meter.
   },
   tags: ['!dev'],
   render: ({}) => <Meter />
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    high: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    low: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    max: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    min: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    optimum: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    value: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    }
-  })
 }
 ```
 

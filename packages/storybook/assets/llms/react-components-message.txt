@@ -4,7 +4,7 @@ slug: message
 category: component
 type: overview
 version: 19.7.3
-tokens: 2554
+tokens: 2234
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-message.txt
 ---
 
@@ -259,75 +259,6 @@ import { useState } from 'react';`
         Default message
       </MessageBody>
     </Message>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: DemoArg) => <Message color={arg.color} dismissible={arg.dismissible} variant={arg.variant}>
-      <MessageIcon name={arg.name || ICON_NAME.circleInfo} />
-
-      <MessageBody>
-        {arg.children}
-      </MessageBody>
-    </Message>,
-  argTypes: orderControls({
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot
-      },
-      control: 'text'
-    },
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'MESSAGE_COLOR'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: MESSAGE_COLORS
-    },
-    dismissible: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    name: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'ICON_NAME'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: ICON_NAMES
-    },
-    variant: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'MESSAGE_VARIANT'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: MESSAGE_VARIANTS
-    }
-  }),
-  args: {
-    children: 'My message'
-  }
 }
 ```
 

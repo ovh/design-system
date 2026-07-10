@@ -4,7 +4,7 @@ slug: input
 category: component
 type: overview
 version: 19.7.3
-tokens: 1688
+tokens: 1319
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input.txt
 ---
 
@@ -126,90 +126,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-input.
   },
   tags: ['!dev'],
   render: ({}) => <Input />
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: DemoArg) => {
-    const {
-      masked,
-      ...inputArg
-    } = arg;
-    return <Input maskOption={{
-      enable: !!masked
-    }} {...inputArg} />;
-  },
-  argTypes: orderControls({
-    clearable: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    loading: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    masked: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    placeholder: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'string'
-        }
-      },
-      control: 'text'
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    type: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'INPUT_TYPE'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: INPUT_TYPES
-    }
-  })
 }
 ```
 

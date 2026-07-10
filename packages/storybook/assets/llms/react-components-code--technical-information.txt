@@ -4,7 +4,7 @@ slug: code
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 962
+tokens: 725
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-code--technical-information.txt
 ---
 
@@ -149,73 +149,3 @@ const HighlightedCode = () => (
 ```
 console.log('Hello World');
 ```
-
-## Examples
-
----
-
-### Default
-
-```
-console.log('Hello world');
-```
-
-```jsx
-<Code>
-  console.log('Hello world');
-</Code>
-```
-
-### Multiline
-
-```
-function isTargetInElement(event, element) {
-  if (!element) {
-    return false;
-  }
-
-    return element.contains(event.target) || event.composedPath().includes(element);
-  }
-```
-
-```jsx
-<Code>
-  {`function isTargetInElement(event, element) {
-    if (!element) {      return false;    }  
-      return element.contains(event.target) || event.composedPath().includes(element);    }`}
-</Code>
-```
-
-### With copy button enabled
-
-```
-import { Text } from '@ovhcloud/ods-react';
-```
-
-```jsx
-<Code canCopy>
-  {`import { Text } from '@ovhcloud/ods-react';`}
-</Code>
-```
-
-### Custom labels
-
-```
-console.log('Hello world');
-```
-
-```jsx
-<Code
-  canCopy
-  labelCopy="Click to copy"
-  labelCopySuccess="Successfully copied"
->
-  console.log('Hello world');
-</Code>
-```
-
-## Recipes
-
----
-
-No recipe defined for now.

@@ -4,7 +4,7 @@ slug: select
 category: component
 type: overview
 version: 19.7.3
-tokens: 4605
+tokens: 4177
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select.txt
 ---
 
@@ -294,95 +294,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-select
 
       <SelectContent />
     </Select>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: DemoArg) => <Select disabled={arg.disabled} invalid={arg.invalid} items={[{
-    label: 'Dog',
-    value: 'dog'
-  }, {
-    label: 'Cat',
-    value: 'cat'
-  }, {
-    label: 'Hamster',
-    value: 'hamster'
-  }, {
-    label: 'Parrot',
-    value: 'parrot'
-  }, {
-    label: 'Spider',
-    value: 'spider'
-  }, {
-    label: 'Goldfish',
-    value: 'goldfish'
-  }]} multiple={arg.multiple} overlayConfig={{
-    sameWidth: arg.sameWidth
-  }} readOnly={arg.readOnly}>
-      <SelectControl multipleSelectionLabel={arg.multipleSelectionLabel} placeholder={arg.placeholder} />
-
-      <SelectContent />
-    </Select>,
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    multiple: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'select'
-      },
-      options: [true, false, 'merge']
-    },
-    multipleSelectionLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'string'
-        }
-      },
-      control: 'text'
-    },
-    placeholder: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'string'
-        }
-      },
-      control: 'text'
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    sameWidth: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    }
-  })
 }
 ```
 

@@ -4,7 +4,7 @@ slug: toggle
 category: component
 type: overview
 version: 19.7.3
-tokens: 1204
+tokens: 1103
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle.txt
 ---
 
@@ -103,33 +103,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toggle
   render: ({}) => <Toggle>
       <ToggleControl />
     </Toggle>
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    withLabels: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    }
-  })
 }
 ```
 

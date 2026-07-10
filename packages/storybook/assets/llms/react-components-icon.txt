@@ -4,7 +4,7 @@ slug: icon
 category: component
 type: overview
 version: 19.7.3
-tokens: 992
+tokens: 913
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-icon.txt
 ---
 
@@ -126,30 +126,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-icon.t
   },
   tags: ['!dev'],
   render: ({}) => <Icon name={ICON_NAME.home} />
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    name: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'ICON_NAME'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: ICON_NAMES
-    }
-  }),
-  args: {
-    name: ICON_NAME.home
-  }
 }
 ```
 

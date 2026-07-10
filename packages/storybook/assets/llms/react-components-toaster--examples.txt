@@ -1,0 +1,210 @@
+---
+title: "Toaster"
+slug: toaster
+category: component
+type: examples
+version: 19.7.3
+tokens: 942
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaster--examples.txt
+---
+
+# Toaster
+
+## Default
+
+---
+
+```jsx
+<>
+  <Toaster />
+  <Button onClick={() => toast('Notification message')}>
+    Trigger toast  </Button>
+</>
+```
+
+## Colors
+
+---
+
+```jsx
+<>
+  <Toaster id="colors" />
+  <div style={{
+  display: 'flex',
+  gap: '8px',
+  flexWrap: 'wrap'
+}}>
+    <Button color={BUTTON_COLOR.critical} onClick={() => toast.critical('Critical', {
+    toasterId: 'colors'
+  })}>
+      Critical toast    </Button>
+    <Button color={BUTTON_COLOR.information} onClick={() => toast.information('Information', {
+    toasterId: 'colors'
+  })}>
+      Information toast    </Button>
+    <Button color={BUTTON_COLOR.neutral} onClick={() => toast.neutral('Neutral', {
+    toasterId: 'colors'
+  })}>
+      Neutral toast    </Button>
+    <Button color={BUTTON_COLOR.primary} onClick={() => toast.primary('Primary', {
+    toasterId: 'colors'
+  })}>
+      Primary toast    </Button>
+    <Button color={BUTTON_COLOR.success} onClick={() => toast.success('Success', {
+    toasterId: 'colors'
+  })}>
+      Success toast    </Button>
+    <Button color={BUTTON_COLOR.warning} onClick={() => toast.warning('Warning', {
+    toasterId: 'colors'
+  })}>
+      Warning toast    </Button>
+  </div>
+</>
+```
+
+## Dismissible
+
+---
+
+```jsx
+<>
+  <Toaster dismissible={false} id="dismissible" />
+  <div style={{
+  display: 'flex',
+  gap: '8px',
+  flexWrap: 'wrap'
+}}>
+    <Button onClick={() => toast('Non dismissible toast', {
+    toasterId: 'dismissible'
+  })}>
+      Trigger non dismissible toast    </Button>
+    <Button onClick={() => toast('Dismissible toast', {
+    dismissible: true,
+    toasterId: 'dismissible'
+  })}>
+      Trigger dismissible toast    </Button>
+  </div>
+</>
+```
+
+## Duration
+
+---
+
+```jsx
+<>
+  <Toaster duration={Infinity} id="duration" />
+  <div style={{
+  display: 'flex',
+  gap: '8px',
+  flexWrap: 'wrap'
+}}>
+    <Button onClick={() => toast('Infinite toast', {
+    toasterId: 'duration'
+  })}>
+      Trigger infinite toast    </Button>
+    <Button onClick={() => toast('3 seconds toast', {
+    duration: 3000,
+    toasterId: 'duration'
+  })}>
+      Trigger 3 seconds toast    </Button>
+  </div>
+</>
+```
+
+## Icon
+
+---
+
+```jsx
+<>
+  <Toaster id="icon" />
+  <Button onClick={() => toast('Notification message with icon', {
+  icon: ICON_NAME.circleInfo,
+  toasterId: 'icon'
+})}>
+    Trigger toast  </Button>
+</>
+```
+
+## Position
+
+---
+
+```jsx
+<>
+  <Toaster
+    id="top-start"
+    position="top-start"
+  />
+  <Toaster
+    id="top"
+    position="top"
+  />
+  <Toaster
+    id="top-end"
+    position="top-end"
+  />
+  <Toaster
+    id="bottom-start"
+    position="bottom-start"
+  />
+  <Toaster
+    id="bottom"
+    position="bottom"
+  />
+  <Toaster
+    id="bottom-end"
+    position="bottom-end"
+  />
+  <div
+    style={{
+      display: 'grid',
+      gap: '20px',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gridTemplateRows: 'repeat(2, 1fr)'
+    }}
+  >
+    <Button onClick={function Xs(){}}>
+      Top Start    </Button>
+    <Button onClick={function Xs(){}}>
+      Top    </Button>
+    <Button onClick={function Xs(){}}>
+      Top End    </Button>
+    <Button onClick={function Xs(){}}>
+      Bottom Start    </Button>
+    <Button onClick={function Xs(){}}>
+      Bottom    </Button>
+    <Button onClick={function Xs(){}}>
+      Bottom End    </Button>
+  </div>
+</>
+```
+
+## Custom Content
+
+---
+
+```jsx
+<>
+  <Toaster id="custom-content" />
+  <Button onClick={() => toast(<div>
+        <Text preset={TEXT_PRESET.label}>
+          Toast title        </Text>
+        <Text>
+          Toast text helps users providing feedback or information.        </Text>
+        <Link>
+          Some Link        </Link>
+      </div>, {
+  icon: ICON_NAME.circleInfo,
+  toasterId: 'custom-content'
+})}>
+    Trigger toast  </Button>
+</>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

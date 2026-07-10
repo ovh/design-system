@@ -1,0 +1,249 @@
+---
+title: "Command"
+slug: command
+category: component
+type: technical-information
+version: 19.7.3
+tokens: 1329
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command--technical-information.txt
+---
+
+# Command
+
+## Overview
+
+---
+
+## Anatomy
+
+---
+
+Command
+
+CommandContent
+
+CommandEmpty
+
+CommandFilter
+
+CommandGroup
+
+CommandOption
+
+CommandList
+
+CommandTrigger
+
+---
+
+###### Group a
+
+item a-1
+
+item a-2
+
+###### Group b
+
+item b-1
+
+item b-2
+
+No results found  
+…
+
+## Command
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| 
+backdropStyle
+
+ | `CSSProperties` | - | `undefined` | Custom style applied to the modal backdrop. Useful if you want to override the backdrop z-index. |
+| 
+
+closeOnEscape
+
+ | `boolean` | - | `undefined` | Whether to close the modal when the escape key is pressed. |
+| 
+
+closeOnInteractOutside
+
+ | `boolean` | - | `undefined` | Whether to close the modal when the outside is clicked. |
+| 
+
+defaultOpen
+
+ | `boolean` | - | `undefined` | The initial open state of the modal. Use when you don't need to control the open state of the modal. |
+| 
+
+i18n
+
+ | `Partial` | - | `undefined` | Internal translations override. |
+| 
+
+initialFocusedElement
+
+ | `() => HTMLElement | null` | - | `undefined` | Element that receive the focus when the dialog is opened. |
+| 
+
+locale
+
+ | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| 
+
+onOpenChange
+
+ | `(detail: ModalOpenChangeDetail) => void` | - | `undefined` | Callback fired when the modal open state changes. |
+| 
+
+open
+
+ | `boolean` | - | `undefined` | The controlled open state of the modal. |
+| 
+
+positionerStyle
+
+ | `CSSProperties` | - | `undefined` | Custom style applied to the overlay positioner. Useful if you want to override the overlay z-index. |
+
+## CommandContent
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| 
+createPortal
+
+ | `boolean` | - | `undefined` | Whether the component should be rendered in the DOM close to the body tag. |
+
+## CommandEmpty
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## CommandFilter
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [input attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes) . |
+| 
+clearable
+
+ | `boolean` | - | `undefined` | Whether the clear button is displayed. |
+| 
+
+i18n
+
+ | `Partial` | - | `undefined` | Internal translations override. |
+| 
+
+invalid
+
+ | `boolean` | - | `undefined` | Whether the component is in error state. |
+| 
+
+loading
+
+ | `boolean` | - | `undefined` | Whether the component is in loading state. |
+| 
+
+locale
+
+ | `LOCALE` | - | `undefined` | The locale used for the translation of the internal elements. |
+| 
+
+maskOption
+
+ | `object` | - | `undefined` | Masked display options. |
+| 
+
+enable
+
+ | `boolean` |  | `-` | Whether the masked display is active. |
+| 
+
+initialState
+
+ | `INPUT_MASK_STATE` | - | `-` | Initial state of the mask. |
+| 
+
+onClear
+
+ | `() => void` | - | `undefined` | Callback fired when the input value is cleared. |
+| 
+
+type
+
+ | `INPUT_TYPE` | - | `undefined` | The input type. |
+| 
+
+value
+
+ | `InputProp['value']` | - | `undefined` | The controlled filter query. When set, the built-in option filtering is fully disabled: the consumer owns the query state (via `onChange`) and is responsible for rendering only the matching options. |
+
+## CommandGroup
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| 
+heading
+
+ | `string` | - | `undefined` | - |
+
+## CommandOption
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+| 
+onSelect
+
+ | `() => void` | - | `undefined` | Called when the option is selected via click or Enter. |
+
+## CommandList
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [div attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes) . |
+
+## CommandTrigger
+
+---
+
+| Property | Type | Required | Default value | Description |
+| --- | --- | --- | --- | --- |
+| This component extends all the native [button attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes) . |
+| 
+asChild
+
+ | `boolean` | - | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+## Css Variables
+
+---
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-command-padding-horizontal | calc(var(--ods-theme-padding-horizontal) * 2) | 
+ |
+| --ods-command-padding-vertical | calc(var(--ods-theme-padding-vertical) * 2) | 
+
+ |
+| --ods-command-width | 380px | 
+
+ |

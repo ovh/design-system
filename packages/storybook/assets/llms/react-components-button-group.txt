@@ -4,7 +4,7 @@ slug: button-group
 category: component
 type: overview
 version: 19.7.3
-tokens: 1776
+tokens: 1586
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button-group.txt
 ---
 
@@ -106,44 +106,6 @@ import { useState } from 'react';`
         <Icon name={ICON_NAME.calendar} /> Custom
       </ButtonGroupItem>
     </ButtonGroup>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: arg => <ButtonGroup {...arg}>
-      <ButtonGroupItem value="1">Option 1</ButtonGroupItem>
-      <ButtonGroupItem value="2">Option 2</ButtonGroupItem>
-      <ButtonGroupItem value="3">Option 3</ButtonGroupItem>
-    </ButtonGroup>,
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    multiple: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    size: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'BUTTON_GROUP_SIZE'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: BUTTON_GROUP_SIZES
-    }
-  })
 }
 ```
 

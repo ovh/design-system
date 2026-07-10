@@ -1,0 +1,715 @@
+---
+title: "Command"
+slug: command
+category: component
+type: overview
+version: 19.7.3
+tokens: 4802
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-command.txt
+---
+
+# Command
+
+## Subcomponents
+
+
+### CommandContent
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `createPortal` | `` | No |  | Whether the component should be rendered in the DOM close to the body tag. |
+
+
+
+### CommandEmpty
+
+
+
+
+### CommandFilter
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `clearable` | `` | No |  | Whether the clear button is displayed. |
+| `invalid` | `` | No |  | Whether the component is in error state. |
+| `i18n` | `` | No |  | Internal translations override. |
+| `loading` | `` | No |  | Whether the component is in loading state. |
+| `locale` | `` | No |  | The locale used for the translation of the internal elements. |
+| `maskOption` | `` | No |  | Masked display options. |
+| `onClear` | `` | No |  | Callback fired when the input value is cleared. |
+| `type` | `` | No |  | The input type. |
+| `value` | `` | No |  | The controlled filter query. When set, the built-in option filtering is fully disabled: the consumer owns the query state (via `onChange`) and is responsible for rendering only the matching options. |
+
+
+
+### CommandGroup
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `heading` | `` | No |  |  |
+
+
+
+### CommandOption
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `onSelect` | `` | No |  | Called when the option is selected via click or Enter. |
+
+
+
+### CommandList
+
+
+
+
+### CommandTrigger
+
+
+
+#### Props
+
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `asChild` | `` | No |  | Use the provided child element as the default rendered element, combining their props and behavior. Be careful to pass an actual Node, not a Fragment. |
+
+
+## Examples
+
+
+### Accessibility Disabled Option
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Command>
+      <Command.Trigger asChild>
+        <Button>Open command</Button>
+      </Command.Trigger>
+      <Command.Content aria-label="Command palette">
+        <Command.Filter aria-label="Search command palette" placeholder="Search..." />
+        <Command.List>
+          <Command.Group heading="Actions">
+            <Command.Option>New file</Command.Option>
+            <Command.Option>Open file</Command.Option>
+            <Command.Option aria-disabled="true">Save file</Command.Option>
+          </Command.Group>
+          <Command.Group heading="Help">
+            <Command.Option>Some help</Command.Option>
+            <Command.Option>Some more help</Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
+    </Command>
+}
+```
+
+### Accessibility Filter Label
+
+```tsx
+{
+  tags: ['!dev'],
+  globals: {
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';`
+  },
+  render: ({}) => <Command>
+      <Command.Trigger asChild>
+        <Button>Open command</Button>
+      </Command.Trigger>
+      <Command.Content aria-label="Command palette">
+        <Command.Filter aria-label="Search command palette" placeholder="Search..." />
+        <Command.List>
+          <Command.Group heading="Actions">
+            <Command.Option>New file</Command.Option>
+            <Command.Option>Open file</Command.Option>
+            <Command.Option>Save file</Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
+    </Command>
+}
+```
+
+### Accessibility Group Names
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Command>
+      <Command.Trigger asChild>
+        <Button>Open command</Button>
+      </Command.Trigger>
+      <Command.Content aria-label="Command palette">
+        <Command.Filter aria-label="Search command palette" placeholder="Search..." />
+        <Command.List aria-label="Command palette">
+          <Command.Group heading="Visible group name">
+            <Command.Option>New file</Command.Option>
+            <Command.Option>Open file</Command.Option>
+          </Command.Group>
+          <Command.Group aria-label="Hidden group name">
+            <Command.Option>Some help</Command.Option>
+            <Command.Option>Some more help</Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
+    </Command>
+}
+```
+
+### Accessibility Labels
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Command>
+      <Command.Trigger asChild>
+        <Button>Open command</Button>
+      </Command.Trigger>
+      <Command.Content aria-label="Command palette">
+        <Command.Filter aria-label="Search command palette" placeholder="Search..." />
+        <Command.List aria-label="Command palette">
+          <Command.Group heading="Actions">
+            <Command.Option>New file</Command.Option>
+            <Command.Option>Open file</Command.Option>
+            <Command.Option>Save file</Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
+    </Command>
+}
+```
+
+### Anatomy Tech
+
+```tsx
+{
+  tags: ["!dev"],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexFlow: 'column',
+    rowGap: 'var(--ods-theme-row-gap)',
+    alignItems: 'start',
+    zIndex: 0,
+    position: 'relative'
+  }}>
+      <div style={{
+      position: 'relative',
+      minWidth: '320px',
+      minHeight: '335px'
+    }}>
+        <Command aria-label="Command component demo" backdropStyle={{
+        position: 'absolute'
+      }}
+      // @ts-ignore force ark attribute to avoid inert on page
+      modal={false} open positionerStyle={{
+        position: 'absolute'
+      }}>
+          <Command.Content createPortal={false} style={{
+          width: '280px',
+          minWidth: 'auto',
+          animation: 'none'
+        }}>
+            <Command.Filter aria-label='search command' />
+            <Command.List>
+              <Command.Group heading="Group a">
+                <Command.Option>item a-1</Command.Option>
+                <Command.Option>item a-2</Command.Option>
+              </Command.Group>
+              <Command.Group heading="Group b">
+                <Command.Option>item b-1</Command.Option>
+                <Command.Option>item b-2</Command.Option>
+              </Command.Group>
+              <Command.Empty>No results found.</Command.Empty>
+            </Command.List>
+          </Command.Content>
+        </Command>
+      </div>
+      <div style={{
+      position: 'relative',
+      minWidth: '320px',
+      minHeight: '160px'
+    }}>
+        <Command aria-label="Command component demo" backdropStyle={{
+        position: 'absolute'
+      }}
+      // @ts-ignore force ark attribute to avoid inert on page
+      modal={false} open positionerStyle={{
+        position: 'absolute'
+      }}>
+          <Command.Content createPortal={false} style={{
+          width: '280px',
+          minWidth: 'auto',
+          animation: 'none'
+        }}>
+            <Command.Filter aria-label='search command' />
+            <Command.List>
+              <Command.Empty>No results found<br />…
+              </Command.Empty>
+            </Command.List>
+          </Command.Content>
+        </Command>
+      </div>
+      <Command open={false} aria-label="Command component demo">
+        <Command.Trigger asChild>
+          <Button variant={BUTTON_VARIANT.outline}>
+            Trigger Command
+          </Button>
+        </Command.Trigger>
+      </Command>
+    </div>
+}
+```
+
+### Controlled
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: ({}) => {
+    const [isOpen, setIsOpen] = useState(false);
+    function onOpenChange({
+      open
+    }: {
+      open: boolean;
+    }) {
+      setIsOpen(open);
+    }
+    function openCommand() {
+      setIsOpen(true);
+    }
+    return <>
+        <Button onClick={openCommand}>
+          Open command
+        </Button>
+
+        <Command onOpenChange={onOpenChange} open={isOpen}>
+          <Command.Content>
+            <Command.Filter placeholder="Search..." />
+            <Command.List>
+              <Command.Group heading="Actions">
+                <Command.Option>New file</Command.Option>
+                <Command.Option>Open file</Command.Option>
+                <Command.Option>Save file</Command.Option>
+              </Command.Group>
+              <Command.Empty>No results found.</Command.Empty>
+            </Command.List>
+          </Command.Content>
+        </Command>
+      </>;
+  }
+}
+```
+
+### Controlled Filtering
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';
+import { useState } from 'react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: ({}) => {
+    const [query, setQuery] = useState('');
+    const actions = ['New file', 'Open file', 'Save file'];
+    const visibleActions = actions.filter(action => !query || action.toLowerCase().includes(query.toLowerCase()));
+    return <Command>
+        <Command.Trigger asChild>
+          <Button>Open command</Button>
+        </Command.Trigger>
+        <Command.Content>
+          <Command.Filter onChange={e => setQuery(e.target.value)} placeholder="Search..." value={query} />
+          <Command.List>
+            <Command.Group heading="Actions">
+              {visibleActions.map(action => <Command.Option key={action}>{action}</Command.Option>)}
+            </Command.Group>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
+      </Command>;
+  }
+}
+```
+
+### Default
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Command>
+      <Command.Trigger asChild>
+        <Button>Open command</Button>
+      </Command.Trigger>
+      <Command.Content>
+        <Command.Filter />
+        <Command.List>
+          <Command.Group>
+            <Command.Option>item 1</Command.Option>
+            <Command.Option>item 2</Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
+    </Command>
+}
+```
+
+### Empty State
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Command } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Command>
+      <Command.Trigger asChild>
+        <Button>Open command</Button>
+      </Command.Trigger>
+      <Command.Content>
+        <Command.Filter placeholder="Search..." />
+        <Command.List>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
+    </Command>
+}
+```
+
+### Overview
+
+```tsx
+{
+  tags: ['!dev'],
+  parameters: {
+    layout: 'centered'
+  },
+  render: ({}) => <Command>
+      <Command.Trigger asChild>
+        <Button>Open command</Button>
+      </Command.Trigger>
+      <Command.Content>
+        <Command.Filter placeholder="Search..." />
+        <Command.List>
+          <Command.Group heading="Hot keys">
+            <Command.Option>
+              New file
+              <Kbd>n</Kbd>
+            </Command.Option>
+            <Command.Option>
+                Open file
+              <kbd style={{
+              alignItems: 'center',
+              display: 'flex',
+              gap: '2px'
+            }}>
+                <Kbd>Alt</Kbd>+<Kbd>o</Kbd>
+              </kbd>
+            </Command.Option>
+            <Command.Option>
+              Save file
+              <kbd style={{
+              alignItems: 'center',
+              display: 'flex',
+              gap: '2px'
+            }}>
+                <Kbd>⌘</Kbd>+<Kbd>s</Kbd>
+              </kbd>
+            </Command.Option>
+          </Command.Group>
+          <Command.Group heading="Help">
+            <Command.Option>Some help about an important subject</Command.Option>
+            <Command.Option>Some help about another subject</Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
+    </Command>
+}
+```
+
+### Theme Generator
+
+```tsx
+{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  tags: ['!dev'],
+  render: ({}) => <div style={{
+    display: 'flex',
+    flexFlow: 'row wrap',
+    gap: '12px'
+  }}>
+      <Command>
+        <Command.Trigger asChild>
+          <Button>Default</Button>
+        </Command.Trigger>
+        <Command.Content createPortal={false}>
+          <Command.Filter placeholder="Search..." />
+          <Command.List>
+            <Command.Group heading="Actions">
+              <Command.Option>New file</Command.Option>
+              <Command.Option>Open file</Command.Option>
+              <Command.Option>Save file</Command.Option>
+            </Command.Group>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
+      </Command>
+
+      <Command>
+        <Command.Trigger asChild>
+          <Button>With shortcuts</Button>
+        </Command.Trigger>
+        <Command.Content createPortal={false}>
+          <Command.Filter placeholder="Search..." />
+          <Command.List>
+            <Command.Group heading="File">
+              <Command.Option>
+                New file
+                <kbd style={{
+                alignItems: 'center',
+                display: 'flex',
+                gap: '2px'
+              }}>
+                  <Kbd>Meta</Kbd>+<Kbd>n</Kbd>
+                </kbd>
+              </Command.Option>
+              <Command.Option>
+                Open file
+                <kbd style={{
+                alignItems: 'center',
+                display: 'flex',
+                gap: '2px'
+              }}>
+                  <Kbd>Meta</Kbd>+<Kbd>o</Kbd>
+                </kbd>
+              </Command.Option>
+              <Command.Option>
+                Save file
+                <kbd style={{
+                alignItems: 'center',
+                display: 'flex',
+                gap: '2px'
+              }}>
+                  <Kbd>Meta</Kbd>+<Kbd>s</Kbd>
+                </kbd>
+              </Command.Option>
+            </Command.Group>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
+      </Command>
+
+      <Command>
+        <Command.Trigger asChild>
+          <Button>Empty state</Button>
+        </Command.Trigger>
+        <Command.Content createPortal={false}>
+          <Command.Filter placeholder="Search..." />
+          <Command.List>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
+      </Command>
+
+      <Command>
+        <Command.Trigger asChild>
+          <Button>Without filter</Button>
+        </Command.Trigger>
+        <Command.Content createPortal={false}>
+          <Command.List aria-label="Actions">
+            <Command.Group heading="Actions">
+              <Command.Option>New file</Command.Option>
+              <Command.Option>Open file</Command.Option>
+              <Command.Option>Save file</Command.Option>
+            </Command.Group>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
+      </Command>
+    </div>
+}
+```
+
+### With On Select
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Command, Toaster, toast } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  parameters: {
+    docs: {
+      source: {
+        ...staticSourceRenderConfig()
+      }
+    }
+  },
+  render: ({}) => <>
+      <Command>
+        <Command.Trigger asChild>
+          <Button>Open command</Button>
+        </Command.Trigger>
+        <Command.Content>
+          <Command.Filter placeholder="Search..." />
+          <Command.List>
+            <Command.Group heading="Actions">
+              <Command.Option onSelect={() => toast('New file', {
+              toasterId: 'command-on-select'
+            })}>New file</Command.Option>
+              <Command.Option onSelect={() => toast('Open file', {
+              toasterId: 'command-on-select'
+            })}>Open file</Command.Option>
+              <Command.Option onSelect={() => toast('Save file', {
+              toasterId: 'command-on-select'
+            })}>Save file</Command.Option>
+            </Command.Group>
+            <Command.Empty>No results found.</Command.Empty>
+          </Command.List>
+        </Command.Content>
+      </Command>
+
+      <Toaster id="command-on-select" style={{
+      zIndex: 'calc(var(--ods-theme-overlay-z-index) + 1)'
+    }} />
+    </>
+}
+```
+
+### With Shortcuts
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Command, Kbd } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Command>
+      <Command.Trigger asChild>
+        <Button>Open command</Button>
+      </Command.Trigger>
+      <Command.Content>
+        <Command.Filter placeholder="Search..." />
+        <Command.List>
+          <Command.Group heading="File">
+            <Command.Option>
+              New file
+              <kbd style={{
+              alignItems: 'center',
+              display: 'flex',
+              gap: '2px'
+            }}>
+                <Kbd>⌘</Kbd>+<Kbd>n</Kbd>
+              </kbd>
+            </Command.Option>
+            <Command.Option>
+              Open file
+            </Command.Option>
+            <Command.Option>
+              Save file
+            </Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
+    </Command>
+}
+```
+
+### Without Filter
+
+```tsx
+{
+  globals: {
+    imports: `import { Button, Command, Kbd } from '@ovhcloud/ods-react';`
+  },
+  tags: ['!dev'],
+  render: ({}) => <Command>
+      <Command.Trigger asChild>
+        <Button>Open command</Button>
+      </Command.Trigger>
+      <Command.Content>
+        <Command.List aria-label="Actions">
+          <Command.Group heading="File">
+            <Command.Option>
+              New file
+            </Command.Option>
+            <Command.Option>
+              Open file
+            </Command.Option>
+            <Command.Option>
+              Save file
+            </Command.Option>
+          </Command.Group>
+          <Command.Group heading="Edit">
+            <Command.Option>
+              Undo
+            </Command.Option>
+            <Command.Option>
+              Redo
+            </Command.Option>
+          </Command.Group>
+          <Command.Empty>No results found.</Command.Empty>
+        </Command.List>
+      </Command.Content>
+    </Command>
+}
+```

@@ -1,0 +1,149 @@
+---
+title: "Datepicker"
+slug: datepicker
+category: component
+type: examples
+version: 19.7.3
+tokens: 438
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker--examples.txt
+---
+
+# Datepicker
+
+## Default
+
+---
+
+```jsx
+<Datepicker>
+  <DatepickerControl />
+  <DatepickerContent />
+</Datepicker>
+```
+
+## Disabled
+
+---
+
+Disabled:
+
+Disabled Dates:
+
+Disabled Week Days:
+
+```jsx
+<>
+  <p>
+    Disabled:  </p>
+  <Datepicker disabled>
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+  <p>
+    Disabled Dates:  </p>
+  <Datepicker
+    disabledDates={[
+      new Date('2024-12-31T12:00:00.000Z'),
+      new Date('2025-01-01T12:00:00.000Z'),
+      new Date('2025-01-02T12:00:00.000Z')
+    ]}
+  >
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+  <p>
+    Disabled Week Days:  </p>
+  <Datepicker
+    disabledWeekDays={[
+      0,
+      3
+    ]}
+  >
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+</>
+```
+
+## Readonly
+
+---
+
+```jsx
+<Datepicker readOnly>
+  <DatepickerControl />
+  <DatepickerContent />
+</Datepicker>
+```
+
+## Date formatter
+
+---
+
+```jsx
+<Datepicker dateFormatter={({
+  date
+}) => `${date.getFullYear()}`} placeholder="yyyy">
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+```
+
+## Max / Min
+
+---
+
+```jsx
+<Datepicker
+  max={new Date("2025-01-11T12:00:00.000Z")}
+  min={new Date("2024-12-22T12:00:00.000Z")}
+>
+  <DatepickerControl />
+  <DatepickerContent />
+</Datepicker>
+```
+
+## Max view
+
+---
+
+```jsx
+<Datepicker maxView="day">
+  <DatepickerControl />
+  <DatepickerContent />
+</Datepicker>
+```
+
+## Min view
+
+---
+
+```jsx
+<Datepicker minView="month">
+  <DatepickerControl />
+  <DatepickerContent />
+</Datepicker>
+```
+
+## Form field
+
+---
+
+Label:
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Label:  </FormFieldLabel>
+  <Datepicker>
+    <DatepickerControl />
+    <DatepickerContent />
+  </Datepicker>
+</FormField>
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

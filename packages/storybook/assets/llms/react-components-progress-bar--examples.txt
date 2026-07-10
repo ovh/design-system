@@ -1,0 +1,52 @@
+---
+title: "Progress Bar"
+slug: progress-bar
+category: component
+type: examples
+version: 19.7.3
+tokens: 75
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar--examples.txt
+---
+
+# Progress Bar
+
+## Default
+
+---
+
+```jsx
+<ProgressBar />
+```
+
+## Max
+
+---
+
+```jsx
+<ProgressBar
+  max="500"
+  value="50"
+/>
+```
+
+## Value
+
+---
+
+```jsx
+<ProgressBar value="50" />
+```
+
+## Indeterminate
+
+---
+
+```jsx
+<ProgressBar value="indeterminate" />
+```
+
+## Recipes
+
+---
+
+No recipe defined for now.

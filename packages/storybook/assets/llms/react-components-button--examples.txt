@@ -1,0 +1,290 @@
+---
+title: "Button"
+slug: button
+category: component
+type: examples
+version: 19.7.3
+tokens: 471
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-button--examples.txt
+---
+
+# Button
+
+## Default
+
+---
+
+```jsx
+<Button>
+  My button
+</Button>
+```
+
+## Color
+
+---
+
+```jsx
+<>
+  <Button color="critical">
+    Critical  </Button>
+  <Button color="information">
+    Information  </Button>
+  <Button color="neutral">
+    Neutral  </Button>
+  <Button color="primary">
+    Primary  </Button>
+  <Button color="success">
+    Success  </Button>
+  <Button color="warning">
+    Warning  </Button>
+</>
+```
+
+## Loading
+
+---
+
+```jsx
+<Button loading>
+  Loading button
+</Button>
+```
+
+## Size
+
+---
+
+```jsx
+<>
+  <Button size="md">
+    MD button  </Button>
+  <Button size="sm">
+    SM button  </Button>
+  <Button size="xs">
+    XS button  </Button>
+</>
+```
+
+## Variant
+
+---
+
+```jsx
+<>
+  <Button variant="default">
+    Default button  </Button>
+  <Button variant="outline">
+    Outline button  </Button>
+  <Button variant="ghost">
+    Ghost button  </Button>
+</>
+```
+
+## Recipes
+
+---
+
+Chat
+
+Assistant1:00 PM
+
+Welcome to the Chat recipe. Feel free to test the UI behavior by typing anything on your mind below.
+
+Dashboard Card
+
+#### Cluster Information
+
+---
+
+Name
+
+MyCluster
+
+---
+
+ID
+
+---
+
+Region
+
+GRA91-AZ
+
+---
+
+Admission plugins
+
+Always Pull Images PluginEnable
+
+Plugin Node RestrictionEnable
+
+---
+
+Data Grid
+
+| 
+ | 
+
+First Name
+
+ | 
+
+Last Name
+
+ | 
+
+Age
+
+ | 
+
+IP Address
+
+ | 
+
+Actions
+
+ |
+| --- | --- | --- | --- | --- | --- |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+| 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ | 
+
+ |
+
+102550100300
+
+of 0 results
+
+Status Message
+
+Activate your project and get €200 in free cloud credit
+
+You are currently in discovery mode. Activate your project to unlock your cloud resources and start building in minutes.
+
+Status Modal

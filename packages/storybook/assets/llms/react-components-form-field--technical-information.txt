@@ -4,7 +4,7 @@ slug: form-field
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 807
+tokens: 515
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-form-field--technical-information.txt
 ---
 
@@ -99,85 +99,3 @@ invalid
 | --ods-form-field-row-gap | calc(var(--ods-theme-row-gap) / 2) | 
 
  |
-
-## Examples
-
----
-
-### Default
-
-```jsx
-<FormField>
-  <Textarea name="textarea" />
-</FormField>
-```
-
-### Field label
-
-Description:
-
-```jsx
-<FormField>
-  <FormFieldLabel>
-    Description:  </FormFieldLabel>
-  <Textarea name="textarea" />
-</FormField>
-```
-
-### Field sub label
-
-Description- mandatory
-
-```jsx
-<FormField>
-  <FormFieldLabel>
-    Description    <FormFieldLabelSubLabel>
-      - mandatory    </FormFieldLabelSubLabel>
-  </FormFieldLabel>
-  <Textarea name="textarea" />
-</FormField>
-```
-
-### Helper message
-
-Helper text
-
-```jsx
-<FormField>
-  <Textarea name="textarea" />
-  <FormFieldHelper>
-    <Text preset="caption">
-      Helper text    </Text>
-  </FormFieldHelper>
-</FormField>
-```
-
-### Error message
-
-Error message
-
-```jsx
-<FormField invalid>
-  <Textarea name="textarea" />
-  <FormFieldError>
-    Error message  </FormFieldError>
-</FormField>
-```
-
-## Recipes
-
----
-
-Email Field
-
-Email- mandatory
-
-@
-
-.fr.com.dev
-
-The part before the email address (the text before the @) must follow these guidelines:
-
--   It must end with a letter or a number
--   Allowed special characters are: ".", "_", "-"
--   Special characters cannot be placed next to each other

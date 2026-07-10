@@ -4,7 +4,7 @@ slug: text
 category: component
 type: overview
 version: 19.7.3
-tokens: 1261
+tokens: 1119
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text.txt
 ---
 
@@ -43,42 +43,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-text.t
   render: ({}) => <Text>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </Text>
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot
-      },
-      control: 'text'
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    preset: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'TEXT_PRESET'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: TEXT_PRESETS
-    }
-  }),
-  args: {
-    children: 'Lorem ipsum dolor sit amet'
-  }
 }
 ```
 

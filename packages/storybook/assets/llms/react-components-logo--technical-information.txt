@@ -4,7 +4,7 @@ slug: logo
 category: component
 type: technical-information
 version: 19.7.3
-tokens: 223
+tokens: 153
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-logo--technical-information.txt
 ---
 
@@ -53,38 +53,3 @@ variant
 
 -   default =`"default"`
 -   emblem =`"emblem"`
-
-## Examples
-
----
-
-### Default
-
-```jsx
-<Logo />
-```
-
-### Size
-
-```jsx
-<>
-  <Logo size="sm" />
-  <Logo size="md" />
-  <Logo size="lg" />
-</>
-```
-
-### Variant
-
-```jsx
-<>
-  <Logo variant="default" />
-  <Logo variant="emblem" />
-</>
-```
-
-## Recipes
-
----
-
-No recipe defined for now.

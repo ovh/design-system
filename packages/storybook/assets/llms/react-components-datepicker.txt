@@ -4,7 +4,7 @@ slug: datepicker
 category: component
 type: overview
 version: 19.7.3
-tokens: 2711
+tokens: 2330
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepicker.txt
 ---
 
@@ -215,84 +215,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-datepi
 
       <DatepickerContent />
     </Datepicker>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: DemoArg) => <Datepicker disabled={arg.disabled} invalid={arg.invalid} locale={arg.locale} placeholder={arg.placeholder} readOnly={arg.readOnly}>
-      <DatepickerControl clearable={arg.clearable} loading={arg.loading} />
-
-      <DatepickerContent />
-    </Datepicker>,
-  argTypes: orderControls({
-    clearable: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    loading: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    locale: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'iso code'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: ['de', 'en', 'es', 'fr', 'it', 'nl', 'pl', 'pt']
-    },
-    placeholder: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    }
-  })
 }
 ```
 

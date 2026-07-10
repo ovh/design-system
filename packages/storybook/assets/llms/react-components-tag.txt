@@ -4,7 +4,7 @@ slug: tag
 category: component
 type: overview
 version: 19.7.3
-tokens: 1317
+tokens: 1053
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag.txt
 ---
 
@@ -167,71 +167,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tag.tx
   render: ({}) => <Tag>
       My tag
     </Tag>
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    color: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'TAG_COLOR'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: TAG_COLORS
-    },
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    icon: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'ICON_NAME'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: ICON_NAMES
-    },
-    size: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'TAG_SIZE'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: TAG_SIZES
-    }
-  }),
-  args: {
-    children: 'My tag'
-  }
 }
 ```
 

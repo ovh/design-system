@@ -326,1043 +326,16 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/helpers-formatrelativet
 }
 ```
 
-## Apply ODS Style
-
----
-title: "Apply ODS Style"
-slug: ovhcloud-design-system-design-and-style-apply-ods-style
-category: generic
-type: overview
-version: 19.7.3
-tokens: 309
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-design-and-style-apply-ods-style.txt
----
-
----
-
-After installing ODS (following the  documentation), you'll be able to use every components with the correct style.
-
-For the non-component related style, you need to update your app accordingly.
-
-## Use the ODS font
-
----
-
-ODS components does not enforce any font by default (minus a few exception like `ods-code`).
-
-To use one of the ODS fonts in your app, add the expected variables to the top of your app:
-
-```css
-html {
-  font-family: var(--ods-font-family-default);
-}
-```
-
-## Use the ODS design tokens
-
----
-
-All ODS components are using common design tokens, that are accessible through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) .
-
-If you want to use any of those on your own components, you can refer to the exhaustive list on the [Figma dedicated page](https://www.figma.com/design/tIKzHa5KvHHyosgIgyBswB/Design-Tokens?m=auto&node-id=0-1&t=s57Qt3pa7WuFWKEh-1) .
-
-```css
-.my-custom-title {
-  color: var(--ods-color-text);
-  ...
-}
-```
-
-## Use ODS CSS reset
-
----
-
-We recommend you to import the ODS CSS reset subset of rules to normalize the rendering of some elements, but it's not mandatory.
-
-```typescript
-import '@ovhcloud/ods-react/normalize-css';
-```
-
-## Design Tokens
-
----
-title: "Design Tokens"
-slug: ovhcloud-design-system-design-and-style-design-tokens
-category: generic
-type: overview
-version: 19.7.3
-tokens: 1879
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-design-and-style-design-tokens.txt
----
-
----
-
-Design tokens define reusable design values such as colors, borders, and outlines as variables. Instead of using hardcoded values, they provide a consistent, scalable, and maintainable way to style components across all products.
-
-## Usage
-
----
-
-Design tokens are available as CSS custom properties (variables) and can be used in your CSS files:
-
-```css
-.my-component {
-  color: var(--ods-color-primary-500);
-  border-radius: var(--ods-border-radius-sm);
-}
-```
-
-## Theme Variables
-
----
-
-### Color
-
-| Token | Value | Preview |
-| --- | --- | --- |
-| --ods-theme-anchor-text-color | #0050d7 | 
- |
-| --ods-theme-anchor-text-color-hover | #002dbe | 
-
- |
-| --ods-theme-anchor-text-color-visited | #000e9c | 
-
- |
-| --ods-theme-background-color | #fff | 
-
- |
-| --ods-theme-background-color-disabled | #e6e6e6 | 
-
- |
-| --ods-theme-background-color-drag-over | var(--ods-color-primary-100) | 
-
- |
-| --ods-theme-background-color-readonly | #f2f2f2 | 
-
- |
-| --ods-theme-background-color-selected | #00185e | 
-
- |
-| --ods-theme-border-color-disabled | #cccccc | 
-
- |
-| --ods-theme-border-color-drag-over | var(--ods-color-primary-100) | 
-
- |
-| --ods-theme-border-color-readonly | #f2f2f2 | 
-
- |
-| --ods-theme-border-color-selected | #00185e | 
-
- |
-| --ods-theme-brand-color | #000e9c | 
-
- |
-| --ods-theme-heading-text-color | #00185e | 
-
- |
-| --ods-theme-progress-background-color | var(--ods-color-primary-500) | 
-
- |
-| --ods-theme-split-background-color | #e6e6e6 | 
-
- |
-| --ods-theme-split-border-color | #e6e6e6 | 
-
- |
-| --ods-theme-text-color | #4d5592 | 
-
- |
-| --ods-theme-text-color-disabled | #808080 | 
-
- |
-| --ods-theme-text-color-selected | #ffffff | 
-
- |
-| --ods-theme-track-background-color | var(--ods-color-neutral-100) | 
-
- |
-| --ods-theme-track-background-color-disabled | var(--ods-color-neutral-500) | 
-
- |
-| --ods-theme-critical-color | var(--ods-color-critical-500) | 
-
- |
-| --ods-theme-information-color | var(--ods-color-information-500) | 
-
- |
-| --ods-theme-neutral-color | var(--ods-color-neutral-500) | 
-
- |
-| --ods-theme-primary-color | var(--ods-color-primary-500) | 
-
- |
-| --ods-theme-success-color | var(--ods-color-success-500) | 
-
- |
-| --ods-theme-warning-color | var(--ods-color-warning-500) | 
-
- |
-| --ods-theme-chart-background-color | var(--ods-theme-background-color) | 
-
- |
-| --ods-theme-chart-axis-color | var(--ods-color-neutral-300) | 
-
- |
-| --ods-theme-chart-tick-color | var(--ods-color-neutral-700) | 
-
- |
-| --ods-theme-chart-legend-color | var(--ods-color-neutral-700) | 
-
- |
-| --ods-theme-chart-grid-color | var(--ods-color-neutral-200) | 
-
- |
-| --ods-theme-chart-reference-line-color | var(--ods-theme-critical-color) | 
-
- |
-
-### Outline
-
-| Token | Value | Preview |
-| --- | --- | --- |
-| --ods-theme-outline-color | #000e9c | 
- |
-| --ods-theme-outline-offset | 2px | 
-
- |
-| --ods-theme-outline-style | solid | 
-
- |
-| --ods-theme-outline-width | 2px | 
-
- |
-
-### Overlay
-
-| Token | Value | Preview |
-| --- | --- | --- |
-| --ods-theme-backdrop-background-color | #0050d7 | 
- |
-| --ods-theme-backdrop-opacity | 0.75 | 
-
- |
-| --ods-theme-overlay-border-radius | calc(var(--ods-theme-border-radius) / 2) | 
-
- |
-| --ods-theme-overlay-box-shadow | 0 2px 8px rgba(0, 14, 156, 0.2) | 
-
- |
-| --ods-theme-overlay-z-index | 99 | 
-
- |
-
-### Spacing
-
-| Token | Value | Preview |
-| --- | --- | --- |
-| --ods-theme-border-radius | 8px | 
- |
-| --ods-theme-border-width | 1px | 
-
- |
-| --ods-theme-column-gap | 8px | 
-
- |
-| --ods-theme-padding-horizontal | 8px | 
-
- |
-| --ods-theme-padding-vertical | 8px | 
-
- |
-| --ods-theme-row-gap | 8px | 
-
- |
-| --ods-theme-transition-duration | 300ms | 
-
- |
-
-### Font Family
-
-| Token | Value | Preview |
-| --- | --- | --- |
-| --ods-theme-font-family | "Source Sans Pro", "Trebuchet MS", arial, "Segoe UI", sans-serif | 
-Aa
-
-
-
- |
-| --ods-theme-font-family-code | "Source Code Pro", arial | 
-
-Aa
-
-
-
- |
-
-### Form Element
-
-| Token | Value | Preview |
-| --- | --- | --- |
-| --ods-theme-input-background-color-checked | #0050d7 | 
- |
-| --ods-theme-input-background-color-checked-hover | #000e9c | 
-
- |
-| --ods-theme-input-background-color-invalid | #bf0020 | 
-
- |
-| --ods-theme-input-border-color | #b3b3b3 | 
-
- |
-| --ods-theme-input-border-color-checked | #0050d7 | 
-
- |
-| --ods-theme-input-border-color-checked-hover | #000e9c | 
-
- |
-| --ods-theme-input-border-color-hover | #808080 | 
-
- |
-| --ods-theme-input-border-color-invalid | #bf0020 | 
-
- |
-| --ods-theme-input-border-radius | calc(var(--ods-theme-border-radius) / 2) | 
-
- |
-| --ods-theme-input-border-width | var(--ods-theme-border-width) | 
-
- |
-| --ods-theme-input-min-height | 32px | 
-
- |
-| --ods-theme-input-option-background-color-hover | #bef1ff | 
-
- |
-| --ods-theme-input-option-background-color-selected | #e6faff | 
-
- |
-| --ods-theme-input-option-background-color-selected-hover | #bef1ff | 
-
- |
-| --ods-theme-input-padding-horizontal | var(--ods-theme-padding-horizontal) | 
-
- |
-| --ods-theme-input-padding-vertical | calc(var(--ods-theme-padding-vertical) / 4) | 
-
- |
-| --ods-theme-input-placeholder-text-color | #666666 | 
-
- |
-| --ods-theme-input-text-color | var(--ods-theme-text-color) | 
-
- |
-| --ods-theme-input-text-color-checked | var(--ods-theme-background-color) | 
-
- |
-| --ods-theme-input-text-color-invalid | #bf0020 | 
-
- |
-
-## Color Palettes
-
----
-
-  
-
-## Previous tokens
-
-Deprecated
-
----
-
-Following tokens have been deprecated and will be removed in a future major release.  
-Non spacing tokens have been renamed with the `--ods-theme` prefix.  
-Spacing tokens have been reduced to one base value, you should set your values based on this base, for example:`--my-border-radius-sm: calc(var(--ods-theme-border-radius)) / 2;`.
-
-| Token | Value | Preview |
-| --- | --- | --- |
-| --ods-border-radius-xs | 2px | 
- |
-| --ods-border-radius-sm | 4px | 
-
- |
-| --ods-border-radius-md | 8px | 
-
- |
-| --ods-border-radius-lg | 16px | 
-
- |
-| --ods-border-width-sm | 1px | 
-
- |
-| --ods-border-width-md | 2px | 
-
- |
-| --ods-color-background-disabled-default | #e6e6e6 | 
-
- |
-| --ods-color-background-readonly-default | #f2f2f2 | 
-
- |
-| --ods-color-border-disabled-default | #cccccc | 
-
- |
-| --ods-color-border-readonly-default | #f2f2f2 | 
-
- |
-| --ods-color-element-background-selected | #00185e | 
-
- |
-| --ods-color-element-text-selected | #ffffff | 
-
- |
-| --ods-color-form-element-background-critical | #ffffff | 
-
- |
-| --ods-color-form-element-background-default | #ffffff | 
-
- |
-| --ods-color-form-element-background-focus-default | #ffffff | 
-
- |
-| --ods-color-form-element-background-hover-default | #ffffff | 
-
- |
-| --ods-color-form-element-background-selected-critical | #bf0020 | 
-
- |
-| --ods-color-form-element-border-critical | #bf0020 | 
-
- |
-| --ods-color-form-element-border-default | #b3b3b3 | 
-
- |
-| --ods-color-form-element-border-focus-default | #808080 | 
-
- |
-| --ods-color-form-element-border-hover-default | #808080 | 
-
- |
-| --ods-color-form-element-text-default | #4d5592 | 
-
- |
-| --ods-color-form-element-text-placeholder-default | #666666 | 
-
- |
-| --ods-color-heading | #00185e | 
-
- |
-| --ods-color-text | #4d5592 | 
-
- |
-| --ods-color-text-disabled-default | #808080 | 
-
- |
-| --ods-font-family-code | "Source Code Pro", arial | 
-
-Aa
-
-
-
- |
-| --ods-font-family-default | "Source Sans Pro", "Trebuchet MS", arial, "Segoe UI", sans-serif | 
-
-Aa
-
-
-
- |
-| --ods-form-element-input-height | 32px | 
-
- |
-| --ods-outline-color-default | #000e9c | 
-
- |
-| --ods-outline-offset | 2px | 
-
- |
-| --ods-outline-style-default | solid | 
-
- |
-| --ods-outline-width | 2px | 
-
- |
-
-## Style Customization
-
----
-title: "Style Customization"
-slug: ovhcloud-design-system-design-and-style-style-customization
-category: generic
-type: overview
-version: 19.7.3
-tokens: 606
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-design-and-style-style-customization.txt
----
-
----
-
-Although ODS components comes with the expected designs, it is sometime useful to customize the rendering of a component to fit your context.
-
-Here we'll describe different ways to customize an ODS component.
-
-## Apply style directly on the component
-
----
-
-The ODS component host behave like any other React element, so you can apply a class directly to it.
-
-For example, if you want to display a vertical list of `Link`, you can override the inline default display:
-
-```html
-<Link className="custom-link">
-  My link 1
-</Link>
-<Link className="custom-link">
-  My link 2
-</Link>
-<style>
-  .custom-link {
-    display: block;
-  }
-</style>
-```
-
-As there is no shadow DOM anymore, all of the component DOM can be targeted through CSS selectors. It is advised to not rely on cascading selector, as the DOM structure may evolve from one version to another.
-
-  
-
-To ensure reliable CSS, use a specific className on the component you want to customize.
-
-  
-
-If you want to specifically target underneath elements, you can rely on some [data attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes#css_access) , we'll update the documentation about those soon.
-
-## Reuse existing ODS style
-
----
-
-In some cases where you cannot use an ODS component, you may want one of your own components to look like an ODS component (for example, when using an external library that doesn't allow custom templating).
-
-We did expose a bunch of [Sass](https://sass-lang.com) mixins that allows you to easily apply the ODS style to your own elements.
-
-For example, if you need to make an anchor tag looks like a `Link`:
-
-```css
-@import '@ovhcloud/ods-react/style';
-.my-link {
-  @include ods-link();
-  @include ods-link-color('primary');
-}
-```
-
-```html
-<a class="my-link"></a>
-```
-
-## CSS variables
-
----
-
-All ODS components are using common design tokens, that are accessible through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) .
-
-We do advise to reuse those variables on your own style, this way your application will automatically be updated on current theme changes or when new themes will be released.
-
-You can find the whole list on the  documentation page.
-
-Example of CSS variables:
-
-```html
-<h1 class="my-own-page-title">
-  Welcome page
-</h1>
-<style>
-  .my-own-page-title {
-    color: var(--ods-color-primary-500);
-  }
-</style>
-```
-
-## Tailwind CSS Integration
-
----
-title: "Tailwind CSS Integration"
-slug: ovhcloud-design-system-design-and-style-tailwind-css-integration
-category: generic
-type: overview
-version: 19.7.3
-tokens: 1231
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-design-and-style-tailwind-css-integration.txt
----
-
----
-
-This guide covers how to integrate Tailwind CSS with the OVHcloud Design System (ODS) for both v3 and v4 versions.
-
-Tailwind CSS is a utility-first CSS framework that can be integrated with ODS components and design tokens, but it is not mandatory as ODS is not based on Tailwind.
-
-Technically, you don't need any configuration to make ODS work with Tailwind. These guides are here to add some auto-completion and best practices when using Tailwind, but you can directly use the design tokens right out of the box without any additional configuration.
-
-## Tailwind CSS v3 Configuration
-
----
-
-For Tailwind CSS v3, create a `tailwind.config.js` which contains a remapping of ODS variables:
-
-```js
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {
-      borderRadius: {
-        'ods-border-radius-xs': 'var(--ods-border-radius-xs)',
-        'ods-border-radius-sm': 'var(--ods-border-radius-sm)',
-        'ods-border-radius-md': 'var(--ods-border-radius-md)',
-        'ods-border-radius-lg': 'var(--ods-border-radius-lg)',
-      },
-      colors: {
-        'ods-color-primary-500': 'var(--ods-color-primary-500)',
-        'ods-color-success-500': 'var(--ods-color-success-500)',
-        'ods-color-warning-700': 'var(--ods-color-warning-700)',
-      },
-      fontFamily: {
-        'ods-font-family-default': 'var(--ods-font-family-default)',
-      },
-    },
-  },
-  plugins: [],
-}
-```
-
-### Integration with IDEs
-
-#### Integration with JetBrains
-
-This should work straight out of the box.
-
-#### Integration with VSCode
-
-Create a `./.vscode/tailwind.json` containing the classes you want to expose for autocompletion.
-
-```json
-{
-    "customClasses": [
-      "ods-color-primary-500",
-      "ods-color-success-500",
-      "ods-color-critical-700",
-      "ods-border-radius-xs",
-      "ods-border-radius-sm",
-      "ods-border-radius-md",
-      "ods-border-radius-lg",
-      "ods-font-family-default",
-    ]
-  }
-```
-
-## Tailwind CSS v4 Configuration
-
----
-
-For Tailwind CSS v4, create a CSS file using the [@theme](https://tailwindcss.com/docs/adding-custom-styles) property:
-
-```css
-@theme {
-  --radius-ods-xs: var(--ods-border-radius-xs);
-  --radius-ods-sm: var(--ods-border-radius-sm);
-  --radius-ods-md: var(--ods-border-radius-md);
-  --radius-ods-lg: var(--ods-border-radius-lg);
-  --color-ods-primary: var(--ods-color-primary-500);
-  --color-ods-success: var(--ods-color-success-500);
-  --color-ods-critical: var(--ods-color-critical-700);
-  --font-ods-default: var(--ods-font-family-default);
-}
-```
-
-Then import that file after the main ODS theme and Tailwind CSS. In order for you to properly be able to overwrite the ODS theme, you need to redefine the order of the CSS layers. Base is optional.
-
-```typescript
-// index.css
-@layer theme, base, components, ods-quarks, ods-atoms, ods-molecules, ods-organisms, molecules, utilities;
-@import "tailwindcss";
-@import '@ovhcloud/ods-themes/default/css';
-@import '@ovhcloud/ods-themes/default/fonts';
-@import './ods-tailwind.css';
-```
-
-## Usage Examples
-
----
-
-You can use Tailwind utilities alongside ODS components:
-
-```tsx
-import { Button } from '@ovhcloud/ods-react';
-function MyComponent() {
-  return (
-  <div>
-      <p className="text-critical">Click on the button!</p>
-      <Button className="bg-color-primary">Click me!</Button>
-  </div>
-  );
-}
-```
-
-## Best Practices & Troubleshooting
-
----
-
-### Color Usage
-
--   Use semantic color names (e.g., `ods-primary-500`, `ods-success-200`) instead of generic colors
--   **Issue**: Color classes not working? Verify that the Tailwind config includes the ODS color mappings and ensure the content paths include your component files.
-
-### Spacing and Layout
-
--   Use ODS border radius tokens (`rounded-ods-sm`, `rounded-ods-md`, etc.)
--   Leverage ODS form element heights for consistent input sizing
--   **Issue**: CSS variables not loading? Ensure `@ovhcloud/ods-themes` is imported before Tailwind and check that the theme is properly initialized in your app.
-
-### Typography
-
--   Use the ODS font family (`font-ods` for body text, `font-ods-code` for code)
--   Apply semantic text colors (`text-ods-text`, `text-ods-heading`)
--   Maintain proper contrast ratios with ODS color combinations
-
-### Component Integration
-
--   ODS components can be styled with Tailwind utilities using the `className` prop
--   Avoid overriding core ODS component styles unless necessary
--   Use Tailwind for layout and positioning, ODS for component behavior
--   **Issue**: Responsive breakpoints not working? Confirm that the ODS breakpoint variables are properly defined and check that the screen configuration in Tailwind config is correct.
-
-## Resources
-
----
-
--   [Tailwind CSS Documentation](https://tailwindcss.com/docs)
--   [Tailwind v4 Migration Guide](https://tailwindcss.com/docs/upgrade-guide)
--   
--
-
-## Frequently Asked Questions
-
----
-title: "Frequently Asked Questions"
-slug: ovhcloud-design-system-f-a-q
-category: generic
-type: overview
-version: 19.7.3
-tokens: 1482
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-f-a-q.txt
----
-
----
-
-_Welcome to the F.A.Q. section of the OVHcloud Design System (ODS)._
-
-_Here, we aim to address common questions and provide helpful guidance for developers._
-
-## How can I contribute?
-
----
-
-OVHcloud Design System is an evolving project, and we welcome contributions from the community. By keeping our repository open source, we aim to make it easier for anyone to suggest improvements, fix issues, or share ideas.
-
-Whether it’s a small fix or a new feature, every contribution helps improve the quality and usability of the system. We appreciate the time and effort of anyone who chooses to take part.
-
-Please note that while we welcome contributions, we encourage you to discuss major changes with our team to ensure alignment with the project's goals and overall quality. Additionally, if you're interested in proposing a new feature, please reach us out first to avoid duplicating effort, as we may already be working on a similar development.
-
-Refer to our project [README](https://github.com/ovh/design-system?tab=contributing-ov-file#contributing-to-ods-project) to learn more about installation and pre-requisites.
-
-## How are releases managed?
-
----
-
-The OVHcloud Design System follows a structured release process to deliver improvements regularly while letting teams adopt updates at their own pace.
-
-**Patch releases** deliver critical fixes or small improvements and can be adopted immediately.
-
-**Minor releases** introduce new non-breaking features and start the deprecation process when needed.
-
-**Major releases** contain breaking changes, removals of previously deprecated elements, and migration documentation.
-
-Releases are published several times a year based on user needs and product evolution.
-
-We support two major versions at the same time:
-
--   The current major version receives full support (features, improvements, fixes).
--   The previous major version receives maintenance support for six months (critical fixes only).
--   Older versions are no longer supported.
-
-Deprecations follow a two-step workflow:
-
--   They are announced in a minor release, marked as "Deprecated" in Storybook, and paired with migration guidance.
--   They are removed in the next major release.
-
-Teams may upgrade at their own pace and can skip versions. We recommend pinning a specific ODS version in your project to ensure consistent behavior.
-
-## I can't find a component I need
-
----
-
-ODS provides base components that you can build on top of and implement in various contexts.
-
-If you need a new component, we recommend working with the design team to request and design the component to ensure it aligns with the ODS guidelines.
-
-## Is my browser supported?
-
----
-
-ODS supports the latest 2 versions of the following browsers:
-
--   Google Chrome
--   Microsoft Edge
--   Mozilla Firefox
--   Opera
--   Safari
-
-## Can I use another CSS framework on top of ODS?
-
----
-
-You can use any CSS framework on top of ODS.
-
-Note that some imperative CSS frameworks like Bootstrap may override ODS styling.
-
-Ensure compatibility by testing the integration in your project.
-
-## What about Web Components and Vue?
-
----
-
-Starting from v19, ODS have moved to fully React-based components. Web Components and the Vue wrapper are now only available in v18.x, which is now in maintenance mode, so there won't be any new features for this version.
-
-If you still need to access documentation about Web Components or Vue, use the version selector at the top left to switch to the latest 18.x documentation, where you'll find the most up-to-date information.
-
-## TS2307: Cannot find module '@ovhcloud/ods-react' or its corresponding type declarations.
-
----
-
-Check that you're using the `bundler` [module resolution](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler) in your `tsconfig.json`.
-
-```typescript
-"moduleResolution": "bundler"
-```
-
-## My popover/tooltip is not displayed correctly
-
----
-
-Check that you're not using a `Fragment` as your trigger.
-
-The following will **not** work properly:
-
-```tsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <>
-      <Component1 />
-      <Component2 />
-    </>
-  </TooltipTrigger>
-  <TooltipContent>
-    ...  </TooltipContent>
-</Tooltip>
-```
-
-Replace the `Fragment` with an actual node:
-
-```tsx
-<Tooltip>
-  <TooltipTrigger asChild>
-    <MyTrigger>
-      ...    </MyTrigger>
-  </TooltipTrigger>
-  <TooltipContent>
-    ...  </TooltipContent>
-</Tooltip>
-```
-
-## Overlay elements are not displayed correctly in a drawer/modal
-
----
-
-`Modal` and `Drawer` components have a `z-index` greater than other overlay components. This is to prevent those to appear behind an open modal/drawer.
-
-To allow overlay elements to correcty render inside a modal/drawer, add the `createPortal={ false }` attribute to the `Content` component of the overlay element.
-
-See  and .
-
-## Icons are not displayed
-
----
-
-Ensure you did import the fonts in your application, check the  page to read more about how to achieve this.
-
-## Warning: Function components cannot be given refs
-
----
-
-When using components enabling dynamic component (through the `as` attribute), you may encounter the following error message in the console:
-
-```
-Warning: Function components cannot be given refs.
-Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
-```
-
-This means you're passing a function component to the `as` attribute and it needs to be wrapped by a `forwardRef` to be able to manage the `ref` correctly.
-
-```tsx
-import { Link } from '@ovhcloud/ods-react';
-import { forwardRef, useRef } from 'react';
-const DummyLink = forwardRef(({ children, ...props }, ref) => {
-  return (
-    <a data-test="dummy" { ...props } ref={ ref }>{ children }</a>
-  );
-});
-const MyApp = () => {
-  const linkRef = useRef(null);
-  return (
-    <div>
-      ...      <Link as={ DummyLink } href="#" ref={ linkRef }>...</Link>
-    </div>
-  );
-};
-```
-
-## Get Started
-
----
-title: "Get Started"
-slug: ovhcloud-design-system-get-started
-category: generic
-type: overview
-version: 19.7.3
-tokens: 661
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-get-started.txt
----
-
----
-
-OVHcloud Design System is a set of reusable React UI components to create a consistent user experience across OVHcloud pages and products, acting as a single source of truth.
-
-All OVHcloud Design System packages are available on [NPM](https://www.npmjs.com) .
-
-## Installation
-
----
-
-Include **ODS** in your projects like any other npm/pnpm module:
-
-```bash
-npm i --save-exact @ovhcloud/ods-react @ovhcloud/ods-themes
-```
-
-or
-
-```bash
-pnpm add --save-exact @ovhcloud/ods-react @ovhcloud/ods-themes
-```
-
-## Usage
-
----
-
-All components can be imported from the root path:
-
-```tsx
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';
-const App = () => {
-  return (
-    <Accordion>
-      <AccordionItem value="0">
-        <AccordionTrigger>
-          Hello World!        </AccordionTrigger>
-        <AccordionContent>
-          Lorem ipsum dolor sit amet.        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  );
-};
-```
-
-Each component is also available as compound component from its subpath:
-
-```tsx
-import { Accordion } from '@ovhcloud/ods-react/accordion';
-const App = () => {
-  return (
-    <Accordion>
-      <Accordion.Item value="0">
-        <Accordion.Trigger>
-          Hello World!        </Accordion.Trigger>
-        <Accordion.Content>
-          Lorem ipsum dolor sit amet.        </Accordion.Content>
-      </Accordion.Item>
-    </Accordion>
-  );
-};
-```
-
-Components are compatible with React `v18.2+`, `v19+`.
-
-## Import components constants
-
----
-
-All enums, interfaces, events are available directly from the `ods-react` lib
-
-```typescript
-import { BUTTON_SIZE, type CheckboxProp } from '@ovhcloud/ods-react';
-```
-
-## Import theme & fonts
-
----
-
-You need to import a theme to display all the components correctly. It defines all the colors, typographies, etc...
-
-via ES import:
-
-```typescript
-import '@ovhcloud/ods-themes/default/css';
-import '@ovhcloud/ods-themes/default/fonts';
-```
-
-via Sass import:
-
-```css
-@import '@ovhcloud/ods-themes/default/css';
-@import '@ovhcloud/ods-themes/default/fonts';
-```
-
-In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default`. Though this will increase the bundle size and prevent browser resources loading optimization.
-
-## Typescript
-
----
-
-To ensure the types are correctly resolved, you'll have to use the `bundler` module resolution, released with [Typescript 5.0](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler) .
-
-```typescript
-"moduleResolution": "bundler"
-```
-
 ## Accessibility Guide
 
 ---
 title: "Accessibility Guide"
-slug: ovhcloud-design-system-guides-accessibility
+slug: ovhcloud-design-system-build-accessibility
 category: generic
 type: overview
 version: 19.7.3
 tokens: 4474
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-guides-accessibility.txt
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-accessibility.txt
 ---
 
 ---
@@ -1902,12 +875,12 @@ For consistent testing across different platforms and screen readers, here is th
 
 ---
 title: "Charts - Usage Guidelines"
-slug: ovhcloud-design-system-guides-charts-usage-guidelines
+slug: ovhcloud-design-system-build-charts
 category: generic
 type: overview
 version: 19.7.3
 tokens: 768
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-guides-charts-usage-guidelines.txt
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-charts.txt
 ---
 
 ---
@@ -2042,12 +1015,12 @@ These colors are picked for their likelihood to be valid regarding color contras
 
 ---
 title: "Usage Guidelines"
-slug: ovhcloud-design-system-guides-form-guidelines
+slug: ovhcloud-design-system-build-forms
 category: generic
 type: overview
 version: 19.7.3
-tokens: 3407
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-guides-form-guidelines.txt
+tokens: 4902
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-forms.txt
 ---
 
 ---
@@ -2548,17 +1521,7 @@ Avoid when:
 -   The information can be captured through structured inputs (text, number, date, select).
 -   The upload is used to compensate for missing inputs.
 
-## Implementing a Form
-
----
-title: "Implementing a Form"
-slug: ovhcloud-design-system-guides-form-implementing-a-form
-category: generic
-type: overview
-version: 19.7.3
-tokens: 1495
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-guides-form-implementing-a-form.txt
----
+# Implementing a Form
 
 ---
 
@@ -2778,12 +1741,12 @@ const FormFormik = () => {
 
 ---
 title: "Internationalization"
-slug: ovhcloud-design-system-guides-internationalization
+slug: ovhcloud-design-system-build-internationalization
 category: generic
 type: overview
 version: 19.7.3
 tokens: 546
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-guides-internationalization.txt
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-build-internationalization.txt
 ---
 
 ---
@@ -2854,6 +1817,1033 @@ Current locales supported by ODS:
 -   pl
 -   pt
 
+## Apply ODS Style
+
+---
+title: "Apply ODS Style"
+slug: ovhcloud-design-system-customize-apply-ods-style
+category: generic
+type: overview
+version: 19.7.3
+tokens: 309
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-apply-ods-style.txt
+---
+
+---
+
+After installing ODS (following the  documentation), you'll be able to use every components with the correct style.
+
+For the non-component related style, you need to update your app accordingly.
+
+## Use the ODS font
+
+---
+
+ODS components does not enforce any font by default (minus a few exception like `ods-code`).
+
+To use one of the ODS fonts in your app, add the expected variables to the top of your app:
+
+```css
+html {
+  font-family: var(--ods-font-family-default);
+}
+```
+
+## Use the ODS design tokens
+
+---
+
+All ODS components are using common design tokens, that are accessible through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) .
+
+If you want to use any of those on your own components, you can refer to the exhaustive list on the [Figma dedicated page](https://www.figma.com/design/tIKzHa5KvHHyosgIgyBswB/Design-Tokens?m=auto&node-id=0-1&t=s57Qt3pa7WuFWKEh-1) .
+
+```css
+.my-custom-title {
+  color: var(--ods-color-text);
+  ...
+}
+```
+
+## Use ODS CSS reset
+
+---
+
+We recommend you to import the ODS CSS reset subset of rules to normalize the rendering of some elements, but it's not mandatory.
+
+```typescript
+import '@ovhcloud/ods-react/normalize-css';
+```
+
+## Design Tokens
+
+---
+title: "Design Tokens"
+slug: ovhcloud-design-system-customize-design-tokens
+category: generic
+type: overview
+version: 19.7.3
+tokens: 1879
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-design-tokens.txt
+---
+
+---
+
+Design tokens define reusable design values such as colors, borders, and outlines as variables. Instead of using hardcoded values, they provide a consistent, scalable, and maintainable way to style components across all products.
+
+## Usage
+
+---
+
+Design tokens are available as CSS custom properties (variables) and can be used in your CSS files:
+
+```css
+.my-component {
+  color: var(--ods-color-primary-500);
+  border-radius: var(--ods-border-radius-sm);
+}
+```
+
+## Theme Variables
+
+---
+
+### Color
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-theme-anchor-text-color | #0050d7 | 
+ |
+| --ods-theme-anchor-text-color-hover | #002dbe | 
+
+ |
+| --ods-theme-anchor-text-color-visited | #000e9c | 
+
+ |
+| --ods-theme-background-color | #fff | 
+
+ |
+| --ods-theme-background-color-disabled | #e6e6e6 | 
+
+ |
+| --ods-theme-background-color-drag-over | var(--ods-color-primary-100) | 
+
+ |
+| --ods-theme-background-color-readonly | #f2f2f2 | 
+
+ |
+| --ods-theme-background-color-selected | #00185e | 
+
+ |
+| --ods-theme-border-color-disabled | #cccccc | 
+
+ |
+| --ods-theme-border-color-drag-over | var(--ods-color-primary-100) | 
+
+ |
+| --ods-theme-border-color-readonly | #f2f2f2 | 
+
+ |
+| --ods-theme-border-color-selected | #00185e | 
+
+ |
+| --ods-theme-brand-color | #000e9c | 
+
+ |
+| --ods-theme-heading-text-color | #00185e | 
+
+ |
+| --ods-theme-progress-background-color | var(--ods-color-primary-500) | 
+
+ |
+| --ods-theme-split-background-color | #e6e6e6 | 
+
+ |
+| --ods-theme-split-border-color | #e6e6e6 | 
+
+ |
+| --ods-theme-text-color | #4d5592 | 
+
+ |
+| --ods-theme-text-color-disabled | #808080 | 
+
+ |
+| --ods-theme-text-color-selected | #ffffff | 
+
+ |
+| --ods-theme-track-background-color | var(--ods-color-neutral-100) | 
+
+ |
+| --ods-theme-track-background-color-disabled | var(--ods-color-neutral-500) | 
+
+ |
+| --ods-theme-critical-color | var(--ods-color-critical-500) | 
+
+ |
+| --ods-theme-information-color | var(--ods-color-information-500) | 
+
+ |
+| --ods-theme-neutral-color | var(--ods-color-neutral-500) | 
+
+ |
+| --ods-theme-primary-color | var(--ods-color-primary-500) | 
+
+ |
+| --ods-theme-success-color | var(--ods-color-success-500) | 
+
+ |
+| --ods-theme-warning-color | var(--ods-color-warning-500) | 
+
+ |
+| --ods-theme-chart-background-color | var(--ods-theme-background-color) | 
+
+ |
+| --ods-theme-chart-axis-color | var(--ods-color-neutral-300) | 
+
+ |
+| --ods-theme-chart-tick-color | var(--ods-color-neutral-700) | 
+
+ |
+| --ods-theme-chart-legend-color | var(--ods-color-neutral-700) | 
+
+ |
+| --ods-theme-chart-grid-color | var(--ods-color-neutral-200) | 
+
+ |
+| --ods-theme-chart-reference-line-color | var(--ods-theme-critical-color) | 
+
+ |
+
+### Outline
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-theme-outline-color | #000e9c | 
+ |
+| --ods-theme-outline-offset | 2px | 
+
+ |
+| --ods-theme-outline-style | solid | 
+
+ |
+| --ods-theme-outline-width | 2px | 
+
+ |
+
+### Overlay
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-theme-backdrop-background-color | #0050d7 | 
+ |
+| --ods-theme-backdrop-opacity | 0.75 | 
+
+ |
+| --ods-theme-overlay-border-radius | calc(var(--ods-theme-border-radius) / 2) | 
+
+ |
+| --ods-theme-overlay-box-shadow | 0 2px 8px rgba(0, 14, 156, 0.2) | 
+
+ |
+| --ods-theme-overlay-z-index | 99 | 
+
+ |
+
+### Spacing
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-theme-border-radius | 8px | 
+ |
+| --ods-theme-border-width | 1px | 
+
+ |
+| --ods-theme-column-gap | 8px | 
+
+ |
+| --ods-theme-padding-horizontal | 8px | 
+
+ |
+| --ods-theme-padding-vertical | 8px | 
+
+ |
+| --ods-theme-row-gap | 8px | 
+
+ |
+| --ods-theme-transition-duration | 300ms | 
+
+ |
+
+### Font Family
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-theme-font-family | "Source Sans Pro", "Trebuchet MS", arial, "Segoe UI", sans-serif | 
+Aa
+
+
+
+ |
+| --ods-theme-font-family-code | "Source Code Pro", arial | 
+
+Aa
+
+
+
+ |
+
+### Form Element
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-theme-input-background-color-checked | #0050d7 | 
+ |
+| --ods-theme-input-background-color-checked-hover | #000e9c | 
+
+ |
+| --ods-theme-input-background-color-invalid | #bf0020 | 
+
+ |
+| --ods-theme-input-border-color | #b3b3b3 | 
+
+ |
+| --ods-theme-input-border-color-checked | #0050d7 | 
+
+ |
+| --ods-theme-input-border-color-checked-hover | #000e9c | 
+
+ |
+| --ods-theme-input-border-color-hover | #808080 | 
+
+ |
+| --ods-theme-input-border-color-invalid | #bf0020 | 
+
+ |
+| --ods-theme-input-border-radius | calc(var(--ods-theme-border-radius) / 2) | 
+
+ |
+| --ods-theme-input-border-width | var(--ods-theme-border-width) | 
+
+ |
+| --ods-theme-input-min-height | 32px | 
+
+ |
+| --ods-theme-input-option-background-color-hover | #bef1ff | 
+
+ |
+| --ods-theme-input-option-background-color-selected | #e6faff | 
+
+ |
+| --ods-theme-input-option-background-color-selected-hover | #bef1ff | 
+
+ |
+| --ods-theme-input-padding-horizontal | var(--ods-theme-padding-horizontal) | 
+
+ |
+| --ods-theme-input-padding-vertical | calc(var(--ods-theme-padding-vertical) / 4) | 
+
+ |
+| --ods-theme-input-placeholder-text-color | #666666 | 
+
+ |
+| --ods-theme-input-text-color | var(--ods-theme-text-color) | 
+
+ |
+| --ods-theme-input-text-color-checked | var(--ods-theme-background-color) | 
+
+ |
+| --ods-theme-input-text-color-invalid | #bf0020 | 
+
+ |
+
+## Color Palettes
+
+---
+
+  
+
+## Previous tokens
+
+Deprecated
+
+---
+
+Following tokens have been deprecated and will be removed in a future major release.  
+Non spacing tokens have been renamed with the `--ods-theme` prefix.  
+Spacing tokens have been reduced to one base value, you should set your values based on this base, for example:`--my-border-radius-sm: calc(var(--ods-theme-border-radius)) / 2;`.
+
+| Token | Value | Preview |
+| --- | --- | --- |
+| --ods-border-radius-xs | 2px | 
+ |
+| --ods-border-radius-sm | 4px | 
+
+ |
+| --ods-border-radius-md | 8px | 
+
+ |
+| --ods-border-radius-lg | 16px | 
+
+ |
+| --ods-border-width-sm | 1px | 
+
+ |
+| --ods-border-width-md | 2px | 
+
+ |
+| --ods-color-background-disabled-default | #e6e6e6 | 
+
+ |
+| --ods-color-background-readonly-default | #f2f2f2 | 
+
+ |
+| --ods-color-border-disabled-default | #cccccc | 
+
+ |
+| --ods-color-border-readonly-default | #f2f2f2 | 
+
+ |
+| --ods-color-element-background-selected | #00185e | 
+
+ |
+| --ods-color-element-text-selected | #ffffff | 
+
+ |
+| --ods-color-form-element-background-critical | #ffffff | 
+
+ |
+| --ods-color-form-element-background-default | #ffffff | 
+
+ |
+| --ods-color-form-element-background-focus-default | #ffffff | 
+
+ |
+| --ods-color-form-element-background-hover-default | #ffffff | 
+
+ |
+| --ods-color-form-element-background-selected-critical | #bf0020 | 
+
+ |
+| --ods-color-form-element-border-critical | #bf0020 | 
+
+ |
+| --ods-color-form-element-border-default | #b3b3b3 | 
+
+ |
+| --ods-color-form-element-border-focus-default | #808080 | 
+
+ |
+| --ods-color-form-element-border-hover-default | #808080 | 
+
+ |
+| --ods-color-form-element-text-default | #4d5592 | 
+
+ |
+| --ods-color-form-element-text-placeholder-default | #666666 | 
+
+ |
+| --ods-color-heading | #00185e | 
+
+ |
+| --ods-color-text | #4d5592 | 
+
+ |
+| --ods-color-text-disabled-default | #808080 | 
+
+ |
+| --ods-font-family-code | "Source Code Pro", arial | 
+
+Aa
+
+
+
+ |
+| --ods-font-family-default | "Source Sans Pro", "Trebuchet MS", arial, "Segoe UI", sans-serif | 
+
+Aa
+
+
+
+ |
+| --ods-form-element-input-height | 32px | 
+
+ |
+| --ods-outline-color-default | #000e9c | 
+
+ |
+| --ods-outline-offset | 2px | 
+
+ |
+| --ods-outline-style-default | solid | 
+
+ |
+| --ods-outline-width | 2px | 
+
+ |
+
+## Style Customization
+
+---
+title: "Style Customization"
+slug: ovhcloud-design-system-customize-style-customization
+category: generic
+type: overview
+version: 19.7.3
+tokens: 606
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-style-customization.txt
+---
+
+---
+
+Although ODS components comes with the expected designs, it is sometime useful to customize the rendering of a component to fit your context.
+
+Here we'll describe different ways to customize an ODS component.
+
+## Apply style directly on the component
+
+---
+
+The ODS component host behave like any other React element, so you can apply a class directly to it.
+
+For example, if you want to display a vertical list of `Link`, you can override the inline default display:
+
+```html
+<Link className="custom-link">
+  My link 1
+</Link>
+<Link className="custom-link">
+  My link 2
+</Link>
+<style>
+  .custom-link {
+    display: block;
+  }
+</style>
+```
+
+As there is no shadow DOM anymore, all of the component DOM can be targeted through CSS selectors. It is advised to not rely on cascading selector, as the DOM structure may evolve from one version to another.
+
+  
+
+To ensure reliable CSS, use a specific className on the component you want to customize.
+
+  
+
+If you want to specifically target underneath elements, you can rely on some [data attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes#css_access) , we'll update the documentation about those soon.
+
+## Reuse existing ODS style
+
+---
+
+In some cases where you cannot use an ODS component, you may want one of your own components to look like an ODS component (for example, when using an external library that doesn't allow custom templating).
+
+We did expose a bunch of [Sass](https://sass-lang.com) mixins that allows you to easily apply the ODS style to your own elements.
+
+For example, if you need to make an anchor tag looks like a `Link`:
+
+```css
+@import '@ovhcloud/ods-react/style';
+.my-link {
+  @include ods-link();
+  @include ods-link-color('primary');
+}
+```
+
+```html
+<a class="my-link"></a>
+```
+
+## CSS variables
+
+---
+
+All ODS components are using common design tokens, that are accessible through [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) .
+
+We do advise to reuse those variables on your own style, this way your application will automatically be updated on current theme changes or when new themes will be released.
+
+You can find the whole list on the  documentation page.
+
+Example of CSS variables:
+
+```html
+<h1 class="my-own-page-title">
+  Welcome page
+</h1>
+<style>
+  .my-own-page-title {
+    color: var(--ods-color-primary-500);
+  }
+</style>
+```
+
+## Tailwind CSS Integration
+
+---
+title: "Tailwind CSS Integration"
+slug: ovhcloud-design-system-customize-tailwind-css-integration
+category: generic
+type: overview
+version: 19.7.3
+tokens: 1231
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-customize-tailwind-css-integration.txt
+---
+
+---
+
+This guide covers how to integrate Tailwind CSS with the OVHcloud Design System (ODS) for both v3 and v4 versions.
+
+Tailwind CSS is a utility-first CSS framework that can be integrated with ODS components and design tokens, but it is not mandatory as ODS is not based on Tailwind.
+
+Technically, you don't need any configuration to make ODS work with Tailwind. These guides are here to add some auto-completion and best practices when using Tailwind, but you can directly use the design tokens right out of the box without any additional configuration.
+
+## Tailwind CSS v3 Configuration
+
+---
+
+For Tailwind CSS v3, create a `tailwind.config.js` which contains a remapping of ODS variables:
+
+```js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      borderRadius: {
+        'ods-border-radius-xs': 'var(--ods-border-radius-xs)',
+        'ods-border-radius-sm': 'var(--ods-border-radius-sm)',
+        'ods-border-radius-md': 'var(--ods-border-radius-md)',
+        'ods-border-radius-lg': 'var(--ods-border-radius-lg)',
+      },
+      colors: {
+        'ods-color-primary-500': 'var(--ods-color-primary-500)',
+        'ods-color-success-500': 'var(--ods-color-success-500)',
+        'ods-color-warning-700': 'var(--ods-color-warning-700)',
+      },
+      fontFamily: {
+        'ods-font-family-default': 'var(--ods-font-family-default)',
+      },
+    },
+  },
+  plugins: [],
+}
+```
+
+### Integration with IDEs
+
+#### Integration with JetBrains
+
+This should work straight out of the box.
+
+#### Integration with VSCode
+
+Create a `./.vscode/tailwind.json` containing the classes you want to expose for autocompletion.
+
+```json
+{
+    "customClasses": [
+      "ods-color-primary-500",
+      "ods-color-success-500",
+      "ods-color-critical-700",
+      "ods-border-radius-xs",
+      "ods-border-radius-sm",
+      "ods-border-radius-md",
+      "ods-border-radius-lg",
+      "ods-font-family-default",
+    ]
+  }
+```
+
+## Tailwind CSS v4 Configuration
+
+---
+
+For Tailwind CSS v4, create a CSS file using the [@theme](https://tailwindcss.com/docs/adding-custom-styles) property:
+
+```css
+@theme {
+  --radius-ods-xs: var(--ods-border-radius-xs);
+  --radius-ods-sm: var(--ods-border-radius-sm);
+  --radius-ods-md: var(--ods-border-radius-md);
+  --radius-ods-lg: var(--ods-border-radius-lg);
+  --color-ods-primary: var(--ods-color-primary-500);
+  --color-ods-success: var(--ods-color-success-500);
+  --color-ods-critical: var(--ods-color-critical-700);
+  --font-ods-default: var(--ods-font-family-default);
+}
+```
+
+Then import that file after the main ODS theme and Tailwind CSS. In order for you to properly be able to overwrite the ODS theme, you need to redefine the order of the CSS layers. Base is optional.
+
+```typescript
+// index.css
+@layer theme, base, components, ods-quarks, ods-atoms, ods-molecules, ods-organisms, molecules, utilities;
+@import "tailwindcss";
+@import '@ovhcloud/ods-themes/default/css';
+@import '@ovhcloud/ods-themes/default/fonts';
+@import './ods-tailwind.css';
+```
+
+## Usage Examples
+
+---
+
+You can use Tailwind utilities alongside ODS components:
+
+```tsx
+import { Button } from '@ovhcloud/ods-react';
+function MyComponent() {
+  return (
+  <div>
+      <p className="text-critical">Click on the button!</p>
+      <Button className="bg-color-primary">Click me!</Button>
+  </div>
+  );
+}
+```
+
+## Best Practices & Troubleshooting
+
+---
+
+### Color Usage
+
+-   Use semantic color names (e.g., `ods-primary-500`, `ods-success-200`) instead of generic colors
+-   **Issue**: Color classes not working? Verify that the Tailwind config includes the ODS color mappings and ensure the content paths include your component files.
+
+### Spacing and Layout
+
+-   Use ODS border radius tokens (`rounded-ods-sm`, `rounded-ods-md`, etc.)
+-   Leverage ODS form element heights for consistent input sizing
+-   **Issue**: CSS variables not loading? Ensure `@ovhcloud/ods-themes` is imported before Tailwind and check that the theme is properly initialized in your app.
+
+### Typography
+
+-   Use the ODS font family (`font-ods` for body text, `font-ods-code` for code)
+-   Apply semantic text colors (`text-ods-text`, `text-ods-heading`)
+-   Maintain proper contrast ratios with ODS color combinations
+
+### Component Integration
+
+-   ODS components can be styled with Tailwind utilities using the `className` prop
+-   Avoid overriding core ODS component styles unless necessary
+-   Use Tailwind for layout and positioning, ODS for component behavior
+-   **Issue**: Responsive breakpoints not working? Confirm that the ODS breakpoint variables are properly defined and check that the screen configuration in Tailwind config is correct.
+
+## Resources
+
+---
+
+-   [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+-   [Tailwind v4 Migration Guide](https://tailwindcss.com/docs/upgrade-guide)
+-   
+-
+
+## Frequently Asked Questions
+
+---
+title: "Frequently Asked Questions"
+slug: ovhcloud-design-system-f-a-q
+category: generic
+type: overview
+version: 19.7.3
+tokens: 1482
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-f-a-q.txt
+---
+
+---
+
+_Welcome to the F.A.Q. section of the OVHcloud Design System (ODS)._
+
+_Here, we aim to address common questions and provide helpful guidance for developers._
+
+## How can I contribute?
+
+---
+
+OVHcloud Design System is an evolving project, and we welcome contributions from the community. By keeping our repository open source, we aim to make it easier for anyone to suggest improvements, fix issues, or share ideas.
+
+Whether it’s a small fix or a new feature, every contribution helps improve the quality and usability of the system. We appreciate the time and effort of anyone who chooses to take part.
+
+Please note that while we welcome contributions, we encourage you to discuss major changes with our team to ensure alignment with the project's goals and overall quality. Additionally, if you're interested in proposing a new feature, please reach us out first to avoid duplicating effort, as we may already be working on a similar development.
+
+Refer to our project [README](https://github.com/ovh/design-system?tab=contributing-ov-file#contributing-to-ods-project) to learn more about installation and pre-requisites.
+
+## How are releases managed?
+
+---
+
+The OVHcloud Design System follows a structured release process to deliver improvements regularly while letting teams adopt updates at their own pace.
+
+**Patch releases** deliver critical fixes or small improvements and can be adopted immediately.
+
+**Minor releases** introduce new non-breaking features and start the deprecation process when needed.
+
+**Major releases** contain breaking changes, removals of previously deprecated elements, and migration documentation.
+
+Releases are published several times a year based on user needs and product evolution.
+
+We support two major versions at the same time:
+
+-   The current major version receives full support (features, improvements, fixes).
+-   The previous major version receives maintenance support for six months (critical fixes only).
+-   Older versions are no longer supported.
+
+Deprecations follow a two-step workflow:
+
+-   They are announced in a minor release, marked as "Deprecated" in Storybook, and paired with migration guidance.
+-   They are removed in the next major release.
+
+Teams may upgrade at their own pace and can skip versions. We recommend pinning a specific ODS version in your project to ensure consistent behavior.
+
+## I can't find a component I need
+
+---
+
+ODS provides base components that you can build on top of and implement in various contexts.
+
+If you need a new component, we recommend working with the design team to request and design the component to ensure it aligns with the ODS guidelines.
+
+## Is my browser supported?
+
+---
+
+ODS supports the latest 2 versions of the following browsers:
+
+-   Google Chrome
+-   Microsoft Edge
+-   Mozilla Firefox
+-   Opera
+-   Safari
+
+## Can I use another CSS framework on top of ODS?
+
+---
+
+You can use any CSS framework on top of ODS.
+
+Note that some imperative CSS frameworks like Bootstrap may override ODS styling.
+
+Ensure compatibility by testing the integration in your project.
+
+## What about Web Components and Vue?
+
+---
+
+Starting from v19, ODS have moved to fully React-based components. Web Components and the Vue wrapper are now only available in v18.x, which is now in maintenance mode, so there won't be any new features for this version.
+
+If you still need to access documentation about Web Components or Vue, use the version selector at the top left to switch to the latest 18.x documentation, where you'll find the most up-to-date information.
+
+## TS2307: Cannot find module '@ovhcloud/ods-react' or its corresponding type declarations.
+
+---
+
+Check that you're using the `bundler` [module resolution](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler) in your `tsconfig.json`.
+
+```typescript
+"moduleResolution": "bundler"
+```
+
+## My popover/tooltip is not displayed correctly
+
+---
+
+Check that you're not using a `Fragment` as your trigger.
+
+The following will **not** work properly:
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <>
+      <Component1 />
+      <Component2 />
+    </>
+  </TooltipTrigger>
+  <TooltipContent>
+    ...  </TooltipContent>
+</Tooltip>
+```
+
+Replace the `Fragment` with an actual node:
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <MyTrigger>
+      ...    </MyTrigger>
+  </TooltipTrigger>
+  <TooltipContent>
+    ...  </TooltipContent>
+</Tooltip>
+```
+
+## Overlay elements are not displayed correctly in a drawer/modal
+
+---
+
+`Modal` and `Drawer` components have a `z-index` greater than other overlay components. This is to prevent those to appear behind an open modal/drawer.
+
+To allow overlay elements to correcty render inside a modal/drawer, add the `createPortal={ false }` attribute to the `Content` component of the overlay element.
+
+See  and .
+
+## Icons are not displayed
+
+---
+
+Ensure you did import the fonts in your application, check the  page to read more about how to achieve this.
+
+## Warning: Function components cannot be given refs
+
+---
+
+When using components enabling dynamic component (through the `as` attribute), you may encounter the following error message in the console:
+
+```
+Warning: Function components cannot be given refs.
+Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+```
+
+This means you're passing a function component to the `as` attribute and it needs to be wrapped by a `forwardRef` to be able to manage the `ref` correctly.
+
+```tsx
+import { Link } from '@ovhcloud/ods-react';
+import { forwardRef, useRef } from 'react';
+const DummyLink = forwardRef(({ children, ...props }, ref) => {
+  return (
+    <a data-test="dummy" { ...props } ref={ ref }>{ children }</a>
+  );
+});
+const MyApp = () => {
+  const linkRef = useRef(null);
+  return (
+    <div>
+      ...      <Link as={ DummyLink } href="#" ref={ linkRef }>...</Link>
+    </div>
+  );
+};
+```
+
+## Get Started
+
+---
+title: "Get Started"
+slug: ovhcloud-design-system-get-started
+category: generic
+type: overview
+version: 19.7.3
+tokens: 661
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-get-started.txt
+---
+
+---
+
+OVHcloud Design System is a set of reusable React UI components to create a consistent user experience across OVHcloud pages and products, acting as a single source of truth.
+
+All OVHcloud Design System packages are available on [NPM](https://www.npmjs.com) .
+
+## Installation
+
+---
+
+Include **ODS** in your projects like any other npm/pnpm module:
+
+```bash
+npm i --save-exact @ovhcloud/ods-react @ovhcloud/ods-themes
+```
+
+or
+
+```bash
+pnpm add --save-exact @ovhcloud/ods-react @ovhcloud/ods-themes
+```
+
+## Usage
+
+---
+
+All components can be imported from the root path:
+
+```tsx
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ovhcloud/ods-react';
+const App = () => {
+  return (
+    <Accordion>
+      <AccordionItem value="0">
+        <AccordionTrigger>
+          Hello World!        </AccordionTrigger>
+        <AccordionContent>
+          Lorem ipsum dolor sit amet.        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+};
+```
+
+Each component is also available as compound component from its subpath:
+
+```tsx
+import { Accordion } from '@ovhcloud/ods-react/accordion';
+const App = () => {
+  return (
+    <Accordion>
+      <Accordion.Item value="0">
+        <Accordion.Trigger>
+          Hello World!        </Accordion.Trigger>
+        <Accordion.Content>
+          Lorem ipsum dolor sit amet.        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion>
+  );
+};
+```
+
+Components are compatible with React `v18.2+`, `v19+`.
+
+## Import components constants
+
+---
+
+All enums, interfaces, events are available directly from the `ods-react` lib
+
+```typescript
+import { BUTTON_SIZE, type CheckboxProp } from '@ovhcloud/ods-react';
+```
+
+## Import theme & fonts
+
+---
+
+You need to import a theme to display all the components correctly. It defines all the colors, typographies, etc...
+
+via ES import:
+
+```typescript
+import '@ovhcloud/ods-themes/default/css';
+import '@ovhcloud/ods-themes/default/fonts';
+```
+
+via Sass import:
+
+```css
+@import '@ovhcloud/ods-themes/default/css';
+@import '@ovhcloud/ods-themes/default/fonts';
+```
+
+In case you encounter some issues while importing the font files, you can fallback to the base64 import using `import '@ovhcloud/ods-themes/default`. Though this will increase the bundle size and prevent browser resources loading optimization.
+
+## Typescript
+
+---
+
+To ensure the types are correctly resolved, you'll have to use the `bundler` module resolution, released with [Typescript 5.0](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#--moduleresolution-bundler) .
+
+```typescript
+"moduleResolution": "bundler"
+```
+
 ## Roadmap
 
 ---
@@ -2868,32 +2858,50 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-
 
 ---
 
-## Welcome
+## Migrate to v19
 
 ---
-title: "Welcome"
-slug: ovhcloud-design-system-welcome
+title: "Migrate to v19"
+slug: ovhcloud-design-system-upgrade-migration-to-v19
 category: generic
 type: overview
 version: 19.7.3
-tokens: 70
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-welcome.txt
+tokens: 400
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-migration-to-v19.txt
 ---
 
-### A collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
+---
 
- [Design Guidelines](https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system) [GitHub repository](https://github.com/ovh/design-system)
+Version 19 of ODS is not the direct follow-up of previous versions, it is a new library built 100% on top of [React](https://react.dev) .
 
-## What S New Migration Guide 12 X To 13 X
+Previous versions were providing a React version of each components too, but there were in fact a wrapping of the Web Component. Thus it was designed with the constraints related to Web Component (no virtual DOM, relying on DOM selector, ...).
+
+With this new version we got rid of those constraints, which gave us some benefits like:
+
+-   component composition.
+-   easier style customization.
+-   easier React integration (no more `ref` needed, nor literal templates).
+
+We've also alleviate a lot of previous component restrictions, as most of them now accept React nodes instead of fixed property.
+
+For example, Button will now accept any node (text, text + icon, triple icon, ...) and won't force you to set only a label and an optional icon.
+
+Moving out of Web Component also means getting rid of the Shadow DOM. This means you now have direct access to the component DOM and it's easier to add you own style. Though this also means it is easier to break the component rendering, and some custom selectors may break from version to version (see  to know more).
+
+Regarding components, we tried to stay as close as possible to their previous interface while keeping them easy to integrate. Though, the way you'll integrate them in your React app should be rethought, to ensure you use them as real React components and not wrapped Web Components anymore.
+
+To check how to start with this new version, please follow the  documentation.
+
+## Upgrade Previous Migrations 12 X To 13 X
 
 ---
-title: "What S New Migration Guide 12 X To 13 X"
-slug: ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x
+title: "Upgrade Previous Migrations 12 X To 13 X"
+slug: ovhcloud-design-system-upgrade-previous-migrations-12-x-to-13-x
 category: generic
 type: overview
 version: 19.7.3
 tokens: 64
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x.txt
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-previous-migrations-12-x-to-13-x.txt
 ---
 
 ## Select width
@@ -2908,16 +2916,16 @@ width: calc(var(--ods-size-stack-08) * 11)
 
 Should you need any width, you will have to set it on your component.
 
-## What S New Migration Guide 13 X To 14 X
+## Upgrade Previous Migrations 13 X To 14 X
 
 ---
-title: "What S New Migration Guide 13 X To 14 X"
-slug: ovhcloud-design-system-what-s-new-migration-guide-13-x-to-14-x
+title: "Upgrade Previous Migrations 13 X To 14 X"
+slug: ovhcloud-design-system-upgrade-previous-migrations-13-x-to-14-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 68
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-what-s-new-migration-guide-13-x-to-14-x.txt
+tokens: 69
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-previous-migrations-13-x-to-14-x.txt
 ---
 
 ## Tile interactive attribute
@@ -2932,16 +2940,16 @@ interactive?: boolean;
 
 If you are using `interactive` attribute on a Tile in your project, you should remove it.
 
-## What S New Migration Guide 14 X To 15 X
+## Upgrade Previous Migrations 14 X To 15 X
 
 ---
-title: "What S New Migration Guide 14 X To 15 X"
-slug: ovhcloud-design-system-what-s-new-migration-guide-14-x-to-15-x
+title: "Upgrade Previous Migrations 14 X To 15 X"
+slug: ovhcloud-design-system-upgrade-previous-migrations-14-x-to-15-x
 category: generic
 type: overview
 version: 19.7.3
 tokens: 768
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-what-s-new-migration-guide-14-x-to-15-x.txt
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-previous-migrations-14-x-to-15-x.txt
 ---
 
 ## Text
@@ -3043,16 +3051,16 @@ Following interfaces has been removed:
 -   `OdsTextAreaBehavior`
 -   `OdsTextAreaSizeUnion`
 
-## What S New Migration Guide 15 X To 16 X
+## Upgrade Previous Migrations 15 X To 16 X
 
 ---
-title: "What S New Migration Guide 15 X To 16 X"
-slug: ovhcloud-design-system-what-s-new-migration-guide-15-x-to-16-x
+title: "Upgrade Previous Migrations 15 X To 16 X"
+slug: ovhcloud-design-system-upgrade-previous-migrations-15-x-to-16-x
 category: generic
 type: overview
 version: 19.7.3
 tokens: 488
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-what-s-new-migration-guide-15-x-to-16-x.txt
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-previous-migrations-15-x-to-16-x.txt
 ---
 
 Presenting all changes, components per components will cause a very long and hard to use changelog.
@@ -3104,16 +3112,16 @@ import type { OdsSpinnerAttribute } from '@ovhcloud/ods-component-spinner'
 
 Some types have been removed from ODS, as they were empty or not used, if you can't find a type you were using, please contact us to see where it has been moved or how to replace it.
 
-## What S New Migration Guide 16 X To 17 X
+## Upgrade Previous Migrations 16 X To 17 X
 
 ---
-title: "What S New Migration Guide 16 X To 17 X"
-slug: ovhcloud-design-system-what-s-new-migration-guide-16-x-to-17-x
+title: "Upgrade Previous Migrations 16 X To 17 X"
+slug: ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x
 category: generic
 type: overview
 version: 19.7.3
-tokens: 458
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-what-s-new-migration-guide-16-x-to-17-x.txt
+tokens: 459
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-previous-migrations-16-x-to-17-x.txt
 ---
 
 Main focus on this version has been on simplifying ODS integration in existing projects (React, Vue, JS, ...).
@@ -3189,16 +3197,16 @@ For now, you will still need to add `ods-common-theming` as a dependency to acce
 
 If you still ended up adding `ods-common-core` in your project, please give us the feedback so that we work on removing that need.
 
-## What S New Migration Guide 17 X To 18 X
+## Upgrade Previous Migrations 17 X To 18 X
 
 ---
-title: "What S New Migration Guide 17 X To 18 X"
-slug: ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x
+title: "Upgrade Previous Migrations 17 X To 18 X"
+slug: ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x
 category: generic
 type: overview
 version: 19.7.3
 tokens: 323
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x.txt
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-previous-migrations-17-x-to-18-x.txt
 ---
 
 If you have any questions or issues regarding the new version, feel free to reach us directly.
@@ -3244,50 +3252,16 @@ A complete list of changes and a guide about how to migrate is available per com
 
 Use the top-left version selector to move to the latest v18.x documentation where you'll find the latest up-to-date information.
 
-## Migrate to v19
-
----
-title: "Migrate to v19"
-slug: ovhcloud-design-system-what-s-new-migration-guide-to-19-x
-category: generic
-type: overview
-version: 19.7.3
-tokens: 400
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-what-s-new-migration-guide-to-19-x.txt
----
-
----
-
-Version 19 of ODS is not the direct follow-up of previous versions, it is a new library built 100% on top of [React](https://react.dev) .
-
-Previous versions were providing a React version of each components too, but there were in fact a wrapping of the Web Component. Thus it was designed with the constraints related to Web Component (no virtual DOM, relying on DOM selector, ...).
-
-With this new version we got rid of those constraints, which gave us some benefits like:
-
--   component composition.
--   easier style customization.
--   easier React integration (no more `ref` needed, nor literal templates).
-
-We've also alleviate a lot of previous component restrictions, as most of them now accept React nodes instead of fixed property.
-
-For example, Button will now accept any node (text, text + icon, triple icon, ...) and won't force you to set only a label and an optional icon.
-
-Moving out of Web Component also means getting rid of the Shadow DOM. This means you now have direct access to the component DOM and it's easier to add you own style. Though this also means it is easier to break the component rendering, and some custom selectors may break from version to version (see  to know more).
-
-Regarding components, we tried to stay as close as possible to their previous interface while keeping them easy to integrate. Though, the way you'll integrate them in your React app should be rethought, to ensure you use them as real React components and not wrapped Web Components anymore.
-
-To check how to start with this new version, please follow the  documentation.
-
 ## What's new ?
 
 ---
 title: "What's new ?"
-slug: ovhcloud-design-system-what-s-new-what-s-new
+slug: ovhcloud-design-system-upgrade-what-s-new
 category: generic
 type: overview
 version: 19.7.3
 tokens: 17596
-source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-what-s-new-what-s-new.txt
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-upgrade-what-s-new.txt
 ---
 
 ---
@@ -6036,6 +6010,54 @@ The V1 **Design System** graphical charter is finalized. This charter contains :
 -   **Chips & Badges**
 -   **Cards**
 -   **Cart**
+
+## OVHcloud Design System
+
+---
+title: "OVHcloud Design System"
+slug: ovhcloud-design-system-welcome
+category: generic
+type: overview
+version: 19.7.3
+tokens: 218
+source: https://ovh.github.io/design-system/v19.7.3/llms/ovhcloud-design-system-welcome.txt
+---
+
+-   React-based
+-   Fully accessible
+-   Open source
+
+---
+
+A collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
+
+## Components
+
+60+ production-ready React components.
+
+---
+
+[Browse components](http://localhost/?path=/story/react-components-gallery--docs)
+
+## Icons
+
+500+ icons crafted for OVHcloud products.
+
+---
+
+[Browse icons](http://localhost/?path=/story/react-components-icon--gallery)
+
+## Recipes
+
+Proven UI patterns that combine multiple components.
+
+---
+
+[Browse recipes](http://localhost/?path=/story/recipes-components--docs)
+
+-   [Get Started](http://localhost/?path=/story/ovhcloud-design-system-get-started--docs)
+-   [Design Guidelines](https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system)
+-   [GitHub repository](https://github.com/ovh/design-system)
 
 ## Components
 

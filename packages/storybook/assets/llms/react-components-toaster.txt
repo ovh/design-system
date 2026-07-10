@@ -4,7 +4,7 @@ slug: toaster
 category: component
 type: overview
 version: 19.7.3
-tokens: 2355
+tokens: 2157
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaster.txt
 ---
 
@@ -150,52 +150,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-toaste
         Trigger toast
       </Button>
     </>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: arg => <>
-      <Toaster {...arg} />
-
-      <Button onClick={() => toast('Notification message')}>
-        Trigger toast
-      </Button>
-    </>,
-  argTypes: orderControls({
-    dismissible: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    duration: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'number'
-    },
-    position: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'TOASTER_POSITION'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: TOASTER_POSITIONS
-    },
-    max: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'number'
-    }
-  })
 }
 ```
 

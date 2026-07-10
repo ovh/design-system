@@ -4,7 +4,7 @@ slug: pagination
 category: component
 type: overview
 version: 19.7.3
-tokens: 1724
+tokens: 1410
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-pagination.txt
 ---
 
@@ -134,75 +134,6 @@ import { useState } from 'react';`
   render: ({}) => <Pagination totalItems={5000}>
       <PaginationPages />
     </Pagination>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: ({
-    totalItems,
-    withPageSelector,
-    withPageSizeSelector,
-    ...arg
-  }: DemoArg) => <Pagination totalItems={totalItems ?? 5000} {...arg}>
-      {withPageSizeSelector && <PaginationPageSizeSelector />}
-
-      <PaginationPages />
-
-      {withPageSelector && <PaginationPageSelector />}
-    </Pagination>,
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    labelTooltipNext: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    labelTooltipPrev: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    pageSize: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    page: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    siblingCount: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    totalItems: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    withPageSelector: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    },
-    withPageSizeSelector: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      }
-    }
-  }),
-  args: {
-    totalItems: 5000
-  }
 }
 ```
 

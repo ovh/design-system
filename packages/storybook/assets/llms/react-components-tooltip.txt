@@ -4,7 +4,7 @@ slug: tooltip
 category: component
 type: overview
 version: 19.7.3
-tokens: 2590
+tokens: 2155
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-tooltip.txt
 ---
 
@@ -173,97 +173,6 @@ import { useState } from 'react';`
         This is the tooltip content
       </TooltipContent>
     </Tooltip>
-}
-```
-
-### Demo
-
-```tsx
-{
-  parameters: {
-    layout: 'centered'
-  },
-  render: (arg: DemoArg) => <Tooltip closeDelay={arg.closeDelay} openDelay={arg.openDelay} overlayConfig={{
-    gutter: arg.gutter,
-    position: arg.position,
-    sameWidth: arg.sameWidth
-  }}>
-      <TooltipTrigger asChild>
-        <Icon name={ICON_NAME.circleQuestion} style={{
-        fontSize: '24px'
-      }} />
-      </TooltipTrigger>
-
-      <TooltipContent withArrow={arg.withArrow}>
-        {arg.content}
-      </TooltipContent>
-    </Tooltip>,
-  argTypes: orderControls({
-    closeDelay: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'number'
-    },
-    content: {
-      table: {
-        category: CONTROL_CATEGORY.slot
-      },
-      control: 'text'
-    },
-    gutter: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        type: {
-          summary: 'number'
-        }
-      },
-      control: 'number'
-    },
-    openDelay: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'number'
-    },
-    position: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'TOOLTIP_POSITION'
-        }
-      },
-      control: {
-        type: 'select'
-      },
-      options: TOOLTIP_POSITIONS
-    },
-    sameWidth: {
-      table: {
-        category: CONTROL_CATEGORY.design
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    withArrow: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        defaultValue: {
-          summary: false
-        },
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: {
-        type: 'boolean'
-      }
-    }
-  }),
-  args: {
-    content: 'My tooltip content'
-  }
 }
 ```
 

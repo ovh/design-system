@@ -4,7 +4,7 @@ slug: progress-bar
 category: component
 type: overview
 version: 19.7.3
-tokens: 543
+tokens: 446
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progress-bar.txt
 ---
 
@@ -52,33 +52,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-progre
   },
   tags: ['!dev'],
   render: ({}) => <ProgressBar />
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    max: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'number'
-        }
-      },
-      control: 'number'
-    },
-    value: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'number'
-        }
-      },
-      control: 'number'
-    }
-  })
 }
 ```
 

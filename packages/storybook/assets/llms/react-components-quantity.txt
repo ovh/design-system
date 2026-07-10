@@ -4,7 +4,7 @@ slug: quantity
 category: component
 type: overview
 version: 19.7.3
-tokens: 1520
+tokens: 1202
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quantity.txt
 ---
 
@@ -91,73 +91,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quanti
         <QuantityInput />
       </QuantityControl>
     </Quantity>
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: DemoArg) => <Quantity disabled={arg.disabled} invalid={arg.invalid} max={arg.max} min={arg.min} readOnly={arg.readOnly} step={arg.step}>
-      <QuantityControl>
-        <QuantityInput placeholder={arg.placeholder} />
-      </QuantityControl>
-    </Quantity>,
-  argTypes: orderControls({
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    max: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'number'
-      }
-    },
-    min: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'number'
-      }
-    },
-    placeholder: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'string'
-        }
-      },
-      control: 'text'
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    step: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: {
-        type: 'number'
-      }
-    }
-  })
 }
 ```
 

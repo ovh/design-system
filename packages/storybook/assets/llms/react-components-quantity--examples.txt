@@ -1,0 +1,115 @@
+---
+title: "Quantity"
+slug: quantity
+category: component
+type: examples
+version: 19.7.3
+tokens: 289
+source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-quantity--examples.txt
+---
+
+# Quantity
+
+## Default
+
+---
+
+```jsx
+<Quantity>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+## Disabled
+
+---
+
+```jsx
+<Quantity disabled>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+## Readonly
+
+---
+
+```jsx
+<Quantity readOnly>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+## Max
+
+---
+
+```jsx
+<Quantity max={10}>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+## Min
+
+---
+
+```jsx
+<Quantity min={0}>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+## Step
+
+---
+
+```jsx
+<Quantity step={10}>
+  <QuantityControl>
+    <QuantityInput />
+  </QuantityControl>
+</Quantity>
+```
+
+## Form field
+
+---
+
+Set a quantity:
+
+```jsx
+<FormField>
+  <FormFieldLabel>
+    Set a quantity:  </FormFieldLabel>
+  <Quantity>
+    <QuantityControl>
+      <QuantityInput />
+    </QuantityControl>
+  </Quantity>
+</FormField>
+```
+
+## Recipes
+
+---
+
+Config Tile
+
+VPS 1
+
+4 vCore8 Go RAM100 Go 1 day automated backup Unlimited traffic 200 Mbps
+
+12 months6 monthsNo commitment
+
+From€24.46ex. VAT/monthor €13.19 incl. VAT/month

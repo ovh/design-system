@@ -4,7 +4,7 @@ slug: kbd
 category: component
 type: overview
 version: 19.7.3
-tokens: 170
+tokens: 119
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-kbd.txt
 ---
 
@@ -31,24 +31,6 @@ source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-kbd.tx
   },
   tags: ['!dev'],
   render: ({}) => <Kbd>Cmd</Kbd>
-}
-```
-
-### Demo
-
-```tsx
-{
-  argTypes: orderControls({
-    children: {
-      table: {
-        category: CONTROL_CATEGORY.slot
-      },
-      control: 'text'
-    }
-  }),
-  args: {
-    children: 'Cmd + L'
-  }
 }
 ```
 

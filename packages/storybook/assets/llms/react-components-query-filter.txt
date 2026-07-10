@@ -4,7 +4,7 @@ slug: query-filter
 category: component
 type: overview
 version: 19.7.3
-tokens: 2188
+tokens: 1657
 source: https://ovh.github.io/design-system/v19.7.3/llms/react-components-query-filter.txt
 ---
 
@@ -210,102 +210,6 @@ import { useMemo } from 'react';`
           Clear all
         </QueryFilterClear>
       </QueryFilter>;
-  }
-}
-```
-
-### Demo
-
-```tsx
-{
-  render: (arg: DemoArg) => <QueryFilter allowCustomValue={arg.allowCustomValue} disabled={arg.disabled} highlightResults={arg.highlightResults} invalid={arg.invalid} filterOption={filterOption} filterProperty={filterProperty} newElementLabel={arg.newElementLabel} noResultLabel={arg.noResultLabel} readOnly={arg.readOnly}>
-      <QueryFilterControl clearable={arg.clearable} loading={arg.loading} placeholder={arg.placeholder} />
-
-      <QueryFilterContent />
-
-      <QueryFilterTags />
-
-      <QueryFilterClear>
-        {arg.clearAllLabel}
-      </QueryFilterClear>
-    </QueryFilter>,
-  argTypes: orderControls({
-    allowCustomValue: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    clearAllLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
-    },
-    clearable: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    highlightResults: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    invalid: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    },
-    loading: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        type: {
-          summary: 'boolean'
-        }
-      },
-      control: 'boolean'
-    },
-    newElementLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
-    },
-    noResultLabel: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
-    },
-    placeholder: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'text'
-    },
-    readOnly: {
-      table: {
-        category: CONTROL_CATEGORY.general
-      },
-      control: 'boolean'
-    }
-  }),
-  args: {
-    clearAllLabel: 'Clear all',
-    placeholder: 'Add filters'
   }
 }
 ```

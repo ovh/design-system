@@ -9,7 +9,7 @@ overrides:
   '@types/react': 18.2.56
 
 patchedDependencies:
-  '@fluentui/storybook-llms-extractor@0.0.3': 2bfbb9137f1b68c057bb8e394b8c32ff10320b5078022b17f4d6037f57e86b7c
+  '@fluentui/storybook-llms-extractor@0.0.3': f54405beee8a85136373358115b067ddc5709273793138a227bdf0cf16d06107
   husky@4.3.8: bb86c80f1fd4533ee6ce5051d22685597fec4a643b2675758e492b75155fd297
 
 importers:
@@ -775,7 +775,7 @@ importers:
     devDependencies:
       '@fluentui/storybook-llms-extractor':
         specifier: 0.0.3
-        version: 0.0.3(patch_hash=2bfbb9137f1b68c057bb8e394b8c32ff10320b5078022b17f4d6037f57e86b7c)
+        version: 0.0.3(patch_hash=f54405beee8a85136373358115b067ddc5709273793138a227bdf0cf16d06107)
       '@storybook/addon-docs':
         specifier: 8.6.12
         version: 8.6.12(@types/react@18.2.56)(storybook@8.6.12(prettier@3.6.2))
@@ -5164,6 +5164,7 @@ packages:
   conventional-changelog-core@5.0.1:
     resolution: {integrity: sha512-Rvi5pH+LvgsqGwZPZ3Cq/tz4ty7mjijhr3qR4m9IBXNbxGGYgTVVO+duXzz9aArmHxFtwZ+LRkrNIMDQzgoY4A==}
     engines: {node: '>=14'}
+    deprecated: Deprecated and no longer maintained. Please use conventional-changelog instead.
 
   conventional-changelog-preset-loader@3.0.0:
     resolution: {integrity: sha512-qy9XbdSLmVnwnvzEisjxdDiLA4OmV3o8db+Zdg4WiFw14fP3B6XNz98X0swPPpkTd/pc1K7+adKgEDM1JCUMiA==}
@@ -6246,13 +6247,13 @@ packages:
   git-raw-commits@2.0.11:
     resolution: {integrity: sha512-VnctFhw+xfj8Va1xtfEqCUD2XDrbAPSJx+hSrE5K7fGdjZruW7XV+QOrN7LF/RJyvspRiD2I0asWsxFp0ya26A==}
     engines: {node: '>=10'}
-    deprecated: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
+    deprecated: Deprecated and no longer maintained. Use @conventional-changelog/git-client instead.
     hasBin: true
 
   git-raw-commits@3.0.0:
     resolution: {integrity: sha512-b5OHmZ3vAgGrDn/X0kS+9qCfNKWe4K/jFnhwzVWWg0/k5eLa3060tZShrRg8Dja5kPc+YjS0Gc6y7cRr44Lpjw==}
     engines: {node: '>=14'}
-    deprecated: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
+    deprecated: Deprecated and no longer maintained. Use @conventional-changelog/git-client instead.
     hasBin: true
 
   git-remote-origin-url@2.0.0:
@@ -6262,7 +6263,7 @@ packages:
   git-semver-tags@5.0.1:
     resolution: {integrity: sha512-hIvOeZwRbQ+7YEUmCkHqo8FOLQZCEn18yevLHADlFPZY02KJGsu5FZt9YW/lybfK2uhWFI7Qg/07LekJiTv7iA==}
     engines: {node: '>=14'}
-    deprecated: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
+    deprecated: Deprecated and no longer maintained. Use @conventional-changelog/git-client instead.
     hasBin: true
 
   git-up@7.0.0:
@@ -12029,7 +12030,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.11': {}
 
-  '@fluentui/storybook-llms-extractor@0.0.3(patch_hash=2bfbb9137f1b68c057bb8e394b8c32ff10320b5078022b17f4d6037f57e86b7c)':
+  '@fluentui/storybook-llms-extractor@0.0.3(patch_hash=f54405beee8a85136373358115b067ddc5709273793138a227bdf0cf16d06107)':
     dependencies:
       '@swc/helpers': 0.5.23
       playwright: 1.56.1

@@ -10,7 +10,6 @@ const SUMMARY_FILENAME = 'llms.txt';
 const SUMMARY_PATH = path.join(DIST_DIR, SUMMARY_FILENAME);
 const LLMS_DIR = path.join(DIST_DIR, 'llms');
 const ASSETS_LLMS_DIR = path.join(__dirname, '..', 'assets', 'llms');
-const DIST_LLMS_DIR = LLMS_DIR;
 const COMPONENTS_INDEX_FILENAME = 'ods-components-index.txt';
 const GENERIC_INDEX_FILENAME = 'ods-generic-index.txt';
 const INDEX_JSON_FILENAME = 'llms-index.json';
@@ -27,7 +26,6 @@ const GENERIC_CATEGORY = {
   filename: 'ods-documentation-generic.txt',
   title: 'Generic Documentation',
   description: 'Documentation for design tokens, styling, theming, guides, tools, and general information about OVHcloud Design System.',
-  pattern: /^(?!react-components-).*/,
 };
 
 async function exists(filepath) {
@@ -42,7 +40,9 @@ async function exists(filepath) {
 const EXCLUDE_PATTERNS = [
   /^ovhcloud-design-system-ai-agents-/,
   /^ovhcloud-design-system-tools-/,
-  /^ovhcloud-design-system-what-s-new-changelog/,
+  // Section-agnostic: the changelog page moved sections before (What's new? -> Upgrade)
+  // and a section-prefixed pattern silently stops matching when that happens.
+  /-changelog\.txt$/,
   /-gallery\.txt$/,
 ];
 
@@ -133,14 +133,16 @@ function parseDoc(file, raw) {
     type = 'technical-information';
   } else if (/--documentation$/.test(stem)) {
     type = 'documentation';
+  } else if (/--examples$/.test(stem)) {
+    type = 'examples';
   }
 
   let slug;
   if (isComponent) {
-    const match = stem.match(/^react-components-(.+?)(?:--(?:documentation|technical-information))?$/);
+    const match = stem.match(/^react-components-(.+?)(?:--(?:documentation|technical-information|examples))?$/);
     slug = match ? match[1] : stem;
   } else {
-    slug = stem.replace(/--(?:documentation|technical-information)$/, '');
+    slug = stem.replace(/--(?:documentation|technical-information|examples)$/, '');
   }
 
   const lines = raw.split('\n');
@@ -294,12 +296,14 @@ function humanizeSlug(slug) {
     .join(' ');
 }
 
-// Relative link used between llms files. It resolves to the sibling file both
-// locally (integrators reading the files shipped in their node_modules) and on
-// the web (within the versioned /v<version>/llms/ path), so links stay
+// Relative link used between llms files, resolved against where the linking
+// file is served from: './' inside the flat /llms/ directory (and in the copy
+// shipped in node_modules), './llms/' for the copies published at the dist
+// root — the individual files only exist under /llms/, so root-served
+// navigation files must point into it or their links 404. Links stay
 // version-correct everywhere without hard-coding an absolute host.
-function relUrl(file) {
-  return `./${file}`;
+function relUrl(file, linkBase) {
+  return `${linkBase}${file}`;
 }
 
 // Group component docs by their slug, attaching the overview / documentation /
@@ -308,7 +312,7 @@ function groupComponentsBySlug(componentDocs) {
   const grouped = new Map();
 
   for (const doc of componentDocs) {
-    const match = doc.file.match(/^react-components-(.+?)(?:--(documentation|technical-information))?\.txt$/);
+    const match = doc.file.match(/^react-components-(.+?)(?:--(documentation|technical-information|examples))?\.txt$/);
     if (!match) {
       continue;
     }
@@ -324,7 +328,7 @@ function groupComponentsBySlug(componentDocs) {
   return [...grouped.values()].sort((a, b) => a.slug.localeCompare(b.slug));
 }
 
-function buildComponentsIndex(componentDocs) {
+function buildComponentsIndex(componentDocs, linkBase) {
   const lines = [
     '# OVHcloud Design System - Components Index',
     '',
@@ -337,13 +341,16 @@ function buildComponentsIndex(componentDocs) {
     lines.push(`## ${humanizeSlug(entry.slug)}`);
     lines.push('');
     if (entry.docs.overview) {
-      lines.push(`- [Overview](${relUrl(entry.docs.overview.file)}) (~${entry.docs.overview.tokens} tokens)`);
+      lines.push(`- [Overview](${relUrl(entry.docs.overview.file, linkBase)}) (~${entry.docs.overview.tokens} tokens)`);
     }
     if (entry.docs.documentation) {
-      lines.push(`- [Documentation](${relUrl(entry.docs.documentation.file)}) (~${entry.docs.documentation.tokens} tokens)`);
+      lines.push(`- [Documentation](${relUrl(entry.docs.documentation.file, linkBase)}) (~${entry.docs.documentation.tokens} tokens)`);
     }
     if (entry.docs['technical-information']) {
-      lines.push(`- [Technical Information](${relUrl(entry.docs['technical-information'].file)}) (~${entry.docs['technical-information'].tokens} tokens)`);
+      lines.push(`- [Technical Information](${relUrl(entry.docs['technical-information'].file, linkBase)}) (~${entry.docs['technical-information'].tokens} tokens)`);
+    }
+    if (entry.docs.examples) {
+      lines.push(`- [Examples](${relUrl(entry.docs.examples.file, linkBase)}) (~${entry.docs.examples.tokens} tokens)`);
     }
     lines.push('');
   }
@@ -355,7 +362,7 @@ function buildComponentsIndex(componentDocs) {
   return `${lines.join('\n')}\n`;
 }
 
-function buildGenericIndex(genericDocs) {
+function buildGenericIndex(genericDocs, linkBase) {
   const lines = [
     '# OVHcloud Design System - Generic Documentation Index',
     '',
@@ -374,16 +381,16 @@ function buildGenericIndex(genericDocs) {
 // Machine-readable counterpart of the markdown indexes: every documentation
 // file with its type, token estimate and canonical URL, so tooling can decide
 // what to fetch without parsing markdown.
-function buildIndexJson(components, generic) {
+function buildIndexJson(components, generic, linkBase) {
   const base = `${BASE_URL}/llms`;
   // Per-file links are relative so they resolve both locally and on the web;
   // baseUrl below keeps the absolute versioned root for consumers that want it.
-  const url = (file) => relUrl(file);
+  const url = (file) => relUrl(file, linkBase);
   const meta = (doc) => ({ type: doc.type, tokens: doc.tokens, url: url(doc.file) });
 
   const componentEntries = groupComponentsBySlug(components).map((entry) => {
     const pages = {};
-    for (const key of ['overview', 'documentation', 'technical-information']) {
+    for (const key of ['overview', 'documentation', 'technical-information', 'examples']) {
       if (entry.docs[key]) {
         pages[key] = meta(entry.docs[key]);
       }
@@ -417,7 +424,7 @@ function buildIndexJson(components, generic) {
   return `${JSON.stringify(index, null, 2)}\n`;
 }
 
-function buildSummary(componentsCount, genericCount) {
+function buildSummary(componentsCount, genericCount, linkBase) {
   const lines = [
     '# OVHcloud Design System Documentation for LLMs',
     '',
@@ -425,18 +432,18 @@ function buildSummary(componentsCount, genericCount) {
     '',
     '## Documentation Sets',
     '',
-    `- [Complete documentation](${relUrl(FULL_DOC_FILENAME)}): The complete OVHcloud Design System documentation including all components, styling, theming, guides, and tools`,
-    `- [Machine-readable index](${relUrl(INDEX_JSON_FILENAME)}): JSON index of every documentation file with its type, token estimate and canonical URL`,
+    `- [Complete documentation](${relUrl(FULL_DOC_FILENAME, linkBase)}): The complete OVHcloud Design System documentation including all components, styling, theming, guides, and tools`,
+    `- [Machine-readable index](${relUrl(INDEX_JSON_FILENAME, linkBase)}): JSON index of every documentation file with its type, token estimate and canonical URL`,
     '',
   ];
 
   if (componentsCount > 0) {
-    lines.push(`- [${COMPONENTS_CATEGORY.title}](${relUrl(COMPONENTS_CATEGORY.filename)}): ${COMPONENTS_CATEGORY.description}`);
-    lines.push(`- [Components Index](${relUrl(COMPONENTS_INDEX_FILENAME)}): Individual per-component documentation files for targeted context`);
+    lines.push(`- [${COMPONENTS_CATEGORY.title}](${relUrl(COMPONENTS_CATEGORY.filename, linkBase)}): ${COMPONENTS_CATEGORY.description}`);
+    lines.push(`- [Components Index](${relUrl(COMPONENTS_INDEX_FILENAME, linkBase)}): Individual per-component documentation files for targeted context`);
   }
   if (genericCount > 0) {
-    lines.push(`- [${GENERIC_CATEGORY.title}](${relUrl(GENERIC_CATEGORY.filename)}): ${GENERIC_CATEGORY.description}`);
-    lines.push(`- [Generic Documentation Index](${relUrl(GENERIC_INDEX_FILENAME)}): Individual per-page documentation files for targeted context`);
+    lines.push(`- [${GENERIC_CATEGORY.title}](${relUrl(GENERIC_CATEGORY.filename, linkBase)}): ${GENERIC_CATEGORY.description}`);
+    lines.push(`- [Generic Documentation Index](${relUrl(GENERIC_INDEX_FILENAME, linkBase)}): Individual per-page documentation files for targeted context`);
   }
 
   lines.push('');
@@ -491,19 +498,25 @@ async function main() {
   await fs.writeFile(fullDocPath, buildFullDoc(allDocs), 'utf8');
   console.log('✅ Complete documentation aggregated into llms-full.txt');
 
-  await fs.writeFile(SUMMARY_PATH, buildSummary(components.length, generic.length), 'utf8');
+  // Navigation files exist in two variants: the dist-root copies link into
+  // ./llms/ (where the individual files actually live), the flat-directory
+  // copies (dist/llms, assets/llms, node_modules) link to their siblings.
+  const ROOT_BASE = './llms/';
+  const FLAT_BASE = './';
+
+  await fs.writeFile(SUMMARY_PATH, buildSummary(components.length, generic.length, ROOT_BASE), 'utf8');
   console.log('✅ Summary updated');
 
   // --- Indexes -----------------------------------------------------------
   if (components.length > 0) {
-    await fs.writeFile(componentsIndexPath, buildComponentsIndex(components), 'utf8');
+    await fs.writeFile(componentsIndexPath, buildComponentsIndex(components, ROOT_BASE), 'utf8');
     console.log(`✅ Components index generated into ${COMPONENTS_INDEX_FILENAME}`);
   }
   if (generic.length > 0) {
-    await fs.writeFile(genericIndexPath, buildGenericIndex(generic), 'utf8');
+    await fs.writeFile(genericIndexPath, buildGenericIndex(generic, ROOT_BASE), 'utf8');
     console.log(`✅ Generic index generated into ${GENERIC_INDEX_FILENAME}`);
   }
-  await fs.writeFile(indexJsonPath, buildIndexJson(components, generic), 'utf8');
+  await fs.writeFile(indexJsonPath, buildIndexJson(components, generic, ROOT_BASE), 'utf8');
   console.log(`✅ Machine-readable index generated into ${INDEX_JSON_FILENAME}`);
 
   // --- Publish -----------------------------------------------------------
@@ -522,17 +535,18 @@ async function main() {
       }
     }
 
-    // Generated aggregates, indexes and the machine-readable index.
-    await fs.copyFile(SUMMARY_PATH, path.join(targetDir, SUMMARY_FILENAME));
+    // Aggregates are link-free, so the root copies can be reused as-is; the
+    // navigation files are rebuilt with sibling links for the flat directory.
+    await fs.writeFile(path.join(targetDir, SUMMARY_FILENAME), buildSummary(components.length, generic.length, FLAT_BASE), 'utf8');
     await fs.copyFile(fullDocPath, path.join(targetDir, FULL_DOC_FILENAME));
-    await fs.copyFile(indexJsonPath, path.join(targetDir, INDEX_JSON_FILENAME));
+    await fs.writeFile(path.join(targetDir, INDEX_JSON_FILENAME), buildIndexJson(components, generic, FLAT_BASE), 'utf8');
     if (components.length > 0) {
       await fs.copyFile(componentsPath, path.join(targetDir, COMPONENTS_CATEGORY.filename));
-      await fs.copyFile(componentsIndexPath, path.join(targetDir, COMPONENTS_INDEX_FILENAME));
+      await fs.writeFile(path.join(targetDir, COMPONENTS_INDEX_FILENAME), buildComponentsIndex(components, FLAT_BASE), 'utf8');
     }
     if (generic.length > 0) {
       await fs.copyFile(genericPath, path.join(targetDir, GENERIC_CATEGORY.filename));
-      await fs.copyFile(genericIndexPath, path.join(targetDir, GENERIC_INDEX_FILENAME));
+      await fs.writeFile(path.join(targetDir, GENERIC_INDEX_FILENAME), buildGenericIndex(generic, FLAT_BASE), 'utf8');
     }
 
     // Self-describing individual files (front-matter + cleaned content) for
@@ -547,7 +561,7 @@ async function main() {
     await copyFilesToDirectory(ASSETS_LLMS_DIR);
     console.log('✅ LLM docs copied to assets/llms directory for dev mode access.');
 
-    await copyFilesToDirectory(DIST_LLMS_DIR);
+    await copyFilesToDirectory(LLMS_DIR);
     console.log('✅ LLM docs copied to dist/llms directory for production build.');
   } catch (copyError) {
     console.warn('⚠️ Failed to copy LLM docs:', copyError.message);

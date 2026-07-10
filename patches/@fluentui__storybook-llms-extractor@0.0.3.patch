@@ -1,5 +1,5 @@
 diff --git a/dist/src/utils.js b/dist/src/utils.js
-index 2852bb0e7f7763a7ba2d0b6765554921917f3d91..e8c1476c6585184626eb0c234cff60e4e8ed445f 100644
+index 2852bb0e7f7763a7ba2d0b6765554921917f3d91..3d779198ea426446e231bb66b9c7440515aaf216 100644
 --- a/dist/src/utils.js
 +++ b/dist/src/utils.js
 @@ -134,6 +134,43 @@ async function extractStorybookData({ distPath }) {
@@ -64,7 +64,7 @@ index 2852bb0e7f7763a7ba2d0b6765554921917f3d91..e8c1476c6585184626eb0c234cff60e4
      const stories = await page.evaluate(async ()=>{
          /**
       * Retrieves the Storybook story store from the global window object.
-@@ -190,12 +238,59 @@ async function extractStorybookData({ distPath }) {
+@@ -190,12 +238,64 @@ async function extractStorybookData({ distPath }) {
          // Set up routing for this page
          await setupStaticRouting(page, distPath);
          console.log(`Extracting: "${url}"`);
@@ -123,6 +123,11 @@ index 2852bb0e7f7763a7ba2d0b6765554921917f3d91..e8c1476c6585184626eb0c234cff60e4
 +                html = current;
 +            }
 +            await page.waitForTimeout(150);
++        }
++        // PATCH: a page that never settles is a determinism risk — make it visible
++        // instead of silently capturing the last (possibly still-changing) snapshot.
++        if (stable < 3) {
++            console.warn(`PATCH: DOM never settled for "${url}", captured the last snapshot anyway.`);
 +        }
          await page.close();
          return convertHtmlToMarkdown(html);

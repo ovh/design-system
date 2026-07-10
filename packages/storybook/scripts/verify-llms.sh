@@ -37,36 +37,36 @@ individual_files() {
 
 # --- Optional: regenerate everything from scratch -------------------------
 if [ "$FULL" = "--full" ]; then
-  section "Régénération from-scratch (Storybook)"
+  section "From-scratch regeneration (Storybook)"
   rm -rf "$ROOT/packages/storybook/dist"
   if pnpm -C "$ROOT/packages/storybook" build:storybook >/tmp/verify-sb.log 2>&1 \
      && pnpm -C "$ROOT/packages/storybook" extract:llms >/tmp/verify-extract.log 2>&1; then
-    ok "build:storybook + extract:llms réussis"
+    ok "build:storybook + extract:llms succeeded"
     if git -C "$ROOT" diff --quiet -- packages/storybook/assets/llms; then
-      ok "régénération déterministe & reproductible (assets/llms inchangé vs commité)"
+      ok "deterministic & reproducible regeneration (assets/llms unchanged vs committed)"
     else
-      ko "assets/llms diffère après régénération (déterminisme rompu ou commit obsolète)"
+      ko "assets/llms differs after regeneration (broken determinism or stale commit)"
     fi
   else
-    ko "build:storybook/extract:llms a échoué (voir /tmp/verify-*.log)"
+    ko "build:storybook/extract:llms failed (see /tmp/verify-*.log)"
   fi
 fi
 
 # --- 1. Content invariants -------------------------------------------------
-section "Contenu (assets/llms)"
+section "Content (assets/llms)"
 
 [ "$(grep -c '^# OVHcloud Design System - Complete Documentation' "$ASSETS/llms-full.txt")" = "1" ] \
-  && ok "llms-full.txt: titre complet présent 1×" \
-  || ko "llms-full.txt: titre complet absent ou dupliqué (ré-ingestion ?)"
+  && ok "llms-full.txt: complete-doc title present exactly once" \
+  || ko "llms-full.txt: complete-doc title missing or duplicated (re-ingestion?)"
 
 grep -q 'Complete Documentation' "$ASSETS/ods-documentation-generic.txt" \
-  && ko "ods-documentation-generic.txt contient 'Complete Documentation' (ré-ingestion)" \
-  || ok "ods-documentation-generic.txt: aucune ré-ingestion"
+  && ko "ods-documentation-generic.txt contains 'Complete Documentation' (re-ingestion)" \
+  || ok "ods-documentation-generic.txt: no re-ingestion"
 
 full_lines="$(wc -l < "$ASSETS/llms-full.txt" | tr -d ' ')"
 [ "$full_lines" -lt 200000 ] \
-  && ok "llms-full.txt taille saine ($full_lines lignes)" \
-  || ko "llms-full.txt anormalement gros ($full_lines lignes) — probable bloat"
+  && ok "llms-full.txt size is sane ($full_lines lines)" \
+  || ko "llms-full.txt abnormally large ($full_lines lines) — likely bloat"
 
 # Front-matter complete on every individual file
 fm_bad=0
@@ -79,14 +79,14 @@ while IFS= read -r b; do
   done
 done < <(individual_files)
 [ "$fm_bad" = "0" ] \
-  && ok "front-matter complet sur tous les fichiers individuels" \
-  || ko "$fm_bad fichier(s) avec front-matter manquant/incomplet"
+  && ok "complete front-matter on every individual file" \
+  || ko "$fm_bad file(s) with missing/incomplete front-matter"
 
 # Version consistent everywhere
 if grep -h '^version: ' "$ASSETS"/*.txt | sort -u | grep -qv "^version: $VERSION$"; then
-  ko "versions hétérogènes (attendu $VERSION)"
+  ko "inconsistent versions (expected $VERSION)"
 else
-  ok "version $VERSION cohérente partout"
+  ok "version $VERSION consistent everywhere"
 fi
 
 # Navigation files use relative links, never absolute web URLs
@@ -95,17 +95,31 @@ for b in $NAV_FILES; do
   grep -qE '\]\(https?://' "$ASSETS/$b" && nav_bad=$((nav_bad + 1))
 done
 [ "$nav_bad" = "0" ] \
-  && ok "liens de navigation relatifs (aucun http(s) dans llms.txt / index)" \
-  || ko "$nav_bad fichier(s) de navigation avec lien web absolu"
+  && ok "relative navigation links (no http(s) in llms.txt / indexes)" \
+  || ko "$nav_bad navigation file(s) with absolute web links"
 
-# Front-matter source stays absolute & versioned (canonical citation)
-sample="$(individual_files | head -1)"
-grep -qE "^source: https://.*/v$VERSION/llms/" "$ASSETS/$sample" \
-  && ok "front-matter source absolu et versionné (ex. $sample)" \
-  || ko "front-matter source non absolu/versionné dans $sample"
+# Front-matter source stays absolute & versioned (canonical citation), on every file
+src_bad=0
+while IFS= read -r b; do
+  grep -qE "^source: https://.*/v$VERSION/llms/" "$ASSETS/$b" || src_bad=$((src_bad + 1))
+done < <(individual_files)
+[ "$src_bad" = "0" ] \
+  && ok "front-matter source absolute and versioned on every individual file" \
+  || ko "$src_bad file(s) with a non-absolute/unversioned front-matter source"
+
+# Every relative link in the navigation files resolves to a sibling file
+link_bad=0
+for b in $NAV_FILES; do
+  while IFS= read -r target; do
+    [ -f "$ASSETS/$target" ] || link_bad=$((link_bad + 1))
+  done < <(grep -oE '\]\(\./[^)]+\)' "$ASSETS/$b" | sed 's/](\.\///; s/)$//')
+done
+[ "$link_bad" = "0" ] \
+  && ok "navigation links all resolve to existing sibling files" \
+  || ko "$link_bad dead relative link(s) in navigation files"
 
 # --- 2. index.json validity & coverage ------------------------------------
-section "Index machine-lisible (llms-index.json)"
+section "Machine-readable index (llms-index.json)"
 if node -e '
   const fs = require("fs"), path = require("path");
   const dir = process.argv[1], version = process.argv[2];
@@ -116,61 +130,61 @@ if node -e '
     ...j.components.flatMap((c) => Object.values(c.pages).map((p) => p.url)),
     ...j.generic.map((g) => g.url),
   ].map((u) => u.replace(/^\.\//, "")));
-  for (const r of refs) if (!fs.existsSync(path.join(dir, r))) { console.error(`url -> fichier manquant: ${r}`); err++; }
+  for (const r of refs) if (!fs.existsSync(path.join(dir, r))) { console.error(`url -> missing file: ${r}`); err++; }
   const generated = new Set("llms.txt llms-full.txt ods-documentation-components.txt ods-documentation-generic.txt ods-components-index.txt ods-generic-index.txt".split(" "));
   const served = fs.readdirSync(dir).filter((f) => f.endsWith(".txt") && !generated.has(f));
-  for (const s of served) if (!refs.has(s)) { console.error(`fichier servi non référencé: ${s}`); err++; }
-  console.log(`${j.components.length} composants, ${j.generic.length} generic, ${refs.size} URLs`);
+  for (const s of served) if (!refs.has(s)) { console.error(`served file not referenced: ${s}`); err++; }
+  console.log(`${j.components.length} components, ${j.generic.length} generic, ${refs.size} URLs`);
   process.exit(err ? 1 : 0);
 ' "$ASSETS" "$VERSION"; then
-  ok "index.json valide, version correcte, couverture totale (aucun orphelin/lien mort)"
+  ok "index.json valid, correct version, full coverage (no orphans/dead links)"
 else
-  ko "index.json invalide ou couverture incomplète"
+  ko "index.json invalid or incomplete coverage"
 fi
 
 # --- 3. Local distribution in ods-react -----------------------------------
-section "Distribution locale (ods-react)"
+section "Local distribution (ods-react)"
 if pnpm -C "$ROOT/packages/ods-react" copy:llms >/tmp/verify-copy.log 2>&1; then
-  ok "copy:llms exécuté"
+  ok "copy:llms ran"
 else
-  ko "copy:llms a échoué (voir /tmp/verify-copy.log)"
+  ko "copy:llms failed (see /tmp/verify-copy.log)"
 fi
 
 if [ -d "$DIST_REACT" ]; then
   a_count="$(ls "$ASSETS" | wc -l | tr -d ' ')"
   d_count="$(ls "$DIST_REACT" | wc -l | tr -d ' ')"
   [ "$a_count" = "$d_count" ] \
-    && ok "ods-react/dist/llms complet ($d_count fichiers, = assets)" \
-    || ko "ods-react/dist/llms incomplet ($d_count vs $a_count)"
+    && ok "ods-react/dist/llms complete ($d_count files, = assets)" \
+    || ko "ods-react/dist/llms incomplete ($d_count vs $a_count)"
   # a relative link from the local copy resolves to a sibling file
   ( cd "$DIST_REACT" && [ -f ./llms-full.txt ] && [ -f ./react-components-button.txt ] ) \
-    && ok "liens relatifs résolvent en local (fichiers voisins présents)" \
-    || ko "fichiers voisins manquants dans ods-react/dist/llms"
+    && ok "relative links resolve locally (sibling files present)" \
+    || ko "missing sibling files in ods-react/dist/llms"
 else
-  ko "ods-react/dist/llms absent après copy:llms"
+  ko "ods-react/dist/llms missing after copy:llms"
 fi
 
 # --- 4. Optional: published package actually ships the docs ----------------
 if [ "$FULL" = "--full" ]; then
-  section "Empaquetage publié (offline)"
+  section "Published package check (offline)"
   if pnpm -C "$ROOT/packages/ods-react" build:prod >/tmp/verify-build.log 2>&1; then
-    ok "ods-react build:prod réussi"
+    ok "ods-react build:prod succeeded"
     TGZ="$(cd "$ROOT/packages/ods-react" && npm pack 2>/dev/null | tail -1)"
     TGZ_PATH="$ROOT/packages/ods-react/$TGZ"
     shipped="$(tar -tzf "$TGZ_PATH" | grep -c 'package/dist/llms/.*\.txt' || true)"
     [ "$shipped" -gt 0 ] \
-      && ok "le tarball publié embarque $shipped fichiers dist/llms" \
-      || ko "le tarball publié ne contient aucun fichier dist/llms"
+      && ok "published tarball ships $shipped dist/llms files" \
+      || ko "published tarball contains no dist/llms files"
     # read a file straight from the tarball — fully offline
     tar -xzOf "$TGZ_PATH" package/dist/llms/llms.txt 2>/dev/null | grep -q 'Documentation Sets' \
-      && ok "llms.txt lisible depuis le tarball (sans réseau)" \
-      || ko "llms.txt illisible depuis le tarball"
+      && ok "llms.txt readable straight from the tarball (offline)" \
+      || ko "llms.txt unreadable from the tarball"
     rm -f "$TGZ_PATH"
   else
-    ko "ods-react build:prod a échoué (voir /tmp/verify-build.log)"
+    ko "ods-react build:prod failed (see /tmp/verify-build.log)"
   fi
 fi
 
 # --- Summary ---------------------------------------------------------------
-printf '\n\033[1mRésultat : %d OK, %d échec(s).\033[0m\n' "$pass" "$fail"
+printf '\n\033[1mResult: %d OK, %d failure(s).\033[0m\n' "$pass" "$fail"
 [ "$fail" = "0" ]

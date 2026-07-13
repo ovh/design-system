@@ -11,7 +11,7 @@ overrides:
   stylelint-order: 8.1.1
 
 patchedDependencies:
-  '@fluentui/storybook-llms-extractor@0.0.3': 54e8842c83413417aacfe1a58ad3539c52e191c9ae24b6cfd75cad78c56b32b9
+  '@fluentui/storybook-llms-extractor@0.0.3': f54405beee8a85136373358115b067ddc5709273793138a227bdf0cf16d06107
 
 importers:
 
@@ -501,6 +501,8 @@ importers:
 
   packages/ods-react/src/components/combobox: {}
 
+  packages/ods-react/src/components/command: {}
+
   packages/ods-react/src/components/data-table: {}
 
   packages/ods-react/src/components/datepicker: {}
@@ -780,7 +782,7 @@ importers:
     devDependencies:
       '@fluentui/storybook-llms-extractor':
         specifier: 0.0.3
-        version: 0.0.3(patch_hash=54e8842c83413417aacfe1a58ad3539c52e191c9ae24b6cfd75cad78c56b32b9)
+        version: 0.0.3(patch_hash=f54405beee8a85136373358115b067ddc5709273793138a227bdf0cf16d06107)
       '@storybook/addon-docs':
         specifier: 8.6.12
         version: 8.6.12(@types/react@18.2.56)(storybook@8.6.12(prettier@3.6.2))
@@ -12224,7 +12226,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.11': {}
 
-  '@fluentui/storybook-llms-extractor@0.0.3(patch_hash=54e8842c83413417aacfe1a58ad3539c52e191c9ae24b6cfd75cad78c56b32b9)':
+  '@fluentui/storybook-llms-extractor@0.0.3(patch_hash=f54405beee8a85136373358115b067ddc5709273793138a227bdf0cf16d06107)':
     dependencies:
       '@swc/helpers': 0.5.23
       playwright: 1.61.1

@@ -63,7 +63,7 @@ const CommandContent: FC<CommandContentProp> = forwardRef(({
     }
 
     el.addEventListener('animationend', measure, { once: true });
-    return () => el.removeEventListener('animationend', measure);
+    return (): void => el.removeEventListener('animationend', measure);
   }, [open, nodeRef]);
 
   return (

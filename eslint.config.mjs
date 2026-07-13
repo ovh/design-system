@@ -175,6 +175,13 @@ export default [
       '@typescript-eslint/consistent-type-exports': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
       'no-console': 'off',
+      // Dev stories are throwaway playgrounds: the react-hooks 7 compiler diagnostics
+      // (purity, state-in-effect, immutability, ...) are meant for shipped code, not here.
+      'react-hooks/immutability': 'off',
+      'react-hooks/purity': 'off',
+      'react-hooks/refs': 'off',
+      'react-hooks/set-state-in-effect': 'off',
+      'react-hooks/set-state-in-render': 'off',
       'no-restricted-imports': ['error', {
         paths: [{
           name: '@ovhcloud/ods-react',

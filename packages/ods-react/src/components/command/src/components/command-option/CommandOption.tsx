@@ -49,7 +49,7 @@ const CommandOption: FC<CommandOptionProp> = forwardRef(({
       return;
     }
     registerHandler(itemId, () => onSelectRef.current?.());
-    return () => unregisterHandler(itemId);
+    return (): void => unregisterHandler(itemId);
   }, [isDisabled, itemId, registerHandler, unregisterHandler]);
 
   // Not keyed on the filter: the item stays registered while filtered out
@@ -66,7 +66,7 @@ const CommandOption: FC<CommandOptionProp> = forwardRef(({
   }, [isDisabled, isVisible, itemId, registerItem, text]);
 
   useEffect(() => {
-    return () => unregisterItem(itemId);
+    return (): void => unregisterItem(itemId);
   }, [itemId, unregisterItem]);
 
   useEffect(() => {

@@ -16,6 +16,8 @@ allowBuilds:
   sharp: true
   unrs-resolver: true
 
+# Only takes effect if `minimumReleaseAge` is enabled (not set in the repo today —
+# kept so an eventual CI/global activation does not block these pinned versions).
 minimumReleaseAgeExclude:
   - '@playwright/test@1.61.1'
   - playwright-core@1.61.1

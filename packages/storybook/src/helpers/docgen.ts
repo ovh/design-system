@@ -25,6 +25,13 @@ type Component = {
 
 const tagRegExp = /(@[\w-]+)=?([^\s<]+<[^>]*>|[\w${} ']+)?/gi;
 
+// typedoc requires escaping @ < > { } inside comments, but react-docgen hands us
+// the raw text: strip those escapes before parsing tags or displaying anything,
+// otherwise the backslashes leak into the technical specification tables.
+function unescapeJsdoc(str: string): string {
+  return str.replace(/\\([@<>{}])/g, '$1');
+}
+
 function extractTags(str: string): Map<string, string | undefined> {
   const tagMatches = [...str.matchAll(tagRegExp)];
 
@@ -46,7 +53,8 @@ function getComponentInfo(docgen: Documentation): Component {
 }
 
 function getComponentProp(name: string, prop: PropDescriptor): ComponentProp | undefined {
-  const tagsMap = extractTags(prop.description || '');
+  const description = unescapeJsdoc(prop.description || '');
+  const tagsMap = extractTags(description);
 
   if (tagsMap.has(TAG.internal)) {
     return;
@@ -57,7 +65,7 @@ function getComponentProp(name: string, prop: PropDescriptor): ComponentProp | u
   return {
     defaultValue: prop.defaultValue?.value?.toString() || tagsMap.get(TAG.defaultValue) || 'undefined',
     deprecated: tagsMap.has(TAG.deprecated),
-    description: prop.description || '',
+    description,
     entries: type === 'object' ? getPropEntries(prop) : [],
     isOptional: !prop.required,
     name: name,
@@ -97,7 +105,8 @@ function getCustomProps(description = ''): ComponentProp[] {
 
 function getPropEntries(prop: PropDescriptor): ComponentProp[] {
   return (prop.tsType as ObjectSignatureType).signature.properties.map((property) => {
-    const tagsMap = extractTags(property.description || '');
+    const description = unescapeJsdoc(property.description || '');
+    const tagsMap = extractTags(description);
 
     if (tagsMap.has(TAG.internal)) {
       return;
@@ -108,7 +117,7 @@ function getPropEntries(prop: PropDescriptor): ComponentProp[] {
     return {
       defaultValue: '-',
       deprecated: tagsMap.has(TAG.deprecated),
-      description: property.description || '',
+      description,
       isOptional: !property.value.required,
       name: property.key.toString(),
       type: type,

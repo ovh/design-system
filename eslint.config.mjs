@@ -6,13 +6,12 @@ import importPlugin from 'eslint-plugin-import';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
-import tsdocPlugin from 'eslint-plugin-tsdoc';
 
 export default [
   {
     ignores: [
       'packages/storybook/**',
-      '**/*.stories.tsx',
+      '**/tests/**/*.stories.tsx',
       '**/dist/**',
       '**/node_modules/**',
     ],
@@ -38,7 +37,6 @@ export default [
   {
     plugins: {
       'import': importPlugin,
-      'tsdoc': tsdocPlugin,
     },
     languageOptions: {
       parser: tsParser,
@@ -76,6 +74,7 @@ export default [
       'complexity': ['error'],
       'curly': ['error', 'all'],
       'default-case': 'error',
+      'func-call-spacing': ['error', 'never'],
       'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
       'function-call-argument-newline': ['error', 'consistent'],
       'import/no-unresolved': 'error',
@@ -141,7 +140,6 @@ export default [
       ],
       'sort-keys': ['error', 'asc'],
       'space-before-function-paren': ['error', 'never'],
-      'tsdoc/syntax': 'off',
     },
   },
 
@@ -162,6 +160,29 @@ export default [
       parserOptions: {
         project: false,
       },
+    },
+  },
+
+  // Dev stories — linted with relaxed rules, but keep the barrel-import guard
+  {
+    files: ['**/src/dev.stories.tsx'],
+    languageOptions: {
+      parserOptions: {
+        project: false,
+      },
+    },
+    rules: {
+      '@typescript-eslint/consistent-type-exports': 'off',
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      'no-console': 'off',
+      'no-restricted-imports': ['error', {
+        paths: [{
+          name: '@ovhcloud/ods-react',
+          message: 'Use relative imports to sibling component sources instead of the package barrel.',
+        }],
+      }],
+      'react/no-unescaped-entities': 'off',
+      'sort-keys': 'off',
     },
   },
 

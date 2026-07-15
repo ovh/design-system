@@ -25,11 +25,6 @@ minimumReleaseAgeExclude:
   - webpack@5.108.2
 
 overrides:
-  # @types/react@18 depends on @types/scheduler@*, and @types/scheduler >=0.23.0 ships type
-  # changes incompatible with the React 18 types. Cap it below 0.23.0. (Yarn-era resolution,
-  # migrated to pnpm in 77c914e78.)
-  # REMOVE WHEN: upgrading to React 19 — @types/react@19 no longer depends on @types/scheduler.
-  "@types/scheduler": "< 0.23.0"
   # Pin a single @types/react version tree-wide: pnpm's strict node_modules exposed duplicate
   # copies that yarn's hoisting had masked (added in the pnpm migration, 69f19f1ac).
   # Re-pinned to 19.x with the React 19 upgrade; remove once the tree resolves to a single
@@ -45,11 +40,12 @@ overrides:
   # Force stylelint-order@8 so concentric-order works with stylelint 17.
   # REMOVE WHEN: stylelint-config-concentric-order ships a release pinning stylelint-order@^8.
   "stylelint-order": "8.1.1"
-  # TODO(storybook-9): retirer ce pin React une fois migré vers Storybook 9.
+  # TODO(storybook-9): retirer ce pin React une fois migré vers Storybook 9/10.
   # SB 8.6 ne tourne pas sous React 19 (bug manager connu, storybook#32095 / #29805) ;
-  # l'isolation "manager seul en React 18" est impossible → pin React 18 global en attendant.
-  # NB: depuis #1101 les apps d'exemples déclarent React 19.2.7 — ce pin les rétrograde aussi,
-  # voir la discussion sur la PR.
+  # l'isolation "manager seul en React 18" est impossible — re-vérifié post-toolchain (2026-07-15) :
+  # même sans pin global, les addons du manager importent ods-react et tirent son react 19
+  # dans le bundle manager (react error #31). Pin React 18 global en attendant ; les apps
+  # d'exemples retombent donc aussi en 18 en local (compromis assumé jusqu'à la migration SB).
   "react": "18.2.0"
   "react-dom": "18.2.0"
 

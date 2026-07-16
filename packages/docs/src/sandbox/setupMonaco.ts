@@ -21,7 +21,13 @@ self.MonacoEnvironment = {
   },
 };
 
+let configured = false;
+
 function setupMonaco(): typeof monaco {
+  if (configured) {
+    return monaco;
+  }
+  configured = true;
   const ts = monaco.languages.typescript.typescriptDefaults;
 
   ts.setCompilerOptions({
@@ -39,17 +45,23 @@ function setupMonaco(): typeof monaco {
   // will inject them too (or use ATA).
   ts.setDiagnosticsOptions({ diagnosticCodesToIgnore: [2307] });
 
-  ts.addExtraLib(reactTypes, 'file:///node_modules/@types/react/index.d.ts');
-  ts.addExtraLib(reactJsxRuntimeTypes, 'file:///node_modules/@types/react/jsx-runtime.d.ts');
-  ts.addExtraLib(cssTypes, 'file:///node_modules/csstype/index.d.ts');
-  ts.addExtraLib(propTypesTypes, 'file:///node_modules/@types/prop-types/index.d.ts');
-
+  // One single batched setExtraLibs: per-file addExtraLib invalidates and
+  // resyncs the worker on every call (~370 times, several MB each pass) —
+  // the empirically flaky never-resolving getTypeScriptWorker came from there.
+  const extraLibs: { content: string, filePath: string }[] = [
+    { content: reactTypes, filePath: 'file:///node_modules/@types/react/index.d.ts' },
+    { content: reactJsxRuntimeTypes, filePath: 'file:///node_modules/@types/react/jsx-runtime.d.ts' },
+    { content: cssTypes, filePath: 'file:///node_modules/csstype/index.d.ts' },
+    { content: propTypesTypes, filePath: 'file:///node_modules/@types/prop-types/index.d.ts' },
+  ];
   // dist/src/index.d.ts lands at node_modules/@ovhcloud/ods-react/index.d.ts,
   // which is exactly where NodeJs resolution looks the bare specifier up.
   for (const [path, content] of Object.entries(odsTypeFiles)) {
     const rel = path.replace('../../../ods-react/dist/src/', '');
-    ts.addExtraLib(content, `file:///node_modules/@ovhcloud/ods-react/${rel}`);
+    extraLibs.push({ content, filePath: `file:///node_modules/@ovhcloud/ods-react/${rel}` });
   }
+  ts.setExtraLibs(extraLibs);
+  ts.setEagerModelSync(true);
 
   return monaco;
 }

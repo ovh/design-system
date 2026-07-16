@@ -73,21 +73,43 @@ const Sandbox = ({ dark, tokens }: { dark: boolean, tokens: Record<string, strin
     (window as Record<string, unknown> & Window).__sandbox = { editor, model, monaco: m };
 
     let timer: ReturnType<typeof setTimeout>;
+    let attempts = 0;
+    const withTimeout = <T,>(promise: Promise<T>, ms: number): Promise<T> =>
+      Promise.race([promise, new Promise<never>((_, reject) => setTimeout(() => reject(new Error('worker timeout')), ms))]);
+    const trace = (step: string) => { (window as Record<string, unknown> & Window).__compileState = step; };
     const compile = async () => {
       try {
-        const worker = await m.languages.typescript.getTypeScriptWorker();
-        const client = await worker(model.uri);
+        trace('worker');
+        // The worker boot occasionally races the teardown of the previous
+        // page's frames and never resolves: time-box it and retry.
+        const worker = await withTimeout(m.languages.typescript.getTypeScriptWorker(), 5000);
+        trace('client');
+        const client = await withTimeout(worker(model.uri), 5000);
+        trace('diagnostics');
+        attempts = 0;
         const uri = model.uri.toString();
-        const [semantic, syntactic, emit] = await Promise.all([
+        const [semantic, syntactic, emit] = await withTimeout(Promise.all([
           client.getSemanticDiagnostics(uri),
           client.getSyntacticDiagnostics(uri),
           client.getEmitOutput(uri),
-        ]);
+        ]), 15000);
+        trace('done');
         setTsErrors(semantic.length + syntactic.length);
         const js = emit.outputFiles[0]?.text ?? '';
         setRuntimeError('');
         setDemo({ Component: evaluate(js) });
       } catch (e) {
+        trace('failed:' + String(e).slice(0, 40) + ' attempt=' + attempts);
+        // 'TypeScript not registered!': the build code-splits Monaco's
+        // language contributions into async chunks — the TS one may land
+        // after our first compile call. Retry covers it and the rare
+        // worker-boot timeout alike.
+        const retryable = String(e).includes('worker timeout') || String(e).includes('not registered');
+        if (retryable && attempts < 8) {
+          attempts += 1;
+          timer = setTimeout(compile, 500);
+          return;
+        }
         setRuntimeError(String(e));
       }
     };

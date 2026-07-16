@@ -62,8 +62,12 @@ const StyleSync = () => {
     }
     const copyStyles = () => {
       frameDocument.head.querySelectorAll(`[${SYNC_MARKER}]`).forEach((node) => node.remove());
-      document.head.querySelectorAll('style').forEach((styleEl) => {
-        const clone = frameDocument.importNode(styleEl, true);
+      // dev: Vite injects <style>; build: extracted stylesheets arrive as <link>
+      document.head.querySelectorAll('style, link[rel="stylesheet"]').forEach((el) => {
+        const clone = frameDocument.importNode(el, true);
+        if (clone instanceof HTMLLinkElement) {
+          clone.href = (el as HTMLLinkElement).href;
+        }
         clone.setAttribute(SYNC_MARKER, '');
         frameDocument.head.appendChild(clone);
       });

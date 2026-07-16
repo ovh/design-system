@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { Suspense, lazy, useState } from 'react';
 import * as ButtonStories from '../../storybook/stories/components/button/button.stories';
 import * as CommandStories from '../../storybook/stories/components/command/command.stories';
 import * as DatepickerStories from '../../storybook/stories/components/datepicker/datepicker.stories';
 import { ComponentPage } from './pages/ComponentPage';
-import { Sandbox } from './sandbox/Sandbox';
+const Sandbox = lazy(() => import('./sandbox/Sandbox').then((m) => ({ default: m.Sandbox })));
 
 const COBAYES = [
   { key: 'button', module: ButtonStories, title: 'Button' },
@@ -41,7 +41,7 @@ const App = () => {
       </nav>
 
       { current === 'sandbox'
-        ? <Sandbox dark={ dark } tokens={ tokens } />
+        ? <Suspense fallback={ <p>Chargement de la sandbox…</p> }><Sandbox dark={ dark } tokens={ tokens } /></Suspense>
         : <ComponentPage dark={ dark } storiesModule={ cobaye.module } title={ cobaye.title } tokens={ tokens } /> }
     </main>
   );
